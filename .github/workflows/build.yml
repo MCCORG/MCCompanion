@@ -41,10 +41,10 @@ jobs:
             exit 1
           fi
           if ! echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > android/app-release.jks; then
-            echo "Failed to decode ANDROID_KEYSTORE_BASE64 from GitHub Secrets."
+            echo "Failed to decode and write keystore file. Verify ANDROID_KEYSTORE_BASE64 is valid base64 and the android directory is writable."
             exit 1
           fi
-          if ! keytool -list -keystore android/app-release.jks -storepass "$KEYSTORE_PASSWORD" >/dev/null 2>&1; then
+          if ! printf '%s\n' "$KEYSTORE_PASSWORD" | keytool -list -keystore android/app-release.jks >/dev/null 2>&1; then
             echo "Decoded keystore is invalid or KEYSTORE_PASSWORD is incorrect."
             exit 1
           fi
