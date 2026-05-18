@@ -279,4 +279,7 @@ jobs:
               ]
             }')"
 
-          curl -fsS -H "Content-Type: application/json" -d "$PAYLOAD" "$DISCORD_WEBHOOK_URL"
+          curl -fsS -H "Content-Type: application/json" -d "$PAYLOAD" "$DISCORD_WEBHOOK_URL" || {
+            echo "Failed to send Discord notification."
+            exit 1
+          }
