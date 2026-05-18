@@ -44,6 +44,11 @@ jobs:
           flutter-version: '3.41.9'
           channel: stable
 
+      - name: Setup CMake 3.x
+        uses: jwlawson/actions-setup-cmake@v2
+        with:
+          cmake-version: '3.31.6'
+
       - name: Install dependencies
         run: flutter pub get
 
