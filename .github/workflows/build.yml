@@ -40,12 +40,19 @@ jobs:
             echo "Missing KEYSTORE_PASSWORD or KEY_PASSWORD in GitHub Secrets."
             exit 1
           fi
-          if ! echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > android/app-release.jks; then
-            echo "Failed to decode and write keystore file. Verify ANDROID_KEYSTORE_BASE64 is valid base64 and the android directory is writable."
+          TEMP_KEYSTORE_PATH="$(mktemp)"
+          if ! echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > "$TEMP_KEYSTORE_PATH"; then
+            rm -f "$TEMP_KEYSTORE_PATH"
+            echo "Failed to decode ANDROID_KEYSTORE_BASE64. Verify it is valid base64 in GitHub Secrets."
+            exit 1
+          fi
+          if ! mv "$TEMP_KEYSTORE_PATH" android/app-release.jks; then
+            rm -f "$TEMP_KEYSTORE_PATH"
+            echo "Failed to write decoded keystore to android/app-release.jks. Verify the android directory is writable."
             exit 1
           fi
           if ! printf '%s\n' "$KEYSTORE_PASSWORD" | keytool -list -keystore android/app-release.jks >/dev/null 2>&1; then
-            echo "Decoded keystore is invalid or KEYSTORE_PASSWORD is incorrect."
+            echo "Keystore validation failed. Verify ANDROID_KEYSTORE_BASE64 contains a valid keystore and KEYSTORE_PASSWORD matches that keystore."
             exit 1
           fi
           chmod 600 android/app-release.jks
