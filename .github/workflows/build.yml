@@ -63,6 +63,7 @@ jobs:
           chmod 600 android/app-release.jks
           printf 'storePassword=%s\nkeyPassword=%s\nkeyAlias=%s\nstoreFile=app-release.jks\n' \
             "$KEYSTORE_PASSWORD" "$KEY_PASSWORD" "$KEY_ALIAS" > android/key.properties
+          chmod 600 android/key.properties
 
       - name: Build APK
         run: flutter build apk --release
