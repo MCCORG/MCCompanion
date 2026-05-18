@@ -33,14 +33,21 @@ jobs:
           KEY_ALIAS: ${{ secrets.KEY_ALIAS || 'release' }}
         run: |
           if [ -z "$ANDROID_KEYSTORE_BASE64" ]; then
-            echo "Missing ANDROID_KEYSTORE_BASE64 secret."
+            echo "Missing ANDROID_KEYSTORE_BASE64 in GitHub Secrets."
             exit 1
           fi
           if [ -z "$KEYSTORE_PASSWORD" ] || [ -z "$KEY_PASSWORD" ]; then
-            echo "Missing KEYSTORE_PASSWORD or KEY_PASSWORD secret."
+            echo "Missing KEYSTORE_PASSWORD or KEY_PASSWORD in GitHub Secrets."
             exit 1
           fi
-          echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > android/app-release.jks
+          if ! echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > android/app-release.jks; then
+            echo "Failed to decode ANDROID_KEYSTORE_BASE64 from GitHub Secrets."
+            exit 1
+          fi
+          if ! keytool -list -keystore android/app-release.jks -storepass "$KEYSTORE_PASSWORD" >/dev/null 2>&1; then
+            echo "Decoded keystore is invalid or KEYSTORE_PASSWORD is incorrect."
+            exit 1
+          fi
           chmod 600 android/app-release.jks
           printf 'storePassword=%s\nkeyPassword=%s\nkeyAlias=%s\nstoreFile=app-release.jks\n' \
             "$KEYSTORE_PASSWORD" "$KEY_PASSWORD" "$KEY_ALIAS" > android/key.properties
