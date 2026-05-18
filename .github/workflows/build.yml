@@ -72,7 +72,12 @@ jobs:
           channel: stable
 
       - name: Install dependencies
-        run: flutter pub get
+        run: |
+          cat > pubspec_overrides.yaml <<'EOF'
+          dependency_overrides:
+            connectivity_plus: 6.1.4
+          EOF
+          flutter pub get
 
       - name: Build macOS
         run: flutter build macos --release
