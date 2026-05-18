@@ -26,12 +26,16 @@ jobs:
         run: flutter pub get
 
       - name: Generate signing keystore
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD || 'dev-build-only' }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD || 'dev-build-only' }}
         run: |
           keytool -genkey -v -keystore android/app-release.jks \
             -alias release -keyalg RSA -keysize 2048 -validity 10000 \
-            -storepass netherlink -keypass netherlink \
+            -storepass "$KEYSTORE_PASSWORD" -keypass "$KEY_PASSWORD" \
             -dname "CN=NetherLink Dev, OU=Dev, O=NetherDev, L=Unknown, ST=Unknown, C=US"
-          printf 'storePassword=netherlink\nkeyPassword=netherlink\nkeyAlias=release\nstoreFile=app-release.jks\n' > android/key.properties
+          printf 'storePassword=%s\nkeyPassword=%s\nkeyAlias=release\nstoreFile=app-release.jks\n' \
+            "$KEYSTORE_PASSWORD" "$KEY_PASSWORD" > android/key.properties
 
       - name: Build APK
         run: flutter build apk --release
