@@ -41,18 +41,17 @@ jobs:
             exit 1
           fi
           TEMP_KEYSTORE_PATH="$(mktemp)"
+          trap 'rm -f "$TEMP_KEYSTORE_PATH"' EXIT
           if ! echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > "$TEMP_KEYSTORE_PATH"; then
-            rm -f "$TEMP_KEYSTORE_PATH"
             echo "Failed to decode ANDROID_KEYSTORE_BASE64. Verify it is valid base64 in GitHub Secrets."
             exit 1
           fi
           if ! mv "$TEMP_KEYSTORE_PATH" android/app-release.jks; then
-            rm -f "$TEMP_KEYSTORE_PATH"
             echo "Failed to write decoded keystore to android/app-release.jks. Verify the android directory is writable."
             exit 1
           fi
           if ! printf '%s\n' "$KEYSTORE_PASSWORD" | keytool -list -keystore android/app-release.jks >/dev/null 2>&1; then
-            echo "Keystore validation failed. Verify ANDROID_KEYSTORE_BASE64 contains a valid keystore and KEYSTORE_PASSWORD matches that keystore."
+            echo "Keystore validation failed. Verify android/app-release.jks is a readable keystore file and KEYSTORE_PASSWORD is correct for it."
             exit 1
           fi
           chmod 600 android/app-release.jks
