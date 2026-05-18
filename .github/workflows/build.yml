@@ -54,6 +54,8 @@ jobs:
 
       - name: Build Windows
         run: flutter build windows --release
+        env:
+          CMAKE_POLICY_VERSION_MINIMUM: "3.5"
 
       - name: Zip Windows build
         shell: pwsh
