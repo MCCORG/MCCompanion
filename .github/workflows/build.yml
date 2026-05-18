@@ -50,11 +50,17 @@ jobs:
             echo "Failed to write decoded keystore to android/app-release.jks. Verify the android directory is writable."
             exit 1
           fi
-          chmod 600 android/app-release.jks
           if ! printf '%s\n' "$KEYSTORE_PASSWORD" | keytool -list -keystore android/app-release.jks >/dev/null 2>&1; then
+            rm -f android/app-release.jks
             echo "Keystore validation failed. Verify android/app-release.jks is a readable keystore file and KEYSTORE_PASSWORD is correct for it."
             exit 1
           fi
+          if ! printf '%s\n' "$KEYSTORE_PASSWORD" | keytool -list -keystore android/app-release.jks -alias "$KEY_ALIAS" >/dev/null 2>&1; then
+            rm -f android/app-release.jks
+            echo "Keystore alias validation failed. Verify KEY_ALIAS exists in the configured keystore."
+            exit 1
+          fi
+          chmod 600 android/app-release.jks
           printf 'storePassword=%s\nkeyPassword=%s\nkeyAlias=%s\nstoreFile=app-release.jks\n' \
             "$KEYSTORE_PASSWORD" "$KEY_PASSWORD" "$KEY_ALIAS" > android/key.properties
 
