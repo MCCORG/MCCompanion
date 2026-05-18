@@ -3,7 +3,7 @@ name: Build & Release (dev)
 on:
   push:
     branches:
-      - '**'
+      - main
 
 jobs:
   build-android:
