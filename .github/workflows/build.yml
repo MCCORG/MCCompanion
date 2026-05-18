@@ -25,6 +25,14 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Generate signing keystore
+        run: |
+          keytool -genkey -v -keystore android/app-release.jks \
+            -alias release -keyalg RSA -keysize 2048 -validity 10000 \
+            -storepass netherlink -keypass netherlink \
+            -dname "CN=NetherLink Dev, OU=Dev, O=NetherDev, L=Unknown, ST=Unknown, C=US"
+          printf 'storePassword=netherlink\nkeyPassword=netherlink\nkeyAlias=release\nstoreFile=app-release.jks\n' > android/key.properties
+
       - name: Build APK
         run: flutter build apk --release
 
