@@ -25,17 +25,25 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Generate signing keystore
+      - name: Prepare signing keystore
         env:
-          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD || 'dev-build-only' }}
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD || 'dev-build-only' }}
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS || 'release' }}
         run: |
-          keytool -genkey -v -keystore android/app-release.jks \
-            -alias release -keyalg RSA -keysize 2048 -validity 10000 \
-            -storepass "$KEYSTORE_PASSWORD" -keypass "$KEY_PASSWORD" \
-            -dname "CN=NetherLink Dev, OU=Dev, O=NetherDev, L=Unknown, ST=Unknown, C=US"
-          printf 'storePassword=%s\nkeyPassword=%s\nkeyAlias=release\nstoreFile=app-release.jks\n' \
-            "$KEYSTORE_PASSWORD" "$KEY_PASSWORD" > android/key.properties
+          if [ -z "$ANDROID_KEYSTORE_BASE64" ]; then
+            echo "Missing ANDROID_KEYSTORE_BASE64 secret."
+            exit 1
+          fi
+          if [ -z "$KEYSTORE_PASSWORD" ] || [ -z "$KEY_PASSWORD" ]; then
+            echo "Missing KEYSTORE_PASSWORD or KEY_PASSWORD secret."
+            exit 1
+          fi
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > android/app-release.jks
+          chmod 600 android/app-release.jks
+          printf 'storePassword=%s\nkeyPassword=%s\nkeyAlias=%s\nstoreFile=app-release.jks\n' \
+            "$KEYSTORE_PASSWORD" "$KEY_PASSWORD" "$KEY_ALIAS" > android/key.properties
 
       - name: Build APK
         run: flutter build apk --release
