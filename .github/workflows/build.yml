@@ -272,14 +272,19 @@ jobs:
                   ],
                   url: $runUrl,
                   footer: {
-                    text: ("Commit: " + ($sha[0:7]))
+                    text: ("Commit: " + ($sha | .[0:7]))
                   },
                   timestamp: now | todateiso8601
                 }
               ]
             }')"
 
-          curl -fsS -H "Content-Type: application/json" -d "$PAYLOAD" "$DISCORD_WEBHOOK_URL" || {
-            echo "Failed to send Discord notification."
+          RESPONSE_FILE="$(mktemp)"
+          HTTP_STATUS="$(curl -sS -o "$RESPONSE_FILE" -w "%{http_code}" -H "Content-Type: application/json" -d "$PAYLOAD" "$DISCORD_WEBHOOK_URL" || true)"
+          if [ "${HTTP_STATUS:-000}" -lt 200 ] || [ "${HTTP_STATUS:-000}" -ge 300 ]; then
+            echo "Failed to send Discord notification. HTTP status: ${HTTP_STATUS:-000}"
+            echo "Response body:"
+            cat "$RESPONSE_FILE"
             exit 1
-          }
+          fi
+          rm -f "$RESPONSE_FILE"
