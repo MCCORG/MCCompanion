@@ -105,15 +105,33 @@ jobs:
           FLUTTER_XCODE_CODE_SIGN_IDENTITY: ""
           FLUTTER_XCODE_CODE_SIGNING_REQUIRED: "NO"
 
-      - name: Zip macOS build
+      - name: Ad-hoc sign macOS app
         run: |
-          cd build/macos/Build/Products/Release
-          zip -r "$GITHUB_WORKSPACE/NetherLink-macos.zip" NetherLink.app
+          APP_PATH="build/macos/Build/Products/Release/NetherLink.app"
+          codesign --force --deep --sign - "$APP_PATH"
+          codesign --verify --deep --strict "$APP_PATH"
+
+      - name: Create macOS DMG
+        run: |
+          STAGING_DIR="$RUNNER_TEMP/dmg-staging"
+          APP_PATH="build/macos/Build/Products/Release/NetherLink.app"
+          rm -rf "$STAGING_DIR"
+          mkdir -p "$STAGING_DIR"
+          cp -R "$APP_PATH" "$STAGING_DIR/"
+          ln -s /Applications "$STAGING_DIR/Applications"
+          hdiutil create \
+            -volname "NetherLink" \
+            -srcfolder "$STAGING_DIR" \
+            -ov \
+            -format UDZO \
+            "$GITHUB_WORKSPACE/NetherLink-macos.dmg"
+          codesign --force --sign - "$GITHUB_WORKSPACE/NetherLink-macos.dmg"
+          codesign --verify --strict "$GITHUB_WORKSPACE/NetherLink-macos.dmg"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: macos-zip
-          path: NetherLink-macos.zip
+          name: macos-dmg
+          path: NetherLink-macos.dmg
 
   release:
     name: Create or Update dev Release
@@ -136,7 +154,7 @@ jobs:
 
       - uses: actions/download-artifact@v4.1.3
         with:
-          name: macos-zip
+          name: macos-dmg
           path: artifacts/
 
       - name: Rename Android APK
@@ -153,4 +171,4 @@ jobs:
           files: |
             artifacts/NetherLink-android.apk
             artifacts/NetherLink-windows.zip
-            artifacts/NetherLink-macos.zip
+            artifacts/NetherLink-macos.dmg
