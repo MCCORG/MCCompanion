@@ -205,9 +205,10 @@ jobs:
 
   notify-discord:
     name: Notify Discord
-    if: ${{ always() && secrets.DISCORD_WEBHOOK_URL != '' }}
+    if: ${{ always() }}
     needs: [build-android, build-windows, build-macos, release]
     runs-on: ubuntu-latest
+    permissions: {}
     steps:
       - name: Send build status embed
         env:
@@ -223,6 +224,11 @@ jobs:
           RUN_ID: ${{ github.run_id }}
           SERVER_URL: ${{ github.server_url }}
         run: |
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "DISCORD_WEBHOOK_URL is not configured. Skipping Discord notification."
+            exit 0
+          fi
+
           OVERALL_STATUS="✅ Build Succeeded"
           EMBED_COLOR=5763719
           if [ "$ANDROID_RESULT" != "success" ] || [ "$WINDOWS_RESULT" != "success" ] || [ "$MACOS_RESULT" != "success" ] || [ "$RELEASE_RESULT" != "success" ]; then
@@ -273,4 +279,4 @@ jobs:
               ]
             }')"
 
-          curl -sS -H "Content-Type: application/json" -d "$PAYLOAD" "$DISCORD_WEBHOOK_URL"
+          curl -fsS -H "Content-Type: application/json" -d "$PAYLOAD" "$DISCORD_WEBHOOK_URL"
