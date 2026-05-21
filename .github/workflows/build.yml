@@ -223,7 +223,7 @@ jobs:
           SHA: ${{ github.sha }}
           RUN_ID: ${{ github.run_id }}
           SERVER_URL: ${{ github.server_url }}
-          RELEASES_URL: https://github.com/NetherDevMc/NetherLink/releases
+          RELEASES_URL: ${{ github.server_url }}/${{ github.repository }}/releases
         run: |
           if [ -z "$DISCORD_WEBHOOK_URL" ]; then
             echo "DISCORD_WEBHOOK_URL is not configured. Skipping Discord notification."
