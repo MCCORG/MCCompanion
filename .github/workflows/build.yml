@@ -223,6 +223,7 @@ jobs:
           SHA: ${{ github.sha }}
           RUN_ID: ${{ github.run_id }}
           SERVER_URL: ${{ github.server_url }}
+          RELEASES_URL: https://github.com/NetherDevMc/NetherLink/releases
         run: |
           if [ -z "$DISCORD_WEBHOOK_URL" ]; then
             echo "DISCORD_WEBHOOK_URL is not configured. Skipping Discord notification."
@@ -251,6 +252,7 @@ jobs:
             --arg windows "$WINDOWS_RESULT" \
             --arg macos "$MACOS_RESULT" \
             --arg release "$RELEASE_RESULT" \
+            --arg releasesUrl "$RELEASES_URL" \
             --argjson color "$EMBED_COLOR" \
             '{
               username: "GitHub Actions",
@@ -268,7 +270,8 @@ jobs:
                     { name: "Android", value: $android, inline: true },
                     { name: "Windows", value: $windows, inline: true },
                     { name: "macOS", value: $macos, inline: true },
-                    { name: "Release", value: $release, inline: true }
+                    { name: "Release", value: $release, inline: true },
+                    { name: "Releases", value: ("[View Releases](" + $releasesUrl + ")"), inline: false }
                   ],
                   url: $runUrl,
                   footer: {
