@@ -271,7 +271,7 @@ jobs:
                     { name: "Windows", value: $windows, inline: true },
                     { name: "macOS", value: $macos, inline: true },
                     { name: "Release", value: $release, inline: true },
-                    { name: "Releases", value: ("[View Releases](" + $releasesUrl + ")"), inline: false }
+                    { name: "Releases Page", value: ("[View Releases](" + $releasesUrl + ")"), inline: false }
                   ],
                   url: $runUrl,
                   footer: {
