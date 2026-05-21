@@ -221,6 +221,7 @@ jobs:
           BRANCH: ${{ github.ref_name }}
           ACTOR: ${{ github.actor }}
           SHA: ${{ github.sha }}
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
           RUN_ID: ${{ github.run_id }}
           SERVER_URL: ${{ github.server_url }}
           RELEASES_URL: ${{ github.server_url }}/${{ github.repository }}/releases
@@ -239,6 +240,7 @@ jobs:
 
           RUN_URL="$SERVER_URL/$REPOSITORY/actions/runs/$RUN_ID"
           COMMIT_URL="$SERVER_URL/$REPOSITORY/commit/$SHA"
+          COMMIT_SUBJECT="$(printf '%s' "$COMMIT_MESSAGE" | head -n 1)"
 
           PAYLOAD="$(jq -n \
             --arg overallStatus "$OVERALL_STATUS" \
@@ -248,6 +250,7 @@ jobs:
             --arg runUrl "$RUN_URL" \
             --arg commitUrl "$COMMIT_URL" \
             --arg sha "$SHA" \
+            --arg commitSubject "$COMMIT_SUBJECT" \
             --arg android "$ANDROID_RESULT" \
             --arg windows "$WINDOWS_RESULT" \
             --arg macos "$MACOS_RESULT" \
@@ -271,12 +274,10 @@ jobs:
                     { name: "Windows", value: $windows, inline: true },
                     { name: "macOS", value: $macos, inline: true },
                     { name: "Release", value: $release, inline: true },
+                    { name: "Commit", value: ("[" + ($sha | .[0:7]) + "](" + $commitUrl + ")" + (if $commitSubject != "" then " " + $commitSubject else "" end)), inline: false },
                     { name: "Releases Page", value: ("[View Releases](" + $releasesUrl + ")"), inline: false }
                   ],
                   url: $runUrl,
-                  footer: {
-                    text: ("Commit: " + ($sha | .[0:7]))
-                  },
                   timestamp: now | todateiso8601
                 }
               ]
