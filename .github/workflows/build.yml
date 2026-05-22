@@ -69,7 +69,7 @@ jobs:
       - name: Build APK
         run: flutter build apk --release
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: android-apk
           path: build/app/outputs/flutter-apk/app-release.apk
@@ -103,7 +103,7 @@ jobs:
         run: |
           Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath NetherLink-windows.zip
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: windows-zip
           path: NetherLink-windows.zip
@@ -157,7 +157,7 @@ jobs:
           codesign --force --sign - "$GITHUB_WORKSPACE/NetherLink-macos.dmg"
           codesign --verify --strict "$GITHUB_WORKSPACE/NetherLink-macos.dmg"
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: macos-dmg
           path: NetherLink-macos.dmg
@@ -171,17 +171,17 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with:
           name: android-apk
           path: artifacts/
 
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with:
           name: windows-zip
           path: artifacts/
 
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with:
           name: macos-dmg
           path: artifacts/
