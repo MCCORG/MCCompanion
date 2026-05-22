@@ -51,3 +51,6 @@ flutter/
 
 # Local secret defines — never commit this file
 dart_defines.json
+
+# Copilot local worktree metadata
+.claude/worktrees/
