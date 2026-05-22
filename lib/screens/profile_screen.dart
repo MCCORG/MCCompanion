@@ -516,7 +516,7 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
               'An account already exists with this email using a different sign-in method.',
             _ => 'Google sign-in failed. Please try again.',
           });
-    } catch (e) {
+    } catch (_) {
       if (mounted) setState(() => _error = 'Google sign-in failed. Please try again.');
     } finally {
       if (mounted) setState(() => _googleLoading = false);
