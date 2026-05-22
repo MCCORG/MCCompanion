@@ -127,6 +127,20 @@ jobs:
           EOF
           flutter pub get
 
+      - name: Ensure macOS Firebase plist path
+        run: |
+          if [ -f macos/GoogleService-Info.plist ]; then
+            echo "macos/GoogleService-Info.plist already exists."
+            exit 0
+          fi
+          if [ -f macos/Runner/GoogleService-Info.plist ]; then
+            cp macos/Runner/GoogleService-Info.plist macos/GoogleService-Info.plist
+            echo "Copied macos/Runner/GoogleService-Info.plist to macos/GoogleService-Info.plist."
+            exit 0
+          fi
+          echo "Missing Firebase plist at both macos/GoogleService-Info.plist and macos/Runner/GoogleService-Info.plist."
+          exit 1
+
       - name: Build macOS
         run: flutter build macos --release
         env:
