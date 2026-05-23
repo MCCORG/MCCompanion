@@ -571,51 +571,72 @@ class SkinsScreenState extends State<SkinsScreen> {
       );
     }
 
-    final hasJava = _me?.javaUuid != null;
-    final hasBedrock = _me?.xboxXuid != null && _me?.xboxGamertag != null;
-
     if (_me == null) return const _NotLoggedInCard();
-    if (!hasJava && !hasBedrock) return const _NoAccountsCard();
+
+    final javaAccounts = _me!.javaAccounts;
+    final bedrockAccounts = _me!.bedrockAccounts;
+
+    if (javaAccounts.isEmpty && bedrockAccounts.isEmpty) {
+      return const _NoAccountsCard();
+    }
+
+    final totalCards = javaAccounts.length + bedrockAccounts.length;
+    final isSingle = totalCards == 1;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _sectionLabel('YOUR SKINS'),
         const SizedBox(height: 10),
-        if (hasJava && hasBedrock)
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: _JavaSkinCard(
-                  username: _me!.javaUsername ?? _me!.username,
-                  javaUuid: _me!.javaUuid!,
-                  badge: 'Java',
-                  badgeColor: const Color(0xFF42A5F5),
-                  onEdit: _openEditor,
-                ),
-              ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: _BedrockSkinCard(
-                  gamertag: _me!.xboxGamertag!,
-                  xuid: _me!.xboxXuid!,
-                  onEdit: _openEditor,
-                ),
-              ),
-            ],
-          )
-        else if (hasJava)
-          _JavaSkinCard(
-            username: _me!.javaUsername ?? _me!.username,
-            javaUuid: _me!.javaUuid!,
-            onEdit: _openEditor,
-          )
+        if (isSingle)
+          if (javaAccounts.isNotEmpty)
+            _JavaSkinCard(
+              username: javaAccounts.first.javaUsername,
+              javaUuid: javaAccounts.first.javaUuid,
+              badge: 'Java',
+              badgeColor: const Color(0xFF42A5F5),
+              onEdit: _openEditor,
+            )
+          else
+            _BedrockSkinCard(
+              gamertag: bedrockAccounts.first.xboxGamertag ?? bedrockAccounts.first.xboxXuid,
+              xuid: bedrockAccounts.first.xboxXuid,
+              onEdit: _openEditor,
+            )
         else
-          _BedrockSkinCard(
-            gamertag: _me!.xboxGamertag!,
-            xuid: _me!.xboxXuid!,
-            onEdit: _openEditor,
+          SizedBox(
+            height: 210,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: totalCards,
+              separatorBuilder: (_, __) => const SizedBox(width: 10),
+              itemBuilder: (_, i) {
+                if (i < javaAccounts.length) {
+                  final acc = javaAccounts[i];
+                  return SizedBox(
+                    width: 140,
+                    child: _JavaSkinCard(
+                      username: acc.javaUsername,
+                      javaUuid: acc.javaUuid,
+                      badge: 'Java',
+                      badgeColor: const Color(0xFF42A5F5),
+                      onEdit: _openEditor,
+                      compact: true,
+                    ),
+                  );
+                }
+                final acc = bedrockAccounts[i - javaAccounts.length];
+                return SizedBox(
+                  width: 140,
+                  child: _BedrockSkinCard(
+                    gamertag: acc.xboxGamertag ?? acc.xboxXuid,
+                    xuid: acc.xboxXuid,
+                    onEdit: _openEditor,
+                    compact: true,
+                  ),
+                );
+              },
+            ),
           ),
       ],
     );
@@ -1029,12 +1050,14 @@ class _JavaSkinCard extends StatefulWidget {
   final String? badge;
   final Color? badgeColor;
   final void Function(String?)? onEdit;
+  final bool compact;
   const _JavaSkinCard({
     required this.username,
     required this.javaUuid,
     this.badge,
     this.badgeColor,
     this.onEdit,
+    this.compact = false,
   });
 
   @override
@@ -1106,10 +1129,13 @@ class _JavaSkinCardState extends State<_JavaSkinCard> {
     final badge = widget.badge;
     final badgeColor = widget.badgeColor ?? AppTheme.accent;
 
+    final compact = widget.compact;
+    final pad = compact ? 10.0 : 14.0;
+
     return GestureDetector(
       onTap: _openDetail,
       child: Container(
-        padding: const EdgeInsets.all(14),
+        padding: EdgeInsets.all(pad),
         decoration: BoxDecoration(
           color: AppTheme.surface,
           borderRadius: BorderRadius.circular(16),
@@ -1121,10 +1147,7 @@ class _JavaSkinCardState extends State<_JavaSkinCard> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 3,
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                   decoration: BoxDecoration(
                     color: badgeColor.withOpacity(0.15),
                     borderRadius: BorderRadius.circular(6),
@@ -1139,75 +1162,65 @@ class _JavaSkinCardState extends State<_JavaSkinCard> {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 6),
             ],
-            SizedBox(
-              height: 140,
+            Expanded(
               child: Center(
-                child: _textureUrl != null
-                    ? _SkinBodyImage(textureUrl: _textureUrl!, height: 136)
-                    : const CircularProgressIndicator(
-                        color: AppTheme.accent,
-                        strokeWidth: 2,
-                      ),
+                child: LayoutBuilder(
+                  builder: (_, constraints) => _textureUrl != null
+                      ? _SkinBodyImage(
+                          textureUrl: _textureUrl!,
+                          height: constraints.maxHeight,
+                        )
+                      : const CircularProgressIndicator(
+                          color: AppTheme.accent,
+                          strokeWidth: 2,
+                        ),
+                ),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 6),
             Text(
               widget.username,
               style: const TextStyle(
                 color: AppTheme.textPrimary,
-                fontSize: 13,
+                fontSize: 12,
                 fontWeight: FontWeight.w700,
               ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 6),
             Row(
               children: [
                 Expanded(
-                  child: OutlinedButton.icon(
+                  child: OutlinedButton(
                     onPressed: _download,
-                    icon: const FaIcon(FontAwesomeIcons.download, size: 11),
-                    label: const Text('Download'),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: AppTheme.accent,
                       side: const BorderSide(color: AppTheme.accent),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 6,
-                        vertical: 7,
-                      ),
-                      textStyle: const TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
-                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 6),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
+                    child: const FaIcon(FontAwesomeIcons.download, size: 11),
                   ),
                 ),
                 if (widget.onEdit != null) ...[
                   const SizedBox(width: 6),
-                  OutlinedButton.icon(
-                    onPressed: () => widget.onEdit!(_textureUrl),
-                    icon: const FaIcon(FontAwesomeIcons.penToSquare, size: 11),
-                    label: const Text('Edit'),
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: AppTheme.textSecondary,
-                      side: const BorderSide(color: AppTheme.borderGray),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 6,
-                        vertical: 7,
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () => widget.onEdit!(_textureUrl),
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: AppTheme.textSecondary,
+                        side: const BorderSide(color: AppTheme.borderGray),
+                        padding: const EdgeInsets.symmetric(vertical: 6),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
-                      textStyle: const TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+                      child: const FaIcon(FontAwesomeIcons.penToSquare, size: 11),
                     ),
                   ),
                 ],
@@ -1224,10 +1237,12 @@ class _BedrockSkinCard extends StatefulWidget {
   final String gamertag;
   final String xuid;
   final void Function(String?)? onEdit;
+  final bool compact;
   const _BedrockSkinCard({
     required this.gamertag,
     required this.xuid,
     this.onEdit,
+    this.compact = false,
   });
 
   @override
@@ -1286,10 +1301,13 @@ class _BedrockSkinCardState extends State<_BedrockSkinCard> {
 
   @override
   Widget build(BuildContext context) {
+    final compact = widget.compact;
+    final pad = compact ? 10.0 : 14.0;
+
     return GestureDetector(
       onTap: _openDetail,
       child: Container(
-        padding: const EdgeInsets.all(14),
+        padding: EdgeInsets.all(pad),
         decoration: BoxDecoration(
           color: AppTheme.surface,
           borderRadius: BorderRadius.circular(16),
@@ -1315,82 +1333,72 @@ class _BedrockSkinCardState extends State<_BedrockSkinCard> {
                 ),
               ),
             ),
-            const SizedBox(height: 10),
-            SizedBox(
-              height: 140,
+            const SizedBox(height: 6),
+            Expanded(
               child: Center(
                 child: _loading
                     ? const CircularProgressIndicator(
                         color: AppTheme.accent,
                         strokeWidth: 2,
                       )
-                    : _textureUrl != null
-                    ? _SkinBodyImage(textureUrl: _textureUrl!, height: 136)
-                    : const FaIcon(
-                        FontAwesomeIcons.personRunning,
-                        color: AppTheme.textMuted,
-                        size: 28,
+                    : LayoutBuilder(
+                        builder: (_, constraints) => _textureUrl != null
+                            ? _SkinBodyImage(
+                                textureUrl: _textureUrl!,
+                                height: constraints.maxHeight,
+                              )
+                            : const FaIcon(
+                                FontAwesomeIcons.personRunning,
+                                color: AppTheme.textMuted,
+                                size: 28,
+                              ),
                       ),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 6),
             Text(
               widget.gamertag,
               style: const TextStyle(
                 color: AppTheme.textPrimary,
-                fontSize: 13,
+                fontSize: 12,
                 fontWeight: FontWeight.w700,
               ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 6),
             Row(
               children: [
                 Expanded(
-                  child: OutlinedButton.icon(
+                  child: OutlinedButton(
                     onPressed: _textureUrl != null ? _download : null,
-                    icon: const FaIcon(FontAwesomeIcons.download, size: 11),
-                    label: const Text('Download'),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: const Color(0xFF4CAF50),
                       side: const BorderSide(color: Color(0xFF4CAF50)),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 6,
-                        vertical: 7,
-                      ),
-                      textStyle: const TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
-                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 6),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
+                    child: const FaIcon(FontAwesomeIcons.download, size: 11),
                   ),
                 ),
                 if (widget.onEdit != null) ...[
                   const SizedBox(width: 6),
-                  OutlinedButton.icon(
-                    onPressed: _textureUrl != null
-                        ? () => widget.onEdit!(_textureUrl)
-                        : null,
-                    icon: const FaIcon(FontAwesomeIcons.penToSquare, size: 11),
-                    label: const Text('Edit'),
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: AppTheme.textSecondary,
-                      side: const BorderSide(color: AppTheme.borderGray),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 6,
-                        vertical: 7,
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: _textureUrl != null
+                          ? () => widget.onEdit!(_textureUrl)
+                          : null,
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: AppTheme.textSecondary,
+                        side: const BorderSide(color: AppTheme.borderGray),
+                        padding: const EdgeInsets.symmetric(vertical: 6),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
-                      textStyle: const TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+                      child: const FaIcon(FontAwesomeIcons.penToSquare, size: 11),
                     ),
                   ),
                 ],
