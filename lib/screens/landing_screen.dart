@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../theme/app_theme.dart';
 import '../util/partners_servers.dart';
+import '../widgets/components/header_nav_bar.dart';
 import '../widgets/featured_server_hero.dart';
 
 class LandingScreen extends StatelessWidget {
@@ -47,7 +47,7 @@ class LandingScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 12, 4, 8),
+                      padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
                       child: Row(
                         children: [
                           const Text(
@@ -59,20 +59,12 @@ class LandingScreen extends StatelessWidget {
                             ),
                           ),
                           const Spacer(),
-                          _HeaderIconButton(
-                            icon: FontAwesomeIcons.earthEurope,
-                            tooltip: 'Website',
-                            onTap: onWebsiteTap,
-                          ),
-                          _HeaderIconButton(
-                            icon: FontAwesomeIcons.discord,
-                            tooltip: 'Discord',
-                            onTap: onDiscordTap,
-                          ),
-                          _HeaderIconButton(
-                            icon: FontAwesomeIcons.language,
-                            tooltip: 'Language',
-                            onTap: onLanguageTap,
+                          HeaderNavBar(
+                            items: [
+                              HeaderNavItem(label: 'Website', onTap: onWebsiteTap),
+                              HeaderNavItem(label: 'Discord', onTap: onDiscordTap),
+                              HeaderNavItem(label: 'Language', onTap: onLanguageTap),
+                            ],
                           ),
                         ],
                       ),
@@ -174,36 +166,6 @@ class LandingScreen extends StatelessWidget {
   }
 }
 
-class _HeaderIconButton extends StatelessWidget {
-  final FaIconData icon;
-  final String tooltip;
-  final VoidCallback? onTap;
-
-  const _HeaderIconButton({
-    required this.icon,
-    required this.tooltip,
-    this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Tooltip(
-      message: tooltip,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(8),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-          child: FaIcon(
-            icon,
-            size: 16,
-            color: AppTheme.textMuted,
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 class _QuickCard extends StatefulWidget {
   final String title;

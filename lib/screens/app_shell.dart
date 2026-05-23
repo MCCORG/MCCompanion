@@ -309,6 +309,9 @@ class _AppShellState extends State<AppShell>
                     onOpenPartnerServers: () => _goTo(_pagePartners),
                     onOpenManageServers: _openManageServers,
                     onOpenMore: () => _openSheet(_ActiveSheet.more),
+                    onOpenSupport: () => _openSheet(_ActiveSheet.help),
+                    onOpenHowTo: () => _openSheet(_ActiveSheet.howTo),
+                    onOpenConsole: () => navigationController.showConsole(context),
                     ipController: _ipController,
                     portController: _portController,
                   ),
@@ -441,18 +444,6 @@ class _AppShellState extends State<AppShell>
           onRelayChanged: (ip) {
             _closeSheetInstant();
             _onRelayChanged(ip);
-          },
-          onSupportTap: () {
-            _closeSheetInstant();
-            _openSheet(_ActiveSheet.help);
-          },
-          onHowToTap: () {
-            _closeSheetInstant();
-            _openSheet(_ActiveSheet.howTo);
-          },
-          onConsoleTap: () {
-            _closeSheetInstant();
-            navigationController.showConsole(context);
           },
         );
       case _ActiveSheet.none:

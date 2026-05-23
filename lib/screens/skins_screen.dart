@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
 import '../theme/app_theme.dart';
+import '../widgets/components/header_nav_bar.dart';
 import '../services/auth_service.dart';
 import '../services/user_service.dart';
 import '../models/user_model.dart';
@@ -483,46 +484,11 @@ class SkinsScreenState extends State<SkinsScreen> {
                   ),
                 ),
               ),
-              OutlinedButton.icon(
-                onPressed: _uploadSkin,
-                icon: const FaIcon(FontAwesomeIcons.upload, size: 11),
-                label: const Text('Upload'),
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: AppTheme.textSecondary,
-                  side: const BorderSide(color: AppTheme.borderGray),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 7,
-                  ),
-                  textStyle: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 8),
-              OutlinedButton.icon(
-                onPressed: () => _openEditor(null),
-                icon: const FaIcon(FontAwesomeIcons.penToSquare, size: 11),
-                label: const Text('Create'),
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: AppTheme.accent,
-                  side: const BorderSide(color: AppTheme.accent),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 7,
-                  ),
-                  textStyle: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
+              HeaderNavBar(
+                items: [
+                  HeaderNavItem(label: 'Upload', onTap: _uploadSkin),
+                  HeaderNavItem(label: 'Create', onTap: () => _openEditor(null)),
+                ],
               ),
             ],
           ),

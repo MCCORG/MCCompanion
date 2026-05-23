@@ -15,6 +15,7 @@ import '../theme/app_theme.dart';
 import '../widgets/connection/connection_panel.dart';
 import '../widgets/components/global_notice_banner.dart';
 import '../widgets/components/app_toast.dart';
+import '../widgets/components/header_nav_bar.dart';
 import '../services/notification_service.dart';
 import '../services/region_detector.dart';
 import '../network/broadcast_mode.dart';
@@ -30,6 +31,9 @@ class HomeScreen extends StatefulWidget {
   final VoidCallback onOpenPartnerServers;
   final VoidCallback onOpenManageServers;
   final VoidCallback? onOpenMore;
+  final VoidCallback? onOpenSupport;
+  final VoidCallback? onOpenHowTo;
+  final VoidCallback? onOpenConsole;
   final TextEditingController ipController;
   final TextEditingController portController;
 
@@ -44,6 +48,9 @@ class HomeScreen extends StatefulWidget {
     required this.ipController,
     required this.portController,
     this.onOpenMore,
+    this.onOpenSupport,
+    this.onOpenHowTo,
+    this.onOpenConsole,
   });
 
   @override
@@ -56,14 +63,17 @@ class HomeScreenState extends State<HomeScreen> {
   late final Logger logger;
 
   final ValueNotifier<bool> _debugEnabledNotifier = ValueNotifier(false);
-  final ValueNotifier<List<String>> _logsNotifier = ValueNotifier([]);
   final ValueNotifier<bool> _broadcastingNotifier = ValueNotifier(false);
   final ValueNotifier<List<UserServer>> _userServersNotifier = ValueNotifier(
     [],
   );
 
-  final ScrollController _logScrollController = ScrollController();
   final ScrollController _mainScrollController = ScrollController();
+
+  ValueNotifier<List<String>> get _logsNotifier =>
+      widget.navigationController.logsNotifier;
+  ScrollController get _logScrollController =>
+      widget.navigationController.logsScrollController;
 
   bool _nintendoDnsMode = false;
   Map<String, String>? _currentNotice;
@@ -105,9 +115,7 @@ class HomeScreenState extends State<HomeScreen> {
   @override
   void dispose() {
     _noticeTimer?.cancel();
-    _logScrollController.dispose();
     _mainScrollController.dispose();
-    _logsNotifier.dispose();
     _broadcastingNotifier.dispose();
     _debugEnabledNotifier.dispose();
     _userServersNotifier.dispose();
@@ -301,7 +309,7 @@ class HomeScreenState extends State<HomeScreen> {
         Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(16, 12, 8, 0),
+              padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
               child: Row(
                 children: [
                   const Text(
@@ -313,19 +321,21 @@ class HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   const Spacer(),
-                  if (widget.onOpenMore != null)
-                    TextButton(
-                      onPressed: widget.onOpenMore,
-                      style: TextButton.styleFrom(
-                        foregroundColor: AppTheme.textMuted,
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                        textStyle: const TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
+                  HeaderNavBar(
+                    items: [
+                      if (widget.onOpenSupport != null)
+                        HeaderNavItem(label: 'Support', onTap: widget.onOpenSupport),
+                      if (widget.onOpenHowTo != null)
+                        HeaderNavItem(label: 'How to use', onTap: widget.onOpenHowTo),
+                      if (widget.onOpenConsole != null)
+                        HeaderNavItem(label: 'Console', onTap: widget.onOpenConsole),
+                      if (widget.onOpenMore != null)
+                        HeaderNavItem(
+                          label: 'Relay',
+                          onTap: widget.onOpenMore,
                         ),
-                      ),
-                      child: Text(AppLocalizations.of(context)!.more),
-                    ),
+                    ],
+                  ),
                 ],
               ),
             ),

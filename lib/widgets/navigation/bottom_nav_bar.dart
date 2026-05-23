@@ -224,9 +224,6 @@ class MoreSheetContent extends StatelessWidget {
   final String? selectedRelayIp;
   final VoidCallback onClose;
   final void Function(String?) onRelayChanged;
-  final VoidCallback? onSupportTap;
-  final VoidCallback? onHowToTap;
-  final VoidCallback? onConsoleTap;
 
   const MoreSheetContent({
     super.key,
@@ -235,9 +232,6 @@ class MoreSheetContent extends StatelessWidget {
     required this.onClose,
     required this.onRelayChanged,
     this.selectedRelayIp,
-    this.onSupportTap,
-    this.onHowToTap,
-    this.onConsoleTap,
   });
 
   @override
@@ -293,9 +287,9 @@ class MoreSheetContent extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 12),
-                  Text(
-                    loc.more,
-                    style: const TextStyle(
+                  const Text(
+                    'Relay',
+                    style: TextStyle(
                       color: AppTheme.textPrimary,
                       fontSize: 17,
                       fontWeight: FontWeight.w700,
@@ -310,51 +304,6 @@ class MoreSheetContent extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    if (onSupportTap != null ||
-                        onHowToTap != null ||
-                        onConsoleTap != null) ...[
-                      const Text(
-                        'TOOLS',
-                        style: TextStyle(
-                          color: AppTheme.textMuted,
-                          fontSize: 10,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 1.4,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      if (onSupportTap != null)
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8),
-                          child: _SheetTile(
-                            icon: FontAwesomeIcons.headset,
-                            color: const Color(0xFF60A5FA),
-                            label: 'Support',
-                            onTap: onSupportTap!,
-                          ),
-                        ),
-                      if (onHowToTap != null)
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8),
-                          child: _SheetTile(
-                            icon: FontAwesomeIcons.bookOpen,
-                            color: const Color(0xFFA78BFA),
-                            label: 'How to use',
-                            onTap: onHowToTap!,
-                          ),
-                        ),
-                      if (onConsoleTap != null)
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8),
-                          child: _SheetTile(
-                            icon: FontAwesomeIcons.terminal,
-                            color: const Color(0xFF34D399),
-                            label: 'Console',
-                            onTap: onConsoleTap!,
-                          ),
-                        ),
-                      const SizedBox(height: 8),
-                    ],
                     _RegionSelector(
                       selectedIp: selectedRelayIp,
                       onChanged: onRelayChanged,
