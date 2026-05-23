@@ -1,0 +1,159 @@
+name: Notify Discord (beta release)
+
+on:
+  workflow_run:
+    workflows:
+      - Build & Release (dev)
+    types:
+      - completed
+
+jobs:
+  notify-beta-release:
+    name: Notify Discord beta release
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - name: Evaluate beta release conditions
+        id: beta
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const workflowRun = context.payload.workflow_run;
+            const commit = await github.rest.repos.getCommit({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: workflowRun.head_sha,
+            });
+
+            const commitMessage = commit.data.commit.message || '';
+            const commitSubject = commitMessage.split('\n')[0];
+            const requiredJobs = {
+              'Build Android APK': false,
+              'Build Windows EXE': false,
+              'Build macOS DMG': false,
+              'Create or Update dev Release': false,
+            };
+
+            const jobs = await github.paginate(
+              github.rest.actions.listJobsForWorkflowRun,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                run_id: workflowRun.id,
+                per_page: 100,
+              }
+            );
+
+            for (const job of jobs) {
+              if (Object.prototype.hasOwnProperty.call(requiredJobs, job.name) && job.conclusion === 'success') {
+                requiredJobs[job.name] = true;
+              }
+            }
+
+            const missingJobs = Object.entries(requiredJobs)
+              .filter(([, succeeded]) => !succeeded)
+              .map(([name]) => name);
+            const shouldNotify = commitSubject.startsWith('[beta]') && missingJobs.length === 0;
+            const skippedReason = shouldNotify
+              ? ''
+              : !commitSubject.startsWith('[beta]')
+                ? `Commit subject "${commitSubject}" does not start with [beta].`
+                : `Required successful jobs missing: ${missingJobs.join(', ')}.`;
+
+            core.setOutput('should_notify', shouldNotify ? 'true' : 'false');
+            core.setOutput('skipped_reason', skippedReason);
+            core.setOutput('commit_subject', commitSubject);
+            core.setOutput('commit_sha', workflowRun.head_sha);
+            core.setOutput('commit_url', commit.data.html_url);
+            core.setOutput('run_url', workflowRun.html_url);
+            core.setOutput('actor', workflowRun.actor?.login ?? workflowRun.triggering_actor?.login ?? 'unknown');
+            core.setOutput('releases_url', `${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/releases`);
+
+      - name: Log skipped notification
+        if: steps.beta.outputs.should_notify != 'true'
+        run: echo "${{ steps.beta.outputs.skipped_reason }}"
+
+      - name: Send beta release embed
+        if: steps.beta.outputs.should_notify == 'true'
+        env:
+          DISCORD_BETA_WEBHOOK_URL: ${{ secrets.DISCORD_BETA_WEBHOOK_URL }}
+          RELEASES_URL: ${{ steps.beta.outputs.releases_url }}
+          COMMIT_SUBJECT: ${{ steps.beta.outputs.commit_subject }}
+          COMMIT_SHA: ${{ steps.beta.outputs.commit_sha }}
+          COMMIT_URL: ${{ steps.beta.outputs.commit_url }}
+          RUN_URL: ${{ steps.beta.outputs.run_url }}
+          ACTOR: ${{ steps.beta.outputs.actor }}
+        run: |
+          if [ -z "$DISCORD_BETA_WEBHOOK_URL" ]; then
+            echo "DISCORD_BETA_WEBHOOK_URL is not configured. Skipping Discord notification."
+            exit 0
+          fi
+
+          SHORT_SHA="$(printf '%s' "$COMMIT_SHA" | cut -c1-7)"
+
+          PAYLOAD="$(jq -n \
+            --arg roleId "1485783465365344316" \
+            --arg releasesUrl "$RELEASES_URL" \
+            --arg commitSubject "$COMMIT_SUBJECT" \
+            --arg commitUrl "$COMMIT_URL" \
+            --arg shortSha "$SHORT_SHA" \
+            --arg runUrl "$RUN_URL" \
+            --arg actor "$ACTOR" \
+            '{
+              content: ("<@&" + $roleId + ">"),
+              allowed_mentions: {
+                roles: [$roleId]
+              },
+              username: "GitHub Actions",
+              avatar_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+              embeds: [
+                {
+                  title: "🚀 New Beta Release Available",
+                  url: $releasesUrl,
+                  color: 5793266,
+                  description: ("Hello, <@&" + $roleId + "> we made a new beta release, check it out on our [releases](" + $releasesUrl + ")."),
+                  author: {
+                    name: "NetherLink Beta Releases",
+                    icon_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                  },
+                  fields: [
+                    {
+                      name: "Commit",
+                      value: ("[" + $shortSha + "](" + $commitUrl + ")" + (if $commitSubject != "" then " " + $commitSubject else "" end)),
+                      inline: false
+                    },
+                    {
+                      name: "Platforms",
+                      value: "Android • Windows • macOS",
+                      inline: true
+                    },
+                    {
+                      name: "Triggered by",
+                      value: $actor,
+                      inline: true
+                    },
+                    {
+                      name: "Workflow",
+                      value: ("[View run](" + $runUrl + ")"),
+                      inline: true
+                    }
+                  ],
+                  footer: {
+                    text: "NetherLink beta release"
+                  },
+                  timestamp: now | todateiso8601
+                }
+              ]
+            }')"
+
+          RESPONSE_FILE="$(mktemp)"
+          HTTP_STATUS="$(curl -sS -o "$RESPONSE_FILE" -w "%{http_code}" -H "Content-Type: application/json" -d "$PAYLOAD" "$DISCORD_BETA_WEBHOOK_URL" || true)"
+          if [ "${HTTP_STATUS:-000}" -lt 200 ] || [ "${HTTP_STATUS:-000}" -ge 300 ]; then
+            echo "Failed to send Discord beta release notification. HTTP status: ${HTTP_STATUS:-000}"
+            echo "Response body:"
+            cat "$RESPONSE_FILE"
+            exit 1
+          fi
+          rm -f "$RESPONSE_FILE"
