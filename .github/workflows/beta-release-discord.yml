@@ -114,7 +114,7 @@ jobs:
                   title: "🚀 New Beta Release Available",
                   url: $releasesUrl,
                   color: 5793266,
-                  description: ("Hello, <@&" + $roleId + "> we made a new beta release, check it out on our [releases](" + $releasesUrl + ")."),
+                  description: ("Hello, <@&" + $roleId + ">, we made a new beta release, check it out on our [releases](" + $releasesUrl + ")."),
                   author: {
                     name: "NetherLink Beta Releases",
                     icon_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
