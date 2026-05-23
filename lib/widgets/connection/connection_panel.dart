@@ -603,13 +603,13 @@ widget.partnerServersFuture?.then((list) {
                 height: 84,
                 decoration: BoxDecoration(
                   color: isSelected
-                      ? cfg.color.withOpacity(0.10)
-                      : AppTheme.surface,
+                      ? Color.alphaBlend(cfg.color.withOpacity(0.32), AppTheme.surfaceRaised)
+                      : AppTheme.surface.withOpacity(0.50),
                   borderRadius: BorderRadius.circular(14),
                   border: Border.all(
                     color: isSelected
-                        ? cfg.color.withOpacity(0.45)
-                        : AppTheme.borderGray,
+                        ? cfg.color.withOpacity(0.55)
+                        : AppTheme.borderLight,
                     width: isSelected ? 1.5 : 1.0,
                   ),
                 ),
@@ -675,7 +675,8 @@ widget.partnerServersFuture?.then((list) {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            Container(color: color.withOpacity(0.07)),
+            Container(color: AppTheme.surfaceRaised),
+            Container(color: color.withOpacity(0.14)),
             CustomPaint(
               painter: AppNoisePainter(
                 color: color,
@@ -711,7 +712,7 @@ widget.partnerServersFuture?.then((list) {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: color.withOpacity(0.22)),
+                border: Border.all(color: color.withOpacity(0.40)),
               ),
             ),
             Padding(
