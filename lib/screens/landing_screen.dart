@@ -96,56 +96,62 @@ class LandingScreen extends StatelessWidget {
   Widget _buildGrid(BuildContext context) {
     return Column(
       children: [
-        Row(
-          children: [
-            Expanded(
-              child: _QuickCard(
-                title: 'Connector',
-                subtitle: 'Connect to servers via relay',
-                color: AppTheme.accent,
-                imagePath: 'assets/images/tunnel.png',
-                onTap: onGoToConnector,
+        IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: _QuickCard(
+                  title: 'Connector',
+                  subtitle: 'Connect to servers via relay',
+                  color: AppTheme.accent,
+                  imagePath: 'assets/images/tunnel.png',
+                  onTap: onGoToConnector,
+                ),
               ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: _QuickCard(
-                title: 'Skins',
-                subtitle: 'View & edit Java skins',
-                color: const Color(0xFF42A5F5),
-                imagePath: 'assets/images/skin.png',
-                onTap: onGoToSkins,
+              const SizedBox(width: 10),
+              Expanded(
+                child: _QuickCard(
+                  title: 'Skins',
+                  subtitle: 'View & edit Java skins',
+                  color: const Color(0xFF42A5F5),
+                  imagePath: 'assets/images/skin.png',
+                  onTap: onGoToSkins,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-        const SizedBox(height: 12),
-        Row(
-          children: [
-            Expanded(
-              child: _QuickCard(
-                title: 'Wiki',
-                subtitle: 'Mobs, blocks, recipes & more',
-                color: AppTheme.success,
-                imagePath: 'assets/images/wiki.png',
-                onTap: onGoToWiki,
+        const SizedBox(height: 10),
+        IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: _QuickCard(
+                  title: 'Wiki',
+                  subtitle: 'Mobs, blocks, recipes & more',
+                  color: AppTheme.success,
+                  imagePath: 'assets/images/wiki.png',
+                  onTap: onGoToWiki,
+                ),
               ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: _QuickCard(
-                title: 'Featured',
-                subtitle: 'Partner Minecraft servers',
-                color: const Color(0xFFFFB300),
-                imagePath: 'assets/images/feature.png',
-                onTap: onGoToPartners,
+              const SizedBox(width: 10),
+              Expanded(
+                child: _QuickCard(
+                  title: 'Featured',
+                  subtitle: 'Partner Minecraft servers',
+                  color: const Color(0xFFFFB300),
+                  imagePath: 'assets/images/feature.png',
+                  onTap: onGoToPartners,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 10),
         _QuickCard(
-          title: 'Players',
+          title: 'Minecraft User Lookup',
           subtitle: 'Look up Java & Bedrock profiles',
           color: const Color(0xFF7B61FF),
           imagePath: 'assets/images/players.png',
@@ -228,80 +234,72 @@ class _QuickCardState extends State<_QuickCard> {
       onTapUp: (_) => setState(() => _pressed = false),
       onTapCancel: () => setState(() => _pressed = false),
       onTap: widget.onTap,
-      child: AnimatedScale(
-          scale: _pressed ? 0.94 : 1.0,
-          duration: const Duration(milliseconds: 100),
-          curve: Curves.easeOut,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(18),
-            child: SizedBox(
-              height: 130,
-              child: Stack(
-                fit: StackFit.expand,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 120),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 22),
+        decoration: BoxDecoration(
+          color: _pressed
+              ? AppTheme.surfaceRaised.withOpacity(0.75)
+              : AppTheme.surface.withOpacity(0.60),
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(color: AppTheme.borderGray),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: 64,
+              height: 64,
+              decoration: BoxDecoration(
+                color: widget.color.withOpacity(0.12),
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: AppTheme.borderGray,
+                  width: 0.8,
+                ),
+              ),
+              child: ClipOval(
+                child: Image.asset(
+                  widget.imagePath,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Image.asset(widget.imagePath, fit: BoxFit.cover),
-                  AnimatedContainer(
-                    duration: const Duration(milliseconds: 100),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        stops: const [0.0, 0.4, 1.0],
-                        colors: [
-                          Colors.transparent,
-                          Colors.black.withOpacity(_pressed ? 0.35 : 0.25),
-                          Colors.black.withOpacity(_pressed ? 0.85 : 0.72),
-                        ],
-                      ),
+                  Text(
+                    widget.title,
+                    style: const TextStyle(
+                      color: AppTheme.textPrimary,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(14),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          widget.title,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w800,
-                            shadows: [
-                              Shadow(
-                                color: Colors.black.withOpacity(0.9),
-                                blurRadius: 12,
-                                offset: const Offset(0, 1),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 3),
-                        Text(
-                          widget.subtitle,
-                          style: TextStyle(
-                            color: Colors.white.withOpacity(0.75),
-                            fontSize: 10,
-                            height: 1.4,
-                            shadows: [
-                              Shadow(
-                                color: Colors.black.withOpacity(0.95),
-                                blurRadius: 10,
-                                offset: const Offset(0, 1),
-                              ),
-                            ],
-                          ),
-                          maxLines: 2,
-                        ),
-                      ],
+                  const SizedBox(height: 3),
+                  Text(
+                    widget.subtitle,
+                    style: const TextStyle(
+                      color: AppTheme.textMuted,
+                      fontSize: 11,
+                      height: 1.4,
                     ),
                   ),
                 ],
               ),
             ),
-          ),
+            const SizedBox(width: 4),
+            Icon(
+              Icons.arrow_forward_ios_rounded,
+              size: 11,
+              color: AppTheme.textMuted,
+            ),
+          ],
         ),
+      ),
     );
   }
 }
-

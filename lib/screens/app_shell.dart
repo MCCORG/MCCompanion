@@ -278,10 +278,6 @@ class _AppShellState extends State<AppShell>
           onSkinsTap: () => _goTo(_pageSkins),
           onWikiTap: () => _goTo(_pageWiki),
           onProfileTap: () => _goTo(_pageProfile),
-          isConnectorPage: _pageIndex == _pageConnector || _pageIndex == _pageManageServers || _pageIndex == _pageAddEditServer,
-          onSupportTap: () => navigationController.showHelpMenu(context),
-          onHowToTap: () => navigationController.showHowToMenu(context),
-          onConsoleTap: () => navigationController.showConsole(context),
         ),
         body: SafeArea(
           top: true,
@@ -445,6 +441,18 @@ class _AppShellState extends State<AppShell>
           onRelayChanged: (ip) {
             _closeSheetInstant();
             _onRelayChanged(ip);
+          },
+          onSupportTap: () {
+            _closeSheetInstant();
+            _openSheet(_ActiveSheet.help);
+          },
+          onHowToTap: () {
+            _closeSheetInstant();
+            _openSheet(_ActiveSheet.howTo);
+          },
+          onConsoleTap: () {
+            _closeSheetInstant();
+            navigationController.showConsole(context);
           },
         );
       case _ActiveSheet.none:

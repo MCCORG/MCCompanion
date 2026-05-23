@@ -17,11 +17,6 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
   final String? selectedRelayIp;
   final void Function(String?)? onRelayChanged;
 
-  final bool isConnectorPage;
-  final VoidCallback? onSupportTap;
-  final VoidCallback? onHowToTap;
-  final VoidCallback? onConsoleTap;
-
   const BottomGlassSimpleNavBar({
     super.key,
     required this.navigationController,
@@ -34,89 +29,68 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
     this.dark = true,
     this.selectedRelayIp,
     this.onRelayChanged,
-    this.isConnectorPage = false,
-    this.onSupportTap,
-    this.onHowToTap,
-    this.onConsoleTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        color: AppTheme.surface,
-        border: Border(top: BorderSide(color: AppTheme.borderGray, width: 0.5)),
-      ),
+      color: Colors.transparent,
       child: SafeArea(
         top: false,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4),
-          child: Row(
-            children: isConnectorPage
-                ? [
-                    _NavItem(
-                      icon: FontAwesomeIcons.house,
-                      label: 'Home',
-                      isActive: false,
-                      onTap: onHomeTap,
-                    ),
-                    _NavItem(
-                      icon: FontAwesomeIcons.headset,
-                      label: 'Support',
-                      isActive: false,
-                      onTap: onSupportTap,
-                    ),
-                    _NavItem(
-                      icon: FontAwesomeIcons.bookOpen,
-                      label: 'How to use',
-                      isActive: false,
-                      onTap: onHowToTap,
-                    ),
-                    _NavItem(
-                      icon: FontAwesomeIcons.terminal,
-                      label: 'Console',
-                      isActive: false,
-                      onTap: onConsoleTap,
-                    ),
-                    _NavItem(
-                      icon: FontAwesomeIcons.user,
-                      label: 'Profile',
-                      isActive: activeItem == 'profile',
-                      onTap: onProfileTap,
-                    ),
-                  ]
-                : [
-                    _NavItem(
-                      icon: FontAwesomeIcons.house,
-                      label: 'Home',
-                      isActive: activeItem == 'home',
-                      onTap: onHomeTap,
-                    ),
-                    _NavItem(
-                      icon: FontAwesomeIcons.plug,
-                      label: 'Connector',
-                      isActive: activeItem == 'connector',
-                      onTap: onConnectorTap,
-                    ),
-                    _NavItem(
-                      icon: FontAwesomeIcons.shirt,
-                      label: 'Skins',
-                      isActive: activeItem == 'skins',
-                      onTap: onSkinsTap,
-                    ),
-                    _NavItem(
-                      icon: FontAwesomeIcons.bookOpen,
-                      label: 'Wiki',
-                      isActive: activeItem == 'wiki',
-                      onTap: onWikiTap,
-                    ),
-                    _NavItem(
-                      icon: FontAwesomeIcons.user,
-                      label: 'Profile',
-                      isActive: activeItem == 'profile',
-                      onTap: onProfileTap,
-                    ),
-                  ],
+          padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+            decoration: BoxDecoration(
+              color: AppTheme.surface,
+              borderRadius: BorderRadius.circular(28),
+              border: Border.all(
+                color: AppTheme.borderGray,
+                width: 0.8,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.45),
+                  blurRadius: 28,
+                  spreadRadius: 0,
+                  offset: const Offset(0, 6),
+                ),
+              ],
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                _NavItem(
+                  icon: FontAwesomeIcons.house,
+                  label: 'Home',
+                  isActive: activeItem == 'home',
+                  onTap: onHomeTap,
+                ),
+                _NavItem(
+                  icon: FontAwesomeIcons.shirt,
+                  label: 'Skins',
+                  isActive: activeItem == 'skins',
+                  onTap: onSkinsTap,
+                ),
+                // Central FAB — always opens Connector
+                _NavFab(
+                  isActive: activeItem == 'connector',
+                  onTap: onConnectorTap,
+                ),
+                _NavItem(
+                  icon: FontAwesomeIcons.bookOpen,
+                  label: 'Wiki',
+                  isActive: activeItem == 'wiki',
+                  onTap: onWikiTap,
+                ),
+                _NavItem(
+                  icon: FontAwesomeIcons.user,
+                  label: 'Profile',
+                  isActive: activeItem == 'profile',
+                  onTap: onProfileTap,
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -124,11 +98,13 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
   }
 }
 
+// ── Regular nav item: icon + label, accent indicator line at top ─────────────
+
 class _NavItem extends StatelessWidget {
   final FaIconData icon;
   final String label;
-  final VoidCallback? onTap;
   final bool isActive;
+  final VoidCallback? onTap;
 
   const _NavItem({
     required this.icon,
@@ -139,49 +115,102 @@ class _NavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color activeColor = AppTheme.accent;
-    final Color inactiveColor = AppTheme.textSecondary;
-    final Color color = isActive ? activeColor : inactiveColor;
+    final color = isActive ? AppTheme.accent : AppTheme.textMuted;
 
     return Expanded(
-      child: InkWell(
+      child: GestureDetector(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(10),
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 180),
-          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-          decoration: BoxDecoration(
-            color: isActive
-                ? activeColor.withOpacity(0.10)
-                : Colors.transparent,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              FaIcon(icon, size: 18, color: color),
-              const SizedBox(height: 4),
-              Text(
+        behavior: HitTestBehavior.opaque,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Accent indicator bar — takes up space even when invisible so
+            // the layout height stays constant regardless of active state.
+            SizedBox(
+              height: 10,
+              child: Align(
+                alignment: Alignment.center,
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 220),
+                  curve: Curves.easeOutCubic,
+                  width: isActive ? 18 : 0,
+                  height: 2,
+                  decoration: BoxDecoration(
+                    color: AppTheme.accent,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+              ),
+            ),
+            FaIcon(icon, size: 18, color: color),
+            const SizedBox(height: 5),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Text(
                 label,
                 style: TextStyle(
                   color: color,
                   fontSize: 10,
-                  fontWeight: isActive ? FontWeight.w700 : FontWeight.w500,
+                  fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
+                  letterSpacing: -0.1,
                 ),
-                maxLines: 1,
                 overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                textAlign: TextAlign.center,
               ),
-              AnimatedContainer(
-                duration: const Duration(milliseconds: 180),
-                margin: const EdgeInsets.only(top: 3),
-                width: isActive ? 4 : 0,
-                height: isActive ? 4 : 0,
-                decoration: BoxDecoration(
-                  color: activeColor,
-                  shape: BoxShape.circle,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ── Central FAB — circular button for the Connector page ─────────────────────
+
+class _NavFab extends StatelessWidget {
+  final bool isActive;
+  final VoidCallback? onTap;
+
+  const _NavFab({required this.isActive, this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: onTap,
+        behavior: HitTestBehavior.opaque,
+        child: Align(
+          alignment: Alignment.center,
+          heightFactor: 1.0, // sizes to child height — prevents unbounded expansion
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 220),
+            curve: Curves.easeOutCubic,
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: isActive ? AppTheme.overlay : AppTheme.surfaceRaised,
+              border: Border.all(
+                color: isActive ? AppTheme.borderLight : AppTheme.borderGray,
+                width: isActive ? 1.5 : 1.0,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.30),
+                  blurRadius: 10,
+                  offset: const Offset(0, 3),
                 ),
+              ],
+            ),
+            child: Center(
+              child: FaIcon(
+                FontAwesomeIcons.chartDiagram,
+                size: 18,
+                color: AppTheme.textPrimary,
               ),
-            ],
+            ),
           ),
         ),
       ),
@@ -195,6 +224,9 @@ class MoreSheetContent extends StatelessWidget {
   final String? selectedRelayIp;
   final VoidCallback onClose;
   final void Function(String?) onRelayChanged;
+  final VoidCallback? onSupportTap;
+  final VoidCallback? onHowToTap;
+  final VoidCallback? onConsoleTap;
 
   const MoreSheetContent({
     super.key,
@@ -203,6 +235,9 @@ class MoreSheetContent extends StatelessWidget {
     required this.onClose,
     required this.onRelayChanged,
     this.selectedRelayIp,
+    this.onSupportTap,
+    this.onHowToTap,
+    this.onConsoleTap,
   });
 
   @override
@@ -275,6 +310,51 @@ class MoreSheetContent extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    if (onSupportTap != null ||
+                        onHowToTap != null ||
+                        onConsoleTap != null) ...[
+                      const Text(
+                        'TOOLS',
+                        style: TextStyle(
+                          color: AppTheme.textMuted,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 1.4,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      if (onSupportTap != null)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: _SheetTile(
+                            icon: FontAwesomeIcons.headset,
+                            color: const Color(0xFF60A5FA),
+                            label: 'Support',
+                            onTap: onSupportTap!,
+                          ),
+                        ),
+                      if (onHowToTap != null)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: _SheetTile(
+                            icon: FontAwesomeIcons.bookOpen,
+                            color: const Color(0xFFA78BFA),
+                            label: 'How to use',
+                            onTap: onHowToTap!,
+                          ),
+                        ),
+                      if (onConsoleTap != null)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: _SheetTile(
+                            icon: FontAwesomeIcons.terminal,
+                            color: const Color(0xFF34D399),
+                            label: 'Console',
+                            onTap: onConsoleTap!,
+                          ),
+                        ),
+                      const SizedBox(height: 8),
+                    ],
                     _RegionSelector(
                       selectedIp: selectedRelayIp,
                       onChanged: onRelayChanged,

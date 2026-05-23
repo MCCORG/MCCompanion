@@ -60,5 +60,13 @@ class BedrockProfile {
         gamerpicUrl: json['gamerpicUrl'] as String?,
       );
 
+  String get floodgateUuid {
+    final xuidInt = BigInt.tryParse(xuid);
+    if (xuidInt == null) return '';
+    final hex = xuidInt.toRadixString(16).padLeft(16, '0').padLeft(32, '0');
+    return '${hex.substring(0, 8)}-${hex.substring(8, 12)}-'
+        '${hex.substring(12, 16)}-${hex.substring(16, 20)}-${hex.substring(20)}';
+  }
+
   String get displayName => gamertag ?? xuid;
 }

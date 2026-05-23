@@ -410,6 +410,8 @@ class _BedrockCard extends StatelessWidget {
           _InfoRow(label: 'Gamertag', value: profile.displayName, canCopy: true),
           const SizedBox(height: 8),
           _InfoRow(label: 'XUID', value: profile.xuid, canCopy: true),
+          const SizedBox(height: 8),
+          _InfoRow(label: 'Floodgate', value: profile.floodgateUuid, canCopy: true),
           if (profile.tier != null) ...[
             const SizedBox(height: 8),
             _InfoRow(label: 'Tier', value: profile.tier!),

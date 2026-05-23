@@ -873,33 +873,36 @@ class _WikiScreenState extends State<WikiScreen> {
   }
 
   Widget _buildRoot() {
-    // Build pairs of sections into rows, last one full-width if count is odd
     final items = _sections;
     final rows = <Widget>[];
     for (int i = 0; i < items.length; i += 2) {
       final isLast = i + 1 >= items.length;
       rows.add(
-        Row(
-          children: [
-            Expanded(
-              child: _WikiCard(
-                section: items[i],
-                onTap: () => _openSection(items[i]),
-              ),
-            ),
-            if (!isLast) ...[
-              const SizedBox(width: 12),
+        IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
               Expanded(
                 child: _WikiCard(
-                  section: items[i + 1],
-                  onTap: () => _openSection(items[i + 1]),
+                  section: items[i],
+                  onTap: () => _openSection(items[i]),
                 ),
               ),
+              if (!isLast) ...[
+                const SizedBox(width: 10),
+                Expanded(
+                  child: _WikiCard(
+                    section: items[i + 1],
+                    onTap: () => _openSection(items[i + 1]),
+                  ),
+                ),
+              ] else
+                const Expanded(child: SizedBox()),
             ],
-          ],
+          ),
         ),
       );
-      if (i + 2 < items.length) rows.add(const SizedBox(height: 12));
+      if (i + 2 < items.length) rows.add(const SizedBox(height: 10));
     }
     return LayoutBuilder(
       builder: (context, constraints) => SingleChildScrollView(
@@ -918,12 +921,49 @@ class _WikiScreenState extends State<WikiScreen> {
   Widget _buildSubs() {
     final subs = _activeSection!.subs;
     final color = _activeSection!.color;
-    return ListView.separated(
-      padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
-      itemCount: subs.length,
-      separatorBuilder: (_, __) => const SizedBox(height: 10),
-      itemBuilder: (_, i) =>
-          _SubCard(sub: subs[i], color: color, onTap: () => _openSub(subs[i])),
+    final rows = <Widget>[];
+    for (int i = 0; i < subs.length; i += 2) {
+      final isLast = i + 1 >= subs.length;
+      rows.add(
+        IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: _SubCard(
+                  sub: subs[i],
+                  color: color,
+                  onTap: () => _openSub(subs[i]),
+                ),
+              ),
+              if (!isLast) ...[
+                const SizedBox(width: 10),
+                Expanded(
+                  child: _SubCard(
+                    sub: subs[i + 1],
+                    color: color,
+                    onTap: () => _openSub(subs[i + 1]),
+                  ),
+                ),
+              ] else
+                const Expanded(child: SizedBox()),
+            ],
+          ),
+        ),
+      );
+      if (i + 2 < subs.length) rows.add(const SizedBox(height: 10));
+    }
+    return LayoutBuilder(
+      builder: (context, constraints) => SingleChildScrollView(
+        padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: constraints.maxHeight - 28),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: rows,
+          ),
+        ),
+      ),
     );
   }
 
@@ -987,83 +1027,73 @@ class _WikiCardState extends State<_WikiCard> {
 
   @override
   Widget build(BuildContext context) {
+    final color = widget.section.color;
     return GestureDetector(
       onTapDown: (_) => setState(() => _pressed = true),
       onTapUp: (_) => setState(() => _pressed = false),
       onTapCancel: () => setState(() => _pressed = false),
       onTap: widget.onTap,
-      child: AnimatedScale(
-          scale: _pressed ? 0.94 : 1.0,
-          duration: const Duration(milliseconds: 100),
-          curve: Curves.easeOut,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(18),
-            child: SizedBox(
-              height: 130,
-              child: Stack(
-                fit: StackFit.expand,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 120),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 22),
+        decoration: BoxDecoration(
+          color: _pressed
+              ? AppTheme.surfaceRaised.withOpacity(0.75)
+              : AppTheme.surface.withOpacity(0.60),
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: AppTheme.borderGray),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: 52,
+              height: 52,
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.12),
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: Center(
+                child: Text(
+                  widget.section.emoji,
+                  style: const TextStyle(fontSize: 26),
+                ),
+              ),
+            ),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Image.asset(widget.section.imagePath, fit: BoxFit.cover),
-                  AnimatedContainer(
-                    duration: const Duration(milliseconds: 100),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        stops: const [0.0, 0.4, 1.0],
-                        colors: [
-                          Colors.transparent,
-                          Colors.black.withOpacity(_pressed ? 0.35 : 0.25),
-                          Colors.black.withOpacity(_pressed ? 0.85 : 0.72),
-                        ],
-                      ),
+                  Text(
+                    widget.section.label,
+                    style: const TextStyle(
+                      color: AppTheme.textPrimary,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(14),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          widget.section.label,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w800,
-                            shadows: [
-                              Shadow(
-                                color: Colors.black.withOpacity(0.9),
-                                blurRadius: 12,
-                                offset: const Offset(0, 1),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 3),
-                        Text(
-                          '${widget.section.subs.length} categories',
-                          style: TextStyle(
-                            color: Colors.white.withOpacity(0.75),
-                            fontSize: 10,
-                            height: 1.4,
-                            shadows: [
-                              Shadow(
-                                color: Colors.black.withOpacity(0.95),
-                                blurRadius: 10,
-                                offset: const Offset(0, 1),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                  const SizedBox(height: 3),
+                  Text(
+                    '${widget.section.subs.length} categories',
+                    style: const TextStyle(
+                      color: AppTheme.textMuted,
+                      fontSize: 11,
+                      height: 1.4,
                     ),
                   ),
                 ],
               ),
             ),
-          ),
+            Icon(
+              Icons.arrow_forward_ios_rounded,
+              size: 11,
+              color: color.withOpacity(0.60),
+            ),
+          ],
         ),
+      ),
     );
   }
 }
@@ -1076,49 +1106,46 @@ class _SubCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(14),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          decoration: BoxDecoration(
-            color: AppTheme.surface,
-            borderRadius: BorderRadius.circular(14),
-            border: Border.all(color: AppTheme.borderGray),
-          ),
-          child: Row(
-            children: [
-              Container(
-                width: 44,
-                height: 44,
-                decoration: BoxDecoration(
-                  color: color.withOpacity(0.12),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Center(
-                  child: Text(sub.emoji, style: const TextStyle(fontSize: 22)),
-                ),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 22),
+        decoration: BoxDecoration(
+          color: AppTheme.surface.withOpacity(0.60),
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: AppTheme.borderGray),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: 52,
+              height: 52,
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.12),
+                borderRadius: BorderRadius.circular(14),
               ),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Text(
-                  sub.label,
-                  style: const TextStyle(
-                    color: AppTheme.textPrimary,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 15,
-                  ),
+              child: Center(
+                child: Text(sub.emoji, style: const TextStyle(fontSize: 26)),
+              ),
+            ),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Text(
+                sub.label,
+                style: const TextStyle(
+                  color: AppTheme.textPrimary,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14,
                 ),
               ),
-              Icon(
-                Icons.arrow_forward_ios_rounded,
-                color: color.withOpacity(0.5),
-                size: 14,
-              ),
-            ],
-          ),
+            ),
+            Icon(
+              Icons.arrow_forward_ios_rounded,
+              size: 11,
+              color: color.withOpacity(0.60),
+            ),
+          ],
         ),
       ),
     );
