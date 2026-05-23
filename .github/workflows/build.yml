@@ -349,6 +349,7 @@ jobs:
                   fields: [
                     { name: "Commit", value: ("[" + ($sha | .[0:7]) + "](" + $commitUrl + ")" + (if $commitSubject != "" then " " + $commitSubject else "" end)), inline: false },
                     { name: "Platforms", value: "Android • Windows • macOS", inline: true },
+                    { name: "Download links", value: ("[Releases](" + $releasesUrl + ")"), inline: true },
                     { name: "Triggered by", value: $actor, inline: true },
                     { name: "Workflow", value: ("[View run](" + $runUrl + ")"), inline: true }
                   ],
