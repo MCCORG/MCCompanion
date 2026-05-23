@@ -171,17 +171,17 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/download-artifact@v6
+      - uses: actions/download-artifact@v8
         with:
           name: android-apk
           path: artifacts/
 
-      - uses: actions/download-artifact@v6
+      - uses: actions/download-artifact@v8
         with:
           name: windows-zip
           path: artifacts/
 
-      - uses: actions/download-artifact@v6
+      - uses: actions/download-artifact@v8
         with:
           name: macos-dmg
           path: artifacts/
