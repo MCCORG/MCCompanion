@@ -79,6 +79,7 @@ jobs:
         if: steps.beta.outputs.should_notify == 'true'
         env:
           DISCORD_BETA_WEBHOOK_URL: ${{ secrets.DISCORD_BETA_WEBHOOK_URL }}
+          DISCORD_BETA_ROLE_ID: ${{ vars.DISCORD_BETA_ROLE_ID || '1485783465365344316' }}
           RELEASES_URL: ${{ steps.beta.outputs.releases_url }}
           COMMIT_SUBJECT: ${{ steps.beta.outputs.commit_subject }}
           COMMIT_SHA: ${{ steps.beta.outputs.commit_sha }}
@@ -94,7 +95,7 @@ jobs:
           SHORT_SHA="$(printf '%s' "$COMMIT_SHA" | cut -c1-7)"
 
           PAYLOAD="$(jq -n \
-            --arg roleId "1485783465365344316" \
+            --arg roleId "$DISCORD_BETA_ROLE_ID" \
             --arg releasesUrl "$RELEASES_URL" \
             --arg commitSubject "$COMMIT_SUBJECT" \
             --arg commitUrl "$COMMIT_URL" \
