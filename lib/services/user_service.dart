@@ -413,4 +413,28 @@ class UserService {
       return false;
     }
   }
+
+  static Future<void> registerFcmToken(String token) async {
+    try {
+      await http
+          .post(
+            Uri.parse('$_base/api/users/me/fcm-token'),
+            headers: await _headers(),
+            body: jsonEncode({'token': token}),
+          )
+          .timeout(_timeout);
+    } catch (_) {}
+  }
+
+  static Future<void> unregisterFcmToken(String token) async {
+    try {
+      await http
+          .delete(
+            Uri.parse('$_base/api/users/me/fcm-token'),
+            headers: await _headers(),
+            body: jsonEncode({'token': token}),
+          )
+          .timeout(_timeout);
+    } catch (_) {}
+  }
 }

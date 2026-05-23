@@ -6,6 +6,7 @@ import '../services/locale_provider.dart';
 import '../services/region_detector.dart';
 import '../services/auth_service.dart';
 import '../services/message_service.dart';
+import '../services/push_notification_service.dart';
 import '../constants/app_constants.dart';
 import '../widgets/navigation/bottom_nav_bar.dart';
 import '../widgets/navigation/howto_menu.dart';
@@ -93,10 +94,15 @@ class _AppShellState extends State<AppShell>
     _authSub = AuthService.userStream.listen((user) {
       if (user != null) {
         MessageService.connect();
+        PushNotificationService.onUserSignedIn();
       } else {
         MessageService.disconnect();
       }
     });
+
+    PushNotificationService.init(
+      onNotificationTap: _handleNotificationTap,
+    );
   }
 
   RelayPingResult _fallbackRelay() {
@@ -141,6 +147,19 @@ class _AppShellState extends State<AppShell>
     _sheetAnimController.stop();
     _sheetAnimController.value = 0;
     setState(() => _activeSheet = _ActiveSheet.none);
+  }
+
+  void _handleNotificationTap(dynamic message) {
+    final type = message.notificationType as String? ?? 'unknown';
+    switch (type) {
+      case 'message':
+        _goTo(_pageProfile);
+      case 'friend_online':
+      case 'friend_session':
+        _goTo(_pageProfile);
+      default:
+        _goTo(_pageHome);
+    }
   }
 
   void _goTo(int page) {
