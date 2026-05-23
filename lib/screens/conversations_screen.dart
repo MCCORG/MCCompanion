@@ -1,8 +1,8 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../models/message_model.dart';
 import '../services/message_service.dart';
-import '../services/auth_service.dart';
 import 'chat_screen.dart';
 import '../models/user_model.dart';
 
@@ -16,12 +16,19 @@ class ConversationsScreen extends StatefulWidget {
 class _ConversationsScreenState extends State<ConversationsScreen> {
   List<ConversationModel> _conversations = [];
   bool _loading = true;
+  StreamSubscription<dynamic>? _incomingSub;
 
   @override
   void initState() {
     super.initState();
     _load();
-    MessageService.incoming.listen((_) => _load());
+    _incomingSub = MessageService.incoming.listen((_) => _load());
+  }
+
+  @override
+  void dispose() {
+    _incomingSub?.cancel();
+    super.dispose();
   }
 
   Future<void> _load() async {
@@ -41,16 +48,19 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
       avatarUrl: conv.avatarUrl,
       online: false,
     );
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => ChatScreen(friend: friend)),
-    );
+    Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => ChatScreen(friend: friend)));
   }
 
   @override
   Widget build(BuildContext context) {
     if (_loading) {
       return const Center(
-        child: CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2),
+        child: CircularProgressIndicator(
+          color: AppTheme.accent,
+          strokeWidth: 2,
+        ),
       );
     }
 
@@ -61,22 +71,25 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.chat_bubble_outline_rounded,
-                  color: AppTheme.textDisabled, size: 40),
+              Icon(
+                Icons.chat_bubble_outline_rounded,
+                color: AppTheme.textDisabled,
+                size: 40,
+              ),
               SizedBox(height: 12),
               Text(
                 'No conversations yet',
                 style: TextStyle(
-                    color: AppTheme.textSecondary,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600),
+                  color: AppTheme.textSecondary,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
               SizedBox(height: 4),
               Text(
                 'Start a chat from your friends list.',
                 textAlign: TextAlign.center,
-                style:
-                    TextStyle(color: AppTheme.textMuted, fontSize: 12),
+                style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
               ),
             ],
           ),
@@ -134,9 +147,7 @@ class _ConvTile extends StatelessWidget {
                     conv.displayLabel,
                     style: TextStyle(
                       color: AppTheme.textPrimary,
-                      fontWeight: hasUnread
-                          ? FontWeight.w700
-                          : FontWeight.w600,
+                      fontWeight: hasUnread ? FontWeight.w700 : FontWeight.w600,
                       fontSize: 14,
                     ),
                   ),
@@ -152,9 +163,7 @@ class _ConvTile extends StatelessWidget {
                           ? AppTheme.textSecondary
                           : AppTheme.textMuted,
                       fontSize: 12,
-                      fontWeight: hasUnread
-                          ? FontWeight.w500
-                          : FontWeight.w400,
+                      fontWeight: hasUnread ? FontWeight.w500 : FontWeight.w400,
                     ),
                   ),
                 ],
@@ -169,16 +178,16 @@ class _ConvTile extends StatelessWidget {
                   style: TextStyle(
                     color: hasUnread ? AppTheme.accent : AppTheme.textMuted,
                     fontSize: 11,
-                    fontWeight: hasUnread
-                        ? FontWeight.w600
-                        : FontWeight.w400,
+                    fontWeight: hasUnread ? FontWeight.w600 : FontWeight.w400,
                   ),
                 ),
                 if (hasUnread) ...[
                   const SizedBox(height: 4),
                   Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 6, vertical: 2),
+                      horizontal: 6,
+                      vertical: 2,
+                    ),
                     decoration: BoxDecoration(
                       color: AppTheme.accent,
                       borderRadius: BorderRadius.circular(10),
@@ -186,9 +195,10 @@ class _ConvTile extends StatelessWidget {
                     child: Text(
                       '${conv.unreadCount}',
                       style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 10,
-                          fontWeight: FontWeight.w700),
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
                 ],
@@ -201,7 +211,7 @@ class _ConvTile extends StatelessWidget {
   }
 
   String _timeLabel(DateTime dt) {
-    final now   = DateTime.now();
+    final now = DateTime.now();
     final local = dt.toLocal();
     if (local.year == now.year &&
         local.month == now.month &&
@@ -221,22 +231,22 @@ class _Avatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        width: size,
-        height: size,
-        decoration: BoxDecoration(
-          color: AppTheme.accent.withOpacity(0.15),
-          shape: BoxShape.circle,
-          border: Border.all(color: AppTheme.accent.withOpacity(0.30)),
+    width: size,
+    height: size,
+    decoration: BoxDecoration(
+      color: AppTheme.accent.withOpacity(0.15),
+      shape: BoxShape.circle,
+      border: Border.all(color: AppTheme.accent.withOpacity(0.30)),
+    ),
+    child: Center(
+      child: Text(
+        initials,
+        style: TextStyle(
+          color: AppTheme.accent,
+          fontSize: size * 0.33,
+          fontWeight: FontWeight.w700,
         ),
-        child: Center(
-          child: Text(
-            initials,
-            style: TextStyle(
-              color: AppTheme.accent,
-              fontSize: size * 0.33,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ),
-      );
+      ),
+    ),
+  );
 }

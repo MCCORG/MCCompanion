@@ -2,9 +2,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/player_lookup_model.dart';
 import 'auth_service.dart';
+import 'relay_service.dart';
 
 class PlayerLookupService {
-  static const String _base = 'https://eubackend.netherlink.net';
+  static String get _base => RelayService.base;
   static const Duration _timeout = Duration(seconds: 12);
 
   static Future<Map<String, String>> _headers() async {
@@ -15,13 +16,15 @@ class PlayerLookupService {
     };
   }
 
-  /// Look up a Java profile by username or UUID.
   static Future<({JavaProfile? profile, String? error})> lookupJava(
-      String identifier) async {
+    String identifier,
+  ) async {
     try {
       final res = await http
           .get(
-            Uri.parse('$_base/api/lookup/java/${Uri.encodeComponent(identifier)}'),
+            Uri.parse(
+              '$_base/api/lookup/java/${Uri.encodeComponent(identifier)}',
+            ),
             headers: await _headers(),
           )
           .timeout(_timeout);
@@ -33,20 +36,24 @@ class PlayerLookupService {
         return (profile: JavaProfile.fromJson(body), error: null);
       }
       final body = jsonDecode(res.body) as Map<String, dynamic>;
-      return (profile: null, error: body['message'] as String? ?? 'Lookup failed.');
+      return (
+        profile: null,
+        error: body['message'] as String? ?? 'Lookup failed.',
+      );
     } catch (e) {
       return (profile: null, error: 'Network error. Please try again.');
     }
   }
 
-  /// Combined Java + Bedrock lookup with Geyser cross-link.
   static Future<({CombinedProfile? result, String? error})> lookupCombined(
-      String identifier) async {
+    String identifier,
+  ) async {
     try {
       final res = await http
           .get(
             Uri.parse(
-                '$_base/api/lookup/bedrock-java/${Uri.encodeComponent(identifier)}'),
+              '$_base/api/lookup/bedrock-java/${Uri.encodeComponent(identifier)}',
+            ),
             headers: await _headers(),
           )
           .timeout(_timeout);
@@ -54,26 +61,34 @@ class PlayerLookupService {
         return (result: null, error: 'Player not found.');
       }
       if (res.statusCode == 503) {
-        return (result: null, error: 'Bedrock lookup is currently unavailable.');
+        return (
+          result: null,
+          error: 'Bedrock lookup is currently unavailable.',
+        );
       }
       if (res.statusCode == 200) {
         final body = jsonDecode(res.body) as Map<String, dynamic>;
         return (result: CombinedProfile.fromJson(body), error: null);
       }
       final body = jsonDecode(res.body) as Map<String, dynamic>;
-      return (result: null, error: body['message'] as String? ?? 'Lookup failed.');
+      return (
+        result: null,
+        error: body['message'] as String? ?? 'Lookup failed.',
+      );
     } catch (e) {
       return (result: null, error: 'Network error. Please try again.');
     }
   }
 
-  /// Look up a Bedrock profile by gamertag or XUID.
   static Future<({BedrockProfile? profile, String? error})> lookupBedrock(
-      String identifier) async {
+    String identifier,
+  ) async {
     try {
       final res = await http
           .get(
-            Uri.parse('$_base/api/lookup/bedrock/${Uri.encodeComponent(identifier)}'),
+            Uri.parse(
+              '$_base/api/lookup/bedrock/${Uri.encodeComponent(identifier)}',
+            ),
             headers: await _headers(),
           )
           .timeout(_timeout);
@@ -81,14 +96,20 @@ class PlayerLookupService {
         return (profile: null, error: 'Player not found.');
       }
       if (res.statusCode == 503) {
-        return (profile: null, error: 'Bedrock lookup is currently unavailable.');
+        return (
+          profile: null,
+          error: 'Bedrock lookup is currently unavailable.',
+        );
       }
       if (res.statusCode == 200) {
         final body = jsonDecode(res.body) as Map<String, dynamic>;
         return (profile: BedrockProfile.fromJson(body), error: null);
       }
       final body = jsonDecode(res.body) as Map<String, dynamic>;
-      return (profile: null, error: body['message'] as String? ?? 'Lookup failed.');
+      return (
+        profile: null,
+        error: body['message'] as String? ?? 'Lookup failed.',
+      );
     } catch (e) {
       return (profile: null, error: 'Network error. Please try again.');
     }

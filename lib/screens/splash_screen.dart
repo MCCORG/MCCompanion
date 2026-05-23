@@ -7,80 +7,11 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../theme/app_theme.dart';
 import '../services/region_detector.dart';
+import '../services/relay_service.dart';
 import '../services/connectivity_checker.dart';
-import '../widgets/components/app_painters.dart';
 import '../widgets/dialogs/connectivity_warning_dialog.dart';
 import '../l10n/app_localizations.dart';
 import 'app_shell.dart';
-
-class _TipData {
-  final IconData icon;
-  final Color color;
-  final String title;
-  final String body;
-  const _TipData({
-    required this.icon,
-    required this.color,
-    required this.title,
-    required this.body,
-  });
-}
-
-List<_TipData> _buildTips(AppLocalizations loc) => [
-      _TipData(
-        icon: Icons.wifi_rounded,
-        color: AppTheme.info,
-        title: loc.sameWifi,
-        body: loc.needSameWifi,
-      ),
-      _TipData(
-        icon: Icons.card_membership_rounded,
-        color: AppTheme.modeFriends,
-        title: loc.subscription,
-        body: loc.needSubscription,
-      ),
-    ];
-
-const _splashWaves = [
-  WaveConfig(
-    yFraction: 0.35,
-    amplitude: 22,
-    frequency: 2.2,
-    phase: 0.4,
-    color: AppTheme.accent,
-    opacity: 0.08,
-    strokeWidth: 1.5,
-  ),
-  WaveConfig(
-    yFraction: 0.55,
-    amplitude: 14,
-    frequency: 3.5,
-    phase: 1.6,
-    color: AppTheme.accent,
-    opacity: 0.05,
-    strokeWidth: 1.2,
-  ),
-  WaveConfig(
-    yFraction: 0.75,
-    amplitude: 10,
-    frequency: 4.8,
-    phase: 0.8,
-    color: Colors.white,
-    opacity: 0.03,
-    strokeWidth: 1.0,
-  ),
-  WaveConfig(
-    yFraction: 0.88,
-    amplitude: 6,
-    frequency: 6.0,
-    phase: 2.1,
-    color: AppTheme.accent,
-    opacity: 0.04,
-    strokeWidth: 0.8,
-  ),
-];
-
-bool get _isMobile => !kIsWeb && (Platform.isAndroid || Platform.isIOS);
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -90,19 +21,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen>
-    with TickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   late AnimationController _fadeController;
   late Animation<double> _fadeAnimation;
-
-  final List<AnimationController> _tipControllers = [];
-  final List<Animation<double>> _tipAnimations = [];
 
   RelayPingResult? _detectedRelay;
   String _appVersion = '';
   bool _pendingUpdate = false;
   ConnectivityCheckResult? _connectivityResult;
-
-  List<_TipData>? _tips;
 
   static const String _androidStoreUrl =
       'https://play.google.com/store/apps/details?id=net.netherdev.netherLink';
@@ -129,22 +55,9 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    if (_tips == null) {
-      final loc = AppLocalizations.of(context)!;
-      _tips = _buildTips(loc);
-
-      for (int i = 0; i < _tips!.length; i++) {
-        final ctrl = AnimationController(
-          duration: const Duration(milliseconds: 500),
-          vsync: this,
-        );
-        _tipControllers.add(ctrl);
-        _tipAnimations
-            .add(CurvedAnimation(parent: ctrl, curve: Curves.easeOut));
-      }
-    }
+  void dispose() {
+    _fadeController.dispose();
+    super.dispose();
   }
 
   Future<void> _startSequence() async {
@@ -153,11 +66,6 @@ class _SplashScreenState extends State<SplashScreen>
     final info = await PackageInfo.fromPlatform();
     if (mounted) setState(() => _appVersion = info.version);
 
-    for (int i = 0; i < (_tips?.length ?? 0); i++) {
-      await Future.delayed(Duration(milliseconds: i == 0 ? 600 : 1400));
-      if (mounted) _tipControllers[i].forward();
-    }
-
     await Future.wait([
       _detectRelayAndCheckUpdate().then((hasUpdate) {
         _pendingUpdate = hasUpdate;
@@ -165,14 +73,16 @@ class _SplashScreenState extends State<SplashScreen>
       ConnectivityChecker.check().then((result) {
         _connectivityResult = result;
       }),
-      Future.delayed(const Duration(milliseconds: 4200)),
+      Future.delayed(const Duration(milliseconds: 2000)),
     ]);
 
     if (!mounted) return;
 
     if (_connectivityResult != null) {
       await ConnectivityWarningDialog.showIfNeeded(
-          context, _connectivityResult!);
+        context,
+        _connectivityResult!,
+      );
       if (!mounted) return;
     }
 
@@ -188,8 +98,9 @@ class _SplashScreenState extends State<SplashScreen>
   Future<bool> _detectRelayAndCheckUpdate() async {
     try {
       _detectedRelay = await RegionDetector.detectBestRelay();
+      RelayService.setRelay(_detectedRelay!);
       String? remoteVersion = _detectedRelay?.version;
-      if (remoteVersion == null && _detectedRelay != null) {
+      if (remoteVersion == null) {
         remoteVersion = await _fetchVersionFallback(_detectedRelay!.base);
       }
       if (remoteVersion != null && _appVersion.isNotEmpty) {
@@ -270,8 +181,7 @@ class _SplashScreenState extends State<SplashScreen>
                 decoration: BoxDecoration(
                   color: AppTheme.accent.withOpacity(0.15),
                   borderRadius: BorderRadius.circular(16),
-                  border:
-                      Border.all(color: AppTheme.accent.withOpacity(0.35)),
+                  border: Border.all(color: AppTheme.accent.withOpacity(0.35)),
                 ),
                 child: const Center(
                   child: Icon(
@@ -335,8 +245,7 @@ class _SplashScreenState extends State<SplashScreen>
                       ),
                       child: Text(
                         loc.updateNow,
-                        style:
-                            const TextStyle(fontWeight: FontWeight.w700),
+                        style: const TextStyle(fontWeight: FontWeight.w700),
                       ),
                     ),
                   ),
@@ -362,152 +271,28 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 
-  @override
-  void dispose() {
-    _fadeController.dispose();
-    for (final c in _tipControllers) {
-      c.dispose();
-    }
-    super.dispose();
-  }
-
-  Widget _versionBadge({bool white = false}) {
+  Widget _versionBadge() {
     if (_appVersion.isEmpty) return const SizedBox.shrink();
-    return AnimatedOpacity(
-      opacity: _appVersion.isEmpty ? 0.0 : 1.0,
-      duration: const Duration(milliseconds: 400),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-        decoration: BoxDecoration(
-          color: white
-              ? Colors.white.withOpacity(0.10)
-              : AppTheme.surfaceRaised,
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(
-            color: white
-                ? Colors.white.withOpacity(0.15)
-                : AppTheme.borderGray,
-          ),
-        ),
-        child: Text(
-          'v$_appVersion',
-          style: TextStyle(
-            fontSize: 11,
-            color:
-                white ? Colors.white.withOpacity(0.5) : AppTheme.textMuted,
-            letterSpacing: 1.4,
-          ),
-        ),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.10),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.white.withOpacity(0.15)),
       ),
-    );
-  }
-
-  Widget _tipsSection({bool white = false}) {
-    final loc = AppLocalizations.of(context)!;
-    final tips = _tips ?? [];
-
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 0, 16, 28),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 12),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.info_outline_rounded,
-                  size: 13,
-                  color: white
-                      ? Colors.white.withOpacity(0.5)
-                      : AppTheme.textMuted,
-                ),
-                const SizedBox(width: 6),
-                Text(
-                  loc.beforeYouStart,
-                  style: TextStyle(
-                    color: white
-                        ? Colors.white.withOpacity(0.5)
-                        : AppTheme.textMuted.withOpacity(0.7),
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 1.6,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          ...List.generate(tips.length, (i) {
-            return AnimatedBuilder(
-              animation: _tipAnimations[i],
-              builder: (context, _) {
-                final t = _tipAnimations[i].value;
-                return Opacity(
-                  opacity: t,
-                  child: Transform.translate(
-                    offset: Offset(0, 16 * (1 - t)),
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        bottom: i < tips.length - 1 ? 10 : 0,
-                      ),
-                      child: _TipCard(tip: tips[i], darkMode: white),
-                    ),
-                  ),
-                );
-              },
-            );
-          }),
-        ],
+      child: Text(
+        'v$_appVersion',
+        style: TextStyle(
+          fontSize: 11,
+          color: Colors.white.withOpacity(0.50),
+          letterSpacing: 1.4,
+        ),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_isMobile) {
-      return Scaffold(
-        backgroundColor: AppTheme.background,
-        body: FadeTransition(
-          opacity: _fadeAnimation,
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              Image.asset('assets/images/splash.png', fit: BoxFit.cover),
-              Positioned.fill(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      stops: [0.0, 0.45, 1.0],
-                      colors: [
-                        Colors.transparent,
-                        Colors.transparent,
-                        Color(0xF0000000),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SafeArea(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-                      child: _versionBadge(white: true),
-                    ),
-                    const Spacer(),
-                    _tipsSection(white: true),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
-    }
-
     return Scaffold(
       backgroundColor: AppTheme.background,
       body: FadeTransition(
@@ -515,113 +300,33 @@ class _SplashScreenState extends State<SplashScreen>
         child: Stack(
           fit: StackFit.expand,
           children: [
-            const CustomPaint(
-              painter: AppNoisePainter(
-                color: AppTheme.accent,
-                opacity: 0.045,
-                seed: 77,
-                count: 400,
-              ),
-            ),
-            const CustomPaint(
-              painter: AppNoisePainter(
-                color: Colors.white,
-                opacity: 0.018,
-                seed: 177,
-                count: 200,
-              ),
-            ),
-            const CustomPaint(painter: AppWavePainter(waves: _splashWaves)),
+            const ColoredBox(color: Color(0xFF0B0E14)),
             SafeArea(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-                    child: _versionBadge(),
-                  ),
-                  Expanded(
-                    child: Center(
-                      child: SizedBox(
-                        height: 200,
-                        child: Image.asset(
-                          'assets/images/logo.png',
-                          fit: BoxFit.contain,
-                        ),
-                      ),
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: _versionBadge(),
                     ),
                   ),
-                  _tipsSection(),
+                  const Spacer(),
+                  const Text(
+                    'MCCompanion',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 36,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: 1.2,
+                    ),
+                  ),
+                  const Spacer(),
                 ],
               ),
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _TipCard extends StatelessWidget {
-  final _TipData tip;
-  final bool darkMode;
-  const _TipCard({required this.tip, this.darkMode = false});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
-      decoration: BoxDecoration(
-        color: darkMode
-            ? Colors.black.withOpacity(0.55)
-            : tip.color.withOpacity(0.07),
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(
-          color: darkMode
-              ? Colors.white.withOpacity(0.12)
-              : tip.color.withOpacity(0.25),
-        ),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: tip.color.withOpacity(0.18),
-              borderRadius: BorderRadius.circular(11),
-            ),
-            child: Icon(tip.icon, color: tip.color, size: 19),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  tip.title,
-                  style: TextStyle(
-                    color: darkMode ? Colors.white : tip.color,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  tip.body,
-                  style: TextStyle(
-                    color: darkMode
-                        ? Colors.white.withOpacity(0.65)
-                        : AppTheme.textSecondary,
-                    fontSize: 12,
-                    height: 1.55,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }

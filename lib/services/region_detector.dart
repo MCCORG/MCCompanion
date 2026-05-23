@@ -62,11 +62,12 @@ class RegionDetector {
   }
 
   static Future<RelayPingResult?> _versionPing(
-      Map<String, String> relay) async {
+    Map<String, String> relay,
+  ) async {
     try {
       final sw = Stopwatch()..start();
       final response = await http
-          .get(Uri.parse('${relay['api']}/version'))
+          .get(Uri.parse('${relay['base']}/api/version'))
           .timeout(const Duration(seconds: 5));
       sw.stop();
 

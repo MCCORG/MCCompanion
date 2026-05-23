@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../services/navigation_controller.dart';
 import '../services/locale_provider.dart';
 import '../services/region_detector.dart';
+import '../services/relay_service.dart';
 import '../services/auth_service.dart';
 import '../services/message_service.dart';
 import '../services/push_notification_service.dart';
@@ -76,6 +76,7 @@ class _AppShellState extends State<AppShell>
   void initState() {
     super.initState();
     _selectedRelay = widget.initialRelay ?? _fallbackRelay();
+    RelayService.setRelay(_selectedRelay);
     _partnerServersFuture = FeaturedServersService.fetchFeaturedServers();
 
     _sheetAnimController = AnimationController(
@@ -94,15 +95,13 @@ class _AppShellState extends State<AppShell>
     _authSub = AuthService.userStream.listen((user) {
       if (user != null) {
         MessageService.connect();
-        PushNotificationService.onUserSignedIn();
+        unawaited(PushNotificationService.onUserSignedIn());
       } else {
         MessageService.disconnect();
       }
     });
 
-    PushNotificationService.init(
-      onNotificationTap: _handleNotificationTap,
-    );
+    PushNotificationService.init(onNotificationTap: _handleNotificationTap);
   }
 
   RelayPingResult _fallbackRelay() {
@@ -195,14 +194,14 @@ class _AppShellState extends State<AppShell>
       (e) => e['ip'] == ip,
       orElse: () => AppConstants.relayServers[0],
     );
-    setState(() {
-      _selectedRelay = RelayPingResult(
-        ip: matched['ip']!,
-        base: matched['base']!,
-        name: matched['name']!,
-        latencyMs: 0,
-      );
-    });
+    final relay = RelayPingResult(
+      ip: matched['ip']!,
+      base: matched['base']!,
+      name: matched['name']!,
+      latencyMs: 0,
+    );
+    RelayService.setRelay(relay);
+    setState(() => _selectedRelay = relay);
   }
 
   static String _friendNameForRelay(String relayName) => switch (relayName) {
@@ -271,135 +270,155 @@ class _AppShellState extends State<AppShell>
       },
       child: Stack(
         children: [
+          const Positioned.fill(child: ColoredBox(color: Color(0xFF0B0E14))),
           Positioned.fill(
-            child: ImageFiltered(
-              imageFilter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
-              child: Image.asset(
-                'assets/images/bg.png',
-                fit: BoxFit.none,
-                alignment: Alignment.center,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  center: const Alignment(0.8, -1.1),
+                  radius: 0.9,
+                  colors: [
+                    const Color(0xFF6B8EF7).withOpacity(0.09),
+                    Colors.transparent,
+                  ],
+                ),
               ),
             ),
           ),
           Positioned.fill(
-            child: Container(color: const Color(0x730E1117)),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  center: const Alignment(-1.0, 1.2),
+                  radius: 0.7,
+                  colors: [
+                    const Color(0xFF4A6BD6).withOpacity(0.05),
+                    Colors.transparent,
+                  ],
+                ),
+              ),
+            ),
           ),
           Scaffold(
             backgroundColor: Colors.transparent,
             bottomNavigationBar: BottomGlassSimpleNavBar(
-          navigationController: navigationController,
-          dark: true,
-          selectedRelayIp: _selectedRelay.ip,
-          onRelayChanged: _onRelayChanged,
-          activeItem: _activeNavItem,
-          onHomeTap: () => _goTo(_pageHome),
-          onConnectorTap: () => _goTo(_pageConnector),
-          onSkinsTap: () => _goTo(_pageSkins),
-          onWikiTap: () => _goTo(_pageWiki),
-          onProfileTap: () => _goTo(_pageProfile),
-        ),
-        body: SafeArea(
-          top: true,
-          bottom: false,
-          child: Stack(
-            children: [
-              IndexedStack(
-                index: _pageIndex,
+              navigationController: navigationController,
+              dark: true,
+              selectedRelayIp: _selectedRelay.ip,
+              onRelayChanged: _onRelayChanged,
+              activeItem: _activeNavItem,
+              onHomeTap: () => _goTo(_pageHome),
+              onConnectorTap: () => _goTo(_pageConnector),
+              onSkinsTap: () => _goTo(_pageSkins),
+              onWikiTap: () => _goTo(_pageWiki),
+              onProfileTap: () => _goTo(_pageProfile),
+            ),
+            body: SafeArea(
+              top: true,
+              bottom: false,
+              child: Stack(
                 children: [
-                  LandingScreen(
-                    onGoToConnector: () => _goTo(_pageConnector),
-                    onGoToSkins: () => _goTo(_pageSkins),
-                    onGoToWiki: () => _goTo(_pageWiki),
-                    onGoToPartners: () => _goTo(_pagePartners),
-                    onGoToPlayerLookup: () => _goTo(_pagePlayerLookup),
-                    partnerServersFuture: _partnerServersFuture,
-                    ipController: _ipController,
-                    portController: _portController,
-                    onWebsiteTap: () => navigationController.openWebsite(context),
-                    onDiscordTap: () => navigationController.openDiscord(context),
-                    onLanguageTap: () => navigationController.showLanguageDialog(context),
+                  IndexedStack(
+                    index: _pageIndex,
+                    children: [
+                      LandingScreen(
+                        onGoToConnector: () => _goTo(_pageConnector),
+                        onGoToSkins: () => _goTo(_pageSkins),
+                        onGoToWiki: () => _goTo(_pageWiki),
+                        onGoToPartners: () => _goTo(_pagePartners),
+                        onGoToPlayerLookup: () => _goTo(_pagePlayerLookup),
+                        partnerServersFuture: _partnerServersFuture,
+                        ipController: _ipController,
+                        portController: _portController,
+                        onWebsiteTap: () =>
+                            navigationController.openWebsite(context),
+                        onDiscordTap: () =>
+                            navigationController.openDiscord(context),
+                        onLanguageTap: () =>
+                            navigationController.showLanguageDialog(context),
+                      ),
+                      HomeScreen(
+                        key: _connectorKey,
+                        selectedRelay: _selectedRelay,
+                        onRelayChanged: _onRelayChanged,
+                        navigationController: navigationController,
+                        partnerServersFuture: _partnerServersFuture,
+                        onOpenPartnerServers: () => _goTo(_pagePartners),
+                        onOpenManageServers: _openManageServers,
+                        onOpenMore: () => _openSheet(_ActiveSheet.more),
+                        onOpenSupport: () => _openSheet(_ActiveSheet.help),
+                        onOpenHowTo: () => _openSheet(_ActiveSheet.howTo),
+                        onOpenConsole: () =>
+                            navigationController.showConsole(context),
+                        ipController: _ipController,
+                        portController: _portController,
+                      ),
+                      PartnerServersScreen(
+                        partnerServersFuture: _partnerServersFuture,
+                        ipController: _ipController,
+                        portController: _portController,
+                        onBack: () => _goTo(_pageHome),
+                        onPlay: () => _goTo(_pageConnector),
+                      ),
+                      ManageServersScreen(
+                        key: _manageServersKey,
+                        onBack: () => _goTo(_pageConnector),
+                        onAddServer: _openAddServer,
+                        onEditServer: _openEditServer,
+                      ),
+                      AddEditServerScreen(
+                        editingIndex: _editingServerIndex,
+                        onSaved: () {
+                          _manageServersKey.currentState?.reload();
+                          setState(() => _pageIndex = _pageManageServers);
+                        },
+                        onCancel: () =>
+                            setState(() => _pageIndex = _pageManageServers),
+                      ),
+                      SkinsScreen(key: _skinsKey),
+                      const WikiScreen(),
+                      ProfileScreen(
+                        onGoToHome: () => _goTo(_pageHome),
+                        onGoToConnector: () => _goTo(_pageConnector),
+                        onGoToSkins: () => _goTo(_pageSkins),
+                        onGoToWiki: () => _goTo(_pageWiki),
+                      ),
+                      PlayerLookupScreen(onBack: () => _goTo(_pageHome)),
+                    ],
                   ),
-                  HomeScreen(
-                    key: _connectorKey,
-                    selectedRelay: _selectedRelay,
-                    onRelayChanged: _onRelayChanged,
-                    navigationController: navigationController,
-                    partnerServersFuture: _partnerServersFuture,
-                    onOpenPartnerServers: () => _goTo(_pagePartners),
-                    onOpenManageServers: _openManageServers,
-                    onOpenMore: () => _openSheet(_ActiveSheet.more),
-                    onOpenSupport: () => _openSheet(_ActiveSheet.help),
-                    onOpenHowTo: () => _openSheet(_ActiveSheet.howTo),
-                    onOpenConsole: () => navigationController.showConsole(context),
-                    ipController: _ipController,
-                    portController: _portController,
-                  ),
-                  PartnerServersScreen(
-                    partnerServersFuture: _partnerServersFuture,
-                    ipController: _ipController,
-                    portController: _portController,
-                    onBack: () => _goTo(_pageHome),
-                    onPlay: () => _goTo(_pageConnector),
-                  ),
-                  ManageServersScreen(
-                    key: _manageServersKey,
-                    onBack: () => _goTo(_pageConnector),
-                    onAddServer: _openAddServer,
-                    onEditServer: _openEditServer,
-                  ),
-                  AddEditServerScreen(
-                    editingIndex: _editingServerIndex,
-                    onSaved: () {
-                      _manageServersKey.currentState?.reload();
-                      setState(() => _pageIndex = _pageManageServers);
-                    },
-                    onCancel: () =>
-                        setState(() => _pageIndex = _pageManageServers),
-                  ),
-                  SkinsScreen(key: _skinsKey),
-                  const WikiScreen(),
-                  ProfileScreen(
-                    onGoToHome: () => _goTo(_pageHome),
-                    onGoToConnector: () => _goTo(_pageConnector),
-                    onGoToSkins: () => _goTo(_pageSkins),
-                    onGoToWiki: () => _goTo(_pageWiki),
-                  ),
-                  PlayerLookupScreen(
-                    onBack: () => _goTo(_pageHome),
-                  ),
+
+                  if (_activeSheet != _ActiveSheet.none) ...[
+                    AnimatedBuilder(
+                      animation: _sheetAnim,
+                      builder: (_, __) => GestureDetector(
+                        onTap: _closeSheet,
+                        child: Container(
+                          color: Colors.black.withOpacity(
+                            0.45 * _sheetAnim.value,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      child: AnimatedBuilder(
+                        animation: _sheetAnim,
+                        builder: (_, child) => FractionalTranslation(
+                          translation: Offset(0, 1 - _sheetAnim.value),
+                          child: child,
+                        ),
+                        child: _buildActiveSheetContent(loc),
+                      ),
+                    ),
+                  ],
                 ],
               ),
-
-              if (_activeSheet != _ActiveSheet.none) ...[
-                AnimatedBuilder(
-                  animation: _sheetAnim,
-                  builder: (_, __) => GestureDetector(
-                    onTap: _closeSheet,
-                    child: Container(
-                      color: Colors.black.withOpacity(0.45 * _sheetAnim.value),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  child: AnimatedBuilder(
-                    animation: _sheetAnim,
-                    builder: (_, child) => FractionalTranslation(
-                      translation: Offset(0, 1 - _sheetAnim.value),
-                      child: child,
-                    ),
-                    child: _buildActiveSheetContent(loc),
-                  ),
-                ),
-              ],
-            ],
+            ),
           ),
-        ),
+        ],
       ),
-          ],
-        ),
     );
   }
 

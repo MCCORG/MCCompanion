@@ -393,7 +393,7 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ),
       ),
-    );
+    ).whenComplete(() => _infoCtrl.dispose());
   }
 }
 

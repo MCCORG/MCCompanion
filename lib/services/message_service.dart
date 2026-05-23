@@ -4,10 +4,11 @@ import 'package:http/http.dart' as http;
 import 'package:web_socket_channel/web_socket_channel.dart';
 import '../models/message_model.dart';
 import 'auth_service.dart';
+import 'relay_service.dart';
 
 class MessageService {
-  static const _base   = 'https://eubackend.netherlink.net';
-  static const _wsBase = 'wss://eubackend.netherlink.net';
+  static String get _base => RelayService.base;
+  static String get _wsBase => RelayService.wsBase;
 
   static WebSocketChannel? _channel;
   static StreamSubscription<dynamic>? _sub;
@@ -47,9 +48,9 @@ class MessageService {
           try {
             final json = jsonDecode(raw as String) as Map<String, dynamic>;
             if (json['type'] == 'message') {
-              _incoming.add(MessageModel.fromJson(
-                json['data'] as Map<String, dynamic>,
-              ));
+              _incoming.add(
+                MessageModel.fromJson(json['data'] as Map<String, dynamic>),
+              );
             } else if (json['type'] == 'presence') {
               _presenceController.add((
                 uid: json['uid'] as String,
@@ -104,11 +105,9 @@ class MessageService {
     String? before,
   }) async {
     try {
-      final uri = Uri.parse('$_base/api/messages/$username').replace(
-        queryParameters: {
-          if (before != null) 'before': before,
-        },
-      );
+      final uri = Uri.parse(
+        '$_base/api/messages/$username',
+      ).replace(queryParameters: {if (before != null) 'before': before});
       final resp = await http.get(uri, headers: await _headers());
       if (resp.statusCode != 200) return [];
       final data = jsonDecode(resp.body) as Map<String, dynamic>;

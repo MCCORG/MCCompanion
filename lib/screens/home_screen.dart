@@ -22,6 +22,8 @@ import '../network/broadcast_mode.dart';
 import '../services/navigation_controller.dart';
 import '../services/user_service.dart';
 import '../services/auth_service.dart';
+import '../models/user_model.dart';
+import '../util/bedrock_account_prefs.dart';
 import '../widgets/dialogs/howto_dialogs.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -63,7 +65,6 @@ class HomeScreenState extends State<HomeScreen> {
   late final BroadcastManager _broadcastManager;
   late final Logger logger;
 
-  final ValueNotifier<bool> _debugEnabledNotifier = ValueNotifier(false);
   final ValueNotifier<bool> _broadcastingNotifier = ValueNotifier(false);
   final ValueNotifier<List<UserServer>> _userServersNotifier = ValueNotifier(
     [],
@@ -79,7 +80,8 @@ class HomeScreenState extends State<HomeScreen> {
   bool _nintendoDnsMode = false;
   Map<String, String>? _currentNotice;
   Timer? _noticeTimer;
-  String? _cachedGamertag;
+  List<BedrockAccount>? _cachedBedrockAccounts;
+  String? _selectedBedrockXuid;
 
   static String _friendNameForRelay(String relayName) => switch (relayName) {
     'EU Server' => 'NetherLinkEU',
@@ -93,6 +95,7 @@ class HomeScreenState extends State<HomeScreen> {
     _initializeComponents();
     loadUserServers();
     _fetchNotification();
+    _loadBedrockAccounts();
   }
 
   @override
@@ -119,7 +122,6 @@ class HomeScreenState extends State<HomeScreen> {
     _noticeTimer?.cancel();
     _mainScrollController.dispose();
     _broadcastingNotifier.dispose();
-    _debugEnabledNotifier.dispose();
     _userServersNotifier.dispose();
     unawaited(_broadcastManager.stopBroadcast());
     super.dispose();
@@ -204,15 +206,39 @@ class HomeScreenState extends State<HomeScreen> {
     await _handleBroadcastMode(mode, remoteHost, remotePortParsed, loc);
   }
 
-  Future<String?> _getBedrockGamertag() async {
-    if (_cachedGamertag != null) return _cachedGamertag;
+  Future<void> _loadBedrockAccounts() async {
     try {
       final me = await UserService.getMe();
-      _cachedGamertag = me?.xboxGamertag;
-      return _cachedGamertag;
-    } catch (_) {
-      return null;
+      if (!mounted || me == null) return;
+      final savedXuid = await BedrockAccountPrefs.getSelectedXuid();
+      final accounts = me.bedrockAccounts;
+      final validXuid = accounts.any((a) => a.xboxXuid == savedXuid)
+          ? savedXuid
+          : accounts.isNotEmpty
+          ? accounts.first.xboxXuid
+          : null;
+      setState(() {
+        _cachedBedrockAccounts = accounts;
+        _selectedBedrockXuid = validXuid;
+      });
+    } catch (_) {}
+  }
+
+  String? _getBedrockGamertag() {
+    final accounts = _cachedBedrockAccounts;
+    if (accounts == null || accounts.isEmpty) return null;
+    if (_selectedBedrockXuid != null) {
+      final match = accounts
+          .where((a) => a.xboxXuid == _selectedBedrockXuid)
+          .firstOrNull;
+      if (match != null) return match.xboxGamertag;
     }
+    return accounts.first.xboxGamertag;
+  }
+
+  void _onBedrockAccountChanged(String xuid) {
+    setState(() => _selectedBedrockXuid = xuid);
+    unawaited(BedrockAccountPrefs.setSelectedXuid(xuid));
   }
 
   Future<void> _handleDnsMode(
@@ -221,7 +247,7 @@ class HomeScreenState extends State<HomeScreen> {
     int port,
     AppLocalizations loc,
   ) async {
-    final gamertag = await _getBedrockGamertag();
+    final gamertag = _getBedrockGamertag();
     final ok = await _broadcastManager.sendRelayConfigOnly(
       host,
       port,
@@ -257,7 +283,7 @@ class HomeScreenState extends State<HomeScreen> {
     } catch (e) {
       logger.error('Failed to enable wakelock: $e');
     }
-    final gamertag = await _getBedrockGamertag();
+    final gamertag = _getBedrockGamertag();
     final authToken = await AuthService.getIdToken();
     final success = await _broadcastManager.startBroadcast(
       host,
@@ -330,16 +356,22 @@ class HomeScreenState extends State<HomeScreen> {
                   HeaderNavBar(
                     items: [
                       if (widget.onOpenSupport != null)
-                        HeaderNavItem(label: 'Support', onTap: widget.onOpenSupport),
-                      if (widget.onOpenHowTo != null)
-                        HeaderNavItem(label: 'How to use', onTap: widget.onOpenHowTo),
-                      if (widget.onOpenConsole != null)
-                        HeaderNavItem(label: 'Console', onTap: widget.onOpenConsole),
-                      if (widget.onOpenMore != null)
                         HeaderNavItem(
-                          label: 'Relay',
-                          onTap: widget.onOpenMore,
+                          label: 'Support',
+                          onTap: widget.onOpenSupport,
                         ),
+                      if (widget.onOpenHowTo != null)
+                        HeaderNavItem(
+                          label: 'How to use',
+                          onTap: widget.onOpenHowTo,
+                        ),
+                      if (widget.onOpenConsole != null)
+                        HeaderNavItem(
+                          label: 'Console',
+                          onTap: widget.onOpenConsole,
+                        ),
+                      if (widget.onOpenMore != null)
+                        HeaderNavItem(label: 'Relay', onTap: widget.onOpenMore),
                     ],
                   ),
                 ],
@@ -370,6 +402,9 @@ class HomeScreenState extends State<HomeScreen> {
                       navigationController: widget.navigationController,
                       partnerServersFuture: widget.partnerServersFuture,
                       onOpenPartnerServers: widget.onOpenPartnerServers,
+                      bedrockAccounts: _cachedBedrockAccounts ?? [],
+                      selectedBedrockXuid: _selectedBedrockXuid,
+                      onBedrockAccountChanged: _onBedrockAccountChanged,
                     ),
                   ),
                 ),

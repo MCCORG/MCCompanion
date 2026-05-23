@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 
 import 'broadcast_mode.dart';
 
@@ -59,7 +60,7 @@ class RelayConfigSender {
           body: respBody,
         );
       } else {
-        print(
+        debugPrint(
           'Router rejected route (status ${response.statusCode}): $respBody',
         );
         return RelayConfigResult(
@@ -69,10 +70,10 @@ class RelayConfigSender {
         );
       }
     } on TimeoutException catch (te) {
-      print('Timeout sending config to router: $te');
+      debugPrint('Timeout sending config to router: $te');
       return RelayConfigResult(success: false, statusCode: -1, body: 'timeout');
     } catch (e, st) {
-      print('❌ Error sending config to router: $e\n$st');
+      debugPrint('Error sending config to router: $e\n$st');
       return RelayConfigResult(
         success: false,
         statusCode: -1,

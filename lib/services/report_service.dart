@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'auth_service.dart';
+import 'relay_service.dart';
 
 class ReportService {
-  static const String _base = 'https://eubackend.netherlink.net';
+  static String get _base => RelayService.base;
   static const Duration _timeout = Duration(seconds: 8);
 
   static Future<Map<String, String>> _headers() async {

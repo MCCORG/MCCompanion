@@ -34,115 +34,106 @@ class LandingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return SingleChildScrollView(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(minHeight: constraints.maxHeight),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
-                      child: Row(
-                        children: [
-                          const Text(
-                            'Home',
-                            style: TextStyle(
-                              color: Color(0xFFFFFFFF),
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          const Spacer(),
-                          HeaderNavBar(
-                            items: [
-                              HeaderNavItem(label: 'Website', onTap: onWebsiteTap),
-                              HeaderNavItem(label: 'Discord', onTap: onDiscordTap),
-                              HeaderNavItem(label: 'Language', onTap: onLanguageTap),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    _buildFeaturedServers(context),
-                  ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
+          child: Row(
+            children: [
+              const Text(
+                'Home',
+                style: TextStyle(
+                  color: Color(0xFFFFFFFF),
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: _buildGrid(context),
-                ),
-                const SizedBox(),
-              ],
+              ),
+              const Spacer(),
+              HeaderNavBar(
+                items: [
+                  HeaderNavItem(label: 'Website', onTap: onWebsiteTap),
+                  HeaderNavItem(label: 'Discord', onTap: onDiscordTap),
+                  HeaderNavItem(label: 'Language', onTap: onLanguageTap),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 14),
+          child: FeaturedServerHero(
+            partnerServersFuture: partnerServersFuture,
+            ipController: ipController,
+            portController: portController,
+            onSelected: onGoToConnector,
+          ),
+        ),
+        Expanded(
+          child: Center(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
+              child: _buildGrid(),
             ),
           ),
-        );
-      },
+        ),
+      ],
     );
   }
 
-  Widget _buildGrid(BuildContext context) {
+  Widget _buildGrid() {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        IntrinsicHeight(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
-                child: _QuickCard(
-                  title: 'Connector',
-                  subtitle: 'Connect to servers via relay',
-                  color: AppTheme.accent,
-                  imagePath: 'assets/images/tunnel.png',
-                  onTap: onGoToConnector,
-                ),
+        Row(
+          children: [
+            Expanded(
+              child: _QuickCard(
+                title: 'Console Connect',
+                subtitle: 'Connect to servers via relay',
+                color: AppTheme.accent,
+                imagePath: 'assets/images/tunnel.png',
+                onTap: onGoToConnector,
               ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: _QuickCard(
-                  title: 'Skins',
-                  subtitle: 'View & edit Java skins',
-                  color: const Color(0xFF42A5F5),
-                  imagePath: 'assets/images/skin.png',
-                  onTap: onGoToSkins,
-                ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: _QuickCard(
+                title: 'Minecraft Skins',
+                subtitle: 'View & edit Java & Bedrock skins',
+                color: const Color(0xFF42A5F5),
+                imagePath: 'assets/images/skin.png',
+                onTap: onGoToSkins,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         const SizedBox(height: 10),
-        IntrinsicHeight(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
-                child: _QuickCard(
-                  title: 'Wiki',
-                  subtitle: 'Mobs, blocks, recipes & more',
-                  color: AppTheme.success,
-                  imagePath: 'assets/images/wiki.png',
-                  onTap: onGoToWiki,
-                ),
+        Row(
+          children: [
+            Expanded(
+              child: _QuickCard(
+                title: 'Minecraft Wiki',
+                subtitle: 'Mobs, blocks, recipes & more',
+                color: AppTheme.success,
+                imagePath: 'assets/images/wiki.png',
+                onTap: onGoToWiki,
               ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: _QuickCard(
-                  title: 'Featured',
-                  subtitle: 'Partner Minecraft servers',
-                  color: const Color(0xFFFFB300),
-                  imagePath: 'assets/images/feature.png',
-                  onTap: onGoToPartners,
-                ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: _QuickCard(
+                title: 'Partner Servers',
+                subtitle: 'Featured Minecraft servers',
+                color: const Color(0xFFFFB300),
+                imagePath: 'assets/images/feature.png',
+                onTap: onGoToPartners,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         const SizedBox(height: 10),
-        _QuickCard(
+        _QuickCardWide(
           title: 'Minecraft User Lookup',
           subtitle: 'Look up Java & Bedrock profiles',
           color: const Color(0xFF7B61FF),
@@ -152,20 +143,7 @@ class LandingScreen extends StatelessWidget {
       ],
     );
   }
-
-  Widget _buildFeaturedServers(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 14),
-      child: FeaturedServerHero(
-        partnerServersFuture: partnerServersFuture,
-        ipController: ipController,
-        portController: portController,
-        onSelected: onGoToConnector,
-      ),
-    );
-  }
 }
-
 
 class _QuickCard extends StatefulWidget {
   final String title;
@@ -196,70 +174,137 @@ class _QuickCardState extends State<_QuickCard> {
       onTapUp: (_) => setState(() => _pressed = false),
       onTapCancel: () => setState(() => _pressed = false),
       onTap: widget.onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 120),
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 22),
-        decoration: BoxDecoration(
-          color: _pressed
-              ? AppTheme.surfaceRaised.withOpacity(0.75)
-              : AppTheme.surface.withOpacity(0.60),
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: AppTheme.borderGray),
+      child: AnimatedOpacity(
+        opacity: _pressed ? 0.65 : 1.0,
+        duration: const Duration(milliseconds: 100),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
+          decoration: BoxDecoration(
+            color: AppTheme.surfaceRaised,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(
+                widget.imagePath,
+                width: 64,
+                height: 64,
+                fit: BoxFit.contain,
+              ),
+              const SizedBox(height: 12),
+              Text(
+                widget.title,
+                style: const TextStyle(
+                  color: AppTheme.textPrimary,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                ),
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+              if (widget.subtitle.isNotEmpty) ...[
+                const SizedBox(height: 4),
+                Text(
+                  widget.subtitle,
+                  style: const TextStyle(
+                    color: AppTheme.textMuted,
+                    fontSize: 11,
+                    height: 1.3,
+                  ),
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ],
+          ),
         ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              width: 64,
-              height: 64,
-              decoration: BoxDecoration(
-                color: widget.color.withOpacity(0.12),
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: AppTheme.borderGray,
-                  width: 0.8,
+      ),
+    );
+  }
+}
+
+class _QuickCardWide extends StatefulWidget {
+  final String title;
+  final String subtitle;
+  final Color color;
+  final String imagePath;
+  final VoidCallback onTap;
+
+  const _QuickCardWide({
+    required this.title,
+    required this.subtitle,
+    required this.color,
+    required this.imagePath,
+    required this.onTap,
+  });
+
+  @override
+  State<_QuickCardWide> createState() => _QuickCardWideState();
+}
+
+class _QuickCardWideState extends State<_QuickCardWide> {
+  bool _pressed = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTapDown: (_) => setState(() => _pressed = true),
+      onTapUp: (_) => setState(() => _pressed = false),
+      onTapCancel: () => setState(() => _pressed = false),
+      onTap: widget.onTap,
+      child: AnimatedOpacity(
+        opacity: _pressed ? 0.65 : 1.0,
+        duration: const Duration(milliseconds: 100),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 26),
+          decoration: BoxDecoration(
+            color: AppTheme.surfaceRaised,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset(
+                widget.imagePath,
+                width: 64,
+                height: 64,
+                fit: BoxFit.contain,
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      widget.title,
+                      style: const TextStyle(
+                        color: AppTheme.textPrimary,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      widget.subtitle,
+                      style: const TextStyle(
+                        color: AppTheme.textMuted,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              child: ClipOval(
-                child: Image.asset(
-                  widget.imagePath,
-                  fit: BoxFit.cover,
-                ),
+              const Icon(
+                Icons.chevron_right_rounded,
+                color: AppTheme.textMuted,
+                size: 20,
               ),
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    widget.title,
-                    style: const TextStyle(
-                      color: AppTheme.textPrimary,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  const SizedBox(height: 3),
-                  Text(
-                    widget.subtitle,
-                    style: const TextStyle(
-                      color: AppTheme.textMuted,
-                      fontSize: 11,
-                      height: 1.4,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(width: 4),
-            Icon(
-              Icons.arrow_forward_ios_rounded,
-              size: 11,
-              color: AppTheme.textMuted,
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
