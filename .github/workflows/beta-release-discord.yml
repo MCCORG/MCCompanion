@@ -11,6 +11,8 @@ jobs:
   notify-beta-release:
     name: Notify Discord beta release
     runs-on: ubuntu-latest
+    env:
+      DISCORD_BETA_ROLE_ID: '1485783465365344316'
     permissions:
       actions: read
       contents: read
@@ -79,7 +81,6 @@ jobs:
         if: steps.beta.outputs.should_notify == 'true'
         env:
           DISCORD_BETA_WEBHOOK_URL: ${{ secrets.DISCORD_BETA_WEBHOOK_URL }}
-          DISCORD_BETA_ROLE_ID: ${{ vars.DISCORD_BETA_ROLE_ID || '1485783465365344316' }}
           RELEASES_URL: ${{ steps.beta.outputs.releases_url }}
           COMMIT_SUBJECT: ${{ steps.beta.outputs.commit_subject }}
           COMMIT_SHA: ${{ steps.beta.outputs.commit_sha }}
@@ -114,7 +115,7 @@ jobs:
                   title: "🚀 New Beta Release Available",
                   url: $releasesUrl,
                   color: 5793266,
-                  description: ("Hello, <@&" + $roleId + ">, we made a new beta release, check it out on our [releases](" + $releasesUrl + ")."),
+                  description: ("Hello, <@&" + $roleId + ">, we've made a new beta release, check it out on our [releases](" + $releasesUrl + ")."),
                   author: {
                     name: "NetherLink Beta Releases",
                     icon_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
