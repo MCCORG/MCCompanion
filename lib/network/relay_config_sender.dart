@@ -23,6 +23,7 @@ class RelayConfigSender {
     required BroadcastMode mode,
     required String base,
     String? bedrockGamertag,
+    String? authToken,
   }) async {
     final uri = Uri.parse('${base.replaceAll(RegExp(r'/$'), '')}/api/route');
 
@@ -43,6 +44,9 @@ class RelayConfigSender {
         HttpHeaders.contentTypeHeader,
         'application/json; charset=utf-8',
       );
+      if (authToken != null) {
+        req.headers.set(HttpHeaders.authorizationHeader, 'Bearer $authToken');
+      }
       req.add(utf8.encode(body));
 
       final response = await req.close().timeout(const Duration(seconds: 5));

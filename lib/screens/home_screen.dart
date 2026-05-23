@@ -21,6 +21,7 @@ import '../services/region_detector.dart';
 import '../network/broadcast_mode.dart';
 import '../services/navigation_controller.dart';
 import '../services/user_service.dart';
+import '../services/auth_service.dart';
 import '../widgets/dialogs/howto_dialogs.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -78,6 +79,7 @@ class HomeScreenState extends State<HomeScreen> {
   bool _nintendoDnsMode = false;
   Map<String, String>? _currentNotice;
   Timer? _noticeTimer;
+  String? _cachedGamertag;
 
   static String _friendNameForRelay(String relayName) => switch (relayName) {
     'EU Server' => 'NetherLinkEU',
@@ -203,9 +205,11 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   Future<String?> _getBedrockGamertag() async {
+    if (_cachedGamertag != null) return _cachedGamertag;
     try {
       final me = await UserService.getMe();
-      return me?.xboxGamertag;
+      _cachedGamertag = me?.xboxGamertag;
+      return _cachedGamertag;
     } catch (_) {
       return null;
     }
@@ -254,6 +258,7 @@ class HomeScreenState extends State<HomeScreen> {
       logger.error('Failed to enable wakelock: $e');
     }
     final gamertag = await _getBedrockGamertag();
+    final authToken = await AuthService.getIdToken();
     final success = await _broadcastManager.startBroadcast(
       host,
       port,
@@ -262,6 +267,7 @@ class HomeScreenState extends State<HomeScreen> {
       isJava: mode == PanelMode.java,
       mode: BroadcastMode.values[mode.index],
       bedrockGamertag: gamertag,
+      authToken: authToken,
     );
     _broadcastingNotifier.value = success;
   }
