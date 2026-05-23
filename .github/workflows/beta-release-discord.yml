@@ -12,7 +12,7 @@ jobs:
     name: Notify Discord beta release
     runs-on: ubuntu-latest
     env:
-      DISCORD_BETA_ROLE_ID: '1485783465365344316'
+      DISCORD_BETA_ROLE_ID: ${{ vars.DISCORD_BETA_ROLE_ID }}
     permissions:
       actions: read
       contents: read
@@ -92,6 +92,10 @@ jobs:
             echo "DISCORD_BETA_WEBHOOK_URL is not configured. Skipping Discord notification."
             exit 0
           fi
+          if [ -z "$DISCORD_BETA_ROLE_ID" ]; then
+            echo "DISCORD_BETA_ROLE_ID repository variable is not configured."
+            exit 1
+          fi
 
           SHORT_SHA="$(printf '%s' "$COMMIT_SHA" | cut -c1-7)"
 
@@ -151,7 +155,12 @@ jobs:
             }')"
 
           RESPONSE_FILE="$(mktemp)"
-          HTTP_STATUS="$(curl -sS -o "$RESPONSE_FILE" -w "%{http_code}" -H "Content-Type: application/json" -d "$PAYLOAD" "$DISCORD_BETA_WEBHOOK_URL" || true)"
+          HTTP_STATUS="$(curl -sS -o "$RESPONSE_FILE" -w "%{http_code}" -H "Content-Type: application/json" -d "$PAYLOAD" "$DISCORD_BETA_WEBHOOK_URL")"
+          CURL_EXIT_CODE=$?
+          if [ "$CURL_EXIT_CODE" -ne 0 ]; then
+            echo "Failed to send Discord beta release notification with curl exit code: $CURL_EXIT_CODE"
+            exit "$CURL_EXIT_CODE"
+          fi
           if [ "${HTTP_STATUS:-000}" -lt 200 ] || [ "${HTTP_STATUS:-000}" -ge 300 ]; then
             echo "Failed to send Discord beta release notification. HTTP status: ${HTTP_STATUS:-000}"
             echo "Response body:"
