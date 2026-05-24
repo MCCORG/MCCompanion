@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: build-release-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-android:
     name: Build Android APK
@@ -16,14 +20,21 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
+          cache: gradle
 
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.41.9'
           channel: stable
+          cache: true
 
-      - name: Install dependencies
-        run: flutter pub get
+      - name: Cache pub dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
 
       - name: Prepare signing keystore
         env:
@@ -84,14 +95,12 @@ jobs:
         with:
           flutter-version: '3.41.9'
           channel: stable
+          cache: false
 
       - name: Setup CMake 3.x
         uses: jwlawson/actions-setup-cmake@v2
         with:
           cmake-version: '3.31.6'
-
-      - name: Install dependencies
-        run: flutter pub get
 
       - name: Build Windows
         run: flutter build windows --release
@@ -118,8 +127,28 @@ jobs:
         with:
           flutter-version: '3.41.9'
           channel: stable
+          cache: true
 
-      - name: Install dependencies
+      - name: Cache pub dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+
+      - name: Cache CocoaPods
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cocoapods/repos
+            ~/Library/Caches/CocoaPods
+            macos/Pods
+          key: ${{ runner.os }}-cocoapods-${{ hashFiles('macos/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cocoapods-
+
+      - name: Prepare macOS dependency overrides
         run: |
           cat > pubspec_overrides.yaml <<'EOF'
           dependency_overrides:
@@ -169,8 +198,6 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v5
-
       - uses: actions/download-artifact@v8
         with:
           name: android-apk
@@ -302,8 +329,6 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v5
-
       - uses: actions/download-artifact@v8
         with:
           name: android-apk
