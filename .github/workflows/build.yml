@@ -293,10 +293,53 @@ jobs:
           fi
           rm -f "$RESPONSE_FILE"
 
+  release-beta:
+    name: Create or Update beta Release
+    needs: [build-android, build-windows, build-macos]
+    if: ${{ needs.build-android.result == 'success' && needs.build-windows.result == 'success' && needs.build-macos.result == 'success' && startsWith(github.event.head_commit.message, '[beta]') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: android-apk
+          path: artifacts/
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: windows-zip
+          path: artifacts/
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: macos-dmg
+          path: artifacts/
+
+      - name: Rename Android APK
+        run: mv artifacts/app-release.apk artifacts/NetherLink-android.apk
+
+      - name: Create or update beta release
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: beta
+          target_commitish: ${{ github.sha }}
+          name: Beta Build
+          prerelease: true
+          body: |
+            Automated beta build from commit ${{ github.sha }} on branch `${{ github.ref_name }}`.
+            This is a beta build intended for testing before wider release.
+          files: |
+            artifacts/NetherLink-android.apk
+            artifacts/NetherLink-windows.zip
+            artifacts/NetherLink-macos.dmg
+
   notify-discord-beta:
     name: Notify Discord Beta Release
-    needs: [build-android, build-windows, build-macos, release]
-    if: ${{ needs.build-android.result == 'success' && needs.build-windows.result == 'success' && needs.build-macos.result == 'success' && needs.release.result == 'success' && startsWith(github.event.head_commit.message, '[beta]') }}
+    needs: [release-beta]
+    if: ${{ needs.release-beta.result == 'success' }}
     runs-on: ubuntu-latest
     permissions: {}
     steps:
@@ -309,7 +352,7 @@ jobs:
           COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
           RUN_ID: ${{ github.run_id }}
           SERVER_URL: ${{ github.server_url }}
-          RELEASES_URL: ${{ github.server_url }}/${{ github.repository }}/releases
+          BETA_RELEASE_URL: ${{ github.server_url }}/${{ github.repository }}/releases/tag/beta
         run: |
           if [ -z "$DISCORD_BETA_WEBHOOK_URL" ]; then
             echo "DISCORD_BETA_WEBHOOK_URL is not configured. Skipping Discord beta notification."
@@ -323,7 +366,7 @@ jobs:
 
           PAYLOAD="$(jq -n \
             --arg roleId "$ROLE_ID" \
-            --arg releasesUrl "$RELEASES_URL" \
+            --arg betaReleaseUrl "$BETA_RELEASE_URL" \
             --arg commitUrl "$COMMIT_URL" \
             --arg sha "$SHA" \
             --arg commitSubject "$COMMIT_SUBJECT" \
@@ -339,9 +382,9 @@ jobs:
               embeds: [
                 {
                   title: "🚀 New Beta Release Available",
-                  url: $releasesUrl,
+                  url: $betaReleaseUrl,
                   color: 5793266,
-                  description: ("Hello, <@&" + $roleId + ">, we have a new beta release ready. Check it out on our [releases](" + $releasesUrl + ")."),
+                  description: ("Hello, <@&" + $roleId + ">, we have a new beta release ready. Check it out on our [beta release](" + $betaReleaseUrl + ")."),
                   author: {
                     name: "NetherLink Beta Releases",
                     icon_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
@@ -349,7 +392,7 @@ jobs:
                   fields: [
                     { name: "Commit", value: ("[" + ($sha | .[0:7]) + "](" + $commitUrl + ")" + (if $commitSubject != "" then " " + $commitSubject else "" end)), inline: false },
                     { name: "Platforms", value: "Android • Windows • macOS", inline: true },
-                    { name: "Download links", value: ("[Releases](" + $releasesUrl + ")"), inline: true },
+                    { name: "Download links", value: ("[Beta release](" + $betaReleaseUrl + ")"), inline: true },
                     { name: "Triggered by", value: $actor, inline: true },
                     { name: "Workflow", value: ("[View run](" + $runUrl + ")"), inline: true }
                   ],
