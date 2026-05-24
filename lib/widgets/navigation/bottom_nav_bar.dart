@@ -188,24 +188,32 @@ class _NavFab extends StatelessWidget {
             height: 50,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: isActive ? AppTheme.overlay : AppTheme.surfaceRaised,
+              color: isActive ? AppTheme.accent : AppTheme.surfaceRaised,
               border: Border.all(
-                color: isActive ? AppTheme.borderLight : AppTheme.borderGray,
+                color: isActive ? AppTheme.accent : AppTheme.borderGray,
                 width: isActive ? 1.5 : 1.0,
               ),
               boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.30),
-                  blurRadius: 10,
-                  offset: const Offset(0, 3),
-                ),
+                if (isActive)
+                  BoxShadow(
+                    color: AppTheme.accent.withOpacity(0.35),
+                    blurRadius: 14,
+                    spreadRadius: 1,
+                    offset: const Offset(0, 3),
+                  )
+                else
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.30),
+                    blurRadius: 10,
+                    offset: const Offset(0, 3),
+                  ),
               ],
             ),
             child: Center(
               child: FaIcon(
                 FontAwesomeIcons.play,
                 size: 18,
-                color: AppTheme.textPrimary,
+                color: isActive ? Colors.white : AppTheme.textPrimary,
               ),
             ),
           ),

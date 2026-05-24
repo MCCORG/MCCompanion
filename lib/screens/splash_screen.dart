@@ -306,20 +306,30 @@ class _SplashScreenState extends State<SplashScreen>
                 children: [
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-                    child: Align(
-                      alignment: Alignment.topRight,
-                      child: _versionBadge(),
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        const Text(
+                          'MCCompanion',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: 1.2,
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: _versionBadge(),
+                        ),
+                      ],
                     ),
                   ),
                   const Spacer(),
-                  const Text(
-                    'MCCompanion',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 36,
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: 1.2,
-                    ),
+                  Image.asset(
+                    'assets/images/splash.png',
+                    width: 180,
+                    height: 180,
                   ),
                   const Spacer(),
                 ],
