@@ -33,6 +33,8 @@ dependencies:
   share_plus: 10.1.4
   file_picker: ^8.1.7
   shared_preferences: ^2.3.2
+  sign_in_with_apple: ^6.1.3
+  crypto: ^3.0.6
 
 dev_dependencies:
   flutter_test:

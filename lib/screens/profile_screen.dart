@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart'
+    show SignInWithAppleButton, SignInWithAppleButtonStyle;
 import '../theme/app_theme.dart';
 import '../services/auth_service.dart';
 import '../services/user_service.dart';
@@ -490,10 +492,12 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
   final _passCtrl = TextEditingController();
   bool _loading = false;
   bool _googleLoading = false;
+  bool _appleLoading = false;
   String? _error;
   bool _isRegisterMode = false;
 
   bool get _supportsGoogle => !Platform.isWindows;
+  bool get _supportsApple => Platform.isIOS;
 
   @override
   void dispose() {
@@ -520,6 +524,34 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
       if (mounted) setState(() => _error = 'Google sign-in failed. Please try again.');
     } finally {
       if (mounted) setState(() => _googleLoading = false);
+    }
+  }
+
+  Future<void> _signInWithApple() async {
+    setState(() {
+      _appleLoading = true;
+      _error = null;
+    });
+    try {
+      await AuthService.signInWithApple();
+    } on FirebaseAuthException catch (e) {
+      if (!mounted) return;
+      setState(() => _error = switch (e.code) {
+            'account-exists-with-different-credential' =>
+              'An account already exists with this email using a different sign-in method.',
+            _ => 'Apple sign-in failed. Please try again.',
+          });
+    } catch (e) {
+      if (!mounted) return;
+      final msg = e.toString();
+      // User cancelled — no error message needed
+      if (!msg.contains('AuthorizationErrorCode.canceled') &&
+          !msg.contains('canceled') &&
+          !msg.contains('cancelled')) {
+        setState(() => _error = 'Apple sign-in failed. Please try again.');
+      }
+    } finally {
+      if (mounted) setState(() => _appleLoading = false);
     }
   }
 
@@ -697,7 +729,7 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                         ),
                       ),
               ),
-              if (_supportsGoogle) ...[
+              if (_supportsApple || _supportsGoogle) ...[
                 const SizedBox(height: 16),
                 Row(
                   children: [
@@ -716,8 +748,21 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                   ],
                 ),
                 const SizedBox(height: 16),
-                OutlinedButton(
-                    onPressed: (_loading || _googleLoading) ? null : _signInWithGoogle,
+                if (_supportsApple) ...[
+                  SignInWithAppleButton(
+                    onPressed: (_loading || _googleLoading || _appleLoading)
+                        ? () {}
+                        : _signInWithApple,
+                    style: SignInWithAppleButtonStyle.black,
+                    height: 48,
+                  ),
+                  if (_supportsGoogle) const SizedBox(height: 12),
+                ],
+                if (_supportsGoogle)
+                  OutlinedButton(
+                    onPressed: (_loading || _googleLoading || _appleLoading)
+                        ? null
+                        : _signInWithGoogle,
                     style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       side: const BorderSide(color: AppTheme.borderGray),

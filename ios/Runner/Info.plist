@@ -28,6 +28,8 @@
 	<true/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app requires access to your photo library to save and load custom Minecraft skins.</string>
+	<key>NSUserNotificationUsageDescription</key>
+	<string>NetherLink sends notifications for friend requests and direct messages.</string>
 	<key>NSBonjourServices</key>
 	<array>
 		<string>_minecraft._udp</string>

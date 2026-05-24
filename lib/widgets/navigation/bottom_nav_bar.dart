@@ -72,7 +72,6 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
                   isActive: activeItem == 'skins',
                   onTap: onSkinsTap,
                 ),
-                // Central FAB — always opens Connector
                 _NavFab(
                   isActive: activeItem == 'connector',
                   onTap: onConnectorTap,
@@ -167,8 +166,6 @@ class _NavItem extends StatelessWidget {
   }
 }
 
-// ── Central FAB — circular button for the Connector page ─────────────────────
-
 class _NavFab extends StatelessWidget {
   final bool isActive;
   final VoidCallback? onTap;
@@ -183,7 +180,7 @@ class _NavFab extends StatelessWidget {
         behavior: HitTestBehavior.opaque,
         child: Align(
           alignment: Alignment.center,
-          heightFactor: 1.0, // sizes to child height — prevents unbounded expansion
+          heightFactor: 1.0,
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 220),
             curve: Curves.easeOutCubic,
@@ -206,7 +203,7 @@ class _NavFab extends StatelessWidget {
             ),
             child: Center(
               child: FaIcon(
-                FontAwesomeIcons.chartDiagram,
+                FontAwesomeIcons.play,
                 size: 18,
                 color: AppTheme.textPrimary,
               ),

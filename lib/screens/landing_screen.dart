@@ -93,7 +93,7 @@ class LandingScreen extends StatelessWidget {
             Expanded(
               child: _QuickCard(
                 title: 'Console Connect',
-                subtitle: 'Connect to servers via relay',
+                subtitle: 'Connect to Minecraft servers',
                 color: AppTheme.accent,
                 imagePath: 'assets/images/tunnel.png',
                 onTap: onGoToConnector,
