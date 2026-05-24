@@ -86,7 +86,7 @@ jobs:
         with:
           flutter-version: '3.41.9'
           channel: stable
-          cache: true
+          cache: false
 
       - name: Setup CMake 3.x
         uses: jwlawson/actions-setup-cmake@v2
