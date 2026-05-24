@@ -300,39 +300,42 @@ class _SplashScreenState extends State<SplashScreen>
         child: Stack(
           fit: StackFit.expand,
           children: [
-            const ColoredBox(color: Color(0xFF0B0E14)),
-            SafeArea(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        const Text(
-                          'MCCompanion',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w800,
-                            letterSpacing: 1.2,
-                          ),
+            Image.asset(
+              'assets/images/splash.png',
+              fit: BoxFit.cover,
+            ),
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      const Text(
+                        'MCCompanion',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 1.2,
+                          shadows: [
+                            Shadow(
+                              color: Colors.black54,
+                              blurRadius: 8,
+                            ),
+                          ],
                         ),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: _versionBadge(),
-                        ),
-                      ],
-                    ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: _versionBadge(),
+                      ),
+                    ],
                   ),
-                  const Spacer(),
-                  Image.asset(
-                    'assets/images/splash.png',
-                    width: 180,
-                    height: 180,
-                  ),
-                  const Spacer(),
-                ],
+                ),
               ),
             ),
           ],
