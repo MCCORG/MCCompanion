@@ -497,7 +497,7 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
   bool _isRegisterMode = false;
 
   bool get _supportsGoogle => !Platform.isWindows;
-  bool get _supportsApple => Platform.isIOS;
+  bool get _supportsApple => Platform.isIOS || Platform.isMacOS;
 
   @override
   void dispose() {
