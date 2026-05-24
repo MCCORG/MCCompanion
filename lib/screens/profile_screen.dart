@@ -33,10 +33,10 @@ class ProfileScreen extends StatefulWidget {
   });
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<ProfileScreen> createState() => ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen>
+class ProfileScreenState extends State<ProfileScreen>
     with SingleTickerProviderStateMixin {
   late final TabController _tabs;
   StreamSubscription<AuthUser?>? _authSubscription;
@@ -65,6 +65,13 @@ class _ProfileScreenState extends State<ProfileScreen>
     _presenceSub?.cancel();
     _tabs.dispose();
     super.dispose();
+  }
+
+  /// Called externally (e.g. from a notification tap) to jump to a specific tab.
+  /// Tab indices: 0 = Profile, 1 = Friends, 2 = Requests, 3 = Chats
+  void switchToTab(int index) {
+    if (!mounted) return;
+    _tabs.animateTo(index);
   }
 
   void _onPresence(({String uid, bool online}) event) {

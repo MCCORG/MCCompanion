@@ -18,6 +18,8 @@ import '../util/logger.dart';
 import '../util/partners_servers.dart';
 import '../services/partners_servers_service.dart';
 import '../l10n/app_localizations.dart';
+import '../services/user_service.dart';
+import '../models/user_model.dart';
 import 'landing_screen.dart';
 import 'home_screen.dart';
 import 'skins_screen.dart';
@@ -26,6 +28,7 @@ import 'partner_servers_screen.dart';
 import 'player_lookup_screen.dart';
 import 'manage_servers_screen.dart';
 import 'profile_screen.dart';
+import 'chat_screen.dart';
 
 enum _ActiveSheet { none, help, howTo, more, info }
 
@@ -64,6 +67,7 @@ class _AppShellState extends State<AppShell>
   final GlobalKey<ManageServersScreenState> _manageServersKey = GlobalKey();
   final GlobalKey<HomeScreenState> _connectorKey = GlobalKey();
   final GlobalKey<SkinsScreenState> _skinsKey = GlobalKey();
+  final GlobalKey<ProfileScreenState> _profileKey = GlobalKey();
 
   late RelayPingResult _selectedRelay;
   int _pageIndex = _pageHome;
@@ -153,13 +157,40 @@ class _AppShellState extends State<AppShell>
     final type = message.notificationType as String? ?? 'unknown';
     switch (type) {
       case 'message':
-        _goTo(_pageProfile);
+        final username = message.senderUsername as String?;
+        _goToProfileTab(3);
+        if (username != null) unawaited(_openChatFromNotification(username));
+      case 'friend_request':
+        _goToProfileTab(2);
       case 'friend_online':
       case 'friend_session':
-        _goTo(_pageProfile);
+        _goToProfileTab(1);
       default:
         _goTo(_pageHome);
     }
+  }
+
+  void _goToProfileTab(int tab) {
+    _goTo(_pageProfile);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _profileKey.currentState?.switchToTab(tab);
+    });
+  }
+
+  Future<void> _openChatFromNotification(String username) async {
+    final user = await UserService.getProfile(username);
+    if (!mounted || user == null) return;
+    final friend = FriendModel(
+      firebaseUid: '',
+      username: user.username,
+      displayName: user.displayName,
+      avatarUrl: user.avatarUrl,
+      online: false,
+    );
+    if (!mounted) return;
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => ChatScreen(friend: friend)),
+    );
   }
 
   void _goTo(int page) {
@@ -380,6 +411,7 @@ class _AppShellState extends State<AppShell>
                       SkinsScreen(key: _skinsKey),
                       const WikiScreen(),
                       ProfileScreen(
+                        key: _profileKey,
                         onGoToHome: () => _goTo(_pageHome),
                         onGoToConnector: () => _goTo(_pageConnector),
                         onGoToSkins: () => _goTo(_pageSkins),
