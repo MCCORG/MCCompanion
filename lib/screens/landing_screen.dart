@@ -16,6 +16,7 @@ class LandingScreen extends StatelessWidget {
   final VoidCallback? onWebsiteTap;
   final VoidCallback? onDiscordTap;
   final VoidCallback? onLanguageTap;
+  final VoidCallback? onInfoTap;
 
   const LandingScreen({
     super.key,
@@ -30,6 +31,7 @@ class LandingScreen extends StatelessWidget {
     this.onWebsiteTap,
     this.onDiscordTap,
     this.onLanguageTap,
+    this.onInfoTap,
   });
 
   @override
@@ -55,6 +57,7 @@ class LandingScreen extends StatelessWidget {
                   HeaderNavItem(label: 'Website', onTap: onWebsiteTap),
                   HeaderNavItem(label: 'Discord', onTap: onDiscordTap),
                   HeaderNavItem(label: 'Language', onTap: onLanguageTap),
+                  HeaderNavItem(label: 'Info', onTap: onInfoTap),
                 ],
               ),
             ],

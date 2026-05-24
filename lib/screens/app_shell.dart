@@ -11,6 +11,7 @@ import '../constants/app_constants.dart';
 import '../widgets/navigation/bottom_nav_bar.dart';
 import '../widgets/navigation/howto_menu.dart';
 import '../widgets/navigation/help_menu.dart';
+import '../widgets/navigation/info_menu.dart';
 import '../widgets/dialogs/howto_dialogs.dart';
 import '../widgets/dialogs/help_dialogs.dart';
 import '../util/logger.dart';
@@ -26,7 +27,7 @@ import 'player_lookup_screen.dart';
 import 'manage_servers_screen.dart';
 import 'profile_screen.dart';
 
-enum _ActiveSheet { none, help, howTo, more }
+enum _ActiveSheet { none, help, howTo, more, info }
 
 const int _pageHome = 0;
 const int _pageConnector = 1;
@@ -336,6 +337,7 @@ class _AppShellState extends State<AppShell>
                             navigationController.openDiscord(context),
                         onLanguageTap: () =>
                             navigationController.showLanguageDialog(context),
+                        onInfoTap: () => _openSheet(_ActiveSheet.info),
                       ),
                       HomeScreen(
                         key: _connectorKey,
@@ -483,6 +485,10 @@ class _AppShellState extends State<AppShell>
             _closeSheetInstant();
             _onRelayChanged(ip);
           },
+        );
+      case _ActiveSheet.info:
+        return InfoSheetContent(
+          onClose: _closeSheet,
         );
       case _ActiveSheet.none:
         return const SizedBox.shrink();
