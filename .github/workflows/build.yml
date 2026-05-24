@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: build-release-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-android:
     name: Build Android APK
@@ -21,9 +25,7 @@ jobs:
         with:
           flutter-version: '3.41.9'
           channel: stable
-
-      - name: Install dependencies
-        run: flutter pub get
+          cache: true
 
       - name: Prepare signing keystore
         env:
@@ -84,14 +86,12 @@ jobs:
         with:
           flutter-version: '3.41.9'
           channel: stable
+          cache: true
 
       - name: Setup CMake 3.x
         uses: jwlawson/actions-setup-cmake@v2
         with:
           cmake-version: '3.31.6'
-
-      - name: Install dependencies
-        run: flutter pub get
 
       - name: Build Windows
         run: flutter build windows --release
@@ -118,14 +118,14 @@ jobs:
         with:
           flutter-version: '3.41.9'
           channel: stable
+          cache: true
 
-      - name: Install dependencies
+      - name: Prepare macOS dependency overrides
         run: |
           cat > pubspec_overrides.yaml <<'EOF'
           dependency_overrides:
             connectivity_plus: 6.1.4
           EOF
-          flutter pub get
 
       - name: Build macOS
         run: flutter build macos --release
@@ -169,22 +169,14 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v5
-
       - uses: actions/download-artifact@v8
         with:
-          name: android-apk
+          pattern: |
+            android-apk
+            windows-zip
+            macos-dmg
           path: artifacts/
-
-      - uses: actions/download-artifact@v8
-        with:
-          name: windows-zip
-          path: artifacts/
-
-      - uses: actions/download-artifact@v8
-        with:
-          name: macos-dmg
-          path: artifacts/
+          merge-multiple: true
 
       - name: Rename Android APK
         run: mv artifacts/app-release.apk artifacts/NetherLink-android.apk
@@ -302,22 +294,14 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v5
-
       - uses: actions/download-artifact@v8
         with:
-          name: android-apk
+          pattern: |
+            android-apk
+            windows-zip
+            macos-dmg
           path: artifacts/
-
-      - uses: actions/download-artifact@v8
-        with:
-          name: windows-zip
-          path: artifacts/
-
-      - uses: actions/download-artifact@v8
-        with:
-          name: macos-dmg
-          path: artifacts/
+          merge-multiple: true
 
       - name: Rename Android APK
         run: mv artifacts/app-release.apk artifacts/NetherLink-android.apk
