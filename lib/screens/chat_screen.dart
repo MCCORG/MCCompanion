@@ -139,7 +139,7 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
         title: Row(
           children: [
-            _Avatar(initials: widget.friend.initials, size: 34),
+            _Avatar(initials: widget.friend.initials, size: 34, avatarUrl: widget.friend.avatarUrl),
             const SizedBox(width: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -673,26 +673,49 @@ class _ReasonTile extends StatelessWidget {
 class _Avatar extends StatelessWidget {
   final String initials;
   final double size;
-  const _Avatar({required this.initials, required this.size});
+  final String? avatarUrl;
+  const _Avatar({required this.initials, required this.size, this.avatarUrl});
 
   @override
-  Widget build(BuildContext context) => Container(
-    width: size,
-    height: size,
-    decoration: BoxDecoration(
-      color: AppTheme.accent.withOpacity(0.15),
-      shape: BoxShape.circle,
-      border: Border.all(color: AppTheme.accent.withOpacity(0.30)),
-    ),
-    child: Center(
-      child: Text(
-        initials,
-        style: TextStyle(
-          color: AppTheme.accent,
-          fontSize: size * 0.36,
-          fontWeight: FontWeight.w700,
-        ),
+  Widget build(BuildContext context) {
+    final hasImage = avatarUrl != null && avatarUrl!.isNotEmpty;
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        color: AppTheme.accent.withOpacity(0.15),
+        shape: BoxShape.circle,
+        border: Border.all(color: AppTheme.accent.withOpacity(0.30)),
       ),
-    ),
-  );
+      child: ClipOval(
+        child: hasImage
+            ? Image.network(
+                avatarUrl!,
+                width: size,
+                height: size,
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => Center(
+                  child: Text(
+                    initials,
+                    style: TextStyle(
+                      color: AppTheme.accent,
+                      fontSize: size * 0.36,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              )
+            : Center(
+                child: Text(
+                  initials,
+                  style: TextStyle(
+                    color: AppTheme.accent,
+                    fontSize: size * 0.36,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+      ),
+    );
+  }
 }

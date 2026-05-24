@@ -232,7 +232,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
           Center(
             child: Column(
               children: [
-                _Avatar(initials: u.initials, size: 72),
+                _Avatar(initials: u.initials, size: 72, avatarUrl: u.avatarUrl),
                 const SizedBox(height: 14),
                 Text(
                   u.displayLabel,
@@ -653,7 +653,7 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
             ),
             child: Row(
               children: [
-                _Avatar(initials: u.initials, size: 42),
+                _Avatar(initials: u.initials, size: 42, avatarUrl: u.avatarUrl),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Column(
@@ -1079,10 +1079,12 @@ class _ProfileRow extends StatelessWidget {
 class _Avatar extends StatelessWidget {
   final String initials;
   final double size;
-  const _Avatar({required this.initials, required this.size});
+  final String? avatarUrl;
+  const _Avatar({required this.initials, required this.size, this.avatarUrl});
 
   @override
   Widget build(BuildContext context) {
+    final hasImage = avatarUrl != null && avatarUrl!.isNotEmpty;
     return Container(
       width: size,
       height: size,
@@ -1091,15 +1093,34 @@ class _Avatar extends StatelessWidget {
         shape: BoxShape.circle,
         border: Border.all(color: AppTheme.accent.withOpacity(0.30)),
       ),
-      child: Center(
-        child: Text(
-          initials,
-          style: TextStyle(
-            color: AppTheme.accent,
-            fontSize: size * 0.33,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
+      child: ClipOval(
+        child: hasImage
+            ? Image.network(
+                avatarUrl!,
+                width: size,
+                height: size,
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => Center(
+                  child: Text(
+                    initials,
+                    style: TextStyle(
+                      color: AppTheme.accent,
+                      fontSize: size * 0.33,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              )
+            : Center(
+                child: Text(
+                  initials,
+                  style: TextStyle(
+                    color: AppTheme.accent,
+                    fontSize: size * 0.33,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
       ),
     );
   }

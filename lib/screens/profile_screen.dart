@@ -1045,7 +1045,7 @@ class _Header extends StatelessWidget {
       color: AppTheme.surface,
       child: Row(
         children: [
-          _Avatar(initials: me?.initials ?? '?', size: 52),
+          _Avatar(initials: me?.initials ?? '?', size: 52, avatarUrl: me?.avatarUrl),
           const SizedBox(width: 14),
           Expanded(
             child: Column(
@@ -1808,21 +1808,172 @@ class _EditProfileCardState extends State<_EditProfileCard> {
               ),
             ),
             const SizedBox(height: 14),
-            _FieldLabel('Avatar URL'),
-            const SizedBox(height: 6),
-            TextField(
-              controller: _avatarUrlCtrl,
-              style: const TextStyle(color: AppTheme.textPrimary),
-              keyboardType: TextInputType.url,
-              autocorrect: false,
-              decoration: const InputDecoration(
-                hintText: 'https://example.com/avatar.png',
-                prefixIcon: Icon(
-                  Icons.image_rounded,
-                  size: 18,
-                  color: AppTheme.textMuted,
+            _FieldLabel('Avatar'),
+            const SizedBox(height: 10),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _Avatar(
+                  initials: widget.me.initials,
+                  size: 58,
+                  avatarUrl: _avatarUrlCtrl.text.trim().isNotEmpty
+                      ? _avatarUrlCtrl.text.trim()
+                      : null,
                 ),
-              ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      if (widget.me.javaAccounts.isNotEmpty ||
+                          widget.me.bedrockAccounts.isNotEmpty) ...[
+                        const Text(
+                          'MINECRAFT SKIN',
+                          style: TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 10,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.2,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 6,
+                          children: [
+                            for (final acc in widget.me.javaAccounts)
+                              GestureDetector(
+                                onTap: () => setState(() {
+                                  _avatarUrlCtrl.text =
+                                      'https://crafatar.com/avatars/${acc.javaUuid}?size=128&overlay=true';
+                                }),
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                    vertical: 6,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: const Color(
+                                      0xFF1565C0,
+                                    ).withOpacity(0.10),
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(
+                                      color: const Color(
+                                        0xFF1565C0,
+                                      ).withOpacity(0.30),
+                                    ),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const Icon(
+                                        Icons.videogame_asset_rounded,
+                                        size: 13,
+                                        color: Color(0xFF1565C0),
+                                      ),
+                                      const SizedBox(width: 6),
+                                      Text(
+                                        acc.javaUsername,
+                                        style: const TextStyle(
+                                          color: Color(0xFF1565C0),
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            for (final acc in widget.me.bedrockAccounts)
+                              GestureDetector(
+                                onTap: () => setState(() {
+                                  _avatarUrlCtrl.text =
+                                      'https://api.geysermc.org/v2/skin/${acc.xboxXuid}/face';
+                                }),
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                    vertical: 6,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: const Color(
+                                      0xFF107C10,
+                                    ).withOpacity(0.10),
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(
+                                      color: const Color(
+                                        0xFF107C10,
+                                      ).withOpacity(0.30),
+                                    ),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const Icon(
+                                        Icons.sports_esports_rounded,
+                                        size: 13,
+                                        color: Color(0xFF107C10),
+                                      ),
+                                      const SizedBox(width: 6),
+                                      Text(
+                                        acc.xboxGamertag ?? acc.xboxXuid,
+                                        style: const TextStyle(
+                                          color: Color(0xFF107C10),
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          'OR CUSTOM URL',
+                          style: TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 10,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.2,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                      ],
+                      TextField(
+                        controller: _avatarUrlCtrl,
+                        style: const TextStyle(
+                          color: AppTheme.textPrimary,
+                          fontSize: 13,
+                        ),
+                        keyboardType: TextInputType.url,
+                        autocorrect: false,
+                        decoration: InputDecoration(
+                          hintText: 'https://example.com/avatar.png',
+                          prefixIcon: const Icon(
+                            Icons.image_rounded,
+                            size: 18,
+                            color: AppTheme.textMuted,
+                          ),
+                          suffixIcon: _avatarUrlCtrl.text.isNotEmpty
+                              ? IconButton(
+                                  icon: const Icon(
+                                    Icons.clear_rounded,
+                                    size: 16,
+                                    color: AppTheme.textMuted,
+                                  ),
+                                  onPressed: () =>
+                                      setState(() => _avatarUrlCtrl.clear()),
+                                )
+                              : null,
+                        ),
+                        onChanged: (_) => setState(() {}),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 16),
             Row(
@@ -2010,7 +2161,7 @@ class _FriendTile extends StatelessWidget {
           children: [
             Stack(
               children: [
-                _Avatar(initials: friend.initials, size: 42),
+                _Avatar(initials: friend.initials, size: 42, avatarUrl: friend.avatarUrl),
                 Positioned(
                   right: 0,
                   bottom: 0,
@@ -2166,7 +2317,7 @@ class _RequestTile extends StatelessWidget {
       ),
       child: Row(
         children: [
-          _Avatar(initials: request.initials, size: 42),
+          _Avatar(initials: request.initials, size: 42, avatarUrl: request.requesterAvatarUrl),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
@@ -2214,10 +2365,12 @@ class _RequestTile extends StatelessWidget {
 class _Avatar extends StatelessWidget {
   final String initials;
   final double size;
-  const _Avatar({required this.initials, required this.size});
+  final String? avatarUrl;
+  const _Avatar({required this.initials, required this.size, this.avatarUrl});
 
   @override
   Widget build(BuildContext context) {
+    final hasImage = avatarUrl != null && avatarUrl!.isNotEmpty;
     return Container(
       width: size,
       height: size,
@@ -2226,15 +2379,34 @@ class _Avatar extends StatelessWidget {
         shape: BoxShape.circle,
         border: Border.all(color: AppTheme.accent.withOpacity(0.30)),
       ),
-      child: Center(
-        child: Text(
-          initials,
-          style: TextStyle(
-            color: AppTheme.accent,
-            fontSize: size * 0.33,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
+      child: ClipOval(
+        child: hasImage
+            ? Image.network(
+                avatarUrl!,
+                width: size,
+                height: size,
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => Center(
+                  child: Text(
+                    initials,
+                    style: TextStyle(
+                      color: AppTheme.accent,
+                      fontSize: size * 0.33,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              )
+            : Center(
+                child: Text(
+                  initials,
+                  style: TextStyle(
+                    color: AppTheme.accent,
+                    fontSize: size * 0.33,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
       ),
     );
   }
