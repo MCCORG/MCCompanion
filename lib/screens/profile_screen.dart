@@ -555,6 +555,103 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
     }
   }
 
+  Future<void> _forgotPassword() async {
+    final emailCtrl = TextEditingController(text: _emailCtrl.text.trim());
+    final email = await showDialog<String>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: AppTheme.surfaceRaised,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+          side: const BorderSide(color: AppTheme.borderGray),
+        ),
+        title: const Text(
+          'Reset password',
+          style: TextStyle(color: AppTheme.textPrimary, fontWeight: FontWeight.w700),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Enter your email address and we\'ll send you a link to reset your password.',
+              style: TextStyle(
+                color: AppTheme.textSecondary,
+                fontSize: 13,
+                height: 1.5,
+              ),
+            ),
+            const SizedBox(height: 16),
+            TextField(
+              controller: emailCtrl,
+              keyboardType: TextInputType.emailAddress,
+              autocorrect: false,
+              autofocus: true,
+              style: const TextStyle(color: AppTheme.textPrimary),
+              decoration: const InputDecoration(
+                hintText: 'Email address',
+                prefixIcon: Icon(
+                  Icons.email_rounded,
+                  size: 18,
+                  color: AppTheme.textMuted,
+                ),
+              ),
+              onSubmitted: (v) => Navigator.of(ctx).pop(v.trim()),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(null),
+            child: const Text('Cancel'),
+          ),
+          ElevatedButton(
+            onPressed: () => Navigator.of(ctx).pop(emailCtrl.text.trim()),
+            child: const Text(
+              'Send link',
+              style: TextStyle(fontWeight: FontWeight.w700),
+            ),
+          ),
+        ],
+      ),
+    );
+    emailCtrl.dispose();
+
+    if (email == null || email.isEmpty || !mounted) return;
+
+    try {
+      await AuthService.sendPasswordResetEmail(email);
+      if (!mounted) return;
+      AppToast.show(
+        context,
+        message: 'Reset link sent to $email',
+        icon: Icons.mark_email_read_rounded,
+        color: AppTheme.success,
+      );
+    } on FirebaseAuthException catch (e) {
+      if (!mounted) return;
+      final msg = switch (e.code) {
+        'user-not-found' => 'No account found for this email address.',
+        'invalid-email' => 'Invalid email address.',
+        _ => 'Could not send reset email. Please try again.',
+      };
+      AppToast.show(
+        context,
+        message: msg,
+        icon: Icons.error_outline_rounded,
+        color: AppTheme.error,
+      );
+    } catch (_) {
+      if (!mounted) return;
+      AppToast.show(
+        context,
+        message: 'Could not send reset email. Please try again.',
+        icon: Icons.error_outline_rounded,
+        color: AppTheme.error,
+      );
+    }
+  }
+
   Future<void> _submit() async {
     final email = _emailCtrl.text.trim();
     final pass = _passCtrl.text;
@@ -673,6 +770,30 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                   if (_error != null) setState(() => _error = null);
                 },
               ),
+              if (!_isRegisterMode) ...[
+                const SizedBox(height: 4),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: _forgotPassword,
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 4,
+                        vertical: 4,
+                      ),
+                      minimumSize: Size.zero,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    child: const Text(
+                      'Forgot password?',
+                      style: TextStyle(
+                        color: AppTheme.textMuted,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
               if (_error != null) ...[
                 const SizedBox(height: 14),
                 Container(

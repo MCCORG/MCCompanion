@@ -142,6 +142,14 @@ class AuthService {
     return sha256.convert(bytes).toString();
   }
 
+  static Future<void> sendPasswordResetEmail(String email) async {
+    if (Platform.isWindows) {
+      await _windowsSendPasswordReset(email);
+      return;
+    }
+    await _auth.sendPasswordResetEmail(email: email);
+  }
+
   static Future<void> signOut() async {
     if (Platform.isWindows) {
       _windowsUser = null;
@@ -153,6 +161,30 @@ class AuthService {
     }
     await _googleSignIn.signOut();
     await _auth.signOut();
+  }
+
+  static Future<void> _windowsSendPasswordReset(String email) async {
+    final res = await http
+        .post(
+          Uri.parse(
+            'https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=$_windowsApiKey',
+          ),
+          headers: {'Content-Type': 'application/json'},
+          body: jsonEncode({'requestType': 'PASSWORD_RESET', 'email': email}),
+        )
+        .timeout(const Duration(seconds: 15));
+
+    if (res.statusCode != 200) {
+      final body = jsonDecode(res.body) as Map<String, dynamic>;
+      final message =
+          ((body['error'] as Map<String, dynamic>?)?['message'] as String?) ??
+          '';
+      throw switch (message) {
+        'EMAIL_NOT_FOUND' => FirebaseAuthException(code: 'user-not-found'),
+        'INVALID_EMAIL' => FirebaseAuthException(code: 'invalid-email'),
+        _ => FirebaseAuthException(code: 'unknown', message: message),
+      };
+    }
   }
 
   static Future<void> _windowsEmailAuth(
