@@ -67,7 +67,7 @@ jobs:
           chmod 600 android/key.properties
 
       - name: Build APK
-        run: flutter build apk --release
+        run: flutter build apk --release --no-pub
 
       - uses: actions/upload-artifact@v6
         with:
