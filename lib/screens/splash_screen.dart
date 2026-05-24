@@ -271,6 +271,40 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 
+  List<Widget> _featureItems(List<String> labels) {
+    final items = <Widget>[];
+    for (int i = 0; i < labels.length; i++) {
+      items.add(
+        Text(
+          labels[i],
+          style: TextStyle(
+            color: Colors.white.withOpacity(0.75),
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0.8,
+            shadows: const [Shadow(color: Colors.black54, blurRadius: 6)],
+          ),
+        ),
+      );
+      if (i < labels.length - 1) {
+        items.add(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Text(
+              '·',
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.35),
+                fontSize: 12,
+                shadows: const [Shadow(color: Colors.black54, blurRadius: 6)],
+              ),
+            ),
+          ),
+        );
+      }
+    }
+    return items;
+  }
+
   Widget _versionBadge() {
     if (_appVersion.isEmpty) return const SizedBox.shrink();
     return Container(
@@ -311,29 +345,37 @@ class _SplashScreenState extends State<SplashScreen>
               child: SafeArea(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      const Text(
-                        'MCCompanion',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w800,
-                          letterSpacing: 1.2,
-                          shadows: [
-                            Shadow(
-                              color: Colors.black54,
-                              blurRadius: 8,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: _versionBadge(),
-                      ),
-                    ],
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/logo.png',
+                      height: 340,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 0,
+              right: 0,
+              child: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 12, 16, 0),
+                  child: _versionBadge(),
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: _featureItems(
+                      ['Connect', 'Friends', 'Chat', 'Skins'],
+                    ),
                   ),
                 ),
               ),
