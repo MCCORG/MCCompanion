@@ -198,6 +198,7 @@ jobs:
           body: |
             Automated development build from commit ${{ github.sha }} on branch `${{ github.ref_name }}`.
             This is a development build. If you don't know what you are doing, please don't install it.
+            Warning: Google/Apple auth won't work with dev builds.
           files: |
             artifacts/NetherLink-android.apk
             artifacts/NetherLink-windows.zip
@@ -331,6 +332,7 @@ jobs:
           body: |
             Automated beta build from commit ${{ github.sha }} on branch `${{ github.ref_name }}`.
             This is a beta build intended for testing before wider release.
+            Warning: Google/Apple auth won't work with beta builds.
           files: |
             artifacts/NetherLink-android.apk
             artifacts/NetherLink-windows.zip
