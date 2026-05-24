@@ -126,6 +126,7 @@ jobs:
           dependency_overrides:
             connectivity_plus: 6.1.4
           EOF
+          flutter pub get
 
       - name: Build macOS
         run: flutter build macos --release
@@ -171,9 +172,18 @@ jobs:
     steps:
       - uses: actions/download-artifact@v8
         with:
-          pattern: '*'
+          name: android-apk
           path: artifacts/
-          merge-multiple: true
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: windows-zip
+          path: artifacts/
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: macos-dmg
+          path: artifacts/
 
       - name: Rename Android APK
         run: mv artifacts/app-release.apk artifacts/NetherLink-android.apk
@@ -293,9 +303,18 @@ jobs:
     steps:
       - uses: actions/download-artifact@v8
         with:
-          pattern: '*'
+          name: android-apk
           path: artifacts/
-          merge-multiple: true
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: windows-zip
+          path: artifacts/
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: macos-dmg
+          path: artifacts/
 
       - name: Rename Android APK
         run: mv artifacts/app-release.apk artifacts/NetherLink-android.apk
