@@ -544,7 +544,6 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
     } catch (e) {
       if (!mounted) return;
       final msg = e.toString();
-      // User cancelled — no error message needed
       if (!msg.contains('AuthorizationErrorCode.canceled') &&
           !msg.contains('canceled') &&
           !msg.contains('cancelled')) {
@@ -1114,7 +1113,6 @@ class _ProfileTabState extends State<_ProfileTab> {
     final updated = await UserService.updateMe(appearOffline: value);
     if (!mounted) return;
     if (updated == null) {
-      // Revert on failure
       setState(() => _appearOffline = !value);
       AppToast.show(
         context,
@@ -1146,9 +1144,7 @@ class _ProfileTabState extends State<_ProfileTab> {
             ),
           ],
           const SizedBox(height: 12),
-          _XboxCard(me: widget.me!, onRefresh: widget.onRefresh),
-          const SizedBox(height: 12),
-          _JavaCard(me: widget.me!, onRefresh: widget.onRefresh),
+          _LinkedAccountsCard(me: widget.me!, onRefresh: widget.onRefresh),
           const SizedBox(height: 12),
           _SettingsCard(
             appearOffline: _effectiveAppearOffline,
@@ -1258,21 +1254,22 @@ class _SettingsCard extends StatelessWidget {
   }
 }
 
-class _XboxCard extends StatefulWidget {
+class _LinkedAccountsCard extends StatefulWidget {
   final UserModel me;
   final Future<void> Function() onRefresh;
-  const _XboxCard({required this.me, required this.onRefresh});
+  const _LinkedAccountsCard({required this.me, required this.onRefresh});
 
   @override
-  State<_XboxCard> createState() => _XboxCardState();
+  State<_LinkedAccountsCard> createState() => _LinkedAccountsCardState();
 }
 
-class _XboxCardState extends State<_XboxCard> {
+class _LinkedAccountsCardState extends State<_LinkedAccountsCard> {
   final Set<String> _unlinking = {};
 
   static const _xboxGreen = Color(0xFF107C10);
+  static const _javaBlue = Color(0xFF1565C0);
 
-  Future<void> _openLinkScreen() async {
+  Future<void> _openXboxLink() async {
     await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (_) => XboxLinkScreen(
@@ -1285,7 +1282,20 @@ class _XboxCardState extends State<_XboxCard> {
     );
   }
 
-  Future<void> _unlink(BedrockAccount account) async {
+  Future<void> _openJavaLink() async {
+    await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => JavaLinkScreen(
+          onLinked: () {
+            Navigator.of(context).pop();
+            widget.onRefresh();
+          },
+        ),
+      ),
+    );
+  }
+
+  Future<void> _unlinkBedrock(BedrockAccount account) async {
     final label = account.xboxGamertag ?? account.xboxXuid;
     final confirmed = await showDialog<bool>(
       context: context,
@@ -1321,144 +1331,7 @@ class _XboxCardState extends State<_XboxCard> {
     widget.onRefresh();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final accounts = widget.me.bedrockAccounts;
-    final hasAccounts = accounts.isNotEmpty;
-
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(
-          color: hasAccounts
-              ? _xboxGreen.withOpacity(0.35)
-              : AppTheme.borderGray,
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Row(
-            children: [
-              Container(
-                width: 32,
-                height: 32,
-                decoration: BoxDecoration(
-                  color: _xboxGreen.withOpacity(0.12),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: const Icon(
-                  Icons.sports_esports_rounded,
-                  color: _xboxGreen,
-                  size: 17,
-                ),
-              ),
-              const SizedBox(width: 10),
-              const Text(
-                'Xbox Accounts',
-                style: TextStyle(
-                  color: AppTheme.textPrimary,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 14,
-                ),
-              ),
-              const Spacer(),
-              if (hasAccounts)
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 3,
-                  ),
-                  decoration: BoxDecoration(
-                    color: _xboxGreen.withOpacity(0.12),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    '${accounts.length}',
-                    style: const TextStyle(
-                      color: _xboxGreen,
-                      fontSize: 10,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-            ],
-          ),
-          const SizedBox(height: 12),
-          if (!hasAccounts) ...[
-            const Text(
-              'Link your Xbox account to show your gamertag on your profile.',
-              style: TextStyle(
-                color: AppTheme.textSecondary,
-                fontSize: 12,
-                height: 1.5,
-              ),
-            ),
-            const SizedBox(height: 12),
-          ],
-          if (hasAccounts) ...[
-            ...accounts.map(
-              (account) => Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: _AccountTile(
-                  primaryText: account.xboxGamertag ?? account.xboxXuid,
-                  secondaryText: account.xboxXuid,
-                  unlinking: _unlinking.contains(account.xboxXuid),
-                  onUnlink: () => _unlink(account),
-                  accentColor: _xboxGreen,
-                ),
-              ),
-            ),
-            const SizedBox(height: 4),
-          ],
-          ElevatedButton.icon(
-            onPressed: _openLinkScreen,
-            icon: const Icon(Icons.link_rounded, size: 16),
-            label: Text(
-              hasAccounts ? 'Link Another Xbox Account' : 'Link Xbox Account',
-              style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13),
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: _xboxGreen,
-              foregroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(vertical: 12),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _JavaCard extends StatefulWidget {
-  final UserModel me;
-  final Future<void> Function() onRefresh;
-  const _JavaCard({required this.me, required this.onRefresh});
-
-  @override
-  State<_JavaCard> createState() => _JavaCardState();
-}
-
-class _JavaCardState extends State<_JavaCard> {
-  final Set<String> _unlinking = {};
-  static const _javaBlue = Color(0xFF1565C0);
-
-  Future<void> _openLinkScreen() async {
-    await Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) => JavaLinkScreen(
-          onLinked: () {
-            Navigator.of(context).pop();
-            widget.onRefresh();
-          },
-        ),
-      ),
-    );
-  }
-
-  Future<void> _unlink(JavaAccount account) async {
+  Future<void> _unlinkJava(JavaAccount account) async {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
@@ -1495,107 +1368,109 @@ class _JavaCardState extends State<_JavaCard> {
 
   @override
   Widget build(BuildContext context) {
-    final accounts = widget.me.javaAccounts;
-    final hasAccounts = accounts.isNotEmpty;
+    final bedrock = widget.me.bedrockAccounts;
+    final java = widget.me.javaAccounts;
+    final hasAny = bedrock.isNotEmpty || java.isNotEmpty;
 
     return Container(
-      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppTheme.surfaceRaised,
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(
-          color: hasAccounts
-              ? _javaBlue.withOpacity(0.35)
-              : AppTheme.borderGray,
-        ),
+        border: Border.all(color: AppTheme.borderGray),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Row(
-            children: [
-              Container(
-                width: 32,
-                height: 32,
-                decoration: BoxDecoration(
-                  color: _javaBlue.withOpacity(0.12),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: const Icon(
-                  Icons.videogame_asset_rounded,
-                  color: _javaBlue,
-                  size: 17,
-                ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 14, 16, 12),
+            child: const Text(
+              'Linked Accounts',
+              style: TextStyle(
+                color: AppTheme.textPrimary,
+                fontWeight: FontWeight.w700,
+                fontSize: 14,
               ),
-              const SizedBox(width: 10),
-              const Text(
-                'Java Edition Accounts',
+            ),
+          ),
+          if (!hasAny)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 14),
+              child: const Text(
+                'Link your Minecraft accounts to show them on your profile.',
                 style: TextStyle(
-                  color: AppTheme.textPrimary,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 14,
+                  color: AppTheme.textSecondary,
+                  fontSize: 12,
+                  height: 1.5,
                 ),
               ),
-              const Spacer(),
-              if (hasAccounts)
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 3,
-                  ),
-                  decoration: BoxDecoration(
-                    color: _javaBlue.withOpacity(0.12),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    '${accounts.length}',
-                    style: const TextStyle(
-                      color: _javaBlue,
-                      fontSize: 10,
-                      fontWeight: FontWeight.w700,
+            ),
+          if (hasAny) ...[
+            const Divider(height: 1, color: AppTheme.borderGray),
+            ...bedrock.map(
+              (acc) => _AccountRow(
+                icon: Icons.sports_esports_rounded,
+                color: _xboxGreen,
+                name: acc.xboxGamertag ?? acc.xboxXuid,
+                subtitle: 'Xbox · ${acc.xboxXuid}',
+                unlinking: _unlinking.contains(acc.xboxXuid),
+                onUnlink: () => _unlinkBedrock(acc),
+              ),
+            ),
+            ...java.map(
+              (acc) => _AccountRow(
+                icon: Icons.videogame_asset_rounded,
+                color: _javaBlue,
+                name: acc.javaUsername,
+                subtitle: 'Java Edition · ${acc.javaUuid}',
+                unlinking: _unlinking.contains(acc.javaUuid),
+                onUnlink: () => _unlinkJava(acc),
+              ),
+            ),
+          ],
+          const Divider(height: 1, color: AppTheme.borderGray),
+          IntrinsicHeight(
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextButton.icon(
+                    onPressed: _openXboxLink,
+                    icon: const Icon(
+                      Icons.sports_esports_rounded,
+                      size: 14,
+                      color: _xboxGreen,
+                    ),
+                    label: const Text(
+                      'Link Xbox',
+                      style: TextStyle(color: _xboxGreen, fontSize: 13),
+                    ),
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
                   ),
                 ),
-            ],
-          ),
-          const SizedBox(height: 12),
-          if (!hasAccounts) ...[
-            const Text(
-              'Link your Minecraft Java Edition account to show your username on your profile.',
-              style: TextStyle(
-                color: AppTheme.textSecondary,
-                fontSize: 12,
-                height: 1.5,
-              ),
-            ),
-            const SizedBox(height: 12),
-          ],
-          if (hasAccounts) ...[
-            ...accounts.map(
-              (account) => Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: _AccountTile(
-                  primaryText: account.javaUsername,
-                  secondaryText: account.javaUuid,
-                  unlinking: _unlinking.contains(account.javaUuid),
-                  onUnlink: () => _unlink(account),
-                  accentColor: _javaBlue,
+                const VerticalDivider(
+                  width: 1,
+                  thickness: 1,
+                  color: AppTheme.borderGray,
                 ),
-              ),
-            ),
-            const SizedBox(height: 4),
-          ],
-          ElevatedButton.icon(
-            onPressed: _openLinkScreen,
-            icon: const Icon(Icons.link_rounded, size: 16),
-            label: Text(
-              hasAccounts ? 'Link Another Java Account' : 'Link Java Edition',
-              style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13),
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: _javaBlue,
-              foregroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(vertical: 12),
+                Expanded(
+                  child: TextButton.icon(
+                    onPressed: _openJavaLink,
+                    icon: const Icon(
+                      Icons.videogame_asset_rounded,
+                      size: 14,
+                      color: _javaBlue,
+                    ),
+                    label: const Text(
+                      'Link Java',
+                      style: TextStyle(color: _javaBlue, fontSize: 13),
+                    ),
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -1604,47 +1479,53 @@ class _JavaCardState extends State<_JavaCard> {
   }
 }
 
-class _AccountTile extends StatelessWidget {
-  final String primaryText;
-  final String secondaryText;
+class _AccountRow extends StatelessWidget {
+  final IconData icon;
+  final Color color;
+  final String name;
+  final String subtitle;
   final bool unlinking;
   final VoidCallback onUnlink;
-  final Color accentColor;
 
-  const _AccountTile({
-    required this.primaryText,
-    required this.secondaryText,
+  const _AccountRow({
+    required this.icon,
+    required this.color,
+    required this.name,
+    required this.subtitle,
     required this.unlinking,
     required this.onUnlink,
-    required this.accentColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-      decoration: BoxDecoration(
-        color: accentColor.withOpacity(0.05),
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: accentColor.withOpacity(0.18)),
-      ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       child: Row(
         children: [
+          Container(
+            width: 32,
+            height: 32,
+            decoration: BoxDecoration(
+              color: color.withOpacity(0.12),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Icon(icon, color: color, size: 16),
+          ),
+          const SizedBox(width: 12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  primaryText,
+                  name,
                   style: const TextStyle(
                     color: AppTheme.textPrimary,
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                const SizedBox(height: 2),
                 Text(
-                  secondaryText,
+                  subtitle,
                   style: const TextStyle(
                     color: AppTheme.textMuted,
                     fontSize: 10,
@@ -1658,7 +1539,7 @@ class _AccountTile extends StatelessWidget {
           GestureDetector(
             onTap: unlinking ? null : onUnlink,
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               decoration: BoxDecoration(
                 color: AppTheme.error.withOpacity(0.08),
                 borderRadius: BorderRadius.circular(7),
@@ -1808,172 +1689,21 @@ class _EditProfileCardState extends State<_EditProfileCard> {
               ),
             ),
             const SizedBox(height: 14),
-            _FieldLabel('Avatar'),
-            const SizedBox(height: 10),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _Avatar(
-                  initials: widget.me.initials,
-                  size: 58,
-                  avatarUrl: _avatarUrlCtrl.text.trim().isNotEmpty
-                      ? _avatarUrlCtrl.text.trim()
-                      : null,
+            _FieldLabel('Avatar URL'),
+            const SizedBox(height: 6),
+            TextField(
+              controller: _avatarUrlCtrl,
+              style: const TextStyle(color: AppTheme.textPrimary),
+              keyboardType: TextInputType.url,
+              autocorrect: false,
+              decoration: const InputDecoration(
+                hintText: 'https://example.com/avatar.png',
+                prefixIcon: Icon(
+                  Icons.image_rounded,
+                  size: 18,
+                  color: AppTheme.textMuted,
                 ),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      if (widget.me.javaAccounts.isNotEmpty ||
-                          widget.me.bedrockAccounts.isNotEmpty) ...[
-                        const Text(
-                          'MINECRAFT SKIN',
-                          style: TextStyle(
-                            color: AppTheme.textMuted,
-                            fontSize: 10,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 1.2,
-                          ),
-                        ),
-                        const SizedBox(height: 6),
-                        Wrap(
-                          spacing: 8,
-                          runSpacing: 6,
-                          children: [
-                            for (final acc in widget.me.javaAccounts)
-                              GestureDetector(
-                                onTap: () => setState(() {
-                                  _avatarUrlCtrl.text =
-                                      'https://crafatar.com/avatars/${acc.javaUuid}?size=128&overlay=true';
-                                }),
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 10,
-                                    vertical: 6,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: const Color(
-                                      0xFF1565C0,
-                                    ).withOpacity(0.10),
-                                    borderRadius: BorderRadius.circular(8),
-                                    border: Border.all(
-                                      color: const Color(
-                                        0xFF1565C0,
-                                      ).withOpacity(0.30),
-                                    ),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      const Icon(
-                                        Icons.videogame_asset_rounded,
-                                        size: 13,
-                                        color: Color(0xFF1565C0),
-                                      ),
-                                      const SizedBox(width: 6),
-                                      Text(
-                                        acc.javaUsername,
-                                        style: const TextStyle(
-                                          color: Color(0xFF1565C0),
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            for (final acc in widget.me.bedrockAccounts)
-                              GestureDetector(
-                                onTap: () => setState(() {
-                                  _avatarUrlCtrl.text =
-                                      'https://api.geysermc.org/v2/skin/${acc.xboxXuid}/face';
-                                }),
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 10,
-                                    vertical: 6,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: const Color(
-                                      0xFF107C10,
-                                    ).withOpacity(0.10),
-                                    borderRadius: BorderRadius.circular(8),
-                                    border: Border.all(
-                                      color: const Color(
-                                        0xFF107C10,
-                                      ).withOpacity(0.30),
-                                    ),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      const Icon(
-                                        Icons.sports_esports_rounded,
-                                        size: 13,
-                                        color: Color(0xFF107C10),
-                                      ),
-                                      const SizedBox(width: 6),
-                                      Text(
-                                        acc.xboxGamertag ?? acc.xboxXuid,
-                                        style: const TextStyle(
-                                          color: Color(0xFF107C10),
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                          ],
-                        ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          'OR CUSTOM URL',
-                          style: TextStyle(
-                            color: AppTheme.textMuted,
-                            fontSize: 10,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 1.2,
-                          ),
-                        ),
-                        const SizedBox(height: 6),
-                      ],
-                      TextField(
-                        controller: _avatarUrlCtrl,
-                        style: const TextStyle(
-                          color: AppTheme.textPrimary,
-                          fontSize: 13,
-                        ),
-                        keyboardType: TextInputType.url,
-                        autocorrect: false,
-                        decoration: InputDecoration(
-                          hintText: 'https://example.com/avatar.png',
-                          prefixIcon: const Icon(
-                            Icons.image_rounded,
-                            size: 18,
-                            color: AppTheme.textMuted,
-                          ),
-                          suffixIcon: _avatarUrlCtrl.text.isNotEmpty
-                              ? IconButton(
-                                  icon: const Icon(
-                                    Icons.clear_rounded,
-                                    size: 16,
-                                    color: AppTheme.textMuted,
-                                  ),
-                                  onPressed: () =>
-                                      setState(() => _avatarUrlCtrl.clear()),
-                                )
-                              : null,
-                        ),
-                        onChanged: (_) => setState(() {}),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+              ),
             ),
             const SizedBox(height: 16),
             Row(

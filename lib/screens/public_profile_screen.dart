@@ -272,7 +272,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
                 ),
                 const SizedBox(height: 8),
                 _ProfileRow(label: 'Username', value: '@${u.username}'),
-                if (u.lastSeenAt != null) ...[
+                if (u.lastSeenAt != null && !u.appearOffline) ...[
                   const SizedBox(height: 8),
                   _ProfileRow(
                     label: 'Last seen',
