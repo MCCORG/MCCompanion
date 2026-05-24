@@ -224,7 +224,7 @@ jobs:
           COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
           RUN_ID: ${{ github.run_id }}
           SERVER_URL: ${{ github.server_url }}
-          RELEASES_URL: ${{ github.server_url }}/${{ github.repository }}/releases
+          RELEASES_URL: ${{ github.server_url }}/${{ github.repository }}/releases/tag/dev
         run: |
           if [ -z "$DISCORD_WEBHOOK_URL" ]; then
             echo "DISCORD_WEBHOOK_URL is not configured. Skipping Discord notification."
