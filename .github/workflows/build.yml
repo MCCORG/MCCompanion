@@ -171,10 +171,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v8
         with:
-          pattern: |
-            android-apk
-            windows-zip
-            macos-dmg
+          pattern: '*'
           path: artifacts/
           merge-multiple: true
 
@@ -296,10 +293,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v8
         with:
-          pattern: |
-            android-apk
-            windows-zip
-            macos-dmg
+          pattern: '*'
           path: artifacts/
           merge-multiple: true
 
