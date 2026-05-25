@@ -1128,6 +1128,8 @@ class _ProfileTabState extends State<_ProfileTab> {
         color: AppTheme.error,
         duration: const Duration(seconds: 2),
       );
+    } else {
+      await widget.onRefresh();
     }
   }
 

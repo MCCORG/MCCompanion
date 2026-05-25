@@ -40,7 +40,7 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
     });
   }
 
-  void _openChat(ConversationModel conv) {
+  Future<void> _openChat(ConversationModel conv) async {
     final friend = FriendModel(
       firebaseUid: conv.otherUid,
       username: conv.username,
@@ -48,9 +48,10 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
       avatarUrl: conv.avatarUrl,
       online: false,
     );
-    Navigator.of(
+    await Navigator.of(
       context,
     ).push(MaterialPageRoute(builder: (_) => ChatScreen(friend: friend)));
+    _load();
   }
 
   @override
