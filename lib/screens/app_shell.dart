@@ -6,6 +6,7 @@ import '../services/region_detector.dart';
 import '../services/relay_service.dart';
 import '../services/auth_service.dart';
 import '../services/message_service.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import '../services/push_notification_service.dart';
 import '../constants/app_constants.dart';
 import '../widgets/navigation/bottom_nav_bar.dart';
@@ -153,11 +154,11 @@ class _AppShellState extends State<AppShell>
     setState(() => _activeSheet = _ActiveSheet.none);
   }
 
-  void _handleNotificationTap(dynamic message) {
-    final type = message.notificationType as String? ?? 'unknown';
+  void _handleNotificationTap(RemoteMessage message) {
+    final type = message.data['type'] as String? ?? 'unknown';
     switch (type) {
       case 'message':
-        final username = message.senderUsername as String?;
+        final username = message.data['senderUsername'] as String?;
         _goToProfileTab(3);
         if (username != null) unawaited(_openChatFromNotification(username));
       case 'friend_request':
