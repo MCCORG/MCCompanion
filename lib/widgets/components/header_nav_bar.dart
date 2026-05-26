@@ -59,7 +59,7 @@ class _HeaderNavButtonState extends State<_HeaderNavButton> {
       onTapCancel: () => setState(() => _pressed = false),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 100),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 7),
         decoration: BoxDecoration(
           color: _pressed
               ? AppTheme.surfaceRaised.withOpacity(0.80)

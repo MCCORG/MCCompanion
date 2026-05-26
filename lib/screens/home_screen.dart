@@ -342,39 +342,29 @@ class HomeScreenState extends State<HomeScreen> {
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-              child: Row(
-                children: [
-                  const Text(
-                    'Connector',
-                    style: TextStyle(
-                      color: Color(0xFFFFFFFF),
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  const Spacer(),
-                  HeaderNavBar(
-                    items: [
-                      if (widget.onOpenSupport != null)
-                        HeaderNavItem(
-                          label: 'Support',
-                          onTap: widget.onOpenSupport,
-                        ),
-                      if (widget.onOpenHowTo != null)
-                        HeaderNavItem(
-                          label: 'How to use',
-                          onTap: widget.onOpenHowTo,
-                        ),
-                      if (widget.onOpenConsole != null)
-                        HeaderNavItem(
-                          label: 'Console',
-                          onTap: widget.onOpenConsole,
-                        ),
-                      if (widget.onOpenMore != null)
-                        HeaderNavItem(label: 'Relay', onTap: widget.onOpenMore),
-                    ],
-                  ),
-                ],
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: HeaderNavBar(
+                  items: [
+                    if (widget.onOpenSupport != null)
+                      HeaderNavItem(
+                        label: 'Support',
+                        onTap: widget.onOpenSupport,
+                      ),
+                    if (widget.onOpenHowTo != null)
+                      HeaderNavItem(
+                        label: 'How to use',
+                        onTap: widget.onOpenHowTo,
+                      ),
+                    if (widget.onOpenConsole != null)
+                      HeaderNavItem(
+                        label: 'Console',
+                        onTap: widget.onOpenConsole,
+                      ),
+                    if (widget.onOpenMore != null)
+                      HeaderNavItem(label: 'Relay', onTap: widget.onOpenMore),
+                  ],
+                ),
               ),
             ),
             Expanded(

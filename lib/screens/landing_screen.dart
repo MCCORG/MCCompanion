@@ -44,18 +44,9 @@ class LandingScreen extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
           child: Builder(builder: (context) {
             final l = AppLocalizations.of(context)!;
-            return Row(
-            children: [
-              Text(
-                l.home,
-                style: const TextStyle(
-                  color: Color(0xFFFFFFFF),
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              const Spacer(),
-              HeaderNavBar(
+            return Align(
+              alignment: Alignment.centerRight,
+              child: HeaderNavBar(
                 items: [
                   HeaderNavItem(label: l.website, onTap: onWebsiteTap),
                   HeaderNavItem(label: l.discord, onTap: onDiscordTap),
@@ -63,8 +54,8 @@ class LandingScreen extends StatelessWidget {
                   HeaderNavItem(label: l.info, onTap: onInfoTap),
                 ],
               ),
-            ],
-          );}),
+            );
+          }),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14),

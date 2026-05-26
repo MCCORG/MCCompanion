@@ -475,32 +475,16 @@ class SkinsScreenState extends State<SkinsScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  l.navSkins,
-                  style: const TextStyle(
-                    color: AppTheme.textPrimary,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-              HeaderNavBar(
-                items: [
-                  HeaderNavItem(label: l.skinsUpload, onTap: _uploadSkin),
-                  HeaderNavItem(label: l.skinsCreate, onTap: () => _openEditor(null)),
-                ],
-              ),
-            ],
+          Align(
+            alignment: Alignment.centerRight,
+            child: HeaderNavBar(
+              items: [
+                HeaderNavItem(label: l.skinsUpload, onTap: _uploadSkin),
+                HeaderNavItem(label: l.skinsCreate, onTap: () => _openEditor(null)),
+              ],
+            ),
           ),
-          const SizedBox(height: 4),
-          Text(
-            l.skinsSubtitle,
-            style: const TextStyle(color: AppTheme.textSecondary, fontSize: 13),
-          ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
           _buildSavedSkins(l),
           const SizedBox(height: 28),
           _buildYourSkins(l),
