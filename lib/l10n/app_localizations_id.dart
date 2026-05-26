@@ -407,4 +407,291 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get couldNotOpenUrl => 'Tidak dapat membuka URL';
+
+  @override
+  String get reportUser => 'Laporkan pengguna';
+  @override
+  String reportUserWithName(String username) => 'Laporkan @$username';
+  @override
+  String get reportMessage => 'Laporkan pesan';
+  @override
+  String get reportDisclaimer => 'Tim kami akan meninjau laporan ini. Terima kasih telah menjaga keamanan komunitas.';
+  @override
+  String get reportReasonSpam => 'Spam';
+  @override
+  String get reportReasonHarassment => 'Pelecehan atau perundungan';
+  @override
+  String get reportReasonInappropriate => 'Konten tidak pantas';
+  @override
+  String get reportReasonOther => 'Lainnya';
+  @override
+  String get reportAdditionalDetails => 'Detail tambahan (opsional)';
+  @override
+  String get reportSubmit => 'Kirim laporan';
+  @override
+  String get reportSuccess => 'Laporan terkirim. Terima kasih.';
+  @override
+  String get reportFailed => 'Tidak dapat mengirim laporan. Silakan coba lagi.';
+  @override
+  String get messagePlaceholder => 'Pesan...';
+  @override
+  String get noMessagesYet => 'Belum ada pesan.\nSapa duluan!';
+  @override
+  String get today => 'Hari ini';
+  @override
+  String get yesterday => 'Kemarin';
+  @override
+  String get noConversationsYet => 'Belum ada percakapan';
+  @override
+  String get startChatHint => 'Mulai obrolan dari daftar teman Anda.';
+  @override
+  String get youPrefix => 'Anda';
+  @override
+  String get tabProfile => 'PROFIL';
+  @override
+  String get tabFriends => 'TEMAN';
+  @override
+  String get tabRequests => 'PERMINTAAN';
+  @override
+  String get tabChats => 'OBROLAN';
+  @override
+  String get addFriend => 'Tambah teman';
+  @override
+  String get usernameHint => 'nama pengguna';
+  @override
+  String get send => 'Kirim';
+  @override
+  String friendRequestSentTo(String username) => 'Permintaan pertemanan dikirim ke @$username';
+  @override
+  String alreadyFriendsWith(String username) => 'Anda sudah berteman dengan @$username.';
+  @override
+  String requestAlreadyPending(String username) => 'Sudah ada permintaan yang tertunda dengan @$username.';
+  @override
+  String userNotFoundMsg(String username) => 'Pengguna @$username tidak ditemukan.';
+  @override
+  String cannotSendRequest(String username) => 'Anda tidak dapat mengirim permintaan ke @$username.';
+  @override
+  String get somethingWentWrong => 'Terjadi kesalahan. Silakan coba lagi.';
+  @override
+  String friendRequestAccepted(String username) => 'Permintaan pertemanan dari @$username diterima';
+  @override
+  String requestDeclined(String username) => 'Permintaan dari @$username ditolak';
+  @override
+  String get deleteAccountTitle => 'Hapus akun';
+  @override
+  String get deleteAccountBody => 'Ini akan menghapus akun, pesan, teman, dan semua data terkait secara permanen. Tindakan ini tidak dapat dibatalkan.';
+  @override
+  String get deletePermanently => 'Hapus secara permanen';
+  @override
+  String get couldNotDeleteAccount => 'Tidak dapat menghapus akun. Silakan coba lagi.';
+  @override
+  String get removeFriendTitle => 'Hapus teman';
+  @override
+  String removeFriendConfirm(String username) => 'Ingin menghapus @$username sebagai teman?';
+  @override
+  String get remove => 'Hapus';
+  @override
+  String friendRemoved(String username) => '@$username dihapus dari teman Anda';
+  @override
+  String get noFriendsYet => 'Belum ada teman';
+  @override
+  String get noFriendsSub => 'Tambahkan seseorang menggunakan tombol di kanan atas.';
+  @override
+  String get noPendingRequests => 'Tidak ada permintaan yang tertunda';
+  @override
+  String get requestsAppearHere => 'Permintaan pertemanan akan muncul di sini.';
+  @override
+  String onlineFriendsLabel(int count) => 'ONLINE — $count';
+  @override
+  String offlineFriendsLabel(int count) => 'OFFLINE — $count';
+  @override
+  String get couldNotUpdateVisibility => 'Tidak dapat memperbarui visibilitas. Coba lagi.';
+  @override
+  String get aboutMe => 'Tentang saya';
+  @override
+  String get linkedAccountsTitle => 'Akun terhubung';
+  @override
+  String get linkAccountsHint => 'Hubungkan akun Minecraft Anda untuk ditampilkan di profil.';
+  @override
+  String get unlinkXboxTitle => 'Putuskan akun Xbox';
+  @override
+  String removeLabelConfirm(String label) => 'Hapus $label dari akun terhubung?';
+  @override
+  String get unlinkJavaTitle => 'Putuskan Java Edition';
+  @override
+  String removeJavaConfirm(String username) => 'Hapus $username dari akun terhubung?';
+  @override
+  String get unlink => 'Putuskan';
+  @override
+  String get linkXbox => 'Hubungkan Xbox';
+  @override
+  String get linkJava => 'Hubungkan Java';
+  @override
+  String get appearOfflineLabel => 'Tampil offline';
+  @override
+  String get appearOfflineOn => 'Teman melihat Anda sebagai offline';
+  @override
+  String get appearOfflineOff => 'Teman dapat melihat saat Anda online';
+  @override
+  String get signOut => 'Keluar';
+  @override
+  String get profileCardTitle => 'Profil';
+  @override
+  String get edit => 'Edit';
+  @override
+  String get displayNameLabel => 'Nama tampilan';
+  @override
+  String get bioLabel => 'Bio';
+  @override
+  String get yourNameHint => 'Nama Anda';
+  @override
+  String get bioHint => 'Ceritakan sesuatu tentang diri Anda';
+  @override
+  String get avatarUrlLabel => 'URL avatar';
+  @override
+  String get usernameDisplayLabel => 'Nama pengguna';
+  @override
+  String get profileUpdated => 'Profil diperbarui';
+  @override
+  String get findUser => 'Cari pengguna';
+  @override
+  String get signIn => 'Masuk';
+  @override
+  String get createAccount => 'Buat akun';
+  @override
+  String get signInSubtitle => 'Masuk untuk menambah teman dan berbagi sesi Anda.';
+  @override
+  String get emailAddressHint => 'Alamat email';
+  @override
+  String get passwordHint => 'Kata sandi';
+  @override
+  String get forgotPassword => 'Lupa kata sandi?';
+  @override
+  String get continueWithGoogle => 'Lanjutkan dengan Google';
+  @override
+  String get alreadyHaveAccount => 'Sudah punya akun? Masuk';
+  @override
+  String get noAccountYet => 'Belum punya akun? Daftar';
+  @override
+  String get orDivider => 'atau';
+  @override
+  String get resetPasswordTitle => 'Reset kata sandi';
+  @override
+  String get resetPasswordBody => 'Masukkan alamat email Anda dan kami akan mengirim tautan untuk mereset kata sandi.';
+  @override
+  String get sendLink => 'Kirim tautan';
+  @override
+  String resetLinkSent(String email) => 'Tautan reset dikirim ke $email';
+  @override
+  String get noAccountForEmail => 'Tidak ada akun yang ditemukan untuk alamat email ini.';
+  @override
+  String get invalidEmailError => 'Alamat email tidak valid.';
+  @override
+  String get couldNotSendResetEmail => 'Tidak dapat mengirim email reset. Silakan coba lagi.';
+  @override
+  String get incorrectEmailOrPassword => 'Email atau kata sandi salah.';
+  @override
+  String get emailAlreadyInUse => 'Alamat email ini sudah digunakan.';
+  @override
+  String get weakPassword => 'Kata sandi harus minimal 6 karakter.';
+  @override
+  String get googleSignInFailed => 'Masuk dengan Google gagal. Silakan coba lagi.';
+  @override
+  String get appleSignInFailed => 'Masuk dengan Apple gagal. Silakan coba lagi.';
+  @override
+  String get emailDifferentMethod => 'Akun dengan email ini sudah ada menggunakan metode masuk yang berbeda.';
+  @override
+  String get enterEmailAndPassword => 'Silakan masukkan email dan kata sandi Anda.';
+  @override
+  String get profileNotSetUp => 'Profil belum disiapkan';
+  @override
+  String get chooseUsernameSubtitle => 'Pilih nama pengguna untuk menambah teman dan berbagi sesi Anda.';
+  @override
+  String get createProfile => 'Buat profil';
+  @override
+  String get chooseUniqueUsername => 'Pilih nama pengguna unik untuk menambah teman.';
+  @override
+  String get usernameFieldLabel => 'Nama pengguna *';
+  @override
+  String get usernameFormatHint => '3–20 karakter · hanya a-z, 0-9 dan _';
+  @override
+  String get displayNameOptional => 'Nama tampilan (opsional)';
+  @override
+  String get usernameRequired => 'Silakan masukkan nama pengguna.';
+  @override
+  String get usernameFormatError => '3–20 karakter, hanya huruf kecil, angka dan _';
+  @override
+  String get usernameTaken => 'Nama pengguna ini sudah digunakan.';
+  @override
+  String get noConnectionError => 'Tidak ada koneksi. Silakan coba lagi.';
+  @override
+  String get usernameExampleHint => 'mis. jens_mc';
+  @override
+  String get displayNameExampleHint => 'mis. Jens';
+  @override
+  String get home => 'Beranda';
+  @override
+  String get info => 'Info';
+  @override
+  String get consoleConnect => 'Console Connect';
+  @override
+  String get consoleConnectSubtitle => 'Sambungkan ke server Minecraft';
+  @override
+  String get minecraftSkins => 'Skin Minecraft';
+  @override
+  String get minecraftSkinsSubtitle => 'Lihat & edit skin Java & Bedrock';
+  @override
+  String get minecraftWiki => 'Wiki Minecraft';
+  @override
+  String get minecraftWikiSubtitle => 'Mob, blok, resep & lainnya';
+  @override
+  String get partnerServersLabel => 'Server Mitra';
+  @override
+  String get partnerServersSubtitle => 'Server Minecraft unggulan';
+  @override
+  String get userLookup => 'Pencarian Pengguna Minecraft';
+  @override
+  String get userLookupSubtitle => 'Cari profil Java & Bedrock';
+
+  @override
+  String get navSkins => 'Skins';
+  @override
+  String get navWiki => 'Wiki';
+  @override
+  String get navProfile => 'Profil';
+
+  @override
+  String get skinsUpload => 'Unggah';
+  @override
+  String get skinsCreate => 'Buat';
+  @override
+  String get skinsSubtitle => 'Lihat dan unduh skin Minecraft.';
+  @override
+  String get skinsSectionRecent => 'SKIN TERBARU';
+  @override
+  String get skinsSectionMy => 'SKIN SAYA';
+  @override
+  String get skinsSectionYours => 'SKIN ANDA';
+  @override
+  String get skinsEmptyMySkins => 'Belum ada skin tersimpan. Buat atau unggah skin untuk memulai.';
+  @override
+  String get skinsCouldNotLoad => 'Tidak dapat memuat skin';
+  @override
+  String skinsPageOf(int page, int total) => 'Halaman $page / $total';
+  @override
+  String get skinsMustBe64 => 'Skin harus berukuran 64×64 piksel';
+  @override
+  String get skinsInvalidFile => 'File gambar tidak valid';
+  @override
+  String get skinsDownload => 'Unduh';
+  @override
+  String get skinsEdit => 'Edit';
+  @override
+  String get skinsNoAccountsTitle => 'Tidak ada akun yang terhubung';
+  @override
+  String get skinsNoAccountsSubtitle => 'Hubungkan Java atau Bedrock di Profil untuk melihat skin Anda.';
+  @override
+  String get skinsSignInTitle => 'Masuk untuk melihat skin Anda';
+  @override
+  String get skinsSignInSubtitle => 'Buat akun dan hubungkan Java atau Bedrock di Profil.';
 }

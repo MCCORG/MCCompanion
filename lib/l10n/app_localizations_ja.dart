@@ -407,4 +407,291 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get couldNotOpenUrl => 'URL を開けませんでした';
+
+  @override
+  String get reportUser => 'ユーザーを報告';
+  @override
+  String reportUserWithName(String username) => '@$username を報告';
+  @override
+  String get reportMessage => 'メッセージを報告';
+  @override
+  String get reportDisclaimer => 'チームがこの報告を確認します。コミュニティを安全に保つためにご協力ありがとうございます。';
+  @override
+  String get reportReasonSpam => 'スパム';
+  @override
+  String get reportReasonHarassment => 'ハラスメントまたはいじめ';
+  @override
+  String get reportReasonInappropriate => '不適切なコンテンツ';
+  @override
+  String get reportReasonOther => 'その他';
+  @override
+  String get reportAdditionalDetails => '追加の詳細（任意）';
+  @override
+  String get reportSubmit => '報告を送信';
+  @override
+  String get reportSuccess => '報告を送信しました。ありがとうございます。';
+  @override
+  String get reportFailed => '報告を送信できませんでした。もう一度お試しください。';
+  @override
+  String get messagePlaceholder => 'メッセージ...';
+  @override
+  String get noMessagesYet => 'まだメッセージはありません。\nこんにちはと言ってみましょう！';
+  @override
+  String get today => '今日';
+  @override
+  String get yesterday => '昨日';
+  @override
+  String get noConversationsYet => 'まだ会話がありません';
+  @override
+  String get startChatHint => 'フレンドリストからチャットを始めましょう。';
+  @override
+  String get youPrefix => 'あなた';
+  @override
+  String get tabProfile => 'プロフィール';
+  @override
+  String get tabFriends => 'フレンド';
+  @override
+  String get tabRequests => 'リクエスト';
+  @override
+  String get tabChats => 'チャット';
+  @override
+  String get addFriend => 'フレンドを追加';
+  @override
+  String get usernameHint => 'ユーザー名';
+  @override
+  String get send => '送信';
+  @override
+  String friendRequestSentTo(String username) => '@$username にフレンドリクエストを送信しました';
+  @override
+  String alreadyFriendsWith(String username) => '@$username とすでにフレンドです。';
+  @override
+  String requestAlreadyPending(String username) => '@$username との保留中のリクエストがすでにあります。';
+  @override
+  String userNotFoundMsg(String username) => 'ユーザー @$username が見つかりません。';
+  @override
+  String cannotSendRequest(String username) => '@$username にリクエストを送信できません。';
+  @override
+  String get somethingWentWrong => '問題が発生しました。もう一度お試しください。';
+  @override
+  String friendRequestAccepted(String username) => '@$username からのフレンドリクエストを承認しました';
+  @override
+  String requestDeclined(String username) => '@$username からのリクエストを拒否しました';
+  @override
+  String get deleteAccountTitle => 'アカウントを削除';
+  @override
+  String get deleteAccountBody => 'アカウント、メッセージ、フレンド、および関連するすべてのデータが完全に削除されます。この操作は元に戻せません。';
+  @override
+  String get deletePermanently => '完全に削除';
+  @override
+  String get couldNotDeleteAccount => 'アカウントを削除できませんでした。もう一度お試しください。';
+  @override
+  String get removeFriendTitle => 'フレンドを削除';
+  @override
+  String removeFriendConfirm(String username) => '@$username をフレンドから削除しますか？';
+  @override
+  String get remove => '削除';
+  @override
+  String friendRemoved(String username) => '@$username をフレンドから削除しました';
+  @override
+  String get noFriendsYet => 'まだフレンドがいません';
+  @override
+  String get noFriendsSub => '右上のボタンを使って誰かを追加してください。';
+  @override
+  String get noPendingRequests => '保留中のリクエストはありません';
+  @override
+  String get requestsAppearHere => 'フレンドリクエストがここに表示されます。';
+  @override
+  String onlineFriendsLabel(int count) => 'オンライン — $count';
+  @override
+  String offlineFriendsLabel(int count) => 'オフライン — $count';
+  @override
+  String get couldNotUpdateVisibility => '表示設定を更新できませんでした。もう一度お試しください。';
+  @override
+  String get aboutMe => '自己紹介';
+  @override
+  String get linkedAccountsTitle => '連携アカウント';
+  @override
+  String get linkAccountsHint => 'Minecraftアカウントを連携してプロフィールに表示しましょう。';
+  @override
+  String get unlinkXboxTitle => 'Xboxアカウントの連携を解除';
+  @override
+  String removeLabelConfirm(String label) => '$label を連携アカウントから削除しますか？';
+  @override
+  String get unlinkJavaTitle => 'Java Editionの連携を解除';
+  @override
+  String removeJavaConfirm(String username) => '$username を連携アカウントから削除しますか？';
+  @override
+  String get unlink => '連携解除';
+  @override
+  String get linkXbox => 'Xboxを連携';
+  @override
+  String get linkJava => 'Javaを連携';
+  @override
+  String get appearOfflineLabel => 'オフラインとして表示';
+  @override
+  String get appearOfflineOn => 'フレンドにはオフラインと表示されます';
+  @override
+  String get appearOfflineOff => 'フレンドはあなたがオンラインかどうか確認できます';
+  @override
+  String get signOut => 'サインアウト';
+  @override
+  String get profileCardTitle => 'プロフィール';
+  @override
+  String get edit => '編集';
+  @override
+  String get displayNameLabel => '表示名';
+  @override
+  String get bioLabel => '自己紹介';
+  @override
+  String get yourNameHint => 'あなたの名前';
+  @override
+  String get bioHint => '自分について何か書いてください';
+  @override
+  String get avatarUrlLabel => 'アバターURL';
+  @override
+  String get usernameDisplayLabel => 'ユーザー名';
+  @override
+  String get profileUpdated => 'プロフィールを更新しました';
+  @override
+  String get findUser => 'ユーザーを検索';
+  @override
+  String get signIn => 'サインイン';
+  @override
+  String get createAccount => 'アカウントを作成';
+  @override
+  String get signInSubtitle => 'サインインしてフレンドを追加しセッションを共有しましょう。';
+  @override
+  String get emailAddressHint => 'メールアドレス';
+  @override
+  String get passwordHint => 'パスワード';
+  @override
+  String get forgotPassword => 'パスワードをお忘れですか？';
+  @override
+  String get continueWithGoogle => 'Googleで続ける';
+  @override
+  String get alreadyHaveAccount => 'すでにアカウントをお持ちですか？ サインイン';
+  @override
+  String get noAccountYet => 'アカウントをお持ちでないですか？ 登録';
+  @override
+  String get orDivider => 'または';
+  @override
+  String get resetPasswordTitle => 'パスワードをリセット';
+  @override
+  String get resetPasswordBody => 'メールアドレスを入力してください。パスワードリセット用のリンクをお送りします。';
+  @override
+  String get sendLink => 'リンクを送信';
+  @override
+  String resetLinkSent(String email) => 'リセットリンクを $email に送信しました';
+  @override
+  String get noAccountForEmail => 'このメールアドレスのアカウントが見つかりません。';
+  @override
+  String get invalidEmailError => '無効なメールアドレスです。';
+  @override
+  String get couldNotSendResetEmail => 'リセットメールを送信できませんでした。もう一度お試しください。';
+  @override
+  String get incorrectEmailOrPassword => 'メールアドレスまたはパスワードが正しくありません。';
+  @override
+  String get emailAlreadyInUse => 'このメールアドレスはすでに使用されています。';
+  @override
+  String get weakPassword => 'パスワードは6文字以上である必要があります。';
+  @override
+  String get googleSignInFailed => 'Googleサインインに失敗しました。もう一度お試しください。';
+  @override
+  String get appleSignInFailed => 'Appleサインインに失敗しました。もう一度お試しください。';
+  @override
+  String get emailDifferentMethod => 'このメールアドレスは別のサインイン方法で登録済みです。';
+  @override
+  String get enterEmailAndPassword => 'メールアドレスとパスワードを入力してください。';
+  @override
+  String get profileNotSetUp => 'プロフィールがまだ設定されていません';
+  @override
+  String get chooseUsernameSubtitle => 'フレンドを追加してセッションを共有するためにユーザー名を選択してください。';
+  @override
+  String get createProfile => 'プロフィールを作成';
+  @override
+  String get chooseUniqueUsername => 'フレンドを追加するためにユニークなユーザー名を選択してください。';
+  @override
+  String get usernameFieldLabel => 'ユーザー名 *';
+  @override
+  String get usernameFormatHint => '3〜20文字 · a-z、0-9、_ のみ';
+  @override
+  String get displayNameOptional => '表示名（任意）';
+  @override
+  String get usernameRequired => 'ユーザー名を入力してください。';
+  @override
+  String get usernameFormatError => '3〜20文字、英小文字・数字・_ のみ';
+  @override
+  String get usernameTaken => 'このユーザー名はすでに使用されています。';
+  @override
+  String get noConnectionError => '接続がありません。もう一度お試しください。';
+  @override
+  String get usernameExampleHint => '例：jens_mc';
+  @override
+  String get displayNameExampleHint => '例：Jens';
+  @override
+  String get home => 'ホーム';
+  @override
+  String get info => '情報';
+  @override
+  String get consoleConnect => 'Console Connect';
+  @override
+  String get consoleConnectSubtitle => 'Minecraftサーバーに接続';
+  @override
+  String get minecraftSkins => 'Minecraftスキン';
+  @override
+  String get minecraftSkinsSubtitle => 'JavaとBedrockのスキンを表示・編集';
+  @override
+  String get minecraftWiki => 'Minecraft Wiki';
+  @override
+  String get minecraftWikiSubtitle => 'モブ、ブロック、レシピなど';
+  @override
+  String get partnerServersLabel => 'パートナーサーバー';
+  @override
+  String get partnerServersSubtitle => 'おすすめのMinecraftサーバー';
+  @override
+  String get userLookup => 'Minecraftユーザー検索';
+  @override
+  String get userLookupSubtitle => 'JavaとBedrockのプロフィールを検索';
+
+  @override
+  String get navSkins => 'スキン';
+  @override
+  String get navWiki => 'Wiki';
+  @override
+  String get navProfile => 'プロフィール';
+
+  @override
+  String get skinsUpload => 'アップロード';
+  @override
+  String get skinsCreate => '作成';
+  @override
+  String get skinsSubtitle => 'Minecraftのスキンを表示・ダウンロード。';
+  @override
+  String get skinsSectionRecent => '最近のスキン';
+  @override
+  String get skinsSectionMy => 'マイスキン';
+  @override
+  String get skinsSectionYours => 'あなたのスキン';
+  @override
+  String get skinsEmptyMySkins => 'スキンが保存されていません。スキンを作成またはアップロードしてください。';
+  @override
+  String get skinsCouldNotLoad => 'スキンを読み込めませんでした';
+  @override
+  String skinsPageOf(int page, int total) => '$page / $total ページ';
+  @override
+  String get skinsMustBe64 => 'スキンは64×64ピクセルでなければなりません';
+  @override
+  String get skinsInvalidFile => '無効な画像ファイルです';
+  @override
+  String get skinsDownload => 'ダウンロード';
+  @override
+  String get skinsEdit => '編集';
+  @override
+  String get skinsNoAccountsTitle => 'アカウントが連携されていません';
+  @override
+  String get skinsNoAccountsSubtitle => 'スキンを表示するにはプロフィールでJavaまたはBedrockを連携してください。';
+  @override
+  String get skinsSignInTitle => 'スキンを表示するにはサインイン';
+  @override
+  String get skinsSignInSubtitle => 'アカウントを作成し、プロフィールでJavaまたはBedrockを連携してください。';
 }

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static const Color accent      = Color(0xFF6B8EF7); 
+  static const Color brand      = Color(0xFF67E404);
+  static const Color brandDim   = Color(0xFF4DAF00);
+
+  static const Color accent      = Color(0xFF6B8EF7);
   static const Color accentLight = Color(0xFF8FAAFF);
   static const Color accentDark  = Color(0xFF4A6BD6);
 

@@ -407,4 +407,291 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get couldNotOpenUrl => 'Haikuweza kufungua URL';
+
+  @override
+  String get reportUser => 'Ripoti mtumiaji';
+  @override
+  String reportUserWithName(String username) => 'Ripoti @$username';
+  @override
+  String get reportMessage => 'Ripoti ujumbe';
+  @override
+  String get reportDisclaimer => 'Timu yetu itapitia ripoti hii. Asante kwa kulinda usalama wa jamii.';
+  @override
+  String get reportReasonSpam => 'Barua taka';
+  @override
+  String get reportReasonHarassment => 'Unyanyasaji au udhalimu';
+  @override
+  String get reportReasonInappropriate => 'Maudhui yasiyofaa';
+  @override
+  String get reportReasonOther => 'Nyingine';
+  @override
+  String get reportAdditionalDetails => 'Maelezo ya ziada (hiari)';
+  @override
+  String get reportSubmit => 'Tuma ripoti';
+  @override
+  String get reportSuccess => 'Ripoti imetumwa. Asante.';
+  @override
+  String get reportFailed => 'Imeshindwa kutuma ripoti. Jaribu tena.';
+  @override
+  String get messagePlaceholder => 'Ujumbe...';
+  @override
+  String get noMessagesYet => 'Hakuna ujumbe bado.\nSema habari!';
+  @override
+  String get today => 'Leo';
+  @override
+  String get yesterday => 'Jana';
+  @override
+  String get noConversationsYet => 'Hakuna mazungumzo bado';
+  @override
+  String get startChatHint => 'Anza mazungumzo kutoka kwenye orodha ya marafiki.';
+  @override
+  String get youPrefix => 'Wewe';
+  @override
+  String get tabProfile => 'WASIFU';
+  @override
+  String get tabFriends => 'MARAFIKI';
+  @override
+  String get tabRequests => 'MAOMBI';
+  @override
+  String get tabChats => 'MAZUNGUMZO';
+  @override
+  String get addFriend => 'Ongeza rafiki';
+  @override
+  String get usernameHint => 'jina la mtumiaji';
+  @override
+  String get send => 'Tuma';
+  @override
+  String friendRequestSentTo(String username) => 'Ombi la urafiki limetumwa kwa @$username';
+  @override
+  String alreadyFriendsWith(String username) => 'Tayari ni marafiki na @$username.';
+  @override
+  String requestAlreadyPending(String username) => 'Tayari kuna ombi linalosubiri na @$username.';
+  @override
+  String userNotFoundMsg(String username) => 'Mtumiaji @$username hajapatikana.';
+  @override
+  String cannotSendRequest(String username) => 'Huwezi kutuma ombi kwa @$username.';
+  @override
+  String get somethingWentWrong => 'Kitu kimekwenda vibaya. Jaribu tena.';
+  @override
+  String friendRequestAccepted(String username) => 'Ombi la urafiki kutoka @$username limekubaliwa';
+  @override
+  String requestDeclined(String username) => 'Ombi kutoka @$username limekataliwa';
+  @override
+  String get deleteAccountTitle => 'Futa akaunti';
+  @override
+  String get deleteAccountBody => 'Hii itafuta akaunti yako, ujumbe, marafiki na data zote zinazohusiana milele. Hatua hii haiwezi kutenduliwa.';
+  @override
+  String get deletePermanently => 'Futa milele';
+  @override
+  String get couldNotDeleteAccount => 'Imeshindwa kufuta akaunti. Jaribu tena.';
+  @override
+  String get removeFriendTitle => 'Ondoa rafiki';
+  @override
+  String removeFriendConfirm(String username) => 'Unataka kuondoa @$username kama rafiki?';
+  @override
+  String get remove => 'Ondoa';
+  @override
+  String friendRemoved(String username) => '@$username ameondolewa kwenye marafiki wako';
+  @override
+  String get noFriendsYet => 'Hakuna marafiki bado';
+  @override
+  String get noFriendsSub => 'Ongeza mtu kwa kutumia kitufe juu kulia.';
+  @override
+  String get noPendingRequests => 'Hakuna maombi yanayosubiri';
+  @override
+  String get requestsAppearHere => 'Maombi ya urafiki yataonekana hapa.';
+  @override
+  String onlineFriendsLabel(int count) => 'MTANDAONI — $count';
+  @override
+  String offlineFriendsLabel(int count) => 'NJE YA MTANDAO — $count';
+  @override
+  String get couldNotUpdateVisibility => 'Imeshindwa kusasisha mwonekano. Jaribu tena.';
+  @override
+  String get aboutMe => 'Kuhusu mimi';
+  @override
+  String get linkedAccountsTitle => 'Akaunti zilizounganishwa';
+  @override
+  String get linkAccountsHint => 'Unganisha akaunti zako za Minecraft kuzionyesha kwenye wasifu wako.';
+  @override
+  String get unlinkXboxTitle => 'Tenganisha akaunti ya Xbox';
+  @override
+  String removeLabelConfirm(String label) => 'Ondoa $label kutoka kwenye akaunti zilizounganishwa?';
+  @override
+  String get unlinkJavaTitle => 'Tenganisha Java Edition';
+  @override
+  String removeJavaConfirm(String username) => 'Ondoa $username kutoka kwenye akaunti zilizounganishwa?';
+  @override
+  String get unlink => 'Tenganisha';
+  @override
+  String get linkXbox => 'Unganisha Xbox';
+  @override
+  String get linkJava => 'Unganisha Java';
+  @override
+  String get appearOfflineLabel => 'Onekana nje ya mtandao';
+  @override
+  String get appearOfflineOn => 'Marafiki wanakuona nje ya mtandao';
+  @override
+  String get appearOfflineOff => 'Marafiki wanaweza kuona unapokuwa mtandaoni';
+  @override
+  String get signOut => 'Toka';
+  @override
+  String get profileCardTitle => 'Wasifu';
+  @override
+  String get edit => 'Hariri';
+  @override
+  String get displayNameLabel => 'Jina la kuonyesha';
+  @override
+  String get bioLabel => 'Bio';
+  @override
+  String get yourNameHint => 'Jina lako';
+  @override
+  String get bioHint => 'Jiambie kidogo kuhusu wewe mwenyewe';
+  @override
+  String get avatarUrlLabel => 'URL ya avatar';
+  @override
+  String get usernameDisplayLabel => 'Jina la mtumiaji';
+  @override
+  String get profileUpdated => 'Wasifu umesasishwa';
+  @override
+  String get findUser => 'Tafuta mtumiaji';
+  @override
+  String get signIn => 'Ingia';
+  @override
+  String get createAccount => 'Fungua akaunti';
+  @override
+  String get signInSubtitle => 'Ingia ili kuongeza marafiki na kushiriki vikao vyako.';
+  @override
+  String get emailAddressHint => 'Anwani ya barua pepe';
+  @override
+  String get passwordHint => 'Nenosiri';
+  @override
+  String get forgotPassword => 'Umesahau nenosiri?';
+  @override
+  String get continueWithGoogle => 'Endelea na Google';
+  @override
+  String get alreadyHaveAccount => 'Una akaunti tayari? Ingia';
+  @override
+  String get noAccountYet => 'Bado huna akaunti? Jisajili';
+  @override
+  String get orDivider => 'au';
+  @override
+  String get resetPasswordTitle => 'Weka upya nenosiri';
+  @override
+  String get resetPasswordBody => 'Ingiza anwani yako ya barua pepe na tutakutumia kiungo cha kuweka upya nenosiri lako.';
+  @override
+  String get sendLink => 'Tuma kiungo';
+  @override
+  String resetLinkSent(String email) => 'Kiungo cha kuweka upya kimetumwa kwa $email';
+  @override
+  String get noAccountForEmail => 'Hakuna akaunti iliyopatikana kwa anwani hii ya barua pepe.';
+  @override
+  String get invalidEmailError => 'Anwani ya barua pepe si sahihi.';
+  @override
+  String get couldNotSendResetEmail => 'Imeshindwa kutuma barua pepe ya kuweka upya. Jaribu tena.';
+  @override
+  String get incorrectEmailOrPassword => 'Barua pepe au nenosiri si sahihi.';
+  @override
+  String get emailAlreadyInUse => 'Anwani hii ya barua pepe tayari inatumika.';
+  @override
+  String get weakPassword => 'Nenosiri lazima liwe na herufi angalau 6.';
+  @override
+  String get googleSignInFailed => 'Kuingia kwa Google kumeshindwa. Jaribu tena.';
+  @override
+  String get appleSignInFailed => 'Kuingia kwa Apple kumeshindwa. Jaribu tena.';
+  @override
+  String get emailDifferentMethod => 'Akaunti tayari ipo na barua pepe hii kwa njia tofauti ya kuingia.';
+  @override
+  String get enterEmailAndPassword => 'Tafadhali ingiza barua pepe na nenosiri lako.';
+  @override
+  String get profileNotSetUp => 'Wasifu bado haujasanidiwa';
+  @override
+  String get chooseUsernameSubtitle => 'Chagua jina la mtumiaji ili kuongeza marafiki na kushiriki vikao vyako.';
+  @override
+  String get createProfile => 'Unda wasifu';
+  @override
+  String get chooseUniqueUsername => 'Chagua jina la mtumiaji la kipekee ili kuongeza marafiki.';
+  @override
+  String get usernameFieldLabel => 'Jina la mtumiaji *';
+  @override
+  String get usernameFormatHint => 'Herufi 3–20 · a-z, 0-9 na _ tu';
+  @override
+  String get displayNameOptional => 'Jina la kuonyesha (hiari)';
+  @override
+  String get usernameRequired => 'Tafadhali ingiza jina la mtumiaji.';
+  @override
+  String get usernameFormatError => 'Herufi 3–20, herufi ndogo, nambari na _ tu';
+  @override
+  String get usernameTaken => 'Jina hili la mtumiaji tayari linachukuliwa.';
+  @override
+  String get noConnectionError => 'Hakuna muunganisho. Jaribu tena.';
+  @override
+  String get usernameExampleHint => 'mfano: jens_mc';
+  @override
+  String get displayNameExampleHint => 'mfano: Jens';
+  @override
+  String get home => 'Nyumbani';
+  @override
+  String get info => 'Maelezo';
+  @override
+  String get consoleConnect => 'Console Connect';
+  @override
+  String get consoleConnectSubtitle => 'Unganika na seva za Minecraft';
+  @override
+  String get minecraftSkins => 'Nguo za Minecraft';
+  @override
+  String get minecraftSkinsSubtitle => 'Ona na hariri nguo za Java na Bedrock';
+  @override
+  String get minecraftWiki => 'Wiki ya Minecraft';
+  @override
+  String get minecraftWikiSubtitle => 'Viumbe, vitalu, mapishi na zaidi';
+  @override
+  String get partnerServersLabel => 'Seva za Washirika';
+  @override
+  String get partnerServersSubtitle => 'Seva maarufu za Minecraft';
+  @override
+  String get userLookup => 'Utafutaji wa Mtumiaji wa Minecraft';
+  @override
+  String get userLookupSubtitle => 'Tafuta maelezo ya Java na Bedrock';
+
+  @override
+  String get navSkins => 'Skins';
+  @override
+  String get navWiki => 'Wiki';
+  @override
+  String get navProfile => 'Wasifu';
+
+  @override
+  String get skinsUpload => 'Pakia';
+  @override
+  String get skinsCreate => 'Unda';
+  @override
+  String get skinsSubtitle => 'Tazama na pakua skins za Minecraft.';
+  @override
+  String get skinsSectionRecent => 'SKINS ZA HIVI KARIBUNI';
+  @override
+  String get skinsSectionMy => 'SKINS ZANGU';
+  @override
+  String get skinsSectionYours => 'SKINS ZAKO';
+  @override
+  String get skinsEmptyMySkins => 'Hakuna skins zilizohifadhiwa bado. Unda au pakia skin ili kuanza.';
+  @override
+  String get skinsCouldNotLoad => 'Haikuwezekana kupakia skins';
+  @override
+  String skinsPageOf(int page, int total) => 'Ukurasa $page / $total';
+  @override
+  String get skinsMustBe64 => 'Skin lazima iwe pikseli 64×64';
+  @override
+  String get skinsInvalidFile => 'Faili la picha lisilo sahihi';
+  @override
+  String get skinsDownload => 'Pakua';
+  @override
+  String get skinsEdit => 'Hariri';
+  @override
+  String get skinsNoAccountsTitle => 'Hakuna akaunti zilizounganishwa';
+  @override
+  String get skinsNoAccountsSubtitle => 'Unganisha Java au Bedrock kwenye Wasifu kuona skin yako.';
+  @override
+  String get skinsSignInTitle => 'Ingia ili kuona skin yako';
+  @override
+  String get skinsSignInSubtitle => 'Unda akaunti na uunganishe Java au Bedrock kwenye Wasifu.';
 }

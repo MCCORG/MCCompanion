@@ -407,4 +407,291 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get couldNotOpenUrl => 'تعذر فتح الرابط';
+
+  @override
+  String get reportUser => 'الإبلاغ عن المستخدم';
+  @override
+  String reportUserWithName(String username) => 'الإبلاغ عن @$username';
+  @override
+  String get reportMessage => 'الإبلاغ عن الرسالة';
+  @override
+  String get reportDisclaimer => 'سيراجع فريقنا هذا التقرير. شكرًا لحفاظك على سلامة المجتمع.';
+  @override
+  String get reportReasonSpam => 'بريد مزعج';
+  @override
+  String get reportReasonHarassment => 'مضايقة أو تنمر';
+  @override
+  String get reportReasonInappropriate => 'محتوى غير لائق';
+  @override
+  String get reportReasonOther => 'أخرى';
+  @override
+  String get reportAdditionalDetails => 'تفاصيل إضافية (اختياري)';
+  @override
+  String get reportSubmit => 'إرسال التقرير';
+  @override
+  String get reportSuccess => 'تم إرسال التقرير. شكرًا.';
+  @override
+  String get reportFailed => 'تعذر إرسال التقرير. يرجى المحاولة مجددًا.';
+  @override
+  String get messagePlaceholder => 'رسالة...';
+  @override
+  String get noMessagesYet => 'لا رسائل بعد.\nقل مرحبًا!';
+  @override
+  String get today => 'اليوم';
+  @override
+  String get yesterday => 'أمس';
+  @override
+  String get noConversationsYet => 'لا محادثات بعد';
+  @override
+  String get startChatHint => 'ابدأ محادثة من قائمة أصدقائك.';
+  @override
+  String get youPrefix => 'أنت';
+  @override
+  String get tabProfile => 'الملف الشخصي';
+  @override
+  String get tabFriends => 'الأصدقاء';
+  @override
+  String get tabRequests => 'الطلبات';
+  @override
+  String get tabChats => 'الدردشات';
+  @override
+  String get addFriend => 'إضافة صديق';
+  @override
+  String get usernameHint => 'اسم المستخدم';
+  @override
+  String get send => 'إرسال';
+  @override
+  String friendRequestSentTo(String username) => 'تم إرسال طلب صداقة إلى @$username';
+  @override
+  String alreadyFriendsWith(String username) => 'أنت بالفعل صديق مع @$username.';
+  @override
+  String requestAlreadyPending(String username) => 'يوجد بالفعل طلب معلق مع @$username.';
+  @override
+  String userNotFoundMsg(String username) => 'المستخدم @$username غير موجود.';
+  @override
+  String cannotSendRequest(String username) => 'لا يمكنك إرسال طلب إلى @$username.';
+  @override
+  String get somethingWentWrong => 'حدث خطأ ما. يرجى المحاولة مجددًا.';
+  @override
+  String friendRequestAccepted(String username) => 'تم قبول طلب صداقة @$username';
+  @override
+  String requestDeclined(String username) => 'تم رفض طلب @$username';
+  @override
+  String get deleteAccountTitle => 'حذف الحساب';
+  @override
+  String get deleteAccountBody => 'سيؤدي هذا إلى حذف حسابك ورسائلك وأصدقائك وجميع البيانات المرتبطة بشكل دائم. لا يمكن التراجع عن هذا الإجراء.';
+  @override
+  String get deletePermanently => 'حذف نهائي';
+  @override
+  String get couldNotDeleteAccount => 'تعذر حذف الحساب. يرجى المحاولة مجددًا.';
+  @override
+  String get removeFriendTitle => 'إزالة صديق';
+  @override
+  String removeFriendConfirm(String username) => 'هل تريد إزالة @$username من أصدقائك؟';
+  @override
+  String get remove => 'إزالة';
+  @override
+  String friendRemoved(String username) => 'تمت إزالة @$username من أصدقائك';
+  @override
+  String get noFriendsYet => 'لا أصدقاء بعد';
+  @override
+  String get noFriendsSub => 'أضف شخصًا باستخدام الزر في الزاوية العلوية اليمنى.';
+  @override
+  String get noPendingRequests => 'لا طلبات معلقة';
+  @override
+  String get requestsAppearHere => 'ستظهر طلبات الصداقة هنا.';
+  @override
+  String onlineFriendsLabel(int count) => 'متصل — $count';
+  @override
+  String offlineFriendsLabel(int count) => 'غير متصل — $count';
+  @override
+  String get couldNotUpdateVisibility => 'تعذر تحديث الظهور. حاول مجددًا.';
+  @override
+  String get aboutMe => 'عني';
+  @override
+  String get linkedAccountsTitle => 'الحسابات المرتبطة';
+  @override
+  String get linkAccountsHint => 'اربط حسابات Minecraft الخاصة بك لعرضها في ملفك الشخصي.';
+  @override
+  String get unlinkXboxTitle => 'إلغاء ربط حساب Xbox';
+  @override
+  String removeLabelConfirm(String label) => 'إزالة $label من الحسابات المرتبطة؟';
+  @override
+  String get unlinkJavaTitle => 'إلغاء ربط Java Edition';
+  @override
+  String removeJavaConfirm(String username) => 'إزالة $username من الحسابات المرتبطة؟';
+  @override
+  String get unlink => 'إلغاء الربط';
+  @override
+  String get linkXbox => 'ربط Xbox';
+  @override
+  String get linkJava => 'ربط Java';
+  @override
+  String get appearOfflineLabel => 'الظهور كغير متصل';
+  @override
+  String get appearOfflineOn => 'يراك الأصدقاء كغير متصل';
+  @override
+  String get appearOfflineOff => 'يمكن للأصدقاء رؤية متى تكون متصلًا';
+  @override
+  String get signOut => 'تسجيل الخروج';
+  @override
+  String get profileCardTitle => 'الملف الشخصي';
+  @override
+  String get edit => 'تعديل';
+  @override
+  String get displayNameLabel => 'الاسم المعروض';
+  @override
+  String get bioLabel => 'نبذة';
+  @override
+  String get yourNameHint => 'اسمك';
+  @override
+  String get bioHint => 'أخبر شيئًا عن نفسك';
+  @override
+  String get avatarUrlLabel => 'رابط الصورة الرمزية';
+  @override
+  String get usernameDisplayLabel => 'اسم المستخدم';
+  @override
+  String get profileUpdated => 'تم تحديث الملف الشخصي';
+  @override
+  String get findUser => 'البحث عن مستخدم';
+  @override
+  String get signIn => 'تسجيل الدخول';
+  @override
+  String get createAccount => 'إنشاء حساب';
+  @override
+  String get signInSubtitle => 'سجّل دخولك لإضافة أصدقاء ومشاركة جلساتك.';
+  @override
+  String get emailAddressHint => 'عنوان البريد الإلكتروني';
+  @override
+  String get passwordHint => 'كلمة المرور';
+  @override
+  String get forgotPassword => 'نسيت كلمة المرور؟';
+  @override
+  String get continueWithGoogle => 'المتابعة مع Google';
+  @override
+  String get alreadyHaveAccount => 'لديك حساب بالفعل؟ سجّل دخولك';
+  @override
+  String get noAccountYet => 'ليس لديك حساب؟ سجّل الآن';
+  @override
+  String get orDivider => 'أو';
+  @override
+  String get resetPasswordTitle => 'إعادة تعيين كلمة المرور';
+  @override
+  String get resetPasswordBody => 'أدخل عنوان بريدك الإلكتروني وسنرسل لك رابطًا لإعادة تعيين كلمة المرور.';
+  @override
+  String get sendLink => 'إرسال الرابط';
+  @override
+  String resetLinkSent(String email) => 'تم إرسال رابط إعادة التعيين إلى $email';
+  @override
+  String get noAccountForEmail => 'لم يُعثر على حساب لعنوان البريد الإلكتروني هذا.';
+  @override
+  String get invalidEmailError => 'عنوان بريد إلكتروني غير صالح.';
+  @override
+  String get couldNotSendResetEmail => 'تعذر إرسال بريد إعادة التعيين. يرجى المحاولة مجددًا.';
+  @override
+  String get incorrectEmailOrPassword => 'بريد إلكتروني أو كلمة مرور غير صحيحة.';
+  @override
+  String get emailAlreadyInUse => 'عنوان البريد الإلكتروني هذا مستخدم بالفعل.';
+  @override
+  String get weakPassword => 'يجب أن تتكون كلمة المرور من 6 أحرف على الأقل.';
+  @override
+  String get googleSignInFailed => 'فشل تسجيل الدخول عبر Google. يرجى المحاولة مجددًا.';
+  @override
+  String get appleSignInFailed => 'فشل تسجيل الدخول عبر Apple. يرجى المحاولة مجددًا.';
+  @override
+  String get emailDifferentMethod => 'يوجد بالفعل حساب بهذا البريد الإلكتروني باستخدام طريقة تسجيل دخول مختلفة.';
+  @override
+  String get enterEmailAndPassword => 'يرجى إدخال بريدك الإلكتروني وكلمة مرورك.';
+  @override
+  String get profileNotSetUp => 'لم يتم إعداد الملف الشخصي بعد';
+  @override
+  String get chooseUsernameSubtitle => 'اختر اسم مستخدم لإضافة أصدقاء ومشاركة جلساتك.';
+  @override
+  String get createProfile => 'إنشاء ملف شخصي';
+  @override
+  String get chooseUniqueUsername => 'اختر اسم مستخدم فريدًا لإضافة أصدقاء.';
+  @override
+  String get usernameFieldLabel => 'اسم المستخدم *';
+  @override
+  String get usernameFormatHint => '3–20 حرفًا · فقط a-z و 0-9 و _';
+  @override
+  String get displayNameOptional => 'الاسم المعروض (اختياري)';
+  @override
+  String get usernameRequired => 'يرجى إدخال اسم مستخدم.';
+  @override
+  String get usernameFormatError => '3–20 حرفًا، أحرف صغيرة وأرقام و _ فقط';
+  @override
+  String get usernameTaken => 'اسم المستخدم هذا مستخدم بالفعل.';
+  @override
+  String get noConnectionError => 'لا يوجد اتصال. يرجى المحاولة مجددًا.';
+  @override
+  String get usernameExampleHint => 'مثال: jens_mc';
+  @override
+  String get displayNameExampleHint => 'مثال: Jens';
+  @override
+  String get home => 'الرئيسية';
+  @override
+  String get info => 'معلومات';
+  @override
+  String get consoleConnect => 'Console Connect';
+  @override
+  String get consoleConnectSubtitle => 'الاتصال بخوادم Minecraft';
+  @override
+  String get minecraftSkins => 'سكنات Minecraft';
+  @override
+  String get minecraftSkinsSubtitle => 'عرض وتعديل سكنات Java وBedrock';
+  @override
+  String get minecraftWiki => 'ويكي Minecraft';
+  @override
+  String get minecraftWikiSubtitle => 'الكائنات، الكتل، الوصفات والمزيد';
+  @override
+  String get partnerServersLabel => 'خوادم الشركاء';
+  @override
+  String get partnerServersSubtitle => 'خوادم Minecraft المميزة';
+  @override
+  String get userLookup => 'البحث عن مستخدم Minecraft';
+  @override
+  String get userLookupSubtitle => 'البحث في ملفات Java وBedrock';
+
+  @override
+  String get navSkins => 'سكن';
+  @override
+  String get navWiki => 'ويكي';
+  @override
+  String get navProfile => 'ملفي';
+
+  @override
+  String get skinsUpload => 'رفع';
+  @override
+  String get skinsCreate => 'إنشاء';
+  @override
+  String get skinsSubtitle => 'عرض وتنزيل سكنات Minecraft.';
+  @override
+  String get skinsSectionRecent => 'السكنات الأخيرة';
+  @override
+  String get skinsSectionMy => 'سكناتي';
+  @override
+  String get skinsSectionYours => 'سكناتك';
+  @override
+  String get skinsEmptyMySkins => 'لا توجد سكنات محفوظة بعد. أنشئ سكناً أو ارفع أحدها للبدء.';
+  @override
+  String get skinsCouldNotLoad => 'تعذّر تحميل السكنات';
+  @override
+  String skinsPageOf(int page, int total) => 'صفحة $page / $total';
+  @override
+  String get skinsMustBe64 => 'يجب أن يكون حجم السكن 64×64 بكسل';
+  @override
+  String get skinsInvalidFile => 'ملف صورة غير صالح';
+  @override
+  String get skinsDownload => 'تنزيل';
+  @override
+  String get skinsEdit => 'تعديل';
+  @override
+  String get skinsNoAccountsTitle => 'لا توجد حسابات مرتبطة';
+  @override
+  String get skinsNoAccountsSubtitle => 'اربط Java أو Bedrock في الملف الشخصي لرؤية سكنك.';
+  @override
+  String get skinsSignInTitle => 'سجّل الدخول لرؤية سكنك';
+  @override
+  String get skinsSignInSubtitle => 'أنشئ حساباً واربط Java أو Bedrock في الملف الشخصي.';
 }

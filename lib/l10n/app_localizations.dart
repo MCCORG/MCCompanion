@@ -872,24 +872,163 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Change language'**
   String get changeLanguageTitle;
-
-  /// Label for the language button in the bottom nav
-  ///
-  /// In en, this message translates to:
-  /// **'Language'**
   String get changeLanguage;
-
-  /// Button that resets localization to the system/default locale
-  ///
-  /// In en, this message translates to:
-  /// **'Use system language'**
   String get useSystemLanguage;
-
-  /// Snackbar message when launching an external URL fails
-  ///
-  /// In en, this message translates to:
-  /// **'Could not open URL'**
   String get couldNotOpenUrl;
+  String get reportUser => 'Report user';
+  String reportUserWithName(String username) => 'Report @$username';
+  String get reportMessage => 'Report message';
+  String get reportDisclaimer => 'Our team will review this report. Thank you for keeping the community safe.';
+  String get reportReasonSpam => 'Spam';
+  String get reportReasonHarassment => 'Harassment or bullying';
+  String get reportReasonInappropriate => 'Inappropriate content';
+  String get reportReasonOther => 'Other';
+  String get reportAdditionalDetails => 'Additional details (optional)';
+  String get reportSubmit => 'Submit report';
+  String get reportSuccess => 'Report submitted. Thank you.';
+  String get reportFailed => 'Could not submit report. Please try again.';
+  String get messagePlaceholder => 'Message...';
+  String get noMessagesYet => 'No messages yet.\nSay hello!';
+  String get today => 'Today';
+  String get yesterday => 'Yesterday';
+
+  String get noConversationsYet => 'No conversations yet';
+  String get startChatHint => 'Start a chat from your friends list.';
+  String get youPrefix => 'You';
+
+  String get tabProfile => 'PROFILE';
+  String get tabFriends => 'FRIENDS';
+  String get tabRequests => 'REQUESTS';
+  String get tabChats => 'CHATS';
+
+  String get addFriend => 'Add friend';
+  String get usernameHint => 'username';
+  String get send => 'Send';
+  String friendRequestSentTo(String username) => 'Friend request sent to @$username';
+  String alreadyFriendsWith(String username) => 'You are already friends with @$username.';
+  String requestAlreadyPending(String username) => 'There is already a pending request with @$username.';
+  String userNotFoundMsg(String username) => 'User @$username not found.';
+  String cannotSendRequest(String username) => 'You cannot send a request to @$username.';
+  String get somethingWentWrong => 'Something went wrong. Please try again.';
+  String friendRequestAccepted(String username) => 'Friend request from @$username accepted';
+  String requestDeclined(String username) => 'Request from @$username declined';
+  String get deleteAccountTitle => 'Delete account';
+  String get deleteAccountBody => 'This will permanently delete your account, messages, friends and all associated data. This action cannot be undone.';
+  String get deletePermanently => 'Delete permanently';
+  String get couldNotDeleteAccount => 'Could not delete account. Please try again.';
+  String get removeFriendTitle => 'Remove friend';
+  String removeFriendConfirm(String username) => 'Do you want to remove @$username as a friend?';
+  String get remove => 'Remove';
+  String friendRemoved(String username) => '@$username removed from your friends';
+  String get noFriendsYet => 'No friends yet';
+  String get noFriendsSub => 'Add someone using the button in the top right.';
+  String get noPendingRequests => 'No pending requests';
+  String get requestsAppearHere => 'Friend requests will appear here.';
+  String onlineFriendsLabel(int count) => 'ONLINE — $count';
+  String offlineFriendsLabel(int count) => 'OFFLINE — $count';
+
+  String get couldNotUpdateVisibility => 'Could not update visibility. Try again.';
+  String get aboutMe => 'About me';
+  String get linkedAccountsTitle => 'Linked Accounts';
+  String get linkAccountsHint => 'Link your Minecraft accounts to show them on your profile.';
+  String get unlinkXboxTitle => 'Unlink Xbox account';
+  String removeLabelConfirm(String label) => 'Remove $label from your linked accounts?';
+  String get unlinkJavaTitle => 'Unlink Java Edition';
+  String removeJavaConfirm(String username) => 'Remove $username from your linked accounts?';
+  String get unlink => 'Unlink';
+  String get linkXbox => 'Link Xbox';
+  String get linkJava => 'Link Java';
+  String get appearOfflineLabel => 'Appear offline';
+  String get appearOfflineOn => 'Friends see you as offline';
+  String get appearOfflineOff => 'Friends can see when you\'re online';
+  String get signOut => 'Sign out';
+  String get profileCardTitle => 'Profile';
+  String get edit => 'Edit';
+  String get displayNameLabel => 'Display name';
+  String get bioLabel => 'Bio';
+  String get yourNameHint => 'Your name';
+  String get bioHint => 'Tell something about yourself';
+  String get avatarUrlLabel => 'Avatar URL';
+  String get usernameDisplayLabel => 'Username';
+  String get profileUpdated => 'Profile updated';
+  String get findUser => 'Find user';
+
+  String get signIn => 'Sign in';
+  String get createAccount => 'Create account';
+  String get signInSubtitle => 'Sign in to add friends and share your sessions.';
+  String get emailAddressHint => 'Email address';
+  String get passwordHint => 'Password';
+  String get forgotPassword => 'Forgot password?';
+  String get continueWithGoogle => 'Continue with Google';
+  String get alreadyHaveAccount => 'Already have an account? Sign in';
+  String get noAccountYet => 'No account yet? Register';
+  String get orDivider => 'or';
+  String get resetPasswordTitle => 'Reset password';
+  String get resetPasswordBody => 'Enter your email address and we\'ll send you a link to reset your password.';
+  String get sendLink => 'Send link';
+  String resetLinkSent(String email) => 'Reset link sent to $email';
+  String get noAccountForEmail => 'No account found for this email address.';
+  String get invalidEmailError => 'Invalid email address.';
+  String get couldNotSendResetEmail => 'Could not send reset email. Please try again.';
+  String get incorrectEmailOrPassword => 'Incorrect email or password.';
+  String get emailAlreadyInUse => 'This email address is already in use.';
+  String get weakPassword => 'Password must be at least 6 characters.';
+  String get googleSignInFailed => 'Google sign-in failed. Please try again.';
+  String get appleSignInFailed => 'Apple sign-in failed. Please try again.';
+  String get emailDifferentMethod => 'An account already exists with this email using a different sign-in method.';
+  String get enterEmailAndPassword => 'Please enter your email and password.';
+  String get profileNotSetUp => 'Profile not set up yet';
+  String get chooseUsernameSubtitle => 'Choose a username to add friends and share your sessions.';
+  String get createProfile => 'Create profile';
+
+  // ── Register screen ───────────────────────────────────────────────────────
+
+  String get chooseUniqueUsername => 'Choose a unique username to add friends.';
+  String get usernameFieldLabel => 'Username *';
+  String get usernameFormatHint => '3–20 characters · only a-z, 0-9 and _';
+  String get displayNameOptional => 'Display name (optional)';
+  String get usernameRequired => 'Please enter a username.';
+  String get usernameFormatError => '3–20 characters, only lowercase letters, numbers and _';
+  String get usernameTaken => 'This username is already taken.';
+  String get noConnectionError => 'No connection. Please try again.';
+  String get usernameExampleHint => 'e.g. jens_mc';
+  String get displayNameExampleHint => 'e.g. Jens';
+
+  String get home => 'Home';
+  String get info => 'Info';
+  String get consoleConnect => 'Console Connect';
+  String get consoleConnectSubtitle => 'Connect to Minecraft servers';
+  String get minecraftSkins => 'Minecraft Skins';
+  String get minecraftSkinsSubtitle => 'View & edit Java & Bedrock skins';
+  String get minecraftWiki => 'Minecraft Wiki';
+  String get minecraftWikiSubtitle => 'Mobs, blocks, recipes & more';
+  String get partnerServersLabel => 'Partner Servers';
+  String get partnerServersSubtitle => 'Featured Minecraft servers';
+  String get userLookup => 'Minecraft User Lookup';
+  String get userLookupSubtitle => 'Look up Java & Bedrock profiles';
+
+  String get navSkins => 'Skins';
+  String get navWiki => 'Wiki';
+  String get navProfile => 'Profile';
+
+  // ── Skins screen ────────────────────────────────────────────────────────────
+  String get skinsUpload => 'Upload';
+  String get skinsCreate => 'Create';
+  String get skinsSubtitle => 'View and download Minecraft skins.';
+  String get skinsSectionRecent => 'RECENT SKINS';
+  String get skinsSectionMy => 'MY SKINS';
+  String get skinsSectionYours => 'YOUR SKINS';
+  String get skinsEmptyMySkins => 'No saved skins yet. Create or upload a skin to get started.';
+  String get skinsCouldNotLoad => 'Could not load skins';
+  String skinsPageOf(int page, int total) => 'Page $page / $total';
+  String get skinsMustBe64 => 'Skin must be 64×64 pixels';
+  String get skinsInvalidFile => 'Invalid image file';
+  String get skinsDownload => 'Download';
+  String get skinsEdit => 'Edit';
+  String get skinsNoAccountsTitle => 'No accounts linked';
+  String get skinsNoAccountsSubtitle => 'Link Java or Bedrock in Profile to see your skin.';
+  String get skinsSignInTitle => 'Sign in to see your skin';
+  String get skinsSignInSubtitle => 'Create an account and link Java or Bedrock in Profile.';
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

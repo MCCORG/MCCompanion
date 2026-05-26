@@ -57,39 +57,42 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
                 ),
               ],
             ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                _NavItem(
-                  icon: FontAwesomeIcons.house,
-                  label: 'Home',
-                  isActive: activeItem == 'home',
-                  onTap: onHomeTap,
-                ),
-                _NavItem(
-                  icon: FontAwesomeIcons.shirt,
-                  label: 'Skins',
-                  isActive: activeItem == 'skins',
-                  onTap: onSkinsTap,
-                ),
-                _NavFab(
-                  isActive: activeItem == 'connector',
-                  onTap: onConnectorTap,
-                ),
-                _NavItem(
-                  icon: FontAwesomeIcons.bookOpen,
-                  label: 'Wiki',
-                  isActive: activeItem == 'wiki',
-                  onTap: onWikiTap,
-                ),
-                _NavItem(
-                  icon: FontAwesomeIcons.user,
-                  label: 'Profile',
-                  isActive: activeItem == 'profile',
-                  onTap: onProfileTap,
-                ),
-              ],
-            ),
+            child: Builder(builder: (context) {
+              final l = AppLocalizations.of(context)!;
+              return Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  _NavItem(
+                    icon: FontAwesomeIcons.house,
+                    label: l.home,
+                    isActive: activeItem == 'home',
+                    onTap: onHomeTap,
+                  ),
+                  _NavItem(
+                    icon: FontAwesomeIcons.shirt,
+                    label: l.navSkins,
+                    isActive: activeItem == 'skins',
+                    onTap: onSkinsTap,
+                  ),
+                  _NavFab(
+                    isActive: activeItem == 'connector',
+                    onTap: onConnectorTap,
+                  ),
+                  _NavItem(
+                    icon: FontAwesomeIcons.bookOpen,
+                    label: l.navWiki,
+                    isActive: activeItem == 'wiki',
+                    onTap: onWikiTap,
+                  ),
+                  _NavItem(
+                    icon: FontAwesomeIcons.user,
+                    label: l.navProfile,
+                    isActive: activeItem == 'profile',
+                    onTap: onProfileTap,
+                  ),
+                ],
+              );
+            }),
           ),
         ),
       ),
@@ -114,7 +117,7 @@ class _NavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = isActive ? AppTheme.accent : AppTheme.textMuted;
+    final color = isActive ? AppTheme.brand : AppTheme.textMuted;
 
     return Expanded(
       child: GestureDetector(
@@ -136,7 +139,7 @@ class _NavItem extends StatelessWidget {
                   width: isActive ? 18 : 0,
                   height: 2,
                   decoration: BoxDecoration(
-                    color: AppTheme.accent,
+                    color: AppTheme.brand,
                     borderRadius: BorderRadius.circular(2),
                   ),
                 ),
@@ -527,7 +530,7 @@ class _RegionSelector extends StatelessWidget {
                         height: 7,
                         decoration: BoxDecoration(
                           color: isSelected
-                              ? AppTheme.success
+                              ? AppTheme.brand
                               : AppTheme.textDisabled,
                           shape: BoxShape.circle,
                         ),

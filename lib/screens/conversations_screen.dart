@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../models/message_model.dart';
 import '../services/message_service.dart';
@@ -66,31 +67,32 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
     }
 
     if (_conversations.isEmpty) {
-      return const Center(
+      final l = AppLocalizations.of(context)!;
+      return Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 32),
+          padding: const EdgeInsets.symmetric(horizontal: 32),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(
+              const Icon(
                 Icons.chat_bubble_outline_rounded,
                 color: AppTheme.textDisabled,
                 size: 40,
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               Text(
-                'No conversations yet',
-                style: TextStyle(
+                l.noConversationsYet,
+                style: const TextStyle(
                   color: AppTheme.textSecondary,
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(height: 4),
+              const SizedBox(height: 4),
               Text(
-                'Start a chat from your friends list.',
+                l.startChatHint,
                 textAlign: TextAlign.center,
-                style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
+                style: const TextStyle(color: AppTheme.textMuted, fontSize: 12),
               ),
             ],
           ),
@@ -155,7 +157,7 @@ class _ConvTile extends StatelessWidget {
                   const SizedBox(height: 2),
                   Text(
                     conv.lastMessageIsMine
-                        ? 'You: ${conv.lastMessage}'
+                        ? '${AppLocalizations.of(context)!.youPrefix}: ${conv.lastMessage}'
                         : conv.lastMessage,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,

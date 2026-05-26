@@ -407,4 +407,291 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get couldNotOpenUrl => 'URL খোলা যায়নি';
+
+  @override
+  String get reportUser => 'ব্যবহারকারী রিপোর্ট করুন';
+  @override
+  String reportUserWithName(String username) => '@$username রিপোর্ট করুন';
+  @override
+  String get reportMessage => 'বার্তা রিপোর্ট করুন';
+  @override
+  String get reportDisclaimer => 'আমাদের দল এই রিপোর্ট পর্যালোচনা করবে। কমিউনিটি নিরাপদ রাখার জন্য ধন্যবাদ।';
+  @override
+  String get reportReasonSpam => 'স্প্যাম';
+  @override
+  String get reportReasonHarassment => 'হয়রানি বা বুলিং';
+  @override
+  String get reportReasonInappropriate => 'অনুপযুক্ত বিষয়বস্তু';
+  @override
+  String get reportReasonOther => 'অন্যান্য';
+  @override
+  String get reportAdditionalDetails => 'অতিরিক্ত বিবরণ (ঐচ্ছিক)';
+  @override
+  String get reportSubmit => 'রিপোর্ট জমা দিন';
+  @override
+  String get reportSuccess => 'রিপোর্ট জমা দেওয়া হয়েছে। ধন্যবাদ।';
+  @override
+  String get reportFailed => 'রিপোর্ট জমা দেওয়া যায়নি। আবার চেষ্টা করুন।';
+  @override
+  String get messagePlaceholder => 'বার্তা...';
+  @override
+  String get noMessagesYet => 'এখনো কোনো বার্তা নেই।\nহ্যালো বলুন!';
+  @override
+  String get today => 'আজ';
+  @override
+  String get yesterday => 'গতকাল';
+  @override
+  String get noConversationsYet => 'এখনো কোনো কথোপকথন নেই';
+  @override
+  String get startChatHint => 'আপনার বন্ধু তালিকা থেকে চ্যাট শুরু করুন।';
+  @override
+  String get youPrefix => 'আপনি';
+  @override
+  String get tabProfile => 'প্রোফাইল';
+  @override
+  String get tabFriends => 'বন্ধু';
+  @override
+  String get tabRequests => 'অনুরোধ';
+  @override
+  String get tabChats => 'চ্যাট';
+  @override
+  String get addFriend => 'বন্ধু যোগ করুন';
+  @override
+  String get usernameHint => 'ব্যবহারকারীর নাম';
+  @override
+  String get send => 'পাঠান';
+  @override
+  String friendRequestSentTo(String username) => '@$username-এ বন্ধুত্বের অনুরোধ পাঠানো হয়েছে';
+  @override
+  String alreadyFriendsWith(String username) => 'আপনি ইতিমধ্যে @$username-এর বন্ধু।';
+  @override
+  String requestAlreadyPending(String username) => '@$username-এর সাথে ইতিমধ্যে একটি মুলতুবি অনুরোধ রয়েছে।';
+  @override
+  String userNotFoundMsg(String username) => 'ব্যবহারকারী @$username পাওয়া যায়নি।';
+  @override
+  String cannotSendRequest(String username) => 'আপনি @$username-কে অনুরোধ পাঠাতে পারবেন না।';
+  @override
+  String get somethingWentWrong => 'কিছু একটা ভুল হয়েছে। আবার চেষ্টা করুন।';
+  @override
+  String friendRequestAccepted(String username) => '@$username-এর বন্ধুত্বের অনুরোধ গৃহীত হয়েছে';
+  @override
+  String requestDeclined(String username) => '@$username-এর অনুরোধ প্রত্যাখ্যান করা হয়েছে';
+  @override
+  String get deleteAccountTitle => 'অ্যাকাউন্ট মুছুন';
+  @override
+  String get deleteAccountBody => 'এটি আপনার অ্যাকাউন্ট, বার্তা, বন্ধু এবং সমস্ত সম্পর্কিত ডেটা স্থায়ীভাবে মুছে ফেলবে। এই কাজটি পূর্বাবস্থায় ফেরানো যাবে না।';
+  @override
+  String get deletePermanently => 'স্থায়ীভাবে মুছুন';
+  @override
+  String get couldNotDeleteAccount => 'অ্যাকাউন্ট মুছতে পারা যায়নি। আবার চেষ্টা করুন।';
+  @override
+  String get removeFriendTitle => 'বন্ধু সরান';
+  @override
+  String removeFriendConfirm(String username) => '@$username-কে বন্ধু থেকে সরাতে চান?';
+  @override
+  String get remove => 'সরান';
+  @override
+  String friendRemoved(String username) => '@$username আপনার বন্ধু তালিকা থেকে সরানো হয়েছে';
+  @override
+  String get noFriendsYet => 'এখনো কোনো বন্ধু নেই';
+  @override
+  String get noFriendsSub => 'উপরের ডানদিকের বোতাম ব্যবহার করে কাউকে যোগ করুন।';
+  @override
+  String get noPendingRequests => 'কোনো মুলতুবি অনুরোধ নেই';
+  @override
+  String get requestsAppearHere => 'বন্ধুত্বের অনুরোধ এখানে দেখাবে।';
+  @override
+  String onlineFriendsLabel(int count) => 'অনলাইন — $count';
+  @override
+  String offlineFriendsLabel(int count) => 'অফলাইন — $count';
+  @override
+  String get couldNotUpdateVisibility => 'দৃশ্যমানতা আপডেট করা যায়নি। আবার চেষ্টা করুন।';
+  @override
+  String get aboutMe => 'আমার সম্পর্কে';
+  @override
+  String get linkedAccountsTitle => 'সংযুক্ত অ্যাকাউন্ট';
+  @override
+  String get linkAccountsHint => 'আপনার প্রোফাইলে দেখাতে Minecraft অ্যাকাউন্ট সংযুক্ত করুন।';
+  @override
+  String get unlinkXboxTitle => 'Xbox অ্যাকাউন্ট আনলিংক করুন';
+  @override
+  String removeLabelConfirm(String label) => '$label সংযুক্ত অ্যাকাউন্ট থেকে সরাবেন?';
+  @override
+  String get unlinkJavaTitle => 'Java Edition আনলিংক করুন';
+  @override
+  String removeJavaConfirm(String username) => '$username সংযুক্ত অ্যাকাউন্ট থেকে সরাবেন?';
+  @override
+  String get unlink => 'আনলিংক';
+  @override
+  String get linkXbox => 'Xbox লিংক করুন';
+  @override
+  String get linkJava => 'Java লিংক করুন';
+  @override
+  String get appearOfflineLabel => 'অফলাইন দেখান';
+  @override
+  String get appearOfflineOn => 'বন্ধুরা আপনাকে অফলাইন দেখে';
+  @override
+  String get appearOfflineOff => 'বন্ধুরা দেখতে পারে আপনি কখন অনলাইন';
+  @override
+  String get signOut => 'সাইন আউট';
+  @override
+  String get profileCardTitle => 'প্রোফাইল';
+  @override
+  String get edit => 'সম্পাদনা';
+  @override
+  String get displayNameLabel => 'প্রদর্শন নাম';
+  @override
+  String get bioLabel => 'বায়ো';
+  @override
+  String get yourNameHint => 'আপনার নাম';
+  @override
+  String get bioHint => 'নিজের সম্পর্কে কিছু বলুন';
+  @override
+  String get avatarUrlLabel => 'অবতার URL';
+  @override
+  String get usernameDisplayLabel => 'ব্যবহারকারীর নাম';
+  @override
+  String get profileUpdated => 'প্রোফাইল আপডেট হয়েছে';
+  @override
+  String get findUser => 'ব্যবহারকারী খুঁজুন';
+  @override
+  String get signIn => 'সাইন ইন';
+  @override
+  String get createAccount => 'অ্যাকাউন্ট তৈরি করুন';
+  @override
+  String get signInSubtitle => 'বন্ধু যোগ করতে এবং সেশন শেয়ার করতে সাইন ইন করুন।';
+  @override
+  String get emailAddressHint => 'ইমেইল ঠিকানা';
+  @override
+  String get passwordHint => 'পাসওয়ার্ড';
+  @override
+  String get forgotPassword => 'পাসওয়ার্ড ভুলে গেছেন?';
+  @override
+  String get continueWithGoogle => 'Google দিয়ে চালিয়ে যান';
+  @override
+  String get alreadyHaveAccount => 'ইতিমধ্যে অ্যাকাউন্ট আছে? সাইন ইন করুন';
+  @override
+  String get noAccountYet => 'এখনো অ্যাকাউন্ট নেই? নিবন্ধন করুন';
+  @override
+  String get orDivider => 'অথবা';
+  @override
+  String get resetPasswordTitle => 'পাসওয়ার্ড রিসেট করুন';
+  @override
+  String get resetPasswordBody => 'আপনার ইমেইল ঠিকানা দিন, আমরা পাসওয়ার্ড রিসেটের লিংক পাঠাব।';
+  @override
+  String get sendLink => 'লিংক পাঠান';
+  @override
+  String resetLinkSent(String email) => '$email-এ রিসেট লিংক পাঠানো হয়েছে';
+  @override
+  String get noAccountForEmail => 'এই ইমেইল ঠিকানার জন্য কোনো অ্যাকাউন্ট পাওয়া যায়নি।';
+  @override
+  String get invalidEmailError => 'অবৈধ ইমেইল ঠিকানা।';
+  @override
+  String get couldNotSendResetEmail => 'রিসেট ইমেইল পাঠানো যায়নি। আবার চেষ্টা করুন।';
+  @override
+  String get incorrectEmailOrPassword => 'ভুল ইমেইল বা পাসওয়ার্ড।';
+  @override
+  String get emailAlreadyInUse => 'এই ইমেইল ঠিকানা ইতিমধ্যে ব্যবহৃত হচ্ছে।';
+  @override
+  String get weakPassword => 'পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে।';
+  @override
+  String get googleSignInFailed => 'Google সাইন-ইন ব্যর্থ হয়েছে। আবার চেষ্টা করুন।';
+  @override
+  String get appleSignInFailed => 'Apple সাইন-ইন ব্যর্থ হয়েছে। আবার চেষ্টা করুন।';
+  @override
+  String get emailDifferentMethod => 'এই ইমেইলে ভিন্ন সাইন-ইন পদ্ধতিতে ইতিমধ্যে একটি অ্যাকাউন্ট আছে।';
+  @override
+  String get enterEmailAndPassword => 'অনুগ্রহ করে আপনার ইমেইল এবং পাসওয়ার্ড দিন।';
+  @override
+  String get profileNotSetUp => 'প্রোফাইল এখনো সেট আপ হয়নি';
+  @override
+  String get chooseUsernameSubtitle => 'বন্ধু যোগ করতে এবং সেশন শেয়ার করতে একটি ব্যবহারকারীর নাম বেছে নিন।';
+  @override
+  String get createProfile => 'প্রোফাইল তৈরি করুন';
+  @override
+  String get chooseUniqueUsername => 'বন্ধু যোগ করতে একটি অনন্য ব্যবহারকারীর নাম বেছে নিন।';
+  @override
+  String get usernameFieldLabel => 'ব্যবহারকারীর নাম *';
+  @override
+  String get usernameFormatHint => '৩–২০ অক্ষর · শুধুমাত্র a-z, 0-9 এবং _';
+  @override
+  String get displayNameOptional => 'প্রদর্শন নাম (ঐচ্ছিক)';
+  @override
+  String get usernameRequired => 'অনুগ্রহ করে একটি ব্যবহারকারীর নাম দিন।';
+  @override
+  String get usernameFormatError => '৩–২০ অক্ষর, শুধুমাত্র ছোট হাতের অক্ষর, সংখ্যা এবং _';
+  @override
+  String get usernameTaken => 'এই ব্যবহারকারীর নামটি ইতিমধ্যে নেওয়া হয়েছে।';
+  @override
+  String get noConnectionError => 'কোনো সংযোগ নেই। আবার চেষ্টা করুন।';
+  @override
+  String get usernameExampleHint => 'যেমন: jens_mc';
+  @override
+  String get displayNameExampleHint => 'যেমন: Jens';
+  @override
+  String get home => 'হোম';
+  @override
+  String get info => 'তথ্য';
+  @override
+  String get consoleConnect => 'Console Connect';
+  @override
+  String get consoleConnectSubtitle => 'Minecraft সার্ভারে সংযুক্ত হন';
+  @override
+  String get minecraftSkins => 'Minecraft স্কিন';
+  @override
+  String get minecraftSkinsSubtitle => 'Java ও Bedrock স্কিন দেখুন ও সম্পাদনা করুন';
+  @override
+  String get minecraftWiki => 'Minecraft Wiki';
+  @override
+  String get minecraftWikiSubtitle => 'মব, ব্লক, রেসিপি ও আরো';
+  @override
+  String get partnerServersLabel => 'পার্টনার সার্ভার';
+  @override
+  String get partnerServersSubtitle => 'ফিচার্ড Minecraft সার্ভার';
+  @override
+  String get userLookup => 'Minecraft ব্যবহারকারী অনুসন্ধান';
+  @override
+  String get userLookupSubtitle => 'Java ও Bedrock প্রোফাইল খুঁজুন';
+
+  @override
+  String get navSkins => 'স্কিন';
+  @override
+  String get navWiki => 'উইকি';
+  @override
+  String get navProfile => 'প্রোফাইল';
+
+  @override
+  String get skinsUpload => 'আপলোড';
+  @override
+  String get skinsCreate => 'তৈরি করুন';
+  @override
+  String get skinsSubtitle => 'Minecraft স্কিন দেখুন এবং ডাউনলোড করুন।';
+  @override
+  String get skinsSectionRecent => 'সাম্প্রতিক স্কিন';
+  @override
+  String get skinsSectionMy => 'আমার স্কিন';
+  @override
+  String get skinsSectionYours => 'আপনার স্কিন';
+  @override
+  String get skinsEmptyMySkins => 'এখনো কোনো স্কিন সেভ করা নেই। শুরু করতে একটি স্কিন তৈরি বা আপলোড করুন।';
+  @override
+  String get skinsCouldNotLoad => 'স্কিন লোড করা যায়নি';
+  @override
+  String skinsPageOf(int page, int total) => 'পৃষ্ঠা $page / $total';
+  @override
+  String get skinsMustBe64 => 'স্কিন অবশ্যই 64×64 পিক্সেল হতে হবে';
+  @override
+  String get skinsInvalidFile => 'অবৈধ ছবি ফাইল';
+  @override
+  String get skinsDownload => 'ডাউনলোড';
+  @override
+  String get skinsEdit => 'সম্পাদনা';
+  @override
+  String get skinsNoAccountsTitle => 'কোনো অ্যাকাউন্ট লিঙ্ক নেই';
+  @override
+  String get skinsNoAccountsSubtitle => 'আপনার স্কিন দেখতে প্রোফাইলে Java বা Bedrock লিঙ্ক করুন।';
+  @override
+  String get skinsSignInTitle => 'আপনার স্কিন দেখতে সাইন ইন করুন';
+  @override
+  String get skinsSignInSubtitle => 'একটি অ্যাকাউন্ট তৈরি করুন এবং প্রোফাইলে Java বা Bedrock লিঙ্ক করুন।';
 }

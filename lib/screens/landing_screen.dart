@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../util/partners_servers.dart';
 import '../widgets/components/header_nav_bar.dart';
@@ -41,11 +42,13 @@ class LandingScreen extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
-          child: Row(
+          child: Builder(builder: (context) {
+            final l = AppLocalizations.of(context)!;
+            return Row(
             children: [
-              const Text(
-                'Home',
-                style: TextStyle(
+              Text(
+                l.home,
+                style: const TextStyle(
                   color: Color(0xFFFFFFFF),
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
@@ -54,14 +57,14 @@ class LandingScreen extends StatelessWidget {
               const Spacer(),
               HeaderNavBar(
                 items: [
-                  HeaderNavItem(label: 'Website', onTap: onWebsiteTap),
-                  HeaderNavItem(label: 'Discord', onTap: onDiscordTap),
-                  HeaderNavItem(label: 'Language', onTap: onLanguageTap),
-                  HeaderNavItem(label: 'Info', onTap: onInfoTap),
+                  HeaderNavItem(label: l.website, onTap: onWebsiteTap),
+                  HeaderNavItem(label: l.discord, onTap: onDiscordTap),
+                  HeaderNavItem(label: l.changeLanguage, onTap: onLanguageTap),
+                  HeaderNavItem(label: l.info, onTap: onInfoTap),
                 ],
               ),
             ],
-          ),
+          );}),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14),
@@ -85,66 +88,74 @@ class LandingScreen extends StatelessWidget {
   }
 
   Widget _buildGrid() {
-    return Column(
+    return Builder(builder: (context) {
+      final l = AppLocalizations.of(context)!;
+      return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Row(
-          children: [
-            Expanded(
-              child: _QuickCard(
-                title: 'Console Connect',
-                subtitle: 'Connect to Minecraft servers',
-                color: AppTheme.accent,
-                imagePath: 'assets/images/tunnel.png',
-                onTap: onGoToConnector,
+        IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: _QuickCard(
+                  title: l.consoleConnect,
+                  subtitle: l.consoleConnectSubtitle,
+                  color: AppTheme.brand,
+                  imagePath: 'assets/images/tunnel.png',
+                  onTap: onGoToConnector,
+                ),
               ),
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: _QuickCard(
-                title: 'Minecraft Skins',
-                subtitle: 'View & edit Java & Bedrock skins',
-                color: const Color(0xFF42A5F5),
-                imagePath: 'assets/images/skin.png',
-                onTap: onGoToSkins,
+              const SizedBox(width: 10),
+              Expanded(
+                child: _QuickCard(
+                  title: l.minecraftSkins,
+                  subtitle: l.minecraftSkinsSubtitle,
+                  color: const Color(0xFF42A5F5),
+                  imagePath: 'assets/images/skin.png',
+                  onTap: onGoToSkins,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         const SizedBox(height: 10),
-        Row(
-          children: [
-            Expanded(
-              child: _QuickCard(
-                title: 'Minecraft Wiki',
-                subtitle: 'Mobs, blocks, recipes & more',
-                color: AppTheme.success,
-                imagePath: 'assets/images/wiki.png',
-                onTap: onGoToWiki,
+        IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: _QuickCard(
+                  title: l.minecraftWiki,
+                  subtitle: l.minecraftWikiSubtitle,
+                  color: AppTheme.success,
+                  imagePath: 'assets/images/wiki.png',
+                  onTap: onGoToWiki,
+                ),
               ),
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: _QuickCard(
-                title: 'Partner Servers',
-                subtitle: 'Featured Minecraft servers',
-                color: const Color(0xFFFFB300),
-                imagePath: 'assets/images/feature.png',
-                onTap: onGoToPartners,
+              const SizedBox(width: 10),
+              Expanded(
+                child: _QuickCard(
+                  title: l.partnerServersLabel,
+                  subtitle: l.partnerServersSubtitle,
+                  color: const Color(0xFFFFB300),
+                  imagePath: 'assets/images/feature.png',
+                  onTap: onGoToPartners,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         const SizedBox(height: 10),
         _QuickCardWide(
-          title: 'Minecraft User Lookup',
-          subtitle: 'Look up Java & Bedrock profiles',
+          title: l.userLookup,
+          subtitle: l.userLookupSubtitle,
           color: const Color(0xFF7B61FF),
           imagePath: 'assets/images/players.png',
           onTap: onGoToPlayerLookup,
         ),
       ],
-    );
+    );});
   }
 }
 
@@ -185,9 +196,15 @@ class _QuickCardState extends State<_QuickCard> {
           decoration: BoxDecoration(
             color: AppTheme.surfaceRaised,
             borderRadius: BorderRadius.circular(16),
+            border: Border(
+              top: BorderSide(
+                color: widget.color.withOpacity(0.55),
+                width: 2,
+              ),
+            ),
           ),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
                 widget.imagePath,
@@ -266,6 +283,12 @@ class _QuickCardWideState extends State<_QuickCardWide> {
           decoration: BoxDecoration(
             color: AppTheme.surfaceRaised,
             borderRadius: BorderRadius.circular(16),
+            border: Border(
+              left: BorderSide(
+                color: widget.color.withOpacity(0.55),
+                width: 3,
+              ),
+            ),
           ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,

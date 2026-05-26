@@ -407,4 +407,291 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get couldNotOpenUrl => 'URL açılamadı';
+
+  @override
+  String get reportUser => 'Kullanıcıyı şikayet et';
+  @override
+  String reportUserWithName(String username) => '@$username kullanıcısını şikayet et';
+  @override
+  String get reportMessage => 'Mesajı şikayet et';
+  @override
+  String get reportDisclaimer => 'Ekibimiz bu şikayeti inceleyecek. Topluluğu güvende tuttuğunuz için teşekkürler.';
+  @override
+  String get reportReasonSpam => 'Spam';
+  @override
+  String get reportReasonHarassment => 'Taciz veya zorbalık';
+  @override
+  String get reportReasonInappropriate => 'Uygunsuz içerik';
+  @override
+  String get reportReasonOther => 'Diğer';
+  @override
+  String get reportAdditionalDetails => 'Ek ayrıntılar (isteğe bağlı)';
+  @override
+  String get reportSubmit => 'Şikayeti gönder';
+  @override
+  String get reportSuccess => 'Şikayet gönderildi. Teşekkürler.';
+  @override
+  String get reportFailed => 'Şikayet gönderilemedi. Lütfen tekrar deneyin.';
+  @override
+  String get messagePlaceholder => 'Mesaj...';
+  @override
+  String get noMessagesYet => 'Henüz mesaj yok.\nMerhaba deyin!';
+  @override
+  String get today => 'Bugün';
+  @override
+  String get yesterday => 'Dün';
+  @override
+  String get noConversationsYet => 'Henüz sohbet yok';
+  @override
+  String get startChatHint => 'Arkadaş listenizden bir sohbet başlatın.';
+  @override
+  String get youPrefix => 'Siz';
+  @override
+  String get tabProfile => 'PROFİL';
+  @override
+  String get tabFriends => 'ARKADAŞLAR';
+  @override
+  String get tabRequests => 'İSTEKLER';
+  @override
+  String get tabChats => 'SOHBETLER';
+  @override
+  String get addFriend => 'Arkadaş ekle';
+  @override
+  String get usernameHint => 'kullanıcı adı';
+  @override
+  String get send => 'Gönder';
+  @override
+  String friendRequestSentTo(String username) => '@$username kişisine arkadaşlık isteği gönderildi';
+  @override
+  String alreadyFriendsWith(String username) => '@$username ile zaten arkadaşsınız.';
+  @override
+  String requestAlreadyPending(String username) => '@$username ile zaten bekleyen bir istek var.';
+  @override
+  String userNotFoundMsg(String username) => '@$username kullanıcısı bulunamadı.';
+  @override
+  String cannotSendRequest(String username) => '@$username kişisine istek gönderemezsiniz.';
+  @override
+  String get somethingWentWrong => 'Bir şeyler ters gitti. Lütfen tekrar deneyin.';
+  @override
+  String friendRequestAccepted(String username) => '@$username kişisinden gelen arkadaşlık isteği kabul edildi';
+  @override
+  String requestDeclined(String username) => '@$username kişisinden gelen istek reddedildi';
+  @override
+  String get deleteAccountTitle => 'Hesabı sil';
+  @override
+  String get deleteAccountBody => 'Bu işlem hesabınızı, mesajlarınızı, arkadaşlarınızı ve tüm ilgili verileri kalıcı olarak siler. Bu işlem geri alınamaz.';
+  @override
+  String get deletePermanently => 'Kalıcı olarak sil';
+  @override
+  String get couldNotDeleteAccount => 'Hesap silinemedi. Lütfen tekrar deneyin.';
+  @override
+  String get removeFriendTitle => 'Arkadaşı kaldır';
+  @override
+  String removeFriendConfirm(String username) => '@$username kişisini arkadaş listesinden kaldırmak istiyor musunuz?';
+  @override
+  String get remove => 'Kaldır';
+  @override
+  String friendRemoved(String username) => '@$username arkadaş listesinden kaldırıldı';
+  @override
+  String get noFriendsYet => 'Henüz arkadaş yok';
+  @override
+  String get noFriendsSub => 'Sağ üstteki düğmeyi kullanarak birini ekleyin.';
+  @override
+  String get noPendingRequests => 'Bekleyen istek yok';
+  @override
+  String get requestsAppearHere => 'Arkadaşlık istekleri burada görünecek.';
+  @override
+  String onlineFriendsLabel(int count) => 'ÇEVRİMİÇİ — $count';
+  @override
+  String offlineFriendsLabel(int count) => 'ÇEVRİMDIŞI — $count';
+  @override
+  String get couldNotUpdateVisibility => 'Görünürlük güncellenemedi. Tekrar deneyin.';
+  @override
+  String get aboutMe => 'Hakkımda';
+  @override
+  String get linkedAccountsTitle => 'Bağlı hesaplar';
+  @override
+  String get linkAccountsHint => 'Minecraft hesaplarınızı profilinizde göstermek için bağlayın.';
+  @override
+  String get unlinkXboxTitle => 'Xbox hesabının bağlantısını kaldır';
+  @override
+  String removeLabelConfirm(String label) => '$label bağlı hesaplardan kaldırılsın mı?';
+  @override
+  String get unlinkJavaTitle => 'Java Edition bağlantısını kaldır';
+  @override
+  String removeJavaConfirm(String username) => '$username bağlı hesaplardan kaldırılsın mı?';
+  @override
+  String get unlink => 'Bağlantıyı kaldır';
+  @override
+  String get linkXbox => 'Xbox bağla';
+  @override
+  String get linkJava => 'Java bağla';
+  @override
+  String get appearOfflineLabel => 'Çevrimdışı görün';
+  @override
+  String get appearOfflineOn => 'Arkadaşlar sizi çevrimdışı görüyor';
+  @override
+  String get appearOfflineOff => 'Arkadaşlar çevrimiçi olduğunuzda görebilir';
+  @override
+  String get signOut => 'Çıkış yap';
+  @override
+  String get profileCardTitle => 'Profil';
+  @override
+  String get edit => 'Düzenle';
+  @override
+  String get displayNameLabel => 'Görünen ad';
+  @override
+  String get bioLabel => 'Bio';
+  @override
+  String get yourNameHint => 'Adınız';
+  @override
+  String get bioHint => 'Kendiniz hakkında bir şeyler anlatın';
+  @override
+  String get avatarUrlLabel => 'Avatar URL';
+  @override
+  String get usernameDisplayLabel => 'Kullanıcı adı';
+  @override
+  String get profileUpdated => 'Profil güncellendi';
+  @override
+  String get findUser => 'Kullanıcı bul';
+  @override
+  String get signIn => 'Giriş yap';
+  @override
+  String get createAccount => 'Hesap oluştur';
+  @override
+  String get signInSubtitle => 'Arkadaş eklemek ve oturumlarınızı paylaşmak için giriş yapın.';
+  @override
+  String get emailAddressHint => 'E-posta adresi';
+  @override
+  String get passwordHint => 'Parola';
+  @override
+  String get forgotPassword => 'Parolanızı mı unuttunuz?';
+  @override
+  String get continueWithGoogle => 'Google ile devam et';
+  @override
+  String get alreadyHaveAccount => 'Zaten hesabınız var mı? Giriş yapın';
+  @override
+  String get noAccountYet => 'Henüz hesabınız yok mu? Kayıt olun';
+  @override
+  String get orDivider => 'veya';
+  @override
+  String get resetPasswordTitle => 'Parolayı sıfırla';
+  @override
+  String get resetPasswordBody => 'E-posta adresinizi girin, parolanızı sıfırlamak için bir bağlantı göndereceğiz.';
+  @override
+  String get sendLink => 'Bağlantı gönder';
+  @override
+  String resetLinkSent(String email) => 'Sıfırlama bağlantısı $email adresine gönderildi';
+  @override
+  String get noAccountForEmail => 'Bu e-posta adresi için hesap bulunamadı.';
+  @override
+  String get invalidEmailError => 'Geçersiz e-posta adresi.';
+  @override
+  String get couldNotSendResetEmail => 'Sıfırlama e-postası gönderilemedi. Lütfen tekrar deneyin.';
+  @override
+  String get incorrectEmailOrPassword => 'Yanlış e-posta veya parola.';
+  @override
+  String get emailAlreadyInUse => 'Bu e-posta adresi zaten kullanımda.';
+  @override
+  String get weakPassword => 'Parola en az 6 karakter olmalıdır.';
+  @override
+  String get googleSignInFailed => 'Google girişi başarısız. Lütfen tekrar deneyin.';
+  @override
+  String get appleSignInFailed => 'Apple girişi başarısız. Lütfen tekrar deneyin.';
+  @override
+  String get emailDifferentMethod => 'Bu e-posta ile farklı bir giriş yöntemi kullanılarak oluşturulmuş bir hesap zaten var.';
+  @override
+  String get enterEmailAndPassword => 'Lütfen e-posta adresinizi ve parolanızı girin.';
+  @override
+  String get profileNotSetUp => 'Profil henüz ayarlanmadı';
+  @override
+  String get chooseUsernameSubtitle => 'Arkadaş eklemek ve oturumlarınızı paylaşmak için bir kullanıcı adı seçin.';
+  @override
+  String get createProfile => 'Profil oluştur';
+  @override
+  String get chooseUniqueUsername => 'Arkadaş eklemek için benzersiz bir kullanıcı adı seçin.';
+  @override
+  String get usernameFieldLabel => 'Kullanıcı adı *';
+  @override
+  String get usernameFormatHint => '3–20 karakter · yalnızca a-z, 0-9 ve _';
+  @override
+  String get displayNameOptional => 'Görünen ad (isteğe bağlı)';
+  @override
+  String get usernameRequired => 'Lütfen bir kullanıcı adı girin.';
+  @override
+  String get usernameFormatError => '3–20 karakter, yalnızca küçük harf, rakam ve _';
+  @override
+  String get usernameTaken => 'Bu kullanıcı adı zaten alınmış.';
+  @override
+  String get noConnectionError => 'Bağlantı yok. Lütfen tekrar deneyin.';
+  @override
+  String get usernameExampleHint => 'örn. jens_mc';
+  @override
+  String get displayNameExampleHint => 'örn. Jens';
+  @override
+  String get home => 'Ana Sayfa';
+  @override
+  String get info => 'Bilgi';
+  @override
+  String get consoleConnect => 'Console Connect';
+  @override
+  String get consoleConnectSubtitle => 'Minecraft sunucularına bağlanın';
+  @override
+  String get minecraftSkins => 'Minecraft Skinleri';
+  @override
+  String get minecraftSkinsSubtitle => 'Java ve Bedrock skinlerini görüntüleyin ve düzenleyin';
+  @override
+  String get minecraftWiki => 'Minecraft Wiki';
+  @override
+  String get minecraftWikiSubtitle => 'Moblar, bloklar, tarifler ve daha fazlası';
+  @override
+  String get partnerServersLabel => 'Partner Sunucular';
+  @override
+  String get partnerServersSubtitle => 'Öne çıkan Minecraft sunucuları';
+  @override
+  String get userLookup => 'Minecraft Kullanıcı Arama';
+  @override
+  String get userLookupSubtitle => 'Java ve Bedrock profillerini arayın';
+
+  @override
+  String get navSkins => 'Skins';
+  @override
+  String get navWiki => 'Wiki';
+  @override
+  String get navProfile => 'Profil';
+
+  @override
+  String get skinsUpload => 'Yükle';
+  @override
+  String get skinsCreate => 'Oluştur';
+  @override
+  String get skinsSubtitle => 'Minecraft skinlerini görüntüle ve indir.';
+  @override
+  String get skinsSectionRecent => 'SON SKİNLER';
+  @override
+  String get skinsSectionMy => 'SKİNLERİM';
+  @override
+  String get skinsSectionYours => 'SKİNLERİN';
+  @override
+  String get skinsEmptyMySkins => 'Henüz kayıtlı skin yok. Bir skin oluştur veya yükle.';
+  @override
+  String get skinsCouldNotLoad => 'Skinler yüklenemedi';
+  @override
+  String skinsPageOf(int page, int total) => 'Sayfa $page / $total';
+  @override
+  String get skinsMustBe64 => 'Skin 64×64 piksel olmalıdır';
+  @override
+  String get skinsInvalidFile => 'Geçersiz görsel dosyası';
+  @override
+  String get skinsDownload => 'İndir';
+  @override
+  String get skinsEdit => 'Düzenle';
+  @override
+  String get skinsNoAccountsTitle => 'Bağlı hesap yok';
+  @override
+  String get skinsNoAccountsSubtitle => 'Skinini görmek için Profil\'de Java veya Bedrock bağla.';
+  @override
+  String get skinsSignInTitle => 'Skinini görmek için giriş yap';
+  @override
+  String get skinsSignInSubtitle => 'Hesap oluştur ve Profil\'de Java veya Bedrock bağla.';
 }

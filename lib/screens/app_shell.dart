@@ -332,6 +332,20 @@ class _AppShellState extends State<AppShell>
               ),
             ),
           ),
+          Positioned.fill(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  center: const Alignment(1.3, 0.9),
+                  radius: 0.55,
+                  colors: [
+                    Color(0xFF67E404).withOpacity(0.04),
+                    Colors.transparent,
+                  ],
+                ),
+              ),
+            ),
+          ),
           Scaffold(
             backgroundColor: Colors.transparent,
             bottomNavigationBar: BottomGlassSimpleNavBar(

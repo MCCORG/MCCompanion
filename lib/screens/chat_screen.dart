@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../models/message_model.dart';
 import '../models/user_model.dart';
@@ -170,7 +171,7 @@ class _ChatScreenState extends State<ChatScreen> {
               color: AppTheme.textSecondary,
               size: 20,
             ),
-            tooltip: 'Report user',
+            tooltip: AppLocalizations.of(context)!.reportUser,
             onPressed: () => _showReportSheet(),
           ),
         ],
@@ -246,6 +247,7 @@ class _ChatScreenState extends State<ChatScreen> {
   void _showReportSheet({MessageModel? message}) {
     String? _selectedReason;
     final _infoCtrl = TextEditingController();
+    final l = AppLocalizations.of(context)!;
 
     showModalBottomSheet(
       context: context,
@@ -280,8 +282,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 Text(
                   message != null
-                      ? 'Report message'
-                      : 'Report @${widget.friend.username}',
+                      ? l.reportMessage
+                      : l.reportUserWithName(widget.friend.username),
                   style: const TextStyle(
                     color: AppTheme.textPrimary,
                     fontSize: 17,
@@ -290,18 +292,18 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Our team will review this report. Thank you for keeping the community safe.',
+                  l.reportDisclaimer,
                   style: const TextStyle(
                     color: AppTheme.textMuted,
                     fontSize: 12,
                   ),
                 ),
                 const SizedBox(height: 16),
-                for (final entry in const [
-                  ('spam', 'Spam'),
-                  ('harassment', 'Harassment or bullying'),
-                  ('inappropriate', 'Inappropriate content'),
-                  ('other', 'Other'),
+                for (final entry in [
+                  ('spam', l.reportReasonSpam),
+                  ('harassment', l.reportReasonHarassment),
+                  ('inappropriate', l.reportReasonInappropriate),
+                  ('other', l.reportReasonOther),
                 ])
                   _ReasonTile(
                     label: entry.$2,
@@ -318,7 +320,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     fontSize: 13,
                   ),
                   decoration: InputDecoration(
-                    hintText: 'Additional details (optional)',
+                    hintText: l.reportAdditionalDetails,
                     hintStyle: const TextStyle(
                       color: AppTheme.textMuted,
                       fontSize: 13,
@@ -364,8 +366,8 @@ class _ChatScreenState extends State<ChatScreen> {
                             AppToast.show(
                               context,
                               message: ok
-                                  ? 'Report submitted. Thank you.'
-                                  : 'Could not submit report. Please try again.',
+                                  ? l.reportSuccess
+                                  : l.reportFailed,
                               icon: ok
                                   ? Icons.check_circle_rounded
                                   : Icons.error_outline_rounded,
@@ -379,9 +381,9 @@ class _ChatScreenState extends State<ChatScreen> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
-                    child: const Text(
-                      'Submit report',
-                      style: TextStyle(
+                    child: Text(
+                      l.reportSubmit,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
                       ),
@@ -471,14 +473,15 @@ class _DateDivider extends StatelessWidget {
     final now = DateTime.now();
     final local = date.toLocal();
     String label;
+    final l = AppLocalizations.of(context)!;
     if (local.year == now.year &&
         local.month == now.month &&
         local.day == now.day) {
-      label = 'Today';
+      label = l.today;
     } else if (local.year == now.year &&
         local.month == now.month &&
         local.day == now.day - 1) {
-      label = 'Yesterday';
+      label = l.yesterday;
     } else {
       label =
           '${local.day.toString().padLeft(2, '0')}/'
@@ -542,7 +545,7 @@ class _InputBar extends StatelessWidget {
                 textInputAction: TextInputAction.send,
                 onSubmitted: (_) => onSend(),
                 decoration: InputDecoration(
-                  hintText: 'Message...',
+                  hintText: AppLocalizations.of(context)!.messagePlaceholder,
                   hintStyle: const TextStyle(
                     color: AppTheme.textMuted,
                     fontSize: 14,
@@ -610,11 +613,11 @@ class _EmptyChat extends StatelessWidget {
   const _EmptyChat();
 
   @override
-  Widget build(BuildContext context) => const Center(
+  Widget build(BuildContext context) => Center(
     child: Text(
-      'No messages yet.\nSay hello!',
+      AppLocalizations.of(context)!.noMessagesYet,
       textAlign: TextAlign.center,
-      style: TextStyle(color: AppTheme.textMuted, fontSize: 14, height: 1.6),
+      style: const TextStyle(color: AppTheme.textMuted, fontSize: 14, height: 1.6),
     ),
   );
 }

@@ -407,4 +407,291 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get couldNotOpenUrl => 'Impossible d\'ouvrir l\'URL';
+
+  @override
+  String get reportUser => 'Signaler l\'utilisateur';
+  @override
+  String reportUserWithName(String username) => 'Signaler @$username';
+  @override
+  String get reportMessage => 'Signaler le message';
+  @override
+  String get reportDisclaimer => 'Notre équipe examinera ce signalement. Merci de contribuer à la sécurité de la communauté.';
+  @override
+  String get reportReasonSpam => 'Spam';
+  @override
+  String get reportReasonHarassment => 'Harcèlement ou intimidation';
+  @override
+  String get reportReasonInappropriate => 'Contenu inapproprié';
+  @override
+  String get reportReasonOther => 'Autre';
+  @override
+  String get reportAdditionalDetails => 'Détails supplémentaires (optionnel)';
+  @override
+  String get reportSubmit => 'Envoyer le signalement';
+  @override
+  String get reportSuccess => 'Signalement envoyé. Merci.';
+  @override
+  String get reportFailed => 'Impossible d\'envoyer le signalement. Veuillez réessayer.';
+  @override
+  String get messagePlaceholder => 'Message...';
+  @override
+  String get noMessagesYet => 'Aucun message pour l\'instant.\nDites bonjour !';
+  @override
+  String get today => 'Aujourd\'hui';
+  @override
+  String get yesterday => 'Hier';
+  @override
+  String get noConversationsYet => 'Aucune conversation pour l\'instant';
+  @override
+  String get startChatHint => 'Démarrez une conversation depuis votre liste d\'amis.';
+  @override
+  String get youPrefix => 'Vous';
+  @override
+  String get tabProfile => 'PROFIL';
+  @override
+  String get tabFriends => 'AMIS';
+  @override
+  String get tabRequests => 'DEMANDES';
+  @override
+  String get tabChats => 'CHATS';
+  @override
+  String get addFriend => 'Ajouter un ami';
+  @override
+  String get usernameHint => 'nom d\'utilisateur';
+  @override
+  String get send => 'Envoyer';
+  @override
+  String friendRequestSentTo(String username) => 'Demande d\'ami envoyée à @$username';
+  @override
+  String alreadyFriendsWith(String username) => 'Vous êtes déjà ami avec @$username.';
+  @override
+  String requestAlreadyPending(String username) => 'Il y a déjà une demande en attente avec @$username.';
+  @override
+  String userNotFoundMsg(String username) => 'Utilisateur @$username introuvable.';
+  @override
+  String cannotSendRequest(String username) => 'Vous ne pouvez pas envoyer de demande à @$username.';
+  @override
+  String get somethingWentWrong => 'Quelque chose s\'est mal passé. Veuillez réessayer.';
+  @override
+  String friendRequestAccepted(String username) => 'Demande d\'ami de @$username acceptée';
+  @override
+  String requestDeclined(String username) => 'Demande de @$username refusée';
+  @override
+  String get deleteAccountTitle => 'Supprimer le compte';
+  @override
+  String get deleteAccountBody => 'Cela supprimera définitivement votre compte, vos messages, vos amis et toutes les données associées. Cette action est irréversible.';
+  @override
+  String get deletePermanently => 'Supprimer définitivement';
+  @override
+  String get couldNotDeleteAccount => 'Impossible de supprimer le compte. Veuillez réessayer.';
+  @override
+  String get removeFriendTitle => 'Supprimer l\'ami';
+  @override
+  String removeFriendConfirm(String username) => 'Voulez-vous supprimer @$username de vos amis ?';
+  @override
+  String get remove => 'Supprimer';
+  @override
+  String friendRemoved(String username) => '@$username supprimé de vos amis';
+  @override
+  String get noFriendsYet => 'Pas encore d\'amis';
+  @override
+  String get noFriendsSub => 'Ajoutez quelqu\'un en utilisant le bouton en haut à droite.';
+  @override
+  String get noPendingRequests => 'Aucune demande en attente';
+  @override
+  String get requestsAppearHere => 'Les demandes d\'ami apparaîtront ici.';
+  @override
+  String onlineFriendsLabel(int count) => 'EN LIGNE — $count';
+  @override
+  String offlineFriendsLabel(int count) => 'HORS LIGNE — $count';
+  @override
+  String get couldNotUpdateVisibility => 'Impossible de mettre à jour la visibilité. Réessayez.';
+  @override
+  String get aboutMe => 'À propos de moi';
+  @override
+  String get linkedAccountsTitle => 'Comptes liés';
+  @override
+  String get linkAccountsHint => 'Liez vos comptes Minecraft pour les afficher sur votre profil.';
+  @override
+  String get unlinkXboxTitle => 'Délier le compte Xbox';
+  @override
+  String removeLabelConfirm(String label) => 'Supprimer $label de vos comptes liés ?';
+  @override
+  String get unlinkJavaTitle => 'Délier Java Edition';
+  @override
+  String removeJavaConfirm(String username) => 'Supprimer $username de vos comptes liés ?';
+  @override
+  String get unlink => 'Délier';
+  @override
+  String get linkXbox => 'Lier Xbox';
+  @override
+  String get linkJava => 'Lier Java';
+  @override
+  String get appearOfflineLabel => 'Apparaître hors ligne';
+  @override
+  String get appearOfflineOn => 'Les amis vous voient comme hors ligne';
+  @override
+  String get appearOfflineOff => 'Les amis peuvent voir quand vous êtes en ligne';
+  @override
+  String get signOut => 'Se déconnecter';
+  @override
+  String get profileCardTitle => 'Profil';
+  @override
+  String get edit => 'Modifier';
+  @override
+  String get displayNameLabel => 'Nom d\'affichage';
+  @override
+  String get bioLabel => 'Bio';
+  @override
+  String get yourNameHint => 'Votre nom';
+  @override
+  String get bioHint => 'Parlez un peu de vous';
+  @override
+  String get avatarUrlLabel => 'URL de l\'avatar';
+  @override
+  String get usernameDisplayLabel => 'Nom d\'utilisateur';
+  @override
+  String get profileUpdated => 'Profil mis à jour';
+  @override
+  String get findUser => 'Trouver un utilisateur';
+  @override
+  String get signIn => 'Se connecter';
+  @override
+  String get createAccount => 'Créer un compte';
+  @override
+  String get signInSubtitle => 'Connectez-vous pour ajouter des amis et partager vos sessions.';
+  @override
+  String get emailAddressHint => 'Adresse e-mail';
+  @override
+  String get passwordHint => 'Mot de passe';
+  @override
+  String get forgotPassword => 'Mot de passe oublié ?';
+  @override
+  String get continueWithGoogle => 'Continuer avec Google';
+  @override
+  String get alreadyHaveAccount => 'Vous avez déjà un compte ? Connectez-vous';
+  @override
+  String get noAccountYet => 'Pas encore de compte ? Inscrivez-vous';
+  @override
+  String get orDivider => 'ou';
+  @override
+  String get resetPasswordTitle => 'Réinitialiser le mot de passe';
+  @override
+  String get resetPasswordBody => 'Entrez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.';
+  @override
+  String get sendLink => 'Envoyer le lien';
+  @override
+  String resetLinkSent(String email) => 'Lien de réinitialisation envoyé à $email';
+  @override
+  String get noAccountForEmail => 'Aucun compte trouvé pour cette adresse e-mail.';
+  @override
+  String get invalidEmailError => 'Adresse e-mail invalide.';
+  @override
+  String get couldNotSendResetEmail => 'Impossible d\'envoyer l\'e-mail de réinitialisation. Veuillez réessayer.';
+  @override
+  String get incorrectEmailOrPassword => 'E-mail ou mot de passe incorrect.';
+  @override
+  String get emailAlreadyInUse => 'Cette adresse e-mail est déjà utilisée.';
+  @override
+  String get weakPassword => 'Le mot de passe doit contenir au moins 6 caractères.';
+  @override
+  String get googleSignInFailed => 'Échec de la connexion Google. Veuillez réessayer.';
+  @override
+  String get appleSignInFailed => 'Échec de la connexion Apple. Veuillez réessayer.';
+  @override
+  String get emailDifferentMethod => 'Un compte existe déjà avec cet e-mail via une autre méthode de connexion.';
+  @override
+  String get enterEmailAndPassword => 'Veuillez entrer votre e-mail et votre mot de passe.';
+  @override
+  String get profileNotSetUp => 'Profil pas encore configuré';
+  @override
+  String get chooseUsernameSubtitle => 'Choisissez un nom d\'utilisateur pour ajouter des amis et partager vos sessions.';
+  @override
+  String get createProfile => 'Créer un profil';
+  @override
+  String get chooseUniqueUsername => 'Choisissez un nom d\'utilisateur unique pour ajouter des amis.';
+  @override
+  String get usernameFieldLabel => 'Nom d\'utilisateur *';
+  @override
+  String get usernameFormatHint => '3–20 caractères · uniquement a-z, 0-9 et _';
+  @override
+  String get displayNameOptional => 'Nom d\'affichage (optionnel)';
+  @override
+  String get usernameRequired => 'Veuillez entrer un nom d\'utilisateur.';
+  @override
+  String get usernameFormatError => '3–20 caractères, uniquement lettres minuscules, chiffres et _';
+  @override
+  String get usernameTaken => 'Ce nom d\'utilisateur est déjà pris.';
+  @override
+  String get noConnectionError => 'Pas de connexion. Veuillez réessayer.';
+  @override
+  String get usernameExampleHint => 'ex. jens_mc';
+  @override
+  String get displayNameExampleHint => 'ex. Jens';
+  @override
+  String get home => 'Accueil';
+  @override
+  String get info => 'Info';
+  @override
+  String get consoleConnect => 'Console Connect';
+  @override
+  String get consoleConnectSubtitle => 'Se connecter aux serveurs Minecraft';
+  @override
+  String get minecraftSkins => 'Skins Minecraft';
+  @override
+  String get minecraftSkinsSubtitle => 'Voir et modifier les skins Java et Bedrock';
+  @override
+  String get minecraftWiki => 'Wiki Minecraft';
+  @override
+  String get minecraftWikiSubtitle => 'Mobs, blocs, recettes et plus';
+  @override
+  String get partnerServersLabel => 'Serveurs partenaires';
+  @override
+  String get partnerServersSubtitle => 'Serveurs Minecraft mis en avant';
+  @override
+  String get userLookup => 'Recherche d\'utilisateur Minecraft';
+  @override
+  String get userLookupSubtitle => 'Rechercher des profils Java et Bedrock';
+
+  @override
+  String get navSkins => 'Skins';
+  @override
+  String get navWiki => 'Wiki';
+  @override
+  String get navProfile => 'Profil';
+
+  @override
+  String get skinsUpload => 'Téléverser';
+  @override
+  String get skinsCreate => 'Créer';
+  @override
+  String get skinsSubtitle => 'Voir et télécharger des skins Minecraft.';
+  @override
+  String get skinsSectionRecent => 'SKINS RÉCENTS';
+  @override
+  String get skinsSectionMy => 'MES SKINS';
+  @override
+  String get skinsSectionYours => 'VOS SKINS';
+  @override
+  String get skinsEmptyMySkins => 'Aucun skin sauvegardé. Créez ou téléversez un skin pour commencer.';
+  @override
+  String get skinsCouldNotLoad => 'Impossible de charger les skins';
+  @override
+  String skinsPageOf(int page, int total) => 'Page $page / $total';
+  @override
+  String get skinsMustBe64 => 'Le skin doit être de 64×64 pixels';
+  @override
+  String get skinsInvalidFile => 'Fichier image invalide';
+  @override
+  String get skinsDownload => 'Télécharger';
+  @override
+  String get skinsEdit => 'Modifier';
+  @override
+  String get skinsNoAccountsTitle => 'Aucun compte lié';
+  @override
+  String get skinsNoAccountsSubtitle => 'Liez Java ou Bedrock dans Profil pour voir votre skin.';
+  @override
+  String get skinsSignInTitle => 'Connectez-vous pour voir votre skin';
+  @override
+  String get skinsSignInSubtitle => 'Créez un compte et liez Java ou Bedrock dans Profil.';
 }

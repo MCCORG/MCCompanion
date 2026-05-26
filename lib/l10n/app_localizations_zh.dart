@@ -407,4 +407,291 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get couldNotOpenUrl => '无法打开 URL';
+
+  @override
+  String get reportUser => '举报用户';
+  @override
+  String reportUserWithName(String username) => '举报 @$username';
+  @override
+  String get reportMessage => '举报消息';
+  @override
+  String get reportDisclaimer => '我们的团队将审核此举报。感谢您维护社区安全。';
+  @override
+  String get reportReasonSpam => '垃圾信息';
+  @override
+  String get reportReasonHarassment => '骚扰或欺凌';
+  @override
+  String get reportReasonInappropriate => '不当内容';
+  @override
+  String get reportReasonOther => '其他';
+  @override
+  String get reportAdditionalDetails => '附加详情（可选）';
+  @override
+  String get reportSubmit => '提交举报';
+  @override
+  String get reportSuccess => '举报已提交。谢谢。';
+  @override
+  String get reportFailed => '无法提交举报。请重试。';
+  @override
+  String get messagePlaceholder => '消息...';
+  @override
+  String get noMessagesYet => '暂无消息。\n打个招呼吧！';
+  @override
+  String get today => '今天';
+  @override
+  String get yesterday => '昨天';
+  @override
+  String get noConversationsYet => '暂无对话';
+  @override
+  String get startChatHint => '从好友列表开始聊天。';
+  @override
+  String get youPrefix => '你';
+  @override
+  String get tabProfile => '个人资料';
+  @override
+  String get tabFriends => '好友';
+  @override
+  String get tabRequests => '请求';
+  @override
+  String get tabChats => '聊天';
+  @override
+  String get addFriend => '添加好友';
+  @override
+  String get usernameHint => '用户名';
+  @override
+  String get send => '发送';
+  @override
+  String friendRequestSentTo(String username) => '已向 @$username 发送好友请求';
+  @override
+  String alreadyFriendsWith(String username) => '您已经是 @$username 的好友。';
+  @override
+  String requestAlreadyPending(String username) => '与 @$username 已有待处理的请求。';
+  @override
+  String userNotFoundMsg(String username) => '找不到用户 @$username。';
+  @override
+  String cannotSendRequest(String username) => '您无法向 @$username 发送请求。';
+  @override
+  String get somethingWentWrong => '出了些问题。请重试。';
+  @override
+  String friendRequestAccepted(String username) => '已接受 @$username 的好友请求';
+  @override
+  String requestDeclined(String username) => '已拒绝 @$username 的请求';
+  @override
+  String get deleteAccountTitle => '删除账户';
+  @override
+  String get deleteAccountBody => '这将永久删除您的账户、消息、好友和所有相关数据。此操作无法撤销。';
+  @override
+  String get deletePermanently => '永久删除';
+  @override
+  String get couldNotDeleteAccount => '无法删除账户。请重试。';
+  @override
+  String get removeFriendTitle => '删除好友';
+  @override
+  String removeFriendConfirm(String username) => '要将 @$username 从好友中删除吗？';
+  @override
+  String get remove => '删除';
+  @override
+  String friendRemoved(String username) => '@$username 已从您的好友中删除';
+  @override
+  String get noFriendsYet => '暂无好友';
+  @override
+  String get noFriendsSub => '使用右上角的按钮添加好友。';
+  @override
+  String get noPendingRequests => '没有待处理的请求';
+  @override
+  String get requestsAppearHere => '好友请求将显示在此处。';
+  @override
+  String onlineFriendsLabel(int count) => '在线 — $count';
+  @override
+  String offlineFriendsLabel(int count) => '离线 — $count';
+  @override
+  String get couldNotUpdateVisibility => '无法更新可见性。请重试。';
+  @override
+  String get aboutMe => '关于我';
+  @override
+  String get linkedAccountsTitle => '关联账户';
+  @override
+  String get linkAccountsHint => '关联您的 Minecraft 账户以在个人资料中显示。';
+  @override
+  String get unlinkXboxTitle => '取消关联 Xbox 账户';
+  @override
+  String removeLabelConfirm(String label) => '从关联账户中移除 $label？';
+  @override
+  String get unlinkJavaTitle => '取消关联 Java Edition';
+  @override
+  String removeJavaConfirm(String username) => '从关联账户中移除 $username？';
+  @override
+  String get unlink => '取消关联';
+  @override
+  String get linkXbox => '关联 Xbox';
+  @override
+  String get linkJava => '关联 Java';
+  @override
+  String get appearOfflineLabel => '显示为离线';
+  @override
+  String get appearOfflineOn => '好友看到您为离线状态';
+  @override
+  String get appearOfflineOff => '好友可以看到您何时在线';
+  @override
+  String get signOut => '退出登录';
+  @override
+  String get profileCardTitle => '个人资料';
+  @override
+  String get edit => '编辑';
+  @override
+  String get displayNameLabel => '显示名称';
+  @override
+  String get bioLabel => '个人简介';
+  @override
+  String get yourNameHint => '您的姓名';
+  @override
+  String get bioHint => '介绍一下自己';
+  @override
+  String get avatarUrlLabel => '头像 URL';
+  @override
+  String get usernameDisplayLabel => '用户名';
+  @override
+  String get profileUpdated => '个人资料已更新';
+  @override
+  String get findUser => '查找用户';
+  @override
+  String get signIn => '登录';
+  @override
+  String get createAccount => '创建账户';
+  @override
+  String get signInSubtitle => '登录以添加好友并分享您的会话。';
+  @override
+  String get emailAddressHint => '电子邮件地址';
+  @override
+  String get passwordHint => '密码';
+  @override
+  String get forgotPassword => '忘记密码？';
+  @override
+  String get continueWithGoogle => '使用 Google 继续';
+  @override
+  String get alreadyHaveAccount => '已有账户？登录';
+  @override
+  String get noAccountYet => '还没有账户？注册';
+  @override
+  String get orDivider => '或';
+  @override
+  String get resetPasswordTitle => '重置密码';
+  @override
+  String get resetPasswordBody => '输入您的电子邮件地址，我们将向您发送重置密码的链接。';
+  @override
+  String get sendLink => '发送链接';
+  @override
+  String resetLinkSent(String email) => '重置链接已发送至 $email';
+  @override
+  String get noAccountForEmail => '未找到此电子邮件地址对应的账户。';
+  @override
+  String get invalidEmailError => '无效的电子邮件地址。';
+  @override
+  String get couldNotSendResetEmail => '无法发送重置邮件。请重试。';
+  @override
+  String get incorrectEmailOrPassword => '电子邮件或密码不正确。';
+  @override
+  String get emailAlreadyInUse => '此电子邮件地址已被使用。';
+  @override
+  String get weakPassword => '密码必须至少包含 6 个字符。';
+  @override
+  String get googleSignInFailed => 'Google 登录失败。请重试。';
+  @override
+  String get appleSignInFailed => 'Apple 登录失败。请重试。';
+  @override
+  String get emailDifferentMethod => '此电子邮件已通过其他登录方式注册了账户。';
+  @override
+  String get enterEmailAndPassword => '请输入您的电子邮件和密码。';
+  @override
+  String get profileNotSetUp => '个人资料尚未设置';
+  @override
+  String get chooseUsernameSubtitle => '选择用户名以添加好友并分享您的会话。';
+  @override
+  String get createProfile => '创建个人资料';
+  @override
+  String get chooseUniqueUsername => '选择唯一的用户名以添加好友。';
+  @override
+  String get usernameFieldLabel => '用户名 *';
+  @override
+  String get usernameFormatHint => '3–20 个字符 · 仅限 a-z、0-9 和 _';
+  @override
+  String get displayNameOptional => '显示名称（可选）';
+  @override
+  String get usernameRequired => '请输入用户名。';
+  @override
+  String get usernameFormatError => '3–20 个字符，仅限小写字母、数字和 _';
+  @override
+  String get usernameTaken => '此用户名已被使用。';
+  @override
+  String get noConnectionError => '没有连接。请重试。';
+  @override
+  String get usernameExampleHint => '例如 jens_mc';
+  @override
+  String get displayNameExampleHint => '例如 Jens';
+  @override
+  String get home => '首页';
+  @override
+  String get info => '信息';
+  @override
+  String get consoleConnect => 'Console Connect';
+  @override
+  String get consoleConnectSubtitle => '连接到 Minecraft 服务器';
+  @override
+  String get minecraftSkins => 'Minecraft 皮肤';
+  @override
+  String get minecraftSkinsSubtitle => '查看和编辑 Java 与 Bedrock 皮肤';
+  @override
+  String get minecraftWiki => 'Minecraft Wiki';
+  @override
+  String get minecraftWikiSubtitle => '生物、方块、合成配方等';
+  @override
+  String get partnerServersLabel => '合作服务器';
+  @override
+  String get partnerServersSubtitle => '精选 Minecraft 服务器';
+  @override
+  String get userLookup => 'Minecraft 用户查找';
+  @override
+  String get userLookupSubtitle => '查找 Java 和 Bedrock 个人资料';
+
+  @override
+  String get navSkins => '皮肤';
+  @override
+  String get navWiki => '百科';
+  @override
+  String get navProfile => '我的';
+
+  @override
+  String get skinsUpload => '上传';
+  @override
+  String get skinsCreate => '创建';
+  @override
+  String get skinsSubtitle => '查看和下载 Minecraft 皮肤。';
+  @override
+  String get skinsSectionRecent => '最近皮肤';
+  @override
+  String get skinsSectionMy => '我的皮肤';
+  @override
+  String get skinsSectionYours => '你的皮肤';
+  @override
+  String get skinsEmptyMySkins => '暂无已保存的皮肤，创建或上传一个皮肤来开始吧。';
+  @override
+  String get skinsCouldNotLoad => '无法加载皮肤';
+  @override
+  String skinsPageOf(int page, int total) => '第 $page / $total 页';
+  @override
+  String get skinsMustBe64 => '皮肤必须为 64×64 像素';
+  @override
+  String get skinsInvalidFile => '无效的图片文件';
+  @override
+  String get skinsDownload => '下载';
+  @override
+  String get skinsEdit => '编辑';
+  @override
+  String get skinsNoAccountsTitle => '未关联账号';
+  @override
+  String get skinsNoAccountsSubtitle => '在个人资料中关联 Java 或 Bedrock 以查看你的皮肤。';
+  @override
+  String get skinsSignInTitle => '登录以查看你的皮肤';
+  @override
+  String get skinsSignInSubtitle => '创建账号并在个人资料中关联 Java 或 Bedrock。';
 }

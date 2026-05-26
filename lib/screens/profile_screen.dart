@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart'
     show SignInWithAppleButton, SignInWithAppleButtonStyle;
@@ -212,15 +213,15 @@ class ProfileScreenState extends State<ProfileScreen>
               letterSpacing: 0.4,
             ),
             tabs: [
-              const Tab(text: 'PROFILE'),
-              const Tab(text: 'FRIENDS'),
+              Tab(text: AppLocalizations.of(context)!.tabProfile),
+              Tab(text: AppLocalizations.of(context)!.tabFriends),
               Tab(
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
-                      'REQUESTS',
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)!.tabRequests,
+                      style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w700,
                         letterSpacing: 0.4,
@@ -250,7 +251,7 @@ class ProfileScreenState extends State<ProfileScreen>
                   ],
                 ),
               ),
-              const Tab(text: 'CHATS'),
+              Tab(text: AppLocalizations.of(context)!.tabChats),
             ],
           ),
         ),
@@ -294,6 +295,7 @@ class ProfileScreenState extends State<ProfileScreen>
 
   void _showAddFriendDialog() {
     final ctrl = TextEditingController();
+    final l = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
@@ -302,15 +304,15 @@ class ProfileScreenState extends State<ProfileScreen>
           borderRadius: BorderRadius.circular(16),
           side: const BorderSide(color: AppTheme.borderGray),
         ),
-        title: const Text('Add friend'),
+        title: Text(l.addFriend),
         content: TextField(
           controller: ctrl,
           autofocus: true,
           autocorrect: false,
           style: const TextStyle(color: AppTheme.textPrimary),
-          decoration: const InputDecoration(
-            hintText: 'username',
-            prefixIcon: Icon(
+          decoration: InputDecoration(
+            hintText: l.usernameHint,
+            prefixIcon: const Icon(
               Icons.alternate_email_rounded,
               size: 18,
               color: AppTheme.textMuted,
@@ -324,14 +326,14 @@ class ProfileScreenState extends State<ProfileScreen>
         actions: [
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(),
-            child: const Text('Cancel'),
+            child: Text(l.cancel),
           ),
           ElevatedButton(
             onPressed: () {
               Navigator.of(ctx).pop();
               _sendRequest(ctrl.text.trim());
             },
-            child: const Text('Send'),
+            child: Text(l.send),
           ),
         ],
       ),
@@ -342,21 +344,21 @@ class ProfileScreenState extends State<ProfileScreen>
     if (username.isEmpty) return;
     final error = await UserService.sendFriendRequest(username);
     if (!mounted) return;
+    final l = AppLocalizations.of(context)!;
     if (error == null) {
       AppToast.show(
         context,
-        message: 'Friend request sent to @$username',
+        message: l.friendRequestSentTo(username),
         icon: Icons.check_circle_rounded,
         color: AppTheme.success,
       );
     } else {
       final msg = switch (error) {
-        'already_friends' => 'You are already friends with @$username.',
-        'request_pending' =>
-          'There is already a pending request with @$username.',
-        'not_found' => 'User @$username not found.',
-        'blocked' => 'You cannot send a request to @$username.',
-        _ => 'Something went wrong. Please try again.',
+        'already_friends' => l.alreadyFriendsWith(username),
+        'request_pending' => l.requestAlreadyPending(username),
+        'not_found' => l.userNotFoundMsg(username),
+        'blocked' => l.cannotSendRequest(username),
+        _ => l.somethingWentWrong,
       };
       AppToast.show(
         context,
@@ -373,7 +375,7 @@ class ProfileScreenState extends State<ProfileScreen>
     if (ok) {
       AppToast.show(
         context,
-        message: 'Friend request from @${req.requesterUsername} accepted',
+        message: AppLocalizations.of(context)!.friendRequestAccepted(req.requesterUsername),
         icon: Icons.check_circle_rounded,
         color: AppTheme.success,
       );
@@ -387,7 +389,7 @@ class ProfileScreenState extends State<ProfileScreen>
     if (ok) {
       AppToast.show(
         context,
-        message: 'Request from @${req.requesterUsername} declined',
+        message: AppLocalizations.of(context)!.requestDeclined(req.requesterUsername),
         icon: Icons.close_rounded,
         color: AppTheme.textMuted,
       );
@@ -396,6 +398,7 @@ class ProfileScreenState extends State<ProfileScreen>
   }
 
   Future<void> _deleteAccount() async {
+    final l = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
@@ -404,20 +407,20 @@ class ProfileScreenState extends State<ProfileScreen>
           borderRadius: BorderRadius.circular(16),
           side: const BorderSide(color: AppTheme.borderGray),
         ),
-        title: const Text('Delete account'),
-        content: const Text(
-          'This will permanently delete your account, messages, friends and all associated data. This action cannot be undone.',
-          style: TextStyle(color: AppTheme.textSecondary),
+        title: Text(l.deleteAccountTitle),
+        content: Text(
+          l.deleteAccountBody,
+          style: const TextStyle(color: AppTheme.textSecondary),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(false),
-            child: const Text('Cancel'),
+            child: Text(l.cancel),
           ),
           ElevatedButton(
             onPressed: () => Navigator.of(ctx).pop(true),
             style: ElevatedButton.styleFrom(backgroundColor: AppTheme.error),
-            child: const Text('Delete permanently'),
+            child: Text(l.deletePermanently),
           ),
         ],
       ),
@@ -429,7 +432,7 @@ class ProfileScreenState extends State<ProfileScreen>
     if (!ok) {
       AppToast.show(
         context,
-        message: 'Could not delete account. Please try again.',
+        message: l.couldNotDeleteAccount,
         icon: Icons.error_outline_rounded,
         color: AppTheme.error,
       );
@@ -444,6 +447,7 @@ class ProfileScreenState extends State<ProfileScreen>
   }
 
   Future<void> _removeFriend(FriendModel friend) async {
+    final l = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
@@ -452,20 +456,20 @@ class ProfileScreenState extends State<ProfileScreen>
           borderRadius: BorderRadius.circular(16),
           side: const BorderSide(color: AppTheme.borderGray),
         ),
-        title: const Text('Remove friend'),
+        title: Text(l.removeFriendTitle),
         content: Text(
-          'Do you want to remove @${friend.username} as a friend?',
+          l.removeFriendConfirm(friend.username),
           style: const TextStyle(color: AppTheme.textSecondary),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(false),
-            child: const Text('Cancel'),
+            child: Text(l.cancel),
           ),
           ElevatedButton(
             onPressed: () => Navigator.of(ctx).pop(true),
             style: ElevatedButton.styleFrom(backgroundColor: AppTheme.error),
-            child: const Text('Remove'),
+            child: Text(l.remove),
           ),
         ],
       ),
@@ -476,7 +480,7 @@ class ProfileScreenState extends State<ProfileScreen>
     if (ok) {
       AppToast.show(
         context,
-        message: '@${friend.username} removed from your friends',
+        message: l.friendRemoved(friend.username),
         icon: Icons.person_remove_rounded,
         color: AppTheme.textMuted,
       );
@@ -522,13 +526,13 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
       await AuthService.signInWithGoogle();
     } on FirebaseAuthException catch (e) {
       if (!mounted) return;
+      final l = AppLocalizations.of(context)!;
       setState(() => _error = switch (e.code) {
-            'account-exists-with-different-credential' =>
-              'An account already exists with this email using a different sign-in method.',
-            _ => 'Google sign-in failed. Please try again.',
+            'account-exists-with-different-credential' => l.emailDifferentMethod,
+            _ => l.googleSignInFailed,
           });
     } catch (_) {
-      if (mounted) setState(() => _error = 'Google sign-in failed. Please try again.');
+      if (mounted) setState(() => _error = AppLocalizations.of(context)!.googleSignInFailed);
     } finally {
       if (mounted) setState(() => _googleLoading = false);
     }
@@ -543,10 +547,10 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
       await AuthService.signInWithApple();
     } on FirebaseAuthException catch (e) {
       if (!mounted) return;
+      final l = AppLocalizations.of(context)!;
       setState(() => _error = switch (e.code) {
-            'account-exists-with-different-credential' =>
-              'An account already exists with this email using a different sign-in method.',
-            _ => 'Apple sign-in failed. Please try again.',
+            'account-exists-with-different-credential' => l.emailDifferentMethod,
+            _ => l.appleSignInFailed,
           });
     } catch (e) {
       if (!mounted) return;
@@ -554,7 +558,7 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
       if (!msg.contains('AuthorizationErrorCode.canceled') &&
           !msg.contains('canceled') &&
           !msg.contains('cancelled')) {
-        setState(() => _error = 'Apple sign-in failed. Please try again.');
+        setState(() => _error = AppLocalizations.of(context)!.appleSignInFailed);
       }
     } finally {
       if (mounted) setState(() => _appleLoading = false);
@@ -571,17 +575,17 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
           borderRadius: BorderRadius.circular(16),
           side: const BorderSide(color: AppTheme.borderGray),
         ),
-        title: const Text(
-          'Reset password',
-          style: TextStyle(color: AppTheme.textPrimary, fontWeight: FontWeight.w700),
+        title: Text(
+          AppLocalizations.of(ctx)!.resetPasswordTitle,
+          style: const TextStyle(color: AppTheme.textPrimary, fontWeight: FontWeight.w700),
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Enter your email address and we\'ll send you a link to reset your password.',
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(ctx)!.resetPasswordBody,
+              style: const TextStyle(
                 color: AppTheme.textSecondary,
                 fontSize: 13,
                 height: 1.5,
@@ -594,9 +598,9 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
               autocorrect: false,
               autofocus: true,
               style: const TextStyle(color: AppTheme.textPrimary),
-              decoration: const InputDecoration(
-                hintText: 'Email address',
-                prefixIcon: Icon(
+              decoration: InputDecoration(
+                hintText: AppLocalizations.of(ctx)!.emailAddressHint,
+                prefixIcon: const Icon(
                   Icons.email_rounded,
                   size: 18,
                   color: AppTheme.textMuted,
@@ -609,13 +613,13 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(null),
-            child: const Text('Cancel'),
+            child: Text(AppLocalizations.of(ctx)!.cancel),
           ),
           ElevatedButton(
             onPressed: () => Navigator.of(ctx).pop(emailCtrl.text.trim()),
-            child: const Text(
-              'Send link',
-              style: TextStyle(fontWeight: FontWeight.w700),
+            child: Text(
+              AppLocalizations.of(ctx)!.sendLink,
+              style: const TextStyle(fontWeight: FontWeight.w700),
             ),
           ),
         ],
@@ -630,16 +634,17 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
       if (!mounted) return;
       AppToast.show(
         context,
-        message: 'Reset link sent to $email',
+        message: AppLocalizations.of(context)!.resetLinkSent(email),
         icon: Icons.mark_email_read_rounded,
         color: AppTheme.success,
       );
     } on FirebaseAuthException catch (e) {
       if (!mounted) return;
+      final l = AppLocalizations.of(context)!;
       final msg = switch (e.code) {
-        'user-not-found' => 'No account found for this email address.',
-        'invalid-email' => 'Invalid email address.',
-        _ => 'Could not send reset email. Please try again.',
+        'user-not-found' => l.noAccountForEmail,
+        'invalid-email' => l.invalidEmailError,
+        _ => l.couldNotSendResetEmail,
       };
       AppToast.show(
         context,
@@ -651,7 +656,7 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
       if (!mounted) return;
       AppToast.show(
         context,
-        message: 'Could not send reset email. Please try again.',
+        message: AppLocalizations.of(context)!.couldNotSendResetEmail,
         icon: Icons.error_outline_rounded,
         color: AppTheme.error,
       );
@@ -662,7 +667,7 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
     final email = _emailCtrl.text.trim();
     final pass = _passCtrl.text;
     if (email.isEmpty || pass.isEmpty) {
-      setState(() => _error = 'Please enter your email and password.');
+      setState(() => _error = AppLocalizations.of(context)!.enterEmailAndPassword);
       return;
     }
     setState(() {
@@ -677,20 +682,21 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
       }
     } on FirebaseAuthException catch (e) {
       if (!mounted) return;
+      final l = AppLocalizations.of(context)!;
       setState(() {
         _error = switch (e.code) {
           'user-not-found' ||
           'wrong-password' ||
-          'invalid-credential' => 'Incorrect email or password.',
-          'email-already-in-use' => 'This email address is already in use.',
-          'weak-password' => 'Password must be at least 6 characters.',
-          'invalid-email' => 'Invalid email address.',
-          _ => 'Something went wrong. Please try again.',
+          'invalid-credential' => l.incorrectEmailOrPassword,
+          'email-already-in-use' => l.emailAlreadyInUse,
+          'weak-password' => l.weakPassword,
+          'invalid-email' => l.invalidEmailError,
+          _ => l.somethingWentWrong,
         };
       });
     } catch (_) {
       if (!mounted) return;
-      setState(() => _error = 'Something went wrong. Please try again.');
+      setState(() => _error = AppLocalizations.of(context)!.somethingWentWrong);
     } finally {
       if (mounted) setState(() => _loading = false);
     }
@@ -722,7 +728,9 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
               ),
               const SizedBox(height: 20),
               Text(
-                _isRegisterMode ? 'Create account' : 'Sign in',
+                _isRegisterMode
+                    ? AppLocalizations.of(context)!.createAccount
+                    : AppLocalizations.of(context)!.signIn,
                 style: const TextStyle(
                   color: AppTheme.textPrimary,
                   fontSize: 22,
@@ -730,8 +738,8 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                 ),
               ),
               const SizedBox(height: 6),
-              const Text(
-                'Sign in to add friends and share your sessions.',
+              Text(
+                AppLocalizations.of(context)!.signInSubtitle,
                 style: TextStyle(
                   color: AppTheme.textSecondary,
                   fontSize: 13,
@@ -745,9 +753,9 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                 autocorrect: false,
                 textInputAction: TextInputAction.next,
                 style: const TextStyle(color: AppTheme.textPrimary),
-                decoration: const InputDecoration(
-                  hintText: 'Email address',
-                  prefixIcon: Icon(
+                decoration: InputDecoration(
+                  hintText: AppLocalizations.of(context)!.emailAddressHint,
+                  prefixIcon: const Icon(
                     Icons.email_rounded,
                     size: 18,
                     color: AppTheme.textMuted,
@@ -763,9 +771,9 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                 obscureText: true,
                 textInputAction: TextInputAction.done,
                 style: const TextStyle(color: AppTheme.textPrimary),
-                decoration: const InputDecoration(
-                  hintText: 'Password',
-                  prefixIcon: Icon(
+                decoration: InputDecoration(
+                  hintText: AppLocalizations.of(context)!.passwordHint,
+                  prefixIcon: const Icon(
                     Icons.lock_rounded,
                     size: 18,
                     color: AppTheme.textMuted,
@@ -790,9 +798,9 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                       minimumSize: Size.zero,
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     ),
-                    child: const Text(
-                      'Forgot password?',
-                      style: TextStyle(
+                    child: Text(
+                      AppLocalizations.of(context)!.forgotPassword,
+                      style: const TextStyle(
                         color: AppTheme.textMuted,
                         fontSize: 12,
                       ),
@@ -849,7 +857,9 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                         ),
                       )
                     : Text(
-                        _isRegisterMode ? 'Create account' : 'Sign in',
+                        _isRegisterMode
+                            ? AppLocalizations.of(context)!.createAccount
+                            : AppLocalizations.of(context)!.signIn,
                         style: const TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 15,
@@ -864,8 +874,8 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       child: Text(
-                        'or',
-                        style: TextStyle(
+                        AppLocalizations.of(context)!.orDivider,
+                        style: const TextStyle(
                           color: AppTheme.textMuted,
                           fontSize: 12,
                         ),
@@ -913,9 +923,9 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                                 color: AppTheme.textPrimary,
                               ),
                               const SizedBox(width: 10),
-                              const Text(
-                                'Continue with Google',
-                                style: TextStyle(
+                              Text(
+                                AppLocalizations.of(context)!.continueWithGoogle,
+                                style: const TextStyle(
                                   color: AppTheme.textPrimary,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 14,
@@ -931,8 +941,8 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                     setState(() => _isRegisterMode = !_isRegisterMode),
                 child: Text(
                   _isRegisterMode
-                      ? 'Already have an account? Sign in'
-                      : 'No account yet? Register',
+                      ? AppLocalizations.of(context)!.alreadyHaveAccount
+                      : AppLocalizations.of(context)!.noAccountYet,
                   style: const TextStyle(
                     color: AppTheme.textSecondary,
                     fontSize: 13,
@@ -974,19 +984,19 @@ class _NotRegisteredView extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            const Text(
-              'Profile not set up yet',
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(context)!.profileNotSetUp,
+              style: const TextStyle(
                 color: AppTheme.textPrimary,
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
               ),
             ),
             const SizedBox(height: 8),
-            const Text(
-              'Choose a username to add friends and share your sessions.',
+            Text(
+              AppLocalizations.of(context)!.chooseUsernameSubtitle,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: AppTheme.textSecondary,
                 fontSize: 13,
                 height: 1.5,
@@ -996,9 +1006,9 @@ class _NotRegisteredView extends StatelessWidget {
             ElevatedButton.icon(
               onPressed: onRegister,
               icon: const Icon(Icons.arrow_forward_rounded, size: 16),
-              label: const Text(
-                'Create profile',
-                style: TextStyle(fontWeight: FontWeight.w700),
+              label: Text(
+                AppLocalizations.of(context)!.createProfile,
+                style: const TextStyle(fontWeight: FontWeight.w700),
               ),
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(
@@ -1078,13 +1088,13 @@ class _Header extends StatelessWidget {
           ),
           _IconBtn(
             icon: Icons.search_rounded,
-            tooltip: 'Find user',
+            tooltip: AppLocalizations.of(context)!.findUser,
             onTap: () => _openSearch(context),
           ),
           const SizedBox(width: 8),
           _IconBtn(
             icon: Icons.person_add_rounded,
-            tooltip: 'Add friend',
+            tooltip: AppLocalizations.of(context)!.addFriend,
             onTap: onAddFriend,
           ),
         ],
@@ -1123,7 +1133,7 @@ class _ProfileTabState extends State<_ProfileTab> {
       setState(() => _appearOffline = !value);
       AppToast.show(
         context,
-        message: 'Could not update visibility. Try again.',
+        message: AppLocalizations.of(context)!.couldNotUpdateVisibility,
         icon: Icons.error_outline_rounded,
         color: AppTheme.error,
         duration: const Duration(seconds: 2),
@@ -1148,7 +1158,7 @@ class _ProfileTabState extends State<_ProfileTab> {
             const SizedBox(height: 12),
             _InfoCard(
               icon: Icons.info_outline_rounded,
-              label: 'About me',
+              label: AppLocalizations.of(context)!.aboutMe,
               value: widget.me!.bio!,
             ),
           ],
@@ -1163,7 +1173,7 @@ class _ProfileTabState extends State<_ProfileTab> {
           OutlinedButton.icon(
             onPressed: widget.onSignOut,
             icon: const Icon(Icons.logout_rounded, size: 16),
-            label: const Text('Sign out'),
+            label: Text(AppLocalizations.of(context)!.signOut),
             style: OutlinedButton.styleFrom(
               foregroundColor: AppTheme.error,
               side: BorderSide(color: AppTheme.error.withOpacity(0.40)),
@@ -1174,7 +1184,7 @@ class _ProfileTabState extends State<_ProfileTab> {
           OutlinedButton.icon(
             onPressed: widget.onDeleteAccount,
             icon: const Icon(Icons.delete_forever_rounded, size: 16),
-            label: const Text('Delete account'),
+            label: Text(AppLocalizations.of(context)!.deleteAccountTitle),
             style: OutlinedButton.styleFrom(
               foregroundColor: AppTheme.error,
               side: BorderSide(color: AppTheme.error.withOpacity(0.20)),
@@ -1231,9 +1241,9 @@ class _SettingsCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Appear offline',
-                    style: TextStyle(
+                  Text(
+                    AppLocalizations.of(context)!.appearOfflineLabel,
+                    style: const TextStyle(
                       color: AppTheme.textPrimary,
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
@@ -1241,8 +1251,8 @@ class _SettingsCard extends StatelessWidget {
                   ),
                   Text(
                     appearOffline
-                        ? 'Friends see you as offline'
-                        : 'Friends can see when you\'re online',
+                        ? AppLocalizations.of(context)!.appearOfflineOn
+                        : AppLocalizations.of(context)!.appearOfflineOff,
                     style: const TextStyle(
                       color: AppTheme.textMuted,
                       fontSize: 11,
@@ -1306,6 +1316,7 @@ class _LinkedAccountsCardState extends State<_LinkedAccountsCard> {
 
   Future<void> _unlinkBedrock(BedrockAccount account) async {
     final label = account.xboxGamertag ?? account.xboxXuid;
+    final l = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
@@ -1314,20 +1325,20 @@ class _LinkedAccountsCardState extends State<_LinkedAccountsCard> {
           borderRadius: BorderRadius.circular(16),
           side: const BorderSide(color: AppTheme.borderGray),
         ),
-        title: const Text('Unlink Xbox account'),
+        title: Text(l.unlinkXboxTitle),
         content: Text(
-          'Remove $label from your linked accounts?',
+          l.removeLabelConfirm(label),
           style: const TextStyle(color: AppTheme.textSecondary),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(false),
-            child: const Text('Cancel'),
+            child: Text(l.cancel),
           ),
           ElevatedButton(
             onPressed: () => Navigator.of(ctx).pop(true),
             style: ElevatedButton.styleFrom(backgroundColor: AppTheme.error),
-            child: const Text('Unlink'),
+            child: Text(l.unlink),
           ),
         ],
       ),
@@ -1341,6 +1352,7 @@ class _LinkedAccountsCardState extends State<_LinkedAccountsCard> {
   }
 
   Future<void> _unlinkJava(JavaAccount account) async {
+    final l = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
@@ -1349,20 +1361,20 @@ class _LinkedAccountsCardState extends State<_LinkedAccountsCard> {
           borderRadius: BorderRadius.circular(16),
           side: const BorderSide(color: AppTheme.borderGray),
         ),
-        title: const Text('Unlink Java Edition'),
+        title: Text(l.unlinkJavaTitle),
         content: Text(
-          'Remove ${account.javaUsername} from your linked accounts?',
+          l.removeJavaConfirm(account.javaUsername),
           style: const TextStyle(color: AppTheme.textSecondary),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(false),
-            child: const Text('Cancel'),
+            child: Text(l.cancel),
           ),
           ElevatedButton(
             onPressed: () => Navigator.of(ctx).pop(true),
             style: ElevatedButton.styleFrom(backgroundColor: AppTheme.error),
-            child: const Text('Unlink'),
+            child: Text(l.unlink),
           ),
         ],
       ),
@@ -1392,8 +1404,8 @@ class _LinkedAccountsCardState extends State<_LinkedAccountsCard> {
         children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 14, 16, 12),
-            child: const Text(
-              'Linked Accounts',
+            child: Text(
+              AppLocalizations.of(context)!.linkedAccountsTitle,
               style: TextStyle(
                 color: AppTheme.textPrimary,
                 fontWeight: FontWeight.w700,
@@ -1404,8 +1416,8 @@ class _LinkedAccountsCardState extends State<_LinkedAccountsCard> {
           if (!hasAny)
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 14),
-              child: const Text(
-                'Link your Minecraft accounts to show them on your profile.',
+              child: Text(
+                AppLocalizations.of(context)!.linkAccountsHint,
                 style: TextStyle(
                   color: AppTheme.textSecondary,
                   fontSize: 12,
@@ -1448,9 +1460,9 @@ class _LinkedAccountsCardState extends State<_LinkedAccountsCard> {
                       size: 14,
                       color: _xboxGreen,
                     ),
-                    label: const Text(
-                      'Link Xbox',
-                      style: TextStyle(color: _xboxGreen, fontSize: 13),
+                    label: Text(
+                      AppLocalizations.of(context)!.linkXbox,
+                      style: const TextStyle(color: _xboxGreen, fontSize: 13),
                     ),
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 12),
@@ -1470,9 +1482,9 @@ class _LinkedAccountsCardState extends State<_LinkedAccountsCard> {
                       size: 14,
                       color: _javaBlue,
                     ),
-                    label: const Text(
-                      'Link Java',
-                      style: TextStyle(color: _javaBlue, fontSize: 13),
+                    label: Text(
+                      AppLocalizations.of(context)!.linkJava,
+                      style: const TextStyle(color: _javaBlue, fontSize: 13),
                     ),
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 12),
@@ -1563,9 +1575,9 @@ class _AccountRow extends StatelessWidget {
                         strokeWidth: 2,
                       ),
                     )
-                  : const Text(
-                      'Unlink',
-                      style: TextStyle(
+                  : Text(
+                      AppLocalizations.of(context)!.unlink,
+                      style: const TextStyle(
                         color: AppTheme.error,
                         fontSize: 11,
                         fontWeight: FontWeight.w600,
@@ -1629,7 +1641,7 @@ class _EditProfileCardState extends State<_EditProfileCard> {
       if (mounted) {
         AppToast.show(
           context,
-          message: 'Profile updated',
+          message: AppLocalizations.of(context)!.profileUpdated,
           icon: Icons.check_circle_rounded,
           color: AppTheme.success,
         );
@@ -1653,9 +1665,9 @@ class _EditProfileCardState extends State<_EditProfileCard> {
         children: [
           Row(
             children: [
-              const Text(
-                'Profile',
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context)!.profileCardTitle,
+                style: const TextStyle(
                   color: AppTheme.textPrimary,
                   fontWeight: FontWeight.w700,
                   fontSize: 14,
@@ -1666,7 +1678,7 @@ class _EditProfileCardState extends State<_EditProfileCard> {
                 TextButton.icon(
                   onPressed: () => setState(() => _editing = true),
                   icon: const Icon(Icons.edit_rounded, size: 14),
-                  label: const Text('Edit'),
+                  label: Text(AppLocalizations.of(context)!.edit),
                   style: TextButton.styleFrom(
                     foregroundColor: AppTheme.accent,
                     padding: const EdgeInsets.symmetric(
@@ -1679,26 +1691,26 @@ class _EditProfileCardState extends State<_EditProfileCard> {
           ),
           const SizedBox(height: 12),
           if (_editing) ...[
-            _FieldLabel('Display name'),
+            _FieldLabel(AppLocalizations.of(context)!.displayNameLabel),
             const SizedBox(height: 6),
             TextField(
               controller: _displayNameCtrl,
               style: const TextStyle(color: AppTheme.textPrimary),
-              decoration: const InputDecoration(hintText: 'Your name'),
+              decoration: InputDecoration(hintText: AppLocalizations.of(context)!.yourNameHint),
             ),
             const SizedBox(height: 14),
-            _FieldLabel('Bio'),
+            _FieldLabel(AppLocalizations.of(context)!.bioLabel),
             const SizedBox(height: 6),
             TextField(
               controller: _bioCtrl,
               style: const TextStyle(color: AppTheme.textPrimary),
               maxLines: 3,
-              decoration: const InputDecoration(
-                hintText: 'Tell something about yourself',
+              decoration: InputDecoration(
+                hintText: AppLocalizations.of(context)!.bioHint,
               ),
             ),
             const SizedBox(height: 14),
-            _FieldLabel('Avatar URL'),
+            _FieldLabel(AppLocalizations.of(context)!.avatarUrlLabel),
             const SizedBox(height: 6),
             TextField(
               controller: _avatarUrlCtrl,
@@ -1722,7 +1734,7 @@ class _EditProfileCardState extends State<_EditProfileCard> {
                     onPressed: _saving
                         ? null
                         : () => setState(() => _editing = false),
-                    child: const Text('Cancel'),
+                    child: Text(AppLocalizations.of(context)!.cancel),
                   ),
                 ),
                 const SizedBox(width: 10),
@@ -1738,23 +1750,23 @@ class _EditProfileCardState extends State<_EditProfileCard> {
                               strokeWidth: 2,
                             ),
                           )
-                        : const Text('Save'),
+                        : Text(AppLocalizations.of(context)!.save),
                   ),
                 ),
               ],
             ),
           ] else ...[
             _ProfileRow(
-              label: 'Display name',
+              label: AppLocalizations.of(context)!.displayNameLabel,
               value: widget.me.displayName?.isNotEmpty == true
                   ? widget.me.displayName!
                   : '—',
             ),
             const SizedBox(height: 8),
-            _ProfileRow(label: 'Username', value: '@${widget.me.username}'),
+            _ProfileRow(label: AppLocalizations.of(context)!.usernameDisplayLabel, value: '@${widget.me.username}'),
             if (widget.me.avatarUrl?.isNotEmpty == true) ...[
               const SizedBox(height: 8),
-              _ProfileRow(label: 'Avatar URL', value: widget.me.avatarUrl!),
+              _ProfileRow(label: AppLocalizations.of(context)!.avatarUrlLabel, value: widget.me.avatarUrl!),
             ],
           ],
         ],
@@ -1789,10 +1801,10 @@ class _FriendsTab extends StatelessWidget {
   Widget build(BuildContext context) {
     if (loading) return const _LoadingBody();
     if (friends.isEmpty) {
-      return const _EmptyBody(
+      return _EmptyBody(
         icon: Icons.people_outline_rounded,
-        message: 'No friends yet',
-        sub: 'Add someone using the button in the top right.',
+        message: AppLocalizations.of(context)!.noFriendsYet,
+        sub: AppLocalizations.of(context)!.noFriendsSub,
       );
     }
 
@@ -1807,7 +1819,7 @@ class _FriendsTab extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         children: [
           if (online.isNotEmpty) ...[
-            _SectionLabel('ONLINE — ${online.length}'),
+            _SectionLabel(AppLocalizations.of(context)!.onlineFriendsLabel(online.length)),
             const SizedBox(height: 8),
             ...online.map(
               (f) => Padding(
@@ -1826,7 +1838,7 @@ class _FriendsTab extends StatelessWidget {
             const SizedBox(height: 8),
           ],
           if (offline.isNotEmpty) ...[
-            _SectionLabel('OFFLINE — ${offline.length}'),
+            _SectionLabel(AppLocalizations.of(context)!.offlineFriendsLabel(offline.length)),
             const SizedBox(height: 8),
             ...offline.map(
               (f) => Padding(
@@ -2011,10 +2023,10 @@ class _RequestsTab extends StatelessWidget {
   Widget build(BuildContext context) {
     if (loading) return const _LoadingBody();
     if (requests.isEmpty) {
-      return const _EmptyBody(
+      return _EmptyBody(
         icon: Icons.mark_email_read_rounded,
-        message: 'No pending requests',
-        sub: 'Friend requests will appear here.',
+        message: AppLocalizations.of(context)!.noPendingRequests,
+        sub: AppLocalizations.of(context)!.requestsAppearHere,
       );
     }
     return RefreshIndicator(

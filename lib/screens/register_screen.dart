@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../services/user_service.dart';
 
@@ -25,13 +26,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   Future<void> _register() async {
     final username = _usernameCtrl.text.trim();
+    final l = AppLocalizations.of(context)!;
     if (username.isEmpty) {
-      setState(() => _error = 'Please enter a username.');
+      setState(() => _error = l.usernameRequired);
       return;
     }
     if (!RegExp(r'^[a-z0-9_]{3,20}$').hasMatch(username)) {
-      setState(() =>
-          _error = '3–20 characters, only lowercase letters, numbers and _');
+      setState(() => _error = l.usernameFormatError);
       return;
     }
 
@@ -54,10 +55,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     setState(() {
       _loading = false;
+      final l = AppLocalizations.of(context)!;
       _error = switch (result.error) {
-        'username_taken' => 'This username is already taken.',
-        'network_error' => 'No connection. Please try again.',
-        _ => 'Something went wrong. Please try again.',
+        'username_taken' => l.usernameTaken,
+        'network_error' => l.noConnectionError,
+        _ => l.somethingWentWrong,
       };
     });
   }
@@ -89,33 +91,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         color: AppTheme.accent, size: 28),
                   ),
                   const SizedBox(height: 20),
-                  const Text(
-                    'Create profile',
-                    style: TextStyle(
+                  Text(
+                    AppLocalizations.of(context)!.createProfile,
+                    style: const TextStyle(
                       color: AppTheme.textPrimary,
                       fontSize: 22,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
                   const SizedBox(height: 6),
-                  const Text(
-                    'Choose a unique username to add friends.',
+                  Text(
+                    AppLocalizations.of(context)!.chooseUniqueUsername,
                     style: TextStyle(
                         color: AppTheme.textSecondary,
                         fontSize: 13,
                         height: 1.5),
                   ),
                   const SizedBox(height: 32),
-                  _label('Username *'),
+                  _label(AppLocalizations.of(context)!.usernameFieldLabel),
                   const SizedBox(height: 8),
                   TextField(
                     controller: _usernameCtrl,
                     autocorrect: false,
                     textInputAction: TextInputAction.next,
                     style: const TextStyle(color: AppTheme.textPrimary),
-                    decoration: const InputDecoration(
-                      hintText: 'e.g. jens_mc',
-                      prefixIcon: Icon(Icons.alternate_email_rounded,
+                    decoration: InputDecoration(
+                      hintText: AppLocalizations.of(context)!.usernameExampleHint,
+                      prefixIcon: const Icon(Icons.alternate_email_rounded,
                           size: 18, color: AppTheme.textMuted),
                     ),
                     onChanged: (_) {
@@ -123,20 +125,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                   ),
                   const SizedBox(height: 6),
-                  const Text(
-                    '3–20 characters · only a-z, 0-9 and _',
-                    style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
+                  Text(
+                    AppLocalizations.of(context)!.usernameFormatHint,
+                    style: const TextStyle(color: AppTheme.textMuted, fontSize: 11),
                   ),
                   const SizedBox(height: 20),
-                  _label('Display name (optional)'),
+                  _label(AppLocalizations.of(context)!.displayNameOptional),
                   const SizedBox(height: 8),
                   TextField(
                     controller: _displayNameCtrl,
                     textInputAction: TextInputAction.done,
                     style: const TextStyle(color: AppTheme.textPrimary),
-                    decoration: const InputDecoration(
-                      hintText: 'e.g. Jens',
-                      prefixIcon: Icon(Icons.badge_rounded,
+                    decoration: InputDecoration(
+                      hintText: AppLocalizations.of(context)!.displayNameExampleHint,
+                      prefixIcon: const Icon(Icons.badge_rounded,
                           size: 18, color: AppTheme.textMuted),
                     ),
                     onSubmitted: (_) => _register(),
@@ -179,8 +181,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             child: CircularProgressIndicator(
                                 color: Colors.white, strokeWidth: 2),
                           )
-                        : const Text('Create profile',
-                            style: TextStyle(
+                        : Text(AppLocalizations.of(context)!.createProfile,
+                            style: const TextStyle(
                                 fontWeight: FontWeight.w700, fontSize: 15)),
                   ),
                   const SizedBox(height: 40),
