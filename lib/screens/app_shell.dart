@@ -463,7 +463,7 @@ class _AppShellState extends State<AppShell>
         return HelpSheetContent(
           loc: loc,
           onClose: _closeSheet,
-          onNetherLink: () {
+          onMCCompanion: () {
             _closeSheetInstant();
             HelpDialogs.showNetherlinkNotAppearing(context);
           },

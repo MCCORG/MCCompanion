@@ -23,13 +23,13 @@ class SocketHandler {
   SocketHandler({required this.logger});
 
   static const int proxyPort = 19132;
-  static const String serverName = 'NetherLink';
+  static const String serverName = 'MCCompanion';
   static const int protocolVersion = 1;
   static const String gameVersion = '1';
   static const int onlinePlayers = 1;
   static const int maxPlayers = 10;
   static final BigInt serverId = BigInt.parse('18403264178514827767');
-  static const String levelName = 'NetherLink';
+  static const String levelName = 'MCCompanion';
   static const String gameMode = 'Survival';
   static const int gameModeId = 1;
   static const Duration clientTimeout = Duration(seconds: 30);

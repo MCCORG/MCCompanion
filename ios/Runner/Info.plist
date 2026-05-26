@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>NetherLink</string>
+	<string>MCCompanion</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -15,7 +15,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>NetherLink</string>
+	<string>MCCompanion</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -29,7 +29,7 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app requires access to your photo library to save and load custom Minecraft skins.</string>
 	<key>NSUserNotificationUsageDescription</key>
-	<string>NetherLink sends notifications for friend requests and direct messages.</string>
+	<string>MCCompanion sends notifications for friend requests and direct messages.</string>
 	<key>NSBonjourServices</key>
 	<array>
 		<string>_minecraft._udp</string>

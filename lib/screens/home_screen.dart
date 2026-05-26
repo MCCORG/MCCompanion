@@ -84,8 +84,8 @@ class HomeScreenState extends State<HomeScreen> {
   String? _selectedBedrockXuid;
 
   static String _friendNameForRelay(String relayName) => switch (relayName) {
-    'EU Server' => 'NetherLinkEU',
-    'US Server' => 'NetherLinkUS',
+    'EU Server' => 'MCCompanionEU',
+    'US Server' => 'MCCompanionUS',
     _ => '-',
   };
 
@@ -277,7 +277,7 @@ class HomeScreenState extends State<HomeScreen> {
     int port,
     AppLocalizations loc,
   ) async {
-    logger.info('Starting NetherLink');
+    logger.info('Starting MCCompanion');
     try {
       await WakelockPlus.enable();
     } catch (e) {

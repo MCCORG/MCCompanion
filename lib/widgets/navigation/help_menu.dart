@@ -6,7 +6,7 @@ import '../../theme/app_theme.dart';
 class HelpSheetContent extends StatelessWidget {
   final AppLocalizations loc;
   final VoidCallback onClose;
-  final VoidCallback? onNetherLink;
+  final VoidCallback? onMCCompanion;
   final VoidCallback? onMultiplayerFailed;
   final VoidCallback? onNintendoDns;
   final VoidCallback? onFriendsMode;
@@ -15,7 +15,7 @@ class HelpSheetContent extends StatelessWidget {
     super.key,
     required this.loc,
     required this.onClose,
-    this.onNetherLink,
+    this.onMCCompanion,
     this.onMultiplayerFailed,
     this.onNintendoDns,
     this.onFriendsMode,
@@ -93,7 +93,7 @@ class HelpSheetContent extends StatelessWidget {
                       color: AppTheme.info,
                       title: loc.helpNetherlinkTitle,
                       subtitle: loc.helpNetherlinkSubtitle,
-                      onTap: onNetherLink ?? () {},
+                      onTap: onMCCompanion ?? () {},
                     ),
                     const SizedBox(height: 8),
                     _tile(

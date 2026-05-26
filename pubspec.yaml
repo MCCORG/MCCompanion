@@ -68,7 +68,7 @@ flutter:
     - assets/images/potions.png
 
 msix_config:
-  display_name: NetherLink
+  display_name: MCCompanion
   publisher_display_name: Jens Collaert
   identity_name: JensCollaert.NetherLink
   msix_version: 3.5.4.0

@@ -146,7 +146,7 @@ class InfoSheetContent extends StatelessWidget {
 
                     const SizedBox(height: 22),
 
-                    _sectionLabel('About NetherLink'),
+                    _sectionLabel('About MCCompanion'),
                     const SizedBox(height: 8),
                     Container(
                       width: double.infinity,
@@ -160,7 +160,7 @@ class InfoSheetContent extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'NetherLink is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.',
+                            'MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.',
                             style: TextStyle(
                               color: AppTheme.textMuted,
                               fontSize: 12,

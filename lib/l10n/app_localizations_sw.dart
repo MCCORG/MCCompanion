@@ -9,7 +9,7 @@ class AppLocalizationsSw extends AppLocalizations {
   AppLocalizationsSw([String locale = 'sw']) : super(locale);
 
   @override
-  String get appName => 'NetherLink';
+  String get appName => 'MCCompanion';
 
   @override
   String get console => 'Konsoli';
@@ -46,7 +46,7 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String helpText(Object appCreator) {
-    return 'Imetengenezwa na $appCreator.\r\n\r\nJinsi ya kutumia:\r\n1. Weka anwani na port ya seva yako ya Minecraft (chaguo-msingi: 19132)\r\n   — au chagua seva iliyohifadhiwa awali kutoka kwenye menyu ya kushuka\r\n2. (Hiari) Chagua Relay Server (EU au US) iliyo karibu zaidi na eneo lako\r\n3. Bofya \"Anza Kutangaza\" ili kuanza\r\n4. Kwenye konsoli/kifaa chako: Minecraft > Play > Friends\r\n5. Unapaswa kuona seva ya LAN inayoitwa \"NetherLink\"\r\n6. Bofya ili kujiunga na seva yako ya nje kupitia NetherLink\r\n\r\nNintendo Switch (hali ya DNS):\r\n1. Washa \"Nintendo Switch\" kwenye paneli ya muunganisho\r\n2. Chagua Relay Server (EU au US)\r\n3. Bofya \"Send DNS Config\" — hii hutuma usanidi wako kwa relay\r\n   (hii HAITANGAZI seva ya LAN)\r\n4. Kwenye Switch yako, tumia mipangilio ya DNS ya NetherLink kisha jiunge\r\n   kwa kutumia ingizo la seva unalotumia kwa NetherLink\r\n\r\nVidokezo:\r\n- Kwa utangazaji wa LAN, NetherLink na konsoli lazima ziwe kwenye mtandao mmoja wa ndani.\r\n- Dokezo: Chagua seva ya relay iliyo karibu zaidi nawe kwa utendaji bora.';
+    return 'Imetengenezwa na $appCreator.\r\n\r\nJinsi ya kutumia:\r\n1. Weka anwani na port ya seva yako ya Minecraft (chaguo-msingi: 19132)\r\n   — au chagua seva iliyohifadhiwa awali kutoka kwenye menyu ya kushuka\r\n2. (Hiari) Chagua Relay Server (EU au US) iliyo karibu zaidi na eneo lako\r\n3. Bofya \"Anza Kutangaza\" ili kuanza\r\n4. Kwenye konsoli/kifaa chako: Minecraft > Play > Friends\r\n5. Unapaswa kuona seva ya LAN inayoitwa \"MCCompanion\"\r\n6. Bofya ili kujiunga na seva yako ya nje kupitia MCCompanion\r\n\r\nNintendo Switch (hali ya DNS):\r\n1. Washa \"Nintendo Switch\" kwenye paneli ya muunganisho\r\n2. Chagua Relay Server (EU au US)\r\n3. Bofya \"Send DNS Config\" — hii hutuma usanidi wako kwa relay\r\n   (hii HAITANGAZI seva ya LAN)\r\n4. Kwenye Switch yako, tumia mipangilio ya DNS ya MCCompanion kisha jiunge\r\n   kwa kutumia ingizo la seva unalotumia kwa MCCompanion\r\n\r\nVidokezo:\r\n- Kwa utangazaji wa LAN, MCCompanion na konsoli lazima ziwe kwenye mtandao mmoja wa ndani.\r\n- Dokezo: Chagua seva ya relay iliyo karibu zaidi nawe kwa utendaji bora.';
   }
 
   @override
@@ -74,13 +74,13 @@ class AppLocalizationsSw extends AppLocalizations {
   String get howToJavaTitle => 'Hali ya Java';
 
   @override
-  String get howToJavaSubtitle => 'Unganisha kwenye seva za Java Edition kupitia NetherLink';
+  String get howToJavaSubtitle => 'Unganisha kwenye seva za Java Edition kupitia MCCompanion';
 
   @override
   String get aternosSubtext => 'Skapa din egen gratis Minecraft-server';
 
   @override
-  String get howToJavaBody => 'Hali ya Java — hatua za haraka:\n1. Kwenye programu, chagua hali ya Java.\n2. Weka anwani na port ya seva yako ya Java Edition (chaguomsingi: 25565).\n3. Bonyeza \"Anza hali ya Java\" — NetherLink itaunganisha muunganisho.\n4. Fungua Minecraft Bedrock na uende kwenye kichupo cha Marafiki.\n5. Chagua seva ya LAN inayoitwa \"NetherLink\" ili kujiunga na seva ya Java.\n\n⚠️ Maonyo muhimu:\n- Akaunti halali ya Java Edition (Microsoft) inahitajika.\n- Baadhi ya seva hutumia mifumo ya anti-cheat ambayo inaweza kugundua na kupiga marufuku akaunti yako.\n- Baadhi ya seva hukataza wazi wateja wa Bedrock — hakikisha unakagua sheria za seva kila wakati.\n- NetherLink haiwajibiki kwa marufuku, kusimamishwa au matatizo mengine yanayohusiana na akaunti yanayoweza kusababishwa na kutumia kipengele hiki.\n- Tumia kwa hatari yako mwenyewe.';
+  String get howToJavaBody => 'Hali ya Java — hatua za haraka:\n1. Kwenye programu, chagua hali ya Java.\n2. Weka anwani na port ya seva yako ya Java Edition (chaguomsingi: 25565).\n3. Bonyeza \"Anza hali ya Java\" — MCCompanion itaunganisha muunganisho.\n4. Fungua Minecraft Bedrock na uende kwenye kichupo cha Marafiki.\n5. Chagua seva ya LAN inayoitwa \"MCCompanion\" ili kujiunga na seva ya Java.\n\n⚠️ Maonyo muhimu:\n- Akaunti halali ya Java Edition (Microsoft) inahitajika.\n- Baadhi ya seva hutumia mifumo ya anti-cheat ambayo inaweza kugundua na kupiga marufuku akaunti yako.\n- Baadhi ya seva hukataza wazi wateja wa Bedrock — hakikisha unakagua sheria za seva kila wakati.\n- MCCompanion haiwajibiki kwa marufuku, kusimamishwa au matatizo mengine yanayohusiana na akaunti yanayoweza kusababishwa na kutumia kipengele hiki.\n- Tumia kwa hatari yako mwenyewe.';
 
   @override
   String get language => 'Kiswahili';
@@ -185,7 +185,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get debugDisabled => 'Kumbukumbu za utatuzi zimezimwa';
 
   @override
-  String get howToUseTitle => 'Jinsi ya kutumia NetherLink';
+  String get howToUseTitle => 'Jinsi ya kutumia MCCompanion';
 
   @override
   String get iUnderstand => 'Nimeelewa';
@@ -251,10 +251,10 @@ class AppLocalizationsSw extends AppLocalizations {
   String get noWifi => 'Haupo kwenye Wi‑Fi';
 
   @override
-  String get vpnActive => 'Tumegundua kuwa VPN yako imewashwa.\n\nTafadhali izime kabla ya kutumia NetherLink, la sivyo matangazo ya LAN yanaweza yasifikie konsoli yako.';
+  String get vpnActive => 'Tumegundua kuwa VPN yako imewashwa.\n\nTafadhali izime kabla ya kutumia MCCompanion, la sivyo matangazo ya LAN yanaweza yasifikie konsoli yako.';
 
   @override
-  String get mobileActive => 'Imegunduliwa: Data ya simu\n\nNetherLink inahitaji kuwa kwenye mtandao ule ule na konsoli yako. Unganisha kwenye Wi‑Fi ya nyumbani au hotspot kabla ya kuendelea.';
+  String get mobileActive => 'Imegunduliwa: Data ya simu\n\nMCCompanion inahitaji kuwa kwenye mtandao ule ule na konsoli yako. Unganisha kwenye Wi‑Fi ya nyumbani au hotspot kabla ya kuendelea.';
 
   @override
   String get continueAnyway => 'Endelea hata hivyo';
@@ -263,13 +263,13 @@ class AppLocalizationsSw extends AppLocalizations {
   String get sameWifi => 'Mtandao ule ule wa Wi‑Fi';
 
   @override
-  String get needSameWifi => 'Kifaa kinachoendesha NetherLink LAZIMA kiwe kwenye mtandao ule ule wa Wi‑Fi na konsoli unayotumia kucheza Minecraft.';
+  String get needSameWifi => 'Kifaa kinachoendesha MCCompanion LAZIMA kiwe kwenye mtandao ule ule wa Wi‑Fi na konsoli unayotumia kucheza Minecraft.';
 
   @override
   String get subscription => 'Usajili wa mtandaoni unahitajika';
 
   @override
-  String get needSubscription => 'Kila konsoli inahitaji usajili wake wa mtandaoni ulio hai (Xbox Live, PS Plus, NSO). Bila huo, NetherLink haitaonekana.';
+  String get needSubscription => 'Kila konsoli inahitaji usajili wake wa mtandaoni ulio hai (Xbox Live, PS Plus, NSO). Bila huo, MCCompanion haitaonekana.';
 
   @override
   String get updateAvailable => 'Sasisho linapatikana';
@@ -320,7 +320,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get friendModeTitle => 'Hali ya Marafiki';
 
   @override
-  String get friendModeText => 'Ongeza roboti za marafiki za NetherLink kama rafiki. Anza hali ya Marafiki na ucheze';
+  String get friendModeText => 'Ongeza roboti za marafiki za MCCompanion kama rafiki. Anza hali ya Marafiki na ucheze';
 
   @override
   String get selectedRelayCheck => 'Imechaguliwa';
@@ -331,7 +331,7 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get relayUnableConnect => 'Imeshindikana kuunganika kwa seva YOYOTE ya relay ya NetherLink. Jaribu tena baadaye au angalia intaneti yako.';
+  String get relayUnableConnect => 'Imeshindikana kuunganika kwa seva YOYOTE ya relay ya MCCompanion. Jaribu tena baadaye au angalia intaneti yako.';
 
   @override
   String get howToXboxTitle => 'Xbox / PS4-5 (LAN / proksi)';
@@ -340,7 +340,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get howToXboxSubtitle => 'Cheza kupitia utangazaji wa LAN au proxy';
 
   @override
-  String get howToXboxBody => 'Jinsi ya kuunganika (Xbox / PS4 / PS5):\r\n1. Hakikisha kifaa chako kinachoendesha NetherLink na konsoli yako viko kwenye mtandao mmoja wa ndani.\r\n2. Kwenye programu, weka anwani na port ya seva yako ya Minecraft kisha bonyeza \"Anza Kutangaza\".\r\n3. Kwenye konsoli, fungua Minecraft → Play → tafuta LAN Worlds au kichupo cha Friends kisha sasisha orodha.\r\n4. Chagua seva ya LAN iitwayo \"NetherLink\" ili kujiunga.\r\nVidokezo:\r\n- Ikiwa seva haionekani, hakikisha vifaa vyote viko kwenye subnet moja na programu bado inatangaza.\r\n- Baadhi ya miundo ya konsoli au router inaweza kuzuia ugunduzi wa LAN; jaribu kubadili mipangilio ya programu au router ikihitajika.';
+  String get howToXboxBody => 'Jinsi ya kuunganika (Xbox / PS4 / PS5):\r\n1. Hakikisha kifaa chako kinachoendesha MCCompanion na konsoli yako viko kwenye mtandao mmoja wa ndani.\r\n2. Kwenye programu, weka anwani na port ya seva yako ya Minecraft kisha bonyeza \"Anza Kutangaza\".\r\n3. Kwenye konsoli, fungua Minecraft → Play → tafuta LAN Worlds au kichupo cha Friends kisha sasisha orodha.\r\n4. Chagua seva ya LAN iitwayo \"MCCompanion\" ili kujiunga.\r\nVidokezo:\r\n- Ikiwa seva haionekani, hakikisha vifaa vyote viko kwenye subnet moja na programu bado inatangaza.\r\n- Baadhi ya miundo ya konsoli au router inaweza kuzuia ugunduzi wa LAN; jaribu kubadili mipangilio ya programu au router ikihitajika.';
 
   @override
   String get howToNintendoTitle => 'Nintendo Switch (hali ya DNS)';
@@ -358,25 +358,25 @@ class AppLocalizationsSw extends AppLocalizations {
   String get howToFriendsSubtitle => 'Alika marafiki na ujiunge kupitia LAN';
 
   @override
-  String get howToFriendsBody => 'Hali ya Marafiki — hatua za haraka:\r\n1. Ongeza akaunti ya rafiki ya NetherLink kwenye konsoli au jukwaa lako ikiwa inahitajika.\r\n2. Kwenye programu washa hali ya Marafiki na utume usanidi wa relay (ikiwa unatumika).\r\n3. Kwenye konsoli yako fungua Minecraft → Friends na utafute LAN Worlds — seva yako inapaswa kuonekana hapo kama ulimwengu wa LAN.\r\n4. Ichague ili kujiunga na seva yako pamoja na marafiki.\r\nVidokezo:\r\n- Hakikisha wewe na marafiki zako mna NAT/mipangilio sawa inayoruhusu uwepo wa marafiki.\r\n- Hali ya Marafiki hutegemea vipengele vya urafiki vya jukwaa na huenda ikahitaji kukubali maombi ya urafiki.';
+  String get howToFriendsBody => 'Hali ya Marafiki — hatua za haraka:\r\n1. Ongeza akaunti ya rafiki ya MCCompanion kwenye konsoli au jukwaa lako ikiwa inahitajika.\r\n2. Kwenye programu washa hali ya Marafiki na utume usanidi wa relay (ikiwa unatumika).\r\n3. Kwenye konsoli yako fungua Minecraft → Friends na utafute LAN Worlds — seva yako inapaswa kuonekana hapo kama ulimwengu wa LAN.\r\n4. Ichague ili kujiunga na seva yako pamoja na marafiki.\r\nVidokezo:\r\n- Hakikisha wewe na marafiki zako mna NAT/mipangilio sawa inayoruhusu uwepo wa marafiki.\r\n- Hali ya Marafiki hutegemea vipengele vya urafiki vya jukwaa na huenda ikahitaji kukubali maombi ya urafiki.';
 
   @override
-  String get helpNetherlinkTitle => 'NetherLink haionekani';
+  String get helpNetherlinkTitle => 'MCCompanion haionekani';
 
   @override
   String get helpNetherlinkSubtitle => 'Utatuzi wa matatizo ya ugunduzi wa LAN';
 
   @override
-  String get helpNetherlinkBody => 'Ikiwa seva haionekani kwenye konsoli yako, jaribu hatua hizi:\r\n\r\n✅ Ukaguzi wa msingi:\r\n1. Mtandao ule ule wa WiFi - Simu/tablet yako na konsoli LAZIMA ziwe kwenye WiFi ile ile\r\n2. Anwani sahihi ya seva - Hakiki tena IP na port (chaguo-msingi: 19132)\r\n3. Utangazaji uko hai - Hakikisha NetherLink inaonyesha hali ya \"Inatangaza\"\r\n\r\n🔄 Marekebisho ya haraka:\r\n• Anzisha tena programu: simamisha utangazaji, funga NetherLink kabisa, ifungue tena na ujaribu upya\r\n• Anzisha tena konsoli yako: wakati mwingine konsoli huhitaji kusasishwa ili kugundua michezo ya LAN\r\n• Angalia kichupo cha Friends/LAN: seva huonekana chini ya \"Friends\" au \"LAN Games\", SI kwenye orodha ya seva\r\n• Subiri sekunde 10-15 baada ya kuanza kutangaza\r\n• Zima VPN: VPN zinaweza kuzuia matangazo ya ndani\r\n\r\n⚠️ Matatizo ya kawaida:\r\n\"No route found for user\" → Hakikisha vifaa vyote viwili viko kwenye Wi‑Fi ile ile (epuka mitandao ya wageni)\r\n\"Unable to connect to NetherLink relay server\" → Angalia intaneti yako / hali ya relay\r\n\r\n📱 Bado una matatizo? Washa hali ya utatuzi kwenye NetherLink na uangalie kumbukumbu, au jaribu seva tofauti.';
+  String get helpNetherlinkBody => 'Ikiwa seva haionekani kwenye konsoli yako, jaribu hatua hizi:\r\n\r\n✅ Ukaguzi wa msingi:\r\n1. Mtandao ule ule wa WiFi - Simu/tablet yako na konsoli LAZIMA ziwe kwenye WiFi ile ile\r\n2. Anwani sahihi ya seva - Hakiki tena IP na port (chaguo-msingi: 19132)\r\n3. Utangazaji uko hai - Hakikisha MCCompanion inaonyesha hali ya \"Inatangaza\"\r\n\r\n🔄 Marekebisho ya haraka:\r\n• Anzisha tena programu: simamisha utangazaji, funga MCCompanion kabisa, ifungue tena na ujaribu upya\r\n• Anzisha tena konsoli yako: wakati mwingine konsoli huhitaji kusasishwa ili kugundua michezo ya LAN\r\n• Angalia kichupo cha Friends/LAN: seva huonekana chini ya \"Friends\" au \"LAN Games\", SI kwenye orodha ya seva\r\n• Subiri sekunde 10-15 baada ya kuanza kutangaza\r\n• Zima VPN: VPN zinaweza kuzuia matangazo ya ndani\r\n\r\n⚠️ Matatizo ya kawaida:\r\n\"No route found for user\" → Hakikisha vifaa vyote viwili viko kwenye Wi‑Fi ile ile (epuka mitandao ya wageni)\r\n\"Unable to connect to MCCompanion relay server\" → Angalia intaneti yako / hali ya relay\r\n\r\n📱 Bado una matatizo? Washa hali ya utatuzi kwenye MCCompanion na uangalie kumbukumbu, au jaribu seva tofauti.';
 
   @override
   String get helpMultiplayerFailedTitle => 'Muunganisho wa Multiplayer Umeshindikana';
 
   @override
-  String get helpMultiplayerFailedSubtitle => 'Maelezo kwa nini hili si kosa la NetherLink';
+  String get helpMultiplayerFailedSubtitle => 'Maelezo kwa nini hili si kosa la MCCompanion';
 
   @override
-  String get helpMultiplayerFailedBody => '⚠️ Hili si tatizo la NetherLink!\r\n\r\nNetherLink ilikuelekeza kwa mafanikio kwenye seva iliyoombwa. Ujumbe wa \"Multiplayer Connection Failed\" unaonyesha kuwa seva lengwa haipatikani kwa sasa. Sababu zinazowezekana:\r\n\r\n• Seva lengwa ya Minecraft iko nje ya mtandao au imeelemewa\r\n• Seva inahitaji toleo la mteja lililosasishwa au toleo maalum\r\n• Matatizo ya mtandao kati ya relay na seva lengwa\r\n\r\nJaribu kuunganika kwenye seva tofauti au wasiliana na msaada wa seva husika. Tatizo likiendelea kwenye seva nyingi, washa hali ya utatuzi kwenye NetherLink na uangalie kumbukumbu.';
+  String get helpMultiplayerFailedBody => '⚠️ Hili si tatizo la MCCompanion!\r\n\r\nMCCompanion ilikuelekeza kwa mafanikio kwenye seva iliyoombwa. Ujumbe wa \"Multiplayer Connection Failed\" unaonyesha kuwa seva lengwa haipatikani kwa sasa. Sababu zinazowezekana:\r\n\r\n• Seva lengwa ya Minecraft iko nje ya mtandao au imeelemewa\r\n• Seva inahitaji toleo la mteja lililosasishwa au toleo maalum\r\n• Matatizo ya mtandao kati ya relay na seva lengwa\r\n\r\nJaribu kuunganika kwenye seva tofauti au wasiliana na msaada wa seva husika. Tatizo likiendelea kwenye seva nyingi, washa hali ya utatuzi kwenye MCCompanion na uangalie kumbukumbu.';
 
   @override
   String get helpNintendoDnsTitle => 'DNS ya Nintendo haifanyi kazi';

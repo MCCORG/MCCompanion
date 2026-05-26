@@ -9,7 +9,7 @@ class AppLocalizationsZh extends AppLocalizations {
   AppLocalizationsZh([String locale = 'zh']) : super(locale);
 
   @override
-  String get appName => 'NetherLink';
+  String get appName => 'MCCompanion';
 
   @override
   String get console => '控制台';
@@ -46,7 +46,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String helpText(Object appCreator) {
-    return '由 $appCreator 创建。\r\n\r\n使用方法：\r\n1. 输入你的 Minecraft 服务器地址和端口（默认：19132）\r\n   — 或从下拉菜单中选择之前保存的服务器\r\n2. （可选）选择离你位置最近的中继服务器（EU 或 US）\r\n3. 点击 \\\"开始广播\\\" 以开始\r\n4. 在你的主机/设备上：Minecraft > 游玩 > 好友\r\n5. 你应该会看到一个名为 \\\"NetherLink\\\" 的局域网服务器\r\n6. 点击它即可通过 NetherLink 加入你的外部服务器\r\n\r\nNintendo Switch（DNS 模式）：\r\n1. 在连接面板中启用 \\\"Nintendo Switch\\\"\r\n2. 选择一个中继服务器（EU 或 US）\r\n3. 点击 \\\"发送 DNS 配置\\\" — 这会将你的配置发送到中继服务器\r\n   （它不会广播局域网服务器）\r\n4. 在你的 Switch 上应用 NetherLink DNS 设置并加入\r\n   使用你为 NetherLink 所使用的服务器条目\r\n\r\n注意：\r\n- 进行局域网广播时，NetherLink 和主机必须位于同一局域网中。\r\n- 提示：选择离你最近的中继服务器以获得最佳性能。';
+    return '由 $appCreator 创建。\r\n\r\n使用方法：\r\n1. 输入你的 Minecraft 服务器地址和端口（默认：19132）\r\n   — 或从下拉菜单中选择之前保存的服务器\r\n2. （可选）选择离你位置最近的中继服务器（EU 或 US）\r\n3. 点击 \\\"开始广播\\\" 以开始\r\n4. 在你的主机/设备上：Minecraft > 游玩 > 好友\r\n5. 你应该会看到一个名为 \\\"MCCompanion\\\" 的局域网服务器\r\n6. 点击它即可通过 MCCompanion 加入你的外部服务器\r\n\r\nNintendo Switch（DNS 模式）：\r\n1. 在连接面板中启用 \\\"Nintendo Switch\\\"\r\n2. 选择一个中继服务器（EU 或 US）\r\n3. 点击 \\\"发送 DNS 配置\\\" — 这会将你的配置发送到中继服务器\r\n   （它不会广播局域网服务器）\r\n4. 在你的 Switch 上应用 MCCompanion DNS 设置并加入\r\n   使用你为 MCCompanion 所使用的服务器条目\r\n\r\n注意：\r\n- 进行局域网广播时，MCCompanion 和主机必须位于同一局域网中。\r\n- 提示：选择离你最近的中继服务器以获得最佳性能。';
   }
 
   @override
@@ -74,13 +74,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get howToJavaTitle => 'Java 模式';
 
   @override
-  String get howToJavaSubtitle => '通过 NetherLink 连接到 Java Edition 服务器';
+  String get howToJavaSubtitle => '通过 MCCompanion 连接到 Java Edition 服务器';
 
   @override
   String get aternosSubtext => '创建你自己的免费 Minecraft 服务器';
 
   @override
-  String get howToJavaBody => 'Java 模式 — 快速步骤：\n1. 在应用中选择 Java 模式。\n2. 输入你的 Java Edition 服务器地址和端口（默认：25565）。\n3. 点击 \"启动 Java 模式\" —— NetherLink 会桥接该连接。\n4. 打开 Minecraft Bedrock 并前往好友标签页。\n5. 选择名为 \"NetherLink\" 的 LAN 服务器以加入 Java 服务器。\n\n⚠️ 重要警告：\n- 需要有效的 Java Edition 账户（Microsoft）。\n- 一些服务器使用反作弊系统，可能会检测并封禁你的账户。\n- 某些服务器明确禁止 Bedrock 客户端 —— 请务必查看服务器规则。\n- 对于因使用此功能而导致的账户封禁、停用或其他账户相关问题，NetherLink 不承担责任。\n- 请自行承担使用风险。';
+  String get howToJavaBody => 'Java 模式 — 快速步骤：\n1. 在应用中选择 Java 模式。\n2. 输入你的 Java Edition 服务器地址和端口（默认：25565）。\n3. 点击 \"启动 Java 模式\" —— MCCompanion 会桥接该连接。\n4. 打开 Minecraft Bedrock 并前往好友标签页。\n5. 选择名为 \"MCCompanion\" 的 LAN 服务器以加入 Java 服务器。\n\n⚠️ 重要警告：\n- 需要有效的 Java Edition 账户（Microsoft）。\n- 一些服务器使用反作弊系统，可能会检测并封禁你的账户。\n- 某些服务器明确禁止 Bedrock 客户端 —— 请务必查看服务器规则。\n- 对于因使用此功能而导致的账户封禁、停用或其他账户相关问题，MCCompanion 不承担责任。\n- 请自行承担使用风险。';
 
   @override
   String get language => '简体中文';
@@ -185,7 +185,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get debugDisabled => '调试日志已禁用';
 
   @override
-  String get howToUseTitle => '如何使用 NetherLink';
+  String get howToUseTitle => '如何使用 MCCompanion';
 
   @override
   String get iUnderstand => '我明白了';
@@ -251,10 +251,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get noWifi => '未连接到 Wi‑Fi';
 
   @override
-  String get vpnActive => '我们检测到您的 VPN 已开启。\n\n请先关闭 VPN 再使用 NetherLink，否则局域网广播可能无法到达您的主机。';
+  String get vpnActive => '我们检测到您的 VPN 已开启。\n\n请先关闭 VPN 再使用 MCCompanion，否则局域网广播可能无法到达您的主机。';
 
   @override
-  String get mobileActive => '检测到：移动数据\n\nNetherLink 必须与您的主机位于同一网络。请先连接家庭 Wi‑Fi 或热点后再继续。';
+  String get mobileActive => '检测到：移动数据\n\nMCCompanion 必须与您的主机位于同一网络。请先连接家庭 Wi‑Fi 或热点后再继续。';
 
   @override
   String get continueAnyway => '仍然继续';
@@ -263,13 +263,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get sameWifi => '同一 Wi‑Fi 网络';
 
   @override
-  String get needSameWifi => '运行 NetherLink 的设备必须与您游玩 Minecraft 的主机连接到同一个 Wi‑Fi 网络。';
+  String get needSameWifi => '运行 MCCompanion 的设备必须与您游玩 Minecraft 的主机连接到同一个 Wi‑Fi 网络。';
 
   @override
   String get subscription => '需要在线订阅';
 
   @override
-  String get needSubscription => '每台主机都需要各自有效的在线订阅服务（Xbox Live、PS Plus、NSO）。否则 NetherLink 不会显示。';
+  String get needSubscription => '每台主机都需要各自有效的在线订阅服务（Xbox Live、PS Plus、NSO）。否则 MCCompanion 不会显示。';
 
   @override
   String get updateAvailable => '有可用更新';
@@ -320,7 +320,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get friendModeTitle => '好友模式';
 
   @override
-  String get friendModeText => '将 NetherLink 的好友机器人添加为好友。启动好友模式并开始游玩';
+  String get friendModeText => '将 MCCompanion 的好友机器人添加为好友。启动好友模式并开始游玩';
 
   @override
   String get selectedRelayCheck => '已选择';
@@ -331,7 +331,7 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get relayUnableConnect => '无法连接到任何 NetherLink Relay 服务器。请稍后再试或检查你的网络连接。';
+  String get relayUnableConnect => '无法连接到任何 MCCompanion Relay 服务器。请稍后再试或检查你的网络连接。';
 
   @override
   String get howToXboxTitle => 'Xbox / PS4-5（LAN / 代理）';
@@ -340,7 +340,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get howToXboxSubtitle => '通过局域网广播或代理游玩';
 
   @override
-  String get howToXboxBody => '连接方法（Xbox / PS4 / PS5）：\r\n1. 确保运行 NetherLink 的设备和你的主机位于同一本地网络中。\r\n2. 在应用中输入你的 Minecraft 服务器地址和端口，然后按下 \\\"开始广播\\\"。\r\n3. 在主机上打开 Minecraft → Play → 查找 LAN Worlds 或 Friends 标签页，并刷新列表。\r\n4. 选择名为 \\\"NetherLink\\\" 的局域网服务器以加入。\r\n注意：\r\n- 如果服务器没有出现，请确认两台设备位于同一子网，并且应用仍在广播。\r\n- 某些主机型号或路由器可能会阻止局域网发现；如有需要，请尝试切换应用或路由器设置。';
+  String get howToXboxBody => '连接方法（Xbox / PS4 / PS5）：\r\n1. 确保运行 MCCompanion 的设备和你的主机位于同一本地网络中。\r\n2. 在应用中输入你的 Minecraft 服务器地址和端口，然后按下 \\\"开始广播\\\"。\r\n3. 在主机上打开 Minecraft → Play → 查找 LAN Worlds 或 Friends 标签页，并刷新列表。\r\n4. 选择名为 \\\"MCCompanion\\\" 的局域网服务器以加入。\r\n注意：\r\n- 如果服务器没有出现，请确认两台设备位于同一子网，并且应用仍在广播。\r\n- 某些主机型号或路由器可能会阻止局域网发现；如有需要，请尝试切换应用或路由器设置。';
 
   @override
   String get howToNintendoTitle => 'Nintendo Switch（DNS 模式）';
@@ -358,25 +358,25 @@ class AppLocalizationsZh extends AppLocalizations {
   String get howToFriendsSubtitle => '邀请好友并通过局域网加入';
 
   @override
-  String get howToFriendsBody => '好友模式 — 快速步骤：\r\n1. 如有需要，请在你的主机或平台上添加 NetherLink 好友账号（Relay 好友）。\r\n2. 在应用中启用好友模式并发送 Relay 配置（如果适用）。\r\n3. 在你的主机上打开 Minecraft → Friends，并搜索 LAN Worlds —— 你的服务器应当会显示为一个局域网世界。\r\n4. 选择它即可与你的好友一起加入服务器。\r\n注意：\r\n- 请确保你和你的好友拥有相同且允许好友在线显示的 NAT/设置。\r\n- 好友模式依赖平台的好友功能，可能需要接受好友请求。';
+  String get howToFriendsBody => '好友模式 — 快速步骤：\r\n1. 如有需要，请在你的主机或平台上添加 MCCompanion 好友账号（Relay 好友）。\r\n2. 在应用中启用好友模式并发送 Relay 配置（如果适用）。\r\n3. 在你的主机上打开 Minecraft → Friends，并搜索 LAN Worlds —— 你的服务器应当会显示为一个局域网世界。\r\n4. 选择它即可与你的好友一起加入服务器。\r\n注意：\r\n- 请确保你和你的好友拥有相同且允许好友在线显示的 NAT/设置。\r\n- 好友模式依赖平台的好友功能，可能需要接受好友请求。';
 
   @override
-  String get helpNetherlinkTitle => 'NetherLink 未显示';
+  String get helpNetherlinkTitle => 'MCCompanion 未显示';
 
   @override
   String get helpNetherlinkSubtitle => '局域网发现问题排查';
 
   @override
-  String get helpNetherlinkBody => '如果服务器没有出现在你的主机上，请尝试以下步骤：\r\n\r\n✅ 基本检查：\r\n1. 相同的 WiFi 网络 - 你的手机/平板和主机必须连接到同一个 WiFi\r\n2. 正确的服务器地址 - 再次检查 IP 和端口（默认：19132）\r\n3. 广播已激活 - 确认 NetherLink 显示 \\\"正在广播\\\" 状态\r\n\r\n🔄 快速修复：\r\n• 重启应用：停止广播，完全关闭 NetherLink，重新打开后再试一次\r\n• 重启主机：有时主机需要刷新才能检测到局域网游戏\r\n• 检查好友/LAN 标签页：服务器会显示在 \\\"好友\\\" 或 \\\"局域网游戏\\\" 下，而不是服务器列表中\r\n• 开始广播后等待 10-15 秒\r\n• 禁用 VPN：VPN 可能会阻止本地广播\r\n\r\n⚠️ 常见问题：\r\n\\\"No route found for user\\\" → 确保两台设备位于同一个 Wi‑Fi（避免使用访客网络）\r\n\\\"Unable to connect to NetherLink relay server\\\" → 检查你的网络 / 中继服务器状态\r\n\r\n📱 仍然有问题？请在 NetherLink 中启用调试模式并检查日志，或尝试其他服务器。';
+  String get helpNetherlinkBody => '如果服务器没有出现在你的主机上，请尝试以下步骤：\r\n\r\n✅ 基本检查：\r\n1. 相同的 WiFi 网络 - 你的手机/平板和主机必须连接到同一个 WiFi\r\n2. 正确的服务器地址 - 再次检查 IP 和端口（默认：19132）\r\n3. 广播已激活 - 确认 MCCompanion 显示 \\\"正在广播\\\" 状态\r\n\r\n🔄 快速修复：\r\n• 重启应用：停止广播，完全关闭 MCCompanion，重新打开后再试一次\r\n• 重启主机：有时主机需要刷新才能检测到局域网游戏\r\n• 检查好友/LAN 标签页：服务器会显示在 \\\"好友\\\" 或 \\\"局域网游戏\\\" 下，而不是服务器列表中\r\n• 开始广播后等待 10-15 秒\r\n• 禁用 VPN：VPN 可能会阻止本地广播\r\n\r\n⚠️ 常见问题：\r\n\\\"No route found for user\\\" → 确保两台设备位于同一个 Wi‑Fi（避免使用访客网络）\r\n\\\"Unable to connect to MCCompanion relay server\\\" → 检查你的网络 / 中继服务器状态\r\n\r\n📱 仍然有问题？请在 MCCompanion 中启用调试模式并检查日志，或尝试其他服务器。';
 
   @override
   String get helpMultiplayerFailedTitle => '多人连接失败';
 
   @override
-  String get helpMultiplayerFailedSubtitle => '说明这为什么不是 NetherLink 错误';
+  String get helpMultiplayerFailedSubtitle => '说明这为什么不是 MCCompanion 错误';
 
   @override
-  String get helpMultiplayerFailedBody => '⚠️ 这不是 NetherLink 的问题！\r\n\r\nNetherLink 已成功将你重定向到请求的服务器。\\\"多人连接失败\\\" 这条消息表示目标服务器当前无法访问。可能原因包括：\r\n\r\n• 目标 Minecraft 服务器离线或负载过高\r\n• 服务器需要更新的客户端版本或特定版本\r\n• Relay 与目标服务器之间存在网络问题\r\n\r\n请尝试连接到其他服务器，或联系该服务器的支持团队。如果多个服务器都出现此问题，请在 NetherLink 中启用调试模式并检查日志。';
+  String get helpMultiplayerFailedBody => '⚠️ 这不是 MCCompanion 的问题！\r\n\r\nMCCompanion 已成功将你重定向到请求的服务器。\\\"多人连接失败\\\" 这条消息表示目标服务器当前无法访问。可能原因包括：\r\n\r\n• 目标 Minecraft 服务器离线或负载过高\r\n• 服务器需要更新的客户端版本或特定版本\r\n• Relay 与目标服务器之间存在网络问题\r\n\r\n请尝试连接到其他服务器，或联系该服务器的支持团队。如果多个服务器都出现此问题，请在 MCCompanion 中启用调试模式并检查日志。';
 
   @override
   String get helpNintendoDnsTitle => 'Nintendo DNS 无法工作';

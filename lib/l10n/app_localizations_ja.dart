@@ -9,7 +9,7 @@ class AppLocalizationsJa extends AppLocalizations {
   AppLocalizationsJa([String locale = 'ja']) : super(locale);
 
   @override
-  String get appName => 'NetherLink';
+  String get appName => 'MCCompanion';
 
   @override
   String get console => 'コンソール';
@@ -46,7 +46,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String helpText(Object appCreator) {
-    return '$appCreator によって作成されました。\r\n\r\n使い方:\r\n1. Minecraft サーバーのアドレスとポートを入力します（デフォルト: 19132）\r\n   — またはドロップダウンから以前保存したサーバーを選択します\r\n2. （任意）現在地に最も近い Relay Server（EU または US）を選択します\r\n3. \"ブロードキャスト開始\" をクリックして開始します\r\n4. コンソール/デバイスで: Minecraft > Play > Friends\r\n5. \"NetherLink\" という名前の LAN サーバーが表示されます\r\n6. それをクリックすると、NetherLink 経由で外部サーバーに参加できます\r\n\r\nNintendo Switch（DNS モード）:\r\n1. 接続パネルで \"Nintendo Switch\" を有効にします\r\n2. Relay Server（EU または US）を選択します\r\n3. \"Send DNS Config\" をクリックすると、設定が relay に送信されます\r\n   （これは LAN サーバーをブロードキャストしません）\r\n4. Switch で NetherLink の DNS 設定を適用し、\r\n   NetherLink 用に使っているサーバー項目から参加します\r\n\r\nメモ:\r\n- LAN ブロードキャストでは、NetherLink とコンソールが同じローカルネットワーク上にある必要があります。\r\n- ヒント: 最良のパフォーマンスを得るには、最も近い relay サーバーを選択してください。';
+    return '$appCreator によって作成されました。\r\n\r\n使い方:\r\n1. Minecraft サーバーのアドレスとポートを入力します（デフォルト: 19132）\r\n   — またはドロップダウンから以前保存したサーバーを選択します\r\n2. （任意）現在地に最も近い Relay Server（EU または US）を選択します\r\n3. \"ブロードキャスト開始\" をクリックして開始します\r\n4. コンソール/デバイスで: Minecraft > Play > Friends\r\n5. \"MCCompanion\" という名前の LAN サーバーが表示されます\r\n6. それをクリックすると、MCCompanion 経由で外部サーバーに参加できます\r\n\r\nNintendo Switch（DNS モード）:\r\n1. 接続パネルで \"Nintendo Switch\" を有効にします\r\n2. Relay Server（EU または US）を選択します\r\n3. \"Send DNS Config\" をクリックすると、設定が relay に送信されます\r\n   （これは LAN サーバーをブロードキャストしません）\r\n4. Switch で MCCompanion の DNS 設定を適用し、\r\n   MCCompanion 用に使っているサーバー項目から参加します\r\n\r\nメモ:\r\n- LAN ブロードキャストでは、MCCompanion とコンソールが同じローカルネットワーク上にある必要があります。\r\n- ヒント: 最良のパフォーマンスを得るには、最も近い relay サーバーを選択してください。';
   }
 
   @override
@@ -74,13 +74,13 @@ class AppLocalizationsJa extends AppLocalizations {
   String get howToJavaTitle => 'Javaモード';
 
   @override
-  String get howToJavaSubtitle => 'NetherLink経由でJava Editionサーバーに接続';
+  String get howToJavaSubtitle => 'MCCompanion経由でJava Editionサーバーに接続';
 
   @override
   String get aternosSubtext => '自分だけの無料Minecraftサーバーを作成しましょう';
 
   @override
-  String get howToJavaBody => 'Javaモード — クイック手順:\n1. アプリでJavaモードを選択します。\n2. Java Editionサーバーのアドレスとポートを入力します（既定: 25565）。\n3. 「Javaモードを開始」を押します — NetherLinkが接続を橋渡しします。\n4. Minecraft Bedrockを開いて、フレンドタブに移動します。\n5. Javaサーバーに参加するには、「NetherLink」という名前のLANサーバーを選択します。\n\n⚠️ 重要な警告:\n- 有効なJava Editionアカウント（Microsoft）が必要です。\n- 一部のサーバーではアンチチートシステムが使用されており、アカウントが検出されてBANされる可能性があります。\n- Bedrockクライアントを明確に禁止しているサーバーもあります — 必ずサーバールールを確認してください。\n- この機能の使用によって発生するアカウントBAN、利用停止、その他のアカウント関連の問題について、NetherLinkは責任を負いません。\n- 自己責任で使用してください。';
+  String get howToJavaBody => 'Javaモード — クイック手順:\n1. アプリでJavaモードを選択します。\n2. Java Editionサーバーのアドレスとポートを入力します（既定: 25565）。\n3. 「Javaモードを開始」を押します — MCCompanionが接続を橋渡しします。\n4. Minecraft Bedrockを開いて、フレンドタブに移動します。\n5. Javaサーバーに参加するには、「MCCompanion」という名前のLANサーバーを選択します。\n\n⚠️ 重要な警告:\n- 有効なJava Editionアカウント（Microsoft）が必要です。\n- 一部のサーバーではアンチチートシステムが使用されており、アカウントが検出されてBANされる可能性があります。\n- Bedrockクライアントを明確に禁止しているサーバーもあります — 必ずサーバールールを確認してください。\n- この機能の使用によって発生するアカウントBAN、利用停止、その他のアカウント関連の問題について、MCCompanionは責任を負いません。\n- 自己責任で使用してください。';
 
   @override
   String get language => '日本語';
@@ -185,7 +185,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get debugDisabled => 'デバッグログを無効にしました';
 
   @override
-  String get howToUseTitle => 'NetherLink の使い方';
+  String get howToUseTitle => 'MCCompanion の使い方';
 
   @override
   String get iUnderstand => '理解しました';
@@ -251,10 +251,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get noWifi => 'Wi‑Fi に接続されていません';
 
   @override
-  String get vpnActive => 'VPN が有効になっていることを検出しました。\n\nNetherLink を使用する前に VPN を無効にしてください。そうしないと、LAN ブロードキャストがコンソールに届かない可能性があります。';
+  String get vpnActive => 'VPN が有効になっていることを検出しました。\n\nMCCompanion を使用する前に VPN を無効にしてください。そうしないと、LAN ブロードキャストがコンソールに届かない可能性があります。';
 
   @override
-  String get mobileActive => '検出: モバイルデータ\n\nNetherLink はコンソールと同じネットワーク上にある必要があります。続行する前に、自宅の Wi‑Fi またはホットスポットに接続してください。';
+  String get mobileActive => '検出: モバイルデータ\n\nMCCompanion はコンソールと同じネットワーク上にある必要があります。続行する前に、自宅の Wi‑Fi またはホットスポットに接続してください。';
 
   @override
   String get continueAnyway => 'このまま続行';
@@ -263,13 +263,13 @@ class AppLocalizationsJa extends AppLocalizations {
   String get sameWifi => '同じ Wi‑Fi ネットワーク';
 
   @override
-  String get needSameWifi => 'NetherLink を実行している端末は、Minecraft をプレイするコンソールと同じ Wi‑Fi ネットワーク上にある必要があります。';
+  String get needSameWifi => 'MCCompanion を実行している端末は、Minecraft をプレイするコンソールと同じ Wi‑Fi ネットワーク上にある必要があります。';
 
   @override
   String get subscription => 'オンライン加入が必要';
 
   @override
-  String get needSubscription => '各コンソールには有効なオンライン加入サービス（Xbox Live、PS Plus、NSO）が必要です。ない場合、NetherLink は表示されません。';
+  String get needSubscription => '各コンソールには有効なオンライン加入サービス（Xbox Live、PS Plus、NSO）が必要です。ない場合、MCCompanion は表示されません。';
 
   @override
   String get updateAvailable => 'アップデートがあります';
@@ -320,7 +320,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get friendModeTitle => 'フレンドモード';
 
   @override
-  String get friendModeText => 'NetherLink のフレンド bot をフレンドとして追加します。Friends モードを開始して遊びましょう';
+  String get friendModeText => 'MCCompanion のフレンド bot をフレンドとして追加します。Friends モードを開始して遊びましょう';
 
   @override
   String get selectedRelayCheck => '選択済み';
@@ -331,7 +331,7 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get relayUnableConnect => 'どの NetherLink relay サーバーにも接続できません。後でもう一度試すか、インターネット接続を確認してください。';
+  String get relayUnableConnect => 'どの MCCompanion relay サーバーにも接続できません。後でもう一度試すか、インターネット接続を確認してください。';
 
   @override
   String get howToXboxTitle => 'Xbox / PS4-5 (LAN / プロキシ)';
@@ -340,7 +340,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get howToXboxSubtitle => 'LAN ブロードキャストまたは proxy 経由でプレイ';
 
   @override
-  String get howToXboxBody => '接続方法（Xbox / PS4 / PS5）:\r\n1. NetherLink を実行しているデバイスとコンソールが同じローカルネットワーク上にあることを確認してください。\r\n2. アプリで Minecraft サーバーのアドレスとポートを入力し、\"ブロードキャスト開始\" を押します。\r\n3. コンソールで Minecraft → Play を開き、LAN Worlds または Friends タブを探してリストを更新します。\r\n4. \"NetherLink\" という名前の LAN サーバーを選択して参加します。\r\nメモ:\r\n- サーバーが表示されない場合は、両方のデバイスが同じサブネット上にあり、アプリがまだブロードキャスト中であることを確認してください。\r\n- 一部のコンソールやルーターでは LAN 検出がブロックされる場合があります。必要に応じてアプリやルーターの設定を切り替えてみてください。';
+  String get howToXboxBody => '接続方法（Xbox / PS4 / PS5）:\r\n1. MCCompanion を実行しているデバイスとコンソールが同じローカルネットワーク上にあることを確認してください。\r\n2. アプリで Minecraft サーバーのアドレスとポートを入力し、\"ブロードキャスト開始\" を押します。\r\n3. コンソールで Minecraft → Play を開き、LAN Worlds または Friends タブを探してリストを更新します。\r\n4. \"MCCompanion\" という名前の LAN サーバーを選択して参加します。\r\nメモ:\r\n- サーバーが表示されない場合は、両方のデバイスが同じサブネット上にあり、アプリがまだブロードキャスト中であることを確認してください。\r\n- 一部のコンソールやルーターでは LAN 検出がブロックされる場合があります。必要に応じてアプリやルーターの設定を切り替えてみてください。';
 
   @override
   String get howToNintendoTitle => 'Nintendo Switch (DNS モード)';
@@ -358,25 +358,25 @@ class AppLocalizationsJa extends AppLocalizations {
   String get howToFriendsSubtitle => '友達を招待して LAN 経由で参加';
 
   @override
-  String get howToFriendsBody => 'フレンドモード — 簡単な手順:\r\n1. 必要に応じて、コンソールまたはプラットフォームで NetherLink のフレンドアカウントを追加します。\r\n2. アプリでフレンドモードを有効にし、relay 設定を送信します（該当する場合）。\r\n3. コンソールで Minecraft → Friends を開き、LAN Worlds を探します。そこに LAN ワールドとして自分のサーバーが表示されるはずです。\r\n4. それを選択して、友達と一緒に自分のサーバーへ参加します。\r\nメモ:\r\n- 自分と友達の両方が、フレンド表示を許可する同じ NAT/設定になっていることを確認してください。\r\n- フレンドモードはプラットフォームのフレンド機能に依存し、フレンド申請の承認が必要な場合があります。';
+  String get howToFriendsBody => 'フレンドモード — 簡単な手順:\r\n1. 必要に応じて、コンソールまたはプラットフォームで MCCompanion のフレンドアカウントを追加します。\r\n2. アプリでフレンドモードを有効にし、relay 設定を送信します（該当する場合）。\r\n3. コンソールで Minecraft → Friends を開き、LAN Worlds を探します。そこに LAN ワールドとして自分のサーバーが表示されるはずです。\r\n4. それを選択して、友達と一緒に自分のサーバーへ参加します。\r\nメモ:\r\n- 自分と友達の両方が、フレンド表示を許可する同じ NAT/設定になっていることを確認してください。\r\n- フレンドモードはプラットフォームのフレンド機能に依存し、フレンド申請の承認が必要な場合があります。';
 
   @override
-  String get helpNetherlinkTitle => 'NetherLink が表示されない';
+  String get helpNetherlinkTitle => 'MCCompanion が表示されない';
 
   @override
   String get helpNetherlinkSubtitle => 'LAN 検出の問題をトラブルシューティング';
 
   @override
-  String get helpNetherlinkBody => 'コンソールにサーバーが表示されない場合は、次の手順を試してください:\r\n\r\n✅ 基本チェック:\r\n1. 同じ WiFi ネットワーク - スマホ/タブレットとコンソールは必ず同じ WiFi 上にある必要があります\r\n2. 正しいサーバーアドレス - IP とポート（デフォルト: 19132）を再確認してください\r\n3. ブロードキャストが有効 - NetherLink に \"ブロードキャスト中\" ステータスが表示されていることを確認してください\r\n\r\n🔄 すぐできる対処:\r\n• アプリを再起動: ブロードキャストを停止し、NetherLink を完全に閉じてから再度開いて試してください\r\n• コンソールを再起動: LAN ゲームを検出するには、コンソールの更新が必要なことがあります\r\n• Friends/LAN タブを確認: サーバーはサーバー一覧ではなく、\"Friends\" または \"LAN Games\" の下に表示されます\r\n• ブロードキャスト開始後 10〜15 秒待つ\r\n• VPN を無効化: VPN はローカルブロードキャストを妨げることがあります\r\n\r\n⚠️ よくある問題:\r\n\"No route found for user\" → 両方のデバイスが同じ Wi‑Fi 上にあることを確認してください（ゲストネットワークは避けてください）\r\n\"Unable to connect to NetherLink relay server\" → インターネット接続 / relay の状態を確認してください\r\n\r\n📱 まだ問題がありますか？ NetherLink でデバッグモードを有効にしてログを確認するか、別のサーバーを試してください。';
+  String get helpNetherlinkBody => 'コンソールにサーバーが表示されない場合は、次の手順を試してください:\r\n\r\n✅ 基本チェック:\r\n1. 同じ WiFi ネットワーク - スマホ/タブレットとコンソールは必ず同じ WiFi 上にある必要があります\r\n2. 正しいサーバーアドレス - IP とポート（デフォルト: 19132）を再確認してください\r\n3. ブロードキャストが有効 - MCCompanion に \"ブロードキャスト中\" ステータスが表示されていることを確認してください\r\n\r\n🔄 すぐできる対処:\r\n• アプリを再起動: ブロードキャストを停止し、MCCompanion を完全に閉じてから再度開いて試してください\r\n• コンソールを再起動: LAN ゲームを検出するには、コンソールの更新が必要なことがあります\r\n• Friends/LAN タブを確認: サーバーはサーバー一覧ではなく、\"Friends\" または \"LAN Games\" の下に表示されます\r\n• ブロードキャスト開始後 10〜15 秒待つ\r\n• VPN を無効化: VPN はローカルブロードキャストを妨げることがあります\r\n\r\n⚠️ よくある問題:\r\n\"No route found for user\" → 両方のデバイスが同じ Wi‑Fi 上にあることを確認してください（ゲストネットワークは避けてください）\r\n\"Unable to connect to MCCompanion relay server\" → インターネット接続 / relay の状態を確認してください\r\n\r\n📱 まだ問題がありますか？ MCCompanion でデバッグモードを有効にしてログを確認するか、別のサーバーを試してください。';
 
   @override
   String get helpMultiplayerFailedTitle => 'マルチプレイヤー接続に失敗しました';
 
   @override
-  String get helpMultiplayerFailedSubtitle => 'これが NetherLink のエラーではない理由';
+  String get helpMultiplayerFailedSubtitle => 'これが MCCompanion のエラーではない理由';
 
   @override
-  String get helpMultiplayerFailedBody => '⚠️ これは NetherLink の問題ではありません！\r\n\r\nNetherLink は正常に要求されたサーバーへリダイレクトしました。\"Multiplayer Connection Failed\" というメッセージは、対象サーバーに現在到達できないことを示しています。考えられる理由:\r\n\r\n• 対象の Minecraft サーバーがオフライン、または過負荷状態である\r\n• サーバーが更新されたクライアントバージョン、または特定のエディションを要求している\r\n• relay と対象サーバーの間にネットワークの問題がある\r\n\r\n別のサーバーに接続するか、そのサーバーのサポートに連絡してください。複数のサーバーで問題が続く場合は、NetherLink でデバッグモードを有効にしてログを確認してください。';
+  String get helpMultiplayerFailedBody => '⚠️ これは MCCompanion の問題ではありません！\r\n\r\nMCCompanion は正常に要求されたサーバーへリダイレクトしました。\"Multiplayer Connection Failed\" というメッセージは、対象サーバーに現在到達できないことを示しています。考えられる理由:\r\n\r\n• 対象の Minecraft サーバーがオフライン、または過負荷状態である\r\n• サーバーが更新されたクライアントバージョン、または特定のエディションを要求している\r\n• relay と対象サーバーの間にネットワークの問題がある\r\n\r\n別のサーバーに接続するか、そのサーバーのサポートに連絡してください。複数のサーバーで問題が続く場合は、MCCompanion でデバッグモードを有効にしてログを確認してください。';
 
   @override
   String get helpNintendoDnsTitle => 'Nintendo DNS が動作しない';

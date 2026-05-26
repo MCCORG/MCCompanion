@@ -50,7 +50,7 @@ class _SkinBodyFromUrlState extends State<SkinBodyFromUrl> {
     try {
       final resp = await http
           .get(Uri.parse(widget.textureUrl),
-              headers: {'User-Agent': 'NetherLinkApp/1.0'})
+              headers: {'User-Agent': 'MCCompanionApp/1.0'})
           .timeout(const Duration(seconds: 10));
       if (!mounted) return;
       final codec = await ui.instantiateImageCodec(resp.bodyBytes);
@@ -191,7 +191,7 @@ class _Skin3DFromUrlState extends State<Skin3DFromUrl> {
     try {
       final resp = await http
           .get(Uri.parse(widget.textureUrl),
-              headers: {'User-Agent': 'NetherLinkApp/1.0'})
+              headers: {'User-Agent': 'MCCompanionApp/1.0'})
           .timeout(const Duration(seconds: 10));
       if (!mounted) return;
       final codec = await ui.instantiateImageCodec(resp.bodyBytes);

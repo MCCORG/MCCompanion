@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "NetherLink" "\0"
-            VALUE "FileDescription", "NetherLink" "\0"
+            VALUE "CompanyName", "MCCompanion" "\0"
+            VALUE "FileDescription", "MCCompanion" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "NetherLink" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2025 NetherLink All rights reserved." "\0"
-            VALUE "OriginalFilename", "NetherLink.exe" "\0"
-            VALUE "ProductName", "NetherLink" "\0"
+            VALUE "InternalName", "MCCompanion" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2025 MCCompanion All rights reserved." "\0"
+            VALUE "OriginalFilename", "MCCompanion.exe" "\0"
+            VALUE "ProductName", "MCCompanion" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

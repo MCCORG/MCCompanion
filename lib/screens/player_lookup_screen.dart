@@ -325,7 +325,7 @@ class _JavaSkinViewerState extends State<_JavaSkinViewer> {
             Uri.parse(
               'https://sessionserver.mojang.com/session/minecraft/profile/${widget.uuid.replaceAll('-', '')}',
             ),
-            headers: {'User-Agent': 'NetherLinkApp/1.0'},
+            headers: {'User-Agent': 'MCCompanionApp/1.0'},
           )
           .timeout(const Duration(seconds: 8));
       if (!mounted || resp.statusCode != 200) {
@@ -445,7 +445,7 @@ class _BedrockSkinViewerState extends State<_BedrockSkinViewer> {
       final resp = await http
           .get(
             Uri.parse('https://api.geysermc.org/v2/skin/${widget.xuid}'),
-            headers: {'User-Agent': 'NetherLinkApp/1.0'},
+            headers: {'User-Agent': 'MCCompanionApp/1.0'},
           )
           .timeout(const Duration(seconds: 8));
       if (!mounted) return;

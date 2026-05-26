@@ -9,7 +9,7 @@ class AppLocalizationsTr extends AppLocalizations {
   AppLocalizationsTr([String locale = 'tr']) : super(locale);
 
   @override
-  String get appName => 'NetherLink';
+  String get appName => 'MCCompanion';
 
   @override
   String get console => 'Konsol';
@@ -46,7 +46,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String helpText(Object appCreator) {
-    return 'Yapan: $appCreator\n\nKullanım Talimatları:\n1. Minecraft sunucu adresinizi ve portunuzu girin (varsayılan: 19132)\n   — veya daha önce kaydedilmiş bir sunucuyu açılır menüden seçin\n2. (İsteğe bağlı) Konumunuza en yakın aktarma sunucusunu (EU veya US) seçin\n3. Yayına başlamak için \"Yayına Başla\" düğmesine tıklayın\n4. Konsolunuz/cihazınızda: Minecraft > Oyna > Arkadaşlar\n5. \"NetherLink\" adlı bir LAN sunucusu görmelisiniz\n6. NetherLink üzerinden seçtiğiniz sunucunuya katılmak için üzerine tıklayın\n\nNintendo Switch (DNS modu):\n1. Bağlantı panelinde \"Nintendo Switch\"i etkinleştirin\n2. Bir  aktarma sunucusu  (EU veya US) seçin\n3. \"DNS Yapılandırmasını Gönder\" düğmesine tıklayın — bu yapılandırmanızı aktarıcıya gönderir\n   (LAN sunucusu yayınlamaz)\n4. Switch’inizde NetherLink DNS ayarlarınızı uygulayın ve NetherLink için kullandığınız sunucu girişini kullanarak katılın\n\nNotlar:\n- LAN yayını için NetherLink ve konsol aynı yerel ağda olmalıdır.\n- İpucu: En iyi performans için size en yakın aktarma sunucusunu seçin.';
+    return 'Yapan: $appCreator\n\nKullanım Talimatları:\n1. Minecraft sunucu adresinizi ve portunuzu girin (varsayılan: 19132)\n   — veya daha önce kaydedilmiş bir sunucuyu açılır menüden seçin\n2. (İsteğe bağlı) Konumunuza en yakın aktarma sunucusunu (EU veya US) seçin\n3. Yayına başlamak için \"Yayına Başla\" düğmesine tıklayın\n4. Konsolunuz/cihazınızda: Minecraft > Oyna > Arkadaşlar\n5. \"MCCompanion\" adlı bir LAN sunucusu görmelisiniz\n6. MCCompanion üzerinden seçtiğiniz sunucunuya katılmak için üzerine tıklayın\n\nNintendo Switch (DNS modu):\n1. Bağlantı panelinde \"Nintendo Switch\"i etkinleştirin\n2. Bir  aktarma sunucusu  (EU veya US) seçin\n3. \"DNS Yapılandırmasını Gönder\" düğmesine tıklayın — bu yapılandırmanızı aktarıcıya gönderir\n   (LAN sunucusu yayınlamaz)\n4. Switch’inizde MCCompanion DNS ayarlarınızı uygulayın ve MCCompanion için kullandığınız sunucu girişini kullanarak katılın\n\nNotlar:\n- LAN yayını için MCCompanion ve konsol aynı yerel ağda olmalıdır.\n- İpucu: En iyi performans için size en yakın aktarma sunucusunu seçin.';
   }
 
   @override
@@ -74,13 +74,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get howToJavaTitle => 'Java Modu';
 
   @override
-  String get howToJavaSubtitle => 'NetherLink üzerinden Java Edition sunucularına bağlanın';
+  String get howToJavaSubtitle => 'MCCompanion üzerinden Java Edition sunucularına bağlanın';
 
   @override
   String get aternosSubtext => 'Kendi ücretsiz Minecraft sunucunuzu oluşturun';
 
   @override
-  String get howToJavaBody => 'Java Modu — hızlı adımlar:\n1. Uygulamada Java modunu seçin.\n2. Java Edition sunucu adresinizi ve portunuzu girin (varsayılan: 25565).\n3. \"Java Modunu Başlat\" düğmesine basın — NetherLink bağlantıyı köprüleyecektir.\n4. Minecraft Bedrock\'u açın ve Arkadaşlar sekmesine gidin.\n5. Java sunucusuna katılmak için \"NetherLink\" adlı LAN sunucusunu seçin.\n\n⚠️ Önemli uyarılar:\n- Geçerli bir Java Edition hesabı (Microsoft) gereklidir.\n- Bazı sunucular hesabınızı tespit edip yasaklayabilecek hile önleme sistemleri kullanır.\n- Bazı sunucular Bedrock istemcilerini açıkça yasaklar — her zaman sunucu kurallarını kontrol edin.\n- Bu özelliğin kullanılmasından kaynaklanabilecek hesap yasakları, askıya almalar veya hesapla ilgili diğer sorunlardan NetherLink sorumlu değildir.\n- Kendi riskinizle kullanın.';
+  String get howToJavaBody => 'Java Modu — hızlı adımlar:\n1. Uygulamada Java modunu seçin.\n2. Java Edition sunucu adresinizi ve portunuzu girin (varsayılan: 25565).\n3. \"Java Modunu Başlat\" düğmesine basın — MCCompanion bağlantıyı köprüleyecektir.\n4. Minecraft Bedrock\'u açın ve Arkadaşlar sekmesine gidin.\n5. Java sunucusuna katılmak için \"MCCompanion\" adlı LAN sunucusunu seçin.\n\n⚠️ Önemli uyarılar:\n- Geçerli bir Java Edition hesabı (Microsoft) gereklidir.\n- Bazı sunucular hesabınızı tespit edip yasaklayabilecek hile önleme sistemleri kullanır.\n- Bazı sunucular Bedrock istemcilerini açıkça yasaklar — her zaman sunucu kurallarını kontrol edin.\n- Bu özelliğin kullanılmasından kaynaklanabilecek hesap yasakları, askıya almalar veya hesapla ilgili diğer sorunlardan MCCompanion sorumlu değildir.\n- Kendi riskinizle kullanın.';
 
   @override
   String get language => 'Türkçe';
@@ -185,7 +185,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get debugDisabled => 'Hata ayıklama kayıtları devre dışı bırakıldı';
 
   @override
-  String get howToUseTitle => 'NetherLink nasıl kullanılır';
+  String get howToUseTitle => 'MCCompanion nasıl kullanılır';
 
   @override
   String get iUnderstand => 'Anlıyorum';
@@ -251,10 +251,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get noWifi => 'Wi‑Fi\'a bağlı değil';
 
   @override
-  String get vpnActive => 'VPN\'inizin etkin olduğunu tespit ettik.\n\nLütfen NetherLink\'i kullanmadan önce VPN\'inizi devre dışı bırakın, aksi halde LAN yayını konsolunuza ulaşmayabilir.';
+  String get vpnActive => 'VPN\'inizin etkin olduğunu tespit ettik.\n\nLütfen MCCompanion\'i kullanmadan önce VPN\'inizi devre dışı bırakın, aksi halde LAN yayını konsolunuza ulaşmayabilir.';
 
   @override
-  String get mobileActive => 'Tespit edildi: Mobil Veri\n\nNetherLink\'in konsolunuzla aynı ağda olması gerekir. Devam etmeden önce ev Wi‑Fi\'nize veya erişim noktanıza bağlanın.';
+  String get mobileActive => 'Tespit edildi: Mobil Veri\n\nMCCompanion\'in konsolunuzla aynı ağda olması gerekir. Devam etmeden önce ev Wi‑Fi\'nize veya erişim noktanıza bağlanın.';
 
   @override
   String get continueAnyway => 'Yine de Devam Et';
@@ -263,13 +263,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get sameWifi => 'Aynı Wi‑Fi Ağı';
 
   @override
-  String get needSameWifi => 'NetherLink\'i çalıştıran cihaz, Minecraft oynadığınız konsolla AYNI Wi‑Fi ağına bağlı OLMALIDIR.';
+  String get needSameWifi => 'MCCompanion\'i çalıştıran cihaz, Minecraft oynadığınız konsolla AYNI Wi‑Fi ağına bağlı OLMALIDIR.';
 
   @override
   String get subscription => 'Çevrim İçi Abonelik Gerekli';
 
   @override
-  String get needSubscription => 'Her konsolun kendi etkin çevrim içi aboneliği (Xbox Live, PS Plus, NSO) olmalıdır. Aksi halde NetherLink görünmez.';
+  String get needSubscription => 'Her konsolun kendi etkin çevrim içi aboneliği (Xbox Live, PS Plus, NSO) olmalıdır. Aksi halde MCCompanion görünmez.';
 
   @override
   String get updateAvailable => 'Güncelleme Mevcut';
@@ -320,7 +320,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get friendModeTitle => 'Arkadaş modu';
 
   @override
-  String get friendModeText => 'NetherLink\'in arkadaş botlarını arkadaş olarak ekle. Arkadaş modunu başlat ve oyna';
+  String get friendModeText => 'MCCompanion\'in arkadaş botlarını arkadaş olarak ekle. Arkadaş modunu başlat ve oyna';
 
   @override
   String get selectedRelayCheck => 'Seçilen';
@@ -331,7 +331,7 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get relayUnableConnect => 'Hiçbir NetherLink aktarım sunucusuna bağlanılamıyor. Daha sonra tekrar deneyin veya internet bağlantınızı kontrol edin.';
+  String get relayUnableConnect => 'Hiçbir MCCompanion aktarım sunucusuna bağlanılamıyor. Daha sonra tekrar deneyin veya internet bağlantınızı kontrol edin.';
 
   @override
   String get howToXboxTitle => 'Xbox / PS4-5 (LAN / vekil)';
@@ -340,7 +340,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get howToXboxSubtitle => 'LAN yayını veya proxy ile oyna';
 
   @override
-  String get howToXboxBody => 'Xbox / PS4 / PS5 için bağlanma adımları:\n1. NetherLink çalıştıran cihazınızın ve konsolunuzun aynı yerel ağda olduğundan emin olun.\n2. Uygulamada Minecraft sunucu adresinizi ve portunuzu girin, ardından \"Yayına Başla\" düğmesine basın.\n3. Konsolda Minecraft → Oyna bölümünü açın, LAN Dünyaları veya Arkadaşlar sekmesini bulun ve listeyi yenileyin.\n4. Katılmak için \"NetherLink\" adlı LAN sunucusunu seçin.\nNotlar:\n- Sunucu görünmüyorsa, iki cihazın da aynı alt ağda olduğunu ve uygulamanın hâlâ yayın yaptığını doğrulayın.\n- Bazı konsol modelleri veya yönlendiriciler LAN keşfini engelleyebilir; gerekirse uygulama ya da yönlendirici ayarlarını değiştirerek tekrar deneyin.';
+  String get howToXboxBody => 'Xbox / PS4 / PS5 için bağlanma adımları:\n1. MCCompanion çalıştıran cihazınızın ve konsolunuzun aynı yerel ağda olduğundan emin olun.\n2. Uygulamada Minecraft sunucu adresinizi ve portunuzu girin, ardından \"Yayına Başla\" düğmesine basın.\n3. Konsolda Minecraft → Oyna bölümünü açın, LAN Dünyaları veya Arkadaşlar sekmesini bulun ve listeyi yenileyin.\n4. Katılmak için \"MCCompanion\" adlı LAN sunucusunu seçin.\nNotlar:\n- Sunucu görünmüyorsa, iki cihazın da aynı alt ağda olduğunu ve uygulamanın hâlâ yayın yaptığını doğrulayın.\n- Bazı konsol modelleri veya yönlendiriciler LAN keşfini engelleyebilir; gerekirse uygulama ya da yönlendirici ayarlarını değiştirerek tekrar deneyin.';
 
   @override
   String get howToNintendoTitle => 'Nintendo Switch (DNS modu)';
@@ -358,25 +358,25 @@ class AppLocalizationsTr extends AppLocalizations {
   String get howToFriendsSubtitle => 'Arkadaşlarını davet et ve LAN üzerinden katıl';
 
   @override
-  String get howToFriendsBody => 'Arkadaş modu — hızlı adımlar:\n1. Gerekliyse NetherLink arkadaş hesabını (aktarıcı arkadaş) konsolunuza veya platformunuza ekleyin.\n2. Uygulamada Arkadaş modunu etkinleştirin ve aktarıcı yapılandırmasını gönderin (uygunsa).\n3. Konsolunuzda Minecraft → Arkadaşlar bölümünü açın ve LAN Dünyaları\'nı arayın; sunucunuz orada bir LAN dünyası olarak görünmelidir.\n4. Arkadaşlarınızla sunucunuza katılmak için onu seçin.\nNotlar:\n- Hem sizin hem de arkadaşlarınızın arkadaş görünürlüğüne izin veren aynı NAT/ayarlarına sahip olduğundan emin olun.\n- Arkadaş modu, platformun arkadaş özelliklerine dayanır ve arkadaşlık isteklerinin kabul edilmesini gerektirebilir.';
+  String get howToFriendsBody => 'Arkadaş modu — hızlı adımlar:\n1. Gerekliyse MCCompanion arkadaş hesabını (aktarıcı arkadaş) konsolunuza veya platformunuza ekleyin.\n2. Uygulamada Arkadaş modunu etkinleştirin ve aktarıcı yapılandırmasını gönderin (uygunsa).\n3. Konsolunuzda Minecraft → Arkadaşlar bölümünü açın ve LAN Dünyaları\'nı arayın; sunucunuz orada bir LAN dünyası olarak görünmelidir.\n4. Arkadaşlarınızla sunucunuza katılmak için onu seçin.\nNotlar:\n- Hem sizin hem de arkadaşlarınızın arkadaş görünürlüğüne izin veren aynı NAT/ayarlarına sahip olduğundan emin olun.\n- Arkadaş modu, platformun arkadaş özelliklerine dayanır ve arkadaşlık isteklerinin kabul edilmesini gerektirebilir.';
 
   @override
-  String get helpNetherlinkTitle => 'NetherLink görünmüyor';
+  String get helpNetherlinkTitle => 'MCCompanion görünmüyor';
 
   @override
   String get helpNetherlinkSubtitle => 'LAN keşif sorunlarını giderme';
 
   @override
-  String get helpNetherlinkBody => 'Sunucu konsolunuzda görünmüyorsa şu adımları deneyin:\n\n✅ Temel Kontroller:\n1. Aynı WiFi Ağı - Telefonunuz/tabletiniz ve konsolunuz AYNI WiFi ağına bağlı olmalıdır\n2. Doğru Sunucu Adresi - IP ve portu tekrar kontrol edin (varsayılan: 19132)\n3. Yayın Aktif - NetherLink\'in \"Yayın Yapılıyor\" durumunu gösterdiğini doğrulayın\n\n🔄 Hızlı Çözümler:\n• Uygulamayı yeniden başlatın: Yayını durdurun, NetherLink\'i tamamen kapatın, yeniden açın ve tekrar deneyin\n• Konsolunuzu yeniden başlatın: Bazen konsolun LAN oyunlarını algılaması için yenilenmesi gerekir\n• Arkadaşlar/LAN sekmesini kontrol edin: Sunucu, sunucu listesinde DEĞİL, \"Arkadaşlar\" veya \"LAN Oyunları\" altında görünür\n• Yayını başlattıktan sonra 10-15 saniye bekleyin\n• VPN\'leri devre dışı bırakın: VPN\'ler yerel yayınları engelleyebilir\n\n⚠️ Yaygın Sorunlar:\n\"Kullanıcı için rota bulunamadı\" → Her iki cihazın da aynı Wi‑Fi ağına bağlı olduğundan emin olun (Misafir ağlarından kaçının)\n\"NetherLink aktarıcı sunucusuna bağlanılamıyor\" → İnternet bağlantınızı / aktarıcı durumunu kontrol edin\n\n📱 Hâlâ sorun mu yaşıyorsunuz? NetherLink\'te Hata Ayıklama Modunu etkinleştirin ve kayıtları kontrol edin ya da farklı bir sunucu deneyin.';
+  String get helpNetherlinkBody => 'Sunucu konsolunuzda görünmüyorsa şu adımları deneyin:\n\n✅ Temel Kontroller:\n1. Aynı WiFi Ağı - Telefonunuz/tabletiniz ve konsolunuz AYNI WiFi ağına bağlı olmalıdır\n2. Doğru Sunucu Adresi - IP ve portu tekrar kontrol edin (varsayılan: 19132)\n3. Yayın Aktif - MCCompanion\'in \"Yayın Yapılıyor\" durumunu gösterdiğini doğrulayın\n\n🔄 Hızlı Çözümler:\n• Uygulamayı yeniden başlatın: Yayını durdurun, MCCompanion\'i tamamen kapatın, yeniden açın ve tekrar deneyin\n• Konsolunuzu yeniden başlatın: Bazen konsolun LAN oyunlarını algılaması için yenilenmesi gerekir\n• Arkadaşlar/LAN sekmesini kontrol edin: Sunucu, sunucu listesinde DEĞİL, \"Arkadaşlar\" veya \"LAN Oyunları\" altında görünür\n• Yayını başlattıktan sonra 10-15 saniye bekleyin\n• VPN\'leri devre dışı bırakın: VPN\'ler yerel yayınları engelleyebilir\n\n⚠️ Yaygın Sorunlar:\n\"Kullanıcı için rota bulunamadı\" → Her iki cihazın da aynı Wi‑Fi ağına bağlı olduğundan emin olun (Misafir ağlarından kaçının)\n\"MCCompanion aktarıcı sunucusuna bağlanılamıyor\" → İnternet bağlantınızı / aktarıcı durumunu kontrol edin\n\n📱 Hâlâ sorun mu yaşıyorsunuz? MCCompanion\'te Hata Ayıklama Modunu etkinleştirin ve kayıtları kontrol edin ya da farklı bir sunucu deneyin.';
 
   @override
   String get helpMultiplayerFailedTitle => 'Çok Oyunculu Bağlantı Başarısız';
 
   @override
-  String get helpMultiplayerFailedSubtitle => 'Bunun neden bir NetherLink hatası olmadığının açıklaması';
+  String get helpMultiplayerFailedSubtitle => 'Bunun neden bir MCCompanion hatası olmadığının açıklaması';
 
   @override
-  String get helpMultiplayerFailedBody => '⚠️ Bu, NetherLink ile ilgili bir sorun değildir!\n\nNetherLink sizi istenen sunucuya başarıyla yönlendirdi. \"Çok Oyunculu Bağlantı Başarısız\" mesajı, hedef sunucunun şu anda erişilemez olduğunu gösterir. Olası nedenler:\n\n• Hedef Minecraft sunucusu çevrimdışı veya aşırı yüklü olabilir\n• Sunucu güncel bir istemci sürümü ya da belirli bir sürüm gerektiriyor olabilir\n• Aktarıcı ile hedef sunucu arasında ağ sorunları olabilir\n\nFarklı bir sunucuya bağlanmayı deneyin veya sunucunun destek ekibiyle iletişime geçin. Sorun birden fazla sunucuda sürerse, NetherLink\'te Hata Ayıklama Modunu etkinleştirip kayıtları kontrol edin.';
+  String get helpMultiplayerFailedBody => '⚠️ Bu, MCCompanion ile ilgili bir sorun değildir!\n\nMCCompanion sizi istenen sunucuya başarıyla yönlendirdi. \"Çok Oyunculu Bağlantı Başarısız\" mesajı, hedef sunucunun şu anda erişilemez olduğunu gösterir. Olası nedenler:\n\n• Hedef Minecraft sunucusu çevrimdışı veya aşırı yüklü olabilir\n• Sunucu güncel bir istemci sürümü ya da belirli bir sürüm gerektiriyor olabilir\n• Aktarıcı ile hedef sunucu arasında ağ sorunları olabilir\n\nFarklı bir sunucuya bağlanmayı deneyin veya sunucunun destek ekibiyle iletişime geçin. Sorun birden fazla sunucuda sürerse, MCCompanion\'te Hata Ayıklama Modunu etkinleştirip kayıtları kontrol edin.';
 
   @override
   String get helpNintendoDnsTitle => 'Nintendo DNS çalışmıyor';

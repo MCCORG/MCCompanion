@@ -12,11 +12,11 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await loadSavedLocale();
-  runApp(const NetherLinkApp());
+  runApp(const MCCompanionApp());
 }
 
-class NetherLinkApp extends StatelessWidget {
-  const NetherLinkApp({super.key});
+class MCCompanionApp extends StatelessWidget {
+  const MCCompanionApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class NetherLinkApp extends StatelessWidget {
       valueListenable: appLocale,
       builder: (context, locale, child) {
         return MaterialApp(
-          title: 'NetherLink',
+          title: 'MCCompanion',
           locale: locale,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,

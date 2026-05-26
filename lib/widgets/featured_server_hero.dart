@@ -236,7 +236,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              server?.name ?? 'NetherLink',
+                              server?.name ?? 'MCCompanion',
                               style: const TextStyle(
                                 fontSize: 26,
                                 fontWeight: FontWeight.w800,

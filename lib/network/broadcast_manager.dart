@@ -86,10 +86,10 @@ class BroadcastManager {
             parsed['message'] != null &&
             (parsed['message'] as String).trim().isNotEmpty) {
           final reason = (parsed['message'] as String).trim();
-          return 'Your IP/account has been blocked by NetherLink.\nReason: $reason\nIf you believe this is a mistake, join our discord.';
+          return 'Your IP/account has been blocked by MCCompanion.\nReason: $reason\nIf you believe this is a mistake, join our discord.';
         }
       } catch (_) {}
-      return 'Your IP/account has been blocked by NetherLink. If you believe this is a mistake, join our discord.';
+      return 'Your IP/account has been blocked by MCCompanion. If you believe this is a mistake, join our discord.';
     }
 
     final bodySnippet = (responseBody.isNotEmpty && responseBody.length <= 200)
@@ -109,7 +109,7 @@ class BroadcastManager {
     final usedRelayName = _relayNameForIp(relayIp);
 
     logger.info(
-      'Sending config (DNS mode) to NetherLink server "$usedRelayName" ($relayIp) via API $relayBase...',
+      'Sending config (DNS mode) to MCCompanion server "$usedRelayName" ($relayIp) via API $relayBase...',
     );
 
     try {
@@ -162,7 +162,7 @@ class BroadcastManager {
     final usedRelayName = _relayNameForIp(relayIp);
 
     logger.info(
-      'Sending config to NetherLink server "$usedRelayName" (socket target: $relayIp) via API $relayBase...',
+      'Sending config to MCCompanion server "$usedRelayName" (socket target: $relayIp) via API $relayBase...',
     );
 
     try {
@@ -191,9 +191,9 @@ class BroadcastManager {
 
       final relayAddress = InternetAddress(relayIp);
       logger.info(
-        'Connecting to NetherLink servers (UDP target: ${relayAddress.address})',
+        'Connecting to MCCompanion servers (UDP target: ${relayAddress.address})',
       );
-      logger.info('NetherLink will forward to $remoteHost:$remotePort');
+      logger.info('MCCompanion will forward to $remoteHost:$remotePort');
 
       socketHandler.setRemoteIp(relayAddress);
       socketHandler.setRemotePort(relayPort);
@@ -218,7 +218,7 @@ class BroadcastManager {
       );
 
       _isBroadcasting = true;
-      logger.info('NetherLink started broadcasting');
+      logger.info('MCCompanion started broadcasting');
       _logLocalIPAddresses();
 
       return true;
@@ -244,7 +244,7 @@ class BroadcastManager {
     socketHandler.setBroadcasting(false);
 
     _isBroadcasting = false;
-    logger.info('NetherLink stopped.');
+    logger.info('MCCompanion stopped.');
 
     if (WidgetsBinding.instance.lifecycleState == AppLifecycleState.resumed) {
       try {

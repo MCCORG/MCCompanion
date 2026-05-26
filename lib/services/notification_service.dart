@@ -13,7 +13,7 @@ class NotificationService {
           jsonData['message'] != null &&
           (jsonData['message'] as String).trim().isNotEmpty) {
         return {
-          "title": jsonData["title"] ?? "NetherLink Notice",
+          "title": jsonData["title"] ?? "MCCompanion Notice",
           "message": jsonData["message"] ?? "",
           "type": jsonData["type"] ?? "info",
         };

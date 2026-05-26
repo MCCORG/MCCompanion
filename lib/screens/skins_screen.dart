@@ -64,7 +64,7 @@ class _SkinFaceImageState extends State<_SkinFaceImage> {
       final resp = await http
           .get(
             Uri.parse(widget.textureUrl),
-            headers: {'User-Agent': 'NetherLinkApp/1.0'},
+            headers: {'User-Agent': 'MCCompanionApp/1.0'},
           )
           .timeout(const Duration(seconds: 10));
       if (!mounted) return;
@@ -175,7 +175,7 @@ class _SkinBodyImageState extends State<_SkinBodyImage> {
       final resp = await http
           .get(
             Uri.parse(widget.textureUrl),
-            headers: {'User-Agent': 'NetherLinkApp/1.0'},
+            headers: {'User-Agent': 'MCCompanionApp/1.0'},
           )
           .timeout(const Duration(seconds: 10));
       if (!mounted) return;
@@ -339,7 +339,7 @@ class SkinsScreenState extends State<SkinsScreen> {
             Uri.parse(
               'https://api.geysermc.org/v2/skin/bedrock/recent?page=$page',
             ),
-            headers: {'User-Agent': 'NetherLinkApp/1.0'},
+            headers: {'User-Agent': 'MCCompanionApp/1.0'},
           )
           .timeout(const Duration(seconds: 10));
       if (!mounted) return;
@@ -1080,7 +1080,7 @@ class _JavaSkinCardState extends State<_JavaSkinCard> {
             Uri.parse(
               'https://sessionserver.mojang.com/session/minecraft/profile/${widget.javaUuid}',
             ),
-            headers: {'User-Agent': 'NetherLinkApp/1.0'},
+            headers: {'User-Agent': 'MCCompanionApp/1.0'},
           )
           .timeout(const Duration(seconds: 8));
       if (!mounted || resp.statusCode != 200) return;
@@ -1264,7 +1264,7 @@ class _BedrockSkinCardState extends State<_BedrockSkinCard> {
       final resp = await http
           .get(
             Uri.parse('https://api.geysermc.org/v2/skin/${widget.xuid}'),
-            headers: {'User-Agent': 'NetherLinkApp/1.0'},
+            headers: {'User-Agent': 'MCCompanionApp/1.0'},
           )
           .timeout(const Duration(seconds: 8));
       if (!mounted) return;

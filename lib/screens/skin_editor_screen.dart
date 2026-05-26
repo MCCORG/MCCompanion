@@ -84,7 +84,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
         final resp = await http
             .get(
               Uri.parse(widget.initialTextureUrl!),
-              headers: {'User-Agent': 'NetherLinkApp/1.0'},
+              headers: {'User-Agent': 'MCCompanionApp/1.0'},
             )
             .timeout(const Duration(seconds: 10));
         rawBytes = resp.bodyBytes;

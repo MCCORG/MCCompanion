@@ -272,7 +272,7 @@ class _WikiScreenState extends State<WikiScreen> {
         },
       );
       final resp = await http
-          .get(uri, headers: {'User-Agent': 'NetherLinkApp/1.0'})
+          .get(uri, headers: {'User-Agent': 'MCCompanionApp/1.0'})
           .timeout(const Duration(seconds: 8));
       if (!mounted) return;
 
@@ -364,7 +364,7 @@ class _WikiScreenState extends State<WikiScreen> {
           },
         );
         final resp = await http
-            .get(uri, headers: {'User-Agent': 'NetherLinkApp/1.0'})
+            .get(uri, headers: {'User-Agent': 'MCCompanionApp/1.0'})
             .timeout(const Duration(seconds: 10));
         final pages =
             (jsonDecode(resp.body)['query']?['pages']
@@ -463,7 +463,7 @@ class _WikiScreenState extends State<WikiScreen> {
         final uri = Uri.parse('https://minecraft.wiki/api.php')
             .replace(queryParameters: params);
         final response = await http
-            .get(uri, headers: {'User-Agent': 'NetherLinkApp/1.0'})
+            .get(uri, headers: {'User-Agent': 'MCCompanionApp/1.0'})
             .timeout(const Duration(seconds: 10));
         if (!mounted) return;
 
@@ -523,7 +523,7 @@ class _WikiScreenState extends State<WikiScreen> {
         },
       );
       final resp = await http
-          .get(uri, headers: {'User-Agent': 'NetherLinkApp/1.0'})
+          .get(uri, headers: {'User-Agent': 'MCCompanionApp/1.0'})
           .timeout(const Duration(seconds: 10));
       if (!mounted) return;
 
@@ -574,7 +574,7 @@ class _WikiScreenState extends State<WikiScreen> {
           },
         );
         final resp = await http
-            .get(uri, headers: {'User-Agent': 'NetherLinkApp/1.0'})
+            .get(uri, headers: {'User-Agent': 'MCCompanionApp/1.0'})
             .timeout(const Duration(seconds: 8));
         if (!mounted) return;
 
@@ -634,7 +634,7 @@ class _WikiScreenState extends State<WikiScreen> {
         },
       );
       final resp = await http
-          .get(uri, headers: {'User-Agent': 'NetherLinkApp/1.0'})
+          .get(uri, headers: {'User-Agent': 'MCCompanionApp/1.0'})
           .timeout(const Duration(seconds: 10));
       if (!mounted) return;
 
@@ -1290,7 +1290,7 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
                   'origin': '*',
                 },
               ),
-              headers: {'User-Agent': 'NetherLinkApp/1.0'},
+              headers: {'User-Agent': 'MCCompanionApp/1.0'},
             )
             .timeout(const Duration(seconds: 10)),
         http
@@ -1304,7 +1304,7 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
                   'origin': '*',
                 },
               ),
-              headers: {'User-Agent': 'NetherLinkApp/1.0'},
+              headers: {'User-Agent': 'MCCompanionApp/1.0'},
             )
             .timeout(const Duration(seconds: 10)),
       ]);

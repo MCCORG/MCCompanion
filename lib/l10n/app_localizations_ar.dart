@@ -9,7 +9,7 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get appName => 'NetherLink';
+  String get appName => 'MCCompanion';
 
   @override
   String get console => 'وحدة التحكم';
@@ -46,7 +46,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String helpText(Object appCreator) {
-    return 'تم الإنشاء بواسطة $appCreator.\r\n\r\nطريقة الاستخدام:\r\n1. أدخل عنوان خادم Minecraft والمنفذ الخاص بك (الافتراضي: 19132)\r\n   — أو اختر خادمًا محفوظًا مسبقًا من القائمة المنسدلة\r\n2. (اختياري) اختر خادم ترحيل (EU أو US) الأقرب إلى موقعك\r\n3. اضغط على \\\"بدء البث\\\" للبدء\r\n4. على جهازك/وحدة التحكم: Minecraft > لعب > الأصدقاء\r\n5. يجب أن ترى خادم شبكة محلية باسم \\\"NetherLink\\\"\r\n6. اضغط عليه للانضمام إلى خادمك الخارجي عبر NetherLink\r\n\r\nNintendo Switch (وضع DNS):\r\n1. فعّل \\\"Nintendo Switch\\\" في لوحة الاتصال\r\n2. اختر خادم ترحيل (EU أو US)\r\n3. اضغط على \\\"إرسال إعداد DNS\\\" — سيؤدي ذلك إلى إرسال إعداداتك إلى خادم الترحيل\r\n   (لن يقوم ببث خادم شبكة محلية)\r\n4. على جهاز Switch الخاص بك، طبّق إعدادات DNS الخاصة بـ NetherLink وانضم\r\n   باستخدام إدخال الخادم الذي تستخدمه مع NetherLink\r\n\r\nملاحظات:\r\n- لكي يعمل بث الشبكة المحلية، يجب أن يكون NetherLink ووحدة التحكم على نفس الشبكة المحلية.\r\n- نصيحة: اختر خادم الترحيل الأقرب إليك للحصول على أفضل أداء.';
+    return 'تم الإنشاء بواسطة $appCreator.\r\n\r\nطريقة الاستخدام:\r\n1. أدخل عنوان خادم Minecraft والمنفذ الخاص بك (الافتراضي: 19132)\r\n   — أو اختر خادمًا محفوظًا مسبقًا من القائمة المنسدلة\r\n2. (اختياري) اختر خادم ترحيل (EU أو US) الأقرب إلى موقعك\r\n3. اضغط على \\\"بدء البث\\\" للبدء\r\n4. على جهازك/وحدة التحكم: Minecraft > لعب > الأصدقاء\r\n5. يجب أن ترى خادم شبكة محلية باسم \\\"MCCompanion\\\"\r\n6. اضغط عليه للانضمام إلى خادمك الخارجي عبر MCCompanion\r\n\r\nNintendo Switch (وضع DNS):\r\n1. فعّل \\\"Nintendo Switch\\\" في لوحة الاتصال\r\n2. اختر خادم ترحيل (EU أو US)\r\n3. اضغط على \\\"إرسال إعداد DNS\\\" — سيؤدي ذلك إلى إرسال إعداداتك إلى خادم الترحيل\r\n   (لن يقوم ببث خادم شبكة محلية)\r\n4. على جهاز Switch الخاص بك، طبّق إعدادات DNS الخاصة بـ MCCompanion وانضم\r\n   باستخدام إدخال الخادم الذي تستخدمه مع MCCompanion\r\n\r\nملاحظات:\r\n- لكي يعمل بث الشبكة المحلية، يجب أن يكون MCCompanion ووحدة التحكم على نفس الشبكة المحلية.\r\n- نصيحة: اختر خادم الترحيل الأقرب إليك للحصول على أفضل أداء.';
   }
 
   @override
@@ -74,13 +74,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get howToJavaTitle => 'وضع Java';
 
   @override
-  String get howToJavaSubtitle => 'اتصل بخوادم Java Edition عبر NetherLink';
+  String get howToJavaSubtitle => 'اتصل بخوادم Java Edition عبر MCCompanion';
 
   @override
   String get aternosSubtext => 'أنشئ خادم ماينكرافت مجاني خاص بك';
 
   @override
-  String get howToJavaBody => 'وضع Java — خطوات سريعة:\n1. في التطبيق، اختر وضع Java.\n2. أدخل عنوان خادم Java Edition والمنفذ (الافتراضي: 25565).\n3. اضغط على \"ابدأ وضع Java\" — سيقوم NetherLink بربط الاتصال.\n4. افتح Minecraft Bedrock وانتقل إلى علامة تبويب الأصدقاء.\n5. اختر خادم LAN المسمى \"NetherLink\" للانضمام إلى خادم Java.\n\n⚠️ تحذيرات مهمة:\n- يلزم وجود حساب Java Edition صالح (Microsoft).\n- تستخدم بعض الخوادم أنظمة مكافحة الغش وقد تكتشف حسابك وتحظره.\n- بعض الخوادم تحظر عملاء Bedrock صراحةً — تحقق دائمًا من قواعد الخادم.\n- NetherLink غير مسؤول عن أي حظر أو تعليق أو أي مشكلات أخرى متعلقة بالحساب قد تنتج عن استخدام هذه الميزة.\n- استخدمها على مسؤوليتك الخاصة.';
+  String get howToJavaBody => 'وضع Java — خطوات سريعة:\n1. في التطبيق، اختر وضع Java.\n2. أدخل عنوان خادم Java Edition والمنفذ (الافتراضي: 25565).\n3. اضغط على \"ابدأ وضع Java\" — سيقوم MCCompanion بربط الاتصال.\n4. افتح Minecraft Bedrock وانتقل إلى علامة تبويب الأصدقاء.\n5. اختر خادم LAN المسمى \"MCCompanion\" للانضمام إلى خادم Java.\n\n⚠️ تحذيرات مهمة:\n- يلزم وجود حساب Java Edition صالح (Microsoft).\n- تستخدم بعض الخوادم أنظمة مكافحة الغش وقد تكتشف حسابك وتحظره.\n- بعض الخوادم تحظر عملاء Bedrock صراحةً — تحقق دائمًا من قواعد الخادم.\n- MCCompanion غير مسؤول عن أي حظر أو تعليق أو أي مشكلات أخرى متعلقة بالحساب قد تنتج عن استخدام هذه الميزة.\n- استخدمها على مسؤوليتك الخاصة.';
 
   @override
   String get language => 'العربية';
@@ -185,7 +185,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get debugDisabled => 'تم تعطيل سجلات التصحيح';
 
   @override
-  String get howToUseTitle => 'كيفية استخدام NetherLink';
+  String get howToUseTitle => 'كيفية استخدام MCCompanion';
 
   @override
   String get iUnderstand => 'أنا أفهم';
@@ -251,10 +251,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get noWifi => 'لست متصلاً بشبكة Wi‑Fi';
 
   @override
-  String get vpnActive => 'اكتشفنا أن الـ VPN لديك مفعّل.\n\nيرجى تعطيل الـ VPN قبل استخدام NetherLink، وإلا فقد لا يصل بث LAN إلى جهازك.';
+  String get vpnActive => 'اكتشفنا أن الـ VPN لديك مفعّل.\n\nيرجى تعطيل الـ VPN قبل استخدام MCCompanion، وإلا فقد لا يصل بث LAN إلى جهازك.';
 
   @override
-  String get mobileActive => 'تم الاكتشاف: بيانات الجوال\n\nيجب أن يكون NetherLink على نفس الشبكة مثل جهازك. يرجى الاتصال بشبكة Wi‑Fi المنزلية أو نقطة الاتصال قبل المتابعة.';
+  String get mobileActive => 'تم الاكتشاف: بيانات الجوال\n\nيجب أن يكون MCCompanion على نفس الشبكة مثل جهازك. يرجى الاتصال بشبكة Wi‑Fi المنزلية أو نقطة الاتصال قبل المتابعة.';
 
   @override
   String get continueAnyway => 'المتابعة على أي حال';
@@ -263,13 +263,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get sameWifi => 'نفس شبكة Wi‑Fi';
 
   @override
-  String get needSameWifi => 'يجب أن يكون الجهاز الذي يشغّل NetherLink على نفس شبكة Wi‑Fi الخاصة بالجهاز الذي تلعب عليه Minecraft.';
+  String get needSameWifi => 'يجب أن يكون الجهاز الذي يشغّل MCCompanion على نفس شبكة Wi‑Fi الخاصة بالجهاز الذي تلعب عليه Minecraft.';
 
   @override
   String get subscription => 'اشتراك عبر الإنترنت مطلوب';
 
   @override
-  String get needSubscription => 'تحتاج كل منصة إلى اشتراكها النشط الخاص بها عبر الإنترنت (Xbox Live أو PS Plus أو NSO). بدون ذلك، لن يظهر NetherLink.';
+  String get needSubscription => 'تحتاج كل منصة إلى اشتراكها النشط الخاص بها عبر الإنترنت (Xbox Live أو PS Plus أو NSO). بدون ذلك، لن يظهر MCCompanion.';
 
   @override
   String get updateAvailable => 'يتوفر تحديث';
@@ -320,7 +320,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get friendModeTitle => 'وضع الأصدقاء';
 
   @override
-  String get friendModeText => 'أضف روبوتات أصدقاء NetherLink كأصدقاء. ابدأ وضع الأصدقاء وابدأ اللعب';
+  String get friendModeText => 'أضف روبوتات أصدقاء MCCompanion كأصدقاء. ابدأ وضع الأصدقاء وابدأ اللعب';
 
   @override
   String get selectedRelayCheck => 'المحدد';
@@ -331,7 +331,7 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get relayUnableConnect => 'تعذر الاتصال بأي خادم Relay تابع لـ NetherLink. حاول مرة أخرى لاحقًا أو تحقق من اتصالك بالإنترنت.';
+  String get relayUnableConnect => 'تعذر الاتصال بأي خادم Relay تابع لـ MCCompanion. حاول مرة أخرى لاحقًا أو تحقق من اتصالك بالإنترنت.';
 
   @override
   String get howToXboxTitle => 'Xbox / PS4-5 (شبكة محلية / وكيل)';
@@ -340,7 +340,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get howToXboxSubtitle => 'العب عبر بث الشبكة المحلية أو الوكيل';
 
   @override
-  String get howToXboxBody => 'كيفية الاتصال (Xbox / PS4 / PS5):\r\n1. تأكد من أن الجهاز الذي يشغّل NetherLink ووحدة التحكم الخاصة بك على نفس الشبكة المحلية.\r\n2. في التطبيق، أدخل عنوان خادم Minecraft والمنفذ ثم اضغط على \\\"بدء البث\\\".\r\n3. على وحدة التحكم افتح Minecraft → لعب → وابحث عن عوالم الشبكة المحلية أو تبويب الأصدقاء ثم حدّث القائمة.\r\n4. اختر خادم الشبكة المحلية المسمى \\\"NetherLink\\\" للانضمام.\r\nملاحظات:\r\n- إذا لم يظهر الخادم، فتأكد من أن الجهازين على نفس الشبكة الفرعية وأن التطبيق ما يزال يبث.\r\n- قد تمنع بعض طرازات وحدات التحكم أو أجهزة التوجيه اكتشاف الشبكة المحلية؛ جرّب تغيير إعدادات التطبيق أو جهاز التوجيه عند الحاجة.';
+  String get howToXboxBody => 'كيفية الاتصال (Xbox / PS4 / PS5):\r\n1. تأكد من أن الجهاز الذي يشغّل MCCompanion ووحدة التحكم الخاصة بك على نفس الشبكة المحلية.\r\n2. في التطبيق، أدخل عنوان خادم Minecraft والمنفذ ثم اضغط على \\\"بدء البث\\\".\r\n3. على وحدة التحكم افتح Minecraft → لعب → وابحث عن عوالم الشبكة المحلية أو تبويب الأصدقاء ثم حدّث القائمة.\r\n4. اختر خادم الشبكة المحلية المسمى \\\"MCCompanion\\\" للانضمام.\r\nملاحظات:\r\n- إذا لم يظهر الخادم، فتأكد من أن الجهازين على نفس الشبكة الفرعية وأن التطبيق ما يزال يبث.\r\n- قد تمنع بعض طرازات وحدات التحكم أو أجهزة التوجيه اكتشاف الشبكة المحلية؛ جرّب تغيير إعدادات التطبيق أو جهاز التوجيه عند الحاجة.';
 
   @override
   String get howToNintendoTitle => 'Nintendo Switch (وضع DNS)';
@@ -358,25 +358,25 @@ class AppLocalizationsAr extends AppLocalizations {
   String get howToFriendsSubtitle => 'ادعُ الأصدقاء وانضم عبر الشبكة المحلية';
 
   @override
-  String get howToFriendsBody => 'وضع الأصدقاء — خطوات سريعة:\r\n1. أضف حساب صديق NetherLink (صديق الترحيل) على وحدة التحكم أو المنصة إذا لزم الأمر.\r\n2. في التطبيق، فعّل وضع الأصدقاء وأرسل إعداد خادم الترحيل (إذا كان ذلك مطلوبًا).\r\n3. على وحدة التحكم، افتح Minecraft → الأصدقاء وابحث عن عوالم الشبكة المحلية — يجب أن يظهر خادمك هناك كعالم شبكة محلية.\r\n4. اختره للانضمام إلى خادمك مع الأصدقاء.\r\nملاحظات:\r\n- تأكد من أن لديك أنت وأصدقاؤك نفس إعدادات NAT/الإعدادات التي تسمح بظهور الأصدقاء.\r\n- يعتمد وضع الأصدقاء على ميزات الأصدقاء الخاصة بالمنصة وقد يتطلب قبول طلبات الصداقة.';
+  String get howToFriendsBody => 'وضع الأصدقاء — خطوات سريعة:\r\n1. أضف حساب صديق MCCompanion (صديق الترحيل) على وحدة التحكم أو المنصة إذا لزم الأمر.\r\n2. في التطبيق، فعّل وضع الأصدقاء وأرسل إعداد خادم الترحيل (إذا كان ذلك مطلوبًا).\r\n3. على وحدة التحكم، افتح Minecraft → الأصدقاء وابحث عن عوالم الشبكة المحلية — يجب أن يظهر خادمك هناك كعالم شبكة محلية.\r\n4. اختره للانضمام إلى خادمك مع الأصدقاء.\r\nملاحظات:\r\n- تأكد من أن لديك أنت وأصدقاؤك نفس إعدادات NAT/الإعدادات التي تسمح بظهور الأصدقاء.\r\n- يعتمد وضع الأصدقاء على ميزات الأصدقاء الخاصة بالمنصة وقد يتطلب قبول طلبات الصداقة.';
 
   @override
-  String get helpNetherlinkTitle => 'NetherLink لا يظهر';
+  String get helpNetherlinkTitle => 'MCCompanion لا يظهر';
 
   @override
   String get helpNetherlinkSubtitle => 'استكشاف مشكلات اكتشاف الشبكة المحلية وإصلاحها';
 
   @override
-  String get helpNetherlinkBody => 'إذا لم يظهر الخادم على وحدة التحكم الخاصة بك، فجرّب هذه الخطوات:\r\n\r\n✅ فحوصات أساسية:\r\n1. نفس شبكة WiFi - يجب أن يكون هاتفك/جهازك اللوحي ووحدة التحكم على نفس شبكة WiFi\r\n2. عنوان الخادم الصحيح - تحقق مرة أخرى من IP والمنفذ (الافتراضي: 19132)\r\n3. البث نشط - تأكد من أن NetherLink يعرض حالة \\\"جاري البث\\\"\r\n\r\n🔄 إصلاحات سريعة:\r\n• أعد تشغيل التطبيق: أوقف البث، أغلق NetherLink بالكامل، أعد فتحه ثم حاول مرة أخرى\r\n• أعد تشغيل وحدة التحكم: أحيانًا تحتاج وحدة التحكم إلى تحديث لاكتشاف ألعاب الشبكة المحلية\r\n• تحقق من تبويب الأصدقاء/الشبكة المحلية: يظهر الخادم ضمن \\\"الأصدقاء\\\" أو \\\"ألعاب الشبكة المحلية\\\" وليس في قائمة الخوادم\r\n• انتظر من 10 إلى 15 ثانية بعد بدء البث\r\n• عطّل VPN: يمكن أن تمنع شبكات VPN البث المحلي\r\n\r\n⚠️ مشكلات شائعة:\r\n\\\"No route found for user\\\" → تأكد من أن كلا الجهازين على نفس شبكة Wi‑Fi (وتجنب شبكات الضيوف)\r\n\\\"Unable to connect to NetherLink relay server\\\" → تحقق من الإنترنت / حالة خادم الترحيل\r\n\r\n📱 ما زلت تواجه مشاكل؟ فعّل وضع التصحيح في NetherLink وافحص السجلات، أو جرّب خادمًا مختلفًا.';
+  String get helpNetherlinkBody => 'إذا لم يظهر الخادم على وحدة التحكم الخاصة بك، فجرّب هذه الخطوات:\r\n\r\n✅ فحوصات أساسية:\r\n1. نفس شبكة WiFi - يجب أن يكون هاتفك/جهازك اللوحي ووحدة التحكم على نفس شبكة WiFi\r\n2. عنوان الخادم الصحيح - تحقق مرة أخرى من IP والمنفذ (الافتراضي: 19132)\r\n3. البث نشط - تأكد من أن MCCompanion يعرض حالة \\\"جاري البث\\\"\r\n\r\n🔄 إصلاحات سريعة:\r\n• أعد تشغيل التطبيق: أوقف البث، أغلق MCCompanion بالكامل، أعد فتحه ثم حاول مرة أخرى\r\n• أعد تشغيل وحدة التحكم: أحيانًا تحتاج وحدة التحكم إلى تحديث لاكتشاف ألعاب الشبكة المحلية\r\n• تحقق من تبويب الأصدقاء/الشبكة المحلية: يظهر الخادم ضمن \\\"الأصدقاء\\\" أو \\\"ألعاب الشبكة المحلية\\\" وليس في قائمة الخوادم\r\n• انتظر من 10 إلى 15 ثانية بعد بدء البث\r\n• عطّل VPN: يمكن أن تمنع شبكات VPN البث المحلي\r\n\r\n⚠️ مشكلات شائعة:\r\n\\\"No route found for user\\\" → تأكد من أن كلا الجهازين على نفس شبكة Wi‑Fi (وتجنب شبكات الضيوف)\r\n\\\"Unable to connect to MCCompanion relay server\\\" → تحقق من الإنترنت / حالة خادم الترحيل\r\n\r\n📱 ما زلت تواجه مشاكل؟ فعّل وضع التصحيح في MCCompanion وافحص السجلات، أو جرّب خادمًا مختلفًا.';
 
   @override
   String get helpMultiplayerFailedTitle => 'فشل اتصال اللعب الجماعي';
 
   @override
-  String get helpMultiplayerFailedSubtitle => 'شرح لماذا لا يعد هذا خطأ في NetherLink';
+  String get helpMultiplayerFailedSubtitle => 'شرح لماذا لا يعد هذا خطأ في MCCompanion';
 
   @override
-  String get helpMultiplayerFailedBody => '⚠️ هذه ليست مشكلة في NetherLink!\r\n\r\nلقد قام NetherLink بإعادتك بنجاح إلى الخادم المطلوب. تشير رسالة \\\"فشل اتصال اللعب الجماعي\\\" إلى أن الخادم الهدف غير متاح حاليًا. الأسباب المحتملة:\r\n\r\n• خادم Minecraft الهدف غير متصل أو مثقل بالتحميل\r\n• يتطلب الخادم إصدار عميل محدثًا أو إصدارًا معينًا\r\n• توجد مشكلات في الشبكة بين Relay والخادم الهدف\r\n\r\nحاول الاتصال بخادم مختلف أو تواصل مع دعم الخادم. إذا استمرت المشكلة على عدة خوادم، فعّل وضع التصحيح في NetherLink وافحص السجلات.';
+  String get helpMultiplayerFailedBody => '⚠️ هذه ليست مشكلة في MCCompanion!\r\n\r\nلقد قام MCCompanion بإعادتك بنجاح إلى الخادم المطلوب. تشير رسالة \\\"فشل اتصال اللعب الجماعي\\\" إلى أن الخادم الهدف غير متاح حاليًا. الأسباب المحتملة:\r\n\r\n• خادم Minecraft الهدف غير متصل أو مثقل بالتحميل\r\n• يتطلب الخادم إصدار عميل محدثًا أو إصدارًا معينًا\r\n• توجد مشكلات في الشبكة بين Relay والخادم الهدف\r\n\r\nحاول الاتصال بخادم مختلف أو تواصل مع دعم الخادم. إذا استمرت المشكلة على عدة خوادم، فعّل وضع التصحيح في MCCompanion وافحص السجلات.';
 
   @override
   String get helpNintendoDnsTitle => 'DNS الخاص بـ Nintendo لا يعمل';
