@@ -57,6 +57,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
   static const int _maxUndo = 20;
 
   bool _activeStroke = false;
+  bool _showUVTemplate = true;
 
   @override
   void initState() {
@@ -586,15 +587,6 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
               onTap: () => setState(() => _rotateMode = !_rotateMode),
             ),
           ],
-          if (_uvMode) ...[
-            const SizedBox(width: 6),
-            _ToolButton(
-              icon: FontAwesomeIcons.hand,
-              label: 'Pan',
-              active: _panModeUV,
-              onTap: () => setState(() => _panModeUV = !_panModeUV),
-            ),
-          ],
           const Spacer(),
           GestureDetector(
             onTap: () => setState(() {
@@ -704,11 +696,34 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
                       key: _uvCanvasKey,
                       width: _canvasPx,
                       height: _canvasPx,
-                      child: CustomPaint(painter: _PixelGridPainter(_pixels)),
+                      child: CustomPaint(
+                        painter: _PixelGridPainter(_pixels),
+                        foregroundPainter: _showUVTemplate ? const _UVTemplatePainter() : null,
+                      ),
                     ),
                   ),
                 ),
               ),
+            ),
+          ),
+          Positioned(
+            left: 12,
+            bottom: 12,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _ZoomBtn(
+                  icon: FontAwesomeIcons.hand,
+                  active: _panModeUV,
+                  onTap: () => setState(() => _panModeUV = !_panModeUV),
+                ),
+                const SizedBox(height: 6),
+                _ZoomBtn(
+                  icon: FontAwesomeIcons.tableCells,
+                  active: _showUVTemplate,
+                  onTap: () => setState(() => _showUVTemplate = !_showUVTemplate),
+                ),
+              ],
             ),
           ),
           Positioned(
@@ -785,7 +800,8 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
 class _ZoomBtn extends StatelessWidget {
   final FaIconData icon;
   final VoidCallback onTap;
-  const _ZoomBtn({required this.icon, required this.onTap});
+  final bool active;
+  const _ZoomBtn({required this.icon, required this.onTap, this.active = false});
 
   @override
   Widget build(BuildContext context) {
@@ -795,17 +811,43 @@ class _ZoomBtn extends StatelessWidget {
         width: 34,
         height: 34,
         decoration: BoxDecoration(
-          color: AppTheme.surface.withOpacity(0.92),
+          color: active
+              ? AppTheme.accent.withOpacity(0.18)
+              : AppTheme.surface.withOpacity(0.92),
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: AppTheme.borderGray),
+          border: Border.all(
+            color: active ? AppTheme.accent : AppTheme.borderGray,
+            width: active ? 1.5 : 1.0,
+          ),
         ),
         child: Center(
-          child: FaIcon(icon, size: 13, color: AppTheme.textSecondary),
+          child: FaIcon(
+            icon,
+            size: 13,
+            color: active ? AppTheme.accent : AppTheme.textSecondary,
+          ),
         ),
       ),
     );
   }
 }
+
+typedef _UVRegion = ({String label, int x1, int y1, int x2, int y2, Color color});
+
+const _uvRegions = <_UVRegion>[
+  (label: 'Head',    x1:  0, y1:  0, x2: 32, y2: 16, color: Color(0xFF4FC3F7)),
+  (label: 'Hat',     x1: 32, y1:  0, x2: 64, y2: 16, color: Color(0xFF0288D1)),
+  (label: 'R.Leg',   x1:  0, y1: 16, x2: 16, y2: 32, color: Color(0xFF81C784)),
+  (label: 'Body',    x1: 16, y1: 16, x2: 40, y2: 32, color: Color(0xFFFFCC80)),
+  (label: 'R.Arm',   x1: 40, y1: 16, x2: 64, y2: 32, color: Color(0xFFEF9A9A)),
+  (label: 'R.Leg+',  x1:  0, y1: 32, x2: 16, y2: 48, color: Color(0xFF66BB6A)),
+  (label: 'Body+',   x1: 16, y1: 32, x2: 40, y2: 48, color: Color(0xFFFFA726)),
+  (label: 'R.Arm+',  x1: 40, y1: 32, x2: 64, y2: 48, color: Color(0xFFEF5350)),
+  (label: 'L.Leg+',  x1:  0, y1: 48, x2: 16, y2: 64, color: Color(0xFF43A047)),
+  (label: 'L.Leg',   x1: 16, y1: 48, x2: 32, y2: 64, color: Color(0xFFA5D6A7)),
+  (label: 'L.Arm',   x1: 32, y1: 48, x2: 48, y2: 64, color: Color(0xFFE57373)),
+  (label: 'L.Arm+',  x1: 48, y1: 48, x2: 64, y2: 64, color: Color(0xFFC62828)),
+];
 
 class _PixelGridPainter extends CustomPainter {
   final Uint8List pixels;
@@ -833,12 +875,7 @@ class _PixelGridPainter extends CustomPainter {
         final i = (y * _sz + x) * 4;
         final a = pixels[i + 3];
         if (a == 0) continue;
-        paint.color = Color.fromARGB(
-          a,
-          pixels[i],
-          pixels[i + 1],
-          pixels[i + 2],
-        );
+        paint.color = Color.fromARGB(a, pixels[i], pixels[i + 1], pixels[i + 2]);
         canvas.drawRect(Rect.fromLTWH(x * px, y * px, px, px), paint);
       }
     }
@@ -866,6 +903,56 @@ class _PixelGridPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_PixelGridPainter old) => true;
+}
+
+class _UVTemplatePainter extends CustomPainter {
+  const _UVTemplatePainter();
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final px = size.width / 64;
+
+    for (final r in _uvRegions) {
+      final regionW = (r.x2 - r.x1) * px;
+      final regionH = (r.y2 - r.y1) * px;
+      final rect = Rect.fromLTWH(r.x1 * px, r.y1 * px, regionW, regionH);
+
+      canvas.drawRect(rect, Paint()..color = r.color.withOpacity(0.18));
+      canvas.drawRect(
+        rect,
+        Paint()
+          ..color = r.color.withOpacity(0.65)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1.2,
+      );
+
+      if (regionW < 20 || regionH < 14) continue;
+
+      final tp = TextPainter(
+        text: TextSpan(
+          text: r.label,
+          style: TextStyle(
+            color: r.color,
+            fontSize: (regionW * 0.13).clamp(7.0, 11.0),
+            fontWeight: FontWeight.w700,
+            shadows: const [Shadow(color: Colors.black, blurRadius: 3)],
+          ),
+        ),
+        textDirection: TextDirection.ltr,
+      )..layout(maxWidth: regionW - 4);
+
+      tp.paint(
+        canvas,
+        Offset(
+          rect.left + (regionW - tp.width) / 2,
+          rect.top + (regionH - tp.height) / 2,
+        ),
+      );
+    }
+  }
+
+  @override
+  bool shouldRepaint(_UVTemplatePainter old) => false;
 }
 
 class _Skin3DEditorPainter extends CustomPainter {
