@@ -49,23 +49,45 @@ flutter:
     - assets/icons/aternos.png
     - assets/images/splash.png
     - assets/images/logo.png
-    - assets/images/bg.png
     - assets/images/feature.png
     - assets/images/wiki.png
     - assets/images/skin.png
     - assets/images/tunnel.png
-    - assets/images/wiki.png
     - assets/images/skin.png
     - assets/images/tunnel.png
     - assets/images/players.png
     - assets/data/wiki_data.json
-    - assets/images/mobs.png
-    - assets/images/blocks.png
-    - assets/images/items.png
-    - assets/images/biomes.png
-    - assets/images/enchantments.png
-    - assets/images/structures.png
-    - assets/images/potions.png
+    - assets/images/wiki/mobs.png
+    - assets/images/wiki/blocks.png
+    - assets/images/wiki/items.png
+    - assets/images/wiki/biomes.png
+    - assets/images/wiki/enchantments.png
+    - assets/images/wiki/structures.png
+    - assets/images/wiki/potions.png
+    - assets/images/wiki/chicken.png
+    - assets/images/wiki/spider.png
+    - assets/images/wiki/creeper.png
+    - assets/images/wiki/ender_dragon.png
+    - assets/images/wiki/iron_golem.png
+    - assets/images/wiki/obsidian.png
+    - assets/images/wiki/dirt.png
+    - assets/images/wiki/gold.png
+    - assets/images/wiki/log.png
+    - assets/images/wiki/stone.png
+    - assets/images/wiki/redstone.png
+    - assets/images/wiki/bamboo.png
+    - assets/images/wiki/raw_gold.png
+    - assets/images/wiki/tools.gif
+    - assets/images/wiki/sword.gif
+    - assets/images/wiki/bow.png
+    - assets/images/wiki/armor.png
+    - assets/images/wiki/apple.png
+    - assets/images/wiki/brew.png
+    - assets/images/wiki/overworld.png
+    - assets/images/wiki/nether.png
+    - assets/images/wiki/end.png
+    - assets/images/wiki/fishing.png
+    - assets/images/wiki/effect.png
 
 msix_config:
   display_name: MCCompanion

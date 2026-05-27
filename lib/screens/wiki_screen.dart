@@ -13,12 +13,14 @@ class _Sub {
   final String category;
   final List<String>? hardcoded;
   final String? jsonKey;
+  final String? imagePath;
   const _Sub({
     required this.label,
     required this.emoji,
     required this.category,
     this.hardcoded,
     this.jsonKey,
+    this.imagePath,
   });
 }
 
@@ -42,41 +44,42 @@ const _sections = [
     label: 'Mobs',
     emoji: '🧟',
     color: Color(0xFF4CAF50),
-    imagePath: 'assets/images/mobs.png',
+    imagePath: 'assets/images/wiki/mobs.png',
     subs: [
-      _Sub(label: 'Passive',  emoji: '🐄', category: 'Category:Passive mobs',  jsonKey: 'mobs_passive'),
-      _Sub(label: 'Neutral',  emoji: '🐺', category: 'Category:Neutral mobs',  jsonKey: 'mobs_neutral'),
-      _Sub(label: 'Hostile',  emoji: '💀', category: 'Category:Hostile mobs',  jsonKey: 'mobs_hostile'),
-      _Sub(label: 'Boss',     emoji: '👑', category: 'Category:Boss mobs',     jsonKey: 'mobs_boss'),
-      _Sub(label: 'Utility',  emoji: '🤖', category: 'Category:Utility mobs',  jsonKey: 'mobs_utility'),
+      _Sub(label: 'Passive',  emoji: '🐄', category: 'Category:Passive mobs',  jsonKey: 'mobs_passive',  imagePath: 'assets/images/wiki/chicken.png'),
+      _Sub(label: 'Neutral',  emoji: '🐺', category: 'Category:Neutral mobs',  jsonKey: 'mobs_neutral',  imagePath: 'assets/images/wiki/spider.png'),
+      _Sub(label: 'Hostile',  emoji: '💀', category: 'Category:Hostile mobs',  jsonKey: 'mobs_hostile',  imagePath: 'assets/images/wiki/creeper.png'),
+      _Sub(label: 'Boss',     emoji: '👑', category: 'Category:Boss mobs',     jsonKey: 'mobs_boss',     imagePath: 'assets/images/wiki/ender_dragon.png'),
+      _Sub(label: 'Utility',  emoji: '🤖', category: 'Category:Utility mobs',  jsonKey: 'mobs_utility',  imagePath: 'assets/images/wiki/iron_golem.png'),
     ],
   ),
   _Section(
     label: 'Blocks',
     emoji: '🧱',
     color: Color(0xFF795548),
-    imagePath: 'assets/images/blocks.png',
+    imagePath: 'assets/images/wiki/blocks.png',
     subs: [
-      _Sub(label: 'Natural',    emoji: '🌿', category: 'Category:Natural blocks',       jsonKey: 'blocks_natural'),
-      _Sub(label: 'Ores',       emoji: '💎', category: 'Category:Ores',                 jsonKey: 'blocks_ores'),
-      _Sub(label: 'Wood',       emoji: '🌲', category: 'Category:Wood',                 jsonKey: 'blocks_wood'),
-      _Sub(label: 'Stone',      emoji: '🪨', category: 'Category:Stone',                jsonKey: 'blocks_stone'),
-      _Sub(label: 'Redstone',   emoji: '🔴', category: 'Category:Redstone components',  jsonKey: 'blocks_redstone'),
-      _Sub(label: 'Plants',     emoji: '🌱', category: 'Category:Plants',               jsonKey: 'blocks_plants'),
-      _Sub(label: 'Decoration', emoji: '🪟', category: 'Category:Decoration blocks',    jsonKey: 'blocks_decoration'),
+      _Sub(label: 'Natural',    emoji: '🌿', category: 'Category:Natural blocks',       jsonKey: 'blocks_natural',    imagePath: 'assets/images/wiki/dirt.png'),
+      _Sub(label: 'Ores',       emoji: '💎', category: 'Category:Ores',                 jsonKey: 'blocks_ores',       imagePath: 'assets/images/wiki/raw_gold.png'),
+      _Sub(label: 'Wood',       emoji: '🌲', category: 'Category:Wood',                 jsonKey: 'blocks_wood',       imagePath: 'assets/images/wiki/log.png'),
+      _Sub(label: 'Stone',      emoji: '🪨', category: 'Category:Stone',                jsonKey: 'blocks_stone',      imagePath: 'assets/images/wiki/stone.png'),
+      _Sub(label: 'Redstone',   emoji: '🔴', category: 'Category:Redstone components',  jsonKey: 'blocks_redstone',   imagePath: 'assets/images/wiki/redstone.png'),
+      _Sub(label: 'Plants',     emoji: '🌱', category: 'Category:Plants',               jsonKey: 'blocks_plants',     imagePath: 'assets/images/wiki/bamboo.png'),
+      _Sub(label: 'Decoration', emoji: '🪟', category: 'Category:Decoration blocks',    jsonKey: 'blocks_decoration', imagePath: 'assets/images/wiki/obsidian.png'),
     ],
   ),
   _Section(
     label: 'Items',
     emoji: '⚔️',
     color: Color(0xFF2196F3),
-    imagePath: 'assets/images/items.png',
+    imagePath: 'assets/images/wiki/items.png',
     subs: [
-      _Sub(label: 'Tools',     emoji: '🪓', category: 'Category:Tools',          jsonKey: 'items_tools'),
+      _Sub(label: 'Tools',     emoji: '🪓', category: 'Category:Tools',          jsonKey: 'items_tools',     imagePath: 'assets/images/wiki/tools.gif'),
       _Sub(
         label: 'Swords',
         emoji: '⚔️',
         category: 'Category:Swords',
+        imagePath: 'assets/images/wiki/sword.gif',
         hardcoded: [
           'Wooden Sword', 'Stone Sword', 'Iron Sword',
           'Golden Sword', 'Diamond Sword', 'Netherite Sword',
@@ -86,57 +89,58 @@ const _sections = [
         label: 'Ranged',
         emoji: '🏹',
         category: 'Category:Ranged weapons',
+        imagePath: 'assets/images/wiki/bow.png',
         hardcoded: ['Bow', 'Crossbow', 'Trident', 'Wind Charge'],
       ),
-      _Sub(label: 'Armor',     emoji: '🛡️', category: 'Category:Armor',          jsonKey: 'items_armor'),
-      _Sub(label: 'Food',      emoji: '🍎', category: 'Category:Food',            jsonKey: 'items_food'),
-      _Sub(label: 'Brewing',   emoji: '🧪', category: 'Category:Brewing',         jsonKey: 'items_brewing'),
-      _Sub(label: 'Materials', emoji: '🔩', category: 'Category:Materials',       jsonKey: 'items_materials'),
+      _Sub(label: 'Armor',     emoji: '🛡️', category: 'Category:Armor',          jsonKey: 'items_armor',     imagePath: 'assets/images/wiki/armor.png'),
+      _Sub(label: 'Food',      emoji: '🍎', category: 'Category:Food',            jsonKey: 'items_food',      imagePath: 'assets/images/wiki/apple.png'),
+      _Sub(label: 'Brewing',   emoji: '🧪', category: 'Category:Brewing',         jsonKey: 'items_brewing',   imagePath: 'assets/images/wiki/brew.png'),
+      _Sub(label: 'Materials', emoji: '🔩', category: 'Category:Materials',       jsonKey: 'items_materials', imagePath: 'assets/images/wiki/gold.png'),
     ],
   ),
   _Section(
     label: 'Biomes',
     emoji: '🌿',
     color: Color(0xFF66BB6A),
-    imagePath: 'assets/images/biomes.png',
+    imagePath: 'assets/images/wiki/biomes.png',
     subs: [
-      _Sub(label: 'Overworld', emoji: '☀️', category: 'Category:Overworld biomes',  jsonKey: 'biomes_overworld'),
-      _Sub(label: 'Nether',    emoji: '🔥', category: 'Category:Nether biomes',     jsonKey: 'biomes_nether'),
-      _Sub(label: 'The End',   emoji: '🌑', category: 'Category:The End biomes',    jsonKey: 'biomes_end'),
+      _Sub(label: 'Overworld', emoji: '☀️', category: 'Category:Overworld biomes',  jsonKey: 'biomes_overworld', imagePath: 'assets/images/wiki/overworld.png'),
+      _Sub(label: 'Nether',    emoji: '🔥', category: 'Category:Nether biomes',     jsonKey: 'biomes_nether',    imagePath: 'assets/images/wiki/nether.png'),
+      _Sub(label: 'The End',   emoji: '🌑', category: 'Category:The End biomes',    jsonKey: 'biomes_end',       imagePath: 'assets/images/wiki/end.png'),
     ],
   ),
   _Section(
     label: 'Structures',
     emoji: '🏰',
     color: Color(0xFF9C27B0),
-    imagePath: 'assets/images/structures.png',
+    imagePath: 'assets/images/wiki/structures.png',
     subs: [
-      _Sub(label: 'Overworld', emoji: '🗺️', category: 'Category:Overworld structures', jsonKey: 'structures_overworld'),
-      _Sub(label: 'Nether',    emoji: '🔥', category: 'Category:Nether structures',     jsonKey: 'structures_nether'),
-      _Sub(label: 'The End',   emoji: '🌑', category: 'Category:The End structures',    jsonKey: 'structures_end'),
+      _Sub(label: 'Overworld', emoji: '🗺️', category: 'Category:Overworld structures', jsonKey: 'structures_overworld', imagePath: 'assets/images/wiki/overworld.png'),
+      _Sub(label: 'Nether',    emoji: '🔥', category: 'Category:Nether structures',     jsonKey: 'structures_nether',    imagePath: 'assets/images/wiki/nether.png'),
+      _Sub(label: 'The End',   emoji: '🌑', category: 'Category:The End structures',    jsonKey: 'structures_end',       imagePath: 'assets/images/wiki/end.png'),
     ],
   ),
   _Section(
     label: 'Enchantments',
     emoji: '✨',
     color: Color(0xFFFF9800),
-    imagePath: 'assets/images/enchantments.png',
+    imagePath: 'assets/images/wiki/enchantments.png',
     subs: [
-      _Sub(label: 'Sword',   emoji: '⚔️', category: 'Category:Sword enchantments',      jsonKey: 'enchantments_sword'),
-      _Sub(label: 'Armor',   emoji: '🛡️', category: 'Category:Armor enchantments',      jsonKey: 'enchantments_armor'),
-      _Sub(label: 'Tool',    emoji: '🪓', category: 'Category:Tool enchantments',        jsonKey: 'enchantments_tool'),
-      _Sub(label: 'Bow',     emoji: '🏹', category: 'Category:Bow enchantments',         jsonKey: 'enchantments_bow'),
-      _Sub(label: 'Fishing', emoji: '🎣', category: 'Category:Fishing Rod enchantments', jsonKey: 'enchantments_fishing'),
+      _Sub(label: 'Sword',   emoji: '⚔️', category: 'Category:Sword enchantments',      jsonKey: 'enchantments_sword',   imagePath: 'assets/images/wiki/sword.gif'),
+      _Sub(label: 'Armor',   emoji: '🛡️', category: 'Category:Armor enchantments',      jsonKey: 'enchantments_armor',   imagePath: 'assets/images/wiki/armor.png'),
+      _Sub(label: 'Tool',    emoji: '🪓', category: 'Category:Tool enchantments',        jsonKey: 'enchantments_tool',    imagePath: 'assets/images/wiki/tools.gif'),
+      _Sub(label: 'Bow',     emoji: '🏹', category: 'Category:Bow enchantments',         jsonKey: 'enchantments_bow',     imagePath: 'assets/images/wiki/bow.png'),
+      _Sub(label: 'Fishing', emoji: '🎣', category: 'Category:Fishing Rod enchantments', jsonKey: 'enchantments_fishing', imagePath: 'assets/images/wiki/fishing.png'),
     ],
   ),
   _Section(
     label: 'Potions',
     emoji: '🧪',
     color: Color(0xFFE91E63),
-    imagePath: 'assets/images/potions.png',
+    imagePath: 'assets/images/wiki/potions.png',
     subs: [
-      _Sub(label: 'Potions',        emoji: '🧪', category: 'Category:Potions',        jsonKey: 'potions_potions'),
-      _Sub(label: 'Status Effects', emoji: '💫', category: 'Category:Status effects', jsonKey: 'potions_effects'),
+      _Sub(label: 'Potions',        emoji: '🧪', category: 'Category:Potions',        jsonKey: 'potions_potions', imagePath: 'assets/images/wiki/brew.png'),
+      _Sub(label: 'Status Effects', emoji: '💫', category: 'Category:Status effects', jsonKey: 'potions_effects', imagePath: 'assets/images/wiki/effect.png'),
     ],
   ),
 ];
@@ -1046,17 +1050,26 @@ class _WikiCardState extends State<_WikiCard> {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              width: 52,
-              height: 52,
-              decoration: BoxDecoration(
-                color: color.withOpacity(0.12),
-                borderRadius: BorderRadius.circular(14),
-              ),
-              child: Center(
-                child: Text(
-                  widget.section.emoji,
-                  style: const TextStyle(fontSize: 26),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(14),
+              child: Image.asset(
+                widget.section.imagePath,
+                width: 52,
+                height: 52,
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => Container(
+                  width: 52,
+                  height: 52,
+                  decoration: BoxDecoration(
+                    color: color.withOpacity(0.12),
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: Center(
+                    child: Text(
+                      widget.section.emoji,
+                      style: const TextStyle(fontSize: 26),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -1118,17 +1131,39 @@ class _SubCard extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              width: 52,
-              height: 52,
-              decoration: BoxDecoration(
-                color: color.withOpacity(0.12),
+            if (sub.imagePath != null)
+              ClipRRect(
                 borderRadius: BorderRadius.circular(14),
+                child: Image.asset(
+                  sub.imagePath!,
+                  width: 52,
+                  height: 52,
+                  fit: BoxFit.cover,
+                  errorBuilder: (_, __, ___) => Container(
+                    width: 52,
+                    height: 52,
+                    decoration: BoxDecoration(
+                      color: color.withOpacity(0.12),
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: Center(
+                      child: Text(sub.emoji, style: const TextStyle(fontSize: 26)),
+                    ),
+                  ),
+                ),
+              )
+            else
+              Container(
+                width: 52,
+                height: 52,
+                decoration: BoxDecoration(
+                  color: color.withOpacity(0.12),
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: Center(
+                  child: Text(sub.emoji, style: const TextStyle(fontSize: 26)),
+                ),
               ),
-              child: Center(
-                child: Text(sub.emoji, style: const TextStyle(fontSize: 26)),
-              ),
-            ),
             const SizedBox(width: 14),
             Expanded(
               child: Text(
