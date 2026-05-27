@@ -118,12 +118,12 @@ jobs:
       - name: Zip Windows build
         shell: pwsh
         run: |
-          Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath NetherLink-windows.zip
+          Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath MCCompanion-windows.zip
 
       - uses: actions/upload-artifact@v6
         with:
           name: windows-zip
-          path: NetherLink-windows.zip
+          path: MCCompanion-windows.zip
 
   build-macos:
     name: Build macOS DMG
@@ -173,31 +173,31 @@ jobs:
 
       - name: Ad-hoc sign macOS app
         run: |
-          APP_PATH="build/macos/Build/Products/Release/NetherLink.app"
+          APP_PATH="build/macos/Build/Products/Release/MCCompanion.app"
           codesign --force --deep --sign - "$APP_PATH"
           codesign --verify --deep --strict "$APP_PATH"
 
       - name: Create macOS DMG
         run: |
           STAGING_DIR="$RUNNER_TEMP/dmg-staging"
-          APP_PATH="build/macos/Build/Products/Release/NetherLink.app"
+          APP_PATH="build/macos/Build/Products/Release/MCCompanion.app"
           rm -rf "$STAGING_DIR"
           mkdir -p "$STAGING_DIR"
           cp -R "$APP_PATH" "$STAGING_DIR/"
           ln -s /Applications "$STAGING_DIR/Applications"
           hdiutil create \
-            -volname "NetherLink" \
+            -volname "MCCompanion" \
             -srcfolder "$STAGING_DIR" \
             -ov \
             -format UDZO \
-            "$GITHUB_WORKSPACE/NetherLink-macos.dmg"
-          codesign --force --sign - "$GITHUB_WORKSPACE/NetherLink-macos.dmg"
-          codesign --verify --strict "$GITHUB_WORKSPACE/NetherLink-macos.dmg"
+            "$GITHUB_WORKSPACE/MCCompanion-macos.dmg"
+          codesign --force --sign - "$GITHUB_WORKSPACE/MCCompanion-macos.dmg"
+          codesign --verify --strict "$GITHUB_WORKSPACE/MCCompanion-macos.dmg"
 
       - uses: actions/upload-artifact@v6
         with:
           name: macos-dmg
-          path: NetherLink-macos.dmg
+          path: MCCompanion-macos.dmg
 
   release:
     name: Create or Update dev Release
@@ -222,7 +222,7 @@ jobs:
           path: artifacts/
 
       - name: Rename Android APK
-        run: mv artifacts/app-release.apk artifacts/NetherLink-android.apk
+        run: mv artifacts/app-release.apk artifacts/MCCompanion-android.apk
 
       - name: Create or update dev release
         uses: softprops/action-gh-release@v3
@@ -235,9 +235,9 @@ jobs:
             This is a development build. If you don't know what you are doing, please don't install it.
             Warning: Google/Apple authentication won't work with dev builds.
           files: |
-            artifacts/NetherLink-android.apk
-            artifacts/NetherLink-windows.zip
-            artifacts/NetherLink-macos.dmg
+            artifacts/MCCompanion-android.apk
+            artifacts/MCCompanion-windows.zip
+            artifacts/MCCompanion-macos.dmg
 
   notify-discord:
     name: Notify Discord
@@ -353,7 +353,7 @@ jobs:
           path: artifacts/
 
       - name: Rename Android APK
-        run: mv artifacts/app-release.apk artifacts/NetherLink-android.apk
+        run: mv artifacts/app-release.apk artifacts/MCCompanion-android.apk
 
       - name: Create or update beta release
         uses: softprops/action-gh-release@v3
@@ -367,9 +367,9 @@ jobs:
             This is a beta build intended for testing before wider release.
             Warning: Google/Apple authentication won't work with beta builds.
           files: |
-            artifacts/NetherLink-android.apk
-            artifacts/NetherLink-windows.zip
-            artifacts/NetherLink-macos.dmg
+            artifacts/MCCompanion-android.apk
+            artifacts/MCCompanion-windows.zip
+            artifacts/MCCompanion-macos.dmg
 
   notify-discord-beta:
     name: Notify Discord Beta Release
