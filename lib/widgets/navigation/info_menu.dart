@@ -93,7 +93,7 @@ class InfoSheetContent extends StatelessWidget {
                       color: AppTheme.accent,
                       title: 'Privacy Policy',
                       subtitle: 'How we collect and protect your data',
-                      onTap: () => _open('https://netherlink.net/privacy'),
+                      onTap: () => _open('https://mccompanion.net/privacy'),
                     ),
                     const SizedBox(height: 8),
                     _legalTile(
@@ -101,7 +101,7 @@ class InfoSheetContent extends StatelessWidget {
                       color: const Color(0xFF7B61FF),
                       title: 'Terms of Service',
                       subtitle: 'Rules and conditions of use',
-                      onTap: () => _open('https://netherlink.net/terms'),
+                      onTap: () => _open('https://mccompanion.net/terms'),
                     ),
 
                     const SizedBox(height: 22),

@@ -191,15 +191,15 @@ class _NavFab extends StatelessWidget {
             height: 50,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: isActive ? AppTheme.accent : AppTheme.surfaceRaised,
+              color: isActive ? AppTheme.brand : AppTheme.surfaceRaised,
               border: Border.all(
-                color: isActive ? AppTheme.accent : AppTheme.borderGray,
+                color: isActive ? AppTheme.brand : AppTheme.borderGray,
                 width: isActive ? 1.5 : 1.0,
               ),
               boxShadow: [
                 if (isActive)
                   BoxShadow(
-                    color: AppTheme.accent.withOpacity(0.35),
+                    color: AppTheme.brand.withOpacity(0.35),
                     blurRadius: 14,
                     spreadRadius: 1,
                     offset: const Offset(0, 3),

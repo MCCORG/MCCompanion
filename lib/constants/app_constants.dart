@@ -1,17 +1,17 @@
 class AppConstants {
-  static const String websiteUrl = 'https://netherlink.net';
+  static const String websiteUrl = 'https://mccompanion.net';
   static const String discordUrl = 'https://discord.gg/xvaNzE35Rs';
 
 static const relayServers = [
   {
     'name': 'EU Server',
     'ip': '161.97.182.113',
-    'base': 'https://eubackend.netherlink.net',
+    'base': 'https://eubackend.mccompanion.net',
   },
   {
     'name': 'US Server',
     'ip': '217.77.15.138',
-    'base': 'https://usbackend.netherlink.net',
+    'base': 'https://usbackend.mccompanion.net',
   },
 ];
 

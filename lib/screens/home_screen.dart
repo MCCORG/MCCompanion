@@ -13,10 +13,8 @@ import '../util/partners_servers.dart';
 import '../constants/app_constants.dart';
 import '../theme/app_theme.dart';
 import '../widgets/connection/connection_panel.dart';
-import '../widgets/components/global_notice_banner.dart';
 import '../widgets/components/app_toast.dart';
 import '../widgets/components/header_nav_bar.dart';
-import '../services/notification_service.dart';
 import '../services/region_detector.dart';
 import '../network/broadcast_mode.dart';
 import '../services/navigation_controller.dart';
@@ -78,8 +76,6 @@ class HomeScreenState extends State<HomeScreen> {
       widget.navigationController.logsScrollController;
 
   bool _nintendoDnsMode = false;
-  Map<String, String>? _currentNotice;
-  Timer? _noticeTimer;
   List<BedrockAccount>? _cachedBedrockAccounts;
   String? _selectedBedrockXuid;
 
@@ -94,16 +90,7 @@ class HomeScreenState extends State<HomeScreen> {
     super.initState();
     _initializeComponents();
     loadUserServers();
-    _fetchNotification();
     _loadBedrockAccounts();
-  }
-
-  @override
-  void didUpdateWidget(HomeScreen oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.selectedRelay.ip != widget.selectedRelay.ip) {
-      _fetchNotification();
-    }
   }
 
   void _initializeComponents() {
@@ -119,24 +106,11 @@ class HomeScreenState extends State<HomeScreen> {
 
   @override
   void dispose() {
-    _noticeTimer?.cancel();
     _mainScrollController.dispose();
     _broadcastingNotifier.dispose();
     _userServersNotifier.dispose();
     unawaited(_broadcastManager.stopBroadcast());
     super.dispose();
-  }
-
-  Future<void> _fetchNotification() async {
-    final notice = await NotificationService.fetchNotice(
-      widget.selectedRelay.base,
-    );
-    if (!mounted || notice == null) return;
-    setState(() => _currentNotice = notice);
-    _noticeTimer?.cancel();
-    _noticeTimer = Timer(const Duration(seconds: 20), () {
-      if (mounted) setState(() => _currentNotice = null);
-    });
   }
 
   Future<void> loadUserServers() async {
@@ -402,20 +376,6 @@ class HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-        if (_currentNotice != null)
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: GlobalNoticeBanner(
-              message: _currentNotice!['message']!,
-              type: _currentNotice!['type'] ?? 'info',
-              onDismiss: () {
-                _noticeTimer?.cancel();
-                setState(() => _currentNotice = null);
-              },
-            ),
-          ),
       ],
     );
   }

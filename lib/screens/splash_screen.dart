@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen>
       'https://apps.apple.com/be/app/netherlink/id6747323142';
   static const String _windowsStoreUrl =
       'https://apps.microsoft.com/detail/9NSFPT6D8PTR';
-  static const String _fallbackUrl = 'https://netherlink.net/';
+  static const String _fallbackUrl = 'https://mccompanion.net/';
 
   @override
   void initState() {

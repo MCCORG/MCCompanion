@@ -1,11 +1,15 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../util/partners_servers.dart';
+import '../constants/app_constants.dart';
+import '../services/notification_service.dart';
 import '../widgets/components/header_nav_bar.dart';
+import '../widgets/components/global_notice_banner.dart';
 import '../widgets/featured_server_hero.dart';
 
-class LandingScreen extends StatelessWidget {
+class LandingScreen extends StatefulWidget {
   final VoidCallback onGoToConnector;
   final VoidCallback onGoToSkins;
   final VoidCallback onGoToWiki;
@@ -36,44 +40,92 @@ class LandingScreen extends StatelessWidget {
   });
 
   @override
+  State<LandingScreen> createState() => _LandingScreenState();
+}
+
+class _LandingScreenState extends State<LandingScreen> {
+  Map<String, String>? _notice;
+  Timer? _noticeTimer;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchNotice();
+  }
+
+  @override
+  void dispose() {
+    _noticeTimer?.cancel();
+    super.dispose();
+  }
+
+  Future<void> _fetchNotice() async {
+    final base = AppConstants.relayServers.first['base'] as String;
+    final notice = await NotificationService.fetchNotice(base);
+    if (!mounted || notice == null) return;
+    setState(() => _notice = notice);
+    _noticeTimer = Timer(const Duration(seconds: 20), () {
+      if (mounted) setState(() => _notice = null);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Stack(
       children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
-          child: Builder(builder: (context) {
-            final l = AppLocalizations.of(context)!;
-            return Align(
-              alignment: Alignment.centerRight,
-              child: HeaderNavBar(
-                items: [
-                  HeaderNavItem(label: l.website, onTap: onWebsiteTap),
-                  HeaderNavItem(label: l.discord, onTap: onDiscordTap),
-                  HeaderNavItem(label: l.changeLanguage, onTap: onLanguageTap),
-                  HeaderNavItem(label: l.info, onTap: onInfoTap),
-                ],
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
+              child: Builder(builder: (context) {
+                final l = AppLocalizations.of(context)!;
+                return Align(
+                  alignment: Alignment.centerRight,
+                  child: HeaderNavBar(
+                    items: [
+                      HeaderNavItem(label: l.website, onTap: widget.onWebsiteTap),
+                      HeaderNavItem(label: l.discord, onTap: widget.onDiscordTap),
+                      HeaderNavItem(label: l.changeLanguage, onTap: widget.onLanguageTap),
+                      HeaderNavItem(label: l.info, onTap: widget.onInfoTap),
+                    ],
+                  ),
+                );
+              }),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14),
+              child: FeaturedServerHero(
+                partnerServersFuture: widget.partnerServersFuture,
+                ipController: widget.ipController,
+                portController: widget.portController,
+                onSelected: widget.onGoToConnector,
               ),
-            );
-          }),
+            ),
+            Expanded(
+              child: Center(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
+                  child: _buildGrid(),
+                ),
+              ),
+            ),
+          ],
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14),
-          child: FeaturedServerHero(
-            partnerServersFuture: partnerServersFuture,
-            ipController: ipController,
-            portController: portController,
-            onSelected: onGoToConnector,
-          ),
-        ),
-        Expanded(
-          child: Center(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
-              child: _buildGrid(),
+        if (_notice != null)
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: GlobalNoticeBanner(
+              message: _notice!['message']!,
+              type: _notice!['type'] ?? 'info',
+              onDismiss: () {
+                _noticeTimer?.cancel();
+                setState(() => _notice = null);
+              },
             ),
           ),
-        ),
       ],
     );
   }
@@ -94,7 +146,7 @@ class LandingScreen extends StatelessWidget {
                   subtitle: l.consoleConnectSubtitle,
                   color: AppTheme.brand,
                   imagePath: 'assets/images/tunnel.png',
-                  onTap: onGoToConnector,
+                  onTap: widget.onGoToConnector,
                 ),
               ),
               const SizedBox(width: 10),
@@ -104,7 +156,7 @@ class LandingScreen extends StatelessWidget {
                   subtitle: l.minecraftSkinsSubtitle,
                   color: const Color(0xFF42A5F5),
                   imagePath: 'assets/images/skin.png',
-                  onTap: onGoToSkins,
+                  onTap: widget.onGoToSkins,
                 ),
               ),
             ],
@@ -121,7 +173,7 @@ class LandingScreen extends StatelessWidget {
                   subtitle: l.minecraftWikiSubtitle,
                   color: AppTheme.success,
                   imagePath: 'assets/images/wiki.png',
-                  onTap: onGoToWiki,
+                  onTap: widget.onGoToWiki,
                 ),
               ),
               const SizedBox(width: 10),
@@ -131,7 +183,7 @@ class LandingScreen extends StatelessWidget {
                   subtitle: l.partnerServersSubtitle,
                   color: const Color(0xFFFFB300),
                   imagePath: 'assets/images/feature.png',
-                  onTap: onGoToPartners,
+                  onTap: widget.onGoToPartners,
                 ),
               ),
             ],
@@ -143,7 +195,7 @@ class LandingScreen extends StatelessWidget {
           subtitle: l.userLookupSubtitle,
           color: const Color(0xFF7B61FF),
           imagePath: 'assets/images/players.png',
-          onTap: onGoToPlayerLookup,
+          onTap: widget.onGoToPlayerLookup,
         ),
       ],
     );});
