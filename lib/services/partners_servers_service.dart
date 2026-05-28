@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import '../util/partners_servers.dart';
-import 'relay_service.dart';
+import '../constants/app_constants.dart';
 
 class FeaturedServersService {
   static const Duration _timeout = Duration(seconds: 5);
@@ -11,7 +11,7 @@ class FeaturedServersService {
       final client = HttpClient();
       client.connectionTimeout = _timeout;
 
-      final uri = Uri.parse('${RelayService.base}/api/featured-servers');
+      final uri = Uri.parse('${AppConstants.apiBase}/api/featured-servers');
       final request = await client.getUrl(uri);
       final response = await request.close();
 

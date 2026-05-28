@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'auth_service.dart';
-import 'relay_service.dart';
+import '../constants/app_constants.dart';
 import '../models/user_model.dart';
 
 class UserService {
-  static String get _base => RelayService.base;
+  static const String _base = AppConstants.apiBase;
   static const Duration _timeout = Duration(seconds: 8);
 
   static Future<Map<String, String>> _headers() async {

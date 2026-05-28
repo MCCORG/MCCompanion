@@ -47,7 +47,8 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _onScroll() {
-    if (_scrollCtrl.position.pixels <= 80 && !_loadingMore && _hasMore) {
+    if (_scrollCtrl.position.pixels >= _scrollCtrl.position.maxScrollExtent - 80 &&
+        !_loadingMore && _hasMore) {
       _loadMore();
     }
   }
@@ -74,8 +75,7 @@ class _ChatScreenState extends State<ChatScreen> {
       _loading = false;
       _hasMore = msgs.length >= 50;
     });
-    await Future.delayed(const Duration(milliseconds: 50));
-    _scrollToBottom(animate: false);
+    // reverse: true means list always opens at the bottom (pixels=0). No scroll needed.
   }
 
   Future<void> _loadMore() async {
@@ -97,14 +97,14 @@ class _ChatScreenState extends State<ChatScreen> {
   void _scrollToBottom({bool animate = true}) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!_scrollCtrl.hasClients) return;
+      // With reverse: true, pixels=0 is always the bottom (newest messages).
       if (animate) {
-        _scrollCtrl.animateTo(
-          _scrollCtrl.position.maxScrollExtent,
+        _scrollCtrl.animateTo(0,
           duration: const Duration(milliseconds: 200),
           curve: Curves.easeOut,
         );
       } else {
-        _scrollCtrl.jumpTo(_scrollCtrl.position.maxScrollExtent);
+        _scrollCtrl.jumpTo(0);
       }
     });
   }
@@ -190,13 +190,16 @@ class _ChatScreenState extends State<ChatScreen> {
                 ? const _EmptyChat()
                 : ListView.builder(
                     controller: _scrollCtrl,
+                    reverse: true,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 12,
                       vertical: 8,
                     ),
                     itemCount: _messages.length + (_loadingMore ? 1 : 0),
                     itemBuilder: (_, i) {
-                      if (_loadingMore && i == 0) {
+                      // With reverse: true, i=0 is at the bottom (newest).
+                      // Loading indicator at the top = i == _messages.length.
+                      if (_loadingMore && i == _messages.length) {
                         return const Padding(
                           padding: EdgeInsets.symmetric(vertical: 8),
                           child: Center(
@@ -211,7 +214,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           ),
                         );
                       }
-                      final idx = _loadingMore ? i - 1 : i;
+                      final idx = _messages.length - 1 - i;
                       final msg = _messages[idx];
                       final isMine = msg.senderUid == _myUid;
                       final showDate =
@@ -436,7 +439,7 @@ class _Bubble extends StatelessWidget {
             Text(
               msg.content,
               style: TextStyle(
-                color: isMine ? Colors.white : AppTheme.textPrimary,
+                color: isMine ? const Color(0xFF0D1500) : AppTheme.textPrimary,
                 fontSize: 14,
                 height: 1.4,
               ),
@@ -446,7 +449,7 @@ class _Bubble extends StatelessWidget {
               _timeLabel(msg.createdAt),
               style: TextStyle(
                 color: isMine
-                    ? Colors.white.withOpacity(0.65)
+                    ? const Color(0xFF0D1500).withOpacity(0.55)
                     : AppTheme.textMuted,
                 fontSize: 10,
               ),
@@ -597,7 +600,7 @@ class _InputBar extends StatelessWidget {
                       )
                     : const Icon(
                         Icons.send_rounded,
-                        color: Colors.white,
+                        color: Color(0xFF0D1500),
                         size: 18,
                       ),
               ),

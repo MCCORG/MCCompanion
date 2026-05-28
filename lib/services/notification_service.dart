@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import '../constants/app_constants.dart';
 
 class NotificationService {
-  static Future<Map<String, String>?> fetchNotice(String base) async {
-    final uri = Uri.parse('$base/notification');
+  static Future<Map<String, String>?> fetchNotice() async {
+    final uri = Uri.parse('${AppConstants.apiBase}/notification');
 
     try {
       final response = await http.get(uri).timeout(const Duration(seconds: 5));

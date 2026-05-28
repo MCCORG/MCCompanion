@@ -2,6 +2,8 @@ class AppConstants {
   static const String websiteUrl = 'https://mccompanion.net';
   static const String discordUrl = 'https://discord.gg/xvaNzE35Rs';
 
+  static const String apiBase = 'https://api.mccompanion.net';
+
 static const relayServers = [
   {
     'name': 'EU Server',

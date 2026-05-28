@@ -4,10 +4,11 @@ import 'package:http/http.dart' as http;
 import 'package:web_socket_channel/web_socket_channel.dart';
 import '../models/message_model.dart';
 import 'auth_service.dart';
+import '../constants/app_constants.dart';
 import 'relay_service.dart';
 
 class MessageService {
-  static String get _base => RelayService.base;
+  static const String _base = AppConstants.apiBase;
   static String get _wsBase => RelayService.wsBase;
 
   static WebSocketChannel? _channel;

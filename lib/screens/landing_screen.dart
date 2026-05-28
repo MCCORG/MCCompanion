@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../util/partners_servers.dart';
-import '../constants/app_constants.dart';
 import '../services/notification_service.dart';
 import '../widgets/components/header_nav_bar.dart';
 import '../widgets/components/global_notice_banner.dart';
@@ -60,8 +59,7 @@ class _LandingScreenState extends State<LandingScreen> {
   }
 
   Future<void> _fetchNotice() async {
-    final base = AppConstants.relayServers.first['base'] as String;
-    final notice = await NotificationService.fetchNotice(base);
+    final notice = await NotificationService.fetchNotice();
     if (!mounted || notice == null) return;
     setState(() => _notice = notice);
     _noticeTimer = Timer(const Duration(seconds: 20), () {

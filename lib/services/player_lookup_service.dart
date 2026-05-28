@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/player_lookup_model.dart';
 import 'auth_service.dart';
-import 'relay_service.dart';
+import '../constants/app_constants.dart';
 
 class PlayerLookupService {
-  static String get _base => RelayService.base;
+  static const String _base = AppConstants.apiBase;
   static const Duration _timeout = Duration(seconds: 12);
 
   static Future<Map<String, String>> _headers() async {
