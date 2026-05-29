@@ -694,4 +694,113 @@ class AppLocalizationsBn extends AppLocalizations {
   String get skinsSignInTitle => 'আপনার স্কিন দেখতে সাইন ইন করুন';
   @override
   String get skinsSignInSubtitle => 'একটি অ্যাকাউন্ট তৈরি করুন এবং প্রোফাইলে Java বা Bedrock লিঙ্ক করুন।';
+
+  // ── Player Lookup ────────────────────────────────────────────────────────
+  @override
+  String get playerLookupTitle => 'খেলোয়াড় অনুসন্ধান';
+  @override
+  String get playerLookupSubtitle => 'Java ব্যবহারকারীর নাম, UUID, Bedrock গেমারট্যাগ বা XUID দিয়ে অনুসন্ধান করুন।';
+  @override
+  String get playerLookupHint => 'ব্যবহারকারীর নাম, গেমারট্যাগ, UUID বা XUID…';
+  @override
+  String get playerLookupLinked => 'GeyserMC স্থানীয় অ্যাকাউন্ট সংযুক্ত';
+  @override
+  String get playerLookupLabelUsername => 'ব্যবহারকারীর নাম';
+  @override
+  String get playerLookupLabelTier => 'স্তর';
+  @override
+  String playerLookupCopied(String label) => '$label কপি করা হয়েছে';
+  // ── Wiki ──────────────────────────────────────────────────────────────────
+  @override
+  String get wikiTitle => 'Wiki';
+  @override
+  String get wikiSearchHint => 'মব, আইটেম, ব্লক খুঁজুন…';
+  @override
+  String get wikiMinecraftWiki => 'minecraft.wiki';
+  @override
+  String wikiCategories(int count) => '$count বিভাগ';
+  @override
+  String wikiNoResults(String query) => '"$query" এর জন্য কোনো ফলাফল নেই';
+  @override
+  String get wikiNoPagesFound => 'এই বিভাগে কোনো পৃষ্ঠা পাওয়া যায়নি।';
+  @override
+  String get wikiCouldNotLoadPages => 'পৃষ্ঠা লোড করা যায়নি।';
+  @override
+  String get wikiCouldNotReach => 'Minecraft Wiki-তে পৌঁছানো যায়নি।';
+  @override
+  String get wikiCouldNotLoadContent => 'পৃষ্ঠার বিষয়বস্তু লোড করা যায়নি।';
+  @override
+  String get wikiOpenInBrowser => 'ব্রাউজারে খুলুন';
+  @override
+  String get wikiReadFullArticle => 'minecraft.wiki-তে সম্পূর্ণ নিবন্ধ পড়ুন';
+  @override
+  String get wikiCrafting => 'ক্রাফটিং';
+  @override
+  String get wikiMobs => 'মব';
+  @override
+  String get wikiBlocks => 'ব্লক';
+  @override
+  String get wikiItems => 'আইটেম';
+  @override
+  String get wikiBiomes => 'বায়োম';
+  @override
+  String get wikiStructures => 'কাঠামো';
+  @override
+  String get wikiEnchantments => 'এনচান্টমেন্ট';
+  @override
+  String get wikiPotions => 'পোশন';
+  @override
+  String get wikiPassive => 'নিষ্ক্রিয়';
+  @override
+  String get wikiNeutral => 'নিরপেক্ষ';
+  @override
+  String get wikiHostile => 'শত্রুতাপূর্ণ';
+  @override
+  String get wikiBoss => 'বস';
+  @override
+  String get wikiUtility => 'উপযোগী';
+  @override
+  String get wikiNatural => 'প্রাকৃতিক';
+  @override
+  String get wikiOres => 'আকরিক';
+  @override
+  String get wikiWood => 'কাঠ';
+  @override
+  String get wikiStone => 'পাথর';
+  @override
+  String get wikiRedstone => 'রেডস্টোন';
+  @override
+  String get wikiPlants => 'গাছপালা';
+  @override
+  String get wikiDecoration => 'সজ্জা';
+  @override
+  String get wikiTools => 'সরঞ্জাম';
+  @override
+  String get wikiSwords => 'তরবারি';
+  @override
+  String get wikiRanged => 'দূরপাল্লার';
+  @override
+  String get wikiArmor => 'বর্ম';
+  @override
+  String get wikiFood => 'খাবার';
+  @override
+  String get wikiBrewing => 'তৈরি';
+  @override
+  String get wikiMaterials => 'উপকরণ';
+  @override
+  String get wikiOverworld => 'ওভারওয়ার্ল্ড';
+  @override
+  String get wikiNether => 'নেদার';
+  @override
+  String get wikiTheEnd => 'দ্যা এন্ড';
+  @override
+  String get wikiSword => 'তলোয়ার';
+  @override
+  String get wikiTool => 'সরঞ্জাম';
+  @override
+  String get wikiBow => 'ধনুক';
+  @override
+  String get wikiFishing => 'মাছ ধরা';
+  @override
+  String get wikiStatusEffects => 'স্ট্যাটাস ইফেক্ট';
 }

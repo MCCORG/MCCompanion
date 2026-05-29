@@ -1029,6 +1029,63 @@ abstract class AppLocalizations {
   String get skinsNoAccountsSubtitle => 'Link Java or Bedrock in Profile to see your skin.';
   String get skinsSignInTitle => 'Sign in to see your skin';
   String get skinsSignInSubtitle => 'Create an account and link Java or Bedrock in Profile.';
+
+  // ── Player Lookup ──────────────────────────────────────────────────────────
+  String get playerLookupTitle;
+  String get playerLookupSubtitle;
+  String get playerLookupHint;
+  String get playerLookupLinked;
+  String get playerLookupLabelUsername;
+  String get playerLookupLabelTier;
+  String playerLookupCopied(String label);
+
+  // ── Wiki ───────────────────────────────────────────────────────────────────
+  String get wikiTitle;
+  String get wikiSearchHint;
+  String get wikiMinecraftWiki;
+  String wikiCategories(int count);
+  String wikiNoResults(String query);
+  String get wikiNoPagesFound;
+  String get wikiCouldNotLoadPages;
+  String get wikiCouldNotReach;
+  String get wikiCouldNotLoadContent;
+  String get wikiOpenInBrowser;
+  String get wikiReadFullArticle;
+  String get wikiCrafting;
+  String get wikiMobs;
+  String get wikiBlocks;
+  String get wikiItems;
+  String get wikiBiomes;
+  String get wikiStructures;
+  String get wikiEnchantments;
+  String get wikiPotions;
+  String get wikiPassive;
+  String get wikiNeutral;
+  String get wikiHostile;
+  String get wikiBoss;
+  String get wikiUtility;
+  String get wikiNatural;
+  String get wikiOres;
+  String get wikiWood;
+  String get wikiStone;
+  String get wikiRedstone;
+  String get wikiPlants;
+  String get wikiDecoration;
+  String get wikiTools;
+  String get wikiSwords;
+  String get wikiRanged;
+  String get wikiArmor;
+  String get wikiFood;
+  String get wikiBrewing;
+  String get wikiMaterials;
+  String get wikiOverworld;
+  String get wikiNether;
+  String get wikiTheEnd;
+  String get wikiSword;
+  String get wikiTool;
+  String get wikiBow;
+  String get wikiFishing;
+  String get wikiStatusEffects;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

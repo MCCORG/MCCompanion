@@ -694,4 +694,113 @@ class AppLocalizationsZh extends AppLocalizations {
   String get skinsSignInTitle => '登录以查看你的皮肤';
   @override
   String get skinsSignInSubtitle => '创建账号并在个人资料中关联 Java 或 Bedrock。';
+
+  // ── Player Lookup ────────────────────────────────────────────────────────
+  @override
+  String get playerLookupTitle => '玩家查找';
+  @override
+  String get playerLookupSubtitle => '通过Java用户名、UUID、Bedrock游戏标签或XUID搜索。';
+  @override
+  String get playerLookupHint => '用户名、游戏标签、UUID或XUID…';
+  @override
+  String get playerLookupLinked => '账户通过GeyserMC关联';
+  @override
+  String get playerLookupLabelUsername => '用户名';
+  @override
+  String get playerLookupLabelTier => '等级';
+  @override
+  String playerLookupCopied(String label) => '已复制$label';
+  // ── Wiki ──────────────────────────────────────────────────────────────────
+  @override
+  String get wikiTitle => 'Wiki';
+  @override
+  String get wikiSearchHint => '搜索生物、物品、方块…';
+  @override
+  String get wikiMinecraftWiki => 'minecraft.wiki';
+  @override
+  String wikiCategories(int count) => '$count个分类';
+  @override
+  String wikiNoResults(String query) => '"$query"没有结果';
+  @override
+  String get wikiNoPagesFound => '此分类中未找到页面。';
+  @override
+  String get wikiCouldNotLoadPages => '无法加载页面。';
+  @override
+  String get wikiCouldNotReach => '无法访问Minecraft Wiki。';
+  @override
+  String get wikiCouldNotLoadContent => '无法加载页面内容。';
+  @override
+  String get wikiOpenInBrowser => '在浏览器中打开';
+  @override
+  String get wikiReadFullArticle => '在minecraft.wiki上阅读完整文章';
+  @override
+  String get wikiCrafting => '合成';
+  @override
+  String get wikiMobs => '生物';
+  @override
+  String get wikiBlocks => '方块';
+  @override
+  String get wikiItems => '物品';
+  @override
+  String get wikiBiomes => '生物群系';
+  @override
+  String get wikiStructures => '结构';
+  @override
+  String get wikiEnchantments => '附魔';
+  @override
+  String get wikiPotions => '药水';
+  @override
+  String get wikiPassive => '被动';
+  @override
+  String get wikiNeutral => '中立';
+  @override
+  String get wikiHostile => '敌对';
+  @override
+  String get wikiBoss => '首领';
+  @override
+  String get wikiUtility => '功能性';
+  @override
+  String get wikiNatural => '自然';
+  @override
+  String get wikiOres => '矿石';
+  @override
+  String get wikiWood => '木材';
+  @override
+  String get wikiStone => '石头';
+  @override
+  String get wikiRedstone => '红石';
+  @override
+  String get wikiPlants => '植物';
+  @override
+  String get wikiDecoration => '装饰';
+  @override
+  String get wikiTools => '工具';
+  @override
+  String get wikiSwords => '剑';
+  @override
+  String get wikiRanged => '远程';
+  @override
+  String get wikiArmor => '盔甲';
+  @override
+  String get wikiFood => '食物';
+  @override
+  String get wikiBrewing => '酿造';
+  @override
+  String get wikiMaterials => '材料';
+  @override
+  String get wikiOverworld => '主世界';
+  @override
+  String get wikiNether => '地狱';
+  @override
+  String get wikiTheEnd => '末地';
+  @override
+  String get wikiSword => '剑';
+  @override
+  String get wikiTool => '工具';
+  @override
+  String get wikiBow => '弓';
+  @override
+  String get wikiFishing => '钓鱼';
+  @override
+  String get wikiStatusEffects => '状态效果';
 }

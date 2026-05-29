@@ -694,4 +694,113 @@ class AppLocalizationsTr extends AppLocalizations {
   String get skinsSignInTitle => 'Skinini görmek için giriş yap';
   @override
   String get skinsSignInSubtitle => 'Hesap oluştur ve Profil\'de Java veya Bedrock bağla.';
+
+  // ── Player Lookup ────────────────────────────────────────────────────────
+  @override
+  String get playerLookupTitle => 'Oyuncu Arama';
+  @override
+  String get playerLookupSubtitle => 'Java kullanıcı adı, UUID, Bedrock gamertag veya XUID ile ara.';
+  @override
+  String get playerLookupHint => 'Kullanıcı adı, gamertag, UUID veya XUID…';
+  @override
+  String get playerLookupLinked => 'Hesaplar GeyserMC üzerinden bağlandı';
+  @override
+  String get playerLookupLabelUsername => 'Kullanıcı adı';
+  @override
+  String get playerLookupLabelTier => 'Kademe';
+  @override
+  String playerLookupCopied(String label) => '$label kopyalandı';
+  // ── Wiki ──────────────────────────────────────────────────────────────────
+  @override
+  String get wikiTitle => 'Wiki';
+  @override
+  String get wikiSearchHint => 'Mob, eşya, blok ara…';
+  @override
+  String get wikiMinecraftWiki => 'minecraft.wiki';
+  @override
+  String wikiCategories(int count) => '$count kategori';
+  @override
+  String wikiNoResults(String query) => '"$query" için sonuç yok';
+  @override
+  String get wikiNoPagesFound => 'Bu kategoride sayfa bulunamadı.';
+  @override
+  String get wikiCouldNotLoadPages => 'Sayfalar yüklenemedi.';
+  @override
+  String get wikiCouldNotReach => 'Minecraft Wiki’ye erişilemedi.';
+  @override
+  String get wikiCouldNotLoadContent => 'Sayfa içeriği yüklenemedi.';
+  @override
+  String get wikiOpenInBrowser => 'Tarayıcıda aç';
+  @override
+  String get wikiReadFullArticle => 'minecraft.wiki’de tam makaleyi oku';
+  @override
+  String get wikiCrafting => 'Üretim';
+  @override
+  String get wikiMobs => 'Canavarlar';
+  @override
+  String get wikiBlocks => 'Bloklar';
+  @override
+  String get wikiItems => 'Eşyalar';
+  @override
+  String get wikiBiomes => 'Biyomlar';
+  @override
+  String get wikiStructures => 'Yapılar';
+  @override
+  String get wikiEnchantments => 'Büyüler';
+  @override
+  String get wikiPotions => 'İksirler';
+  @override
+  String get wikiPassive => 'Pasif';
+  @override
+  String get wikiNeutral => 'Nötr';
+  @override
+  String get wikiHostile => 'Düşmanca';
+  @override
+  String get wikiBoss => 'Patron';
+  @override
+  String get wikiUtility => 'Yardımcı';
+  @override
+  String get wikiNatural => 'Doğal';
+  @override
+  String get wikiOres => 'Cevherler';
+  @override
+  String get wikiWood => 'Ahşap';
+  @override
+  String get wikiStone => 'Taş';
+  @override
+  String get wikiRedstone => 'Kırmızıtaş';
+  @override
+  String get wikiPlants => 'Bitkiler';
+  @override
+  String get wikiDecoration => 'Dekorasyon';
+  @override
+  String get wikiTools => 'Aletler';
+  @override
+  String get wikiSwords => 'Kılıçlar';
+  @override
+  String get wikiRanged => 'Menzilli';
+  @override
+  String get wikiArmor => 'Zırh';
+  @override
+  String get wikiFood => 'Yiyecek';
+  @override
+  String get wikiBrewing => 'Demleme';
+  @override
+  String get wikiMaterials => 'Malzemeler';
+  @override
+  String get wikiOverworld => 'Yüzey Dünyası';
+  @override
+  String get wikiNether => 'Nether';
+  @override
+  String get wikiTheEnd => 'Son Bölge';
+  @override
+  String get wikiSword => 'Kılıç';
+  @override
+  String get wikiTool => 'Alet';
+  @override
+  String get wikiBow => 'Yay';
+  @override
+  String get wikiFishing => 'Balıkçılık';
+  @override
+  String get wikiStatusEffects => 'Durum Etkileri';
 }

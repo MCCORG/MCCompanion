@@ -694,4 +694,113 @@ class AppLocalizationsSw extends AppLocalizations {
   String get skinsSignInTitle => 'Ingia ili kuona skin yako';
   @override
   String get skinsSignInSubtitle => 'Unda akaunti na uunganishe Java au Bedrock kwenye Wasifu.';
+
+  // ── Player Lookup ────────────────────────────────────────────────────────
+  @override
+  String get playerLookupTitle => 'Tafuta Mchezaji';
+  @override
+  String get playerLookupSubtitle => 'Tafuta kwa jina la mtumiaji wa Java, UUID, gamertag ya Bedrock au XUID.';
+  @override
+  String get playerLookupHint => 'Jina la mtumiaji, gamertag, UUID au XUID…';
+  @override
+  String get playerLookupLinked => 'Akaunti zilizounganishwa kupitia GeyserMC';
+  @override
+  String get playerLookupLabelUsername => 'Jina la mtumiaji';
+  @override
+  String get playerLookupLabelTier => 'Kiwango';
+  @override
+  String playerLookupCopied(String label) => '$label imenakiliwa';
+  // ── Wiki ──────────────────────────────────────────────────────────────────
+  @override
+  String get wikiTitle => 'Wiki';
+  @override
+  String get wikiSearchHint => 'Tafuta mob, vitu, vitalu…';
+  @override
+  String get wikiMinecraftWiki => 'minecraft.wiki';
+  @override
+  String wikiCategories(int count) => 'kategoria $count';
+  @override
+  String wikiNoResults(String query) => 'Hakuna matokeo ya "$query"';
+  @override
+  String get wikiNoPagesFound => 'Hakuna kurasa zilizopatikana katika kategoria hii.';
+  @override
+  String get wikiCouldNotLoadPages => 'Haikuwezekana kupakia kurasa.';
+  @override
+  String get wikiCouldNotReach => 'Haikuwezekana kufikia Minecraft Wiki.';
+  @override
+  String get wikiCouldNotLoadContent => 'Haikuwezekana kupakia maudhui ya ukurasa.';
+  @override
+  String get wikiOpenInBrowser => 'Fungua katika kivinjari';
+  @override
+  String get wikiReadFullArticle => 'Soma makala kamili kwenye minecraft.wiki';
+  @override
+  String get wikiCrafting => 'Utengenezaji';
+  @override
+  String get wikiMobs => 'Viumbe';
+  @override
+  String get wikiBlocks => 'Vitalu';
+  @override
+  String get wikiItems => 'Vitu';
+  @override
+  String get wikiBiomes => 'Bimu';
+  @override
+  String get wikiStructures => 'Miundo';
+  @override
+  String get wikiEnchantments => 'Uchawi';
+  @override
+  String get wikiPotions => 'Dawa';
+  @override
+  String get wikiPassive => 'Amani';
+  @override
+  String get wikiNeutral => 'Wastani';
+  @override
+  String get wikiHostile => 'Adui';
+  @override
+  String get wikiBoss => 'Bosi';
+  @override
+  String get wikiUtility => 'Msaidizi';
+  @override
+  String get wikiNatural => 'Asili';
+  @override
+  String get wikiOres => 'Madini';
+  @override
+  String get wikiWood => 'Mti';
+  @override
+  String get wikiStone => 'Jiwe';
+  @override
+  String get wikiRedstone => 'Redstone';
+  @override
+  String get wikiPlants => 'Mimea';
+  @override
+  String get wikiDecoration => 'Mapambo';
+  @override
+  String get wikiTools => 'Zana';
+  @override
+  String get wikiSwords => 'Panga';
+  @override
+  String get wikiRanged => 'Silaha za mbali';
+  @override
+  String get wikiArmor => 'Silaha ya kujilinda';
+  @override
+  String get wikiFood => 'Chakula';
+  @override
+  String get wikiBrewing => 'Kutengeneza dawa';
+  @override
+  String get wikiMaterials => 'Vifaa';
+  @override
+  String get wikiOverworld => 'Ulimwengu wa Juu';
+  @override
+  String get wikiNether => 'Nether';
+  @override
+  String get wikiTheEnd => 'Mwisho';
+  @override
+  String get wikiSword => 'Upanga';
+  @override
+  String get wikiTool => 'Zana';
+  @override
+  String get wikiBow => 'Upinde';
+  @override
+  String get wikiFishing => 'Uvuvi';
+  @override
+  String get wikiStatusEffects => 'Athari za Hali';
 }

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
+import '../l10n/app_localizations.dart';
 import '../models/player_lookup_model.dart';
 import '../services/player_lookup_service.dart';
 import '../theme/app_theme.dart';
@@ -88,9 +89,9 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
                           color: AppTheme.textPrimary),
                       onPressed: widget.onBack,
                     ),
-                    const Text(
-                      'Player Lookup',
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)!.playerLookupTitle,
+                      style: const TextStyle(
                         color: AppTheme.textPrimary,
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
@@ -110,9 +111,9 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const Text(
-                  'Search by Java username, UUID, Bedrock gamertag or XUID.',
-                  style: TextStyle(
+                Text(
+                  AppLocalizations.of(context)!.playerLookupSubtitle,
+                  style: const TextStyle(
                     color: AppTheme.textMuted,
                     fontSize: 12,
                   ),
@@ -132,8 +133,8 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
                           controller: _ctrl,
                           style: const TextStyle(
                               color: AppTheme.textPrimary, fontSize: 14),
-                          decoration: const InputDecoration(
-                            hintText: 'Username, gamertag, UUID or XUID…',
+                          decoration: InputDecoration(
+                            hintText: AppLocalizations.of(context)!.playerLookupHint,
                             hintStyle: TextStyle(
                                 color: AppTheme.textMuted, fontSize: 13),
                             border: InputBorder.none,
@@ -244,9 +245,9 @@ class _CombinedResultCard extends StatelessWidget {
                 const Icon(Icons.link_rounded,
                     color: AppTheme.success, size: 15),
                 const SizedBox(width: 6),
-                const Text(
-                  'Accounts linked via GeyserMC',
-                  style: TextStyle(
+                Text(
+                  AppLocalizations.of(context)!.playerLookupLinked,
+                  style: const TextStyle(
                     color: AppTheme.success,
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
@@ -291,7 +292,7 @@ class _JavaCard extends StatelessWidget {
           const SizedBox(height: 14),
           const Divider(color: AppTheme.borderGray, height: 1),
           const SizedBox(height: 12),
-          _InfoRow(label: 'Username', value: profile.username, canCopy: true),
+          _InfoRow(label: AppLocalizations.of(context)!.playerLookupLabelUsername, value: profile.username, canCopy: true),
           const SizedBox(height: 8),
           _InfoRow(label: 'UUID', value: profile.uuid, canCopy: true),
         ],
@@ -414,7 +415,7 @@ class _BedrockCard extends StatelessWidget {
           _InfoRow(label: 'Floodgate', value: profile.floodgateUuid, canCopy: true),
           if (profile.tier != null) ...[
             const SizedBox(height: 8),
-            _InfoRow(label: 'Tier', value: profile.tier!),
+            _InfoRow(label: AppLocalizations.of(context)!.playerLookupLabelTier, value: profile.tier!),
           ],
         ],
       ),
@@ -566,7 +567,7 @@ class _InfoRow extends StatelessWidget {
               Clipboard.setData(ClipboardData(text: value));
               AppToast.show(
                 context,
-                message: '$label copied',
+                message: AppLocalizations.of(context)!.playerLookupCopied(label),
                 icon: Icons.copy_rounded,
                 color: AppTheme.accent,
                 duration: const Duration(seconds: 2),

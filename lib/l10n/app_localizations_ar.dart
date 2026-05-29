@@ -694,4 +694,113 @@ class AppLocalizationsAr extends AppLocalizations {
   String get skinsSignInTitle => 'سجّل الدخول لرؤية سكنك';
   @override
   String get skinsSignInSubtitle => 'أنشئ حساباً واربط Java أو Bedrock في الملف الشخصي.';
+
+  // ── Player Lookup ────────────────────────────────────────────────────────
+  @override
+  String get playerLookupTitle => 'البحث عن لاعب';
+  @override
+  String get playerLookupSubtitle => 'ابحث باسم مستخدم Java أو UUID أو علامة Bedrock أو XUID.';
+  @override
+  String get playerLookupHint => 'اسم المستخدم، علامة، UUID أو XUID…';
+  @override
+  String get playerLookupLinked => 'حسابات مرتبطة عبر GeyserMC';
+  @override
+  String get playerLookupLabelUsername => 'اسم المستخدم';
+  @override
+  String get playerLookupLabelTier => 'الرتبة';
+  @override
+  String playerLookupCopied(String label) => 'تم نسخ $label';
+  // ── Wiki ──────────────────────────────────────────────────────────────────
+  @override
+  String get wikiTitle => 'Wiki';
+  @override
+  String get wikiSearchHint => 'ابحث عن مخلوقات، عناصر، كتل…';
+  @override
+  String get wikiMinecraftWiki => 'minecraft.wiki';
+  @override
+  String wikiCategories(int count) => '$count فئات';
+  @override
+  String wikiNoResults(String query) => 'لا توجد نتائج لـ "$query"';
+  @override
+  String get wikiNoPagesFound => 'لم يتم العثور على صفحات في هذه الفئة.';
+  @override
+  String get wikiCouldNotLoadPages => 'تعذّر تحميل الصفحات.';
+  @override
+  String get wikiCouldNotReach => 'تعذّر الوصول إلى ويكي Minecraft.';
+  @override
+  String get wikiCouldNotLoadContent => 'تعذّر تحميل محتوى الصفحة.';
+  @override
+  String get wikiOpenInBrowser => 'فتح في المتصفح';
+  @override
+  String get wikiReadFullArticle => 'اقرأ المقال كاملاً على minecraft.wiki';
+  @override
+  String get wikiCrafting => 'الصناعة';
+  @override
+  String get wikiMobs => 'المخلوقات';
+  @override
+  String get wikiBlocks => 'الكتل';
+  @override
+  String get wikiItems => 'العناصر';
+  @override
+  String get wikiBiomes => 'البيئات';
+  @override
+  String get wikiStructures => 'الهياكل';
+  @override
+  String get wikiEnchantments => 'التحسينات السحرية';
+  @override
+  String get wikiPotions => 'الجرعات';
+  @override
+  String get wikiPassive => 'سلمي';
+  @override
+  String get wikiNeutral => 'محايد';
+  @override
+  String get wikiHostile => 'عدائي';
+  @override
+  String get wikiBoss => 'الزعيم';
+  @override
+  String get wikiUtility => 'مساعد';
+  @override
+  String get wikiNatural => 'طبيعي';
+  @override
+  String get wikiOres => 'الخامات';
+  @override
+  String get wikiWood => 'الخشب';
+  @override
+  String get wikiStone => 'الحجر';
+  @override
+  String get wikiRedstone => 'ريدستون';
+  @override
+  String get wikiPlants => 'النباتات';
+  @override
+  String get wikiDecoration => 'الديكور';
+  @override
+  String get wikiTools => 'الأدوات';
+  @override
+  String get wikiSwords => 'السيوف';
+  @override
+  String get wikiRanged => 'بعيد المدى';
+  @override
+  String get wikiArmor => 'الدروع';
+  @override
+  String get wikiFood => 'الطعام';
+  @override
+  String get wikiBrewing => 'التخمير';
+  @override
+  String get wikiMaterials => 'المواد';
+  @override
+  String get wikiOverworld => 'العالم العلوي';
+  @override
+  String get wikiNether => 'نيثر';
+  @override
+  String get wikiTheEnd => 'النهاية';
+  @override
+  String get wikiSword => 'السيف';
+  @override
+  String get wikiTool => 'الأداة';
+  @override
+  String get wikiBow => 'القوس';
+  @override
+  String get wikiFishing => 'الصيد';
+  @override
+  String get wikiStatusEffects => 'تأثيرات الحالة';
 }

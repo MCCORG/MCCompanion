@@ -694,4 +694,113 @@ class AppLocalizationsEn extends AppLocalizations {
   String get skinsSignInTitle => 'Sign in to see your skin';
   @override
   String get skinsSignInSubtitle => 'Create an account and link Java or Bedrock in Profile.';
+
+  // ── Player Lookup ────────────────────────────────────────────────────────
+  @override
+  String get playerLookupTitle => 'Player Lookup';
+  @override
+  String get playerLookupSubtitle => 'Search by Java username, UUID, Bedrock gamertag or XUID.';
+  @override
+  String get playerLookupHint => 'Username, gamertag, UUID or XUID…';
+  @override
+  String get playerLookupLinked => 'Accounts linked via GeyserMC';
+  @override
+  String get playerLookupLabelUsername => 'Username';
+  @override
+  String get playerLookupLabelTier => 'Tier';
+  @override
+  String playerLookupCopied(String label) => '$label copied';
+  // ── Wiki ──────────────────────────────────────────────────────────────────
+  @override
+  String get wikiTitle => 'Wiki';
+  @override
+  String get wikiSearchHint => 'Search mobs, items, blocks…';
+  @override
+  String get wikiMinecraftWiki => 'minecraft.wiki';
+  @override
+  String wikiCategories(int count) => '$count categories';
+  @override
+  String wikiNoResults(String query) => 'No results for "$query"';
+  @override
+  String get wikiNoPagesFound => 'No pages found in this category.';
+  @override
+  String get wikiCouldNotLoadPages => 'Could not load pages.';
+  @override
+  String get wikiCouldNotReach => 'Could not reach the Minecraft Wiki.';
+  @override
+  String get wikiCouldNotLoadContent => 'Could not load page content.';
+  @override
+  String get wikiOpenInBrowser => 'Open in browser';
+  @override
+  String get wikiReadFullArticle => 'Read full article on minecraft.wiki';
+  @override
+  String get wikiCrafting => 'Crafting';
+  @override
+  String get wikiMobs => 'Mobs';
+  @override
+  String get wikiBlocks => 'Blocks';
+  @override
+  String get wikiItems => 'Items';
+  @override
+  String get wikiBiomes => 'Biomes';
+  @override
+  String get wikiStructures => 'Structures';
+  @override
+  String get wikiEnchantments => 'Enchantments';
+  @override
+  String get wikiPotions => 'Potions';
+  @override
+  String get wikiPassive => 'Passive';
+  @override
+  String get wikiNeutral => 'Neutral';
+  @override
+  String get wikiHostile => 'Hostile';
+  @override
+  String get wikiBoss => 'Boss';
+  @override
+  String get wikiUtility => 'Utility';
+  @override
+  String get wikiNatural => 'Natural';
+  @override
+  String get wikiOres => 'Ores';
+  @override
+  String get wikiWood => 'Wood';
+  @override
+  String get wikiStone => 'Stone';
+  @override
+  String get wikiRedstone => 'Redstone';
+  @override
+  String get wikiPlants => 'Plants';
+  @override
+  String get wikiDecoration => 'Decoration';
+  @override
+  String get wikiTools => 'Tools';
+  @override
+  String get wikiSwords => 'Swords';
+  @override
+  String get wikiRanged => 'Ranged';
+  @override
+  String get wikiArmor => 'Armor';
+  @override
+  String get wikiFood => 'Food';
+  @override
+  String get wikiBrewing => 'Brewing';
+  @override
+  String get wikiMaterials => 'Materials';
+  @override
+  String get wikiOverworld => 'Overworld';
+  @override
+  String get wikiNether => 'Nether';
+  @override
+  String get wikiTheEnd => 'The End';
+  @override
+  String get wikiSword => 'Sword';
+  @override
+  String get wikiTool => 'Tool';
+  @override
+  String get wikiBow => 'Bow';
+  @override
+  String get wikiFishing => 'Fishing';
+  @override
+  String get wikiStatusEffects => 'Status Effects';
 }

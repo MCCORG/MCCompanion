@@ -694,4 +694,113 @@ class AppLocalizationsJa extends AppLocalizations {
   String get skinsSignInTitle => 'スキンを表示するにはサインイン';
   @override
   String get skinsSignInSubtitle => 'アカウントを作成し、プロフィールでJavaまたはBedrockを連携してください。';
+
+  // ── Player Lookup ────────────────────────────────────────────────────────
+  @override
+  String get playerLookupTitle => 'プレイヤー検索';
+  @override
+  String get playerLookupSubtitle => 'Javaユーザー名、UUID、BedrockゲーマータグまたはXUIDで検索。';
+  @override
+  String get playerLookupHint => 'ユーザー名、ゲーマータグ、UUIDまたはXUID…';
+  @override
+  String get playerLookupLinked => 'GeyserMCでアカウントが連携されています';
+  @override
+  String get playerLookupLabelUsername => 'ユーザー名';
+  @override
+  String get playerLookupLabelTier => 'ティア';
+  @override
+  String playerLookupCopied(String label) => '$labelをコピーしました';
+  // ── Wiki ──────────────────────────────────────────────────────────────────
+  @override
+  String get wikiTitle => 'Wiki';
+  @override
+  String get wikiSearchHint => 'モブ、アイテム、ブロックを検索…';
+  @override
+  String get wikiMinecraftWiki => 'minecraft.wiki';
+  @override
+  String wikiCategories(int count) => '$countカテゴリ';
+  @override
+  String wikiNoResults(String query) => '"$query"の検索結果なし';
+  @override
+  String get wikiNoPagesFound => 'このカテゴリにページが見つかりませんでした。';
+  @override
+  String get wikiCouldNotLoadPages => 'ページを読み込めませんでした。';
+  @override
+  String get wikiCouldNotReach => 'Minecraft Wikiに接続できませんでした。';
+  @override
+  String get wikiCouldNotLoadContent => 'ページ内容を読み込めませんでした。';
+  @override
+  String get wikiOpenInBrowser => 'ブラウザで開く';
+  @override
+  String get wikiReadFullArticle => 'minecraft.wikiで全文を読む';
+  @override
+  String get wikiCrafting => 'クラフト';
+  @override
+  String get wikiMobs => 'モブ';
+  @override
+  String get wikiBlocks => 'ブロック';
+  @override
+  String get wikiItems => 'アイテム';
+  @override
+  String get wikiBiomes => 'バイオーム';
+  @override
+  String get wikiStructures => '構造物';
+  @override
+  String get wikiEnchantments => 'エンチャント';
+  @override
+  String get wikiPotions => 'ポーション';
+  @override
+  String get wikiPassive => '友好的';
+  @override
+  String get wikiNeutral => '中立的';
+  @override
+  String get wikiHostile => '敵対的';
+  @override
+  String get wikiBoss => 'ボス';
+  @override
+  String get wikiUtility => 'ユーティリティ';
+  @override
+  String get wikiNatural => '自然';
+  @override
+  String get wikiOres => '鉱石';
+  @override
+  String get wikiWood => '木材';
+  @override
+  String get wikiStone => '石';
+  @override
+  String get wikiRedstone => 'レッドストーン';
+  @override
+  String get wikiPlants => '植物';
+  @override
+  String get wikiDecoration => '装飾';
+  @override
+  String get wikiTools => 'ツール';
+  @override
+  String get wikiSwords => '剣';
+  @override
+  String get wikiRanged => '遠距離';
+  @override
+  String get wikiArmor => '防具';
+  @override
+  String get wikiFood => '食料';
+  @override
+  String get wikiBrewing => '醸造';
+  @override
+  String get wikiMaterials => '素材';
+  @override
+  String get wikiOverworld => 'オーバーワールド';
+  @override
+  String get wikiNether => 'ネザー';
+  @override
+  String get wikiTheEnd => 'ジ・エンド';
+  @override
+  String get wikiSword => '剣';
+  @override
+  String get wikiTool => 'ツール';
+  @override
+  String get wikiBow => '弓';
+  @override
+  String get wikiFishing => '釣り';
+  @override
+  String get wikiStatusEffects => 'ステータス効果';
 }

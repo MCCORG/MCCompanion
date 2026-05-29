@@ -694,4 +694,113 @@ class AppLocalizationsRu extends AppLocalizations {
   String get skinsSignInTitle => 'Войдите, чтобы увидеть ваш скин';
   @override
   String get skinsSignInSubtitle => 'Создайте аккаунт и привяжите Java или Bedrock в Профиле.';
+
+  // ── Player Lookup ────────────────────────────────────────────────────────
+  @override
+  String get playerLookupTitle => 'Поиск игрока';
+  @override
+  String get playerLookupSubtitle => 'Поиск по имени Java, UUID, тегу Bedrock или XUID.';
+  @override
+  String get playerLookupHint => 'Имя, тег, UUID или XUID…';
+  @override
+  String get playerLookupLinked => 'Аккаунты связаны через GeyserMC';
+  @override
+  String get playerLookupLabelUsername => 'Имя пользователя';
+  @override
+  String get playerLookupLabelTier => 'Уровень';
+  @override
+  String playerLookupCopied(String label) => '$label скопировано';
+  // ── Wiki ──────────────────────────────────────────────────────────────────
+  @override
+  String get wikiTitle => 'Wiki';
+  @override
+  String get wikiSearchHint => 'Поиск мобов, предметов, блоков…';
+  @override
+  String get wikiMinecraftWiki => 'minecraft.wiki';
+  @override
+  String wikiCategories(int count) => '$count категории';
+  @override
+  String wikiNoResults(String query) => 'Нет результатов для "$query"';
+  @override
+  String get wikiNoPagesFound => 'Страницы в этой категории не найдены.';
+  @override
+  String get wikiCouldNotLoadPages => 'Не удалось загрузить страницы.';
+  @override
+  String get wikiCouldNotReach => 'Не удалось подключиться к Minecraft Wiki.';
+  @override
+  String get wikiCouldNotLoadContent => 'Не удалось загрузить содержимое страницы.';
+  @override
+  String get wikiOpenInBrowser => 'Открыть в браузере';
+  @override
+  String get wikiReadFullArticle => 'Читать полную статью на minecraft.wiki';
+  @override
+  String get wikiCrafting => 'Крафт';
+  @override
+  String get wikiMobs => 'Мобы';
+  @override
+  String get wikiBlocks => 'Блоки';
+  @override
+  String get wikiItems => 'Предметы';
+  @override
+  String get wikiBiomes => 'Биомы';
+  @override
+  String get wikiStructures => 'Структуры';
+  @override
+  String get wikiEnchantments => 'Зачарования';
+  @override
+  String get wikiPotions => 'Зелья';
+  @override
+  String get wikiPassive => 'Пассивные';
+  @override
+  String get wikiNeutral => 'Нейтральные';
+  @override
+  String get wikiHostile => 'Враждебные';
+  @override
+  String get wikiBoss => 'Босс';
+  @override
+  String get wikiUtility => 'Полезные';
+  @override
+  String get wikiNatural => 'Природные';
+  @override
+  String get wikiOres => 'Руды';
+  @override
+  String get wikiWood => 'Дерево';
+  @override
+  String get wikiStone => 'Камень';
+  @override
+  String get wikiRedstone => 'Красный камень';
+  @override
+  String get wikiPlants => 'Растения';
+  @override
+  String get wikiDecoration => 'Декор';
+  @override
+  String get wikiTools => 'Инструменты';
+  @override
+  String get wikiSwords => 'Мечи';
+  @override
+  String get wikiRanged => 'Дальнобойные';
+  @override
+  String get wikiArmor => 'Броня';
+  @override
+  String get wikiFood => 'Еда';
+  @override
+  String get wikiBrewing => 'Варка зелий';
+  @override
+  String get wikiMaterials => 'Материалы';
+  @override
+  String get wikiOverworld => 'Верхний мир';
+  @override
+  String get wikiNether => 'Незер';
+  @override
+  String get wikiTheEnd => 'Эндер';
+  @override
+  String get wikiSword => 'Меч';
+  @override
+  String get wikiTool => 'Инструмент';
+  @override
+  String get wikiBow => 'Лук';
+  @override
+  String get wikiFishing => 'Рыбалка';
+  @override
+  String get wikiStatusEffects => 'Эффекты статуса';
 }

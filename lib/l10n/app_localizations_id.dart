@@ -694,4 +694,113 @@ class AppLocalizationsId extends AppLocalizations {
   String get skinsSignInTitle => 'Masuk untuk melihat skin Anda';
   @override
   String get skinsSignInSubtitle => 'Buat akun dan hubungkan Java atau Bedrock di Profil.';
+
+  // ── Player Lookup ────────────────────────────────────────────────────────
+  @override
+  String get playerLookupTitle => 'Pencarian Pemain';
+  @override
+  String get playerLookupSubtitle => 'Cari berdasarkan nama pengguna Java, UUID, gamertag Bedrock, atau XUID.';
+  @override
+  String get playerLookupHint => 'Nama pengguna, gamertag, UUID atau XUID…';
+  @override
+  String get playerLookupLinked => 'Akun terhubung melalui GeyserMC';
+  @override
+  String get playerLookupLabelUsername => 'Nama pengguna';
+  @override
+  String get playerLookupLabelTier => 'Tingkat';
+  @override
+  String playerLookupCopied(String label) => '$label disalin';
+  // ── Wiki ──────────────────────────────────────────────────────────────────
+  @override
+  String get wikiTitle => 'Wiki';
+  @override
+  String get wikiSearchHint => 'Cari mob, item, blok…';
+  @override
+  String get wikiMinecraftWiki => 'minecraft.wiki';
+  @override
+  String wikiCategories(int count) => '$count kategori';
+  @override
+  String wikiNoResults(String query) => 'Tidak ada hasil untuk "$query"';
+  @override
+  String get wikiNoPagesFound => 'Tidak ada halaman yang ditemukan di kategori ini.';
+  @override
+  String get wikiCouldNotLoadPages => 'Tidak dapat memuat halaman.';
+  @override
+  String get wikiCouldNotReach => 'Tidak dapat mengakses Minecraft Wiki.';
+  @override
+  String get wikiCouldNotLoadContent => 'Tidak dapat memuat konten halaman.';
+  @override
+  String get wikiOpenInBrowser => 'Buka di browser';
+  @override
+  String get wikiReadFullArticle => 'Baca artikel lengkap di minecraft.wiki';
+  @override
+  String get wikiCrafting => 'Pembuatan';
+  @override
+  String get wikiMobs => 'Mob';
+  @override
+  String get wikiBlocks => 'Blok';
+  @override
+  String get wikiItems => 'Item';
+  @override
+  String get wikiBiomes => 'Bioma';
+  @override
+  String get wikiStructures => 'Struktur';
+  @override
+  String get wikiEnchantments => 'Pesona';
+  @override
+  String get wikiPotions => 'Ramuan';
+  @override
+  String get wikiPassive => 'Pasif';
+  @override
+  String get wikiNeutral => 'Netral';
+  @override
+  String get wikiHostile => 'Berbahaya';
+  @override
+  String get wikiBoss => 'Bos';
+  @override
+  String get wikiUtility => 'Utilitas';
+  @override
+  String get wikiNatural => 'Alami';
+  @override
+  String get wikiOres => 'Bijih';
+  @override
+  String get wikiWood => 'Kayu';
+  @override
+  String get wikiStone => 'Batu';
+  @override
+  String get wikiRedstone => 'Redstone';
+  @override
+  String get wikiPlants => 'Tanaman';
+  @override
+  String get wikiDecoration => 'Dekorasi';
+  @override
+  String get wikiTools => 'Alat';
+  @override
+  String get wikiSwords => 'Pedang';
+  @override
+  String get wikiRanged => 'Jarak jauh';
+  @override
+  String get wikiArmor => 'Baju besi';
+  @override
+  String get wikiFood => 'Makanan';
+  @override
+  String get wikiBrewing => 'Pembuatan ramuan';
+  @override
+  String get wikiMaterials => 'Bahan';
+  @override
+  String get wikiOverworld => 'Overworld';
+  @override
+  String get wikiNether => 'Nether';
+  @override
+  String get wikiTheEnd => 'The End';
+  @override
+  String get wikiSword => 'Pedang';
+  @override
+  String get wikiTool => 'Alat';
+  @override
+  String get wikiBow => 'Busur';
+  @override
+  String get wikiFishing => 'Memancing';
+  @override
+  String get wikiStatusEffects => 'Efek status';
 }

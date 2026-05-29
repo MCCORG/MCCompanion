@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
+import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 
 class _Sub {
@@ -144,6 +145,47 @@ const _sections = [
     ],
   ),
 ];
+
+// Maps the English const label stored on _Section/_Sub → the localized string.
+String _wikiL10n(AppLocalizations l, String key) {
+  switch (key) {
+    case 'Mobs':           return l.wikiMobs;
+    case 'Blocks':         return l.wikiBlocks;
+    case 'Items':          return l.wikiItems;
+    case 'Biomes':         return l.wikiBiomes;
+    case 'Structures':     return l.wikiStructures;
+    case 'Enchantments':   return l.wikiEnchantments;
+    case 'Potions':        return l.wikiPotions;
+    case 'Passive':        return l.wikiPassive;
+    case 'Neutral':        return l.wikiNeutral;
+    case 'Hostile':        return l.wikiHostile;
+    case 'Boss':           return l.wikiBoss;
+    case 'Utility':        return l.wikiUtility;
+    case 'Natural':        return l.wikiNatural;
+    case 'Ores':           return l.wikiOres;
+    case 'Wood':           return l.wikiWood;
+    case 'Stone':          return l.wikiStone;
+    case 'Redstone':       return l.wikiRedstone;
+    case 'Plants':         return l.wikiPlants;
+    case 'Decoration':     return l.wikiDecoration;
+    case 'Tools':          return l.wikiTools;
+    case 'Swords':         return l.wikiSwords;
+    case 'Ranged':         return l.wikiRanged;
+    case 'Armor':          return l.wikiArmor;
+    case 'Food':           return l.wikiFood;
+    case 'Brewing':        return l.wikiBrewing;
+    case 'Materials':      return l.wikiMaterials;
+    case 'Overworld':      return l.wikiOverworld;
+    case 'Nether':         return l.wikiNether;
+    case 'The End':        return l.wikiTheEnd;
+    case 'Sword':          return l.wikiSword;
+    case 'Tool':           return l.wikiTool;
+    case 'Bow':            return l.wikiBow;
+    case 'Fishing':        return l.wikiFishing;
+    case 'Status Effects': return l.wikiStatusEffects;
+    default:               return key;
+  }
+}
 
 class WikiResult {
   int pageId;
@@ -506,7 +548,7 @@ class _WikiScreenState extends State<WikiScreen> {
     } catch (_) {
       if (!mounted) return;
       setState(() {
-        _error = 'Could not load pages.';
+        _error = AppLocalizations.of(context)!.wikiCouldNotLoadPages;
         _loading = false;
       });
     }
@@ -551,7 +593,7 @@ class _WikiScreenState extends State<WikiScreen> {
     } catch (_) {
       if (!mounted) return;
       setState(() {
-        _error = 'Could not load pages.';
+        _error = AppLocalizations.of(context)!.wikiCouldNotLoadPages;
         _loading = false;
       });
     }
@@ -661,7 +703,7 @@ class _WikiScreenState extends State<WikiScreen> {
     } catch (_) {
       if (!mounted) return;
       setState(() {
-        _error = 'Could not reach the Minecraft Wiki.';
+        _error = AppLocalizations.of(context)!.wikiCouldNotReach;
         _loading = false;
       });
     }
@@ -691,20 +733,21 @@ class _WikiScreenState extends State<WikiScreen> {
   }
 
   Widget _buildHeader() {
+    final l = AppLocalizations.of(context)!;
     final bool canBack = _view != _View.root;
     String title;
     switch (_view) {
       case _View.subs:
-        title = _activeSection!.label;
+        title = _wikiL10n(l, _activeSection!.label);
         break;
       case _View.pages:
-        title = _activeSub!.label;
+        title = _wikiL10n(l, _activeSub!.label);
         break;
       case _View.search:
-        title = 'Wiki';
+        title = l.wikiTitle;
         break;
       case _View.root:
-        title = 'Wiki';
+        title = l.wikiTitle;
         break;
     }
 
@@ -734,7 +777,7 @@ class _WikiScreenState extends State<WikiScreen> {
                     _pages = [];
                   }),
                   child: Text(
-                    _activeSection!.label,
+                    _wikiL10n(l, _activeSection!.label),
                     style: const TextStyle(
                       color: AppTheme.accent,
                       fontSize: 14,
@@ -764,9 +807,9 @@ class _WikiScreenState extends State<WikiScreen> {
                 ),
               ),
               if (_view == _View.root)
-                const Text(
-                  'minecraft.wiki',
-                  style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
+                Text(
+                  l.wikiMinecraftWiki,
+                  style: const TextStyle(color: AppTheme.textMuted, fontSize: 12),
                 ),
             ],
           ),
@@ -776,7 +819,7 @@ class _WikiScreenState extends State<WikiScreen> {
             onChanged: _onSearchChanged,
             style: const TextStyle(color: AppTheme.textPrimary, fontSize: 14),
             decoration: InputDecoration(
-              hintText: 'Search mobs, items, blocks…',
+              hintText: l.wikiSearchHint,
               hintStyle: const TextStyle(
                 color: AppTheme.textMuted,
                 fontSize: 13,
@@ -972,6 +1015,7 @@ class _WikiScreenState extends State<WikiScreen> {
   }
 
   Widget _buildPageList(List<WikiResult> results) {
+    final l = AppLocalizations.of(context)!;
     if (results.isEmpty && _hasSearched) {
       return Center(
         child: Column(
@@ -984,7 +1028,7 @@ class _WikiScreenState extends State<WikiScreen> {
             ),
             const SizedBox(height: 12),
             Text(
-              'No results for "${_searchController.text}"',
+              l.wikiNoResults(_searchController.text),
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: AppTheme.textSecondary,
@@ -996,10 +1040,10 @@ class _WikiScreenState extends State<WikiScreen> {
       );
     }
     if (results.isEmpty) {
-      return const Center(
+      return Center(
         child: Text(
-          'No pages found in this category.',
-          style: TextStyle(color: AppTheme.textMuted, fontSize: 13),
+          l.wikiNoPagesFound,
+          style: const TextStyle(color: AppTheme.textMuted, fontSize: 13),
         ),
       );
     }
@@ -1080,7 +1124,7 @@ class _WikiCardState extends State<_WikiCard> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    widget.section.label,
+                    _wikiL10n(AppLocalizations.of(context)!, widget.section.label),
                     style: const TextStyle(
                       color: AppTheme.textPrimary,
                       fontSize: 14,
@@ -1089,7 +1133,7 @@ class _WikiCardState extends State<_WikiCard> {
                   ),
                   const SizedBox(height: 3),
                   Text(
-                    '${widget.section.subs.length} categories',
+                    AppLocalizations.of(context)!.wikiCategories(widget.section.subs.length),
                     style: const TextStyle(
                       color: AppTheme.textMuted,
                       fontSize: 11,
@@ -1167,7 +1211,7 @@ class _SubCard extends StatelessWidget {
             const SizedBox(width: 14),
             Expanded(
               child: Text(
-                sub.label,
+                _wikiL10n(AppLocalizations.of(context)!, sub.label),
                 style: const TextStyle(
                   color: AppTheme.textPrimary,
                   fontWeight: FontWeight.w600,
@@ -1367,7 +1411,7 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
     } catch (_) {
       if (!mounted) return;
       setState(() {
-        _error = 'Could not load page content.';
+        _error = AppLocalizations.of(context)!.wikiCouldNotLoadContent;
         _loading = false;
       });
     }
@@ -1592,7 +1636,7 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
                 FontAwesomeIcons.arrowUpRightFromSquare,
                 size: 13,
               ),
-              label: const Text('Open in browser'),
+              label: Text(AppLocalizations.of(context)!.wikiOpenInBrowser),
               style: FilledButton.styleFrom(backgroundColor: AppTheme.accent),
             ),
           ],
@@ -1622,9 +1666,9 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
         ],
 
         if (_craftingRecipes.isNotEmpty) ...[
-          const Text(
-            'Crafting',
-            style: TextStyle(
+          Text(
+            AppLocalizations.of(context)!.wikiCrafting,
+            style: const TextStyle(
               color: AppTheme.textPrimary,
               fontSize: 16,
               fontWeight: FontWeight.w700,
@@ -1686,7 +1730,7 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
         OutlinedButton.icon(
           onPressed: _openInBrowser,
           icon: const FaIcon(FontAwesomeIcons.arrowUpRightFromSquare, size: 12),
-          label: const Text('Read full article on minecraft.wiki'),
+          label: Text(AppLocalizations.of(context)!.wikiReadFullArticle),
           style: OutlinedButton.styleFrom(
             foregroundColor: AppTheme.accent,
             side: const BorderSide(color: AppTheme.accent),
