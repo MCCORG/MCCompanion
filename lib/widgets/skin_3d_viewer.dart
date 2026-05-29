@@ -104,6 +104,9 @@ class SkinBodyPainter extends CustomPainter {
     final sc = image.width / 64.0; // scale from skin pixels to image pixels
     final px = size.width / 16.0;  // 1 skin-unit in canvas pixels
 
+  
+    final is64x64 = image.height >= 64;
+
     final paint = Paint()
       ..filterQuality = FilterQuality.none
       ..isAntiAlias = false;
@@ -121,28 +124,28 @@ class SkinBodyPainter extends CustomPainter {
     }
 
     // ── Head ──────────────────────────────────────────────────────────────────
-    draw(4, 0, 8, 8,  8, 8, 8, 8);   // base front
-    draw(4, 0, 8, 8, 40, 8, 8, 8);   // overlay front (hat)
+    draw(4, 0, 8, 8,  8, 8, 8, 8); 
+    draw(4, 0, 8, 8, 40, 8, 8, 8); 
 
     // ── Body ──────────────────────────────────────────────────────────────────
     draw(4,  8, 8, 12, 20, 20, 8, 12); // base front
-    draw(4,  8, 8, 12, 20, 36, 8, 12); // overlay front (jacket)
+    if (is64x64) draw(4, 8, 8, 12, 20, 36, 8, 12); 
 
     // ── Left arm  (viewer-left  = player's RIGHT arm) ─────────────────────────
     draw(0,  8, 4, 12, 44, 20, 4, 12); // base front
-    draw(0,  8, 4, 12, 44, 36, 4, 12); // overlay front
+    if (is64x64) draw(0, 8, 4, 12, 44, 36, 4, 12); // overlay
 
     // ── Right arm (viewer-right = player's LEFT arm) ──────────────────────────
-    draw(12, 8, 4, 12, 36, 52, 4, 12); // base front
-    draw(12, 8, 4, 12, 52, 52, 4, 12); // overlay front
+    draw(12, 8, 4, 12, is64x64 ? 36 : 44, is64x64 ? 52 : 20, 4, 12);
+    if (is64x64) draw(12, 8, 4, 12, 52, 52, 4, 12); // 
 
     // ── Left leg  (viewer-left  = player's RIGHT leg) ─────────────────────────
     draw(4, 20, 4, 12,  4, 20, 4, 12); // base front
-    draw(4, 20, 4, 12,  4, 36, 4, 12); // overlay front
+    if (is64x64) draw(4, 20, 4, 12, 4, 36, 4, 12); // overlay — 64×64 only
 
     // ── Right leg (viewer-right = player's LEFT leg) ──────────────────────────
-    draw(8, 20, 4, 12, 20, 52, 4, 12); // base front
-    draw(8, 20, 4, 12,  4, 52, 4, 12); // overlay front
+    draw(8, 20, 4, 12, is64x64 ? 20 : 4, is64x64 ? 52 : 20, 4, 12);
+    if (is64x64) draw(8, 20, 4, 12, 4, 52, 4, 12);
   }
 
   @override
