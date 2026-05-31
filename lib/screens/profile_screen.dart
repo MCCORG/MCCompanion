@@ -1151,14 +1151,6 @@ class _ProfileTabState extends State<_ProfileTab> {
         padding: const EdgeInsets.all(16),
         children: [
           _EditProfileCard(me: widget.me!, onUpdated: widget.onRefresh),
-          if (widget.me!.bio?.isNotEmpty == true) ...[
-            const SizedBox(height: 12),
-            _InfoCard(
-              icon: Icons.info_outline_rounded,
-              label: AppLocalizations.of(context)!.aboutMe,
-              value: widget.me!.bio!,
-            ),
-          ],
           const SizedBox(height: 12),
           _LinkedAccountsCard(me: widget.me!, onRefresh: widget.onRefresh),
           const SizedBox(height: 12),
@@ -1600,6 +1592,7 @@ class _EditProfileCard extends StatefulWidget {
 class _EditProfileCardState extends State<_EditProfileCard> {
   bool _editing = false;
   bool _saving = false;
+  bool _obscureAvatar = true;
   late final TextEditingController _displayNameCtrl;
   late final TextEditingController _bioCtrl;
   late final TextEditingController _avatarUrlCtrl;
@@ -1714,12 +1707,17 @@ class _EditProfileCardState extends State<_EditProfileCard> {
               style: const TextStyle(color: AppTheme.textPrimary),
               keyboardType: TextInputType.url,
               autocorrect: false,
-              decoration: const InputDecoration(
+              obscureText: _obscureAvatar,
+              decoration: InputDecoration(
                 hintText: 'https://example.com/avatar.png',
-                prefixIcon: Icon(
-                  Icons.image_rounded,
-                  size: 18,
-                  color: AppTheme.textMuted,
+                prefixIcon: const Icon(Icons.image_rounded, size: 18, color: AppTheme.textMuted),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _obscureAvatar ? Icons.visibility_off_rounded : Icons.visibility_rounded,
+                    size: 18,
+                    color: AppTheme.textMuted,
+                  ),
+                  onPressed: () => setState(() => _obscureAvatar = !_obscureAvatar),
                 ),
               ),
             ),
@@ -1761,9 +1759,13 @@ class _EditProfileCardState extends State<_EditProfileCard> {
             ),
             const SizedBox(height: 8),
             _ProfileRow(label: AppLocalizations.of(context)!.usernameDisplayLabel, value: '@${widget.me.username}'),
+            if (widget.me.bio?.isNotEmpty == true) ...[
+              const SizedBox(height: 8),
+              _ProfileRow(label: AppLocalizations.of(context)!.aboutMe, value: widget.me.bio!),
+            ],
             if (widget.me.avatarUrl?.isNotEmpty == true) ...[
               const SizedBox(height: 8),
-              _ProfileRow(label: AppLocalizations.of(context)!.avatarUrlLabel, value: widget.me.avatarUrl!),
+              _ProfileRow(label: AppLocalizations.of(context)!.avatarUrlLabel, value: '••••••••••••'),
             ],
           ],
         ],
