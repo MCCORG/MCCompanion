@@ -58,7 +58,7 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
   @override
   Widget build(BuildContext context) {
     if (_loading) {
-      return const Center(
+      return Center(
         child: CircularProgressIndicator(
           color: AppTheme.accent,
           strokeWidth: 2,

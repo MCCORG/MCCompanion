@@ -5,13 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../theme/app_theme.dart';
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// 2-D FLAT BODY RENDERER
-// Same approach as the Skins screen — maps front-face UV regions directly onto
-// a 2-D canvas.  No 3-D math, no depth sorting, no artefacts.
-// Use this everywhere except the skin editor (which needs the 3-D preview).
-// ═══════════════════════════════════════════════════════════════════════════════
-
 class SkinBodyFromUrl extends StatefulWidget {
   final String textureUrl;
   final double height;
@@ -73,7 +66,7 @@ class _SkinBodyFromUrlState extends State<SkinBodyFromUrl> {
       return SizedBox(
         width: w,
         height: h,
-        child: const Center(
+        child: Center(
           child: CircularProgressIndicator(
               color: AppTheme.accent, strokeWidth: 2),
         ),
@@ -91,18 +84,14 @@ class _SkinBodyFromUrlState extends State<SkinBodyFromUrl> {
     return CustomPaint(size: Size(w, h), painter: SkinBodyPainter(_image!));
   }
 }
-
-/// Draws the front-facing body sprite of a Minecraft Java skin, including all
-/// overlay (second-layer) parts.  The draw order ensures overlays are always
-/// painted on top of their base layer.
 class SkinBodyPainter extends CustomPainter {
   final ui.Image image;
   SkinBodyPainter(this.image);
 
   @override
   void paint(Canvas canvas, Size size) {
-    final sc = image.width / 64.0; // scale from skin pixels to image pixels
-    final px = size.width / 16.0;  // 1 skin-unit in canvas pixels
+    final sc = image.width / 64.0; 
+    final px = size.width / 16.0; 
 
   
     final is64x64 = image.height >= 64;
@@ -111,8 +100,6 @@ class SkinBodyPainter extends CustomPainter {
       ..filterQuality = FilterQuality.none
       ..isAntiAlias = false;
 
-    // draw(destX, destY, destW, destH, srcX, srcY, srcW, srcH)
-    // All values in skin-units; multiplied by px / sc internally.
     void draw(double dx, double dy, double dw, double dh,
         double sx, double sy, double sw, double sh) {
       canvas.drawImageRect(
@@ -123,27 +110,20 @@ class SkinBodyPainter extends CustomPainter {
       );
     }
 
-    // ── Head ──────────────────────────────────────────────────────────────────
     draw(4, 0, 8, 8,  8, 8, 8, 8); 
     draw(4, 0, 8, 8, 40, 8, 8, 8); 
 
-    // ── Body ──────────────────────────────────────────────────────────────────
-    draw(4,  8, 8, 12, 20, 20, 8, 12); // base front
+    draw(4,  8, 8, 12, 20, 20, 8, 12);
     if (is64x64) draw(4, 8, 8, 12, 20, 36, 8, 12); 
 
-    // ── Left arm  (viewer-left  = player's RIGHT arm) ─────────────────────────
-    draw(0,  8, 4, 12, 44, 20, 4, 12); // base front
-    if (is64x64) draw(0, 8, 4, 12, 44, 36, 4, 12); // overlay
+    draw(0,  8, 4, 12, 44, 20, 4, 12); 
+    if (is64x64) draw(0, 8, 4, 12, 44, 36, 4, 12);
 
-    // ── Right arm (viewer-right = player's LEFT arm) ──────────────────────────
     draw(12, 8, 4, 12, is64x64 ? 36 : 44, is64x64 ? 52 : 20, 4, 12);
-    if (is64x64) draw(12, 8, 4, 12, 52, 52, 4, 12); // 
+    if (is64x64) draw(12, 8, 4, 12, 52, 52, 4, 12); 
 
-    // ── Left leg  (viewer-left  = player's RIGHT leg) ─────────────────────────
-    draw(4, 20, 4, 12,  4, 20, 4, 12); // base front
-    if (is64x64) draw(4, 20, 4, 12, 4, 36, 4, 12); // overlay — 64×64 only
-
-    // ── Right leg (viewer-right = player's LEFT leg) ──────────────────────────
+    draw(4, 20, 4, 12,  4, 20, 4, 12); 
+    if (is64x64) draw(4, 20, 4, 12, 4, 36, 4, 12); 
     draw(8, 20, 4, 12, is64x64 ? 20 : 4, is64x64 ? 52 : 20, 4, 12);
     if (is64x64) draw(8, 20, 4, 12, 4, 52, 4, 12);
   }
@@ -151,10 +131,6 @@ class SkinBodyPainter extends CustomPainter {
   @override
   bool shouldRepaint(SkinBodyPainter old) => old.image != image;
 }
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// 3-D VIEWER  (used by the skin editor)
-// ═══════════════════════════════════════════════════════════════════════════════
 
 class Skin3DFromUrl extends StatefulWidget {
   final String textureUrl;
@@ -217,7 +193,7 @@ class _Skin3DFromUrlState extends State<Skin3DFromUrl> {
       return SizedBox(
         width: w,
         height: h,
-        child: const Center(
+        child: Center(
           child: CircularProgressIndicator(
               color: AppTheme.accent, strokeWidth: 2),
         ),
@@ -271,8 +247,6 @@ class _Skin3DViewerState extends State<Skin3DViewer> {
   }
 }
 
-// ── 3-D math helpers ──────────────────────────────────────────────────────────
-
 class _V3 {
   final double x, y, z;
   const _V3(this.x, this.y, this.z);
@@ -284,15 +258,6 @@ class _Face {
   const _Face(this.corners, this.uvs);
 }
 
-/// Build the 5 renderable faces (front, back, +X, -X, top) of a box.
-///
-/// UV layout follows the standard Minecraft skin texture format:
-///   Row at y+d: [Right(d×h)] [Front(w×h)] [Left(d×h)] [Back(w×h)]
-///   Above that:  [Top(w×d)]  [Bottom(w×d)]
-///
-/// tx, ty  — top-left corner of the UV region in skin pixels
-/// bw, bh, bd — box dimensions in skin units (width, height, depth)
-/// hw, hh, hd — half-extents of the 3-D geometry
 List<_Face> _boxFaces({
   required double hw,
   required double hh,
@@ -307,27 +272,22 @@ List<_Face> _boxFaces({
   final x = tx.toDouble(), y = ty.toDouble();
 
   return [
-    // Face 0 — Front (+Z, the face the player looks forward with)
     _Face(
       [_V3(-hw, hh, hd), _V3(hw, hh, hd), _V3(hw, -hh, hd), _V3(-hw, -hh, hd)],
       [Offset(x+d, y+d), Offset(x+d+w, y+d), Offset(x+d+w, y+d+h), Offset(x+d, y+d+h)],
     ),
-    // Face 1 — Back (-Z)
     _Face(
       [_V3(hw, hh, -hd), _V3(-hw, hh, -hd), _V3(-hw, -hh, -hd), _V3(hw, -hh, -hd)],
       [Offset(x+d+w+d, y+d), Offset(x+d+w+d+w, y+d), Offset(x+d+w+d+w, y+d+h), Offset(x+d+w+d, y+d+h)],
     ),
-    // Face 2 — +X side (player's left side / viewer's right at rotY=0)
     _Face(
       [_V3(hw, hh, hd), _V3(hw, hh, -hd), _V3(hw, -hh, -hd), _V3(hw, -hh, hd)],
       [Offset(x+d+w, y+d), Offset(x+d+w+d, y+d), Offset(x+d+w+d, y+d+h), Offset(x+d+w, y+d+h)],
     ),
-    // Face 3 — -X side (player's right side / viewer's left at rotY=0)
     _Face(
       [_V3(-hw, hh, -hd), _V3(-hw, hh, hd), _V3(-hw, -hh, hd), _V3(-hw, -hh, -hd)],
       [Offset(x, y+d), Offset(x+d, y+d), Offset(x+d, y+d+h), Offset(x, y+d+h)],
     ),
-    // Face 4 — Top (+Y)
     _Face(
       [_V3(-hw, hh, -hd), _V3(hw, hh, -hd), _V3(hw, hh, hd), _V3(-hw, hh, hd)],
       [Offset(x+d, y), Offset(x+d+w, y), Offset(x+d+w, y+d), Offset(x+d, y+d)],
@@ -335,8 +295,6 @@ List<_Face> _boxFaces({
   ];
 }
 
-/// Back-face culling: returns the screen-space Z component of the face normal
-/// after applying rotY.  Positive → face points away from viewer → skip.
 double _screenNormalZ(_Face face, double rotY) {
   final v0 = face.corners[0], v1 = face.corners[1], v3 = face.corners[3];
   final ax = v1.x - v0.x, ay = v1.y - v0.y, az = v1.z - v0.z;
@@ -388,9 +346,6 @@ typedef SkinFaceData = ({
   bool isBase,
 });
 
-/// Projects all skin body-part faces into screen space.
-/// Even part indices are base layers; odd are overlay layers.
-/// Does NOT sort — [drawSkinFaces] sorts each pass separately.
 List<SkinFaceData> buildProjectedFaces({
   required double rotY,
   required bool slim,
@@ -404,31 +359,19 @@ List<SkinFaceData> buildProjectedFaces({
   final armHW = slim ? 1.5 : 2.0;
   final armW  = slim ? 3   : 4;
 
-  // Seam overlap — makes adjacent parts slightly overlap so sub-pixel gaps
-  // between body parts are never visible.
   const s = 0.5;
 
-  // Overlay boxes are 0.05 units larger in every half-extent.  This is
-  // sub-pixel at typical display sizes so no grey border is visible, but it
-  // ensures the overlay depth is always slightly greater than its base face,
-  // which the two-pass renderer relies on for correct ordering.
   final parts = <(double, double, double, List<_Face>)>[
-    // ── Head ────────────────────────────────────────────────────────────────
     (0, 28, 0, _boxFaces(hw: 4,    hh: 4,    hd: 4,    tx: 0,  ty: 0,  bw: 8,    bh: 8,  bd: 8)),
     (0, 28, 0, _boxFaces(hw: 4.05, hh: 4.05, hd: 4.05, tx: 32, ty: 0,  bw: 8,    bh: 8,  bd: 8)),
-    // ── Body ────────────────────────────────────────────────────────────────
     (0, 18, 0, _boxFaces(hw: 4,    hh: 6 + s,      hd: 2,    tx: 16, ty: 16, bw: 8,    bh: 12, bd: 4)),
     (0, 18, 0, _boxFaces(hw: 4.05, hh: 6.05 + s,   hd: 2.05, tx: 16, ty: 32, bw: 8,    bh: 12, bd: 4)),
-    // ── Left arm  (viewer-left  = player's right arm) ───────────────────────
     (-(4 + armHW - s), 18, 0, _boxFaces(hw: armHW,        hh: 6 + s,      hd: 2,    tx: 40, ty: 16, bw: armW, bh: 12, bd: 4)),
     (-(4 + armHW - s), 18, 0, _boxFaces(hw: armHW + 0.05, hh: 6.05 + s,   hd: 2.05, tx: 40, ty: 32, bw: armW, bh: 12, bd: 4)),
-    // ── Right arm (viewer-right = player's left arm) ────────────────────────
     ( (4 + armHW - s), 18, 0, _boxFaces(hw: armHW,        hh: 6 + s,      hd: 2,    tx: 32, ty: 48, bw: armW, bh: 12, bd: 4)),
     ( (4 + armHW - s), 18, 0, _boxFaces(hw: armHW + 0.05, hh: 6.05 + s,   hd: 2.05, tx: 48, ty: 48, bw: armW, bh: 12, bd: 4)),
-    // ── Left leg  (viewer-left  = player's right leg) ───────────────────────
     (-(2.0 - s), 6, 0, _boxFaces(hw: 2,    hh: 6 + s,      hd: 2,    tx: 0,  ty: 16, bw: 4,    bh: 12, bd: 4)),
     (-(2.0 - s), 6, 0, _boxFaces(hw: 2.05, hh: 6.05 + s,   hd: 2.05, tx: 0,  ty: 32, bw: 4,    bh: 12, bd: 4)),
-    // ── Right leg (viewer-right = player's left leg) ────────────────────────
     ( (2.0 - s), 6, 0, _boxFaces(hw: 2,    hh: 6 + s,      hd: 2,    tx: 16, ty: 48, bw: 4,    bh: 12, bd: 4)),
     ( (2.0 - s), 6, 0, _boxFaces(hw: 2.05, hh: 6.05 + s,   hd: 2.05, tx: 0,  ty: 48, bw: 4,    bh: 12, bd: 4)),
   ];
@@ -439,9 +382,6 @@ List<SkinFaceData> buildProjectedFaces({
     final (bx, by, bz, faces) = parts[pi];
     final isBase = pi % 2 == 0;
 
-    // The inner side-face of each arm/leg is always hidden behind the body.
-    // Skip it to prevent dark artefacts at the seam.
-    // Face 2 (+X) is inner for left-X parts; face 3 (-X) for right-X parts.
     int skipFaceIdx = -1;
     if (pi == 4 || pi == 5 || pi == 8 || pi == 9)   skipFaceIdx = 2;
     if (pi == 6 || pi == 7 || pi == 10 || pi == 11) skipFaceIdx = 3;
@@ -449,7 +389,7 @@ List<SkinFaceData> buildProjectedFaces({
     for (int fi = 0; fi < faces.length; fi++) {
       if (fi == skipFaceIdx) continue;
       final face = faces[fi];
-      if (_screenNormalZ(face, rotY) >= 0) continue; // back-face cull
+      if (_screenNormalZ(face, rotY) >= 0) continue; 
 
       final screenPts = <Offset>[];
       double sumDepth = 0;
@@ -463,7 +403,6 @@ List<SkinFaceData> buildProjectedFaces({
         screenPts.add(Offset(cx + sx * scale, cy - (wy - charCenterY) * scale));
       }
 
-      // Minecraft-style directional lighting (0=front,1=back,2=+X,3=-X,4=top)
       const shades = [0.9, 0.8, 0.7, 0.7, 1.0];
       final shade = fi < shades.length ? shades[fi] : 1.0;
 
@@ -477,21 +416,9 @@ List<SkinFaceData> buildProjectedFaces({
     }
   }
 
-  return list; // deliberately unsorted — drawSkinFaces handles sorting per pass
+  return list; 
 }
 
-/// Two-pass painter's-algorithm renderer.
-///
-/// **Pass 1 — base faces**, sorted back-to-front.
-///   Each face gets a solid shaded-grey rectangle first so that transparent
-///   UV pixels (e.g. unfilled side faces) show the correct grey rather than
-///   the dark app background.
-///
-/// **Pass 2 — overlay faces**, sorted back-to-front.
-///   Drawn with texture only (no grey rect).  Transparent overlay pixels use
-///   srcOver, so they reveal the base layer painted in pass 1 — never the
-///   dark background.  This is correct because the overlay geometry is 0.05
-///   units larger than the base, making the depth sort reliable per-pass.
 void drawSkinFaces(Canvas canvas, ui.Image image, List<SkinFaceData> faces) {
   final shader = ui.ImageShader(
       image, TileMode.clamp, TileMode.clamp, Matrix4.identity().storage);

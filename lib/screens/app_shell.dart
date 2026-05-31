@@ -30,6 +30,11 @@ import 'player_lookup_screen.dart';
 import 'manage_servers_screen.dart';
 import 'profile_screen.dart';
 import 'chat_screen.dart';
+import 'server_tracker_screen.dart';
+import '../services/server_tracker_service.dart';
+import '../services/home_customization_service.dart';
+import '../services/theme_service.dart';
+import '../theme/app_theme.dart';
 
 enum _ActiveSheet { none, help, howTo, more, info }
 
@@ -42,6 +47,7 @@ const int _pageSkins = 5;
 const int _pageWiki = 6;
 const int _pageProfile = 7;
 const int _pagePlayerLookup = 8;
+const int _pageServerTracker = 9;
 
 class AppShell extends StatefulWidget {
   final RelayPingResult? initialRelay;
@@ -102,12 +108,20 @@ class _AppShellState extends State<AppShell>
       if (user != null) {
         MessageService.connect();
         unawaited(PushNotificationService.onUserSignedIn());
+        unawaited(ServerTrackerService.instance.start());
       } else {
         MessageService.disconnect();
+        ServerTrackerService.instance.stop();
       }
     });
 
     PushNotificationService.init(onNotificationTap: _handleNotificationTap);
+    HomeCustomizationService.instance.addListener(_onCustomizationChanged);
+    ThemeService.instance.addListener(_onCustomizationChanged);
+  }
+
+  void _onCustomizationChanged() {
+    if (mounted) setState(() {});
   }
 
   RelayPingResult _fallbackRelay() {
@@ -207,6 +221,26 @@ class _AppShellState extends State<AppShell>
 
   void _openManageServers() => _goTo(_pageManageServers);
 
+  VoidCallback _navCallbackFor(AppFeature feature) => switch (feature) {
+    AppFeature.connector => () => _goTo(_pageConnector),
+    AppFeature.skins     => () => _goTo(_pageSkins),
+    AppFeature.wiki      => () => _goTo(_pageWiki),
+    AppFeature.partners  => () => _goTo(_pagePartners),
+    AppFeature.lookup    => () => _goTo(_pagePlayerLookup),
+    AppFeature.tracker   => () => _goTo(_pageServerTracker),
+  };
+
+  bool _isNavFeatureActive(AppFeature feature) {
+    return switch (feature) {
+      AppFeature.skins     => _pageIndex == _pageSkins,
+      AppFeature.wiki      => _pageIndex == _pageWiki,
+      AppFeature.partners  => _pageIndex == _pagePartners,
+      AppFeature.lookup    => _pageIndex == _pagePlayerLookup,
+      AppFeature.tracker   => _pageIndex == _pageServerTracker,
+      AppFeature.connector => _pageIndex == _pageConnector,
+    };
+  }
+
   void _openAddServer() {
     setState(() {
       _editingServerIndex = null;
@@ -270,6 +304,8 @@ class _AppShellState extends State<AppShell>
       setState(() => _pageIndex = _pageManageServers);
     } else if (_pageIndex == _pagePlayerLookup) {
       _goTo(_pageHome);
+    } else if (_pageIndex == _pageServerTracker) {
+      _goTo(_pageHome);
     } else if (_pageIndex == _pageManageServers ||
         _pageIndex == _pagePartners) {
       _goTo(_pageConnector);
@@ -280,6 +316,8 @@ class _AppShellState extends State<AppShell>
 
   @override
   void dispose() {
+    HomeCustomizationService.instance.removeListener(_onCustomizationChanged);
+    ThemeService.instance.removeListener(_onCustomizationChanged);
     _authSub?.cancel();
     MessageService.disconnect();
     _sheetAnimController.dispose();
@@ -303,17 +341,14 @@ class _AppShellState extends State<AppShell>
       },
       child: Stack(
         children: [
-          const Positioned.fill(child: ColoredBox(color: Color(0xFF0B0E14))),
+          Positioned.fill(child: ColoredBox(color: AppTheme.background)),
           Positioned.fill(
             child: DecoratedBox(
               decoration: BoxDecoration(
                 gradient: RadialGradient(
                   center: const Alignment(0.8, -1.1),
                   radius: 0.9,
-                  colors: [
-                    const Color(0xFF6B8EF7).withOpacity(0.09),
-                    Colors.transparent,
-                  ],
+                  colors: [AppTheme.accent.withOpacity(0.07), Colors.transparent],
                 ),
               ),
             ),
@@ -324,42 +359,32 @@ class _AppShellState extends State<AppShell>
                 gradient: RadialGradient(
                   center: const Alignment(-1.0, 1.2),
                   radius: 0.7,
-                  colors: [
-                    const Color(0xFF4A6BD6).withOpacity(0.05),
-                    Colors.transparent,
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Positioned.fill(
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                gradient: RadialGradient(
-                  center: const Alignment(1.3, 0.9),
-                  radius: 0.55,
-                  colors: [
-                    Color(0xFF67E404).withOpacity(0.04),
-                    Colors.transparent,
-                  ],
+                  colors: [AppTheme.accent.withOpacity(0.04), Colors.transparent],
                 ),
               ),
             ),
           ),
           Scaffold(
             backgroundColor: Colors.transparent,
-            bottomNavigationBar: BottomGlassSimpleNavBar(
-              navigationController: navigationController,
-              dark: true,
-              selectedRelayIp: _selectedRelay.ip,
-              onRelayChanged: _onRelayChanged,
-              activeItem: _activeNavItem,
-              onHomeTap: () => _goTo(_pageHome),
-              onConnectorTap: () => _goTo(_pageConnector),
-              onSkinsTap: () => _goTo(_pageSkins),
-              onWikiTap: () => _goTo(_pageWiki),
-              onProfileTap: () => _goTo(_pageProfile),
-            ),
+            bottomNavigationBar: Builder(builder: (_) {
+              final svc = HomeCustomizationService.instance;
+              return BottomGlassSimpleNavBar(
+                navigationController: navigationController,
+                dark: true,
+                selectedRelayIp: _selectedRelay.ip,
+                onRelayChanged: _onRelayChanged,
+                activeItem: _activeNavItem,
+                onHomeTap: () => _goTo(_pageHome),
+                onConnectorTap: () => _goTo(_pageConnector),
+                onProfileTap: () => _goTo(_pageProfile),
+                navLeftFeature: svc.navLeft,
+                navRightFeature: svc.navRight,
+                onNavLeftTap: _navCallbackFor(svc.navLeft),
+                onNavRightTap: _navCallbackFor(svc.navRight),
+                navLeftActive: _isNavFeatureActive(svc.navLeft),
+                navRightActive: _isNavFeatureActive(svc.navRight),
+              );
+            }),
             body: SafeArea(
               top: true,
               bottom: false,
@@ -374,9 +399,7 @@ class _AppShellState extends State<AppShell>
                         onGoToWiki: () => _goTo(_pageWiki),
                         onGoToPartners: () => _goTo(_pagePartners),
                         onGoToPlayerLookup: () => _goTo(_pagePlayerLookup),
-                        partnerServersFuture: _partnerServersFuture,
-                        ipController: _ipController,
-                        portController: _portController,
+                        onGoToServerTracker: () => _goTo(_pageServerTracker),
                         onWebsiteTap: () =>
                             navigationController.openWebsite(context),
                         onDiscordTap: () =>
@@ -384,6 +407,12 @@ class _AppShellState extends State<AppShell>
                         onLanguageTap: () =>
                             navigationController.showLanguageDialog(context),
                         onInfoTap: () => _openSheet(_ActiveSheet.info),
+                        partnerServersFuture: _partnerServersFuture,
+                        onPlayServer: (ip, port) {
+                          _ipController.text = ip;
+                          _portController.text = port.toString();
+                          _goTo(_pageConnector);
+                        },
                       ),
                       HomeScreen(
                         key: _connectorKey,
@@ -433,6 +462,10 @@ class _AppShellState extends State<AppShell>
                         onGoToWiki: () => _goTo(_pageWiki),
                       ),
                       PlayerLookupScreen(onBack: () => _goTo(_pageHome)),
+                      ServerTrackerScreen(
+                        onBack: () => _goTo(_pageHome),
+                        onGoToLogin: () => _goTo(_pageProfile),
+                      ),
                     ],
                   ),
 

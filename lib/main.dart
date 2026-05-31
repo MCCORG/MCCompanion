@@ -5,6 +5,8 @@ import 'screens/splash_screen.dart';
 import 'theme/app_theme.dart';
 import 'l10n/app_localizations.dart';
 import 'services/locale_provider.dart';
+import 'services/home_customization_service.dart';
+import 'services/theme_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,11 +14,32 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await loadSavedLocale();
+  await HomeCustomizationService.instance.load();
+  await ThemeService.instance.load();
   runApp(const MCCompanionApp());
 }
 
-class MCCompanionApp extends StatelessWidget {
+class MCCompanionApp extends StatefulWidget {
   const MCCompanionApp({super.key});
+
+  @override
+  State<MCCompanionApp> createState() => _MCCompanionAppState();
+}
+
+class _MCCompanionAppState extends State<MCCompanionApp> {
+  @override
+  void initState() {
+    super.initState();
+    ThemeService.instance.addListener(_onThemeChanged);
+  }
+
+  @override
+  void dispose() {
+    ThemeService.instance.removeListener(_onThemeChanged);
+    super.dispose();
+  }
+
+  void _onThemeChanged() => setState(() {});
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +70,14 @@ class MCCompanionApp extends StatelessWidget {
           theme: AppTheme.darkTheme,
           home: const SplashScreen(),
           debugShowCheckedModeBanner: false,
+          builder: (context, child) {
+            return Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 500),
+                child: child!,
+              ),
+            );
+          },
         );
       },
     );

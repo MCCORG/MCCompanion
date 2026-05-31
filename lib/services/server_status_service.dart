@@ -4,11 +4,17 @@ class ServerStatus {
   final bool isOnline;
   final int? players;
   final int? maxPlayers;
+  final String? version;
+  final String? gameType;
+  final String? software;
 
   const ServerStatus({
     required this.isOnline,
     this.players,
     this.maxPlayers,
+    this.version,
+    this.gameType,
+    this.software,
   });
 
   static const ServerStatus offline = ServerStatus(isOnline: false);
@@ -44,6 +50,9 @@ class ServerStatusService {
         isOnline:   info.isOnline,
         players:    info.isOnline ? info.players    : null,
         maxPlayers: info.isOnline ? info.maxPlayers : null,
+        version:    info.isOnline && info.version.isNotEmpty  ? info.version  : null,
+        gameType:   info.isOnline && info.gameType.isNotEmpty ? info.gameType : null,
+        software:   info.isOnline && info.software.isNotEmpty ? info.software : null,
       );
       _cache[key]     = status;
       _lastFetch[key] = now;

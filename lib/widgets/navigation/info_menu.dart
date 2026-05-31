@@ -59,7 +59,7 @@ class InfoSheetContent extends StatelessWidget {
                         color: AppTheme.accent.withOpacity(0.25),
                       ),
                     ),
-                    child: const Center(
+                    child: Center(
                       child: Icon(
                         Icons.info_outline_rounded,
                         color: AppTheme.accent,
@@ -152,7 +152,7 @@ class InfoSheetContent extends StatelessWidget {
                       width: double.infinity,
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: AppTheme.surfaceRaised,
+                        color: AppTheme.surfaceRaisedSolid,
                         borderRadius: BorderRadius.circular(13),
                         border: Border.all(color: AppTheme.borderGray),
                       ),
@@ -283,7 +283,7 @@ class InfoSheetContent extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
           decoration: BoxDecoration(
-            color: AppTheme.surfaceRaised,
+            color: AppTheme.surfaceRaisedSolid,
             borderRadius: BorderRadius.circular(13),
             border: Border.all(color: AppTheme.borderGray),
           ),

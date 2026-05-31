@@ -134,7 +134,7 @@ class _ServerTile extends StatelessWidget {
               Positioned.fill(
                 child: CustomPaint(
                   painter: AppWavePainter(
-                    waves: const [
+                    waves: [
                       WaveConfig(
                         yFraction: 0.35,
                         amplitude: 4,
@@ -180,7 +180,7 @@ class _ServerTile extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: isSelected
                           ? AppTheme.accent.withOpacity(0.12)
-                          : AppTheme.surfaceRaised,
+                          : AppTheme.surfaceRaisedSolid,
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
                         color: isSelected
@@ -233,7 +233,7 @@ class _ServerTile extends StatelessWidget {
                         ),
                         decoration: BoxDecoration(
                           color: broadcasting
-                              ? AppTheme.surfaceRaised
+                              ? AppTheme.surfaceRaisedSolid
                               : isSelected
                                   ? AppTheme.accent
                                   : AppTheme.accent.withOpacity(0.15),
@@ -336,7 +336,7 @@ class _StatusBadgeState extends State<_StatusBadge> {
       decoration: BoxDecoration(
         color: online
             ? AppTheme.success.withOpacity(0.08)
-            : AppTheme.surfaceRaised,
+            : AppTheme.surfaceRaisedSolid,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: online

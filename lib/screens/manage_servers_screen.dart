@@ -63,7 +63,7 @@ class ManageServersScreenState extends State<ManageServersScreen> {
     return Column(
       children: [
         Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: AppTheme.surface,
             border: Border(
                 bottom: BorderSide(color: AppTheme.borderGray, width: 0.5)),
@@ -87,7 +87,7 @@ class ManageServersScreenState extends State<ManageServersScreen> {
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.add_rounded,
+                icon: Icon(Icons.add_rounded,
                     color: AppTheme.accent, size: 22),
                 onPressed: widget.onAddServer,
               ),
@@ -97,7 +97,7 @@ class ManageServersScreenState extends State<ManageServersScreen> {
 
         Expanded(
           child: _loading
-              ? const Center(
+              ? Center(
                   child: CircularProgressIndicator(
                     strokeWidth: 2,
                     color: AppTheme.accent,
@@ -229,7 +229,7 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
     return Column(
       children: [
         Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: AppTheme.surface,
             border: Border(
                 bottom: BorderSide(color: AppTheme.borderGray, width: 0.5)),
@@ -258,7 +258,7 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
 
         Expanded(
           child: !_loaded
-              ? const Center(
+              ? Center(
                   child: CircularProgressIndicator(
                       strokeWidth: 2, color: AppTheme.accent))
               : SingleChildScrollView(
@@ -417,7 +417,7 @@ class _ServerCard extends StatelessWidget {
               border:
                   Border.all(color: AppTheme.accent.withOpacity(0.22)),
             ),
-            child: const Icon(Icons.dns_rounded,
+            child: Icon(Icons.dns_rounded,
                 color: AppTheme.accent, size: 18),
           ),
           const SizedBox(width: 12),
@@ -659,7 +659,7 @@ class _Field extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(11),
           borderSide:
-              const BorderSide(color: AppTheme.accent, width: 1.5),
+              BorderSide(color: AppTheme.accent, width: 1.5),
         ),
       ),
     );

@@ -177,12 +177,10 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
         activeItem: 'profile',
         onHomeTap: () => _navTo(widget.onGoToHome),
         onConnectorTap: () => _navTo(widget.onGoToConnector),
-        onSkinsTap: () => _navTo(widget.onGoToSkins),
-        onWikiTap: () => _navTo(widget.onGoToWiki),
         onProfileTap: () => Navigator.of(context).popUntil((r) => r.isFirst),
       ),
       body: _loading
-          ? const Center(
+          ? Center(
               child: CircularProgressIndicator(
                 color: AppTheme.accent,
                 strokeWidth: 2,
@@ -374,7 +372,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
 
   Widget _buildFriendButton() {
     if (_actionLoading) {
-      return const Center(
+      return Center(
         child: SizedBox(
           width: 20,
           height: 20,
@@ -538,8 +536,6 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
         activeItem: 'profile',
         onHomeTap: () => _navTo(widget.onGoToHome),
         onConnectorTap: () => _navTo(widget.onGoToConnector),
-        onSkinsTap: () => _navTo(widget.onGoToSkins),
-        onWikiTap: () => _navTo(widget.onGoToWiki),
         onProfileTap: () => Navigator.of(context).pop(),
       ),
       body: Column(
@@ -560,7 +556,7 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                   color: AppTheme.textMuted,
                 ),
                 suffixIcon: _loading
-                    ? const Padding(
+                    ? Padding(
                         padding: EdgeInsets.all(12),
                         child: SizedBox(
                           width: 16,
@@ -585,7 +581,7 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
 
   Widget _buildResults() {
     if (_loading) {
-      return const Center(
+      return Center(
         child: CircularProgressIndicator(
           color: AppTheme.accent,
           strokeWidth: 2,
@@ -882,7 +878,7 @@ class _JavaPublicSkinState extends State<_JavaPublicSkin> {
           height: 140,
           child: Center(
             child: _loading
-                ? const CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
+                ? CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
                 : _textureUrl != null
                     ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 136)
                     : const Icon(Icons.person_rounded, color: AppTheme.textMuted, size: 36),
@@ -995,7 +991,7 @@ class _BedrockPublicSkinState extends State<_BedrockPublicSkin> {
           height: 140,
           child: Center(
             child: _loading
-                ? const CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
+                ? CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
                 : _textureUrl != null
                     ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 136)
                     : const Icon(Icons.person_rounded, color: AppTheme.textMuted, size: 36),

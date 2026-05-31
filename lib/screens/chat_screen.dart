@@ -75,7 +75,6 @@ class _ChatScreenState extends State<ChatScreen> {
       _loading = false;
       _hasMore = msgs.length >= 50;
     });
-    // reverse: true means list always opens at the bottom (pixels=0). No scroll needed.
   }
 
   Future<void> _loadMore() async {
@@ -97,7 +96,6 @@ class _ChatScreenState extends State<ChatScreen> {
   void _scrollToBottom({bool animate = true}) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!_scrollCtrl.hasClients) return;
-      // With reverse: true, pixels=0 is always the bottom (newest messages).
       if (animate) {
         _scrollCtrl.animateTo(0,
           duration: const Duration(milliseconds: 200),
@@ -180,7 +178,7 @@ class _ChatScreenState extends State<ChatScreen> {
         children: [
           Expanded(
             child: _loading
-                ? const Center(
+                ? Center(
                     child: CircularProgressIndicator(
                       color: AppTheme.accent,
                       strokeWidth: 2,
@@ -197,10 +195,8 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                     itemCount: _messages.length + (_loadingMore ? 1 : 0),
                     itemBuilder: (_, i) {
-                      // With reverse: true, i=0 is at the bottom (newest).
-                      // Loading indicator at the top = i == _messages.length.
                       if (_loadingMore && i == _messages.length) {
-                        return const Padding(
+                        return Padding(
                           padding: EdgeInsets.symmetric(vertical: 8),
                           child: Center(
                             child: SizedBox(
@@ -344,7 +340,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: AppTheme.accent,
                         width: 1.5,
                       ),
@@ -528,7 +524,7 @@ class _InputBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.fromLTRB(12, 8, 8, 12),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: AppTheme.surface,
         border: Border(top: BorderSide(color: AppTheme.borderGray, width: 0.5)),
       ),
@@ -567,7 +563,7 @@ class _InputBar extends StatelessWidget {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: const BorderSide(
+                    borderSide: BorderSide(
                       color: AppTheme.accent,
                       width: 1.5,
                     ),

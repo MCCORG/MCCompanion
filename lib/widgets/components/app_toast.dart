@@ -9,7 +9,7 @@ class AppToast {
     BuildContext context, {
     required String message,
     IconData? icon,
-    Color color = AppTheme.accent,
+    Color? color,
     Duration duration = const Duration(seconds: 3),
   }) {
     _current?.remove();
@@ -19,7 +19,7 @@ class AppToast {
       builder: (_) => _AppToastWidget(
         message: message,
         icon: icon,
-        color: color,
+        color: color ?? AppTheme.accent,
         onDone: () {
           _current?.remove();
           _current = null;

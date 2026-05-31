@@ -152,7 +152,7 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
   }
 
   Widget _buildLoading() {
-    return const Column(
+    return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2),
@@ -230,7 +230,7 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
               children: [
                 Text(
                   _userCode ?? '',
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.accent,
                     fontSize: 28,
                     fontWeight: FontWeight.w800,
@@ -313,7 +313,7 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
           const SizedBox(height: 8),
           Text(
             _gamertag!,
-            style: const TextStyle(
+            style: TextStyle(
               color: AppTheme.accent,
               fontSize: 16,
               fontWeight: FontWeight.w600,

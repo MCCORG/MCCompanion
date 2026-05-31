@@ -158,7 +158,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
   }
 
   Widget _buildLoading() {
-    return const Column(
+    return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2),
@@ -234,7 +234,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
               children: [
                 Text(
                   _userCode ?? '',
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.accent,
                     fontSize: 28,
                     fontWeight: FontWeight.w800,
@@ -317,7 +317,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
           const SizedBox(height: 8),
           Text(
             _javaUsername!,
-            style: const TextStyle(
+            style: TextStyle(
               color: AppTheme.accent,
               fontSize: 16,
               fontWeight: FontWeight.w600,

@@ -65,7 +65,7 @@ class HowToSheetContent extends StatelessWidget {
                       border: Border.all(
                           color: AppTheme.accent.withOpacity(0.25)),
                     ),
-                    child: const Center(
+                    child: Center(
                       child: FaIcon(FontAwesomeIcons.circleQuestion,
                           color: AppTheme.accent, size: 15),
                     ),

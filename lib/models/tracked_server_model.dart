@@ -1,0 +1,83 @@
+class TrackedServer {
+  final String id;
+  final String firebaseUid;
+  final String name;
+  final String ip;
+  final int port;
+  final String platform;
+  final String lastStatus;
+  final bool notificationsEnabled;
+  final DateTime? lastCheckedAt;
+  final DateTime createdAt;
+
+  final int? players;
+  final int? maxPlayers;
+  final String? version;
+  final String? gameType;
+  final String? software;
+
+  const TrackedServer({
+    required this.id,
+    required this.firebaseUid,
+    required this.name,
+    required this.ip,
+    required this.port,
+    required this.platform,
+    required this.lastStatus,
+    this.notificationsEnabled = true,
+    this.lastCheckedAt,
+    required this.createdAt,
+    this.players,
+    this.maxPlayers,
+    this.version,
+    this.gameType,
+    this.software,
+  });
+
+  factory TrackedServer.fromJson(Map<String, dynamic> json) {
+    return TrackedServer(
+      id: json['id'] as String,
+      firebaseUid: json['firebase_uid'] as String,
+      name: json['name'] as String,
+      ip: json['ip'] as String,
+      port: json['port'] as int,
+      platform: json['platform'] as String,
+      lastStatus: json['last_status'] as String,
+      notificationsEnabled: json['notifications_enabled'] as bool? ?? true,
+      lastCheckedAt: json['last_checked_at'] != null
+          ? DateTime.parse(json['last_checked_at'] as String)
+          : null,
+      createdAt: DateTime.parse(json['created_at'] as String),
+    );
+  }
+
+  TrackedServer copyWith({
+    String? name,
+    String? lastStatus,
+    bool? notificationsEnabled,
+    DateTime? lastCheckedAt,
+    int? players,
+    int? maxPlayers,
+    String? version,
+    String? gameType,
+    String? software,
+  }) {
+    return TrackedServer(
+      id: id,
+      firebaseUid: firebaseUid,
+      name: name ?? this.name,
+      ip: ip,
+      port: port,
+      platform: platform,
+      lastStatus: lastStatus ?? this.lastStatus,
+      notificationsEnabled: notificationsEnabled ?? this.notificationsEnabled,
+      lastCheckedAt: lastCheckedAt ?? this.lastCheckedAt,
+      createdAt: createdAt,
+      players: players ?? this.players,
+      maxPlayers: maxPlayers ?? this.maxPlayers,
+      version: version ?? this.version,
+      gameType: gameType ?? this.gameType,
+      software: software ?? this.software,
+    );
+  }
+}

@@ -24,7 +24,10 @@ class PushNotificationService {
 
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-    await _fcm.requestPermission(alert: true, badge: true, sound: true);
+    try {
+      await _fcm.requestPermission(alert: true, badge: true, sound: true);
+    } catch (_) {
+    }
 
     if (Platform.isIOS) {
       await _fcm.setForegroundNotificationPresentationOptions(

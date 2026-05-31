@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../l10n/app_localizations.dart';
 import '../../services/navigation_controller.dart';
+import '../../services/home_customization_service.dart';
 import '../../constants/app_constants.dart';
 import '../../theme/app_theme.dart';
 
@@ -9,27 +10,45 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
   final NavigationController? navigationController;
   final VoidCallback? onHomeTap;
   final VoidCallback? onConnectorTap;
-  final VoidCallback? onSkinsTap;
-  final VoidCallback? onWikiTap;
   final VoidCallback? onProfileTap;
   final String? activeItem;
   final bool dark;
   final String? selectedRelayIp;
   final void Function(String?)? onRelayChanged;
 
+  final AppFeature navLeftFeature;
+  final AppFeature navRightFeature;
+  final VoidCallback? onNavLeftTap;
+  final VoidCallback? onNavRightTap;
+  final bool navLeftActive;
+  final bool navRightActive;
+
   const BottomGlassSimpleNavBar({
     super.key,
     required this.navigationController,
     this.onHomeTap,
     this.onConnectorTap,
-    this.onSkinsTap,
-    this.onWikiTap,
     this.onProfileTap,
     this.activeItem,
     this.dark = true,
     this.selectedRelayIp,
+    this.navLeftFeature = AppFeature.skins,
+    this.navRightFeature = AppFeature.wiki,
+    this.onNavLeftTap,
+    this.onNavRightTap,
+    this.navLeftActive = false,
+    this.navRightActive = false,
     this.onRelayChanged,
   });
+
+  static FaIconData _iconFor(AppFeature feature) => switch (feature) {
+    AppFeature.connector => FontAwesomeIcons.play,
+    AppFeature.skins     => FontAwesomeIcons.shirt,
+    AppFeature.wiki      => FontAwesomeIcons.bookOpen,
+    AppFeature.partners  => FontAwesomeIcons.server,
+    AppFeature.lookup    => FontAwesomeIcons.magnifyingGlass,
+    AppFeature.tracker   => FontAwesomeIcons.satellite,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -69,20 +88,20 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
                     onTap: onHomeTap,
                   ),
                   _NavItem(
-                    icon: FontAwesomeIcons.shirt,
-                    label: l.navSkins,
-                    isActive: activeItem == 'skins',
-                    onTap: onSkinsTap,
+                    icon: _iconFor(navLeftFeature),
+                    label: navLeftFeature.label,
+                    isActive: navLeftActive,
+                    onTap: onNavLeftTap,
                   ),
                   _NavFab(
                     isActive: activeItem == 'connector',
                     onTap: onConnectorTap,
                   ),
                   _NavItem(
-                    icon: FontAwesomeIcons.bookOpen,
-                    label: l.navWiki,
-                    isActive: activeItem == 'wiki',
-                    onTap: onWikiTap,
+                    icon: _iconFor(navRightFeature),
+                    label: navRightFeature.label,
+                    isActive: navRightActive,
+                    onTap: onNavRightTap,
                   ),
                   _NavItem(
                     icon: FontAwesomeIcons.user,
@@ -99,8 +118,6 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
     );
   }
 }
-
-// ── Regular nav item: icon + label, accent indicator line at top ─────────────
 
 class _NavItem extends StatelessWidget {
   final FaIconData icon;
@@ -127,8 +144,6 @@ class _NavItem extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Accent indicator bar — takes up space even when invisible so
-            // the layout height stays constant regardless of active state.
             SizedBox(
               height: 10,
               child: Align(
@@ -191,7 +206,7 @@ class _NavFab extends StatelessWidget {
             height: 50,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: isActive ? AppTheme.brand : AppTheme.surfaceRaised,
+              color: isActive ? AppTheme.brand : AppTheme.surfaceRaisedSolid,
               border: Border.all(
                 color: isActive ? AppTheme.brand : AppTheme.borderGray,
                 width: isActive ? 1.5 : 1.0,
@@ -286,7 +301,7 @@ class MoreSheetContent extends StatelessWidget {
                         color: AppTheme.accent.withOpacity(0.25),
                       ),
                     ),
-                    child: const Center(
+                    child: Center(
                       child: FaIcon(
                         FontAwesomeIcons.ellipsis,
                         color: AppTheme.accent,

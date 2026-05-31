@@ -24,7 +24,6 @@ class ProfileScreen extends StatefulWidget {
   final VoidCallback? onGoToConnector;
   final VoidCallback? onGoToSkins;
   final VoidCallback? onGoToWiki;
-
   const ProfileScreen({
     super.key,
     this.onGoToHome,
@@ -68,8 +67,6 @@ class ProfileScreenState extends State<ProfileScreen>
     super.dispose();
   }
 
-  /// Called externally (e.g. from a notification tap) to jump to a specific tab.
-  /// Tab indices: 0 = Profile, 1 = Friends, 2 = Requests, 3 = Chats
   void switchToTab(int index) {
     if (!mounted) return;
     _tabs.animateTo(index);
@@ -173,7 +170,7 @@ class ProfileScreenState extends State<ProfileScreen>
   @override
   Widget build(BuildContext context) {
     if (_authState == _AuthState.loading) {
-      return const Center(
+      return Center(
         child: CircularProgressIndicator(
           color: AppTheme.accent,
           strokeWidth: 2,
@@ -219,21 +216,21 @@ class ProfileScreenState extends State<ProfileScreen>
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      AppLocalizations.of(context)!.tabRequests,
-                      style: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 0.4,
+                    Flexible(
+                      child: Text(
+                        AppLocalizations.of(context)!.tabRequests,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 0.4,
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     if (_requests.isNotEmpty) ...[
-                      const SizedBox(width: 6),
+                      const SizedBox(width: 4),
                       Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 6,
-                          vertical: 2,
-                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
                         decoration: BoxDecoration(
                           color: AppTheme.accent,
                           borderRadius: BorderRadius.circular(10),
@@ -720,7 +717,7 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                   borderRadius: BorderRadius.circular(18),
                   border: Border.all(color: AppTheme.accent.withOpacity(0.30)),
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.person_rounded,
                   color: AppTheme.accent,
                   size: 28,
@@ -977,7 +974,7 @@ class _NotRegisteredView extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18),
                 border: Border.all(color: AppTheme.accent.withOpacity(0.30)),
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.person_add_rounded,
                 color: AppTheme.accent,
                 size: 28,
@@ -2340,7 +2337,7 @@ class _LoadingBody extends StatelessWidget {
   const _LoadingBody();
 
   @override
-  Widget build(BuildContext context) => const Center(
+  Widget build(BuildContext context) => Center(
     child: CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2),
   );
 }

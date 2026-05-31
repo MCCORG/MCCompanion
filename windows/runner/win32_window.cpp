@@ -207,6 +207,16 @@ Win32Window::MessageHandler(HWND hwnd,
       return 0;
     }
 
+    case WM_GETMINMAXINFO: {
+      auto* mmi = reinterpret_cast<MINMAXINFO*>(lparam);
+      double scale = GetDpiForWindow(hwnd) / 96.0;
+      // Max width: 500 logical px — min width: 360, min height: 600
+      mmi->ptMaxTrackSize.x = static_cast<LONG>(500 * scale);
+      mmi->ptMinTrackSize.x = static_cast<LONG>(360 * scale);
+      mmi->ptMinTrackSize.y = static_cast<LONG>(600 * scale);
+      return 0;
+    }
+
     case WM_ACTIVATE:
       if (child_content_ != nullptr) {
         SetFocus(child_content_);

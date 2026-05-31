@@ -237,7 +237,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                   color: isSelected
                       ? Color.alphaBlend(
                           cfg.color.withOpacity(0.32),
-                          AppTheme.surfaceRaised,
+                          AppTheme.surfaceRaisedSolid,
                         )
                       : AppTheme.surface.withOpacity(0.50),
                   borderRadius: BorderRadius.circular(14),
@@ -310,7 +310,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            Container(color: AppTheme.surfaceRaised),
+            Container(color: AppTheme.surfaceRaisedSolid),
             Container(color: color.withOpacity(0.14)),
             CustomPaint(
               painter: AppNoisePainter(
@@ -567,7 +567,7 @@ class _BedrockAccountSelector extends StatelessWidget {
   void _showPicker(BuildContext context) {
     showModalBottomSheet<void>(
       context: context,
-      backgroundColor: AppTheme.surfaceRaised,
+      backgroundColor: AppTheme.surfaceRaisedSolid,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
@@ -611,7 +611,7 @@ class _BedrockAccountSelector extends StatelessWidget {
                     ),
                   ),
                   trailing: isSelected
-                      ? const Icon(
+                      ? Icon(
                           Icons.check_rounded,
                           color: AppTheme.accent,
                           size: 18,

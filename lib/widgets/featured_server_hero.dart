@@ -36,7 +36,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
   Timer? _heroTimer;
   final Map<String, Future<ServerStatus>> _statusCache = {};
 
-  static const _heroWaves = [
+  List<WaveConfig> get _heroWaves => [
     WaveConfig(
       yFraction: 0.72,
       amplitude: 18,
@@ -174,7 +174,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                 count: 320,
               ),
             ),
-            const CustomPaint(painter: AppWavePainter(waves: _heroWaves)),
+            CustomPaint(painter: AppWavePainter(waves: _heroWaves)),
             Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(

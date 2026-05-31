@@ -778,7 +778,7 @@ class _WikiScreenState extends State<WikiScreen> {
                   }),
                   child: Text(
                     _wikiL10n(l, _activeSection!.label),
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppTheme.accent,
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
@@ -862,7 +862,7 @@ class _WikiScreenState extends State<WikiScreen> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(
+                borderSide: BorderSide(
                   color: AppTheme.accent,
                   width: 1.5,
                 ),
@@ -876,7 +876,7 @@ class _WikiScreenState extends State<WikiScreen> {
 
   Widget _buildBody() {
     if (_loading)
-      return const Center(
+      return Center(
         child: CircularProgressIndicator(color: AppTheme.accent),
       );
 
@@ -1610,7 +1610,7 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
 
   Widget _buildContent() {
     if (_loading)
-      return const Center(
+      return Center(
         child: CircularProgressIndicator(color: AppTheme.accent),
       );
 
@@ -1733,7 +1733,7 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
           label: Text(AppLocalizations.of(context)!.wikiReadFullArticle),
           style: OutlinedButton.styleFrom(
             foregroundColor: AppTheme.accent,
-            side: const BorderSide(color: AppTheme.accent),
+            side: BorderSide(color: AppTheme.accent),
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),

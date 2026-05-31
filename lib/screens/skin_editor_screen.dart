@@ -381,7 +381,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(color: AppTheme.accent),
+              borderSide: BorderSide(color: AppTheme.accent),
             ),
           ),
         ),
@@ -523,7 +523,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
       ),
       body: ExcludeSemantics(
         child: _loading
-            ? const Center(
+            ? Center(
                 child: CircularProgressIndicator(color: AppTheme.accent),
               )
             : Column(
@@ -540,7 +540,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
   Widget _buildToolbar() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: AppTheme.surface,
         border: Border(bottom: BorderSide(color: AppTheme.borderGray)),
       ),
@@ -650,7 +650,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
             onPanEnd: _onPanEnd,
             onTapDown: _onTapDown,
             child: _previewImage == null
-                ? const Center(
+                ? Center(
                     child: CircularProgressIndicator(color: AppTheme.accent),
                   )
                 : CustomPaint(
@@ -755,7 +755,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
     return Container(
       height: 72,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: AppTheme.surface,
         border: Border(top: BorderSide(color: AppTheme.borderGray)),
       ),
@@ -1135,7 +1135,7 @@ class _ColorPickerSheetState extends State<_ColorPickerSheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: AppTheme.background,
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
         border: Border(top: BorderSide(color: AppTheme.borderGray)),
@@ -1209,7 +1209,7 @@ class _ColorPickerSheetState extends State<_ColorPickerSheet> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: AppTheme.accent),
+                      borderSide: BorderSide(color: AppTheme.accent),
                     ),
                   ),
                   onChanged: (v) {

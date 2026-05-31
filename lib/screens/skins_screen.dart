@@ -87,7 +87,7 @@ class _SkinFaceImageState extends State<_SkinFaceImage> {
       return SizedBox(
         width: s,
         height: s,
-        child: const Center(
+        child: Center(
           child: CircularProgressIndicator(
             color: AppTheme.accent,
             strokeWidth: 2,
@@ -199,7 +199,7 @@ class _SkinBodyImageState extends State<_SkinBodyImage> {
       return SizedBox(
         width: w,
         height: h,
-        child: const Center(
+        child: Center(
           child: CircularProgressIndicator(
             color: AppTheme.accent,
             strokeWidth: 2,
@@ -503,7 +503,7 @@ class SkinsScreenState extends State<SkinsScreen> {
         _sectionLabel(l.skinsSectionMy),
         const SizedBox(height: 10),
         if (_loadingSaved)
-          const SizedBox(
+          SizedBox(
             height: 60,
             child: Center(
               child: CircularProgressIndicator(
@@ -546,7 +546,7 @@ class SkinsScreenState extends State<SkinsScreen> {
 
   Widget _buildYourSkins(AppLocalizations l) {
     if (_loading) {
-      return const SizedBox(
+      return SizedBox(
         height: 60,
         child: Center(
           child: CircularProgressIndicator(
@@ -632,7 +632,7 @@ class SkinsScreenState extends State<SkinsScreen> {
     return Column(
       children: [
         if (_loadingRecent)
-          const SizedBox(
+          SizedBox(
             height: 200,
             child: Center(
               child: CircularProgressIndicator(
@@ -783,7 +783,7 @@ class _SavedSkinCard extends StatelessWidget {
                       color: AppTheme.accent.withOpacity(0.12),
                       borderRadius: BorderRadius.circular(7),
                     ),
-                    child: const Center(
+                    child: Center(
                       child: FaIcon(
                         FontAwesomeIcons.penToSquare,
                         size: 11,
@@ -938,7 +938,7 @@ class _SkinDetailSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: AppTheme.background,
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
         border: Border(top: BorderSide(color: AppTheme.borderGray)),
@@ -1161,7 +1161,7 @@ class _JavaSkinCardState extends State<_JavaSkinCard> {
                           textureUrl: _textureUrl!,
                           height: constraints.maxHeight,
                         )
-                      : const CircularProgressIndicator(
+                      : CircularProgressIndicator(
                           color: AppTheme.accent,
                           strokeWidth: 2,
                         ),
@@ -1187,7 +1187,7 @@ class _JavaSkinCardState extends State<_JavaSkinCard> {
                     onPressed: _download,
                     style: OutlinedButton.styleFrom(
                       foregroundColor: AppTheme.accent,
-                      side: const BorderSide(color: AppTheme.accent),
+                      side: BorderSide(color: AppTheme.accent),
                       padding: const EdgeInsets.symmetric(vertical: 6),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -1326,7 +1326,7 @@ class _BedrockSkinCardState extends State<_BedrockSkinCard> {
             Expanded(
               child: Center(
                 child: _loading
-                    ? const CircularProgressIndicator(
+                    ? CircularProgressIndicator(
                         color: AppTheme.accent,
                         strokeWidth: 2,
                       )

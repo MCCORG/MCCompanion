@@ -87,7 +87,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       border: Border.all(
                           color: AppTheme.accent.withOpacity(0.30)),
                     ),
-                    child: const Icon(Icons.person_add_rounded,
+                    child: Icon(Icons.person_add_rounded,
                         color: AppTheme.accent, size: 28),
                   ),
                   const SizedBox(height: 20),

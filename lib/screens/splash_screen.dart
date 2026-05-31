@@ -183,7 +183,7 @@ class _SplashScreenState extends State<SplashScreen>
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(color: AppTheme.accent.withOpacity(0.35)),
                 ),
-                child: const Center(
+                child: Center(
                   child: Icon(
                     Icons.system_update_rounded,
                     color: AppTheme.accent,

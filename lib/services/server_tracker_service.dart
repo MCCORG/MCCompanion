@@ -1,0 +1,76 @@
+import 'dart:async';
+import '../models/tracked_server_model.dart';
+import '../services/server_status_service.dart';
+import '../services/tracker_api_service.dart';
+
+class ServerTrackerService {
+  ServerTrackerService._();
+  static final ServerTrackerService instance = ServerTrackerService._();
+
+  static const Duration pollInterval = Duration(minutes: 3);
+
+  final _controller = StreamController<List<TrackedServer>>.broadcast();
+  final _slotsController = StreamController<TrackerSlots?>.broadcast();
+
+  Stream<List<TrackedServer>> get serversStream => _controller.stream;
+  Stream<TrackerSlots?> get slotsStream => _slotsController.stream;
+
+  List<TrackedServer> _servers = [];
+  TrackerSlots? _slots;
+
+  List<TrackedServer> get servers => List.unmodifiable(_servers);
+  TrackerSlots? get slots => _slots;
+
+  Timer? _timer;
+  bool _running = false;
+
+  Future<void> start() async {
+    if (_running) return;
+    _running = true;
+    await _loadAndPing();
+    _timer = Timer.periodic(pollInterval, (_) => _loadAndPing());
+  }
+
+  void stop() {
+    _timer?.cancel();
+    _timer = null;
+    _running = false;
+    _servers = [];
+    _slots = null;
+  }
+
+  Future<void> refresh() async {
+    await _loadAndPing();
+  }
+
+  Future<void> _loadAndPing() async {
+    final data = await TrackerApiService.getServers();
+    if (data == null) return;
+
+    _slots = data.slots;
+    if (!_slotsController.isClosed) _slotsController.add(_slots);
+
+    final updated = <TrackedServer>[];
+    for (final server in data.servers) {
+      final status = await ServerStatusService.getStatus(server.ip, server.port);
+      updated.add(server.copyWith(
+        lastStatus:   status.isOnline ? 'online' : 'offline',
+        lastCheckedAt: DateTime.now(),
+        players:    status.players,
+        maxPlayers: status.maxPlayers,
+        version:    status.version,
+        gameType:   status.gameType,
+        software:   status.software,
+      ));
+    }
+
+    _servers = updated;
+    if (!_controller.isClosed) _controller.add(List.unmodifiable(_servers));
+  }
+
+  void dispose() {
+    stop();
+    _controller.close();
+    _slotsController.close();
+  }
+}

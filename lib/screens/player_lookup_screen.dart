@@ -361,7 +361,7 @@ class _JavaSkinViewerState extends State<_JavaSkinViewer> {
       height: 160,
       child: Center(
         child: _loading
-            ? const CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
+            ? CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
             : _textureUrl != null
                 ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156)
                 : const Icon(Icons.person_rounded, color: AppTheme.textMuted, size: 48),
@@ -470,7 +470,7 @@ class _BedrockSkinViewerState extends State<_BedrockSkinViewer> {
       height: 160,
       child: Center(
         child: _loading
-            ? const CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
+            ? CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
             : _textureUrl != null
                 ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156)
                 : const Icon(Icons.gamepad_rounded,
