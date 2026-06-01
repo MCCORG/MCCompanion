@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "670852401318-o99i1uqslqt2eej2d6e9rvtdei0q771g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "net.netherdev.netherLink",
+            "certificate_hash": "72cdfcc0351013d90f951e54cc25a8eb9598a78f"
+          }
+        },
+        {
           "client_id": "670852401318-qu27usnb2m71ldfngll3ev46dafd5gd9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -39,10 +47,10 @@
               "client_type": 3
             },
             {
-              "client_id": "670852401318-ijnjdpd3cpucr2qg9ei582iig1ao57vq.apps.googleusercontent.com",
+              "client_id": "670852401318-n0ddf2sop9vpr05upt985k9r4o4mr5iu.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "net.netherlink.NetherLink"
+                "bundle_id": "net.netherdev.netherLink"
               }
             }
           ]

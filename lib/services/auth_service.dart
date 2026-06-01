@@ -31,8 +31,9 @@ class AuthService {
 
   static final FirebaseAuth _auth = FirebaseAuth.instance;
   static final GoogleSignIn _googleSignIn = GoogleSignIn(
-    serverClientId:
-        '670852401318-1g70oikt58ouipfc09re6ik60odu5vhs.apps.googleusercontent.com',
+    serverClientId: Platform.isAndroid
+        ? null
+        : '670852401318-1g70oikt58ouipfc09re6ik60odu5vhs.apps.googleusercontent.com',
   );
 
   static final _windowsUserCtrl = StreamController<AuthUser?>.broadcast();
