@@ -1,6 +1,6 @@
 {
   "@@locale": "pt",
-  "appName": "NetherLink",
+  "appName": "MCCompanion",
   "console": "Console",
   "consoleOutput": "Saída do console",
   "noLogsYet": "Ainda não há logs",
@@ -12,7 +12,7 @@
   "aternosSubtext": "Crie o seu próprio servidor Minecraft gratuito",
   "howToUseMenu": "Como usar",
   "support": "Suporte",
-  "helpText": "Criado por {appCreator}.\r\n\r\nComo usar:\r\n1. Digite o endereço e a porta do seu servidor de Minecraft (padrão: 19132)\r\n   — ou selecione um servidor salvo anteriormente no menu suspenso\r\n2. (Opcional) Escolha um Servidor Relay (EU ou US) mais próximo da sua localização\r\n3. Clique em \\\"Iniciar Transmissão\\\" para começar\r\n4. No seu console/dispositivo: Minecraft > Jogar > Amigos\r\n5. Você deverá ver um servidor LAN chamado \\\"NetherLink\\\"\r\n6. Clique nele para entrar no seu servidor externo via NetherLink\r\n\r\nNintendo Switch (modo DNS):\r\n1. Ative \\\"Nintendo Switch\\\" no painel de conexão\r\n2. Selecione um Servidor Relay (EU ou US)\r\n3. Clique em \\\"Enviar Configuração DNS\\\" — isso envia sua configuração ao relay\r\n   (isso NÃO transmite um servidor LAN)\r\n4. No seu Switch, aplique a configuração DNS do NetherLink e entre\r\n   usando a entrada de servidor que você usa para o NetherLink\r\n\r\nNotas:\r\n- Para transmissão LAN, o NetherLink e o console devem estar na mesma rede local.\r\n- Dica: escolha o servidor relay mais próximo de você para obter o melhor desempenho.",
+  "helpText": "Criado por {appCreator}.\r\n\r\nComo usar:\r\n1. Digite o endereço e a porta do seu servidor de Minecraft (padrão: 19132)\r\n   — ou selecione um servidor salvo anteriormente no menu suspenso\r\n2. (Opcional) Escolha um Servidor Relay (EU ou US) mais próximo da sua localização\r\n3. Clique em \\\"Iniciar Transmissão\\\" para começar\r\n4. No seu console/dispositivo: Minecraft > Jogar > Amigos\r\n5. Você deverá ver um servidor LAN chamado \\\"MCCompanion\\\"\r\n6. Clique nele para entrar no seu servidor externo via MCCompanion\r\n\r\nNintendo Switch (modo DNS):\r\n1. Ative \\\"Nintendo Switch\\\" no painel de conexão\r\n2. Selecione um Servidor Relay (EU ou US)\r\n3. Clique em \\\"Enviar Configuração DNS\\\" — isso envia sua configuração ao relay\r\n   (isso NÃO transmite um servidor LAN)\r\n4. No seu Switch, aplique a configuração DNS do MCCompanion e entre\r\n   usando a entrada de servidor que você usa para o MCCompanion\r\n\r\nNotas:\r\n- Para transmissão LAN, o MCCompanion e o console devem estar na mesma rede local.\r\n- Dica: escolha o servidor relay mais próximo de você para obter o melhor desempenho.",
   "@helpText": {
     "description": "Detailed help / instructions shown in the help dialog",
     "placeholders": {
@@ -30,11 +30,11 @@
   "@howToJavaTitle": {
     "description": "Title for the Java how-to modal"
   },
-  "howToJavaSubtitle": "Conecte-se a servidores Java Edition via NetherLink",
+  "howToJavaSubtitle": "Conecte-se a servidores Java Edition via MCCompanion",
   "@howToJavaSubtitle": {
     "description": "Short subtitle for Java menu tile"
   },
-  "howToJavaBody": "Modo Java — etapas rápidas:\n1. No aplicativo, selecione o modo Java.\n2. Digite o endereço e a porta do seu servidor Java Edition (padrão: 25565).\n3. Toque em \"Iniciar modo Java\" — o NetherLink fará a ponte da conexão.\n4. Abra o Minecraft Bedrock e vá para a aba Amigos.\n5. Selecione o servidor LAN chamado \"NetherLink\" para entrar no servidor Java.\n\n⚠️ Avisos importantes:\n- É necessária uma conta válida do Java Edition (Microsoft).\n- Alguns servidores usam sistemas anti-cheat que podem detectar e banir sua conta.\n- Alguns servidores proíbem explicitamente clientes Bedrock — sempre verifique as regras do servidor.\n- O NetherLink não se responsabiliza por banimentos, suspensões ou outros problemas relacionados à conta que possam resultar do uso deste recurso.\n- Use por sua conta e risco.",
+  "howToJavaBody": "Modo Java — etapas rápidas:\n1. No aplicativo, selecione o modo Java.\n2. Digite o endereço e a porta do seu servidor Java Edition (padrão: 25565).\n3. Toque em \"Iniciar modo Java\" — o MCCompanion fará a ponte da conexão.\n4. Abra o Minecraft Bedrock e vá para a aba Amigos.\n5. Selecione o servidor LAN chamado \"MCCompanion\" para entrar no servidor Java.\n\n⚠️ Avisos importantes:\n- É necessária uma conta válida do Java Edition (Microsoft).\n- Alguns servidores usam sistemas anti-cheat que podem detectar e banir sua conta.\n- Alguns servidores proíbem explicitamente clientes Bedrock — sempre verifique as regras do servidor.\n- O MCCompanion não se responsabiliza por banimentos, suspensões ou outros problemas relacionados à conta que possam resultar do uso deste recurso.\n- Use por sua conta e risco.",
   "@howToJavaBody": {
     "description": "Detailed steps for Java mode how-to modal"
   },
@@ -172,7 +172,7 @@
   "@debugEnabled": {
     "description": "Shown when debug logging is enabled/disabled"
   },
-  "howToUseTitle": "Como usar o NetherLink",
+  "howToUseTitle": "Como usar o MCCompanion",
   "iUnderstand": "Entendi",
   "playOnSwitchTitle": "Jogar no Nintendo Switch",
   "playWithFriendsTitle": "Jogar com amigos",
@@ -191,7 +191,7 @@
       "friend": {}
     }
   },
-  "nldServerLabel": "SERVIDOR NETHERLINK",
+  "nldServerLabel": "SERVIDOR MCCompanion",
   "@nldServerLabel": {
     "description": "Label text above the relay selector"
   },
@@ -219,7 +219,7 @@
   "nintendoInfoTitle": "Modo DNS do Nintendo Switch",
   "nintendoInfoText": "Comece no modo Nintendo, configure seu DNS e entre em um servidor em destaque.",
   "friendModeTitle": "Modo Amigos",
-  "friendModeText": "Adicione os bots de amigos do NetherLink como amigos. Inicie o modo Amigos e jogue",
+  "friendModeText": "Adicione os bots de amigos do MCCompanion como amigos. Inicie o modo Amigos e jogue",
   "selectedRelayCheck": "Selecionado",
   "@selectedRelayCheck": {
     "description": "Small label used when a relay is selected"
@@ -230,7 +230,7 @@
       "name": {}
     }
   },
-  "relayUnableConnect": "Não foi possível conectar a NENHUM servidor relay do NetherLink. Tente novamente mais tarde ou verifique sua internet.",
+  "relayUnableConnect": "Não foi possível conectar a NENHUM servidor relay do MCCompanion. Tente novamente mais tarde ou verifique sua internet.",
   "howToXboxTitle": "Xbox / PS4-5 (LAN / conexão proxy)",
   "@howToXboxTitle": {
     "description": "Title for the Xbox / PS4-5 how-to modal"
@@ -239,7 +239,7 @@
   "@howToXboxSubtitle": {
     "description": "Short subtitle for Xbox / PS4-5 menu tile"
   },
-  "howToXboxBody": "Como se conectar (Xbox / PS4 / PS5):\r\n1. Certifique-se de que o dispositivo que está executando o NetherLink e o seu console estejam na mesma rede local.\r\n2. No aplicativo, informe o endereço e a porta do seu servidor de Minecraft e pressione \\\"Iniciar transmissão\\\".\r\n3. No console, abra Minecraft → Jogar → procure por Mundos LAN ou pela aba Amigos e atualize a lista.\r\n4. Selecione o servidor LAN chamado \\\"NetherLink\\\" para entrar.\r\nNotas:\r\n- Se o servidor não aparecer, confirme que ambos os dispositivos estão na mesma sub-rede e que o aplicativo ainda está transmitindo.\r\n- Alguns modelos de console ou roteadores podem bloquear a descoberta LAN; tente ajustar as configurações do aplicativo ou do roteador, se necessário.",
+  "howToXboxBody": "Como se conectar (Xbox / PS4 / PS5):\r\n1. Certifique-se de que o dispositivo que está executando o MCCompanion e o seu console estejam na mesma rede local.\r\n2. No aplicativo, informe o endereço e a porta do seu servidor de Minecraft e pressione \\\"Iniciar transmissão\\\".\r\n3. No console, abra Minecraft → Jogar → procure por Mundos LAN ou pela aba Amigos e atualize a lista.\r\n4. Selecione o servidor LAN chamado \\\"MCCompanion\\\" para entrar.\r\nNotas:\r\n- Se o servidor não aparecer, confirme que ambos os dispositivos estão na mesma sub-rede e que o aplicativo ainda está transmitindo.\r\n- Alguns modelos de console ou roteadores podem bloquear a descoberta LAN; tente ajustar as configurações do aplicativo ou do roteador, se necessário.",
   "@howToXboxBody": {
     "description": "Detailed steps for Xbox/PS4-5 how-to modal"
   },
@@ -263,31 +263,31 @@
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
   },
-  "howToFriendsBody": "Modo Amigos — passos rápidos:\r\n1. Adicione a conta de amigo do NetherLink no seu console ou plataforma, se necessário.\r\n2. No aplicativo, ative o modo Amigos e envie a configuração do relay (se aplicável).\r\n3. No seu console, abra Minecraft → Amigos e procure por Mundos LAN — seu servidor deve aparecer lá como um mundo LAN.\r\n4. Selecione-o para entrar no seu servidor com amigos.\r\nNotas:\r\n- Certifique-se de que você e seus amigos tenham as mesmas configurações de NAT/configurações que permitem presença de amigos.\r\n- O modo Amigos depende dos recursos de amizade da plataforma e pode exigir aceitar solicitações de amizade.",
+  "howToFriendsBody": "Modo Amigos — passos rápidos:\r\n1. Adicione a conta de amigo do MCCompanion no seu console ou plataforma, se necessário.\r\n2. No aplicativo, ative o modo Amigos e envie a configuração do relay (se aplicável).\r\n3. No seu console, abra Minecraft → Amigos e procure por Mundos LAN — seu servidor deve aparecer lá como um mundo LAN.\r\n4. Selecione-o para entrar no seu servidor com amigos.\r\nNotas:\r\n- Certifique-se de que você e seus amigos tenham as mesmas configurações de NAT/configurações que permitem presença de amigos.\r\n- O modo Amigos depende dos recursos de amizade da plataforma e pode exigir aceitar solicitações de amizade.",
   "@howToFriendsBody": {
     "description": "Detailed steps for Friends mode"
   },
-  "helpNetherlinkTitle": "NetherLink não aparece",
-  "@helpNetherlinkTitle": {
-    "description": "Title for help topic when NetherLink isn't visible on console"
+  "helpMCCompanionTitle": "MCCompanion não aparece",
+  "@helpMCCompanionTitle": {
+    "description": "Title for help topic when MCCompanion isn't visible on console"
   },
-  "helpNetherlinkSubtitle": "Solução de problemas de descoberta LAN",
-  "@helpNetherlinkSubtitle": {
-    "description": "Short subtitle for NetherLink does not appear tile"
+  "helpMCCompanionSubtitle": "Solução de problemas de descoberta LAN",
+  "@helpMCCompanionSubtitle": {
+    "description": "Short subtitle for MCCompanion does not appear tile"
   },
-  "helpNetherlinkBody": "Se o servidor não estiver aparecendo no seu console, tente estas etapas:\r\n\r\n✅ Verificações básicas:\r\n1. Mesma rede WiFi - Seu telefone/tablet e o console DEVEM estar na mesma rede WiFi\r\n2. Endereço correto do servidor - Verifique novamente o IP e a porta (padrão: 19132)\r\n3. Transmissão ativa - Verifique se o NetherLink mostra o status \"Transmitindo\"\r\n\r\n🔄 Correções rápidas:\r\n• Reinicie o aplicativo: pare a transmissão, feche o NetherLink completamente, abra-o novamente e tente de novo\r\n• Reinicie seu console: às vezes o console precisa ser atualizado para detectar jogos LAN\r\n• Verifique a aba Amigos/LAN: o servidor aparece em \"Amigos\" ou \"Jogos LAN\", e NÃO na lista de servidores\r\n• Aguarde de 10 a 15 segundos após iniciar a transmissão\r\n• Desative VPNs: VPNs podem bloquear transmissões locais\r\n\r\n⚠️ Problemas comuns:\r\n\"No route found for user\" → Certifique-se de que ambos os dispositivos estejam na mesma rede Wi‑Fi (evite redes de convidados)\r\n\"Unable to connect to NetherLink relay server\" → Verifique sua internet / status do relay\r\n\r\n📱 Ainda está com problemas? Ative o Modo de depuração no NetherLink e verifique os logs, ou tente um servidor diferente.",
-  "@helpNetherlinkBody": {
-    "description": "Detailed troubleshooting text for NetherLink not appearing"
+  "helpMCCompanionBody": "Se o servidor não estiver aparecendo no seu console, tente estas etapas:\r\n\r\n✅ Verificações básicas:\r\n1. Mesma rede WiFi - Seu telefone/tablet e o console DEVEM estar na mesma rede WiFi\r\n2. Endereço correto do servidor - Verifique novamente o IP e a porta (padrão: 19132)\r\n3. Transmissão ativa - Verifique se o MCCompanion mostra o status \"Transmitindo\"\r\n\r\n🔄 Correções rápidas:\r\n• Reinicie o aplicativo: pare a transmissão, feche o MCCompanion completamente, abra-o novamente e tente de novo\r\n• Reinicie seu console: às vezes o console precisa ser atualizado para detectar jogos LAN\r\n• Verifique a aba Amigos/LAN: o servidor aparece em \"Amigos\" ou \"Jogos LAN\", e NÃO na lista de servidores\r\n• Aguarde de 10 a 15 segundos após iniciar a transmissão\r\n• Desative VPNs: VPNs podem bloquear transmissões locais\r\n\r\n⚠️ Problemas comuns:\r\n\"No route found for user\" → Certifique-se de que ambos os dispositivos estejam na mesma rede Wi‑Fi (evite redes de convidados)\r\n\"Unable to connect to MCCompanion relay server\" → Verifique sua internet / status do relay\r\n\r\n📱 Ainda está com problemas? Ative o Modo de depuração no MCCompanion e verifique os logs, ou tente um servidor diferente.",
+  "@helpMCCompanionBody": {
+    "description": "Detailed troubleshooting text for MCCompanion not appearing"
   },
   "helpMultiplayerFailedTitle": "Falha na conexão multijogador",
   "@helpMultiplayerFailedTitle": {
     "description": "Title for help topic when multiplayer connection fails"
   },
-  "helpMultiplayerFailedSubtitle": "Explicação de por que isso não é um erro do NetherLink",
+  "helpMultiplayerFailedSubtitle": "Explicação de por que isso não é um erro do MCCompanion",
   "@helpMultiplayerFailedSubtitle": {
     "description": "Short subtitle for multiplayer failed tile"
   },
-  "helpMultiplayerFailedBody": "⚠️ Isso não é um problema do NetherLink!\r\n\r\nO NetherLink redirecionou você com sucesso para o servidor solicitado. A mensagem \\\"Falha na conexão multijogador\\\" indica que o servidor de destino está inacessível no momento. Motivos possíveis:\r\n\r\n• O servidor de Minecraft de destino está offline ou sobrecarregado\r\n• O servidor exige uma versão atualizada do cliente ou uma edição específica\r\n• Problemas de rede entre o relay e o servidor de destino\r\n\r\nTente se conectar a outro servidor ou entre em contato com o suporte do servidor. Se o problema persistir em vários servidores, ative o Modo de depuração no NetherLink e verifique os logs.",
+  "helpMultiplayerFailedBody": "⚠️ Isso não é um problema do MCCompanion!\r\n\r\nO MCCompanion redirecionou você com sucesso para o servidor solicitado. A mensagem \\\"Falha na conexão multijogador\\\" indica que o servidor de destino está inacessível no momento. Motivos possíveis:\r\n\r\n• O servidor de Minecraft de destino está offline ou sobrecarregado\r\n• O servidor exige uma versão atualizada do cliente ou uma edição específica\r\n• Problemas de rede entre o relay e o servidor de destino\r\n\r\nTente se conectar a outro servidor ou entre em contato com o suporte do servidor. Se o problema persistir em vários servidores, ative o Modo de depuração no MCCompanion e verifique os logs.",
   "@helpMultiplayerFailedBody": {
     "description": "Explanation shown when multiplayer connection failed appears"
   },
@@ -328,7 +328,7 @@
     "description": "Button that resets localization to the system/default locale"
   },
   "updateAvailable": "Atualização disponível",
-  "needSameWifi": "O dispositivo que executa o NetherLink DEVE estar na mesma rede Wi‑Fi que o console em que você joga Minecraft.",
+  "needSameWifi": "O dispositivo que executa o MCCompanion DEVE estar na mesma rede Wi‑Fi que o console em que você joga Minecraft.",
   "active": "Ativo",
   "newVersion": "Há uma nova versão do aplicativo disponível.\nAtualize agora para obter os recursos e correções mais recentes.",
   "noServerYet": "Ainda não há servidores salvos.\nToque em Gerenciar para adicionar um.",
@@ -340,10 +340,10 @@
   "noWifi": "Sem Wi‑Fi",
   "vpnDetected": "VPN detectada",
   "ready": "Pronto",
-  "vpnActive": "Detectamos que sua VPN está ativa.\n\nDesative a VPN antes de usar o NetherLink, caso contrário a transmissão LAN pode não alcançar o seu console.",
+  "vpnActive": "Detectamos que sua VPN está ativa.\n\nDesative a VPN antes de usar o MCCompanion, caso contrário a transmissão LAN pode não alcançar o seu console.",
   "updateNow": "Atualizar agora",
-  "needSubscription": "Cada console precisa da sua própria assinatura online ativa (Xbox Live, PS Plus, NSO). Sem isso, o NetherLink não aparecerá.",
-  "mobileActive": "Detectado: dados móveis\n\nO NetherLink precisa estar na mesma rede que o seu console. Conecte-se ao Wi‑Fi da sua casa ou ao hotspot antes de continuar.",
+  "needSubscription": "Cada console precisa da sua própria assinatura online ativa (Xbox Live, PS Plus, NSO). Sem isso, o MCCompanion não aparecerá.",
+  "mobileActive": "Detectado: dados móveis\n\nO MCCompanion precisa estar na mesma rede que o seu console. Conecte-se ao Wi‑Fi da sua casa ou ao hotspot antes de continuar.",
   "sameWifi": "Mesma rede Wi‑Fi",
   "subscription": "Assinatura online necessária",
   "couldNotOpenUrl": "Não foi possível abrir a URL",

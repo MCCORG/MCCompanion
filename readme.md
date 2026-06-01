@@ -1,16 +1,46 @@
-# 🔗 NetherLink
+# MCCompanion
 
-**Bridge external Minecraft servers to your PlayStation & Bedrock devices via LAN**
+**The Minecraft companion app**
 
-NetherLink makes external Minecraft Bedrock servers appear as local LAN games, allowing PlayStation and other Bedrock Edition players to connect to any server. 
+MCCompanion lets you connect to external Minecraft servers from PlayStation, Xbox, Nintendo Switch and other consoles and comes packed with tools for skins, player lookup, server tracking, a built-in wiki, and more.
 
 ---
 
-## ✨ Features
+## Features
 
-- 🎮 **Console Compatible** - Play on PS4/PS5, Xbox and Nintendo without restrictions
-- 🌍 **Any Server** - Connect to external servers as if they're on your network
-- 👤 **Multiple Profiles** - Manage different Minecraft usernames
-- 💾 **Save Servers** - Quick access to your favorite servers
-- 📊 **Real-time Logs** - Monitor connections and debug issues
-- 🖥️ **Cross-Platform** - Works on Windows, macOS, Android and iOS
+### Connector
+Bridge any external server to your local network so consoles can join as if it's a LAN game. Supports EU and US relay servers for low-latency connections.
+
+### Skins
+Browse, save, Minecraft skins via Geyser. Import custom skin files, preview full 3D renders, and manage your skin library all from the app.
+
+### Player Lookup
+Search any Minecraft player by gamertag, Minecraft username or x'uuid' to view their profile, skin, and stats.
+
+### Server Tracker
+Add servers to your watchlist and monitor their status, player count and uptime in real time.
+
+### Partner Servers
+Browse featured community servers and connect directly with one tap.
+
+### Wiki
+Quick reference for mobs, blocks, items, biomes, enchantments, structures, potions and more no browser needed.
+
+### Profile & Social
+Sign in with Xbox, Apple or Google. Manage your Bedrock account, view your public profile, and chat with other MCCompanion users.
+
+---
+
+## Platform Support
+
+- Windows
+- macOS
+- Android
+- iOS
+
+---
+
+## Links
+
+- Website: https://mccompanion.net
+- Discord: https://discord.gg/xvaNzE35Rs

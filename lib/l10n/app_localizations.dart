@@ -126,7 +126,7 @@ abstract class AppLocalizations {
   /// No description provided for @appName.
   ///
   /// In en, this message translates to:
-  /// **'NetherLink'**
+  /// **'MCCompanion'**
   String get appName;
 
   /// No description provided for @console.
@@ -198,7 +198,7 @@ abstract class AppLocalizations {
   /// Detailed help / instructions shown in the help dialog
   ///
   /// In en, this message translates to:
-  /// **'Created by {appCreator}.\n\nHow to use:\n1. Enter your Minecraft server address and port (default: 19132)\n   — or select a previously saved server from the dropdown\n2. (Optional) Choose a Relay Server (EU or US) closest to your location\n3. Click \"Start Broadcasting\" to begin\n4. On your console/device: Minecraft > Play > Friends\n5. You should see a LAN server called \"NetherLink\"\n6. Click it to join your external server via NetherLink\n\nNintendo Switch (DNS mode):\n1. Enable \"Nintendo Switch\" in the connection panel\n2. Select a Relay Server (EU or US)\n3. Click \"Send DNS Config\" — this sends your config to the relay\n   (it does NOT broadcast a LAN server)\n4. On your Switch, apply your NetherLink DNS setup and join\n   using the server entry you use for NetherLink\n\nNotes:\n- For LAN broadcasting, NetherLink and console must be on the same local network.\n- Tip: Choose the relay server closest to you for the best performance.'**
+  /// **'Created by {appCreator}.\n\nHow to use:\n1. Enter your Minecraft server address and port (default: 19132)\n   — or select a previously saved server from the dropdown\n2. (Optional) Choose a Relay Server (EU or US) closest to your location\n3. Click \"Start Broadcasting\" to begin\n4. On your console/device: Minecraft > Play > Friends\n5. You should see a LAN server called \"MCCompanion\"\n6. Click it to join your external server via MCCompanion\n\nNintendo Switch (DNS mode):\n1. Enable \"Nintendo Switch\" in the connection panel\n2. Select a Relay Server (EU or US)\n3. Click \"Send DNS Config\" — this sends your config to the relay\n   (it does NOT broadcast a LAN server)\n4. On your Switch, apply your MCCompanion DNS setup and join\n   using the server entry you use for MCCompanion\n\nNotes:\n- For LAN broadcasting, MCCompanion and console must be on the same local network.\n- Tip: Choose the relay server closest to you for the best performance.'**
   String helpText(Object appCreator);
 
   /// No description provided for @serverDetailsLabel.
@@ -252,7 +252,7 @@ abstract class AppLocalizations {
   /// Short subtitle for Java menu tile
   ///
   /// In en, this message translates to:
-  /// **'Connect to Java Edition servers via NetherLink'**
+  /// **'Connect to Java Edition servers via MCCompanion'**
   String get howToJavaSubtitle;
 
   /// No description provided for @aternosSubtext.
@@ -264,7 +264,7 @@ abstract class AppLocalizations {
   /// Detailed steps for Java mode how-to modal
   ///
   /// In en, this message translates to:
-  /// **'Java Mode — quick steps:\n1. In the app, select Java mode.\n2. Enter your Java Edition server address and port (default: 25565).\n3. Press \"Start Java Mode\" — NetherLink bridges the connection.\n4. Open Minecraft Bedrock and go to the Friends tab.\n5. Select the LAN server named \"NetherLink\" to join the Java server.\n\n⚠️ Important warnings:\n- A valid Java Edition account (Microsoft) is required.\n- Some servers use anti-cheat systems that may detect and ban your account.\n- Certain servers explicitly prohibit Bedrock clients — always check the server rules.\n- NetherLink is not responsible for any account bans, suspensions, or other account-related issues that may result from using this feature.\n- Use at your own risk.'**
+  /// **'Java Mode — quick steps:\n1. In the app, select Java mode.\n2. Enter your Java Edition server address and port (default: 25565).\n3. Press \"Start Java Mode\" — MCCompanion bridges the connection.\n4. Open Minecraft Bedrock and go to the Friends tab.\n5. Select the LAN server named \"MCCompanion\" to join the Java server.\n\n⚠️ Important warnings:\n- A valid Java Edition account (Microsoft) is required.\n- Some servers use anti-cheat systems that may detect and ban your account.\n- Certain servers explicitly prohibit Bedrock clients — always check the server rules.\n- MCCompanion is not responsible for any account bans, suspensions, or other account-related issues that may result from using this feature.\n- Use at your own risk.'**
   String get howToJavaBody;
 
   /// Your language name in your own language
@@ -462,7 +462,7 @@ abstract class AppLocalizations {
   /// No description provided for @howToUseTitle.
   ///
   /// In en, this message translates to:
-  /// **'How to use NetherLink'**
+  /// **'How to use MCCompanion'**
   String get howToUseTitle;
 
   /// No description provided for @iUnderstand.
@@ -498,7 +498,7 @@ abstract class AppLocalizations {
   /// Label text above the relay selector
   ///
   /// In en, this message translates to:
-  /// **'NETHERLINK SERVER'**
+  /// **'MCCompanion SERVER'**
   String get nldServerLabel;
 
   /// Accessibility label for relay selection button
@@ -582,13 +582,13 @@ abstract class AppLocalizations {
   /// No description provided for @vpnActive.
   ///
   /// In en, this message translates to:
-  /// **'We detected that your VPN is active.\n\nPlease disable your VPN before using NetherLink, otherwise the LAN broadcast may not reach your console.'**
+  /// **'We detected that your VPN is active.\n\nPlease disable your VPN before using MCCompanion, otherwise the LAN broadcast may not reach your console.'**
   String get vpnActive;
 
   /// No description provided for @mobileActive.
   ///
   /// In en, this message translates to:
-  /// **'Detected: Mobile Data\n\nNetherLink needs to be on the same network as your console. Please connect to your home Wi-Fi or hotspot before continuing.'**
+  /// **'Detected: Mobile Data\n\nMCCompanion needs to be on the same network as your console. Please connect to your home Wi-Fi or hotspot before continuing.'**
   String get mobileActive;
 
   /// No description provided for @continueAnyway.
@@ -606,7 +606,7 @@ abstract class AppLocalizations {
   /// No description provided for @needSameWifi.
   ///
   /// In en, this message translates to:
-  /// **'The device running NetherLink MUST be on the same Wi-Fi network as the console you play Minecraft on.'**
+  /// **'The device running MCCompanion MUST be on the same Wi-Fi network as the console you play Minecraft on.'**
   String get needSameWifi;
 
   /// No description provided for @subscription.
@@ -618,7 +618,7 @@ abstract class AppLocalizations {
   /// No description provided for @needSubscription.
   ///
   /// In en, this message translates to:
-  /// **'Each console needs its own active online subscription (Xbox Live, PS Plus, NSO). Without it, NetherLink won\'t appear.'**
+  /// **'Each console needs its own active online subscription (Xbox Live, PS Plus, NSO). Without it, MCCompanion won\'t appear.'**
   String get needSubscription;
 
   /// No description provided for @updateAvailable.
@@ -720,7 +720,7 @@ abstract class AppLocalizations {
   /// No description provided for @friendModeText.
   ///
   /// In en, this message translates to:
-  /// **'Add NetherLink\'s friends bots as a friend. Start Friends mode and play'**
+  /// **'Add MCCompanion\'s friends bots as a friend. Start Friends mode and play'**
   String get friendModeText;
 
   /// Small label used when a relay is selected
@@ -738,7 +738,7 @@ abstract class AppLocalizations {
   /// No description provided for @relayUnableConnect.
   ///
   /// In en, this message translates to:
-  /// **'Unable to connect to ANY NetherLink relay server. Try again later or check your internet.'**
+  /// **'Unable to connect to ANY MCCompanion relay server. Try again later or check your internet.'**
   String get relayUnableConnect;
 
   /// Title for the Xbox / PS4-5 how-to modal
@@ -756,7 +756,7 @@ abstract class AppLocalizations {
   /// Detailed steps for Xbox/PS4-5 how-to modal
   ///
   /// In en, this message translates to:
-  /// **'How to connect (Xbox / PS4 / PS5):\n1. Ensure your device running NetherLink and your console are on the same local network.\n2. In the app, enter your Minecraft server address and port and press \"Start Broadcasting\".\n3. On the console open Minecraft → Play → look for LAN Worlds or the Friends tab and refresh the list.\n4. Select the LAN server named \"NetherLink\" to join.\nNotes:\n- If the server does not appear, confirm both devices are on the same subnet and that the app is still broadcasting.\n- Some console models or routers may block LAN discovery; try toggling the app or router settings if needed.'**
+  /// **'How to connect (Xbox / PS4 / PS5):\n1. Ensure your device running MCCompanion and your console are on the same local network.\n2. In the app, enter your Minecraft server address and port and press \"Start Broadcasting\".\n3. On the console open Minecraft → Play → look for LAN Worlds or the Friends tab and refresh the list.\n4. Select the LAN server named \"MCCompanion\" to join.\nNotes:\n- If the server does not appear, confirm both devices are on the same subnet and that the app is still broadcasting.\n- Some console models or routers may block LAN discovery; try toggling the app or router settings if needed.'**
   String get howToXboxBody;
 
   /// Title for the Nintendo how-to modal
@@ -792,26 +792,26 @@ abstract class AppLocalizations {
   /// Detailed steps for Friends mode
   ///
   /// In en, this message translates to:
-  /// **'Friends mode — quick steps:\n1. Add the NetherLink friend account (relay friend) on your console or platform if required.\n2. In the app enable Friends mode and send the relay configuration (if applicable).\n3. On your console open Minecraft → Friends and search for LAN Worlds — your server should appear there as a LAN world.\n4. Select it to join your server with friends.\nNotes:\n- Make sure both you and your friends have the same NAT/settings that allow friend presence.\n- Friend-mode relies on platform friend features and may require accepting friend requests.'**
+  /// **'Friends mode — quick steps:\n1. Add the MCCompanion friend account (relay friend) on your console or platform if required.\n2. In the app enable Friends mode and send the relay configuration (if applicable).\n3. On your console open Minecraft → Friends and search for LAN Worlds — your server should appear there as a LAN world.\n4. Select it to join your server with friends.\nNotes:\n- Make sure both you and your friends have the same NAT/settings that allow friend presence.\n- Friend-mode relies on platform friend features and may require accepting friend requests.'**
   String get howToFriendsBody;
 
-  /// Title for help topic when NetherLink isn't visible on console
+  /// Title for help topic when MCCompanion isn't visible on console
   ///
   /// In en, this message translates to:
-  /// **'NetherLink does not appear'**
-  String get helpNetherlinkTitle;
+  /// **'MCCompanion does not appear'**
+  String get helpMCCompanionTitle;
 
-  /// Short subtitle for NetherLink does not appear tile
+  /// Short subtitle for MCCompanion does not appear tile
   ///
   /// In en, this message translates to:
   /// **'Troubleshooting LAN discovery issues'**
-  String get helpNetherlinkSubtitle;
+  String get helpMCCompanionSubtitle;
 
-  /// Detailed troubleshooting text for NetherLink not appearing
+  /// Detailed troubleshooting text for MCCompanion not appearing
   ///
   /// In en, this message translates to:
-  /// **'If the server isn\'t appearing on your console, try these steps:\n\n✅ Basic Checks:\n1. Same WiFi Network - Your phone/tablet and console MUST be on the same WiFi\n2. Correct Server Address - Double-check the IP and port (default: 19132)\n3. Broadcasting Active - Verify NetherLink shows \"Broadcasting\" status\n\n🔄 Quick Fixes:\n• Restart the app: Stop broadcasting, close NetherLink completely, reopen and try again\n• Restart your console: Sometimes the console needs a refresh to detect LAN games\n• Check Friends/LAN tab: The server appears under \"Friends\" or \"LAN Games\", NOT in server list\n• Wait 10-15 seconds after starting broadcasting\n• Disable VPNs: VPNs can block local broadcasts\n\n⚠️ Common Issues:\n\"No route found for user\" → Ensure both devices are on the same Wi‑Fi (avoid Guest networks)\n\"Unable to connect to NetherLink relay server\" → Check your internet / relay status\n\n📱 Still having issues? Enable Debug Mode in NetherLink and check logs, or try a different server.'**
-  String get helpNetherlinkBody;
+  /// **'If the server isn\'t appearing on your console, try these steps:\n\n✅ Basic Checks:\n1. Same WiFi Network - Your phone/tablet and console MUST be on the same WiFi\n2. Correct Server Address - Double-check the IP and port (default: 19132)\n3. Broadcasting Active - Verify MCCompanion shows \"Broadcasting\" status\n\n🔄 Quick Fixes:\n• Restart the app: Stop broadcasting, close MCCompanion completely, reopen and try again\n• Restart your console: Sometimes the console needs a refresh to detect LAN games\n• Check Friends/LAN tab: The server appears under \"Friends\" or \"LAN Games\", NOT in server list\n• Wait 10-15 seconds after starting broadcasting\n• Disable VPNs: VPNs can block local broadcasts\n\n⚠️ Common Issues:\n\"No route found for user\" → Ensure both devices are on the same Wi‑Fi (avoid Guest networks)\n\"Unable to connect to MCCompanion relay server\" → Check your internet / relay status\n\n📱 Still having issues? Enable Debug Mode in MCCompanion and check logs, or try a different server.'**
+  String get helpMCCompanionBody;
 
   /// Title for help topic when multiplayer connection fails
   ///
@@ -822,13 +822,13 @@ abstract class AppLocalizations {
   /// Short subtitle for multiplayer failed tile
   ///
   /// In en, this message translates to:
-  /// **'Explanation why this is not a NetherLink error'**
+  /// **'Explanation why this is not a MCCompanion error'**
   String get helpMultiplayerFailedSubtitle;
 
   /// Explanation shown when multiplayer connection failed appears
   ///
   /// In en, this message translates to:
-  /// **'⚠️ This is not an issue with NetherLink!\n\nNetherLink successfully redirected you to the requested server. The message \"Multiplayer Connection Failed\" indicates that the target server is currently unreachable. Possible reasons:\n\n• The target Minecraft server is offline or overloaded\n• The server requires an updated client version or specific edition\n• Network issues between the relay and the target server\n\nTry connecting to a different server or contact the server\'s support. If the problem persists for multiple servers, enable Debug Mode in NetherLink and check logs.'**
+  /// **'⚠️ This is not an issue with MCCompanion!\n\nMCCompanion successfully redirected you to the requested server. The message \"Multiplayer Connection Failed\" indicates that the target server is currently unreachable. Possible reasons:\n\n• The target Minecraft server is offline or overloaded\n• The server requires an updated client version or specific edition\n• Network issues between the relay and the target server\n\nTry connecting to a different server or contact the server\'s support. If the problem persists for multiple servers, enable Debug Mode in MCCompanion and check logs.'**
   String get helpMultiplayerFailedBody;
 
   /// Title for Nintendo DNS troubleshooting

@@ -5,15 +5,15 @@ import '../../theme/app_theme.dart';
 import 'howto_dialogs.dart';
 
 class HelpDialogs {
-  static Future<void> showNetherlinkNotAppearing(BuildContext context) {
+  static Future<void> showMCCompanionNotAppearing(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
     return _push(
       context,
       icon: FontAwesomeIcons.wifi,
       color: AppTheme.info,
-      title: loc.helpNetherlinkTitle,
-      subtitle: loc.helpNetherlinkSubtitle,
-      body: loc.helpNetherlinkBody,
+      title: loc.helpMCCompanionTitle,
+      subtitle: loc.helpMCCompanionSubtitle,
+      body: loc.helpMCCompanionBody,
     );
   }
 

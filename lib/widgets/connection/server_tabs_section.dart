@@ -77,9 +77,8 @@ class _TabButton extends StatelessWidget {
     required this.label,
     this.disabled = false,
     this.icon,
-    this.trailing,
     this.onTap,
-  });
+  }) : trailing = null;
 
   @override
   Widget build(BuildContext context) {

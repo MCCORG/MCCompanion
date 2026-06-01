@@ -1,5 +1,5 @@
-name: NetherLink
-description: "Broadcast a remote server as a local server ."
+name: MCCompanion
+description: "A Minecraft companion app."
 
 publish_to: 'none'
 version: 4.0.0+22

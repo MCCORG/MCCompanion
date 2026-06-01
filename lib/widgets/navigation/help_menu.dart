@@ -91,8 +91,8 @@ class HelpSheetContent extends StatelessWidget {
                     _tile(
                       icon: FontAwesomeIcons.wifi,
                       color: AppTheme.info,
-                      title: loc.helpNetherlinkTitle,
-                      subtitle: loc.helpNetherlinkSubtitle,
+                      title: loc.helpMCCompanionTitle,
+                      subtitle: loc.helpMCCompanionSubtitle,
                       onTap: onMCCompanion ?? () {},
                     ),
                     const SizedBox(height: 8),

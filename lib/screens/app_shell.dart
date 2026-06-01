@@ -273,8 +273,8 @@ class _AppShellState extends State<AppShell>
   }
 
   static String _friendNameForRelay(String relayName) => switch (relayName) {
-    'EU Server' => 'NetherLinkEU',
-    'US Server' => 'NetherLinkUS',
+    'EU Server' => 'MCCompanionEU',
+    'US Server' => 'MCCompanionUS',
     _ => '-',
   };
 
@@ -533,7 +533,7 @@ class _AppShellState extends State<AppShell>
           onClose: _closeSheet,
           onMCCompanion: () {
             _closeSheetInstant();
-            HelpDialogs.showNetherlinkNotAppearing(context);
+            HelpDialogs.showMCCompanionNotAppearing(context);
           },
           onMultiplayerFailed: () {
             _closeSheetInstant();

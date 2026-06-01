@@ -33,7 +33,7 @@ class _GeyserSkin {
 class _SkinFaceImage extends StatefulWidget {
   final String textureUrl;
   final double size;
-  const _SkinFaceImage({required this.textureUrl, this.size = 64});
+  const _SkinFaceImage({required this.textureUrl}) : size = 64;
 
   @override
   State<_SkinFaceImage> createState() => _SkinFaceImageState();

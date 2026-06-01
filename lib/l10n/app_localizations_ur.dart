@@ -9,7 +9,7 @@ class AppLocalizationsUr extends AppLocalizations {
   AppLocalizationsUr([String locale = 'ur']) : super(locale);
 
   @override
-  String get appName => 'NetherLink';
+  String get appName => 'MCCompanion';
 
   @override
   String get console => 'کنسول';
@@ -46,7 +46,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String helpText(Object appCreator) {
-    return '$appCreator کی طرف سے بنایا گیا۔\r\n\r\nاستعمال کا طریقہ:\r\n1. اپنے Minecraft سرور کا ایڈریس اور پورٹ درج کریں (ڈیفالٹ: 19132)\r\n   — یا ڈراپ ڈاؤن سے پہلے سے محفوظ شدہ سرور منتخب کریں\r\n2. (اختیاری) اپنی جگہ کے قریب ترین Relay Server (EU یا US) منتخب کریں\r\n3. شروع کرنے کے لیے \"براڈکاسٹنگ شروع کریں\" پر کلک کریں\r\n4. اپنے کنسول/ڈیوائس پر: Minecraft > Play > Friends\r\n5. آپ کو \"NetherLink\" نام کا ایک LAN سرور نظر آنا چاہیے\r\n6. اپنے بیرونی سرور میں شامل ہونے کے لیے اس پر کلک کریں\r\n\r\nNintendo Switch (DNS mode):\r\n1. کنیکشن پینل میں \"Nintendo Switch\" فعال کریں\r\n2. ایک Relay Server (EU یا US) منتخب کریں\r\n3. \"Send DNS Config\" پر کلک کریں — یہ آپ کی سیٹنگ relay کو بھیجتا ہے\r\n   (یہ LAN سرور براڈکاسٹ نہیں کرتا)\r\n4. اپنے Switch پر NetherLink DNS سیٹ اپ لاگو کریں اور شامل ہوں\r\n   اس سرور اندراج کو استعمال کرتے ہوئے جو آپ NetherLink کے لیے استعمال کرتے ہیں\r\n\r\nنوٹس:\r\n- LAN براڈکاسٹنگ کے لیے NetherLink اور کنسول کا ایک ہی مقامی نیٹ ورک پر ہونا ضروری ہے۔\r\n- مشورہ: بہترین کارکردگی کے لیے اپنے قریب ترین relay سرور کا انتخاب کریں۔';
+    return '$appCreator کی طرف سے بنایا گیا۔\r\n\r\nاستعمال کا طریقہ:\r\n1. اپنے Minecraft سرور کا ایڈریس اور پورٹ درج کریں (ڈیفالٹ: 19132)\r\n   — یا ڈراپ ڈاؤن سے پہلے سے محفوظ شدہ سرور منتخب کریں\r\n2. (اختیاری) اپنی جگہ کے قریب ترین Relay Server (EU یا US) منتخب کریں\r\n3. شروع کرنے کے لیے \"براڈکاسٹنگ شروع کریں\" پر کلک کریں\r\n4. اپنے کنسول/ڈیوائس پر: Minecraft > Play > Friends\r\n5. آپ کو \"MCCompanion\" نام کا ایک LAN سرور نظر آنا چاہیے\r\n6. اپنے بیرونی سرور میں شامل ہونے کے لیے اس پر کلک کریں\r\n\r\nNintendo Switch (DNS mode):\r\n1. کنیکشن پینل میں \"Nintendo Switch\" فعال کریں\r\n2. ایک Relay Server (EU یا US) منتخب کریں\r\n3. \"Send DNS Config\" پر کلک کریں — یہ آپ کی سیٹنگ relay کو بھیجتا ہے\r\n   (یہ LAN سرور براڈکاسٹ نہیں کرتا)\r\n4. اپنے Switch پر MCCompanion DNS سیٹ اپ لاگو کریں اور شامل ہوں\r\n   اس سرور اندراج کو استعمال کرتے ہوئے جو آپ MCCompanion کے لیے استعمال کرتے ہیں\r\n\r\nنوٹس:\r\n- LAN براڈکاسٹنگ کے لیے MCCompanion اور کنسول کا ایک ہی مقامی نیٹ ورک پر ہونا ضروری ہے۔\r\n- مشورہ: بہترین کارکردگی کے لیے اپنے قریب ترین relay سرور کا انتخاب کریں۔';
   }
 
   @override
@@ -74,13 +74,13 @@ class AppLocalizationsUr extends AppLocalizations {
   String get howToJavaTitle => 'جاوا موڈ';
 
   @override
-  String get howToJavaSubtitle => 'NetherLink کے ذریعے Java Edition سرورز سے منسلک ہوں';
+  String get howToJavaSubtitle => 'MCCompanion کے ذریعے Java Edition سرورز سے منسلک ہوں';
 
   @override
   String get aternosSubtext => 'اپنا مفت مائن کرافٹ سرور بنائیں';
 
   @override
-  String get howToJavaBody => 'جاوا موڈ — فوری مراحل:\n1. ایپ میں جاوا موڈ منتخب کریں۔\n2. اپنے Java Edition سرور کا پتہ اور پورٹ درج کریں (ڈیفالٹ: 25565)۔\n3. \"جاوا موڈ شروع کریں\" دبائیں — NetherLink کنکشن کو جوڑ دے گا۔\n4. Minecraft Bedrock کھولیں اور Friends ٹیب پر جائیں۔\n5. Java سرور میں شامل ہونے کے لیے \"NetherLink\" نام کا LAN سرور منتخب کریں۔\n\n⚠️ اہم انتباہات:\n- ایک درست Java Edition اکاؤنٹ (Microsoft) درکار ہے۔\n- کچھ سرور anti-cheat سسٹمز استعمال کرتے ہیں جو آپ کے اکاؤنٹ کا پتا لگا کر اسے بین کر سکتے ہیں۔\n- کچھ سرور Bedrock کلائنٹس کو واضح طور پر منع کرتے ہیں — ہمیشہ سرور کے قواعد چیک کریں۔\n- اس خصوصیت کے استعمال سے پیدا ہونے والی کسی بھی پابندی، معطلی یا اکاؤنٹ سے متعلق دیگر مسائل کے لیے NetherLink ذمہ دار نہیں ہے۔\n- اسے اپنے ذمہ استعمال کریں۔';
+  String get howToJavaBody => 'جاوا موڈ — فوری مراحل:\n1. ایپ میں جاوا موڈ منتخب کریں۔\n2. اپنے Java Edition سرور کا پتہ اور پورٹ درج کریں (ڈیفالٹ: 25565)۔\n3. \"جاوا موڈ شروع کریں\" دبائیں — MCCompanion کنکشن کو جوڑ دے گا۔\n4. Minecraft Bedrock کھولیں اور Friends ٹیب پر جائیں۔\n5. Java سرور میں شامل ہونے کے لیے \"MCCompanion\" نام کا LAN سرور منتخب کریں۔\n\n⚠️ اہم انتباہات:\n- ایک درست Java Edition اکاؤنٹ (Microsoft) درکار ہے۔\n- کچھ سرور anti-cheat سسٹمز استعمال کرتے ہیں جو آپ کے اکاؤنٹ کا پتا لگا کر اسے بین کر سکتے ہیں۔\n- کچھ سرور Bedrock کلائنٹس کو واضح طور پر منع کرتے ہیں — ہمیشہ سرور کے قواعد چیک کریں۔\n- اس خصوصیت کے استعمال سے پیدا ہونے والی کسی بھی پابندی، معطلی یا اکاؤنٹ سے متعلق دیگر مسائل کے لیے MCCompanion ذمہ دار نہیں ہے۔\n- اسے اپنے ذمہ استعمال کریں۔';
 
   @override
   String get language => 'اردو';
@@ -185,7 +185,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get debugDisabled => 'ڈیبگ لاگز غیر فعال ہیں';
 
   @override
-  String get howToUseTitle => 'NetherLink استعمال کرنے کا طریقہ';
+  String get howToUseTitle => 'MCCompanion استعمال کرنے کا طریقہ';
 
   @override
   String get iUnderstand => 'میں سمجھ گیا';
@@ -251,10 +251,10 @@ class AppLocalizationsUr extends AppLocalizations {
   String get noWifi => 'Wi‑Fi پر نہیں';
 
   @override
-  String get vpnActive => 'ہم نے پتہ لگایا ہے کہ آپ کا VPN فعال ہے۔\n\nNetherLink استعمال کرنے سے پہلے براہ کرم VPN بند کریں، ورنہ LAN براڈکاسٹ آپ کے کنسول تک نہیں پہنچ پائے گی۔';
+  String get vpnActive => 'ہم نے پتہ لگایا ہے کہ آپ کا VPN فعال ہے۔\n\nMCCompanion استعمال کرنے سے پہلے براہ کرم VPN بند کریں، ورنہ LAN براڈکاسٹ آپ کے کنسول تک نہیں پہنچ پائے گی۔';
 
   @override
-  String get mobileActive => 'پتہ چلا: موبائل ڈیٹا\n\nNetherLink کو آپ کے کنسول کے اسی نیٹ ورک پر ہونا چاہیے۔ آگے بڑھنے سے پہلے اپنے ہوم Wi‑Fi یا ہاٹ اسپاٹ سے جڑیں۔';
+  String get mobileActive => 'پتہ چلا: موبائل ڈیٹا\n\nMCCompanion کو آپ کے کنسول کے اسی نیٹ ورک پر ہونا چاہیے۔ آگے بڑھنے سے پہلے اپنے ہوم Wi‑Fi یا ہاٹ اسپاٹ سے جڑیں۔';
 
   @override
   String get continueAnyway => 'پھر بھی جاری رکھیں';
@@ -263,13 +263,13 @@ class AppLocalizationsUr extends AppLocalizations {
   String get sameWifi => 'ایک ہی Wi‑Fi نیٹ ورک';
 
   @override
-  String get needSameWifi => 'جس ڈیوائس پر NetherLink چل رہا ہے وہ اسی Wi‑Fi نیٹ ورک پر ہونا چاہیے جس پر آپ Minecraft کھیلنے والا کنسول موجود ہے۔';
+  String get needSameWifi => 'جس ڈیوائس پر MCCompanion چل رہا ہے وہ اسی Wi‑Fi نیٹ ورک پر ہونا چاہیے جس پر آپ Minecraft کھیلنے والا کنسول موجود ہے۔';
 
   @override
   String get subscription => 'آن لائن سبسکرپشن درکار ہے';
 
   @override
-  String get needSubscription => 'ہر کنسول کے لیے الگ فعال آن لائن سبسکرپشن (Xbox Live، PS Plus، NSO) درکار ہے۔ اس کے بغیر NetherLink ظاہر نہیں ہوگا۔';
+  String get needSubscription => 'ہر کنسول کے لیے الگ فعال آن لائن سبسکرپشن (Xbox Live، PS Plus، NSO) درکار ہے۔ اس کے بغیر MCCompanion ظاہر نہیں ہوگا۔';
 
   @override
   String get updateAvailable => 'اپ ڈیٹ دستیاب ہے';
@@ -320,7 +320,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get friendModeTitle => 'دوست موڈ';
 
   @override
-  String get friendModeText => 'NetherLink کے دوست bots کو دوست کے طور پر شامل کریں۔ دوست موڈ شروع کریں اور کھیلیں';
+  String get friendModeText => 'MCCompanion کے دوست bots کو دوست کے طور پر شامل کریں۔ دوست موڈ شروع کریں اور کھیلیں';
 
   @override
   String get selectedRelayCheck => 'منتخب شدہ';
@@ -331,7 +331,7 @@ class AppLocalizationsUr extends AppLocalizations {
   }
 
   @override
-  String get relayUnableConnect => 'کسی بھی NetherLink relay سرور سے جڑنا ممکن نہیں۔ بعد میں دوبارہ کوشش کریں یا اپنا انٹرنیٹ چیک کریں۔';
+  String get relayUnableConnect => 'کسی بھی MCCompanion relay سرور سے جڑنا ممکن نہیں۔ بعد میں دوبارہ کوشش کریں یا اپنا انٹرنیٹ چیک کریں۔';
 
   @override
   String get howToXboxTitle => 'Xbox / PS4-5 (LAN / پراکسی)';
@@ -340,7 +340,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get howToXboxSubtitle => 'LAN براڈکاسٹ یا پراکسی کے ذریعے کھیلیں';
 
   @override
-  String get howToXboxBody => 'جڑنے کا طریقہ (Xbox / PS4 / PS5):\r\n1. یقینی بنائیں کہ NetherLink چلانے والی آپ کی ڈیوائس اور آپ کا کنسول ایک ہی مقامی نیٹ ورک پر ہیں۔\r\n2. ایپ میں اپنا Minecraft سرور ایڈریس اور پورٹ درج کریں اور \"براڈکاسٹنگ شروع کریں\" دبائیں۔\r\n3. کنسول پر Minecraft → Play کھولیں → LAN Worlds یا Friends ٹیب تلاش کریں اور فہرست تازہ کریں۔\r\n4. شامل ہونے کے لیے \"NetherLink\" نامی LAN سرور منتخب کریں۔\r\nنوٹس:\r\n- اگر سرور ظاہر نہ ہو تو تصدیق کریں کہ دونوں ڈیوائسز ایک ہی subnet پر ہیں اور ایپ اب بھی براڈکاسٹ کر رہی ہے۔\r\n- کچھ کنسول ماڈلز یا routers LAN دریافت کو بلاک کر سکتے ہیں؛ ضرورت ہو تو ایپ یا router settings تبدیل کر کے دیکھیں۔';
+  String get howToXboxBody => 'جڑنے کا طریقہ (Xbox / PS4 / PS5):\r\n1. یقینی بنائیں کہ MCCompanion چلانے والی آپ کی ڈیوائس اور آپ کا کنسول ایک ہی مقامی نیٹ ورک پر ہیں۔\r\n2. ایپ میں اپنا Minecraft سرور ایڈریس اور پورٹ درج کریں اور \"براڈکاسٹنگ شروع کریں\" دبائیں۔\r\n3. کنسول پر Minecraft → Play کھولیں → LAN Worlds یا Friends ٹیب تلاش کریں اور فہرست تازہ کریں۔\r\n4. شامل ہونے کے لیے \"MCCompanion\" نامی LAN سرور منتخب کریں۔\r\nنوٹس:\r\n- اگر سرور ظاہر نہ ہو تو تصدیق کریں کہ دونوں ڈیوائسز ایک ہی subnet پر ہیں اور ایپ اب بھی براڈکاسٹ کر رہی ہے۔\r\n- کچھ کنسول ماڈلز یا routers LAN دریافت کو بلاک کر سکتے ہیں؛ ضرورت ہو تو ایپ یا router settings تبدیل کر کے دیکھیں۔';
 
   @override
   String get howToNintendoTitle => 'Nintendo Switch (DNS موڈ)';
@@ -358,25 +358,25 @@ class AppLocalizationsUr extends AppLocalizations {
   String get howToFriendsSubtitle => 'دوستوں کو مدعو کریں اور LAN کے ذریعے شامل ہوں';
 
   @override
-  String get howToFriendsBody => 'دوست موڈ — فوری مراحل:\r\n1. اگر ضرورت ہو تو اپنے کنسول یا پلیٹ فارم پر NetherLink دوست اکاؤنٹ شامل کریں۔\r\n2. ایپ میں دوست موڈ فعال کریں اور relay کنفیگریشن بھیجیں (اگر لاگو ہو)۔\r\n3. اپنے کنسول پر Minecraft → Friends کھولیں اور LAN Worlds تلاش کریں — آپ کا سرور وہاں LAN world کے طور پر ظاہر ہونا چاہیے۔\r\n4. دوستوں کے ساتھ اپنے سرور میں شامل ہونے کے لیے اسے منتخب کریں۔\r\nنوٹس:\r\n- یقینی بنائیں کہ آپ اور آپ کے دوست ایک جیسی NAT/settings رکھتے ہوں جو دوستوں کی موجودگی کی اجازت دیتی ہیں۔\r\n- دوست موڈ پلیٹ فارم کے دوستی features پر انحصار کرتا ہے اور friend requests قبول کرنے کی ضرورت پڑ سکتی ہے۔';
+  String get howToFriendsBody => 'دوست موڈ — فوری مراحل:\r\n1. اگر ضرورت ہو تو اپنے کنسول یا پلیٹ فارم پر MCCompanion دوست اکاؤنٹ شامل کریں۔\r\n2. ایپ میں دوست موڈ فعال کریں اور relay کنفیگریشن بھیجیں (اگر لاگو ہو)۔\r\n3. اپنے کنسول پر Minecraft → Friends کھولیں اور LAN Worlds تلاش کریں — آپ کا سرور وہاں LAN world کے طور پر ظاہر ہونا چاہیے۔\r\n4. دوستوں کے ساتھ اپنے سرور میں شامل ہونے کے لیے اسے منتخب کریں۔\r\nنوٹس:\r\n- یقینی بنائیں کہ آپ اور آپ کے دوست ایک جیسی NAT/settings رکھتے ہوں جو دوستوں کی موجودگی کی اجازت دیتی ہیں۔\r\n- دوست موڈ پلیٹ فارم کے دوستی features پر انحصار کرتا ہے اور friend requests قبول کرنے کی ضرورت پڑ سکتی ہے۔';
 
   @override
-  String get helpNetherlinkTitle => 'NetherLink ظاہر نہیں ہوتا';
+  String get helpMCCompanionTitle => 'MCCompanion ظاہر نہیں ہوتا';
 
   @override
-  String get helpNetherlinkSubtitle => 'LAN دریافت کے مسائل کا حل';
+  String get helpMCCompanionSubtitle => 'LAN دریافت کے مسائل کا حل';
 
   @override
-  String get helpNetherlinkBody => 'اگر سرور آپ کے کنسول پر ظاہر نہیں ہو رہا تو یہ مراحل آزمائیں:\r\n\r\n✅ بنیادی جانچ:\r\n1. ایک ہی WiFi نیٹ ورک - آپ کا فون/ٹیبلیٹ اور کنسول لازماً ایک ہی WiFi پر ہوں\r\n2. درست سرور ایڈریس - IP اور پورٹ دوبارہ چیک کریں (ڈیفالٹ: 19132)\r\n3. براڈکاسٹنگ فعال ہے - تصدیق کریں کہ NetherLink \"براڈکاسٹنگ\" اسٹیٹس دکھا رہا ہے\r\n\r\n🔄 فوری حل:\r\n• ایپ دوبارہ شروع کریں: براڈکاسٹنگ بند کریں، NetherLink مکمل طور پر بند کریں، دوبارہ کھولیں اور پھر کوشش کریں\r\n• اپنا کنسول دوبارہ شروع کریں: کبھی کبھی LAN گیمز کا پتہ لگانے کے لیے کنسول کو ریفریش درکار ہوتا ہے\r\n• Friends/LAN ٹیب چیک کریں: سرور \"Friends\" یا \"LAN Games\" کے تحت ظاہر ہوتا ہے، سرور لسٹ میں نہیں\r\n• براڈکاسٹنگ شروع کرنے کے بعد 10-15 سیکنڈ انتظار کریں\r\n• VPNs بند کریں: VPNs مقامی براڈکاسٹس کو بلاک کر سکتے ہیں\r\n\r\n⚠️ عام مسائل:\r\n\"No route found for user\" → یقینی بنائیں کہ دونوں ڈیوائسز ایک ہی Wi‑Fi پر ہیں (Guest نیٹ ورکس سے بچیں)\r\n\"Unable to connect to NetherLink relay server\" → اپنا انٹرنیٹ / relay اسٹیٹس چیک کریں\r\n\r\n📱 پھر بھی مسئلہ ہے؟ NetherLink میں ڈیبگ موڈ فعال کریں اور لاگز چیک کریں، یا کوئی مختلف سرور آزمائیں۔';
+  String get helpMCCompanionBody => 'اگر سرور آپ کے کنسول پر ظاہر نہیں ہو رہا تو یہ مراحل آزمائیں:\r\n\r\n✅ بنیادی جانچ:\r\n1. ایک ہی WiFi نیٹ ورک - آپ کا فون/ٹیبلیٹ اور کنسول لازماً ایک ہی WiFi پر ہوں\r\n2. درست سرور ایڈریس - IP اور پورٹ دوبارہ چیک کریں (ڈیفالٹ: 19132)\r\n3. براڈکاسٹنگ فعال ہے - تصدیق کریں کہ MCCompanion \"براڈکاسٹنگ\" اسٹیٹس دکھا رہا ہے\r\n\r\n🔄 فوری حل:\r\n• ایپ دوبارہ شروع کریں: براڈکاسٹنگ بند کریں، MCCompanion مکمل طور پر بند کریں، دوبارہ کھولیں اور پھر کوشش کریں\r\n• اپنا کنسول دوبارہ شروع کریں: کبھی کبھی LAN گیمز کا پتہ لگانے کے لیے کنسول کو ریفریش درکار ہوتا ہے\r\n• Friends/LAN ٹیب چیک کریں: سرور \"Friends\" یا \"LAN Games\" کے تحت ظاہر ہوتا ہے، سرور لسٹ میں نہیں\r\n• براڈکاسٹنگ شروع کرنے کے بعد 10-15 سیکنڈ انتظار کریں\r\n• VPNs بند کریں: VPNs مقامی براڈکاسٹس کو بلاک کر سکتے ہیں\r\n\r\n⚠️ عام مسائل:\r\n\"No route found for user\" → یقینی بنائیں کہ دونوں ڈیوائسز ایک ہی Wi‑Fi پر ہیں (Guest نیٹ ورکس سے بچیں)\r\n\"Unable to connect to MCCompanion relay server\" → اپنا انٹرنیٹ / relay اسٹیٹس چیک کریں\r\n\r\n📱 پھر بھی مسئلہ ہے؟ MCCompanion میں ڈیبگ موڈ فعال کریں اور لاگز چیک کریں، یا کوئی مختلف سرور آزمائیں۔';
 
   @override
   String get helpMultiplayerFailedTitle => 'ملٹی پلیئر کنکشن ناکام ہو گیا';
 
   @override
-  String get helpMultiplayerFailedSubtitle => 'یہ NetherLink کی خرابی کیوں نہیں ہے، اس کی وضاحت';
+  String get helpMultiplayerFailedSubtitle => 'یہ MCCompanion کی خرابی کیوں نہیں ہے، اس کی وضاحت';
 
   @override
-  String get helpMultiplayerFailedBody => '⚠️ یہ NetherLink کا مسئلہ نہیں ہے!\r\n\r\nNetherLink نے آپ کو کامیابی سے مطلوبہ سرور پر ری ڈائریکٹ کیا ہے۔ \"Multiplayer Connection Failed\" کا مطلب ہے کہ ہدف سرور اس وقت قابلِ رسائی نہیں۔ ممکنہ وجوہات:\r\n\r\n• ہدف Minecraft سرور آف لائن ہے یا بہت زیادہ بوجھ میں ہے\r\n• سرور کو اپ ڈیٹ شدہ کلائنٹ ورژن یا مخصوص ایڈیشن درکار ہے\r\n• relay اور ہدف سرور کے درمیان نیٹ ورک مسائل\r\n\r\nکسی مختلف سرور سے جڑنے کی کوشش کریں یا سرور سپورٹ سے رابطہ کریں۔ اگر یہ مسئلہ کئی سرورز پر برقرار رہے تو NetherLink میں ڈیبگ موڈ فعال کریں اور لاگز چیک کریں۔';
+  String get helpMultiplayerFailedBody => '⚠️ یہ MCCompanion کا مسئلہ نہیں ہے!\r\n\r\nMCCompanion نے آپ کو کامیابی سے مطلوبہ سرور پر ری ڈائریکٹ کیا ہے۔ \"Multiplayer Connection Failed\" کا مطلب ہے کہ ہدف سرور اس وقت قابلِ رسائی نہیں۔ ممکنہ وجوہات:\r\n\r\n• ہدف Minecraft سرور آف لائن ہے یا بہت زیادہ بوجھ میں ہے\r\n• سرور کو اپ ڈیٹ شدہ کلائنٹ ورژن یا مخصوص ایڈیشن درکار ہے\r\n• relay اور ہدف سرور کے درمیان نیٹ ورک مسائل\r\n\r\nکسی مختلف سرور سے جڑنے کی کوشش کریں یا سرور سپورٹ سے رابطہ کریں۔ اگر یہ مسئلہ کئی سرورز پر برقرار رہے تو MCCompanion میں ڈیبگ موڈ فعال کریں اور لاگز چیک کریں۔';
 
   @override
   String get helpNintendoDnsTitle => 'Nintendo DNS کام نہیں کرتا';

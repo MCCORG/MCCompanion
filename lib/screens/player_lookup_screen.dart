@@ -572,23 +572,6 @@ class _PlatformBadge extends StatelessWidget {
   }
 }
 
-class _FallbackAvatar extends StatelessWidget {
-  final IconData icon;
-  const _FallbackAvatar({required this.icon});
-
-  @override
-  Widget build(BuildContext context) => Container(
-    width: 52,
-    height: 52,
-    decoration: BoxDecoration(
-      color: AppTheme.surface,
-      borderRadius: BorderRadius.circular(10),
-      border: Border.all(color: AppTheme.borderGray),
-    ),
-    child: Icon(icon, color: AppTheme.textMuted, size: 26),
-  );
-}
-
 class _InfoRow extends StatelessWidget {
   final String label;
   final String value;
@@ -599,8 +582,7 @@ class _InfoRow extends StatelessWidget {
     required this.label,
     required this.value,
     this.canCopy = false,
-    this.truncate = false,
-  });
+  }) : truncate = false;
 
   @override
   Widget build(BuildContext context) {

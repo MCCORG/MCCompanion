@@ -9,7 +9,7 @@ class AppLocalizationsId extends AppLocalizations {
   AppLocalizationsId([String locale = 'id']) : super(locale);
 
   @override
-  String get appName => 'NetherLink';
+  String get appName => 'MCCompanion';
 
   @override
   String get console => 'Konsol';
@@ -46,7 +46,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String helpText(Object appCreator) {
-    return 'Dibuat oleh $appCreator.\r\n\r\nCara menggunakan:\r\n1. Masukkan alamat dan port server Minecraft Anda (default: 19132)\r\n   — atau pilih server yang sebelumnya disimpan dari menu dropdown\r\n2. (Opsional) Pilih Server Relay (EU atau US) yang paling dekat dengan lokasi Anda\r\n3. Klik \"Mulai Siaran\" untuk memulai\r\n4. Di konsol/perangkat Anda: Minecraft > Play > Friends\r\n5. Anda akan melihat server LAN bernama \"NetherLink\"\r\n6. Klik server tersebut untuk bergabung ke server eksternal Anda melalui NetherLink\r\n\r\nNintendo Switch (mode DNS):\r\n1. Aktifkan \"Nintendo Switch\" di panel koneksi\r\n2. Pilih Server Relay (EU atau US)\r\n3. Klik \"Send DNS Config\" — ini mengirim konfigurasi Anda ke relay\r\n   (ini TIDAK menyiarkan server LAN)\r\n4. Di Switch Anda, terapkan pengaturan DNS NetherLink lalu bergabung\r\n   menggunakan entri server yang Anda pakai untuk NetherLink\r\n\r\nCatatan:\r\n- Untuk siaran LAN, NetherLink dan konsol harus berada di jaringan lokal yang sama.\r\n- Tips: Pilih server relay yang paling dekat dengan Anda untuk performa terbaik.';
+    return 'Dibuat oleh $appCreator.\r\n\r\nCara menggunakan:\r\n1. Masukkan alamat dan port server Minecraft Anda (default: 19132)\r\n   — atau pilih server yang sebelumnya disimpan dari menu dropdown\r\n2. (Opsional) Pilih Server Relay (EU atau US) yang paling dekat dengan lokasi Anda\r\n3. Klik \"Mulai Siaran\" untuk memulai\r\n4. Di konsol/perangkat Anda: Minecraft > Play > Friends\r\n5. Anda akan melihat server LAN bernama \"MCCompanion\"\r\n6. Klik server tersebut untuk bergabung ke server eksternal Anda melalui MCCompanion\r\n\r\nNintendo Switch (mode DNS):\r\n1. Aktifkan \"Nintendo Switch\" di panel koneksi\r\n2. Pilih Server Relay (EU atau US)\r\n3. Klik \"Send DNS Config\" — ini mengirim konfigurasi Anda ke relay\r\n   (ini TIDAK menyiarkan server LAN)\r\n4. Di Switch Anda, terapkan pengaturan DNS MCCompanion lalu bergabung\r\n   menggunakan entri server yang Anda pakai untuk MCCompanion\r\n\r\nCatatan:\r\n- Untuk siaran LAN, MCCompanion dan konsol harus berada di jaringan lokal yang sama.\r\n- Tips: Pilih server relay yang paling dekat dengan Anda untuk performa terbaik.';
   }
 
   @override
@@ -74,13 +74,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get howToJavaTitle => 'Mode Java';
 
   @override
-  String get howToJavaSubtitle => 'Hubungkan ke server Java Edition melalui NetherLink';
+  String get howToJavaSubtitle => 'Hubungkan ke server Java Edition melalui MCCompanion';
 
   @override
   String get aternosSubtext => 'Buat server Minecraft gratis Anda sendiri';
 
   @override
-  String get howToJavaBody => 'Mode Java — langkah cepat:\n1. Di aplikasi, pilih mode Java.\n2. Masukkan alamat dan port server Java Edition Anda (default: 25565).\n3. Tekan \"Mulai Mode Java\" — NetherLink akan menjembatani koneksi.\n4. Buka Minecraft Bedrock dan masuk ke tab Teman.\n5. Pilih server LAN bernama \"NetherLink\" untuk bergabung ke server Java.\n\n⚠️ Peringatan penting:\n- Diperlukan akun Java Edition yang valid (Microsoft).\n- Beberapa server menggunakan sistem anti-cheat yang dapat mendeteksi dan memblokir akun Anda.\n- Beberapa server secara eksplisit melarang klien Bedrock — selalu periksa aturan server.\n- NetherLink tidak bertanggung jawab atas ban akun, penangguhan, atau masalah terkait akun lainnya yang mungkin terjadi akibat penggunaan fitur ini.\n- Gunakan dengan risiko Anda sendiri.';
+  String get howToJavaBody => 'Mode Java — langkah cepat:\n1. Di aplikasi, pilih mode Java.\n2. Masukkan alamat dan port server Java Edition Anda (default: 25565).\n3. Tekan \"Mulai Mode Java\" — MCCompanion akan menjembatani koneksi.\n4. Buka Minecraft Bedrock dan masuk ke tab Teman.\n5. Pilih server LAN bernama \"MCCompanion\" untuk bergabung ke server Java.\n\n⚠️ Peringatan penting:\n- Diperlukan akun Java Edition yang valid (Microsoft).\n- Beberapa server menggunakan sistem anti-cheat yang dapat mendeteksi dan memblokir akun Anda.\n- Beberapa server secara eksplisit melarang klien Bedrock — selalu periksa aturan server.\n- MCCompanion tidak bertanggung jawab atas ban akun, penangguhan, atau masalah terkait akun lainnya yang mungkin terjadi akibat penggunaan fitur ini.\n- Gunakan dengan risiko Anda sendiri.';
 
   @override
   String get language => 'Indonesia';
@@ -185,7 +185,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get debugDisabled => 'Log debug dinonaktifkan';
 
   @override
-  String get howToUseTitle => 'Cara menggunakan NetherLink';
+  String get howToUseTitle => 'Cara menggunakan MCCompanion';
 
   @override
   String get iUnderstand => 'Saya mengerti';
@@ -207,7 +207,7 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get nldServerLabel => 'SERVER NETHERLINK';
+  String get nldServerLabel => 'SERVER MCCompanion';
 
   @override
   String selectRelayLabel(Object name) {
@@ -251,10 +251,10 @@ class AppLocalizationsId extends AppLocalizations {
   String get noWifi => 'Tidak di Wi‑Fi';
 
   @override
-  String get vpnActive => 'Kami mendeteksi VPN Anda aktif.\n\nMatikan VPN sebelum menggunakan NetherLink, jika tidak siaran LAN mungkin tidak akan mencapai konsol Anda.';
+  String get vpnActive => 'Kami mendeteksi VPN Anda aktif.\n\nMatikan VPN sebelum menggunakan MCCompanion, jika tidak siaran LAN mungkin tidak akan mencapai konsol Anda.';
 
   @override
-  String get mobileActive => 'Terdeteksi: Data Seluler\n\nNetherLink harus berada di jaringan yang sama dengan konsol Anda. Sambungkan ke Wi‑Fi rumah atau hotspot sebelum melanjutkan.';
+  String get mobileActive => 'Terdeteksi: Data Seluler\n\nMCCompanion harus berada di jaringan yang sama dengan konsol Anda. Sambungkan ke Wi‑Fi rumah atau hotspot sebelum melanjutkan.';
 
   @override
   String get continueAnyway => 'Tetap lanjutkan';
@@ -263,13 +263,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get sameWifi => 'Jaringan Wi‑Fi yang sama';
 
   @override
-  String get needSameWifi => 'Perangkat yang menjalankan NetherLink HARUS berada di jaringan Wi‑Fi yang sama dengan konsol tempat Anda bermain Minecraft.';
+  String get needSameWifi => 'Perangkat yang menjalankan MCCompanion HARUS berada di jaringan Wi‑Fi yang sama dengan konsol tempat Anda bermain Minecraft.';
 
   @override
   String get subscription => 'Langganan online diperlukan';
 
   @override
-  String get needSubscription => 'Setiap konsol memerlukan langganan online aktifnya sendiri (Xbox Live, PS Plus, NSO). Tanpa itu, NetherLink tidak akan muncul.';
+  String get needSubscription => 'Setiap konsol memerlukan langganan online aktifnya sendiri (Xbox Live, PS Plus, NSO). Tanpa itu, MCCompanion tidak akan muncul.';
 
   @override
   String get updateAvailable => 'Pembaruan tersedia';
@@ -320,7 +320,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get friendModeTitle => 'Mode Teman';
 
   @override
-  String get friendModeText => 'Tambahkan bot teman NetherLink sebagai teman. Mulai mode Teman dan bermain';
+  String get friendModeText => 'Tambahkan bot teman MCCompanion sebagai teman. Mulai mode Teman dan bermain';
 
   @override
   String get selectedRelayCheck => 'Dipilih';
@@ -331,7 +331,7 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get relayUnableConnect => 'Tidak dapat terhubung ke server relay NetherLink mana pun. Coba lagi nanti atau periksa internet Anda.';
+  String get relayUnableConnect => 'Tidak dapat terhubung ke server relay MCCompanion mana pun. Coba lagi nanti atau periksa internet Anda.';
 
   @override
   String get howToXboxTitle => 'Xbox / PS4-5 (LAN / Proksi)';
@@ -340,7 +340,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get howToXboxSubtitle => 'Main melalui siaran LAN atau proxy';
 
   @override
-  String get howToXboxBody => 'Cara terhubung (Xbox / PS4 / PS5):\r\n1. Pastikan perangkat yang menjalankan NetherLink dan konsol Anda berada di jaringan lokal yang sama.\r\n2. Di aplikasi, masukkan alamat dan port server Minecraft Anda lalu tekan \"Mulai Siaran\".\r\n3. Di konsol, buka Minecraft → Play → cari LAN Worlds atau tab Friends lalu segarkan daftar.\r\n4. Pilih server LAN bernama \"NetherLink\" untuk bergabung.\r\nCatatan:\r\n- Jika server tidak muncul, pastikan kedua perangkat berada di subnet yang sama dan aplikasi masih menyiarkan.\r\n- Beberapa model konsol atau router dapat memblokir penemuan LAN; coba ubah pengaturan aplikasi atau router jika perlu.';
+  String get howToXboxBody => 'Cara terhubung (Xbox / PS4 / PS5):\r\n1. Pastikan perangkat yang menjalankan MCCompanion dan konsol Anda berada di jaringan lokal yang sama.\r\n2. Di aplikasi, masukkan alamat dan port server Minecraft Anda lalu tekan \"Mulai Siaran\".\r\n3. Di konsol, buka Minecraft → Play → cari LAN Worlds atau tab Friends lalu segarkan daftar.\r\n4. Pilih server LAN bernama \"MCCompanion\" untuk bergabung.\r\nCatatan:\r\n- Jika server tidak muncul, pastikan kedua perangkat berada di subnet yang sama dan aplikasi masih menyiarkan.\r\n- Beberapa model konsol atau router dapat memblokir penemuan LAN; coba ubah pengaturan aplikasi atau router jika perlu.';
 
   @override
   String get howToNintendoTitle => 'Nintendo Switch (mode DNS)';
@@ -358,25 +358,25 @@ class AppLocalizationsId extends AppLocalizations {
   String get howToFriendsSubtitle => 'Undang teman dan gabung melalui LAN';
 
   @override
-  String get howToFriendsBody => 'Mode Teman — langkah cepat:\r\n1. Tambahkan akun teman NetherLink di konsol atau platform Anda jika diperlukan.\r\n2. Di aplikasi, aktifkan mode Teman dan kirim konfigurasi relay (jika berlaku).\r\n3. Di konsol, buka Minecraft → Friends dan cari LAN Worlds — server Anda seharusnya muncul di sana sebagai dunia LAN.\r\n4. Pilih server tersebut untuk bergabung ke server Anda bersama teman.\r\nCatatan:\r\n- Pastikan Anda dan teman Anda memiliki NAT/pengaturan yang sama yang memungkinkan kehadiran teman.\r\n- Mode Teman bergantung pada fitur pertemanan platform dan mungkin memerlukan penerimaan permintaan pertemanan.';
+  String get howToFriendsBody => 'Mode Teman — langkah cepat:\r\n1. Tambahkan akun teman MCCompanion di konsol atau platform Anda jika diperlukan.\r\n2. Di aplikasi, aktifkan mode Teman dan kirim konfigurasi relay (jika berlaku).\r\n3. Di konsol, buka Minecraft → Friends dan cari LAN Worlds — server Anda seharusnya muncul di sana sebagai dunia LAN.\r\n4. Pilih server tersebut untuk bergabung ke server Anda bersama teman.\r\nCatatan:\r\n- Pastikan Anda dan teman Anda memiliki NAT/pengaturan yang sama yang memungkinkan kehadiran teman.\r\n- Mode Teman bergantung pada fitur pertemanan platform dan mungkin memerlukan penerimaan permintaan pertemanan.';
 
   @override
-  String get helpNetherlinkTitle => 'NetherLink tidak muncul';
+  String get helpMCCompanionTitle => 'MCCompanion tidak muncul';
 
   @override
-  String get helpNetherlinkSubtitle => 'Pemecahan masalah penemuan LAN';
+  String get helpMCCompanionSubtitle => 'Pemecahan masalah penemuan LAN';
 
   @override
-  String get helpNetherlinkBody => 'Jika server tidak muncul di konsol Anda, coba langkah-langkah berikut:\r\n\r\n✅ Pemeriksaan Dasar:\r\n1. Jaringan WiFi yang Sama - Ponsel/tablet dan konsol Anda HARUS berada di WiFi yang sama\r\n2. Alamat Server yang Benar - Periksa kembali IP dan port (default: 19132)\r\n3. Siaran Aktif - Pastikan NetherLink menampilkan status \"Menyiarkan\"\r\n\r\n🔄 Perbaikan Cepat:\r\n• Mulai ulang aplikasi: hentikan siaran, tutup NetherLink sepenuhnya, buka lagi, lalu coba kembali\r\n• Mulai ulang konsol Anda: terkadang konsol perlu disegarkan untuk mendeteksi game LAN\r\n• Periksa tab Friends/LAN: server muncul di bawah \"Friends\" atau \"LAN Games\", BUKAN di daftar server\r\n• Tunggu 10-15 detik setelah memulai siaran\r\n• Nonaktifkan VPN: VPN dapat memblokir siaran lokal\r\n\r\n⚠️ Masalah Umum:\r\n\"No route found for user\" → Pastikan kedua perangkat berada di Wi‑Fi yang sama (hindari jaringan tamu)\r\n\"Unable to connect to NetherLink relay server\" → Periksa internet / status relay Anda\r\n\r\n📱 Masih bermasalah? Aktifkan Mode Debug di NetherLink dan periksa log, atau coba server lain.';
+  String get helpMCCompanionBody => 'Jika server tidak muncul di konsol Anda, coba langkah-langkah berikut:\r\n\r\n✅ Pemeriksaan Dasar:\r\n1. Jaringan WiFi yang Sama - Ponsel/tablet dan konsol Anda HARUS berada di WiFi yang sama\r\n2. Alamat Server yang Benar - Periksa kembali IP dan port (default: 19132)\r\n3. Siaran Aktif - Pastikan MCCompanion menampilkan status \"Menyiarkan\"\r\n\r\n🔄 Perbaikan Cepat:\r\n• Mulai ulang aplikasi: hentikan siaran, tutup MCCompanion sepenuhnya, buka lagi, lalu coba kembali\r\n• Mulai ulang konsol Anda: terkadang konsol perlu disegarkan untuk mendeteksi game LAN\r\n• Periksa tab Friends/LAN: server muncul di bawah \"Friends\" atau \"LAN Games\", BUKAN di daftar server\r\n• Tunggu 10-15 detik setelah memulai siaran\r\n• Nonaktifkan VPN: VPN dapat memblokir siaran lokal\r\n\r\n⚠️ Masalah Umum:\r\n\"No route found for user\" → Pastikan kedua perangkat berada di Wi‑Fi yang sama (hindari jaringan tamu)\r\n\"Unable to connect to MCCompanion relay server\" → Periksa internet / status relay Anda\r\n\r\n📱 Masih bermasalah? Aktifkan Mode Debug di MCCompanion dan periksa log, atau coba server lain.';
 
   @override
   String get helpMultiplayerFailedTitle => 'Koneksi Multiplayer Gagal';
 
   @override
-  String get helpMultiplayerFailedSubtitle => 'Penjelasan mengapa ini bukan kesalahan NetherLink';
+  String get helpMultiplayerFailedSubtitle => 'Penjelasan mengapa ini bukan kesalahan MCCompanion';
 
   @override
-  String get helpMultiplayerFailedBody => '⚠️ Ini bukan masalah pada NetherLink!\r\n\r\nNetherLink berhasil mengarahkan Anda ke server yang diminta. Pesan \"Multiplayer Connection Failed\" menunjukkan bahwa server tujuan saat ini tidak dapat dijangkau. Kemungkinan alasan:\r\n\r\n• Server Minecraft tujuan sedang offline atau kelebihan beban\r\n• Server memerlukan versi klien yang diperbarui atau edisi tertentu\r\n• Masalah jaringan antara relay dan server tujuan\r\n\r\nCoba hubungkan ke server lain atau hubungi dukungan server tersebut. Jika masalah tetap terjadi pada beberapa server, aktifkan Mode Debug di NetherLink dan periksa log.';
+  String get helpMultiplayerFailedBody => '⚠️ Ini bukan masalah pada MCCompanion!\r\n\r\nMCCompanion berhasil mengarahkan Anda ke server yang diminta. Pesan \"Multiplayer Connection Failed\" menunjukkan bahwa server tujuan saat ini tidak dapat dijangkau. Kemungkinan alasan:\r\n\r\n• Server Minecraft tujuan sedang offline atau kelebihan beban\r\n• Server memerlukan versi klien yang diperbarui atau edisi tertentu\r\n• Masalah jaringan antara relay dan server tujuan\r\n\r\nCoba hubungkan ke server lain atau hubungi dukungan server tersebut. Jika masalah tetap terjadi pada beberapa server, aktifkan Mode Debug di MCCompanion dan periksa log.';
 
   @override
   String get helpNintendoDnsTitle => 'DNS Nintendo tidak berfungsi';

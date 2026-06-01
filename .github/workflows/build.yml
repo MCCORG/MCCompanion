@@ -421,7 +421,7 @@ jobs:
                   color: 5793266,
                   description: ("Hello, <@&" + $roleId + ">, we have a new beta release ready. Check it out on our [beta release](" + $betaReleaseUrl + ")."),
                   author: {
-                    name: "NetherLink Beta Releases",
+                    name: "MCCompanion Beta Releases",
                     icon_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
                   },
                   fields: [
@@ -432,7 +432,7 @@ jobs:
                     { name: "Workflow", value: ("[View run](" + $runUrl + ")"), inline: true }
                   ],
                   footer: {
-                    text: "NetherLink beta release"
+                    text: "MCCompanion beta release"
                   },
                   timestamp: now | todateiso8601
                 }
