@@ -26,6 +26,10 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>MCCompanion does not use the camera. This description is required because a third-party SDK references camera APIs.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>MCCompanion does not use your location. This description is required because a third-party SDK references location APIs.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app requires access to your photo library to save and load custom Minecraft skins.</string>
 	<key>NSUserNotificationUsageDescription</key>

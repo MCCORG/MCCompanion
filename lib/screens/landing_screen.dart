@@ -78,11 +78,11 @@ class _LandingScreenState extends State<LandingScreen> {
 
   VoidCallback _callbackFor(AppFeature feature) => switch (feature) {
     AppFeature.connector => widget.onGoToConnector,
-    AppFeature.skins     => widget.onGoToSkins,
-    AppFeature.wiki      => widget.onGoToWiki,
-    AppFeature.partners  => widget.onGoToPartners,
-    AppFeature.lookup    => widget.onGoToPlayerLookup,
-    AppFeature.tracker   => widget.onGoToServerTracker ?? widget.onGoToConnector,
+    AppFeature.skins => widget.onGoToSkins,
+    AppFeature.wiki => widget.onGoToWiki,
+    AppFeature.partners => widget.onGoToPartners,
+    AppFeature.lookup => widget.onGoToPlayerLookup,
+    AppFeature.tracker => widget.onGoToServerTracker ?? widget.onGoToConnector,
   };
 
   void _openCustomize() {
@@ -106,21 +106,35 @@ class _LandingScreenState extends State<LandingScreen> {
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
-              child: Builder(builder: (context) {
-                final l = AppLocalizations.of(context)!;
-                return Align(
-                  alignment: Alignment.centerRight,
-                  child: HeaderNavBar(
-                    items: [
-                      HeaderNavItem(label: l.website, onTap: widget.onWebsiteTap),
-                      HeaderNavItem(label: l.discord, onTap: widget.onDiscordTap),
-                      HeaderNavItem(label: l.changeLanguage, onTap: widget.onLanguageTap),
-                      HeaderNavItem(label: 'Customize', onTap: _openCustomize),
-                      HeaderNavItem(label: l.info, onTap: widget.onInfoTap),
-                    ],
-                  ),
-                );
-              }),
+              child: Builder(
+                builder: (context) {
+                  final l = AppLocalizations.of(context)!;
+                  return Align(
+                    alignment: Alignment.centerRight,
+                    child: HeaderNavBar(
+                      items: [
+                        HeaderNavItem(
+                          label: l.website,
+                          onTap: widget.onWebsiteTap,
+                        ),
+                        HeaderNavItem(
+                          label: l.discord,
+                          onTap: widget.onDiscordTap,
+                        ),
+                        HeaderNavItem(
+                          label: l.changeLanguage,
+                          onTap: widget.onLanguageTap,
+                        ),
+                        HeaderNavItem(
+                          label: l.customizeLabel,
+                          onTap: _openCustomize,
+                        ),
+                        HeaderNavItem(label: l.info, onTap: widget.onInfoTap),
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
             if (widget.partnerServersFuture != null) ...[
               _PartnerBanner(
@@ -131,16 +145,30 @@ class _LandingScreenState extends State<LandingScreen> {
               const SizedBox(height: 10),
             ],
             Expanded(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(14, 0, 14, 16),
-                child: _buildGrid(tiles),
+              child: CustomScrollView(
+                slivers: [
+                  SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 14,
+                          vertical: 16,
+                        ),
+                        child: _buildGrid(tiles),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
         ),
         if (_notice != null)
           Positioned(
-            top: 0, left: 0, right: 0,
+            top: 0,
+            left: 0,
+            right: 0,
             child: GlobalNoticeBanner(
               message: _notice!['message']!,
               type: _notice!['type'] ?? 'info',
@@ -160,18 +188,24 @@ class _LandingScreenState extends State<LandingScreen> {
       if (i > 0) rows.add(const SizedBox(height: 10));
       final a = tiles[i];
       final b = i + 1 < tiles.length ? tiles[i + 1] : null;
-      rows.add(IntrinsicHeight(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(child: _QuickCard(feature: a, onTap: _callbackFor(a))),
-            const SizedBox(width: 10),
-            Expanded(child: b != null
-              ? _QuickCard(feature: b, onTap: _callbackFor(b))
-              : const SizedBox()),
-          ],
+      rows.add(
+        SizedBox(
+          height: 158,
+          child: Row(
+            children: [
+              Expanded(
+                child: _QuickCard(feature: a, onTap: _callbackFor(a)),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: b != null
+                    ? _QuickCard(feature: b, onTap: _callbackFor(b))
+                    : const SizedBox(),
+              ),
+            ],
+          ),
         ),
-      ));
+      );
     }
     return Column(mainAxisSize: MainAxisSize.min, children: rows);
   }
@@ -181,7 +215,11 @@ class _PartnerBanner extends StatefulWidget {
   final Future<List<FeaturedServer>> future;
   final VoidCallback onTap;
   final void Function(String ip, int port)? onPlay;
-  const _PartnerBanner({required this.future, required this.onTap, this.onPlay});
+  const _PartnerBanner({
+    required this.future,
+    required this.onTap,
+    this.onPlay,
+  });
 
   @override
   State<_PartnerBanner> createState() => _PartnerBannerState();
@@ -228,7 +266,11 @@ class _PartnerBannerState extends State<_PartnerBanner> {
     if (_servers.isEmpty) return const SizedBox();
     final s = _servers[_index];
     final online = _statusCache[s.address];
-    final dotColor = online == null ? AppTheme.textDisabled : online ? AppTheme.success : AppTheme.error;
+    final dotColor = online == null
+        ? AppTheme.textDisabled
+        : online
+        ? AppTheme.success
+        : AppTheme.error;
 
     return GestureDetector(
       onTap: widget.onTap,
@@ -243,7 +285,12 @@ class _PartnerBannerState extends State<_PartnerBanner> {
           borderRadius: BorderRadius.circular(11),
           child: Stack(
             children: [
-              Positioned(left: 0, top: 0, bottom: 0, child: Container(width: 3, color: AppTheme.accent)),
+              Positioned(
+                left: 0,
+                top: 0,
+                bottom: 0,
+                child: Container(width: 3, color: AppTheme.accent),
+              ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(15, 10, 8, 10),
                 child: Row(
@@ -257,7 +304,10 @@ class _PartnerBannerState extends State<_PartnerBanner> {
                         transitionBuilder: (child, anim) => FadeTransition(
                           opacity: anim,
                           child: SlideTransition(
-                            position: Tween(begin: const Offset(0, 0.3), end: Offset.zero).animate(anim),
+                            position: Tween(
+                              begin: const Offset(0, 0.3),
+                              end: Offset.zero,
+                            ).animate(anim),
                             child: child,
                           ),
                         ),
@@ -266,21 +316,40 @@ class _PartnerBannerState extends State<_PartnerBanner> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text(s.name, style: const TextStyle(color: AppTheme.textPrimary, fontSize: 13, fontWeight: FontWeight.w700)),
+                            Text(
+                              s.name,
+                              style: const TextStyle(
+                                color: AppTheme.textPrimary,
+                                fontSize: 13,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
                             const SizedBox(height: 2),
-                            Text(s.description, style: const TextStyle(color: AppTheme.textMuted, fontSize: 11, height: 1.3)),
+                            Text(
+                              s.description,
+                              style: const TextStyle(
+                                color: AppTheme.textMuted,
+                                fontSize: 11,
+                                height: 1.3,
+                              ),
+                            ),
                             const SizedBox(height: 6),
                             Row(
-                              children: List.generate(_servers.length, (i) => AnimatedContainer(
-                                duration: const Duration(milliseconds: 300),
-                                margin: const EdgeInsets.only(right: 4),
-                                width: i == _index ? 12 : 5,
-                                height: 5,
-                                decoration: BoxDecoration(
-                                  color: i == _index ? AppTheme.accent : AppTheme.borderLight,
-                                  borderRadius: BorderRadius.circular(3),
+                              children: List.generate(
+                                _servers.length,
+                                (i) => AnimatedContainer(
+                                  duration: const Duration(milliseconds: 300),
+                                  margin: const EdgeInsets.only(right: 4),
+                                  width: i == _index ? 12 : 5,
+                                  height: 5,
+                                  decoration: BoxDecoration(
+                                    color: i == _index
+                                        ? AppTheme.accent
+                                        : AppTheme.borderLight,
+                                    borderRadius: BorderRadius.circular(3),
+                                  ),
                                 ),
-                              )),
+                              ),
                             ),
                           ],
                         ),
@@ -291,13 +360,20 @@ class _PartnerBannerState extends State<_PartnerBanner> {
                       GestureDetector(
                         onTap: () => widget.onPlay!(s.address, s.port),
                         child: Container(
-                          width: 38, height: 38,
+                          width: 38,
+                          height: 38,
                           decoration: BoxDecoration(
                             color: AppTheme.accent.withOpacity(0.15),
                             borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: AppTheme.accent.withOpacity(0.3)),
+                            border: Border.all(
+                              color: AppTheme.accent.withOpacity(0.3),
+                            ),
                           ),
-                          child: Icon(Icons.play_arrow_rounded, color: AppTheme.accent, size: 22),
+                          child: Icon(
+                            Icons.play_arrow_rounded,
+                            color: AppTheme.accent,
+                            size: 22,
+                          ),
                         ),
                       ),
                   ],
@@ -336,20 +412,31 @@ class _QuickCardState extends State<_QuickCard> {
         opacity: _pressed ? 0.65 : 1.0,
         duration: const Duration(milliseconds: 100),
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
           decoration: BoxDecoration(
             color: AppTheme.surfaceRaised,
             borderRadius: BorderRadius.circular(16),
-            border: Border(top: BorderSide(color: color.withOpacity(0.55), width: 2)),
+            border: Border(
+              top: BorderSide(color: color.withOpacity(0.55), width: 2),
+            ),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(widget.feature.imagePath, width: 64, height: 64, fit: BoxFit.contain),
-              const SizedBox(height: 12),
+              Image.asset(
+                widget.feature.imagePath,
+                width: 64,
+                height: 64,
+                fit: BoxFit.contain,
+              ),
+              const SizedBox(height: 8),
               Text(
                 widget.feature.label,
-                style: const TextStyle(color: AppTheme.textPrimary, fontSize: 14, fontWeight: FontWeight.w700),
+                style: const TextStyle(
+                  color: AppTheme.textPrimary,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                ),
                 textAlign: TextAlign.center,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -357,7 +444,11 @@ class _QuickCardState extends State<_QuickCard> {
               const SizedBox(height: 4),
               Text(
                 widget.feature.subtitle(null),
-                style: const TextStyle(color: AppTheme.textMuted, fontSize: 11, height: 1.3),
+                style: const TextStyle(
+                  color: AppTheme.textMuted,
+                  fontSize: 11,
+                  height: 1.3,
+                ),
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
@@ -369,7 +460,6 @@ class _QuickCardState extends State<_QuickCard> {
     );
   }
 }
-
 
 class _CustomizeSheet extends StatefulWidget {
   final VoidCallback Function(AppFeature) callbackFor;
@@ -393,26 +483,24 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
   void initState() {
     super.initState();
     final svc = HomeCustomizationService.instance;
-    _order       = List.from(svc.tileOrder);
-    _navLeft     = svc.navLeft;
-    _navRight    = svc.navRight;
-    _accent      = ThemeService.instance.accent;
-    _bg          = ThemeService.instance.bg;
-    _opacity     = ThemeService.instance.opacity;
-    _card        = ThemeService.instance.card;
+    _order = List.from(svc.tileOrder);
+    _navLeft = svc.navLeft;
+    _navRight = svc.navRight;
+    _accent = ThemeService.instance.accent;
+    _bg = ThemeService.instance.bg;
+    _opacity = ThemeService.instance.opacity;
+    _card = ThemeService.instance.card;
     _cardOpacity = ThemeService.instance.cardOpacity;
   }
 
   Future<void> _save() async {
     final svc = HomeCustomizationService.instance;
-    await svc.saveTileOrder(_order);
-    await svc.saveNavLeft(_navLeft);
-    await svc.saveNavRight(_navRight);
-    await ThemeService.instance.setAccent(_accent);
-    await ThemeService.instance.setBg(_bg);
-    await ThemeService.instance.setOpacity(_opacity);
-    await ThemeService.instance.setCard(_card);
-    await ThemeService.instance.setCardOpacity(_cardOpacity);
+    await Future.wait([
+      svc.saveTileOrder(_order),
+      svc.saveNavLeft(_navLeft),
+      svc.saveNavRight(_navRight),
+      ThemeService.instance.saveAll(),
+    ]);
     if (mounted) Navigator.of(context).pop();
   }
 
@@ -424,6 +512,7 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final maxH = MediaQuery.of(context).size.height * 0.92;
     return ConstrainedBox(
       constraints: BoxConstraints(maxHeight: maxH),
@@ -438,38 +527,69 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
           children: [
             Center(
               child: Container(
-                width: 36, height: 4,
+                width: 36,
+                height: 4,
                 margin: const EdgeInsets.symmetric(vertical: 14),
-                decoration: BoxDecoration(color: AppTheme.borderLight, borderRadius: BorderRadius.circular(4)),
+                decoration: BoxDecoration(
+                  color: AppTheme.borderLight,
+                  borderRadius: BorderRadius.circular(4),
+                ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 0, 16, 16),
               child: Row(
                 children: [
-                  const Expanded(
+                  Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Customize', style: TextStyle(color: AppTheme.textPrimary, fontSize: 18, fontWeight: FontWeight.w700)),
-                        SizedBox(height: 2),
-                        Text('Reorder tiles and customize navigation', style: TextStyle(color: AppTheme.textMuted, fontSize: 13)),
+                        Text(
+                          l.customizeLabel,
+                          style: const TextStyle(
+                            color: AppTheme.textPrimary,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          l.customizeSubtitle,
+                          style: const TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 13,
+                          ),
+                        ),
                       ],
                     ),
                   ),
                   TextButton(
                     onPressed: _reset,
-                    child: const Text('Reset', style: TextStyle(color: AppTheme.textMuted, fontSize: 13)),
+                    child: Text(
+                      l.resetLabel,
+                      style: const TextStyle(
+                        color: AppTheme.textMuted,
+                        fontSize: 13,
+                      ),
+                    ),
                   ),
                   FilledButton(
                     onPressed: _save,
                     style: FilledButton.styleFrom(
                       backgroundColor: AppTheme.brand,
                       foregroundColor: Colors.black,
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 10,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
-                    child: const Text('Save', style: TextStyle(fontWeight: FontWeight.w700)),
+                    child: Text(
+                      l.save,
+                      style: const TextStyle(fontWeight: FontWeight.w700),
+                    ),
                   ),
                 ],
               ),
@@ -481,9 +601,23 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('TILES', style: TextStyle(color: AppTheme.textMuted, fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1.2)),
+                    Text(
+                      l.tilesSection,
+                      style: const TextStyle(
+                        color: AppTheme.textMuted,
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 1.2,
+                      ),
+                    ),
                     const SizedBox(height: 10),
-                    const Text('Drag to reorder', style: TextStyle(color: AppTheme.textDisabled, fontSize: 12)),
+                    Text(
+                      l.dragToReorder,
+                      style: const TextStyle(
+                        color: AppTheme.textDisabled,
+                        fontSize: 12,
+                      ),
+                    ),
                     const SizedBox(height: 12),
                     ReorderableListView.builder(
                       shrinkWrap: true,
@@ -499,24 +633,42 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                       },
                       itemBuilder: (_, i) {
                         final f = _order[i];
-                        return _TileRow(key: ValueKey(f), feature: f, index: i + 1);
+                        return _TileRow(
+                          key: ValueKey(f),
+                          feature: f,
+                          index: i + 1,
+                        );
                       },
                     ),
 
                     const SizedBox(height: 24),
 
-                    const Text('NAVIGATION', style: TextStyle(color: AppTheme.textMuted, fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1.2)),
+                    Text(
+                      l.navigationSection,
+                      style: const TextStyle(
+                        color: AppTheme.textMuted,
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 1.2,
+                      ),
+                    ),
                     const SizedBox(height: 4),
-                    const Text('Home, Connector and Profile are always fixed', style: TextStyle(color: AppTheme.textDisabled, fontSize: 12)),
+                    Text(
+                      l.navFixed,
+                      style: const TextStyle(
+                        color: AppTheme.textDisabled,
+                        fontSize: 12,
+                      ),
+                    ),
                     const SizedBox(height: 12),
                     _NavEditor(
-                      label: 'Left slot (next to Home)',
+                      label: l.leftSlot,
                       selected: _navLeft,
                       onChanged: (f) => setState(() => _navLeft = f),
                     ),
                     const SizedBox(height: 10),
                     _NavEditor(
-                      label: 'Right slot (next to Profile)',
+                      label: l.rightSlot,
                       selected: _navRight,
                       onChanged: (f) => setState(() => _navRight = f),
                     ),
@@ -525,10 +677,19 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
 
                     Row(
                       children: [
-                        const Text('ACCENT COLOR', style: TextStyle(color: AppTheme.textMuted, fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1.2)),
+                        Text(
+                          l.accentColorSection,
+                          style: const TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.2,
+                          ),
+                        ),
                         const Spacer(),
                         Container(
-                          width: 22, height: 22,
+                          width: 22,
+                          height: 22,
                           decoration: BoxDecoration(
                             color: _accent.color.withOpacity(_opacity),
                             shape: BoxShape.circle,
@@ -555,12 +716,28 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                               color: p.color.withOpacity(_opacity),
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: isSelected ? Colors.white : Colors.transparent,
+                                color: isSelected
+                                    ? Colors.white
+                                    : Colors.transparent,
                                 width: 2.5,
                               ),
-                              boxShadow: isSelected ? [BoxShadow(color: p.color.withOpacity(0.4), blurRadius: 8, spreadRadius: 0)] : null,
+                              boxShadow: isSelected
+                                  ? [
+                                      BoxShadow(
+                                        color: p.color.withOpacity(0.4),
+                                        blurRadius: 8,
+                                        spreadRadius: 0,
+                                      ),
+                                    ]
+                                  : null,
                             ),
-                            child: isSelected ? const Icon(Icons.check_rounded, color: Colors.white, size: 16) : null,
+                            child: isSelected
+                                ? const Icon(
+                                    Icons.check_rounded,
+                                    color: Colors.white,
+                                    size: 16,
+                                  )
+                                : null,
                           ),
                         );
                       }).toList(),
@@ -570,17 +747,34 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
 
                     Row(
                       children: [
-                        const Text('Opacity', style: TextStyle(color: AppTheme.textMuted, fontSize: 12)),
+                        Text(
+                          l.opacityLabel,
+                          style: const TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 12,
+                          ),
+                        ),
                         const Spacer(),
-                        Text('${(_opacity * 100).round()}%', style: TextStyle(color: _accent.color.withOpacity(_opacity), fontSize: 12, fontWeight: FontWeight.w600)),
+                        Text(
+                          '${(_opacity * 100).round()}%',
+                          style: TextStyle(
+                            color: _accent.color.withOpacity(_opacity),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 4),
                     SliderTheme(
                       data: SliderThemeData(
                         trackHeight: 4,
-                        thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 8),
-                        overlayShape: const RoundSliderOverlayShape(overlayRadius: 16),
+                        thumbShape: const RoundSliderThumbShape(
+                          enabledThumbRadius: 8,
+                        ),
+                        overlayShape: const RoundSliderOverlayShape(
+                          overlayRadius: 16,
+                        ),
                         activeTrackColor: _accent.color.withOpacity(_opacity),
                         inactiveTrackColor: AppTheme.borderGray,
                         thumbColor: _accent.color.withOpacity(_opacity),
@@ -599,10 +793,19 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
 
                     Row(
                       children: [
-                        const Text('BACKGROUND', style: TextStyle(color: AppTheme.textMuted, fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1.2)),
+                        Text(
+                          l.backgroundSection,
+                          style: const TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.2,
+                          ),
+                        ),
                         const Spacer(),
                         Container(
-                          width: 22, height: 22,
+                          width: 22,
+                          height: 22,
                           decoration: BoxDecoration(
                             color: _bg.tint,
                             shape: BoxShape.circle,
@@ -634,12 +837,27 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                                 ),
                                 shape: BoxShape.circle,
                                 border: Border.all(
-                                  color: isSelected ? Colors.white : AppTheme.borderGray,
+                                  color: isSelected
+                                      ? Colors.white
+                                      : AppTheme.borderGray,
                                   width: isSelected ? 2.5 : 1.5,
                                 ),
-                                boxShadow: isSelected ? [const BoxShadow(color: Colors.white24, blurRadius: 8)] : null,
+                                boxShadow: isSelected
+                                    ? [
+                                        const BoxShadow(
+                                          color: Colors.white24,
+                                          blurRadius: 8,
+                                        ),
+                                      ]
+                                    : null,
                               ),
-                              child: isSelected ? const Icon(Icons.check_rounded, color: Colors.white, size: 16) : null,
+                              child: isSelected
+                                  ? const Icon(
+                                      Icons.check_rounded,
+                                      color: Colors.white,
+                                      size: 16,
+                                    )
+                                  : null,
                             ),
                           ),
                         );
@@ -650,10 +868,19 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
 
                     Row(
                       children: [
-                        const Text('CARDS', style: TextStyle(color: AppTheme.textMuted, fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1.2)),
+                        Text(
+                          l.cardsSection,
+                          style: const TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.2,
+                          ),
+                        ),
                         const Spacer(),
                         Container(
-                          width: 22, height: 22,
+                          width: 22,
+                          height: 22,
                           decoration: BoxDecoration(
                             color: _card.color.withOpacity(_cardOpacity),
                             shape: BoxShape.circle,
@@ -681,12 +908,27 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                                 color: p.color.withOpacity(_cardOpacity),
                                 shape: BoxShape.circle,
                                 border: Border.all(
-                                  color: isSelected ? Colors.white : AppTheme.borderGray,
+                                  color: isSelected
+                                      ? Colors.white
+                                      : AppTheme.borderGray,
                                   width: isSelected ? 2.5 : 1.5,
                                 ),
-                                boxShadow: isSelected ? [const BoxShadow(color: Colors.white24, blurRadius: 8)] : null,
+                                boxShadow: isSelected
+                                    ? [
+                                        const BoxShadow(
+                                          color: Colors.white24,
+                                          blurRadius: 8,
+                                        ),
+                                      ]
+                                    : null,
                               ),
-                              child: isSelected ? const Icon(Icons.check_rounded, color: Colors.white, size: 16) : null,
+                              child: isSelected
+                                  ? const Icon(
+                                      Icons.check_rounded,
+                                      color: Colors.white,
+                                      size: 16,
+                                    )
+                                  : null,
                             ),
                           ),
                         );
@@ -695,17 +937,34 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                     const SizedBox(height: 14),
                     Row(
                       children: [
-                        const Text('Opacity', style: TextStyle(color: AppTheme.textMuted, fontSize: 12)),
+                        Text(
+                          l.opacityLabel,
+                          style: const TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 12,
+                          ),
+                        ),
                         const Spacer(),
-                        Text('${(_cardOpacity * 100).round()}%', style: TextStyle(color: _card.color, fontSize: 12, fontWeight: FontWeight.w600)),
+                        Text(
+                          '${(_cardOpacity * 100).round()}%',
+                          style: TextStyle(
+                            color: _card.color,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 4),
                     SliderTheme(
                       data: SliderThemeData(
                         trackHeight: 4,
-                        thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 8),
-                        overlayShape: const RoundSliderOverlayShape(overlayRadius: 16),
+                        thumbShape: const RoundSliderThumbShape(
+                          enabledThumbRadius: 8,
+                        ),
+                        overlayShape: const RoundSliderOverlayShape(
+                          overlayRadius: 16,
+                        ),
                         activeTrackColor: _card.color.withOpacity(0.7),
                         inactiveTrackColor: AppTheme.borderGray,
                         thumbColor: _card.color,
@@ -718,7 +977,7 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                         divisions: 18,
                         onChanged: (v) {
                           setState(() => _cardOpacity = v);
-                          ThemeService.instance.setCardOpacity(v);
+                          ThemeService.instance.setCardOpacityLive(v);
                         },
                       ),
                     ),
@@ -752,15 +1011,37 @@ class _TileRow extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: 32, height: 32,
-            decoration: BoxDecoration(color: color.withOpacity(0.12), borderRadius: BorderRadius.circular(8)),
+            width: 32,
+            height: 32,
+            decoration: BoxDecoration(
+              color: color.withOpacity(0.12),
+              borderRadius: BorderRadius.circular(8),
+            ),
             child: Center(
-              child: Image.asset(feature.imagePath, width: 18, height: 18, fit: BoxFit.contain),
+              child: Image.asset(
+                feature.imagePath,
+                width: 18,
+                height: 18,
+                fit: BoxFit.contain,
+              ),
             ),
           ),
           const SizedBox(width: 12),
-          Expanded(child: Text(feature.label, style: const TextStyle(color: AppTheme.textPrimary, fontSize: 14, fontWeight: FontWeight.w500))),
-          const Icon(Icons.drag_handle_rounded, color: AppTheme.textMuted, size: 20),
+          Expanded(
+            child: Text(
+              feature.label,
+              style: const TextStyle(
+                color: AppTheme.textPrimary,
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+          const Icon(
+            Icons.drag_handle_rounded,
+            color: AppTheme.textMuted,
+            size: 20,
+          ),
         ],
       ),
     );
@@ -772,7 +1053,11 @@ class _NavEditor extends StatelessWidget {
   final AppFeature selected;
   final void Function(AppFeature) onChanged;
 
-  const _NavEditor({required this.label, required this.selected, required this.onChanged});
+  const _NavEditor({
+    required this.label,
+    required this.selected,
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -790,7 +1075,14 @@ class _NavEditor extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(label, style: const TextStyle(color: AppTheme.textMuted, fontSize: 12, fontWeight: FontWeight.w600)),
+          Text(
+            label,
+            style: const TextStyle(
+              color: AppTheme.textMuted,
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
           const SizedBox(height: 10),
           Wrap(
             spacing: 8,
@@ -802,17 +1094,26 @@ class _NavEditor extends StatelessWidget {
                 onTap: () => onChanged(f),
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 150),
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 7,
+                  ),
                   decoration: BoxDecoration(
-                    color: isSelected ? color.withOpacity(0.15) : AppTheme.surfaceLight,
+                    color: isSelected
+                        ? color.withOpacity(0.15)
+                        : AppTheme.surfaceLight,
                     borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: isSelected ? color : AppTheme.borderGray),
+                    border: Border.all(
+                      color: isSelected ? color : AppTheme.borderGray,
+                    ),
                   ),
                   child: Text(
                     f.label,
                     style: TextStyle(
                       color: isSelected ? color : AppTheme.textMuted,
-                      fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                      fontWeight: isSelected
+                          ? FontWeight.w600
+                          : FontWeight.w400,
                       fontSize: 13,
                     ),
                   ),

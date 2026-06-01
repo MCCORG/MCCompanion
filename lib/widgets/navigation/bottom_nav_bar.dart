@@ -43,11 +43,11 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
 
   static FaIconData _iconFor(AppFeature feature) => switch (feature) {
     AppFeature.connector => FontAwesomeIcons.play,
-    AppFeature.skins     => FontAwesomeIcons.shirt,
-    AppFeature.wiki      => FontAwesomeIcons.bookOpen,
-    AppFeature.partners  => FontAwesomeIcons.server,
-    AppFeature.lookup    => FontAwesomeIcons.magnifyingGlass,
-    AppFeature.tracker   => FontAwesomeIcons.satellite,
+    AppFeature.skins => FontAwesomeIcons.shirt,
+    AppFeature.wiki => FontAwesomeIcons.bookOpen,
+    AppFeature.partners => FontAwesomeIcons.server,
+    AppFeature.lookup => FontAwesomeIcons.magnifyingGlass,
+    AppFeature.tracker => FontAwesomeIcons.satellite,
   };
 
   @override
@@ -63,10 +63,7 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppTheme.surface,
               borderRadius: BorderRadius.circular(28),
-              border: Border.all(
-                color: AppTheme.borderGray,
-                width: 0.8,
-              ),
+              border: Border.all(color: AppTheme.borderGray, width: 0.8),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.45),
@@ -76,42 +73,44 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
                 ),
               ],
             ),
-            child: Builder(builder: (context) {
-              final l = AppLocalizations.of(context)!;
-              return Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  _NavItem(
-                    icon: FontAwesomeIcons.house,
-                    label: l.home,
-                    isActive: activeItem == 'home',
-                    onTap: onHomeTap,
-                  ),
-                  _NavItem(
-                    icon: _iconFor(navLeftFeature),
-                    label: navLeftFeature.label,
-                    isActive: navLeftActive,
-                    onTap: onNavLeftTap,
-                  ),
-                  _NavFab(
-                    isActive: activeItem == 'connector',
-                    onTap: onConnectorTap,
-                  ),
-                  _NavItem(
-                    icon: _iconFor(navRightFeature),
-                    label: navRightFeature.label,
-                    isActive: navRightActive,
-                    onTap: onNavRightTap,
-                  ),
-                  _NavItem(
-                    icon: FontAwesomeIcons.user,
-                    label: l.navProfile,
-                    isActive: activeItem == 'profile',
-                    onTap: onProfileTap,
-                  ),
-                ],
-              );
-            }),
+            child: Builder(
+              builder: (context) {
+                final l = AppLocalizations.of(context)!;
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    _NavItem(
+                      icon: FontAwesomeIcons.house,
+                      label: l.home,
+                      isActive: activeItem == 'home',
+                      onTap: onHomeTap,
+                    ),
+                    _NavItem(
+                      icon: _iconFor(navLeftFeature),
+                      label: navLeftFeature.label,
+                      isActive: navLeftActive,
+                      onTap: onNavLeftTap,
+                    ),
+                    _NavFab(
+                      isActive: activeItem == 'connector',
+                      onTap: onConnectorTap,
+                    ),
+                    _NavItem(
+                      icon: _iconFor(navRightFeature),
+                      label: navRightFeature.label,
+                      isActive: navRightActive,
+                      onTap: onNavRightTap,
+                    ),
+                    _NavItem(
+                      icon: FontAwesomeIcons.user,
+                      label: l.navProfile,
+                      isActive: activeItem == 'profile',
+                      onTap: onProfileTap,
+                    ),
+                  ],
+                );
+              },
+            ),
           ),
         ),
       ),

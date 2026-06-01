@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 import '../models/tracked_server_model.dart';
 import '../services/tracker_api_service.dart';
 import '../theme/app_theme.dart';
@@ -25,16 +26,17 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
   bool _togglingNotif = false;
 
   Color get _statusColor => switch (widget.server.lastStatus) {
-    'online'  => AppTheme.success,
+    'online' => AppTheme.success,
     'offline' => AppTheme.error,
-    _         => AppTheme.textMuted,
+    _ => AppTheme.textMuted,
   };
 
-  String get _statusLabel => switch (widget.server.lastStatus) {
-    'online'  => 'Online',
-    'offline' => 'Offline',
-    _         => 'Checking...',
-  };
+  String _statusLabel(BuildContext context) =>
+      switch (widget.server.lastStatus) {
+        'online' => AppLocalizations.of(context)!.statusOnline,
+        'offline' => AppLocalizations.of(context)!.statusOffline,
+        _ => AppLocalizations.of(context)!.statusChecking,
+      };
 
   Future<void> _toggleNotifications() async {
     if (_togglingNotif) return;
@@ -52,7 +54,11 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
     if (ok != null) {
       widget.onUpdated(widget.server.copyWith(notificationsEnabled: newValue));
     } else {
-      AppToast.show(context, message: 'Failed to update notifications', color: AppTheme.error);
+      AppToast.show(
+        context,
+        message: AppLocalizations.of(context)!.failedUpdateNotifications,
+        color: AppTheme.error,
+      );
     }
   }
 
@@ -61,10 +67,8 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (_) => _EditServerSheet(
-        server: widget.server,
-        onSaved: widget.onUpdated,
-      ),
+      builder: (_) =>
+          _EditServerSheet(server: widget.server, onSaved: widget.onUpdated),
     );
   }
 
@@ -85,15 +89,38 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
 
             Positioned.fill(
               child: CustomPaint(
-                painter: AppNoisePainter(color: color, opacity: 0.045, seed: s.id.hashCode & 0xFFFF, count: 140),
+                painter: AppNoisePainter(
+                  color: color,
+                  opacity: 0.045,
+                  seed: s.id.hashCode & 0xFFFF,
+                  count: 140,
+                ),
               ),
             ),
             Positioned.fill(
               child: CustomPaint(
-                painter: AppWavePainter(waves: [
-                  WaveConfig(yFraction: 0.40, amplitude: 10, frequency: 3.2, phase: 0.5, color: color, opacity: 0.14, strokeWidth: 1.4),
-                  WaveConfig(yFraction: 0.65, amplitude: 7, frequency: 4.5, phase: 1.8, color: color, opacity: 0.07, strokeWidth: 1.0),
-                ]),
+                painter: AppWavePainter(
+                  waves: [
+                    WaveConfig(
+                      yFraction: 0.40,
+                      amplitude: 10,
+                      frequency: 3.2,
+                      phase: 0.5,
+                      color: color,
+                      opacity: 0.14,
+                      strokeWidth: 1.4,
+                    ),
+                    WaveConfig(
+                      yFraction: 0.65,
+                      amplitude: 7,
+                      frequency: 4.5,
+                      phase: 1.8,
+                      color: color,
+                      opacity: 0.07,
+                      strokeWidth: 1.0,
+                    ),
+                  ],
+                ),
               ),
             ),
 
@@ -107,126 +134,193 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
             ),
 
             Padding(
-                padding: const EdgeInsets.fromLTRB(14, 12, 8, 12),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 42, height: 42,
-                      decoration: BoxDecoration(
-                        color: color.withOpacity(0.12),
-                        borderRadius: BorderRadius.circular(11),
-                        border: Border.all(color: color.withOpacity(0.28)),
-                      ),
-                      child: Icon(Icons.circle, color: color, size: 12),
+              padding: const EdgeInsets.fromLTRB(14, 12, 8, 12),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 42,
+                    height: 42,
+                    decoration: BoxDecoration(
+                      color: color.withOpacity(0.12),
+                      borderRadius: BorderRadius.circular(11),
+                      border: Border.all(color: color.withOpacity(0.28)),
                     ),
-                    const SizedBox(width: 12),
+                    child: Icon(Icons.circle, color: color, size: 12),
+                  ),
+                  const SizedBox(width: 12),
 
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            s.name,
-                            style: const TextStyle(
-                              color: AppTheme.textPrimary,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w700,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          s.name,
+                          style: const TextStyle(
+                            color: AppTheme.textPrimary,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          '${s.ip}:${s.port}',
+                          style: const TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 12,
+                          ),
+                        ),
+                        const SizedBox(height: 5),
+                        Row(
+                          children: [
+                            Icon(Icons.circle, color: color, size: 8),
+                            const SizedBox(width: 4),
+                            Text(
+                              _statusLabel(context),
+                              style: TextStyle(
+                                color: color,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            '${s.ip}:${s.port}',
-                            style: const TextStyle(color: AppTheme.textMuted, fontSize: 12),
-                          ),
-                          const SizedBox(height: 5),
-                          Row(
-                            children: [
-                              Icon(Icons.circle, color: color, size: 8),
-                              const SizedBox(width: 4),
-                              Text(_statusLabel, style: TextStyle(color: color, fontSize: 12, fontWeight: FontWeight.w600)),
-                              const SizedBox(width: 8),
+                            const SizedBox(width: 8),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 5,
+                                vertical: 2,
+                              ),
+                              decoration: BoxDecoration(
+                                color: color.withOpacity(0.12),
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: Text(
+                                s.platform.toUpperCase(),
+                                style: TextStyle(
+                                  color: color,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: 0.5,
+                                ),
+                              ),
+                            ),
+                            if (s.version != null) ...[
+                              const SizedBox(width: 6),
                               Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 5,
+                                  vertical: 2,
+                                ),
                                 decoration: BoxDecoration(
-                                  color: color.withOpacity(0.12),
+                                  color: AppTheme.borderDim,
                                   borderRadius: BorderRadius.circular(4),
                                 ),
                                 child: Text(
-                                  s.platform.toUpperCase(),
-                                  style: TextStyle(color: color, fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 0.5),
+                                  s.version!,
+                                  style: const TextStyle(
+                                    color: AppTheme.textMuted,
+                                    fontSize: 10,
+                                  ),
                                 ),
                               ),
-                              if (s.version != null) ...[
-                                const SizedBox(width: 6),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-                                  decoration: BoxDecoration(color: AppTheme.borderDim, borderRadius: BorderRadius.circular(4)),
-                                  child: Text(s.version!, style: const TextStyle(color: AppTheme.textMuted, fontSize: 10)),
+                            ],
+                          ],
+                        ),
+                        if (hasPlayers) ...[
+                          const SizedBox(height: 4),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.people_outline_rounded,
+                                color: AppTheme.textMuted,
+                                size: 12,
+                              ),
+                              const SizedBox(width: 4),
+                              Text(
+                                '${s.players} / ${s.maxPlayers} players',
+                                style: const TextStyle(
+                                  color: AppTheme.textMuted,
+                                  fontSize: 12,
                                 ),
-                              ],
+                              ),
                             ],
                           ),
-                          if (hasPlayers) ...[
-                            const SizedBox(height: 4),
-                            Row(
-                              children: [
-                                Icon(Icons.people_outline_rounded, color: AppTheme.textMuted, size: 12),
-                                const SizedBox(width: 4),
-                                Text(
-                                  '${s.players} / ${s.maxPlayers} players',
-                                  style: const TextStyle(color: AppTheme.textMuted, fontSize: 12),
-                                ),
-                              ],
-                            ),
-                          ],
                         ],
-                      ),
-                    ),
-
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        _togglingNotif
-                            ? SizedBox(
-                                width: 20, height: 20,
-                                child: CircularProgressIndicator(strokeWidth: 2, color: color),
-                              )
-                            : IconButton(
-                                onPressed: _toggleNotifications,
-                                icon: Icon(
-                                  s.notificationsEnabled
-                                      ? Icons.notifications_active_rounded
-                                      : Icons.notifications_off_rounded,
-                                  color: s.notificationsEnabled ? color : AppTheme.textDisabled,
-                                  size: 20,
-                                ),
-                                tooltip: s.notificationsEnabled ? 'Notifications on' : 'Notifications off',
-                                padding: EdgeInsets.zero,
-                                constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
-                              ),
-                        IconButton(
-                          onPressed: _openEditSheet,
-                          icon: const Icon(Icons.edit_rounded, color: AppTheme.textMuted, size: 18),
-                          tooltip: 'Edit',
-                          padding: EdgeInsets.zero,
-                          constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
-                        ),
-                        IconButton(
-                          onPressed: widget.onDelete,
-                          icon: const Icon(Icons.delete_outline_rounded, color: AppTheme.textMuted, size: 18),
-                          tooltip: 'Remove',
-                          padding: EdgeInsets.zero,
-                          constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
-                        ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      _togglingNotif
+                          ? SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                color: color,
+                              ),
+                            )
+                          : IconButton(
+                              onPressed: _toggleNotifications,
+                              icon: Icon(
+                                s.notificationsEnabled
+                                    ? Icons.notifications_active_rounded
+                                    : Icons.notifications_off_rounded,
+                                color: s.notificationsEnabled
+                                    ? color
+                                    : AppTheme.textDisabled,
+                                size: 20,
+                              ),
+                              tooltip: s.notificationsEnabled
+                                  ? AppLocalizations.of(
+                                      context,
+                                    )!.notificationsOn
+                                  : AppLocalizations.of(
+                                      context,
+                                    )!.notificationsOff,
+                              padding: EdgeInsets.zero,
+                              constraints: const BoxConstraints(
+                                minWidth: 36,
+                                minHeight: 36,
+                              ),
+                            ),
+                      IconButton(
+                        onPressed: _openEditSheet,
+                        icon: const Icon(
+                          Icons.edit_rounded,
+                          color: AppTheme.textMuted,
+                          size: 18,
+                        ),
+                        tooltip: AppLocalizations.of(context)!.editLabel,
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(
+                          minWidth: 36,
+                          minHeight: 36,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: widget.onDelete,
+                        icon: const Icon(
+                          Icons.delete_outline_rounded,
+                          color: AppTheme.textMuted,
+                          size: 18,
+                        ),
+                        tooltip: AppLocalizations.of(context)!.delete,
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(
+                          minWidth: 36,
+                          minHeight: 36,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
+            ),
           ],
         ),
       ),
@@ -271,17 +365,29 @@ class _EditServerSheetState extends State<_EditServerSheet> {
       return;
     }
 
-    setState(() { _saving = true; _error = null; });
+    setState(() {
+      _saving = true;
+      _error = null;
+    });
 
-    final updated = await TrackerApiService.updateServer(widget.server.id, name: name);
+    final updated = await TrackerApiService.updateServer(
+      widget.server.id,
+      name: name,
+    );
     if (!mounted) return;
 
     if (updated != null) {
       widget.onSaved(updated);
       Navigator.of(context).pop();
-      AppToast.show(context, message: 'Server renamed');
+      AppToast.show(
+        context,
+        message: AppLocalizations.of(context)!.serverRenamed,
+      );
     } else {
-      setState(() { _saving = false; _error = 'Failed to save. Try again.'; });
+      setState(() {
+        _saving = false;
+        _error = AppLocalizations.of(context)!.failedSave;
+      });
     }
   }
 
@@ -300,30 +406,59 @@ class _EditServerSheetState extends State<_EditServerSheet> {
         children: [
           Row(
             children: [
-              const Text('Edit server', style: TextStyle(color: AppTheme.textPrimary, fontSize: 17, fontWeight: FontWeight.w700)),
+              Text(
+                AppLocalizations.of(context)!.editServerTitle,
+                style: const TextStyle(
+                  color: AppTheme.textPrimary,
+                  fontSize: 17,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
               const Spacer(),
-              IconButton(icon: const Icon(Icons.close_rounded, color: AppTheme.textMuted), onPressed: () => Navigator.of(context).pop()),
+              IconButton(
+                icon: const Icon(
+                  Icons.close_rounded,
+                  color: AppTheme.textMuted,
+                ),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
             ],
           ),
           const SizedBox(height: 16),
-          const Text('Name', style: TextStyle(color: AppTheme.textMuted, fontSize: 12, fontWeight: FontWeight.w600)),
+          const Text(
+            'Name',
+            style: TextStyle(
+              color: AppTheme.textMuted,
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
           const SizedBox(height: 6),
           TextField(
             controller: _nameCtrl,
             autofocus: true,
             style: const TextStyle(color: AppTheme.textPrimary, fontSize: 14),
             decoration: InputDecoration(
-              hintText: 'Server name',
+              hintText: AppLocalizations.of(context)!.serverNameHint,
               hintStyle: const TextStyle(color: AppTheme.textDisabled),
               filled: true,
               fillColor: AppTheme.surfaceLight,
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
-              contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide.none,
+              ),
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 14,
+                vertical: 12,
+              ),
             ),
           ),
           if (_error != null) ...[
             const SizedBox(height: 10),
-            Text(_error!, style: const TextStyle(color: AppTheme.error, fontSize: 13)),
+            Text(
+              _error!,
+              style: const TextStyle(color: AppTheme.error, fontSize: 13),
+            ),
           ],
           const SizedBox(height: 20),
           SizedBox(
@@ -334,11 +469,23 @@ class _EditServerSheetState extends State<_EditServerSheet> {
                 backgroundColor: AppTheme.brand,
                 foregroundColor: Colors.black,
                 padding: const EdgeInsets.symmetric(vertical: 14),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
               child: _saving
-                  ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.black))
-                  : const Text('Save', style: TextStyle(fontWeight: FontWeight.w700)),
+                  ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: Colors.black,
+                      ),
+                    )
+                  : const Text(
+                      'Save',
+                      style: TextStyle(fontWeight: FontWeight.w700),
+                    ),
             ),
           ),
         ],

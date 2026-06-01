@@ -230,7 +230,10 @@ class ProfileScreenState extends State<ProfileScreen>
                     if (_requests.isNotEmpty) ...[
                       const SizedBox(width: 4),
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 5,
+                          vertical: 2,
+                        ),
                         decoration: BoxDecoration(
                           color: AppTheme.accent,
                           borderRadius: BorderRadius.circular(10),
@@ -372,7 +375,9 @@ class ProfileScreenState extends State<ProfileScreen>
     if (ok) {
       AppToast.show(
         context,
-        message: AppLocalizations.of(context)!.friendRequestAccepted(req.requesterUsername),
+        message: AppLocalizations.of(
+          context,
+        )!.friendRequestAccepted(req.requesterUsername),
         icon: Icons.check_circle_rounded,
         color: AppTheme.success,
       );
@@ -386,7 +391,9 @@ class ProfileScreenState extends State<ProfileScreen>
     if (ok) {
       AppToast.show(
         context,
-        message: AppLocalizations.of(context)!.requestDeclined(req.requesterUsername),
+        message: AppLocalizations.of(
+          context,
+        )!.requestDeclined(req.requesterUsername),
         icon: Icons.close_rounded,
         color: AppTheme.textMuted,
       );
@@ -524,12 +531,17 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
     } on FirebaseAuthException catch (e) {
       if (!mounted) return;
       final l = AppLocalizations.of(context)!;
-      setState(() => _error = switch (e.code) {
-            'account-exists-with-different-credential' => l.emailDifferentMethod,
-            _ => l.googleSignInFailed,
-          });
+      setState(
+        () => _error = switch (e.code) {
+          'account-exists-with-different-credential' => l.emailDifferentMethod,
+          _ => l.googleSignInFailed,
+        },
+      );
     } catch (_) {
-      if (mounted) setState(() => _error = AppLocalizations.of(context)!.googleSignInFailed);
+      if (mounted)
+        setState(
+          () => _error = AppLocalizations.of(context)!.googleSignInFailed,
+        );
     } finally {
       if (mounted) setState(() => _googleLoading = false);
     }
@@ -545,17 +557,21 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
     } on FirebaseAuthException catch (e) {
       if (!mounted) return;
       final l = AppLocalizations.of(context)!;
-      setState(() => _error = switch (e.code) {
-            'account-exists-with-different-credential' => l.emailDifferentMethod,
-            _ => l.appleSignInFailed,
-          });
+      setState(
+        () => _error = switch (e.code) {
+          'account-exists-with-different-credential' => l.emailDifferentMethod,
+          _ => l.appleSignInFailed,
+        },
+      );
     } catch (e) {
       if (!mounted) return;
       final msg = e.toString();
       if (!msg.contains('AuthorizationErrorCode.canceled') &&
           !msg.contains('canceled') &&
           !msg.contains('cancelled')) {
-        setState(() => _error = AppLocalizations.of(context)!.appleSignInFailed);
+        setState(
+          () => _error = AppLocalizations.of(context)!.appleSignInFailed,
+        );
       }
     } finally {
       if (mounted) setState(() => _appleLoading = false);
@@ -574,7 +590,10 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
         ),
         title: Text(
           AppLocalizations.of(ctx)!.resetPasswordTitle,
-          style: const TextStyle(color: AppTheme.textPrimary, fontWeight: FontWeight.w700),
+          style: const TextStyle(
+            color: AppTheme.textPrimary,
+            fontWeight: FontWeight.w700,
+          ),
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
@@ -664,7 +683,9 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
     final email = _emailCtrl.text.trim();
     final pass = _passCtrl.text;
     if (email.isEmpty || pass.isEmpty) {
-      setState(() => _error = AppLocalizations.of(context)!.enterEmailAndPassword);
+      setState(
+        () => _error = AppLocalizations.of(context)!.enterEmailAndPassword,
+      );
       return;
     }
     setState(() {
@@ -921,7 +942,9 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                               ),
                               const SizedBox(width: 10),
                               Text(
-                                AppLocalizations.of(context)!.continueWithGoogle,
+                                AppLocalizations.of(
+                                  context,
+                                )!.continueWithGoogle,
                                 style: const TextStyle(
                                   color: AppTheme.textPrimary,
                                   fontWeight: FontWeight.w600,
@@ -1058,7 +1081,11 @@ class _Header extends StatelessWidget {
       color: AppTheme.surface,
       child: Row(
         children: [
-          _Avatar(initials: me?.initials ?? '?', size: 52, avatarUrl: me?.avatarUrl),
+          _Avatar(
+            initials: me?.initials ?? '?',
+            size: 52,
+            avatarUrl: me?.avatarUrl,
+          ),
           const SizedBox(width: 14),
           Expanded(
             child: Column(
@@ -1421,7 +1448,9 @@ class _LinkedAccountsCardState extends State<_LinkedAccountsCard> {
                 icon: Icons.sports_esports_rounded,
                 color: _xboxGreen,
                 name: acc.xboxGamertag ?? acc.xboxXuid,
-                subtitle: 'Xbox · ${acc.xboxXuid}',
+                subtitle: AppLocalizations.of(
+                  context,
+                )!.accountSubtitleXbox(acc.xboxXuid),
                 unlinking: _unlinking.contains(acc.xboxXuid),
                 onUnlink: () => _unlinkBedrock(acc),
               ),
@@ -1431,7 +1460,9 @@ class _LinkedAccountsCardState extends State<_LinkedAccountsCard> {
                 icon: Icons.videogame_asset_rounded,
                 color: _javaBlue,
                 name: acc.javaUsername,
-                subtitle: 'Java Edition · ${acc.javaUuid}',
+                subtitle: AppLocalizations.of(
+                  context,
+                )!.accountSubtitleJava(acc.javaUuid),
                 unlinking: _unlinking.contains(acc.javaUuid),
                 onUnlink: () => _unlinkJava(acc),
               ),
@@ -1686,7 +1717,9 @@ class _EditProfileCardState extends State<_EditProfileCard> {
             TextField(
               controller: _displayNameCtrl,
               style: const TextStyle(color: AppTheme.textPrimary),
-              decoration: InputDecoration(hintText: AppLocalizations.of(context)!.yourNameHint),
+              decoration: InputDecoration(
+                hintText: AppLocalizations.of(context)!.yourNameHint,
+              ),
             ),
             const SizedBox(height: 14),
             _FieldLabel(AppLocalizations.of(context)!.bioLabel),
@@ -1709,15 +1742,22 @@ class _EditProfileCardState extends State<_EditProfileCard> {
               autocorrect: false,
               obscureText: _obscureAvatar,
               decoration: InputDecoration(
-                hintText: 'https://example.com/avatar.png',
-                prefixIcon: const Icon(Icons.image_rounded, size: 18, color: AppTheme.textMuted),
+                hintText: AppLocalizations.of(context)!.avatarUrlHint,
+                prefixIcon: const Icon(
+                  Icons.image_rounded,
+                  size: 18,
+                  color: AppTheme.textMuted,
+                ),
                 suffixIcon: IconButton(
                   icon: Icon(
-                    _obscureAvatar ? Icons.visibility_off_rounded : Icons.visibility_rounded,
+                    _obscureAvatar
+                        ? Icons.visibility_off_rounded
+                        : Icons.visibility_rounded,
                     size: 18,
                     color: AppTheme.textMuted,
                   ),
-                  onPressed: () => setState(() => _obscureAvatar = !_obscureAvatar),
+                  onPressed: () =>
+                      setState(() => _obscureAvatar = !_obscureAvatar),
                 ),
               ),
             ),
@@ -1758,14 +1798,23 @@ class _EditProfileCardState extends State<_EditProfileCard> {
                   : '—',
             ),
             const SizedBox(height: 8),
-            _ProfileRow(label: AppLocalizations.of(context)!.usernameDisplayLabel, value: '@${widget.me.username}'),
+            _ProfileRow(
+              label: AppLocalizations.of(context)!.usernameDisplayLabel,
+              value: '@${widget.me.username}',
+            ),
             if (widget.me.bio?.isNotEmpty == true) ...[
               const SizedBox(height: 8),
-              _ProfileRow(label: AppLocalizations.of(context)!.aboutMe, value: widget.me.bio!),
+              _ProfileRow(
+                label: AppLocalizations.of(context)!.aboutMe,
+                value: widget.me.bio!,
+              ),
             ],
             if (widget.me.avatarUrl?.isNotEmpty == true) ...[
               const SizedBox(height: 8),
-              _ProfileRow(label: AppLocalizations.of(context)!.avatarUrlLabel, value: '••••••••••••'),
+              _ProfileRow(
+                label: AppLocalizations.of(context)!.avatarUrlLabel,
+                value: '••••••••••••',
+              ),
             ],
           ],
         ],
@@ -1818,7 +1867,9 @@ class _FriendsTab extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         children: [
           if (online.isNotEmpty) ...[
-            _SectionLabel(AppLocalizations.of(context)!.onlineFriendsLabel(online.length)),
+            _SectionLabel(
+              AppLocalizations.of(context)!.onlineFriendsLabel(online.length),
+            ),
             const SizedBox(height: 8),
             ...online.map(
               (f) => Padding(
@@ -1837,7 +1888,9 @@ class _FriendsTab extends StatelessWidget {
             const SizedBox(height: 8),
           ],
           if (offline.isNotEmpty) ...[
-            _SectionLabel(AppLocalizations.of(context)!.offlineFriendsLabel(offline.length)),
+            _SectionLabel(
+              AppLocalizations.of(context)!.offlineFriendsLabel(offline.length),
+            ),
             const SizedBox(height: 8),
             ...offline.map(
               (f) => Padding(
@@ -1911,7 +1964,11 @@ class _FriendTile extends StatelessWidget {
           children: [
             Stack(
               children: [
-                _Avatar(initials: friend.initials, size: 42, avatarUrl: friend.avatarUrl),
+                _Avatar(
+                  initials: friend.initials,
+                  size: 42,
+                  avatarUrl: friend.avatarUrl,
+                ),
                 Positioned(
                   right: 0,
                   bottom: 0,
@@ -2067,7 +2124,11 @@ class _RequestTile extends StatelessWidget {
       ),
       child: Row(
         children: [
-          _Avatar(initials: request.initials, size: 42, avatarUrl: request.requesterAvatarUrl),
+          _Avatar(
+            initials: request.initials,
+            size: 42,
+            avatarUrl: request.requesterAvatarUrl,
+          ),
           const SizedBox(width: 12),
           Expanded(
             child: Column(

@@ -9,7 +9,7 @@ class AppLocalizationsSw extends AppLocalizations {
   AppLocalizationsSw([String locale = 'sw']) : super(locale);
 
   @override
-  String get appName => 'MCCompanion';
+  String get appName => 'NetherLink';
 
   @override
   String get console => 'Konsoli';
@@ -46,7 +46,7 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String helpText(Object appCreator) {
-    return 'Imetengenezwa na $appCreator.\r\n\r\nJinsi ya kutumia:\r\n1. Weka anwani na port ya seva yako ya Minecraft (chaguo-msingi: 19132)\r\n   — au chagua seva iliyohifadhiwa awali kutoka kwenye menyu ya kushuka\r\n2. (Hiari) Chagua Relay Server (EU au US) iliyo karibu zaidi na eneo lako\r\n3. Bofya \"Anza Kutangaza\" ili kuanza\r\n4. Kwenye konsoli/kifaa chako: Minecraft > Play > Friends\r\n5. Unapaswa kuona seva ya LAN inayoitwa \"MCCompanion\"\r\n6. Bofya ili kujiunga na seva yako ya nje kupitia MCCompanion\r\n\r\nNintendo Switch (hali ya DNS):\r\n1. Washa \"Nintendo Switch\" kwenye paneli ya muunganisho\r\n2. Chagua Relay Server (EU au US)\r\n3. Bofya \"Send DNS Config\" — hii hutuma usanidi wako kwa relay\r\n   (hii HAITANGAZI seva ya LAN)\r\n4. Kwenye Switch yako, tumia mipangilio ya DNS ya MCCompanion kisha jiunge\r\n   kwa kutumia ingizo la seva unalotumia kwa MCCompanion\r\n\r\nVidokezo:\r\n- Kwa utangazaji wa LAN, MCCompanion na konsoli lazima ziwe kwenye mtandao mmoja wa ndani.\r\n- Dokezo: Chagua seva ya relay iliyo karibu zaidi nawe kwa utendaji bora.';
+    return 'Imetengenezwa na $appCreator.\r\n\r\nJinsi ya kutumia:\r\n1. Weka anwani na port ya seva yako ya Minecraft (chaguo-msingi: 19132)\r\n   — au chagua seva iliyohifadhiwa awali kutoka kwenye menyu ya kushuka\r\n2. (Hiari) Chagua Relay Server (EU au US) iliyo karibu zaidi na eneo lako\r\n3. Bofya \"Anza Kutangaza\" ili kuanza\r\n4. Kwenye konsoli/kifaa chako: Minecraft > Play > Friends\r\n5. Unapaswa kuona seva ya LAN inayoitwa \"NetherLink\"\r\n6. Bofya ili kujiunga na seva yako ya nje kupitia NetherLink\r\n\r\nNintendo Switch (hali ya DNS):\r\n1. Washa \"Nintendo Switch\" kwenye paneli ya muunganisho\r\n2. Chagua Relay Server (EU au US)\r\n3. Bofya \"Send DNS Config\" — hii hutuma usanidi wako kwa relay\r\n   (hii HAITANGAZI seva ya LAN)\r\n4. Kwenye Switch yako, tumia mipangilio ya DNS ya NetherLink kisha jiunge\r\n   kwa kutumia ingizo la seva unalotumia kwa NetherLink\r\n\r\nVidokezo:\r\n- Kwa utangazaji wa LAN, NetherLink na konsoli lazima ziwe kwenye mtandao mmoja wa ndani.\r\n- Dokezo: Chagua seva ya relay iliyo karibu zaidi nawe kwa utendaji bora.';
   }
 
   @override
@@ -74,13 +74,13 @@ class AppLocalizationsSw extends AppLocalizations {
   String get howToJavaTitle => 'Hali ya Java';
 
   @override
-  String get howToJavaSubtitle => 'Unganisha kwenye seva za Java Edition kupitia MCCompanion';
+  String get howToJavaSubtitle => 'Unganisha kwenye seva za Java Edition kupitia NetherLink';
 
   @override
   String get aternosSubtext => 'Skapa din egen gratis Minecraft-server';
 
   @override
-  String get howToJavaBody => 'Hali ya Java — hatua za haraka:\n1. Kwenye programu, chagua hali ya Java.\n2. Weka anwani na port ya seva yako ya Java Edition (chaguomsingi: 25565).\n3. Bonyeza \"Anza hali ya Java\" — MCCompanion itaunganisha muunganisho.\n4. Fungua Minecraft Bedrock na uende kwenye kichupo cha Marafiki.\n5. Chagua seva ya LAN inayoitwa \"MCCompanion\" ili kujiunga na seva ya Java.\n\n⚠️ Maonyo muhimu:\n- Akaunti halali ya Java Edition (Microsoft) inahitajika.\n- Baadhi ya seva hutumia mifumo ya anti-cheat ambayo inaweza kugundua na kupiga marufuku akaunti yako.\n- Baadhi ya seva hukataza wazi wateja wa Bedrock — hakikisha unakagua sheria za seva kila wakati.\n- MCCompanion haiwajibiki kwa marufuku, kusimamishwa au matatizo mengine yanayohusiana na akaunti yanayoweza kusababishwa na kutumia kipengele hiki.\n- Tumia kwa hatari yako mwenyewe.';
+  String get howToJavaBody => 'Hali ya Java — hatua za haraka:\n1. Kwenye programu, chagua hali ya Java.\n2. Weka anwani na port ya seva yako ya Java Edition (chaguomsingi: 25565).\n3. Bonyeza \"Anza hali ya Java\" — NetherLink itaunganisha muunganisho.\n4. Fungua Minecraft Bedrock na uende kwenye kichupo cha Marafiki.\n5. Chagua seva ya LAN inayoitwa \"NetherLink\" ili kujiunga na seva ya Java.\n\n⚠️ Maonyo muhimu:\n- Akaunti halali ya Java Edition (Microsoft) inahitajika.\n- Baadhi ya seva hutumia mifumo ya anti-cheat ambayo inaweza kugundua na kupiga marufuku akaunti yako.\n- Baadhi ya seva hukataza wazi wateja wa Bedrock — hakikisha unakagua sheria za seva kila wakati.\n- NetherLink haiwajibiki kwa marufuku, kusimamishwa au matatizo mengine yanayohusiana na akaunti yanayoweza kusababishwa na kutumia kipengele hiki.\n- Tumia kwa hatari yako mwenyewe.';
 
   @override
   String get language => 'Kiswahili';
@@ -185,7 +185,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get debugDisabled => 'Kumbukumbu za utatuzi zimezimwa';
 
   @override
-  String get howToUseTitle => 'Jinsi ya kutumia MCCompanion';
+  String get howToUseTitle => 'Jinsi ya kutumia NetherLink';
 
   @override
   String get iUnderstand => 'Nimeelewa';
@@ -251,10 +251,10 @@ class AppLocalizationsSw extends AppLocalizations {
   String get noWifi => 'Haupo kwenye Wi‑Fi';
 
   @override
-  String get vpnActive => 'Tumegundua kuwa VPN yako imewashwa.\n\nTafadhali izime kabla ya kutumia MCCompanion, la sivyo matangazo ya LAN yanaweza yasifikie konsoli yako.';
+  String get vpnActive => 'Tumegundua kuwa VPN yako imewashwa.\n\nTafadhali izime kabla ya kutumia NetherLink, la sivyo matangazo ya LAN yanaweza yasifikie konsoli yako.';
 
   @override
-  String get mobileActive => 'Imegunduliwa: Data ya simu\n\nMCCompanion inahitaji kuwa kwenye mtandao ule ule na konsoli yako. Unganisha kwenye Wi‑Fi ya nyumbani au hotspot kabla ya kuendelea.';
+  String get mobileActive => 'Imegunduliwa: Data ya simu\n\nNetherLink inahitaji kuwa kwenye mtandao ule ule na konsoli yako. Unganisha kwenye Wi‑Fi ya nyumbani au hotspot kabla ya kuendelea.';
 
   @override
   String get continueAnyway => 'Endelea hata hivyo';
@@ -263,13 +263,13 @@ class AppLocalizationsSw extends AppLocalizations {
   String get sameWifi => 'Mtandao ule ule wa Wi‑Fi';
 
   @override
-  String get needSameWifi => 'Kifaa kinachoendesha MCCompanion LAZIMA kiwe kwenye mtandao ule ule wa Wi‑Fi na konsoli unayotumia kucheza Minecraft.';
+  String get needSameWifi => 'Kifaa kinachoendesha NetherLink LAZIMA kiwe kwenye mtandao ule ule wa Wi‑Fi na konsoli unayotumia kucheza Minecraft.';
 
   @override
   String get subscription => 'Usajili wa mtandaoni unahitajika';
 
   @override
-  String get needSubscription => 'Kila konsoli inahitaji usajili wake wa mtandaoni ulio hai (Xbox Live, PS Plus, NSO). Bila huo, MCCompanion haitaonekana.';
+  String get needSubscription => 'Kila konsoli inahitaji usajili wake wa mtandaoni ulio hai (Xbox Live, PS Plus, NSO). Bila huo, NetherLink haitaonekana.';
 
   @override
   String get updateAvailable => 'Sasisho linapatikana';
@@ -320,7 +320,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get friendModeTitle => 'Hali ya Marafiki';
 
   @override
-  String get friendModeText => 'Ongeza roboti za marafiki za MCCompanion kama rafiki. Anza hali ya Marafiki na ucheze';
+  String get friendModeText => 'Ongeza roboti za marafiki za NetherLink kama rafiki. Anza hali ya Marafiki na ucheze';
 
   @override
   String get selectedRelayCheck => 'Imechaguliwa';
@@ -331,7 +331,7 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get relayUnableConnect => 'Imeshindikana kuunganika kwa seva YOYOTE ya relay ya MCCompanion. Jaribu tena baadaye au angalia intaneti yako.';
+  String get relayUnableConnect => 'Imeshindikana kuunganika kwa seva YOYOTE ya relay ya NetherLink. Jaribu tena baadaye au angalia intaneti yako.';
 
   @override
   String get howToXboxTitle => 'Xbox / PS4-5 (LAN / proksi)';
@@ -340,7 +340,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get howToXboxSubtitle => 'Cheza kupitia utangazaji wa LAN au proxy';
 
   @override
-  String get howToXboxBody => 'Jinsi ya kuunganika (Xbox / PS4 / PS5):\r\n1. Hakikisha kifaa chako kinachoendesha MCCompanion na konsoli yako viko kwenye mtandao mmoja wa ndani.\r\n2. Kwenye programu, weka anwani na port ya seva yako ya Minecraft kisha bonyeza \"Anza Kutangaza\".\r\n3. Kwenye konsoli, fungua Minecraft → Play → tafuta LAN Worlds au kichupo cha Friends kisha sasisha orodha.\r\n4. Chagua seva ya LAN iitwayo \"MCCompanion\" ili kujiunga.\r\nVidokezo:\r\n- Ikiwa seva haionekani, hakikisha vifaa vyote viko kwenye subnet moja na programu bado inatangaza.\r\n- Baadhi ya miundo ya konsoli au router inaweza kuzuia ugunduzi wa LAN; jaribu kubadili mipangilio ya programu au router ikihitajika.';
+  String get howToXboxBody => 'Jinsi ya kuunganika (Xbox / PS4 / PS5):\r\n1. Hakikisha kifaa chako kinachoendesha NetherLink na konsoli yako viko kwenye mtandao mmoja wa ndani.\r\n2. Kwenye programu, weka anwani na port ya seva yako ya Minecraft kisha bonyeza \"Anza Kutangaza\".\r\n3. Kwenye konsoli, fungua Minecraft → Play → tafuta LAN Worlds au kichupo cha Friends kisha sasisha orodha.\r\n4. Chagua seva ya LAN iitwayo \"NetherLink\" ili kujiunga.\r\nVidokezo:\r\n- Ikiwa seva haionekani, hakikisha vifaa vyote viko kwenye subnet moja na programu bado inatangaza.\r\n- Baadhi ya miundo ya konsoli au router inaweza kuzuia ugunduzi wa LAN; jaribu kubadili mipangilio ya programu au router ikihitajika.';
 
   @override
   String get howToNintendoTitle => 'Nintendo Switch (hali ya DNS)';
@@ -358,25 +358,25 @@ class AppLocalizationsSw extends AppLocalizations {
   String get howToFriendsSubtitle => 'Alika marafiki na ujiunge kupitia LAN';
 
   @override
-  String get howToFriendsBody => 'Hali ya Marafiki — hatua za haraka:\r\n1. Ongeza akaunti ya rafiki ya MCCompanion kwenye konsoli au jukwaa lako ikiwa inahitajika.\r\n2. Kwenye programu washa hali ya Marafiki na utume usanidi wa relay (ikiwa unatumika).\r\n3. Kwenye konsoli yako fungua Minecraft → Friends na utafute LAN Worlds — seva yako inapaswa kuonekana hapo kama ulimwengu wa LAN.\r\n4. Ichague ili kujiunga na seva yako pamoja na marafiki.\r\nVidokezo:\r\n- Hakikisha wewe na marafiki zako mna NAT/mipangilio sawa inayoruhusu uwepo wa marafiki.\r\n- Hali ya Marafiki hutegemea vipengele vya urafiki vya jukwaa na huenda ikahitaji kukubali maombi ya urafiki.';
+  String get howToFriendsBody => 'Hali ya Marafiki — hatua za haraka:\r\n1. Ongeza akaunti ya rafiki ya NetherLink kwenye konsoli au jukwaa lako ikiwa inahitajika.\r\n2. Kwenye programu washa hali ya Marafiki na utume usanidi wa relay (ikiwa unatumika).\r\n3. Kwenye konsoli yako fungua Minecraft → Friends na utafute LAN Worlds — seva yako inapaswa kuonekana hapo kama ulimwengu wa LAN.\r\n4. Ichague ili kujiunga na seva yako pamoja na marafiki.\r\nVidokezo:\r\n- Hakikisha wewe na marafiki zako mna NAT/mipangilio sawa inayoruhusu uwepo wa marafiki.\r\n- Hali ya Marafiki hutegemea vipengele vya urafiki vya jukwaa na huenda ikahitaji kukubali maombi ya urafiki.';
 
   @override
-  String get helpNetherlinkTitle => 'MCCompanion haionekani';
+  String get helpNetherlinkTitle => 'NetherLink haionekani';
 
   @override
   String get helpNetherlinkSubtitle => 'Utatuzi wa matatizo ya ugunduzi wa LAN';
 
   @override
-  String get helpNetherlinkBody => 'Ikiwa seva haionekani kwenye konsoli yako, jaribu hatua hizi:\r\n\r\n✅ Ukaguzi wa msingi:\r\n1. Mtandao ule ule wa WiFi - Simu/tablet yako na konsoli LAZIMA ziwe kwenye WiFi ile ile\r\n2. Anwani sahihi ya seva - Hakiki tena IP na port (chaguo-msingi: 19132)\r\n3. Utangazaji uko hai - Hakikisha MCCompanion inaonyesha hali ya \"Inatangaza\"\r\n\r\n🔄 Marekebisho ya haraka:\r\n• Anzisha tena programu: simamisha utangazaji, funga MCCompanion kabisa, ifungue tena na ujaribu upya\r\n• Anzisha tena konsoli yako: wakati mwingine konsoli huhitaji kusasishwa ili kugundua michezo ya LAN\r\n• Angalia kichupo cha Friends/LAN: seva huonekana chini ya \"Friends\" au \"LAN Games\", SI kwenye orodha ya seva\r\n• Subiri sekunde 10-15 baada ya kuanza kutangaza\r\n• Zima VPN: VPN zinaweza kuzuia matangazo ya ndani\r\n\r\n⚠️ Matatizo ya kawaida:\r\n\"No route found for user\" → Hakikisha vifaa vyote viwili viko kwenye Wi‑Fi ile ile (epuka mitandao ya wageni)\r\n\"Unable to connect to MCCompanion relay server\" → Angalia intaneti yako / hali ya relay\r\n\r\n📱 Bado una matatizo? Washa hali ya utatuzi kwenye MCCompanion na uangalie kumbukumbu, au jaribu seva tofauti.';
+  String get helpNetherlinkBody => 'Ikiwa seva haionekani kwenye konsoli yako, jaribu hatua hizi:\r\n\r\n✅ Ukaguzi wa msingi:\r\n1. Mtandao ule ule wa WiFi - Simu/tablet yako na konsoli LAZIMA ziwe kwenye WiFi ile ile\r\n2. Anwani sahihi ya seva - Hakiki tena IP na port (chaguo-msingi: 19132)\r\n3. Utangazaji uko hai - Hakikisha NetherLink inaonyesha hali ya \"Inatangaza\"\r\n\r\n🔄 Marekebisho ya haraka:\r\n• Anzisha tena programu: simamisha utangazaji, funga NetherLink kabisa, ifungue tena na ujaribu upya\r\n• Anzisha tena konsoli yako: wakati mwingine konsoli huhitaji kusasishwa ili kugundua michezo ya LAN\r\n• Angalia kichupo cha Friends/LAN: seva huonekana chini ya \"Friends\" au \"LAN Games\", SI kwenye orodha ya seva\r\n• Subiri sekunde 10-15 baada ya kuanza kutangaza\r\n• Zima VPN: VPN zinaweza kuzuia matangazo ya ndani\r\n\r\n⚠️ Matatizo ya kawaida:\r\n\"No route found for user\" → Hakikisha vifaa vyote viwili viko kwenye Wi‑Fi ile ile (epuka mitandao ya wageni)\r\n\"Unable to connect to NetherLink relay server\" → Angalia intaneti yako / hali ya relay\r\n\r\n📱 Bado una matatizo? Washa hali ya utatuzi kwenye NetherLink na uangalie kumbukumbu, au jaribu seva tofauti.';
 
   @override
   String get helpMultiplayerFailedTitle => 'Muunganisho wa Multiplayer Umeshindikana';
 
   @override
-  String get helpMultiplayerFailedSubtitle => 'Maelezo kwa nini hili si kosa la MCCompanion';
+  String get helpMultiplayerFailedSubtitle => 'Maelezo kwa nini hili si kosa la NetherLink';
 
   @override
-  String get helpMultiplayerFailedBody => '⚠️ Hili si tatizo la MCCompanion!\r\n\r\nMCCompanion ilikuelekeza kwa mafanikio kwenye seva iliyoombwa. Ujumbe wa \"Multiplayer Connection Failed\" unaonyesha kuwa seva lengwa haipatikani kwa sasa. Sababu zinazowezekana:\r\n\r\n• Seva lengwa ya Minecraft iko nje ya mtandao au imeelemewa\r\n• Seva inahitaji toleo la mteja lililosasishwa au toleo maalum\r\n• Matatizo ya mtandao kati ya relay na seva lengwa\r\n\r\nJaribu kuunganika kwenye seva tofauti au wasiliana na msaada wa seva husika. Tatizo likiendelea kwenye seva nyingi, washa hali ya utatuzi kwenye MCCompanion na uangalie kumbukumbu.';
+  String get helpMultiplayerFailedBody => '⚠️ Hili si tatizo la NetherLink!\r\n\r\nNetherLink ilikuelekeza kwa mafanikio kwenye seva iliyoombwa. Ujumbe wa \"Multiplayer Connection Failed\" unaonyesha kuwa seva lengwa haipatikani kwa sasa. Sababu zinazowezekana:\r\n\r\n• Seva lengwa ya Minecraft iko nje ya mtandao au imeelemewa\r\n• Seva inahitaji toleo la mteja lililosasishwa au toleo maalum\r\n• Matatizo ya mtandao kati ya relay na seva lengwa\r\n\r\nJaribu kuunganika kwenye seva tofauti au wasiliana na msaada wa seva husika. Tatizo likiendelea kwenye seva nyingi, washa hali ya utatuzi kwenye NetherLink na uangalie kumbukumbu.';
 
   @override
   String get helpNintendoDnsTitle => 'DNS ya Nintendo haifanyi kazi';
@@ -409,398 +409,749 @@ class AppLocalizationsSw extends AppLocalizations {
   String get couldNotOpenUrl => 'Haikuweza kufungua URL';
 
   @override
-  String get reportUser => 'Ripoti mtumiaji';
-  @override
-  String reportUserWithName(String username) => 'Ripoti @$username';
-  @override
-  String get reportMessage => 'Ripoti ujumbe';
-  @override
-  String get reportDisclaimer => 'Timu yetu itapitia ripoti hii. Asante kwa kulinda usalama wa jamii.';
-  @override
-  String get reportReasonSpam => 'Barua taka';
-  @override
-  String get reportReasonHarassment => 'Unyanyasaji au udhalimu';
-  @override
-  String get reportReasonInappropriate => 'Maudhui yasiyofaa';
-  @override
-  String get reportReasonOther => 'Nyingine';
-  @override
-  String get reportAdditionalDetails => 'Maelezo ya ziada (hiari)';
-  @override
-  String get reportSubmit => 'Tuma ripoti';
-  @override
-  String get reportSuccess => 'Ripoti imetumwa. Asante.';
-  @override
-  String get reportFailed => 'Imeshindwa kutuma ripoti. Jaribu tena.';
-  @override
-  String get messagePlaceholder => 'Ujumbe...';
-  @override
-  String get noMessagesYet => 'Hakuna ujumbe bado.\nSema habari!';
-  @override
-  String get today => 'Leo';
-  @override
-  String get yesterday => 'Jana';
-  @override
-  String get noConversationsYet => 'Hakuna mazungumzo bado';
-  @override
-  String get startChatHint => 'Anza mazungumzo kutoka kwenye orodha ya marafiki.';
-  @override
-  String get youPrefix => 'Wewe';
-  @override
-  String get tabProfile => 'WASIFU';
-  @override
-  String get tabFriends => 'MARAFIKI';
-  @override
-  String get tabRequests => 'MAOMBI';
-  @override
-  String get tabChats => 'MAZUNGUMZO';
-  @override
-  String get addFriend => 'Ongeza rafiki';
-  @override
-  String get usernameHint => 'jina la mtumiaji';
-  @override
-  String get send => 'Tuma';
-  @override
-  String friendRequestSentTo(String username) => 'Ombi la urafiki limetumwa kwa @$username';
-  @override
-  String alreadyFriendsWith(String username) => 'Tayari ni marafiki na @$username.';
-  @override
-  String requestAlreadyPending(String username) => 'Tayari kuna ombi linalosubiri na @$username.';
-  @override
-  String userNotFoundMsg(String username) => 'Mtumiaji @$username hajapatikana.';
-  @override
-  String cannotSendRequest(String username) => 'Huwezi kutuma ombi kwa @$username.';
-  @override
-  String get somethingWentWrong => 'Kitu kimekwenda vibaya. Jaribu tena.';
-  @override
-  String friendRequestAccepted(String username) => 'Ombi la urafiki kutoka @$username limekubaliwa';
-  @override
-  String requestDeclined(String username) => 'Ombi kutoka @$username limekataliwa';
-  @override
-  String get deleteAccountTitle => 'Futa akaunti';
-  @override
-  String get deleteAccountBody => 'Hii itafuta akaunti yako, ujumbe, marafiki na data zote zinazohusiana milele. Hatua hii haiwezi kutenduliwa.';
-  @override
-  String get deletePermanently => 'Futa milele';
-  @override
-  String get couldNotDeleteAccount => 'Imeshindwa kufuta akaunti. Jaribu tena.';
-  @override
-  String get removeFriendTitle => 'Ondoa rafiki';
-  @override
-  String removeFriendConfirm(String username) => 'Unataka kuondoa @$username kama rafiki?';
-  @override
-  String get remove => 'Ondoa';
-  @override
-  String friendRemoved(String username) => '@$username ameondolewa kwenye marafiki wako';
-  @override
-  String get noFriendsYet => 'Hakuna marafiki bado';
-  @override
-  String get noFriendsSub => 'Ongeza mtu kwa kutumia kitufe juu kulia.';
-  @override
-  String get noPendingRequests => 'Hakuna maombi yanayosubiri';
-  @override
-  String get requestsAppearHere => 'Maombi ya urafiki yataonekana hapa.';
-  @override
-  String onlineFriendsLabel(int count) => 'MTANDAONI — $count';
-  @override
-  String offlineFriendsLabel(int count) => 'NJE YA MTANDAO — $count';
-  @override
-  String get couldNotUpdateVisibility => 'Imeshindwa kusasisha mwonekano. Jaribu tena.';
-  @override
-  String get aboutMe => 'Kuhusu mimi';
-  @override
-  String get linkedAccountsTitle => 'Akaunti zilizounganishwa';
-  @override
-  String get linkAccountsHint => 'Unganisha akaunti zako za Minecraft kuzionyesha kwenye wasifu wako.';
-  @override
-  String get unlinkXboxTitle => 'Tenganisha akaunti ya Xbox';
-  @override
-  String removeLabelConfirm(String label) => 'Ondoa $label kutoka kwenye akaunti zilizounganishwa?';
-  @override
-  String get unlinkJavaTitle => 'Tenganisha Java Edition';
-  @override
-  String removeJavaConfirm(String username) => 'Ondoa $username kutoka kwenye akaunti zilizounganishwa?';
-  @override
-  String get unlink => 'Tenganisha';
-  @override
-  String get linkXbox => 'Unganisha Xbox';
-  @override
-  String get linkJava => 'Unganisha Java';
-  @override
-  String get appearOfflineLabel => 'Onekana nje ya mtandao';
-  @override
-  String get appearOfflineOn => 'Marafiki wanakuona nje ya mtandao';
-  @override
-  String get appearOfflineOff => 'Marafiki wanaweza kuona unapokuwa mtandaoni';
-  @override
-  String get signOut => 'Toka';
-  @override
-  String get profileCardTitle => 'Wasifu';
-  @override
-  String get edit => 'Hariri';
-  @override
-  String get displayNameLabel => 'Jina la kuonyesha';
-  @override
-  String get bioLabel => 'Bio';
-  @override
-  String get yourNameHint => 'Jina lako';
-  @override
-  String get bioHint => 'Jiambie kidogo kuhusu wewe mwenyewe';
-  @override
-  String get avatarUrlLabel => 'URL ya avatar';
-  @override
-  String get usernameDisplayLabel => 'Jina la mtumiaji';
-  @override
-  String get profileUpdated => 'Wasifu umesasishwa';
-  @override
-  String get findUser => 'Tafuta mtumiaji';
-  @override
-  String get signIn => 'Ingia';
-  @override
-  String get createAccount => 'Fungua akaunti';
-  @override
-  String get signInSubtitle => 'Ingia ili kuongeza marafiki na kushiriki vikao vyako.';
-  @override
-  String get emailAddressHint => 'Anwani ya barua pepe';
-  @override
-  String get passwordHint => 'Nenosiri';
-  @override
-  String get forgotPassword => 'Umesahau nenosiri?';
-  @override
-  String get continueWithGoogle => 'Endelea na Google';
-  @override
-  String get alreadyHaveAccount => 'Una akaunti tayari? Ingia';
-  @override
-  String get noAccountYet => 'Bado huna akaunti? Jisajili';
-  @override
-  String get orDivider => 'au';
-  @override
-  String get resetPasswordTitle => 'Weka upya nenosiri';
-  @override
-  String get resetPasswordBody => 'Ingiza anwani yako ya barua pepe na tutakutumia kiungo cha kuweka upya nenosiri lako.';
-  @override
-  String get sendLink => 'Tuma kiungo';
-  @override
-  String resetLinkSent(String email) => 'Kiungo cha kuweka upya kimetumwa kwa $email';
-  @override
-  String get noAccountForEmail => 'Hakuna akaunti iliyopatikana kwa anwani hii ya barua pepe.';
-  @override
-  String get invalidEmailError => 'Anwani ya barua pepe si sahihi.';
-  @override
-  String get couldNotSendResetEmail => 'Imeshindwa kutuma barua pepe ya kuweka upya. Jaribu tena.';
-  @override
-  String get incorrectEmailOrPassword => 'Barua pepe au nenosiri si sahihi.';
-  @override
-  String get emailAlreadyInUse => 'Anwani hii ya barua pepe tayari inatumika.';
-  @override
-  String get weakPassword => 'Nenosiri lazima liwe na herufi angalau 6.';
-  @override
-  String get googleSignInFailed => 'Kuingia kwa Google kumeshindwa. Jaribu tena.';
-  @override
-  String get appleSignInFailed => 'Kuingia kwa Apple kumeshindwa. Jaribu tena.';
-  @override
-  String get emailDifferentMethod => 'Akaunti tayari ipo na barua pepe hii kwa njia tofauti ya kuingia.';
-  @override
-  String get enterEmailAndPassword => 'Tafadhali ingiza barua pepe na nenosiri lako.';
-  @override
-  String get profileNotSetUp => 'Wasifu bado haujasanidiwa';
-  @override
-  String get chooseUsernameSubtitle => 'Chagua jina la mtumiaji ili kuongeza marafiki na kushiriki vikao vyako.';
-  @override
-  String get createProfile => 'Unda wasifu';
-  @override
-  String get chooseUniqueUsername => 'Chagua jina la mtumiaji la kipekee ili kuongeza marafiki.';
-  @override
-  String get usernameFieldLabel => 'Jina la mtumiaji *';
-  @override
-  String get usernameFormatHint => 'Herufi 3–20 · a-z, 0-9 na _ tu';
-  @override
-  String get displayNameOptional => 'Jina la kuonyesha (hiari)';
-  @override
-  String get usernameRequired => 'Tafadhali ingiza jina la mtumiaji.';
-  @override
-  String get usernameFormatError => 'Herufi 3–20, herufi ndogo, nambari na _ tu';
-  @override
-  String get usernameTaken => 'Jina hili la mtumiaji tayari linachukuliwa.';
-  @override
-  String get noConnectionError => 'Hakuna muunganisho. Jaribu tena.';
-  @override
-  String get usernameExampleHint => 'mfano: jens_mc';
-  @override
-  String get displayNameExampleHint => 'mfano: Jens';
-  @override
-  String get home => 'Nyumbani';
-  @override
-  String get info => 'Maelezo';
-  @override
-  String get consoleConnect => 'Console Connect';
-  @override
-  String get consoleConnectSubtitle => 'Unganika na seva za Minecraft';
-  @override
-  String get minecraftSkins => 'Nguo za Minecraft';
-  @override
-  String get minecraftSkinsSubtitle => 'Ona na hariri nguo za Java na Bedrock';
-  @override
-  String get minecraftWiki => 'Wiki ya Minecraft';
-  @override
-  String get minecraftWikiSubtitle => 'Viumbe, vitalu, mapishi na zaidi';
-  @override
-  String get partnerServersLabel => 'Seva za Washirika';
-  @override
-  String get partnerServersSubtitle => 'Seva maarufu za Minecraft';
-  @override
-  String get userLookup => 'Utafutaji wa Mtumiaji wa Minecraft';
-  @override
-  String get userLookupSubtitle => 'Tafuta maelezo ya Java na Bedrock';
+  String get serverTrackerTitle => 'Kifuatiliaji cha seva';
 
   @override
-  String get navSkins => 'Skins';
+  String get removeServerTitle => 'Ondoa seva';
+
   @override
-  String get navWiki => 'Wiki';
+  String removeServerConfirm(Object name) {
+    return 'Ondoa \"$name\" kutoka kwa kifuatiliaji chako?';
+  }
+
+  @override
+  String get removeServerFailed => 'Imeshindwa kuondoa seva';
+
+  @override
+  String get refreshStatus => 'Onyesha upya hali';
+
+  @override
+  String get trackerSignInRequired => 'Ingia inahitajika';
+
+  @override
+  String get trackerSignInSubtitle => 'Ingia ili kufuatilia seva na kupokea arifa za nje ya mtandao.';
+
+  @override
+  String get signIn => 'Ingia';
+
+  @override
+  String get noServersTracked => 'Hakuna seva zinazofuatiliwa';
+
+  @override
+  String get trackerEmptySubtitle => 'Ongeza seva ya Minecraft ili ufuatilie hali yake na upokee arifa.';
+
+  @override
+  String get fillAllFields => 'Tafadhali jaza sehemu zote kwa usahihi';
+
+  @override
+  String get slotUsedUpgrade => 'Nafasi yako ya bure imetumika. Boresha kwa seva zaidi.';
+
+  @override
+  String get addServerFailed => 'Imeshindwa kuongeza seva. Angalia maelezo yako.';
+
+  @override
+  String get ipAddressLabel => 'Anwani ya IP';
+
+  @override
+  String get platformLabel => 'Jukwaa';
+
+  @override
+  String get bedrockLabel => 'Bedrock';
+
+  @override
+  String get addLabel => 'Ongeza';
+
+  @override
+  String get statusOnline => 'Mtandaoni';
+
+  @override
+  String get statusOffline => 'Nje ya mtandao';
+
+  @override
+  String get statusChecking => 'Inakagua...';
+
+  @override
+  String get notificationsOn => 'Arifa zimewashwa';
+
+  @override
+  String get notificationsOff => 'Arifa zimezimwa';
+
+  @override
+  String get failedUpdateNotifications => 'Imeshindwa kusasisha arifa';
+
+  @override
+  String get editServerTitle => 'Hariri seva';
+
+  @override
+  String get serverNameHint => 'Jina la seva';
+
+  @override
+  String get failedSave => 'Imeshindwa kuhifadhi. Jaribu tena.';
+
+  @override
+  String get serverRenamed => 'Seva imebadilishwa jina';
+
+  @override
+  String get customizeLabel => 'Binafsisha';
+
+  @override
+  String get customizeSubtitle => 'Panga upya vigae na ubinafsishe urambazaji';
+
+  @override
+  String get resetLabel => 'Weka upya';
+
+  @override
+  String get tilesSection => 'VIGAE';
+
+  @override
+  String get dragToReorder => 'Buruta kupanga upya';
+
+  @override
+  String get navigationSection => 'URAMBAZAJI';
+
+  @override
+  String get navFixed => 'Nyumbani, Kiunganishi na Wasifu daima zimefungwa';
+
+  @override
+  String get leftSlot => 'Nafasi ya kushoto (karibu na Nyumbani)';
+
+  @override
+  String get rightSlot => 'Nafasi ya kulia (karibu na Wasifu)';
+
+  @override
+  String get accentColorSection => 'RANGI YA KIVUTIO';
+
+  @override
+  String get opacityLabel => 'Uwazi';
+
+  @override
+  String get backgroundSection => 'MANDHARI';
+
+  @override
+  String get cardsSection => 'KADI';
+
+  @override
+  String get editLabel => 'Hariri';
+
+  @override
+  String get playerLookupJavaEdition => 'Java Edition';
+
+  @override
+  String get playerLookupBedrockEdition => 'Bedrock Edition';
+
+  @override
+  String get playerLookupLabelUuid => 'UUID';
+
+  @override
+  String get playerLookupLabelGamertag => 'Gamertag';
+
+  @override
+  String get playerLookupLabelXuid => 'XUID';
+
+  @override
+  String get playerLookupLabelFloodgate => 'Floodgate';
+
+  @override
+  String accountSubtitleXbox(Object xuid) {
+    return 'Xbox · $xuid';
+  }
+
+  @override
+  String accountSubtitleJava(Object uuid) {
+    return 'Java Edition · $uuid';
+  }
+
+  @override
+  String get avatarUrlHint => 'https://example.com/avatar.png';
+
+  @override
+  String get reportUser => 'Report user';
+
+  @override
+  String get reportMessage => 'Report message';
+
+  @override
+  String reportUserWithName(Object name) {
+    return 'Report $name';
+  }
+
+  @override
+  String get reportDisclaimer => 'Reports are reviewed by our team. False reports may result in action against your account.';
+
+  @override
+  String get reportReasonSpam => 'Spam';
+
+  @override
+  String get reportReasonHarassment => 'Harassment';
+
+  @override
+  String get reportReasonInappropriate => 'Inappropriate content';
+
+  @override
+  String get reportReasonOther => 'Other';
+
+  @override
+  String get reportAdditionalDetails => 'Additional details (optional)…';
+
+  @override
+  String get reportSuccess => 'Report submitted. Thank you.';
+
+  @override
+  String get reportFailed => 'Failed to submit report. Please try again.';
+
+  @override
+  String get reportSubmit => 'Submit report';
+
+  @override
+  String get today => 'Today';
+
+  @override
+  String get yesterday => 'Yesterday';
+
+  @override
+  String get messagePlaceholder => 'Message…';
+
+  @override
+  String get noMessagesYet => 'No messages yet.\nSay hello!';
+
+  @override
+  String get noConversationsYet => 'No conversations yet';
+
+  @override
+  String get startChatHint => 'Find a friend and start chatting!';
+
+  @override
+  String get youPrefix => 'You';
+
+  @override
+  String get playerLookupTitle => 'Player Lookup';
+
+  @override
+  String get playerLookupSubtitle => 'Search for a Java or Bedrock player by username';
+
+  @override
+  String get playerLookupHint => 'Enter a username…';
+
+  @override
+  String get playerLookupLinked => 'Linked accounts found';
+
+  @override
+  String get playerLookupLabelUsername => 'Username';
+
+  @override
+  String get playerLookupLabelTier => 'Tier';
+
+  @override
+  String playerLookupCopied(Object value) {
+    return '$value copied';
+  }
+
+  @override
+  String get tabProfile => 'Profile';
+
+  @override
+  String get tabFriends => 'Friends';
+
+  @override
+  String get tabRequests => 'Requests';
+
+  @override
+  String get tabChats => 'Chats';
+
+  @override
+  String get addFriend => 'Add Friend';
+
+  @override
+  String get usernameHint => 'Username';
+
+  @override
+  String get send => 'Send';
+
+  @override
+  String friendRequestSentTo(Object name) {
+    return 'Friend request sent to $name';
+  }
+
+  @override
+  String alreadyFriendsWith(Object name) {
+    return 'You are already friends with $name';
+  }
+
+  @override
+  String requestAlreadyPending(Object name) {
+    return 'A request to $name is already pending';
+  }
+
+  @override
+  String userNotFoundMsg(Object name) {
+    return 'User $name not found';
+  }
+
+  @override
+  String cannotSendRequest(Object name) {
+    return 'Cannot send a request to $name';
+  }
+
+  @override
+  String get somethingWentWrong => 'Something went wrong. Please try again.';
+
+  @override
+  String friendRequestAccepted(Object name) {
+    return 'You are now friends with $name';
+  }
+
+  @override
+  String requestDeclined(Object name) {
+    return 'Request from $name declined';
+  }
+
+  @override
+  String get deleteAccountTitle => 'Delete Account';
+
+  @override
+  String get deleteAccountBody => 'This will permanently delete your account and all data. This action cannot be undone.';
+
+  @override
+  String get deletePermanently => 'Delete Permanently';
+
+  @override
+  String get couldNotDeleteAccount => 'Could not delete account. Please try again.';
+
+  @override
+  String get removeFriendTitle => 'Remove Friend';
+
+  @override
+  String removeFriendConfirm(Object name) {
+    return 'Remove $name from your friends?';
+  }
+
+  @override
+  String get remove => 'Remove';
+
+  @override
+  String friendRemoved(Object name) {
+    return '$name has been removed from your friends';
+  }
+
+  @override
+  String get emailDifferentMethod => 'This email is linked to a different sign-in method';
+
+  @override
+  String get googleSignInFailed => 'Google sign-in failed. Please try again.';
+
+  @override
+  String get appleSignInFailed => 'Apple sign-in failed. Please try again.';
+
+  @override
+  String get resetPasswordTitle => 'Reset Password';
+
+  @override
+  String get resetPasswordBody => 'Enter your email address and we will send you a link to reset your password.';
+
+  @override
+  String get emailAddressHint => 'Email address';
+
+  @override
+  String get sendLink => 'Send link';
+
+  @override
+  String resetLinkSent(Object email) {
+    return 'Password reset link sent to $email';
+  }
+
+  @override
+  String get noAccountForEmail => 'No account found for that email address';
+
+  @override
+  String get invalidEmailError => 'The email address is not valid';
+
+  @override
+  String get couldNotSendResetEmail => 'Could not send reset email. Please try again.';
+
+  @override
+  String get enterEmailAndPassword => 'Please enter your email and password';
+
+  @override
+  String get incorrectEmailOrPassword => 'Incorrect email or password';
+
+  @override
+  String get emailAlreadyInUse => 'This email address is already in use';
+
+  @override
+  String get weakPassword => 'Password is too weak. Please choose a stronger one.';
+
+  @override
+  String get createAccount => 'Create Account';
+
+  @override
+  String get signInSubtitle => 'Sign in to access your profile, friends, and chats.';
+
+  @override
+  String get passwordHint => 'Password';
+
+  @override
+  String get forgotPassword => 'Forgot password?';
+
+  @override
+  String get orDivider => 'or';
+
+  @override
+  String get continueWithGoogle => 'Continue with Google';
+
+  @override
+  String get alreadyHaveAccount => 'Already have an account? Sign in';
+
+  @override
+  String get noAccountYet => 'Don\'t have an account? Create one';
+
+  @override
+  String get profileNotSetUp => 'Profile not set up';
+
+  @override
+  String get chooseUsernameSubtitle => 'Choose a username to start connecting with other players.';
+
+  @override
+  String get createProfile => 'Create Profile';
+
+  @override
+  String get findUser => 'Find user';
+
+  @override
+  String get couldNotUpdateVisibility => 'Could not update visibility settings';
+
+  @override
+  String get signOut => 'Sign Out';
+
+  @override
+  String get appearOfflineLabel => 'Appear Offline';
+
+  @override
+  String get appearOfflineOn => 'You appear offline to other players';
+
+  @override
+  String get appearOfflineOff => 'You appear online to other players';
+
+  @override
+  String get unlinkXboxTitle => 'Unlink Xbox Account';
+
+  @override
+  String removeLabelConfirm(Object name) {
+    return 'Remove $name from your linked accounts?';
+  }
+
+  @override
+  String get unlink => 'Unlink';
+
+  @override
+  String get unlinkJavaTitle => 'Unlink Java Account';
+
+  @override
+  String removeJavaConfirm(Object name) {
+    return 'Remove $name from your linked accounts?';
+  }
+
+  @override
+  String get linkedAccountsTitle => 'Linked Accounts';
+
+  @override
+  String get linkAccountsHint => 'Link your Minecraft accounts to show your skins and stats.';
+
+  @override
+  String get linkXbox => 'Link Xbox';
+
+  @override
+  String get linkJava => 'Link Java';
+
+  @override
+  String get profileUpdated => 'Profile updated';
+
+  @override
+  String get profileCardTitle => 'Profile';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get displayNameLabel => 'Display Name';
+
+  @override
+  String get yourNameHint => 'Your name';
+
+  @override
+  String get bioLabel => 'Bio';
+
+  @override
+  String get bioHint => 'Tell others about yourself…';
+
+  @override
+  String get avatarUrlLabel => 'Avatar URL';
+
+  @override
+  String get usernameDisplayLabel => 'Username';
+
+  @override
+  String get aboutMe => 'About me';
+
+  @override
+  String get noFriendsYet => 'No friends yet';
+
+  @override
+  String get noFriendsSub => 'Add friends to see them here.';
+
+  @override
+  String onlineFriendsLabel(Object count) {
+    return '$count online';
+  }
+
+  @override
+  String offlineFriendsLabel(Object count) {
+    return '$count offline';
+  }
+
+  @override
+  String get noPendingRequests => 'No pending requests';
+
+  @override
+  String get requestsAppearHere => 'New friend requests will appear here.';
+
+  @override
+  String get skinsEdit => 'Edit';
+
+  @override
+  String get skinsNoAccountsTitle => 'No Minecraft accounts linked';
+
+  @override
+  String get skinsNoAccountsSubtitle => 'Link a Java or Bedrock account to view your skins.';
+
+  @override
+  String get skinsSignInTitle => 'Sign in to view your skins';
+
+  @override
+  String get skinsSignInSubtitle => 'Sign in and link your Minecraft accounts to see your skins here.';
+
+  @override
+  String get skinsMustBe64 => 'Skin must be 64×64 pixels';
+
+  @override
+  String get skinsInvalidFile => 'Invalid image file';
+
+  @override
+  String get skinsUpload => 'Upload';
+
+  @override
+  String get skinsCreate => 'Create';
+
+  @override
+  String get skinsSectionRecent => 'RECENT SKINS';
+
+  @override
+  String get skinsSectionMy => 'MY SKINS';
+
+  @override
+  String get skinsEmptyMySkins => 'No saved skins yet. Upload or create one!';
+
+  @override
+  String get skinsSectionYours => 'YOUR SKINS';
+
+  @override
+  String get skinsCouldNotLoad => 'Could not load skins';
+
+  @override
+  String skinsPageOf(Object page, Object total) {
+    return 'Page $page of $total';
+  }
+
+  @override
+  String get skinsDownload => 'Download';
+
+  @override
+  String get wikiTitle => 'Wiki';
+
+  @override
+  String get wikiMinecraftWiki => 'Minecraft Wiki';
+
+  @override
+  String get wikiSearchHint => 'Search the wiki…';
+
+  @override
+  String get wikiCouldNotLoadPages => 'Could not load pages. Please try again.';
+
+  @override
+  String get wikiCouldNotReach => 'Could not reach the wiki. Check your connection.';
+
+  @override
+  String wikiNoResults(Object query) {
+    return 'No results found for \"$query\"';
+  }
+
+  @override
+  String get wikiNoPagesFound => 'No pages found';
+
+  @override
+  String wikiCategories(Object count) {
+    return '$count categories';
+  }
+
+  @override
+  String get wikiCouldNotLoadContent => 'Could not load article content.';
+
+  @override
+  String get wikiOpenInBrowser => 'Open in browser';
+
+  @override
+  String get wikiCrafting => 'Crafting';
+
+  @override
+  String get wikiReadFullArticle => 'Read full article';
+
+  @override
+  String get wikiMobs => 'Mobs';
+
+  @override
+  String get wikiBlocks => 'Blocks';
+
+  @override
+  String get wikiItems => 'Items';
+
+  @override
+  String get wikiBiomes => 'Biomes';
+
+  @override
+  String get wikiStructures => 'Structures';
+
+  @override
+  String get wikiEnchantments => 'Enchantments';
+
+  @override
+  String get wikiPotions => 'Potions';
+
+  @override
+  String get wikiPassive => 'Passive';
+
+  @override
+  String get wikiNeutral => 'Neutral';
+
+  @override
+  String get wikiHostile => 'Hostile';
+
+  @override
+  String get wikiBoss => 'Boss';
+
+  @override
+  String get wikiUtility => 'Utility';
+
+  @override
+  String get wikiNatural => 'Natural';
+
+  @override
+  String get wikiOres => 'Ores';
+
+  @override
+  String get wikiWood => 'Wood';
+
+  @override
+  String get wikiStone => 'Stone';
+
+  @override
+  String get wikiRedstone => 'Redstone';
+
+  @override
+  String get wikiPlants => 'Plants';
+
+  @override
+  String get wikiDecoration => 'Decoration';
+
+  @override
+  String get wikiTools => 'Tools';
+
+  @override
+  String get wikiSwords => 'Swords';
+
+  @override
+  String get wikiRanged => 'Ranged';
+
+  @override
+  String get wikiArmor => 'Armor';
+
+  @override
+  String get wikiFood => 'Food';
+
+  @override
+  String get wikiBrewing => 'Brewing';
+
+  @override
+  String get wikiMaterials => 'Materials';
+
+  @override
+  String get wikiOverworld => 'Overworld';
+
+  @override
+  String get wikiNether => 'Nether';
+
+  @override
+  String get wikiTheEnd => 'The End';
+
+  @override
+  String get wikiSword => 'Sword';
+
+  @override
+  String get wikiTool => 'Tool';
+
+  @override
+  String get wikiBow => 'Bow';
+
+  @override
+  String get wikiFishing => 'Fishing';
+
+  @override
+  String get wikiStatusEffects => 'Status Effects';
+
+  @override
+  String get chooseUniqueUsername => 'Chagua jina la mtumiaji la kipekee kuanza.';
+
+  @override
+  String get usernameFieldLabel => 'Jina la mtumiaji';
+
+  @override
+  String get usernameExampleHint => 'mf. CoolPlayer123';
+
+  @override
+  String get usernameFormatHint => 'Herufi 3–20 · herufi, nambari na vistari chini tu';
+
+  @override
+  String get displayNameOptional => 'Jina la kuonyesha (hiari)';
+
+  @override
+  String get displayNameExampleHint => 'mf. Mchezaji Mzuri';
+
+  @override
+  String get usernameRequired => 'Jina la mtumiaji linahitajika';
+
+  @override
+  String get usernameFormatError => 'Jina la mtumiaji lazima liwe na herufi 3–20 na liwe na herufi, nambari na vistari chini tu';
+
+  @override
+  String get usernameTaken => 'Jina hili la mtumiaji tayari limechukuliwa';
+
+  @override
+  String get noConnectionError => 'Hakuna muunganiko. Angalia mtandao wako na ujaribu tena.';
+
+  @override
+  String get home => 'Nyumbani';
+
+  @override
+  String get info => 'Maelezo';
+
   @override
   String get navProfile => 'Wasifu';
 
   @override
-  String get skinsUpload => 'Pakia';
-  @override
-  String get skinsCreate => 'Unda';
-  @override
-  String get skinsSubtitle => 'Tazama na pakua skins za Minecraft.';
-  @override
-  String get skinsSectionRecent => 'SKINS ZA HIVI KARIBUNI';
-  @override
-  String get skinsSectionMy => 'SKINS ZANGU';
-  @override
-  String get skinsSectionYours => 'SKINS ZAKO';
-  @override
-  String get skinsEmptyMySkins => 'Hakuna skins zilizohifadhiwa bado. Unda au pakia skin ili kuanza.';
-  @override
-  String get skinsCouldNotLoad => 'Haikuwezekana kupakia skins';
-  @override
-  String skinsPageOf(int page, int total) => 'Ukurasa $page / $total';
-  @override
-  String get skinsMustBe64 => 'Skin lazima iwe pikseli 64×64';
-  @override
-  String get skinsInvalidFile => 'Faili la picha lisilo sahihi';
-  @override
-  String get skinsDownload => 'Pakua';
-  @override
-  String get skinsEdit => 'Hariri';
-  @override
-  String get skinsNoAccountsTitle => 'Hakuna akaunti zilizounganishwa';
-  @override
-  String get skinsNoAccountsSubtitle => 'Unganisha Java au Bedrock kwenye Wasifu kuona skin yako.';
-  @override
-  String get skinsSignInTitle => 'Ingia ili kuona skin yako';
-  @override
-  String get skinsSignInSubtitle => 'Unda akaunti na uunganishe Java au Bedrock kwenye Wasifu.';
+  String serverRemoved(Object name) {
+    return '$name imeondolewa';
+  }
 
-  // ── Player Lookup ────────────────────────────────────────────────────────
   @override
-  String get playerLookupTitle => 'Tafuta Mchezaji';
-  @override
-  String get playerLookupSubtitle => 'Tafuta kwa jina la mtumiaji wa Java, UUID, gamertag ya Bedrock au XUID.';
-  @override
-  String get playerLookupHint => 'Jina la mtumiaji, gamertag, UUID au XUID…';
-  @override
-  String get playerLookupLinked => 'Akaunti zilizounganishwa kupitia GeyserMC';
-  @override
-  String get playerLookupLabelUsername => 'Jina la mtumiaji';
-  @override
-  String get playerLookupLabelTier => 'Kiwango';
-  @override
-  String playerLookupCopied(String label) => '$label imenakiliwa';
-  // ── Wiki ──────────────────────────────────────────────────────────────────
-  @override
-  String get wikiTitle => 'Wiki';
-  @override
-  String get wikiSearchHint => 'Tafuta mob, vitu, vitalu…';
-  @override
-  String get wikiMinecraftWiki => 'minecraft.wiki';
-  @override
-  String wikiCategories(int count) => 'kategoria $count';
-  @override
-  String wikiNoResults(String query) => 'Hakuna matokeo ya "$query"';
-  @override
-  String get wikiNoPagesFound => 'Hakuna kurasa zilizopatikana katika kategoria hii.';
-  @override
-  String get wikiCouldNotLoadPages => 'Haikuwezekana kupakia kurasa.';
-  @override
-  String get wikiCouldNotReach => 'Haikuwezekana kufikia Minecraft Wiki.';
-  @override
-  String get wikiCouldNotLoadContent => 'Haikuwezekana kupakia maudhui ya ukurasa.';
-  @override
-  String get wikiOpenInBrowser => 'Fungua katika kivinjari';
-  @override
-  String get wikiReadFullArticle => 'Soma makala kamili kwenye minecraft.wiki';
-  @override
-  String get wikiCrafting => 'Utengenezaji';
-  @override
-  String get wikiMobs => 'Viumbe';
-  @override
-  String get wikiBlocks => 'Vitalu';
-  @override
-  String get wikiItems => 'Vitu';
-  @override
-  String get wikiBiomes => 'Bimu';
-  @override
-  String get wikiStructures => 'Miundo';
-  @override
-  String get wikiEnchantments => 'Uchawi';
-  @override
-  String get wikiPotions => 'Dawa';
-  @override
-  String get wikiPassive => 'Amani';
-  @override
-  String get wikiNeutral => 'Wastani';
-  @override
-  String get wikiHostile => 'Adui';
-  @override
-  String get wikiBoss => 'Bosi';
-  @override
-  String get wikiUtility => 'Msaidizi';
-  @override
-  String get wikiNatural => 'Asili';
-  @override
-  String get wikiOres => 'Madini';
-  @override
-  String get wikiWood => 'Mti';
-  @override
-  String get wikiStone => 'Jiwe';
-  @override
-  String get wikiRedstone => 'Redstone';
-  @override
-  String get wikiPlants => 'Mimea';
-  @override
-  String get wikiDecoration => 'Mapambo';
-  @override
-  String get wikiTools => 'Zana';
-  @override
-  String get wikiSwords => 'Panga';
-  @override
-  String get wikiRanged => 'Silaha za mbali';
-  @override
-  String get wikiArmor => 'Silaha ya kujilinda';
-  @override
-  String get wikiFood => 'Chakula';
-  @override
-  String get wikiBrewing => 'Kutengeneza dawa';
-  @override
-  String get wikiMaterials => 'Vifaa';
-  @override
-  String get wikiOverworld => 'Ulimwengu wa Juu';
-  @override
-  String get wikiNether => 'Nether';
-  @override
-  String get wikiTheEnd => 'Mwisho';
-  @override
-  String get wikiSword => 'Upanga';
-  @override
-  String get wikiTool => 'Zana';
-  @override
-  String get wikiBow => 'Upinde';
-  @override
-  String get wikiFishing => 'Uvuvi';
-  @override
-  String get wikiStatusEffects => 'Athari za Hali';
+  String serverAdded(Object name) {
+    return '$name imeongezwa';
+  }
 }

@@ -47,8 +47,10 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _onScroll() {
-    if (_scrollCtrl.position.pixels >= _scrollCtrl.position.maxScrollExtent - 80 &&
-        !_loadingMore && _hasMore) {
+    if (_scrollCtrl.position.pixels >=
+            _scrollCtrl.position.maxScrollExtent - 80 &&
+        !_loadingMore &&
+        _hasMore) {
       _loadMore();
     }
   }
@@ -97,7 +99,8 @@ class _ChatScreenState extends State<ChatScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!_scrollCtrl.hasClients) return;
       if (animate) {
-        _scrollCtrl.animateTo(0,
+        _scrollCtrl.animateTo(
+          0,
           duration: const Duration(milliseconds: 200),
           curve: Curves.easeOut,
         );
@@ -138,7 +141,11 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
         title: Row(
           children: [
-            _Avatar(initials: widget.friend.initials, size: 34, avatarUrl: widget.friend.avatarUrl),
+            _Avatar(
+              initials: widget.friend.initials,
+              size: 34,
+              avatarUrl: widget.friend.avatarUrl,
+            ),
             const SizedBox(width: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -364,9 +371,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             if (!mounted) return;
                             AppToast.show(
                               context,
-                              message: ok
-                                  ? l.reportSuccess
-                                  : l.reportFailed,
+                              message: ok ? l.reportSuccess : l.reportFailed,
                               icon: ok
                                   ? Icons.check_circle_rounded
                                   : Icons.error_outline_rounded,
@@ -563,10 +568,7 @@ class _InputBar extends StatelessWidget {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(
-                      color: AppTheme.accent,
-                      width: 1.5,
-                    ),
+                    borderSide: BorderSide(color: AppTheme.accent, width: 1.5),
                   ),
                   filled: true,
                   fillColor: AppTheme.surfaceRaised,
@@ -616,7 +618,11 @@ class _EmptyChat extends StatelessWidget {
     child: Text(
       AppLocalizations.of(context)!.noMessagesYet,
       textAlign: TextAlign.center,
-      style: const TextStyle(color: AppTheme.textMuted, fontSize: 14, height: 1.6),
+      style: const TextStyle(
+        color: AppTheme.textMuted,
+        fontSize: 14,
+        height: 1.6,
+      ),
     ),
   );
 }

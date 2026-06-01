@@ -15,7 +15,7 @@ class AuthUser {
   final User? _sdkUser;
 
   const AuthUser._({required this.uid, this.email, User? sdkUser})
-      : _sdkUser = sdkUser;
+    : _sdkUser = sdkUser;
 
   Future<void> delete() async {
     if (_sdkUser != null) {
@@ -94,7 +94,10 @@ class AuthService {
       await _windowsEmailAuth(email, password, signUp: true);
       return;
     }
-    await _auth.createUserWithEmailAndPassword(email: email, password: password);
+    await _auth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
   }
 
   static Future<void> signInWithGoogle() async {
@@ -133,8 +136,10 @@ class AuthService {
     const chars =
         '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
     final random = Random.secure();
-    return List.generate(length, (_) => chars[random.nextInt(chars.length)])
-        .join();
+    return List.generate(
+      length,
+      (_) => chars[random.nextInt(chars.length)],
+    ).join();
   }
 
   static String _sha256(String input) {
@@ -192,8 +197,7 @@ class AuthService {
     String password, {
     required bool signUp,
   }) async {
-    final endpoint =
-        signUp ? 'accounts:signUp' : 'accounts:signInWithPassword';
+    final endpoint = signUp ? 'accounts:signUp' : 'accounts:signInWithPassword';
 
     final res = await http
         .post(
@@ -239,7 +243,8 @@ class AuthService {
               'https://securetoken.googleapis.com/v1/token?key=$_windowsApiKey',
             ),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-            body: 'grant_type=refresh_token&refresh_token=${Uri.encodeComponent(refreshToken)}',
+            body:
+                'grant_type=refresh_token&refresh_token=${Uri.encodeComponent(refreshToken)}',
           )
           .timeout(const Duration(seconds: 15));
       if (res.statusCode == 200) {
@@ -296,11 +301,11 @@ class AuthService {
       'EMAIL_NOT_FOUND' ||
       'INVALID_PASSWORD' ||
       'INVALID_LOGIN_CREDENTIALS' ||
-      'USER_NOT_FOUND' =>
-        FirebaseAuthException(code: 'invalid-credential'),
+      'USER_NOT_FOUND' => FirebaseAuthException(code: 'invalid-credential'),
       'USER_DISABLED' => FirebaseAuthException(code: 'user-disabled'),
-      'TOO_MANY_ATTEMPTS_TRY_LATER' =>
-        FirebaseAuthException(code: 'too-many-requests'),
+      'TOO_MANY_ATTEMPTS_TRY_LATER' => FirebaseAuthException(
+        code: 'too-many-requests',
+      ),
       'INVALID_EMAIL' => FirebaseAuthException(code: 'invalid-email'),
       _ => FirebaseAuthException(code: 'unknown', message: message),
     };

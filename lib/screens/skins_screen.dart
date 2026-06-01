@@ -479,7 +479,10 @@ class SkinsScreenState extends State<SkinsScreen> {
             child: HeaderNavBar(
               items: [
                 HeaderNavItem(label: l.skinsUpload, onTap: _uploadSkin),
-                HeaderNavItem(label: l.skinsCreate, onTap: () => _openEditor(null)),
+                HeaderNavItem(
+                  label: l.skinsCreate,
+                  onTap: () => _openEditor(null),
+                ),
               ],
             ),
           ),
@@ -585,7 +588,9 @@ class SkinsScreenState extends State<SkinsScreen> {
             )
           else
             _BedrockSkinCard(
-              gamertag: bedrockAccounts.first.xboxGamertag ?? bedrockAccounts.first.xboxXuid,
+              gamertag:
+                  bedrockAccounts.first.xboxGamertag ??
+                  bedrockAccounts.first.xboxXuid,
               xuid: bedrockAccounts.first.xboxXuid,
               onEdit: _openEditor,
             )
@@ -604,7 +609,7 @@ class SkinsScreenState extends State<SkinsScreen> {
                     child: _JavaSkinCard(
                       username: acc.javaUsername,
                       javaUuid: acc.javaUuid,
-                      badge: 'Java',
+                      badge: l.labelJava,
                       badgeColor: const Color(0xFF42A5F5),
                       onEdit: _openEditor,
                       compact: true,
@@ -979,39 +984,19 @@ class _SkinDetailSheet extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
-          Builder(builder: (context) {
-            final l = AppLocalizations.of(context)!;
-            return Row(
-              children: [
-                Expanded(
-                  child: FilledButton.icon(
-                    onPressed: _downloadUrl != null ? _download : null,
-                    icon: const FaIcon(FontAwesomeIcons.download, size: 13),
-                    label: Text(l.skinsDownload),
-                    style: FilledButton.styleFrom(
-                      backgroundColor: AppTheme.accent,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                      textStyle: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
-                if (onEdit != null) ...[
-                  const SizedBox(width: 10),
+          Builder(
+            builder: (context) {
+              final l = AppLocalizations.of(context)!;
+              return Row(
+                children: [
                   Expanded(
-                    child: OutlinedButton.icon(
-                      onPressed: onEdit,
-                      icon: const FaIcon(FontAwesomeIcons.penToSquare, size: 13),
-                      label: Text(l.skinsEdit),
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: AppTheme.textSecondary,
-                        side: const BorderSide(color: AppTheme.borderGray),
+                    child: FilledButton.icon(
+                      onPressed: _downloadUrl != null ? _download : null,
+                      icon: const FaIcon(FontAwesomeIcons.download, size: 13),
+                      label: Text(l.skinsDownload),
+                      style: FilledButton.styleFrom(
+                        backgroundColor: AppTheme.accent,
+                        foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(14),
@@ -1023,10 +1008,35 @@ class _SkinDetailSheet extends StatelessWidget {
                       ),
                     ),
                   ),
+                  if (onEdit != null) ...[
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: OutlinedButton.icon(
+                        onPressed: onEdit,
+                        icon: const FaIcon(
+                          FontAwesomeIcons.penToSquare,
+                          size: 13,
+                        ),
+                        label: Text(l.skinsEdit),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: AppTheme.textSecondary,
+                          side: const BorderSide(color: AppTheme.borderGray),
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                          textStyle: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ],
-              ],
-            );
-          }),
+              );
+            },
+          ),
         ],
       ),
     );
@@ -1136,7 +1146,10 @@ class _JavaSkinCardState extends State<_JavaSkinCard> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 3,
+                  ),
                   decoration: BoxDecoration(
                     color: badgeColor.withOpacity(0.15),
                     borderRadius: BorderRadius.circular(6),
@@ -1209,7 +1222,10 @@ class _JavaSkinCardState extends State<_JavaSkinCard> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                      child: const FaIcon(FontAwesomeIcons.penToSquare, size: 11),
+                      child: const FaIcon(
+                        FontAwesomeIcons.penToSquare,
+                        size: 11,
+                      ),
                     ),
                   ),
                 ],
@@ -1312,9 +1328,9 @@ class _BedrockSkinCardState extends State<_BedrockSkinCard> {
                   color: const Color(0xFF4CAF50).withOpacity(0.15),
                   borderRadius: BorderRadius.circular(6),
                 ),
-                child: const Text(
-                  'Bedrock',
-                  style: TextStyle(
+                child: Text(
+                  AppLocalizations.of(context)!.bedrockLabel,
+                  style: const TextStyle(
                     color: Color(0xFF4CAF50),
                     fontSize: 10,
                     fontWeight: FontWeight.w700,
@@ -1387,7 +1403,10 @@ class _BedrockSkinCardState extends State<_BedrockSkinCard> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                      child: const FaIcon(FontAwesomeIcons.penToSquare, size: 11),
+                      child: const FaIcon(
+                        FontAwesomeIcons.penToSquare,
+                        size: 11,
+                      ),
                     ),
                   ),
                 ],

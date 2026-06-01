@@ -126,7 +126,7 @@ abstract class AppLocalizations {
   /// No description provided for @appName.
   ///
   /// In en, this message translates to:
-  /// **'MCCompanion'**
+  /// **'NetherLink'**
   String get appName;
 
   /// No description provided for @console.
@@ -198,7 +198,7 @@ abstract class AppLocalizations {
   /// Detailed help / instructions shown in the help dialog
   ///
   /// In en, this message translates to:
-  /// **'Created by {appCreator}.\n\nHow to use:\n1. Enter your Minecraft server address and port (default: 19132)\n   — or select a previously saved server from the dropdown\n2. (Optional) Choose a Relay Server (EU or US) closest to your location\n3. Click \"Start Broadcasting\" to begin\n4. On your console/device: Minecraft > Play > Friends\n5. You should see a LAN server called \"MCCompanion\"\n6. Click it to join your external server via MCCompanion\n\nNintendo Switch (DNS mode):\n1. Enable \"Nintendo Switch\" in the connection panel\n2. Select a Relay Server (EU or US)\n3. Click \"Send DNS Config\" — this sends your config to the relay\n   (it does NOT broadcast a LAN server)\n4. On your Switch, apply your MCCompanion DNS setup and join\n   using the server entry you use for MCCompanion\n\nNotes:\n- For LAN broadcasting, MCCompanion and console must be on the same local network.\n- Tip: Choose the relay server closest to you for the best performance.'**
+  /// **'Created by {appCreator}.\n\nHow to use:\n1. Enter your Minecraft server address and port (default: 19132)\n   — or select a previously saved server from the dropdown\n2. (Optional) Choose a Relay Server (EU or US) closest to your location\n3. Click \"Start Broadcasting\" to begin\n4. On your console/device: Minecraft > Play > Friends\n5. You should see a LAN server called \"NetherLink\"\n6. Click it to join your external server via NetherLink\n\nNintendo Switch (DNS mode):\n1. Enable \"Nintendo Switch\" in the connection panel\n2. Select a Relay Server (EU or US)\n3. Click \"Send DNS Config\" — this sends your config to the relay\n   (it does NOT broadcast a LAN server)\n4. On your Switch, apply your NetherLink DNS setup and join\n   using the server entry you use for NetherLink\n\nNotes:\n- For LAN broadcasting, NetherLink and console must be on the same local network.\n- Tip: Choose the relay server closest to you for the best performance.'**
   String helpText(Object appCreator);
 
   /// No description provided for @serverDetailsLabel.
@@ -252,7 +252,7 @@ abstract class AppLocalizations {
   /// Short subtitle for Java menu tile
   ///
   /// In en, this message translates to:
-  /// **'Connect to Java Edition servers via MCCompanion'**
+  /// **'Connect to Java Edition servers via NetherLink'**
   String get howToJavaSubtitle;
 
   /// No description provided for @aternosSubtext.
@@ -264,7 +264,7 @@ abstract class AppLocalizations {
   /// Detailed steps for Java mode how-to modal
   ///
   /// In en, this message translates to:
-  /// **'Java Mode — quick steps:\n1. In the app, select Java mode.\n2. Enter your Java Edition server address and port (default: 25565).\n3. Press \"Start Java Mode\" — MCCompanion bridges the connection.\n4. Open Minecraft Bedrock and go to the Friends tab.\n5. Select the LAN server named \"MCCompanion\" to join the Java server.\n\n⚠️ Important warnings:\n- A valid Java Edition account (Microsoft) is required.\n- Some servers use anti-cheat systems that may detect and ban your account.\n- Certain servers explicitly prohibit Bedrock clients — always check the server rules.\n- MCCompanion is not responsible for any account bans, suspensions, or other account-related issues that may result from using this feature.\n- Use at your own risk.'**
+  /// **'Java Mode — quick steps:\n1. In the app, select Java mode.\n2. Enter your Java Edition server address and port (default: 25565).\n3. Press \"Start Java Mode\" — NetherLink bridges the connection.\n4. Open Minecraft Bedrock and go to the Friends tab.\n5. Select the LAN server named \"NetherLink\" to join the Java server.\n\n⚠️ Important warnings:\n- A valid Java Edition account (Microsoft) is required.\n- Some servers use anti-cheat systems that may detect and ban your account.\n- Certain servers explicitly prohibit Bedrock clients — always check the server rules.\n- NetherLink is not responsible for any account bans, suspensions, or other account-related issues that may result from using this feature.\n- Use at your own risk.'**
   String get howToJavaBody;
 
   /// Your language name in your own language
@@ -462,7 +462,7 @@ abstract class AppLocalizations {
   /// No description provided for @howToUseTitle.
   ///
   /// In en, this message translates to:
-  /// **'How to use MCCompanion'**
+  /// **'How to use NetherLink'**
   String get howToUseTitle;
 
   /// No description provided for @iUnderstand.
@@ -582,13 +582,13 @@ abstract class AppLocalizations {
   /// No description provided for @vpnActive.
   ///
   /// In en, this message translates to:
-  /// **'We detected that your VPN is active.\n\nPlease disable your VPN before using MCCompanion, otherwise the LAN broadcast may not reach your console.'**
+  /// **'We detected that your VPN is active.\n\nPlease disable your VPN before using NetherLink, otherwise the LAN broadcast may not reach your console.'**
   String get vpnActive;
 
   /// No description provided for @mobileActive.
   ///
   /// In en, this message translates to:
-  /// **'Detected: Mobile Data\n\nMCCompanion needs to be on the same network as your console. Please connect to your home Wi-Fi or hotspot before continuing.'**
+  /// **'Detected: Mobile Data\n\nNetherLink needs to be on the same network as your console. Please connect to your home Wi-Fi or hotspot before continuing.'**
   String get mobileActive;
 
   /// No description provided for @continueAnyway.
@@ -606,7 +606,7 @@ abstract class AppLocalizations {
   /// No description provided for @needSameWifi.
   ///
   /// In en, this message translates to:
-  /// **'The device running MCCompanion MUST be on the same Wi-Fi network as the console you play Minecraft on.'**
+  /// **'The device running NetherLink MUST be on the same Wi-Fi network as the console you play Minecraft on.'**
   String get needSameWifi;
 
   /// No description provided for @subscription.
@@ -618,7 +618,7 @@ abstract class AppLocalizations {
   /// No description provided for @needSubscription.
   ///
   /// In en, this message translates to:
-  /// **'Each console needs its own active online subscription (Xbox Live, PS Plus, NSO). Without it, MCCompanion won\'t appear.'**
+  /// **'Each console needs its own active online subscription (Xbox Live, PS Plus, NSO). Without it, NetherLink won\'t appear.'**
   String get needSubscription;
 
   /// No description provided for @updateAvailable.
@@ -720,7 +720,7 @@ abstract class AppLocalizations {
   /// No description provided for @friendModeText.
   ///
   /// In en, this message translates to:
-  /// **'Add MCCompanion\'s friends bots as a friend. Start Friends mode and play'**
+  /// **'Add NetherLink\'s friends bots as a friend. Start Friends mode and play'**
   String get friendModeText;
 
   /// Small label used when a relay is selected
@@ -738,7 +738,7 @@ abstract class AppLocalizations {
   /// No description provided for @relayUnableConnect.
   ///
   /// In en, this message translates to:
-  /// **'Unable to connect to ANY MCCompanion relay server. Try again later or check your internet.'**
+  /// **'Unable to connect to ANY NetherLink relay server. Try again later or check your internet.'**
   String get relayUnableConnect;
 
   /// Title for the Xbox / PS4-5 how-to modal
@@ -756,7 +756,7 @@ abstract class AppLocalizations {
   /// Detailed steps for Xbox/PS4-5 how-to modal
   ///
   /// In en, this message translates to:
-  /// **'How to connect (Xbox / PS4 / PS5):\n1. Ensure your device running MCCompanion and your console are on the same local network.\n2. In the app, enter your Minecraft server address and port and press \"Start Broadcasting\".\n3. On the console open Minecraft → Play → look for LAN Worlds or the Friends tab and refresh the list.\n4. Select the LAN server named \"MCCompanion\" to join.\nNotes:\n- If the server does not appear, confirm both devices are on the same subnet and that the app is still broadcasting.\n- Some console models or routers may block LAN discovery; try toggling the app or router settings if needed.'**
+  /// **'How to connect (Xbox / PS4 / PS5):\n1. Ensure your device running NetherLink and your console are on the same local network.\n2. In the app, enter your Minecraft server address and port and press \"Start Broadcasting\".\n3. On the console open Minecraft → Play → look for LAN Worlds or the Friends tab and refresh the list.\n4. Select the LAN server named \"NetherLink\" to join.\nNotes:\n- If the server does not appear, confirm both devices are on the same subnet and that the app is still broadcasting.\n- Some console models or routers may block LAN discovery; try toggling the app or router settings if needed.'**
   String get howToXboxBody;
 
   /// Title for the Nintendo how-to modal
@@ -792,25 +792,25 @@ abstract class AppLocalizations {
   /// Detailed steps for Friends mode
   ///
   /// In en, this message translates to:
-  /// **'Friends mode — quick steps:\n1. Add the MCCompanion friend account (relay friend) on your console or platform if required.\n2. In the app enable Friends mode and send the relay configuration (if applicable).\n3. On your console open Minecraft → Friends and search for LAN Worlds — your server should appear there as a LAN world.\n4. Select it to join your server with friends.\nNotes:\n- Make sure both you and your friends have the same NAT/settings that allow friend presence.\n- Friend-mode relies on platform friend features and may require accepting friend requests.'**
+  /// **'Friends mode — quick steps:\n1. Add the NetherLink friend account (relay friend) on your console or platform if required.\n2. In the app enable Friends mode and send the relay configuration (if applicable).\n3. On your console open Minecraft → Friends and search for LAN Worlds — your server should appear there as a LAN world.\n4. Select it to join your server with friends.\nNotes:\n- Make sure both you and your friends have the same NAT/settings that allow friend presence.\n- Friend-mode relies on platform friend features and may require accepting friend requests.'**
   String get howToFriendsBody;
 
-  /// Title for help topic when MCCompanion isn't visible on console
+  /// Title for help topic when NetherLink isn't visible on console
   ///
   /// In en, this message translates to:
-  /// **'MCCompanion does not appear'**
+  /// **'NetherLink does not appear'**
   String get helpNetherlinkTitle;
 
-  /// Short subtitle for MCCompanion does not appear tile
+  /// Short subtitle for NetherLink does not appear tile
   ///
   /// In en, this message translates to:
   /// **'Troubleshooting LAN discovery issues'**
   String get helpNetherlinkSubtitle;
 
-  /// Detailed troubleshooting text for MCCompanion not appearing
+  /// Detailed troubleshooting text for NetherLink not appearing
   ///
   /// In en, this message translates to:
-  /// **'If the server isn\'t appearing on your console, try these steps:\n\n✅ Basic Checks:\n1. Same WiFi Network - Your phone/tablet and console MUST be on the same WiFi\n2. Correct Server Address - Double-check the IP and port (default: 19132)\n3. Broadcasting Active - Verify MCCompanion shows \"Broadcasting\" status\n\n🔄 Quick Fixes:\n• Restart the app: Stop broadcasting, close MCCompanion completely, reopen and try again\n• Restart your console: Sometimes the console needs a refresh to detect LAN games\n• Check Friends/LAN tab: The server appears under \"Friends\" or \"LAN Games\", NOT in server list\n• Wait 10-15 seconds after starting broadcasting\n• Disable VPNs: VPNs can block local broadcasts\n\n⚠️ Common Issues:\n\"No route found for user\" → Ensure both devices are on the same Wi‑Fi (avoid Guest networks)\n\"Unable to connect to MCCompanion relay server\" → Check your internet / relay status\n\n📱 Still having issues? Enable Debug Mode in MCCompanion and check logs, or try a different server.'**
+  /// **'If the server isn\'t appearing on your console, try these steps:\n\n✅ Basic Checks:\n1. Same WiFi Network - Your phone/tablet and console MUST be on the same WiFi\n2. Correct Server Address - Double-check the IP and port (default: 19132)\n3. Broadcasting Active - Verify NetherLink shows \"Broadcasting\" status\n\n🔄 Quick Fixes:\n• Restart the app: Stop broadcasting, close NetherLink completely, reopen and try again\n• Restart your console: Sometimes the console needs a refresh to detect LAN games\n• Check Friends/LAN tab: The server appears under \"Friends\" or \"LAN Games\", NOT in server list\n• Wait 10-15 seconds after starting broadcasting\n• Disable VPNs: VPNs can block local broadcasts\n\n⚠️ Common Issues:\n\"No route found for user\" → Ensure both devices are on the same Wi‑Fi (avoid Guest networks)\n\"Unable to connect to NetherLink relay server\" → Check your internet / relay status\n\n📱 Still having issues? Enable Debug Mode in NetherLink and check logs, or try a different server.'**
   String get helpNetherlinkBody;
 
   /// Title for help topic when multiplayer connection fails
@@ -822,13 +822,13 @@ abstract class AppLocalizations {
   /// Short subtitle for multiplayer failed tile
   ///
   /// In en, this message translates to:
-  /// **'Explanation why this is not a MCCompanion error'**
+  /// **'Explanation why this is not a NetherLink error'**
   String get helpMultiplayerFailedSubtitle;
 
   /// Explanation shown when multiplayer connection failed appears
   ///
   /// In en, this message translates to:
-  /// **'⚠️ This is not an issue with MCCompanion!\n\nMCCompanion successfully redirected you to the requested server. The message \"Multiplayer Connection Failed\" indicates that the target server is currently unreachable. Possible reasons:\n\n• The target Minecraft server is offline or overloaded\n• The server requires an updated client version or specific edition\n• Network issues between the relay and the target server\n\nTry connecting to a different server or contact the server\'s support. If the problem persists for multiple servers, enable Debug Mode in MCCompanion and check logs.'**
+  /// **'⚠️ This is not an issue with NetherLink!\n\nNetherLink successfully redirected you to the requested server. The message \"Multiplayer Connection Failed\" indicates that the target server is currently unreachable. Possible reasons:\n\n• The target Minecraft server is offline or overloaded\n• The server requires an updated client version or specific edition\n• Network issues between the relay and the target server\n\nTry connecting to a different server or contact the server\'s support. If the problem persists for multiple servers, enable Debug Mode in NetherLink and check logs.'**
   String get helpMultiplayerFailedBody;
 
   /// Title for Nintendo DNS troubleshooting
@@ -872,220 +872,1422 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Change language'**
   String get changeLanguageTitle;
+
+  /// Label for the language button in the bottom nav
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
   String get changeLanguage;
+
+  /// Button that resets localization to the system/default locale
+  ///
+  /// In en, this message translates to:
+  /// **'Use system language'**
   String get useSystemLanguage;
+
+  /// Snackbar message when launching an external URL fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open URL'**
   String get couldNotOpenUrl;
-  String get reportUser => 'Report user';
-  String reportUserWithName(String username) => 'Report @$username';
-  String get reportMessage => 'Report message';
-  String get reportDisclaimer => 'Our team will review this report. Thank you for keeping the community safe.';
-  String get reportReasonSpam => 'Spam';
-  String get reportReasonHarassment => 'Harassment or bullying';
-  String get reportReasonInappropriate => 'Inappropriate content';
-  String get reportReasonOther => 'Other';
-  String get reportAdditionalDetails => 'Additional details (optional)';
-  String get reportSubmit => 'Submit report';
-  String get reportSuccess => 'Report submitted. Thank you.';
-  String get reportFailed => 'Could not submit report. Please try again.';
-  String get messagePlaceholder => 'Message...';
-  String get noMessagesYet => 'No messages yet.\nSay hello!';
-  String get today => 'Today';
-  String get yesterday => 'Yesterday';
 
-  String get noConversationsYet => 'No conversations yet';
-  String get startChatHint => 'Start a chat from your friends list.';
-  String get youPrefix => 'You';
+  /// Title for the server tracker screen
+  ///
+  /// In en, this message translates to:
+  /// **'Server Tracker'**
+  String get serverTrackerTitle;
 
-  String get tabProfile => 'PROFILE';
-  String get tabFriends => 'FRIENDS';
-  String get tabRequests => 'REQUESTS';
-  String get tabChats => 'CHATS';
+  /// Dialog title for removing a tracked server
+  ///
+  /// In en, this message translates to:
+  /// **'Remove server'**
+  String get removeServerTitle;
 
-  String get addFriend => 'Add friend';
-  String get usernameHint => 'username';
-  String get send => 'Send';
-  String friendRequestSentTo(String username) => 'Friend request sent to @$username';
-  String alreadyFriendsWith(String username) => 'You are already friends with @$username.';
-  String requestAlreadyPending(String username) => 'There is already a pending request with @$username.';
-  String userNotFoundMsg(String username) => 'User @$username not found.';
-  String cannotSendRequest(String username) => 'You cannot send a request to @$username.';
-  String get somethingWentWrong => 'Something went wrong. Please try again.';
-  String friendRequestAccepted(String username) => 'Friend request from @$username accepted';
-  String requestDeclined(String username) => 'Request from @$username declined';
-  String get deleteAccountTitle => 'Delete account';
-  String get deleteAccountBody => 'This will permanently delete your account, messages, friends and all associated data. This action cannot be undone.';
-  String get deletePermanently => 'Delete permanently';
-  String get couldNotDeleteAccount => 'Could not delete account. Please try again.';
-  String get removeFriendTitle => 'Remove friend';
-  String removeFriendConfirm(String username) => 'Do you want to remove @$username as a friend?';
-  String get remove => 'Remove';
-  String friendRemoved(String username) => '@$username removed from your friends';
-  String get noFriendsYet => 'No friends yet';
-  String get noFriendsSub => 'Add someone using the button in the top right.';
-  String get noPendingRequests => 'No pending requests';
-  String get requestsAppearHere => 'Friend requests will appear here.';
-  String onlineFriendsLabel(int count) => 'ONLINE — $count';
-  String offlineFriendsLabel(int count) => 'OFFLINE — $count';
+  /// Confirmation message for removing a server
+  ///
+  /// In en, this message translates to:
+  /// **'Remove \"{name}\" from your tracker?'**
+  String removeServerConfirm(Object name);
 
-  String get couldNotUpdateVisibility => 'Could not update visibility. Try again.';
-  String get aboutMe => 'About me';
-  String get linkedAccountsTitle => 'Linked Accounts';
-  String get linkAccountsHint => 'Link your Minecraft accounts to show them on your profile.';
-  String get unlinkXboxTitle => 'Unlink Xbox account';
-  String removeLabelConfirm(String label) => 'Remove $label from your linked accounts?';
-  String get unlinkJavaTitle => 'Unlink Java Edition';
-  String removeJavaConfirm(String username) => 'Remove $username from your linked accounts?';
-  String get unlink => 'Unlink';
-  String get linkXbox => 'Link Xbox';
-  String get linkJava => 'Link Java';
-  String get appearOfflineLabel => 'Appear offline';
-  String get appearOfflineOn => 'Friends see you as offline';
-  String get appearOfflineOff => 'Friends can see when you\'re online';
-  String get signOut => 'Sign out';
-  String get profileCardTitle => 'Profile';
-  String get edit => 'Edit';
-  String get displayNameLabel => 'Display name';
-  String get bioLabel => 'Bio';
-  String get yourNameHint => 'Your name';
-  String get bioHint => 'Tell something about yourself';
-  String get avatarUrlLabel => 'Avatar URL';
-  String get usernameDisplayLabel => 'Username';
-  String get profileUpdated => 'Profile updated';
-  String get findUser => 'Find user';
+  /// Error message when removing server fails
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to remove server'**
+  String get removeServerFailed;
 
-  String get signIn => 'Sign in';
-  String get createAccount => 'Create account';
-  String get signInSubtitle => 'Sign in to add friends and share your sessions.';
-  String get emailAddressHint => 'Email address';
-  String get passwordHint => 'Password';
-  String get forgotPassword => 'Forgot password?';
-  String get continueWithGoogle => 'Continue with Google';
-  String get alreadyHaveAccount => 'Already have an account? Sign in';
-  String get noAccountYet => 'No account yet? Register';
-  String get orDivider => 'or';
-  String get resetPasswordTitle => 'Reset password';
-  String get resetPasswordBody => 'Enter your email address and we\'ll send you a link to reset your password.';
-  String get sendLink => 'Send link';
-  String resetLinkSent(String email) => 'Reset link sent to $email';
-  String get noAccountForEmail => 'No account found for this email address.';
-  String get invalidEmailError => 'Invalid email address.';
-  String get couldNotSendResetEmail => 'Could not send reset email. Please try again.';
-  String get incorrectEmailOrPassword => 'Incorrect email or password.';
-  String get emailAlreadyInUse => 'This email address is already in use.';
-  String get weakPassword => 'Password must be at least 6 characters.';
-  String get googleSignInFailed => 'Google sign-in failed. Please try again.';
-  String get appleSignInFailed => 'Apple sign-in failed. Please try again.';
-  String get emailDifferentMethod => 'An account already exists with this email using a different sign-in method.';
-  String get enterEmailAndPassword => 'Please enter your email and password.';
-  String get profileNotSetUp => 'Profile not set up yet';
-  String get chooseUsernameSubtitle => 'Choose a username to add friends and share your sessions.';
-  String get createProfile => 'Create profile';
+  /// Tooltip for the refresh button in server tracker
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh status'**
+  String get refreshStatus;
 
-  // ── Register screen ───────────────────────────────────────────────────────
+  /// Title when user is not signed in on tracker screen
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in required'**
+  String get trackerSignInRequired;
 
-  String get chooseUniqueUsername => 'Choose a unique username to add friends.';
-  String get usernameFieldLabel => 'Username *';
-  String get usernameFormatHint => '3–20 characters · only a-z, 0-9 and _';
-  String get displayNameOptional => 'Display name (optional)';
-  String get usernameRequired => 'Please enter a username.';
-  String get usernameFormatError => '3–20 characters, only lowercase letters, numbers and _';
-  String get usernameTaken => 'This username is already taken.';
-  String get noConnectionError => 'No connection. Please try again.';
-  String get usernameExampleHint => 'e.g. jens_mc';
-  String get displayNameExampleHint => 'e.g. Jens';
+  /// Subtitle when user is not signed in on tracker screen
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to track servers and receive offline notifications.'**
+  String get trackerSignInSubtitle;
 
-  String get home => 'Home';
-  String get info => 'Info';
-  String get consoleConnect => 'Console Connect';
-  String get consoleConnectSubtitle => 'Connect to Minecraft servers';
-  String get minecraftSkins => 'Minecraft Skins';
-  String get minecraftSkinsSubtitle => 'View & edit Java & Bedrock skins';
-  String get minecraftWiki => 'Minecraft Wiki';
-  String get minecraftWikiSubtitle => 'Mobs, blocks, recipes & more';
-  String get partnerServersLabel => 'Partner Servers';
-  String get partnerServersSubtitle => 'Featured Minecraft servers';
-  String get userLookup => 'Minecraft User Lookup';
-  String get userLookupSubtitle => 'Look up Java & Bedrock profiles';
+  /// Sign in button label
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in'**
+  String get signIn;
 
-  String get navSkins => 'Skins';
-  String get navWiki => 'Wiki';
-  String get navProfile => 'Profile';
+  /// Title shown when no servers are being tracked
+  ///
+  /// In en, this message translates to:
+  /// **'No servers tracked'**
+  String get noServersTracked;
 
-  // ── Skins screen ────────────────────────────────────────────────────────────
-  String get skinsUpload => 'Upload';
-  String get skinsCreate => 'Create';
-  String get skinsSubtitle => 'View and download Minecraft skins.';
-  String get skinsSectionRecent => 'RECENT SKINS';
-  String get skinsSectionMy => 'MY SKINS';
-  String get skinsSectionYours => 'YOUR SKINS';
-  String get skinsEmptyMySkins => 'No saved skins yet. Create or upload a skin to get started.';
-  String get skinsCouldNotLoad => 'Could not load skins';
-  String skinsPageOf(int page, int total) => 'Page $page / $total';
-  String get skinsMustBe64 => 'Skin must be 64×64 pixels';
-  String get skinsInvalidFile => 'Invalid image file';
-  String get skinsDownload => 'Download';
-  String get skinsEdit => 'Edit';
-  String get skinsNoAccountsTitle => 'No accounts linked';
-  String get skinsNoAccountsSubtitle => 'Link Java or Bedrock in Profile to see your skin.';
-  String get skinsSignInTitle => 'Sign in to see your skin';
-  String get skinsSignInSubtitle => 'Create an account and link Java or Bedrock in Profile.';
+  /// Subtitle shown when no servers are tracked
+  ///
+  /// In en, this message translates to:
+  /// **'Add a Minecraft server to monitor its status and receive notifications.'**
+  String get trackerEmptySubtitle;
 
-  // ── Player Lookup ──────────────────────────────────────────────────────────
+  /// Validation error when form fields are incomplete
+  ///
+  /// In en, this message translates to:
+  /// **'Please fill in all fields correctly'**
+  String get fillAllFields;
+
+  /// Message when user has used their free tracker slot
+  ///
+  /// In en, this message translates to:
+  /// **'Your free slot is used. Upgrade for more servers.'**
+  String get slotUsedUpgrade;
+
+  /// Error when adding a tracked server fails
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to add server. Check your details.'**
+  String get addServerFailed;
+
+  /// Label for IP address field in add server form
+  ///
+  /// In en, this message translates to:
+  /// **'IP address'**
+  String get ipAddressLabel;
+
+  /// Label for platform selector in add server form
+  ///
+  /// In en, this message translates to:
+  /// **'Platform'**
+  String get platformLabel;
+
+  /// Bedrock platform option label
+  ///
+  /// In en, this message translates to:
+  /// **'Bedrock'**
+  String get bedrockLabel;
+
+  /// Add button label in add server form
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get addLabel;
+
+  /// Server online status label
+  ///
+  /// In en, this message translates to:
+  /// **'Online'**
+  String get statusOnline;
+
+  /// Server offline status label
+  ///
+  /// In en, this message translates to:
+  /// **'Offline'**
+  String get statusOffline;
+
+  /// Server status while being checked
+  ///
+  /// In en, this message translates to:
+  /// **'Checking...'**
+  String get statusChecking;
+
+  /// Tooltip when server notifications are enabled
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications on'**
+  String get notificationsOn;
+
+  /// Tooltip when server notifications are disabled
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications off'**
+  String get notificationsOff;
+
+  /// Error when toggling server notifications fails
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to update notifications'**
+  String get failedUpdateNotifications;
+
+  /// Title for the edit server bottom sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Edit server'**
+  String get editServerTitle;
+
+  /// Hint text for server name field in edit form
+  ///
+  /// In en, this message translates to:
+  /// **'Server name'**
+  String get serverNameHint;
+
+  /// Error message when saving server edits fails
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to save. Try again.'**
+  String get failedSave;
+
+  /// Success message when server is renamed
+  ///
+  /// In en, this message translates to:
+  /// **'Server renamed'**
+  String get serverRenamed;
+
+  /// Customize button in the nav bar
+  ///
+  /// In en, this message translates to:
+  /// **'Customize'**
+  String get customizeLabel;
+
+  /// Subtitle in the customize bottom sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Reorder tiles and customize navigation'**
+  String get customizeSubtitle;
+
+  /// Reset button in customize sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get resetLabel;
+
+  /// Section header for tiles in customize sheet
+  ///
+  /// In en, this message translates to:
+  /// **'TILES'**
+  String get tilesSection;
+
+  /// Hint text below tiles section in customize sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Drag to reorder'**
+  String get dragToReorder;
+
+  /// Section header for navigation in customize sheet
+  ///
+  /// In en, this message translates to:
+  /// **'NAVIGATION'**
+  String get navigationSection;
+
+  /// Note about fixed navigation items
+  ///
+  /// In en, this message translates to:
+  /// **'Home, Connector and Profile are always fixed'**
+  String get navFixed;
+
+  /// Label for left navigation slot selector
+  ///
+  /// In en, this message translates to:
+  /// **'Left slot (next to Home)'**
+  String get leftSlot;
+
+  /// Label for right navigation slot selector
+  ///
+  /// In en, this message translates to:
+  /// **'Right slot (next to Profile)'**
+  String get rightSlot;
+
+  /// Section header for accent color in customize sheet
+  ///
+  /// In en, this message translates to:
+  /// **'ACCENT COLOR'**
+  String get accentColorSection;
+
+  /// Label for opacity slider
+  ///
+  /// In en, this message translates to:
+  /// **'Opacity'**
+  String get opacityLabel;
+
+  /// Section header for background color in customize sheet
+  ///
+  /// In en, this message translates to:
+  /// **'BACKGROUND'**
+  String get backgroundSection;
+
+  /// Section header for card color in customize sheet
+  ///
+  /// In en, this message translates to:
+  /// **'CARDS'**
+  String get cardsSection;
+
+  /// Edit button/tooltip label
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get editLabel;
+
+  /// Java Edition label in player lookup
+  ///
+  /// In en, this message translates to:
+  /// **'Java Edition'**
+  String get playerLookupJavaEdition;
+
+  /// Bedrock Edition label in player lookup
+  ///
+  /// In en, this message translates to:
+  /// **'Bedrock Edition'**
+  String get playerLookupBedrockEdition;
+
+  /// UUID field label
+  ///
+  /// In en, this message translates to:
+  /// **'UUID'**
+  String get playerLookupLabelUuid;
+
+  /// Gamertag field label
+  ///
+  /// In en, this message translates to:
+  /// **'Gamertag'**
+  String get playerLookupLabelGamertag;
+
+  /// XUID field label
+  ///
+  /// In en, this message translates to:
+  /// **'XUID'**
+  String get playerLookupLabelXuid;
+
+  /// Floodgate field label
+  ///
+  /// In en, this message translates to:
+  /// **'Floodgate'**
+  String get playerLookupLabelFloodgate;
+
+  /// Xbox account subtitle with xuid
+  ///
+  /// In en, this message translates to:
+  /// **'Xbox · {xuid}'**
+  String accountSubtitleXbox(Object xuid);
+
+  /// Java account subtitle with uuid
+  ///
+  /// In en, this message translates to:
+  /// **'Java Edition · {uuid}'**
+  String accountSubtitleJava(Object uuid);
+
+  /// Hint text for avatar URL field
+  ///
+  /// In en, this message translates to:
+  /// **'https://example.com/avatar.png'**
+  String get avatarUrlHint;
+
+  /// Tooltip/button to report a user
+  ///
+  /// In en, this message translates to:
+  /// **'Report user'**
+  String get reportUser;
+
+  /// Title when reporting a specific message
+  ///
+  /// In en, this message translates to:
+  /// **'Report message'**
+  String get reportMessage;
+
+  /// Title when reporting a user by name
+  ///
+  /// In en, this message translates to:
+  /// **'Report {name}'**
+  String reportUserWithName(Object name);
+
+  /// Disclaimer text shown in the report sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Reports are reviewed by our team. False reports may result in action against your account.'**
+  String get reportDisclaimer;
+
+  /// Report reason: spam
+  ///
+  /// In en, this message translates to:
+  /// **'Spam'**
+  String get reportReasonSpam;
+
+  /// Report reason: harassment
+  ///
+  /// In en, this message translates to:
+  /// **'Harassment'**
+  String get reportReasonHarassment;
+
+  /// Report reason: inappropriate content
+  ///
+  /// In en, this message translates to:
+  /// **'Inappropriate content'**
+  String get reportReasonInappropriate;
+
+  /// Report reason: other
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get reportReasonOther;
+
+  /// Hint text for additional details field in report sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Additional details (optional)…'**
+  String get reportAdditionalDetails;
+
+  /// Toast shown after a successful report submission
+  ///
+  /// In en, this message translates to:
+  /// **'Report submitted. Thank you.'**
+  String get reportSuccess;
+
+  /// Toast shown when report submission fails
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to submit report. Please try again.'**
+  String get reportFailed;
+
+  /// Button label to submit a report
+  ///
+  /// In en, this message translates to:
+  /// **'Submit report'**
+  String get reportSubmit;
+
+  /// Date divider label for today
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get today;
+
+  /// Date divider label for yesterday
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday'**
+  String get yesterday;
+
+  /// Hint text in the chat message input
+  ///
+  /// In en, this message translates to:
+  /// **'Message…'**
+  String get messagePlaceholder;
+
+  /// Empty state in chat screen
+  ///
+  /// In en, this message translates to:
+  /// **'No messages yet.\nSay hello!'**
+  String get noMessagesYet;
+
+  /// Empty state title on conversations screen
+  ///
+  /// In en, this message translates to:
+  /// **'No conversations yet'**
+  String get noConversationsYet;
+
+  /// Empty state subtitle on conversations screen
+  ///
+  /// In en, this message translates to:
+  /// **'Find a friend and start chatting!'**
+  String get startChatHint;
+
+  /// Prefix for last message preview when message is from current user
+  ///
+  /// In en, this message translates to:
+  /// **'You'**
+  String get youPrefix;
+
+  /// Title of the player lookup screen
+  ///
+  /// In en, this message translates to:
+  /// **'Player Lookup'**
   String get playerLookupTitle;
-  String get playerLookupSubtitle;
-  String get playerLookupHint;
-  String get playerLookupLinked;
-  String get playerLookupLabelUsername;
-  String get playerLookupLabelTier;
-  String playerLookupCopied(String label);
 
-  // ── Wiki ───────────────────────────────────────────────────────────────────
+  /// Subtitle/hint on player lookup screen
+  ///
+  /// In en, this message translates to:
+  /// **'Search for a Java or Bedrock player by username'**
+  String get playerLookupSubtitle;
+
+  /// Hint text for player lookup search field
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a username…'**
+  String get playerLookupHint;
+
+  /// Badge shown when linked accounts are found
+  ///
+  /// In en, this message translates to:
+  /// **'Linked accounts found'**
+  String get playerLookupLinked;
+
+  /// Label for username field in player lookup
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get playerLookupLabelUsername;
+
+  /// Label for tier field in player lookup
+  ///
+  /// In en, this message translates to:
+  /// **'Tier'**
+  String get playerLookupLabelTier;
+
+  /// Toast shown after copying a value in player lookup
+  ///
+  /// In en, this message translates to:
+  /// **'{value} copied'**
+  String playerLookupCopied(Object value);
+
+  /// Tab label for Profile tab
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get tabProfile;
+
+  /// Tab label for Friends tab
+  ///
+  /// In en, this message translates to:
+  /// **'Friends'**
+  String get tabFriends;
+
+  /// Tab label for Requests tab
+  ///
+  /// In en, this message translates to:
+  /// **'Requests'**
+  String get tabRequests;
+
+  /// Tab label for Chats tab
+  ///
+  /// In en, this message translates to:
+  /// **'Chats'**
+  String get tabChats;
+
+  /// Title/button for adding a friend
+  ///
+  /// In en, this message translates to:
+  /// **'Add Friend'**
+  String get addFriend;
+
+  /// Hint text for username input
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get usernameHint;
+
+  /// Send button label
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get send;
+
+  /// Toast when a friend request is sent
+  ///
+  /// In en, this message translates to:
+  /// **'Friend request sent to {name}'**
+  String friendRequestSentTo(Object name);
+
+  /// Error when already friends with user
+  ///
+  /// In en, this message translates to:
+  /// **'You are already friends with {name}'**
+  String alreadyFriendsWith(Object name);
+
+  /// Error when friend request is already pending
+  ///
+  /// In en, this message translates to:
+  /// **'A request to {name} is already pending'**
+  String requestAlreadyPending(Object name);
+
+  /// Error when user is not found
+  ///
+  /// In en, this message translates to:
+  /// **'User {name} not found'**
+  String userNotFoundMsg(Object name);
+
+  /// Error when user is blocked or request is not allowed
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot send a request to {name}'**
+  String cannotSendRequest(Object name);
+
+  /// Generic error message
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again.'**
+  String get somethingWentWrong;
+
+  /// Toast when a friend request is accepted
+  ///
+  /// In en, this message translates to:
+  /// **'You are now friends with {name}'**
+  String friendRequestAccepted(Object name);
+
+  /// Toast when a friend request is declined
+  ///
+  /// In en, this message translates to:
+  /// **'Request from {name} declined'**
+  String requestDeclined(Object name);
+
+  /// Title for delete account dialog/button
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account'**
+  String get deleteAccountTitle;
+
+  /// Body text for delete account confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'This will permanently delete your account and all data. This action cannot be undone.'**
+  String get deleteAccountBody;
+
+  /// Confirm button for permanent deletion
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Permanently'**
+  String get deletePermanently;
+
+  /// Error when account deletion fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not delete account. Please try again.'**
+  String get couldNotDeleteAccount;
+
+  /// Dialog title for removing a friend
+  ///
+  /// In en, this message translates to:
+  /// **'Remove Friend'**
+  String get removeFriendTitle;
+
+  /// Confirmation text for removing a friend
+  ///
+  /// In en, this message translates to:
+  /// **'Remove {name} from your friends?'**
+  String removeFriendConfirm(Object name);
+
+  /// Remove button label
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get remove;
+
+  /// Toast shown after removing a friend
+  ///
+  /// In en, this message translates to:
+  /// **'{name} has been removed from your friends'**
+  String friendRemoved(Object name);
+
+  /// Error when email already uses a different auth method
+  ///
+  /// In en, this message translates to:
+  /// **'This email is linked to a different sign-in method'**
+  String get emailDifferentMethod;
+
+  /// Error when Google sign-in fails
+  ///
+  /// In en, this message translates to:
+  /// **'Google sign-in failed. Please try again.'**
+  String get googleSignInFailed;
+
+  /// Error when Apple sign-in fails
+  ///
+  /// In en, this message translates to:
+  /// **'Apple sign-in failed. Please try again.'**
+  String get appleSignInFailed;
+
+  /// Title for reset password dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get resetPasswordTitle;
+
+  /// Body text for reset password dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email address and we will send you a link to reset your password.'**
+  String get resetPasswordBody;
+
+  /// Hint text for email address field
+  ///
+  /// In en, this message translates to:
+  /// **'Email address'**
+  String get emailAddressHint;
+
+  /// Button to send the password reset link
+  ///
+  /// In en, this message translates to:
+  /// **'Send link'**
+  String get sendLink;
+
+  /// Toast after reset email is sent
+  ///
+  /// In en, this message translates to:
+  /// **'Password reset link sent to {email}'**
+  String resetLinkSent(Object email);
+
+  /// Error when no account exists for the email
+  ///
+  /// In en, this message translates to:
+  /// **'No account found for that email address'**
+  String get noAccountForEmail;
+
+  /// Error for invalid email format
+  ///
+  /// In en, this message translates to:
+  /// **'The email address is not valid'**
+  String get invalidEmailError;
+
+  /// Generic error when sending reset email fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not send reset email. Please try again.'**
+  String get couldNotSendResetEmail;
+
+  /// Validation when email or password is empty on sign-in
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email and password'**
+  String get enterEmailAndPassword;
+
+  /// Error for wrong credentials
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect email or password'**
+  String get incorrectEmailOrPassword;
+
+  /// Error when email is already registered
+  ///
+  /// In en, this message translates to:
+  /// **'This email address is already in use'**
+  String get emailAlreadyInUse;
+
+  /// Error for weak password
+  ///
+  /// In en, this message translates to:
+  /// **'Password is too weak. Please choose a stronger one.'**
+  String get weakPassword;
+
+  /// Button/title for creating a new account
+  ///
+  /// In en, this message translates to:
+  /// **'Create Account'**
+  String get createAccount;
+
+  /// Subtitle on the sign-in screen
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to access your profile, friends, and chats.'**
+  String get signInSubtitle;
+
+  /// Hint text for password field
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get passwordHint;
+
+  /// Link to trigger password reset flow
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password?'**
+  String get forgotPassword;
+
+  /// Divider text between email and social sign-in
+  ///
+  /// In en, this message translates to:
+  /// **'or'**
+  String get orDivider;
+
+  /// Button label for Google sign-in
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with Google'**
+  String get continueWithGoogle;
+
+  /// Toggle to switch back to sign-in mode
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account? Sign in'**
+  String get alreadyHaveAccount;
+
+  /// Toggle to switch to register mode
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account? Create one'**
+  String get noAccountYet;
+
+  /// Title when user is authenticated but has no profile
+  ///
+  /// In en, this message translates to:
+  /// **'Profile not set up'**
+  String get profileNotSetUp;
+
+  /// Subtitle shown when profile is not yet set up
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a username to start connecting with other players.'**
+  String get chooseUsernameSubtitle;
+
+  /// Button to navigate to profile creation/registration
+  ///
+  /// In en, this message translates to:
+  /// **'Create Profile'**
+  String get createProfile;
+
+  /// Tooltip for the search/find user button
+  ///
+  /// In en, this message translates to:
+  /// **'Find user'**
+  String get findUser;
+
+  /// Error when toggling appear-offline fails
+  ///
+  /// In en, this message translates to:
+  /// **'Could not update visibility settings'**
+  String get couldNotUpdateVisibility;
+
+  /// Sign out button label
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Out'**
+  String get signOut;
+
+  /// Label for the appear-offline toggle
+  ///
+  /// In en, this message translates to:
+  /// **'Appear Offline'**
+  String get appearOfflineLabel;
+
+  /// Subtitle when appear-offline is enabled
+  ///
+  /// In en, this message translates to:
+  /// **'You appear offline to other players'**
+  String get appearOfflineOn;
+
+  /// Subtitle when appear-offline is disabled
+  ///
+  /// In en, this message translates to:
+  /// **'You appear online to other players'**
+  String get appearOfflineOff;
+
+  /// Dialog title for unlinking an Xbox account
+  ///
+  /// In en, this message translates to:
+  /// **'Unlink Xbox Account'**
+  String get unlinkXboxTitle;
+
+  /// Confirmation text for unlinking a Bedrock/Xbox account
+  ///
+  /// In en, this message translates to:
+  /// **'Remove {name} from your linked accounts?'**
+  String removeLabelConfirm(Object name);
+
+  /// Unlink button label
+  ///
+  /// In en, this message translates to:
+  /// **'Unlink'**
+  String get unlink;
+
+  /// Dialog title for unlinking a Java account
+  ///
+  /// In en, this message translates to:
+  /// **'Unlink Java Account'**
+  String get unlinkJavaTitle;
+
+  /// Confirmation text for unlinking a Java account
+  ///
+  /// In en, this message translates to:
+  /// **'Remove {name} from your linked accounts?'**
+  String removeJavaConfirm(Object name);
+
+  /// Section title for linked accounts card
+  ///
+  /// In en, this message translates to:
+  /// **'Linked Accounts'**
+  String get linkedAccountsTitle;
+
+  /// Hint when no accounts are linked
+  ///
+  /// In en, this message translates to:
+  /// **'Link your Minecraft accounts to show your skins and stats.'**
+  String get linkAccountsHint;
+
+  /// Button to link an Xbox/Bedrock account
+  ///
+  /// In en, this message translates to:
+  /// **'Link Xbox'**
+  String get linkXbox;
+
+  /// Button to link a Java account
+  ///
+  /// In en, this message translates to:
+  /// **'Link Java'**
+  String get linkJava;
+
+  /// Toast shown after profile is saved
+  ///
+  /// In en, this message translates to:
+  /// **'Profile updated'**
+  String get profileUpdated;
+
+  /// Title for the edit profile card
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profileCardTitle;
+
+  /// Edit button label
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
+  /// Label for display name field
+  ///
+  /// In en, this message translates to:
+  /// **'Display Name'**
+  String get displayNameLabel;
+
+  /// Hint text for display name field
+  ///
+  /// In en, this message translates to:
+  /// **'Your name'**
+  String get yourNameHint;
+
+  /// Label for bio field
+  ///
+  /// In en, this message translates to:
+  /// **'Bio'**
+  String get bioLabel;
+
+  /// Hint text for bio field
+  ///
+  /// In en, this message translates to:
+  /// **'Tell others about yourself…'**
+  String get bioHint;
+
+  /// Label for avatar URL field
+  ///
+  /// In en, this message translates to:
+  /// **'Avatar URL'**
+  String get avatarUrlLabel;
+
+  /// Label for username row in profile display
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get usernameDisplayLabel;
+
+  /// Label for bio/about-me row in profile display
+  ///
+  /// In en, this message translates to:
+  /// **'About me'**
+  String get aboutMe;
+
+  /// Empty state title on friends tab
+  ///
+  /// In en, this message translates to:
+  /// **'No friends yet'**
+  String get noFriendsYet;
+
+  /// Empty state subtitle on friends tab
+  ///
+  /// In en, this message translates to:
+  /// **'Add friends to see them here.'**
+  String get noFriendsSub;
+
+  /// Section label for online friends
+  ///
+  /// In en, this message translates to:
+  /// **'{count} online'**
+  String onlineFriendsLabel(Object count);
+
+  /// Section label for offline friends
+  ///
+  /// In en, this message translates to:
+  /// **'{count} offline'**
+  String offlineFriendsLabel(Object count);
+
+  /// Empty state title on requests tab
+  ///
+  /// In en, this message translates to:
+  /// **'No pending requests'**
+  String get noPendingRequests;
+
+  /// Empty state subtitle on requests tab
+  ///
+  /// In en, this message translates to:
+  /// **'New friend requests will appear here.'**
+  String get requestsAppearHere;
+
+  /// Edit button in skin detail sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get skinsEdit;
+
+  /// Title when no Minecraft accounts are linked
+  ///
+  /// In en, this message translates to:
+  /// **'No Minecraft accounts linked'**
+  String get skinsNoAccountsTitle;
+
+  /// Subtitle when no Minecraft accounts are linked
+  ///
+  /// In en, this message translates to:
+  /// **'Link a Java or Bedrock account to view your skins.'**
+  String get skinsNoAccountsSubtitle;
+
+  /// Title when user is not signed in on skins screen
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to view your skins'**
+  String get skinsSignInTitle;
+
+  /// Subtitle when user is not signed in on skins screen
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in and link your Minecraft accounts to see your skins here.'**
+  String get skinsSignInSubtitle;
+
+  /// Error when uploaded skin is wrong size
+  ///
+  /// In en, this message translates to:
+  /// **'Skin must be 64×64 pixels'**
+  String get skinsMustBe64;
+
+  /// Error when the selected file is not a valid image
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid image file'**
+  String get skinsInvalidFile;
+
+  /// Button to upload a skin
+  ///
+  /// In en, this message translates to:
+  /// **'Upload'**
+  String get skinsUpload;
+
+  /// Button to create/open skin editor
+  ///
+  /// In en, this message translates to:
+  /// **'Create'**
+  String get skinsCreate;
+
+  /// Section label for recent Geyser skins
+  ///
+  /// In en, this message translates to:
+  /// **'RECENT SKINS'**
+  String get skinsSectionRecent;
+
+  /// Section label for saved/local skins
+  ///
+  /// In en, this message translates to:
+  /// **'MY SKINS'**
+  String get skinsSectionMy;
+
+  /// Empty state text for saved skins section
+  ///
+  /// In en, this message translates to:
+  /// **'No saved skins yet. Upload or create one!'**
+  String get skinsEmptyMySkins;
+
+  /// Section label for the user's linked account skins
+  ///
+  /// In en, this message translates to:
+  /// **'YOUR SKINS'**
+  String get skinsSectionYours;
+
+  /// Error text when recent skins cannot be loaded
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load skins'**
+  String get skinsCouldNotLoad;
+
+  /// Pagination label on skins screen
+  ///
+  /// In en, this message translates to:
+  /// **'Page {page} of {total}'**
+  String skinsPageOf(Object page, Object total);
+
+  /// Download button in skin detail sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Download'**
+  String get skinsDownload;
+
+  /// Title of the wiki screen
+  ///
+  /// In en, this message translates to:
+  /// **'Wiki'**
   String get wikiTitle;
-  String get wikiSearchHint;
+
+  /// Badge/label linking to Minecraft Wiki
+  ///
+  /// In en, this message translates to:
+  /// **'Minecraft Wiki'**
   String get wikiMinecraftWiki;
-  String wikiCategories(int count);
-  String wikiNoResults(String query);
-  String get wikiNoPagesFound;
+
+  /// Hint text for wiki search field
+  ///
+  /// In en, this message translates to:
+  /// **'Search the wiki…'**
+  String get wikiSearchHint;
+
+  /// Error when wiki pages fail to load
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load pages. Please try again.'**
   String get wikiCouldNotLoadPages;
+
+  /// Error when the wiki cannot be reached
+  ///
+  /// In en, this message translates to:
+  /// **'Could not reach the wiki. Check your connection.'**
   String get wikiCouldNotReach;
+
+  /// Empty search results message
+  ///
+  /// In en, this message translates to:
+  /// **'No results found for \"{query}\"'**
+  String wikiNoResults(Object query);
+
+  /// Empty state when no wiki pages are available
+  ///
+  /// In en, this message translates to:
+  /// **'No pages found'**
+  String get wikiNoPagesFound;
+
+  /// Subtitle on wiki section card showing number of subcategories
+  ///
+  /// In en, this message translates to:
+  /// **'{count} categories'**
+  String wikiCategories(Object count);
+
+  /// Error when wiki article content fails to load
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load article content.'**
   String get wikiCouldNotLoadContent;
+
+  /// Button to open wiki article in external browser
+  ///
+  /// In en, this message translates to:
+  /// **'Open in browser'**
   String get wikiOpenInBrowser;
-  String get wikiReadFullArticle;
+
+  /// Section header for crafting recipes in wiki detail
+  ///
+  /// In en, this message translates to:
+  /// **'Crafting'**
   String get wikiCrafting;
+
+  /// Button at bottom of wiki detail to open full article
+  ///
+  /// In en, this message translates to:
+  /// **'Read full article'**
+  String get wikiReadFullArticle;
+
+  /// Wiki category: Mobs
+  ///
+  /// In en, this message translates to:
+  /// **'Mobs'**
   String get wikiMobs;
+
+  /// Wiki category: Blocks
+  ///
+  /// In en, this message translates to:
+  /// **'Blocks'**
   String get wikiBlocks;
+
+  /// Wiki category: Items
+  ///
+  /// In en, this message translates to:
+  /// **'Items'**
   String get wikiItems;
+
+  /// Wiki category: Biomes
+  ///
+  /// In en, this message translates to:
+  /// **'Biomes'**
   String get wikiBiomes;
+
+  /// Wiki category: Structures
+  ///
+  /// In en, this message translates to:
+  /// **'Structures'**
   String get wikiStructures;
+
+  /// Wiki category: Enchantments
+  ///
+  /// In en, this message translates to:
+  /// **'Enchantments'**
   String get wikiEnchantments;
+
+  /// Wiki category: Potions
+  ///
+  /// In en, this message translates to:
+  /// **'Potions'**
   String get wikiPotions;
+
+  /// Wiki mob sub-category: Passive
+  ///
+  /// In en, this message translates to:
+  /// **'Passive'**
   String get wikiPassive;
+
+  /// Wiki mob sub-category: Neutral
+  ///
+  /// In en, this message translates to:
+  /// **'Neutral'**
   String get wikiNeutral;
+
+  /// Wiki mob sub-category: Hostile
+  ///
+  /// In en, this message translates to:
+  /// **'Hostile'**
   String get wikiHostile;
+
+  /// Wiki mob sub-category: Boss
+  ///
+  /// In en, this message translates to:
+  /// **'Boss'**
   String get wikiBoss;
+
+  /// Wiki mob sub-category: Utility
+  ///
+  /// In en, this message translates to:
+  /// **'Utility'**
   String get wikiUtility;
+
+  /// Wiki block sub-category: Natural
+  ///
+  /// In en, this message translates to:
+  /// **'Natural'**
   String get wikiNatural;
+
+  /// Wiki block sub-category: Ores
+  ///
+  /// In en, this message translates to:
+  /// **'Ores'**
   String get wikiOres;
+
+  /// Wiki block sub-category: Wood
+  ///
+  /// In en, this message translates to:
+  /// **'Wood'**
   String get wikiWood;
+
+  /// Wiki block sub-category: Stone
+  ///
+  /// In en, this message translates to:
+  /// **'Stone'**
   String get wikiStone;
+
+  /// Wiki block sub-category: Redstone
+  ///
+  /// In en, this message translates to:
+  /// **'Redstone'**
   String get wikiRedstone;
+
+  /// Wiki block sub-category: Plants
+  ///
+  /// In en, this message translates to:
+  /// **'Plants'**
   String get wikiPlants;
+
+  /// Wiki block sub-category: Decoration
+  ///
+  /// In en, this message translates to:
+  /// **'Decoration'**
   String get wikiDecoration;
+
+  /// Wiki item sub-category: Tools
+  ///
+  /// In en, this message translates to:
+  /// **'Tools'**
   String get wikiTools;
+
+  /// Wiki item sub-category: Swords
+  ///
+  /// In en, this message translates to:
+  /// **'Swords'**
   String get wikiSwords;
+
+  /// Wiki item sub-category: Ranged
+  ///
+  /// In en, this message translates to:
+  /// **'Ranged'**
   String get wikiRanged;
+
+  /// Wiki item sub-category: Armor
+  ///
+  /// In en, this message translates to:
+  /// **'Armor'**
   String get wikiArmor;
+
+  /// Wiki item sub-category: Food
+  ///
+  /// In en, this message translates to:
+  /// **'Food'**
   String get wikiFood;
+
+  /// Wiki item sub-category: Brewing
+  ///
+  /// In en, this message translates to:
+  /// **'Brewing'**
   String get wikiBrewing;
+
+  /// Wiki item sub-category: Materials
+  ///
+  /// In en, this message translates to:
+  /// **'Materials'**
   String get wikiMaterials;
+
+  /// Wiki biome/structure sub-category: Overworld
+  ///
+  /// In en, this message translates to:
+  /// **'Overworld'**
   String get wikiOverworld;
+
+  /// Wiki biome/structure sub-category: Nether
+  ///
+  /// In en, this message translates to:
+  /// **'Nether'**
   String get wikiNether;
+
+  /// Wiki biome/structure sub-category: The End
+  ///
+  /// In en, this message translates to:
+  /// **'The End'**
   String get wikiTheEnd;
+
+  /// Wiki enchantment sub-category: Sword
+  ///
+  /// In en, this message translates to:
+  /// **'Sword'**
   String get wikiSword;
+
+  /// Wiki enchantment sub-category: Tool
+  ///
+  /// In en, this message translates to:
+  /// **'Tool'**
   String get wikiTool;
+
+  /// Wiki enchantment sub-category: Bow
+  ///
+  /// In en, this message translates to:
+  /// **'Bow'**
   String get wikiBow;
+
+  /// Wiki enchantment sub-category: Fishing
+  ///
+  /// In en, this message translates to:
+  /// **'Fishing'**
   String get wikiFishing;
+
+  /// Wiki potion sub-category: Status Effects
+  ///
+  /// In en, this message translates to:
+  /// **'Status Effects'**
   String get wikiStatusEffects;
+
+  /// chooseUniqueUsername
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a unique username to get started.'**
+  String get chooseUniqueUsername;
+
+  /// usernameFieldLabel
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get usernameFieldLabel;
+
+  /// usernameExampleHint
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. CoolPlayer123'**
+  String get usernameExampleHint;
+
+  /// usernameFormatHint
+  ///
+  /// In en, this message translates to:
+  /// **'3–20 characters · letters, numbers and underscores only'**
+  String get usernameFormatHint;
+
+  /// displayNameOptional
+  ///
+  /// In en, this message translates to:
+  /// **'Display Name (optional)'**
+  String get displayNameOptional;
+
+  /// displayNameExampleHint
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Cool Player'**
+  String get displayNameExampleHint;
+
+  /// usernameRequired
+  ///
+  /// In en, this message translates to:
+  /// **'Username is required'**
+  String get usernameRequired;
+
+  /// usernameFormatError
+  ///
+  /// In en, this message translates to:
+  /// **'Username must be 3–20 characters and contain only letters, numbers and underscores'**
+  String get usernameFormatError;
+
+  /// usernameTaken
+  ///
+  /// In en, this message translates to:
+  /// **'This username is already taken'**
+  String get usernameTaken;
+
+  /// noConnectionError
+  ///
+  /// In en, this message translates to:
+  /// **'No connection. Check your internet and try again.'**
+  String get noConnectionError;
+
+  /// home
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// info
+  ///
+  /// In en, this message translates to:
+  /// **'Info'**
+  String get info;
+
+  /// Profile label in bottom navigation
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get navProfile;
+
+  /// Toast when server is removed
+  ///
+  /// In en, this message translates to:
+  /// **'{name} removed'**
+  String serverRemoved(Object name);
+
+  /// Toast when server is added
+  ///
+  /// In en, this message translates to:
+  /// **'{name} added'**
+  String serverAdded(Object name);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 import '../models/tracked_server_model.dart';
 import '../services/auth_service.dart';
 import '../services/server_tracker_service.dart';
@@ -12,7 +13,11 @@ class ServerTrackerScreen extends StatefulWidget {
   final VoidCallback onBack;
   final VoidCallback? onGoToLogin;
 
-  const ServerTrackerScreen({super.key, required this.onBack, this.onGoToLogin});
+  const ServerTrackerScreen({
+    super.key,
+    required this.onBack,
+    this.onGoToLogin,
+  });
 
   @override
   State<ServerTrackerScreen> createState() => _ServerTrackerScreenState();
@@ -57,7 +62,10 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
     setState(() => _refreshing = true);
     await ServerTrackerService.instance.refresh();
     if (!mounted) return;
-    setState(() { _refreshing = false; _countdown = ServerTrackerService.pollInterval.inSeconds; });
+    setState(() {
+      _refreshing = false;
+      _countdown = ServerTrackerService.pollInterval.inSeconds;
+    });
   }
 
   void _checkAuth() {
@@ -69,7 +77,12 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
 
   void _startListening() {
     _sub = ServerTrackerService.instance.serversStream.listen((servers) {
-      if (mounted) setState(() { _servers = servers; _loading = false; _countdown = ServerTrackerService.pollInterval.inSeconds; });
+      if (mounted)
+        setState(() {
+          _servers = servers;
+          _loading = false;
+          _countdown = ServerTrackerService.pollInterval.inSeconds;
+        });
     });
     _slotsSub = ServerTrackerService.instance.slotsStream.listen((slots) {
       if (mounted) setState(() => _slots = slots);
@@ -99,11 +112,36 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
       builder: (_) => AlertDialog(
         backgroundColor: AppTheme.surfaceRaised,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text('Remove server', style: TextStyle(color: AppTheme.textPrimary, fontSize: 16, fontWeight: FontWeight.w600)),
-        content: Text('Remove "${server.name}" from your tracker?', style: const TextStyle(color: AppTheme.textMuted, fontSize: 14)),
+        title: Text(
+          AppLocalizations.of(context)!.removeServerTitle,
+          style: const TextStyle(
+            color: AppTheme.textPrimary,
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        content: Text(
+          AppLocalizations.of(context)!.removeServerConfirm(server.name),
+          style: const TextStyle(color: AppTheme.textMuted, fontSize: 14),
+        ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel', style: TextStyle(color: AppTheme.textMuted))),
-          TextButton(onPressed: () => Navigator.pop(context, true), child: const Text('Remove', style: TextStyle(color: AppTheme.error, fontWeight: FontWeight.w600))),
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(
+              AppLocalizations.of(context)!.cancel,
+              style: const TextStyle(color: AppTheme.textMuted),
+            ),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: Text(
+              AppLocalizations.of(context)!.delete,
+              style: const TextStyle(
+                color: AppTheme.error,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -112,10 +150,17 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
     final ok = await TrackerApiService.deleteServer(server.id);
     if (!mounted) return;
     if (ok) {
-      AppToast.show(context, message: '${server.name} removed');
+      AppToast.show(
+        context,
+        message: AppLocalizations.of(context)!.serverRemoved(server.name),
+      );
       await ServerTrackerService.instance.refresh();
     } else {
-      AppToast.show(context, message: 'Failed to remove server', color: AppTheme.error);
+      AppToast.show(
+        context,
+        message: AppLocalizations.of(context)!.removeServerFailed,
+        color: AppTheme.error,
+      );
     }
   }
 
@@ -137,17 +182,30 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
         Container(
           decoration: BoxDecoration(
             color: AppTheme.surface,
-            border: Border(bottom: BorderSide(color: AppTheme.borderGray, width: 0.5)),
+            border: Border(
+              bottom: BorderSide(color: AppTheme.borderGray, width: 0.5),
+            ),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           child: Row(
             children: [
               IconButton(
-                icon: const Icon(Icons.arrow_back_ios_rounded, color: AppTheme.textSecondary, size: 18),
+                icon: const Icon(
+                  Icons.arrow_back_ios_rounded,
+                  color: AppTheme.textSecondary,
+                  size: 18,
+                ),
                 onPressed: widget.onBack,
               ),
-              const Expanded(
-                child: Text('Server Tracker', style: TextStyle(color: AppTheme.textPrimary, fontSize: 16, fontWeight: FontWeight.w600)),
+              Expanded(
+                child: Text(
+                  AppLocalizations.of(context)!.serverTrackerTitle,
+                  style: const TextStyle(
+                    color: AppTheme.textPrimary,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
               if (_isLoggedIn && _slots != null)
                 Padding(
@@ -155,42 +213,56 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
                   child: Text(
                     '${_slots!.used}/${_slots!.total}',
                     style: TextStyle(
-                      color: _slots!.remaining == 0 ? AppTheme.warning : AppTheme.textMuted,
+                      color: _slots!.remaining == 0
+                          ? AppTheme.warning
+                          : AppTheme.textMuted,
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
               if (_isLoggedIn && !_loading && _servers.isNotEmpty) ...[
-                Text(
-                  '${(_countdown ~/ 60).toString().padLeft(2, '0')}:${(_countdown % 60).toString().padLeft(2, '0')}',
-                  style: const TextStyle(color: AppTheme.textDisabled, fontSize: 11, fontFamily: 'monospace'),
-                ),
+                _CountdownLabel(countdown: _countdown),
                 _refreshing
                     ? SizedBox(
-                        width: 36, height: 36,
+                        width: 36,
+                        height: 36,
                         child: Padding(
                           padding: const EdgeInsets.all(10),
-                          child: CircularProgressIndicator(strokeWidth: 2, color: AppTheme.brand),
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: AppTheme.brand,
+                          ),
                         ),
                       )
                     : IconButton(
-                        icon: const Icon(Icons.refresh_rounded, color: AppTheme.textSecondary, size: 20),
+                        icon: const Icon(
+                          Icons.refresh_rounded,
+                          color: AppTheme.textSecondary,
+                          size: 20,
+                        ),
                         onPressed: _manualRefresh,
-                        tooltip: 'Refresh status',
+                        tooltip: AppLocalizations.of(context)!.refreshStatus,
                         padding: EdgeInsets.zero,
-                        constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
+                        constraints: const BoxConstraints(
+                          minWidth: 36,
+                          minHeight: 36,
+                        ),
                       ),
               ],
               if (_isLoggedIn)
                 IconButton(
                   icon: Icon(
                     Icons.add_rounded,
-                    color: _slots != null && _slots!.remaining == 0 ? AppTheme.textDisabled : AppTheme.brand,
+                    color: _slots != null && _slots!.remaining == 0
+                        ? AppTheme.textDisabled
+                        : AppTheme.brand,
                     size: 24,
                   ),
-                  onPressed: _slots != null && _slots!.remaining == 0 ? null : _openAddSheet,
-                  tooltip: 'Add server',
+                  onPressed: _slots != null && _slots!.remaining == 0
+                      ? null
+                      : _openAddSheet,
+                  tooltip: AppLocalizations.of(context)!.addServer,
                 ),
             ],
           ),
@@ -200,29 +272,29 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
           child: !_isLoggedIn
               ? _NotLoggedIn(onLogin: widget.onGoToLogin)
               : _loading
-                  ? Center(child: CircularProgressIndicator(color: AppTheme.brand))
-                  : _servers.isEmpty
-                      ? _EmptyState(onAdd: _openAddSheet)
-                      : RefreshIndicator(
-                          color: AppTheme.brand,
-                          onRefresh: ServerTrackerService.instance.refresh,
-                          child: ListView.builder(
-                            padding: const EdgeInsets.symmetric(vertical: 12),
-                            itemCount: _servers.length,
-                            itemBuilder: (_, i) => TrackedServerCard(
-                              server: _servers[i],
-                              onDelete: () => _deleteServer(_servers[i]),
-                              onUpdated: (updated) {
-                                setState(() {
-                                  _servers = [
-                                    for (final s in _servers)
-                                      if (s.id == updated.id) updated else s,
-                                  ];
-                                });
-                              },
-                            ),
-                          ),
-                        ),
+              ? Center(child: CircularProgressIndicator(color: AppTheme.brand))
+              : _servers.isEmpty
+              ? _EmptyState(onAdd: _openAddSheet)
+              : RefreshIndicator(
+                  color: AppTheme.brand,
+                  onRefresh: ServerTrackerService.instance.refresh,
+                  child: ListView.builder(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    itemCount: _servers.length,
+                    itemBuilder: (_, i) => TrackedServerCard(
+                      server: _servers[i],
+                      onDelete: () => _deleteServer(_servers[i]),
+                      onUpdated: (updated) {
+                        setState(() {
+                          _servers = [
+                            for (final s in _servers)
+                              if (s.id == updated.id) updated else s,
+                          ];
+                        });
+                      },
+                    ),
+                  ),
+                ),
         ),
       ],
     );
@@ -241,17 +313,29 @@ class _NotLoggedIn extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.lock_outline_rounded, color: AppTheme.textMuted, size: 52),
+            const Icon(
+              Icons.lock_outline_rounded,
+              color: AppTheme.textMuted,
+              size: 52,
+            ),
             const SizedBox(height: 16),
-            const Text(
-              'Sign in required',
-              style: TextStyle(color: AppTheme.textPrimary, fontSize: 18, fontWeight: FontWeight.w700),
+            Text(
+              AppLocalizations.of(context)!.trackerSignInRequired,
+              style: const TextStyle(
+                color: AppTheme.textPrimary,
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+              ),
             ),
             const SizedBox(height: 8),
-            const Text(
-              'Sign in to track servers and receive offline notifications.',
+            Text(
+              AppLocalizations.of(context)!.trackerSignInSubtitle,
               textAlign: TextAlign.center,
-              style: TextStyle(color: AppTheme.textMuted, fontSize: 13, height: 1.5),
+              style: const TextStyle(
+                color: AppTheme.textMuted,
+                fontSize: 13,
+                height: 1.5,
+              ),
             ),
             if (onLogin != null) ...[
               const SizedBox(height: 24),
@@ -260,11 +344,19 @@ class _NotLoggedIn extends StatelessWidget {
                 style: FilledButton.styleFrom(
                   backgroundColor: AppTheme.brand,
                   foregroundColor: Colors.black,
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 13),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 13,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
                 icon: const Icon(Icons.login_rounded),
-                label: const Text('Sign in', style: TextStyle(fontWeight: FontWeight.w700)),
+                label: Text(
+                  AppLocalizations.of(context)!.signIn,
+                  style: const TextStyle(fontWeight: FontWeight.w700),
+                ),
               ),
             ],
           ],
@@ -286,17 +378,29 @@ class _EmptyState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.radar_rounded, color: AppTheme.textMuted, size: 52),
+            const Icon(
+              Icons.radar_rounded,
+              color: AppTheme.textMuted,
+              size: 52,
+            ),
             const SizedBox(height: 16),
-            const Text(
-              'No servers tracked',
-              style: TextStyle(color: AppTheme.textPrimary, fontSize: 18, fontWeight: FontWeight.w700),
+            Text(
+              AppLocalizations.of(context)!.noServersTracked,
+              style: const TextStyle(
+                color: AppTheme.textPrimary,
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+              ),
             ),
             const SizedBox(height: 8),
-            const Text(
-              'Add a Minecraft server to monitor its status and receive notifications.',
+            Text(
+              AppLocalizations.of(context)!.trackerEmptySubtitle,
               textAlign: TextAlign.center,
-              style: TextStyle(color: AppTheme.textMuted, fontSize: 13, height: 1.5),
+              style: const TextStyle(
+                color: AppTheme.textMuted,
+                fontSize: 13,
+                height: 1.5,
+              ),
             ),
             const SizedBox(height: 24),
             FilledButton.icon(
@@ -304,11 +408,19 @@ class _EmptyState extends StatelessWidget {
               style: FilledButton.styleFrom(
                 backgroundColor: AppTheme.brand,
                 foregroundColor: Colors.black,
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 13),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 13,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
               icon: const Icon(Icons.add_rounded),
-              label: const Text('Add server', style: TextStyle(fontWeight: FontWeight.w700)),
+              label: Text(
+                AppLocalizations.of(context)!.addServer,
+                style: const TextStyle(fontWeight: FontWeight.w700),
+              ),
             ),
           ],
         ),
@@ -316,6 +428,7 @@ class _EmptyState extends StatelessWidget {
     );
   }
 }
+
 class _AddServerSheet extends StatefulWidget {
   final VoidCallback onAdded;
   const _AddServerSheet({required this.onAdded});
@@ -326,7 +439,7 @@ class _AddServerSheet extends StatefulWidget {
 
 class _AddServerSheetState extends State<_AddServerSheet> {
   final _nameCtrl = TextEditingController();
-  final _ipCtrl   = TextEditingController();
+  final _ipCtrl = TextEditingController();
   final _portCtrl = TextEditingController(text: '19132');
   String _platform = 'bedrock';
   bool _saving = false;
@@ -342,30 +455,41 @@ class _AddServerSheetState extends State<_AddServerSheet> {
 
   Future<void> _save() async {
     final name = _nameCtrl.text.trim();
-    final ip   = _ipCtrl.text.trim();
+    final ip = _ipCtrl.text.trim();
     final port = int.tryParse(_portCtrl.text.trim()) ?? 0;
 
     if (name.isEmpty || ip.isEmpty || port <= 0) {
-      setState(() => _error = 'Please fill in all fields correctly');
+      setState(() => _error = AppLocalizations.of(context)!.fillAllFields);
       return;
     }
 
-    setState(() { _saving = true; _error = null; });
+    setState(() {
+      _saving = true;
+      _error = null;
+    });
 
-    final result = await TrackerApiService.addServer(name: name, ip: ip, port: port, platform: _platform);
+    final result = await TrackerApiService.addServer(
+      name: name,
+      ip: ip,
+      port: port,
+      platform: _platform,
+    );
 
     if (!mounted) return;
 
     if (result.server != null) {
       widget.onAdded();
       Navigator.of(context).pop();
-      AppToast.show(context, message: '$name added');
+      AppToast.show(
+        context,
+        message: AppLocalizations.of(context)!.serverAdded(name),
+      );
     } else {
       setState(() {
         _saving = false;
         _error = result.error == 'no_slots'
-            ? 'Your free slot is used. Upgrade for more servers.'
-            : 'Failed to add server. Check your details.';
+            ? AppLocalizations.of(context)!.slotUsedUpgrade
+            : AppLocalizations.of(context)!.addServerFailed;
       });
     }
   }
@@ -385,30 +509,76 @@ class _AddServerSheetState extends State<_AddServerSheet> {
         children: [
           Row(
             children: [
-              const Text('Add server', style: TextStyle(color: AppTheme.textPrimary, fontSize: 17, fontWeight: FontWeight.w700)),
+              Text(
+                AppLocalizations.of(context)!.addServer,
+                style: const TextStyle(
+                  color: AppTheme.textPrimary,
+                  fontSize: 17,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
               const Spacer(),
-              IconButton(icon: const Icon(Icons.close_rounded, color: AppTheme.textMuted), onPressed: () => Navigator.of(context).pop()),
+              IconButton(
+                icon: const Icon(
+                  Icons.close_rounded,
+                  color: AppTheme.textMuted,
+                ),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
             ],
           ),
           const SizedBox(height: 16),
-          _Field(label: 'Name', controller: _nameCtrl, hint: 'e.g. My Server'),
+          _Field(
+            label: AppLocalizations.of(context)!.serverNameLabel,
+            controller: _nameCtrl,
+            hint: 'e.g. My Server',
+          ),
           const SizedBox(height: 12),
-          _Field(label: 'IP address', controller: _ipCtrl, hint: 'e.g. play.hypixel.net'),
+          _Field(
+            label: AppLocalizations.of(context)!.ipAddressLabel,
+            controller: _ipCtrl,
+            hint: 'e.g. play.hypixel.net',
+          ),
           const SizedBox(height: 12),
-          _Field(label: 'Port', controller: _portCtrl, hint: '19132', keyboard: TextInputType.number),
+          _Field(
+            label: AppLocalizations.of(context)!.portLabel,
+            controller: _portCtrl,
+            hint: '19132',
+            keyboard: TextInputType.number,
+          ),
           const SizedBox(height: 12),
-          const Text('Platform', style: TextStyle(color: AppTheme.textMuted, fontSize: 12, fontWeight: FontWeight.w600)),
+          Text(
+            AppLocalizations.of(context)!.platformLabel,
+            style: const TextStyle(
+              color: AppTheme.textMuted,
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
           const SizedBox(height: 6),
           Row(
             children: [
-              _PlatformChip(label: 'Bedrock', value: 'bedrock', selected: _platform, onTap: (v) => setState(() => _platform = v)),
+              _PlatformChip(
+                label: AppLocalizations.of(context)!.bedrockLabel,
+                value: 'bedrock',
+                selected: _platform,
+                onTap: (v) => setState(() => _platform = v),
+              ),
               const SizedBox(width: 8),
-              _PlatformChip(label: 'Java', value: 'java', selected: _platform, onTap: (v) => setState(() => _platform = v)),
+              _PlatformChip(
+                label: AppLocalizations.of(context)!.labelJava,
+                value: 'java',
+                selected: _platform,
+                onTap: (v) => setState(() => _platform = v),
+              ),
             ],
           ),
           if (_error != null) ...[
             const SizedBox(height: 12),
-            Text(_error!, style: const TextStyle(color: AppTheme.error, fontSize: 13)),
+            Text(
+              _error!,
+              style: const TextStyle(color: AppTheme.error, fontSize: 13),
+            ),
           ],
           const SizedBox(height: 20),
           SizedBox(
@@ -419,11 +589,23 @@ class _AddServerSheetState extends State<_AddServerSheet> {
                 backgroundColor: AppTheme.brand,
                 foregroundColor: Colors.black,
                 padding: const EdgeInsets.symmetric(vertical: 14),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
               child: _saving
-                  ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.black))
-                  : const Text('Add', style: TextStyle(fontWeight: FontWeight.w700)),
+                  ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: Colors.black,
+                      ),
+                    )
+                  : Text(
+                      AppLocalizations.of(context)!.addLabel,
+                      style: const TextStyle(fontWeight: FontWeight.w700),
+                    ),
             ),
           ),
         ],
@@ -437,14 +619,26 @@ class _Field extends StatelessWidget {
   final TextEditingController controller;
   final String hint;
   final TextInputType keyboard;
-  const _Field({required this.label, required this.controller, required this.hint, this.keyboard = TextInputType.text});
+  const _Field({
+    required this.label,
+    required this.controller,
+    required this.hint,
+    this.keyboard = TextInputType.text,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: const TextStyle(color: AppTheme.textMuted, fontSize: 12, fontWeight: FontWeight.w600)),
+        Text(
+          label,
+          style: const TextStyle(
+            color: AppTheme.textMuted,
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         const SizedBox(height: 4),
         TextField(
           controller: controller,
@@ -455,8 +649,14 @@ class _Field extends StatelessWidget {
             hintStyle: const TextStyle(color: AppTheme.textDisabled),
             filled: true,
             fillColor: AppTheme.surfaceLight,
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide.none,
+            ),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 14,
+              vertical: 12,
+            ),
           ),
         ),
       ],
@@ -464,10 +664,34 @@ class _Field extends StatelessWidget {
   }
 }
 
+class _CountdownLabel extends StatelessWidget {
+  final int countdown;
+  const _CountdownLabel({required this.countdown});
+
+  @override
+  Widget build(BuildContext context) {
+    final m = (countdown ~/ 60).toString().padLeft(2, '0');
+    final s = (countdown % 60).toString().padLeft(2, '0');
+    return Text(
+      '$m:$s',
+      style: const TextStyle(
+        color: AppTheme.textDisabled,
+        fontSize: 11,
+        fontFamily: 'monospace',
+      ),
+    );
+  }
+}
+
 class _PlatformChip extends StatelessWidget {
   final String label, value, selected;
   final void Function(String) onTap;
-  const _PlatformChip({required this.label, required this.value, required this.selected, required this.onTap});
+  const _PlatformChip({
+    required this.label,
+    required this.value,
+    required this.selected,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -478,15 +702,22 @@ class _PlatformChip extends StatelessWidget {
         duration: const Duration(milliseconds: 150),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
-          color: isSelected ? AppTheme.brand.withOpacity(0.15) : AppTheme.surfaceLight,
+          color: isSelected
+              ? AppTheme.brand.withOpacity(0.15)
+              : AppTheme.surfaceLight,
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: isSelected ? AppTheme.brand : AppTheme.borderGray),
+          border: Border.all(
+            color: isSelected ? AppTheme.brand : AppTheme.borderGray,
+          ),
         ),
-        child: Text(label, style: TextStyle(
-          color: isSelected ? AppTheme.brand : AppTheme.textMuted,
-          fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-          fontSize: 13,
-        )),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: isSelected ? AppTheme.brand : AppTheme.textMuted,
+            fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+            fontSize: 13,
+          ),
+        ),
       ),
     );
   }

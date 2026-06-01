@@ -203,9 +203,9 @@ class _AppShellState extends State<AppShell>
       online: false,
     );
     if (!mounted) return;
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => ChatScreen(friend: friend)),
-    );
+    Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => ChatScreen(friend: friend)));
   }
 
   void _goTo(int page) {
@@ -223,20 +223,20 @@ class _AppShellState extends State<AppShell>
 
   VoidCallback _navCallbackFor(AppFeature feature) => switch (feature) {
     AppFeature.connector => () => _goTo(_pageConnector),
-    AppFeature.skins     => () => _goTo(_pageSkins),
-    AppFeature.wiki      => () => _goTo(_pageWiki),
-    AppFeature.partners  => () => _goTo(_pagePartners),
-    AppFeature.lookup    => () => _goTo(_pagePlayerLookup),
-    AppFeature.tracker   => () => _goTo(_pageServerTracker),
+    AppFeature.skins => () => _goTo(_pageSkins),
+    AppFeature.wiki => () => _goTo(_pageWiki),
+    AppFeature.partners => () => _goTo(_pagePartners),
+    AppFeature.lookup => () => _goTo(_pagePlayerLookup),
+    AppFeature.tracker => () => _goTo(_pageServerTracker),
   };
 
   bool _isNavFeatureActive(AppFeature feature) {
     return switch (feature) {
-      AppFeature.skins     => _pageIndex == _pageSkins,
-      AppFeature.wiki      => _pageIndex == _pageWiki,
-      AppFeature.partners  => _pageIndex == _pagePartners,
-      AppFeature.lookup    => _pageIndex == _pagePlayerLookup,
-      AppFeature.tracker   => _pageIndex == _pageServerTracker,
+      AppFeature.skins => _pageIndex == _pageSkins,
+      AppFeature.wiki => _pageIndex == _pageWiki,
+      AppFeature.partners => _pageIndex == _pagePartners,
+      AppFeature.lookup => _pageIndex == _pagePlayerLookup,
+      AppFeature.tracker => _pageIndex == _pageServerTracker,
       AppFeature.connector => _pageIndex == _pageConnector,
     };
   }
@@ -348,7 +348,10 @@ class _AppShellState extends State<AppShell>
                 gradient: RadialGradient(
                   center: const Alignment(0.8, -1.1),
                   radius: 0.9,
-                  colors: [AppTheme.accent.withOpacity(0.07), Colors.transparent],
+                  colors: [
+                    AppTheme.accent.withOpacity(0.07),
+                    Colors.transparent,
+                  ],
                 ),
               ),
             ),
@@ -359,32 +362,37 @@ class _AppShellState extends State<AppShell>
                 gradient: RadialGradient(
                   center: const Alignment(-1.0, 1.2),
                   radius: 0.7,
-                  colors: [AppTheme.accent.withOpacity(0.04), Colors.transparent],
+                  colors: [
+                    AppTheme.accent.withOpacity(0.04),
+                    Colors.transparent,
+                  ],
                 ),
               ),
             ),
           ),
           Scaffold(
             backgroundColor: Colors.transparent,
-            bottomNavigationBar: Builder(builder: (_) {
-              final svc = HomeCustomizationService.instance;
-              return BottomGlassSimpleNavBar(
-                navigationController: navigationController,
-                dark: true,
-                selectedRelayIp: _selectedRelay.ip,
-                onRelayChanged: _onRelayChanged,
-                activeItem: _activeNavItem,
-                onHomeTap: () => _goTo(_pageHome),
-                onConnectorTap: () => _goTo(_pageConnector),
-                onProfileTap: () => _goTo(_pageProfile),
-                navLeftFeature: svc.navLeft,
-                navRightFeature: svc.navRight,
-                onNavLeftTap: _navCallbackFor(svc.navLeft),
-                onNavRightTap: _navCallbackFor(svc.navRight),
-                navLeftActive: _isNavFeatureActive(svc.navLeft),
-                navRightActive: _isNavFeatureActive(svc.navRight),
-              );
-            }),
+            bottomNavigationBar: Builder(
+              builder: (_) {
+                final svc = HomeCustomizationService.instance;
+                return BottomGlassSimpleNavBar(
+                  navigationController: navigationController,
+                  dark: true,
+                  selectedRelayIp: _selectedRelay.ip,
+                  onRelayChanged: _onRelayChanged,
+                  activeItem: _activeNavItem,
+                  onHomeTap: () => _goTo(_pageHome),
+                  onConnectorTap: () => _goTo(_pageConnector),
+                  onProfileTap: () => _goTo(_pageProfile),
+                  navLeftFeature: svc.navLeft,
+                  navRightFeature: svc.navRight,
+                  onNavLeftTap: _navCallbackFor(svc.navLeft),
+                  onNavRightTap: _navCallbackFor(svc.navRight),
+                  navLeftActive: _isNavFeatureActive(svc.navLeft),
+                  navRightActive: _isNavFeatureActive(svc.navRight),
+                );
+              },
+            ),
             body: SafeArea(
               top: true,
               bottom: false,
@@ -567,9 +575,7 @@ class _AppShellState extends State<AppShell>
           },
         );
       case _ActiveSheet.info:
-        return InfoSheetContent(
-          onClose: _closeSheet,
-        );
+        return InfoSheetContent(onClose: _closeSheet);
       case _ActiveSheet.none:
         return const SizedBox.shrink();
     }

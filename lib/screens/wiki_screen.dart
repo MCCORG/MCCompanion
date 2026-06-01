@@ -47,11 +47,41 @@ const _sections = [
     color: Color(0xFF4CAF50),
     imagePath: 'assets/images/wiki/mobs.png',
     subs: [
-      _Sub(label: 'Passive',  emoji: '🐄', category: 'Category:Passive mobs',  jsonKey: 'mobs_passive',  imagePath: 'assets/images/wiki/chicken.png'),
-      _Sub(label: 'Neutral',  emoji: '🐺', category: 'Category:Neutral mobs',  jsonKey: 'mobs_neutral',  imagePath: 'assets/images/wiki/spider.png'),
-      _Sub(label: 'Hostile',  emoji: '💀', category: 'Category:Hostile mobs',  jsonKey: 'mobs_hostile',  imagePath: 'assets/images/wiki/creeper.png'),
-      _Sub(label: 'Boss',     emoji: '👑', category: 'Category:Boss mobs',     jsonKey: 'mobs_boss',     imagePath: 'assets/images/wiki/ender_dragon.png'),
-      _Sub(label: 'Utility',  emoji: '🤖', category: 'Category:Utility mobs',  jsonKey: 'mobs_utility',  imagePath: 'assets/images/wiki/iron_golem.png'),
+      _Sub(
+        label: 'Passive',
+        emoji: '🐄',
+        category: 'Category:Passive mobs',
+        jsonKey: 'mobs_passive',
+        imagePath: 'assets/images/wiki/chicken.png',
+      ),
+      _Sub(
+        label: 'Neutral',
+        emoji: '🐺',
+        category: 'Category:Neutral mobs',
+        jsonKey: 'mobs_neutral',
+        imagePath: 'assets/images/wiki/spider.png',
+      ),
+      _Sub(
+        label: 'Hostile',
+        emoji: '💀',
+        category: 'Category:Hostile mobs',
+        jsonKey: 'mobs_hostile',
+        imagePath: 'assets/images/wiki/creeper.png',
+      ),
+      _Sub(
+        label: 'Boss',
+        emoji: '👑',
+        category: 'Category:Boss mobs',
+        jsonKey: 'mobs_boss',
+        imagePath: 'assets/images/wiki/ender_dragon.png',
+      ),
+      _Sub(
+        label: 'Utility',
+        emoji: '🤖',
+        category: 'Category:Utility mobs',
+        jsonKey: 'mobs_utility',
+        imagePath: 'assets/images/wiki/iron_golem.png',
+      ),
     ],
   ),
   _Section(
@@ -60,13 +90,55 @@ const _sections = [
     color: Color(0xFF795548),
     imagePath: 'assets/images/wiki/blocks.png',
     subs: [
-      _Sub(label: 'Natural',    emoji: '🌿', category: 'Category:Natural blocks',       jsonKey: 'blocks_natural',    imagePath: 'assets/images/wiki/dirt.png'),
-      _Sub(label: 'Ores',       emoji: '💎', category: 'Category:Ores',                 jsonKey: 'blocks_ores',       imagePath: 'assets/images/wiki/raw_gold.png'),
-      _Sub(label: 'Wood',       emoji: '🌲', category: 'Category:Wood',                 jsonKey: 'blocks_wood',       imagePath: 'assets/images/wiki/log.png'),
-      _Sub(label: 'Stone',      emoji: '🪨', category: 'Category:Stone',                jsonKey: 'blocks_stone',      imagePath: 'assets/images/wiki/stone.png'),
-      _Sub(label: 'Redstone',   emoji: '🔴', category: 'Category:Redstone components',  jsonKey: 'blocks_redstone',   imagePath: 'assets/images/wiki/redstone.png'),
-      _Sub(label: 'Plants',     emoji: '🌱', category: 'Category:Plants',               jsonKey: 'blocks_plants',     imagePath: 'assets/images/wiki/bamboo.png'),
-      _Sub(label: 'Decoration', emoji: '🪟', category: 'Category:Decoration blocks',    jsonKey: 'blocks_decoration', imagePath: 'assets/images/wiki/obsidian.png'),
+      _Sub(
+        label: 'Natural',
+        emoji: '🌿',
+        category: 'Category:Natural blocks',
+        jsonKey: 'blocks_natural',
+        imagePath: 'assets/images/wiki/dirt.png',
+      ),
+      _Sub(
+        label: 'Ores',
+        emoji: '💎',
+        category: 'Category:Ores',
+        jsonKey: 'blocks_ores',
+        imagePath: 'assets/images/wiki/raw_gold.png',
+      ),
+      _Sub(
+        label: 'Wood',
+        emoji: '🌲',
+        category: 'Category:Wood',
+        jsonKey: 'blocks_wood',
+        imagePath: 'assets/images/wiki/log.png',
+      ),
+      _Sub(
+        label: 'Stone',
+        emoji: '🪨',
+        category: 'Category:Stone',
+        jsonKey: 'blocks_stone',
+        imagePath: 'assets/images/wiki/stone.png',
+      ),
+      _Sub(
+        label: 'Redstone',
+        emoji: '🔴',
+        category: 'Category:Redstone components',
+        jsonKey: 'blocks_redstone',
+        imagePath: 'assets/images/wiki/redstone.png',
+      ),
+      _Sub(
+        label: 'Plants',
+        emoji: '🌱',
+        category: 'Category:Plants',
+        jsonKey: 'blocks_plants',
+        imagePath: 'assets/images/wiki/bamboo.png',
+      ),
+      _Sub(
+        label: 'Decoration',
+        emoji: '🪟',
+        category: 'Category:Decoration blocks',
+        jsonKey: 'blocks_decoration',
+        imagePath: 'assets/images/wiki/obsidian.png',
+      ),
     ],
   ),
   _Section(
@@ -75,15 +147,25 @@ const _sections = [
     color: Color(0xFF2196F3),
     imagePath: 'assets/images/wiki/items.png',
     subs: [
-      _Sub(label: 'Tools',     emoji: '🪓', category: 'Category:Tools',          jsonKey: 'items_tools',     imagePath: 'assets/images/wiki/tools.gif'),
+      _Sub(
+        label: 'Tools',
+        emoji: '🪓',
+        category: 'Category:Tools',
+        jsonKey: 'items_tools',
+        imagePath: 'assets/images/wiki/tools.gif',
+      ),
       _Sub(
         label: 'Swords',
         emoji: '⚔️',
         category: 'Category:Swords',
         imagePath: 'assets/images/wiki/sword.gif',
         hardcoded: [
-          'Wooden Sword', 'Stone Sword', 'Iron Sword',
-          'Golden Sword', 'Diamond Sword', 'Netherite Sword',
+          'Wooden Sword',
+          'Stone Sword',
+          'Iron Sword',
+          'Golden Sword',
+          'Diamond Sword',
+          'Netherite Sword',
         ],
       ),
       _Sub(
@@ -93,10 +175,34 @@ const _sections = [
         imagePath: 'assets/images/wiki/bow.png',
         hardcoded: ['Bow', 'Crossbow', 'Trident', 'Wind Charge'],
       ),
-      _Sub(label: 'Armor',     emoji: '🛡️', category: 'Category:Armor',          jsonKey: 'items_armor',     imagePath: 'assets/images/wiki/armor.png'),
-      _Sub(label: 'Food',      emoji: '🍎', category: 'Category:Food',            jsonKey: 'items_food',      imagePath: 'assets/images/wiki/apple.png'),
-      _Sub(label: 'Brewing',   emoji: '🧪', category: 'Category:Brewing',         jsonKey: 'items_brewing',   imagePath: 'assets/images/wiki/brew.png'),
-      _Sub(label: 'Materials', emoji: '🔩', category: 'Category:Materials',       jsonKey: 'items_materials', imagePath: 'assets/images/wiki/gold.png'),
+      _Sub(
+        label: 'Armor',
+        emoji: '🛡️',
+        category: 'Category:Armor',
+        jsonKey: 'items_armor',
+        imagePath: 'assets/images/wiki/armor.png',
+      ),
+      _Sub(
+        label: 'Food',
+        emoji: '🍎',
+        category: 'Category:Food',
+        jsonKey: 'items_food',
+        imagePath: 'assets/images/wiki/apple.png',
+      ),
+      _Sub(
+        label: 'Brewing',
+        emoji: '🧪',
+        category: 'Category:Brewing',
+        jsonKey: 'items_brewing',
+        imagePath: 'assets/images/wiki/brew.png',
+      ),
+      _Sub(
+        label: 'Materials',
+        emoji: '🔩',
+        category: 'Category:Materials',
+        jsonKey: 'items_materials',
+        imagePath: 'assets/images/wiki/gold.png',
+      ),
     ],
   ),
   _Section(
@@ -105,9 +211,27 @@ const _sections = [
     color: Color(0xFF66BB6A),
     imagePath: 'assets/images/wiki/biomes.png',
     subs: [
-      _Sub(label: 'Overworld', emoji: '☀️', category: 'Category:Overworld biomes',  jsonKey: 'biomes_overworld', imagePath: 'assets/images/wiki/overworld.png'),
-      _Sub(label: 'Nether',    emoji: '🔥', category: 'Category:Nether biomes',     jsonKey: 'biomes_nether',    imagePath: 'assets/images/wiki/nether.png'),
-      _Sub(label: 'The End',   emoji: '🌑', category: 'Category:The End biomes',    jsonKey: 'biomes_end',       imagePath: 'assets/images/wiki/end.png'),
+      _Sub(
+        label: 'Overworld',
+        emoji: '☀️',
+        category: 'Category:Overworld biomes',
+        jsonKey: 'biomes_overworld',
+        imagePath: 'assets/images/wiki/overworld.png',
+      ),
+      _Sub(
+        label: 'Nether',
+        emoji: '🔥',
+        category: 'Category:Nether biomes',
+        jsonKey: 'biomes_nether',
+        imagePath: 'assets/images/wiki/nether.png',
+      ),
+      _Sub(
+        label: 'The End',
+        emoji: '🌑',
+        category: 'Category:The End biomes',
+        jsonKey: 'biomes_end',
+        imagePath: 'assets/images/wiki/end.png',
+      ),
     ],
   ),
   _Section(
@@ -116,9 +240,27 @@ const _sections = [
     color: Color(0xFF9C27B0),
     imagePath: 'assets/images/wiki/structures.png',
     subs: [
-      _Sub(label: 'Overworld', emoji: '🗺️', category: 'Category:Overworld structures', jsonKey: 'structures_overworld', imagePath: 'assets/images/wiki/overworld.png'),
-      _Sub(label: 'Nether',    emoji: '🔥', category: 'Category:Nether structures',     jsonKey: 'structures_nether',    imagePath: 'assets/images/wiki/nether.png'),
-      _Sub(label: 'The End',   emoji: '🌑', category: 'Category:The End structures',    jsonKey: 'structures_end',       imagePath: 'assets/images/wiki/end.png'),
+      _Sub(
+        label: 'Overworld',
+        emoji: '🗺️',
+        category: 'Category:Overworld structures',
+        jsonKey: 'structures_overworld',
+        imagePath: 'assets/images/wiki/overworld.png',
+      ),
+      _Sub(
+        label: 'Nether',
+        emoji: '🔥',
+        category: 'Category:Nether structures',
+        jsonKey: 'structures_nether',
+        imagePath: 'assets/images/wiki/nether.png',
+      ),
+      _Sub(
+        label: 'The End',
+        emoji: '🌑',
+        category: 'Category:The End structures',
+        jsonKey: 'structures_end',
+        imagePath: 'assets/images/wiki/end.png',
+      ),
     ],
   ),
   _Section(
@@ -127,11 +269,41 @@ const _sections = [
     color: Color(0xFFFF9800),
     imagePath: 'assets/images/wiki/enchantments.png',
     subs: [
-      _Sub(label: 'Sword',   emoji: '⚔️', category: 'Category:Sword enchantments',      jsonKey: 'enchantments_sword',   imagePath: 'assets/images/wiki/sword.gif'),
-      _Sub(label: 'Armor',   emoji: '🛡️', category: 'Category:Armor enchantments',      jsonKey: 'enchantments_armor',   imagePath: 'assets/images/wiki/armor.png'),
-      _Sub(label: 'Tool',    emoji: '🪓', category: 'Category:Tool enchantments',        jsonKey: 'enchantments_tool',    imagePath: 'assets/images/wiki/tools.gif'),
-      _Sub(label: 'Bow',     emoji: '🏹', category: 'Category:Bow enchantments',         jsonKey: 'enchantments_bow',     imagePath: 'assets/images/wiki/bow.png'),
-      _Sub(label: 'Fishing', emoji: '🎣', category: 'Category:Fishing Rod enchantments', jsonKey: 'enchantments_fishing', imagePath: 'assets/images/wiki/fishing.png'),
+      _Sub(
+        label: 'Sword',
+        emoji: '⚔️',
+        category: 'Category:Sword enchantments',
+        jsonKey: 'enchantments_sword',
+        imagePath: 'assets/images/wiki/sword.gif',
+      ),
+      _Sub(
+        label: 'Armor',
+        emoji: '🛡️',
+        category: 'Category:Armor enchantments',
+        jsonKey: 'enchantments_armor',
+        imagePath: 'assets/images/wiki/armor.png',
+      ),
+      _Sub(
+        label: 'Tool',
+        emoji: '🪓',
+        category: 'Category:Tool enchantments',
+        jsonKey: 'enchantments_tool',
+        imagePath: 'assets/images/wiki/tools.gif',
+      ),
+      _Sub(
+        label: 'Bow',
+        emoji: '🏹',
+        category: 'Category:Bow enchantments',
+        jsonKey: 'enchantments_bow',
+        imagePath: 'assets/images/wiki/bow.png',
+      ),
+      _Sub(
+        label: 'Fishing',
+        emoji: '🎣',
+        category: 'Category:Fishing Rod enchantments',
+        jsonKey: 'enchantments_fishing',
+        imagePath: 'assets/images/wiki/fishing.png',
+      ),
     ],
   ),
   _Section(
@@ -140,8 +312,20 @@ const _sections = [
     color: Color(0xFFE91E63),
     imagePath: 'assets/images/wiki/potions.png',
     subs: [
-      _Sub(label: 'Potions',        emoji: '🧪', category: 'Category:Potions',        jsonKey: 'potions_potions', imagePath: 'assets/images/wiki/brew.png'),
-      _Sub(label: 'Status Effects', emoji: '💫', category: 'Category:Status effects', jsonKey: 'potions_effects', imagePath: 'assets/images/wiki/effect.png'),
+      _Sub(
+        label: 'Potions',
+        emoji: '🧪',
+        category: 'Category:Potions',
+        jsonKey: 'potions_potions',
+        imagePath: 'assets/images/wiki/brew.png',
+      ),
+      _Sub(
+        label: 'Status Effects',
+        emoji: '💫',
+        category: 'Category:Status effects',
+        jsonKey: 'potions_effects',
+        imagePath: 'assets/images/wiki/effect.png',
+      ),
     ],
   ),
 ];
@@ -149,41 +333,76 @@ const _sections = [
 // Maps the English const label stored on _Section/_Sub → the localized string.
 String _wikiL10n(AppLocalizations l, String key) {
   switch (key) {
-    case 'Mobs':           return l.wikiMobs;
-    case 'Blocks':         return l.wikiBlocks;
-    case 'Items':          return l.wikiItems;
-    case 'Biomes':         return l.wikiBiomes;
-    case 'Structures':     return l.wikiStructures;
-    case 'Enchantments':   return l.wikiEnchantments;
-    case 'Potions':        return l.wikiPotions;
-    case 'Passive':        return l.wikiPassive;
-    case 'Neutral':        return l.wikiNeutral;
-    case 'Hostile':        return l.wikiHostile;
-    case 'Boss':           return l.wikiBoss;
-    case 'Utility':        return l.wikiUtility;
-    case 'Natural':        return l.wikiNatural;
-    case 'Ores':           return l.wikiOres;
-    case 'Wood':           return l.wikiWood;
-    case 'Stone':          return l.wikiStone;
-    case 'Redstone':       return l.wikiRedstone;
-    case 'Plants':         return l.wikiPlants;
-    case 'Decoration':     return l.wikiDecoration;
-    case 'Tools':          return l.wikiTools;
-    case 'Swords':         return l.wikiSwords;
-    case 'Ranged':         return l.wikiRanged;
-    case 'Armor':          return l.wikiArmor;
-    case 'Food':           return l.wikiFood;
-    case 'Brewing':        return l.wikiBrewing;
-    case 'Materials':      return l.wikiMaterials;
-    case 'Overworld':      return l.wikiOverworld;
-    case 'Nether':         return l.wikiNether;
-    case 'The End':        return l.wikiTheEnd;
-    case 'Sword':          return l.wikiSword;
-    case 'Tool':           return l.wikiTool;
-    case 'Bow':            return l.wikiBow;
-    case 'Fishing':        return l.wikiFishing;
-    case 'Status Effects': return l.wikiStatusEffects;
-    default:               return key;
+    case 'Mobs':
+      return l.wikiMobs;
+    case 'Blocks':
+      return l.wikiBlocks;
+    case 'Items':
+      return l.wikiItems;
+    case 'Biomes':
+      return l.wikiBiomes;
+    case 'Structures':
+      return l.wikiStructures;
+    case 'Enchantments':
+      return l.wikiEnchantments;
+    case 'Potions':
+      return l.wikiPotions;
+    case 'Passive':
+      return l.wikiPassive;
+    case 'Neutral':
+      return l.wikiNeutral;
+    case 'Hostile':
+      return l.wikiHostile;
+    case 'Boss':
+      return l.wikiBoss;
+    case 'Utility':
+      return l.wikiUtility;
+    case 'Natural':
+      return l.wikiNatural;
+    case 'Ores':
+      return l.wikiOres;
+    case 'Wood':
+      return l.wikiWood;
+    case 'Stone':
+      return l.wikiStone;
+    case 'Redstone':
+      return l.wikiRedstone;
+    case 'Plants':
+      return l.wikiPlants;
+    case 'Decoration':
+      return l.wikiDecoration;
+    case 'Tools':
+      return l.wikiTools;
+    case 'Swords':
+      return l.wikiSwords;
+    case 'Ranged':
+      return l.wikiRanged;
+    case 'Armor':
+      return l.wikiArmor;
+    case 'Food':
+      return l.wikiFood;
+    case 'Brewing':
+      return l.wikiBrewing;
+    case 'Materials':
+      return l.wikiMaterials;
+    case 'Overworld':
+      return l.wikiOverworld;
+    case 'Nether':
+      return l.wikiNether;
+    case 'The End':
+      return l.wikiTheEnd;
+    case 'Sword':
+      return l.wikiSword;
+    case 'Tool':
+      return l.wikiTool;
+    case 'Bow':
+      return l.wikiBow;
+    case 'Fishing':
+      return l.wikiFishing;
+    case 'Status Effects':
+      return l.wikiStatusEffects;
+    default:
+      return key;
   }
 }
 
@@ -390,7 +609,9 @@ class _WikiScreenState extends State<WikiScreen> {
     'Template:Potion',
   };
 
-  Future<List<WikiResult>> _filterByGameTemplates(List<WikiResult> results) async {
+  Future<List<WikiResult>> _filterByGameTemplates(
+    List<WikiResult> results,
+  ) async {
     final effectiveTemplates = _gameTemplates;
     final filtered = <WikiResult>[];
     const batchSize = 50;
@@ -438,7 +659,9 @@ class _WikiScreenState extends State<WikiScreen> {
     // Disambiguation pages
     if (title.contains('(disambiguation)')) return false;
     // Tag articles (e.g. "Biome tag (Java Edition)")
-    if (title.toLowerCase().contains(' tag ') || title.toLowerCase().endsWith(' tag')) return false;
+    if (title.toLowerCase().contains(' tag ') ||
+        title.toLowerCase().endsWith(' tag'))
+      return false;
 
     // Spin-off games
     if (title.contains('(Dungeons)')) return false;
@@ -480,7 +703,8 @@ class _WikiScreenState extends State<WikiScreen> {
     if (title == 'Dwarf Fortress') return false;
 
     // April Fools / joke content
-    if (title.contains('Poisonous Potato') && title != 'Poisonous Potato') return false;
+    if (title.contains('Poisonous Potato') && title != 'Poisonous Potato')
+      return false;
 
     // Concept/meta articles unlikely to be an actual item/block/mob
     if (title.startsWith('Biome For Player')) return false;
@@ -506,8 +730,9 @@ class _WikiScreenState extends State<WikiScreen> {
         };
         if (continueToken != null) params['cmcontinue'] = continueToken;
 
-        final uri = Uri.parse('https://minecraft.wiki/api.php')
-            .replace(queryParameters: params);
+        final uri = Uri.parse(
+          'https://minecraft.wiki/api.php',
+        ).replace(queryParameters: params);
         final response = await http
             .get(uri, headers: {'User-Agent': 'MCCompanionApp/1.0'})
             .timeout(const Duration(seconds: 10));
@@ -517,11 +742,13 @@ class _WikiScreenState extends State<WikiScreen> {
         final members = (data['query']?['categorymembers'] as List?) ?? [];
         allResults.addAll(
           members
-              .map((m) => WikiResult(
-                    pageId: m['pageid'] as int,
-                    title: m['title'] as String,
-                    snippet: '',
-                  ))
+              .map(
+                (m) => WikiResult(
+                  pageId: m['pageid'] as int,
+                  title: m['title'] as String,
+                  snippet: '',
+                ),
+              )
               .where((r) => _isVanilla(r.title)),
         );
 
@@ -809,7 +1036,10 @@ class _WikiScreenState extends State<WikiScreen> {
               if (_view == _View.root)
                 Text(
                   l.wikiMinecraftWiki,
-                  style: const TextStyle(color: AppTheme.textMuted, fontSize: 12),
+                  style: const TextStyle(
+                    color: AppTheme.textMuted,
+                    fontSize: 12,
+                  ),
                 ),
             ],
           ),
@@ -862,10 +1092,7 @@ class _WikiScreenState extends State<WikiScreen> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(
-                  color: AppTheme.accent,
-                  width: 1.5,
-                ),
+                borderSide: BorderSide(color: AppTheme.accent, width: 1.5),
               ),
             ),
           ),
@@ -876,9 +1103,7 @@ class _WikiScreenState extends State<WikiScreen> {
 
   Widget _buildBody() {
     if (_loading)
-      return Center(
-        child: CircularProgressIndicator(color: AppTheme.accent),
-      );
+      return Center(child: CircularProgressIndicator(color: AppTheme.accent));
 
     if (_error != null) {
       return Center(
@@ -1061,10 +1286,7 @@ class _WikiCard extends StatefulWidget {
   final _Section section;
   final VoidCallback onTap;
 
-  const _WikiCard({
-    required this.section,
-    required this.onTap,
-  });
+  const _WikiCard({required this.section, required this.onTap});
 
   @override
   State<_WikiCard> createState() => _WikiCardState();
@@ -1124,7 +1346,10 @@ class _WikiCardState extends State<_WikiCard> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    _wikiL10n(AppLocalizations.of(context)!, widget.section.label),
+                    _wikiL10n(
+                      AppLocalizations.of(context)!,
+                      widget.section.label,
+                    ),
                     style: const TextStyle(
                       color: AppTheme.textPrimary,
                       fontSize: 14,
@@ -1133,7 +1358,9 @@ class _WikiCardState extends State<_WikiCard> {
                   ),
                   const SizedBox(height: 3),
                   Text(
-                    AppLocalizations.of(context)!.wikiCategories(widget.section.subs.length),
+                    AppLocalizations.of(
+                      context,
+                    )!.wikiCategories(widget.section.subs.length),
                     style: const TextStyle(
                       color: AppTheme.textMuted,
                       fontSize: 11,
@@ -1191,7 +1418,10 @@ class _SubCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(14),
                     ),
                     child: Center(
-                      child: Text(sub.emoji, style: const TextStyle(fontSize: 26)),
+                      child: Text(
+                        sub.emoji,
+                        style: const TextStyle(fontSize: 26),
+                      ),
                     ),
                   ),
                 ),
@@ -1610,9 +1840,7 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
 
   Widget _buildContent() {
     if (_loading)
-      return Center(
-        child: CircularProgressIndicator(color: AppTheme.accent),
-      );
+      return Center(child: CircularProgressIndicator(color: AppTheme.accent));
 
     if (_error != null) {
       return Center(

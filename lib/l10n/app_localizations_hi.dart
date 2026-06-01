@@ -9,7 +9,7 @@ class AppLocalizationsHi extends AppLocalizations {
   AppLocalizationsHi([String locale = 'hi']) : super(locale);
 
   @override
-  String get appName => 'MCCompanion';
+  String get appName => 'NetherLink';
 
   @override
   String get console => 'कंसोल';
@@ -46,7 +46,7 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String helpText(Object appCreator) {
-    return '$appCreator द्वारा बनाया गया।\r\n\r\nकैसे उपयोग करें:\r\n1. अपना Minecraft सर्वर पता और पोर्ट दर्ज करें (डिफ़ॉल्ट: 19132)\r\n   — या ड्रॉपडाउन से पहले से सहेजा गया सर्वर चुनें\r\n2. (वैकल्पिक) अपनी लोकेशन के सबसे पास का Relay Server (EU या US) चुनें\r\n3. शुरू करने के लिए \\\"ब्रॉडकास्टिंग शुरू करें\\\" पर क्लिक करें\r\n4. अपने कंसोल/डिवाइस पर: Minecraft > Play > Friends\r\n5. आपको \\\"MCCompanion\\\" नाम का एक LAN सर्वर दिखाई देना चाहिए\r\n6. MCCompanion के माध्यम से अपने बाहरी सर्वर से जुड़ने के लिए उस पर क्लिक करें\r\n\r\nNintendo Switch (DNS mode):\r\n1. कनेक्शन पैनल में \\\"Nintendo Switch\\\" सक्षम करें\r\n2. एक Relay Server (EU या US) चुनें\r\n3. \\\"DNS Config भेजें\\\" पर क्लिक करें — यह आपकी config को relay पर भेजता है\r\n   (यह LAN सर्वर ब्रॉडकास्ट नहीं करता)\r\n4. अपने Switch पर MCCompanion DNS सेटअप लागू करें और\r\n   MCCompanion के लिए उपयोग होने वाली server entry से जुड़ें\r\n\r\nनोट्स:\r\n- LAN ब्रॉडकास्टिंग के लिए MCCompanion और कंसोल एक ही लोकल नेटवर्क पर होने चाहिए।\r\n- सुझाव: सर्वोत्तम प्रदर्शन के लिए अपने सबसे नज़दीकी relay server को चुनें।';
+    return '$appCreator द्वारा बनाया गया।\r\n\r\nकैसे उपयोग करें:\r\n1. अपना Minecraft सर्वर पता और पोर्ट दर्ज करें (डिफ़ॉल्ट: 19132)\r\n   — या ड्रॉपडाउन से पहले से सहेजा गया सर्वर चुनें\r\n2. (वैकल्पिक) अपनी लोकेशन के सबसे पास का Relay Server (EU या US) चुनें\r\n3. शुरू करने के लिए \\\"ब्रॉडकास्टिंग शुरू करें\\\" पर क्लिक करें\r\n4. अपने कंसोल/डिवाइस पर: Minecraft > Play > Friends\r\n5. आपको \\\"NetherLink\\\" नाम का एक LAN सर्वर दिखाई देना चाहिए\r\n6. NetherLink के माध्यम से अपने बाहरी सर्वर से जुड़ने के लिए उस पर क्लिक करें\r\n\r\nNintendo Switch (DNS mode):\r\n1. कनेक्शन पैनल में \\\"Nintendo Switch\\\" सक्षम करें\r\n2. एक Relay Server (EU या US) चुनें\r\n3. \\\"DNS Config भेजें\\\" पर क्लिक करें — यह आपकी config को relay पर भेजता है\r\n   (यह LAN सर्वर ब्रॉडकास्ट नहीं करता)\r\n4. अपने Switch पर NetherLink DNS सेटअप लागू करें और\r\n   NetherLink के लिए उपयोग होने वाली server entry से जुड़ें\r\n\r\nनोट्स:\r\n- LAN ब्रॉडकास्टिंग के लिए NetherLink और कंसोल एक ही लोकल नेटवर्क पर होने चाहिए।\r\n- सुझाव: सर्वोत्तम प्रदर्शन के लिए अपने सबसे नज़दीकी relay server को चुनें।';
   }
 
   @override
@@ -74,13 +74,13 @@ class AppLocalizationsHi extends AppLocalizations {
   String get howToJavaTitle => 'जावा मोड';
 
   @override
-  String get howToJavaSubtitle => 'MCCompanion के माध्यम से Java Edition सर्वरों से कनेक्ट करें';
+  String get howToJavaSubtitle => 'NetherLink के माध्यम से Java Edition सर्वरों से कनेक्ट करें';
 
   @override
   String get aternosSubtext => 'अपना खुद का मुफ़्त Minecraft सर्वर बनाएँ';
 
   @override
-  String get howToJavaBody => 'जावा मोड — त्वरित चरण:\n1. ऐप में जावा मोड चुनें।\n2. अपने Java Edition सर्वर का पता और पोर्ट दर्ज करें (डिफ़ॉल्ट: 25565)।\n3. \"जावा मोड शुरू करें\" दबाएँ — MCCompanion कनेक्शन को ब्रिज करेगा।\n4. Minecraft Bedrock खोलें और Friends टैब पर जाएँ।\n5. Java सर्वर से जुड़ने के लिए \"MCCompanion\" नाम वाले LAN सर्वर को चुनें।\n\n⚠️ महत्वपूर्ण चेतावनियाँ:\n- एक वैध Java Edition खाता (Microsoft) आवश्यक है।\n- कुछ सर्वर anti-cheat सिस्टम का उपयोग करते हैं जो आपके खाते का पता लगाकर उसे बैन कर सकते हैं।\n- कुछ सर्वर Bedrock क्लाइंट को स्पष्ट रूप से प्रतिबंधित करते हैं — हमेशा सर्वर नियम जाँचें।\n- इस सुविधा के उपयोग से होने वाले किसी भी अकाउंट बैन, निलंबन या अन्य अकाउंट-संबंधित समस्याओं के लिए MCCompanion जिम्मेदार नहीं है।\n- अपने जोखिम पर उपयोग करें।';
+  String get howToJavaBody => 'जावा मोड — त्वरित चरण:\n1. ऐप में जावा मोड चुनें।\n2. अपने Java Edition सर्वर का पता और पोर्ट दर्ज करें (डिफ़ॉल्ट: 25565)।\n3. \"जावा मोड शुरू करें\" दबाएँ — NetherLink कनेक्शन को ब्रिज करेगा।\n4. Minecraft Bedrock खोलें और Friends टैब पर जाएँ।\n5. Java सर्वर से जुड़ने के लिए \"NetherLink\" नाम वाले LAN सर्वर को चुनें।\n\n⚠️ महत्वपूर्ण चेतावनियाँ:\n- एक वैध Java Edition खाता (Microsoft) आवश्यक है।\n- कुछ सर्वर anti-cheat सिस्टम का उपयोग करते हैं जो आपके खाते का पता लगाकर उसे बैन कर सकते हैं।\n- कुछ सर्वर Bedrock क्लाइंट को स्पष्ट रूप से प्रतिबंधित करते हैं — हमेशा सर्वर नियम जाँचें।\n- इस सुविधा के उपयोग से होने वाले किसी भी अकाउंट बैन, निलंबन या अन्य अकाउंट-संबंधित समस्याओं के लिए NetherLink जिम्मेदार नहीं है।\n- अपने जोखिम पर उपयोग करें।';
 
   @override
   String get language => 'हिन्दी';
@@ -185,7 +185,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get debugDisabled => 'डिबग लॉग अक्षम किए गए';
 
   @override
-  String get howToUseTitle => 'MCCompanion का उपयोग कैसे करें';
+  String get howToUseTitle => 'NetherLink का उपयोग कैसे करें';
 
   @override
   String get iUnderstand => 'मैं समझ गया';
@@ -251,10 +251,10 @@ class AppLocalizationsHi extends AppLocalizations {
   String get noWifi => 'Wi‑Fi पर नहीं';
 
   @override
-  String get vpnActive => 'हमें पता चला है कि आपका VPN सक्रिय है।\n\nMCCompanion का उपयोग करने से पहले कृपया अपना VPN बंद करें, नहीं तो LAN प्रसारण आपके कंसोल तक नहीं पहुंच सकता।';
+  String get vpnActive => 'हमें पता चला है कि आपका VPN सक्रिय है।\n\nNetherLink का उपयोग करने से पहले कृपया अपना VPN बंद करें, नहीं तो LAN प्रसारण आपके कंसोल तक नहीं पहुंच सकता।';
 
   @override
-  String get mobileActive => 'पता चला: मोबाइल डेटा\n\nMCCompanion को आपके कंसोल के उसी नेटवर्क पर होना चाहिए। आगे बढ़ने से पहले अपने घर के Wi‑Fi या हॉटस्पॉट से जुड़ें।';
+  String get mobileActive => 'पता चला: मोबाइल डेटा\n\nNetherLink को आपके कंसोल के उसी नेटवर्क पर होना चाहिए। आगे बढ़ने से पहले अपने घर के Wi‑Fi या हॉटस्पॉट से जुड़ें।';
 
   @override
   String get continueAnyway => 'फिर भी जारी रखें';
@@ -263,13 +263,13 @@ class AppLocalizationsHi extends AppLocalizations {
   String get sameWifi => 'एक ही Wi‑Fi नेटवर्क';
 
   @override
-  String get needSameWifi => 'जिस डिवाइस पर MCCompanion चल रहा है, वह उसी Wi‑Fi नेटवर्क पर होना चाहिए जिस पर आपका Minecraft कंसोल जुड़ा है।';
+  String get needSameWifi => 'जिस डिवाइस पर NetherLink चल रहा है, वह उसी Wi‑Fi नेटवर्क पर होना चाहिए जिस पर आपका Minecraft कंसोल जुड़ा है।';
 
   @override
   String get subscription => 'ऑनलाइन सदस्यता आवश्यक';
 
   @override
-  String get needSubscription => 'हर कंसोल के लिए अलग सक्रिय ऑनलाइन सदस्यता (Xbox Live, PS Plus, NSO) आवश्यक है। इसके बिना MCCompanion दिखाई नहीं देगा।';
+  String get needSubscription => 'हर कंसोल के लिए अलग सक्रिय ऑनलाइन सदस्यता (Xbox Live, PS Plus, NSO) आवश्यक है। इसके बिना NetherLink दिखाई नहीं देगा।';
 
   @override
   String get updateAvailable => 'अपडेट उपलब्ध है';
@@ -320,7 +320,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get friendModeTitle => 'मित्र मोड';
 
   @override
-  String get friendModeText => 'MCCompanion के मित्र बॉट्स को मित्र के रूप में जोड़ें। मित्र मोड शुरू करें और खेलें';
+  String get friendModeText => 'NetherLink के मित्र बॉट्स को मित्र के रूप में जोड़ें। मित्र मोड शुरू करें और खेलें';
 
   @override
   String get selectedRelayCheck => 'चयनित';
@@ -331,7 +331,7 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get relayUnableConnect => 'किसी भी MCCompanion relay server से कनेक्ट नहीं हो सका। बाद में फिर प्रयास करें या अपना इंटरनेट जाँचें।';
+  String get relayUnableConnect => 'किसी भी NetherLink relay server से कनेक्ट नहीं हो सका। बाद में फिर प्रयास करें या अपना इंटरनेट जाँचें।';
 
   @override
   String get howToXboxTitle => 'Xbox / PS4-5 (LAN / प्रॉक्सी)';
@@ -340,7 +340,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get howToXboxSubtitle => 'LAN ब्रॉडकास्ट या प्रॉक्सी के माध्यम से खेलें';
 
   @override
-  String get howToXboxBody => 'कैसे कनेक्ट करें (Xbox / PS4 / PS5):\r\n1. सुनिश्चित करें कि MCCompanion चलाने वाला आपका डिवाइस और आपका कंसोल एक ही लोकल नेटवर्क पर हैं।\r\n2. ऐप में अपना Minecraft server address और port दर्ज करें और \\\"ब्रॉडकास्टिंग शुरू करें\\\" दबाएँ।\r\n3. कंसोल पर Minecraft → Play खोलें → LAN Worlds या Friends टैब देखें और सूची को रिफ्रेश करें।\r\n4. जुड़ने के लिए \\\"MCCompanion\\\" नाम वाले LAN server को चुनें।\r\nनोट्स:\r\n- यदि सर्वर दिखाई नहीं देता, तो पुष्टि करें कि दोनों डिवाइस एक ही subnet पर हैं और ऐप अभी भी ब्रॉडकास्ट कर रही है।\r\n- कुछ कंसोल मॉडल या राउटर LAN discovery को ब्लॉक कर सकते हैं; जरूरत पड़ने पर ऐप या राउटर सेटिंग्स बदलकर देखें।';
+  String get howToXboxBody => 'कैसे कनेक्ट करें (Xbox / PS4 / PS5):\r\n1. सुनिश्चित करें कि NetherLink चलाने वाला आपका डिवाइस और आपका कंसोल एक ही लोकल नेटवर्क पर हैं।\r\n2. ऐप में अपना Minecraft server address और port दर्ज करें और \\\"ब्रॉडकास्टिंग शुरू करें\\\" दबाएँ।\r\n3. कंसोल पर Minecraft → Play खोलें → LAN Worlds या Friends टैब देखें और सूची को रिफ्रेश करें।\r\n4. जुड़ने के लिए \\\"NetherLink\\\" नाम वाले LAN server को चुनें।\r\nनोट्स:\r\n- यदि सर्वर दिखाई नहीं देता, तो पुष्टि करें कि दोनों डिवाइस एक ही subnet पर हैं और ऐप अभी भी ब्रॉडकास्ट कर रही है।\r\n- कुछ कंसोल मॉडल या राउटर LAN discovery को ब्लॉक कर सकते हैं; जरूरत पड़ने पर ऐप या राउटर सेटिंग्स बदलकर देखें।';
 
   @override
   String get howToNintendoTitle => 'Nintendo Switch (DNS मोड)';
@@ -358,25 +358,25 @@ class AppLocalizationsHi extends AppLocalizations {
   String get howToFriendsSubtitle => 'मित्रों को आमंत्रित करें और LAN के माध्यम से जुड़ें';
 
   @override
-  String get howToFriendsBody => 'मित्र मोड — त्वरित चरण:\r\n1. यदि आवश्यक हो, तो अपने कंसोल या प्लेटफ़ॉर्म पर MCCompanion friend account (relay friend) जोड़ें।\r\n2. ऐप में मित्र मोड सक्षम करें और रिले configuration भेजें (यदि लागू हो)।\r\n3. अपने कंसोल पर Minecraft → Friends खोलें और LAN Worlds खोजें — आपका सर्वर वहाँ LAN world के रूप में दिखाई देना चाहिए।\r\n4. मित्रों के साथ अपने सर्वर से जुड़ने के लिए उसे चुनें।\r\nनोट्स:\r\n- सुनिश्चित करें कि आप और आपके मित्र एक जैसे NAT/settings का उपयोग कर रहे हैं जो friend presence की अनुमति देते हैं।\r\n- मित्र मोड प्लेटफ़ॉर्म के friend features पर निर्भर करता है और friend requests स्वीकार करने की आवश्यकता हो सकती है।';
+  String get howToFriendsBody => 'मित्र मोड — त्वरित चरण:\r\n1. यदि आवश्यक हो, तो अपने कंसोल या प्लेटफ़ॉर्म पर NetherLink friend account (relay friend) जोड़ें।\r\n2. ऐप में मित्र मोड सक्षम करें और रिले configuration भेजें (यदि लागू हो)।\r\n3. अपने कंसोल पर Minecraft → Friends खोलें और LAN Worlds खोजें — आपका सर्वर वहाँ LAN world के रूप में दिखाई देना चाहिए।\r\n4. मित्रों के साथ अपने सर्वर से जुड़ने के लिए उसे चुनें।\r\nनोट्स:\r\n- सुनिश्चित करें कि आप और आपके मित्र एक जैसे NAT/settings का उपयोग कर रहे हैं जो friend presence की अनुमति देते हैं।\r\n- मित्र मोड प्लेटफ़ॉर्म के friend features पर निर्भर करता है और friend requests स्वीकार करने की आवश्यकता हो सकती है।';
 
   @override
-  String get helpNetherlinkTitle => 'MCCompanion दिखाई नहीं दे रहा';
+  String get helpNetherlinkTitle => 'NetherLink दिखाई नहीं दे रहा';
 
   @override
   String get helpNetherlinkSubtitle => 'LAN खोज संबंधी समस्याओं का समाधान';
 
   @override
-  String get helpNetherlinkBody => 'यदि सर्वर आपके कंसोल पर दिखाई नहीं दे रहा है, तो ये चरण आज़माएँ:\r\n\r\n✅ बुनियादी जाँच:\r\n1. एक ही WiFi नेटवर्क - आपका फ़ोन/टैबलेट और कंसोल एक ही WiFi पर होना चाहिए\r\n2. सही सर्वर पता - IP और port दोबारा जाँचें (डिफ़ॉल्ट: 19132)\r\n3. ब्रॉडकास्टिंग सक्रिय - पुष्टि करें कि MCCompanion \\\"Broadcasting\\\" स्थिति दिखा रहा है\r\n\r\n🔄 त्वरित समाधान:\r\n• ऐप को पुनः आरंभ करें: ब्रॉडकास्टिंग बंद करें, MCCompanion को पूरी तरह बंद करें, फिर दोबारा खोलकर प्रयास करें\r\n• अपने कंसोल को पुनः आरंभ करें: कभी-कभी LAN games का पता लगाने के लिए कंसोल को रिफ्रेश की आवश्यकता होती है\r\n• Friends/LAN टैब जाँचें: सर्वर \\\"Friends\\\" या \\\"LAN Games\\\" के अंतर्गत दिखाई देता है, server list में नहीं\r\n• ब्रॉडकास्टिंग शुरू करने के बाद 10-15 सेकंड प्रतीक्षा करें\r\n• VPN अक्षम करें: VPN लोकल ब्रॉडकास्ट को ब्लॉक कर सकते हैं\r\n\r\n⚠️ सामान्य समस्याएँ:\r\n\\\"No route found for user\\\" → सुनिश्चित करें कि दोनों डिवाइस एक ही Wi‑Fi पर हैं (Guest networks से बचें)\r\n\\\"Unable to connect to MCCompanion relay server\\\" → अपना इंटरनेट / relay status जाँचें\r\n\r\n📱 अभी भी समस्या है? MCCompanion में Debug Mode सक्षम करें और logs जाँचें, या कोई दूसरा सर्वर आज़माएँ।';
+  String get helpNetherlinkBody => 'यदि सर्वर आपके कंसोल पर दिखाई नहीं दे रहा है, तो ये चरण आज़माएँ:\r\n\r\n✅ बुनियादी जाँच:\r\n1. एक ही WiFi नेटवर्क - आपका फ़ोन/टैबलेट और कंसोल एक ही WiFi पर होना चाहिए\r\n2. सही सर्वर पता - IP और port दोबारा जाँचें (डिफ़ॉल्ट: 19132)\r\n3. ब्रॉडकास्टिंग सक्रिय - पुष्टि करें कि NetherLink \\\"Broadcasting\\\" स्थिति दिखा रहा है\r\n\r\n🔄 त्वरित समाधान:\r\n• ऐप को पुनः आरंभ करें: ब्रॉडकास्टिंग बंद करें, NetherLink को पूरी तरह बंद करें, फिर दोबारा खोलकर प्रयास करें\r\n• अपने कंसोल को पुनः आरंभ करें: कभी-कभी LAN games का पता लगाने के लिए कंसोल को रिफ्रेश की आवश्यकता होती है\r\n• Friends/LAN टैब जाँचें: सर्वर \\\"Friends\\\" या \\\"LAN Games\\\" के अंतर्गत दिखाई देता है, server list में नहीं\r\n• ब्रॉडकास्टिंग शुरू करने के बाद 10-15 सेकंड प्रतीक्षा करें\r\n• VPN अक्षम करें: VPN लोकल ब्रॉडकास्ट को ब्लॉक कर सकते हैं\r\n\r\n⚠️ सामान्य समस्याएँ:\r\n\\\"No route found for user\\\" → सुनिश्चित करें कि दोनों डिवाइस एक ही Wi‑Fi पर हैं (Guest networks से बचें)\r\n\\\"Unable to connect to NetherLink relay server\\\" → अपना इंटरनेट / relay status जाँचें\r\n\r\n📱 अभी भी समस्या है? NetherLink में Debug Mode सक्षम करें और logs जाँचें, या कोई दूसरा सर्वर आज़माएँ।';
 
   @override
   String get helpMultiplayerFailedTitle => 'मल्टीप्लेयर कनेक्शन विफल';
 
   @override
-  String get helpMultiplayerFailedSubtitle => 'यह MCCompanion त्रुटि क्यों नहीं है, इसका स्पष्टीकरण';
+  String get helpMultiplayerFailedSubtitle => 'यह NetherLink त्रुटि क्यों नहीं है, इसका स्पष्टीकरण';
 
   @override
-  String get helpMultiplayerFailedBody => '⚠️ यह MCCompanion की समस्या नहीं है!\r\n\r\nMCCompanion ने आपको सफलतापूर्वक अनुरोधित सर्वर पर रीडायरेक्ट कर दिया। \\\"Multiplayer Connection Failed\\\" संदेश का अर्थ है कि लक्ष्य सर्वर इस समय पहुँच से बाहर है। संभावित कारण:\r\n\r\n• लक्ष्य Minecraft सर्वर ऑफ़लाइन है या अत्यधिक लोड में है\r\n• सर्वर को अपडेटेड client version या किसी विशेष edition की आवश्यकता है\r\n• relay और लक्ष्य सर्वर के बीच नेटवर्क समस्याएँ हैं\r\n\r\nकिसी दूसरे सर्वर से कनेक्ट करने का प्रयास करें या सर्वर के support से संपर्क करें। यदि समस्या कई सर्वरों पर बनी रहती है, तो MCCompanion में Debug Mode सक्षम करें और logs जाँचें।';
+  String get helpMultiplayerFailedBody => '⚠️ यह NetherLink की समस्या नहीं है!\r\n\r\nNetherLink ने आपको सफलतापूर्वक अनुरोधित सर्वर पर रीडायरेक्ट कर दिया। \\\"Multiplayer Connection Failed\\\" संदेश का अर्थ है कि लक्ष्य सर्वर इस समय पहुँच से बाहर है। संभावित कारण:\r\n\r\n• लक्ष्य Minecraft सर्वर ऑफ़लाइन है या अत्यधिक लोड में है\r\n• सर्वर को अपडेटेड client version या किसी विशेष edition की आवश्यकता है\r\n• relay और लक्ष्य सर्वर के बीच नेटवर्क समस्याएँ हैं\r\n\r\nकिसी दूसरे सर्वर से कनेक्ट करने का प्रयास करें या सर्वर के support से संपर्क करें। यदि समस्या कई सर्वरों पर बनी रहती है, तो NetherLink में Debug Mode सक्षम करें और logs जाँचें।';
 
   @override
   String get helpNintendoDnsTitle => 'Nintendo DNS काम नहीं कर रहा';
@@ -409,398 +409,749 @@ class AppLocalizationsHi extends AppLocalizations {
   String get couldNotOpenUrl => 'URL खोला नहीं जा सका';
 
   @override
-  String get reportUser => 'उपयोगकर्ता की रिपोर्ट करें';
+  String get serverTrackerTitle => 'सर्वर ट्रैकर';
+
   @override
-  String reportUserWithName(String username) => '@$username की रिपोर्ट करें';
+  String get removeServerTitle => 'सर्वर हटाएं';
+
   @override
-  String get reportMessage => 'संदेश की रिपोर्ट करें';
+  String removeServerConfirm(Object name) {
+    return 'अपने ट्रैकर से \"$name\" हटाएं?';
+  }
+
   @override
-  String get reportDisclaimer => 'हमारी टीम इस रिपोर्ट की समीक्षा करेगी। समुदाय को सुरक्षित रखने के लिए धन्यवाद।';
+  String get removeServerFailed => 'सर्वर हटाने में विफल';
+
   @override
-  String get reportReasonSpam => 'स्पैम';
+  String get refreshStatus => 'स्थिति ताज़ा करें';
+
   @override
-  String get reportReasonHarassment => 'उत्पीड़न या बदमाशी';
+  String get trackerSignInRequired => 'साइन इन आवश्यक है';
+
   @override
-  String get reportReasonInappropriate => 'अनुचित सामग्री';
-  @override
-  String get reportReasonOther => 'अन्य';
-  @override
-  String get reportAdditionalDetails => 'अतिरिक्त विवरण (वैकल्पिक)';
-  @override
-  String get reportSubmit => 'रिपोर्ट सबमिट करें';
-  @override
-  String get reportSuccess => 'रिपोर्ट सबमिट की गई। धन्यवाद।';
-  @override
-  String get reportFailed => 'रिपोर्ट सबमिट नहीं हो सकी। कृपया पुनः प्रयास करें।';
-  @override
-  String get messagePlaceholder => 'संदेश...';
-  @override
-  String get noMessagesYet => 'अभी तक कोई संदेश नहीं।\nहैलो कहें!';
-  @override
-  String get today => 'आज';
-  @override
-  String get yesterday => 'कल';
-  @override
-  String get noConversationsYet => 'अभी तक कोई बातचीत नहीं';
-  @override
-  String get startChatHint => 'अपनी मित्र सूची से चैट शुरू करें।';
-  @override
-  String get youPrefix => 'आप';
-  @override
-  String get tabProfile => 'प्रोफ़ाइल';
-  @override
-  String get tabFriends => 'मित्र';
-  @override
-  String get tabRequests => 'अनुरोध';
-  @override
-  String get tabChats => 'चैट';
-  @override
-  String get addFriend => 'मित्र जोड़ें';
-  @override
-  String get usernameHint => 'उपयोगकर्ता नाम';
-  @override
-  String get send => 'भेजें';
-  @override
-  String friendRequestSentTo(String username) => '@$username को मित्र अनुरोध भेजा गया';
-  @override
-  String alreadyFriendsWith(String username) => 'आप पहले से @$username के मित्र हैं।';
-  @override
-  String requestAlreadyPending(String username) => '@$username के साथ पहले से एक लंबित अनुरोध है।';
-  @override
-  String userNotFoundMsg(String username) => 'उपयोगकर्ता @$username नहीं मिला।';
-  @override
-  String cannotSendRequest(String username) => 'आप @$username को अनुरोध नहीं भेज सकते।';
-  @override
-  String get somethingWentWrong => 'कुछ गलत हो गया। कृपया पुनः प्रयास करें।';
-  @override
-  String friendRequestAccepted(String username) => '@$username का मित्र अनुरोध स्वीकार किया गया';
-  @override
-  String requestDeclined(String username) => '@$username का अनुरोध अस्वीकार किया गया';
-  @override
-  String get deleteAccountTitle => 'खाता हटाएं';
-  @override
-  String get deleteAccountBody => 'इससे आपका खाता, संदेश, मित्र और सभी संबंधित डेटा स्थायी रूप से हट जाएगा। यह क्रिया पूर्ववत नहीं की जा सकती।';
-  @override
-  String get deletePermanently => 'स्थायी रूप से हटाएं';
-  @override
-  String get couldNotDeleteAccount => 'खाता नहीं हटाया जा सका। कृपया पुनः प्रयास करें।';
-  @override
-  String get removeFriendTitle => 'मित्र हटाएं';
-  @override
-  String removeFriendConfirm(String username) => 'क्या आप @$username को मित्र से हटाना चाहते हैं?';
-  @override
-  String get remove => 'हटाएं';
-  @override
-  String friendRemoved(String username) => '@$username को आपके मित्रों से हटाया गया';
-  @override
-  String get noFriendsYet => 'अभी तक कोई मित्र नहीं';
-  @override
-  String get noFriendsSub => 'ऊपर दाईं ओर बटन का उपयोग करके किसी को जोड़ें।';
-  @override
-  String get noPendingRequests => 'कोई लंबित अनुरोध नहीं';
-  @override
-  String get requestsAppearHere => 'मित्र अनुरोध यहां दिखाई देंगे।';
-  @override
-  String onlineFriendsLabel(int count) => 'ऑनलाइन — $count';
-  @override
-  String offlineFriendsLabel(int count) => 'ऑफलाइन — $count';
-  @override
-  String get couldNotUpdateVisibility => 'दृश्यता अपडेट नहीं हो सकी। पुनः प्रयास करें।';
-  @override
-  String get aboutMe => 'मेरे बारे में';
-  @override
-  String get linkedAccountsTitle => 'लिंक्ड खाते';
-  @override
-  String get linkAccountsHint => 'अपने Minecraft खाते लिंक करें ताकि वे आपकी प्रोफ़ाइल पर दिखें।';
-  @override
-  String get unlinkXboxTitle => 'Xbox खाता अनलिंक करें';
-  @override
-  String removeLabelConfirm(String label) => '$label को लिंक्ड खातों से हटाएं?';
-  @override
-  String get unlinkJavaTitle => 'Java Edition अनलिंक करें';
-  @override
-  String removeJavaConfirm(String username) => '$username को लिंक्ड खातों से हटाएं?';
-  @override
-  String get unlink => 'अनलिंक';
-  @override
-  String get linkXbox => 'Xbox लिंक करें';
-  @override
-  String get linkJava => 'Java लिंक करें';
-  @override
-  String get appearOfflineLabel => 'ऑफलाइन दिखें';
-  @override
-  String get appearOfflineOn => 'मित्र आपको ऑफलाइन देखते हैं';
-  @override
-  String get appearOfflineOff => 'मित्र देख सकते हैं कि आप ऑनलाइन हैं';
-  @override
-  String get signOut => 'साइन आउट';
-  @override
-  String get profileCardTitle => 'प्रोफ़ाइल';
-  @override
-  String get edit => 'संपादित करें';
-  @override
-  String get displayNameLabel => 'प्रदर्शन नाम';
-  @override
-  String get bioLabel => 'बायो';
-  @override
-  String get yourNameHint => 'आपका नाम';
-  @override
-  String get bioHint => 'अपने बारे में कुछ बताएं';
-  @override
-  String get avatarUrlLabel => 'अवतार URL';
-  @override
-  String get usernameDisplayLabel => 'उपयोगकर्ता नाम';
-  @override
-  String get profileUpdated => 'प्रोफ़ाइल अपडेट हुई';
-  @override
-  String get findUser => 'उपयोगकर्ता खोजें';
+  String get trackerSignInSubtitle => 'सर्वर ट्रैक करने और ऑफलाइन सूचनाएं पाने के लिए साइन इन करें।';
+
   @override
   String get signIn => 'साइन इन';
-  @override
-  String get createAccount => 'खाता बनाएं';
-  @override
-  String get signInSubtitle => 'मित्र जोड़ने और अपने सत्र साझा करने के लिए साइन इन करें।';
-  @override
-  String get emailAddressHint => 'ईमेल पता';
-  @override
-  String get passwordHint => 'पासवर्ड';
-  @override
-  String get forgotPassword => 'पासवर्ड भूल गए?';
-  @override
-  String get continueWithGoogle => 'Google से जारी रखें';
-  @override
-  String get alreadyHaveAccount => 'पहले से खाता है? साइन इन करें';
-  @override
-  String get noAccountYet => 'अभी खाता नहीं? रजिस्टर करें';
-  @override
-  String get orDivider => 'या';
-  @override
-  String get resetPasswordTitle => 'पासवर्ड रीसेट करें';
-  @override
-  String get resetPasswordBody => 'अपना ईमेल पता दर्ज करें और हम आपको पासवर्ड रीसेट लिंक भेजेंगे।';
-  @override
-  String get sendLink => 'लिंक भेजें';
-  @override
-  String resetLinkSent(String email) => '$email पर रीसेट लिंक भेजा गया';
-  @override
-  String get noAccountForEmail => 'इस ईमेल पते के लिए कोई खाता नहीं मिला।';
-  @override
-  String get invalidEmailError => 'अमान्य ईमेल पता।';
-  @override
-  String get couldNotSendResetEmail => 'रीसेट ईमेल नहीं भेजा जा सका। कृपया पुनः प्रयास करें।';
-  @override
-  String get incorrectEmailOrPassword => 'गलत ईमेल या पासवर्ड।';
-  @override
-  String get emailAlreadyInUse => 'यह ईमेल पता पहले से उपयोग में है।';
-  @override
-  String get weakPassword => 'पासवर्ड कम से कम 6 अक्षरों का होना चाहिए।';
-  @override
-  String get googleSignInFailed => 'Google साइन-इन विफल। कृपया पुनः प्रयास करें।';
-  @override
-  String get appleSignInFailed => 'Apple साइन-इन विफल। कृपया पुनः प्रयास करें।';
-  @override
-  String get emailDifferentMethod => 'इस ईमेल से किसी अन्य साइन-इन विधि से पहले से खाता मौजूद है।';
-  @override
-  String get enterEmailAndPassword => 'कृपया अपना ईमेल और पासवर्ड दर्ज करें।';
-  @override
-  String get profileNotSetUp => 'प्रोफ़ाइल अभी तक सेट नहीं है';
-  @override
-  String get chooseUsernameSubtitle => 'मित्र जोड़ने और सत्र साझा करने के लिए उपयोगकर्ता नाम चुनें।';
-  @override
-  String get createProfile => 'प्रोफ़ाइल बनाएं';
-  @override
-  String get chooseUniqueUsername => 'मित्र जोड़ने के लिए एक अनूठा उपयोगकर्ता नाम चुनें।';
-  @override
-  String get usernameFieldLabel => 'उपयोगकर्ता नाम *';
-  @override
-  String get usernameFormatHint => '3–20 अक्षर · केवल a-z, 0-9 और _';
-  @override
-  String get displayNameOptional => 'प्रदर्शन नाम (वैकल्पिक)';
-  @override
-  String get usernameRequired => 'कृपया एक उपयोगकर्ता नाम दर्ज करें।';
-  @override
-  String get usernameFormatError => '3–20 अक्षर, केवल छोटे अक्षर, अंक और _';
-  @override
-  String get usernameTaken => 'यह उपयोगकर्ता नाम पहले से लिया हुआ है।';
-  @override
-  String get noConnectionError => 'कोई कनेक्शन नहीं। कृपया पुनः प्रयास करें।';
-  @override
-  String get usernameExampleHint => 'उदा. jens_mc';
-  @override
-  String get displayNameExampleHint => 'उदा. Jens';
-  @override
-  String get home => 'होम';
-  @override
-  String get info => 'जानकारी';
-  @override
-  String get consoleConnect => 'Console Connect';
-  @override
-  String get consoleConnectSubtitle => 'Minecraft सर्वर से कनेक्ट करें';
-  @override
-  String get minecraftSkins => 'Minecraft स्किन्स';
-  @override
-  String get minecraftSkinsSubtitle => 'Java और Bedrock स्किन्स देखें और संपादित करें';
-  @override
-  String get minecraftWiki => 'Minecraft Wiki';
-  @override
-  String get minecraftWikiSubtitle => 'मॉब, ब्लॉक, रेसिपी और अधिक';
-  @override
-  String get partnerServersLabel => 'पार्टनर सर्वर';
-  @override
-  String get partnerServersSubtitle => 'फीचर्ड Minecraft सर्वर';
-  @override
-  String get userLookup => 'Minecraft उपयोगकर्ता खोज';
-  @override
-  String get userLookupSubtitle => 'Java और Bedrock प्रोफ़ाइल खोजें';
 
   @override
-  String get navSkins => 'स्किन';
-  @override
-  String get navWiki => 'विकि';
-  @override
-  String get navProfile => 'प्रोफाइल';
+  String get noServersTracked => 'कोई सर्वर ट्रैक नहीं किया गया';
 
   @override
-  String get skinsUpload => 'अपलोड';
-  @override
-  String get skinsCreate => 'बनाएं';
-  @override
-  String get skinsSubtitle => 'Minecraft स्किन देखें और डाउनलोड करें।';
-  @override
-  String get skinsSectionRecent => 'हाल की स्किन';
-  @override
-  String get skinsSectionMy => 'मेरी स्किन';
-  @override
-  String get skinsSectionYours => 'आपकी स्किन';
-  @override
-  String get skinsEmptyMySkins => 'अभी तक कोई स्किन सेव नहीं। शुरू करने के लिए एक स्किन बनाएं या अपलोड करें।';
-  @override
-  String get skinsCouldNotLoad => 'स्किन लोड नहीं हो सकी';
-  @override
-  String skinsPageOf(int page, int total) => 'पृष्ठ $page / $total';
-  @override
-  String get skinsMustBe64 => 'स्किन 64×64 पिक्सेल होनी चाहिए';
-  @override
-  String get skinsInvalidFile => 'अमान्य छवि फ़ाइल';
-  @override
-  String get skinsDownload => 'डाउनलोड';
-  @override
-  String get skinsEdit => 'संपादित करें';
-  @override
-  String get skinsNoAccountsTitle => 'कोई खाता लिंक नहीं';
-  @override
-  String get skinsNoAccountsSubtitle => 'अपनी स्किन देखने के लिए प्रोफ़ाइल में Java या Bedrock लिंक करें।';
-  @override
-  String get skinsSignInTitle => 'अपनी स्किन देखने के लिए साइन इन करें';
-  @override
-  String get skinsSignInSubtitle => 'खाता बनाएं और प्रोफ़ाइल में Java या Bedrock लिंक करें।';
+  String get trackerEmptySubtitle => 'स्थिति मॉनिटर करने और सूचनाएं पाने के लिए एक Minecraft सर्वर जोड़ें।';
 
-  // ── Player Lookup ────────────────────────────────────────────────────────
   @override
-  String get playerLookupTitle => 'खिलाड़ी खोज';
+  String get fillAllFields => 'कृपया सभी फ़ील्ड सही से भरें';
+
   @override
-  String get playerLookupSubtitle => 'Java उपयोगकर्ता नाम, UUID, Bedrock गेमरटैग या XUID से खोजें।';
+  String get slotUsedUpgrade => 'आपका निःशुल्क स्लॉट उपयोग में है। अधिक सर्वर के लिए अपग्रेड करें।';
+
   @override
-  String get playerLookupHint => 'उपयोगकर्ता नाम, गेमरटैग, UUID या XUID…';
+  String get addServerFailed => 'सर्वर जोड़ने में विफल। अपनी जानकारी जांचें।';
+
   @override
-  String get playerLookupLinked => 'GeyserMC के माध्यम से खाते जुड़े';
+  String get ipAddressLabel => 'IP पता';
+
   @override
-  String get playerLookupLabelUsername => 'उपयोगकर्ता नाम';
+  String get platformLabel => 'प्लेटफ़ॉर्म';
+
   @override
-  String get playerLookupLabelTier => 'स्तर';
+  String get bedrockLabel => 'Bedrock';
+
   @override
-  String playerLookupCopied(String label) => '$label कॉपी किया गया';
-  // ── Wiki ──────────────────────────────────────────────────────────────────
+  String get addLabel => 'जोड़ें';
+
+  @override
+  String get statusOnline => 'ऑनलाइन';
+
+  @override
+  String get statusOffline => 'ऑफलाइन';
+
+  @override
+  String get statusChecking => 'जांच हो रही है...';
+
+  @override
+  String get notificationsOn => 'सूचनाएं चालू';
+
+  @override
+  String get notificationsOff => 'सूचनाएं बंद';
+
+  @override
+  String get failedUpdateNotifications => 'सूचनाएं अपडेट करने में विफल';
+
+  @override
+  String get editServerTitle => 'सर्वर संपादित करें';
+
+  @override
+  String get serverNameHint => 'सर्वर का नाम';
+
+  @override
+  String get failedSave => 'सहेजने में विफल। पुनः प्रयास करें।';
+
+  @override
+  String get serverRenamed => 'सर्वर का नाम बदला गया';
+
+  @override
+  String get customizeLabel => 'अनुकूलित करें';
+
+  @override
+  String get customizeSubtitle => 'टाइल्स को पुनर्व्यवस्थित करें और नेविगेशन अनुकूलित करें';
+
+  @override
+  String get resetLabel => 'रीसेट';
+
+  @override
+  String get tilesSection => 'टाइल्स';
+
+  @override
+  String get dragToReorder => 'पुनर्व्यवस्थित करने के लिए खींचें';
+
+  @override
+  String get navigationSection => 'नेविगेशन';
+
+  @override
+  String get navFixed => 'होम, कनेक्टर और प्रोफ़ाइल हमेशा स्थिर रहते हैं';
+
+  @override
+  String get leftSlot => 'बायां स्लॉट (होम के बगल में)';
+
+  @override
+  String get rightSlot => 'दायां स्लॉट (प्रोफ़ाइल के बगल में)';
+
+  @override
+  String get accentColorSection => 'एक्सेंट रंग';
+
+  @override
+  String get opacityLabel => 'अपारदर्शिता';
+
+  @override
+  String get backgroundSection => 'पृष्ठभूमि';
+
+  @override
+  String get cardsSection => 'कार्ड';
+
+  @override
+  String get editLabel => 'संपादित करें';
+
+  @override
+  String get playerLookupJavaEdition => 'Java Edition';
+
+  @override
+  String get playerLookupBedrockEdition => 'Bedrock Edition';
+
+  @override
+  String get playerLookupLabelUuid => 'UUID';
+
+  @override
+  String get playerLookupLabelGamertag => 'Gamertag';
+
+  @override
+  String get playerLookupLabelXuid => 'XUID';
+
+  @override
+  String get playerLookupLabelFloodgate => 'Floodgate';
+
+  @override
+  String accountSubtitleXbox(Object xuid) {
+    return 'Xbox · $xuid';
+  }
+
+  @override
+  String accountSubtitleJava(Object uuid) {
+    return 'Java Edition · $uuid';
+  }
+
+  @override
+  String get avatarUrlHint => 'https://example.com/avatar.png';
+
+  @override
+  String get reportUser => 'Report user';
+
+  @override
+  String get reportMessage => 'Report message';
+
+  @override
+  String reportUserWithName(Object name) {
+    return 'Report $name';
+  }
+
+  @override
+  String get reportDisclaimer => 'Reports are reviewed by our team. False reports may result in action against your account.';
+
+  @override
+  String get reportReasonSpam => 'Spam';
+
+  @override
+  String get reportReasonHarassment => 'Harassment';
+
+  @override
+  String get reportReasonInappropriate => 'Inappropriate content';
+
+  @override
+  String get reportReasonOther => 'Other';
+
+  @override
+  String get reportAdditionalDetails => 'Additional details (optional)…';
+
+  @override
+  String get reportSuccess => 'Report submitted. Thank you.';
+
+  @override
+  String get reportFailed => 'Failed to submit report. Please try again.';
+
+  @override
+  String get reportSubmit => 'Submit report';
+
+  @override
+  String get today => 'Today';
+
+  @override
+  String get yesterday => 'Yesterday';
+
+  @override
+  String get messagePlaceholder => 'Message…';
+
+  @override
+  String get noMessagesYet => 'No messages yet.\nSay hello!';
+
+  @override
+  String get noConversationsYet => 'No conversations yet';
+
+  @override
+  String get startChatHint => 'Find a friend and start chatting!';
+
+  @override
+  String get youPrefix => 'You';
+
+  @override
+  String get playerLookupTitle => 'Player Lookup';
+
+  @override
+  String get playerLookupSubtitle => 'Search for a Java or Bedrock player by username';
+
+  @override
+  String get playerLookupHint => 'Enter a username…';
+
+  @override
+  String get playerLookupLinked => 'Linked accounts found';
+
+  @override
+  String get playerLookupLabelUsername => 'Username';
+
+  @override
+  String get playerLookupLabelTier => 'Tier';
+
+  @override
+  String playerLookupCopied(Object value) {
+    return '$value copied';
+  }
+
+  @override
+  String get tabProfile => 'Profile';
+
+  @override
+  String get tabFriends => 'Friends';
+
+  @override
+  String get tabRequests => 'Requests';
+
+  @override
+  String get tabChats => 'Chats';
+
+  @override
+  String get addFriend => 'Add Friend';
+
+  @override
+  String get usernameHint => 'Username';
+
+  @override
+  String get send => 'Send';
+
+  @override
+  String friendRequestSentTo(Object name) {
+    return 'Friend request sent to $name';
+  }
+
+  @override
+  String alreadyFriendsWith(Object name) {
+    return 'You are already friends with $name';
+  }
+
+  @override
+  String requestAlreadyPending(Object name) {
+    return 'A request to $name is already pending';
+  }
+
+  @override
+  String userNotFoundMsg(Object name) {
+    return 'User $name not found';
+  }
+
+  @override
+  String cannotSendRequest(Object name) {
+    return 'Cannot send a request to $name';
+  }
+
+  @override
+  String get somethingWentWrong => 'Something went wrong. Please try again.';
+
+  @override
+  String friendRequestAccepted(Object name) {
+    return 'You are now friends with $name';
+  }
+
+  @override
+  String requestDeclined(Object name) {
+    return 'Request from $name declined';
+  }
+
+  @override
+  String get deleteAccountTitle => 'Delete Account';
+
+  @override
+  String get deleteAccountBody => 'This will permanently delete your account and all data. This action cannot be undone.';
+
+  @override
+  String get deletePermanently => 'Delete Permanently';
+
+  @override
+  String get couldNotDeleteAccount => 'Could not delete account. Please try again.';
+
+  @override
+  String get removeFriendTitle => 'Remove Friend';
+
+  @override
+  String removeFriendConfirm(Object name) {
+    return 'Remove $name from your friends?';
+  }
+
+  @override
+  String get remove => 'Remove';
+
+  @override
+  String friendRemoved(Object name) {
+    return '$name has been removed from your friends';
+  }
+
+  @override
+  String get emailDifferentMethod => 'This email is linked to a different sign-in method';
+
+  @override
+  String get googleSignInFailed => 'Google sign-in failed. Please try again.';
+
+  @override
+  String get appleSignInFailed => 'Apple sign-in failed. Please try again.';
+
+  @override
+  String get resetPasswordTitle => 'Reset Password';
+
+  @override
+  String get resetPasswordBody => 'Enter your email address and we will send you a link to reset your password.';
+
+  @override
+  String get emailAddressHint => 'Email address';
+
+  @override
+  String get sendLink => 'Send link';
+
+  @override
+  String resetLinkSent(Object email) {
+    return 'Password reset link sent to $email';
+  }
+
+  @override
+  String get noAccountForEmail => 'No account found for that email address';
+
+  @override
+  String get invalidEmailError => 'The email address is not valid';
+
+  @override
+  String get couldNotSendResetEmail => 'Could not send reset email. Please try again.';
+
+  @override
+  String get enterEmailAndPassword => 'Please enter your email and password';
+
+  @override
+  String get incorrectEmailOrPassword => 'Incorrect email or password';
+
+  @override
+  String get emailAlreadyInUse => 'This email address is already in use';
+
+  @override
+  String get weakPassword => 'Password is too weak. Please choose a stronger one.';
+
+  @override
+  String get createAccount => 'Create Account';
+
+  @override
+  String get signInSubtitle => 'Sign in to access your profile, friends, and chats.';
+
+  @override
+  String get passwordHint => 'Password';
+
+  @override
+  String get forgotPassword => 'Forgot password?';
+
+  @override
+  String get orDivider => 'or';
+
+  @override
+  String get continueWithGoogle => 'Continue with Google';
+
+  @override
+  String get alreadyHaveAccount => 'Already have an account? Sign in';
+
+  @override
+  String get noAccountYet => 'Don\'t have an account? Create one';
+
+  @override
+  String get profileNotSetUp => 'Profile not set up';
+
+  @override
+  String get chooseUsernameSubtitle => 'Choose a username to start connecting with other players.';
+
+  @override
+  String get createProfile => 'Create Profile';
+
+  @override
+  String get findUser => 'Find user';
+
+  @override
+  String get couldNotUpdateVisibility => 'Could not update visibility settings';
+
+  @override
+  String get signOut => 'Sign Out';
+
+  @override
+  String get appearOfflineLabel => 'Appear Offline';
+
+  @override
+  String get appearOfflineOn => 'You appear offline to other players';
+
+  @override
+  String get appearOfflineOff => 'You appear online to other players';
+
+  @override
+  String get unlinkXboxTitle => 'Unlink Xbox Account';
+
+  @override
+  String removeLabelConfirm(Object name) {
+    return 'Remove $name from your linked accounts?';
+  }
+
+  @override
+  String get unlink => 'Unlink';
+
+  @override
+  String get unlinkJavaTitle => 'Unlink Java Account';
+
+  @override
+  String removeJavaConfirm(Object name) {
+    return 'Remove $name from your linked accounts?';
+  }
+
+  @override
+  String get linkedAccountsTitle => 'Linked Accounts';
+
+  @override
+  String get linkAccountsHint => 'Link your Minecraft accounts to show your skins and stats.';
+
+  @override
+  String get linkXbox => 'Link Xbox';
+
+  @override
+  String get linkJava => 'Link Java';
+
+  @override
+  String get profileUpdated => 'Profile updated';
+
+  @override
+  String get profileCardTitle => 'Profile';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get displayNameLabel => 'Display Name';
+
+  @override
+  String get yourNameHint => 'Your name';
+
+  @override
+  String get bioLabel => 'Bio';
+
+  @override
+  String get bioHint => 'Tell others about yourself…';
+
+  @override
+  String get avatarUrlLabel => 'Avatar URL';
+
+  @override
+  String get usernameDisplayLabel => 'Username';
+
+  @override
+  String get aboutMe => 'About me';
+
+  @override
+  String get noFriendsYet => 'No friends yet';
+
+  @override
+  String get noFriendsSub => 'Add friends to see them here.';
+
+  @override
+  String onlineFriendsLabel(Object count) {
+    return '$count online';
+  }
+
+  @override
+  String offlineFriendsLabel(Object count) {
+    return '$count offline';
+  }
+
+  @override
+  String get noPendingRequests => 'No pending requests';
+
+  @override
+  String get requestsAppearHere => 'New friend requests will appear here.';
+
+  @override
+  String get skinsEdit => 'Edit';
+
+  @override
+  String get skinsNoAccountsTitle => 'No Minecraft accounts linked';
+
+  @override
+  String get skinsNoAccountsSubtitle => 'Link a Java or Bedrock account to view your skins.';
+
+  @override
+  String get skinsSignInTitle => 'Sign in to view your skins';
+
+  @override
+  String get skinsSignInSubtitle => 'Sign in and link your Minecraft accounts to see your skins here.';
+
+  @override
+  String get skinsMustBe64 => 'Skin must be 64×64 pixels';
+
+  @override
+  String get skinsInvalidFile => 'Invalid image file';
+
+  @override
+  String get skinsUpload => 'Upload';
+
+  @override
+  String get skinsCreate => 'Create';
+
+  @override
+  String get skinsSectionRecent => 'RECENT SKINS';
+
+  @override
+  String get skinsSectionMy => 'MY SKINS';
+
+  @override
+  String get skinsEmptyMySkins => 'No saved skins yet. Upload or create one!';
+
+  @override
+  String get skinsSectionYours => 'YOUR SKINS';
+
+  @override
+  String get skinsCouldNotLoad => 'Could not load skins';
+
+  @override
+  String skinsPageOf(Object page, Object total) {
+    return 'Page $page of $total';
+  }
+
+  @override
+  String get skinsDownload => 'Download';
+
   @override
   String get wikiTitle => 'Wiki';
+
   @override
-  String get wikiSearchHint => 'मॉब, आइटम, ब्लॉक खोजें…';
+  String get wikiMinecraftWiki => 'Minecraft Wiki';
+
   @override
-  String get wikiMinecraftWiki => 'minecraft.wiki';
+  String get wikiSearchHint => 'Search the wiki…';
+
   @override
-  String wikiCategories(int count) => '$count श्रेणियाँ';
+  String get wikiCouldNotLoadPages => 'Could not load pages. Please try again.';
+
   @override
-  String wikiNoResults(String query) => '"$query" के लिए कोई परिणाम नहीं';
+  String get wikiCouldNotReach => 'Could not reach the wiki. Check your connection.';
+
   @override
-  String get wikiNoPagesFound => 'इस श्रेणी में कोई पृष्ठ नहीं मिला।';
+  String wikiNoResults(Object query) {
+    return 'No results found for \"$query\"';
+  }
+
   @override
-  String get wikiCouldNotLoadPages => 'पृष्ठ लोड नहीं हो सके।';
+  String get wikiNoPagesFound => 'No pages found';
+
   @override
-  String get wikiCouldNotReach => 'Minecraft Wiki तक नहीं पहुँचा जा सका।';
+  String wikiCategories(Object count) {
+    return '$count categories';
+  }
+
   @override
-  String get wikiCouldNotLoadContent => 'पृष्ठ सामग्री लोड नहीं हो सकी।';
+  String get wikiCouldNotLoadContent => 'Could not load article content.';
+
   @override
-  String get wikiOpenInBrowser => 'ब्राउज़र में खोलें';
+  String get wikiOpenInBrowser => 'Open in browser';
+
   @override
-  String get wikiReadFullArticle => 'minecraft.wiki पर पूरा लेख पढ़ें';
+  String get wikiCrafting => 'Crafting';
+
   @override
-  String get wikiCrafting => 'क्राफ्टिंग';
+  String get wikiReadFullArticle => 'Read full article';
+
   @override
-  String get wikiMobs => 'मॉब';
+  String get wikiMobs => 'Mobs';
+
   @override
-  String get wikiBlocks => 'ब्लॉक';
+  String get wikiBlocks => 'Blocks';
+
   @override
-  String get wikiItems => 'आइटम';
+  String get wikiItems => 'Items';
+
   @override
-  String get wikiBiomes => 'बायोम';
+  String get wikiBiomes => 'Biomes';
+
   @override
-  String get wikiStructures => 'संरचनाएं';
+  String get wikiStructures => 'Structures';
+
   @override
-  String get wikiEnchantments => 'एन्चांटमेंट';
+  String get wikiEnchantments => 'Enchantments';
+
   @override
-  String get wikiPotions => 'पोशन';
+  String get wikiPotions => 'Potions';
+
   @override
-  String get wikiPassive => 'निष्क्रिय';
+  String get wikiPassive => 'Passive';
+
   @override
-  String get wikiNeutral => 'तटस्थ';
+  String get wikiNeutral => 'Neutral';
+
   @override
-  String get wikiHostile => 'शत्रुतापूर्ण';
+  String get wikiHostile => 'Hostile';
+
   @override
-  String get wikiBoss => 'बॉस';
+  String get wikiBoss => 'Boss';
+
   @override
-  String get wikiUtility => 'उपयोगी';
+  String get wikiUtility => 'Utility';
+
   @override
-  String get wikiNatural => 'प्राकृतिक';
+  String get wikiNatural => 'Natural';
+
   @override
-  String get wikiOres => 'अयस्क';
+  String get wikiOres => 'Ores';
+
   @override
-  String get wikiWood => 'लकड़ी';
+  String get wikiWood => 'Wood';
+
   @override
-  String get wikiStone => 'पत्थर';
+  String get wikiStone => 'Stone';
+
   @override
-  String get wikiRedstone => 'रेडस्टोन';
+  String get wikiRedstone => 'Redstone';
+
   @override
-  String get wikiPlants => 'पौधे';
+  String get wikiPlants => 'Plants';
+
   @override
-  String get wikiDecoration => 'सजावट';
+  String get wikiDecoration => 'Decoration';
+
   @override
-  String get wikiTools => 'उपकरण';
+  String get wikiTools => 'Tools';
+
   @override
-  String get wikiSwords => 'तलवारें';
+  String get wikiSwords => 'Swords';
+
   @override
-  String get wikiRanged => 'दूरी के हथियार';
+  String get wikiRanged => 'Ranged';
+
   @override
-  String get wikiArmor => 'कवच';
+  String get wikiArmor => 'Armor';
+
   @override
-  String get wikiFood => 'खाना';
+  String get wikiFood => 'Food';
+
   @override
-  String get wikiBrewing => 'ब्रूइंग';
+  String get wikiBrewing => 'Brewing';
+
   @override
-  String get wikiMaterials => 'सामग्री';
+  String get wikiMaterials => 'Materials';
+
   @override
-  String get wikiOverworld => 'ओवरवर्ल्ड';
+  String get wikiOverworld => 'Overworld';
+
   @override
-  String get wikiNether => 'नेदर';
+  String get wikiNether => 'Nether';
+
   @override
-  String get wikiTheEnd => 'द्य एंड';
+  String get wikiTheEnd => 'The End';
+
   @override
-  String get wikiSword => 'तलवार';
+  String get wikiSword => 'Sword';
+
   @override
-  String get wikiTool => 'उपकरण';
+  String get wikiTool => 'Tool';
+
   @override
-  String get wikiBow => 'धनुष';
+  String get wikiBow => 'Bow';
+
   @override
-  String get wikiFishing => 'मछली पकड़ना';
+  String get wikiFishing => 'Fishing';
+
   @override
-  String get wikiStatusEffects => 'स्टेटस इफेक्ट';
+  String get wikiStatusEffects => 'Status Effects';
+
+  @override
+  String get chooseUniqueUsername => 'शुरू करने के लिए एक अनोखा उपयोगकर्ता नाम चुनें।';
+
+  @override
+  String get usernameFieldLabel => 'उपयोगकर्ता नाम';
+
+  @override
+  String get usernameExampleHint => 'जैसे: CoolPlayer123';
+
+  @override
+  String get usernameFormatHint => '3–20 अक्षर · केवल अक्षर, संख्याएं और अंडरस्कोर';
+
+  @override
+  String get displayNameOptional => 'प्रदर्शन नाम (वैकल्पिक)';
+
+  @override
+  String get displayNameExampleHint => 'जैसे: Cool Player';
+
+  @override
+  String get usernameRequired => 'उपयोगकर्ता नाम आवश्यक है';
+
+  @override
+  String get usernameFormatError => 'उपयोगकर्ता नाम 3–20 अक्षर का होना चाहिए और केवल अक्षर, संख्याएं और अंडरस्कोर हो सकते हैं';
+
+  @override
+  String get usernameTaken => 'यह उपयोगकर्ता नाम पहले से लिया गया है';
+
+  @override
+  String get noConnectionError => 'कोई कनेक्शन नहीं। अपना इंटरनेट जांचें और पुनः प्रयास करें।';
+
+  @override
+  String get home => 'होम';
+
+  @override
+  String get info => 'जानकारी';
+
+  @override
+  String get navProfile => 'प्रोफ़ाइल';
+
+  @override
+  String serverRemoved(Object name) {
+    return '$name हटाया गया';
+  }
+
+  @override
+  String serverAdded(Object name) {
+    return '$name जोड़ा गया';
+  }
 }

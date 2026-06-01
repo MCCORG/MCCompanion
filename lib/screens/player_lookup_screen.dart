@@ -85,8 +85,10 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
                 child: Row(
                   children: [
                     IconButton(
-                      icon: const Icon(Icons.arrow_back_rounded,
-                          color: AppTheme.textPrimary),
+                      icon: const Icon(
+                        Icons.arrow_back_rounded,
+                        color: AppTheme.textPrimary,
+                      ),
                       onPressed: widget.onBack,
                     ),
                     Text(
@@ -132,14 +134,22 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
                         child: TextField(
                           controller: _ctrl,
                           style: const TextStyle(
-                              color: AppTheme.textPrimary, fontSize: 14),
+                            color: AppTheme.textPrimary,
+                            fontSize: 14,
+                          ),
                           decoration: InputDecoration(
-                            hintText: AppLocalizations.of(context)!.playerLookupHint,
+                            hintText: AppLocalizations.of(
+                              context,
+                            )!.playerLookupHint,
                             hintStyle: TextStyle(
-                                color: AppTheme.textMuted, fontSize: 13),
+                              color: AppTheme.textMuted,
+                              fontSize: 13,
+                            ),
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.symmetric(
-                                horizontal: 14, vertical: 13),
+                              horizontal: 14,
+                              vertical: 13,
+                            ),
                             prefixIcon: Icon(
                               Icons.manage_search_rounded,
                               color: AppTheme.textMuted,
@@ -160,9 +170,9 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
                           backgroundColor: AppTheme.accent,
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12)),
-                          padding:
-                              const EdgeInsets.symmetric(horizontal: 18),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 18),
                           elevation: 0,
                         ),
                         child: _loading
@@ -170,7 +180,9 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
                                 width: 18,
                                 height: 18,
                                 child: CircularProgressIndicator(
-                                    strokeWidth: 2, color: Colors.white),
+                                  strokeWidth: 2,
+                                  color: Colors.white,
+                                ),
                               )
                             : const Icon(Icons.search_rounded, size: 20),
                       ),
@@ -186,17 +198,25 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
                       color: AppTheme.error.withOpacity(0.10),
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
-                          color: AppTheme.error.withOpacity(0.30)),
+                        color: AppTheme.error.withOpacity(0.30),
+                      ),
                     ),
                     child: Row(
                       children: [
-                        const Icon(Icons.error_outline_rounded,
-                            color: AppTheme.error, size: 16),
+                        const Icon(
+                          Icons.error_outline_rounded,
+                          color: AppTheme.error,
+                          size: 16,
+                        ),
                         const SizedBox(width: 8),
                         Expanded(
-                          child: Text(_error!,
-                              style: const TextStyle(
-                                  color: AppTheme.error, fontSize: 13)),
+                          child: Text(
+                            _error!,
+                            style: const TextStyle(
+                              color: AppTheme.error,
+                              fontSize: 13,
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -242,8 +262,11 @@ class _CombinedResultCard extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(Icons.link_rounded,
-                    color: AppTheme.success, size: 15),
+                const Icon(
+                  Icons.link_rounded,
+                  color: AppTheme.success,
+                  size: 15,
+                ),
                 const SizedBox(width: 6),
                 Text(
                   AppLocalizations.of(context)!.playerLookupLinked,
@@ -286,15 +309,26 @@ class _JavaCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _PlatformBadge(label: 'Java Edition', color: AppTheme.accent),
+          _PlatformBadge(
+            label: AppLocalizations.of(context)!.playerLookupJavaEdition,
+            color: AppTheme.accent,
+          ),
           const SizedBox(height: 14),
           _JavaSkinViewer(uuid: profile.uuid),
           const SizedBox(height: 14),
           const Divider(color: AppTheme.borderGray, height: 1),
           const SizedBox(height: 12),
-          _InfoRow(label: AppLocalizations.of(context)!.playerLookupLabelUsername, value: profile.username, canCopy: true),
+          _InfoRow(
+            label: AppLocalizations.of(context)!.playerLookupLabelUsername,
+            value: profile.username,
+            canCopy: true,
+          ),
           const SizedBox(height: 8),
-          _InfoRow(label: 'UUID', value: profile.uuid, canCopy: true),
+          _InfoRow(
+            label: AppLocalizations.of(context)!.playerLookupLabelUuid,
+            value: profile.uuid,
+            canCopy: true,
+          ),
         ],
       ),
     );
@@ -334,7 +368,11 @@ class _JavaSkinViewerState extends State<_JavaSkinViewer> {
         return;
       }
       final url = _extractTextureUrl(resp.body);
-      if (mounted) setState(() { _textureUrl = url; _loading = false; });
+      if (mounted)
+        setState(() {
+          _textureUrl = url;
+          _loading = false;
+        });
     } catch (_) {
       if (mounted) setState(() => _loading = false);
     }
@@ -363,8 +401,12 @@ class _JavaSkinViewerState extends State<_JavaSkinViewer> {
         child: _loading
             ? CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
             : _textureUrl != null
-                ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156)
-                : const Icon(Icons.person_rounded, color: AppTheme.textMuted, size: 48),
+            ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156)
+            : const Icon(
+                Icons.person_rounded,
+                color: AppTheme.textMuted,
+                size: 48,
+              ),
       ),
     );
   }
@@ -388,17 +430,24 @@ class _BedrockCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              const _PlatformBadge(
-                  label: 'Bedrock Edition', color: Color(0xFF4CAF50)),
+              _PlatformBadge(
+                label: AppLocalizations.of(context)!.playerLookupBedrockEdition,
+                color: const Color(0xFF4CAF50),
+              ),
               if (profile.gamerscore != null) ...[
                 const Spacer(),
-                const Icon(Icons.star_rounded,
-                    size: 13, color: AppTheme.textMuted),
+                const Icon(
+                  Icons.star_rounded,
+                  size: 13,
+                  color: AppTheme.textMuted,
+                ),
                 const SizedBox(width: 3),
                 Text(
                   '${profile.gamerscore}G',
                   style: const TextStyle(
-                      color: AppTheme.textMuted, fontSize: 12),
+                    color: AppTheme.textMuted,
+                    fontSize: 12,
+                  ),
                 ),
               ],
             ],
@@ -408,14 +457,29 @@ class _BedrockCard extends StatelessWidget {
           const SizedBox(height: 14),
           const Divider(color: AppTheme.borderGray, height: 1),
           const SizedBox(height: 12),
-          _InfoRow(label: 'Gamertag', value: profile.displayName, canCopy: true),
+          _InfoRow(
+            label: AppLocalizations.of(context)!.playerLookupLabelGamertag,
+            value: profile.displayName,
+            canCopy: true,
+          ),
           const SizedBox(height: 8),
-          _InfoRow(label: 'XUID', value: profile.xuid, canCopy: true),
+          _InfoRow(
+            label: AppLocalizations.of(context)!.playerLookupLabelXuid,
+            value: profile.xuid,
+            canCopy: true,
+          ),
           const SizedBox(height: 8),
-          _InfoRow(label: 'Floodgate', value: profile.floodgateUuid, canCopy: true),
+          _InfoRow(
+            label: AppLocalizations.of(context)!.playerLookupLabelFloodgate,
+            value: profile.floodgateUuid,
+            canCopy: true,
+          ),
           if (profile.tier != null) ...[
             const SizedBox(height: 8),
-            _InfoRow(label: AppLocalizations.of(context)!.playerLookupLabelTier, value: profile.tier!),
+            _InfoRow(
+              label: AppLocalizations.of(context)!.playerLookupLabelTier,
+              value: profile.tier!,
+            ),
           ],
         ],
       ),
@@ -472,9 +536,12 @@ class _BedrockSkinViewerState extends State<_BedrockSkinViewer> {
         child: _loading
             ? CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
             : _textureUrl != null
-                ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156)
-                : const Icon(Icons.gamepad_rounded,
-                    color: AppTheme.textMuted, size: 48),
+            ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156)
+            : const Icon(
+                Icons.gamepad_rounded,
+                color: AppTheme.textMuted,
+                size: 48,
+              ),
       ),
     );
   }
@@ -496,7 +563,10 @@ class _PlatformBadge extends StatelessWidget {
       child: Text(
         label,
         style: TextStyle(
-            color: color, fontSize: 10, fontWeight: FontWeight.w600),
+          color: color,
+          fontSize: 10,
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }
@@ -508,15 +578,15 @@ class _FallbackAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        width: 52,
-        height: 52,
-        decoration: BoxDecoration(
-          color: AppTheme.surface,
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: AppTheme.borderGray),
-        ),
-        child: Icon(icon, color: AppTheme.textMuted, size: 26),
-      );
+    width: 52,
+    height: 52,
+    decoration: BoxDecoration(
+      color: AppTheme.surface,
+      borderRadius: BorderRadius.circular(10),
+      border: Border.all(color: AppTheme.borderGray),
+    ),
+    child: Icon(icon, color: AppTheme.textMuted, size: 26),
+  );
 }
 
 class _InfoRow extends StatelessWidget {
@@ -557,8 +627,7 @@ class _InfoRow extends StatelessWidget {
               fontFamily: 'monospace',
             ),
             maxLines: truncate ? 1 : null,
-            overflow:
-                truncate ? TextOverflow.ellipsis : TextOverflow.visible,
+            overflow: truncate ? TextOverflow.ellipsis : TextOverflow.visible,
           ),
         ),
         if (canCopy)
@@ -567,7 +636,9 @@ class _InfoRow extends StatelessWidget {
               Clipboard.setData(ClipboardData(text: value));
               AppToast.show(
                 context,
-                message: AppLocalizations.of(context)!.playerLookupCopied(label),
+                message: AppLocalizations.of(
+                  context,
+                )!.playerLookupCopied(label),
                 icon: Icons.copy_rounded,
                 color: AppTheme.accent,
                 duration: const Duration(seconds: 2),
@@ -575,8 +646,11 @@ class _InfoRow extends StatelessWidget {
             },
             child: const Padding(
               padding: EdgeInsets.only(left: 6),
-              child: Icon(Icons.copy_rounded,
-                  size: 14, color: AppTheme.textMuted),
+              child: Icon(
+                Icons.copy_rounded,
+                size: 14,
+                color: AppTheme.textMuted,
+              ),
             ),
           ),
       ],

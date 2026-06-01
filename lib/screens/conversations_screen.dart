@@ -140,7 +140,11 @@ class _ConvTile extends StatelessWidget {
         ),
         child: Row(
           children: [
-            _Avatar(initials: conv.initials, size: 46, avatarUrl: conv.avatarUrl),
+            _Avatar(
+              initials: conv.initials,
+              size: 46,
+              avatarUrl: conv.avatarUrl,
+            ),
             const SizedBox(width: 12),
             Expanded(
               child: Column(

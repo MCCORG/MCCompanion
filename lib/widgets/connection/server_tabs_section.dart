@@ -83,8 +83,7 @@ class _TabButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color fg =
-        disabled ? AppTheme.textDisabled : AppTheme.textSecondary;
+    final Color fg = disabled ? AppTheme.textDisabled : AppTheme.textSecondary;
 
     return GestureDetector(
       onTap: onTap,

@@ -85,10 +85,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       color: AppTheme.accent.withOpacity(0.12),
                       borderRadius: BorderRadius.circular(18),
                       border: Border.all(
-                          color: AppTheme.accent.withOpacity(0.30)),
+                        color: AppTheme.accent.withOpacity(0.30),
+                      ),
                     ),
-                    child: Icon(Icons.person_add_rounded,
-                        color: AppTheme.accent, size: 28),
+                    child: Icon(
+                      Icons.person_add_rounded,
+                      color: AppTheme.accent,
+                      size: 28,
+                    ),
                   ),
                   const SizedBox(height: 20),
                   Text(
@@ -103,9 +107,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   Text(
                     AppLocalizations.of(context)!.chooseUniqueUsername,
                     style: TextStyle(
-                        color: AppTheme.textSecondary,
-                        fontSize: 13,
-                        height: 1.5),
+                      color: AppTheme.textSecondary,
+                      fontSize: 13,
+                      height: 1.5,
+                    ),
                   ),
                   const SizedBox(height: 32),
                   _label(AppLocalizations.of(context)!.usernameFieldLabel),
@@ -116,9 +121,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     textInputAction: TextInputAction.next,
                     style: const TextStyle(color: AppTheme.textPrimary),
                     decoration: InputDecoration(
-                      hintText: AppLocalizations.of(context)!.usernameExampleHint,
-                      prefixIcon: const Icon(Icons.alternate_email_rounded,
-                          size: 18, color: AppTheme.textMuted),
+                      hintText: AppLocalizations.of(
+                        context,
+                      )!.usernameExampleHint,
+                      prefixIcon: const Icon(
+                        Icons.alternate_email_rounded,
+                        size: 18,
+                        color: AppTheme.textMuted,
+                      ),
                     ),
                     onChanged: (_) {
                       if (_error != null) setState(() => _error = null);
@@ -127,7 +137,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const SizedBox(height: 6),
                   Text(
                     AppLocalizations.of(context)!.usernameFormatHint,
-                    style: const TextStyle(color: AppTheme.textMuted, fontSize: 11),
+                    style: const TextStyle(
+                      color: AppTheme.textMuted,
+                      fontSize: 11,
+                    ),
                   ),
                   const SizedBox(height: 20),
                   _label(AppLocalizations.of(context)!.displayNameOptional),
@@ -137,9 +150,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     textInputAction: TextInputAction.done,
                     style: const TextStyle(color: AppTheme.textPrimary),
                     decoration: InputDecoration(
-                      hintText: AppLocalizations.of(context)!.displayNameExampleHint,
-                      prefixIcon: const Icon(Icons.badge_rounded,
-                          size: 18, color: AppTheme.textMuted),
+                      hintText: AppLocalizations.of(
+                        context,
+                      )!.displayNameExampleHint,
+                      prefixIcon: const Icon(
+                        Icons.badge_rounded,
+                        size: 18,
+                        color: AppTheme.textMuted,
+                      ),
                     ),
                     onSubmitted: (_) => _register(),
                   ),
@@ -147,22 +165,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     const SizedBox(height: 16),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 14, vertical: 12),
+                        horizontal: 14,
+                        vertical: 12,
+                      ),
                       decoration: BoxDecoration(
                         color: AppTheme.error.withOpacity(0.08),
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                            color: AppTheme.error.withOpacity(0.30)),
+                          color: AppTheme.error.withOpacity(0.30),
+                        ),
                       ),
                       child: Row(
                         children: [
-                          const Icon(Icons.error_outline_rounded,
-                              color: AppTheme.error, size: 16),
+                          const Icon(
+                            Icons.error_outline_rounded,
+                            color: AppTheme.error,
+                            size: 16,
+                          ),
                           const SizedBox(width: 10),
                           Expanded(
-                            child: Text(_error!,
-                                style: const TextStyle(
-                                    color: AppTheme.error, fontSize: 13)),
+                            child: Text(
+                              _error!,
+                              style: const TextStyle(
+                                color: AppTheme.error,
+                                fontSize: 13,
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -179,11 +207,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             width: 20,
                             height: 20,
                             child: CircularProgressIndicator(
-                                color: Colors.white, strokeWidth: 2),
+                              color: Colors.white,
+                              strokeWidth: 2,
+                            ),
                           )
-                        : Text(AppLocalizations.of(context)!.createProfile,
+                        : Text(
+                            AppLocalizations.of(context)!.createProfile,
                             style: const TextStyle(
-                                fontWeight: FontWeight.w700, fontSize: 15)),
+                              fontWeight: FontWeight.w700,
+                              fontSize: 15,
+                            ),
+                          ),
                   ),
                   const SizedBox(height: 40),
                 ],
@@ -196,12 +230,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   Widget _label(String text) => Text(
-        text,
-        style: const TextStyle(
-          color: AppTheme.textSecondary,
-          fontSize: 12,
-          fontWeight: FontWeight.w600,
-          letterSpacing: 0.4,
-        ),
-      );
+    text,
+    style: const TextStyle(
+      color: AppTheme.textSecondary,
+      fontSize: 12,
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.4,
+    ),
+  );
 }

@@ -734,13 +734,18 @@ class _PublicSkinsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final javaCards = user.javaAccounts
-        .map((a) => _JavaPublicSkin(username: a.javaUsername, javaUuid: a.javaUuid))
+        .map(
+          (a) =>
+              _JavaPublicSkin(username: a.javaUsername, javaUuid: a.javaUuid),
+        )
         .toList();
     final bedrockCards = user.bedrockAccounts
-        .map((a) => _BedrockPublicSkin(
-              gamertag: a.xboxGamertag ?? a.xboxXuid,
-              xuid: a.xboxXuid,
-            ))
+        .map(
+          (a) => _BedrockPublicSkin(
+            gamertag: a.xboxGamertag ?? a.xboxXuid,
+            xuid: a.xboxXuid,
+          ),
+        )
         .toList();
     final all = [...javaCards, ...bedrockCards];
     if (all.isEmpty) return const SizedBox.shrink();
@@ -750,14 +755,20 @@ class _PublicSkinsSection extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppTheme.surfaceRaised,
         borderRadius: BorderRadius.circular(12),
-        border: const Border.fromBorderSide(BorderSide(color: AppTheme.borderGray)),
+        border: const Border.fromBorderSide(
+          BorderSide(color: AppTheme.borderGray),
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              const Icon(Icons.checkroom_rounded, size: 14, color: AppTheme.textMuted),
+              const Icon(
+                Icons.checkroom_rounded,
+                size: 14,
+                color: AppTheme.textMuted,
+              ),
               const SizedBox(width: 6),
               Text(
                 all.length == 1 ? 'SKIN' : 'SKINS',
@@ -780,7 +791,9 @@ class _PublicSkinsSection extends StatelessWidget {
                 return Wrap(
                   spacing: 12,
                   runSpacing: 12,
-                  children: all.map((c) => SizedBox(width: w, child: c)).toList(),
+                  children: all
+                      .map((c) => SizedBox(width: w, child: c))
+                      .toList(),
                 );
               },
             ),
@@ -824,7 +837,11 @@ class _JavaPublicSkinState extends State<_JavaPublicSkin> {
         return;
       }
       final url = _extractTextureUrl(resp.body);
-      if (mounted) setState(() { _textureUrl = url; _loading = false; });
+      if (mounted)
+        setState(() {
+          _textureUrl = url;
+          _loading = false;
+        });
     } catch (_) {
       if (mounted) setState(() => _loading = false);
     }
@@ -846,7 +863,8 @@ class _JavaPublicSkinState extends State<_JavaPublicSkin> {
   }
 
   Future<void> _download() async {
-    final url = _textureUrl ?? 'https://visage.surgeplay.com/skin/${widget.javaUuid}';
+    final url =
+        _textureUrl ?? 'https://visage.surgeplay.com/skin/${widget.javaUuid}';
     final uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) await launchUrl(uri);
   }
@@ -878,10 +896,17 @@ class _JavaPublicSkinState extends State<_JavaPublicSkin> {
           height: 140,
           child: Center(
             child: _loading
-                ? CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
+                ? CircularProgressIndicator(
+                    color: AppTheme.accent,
+                    strokeWidth: 2,
+                  )
                 : _textureUrl != null
-                    ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 136)
-                    : const Icon(Icons.person_rounded, color: AppTheme.textMuted, size: 36),
+                ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 136)
+                : const Icon(
+                    Icons.person_rounded,
+                    color: AppTheme.textMuted,
+                    size: 36,
+                  ),
           ),
         ),
         const SizedBox(height: 8),
@@ -907,7 +932,10 @@ class _JavaPublicSkinState extends State<_JavaPublicSkin> {
               foregroundColor: const Color(0xFF1565C0),
               side: const BorderSide(color: Color(0xFF1565C0), width: 0.8),
               padding: const EdgeInsets.symmetric(vertical: 8),
-              textStyle: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+              textStyle: const TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ),
@@ -991,10 +1019,17 @@ class _BedrockPublicSkinState extends State<_BedrockPublicSkin> {
           height: 140,
           child: Center(
             child: _loading
-                ? CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
+                ? CircularProgressIndicator(
+                    color: AppTheme.accent,
+                    strokeWidth: 2,
+                  )
                 : _textureUrl != null
-                    ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 136)
-                    : const Icon(Icons.person_rounded, color: AppTheme.textMuted, size: 36),
+                ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 136)
+                : const Icon(
+                    Icons.person_rounded,
+                    color: AppTheme.textMuted,
+                    size: 36,
+                  ),
           ),
         ),
         const SizedBox(height: 8),
@@ -1020,7 +1055,10 @@ class _BedrockPublicSkinState extends State<_BedrockPublicSkin> {
               foregroundColor: const Color(0xFF4CAF50),
               side: const BorderSide(color: Color(0xFF4CAF50), width: 0.8),
               padding: const EdgeInsets.symmetric(vertical: 8),
-              textStyle: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+              textStyle: const TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ),

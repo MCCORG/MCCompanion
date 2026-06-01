@@ -235,15 +235,15 @@ class _ServerTile extends StatelessWidget {
                           color: broadcasting
                               ? AppTheme.surfaceRaisedSolid
                               : isSelected
-                                  ? AppTheme.accent
-                                  : AppTheme.accent.withOpacity(0.15),
+                              ? AppTheme.accent
+                              : AppTheme.accent.withOpacity(0.15),
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
                             color: broadcasting
                                 ? AppTheme.borderGray
                                 : isSelected
-                                    ? AppTheme.accent
-                                    : AppTheme.accent.withOpacity(0.35),
+                                ? AppTheme.accent
+                                : AppTheme.accent.withOpacity(0.35),
                           ),
                         ),
                         child: Row(
@@ -255,8 +255,8 @@ class _ServerTile extends StatelessWidget {
                               color: broadcasting
                                   ? AppTheme.textDisabled
                                   : isSelected
-                                      ? Colors.white
-                                      : AppTheme.accent,
+                                  ? Colors.white
+                                  : AppTheme.accent,
                             ),
                             const SizedBox(width: 4),
                             Text(
@@ -267,8 +267,8 @@ class _ServerTile extends StatelessWidget {
                                 color: broadcasting
                                     ? AppTheme.textDisabled
                                     : isSelected
-                                        ? Colors.white
-                                        : AppTheme.accent,
+                                    ? Colors.white
+                                    : AppTheme.accent,
                               ),
                             ),
                           ],
@@ -316,10 +316,9 @@ class _StatusBadgeState extends State<_StatusBadge> {
         if (!status.isOnline) {
           return _pill(dot: AppTheme.textMuted, label: 'Offline', sub: null);
         }
-        final playerText =
-            (status.players != null && status.maxPlayers != null)
-                ? '${status.players}/${status.maxPlayers}'
-                : null;
+        final playerText = (status.players != null && status.maxPlayers != null)
+            ? '${status.players}/${status.maxPlayers}'
+            : null;
         return _pill(dot: AppTheme.success, label: 'Online', sub: playerText);
       },
     );

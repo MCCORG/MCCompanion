@@ -26,8 +26,7 @@ class PushNotificationService {
 
     try {
       await _fcm.requestPermission(alert: true, badge: true, sound: true);
-    } catch (_) {
-    }
+    } catch (_) {}
 
     if (Platform.isIOS) {
       await _fcm.setForegroundNotificationPresentationOptions(

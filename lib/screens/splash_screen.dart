@@ -334,10 +334,7 @@ class _SplashScreenState extends State<SplashScreen>
         child: Stack(
           fit: StackFit.expand,
           children: [
-            Image.asset(
-              'assets/images/splash.png',
-              fit: BoxFit.cover,
-            ),
+            Image.asset('assets/images/splash.png', fit: BoxFit.cover),
             Positioned(
               top: 0,
               left: 0,
@@ -346,10 +343,7 @@ class _SplashScreenState extends State<SplashScreen>
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
                   child: Center(
-                    child: Image.asset(
-                      'assets/images/logo.png',
-                      height: 340,
-                    ),
+                    child: Image.asset('assets/images/logo.png', height: 340),
                   ),
                 ),
               ),
@@ -373,9 +367,12 @@ class _SplashScreenState extends State<SplashScreen>
                   padding: const EdgeInsets.fromLTRB(16, 0, 16, 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: _featureItems(
-                      ['Connect', 'Friends', 'Chat', 'Skins'],
-                    ),
+                    children: _featureItems([
+                      'Connect',
+                      'Friends',
+                      'Chat',
+                      'Skins',
+                    ]),
                   ),
                 ),
               ),

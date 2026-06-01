@@ -45,10 +45,8 @@ class ManageServersScreenState extends State<ManageServersScreen> {
     final confirmed = await showDialog<bool>(
       context: context,
       barrierColor: Colors.black.withOpacity(0.65),
-      builder: (_) => _ConfirmDeleteDialog(
-        serverName: _servers[index].name,
-        loc: loc,
-      ),
+      builder: (_) =>
+          _ConfirmDeleteDialog(serverName: _servers[index].name, loc: loc),
     );
     if (confirmed == true) {
       await UserServersStorage.removeServer(index);
@@ -66,14 +64,18 @@ class ManageServersScreenState extends State<ManageServersScreen> {
           decoration: BoxDecoration(
             color: AppTheme.surface,
             border: Border(
-                bottom: BorderSide(color: AppTheme.borderGray, width: 0.5)),
+              bottom: BorderSide(color: AppTheme.borderGray, width: 0.5),
+            ),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           child: Row(
             children: [
               IconButton(
-                icon: const Icon(Icons.arrow_back_ios_rounded,
-                    color: AppTheme.textSecondary, size: 18),
+                icon: const Icon(
+                  Icons.arrow_back_ios_rounded,
+                  color: AppTheme.textSecondary,
+                  size: 18,
+                ),
                 onPressed: widget.onBack,
               ),
               Expanded(
@@ -87,8 +89,7 @@ class ManageServersScreenState extends State<ManageServersScreen> {
                 ),
               ),
               IconButton(
-                icon: Icon(Icons.add_rounded,
-                    color: AppTheme.accent, size: 22),
+                icon: Icon(Icons.add_rounded, color: AppTheme.accent, size: 22),
                 onPressed: widget.onAddServer,
               ),
             ],
@@ -104,21 +105,17 @@ class ManageServersScreenState extends State<ManageServersScreen> {
                   ),
                 )
               : _servers.isEmpty
-                  ? _EmptyState(
-                      loc: loc,
-                      onAdd: widget.onAddServer,
-                    )
-                  : ListView.separated(
-                      padding: const EdgeInsets.all(16),
-                      itemCount: _servers.length,
-                      separatorBuilder: (_, __) =>
-                          const SizedBox(height: 10),
-                      itemBuilder: (_, i) => _ServerCard(
-                        server: _servers[i],
-                        onEdit: () => widget.onEditServer(i),
-                        onDelete: () => _deleteServer(i),
-                      ),
-                    ),
+              ? _EmptyState(loc: loc, onAdd: widget.onAddServer)
+              : ListView.separated(
+                  padding: const EdgeInsets.all(16),
+                  itemCount: _servers.length,
+                  separatorBuilder: (_, __) => const SizedBox(height: 10),
+                  itemBuilder: (_, i) => _ServerCard(
+                    server: _servers[i],
+                    onEdit: () => widget.onEditServer(i),
+                    onDelete: () => _deleteServer(i),
+                  ),
+                ),
         ),
       ],
     );
@@ -144,8 +141,7 @@ class AddEditServerScreen extends StatefulWidget {
 class _AddEditServerScreenState extends State<AddEditServerScreen> {
   final TextEditingController _nameCtrl = TextEditingController();
   final TextEditingController _addressCtrl = TextEditingController();
-  final TextEditingController _portCtrl =
-      TextEditingController(text: '19132');
+  final TextEditingController _portCtrl = TextEditingController(text: '19132');
   final TextEditingController _descCtrl = TextEditingController();
 
   bool _loaded = false;
@@ -189,18 +185,23 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
     final port = int.tryParse(_portCtrl.text.trim());
 
     if (name.isEmpty || address.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(
-            '${loc.serverNameLabel} and ${loc.addressLabel} are required'),
-        backgroundColor: AppTheme.warning,
-      ));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            '${loc.serverNameLabel} and ${loc.addressLabel} are required',
+          ),
+          backgroundColor: AppTheme.warning,
+        ),
+      );
       return;
     }
     if (port == null || port < 1 || port > 65535) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(loc.invalidPort),
-        backgroundColor: AppTheme.error,
-      ));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(loc.invalidPort),
+          backgroundColor: AppTheme.error,
+        ),
+      );
       return;
     }
 
@@ -208,8 +209,7 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
       name: name,
       address: address,
       port: port,
-      description:
-          _descCtrl.text.trim().isEmpty ? null : _descCtrl.text.trim(),
+      description: _descCtrl.text.trim().isEmpty ? null : _descCtrl.text.trim(),
     );
 
     if (widget.editingIndex == null) {
@@ -232,14 +232,18 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
           decoration: BoxDecoration(
             color: AppTheme.surface,
             border: Border(
-                bottom: BorderSide(color: AppTheme.borderGray, width: 0.5)),
+              bottom: BorderSide(color: AppTheme.borderGray, width: 0.5),
+            ),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           child: Row(
             children: [
               IconButton(
-                icon: const Icon(Icons.close_rounded,
-                    color: AppTheme.textSecondary, size: 20),
+                icon: const Icon(
+                  Icons.close_rounded,
+                  color: AppTheme.textSecondary,
+                  size: 20,
+                ),
                 onPressed: widget.onCancel,
               ),
               Expanded(
@@ -260,7 +264,10 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
           child: !_loaded
               ? Center(
                   child: CircularProgressIndicator(
-                      strokeWidth: 2, color: AppTheme.accent))
+                    strokeWidth: 2,
+                    color: AppTheme.accent,
+                  ),
+                )
               : SingleChildScrollView(
                   padding: const EdgeInsets.all(16),
                   keyboardDismissBehavior:
@@ -347,8 +354,11 @@ class _EmptyState extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18),
                 border: Border.all(color: AppTheme.borderGray),
               ),
-              child: const Icon(Icons.dns_outlined,
-                  size: 28, color: AppTheme.textMuted),
+              child: const Icon(
+                Icons.dns_outlined,
+                size: 28,
+                color: AppTheme.textMuted,
+              ),
             ),
             const SizedBox(height: 16),
             Text(
@@ -363,8 +373,7 @@ class _EmptyState extends StatelessWidget {
             Text(
               loc.addServersHint,
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                  fontSize: 13, color: AppTheme.textMuted),
+              style: const TextStyle(fontSize: 13, color: AppTheme.textMuted),
             ),
             const SizedBox(height: 20),
             ElevatedButton.icon(
@@ -376,7 +385,8 @@ class _EmptyState extends StatelessWidget {
                 foregroundColor: Colors.white,
                 elevation: 0,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
             ),
           ],
@@ -414,11 +424,9 @@ class _ServerCard extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppTheme.accent.withOpacity(0.10),
               borderRadius: BorderRadius.circular(11),
-              border:
-                  Border.all(color: AppTheme.accent.withOpacity(0.22)),
+              border: Border.all(color: AppTheme.accent.withOpacity(0.22)),
             ),
-            child: Icon(Icons.dns_rounded,
-                color: AppTheme.accent, size: 18),
+            child: Icon(Icons.dns_rounded, color: AppTheme.accent, size: 18),
           ),
           const SizedBox(width: 12),
           Expanded(
@@ -463,14 +471,16 @@ class _ServerCard extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           _IconBtn(
-              icon: Icons.edit_rounded,
-              color: AppTheme.accent,
-              onTap: onEdit),
+            icon: Icons.edit_rounded,
+            color: AppTheme.accent,
+            onTap: onEdit,
+          ),
           const SizedBox(width: 6),
           _IconBtn(
-              icon: Icons.delete_rounded,
-              color: AppTheme.error,
-              onTap: onDelete),
+            icon: Icons.delete_rounded,
+            color: AppTheme.error,
+            onTap: onDelete,
+          ),
         ],
       ),
     );
@@ -510,10 +520,7 @@ class _ConfirmDeleteDialog extends StatelessWidget {
   final String serverName;
   final AppLocalizations loc;
 
-  const _ConfirmDeleteDialog({
-    required this.serverName,
-    required this.loc,
-  });
+  const _ConfirmDeleteDialog({required this.serverName, required this.loc});
 
   @override
   Widget build(BuildContext context) {
@@ -543,11 +550,13 @@ class _ConfirmDeleteDialog extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppTheme.error.withOpacity(0.12),
                 borderRadius: BorderRadius.circular(16),
-                border:
-                    Border.all(color: AppTheme.error.withOpacity(0.30)),
+                border: Border.all(color: AppTheme.error.withOpacity(0.30)),
               ),
-              child: const Icon(Icons.delete_outline_rounded,
-                  color: AppTheme.error, size: 26),
+              child: const Icon(
+                Icons.delete_outline_rounded,
+                color: AppTheme.error,
+                size: 26,
+              ),
             ),
             const SizedBox(height: 16),
             Text(
@@ -578,7 +587,8 @@ class _ConfirmDeleteDialog extends StatelessWidget {
                       foregroundColor: AppTheme.textSecondary,
                       side: const BorderSide(color: AppTheme.borderGray),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                       padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
                     child: Text(loc.cancel),
@@ -593,7 +603,8 @@ class _ConfirmDeleteDialog extends StatelessWidget {
                       foregroundColor: Colors.white,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                       padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
                     child: Text(loc.delete),
@@ -639,15 +650,18 @@ class _Field extends StatelessWidget {
         labelText: label,
         hintText: hint,
         labelStyle: const TextStyle(
-            color: AppTheme.textSecondary, fontSize: 13),
-        hintStyle:
-            const TextStyle(color: AppTheme.textMuted, fontSize: 13),
+          color: AppTheme.textSecondary,
+          fontSize: 13,
+        ),
+        hintStyle: const TextStyle(color: AppTheme.textMuted, fontSize: 13),
         prefixIcon: Icon(icon, color: AppTheme.textMuted, size: 18),
         filled: true,
         fillColor: AppTheme.surface,
         isDense: true,
         contentPadding: const EdgeInsets.symmetric(
-            horizontal: 14, vertical: 13),
+          horizontal: 14,
+          vertical: 13,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(11),
           borderSide: BorderSide.none,
@@ -658,8 +672,7 @@ class _Field extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(11),
-          borderSide:
-              BorderSide(color: AppTheme.accent, width: 1.5),
+          borderSide: BorderSide(color: AppTheme.accent, width: 1.5),
         ),
       ),
     );

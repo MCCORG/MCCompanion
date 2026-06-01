@@ -455,13 +455,14 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
       await file.writeAsBytes(bytes);
 
       if (Platform.isIOS || Platform.isAndroid) {
-        await Share.shareXFiles(
-          [XFile(file.path, mimeType: 'image/png')],
-          subject: 'Minecraft Skin',
-        );
+        await Share.shareXFiles([
+          XFile(file.path, mimeType: 'image/png'),
+        ], subject: 'Minecraft Skin');
       } else {
         final saveDir = await getApplicationDocumentsDirectory();
-        final dest = File('${saveDir.path}/skin_${DateTime.now().millisecondsSinceEpoch}.png');
+        final dest = File(
+          '${saveDir.path}/skin_${DateTime.now().millisecondsSinceEpoch}.png',
+        );
         await file.copy(dest.path);
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -523,9 +524,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
       ),
       body: ExcludeSemantics(
         child: _loading
-            ? Center(
-                child: CircularProgressIndicator(color: AppTheme.accent),
-              )
+            ? Center(child: CircularProgressIndicator(color: AppTheme.accent))
             : Column(
                 children: [
                   _buildToolbar(),
@@ -698,7 +697,9 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
                       height: _canvasPx,
                       child: CustomPaint(
                         painter: _PixelGridPainter(_pixels),
-                        foregroundPainter: _showUVTemplate ? const _UVTemplatePainter() : null,
+                        foregroundPainter: _showUVTemplate
+                            ? const _UVTemplatePainter()
+                            : null,
                       ),
                     ),
                   ),
@@ -721,7 +722,8 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
                 _ZoomBtn(
                   icon: FontAwesomeIcons.tableCells,
                   active: _showUVTemplate,
-                  onTap: () => setState(() => _showUVTemplate = !_showUVTemplate),
+                  onTap: () =>
+                      setState(() => _showUVTemplate = !_showUVTemplate),
                 ),
               ],
             ),
@@ -801,7 +803,11 @@ class _ZoomBtn extends StatelessWidget {
   final FaIconData icon;
   final VoidCallback onTap;
   final bool active;
-  const _ZoomBtn({required this.icon, required this.onTap, this.active = false});
+  const _ZoomBtn({
+    required this.icon,
+    required this.onTap,
+    this.active = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -832,21 +838,28 @@ class _ZoomBtn extends StatelessWidget {
   }
 }
 
-typedef _UVRegion = ({String label, int x1, int y1, int x2, int y2, Color color});
+typedef _UVRegion = ({
+  String label,
+  int x1,
+  int y1,
+  int x2,
+  int y2,
+  Color color,
+});
 
 const _uvRegions = <_UVRegion>[
-  (label: 'Head',    x1:  0, y1:  0, x2: 32, y2: 16, color: Color(0xFF4FC3F7)),
-  (label: 'Hat',     x1: 32, y1:  0, x2: 64, y2: 16, color: Color(0xFF0288D1)),
-  (label: 'R.Leg',   x1:  0, y1: 16, x2: 16, y2: 32, color: Color(0xFF81C784)),
-  (label: 'Body',    x1: 16, y1: 16, x2: 40, y2: 32, color: Color(0xFFFFCC80)),
-  (label: 'R.Arm',   x1: 40, y1: 16, x2: 64, y2: 32, color: Color(0xFFEF9A9A)),
-  (label: 'R.Leg+',  x1:  0, y1: 32, x2: 16, y2: 48, color: Color(0xFF66BB6A)),
-  (label: 'Body+',   x1: 16, y1: 32, x2: 40, y2: 48, color: Color(0xFFFFA726)),
-  (label: 'R.Arm+',  x1: 40, y1: 32, x2: 64, y2: 48, color: Color(0xFFEF5350)),
-  (label: 'L.Leg+',  x1:  0, y1: 48, x2: 16, y2: 64, color: Color(0xFF43A047)),
-  (label: 'L.Leg',   x1: 16, y1: 48, x2: 32, y2: 64, color: Color(0xFFA5D6A7)),
-  (label: 'L.Arm',   x1: 32, y1: 48, x2: 48, y2: 64, color: Color(0xFFE57373)),
-  (label: 'L.Arm+',  x1: 48, y1: 48, x2: 64, y2: 64, color: Color(0xFFC62828)),
+  (label: 'Head', x1: 0, y1: 0, x2: 32, y2: 16, color: Color(0xFF4FC3F7)),
+  (label: 'Hat', x1: 32, y1: 0, x2: 64, y2: 16, color: Color(0xFF0288D1)),
+  (label: 'R.Leg', x1: 0, y1: 16, x2: 16, y2: 32, color: Color(0xFF81C784)),
+  (label: 'Body', x1: 16, y1: 16, x2: 40, y2: 32, color: Color(0xFFFFCC80)),
+  (label: 'R.Arm', x1: 40, y1: 16, x2: 64, y2: 32, color: Color(0xFFEF9A9A)),
+  (label: 'R.Leg+', x1: 0, y1: 32, x2: 16, y2: 48, color: Color(0xFF66BB6A)),
+  (label: 'Body+', x1: 16, y1: 32, x2: 40, y2: 48, color: Color(0xFFFFA726)),
+  (label: 'R.Arm+', x1: 40, y1: 32, x2: 64, y2: 48, color: Color(0xFFEF5350)),
+  (label: 'L.Leg+', x1: 0, y1: 48, x2: 16, y2: 64, color: Color(0xFF43A047)),
+  (label: 'L.Leg', x1: 16, y1: 48, x2: 32, y2: 64, color: Color(0xFFA5D6A7)),
+  (label: 'L.Arm', x1: 32, y1: 48, x2: 48, y2: 64, color: Color(0xFFE57373)),
+  (label: 'L.Arm+', x1: 48, y1: 48, x2: 64, y2: 64, color: Color(0xFFC62828)),
 ];
 
 class _PixelGridPainter extends CustomPainter {
@@ -875,7 +888,12 @@ class _PixelGridPainter extends CustomPainter {
         final i = (y * _sz + x) * 4;
         final a = pixels[i + 3];
         if (a == 0) continue;
-        paint.color = Color.fromARGB(a, pixels[i], pixels[i + 1], pixels[i + 2]);
+        paint.color = Color.fromARGB(
+          a,
+          pixels[i],
+          pixels[i + 1],
+          pixels[i + 2],
+        );
         canvas.drawRect(Rect.fromLTWH(x * px, y * px, px, px), paint);
       }
     }

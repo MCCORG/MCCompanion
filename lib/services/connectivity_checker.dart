@@ -17,11 +17,15 @@ class ConnectivityChecker {
     }
 
     if (results.contains(ConnectivityResult.vpn)) {
-      return const ConnectivityCheckResult(warning: ConnectivityWarning.vpnActive);
+      return const ConnectivityCheckResult(
+        warning: ConnectivityWarning.vpnActive,
+      );
     }
 
     if (results.contains(ConnectivityResult.mobile)) {
-      return const ConnectivityCheckResult(warning: ConnectivityWarning.mobileOnly);
+      return const ConnectivityCheckResult(
+        warning: ConnectivityWarning.mobileOnly,
+      );
     }
 
     return const ConnectivityCheckResult(warning: ConnectivityWarning.none);

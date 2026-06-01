@@ -1,371 +1,418 @@
 {
-    "@@locale":  "ja",
-    "appName":  "NetherLink",
-    "console":  "コンソール",
-    "consoleOutput":  "コンソール出力",
-    "noLogsYet":  "まだログはありません",
-    "startBroadcastingToSeeOutput":  "出力を見るにはブロードキャストを開始してください",
-    "close":  "閉じる",
-    "ok":  "OK",
-    "joinUs":  "参加する",
-    "website":  "ウェブサイト",
-    "aternosSubtext": "自分だけの無料Minecraftサーバーを作成しましょう",
-    "howToUseMenu":  "使い方",
-    "support":  "サポート",
-    "helpText":  "{appCreator} によって作成されました。\r\n\r\n使い方:\r\n1. Minecraft サーバーのアドレスとポートを入力します（デフォルト: 19132）\r\n   — またはドロップダウンから以前保存したサーバーを選択します\r\n2. （任意）現在地に最も近い Relay Server（EU または US）を選択します\r\n3. \"ブロードキャスト開始\" をクリックして開始します\r\n4. コンソール/デバイスで: Minecraft \u003e Play \u003e Friends\r\n5. \"NetherLink\" という名前の LAN サーバーが表示されます\r\n6. それをクリックすると、NetherLink 経由で外部サーバーに参加できます\r\n\r\nNintendo Switch（DNS モード）:\r\n1. 接続パネルで \"Nintendo Switch\" を有効にします\r\n2. Relay Server（EU または US）を選択します\r\n3. \"Send DNS Config\" をクリックすると、設定が relay に送信されます\r\n   （これは LAN サーバーをブロードキャストしません）\r\n4. Switch で NetherLink の DNS 設定を適用し、\r\n   NetherLink 用に使っているサーバー項目から参加します\r\n\r\nメモ:\r\n- LAN ブロードキャストでは、NetherLink とコンソールが同じローカルネットワーク上にある必要があります。\r\n- ヒント: 最良のパフォーマンスを得るには、最も近い relay サーバーを選択してください。",
-    "@helpText":  {
-                      "description":  "Detailed help / instructions shown in the help dialog",
-                      "placeholders":  {
-                                           "appCreator":  {
-
-                                                          }
-                                       }
-                  },
-    "more":  "その他",
-    "serverDetailsLabel":  "サーバー詳細",
-    "start":  "開始",
-    "labelJava":  "Java",
-    "startJavaMode":  "Javaモードを開始",
-    "javaInfoTitle":  "Javaモード",
-    "javaInfoText":  "Java Editionサーバーに接続",
-    "howToJavaTitle":  "Javaモード",
-    "@howToJavaTitle":  {
-                            "description":  "Title for the Java how-to modal"
-                        },
-    "howToJavaSubtitle":  "NetherLink経由でJava Editionサーバーに接続",
-    "@howToJavaSubtitle":  {
-                               "description":  "Short subtitle for Java menu tile"
-                           },
-    "howToJavaBody":  "Javaモード — クイック手順:\n1. アプリでJavaモードを選択します。\n2. Java Editionサーバーのアドレスとポートを入力します（既定: 25565）。\n3. 「Javaモードを開始」を押します — NetherLinkが接続を橋渡しします。\n4. Minecraft Bedrockを開いて、フレンドタブに移動します。\n5. Javaサーバーに参加するには、「NetherLink」という名前のLANサーバーを選択します。\n\n⚠️ 重要な警告:\n- 有効なJava Editionアカウント（Microsoft）が必要です。\n- 一部のサーバーではアンチチートシステムが使用されており、アカウントが検出されてBANされる可能性があります。\n- Bedrockクライアントを明確に禁止しているサーバーもあります — 必ずサーバールールを確認してください。\n- この機能の使用によって発生するアカウントBAN、利用停止、その他のアカウント関連の問題について、NetherLinkは責任を負いません。\n- 自己責任で使用してください。",
-    "@howToJavaBody":  {
-                           "description":  "Detailed steps for Java mode how-to modal"
-                       },
-    "language":  "日本語",
-    "@language":  {
-                      "description":  "Your language name in your own language"
-                  },
-    "discord":  "Discord",
-    "@discord":  {
-                     "description":  "Name of the Discord community / link label"
-                 },
-    "toggleDebug":  "デバッグを切り替える",
-    "@toggleDebug":  {
-                         "description":  "Tooltip for toggling debug logging in console"
-                     },
-    "copyLogs":  "ログをコピー",
-    "@copyLogs":  {
-                      "description":  "Tooltip / button text to copy console logs"
-                  },
-    "clear":  "クリア",
-    "@clear":  {
-                   "description":  "Button text to clear console logs or fields"
-               },
-    "cancel":  "キャンセル",
-    "@cancel":  {
-                    "description":  "Generic cancel button label"
-                },
-    "deleteServer":  "サーバーを削除",
-    "@deleteServer":  {
-                          "description":  "Title for delete server confirmation dialog"
-                      },
-    "delete":  "削除",
-    "@delete":  {
-                    "description":  "Delete action label"
-                },
-    "myServers":  "マイサーバー",
-    "@myServers":  {
-                       "description":  "Title for manage servers dialog"
-                   },
-    "quickAccessServers":  "クイックアクセスサーバー",
-    "@quickAccessServers":  {
-                                "description":  "Subtitle for manage servers dialog"
-                            },
-    "addServer":  "サーバーを追加",
-    "@addServer":  {
-                       "description":  "Add server button label / dialog title"
-                   },
-    "addServersHint":  "後ですばやく接続できるようにサーバーを追加します",
-    "@addServersHint":  {
-                            "description":  "Hint text shown when there are no saved servers"
-                        },
-    "serverNameLabel":  "サーバー名 *",
-    "@serverNameLabel":  {
-                             "description":  "Form label for server name"
-                         },
-    "addressLabel":  "アドレス *",
-    "@addressLabel":  {
-                          "description":  "Form label for server address"
-                      },
-    "portLabel":  "ポート *",
-    "@portLabel":  {
-                       "description":  "Form label for server port"
-                   },
-    "descriptionLabel":  "説明（任意）",
-    "@descriptionLabel":  {
-                              "description":  "Form label for server description"
-                          },
-    "save":  "保存",
-    "@save":  {
-                  "description":  "Save button label"
-              },
-    "initializing":  "初期化中...",
-    "@initializing":  {
-                          "description":  "Shown on splash while app initializes"
-                      },
-    "createdBy":  "NetherDev によって作成",
-    "@createdBy":  {
-                       "description":  "Badge text on splash screen"
-                   },
-    "bedrockBridge":  "Bedrockブリッジ",
-    "@bedrockBridge":  {
-                           "description":  "Subtitle on splash screen"
-                       },
-    "clientDisconnected":  "クライアントが切断されました — ブロードキャストを停止しました",
-    "@clientDisconnected":  {
-                                "description":  "Snackbar shown when clients disconnect automatically"
-                            },
-    "pleaseEnterServer":  "⚠️ サーバーアドレスを入力してください",
-    "@pleaseEnterServer":  {
-                               "description":  "Validation message when server address field is empty"
-                           },
-    "invalidPort":  "⚠️ 無効なポート番号です（1-65535）",
-    "@invalidPort":  {
-                         "description":  "Validation message when port is invalid"
-                     },
-    "dnsConfigSent":  "✅ DNS 設定を relay に送信しました",
-    "@dnsConfigSent":  {
-                           "description":  "Confirmation after sending DNS config to relay"
-                       },
-    "broadcastingStarted":  "ブロードキャストを開始しました",
-    "@broadcastingStarted":  {
-                                 "description":  "Snackbar shown when broadcasting starts"
-                             },
-    "broadcastStopped":  "ブロードキャストを停止しました",
-    "@broadcastStopped":  {
-                              "description":  "Snackbar shown when broadcasting stops"
-                          },
-    "selectedServer":  "📋 選択中: {name}",
-    "@selectedServer":  {
-                            "description":  "Shown when a saved server is selected",
-                            "placeholders":  {
-                                                 "name":  {
-
-                                                          }
-                                             }
-                        },
-    "selectedFeaturedServer":  "選択中: {name}",
-    "@selectedFeaturedServer":  {
-                                    "description":  "Shown when a featured server is selected",
-                                    "placeholders":  {
-                                                         "name":  {
-
-                                                                  }
-                                                     }
-                                },
-    "noLogsToCopy":  "コピーするログがありません",
-    "@noLogsToCopy":  {
-                          "description":  "Shown when user tries to copy logs but none exist"
-                      },
-    "copiedLogs":  "{count} 件のログをクリップボードにコピーしました",
-    "@copiedLogs":  {
-                        "description":  "Shown after copying logs to clipboard",
-                        "placeholders":  {
-                                             "count":  {
-
-                                                       }
-                                         }
-                    },
-    "debugEnabled":  "デバッグログを有効にしました",
-    "debugDisabled":  "デバッグログを無効にしました",
-    "@debugEnabled":  {
-                          "description":  "Shown when debug logging is enabled/disabled"
-                      },
-    "howToUseTitle":  "NetherLink の使い方",
-    "iUnderstand":  "理解しました",
-    "playOnSwitchTitle":  "Nintendo Switch で遊ぶ",
-    "playWithFriendsTitle":  "友達と遊ぶ",
-    "playInstructionsSwitch":  "選択中: {relayName}\r\n\r\n接続方法:\r\n1. Switch の設定を開き、DNS を次に変更します: {relayIp}\r\n2. Minecraft を開き、リストからサーバーを選択します（Cubecraft や Hive など）。\r\n3. これで自動的に自分のサーバーへ送られます。",
-    "@playInstructionsSwitch":  {
-                                    "description":  "DNS instructions shown for Nintendo Switch mode",
-                                    "placeholders":  {
-                                                         "relayName":  {
-
-                                                                       },
-                                                         "relayIp":  {
-
-                                                                     }
-                                                     }
-                                },
-    "playInstructionsFriends":  "接続方法:\r\n1. コンソールで {friend} をフレンドとして追加します。\r\n2. Minecraft を開き、Friends タブに移動します。\r\n3. LAN Worlds の下にある自分のサーバーを探し、選択して参加します。",
-    "@playInstructionsFriends":  {
-                                     "description":  "Instructions shown for Friends mode",
-                                     "placeholders":  {
-                                                          "friend":  {
-
-                                                                     }
-                                                      }
-                                 },
-    "nldServerLabel":  "NETHERLINK サーバー",
-    "@nldServerLabel":  {
-                            "description":  "Label text above the relay selector"
-                        },
-    "selectRelayLabel":  "relay を選択 {name}",
-    "@selectRelayLabel":  {
-                              "description":  "Accessibility label for relay selection button",
-                              "placeholders":  {
-                                                   "name":  {
-
-                                                            }
-                                               }
-                          },
-    "noSavedServers":  "保存されたサーバーはありません",
-    "savedServers":  "保存されたサーバー",
-    "serverAddressHint":  "サーバーアドレス",
-    "portHint":  "ポート",
-    "manageServers":  "サーバーを管理",
-    "manageServersTooltip":  "サーバーを管理",
-    "stopBroadcasting":  "ブロードキャスト停止",
-    "startNintendoMode":  "Nintendo モード開始",
-    "startFriendsMode":  "Friends モード開始",
-    "startBroadcasting":  "ブロードキャスト開始",
-    "modeLabel":  "モード",
-    "labelXbox":  "Xbox/PS4-5",
-    "labelNintendo":  "Nintendo",
-    "labelFriends":  "友達",
-    "nintendoInfoTitle":  "Nintendo Switch DNS モード",
-    "nintendoInfoText":  "Nintendo モードで開始し、DNS を設定して注目サーバーに参加します。",
-    "friendModeTitle":  "フレンドモード",
-    "friendModeText":  "NetherLink のフレンド bot をフレンドとして追加します。Friends モードを開始して遊びましょう",
-    "selectedRelayCheck":  "選択済み",
-    "@selectedRelayCheck":  {
-                                "description":  "Small label used when a relay is selected"
-                            },
-    "relayFallbackWarning":  "警告: 元の relay が応答しませんでした。代替 relay を使用中です: {name}",
-    "@relayFallbackWarning":  {
-                                  "placeholders":  {
-                                                       "name":  {
-
-                                                                }
-                                                   }
-                              },
-    "relayUnableConnect":  "どの NetherLink relay サーバーにも接続できません。後でもう一度試すか、インターネット接続を確認してください。",
-    "howToXboxTitle":  "Xbox / PS4-5 (LAN / プロキシ)",
-    "@howToXboxTitle":  {
-                            "description":  "Title for the Xbox / PS4-5 how-to modal"
-                        },
-    "howToXboxSubtitle":  "LAN ブロードキャストまたは proxy 経由でプレイ",
-    "@howToXboxSubtitle":  {
-                               "description":  "Short subtitle for Xbox / PS4-5 menu tile"
-                           },
-    "howToXboxBody":  "接続方法（Xbox / PS4 / PS5）:\r\n1. NetherLink を実行しているデバイスとコンソールが同じローカルネットワーク上にあることを確認してください。\r\n2. アプリで Minecraft サーバーのアドレスとポートを入力し、\"ブロードキャスト開始\" を押します。\r\n3. コンソールで Minecraft → Play を開き、LAN Worlds または Friends タブを探してリストを更新します。\r\n4. \"NetherLink\" という名前の LAN サーバーを選択して参加します。\r\nメモ:\r\n- サーバーが表示されない場合は、両方のデバイスが同じサブネット上にあり、アプリがまだブロードキャスト中であることを確認してください。\r\n- 一部のコンソールやルーターでは LAN 検出がブロックされる場合があります。必要に応じてアプリやルーターの設定を切り替えてみてください。",
-    "@howToXboxBody":  {
-                           "description":  "Detailed steps for Xbox/PS4-5 how-to modal"
-                       },
-    "howToNintendoTitle":  "Nintendo Switch (DNS モード)",
-    "@howToNintendoTitle":  {
-                                "description":  "Title for the Nintendo how-to modal"
-                            },
-    "howToNintendoSubtitle":  "Switch 用 DNS relay 手順",
-    "@howToNintendoSubtitle":  {
-                                   "description":  "Short subtitle for Nintendo menu tile"
-                               },
-    "howToNintendoBody":  "Nintendo Switch — DNS モード（手順）:\r\n1. アプリで \"Nintendo\" モードを有効にし、Relay Server（EU または US）を選択します。\r\n2. \"Send DNS Config\" をタップして DNS IP を relay に送信します。\r\n3. Nintendo Switch で System Settings → Internet → Internet Settings → （使用中のネットワーク）→ Change Settings → DNS に進み、Primary DNS を relay IP に設定します。\r\n4. Minecraft を開いて公開サーバーに参加すると、relay DNS を使って自分のサーバーへリダイレクトされます。\r\nメモ:\r\n- DNS モードは LAN サーバーをブロードキャストせず、ゲーム通信を relay 経由でルーティングします。\r\n- 通常のネットワーク動作が必要な場合は、完了後に DNS を元に戻してください。",
-    "@howToNintendoBody":  {
-                               "description":  "Detailed steps for Nintendo Switch DNS setup"
-                           },
-    "howToFriendsTitle":  "Friends モード",
-    "@howToFriendsTitle":  {
-                               "description":  "Title for the Friends-mode how-to modal"
-                           },
-    "howToFriendsSubtitle":  "友達を招待して LAN 経由で参加",
-    "@howToFriendsSubtitle":  {
-                                  "description":  "Short subtitle for Friends menu tile"
-                              },
-    "howToFriendsBody":  "フレンドモード — 簡単な手順:\r\n1. 必要に応じて、コンソールまたはプラットフォームで NetherLink のフレンドアカウントを追加します。\r\n2. アプリでフレンドモードを有効にし、relay 設定を送信します（該当する場合）。\r\n3. コンソールで Minecraft → Friends を開き、LAN Worlds を探します。そこに LAN ワールドとして自分のサーバーが表示されるはずです。\r\n4. それを選択して、友達と一緒に自分のサーバーへ参加します。\r\nメモ:\r\n- 自分と友達の両方が、フレンド表示を許可する同じ NAT/設定になっていることを確認してください。\r\n- フレンドモードはプラットフォームのフレンド機能に依存し、フレンド申請の承認が必要な場合があります。",
-    "@howToFriendsBody":  {
-                              "description":  "Detailed steps for Friends mode"
-                          },
-    "helpNetherlinkTitle":  "NetherLink が表示されない",
-    "@helpNetherlinkTitle":  {
-                                 "description":  "Title for help topic when NetherLink isn\u0027t visible on console"
-                             },
-    "helpNetherlinkSubtitle":  "LAN 検出の問題をトラブルシューティング",
-    "@helpNetherlinkSubtitle":  {
-                                    "description":  "Short subtitle for NetherLink does not appear tile"
-                                },
-    "helpNetherlinkBody":  "コンソールにサーバーが表示されない場合は、次の手順を試してください:\r\n\r\n✅ 基本チェック:\r\n1. 同じ WiFi ネットワーク - スマホ/タブレットとコンソールは必ず同じ WiFi 上にある必要があります\r\n2. 正しいサーバーアドレス - IP とポート（デフォルト: 19132）を再確認してください\r\n3. ブロードキャストが有効 - NetherLink に \"ブロードキャスト中\" ステータスが表示されていることを確認してください\r\n\r\n🔄 すぐできる対処:\r\n• アプリを再起動: ブロードキャストを停止し、NetherLink を完全に閉じてから再度開いて試してください\r\n• コンソールを再起動: LAN ゲームを検出するには、コンソールの更新が必要なことがあります\r\n• Friends/LAN タブを確認: サーバーはサーバー一覧ではなく、\"Friends\" または \"LAN Games\" の下に表示されます\r\n• ブロードキャスト開始後 10〜15 秒待つ\r\n• VPN を無効化: VPN はローカルブロードキャストを妨げることがあります\r\n\r\n⚠️ よくある問題:\r\n\"No route found for user\" → 両方のデバイスが同じ Wi‑Fi 上にあることを確認してください（ゲストネットワークは避けてください）\r\n\"Unable to connect to NetherLink relay server\" → インターネット接続 / relay の状態を確認してください\r\n\r\n📱 まだ問題がありますか？ NetherLink でデバッグモードを有効にしてログを確認するか、別のサーバーを試してください。",
-    "@helpNetherlinkBody":  {
-                                "description":  "Detailed troubleshooting text for NetherLink not appearing"
-                            },
-    "helpMultiplayerFailedTitle":  "マルチプレイヤー接続に失敗しました",
-    "@helpMultiplayerFailedTitle":  {
-                                        "description":  "Title for help topic when multiplayer connection fails"
-                                    },
-    "helpMultiplayerFailedSubtitle":  "これが NetherLink のエラーではない理由",
-    "@helpMultiplayerFailedSubtitle":  {
-                                           "description":  "Short subtitle for multiplayer failed tile"
-                                       },
-    "helpMultiplayerFailedBody":  "⚠️ これは NetherLink の問題ではありません！\r\n\r\nNetherLink は正常に要求されたサーバーへリダイレクトしました。\"Multiplayer Connection Failed\" というメッセージは、対象サーバーに現在到達できないことを示しています。考えられる理由:\r\n\r\n• 対象の Minecraft サーバーがオフライン、または過負荷状態である\r\n• サーバーが更新されたクライアントバージョン、または特定のエディションを要求している\r\n• relay と対象サーバーの間にネットワークの問題がある\r\n\r\n別のサーバーに接続するか、そのサーバーのサポートに連絡してください。複数のサーバーで問題が続く場合は、NetherLink でデバッグモードを有効にしてログを確認してください。",
-    "@helpMultiplayerFailedBody":  {
-                                       "description":  "Explanation shown when multiplayer connection failed appears"
-                                   },
-    "helpNintendoDnsTitle":  "Nintendo DNS が動作しない",
-    "@helpNintendoDnsTitle":  {
-                                  "description":  "Title for Nintendo DNS troubleshooting"
-                              },
-    "helpNintendoDnsSubtitle":  "よくある DNS / relay の問題",
-    "@helpNintendoDnsSubtitle":  {
-                                     "description":  "Short subtitle for Nintendo DNS troubleshooting tile"
-                                 },
-    "helpNintendoDnsBody":  "Nintendo DNS モードが動作しない場合は、次を確認してください:\r\n\r\n1. アプリから DNS 設定を送信したことを確認します（Send DNS Config）。\r\n2. Switch に relay IP をプライマリ DNS として適用したことを確認します。\r\n3. 選択した relay サーバー（EU/US）がオンラインで、過負荷でないことを確認します。\r\n4. 一部のネットワーク（例: captive portal）はカスタム DNS を妨げます。別のネットワークで試してください。\r\n\r\n問題が続く場合は、デバッグモードを有効にしてログを確認するか、フレンドモードの代替手段を試してください。",
-    "@helpNintendoDnsBody":  {
-                                 "description":  "Detailed placeholder for Nintendo DNS troubleshooting"
-                             },
-    "helpFriendsModeTitle":  "Friends モードが動作しない",
-    "@helpFriendsModeTitle":  {
-                                  "description":  "Title for Friends mode troubleshooting"
-                              },
-    "helpFriendsModeSubtitle":  "よくあるフレンド関連の問題",
-    "@helpFriendsModeSubtitle":  {
-                                     "description":  "Short subtitle for Friends-mode troubleshooting tile"
-                                 },
-    "helpFriendsModeBody":  "フレンドモードのトラブルシューティング:\r\n\r\n1. relay フレンドアカウントがコンソールで追加/承認されていることを確認してください（必要な場合）。\r\n2. フレンドモードを有効にしたあと、ゲームを再起動して Friends/LAN タブを更新してみてください。\r\n\r\nそれでもサーバーが友達に表示されない場合は、デバッグモードを有効にしてログを確認し、エラーを特定してください。",
-    "@helpFriendsModeBody":  {
-                                 "description":  "Detailed placeholder for Friends mode troubleshooting"
-                             },
-    "changeLanguageTitle":  "言語を変更",
-    "@changeLanguageTitle":  {
-                                 "description":  "Title for the language selection dialog"
-                             },
-    "changeLanguage":  "言語",
-    "@changeLanguage":  {
-                            "description":  "Label for the language button in the bottom nav"
-                        },
-    "useSystemLanguage":  "システム言語を使用",
-    "@useSystemLanguage":  {
-                               "description":  "Button that resets localization to the system/default locale"
-                           },
-    "updateAvailable":  "アップデートがあります",
-    "needSameWifi":  "NetherLink を実行している端末は、Minecraft をプレイするコンソールと同じ Wi‑Fi ネットワーク上にある必要があります。",
-    "active":  "アクティブ",
-    "newVersion":  "アプリの新しいバージョンが利用できます。\n最新の機能と修正のため、今すぐ更新してください。",
-    "noServerYet":  "保存されたサーバーはまだありません。\n追加するには「管理」をタップしてください。",
-    "beforeYouStart":  "始める前に",
-    "stop":  "停止",
-    "later":  "後で",
-    "continueAnyway":  "このまま続行",
-    "serverNotSelected":  "サーバーが選択されていません",
-    "noWifi":  "Wi‑Fi に接続されていません",
-    "vpnDetected":  "VPN が検出されました",
-    "ready":  "準備完了",
-    "vpnActive":  "VPN が有効になっていることを検出しました。\n\nNetherLink を使用する前に VPN を無効にしてください。そうしないと、LAN ブロードキャストがコンソールに届かない可能性があります。",
-    "updateNow":  "今すぐ更新",
-    "needSubscription":  "各コンソールには有効なオンライン加入サービス（Xbox Live、PS Plus、NSO）が必要です。ない場合、NetherLink は表示されません。",
-    "mobileActive":  "検出: モバイルデータ\n\nNetherLink はコンソールと同じネットワーク上にある必要があります。続行する前に、自宅の Wi‑Fi またはホットスポットに接続してください。",
-    "sameWifi":  "同じ Wi‑Fi ネットワーク",
-    "subscription":  "オンライン加入が必要",
-    "couldNotOpenUrl":  "URL を開けませんでした",
-    "@couldNotOpenUrl":  {
-                             "description":  "Snackbar message when launching an external URL fails"
-                         }
+  "@@locale": "ja",
+  "appName": "NetherLink",
+  "console": "コンソール",
+  "consoleOutput": "コンソール出力",
+  "noLogsYet": "まだログはありません",
+  "startBroadcastingToSeeOutput": "出力を見るにはブロードキャストを開始してください",
+  "close": "閉じる",
+  "ok": "OK",
+  "joinUs": "参加する",
+  "website": "ウェブサイト",
+  "aternosSubtext": "自分だけの無料Minecraftサーバーを作成しましょう",
+  "howToUseMenu": "使い方",
+  "support": "サポート",
+  "helpText": "{appCreator} によって作成されました。\r\n\r\n使い方:\r\n1. Minecraft サーバーのアドレスとポートを入力します（デフォルト: 19132）\r\n   — またはドロップダウンから以前保存したサーバーを選択します\r\n2. （任意）現在地に最も近い Relay Server（EU または US）を選択します\r\n3. \"ブロードキャスト開始\" をクリックして開始します\r\n4. コンソール/デバイスで: Minecraft > Play > Friends\r\n5. \"NetherLink\" という名前の LAN サーバーが表示されます\r\n6. それをクリックすると、NetherLink 経由で外部サーバーに参加できます\r\n\r\nNintendo Switch（DNS モード）:\r\n1. 接続パネルで \"Nintendo Switch\" を有効にします\r\n2. Relay Server（EU または US）を選択します\r\n3. \"Send DNS Config\" をクリックすると、設定が relay に送信されます\r\n   （これは LAN サーバーをブロードキャストしません）\r\n4. Switch で NetherLink の DNS 設定を適用し、\r\n   NetherLink 用に使っているサーバー項目から参加します\r\n\r\nメモ:\r\n- LAN ブロードキャストでは、NetherLink とコンソールが同じローカルネットワーク上にある必要があります。\r\n- ヒント: 最良のパフォーマンスを得るには、最も近い relay サーバーを選択してください。",
+  "@helpText": {
+    "description": "Detailed help / instructions shown in the help dialog",
+    "placeholders": {
+      "appCreator": {}
+    }
+  },
+  "more": "その他",
+  "serverDetailsLabel": "サーバー詳細",
+  "start": "開始",
+  "labelJava": "Java",
+  "startJavaMode": "Javaモードを開始",
+  "javaInfoTitle": "Javaモード",
+  "javaInfoText": "Java Editionサーバーに接続",
+  "howToJavaTitle": "Javaモード",
+  "@howToJavaTitle": {
+    "description": "Title for the Java how-to modal"
+  },
+  "howToJavaSubtitle": "NetherLink経由でJava Editionサーバーに接続",
+  "@howToJavaSubtitle": {
+    "description": "Short subtitle for Java menu tile"
+  },
+  "howToJavaBody": "Javaモード — クイック手順:\n1. アプリでJavaモードを選択します。\n2. Java Editionサーバーのアドレスとポートを入力します（既定: 25565）。\n3. 「Javaモードを開始」を押します — NetherLinkが接続を橋渡しします。\n4. Minecraft Bedrockを開いて、フレンドタブに移動します。\n5. Javaサーバーに参加するには、「NetherLink」という名前のLANサーバーを選択します。\n\n⚠️ 重要な警告:\n- 有効なJava Editionアカウント（Microsoft）が必要です。\n- 一部のサーバーではアンチチートシステムが使用されており、アカウントが検出されてBANされる可能性があります。\n- Bedrockクライアントを明確に禁止しているサーバーもあります — 必ずサーバールールを確認してください。\n- この機能の使用によって発生するアカウントBAN、利用停止、その他のアカウント関連の問題について、NetherLinkは責任を負いません。\n- 自己責任で使用してください。",
+  "@howToJavaBody": {
+    "description": "Detailed steps for Java mode how-to modal"
+  },
+  "language": "日本語",
+  "@language": {
+    "description": "Your language name in your own language"
+  },
+  "discord": "Discord",
+  "@discord": {
+    "description": "Name of the Discord community / link label"
+  },
+  "toggleDebug": "デバッグを切り替える",
+  "@toggleDebug": {
+    "description": "Tooltip for toggling debug logging in console"
+  },
+  "copyLogs": "ログをコピー",
+  "@copyLogs": {
+    "description": "Tooltip / button text to copy console logs"
+  },
+  "clear": "クリア",
+  "@clear": {
+    "description": "Button text to clear console logs or fields"
+  },
+  "cancel": "キャンセル",
+  "@cancel": {
+    "description": "Generic cancel button label"
+  },
+  "deleteServer": "サーバーを削除",
+  "@deleteServer": {
+    "description": "Title for delete server confirmation dialog"
+  },
+  "delete": "削除",
+  "@delete": {
+    "description": "Delete action label"
+  },
+  "myServers": "マイサーバー",
+  "@myServers": {
+    "description": "Title for manage servers dialog"
+  },
+  "quickAccessServers": "クイックアクセスサーバー",
+  "@quickAccessServers": {
+    "description": "Subtitle for manage servers dialog"
+  },
+  "addServer": "サーバーを追加",
+  "@addServer": {
+    "description": "Add server button label / dialog title"
+  },
+  "addServersHint": "後ですばやく接続できるようにサーバーを追加します",
+  "@addServersHint": {
+    "description": "Hint text shown when there are no saved servers"
+  },
+  "serverNameLabel": "サーバー名 *",
+  "@serverNameLabel": {
+    "description": "Form label for server name"
+  },
+  "addressLabel": "アドレス *",
+  "@addressLabel": {
+    "description": "Form label for server address"
+  },
+  "portLabel": "ポート *",
+  "@portLabel": {
+    "description": "Form label for server port"
+  },
+  "descriptionLabel": "説明（任意）",
+  "@descriptionLabel": {
+    "description": "Form label for server description"
+  },
+  "save": "保存",
+  "@save": {
+    "description": "Save button label"
+  },
+  "initializing": "初期化中...",
+  "@initializing": {
+    "description": "Shown on splash while app initializes"
+  },
+  "createdBy": "NetherDev によって作成",
+  "@createdBy": {
+    "description": "Badge text on splash screen"
+  },
+  "bedrockBridge": "Bedrockブリッジ",
+  "@bedrockBridge": {
+    "description": "Subtitle on splash screen"
+  },
+  "clientDisconnected": "クライアントが切断されました — ブロードキャストを停止しました",
+  "@clientDisconnected": {
+    "description": "Snackbar shown when clients disconnect automatically"
+  },
+  "pleaseEnterServer": "⚠️ サーバーアドレスを入力してください",
+  "@pleaseEnterServer": {
+    "description": "Validation message when server address field is empty"
+  },
+  "invalidPort": "⚠️ 無効なポート番号です（1-65535）",
+  "@invalidPort": {
+    "description": "Validation message when port is invalid"
+  },
+  "dnsConfigSent": "✅ DNS 設定を relay に送信しました",
+  "@dnsConfigSent": {
+    "description": "Confirmation after sending DNS config to relay"
+  },
+  "broadcastingStarted": "ブロードキャストを開始しました",
+  "@broadcastingStarted": {
+    "description": "Snackbar shown when broadcasting starts"
+  },
+  "broadcastStopped": "ブロードキャストを停止しました",
+  "@broadcastStopped": {
+    "description": "Snackbar shown when broadcasting stops"
+  },
+  "selectedServer": "📋 選択中: {name}",
+  "@selectedServer": {
+    "description": "Shown when a saved server is selected",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "selectedFeaturedServer": "選択中: {name}",
+  "@selectedFeaturedServer": {
+    "description": "Shown when a featured server is selected",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "noLogsToCopy": "コピーするログがありません",
+  "@noLogsToCopy": {
+    "description": "Shown when user tries to copy logs but none exist"
+  },
+  "copiedLogs": "{count} 件のログをクリップボードにコピーしました",
+  "@copiedLogs": {
+    "description": "Shown after copying logs to clipboard",
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "debugEnabled": "デバッグログを有効にしました",
+  "debugDisabled": "デバッグログを無効にしました",
+  "@debugEnabled": {
+    "description": "Shown when debug logging is enabled/disabled"
+  },
+  "howToUseTitle": "NetherLink の使い方",
+  "iUnderstand": "理解しました",
+  "playOnSwitchTitle": "Nintendo Switch で遊ぶ",
+  "playWithFriendsTitle": "友達と遊ぶ",
+  "playInstructionsSwitch": "選択中: {relayName}\r\n\r\n接続方法:\r\n1. Switch の設定を開き、DNS を次に変更します: {relayIp}\r\n2. Minecraft を開き、リストからサーバーを選択します（Cubecraft や Hive など）。\r\n3. これで自動的に自分のサーバーへ送られます。",
+  "@playInstructionsSwitch": {
+    "description": "DNS instructions shown for Nintendo Switch mode",
+    "placeholders": {
+      "relayName": {},
+      "relayIp": {}
+    }
+  },
+  "playInstructionsFriends": "接続方法:\r\n1. コンソールで {friend} をフレンドとして追加します。\r\n2. Minecraft を開き、Friends タブに移動します。\r\n3. LAN Worlds の下にある自分のサーバーを探し、選択して参加します。",
+  "@playInstructionsFriends": {
+    "description": "Instructions shown for Friends mode",
+    "placeholders": {
+      "friend": {}
+    }
+  },
+  "nldServerLabel": "NETHERLINK サーバー",
+  "@nldServerLabel": {
+    "description": "Label text above the relay selector"
+  },
+  "selectRelayLabel": "relay を選択 {name}",
+  "@selectRelayLabel": {
+    "description": "Accessibility label for relay selection button",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "noSavedServers": "保存されたサーバーはありません",
+  "savedServers": "保存されたサーバー",
+  "serverAddressHint": "サーバーアドレス",
+  "portHint": "ポート",
+  "manageServers": "サーバーを管理",
+  "manageServersTooltip": "サーバーを管理",
+  "stopBroadcasting": "ブロードキャスト停止",
+  "startNintendoMode": "Nintendo モード開始",
+  "startFriendsMode": "Friends モード開始",
+  "startBroadcasting": "ブロードキャスト開始",
+  "modeLabel": "モード",
+  "labelXbox": "Xbox/PS4-5",
+  "labelNintendo": "Nintendo",
+  "labelFriends": "友達",
+  "nintendoInfoTitle": "Nintendo Switch DNS モード",
+  "nintendoInfoText": "Nintendo モードで開始し、DNS を設定して注目サーバーに参加します。",
+  "friendModeTitle": "フレンドモード",
+  "friendModeText": "NetherLink のフレンド bot をフレンドとして追加します。Friends モードを開始して遊びましょう",
+  "selectedRelayCheck": "選択済み",
+  "@selectedRelayCheck": {
+    "description": "Small label used when a relay is selected"
+  },
+  "relayFallbackWarning": "警告: 元の relay が応答しませんでした。代替 relay を使用中です: {name}",
+  "@relayFallbackWarning": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "relayUnableConnect": "どの NetherLink relay サーバーにも接続できません。後でもう一度試すか、インターネット接続を確認してください。",
+  "howToXboxTitle": "Xbox / PS4-5 (LAN / プロキシ)",
+  "@howToXboxTitle": {
+    "description": "Title for the Xbox / PS4-5 how-to modal"
+  },
+  "howToXboxSubtitle": "LAN ブロードキャストまたは proxy 経由でプレイ",
+  "@howToXboxSubtitle": {
+    "description": "Short subtitle for Xbox / PS4-5 menu tile"
+  },
+  "howToXboxBody": "接続方法（Xbox / PS4 / PS5）:\r\n1. NetherLink を実行しているデバイスとコンソールが同じローカルネットワーク上にあることを確認してください。\r\n2. アプリで Minecraft サーバーのアドレスとポートを入力し、\"ブロードキャスト開始\" を押します。\r\n3. コンソールで Minecraft → Play を開き、LAN Worlds または Friends タブを探してリストを更新します。\r\n4. \"NetherLink\" という名前の LAN サーバーを選択して参加します。\r\nメモ:\r\n- サーバーが表示されない場合は、両方のデバイスが同じサブネット上にあり、アプリがまだブロードキャスト中であることを確認してください。\r\n- 一部のコンソールやルーターでは LAN 検出がブロックされる場合があります。必要に応じてアプリやルーターの設定を切り替えてみてください。",
+  "@howToXboxBody": {
+    "description": "Detailed steps for Xbox/PS4-5 how-to modal"
+  },
+  "howToNintendoTitle": "Nintendo Switch (DNS モード)",
+  "@howToNintendoTitle": {
+    "description": "Title for the Nintendo how-to modal"
+  },
+  "howToNintendoSubtitle": "Switch 用 DNS relay 手順",
+  "@howToNintendoSubtitle": {
+    "description": "Short subtitle for Nintendo menu tile"
+  },
+  "howToNintendoBody": "Nintendo Switch — DNS モード（手順）:\r\n1. アプリで \"Nintendo\" モードを有効にし、Relay Server（EU または US）を選択します。\r\n2. \"Send DNS Config\" をタップして DNS IP を relay に送信します。\r\n3. Nintendo Switch で System Settings → Internet → Internet Settings → （使用中のネットワーク）→ Change Settings → DNS に進み、Primary DNS を relay IP に設定します。\r\n4. Minecraft を開いて公開サーバーに参加すると、relay DNS を使って自分のサーバーへリダイレクトされます。\r\nメモ:\r\n- DNS モードは LAN サーバーをブロードキャストせず、ゲーム通信を relay 経由でルーティングします。\r\n- 通常のネットワーク動作が必要な場合は、完了後に DNS を元に戻してください。",
+  "@howToNintendoBody": {
+    "description": "Detailed steps for Nintendo Switch DNS setup"
+  },
+  "howToFriendsTitle": "Friends モード",
+  "@howToFriendsTitle": {
+    "description": "Title for the Friends-mode how-to modal"
+  },
+  "howToFriendsSubtitle": "友達を招待して LAN 経由で参加",
+  "@howToFriendsSubtitle": {
+    "description": "Short subtitle for Friends menu tile"
+  },
+  "howToFriendsBody": "フレンドモード — 簡単な手順:\r\n1. 必要に応じて、コンソールまたはプラットフォームで NetherLink のフレンドアカウントを追加します。\r\n2. アプリでフレンドモードを有効にし、relay 設定を送信します（該当する場合）。\r\n3. コンソールで Minecraft → Friends を開き、LAN Worlds を探します。そこに LAN ワールドとして自分のサーバーが表示されるはずです。\r\n4. それを選択して、友達と一緒に自分のサーバーへ参加します。\r\nメモ:\r\n- 自分と友達の両方が、フレンド表示を許可する同じ NAT/設定になっていることを確認してください。\r\n- フレンドモードはプラットフォームのフレンド機能に依存し、フレンド申請の承認が必要な場合があります。",
+  "@howToFriendsBody": {
+    "description": "Detailed steps for Friends mode"
+  },
+  "helpNetherlinkTitle": "NetherLink が表示されない",
+  "@helpNetherlinkTitle": {
+    "description": "Title for help topic when NetherLink isn't visible on console"
+  },
+  "helpNetherlinkSubtitle": "LAN 検出の問題をトラブルシューティング",
+  "@helpNetherlinkSubtitle": {
+    "description": "Short subtitle for NetherLink does not appear tile"
+  },
+  "helpNetherlinkBody": "コンソールにサーバーが表示されない場合は、次の手順を試してください:\r\n\r\n✅ 基本チェック:\r\n1. 同じ WiFi ネットワーク - スマホ/タブレットとコンソールは必ず同じ WiFi 上にある必要があります\r\n2. 正しいサーバーアドレス - IP とポート（デフォルト: 19132）を再確認してください\r\n3. ブロードキャストが有効 - NetherLink に \"ブロードキャスト中\" ステータスが表示されていることを確認してください\r\n\r\n🔄 すぐできる対処:\r\n• アプリを再起動: ブロードキャストを停止し、NetherLink を完全に閉じてから再度開いて試してください\r\n• コンソールを再起動: LAN ゲームを検出するには、コンソールの更新が必要なことがあります\r\n• Friends/LAN タブを確認: サーバーはサーバー一覧ではなく、\"Friends\" または \"LAN Games\" の下に表示されます\r\n• ブロードキャスト開始後 10〜15 秒待つ\r\n• VPN を無効化: VPN はローカルブロードキャストを妨げることがあります\r\n\r\n⚠️ よくある問題:\r\n\"No route found for user\" → 両方のデバイスが同じ Wi‑Fi 上にあることを確認してください（ゲストネットワークは避けてください）\r\n\"Unable to connect to NetherLink relay server\" → インターネット接続 / relay の状態を確認してください\r\n\r\n📱 まだ問題がありますか？ NetherLink でデバッグモードを有効にしてログを確認するか、別のサーバーを試してください。",
+  "@helpNetherlinkBody": {
+    "description": "Detailed troubleshooting text for NetherLink not appearing"
+  },
+  "helpMultiplayerFailedTitle": "マルチプレイヤー接続に失敗しました",
+  "@helpMultiplayerFailedTitle": {
+    "description": "Title for help topic when multiplayer connection fails"
+  },
+  "helpMultiplayerFailedSubtitle": "これが NetherLink のエラーではない理由",
+  "@helpMultiplayerFailedSubtitle": {
+    "description": "Short subtitle for multiplayer failed tile"
+  },
+  "helpMultiplayerFailedBody": "⚠️ これは NetherLink の問題ではありません！\r\n\r\nNetherLink は正常に要求されたサーバーへリダイレクトしました。\"Multiplayer Connection Failed\" というメッセージは、対象サーバーに現在到達できないことを示しています。考えられる理由:\r\n\r\n• 対象の Minecraft サーバーがオフライン、または過負荷状態である\r\n• サーバーが更新されたクライアントバージョン、または特定のエディションを要求している\r\n• relay と対象サーバーの間にネットワークの問題がある\r\n\r\n別のサーバーに接続するか、そのサーバーのサポートに連絡してください。複数のサーバーで問題が続く場合は、NetherLink でデバッグモードを有効にしてログを確認してください。",
+  "@helpMultiplayerFailedBody": {
+    "description": "Explanation shown when multiplayer connection failed appears"
+  },
+  "helpNintendoDnsTitle": "Nintendo DNS が動作しない",
+  "@helpNintendoDnsTitle": {
+    "description": "Title for Nintendo DNS troubleshooting"
+  },
+  "helpNintendoDnsSubtitle": "よくある DNS / relay の問題",
+  "@helpNintendoDnsSubtitle": {
+    "description": "Short subtitle for Nintendo DNS troubleshooting tile"
+  },
+  "helpNintendoDnsBody": "Nintendo DNS モードが動作しない場合は、次を確認してください:\r\n\r\n1. アプリから DNS 設定を送信したことを確認します（Send DNS Config）。\r\n2. Switch に relay IP をプライマリ DNS として適用したことを確認します。\r\n3. 選択した relay サーバー（EU/US）がオンラインで、過負荷でないことを確認します。\r\n4. 一部のネットワーク（例: captive portal）はカスタム DNS を妨げます。別のネットワークで試してください。\r\n\r\n問題が続く場合は、デバッグモードを有効にしてログを確認するか、フレンドモードの代替手段を試してください。",
+  "@helpNintendoDnsBody": {
+    "description": "Detailed placeholder for Nintendo DNS troubleshooting"
+  },
+  "helpFriendsModeTitle": "Friends モードが動作しない",
+  "@helpFriendsModeTitle": {
+    "description": "Title for Friends mode troubleshooting"
+  },
+  "helpFriendsModeSubtitle": "よくあるフレンド関連の問題",
+  "@helpFriendsModeSubtitle": {
+    "description": "Short subtitle for Friends-mode troubleshooting tile"
+  },
+  "helpFriendsModeBody": "フレンドモードのトラブルシューティング:\r\n\r\n1. relay フレンドアカウントがコンソールで追加/承認されていることを確認してください（必要な場合）。\r\n2. フレンドモードを有効にしたあと、ゲームを再起動して Friends/LAN タブを更新してみてください。\r\n\r\nそれでもサーバーが友達に表示されない場合は、デバッグモードを有効にしてログを確認し、エラーを特定してください。",
+  "@helpFriendsModeBody": {
+    "description": "Detailed placeholder for Friends mode troubleshooting"
+  },
+  "changeLanguageTitle": "言語を変更",
+  "@changeLanguageTitle": {
+    "description": "Title for the language selection dialog"
+  },
+  "changeLanguage": "言語",
+  "@changeLanguage": {
+    "description": "Label for the language button in the bottom nav"
+  },
+  "useSystemLanguage": "システム言語を使用",
+  "@useSystemLanguage": {
+    "description": "Button that resets localization to the system/default locale"
+  },
+  "updateAvailable": "アップデートがあります",
+  "needSameWifi": "NetherLink を実行している端末は、Minecraft をプレイするコンソールと同じ Wi‑Fi ネットワーク上にある必要があります。",
+  "active": "アクティブ",
+  "newVersion": "アプリの新しいバージョンが利用できます。\n最新の機能と修正のため、今すぐ更新してください。",
+  "noServerYet": "保存されたサーバーはまだありません。\n追加するには「管理」をタップしてください。",
+  "beforeYouStart": "始める前に",
+  "stop": "停止",
+  "later": "後で",
+  "continueAnyway": "このまま続行",
+  "serverNotSelected": "サーバーが選択されていません",
+  "noWifi": "Wi‑Fi に接続されていません",
+  "vpnDetected": "VPN が検出されました",
+  "ready": "準備完了",
+  "vpnActive": "VPN が有効になっていることを検出しました。\n\nNetherLink を使用する前に VPN を無効にしてください。そうしないと、LAN ブロードキャストがコンソールに届かない可能性があります。",
+  "updateNow": "今すぐ更新",
+  "needSubscription": "各コンソールには有効なオンライン加入サービス（Xbox Live、PS Plus、NSO）が必要です。ない場合、NetherLink は表示されません。",
+  "mobileActive": "検出: モバイルデータ\n\nNetherLink はコンソールと同じネットワーク上にある必要があります。続行する前に、自宅の Wi‑Fi またはホットスポットに接続してください。",
+  "sameWifi": "同じ Wi‑Fi ネットワーク",
+  "subscription": "オンライン加入が必要",
+  "couldNotOpenUrl": "URL を開けませんでした",
+  "@couldNotOpenUrl": {
+    "description": "Snackbar message when launching an external URL fails"
+  },
+  "serverTrackerTitle": "サーバートラッカー",
+  "removeServerTitle": "サーバーを削除",
+  "removeServerConfirm": "トラッカーから \"{name}\" を削除しますか？",
+  "removeServerFailed": "サーバーの削除に失敗しました",
+  "refreshStatus": "ステータスを更新",
+  "trackerSignInRequired": "サインインが必要です",
+  "trackerSignInSubtitle": "サーバーをトラッキングし、オフライン通知を受け取るにはサインインしてください。",
+  "signIn": "サインイン",
+  "noServersTracked": "追跡中のサーバーなし",
+  "trackerEmptySubtitle": "Minecraftサーバーを追加して、ステータスを監視し通知を受け取りましょう。",
+  "fillAllFields": "すべてのフィールドを正しく入力してください",
+  "slotUsedUpgrade": "無料スロットが使用されています。より多くのサーバーのためにアップグレードしてください。",
+  "addServerFailed": "サーバーの追加に失敗しました。詳細を確認してください。",
+  "ipAddressLabel": "IPアドレス",
+  "platformLabel": "プラットフォーム",
+  "bedrockLabel": "Bedrock",
+  "addLabel": "追加",
+  "statusOnline": "オンライン",
+  "statusOffline": "オフライン",
+  "statusChecking": "確認中...",
+  "notificationsOn": "通知オン",
+  "notificationsOff": "通知オフ",
+  "failedUpdateNotifications": "通知の更新に失敗しました",
+  "editServerTitle": "サーバーを編集",
+  "serverNameHint": "サーバー名",
+  "failedSave": "保存に失敗しました。もう一度試してください。",
+  "serverRenamed": "サーバー名を変更しました",
+  "customizeLabel": "カスタマイズ",
+  "customizeSubtitle": "タイルを並び替えてナビゲーションをカスタマイズ",
+  "resetLabel": "リセット",
+  "tilesSection": "タイル",
+  "dragToReorder": "ドラッグして並び替え",
+  "navigationSection": "ナビゲーション",
+  "navFixed": "ホーム、コネクター、プロフィールは常に固定されています",
+  "leftSlot": "左スロット（ホームの隣）",
+  "rightSlot": "右スロット（プロフィールの隣）",
+  "accentColorSection": "アクセントカラー",
+  "opacityLabel": "不透明度",
+  "backgroundSection": "背景",
+  "cardsSection": "カード",
+  "editLabel": "編集",
+  "playerLookupJavaEdition": "Java Edition",
+  "playerLookupBedrockEdition": "Bedrock Edition",
+  "playerLookupLabelUuid": "UUID",
+  "playerLookupLabelGamertag": "ゲーマータグ",
+  "playerLookupLabelXuid": "XUID",
+  "playerLookupLabelFloodgate": "Floodgate",
+  "accountSubtitleXbox": "Xbox · {xuid}",
+  "accountSubtitleJava": "Java Edition · {uuid}",
+  "avatarUrlHint": "https://example.com/avatar.png",
+  "chooseUniqueUsername": "ユニークなユーザー名を選んで始めましょう。",
+  "usernameFieldLabel": "ユーザー名",
+  "usernameExampleHint": "例: CoolPlayer123",
+  "usernameFormatHint": "3〜20文字・英数字とアンダースコアのみ",
+  "displayNameOptional": "表示名（任意）",
+  "displayNameExampleHint": "例: クールプレイヤー",
+  "usernameRequired": "ユーザー名は必須です",
+  "usernameFormatError": "ユーザー名は3〜20文字で、英数字とアンダースコアのみ使用できます",
+  "usernameTaken": "このユーザー名はすでに使用されています",
+  "noConnectionError": "接続がありません。インターネットを確認して再試行してください。",
+  "home": "ホーム",
+  "info": "情報",
+  "navProfile": "プロフィール",
+  "serverRemoved": "{name} を削除しました",
+  "serverAdded": "{name} を追加しました"
 }
