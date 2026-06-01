@@ -75,6 +75,7 @@ class _AppShellState extends State<AppShell>
   final GlobalKey<HomeScreenState> _connectorKey = GlobalKey();
   final GlobalKey<SkinsScreenState> _skinsKey = GlobalKey();
   final GlobalKey<ProfileScreenState> _profileKey = GlobalKey();
+  bool _loginFromTracker = false;
 
   late RelayPingResult _selectedRelay;
   int _pageIndex = _pageHome;
@@ -383,7 +384,10 @@ class _AppShellState extends State<AppShell>
                   activeItem: _activeNavItem,
                   onHomeTap: () => _goTo(_pageHome),
                   onConnectorTap: () => _goTo(_pageConnector),
-                  onProfileTap: () => _goTo(_pageProfile),
+                  onProfileTap: () {
+                    _loginFromTracker = false;
+                    _goTo(_pageProfile);
+                  },
                   navLeftFeature: svc.navLeft,
                   navRightFeature: svc.navRight,
                   onNavLeftTap: _navCallbackFor(svc.navLeft),
@@ -468,11 +472,20 @@ class _AppShellState extends State<AppShell>
                         onGoToConnector: () => _goTo(_pageConnector),
                         onGoToSkins: () => _goTo(_pageSkins),
                         onGoToWiki: () => _goTo(_pageWiki),
+                        onLoggedIn: () {
+                          if (_loginFromTracker) {
+                            _loginFromTracker = false;
+                            _goTo(_pageServerTracker);
+                          }
+                        },
                       ),
                       PlayerLookupScreen(onBack: () => _goTo(_pageHome)),
                       ServerTrackerScreen(
                         onBack: () => _goTo(_pageHome),
-                        onGoToLogin: () => _goTo(_pageProfile),
+                        onGoToLogin: () {
+                          _loginFromTracker = true;
+                          _goTo(_pageProfile);
+                        },
                       ),
                     ],
                   ),

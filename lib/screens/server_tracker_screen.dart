@@ -26,6 +26,7 @@ class ServerTrackerScreen extends StatefulWidget {
 class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
   StreamSubscription<List<TrackedServer>>? _sub;
   StreamSubscription<TrackerSlots?>? _slotsSub;
+  StreamSubscription? _authSub;
 
   List<TrackedServer> _servers = [];
   TrackerSlots? _slots;
@@ -40,6 +41,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
     super.initState();
     _checkAuth();
     _startCountdown();
+    _authSub = AuthService.userStream.listen((_) => _checkAuth());
   }
 
   void _startCountdown() {
@@ -101,6 +103,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
   void dispose() {
     _sub?.cancel();
     _slotsSub?.cancel();
+    _authSub?.cancel();
     _countdownTimer?.cancel();
     super.dispose();
   }

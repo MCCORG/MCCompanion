@@ -709,7 +709,10 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                       children: accentPresets.map((p) {
                         final isSelected = p.id == _accent.id;
                         return GestureDetector(
-                          onTap: () => setState(() => _accent = p),
+                          onTap: () {
+                            setState(() => _accent = p);
+                            ThemeService.instance.setAccentLive(p);
+                          },
                           child: AnimatedContainer(
                             duration: const Duration(milliseconds: 150),
                             decoration: BoxDecoration(
@@ -785,7 +788,10 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                         min: 0.3,
                         max: 1.0,
                         divisions: 14,
-                        onChanged: (v) => setState(() => _opacity = v),
+                        onChanged: (v) {
+                          setState(() => _opacity = v);
+                          ThemeService.instance.setOpacityLive(v);
+                        },
                       ),
                     ),
 
@@ -824,7 +830,10 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                       children: bgPresets.map((p) {
                         final isSelected = p.id == _bg.id;
                         return GestureDetector(
-                          onTap: () => setState(() => _bg = p),
+                          onTap: () {
+                            setState(() => _bg = p);
+                            ThemeService.instance.setBgLive(p);
+                          },
                           child: Tooltip(
                             message: p.label,
                             child: AnimatedContainer(
@@ -899,7 +908,10 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                       children: cardPresets.map((p) {
                         final isSelected = p.id == _card.id;
                         return GestureDetector(
-                          onTap: () => setState(() => _card = p),
+                          onTap: () {
+                            setState(() => _card = p);
+                            ThemeService.instance.setCardLive(p);
+                          },
                           child: Tooltip(
                             message: p.label,
                             child: AnimatedContainer(

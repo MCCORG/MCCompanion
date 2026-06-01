@@ -24,12 +24,14 @@ class ProfileScreen extends StatefulWidget {
   final VoidCallback? onGoToConnector;
   final VoidCallback? onGoToSkins;
   final VoidCallback? onGoToWiki;
+  final VoidCallback? onLoggedIn;
   const ProfileScreen({
     super.key,
     this.onGoToHome,
     this.onGoToConnector,
     this.onGoToSkins,
     this.onGoToWiki,
+    this.onLoggedIn,
   });
 
   @override
@@ -44,6 +46,7 @@ class ProfileScreenState extends State<ProfileScreen>
   bool _checking = false;
 
   _AuthState _authState = _AuthState.loading;
+  bool _wasNotLoggedIn = false;
   UserModel? _me;
   List<FriendModel> _friends = [];
   List<FriendRequest> _requests = [];
@@ -97,7 +100,10 @@ class ProfileScreenState extends State<ProfileScreen>
 
     final user = AuthService.currentUser;
     if (user == null) {
-      if (mounted) setState(() => _authState = _AuthState.notLoggedIn);
+      if (mounted) {
+        _wasNotLoggedIn = true;
+        setState(() => _authState = _AuthState.notLoggedIn);
+      }
       _checking = false;
       return;
     }
@@ -114,6 +120,8 @@ class ProfileScreenState extends State<ProfileScreen>
       return;
     }
 
+    final justLoggedIn = _wasNotLoggedIn;
+    _wasNotLoggedIn = false;
     setState(() {
       _me = me;
       _authState = _AuthState.loggedIn;
@@ -121,6 +129,7 @@ class ProfileScreenState extends State<ProfileScreen>
       _loadingRequests = true;
     });
     _checking = false;
+    if (justLoggedIn) widget.onLoggedIn?.call();
     _fetchFriends();
     _fetchRequests();
   }
