@@ -1049,10 +1049,13 @@ class _TileRow extends StatelessWidget {
               ),
             ),
           ),
-          const Icon(
-            Icons.drag_handle_rounded,
-            color: AppTheme.textMuted,
-            size: 20,
+          ReorderableDragStartListener(
+            index: index - 1,
+            child: const Icon(
+              Icons.drag_handle_rounded,
+              color: AppTheme.textMuted,
+              size: 20,
+            ),
           ),
         ],
       ),
