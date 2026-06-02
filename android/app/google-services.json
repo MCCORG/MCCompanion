@@ -47,10 +47,10 @@
               "client_type": 3
             },
             {
-              "client_id": "670852401318-n0ddf2sop9vpr05upt985k9r4o4mr5iu.apps.googleusercontent.com",
+              "client_id": "670852401318-ijnjdpd3cpucr2qg9ei582iig1ao57vq.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "net.netherdev.netherLink"
+                "bundle_id": "net.netherlink.NetherLink"
               }
             }
           ]

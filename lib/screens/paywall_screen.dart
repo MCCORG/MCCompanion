@@ -40,7 +40,9 @@ class _PaywallScreenState extends State<PaywallScreen> {
   Package? _packageFor(String tier, bool yearly) {
     final id = 'mcc_${tier}_${yearly ? 'yearly' : 'monthly'}';
     try {
-      return _packages.firstWhere((p) => p.storeProduct.identifier == id);
+      return _packages.firstWhere(
+        (p) => p.storeProduct.identifier == id || p.storeProduct.identifier.startsWith('$id:'),
+      );
     } catch (_) {
       return null;
     }
