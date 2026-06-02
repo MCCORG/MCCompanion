@@ -21,7 +21,7 @@ extension AppFeatureLabel on AppFeature {
     AppFeature.wiki => 'assets/images/wiki.png',
     AppFeature.partners => 'assets/images/feature.png',
     AppFeature.lookup => 'assets/images/players.png',
-    AppFeature.tracker => 'assets/images/tunnel.png',
+    AppFeature.tracker => 'assets/images/tracker.png',
   };
 
   int get colorValue => switch (this) {

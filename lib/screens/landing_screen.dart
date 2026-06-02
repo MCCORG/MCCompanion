@@ -183,6 +183,10 @@ class _LandingScreenState extends State<LandingScreen> {
   }
 
   Widget _buildGrid(List<AppFeature> tiles) {
+    final isDesktop = Theme.of(context).platform == TargetPlatform.macOS ||
+        Theme.of(context).platform == TargetPlatform.windows ||
+        Theme.of(context).platform == TargetPlatform.linux;
+    final tileHeight = isDesktop ? 124.0 : 158.0;
     final rows = <Widget>[];
     for (var i = 0; i < tiles.length; i += 2) {
       if (i > 0) rows.add(const SizedBox(height: 10));
@@ -190,7 +194,7 @@ class _LandingScreenState extends State<LandingScreen> {
       final b = i + 1 < tiles.length ? tiles[i + 1] : null;
       rows.add(
         SizedBox(
-          height: 158,
+          height: tileHeight,
           child: Row(
             children: [
               Expanded(
@@ -276,6 +280,7 @@ class _PartnerBannerState extends State<_PartnerBanner> {
       onTap: widget.onTap,
       child: Container(
         margin: const EdgeInsets.fromLTRB(14, 6, 14, 0),
+        constraints: const BoxConstraints(minHeight: 90),
         decoration: BoxDecoration(
           color: AppTheme.surfaceRaised,
           borderRadius: BorderRadius.circular(12),
@@ -284,6 +289,7 @@ class _PartnerBannerState extends State<_PartnerBanner> {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(11),
           child: Stack(
+            alignment: Alignment.center,
             children: [
               Positioned(
                 left: 0,
@@ -292,7 +298,7 @@ class _PartnerBannerState extends State<_PartnerBanner> {
                 child: Container(width: 3, color: AppTheme.accent),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(15, 10, 8, 10),
+                padding: const EdgeInsets.fromLTRB(15, 8, 8, 8),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -315,6 +321,7 @@ class _PartnerBannerState extends State<_PartnerBanner> {
                           key: ValueKey(_index),
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
                               s.name,
@@ -423,12 +430,18 @@ class _QuickCardState extends State<_QuickCard> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                widget.feature.imagePath,
-                width: 64,
-                height: 64,
-                fit: BoxFit.contain,
-              ),
+              Builder(builder: (context) {
+                final isDesktop = Theme.of(context).platform == TargetPlatform.macOS ||
+                    Theme.of(context).platform == TargetPlatform.windows ||
+                    Theme.of(context).platform == TargetPlatform.linux;
+                final imgSize = isDesktop ? 46.0 : 64.0;
+                return Image.asset(
+                  widget.feature.imagePath,
+                  width: imgSize,
+                  height: imgSize,
+                  fit: BoxFit.contain,
+                );
+              }),
               const SizedBox(height: 8),
               Text(
                 widget.feature.label,

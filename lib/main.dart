@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -71,10 +72,16 @@ class _MCCompanionAppState extends State<MCCompanionApp> {
           home: const SplashScreen(),
           debugShowCheckedModeBanner: false,
           builder: (context, child) {
-            return Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 500),
-                child: child!,
+            final isDesktop = Platform.isMacOS || Platform.isWindows || Platform.isLinux;
+            return MediaQuery(
+              data: MediaQuery.of(context).copyWith(
+                textScaler: TextScaler.linear(isDesktop ? 0.82 : 1.0),
+              ),
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 500),
+                  child: child!,
+                ),
               ),
             );
           },

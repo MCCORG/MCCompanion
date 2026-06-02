@@ -22,7 +22,7 @@ import '../l10n/app_localizations.dart';
 import '../services/user_service.dart';
 import '../models/user_model.dart';
 import 'landing_screen.dart';
-import 'home_screen.dart';
+import 'connector_screen.dart';
 import 'skins_screen.dart';
 import 'wiki_screen.dart';
 import 'partner_servers_screen.dart';
@@ -32,6 +32,7 @@ import 'profile_screen.dart';
 import 'chat_screen.dart';
 import 'server_tracker_screen.dart';
 import '../services/server_tracker_service.dart';
+import '../services/subscription_service.dart';
 import '../services/home_customization_service.dart';
 import '../services/theme_service.dart';
 import '../theme/app_theme.dart';
@@ -110,9 +111,11 @@ class _AppShellState extends State<AppShell>
         MessageService.connect();
         unawaited(PushNotificationService.onUserSignedIn());
         unawaited(ServerTrackerService.instance.start());
+        unawaited(SubscriptionService.instance.init(user.uid));
       } else {
         MessageService.disconnect();
         ServerTrackerService.instance.stop();
+        SubscriptionService.instance.reset();
       }
     });
 

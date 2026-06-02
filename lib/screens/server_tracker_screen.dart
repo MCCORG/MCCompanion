@@ -8,6 +8,7 @@ import '../services/tracker_api_service.dart';
 import '../theme/app_theme.dart';
 import '../widgets/components/app_toast.dart';
 import '../widgets/tracked_server_card.dart';
+import 'paywall_screen.dart';
 
 class ServerTrackerScreen extends StatefulWidget {
   final VoidCallback onBack;
@@ -167,6 +168,20 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
     }
   }
 
+  void _openPaywall() {
+    Navigator.of(context, rootNavigator: true).push(
+      MaterialPageRoute(
+        fullscreenDialog: true,
+        builder: (_) => PaywallScreen(
+          onSuccess: () async {
+            await Future.delayed(const Duration(seconds: 2));
+            await ServerTrackerService.instance.refresh();
+          },
+        ),
+      ),
+    );
+  }
+
   void _openAddSheet() {
     showModalBottomSheet(
       context: context,
@@ -263,13 +278,50 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
                     size: 24,
                   ),
                   onPressed: _slots != null && _slots!.remaining == 0
-                      ? null
+                      ? _openPaywall
                       : _openAddSheet,
                   tooltip: AppLocalizations.of(context)!.addServer,
                 ),
             ],
           ),
         ),
+
+        if (_slots != null && _slots!.remaining == 0 && !_loading && _isLoggedIn)
+          Container(
+            margin: const EdgeInsets.fromLTRB(16, 12, 16, 8),
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+            decoration: BoxDecoration(
+              color: Colors.orange.withValues(alpha: 0.1),
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: Colors.orange.withValues(alpha: 0.4)),
+            ),
+            child: Row(
+              children: [
+                const Icon(Icons.warning_amber_rounded, color: Colors.orange, size: 16),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    'You\'ve reached your server limit. Upgrade to track more servers.',
+                    style: TextStyle(
+                      color: Colors.orange.shade300,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: _openPaywall,
+                  child: Text(
+                    'Upgrade',
+                    style: TextStyle(
+                      color: AppTheme.brand,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
 
         Expanded(
           child: !_isLoggedIn

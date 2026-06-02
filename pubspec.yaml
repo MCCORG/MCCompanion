@@ -35,6 +35,7 @@ dependencies:
   shared_preferences: ^2.3.2
   sign_in_with_apple: ^6.1.3
   crypto: ^3.0.6
+  purchases_flutter: ^10.2.0
 
 dev_dependencies:
   flutter_test:
@@ -47,6 +48,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/icons/aternos.png
+    - assets/images/tracker.png
     - assets/images/splash.png
     - assets/images/logo.png
     - assets/images/feature.png
