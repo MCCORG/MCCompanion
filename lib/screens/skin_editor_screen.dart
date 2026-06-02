@@ -522,16 +522,18 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
           const SizedBox(width: 4),
         ],
       ),
-      body: ExcludeSemantics(
-        child: _loading
-            ? Center(child: CircularProgressIndicator(color: AppTheme.accent))
-            : Column(
-                children: [
-                  _buildToolbar(),
-                  Expanded(child: _build3DCanvas()),
-                  _buildPalette(),
-                ],
-              ),
+      body: SafeArea(
+        child: ExcludeSemantics(
+          child: _loading
+              ? Center(child: CircularProgressIndicator(color: AppTheme.accent))
+              : Column(
+                  children: [
+                    _buildToolbar(),
+                    Expanded(child: _build3DCanvas()),
+                    _buildPalette(),
+                  ],
+                ),
+        ),
       ),
     );
   }
@@ -545,48 +547,48 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
       ),
       child: Row(
         children: [
-          _ToolButton(
-            icon: FontAwesomeIcons.pencil,
-            label: 'Draw',
-            active: _activeTool == _Tool.draw && !_rotateMode && !_panModeUV,
-            onTap: () => setState(() {
-              _activeTool = _Tool.draw;
-              _rotateMode = false;
-              _panModeUV = false;
-            }),
-          ),
-          const SizedBox(width: 6),
-          _ToolButton(
-            icon: FontAwesomeIcons.fillDrip,
-            label: 'Fill',
-            active: _activeTool == _Tool.fill && !_rotateMode && !_panModeUV,
-            onTap: () => setState(() {
-              _activeTool = _Tool.fill;
-              _rotateMode = false;
-              _panModeUV = false;
-            }),
-          ),
-          const SizedBox(width: 6),
-          _ToolButton(
-            icon: FontAwesomeIcons.eraser,
-            label: 'Erase',
-            active: _activeTool == _Tool.erase && !_rotateMode && !_panModeUV,
-            onTap: () => setState(() {
-              _activeTool = _Tool.erase;
-              _rotateMode = false;
-              _panModeUV = false;
-            }),
-          ),
-          if (!_uvMode) ...[
-            const SizedBox(width: 6),
-            _ToolButton(
-              icon: FontAwesomeIcons.rotate,
-              label: 'Rotate',
-              active: _rotateMode,
-              onTap: () => setState(() => _rotateMode = !_rotateMode),
+          Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  _ToolButton(
+                    icon: FontAwesomeIcons.pencil,
+                    label: 'Draw',
+                    active: _activeTool == _Tool.draw && !_rotateMode && !_panModeUV,
+                    onTap: () => setState(() {
+                      _activeTool = _Tool.draw;
+                      _rotateMode = false;
+                      _panModeUV = false;
+                    }),
+                  ),
+                  const SizedBox(width: 6),
+                  _ToolButton(
+                    icon: FontAwesomeIcons.fillDrip,
+                    label: 'Fill',
+                    active: _activeTool == _Tool.fill && !_rotateMode && !_panModeUV,
+                    onTap: () => setState(() {
+                      _activeTool = _Tool.fill;
+                      _rotateMode = false;
+                      _panModeUV = false;
+                    }),
+                  ),
+                  const SizedBox(width: 6),
+                  _ToolButton(
+                    icon: FontAwesomeIcons.eraser,
+                    label: 'Erase',
+                    active: _activeTool == _Tool.erase && !_rotateMode && !_panModeUV,
+                    onTap: () => setState(() {
+                      _activeTool = _Tool.erase;
+                      _rotateMode = false;
+                      _panModeUV = false;
+                    }),
+                  ),
+                ],
+              ),
             ),
-          ],
-          const Spacer(),
+          ),
+          const SizedBox(width: 8),
           GestureDetector(
             onTap: () => setState(() {
               _uvMode = !_uvMode;
@@ -640,24 +642,37 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
   Widget _build3DCharCanvas() {
     return Container(
       color: const Color(0xFF0D0D14),
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          _canvasSize = constraints.biggest;
-          return GestureDetector(
-            onPanStart: _onPanStart,
-            onPanUpdate: _onPanUpdate,
-            onPanEnd: _onPanEnd,
-            onTapDown: _onTapDown,
-            child: _previewImage == null
-                ? Center(
-                    child: CircularProgressIndicator(color: AppTheme.accent),
-                  )
-                : CustomPaint(
-                    size: _canvasSize,
-                    painter: _Skin3DEditorPainter(_previewImage!, _rotY),
-                  ),
-          );
-        },
+      child: Stack(
+        children: [
+          LayoutBuilder(
+            builder: (context, constraints) {
+              _canvasSize = constraints.biggest;
+              return GestureDetector(
+                onPanStart: _onPanStart,
+                onPanUpdate: _onPanUpdate,
+                onPanEnd: _onPanEnd,
+                onTapDown: _onTapDown,
+                child: _previewImage == null
+                    ? Center(
+                        child: CircularProgressIndicator(color: AppTheme.accent),
+                      )
+                    : CustomPaint(
+                        size: _canvasSize,
+                        painter: _Skin3DEditorPainter(_previewImage!, _rotY),
+                      ),
+              );
+            },
+          ),
+          Positioned(
+            right: 12,
+            top: 12,
+            child: _ZoomBtn(
+              icon: FontAwesomeIcons.rotate,
+              active: _rotateMode,
+              onTap: () => setState(() => _rotateMode = !_rotateMode),
+            ),
+          ),
+        ],
       ),
     );
   }
