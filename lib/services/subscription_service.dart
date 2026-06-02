@@ -15,7 +15,7 @@ class SubscriptionService extends ChangeNotifier {
   static const Duration _timeout = Duration(seconds: 10);
 
   static const String _rcAppleKey = 'appl_AAUDAAXgqNuMxqNzplqLdBHpxKr';
-  static const String _rcGoogleKey = 'goog_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
+  static const String _rcGoogleKey = 'goog_pUxzsaywbuAhIrRYuLsunoHBVZl';
 
   static const String productStarterMonthly = 'mcc_starter_monthly';
   static const String productStarterYearly  = 'mcc_starter_yearly';
