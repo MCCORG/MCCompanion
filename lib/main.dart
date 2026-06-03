@@ -77,12 +77,7 @@ class _MCCompanionAppState extends State<MCCompanionApp> {
               data: MediaQuery.of(context).copyWith(
                 textScaler: TextScaler.linear(isDesktop ? 0.82 : 1.0),
               ),
-              child: Center(
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 500),
-                  child: child!,
-                ),
-              ),
+              child: child!,
             );
           },
         );
