@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../models/tracked_server_model.dart';
@@ -169,6 +170,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
   }
 
   void _openPaywall() {
+    if (Platform.isWindows) return;
     Navigator.of(context, rootNavigator: true).push(
       MaterialPageRoute(
         fullscreenDialog: true,
@@ -272,12 +274,12 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
                 IconButton(
                   icon: Icon(
                     Icons.add_rounded,
-                    color: _slots != null && _slots!.remaining == 0
+                    color: _slots != null && _slots!.remaining == 0 && !Platform.isWindows
                         ? AppTheme.textDisabled
                         : AppTheme.brand,
                     size: 24,
                   ),
-                  onPressed: _slots != null && _slots!.remaining == 0
+                  onPressed: _slots != null && _slots!.remaining == 0 && !Platform.isWindows
                       ? _openPaywall
                       : _openAddSheet,
                   tooltip: AppLocalizations.of(context)!.addServer,
@@ -286,7 +288,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
           ),
         ),
 
-        if (_slots != null && _slots!.remaining == 0 && !_loading && _isLoggedIn)
+        if (_slots != null && _slots!.remaining == 0 && !_loading && _isLoggedIn && !Platform.isWindows)
           Container(
             margin: const EdgeInsets.fromLTRB(16, 12, 16, 8),
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
