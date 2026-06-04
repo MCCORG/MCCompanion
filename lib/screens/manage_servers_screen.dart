@@ -144,6 +144,7 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
   final TextEditingController _portCtrl = TextEditingController(text: '19132');
   final TextEditingController _descCtrl = TextEditingController();
 
+  bool _isJava = false;
   bool _loaded = false;
 
   @override
@@ -165,6 +166,7 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
       _addressCtrl.text = s.address;
       _portCtrl.text = s.port.toString();
       _descCtrl.text = s.description ?? '';
+      _isJava = s.isJava;
     }
     setState(() => _loaded = true);
   }
@@ -210,6 +212,7 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
       address: address,
       port: port,
       description: _descCtrl.text.trim().isEmpty ? null : _descCtrl.text.trim(),
+      isJava: _isJava,
     );
 
     if (widget.editingIndex == null) {
@@ -294,6 +297,21 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
                         label: loc.portLabel,
                         icon: Icons.numbers_rounded,
                         keyboardType: TextInputType.number,
+                      ),
+                      const SizedBox(height: 12),
+                      _EditionToggle(
+                        isJava: _isJava,
+                        onChanged: (value) {
+                          setState(() {
+                            _isJava = value;
+                            final currentPort = int.tryParse(_portCtrl.text.trim());
+                            if (value && currentPort == 19132) {
+                              _portCtrl.text = '25565';
+                            } else if (!value && currentPort == 25565) {
+                              _portCtrl.text = '19132';
+                            }
+                          });
+                        },
                       ),
                       const SizedBox(height: 12),
                       _Field(
@@ -673,6 +691,74 @@ class _Field extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(11),
           borderSide: BorderSide(color: AppTheme.accent, width: 1.5),
+        ),
+      ),
+    );
+  }
+}
+
+class _EditionToggle extends StatelessWidget {
+  final bool isJava;
+  final ValueChanged<bool> onChanged;
+
+  const _EditionToggle({required this.isJava, required this.onChanged});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: AppTheme.surface,
+        borderRadius: BorderRadius.circular(11),
+        border: Border.all(color: AppTheme.borderGray),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
+      child: Row(
+        children: [
+          const Icon(Icons.sports_esports_rounded, color: AppTheme.textMuted, size: 18),
+          const SizedBox(width: 10),
+          const Expanded(
+            child: Text(
+              'Edition',
+              style: TextStyle(color: AppTheme.textSecondary, fontSize: 13),
+            ),
+          ),
+          _EditionChip(label: 'Bedrock', selected: !isJava, onTap: () => onChanged(false)),
+          const SizedBox(width: 6),
+          _EditionChip(label: 'Java', selected: isJava, onTap: () => onChanged(true)),
+        ],
+      ),
+    );
+  }
+}
+
+class _EditionChip extends StatelessWidget {
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+
+  const _EditionChip({required this.label, required this.selected, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        decoration: BoxDecoration(
+          color: selected ? AppTheme.accent : Colors.transparent,
+          borderRadius: BorderRadius.circular(7),
+          border: Border.all(
+            color: selected ? AppTheme.accent : AppTheme.borderGray,
+          ),
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: selected ? Colors.white : AppTheme.textMuted,
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
     );

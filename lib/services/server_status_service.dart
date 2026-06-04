@@ -1,4 +1,5 @@
 import 'package:mc_server_info/mc_server_info.dart';
+import 'java_server_ping.dart';
 
 class ServerStatus {
   final bool isOnline;
@@ -28,7 +29,11 @@ class ServerStatusService {
   static const Duration _cacheDuration = Duration(minutes: 2);
   static const Duration _timeout       = Duration(seconds: 5);
 
-  static Future<ServerStatus> getStatus(String address, int port) async {
+  static Future<ServerStatus> getStatus(
+    String address,
+    int port, {
+    bool isJava = false,
+  }) async {
     final key = '$address:$port';
     final now = DateTime.now();
 
@@ -40,13 +45,33 @@ class ServerStatusService {
       return cached;
     }
 
+    final status = isJava
+        ? await _pingJava(address, port)
+        : await _pingBedrock(address, port);
+
+    _cache[key]     = status;
+    _lastFetch[key] = now;
+    return status;
+  }
+
+  static Future<ServerStatus> _pingJava(String address, int port) async {
+    final result = await JavaServerPing.ping(address, port, timeout: _timeout);
+    return ServerStatus(
+      isOnline:   result.isOnline,
+      players:    result.players,
+      maxPlayers: result.maxPlayers,
+      version:    result.version,
+    );
+  }
+
+  static Future<ServerStatus> _pingBedrock(String address, int port) async {
     try {
       final info = await MinecraftServerInfo.get(
         host: address,
         port: port,
         timeout: _timeout,
       );
-      final status = ServerStatus(
+      return ServerStatus(
         isOnline:   info.isOnline,
         players:    info.isOnline ? info.players    : null,
         maxPlayers: info.isOnline ? info.maxPlayers : null,
@@ -54,12 +79,7 @@ class ServerStatusService {
         gameType:   info.isOnline && info.gameType.isNotEmpty ? info.gameType : null,
         software:   info.isOnline && info.software.isNotEmpty ? info.software : null,
       );
-      _cache[key]     = status;
-      _lastFetch[key] = now;
-      return status;
     } catch (_) {
-      _cache[key]     = ServerStatus.offline;
-      _lastFetch[key] = now;
       return ServerStatus.offline;
     }
   }

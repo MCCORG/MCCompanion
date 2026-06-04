@@ -52,7 +52,11 @@ class ServerTrackerService {
 
     final updated = <TrackedServer>[];
     for (final server in data.servers) {
-      final status = await ServerStatusService.getStatus(server.ip, server.port);
+      final status = await ServerStatusService.getStatus(
+        server.ip,
+        server.port,
+        isJava: server.platform == 'java',
+      );
       updated.add(server.copyWith(
         lastStatus:   status.isOnline ? 'online' : 'offline',
         lastCheckedAt: DateTime.now(),

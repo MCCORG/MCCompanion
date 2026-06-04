@@ -223,7 +223,7 @@ class _ServerTile extends StatelessWidget {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      _StatusBadge(address: server.address, port: server.port),
+                      _StatusBadge(address: server.address, port: server.port, isJava: server.isJava),
                       const SizedBox(width: 8),
                       AnimatedContainer(
                         duration: const Duration(milliseconds: 150),
@@ -289,7 +289,8 @@ class _ServerTile extends StatelessWidget {
 class _StatusBadge extends StatefulWidget {
   final String address;
   final int port;
-  const _StatusBadge({required this.address, required this.port});
+  final bool isJava;
+  const _StatusBadge({required this.address, required this.port, this.isJava = false});
 
   @override
   State<_StatusBadge> createState() => _StatusBadgeState();
@@ -301,7 +302,7 @@ class _StatusBadgeState extends State<_StatusBadge> {
   @override
   void initState() {
     super.initState();
-    _statusFuture = ServerStatusService.getStatus(widget.address, widget.port);
+    _statusFuture = ServerStatusService.getStatus(widget.address, widget.port, isJava: widget.isJava);
   }
 
   @override
