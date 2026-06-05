@@ -79,11 +79,6 @@ class HomeScreenState extends State<HomeScreen> {
   List<BedrockAccount>? _cachedBedrockAccounts;
   String? _selectedBedrockXuid;
 
-  static String _friendNameForRelay(String relayName) => switch (relayName) {
-    'EU Server' => 'MCCompanionEU',
-    'US Server' => 'MCCompanionUS',
-    _ => '-',
-  };
 
   @override
   void initState() {
@@ -240,7 +235,7 @@ class HomeScreenState extends State<HomeScreen> {
     } else {
       await HowToDialogs.showFriendsInstructions(
         context,
-        friendName: _friendNameForRelay(widget.selectedRelay.name),
+        userRegion: widget.selectedRelay.name.toLowerCase().contains('eu') ? 'eu' : 'us',
       );
     }
   }

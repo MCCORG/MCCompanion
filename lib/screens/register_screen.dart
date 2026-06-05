@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../services/user_service.dart';
+import '../services/push_notification_service.dart';
 
 class RegisterScreen extends StatefulWidget {
   final VoidCallback onRegistered;
@@ -49,6 +50,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if (!mounted) return;
 
     if (result.user != null) {
+      await PushNotificationService.onUserSignedIn();
       widget.onRegistered();
       return;
     }

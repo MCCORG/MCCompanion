@@ -1,0 +1,44 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import '../constants/app_constants.dart';
+import '../models/bot_model.dart';
+
+class BotRegionData {
+  final List<BotModel> eu;
+  final List<BotModel> us;
+
+  const BotRegionData({required this.eu, required this.us});
+}
+
+class BotService {
+  static Future<BotRegionData> fetchAllBots() async {
+    final base = AppConstants.apiBase;
+
+    final results = await Future.wait([
+      _fetchRegion('$base/api/bots?region=eu', 'eu'),
+      _fetchRegion('$base/api/bots?region=us', 'us'),
+    ]);
+
+    return BotRegionData(eu: results[0], us: results[1]);
+  }
+
+  static Future<List<BotModel>> _fetchRegion(String url, String region) async {
+    try {
+      final res = await http.get(Uri.parse(url)).timeout(const Duration(seconds: 6));
+      if (res.statusCode != 200) return [];
+      final data = jsonDecode(res.body) as Map<String, dynamic>;
+      final list = (data['bots'] as List<dynamic>? ?? []);
+      final bots = list
+          .map((e) => BotModel.fromJson(e as Map<String, dynamic>, region))
+          .toList();
+      bots.sort((a, b) {
+        if (a.isOnline && !b.isOnline) return -1;
+        if (!a.isOnline && b.isOnline) return 1;
+        return (a.friendCount ?? 0).compareTo(b.friendCount ?? 0);
+      });
+      return bots;
+    } catch (_) {
+      return [];
+    }
+  }
+}

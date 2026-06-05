@@ -571,7 +571,7 @@ class _AppShellState extends State<AppShell>
             _closeSheetInstant();
             HowToDialogs.showFriendsInstructions(
               context,
-              friendName: _friendNameForRelay(_selectedRelay.name),
+              userRegion: _selectedRelay.name.toLowerCase().contains('eu') ? 'eu' : 'us',
             );
           },
           onJava: () {
