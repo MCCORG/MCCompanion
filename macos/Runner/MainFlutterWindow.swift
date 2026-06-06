@@ -2,6 +2,9 @@ import Cocoa
 import FlutterMacOS
 
 class MainFlutterWindow: NSWindow {
+  override func toggleFullScreen(_ sender: Any?) {
+  }
+
   override func awakeFromNib() {
     let flutterViewController = FlutterViewController()
 
@@ -21,6 +24,8 @@ class MainFlutterWindow: NSWindow {
     if frame.width < minWidth {
       frame.size.width = minWidth
     }
+
+    self.collectionBehavior = [.managed, .participatesInCycle]
 
     self.contentViewController = flutterViewController
     self.setFrame(frame, display: true)
