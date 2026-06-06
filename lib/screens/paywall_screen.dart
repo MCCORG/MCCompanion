@@ -4,6 +4,7 @@ import 'package:purchases_flutter/purchases_flutter.dart';
 import '../services/subscription_service.dart';
 import '../theme/app_theme.dart';
 import '../widgets/components/app_toast.dart';
+import '../l10n/app_localizations.dart';
 
 class PaywallScreen extends StatefulWidget {
   final VoidCallback? onSuccess;
@@ -56,14 +57,15 @@ class _PaywallScreenState extends State<PaywallScreen> {
     setState(() => _purchasing = true);
     final result = await SubscriptionService.instance.purchase(pkg);
     if (!mounted) return;
+    final l10n = AppLocalizations.of(context)!;
     setState(() => _purchasing = false);
 
     if (result.success) {
-      AppToast.show(context, message: 'Purchase successful!');
+      AppToast.show(context, message: l10n.paywallPurchaseSuccess);
       widget.onSuccess?.call();
       Navigator.of(context).pop();
     } else if (result.error != 'cancelled') {
-      AppToast.show(context, message: 'Purchase failed. Please try again.');
+      AppToast.show(context, message: l10n.paywallPurchaseFailed);
     }
   }
 
@@ -71,20 +73,21 @@ class _PaywallScreenState extends State<PaywallScreen> {
     setState(() => _purchasing = true);
     final result = await SubscriptionService.instance.restorePurchases();
     if (!mounted) return;
+    final l10n = AppLocalizations.of(context)!;
     setState(() => _purchasing = false);
 
     if (result.success) {
       final isPro = SubscriptionService.instance.isPro;
       AppToast.show(
         context,
-        message: isPro ? 'Purchases restored!' : 'No active purchases found.',
+        message: isPro ? l10n.paywallPurchasesRestored : l10n.paywallNoActivePurchases,
       );
       if (isPro) {
         widget.onSuccess?.call();
         Navigator.of(context).pop();
       }
     } else {
-      AppToast.show(context, message: 'Restore failed. Please try again.');
+      AppToast.show(context, message: l10n.paywallRestoreFailed);
     }
   }
 
@@ -103,7 +106,7 @@ class _PaywallScreenState extends State<PaywallScreen> {
         actions: [
           TextButton(
             onPressed: _purchasing ? null : _restore,
-            child: Text('Restore', style: TextStyle(color: AppTheme.textMuted, fontSize: 13)),
+            child: Text(AppLocalizations.of(context)!.paywallRestore, style: TextStyle(color: AppTheme.textMuted, fontSize: 13)),
           ),
         ],
       ),
@@ -130,14 +133,14 @@ class _PaywallScreenState extends State<PaywallScreen> {
                   ),
                   const SizedBox(height: 16),
 
-                  const Text(
-                    'Server Tracker',
+                  Text(
+                    AppLocalizations.of(context)!.serverTrackerTitle,
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: AppTheme.textPrimary, fontSize: 22, fontWeight: FontWeight.w800),
+                    style: const TextStyle(color: AppTheme.textPrimary, fontSize: 22, fontWeight: FontWeight.w800),
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    'Track more servers and get notified\nwhen they go online or offline.',
+                    AppLocalizations.of(context)!.paywallSubtitle,
                     textAlign: TextAlign.center,
                     style: TextStyle(color: AppTheme.textSecondary, fontSize: 13, height: 1.5),
                   ),
@@ -151,12 +154,12 @@ class _PaywallScreenState extends State<PaywallScreen> {
                     ),
                     child: Row(
                       children: [
-                        _ToggleBtn(label: 'Monthly', active: !_yearly, onTap: () => setState(() => _yearly = false)),
+                        _ToggleBtn(label: AppLocalizations.of(context)!.paywallMonthly, active: !_yearly, onTap: () => setState(() => _yearly = false)),
                         _ToggleBtn(
-                          label: 'Yearly',
+                          label: AppLocalizations.of(context)!.paywallYearly,
                           active: _yearly,
                           onTap: () => setState(() => _yearly = true),
-                          badge: 'Save ~17%',
+                          badge: AppLocalizations.of(context)!.paywallSavePercent,
                         ),
                       ],
                     ),
@@ -164,7 +167,7 @@ class _PaywallScreenState extends State<PaywallScreen> {
                   const SizedBox(height: 16),
 
                   if (_packages.isEmpty)
-                    Center(child: Text('No packages available.', style: TextStyle(color: AppTheme.textMuted)))
+                    Center(child: Text(AppLocalizations.of(context)!.paywallNoPkgs, style: TextStyle(color: AppTheme.textMuted)))
                   else ...[
                     _TierCard(
                       tier: 'starter',
@@ -183,6 +186,7 @@ class _PaywallScreenState extends State<PaywallScreen> {
                       selected: _selectedTier == 'pro',
                       onTap: () => setState(() => _selectedTier = 'pro'),
                       highlighted: true,
+                      popularLabel: AppLocalizations.of(context)!.paywallPopular,
                     ),
                     const SizedBox(height: 10),
                     _TierCard(
@@ -210,13 +214,13 @@ class _PaywallScreenState extends State<PaywallScreen> {
                         ),
                         child: _purchasing
                             ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
-                            : const Text('Continue', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+                            : Text(AppLocalizations.of(context)!.paywallContinue, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
                       ),
                     ),
 
                   const SizedBox(height: 14),
                   Text(
-                    'Managed by Apple/Google. Cancel anytime.',
+                    AppLocalizations.of(context)!.paywallManaged,
                     textAlign: TextAlign.center,
                     style: TextStyle(color: AppTheme.textDisabled, fontSize: 11),
                   ),
@@ -293,6 +297,7 @@ class _TierCard extends StatelessWidget {
   final bool selected;
   final bool highlighted;
   final VoidCallback onTap;
+  final String? popularLabel;
 
   const _TierCard({
     required this.tier,
@@ -302,6 +307,7 @@ class _TierCard extends StatelessWidget {
     required this.selected,
     required this.onTap,
     this.highlighted = false,
+    this.popularLabel,
   });
 
   @override
@@ -357,7 +363,7 @@ class _TierCard extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      if (highlighted) ...[
+                      if (highlighted && popularLabel != null) ...[
                         const SizedBox(width: 8),
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
@@ -366,7 +372,7 @@ class _TierCard extends StatelessWidget {
                             borderRadius: BorderRadius.circular(6),
                           ),
                           child: Text(
-                            'Popular',
+                            popularLabel!,
                             style: TextStyle(color: AppTheme.brand, fontSize: 10, fontWeight: FontWeight.w700),
                           ),
                         ),
@@ -375,7 +381,7 @@ class _TierCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 2),
                   Text(
-                    '$slots server slots',
+                    AppLocalizations.of(context)!.paywallSlotLabel(slots),
                     style: TextStyle(color: AppTheme.textSecondary, fontSize: 12),
                   ),
                 ],

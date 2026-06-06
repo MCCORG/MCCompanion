@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../l10n/app_localizations.dart';
 import '../../theme/app_theme.dart';
 
 class InfoSheetContent extends StatelessWidget {
@@ -16,6 +17,7 @@ class InfoSheetContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final maxHeight = MediaQuery.of(context).size.height * 0.88;
 
     return ConstrainedBox(
@@ -68,9 +70,9 @@ class InfoSheetContent extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 12),
-                  const Text(
-                    'Info & Legal',
-                    style: TextStyle(
+                  Text(
+                    l.infoAndLegal,
+                    style: const TextStyle(
                       color: AppTheme.textPrimary,
                       fontSize: 17,
                       fontWeight: FontWeight.w700,
@@ -86,67 +88,63 @@ class InfoSheetContent extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _sectionLabel('Legal'),
+                    _sectionLabel(l.legalSection),
                     const SizedBox(height: 8),
                     _legalTile(
                       icon: Icons.shield_outlined,
                       color: AppTheme.accent,
-                      title: 'Privacy Policy',
-                      subtitle: 'How we collect and protect your data',
+                      title: l.privacyPolicy,
+                      subtitle: l.privacyPolicySubtitle,
                       onTap: () => _open('https://mccompanion.net/privacy'),
                     ),
                     const SizedBox(height: 8),
                     _legalTile(
                       icon: Icons.gavel_rounded,
                       color: const Color(0xFF7B61FF),
-                      title: 'Terms of Service',
-                      subtitle: 'Rules and conditions of use',
+                      title: l.termsOfService,
+                      subtitle: l.termsOfServiceSubtitle,
                       onTap: () => _open('https://mccompanion.net/terms'),
                     ),
 
                     const SizedBox(height: 22),
 
-                    _sectionLabel('Data Sources & Credits'),
+                    _sectionLabel(l.dataSourcesSection),
                     const SizedBox(height: 8),
                     _creditTile(
                       label: 'W',
                       labelColor: const Color(0xFF34D399),
-                      title: 'Minecraft Wiki',
-                      subtitle:
-                          'Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.',
+                      title: l.wikiMinecraftWiki,
+                      subtitle: l.creditMinecraftWikiSubtitle,
                       url: 'https://minecraft.wiki',
                     ),
                     const SizedBox(height: 8),
                     _creditTile(
                       label: 'M',
                       labelColor: const Color(0xFFF97316),
-                      title: 'Mojang / Microsoft',
-                      subtitle:
-                          'Java player skins, UUIDs, and profile data via the official Mojang API.',
+                      title: l.creditMojangTitle,
+                      subtitle: l.creditMojangSubtitle,
                       url: 'https://minecraft.net',
                     ),
                     const SizedBox(height: 8),
                     _creditTile(
                       label: 'G',
                       labelColor: const Color(0xFF42A5F5),
-                      title: 'GeyserMC',
-                      subtitle:
-                          'Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.',
+                      title: l.creditGeyserTitle,
+                      subtitle: l.creditGeyserSubtitle,
                       url: 'https://geysermc.org',
                     ),
                     const SizedBox(height: 8),
                     _creditTile(
                       label: 'X',
                       labelColor: const Color(0xFF22C55E),
-                      title: 'Xbox / Microsoft',
-                      subtitle:
-                          'Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.',
+                      title: l.creditXboxTitle,
+                      subtitle: l.creditXboxSubtitle,
                       url: 'https://xbox.com',
                     ),
 
                     const SizedBox(height: 22),
 
-                    _sectionLabel('About MCCompanion'),
+                    _sectionLabel(l.aboutMCCompanionSection),
                     const SizedBox(height: 8),
                     Container(
                       width: double.infinity,
@@ -156,21 +154,21 @@ class InfoSheetContent extends StatelessWidget {
                         borderRadius: BorderRadius.circular(13),
                         border: Border.all(color: AppTheme.borderGray),
                       ),
-                      child: const Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.',
-                            style: TextStyle(
+                            l.aboutMCCompanionDisclaimer,
+                            style: const TextStyle(
                               color: AppTheme.textMuted,
                               fontSize: 12,
                               height: 1.55,
                             ),
                           ),
-                          SizedBox(height: 8),
+                          const SizedBox(height: 8),
                           Text(
-                            '"Minecraft" is a trademark of Microsoft Corporation.',
-                            style: TextStyle(
+                            l.minecraftTrademark,
+                            style: const TextStyle(
                               color: AppTheme.textMuted,
                               fontSize: 12,
                               height: 1.55,

@@ -414,5 +414,414 @@
   "info": "Info",
   "navProfile": "Profiel",
   "serverRemoved": "{name} verwijderd",
-  "serverAdded": "{name} toegevoegd"
+  "serverAdded": "{name} toegevoegd",
+  "tabProfile": "Profiel",
+  "tabFriends": "Vrienden",
+  "tabRequests": "Verzoeken",
+  "tabChats": "Chats",
+  "aboutMe": "Over mij",
+  "addFriend": "Vriend toevoegen",
+  "alreadyFriendsWith": "Je bent al vrienden met {name}",
+  "@alreadyFriendsWith": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "alreadyHaveAccount": "Al een account? Inloggen",
+  "appearOfflineLabel": "Offline lijken",
+  "appearOfflineOff": "Je lijkt online voor andere spelers",
+  "appearOfflineOn": "Je lijkt offline voor andere spelers",
+  "appleSignInFailed": "Apple aanmelding mislukt. Probeer opnieuw.",
+  "avatarUrlLabel": "Avatar URL",
+  "bioHint": "Vertel anderen over jezelf…",
+  "bioLabel": "Bio",
+  "cannotSendRequest": "Kan geen verzoek sturen naar {name}",
+  "@cannotSendRequest": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "chooseUsernameSubtitle": "Kies een gebruikersnaam om te verbinden met andere spelers.",
+  "continueWithGoogle": "Doorgaan met Google",
+  "couldNotDeleteAccount": "Kon account niet verwijderen. Probeer opnieuw.",
+  "couldNotSendResetEmail": "Kon reset-e-mail niet versturen. Probeer opnieuw.",
+  "couldNotUpdateVisibility": "Kon zichtbaarheidsinstellingen niet bijwerken",
+  "createAccount": "Account aanmaken",
+  "createProfile": "Profiel aanmaken",
+  "deleteAccountBody": "Dit verwijdert je account en alle gegevens permanent. Deze actie kan niet ongedaan worden gemaakt.",
+  "deleteAccountTitle": "Account verwijderen",
+  "deletePermanently": "Permanent verwijderen",
+  "displayNameLabel": "Weergavenaam",
+  "edit": "Bewerken",
+  "emailAddressHint": "E-mailadres",
+  "emailAlreadyInUse": "Dit e-mailadres is al in gebruik",
+  "emailDifferentMethod": "Dit e-mail is gekoppeld aan een andere aanmeldingsmethode",
+  "enterEmailAndPassword": "Voer je e-mail en wachtwoord in",
+  "findUser": "Gebruiker zoeken",
+  "forgotPassword": "Wachtwoord vergeten?",
+  "friendRemoved": "{name} is verwijderd uit je vrienden",
+  "@friendRemoved": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "friendRequestAccepted": "Je bent nu vrienden met {name}",
+  "@friendRequestAccepted": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "friendRequestSentTo": "Vriendschapsverzoek verstuurd naar {name}",
+  "@friendRequestSentTo": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "googleSignInFailed": "Google aanmelding mislukt. Probeer opnieuw.",
+  "incorrectEmailOrPassword": "Onjuist e-mail of wachtwoord",
+  "invalidEmailError": "Het e-mailadres is niet geldig",
+  "linkAccountsHint": "Koppel je Minecraft-accounts om je skins en stats te tonen.",
+  "linkJava": "Java koppelen",
+  "linkXbox": "Xbox koppelen",
+  "linkedAccountsTitle": "Gekoppelde accounts",
+  "messagePlaceholder": "Bericht…",
+  "noAccountForEmail": "Geen account gevonden voor dat e-mailadres",
+  "noAccountYet": "Nog geen account? Maak er een",
+  "noConversationsYet": "Nog geen gesprekken",
+  "noFriendsSub": "Voeg vrienden toe om ze hier te zien.",
+  "noFriendsYet": "Nog geen vrienden",
+  "noMessagesYet": "Nog geen berichten.\nZeg hallo!",
+  "noPendingRequests": "Geen openstaande verzoeken",
+  "offlineFriendsLabel": "{count} offline",
+  "@offlineFriendsLabel": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "onlineFriendsLabel": "{count} online",
+  "@onlineFriendsLabel": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "orDivider": "of",
+  "passwordHint": "Wachtwoord",
+  "playerLookupCopied": "{value} gekopieerd",
+  "@playerLookupCopied": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "playerLookupHint": "Voer een gebruikersnaam in…",
+  "playerLookupLabelTier": "Tier",
+  "playerLookupLabelUsername": "Gebruikersnaam",
+  "playerLookupLinked": "Gekoppelde accounts gevonden",
+  "playerLookupSubtitle": "Zoek een Java- of Bedrock-speler op gebruikersnaam",
+  "playerLookupTitle": "Speler opzoeken",
+  "profileCardTitle": "Profiel",
+  "profileNotSetUp": "Profiel niet ingesteld",
+  "profileUpdated": "Profiel bijgewerkt",
+  "remove": "Verwijderen",
+  "removeFriendConfirm": "{name} verwijderen uit je vrienden?",
+  "@removeFriendConfirm": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "removeFriendTitle": "Vriend verwijderen",
+  "removeJavaConfirm": "{name} verwijderen uit je gekoppelde accounts?",
+  "@removeJavaConfirm": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "removeLabelConfirm": "{name} verwijderen uit je gekoppelde accounts?",
+  "@removeLabelConfirm": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "reportAdditionalDetails": "Aanvullende details (optioneel)…",
+  "reportDisclaimer": "Rapporten worden beoordeeld door ons team. Valse rapporten kunnen gevolgen hebben.",
+  "reportFailed": "Rapport kon niet worden ingediend. Probeer opnieuw.",
+  "reportMessage": "Bericht melden",
+  "reportReasonHarassment": "Intimidatie",
+  "reportReasonInappropriate": "Ongepaste inhoud",
+  "reportReasonOther": "Anders",
+  "reportReasonSpam": "Spam",
+  "reportSubmit": "Rapport indienen",
+  "reportSuccess": "Rapport ingediend. Dank je.",
+  "reportUser": "Gebruiker melden",
+  "reportUserWithName": "{name} melden",
+  "@reportUserWithName": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "requestAlreadyPending": "Een verzoek aan {name} is al in behandeling",
+  "@requestAlreadyPending": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "requestDeclined": "Verzoek van {name} afgewezen",
+  "@requestDeclined": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "requestsAppearHere": "Nieuwe vriendschapsverzoeken verschijnen hier.",
+  "resetLinkSent": "Wachtwoord-resetlink verstuurd naar {email}",
+  "@resetLinkSent": {
+    "placeholders": {
+      "email": {}
+    }
+  },
+  "resetPasswordBody": "Voer je e-mailadres in en we sturen je een link om je wachtwoord te resetten.",
+  "resetPasswordTitle": "Wachtwoord resetten",
+  "send": "Versturen",
+  "sendLink": "Link versturen",
+  "signInSubtitle": "Log in om toegang te krijgen tot je profiel, vrienden en chats.",
+  "signOut": "Uitloggen",
+  "skinsCouldNotLoad": "Skins konden niet worden geladen",
+  "skinsCreate": "Aanmaken",
+  "skinsDownload": "Downloaden",
+  "skinsEdit": "Bewerken",
+  "skinsEmptyMySkins": "Nog geen opgeslagen skins. Upload er een of maak er een!",
+  "skinsInvalidFile": "Ongeldig afbeeldingsbestand",
+  "skinsMustBe64": "Skin moet 64×64 pixels zijn",
+  "skinsNoAccountsSubtitle": "Koppel een Java- of Bedrock-account om je skins te bekijken.",
+  "skinsNoAccountsTitle": "Geen Minecraft-accounts gekoppeld",
+  "skinsPageOf": "Pagina {page} van {total}",
+  "@skinsPageOf": {
+    "placeholders": {
+      "page": {},
+      "total": {}
+    }
+  },
+  "skinsSectionMy": "MIJN SKINS",
+  "skinsSectionRecent": "RECENTE SKINS",
+  "skinsSectionYours": "JOUW SKINS",
+  "skinsSignInSubtitle": "Log in en koppel je Minecraft-accounts om je skins hier te zien.",
+  "skinsSignInTitle": "Log in om je skins te bekijken",
+  "skinsUpload": "Uploaden",
+  "somethingWentWrong": "Er is iets misgegaan. Probeer opnieuw.",
+  "startChatHint": "Vind een vriend en begin te chatten!",
+  "today": "Vandaag",
+  "unlink": "Ontkoppelen",
+  "unlinkJavaTitle": "Java-account ontkoppelen",
+  "unlinkXboxTitle": "Xbox-account ontkoppelen",
+  "userNotFoundMsg": "Gebruiker {name} niet gevonden",
+  "@userNotFoundMsg": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "usernameDisplayLabel": "Gebruikersnaam",
+  "usernameHint": "Gebruikersnaam",
+  "weakPassword": "Wachtwoord is te zwak. Kies een sterker wachtwoord.",
+  "wikiArmor": "Wapenrusting",
+  "wikiBiomes": "Biotopen",
+  "wikiBlocks": "Blokken",
+  "wikiBoss": "Baas",
+  "wikiBow": "Boog",
+  "wikiBrewing": "Brouwen",
+  "wikiCategories": "{count} categorieën",
+  "@wikiCategories": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "wikiCouldNotLoadContent": "Artikelinhoud kon niet worden geladen.",
+  "wikiCouldNotLoadPages": "Pagina's konden niet worden geladen. Probeer opnieuw.",
+  "wikiCouldNotReach": "Wiki kon niet worden bereikt. Controleer je verbinding.",
+  "wikiCrafting": "Ambacht",
+  "wikiDecoration": "Decoratie",
+  "wikiEnchantments": "Betoveringen",
+  "wikiFishing": "Vissen",
+  "wikiFood": "Eten",
+  "wikiHostile": "Vijandig",
+  "wikiItems": "Voorwerpen",
+  "wikiMaterials": "Materialen",
+  "wikiMinecraftWiki": "Minecraft Wiki",
+  "wikiMobs": "Mobs",
+  "wikiNatural": "Natuurlijk",
+  "wikiNether": "Nether",
+  "wikiNeutral": "Neutraal",
+  "wikiNoPagesFound": "Geen pagina's gevonden",
+  "wikiNoResults": "Geen resultaten gevonden voor \"{query}\"",
+  "@wikiNoResults": {
+    "placeholders": {
+      "query": {}
+    }
+  },
+  "wikiOpenInBrowser": "Openen in browser",
+  "wikiOres": "Ertsen",
+  "wikiOverworld": "Overworld",
+  "wikiPassive": "Passief",
+  "wikiPlants": "Planten",
+  "wikiPotions": "Drankjes",
+  "wikiRanged": "Afstand",
+  "wikiReadFullArticle": "Volledig artikel lezen",
+  "wikiRedstone": "Redstone",
+  "wikiSearchHint": "Zoek in de wiki…",
+  "wikiStatusEffects": "Statuseffecten",
+  "wikiStone": "Steen",
+  "wikiStructures": "Structuren",
+  "wikiSword": "Zwaard",
+  "wikiSwords": "Zwaarden",
+  "wikiTheEnd": "The End",
+  "wikiTitle": "Wiki",
+  "wikiTool": "Gereedschap",
+  "wikiTools": "Gereedschappen",
+  "wikiUtility": "Nut",
+  "wikiWood": "Hout",
+  "yesterday": "Gisteren",
+  "youPrefix": "Jij",
+  "yourNameHint": "Jouw naam",
+  "paywallRestore": "Herstellen",
+  "paywallMonthly": "Maandelijks",
+  "paywallYearly": "Jaarlijks",
+  "paywallSavePercent": "Bespaar ~17%",
+  "paywallSubtitle": "Volg meer servers en ontvang meldingen\nwanneer ze online of offline gaan.",
+  "paywallSlotLabel": "{slots} serverslots",
+  "@paywallSlotLabel": {
+    "placeholders": {
+      "slots": {}
+    }
+  },
+  "paywallPopular": "Populair",
+  "paywallContinue": "Doorgaan",
+  "paywallNoPkgs": "Geen pakketten beschikbaar.",
+  "paywallManaged": "Beheerd door Apple/Google. Op elk moment annuleren.",
+  "paywallPurchaseSuccess": "Aankoop geslaagd!",
+  "paywallPurchaseFailed": "Aankoop mislukt. Probeer opnieuw.",
+  "paywallPurchasesRestored": "Aankopen hersteld!",
+  "paywallNoActivePurchases": "Geen actieve aankopen gevonden.",
+  "paywallRestoreFailed": "Herstellen mislukt. Probeer opnieuw.",
+  "relay": "Relay",
+  "selectModeSection": "MODUS KIEZEN",
+  "serversSection": "SERVERS",
+  "noServerSelected": "Geen server geselecteerd",
+  "selectBedrockAccount": "Bedrock-account kiezen",
+  "serverNameExampleHint": "Mijn Geweldige Server",
+  "serverAddressExampleHint": "play.voorbeeld.com",
+  "serverDescriptionExampleHint": "Survival server met vrienden",
+  "editServer": "Server bewerken",
+  "nldServerLabelShort": "MCCompanion Server",
+  "noPartnerServers": "Nog geen partnerservers beschikbaar.",
+  "partnerServersTitle": "Partnerservers",
+  "tryAgain": "Opnieuw proberen",
+  "trackerLimitReached": "Je hebt je serverlimiet bereikt. Upgrade om meer servers te volgen.",
+  "upgradeButton": "Upgraden",
+  "xboxLinkTitle": "Xbox-account koppelen",
+  "xboxSignInWithMicrosoft": "Aanmelden met Microsoft",
+  "xboxGoToLink": "Ga naar de onderstaande link en voer de code in om je Xbox-account te koppelen.",
+  "xboxYourCode": "Jouw code",
+  "xboxTapToCopy": "Tik op de code om te kopiëren",
+  "xboxOpenLink": "Open microsoft.com/link",
+  "xboxWaitingForLogin": "Wachten op login…",
+  "xboxStartingLogin": "Xbox-login starten…",
+  "xboxCodeCopied": "Code gekopieerd naar klembord",
+  "xboxCodeExpired": "De code is verlopen. Probeer opnieuw.",
+  "xboxCouldNotStart": "Kon Xbox-login niet starten. Probeer opnieuw.",
+  "xboxSomethingWrong": "Er is iets misgegaan. Probeer opnieuw.",
+  "xboxAccountLinked": "Xbox-account gekoppeld!",
+  "xboxBedrockLabel": "Xbox / Bedrock",
+  "publicProfileTitle": "Profiel",
+  "addFriendButton": "Vriend toevoegen",
+  "removeFriendButton": "Vriend verwijderen",
+  "requestSentButton": "Verzoek verstuurd",
+  "acceptRequestButton": "Verzoek accepteren",
+  "removeFriendDialogTitle": "Vriend verwijderen",
+  "removeFriendDialogBody": "@{username} als vriend verwijderen?",
+  "@removeFriendDialogBody": {
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "alreadyFriendsMsg": "Jullie zijn al vrienden.",
+  "cannotSendRequestMsg": "Kan geen verzoek sturen naar deze gebruiker.",
+  "requestAlreadyPendingMsg": "Er is al een openstaand verzoek.",
+  "nowFriendsWith": "Nu vrienden met @{username}",
+  "@nowFriendsWith": {
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "friendRequestSent": "Vriendschapsverzoek verstuurd",
+  "checkBackLater": "Kom later terug.",
+  "userNotFound": "Gebruiker niet gevonden",
+  "userNotFoundMsg2": "Gebruiker niet gevonden.",
+  "lastSeenLabel": "Laatst gezien",
+  "displayNameRowLabel": "Weergavenaam",
+  "usernameRowLabel": "Gebruikersnaam",
+  "editionLabel": "Editie",
+  "nameLabel": "Naam",
+  "nameValidationError": "Naam moet 1–50 tekens zijn",
+  "profileSectionLabel": "Profiel",
+  "ipAddressFieldLabel": "IP-adres",
+  "ipRequiredError": "IP-adres is verplicht",
+  "portFieldLabel": "Poort",
+  "portRangeError": "Poort moet tussen 1 en 65535 zijn",
+  "platformFieldLabel": "Platform",
+  "playersCount": "{players} / {max} spelers",
+  "@playersCount": {
+    "placeholders": {
+      "players": {},
+      "max": {}
+    }
+  },
+  "aboutSectionLabel": "Over",
+  "aboutMCCompanionSection": "Over MCCompanion",
+  "aboutMCCompanionDisclaimer": "MCCompanion is een onafhankelijke applicatie en is niet gelieerd aan, goedgekeurd door of gesponsord door Mojang Studios of Microsoft Corporation.",
+  "infoAndLegal": "Info & Juridisch",
+  "legalSection": "Juridisch",
+  "minecraftTrademark": "\"Minecraft\" is een handelsmerk van Microsoft Corporation.",
+  "termsOfService": "Servicevoorwaarden",
+  "termsOfServiceSubtitle": "Regels en gebruiksvoorwaarden",
+  "privacyPolicy": "Privacybeleid",
+  "privacyPolicySubtitle": "Hoe we je gegevens verzamelen en beschermen",
+  "dataSourcesSection": "Gegevensbronnen & credits",
+  "creditMojangTitle": "Mojang / Microsoft",
+  "creditMojangSubtitle": "Java-speler skins, UUID's en profielgegevens via de officiële Mojang API.",
+  "creditGeyserTitle": "GeyserMC",
+  "creditGeyserSubtitle": "Bedrock skin rendering. Skins voor Bedrock-spelers worden opgehaald via de GeyserMC skin-server.",
+  "creditXboxTitle": "Xbox / Microsoft",
+  "creditXboxSubtitle": "Bedrock-accountkoppeling via Xbox Live. Gamertags en XUID's worden opgehaald via de Microsoft-authenticatiestroom.",
+  "creditMinecraftWikiSubtitle": "Gebruikt als gegevensbron voor de Wiki-functie. Inhoud wordt door de community geleverd onder Creative Commons.",
+  "javaLinkTitle": "Java Edition koppelen",
+  "javaStartingLogin": "Microsoft-aanmelding starten…",
+  "javaSignInWithMicrosoft": "Aanmelden met Microsoft",
+  "javaGoToLink": "Ga naar de onderstaande link en voer de code in om je Minecraft Java Edition-account te koppelen.",
+  "javaYourCode": "Jouw code",
+  "javaTapToCopy": "Tik op de code om te kopiëren",
+  "javaOpenLink": "Open microsoft.com/link",
+  "javaWaitingForLogin": "Wachten op aanmelding…",
+  "javaAccountLinked": "Java Edition gekoppeld!",
+  "javaNoJavaTitle": "Geen Java Edition gevonden",
+  "javaNoJavaBody": "Het Microsoft-account waarmee je bent aangemeld, bezit geen Minecraft Java Edition.",
+  "javaTryDifferentAccount": "Probeer een ander account",
+  "javaCouldNotStart": "Kon Microsoft-aanmelding niet starten. Probeer opnieuw.",
+  "javaCodeExpired": "De code is verlopen. Probeer opnieuw.",
+  "javaSomethingWrong": "Er ging iets mis. Probeer opnieuw.",
+  "javaCodeCopied": "Code gekopieerd naar klembord",
+  "splashFeatureConnect": "Verbinden",
+  "splashFeatureFriends": "Vrienden",
+  "splashFeatureChat": "Chat",
+  "splashFeatureSkins": "Skins",
+  "featureLabelConnector": "Connector",
+  "featureLabelSkins": "Skins",
+  "featureLabelWiki": "Wiki",
+  "featureLabelPartners": "Partners",
+  "featureLabelLookup": "Opzoeken",
+  "featureLabelTracker": "Server Tracker",
+  "featureSubtitleConnector": "Verbind consoles met Minecraft",
+  "featureSubtitleSkins": "Blader door en beheer Minecraft-skins",
+  "featureSubtitleWiki": "Minecraft-encyclopedie",
+  "featureSubtitlePartners": "Aanbevolen servers",
+  "featureSubtitleLookup": "Zoek Java- en Bedrock-profielen op",
+  "featureSubtitleTracker": "Monitor serverstatus en ontvang meldingen",
+  "userSearchHint": "Gebruikersnaam, gamertag of Java-naam…",
+  "userSearchSub": "Zoek op gebruikersnaam, Xbox-gamertag of Java-naam"
 }

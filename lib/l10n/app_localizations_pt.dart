@@ -565,338 +565,338 @@ class AppLocalizationsPt extends AppLocalizations {
   String get avatarUrlHint => 'https://example.com/avatar.png';
 
   @override
-  String get reportUser => 'Report user';
+  String get reportUser => 'Denunciar utilizador';
 
   @override
-  String get reportMessage => 'Report message';
+  String get reportMessage => 'Denunciar mensagem';
 
   @override
   String reportUserWithName(Object name) {
-    return 'Report $name';
+    return 'Denunciar $name';
   }
 
   @override
-  String get reportDisclaimer => 'Reports are reviewed by our team. False reports may result in action against your account.';
+  String get reportDisclaimer => 'Os relatórios são revistos pela nossa equipa.';
 
   @override
   String get reportReasonSpam => 'Spam';
 
   @override
-  String get reportReasonHarassment => 'Harassment';
+  String get reportReasonHarassment => 'Assédio';
 
   @override
-  String get reportReasonInappropriate => 'Inappropriate content';
+  String get reportReasonInappropriate => 'Conteúdo inapropriado';
 
   @override
-  String get reportReasonOther => 'Other';
+  String get reportReasonOther => 'Outro';
 
   @override
-  String get reportAdditionalDetails => 'Additional details (optional)…';
+  String get reportAdditionalDetails => 'Detalhes adicionais (opcional)…';
 
   @override
-  String get reportSuccess => 'Report submitted. Thank you.';
+  String get reportSuccess => 'Relatório enviado. Obrigado.';
 
   @override
-  String get reportFailed => 'Failed to submit report. Please try again.';
+  String get reportFailed => 'Não foi possível enviar o relatório.';
 
   @override
-  String get reportSubmit => 'Submit report';
+  String get reportSubmit => 'Enviar relatório';
 
   @override
-  String get today => 'Today';
+  String get today => 'Hoje';
 
   @override
-  String get yesterday => 'Yesterday';
+  String get yesterday => 'Ontem';
 
   @override
-  String get messagePlaceholder => 'Message…';
+  String get messagePlaceholder => 'Mensagem…';
 
   @override
-  String get noMessagesYet => 'No messages yet.\nSay hello!';
+  String get noMessagesYet => 'Ainda sem mensagens.\nDiz olá!';
 
   @override
-  String get noConversationsYet => 'No conversations yet';
+  String get noConversationsYet => 'Ainda sem conversas';
 
   @override
-  String get startChatHint => 'Find a friend and start chatting!';
+  String get startChatHint => 'Encontra um amigo e começa a conversar!';
 
   @override
-  String get youPrefix => 'You';
+  String get youPrefix => 'Tu';
 
   @override
-  String get playerLookupTitle => 'Player Lookup';
+  String get playerLookupTitle => 'Procurar jogador';
 
   @override
-  String get playerLookupSubtitle => 'Search for a Java or Bedrock player by username';
+  String get playerLookupSubtitle => 'Procura um jogador Java ou Bedrock';
 
   @override
-  String get playerLookupHint => 'Enter a username…';
+  String get playerLookupHint => 'Introduz um nome de utilizador…';
 
   @override
-  String get playerLookupLinked => 'Linked accounts found';
+  String get playerLookupLinked => 'Contas ligadas encontradas';
 
   @override
-  String get playerLookupLabelUsername => 'Username';
+  String get playerLookupLabelUsername => 'Nome de utilizador';
 
   @override
-  String get playerLookupLabelTier => 'Tier';
+  String get playerLookupLabelTier => 'Nível';
 
   @override
   String playerLookupCopied(Object value) {
-    return '$value copied';
+    return '$value copiado';
   }
 
   @override
-  String get tabProfile => 'Profile';
+  String get tabProfile => 'Perfil';
 
   @override
-  String get tabFriends => 'Friends';
+  String get tabFriends => 'Amigos';
 
   @override
-  String get tabRequests => 'Requests';
+  String get tabRequests => 'Pedidos';
 
   @override
   String get tabChats => 'Chats';
 
   @override
-  String get addFriend => 'Add Friend';
+  String get addFriend => 'Adicionar amigo';
 
   @override
-  String get usernameHint => 'Username';
+  String get usernameHint => 'Nome de utilizador';
 
   @override
-  String get send => 'Send';
+  String get send => 'Enviar';
 
   @override
   String friendRequestSentTo(Object name) {
-    return 'Friend request sent to $name';
+    return 'Pedido enviado a $name';
   }
 
   @override
   String alreadyFriendsWith(Object name) {
-    return 'You are already friends with $name';
+    return 'Já és amigo de $name';
   }
 
   @override
   String requestAlreadyPending(Object name) {
-    return 'A request to $name is already pending';
+    return 'Já existe um pedido pendente para $name';
   }
 
   @override
   String userNotFoundMsg(Object name) {
-    return 'User $name not found';
+    return 'Utilizador $name não encontrado';
   }
 
   @override
   String cannotSendRequest(Object name) {
-    return 'Cannot send a request to $name';
+    return 'Não é possível enviar pedido a $name';
   }
 
   @override
-  String get somethingWentWrong => 'Something went wrong. Please try again.';
+  String get somethingWentWrong => 'Algo correu mal. Tente novamente.';
 
   @override
   String friendRequestAccepted(Object name) {
-    return 'You are now friends with $name';
+    return 'Agora és amigo de $name';
   }
 
   @override
   String requestDeclined(Object name) {
-    return 'Request from $name declined';
+    return 'Pedido de $name recusado';
   }
 
   @override
-  String get deleteAccountTitle => 'Delete Account';
+  String get deleteAccountTitle => 'Apagar conta';
 
   @override
-  String get deleteAccountBody => 'This will permanently delete your account and all data. This action cannot be undone.';
+  String get deleteAccountBody => 'Isto irá apagar permanentemente a tua conta e todos os dados.';
 
   @override
-  String get deletePermanently => 'Delete Permanently';
+  String get deletePermanently => 'Apagar permanentemente';
 
   @override
-  String get couldNotDeleteAccount => 'Could not delete account. Please try again.';
+  String get couldNotDeleteAccount => 'Não foi possível apagar a conta.';
 
   @override
-  String get removeFriendTitle => 'Remove Friend';
+  String get removeFriendTitle => 'Remover amigo';
 
   @override
   String removeFriendConfirm(Object name) {
-    return 'Remove $name from your friends?';
+    return 'Remover $name dos teus amigos?';
   }
 
   @override
-  String get remove => 'Remove';
+  String get remove => 'Remover';
 
   @override
   String friendRemoved(Object name) {
-    return '$name has been removed from your friends';
+    return '$name foi removido dos teus amigos';
   }
 
   @override
-  String get emailDifferentMethod => 'This email is linked to a different sign-in method';
+  String get emailDifferentMethod => 'Este email está ligado a outro método';
 
   @override
-  String get googleSignInFailed => 'Google sign-in failed. Please try again.';
+  String get googleSignInFailed => 'Falha no login com Google.';
 
   @override
-  String get appleSignInFailed => 'Apple sign-in failed. Please try again.';
+  String get appleSignInFailed => 'Falha no login com Apple. Tente novamente.';
 
   @override
-  String get resetPasswordTitle => 'Reset Password';
+  String get resetPasswordTitle => 'Redefinir senha';
 
   @override
-  String get resetPasswordBody => 'Enter your email address and we will send you a link to reset your password.';
+  String get resetPasswordBody => 'Introduz o teu email para receber um link de redefinição.';
 
   @override
-  String get emailAddressHint => 'Email address';
+  String get emailAddressHint => 'Endereço de email';
 
   @override
-  String get sendLink => 'Send link';
+  String get sendLink => 'Enviar link';
 
   @override
   String resetLinkSent(Object email) {
-    return 'Password reset link sent to $email';
+    return 'Link enviado para $email';
   }
 
   @override
-  String get noAccountForEmail => 'No account found for that email address';
+  String get noAccountForEmail => 'Nenhuma conta encontrada para esse email';
 
   @override
-  String get invalidEmailError => 'The email address is not valid';
+  String get invalidEmailError => 'O endereço de email não é válido';
 
   @override
-  String get couldNotSendResetEmail => 'Could not send reset email. Please try again.';
+  String get couldNotSendResetEmail => 'Não foi possível enviar o email.';
 
   @override
-  String get enterEmailAndPassword => 'Please enter your email and password';
+  String get enterEmailAndPassword => 'Introduz o teu email e senha';
 
   @override
-  String get incorrectEmailOrPassword => 'Incorrect email or password';
+  String get incorrectEmailOrPassword => 'Email ou senha incorretos';
 
   @override
-  String get emailAlreadyInUse => 'This email address is already in use';
+  String get emailAlreadyInUse => 'Este email já está em uso';
 
   @override
-  String get weakPassword => 'Password is too weak. Please choose a stronger one.';
+  String get weakPassword => 'Senha demasiado fraca.';
 
   @override
-  String get createAccount => 'Create Account';
+  String get createAccount => 'Criar conta';
 
   @override
-  String get signInSubtitle => 'Sign in to access your profile, friends, and chats.';
+  String get signInSubtitle => 'Entra para aceder ao teu perfil.';
 
   @override
-  String get passwordHint => 'Password';
+  String get passwordHint => 'Senha';
 
   @override
-  String get forgotPassword => 'Forgot password?';
+  String get forgotPassword => 'Esqueceste a senha?';
 
   @override
-  String get orDivider => 'or';
+  String get orDivider => 'ou';
 
   @override
-  String get continueWithGoogle => 'Continue with Google';
+  String get continueWithGoogle => 'Continuar com o Google';
 
   @override
-  String get alreadyHaveAccount => 'Already have an account? Sign in';
+  String get alreadyHaveAccount => 'Já tens conta? Entrar';
 
   @override
-  String get noAccountYet => 'Don\'t have an account? Create one';
+  String get noAccountYet => 'Sem conta? Cria uma';
 
   @override
-  String get profileNotSetUp => 'Profile not set up';
+  String get profileNotSetUp => 'Perfil não configurado';
 
   @override
-  String get chooseUsernameSubtitle => 'Choose a username to start connecting with other players.';
+  String get chooseUsernameSubtitle => 'Escolhe um nome de utilizador para te conectares.';
 
   @override
-  String get createProfile => 'Create Profile';
+  String get createProfile => 'Criar perfil';
 
   @override
-  String get findUser => 'Find user';
+  String get findUser => 'Encontrar utilizador';
 
   @override
-  String get couldNotUpdateVisibility => 'Could not update visibility settings';
+  String get couldNotUpdateVisibility => 'Não foi possível atualizar a visibilidade';
 
   @override
-  String get signOut => 'Sign Out';
+  String get signOut => 'Sair';
 
   @override
-  String get appearOfflineLabel => 'Appear Offline';
+  String get appearOfflineLabel => 'Aparecer offline';
 
   @override
-  String get appearOfflineOn => 'You appear offline to other players';
+  String get appearOfflineOn => 'Apareces offline';
 
   @override
-  String get appearOfflineOff => 'You appear online to other players';
+  String get appearOfflineOff => 'Apareces online';
 
   @override
-  String get unlinkXboxTitle => 'Unlink Xbox Account';
+  String get unlinkXboxTitle => 'Desligar conta Xbox';
 
   @override
   String removeLabelConfirm(Object name) {
-    return 'Remove $name from your linked accounts?';
+    return 'Remover $name das tuas contas ligadas?';
   }
 
   @override
-  String get unlink => 'Unlink';
+  String get unlink => 'Desligar';
 
   @override
-  String get unlinkJavaTitle => 'Unlink Java Account';
+  String get unlinkJavaTitle => 'Desligar conta Java';
 
   @override
   String removeJavaConfirm(Object name) {
-    return 'Remove $name from your linked accounts?';
+    return 'Remover $name das tuas contas ligadas?';
   }
 
   @override
-  String get linkedAccountsTitle => 'Linked Accounts';
+  String get linkedAccountsTitle => 'Contas ligadas';
 
   @override
-  String get linkAccountsHint => 'Link your Minecraft accounts to show your skins and stats.';
+  String get linkAccountsHint => 'Liga as tuas contas do Minecraft.';
 
   @override
-  String get linkXbox => 'Link Xbox';
+  String get linkXbox => 'Ligar Xbox';
 
   @override
-  String get linkJava => 'Link Java';
+  String get linkJava => 'Ligar Java';
 
   @override
-  String get profileUpdated => 'Profile updated';
+  String get profileUpdated => 'Perfil atualizado';
 
   @override
-  String get profileCardTitle => 'Profile';
+  String get profileCardTitle => 'Perfil';
 
   @override
-  String get edit => 'Edit';
+  String get edit => 'Editar';
 
   @override
-  String get displayNameLabel => 'Display Name';
+  String get displayNameLabel => 'Nome de exibição';
 
   @override
-  String get yourNameHint => 'Your name';
+  String get yourNameHint => 'O teu nome';
 
   @override
   String get bioLabel => 'Bio';
 
   @override
-  String get bioHint => 'Tell others about yourself…';
+  String get bioHint => 'Fala sobre ti…';
 
   @override
-  String get avatarUrlLabel => 'Avatar URL';
+  String get avatarUrlLabel => 'URL do avatar';
 
   @override
-  String get usernameDisplayLabel => 'Username';
+  String get usernameDisplayLabel => 'Nome de utilizador';
 
   @override
-  String get aboutMe => 'About me';
+  String get aboutMe => 'Sobre mim';
 
   @override
-  String get noFriendsYet => 'No friends yet';
+  String get noFriendsYet => 'Ainda sem amigos';
 
   @override
-  String get noFriendsSub => 'Add friends to see them here.';
+  String get noFriendsSub => 'Adiciona amigos para os veres aqui.';
 
   @override
   String onlineFriendsLabel(Object count) {
@@ -909,178 +909,178 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get noPendingRequests => 'No pending requests';
+  String get noPendingRequests => 'Sem pedidos pendentes';
 
   @override
-  String get requestsAppearHere => 'New friend requests will appear here.';
+  String get requestsAppearHere => 'Os novos pedidos de amizade aparecerão aqui.';
 
   @override
-  String get skinsEdit => 'Edit';
+  String get skinsEdit => 'Editar';
 
   @override
-  String get skinsNoAccountsTitle => 'No Minecraft accounts linked';
+  String get skinsNoAccountsTitle => 'Sem contas do Minecraft ligadas';
 
   @override
-  String get skinsNoAccountsSubtitle => 'Link a Java or Bedrock account to view your skins.';
+  String get skinsNoAccountsSubtitle => 'Liga uma conta para ver as tuas skins.';
 
   @override
-  String get skinsSignInTitle => 'Sign in to view your skins';
+  String get skinsSignInTitle => 'Entra para ver as tuas skins';
 
   @override
-  String get skinsSignInSubtitle => 'Sign in and link your Minecraft accounts to see your skins here.';
+  String get skinsSignInSubtitle => 'Entra para ver as tuas skins.';
 
   @override
-  String get skinsMustBe64 => 'Skin must be 64×64 pixels';
+  String get skinsMustBe64 => 'A skin deve ser de 64×64 pixels';
 
   @override
-  String get skinsInvalidFile => 'Invalid image file';
+  String get skinsInvalidFile => 'Ficheiro de imagem inválido';
 
   @override
-  String get skinsUpload => 'Upload';
+  String get skinsUpload => 'Carregar';
 
   @override
-  String get skinsCreate => 'Create';
+  String get skinsCreate => 'Criar';
 
   @override
-  String get skinsSectionRecent => 'RECENT SKINS';
+  String get skinsSectionRecent => 'SKINS RECENTES';
 
   @override
-  String get skinsSectionMy => 'MY SKINS';
+  String get skinsSectionMy => 'AS MINHAS SKINS';
 
   @override
-  String get skinsEmptyMySkins => 'No saved skins yet. Upload or create one!';
+  String get skinsEmptyMySkins => 'Ainda sem skins. Carrega uma!';
 
   @override
-  String get skinsSectionYours => 'YOUR SKINS';
+  String get skinsSectionYours => 'AS TUAS SKINS';
 
   @override
-  String get skinsCouldNotLoad => 'Could not load skins';
+  String get skinsCouldNotLoad => 'Não foi possível carregar as skins';
 
   @override
   String skinsPageOf(Object page, Object total) {
-    return 'Page $page of $total';
+    return 'Página $page de $total';
   }
 
   @override
-  String get skinsDownload => 'Download';
+  String get skinsDownload => 'Transferir';
 
   @override
   String get wikiTitle => 'Wiki';
 
   @override
-  String get wikiMinecraftWiki => 'Minecraft Wiki';
+  String get wikiMinecraftWiki => 'Wiki do Minecraft';
 
   @override
-  String get wikiSearchHint => 'Search the wiki…';
+  String get wikiSearchHint => 'Pesquisar no wiki…';
 
   @override
-  String get wikiCouldNotLoadPages => 'Could not load pages. Please try again.';
+  String get wikiCouldNotLoadPages => 'Não foi possível carregar as páginas.';
 
   @override
-  String get wikiCouldNotReach => 'Could not reach the wiki. Check your connection.';
+  String get wikiCouldNotReach => 'Não foi possível aceder ao wiki.';
 
   @override
   String wikiNoResults(Object query) {
-    return 'No results found for \"$query\"';
+    return 'Sem resultados para \"$query\"';
   }
 
   @override
-  String get wikiNoPagesFound => 'No pages found';
+  String get wikiNoPagesFound => 'Nenhuma página encontrada';
 
   @override
   String wikiCategories(Object count) {
-    return '$count categories';
+    return '$count categorias';
   }
 
   @override
-  String get wikiCouldNotLoadContent => 'Could not load article content.';
+  String get wikiCouldNotLoadContent => 'Não foi possível carregar o conteúdo.';
 
   @override
-  String get wikiOpenInBrowser => 'Open in browser';
+  String get wikiOpenInBrowser => 'Abrir no navegador';
 
   @override
   String get wikiCrafting => 'Crafting';
 
   @override
-  String get wikiReadFullArticle => 'Read full article';
+  String get wikiReadFullArticle => 'Ler artigo completo';
 
   @override
   String get wikiMobs => 'Mobs';
 
   @override
-  String get wikiBlocks => 'Blocks';
+  String get wikiBlocks => 'Blocos';
 
   @override
-  String get wikiItems => 'Items';
+  String get wikiItems => 'Itens';
 
   @override
-  String get wikiBiomes => 'Biomes';
+  String get wikiBiomes => 'Biomas';
 
   @override
-  String get wikiStructures => 'Structures';
+  String get wikiStructures => 'Estruturas';
 
   @override
-  String get wikiEnchantments => 'Enchantments';
+  String get wikiEnchantments => 'Encantamentos';
 
   @override
-  String get wikiPotions => 'Potions';
+  String get wikiPotions => 'Poções';
 
   @override
-  String get wikiPassive => 'Passive';
+  String get wikiPassive => 'Passivo';
 
   @override
-  String get wikiNeutral => 'Neutral';
+  String get wikiNeutral => 'Neutro';
 
   @override
-  String get wikiHostile => 'Hostile';
+  String get wikiHostile => 'Hostil';
 
   @override
-  String get wikiBoss => 'Boss';
+  String get wikiBoss => 'Chefe';
 
   @override
-  String get wikiUtility => 'Utility';
+  String get wikiUtility => 'Utilidade';
 
   @override
   String get wikiNatural => 'Natural';
 
   @override
-  String get wikiOres => 'Ores';
+  String get wikiOres => 'Minérios';
 
   @override
-  String get wikiWood => 'Wood';
+  String get wikiWood => 'Madeira';
 
   @override
-  String get wikiStone => 'Stone';
+  String get wikiStone => 'Pedra';
 
   @override
   String get wikiRedstone => 'Redstone';
 
   @override
-  String get wikiPlants => 'Plants';
+  String get wikiPlants => 'Plantas';
 
   @override
-  String get wikiDecoration => 'Decoration';
+  String get wikiDecoration => 'Decoração';
 
   @override
-  String get wikiTools => 'Tools';
+  String get wikiTools => 'Ferramentas';
 
   @override
-  String get wikiSwords => 'Swords';
+  String get wikiSwords => 'Espadas';
 
   @override
-  String get wikiRanged => 'Ranged';
+  String get wikiRanged => 'À distância';
 
   @override
-  String get wikiArmor => 'Armor';
+  String get wikiArmor => 'Armadura';
 
   @override
-  String get wikiFood => 'Food';
+  String get wikiFood => 'Comida';
 
   @override
-  String get wikiBrewing => 'Brewing';
+  String get wikiBrewing => 'Fabricação de poções';
 
   @override
-  String get wikiMaterials => 'Materials';
+  String get wikiMaterials => 'Materiais';
 
   @override
   String get wikiOverworld => 'Overworld';
@@ -1092,19 +1092,19 @@ class AppLocalizationsPt extends AppLocalizations {
   String get wikiTheEnd => 'The End';
 
   @override
-  String get wikiSword => 'Sword';
+  String get wikiSword => 'Espada';
 
   @override
-  String get wikiTool => 'Tool';
+  String get wikiTool => 'Ferramenta';
 
   @override
-  String get wikiBow => 'Bow';
+  String get wikiBow => 'Arco';
 
   @override
-  String get wikiFishing => 'Fishing';
+  String get wikiFishing => 'Pesca';
 
   @override
-  String get wikiStatusEffects => 'Status Effects';
+  String get wikiStatusEffects => 'Efeitos de estado';
 
   @override
   String get chooseUniqueUsername => 'Escolha um nome de usuário único para começar.';
@@ -1154,4 +1154,384 @@ class AppLocalizationsPt extends AppLocalizations {
   String serverAdded(Object name) {
     return '$name adicionado';
   }
+
+  @override
+  String get paywallRestore => 'Restaurar';
+
+  @override
+  String get paywallMonthly => 'Mensal';
+
+  @override
+  String get paywallYearly => 'Anual';
+
+  @override
+  String get paywallSavePercent => 'Poupa ~17%';
+
+  @override
+  String get paywallSubtitle => 'Segue mais servidores e recebe notificações.';
+
+  @override
+  String paywallSlotLabel(Object slots) {
+    return '$slots slots de servidor';
+  }
+
+  @override
+  String get paywallPopular => 'Popular';
+
+  @override
+  String get paywallContinue => 'Continuar';
+
+  @override
+  String get paywallNoPkgs => 'Sem pacotes disponíveis.';
+
+  @override
+  String get paywallManaged => 'Gerido pela Apple/Google. Cancela quando quiseres.';
+
+  @override
+  String get paywallPurchaseSuccess => 'Compra bem-sucedida!';
+
+  @override
+  String get paywallPurchaseFailed => 'Compra falhada.';
+
+  @override
+  String get paywallPurchasesRestored => 'Compras restauradas!';
+
+  @override
+  String get paywallNoActivePurchases => 'Sem compras ativas encontradas.';
+
+  @override
+  String get paywallRestoreFailed => 'Restauração falhada.';
+
+  @override
+  String get relay => 'Relay';
+
+  @override
+  String get selectModeSection => 'SELECIONAR MODO';
+
+  @override
+  String get serversSection => 'SERVIDORES';
+
+  @override
+  String get noServerSelected => 'Nenhum servidor selecionado';
+
+  @override
+  String get selectBedrockAccount => 'Selecionar conta Bedrock';
+
+  @override
+  String playersCount(Object players, Object max) {
+    return '$players / $max jogadores';
+  }
+
+  @override
+  String get infoAndLegal => 'Info & Legal';
+
+  @override
+  String get legalSection => 'Legal';
+
+  @override
+  String get privacyPolicy => 'Política de privacidade';
+
+  @override
+  String get privacyPolicySubtitle => 'Como recolhemos os teus dados';
+
+  @override
+  String get termsOfService => 'Termos de serviço';
+
+  @override
+  String get termsOfServiceSubtitle => 'Regras e condições de uso';
+
+  @override
+  String get dataSourcesSection => 'Fontes de dados e créditos';
+
+  @override
+  String get creditMinecraftWikiSubtitle => 'Fonte de dados para o Wiki. Conteúdo sob Creative Commons.';
+
+  @override
+  String get creditMojangTitle => 'Mojang / Microsoft';
+
+  @override
+  String get creditMojangSubtitle => 'Skins e perfis Java via API da Mojang.';
+
+  @override
+  String get creditGeyserTitle => 'GeyserMC';
+
+  @override
+  String get creditGeyserSubtitle => 'Renderização de skins Bedrock via GeyserMC.';
+
+  @override
+  String get creditXboxTitle => 'Xbox / Microsoft';
+
+  @override
+  String get creditXboxSubtitle => 'Ligação de contas Bedrock via Xbox Live.';
+
+  @override
+  String get aboutMCCompanionSection => 'Sobre o MCCompanion';
+
+  @override
+  String get aboutMCCompanionDisclaimer => 'O MCCompanion é uma app independente não afiliada à Mojang ou Microsoft.';
+
+  @override
+  String get minecraftTrademark => '\"Minecraft\" é uma marca registada da Microsoft Corporation.';
+
+  @override
+  String get nldServerLabelShort => 'Servidor MCCompanion';
+
+  @override
+  String get editServer => 'Editar servidor';
+
+  @override
+  String get serverNameExampleHint => 'O Meu Servidor Incrível';
+
+  @override
+  String get serverAddressExampleHint => 'play.exemplo.pt';
+
+  @override
+  String get serverDescriptionExampleHint => 'Servidor survival com amigos';
+
+  @override
+  String get editionLabel => 'Edição';
+
+  @override
+  String get nameLabel => 'Nome';
+
+  @override
+  String get ipAddressFieldLabel => 'Endereço IP';
+
+  @override
+  String get portFieldLabel => 'Porta';
+
+  @override
+  String get platformFieldLabel => 'Plataforma';
+
+  @override
+  String get nameValidationError => 'O nome deve ter 1–50 caracteres';
+
+  @override
+  String get ipRequiredError => 'O endereço IP é obrigatório';
+
+  @override
+  String get portRangeError => 'A porta deve estar entre 1 e 65535';
+
+  @override
+  String get partnerServersTitle => 'Servidores parceiros';
+
+  @override
+  String get noPartnerServers => 'Ainda sem servidores parceiros.';
+
+  @override
+  String get checkBackLater => 'Volta mais tarde.';
+
+  @override
+  String get xboxLinkTitle => 'Ligar conta Xbox';
+
+  @override
+  String get xboxStartingLogin => 'A iniciar login Xbox…';
+
+  @override
+  String get xboxSignInWithMicrosoft => 'Entrar com Microsoft';
+
+  @override
+  String get xboxGoToLink => 'Vai ao link abaixo e introduz o código.';
+
+  @override
+  String get xboxYourCode => 'O teu código';
+
+  @override
+  String get xboxTapToCopy => 'Toca no código para copiar';
+
+  @override
+  String get xboxOpenLink => 'Abrir microsoft.com/link';
+
+  @override
+  String get xboxWaitingForLogin => 'A aguardar login…';
+
+  @override
+  String get xboxAccountLinked => 'Conta Xbox ligada!';
+
+  @override
+  String get xboxCodeCopied => 'Código copiado para a área de transferência';
+
+  @override
+  String get xboxCouldNotStart => 'Não foi possível iniciar o login Xbox.';
+
+  @override
+  String get xboxCodeExpired => 'O código expirou. Tente novamente.';
+
+  @override
+  String get xboxSomethingWrong => 'Algo correu mal.';
+
+  @override
+  String get tryAgain => 'Tentar novamente';
+
+  @override
+  String get publicProfileTitle => 'Perfil';
+
+  @override
+  String get userNotFound => 'Utilizador não encontrado';
+
+  @override
+  String get profileSectionLabel => 'Perfil';
+
+  @override
+  String get displayNameRowLabel => 'Nome de exibição';
+
+  @override
+  String get usernameRowLabel => 'Nome de utilizador';
+
+  @override
+  String get lastSeenLabel => 'Última vez visto';
+
+  @override
+  String get aboutSectionLabel => 'Sobre';
+
+  @override
+  String get xboxBedrockLabel => 'Xbox / Bedrock';
+
+  @override
+  String get friendRequestSent => 'Pedido de amizade enviado';
+
+  @override
+  String get alreadyFriendsMsg => 'Já são amigos.';
+
+  @override
+  String get requestAlreadyPendingMsg => 'Já existe um pedido pendente.';
+
+  @override
+  String get userNotFoundMsg2 => 'Utilizador não encontrado.';
+
+  @override
+  String get cannotSendRequestMsg => 'Não é possível enviar um pedido.';
+
+  @override
+  String nowFriendsWith(Object username) {
+    return 'Agora amigos com @$username';
+  }
+
+  @override
+  String get removeFriendButton => 'Remover amigo';
+
+  @override
+  String get requestSentButton => 'Pedido enviado';
+
+  @override
+  String get acceptRequestButton => 'Aceitar pedido';
+
+  @override
+  String get addFriendButton => 'Adicionar amigo';
+
+  @override
+  String get removeFriendDialogTitle => 'Remover amigo';
+
+  @override
+  String removeFriendDialogBody(Object username) {
+    return 'Remover @$username como amigo?';
+  }
+
+  @override
+  String get trackerLimitReached => 'Atingiste o teu limite. Atualiza para mais servidores.';
+
+  @override
+  String get upgradeButton => 'Atualizar';
+
+  @override
+  String get javaLinkTitle => 'Ligar Java Edition';
+
+  @override
+  String get javaStartingLogin => 'A iniciar sessão Microsoft…';
+
+  @override
+  String get javaSignInWithMicrosoft => 'Entrar com Microsoft';
+
+  @override
+  String get javaGoToLink => 'Vai ao link abaixo e introduz o código para ligar a tua conta Minecraft Java Edition.';
+
+  @override
+  String get javaYourCode => 'O teu código';
+
+  @override
+  String get javaTapToCopy => 'Toca no código para copiar';
+
+  @override
+  String get javaOpenLink => 'Abrir microsoft.com/link';
+
+  @override
+  String get javaWaitingForLogin => 'A aguardar sessão…';
+
+  @override
+  String get javaAccountLinked => 'Java Edition ligado!';
+
+  @override
+  String get javaNoJavaTitle => 'Nenhum Java Edition encontrado';
+
+  @override
+  String get javaNoJavaBody => 'A conta Microsoft com que entraste não possui Minecraft Java Edition.';
+
+  @override
+  String get javaTryDifferentAccount => 'Tentar outra conta';
+
+  @override
+  String get javaCouldNotStart => 'Não foi possível iniciar a sessão Microsoft. Tente novamente.';
+
+  @override
+  String get javaCodeExpired => 'O código expirou. Tente novamente.';
+
+  @override
+  String get javaSomethingWrong => 'Algo correu mal. Tente novamente.';
+
+  @override
+  String get javaCodeCopied => 'Código copiado para a área de transferência';
+
+  @override
+  String get splashFeatureConnect => 'Ligar';
+
+  @override
+  String get splashFeatureFriends => 'Amigos';
+
+  @override
+  String get splashFeatureChat => 'Chat';
+
+  @override
+  String get splashFeatureSkins => 'Skins';
+
+  @override
+  String get featureLabelConnector => 'Conector';
+
+  @override
+  String get featureLabelSkins => 'Skins';
+
+  @override
+  String get featureLabelWiki => 'Wiki';
+
+  @override
+  String get featureLabelPartners => 'Parceiros';
+
+  @override
+  String get featureLabelLookup => 'Pesquisa';
+
+  @override
+  String get featureLabelTracker => 'Rastreador de servidor';
+
+  @override
+  String get featureSubtitleConnector => 'Conectar consoles ao Minecraft';
+
+  @override
+  String get featureSubtitleSkins => 'Procurar e gerenciar skins do Minecraft';
+
+  @override
+  String get featureSubtitleWiki => 'Enciclopédia do Minecraft';
+
+  @override
+  String get featureSubtitlePartners => 'Servidores em destaque';
+
+  @override
+  String get featureSubtitleLookup => 'Pesquisar perfis Java e Bedrock';
+
+  @override
+  String get featureSubtitleTracker => 'Monitorar status do servidor e receber notificações';
+
+  @override
+  String get userSearchHint => 'Nome de utilizador, gamertag ou nome Java…';
+
+  @override
+  String get userSearchSub => 'Pesquisar por nome de utilizador, gamertag Xbox ou nome Java';
 }

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../services/user_service.dart';
 
@@ -46,9 +47,10 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
     if (!mounted) return;
 
     if (result.error != null || result.userCode == null) {
+      if (!mounted) return;
       setState(() {
         _step = _Step.error;
-        _errorMsg = 'Could not start Xbox login. Please try again.';
+        _errorMsg = AppLocalizations.of(context)!.xboxCouldNotStart;
       });
       return;
     }
@@ -79,13 +81,13 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
         _pollTimer?.cancel();
         setState(() {
           _step = _Step.error;
-          _errorMsg = 'The code expired. Please try again.';
+          _errorMsg = AppLocalizations.of(context)!.xboxCodeExpired;
         });
       case 'error':
         _pollTimer?.cancel();
         setState(() {
           _step = _Step.error;
-          _errorMsg = 'Something went wrong. Please try again.';
+          _errorMsg = AppLocalizations.of(context)!.xboxSomethingWrong;
         });
       default:
         break;
@@ -104,9 +106,9 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
     if (_userCode == null) return;
     Clipboard.setData(ClipboardData(text: _userCode!));
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Code copied to clipboard'),
-        duration: Duration(seconds: 2),
+      SnackBar(
+        content: Text(AppLocalizations.of(context)!.xboxCodeCopied),
+        duration: const Duration(seconds: 2),
       ),
     );
   }
@@ -117,9 +119,9 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
       backgroundColor: AppTheme.background,
       appBar: AppBar(
         backgroundColor: AppTheme.surface,
-        title: const Text(
-          'Link Xbox Account',
-          style: TextStyle(
+        title: Text(
+          AppLocalizations.of(context)!.xboxLinkTitle,
+          style: const TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 16,
             fontWeight: FontWeight.w700,
@@ -156,10 +158,10 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
       mainAxisSize: MainAxisSize.min,
       children: [
         CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Text(
-          'Starting Xbox login…',
-          style: TextStyle(color: AppTheme.textSecondary, fontSize: 13),
+          AppLocalizations.of(context)!.xboxStartingLogin,
+          style: const TextStyle(color: AppTheme.textSecondary, fontSize: 13),
         ),
       ],
     );
@@ -188,27 +190,27 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
           ),
         ),
         const SizedBox(height: 20),
-        const Text(
-          'Sign in with Microsoft',
-          style: TextStyle(
+        Text(
+          AppLocalizations.of(context)!.xboxSignInWithMicrosoft,
+          style: const TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 22,
             fontWeight: FontWeight.w700,
           ),
         ),
         const SizedBox(height: 8),
-        const Text(
-          'Go to the link below and enter the code to connect your Xbox account.',
-          style: TextStyle(
+        Text(
+          AppLocalizations.of(context)!.xboxGoToLink,
+          style: const TextStyle(
             color: AppTheme.textSecondary,
             fontSize: 13,
             height: 1.5,
           ),
         ),
         const SizedBox(height: 32),
-        const Text(
-          'Your code',
-          style: TextStyle(
+        Text(
+          AppLocalizations.of(context)!.xboxYourCode,
+          style: const TextStyle(
             color: AppTheme.textMuted,
             fontSize: 11,
             fontWeight: FontWeight.w600,
@@ -248,18 +250,18 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
           ),
         ),
         const SizedBox(height: 10),
-        const Text(
-          'Tap the code to copy it',
+        Text(
+          AppLocalizations.of(context)!.xboxTapToCopy,
           textAlign: TextAlign.center,
-          style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
+          style: const TextStyle(color: AppTheme.textMuted, fontSize: 11),
         ),
         const SizedBox(height: 28),
         ElevatedButton.icon(
           onPressed: _openLink,
           icon: const Icon(Icons.open_in_browser_rounded, size: 18),
-          label: const Text(
-            'Open microsoft.com/link',
-            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
+          label: Text(
+            AppLocalizations.of(context)!.xboxOpenLink,
+            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
           ),
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color(0xFF107C10),
@@ -280,9 +282,9 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
               ),
             ),
             const SizedBox(width: 10),
-            const Text(
-              'Waiting for login…',
-              style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
+            Text(
+              AppLocalizations.of(context)!.xboxWaitingForLogin,
+              style: const TextStyle(color: AppTheme.textMuted, fontSize: 12),
             ),
           ],
         ),
@@ -301,9 +303,9 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
           size: 56,
         ),
         const SizedBox(height: 16),
-        const Text(
-          'Xbox account linked!',
-          style: TextStyle(
+        Text(
+          AppLocalizations.of(context)!.xboxAccountLinked,
+          style: const TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 20,
             fontWeight: FontWeight.w700,
@@ -336,7 +338,7 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
         ),
         const SizedBox(height: 16),
         Text(
-          _errorMsg ?? 'Something went wrong.',
+          _errorMsg ?? AppLocalizations.of(context)!.xboxSomethingWrong,
           textAlign: TextAlign.center,
           style: const TextStyle(
             color: AppTheme.textSecondary,
@@ -350,9 +352,9 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(vertical: 14),
           ),
-          child: const Text(
-            'Try again',
-            style: TextStyle(fontWeight: FontWeight.w700),
+          child: Text(
+            AppLocalizations.of(context)!.tryAgain,
+            style: const TextStyle(fontWeight: FontWeight.w700),
           ),
         ),
       ],

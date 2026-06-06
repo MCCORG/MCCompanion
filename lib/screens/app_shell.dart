@@ -275,12 +275,6 @@ class _AppShellState extends State<AppShell>
     setState(() => _selectedRelay = relay);
   }
 
-  static String _friendNameForRelay(String relayName) => switch (relayName) {
-    'EU Server' => 'MCCompanionEU',
-    'US Server' => 'MCCompanionUS',
-    _ => '-',
-  };
-
   String? get _activeNavItem {
     switch (_pageIndex) {
       case _pageHome:

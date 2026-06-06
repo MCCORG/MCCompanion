@@ -1354,5 +1354,369 @@
     "placeholders": {
       "name": {}
     }
-  }
+  },
+  "paywallRestore": "Restore",
+  "paywallMonthly": "Monthly",
+  "paywallYearly": "Yearly",
+  "paywallSavePercent": "Save ~17%",
+  "paywallSubtitle": "Track more servers and get notified\nwhen they go online or offline.",
+  "paywallSlotLabel": "{slots} server slots",
+  "@paywallSlotLabel": {
+    "placeholders": {
+      "slots": {}
+    }
+  },
+  "paywallPopular": "Popular",
+  "paywallContinue": "Continue",
+  "paywallNoPkgs": "No packages available.",
+  "paywallManaged": "Managed by Apple/Google. Cancel anytime.",
+  "paywallPurchaseSuccess": "Purchase successful!",
+  "paywallPurchaseFailed": "Purchase failed. Please try again.",
+  "paywallPurchasesRestored": "Purchases restored!",
+  "paywallNoActivePurchases": "No active purchases found.",
+  "paywallRestoreFailed": "Restore failed. Please try again.",
+  "relay": "Relay",
+  "@relay": {
+    "description": "Label for the Relay nav item and sheet title"
+  },
+  "selectModeSection": "SELECT MODE",
+  "@selectModeSection": {
+    "description": "Section label above mode chips in connection panel"
+  },
+  "serversSection": "SERVERS",
+  "@serversSection": {
+    "description": "Section label above servers panel in connection panel"
+  },
+  "noServerSelected": "No server selected",
+  "@noServerSelected": {
+    "description": "Placeholder when no server is entered in connection panel"
+  },
+  "selectBedrockAccount": "Select Bedrock account",
+  "@selectBedrockAccount": {
+    "description": "Title of the Bedrock account picker bottom sheet"
+  },
+  "playersCount": "{players} / {max} players",
+  "@playersCount": {
+    "description": "Player count label on tracked server card",
+    "placeholders": {
+      "players": {},
+      "max": {}
+    }
+  },
+  "infoAndLegal": "Info & Legal",
+  "@infoAndLegal": {
+    "description": "Title of the Info & Legal sheet"
+  },
+  "legalSection": "Legal",
+  "@legalSection": {
+    "description": "Section header in Info sheet"
+  },
+  "privacyPolicy": "Privacy Policy",
+  "@privacyPolicy": {
+    "description": "Privacy Policy tile title"
+  },
+  "privacyPolicySubtitle": "How we collect and protect your data",
+  "@privacyPolicySubtitle": {
+    "description": "Privacy Policy tile subtitle"
+  },
+  "termsOfService": "Terms of Service",
+  "@termsOfService": {
+    "description": "Terms of Service tile title"
+  },
+  "termsOfServiceSubtitle": "Rules and conditions of use",
+  "@termsOfServiceSubtitle": {
+    "description": "Terms of Service tile subtitle"
+  },
+  "dataSourcesSection": "Data Sources & Credits",
+  "@dataSourcesSection": {
+    "description": "Section header for data sources in Info sheet"
+  },
+  "creditMinecraftWikiSubtitle": "Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.",
+  "@creditMinecraftWikiSubtitle": {
+    "description": "Subtitle for Minecraft Wiki credit tile"
+  },
+  "creditMojangTitle": "Mojang / Microsoft",
+  "@creditMojangTitle": {
+    "description": "Title for Mojang credit tile"
+  },
+  "creditMojangSubtitle": "Java player skins, UUIDs, and profile data via the official Mojang API.",
+  "@creditMojangSubtitle": {
+    "description": "Subtitle for Mojang credit tile"
+  },
+  "creditGeyserTitle": "GeyserMC",
+  "@creditGeyserTitle": {
+    "description": "Title for GeyserMC credit tile"
+  },
+  "creditGeyserSubtitle": "Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.",
+  "@creditGeyserSubtitle": {
+    "description": "Subtitle for GeyserMC credit tile"
+  },
+  "creditXboxTitle": "Xbox / Microsoft",
+  "@creditXboxTitle": {
+    "description": "Title for Xbox credit tile"
+  },
+  "creditXboxSubtitle": "Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.",
+  "@creditXboxSubtitle": {
+    "description": "Subtitle for Xbox credit tile"
+  },
+  "aboutMCCompanionSection": "About MCCompanion",
+  "@aboutMCCompanionSection": {
+    "description": "Section header for About MCCompanion in Info sheet"
+  },
+  "aboutMCCompanionDisclaimer": "MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.",
+  "@aboutMCCompanionDisclaimer": {
+    "description": "Disclaimer text in About MCCompanion section"
+  },
+  "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
+  "@minecraftTrademark": {
+    "description": "Minecraft trademark notice"
+  },
+  "nldServerLabelShort": "MCCompanion Server",
+  "@nldServerLabelShort": {
+    "description": "Section label above relay selector in More sheet"
+  },
+  "editServer": "Edit Server",
+  "@editServer": {
+    "description": "Title for edit server form in manage servers"
+  },
+  "serverNameExampleHint": "My Awesome Server",
+  "@serverNameExampleHint": {
+    "description": "Example hint text for server name field"
+  },
+  "serverAddressExampleHint": "play.example.com",
+  "@serverAddressExampleHint": {
+    "description": "Example hint text for server address field"
+  },
+  "serverDescriptionExampleHint": "Survival server with friends",
+  "@serverDescriptionExampleHint": {
+    "description": "Example hint text for server description field"
+  },
+  "editionLabel": "Edition",
+  "@editionLabel": {
+    "description": "Label for the edition toggle in manage servers form"
+  },
+  "nameLabel": "Name",
+  "@nameLabel": {
+    "description": "Generic Name field label"
+  },
+  "ipAddressFieldLabel": "IP Address",
+  "@ipAddressFieldLabel": {
+    "description": "IP Address field label in edit server form"
+  },
+  "portFieldLabel": "Port",
+  "@portFieldLabel": {
+    "description": "Port field label in edit server form"
+  },
+  "platformFieldLabel": "Platform",
+  "@platformFieldLabel": {
+    "description": "Platform field label in edit server form"
+  },
+  "nameValidationError": "Name must be 1–50 characters",
+  "@nameValidationError": {
+    "description": "Validation error when server name is invalid"
+  },
+  "ipRequiredError": "IP address is required",
+  "@ipRequiredError": {
+    "description": "Validation error when IP address is empty"
+  },
+  "portRangeError": "Port must be between 1 and 65535",
+  "@portRangeError": {
+    "description": "Validation error when port is out of range"
+  },
+  "partnerServersTitle": "Partner Servers",
+  "@partnerServersTitle": {
+    "description": "Title for the partner servers screen"
+  },
+  "noPartnerServers": "No partner servers available yet.",
+  "@noPartnerServers": {
+    "description": "Empty state text on partner servers screen"
+  },
+  "checkBackLater": "Check back later.",
+  "@checkBackLater": {
+    "description": "Secondary empty state text on partner servers screen"
+  },
+  "xboxLinkTitle": "Link Xbox Account",
+  "@xboxLinkTitle": {
+    "description": "AppBar title for Xbox link screen"
+  },
+  "xboxStartingLogin": "Starting Xbox login…",
+  "@xboxStartingLogin": {
+    "description": "Loading text when starting Xbox login"
+  },
+  "xboxSignInWithMicrosoft": "Sign in with Microsoft",
+  "@xboxSignInWithMicrosoft": {
+    "description": "Heading on Xbox link waiting screen"
+  },
+  "xboxGoToLink": "Go to the link below and enter the code to connect your Xbox account.",
+  "@xboxGoToLink": {
+    "description": "Instruction on Xbox link waiting screen"
+  },
+  "xboxYourCode": "Your code",
+  "@xboxYourCode": {
+    "description": "Label above the Microsoft device code"
+  },
+  "xboxTapToCopy": "Tap the code to copy it",
+  "@xboxTapToCopy": {
+    "description": "Hint below the code on Xbox link screen"
+  },
+  "xboxOpenLink": "Open microsoft.com/link",
+  "@xboxOpenLink": {
+    "description": "Button label to open Microsoft device auth link"
+  },
+  "xboxWaitingForLogin": "Waiting for login…",
+  "@xboxWaitingForLogin": {
+    "description": "Status text while polling for Xbox login"
+  },
+  "xboxAccountLinked": "Xbox account linked!",
+  "@xboxAccountLinked": {
+    "description": "Success text when Xbox account is linked"
+  },
+  "xboxCodeCopied": "Code copied to clipboard",
+  "@xboxCodeCopied": {
+    "description": "Snackbar shown after code is copied"
+  },
+  "xboxCouldNotStart": "Could not start Xbox login. Please try again.",
+  "@xboxCouldNotStart": {
+    "description": "Error when Xbox login cannot be started"
+  },
+  "xboxCodeExpired": "The code expired. Please try again.",
+  "@xboxCodeExpired": {
+    "description": "Error when Xbox device code expires"
+  },
+  "xboxSomethingWrong": "Something went wrong. Please try again.",
+  "@xboxSomethingWrong": {
+    "description": "Generic error on Xbox link screen"
+  },
+  "tryAgain": "Try again",
+  "@tryAgain": {
+    "description": "Generic try again button label"
+  },
+  "publicProfileTitle": "Profile",
+  "@publicProfileTitle": {
+    "description": "AppBar title fallback for public profile when username not loaded"
+  },
+  "userNotFound": "User not found",
+  "@userNotFound": {
+    "description": "Text shown when a user profile cannot be found"
+  },
+  "profileSectionLabel": "Profile",
+  "@profileSectionLabel": {
+    "description": "Section label in public profile for profile info card"
+  },
+  "displayNameRowLabel": "Display name",
+  "@displayNameRowLabel": {
+    "description": "Row label for display name in public profile"
+  },
+  "usernameRowLabel": "Username",
+  "@usernameRowLabel": {
+    "description": "Row label for username in public profile"
+  },
+  "lastSeenLabel": "Last seen",
+  "@lastSeenLabel": {
+    "description": "Row label for last seen date in public profile"
+  },
+  "aboutSectionLabel": "About",
+  "@aboutSectionLabel": {
+    "description": "Section label for bio/about in public profile"
+  },
+  "xboxBedrockLabel": "Xbox / Bedrock",
+  "@xboxBedrockLabel": {
+    "description": "Section label for Xbox/Bedrock account in public profile"
+  },
+  "friendRequestSent": "Friend request sent",
+  "@friendRequestSent": {
+    "description": "Toast shown after friend request is sent from public profile"
+  },
+  "alreadyFriendsMsg": "You are already friends.",
+  "@alreadyFriendsMsg": {
+    "description": "Error when already friends with user (public profile)"
+  },
+  "requestAlreadyPendingMsg": "There is already a pending request.",
+  "@requestAlreadyPendingMsg": {
+    "description": "Error when friend request is already pending (public profile)"
+  },
+  "userNotFoundMsg2": "User not found.",
+  "@userNotFoundMsg2": {
+    "description": "Error when user not found sending friend request from public profile"
+  },
+  "cannotSendRequestMsg": "Cannot send a request to this user.",
+  "@cannotSendRequestMsg": {
+    "description": "Error when friend request is blocked (public profile)"
+  },
+  "nowFriendsWith": "Now friends with @{username}",
+  "@nowFriendsWith": {
+    "description": "Toast when accepted a friend request from public profile",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "removeFriendButton": "Remove friend",
+  "@removeFriendButton": {
+    "description": "Button label to remove a friend on public profile"
+  },
+  "requestSentButton": "Request sent",
+  "@requestSentButton": {
+    "description": "Disabled button label when request already sent"
+  },
+  "acceptRequestButton": "Accept request",
+  "@acceptRequestButton": {
+    "description": "Button label to accept a friend request"
+  },
+  "addFriendButton": "Add friend",
+  "@addFriendButton": {
+    "description": "Button label to add a friend on public profile"
+  },
+  "removeFriendDialogTitle": "Remove friend",
+  "@removeFriendDialogTitle": {
+    "description": "Dialog title when removing a friend from public profile"
+  },
+  "removeFriendDialogBody": "Remove @{username} as a friend?",
+  "@removeFriendDialogBody": {
+    "description": "Dialog body when removing a friend from public profile",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "trackerLimitReached": "You've reached your server limit. Upgrade to track more servers.",
+  "@trackerLimitReached": {
+    "description": "Banner shown when tracker slot limit is reached"
+  },
+  "upgradeButton": "Upgrade",
+  "@upgradeButton": {
+    "description": "Button to open paywall/upgrade screen"
+  },
+  "javaLinkTitle": "Link Java Edition",
+  "javaStartingLogin": "Starting Microsoft login…",
+  "javaSignInWithMicrosoft": "Sign in with Microsoft",
+  "javaGoToLink": "Go to the link below and enter the code to connect your Minecraft Java Edition account.",
+  "javaYourCode": "Your code",
+  "javaTapToCopy": "Tap the code to copy it",
+  "javaOpenLink": "Open microsoft.com/link",
+  "javaWaitingForLogin": "Waiting for login…",
+  "javaAccountLinked": "Java Edition linked!",
+  "javaNoJavaTitle": "No Java Edition found",
+  "javaNoJavaBody": "The Microsoft account you signed in with does not own Minecraft Java Edition.",
+  "javaTryDifferentAccount": "Try a different account",
+  "javaCouldNotStart": "Could not start Microsoft login. Please try again.",
+  "javaCodeExpired": "The code expired. Please try again.",
+  "javaSomethingWrong": "Something went wrong. Please try again.",
+  "javaCodeCopied": "Code copied to clipboard",
+  "splashFeatureConnect": "Connect",
+  "splashFeatureFriends": "Friends",
+  "splashFeatureChat": "Chat",
+  "splashFeatureSkins": "Skins",
+  "featureLabelConnector": "Connector",
+  "featureLabelSkins": "Skins",
+  "featureLabelWiki": "Wiki",
+  "featureLabelPartners": "Partners",
+  "featureLabelLookup": "Lookup",
+  "featureLabelTracker": "Server Tracker",
+  "featureSubtitleConnector": "Connect consoles to Minecraft",
+  "featureSubtitleSkins": "Browse & manage Minecraft skins",
+  "featureSubtitleWiki": "Minecraft encyclopedia",
+  "featureSubtitlePartners": "Featured servers",
+  "featureSubtitleLookup": "Look up Java & Bedrock profiles",
+  "featureSubtitleTracker": "Monitor server status & get notified",
+  "userSearchHint": "Username, gamertag or Java name…",
+  "userSearchSub": "Search by username, Xbox gamertag or Java name"
 }

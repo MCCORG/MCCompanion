@@ -239,7 +239,7 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
                               ),
                               const SizedBox(width: 4),
                               Text(
-                                '${s.players} / ${s.maxPlayers} players',
+                                AppLocalizations.of(context)!.playersCount(s.players!, s.maxPlayers!),
                                 style: const TextStyle(
                                   color: AppTheme.textMuted,
                                   fontSize: 12,
@@ -367,16 +367,17 @@ class _EditServerSheetState extends State<_EditServerSheet> {
     final ip   = _ipCtrl.text.trim();
     final port = int.tryParse(_portCtrl.text.trim());
 
+    final l = AppLocalizations.of(context)!;
     if (name.isEmpty || name.length > 50) {
-      setState(() => _error = 'Name must be 1–50 characters');
+      setState(() => _error = l.nameValidationError);
       return;
     }
     if (ip.isEmpty) {
-      setState(() => _error = 'IP address is required');
+      setState(() => _error = l.ipRequiredError);
       return;
     }
     if (port == null || port < 1 || port > 65535) {
-      setState(() => _error = 'Port must be between 1 and 65535');
+      setState(() => _error = l.portRangeError);
       return;
     }
 
@@ -450,21 +451,21 @@ class _EditServerSheetState extends State<_EditServerSheet> {
               ],
             ),
             const SizedBox(height: 16),
-            _label('Name'),
+            _label(AppLocalizations.of(context)!.nameLabel),
             _field(_nameCtrl, hint: AppLocalizations.of(context)!.serverNameHint),
             const SizedBox(height: 12),
-            _label('IP Address'),
-            _field(_ipCtrl, hint: 'play.example.com'),
+            _label(AppLocalizations.of(context)!.ipAddressFieldLabel),
+            _field(_ipCtrl, hint: AppLocalizations.of(context)!.serverAddressExampleHint),
             const SizedBox(height: 12),
-            _label('Port'),
+            _label(AppLocalizations.of(context)!.portFieldLabel),
             _field(_portCtrl, hint: '19132', keyboardType: TextInputType.number),
             const SizedBox(height: 12),
-            _label('Platform'),
+            _label(AppLocalizations.of(context)!.platformFieldLabel),
             Row(
               children: [
                 Expanded(
                   child: _PlatformChip(
-                    label: 'Bedrock',
+                    label: AppLocalizations.of(context)!.bedrockLabel,
                     selected: _platform == 'bedrock',
                     onTap: () => setState(() => _platform = 'bedrock'),
                   ),
@@ -472,7 +473,7 @@ class _EditServerSheetState extends State<_EditServerSheet> {
                 const SizedBox(width: 10),
                 Expanded(
                   child: _PlatformChip(
-                    label: 'Java',
+                    label: AppLocalizations.of(context)!.labelJava,
                     selected: _platform == 'java',
                     onTap: () => setState(() => _platform = 'java'),
                   ),
@@ -496,7 +497,7 @@ class _EditServerSheetState extends State<_EditServerSheet> {
                 ),
                 child: _saving
                     ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.black))
-                    : const Text('Save', style: TextStyle(fontWeight: FontWeight.w700)),
+                    : Text(AppLocalizations.of(context)!.save, style: const TextStyle(fontWeight: FontWeight.w700)),
               ),
             ),
           ],

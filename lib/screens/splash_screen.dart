@@ -368,10 +368,10 @@ class _SplashScreenState extends State<SplashScreen>
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: _featureItems([
-                      'Connect',
-                      'Friends',
-                      'Chat',
-                      'Skins',
+                      AppLocalizations.of(context)!.splashFeatureConnect,
+                      AppLocalizations.of(context)!.splashFeatureFriends,
+                      AppLocalizations.of(context)!.splashFeatureChat,
+                      AppLocalizations.of(context)!.splashFeatureSkins,
                     ]),
                   ),
                 ),

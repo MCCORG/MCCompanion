@@ -251,7 +251,7 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
               ),
               Expanded(
                 child: Text(
-                  isEditing ? 'Edit Server' : loc.addServer,
+                  isEditing ? loc.editServer : loc.addServer,
                   style: const TextStyle(
                     color: AppTheme.textPrimary,
                     fontSize: 17,
@@ -280,7 +280,7 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
                       _Field(
                         controller: _nameCtrl,
                         label: loc.serverNameLabel,
-                        hint: 'My Awesome Server',
+                        hint: loc.serverNameExampleHint,
                         icon: Icons.label_rounded,
                         autofocus: true,
                       ),
@@ -288,7 +288,7 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
                       _Field(
                         controller: _addressCtrl,
                         label: loc.addressLabel,
-                        hint: 'play.example.com',
+                        hint: loc.serverAddressExampleHint,
                         icon: Icons.dns_rounded,
                       ),
                       const SizedBox(height: 12),
@@ -317,7 +317,7 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
                       _Field(
                         controller: _descCtrl,
                         label: loc.descriptionLabel,
-                        hint: 'Survival server with friends',
+                        hint: loc.serverDescriptionExampleHint,
                         icon: Icons.notes_rounded,
                         maxLines: 3,
                       ),
@@ -716,15 +716,15 @@ class _EditionToggle extends StatelessWidget {
         children: [
           const Icon(Icons.sports_esports_rounded, color: AppTheme.textMuted, size: 18),
           const SizedBox(width: 10),
-          const Expanded(
+          Expanded(
             child: Text(
-              'Edition',
-              style: TextStyle(color: AppTheme.textSecondary, fontSize: 13),
+              AppLocalizations.of(context)!.editionLabel,
+              style: const TextStyle(color: AppTheme.textSecondary, fontSize: 13),
             ),
           ),
-          _EditionChip(label: 'Bedrock', selected: !isJava, onTap: () => onChanged(false)),
+          _EditionChip(label: AppLocalizations.of(context)!.bedrockLabel, selected: !isJava, onTap: () => onChanged(false)),
           const SizedBox(width: 6),
-          _EditionChip(label: 'Java', selected: isJava, onTap: () => onChanged(true)),
+          _EditionChip(label: AppLocalizations.of(context)!.labelJava, selected: isJava, onTap: () => onChanged(true)),
         ],
       ),
     );

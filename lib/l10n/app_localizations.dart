@@ -2288,6 +2288,750 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{name} added'**
   String serverAdded(Object name);
+
+  /// No description provided for @paywallRestore.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore'**
+  String get paywallRestore;
+
+  /// No description provided for @paywallMonthly.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly'**
+  String get paywallMonthly;
+
+  /// No description provided for @paywallYearly.
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly'**
+  String get paywallYearly;
+
+  /// No description provided for @paywallSavePercent.
+  ///
+  /// In en, this message translates to:
+  /// **'Save ~17%'**
+  String get paywallSavePercent;
+
+  /// No description provided for @paywallSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Track more servers and get notified\nwhen they go online or offline.'**
+  String get paywallSubtitle;
+
+  /// No description provided for @paywallSlotLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'{slots} server slots'**
+  String paywallSlotLabel(Object slots);
+
+  /// No description provided for @paywallPopular.
+  ///
+  /// In en, this message translates to:
+  /// **'Popular'**
+  String get paywallPopular;
+
+  /// No description provided for @paywallContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get paywallContinue;
+
+  /// No description provided for @paywallNoPkgs.
+  ///
+  /// In en, this message translates to:
+  /// **'No packages available.'**
+  String get paywallNoPkgs;
+
+  /// No description provided for @paywallManaged.
+  ///
+  /// In en, this message translates to:
+  /// **'Managed by Apple/Google. Cancel anytime.'**
+  String get paywallManaged;
+
+  /// No description provided for @paywallPurchaseSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase successful!'**
+  String get paywallPurchaseSuccess;
+
+  /// No description provided for @paywallPurchaseFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase failed. Please try again.'**
+  String get paywallPurchaseFailed;
+
+  /// No description provided for @paywallPurchasesRestored.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchases restored!'**
+  String get paywallPurchasesRestored;
+
+  /// No description provided for @paywallNoActivePurchases.
+  ///
+  /// In en, this message translates to:
+  /// **'No active purchases found.'**
+  String get paywallNoActivePurchases;
+
+  /// No description provided for @paywallRestoreFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore failed. Please try again.'**
+  String get paywallRestoreFailed;
+
+  /// Label for the Relay nav item and sheet title
+  ///
+  /// In en, this message translates to:
+  /// **'Relay'**
+  String get relay;
+
+  /// Section label above mode chips in connection panel
+  ///
+  /// In en, this message translates to:
+  /// **'SELECT MODE'**
+  String get selectModeSection;
+
+  /// Section label above servers panel in connection panel
+  ///
+  /// In en, this message translates to:
+  /// **'SERVERS'**
+  String get serversSection;
+
+  /// Placeholder when no server is entered in connection panel
+  ///
+  /// In en, this message translates to:
+  /// **'No server selected'**
+  String get noServerSelected;
+
+  /// Title of the Bedrock account picker bottom sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Select Bedrock account'**
+  String get selectBedrockAccount;
+
+  /// Player count label on tracked server card
+  ///
+  /// In en, this message translates to:
+  /// **'{players} / {max} players'**
+  String playersCount(Object players, Object max);
+
+  /// Title of the Info & Legal sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Info & Legal'**
+  String get infoAndLegal;
+
+  /// Section header in Info sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Legal'**
+  String get legalSection;
+
+  /// Privacy Policy tile title
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacyPolicy;
+
+  /// Privacy Policy tile subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'How we collect and protect your data'**
+  String get privacyPolicySubtitle;
+
+  /// Terms of Service tile title
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Service'**
+  String get termsOfService;
+
+  /// Terms of Service tile subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Rules and conditions of use'**
+  String get termsOfServiceSubtitle;
+
+  /// Section header for data sources in Info sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Data Sources & Credits'**
+  String get dataSourcesSection;
+
+  /// Subtitle for Minecraft Wiki credit tile
+  ///
+  /// In en, this message translates to:
+  /// **'Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.'**
+  String get creditMinecraftWikiSubtitle;
+
+  /// Title for Mojang credit tile
+  ///
+  /// In en, this message translates to:
+  /// **'Mojang / Microsoft'**
+  String get creditMojangTitle;
+
+  /// Subtitle for Mojang credit tile
+  ///
+  /// In en, this message translates to:
+  /// **'Java player skins, UUIDs, and profile data via the official Mojang API.'**
+  String get creditMojangSubtitle;
+
+  /// Title for GeyserMC credit tile
+  ///
+  /// In en, this message translates to:
+  /// **'GeyserMC'**
+  String get creditGeyserTitle;
+
+  /// Subtitle for GeyserMC credit tile
+  ///
+  /// In en, this message translates to:
+  /// **'Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.'**
+  String get creditGeyserSubtitle;
+
+  /// Title for Xbox credit tile
+  ///
+  /// In en, this message translates to:
+  /// **'Xbox / Microsoft'**
+  String get creditXboxTitle;
+
+  /// Subtitle for Xbox credit tile
+  ///
+  /// In en, this message translates to:
+  /// **'Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.'**
+  String get creditXboxSubtitle;
+
+  /// Section header for About MCCompanion in Info sheet
+  ///
+  /// In en, this message translates to:
+  /// **'About MCCompanion'**
+  String get aboutMCCompanionSection;
+
+  /// Disclaimer text in About MCCompanion section
+  ///
+  /// In en, this message translates to:
+  /// **'MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.'**
+  String get aboutMCCompanionDisclaimer;
+
+  /// Minecraft trademark notice
+  ///
+  /// In en, this message translates to:
+  /// **'\"Minecraft\" is a trademark of Microsoft Corporation.'**
+  String get minecraftTrademark;
+
+  /// Section label above relay selector in More sheet
+  ///
+  /// In en, this message translates to:
+  /// **'MCCompanion Server'**
+  String get nldServerLabelShort;
+
+  /// Title for edit server form in manage servers
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Server'**
+  String get editServer;
+
+  /// Example hint text for server name field
+  ///
+  /// In en, this message translates to:
+  /// **'My Awesome Server'**
+  String get serverNameExampleHint;
+
+  /// Example hint text for server address field
+  ///
+  /// In en, this message translates to:
+  /// **'play.example.com'**
+  String get serverAddressExampleHint;
+
+  /// Example hint text for server description field
+  ///
+  /// In en, this message translates to:
+  /// **'Survival server with friends'**
+  String get serverDescriptionExampleHint;
+
+  /// Label for the edition toggle in manage servers form
+  ///
+  /// In en, this message translates to:
+  /// **'Edition'**
+  String get editionLabel;
+
+  /// Generic Name field label
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get nameLabel;
+
+  /// IP Address field label in edit server form
+  ///
+  /// In en, this message translates to:
+  /// **'IP Address'**
+  String get ipAddressFieldLabel;
+
+  /// Port field label in edit server form
+  ///
+  /// In en, this message translates to:
+  /// **'Port'**
+  String get portFieldLabel;
+
+  /// Platform field label in edit server form
+  ///
+  /// In en, this message translates to:
+  /// **'Platform'**
+  String get platformFieldLabel;
+
+  /// Validation error when server name is invalid
+  ///
+  /// In en, this message translates to:
+  /// **'Name must be 1–50 characters'**
+  String get nameValidationError;
+
+  /// Validation error when IP address is empty
+  ///
+  /// In en, this message translates to:
+  /// **'IP address is required'**
+  String get ipRequiredError;
+
+  /// Validation error when port is out of range
+  ///
+  /// In en, this message translates to:
+  /// **'Port must be between 1 and 65535'**
+  String get portRangeError;
+
+  /// Title for the partner servers screen
+  ///
+  /// In en, this message translates to:
+  /// **'Partner Servers'**
+  String get partnerServersTitle;
+
+  /// Empty state text on partner servers screen
+  ///
+  /// In en, this message translates to:
+  /// **'No partner servers available yet.'**
+  String get noPartnerServers;
+
+  /// Secondary empty state text on partner servers screen
+  ///
+  /// In en, this message translates to:
+  /// **'Check back later.'**
+  String get checkBackLater;
+
+  /// AppBar title for Xbox link screen
+  ///
+  /// In en, this message translates to:
+  /// **'Link Xbox Account'**
+  String get xboxLinkTitle;
+
+  /// Loading text when starting Xbox login
+  ///
+  /// In en, this message translates to:
+  /// **'Starting Xbox login…'**
+  String get xboxStartingLogin;
+
+  /// Heading on Xbox link waiting screen
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in with Microsoft'**
+  String get xboxSignInWithMicrosoft;
+
+  /// Instruction on Xbox link waiting screen
+  ///
+  /// In en, this message translates to:
+  /// **'Go to the link below and enter the code to connect your Xbox account.'**
+  String get xboxGoToLink;
+
+  /// Label above the Microsoft device code
+  ///
+  /// In en, this message translates to:
+  /// **'Your code'**
+  String get xboxYourCode;
+
+  /// Hint below the code on Xbox link screen
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the code to copy it'**
+  String get xboxTapToCopy;
+
+  /// Button label to open Microsoft device auth link
+  ///
+  /// In en, this message translates to:
+  /// **'Open microsoft.com/link'**
+  String get xboxOpenLink;
+
+  /// Status text while polling for Xbox login
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for login…'**
+  String get xboxWaitingForLogin;
+
+  /// Success text when Xbox account is linked
+  ///
+  /// In en, this message translates to:
+  /// **'Xbox account linked!'**
+  String get xboxAccountLinked;
+
+  /// Snackbar shown after code is copied
+  ///
+  /// In en, this message translates to:
+  /// **'Code copied to clipboard'**
+  String get xboxCodeCopied;
+
+  /// Error when Xbox login cannot be started
+  ///
+  /// In en, this message translates to:
+  /// **'Could not start Xbox login. Please try again.'**
+  String get xboxCouldNotStart;
+
+  /// Error when Xbox device code expires
+  ///
+  /// In en, this message translates to:
+  /// **'The code expired. Please try again.'**
+  String get xboxCodeExpired;
+
+  /// Generic error on Xbox link screen
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again.'**
+  String get xboxSomethingWrong;
+
+  /// Generic try again button label
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get tryAgain;
+
+  /// AppBar title fallback for public profile when username not loaded
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get publicProfileTitle;
+
+  /// Text shown when a user profile cannot be found
+  ///
+  /// In en, this message translates to:
+  /// **'User not found'**
+  String get userNotFound;
+
+  /// Section label in public profile for profile info card
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profileSectionLabel;
+
+  /// Row label for display name in public profile
+  ///
+  /// In en, this message translates to:
+  /// **'Display name'**
+  String get displayNameRowLabel;
+
+  /// Row label for username in public profile
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get usernameRowLabel;
+
+  /// Row label for last seen date in public profile
+  ///
+  /// In en, this message translates to:
+  /// **'Last seen'**
+  String get lastSeenLabel;
+
+  /// Section label for bio/about in public profile
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get aboutSectionLabel;
+
+  /// Section label for Xbox/Bedrock account in public profile
+  ///
+  /// In en, this message translates to:
+  /// **'Xbox / Bedrock'**
+  String get xboxBedrockLabel;
+
+  /// Toast shown after friend request is sent from public profile
+  ///
+  /// In en, this message translates to:
+  /// **'Friend request sent'**
+  String get friendRequestSent;
+
+  /// Error when already friends with user (public profile)
+  ///
+  /// In en, this message translates to:
+  /// **'You are already friends.'**
+  String get alreadyFriendsMsg;
+
+  /// Error when friend request is already pending (public profile)
+  ///
+  /// In en, this message translates to:
+  /// **'There is already a pending request.'**
+  String get requestAlreadyPendingMsg;
+
+  /// Error when user not found sending friend request from public profile
+  ///
+  /// In en, this message translates to:
+  /// **'User not found.'**
+  String get userNotFoundMsg2;
+
+  /// Error when friend request is blocked (public profile)
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot send a request to this user.'**
+  String get cannotSendRequestMsg;
+
+  /// Toast when accepted a friend request from public profile
+  ///
+  /// In en, this message translates to:
+  /// **'Now friends with @{username}'**
+  String nowFriendsWith(Object username);
+
+  /// Button label to remove a friend on public profile
+  ///
+  /// In en, this message translates to:
+  /// **'Remove friend'**
+  String get removeFriendButton;
+
+  /// Disabled button label when request already sent
+  ///
+  /// In en, this message translates to:
+  /// **'Request sent'**
+  String get requestSentButton;
+
+  /// Button label to accept a friend request
+  ///
+  /// In en, this message translates to:
+  /// **'Accept request'**
+  String get acceptRequestButton;
+
+  /// Button label to add a friend on public profile
+  ///
+  /// In en, this message translates to:
+  /// **'Add friend'**
+  String get addFriendButton;
+
+  /// Dialog title when removing a friend from public profile
+  ///
+  /// In en, this message translates to:
+  /// **'Remove friend'**
+  String get removeFriendDialogTitle;
+
+  /// Dialog body when removing a friend from public profile
+  ///
+  /// In en, this message translates to:
+  /// **'Remove @{username} as a friend?'**
+  String removeFriendDialogBody(Object username);
+
+  /// Banner shown when tracker slot limit is reached
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve reached your server limit. Upgrade to track more servers.'**
+  String get trackerLimitReached;
+
+  /// Button to open paywall/upgrade screen
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade'**
+  String get upgradeButton;
+
+  /// No description provided for @javaLinkTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Link Java Edition'**
+  String get javaLinkTitle;
+
+  /// No description provided for @javaStartingLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Starting Microsoft login…'**
+  String get javaStartingLogin;
+
+  /// No description provided for @javaSignInWithMicrosoft.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in with Microsoft'**
+  String get javaSignInWithMicrosoft;
+
+  /// No description provided for @javaGoToLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to the link below and enter the code to connect your Minecraft Java Edition account.'**
+  String get javaGoToLink;
+
+  /// No description provided for @javaYourCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Your code'**
+  String get javaYourCode;
+
+  /// No description provided for @javaTapToCopy.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the code to copy it'**
+  String get javaTapToCopy;
+
+  /// No description provided for @javaOpenLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Open microsoft.com/link'**
+  String get javaOpenLink;
+
+  /// No description provided for @javaWaitingForLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for login…'**
+  String get javaWaitingForLogin;
+
+  /// No description provided for @javaAccountLinked.
+  ///
+  /// In en, this message translates to:
+  /// **'Java Edition linked!'**
+  String get javaAccountLinked;
+
+  /// No description provided for @javaNoJavaTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No Java Edition found'**
+  String get javaNoJavaTitle;
+
+  /// No description provided for @javaNoJavaBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The Microsoft account you signed in with does not own Minecraft Java Edition.'**
+  String get javaNoJavaBody;
+
+  /// No description provided for @javaTryDifferentAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Try a different account'**
+  String get javaTryDifferentAccount;
+
+  /// No description provided for @javaCouldNotStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not start Microsoft login. Please try again.'**
+  String get javaCouldNotStart;
+
+  /// No description provided for @javaCodeExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'The code expired. Please try again.'**
+  String get javaCodeExpired;
+
+  /// No description provided for @javaSomethingWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again.'**
+  String get javaSomethingWrong;
+
+  /// No description provided for @javaCodeCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Code copied to clipboard'**
+  String get javaCodeCopied;
+
+  /// No description provided for @splashFeatureConnect.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect'**
+  String get splashFeatureConnect;
+
+  /// No description provided for @splashFeatureFriends.
+  ///
+  /// In en, this message translates to:
+  /// **'Friends'**
+  String get splashFeatureFriends;
+
+  /// No description provided for @splashFeatureChat.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat'**
+  String get splashFeatureChat;
+
+  /// No description provided for @splashFeatureSkins.
+  ///
+  /// In en, this message translates to:
+  /// **'Skins'**
+  String get splashFeatureSkins;
+
+  /// No description provided for @featureLabelConnector.
+  ///
+  /// In en, this message translates to:
+  /// **'Connector'**
+  String get featureLabelConnector;
+
+  /// No description provided for @featureLabelSkins.
+  ///
+  /// In en, this message translates to:
+  /// **'Skins'**
+  String get featureLabelSkins;
+
+  /// No description provided for @featureLabelWiki.
+  ///
+  /// In en, this message translates to:
+  /// **'Wiki'**
+  String get featureLabelWiki;
+
+  /// No description provided for @featureLabelPartners.
+  ///
+  /// In en, this message translates to:
+  /// **'Partners'**
+  String get featureLabelPartners;
+
+  /// No description provided for @featureLabelLookup.
+  ///
+  /// In en, this message translates to:
+  /// **'Lookup'**
+  String get featureLabelLookup;
+
+  /// No description provided for @featureLabelTracker.
+  ///
+  /// In en, this message translates to:
+  /// **'Server Tracker'**
+  String get featureLabelTracker;
+
+  /// No description provided for @featureSubtitleConnector.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect consoles to Minecraft'**
+  String get featureSubtitleConnector;
+
+  /// No description provided for @featureSubtitleSkins.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse & manage Minecraft skins'**
+  String get featureSubtitleSkins;
+
+  /// No description provided for @featureSubtitleWiki.
+  ///
+  /// In en, this message translates to:
+  /// **'Minecraft encyclopedia'**
+  String get featureSubtitleWiki;
+
+  /// No description provided for @featureSubtitlePartners.
+  ///
+  /// In en, this message translates to:
+  /// **'Featured servers'**
+  String get featureSubtitlePartners;
+
+  /// No description provided for @featureSubtitleLookup.
+  ///
+  /// In en, this message translates to:
+  /// **'Look up Java & Bedrock profiles'**
+  String get featureSubtitleLookup;
+
+  /// No description provided for @featureSubtitleTracker.
+  ///
+  /// In en, this message translates to:
+  /// **'Monitor server status & get notified'**
+  String get featureSubtitleTracker;
+
+  /// No description provided for @userSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Username, gamertag or Java name…'**
+  String get userSearchHint;
+
+  /// No description provided for @userSearchSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by username, Xbox gamertag or Java name'**
+  String get userSearchSub;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

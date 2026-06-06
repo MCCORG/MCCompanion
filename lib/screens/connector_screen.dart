@@ -317,21 +317,21 @@ class HomeScreenState extends State<HomeScreen> {
                   items: [
                     if (widget.onOpenSupport != null)
                       HeaderNavItem(
-                        label: 'Support',
+                        label: AppLocalizations.of(context)!.support,
                         onTap: widget.onOpenSupport,
                       ),
                     if (widget.onOpenHowTo != null)
                       HeaderNavItem(
-                        label: 'How to use',
+                        label: AppLocalizations.of(context)!.howToUseMenu,
                         onTap: widget.onOpenHowTo,
                       ),
                     if (widget.onOpenConsole != null)
                       HeaderNavItem(
-                        label: 'Console',
+                        label: AppLocalizations.of(context)!.console,
                         onTap: widget.onOpenConsole,
                       ),
                     if (widget.onOpenMore != null)
-                      HeaderNavItem(label: 'Relay', onTap: widget.onOpenMore),
+                      HeaderNavItem(label: AppLocalizations.of(context)!.relay, onTap: widget.onOpenMore),
                   ],
                 ),
               ),

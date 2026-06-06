@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../services/user_service.dart';
 
@@ -50,7 +51,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
     if (result.error != null || result.userCode == null) {
       setState(() {
         _step = _Step.error;
-        _errorMsg = 'Could not start Microsoft login. Please try again.';
+        _errorMsg = AppLocalizations.of(context)!.javaCouldNotStart;
       });
       return;
     }
@@ -84,13 +85,13 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
         _pollTimer?.cancel();
         setState(() {
           _step = _Step.error;
-          _errorMsg = 'The code expired. Please try again.';
+          _errorMsg = AppLocalizations.of(context)!.javaCodeExpired;
         });
       case 'error':
         _pollTimer?.cancel();
         setState(() {
           _step = _Step.error;
-          _errorMsg = 'Something went wrong. Please try again.';
+          _errorMsg = AppLocalizations.of(context)!.javaSomethingWrong;
         });
       default:
         break;
@@ -109,22 +110,23 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
     if (_userCode == null) return;
     Clipboard.setData(ClipboardData(text: _userCode!));
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Code copied to clipboard'),
-        duration: Duration(seconds: 2),
+      SnackBar(
+        content: Text(AppLocalizations.of(context)!.javaCodeCopied),
+        duration: const Duration(seconds: 2),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: AppTheme.background,
       appBar: AppBar(
         backgroundColor: AppTheme.surface,
-        title: const Text(
-          'Link Java Edition',
-          style: TextStyle(
+        title: Text(
+          l10n.javaLinkTitle,
+          style: const TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 16,
             fontWeight: FontWeight.w700,
@@ -158,13 +160,14 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
   }
 
   Widget _buildLoading() {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2),
         SizedBox(height: 20),
         Text(
-          'Starting Microsoft login…',
+          l10n.javaStartingLogin,
           style: TextStyle(color: AppTheme.textSecondary, fontSize: 13),
         ),
       ],
@@ -172,6 +175,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
   }
 
   Widget _buildWaiting() {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -192,27 +196,27 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
           ),
         ),
         const SizedBox(height: 20),
-        const Text(
-          'Sign in with Microsoft',
-          style: TextStyle(
+        Text(
+          l10n.javaSignInWithMicrosoft,
+          style: const TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 22,
             fontWeight: FontWeight.w700,
           ),
         ),
         const SizedBox(height: 8),
-        const Text(
-          'Go to the link below and enter the code to connect your Minecraft Java Edition account.',
-          style: TextStyle(
+        Text(
+          l10n.javaGoToLink,
+          style: const TextStyle(
             color: AppTheme.textSecondary,
             fontSize: 13,
             height: 1.5,
           ),
         ),
         const SizedBox(height: 32),
-        const Text(
-          'Your code',
-          style: TextStyle(
+        Text(
+          l10n.javaYourCode,
+          style: const TextStyle(
             color: AppTheme.textMuted,
             fontSize: 11,
             fontWeight: FontWeight.w600,
@@ -252,18 +256,18 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
           ),
         ),
         const SizedBox(height: 10),
-        const Text(
-          'Tap the code to copy it',
+        Text(
+          l10n.javaTapToCopy,
           textAlign: TextAlign.center,
-          style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
+          style: const TextStyle(color: AppTheme.textMuted, fontSize: 11),
         ),
         const SizedBox(height: 28),
         ElevatedButton.icon(
           onPressed: _openLink,
           icon: const Icon(Icons.open_in_browser_rounded, size: 18),
-          label: const Text(
-            'Open microsoft.com/link',
-            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
+          label: Text(
+            l10n.javaOpenLink,
+            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
           ),
           style: ElevatedButton.styleFrom(
             backgroundColor: _javaBlue,
@@ -284,9 +288,9 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
               ),
             ),
             const SizedBox(width: 10),
-            const Text(
-              'Waiting for login…',
-              style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
+            Text(
+              l10n.javaWaitingForLogin,
+              style: const TextStyle(color: AppTheme.textMuted, fontSize: 12),
             ),
           ],
         ),
@@ -296,6 +300,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
   }
 
   Widget _buildDone() {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -305,9 +310,9 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
           size: 56,
         ),
         const SizedBox(height: 16),
-        const Text(
-          'Java Edition linked!',
-          style: TextStyle(
+        Text(
+          l10n.javaAccountLinked,
+          style: const TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 20,
             fontWeight: FontWeight.w700,
@@ -329,6 +334,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
   }
 
   Widget _buildNoJava() {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -339,53 +345,18 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
           size: 48,
         ),
         const SizedBox(height: 16),
-        const Text(
-          'No Java Edition found',
+        Text(
+          l10n.javaNoJavaTitle,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 18,
             fontWeight: FontWeight.w700,
           ),
         ),
         const SizedBox(height: 8),
-        const Text(
-          'The Microsoft account you signed in with does not own Minecraft Java Edition.',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: AppTheme.textSecondary,
-            fontSize: 13,
-            height: 1.5,
-          ),
-        ),
-        const SizedBox(height: 24),
-        ElevatedButton(
-          onPressed: _start,
-          style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(vertical: 14),
-          ),
-          child: const Text(
-            'Try a different account',
-            style: TextStyle(fontWeight: FontWeight.w700),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildError() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        const Icon(
-          Icons.error_outline_rounded,
-          color: AppTheme.error,
-          size: 48,
-        ),
-        const SizedBox(height: 16),
         Text(
-          _errorMsg ?? 'Something went wrong.',
+          l10n.javaNoJavaBody,
           textAlign: TextAlign.center,
           style: const TextStyle(
             color: AppTheme.textSecondary,
@@ -399,9 +370,45 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(vertical: 14),
           ),
-          child: const Text(
-            'Try again',
-            style: TextStyle(fontWeight: FontWeight.w700),
+          child: Text(
+            l10n.javaTryDifferentAccount,
+            style: const TextStyle(fontWeight: FontWeight.w700),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildError() {
+    final l10n = AppLocalizations.of(context)!;
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const Icon(
+          Icons.error_outline_rounded,
+          color: AppTheme.error,
+          size: 48,
+        ),
+        const SizedBox(height: 16),
+        Text(
+          _errorMsg ?? l10n.javaSomethingWrong,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            color: AppTheme.textSecondary,
+            fontSize: 13,
+            height: 1.5,
+          ),
+        ),
+        const SizedBox(height: 24),
+        ElevatedButton(
+          onPressed: _start,
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(vertical: 14),
+          ),
+          child: Text(
+            l10n.tryAgain,
+            style: const TextStyle(fontWeight: FontWeight.w700),
           ),
         ),
       ],

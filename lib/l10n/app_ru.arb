@@ -414,5 +414,1099 @@
   "info": "Инфо",
   "navProfile": "Профиль",
   "serverRemoved": "{name} удалён",
-  "serverAdded": "{name} добавлен"
+  "serverAdded": "{name} добавлен",
+  "aboutMCCompanionDisclaimer": "MCCompanion — независимое приложение, не связанное с Mojang или Microsoft.",
+  "@aboutMCCompanionDisclaimer": {
+    "description": "Disclaimer text in About MCCompanion section"
+  },
+  "aboutMCCompanionSection": "О MCCompanion",
+  "@aboutMCCompanionSection": {
+    "description": "Section header for About MCCompanion in Info sheet"
+  },
+  "aboutMe": "Обо мне",
+  "@aboutMe": {
+    "description": "Label for bio/about-me row in profile display"
+  },
+  "aboutSectionLabel": "О приложении",
+  "@aboutSectionLabel": {
+    "description": "Section label for bio/about in public profile"
+  },
+  "acceptRequestButton": "Принять запрос",
+  "@acceptRequestButton": {
+    "description": "Button label to accept a friend request"
+  },
+  "addFriend": "Добавить друга",
+  "@addFriend": {
+    "description": "Title/button for adding a friend"
+  },
+  "addFriendButton": "Добавить в друзья",
+  "@addFriendButton": {
+    "description": "Button label to add a friend on public profile"
+  },
+  "alreadyFriendsMsg": "Вы уже друзья.",
+  "@alreadyFriendsMsg": {
+    "description": "Error when already friends with user (public profile)"
+  },
+  "alreadyFriendsWith": "Вы уже друзья с {name}",
+  "@alreadyFriendsWith": {
+    "description": "Error when already friends with user",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "alreadyHaveAccount": "Уже есть аккаунт? Войти",
+  "@alreadyHaveAccount": {
+    "description": "Toggle to switch back to sign-in mode"
+  },
+  "appearOfflineLabel": "Появляться не в сети",
+  "@appearOfflineLabel": {
+    "description": "Label for the appear-offline toggle"
+  },
+  "appearOfflineOff": "Вы отображаетесь онлайн",
+  "@appearOfflineOff": {
+    "description": "Subtitle when appear-offline is disabled"
+  },
+  "appearOfflineOn": "Вы отображаетесь офлайн",
+  "@appearOfflineOn": {
+    "description": "Subtitle when appear-offline is enabled"
+  },
+  "appleSignInFailed": "Ошибка входа через Apple. Попробуйте снова.",
+  "@appleSignInFailed": {
+    "description": "Error when Apple sign-in fails"
+  },
+  "avatarUrlLabel": "URL аватара",
+  "@avatarUrlLabel": {
+    "description": "Label for avatar URL field"
+  },
+  "bioHint": "Расскажите о себе…",
+  "@bioHint": {
+    "description": "Hint text for bio field"
+  },
+  "bioLabel": "Биография",
+  "@bioLabel": {
+    "description": "Label for bio field"
+  },
+  "cannotSendRequest": "Нельзя отправить запрос пользователю {name}",
+  "@cannotSendRequest": {
+    "description": "Error when user is blocked or request is not allowed",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "cannotSendRequestMsg": "Нельзя отправить запрос.",
+  "@cannotSendRequestMsg": {
+    "description": "Error when friend request is blocked (public profile)"
+  },
+  "checkBackLater": "Проверьте позже.",
+  "@checkBackLater": {
+    "description": "Secondary empty state text on partner servers screen"
+  },
+  "chooseUsernameSubtitle": "Выберите имя пользователя для подключения.",
+  "@chooseUsernameSubtitle": {
+    "description": "Subtitle shown when profile is not yet set up"
+  },
+  "continueWithGoogle": "Продолжить с Google",
+  "@continueWithGoogle": {
+    "description": "Button label for Google sign-in"
+  },
+  "couldNotDeleteAccount": "Не удалось удалить аккаунт.",
+  "@couldNotDeleteAccount": {
+    "description": "Error when account deletion fails"
+  },
+  "couldNotSendResetEmail": "Не удалось отправить письмо.",
+  "@couldNotSendResetEmail": {
+    "description": "Generic error when sending reset email fails"
+  },
+  "couldNotUpdateVisibility": "Не удалось обновить настройки видимости",
+  "@couldNotUpdateVisibility": {
+    "description": "Error when toggling appear-offline fails"
+  },
+  "createAccount": "Создать аккаунт",
+  "@createAccount": {
+    "description": "Button/title for creating a new account"
+  },
+  "createProfile": "Создать профиль",
+  "@createProfile": {
+    "description": "Button to navigate to profile creation/registration"
+  },
+  "creditGeyserSubtitle": "Рендеринг скинов Bedrock через GeyserMC.",
+  "@creditGeyserSubtitle": {
+    "description": "Subtitle for GeyserMC credit tile"
+  },
+  "creditGeyserTitle": "GeyserMC",
+  "@creditGeyserTitle": {
+    "description": "Title for GeyserMC credit tile"
+  },
+  "creditMinecraftWikiSubtitle": "Источник данных для вики. Контент под лицензией Creative Commons.",
+  "@creditMinecraftWikiSubtitle": {
+    "description": "Subtitle for Minecraft Wiki credit tile"
+  },
+  "creditMojangSubtitle": "Скины и профили Java через API Mojang.",
+  "@creditMojangSubtitle": {
+    "description": "Subtitle for Mojang credit tile"
+  },
+  "creditMojangTitle": "Mojang / Microsoft",
+  "@creditMojangTitle": {
+    "description": "Title for Mojang credit tile"
+  },
+  "creditXboxSubtitle": "Привязка аккаунтов Bedrock через Xbox Live.",
+  "@creditXboxSubtitle": {
+    "description": "Subtitle for Xbox credit tile"
+  },
+  "creditXboxTitle": "Xbox / Microsoft",
+  "@creditXboxTitle": {
+    "description": "Title for Xbox credit tile"
+  },
+  "dataSourcesSection": "Источники данных и благодарности",
+  "@dataSourcesSection": {
+    "description": "Section header for data sources in Info sheet"
+  },
+  "deleteAccountBody": "Это навсегда удалит ваш аккаунт и все данные.",
+  "@deleteAccountBody": {
+    "description": "Body text for delete account confirmation dialog"
+  },
+  "deleteAccountTitle": "Удалить аккаунт",
+  "@deleteAccountTitle": {
+    "description": "Title for delete account dialog/button"
+  },
+  "deletePermanently": "Удалить навсегда",
+  "@deletePermanently": {
+    "description": "Confirm button for permanent deletion"
+  },
+  "displayNameLabel": "Отображаемое имя",
+  "@displayNameLabel": {
+    "description": "Label for display name field"
+  },
+  "displayNameRowLabel": "Отображаемое имя",
+  "@displayNameRowLabel": {
+    "description": "Row label for display name in public profile"
+  },
+  "edit": "Редактировать",
+  "@edit": {
+    "description": "Edit button label"
+  },
+  "editServer": "Редактировать сервер",
+  "@editServer": {
+    "description": "Title for edit server form in manage servers"
+  },
+  "editionLabel": "Издание",
+  "@editionLabel": {
+    "description": "Label for the edition toggle in manage servers form"
+  },
+  "emailAddressHint": "Адрес электронной почты",
+  "@emailAddressHint": {
+    "description": "Hint text for email address field"
+  },
+  "emailAlreadyInUse": "Этот email уже используется",
+  "@emailAlreadyInUse": {
+    "description": "Error when email is already registered"
+  },
+  "emailDifferentMethod": "Этот email связан с другим методом входа",
+  "@emailDifferentMethod": {
+    "description": "Error when email already uses a different auth method"
+  },
+  "enterEmailAndPassword": "Введите email и пароль",
+  "@enterEmailAndPassword": {
+    "description": "Validation when email or password is empty on sign-in"
+  },
+  "findUser": "Найти пользователя",
+  "@findUser": {
+    "description": "Tooltip for the search/find user button"
+  },
+  "forgotPassword": "Забыли пароль?",
+  "@forgotPassword": {
+    "description": "Link to trigger password reset flow"
+  },
+  "friendRemoved": "{name} удалён из друзей",
+  "@friendRemoved": {
+    "description": "Toast shown after removing a friend",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "friendRequestAccepted": "Вы теперь друзья с {name}",
+  "@friendRequestAccepted": {
+    "description": "Toast when a friend request is accepted",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "friendRequestSent": "Запрос в друзья отправлен",
+  "@friendRequestSent": {
+    "description": "Toast shown after friend request is sent from public profile"
+  },
+  "friendRequestSentTo": "Запрос в друзья отправлен {name}",
+  "@friendRequestSentTo": {
+    "description": "Toast when a friend request is sent",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "googleSignInFailed": "Ошибка входа через Google.",
+  "@googleSignInFailed": {
+    "description": "Error when Google sign-in fails"
+  },
+  "incorrectEmailOrPassword": "Неверный email или пароль",
+  "@incorrectEmailOrPassword": {
+    "description": "Error for wrong credentials"
+  },
+  "infoAndLegal": "Информация и правовые аспекты",
+  "@infoAndLegal": {
+    "description": "Title of the Info & Legal sheet"
+  },
+  "invalidEmailError": "Адрес электронной почты недействителен",
+  "@invalidEmailError": {
+    "description": "Error for invalid email format"
+  },
+  "ipAddressFieldLabel": "IP-адрес",
+  "@ipAddressFieldLabel": {
+    "description": "IP Address field label in edit server form"
+  },
+  "ipRequiredError": "IP-адрес обязателен",
+  "@ipRequiredError": {
+    "description": "Validation error when IP address is empty"
+  },
+  "lastSeenLabel": "Последний раз в сети",
+  "@lastSeenLabel": {
+    "description": "Row label for last seen date in public profile"
+  },
+  "legalSection": "Правовые аспекты",
+  "@legalSection": {
+    "description": "Section header in Info sheet"
+  },
+  "linkAccountsHint": "Привяжите аккаунты Minecraft.",
+  "@linkAccountsHint": {
+    "description": "Hint when no accounts are linked"
+  },
+  "linkJava": "Привязать Java",
+  "@linkJava": {
+    "description": "Button to link a Java account"
+  },
+  "linkXbox": "Привязать Xbox",
+  "@linkXbox": {
+    "description": "Button to link an Xbox/Bedrock account"
+  },
+  "linkedAccountsTitle": "Связанные аккаунты",
+  "@linkedAccountsTitle": {
+    "description": "Section title for linked accounts card"
+  },
+  "messagePlaceholder": "Сообщение…",
+  "@messagePlaceholder": {
+    "description": "Hint text in the chat message input"
+  },
+  "minecraftTrademark": "\"Minecraft\" является торговой маркой корпорации Microsoft.",
+  "@minecraftTrademark": {
+    "description": "Minecraft trademark notice"
+  },
+  "nameLabel": "Имя",
+  "@nameLabel": {
+    "description": "Generic Name field label"
+  },
+  "nameValidationError": "Имя должно содержать 1–50 символов",
+  "@nameValidationError": {
+    "description": "Validation error when server name is invalid"
+  },
+  "nldServerLabelShort": "Сервер MCCompanion",
+  "@nldServerLabelShort": {
+    "description": "Section label above relay selector in More sheet"
+  },
+  "noAccountForEmail": "Аккаунт с этим email не найден",
+  "@noAccountForEmail": {
+    "description": "Error when no account exists for the email"
+  },
+  "noAccountYet": "Нет аккаунта? Создайте",
+  "@noAccountYet": {
+    "description": "Toggle to switch to register mode"
+  },
+  "noConversationsYet": "Пока нет разговоров",
+  "@noConversationsYet": {
+    "description": "Empty state title on conversations screen"
+  },
+  "noFriendsSub": "Добавьте друзей, чтобы видеть их здесь.",
+  "@noFriendsSub": {
+    "description": "Empty state subtitle on friends tab"
+  },
+  "noFriendsYet": "Пока нет друзей",
+  "@noFriendsYet": {
+    "description": "Empty state title on friends tab"
+  },
+  "noMessagesYet": "Пока нет сообщений.\nПоздоровайтесь!",
+  "@noMessagesYet": {
+    "description": "Empty state in chat screen"
+  },
+  "noPartnerServers": "Серверов-партнёров пока нет.",
+  "@noPartnerServers": {
+    "description": "Empty state text on partner servers screen"
+  },
+  "noPendingRequests": "Нет ожидающих запросов",
+  "@noPendingRequests": {
+    "description": "Empty state title on requests tab"
+  },
+  "noServerSelected": "Сервер не выбран",
+  "@noServerSelected": {
+    "description": "Placeholder when no server is entered in connection panel"
+  },
+  "nowFriendsWith": "Теперь друзья с @{username}",
+  "@nowFriendsWith": {
+    "description": "Toast when accepted a friend request from public profile",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "offlineFriendsLabel": "{count} не в сети",
+  "@offlineFriendsLabel": {
+    "description": "Section label for offline friends",
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "onlineFriendsLabel": "{count} в сети",
+  "@onlineFriendsLabel": {
+    "description": "Section label for online friends",
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "orDivider": "или",
+  "@orDivider": {
+    "description": "Divider text between email and social sign-in"
+  },
+  "partnerServersTitle": "Серверы-партнёры",
+  "@partnerServersTitle": {
+    "description": "Title for the partner servers screen"
+  },
+  "passwordHint": "Пароль",
+  "@passwordHint": {
+    "description": "Hint text for password field"
+  },
+  "paywallContinue": "Продолжить",
+  "paywallManaged": "Управляется Apple/Google. Отмените в любое время.",
+  "paywallMonthly": "Ежемесячно",
+  "paywallNoActivePurchases": "Активные покупки не найдены.",
+  "paywallNoPkgs": "Пакеты недоступны.",
+  "paywallPopular": "Популярное",
+  "paywallPurchaseFailed": "Ошибка покупки.",
+  "paywallPurchaseSuccess": "Покупка успешна!",
+  "paywallPurchasesRestored": "Покупки восстановлены!",
+  "paywallRestore": "Восстановить",
+  "paywallRestoreFailed": "Ошибка восстановления.",
+  "paywallSavePercent": "Экономия ~17%",
+  "paywallSlotLabel": "{slots} слотов сервера",
+  "@paywallSlotLabel": {
+    "placeholders": {
+      "slots": {}
+    }
+  },
+  "paywallSubtitle": "Отслеживайте больше серверов и получайте уведомления.",
+  "paywallYearly": "Ежегодно",
+  "platformFieldLabel": "Платформа",
+  "@platformFieldLabel": {
+    "description": "Platform field label in edit server form"
+  },
+  "playerLookupCopied": "{value} скопировано",
+  "@playerLookupCopied": {
+    "description": "Toast shown after copying a value in player lookup",
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "playerLookupHint": "Введите имя пользователя…",
+  "@playerLookupHint": {
+    "description": "Hint text for player lookup search field"
+  },
+  "playerLookupLabelTier": "Уровень",
+  "@playerLookupLabelTier": {
+    "description": "Label for tier field in player lookup"
+  },
+  "playerLookupLabelUsername": "Имя пользователя",
+  "@playerLookupLabelUsername": {
+    "description": "Label for username field in player lookup"
+  },
+  "playerLookupLinked": "Найдены связанные аккаунты",
+  "@playerLookupLinked": {
+    "description": "Badge shown when linked accounts are found"
+  },
+  "playerLookupSubtitle": "Найдите игрока Java или Bedrock",
+  "@playerLookupSubtitle": {
+    "description": "Subtitle/hint on player lookup screen"
+  },
+  "playerLookupTitle": "Поиск игрока",
+  "@playerLookupTitle": {
+    "description": "Title of the player lookup screen"
+  },
+  "playersCount": "{players} / {max} игроков",
+  "@playersCount": {
+    "description": "Player count label on tracked server card",
+    "placeholders": {
+      "players": {},
+      "max": {}
+    }
+  },
+  "portFieldLabel": "Порт",
+  "@portFieldLabel": {
+    "description": "Port field label in edit server form"
+  },
+  "portRangeError": "Порт должен быть от 1 до 65535",
+  "@portRangeError": {
+    "description": "Validation error when port is out of range"
+  },
+  "privacyPolicy": "Политика конфиденциальности",
+  "@privacyPolicy": {
+    "description": "Privacy Policy tile title"
+  },
+  "privacyPolicySubtitle": "Как мы обрабатываем ваши данные",
+  "@privacyPolicySubtitle": {
+    "description": "Privacy Policy tile subtitle"
+  },
+  "profileCardTitle": "Профиль",
+  "@profileCardTitle": {
+    "description": "Title for the edit profile card"
+  },
+  "profileNotSetUp": "Профиль не настроен",
+  "@profileNotSetUp": {
+    "description": "Title when user is authenticated but has no profile"
+  },
+  "profileSectionLabel": "Профиль",
+  "@profileSectionLabel": {
+    "description": "Section label in public profile for profile info card"
+  },
+  "profileUpdated": "Профиль обновлён",
+  "@profileUpdated": {
+    "description": "Toast shown after profile is saved"
+  },
+  "publicProfileTitle": "Профиль",
+  "@publicProfileTitle": {
+    "description": "AppBar title fallback for public profile when username not loaded"
+  },
+  "relay": "Relay",
+  "@relay": {
+    "description": "Label for the Relay nav item and sheet title"
+  },
+  "remove": "Удалить",
+  "@remove": {
+    "description": "Remove button label"
+  },
+  "removeFriendButton": "Удалить из друзей",
+  "@removeFriendButton": {
+    "description": "Button label to remove a friend on public profile"
+  },
+  "removeFriendConfirm": "Удалить {name} из друзей?",
+  "@removeFriendConfirm": {
+    "description": "Confirmation text for removing a friend",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "removeFriendDialogBody": "Удалить @{username} из друзей?",
+  "@removeFriendDialogBody": {
+    "description": "Dialog body when removing a friend from public profile",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "removeFriendDialogTitle": "Удалить из друзей",
+  "@removeFriendDialogTitle": {
+    "description": "Dialog title when removing a friend from public profile"
+  },
+  "removeFriendTitle": "Удалить друга",
+  "@removeFriendTitle": {
+    "description": "Dialog title for removing a friend"
+  },
+  "removeJavaConfirm": "Удалить {name} из связанных аккаунтов?",
+  "@removeJavaConfirm": {
+    "description": "Confirmation text for unlinking a Java account",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "removeLabelConfirm": "Удалить {name} из связанных аккаунтов?",
+  "@removeLabelConfirm": {
+    "description": "Confirmation text for unlinking a Bedrock/Xbox account",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "reportAdditionalDetails": "Дополнительные сведения (необязательно)…",
+  "@reportAdditionalDetails": {
+    "description": "Hint text for additional details field in report sheet"
+  },
+  "reportDisclaimer": "Жалобы проверяются нашей командой.",
+  "@reportDisclaimer": {
+    "description": "Disclaimer text shown in the report sheet"
+  },
+  "reportFailed": "Не удалось отправить жалобу.",
+  "@reportFailed": {
+    "description": "Toast shown when report submission fails"
+  },
+  "reportMessage": "Пожаловаться на сообщение",
+  "@reportMessage": {
+    "description": "Title when reporting a specific message"
+  },
+  "reportReasonHarassment": "Преследование",
+  "@reportReasonHarassment": {
+    "description": "Report reason: harassment"
+  },
+  "reportReasonInappropriate": "Неприемлемый контент",
+  "@reportReasonInappropriate": {
+    "description": "Report reason: inappropriate content"
+  },
+  "reportReasonOther": "Другое",
+  "@reportReasonOther": {
+    "description": "Report reason: other"
+  },
+  "reportReasonSpam": "Спам",
+  "@reportReasonSpam": {
+    "description": "Report reason: spam"
+  },
+  "reportSubmit": "Отправить жалобу",
+  "@reportSubmit": {
+    "description": "Button label to submit a report"
+  },
+  "reportSuccess": "Жалоба отправлена. Спасибо.",
+  "@reportSuccess": {
+    "description": "Toast shown after a successful report submission"
+  },
+  "reportUser": "Пожаловаться на пользователя",
+  "@reportUser": {
+    "description": "Tooltip/button to report a user"
+  },
+  "reportUserWithName": "Пожаловаться на {name}",
+  "@reportUserWithName": {
+    "description": "Title when reporting a user by name",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "requestAlreadyPending": "Запрос к {name} уже ожидает рассмотрения",
+  "@requestAlreadyPending": {
+    "description": "Error when friend request is already pending",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "requestAlreadyPendingMsg": "Запрос уже ожидает рассмотрения.",
+  "@requestAlreadyPendingMsg": {
+    "description": "Error when friend request is already pending (public profile)"
+  },
+  "requestDeclined": "Запрос от {name} отклонён",
+  "@requestDeclined": {
+    "description": "Toast when a friend request is declined",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "requestSentButton": "Запрос отправлен",
+  "@requestSentButton": {
+    "description": "Disabled button label when request already sent"
+  },
+  "requestsAppearHere": "Здесь появятся новые запросы в друзья.",
+  "@requestsAppearHere": {
+    "description": "Empty state subtitle on requests tab"
+  },
+  "resetLinkSent": "Ссылка отправлена на {email}",
+  "@resetLinkSent": {
+    "description": "Toast after reset email is sent",
+    "placeholders": {
+      "email": {}
+    }
+  },
+  "resetPasswordBody": "Введите email для получения ссылки сброса пароля.",
+  "@resetPasswordBody": {
+    "description": "Body text for reset password dialog"
+  },
+  "resetPasswordTitle": "Сброс пароля",
+  "@resetPasswordTitle": {
+    "description": "Title for reset password dialog"
+  },
+  "selectBedrockAccount": "Выбрать аккаунт Bedrock",
+  "@selectBedrockAccount": {
+    "description": "Title of the Bedrock account picker bottom sheet"
+  },
+  "selectModeSection": "ВЫБОР РЕЖИМА",
+  "@selectModeSection": {
+    "description": "Section label above mode chips in connection panel"
+  },
+  "send": "Отправить",
+  "@send": {
+    "description": "Send button label"
+  },
+  "sendLink": "Отправить ссылку",
+  "@sendLink": {
+    "description": "Button to send the password reset link"
+  },
+  "serverAddressExampleHint": "play.example.com",
+  "@serverAddressExampleHint": {
+    "description": "Example hint text for server address field"
+  },
+  "serverDescriptionExampleHint": "Выживание с друзьями",
+  "@serverDescriptionExampleHint": {
+    "description": "Example hint text for server description field"
+  },
+  "serverNameExampleHint": "Мой крутой сервер",
+  "@serverNameExampleHint": {
+    "description": "Example hint text for server name field"
+  },
+  "serversSection": "СЕРВЕРЫ",
+  "@serversSection": {
+    "description": "Section label above servers panel in connection panel"
+  },
+  "signInSubtitle": "Войдите для доступа к профилю.",
+  "@signInSubtitle": {
+    "description": "Subtitle on the sign-in screen"
+  },
+  "signOut": "Выйти",
+  "@signOut": {
+    "description": "Sign out button label"
+  },
+  "skinsCouldNotLoad": "Не удалось загрузить скины",
+  "@skinsCouldNotLoad": {
+    "description": "Error text when recent skins cannot be loaded"
+  },
+  "skinsCreate": "Создать",
+  "@skinsCreate": {
+    "description": "Button to create/open skin editor"
+  },
+  "skinsDownload": "Скачать",
+  "@skinsDownload": {
+    "description": "Download button in skin detail sheet"
+  },
+  "skinsEdit": "Редактировать",
+  "@skinsEdit": {
+    "description": "Edit button in skin detail sheet"
+  },
+  "skinsEmptyMySkins": "Скинов пока нет. Загрузите один!",
+  "@skinsEmptyMySkins": {
+    "description": "Empty state text for saved skins section"
+  },
+  "skinsInvalidFile": "Неверный файл изображения",
+  "@skinsInvalidFile": {
+    "description": "Error when the selected file is not a valid image"
+  },
+  "skinsMustBe64": "Скин должен быть 64×64 пикселя",
+  "@skinsMustBe64": {
+    "description": "Error when uploaded skin is wrong size"
+  },
+  "skinsNoAccountsSubtitle": "Привяжите аккаунт для просмотра скинов.",
+  "@skinsNoAccountsSubtitle": {
+    "description": "Subtitle when no Minecraft accounts are linked"
+  },
+  "skinsNoAccountsTitle": "Аккаунты Minecraft не привязаны",
+  "@skinsNoAccountsTitle": {
+    "description": "Title when no Minecraft accounts are linked"
+  },
+  "skinsPageOf": "Страница {page} из {total}",
+  "@skinsPageOf": {
+    "description": "Pagination label on skins screen",
+    "placeholders": {
+      "page": {},
+      "total": {}
+    }
+  },
+  "skinsSectionMy": "МОИ СКИНЫ",
+  "@skinsSectionMy": {
+    "description": "Section label for saved/local skins"
+  },
+  "skinsSectionRecent": "НЕДАВНИЕ СКИНЫ",
+  "@skinsSectionRecent": {
+    "description": "Section label for recent Geyser skins"
+  },
+  "skinsSectionYours": "ВАШИ СКИНЫ",
+  "@skinsSectionYours": {
+    "description": "Section label for the user's linked account skins"
+  },
+  "skinsSignInSubtitle": "Войдите для просмотра скинов.",
+  "@skinsSignInSubtitle": {
+    "description": "Subtitle when user is not signed in on skins screen"
+  },
+  "skinsSignInTitle": "Войдите для просмотра скинов",
+  "@skinsSignInTitle": {
+    "description": "Title when user is not signed in on skins screen"
+  },
+  "skinsUpload": "Загрузить",
+  "@skinsUpload": {
+    "description": "Button to upload a skin"
+  },
+  "somethingWentWrong": "Что-то пошло не так. Попробуйте снова.",
+  "@somethingWentWrong": {
+    "description": "Generic error message"
+  },
+  "startChatHint": "Найдите друга и начните общение!",
+  "@startChatHint": {
+    "description": "Empty state subtitle on conversations screen"
+  },
+  "tabChats": "Чаты",
+  "@tabChats": {
+    "description": "Tab label for Chats tab"
+  },
+  "tabFriends": "Друзья",
+  "@tabFriends": {
+    "description": "Tab label for Friends tab"
+  },
+  "tabProfile": "Профиль",
+  "@tabProfile": {
+    "description": "Tab label for Profile tab"
+  },
+  "tabRequests": "Заявки",
+  "@tabRequests": {
+    "description": "Tab label for Requests tab"
+  },
+  "termsOfService": "Условия использования",
+  "@termsOfService": {
+    "description": "Terms of Service tile title"
+  },
+  "termsOfServiceSubtitle": "Правила и условия",
+  "@termsOfServiceSubtitle": {
+    "description": "Terms of Service tile subtitle"
+  },
+  "today": "Сегодня",
+  "@today": {
+    "description": "Date divider label for today"
+  },
+  "trackerLimitReached": "Достигнут лимит серверов. Обновитесь для большего.",
+  "@trackerLimitReached": {
+    "description": "Banner shown when tracker slot limit is reached"
+  },
+  "tryAgain": "Попробовать снова",
+  "@tryAgain": {
+    "description": "Generic try again button label"
+  },
+  "unlink": "Отвязать",
+  "@unlink": {
+    "description": "Unlink button label"
+  },
+  "unlinkJavaTitle": "Отвязать аккаунт Java",
+  "@unlinkJavaTitle": {
+    "description": "Dialog title for unlinking a Java account"
+  },
+  "unlinkXboxTitle": "Отвязать аккаунт Xbox",
+  "@unlinkXboxTitle": {
+    "description": "Dialog title for unlinking an Xbox account"
+  },
+  "upgradeButton": "Обновить",
+  "@upgradeButton": {
+    "description": "Button to open paywall/upgrade screen"
+  },
+  "userNotFound": "Пользователь не найден",
+  "@userNotFound": {
+    "description": "Text shown when a user profile cannot be found"
+  },
+  "userNotFoundMsg": "Пользователь {name} не найден",
+  "@userNotFoundMsg": {
+    "description": "Error when user is not found",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "userNotFoundMsg2": "Пользователь не найден.",
+  "@userNotFoundMsg2": {
+    "description": "Error when user not found sending friend request from public profile"
+  },
+  "usernameDisplayLabel": "Имя пользователя",
+  "@usernameDisplayLabel": {
+    "description": "Label for username row in profile display"
+  },
+  "usernameHint": "Имя пользователя",
+  "@usernameHint": {
+    "description": "Hint text for username input"
+  },
+  "usernameRowLabel": "Имя пользователя",
+  "@usernameRowLabel": {
+    "description": "Row label for username in public profile"
+  },
+  "weakPassword": "Пароль слишком слабый.",
+  "@weakPassword": {
+    "description": "Error for weak password"
+  },
+  "wikiArmor": "Броня",
+  "@wikiArmor": {
+    "description": "Wiki item sub-category: Armor"
+  },
+  "wikiBiomes": "Биомы",
+  "@wikiBiomes": {
+    "description": "Wiki category: Biomes"
+  },
+  "wikiBlocks": "Блоки",
+  "@wikiBlocks": {
+    "description": "Wiki category: Blocks"
+  },
+  "wikiBoss": "Босс",
+  "@wikiBoss": {
+    "description": "Wiki mob sub-category: Boss"
+  },
+  "wikiBow": "Лук",
+  "@wikiBow": {
+    "description": "Wiki enchantment sub-category: Bow"
+  },
+  "wikiBrewing": "Зельеварение",
+  "@wikiBrewing": {
+    "description": "Wiki item sub-category: Brewing"
+  },
+  "wikiCategories": "{count} категории",
+  "@wikiCategories": {
+    "description": "Subtitle on wiki section card showing number of subcategories",
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "wikiCouldNotLoadContent": "Не удалось загрузить содержимое.",
+  "@wikiCouldNotLoadContent": {
+    "description": "Error when wiki article content fails to load"
+  },
+  "wikiCouldNotLoadPages": "Не удалось загрузить страницы.",
+  "@wikiCouldNotLoadPages": {
+    "description": "Error when wiki pages fail to load"
+  },
+  "wikiCouldNotReach": "Не удалось получить доступ к вики.",
+  "@wikiCouldNotReach": {
+    "description": "Error when the wiki cannot be reached"
+  },
+  "wikiCrafting": "Крафт",
+  "@wikiCrafting": {
+    "description": "Section header for crafting recipes in wiki detail"
+  },
+  "wikiDecoration": "Декорации",
+  "@wikiDecoration": {
+    "description": "Wiki block sub-category: Decoration"
+  },
+  "wikiEnchantments": "Зачарования",
+  "@wikiEnchantments": {
+    "description": "Wiki category: Enchantments"
+  },
+  "wikiFishing": "Рыбалка",
+  "@wikiFishing": {
+    "description": "Wiki enchantment sub-category: Fishing"
+  },
+  "wikiFood": "Еда",
+  "@wikiFood": {
+    "description": "Wiki item sub-category: Food"
+  },
+  "wikiHostile": "Враждебные",
+  "@wikiHostile": {
+    "description": "Wiki mob sub-category: Hostile"
+  },
+  "wikiItems": "Предметы",
+  "@wikiItems": {
+    "description": "Wiki category: Items"
+  },
+  "wikiMaterials": "Материалы",
+  "@wikiMaterials": {
+    "description": "Wiki item sub-category: Materials"
+  },
+  "wikiMinecraftWiki": "Вики Minecraft",
+  "@wikiMinecraftWiki": {
+    "description": "Badge/label linking to Minecraft Wiki"
+  },
+  "wikiMobs": "Мобы",
+  "@wikiMobs": {
+    "description": "Wiki category: Mobs"
+  },
+  "wikiNatural": "Природные",
+  "@wikiNatural": {
+    "description": "Wiki block sub-category: Natural"
+  },
+  "wikiNether": "Незер",
+  "@wikiNether": {
+    "description": "Wiki biome/structure sub-category: Nether"
+  },
+  "wikiNeutral": "Нейтральные",
+  "@wikiNeutral": {
+    "description": "Wiki mob sub-category: Neutral"
+  },
+  "wikiNoPagesFound": "Страницы не найдены",
+  "@wikiNoPagesFound": {
+    "description": "Empty state when no wiki pages are available"
+  },
+  "wikiNoResults": "Результатов для \"{query}\" не найдено",
+  "@wikiNoResults": {
+    "description": "Empty search results message",
+    "placeholders": {
+      "query": {}
+    }
+  },
+  "wikiOpenInBrowser": "Открыть в браузере",
+  "@wikiOpenInBrowser": {
+    "description": "Button to open wiki article in external browser"
+  },
+  "wikiOres": "Руды",
+  "@wikiOres": {
+    "description": "Wiki block sub-category: Ores"
+  },
+  "wikiOverworld": "Верхний мир",
+  "@wikiOverworld": {
+    "description": "Wiki biome/structure sub-category: Overworld"
+  },
+  "wikiPassive": "Пассивные",
+  "@wikiPassive": {
+    "description": "Wiki mob sub-category: Passive"
+  },
+  "wikiPlants": "Растения",
+  "@wikiPlants": {
+    "description": "Wiki block sub-category: Plants"
+  },
+  "wikiPotions": "Зелья",
+  "@wikiPotions": {
+    "description": "Wiki category: Potions"
+  },
+  "wikiRanged": "Дальний бой",
+  "@wikiRanged": {
+    "description": "Wiki item sub-category: Ranged"
+  },
+  "wikiReadFullArticle": "Читать полную статью",
+  "@wikiReadFullArticle": {
+    "description": "Button at bottom of wiki detail to open full article"
+  },
+  "wikiRedstone": "Красный камень",
+  "@wikiRedstone": {
+    "description": "Wiki block sub-category: Redstone"
+  },
+  "wikiSearchHint": "Поиск в вики…",
+  "@wikiSearchHint": {
+    "description": "Hint text for wiki search field"
+  },
+  "wikiStatusEffects": "Эффекты состояния",
+  "@wikiStatusEffects": {
+    "description": "Wiki potion sub-category: Status Effects"
+  },
+  "wikiStone": "Камень",
+  "@wikiStone": {
+    "description": "Wiki block sub-category: Stone"
+  },
+  "wikiStructures": "Структуры",
+  "@wikiStructures": {
+    "description": "Wiki category: Structures"
+  },
+  "wikiSword": "Меч",
+  "@wikiSword": {
+    "description": "Wiki enchantment sub-category: Sword"
+  },
+  "wikiSwords": "Мечи",
+  "@wikiSwords": {
+    "description": "Wiki item sub-category: Swords"
+  },
+  "wikiTheEnd": "Край",
+  "@wikiTheEnd": {
+    "description": "Wiki biome/structure sub-category: The End"
+  },
+  "wikiTitle": "Вики",
+  "@wikiTitle": {
+    "description": "Title of the wiki screen"
+  },
+  "wikiTool": "Инструмент",
+  "@wikiTool": {
+    "description": "Wiki enchantment sub-category: Tool"
+  },
+  "wikiTools": "Инструменты",
+  "@wikiTools": {
+    "description": "Wiki item sub-category: Tools"
+  },
+  "wikiUtility": "Полезные",
+  "@wikiUtility": {
+    "description": "Wiki mob sub-category: Utility"
+  },
+  "wikiWood": "Дерево",
+  "@wikiWood": {
+    "description": "Wiki block sub-category: Wood"
+  },
+  "xboxAccountLinked": "Аккаунт Xbox привязан!",
+  "@xboxAccountLinked": {
+    "description": "Success text when Xbox account is linked"
+  },
+  "xboxBedrockLabel": "Xbox / Bedrock",
+  "@xboxBedrockLabel": {
+    "description": "Section label for Xbox/Bedrock account in public profile"
+  },
+  "xboxCodeCopied": "Код скопирован в буфер обмена",
+  "@xboxCodeCopied": {
+    "description": "Snackbar shown after code is copied"
+  },
+  "xboxCodeExpired": "Код истёк. Попробуйте снова.",
+  "@xboxCodeExpired": {
+    "description": "Error when Xbox device code expires"
+  },
+  "xboxCouldNotStart": "Не удалось запустить вход Xbox.",
+  "@xboxCouldNotStart": {
+    "description": "Error when Xbox login cannot be started"
+  },
+  "xboxGoToLink": "Перейдите по ссылке ниже и введите код.",
+  "@xboxGoToLink": {
+    "description": "Instruction on Xbox link waiting screen"
+  },
+  "xboxLinkTitle": "Привязать аккаунт Xbox",
+  "@xboxLinkTitle": {
+    "description": "AppBar title for Xbox link screen"
+  },
+  "xboxOpenLink": "Открыть microsoft.com/link",
+  "@xboxOpenLink": {
+    "description": "Button label to open Microsoft device auth link"
+  },
+  "xboxSignInWithMicrosoft": "Войти через Microsoft",
+  "@xboxSignInWithMicrosoft": {
+    "description": "Heading on Xbox link waiting screen"
+  },
+  "xboxSomethingWrong": "Что-то пошло не так.",
+  "@xboxSomethingWrong": {
+    "description": "Generic error on Xbox link screen"
+  },
+  "xboxStartingLogin": "Запуск входа Xbox…",
+  "@xboxStartingLogin": {
+    "description": "Loading text when starting Xbox login"
+  },
+  "xboxTapToCopy": "Нажмите на код для копирования",
+  "@xboxTapToCopy": {
+    "description": "Hint below the code on Xbox link screen"
+  },
+  "xboxWaitingForLogin": "Ожидание входа…",
+  "@xboxWaitingForLogin": {
+    "description": "Status text while polling for Xbox login"
+  },
+  "xboxYourCode": "Ваш код",
+  "@xboxYourCode": {
+    "description": "Label above the Microsoft device code"
+  },
+  "yesterday": "Вчера",
+  "@yesterday": {
+    "description": "Date divider label for yesterday"
+  },
+  "youPrefix": "Вы",
+  "@youPrefix": {
+    "description": "Prefix for last message preview when message is from current user"
+  },
+  "yourNameHint": "Ваше имя",
+  "@yourNameHint": {
+    "description": "Hint text for display name field"
+  },
+  "javaLinkTitle": "Привязать Java Edition",
+  "javaStartingLogin": "Запуск входа Microsoft…",
+  "javaSignInWithMicrosoft": "Войти через Microsoft",
+  "javaGoToLink": "Перейдите по ссылке и введите код для привязки аккаунта Minecraft Java Edition.",
+  "javaYourCode": "Ваш код",
+  "javaTapToCopy": "Нажмите на код для копирования",
+  "javaOpenLink": "Открыть microsoft.com/link",
+  "javaWaitingForLogin": "Ожидание входа…",
+  "javaAccountLinked": "Java Edition привязан!",
+  "javaNoJavaTitle": "Java Edition не найден",
+  "javaNoJavaBody": "Аккаунт Microsoft, с которым вы вошли, не владеет Minecraft Java Edition.",
+  "javaTryDifferentAccount": "Попробовать другой аккаунт",
+  "javaCouldNotStart": "Не удалось запустить вход Microsoft. Попробуйте снова.",
+  "javaCodeExpired": "Код истёк. Попробуйте снова.",
+  "javaSomethingWrong": "Что-то пошло не так. Попробуйте снова.",
+  "javaCodeCopied": "Код скопирован в буфер обмена",
+  "splashFeatureConnect": "Подключить",
+  "splashFeatureFriends": "Друзья",
+  "splashFeatureChat": "Чат",
+  "splashFeatureSkins": "Скины",
+  "featureLabelConnector": "Коннектор",
+  "featureLabelSkins": "Скины",
+  "featureLabelWiki": "Вики",
+  "featureLabelPartners": "Партнёры",
+  "featureLabelLookup": "Поиск",
+  "featureLabelTracker": "Трекер серверов",
+  "featureSubtitleConnector": "Подключение консолей к Minecraft",
+  "featureSubtitleSkins": "Просмотр и управление скинами Minecraft",
+  "featureSubtitleWiki": "Энциклопедия Minecraft",
+  "featureSubtitlePartners": "Рекомендуемые серверы",
+  "featureSubtitleLookup": "Поиск профилей Java и Bedrock",
+  "featureSubtitleTracker": "Мониторинг статуса сервера и уведомления",
+  "userSearchHint": "Имя пользователя, геймертег или Java-имя…",
+  "userSearchSub": "Поиск по имени пользователя, Xbox-геймертегу или Java-имени"
 }

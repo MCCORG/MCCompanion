@@ -1,18 +1,19 @@
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../l10n/app_localizations.dart';
 
 enum AppFeature { connector, skins, wiki, partners, lookup, tracker }
 
 extension AppFeatureLabel on AppFeature {
   String get id => name;
 
-  String get label => switch (this) {
-    AppFeature.connector => 'Connector',
-    AppFeature.skins => 'Skins',
-    AppFeature.wiki => 'Wiki',
-    AppFeature.partners => 'Partners',
-    AppFeature.lookup => 'Lookup',
-    AppFeature.tracker => 'Server Tracker',
+  String label(AppLocalizations l) => switch (this) {
+    AppFeature.connector => l.featureLabelConnector,
+    AppFeature.skins => l.featureLabelSkins,
+    AppFeature.wiki => l.featureLabelWiki,
+    AppFeature.partners => l.featureLabelPartners,
+    AppFeature.lookup => l.featureLabelLookup,
+    AppFeature.tracker => l.featureLabelTracker,
   };
 
   String get imagePath => switch (this) {
@@ -33,13 +34,13 @@ extension AppFeatureLabel on AppFeature {
     AppFeature.tracker => 0xFF00BCD4,
   };
 
-  String subtitle(dynamic loc) => switch (this) {
-    AppFeature.connector => 'Connect consoles to Minecraft',
-    AppFeature.skins => 'Browse & manage Minecraft skins',
-    AppFeature.wiki => 'Minecraft encyclopedia',
-    AppFeature.partners => 'Featured servers',
-    AppFeature.lookup => 'Look up Java & Bedrock profiles',
-    AppFeature.tracker => 'Monitor server status & get notified',
+  String subtitle(AppLocalizations l) => switch (this) {
+    AppFeature.connector => l.featureSubtitleConnector,
+    AppFeature.skins => l.featureSubtitleSkins,
+    AppFeature.wiki => l.featureSubtitleWiki,
+    AppFeature.partners => l.featureSubtitlePartners,
+    AppFeature.lookup => l.featureSubtitleLookup,
+    AppFeature.tracker => l.featureSubtitleTracker,
   };
 }
 

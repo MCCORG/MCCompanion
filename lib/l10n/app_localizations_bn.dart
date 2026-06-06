@@ -1154,4 +1154,384 @@ class AppLocalizationsBn extends AppLocalizations {
   String serverAdded(Object name) {
     return '$name যোগ করা হয়েছে';
   }
+
+  @override
+  String get paywallRestore => 'Restore';
+
+  @override
+  String get paywallMonthly => 'Monthly';
+
+  @override
+  String get paywallYearly => 'Yearly';
+
+  @override
+  String get paywallSavePercent => 'Save ~17%';
+
+  @override
+  String get paywallSubtitle => 'Track more servers and get notified\nwhen they go online or offline.';
+
+  @override
+  String paywallSlotLabel(Object slots) {
+    return '$slots server slots';
+  }
+
+  @override
+  String get paywallPopular => 'Popular';
+
+  @override
+  String get paywallContinue => 'Continue';
+
+  @override
+  String get paywallNoPkgs => 'No packages available.';
+
+  @override
+  String get paywallManaged => 'Managed by Apple/Google. Cancel anytime.';
+
+  @override
+  String get paywallPurchaseSuccess => 'Purchase successful!';
+
+  @override
+  String get paywallPurchaseFailed => 'Purchase failed. Please try again.';
+
+  @override
+  String get paywallPurchasesRestored => 'Purchases restored!';
+
+  @override
+  String get paywallNoActivePurchases => 'No active purchases found.';
+
+  @override
+  String get paywallRestoreFailed => 'Restore failed. Please try again.';
+
+  @override
+  String get relay => 'Relay';
+
+  @override
+  String get selectModeSection => 'SELECT MODE';
+
+  @override
+  String get serversSection => 'SERVERS';
+
+  @override
+  String get noServerSelected => 'No server selected';
+
+  @override
+  String get selectBedrockAccount => 'Select Bedrock account';
+
+  @override
+  String playersCount(Object players, Object max) {
+    return '$players / $max players';
+  }
+
+  @override
+  String get infoAndLegal => 'Info & Legal';
+
+  @override
+  String get legalSection => 'Legal';
+
+  @override
+  String get privacyPolicy => 'Privacy Policy';
+
+  @override
+  String get privacyPolicySubtitle => 'How we collect and protect your data';
+
+  @override
+  String get termsOfService => 'Terms of Service';
+
+  @override
+  String get termsOfServiceSubtitle => 'Rules and conditions of use';
+
+  @override
+  String get dataSourcesSection => 'Data Sources & Credits';
+
+  @override
+  String get creditMinecraftWikiSubtitle => 'Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.';
+
+  @override
+  String get creditMojangTitle => 'Mojang / Microsoft';
+
+  @override
+  String get creditMojangSubtitle => 'Java player skins, UUIDs, and profile data via the official Mojang API.';
+
+  @override
+  String get creditGeyserTitle => 'GeyserMC';
+
+  @override
+  String get creditGeyserSubtitle => 'Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.';
+
+  @override
+  String get creditXboxTitle => 'Xbox / Microsoft';
+
+  @override
+  String get creditXboxSubtitle => 'Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.';
+
+  @override
+  String get aboutMCCompanionSection => 'About MCCompanion';
+
+  @override
+  String get aboutMCCompanionDisclaimer => 'MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.';
+
+  @override
+  String get minecraftTrademark => '\"Minecraft\" is a trademark of Microsoft Corporation.';
+
+  @override
+  String get nldServerLabelShort => 'MCCompanion Server';
+
+  @override
+  String get editServer => 'Edit Server';
+
+  @override
+  String get serverNameExampleHint => 'My Awesome Server';
+
+  @override
+  String get serverAddressExampleHint => 'play.example.com';
+
+  @override
+  String get serverDescriptionExampleHint => 'Survival server with friends';
+
+  @override
+  String get editionLabel => 'Edition';
+
+  @override
+  String get nameLabel => 'Name';
+
+  @override
+  String get ipAddressFieldLabel => 'IP Address';
+
+  @override
+  String get portFieldLabel => 'Port';
+
+  @override
+  String get platformFieldLabel => 'Platform';
+
+  @override
+  String get nameValidationError => 'Name must be 1–50 characters';
+
+  @override
+  String get ipRequiredError => 'IP address is required';
+
+  @override
+  String get portRangeError => 'Port must be between 1 and 65535';
+
+  @override
+  String get partnerServersTitle => 'Partner Servers';
+
+  @override
+  String get noPartnerServers => 'No partner servers available yet.';
+
+  @override
+  String get checkBackLater => 'Check back later.';
+
+  @override
+  String get xboxLinkTitle => 'Link Xbox Account';
+
+  @override
+  String get xboxStartingLogin => 'Starting Xbox login…';
+
+  @override
+  String get xboxSignInWithMicrosoft => 'Sign in with Microsoft';
+
+  @override
+  String get xboxGoToLink => 'Go to the link below and enter the code to connect your Xbox account.';
+
+  @override
+  String get xboxYourCode => 'Your code';
+
+  @override
+  String get xboxTapToCopy => 'Tap the code to copy it';
+
+  @override
+  String get xboxOpenLink => 'Open microsoft.com/link';
+
+  @override
+  String get xboxWaitingForLogin => 'Waiting for login…';
+
+  @override
+  String get xboxAccountLinked => 'Xbox account linked!';
+
+  @override
+  String get xboxCodeCopied => 'Code copied to clipboard';
+
+  @override
+  String get xboxCouldNotStart => 'Could not start Xbox login. Please try again.';
+
+  @override
+  String get xboxCodeExpired => 'The code expired. Please try again.';
+
+  @override
+  String get xboxSomethingWrong => 'Something went wrong. Please try again.';
+
+  @override
+  String get tryAgain => 'Try again';
+
+  @override
+  String get publicProfileTitle => 'Profile';
+
+  @override
+  String get userNotFound => 'User not found';
+
+  @override
+  String get profileSectionLabel => 'Profile';
+
+  @override
+  String get displayNameRowLabel => 'Display name';
+
+  @override
+  String get usernameRowLabel => 'Username';
+
+  @override
+  String get lastSeenLabel => 'Last seen';
+
+  @override
+  String get aboutSectionLabel => 'About';
+
+  @override
+  String get xboxBedrockLabel => 'Xbox / Bedrock';
+
+  @override
+  String get friendRequestSent => 'Friend request sent';
+
+  @override
+  String get alreadyFriendsMsg => 'You are already friends.';
+
+  @override
+  String get requestAlreadyPendingMsg => 'There is already a pending request.';
+
+  @override
+  String get userNotFoundMsg2 => 'User not found.';
+
+  @override
+  String get cannotSendRequestMsg => 'Cannot send a request to this user.';
+
+  @override
+  String nowFriendsWith(Object username) {
+    return 'Now friends with @$username';
+  }
+
+  @override
+  String get removeFriendButton => 'Remove friend';
+
+  @override
+  String get requestSentButton => 'Request sent';
+
+  @override
+  String get acceptRequestButton => 'Accept request';
+
+  @override
+  String get addFriendButton => 'Add friend';
+
+  @override
+  String get removeFriendDialogTitle => 'Remove friend';
+
+  @override
+  String removeFriendDialogBody(Object username) {
+    return 'Remove @$username as a friend?';
+  }
+
+  @override
+  String get trackerLimitReached => 'You\'ve reached your server limit. Upgrade to track more servers.';
+
+  @override
+  String get upgradeButton => 'Upgrade';
+
+  @override
+  String get javaLinkTitle => 'Link Java Edition';
+
+  @override
+  String get javaStartingLogin => 'Starting Microsoft login…';
+
+  @override
+  String get javaSignInWithMicrosoft => 'Sign in with Microsoft';
+
+  @override
+  String get javaGoToLink => 'Go to the link below and enter the code to connect your Minecraft Java Edition account.';
+
+  @override
+  String get javaYourCode => 'Your code';
+
+  @override
+  String get javaTapToCopy => 'Tap the code to copy it';
+
+  @override
+  String get javaOpenLink => 'Open microsoft.com/link';
+
+  @override
+  String get javaWaitingForLogin => 'Waiting for login…';
+
+  @override
+  String get javaAccountLinked => 'Java Edition linked!';
+
+  @override
+  String get javaNoJavaTitle => 'No Java Edition found';
+
+  @override
+  String get javaNoJavaBody => 'The Microsoft account you signed in with does not own Minecraft Java Edition.';
+
+  @override
+  String get javaTryDifferentAccount => 'Try a different account';
+
+  @override
+  String get javaCouldNotStart => 'Could not start Microsoft login. Please try again.';
+
+  @override
+  String get javaCodeExpired => 'The code expired. Please try again.';
+
+  @override
+  String get javaSomethingWrong => 'Something went wrong. Please try again.';
+
+  @override
+  String get javaCodeCopied => 'Code copied to clipboard';
+
+  @override
+  String get splashFeatureConnect => 'Connect';
+
+  @override
+  String get splashFeatureFriends => 'Friends';
+
+  @override
+  String get splashFeatureChat => 'Chat';
+
+  @override
+  String get splashFeatureSkins => 'Skins';
+
+  @override
+  String get featureLabelConnector => 'কানেক্টর';
+
+  @override
+  String get featureLabelSkins => 'স্কিনস';
+
+  @override
+  String get featureLabelWiki => 'উইকি';
+
+  @override
+  String get featureLabelPartners => 'অংশীদার';
+
+  @override
+  String get featureLabelLookup => 'খোঁজা';
+
+  @override
+  String get featureLabelTracker => 'সার্ভার ট্র্যাকার';
+
+  @override
+  String get featureSubtitleConnector => 'কনসোল Minecraft-এ সংযুক্ত করুন';
+
+  @override
+  String get featureSubtitleSkins => 'Minecraft স্কিন ব্রাউজ ও পরিচালনা করুন';
+
+  @override
+  String get featureSubtitleWiki => 'Minecraft বিশ্বকোষ';
+
+  @override
+  String get featureSubtitlePartners => 'বৈশিষ্ট্যযুক্ত সার্ভার';
+
+  @override
+  String get featureSubtitleLookup => 'Java ও Bedrock প্রোফাইল খুঁজুন';
+
+  @override
+  String get featureSubtitleTracker => 'সার্ভার স্ট্যাটাস পর্যবেক্ষণ করুন ও বিজ্ঞপ্তি পান';
+
+  @override
+  String get userSearchHint => 'ব্যবহারকারীর নাম, গেমারট্যাগ বা Java নাম…';
+
+  @override
+  String get userSearchSub => 'ব্যবহারকারীর নাম, Xbox গেমারট্যাগ বা Java নাম দিয়ে খুঁজুন';
 }

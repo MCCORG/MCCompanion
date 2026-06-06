@@ -414,5 +414,1099 @@
   "info": "Info",
   "navProfile": "Profil",
   "serverRemoved": "{name} entfernt",
-  "serverAdded": "{name} hinzugefügt"
+  "serverAdded": "{name} hinzugefügt",
+  "aboutMCCompanionDisclaimer": "MCCompanion ist eine unabhängige App, nicht mit Mojang oder Microsoft verbunden.",
+  "@aboutMCCompanionDisclaimer": {
+    "description": "Disclaimer text in About MCCompanion section"
+  },
+  "aboutMCCompanionSection": "Über MCCompanion",
+  "@aboutMCCompanionSection": {
+    "description": "Section header for About MCCompanion in Info sheet"
+  },
+  "aboutMe": "Über mich",
+  "@aboutMe": {
+    "description": "Label for bio/about-me row in profile display"
+  },
+  "aboutSectionLabel": "Über",
+  "@aboutSectionLabel": {
+    "description": "Section label for bio/about in public profile"
+  },
+  "acceptRequestButton": "Anfrage annehmen",
+  "@acceptRequestButton": {
+    "description": "Button label to accept a friend request"
+  },
+  "addFriend": "Freund hinzufügen",
+  "@addFriend": {
+    "description": "Title/button for adding a friend"
+  },
+  "addFriendButton": "Freund hinzufügen",
+  "@addFriendButton": {
+    "description": "Button label to add a friend on public profile"
+  },
+  "alreadyFriendsMsg": "Ihr seid bereits befreundet.",
+  "@alreadyFriendsMsg": {
+    "description": "Error when already friends with user (public profile)"
+  },
+  "alreadyFriendsWith": "Du bist bereits mit {name} befreundet",
+  "@alreadyFriendsWith": {
+    "description": "Error when already friends with user",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "alreadyHaveAccount": "Bereits ein Konto? Anmelden",
+  "@alreadyHaveAccount": {
+    "description": "Toggle to switch back to sign-in mode"
+  },
+  "appearOfflineLabel": "Offline erscheinen",
+  "@appearOfflineLabel": {
+    "description": "Label for the appear-offline toggle"
+  },
+  "appearOfflineOff": "Du erscheinst online",
+  "@appearOfflineOff": {
+    "description": "Subtitle when appear-offline is disabled"
+  },
+  "appearOfflineOn": "Du erscheinst offline",
+  "@appearOfflineOn": {
+    "description": "Subtitle when appear-offline is enabled"
+  },
+  "appleSignInFailed": "Apple-Anmeldung fehlgeschlagen. Erneut versuchen.",
+  "@appleSignInFailed": {
+    "description": "Error when Apple sign-in fails"
+  },
+  "avatarUrlLabel": "Avatar-URL",
+  "@avatarUrlLabel": {
+    "description": "Label for avatar URL field"
+  },
+  "bioHint": "Erzähl anderen von dir…",
+  "@bioHint": {
+    "description": "Hint text for bio field"
+  },
+  "bioLabel": "Bio",
+  "@bioLabel": {
+    "description": "Label for bio field"
+  },
+  "cannotSendRequest": "Anfrage an {name} kann nicht gesendet werden",
+  "@cannotSendRequest": {
+    "description": "Error when user is blocked or request is not allowed",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "cannotSendRequestMsg": "Anfrage kann nicht gesendet werden.",
+  "@cannotSendRequestMsg": {
+    "description": "Error when friend request is blocked (public profile)"
+  },
+  "checkBackLater": "Schau später nochmal.",
+  "@checkBackLater": {
+    "description": "Secondary empty state text on partner servers screen"
+  },
+  "chooseUsernameSubtitle": "Wähle einen Benutzernamen, um dich zu verbinden.",
+  "@chooseUsernameSubtitle": {
+    "description": "Subtitle shown when profile is not yet set up"
+  },
+  "continueWithGoogle": "Mit Google fortfahren",
+  "@continueWithGoogle": {
+    "description": "Button label for Google sign-in"
+  },
+  "couldNotDeleteAccount": "Konto konnte nicht gelöscht werden.",
+  "@couldNotDeleteAccount": {
+    "description": "Error when account deletion fails"
+  },
+  "couldNotSendResetEmail": "E-Mail konnte nicht gesendet werden.",
+  "@couldNotSendResetEmail": {
+    "description": "Generic error when sending reset email fails"
+  },
+  "couldNotUpdateVisibility": "Sichtbarkeit konnte nicht aktualisiert werden",
+  "@couldNotUpdateVisibility": {
+    "description": "Error when toggling appear-offline fails"
+  },
+  "createAccount": "Konto erstellen",
+  "@createAccount": {
+    "description": "Button/title for creating a new account"
+  },
+  "createProfile": "Profil erstellen",
+  "@createProfile": {
+    "description": "Button to navigate to profile creation/registration"
+  },
+  "creditGeyserSubtitle": "Bedrock-Skin-Rendering über GeyserMC.",
+  "@creditGeyserSubtitle": {
+    "description": "Subtitle for GeyserMC credit tile"
+  },
+  "creditGeyserTitle": "GeyserMC",
+  "@creditGeyserTitle": {
+    "description": "Title for GeyserMC credit tile"
+  },
+  "creditMinecraftWikiSubtitle": "Wiki-Datenquelle. Inhalt unter Creative Commons.",
+  "@creditMinecraftWikiSubtitle": {
+    "description": "Subtitle for Minecraft Wiki credit tile"
+  },
+  "creditMojangSubtitle": "Java-Spielerskins und Profile über die Mojang-API.",
+  "@creditMojangSubtitle": {
+    "description": "Subtitle for Mojang credit tile"
+  },
+  "creditMojangTitle": "Mojang / Microsoft",
+  "@creditMojangTitle": {
+    "description": "Title for Mojang credit tile"
+  },
+  "creditXboxSubtitle": "Bedrock-Kontoverknüpfung über Xbox Live.",
+  "@creditXboxSubtitle": {
+    "description": "Subtitle for Xbox credit tile"
+  },
+  "creditXboxTitle": "Xbox / Microsoft",
+  "@creditXboxTitle": {
+    "description": "Title for Xbox credit tile"
+  },
+  "dataSourcesSection": "Datenquellen & Credits",
+  "@dataSourcesSection": {
+    "description": "Section header for data sources in Info sheet"
+  },
+  "deleteAccountBody": "Damit wird dein Konto und alle Daten dauerhaft gelöscht.",
+  "@deleteAccountBody": {
+    "description": "Body text for delete account confirmation dialog"
+  },
+  "deleteAccountTitle": "Konto löschen",
+  "@deleteAccountTitle": {
+    "description": "Title for delete account dialog/button"
+  },
+  "deletePermanently": "Dauerhaft löschen",
+  "@deletePermanently": {
+    "description": "Confirm button for permanent deletion"
+  },
+  "displayNameLabel": "Anzeigename",
+  "@displayNameLabel": {
+    "description": "Label for display name field"
+  },
+  "displayNameRowLabel": "Anzeigename",
+  "@displayNameRowLabel": {
+    "description": "Row label for display name in public profile"
+  },
+  "edit": "Bearbeiten",
+  "@edit": {
+    "description": "Edit button label"
+  },
+  "editServer": "Server bearbeiten",
+  "@editServer": {
+    "description": "Title for edit server form in manage servers"
+  },
+  "editionLabel": "Edition",
+  "@editionLabel": {
+    "description": "Label for the edition toggle in manage servers form"
+  },
+  "emailAddressHint": "E-Mail-Adresse",
+  "@emailAddressHint": {
+    "description": "Hint text for email address field"
+  },
+  "emailAlreadyInUse": "Diese E-Mail-Adresse wird bereits verwendet",
+  "@emailAlreadyInUse": {
+    "description": "Error when email is already registered"
+  },
+  "emailDifferentMethod": "Diese E-Mail ist mit einer anderen Methode verknüpft",
+  "@emailDifferentMethod": {
+    "description": "Error when email already uses a different auth method"
+  },
+  "enterEmailAndPassword": "E-Mail und Passwort eingeben",
+  "@enterEmailAndPassword": {
+    "description": "Validation when email or password is empty on sign-in"
+  },
+  "findUser": "Benutzer suchen",
+  "@findUser": {
+    "description": "Tooltip for the search/find user button"
+  },
+  "forgotPassword": "Passwort vergessen?",
+  "@forgotPassword": {
+    "description": "Link to trigger password reset flow"
+  },
+  "friendRemoved": "{name} wurde aus deinen Freunden entfernt",
+  "@friendRemoved": {
+    "description": "Toast shown after removing a friend",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "friendRequestAccepted": "Du bist jetzt mit {name} befreundet",
+  "@friendRequestAccepted": {
+    "description": "Toast when a friend request is accepted",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "friendRequestSent": "Freundschaftsanfrage gesendet",
+  "@friendRequestSent": {
+    "description": "Toast shown after friend request is sent from public profile"
+  },
+  "friendRequestSentTo": "Freundschaftsanfrage an {name} gesendet",
+  "@friendRequestSentTo": {
+    "description": "Toast when a friend request is sent",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "googleSignInFailed": "Google-Anmeldung fehlgeschlagen.",
+  "@googleSignInFailed": {
+    "description": "Error when Google sign-in fails"
+  },
+  "incorrectEmailOrPassword": "Falsche E-Mail oder falsches Passwort",
+  "@incorrectEmailOrPassword": {
+    "description": "Error for wrong credentials"
+  },
+  "infoAndLegal": "Info & Rechtliches",
+  "@infoAndLegal": {
+    "description": "Title of the Info & Legal sheet"
+  },
+  "invalidEmailError": "Die E-Mail-Adresse ist nicht gültig",
+  "@invalidEmailError": {
+    "description": "Error for invalid email format"
+  },
+  "ipAddressFieldLabel": "IP-Adresse",
+  "@ipAddressFieldLabel": {
+    "description": "IP Address field label in edit server form"
+  },
+  "ipRequiredError": "IP-Adresse erforderlich",
+  "@ipRequiredError": {
+    "description": "Validation error when IP address is empty"
+  },
+  "lastSeenLabel": "Zuletzt gesehen",
+  "@lastSeenLabel": {
+    "description": "Row label for last seen date in public profile"
+  },
+  "legalSection": "Rechtliches",
+  "@legalSection": {
+    "description": "Section header in Info sheet"
+  },
+  "linkAccountsHint": "Verknüpfe deine Minecraft-Konten.",
+  "@linkAccountsHint": {
+    "description": "Hint when no accounts are linked"
+  },
+  "linkJava": "Java verknüpfen",
+  "@linkJava": {
+    "description": "Button to link a Java account"
+  },
+  "linkXbox": "Xbox verknüpfen",
+  "@linkXbox": {
+    "description": "Button to link an Xbox/Bedrock account"
+  },
+  "linkedAccountsTitle": "Verknüpfte Konten",
+  "@linkedAccountsTitle": {
+    "description": "Section title for linked accounts card"
+  },
+  "messagePlaceholder": "Nachricht…",
+  "@messagePlaceholder": {
+    "description": "Hint text in the chat message input"
+  },
+  "minecraftTrademark": "\"Minecraft\" ist ein Warenzeichen von Microsoft Corporation.",
+  "@minecraftTrademark": {
+    "description": "Minecraft trademark notice"
+  },
+  "nameLabel": "Name",
+  "@nameLabel": {
+    "description": "Generic Name field label"
+  },
+  "nameValidationError": "Name muss 1–50 Zeichen haben",
+  "@nameValidationError": {
+    "description": "Validation error when server name is invalid"
+  },
+  "nldServerLabelShort": "MCCompanion Server",
+  "@nldServerLabelShort": {
+    "description": "Section label above relay selector in More sheet"
+  },
+  "noAccountForEmail": "Kein Konto für diese E-Mail gefunden",
+  "@noAccountForEmail": {
+    "description": "Error when no account exists for the email"
+  },
+  "noAccountYet": "Noch kein Konto? Erstelle eines",
+  "@noAccountYet": {
+    "description": "Toggle to switch to register mode"
+  },
+  "noConversationsYet": "Noch keine Gespräche",
+  "@noConversationsYet": {
+    "description": "Empty state title on conversations screen"
+  },
+  "noFriendsSub": "Füge Freunde hinzu, um sie hier zu sehen.",
+  "@noFriendsSub": {
+    "description": "Empty state subtitle on friends tab"
+  },
+  "noFriendsYet": "Noch keine Freunde",
+  "@noFriendsYet": {
+    "description": "Empty state title on friends tab"
+  },
+  "noMessagesYet": "Noch keine Nachrichten.\nSag Hallo!",
+  "@noMessagesYet": {
+    "description": "Empty state in chat screen"
+  },
+  "noPartnerServers": "Noch keine Partnerserver verfügbar.",
+  "@noPartnerServers": {
+    "description": "Empty state text on partner servers screen"
+  },
+  "noPendingRequests": "Keine ausstehenden Anfragen",
+  "@noPendingRequests": {
+    "description": "Empty state title on requests tab"
+  },
+  "noServerSelected": "Kein Server ausgewählt",
+  "@noServerSelected": {
+    "description": "Placeholder when no server is entered in connection panel"
+  },
+  "nowFriendsWith": "Jetzt befreundet mit @{username}",
+  "@nowFriendsWith": {
+    "description": "Toast when accepted a friend request from public profile",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "offlineFriendsLabel": "{count} offline",
+  "@offlineFriendsLabel": {
+    "description": "Section label for offline friends",
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "onlineFriendsLabel": "{count} online",
+  "@onlineFriendsLabel": {
+    "description": "Section label for online friends",
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "orDivider": "oder",
+  "@orDivider": {
+    "description": "Divider text between email and social sign-in"
+  },
+  "partnerServersTitle": "Partnerserver",
+  "@partnerServersTitle": {
+    "description": "Title for the partner servers screen"
+  },
+  "passwordHint": "Passwort",
+  "@passwordHint": {
+    "description": "Hint text for password field"
+  },
+  "paywallContinue": "Weiter",
+  "paywallManaged": "Verwaltet von Apple/Google. Jederzeit kündbar.",
+  "paywallMonthly": "Monatlich",
+  "paywallNoActivePurchases": "Keine aktiven Käufe gefunden.",
+  "paywallNoPkgs": "Keine Pakete verfügbar.",
+  "paywallPopular": "Beliebt",
+  "paywallPurchaseFailed": "Kauf fehlgeschlagen.",
+  "paywallPurchaseSuccess": "Kauf erfolgreich!",
+  "paywallPurchasesRestored": "Käufe wiederhergestellt!",
+  "paywallRestore": "Wiederherstellen",
+  "paywallRestoreFailed": "Wiederherstellung fehlgeschlagen.",
+  "paywallSavePercent": "~17% sparen",
+  "paywallSlotLabel": "{slots} Server-Slots",
+  "@paywallSlotLabel": {
+    "placeholders": {
+      "slots": {}
+    }
+  },
+  "paywallSubtitle": "Verfolge mehr Server und erhalte Benachrichtigungen.",
+  "paywallYearly": "Jährlich",
+  "platformFieldLabel": "Plattform",
+  "@platformFieldLabel": {
+    "description": "Platform field label in edit server form"
+  },
+  "playerLookupCopied": "{value} kopiert",
+  "@playerLookupCopied": {
+    "description": "Toast shown after copying a value in player lookup",
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "playerLookupHint": "Benutzernamen eingeben…",
+  "@playerLookupHint": {
+    "description": "Hint text for player lookup search field"
+  },
+  "playerLookupLabelTier": "Stufe",
+  "@playerLookupLabelTier": {
+    "description": "Label for tier field in player lookup"
+  },
+  "playerLookupLabelUsername": "Benutzername",
+  "@playerLookupLabelUsername": {
+    "description": "Label for username field in player lookup"
+  },
+  "playerLookupLinked": "Verknüpfte Konten gefunden",
+  "@playerLookupLinked": {
+    "description": "Badge shown when linked accounts are found"
+  },
+  "playerLookupSubtitle": "Java- oder Bedrock-Spieler suchen",
+  "@playerLookupSubtitle": {
+    "description": "Subtitle/hint on player lookup screen"
+  },
+  "playerLookupTitle": "Spieler suchen",
+  "@playerLookupTitle": {
+    "description": "Title of the player lookup screen"
+  },
+  "playersCount": "{players} / {max} Spieler",
+  "@playersCount": {
+    "description": "Player count label on tracked server card",
+    "placeholders": {
+      "players": {},
+      "max": {}
+    }
+  },
+  "portFieldLabel": "Port",
+  "@portFieldLabel": {
+    "description": "Port field label in edit server form"
+  },
+  "portRangeError": "Port muss zwischen 1 und 65535 liegen",
+  "@portRangeError": {
+    "description": "Validation error when port is out of range"
+  },
+  "privacyPolicy": "Datenschutzrichtlinie",
+  "@privacyPolicy": {
+    "description": "Privacy Policy tile title"
+  },
+  "privacyPolicySubtitle": "Wie wir deine Daten schützen",
+  "@privacyPolicySubtitle": {
+    "description": "Privacy Policy tile subtitle"
+  },
+  "profileCardTitle": "Profil",
+  "@profileCardTitle": {
+    "description": "Title for the edit profile card"
+  },
+  "profileNotSetUp": "Profil nicht eingerichtet",
+  "@profileNotSetUp": {
+    "description": "Title when user is authenticated but has no profile"
+  },
+  "profileSectionLabel": "Profil",
+  "@profileSectionLabel": {
+    "description": "Section label in public profile for profile info card"
+  },
+  "profileUpdated": "Profil aktualisiert",
+  "@profileUpdated": {
+    "description": "Toast shown after profile is saved"
+  },
+  "publicProfileTitle": "Profil",
+  "@publicProfileTitle": {
+    "description": "AppBar title fallback for public profile when username not loaded"
+  },
+  "relay": "Relay",
+  "@relay": {
+    "description": "Label for the Relay nav item and sheet title"
+  },
+  "remove": "Entfernen",
+  "@remove": {
+    "description": "Remove button label"
+  },
+  "removeFriendButton": "Freund entfernen",
+  "@removeFriendButton": {
+    "description": "Button label to remove a friend on public profile"
+  },
+  "removeFriendConfirm": "{name} aus deinen Freunden entfernen?",
+  "@removeFriendConfirm": {
+    "description": "Confirmation text for removing a friend",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "removeFriendDialogBody": "@{username} als Freund entfernen?",
+  "@removeFriendDialogBody": {
+    "description": "Dialog body when removing a friend from public profile",
+    "placeholders": {
+      "username": {}
+    }
+  },
+  "removeFriendDialogTitle": "Freund entfernen",
+  "@removeFriendDialogTitle": {
+    "description": "Dialog title when removing a friend from public profile"
+  },
+  "removeFriendTitle": "Freund entfernen",
+  "@removeFriendTitle": {
+    "description": "Dialog title for removing a friend"
+  },
+  "removeJavaConfirm": "{name} aus deinen verknüpften Konten entfernen?",
+  "@removeJavaConfirm": {
+    "description": "Confirmation text for unlinking a Java account",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "removeLabelConfirm": "{name} aus deinen verknüpften Konten entfernen?",
+  "@removeLabelConfirm": {
+    "description": "Confirmation text for unlinking a Bedrock/Xbox account",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "reportAdditionalDetails": "Zusätzliche Details (optional)…",
+  "@reportAdditionalDetails": {
+    "description": "Hint text for additional details field in report sheet"
+  },
+  "reportDisclaimer": "Berichte werden von unserem Team überprüft.",
+  "@reportDisclaimer": {
+    "description": "Disclaimer text shown in the report sheet"
+  },
+  "reportFailed": "Bericht konnte nicht gesendet werden.",
+  "@reportFailed": {
+    "description": "Toast shown when report submission fails"
+  },
+  "reportMessage": "Nachricht melden",
+  "@reportMessage": {
+    "description": "Title when reporting a specific message"
+  },
+  "reportReasonHarassment": "Belästigung",
+  "@reportReasonHarassment": {
+    "description": "Report reason: harassment"
+  },
+  "reportReasonInappropriate": "Unangemessener Inhalt",
+  "@reportReasonInappropriate": {
+    "description": "Report reason: inappropriate content"
+  },
+  "reportReasonOther": "Sonstiges",
+  "@reportReasonOther": {
+    "description": "Report reason: other"
+  },
+  "reportReasonSpam": "Spam",
+  "@reportReasonSpam": {
+    "description": "Report reason: spam"
+  },
+  "reportSubmit": "Bericht senden",
+  "@reportSubmit": {
+    "description": "Button label to submit a report"
+  },
+  "reportSuccess": "Bericht gesendet. Danke.",
+  "@reportSuccess": {
+    "description": "Toast shown after a successful report submission"
+  },
+  "reportUser": "Benutzer melden",
+  "@reportUser": {
+    "description": "Tooltip/button to report a user"
+  },
+  "reportUserWithName": "{name} melden",
+  "@reportUserWithName": {
+    "description": "Title when reporting a user by name",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "requestAlreadyPending": "Eine Anfrage an {name} ist bereits ausstehend",
+  "@requestAlreadyPending": {
+    "description": "Error when friend request is already pending",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "requestAlreadyPendingMsg": "Eine Anfrage ist bereits ausstehend.",
+  "@requestAlreadyPendingMsg": {
+    "description": "Error when friend request is already pending (public profile)"
+  },
+  "requestDeclined": "Anfrage von {name} abgelehnt",
+  "@requestDeclined": {
+    "description": "Toast when a friend request is declined",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "requestSentButton": "Anfrage gesendet",
+  "@requestSentButton": {
+    "description": "Disabled button label when request already sent"
+  },
+  "requestsAppearHere": "Neue Freundschaftsanfragen erscheinen hier.",
+  "@requestsAppearHere": {
+    "description": "Empty state subtitle on requests tab"
+  },
+  "resetLinkSent": "Link an {email} gesendet",
+  "@resetLinkSent": {
+    "description": "Toast after reset email is sent",
+    "placeholders": {
+      "email": {}
+    }
+  },
+  "resetPasswordBody": "Gib deine E-Mail ein, um einen Reset-Link zu erhalten.",
+  "@resetPasswordBody": {
+    "description": "Body text for reset password dialog"
+  },
+  "resetPasswordTitle": "Passwort zurücksetzen",
+  "@resetPasswordTitle": {
+    "description": "Title for reset password dialog"
+  },
+  "selectBedrockAccount": "Bedrock-Konto wählen",
+  "@selectBedrockAccount": {
+    "description": "Title of the Bedrock account picker bottom sheet"
+  },
+  "selectModeSection": "MODUS WÄHLEN",
+  "@selectModeSection": {
+    "description": "Section label above mode chips in connection panel"
+  },
+  "send": "Senden",
+  "@send": {
+    "description": "Send button label"
+  },
+  "sendLink": "Link senden",
+  "@sendLink": {
+    "description": "Button to send the password reset link"
+  },
+  "serverAddressExampleHint": "play.beispiel.de",
+  "@serverAddressExampleHint": {
+    "description": "Example hint text for server address field"
+  },
+  "serverDescriptionExampleHint": "Survival-Server mit Freunden",
+  "@serverDescriptionExampleHint": {
+    "description": "Example hint text for server description field"
+  },
+  "serverNameExampleHint": "Mein toller Server",
+  "@serverNameExampleHint": {
+    "description": "Example hint text for server name field"
+  },
+  "serversSection": "SERVER",
+  "@serversSection": {
+    "description": "Section label above servers panel in connection panel"
+  },
+  "signInSubtitle": "Melde dich an, um auf dein Profil zuzugreifen.",
+  "@signInSubtitle": {
+    "description": "Subtitle on the sign-in screen"
+  },
+  "signOut": "Abmelden",
+  "@signOut": {
+    "description": "Sign out button label"
+  },
+  "skinsCouldNotLoad": "Skins konnten nicht geladen werden",
+  "@skinsCouldNotLoad": {
+    "description": "Error text when recent skins cannot be loaded"
+  },
+  "skinsCreate": "Erstellen",
+  "@skinsCreate": {
+    "description": "Button to create/open skin editor"
+  },
+  "skinsDownload": "Herunterladen",
+  "@skinsDownload": {
+    "description": "Download button in skin detail sheet"
+  },
+  "skinsEdit": "Bearbeiten",
+  "@skinsEdit": {
+    "description": "Edit button in skin detail sheet"
+  },
+  "skinsEmptyMySkins": "Noch keine Skins. Lade einen hoch!",
+  "@skinsEmptyMySkins": {
+    "description": "Empty state text for saved skins section"
+  },
+  "skinsInvalidFile": "Ungültige Bilddatei",
+  "@skinsInvalidFile": {
+    "description": "Error when the selected file is not a valid image"
+  },
+  "skinsMustBe64": "Skin muss 64×64 Pixel sein",
+  "@skinsMustBe64": {
+    "description": "Error when uploaded skin is wrong size"
+  },
+  "skinsNoAccountsSubtitle": "Verknüpfe ein Konto, um deine Skins zu sehen.",
+  "@skinsNoAccountsSubtitle": {
+    "description": "Subtitle when no Minecraft accounts are linked"
+  },
+  "skinsNoAccountsTitle": "Keine Minecraft-Konten verknüpft",
+  "@skinsNoAccountsTitle": {
+    "description": "Title when no Minecraft accounts are linked"
+  },
+  "skinsPageOf": "Seite {page} von {total}",
+  "@skinsPageOf": {
+    "description": "Pagination label on skins screen",
+    "placeholders": {
+      "page": {},
+      "total": {}
+    }
+  },
+  "skinsSectionMy": "MEINE SKINS",
+  "@skinsSectionMy": {
+    "description": "Section label for saved/local skins"
+  },
+  "skinsSectionRecent": "AKTUELLE SKINS",
+  "@skinsSectionRecent": {
+    "description": "Section label for recent Geyser skins"
+  },
+  "skinsSectionYours": "DEINE SKINS",
+  "@skinsSectionYours": {
+    "description": "Section label for the user's linked account skins"
+  },
+  "skinsSignInSubtitle": "Melde dich an, um deine Skins zu sehen.",
+  "@skinsSignInSubtitle": {
+    "description": "Subtitle when user is not signed in on skins screen"
+  },
+  "skinsSignInTitle": "Anmelden zum Anzeigen",
+  "@skinsSignInTitle": {
+    "description": "Title when user is not signed in on skins screen"
+  },
+  "skinsUpload": "Hochladen",
+  "@skinsUpload": {
+    "description": "Button to upload a skin"
+  },
+  "somethingWentWrong": "Etwas ist schiefgelaufen. Erneut versuchen.",
+  "@somethingWentWrong": {
+    "description": "Generic error message"
+  },
+  "startChatHint": "Finde einen Freund und fange an zu chatten!",
+  "@startChatHint": {
+    "description": "Empty state subtitle on conversations screen"
+  },
+  "tabChats": "Chats",
+  "@tabChats": {
+    "description": "Tab label for Chats tab"
+  },
+  "tabFriends": "Freunde",
+  "@tabFriends": {
+    "description": "Tab label for Friends tab"
+  },
+  "tabProfile": "Profil",
+  "@tabProfile": {
+    "description": "Tab label for Profile tab"
+  },
+  "tabRequests": "Anfragen",
+  "@tabRequests": {
+    "description": "Tab label for Requests tab"
+  },
+  "termsOfService": "Nutzungsbedingungen",
+  "@termsOfService": {
+    "description": "Terms of Service tile title"
+  },
+  "termsOfServiceSubtitle": "Regeln und Bedingungen",
+  "@termsOfServiceSubtitle": {
+    "description": "Terms of Service tile subtitle"
+  },
+  "today": "Heute",
+  "@today": {
+    "description": "Date divider label for today"
+  },
+  "trackerLimitReached": "Limit erreicht. Upgrade für mehr Server.",
+  "@trackerLimitReached": {
+    "description": "Banner shown when tracker slot limit is reached"
+  },
+  "tryAgain": "Erneut versuchen",
+  "@tryAgain": {
+    "description": "Generic try again button label"
+  },
+  "unlink": "Verknüpfung aufheben",
+  "@unlink": {
+    "description": "Unlink button label"
+  },
+  "unlinkJavaTitle": "Java-Konto trennen",
+  "@unlinkJavaTitle": {
+    "description": "Dialog title for unlinking a Java account"
+  },
+  "unlinkXboxTitle": "Xbox-Konto trennen",
+  "@unlinkXboxTitle": {
+    "description": "Dialog title for unlinking an Xbox account"
+  },
+  "upgradeButton": "Upgrade",
+  "@upgradeButton": {
+    "description": "Button to open paywall/upgrade screen"
+  },
+  "userNotFound": "Benutzer nicht gefunden",
+  "@userNotFound": {
+    "description": "Text shown when a user profile cannot be found"
+  },
+  "userNotFoundMsg": "Benutzer {name} nicht gefunden",
+  "@userNotFoundMsg": {
+    "description": "Error when user is not found",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "userNotFoundMsg2": "Benutzer nicht gefunden.",
+  "@userNotFoundMsg2": {
+    "description": "Error when user not found sending friend request from public profile"
+  },
+  "usernameDisplayLabel": "Benutzername",
+  "@usernameDisplayLabel": {
+    "description": "Label for username row in profile display"
+  },
+  "usernameHint": "Benutzername",
+  "@usernameHint": {
+    "description": "Hint text for username input"
+  },
+  "usernameRowLabel": "Benutzername",
+  "@usernameRowLabel": {
+    "description": "Row label for username in public profile"
+  },
+  "weakPassword": "Passwort zu schwach.",
+  "@weakPassword": {
+    "description": "Error for weak password"
+  },
+  "wikiArmor": "Rüstung",
+  "@wikiArmor": {
+    "description": "Wiki item sub-category: Armor"
+  },
+  "wikiBiomes": "Biome",
+  "@wikiBiomes": {
+    "description": "Wiki category: Biomes"
+  },
+  "wikiBlocks": "Blöcke",
+  "@wikiBlocks": {
+    "description": "Wiki category: Blocks"
+  },
+  "wikiBoss": "Boss",
+  "@wikiBoss": {
+    "description": "Wiki mob sub-category: Boss"
+  },
+  "wikiBow": "Bogen",
+  "@wikiBow": {
+    "description": "Wiki enchantment sub-category: Bow"
+  },
+  "wikiBrewing": "Brauen",
+  "@wikiBrewing": {
+    "description": "Wiki item sub-category: Brewing"
+  },
+  "wikiCategories": "{count} Kategorien",
+  "@wikiCategories": {
+    "description": "Subtitle on wiki section card showing number of subcategories",
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "wikiCouldNotLoadContent": "Inhalt konnte nicht geladen werden.",
+  "@wikiCouldNotLoadContent": {
+    "description": "Error when wiki article content fails to load"
+  },
+  "wikiCouldNotLoadPages": "Seiten konnten nicht geladen werden.",
+  "@wikiCouldNotLoadPages": {
+    "description": "Error when wiki pages fail to load"
+  },
+  "wikiCouldNotReach": "Wiki nicht erreichbar.",
+  "@wikiCouldNotReach": {
+    "description": "Error when the wiki cannot be reached"
+  },
+  "wikiCrafting": "Handwerk",
+  "@wikiCrafting": {
+    "description": "Section header for crafting recipes in wiki detail"
+  },
+  "wikiDecoration": "Dekoration",
+  "@wikiDecoration": {
+    "description": "Wiki block sub-category: Decoration"
+  },
+  "wikiEnchantments": "Verzauberungen",
+  "@wikiEnchantments": {
+    "description": "Wiki category: Enchantments"
+  },
+  "wikiFishing": "Angeln",
+  "@wikiFishing": {
+    "description": "Wiki enchantment sub-category: Fishing"
+  },
+  "wikiFood": "Essen",
+  "@wikiFood": {
+    "description": "Wiki item sub-category: Food"
+  },
+  "wikiHostile": "Feindselig",
+  "@wikiHostile": {
+    "description": "Wiki mob sub-category: Hostile"
+  },
+  "wikiItems": "Gegenstände",
+  "@wikiItems": {
+    "description": "Wiki category: Items"
+  },
+  "wikiMaterials": "Materialien",
+  "@wikiMaterials": {
+    "description": "Wiki item sub-category: Materials"
+  },
+  "wikiMinecraftWiki": "Minecraft Wiki",
+  "@wikiMinecraftWiki": {
+    "description": "Badge/label linking to Minecraft Wiki"
+  },
+  "wikiMobs": "Mobs",
+  "@wikiMobs": {
+    "description": "Wiki category: Mobs"
+  },
+  "wikiNatural": "Natürlich",
+  "@wikiNatural": {
+    "description": "Wiki block sub-category: Natural"
+  },
+  "wikiNether": "Nether",
+  "@wikiNether": {
+    "description": "Wiki biome/structure sub-category: Nether"
+  },
+  "wikiNeutral": "Neutral",
+  "@wikiNeutral": {
+    "description": "Wiki mob sub-category: Neutral"
+  },
+  "wikiNoPagesFound": "Keine Seiten gefunden",
+  "@wikiNoPagesFound": {
+    "description": "Empty state when no wiki pages are available"
+  },
+  "wikiNoResults": "Keine Ergebnisse für \"{query}\"",
+  "@wikiNoResults": {
+    "description": "Empty search results message",
+    "placeholders": {
+      "query": {}
+    }
+  },
+  "wikiOpenInBrowser": "Im Browser öffnen",
+  "@wikiOpenInBrowser": {
+    "description": "Button to open wiki article in external browser"
+  },
+  "wikiOres": "Erze",
+  "@wikiOres": {
+    "description": "Wiki block sub-category: Ores"
+  },
+  "wikiOverworld": "Oberwelt",
+  "@wikiOverworld": {
+    "description": "Wiki biome/structure sub-category: Overworld"
+  },
+  "wikiPassive": "Passiv",
+  "@wikiPassive": {
+    "description": "Wiki mob sub-category: Passive"
+  },
+  "wikiPlants": "Pflanzen",
+  "@wikiPlants": {
+    "description": "Wiki block sub-category: Plants"
+  },
+  "wikiPotions": "Tränke",
+  "@wikiPotions": {
+    "description": "Wiki category: Potions"
+  },
+  "wikiRanged": "Fernkampf",
+  "@wikiRanged": {
+    "description": "Wiki item sub-category: Ranged"
+  },
+  "wikiReadFullArticle": "Vollständigen Artikel lesen",
+  "@wikiReadFullArticle": {
+    "description": "Button at bottom of wiki detail to open full article"
+  },
+  "wikiRedstone": "Redstone",
+  "@wikiRedstone": {
+    "description": "Wiki block sub-category: Redstone"
+  },
+  "wikiSearchHint": "Im Wiki suchen…",
+  "@wikiSearchHint": {
+    "description": "Hint text for wiki search field"
+  },
+  "wikiStatusEffects": "Statuseffekte",
+  "@wikiStatusEffects": {
+    "description": "Wiki potion sub-category: Status Effects"
+  },
+  "wikiStone": "Stein",
+  "@wikiStone": {
+    "description": "Wiki block sub-category: Stone"
+  },
+  "wikiStructures": "Strukturen",
+  "@wikiStructures": {
+    "description": "Wiki category: Structures"
+  },
+  "wikiSword": "Schwert",
+  "@wikiSword": {
+    "description": "Wiki enchantment sub-category: Sword"
+  },
+  "wikiSwords": "Schwerter",
+  "@wikiSwords": {
+    "description": "Wiki item sub-category: Swords"
+  },
+  "wikiTheEnd": "The End",
+  "@wikiTheEnd": {
+    "description": "Wiki biome/structure sub-category: The End"
+  },
+  "wikiTitle": "Wiki",
+  "@wikiTitle": {
+    "description": "Title of the wiki screen"
+  },
+  "wikiTool": "Werkzeug",
+  "@wikiTool": {
+    "description": "Wiki enchantment sub-category: Tool"
+  },
+  "wikiTools": "Werkzeuge",
+  "@wikiTools": {
+    "description": "Wiki item sub-category: Tools"
+  },
+  "wikiUtility": "Nutzmob",
+  "@wikiUtility": {
+    "description": "Wiki mob sub-category: Utility"
+  },
+  "wikiWood": "Holz",
+  "@wikiWood": {
+    "description": "Wiki block sub-category: Wood"
+  },
+  "xboxAccountLinked": "Xbox-Konto verknüpft!",
+  "@xboxAccountLinked": {
+    "description": "Success text when Xbox account is linked"
+  },
+  "xboxBedrockLabel": "Xbox / Bedrock",
+  "@xboxBedrockLabel": {
+    "description": "Section label for Xbox/Bedrock account in public profile"
+  },
+  "xboxCodeCopied": "Code in die Zwischenablage kopiert",
+  "@xboxCodeCopied": {
+    "description": "Snackbar shown after code is copied"
+  },
+  "xboxCodeExpired": "Code abgelaufen. Erneut versuchen.",
+  "@xboxCodeExpired": {
+    "description": "Error when Xbox device code expires"
+  },
+  "xboxCouldNotStart": "Xbox-Anmeldung konnte nicht gestartet werden.",
+  "@xboxCouldNotStart": {
+    "description": "Error when Xbox login cannot be started"
+  },
+  "xboxGoToLink": "Geh zum Link und gib den Code ein.",
+  "@xboxGoToLink": {
+    "description": "Instruction on Xbox link waiting screen"
+  },
+  "xboxLinkTitle": "Xbox-Konto verknüpfen",
+  "@xboxLinkTitle": {
+    "description": "AppBar title for Xbox link screen"
+  },
+  "xboxOpenLink": "microsoft.com/link öffnen",
+  "@xboxOpenLink": {
+    "description": "Button label to open Microsoft device auth link"
+  },
+  "xboxSignInWithMicrosoft": "Mit Microsoft anmelden",
+  "@xboxSignInWithMicrosoft": {
+    "description": "Heading on Xbox link waiting screen"
+  },
+  "xboxSomethingWrong": "Etwas ist schiefgelaufen.",
+  "@xboxSomethingWrong": {
+    "description": "Generic error on Xbox link screen"
+  },
+  "xboxStartingLogin": "Xbox-Anmeldung starten…",
+  "@xboxStartingLogin": {
+    "description": "Loading text when starting Xbox login"
+  },
+  "xboxTapToCopy": "Code antippen zum Kopieren",
+  "@xboxTapToCopy": {
+    "description": "Hint below the code on Xbox link screen"
+  },
+  "xboxWaitingForLogin": "Warte auf Anmeldung…",
+  "@xboxWaitingForLogin": {
+    "description": "Status text while polling for Xbox login"
+  },
+  "xboxYourCode": "Dein Code",
+  "@xboxYourCode": {
+    "description": "Label above the Microsoft device code"
+  },
+  "yesterday": "Gestern",
+  "@yesterday": {
+    "description": "Date divider label for yesterday"
+  },
+  "youPrefix": "Du",
+  "@youPrefix": {
+    "description": "Prefix for last message preview when message is from current user"
+  },
+  "yourNameHint": "Dein Name",
+  "@yourNameHint": {
+    "description": "Hint text for display name field"
+  },
+  "javaLinkTitle": "Java Edition verknüpfen",
+  "javaStartingLogin": "Microsoft-Anmeldung starten…",
+  "javaSignInWithMicrosoft": "Mit Microsoft anmelden",
+  "javaGoToLink": "Geh zum Link und gib den Code ein, um dein Minecraft Java Edition-Konto zu verknüpfen.",
+  "javaYourCode": "Dein Code",
+  "javaTapToCopy": "Code antippen zum Kopieren",
+  "javaOpenLink": "microsoft.com/link öffnen",
+  "javaWaitingForLogin": "Warte auf Anmeldung…",
+  "javaAccountLinked": "Java Edition verknüpft!",
+  "javaNoJavaTitle": "Kein Java Edition gefunden",
+  "javaNoJavaBody": "Das angemeldete Microsoft-Konto besitzt kein Minecraft Java Edition.",
+  "javaTryDifferentAccount": "Anderes Konto versuchen",
+  "javaCouldNotStart": "Microsoft-Anmeldung konnte nicht gestartet werden. Erneut versuchen.",
+  "javaCodeExpired": "Code abgelaufen. Erneut versuchen.",
+  "javaSomethingWrong": "Etwas ist schiefgelaufen. Erneut versuchen.",
+  "javaCodeCopied": "Code in die Zwischenablage kopiert",
+  "splashFeatureConnect": "Verbinden",
+  "splashFeatureFriends": "Freunde",
+  "splashFeatureChat": "Chat",
+  "splashFeatureSkins": "Skins",
+  "featureLabelConnector": "Connector",
+  "featureLabelSkins": "Skins",
+  "featureLabelWiki": "Wiki",
+  "featureLabelPartners": "Partner",
+  "featureLabelLookup": "Suche",
+  "featureLabelTracker": "Server-Tracker",
+  "featureSubtitleConnector": "Konsolen mit Minecraft verbinden",
+  "featureSubtitleSkins": "Minecraft-Skins durchsuchen & verwalten",
+  "featureSubtitleWiki": "Minecraft-Enzyklopädie",
+  "featureSubtitlePartners": "Empfohlene Server",
+  "featureSubtitleLookup": "Java- & Bedrock-Profile nachschlagen",
+  "featureSubtitleTracker": "Serverstatus überwachen & benachrichtigt werden",
+  "userSearchHint": "Benutzername, Gamertag oder Java-Name…",
+  "userSearchSub": "Suche nach Benutzername, Xbox-Gamertag oder Java-Name"
 }

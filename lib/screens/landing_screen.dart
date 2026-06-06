@@ -410,6 +410,7 @@ class _QuickCardState extends State<_QuickCard> {
   @override
   Widget build(BuildContext context) {
     final color = Color(widget.feature.colorValue);
+    final l = AppLocalizations.of(context)!;
     return GestureDetector(
       onTapDown: (_) => setState(() => _pressed = true),
       onTapUp: (_) => setState(() => _pressed = false),
@@ -444,7 +445,7 @@ class _QuickCardState extends State<_QuickCard> {
               }),
               const SizedBox(height: 8),
               Text(
-                widget.feature.label,
+                widget.feature.label(l),
                 style: const TextStyle(
                   color: AppTheme.textPrimary,
                   fontSize: 14,
@@ -456,7 +457,7 @@ class _QuickCardState extends State<_QuickCard> {
               ),
               const SizedBox(height: 4),
               Text(
-                widget.feature.subtitle(null),
+                widget.feature.subtitle(l),
                 style: const TextStyle(
                   color: AppTheme.textMuted,
                   fontSize: 11,
@@ -1025,6 +1026,7 @@ class _TileRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = Color(feature.colorValue);
+    final l = AppLocalizations.of(context)!;
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
@@ -1054,7 +1056,7 @@ class _TileRow extends StatelessWidget {
           const SizedBox(width: 12),
           Expanded(
             child: Text(
-              feature.label,
+              feature.label(l),
               style: const TextStyle(
                 color: AppTheme.textPrimary,
                 fontSize: 14,
@@ -1089,6 +1091,7 @@ class _NavEditor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final options = AppFeature.values
         .where((f) => !HomeCustomizationService.navSlotBlacklist.contains(f))
         .toList();
@@ -1136,7 +1139,7 @@ class _NavEditor extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    f.label,
+                    f.label(l),
                     style: TextStyle(
                       color: isSelected ? color : AppTheme.textMuted,
                       fontWeight: isSelected

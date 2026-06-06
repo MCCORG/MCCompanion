@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
+import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../models/user_model.dart';
 import '../services/user_service.dart';
@@ -60,20 +61,21 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
     final error = await UserService.sendFriendRequest(widget.username);
     if (!mounted) return;
     setState(() => _actionLoading = false);
+    final l = AppLocalizations.of(context)!;
     if (error == null) {
       setState(() => _friendStatus = 'pending_sent');
       _showToast(
-        'Friend request sent',
+        l.friendRequestSent,
         AppTheme.success,
         Icons.check_circle_rounded,
       );
     } else {
       final msg = switch (error) {
-        'already_friends' => 'You are already friends.',
-        'request_pending' => 'There is already a pending request.',
-        'not_found' => 'User not found.',
-        'blocked' => 'Cannot send a request to this user.',
-        _ => 'Something went wrong.',
+        'already_friends' => l.alreadyFriendsMsg,
+        'request_pending' => l.requestAlreadyPendingMsg,
+        'not_found' => l.userNotFoundMsg2,
+        'blocked' => l.cannotSendRequestMsg,
+        _ => l.somethingWentWrong,
       };
       _showToast(msg, AppTheme.error, Icons.error_outline_rounded);
     }
@@ -89,7 +91,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
     });
     if (ok)
       _showToast(
-        'Now friends with @${widget.username}',
+        AppLocalizations.of(context)!.nowFriendsWith(widget.username),
         AppTheme.success,
         Icons.check_circle_rounded,
       );
@@ -98,29 +100,32 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
   Future<void> _removeFriend() async {
     final confirmed = await showDialog<bool>(
       context: context,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: AppTheme.surfaceRaised,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: const BorderSide(color: AppTheme.borderGray),
-        ),
-        title: const Text('Remove friend'),
-        content: Text(
-          'Remove @${widget.username} as a friend?',
-          style: const TextStyle(color: AppTheme.textSecondary),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(ctx).pop(false),
-            child: const Text('Cancel'),
+      builder: (ctx) {
+        final l = AppLocalizations.of(ctx)!;
+        return AlertDialog(
+          backgroundColor: AppTheme.surfaceRaised,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+            side: const BorderSide(color: AppTheme.borderGray),
           ),
-          ElevatedButton(
-            onPressed: () => Navigator.of(ctx).pop(true),
-            style: ElevatedButton.styleFrom(backgroundColor: AppTheme.error),
-            child: const Text('Remove'),
+          title: Text(l.removeFriendDialogTitle),
+          content: Text(
+            l.removeFriendDialogBody(widget.username),
+            style: const TextStyle(color: AppTheme.textSecondary),
           ),
-        ],
-      ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(ctx).pop(false),
+              child: Text(l.cancel),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.of(ctx).pop(true),
+              style: ElevatedButton.styleFrom(backgroundColor: AppTheme.error),
+              child: Text(l.remove),
+            ),
+          ],
+        );
+      },
     );
     if (confirmed != true || !mounted) return;
     setState(() => _actionLoading = true);
@@ -193,19 +198,19 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
   }
 
   Widget _buildNotFound() {
-    return const Center(
+    return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
+          const Icon(
             Icons.person_off_rounded,
             color: AppTheme.textDisabled,
             size: 48,
           ),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
           Text(
-            'User not found',
-            style: TextStyle(
+            AppLocalizations.of(context)!.userNotFound,
+            style: const TextStyle(
               color: AppTheme.textSecondary,
               fontSize: 15,
               fontWeight: FontWeight.w600,
@@ -256,36 +261,39 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
           _buildFriendButton(),
           const SizedBox(height: 16),
 
-          _InfoCard(
-            icon: Icons.person_rounded,
-            label: 'Profile',
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _ProfileRow(
-                  label: 'Display name',
-                  value: u.displayName?.isNotEmpty == true
-                      ? u.displayName!
-                      : '—',
-                ),
-                const SizedBox(height: 8),
-                _ProfileRow(label: 'Username', value: '@${u.username}'),
-                if (u.lastSeenAt != null && !u.appearOffline) ...[
-                  const SizedBox(height: 8),
+          Builder(builder: (ctx) {
+            final l = AppLocalizations.of(ctx)!;
+            return _InfoCard(
+              icon: Icons.person_rounded,
+              label: l.profileSectionLabel,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   _ProfileRow(
-                    label: 'Last seen',
-                    value: _formatDate(u.lastSeenAt!),
+                    label: l.displayNameRowLabel,
+                    value: u.displayName?.isNotEmpty == true
+                        ? u.displayName!
+                        : '—',
                   ),
+                  const SizedBox(height: 8),
+                  _ProfileRow(label: l.usernameRowLabel, value: '@${u.username}'),
+                  if (u.lastSeenAt != null && !u.appearOffline) ...[
+                    const SizedBox(height: 8),
+                    _ProfileRow(
+                      label: l.lastSeenLabel,
+                      value: _formatDate(u.lastSeenAt!),
+                    ),
+                  ],
                 ],
-              ],
-            ),
-          ),
+              ),
+            );
+          }),
 
           if (u.bio?.isNotEmpty == true) ...[
             const SizedBox(height: 12),
-            _InfoCard(
+            Builder(builder: (ctx) => _InfoCard(
               icon: Icons.info_outline_rounded,
-              label: 'About',
+              label: AppLocalizations.of(ctx)!.aboutSectionLabel,
               child: Text(
                 u.bio!,
                 style: const TextStyle(
@@ -294,15 +302,15 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
                   height: 1.5,
                 ),
               ),
-            ),
+            )),
           ],
 
           if (u.xboxGamertag != null) ...[
             const SizedBox(height: 12),
-            _InfoCard(
+            Builder(builder: (ctx) => _InfoCard(
               icon: Icons.sports_esports_rounded,
               iconColor: xboxGreen,
-              label: 'Xbox / Bedrock',
+              label: AppLocalizations.of(ctx)!.xboxBedrockLabel,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -326,15 +334,15 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
                   ],
                 ],
               ),
-            ),
+            )),
           ],
 
           if (u.javaUsername != null) ...[
             const SizedBox(height: 12),
-            _InfoCard(
+            Builder(builder: (ctx) => _InfoCard(
               icon: Icons.videogame_asset_rounded,
               iconColor: const Color(0xFF1565C0),
-              label: 'Java Edition',
+              label: AppLocalizations.of(ctx)!.playerLookupJavaEdition,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -358,7 +366,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
                   ],
                 ],
               ),
-            ),
+            )),
           ],
 
           if (u.javaAccounts.isNotEmpty || u.bedrockAccounts.isNotEmpty) ...[
@@ -384,11 +392,12 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
       );
     }
 
+    final l = AppLocalizations.of(context)!;
     return switch (_friendStatus) {
       'friends' => OutlinedButton.icon(
         onPressed: _removeFriend,
         icon: const Icon(Icons.person_remove_rounded, size: 16),
-        label: const Text('Remove friend'),
+        label: Text(l.removeFriendButton),
         style: OutlinedButton.styleFrom(
           foregroundColor: AppTheme.error,
           side: BorderSide(color: AppTheme.error.withOpacity(0.40)),
@@ -398,7 +407,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
       'pending_sent' => OutlinedButton.icon(
         onPressed: null,
         icon: const Icon(Icons.hourglass_top_rounded, size: 16),
-        label: const Text('Request sent'),
+        label: Text(l.requestSentButton),
         style: OutlinedButton.styleFrom(
           foregroundColor: AppTheme.textMuted,
           side: const BorderSide(color: AppTheme.borderGray),
@@ -408,9 +417,9 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
       'pending_received' => ElevatedButton.icon(
         onPressed: _acceptRequest,
         icon: const Icon(Icons.check_rounded, size: 16),
-        label: const Text(
-          'Accept request',
-          style: TextStyle(fontWeight: FontWeight.w700),
+        label: Text(
+          l.acceptRequestButton,
+          style: const TextStyle(fontWeight: FontWeight.w700),
         ),
         style: ElevatedButton.styleFrom(
           backgroundColor: AppTheme.success,
@@ -421,9 +430,9 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
       _ => ElevatedButton.icon(
         onPressed: _sendRequest,
         icon: const Icon(Icons.person_add_rounded, size: 16),
-        label: const Text(
-          'Add friend',
-          style: TextStyle(fontWeight: FontWeight.w700),
+        label: Text(
+          l.addFriendButton,
+          style: const TextStyle(fontWeight: FontWeight.w700),
         ),
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 12),
@@ -516,13 +525,14 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: AppTheme.background,
       appBar: AppBar(
         backgroundColor: AppTheme.surface,
-        title: const Text(
-          'Find user',
-          style: TextStyle(
+        title: Text(
+          l.findUser,
+          style: const TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 16,
             fontWeight: FontWeight.w700,
@@ -549,7 +559,7 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
               autocorrect: false,
               style: const TextStyle(color: AppTheme.textPrimary),
               decoration: InputDecoration(
-                hintText: 'Username, gamertag or Java name…',
+                hintText: l.userSearchHint,
                 prefixIcon: const Icon(
                   Icons.search_rounded,
                   size: 18,
@@ -573,13 +583,13 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
               onSubmitted: (_) => _search(),
             ),
           ),
-          Expanded(child: _buildResults()),
+          Expanded(child: _buildResults(l)),
         ],
       ),
     );
   }
 
-  Widget _buildResults() {
+  Widget _buildResults(AppLocalizations l) {
     if (_loading) {
       return Center(
         child: CircularProgressIndicator(
@@ -589,19 +599,19 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
       );
     }
     if (!_searched) {
-      return const Center(
+      return Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
+            const Icon(
               Icons.manage_search_rounded,
               color: AppTheme.textDisabled,
               size: 48,
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             Text(
-              'Search by username, Xbox gamertag or Java name',
-              style: TextStyle(color: AppTheme.textMuted, fontSize: 13),
+              l.userSearchSub,
+              style: const TextStyle(color: AppTheme.textMuted, fontSize: 13),
             ),
           ],
         ),

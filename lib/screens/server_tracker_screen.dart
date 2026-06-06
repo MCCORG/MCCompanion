@@ -303,7 +303,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
-                    'You\'ve reached your server limit. Upgrade to track more servers.',
+                    AppLocalizations.of(context)!.trackerLimitReached,
                     style: TextStyle(
                       color: Colors.orange.shade300,
                       fontSize: 12,
@@ -313,7 +313,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
                 GestureDetector(
                   onTap: _openPaywall,
                   child: Text(
-                    'Upgrade',
+                    AppLocalizations.of(context)!.upgradeButton,
                     style: TextStyle(
                       color: AppTheme.brand,
                       fontSize: 12,
@@ -588,13 +588,13 @@ class _AddServerSheetState extends State<_AddServerSheet> {
           _Field(
             label: AppLocalizations.of(context)!.serverNameLabel,
             controller: _nameCtrl,
-            hint: 'e.g. My Server',
+            hint: AppLocalizations.of(context)!.serverNameExampleHint,
           ),
           const SizedBox(height: 12),
           _Field(
             label: AppLocalizations.of(context)!.ipAddressLabel,
             controller: _ipCtrl,
-            hint: 'e.g. play.hypixel.net',
+            hint: AppLocalizations.of(context)!.serverAddressExampleHint,
           ),
           const SizedBox(height: 12),
           _Field(

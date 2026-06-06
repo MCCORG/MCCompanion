@@ -87,7 +87,7 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
                     ),
                     _NavItem(
                       icon: _iconFor(navLeftFeature),
-                      label: navLeftFeature.label,
+                      label: navLeftFeature.label(l),
                       isActive: navLeftActive,
                       onTap: onNavLeftTap,
                     ),
@@ -97,7 +97,7 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
                     ),
                     _NavItem(
                       icon: _iconFor(navRightFeature),
-                      label: navRightFeature.label,
+                      label: navRightFeature.label(l),
                       isActive: navRightActive,
                       onTap: onNavRightTap,
                     ),
@@ -309,9 +309,9 @@ class MoreSheetContent extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 12),
-                  const Text(
-                    'Relay',
-                    style: TextStyle(
+                  Text(
+                    loc.relay,
+                    style: const TextStyle(
                       color: AppTheme.textPrimary,
                       fontSize: 17,
                       fontWeight: FontWeight.w700,
@@ -351,9 +351,9 @@ class _RegionSelector extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const Text(
-          'MCCompanion Server',
-          style: TextStyle(
+        Text(
+          AppLocalizations.of(context)!.nldServerLabelShort,
+          style: const TextStyle(
             color: AppTheme.textMuted,
             fontSize: 10,
             fontWeight: FontWeight.w600,

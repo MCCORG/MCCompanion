@@ -177,13 +177,13 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
               broadcasting: broadcasting,
             ),
             const SizedBox(height: 22),
-            _sectionLabel('SELECT MODE'),
+            _sectionLabel(loc.selectModeSection),
             const SizedBox(height: 10),
             _buildModeChips(broadcasting, loc),
             const SizedBox(height: 12),
             _buildBroadcastCard(broadcasting, loc),
             const SizedBox(height: 22),
-            _sectionLabel('SERVERS'),
+            _sectionLabel(loc.serversSection),
             const SizedBox(height: 10),
             ConstrainedBox(
               constraints: const BoxConstraints(maxHeight: 300),
@@ -294,7 +294,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     final hasServer = widget.ipController.text.isNotEmpty;
     final serverLabel = hasServer
         ? '${widget.ipController.text}:${widget.portController.text}'
-        : 'No server selected';
+        : loc.noServerSelected;
 
     final buttonLabel = switch (_mode) {
       PanelMode.lan => loc.startBroadcasting,
@@ -578,9 +578,9 @@ class _BedrockAccountSelector extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Select Bedrock account',
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context)!.selectBedrockAccount,
+                style: const TextStyle(
                   color: AppTheme.textPrimary,
                   fontSize: 16,
                   fontWeight: FontWeight.w700,

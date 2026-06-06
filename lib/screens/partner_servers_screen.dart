@@ -48,9 +48,9 @@ class _PartnerServersScreenState extends State<PartnerServersScreen> {
                       ),
                       onPressed: widget.onBack,
                     ),
-                    const Text(
-                      'Partner Servers',
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)!.partnerServersTitle,
+                      style: const TextStyle(
                         color: AppTheme.textPrimary,
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
@@ -101,18 +101,18 @@ class _PartnerServersScreenState extends State<PartnerServersScreen> {
                         ),
                       ),
                       const SizedBox(height: 14),
-                      const Text(
-                        'No partner servers available yet.',
-                        style: TextStyle(
+                      Text(
+                        AppLocalizations.of(context)!.noPartnerServers,
+                        style: const TextStyle(
                           color: AppTheme.textSecondary,
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       const SizedBox(height: 4),
-                      const Text(
-                        'Check back later.',
-                        style: TextStyle(
+                      Text(
+                        AppLocalizations.of(context)!.checkBackLater,
+                        style: const TextStyle(
                           color: AppTheme.textMuted,
                           fontSize: 12,
                         ),
