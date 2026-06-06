@@ -1135,50 +1135,80 @@ class _Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final hasBio = me?.bio?.isNotEmpty == true;
     return Container(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 14),
       color: AppTheme.surface,
-      child: Row(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          _Avatar(
-            initials: me?.initials ?? '?',
-            size: 52,
-            avatarUrl: me?.avatarUrl,
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          Container(height: 2, color: AppTheme.accent.withValues(alpha: 0.60)),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  me?.displayLabel ?? '—',
-                  style: const TextStyle(
-                    color: AppTheme.textPrimary,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
+                _Avatar(
+                  initials: me?.initials ?? '?',
+                  size: 60,
+                  avatarUrl: me?.avatarUrl,
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        me?.displayLabel ?? '—',
+                        style: const TextStyle(
+                          color: AppTheme.textPrimary,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      if (me?.username != null) ...[
+                        const SizedBox(height: 1),
+                        Text(
+                          '@${me!.username}',
+                          style: const TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                      if (hasBio) ...[
+                        const SizedBox(height: 5),
+                        Text(
+                          me!.bio!,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            color: AppTheme.textSecondary,
+                            fontSize: 12,
+                            height: 1.4,
+                          ),
+                        ),
+                      ],
+                    ],
                   ),
                 ),
-                if (me?.username != null)
-                  Text(
-                    '@${me!.username}',
-                    style: const TextStyle(
-                      color: AppTheme.textMuted,
-                      fontSize: 12,
+                const SizedBox(width: 8),
+                Column(
+                  children: [
+                    _IconBtn(
+                      icon: Icons.search_rounded,
+                      tooltip: AppLocalizations.of(context)!.findUser,
+                      onTap: () => _openSearch(context),
                     ),
-                  ),
+                    const SizedBox(height: 8),
+                    _IconBtn(
+                      icon: Icons.person_add_rounded,
+                      tooltip: AppLocalizations.of(context)!.addFriend,
+                      onTap: onAddFriend,
+                    ),
+                  ],
+                ),
               ],
             ),
-          ),
-          _IconBtn(
-            icon: Icons.search_rounded,
-            tooltip: AppLocalizations.of(context)!.findUser,
-            onTap: () => _openSearch(context),
-          ),
-          const SizedBox(width: 8),
-          _IconBtn(
-            icon: Icons.person_add_rounded,
-            tooltip: AppLocalizations.of(context)!.addFriend,
-            onTap: onAddFriend,
           ),
         ],
       ),
@@ -1245,26 +1275,9 @@ class _ProfileTabState extends State<_ProfileTab> {
             onToggleAppearOffline: _toggleAppearOffline,
           ),
           const SizedBox(height: 24),
-          OutlinedButton.icon(
-            onPressed: widget.onSignOut,
-            icon: const Icon(Icons.logout_rounded, size: 16),
-            label: Text(AppLocalizations.of(context)!.signOut),
-            style: OutlinedButton.styleFrom(
-              foregroundColor: AppTheme.error,
-              side: BorderSide(color: AppTheme.error.withValues(alpha: 0.40)),
-              padding: const EdgeInsets.symmetric(vertical: 14),
-            ),
-          ),
-          const SizedBox(height: 8),
-          OutlinedButton.icon(
-            onPressed: widget.onDeleteAccount,
-            icon: const Icon(Icons.delete_forever_rounded, size: 16),
-            label: Text(AppLocalizations.of(context)!.deleteAccountTitle),
-            style: OutlinedButton.styleFrom(
-              foregroundColor: AppTheme.error,
-              side: BorderSide(color: AppTheme.error.withValues(alpha: 0.20)),
-              padding: const EdgeInsets.symmetric(vertical: 14),
-            ),
+          _DangerZoneCard(
+            onSignOut: widget.onSignOut,
+            onDeleteAccount: widget.onDeleteAccount,
           ),
           const SizedBox(height: 16),
         ],
@@ -1527,47 +1540,25 @@ class _LinkedAccountsCardState extends State<_LinkedAccountsCard> {
               ),
             ),
           ],
-          const Divider(height: 1, color: AppTheme.borderGray),
-          IntrinsicHeight(
+          Padding(
+            padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
             child: Row(
               children: [
                 Expanded(
-                  child: TextButton.icon(
-                    onPressed: _openXboxLink,
-                    icon: const Icon(
-                      Icons.sports_esports_rounded,
-                      size: 14,
-                      color: _xboxGreen,
-                    ),
-                    label: Text(
-                      AppLocalizations.of(context)!.linkXbox,
-                      style: const TextStyle(color: _xboxGreen, fontSize: 13),
-                    ),
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                    ),
+                  child: _LinkAccountBtn(
+                    icon: Icons.sports_esports_rounded,
+                    label: AppLocalizations.of(context)!.linkXbox,
+                    color: _xboxGreen,
+                    onTap: _openXboxLink,
                   ),
                 ),
-                const VerticalDivider(
-                  width: 1,
-                  thickness: 1,
-                  color: AppTheme.borderGray,
-                ),
+                const SizedBox(width: 10),
                 Expanded(
-                  child: TextButton.icon(
-                    onPressed: _openJavaLink,
-                    icon: const Icon(
-                      Icons.videogame_asset_rounded,
-                      size: 14,
-                      color: _javaBlue,
-                    ),
-                    label: Text(
-                      AppLocalizations.of(context)!.linkJava,
-                      style: const TextStyle(color: _javaBlue, fontSize: 13),
-                    ),
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                    ),
+                  child: _LinkAccountBtn(
+                    icon: Icons.videogame_asset_rounded,
+                    label: AppLocalizations.of(context)!.linkJava,
+                    color: _javaBlue,
+                    onTap: _openJavaLink,
                   ),
                 ),
               ],
@@ -2408,6 +2399,160 @@ class _LoadingBody extends StatelessWidget {
   Widget build(BuildContext context) => Center(
     child: CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2),
   );
+}
+
+class _DangerZoneCard extends StatelessWidget {
+  final Future<void> Function() onSignOut;
+  final Future<void> Function() onDeleteAccount;
+
+  const _DangerZoneCard({
+    required this.onSignOut,
+    required this.onDeleteAccount,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+    return Container(
+      decoration: BoxDecoration(
+        color: AppTheme.surfaceRaised,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: AppTheme.error.withValues(alpha: 0.20)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 10),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.warning_amber_rounded,
+                  size: 14,
+                  color: AppTheme.error.withValues(alpha: 0.60),
+                ),
+                const SizedBox(width: 6),
+                Text(
+                  l.accountActions,
+                  style: TextStyle(
+                    color: AppTheme.error.withValues(alpha: 0.70),
+                    fontSize: 10,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 1.2,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const Divider(height: 1, color: AppTheme.borderDim),
+          _DangerRow(
+            icon: Icons.logout_rounded,
+            label: l.signOut,
+            onTap: onSignOut,
+            strong: false,
+          ),
+          const Divider(height: 1, color: AppTheme.borderDim),
+          _DangerRow(
+            icon: Icons.delete_forever_rounded,
+            label: l.deleteAccountTitle,
+            onTap: onDeleteAccount,
+            strong: true,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _DangerRow extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final Future<void> Function() onTap;
+  final bool strong;
+
+  const _DangerRow({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+    required this.strong,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final color = strong
+        ? AppTheme.error
+        : AppTheme.error.withValues(alpha: 0.70);
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        child: Row(
+          children: [
+            Icon(icon, size: 17, color: color),
+            const SizedBox(width: 12),
+            Text(
+              label,
+              style: TextStyle(
+                color: color,
+                fontSize: 14,
+                fontWeight: strong ? FontWeight.w600 : FontWeight.w500,
+              ),
+            ),
+            const Spacer(),
+            Icon(
+              Icons.chevron_right_rounded,
+              size: 18,
+              color: color.withValues(alpha: 0.50),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _LinkAccountBtn extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final Color color;
+  final VoidCallback onTap;
+
+  const _LinkAccountBtn({
+    required this.icon,
+    required this.label,
+    required this.color,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 11),
+        decoration: BoxDecoration(
+          color: color.withValues(alpha: 0.10),
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: color.withValues(alpha: 0.28)),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 15, color: color),
+            const SizedBox(width: 6),
+            Text(
+              label,
+              style: TextStyle(
+                color: color,
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 class _EmptyBody extends StatelessWidget {

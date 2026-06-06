@@ -45,6 +45,7 @@ class ConnectionPanel extends StatefulWidget {
     this.bedrockAccounts = const [],
     this.selectedBedrockXuid,
     this.onBedrockAccountChanged,
+    this.navChips,
   });
 
   final TextEditingController ipController;
@@ -65,6 +66,7 @@ class ConnectionPanel extends StatefulWidget {
   final List<BedrockAccount> bedrockAccounts;
   final String? selectedBedrockXuid;
   final ValueChanged<String>? onBedrockAccountChanged;
+  final Widget? navChips;
 
   @override
   State<ConnectionPanel> createState() => _ConnectionPanelState();
@@ -176,7 +178,11 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
               portController: widget.portController,
               broadcasting: broadcasting,
             ),
-            const SizedBox(height: 22),
+            if (widget.navChips != null) ...[
+              const SizedBox(height: 10),
+              widget.navChips!,
+            ],
+            const SizedBox(height: 18),
             _sectionLabel(loc.selectModeSection),
             const SizedBox(height: 10),
             _buildModeChips(broadcasting, loc),

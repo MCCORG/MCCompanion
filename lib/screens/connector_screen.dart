@@ -14,7 +14,6 @@ import '../constants/app_constants.dart';
 import '../theme/app_theme.dart';
 import '../widgets/connection/connection_panel.dart';
 import '../widgets/components/app_toast.dart';
-import '../widgets/components/header_nav_bar.dart';
 import '../services/region_detector.dart';
 import '../network/broadcast_mode.dart';
 import '../services/navigation_controller.dart';
@@ -305,73 +304,139 @@ class HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: HeaderNavBar(
-                  items: [
-                    if (widget.onOpenSupport != null)
-                      HeaderNavItem(
-                        label: AppLocalizations.of(context)!.support,
-                        onTap: widget.onOpenSupport,
-                      ),
-                    if (widget.onOpenHowTo != null)
-                      HeaderNavItem(
-                        label: AppLocalizations.of(context)!.howToUseMenu,
-                        onTap: widget.onOpenHowTo,
-                      ),
-                    if (widget.onOpenConsole != null)
-                      HeaderNavItem(
-                        label: AppLocalizations.of(context)!.console,
-                        onTap: widget.onOpenConsole,
-                      ),
-                    if (widget.onOpenMore != null)
-                      HeaderNavItem(label: AppLocalizations.of(context)!.relay, onTap: widget.onOpenMore),
-                  ],
-                ),
-              ),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(14, 12, 14, 0),
+      child: SingleChildScrollView(
+        controller: _mainScrollController,
+        physics: const ClampingScrollPhysics(),
+        child: ValueListenableBuilder<List<UserServer>>(
+          valueListenable: _userServersNotifier,
+          builder: (context, userServers, _) => ConnectionPanel(
+            ipController: widget.ipController,
+            portController: widget.portController,
+            broadcastingNotifier: _broadcastingNotifier,
+            onStartBroadcast: _startBroadcast,
+            onStopBroadcast: _stopBroadcast,
+            savedServers: userServers,
+            onServerSelected: _onUserServerSelected,
+            onManageServers: widget.onOpenManageServers,
+            selectedRelayIp: widget.selectedRelay.ip,
+            onRelayChanged: widget.onRelayChanged,
+            nintendoDnsMode: _nintendoDnsMode,
+            onNintendoDnsModeChanged: (value) =>
+                setState(() => _nintendoDnsMode = value),
+            navigationController: widget.navigationController,
+            partnerServersFuture: widget.partnerServersFuture,
+            onOpenPartnerServers: widget.onOpenPartnerServers,
+            bedrockAccounts: _cachedBedrockAccounts ?? [],
+            selectedBedrockXuid: _selectedBedrockXuid,
+            onBedrockAccountChanged: _onBedrockAccountChanged,
+            navChips: _ConnectorNavChips(
+              onSupport: widget.onOpenSupport,
+              onHowTo: widget.onOpenHowTo,
+              onConsole: widget.onOpenConsole,
+              onRelay: widget.onOpenMore,
             ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(14, 4, 14, 0),
-                child: SingleChildScrollView(
-                  controller: _mainScrollController,
-                  physics: const ClampingScrollPhysics(),
-                  child: ValueListenableBuilder<List<UserServer>>(
-                    valueListenable: _userServersNotifier,
-                    builder: (context, userServers, _) => ConnectionPanel(
-                      ipController: widget.ipController,
-                      portController: widget.portController,
-                      broadcastingNotifier: _broadcastingNotifier,
-                      onStartBroadcast: _startBroadcast,
-                      onStopBroadcast: _stopBroadcast,
-                      savedServers: userServers,
-                      onServerSelected: _onUserServerSelected,
-                      onManageServers: widget.onOpenManageServers,
-                      selectedRelayIp: widget.selectedRelay.ip,
-                      onRelayChanged: widget.onRelayChanged,
-                      nintendoDnsMode: _nintendoDnsMode,
-                      onNintendoDnsModeChanged: (value) =>
-                          setState(() => _nintendoDnsMode = value),
-                      navigationController: widget.navigationController,
-                      partnerServersFuture: widget.partnerServersFuture,
-                      onOpenPartnerServers: widget.onOpenPartnerServers,
-                      bedrockAccounts: _cachedBedrockAccounts ?? [],
-                      selectedBedrockXuid: _selectedBedrockXuid,
-                      onBedrockAccountChanged: _onBedrockAccountChanged,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
-      ],
+      ),
+    );
+  }
+}
+
+class _ConnectorNavChips extends StatelessWidget {
+  final VoidCallback? onSupport;
+  final VoidCallback? onHowTo;
+  final VoidCallback? onConsole;
+  final VoidCallback? onRelay;
+
+  const _ConnectorNavChips({
+    this.onSupport,
+    this.onHowTo,
+    this.onConsole,
+    this.onRelay,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    final chips = <({IconData icon, String label, VoidCallback onTap})>[
+      if (onSupport != null)
+        (icon: Icons.help_outline_rounded, label: loc.support, onTap: onSupport!),
+      if (onHowTo != null)
+        (icon: Icons.lightbulb_outline_rounded, label: loc.howToUseMenu, onTap: onHowTo!),
+      if (onConsole != null)
+        (icon: Icons.terminal_rounded, label: loc.console, onTap: onConsole!),
+      if (onRelay != null)
+        (icon: Icons.settings_ethernet_rounded, label: loc.relay, onTap: onRelay!),
+    ];
+
+    return Row(
+      children: List.generate(chips.length, (i) {
+        final c = chips[i];
+        return Expanded(
+          child: Padding(
+            padding: EdgeInsets.only(right: i < chips.length - 1 ? 8 : 0),
+            child: _NavChip(icon: c.icon, label: c.label, onTap: c.onTap),
+          ),
+        );
+      }),
+    );
+  }
+}
+
+class _NavChip extends StatefulWidget {
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+
+  const _NavChip({required this.icon, required this.label, required this.onTap});
+
+  @override
+  State<_NavChip> createState() => _NavChipState();
+}
+
+class _NavChipState extends State<_NavChip> {
+  bool _hovered = false;
+  bool _pressed = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: widget.label,
+      waitDuration: const Duration(milliseconds: 600),
+      child: MouseRegion(
+        onEnter: (_) => setState(() => _hovered = true),
+        onExit: (_) => setState(() => _hovered = false),
+        child: GestureDetector(
+          onTapDown: (_) => setState(() => _pressed = true),
+          onTapUp: (_) => setState(() => _pressed = false),
+          onTapCancel: () => setState(() => _pressed = false),
+          onTap: widget.onTap,
+          child: AnimatedScale(
+            scale: _pressed ? 0.95 : 1.0,
+            duration: const Duration(milliseconds: 100),
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 160),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              decoration: BoxDecoration(
+                color: _hovered
+                    ? AppTheme.surfaceRaised
+                    : AppTheme.surface.withValues(alpha: 0.60),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: _hovered ? AppTheme.borderGray : AppTheme.borderLight,
+                ),
+              ),
+              child: Icon(
+                widget.icon,
+                size: 18,
+                color: _hovered ? AppTheme.textSecondary : AppTheme.textMuted,
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

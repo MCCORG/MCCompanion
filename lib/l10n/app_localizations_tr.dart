@@ -1557,4 +1557,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get skinExported => 'Skin basariyla disa aktarildi';
+
+  @override
+  String get accountActions => 'HESAP';
 }

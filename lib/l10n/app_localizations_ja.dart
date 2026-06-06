@@ -1557,4 +1557,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get skinExported => 'スキンを正常にエクスポートしました';
+
+  @override
+  String get accountActions => 'アカウント';
 }

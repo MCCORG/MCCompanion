@@ -1541,5 +1541,9 @@
   "skinExported": "تم تصدير السكن بنجاح",
   "@skinExported": {
     "description": "Toast when skin is exported successfully"
+  },
+  "accountActions": "الحساب",
+  "@accountActions": {
+    "description": "Label for account danger zone section"
   }
 }

@@ -302,28 +302,45 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
             child: GestureDetector(
               onTap: _openPaywall,
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
                 decoration: BoxDecoration(
                   color: AppTheme.warning.withValues(alpha: 0.08),
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(14),
                   border: Border.all(color: AppTheme.warning.withValues(alpha: 0.30)),
                 ),
                 child: Row(
-                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(Icons.lock_outline_rounded, color: AppTheme.warning, size: 13),
-                    const SizedBox(width: 6),
-                    Text(
-                      AppLocalizations.of(context)!.trackerLimitReached,
-                      style: TextStyle(
-                        color: AppTheme.warning,
-                        fontSize: 11,
-                        fontWeight: FontWeight.w500,
+                    Icon(Icons.lock_outline_rounded, color: AppTheme.warning, size: 20),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!.trackerLimitReached,
+                            style: TextStyle(
+                              color: AppTheme.warning,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            AppLocalizations.of(context)!.upgradeWindowsHint,
+                            style: TextStyle(
+                              color: AppTheme.warning.withValues(alpha: 0.70),
+                              fontSize: 11,
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
                       ),
                     ),
-                    const SizedBox(width: 8),
+                    const SizedBox(width: 12),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
                       decoration: BoxDecoration(
                         color: AppTheme.brand,
                         borderRadius: BorderRadius.circular(10),
@@ -332,7 +349,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
                         AppLocalizations.of(context)!.upgradeButton,
                         style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 10,
+                          fontSize: 12,
                           fontWeight: FontWeight.w700,
                         ),
                       ),

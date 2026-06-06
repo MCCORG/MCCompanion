@@ -1541,5 +1541,9 @@
   "skinExported": "स्किन सफलतापूर्वक निर्यात हुई",
   "@skinExported": {
     "description": "Toast when skin is exported successfully"
+  },
+  "accountActions": "खाता",
+  "@accountActions": {
+    "description": "Label for account danger zone section"
   }
 }

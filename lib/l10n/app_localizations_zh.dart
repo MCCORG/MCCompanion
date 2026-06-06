@@ -1557,4 +1557,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get skinExported => '皮肤导出成功';
+
+  @override
+  String get accountActions => '账户';
 }

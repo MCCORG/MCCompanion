@@ -1557,4 +1557,7 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get skinExported => 'Skin imesafirishwa';
+
+  @override
+  String get accountActions => 'ACCOUNT';
 }

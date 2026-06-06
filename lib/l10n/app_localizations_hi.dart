@@ -1557,4 +1557,7 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get skinExported => 'स्किन सफलतापूर्वक निर्यात हुई';
+
+  @override
+  String get accountActions => 'खाता';
 }

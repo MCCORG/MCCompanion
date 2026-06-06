@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -102,19 +103,21 @@ class _LandingScreenState extends State<LandingScreen> {
 
     return Stack(
       children: [
+        const Positioned.fill(child: _AuroraBackground()),
+
         Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             if (widget.partnerServersFuture != null) ...[
-              const SizedBox(height: 10),
+              const SizedBox(height: 6),
               _PartnerBanner(
                 future: widget.partnerServersFuture!,
                 onTap: widget.onGoToPartners,
                 onPlay: widget.onPlayServer,
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 12),
             ] else
-              const SizedBox(height: 8),
+              const SizedBox(height: 10),
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 14),
@@ -153,21 +156,21 @@ class _LandingScreenState extends State<LandingScreen> {
               ),
             ),
 
-            const SizedBox(height: 12),
+            const SizedBox(height: 6),
 
             Expanded(
-              child: CustomScrollView(
-                slivers: [
-                  SliverFillRemaining(
-                    hasScrollBody: false,
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(14, 0, 14, 16),
+              child: LayoutBuilder(
+                builder: (context, constraints) => SingleChildScrollView(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(14, 0, 14, 8),
+                      child: Center(
                         child: _buildGrid(tiles),
                       ),
                     ),
                   ),
-                ],
+                ),
               ),
             ),
           ],
@@ -194,24 +197,33 @@ class _LandingScreenState extends State<LandingScreen> {
     final isDesktop = Theme.of(context).platform == TargetPlatform.macOS ||
         Theme.of(context).platform == TargetPlatform.windows ||
         Theme.of(context).platform == TargetPlatform.linux;
-    final tileHeight = isDesktop ? 124.0 : 158.0;
+    final tileHeight = isDesktop ? 136.0 : 168.0;
     final rows = <Widget>[];
     for (var i = 0; i < tiles.length; i += 2) {
       if (i > 0) rows.add(const SizedBox(height: 10));
       final a = tiles[i];
       final b = i + 1 < tiles.length ? tiles[i + 1] : null;
+      final rowIndex = i ~/ 2;
       rows.add(
         SizedBox(
           height: tileHeight,
           child: Row(
             children: [
               Expanded(
-                child: _QuickCard(feature: a, onTap: _callbackFor(a)),
+                child: _QuickCard(
+                  feature: a,
+                  onTap: _callbackFor(a),
+                  animationDelay: Duration(milliseconds: rowIndex * 80),
+                ),
               ),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               Expanded(
                 child: b != null
-                    ? _QuickCard(feature: b, onTap: _callbackFor(b))
+                    ? _QuickCard(
+                        feature: b,
+                        onTap: _callbackFor(b),
+                        animationDelay: Duration(milliseconds: rowIndex * 80 + 50),
+                      )
                     : const SizedBox(),
               ),
             ],
@@ -462,7 +474,6 @@ class _PartnerBannerSkeletonState extends State<_PartnerBannerSkeleton>
   }
 }
 
-// ── Quick nav chip ─────────────────────────────────────────────────────────────
 class _QuickNavChip extends StatefulWidget {
   final Widget iconWidget;
   final String label;
@@ -494,7 +505,7 @@ class _QuickNavChipState extends State<_QuickNavChip> {
           onTap: widget.onTap,
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 100),
-            padding: const EdgeInsets.symmetric(vertical: 9),
+            padding: const EdgeInsets.symmetric(vertical: 7),
             decoration: BoxDecoration(
               color: _pressed ? AppTheme.borderLight : AppTheme.surfaceRaised,
               borderRadius: BorderRadius.circular(12),
@@ -511,77 +522,136 @@ class _QuickNavChipState extends State<_QuickNavChip> {
 class _QuickCard extends StatefulWidget {
   final AppFeature feature;
   final VoidCallback onTap;
+  final Duration animationDelay;
 
-  const _QuickCard({required this.feature, required this.onTap});
+  const _QuickCard({
+    required this.feature,
+    required this.onTap,
+    this.animationDelay = Duration.zero,
+  });
 
   @override
   State<_QuickCard> createState() => _QuickCardState();
 }
 
-class _QuickCardState extends State<_QuickCard> {
+class _QuickCardState extends State<_QuickCard>
+    with SingleTickerProviderStateMixin {
   bool _pressed = false;
+  late final AnimationController _entranceCtrl;
+  late final Animation<double> _fadeAnim;
+  late final Animation<Offset> _slideAnim;
+
+  @override
+  void initState() {
+    super.initState();
+    _entranceCtrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 380),
+    );
+    _fadeAnim = CurvedAnimation(parent: _entranceCtrl, curve: Curves.easeOut);
+    _slideAnim = Tween<Offset>(
+      begin: const Offset(0, 0.12),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(parent: _entranceCtrl, curve: Curves.easeOutCubic));
+
+    Future.delayed(widget.animationDelay, () {
+      if (mounted) _entranceCtrl.forward();
+    });
+  }
+
+  @override
+  void dispose() {
+    _entranceCtrl.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final color = Color(widget.feature.colorValue);
     final l = AppLocalizations.of(context)!;
-    return GestureDetector(
-      onTapDown: (_) => setState(() => _pressed = true),
-      onTapUp: (_) => setState(() => _pressed = false),
-      onTapCancel: () => setState(() => _pressed = false),
-      onTap: widget.onTap,
-      child: AnimatedOpacity(
-        opacity: _pressed ? 0.65 : 1.0,
-        duration: const Duration(milliseconds: 100),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-          decoration: BoxDecoration(
-            color: AppTheme.surfaceRaised,
-            borderRadius: BorderRadius.circular(16),
-            border: Border(
-              top: BorderSide(color: color.withValues(alpha: 0.55), width: 2),
+    final isDesktop = Theme.of(context).platform == TargetPlatform.macOS ||
+        Theme.of(context).platform == TargetPlatform.windows ||
+        Theme.of(context).platform == TargetPlatform.linux;
+    final imgSize   = isDesktop ? 42.0 : 64.0;
+    final glowExtra = isDesktop ? 12.0 : 18.0;
+    final vPad      = isDesktop ? 8.0  : 10.0;
+    final gap1      = isDesktop ? 6.0  : 8.0;
+    final gap2      = isDesktop ? 2.0  : 3.0;
+
+    return FadeTransition(
+      opacity: _fadeAnim,
+      child: SlideTransition(
+        position: _slideAnim,
+        child: GestureDetector(
+          onTapDown: (_) => setState(() => _pressed = true),
+          onTapUp: (_) => setState(() => _pressed = false),
+          onTapCancel: () => setState(() => _pressed = false),
+          onTap: widget.onTap,
+          child: AnimatedScale(
+            scale: _pressed ? 0.96 : 1.0,
+            duration: const Duration(milliseconds: 100),
+            curve: Curves.easeOut,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 12, vertical: vPad),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: color.withValues(alpha: 0.20)),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    AppTheme.surfaceRaised,
+                    Color.lerp(AppTheme.surfaceRaised, color, 0.07)!,
+                  ],
+                ),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    width: imgSize + glowExtra,
+                    height: imgSize + glowExtra,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: color.withValues(alpha: 0.10),
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        widget.feature.imagePath,
+                        width: imgSize,
+                        height: imgSize,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: gap1),
+                  Text(
+                    widget.feature.label(l),
+                    style: const TextStyle(
+                      color: AppTheme.textPrimary,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(height: gap2),
+                  Text(
+                    widget.feature.subtitle(l),
+                    style: const TextStyle(
+                      color: AppTheme.textMuted,
+                      fontSize: 10,
+                      height: 1.3,
+                    ),
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
             ),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Builder(builder: (context) {
-                final isDesktop = Theme.of(context).platform == TargetPlatform.macOS ||
-                    Theme.of(context).platform == TargetPlatform.windows ||
-                    Theme.of(context).platform == TargetPlatform.linux;
-                final imgSize = isDesktop ? 46.0 : 64.0;
-                return Image.asset(
-                  widget.feature.imagePath,
-                  width: imgSize,
-                  height: imgSize,
-                  fit: BoxFit.contain,
-                );
-              }),
-              const SizedBox(height: 8),
-              Text(
-                widget.feature.label(l),
-                style: const TextStyle(
-                  color: AppTheme.textPrimary,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                ),
-                textAlign: TextAlign.center,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-              const SizedBox(height: 4),
-              Text(
-                widget.feature.subtitle(l),
-                style: const TextStyle(
-                  color: AppTheme.textMuted,
-                  fontSize: 11,
-                  height: 1.3,
-                ),
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ],
           ),
         ),
       ),
@@ -1270,4 +1340,123 @@ class _NavEditor extends StatelessWidget {
       ),
     );
   }
+}
+
+class _AuroraBackground extends StatefulWidget {
+  const _AuroraBackground();
+
+  @override
+  State<_AuroraBackground> createState() => _AuroraBackgroundState();
+}
+
+class _AuroraBackgroundState extends State<_AuroraBackground>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _ctrl;
+
+  @override
+  void initState() {
+    super.initState();
+    _ctrl = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 12),
+    )..repeat();
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final accent = AppTheme.accent;
+    final hsl = HSLColor.fromColor(accent);
+    final colorA = accent;
+    final colorB = hsl.withHue((hsl.hue + 40) % 360).toColor();
+    final colorC = hsl
+        .withHue((hsl.hue + 200) % 360)
+        .withSaturation(0.6)
+        .toColor();
+
+    return AnimatedBuilder(
+      animation: _ctrl,
+      builder: (_, __) => RepaintBoundary(
+        child: CustomPaint(
+          painter: _AuroraPainter(
+            t: _ctrl.value,
+            colorA: colorA,
+            colorB: colorB,
+            colorC: colorC,
+          ),
+          size: Size.infinite,
+        ),
+      ),
+    );
+  }
+}
+
+class _AuroraPainter extends CustomPainter {
+  final double t;
+  final Color colorA;
+  final Color colorB;
+  final Color colorC;
+
+  const _AuroraPainter({
+    required this.t,
+    required this.colorA,
+    required this.colorB,
+    required this.colorC,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final w = size.width;
+    final h = size.height;
+    const pi2 = math.pi * 2;
+
+    final blobs = [
+      (
+        color: colorA,
+        cx: w * 0.15 + w * 0.35 * math.sin(pi2 * (t * 0.7 + 0.0)),
+        cy: h * 0.08 + h * 0.18 * math.sin(pi2 * (t * 0.5 + 0.1)),
+        radius: w * 0.65,
+        opacity: 0.09,
+      ),
+      (
+        color: colorB,
+        cx: w * 0.75 + w * 0.25 * math.sin(pi2 * (t * 0.6 + 0.4)),
+        cy: h * 0.72 + h * 0.20 * math.sin(pi2 * (t * 0.8 + 0.6)),
+        radius: w * 0.60,
+        opacity: 0.08,
+      ),
+      (
+        color: colorC,
+        cx: w * 0.50 + w * 0.20 * math.sin(pi2 * (t * 0.4 + 0.8)),
+        cy: h * 0.45 + h * 0.15 * math.sin(pi2 * (t * 0.55 + 0.3)),
+        radius: w * 0.45,
+        opacity: 0.055,
+      ),
+    ];
+
+    for (final b in blobs) {
+      final paint = Paint()
+        ..shader = RadialGradient(
+          colors: [
+            b.color.withValues(alpha: b.opacity),
+            b.color.withValues(alpha: 0.0),
+          ],
+        ).createShader(
+          Rect.fromCircle(center: Offset(b.cx, b.cy), radius: b.radius),
+        );
+      canvas.drawCircle(Offset(b.cx, b.cy), b.radius, paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(_AuroraPainter old) =>
+      old.t != t ||
+      old.colorA != colorA ||
+      old.colorB != colorB ||
+      old.colorC != colorC;
 }

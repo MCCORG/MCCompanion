@@ -1557,4 +1557,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get skinExported => 'اسکن کامیابی سے برآمد';
+
+  @override
+  String get accountActions => 'ACCOUNT';
 }

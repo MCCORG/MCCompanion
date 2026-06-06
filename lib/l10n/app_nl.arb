@@ -856,5 +856,9 @@
   "skinExported": "Skin succesvol geexporteerd",
   "@skinExported": {
     "description": "Toast when skin is exported successfully"
+  },
+  "accountActions": "ACCOUNT",
+  "@accountActions": {
+    "description": "Label for account danger zone section"
   }
 }

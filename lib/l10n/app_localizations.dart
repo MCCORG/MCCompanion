@@ -3074,6 +3074,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Skin exported successfully'**
   String get skinExported;
+
+  /// Label for account danger zone section
+  ///
+  /// In en, this message translates to:
+  /// **'ACCOUNT'**
+  String get accountActions;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -1557,4 +1557,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get skinExported => 'تم تصدير السكن بنجاح';
+
+  @override
+  String get accountActions => 'الحساب';
 }
