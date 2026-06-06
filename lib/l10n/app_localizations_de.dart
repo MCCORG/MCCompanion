@@ -1543,4 +1543,18 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get chatEmptyHint => 'Sag als Erster etwas!';
+
+  @override
+  String get skinSaved => 'Skin gespeichert';
+
+  @override
+  String skinSavedAs(String name) {
+    return 'Gespeichert als \"$name\"';
+  }
+
+  @override
+  String get skinExportFailed => 'Export fehlgeschlagen';
+
+  @override
+  String get skinExported => 'Skin erfolgreich exportiert';
 }

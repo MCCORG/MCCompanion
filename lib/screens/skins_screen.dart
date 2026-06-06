@@ -17,6 +17,7 @@ import '../models/saved_skin.dart';
 import '../util/saved_skins_storage.dart';
 import 'skin_editor_screen.dart';
 import '../l10n/app_localizations.dart';
+import '../widgets/components/app_toast.dart';
 
 class _GeyserSkin {
   final int id;
@@ -416,22 +417,22 @@ class SkinsScreenState extends State<SkinsScreen> {
       final img = frame.image;
       if (img.width != 64 || img.height != 64) {
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(l.skinsMustBe64),
-              backgroundColor: AppTheme.error,
-            ),
+          AppToast.show(
+            context,
+            message: l.skinsMustBe64,
+            icon: Icons.error_outline_rounded,
+            color: AppTheme.error,
           );
         }
         return;
       }
     } catch (_) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(l.skinsInvalidFile),
-            backgroundColor: AppTheme.error,
-          ),
+        AppToast.show(
+          context,
+          message: l.skinsInvalidFile,
+          icon: Icons.error_outline_rounded,
+          color: AppTheme.error,
         );
       }
       return;

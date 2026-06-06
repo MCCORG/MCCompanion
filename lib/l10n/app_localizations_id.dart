@@ -1543,4 +1543,18 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get chatEmptyHint => 'Jadilah yang pertama berkata sesuatu!';
+
+  @override
+  String get skinSaved => 'Skin disimpan';
+
+  @override
+  String skinSavedAs(String name) {
+    return 'Disimpan sebagai \"$name\"';
+  }
+
+  @override
+  String get skinExportFailed => 'Ekspor gagal';
+
+  @override
+  String get skinExported => 'Skin berhasil diekspor';
 }

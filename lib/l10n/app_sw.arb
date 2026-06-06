@@ -1520,5 +1520,26 @@
   "chatEmptyHint": "Kuwa wa kwanza kusema kitu!",
   "@chatEmptyHint": {
     "description": "Subtitle on the empty chat screen"
+  },
+  "skinSaved": "Skin imehifadhiwa",
+  "@skinSaved": {
+    "description": "Toast when skin is saved"
+  },
+  "skinSavedAs": "Imehifadhiwa kama \"{name}\"",
+  "@skinSavedAs": {
+    "description": "Toast when skin saved with name",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "skinExportFailed": "Usafirishaji umeshindwa",
+  "@skinExportFailed": {
+    "description": "Toast when skin export fails"
+  },
+  "skinExported": "Skin imesafirishwa",
+  "@skinExported": {
+    "description": "Toast when skin is exported successfully"
   }
 }

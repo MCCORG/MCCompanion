@@ -1543,4 +1543,18 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get chatEmptyHint => 'প্রথম কিছু বলুন!';
+
+  @override
+  String get skinSaved => 'স্কিন সংরক্ষিত';
+
+  @override
+  String skinSavedAs(String name) {
+    return '\"$name\" নামে সংরক্ষিত';
+  }
+
+  @override
+  String get skinExportFailed => 'এক্সপোর্ট ব্যর্থ';
+
+  @override
+  String get skinExported => 'স্কিন সফলভাবে এক্সপোর্ট হয়েছে';
 }

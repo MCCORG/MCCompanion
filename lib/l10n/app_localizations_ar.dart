@@ -1543,4 +1543,18 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get chatEmptyHint => 'كن أول من يقول شيئاً!';
+
+  @override
+  String get skinSaved => 'تم حفظ السكن';
+
+  @override
+  String skinSavedAs(String name) {
+    return 'حفظ باسم \"$name\"';
+  }
+
+  @override
+  String get skinExportFailed => 'فشل التصدير';
+
+  @override
+  String get skinExported => 'تم تصدير السكن بنجاح';
 }

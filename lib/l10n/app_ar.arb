@@ -1520,5 +1520,26 @@
   "chatEmptyHint": "كن أول من يقول شيئاً!",
   "@chatEmptyHint": {
     "description": "Subtitle on the empty chat screen"
+  },
+  "skinSaved": "تم حفظ السكن",
+  "@skinSaved": {
+    "description": "Toast when skin is saved"
+  },
+  "skinSavedAs": "حفظ باسم \"{name}\"",
+  "@skinSavedAs": {
+    "description": "Toast when skin saved with name",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "skinExportFailed": "فشل التصدير",
+  "@skinExportFailed": {
+    "description": "Toast when skin export fails"
+  },
+  "skinExported": "تم تصدير السكن بنجاح",
+  "@skinExported": {
+    "description": "Toast when skin is exported successfully"
   }
 }

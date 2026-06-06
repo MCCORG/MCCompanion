@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../services/user_service.dart';
+import '../widgets/components/app_toast.dart';
 
 class JavaLinkScreen extends StatefulWidget {
   final VoidCallback onLinked;
@@ -109,11 +110,12 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
   void _copyCode() {
     if (_userCode == null) return;
     Clipboard.setData(ClipboardData(text: _userCode!));
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(AppLocalizations.of(context)!.javaCodeCopied),
-        duration: const Duration(seconds: 2),
-      ),
+    AppToast.show(
+      context,
+      message: AppLocalizations.of(context)!.javaCodeCopied,
+      icon: Icons.copy_rounded,
+      color: AppTheme.success,
+      duration: const Duration(seconds: 2),
     );
   }
 

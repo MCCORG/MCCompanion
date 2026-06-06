@@ -1543,4 +1543,18 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get chatEmptyHint => '率先说点什么吧！';
+
+  @override
+  String get skinSaved => '皮肤已保存';
+
+  @override
+  String skinSavedAs(String name) {
+    return '已另存为 \"$name\"';
+  }
+
+  @override
+  String get skinExportFailed => '导出失败';
+
+  @override
+  String get skinExported => '皮肤导出成功';
 }

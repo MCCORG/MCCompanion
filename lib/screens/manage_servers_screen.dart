@@ -3,6 +3,7 @@ import '../theme/app_theme.dart';
 import '../util/user_servers.dart';
 import '../util/user_servers_storage.dart';
 import '../l10n/app_localizations.dart';
+import '../widgets/components/app_toast.dart';
 
 class ManageServersScreen extends StatefulWidget {
   final VoidCallback onBack;
@@ -187,22 +188,20 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
     final port = int.tryParse(_portCtrl.text.trim());
 
     if (name.isEmpty || address.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            '${loc.serverNameLabel} and ${loc.addressLabel} are required',
-          ),
-          backgroundColor: AppTheme.warning,
-        ),
+      AppToast.show(
+        context,
+        message: '${loc.serverNameLabel} & ${loc.addressLabel} are required',
+        icon: Icons.warning_rounded,
+        color: AppTheme.warning,
       );
       return;
     }
     if (port == null || port < 1 || port > 65535) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(loc.invalidPort),
-          backgroundColor: AppTheme.error,
-        ),
+      AppToast.show(
+        context,
+        message: loc.invalidPort,
+        icon: Icons.error_outline_rounded,
+        color: AppTheme.error,
       );
       return;
     }

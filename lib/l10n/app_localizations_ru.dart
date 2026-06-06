@@ -1543,4 +1543,18 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get chatEmptyHint => 'Будьте первым, кто напишет!';
+
+  @override
+  String get skinSaved => 'Скин сохранён';
+
+  @override
+  String skinSavedAs(String name) {
+    return 'Сохранено как \"$name\"';
+  }
+
+  @override
+  String get skinExportFailed => 'Ошибка экспорта';
+
+  @override
+  String get skinExported => 'Скин успешно экспортирован';
 }

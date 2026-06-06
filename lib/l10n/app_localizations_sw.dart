@@ -1543,4 +1543,18 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get chatEmptyHint => 'Kuwa wa kwanza kusema kitu!';
+
+  @override
+  String get skinSaved => 'Skin imehifadhiwa';
+
+  @override
+  String skinSavedAs(String name) {
+    return 'Imehifadhiwa kama \"$name\"';
+  }
+
+  @override
+  String get skinExportFailed => 'Usafirishaji umeshindwa';
+
+  @override
+  String get skinExported => 'Skin imesafirishwa';
 }

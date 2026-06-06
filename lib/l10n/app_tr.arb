@@ -1520,5 +1520,26 @@
   "chatEmptyHint": "İlk mesajı sen gönder!",
   "@chatEmptyHint": {
     "description": "Subtitle on the empty chat screen"
+  },
+  "skinSaved": "Skin kaydedildi",
+  "@skinSaved": {
+    "description": "Toast when skin is saved"
+  },
+  "skinSavedAs": "\"{name}\" olarak kaydedildi",
+  "@skinSavedAs": {
+    "description": "Toast when skin saved with name",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "skinExportFailed": "Disa aktarma basarisiz",
+  "@skinExportFailed": {
+    "description": "Toast when skin export fails"
+  },
+  "skinExported": "Skin basariyla disa aktarildi",
+  "@skinExported": {
+    "description": "Toast when skin is exported successfully"
   }
 }

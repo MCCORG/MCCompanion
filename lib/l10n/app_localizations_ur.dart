@@ -1543,4 +1543,18 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get chatEmptyHint => 'پہلے کچھ کہنے والے بنیں!';
+
+  @override
+  String get skinSaved => 'اسکن محفوظ';
+
+  @override
+  String skinSavedAs(String name) {
+    return '\"$name\" کے طور پر محفوظ';
+  }
+
+  @override
+  String get skinExportFailed => 'برآمد ناکام';
+
+  @override
+  String get skinExported => 'اسکن کامیابی سے برآمد';
 }

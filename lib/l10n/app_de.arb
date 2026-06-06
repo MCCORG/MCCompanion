@@ -1520,5 +1520,26 @@
   "chatEmptyHint": "Sag als Erster etwas!",
   "@chatEmptyHint": {
     "description": "Subtitle on the empty chat screen"
+  },
+  "skinSaved": "Skin gespeichert",
+  "@skinSaved": {
+    "description": "Toast when skin is saved"
+  },
+  "skinSavedAs": "Gespeichert als \"{name}\"",
+  "@skinSavedAs": {
+    "description": "Toast when skin saved with name",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "skinExportFailed": "Export fehlgeschlagen",
+  "@skinExportFailed": {
+    "description": "Toast when skin export fails"
+  },
+  "skinExported": "Skin erfolgreich exportiert",
+  "@skinExported": {
+    "description": "Toast when skin is exported successfully"
   }
 }

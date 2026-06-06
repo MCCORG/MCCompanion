@@ -297,39 +297,49 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
         ),
 
         if (_slots != null && _slots!.remaining == 0 && !_loading && _isLoggedIn && !Platform.isWindows)
-          Container(
-            margin: const EdgeInsets.fromLTRB(16, 12, 16, 8),
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-            decoration: BoxDecoration(
-              color: AppTheme.warning.withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: AppTheme.warning.withValues(alpha: 0.4)),
-            ),
-            child: Row(
-              children: [
-                Icon(Icons.warning_amber_rounded, color: AppTheme.warning, size: 16),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    AppLocalizations.of(context)!.trackerLimitReached,
-                    style: TextStyle(
-                      color: AppTheme.warning,
-                      fontSize: 12,
-                    ),
-                  ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 10, 16, 2),
+            child: GestureDetector(
+              onTap: _openPaywall,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+                decoration: BoxDecoration(
+                  color: AppTheme.warning.withValues(alpha: 0.08),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: AppTheme.warning.withValues(alpha: 0.30)),
                 ),
-                GestureDetector(
-                  onTap: _openPaywall,
-                  child: Text(
-                    AppLocalizations.of(context)!.upgradeButton,
-                    style: TextStyle(
-                      color: AppTheme.brand,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.lock_outline_rounded, color: AppTheme.warning, size: 13),
+                    const SizedBox(width: 6),
+                    Text(
+                      AppLocalizations.of(context)!.trackerLimitReached,
+                      style: TextStyle(
+                        color: AppTheme.warning,
+                        fontSize: 11,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
-                  ),
+                    const SizedBox(width: 8),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: AppTheme.brand,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Text(
+                        AppLocalizations.of(context)!.upgradeButton,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
 

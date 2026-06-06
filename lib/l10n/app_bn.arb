@@ -1520,5 +1520,26 @@
   "chatEmptyHint": "প্রথম কিছু বলুন!",
   "@chatEmptyHint": {
     "description": "Subtitle on the empty chat screen"
+  },
+  "skinSaved": "স্কিন সংরক্ষিত",
+  "@skinSaved": {
+    "description": "Toast when skin is saved"
+  },
+  "skinSavedAs": "\"{name}\" নামে সংরক্ষিত",
+  "@skinSavedAs": {
+    "description": "Toast when skin saved with name",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "skinExportFailed": "এক্সপোর্ট ব্যর্থ",
+  "@skinExportFailed": {
+    "description": "Toast when skin export fails"
+  },
+  "skinExported": "স্কিন সফলভাবে এক্সপোর্ট হয়েছে",
+  "@skinExported": {
+    "description": "Toast when skin is exported successfully"
   }
 }

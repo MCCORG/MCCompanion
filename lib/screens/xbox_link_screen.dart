@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../services/user_service.dart';
+import '../widgets/components/app_toast.dart';
 
 class XboxLinkScreen extends StatefulWidget {
   final VoidCallback onLinked;
@@ -105,11 +106,12 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
   void _copyCode() {
     if (_userCode == null) return;
     Clipboard.setData(ClipboardData(text: _userCode!));
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(AppLocalizations.of(context)!.xboxCodeCopied),
-        duration: const Duration(seconds: 2),
-      ),
+    AppToast.show(
+      context,
+      message: AppLocalizations.of(context)!.xboxCodeCopied,
+      icon: Icons.copy_rounded,
+      color: AppTheme.success,
+      duration: const Duration(seconds: 2),
     );
   }
 

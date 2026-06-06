@@ -1543,4 +1543,18 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get chatEmptyHint => 'İlk mesajı sen gönder!';
+
+  @override
+  String get skinSaved => 'Skin kaydedildi';
+
+  @override
+  String skinSavedAs(String name) {
+    return '\"$name\" olarak kaydedildi';
+  }
+
+  @override
+  String get skinExportFailed => 'Disa aktarma basarisiz';
+
+  @override
+  String get skinExported => 'Skin basariyla disa aktarildi';
 }

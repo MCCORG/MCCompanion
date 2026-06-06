@@ -13,6 +13,8 @@ import '../theme/app_theme.dart';
 import '../models/saved_skin.dart';
 import '../util/saved_skins_storage.dart';
 import '../widgets/skin_3d_viewer.dart';
+import '../widgets/components/app_toast.dart';
+import '../l10n/app_localizations.dart';
 
 enum _Tool { draw, fill, erase }
 
@@ -338,12 +340,12 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
     if (widget.existingSkin != null) {
       await SavedSkinsStorage.update(widget.existingSkin!.id, pngBytes);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Skin saved'),
-            backgroundColor: AppTheme.success,
-            duration: Duration(seconds: 2),
-          ),
+        AppToast.show(
+          context,
+          message: AppLocalizations.of(context)!.skinSaved,
+          icon: Icons.check_circle_outline_rounded,
+          color: AppTheme.success,
+          duration: const Duration(seconds: 2),
         );
       }
       return;
@@ -407,12 +409,12 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
         : nameCtrl.text.trim();
     await SavedSkinsStorage.add(pngBytes, name);
     if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Saved as "$name"'),
-          backgroundColor: AppTheme.success,
-          duration: const Duration(seconds: 2),
-        ),
+      AppToast.show(
+        context,
+        message: AppLocalizations.of(context)!.skinSavedAs(name),
+        icon: Icons.check_circle_outline_rounded,
+        color: AppTheme.success,
+        duration: const Duration(seconds: 2),
       );
     }
   }
@@ -439,11 +441,11 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
     final bytes = await _toPng();
     if (bytes == null) {
       if (mounted)
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Export failed'),
-            backgroundColor: AppTheme.error,
-          ),
+        AppToast.show(
+          context,
+          message: AppLocalizations.of(context)!.skinExportFailed,
+          icon: Icons.error_outline_rounded,
+          color: AppTheme.error,
         );
       return;
     }
@@ -465,23 +467,23 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
         );
         await file.copy(dest.path);
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Exported: ${dest.path}'),
-              backgroundColor: AppTheme.success,
-              duration: const Duration(seconds: 4),
-            ),
+          AppToast.show(
+            context,
+            message: AppLocalizations.of(context)!.skinExported,
+            icon: Icons.download_done_rounded,
+            color: AppTheme.success,
+            duration: const Duration(seconds: 4),
           );
         }
       }
     } catch (e) {
       if (mounted)
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Export failed: $e'),
-            backgroundColor: AppTheme.error,
-            duration: const Duration(seconds: 6),
-          ),
+        AppToast.show(
+          context,
+          message: AppLocalizations.of(context)!.skinExportFailed,
+          icon: Icons.error_outline_rounded,
+          color: AppTheme.error,
+          duration: const Duration(seconds: 4),
         );
     }
   }

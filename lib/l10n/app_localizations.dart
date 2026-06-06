@@ -3050,6 +3050,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Be the first to say something!'**
   String get chatEmptyHint;
+
+  /// Toast when skin is saved
+  ///
+  /// In en, this message translates to:
+  /// **'Skin saved'**
+  String get skinSaved;
+
+  /// Toast when skin saved with name
+  ///
+  /// In en, this message translates to:
+  /// **'Saved as \"{name}\"'**
+  String skinSavedAs(String name);
+
+  /// Toast when skin export fails
+  ///
+  /// In en, this message translates to:
+  /// **'Export failed'**
+  String get skinExportFailed;
+
+  /// Toast when skin is exported successfully
+  ///
+  /// In en, this message translates to:
+  /// **'Skin exported successfully'**
+  String get skinExported;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

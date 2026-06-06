@@ -1520,5 +1520,26 @@
   "chatEmptyHint": "Будьте первым, кто напишет!",
   "@chatEmptyHint": {
     "description": "Subtitle on the empty chat screen"
+  },
+  "skinSaved": "Скин сохранён",
+  "@skinSaved": {
+    "description": "Toast when skin is saved"
+  },
+  "skinSavedAs": "Сохранено как \"{name}\"",
+  "@skinSavedAs": {
+    "description": "Toast when skin saved with name",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "skinExportFailed": "Ошибка экспорта",
+  "@skinExportFailed": {
+    "description": "Toast when skin export fails"
+  },
+  "skinExported": "Скин успешно экспортирован",
+  "@skinExported": {
+    "description": "Toast when skin is exported successfully"
   }
 }

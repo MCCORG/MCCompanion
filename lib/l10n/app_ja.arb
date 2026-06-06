@@ -1520,5 +1520,26 @@
   "chatEmptyHint": "最初にメッセージを送りましょう！",
   "@chatEmptyHint": {
     "description": "Subtitle on the empty chat screen"
+  },
+  "skinSaved": "スキンを保存しました",
+  "@skinSaved": {
+    "description": "Toast when skin is saved"
+  },
+  "skinSavedAs": "\"{name}\" として保存しました",
+  "@skinSavedAs": {
+    "description": "Toast when skin saved with name",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "skinExportFailed": "エクスポート失敗",
+  "@skinExportFailed": {
+    "description": "Toast when skin export fails"
+  },
+  "skinExported": "スキンを正常にエクスポートしました",
+  "@skinExported": {
+    "description": "Toast when skin is exported successfully"
   }
 }

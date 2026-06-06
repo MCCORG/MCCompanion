@@ -1543,4 +1543,18 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get chatEmptyHint => 'पहले कुछ कहो!';
+
+  @override
+  String get skinSaved => 'स्किन सेव हुई';
+
+  @override
+  String skinSavedAs(String name) {
+    return '\"$name\" के रूप में सेव';
+  }
+
+  @override
+  String get skinExportFailed => 'निर्यात विफल';
+
+  @override
+  String get skinExported => 'स्किन सफलतापूर्वक निर्यात हुई';
 }

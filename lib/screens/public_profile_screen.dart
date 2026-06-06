@@ -9,6 +9,7 @@ import '../models/user_model.dart';
 import '../services/user_service.dart';
 import '../widgets/skin_3d_viewer.dart';
 import '../widgets/navigation/bottom_nav_bar.dart';
+import '../widgets/components/app_toast.dart';
 
 class PublicProfileScreen extends StatefulWidget {
   final String username;
@@ -138,21 +139,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
   }
 
   void _showToast(String msg, Color color, IconData icon) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Row(
-          children: [
-            Icon(icon, color: Colors.white, size: 16),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Text(msg, style: const TextStyle(color: Colors.white)),
-            ),
-          ],
-        ),
-        backgroundColor: color,
-        duration: const Duration(seconds: 3),
-      ),
-    );
+    AppToast.show(context, message: msg, icon: icon, color: color);
   }
 
   void _navTo(VoidCallback? callback) {

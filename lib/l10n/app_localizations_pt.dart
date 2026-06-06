@@ -1543,4 +1543,18 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get chatEmptyHint => 'Seja o primeiro a dizer algo!';
+
+  @override
+  String get skinSaved => 'Skin salva';
+
+  @override
+  String skinSavedAs(String name) {
+    return 'Salvo como \"$name\"';
+  }
+
+  @override
+  String get skinExportFailed => 'Falha na exportacao';
+
+  @override
+  String get skinExported => 'Skin exportada com sucesso';
 }

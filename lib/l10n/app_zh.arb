@@ -1520,5 +1520,26 @@
   "chatEmptyHint": "率先说点什么吧！",
   "@chatEmptyHint": {
     "description": "Subtitle on the empty chat screen"
+  },
+  "skinSaved": "皮肤已保存",
+  "@skinSaved": {
+    "description": "Toast when skin is saved"
+  },
+  "skinSavedAs": "已另存为 \"{name}\"",
+  "@skinSavedAs": {
+    "description": "Toast when skin saved with name",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "skinExportFailed": "导出失败",
+  "@skinExportFailed": {
+    "description": "Toast when skin export fails"
+  },
+  "skinExported": "皮肤导出成功",
+  "@skinExported": {
+    "description": "Toast when skin is exported successfully"
   }
 }

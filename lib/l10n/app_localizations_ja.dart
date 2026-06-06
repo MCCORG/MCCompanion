@@ -1543,4 +1543,18 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get chatEmptyHint => '最初にメッセージを送りましょう！';
+
+  @override
+  String get skinSaved => 'スキンを保存しました';
+
+  @override
+  String skinSavedAs(String name) {
+    return '\"$name\" として保存しました';
+  }
+
+  @override
+  String get skinExportFailed => 'エクスポート失敗';
+
+  @override
+  String get skinExported => 'スキンを正常にエクスポートしました';
 }
