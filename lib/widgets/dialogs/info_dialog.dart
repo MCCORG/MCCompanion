@@ -16,7 +16,7 @@ class InfoDialog {
     return showDialog(
       context: context,
       barrierDismissible: barrierDismissible,
-      barrierColor: Colors.black.withOpacity(0.65),
+      barrierColor: Colors.black.withValues(alpha: 0.65),
       builder: (_) => Dialog(
         backgroundColor: Colors.transparent,
         insetPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 32),
@@ -65,7 +65,7 @@ class _InfoContent extends StatelessWidget {
         border: Border.all(color: AppTheme.borderGray),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.45),
+            color: Colors.black.withValues(alpha: 0.45),
             blurRadius: 36,
             offset: const Offset(0, 14),
           ),

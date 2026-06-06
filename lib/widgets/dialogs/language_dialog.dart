@@ -14,7 +14,7 @@ class LanguageDialog {
     return showDialog(
       context: context,
       barrierDismissible: barrierDismissible,
-      barrierColor: Colors.black.withOpacity(0.65),
+      barrierColor: Colors.black.withValues(alpha: 0.65),
       builder: (_) => Dialog(
         backgroundColor: Colors.transparent,
         insetPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 32),
@@ -100,7 +100,7 @@ class _LanguageContentState extends State<_LanguageContent> {
         border: Border.all(color: AppTheme.borderGray),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.45),
+            color: Colors.black.withValues(alpha: 0.45),
             blurRadius: 36,
             offset: const Offset(0, 14),
           ),
@@ -273,12 +273,12 @@ class _LangTile extends StatelessWidget {
               height: 20,
               decoration: BoxDecoration(
                 color: isSelected
-                    ? AppTheme.success.withOpacity(0.15)
+                    ? AppTheme.success.withValues(alpha: 0.15)
                     : Colors.transparent,
                 shape: BoxShape.circle,
                 border: Border.all(
                   color: isSelected
-                      ? AppTheme.success.withOpacity(0.55)
+                      ? AppTheme.success.withValues(alpha: 0.55)
                       : AppTheme.borderGray,
                 ),
               ),

@@ -1534,4 +1534,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get userSearchSub => 'Поиск по имени пользователя, Xbox-геймертегу или Java-имени';
+
+  @override
+  String get onlineStatus => 'Онлайн';
+
+  @override
+  String get upgradeWindowsHint => 'Обновление доступно в Microsoft Store';
+
+  @override
+  String get chatEmptyHint => 'Будьте первым, кто напишет!';
 }

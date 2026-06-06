@@ -177,10 +177,10 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
           width: 64,
           height: 64,
           decoration: BoxDecoration(
-            color: const Color(0xFF107C10).withOpacity(0.12),
+            color: const Color(0xFF107C10).withValues(alpha: 0.12),
             borderRadius: BorderRadius.circular(18),
             border: Border.all(
-              color: const Color(0xFF107C10).withOpacity(0.30),
+              color: const Color(0xFF107C10).withValues(alpha: 0.30),
             ),
           ),
           child: const Icon(
@@ -225,7 +225,7 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
             decoration: BoxDecoration(
               color: AppTheme.surfaceRaised,
               borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: AppTheme.accent.withOpacity(0.35)),
+              border: Border.all(color: AppTheme.accent.withValues(alpha: 0.35)),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,

@@ -3032,6 +3032,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search by username, Xbox gamertag or Java name'**
   String get userSearchSub;
+
+  /// Label shown when a friend is online
+  ///
+  /// In en, this message translates to:
+  /// **'Online'**
+  String get onlineStatus;
+
+  /// Toast shown on Windows when user taps the upgrade button
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade available via the Microsoft Store'**
+  String get upgradeWindowsHint;
+
+  /// Subtitle on the empty chat screen
+  ///
+  /// In en, this message translates to:
+  /// **'Be the first to say something!'**
+  String get chatEmptyHint;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

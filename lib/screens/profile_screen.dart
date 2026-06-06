@@ -52,6 +52,8 @@ class ProfileScreenState extends State<ProfileScreen>
   List<FriendRequest> _requests = [];
   bool _loadingFriends = true;
   bool _loadingRequests = true;
+  int _totalUnread = 0;
+  StreamSubscription<dynamic>? _incomingSub;
 
   @override
   void initState() {
@@ -59,6 +61,7 @@ class ProfileScreenState extends State<ProfileScreen>
     _tabs = TabController(length: 4, vsync: this);
     _authSubscription = AuthService.userStream.listen((_) => _checkAuth());
     _presenceSub = MessageService.presenceStream.listen(_onPresence);
+    _incomingSub = MessageService.incoming.listen((_) => _refreshUnread());
     _checkAuth();
   }
 
@@ -66,6 +69,7 @@ class ProfileScreenState extends State<ProfileScreen>
   void dispose() {
     _authSubscription?.cancel();
     _presenceSub?.cancel();
+    _incomingSub?.cancel();
     _tabs.dispose();
     super.dispose();
   }
@@ -132,6 +136,7 @@ class ProfileScreenState extends State<ProfileScreen>
     if (justLoggedIn) widget.onLoggedIn?.call();
     _fetchFriends();
     _fetchRequests();
+    _refreshUnread();
   }
 
   Future<void> _fetchMe() async {
@@ -155,6 +160,13 @@ class ProfileScreenState extends State<ProfileScreen>
         _requests = requests;
         _loadingRequests = false;
       });
+  }
+
+  Future<void> _refreshUnread() async {
+    final convs = await MessageService.getConversations();
+    if (!mounted) return;
+    final total = convs.fold(0, (sum, c) => sum + c.unreadCount);
+    if (total != _totalUnread) setState(() => _totalUnread = total);
   }
 
   void _openRegister() {
@@ -260,7 +272,45 @@ class ProfileScreenState extends State<ProfileScreen>
                   ],
                 ),
               ),
-              Tab(text: AppLocalizations.of(context)!.tabChats),
+              Tab(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        AppLocalizations.of(context)!.tabChats,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 0.4,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    if (_totalUnread > 0) ...[
+                      const SizedBox(width: 4),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 5,
+                          vertical: 2,
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppTheme.error,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Text(
+                          _totalUnread > 99 ? '99+' : '$_totalUnread',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 9,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -743,9 +793,9 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                 width: 64,
                 height: 64,
                 decoration: BoxDecoration(
-                  color: AppTheme.accent.withOpacity(0.12),
+                  color: AppTheme.accent.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(18),
-                  border: Border.all(color: AppTheme.accent.withOpacity(0.30)),
+                  border: Border.all(color: AppTheme.accent.withValues(alpha: 0.30)),
                 ),
                 child: Icon(
                   Icons.person_rounded,
@@ -843,9 +893,9 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                     vertical: 12,
                   ),
                   decoration: BoxDecoration(
-                    color: AppTheme.error.withOpacity(0.08),
+                    color: AppTheme.error.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: AppTheme.error.withOpacity(0.30)),
+                    border: Border.all(color: AppTheme.error.withValues(alpha: 0.30)),
                   ),
                   child: Row(
                     children: [
@@ -1002,9 +1052,9 @@ class _NotRegisteredView extends StatelessWidget {
               width: 64,
               height: 64,
               decoration: BoxDecoration(
-                color: AppTheme.accent.withOpacity(0.12),
+                color: AppTheme.accent.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(18),
-                border: Border.all(color: AppTheme.accent.withOpacity(0.30)),
+                border: Border.all(color: AppTheme.accent.withValues(alpha: 0.30)),
               ),
               child: Icon(
                 Icons.person_add_rounded,
@@ -1201,7 +1251,7 @@ class _ProfileTabState extends State<_ProfileTab> {
             label: Text(AppLocalizations.of(context)!.signOut),
             style: OutlinedButton.styleFrom(
               foregroundColor: AppTheme.error,
-              side: BorderSide(color: AppTheme.error.withOpacity(0.40)),
+              side: BorderSide(color: AppTheme.error.withValues(alpha: 0.40)),
               padding: const EdgeInsets.symmetric(vertical: 14),
             ),
           ),
@@ -1212,7 +1262,7 @@ class _ProfileTabState extends State<_ProfileTab> {
             label: Text(AppLocalizations.of(context)!.deleteAccountTitle),
             style: OutlinedButton.styleFrom(
               foregroundColor: AppTheme.error,
-              side: BorderSide(color: AppTheme.error.withOpacity(0.20)),
+              side: BorderSide(color: AppTheme.error.withValues(alpha: 0.20)),
               padding: const EdgeInsets.symmetric(vertical: 14),
             ),
           ),
@@ -1249,8 +1299,8 @@ class _SettingsCard extends StatelessWidget {
               height: 32,
               decoration: BoxDecoration(
                 color: appearOffline
-                    ? AppTheme.textMuted.withOpacity(0.15)
-                    : AppTheme.success.withOpacity(0.12),
+                    ? AppTheme.textMuted.withValues(alpha: 0.15)
+                    : AppTheme.success.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Icon(
@@ -1556,7 +1606,7 @@ class _AccountRow extends StatelessWidget {
             width: 32,
             height: 32,
             decoration: BoxDecoration(
-              color: color.withOpacity(0.12),
+              color: color.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Icon(icon, color: color, size: 16),
@@ -1591,9 +1641,9 @@ class _AccountRow extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               decoration: BoxDecoration(
-                color: AppTheme.error.withOpacity(0.08),
+                color: AppTheme.error.withValues(alpha: 0.08),
                 borderRadius: BorderRadius.circular(7),
-                border: Border.all(color: AppTheme.error.withOpacity(0.25)),
+                border: Border.all(color: AppTheme.error.withValues(alpha: 0.25)),
               ),
               child: unlinking
                   ? const SizedBox(
@@ -1632,7 +1682,7 @@ class _EditProfileCard extends StatefulWidget {
 class _EditProfileCardState extends State<_EditProfileCard> {
   bool _editing = false;
   bool _saving = false;
-  bool _obscureAvatar = true;
+  bool _obscureAvatar = false;
   late final TextEditingController _displayNameCtrl;
   late final TextEditingController _bioCtrl;
   late final TextEditingController _avatarUrlCtrl;
@@ -1965,7 +2015,7 @@ class _FriendTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: friend.online
-                ? AppTheme.success.withOpacity(0.25)
+                ? AppTheme.success.withValues(alpha: 0.25)
                 : AppTheme.borderGray,
           ),
         ),
@@ -2047,7 +2097,7 @@ class _FriendTile extends StatelessWidget {
                 padding: const EdgeInsets.all(8),
                 child: Icon(
                   Icons.chat_bubble_rounded,
-                  color: AppTheme.accent.withOpacity(0.70),
+                  color: AppTheme.accent.withValues(alpha: 0.70),
                   size: 18,
                 ),
               ),
@@ -2129,7 +2179,7 @@ class _RequestTile extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppTheme.surfaceRaised,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppTheme.accent.withOpacity(0.20)),
+        border: Border.all(color: AppTheme.accent.withValues(alpha: 0.20)),
       ),
       child: Row(
         children: [
@@ -2195,9 +2245,9 @@ class _Avatar extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        color: AppTheme.accent.withOpacity(0.15),
+        color: AppTheme.accent.withValues(alpha: 0.15),
         shape: BoxShape.circle,
-        border: Border.all(color: AppTheme.accent.withOpacity(0.30)),
+        border: Border.all(color: AppTheme.accent.withValues(alpha: 0.30)),
       ),
       child: ClipOval(
         child: hasImage
@@ -2250,9 +2300,9 @@ class _SmallBtn extends StatelessWidget {
         width: 34,
         height: 34,
         decoration: BoxDecoration(
-          color: color.withOpacity(0.12),
+          color: color.withValues(alpha: 0.12),
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: color.withOpacity(0.30)),
+          border: Border.all(color: color.withValues(alpha: 0.30)),
         ),
         child: Icon(icon, color: color, size: 16),
       ),
@@ -2280,9 +2330,9 @@ class _IconBtn extends StatelessWidget {
           width: 38,
           height: 38,
           decoration: BoxDecoration(
-            color: AppTheme.accent.withOpacity(0.10),
+            color: AppTheme.accent.withValues(alpha: 0.10),
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: AppTheme.accent.withOpacity(0.25)),
+            border: Border.all(color: AppTheme.accent.withValues(alpha: 0.25)),
           ),
           child: Icon(icon, color: AppTheme.accent, size: 18),
         ),

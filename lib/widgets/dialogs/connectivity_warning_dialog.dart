@@ -37,10 +37,10 @@ class ConnectivityWarningDialog extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppTheme.surfaceRaised,
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: color.withOpacity(0.35)),
+          border: Border.all(color: color.withValues(alpha: 0.35)),
           boxShadow: [
             BoxShadow(
-              color: color.withOpacity(0.12),
+              color: color.withValues(alpha: 0.12),
               blurRadius: 36,
               spreadRadius: 2,
             ),
@@ -53,9 +53,9 @@ class ConnectivityWarningDialog extends StatelessWidget {
               width: 58,
               height: 58,
               decoration: BoxDecoration(
-                color: color.withOpacity(0.14),
+                color: color.withValues(alpha: 0.14),
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: color.withOpacity(0.35)),
+                border: Border.all(color: color.withValues(alpha: 0.35)),
               ),
               child: Icon(icon, color: color, size: 26),
             ),

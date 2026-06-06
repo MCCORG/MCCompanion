@@ -1534,4 +1534,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get userSearchSub => 'البحث باسم المستخدم أو غامرتاغ Xbox أو اسم Java';
+
+  @override
+  String get onlineStatus => 'متصل';
+
+  @override
+  String get upgradeWindowsHint => 'الترقية متاحة عبر متجر Microsoft';
+
+  @override
+  String get chatEmptyHint => 'كن أول من يقول شيئاً!';
 }

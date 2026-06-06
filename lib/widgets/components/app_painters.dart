@@ -17,7 +17,7 @@ class AppNoisePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final rng = Math.Random(seed);
-    final paint = Paint()..color = color.withOpacity(opacity);
+    final paint = Paint()..color = color.withValues(alpha: opacity);
     for (int i = 0; i < count; i++) {
       canvas.drawCircle(
         Offset(rng.nextDouble() * size.width, rng.nextDouble() * size.height),
@@ -44,7 +44,7 @@ class AppWavePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     for (final w in waves) {
       final paint = Paint()
-        ..color = w.color.withOpacity(w.opacity)
+        ..color = w.color.withValues(alpha: w.opacity)
         ..style = PaintingStyle.stroke
         ..strokeWidth = w.strokeWidth;
       final path = Path()..moveTo(0, size.height * w.yFraction);

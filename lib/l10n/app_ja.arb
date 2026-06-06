@@ -1508,5 +1508,17 @@
   "featureSubtitleLookup": "JavaとBedrockプロフィールを検索",
   "featureSubtitleTracker": "サーバー状態を監視して通知を受け取る",
   "userSearchHint": "ユーザー名、ゲーマータグまたはJava名…",
-  "userSearchSub": "ユーザー名、Xboxゲーマータグ、Java名で検索"
+  "userSearchSub": "ユーザー名、Xboxゲーマータグ、Java名で検索",
+  "onlineStatus": "オンライン",
+  "@onlineStatus": {
+    "description": "Label shown when a friend is online"
+  },
+  "upgradeWindowsHint": "Microsoft Storeでアップグレードできます",
+  "@upgradeWindowsHint": {
+    "description": "Toast shown on Windows when user taps the upgrade button"
+  },
+  "chatEmptyHint": "最初にメッセージを送りましょう！",
+  "@chatEmptyHint": {
+    "description": "Subtitle on the empty chat screen"
+  }
 }

@@ -85,8 +85,8 @@ class _PartnerServerCardState extends State<PartnerServerCard>
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
                   colors: [
-                    AppTheme.surface.withOpacity(0.92),
-                    AppTheme.surface.withOpacity(0.75),
+                    AppTheme.surface.withValues(alpha: 0.92),
+                    AppTheme.surface.withValues(alpha: 0.75),
                   ],
                 ),
               ),
@@ -234,7 +234,7 @@ class _PartnerServerCardState extends State<PartnerServerCard>
                                   vertical: 8,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: AppTheme.surfaceRaised.withOpacity(
+                                  color: AppTheme.surfaceRaised.withValues(alpha: 
                                     0.80,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
@@ -354,12 +354,12 @@ class _ServerStatusBadgeState extends State<ServerStatusBadge> {
       padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
       decoration: BoxDecoration(
         color: online
-            ? AppTheme.success.withOpacity(0.10)
-            : AppTheme.surfaceRaised.withOpacity(0.80),
+            ? AppTheme.success.withValues(alpha: 0.10)
+            : AppTheme.surfaceRaised.withValues(alpha: 0.80),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: online
-              ? AppTheme.success.withOpacity(0.35)
+              ? AppTheme.success.withValues(alpha: 0.35)
               : AppTheme.borderGray,
         ),
       ),

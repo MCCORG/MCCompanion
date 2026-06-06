@@ -1508,5 +1508,17 @@
   "featureSubtitleLookup": "Поиск профилей Java и Bedrock",
   "featureSubtitleTracker": "Мониторинг статуса сервера и уведомления",
   "userSearchHint": "Имя пользователя, геймертег или Java-имя…",
-  "userSearchSub": "Поиск по имени пользователя, Xbox-геймертегу или Java-имени"
+  "userSearchSub": "Поиск по имени пользователя, Xbox-геймертегу или Java-имени",
+  "onlineStatus": "Онлайн",
+  "@onlineStatus": {
+    "description": "Label shown when a friend is online"
+  },
+  "upgradeWindowsHint": "Обновление доступно в Microsoft Store",
+  "@upgradeWindowsHint": {
+    "description": "Toast shown on Windows when user taps the upgrade button"
+  },
+  "chatEmptyHint": "Будьте первым, кто напишет!",
+  "@chatEmptyHint": {
+    "description": "Subtitle on the empty chat screen"
+  }
 }

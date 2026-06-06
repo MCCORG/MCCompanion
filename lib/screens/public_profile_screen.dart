@@ -223,7 +223,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
 
   Widget _buildProfile() {
     final u = _user!;
-    const xboxGreen = Color(0xFF107C10);
+    final xboxGreen = AppTheme.xboxGreen;
 
     return RefreshIndicator(
       color: AppTheme.accent,
@@ -341,7 +341,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
             const SizedBox(height: 12),
             Builder(builder: (ctx) => _InfoCard(
               icon: Icons.videogame_asset_rounded,
-              iconColor: const Color(0xFF1565C0),
+              iconColor: AppTheme.javaBlue,
               label: AppLocalizations.of(ctx)!.playerLookupJavaEdition,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -400,7 +400,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
         label: Text(l.removeFriendButton),
         style: OutlinedButton.styleFrom(
           foregroundColor: AppTheme.error,
-          side: BorderSide(color: AppTheme.error.withOpacity(0.40)),
+          side: BorderSide(color: AppTheme.error.withValues(alpha: 0.40)),
           padding: const EdgeInsets.symmetric(vertical: 12),
         ),
       ),
@@ -687,13 +687,13 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                             const Icon(
                               Icons.sports_esports_rounded,
                               size: 11,
-                              color: Color(0xFF107C10),
+                              color: AppTheme.xboxGreen,
                             ),
                             const SizedBox(width: 4),
                             Text(
                               u.xboxGamertag!,
                               style: const TextStyle(
-                                color: Color(0xFF107C10),
+                                color: AppTheme.xboxGreen,
                                 fontSize: 11,
                               ),
                             ),
@@ -707,13 +707,13 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                             const Icon(
                               Icons.videogame_asset_rounded,
                               size: 11,
-                              color: Color(0xFF1565C0),
+                              color: AppTheme.javaBlue,
                             ),
                             const SizedBox(width: 4),
                             Text(
                               u.javaUsername!,
                               style: const TextStyle(
-                                color: Color(0xFF1565C0),
+                                color: AppTheme.javaBlue,
                                 fontSize: 11,
                               ),
                             ),
@@ -888,13 +888,13 @@ class _JavaPublicSkinState extends State<_JavaPublicSkin> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
             decoration: BoxDecoration(
-              color: const Color(0xFF1565C0).withOpacity(0.15),
+              color: AppTheme.javaBlue.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(6),
             ),
             child: const Text(
               'Java',
               style: TextStyle(
-                color: Color(0xFF1565C0),
+                color: AppTheme.javaBlue,
                 fontSize: 10,
                 fontWeight: FontWeight.w700,
               ),
@@ -939,8 +939,8 @@ class _JavaPublicSkinState extends State<_JavaPublicSkin> {
             icon: const Icon(Icons.download_rounded, size: 13),
             label: const Text('Download'),
             style: OutlinedButton.styleFrom(
-              foregroundColor: const Color(0xFF1565C0),
-              side: const BorderSide(color: Color(0xFF1565C0), width: 0.8),
+              foregroundColor: AppTheme.javaBlue,
+              side: const BorderSide(color: AppTheme.javaBlue, width: 0.8),
               padding: const EdgeInsets.symmetric(vertical: 8),
               textStyle: const TextStyle(
                 fontSize: 11,
@@ -1011,7 +1011,7 @@ class _BedrockPublicSkinState extends State<_BedrockPublicSkin> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
             decoration: BoxDecoration(
-              color: const Color(0xFF4CAF50).withOpacity(0.15),
+              color: const Color(0xFF4CAF50).withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(6),
             ),
             child: const Text(
@@ -1133,9 +1133,9 @@ class _Avatar extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        color: AppTheme.accent.withOpacity(0.15),
+        color: AppTheme.accent.withValues(alpha: 0.15),
         shape: BoxShape.circle,
-        border: Border.all(color: AppTheme.accent.withOpacity(0.30)),
+        border: Border.all(color: AppTheme.accent.withValues(alpha: 0.30)),
       ),
       child: ClipOval(
         child: hasImage

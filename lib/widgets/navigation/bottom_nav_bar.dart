@@ -66,7 +66,7 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
               border: Border.all(color: AppTheme.borderGray, width: 0.8),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.45),
+                  color: Colors.black.withValues(alpha: 0.45),
                   blurRadius: 28,
                   spreadRadius: 0,
                   offset: const Offset(0, 6),
@@ -213,14 +213,14 @@ class _NavFab extends StatelessWidget {
               boxShadow: [
                 if (isActive)
                   BoxShadow(
-                    color: AppTheme.brand.withOpacity(0.35),
+                    color: AppTheme.brand.withValues(alpha: 0.35),
                     blurRadius: 14,
                     spreadRadius: 1,
                     offset: const Offset(0, 3),
                   )
                 else
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.30),
+                    color: Colors.black.withValues(alpha: 0.30),
                     blurRadius: 10,
                     offset: const Offset(0, 3),
                   ),
@@ -294,10 +294,10 @@ class MoreSheetContent extends StatelessWidget {
                     width: 38,
                     height: 38,
                     decoration: BoxDecoration(
-                      color: AppTheme.accent.withOpacity(0.12),
+                      color: AppTheme.accent.withValues(alpha: 0.12),
                       borderRadius: BorderRadius.circular(11),
                       border: Border.all(
-                        color: AppTheme.accent.withOpacity(0.25),
+                        color: AppTheme.accent.withValues(alpha: 0.25),
                       ),
                     ),
                     child: Center(
@@ -383,12 +383,12 @@ class _RegionSelector extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     color: isSelected
-                        ? AppTheme.accent.withOpacity(0.10)
+                        ? AppTheme.accent.withValues(alpha: 0.10)
                         : AppTheme.surface,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
                       color: isSelected
-                          ? AppTheme.accent.withOpacity(0.45)
+                          ? AppTheme.accent.withValues(alpha: 0.45)
                           : AppTheme.borderGray,
                       width: isSelected ? 1.5 : 1.0,
                     ),

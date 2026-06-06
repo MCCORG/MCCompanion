@@ -44,7 +44,7 @@ class ManageServersScreenState extends State<ManageServersScreen> {
     final loc = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
-      barrierColor: Colors.black.withOpacity(0.65),
+      barrierColor: Colors.black.withValues(alpha: 0.65),
       builder: (_) =>
           _ConfirmDeleteDialog(serverName: _servers[index].name, loc: loc),
     );
@@ -440,9 +440,9 @@ class _ServerCard extends StatelessWidget {
             width: 40,
             height: 40,
             decoration: BoxDecoration(
-              color: AppTheme.accent.withOpacity(0.10),
+              color: AppTheme.accent.withValues(alpha: 0.10),
               borderRadius: BorderRadius.circular(11),
-              border: Border.all(color: AppTheme.accent.withOpacity(0.22)),
+              border: Border.all(color: AppTheme.accent.withValues(alpha: 0.22)),
             ),
             child: Icon(Icons.dns_rounded, color: AppTheme.accent, size: 18),
           ),
@@ -524,9 +524,9 @@ class _IconBtn extends StatelessWidget {
         width: 36,
         height: 36,
         decoration: BoxDecoration(
-          color: color.withOpacity(0.10),
+          color: color.withValues(alpha: 0.10),
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: color.withOpacity(0.25)),
+          border: Border.all(color: color.withValues(alpha: 0.25)),
         ),
         child: Icon(icon, size: 16, color: color),
       ),
@@ -552,7 +552,7 @@ class _ConfirmDeleteDialog extends StatelessWidget {
           border: Border.all(color: AppTheme.borderGray),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.4),
+              color: Colors.black.withValues(alpha: 0.4),
               blurRadius: 30,
               offset: const Offset(0, 10),
             ),
@@ -566,9 +566,9 @@ class _ConfirmDeleteDialog extends StatelessWidget {
               width: 56,
               height: 56,
               decoration: BoxDecoration(
-                color: AppTheme.error.withOpacity(0.12),
+                color: AppTheme.error.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: AppTheme.error.withOpacity(0.30)),
+                border: Border.all(color: AppTheme.error.withValues(alpha: 0.30)),
               ),
               child: const Icon(
                 Icons.delete_outline_rounded,

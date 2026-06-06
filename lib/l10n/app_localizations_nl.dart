@@ -1534,4 +1534,13 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get userSearchSub => 'Zoek op gebruikersnaam, Xbox-gamertag of Java-naam';
+
+  @override
+  String get onlineStatus => 'Online';
+
+  @override
+  String get upgradeWindowsHint => 'Upgrade beschikbaar via de Microsoft Store';
+
+  @override
+  String get chatEmptyHint => 'Wees de eerste om iets te zeggen!';
 }

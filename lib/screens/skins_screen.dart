@@ -785,7 +785,7 @@ class _SavedSkinCard extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 5),
                     decoration: BoxDecoration(
-                      color: AppTheme.accent.withOpacity(0.12),
+                      color: AppTheme.accent.withValues(alpha: 0.12),
                       borderRadius: BorderRadius.circular(7),
                     ),
                     child: Center(
@@ -807,7 +807,7 @@ class _SavedSkinCard extends StatelessWidget {
                     horizontal: 7,
                   ),
                   decoration: BoxDecoration(
-                    color: AppTheme.error.withOpacity(0.12),
+                    color: AppTheme.error.withValues(alpha: 0.12),
                     borderRadius: BorderRadius.circular(7),
                   ),
                   child: const FaIcon(
@@ -1151,7 +1151,7 @@ class _JavaSkinCardState extends State<_JavaSkinCard> {
                     vertical: 3,
                   ),
                   decoration: BoxDecoration(
-                    color: badgeColor.withOpacity(0.15),
+                    color: badgeColor.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: Text(
@@ -1325,7 +1325,7 @@ class _BedrockSkinCardState extends State<_BedrockSkinCard> {
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF4CAF50).withOpacity(0.15),
+                  color: const Color(0xFF4CAF50).withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(6),
                 ),
                 child: Text(
@@ -1476,7 +1476,7 @@ class _InfoCard extends StatelessWidget {
             width: 44,
             height: 44,
             decoration: BoxDecoration(
-              color: iconColor.withOpacity(0.12),
+              color: iconColor.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Center(child: FaIcon(icon, color: iconColor, size: 18)),

@@ -71,15 +71,15 @@ class _GlobalNoticeBannerState extends State<GlobalNoticeBanner>
               filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.05),
+                  color: Colors.white.withValues(alpha: 0.05),
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
-                    color: Colors.white.withOpacity(0.12),
+                    color: Colors.white.withValues(alpha: 0.12),
                     width: 1,
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: accentColor.withOpacity(0.1),
+                      color: accentColor.withValues(alpha: 0.1),
                       blurRadius: 20,
                       spreadRadius: -5,
                     ),
@@ -95,7 +95,7 @@ class _GlobalNoticeBannerState extends State<GlobalNoticeBanner>
                           horizontal: 8,
                         ),
                         decoration: BoxDecoration(
-                          color: accentColor.withOpacity(0.8),
+                          color: accentColor.withValues(alpha: 0.8),
                           borderRadius: BorderRadius.circular(2),
                         ),
                       ),
@@ -106,7 +106,7 @@ class _GlobalNoticeBannerState extends State<GlobalNoticeBanner>
                           child: Text(
                             widget.message,
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.9),
+                              color: Colors.white.withValues(alpha: 0.9),
                               fontSize: 13,
                               fontWeight: FontWeight.w500,
                               letterSpacing: 0.2,
@@ -118,7 +118,7 @@ class _GlobalNoticeBannerState extends State<GlobalNoticeBanner>
                         icon: Icon(
                           Icons.close_rounded,
                           size: 18,
-                          color: Colors.white.withOpacity(0.4),
+                          color: Colors.white.withValues(alpha: 0.4),
                         ),
                         onPressed: _dismiss,
                       ),

@@ -234,15 +234,24 @@ class _PartnerBannerState extends State<_PartnerBanner> {
   final Map<String, bool?> _statusCache = {};
   int _index = 0;
   Timer? _rotateTimer;
+  bool _loaded = false;
 
   @override
   void initState() {
     super.initState();
     widget.future.then((all) {
       final featured = all.where((s) => s.featured).toList();
-      if (!mounted || featured.isEmpty) return;
-      setState(() => _servers = featured);
-      for (final s in featured) _fetchStatus(s);
+      if (!mounted) return;
+      setState(() {
+        _servers = featured;
+        _loaded = true;
+      });
+      if (featured.isEmpty) return;
+      for (var i = 0; i < featured.length; i++) {
+        Future.delayed(Duration(milliseconds: i * 200), () {
+          if (mounted) _fetchStatus(featured[i]);
+        });
+      }
       _startRotation();
     });
   }
@@ -267,6 +276,7 @@ class _PartnerBannerState extends State<_PartnerBanner> {
 
   @override
   Widget build(BuildContext context) {
+    if (!_loaded) return const _PartnerBannerSkeleton();
     if (_servers.isEmpty) return const SizedBox();
     final s = _servers[_index];
     final online = _statusCache[s.address];
@@ -370,10 +380,10 @@ class _PartnerBannerState extends State<_PartnerBanner> {
                           width: 38,
                           height: 38,
                           decoration: BoxDecoration(
-                            color: AppTheme.accent.withOpacity(0.15),
+                            color: AppTheme.accent.withValues(alpha: 0.15),
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(
-                              color: AppTheme.accent.withOpacity(0.3),
+                              color: AppTheme.accent.withValues(alpha: 0.3),
                             ),
                           ),
                           child: Icon(
@@ -390,6 +400,56 @@ class _PartnerBannerState extends State<_PartnerBanner> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _PartnerBannerSkeleton extends StatefulWidget {
+  const _PartnerBannerSkeleton();
+  @override
+  State<_PartnerBannerSkeleton> createState() => _PartnerBannerSkeletonState();
+}
+
+class _PartnerBannerSkeletonState extends State<_PartnerBannerSkeleton>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _ctrl;
+  late final Animation<double> _anim;
+
+  @override
+  void initState() {
+    super.initState();
+    _ctrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1200),
+    )..repeat(reverse: true);
+    _anim = CurvedAnimation(parent: _ctrl, curve: Curves.easeInOut);
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _anim,
+      builder: (_, __) {
+        final shimmer = Color.lerp(
+          AppTheme.surfaceRaised,
+          AppTheme.borderLight,
+          _anim.value,
+        )!;
+        return Container(
+          height: 80,
+          margin: const EdgeInsets.symmetric(horizontal: 16),
+          decoration: BoxDecoration(
+            color: shimmer,
+            borderRadius: BorderRadius.circular(16),
+          ),
+        );
+      },
     );
   }
 }
@@ -425,7 +485,7 @@ class _QuickCardState extends State<_QuickCard> {
             color: AppTheme.surfaceRaised,
             borderRadius: BorderRadius.circular(16),
             border: Border(
-              top: BorderSide(color: color.withOpacity(0.55), width: 2),
+              top: BorderSide(color: color.withValues(alpha: 0.55), width: 2),
             ),
           ),
           child: Column(
@@ -705,7 +765,7 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                           width: 22,
                           height: 22,
                           decoration: BoxDecoration(
-                            color: _accent.color.withOpacity(_opacity),
+                            color: _accent.color.withValues(alpha: _opacity),
                             shape: BoxShape.circle,
                             border: Border.all(color: AppTheme.borderLight),
                           ),
@@ -730,7 +790,7 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                           child: AnimatedContainer(
                             duration: const Duration(milliseconds: 150),
                             decoration: BoxDecoration(
-                              color: p.color.withOpacity(_opacity),
+                              color: p.color.withValues(alpha: _opacity),
                               shape: BoxShape.circle,
                               border: Border.all(
                                 color: isSelected
@@ -741,7 +801,7 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                               boxShadow: isSelected
                                   ? [
                                       BoxShadow(
-                                        color: p.color.withOpacity(0.4),
+                                        color: p.color.withValues(alpha: 0.4),
                                         blurRadius: 8,
                                         spreadRadius: 0,
                                       ),
@@ -775,7 +835,7 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                         Text(
                           '${(_opacity * 100).round()}%',
                           style: TextStyle(
-                            color: _accent.color.withOpacity(_opacity),
+                            color: _accent.color.withValues(alpha: _opacity),
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
                           ),
@@ -792,10 +852,10 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                         overlayShape: const RoundSliderOverlayShape(
                           overlayRadius: 16,
                         ),
-                        activeTrackColor: _accent.color.withOpacity(_opacity),
+                        activeTrackColor: _accent.color.withValues(alpha: _opacity),
                         inactiveTrackColor: AppTheme.borderGray,
-                        thumbColor: _accent.color.withOpacity(_opacity),
-                        overlayColor: _accent.color.withOpacity(0.15),
+                        thumbColor: _accent.color.withValues(alpha: _opacity),
+                        overlayColor: _accent.color.withValues(alpha: 0.15),
                       ),
                       child: Slider(
                         value: _opacity,
@@ -856,7 +916,7 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                                 gradient: LinearGradient(
                                   begin: Alignment.topLeft,
                                   end: Alignment.bottomRight,
-                                  colors: [p.tint.withOpacity(0.7), p.base],
+                                  colors: [p.tint.withValues(alpha: 0.7), p.base],
                                 ),
                                 shape: BoxShape.circle,
                                 border: Border.all(
@@ -905,7 +965,7 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                           width: 22,
                           height: 22,
                           decoration: BoxDecoration(
-                            color: _card.color.withOpacity(_cardOpacity),
+                            color: _card.color.withValues(alpha: _cardOpacity),
                             shape: BoxShape.circle,
                             border: Border.all(color: AppTheme.borderLight),
                           ),
@@ -931,7 +991,7 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                             child: AnimatedContainer(
                               duration: const Duration(milliseconds: 150),
                               decoration: BoxDecoration(
-                                color: p.color.withOpacity(_cardOpacity),
+                                color: p.color.withValues(alpha: _cardOpacity),
                                 shape: BoxShape.circle,
                                 border: Border.all(
                                   color: isSelected
@@ -991,10 +1051,10 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                         overlayShape: const RoundSliderOverlayShape(
                           overlayRadius: 16,
                         ),
-                        activeTrackColor: _card.color.withOpacity(0.7),
+                        activeTrackColor: _card.color.withValues(alpha: 0.7),
                         inactiveTrackColor: AppTheme.borderGray,
                         thumbColor: _card.color,
-                        overlayColor: _card.color.withOpacity(0.15),
+                        overlayColor: _card.color.withValues(alpha: 0.15),
                       ),
                       child: Slider(
                         value: _cardOpacity,
@@ -1041,7 +1101,7 @@ class _TileRow extends StatelessWidget {
             width: 32,
             height: 32,
             decoration: BoxDecoration(
-              color: color.withOpacity(0.12),
+              color: color.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Center(
@@ -1131,7 +1191,7 @@ class _NavEditor extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     color: isSelected
-                        ? color.withOpacity(0.15)
+                        ? color.withValues(alpha: 0.15)
                         : AppTheme.surfaceLight,
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(

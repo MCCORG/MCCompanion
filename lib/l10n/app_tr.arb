@@ -1508,5 +1508,17 @@
   "featureSubtitleLookup": "Java ve Bedrock profillerini arayın",
   "featureSubtitleTracker": "Sunucu durumunu izleyin ve bildirim alın",
   "userSearchHint": "Kullanıcı adı, gamertag veya Java adı…",
-  "userSearchSub": "Kullanıcı adı, Xbox gamertag veya Java adıyla ara"
+  "userSearchSub": "Kullanıcı adı, Xbox gamertag veya Java adıyla ara",
+  "onlineStatus": "Çevrimiçi",
+  "@onlineStatus": {
+    "description": "Label shown when a friend is online"
+  },
+  "upgradeWindowsHint": "Yükseltme Microsoft Store'da mevcut",
+  "@upgradeWindowsHint": {
+    "description": "Toast shown on Windows when user taps the upgrade button"
+  },
+  "chatEmptyHint": "İlk mesajı sen gönder!",
+  "@chatEmptyHint": {
+    "description": "Subtitle on the empty chat screen"
+  }
 }

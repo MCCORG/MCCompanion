@@ -1534,4 +1534,13 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get userSearchSub => 'ব্যবহারকারীর নাম, Xbox গেমারট্যাগ বা Java নাম দিয়ে খুঁজুন';
+
+  @override
+  String get onlineStatus => 'অনলাইন';
+
+  @override
+  String get upgradeWindowsHint => 'মাইক্রোসফট স্টোরে আপগ্রেড পাওয়া যাচ্ছে';
+
+  @override
+  String get chatEmptyHint => 'প্রথম কিছু বলুন!';
 }

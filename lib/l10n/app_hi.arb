@@ -1508,5 +1508,17 @@
   "featureSubtitleLookup": "Java और Bedrock प्रोफाइल खोजें",
   "featureSubtitleTracker": "सर्वर स्थिति मॉनिटर करें और सूचनाएं पाएं",
   "userSearchHint": "यूज़रनाम, गेमरटैग या Java नाम…",
-  "userSearchSub": "यूज़रनाम, Xbox गेमरटैग या Java नाम से खोजें"
+  "userSearchSub": "यूज़रनाम, Xbox गेमरटैग या Java नाम से खोजें",
+  "onlineStatus": "ऑनलाइन",
+  "@onlineStatus": {
+    "description": "Label shown when a friend is online"
+  },
+  "upgradeWindowsHint": "Microsoft Store पर अपग्रेड उपलब्ध है",
+  "@upgradeWindowsHint": {
+    "description": "Toast shown on Windows when user taps the upgrade button"
+  },
+  "chatEmptyHint": "पहले कुछ कहो!",
+  "@chatEmptyHint": {
+    "description": "Subtitle on the empty chat screen"
+  }
 }

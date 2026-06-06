@@ -1534,4 +1534,13 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get userSearchSub => 'Tafuta kwa jina la mtumiaji, gamertag ya Xbox au jina la Java';
+
+  @override
+  String get onlineStatus => 'Mtandaoni';
+
+  @override
+  String get upgradeWindowsHint => 'Uboreshaji unapatikana kwenye Microsoft Store';
+
+  @override
+  String get chatEmptyHint => 'Kuwa wa kwanza kusema kitu!';
 }

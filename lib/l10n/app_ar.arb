@@ -1508,5 +1508,17 @@
   "featureSubtitleLookup": "البحث عن ملفات Java و Bedrock",
   "featureSubtitleTracker": "مراقبة حالة الخادم والإشعارات",
   "userSearchHint": "اسم المستخدم أو الغامرتاغ أو اسم Java…",
-  "userSearchSub": "البحث باسم المستخدم أو غامرتاغ Xbox أو اسم Java"
+  "userSearchSub": "البحث باسم المستخدم أو غامرتاغ Xbox أو اسم Java",
+  "onlineStatus": "متصل",
+  "@onlineStatus": {
+    "description": "Label shown when a friend is online"
+  },
+  "upgradeWindowsHint": "الترقية متاحة عبر متجر Microsoft",
+  "@upgradeWindowsHint": {
+    "description": "Toast shown on Windows when user taps the upgrade button"
+  },
+  "chatEmptyHint": "كن أول من يقول شيئاً!",
+  "@chatEmptyHint": {
+    "description": "Subtitle on the empty chat screen"
+  }
 }

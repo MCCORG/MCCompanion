@@ -1308,8 +1308,8 @@ class _WikiCardState extends State<_WikiCard> {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 22),
         decoration: BoxDecoration(
           color: _pressed
-              ? AppTheme.surfaceRaised.withOpacity(0.75)
-              : AppTheme.surface.withOpacity(0.60),
+              ? AppTheme.surfaceRaised.withValues(alpha: 0.75)
+              : AppTheme.surface.withValues(alpha: 0.60),
           borderRadius: BorderRadius.circular(14),
           border: Border.all(color: AppTheme.borderGray),
         ),
@@ -1327,7 +1327,7 @@ class _WikiCardState extends State<_WikiCard> {
                   width: 52,
                   height: 52,
                   decoration: BoxDecoration(
-                    color: color.withOpacity(0.12),
+                    color: color.withValues(alpha: 0.12),
                     borderRadius: BorderRadius.circular(14),
                   ),
                   child: Center(
@@ -1373,7 +1373,7 @@ class _WikiCardState extends State<_WikiCard> {
             Icon(
               Icons.arrow_forward_ios_rounded,
               size: 11,
-              color: color.withOpacity(0.60),
+              color: color.withValues(alpha: 0.60),
             ),
           ],
         ),
@@ -1395,7 +1395,7 @@ class _SubCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 22),
         decoration: BoxDecoration(
-          color: AppTheme.surface.withOpacity(0.60),
+          color: AppTheme.surface.withValues(alpha: 0.60),
           borderRadius: BorderRadius.circular(14),
           border: Border.all(color: AppTheme.borderGray),
         ),
@@ -1414,7 +1414,7 @@ class _SubCard extends StatelessWidget {
                     width: 52,
                     height: 52,
                     decoration: BoxDecoration(
-                      color: color.withOpacity(0.12),
+                      color: color.withValues(alpha: 0.12),
                       borderRadius: BorderRadius.circular(14),
                     ),
                     child: Center(
@@ -1431,7 +1431,7 @@ class _SubCard extends StatelessWidget {
                 width: 52,
                 height: 52,
                 decoration: BoxDecoration(
-                  color: color.withOpacity(0.12),
+                  color: color.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(14),
                 ),
                 child: Center(
@@ -1452,7 +1452,7 @@ class _SubCard extends StatelessWidget {
             Icon(
               Icons.arrow_forward_ios_rounded,
               size: 11,
-              color: color.withOpacity(0.60),
+              color: color.withValues(alpha: 0.60),
             ),
           ],
         ),
@@ -1521,7 +1521,7 @@ class _PageCard extends StatelessWidget {
     width: 48,
     height: 48,
     decoration: BoxDecoration(
-      color: AppTheme.accent.withOpacity(0.08),
+      color: AppTheme.accent.withValues(alpha: 0.08),
       borderRadius: BorderRadius.circular(8),
     ),
     child: const Center(child: Text('⛏️', style: TextStyle(fontSize: 20))),

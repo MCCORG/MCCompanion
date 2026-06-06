@@ -1508,5 +1508,17 @@
   "featureSubtitleLookup": "查找Java和Bedrock档案",
   "featureSubtitleTracker": "监控服务器状态并获取通知",
   "userSearchHint": "用户名、玩家代号或Java名…",
-  "userSearchSub": "按用户名、Xbox玩家代号或Java名搜索"
+  "userSearchSub": "按用户名、Xbox玩家代号或Java名搜索",
+  "onlineStatus": "在线",
+  "@onlineStatus": {
+    "description": "Label shown when a friend is online"
+  },
+  "upgradeWindowsHint": "可在 Microsoft Store 升级",
+  "@upgradeWindowsHint": {
+    "description": "Toast shown on Windows when user taps the upgrade button"
+  },
+  "chatEmptyHint": "率先说点什么吧！",
+  "@chatEmptyHint": {
+    "description": "Subtitle on the empty chat screen"
+  }
 }

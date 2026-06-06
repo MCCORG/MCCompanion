@@ -60,10 +60,10 @@ class HowToSheetContent extends StatelessWidget {
                     width: 38,
                     height: 38,
                     decoration: BoxDecoration(
-                      color: AppTheme.accent.withOpacity(0.12),
+                      color: AppTheme.accent.withValues(alpha: 0.12),
                       borderRadius: BorderRadius.circular(11),
                       border: Border.all(
-                          color: AppTheme.accent.withOpacity(0.25)),
+                          color: AppTheme.accent.withValues(alpha: 0.25)),
                     ),
                     child: Center(
                       child: FaIcon(FontAwesomeIcons.circleQuestion,
@@ -144,9 +144,9 @@ class HowToSheetContent extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
           decoration: BoxDecoration(
-            color: color.withOpacity(0.05),
+            color: color.withValues(alpha: 0.05),
             borderRadius: BorderRadius.circular(13),
-            border: Border.all(color: color.withOpacity(0.22)),
+            border: Border.all(color: color.withValues(alpha: 0.22)),
           ),
           child: Row(
             children: [
@@ -154,7 +154,7 @@ class HowToSheetContent extends StatelessWidget {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: color.withOpacity(0.14),
+                  color: color.withValues(alpha: 0.14),
                   borderRadius: BorderRadius.circular(13),
                 ),
                 child: Center(child: FaIcon(icon, color: color, size: 19)),
@@ -180,7 +180,7 @@ class HowToSheetContent extends StatelessWidget {
                 ),
               ),
               Icon(Icons.arrow_forward_ios_rounded,
-                  color: color.withOpacity(0.4), size: 13),
+                  color: color.withValues(alpha: 0.4), size: 13),
             ],
           ),
         ),

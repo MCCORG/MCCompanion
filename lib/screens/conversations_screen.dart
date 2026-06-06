@@ -18,16 +18,23 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
   List<ConversationModel> _conversations = [];
   bool _loading = true;
   StreamSubscription<dynamic>? _incomingSub;
+  Timer? _debounce;
 
   @override
   void initState() {
     super.initState();
     _load();
-    _incomingSub = MessageService.incoming.listen((_) => _load());
+    _incomingSub = MessageService.incoming.listen((_) => _scheduleLoad());
+  }
+
+  void _scheduleLoad() {
+    _debounce?.cancel();
+    _debounce = Timer(const Duration(milliseconds: 800), _load);
   }
 
   @override
   void dispose() {
+    _debounce?.cancel();
     _incomingSub?.cancel();
     super.dispose();
   }
@@ -134,7 +141,7 @@ class _ConvTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
             color: hasUnread
-                ? AppTheme.accent.withOpacity(0.30)
+                ? AppTheme.accent.withValues(alpha: 0.30)
                 : AppTheme.borderGray,
           ),
         ),
@@ -244,9 +251,9 @@ class _Avatar extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        color: AppTheme.accent.withOpacity(0.15),
+        color: AppTheme.accent.withValues(alpha: 0.15),
         shape: BoxShape.circle,
-        border: Border.all(color: AppTheme.accent.withOpacity(0.30)),
+        border: Border.all(color: AppTheme.accent.withValues(alpha: 0.30)),
       ),
       child: ClipOval(
         child: hasImage

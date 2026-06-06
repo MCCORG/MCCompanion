@@ -55,10 +55,10 @@ class InfoSheetContent extends StatelessWidget {
                     width: 38,
                     height: 38,
                     decoration: BoxDecoration(
-                      color: AppTheme.accent.withOpacity(0.12),
+                      color: AppTheme.accent.withValues(alpha: 0.12),
                       borderRadius: BorderRadius.circular(11),
                       border: Border.all(
-                        color: AppTheme.accent.withOpacity(0.25),
+                        color: AppTheme.accent.withValues(alpha: 0.25),
                       ),
                     ),
                     child: Center(
@@ -214,9 +214,9 @@ class InfoSheetContent extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
           decoration: BoxDecoration(
-            color: color.withOpacity(0.05),
+            color: color.withValues(alpha: 0.05),
             borderRadius: BorderRadius.circular(13),
-            border: Border.all(color: color.withOpacity(0.22)),
+            border: Border.all(color: color.withValues(alpha: 0.22)),
           ),
           child: Row(
             children: [
@@ -224,7 +224,7 @@ class InfoSheetContent extends StatelessWidget {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: color.withOpacity(0.14),
+                  color: color.withValues(alpha: 0.14),
                   borderRadius: BorderRadius.circular(13),
                 ),
                 child: Center(child: Icon(icon, color: color, size: 20)),
@@ -256,7 +256,7 @@ class InfoSheetContent extends StatelessWidget {
               const SizedBox(width: 8),
               Icon(
                 Icons.arrow_forward_ios_rounded,
-                color: color.withOpacity(0.4),
+                color: color.withValues(alpha: 0.4),
                 size: 13,
               ),
             ],
@@ -292,7 +292,7 @@ class InfoSheetContent extends StatelessWidget {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: labelColor.withOpacity(0.14),
+                  color: labelColor.withValues(alpha: 0.14),
                   borderRadius: BorderRadius.circular(13),
                 ),
                 child: Center(

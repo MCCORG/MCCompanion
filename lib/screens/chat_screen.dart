@@ -141,10 +141,28 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
         title: Row(
           children: [
-            _Avatar(
-              initials: widget.friend.initials,
-              size: 34,
-              avatarUrl: widget.friend.avatarUrl,
+            Stack(
+              children: [
+                _Avatar(
+                  initials: widget.friend.initials,
+                  size: 34,
+                  avatarUrl: widget.friend.avatarUrl,
+                ),
+                if (widget.friend.online)
+                  Positioned(
+                    right: 0,
+                    bottom: 0,
+                    child: Container(
+                      width: 10,
+                      height: 10,
+                      decoration: BoxDecoration(
+                        color: AppTheme.success,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: AppTheme.surface, width: 1.5),
+                      ),
+                    ),
+                  ),
+              ],
             ),
             const SizedBox(width: 10),
             Column(
@@ -159,9 +177,13 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                 ),
                 Text(
-                  '@${widget.friend.username}',
-                  style: const TextStyle(
-                    color: AppTheme.textMuted,
+                  widget.friend.online
+                      ? AppLocalizations.of(context)!.onlineStatus
+                      : '@${widget.friend.username}',
+                  style: TextStyle(
+                    color: widget.friend.online
+                        ? AppTheme.success
+                        : AppTheme.textMuted,
                     fontSize: 11,
                   ),
                 ),
@@ -422,7 +444,7 @@ class _Bubble extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         decoration: BoxDecoration(
           color: isMine
-              ? AppTheme.accent.withOpacity(0.85)
+              ? AppTheme.accent.withValues(alpha: 0.85)
               : AppTheme.surfaceRaised,
           borderRadius: BorderRadius.only(
             topLeft: const Radius.circular(16),
@@ -450,7 +472,7 @@ class _Bubble extends StatelessWidget {
               _timeLabel(msg.createdAt),
               style: TextStyle(
                 color: isMine
-                    ? const Color(0xFF0D1500).withOpacity(0.55)
+                    ? const Color(0xFF0D1500).withValues(alpha: 0.55)
                     : AppTheme.textMuted,
                 fontSize: 10,
               ),
@@ -468,6 +490,14 @@ class _Bubble extends StatelessWidget {
   }
 }
 
+bool _isYesterday(DateTime local, DateTime now) {
+  final yesterday = DateTime(now.year, now.month, now.day)
+      .subtract(const Duration(days: 1));
+  return local.year == yesterday.year &&
+      local.month == yesterday.month &&
+      local.day == yesterday.day;
+}
+
 class _DateDivider extends StatelessWidget {
   final DateTime date;
   const _DateDivider({required this.date});
@@ -482,9 +512,7 @@ class _DateDivider extends StatelessWidget {
         local.month == now.month &&
         local.day == now.day) {
       label = l.today;
-    } else if (local.year == now.year &&
-        local.month == now.month &&
-        local.day == now.day - 1) {
+    } else if (_isYesterday(local, now)) {
       label = l.yesterday;
     } else {
       label =
@@ -515,7 +543,7 @@ class _DateDivider extends StatelessWidget {
   }
 }
 
-class _InputBar extends StatelessWidget {
+class _InputBar extends StatefulWidget {
   final TextEditingController controller;
   final bool sending;
   final VoidCallback onSend;
@@ -526,7 +554,33 @@ class _InputBar extends StatelessWidget {
   });
 
   @override
+  State<_InputBar> createState() => _InputBarState();
+}
+
+class _InputBarState extends State<_InputBar> {
+  static const _maxLength = 500;
+  int _length = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    widget.controller.addListener(_onTextChanged);
+  }
+
+  @override
+  void dispose() {
+    widget.controller.removeListener(_onTextChanged);
+    super.dispose();
+  }
+
+  void _onTextChanged() {
+    final len = widget.controller.text.length;
+    if (len != _length) setState(() => _length = len);
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final nearLimit = _length >= _maxLength - 50;
     return Container(
       padding: const EdgeInsets.fromLTRB(12, 8, 8, 12),
       decoration: BoxDecoration(
@@ -536,59 +590,80 @@ class _InputBar extends StatelessWidget {
       child: SafeArea(
         top: false,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Expanded(
-              child: TextField(
-                controller: controller,
-                style: const TextStyle(
-                  color: AppTheme.textPrimary,
-                  fontSize: 14,
-                ),
-                maxLines: 4,
-                minLines: 1,
-                textInputAction: TextInputAction.send,
-                onSubmitted: (_) => onSend(),
-                decoration: InputDecoration(
-                  hintText: AppLocalizations.of(context)!.messagePlaceholder,
-                  hintStyle: const TextStyle(
-                    color: AppTheme.textMuted,
-                    fontSize: 14,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextField(
+                    controller: widget.controller,
+                    style: const TextStyle(
+                      color: AppTheme.textPrimary,
+                      fontSize: 14,
+                    ),
+                    maxLines: 4,
+                    minLines: 1,
+                    maxLength: _maxLength,
+                    buildCounter: (_, {required currentLength, required isFocused, maxLength}) => null,
+                    textInputAction: TextInputAction.send,
+                    onSubmitted: (_) => widget.onSend(),
+                    decoration: InputDecoration(
+                      hintText: AppLocalizations.of(context)!.messagePlaceholder,
+                      hintStyle: const TextStyle(
+                        color: AppTheme.textMuted,
+                        fontSize: 14,
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 14,
+                        vertical: 10,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: const BorderSide(color: AppTheme.borderGray),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: const BorderSide(color: AppTheme.borderGray),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(color: AppTheme.accent, width: 1.5),
+                      ),
+                      filled: true,
+                      fillColor: AppTheme.surfaceRaised,
+                    ),
                   ),
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 14,
-                    vertical: 10,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: const BorderSide(color: AppTheme.borderGray),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: const BorderSide(color: AppTheme.borderGray),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: AppTheme.accent, width: 1.5),
-                  ),
-                  filled: true,
-                  fillColor: AppTheme.surfaceRaised,
-                ),
+                  if (nearLimit) ...[
+                    const SizedBox(height: 4),
+                    Text(
+                      '$_length / $_maxLength',
+                      style: TextStyle(
+                        color: _length >= _maxLength
+                            ? AppTheme.error
+                            : AppTheme.textMuted,
+                        fontSize: 10,
+                      ),
+                    ),
+                  ],
+                ],
               ),
             ),
             const SizedBox(width: 8),
             GestureDetector(
-              onTap: sending ? null : onSend,
+              onTap: widget.sending ? null : widget.onSend,
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 150),
                 width: 42,
                 height: 42,
                 decoration: BoxDecoration(
-                  color: sending
-                      ? AppTheme.accent.withOpacity(0.4)
+                  color: widget.sending
+                      ? AppTheme.accent.withValues(alpha: 0.4)
                       : AppTheme.accent,
                   shape: BoxShape.circle,
                 ),
-                child: sending
+                child: widget.sending
                     ? const Padding(
                         padding: EdgeInsets.all(12),
                         child: CircularProgressIndicator(
@@ -615,13 +690,33 @@ class _EmptyChat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Center(
-    child: Text(
-      AppLocalizations.of(context)!.noMessagesYet,
-      textAlign: TextAlign.center,
-      style: const TextStyle(
-        color: AppTheme.textMuted,
-        fontSize: 14,
-        height: 1.6,
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 40),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Text('👋', style: TextStyle(fontSize: 40)),
+          const SizedBox(height: 12),
+          Text(
+            AppLocalizations.of(context)!.noMessagesYet,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: AppTheme.textSecondary,
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            AppLocalizations.of(context)!.chatEmptyHint,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: AppTheme.textMuted,
+              fontSize: 12,
+              height: 1.5,
+            ),
+          ),
+        ],
       ),
     ),
   );
@@ -648,11 +743,11 @@ class _ReasonTile extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 8),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         decoration: BoxDecoration(
-          color: selected ? AppTheme.error.withOpacity(0.10) : AppTheme.surface,
+          color: selected ? AppTheme.error.withValues(alpha: 0.10) : AppTheme.surface,
           borderRadius: BorderRadius.circular(11),
           border: Border.all(
             color: selected
-                ? AppTheme.error.withOpacity(0.50)
+                ? AppTheme.error.withValues(alpha: 0.50)
                 : AppTheme.borderGray,
             width: selected ? 1.5 : 1,
           ),
@@ -691,9 +786,9 @@ class _Avatar extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        color: AppTheme.accent.withOpacity(0.15),
+        color: AppTheme.accent.withValues(alpha: 0.15),
         shape: BoxShape.circle,
-        border: Border.all(color: AppTheme.accent.withOpacity(0.30)),
+        border: Border.all(color: AppTheme.accent.withValues(alpha: 0.30)),
       ),
       child: ClipOval(
         child: hasImage

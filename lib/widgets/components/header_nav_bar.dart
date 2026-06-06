@@ -15,7 +15,7 @@ class HeaderNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.surface.withOpacity(0.60),
+        color: AppTheme.surface.withValues(alpha: 0.60),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: AppTheme.borderGray),
       ),
@@ -62,7 +62,7 @@ class _HeaderNavButtonState extends State<_HeaderNavButton> {
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 7),
         decoration: BoxDecoration(
           color: _pressed
-              ? AppTheme.surfaceRaised.withOpacity(0.80)
+              ? AppTheme.surfaceRaised.withValues(alpha: 0.80)
               : Colors.transparent,
           borderRadius: BorderRadius.circular(20),
         ),

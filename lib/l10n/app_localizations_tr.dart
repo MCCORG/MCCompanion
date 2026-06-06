@@ -1534,4 +1534,13 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get userSearchSub => 'Kullanıcı adı, Xbox gamertag veya Java adıyla ara';
+
+  @override
+  String get onlineStatus => 'Çevrimiçi';
+
+  @override
+  String get upgradeWindowsHint => 'Yükseltme Microsoft Store\'da mevcut';
+
+  @override
+  String get chatEmptyHint => 'İlk mesajı sen gönder!';
 }

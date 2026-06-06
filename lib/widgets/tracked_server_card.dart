@@ -85,7 +85,7 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
         child: Stack(
           children: [
             Positioned.fill(child: Container(color: AppTheme.surfaceRaised)),
-            Positioned.fill(child: Container(color: color.withOpacity(0.08))),
+            Positioned.fill(child: Container(color: color.withValues(alpha: 0.08))),
 
             Positioned.fill(
               child: CustomPaint(
@@ -128,7 +128,7 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: color.withOpacity(0.35)),
+                  border: Border.all(color: color.withValues(alpha: 0.35)),
                 ),
               ),
             ),
@@ -142,9 +142,9 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
                     width: 42,
                     height: 42,
                     decoration: BoxDecoration(
-                      color: color.withOpacity(0.12),
+                      color: color.withValues(alpha: 0.12),
                       borderRadius: BorderRadius.circular(11),
-                      border: Border.all(color: color.withOpacity(0.28)),
+                      border: Border.all(color: color.withValues(alpha: 0.28)),
                     ),
                     child: Icon(Icons.circle, color: color, size: 12),
                   ),
@@ -193,7 +193,7 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
                                 vertical: 2,
                               ),
                               decoration: BoxDecoration(
-                                color: color.withOpacity(0.12),
+                                color: color.withValues(alpha: 0.12),
                                 borderRadius: BorderRadius.circular(4),
                               ),
                               child: Text(
@@ -522,7 +522,7 @@ class _PlatformChip extends StatelessWidget {
         duration: const Duration(milliseconds: 150),
         padding: const EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(
-          color: selected ? AppTheme.brand.withOpacity(0.15) : AppTheme.surfaceLight,
+          color: selected ? AppTheme.brand.withValues(alpha: 0.15) : AppTheme.surfaceLight,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             color: selected ? AppTheme.brand : Colors.transparent,

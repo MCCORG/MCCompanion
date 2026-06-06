@@ -1534,4 +1534,13 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get userSearchSub => 'صارف نام, Xbox گیمرٹیگ یا Java نام سے تلاش کریں';
+
+  @override
+  String get onlineStatus => 'آن لائن';
+
+  @override
+  String get upgradeWindowsHint => 'اپ گریڈ مائیکروسافٹ اسٹور پر دستیاب ہے';
+
+  @override
+  String get chatEmptyHint => 'پہلے کچھ کہنے والے بنیں!';
 }

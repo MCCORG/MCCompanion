@@ -1508,5 +1508,17 @@
   "featureSubtitleLookup": "Tafuta wasifu wa Java na Bedrock",
   "featureSubtitleTracker": "Fuatilia hali ya seva na upokee arifa",
   "userSearchHint": "Jina la mtumiaji, gamertag au jina la Java…",
-  "userSearchSub": "Tafuta kwa jina la mtumiaji, gamertag ya Xbox au jina la Java"
+  "userSearchSub": "Tafuta kwa jina la mtumiaji, gamertag ya Xbox au jina la Java",
+  "onlineStatus": "Mtandaoni",
+  "@onlineStatus": {
+    "description": "Label shown when a friend is online"
+  },
+  "upgradeWindowsHint": "Uboreshaji unapatikana kwenye Microsoft Store",
+  "@upgradeWindowsHint": {
+    "description": "Toast shown on Windows when user taps the upgrade button"
+  },
+  "chatEmptyHint": "Kuwa wa kwanza kusema kitu!",
+  "@chatEmptyHint": {
+    "description": "Subtitle on the empty chat screen"
+  }
 }

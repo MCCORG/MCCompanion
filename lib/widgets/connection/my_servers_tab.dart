@@ -114,7 +114,7 @@ class _ServerTile extends StatelessWidget {
             Positioned.fill(
               child: Container(
                 color: isSelected
-                    ? AppTheme.accent.withOpacity(0.06)
+                    ? AppTheme.accent.withValues(alpha: 0.06)
                     : Colors.transparent,
               ),
             ),
@@ -179,12 +179,12 @@ class _ServerTile extends StatelessWidget {
                     height: 38,
                     decoration: BoxDecoration(
                       color: isSelected
-                          ? AppTheme.accent.withOpacity(0.12)
+                          ? AppTheme.accent.withValues(alpha: 0.12)
                           : AppTheme.surfaceRaisedSolid,
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
                         color: isSelected
-                            ? AppTheme.accent.withOpacity(0.30)
+                            ? AppTheme.accent.withValues(alpha: 0.30)
                             : AppTheme.borderGray,
                       ),
                     ),
@@ -236,14 +236,14 @@ class _ServerTile extends StatelessWidget {
                               ? AppTheme.surfaceRaisedSolid
                               : isSelected
                               ? AppTheme.accent
-                              : AppTheme.accent.withOpacity(0.15),
+                              : AppTheme.accent.withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
                             color: broadcasting
                                 ? AppTheme.borderGray
                                 : isSelected
                                 ? AppTheme.accent
-                                : AppTheme.accent.withOpacity(0.35),
+                                : AppTheme.accent.withValues(alpha: 0.35),
                           ),
                         ),
                         child: Row(
@@ -335,12 +335,12 @@ class _StatusBadgeState extends State<_StatusBadge> {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
         color: online
-            ? AppTheme.success.withOpacity(0.08)
+            ? AppTheme.success.withValues(alpha: 0.08)
             : AppTheme.surfaceRaisedSolid,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: online
-              ? AppTheme.success.withOpacity(0.30)
+              ? AppTheme.success.withValues(alpha: 0.30)
               : AppTheme.borderGray,
         ),
       ),
@@ -366,7 +366,7 @@ class _StatusBadgeState extends State<_StatusBadge> {
             Text(
               sub,
               style: TextStyle(
-                color: AppTheme.success.withOpacity(0.70),
+                color: AppTheme.success.withValues(alpha: 0.70),
                 fontSize: 10,
               ),
             ),

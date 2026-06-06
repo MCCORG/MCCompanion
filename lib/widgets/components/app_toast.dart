@@ -107,15 +107,15 @@ class _AppToastWidgetState extends State<_AppToastWidget>
                 decoration: BoxDecoration(
                   color: AppTheme.surfaceRaised,
                   borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: widget.color.withOpacity(0.35)),
+                  border: Border.all(color: widget.color.withValues(alpha: 0.35)),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.35),
+                      color: Colors.black.withValues(alpha: 0.35),
                       blurRadius: 20,
                       offset: const Offset(0, 6),
                     ),
                     BoxShadow(
-                      color: widget.color.withOpacity(0.10),
+                      color: widget.color.withValues(alpha: 0.10),
                       blurRadius: 16,
                       spreadRadius: -2,
                     ),
@@ -129,7 +129,7 @@ class _AppToastWidgetState extends State<_AppToastWidget>
                         width: 30,
                         height: 30,
                         decoration: BoxDecoration(
-                          color: widget.color.withOpacity(0.12),
+                          color: widget.color.withValues(alpha: 0.12),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Icon(widget.icon, size: 15, color: widget.color),

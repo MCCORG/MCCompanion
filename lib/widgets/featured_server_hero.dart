@@ -217,7 +217,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                                 decoration: BoxDecoration(
                                   color: active
                                       ? Colors.white
-                                      : Colors.white.withOpacity(0.25),
+                                      : Colors.white.withValues(alpha: 0.25),
                                   borderRadius: BorderRadius.circular(3),
                                 ),
                               );
@@ -254,7 +254,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                                     ? server!.description
                                     : 'Connect and start your adventure.',
                                 style: TextStyle(
-                                  color: Colors.white.withOpacity(0.60),
+                                  color: Colors.white.withValues(alpha: 0.60),
                                   fontSize: 11,
                                   height: 1.5,
                                 ),
@@ -298,12 +298,12 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                             vertical: 12,
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(
+                            color: Colors.white.withValues(alpha: 
                               server == null || broadcasting ? 0.08 : 0.15,
                             ),
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
-                              color: Colors.white.withOpacity(
+                              color: Colors.white.withValues(alpha: 
                                 server == null || broadcasting ? 0.10 : 0.30,
                               ),
                             ),
@@ -314,7 +314,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                               Text(
                                 'Play',
                                 style: TextStyle(
-                                  color: Colors.white.withOpacity(
+                                  color: Colors.white.withValues(alpha: 
                                     server == null || broadcasting ? 0.35 : 1.0,
                                   ),
                                   fontSize: 14,
@@ -324,7 +324,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                               const SizedBox(width: 6),
                               Icon(
                                 Icons.play_arrow_rounded,
-                                color: Colors.white.withOpacity(
+                                color: Colors.white.withValues(alpha: 
                                   server == null || broadcasting ? 0.35 : 1.0,
                                 ),
                                 size: 16,
@@ -358,9 +358,9 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 5),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.45),
+        color: Colors.black.withValues(alpha: 0.45),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white.withOpacity(0.15)),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -385,9 +385,9 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.45),
+        color: Colors.black.withValues(alpha: 0.45),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white.withOpacity(0.15)),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -423,7 +423,7 @@ class _HeroStatusBadge extends StatelessWidget {
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return _badge(
-            dot: Colors.white.withOpacity(0.40),
+            dot: Colors.white.withValues(alpha: 0.40),
             label: '...',
             sub: null,
           );
@@ -431,7 +431,7 @@ class _HeroStatusBadge extends StatelessWidget {
         final status = snapshot.data!;
         if (!status.isOnline) {
           return _badge(
-            dot: AppTheme.error.withOpacity(0.80),
+            dot: AppTheme.error.withValues(alpha: 0.80),
             label: 'Offline',
             sub: null,
           );
@@ -456,9 +456,9 @@ class _HeroStatusBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.45),
+        color: Colors.black.withValues(alpha: 0.45),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white.withOpacity(0.15)),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -486,7 +486,7 @@ class _HeroStatusBadge extends StatelessWidget {
             Text(
               sub,
               style: TextStyle(
-                color: Colors.white.withOpacity(0.80),
+                color: Colors.white.withValues(alpha: 0.80),
                 fontSize: 11,
                 fontWeight: FontWeight.w500,
               ),

@@ -33,7 +33,7 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
     if (log.contains('[WARN]')) return AppTheme.warning;
     if (log.contains('[INFO]')) return AppTheme.info;
     if (log.contains('[DEBUG]')) return AppTheme.success;
-    return Colors.white.withOpacity(0.5);
+    return Colors.white.withValues(alpha: 0.5);
   }
 
   @override
@@ -48,9 +48,9 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
           curve: Curves.easeInOut,
           height: _expanded ? 380 : 52,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.04),
+            color: Colors.white.withValues(alpha: 0.04),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.white.withOpacity(0.08)),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
@@ -76,20 +76,19 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
         decoration: BoxDecoration(
           border: _expanded
               ? Border(
-                  bottom: BorderSide(color: Colors.white.withOpacity(0.07)),
+                  bottom: BorderSide(color: Colors.white.withValues(alpha: 0.07)),
                 )
               : null,
         ),
         child: Row(
           children: [
-            // Terminal icon — zelfde stijl als Featured Servers explore icon
             Container(
               padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
-                color: AppTheme.primaryAccent.withOpacity(0.12),
+                color: AppTheme.primaryAccent.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
-                  color: AppTheme.primaryAccent.withOpacity(0.2),
+                  color: AppTheme.primaryAccent.withValues(alpha: 0.2),
                 ),
               ),
               child: Icon(
@@ -123,16 +122,16 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
                       vertical: 2,
                     ),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.06),
+                      color: Colors.white.withValues(alpha: 0.06),
                       borderRadius: BorderRadius.circular(6),
                       border:
-                          Border.all(color: Colors.white.withOpacity(0.08)),
+                          Border.all(color: Colors.white.withValues(alpha: 0.08)),
                     ),
                     child: Text(
                       '${logs.length}',
                       style: TextStyle(
                         fontSize: 10,
-                        color: Colors.white.withOpacity(0.35),
+                        color: Colors.white.withValues(alpha: 0.35),
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -147,19 +146,19 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
                     : Icons.bug_report_outlined,
                 color: widget.debugEnabled
                     ? AppTheme.success
-                    : Colors.white.withOpacity(0.3),
+                    : Colors.white.withValues(alpha: 0.3),
                 tooltip: loc.toggleDebug,
                 onTap: widget.onToggleDebug,
               ),
               _iconBtn(
                 icon: Icons.copy_outlined,
-                color: Colors.white.withOpacity(0.3),
+                color: Colors.white.withValues(alpha: 0.3),
                 tooltip: loc.copyLogs,
                 onTap: widget.onCopyLogs,
               ),
               _iconBtn(
                 icon: Icons.delete_outline_rounded,
-                color: Colors.white.withOpacity(0.3),
+                color: Colors.white.withValues(alpha: 0.3),
                 tooltip: loc.clear,
                 onTap: widget.onClearLogs,
               ),
@@ -171,7 +170,7 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
               duration: const Duration(milliseconds: 300),
               child: Icon(
                 Icons.keyboard_arrow_down_rounded,
-                color: Colors.white.withOpacity(0.3),
+                color: Colors.white.withValues(alpha: 0.3),
                 size: 20,
               ),
             ),
@@ -193,13 +192,13 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
                 Icon(
                   Icons.terminal_rounded,
                   size: 32,
-                  color: Colors.white.withOpacity(0.08),
+                  color: Colors.white.withValues(alpha: 0.08),
                 ),
                 const SizedBox(height: 10),
                 Text(
                   loc.noLogsYet,
                   style: TextStyle(
-                    color: Colors.white.withOpacity(0.2),
+                    color: Colors.white.withValues(alpha: 0.2),
                     fontSize: 13,
                   ),
                 ),
@@ -207,7 +206,7 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
                 Text(
                   loc.startBroadcastingToSeeOutput,
                   style: TextStyle(
-                    color: Colors.white.withOpacity(0.1),
+                    color: Colors.white.withValues(alpha: 0.1),
                     fontSize: 11,
                   ),
                 ),
@@ -234,7 +233,7 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
                       height: 4,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: _getLogColor(log).withOpacity(0.7),
+                        color: _getLogColor(log).withValues(alpha: 0.7),
                       ),
                     ),
                   ),
@@ -278,8 +277,6 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
   }
 }
 
-// ── Console Dialog (fullscreen) ───────────────────────────────────────────────
-
 class ConsoleDialog extends StatelessWidget {
   final ValueNotifier<List<String>> logsNotifier;
   final ScrollController scrollController;
@@ -303,7 +300,7 @@ class ConsoleDialog extends StatelessWidget {
     if (log.contains('[WARN]')) return AppTheme.warning;
     if (log.contains('[INFO]')) return AppTheme.info;
     if (log.contains('[DEBUG]')) return AppTheme.success;
-    return Colors.white.withOpacity(0.5);
+    return Colors.white.withValues(alpha: 0.5);
   }
 
   @override
@@ -327,15 +324,14 @@ class ConsoleDialog extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              // Header — zelfde stijl als navbar
               Container(
                 height: 56,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.04),
+                  color: Colors.white.withValues(alpha: 0.04),
                   border: Border(
                     bottom: BorderSide(
-                      color: Colors.white.withOpacity(0.07),
+                      color: Colors.white.withValues(alpha: 0.07),
                     ),
                   ),
                 ),
@@ -344,10 +340,10 @@ class ConsoleDialog extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
-                        color: AppTheme.primaryAccent.withOpacity(0.12),
+                        color: AppTheme.primaryAccent.withValues(alpha: 0.12),
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
-                          color: AppTheme.primaryAccent.withOpacity(0.2),
+                          color: AppTheme.primaryAccent.withValues(alpha: 0.2),
                         ),
                       ),
                       child: Icon(
@@ -373,25 +369,25 @@ class ConsoleDialog extends StatelessWidget {
                           : Icons.bug_report_outlined,
                       color: debugEnabled
                           ? AppTheme.success
-                          : Colors.white.withOpacity(0.3),
+                          : Colors.white.withValues(alpha: 0.3),
                       tooltip: loc.toggleDebug,
                       onTap: onToggleDebug,
                     ),
                     _iconBtn(
                       icon: Icons.copy_outlined,
-                      color: Colors.white.withOpacity(0.3),
+                      color: Colors.white.withValues(alpha: 0.3),
                       tooltip: loc.copyLogs,
                       onTap: onCopyLogs,
                     ),
                     _iconBtn(
                       icon: Icons.delete_outline_rounded,
-                      color: Colors.white.withOpacity(0.3),
+                      color: Colors.white.withValues(alpha: 0.3),
                       tooltip: loc.clear,
                       onTap: onClearLogs,
                     ),
                     _iconBtn(
                       icon: Icons.close_rounded,
-                      color: Colors.white.withOpacity(0.5),
+                      color: Colors.white.withValues(alpha: 0.5),
                       tooltip: loc.close,
                       onTap: () => Navigator.of(context).pop(),
                     ),
@@ -399,7 +395,6 @@ class ConsoleDialog extends StatelessWidget {
                 ),
               ),
 
-              // Log lijst
               Expanded(
                 child: ValueListenableBuilder<List<String>>(
                   valueListenable: logsNotifier,
@@ -412,13 +407,13 @@ class ConsoleDialog extends StatelessWidget {
                             Icon(
                               Icons.terminal_rounded,
                               size: 40,
-                              color: Colors.white.withOpacity(0.08),
+                              color: Colors.white.withValues(alpha: 0.08),
                             ),
                             const SizedBox(height: 12),
                             Text(
                               loc.noLogsYet,
                               style: TextStyle(
-                                color: Colors.white.withOpacity(0.2),
+                                color: Colors.white.withValues(alpha: 0.2),
                                 fontSize: 14,
                               ),
                             ),
@@ -426,7 +421,7 @@ class ConsoleDialog extends StatelessWidget {
                             Text(
                               loc.startBroadcastingToSeeOutput,
                               style: TextStyle(
-                                color: Colors.white.withOpacity(0.1),
+                                color: Colors.white.withValues(alpha: 0.1),
                                 fontSize: 12,
                               ),
                             ),
@@ -456,7 +451,7 @@ class ConsoleDialog extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     color:
-                                        _getLogColor(log).withOpacity(0.7),
+                                        _getLogColor(log).withValues(alpha: 0.7),
                                   ),
                                 ),
                               ),

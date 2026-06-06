@@ -130,17 +130,17 @@ class ThemeService extends ChangeNotifier {
   CardPreset get card => _card;
   double get cardOpacity => _cardOpacity;
 
-  Color get accentColor => _accent.color.withOpacity(_opacity);
+  Color get accentColor => _accent.color.withValues(alpha: _opacity);
   Color get accentLight =>
-      Color.lerp(_accent.color, Colors.white, 0.18)!.withOpacity(_opacity);
+      Color.lerp(_accent.color, Colors.white, 0.18)!.withValues(alpha: _opacity);
   Color get accentDark =>
-      Color.lerp(_accent.color, Colors.black, 0.20)!.withOpacity(_opacity);
+      Color.lerp(_accent.color, Colors.black, 0.20)!.withValues(alpha: _opacity);
 
   Color get background => _bg.base;
   Color get surface => _layerColor(0.07);
-  Color get surfaceRaised => _card.color.withOpacity(_cardOpacity);
-  Color get surfaceLight => _cardLighter(0.05).withOpacity(_cardOpacity);
-  Color get overlay => _cardLighter(0.10).withOpacity(_cardOpacity);
+  Color get surfaceRaised => _card.color.withValues(alpha: _cardOpacity);
+  Color get surfaceLight => _cardLighter(0.05).withValues(alpha: _cardOpacity);
+  Color get overlay => _cardLighter(0.10).withValues(alpha: _cardOpacity);
   Color get surfaceRaisedSolid => _card.color;
 
   Color _layerColor(double lightness) {

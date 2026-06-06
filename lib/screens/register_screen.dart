@@ -84,10 +84,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     width: 64,
                     height: 64,
                     decoration: BoxDecoration(
-                      color: AppTheme.accent.withOpacity(0.12),
+                      color: AppTheme.accent.withValues(alpha: 0.12),
                       borderRadius: BorderRadius.circular(18),
                       border: Border.all(
-                        color: AppTheme.accent.withOpacity(0.30),
+                        color: AppTheme.accent.withValues(alpha: 0.30),
                       ),
                     ),
                     child: Icon(
@@ -171,10 +171,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         vertical: 12,
                       ),
                       decoration: BoxDecoration(
-                        color: AppTheme.error.withOpacity(0.08),
+                        color: AppTheme.error.withValues(alpha: 0.08),
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: AppTheme.error.withOpacity(0.30),
+                          color: AppTheme.error.withValues(alpha: 0.30),
                         ),
                       ),
                       child: Row(

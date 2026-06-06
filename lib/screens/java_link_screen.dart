@@ -185,9 +185,9 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
           width: 64,
           height: 64,
           decoration: BoxDecoration(
-            color: _javaBlue.withOpacity(0.12),
+            color: _javaBlue.withValues(alpha: 0.12),
             borderRadius: BorderRadius.circular(18),
-            border: Border.all(color: _javaBlue.withOpacity(0.30)),
+            border: Border.all(color: _javaBlue.withValues(alpha: 0.30)),
           ),
           child: const Icon(
             Icons.videogame_asset_rounded,
@@ -231,7 +231,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
             decoration: BoxDecoration(
               color: AppTheme.surfaceRaised,
               borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: AppTheme.accent.withOpacity(0.35)),
+              border: Border.all(color: AppTheme.accent.withValues(alpha: 0.35)),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,

@@ -1508,5 +1508,17 @@
   "featureSubtitleLookup": "Java اور Bedrock پروفائلز تلاش کریں",
   "featureSubtitleTracker": "سرور کی حالت مانیٹر کریں اور اطلاعات پائیں",
   "userSearchHint": "صارف نام, گیمرٹیگ یا Java نام…",
-  "userSearchSub": "صارف نام, Xbox گیمرٹیگ یا Java نام سے تلاش کریں"
+  "userSearchSub": "صارف نام, Xbox گیمرٹیگ یا Java نام سے تلاش کریں",
+  "onlineStatus": "آن لائن",
+  "@onlineStatus": {
+    "description": "Label shown when a friend is online"
+  },
+  "upgradeWindowsHint": "اپ گریڈ مائیکروسافٹ اسٹور پر دستیاب ہے",
+  "@upgradeWindowsHint": {
+    "description": "Toast shown on Windows when user taps the upgrade button"
+  },
+  "chatEmptyHint": "پہلے کچھ کہنے والے بنیں!",
+  "@chatEmptyHint": {
+    "description": "Subtitle on the empty chat screen"
+  }
 }

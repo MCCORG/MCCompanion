@@ -113,7 +113,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
   Future<void> _deleteServer(TrackedServer server) async {
     final confirmed = await showDialog<bool>(
       context: context,
-      barrierColor: Colors.black.withOpacity(0.65),
+      barrierColor: Colors.black.withValues(alpha: 0.65),
       builder: (_) => AlertDialog(
         backgroundColor: AppTheme.surfaceRaised,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -170,7 +170,15 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
   }
 
   void _openPaywall() {
-    if (Platform.isWindows) return;
+    if (Platform.isWindows) {
+      AppToast.show(
+        context,
+        message: AppLocalizations.of(context)!.upgradeWindowsHint,
+        icon: Icons.open_in_new_rounded,
+        color: AppTheme.accent,
+      );
+      return;
+    }
     Navigator.of(context, rootNavigator: true).push(
       MaterialPageRoute(
         fullscreenDialog: true,
@@ -293,19 +301,19 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
             margin: const EdgeInsets.fromLTRB(16, 12, 16, 8),
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             decoration: BoxDecoration(
-              color: Colors.orange.withValues(alpha: 0.1),
+              color: AppTheme.warning.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.orange.withValues(alpha: 0.4)),
+              border: Border.all(color: AppTheme.warning.withValues(alpha: 0.4)),
             ),
             child: Row(
               children: [
-                const Icon(Icons.warning_amber_rounded, color: Colors.orange, size: 16),
+                Icon(Icons.warning_amber_rounded, color: AppTheme.warning, size: 16),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
                     AppLocalizations.of(context)!.trackerLimitReached,
                     style: TextStyle(
-                      color: Colors.orange.shade300,
+                      color: AppTheme.warning,
                       fontSize: 12,
                     ),
                   ),
@@ -760,7 +768,7 @@ class _PlatformChip extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected
-              ? AppTheme.brand.withOpacity(0.15)
+              ? AppTheme.brand.withValues(alpha: 0.15)
               : AppTheme.surfaceLight,
           borderRadius: BorderRadius.circular(8),
           border: Border.all(

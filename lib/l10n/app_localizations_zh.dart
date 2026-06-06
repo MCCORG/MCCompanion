@@ -1534,4 +1534,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get userSearchSub => '按用户名、Xbox玩家代号或Java名搜索';
+
+  @override
+  String get onlineStatus => '在线';
+
+  @override
+  String get upgradeWindowsHint => '可在 Microsoft Store 升级';
+
+  @override
+  String get chatEmptyHint => '率先说点什么吧！';
 }

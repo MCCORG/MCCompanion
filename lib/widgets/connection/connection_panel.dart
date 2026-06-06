@@ -236,14 +236,14 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                 decoration: BoxDecoration(
                   color: isSelected
                       ? Color.alphaBlend(
-                          cfg.color.withOpacity(0.32),
+                          cfg.color.withValues(alpha: 0.32),
                           AppTheme.surfaceRaisedSolid,
                         )
-                      : AppTheme.surface.withOpacity(0.50),
+                      : AppTheme.surface.withValues(alpha: 0.50),
                   borderRadius: BorderRadius.circular(14),
                   border: Border.all(
                     color: isSelected
-                        ? cfg.color.withOpacity(0.55)
+                        ? cfg.color.withValues(alpha: 0.55)
                         : AppTheme.borderLight,
                     width: isSelected ? 1.5 : 1.0,
                   ),
@@ -311,7 +311,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
           fit: StackFit.expand,
           children: [
             Container(color: AppTheme.surfaceRaisedSolid),
-            Container(color: color.withOpacity(0.14)),
+            Container(color: color.withValues(alpha: 0.14)),
             CustomPaint(
               painter: AppNoisePainter(
                 color: color,
@@ -347,7 +347,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: color.withOpacity(0.40)),
+                border: Border.all(color: color.withValues(alpha: 0.40)),
               ),
             ),
             Padding(
@@ -361,9 +361,9 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                           width: 42,
                           height: 42,
                           decoration: BoxDecoration(
-                            color: color.withOpacity(0.12),
+                            color: color.withValues(alpha: 0.12),
                             borderRadius: BorderRadius.circular(12),
-                            border: Border.all(color: color.withOpacity(0.28)),
+                            border: Border.all(color: color.withValues(alpha: 0.28)),
                           ),
                           child: Icon(
                             broadcasting
@@ -400,7 +400,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                                     Icons.dns_rounded,
                                     size: 10,
                                     color: hasServer
-                                        ? color.withOpacity(0.70)
+                                        ? color.withValues(alpha: 0.70)
                                         : AppTheme.textDisabled,
                                   ),
                                   const SizedBox(width: 4),
@@ -453,7 +453,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                         vertical: 12,
                       ),
                       decoration: BoxDecoration(
-                        color: _starting ? color.withOpacity(0.55) : color,
+                        color: _starting ? color.withValues(alpha: 0.55) : color,
                         borderRadius: BorderRadius.circular(11),
                       ),
                       child: _starting
@@ -462,7 +462,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                               height: 18,
                               child: CircularProgressIndicator(
                                 strokeWidth: 2,
-                                color: Colors.white.withOpacity(0.80),
+                                color: Colors.white.withValues(alpha: 0.80),
                               ),
                             )
                           : Row(
@@ -541,7 +541,7 @@ class _BedrockAccountSelector extends StatelessWidget {
           Icon(
             Icons.sports_esports_rounded,
             size: 10,
-            color: enabled ? color.withOpacity(0.70) : AppTheme.textDisabled,
+            color: enabled ? color.withValues(alpha: 0.70) : AppTheme.textDisabled,
           ),
           const SizedBox(width: 4),
           Text(

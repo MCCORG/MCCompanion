@@ -1508,5 +1508,17 @@
   "featureSubtitleLookup": "Java- & Bedrock-Profile nachschlagen",
   "featureSubtitleTracker": "Serverstatus überwachen & benachrichtigt werden",
   "userSearchHint": "Benutzername, Gamertag oder Java-Name…",
-  "userSearchSub": "Suche nach Benutzername, Xbox-Gamertag oder Java-Name"
+  "userSearchSub": "Suche nach Benutzername, Xbox-Gamertag oder Java-Name",
+  "onlineStatus": "Online",
+  "@onlineStatus": {
+    "description": "Label shown when a friend is online"
+  },
+  "upgradeWindowsHint": "Upgrade im Microsoft Store verfügbar",
+  "@upgradeWindowsHint": {
+    "description": "Toast shown on Windows when user taps the upgrade button"
+  },
+  "chatEmptyHint": "Sag als Erster etwas!",
+  "@chatEmptyHint": {
+    "description": "Subtitle on the empty chat screen"
+  }
 }

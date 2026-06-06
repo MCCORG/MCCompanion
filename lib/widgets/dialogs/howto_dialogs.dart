@@ -122,9 +122,9 @@ class InstructionPage extends StatelessWidget {
                 width: 34,
                 height: 34,
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.30),
+                  color: Colors.black.withValues(alpha: 0.30),
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.white.withOpacity(0.12)),
+                  border: Border.all(color: Colors.white.withValues(alpha: 0.12)),
                 ),
                 child: const Icon(
                   Icons.arrow_back_rounded,
@@ -144,8 +144,8 @@ class InstructionPage extends StatelessWidget {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                          color.withOpacity(0.28),
-                          color.withOpacity(0.08),
+                          color.withValues(alpha: 0.28),
+                          color.withValues(alpha: 0.08),
                           AppTheme.surface,
                         ],
                       ),
@@ -164,9 +164,9 @@ class InstructionPage extends StatelessWidget {
                           width: 52,
                           height: 52,
                           decoration: BoxDecoration(
-                            color: color.withOpacity(0.18),
+                            color: color.withValues(alpha: 0.18),
                             borderRadius: BorderRadius.circular(14),
-                            border: Border.all(color: color.withOpacity(0.38)),
+                            border: Border.all(color: color.withValues(alpha: 0.38)),
                           ),
                           child: Center(
                             child: FaIcon(icon, color: color, size: 22),
@@ -190,7 +190,7 @@ class InstructionPage extends StatelessWidget {
                               Text(
                                 subtitle,
                                 style: TextStyle(
-                                  color: color.withOpacity(0.85),
+                                  color: color.withValues(alpha: 0.85),
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -352,9 +352,9 @@ class _StepCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.05),
+        color: color.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: color.withOpacity(0.18)),
+        border: Border.all(color: color.withValues(alpha: 0.18)),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -363,9 +363,9 @@ class _StepCard extends StatelessWidget {
             width: 32,
             height: 32,
             decoration: BoxDecoration(
-              color: color.withOpacity(0.18),
+              color: color.withValues(alpha: 0.18),
               shape: BoxShape.circle,
-              border: Border.all(color: color.withOpacity(0.40)),
+              border: Border.all(color: color.withValues(alpha: 0.40)),
             ),
             child: Center(
               child: Text(
@@ -422,7 +422,7 @@ class _BulletCard extends StatelessWidget {
               width: 5,
               height: 5,
               decoration: BoxDecoration(
-                color: color.withOpacity(0.65),
+                color: color.withValues(alpha: 0.65),
                 shape: BoxShape.circle,
               ),
             ),
@@ -494,9 +494,9 @@ class _NoteBubble extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
       decoration: BoxDecoration(
-        color: bubbleColor.withOpacity(0.07),
+        color: bubbleColor.withValues(alpha: 0.07),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: bubbleColor.withOpacity(0.25)),
+        border: Border.all(color: bubbleColor.withValues(alpha: 0.25)),
       ),
       child: Text(
         text,
@@ -563,9 +563,9 @@ class _FriendsInstructionPageState extends State<FriendsInstructionPage> {
                 width: 34,
                 height: 34,
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.30),
+                  color: Colors.black.withValues(alpha: 0.30),
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.white.withOpacity(0.12)),
+                  border: Border.all(color: Colors.white.withValues(alpha: 0.12)),
                 ),
                 child: const Icon(Icons.arrow_back_rounded, color: Colors.white, size: 16),
               ),
@@ -581,8 +581,8 @@ class _FriendsInstructionPageState extends State<FriendsInstructionPage> {
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                          color.withOpacity(0.28),
-                          color.withOpacity(0.08),
+                          color.withValues(alpha: 0.28),
+                          color.withValues(alpha: 0.08),
                           AppTheme.surface,
                         ],
                       ),
@@ -601,9 +601,9 @@ class _FriendsInstructionPageState extends State<FriendsInstructionPage> {
                           width: 52,
                           height: 52,
                           decoration: BoxDecoration(
-                            color: color.withOpacity(0.18),
+                            color: color.withValues(alpha: 0.18),
                             borderRadius: BorderRadius.circular(14),
-                            border: Border.all(color: color.withOpacity(0.38)),
+                            border: Border.all(color: color.withValues(alpha: 0.38)),
                           ),
                           child: Center(child: FaIcon(FontAwesomeIcons.userGroup, color: color, size: 22)),
                         ),
@@ -615,7 +615,7 @@ class _FriendsInstructionPageState extends State<FriendsInstructionPage> {
                             children: [
                               Text(widget.title, style: const TextStyle(color: AppTheme.textPrimary, fontSize: 18, fontWeight: FontWeight.w700)),
                               const SizedBox(height: 3),
-                              Text(widget.subtitle, style: TextStyle(color: color.withOpacity(0.85), fontSize: 12, fontWeight: FontWeight.w500)),
+                              Text(widget.subtitle, style: TextStyle(color: color.withValues(alpha: 0.85), fontSize: 12, fontWeight: FontWeight.w500)),
                             ],
                           ),
                         ),
@@ -638,7 +638,6 @@ class _FriendsInstructionPageState extends State<FriendsInstructionPage> {
                   _StepCard(number: 2, text: 'Add one of the bots below as a friend on Xbox.', color: color),
                   const SizedBox(height: 12),
 
-                  // Bot list
                   if (_loading)
                     const Center(child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 16),
@@ -727,7 +726,7 @@ class _BotRegionSection extends StatelessWidget {
         color: AppTheme.surface,
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
-          color: isUserRegion ? color.withOpacity(0.35) : AppTheme.borderGray,
+          color: isUserRegion ? color.withValues(alpha: 0.35) : AppTheme.borderGray,
         ),
       ),
       child: Column(
@@ -753,7 +752,7 @@ class _BotRegionSection extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
                     decoration: BoxDecoration(
-                      color: color.withOpacity(0.15),
+                      color: color.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Text('YOUR REGION', style: TextStyle(color: color, fontSize: 9, fontWeight: FontWeight.w700)),
@@ -799,7 +798,7 @@ class _BotRow extends StatelessWidget {
               children: [
                 Text(bot.gamertag, style: TextStyle(color: textColor, fontSize: 14, fontWeight: FontWeight.w600)),
                 if (!isOnline)
-                  Text('Offline', style: TextStyle(color: AppTheme.textSecondary.withOpacity(0.6), fontSize: 11))
+                  Text('Offline', style: TextStyle(color: AppTheme.textSecondary.withValues(alpha: 0.6), fontSize: 11))
                 else if (isFull)
                   Text('Full', style: TextStyle(color: AppTheme.warning, fontSize: 11))
                 else
@@ -822,9 +821,9 @@ class _BotRow extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
-                  color: color.withOpacity(0.12),
+                  color: color.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: color.withOpacity(0.25)),
+                  border: Border.all(color: color.withValues(alpha: 0.25)),
                 ),
                 child: Text('Copy', style: TextStyle(color: color, fontSize: 12, fontWeight: FontWeight.w600)),
               ),

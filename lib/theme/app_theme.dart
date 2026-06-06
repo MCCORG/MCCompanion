@@ -33,10 +33,12 @@ class AppTheme {
   static const Color textMuted     = Color(0xFFB0B5CC);
   static const Color textDisabled  = Color(0xFF4A5070);
 
-  static const Color success = Color(0xFF34D399);
-  static const Color warning = Color(0xFFFBBF24);
-  static const Color error   = Color(0xFFF87171);
-  static const Color info    = Color(0xFF60A5FA);
+  static const Color success   = Color(0xFF34D399);
+  static const Color warning   = Color(0xFFFBBF24);
+  static const Color error     = Color(0xFFF87171);
+  static const Color info      = Color(0xFF60A5FA);
+  static const Color xboxGreen = Color(0xFF107C10);
+  static const Color javaBlue  = Color(0xFF1565C0);
 
   static const Color modeXbox     = Color(0xFF22C55E);
   static const Color modeNintendo = Color(0xFFEF4444);
@@ -189,7 +191,7 @@ class AppTheme {
           return textMuted;
         }),
         trackColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) return a.withOpacity(0.35);
+          if (states.contains(WidgetState.selected)) return a.withValues(alpha: 0.35);
           return borderGray;
         }),
       ),

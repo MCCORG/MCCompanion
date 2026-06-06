@@ -347,7 +347,7 @@ class _AppShellState extends State<AppShell>
                   center: const Alignment(0.8, -1.1),
                   radius: 0.9,
                   colors: [
-                    AppTheme.accent.withOpacity(0.07),
+                    AppTheme.accent.withValues(alpha: 0.07),
                     Colors.transparent,
                   ],
                 ),
@@ -361,7 +361,7 @@ class _AppShellState extends State<AppShell>
                   center: const Alignment(-1.0, 1.2),
                   radius: 0.7,
                   colors: [
-                    AppTheme.accent.withOpacity(0.04),
+                    AppTheme.accent.withValues(alpha: 0.04),
                     Colors.transparent,
                   ],
                 ),
@@ -493,7 +493,7 @@ class _AppShellState extends State<AppShell>
                       builder: (_, __) => GestureDetector(
                         onTap: _closeSheet,
                         child: Container(
-                          color: Colors.black.withOpacity(
+                          color: Colors.black.withValues(alpha: 
                             0.45 * _sheetAnim.value,
                           ),
                         ),

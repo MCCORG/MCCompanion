@@ -166,7 +166,7 @@ class _SplashScreenState extends State<SplashScreen>
             border: Border.all(color: AppTheme.borderGray),
             boxShadow: [
               BoxShadow(
-                color: AppTheme.accent.withOpacity(0.15),
+                color: AppTheme.accent.withValues(alpha: 0.15),
                 blurRadius: 40,
                 spreadRadius: 2,
               ),
@@ -179,9 +179,9 @@ class _SplashScreenState extends State<SplashScreen>
                 width: 60,
                 height: 60,
                 decoration: BoxDecoration(
-                  color: AppTheme.accent.withOpacity(0.15),
+                  color: AppTheme.accent.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: AppTheme.accent.withOpacity(0.35)),
+                  border: Border.all(color: AppTheme.accent.withValues(alpha: 0.35)),
                 ),
                 child: Center(
                   child: Icon(
@@ -278,7 +278,7 @@ class _SplashScreenState extends State<SplashScreen>
         Text(
           labels[i],
           style: TextStyle(
-            color: Colors.white.withOpacity(0.75),
+            color: Colors.white.withValues(alpha: 0.75),
             fontSize: 12,
             fontWeight: FontWeight.w600,
             letterSpacing: 0.8,
@@ -293,7 +293,7 @@ class _SplashScreenState extends State<SplashScreen>
             child: Text(
               '·',
               style: TextStyle(
-                color: Colors.white.withOpacity(0.35),
+                color: Colors.white.withValues(alpha: 0.35),
                 fontSize: 12,
                 shadows: const [Shadow(color: Colors.black54, blurRadius: 6)],
               ),
@@ -310,15 +310,15 @@ class _SplashScreenState extends State<SplashScreen>
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.10),
+        color: Colors.white.withValues(alpha: 0.10),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white.withOpacity(0.15)),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
       ),
       child: Text(
         'v$_appVersion',
         style: TextStyle(
           fontSize: 11,
-          color: Colors.white.withOpacity(0.50),
+          color: Colors.white.withValues(alpha: 0.50),
           letterSpacing: 1.4,
         ),
       ),

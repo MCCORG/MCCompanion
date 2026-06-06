@@ -1534,4 +1534,13 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get userSearchSub => 'यूज़रनाम, Xbox गेमरटैग या Java नाम से खोजें';
+
+  @override
+  String get onlineStatus => 'ऑनलाइन';
+
+  @override
+  String get upgradeWindowsHint => 'Microsoft Store पर अपग्रेड उपलब्ध है';
+
+  @override
+  String get chatEmptyHint => 'पहले कुछ कहो!';
 }

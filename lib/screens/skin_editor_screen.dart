@@ -599,7 +599,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
               decoration: BoxDecoration(
                 color: _uvMode
-                    ? AppTheme.accent.withOpacity(0.15)
+                    ? AppTheme.accent.withValues(alpha: 0.15)
                     : Colors.transparent,
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
@@ -833,8 +833,8 @@ class _ZoomBtn extends StatelessWidget {
         height: 34,
         decoration: BoxDecoration(
           color: active
-              ? AppTheme.accent.withOpacity(0.18)
-              : AppTheme.surface.withOpacity(0.92),
+              ? AppTheme.accent.withValues(alpha: 0.18)
+              : AppTheme.surface.withValues(alpha: 0.92),
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
             color: active ? AppTheme.accent : AppTheme.borderGray,
@@ -915,7 +915,7 @@ class _PixelGridPainter extends CustomPainter {
 
     if (px >= 4) {
       final grid = Paint()
-        ..color = Colors.white.withOpacity(0.08)
+        ..color = Colors.white.withValues(alpha: 0.08)
         ..strokeWidth = 0.5;
       for (int i = 0; i <= _sz; i++) {
         canvas.drawLine(Offset(i * px, 0), Offset(i * px, size.height), grid);
@@ -924,7 +924,7 @@ class _PixelGridPainter extends CustomPainter {
     }
 
     final div = Paint()
-      ..color = Colors.white.withOpacity(0.18)
+      ..color = Colors.white.withValues(alpha: 0.18)
       ..strokeWidth = 0.8;
     for (final y in [16, 32, 48]) {
       canvas.drawLine(Offset(0, y * px), Offset(size.width, y * px), div);
@@ -950,11 +950,11 @@ class _UVTemplatePainter extends CustomPainter {
       final regionH = (r.y2 - r.y1) * px;
       final rect = Rect.fromLTWH(r.x1 * px, r.y1 * px, regionW, regionH);
 
-      canvas.drawRect(rect, Paint()..color = r.color.withOpacity(0.18));
+      canvas.drawRect(rect, Paint()..color = r.color.withValues(alpha: 0.18));
       canvas.drawRect(
         rect,
         Paint()
-          ..color = r.color.withOpacity(0.65)
+          ..color = r.color.withValues(alpha: 0.65)
           ..style = PaintingStyle.stroke
           ..strokeWidth = 1.2,
       );
@@ -1077,7 +1077,7 @@ class _ToolButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
         decoration: BoxDecoration(
           color: active
-              ? AppTheme.accent.withOpacity(0.15)
+              ? AppTheme.accent.withValues(alpha: 0.15)
               : Colors.transparent,
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
