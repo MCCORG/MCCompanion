@@ -158,9 +158,10 @@ class AppTheme {
         contentTextStyle: const TextStyle(color: textSecondary, fontSize: 13),
       ),
 
-      bottomSheetTheme: const BottomSheetThemeData(
-        backgroundColor: Color(0xFF13161E), 
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+      bottomSheetTheme: BottomSheetThemeData(
+        backgroundColor: bg,
+        surfaceTintColor: Colors.transparent,
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
         elevation: 0,
       ),
 

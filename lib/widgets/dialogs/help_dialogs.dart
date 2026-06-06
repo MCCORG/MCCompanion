@@ -61,16 +61,16 @@ class HelpDialogs {
     required String subtitle,
     required String body,
   }) {
-    return Navigator.of(context).push(
-      MaterialPageRoute(
-        fullscreenDialog: true,
-        builder: (_) => InstructionPage(
-          icon: icon,
-          color: color,
-          title: title,
-          subtitle: subtitle,
-          body: body,
-        ),
+    return showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => InstructionPage(
+        icon: icon,
+        color: color,
+        title: title,
+        subtitle: subtitle,
+        body: body,
       ),
     );
   }
