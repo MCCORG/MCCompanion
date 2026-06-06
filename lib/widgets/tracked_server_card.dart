@@ -339,6 +339,9 @@ class _EditServerSheet extends StatefulWidget {
 
 class _EditServerSheetState extends State<_EditServerSheet> {
   late final TextEditingController _nameCtrl;
+  late final TextEditingController _ipCtrl;
+  late final TextEditingController _portCtrl;
+  late String _platform;
   bool _saving = false;
   String? _error;
 
@@ -346,43 +349,52 @@ class _EditServerSheetState extends State<_EditServerSheet> {
   void initState() {
     super.initState();
     _nameCtrl = TextEditingController(text: widget.server.name);
+    _ipCtrl   = TextEditingController(text: widget.server.ip);
+    _portCtrl = TextEditingController(text: widget.server.port.toString());
+    _platform = widget.server.platform;
   }
 
   @override
   void dispose() {
     _nameCtrl.dispose();
+    _ipCtrl.dispose();
+    _portCtrl.dispose();
     super.dispose();
   }
 
   Future<void> _save() async {
     final name = _nameCtrl.text.trim();
+    final ip   = _ipCtrl.text.trim();
+    final port = int.tryParse(_portCtrl.text.trim());
+
     if (name.isEmpty || name.length > 50) {
       setState(() => _error = 'Name must be 1–50 characters');
       return;
     }
-    if (name == widget.server.name) {
-      Navigator.of(context).pop();
+    if (ip.isEmpty) {
+      setState(() => _error = 'IP address is required');
+      return;
+    }
+    if (port == null || port < 1 || port > 65535) {
+      setState(() => _error = 'Port must be between 1 and 65535');
       return;
     }
 
-    setState(() {
-      _saving = true;
-      _error = null;
-    });
+    setState(() { _saving = true; _error = null; });
 
     final updated = await TrackerApiService.updateServer(
       widget.server.id,
       name: name,
+      ip: ip,
+      port: port,
+      platform: _platform,
     );
     if (!mounted) return;
 
     if (updated != null) {
       widget.onSaved(updated);
       Navigator.of(context).pop();
-      AppToast.show(
-        context,
-        message: AppLocalizations.of(context)!.serverRenamed,
-      );
+      AppToast.show(context, message: AppLocalizations.of(context)!.serverRenamed);
     } else {
       setState(() {
         _saving = false;
@@ -390,6 +402,25 @@ class _EditServerSheetState extends State<_EditServerSheet> {
       });
     }
   }
+
+  Widget _label(String text) => Padding(
+    padding: const EdgeInsets.only(bottom: 6),
+    child: Text(text, style: const TextStyle(color: AppTheme.textMuted, fontSize: 12, fontWeight: FontWeight.w600)),
+  );
+
+  Widget _field(TextEditingController ctrl, {String? hint, TextInputType? keyboardType}) => TextField(
+    controller: ctrl,
+    keyboardType: keyboardType,
+    style: const TextStyle(color: AppTheme.textPrimary, fontSize: 14),
+    decoration: InputDecoration(
+      hintText: hint,
+      hintStyle: const TextStyle(color: AppTheme.textDisabled),
+      filled: true,
+      fillColor: AppTheme.surfaceLight,
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -400,95 +431,113 @@ class _EditServerSheetState extends State<_EditServerSheet> {
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
       ),
       padding: EdgeInsets.fromLTRB(20, 20, 20, 20 + bottom),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Text(
-                AppLocalizations.of(context)!.editServerTitle,
-                style: const TextStyle(
-                  color: AppTheme.textPrimary,
-                  fontSize: 17,
-                  fontWeight: FontWeight.w700,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Text(
+                  AppLocalizations.of(context)!.editServerTitle,
+                  style: const TextStyle(color: AppTheme.textPrimary, fontSize: 17, fontWeight: FontWeight.w700),
                 ),
-              ),
-              const Spacer(),
-              IconButton(
-                icon: const Icon(
-                  Icons.close_rounded,
-                  color: AppTheme.textMuted,
+                const Spacer(),
+                IconButton(
+                  icon: const Icon(Icons.close_rounded, color: AppTheme.textMuted),
+                  onPressed: () => Navigator.of(context).pop(),
                 ),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            _label('Name'),
+            _field(_nameCtrl, hint: AppLocalizations.of(context)!.serverNameHint),
+            const SizedBox(height: 12),
+            _label('IP Address'),
+            _field(_ipCtrl, hint: 'play.example.com'),
+            const SizedBox(height: 12),
+            _label('Port'),
+            _field(_portCtrl, hint: '19132', keyboardType: TextInputType.number),
+            const SizedBox(height: 12),
+            _label('Platform'),
+            Row(
+              children: [
+                Expanded(
+                  child: _PlatformChip(
+                    label: 'Bedrock',
+                    selected: _platform == 'bedrock',
+                    onTap: () => setState(() => _platform = 'bedrock'),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: _PlatformChip(
+                    label: 'Java',
+                    selected: _platform == 'java',
+                    onTap: () => setState(() => _platform = 'java'),
+                  ),
+                ),
+              ],
+            ),
+            if (_error != null) ...[
+              const SizedBox(height: 10),
+              Text(_error!, style: const TextStyle(color: AppTheme.error, fontSize: 13)),
             ],
-          ),
-          const SizedBox(height: 16),
-          const Text(
-            'Name',
-            style: TextStyle(
-              color: AppTheme.textMuted,
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          const SizedBox(height: 6),
-          TextField(
-            controller: _nameCtrl,
-            autofocus: true,
-            style: const TextStyle(color: AppTheme.textPrimary, fontSize: 14),
-            decoration: InputDecoration(
-              hintText: AppLocalizations.of(context)!.serverNameHint,
-              hintStyle: const TextStyle(color: AppTheme.textDisabled),
-              filled: true,
-              fillColor: AppTheme.surfaceLight,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide.none,
+            const SizedBox(height: 20),
+            SizedBox(
+              width: double.infinity,
+              child: FilledButton(
+                onPressed: _saving ? null : _save,
+                style: FilledButton.styleFrom(
+                  backgroundColor: AppTheme.brand,
+                  foregroundColor: Colors.black,
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                ),
+                child: _saving
+                    ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.black))
+                    : const Text('Save', style: TextStyle(fontWeight: FontWeight.w700)),
               ),
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 14,
-                vertical: 12,
-              ),
-            ),
-          ),
-          if (_error != null) ...[
-            const SizedBox(height: 10),
-            Text(
-              _error!,
-              style: const TextStyle(color: AppTheme.error, fontSize: 13),
             ),
           ],
-          const SizedBox(height: 20),
-          SizedBox(
-            width: double.infinity,
-            child: FilledButton(
-              onPressed: _saving ? null : _save,
-              style: FilledButton.styleFrom(
-                backgroundColor: AppTheme.brand,
-                foregroundColor: Colors.black,
-                padding: const EdgeInsets.symmetric(vertical: 14),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-              child: _saving
-                  ? const SizedBox(
-                      width: 20,
-                      height: 20,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                        color: Colors.black,
-                      ),
-                    )
-                  : const Text(
-                      'Save',
-                      style: TextStyle(fontWeight: FontWeight.w700),
-                    ),
+        ),
+      ),
+    );
+  }
+}
+
+class _PlatformChip extends StatelessWidget {
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+
+  const _PlatformChip({required this.label, required this.selected, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        decoration: BoxDecoration(
+          color: selected ? AppTheme.brand.withOpacity(0.15) : AppTheme.surfaceLight,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: selected ? AppTheme.brand : Colors.transparent,
+            width: 1.5,
+          ),
+        ),
+        child: Center(
+          child: Text(
+            label,
+            style: TextStyle(
+              color: selected ? AppTheme.brand : AppTheme.textMuted,
+              fontWeight: FontWeight.w600,
+              fontSize: 14,
             ),
           ),
-        ],
+        ),
       ),
     );
   }

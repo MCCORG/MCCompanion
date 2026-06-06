@@ -36,7 +36,7 @@ class TrackedServer {
 
   factory TrackedServer.fromJson(Map<String, dynamic> json) {
     return TrackedServer(
-      id: json['id'] as String,
+      id: json['id'].toString(),
       firebaseUid: json['firebase_uid'] as String,
       name: json['name'] as String,
       ip: json['ip'] as String,
@@ -53,6 +53,9 @@ class TrackedServer {
 
   TrackedServer copyWith({
     String? name,
+    String? ip,
+    int? port,
+    String? platform,
     String? lastStatus,
     bool? notificationsEnabled,
     DateTime? lastCheckedAt,
@@ -66,9 +69,9 @@ class TrackedServer {
       id: id,
       firebaseUid: firebaseUid,
       name: name ?? this.name,
-      ip: ip,
-      port: port,
-      platform: platform,
+      ip: ip ?? this.ip,
+      port: port ?? this.port,
+      platform: platform ?? this.platform,
       lastStatus: lastStatus ?? this.lastStatus,
       notificationsEnabled: notificationsEnabled ?? this.notificationsEnabled,
       lastCheckedAt: lastCheckedAt ?? this.lastCheckedAt,

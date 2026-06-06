@@ -12,17 +12,25 @@ class BotRegionData {
 
 class BotService {
   static Future<BotRegionData> fetchAllBots() async {
-    final base = AppConstants.apiBase;
+    final relays = AppConstants.relayServers;
+    final euBase = relays.firstWhere(
+      (r) => r['name']!.toLowerCase().contains('eu'),
+      orElse: () => relays.first,
+    )['base']!;
+    final usBase = relays.firstWhere(
+      (r) => r['name']!.toLowerCase().contains('us'),
+      orElse: () => relays.last,
+    )['base']!;
 
     final results = await Future.wait([
-      _fetchRegion('$base/api/bots?region=eu', 'eu'),
-      _fetchRegion('$base/api/bots?region=us', 'us'),
+      _fetchFromNode('$euBase/api/bots', 'eu'),
+      _fetchFromNode('$usBase/api/bots', 'us'),
     ]);
 
     return BotRegionData(eu: results[0], us: results[1]);
   }
 
-  static Future<List<BotModel>> _fetchRegion(String url, String region) async {
+  static Future<List<BotModel>> _fetchFromNode(String url, String region) async {
     try {
       final res = await http.get(Uri.parse(url)).timeout(const Duration(seconds: 6));
       if (res.statusCode != 200) return [];

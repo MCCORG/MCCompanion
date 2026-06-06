@@ -415,6 +415,20 @@ class UserService {
     }
   }
 
+  static Future<bool> blockUser(String username) async {
+    try {
+      final res = await http
+          .post(
+            Uri.parse('$_base/api/users/me/block/$username'),
+            headers: await _headers(),
+          )
+          .timeout(_timeout);
+      return res.statusCode == 200;
+    } catch (_) {
+      return false;
+    }
+  }
+
   static Future<void> registerFcmToken(String token) async {
     try {
       await http

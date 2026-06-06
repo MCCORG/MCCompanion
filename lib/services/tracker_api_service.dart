@@ -86,11 +86,17 @@ class TrackerApiService {
   static Future<TrackedServer?> updateServer(
     String serverId, {
     String? name,
+    String? ip,
+    int? port,
+    String? platform,
     bool? notificationsEnabled,
   }) async {
     try {
       final body = <String, dynamic>{};
       if (name != null) body['name'] = name;
+      if (ip != null) body['ip'] = ip;
+      if (port != null) body['port'] = port;
+      if (platform != null) body['platform'] = platform;
       if (notificationsEnabled != null) body['notificationsEnabled'] = notificationsEnabled;
 
       final res = await http.patch(
