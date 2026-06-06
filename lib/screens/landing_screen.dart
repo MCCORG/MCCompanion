@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../services/notification_service.dart';
@@ -8,7 +9,6 @@ import '../services/home_customization_service.dart';
 import '../services/theme_service.dart';
 import '../services/server_status_service.dart';
 import '../util/partners_servers.dart';
-import '../widgets/components/header_nav_bar.dart';
 import '../widgets/components/global_notice_banner.dart';
 
 class LandingScreen extends StatefulWidget {
@@ -98,52 +98,63 @@ class _LandingScreenState extends State<LandingScreen> {
   Widget build(BuildContext context) {
     final svc = HomeCustomizationService.instance;
     final tiles = svc.tileOrder;
+    final l = AppLocalizations.of(context)!;
 
     return Stack(
       children: [
         Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
-              child: Builder(
-                builder: (context) {
-                  final l = AppLocalizations.of(context)!;
-                  return Align(
-                    alignment: Alignment.centerRight,
-                    child: HeaderNavBar(
-                      items: [
-                        HeaderNavItem(
-                          label: l.website,
-                          onTap: widget.onWebsiteTap,
-                        ),
-                        HeaderNavItem(
-                          label: l.discord,
-                          onTap: widget.onDiscordTap,
-                        ),
-                        HeaderNavItem(
-                          label: l.changeLanguage,
-                          onTap: widget.onLanguageTap,
-                        ),
-                        HeaderNavItem(
-                          label: l.customizeLabel,
-                          onTap: _openCustomize,
-                        ),
-                        HeaderNavItem(label: l.info, onTap: widget.onInfoTap),
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ),
             if (widget.partnerServersFuture != null) ...[
+              const SizedBox(height: 10),
               _PartnerBanner(
                 future: widget.partnerServersFuture!,
                 onTap: widget.onGoToPartners,
                 onPlay: widget.onPlayServer,
               ),
               const SizedBox(height: 10),
-            ],
+            ] else
+              const SizedBox(height: 8),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14),
+              child: Row(
+                children: [
+                  _QuickNavChip(
+                    iconWidget: const Icon(Icons.language_rounded, size: 16, color: AppTheme.textMuted),
+                    label: l.website,
+                    onTap: widget.onWebsiteTap,
+                  ),
+                  const SizedBox(width: 8),
+                  _QuickNavChip(
+                    iconWidget: const FaIcon(FontAwesomeIcons.discord, size: 15, color: AppTheme.textMuted),
+                    label: 'Discord',
+                    onTap: widget.onDiscordTap,
+                  ),
+                  const SizedBox(width: 8),
+                  _QuickNavChip(
+                    iconWidget: const Icon(Icons.translate_rounded, size: 16, color: AppTheme.textMuted),
+                    label: l.changeLanguage,
+                    onTap: widget.onLanguageTap,
+                  ),
+                  const SizedBox(width: 8),
+                  _QuickNavChip(
+                    iconWidget: const Icon(Icons.tune_rounded, size: 16, color: AppTheme.textMuted),
+                    label: l.customizeLabel,
+                    onTap: _openCustomize,
+                  ),
+                  const SizedBox(width: 8),
+                  _QuickNavChip(
+                    iconWidget: const Icon(Icons.info_outline_rounded, size: 16, color: AppTheme.textMuted),
+                    label: l.info,
+                    onTap: widget.onInfoTap,
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
             Expanded(
               child: CustomScrollView(
                 slivers: [
@@ -151,10 +162,7 @@ class _LandingScreenState extends State<LandingScreen> {
                     hasScrollBody: false,
                     child: Center(
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 14,
-                          vertical: 16,
-                        ),
+                        padding: const EdgeInsets.fromLTRB(14, 0, 14, 16),
                         child: _buildGrid(tiles),
                       ),
                     ),
@@ -450,6 +458,52 @@ class _PartnerBannerSkeletonState extends State<_PartnerBannerSkeleton>
           ),
         );
       },
+    );
+  }
+}
+
+// ── Quick nav chip ─────────────────────────────────────────────────────────────
+class _QuickNavChip extends StatefulWidget {
+  final Widget iconWidget;
+  final String label;
+  final VoidCallback? onTap;
+
+  const _QuickNavChip({
+    required this.iconWidget,
+    required this.label,
+    this.onTap,
+  });
+
+  @override
+  State<_QuickNavChip> createState() => _QuickNavChipState();
+}
+
+class _QuickNavChipState extends State<_QuickNavChip> {
+  bool _pressed = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Tooltip(
+        message: widget.label,
+        preferBelow: true,
+        child: GestureDetector(
+          onTapDown: (_) => setState(() => _pressed = true),
+          onTapUp: (_) => setState(() => _pressed = false),
+          onTapCancel: () => setState(() => _pressed = false),
+          onTap: widget.onTap,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 100),
+            padding: const EdgeInsets.symmetric(vertical: 9),
+            decoration: BoxDecoration(
+              color: _pressed ? AppTheme.borderLight : AppTheme.surfaceRaised,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: AppTheme.borderGray),
+            ),
+            child: Center(child: widget.iconWidget),
+          ),
+        ),
+      ),
     );
   }
 }
