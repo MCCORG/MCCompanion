@@ -470,5 +470,5 @@ class _Skin3DPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_Skin3DPainter old) =>
-      old.rotY != rotY || old.image != image;
+      old.rotY != rotY || old.rotX != rotX || old.image != image;
 }
