@@ -240,7 +240,7 @@ class _Skin3DViewerState extends State<Skin3DViewer> {
     return RepaintBoundary(
       child: CustomPaint(
         size: Size(widget.size / 2, widget.size),
-        painter: _Skin3DPainter(widget.texture, _rotY, widget.slim),
+        painter: _Skin3DPainter(widget.texture, _rotY, 0.0, widget.slim),
         isComplex: true,
       ),
     );
@@ -292,16 +292,22 @@ List<_Face> _boxFaces({
       [_V3(-hw, hh, -hd), _V3(hw, hh, -hd), _V3(hw, hh, hd), _V3(-hw, hh, hd)],
       [Offset(x+d, y), Offset(x+d+w, y), Offset(x+d+w, y+d), Offset(x+d, y+d)],
     ),
+    _Face(
+      [_V3(hw, -hh, hd), _V3(-hw, -hh, hd), _V3(-hw, -hh, -hd), _V3(hw, -hh, -hd)],
+      [Offset(x+d+w, y+d), Offset(x+d+w+w, y+d), Offset(x+d+w+w, y), Offset(x+d+w, y)],
+    ),
   ];
 }
 
-double _screenNormalZ(_Face face, double rotY) {
+double _screenNormalZ(_Face face, double rotY, double rotX) {
   final v0 = face.corners[0], v1 = face.corners[1], v3 = face.corners[3];
   final ax = v1.x - v0.x, ay = v1.y - v0.y, az = v1.z - v0.z;
   final bx = v3.x - v0.x, by_ = v3.y - v0.y, bz = v3.z - v0.z;
   final nx = ay * bz - az * by_;
+  final ny = az * bx - ax * bz;
   final nz = ax * by_ - ay * bx;
-  return nx * sin(rotY) + nz * cos(rotY);
+  final nz2 = ny * sin(rotX) + nz * cos(rotX);
+  return nx * sin(rotY) + nz2 * cos(rotY);
 }
 
 void _drawQuadSolid(Canvas canvas, List<Offset> p, Paint paint) {
@@ -348,6 +354,7 @@ typedef SkinFaceData = ({
 
 List<SkinFaceData> buildProjectedFaces({
   required double rotY,
+  required double rotX,
   required bool slim,
   required Size canvasSize,
 }) {
@@ -389,21 +396,23 @@ List<SkinFaceData> buildProjectedFaces({
     for (int fi = 0; fi < faces.length; fi++) {
       if (fi == skipFaceIdx) continue;
       final face = faces[fi];
-      if (_screenNormalZ(face, rotY) >= 0) continue; 
+      if (fi != 5 && _screenNormalZ(face, rotY, rotX) >= 0) continue;
 
       final screenPts = <Offset>[];
       double sumDepth = 0;
       for (final c in face.corners) {
         final wx = c.x + bx;
-        final wy = c.y + by;
+        final wy = c.y + by - charCenterY;
         final wz = c.z + bz;
-        final sx = wx * cos(rotY) - wz * sin(rotY);
-        final sz = wx * sin(rotY) + wz * cos(rotY);
+        final wy2 = wy * cos(rotX) - wz * sin(rotX);
+        final wz2 = wy * sin(rotX) + wz * cos(rotX);
+        final sx = wx * cos(rotY) - wz2 * sin(rotY);
+        final sz = wx * sin(rotY) + wz2 * cos(rotY);
         sumDepth += sz;
-        screenPts.add(Offset(cx + sx * scale, cy - (wy - charCenterY) * scale));
+        screenPts.add(Offset(cx + sx * scale, cy - wy2 * scale));
       }
 
-      const shades = [0.9, 0.8, 0.7, 0.7, 1.0];
+      const shades = [0.9, 0.8, 0.7, 0.7, 1.0, 0.60];
       final shade = fi < shades.length ? shades[fi] : 1.0;
 
       list.add((
@@ -458,13 +467,14 @@ void drawSkinFaces(Canvas canvas, ui.Image image, List<SkinFaceData> faces) {
 class _Skin3DPainter extends CustomPainter {
   final ui.Image image;
   final double rotY;
+  final double rotX;
   final bool slim;
 
-  const _Skin3DPainter(this.image, this.rotY, this.slim);
+  const _Skin3DPainter(this.image, this.rotY, this.rotX, this.slim);
 
   @override
   void paint(Canvas canvas, Size size) {
-    final faces = buildProjectedFaces(rotY: rotY, slim: slim, canvasSize: size);
+    final faces = buildProjectedFaces(rotY: rotY, rotX: rotX, slim: slim, canvasSize: size);
     drawSkinFaces(canvas, image, faces);
   }
 

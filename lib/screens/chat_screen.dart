@@ -129,7 +129,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       backgroundColor: AppTheme.background,
       appBar: AppBar(
-        backgroundColor: AppTheme.surface,
+        backgroundColor: AppTheme.surfaceRaised,
         elevation: 0,
         scrolledUnderElevation: 0,
         leading: IconButton(
@@ -158,7 +158,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       decoration: BoxDecoration(
                         color: AppTheme.success,
                         shape: BoxShape.circle,
-                        border: Border.all(color: AppTheme.surface, width: 1.5),
+                        border: Border.all(color: AppTheme.surfaceRaised, width: 1.5),
                       ),
                     ),
                   ),
@@ -354,7 +354,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       fontSize: 13,
                     ),
                     filled: true,
-                    fillColor: AppTheme.surface,
+                    fillColor: AppTheme.surfaceRaised,
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 14,
                       vertical: 10,
@@ -584,7 +584,7 @@ class _InputBarState extends State<_InputBar> {
     return Container(
       padding: const EdgeInsets.fromLTRB(12, 8, 8, 12),
       decoration: BoxDecoration(
-        color: AppTheme.surface,
+        color: AppTheme.surfaceRaised,
         border: Border(top: BorderSide(color: AppTheme.borderGray, width: 0.5)),
       ),
       child: SafeArea(
@@ -743,7 +743,7 @@ class _ReasonTile extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 8),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         decoration: BoxDecoration(
-          color: selected ? AppTheme.error.withValues(alpha: 0.10) : AppTheme.surface,
+          color: selected ? AppTheme.error.withValues(alpha: 0.10) : AppTheme.surfaceRaised,
           borderRadius: BorderRadius.circular(11),
           border: Border.all(
             color: selected

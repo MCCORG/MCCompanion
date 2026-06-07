@@ -68,7 +68,7 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIStatusBarHidden</key>
-	<true/>
+	<false/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -83,7 +83,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
+	<true/>
 	<key>GIDClientID</key>
 	<string>670852401318-ijnjdpd3cpucr2qg9ei582iig1ao57vq.apps.googleusercontent.com</string>
 	<key>CFBundleURLTypes</key>

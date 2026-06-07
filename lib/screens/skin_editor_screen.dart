@@ -32,7 +32,8 @@ class SkinEditorScreen extends StatefulWidget {
   State<SkinEditorScreen> createState() => _SkinEditorScreenState();
 }
 
-class _SkinEditorScreenState extends State<SkinEditorScreen> {
+class _SkinEditorScreenState extends State<SkinEditorScreen>
+    with SingleTickerProviderStateMixin {
   static const int _sz = 64;
 
   late Uint8List _pixels;
@@ -45,6 +46,10 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
   bool _panModeUV = false;
 
   double _rotY = -0.5;
+  double _rotX = 0.0;
+  late final AnimationController _spinCtrl;
+  double _spinVelocityY = 0;
+  double _spinVelocityX = 0;
   Size _canvasSize = Size.zero;
 
   static const double _canvasPx = 640.0;
@@ -65,11 +70,31 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
   void initState() {
     super.initState();
     _pixels = Uint8List(_sz * _sz * 4);
+    _spinCtrl = AnimationController(vsync: this, duration: const Duration(seconds: 1))
+      ..addListener(_onSpinTick);
     _init();
+  }
+
+  void _onSpinTick() {
+    if (!_rotateMode) return;
+    _spinVelocityY *= 0.92;
+    _spinVelocityX *= 0.92;
+    if (_spinVelocityY.abs() < 0.001 && _spinVelocityX.abs() < 0.001) {
+      _spinCtrl.stop();
+      return;
+    }
+    setState(() {
+      _rotY -= _spinVelocityY;
+      if (_rotY > pi) _rotY -= 2 * pi;
+      if (_rotY < -pi) _rotY += 2 * pi;
+      _rotX -= _spinVelocityX;
+      _rotX = _rotX.clamp(-pi / 2, pi / 2);
+    });
   }
 
   @override
   void dispose() {
+    _spinCtrl.dispose();
     _previewTimer?.cancel();
     _transformCtrl.dispose();
     super.dispose();
@@ -207,6 +232,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
     if (_canvasSize == Size.zero) return null;
     final faces = buildProjectedFaces(
       rotY: _rotY,
+      rotX: _rotX,
       slim: false,
       canvasSize: _canvasSize,
     );
@@ -314,10 +340,14 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
 
   void _onPanUpdate(DragUpdateDetails d) {
     if (_rotateMode) {
+      _spinCtrl.stop();
       setState(() {
-        _rotY -= d.delta.dx / _canvasSize.width * pi;
+        _rotY -= d.delta.dx / _canvasSize.width * 2 * pi;
         if (_rotY > pi) _rotY -= 2 * pi;
         if (_rotY < -pi) _rotY += 2 * pi;
+        _rotX -= d.delta.dy / _canvasSize.height * 2 * pi;
+        if (_rotX > pi) _rotX -= 2 * pi;
+        if (_rotX < -pi) _rotX += 2 * pi;
       });
       return;
     }
@@ -325,7 +355,19 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
     _paintAt(d.localPosition);
   }
 
-  void _onPanEnd(DragEndDetails _) => _activeStroke = false;
+  void _onPanEnd(DragEndDetails d) {
+    if (_rotateMode) {
+      final vx = d.velocity.pixelsPerSecond.dx;
+      final vy = d.velocity.pixelsPerSecond.dy;
+      if (vx.abs() > 50 || vy.abs() > 50) {
+        _spinVelocityY = vx / _canvasSize.width * 2 * pi * 0.016;
+        _spinVelocityX = vy / _canvasSize.height * 2 * pi * 0.016;
+        _spinCtrl.repeat();
+      }
+      return;
+    }
+    _activeStroke = false;
+  }
 
   void _onTapDown(TapDownDetails d) {
     if (_rotateMode) return;
@@ -660,7 +702,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen> {
                       )
                     : CustomPaint(
                         size: _canvasSize,
-                        painter: _Skin3DEditorPainter(_previewImage!, _rotY),
+                        painter: _Skin3DEditorPainter(_previewImage!, _rotY, _rotX),
                       ),
               );
             },
@@ -993,12 +1035,14 @@ class _UVTemplatePainter extends CustomPainter {
 class _Skin3DEditorPainter extends CustomPainter {
   final ui.Image image;
   final double rotY;
-  const _Skin3DEditorPainter(this.image, this.rotY);
+  final double rotX;
+  const _Skin3DEditorPainter(this.image, this.rotY, this.rotX);
 
   @override
   void paint(Canvas canvas, Size size) {
     final faces = buildProjectedFaces(
       rotY: rotY,
+      rotX: rotX,
       slim: false,
       canvasSize: size,
     );
@@ -1007,7 +1051,7 @@ class _Skin3DEditorPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_Skin3DEditorPainter old) =>
-      old.rotY != rotY || old.image != image;
+      old.rotY != rotY || old.rotX != rotX || old.image != image;
 }
 
 class _PaletteCell extends StatelessWidget {

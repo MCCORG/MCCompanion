@@ -61,7 +61,7 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
             decoration: BoxDecoration(
-              color: AppTheme.surface,
+              color: AppTheme.surfaceRaised,
               borderRadius: BorderRadius.circular(28),
               border: Border.all(color: AppTheme.borderGray, width: 0.8),
               boxShadow: [
@@ -384,7 +384,7 @@ class _RegionSelector extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: isSelected
                         ? AppTheme.accent.withValues(alpha: 0.10)
-                        : AppTheme.surface,
+                        : AppTheme.surfaceRaised,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
                       color: isSelected

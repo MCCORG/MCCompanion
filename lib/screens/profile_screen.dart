@@ -218,7 +218,7 @@ class ProfileScreenState extends State<ProfileScreen>
           onGoToWiki: widget.onGoToWiki,
         ),
         Container(
-          color: AppTheme.surface,
+          color: AppTheme.surfaceRaised,
           child: TabBar(
             controller: _tabs,
             indicatorColor: AppTheme.accent,
@@ -1137,7 +1137,7 @@ class _Header extends StatelessWidget {
   Widget build(BuildContext context) {
     final hasBio = me?.bio?.isNotEmpty == true;
     return Container(
-      color: AppTheme.surface,
+      color: AppTheme.surfaceRaised,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
