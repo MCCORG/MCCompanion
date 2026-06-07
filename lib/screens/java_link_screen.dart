@@ -128,13 +128,13 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
         backgroundColor: AppTheme.surface,
         title: Text(
           l10n.javaLinkTitle,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 16,
             fontWeight: FontWeight.w700,
           ),
         ),
-        iconTheme: const IconThemeData(color: AppTheme.textPrimary),
+        iconTheme: IconThemeData(color: AppTheme.textPrimary),
         elevation: 0,
       ),
       body: SafeArea(
@@ -200,7 +200,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
         const SizedBox(height: 20),
         Text(
           l10n.javaSignInWithMicrosoft,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 22,
             fontWeight: FontWeight.w700,
@@ -209,7 +209,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
         const SizedBox(height: 8),
         Text(
           l10n.javaGoToLink,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textSecondary,
             fontSize: 13,
             height: 1.5,
@@ -218,7 +218,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
         const SizedBox(height: 32),
         Text(
           l10n.javaYourCode,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textMuted,
             fontSize: 11,
             fontWeight: FontWeight.w600,
@@ -248,7 +248,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
                   ),
                 ),
                 const SizedBox(width: 12),
-                const Icon(
+                Icon(
                   Icons.copy_rounded,
                   color: AppTheme.textMuted,
                   size: 18,
@@ -261,7 +261,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
         Text(
           l10n.javaTapToCopy,
           textAlign: TextAlign.center,
-          style: const TextStyle(color: AppTheme.textMuted, fontSize: 11),
+          style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
         ),
         const SizedBox(height: 28),
         ElevatedButton.icon(
@@ -281,7 +281,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(
+            SizedBox(
               width: 14,
               height: 14,
               child: CircularProgressIndicator(
@@ -292,7 +292,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
             const SizedBox(width: 10),
             Text(
               l10n.javaWaitingForLogin,
-              style: const TextStyle(color: AppTheme.textMuted, fontSize: 12),
+              style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
             ),
           ],
         ),
@@ -314,7 +314,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
         const SizedBox(height: 16),
         Text(
           l10n.javaAccountLinked,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 20,
             fontWeight: FontWeight.w700,
@@ -341,7 +341,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const Icon(
+        Icon(
           Icons.info_outline_rounded,
           color: AppTheme.textMuted,
           size: 48,
@@ -350,7 +350,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
         Text(
           l10n.javaNoJavaTitle,
           textAlign: TextAlign.center,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 18,
             fontWeight: FontWeight.w700,
@@ -360,7 +360,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
         Text(
           l10n.javaNoJavaBody,
           textAlign: TextAlign.center,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textSecondary,
             fontSize: 13,
             height: 1.5,
@@ -396,7 +396,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
         Text(
           _errorMsg ?? l10n.javaSomethingWrong,
           textAlign: TextAlign.center,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textSecondary,
             fontSize: 13,
             height: 1.5,

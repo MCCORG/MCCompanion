@@ -100,7 +100,7 @@ class _SkinFaceImageState extends State<_SkinFaceImage> {
       return SizedBox(
         width: s,
         height: s,
-        child: const Center(
+        child: Center(
           child: FaIcon(
             FontAwesomeIcons.user,
             color: AppTheme.textMuted,
@@ -211,7 +211,7 @@ class _SkinBodyImageState extends State<_SkinBodyImage> {
       return SizedBox(
         width: w,
         height: h,
-        child: const Center(
+        child: Center(
           child: FaIcon(
             FontAwesomeIcons.personRunning,
             color: AppTheme.textMuted,
@@ -470,37 +470,39 @@ class SkinsScreenState extends State<SkinsScreen> {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
-    return SingleChildScrollView(
-      padding: const EdgeInsets.fromLTRB(16, 20, 16, 32),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Align(
-            alignment: Alignment.centerRight,
-            child: HeaderNavBar(
-              items: [
-                HeaderNavItem(label: l.skinsUpload, onTap: _uploadSkin),
-                HeaderNavItem(
-                  label: l.skinsCreate,
-                  onTap: () => _openEditor(null),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isDesktop = constraints.maxWidth > 700;
+        return SingleChildScrollView(
+          padding: const EdgeInsets.fromLTRB(16, 20, 16, 32),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Align(
+                alignment: Alignment.centerRight,
+                child: HeaderNavBar(
+                  items: [
+                    HeaderNavItem(label: l.skinsUpload, onTap: _uploadSkin),
+                    HeaderNavItem(label: l.skinsCreate, onTap: () => _openEditor(null)),
+                  ],
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(height: 16),
+              _buildSavedSkins(l, isDesktop: isDesktop),
+              const SizedBox(height: 28),
+              _buildYourSkins(l, isDesktop: isDesktop),
+              const SizedBox(height: 28),
+              _sectionLabel(l.skinsSectionRecent),
+              const SizedBox(height: 10),
+              _buildRecentSkins(l),
+            ],
           ),
-          const SizedBox(height: 16),
-          _buildSavedSkins(l),
-          const SizedBox(height: 28),
-          _buildYourSkins(l),
-          const SizedBox(height: 28),
-          _sectionLabel(l.skinsSectionRecent),
-          const SizedBox(height: 10),
-          _buildRecentSkins(l),
-        ],
-      ),
+        );
+      },
     );
   }
 
-  Widget _buildSavedSkins(AppLocalizations l) {
+  Widget _buildSavedSkins(AppLocalizations l, {bool isDesktop = false}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -509,12 +511,7 @@ class SkinsScreenState extends State<SkinsScreen> {
         if (_loadingSaved)
           SizedBox(
             height: 60,
-            child: Center(
-              child: CircularProgressIndicator(
-                color: AppTheme.accent,
-                strokeWidth: 2,
-              ),
-            ),
+            child: Center(child: CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)),
           )
         else if (_savedSkins.isEmpty)
           Container(
@@ -525,9 +522,23 @@ class SkinsScreenState extends State<SkinsScreen> {
               borderRadius: BorderRadius.circular(14),
               border: Border.all(color: AppTheme.borderGray),
             ),
-            child: Text(
-              l.skinsEmptyMySkins,
-              style: const TextStyle(color: AppTheme.textMuted, fontSize: 13),
+            child: Text(l.skinsEmptyMySkins, style: TextStyle(color: AppTheme.textMuted, fontSize: 13)),
+          )
+        else if (isDesktop)
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 140,
+              mainAxisExtent: 170,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+            ),
+            itemCount: _savedSkins.length,
+            itemBuilder: (_, i) => _SavedSkinCard(
+              skin: _savedSkins[i],
+              onEdit: () => _openEditorForSaved(_savedSkins[i]),
+              onDelete: () => _deleteSavedSkin(_savedSkins[i]),
             ),
           )
         else
@@ -548,7 +559,7 @@ class SkinsScreenState extends State<SkinsScreen> {
     );
   }
 
-  Widget _buildYourSkins(AppLocalizations l) {
+  Widget _buildYourSkins(AppLocalizations l, {bool isDesktop = false}) {
     if (_loading) {
       return SizedBox(
         height: 60,
@@ -578,7 +589,37 @@ class SkinsScreenState extends State<SkinsScreen> {
       children: [
         _sectionLabel(l.skinsSectionYours),
         const SizedBox(height: 10),
-        if (isSingle)
+        if (isDesktop)
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 240,
+              mainAxisExtent: 260,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+            ),
+            itemCount: totalCards,
+            itemBuilder: (_, i) {
+              if (i < javaAccounts.length) {
+                final acc = javaAccounts[i];
+                return _JavaSkinCard(
+                  username: acc.javaUsername,
+                  javaUuid: acc.javaUuid,
+                  badge: l.labelJava,
+                  badgeColor: const Color(0xFF42A5F5),
+                  onEdit: _openEditor,
+                );
+              }
+              final acc = bedrockAccounts[i - javaAccounts.length];
+              return _BedrockSkinCard(
+                gamertag: acc.xboxGamertag ?? acc.xboxXuid,
+                xuid: acc.xboxXuid,
+                onEdit: _openEditor,
+              );
+            },
+          )
+        else if (isSingle)
           if (javaAccounts.isNotEmpty)
             _JavaSkinCard(
               username: javaAccounts.first.javaUsername,
@@ -653,7 +694,7 @@ class SkinsScreenState extends State<SkinsScreen> {
             child: Center(
               child: Text(
                 l.skinsCouldNotLoad,
-                style: const TextStyle(color: AppTheme.textMuted, fontSize: 13),
+                style: TextStyle(color: AppTheme.textMuted, fontSize: 13),
               ),
             ),
           )
@@ -703,7 +744,7 @@ class SkinsScreenState extends State<SkinsScreen> {
         const SizedBox(width: 12),
         Text(
           l.skinsPageOf(_page, _totalPages),
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textSecondary,
             fontSize: 13,
             fontWeight: FontWeight.w600,
@@ -730,7 +771,7 @@ class SkinsScreenState extends State<SkinsScreen> {
 
   Widget _sectionLabel(String text) => Text(
     text,
-    style: const TextStyle(
+    style: TextStyle(
       color: AppTheme.textMuted,
       fontSize: 11,
       fontWeight: FontWeight.w700,
@@ -769,7 +810,7 @@ class _SavedSkinCard extends StatelessWidget {
           const SizedBox(height: 6),
           Text(
             skin.name,
-            style: const TextStyle(
+            style: TextStyle(
               color: AppTheme.textPrimary,
               fontSize: 11,
               fontWeight: FontWeight.w600,
@@ -867,7 +908,7 @@ class _LocalSkinBodyImageState extends State<_LocalSkinBodyImage> {
       return SizedBox(
         width: w,
         height: h,
-        child: const Center(
+        child: Center(
           child: FaIcon(
             FontAwesomeIcons.personRunning,
             color: AppTheme.textMuted,
@@ -965,7 +1006,7 @@ class _SkinDetailSheet extends StatelessWidget {
           if (username != null)
             Text(
               username!,
-              style: const TextStyle(
+              style: TextStyle(
                 color: AppTheme.textPrimary,
                 fontSize: 20,
                 fontWeight: FontWeight.w700,
@@ -977,7 +1018,7 @@ class _SkinDetailSheet extends StatelessWidget {
             child: Center(
               child: textureUrl != null
                   ? _SkinBodyImage(textureUrl: textureUrl!, height: 196)
-                  : const FaIcon(
+                  : FaIcon(
                       FontAwesomeIcons.personRunning,
                       color: AppTheme.textMuted,
                       size: 40,
@@ -1185,7 +1226,7 @@ class _JavaSkinCardState extends State<_JavaSkinCard> {
             const SizedBox(height: 6),
             Text(
               widget.username,
-              style: const TextStyle(
+              style: TextStyle(
                 color: AppTheme.textPrimary,
                 fontSize: 12,
                 fontWeight: FontWeight.w700,
@@ -1353,7 +1394,7 @@ class _BedrockSkinCardState extends State<_BedrockSkinCard> {
                                 textureUrl: _textureUrl!,
                                 height: constraints.maxHeight,
                               )
-                            : const FaIcon(
+                            : FaIcon(
                                 FontAwesomeIcons.personRunning,
                                 color: AppTheme.textMuted,
                                 size: 28,
@@ -1364,7 +1405,7 @@ class _BedrockSkinCardState extends State<_BedrockSkinCard> {
             const SizedBox(height: 6),
             Text(
               widget.gamertag,
-              style: const TextStyle(
+              style: TextStyle(
                 color: AppTheme.textPrimary,
                 fontSize: 12,
                 fontWeight: FontWeight.w700,
@@ -1489,7 +1530,7 @@ class _InfoCard extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textPrimary,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
@@ -1498,7 +1539,7 @@ class _InfoCard extends StatelessWidget {
                 const SizedBox(height: 2),
                 Text(
                   subtitle,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textSecondary,
                     fontSize: 12,
                   ),

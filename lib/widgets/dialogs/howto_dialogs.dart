@@ -330,7 +330,7 @@ class _SheetHeader extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textPrimary,
                     fontSize: 17,
                     fontWeight: FontWeight.w700,
@@ -358,7 +358,7 @@ class _SheetHeader extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: AppTheme.borderGray),
               ),
-              child: const Icon(Icons.close_rounded, size: 16, color: AppTheme.textMuted),
+              child: Icon(Icons.close_rounded, size: 16, color: AppTheme.textMuted),
             ),
           ),
         ],
@@ -424,7 +424,7 @@ class StepContent extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: AppTheme.borderDim),
         ),
-        child: Text(line, style: const TextStyle(color: AppTheme.textSecondary, fontSize: 13, height: 1.65)),
+        child: Text(line, style: TextStyle(color: AppTheme.textSecondary, fontSize: 13, height: 1.65)),
       ));
       widgets.add(const SizedBox(height: 8));
     }
@@ -468,7 +468,7 @@ class _StepCard extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(top: 5),
-              child: Text(text, style: const TextStyle(color: AppTheme.textPrimary, fontSize: 14, height: 1.55)),
+              child: Text(text, style: TextStyle(color: AppTheme.textPrimary, fontSize: 14, height: 1.55)),
             ),
           ),
         ],
@@ -504,7 +504,7 @@ class _BulletCard extends StatelessWidget {
           ),
           const SizedBox(width: 12),
           Expanded(
-            child: Text(text, style: const TextStyle(color: AppTheme.textSecondary, fontSize: 13, height: 1.60)),
+            child: Text(text, style: TextStyle(color: AppTheme.textSecondary, fontSize: 13, height: 1.60)),
           ),
         ],
       ),
@@ -660,7 +660,7 @@ class _BotRow extends StatelessWidget {
                 else if (isFull)
                   Text('Full', style: const TextStyle(color: AppTheme.warning, fontSize: 11))
                 else
-                  Text('${bot.friendCount} / ${bot.maxFriends} friends', style: const TextStyle(color: AppTheme.textSecondary, fontSize: 11)),
+                  Text('${bot.friendCount} / ${bot.maxFriends} friends', style: TextStyle(color: AppTheme.textSecondary, fontSize: 11)),
               ],
             ),
           ),

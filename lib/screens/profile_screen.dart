@@ -207,6 +207,117 @@ class ProfileScreenState extends State<ProfileScreen>
       return _NotRegisteredView(onRegister: _openRegister);
     }
 
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isDesktop = constraints.maxWidth > 700;
+        return isDesktop
+            ? _buildDesktopLayout(context)
+            : _buildMobileLayout(context);
+      },
+    );
+  }
+
+  Widget _buildTabBar(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+    return Container(
+      color: AppTheme.surfaceRaised,
+      child: TabBar(
+        controller: _tabs,
+        indicatorColor: AppTheme.accent,
+        indicatorWeight: 2,
+        labelColor: AppTheme.accent,
+        unselectedLabelColor: AppTheme.textMuted,
+        labelStyle: const TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w700,
+          letterSpacing: 0.4,
+        ),
+        tabs: [
+          Tab(text: l.tabProfile),
+          Tab(text: l.tabFriends),
+          Tab(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Flexible(
+                  child: Text(
+                    l.tabRequests,
+                    style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700, letterSpacing: 0.4),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                if (_requests.isNotEmpty) ...[
+                  const SizedBox(width: 4),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                    decoration: BoxDecoration(color: AppTheme.accent, borderRadius: BorderRadius.circular(10)),
+                    child: Text('${_requests.length}', style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w700)),
+                  ),
+                ],
+              ],
+            ),
+          ),
+          Tab(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Flexible(
+                  child: Text(
+                    l.tabChats,
+                    style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700, letterSpacing: 0.4),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                if (_totalUnread > 0) ...[
+                  const SizedBox(width: 4),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                    decoration: BoxDecoration(color: AppTheme.error, borderRadius: BorderRadius.circular(10)),
+                    child: Text(_totalUnread > 99 ? '99+' : '$_totalUnread', style: const TextStyle(color: Colors.white, fontSize: 9, fontWeight: FontWeight.w700)),
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTabContent() {
+    return TabBarView(
+      controller: _tabs,
+      children: [
+        _ProfileTab(
+          me: _me,
+          onRefresh: () async => _fetchMe(),
+          onSignOut: () async { await AuthService.signOut(); },
+          onDeleteAccount: _deleteAccount,
+        ),
+        _FriendsTab(
+          friends: _friends,
+          loading: _loadingFriends,
+          onRefresh: _fetchFriends,
+          onRemove: _removeFriend,
+          onChat: _openChat,
+          onGoToHome: widget.onGoToHome,
+          onGoToConnector: widget.onGoToConnector,
+          onGoToSkins: widget.onGoToSkins,
+          onGoToWiki: widget.onGoToWiki,
+        ),
+        _RequestsTab(
+          requests: _requests,
+          loading: _loadingRequests,
+          onRefresh: _fetchRequests,
+          onAccept: _acceptRequest,
+          onDecline: _declineRequest,
+        ),
+        ConversationsScreen(),
+      ],
+    );
+  }
+
+  Widget _buildMobileLayout(BuildContext context) {
     return Column(
       children: [
         _Header(
@@ -217,134 +328,33 @@ class ProfileScreenState extends State<ProfileScreen>
           onGoToSkins: widget.onGoToSkins,
           onGoToWiki: widget.onGoToWiki,
         ),
-        Container(
-          color: AppTheme.surfaceRaised,
-          child: TabBar(
-            controller: _tabs,
-            indicatorColor: AppTheme.accent,
-            indicatorWeight: 2,
-            labelColor: AppTheme.accent,
-            unselectedLabelColor: AppTheme.textMuted,
-            labelStyle: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 0.4,
-            ),
-            tabs: [
-              Tab(text: AppLocalizations.of(context)!.tabProfile),
-              Tab(text: AppLocalizations.of(context)!.tabFriends),
-              Tab(
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Flexible(
-                      child: Text(
-                        AppLocalizations.of(context)!.tabRequests,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 0.4,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    if (_requests.isNotEmpty) ...[
-                      const SizedBox(width: 4),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 5,
-                          vertical: 2,
-                        ),
-                        decoration: BoxDecoration(
-                          color: AppTheme.accent,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Text(
-                          '${_requests.length}',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 10,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ],
-                ),
-              ),
-              Tab(
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Flexible(
-                      child: Text(
-                        AppLocalizations.of(context)!.tabChats,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 0.4,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    if (_totalUnread > 0) ...[
-                      const SizedBox(width: 4),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 5,
-                          vertical: 2,
-                        ),
-                        decoration: BoxDecoration(
-                          color: AppTheme.error,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Text(
-                          _totalUnread > 99 ? '99+' : '$_totalUnread',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 9,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ],
-                ),
-              ),
-            ],
+        _buildTabBar(context),
+        Expanded(child: _buildTabContent()),
+      ],
+    );
+  }
+
+  Widget _buildDesktopLayout(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        SizedBox(
+          width: 280,
+          child: _DesktopProfileSidebar(
+            me: _me,
+            onAddFriend: _showAddFriendDialog,
+            onGoToHome: widget.onGoToHome,
+            onGoToConnector: widget.onGoToConnector,
+            onGoToSkins: widget.onGoToSkins,
+            onGoToWiki: widget.onGoToWiki,
           ),
         ),
+        VerticalDivider(width: 1, color: AppTheme.borderGray),
         Expanded(
-          child: TabBarView(
-            controller: _tabs,
+          child: Column(
             children: [
-              _ProfileTab(
-                me: _me,
-                onRefresh: () async => _fetchMe(),
-                onSignOut: () async {
-                  await AuthService.signOut();
-                },
-                onDeleteAccount: _deleteAccount,
-              ),
-              _FriendsTab(
-                friends: _friends,
-                loading: _loadingFriends,
-                onRefresh: _fetchFriends,
-                onRemove: _removeFriend,
-                onChat: _openChat,
-                onGoToHome: widget.onGoToHome,
-                onGoToConnector: widget.onGoToConnector,
-                onGoToSkins: widget.onGoToSkins,
-                onGoToWiki: widget.onGoToWiki,
-              ),
-              _RequestsTab(
-                requests: _requests,
-                loading: _loadingRequests,
-                onRefresh: _fetchRequests,
-                onAccept: _acceptRequest,
-                onDecline: _declineRequest,
-              ),
-              const ConversationsScreen(),
+              _buildTabBar(context),
+              Expanded(child: _buildTabContent()),
             ],
           ),
         ),
@@ -368,10 +378,10 @@ class ProfileScreenState extends State<ProfileScreen>
           controller: ctrl,
           autofocus: true,
           autocorrect: false,
-          style: const TextStyle(color: AppTheme.textPrimary),
+          style: TextStyle(color: AppTheme.textPrimary),
           decoration: InputDecoration(
             hintText: l.usernameHint,
-            prefixIcon: const Icon(
+            prefixIcon: Icon(
               Icons.alternate_email_rounded,
               size: 18,
               color: AppTheme.textMuted,
@@ -473,7 +483,7 @@ class ProfileScreenState extends State<ProfileScreen>
         title: Text(l.deleteAccountTitle),
         content: Text(
           l.deleteAccountBody,
-          style: const TextStyle(color: AppTheme.textSecondary),
+          style: TextStyle(color: AppTheme.textSecondary),
         ),
         actions: [
           TextButton(
@@ -522,7 +532,7 @@ class ProfileScreenState extends State<ProfileScreen>
         title: Text(l.removeFriendTitle),
         content: Text(
           l.removeFriendConfirm(friend.username),
-          style: const TextStyle(color: AppTheme.textSecondary),
+          style: TextStyle(color: AppTheme.textSecondary),
         ),
         actions: [
           TextButton(
@@ -649,7 +659,7 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
         ),
         title: Text(
           AppLocalizations.of(ctx)!.resetPasswordTitle,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textPrimary,
             fontWeight: FontWeight.w700,
           ),
@@ -660,7 +670,7 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
           children: [
             Text(
               AppLocalizations.of(ctx)!.resetPasswordBody,
-              style: const TextStyle(
+              style: TextStyle(
                 color: AppTheme.textSecondary,
                 fontSize: 13,
                 height: 1.5,
@@ -672,10 +682,10 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
               keyboardType: TextInputType.emailAddress,
               autocorrect: false,
               autofocus: true,
-              style: const TextStyle(color: AppTheme.textPrimary),
+              style: TextStyle(color: AppTheme.textPrimary),
               decoration: InputDecoration(
                 hintText: AppLocalizations.of(ctx)!.emailAddressHint,
-                prefixIcon: const Icon(
+                prefixIcon: Icon(
                   Icons.email_rounded,
                   size: 18,
                   color: AppTheme.textMuted,
@@ -808,7 +818,7 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                 _isRegisterMode
                     ? AppLocalizations.of(context)!.createAccount
                     : AppLocalizations.of(context)!.signIn,
-                style: const TextStyle(
+                style: TextStyle(
                   color: AppTheme.textPrimary,
                   fontSize: 22,
                   fontWeight: FontWeight.w700,
@@ -829,10 +839,10 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                 keyboardType: TextInputType.emailAddress,
                 autocorrect: false,
                 textInputAction: TextInputAction.next,
-                style: const TextStyle(color: AppTheme.textPrimary),
+                style: TextStyle(color: AppTheme.textPrimary),
                 decoration: InputDecoration(
                   hintText: AppLocalizations.of(context)!.emailAddressHint,
-                  prefixIcon: const Icon(
+                  prefixIcon: Icon(
                     Icons.email_rounded,
                     size: 18,
                     color: AppTheme.textMuted,
@@ -847,10 +857,10 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                 controller: _passCtrl,
                 obscureText: true,
                 textInputAction: TextInputAction.done,
-                style: const TextStyle(color: AppTheme.textPrimary),
+                style: TextStyle(color: AppTheme.textPrimary),
                 decoration: InputDecoration(
                   hintText: AppLocalizations.of(context)!.passwordHint,
-                  prefixIcon: const Icon(
+                  prefixIcon: Icon(
                     Icons.lock_rounded,
                     size: 18,
                     color: AppTheme.textMuted,
@@ -877,7 +887,7 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                     ),
                     child: Text(
                       AppLocalizations.of(context)!.forgotPassword,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: AppTheme.textMuted,
                         fontSize: 12,
                       ),
@@ -952,7 +962,7 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       child: Text(
                         AppLocalizations.of(context)!.orDivider,
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: AppTheme.textMuted,
                           fontSize: 12,
                         ),
@@ -983,7 +993,7 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                       backgroundColor: AppTheme.surfaceRaised,
                     ),
                     child: _googleLoading
-                        ? const SizedBox(
+                        ? SizedBox(
                             width: 20,
                             height: 20,
                             child: CircularProgressIndicator(
@@ -1004,7 +1014,7 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                                 AppLocalizations.of(
                                   context,
                                 )!.continueWithGoogle,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   color: AppTheme.textPrimary,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 14,
@@ -1022,7 +1032,7 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                   _isRegisterMode
                       ? AppLocalizations.of(context)!.alreadyHaveAccount
                       : AppLocalizations.of(context)!.noAccountYet,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textSecondary,
                     fontSize: 13,
                   ),
@@ -1065,7 +1075,7 @@ class _NotRegisteredView extends StatelessWidget {
             const SizedBox(height: 20),
             Text(
               AppLocalizations.of(context)!.profileNotSetUp,
-              style: const TextStyle(
+              style: TextStyle(
                 color: AppTheme.textPrimary,
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
@@ -1075,7 +1085,7 @@ class _NotRegisteredView extends StatelessWidget {
             Text(
               AppLocalizations.of(context)!.chooseUsernameSubtitle,
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style: TextStyle(
                 color: AppTheme.textSecondary,
                 fontSize: 13,
                 height: 1.5,
@@ -1159,7 +1169,7 @@ class _Header extends StatelessWidget {
                     children: [
                       Text(
                         me?.displayLabel ?? '—',
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: AppTheme.textPrimary,
                           fontSize: 17,
                           fontWeight: FontWeight.w700,
@@ -1169,7 +1179,7 @@ class _Header extends StatelessWidget {
                         const SizedBox(height: 1),
                         Text(
                           '@${me!.username}',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: AppTheme.textMuted,
                             fontSize: 12,
                           ),
@@ -1181,7 +1191,7 @@ class _Header extends StatelessWidget {
                           me!.bio!,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: AppTheme.textSecondary,
                             fontSize: 12,
                             height: 1.4,
@@ -1331,7 +1341,7 @@ class _SettingsCard extends StatelessWidget {
                 children: [
                   Text(
                     AppLocalizations.of(context)!.appearOfflineLabel,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppTheme.textPrimary,
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
@@ -1341,7 +1351,7 @@ class _SettingsCard extends StatelessWidget {
                     appearOffline
                         ? AppLocalizations.of(context)!.appearOfflineOn
                         : AppLocalizations.of(context)!.appearOfflineOff,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppTheme.textMuted,
                       fontSize: 11,
                     ),
@@ -1416,7 +1426,7 @@ class _LinkedAccountsCardState extends State<_LinkedAccountsCard> {
         title: Text(l.unlinkXboxTitle),
         content: Text(
           l.removeLabelConfirm(label),
-          style: const TextStyle(color: AppTheme.textSecondary),
+          style: TextStyle(color: AppTheme.textSecondary),
         ),
         actions: [
           TextButton(
@@ -1452,7 +1462,7 @@ class _LinkedAccountsCardState extends State<_LinkedAccountsCard> {
         title: Text(l.unlinkJavaTitle),
         content: Text(
           l.removeJavaConfirm(account.javaUsername),
-          style: const TextStyle(color: AppTheme.textSecondary),
+          style: TextStyle(color: AppTheme.textSecondary),
         ),
         actions: [
           TextButton(
@@ -1609,7 +1619,7 @@ class _AccountRow extends StatelessWidget {
               children: [
                 Text(
                   name,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textPrimary,
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
@@ -1617,7 +1627,7 @@ class _AccountRow extends StatelessWidget {
                 ),
                 Text(
                   subtitle,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textMuted,
                     fontSize: 10,
                   ),
@@ -1738,7 +1748,7 @@ class _EditProfileCardState extends State<_EditProfileCard> {
             children: [
               Text(
                 AppLocalizations.of(context)!.profileCardTitle,
-                style: const TextStyle(
+                style: TextStyle(
                   color: AppTheme.textPrimary,
                   fontWeight: FontWeight.w700,
                   fontSize: 14,
@@ -1766,7 +1776,7 @@ class _EditProfileCardState extends State<_EditProfileCard> {
             const SizedBox(height: 6),
             TextField(
               controller: _displayNameCtrl,
-              style: const TextStyle(color: AppTheme.textPrimary),
+              style: TextStyle(color: AppTheme.textPrimary),
               decoration: InputDecoration(
                 hintText: AppLocalizations.of(context)!.yourNameHint,
               ),
@@ -1776,7 +1786,7 @@ class _EditProfileCardState extends State<_EditProfileCard> {
             const SizedBox(height: 6),
             TextField(
               controller: _bioCtrl,
-              style: const TextStyle(color: AppTheme.textPrimary),
+              style: TextStyle(color: AppTheme.textPrimary),
               maxLines: 3,
               decoration: InputDecoration(
                 hintText: AppLocalizations.of(context)!.bioHint,
@@ -1787,13 +1797,13 @@ class _EditProfileCardState extends State<_EditProfileCard> {
             const SizedBox(height: 6),
             TextField(
               controller: _avatarUrlCtrl,
-              style: const TextStyle(color: AppTheme.textPrimary),
+              style: TextStyle(color: AppTheme.textPrimary),
               keyboardType: TextInputType.url,
               autocorrect: false,
               obscureText: _obscureAvatar,
               decoration: InputDecoration(
                 hintText: AppLocalizations.of(context)!.avatarUrlHint,
-                prefixIcon: const Icon(
+                prefixIcon: Icon(
                   Icons.image_rounded,
                   size: 18,
                   color: AppTheme.textMuted,
@@ -2046,7 +2056,7 @@ class _FriendTile extends StatelessWidget {
                 children: [
                   Text(
                     friend.displayLabel,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppTheme.textPrimary,
                       fontWeight: FontWeight.w600,
                       fontSize: 13,
@@ -2054,7 +2064,7 @@ class _FriendTile extends StatelessWidget {
                   ),
                   Text(
                     '@${friend.username}',
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppTheme.textMuted,
                       fontSize: 11,
                     ),
@@ -2095,7 +2105,7 @@ class _FriendTile extends StatelessWidget {
             ),
             GestureDetector(
               onTap: onRemove,
-              child: const Padding(
+              child: Padding(
                 padding: EdgeInsets.all(8),
                 child: Icon(
                   Icons.person_remove_rounded,
@@ -2186,7 +2196,7 @@ class _RequestTile extends StatelessWidget {
               children: [
                 Text(
                   request.displayLabel,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textPrimary,
                     fontWeight: FontWeight.w600,
                     fontSize: 13,
@@ -2194,7 +2204,7 @@ class _RequestTile extends StatelessWidget {
                 ),
                 Text(
                   '@${request.requesterUsername}',
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textMuted,
                     fontSize: 11,
                   ),
@@ -2339,7 +2349,7 @@ class _SectionLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Text(
     text,
-    style: const TextStyle(
+    style: TextStyle(
       color: AppTheme.textMuted,
       fontSize: 10,
       fontWeight: FontWeight.w700,
@@ -2362,13 +2372,13 @@ class _ProfileRow extends StatelessWidget {
           width: 120,
           child: Text(
             label,
-            style: const TextStyle(color: AppTheme.textMuted, fontSize: 12),
+            style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
           ),
         ),
         Expanded(
           child: Text(
             value,
-            style: const TextStyle(color: AppTheme.textPrimary, fontSize: 13),
+            style: TextStyle(color: AppTheme.textPrimary, fontSize: 13),
           ),
         ),
       ],
@@ -2383,7 +2393,7 @@ class _FieldLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Text(
     text,
-    style: const TextStyle(
+    style: TextStyle(
       color: AppTheme.textSecondary,
       fontSize: 11,
       fontWeight: FontWeight.w600,
@@ -2576,7 +2586,7 @@ class _EmptyBody extends StatelessWidget {
           const SizedBox(height: 12),
           Text(
             message,
-            style: const TextStyle(
+            style: TextStyle(
               color: AppTheme.textSecondary,
               fontSize: 14,
               fontWeight: FontWeight.w600,
@@ -2586,10 +2596,124 @@ class _EmptyBody extends StatelessWidget {
           Text(
             sub,
             textAlign: TextAlign.center,
-            style: const TextStyle(color: AppTheme.textMuted, fontSize: 12),
+            style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
           ),
         ],
       ),
     ),
   );
+}
+
+class _DesktopProfileSidebar extends StatelessWidget {
+  final UserModel? me;
+  final VoidCallback onAddFriend;
+  final VoidCallback? onGoToHome;
+  final VoidCallback? onGoToConnector;
+  final VoidCallback? onGoToSkins;
+  final VoidCallback? onGoToWiki;
+
+  const _DesktopProfileSidebar({
+    required this.me,
+    required this.onAddFriend,
+    this.onGoToHome,
+    this.onGoToConnector,
+    this.onGoToSkins,
+    this.onGoToWiki,
+  });
+
+  void _openSearch(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => UserSearchScreen(
+          onGoToHome: onGoToHome,
+          onGoToConnector: onGoToConnector,
+          onGoToSkins: onGoToSkins,
+          onGoToWiki: onGoToWiki,
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(height: 2, color: AppTheme.accent.withValues(alpha: 0.60)),
+          const SizedBox(height: 24),
+          _Avatar(
+            initials: me?.initials ?? '?',
+            size: 90,
+            avatarUrl: me?.avatarUrl,
+          ),
+          const SizedBox(height: 16),
+          Text(
+            me?.displayLabel ?? '—',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: AppTheme.textPrimary,
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          if (me?.username != null) ...[
+            const SizedBox(height: 4),
+            Text(
+              '@${me!.username}',
+              style: TextStyle(color: AppTheme.textMuted, fontSize: 13),
+            ),
+          ],
+          if (me?.bio?.isNotEmpty == true) ...[
+            const SizedBox(height: 10),
+            Text(
+              me!.bio!,
+              textAlign: TextAlign.center,
+              maxLines: 4,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: AppTheme.textSecondary,
+                fontSize: 12,
+                height: 1.5,
+              ),
+            ),
+          ],
+          const SizedBox(height: 20),
+          Divider(color: AppTheme.borderGray),
+          const SizedBox(height: 12),
+          SizedBox(
+            width: double.infinity,
+            child: OutlinedButton.icon(
+              onPressed: () => _openSearch(context),
+              icon: const Icon(Icons.search_rounded, size: 16),
+              label: Text(l.findUser),
+              style: OutlinedButton.styleFrom(
+                foregroundColor: AppTheme.textSecondary,
+                side: BorderSide(color: AppTheme.borderGray),
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
+          SizedBox(
+            width: double.infinity,
+            child: OutlinedButton.icon(
+              onPressed: onAddFriend,
+              icon: const Icon(Icons.person_add_rounded, size: 16),
+              label: Text(l.addFriend),
+              style: OutlinedButton.styleFrom(
+                foregroundColor: AppTheme.accent,
+                side: BorderSide(color: AppTheme.accent.withValues(alpha: 0.5)),
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }

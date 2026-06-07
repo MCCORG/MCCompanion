@@ -1,4 +1,6 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:in_app_review/in_app_review.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../l10n/app_localizations.dart';
 import '../../theme/app_theme.dart';
@@ -15,6 +17,21 @@ class InfoSheetContent extends StatelessWidget {
     }
   }
 
+  Future<void> _requestReview() async {
+    final inAppReview = InAppReview.instance;
+
+    if (Platform.isIOS || Platform.isAndroid) {
+      if (await inAppReview.isAvailable()) {
+        await inAppReview.requestReview();
+        return;
+      }
+    }
+
+    await inAppReview.openStoreListing(
+      appStoreId: '6747323142',
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
@@ -23,10 +40,10 @@ class InfoSheetContent extends StatelessWidget {
     return ConstrainedBox(
       constraints: BoxConstraints(maxHeight: maxHeight),
       child: Container(
-        decoration: const BoxDecoration(
-          color: Color(0xFF0E1117),
-          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-          border: Border(top: BorderSide(color: AppTheme.borderGray)),
+        decoration: BoxDecoration(
+          color: AppTheme.background,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+          border: const Border(top: BorderSide(color: AppTheme.borderGray)),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -72,7 +89,7 @@ class InfoSheetContent extends StatelessWidget {
                   const SizedBox(width: 12),
                   Text(
                     l.infoAndLegal,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppTheme.textPrimary,
                       fontSize: 17,
                       fontWeight: FontWeight.w700,
@@ -88,6 +105,11 @@ class InfoSheetContent extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    _sectionLabel('Support'),
+                    const SizedBox(height: 8),
+                    _rateTile(),
+                    const SizedBox(height: 22),
+
                     _sectionLabel(l.legalSection),
                     const SizedBox(height: 8),
                     _legalTile(
@@ -159,7 +181,7 @@ class InfoSheetContent extends StatelessWidget {
                         children: [
                           Text(
                             l.aboutMCCompanionDisclaimer,
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: AppTheme.textMuted,
                               fontSize: 12,
                               height: 1.55,
@@ -168,7 +190,7 @@ class InfoSheetContent extends StatelessWidget {
                           const SizedBox(height: 8),
                           Text(
                             l.minecraftTrademark,
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: AppTheme.textMuted,
                               fontSize: 12,
                               height: 1.55,
@@ -187,10 +209,74 @@ class InfoSheetContent extends StatelessWidget {
     );
   }
 
+  Widget _rateTile() {
+    const color = Color(0xFFFBBF24);
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: _requestReview,
+        borderRadius: BorderRadius.circular(13),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+          decoration: BoxDecoration(
+            color: color.withValues(alpha: 0.07),
+            borderRadius: BorderRadius.circular(13),
+            border: Border.all(color: color.withValues(alpha: 0.28)),
+          ),
+          child: Row(
+            children: [
+              Container(
+                width: 44,
+                height: 44,
+                decoration: BoxDecoration(
+                  color: color.withValues(alpha: 0.16),
+                  borderRadius: BorderRadius.circular(13),
+                ),
+                child: const Center(
+                  child: Icon(Icons.star_rounded, color: color, size: 22),
+                ),
+              ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Rate MCCompanion',
+                      style: TextStyle(
+                        color: color,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14,
+                      ),
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      'Enjoying the app? Leave us a review ⭐',
+                      style: TextStyle(
+                        color: AppTheme.textSecondary,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 8),
+              Icon(
+                Icons.arrow_forward_ios_rounded,
+                color: color.withValues(alpha: 0.4),
+                size: 13,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _sectionLabel(String text) {
     return Text(
       text.toUpperCase(),
-      style: const TextStyle(
+      style: TextStyle(
         color: AppTheme.textMuted,
         fontSize: 11,
         fontWeight: FontWeight.w600,
@@ -245,7 +331,7 @@ class InfoSheetContent extends StatelessWidget {
                     const SizedBox(height: 3),
                     Text(
                       subtitle,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: AppTheme.textSecondary,
                         fontSize: 12,
                       ),
@@ -315,14 +401,14 @@ class InfoSheetContent extends StatelessWidget {
                       children: [
                         Text(
                           title,
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: AppTheme.textPrimary,
                             fontWeight: FontWeight.w700,
                             fontSize: 14,
                           ),
                         ),
                         const SizedBox(width: 6),
-                        const Icon(
+                        Icon(
                           Icons.open_in_new_rounded,
                           color: AppTheme.textMuted,
                           size: 13,
@@ -332,7 +418,7 @@ class InfoSheetContent extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       subtitle,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: AppTheme.textMuted,
                         fontSize: 12,
                         height: 1.45,

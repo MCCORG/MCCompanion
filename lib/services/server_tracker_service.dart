@@ -1,13 +1,12 @@
 import 'dart:async';
 import '../models/tracked_server_model.dart';
-import '../services/server_status_service.dart';
 import '../services/tracker_api_service.dart';
 
 class ServerTrackerService {
   ServerTrackerService._();
   static final ServerTrackerService instance = ServerTrackerService._();
 
-  static const Duration pollInterval = Duration(minutes: 3);
+  static const Duration pollInterval = Duration(minutes: 5);
 
   final _controller = StreamController<List<TrackedServer>>.broadcast();
   final _slotsController = StreamController<TrackerSlots?>.broadcast();
@@ -27,8 +26,8 @@ class ServerTrackerService {
   Future<void> start() async {
     if (_running) return;
     _running = true;
-    await _loadAndPing();
-    _timer = Timer.periodic(pollInterval, (_) => _loadAndPing());
+    await _load();
+    _timer = Timer.periodic(pollInterval, (_) => _load());
   }
 
   void stop() {
@@ -39,36 +38,16 @@ class ServerTrackerService {
     _slots = null;
   }
 
-  Future<void> refresh() async {
-    await _loadAndPing();
-  }
+  Future<void> refresh() => _load();
 
-  Future<void> _loadAndPing() async {
+  Future<void> _load() async {
     final data = await TrackerApiService.getServers();
     if (data == null) return;
 
     _slots = data.slots;
     if (!_slotsController.isClosed) _slotsController.add(_slots);
 
-    final updated = <TrackedServer>[];
-    for (final server in data.servers) {
-      final status = await ServerStatusService.getStatus(
-        server.ip,
-        server.port,
-        isJava: server.platform == 'java',
-      );
-      updated.add(server.copyWith(
-        lastStatus:   status.isOnline ? 'online' : 'offline',
-        lastCheckedAt: DateTime.now(),
-        players:    status.players,
-        maxPlayers: status.maxPlayers,
-        version:    status.version,
-        gameType:   status.gameType,
-        software:   status.software,
-      ));
-    }
-
-    _servers = updated;
+    _servers = data.servers;
     if (!_controller.isClosed) _controller.add(List.unmodifiable(_servers));
   }
 

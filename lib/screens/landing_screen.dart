@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../l10n/app_localizations.dart';
@@ -124,31 +125,31 @@ class _LandingScreenState extends State<LandingScreen> {
               child: Row(
                 children: [
                   _QuickNavChip(
-                    iconWidget: const Icon(Icons.language_rounded, size: 16, color: AppTheme.textMuted),
+                    iconWidget: Icon(Icons.language_rounded, size: 16, color: AppTheme.textMuted),
                     label: l.website,
                     onTap: widget.onWebsiteTap,
                   ),
                   const SizedBox(width: 8),
                   _QuickNavChip(
-                    iconWidget: const FaIcon(FontAwesomeIcons.discord, size: 15, color: AppTheme.textMuted),
+                    iconWidget: FaIcon(FontAwesomeIcons.discord, size: 15, color: AppTheme.textMuted),
                     label: 'Discord',
                     onTap: widget.onDiscordTap,
                   ),
                   const SizedBox(width: 8),
                   _QuickNavChip(
-                    iconWidget: const Icon(Icons.translate_rounded, size: 16, color: AppTheme.textMuted),
+                    iconWidget: Icon(Icons.translate_rounded, size: 16, color: AppTheme.textMuted),
                     label: l.changeLanguage,
                     onTap: widget.onLanguageTap,
                   ),
                   const SizedBox(width: 8),
                   _QuickNavChip(
-                    iconWidget: const Icon(Icons.tune_rounded, size: 16, color: AppTheme.textMuted),
+                    iconWidget: Icon(Icons.tune_rounded, size: 16, color: AppTheme.textMuted),
                     label: l.customizeLabel,
                     onTap: _openCustomize,
                   ),
                   const SizedBox(width: 8),
                   _QuickNavChip(
-                    iconWidget: const Icon(Icons.info_outline_rounded, size: 16, color: AppTheme.textMuted),
+                    iconWidget: Icon(Icons.info_outline_rounded, size: 16, color: AppTheme.textMuted),
                     label: l.info,
                     onTap: widget.onInfoTap,
                   ),
@@ -355,7 +356,7 @@ class _PartnerBannerState extends State<_PartnerBanner> {
                           children: [
                             Text(
                               s.name,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: AppTheme.textPrimary,
                                 fontSize: 13,
                                 fontWeight: FontWeight.w700,
@@ -364,7 +365,7 @@ class _PartnerBannerState extends State<_PartnerBanner> {
                             const SizedBox(height: 2),
                             Text(
                               s.description,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: AppTheme.textMuted,
                                 fontSize: 11,
                                 height: 1.3,
@@ -628,7 +629,7 @@ class _QuickCardState extends State<_QuickCard>
                   SizedBox(height: gap1),
                   Text(
                     widget.feature.label(l),
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppTheme.textPrimary,
                       fontSize: 13,
                       fontWeight: FontWeight.w700,
@@ -640,7 +641,7 @@ class _QuickCardState extends State<_QuickCard>
                   SizedBox(height: gap2),
                   Text(
                     widget.feature.subtitle(l),
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppTheme.textMuted,
                       fontSize: 10,
                       height: 1.3,
@@ -676,6 +677,14 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
   late double _opacity;
   late CardPreset _card;
   late double _cardOpacity;
+  Color? _customAccent;
+  Color? _customBg;
+  Color? _customCard;
+  Color? _customText;
+
+  Color get _effectiveAccent => _customAccent ?? _accent.color;
+  Color get _effectiveBg     => _customBg ?? _bg.base;
+  Color get _effectiveCard   => _customCard ?? _card.color;
 
   @override
   void initState() {
@@ -689,6 +698,158 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
     _opacity = ThemeService.instance.opacity;
     _card = ThemeService.instance.card;
     _cardOpacity = ThemeService.instance.cardOpacity;
+    _customAccent = ThemeService.instance.customAccent;
+    _customBg = ThemeService.instance.customBg;
+    _customCard = ThemeService.instance.customCard;
+    _customText = ThemeService.instance.customText;
+  }
+
+  void _openColorPicker({
+    required Color current,
+    required String title,
+    required void Function(Color) onPick,
+  }) {
+    Color tmp = current;
+    final hexController = TextEditingController(
+      text: '#${tmp.toARGB32().toRadixString(16).substring(2).toUpperCase()}',
+    );
+    showDialog(
+      context: context,
+      barrierColor: Colors.black54,
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, setDlg) {
+          void syncHex(Color c) {
+            hexController.text = '#${c.toARGB32().toRadixString(16).substring(2).toUpperCase()}';
+          }
+          return Dialog(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            child: Container(
+              width: 340,
+              decoration: BoxDecoration(
+                color: AppTheme.surfaceRaised,
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(color: AppTheme.borderGray),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 18, 16, 0),
+                    child: Row(
+                      children: [
+                        Text(title, style: TextStyle(color: AppTheme.textPrimary, fontSize: 15, fontWeight: FontWeight.w600)),
+                        const Spacer(),
+                        IconButton(
+                          icon: Icon(Icons.close_rounded, size: 18, color: AppTheme.textMuted),
+                          onPressed: () => Navigator.of(ctx).pop(),
+                          padding: EdgeInsets.zero,
+                          constraints: const BoxConstraints(),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: HueRingPicker(
+                      pickerColor: tmp,
+                      onColorChanged: (c) {
+                        tmp = c;
+                        syncHex(c);
+                        setDlg(() {});
+                      },
+                      colorPickerHeight: 240,
+                      hueRingStrokeWidth: 28,
+                      enableAlpha: false,
+                      displayThumbColor: true,
+                      pickerAreaBorderRadius: const BorderRadius.all(Radius.circular(12)),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            color: tmp,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: AppTheme.borderLight),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: TextField(
+                            controller: hexController,
+                            style: TextStyle(color: AppTheme.textPrimary, fontSize: 13, fontFamily: 'monospace'),
+                            decoration: InputDecoration(
+                              labelText: 'Hex',
+                              labelStyle: TextStyle(color: AppTheme.textMuted, fontSize: 11),
+                              filled: true,
+                              fillColor: AppTheme.overlay,
+                              isDense: true,
+                              contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                              border: OutlineInputBorder(borderRadius: BorderRadius.circular(8), borderSide: BorderSide.none),
+                              enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: AppTheme.borderGray)),
+                              focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: AppTheme.accent, width: 1.5)),
+                            ),
+                            onSubmitted: (v) {
+                              final hex = v.replaceAll('#', '').trim();
+                              if (hex.length == 6) {
+                                final parsed = Color(int.parse('FF$hex', radix: 16));
+                                tmp = parsed;
+                                syncHex(parsed);
+                                setDlg(() {});
+                              }
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 18),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: OutlinedButton(
+                            onPressed: () => Navigator.of(ctx).pop(),
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: AppTheme.textMuted,
+                              side: BorderSide(color: AppTheme.borderGray),
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                            ),
+                            child: const Text('Cancel'),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: () { Navigator.of(ctx).pop(); onPick(tmp); },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppTheme.accent,
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                            ),
+                            child: const Text('Apply'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
   }
 
   Future<void> _save() async {
@@ -744,7 +905,7 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                       children: [
                         Text(
                           l.customizeLabel,
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: AppTheme.textPrimary,
                             fontSize: 18,
                             fontWeight: FontWeight.w700,
@@ -753,7 +914,7 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                         const SizedBox(height: 2),
                         Text(
                           l.customizeSubtitle,
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: AppTheme.textMuted,
                             fontSize: 13,
                           ),
@@ -765,7 +926,7 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                     onPressed: _reset,
                     child: Text(
                       l.resetLabel,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: AppTheme.textMuted,
                         fontSize: 13,
                       ),
@@ -801,7 +962,7 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                   children: [
                     Text(
                       l.tilesSection,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: AppTheme.textMuted,
                         fontSize: 11,
                         fontWeight: FontWeight.w600,
@@ -843,7 +1004,7 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
 
                     Text(
                       l.navigationSection,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: AppTheme.textMuted,
                         fontSize: 11,
                         fontWeight: FontWeight.w600,
@@ -873,75 +1034,25 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
 
                     const SizedBox(height: 24),
 
-                    Row(
-                      children: [
-                        Text(
-                          l.accentColorSection,
-                          style: const TextStyle(
-                            color: AppTheme.textMuted,
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 1.2,
-                          ),
-                        ),
-                        const Spacer(),
-                        Container(
-                          width: 22,
-                          height: 22,
-                          decoration: BoxDecoration(
-                            color: _accent.color.withValues(alpha: _opacity),
-                            shape: BoxShape.circle,
-                            border: Border.all(color: AppTheme.borderLight),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 12),
-
-                    GridView.count(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      crossAxisCount: 7,
-                      mainAxisSpacing: 8,
-                      crossAxisSpacing: 8,
-                      children: accentPresets.map((p) {
-                        final isSelected = p.id == _accent.id;
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() => _accent = p);
-                            ThemeService.instance.setAccentLive(p);
-                          },
-                          child: AnimatedContainer(
-                            duration: const Duration(milliseconds: 150),
-                            decoration: BoxDecoration(
-                              color: p.color.withValues(alpha: _opacity),
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: isSelected
-                                    ? Colors.white
-                                    : Colors.transparent,
-                                width: 2.5,
-                              ),
-                              boxShadow: isSelected
-                                  ? [
-                                      BoxShadow(
-                                        color: p.color.withValues(alpha: 0.4),
-                                        blurRadius: 8,
-                                        spreadRadius: 0,
-                                      ),
-                                    ]
-                                  : null,
-                            ),
-                            child: isSelected
-                                ? const Icon(
-                                    Icons.check_rounded,
-                                    color: Colors.white,
-                                    size: 16,
-                                  )
-                                : null,
-                          ),
-                        );
-                      }).toList(),
+                    _ColorPickerSection(
+                      label: l.accentColorSection,
+                      currentColor: _effectiveAccent.withValues(alpha: _opacity),
+                      presets: accentPresets.map((p) => _ColorSwatch(
+                        color: p.color.withValues(alpha: _opacity),
+                        isSelected: _customAccent == null && p.id == _accent.id,
+                        onTap: () {
+                          setState(() { _accent = p; _customAccent = null; });
+                          ThemeService.instance.setAccentLive(p);
+                        },
+                      )).toList(),
+                      onPickCustom: () => _openColorPicker(
+                        current: _effectiveAccent,
+                        title: l.accentColorSection,
+                        onPick: (c) {
+                          setState(() => _customAccent = c);
+                          ThemeService.instance.setCustomAccentLive(c);
+                        },
+                      ),
                     ),
 
                     const SizedBox(height: 14),
@@ -950,7 +1061,7 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                       children: [
                         Text(
                           l.opacityLabel,
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: AppTheme.textMuted,
                             fontSize: 12,
                           ),
@@ -995,161 +1106,60 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
 
                     const SizedBox(height: 24),
 
-                    Row(
-                      children: [
-                        Text(
-                          l.backgroundSection,
-                          style: const TextStyle(
-                            color: AppTheme.textMuted,
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 1.2,
-                          ),
+                    _ColorPickerSection(
+                      label: l.backgroundSection,
+                      currentColor: _effectiveBg,
+                      presets: bgPresets.map((p) => _ColorSwatch(
+                        color: p.tint,
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [p.tint.withValues(alpha: 0.8), p.base],
                         ),
-                        const Spacer(),
-                        Container(
-                          width: 22,
-                          height: 22,
-                          decoration: BoxDecoration(
-                            color: _bg.tint,
-                            shape: BoxShape.circle,
-                            border: Border.all(color: AppTheme.borderLight),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 12),
-                    GridView.count(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      crossAxisCount: 7,
-                      mainAxisSpacing: 8,
-                      crossAxisSpacing: 8,
-                      children: bgPresets.map((p) {
-                        final isSelected = p.id == _bg.id;
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() => _bg = p);
-                            ThemeService.instance.setBgLive(p);
-                          },
-                          child: Tooltip(
-                            message: p.label,
-                            child: AnimatedContainer(
-                              duration: const Duration(milliseconds: 150),
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                  colors: [p.tint.withValues(alpha: 0.7), p.base],
-                                ),
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: isSelected
-                                      ? Colors.white
-                                      : AppTheme.borderGray,
-                                  width: isSelected ? 2.5 : 1.5,
-                                ),
-                                boxShadow: isSelected
-                                    ? [
-                                        const BoxShadow(
-                                          color: Colors.white24,
-                                          blurRadius: 8,
-                                        ),
-                                      ]
-                                    : null,
-                              ),
-                              child: isSelected
-                                  ? const Icon(
-                                      Icons.check_rounded,
-                                      color: Colors.white,
-                                      size: 16,
-                                    )
-                                  : null,
-                            ),
-                          ),
-                        );
-                      }).toList(),
+                        isSelected: _customBg == null && p.id == _bg.id,
+                        onTap: () {
+                          setState(() { _bg = p; _customBg = null; });
+                          ThemeService.instance.setBgLive(p);
+                        },
+                      )).toList(),
+                      onPickCustom: () => _openColorPicker(
+                        current: _effectiveBg,
+                        title: l.backgroundSection,
+                        onPick: (c) {
+                          setState(() => _customBg = c);
+                          ThemeService.instance.setCustomBgLive(c);
+                        },
+                      ),
                     ),
 
                     const SizedBox(height: 24),
 
-                    Row(
-                      children: [
-                        Text(
-                          l.cardsSection,
-                          style: const TextStyle(
-                            color: AppTheme.textMuted,
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 1.2,
-                          ),
-                        ),
-                        const Spacer(),
-                        Container(
-                          width: 22,
-                          height: 22,
-                          decoration: BoxDecoration(
-                            color: _card.color.withValues(alpha: _cardOpacity),
-                            shape: BoxShape.circle,
-                            border: Border.all(color: AppTheme.borderLight),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 12),
-                    GridView.count(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      crossAxisCount: 7,
-                      mainAxisSpacing: 8,
-                      crossAxisSpacing: 8,
-                      children: cardPresets.map((p) {
-                        final isSelected = p.id == _card.id;
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() => _card = p);
-                            ThemeService.instance.setCardLive(p);
-                          },
-                          child: Tooltip(
-                            message: p.label,
-                            child: AnimatedContainer(
-                              duration: const Duration(milliseconds: 150),
-                              decoration: BoxDecoration(
-                                color: p.color.withValues(alpha: _cardOpacity),
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: isSelected
-                                      ? Colors.white
-                                      : AppTheme.borderGray,
-                                  width: isSelected ? 2.5 : 1.5,
-                                ),
-                                boxShadow: isSelected
-                                    ? [
-                                        const BoxShadow(
-                                          color: Colors.white24,
-                                          blurRadius: 8,
-                                        ),
-                                      ]
-                                    : null,
-                              ),
-                              child: isSelected
-                                  ? const Icon(
-                                      Icons.check_rounded,
-                                      color: Colors.white,
-                                      size: 16,
-                                    )
-                                  : null,
-                            ),
-                          ),
-                        );
-                      }).toList(),
+                    _ColorPickerSection(
+                      label: l.cardsSection,
+                      currentColor: _effectiveCard.withValues(alpha: _cardOpacity),
+                      presets: cardPresets.map((p) => _ColorSwatch(
+                        color: p.color.withValues(alpha: _cardOpacity),
+                        isSelected: _customCard == null && p.id == _card.id,
+                        onTap: () {
+                          setState(() { _card = p; _customCard = null; });
+                          ThemeService.instance.setCardLive(p);
+                        },
+                      )).toList(),
+                      onPickCustom: () => _openColorPicker(
+                        current: _effectiveCard,
+                        title: l.cardsSection,
+                        onPick: (c) {
+                          setState(() => _customCard = c);
+                          ThemeService.instance.setCustomCardLive(c);
+                        },
+                      ),
                     ),
                     const SizedBox(height: 14),
                     Row(
                       children: [
                         Text(
                           l.opacityLabel,
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: AppTheme.textMuted,
                             fontSize: 12,
                           ),
@@ -1190,6 +1200,83 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                           ThemeService.instance.setCardOpacityLive(v);
                         },
                       ),
+                    ),
+
+                    const SizedBox(height: 24),
+
+                    Row(
+                      children: [
+                        Text(
+                          'TEXT COLOR',
+                          style: TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.2,
+                          ),
+                        ),
+                        const Spacer(),
+                        if (_customText != null)
+                          GestureDetector(
+                            onTap: () {
+                              setState(() => _customText = null);
+                              ThemeService.instance.setTextColorLive(null);
+                            },
+                            child: Text(
+                              'Reset',
+                              style: TextStyle(
+                                color: AppTheme.accent,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () => _openColorPicker(
+                            current: _customText ?? const Color(0xFFFFFFFF),
+                            title: 'Text Color',
+                            onPick: (c) {
+                              setState(() => _customText = c);
+                              ThemeService.instance.setTextColorLive(c);
+                            },
+                          ),
+                          child: Container(
+                            width: 44,
+                            height: 44,
+                            decoration: BoxDecoration(
+                              color: _customText ?? const Color(0xFFFFFFFF),
+                              shape: BoxShape.circle,
+                              border: Border.all(color: AppTheme.borderLight, width: 1.5),
+                            ),
+                            child: const Icon(Icons.colorize_rounded, color: Colors.black45, size: 18),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Tap the circle to pick a custom text colour',
+                                style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
+                              ),
+                              if (_customText != null) ...[
+                                const SizedBox(height: 4),
+                                Row(children: [
+                                  Text('Primary  ', style: TextStyle(color: _customText, fontSize: 12, fontWeight: FontWeight.w700)),
+                                  Text('Secondary  ', style: TextStyle(color: Color.lerp(_customText!, Colors.black, 0.12)!, fontSize: 12)),
+                                  Text('Muted', style: TextStyle(color: Color.lerp(_customText!, Colors.black, 0.30)!, fontSize: 12)),
+                                ]),
+                              ],
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -1241,7 +1328,7 @@ class _TileRow extends StatelessWidget {
           Expanded(
             child: Text(
               feature.label(l),
-              style: const TextStyle(
+              style: TextStyle(
                 color: AppTheme.textPrimary,
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
@@ -1250,7 +1337,7 @@ class _TileRow extends StatelessWidget {
           ),
           ReorderableDragStartListener(
             index: index - 1,
-            child: const Icon(
+            child: Icon(
               Icons.drag_handle_rounded,
               color: AppTheme.textMuted,
               size: 20,
@@ -1292,7 +1379,7 @@ class _NavEditor extends StatelessWidget {
         children: [
           Text(
             label,
-            style: const TextStyle(
+            style: TextStyle(
               color: AppTheme.textMuted,
               fontSize: 12,
               fontWeight: FontWeight.w600,
@@ -1459,4 +1546,114 @@ class _AuroraPainter extends CustomPainter {
       old.colorA != colorA ||
       old.colorB != colorB ||
       old.colorC != colorC;
+}
+
+class _ColorSwatch {
+  final Color color;
+  final Gradient? gradient;
+  final bool isSelected;
+  final VoidCallback onTap;
+  const _ColorSwatch({
+    required this.color,
+    this.gradient,
+    required this.isSelected,
+    required this.onTap,
+  });
+}
+
+class _ColorPickerSection extends StatelessWidget {
+  final String label;
+  final Color currentColor;
+  final List<_ColorSwatch> presets;
+  final VoidCallback onPickCustom;
+
+  const _ColorPickerSection({
+    required this.label,
+    required this.currentColor,
+    required this.presets,
+    required this.onPickCustom,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Text(
+              label,
+              style: TextStyle(
+                color: AppTheme.textMuted,
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+                letterSpacing: 1.2,
+              ),
+            ),
+            const Spacer(),
+            GestureDetector(
+              onTap: onPickCustom,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(
+                  color: AppTheme.surface,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: AppTheme.borderGray),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      width: 14,
+                      height: 14,
+                      decoration: BoxDecoration(
+                        color: currentColor,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: AppTheme.borderLight, width: 1),
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    Text(
+                      'Custom',
+                      style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: presets.map((s) {
+            return GestureDetector(
+              onTap: s.onTap,
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 150),
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                  color: s.gradient == null ? s.color : null,
+                  gradient: s.gradient,
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: s.isSelected ? Colors.white : AppTheme.borderGray,
+                    width: s.isSelected ? 2.5 : 1.5,
+                  ),
+                  boxShadow: s.isSelected
+                      ? [BoxShadow(color: s.color.withValues(alpha: 0.5), blurRadius: 8)]
+                      : null,
+                ),
+                child: s.isSelected
+                    ? const Icon(Icons.check_rounded, color: Colors.white, size: 14)
+                    : null,
+              ),
+            );
+          }).toList(),
+        ),
+      ],
+    );
+  }
 }

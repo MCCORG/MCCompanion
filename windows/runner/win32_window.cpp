@@ -210,14 +210,8 @@ Win32Window::MessageHandler(HWND hwnd,
     case WM_GETMINMAXINFO: {
       auto* mmi = reinterpret_cast<MINMAXINFO*>(lparam);
       double scale = GetDpiForWindow(hwnd) / 96.0;
-      LONG maxW = static_cast<LONG>(500 * scale);
-      // Max width: 500 logical px — min width: 360, min height: 600
-      mmi->ptMaxTrackSize.x = maxW;
-      mmi->ptMinTrackSize.x = static_cast<LONG>(360 * scale);
+      mmi->ptMinTrackSize.x = static_cast<LONG>(600 * scale);
       mmi->ptMinTrackSize.y = static_cast<LONG>(600 * scale);
-      mmi->ptMaxSize.x = maxW;
-      mmi->ptMaxPosition.x = (GetSystemMetrics(SM_CXSCREEN) - maxW) / 2;
-      mmi->ptMaxPosition.y = 0;
       return 0;
     }
 

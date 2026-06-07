@@ -99,7 +99,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const SizedBox(height: 20),
                   Text(
                     AppLocalizations.of(context)!.createProfile,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppTheme.textPrimary,
                       fontSize: 22,
                       fontWeight: FontWeight.w700,
@@ -121,12 +121,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     controller: _usernameCtrl,
                     autocorrect: false,
                     textInputAction: TextInputAction.next,
-                    style: const TextStyle(color: AppTheme.textPrimary),
+                    style: TextStyle(color: AppTheme.textPrimary),
                     decoration: InputDecoration(
                       hintText: AppLocalizations.of(
                         context,
                       )!.usernameExampleHint,
-                      prefixIcon: const Icon(
+                      prefixIcon: Icon(
                         Icons.alternate_email_rounded,
                         size: 18,
                         color: AppTheme.textMuted,
@@ -139,7 +139,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const SizedBox(height: 6),
                   Text(
                     AppLocalizations.of(context)!.usernameFormatHint,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppTheme.textMuted,
                       fontSize: 11,
                     ),
@@ -150,12 +150,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   TextField(
                     controller: _displayNameCtrl,
                     textInputAction: TextInputAction.done,
-                    style: const TextStyle(color: AppTheme.textPrimary),
+                    style: TextStyle(color: AppTheme.textPrimary),
                     decoration: InputDecoration(
                       hintText: AppLocalizations.of(
                         context,
                       )!.displayNameExampleHint,
-                      prefixIcon: const Icon(
+                      prefixIcon: Icon(
                         Icons.badge_rounded,
                         size: 18,
                         color: AppTheme.textMuted,
@@ -233,7 +233,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   Widget _label(String text) => Text(
     text,
-    style: const TextStyle(
+    style: TextStyle(
       color: AppTheme.textSecondary,
       fontSize: 12,
       fontWeight: FontWeight.w600,

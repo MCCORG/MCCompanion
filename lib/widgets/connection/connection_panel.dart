@@ -165,9 +165,11 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     final loc = AppLocalizations.of(context)!;
     final broadcasting = _broadcasting;
 
-    return Center(
+    return LayoutBuilder(builder: (context, constraints) {
+      final isDesktop = constraints.maxWidth > 800;
+      return Center(
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 720),
+        constraints: BoxConstraints(maxWidth: isDesktop ? double.infinity : 720),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,
@@ -214,6 +216,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
         ),
       ),
     );
+    });
   }
 
   Widget _buildModeChips(bool broadcasting, AppLocalizations loc) {
@@ -391,7 +394,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                                 broadcasting
                                     ? loc.stopBroadcasting
                                     : buttonLabel,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   color: AppTheme.textPrimary,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w700,
@@ -505,7 +508,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
 
   Widget _sectionLabel(String text) => Text(
     text,
-    style: const TextStyle(
+    style: TextStyle(
       color: AppTheme.textMuted,
       fontSize: 10,
       fontWeight: FontWeight.w700,
@@ -586,7 +589,7 @@ class _BedrockAccountSelector extends StatelessWidget {
             children: [
               Text(
                 AppLocalizations.of(context)!.selectBedrockAccount,
-                style: const TextStyle(
+                style: TextStyle(
                   color: AppTheme.textPrimary,
                   fontSize: 16,
                   fontWeight: FontWeight.w700,

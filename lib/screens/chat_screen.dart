@@ -133,7 +133,7 @@ class _ChatScreenState extends State<ChatScreen> {
         elevation: 0,
         scrolledUnderElevation: 0,
         leading: IconButton(
-          icon: const Icon(
+          icon: Icon(
             Icons.arrow_back_rounded,
             color: AppTheme.textPrimary,
           ),
@@ -170,7 +170,7 @@ class _ChatScreenState extends State<ChatScreen> {
               children: [
                 Text(
                   widget.friend.displayLabel,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textPrimary,
                     fontSize: 15,
                     fontWeight: FontWeight.w700,
@@ -193,7 +193,7 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(
+            icon: Icon(
               Icons.flag_outlined,
               color: AppTheme.textSecondary,
               size: 20,
@@ -287,10 +287,10 @@ class _ChatScreenState extends State<ChatScreen> {
             bottom: MediaQuery.of(ctx).viewInsets.bottom,
           ),
           child: Container(
-            decoration: const BoxDecoration(
-              color: Color(0xFF0E1117),
-              borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-              border: Border(top: BorderSide(color: AppTheme.borderGray)),
+            decoration: BoxDecoration(
+              color: AppTheme.background,
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+              border: const Border(top: BorderSide(color: AppTheme.borderGray)),
             ),
             padding: const EdgeInsets.fromLTRB(16, 14, 16, 28),
             child: Column(
@@ -312,7 +312,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   message != null
                       ? l.reportMessage
                       : l.reportUserWithName(widget.friend.username),
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textPrimary,
                     fontSize: 17,
                     fontWeight: FontWeight.w700,
@@ -321,7 +321,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 const SizedBox(height: 4),
                 Text(
                   l.reportDisclaimer,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textMuted,
                     fontSize: 12,
                   ),
@@ -343,13 +343,13 @@ class _ChatScreenState extends State<ChatScreen> {
                 TextField(
                   controller: _infoCtrl,
                   maxLines: 2,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textPrimary,
                     fontSize: 13,
                   ),
                   decoration: InputDecoration(
                     hintText: l.reportAdditionalDetails,
-                    hintStyle: const TextStyle(
+                    hintStyle: TextStyle(
                       color: AppTheme.textMuted,
                       fontSize: 13,
                     ),
@@ -529,7 +529,7 @@ class _DateDivider extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(
               label,
-              style: const TextStyle(
+              style: TextStyle(
                 color: AppTheme.textMuted,
                 fontSize: 11,
                 fontWeight: FontWeight.w500,
@@ -599,7 +599,7 @@ class _InputBarState extends State<_InputBar> {
                 children: [
                   TextField(
                     controller: widget.controller,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppTheme.textPrimary,
                       fontSize: 14,
                     ),
@@ -611,7 +611,7 @@ class _InputBarState extends State<_InputBar> {
                     onSubmitted: (_) => widget.onSend(),
                     decoration: InputDecoration(
                       hintText: AppLocalizations.of(context)!.messagePlaceholder,
-                      hintStyle: const TextStyle(
+                      hintStyle: TextStyle(
                         color: AppTheme.textMuted,
                         fontSize: 14,
                       ),
@@ -700,7 +700,7 @@ class _EmptyChat extends StatelessWidget {
           Text(
             AppLocalizations.of(context)!.noMessagesYet,
             textAlign: TextAlign.center,
-            style: const TextStyle(
+            style: TextStyle(
               color: AppTheme.textSecondary,
               fontSize: 15,
               fontWeight: FontWeight.w600,
@@ -710,7 +710,7 @@ class _EmptyChat extends StatelessWidget {
           Text(
             AppLocalizations.of(context)!.chatEmptyHint,
             textAlign: TextAlign.center,
-            style: const TextStyle(
+            style: TextStyle(
               color: AppTheme.textMuted,
               fontSize: 12,
               height: 1.5,

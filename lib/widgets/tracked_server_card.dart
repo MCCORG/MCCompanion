@@ -157,7 +157,7 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
                       children: [
                         Text(
                           s.name,
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: AppTheme.textPrimary,
                             fontSize: 15,
                             fontWeight: FontWeight.w700,
@@ -168,7 +168,7 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
                         const SizedBox(height: 2),
                         Text(
                           '${s.ip}:${s.port}',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: AppTheme.textMuted,
                             fontSize: 12,
                           ),
@@ -219,7 +219,7 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
                                 ),
                                 child: Text(
                                   s.version!,
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     color: AppTheme.textMuted,
                                     fontSize: 10,
                                   ),
@@ -240,7 +240,7 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
                               const SizedBox(width: 4),
                               Text(
                                 AppLocalizations.of(context)!.playersCount(s.players!, s.maxPlayers!),
-                                style: const TextStyle(
+                                style: TextStyle(
                                   color: AppTheme.textMuted,
                                   fontSize: 12,
                                 ),
@@ -290,7 +290,7 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
                             ),
                       IconButton(
                         onPressed: _openEditSheet,
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.edit_rounded,
                           color: AppTheme.textMuted,
                           size: 18,
@@ -304,7 +304,7 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
                       ),
                       IconButton(
                         onPressed: widget.onDelete,
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.delete_outline_rounded,
                           color: AppTheme.textMuted,
                           size: 18,
@@ -406,13 +406,13 @@ class _EditServerSheetState extends State<_EditServerSheet> {
 
   Widget _label(String text) => Padding(
     padding: const EdgeInsets.only(bottom: 6),
-    child: Text(text, style: const TextStyle(color: AppTheme.textMuted, fontSize: 12, fontWeight: FontWeight.w600)),
+    child: Text(text, style: TextStyle(color: AppTheme.textMuted, fontSize: 12, fontWeight: FontWeight.w600)),
   );
 
   Widget _field(TextEditingController ctrl, {String? hint, TextInputType? keyboardType}) => TextField(
     controller: ctrl,
     keyboardType: keyboardType,
-    style: const TextStyle(color: AppTheme.textPrimary, fontSize: 14),
+    style: TextStyle(color: AppTheme.textPrimary, fontSize: 14),
     decoration: InputDecoration(
       hintText: hint,
       hintStyle: const TextStyle(color: AppTheme.textDisabled),
@@ -441,11 +441,11 @@ class _EditServerSheetState extends State<_EditServerSheet> {
               children: [
                 Text(
                   AppLocalizations.of(context)!.editServerTitle,
-                  style: const TextStyle(color: AppTheme.textPrimary, fontSize: 17, fontWeight: FontWeight.w700),
+                  style: TextStyle(color: AppTheme.textPrimary, fontSize: 17, fontWeight: FontWeight.w700),
                 ),
                 const Spacer(),
                 IconButton(
-                  icon: const Icon(Icons.close_rounded, color: AppTheme.textMuted),
+                  icon: Icon(Icons.close_rounded, color: AppTheme.textMuted),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
               ],

@@ -330,7 +330,6 @@ const _sections = [
   ),
 ];
 
-// Maps the English const label stored on _Section/_Sub → the localized string.
 String _wikiL10n(AppLocalizations l, String key) {
   switch (key) {
     case 'Mobs':
@@ -654,22 +653,17 @@ class _WikiScreenState extends State<WikiScreen> {
   }
 
   static bool _isVanilla(String title) {
-    // Subpages (e.g. "End City/Structure/Base")
     if (title.contains('/')) return false;
-    // Disambiguation pages
     if (title.contains('(disambiguation)')) return false;
-    // Tag articles (e.g. "Biome tag (Java Edition)")
     if (title.toLowerCase().contains(' tag ') ||
         title.toLowerCase().endsWith(' tag'))
       return false;
 
-    // Spin-off games
     if (title.contains('(Dungeons)')) return false;
     if (title.contains('(Legends)')) return false;
     if (title.contains('(Earth)')) return false;
     if (title.contains('(Story Mode)')) return false;
 
-    // Edition-specific prefixes
     if (title.startsWith('Java Edition')) return false;
     if (title.startsWith('Bedrock Edition')) return false;
     if (title.startsWith('Education Edition')) return false;
@@ -681,32 +675,24 @@ class _WikiScreenState extends State<WikiScreen> {
     if (title.startsWith('Wii U')) return false;
     if (title.startsWith('New Nintendo')) return false;
 
-    // Edition version strings inside title
     if (title.contains('Edition 1.')) return false;
     if (title.contains('Edition TU')) return false;
     if (title.contains('Edition CU')) return false;
 
-    // Snapshot/pre-release version codes  e.g. 23w14a
     if (RegExp(r'^\d+w\d+[a-z]$').hasMatch(title)) return false;
-    // Version number articles  e.g. "1.20.4"
     if (RegExp(r'^\d+\.\d+').hasMatch(title)) return false;
 
-    // Update history articles
     if (title.endsWith(' Update')) return false;
     if (RegExp(r'\bUpdate \d').hasMatch(title)) return false;
 
-    // Minecraft book/guide titles
     if (title.startsWith('Minecraft:')) return false;
 
-    // Third-party / inspiration games
     if (title == 'Infiniminer') return false;
     if (title == 'Dwarf Fortress') return false;
 
-    // April Fools / joke content
     if (title.contains('Poisonous Potato') && title != 'Poisonous Potato')
       return false;
 
-    // Concept/meta articles unlikely to be an actual item/block/mob
     if (title.startsWith('Biome For Player')) return false;
 
     return true;
@@ -988,7 +974,7 @@ class _WikiScreenState extends State<WikiScreen> {
               if (canBack)
                 GestureDetector(
                   onTap: _goBack,
-                  child: const Padding(
+                  child: Padding(
                     padding: EdgeInsets.only(right: 10, top: 2, bottom: 2),
                     child: Icon(
                       Icons.arrow_back_ios_new_rounded,
@@ -1012,7 +998,7 @@ class _WikiScreenState extends State<WikiScreen> {
                     ),
                   ),
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5),
                   child: Icon(
                     Icons.chevron_right_rounded,
@@ -1036,7 +1022,7 @@ class _WikiScreenState extends State<WikiScreen> {
               if (_view == _View.root)
                 Text(
                   l.wikiMinecraftWiki,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textMuted,
                     fontSize: 12,
                   ),
@@ -1047,14 +1033,14 @@ class _WikiScreenState extends State<WikiScreen> {
           TextField(
             controller: _searchController,
             onChanged: _onSearchChanged,
-            style: const TextStyle(color: AppTheme.textPrimary, fontSize: 14),
+            style: TextStyle(color: AppTheme.textPrimary, fontSize: 14),
             decoration: InputDecoration(
               hintText: l.wikiSearchHint,
-              hintStyle: const TextStyle(
+              hintStyle: TextStyle(
                 color: AppTheme.textMuted,
                 fontSize: 13,
               ),
-              prefixIcon: const Padding(
+              prefixIcon: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 12),
                 child: FaIcon(
                   FontAwesomeIcons.magnifyingGlass,
@@ -1068,7 +1054,7 @@ class _WikiScreenState extends State<WikiScreen> {
               ),
               suffixIcon: _searchController.text.isNotEmpty
                   ? IconButton(
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.close_rounded,
                         color: AppTheme.textMuted,
                         size: 18,
@@ -1121,7 +1107,7 @@ class _WikiScreenState extends State<WikiScreen> {
               Text(
                 _error!,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
+                style: TextStyle(
                   color: AppTheme.textSecondary,
                   fontSize: 13,
                 ),
@@ -1246,7 +1232,7 @@ class _WikiScreenState extends State<WikiScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const FaIcon(
+            FaIcon(
               FontAwesomeIcons.bookOpen,
               color: AppTheme.textMuted,
               size: 28,
@@ -1255,7 +1241,7 @@ class _WikiScreenState extends State<WikiScreen> {
             Text(
               l.wikiNoResults(_searchController.text),
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style: TextStyle(
                 color: AppTheme.textSecondary,
                 fontSize: 13,
               ),
@@ -1268,7 +1254,7 @@ class _WikiScreenState extends State<WikiScreen> {
       return Center(
         child: Text(
           l.wikiNoPagesFound,
-          style: const TextStyle(color: AppTheme.textMuted, fontSize: 13),
+          style: TextStyle(color: AppTheme.textMuted, fontSize: 13),
         ),
       );
     }
@@ -1350,7 +1336,7 @@ class _WikiCardState extends State<_WikiCard> {
                       AppLocalizations.of(context)!,
                       widget.section.label,
                     ),
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppTheme.textPrimary,
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -1361,7 +1347,7 @@ class _WikiCardState extends State<_WikiCard> {
                     AppLocalizations.of(
                       context,
                     )!.wikiCategories(widget.section.subs.length),
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppTheme.textMuted,
                       fontSize: 11,
                       height: 1.4,
@@ -1442,7 +1428,7 @@ class _SubCard extends StatelessWidget {
             Expanded(
               child: Text(
                 _wikiL10n(AppLocalizations.of(context)!, sub.label),
-                style: const TextStyle(
+                style: TextStyle(
                   color: AppTheme.textPrimary,
                   fontWeight: FontWeight.w600,
                   fontSize: 14,
@@ -1498,14 +1484,14 @@ class _PageCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   result.title,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textPrimary,
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
                   ),
                 ),
               ),
-              const Icon(
+              Icon(
                 Icons.arrow_forward_ios_rounded,
                 color: AppTheme.textMuted,
                 size: 13,
@@ -1802,7 +1788,7 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
                 children: [
                   IconButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.arrow_back_ios_new_rounded,
                       color: AppTheme.textSecondary,
                       size: 18,
@@ -1811,7 +1797,7 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
                   Expanded(
                     child: Text(
                       widget.result.title,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: AppTheme.textPrimary,
                         fontSize: 17,
                         fontWeight: FontWeight.w700,
@@ -1822,7 +1808,7 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
                   ),
                   IconButton(
                     onPressed: _openInBrowser,
-                    icon: const FaIcon(
+                    icon: FaIcon(
                       FontAwesomeIcons.arrowUpRightFromSquare,
                       size: 15,
                       color: AppTheme.textMuted,
@@ -1855,7 +1841,7 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
             const SizedBox(height: 12),
             Text(
               _error!,
-              style: const TextStyle(color: AppTheme.textSecondary),
+              style: TextStyle(color: AppTheme.textSecondary),
             ),
             const SizedBox(height: 16),
             FilledButton.icon(
@@ -1896,7 +1882,7 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
         if (_craftingRecipes.isNotEmpty) ...[
           Text(
             AppLocalizations.of(context)!.wikiCrafting,
-            style: const TextStyle(
+            style: TextStyle(
               color: AppTheme.textPrimary,
               fontSize: 16,
               fontWeight: FontWeight.w700,
@@ -1917,7 +1903,7 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
         if (intro != null && intro.content.isNotEmpty) ...[
           Text(
             intro.content,
-            style: const TextStyle(
+            style: TextStyle(
               color: AppTheme.textSecondary,
               fontSize: 14,
               height: 1.65,
@@ -1933,7 +1919,7 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
             (s) => [
               Text(
                 s.title!,
-                style: const TextStyle(
+                style: TextStyle(
                   color: AppTheme.textPrimary,
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
@@ -1942,7 +1928,7 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
               const SizedBox(height: 8),
               Text(
                 s.content,
-                style: const TextStyle(
+                style: TextStyle(
                   color: AppTheme.textSecondary,
                   fontSize: 13,
                   height: 1.65,
@@ -2003,7 +1989,7 @@ class _CraftingGridWidget extends StatelessWidget {
               _row(['A3', 'B3', 'C3']),
             ],
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 14),
             child: Icon(
               Icons.arrow_forward_rounded,
@@ -2066,7 +2052,7 @@ class _CraftingGridWidget extends StatelessWidget {
                     padding: const EdgeInsets.all(2),
                     child: Text(
                       item.length > 12 ? '${item.substring(0, 11)}…' : item,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: AppTheme.textSecondary,
                         fontSize: 7.5,
                         height: 1.2,

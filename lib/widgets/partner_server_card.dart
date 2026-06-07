@@ -141,7 +141,7 @@ class _PartnerServerCardState extends State<PartnerServerCard>
                                 Expanded(
                                   child: Text(
                                     widget.server.name,
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       color: AppTheme.textPrimary,
                                       fontSize: 14,
                                       fontWeight: FontWeight.w700,
@@ -155,7 +155,7 @@ class _PartnerServerCardState extends State<PartnerServerCard>
                                   AnimatedRotation(
                                     turns: _expanded ? 0.5 : 0,
                                     duration: const Duration(milliseconds: 250),
-                                    child: const Icon(
+                                    child: Icon(
                                       Icons.keyboard_arrow_down_rounded,
                                       size: 16,
                                       color: AppTheme.textMuted,
@@ -174,7 +174,7 @@ class _PartnerServerCardState extends State<PartnerServerCard>
 
                             Text(
                               '${widget.server.address}:${widget.server.port}',
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: AppTheme.textMuted,
                                 fontSize: 10,
                               ),
@@ -242,7 +242,7 @@ class _PartnerServerCardState extends State<PartnerServerCard>
                                     color: AppTheme.borderGray,
                                   ),
                                 ),
-                                child: const Row(
+                                child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Icon(
@@ -283,7 +283,7 @@ class _PartnerServerCardState extends State<PartnerServerCard>
                         padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
                         child: Text(
                           widget.server.description,
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: AppTheme.textSecondary,
                             fontSize: 12,
                             height: 1.6,
@@ -304,7 +304,7 @@ class _PartnerServerCardState extends State<PartnerServerCard>
 
   Widget _iconFallback() => Container(
     color: AppTheme.surfaceRaised,
-    child: const Icon(Icons.dns_rounded, size: 24, color: AppTheme.textMuted),
+    child: Icon(Icons.dns_rounded, size: 24, color: AppTheme.textMuted),
   );
 }
 

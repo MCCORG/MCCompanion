@@ -85,7 +85,7 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
                 child: Row(
                   children: [
                     IconButton(
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.arrow_back_rounded,
                         color: AppTheme.textPrimary,
                       ),
@@ -93,7 +93,7 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
                     ),
                     Text(
                       AppLocalizations.of(context)!.playerLookupTitle,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: AppTheme.textPrimary,
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
@@ -115,7 +115,7 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
               children: [
                 Text(
                   AppLocalizations.of(context)!.playerLookupSubtitle,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textMuted,
                     fontSize: 12,
                   ),
@@ -133,7 +133,7 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
                         ),
                         child: TextField(
                           controller: _ctrl,
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: AppTheme.textPrimary,
                             fontSize: 14,
                           ),
@@ -402,7 +402,7 @@ class _JavaSkinViewerState extends State<_JavaSkinViewer> {
             ? CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
             : _textureUrl != null
             ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156)
-            : const Icon(
+            : Icon(
                 Icons.person_rounded,
                 color: AppTheme.textMuted,
                 size: 48,
@@ -436,7 +436,7 @@ class _BedrockCard extends StatelessWidget {
               ),
               if (profile.gamerscore != null) ...[
                 const Spacer(),
-                const Icon(
+                Icon(
                   Icons.star_rounded,
                   size: 13,
                   color: AppTheme.textMuted,
@@ -444,7 +444,7 @@ class _BedrockCard extends StatelessWidget {
                 const SizedBox(width: 3),
                 Text(
                   '${profile.gamerscore}G',
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textMuted,
                     fontSize: 12,
                   ),
@@ -537,7 +537,7 @@ class _BedrockSkinViewerState extends State<_BedrockSkinViewer> {
             ? CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
             : _textureUrl != null
             ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156)
-            : const Icon(
+            : Icon(
                 Icons.gamepad_rounded,
                 color: AppTheme.textMuted,
                 size: 48,
@@ -593,7 +593,7 @@ class _InfoRow extends StatelessWidget {
           width: 68,
           child: Text(
             label,
-            style: const TextStyle(
+            style: TextStyle(
               color: AppTheme.textMuted,
               fontSize: 12,
               fontWeight: FontWeight.w500,
@@ -603,7 +603,7 @@ class _InfoRow extends StatelessWidget {
         Expanded(
           child: Text(
             value,
-            style: const TextStyle(
+            style: TextStyle(
               color: AppTheme.textSecondary,
               fontSize: 12,
               fontFamily: 'monospace',
@@ -626,7 +626,7 @@ class _InfoRow extends StatelessWidget {
                 duration: const Duration(seconds: 2),
               );
             },
-            child: const Padding(
+            child: Padding(
               padding: EdgeInsets.only(left: 6),
               child: Icon(
                 Icons.copy_rounded,

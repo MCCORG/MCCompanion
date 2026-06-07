@@ -122,7 +122,7 @@ class _LanguageContentState extends State<_LanguageContent> {
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: AppTheme.borderGray),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: FaIcon(
                       FontAwesomeIcons.language,
                       color: AppTheme.textSecondary,
@@ -134,7 +134,7 @@ class _LanguageContentState extends State<_LanguageContent> {
                 Expanded(
                   child: Text(
                     widget.title,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppTheme.textPrimary,
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
@@ -151,7 +151,7 @@ class _LanguageContentState extends State<_LanguageContent> {
                       shape: BoxShape.circle,
                       border: Border.all(color: AppTheme.borderGray),
                     ),
-                    child: const Icon(
+                    child: Icon(
                       Icons.close_rounded,
                       color: AppTheme.textSecondary,
                       size: 16,
@@ -165,7 +165,7 @@ class _LanguageContentState extends State<_LanguageContent> {
           const Divider(height: 1, color: AppTheme.borderDim),
 
           if (_loading)
-            const SizedBox(
+            SizedBox(
               height: 110,
               child: Center(
                 child: CircularProgressIndicator(

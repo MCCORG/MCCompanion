@@ -139,7 +139,7 @@ class _AppToastWidgetState extends State<_AppToastWidget>
                     Flexible(
                       child: Text(
                         widget.message,
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: AppTheme.textPrimary,
                           fontSize: 13,
                           fontWeight: FontWeight.w500,

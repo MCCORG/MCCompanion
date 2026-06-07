@@ -28,10 +28,10 @@ class HowToSheetContent extends StatelessWidget {
     return ConstrainedBox(
       constraints: BoxConstraints(maxHeight: maxHeight),
       child: Container(
-        decoration: const BoxDecoration(
-          color: Color(0xFF0E1117),
-          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-          border: Border(top: BorderSide(color: AppTheme.borderGray)),
+        decoration: BoxDecoration(
+          color: AppTheme.background,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+          border: const Border(top: BorderSide(color: AppTheme.borderGray)),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -73,7 +73,7 @@ class HowToSheetContent extends StatelessWidget {
                   const SizedBox(width: 12),
                   Text(
                     loc.howToUseMenu,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppTheme.textPrimary,
                       fontSize: 17,
                       fontWeight: FontWeight.w700,
@@ -172,7 +172,7 @@ class HowToSheetContent extends StatelessWidget {
                         )),
                     const SizedBox(height: 3),
                     Text(subtitle,
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: AppTheme.textSecondary,
                           fontSize: 12,
                         )),

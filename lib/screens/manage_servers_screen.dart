@@ -72,7 +72,7 @@ class ManageServersScreenState extends State<ManageServersScreen> {
           child: Row(
             children: [
               IconButton(
-                icon: const Icon(
+                icon: Icon(
                   Icons.arrow_back_ios_rounded,
                   color: AppTheme.textSecondary,
                   size: 18,
@@ -82,7 +82,7 @@ class ManageServersScreenState extends State<ManageServersScreen> {
               Expanded(
                 child: Text(
                   loc.myServers,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textPrimary,
                     fontSize: 17,
                     fontWeight: FontWeight.w700,
@@ -241,7 +241,7 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
           child: Row(
             children: [
               IconButton(
-                icon: const Icon(
+                icon: Icon(
                   Icons.close_rounded,
                   color: AppTheme.textSecondary,
                   size: 20,
@@ -251,7 +251,7 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
               Expanded(
                 child: Text(
                   isEditing ? loc.editServer : loc.addServer,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textPrimary,
                     fontSize: 17,
                     fontWeight: FontWeight.w700,
@@ -371,7 +371,7 @@ class _EmptyState extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18),
                 border: Border.all(color: AppTheme.borderGray),
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.dns_outlined,
                 size: 28,
                 color: AppTheme.textMuted,
@@ -380,7 +380,7 @@ class _EmptyState extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               loc.noSavedServers,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w600,
                 color: AppTheme.textSecondary,
@@ -390,7 +390,7 @@ class _EmptyState extends StatelessWidget {
             Text(
               loc.addServersHint,
               textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 13, color: AppTheme.textMuted),
+              style: TextStyle(fontSize: 13, color: AppTheme.textMuted),
             ),
             const SizedBox(height: 20),
             ElevatedButton.icon(
@@ -452,7 +452,7 @@ class _ServerCard extends StatelessWidget {
               children: [
                 Text(
                   server.name,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textPrimary,
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
@@ -463,7 +463,7 @@ class _ServerCard extends StatelessWidget {
                 const SizedBox(height: 2),
                 Text(
                   '${server.address}:${server.port}',
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textSecondary,
                     fontSize: 12,
                   ),
@@ -475,7 +475,7 @@ class _ServerCard extends StatelessWidget {
                   const SizedBox(height: 2),
                   Text(
                     server.description!,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppTheme.textMuted,
                       fontSize: 11,
                     ),
@@ -578,7 +578,7 @@ class _ConfirmDeleteDialog extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               loc.deleteServer,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w700,
                 color: AppTheme.textPrimary,
@@ -588,7 +588,7 @@ class _ConfirmDeleteDialog extends StatelessWidget {
             Text(
               '${loc.delete} "$serverName"?',
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style: TextStyle(
                 color: AppTheme.textSecondary,
                 fontSize: 14,
                 height: 1.5,
@@ -662,15 +662,15 @@ class _Field extends StatelessWidget {
       keyboardType: keyboardType,
       maxLines: maxLines,
       autofocus: autofocus,
-      style: const TextStyle(color: AppTheme.textPrimary, fontSize: 14),
+      style: TextStyle(color: AppTheme.textPrimary, fontSize: 14),
       decoration: InputDecoration(
         labelText: label,
         hintText: hint,
-        labelStyle: const TextStyle(
+        labelStyle: TextStyle(
           color: AppTheme.textSecondary,
           fontSize: 13,
         ),
-        hintStyle: const TextStyle(color: AppTheme.textMuted, fontSize: 13),
+        hintStyle: TextStyle(color: AppTheme.textMuted, fontSize: 13),
         prefixIcon: Icon(icon, color: AppTheme.textMuted, size: 18),
         filled: true,
         fillColor: AppTheme.surface,
@@ -713,12 +713,12 @@ class _EditionToggle extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
       child: Row(
         children: [
-          const Icon(Icons.sports_esports_rounded, color: AppTheme.textMuted, size: 18),
+          Icon(Icons.sports_esports_rounded, color: AppTheme.textMuted, size: 18),
           const SizedBox(width: 10),
           Expanded(
             child: Text(
               AppLocalizations.of(context)!.editionLabel,
-              style: const TextStyle(color: AppTheme.textSecondary, fontSize: 13),
+              style: TextStyle(color: AppTheme.textSecondary, fontSize: 13),
             ),
           ),
           _EditionChip(label: AppLocalizations.of(context)!.bedrockLabel, selected: !isJava, onTap: () => onChanged(false)),

@@ -89,7 +89,7 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
               const SizedBox(height: 12),
               Text(
                 l.noConversationsYet,
-                style: const TextStyle(
+                style: TextStyle(
                   color: AppTheme.textSecondary,
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
@@ -99,7 +99,7 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
               Text(
                 l.startChatHint,
                 textAlign: TextAlign.center,
-                style: const TextStyle(color: AppTheme.textMuted, fontSize: 12),
+                style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
               ),
             ],
           ),

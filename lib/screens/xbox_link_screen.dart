@@ -123,13 +123,13 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
         backgroundColor: AppTheme.surface,
         title: Text(
           AppLocalizations.of(context)!.xboxLinkTitle,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 16,
             fontWeight: FontWeight.w700,
           ),
         ),
-        iconTheme: const IconThemeData(color: AppTheme.textPrimary),
+        iconTheme: IconThemeData(color: AppTheme.textPrimary),
         elevation: 0,
       ),
       body: SafeArea(
@@ -163,7 +163,7 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
         const SizedBox(height: 20),
         Text(
           AppLocalizations.of(context)!.xboxStartingLogin,
-          style: const TextStyle(color: AppTheme.textSecondary, fontSize: 13),
+          style: TextStyle(color: AppTheme.textSecondary, fontSize: 13),
         ),
       ],
     );
@@ -194,7 +194,7 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
         const SizedBox(height: 20),
         Text(
           AppLocalizations.of(context)!.xboxSignInWithMicrosoft,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 22,
             fontWeight: FontWeight.w700,
@@ -203,7 +203,7 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
         const SizedBox(height: 8),
         Text(
           AppLocalizations.of(context)!.xboxGoToLink,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textSecondary,
             fontSize: 13,
             height: 1.5,
@@ -212,7 +212,7 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
         const SizedBox(height: 32),
         Text(
           AppLocalizations.of(context)!.xboxYourCode,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textMuted,
             fontSize: 11,
             fontWeight: FontWeight.w600,
@@ -242,7 +242,7 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
                   ),
                 ),
                 const SizedBox(width: 12),
-                const Icon(
+                Icon(
                   Icons.copy_rounded,
                   color: AppTheme.textMuted,
                   size: 18,
@@ -255,7 +255,7 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
         Text(
           AppLocalizations.of(context)!.xboxTapToCopy,
           textAlign: TextAlign.center,
-          style: const TextStyle(color: AppTheme.textMuted, fontSize: 11),
+          style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
         ),
         const SizedBox(height: 28),
         ElevatedButton.icon(
@@ -275,7 +275,7 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(
+            SizedBox(
               width: 14,
               height: 14,
               child: CircularProgressIndicator(
@@ -286,7 +286,7 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
             const SizedBox(width: 10),
             Text(
               AppLocalizations.of(context)!.xboxWaitingForLogin,
-              style: const TextStyle(color: AppTheme.textMuted, fontSize: 12),
+              style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
             ),
           ],
         ),
@@ -307,7 +307,7 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
         const SizedBox(height: 16),
         Text(
           AppLocalizations.of(context)!.xboxAccountLinked,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 20,
             fontWeight: FontWeight.w700,
@@ -342,7 +342,7 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
         Text(
           _errorMsg ?? AppLocalizations.of(context)!.xboxSomethingWrong,
           textAlign: TextAlign.center,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textSecondary,
             fontSize: 13,
             height: 1.5,

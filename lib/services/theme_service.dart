@@ -108,6 +108,10 @@ const List<CardPreset> cardPresets = [
   CardPreset(id: 'coffee', label: 'Coffee', color: Color(0xFF2D1E0F)),
 ];
 
+int _hexToInt(String hex) => int.parse(hex.padLeft(8, 'FF'), radix: 16);
+String _colorToHex(Color c) =>
+    c.toARGB32().toRadixString(16).padLeft(8, '0').toUpperCase();
+
 class ThemeService extends ChangeNotifier {
   static final ThemeService instance = ThemeService._();
   ThemeService._();
@@ -117,6 +121,10 @@ class ThemeService extends ChangeNotifier {
   static const _keyOpacity = 'theme_accent_opacity';
   static const _keyCard = 'theme_card';
   static const _keyCardOpacity = 'theme_card_opacity';
+  static const _keyCustomAccent = 'theme_custom_accent';
+  static const _keyCustomBg = 'theme_custom_bg';
+  static const _keyCustomCard = 'theme_custom_card';
+  static const _keyTextColor = 'theme_text_color';
 
   AccentPreset _accent = accentPresets[0];
   BgPreset _bg = bgPresets[0];
@@ -124,34 +132,61 @@ class ThemeService extends ChangeNotifier {
   CardPreset _card = cardPresets[0];
   double _cardOpacity = 1.0;
 
+  Color? _customAccent;
+  Color? _customBg;
+  Color? _customCard;
+  Color? _customText;
+
   AccentPreset get accent => _accent;
   BgPreset get bg => _bg;
   double get opacity => _opacity;
   CardPreset get card => _card;
   double get cardOpacity => _cardOpacity;
+  Color? get customAccent => _customAccent;
+  Color? get customBg => _customBg;
+  Color? get customCard => _customCard;
+  Color? get customText => _customText;
 
-  Color get accentColor => _accent.color.withValues(alpha: _opacity);
-  Color get accentLight =>
-      Color.lerp(_accent.color, Colors.white, 0.18)!.withValues(alpha: _opacity);
-  Color get accentDark =>
-      Color.lerp(_accent.color, Colors.black, 0.20)!.withValues(alpha: _opacity);
+  Color get _effectiveAccent => _customAccent ?? _accent.color;
+  Color get _effectiveBg => _customBg ?? _bg.base;
+  Color get _effectiveCard => _customCard ?? _card.color;
 
-  Color get background => _bg.base;
+  Color get accentColor => _effectiveAccent.withValues(alpha: _opacity);
+  Color get accentLight => Color.lerp(
+    _effectiveAccent,
+    Colors.white,
+    0.18,
+  )!.withValues(alpha: _opacity);
+  Color get accentDark => Color.lerp(
+    _effectiveAccent,
+    Colors.black,
+    0.20,
+  )!.withValues(alpha: _opacity);
+
+  Color get background => _effectiveBg;
   Color get surface => _layerColor(0.07);
-  Color get surfaceRaised => _card.color.withValues(alpha: _cardOpacity);
+  Color get surfaceRaised => _effectiveCard.withValues(alpha: _cardOpacity);
   Color get surfaceLight => _cardLighter(0.05).withValues(alpha: _cardOpacity);
   Color get overlay => _cardLighter(0.10).withValues(alpha: _cardOpacity);
-  Color get surfaceRaisedSolid => _card.color;
+  Color get surfaceRaisedSolid => _effectiveCard;
+
+  Color get textPrimary => _customText ?? const Color(0xFFFFFFFF);
+  Color get textSecondary => _customText != null
+      ? Color.lerp(_customText!, Colors.black, 0.12)!
+      : const Color(0xFFE2E5F5);
+  Color get textMuted => _customText != null
+      ? Color.lerp(_customText!, Colors.black, 0.30)!
+      : const Color(0xFFB0B5CC);
 
   Color _layerColor(double lightness) {
-    final hsl = HSLColor.fromColor(_bg.base);
+    final hsl = HSLColor.fromColor(_effectiveBg);
     return hsl
         .withLightness((hsl.lightness + lightness).clamp(0.0, 1.0))
         .toColor();
   }
 
   Color _cardLighter(double lightness) {
-    final hsl = HSLColor.fromColor(_card.color);
+    final hsl = HSLColor.fromColor(_effectiveCard);
     return hsl
         .withLightness((hsl.lightness + lightness).clamp(0.0, 1.0))
         .toColor();
@@ -164,6 +199,10 @@ class ThemeService extends ChangeNotifier {
     final op = prefs.getDouble(_keyOpacity);
     final cardId = prefs.getString(_keyCard);
     final cardOp = prefs.getDouble(_keyCardOpacity);
+    final custAcc = prefs.getString(_keyCustomAccent);
+    final custBg = prefs.getString(_keyCustomBg);
+    final custCard = prefs.getString(_keyCustomCard);
+    final custText = prefs.getString(_keyTextColor);
 
     if (accentId != null)
       _accent = accentPresets.firstWhere(
@@ -182,10 +221,20 @@ class ThemeService extends ChangeNotifier {
         orElse: () => cardPresets[0],
       );
     if (cardOp != null) _cardOpacity = cardOp.clamp(0.1, 1.0);
+    if (custAcc != null) _customAccent = Color(_hexToInt(custAcc));
+    if (custBg != null) _customBg = Color(_hexToInt(custBg));
+    if (custCard != null) _customCard = Color(_hexToInt(custCard));
+    if (custText != null) _customText = Color(_hexToInt(custText));
   }
 
   void setAccentLive(AccentPreset preset) {
     _accent = preset;
+    _customAccent = null;
+    notifyListeners();
+  }
+
+  void setCustomAccentLive(Color c) {
+    _customAccent = c;
     notifyListeners();
   }
 
@@ -196,11 +245,23 @@ class ThemeService extends ChangeNotifier {
 
   void setBgLive(BgPreset preset) {
     _bg = preset;
+    _customBg = null;
+    notifyListeners();
+  }
+
+  void setCustomBgLive(Color c) {
+    _customBg = c;
     notifyListeners();
   }
 
   void setCardLive(CardPreset preset) {
     _card = preset;
+    _customCard = null;
+    notifyListeners();
+  }
+
+  void setCustomCardLive(Color c) {
+    _customCard = c;
     notifyListeners();
   }
 
@@ -209,15 +270,39 @@ class ThemeService extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setTextColorLive(Color? c) {
+    _customText = c;
+    notifyListeners();
+  }
+
   Future<void> saveAll() async {
     final prefs = await SharedPreferences.getInstance();
-    await Future.wait([
+    final futures = <Future>[
       prefs.setString(_keyAccent, _accent.id),
       prefs.setString(_keyBg, _bg.id),
       prefs.setDouble(_keyOpacity, _opacity),
       prefs.setString(_keyCard, _card.id),
       prefs.setDouble(_keyCardOpacity, _cardOpacity),
-    ]);
+    ];
+    if (_customAccent != null)
+      futures.add(
+        prefs.setString(_keyCustomAccent, _colorToHex(_customAccent!)),
+      );
+    else
+      futures.add(prefs.remove(_keyCustomAccent));
+    if (_customBg != null)
+      futures.add(prefs.setString(_keyCustomBg, _colorToHex(_customBg!)));
+    else
+      futures.add(prefs.remove(_keyCustomBg));
+    if (_customCard != null)
+      futures.add(prefs.setString(_keyCustomCard, _colorToHex(_customCard!)));
+    else
+      futures.add(prefs.remove(_keyCustomCard));
+    if (_customText != null)
+      futures.add(prefs.setString(_keyTextColor, _colorToHex(_customText!)));
+    else
+      futures.add(prefs.remove(_keyTextColor));
+    await Future.wait(futures);
   }
 
   Future<void> reset() async {
@@ -226,6 +311,10 @@ class ThemeService extends ChangeNotifier {
     _opacity = 1.0;
     _card = cardPresets[0];
     _cardOpacity = 1.0;
+    _customAccent = null;
+    _customBg = null;
+    _customCard = null;
+    _customText = null;
     final prefs = await SharedPreferences.getInstance();
     await Future.wait([
       prefs.remove(_keyAccent),
@@ -233,6 +322,10 @@ class ThemeService extends ChangeNotifier {
       prefs.remove(_keyOpacity),
       prefs.remove(_keyCard),
       prefs.remove(_keyCardOpacity),
+      prefs.remove(_keyCustomAccent),
+      prefs.remove(_keyCustomBg),
+      prefs.remove(_keyCustomCard),
+      prefs.remove(_keyTextColor),
     ]);
     notifyListeners();
   }

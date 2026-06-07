@@ -194,7 +194,7 @@ class _SplashScreenState extends State<SplashScreen>
               const SizedBox(height: 20),
               Text(
                 loc.updateAvailable,
-                style: const TextStyle(
+                style: TextStyle(
                   color: AppTheme.textPrimary,
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
@@ -204,7 +204,7 @@ class _SplashScreenState extends State<SplashScreen>
               Text(
                 loc.newVersion,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
+                style: TextStyle(
                   color: AppTheme.textSecondary,
                   fontSize: 13,
                   height: 1.6,

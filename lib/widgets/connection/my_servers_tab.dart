@@ -69,12 +69,12 @@ class _MyServersTabState extends State<MyServersTab> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(Icons.dns_outlined, size: 26, color: AppTheme.textMuted),
+          Icon(Icons.dns_outlined, size: 26, color: AppTheme.textMuted),
           const SizedBox(height: 10),
           Text(
             loc.noServerYet,
             textAlign: TextAlign.center,
-            style: const TextStyle(
+            style: TextStyle(
               color: AppTheme.textMuted,
               fontSize: 12,
               height: 1.5,
@@ -202,7 +202,7 @@ class _ServerTile extends StatelessWidget {
                       children: [
                         Text(
                           server.name,
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: AppTheme.textPrimary,
                             fontSize: 13,
                             fontWeight: FontWeight.w600,
@@ -211,7 +211,7 @@ class _ServerTile extends StatelessWidget {
                         const SizedBox(height: 2),
                         Text(
                           '${server.address}:${server.port}',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: AppTheme.textMuted,
                             fontSize: 11,
                           ),

@@ -28,9 +28,9 @@ class AppTheme {
   static const Color borderGray  = Color(0xFF272B3C);
   static const Color borderLight = Color(0xFF353A50);
 
-  static const Color textPrimary   = Color(0xFFFFFFFF);
-  static const Color textSecondary = Color(0xFFE2E5F5);
-  static const Color textMuted     = Color(0xFFB0B5CC);
+  static Color get textPrimary   => ThemeService.instance.textPrimary;
+  static Color get textSecondary => ThemeService.instance.textSecondary;
+  static Color get textMuted     => ThemeService.instance.textMuted;
   static const Color textDisabled  = Color(0xFF4A5070);
 
   static const Color success   = Color(0xFF34D399);
@@ -46,12 +46,15 @@ class AppTheme {
   static const Color modeJava     = Color(0xFFF97316);
 
   static ThemeData get darkTheme {
-    final a  = accent;
-    final al = accentLight;
-    final bg = background;
-    final sf = surface;
-    final sr = surfaceRaised;
-    final ov = overlay;
+    final a   = accent;
+    final al  = accentLight;
+    final bg  = background;
+    final sf  = surface;
+    final sr  = surfaceRaised;
+    final ov  = overlay;
+    final tp  = textPrimary;
+    final ts  = textSecondary;
+    final tm  = textMuted;
 
     return ThemeData(
       useMaterial3: true,
@@ -122,7 +125,7 @@ class AppTheme {
         fillColor: sr,
         isDense: true,
         contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
-        hintStyle: const TextStyle(color: textMuted, fontSize: 13),
+        hintStyle: TextStyle(color: tm, fontSize: 13),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
         enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: borderGray)),
         focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: a, width: 1.5)),
@@ -130,22 +133,22 @@ class AppTheme {
         disabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: borderDim)),
       ),
 
-      listTileTheme: const ListTileThemeData(tileColor: Colors.transparent, iconColor: textSecondary, textColor: textPrimary),
-      iconTheme: const IconThemeData(color: textSecondary, size: 20),
+      listTileTheme: ListTileThemeData(tileColor: Colors.transparent, iconColor: ts, textColor: tp),
+      iconTheme: IconThemeData(color: ts, size: 20),
 
-      textTheme: const TextTheme(
-        displayLarge: TextStyle(color: textPrimary, fontSize: 28, fontWeight: FontWeight.w700),
-        titleLarge:   TextStyle(color: textPrimary, fontSize: 18, fontWeight: FontWeight.w600),
-        titleMedium:  TextStyle(color: textPrimary, fontSize: 15, fontWeight: FontWeight.w600),
-        bodyLarge:    TextStyle(color: textPrimary,   fontSize: 14),
-        bodyMedium:   TextStyle(color: textSecondary, fontSize: 13),
-        bodySmall:    TextStyle(color: textMuted,     fontSize: 11),
-        labelLarge:   TextStyle(color: textSecondary, fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1.2),
+      textTheme: TextTheme(
+        displayLarge: TextStyle(color: tp, fontSize: 28, fontWeight: FontWeight.w700),
+        titleLarge:   TextStyle(color: tp, fontSize: 18, fontWeight: FontWeight.w600),
+        titleMedium:  TextStyle(color: tp, fontSize: 15, fontWeight: FontWeight.w600),
+        bodyLarge:    TextStyle(color: tp,   fontSize: 14),
+        bodyMedium:   TextStyle(color: ts, fontSize: 13),
+        bodySmall:    TextStyle(color: tm,     fontSize: 11),
+        labelLarge:   TextStyle(color: ts, fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1.2),
       ),
 
       snackBarTheme: SnackBarThemeData(
         backgroundColor: ov,
-        contentTextStyle: const TextStyle(color: textPrimary, fontSize: 13),
+        contentTextStyle: TextStyle(color: tp, fontSize: 13),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10), side: const BorderSide(color: borderGray)),
         behavior: SnackBarBehavior.floating,
       ),
@@ -154,8 +157,8 @@ class AppTheme {
         backgroundColor: sr,
         elevation: 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16), side: const BorderSide(color: borderGray)),
-        titleTextStyle: const TextStyle(color: textPrimary, fontSize: 16, fontWeight: FontWeight.w600),
-        contentTextStyle: const TextStyle(color: textSecondary, fontSize: 13),
+        titleTextStyle: TextStyle(color: tp, fontSize: 16, fontWeight: FontWeight.w600),
+        contentTextStyle: TextStyle(color: ts, fontSize: 13),
       ),
 
       bottomSheetTheme: BottomSheetThemeData(
@@ -169,12 +172,12 @@ class AppTheme {
         color: ov,
         elevation: 4,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12), side: const BorderSide(color: borderGray)),
-        textStyle: const TextStyle(color: textPrimary, fontSize: 13),
+        textStyle: TextStyle(color: tp, fontSize: 13),
       ),
 
       tooltipTheme: TooltipThemeData(
         decoration: BoxDecoration(color: ov, borderRadius: BorderRadius.circular(8), border: Border.all(color: borderGray)),
-        textStyle: const TextStyle(color: textPrimary, fontSize: 12),
+        textStyle: TextStyle(color: tp, fontSize: 12),
       ),
 
       checkboxTheme: CheckboxThemeData(

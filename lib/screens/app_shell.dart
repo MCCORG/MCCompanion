@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../services/navigation_controller.dart';
 import '../services/locale_provider.dart';
 import '../services/region_detector.dart';
@@ -328,197 +330,231 @@ class _AppShellState extends State<AppShell>
     super.dispose();
   }
 
+  bool get _isDesktop =>
+      Platform.isMacOS || Platform.isWindows || Platform.isLinux;
+
+  Widget _buildBackground() => Stack(
+    children: [
+      Positioned.fill(child: ColoredBox(color: AppTheme.background)),
+      Positioned.fill(
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            gradient: RadialGradient(
+              center: const Alignment(0.8, -1.1),
+              radius: 0.9,
+              colors: [AppTheme.accent.withValues(alpha: 0.07), Colors.transparent],
+            ),
+          ),
+        ),
+      ),
+      Positioned.fill(
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            gradient: RadialGradient(
+              center: const Alignment(-1.0, 1.2),
+              radius: 0.7,
+              colors: [AppTheme.accent.withValues(alpha: 0.04), Colors.transparent],
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+
+  Widget _buildPageStack() {
+    return IndexedStack(
+      index: _pageIndex,
+      children: [
+        LandingScreen(
+          onGoToConnector: () => _goTo(_pageConnector),
+          onGoToSkins: () => _goTo(_pageSkins),
+          onGoToWiki: () => _goTo(_pageWiki),
+          onGoToPartners: () => _goTo(_pagePartners),
+          onGoToPlayerLookup: () => _goTo(_pagePlayerLookup),
+          onGoToServerTracker: () => _goTo(_pageServerTracker),
+          onWebsiteTap: () => navigationController.openWebsite(context),
+          onDiscordTap: () => navigationController.openDiscord(context),
+          onLanguageTap: () => navigationController.showLanguageDialog(context),
+          onInfoTap: () => _openSheet(_ActiveSheet.info),
+          partnerServersFuture: _partnerServersFuture,
+          onPlayServer: (ip, port) {
+            _ipController.text = ip;
+            _portController.text = port.toString();
+            _goTo(_pageConnector);
+          },
+        ),
+        HomeScreen(
+          key: _connectorKey,
+          selectedRelay: _selectedRelay,
+          onRelayChanged: _onRelayChanged,
+          navigationController: navigationController,
+          partnerServersFuture: _partnerServersFuture,
+          onOpenPartnerServers: () => _goTo(_pagePartners),
+          onOpenManageServers: _openManageServers,
+          onOpenMore: () => _openSheet(_ActiveSheet.more),
+          onOpenSupport: () => _openSheet(_ActiveSheet.help),
+          onOpenHowTo: () => _openSheet(_ActiveSheet.howTo),
+          onOpenConsole: () => navigationController.showConsole(context),
+          ipController: _ipController,
+          portController: _portController,
+        ),
+        PartnerServersScreen(
+          partnerServersFuture: _partnerServersFuture,
+          ipController: _ipController,
+          portController: _portController,
+          onBack: () => _goTo(_pageHome),
+          onPlay: () => _goTo(_pageConnector),
+        ),
+        ManageServersScreen(
+          key: _manageServersKey,
+          onBack: () => _goTo(_pageConnector),
+          onAddServer: _openAddServer,
+          onEditServer: _openEditServer,
+        ),
+        AddEditServerScreen(
+          editingIndex: _editingServerIndex,
+          onSaved: () {
+            _manageServersKey.currentState?.reload();
+            setState(() => _pageIndex = _pageManageServers);
+          },
+          onCancel: () => setState(() => _pageIndex = _pageManageServers),
+        ),
+        SkinsScreen(key: _skinsKey),
+        WikiScreen(),
+        ProfileScreen(
+          key: _profileKey,
+          onGoToHome: () => _goTo(_pageHome),
+          onGoToConnector: () => _goTo(_pageConnector),
+          onGoToSkins: () => _goTo(_pageSkins),
+          onGoToWiki: () => _goTo(_pageWiki),
+          onLoggedIn: () {
+            if (_loginFromTracker) {
+              _loginFromTracker = false;
+              _goTo(_pageServerTracker);
+            }
+          },
+        ),
+        PlayerLookupScreen(onBack: () => _goTo(_pageHome)),
+        ServerTrackerScreen(
+          onBack: () => _goTo(_pageHome),
+          onGoToLogin: () {
+            _loginFromTracker = true;
+            _goTo(_pageProfile);
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSheetOverlay(AppLocalizations loc) {
+    if (_activeSheet == _ActiveSheet.none) return const SizedBox.shrink();
+    return Stack(
+      children: [
+        AnimatedBuilder(
+          animation: _sheetAnim,
+          builder: (_, __) => GestureDetector(
+            onTap: _closeSheet,
+            child: Container(color: Colors.black.withValues(alpha: 0.45 * _sheetAnim.value)),
+          ),
+        ),
+        Positioned(
+          left: 0, right: 0, bottom: 0,
+          child: AnimatedBuilder(
+            animation: _sheetAnim,
+            builder: (_, child) => FractionalTranslation(
+              translation: Offset(0, 1 - _sheetAnim.value),
+              child: child,
+            ),
+            child: _buildActiveSheetContent(loc),
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
+    final svc = HomeCustomizationService.instance;
 
     return PopScope(
       canPop: _canPop,
-      onPopInvoked: (didPop) {
-        if (!didPop) _handlePop();
-      },
-      child: Stack(
-        children: [
-          Positioned.fill(child: ColoredBox(color: AppTheme.background)),
-          Positioned.fill(
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                gradient: RadialGradient(
-                  center: const Alignment(0.8, -1.1),
-                  radius: 0.9,
-                  colors: [
-                    AppTheme.accent.withValues(alpha: 0.07),
-                    Colors.transparent,
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Positioned.fill(
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                gradient: RadialGradient(
-                  center: const Alignment(-1.0, 1.2),
-                  radius: 0.7,
-                  colors: [
-                    AppTheme.accent.withValues(alpha: 0.04),
-                    Colors.transparent,
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Scaffold(
-            backgroundColor: Colors.transparent,
-            bottomNavigationBar: Builder(
-              builder: (_) {
-                final svc = HomeCustomizationService.instance;
-                return BottomGlassSimpleNavBar(
-                  navigationController: navigationController,
-                  dark: true,
-                  selectedRelayIp: _selectedRelay.ip,
-                  onRelayChanged: _onRelayChanged,
-                  activeItem: _activeNavItem,
-                  onHomeTap: () => _goTo(_pageHome),
-                  onConnectorTap: () => _goTo(_pageConnector),
-                  onProfileTap: () {
-                    _loginFromTracker = false;
-                    _goTo(_pageProfile);
-                  },
-                  navLeftFeature: svc.navLeft,
-                  navRightFeature: svc.navRight,
-                  onNavLeftTap: _navCallbackFor(svc.navLeft),
-                  onNavRightTap: _navCallbackFor(svc.navRight),
-                  navLeftActive: _isNavFeatureActive(svc.navLeft),
-                  navRightActive: _isNavFeatureActive(svc.navRight),
-                );
-              },
-            ),
-            body: SafeArea(
-              top: true,
-              bottom: false,
-              child: Stack(
-                children: [
-                  IndexedStack(
-                    index: _pageIndex,
-                    children: [
-                      LandingScreen(
-                        onGoToConnector: () => _goTo(_pageConnector),
-                        onGoToSkins: () => _goTo(_pageSkins),
-                        onGoToWiki: () => _goTo(_pageWiki),
-                        onGoToPartners: () => _goTo(_pagePartners),
-                        onGoToPlayerLookup: () => _goTo(_pagePlayerLookup),
-                        onGoToServerTracker: () => _goTo(_pageServerTracker),
-                        onWebsiteTap: () =>
-                            navigationController.openWebsite(context),
-                        onDiscordTap: () =>
-                            navigationController.openDiscord(context),
-                        onLanguageTap: () =>
-                            navigationController.showLanguageDialog(context),
-                        onInfoTap: () => _openSheet(_ActiveSheet.info),
-                        partnerServersFuture: _partnerServersFuture,
-                        onPlayServer: (ip, port) {
-                          _ipController.text = ip;
-                          _portController.text = port.toString();
-                          _goTo(_pageConnector);
-                        },
-                      ),
-                      HomeScreen(
-                        key: _connectorKey,
-                        selectedRelay: _selectedRelay,
-                        onRelayChanged: _onRelayChanged,
-                        navigationController: navigationController,
-                        partnerServersFuture: _partnerServersFuture,
-                        onOpenPartnerServers: () => _goTo(_pagePartners),
-                        onOpenManageServers: _openManageServers,
-                        onOpenMore: () => _openSheet(_ActiveSheet.more),
-                        onOpenSupport: () => _openSheet(_ActiveSheet.help),
-                        onOpenHowTo: () => _openSheet(_ActiveSheet.howTo),
-                        onOpenConsole: () =>
-                            navigationController.showConsole(context),
-                        ipController: _ipController,
-                        portController: _portController,
-                      ),
-                      PartnerServersScreen(
-                        partnerServersFuture: _partnerServersFuture,
-                        ipController: _ipController,
-                        portController: _portController,
-                        onBack: () => _goTo(_pageHome),
-                        onPlay: () => _goTo(_pageConnector),
-                      ),
-                      ManageServersScreen(
-                        key: _manageServersKey,
-                        onBack: () => _goTo(_pageConnector),
-                        onAddServer: _openAddServer,
-                        onEditServer: _openEditServer,
-                      ),
-                      AddEditServerScreen(
-                        editingIndex: _editingServerIndex,
-                        onSaved: () {
-                          _manageServersKey.currentState?.reload();
-                          setState(() => _pageIndex = _pageManageServers);
-                        },
-                        onCancel: () =>
-                            setState(() => _pageIndex = _pageManageServers),
-                      ),
-                      SkinsScreen(key: _skinsKey),
-                      const WikiScreen(),
-                      ProfileScreen(
-                        key: _profileKey,
-                        onGoToHome: () => _goTo(_pageHome),
-                        onGoToConnector: () => _goTo(_pageConnector),
-                        onGoToSkins: () => _goTo(_pageSkins),
-                        onGoToWiki: () => _goTo(_pageWiki),
-                        onLoggedIn: () {
-                          if (_loginFromTracker) {
-                            _loginFromTracker = false;
-                            _goTo(_pageServerTracker);
-                          }
-                        },
-                      ),
-                      PlayerLookupScreen(onBack: () => _goTo(_pageHome)),
-                      ServerTrackerScreen(
-                        onBack: () => _goTo(_pageHome),
-                        onGoToLogin: () {
-                          _loginFromTracker = true;
-                          _goTo(_pageProfile);
-                        },
-                      ),
-                    ],
-                  ),
+      onPopInvoked: (didPop) { if (!didPop) _handlePop(); },
+      child: _isDesktop
+          ? _buildDesktopShell(loc, svc)
+          : _buildMobileShell(loc, svc),
+    );
+  }
 
-                  if (_activeSheet != _ActiveSheet.none) ...[
-                    AnimatedBuilder(
-                      animation: _sheetAnim,
-                      builder: (_, __) => GestureDetector(
-                        onTap: _closeSheet,
-                        child: Container(
-                          color: Colors.black.withValues(alpha: 
-                            0.45 * _sheetAnim.value,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      child: AnimatedBuilder(
-                        animation: _sheetAnim,
-                        builder: (_, child) => FractionalTranslation(
-                          translation: Offset(0, 1 - _sheetAnim.value),
-                          child: child,
-                        ),
-                        child: _buildActiveSheetContent(loc),
-                      ),
-                    ),
-                  ],
-                ],
-              ),
-            ),
+  Widget _buildMobileShell(AppLocalizations loc, HomeCustomizationService svc) {
+    return Stack(
+      children: [
+        _buildBackground(),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          bottomNavigationBar: BottomGlassSimpleNavBar(
+            navigationController: navigationController,
+            dark: true,
+            selectedRelayIp: _selectedRelay.ip,
+            onRelayChanged: _onRelayChanged,
+            activeItem: _activeNavItem,
+            onHomeTap: () => _goTo(_pageHome),
+            onConnectorTap: () => _goTo(_pageConnector),
+            onProfileTap: () { _loginFromTracker = false; _goTo(_pageProfile); },
+            navLeftFeature: svc.navLeft,
+            navRightFeature: svc.navRight,
+            onNavLeftTap: _navCallbackFor(svc.navLeft),
+            onNavRightTap: _navCallbackFor(svc.navRight),
+            navLeftActive: _isNavFeatureActive(svc.navLeft),
+            navRightActive: _isNavFeatureActive(svc.navRight),
           ),
-        ],
-      ),
+          body: SafeArea(
+            top: true, bottom: false,
+            child: Stack(children: [
+              _buildPageStack(),
+              _buildSheetOverlay(loc),
+            ]),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDesktopShell(AppLocalizations loc, HomeCustomizationService svc) {
+    return Stack(
+      children: [
+        _buildBackground(),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Row(
+            children: [
+              _DesktopSidebar(
+                activeItem: _activeNavItem,
+                onHomeTap: () => _goTo(_pageHome),
+                onConnectorTap: () => _goTo(_pageConnector),
+                onProfileTap: () { _loginFromTracker = false; _goTo(_pageProfile); },
+                navLeftFeature: svc.navLeft,
+                navRightFeature: svc.navRight,
+                onNavLeftTap: _navCallbackFor(svc.navLeft),
+                onNavRightTap: _navCallbackFor(svc.navRight),
+                navLeftActive: _isNavFeatureActive(svc.navLeft),
+                navRightActive: _isNavFeatureActive(svc.navRight),
+                onHelpTap: () => _openSheet(_ActiveSheet.help),
+                onHowToTap: () => _openSheet(_ActiveSheet.howTo),
+              ),
+              VerticalDivider(width: 1, color: AppTheme.borderGray),
+              Expanded(
+                child: Stack(
+                  children: [
+                    _buildPageStack(),
+                    _buildSheetOverlay(loc),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
@@ -589,5 +625,168 @@ class _AppShellState extends State<AppShell>
       case _ActiveSheet.none:
         return const SizedBox.shrink();
     }
+  }
+}
+
+class _DesktopSidebar extends StatelessWidget {
+  final String? activeItem;
+  final VoidCallback onHomeTap;
+  final VoidCallback onConnectorTap;
+  final VoidCallback onProfileTap;
+  final AppFeature navLeftFeature;
+  final AppFeature navRightFeature;
+  final VoidCallback? onNavLeftTap;
+  final VoidCallback? onNavRightTap;
+  final bool navLeftActive;
+  final bool navRightActive;
+  final VoidCallback onHelpTap;
+  final VoidCallback onHowToTap;
+
+  const _DesktopSidebar({
+    required this.activeItem,
+    required this.onHomeTap,
+    required this.onConnectorTap,
+    required this.onProfileTap,
+    required this.navLeftFeature,
+    required this.navRightFeature,
+    required this.onNavLeftTap,
+    required this.onNavRightTap,
+    required this.navLeftActive,
+    required this.navRightActive,
+    required this.onHelpTap,
+    required this.onHowToTap,
+  });
+
+  static FaIconData _iconFor(AppFeature f) => switch (f) {
+    AppFeature.connector => FontAwesomeIcons.play,
+    AppFeature.skins => FontAwesomeIcons.shirt,
+    AppFeature.wiki => FontAwesomeIcons.bookOpen,
+    AppFeature.partners => FontAwesomeIcons.server,
+    AppFeature.lookup => FontAwesomeIcons.magnifyingGlass,
+    AppFeature.tracker => FontAwesomeIcons.satellite,
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+    return Container(
+      width: 200,
+      color: Colors.transparent,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 10, 10, 8),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.asset(
+                'assets/images/logo.png',
+                width: double.infinity,
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+          const SizedBox(height: 4),
+          _SidebarItem(
+            icon: FontAwesomeIcons.house,
+            label: l.home,
+            isActive: activeItem == 'home',
+            onTap: onHomeTap,
+          ),
+          _SidebarItem(
+            icon: FontAwesomeIcons.play,
+            label: 'Connector',
+            isActive: activeItem == 'connector',
+            onTap: onConnectorTap,
+          ),
+          _SidebarItem(
+            icon: _iconFor(navLeftFeature),
+            label: navLeftFeature.label(l),
+            isActive: navLeftActive,
+            onTap: onNavLeftTap,
+          ),
+          _SidebarItem(
+            icon: _iconFor(navRightFeature),
+            label: navRightFeature.label(l),
+            isActive: navRightActive,
+            onTap: onNavRightTap,
+          ),
+          _SidebarItem(
+            icon: FontAwesomeIcons.user,
+            label: l.navProfile,
+            isActive: activeItem == 'profile',
+            onTap: onProfileTap,
+          ),
+          const Spacer(),
+          Divider(color: AppTheme.borderGray, height: 1),
+          const SizedBox(height: 8),
+          _SidebarItem(
+            icon: FontAwesomeIcons.circleQuestion,
+            label: l.support,
+            isActive: false,
+            onTap: onHelpTap,
+          ),
+          _SidebarItem(
+            icon: FontAwesomeIcons.bookOpen,
+            label: l.howToUseMenu,
+            isActive: false,
+            onTap: onHowToTap,
+          ),
+          const SizedBox(height: 16),
+        ],
+      ),
+    );
+  }
+}
+
+class _SidebarItem extends StatelessWidget {
+  final FaIconData icon;
+  final String label;
+  final bool isActive;
+  final VoidCallback? onTap;
+
+  const _SidebarItem({
+    required this.icon,
+    required this.label,
+    required this.isActive,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final color = isActive ? AppTheme.brand : AppTheme.textMuted;
+    return GestureDetector(
+      onTap: onTap,
+      behavior: HitTestBehavior.opaque,
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
+        decoration: BoxDecoration(
+          color: isActive ? AppTheme.brand.withValues(alpha: 0.13) : Colors.transparent,
+          borderRadius: BorderRadius.circular(8),
+          border: isActive
+              ? Border.all(color: AppTheme.brand.withValues(alpha: 0.25), width: 0.8)
+              : null,
+        ),
+        child: Row(
+          children: [
+            FaIcon(icon, size: 14, color: color),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                label,
+                style: TextStyle(
+                  color: color,
+                  fontSize: 13,
+                  fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
+                  letterSpacing: -0.1,
+                ),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

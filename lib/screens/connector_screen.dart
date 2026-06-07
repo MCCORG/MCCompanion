@@ -17,6 +17,7 @@ import '../widgets/components/app_toast.dart';
 import '../services/region_detector.dart';
 import '../network/broadcast_mode.dart';
 import '../services/navigation_controller.dart';
+import '../services/review_service.dart';
 import '../services/user_service.dart';
 import '../services/auth_service.dart';
 import '../models/user_model.dart';
@@ -264,6 +265,9 @@ class HomeScreenState extends State<HomeScreen> {
       authToken: authToken,
     );
     _broadcastingNotifier.value = success;
+    if (success) {
+      unawaited(ReviewService.instance.onSuccessfulConnection());
+    }
   }
 
   Future<void> _stopBroadcast() async {

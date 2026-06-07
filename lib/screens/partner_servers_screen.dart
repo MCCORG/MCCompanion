@@ -42,7 +42,7 @@ class _PartnerServersScreenState extends State<PartnerServersScreen> {
                 child: Row(
                   children: [
                     IconButton(
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.arrow_back_rounded,
                         color: AppTheme.textPrimary,
                       ),
@@ -50,7 +50,7 @@ class _PartnerServersScreenState extends State<PartnerServersScreen> {
                     ),
                     Text(
                       AppLocalizations.of(context)!.partnerServersTitle,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: AppTheme.textPrimary,
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
@@ -69,7 +69,7 @@ class _PartnerServersScreenState extends State<PartnerServersScreen> {
             future: widget.partnerServersFuture,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
+                return Center(
                   child: SizedBox(
                     width: 24,
                     height: 24,
@@ -94,7 +94,7 @@ class _PartnerServersScreenState extends State<PartnerServersScreen> {
                           borderRadius: BorderRadius.circular(14),
                           border: Border.all(color: AppTheme.borderGray),
                         ),
-                        child: const Icon(
+                        child: Icon(
                           Icons.handshake_outlined,
                           size: 24,
                           color: AppTheme.textMuted,
@@ -103,7 +103,7 @@ class _PartnerServersScreenState extends State<PartnerServersScreen> {
                       const SizedBox(height: 14),
                       Text(
                         AppLocalizations.of(context)!.noPartnerServers,
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: AppTheme.textSecondary,
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
@@ -112,7 +112,7 @@ class _PartnerServersScreenState extends State<PartnerServersScreen> {
                       const SizedBox(height: 4),
                       Text(
                         AppLocalizations.of(context)!.checkBackLater,
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: AppTheme.textMuted,
                           fontSize: 12,
                         ),

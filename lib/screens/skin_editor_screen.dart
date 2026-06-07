@@ -398,7 +398,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
       context: context,
       builder: (_) => AlertDialog(
         backgroundColor: AppTheme.surface,
-        title: const Text(
+        title: Text(
           'Save Skin',
           style: TextStyle(
             color: AppTheme.textPrimary,
@@ -409,10 +409,10 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
         content: TextField(
           controller: nameCtrl,
           autofocus: true,
-          style: const TextStyle(color: AppTheme.textPrimary),
+          style: TextStyle(color: AppTheme.textPrimary),
           decoration: InputDecoration(
             hintText: 'Skin name',
-            hintStyle: const TextStyle(color: AppTheme.textMuted),
+            hintStyle: TextStyle(color: AppTheme.textMuted),
             filled: true,
             fillColor: AppTheme.background,
             border: OutlineInputBorder(
@@ -432,7 +432,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text(
+            child: Text(
               'Cancel',
               style: TextStyle(color: AppTheme.textMuted),
             ),
@@ -538,7 +538,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
         backgroundColor: AppTheme.surface,
         foregroundColor: AppTheme.textPrimary,
         elevation: 0,
-        title: const Text(
+        title: Text(
           'Skin Editor',
           style: TextStyle(
             fontSize: 16,
@@ -546,7 +546,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
             color: AppTheme.textPrimary,
           ),
         ),
-        iconTheme: const IconThemeData(color: AppTheme.textPrimary),
+        iconTheme: IconThemeData(color: AppTheme.textPrimary),
         actions: [
           IconButton(
             onPressed: _undoStack.isNotEmpty ? _undo : null,
@@ -1237,7 +1237,7 @@ class _ColorPickerSheetState extends State<_ColorPickerSheet> {
               borderRadius: BorderRadius.circular(4),
             ),
           ),
-          const Text(
+          Text(
             'Custom Colour',
             style: TextStyle(
               color: AppTheme.textPrimary,
@@ -1261,14 +1261,14 @@ class _ColorPickerSheetState extends State<_ColorPickerSheet> {
               Expanded(
                 child: TextField(
                   controller: _hexCtrl,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textPrimary,
                     fontSize: 14,
                     fontFamily: 'monospace',
                   ),
                   decoration: InputDecoration(
                     labelText: 'Hex',
-                    labelStyle: const TextStyle(
+                    labelStyle: TextStyle(
                       color: AppTheme.textMuted,
                       fontSize: 12,
                     ),
@@ -1388,7 +1388,7 @@ class _Slider extends StatelessWidget {
           width: 14,
           child: Text(
             label,
-            style: const TextStyle(
+            style: TextStyle(
               color: AppTheme.textMuted,
               fontSize: 11,
               fontWeight: FontWeight.w700,
@@ -1414,7 +1414,7 @@ class _Slider extends StatelessWidget {
           width: 28,
           child: Text(
             value.round().toString(),
-            style: const TextStyle(color: AppTheme.textSecondary, fontSize: 11),
+            style: TextStyle(color: AppTheme.textSecondary, fontSize: 11),
             textAlign: TextAlign.right,
           ),
         ),

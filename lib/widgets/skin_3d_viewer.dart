@@ -76,7 +76,7 @@ class _SkinBodyFromUrlState extends State<SkinBodyFromUrl> {
       return SizedBox(
         width: w,
         height: h,
-        child: const Center(
+        child: Center(
           child: Icon(Icons.person, color: AppTheme.textMuted, size: 28),
         ),
       );
@@ -203,7 +203,7 @@ class _Skin3DFromUrlState extends State<Skin3DFromUrl> {
       return SizedBox(
         width: w,
         height: h,
-        child: const Center(
+        child: Center(
           child: Icon(Icons.person, color: AppTheme.textMuted, size: 28),
         ),
       );

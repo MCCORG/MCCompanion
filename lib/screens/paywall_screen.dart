@@ -136,7 +136,7 @@ class _PaywallScreenState extends State<PaywallScreen> {
                   Text(
                     AppLocalizations.of(context)!.serverTrackerTitle,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(color: AppTheme.textPrimary, fontSize: 22, fontWeight: FontWeight.w800),
+                    style: TextStyle(color: AppTheme.textPrimary, fontSize: 22, fontWeight: FontWeight.w800),
                   ),
                   const SizedBox(height: 6),
                   Text(

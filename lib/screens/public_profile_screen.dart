@@ -112,7 +112,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
           title: Text(l.removeFriendDialogTitle),
           content: Text(
             l.removeFriendDialogBody(widget.username),
-            style: const TextStyle(color: AppTheme.textSecondary),
+            style: TextStyle(color: AppTheme.textSecondary),
           ),
           actions: [
             TextButton(
@@ -155,13 +155,13 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
         backgroundColor: AppTheme.surface,
         title: Text(
           _user != null ? '@${_user!.username}' : 'Profile',
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 16,
             fontWeight: FontWeight.w700,
           ),
         ),
-        iconTheme: const IconThemeData(color: AppTheme.textPrimary),
+        iconTheme: IconThemeData(color: AppTheme.textPrimary),
         elevation: 0,
       ),
       bottomNavigationBar: BottomGlassSimpleNavBar(
@@ -197,7 +197,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
           const SizedBox(height: 12),
           Text(
             AppLocalizations.of(context)!.userNotFound,
-            style: const TextStyle(
+            style: TextStyle(
               color: AppTheme.textSecondary,
               fontSize: 15,
               fontWeight: FontWeight.w600,
@@ -226,7 +226,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
                 const SizedBox(height: 14),
                 Text(
                   u.displayLabel,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textPrimary,
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
@@ -235,7 +235,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
                 const SizedBox(height: 4),
                 Text(
                   '@${u.username}',
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textMuted,
                     fontSize: 13,
                   ),
@@ -283,7 +283,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
               label: AppLocalizations.of(ctx)!.aboutSectionLabel,
               child: Text(
                 u.bio!,
-                style: const TextStyle(
+                style: TextStyle(
                   color: AppTheme.textPrimary,
                   fontSize: 13,
                   height: 1.5,
@@ -303,7 +303,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
                 children: [
                   Text(
                     u.xboxGamertag!,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppTheme.textPrimary,
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -313,7 +313,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
                     const SizedBox(height: 4),
                     Text(
                       u.xboxXuid!,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: AppTheme.textMuted,
                         fontSize: 11,
                       ),
@@ -335,7 +335,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
                 children: [
                   Text(
                     u.javaUsername!,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppTheme.textPrimary,
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -345,7 +345,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
                     const SizedBox(height: 4),
                     Text(
                       u.javaUuid!,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: AppTheme.textMuted,
                         fontSize: 11,
                       ),
@@ -519,13 +519,13 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
         backgroundColor: AppTheme.surface,
         title: Text(
           l.findUser,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 16,
             fontWeight: FontWeight.w700,
           ),
         ),
-        iconTheme: const IconThemeData(color: AppTheme.textPrimary),
+        iconTheme: IconThemeData(color: AppTheme.textPrimary),
         elevation: 0,
       ),
       bottomNavigationBar: BottomGlassSimpleNavBar(
@@ -544,10 +544,10 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
               controller: _ctrl,
               autofocus: true,
               autocorrect: false,
-              style: const TextStyle(color: AppTheme.textPrimary),
+              style: TextStyle(color: AppTheme.textPrimary),
               decoration: InputDecoration(
                 hintText: l.userSearchHint,
-                prefixIcon: const Icon(
+                prefixIcon: Icon(
                   Icons.search_rounded,
                   size: 18,
                   color: AppTheme.textMuted,
@@ -598,14 +598,14 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
             const SizedBox(height: 12),
             Text(
               l.userSearchSub,
-              style: const TextStyle(color: AppTheme.textMuted, fontSize: 13),
+              style: TextStyle(color: AppTheme.textMuted, fontSize: 13),
             ),
           ],
         ),
       );
     }
     if (_results.isEmpty) {
-      return const Center(
+      return Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -654,7 +654,7 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                     children: [
                       Text(
                         u.displayLabel,
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: AppTheme.textPrimary,
                           fontWeight: FontWeight.w600,
                           fontSize: 13,
@@ -662,7 +662,7 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                       ),
                       Text(
                         '@${u.username}',
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: AppTheme.textMuted,
                           fontSize: 11,
                         ),
@@ -710,7 +710,7 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
                     ],
                   ),
                 ),
-                const Icon(
+                Icon(
                   Icons.chevron_right_rounded,
                   color: AppTheme.textMuted,
                   size: 18,
@@ -761,7 +761,7 @@ class _PublicSkinsSection extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Icon(
+              Icon(
                 Icons.checkroom_rounded,
                 size: 14,
                 color: AppTheme.textMuted,
@@ -769,7 +769,7 @@ class _PublicSkinsSection extends StatelessWidget {
               const SizedBox(width: 6),
               Text(
                 all.length == 1 ? 'SKIN' : 'SKINS',
-                style: const TextStyle(
+                style: TextStyle(
                   color: AppTheme.textMuted,
                   fontSize: 11,
                   fontWeight: FontWeight.w600,
@@ -899,7 +899,7 @@ class _JavaPublicSkinState extends State<_JavaPublicSkin> {
                   )
                 : _textureUrl != null
                 ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 136)
-                : const Icon(
+                : Icon(
                     Icons.person_rounded,
                     color: AppTheme.textMuted,
                     size: 36,
@@ -909,7 +909,7 @@ class _JavaPublicSkinState extends State<_JavaPublicSkin> {
         const SizedBox(height: 8),
         Text(
           widget.username,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 12,
             fontWeight: FontWeight.w600,
@@ -1022,7 +1022,7 @@ class _BedrockPublicSkinState extends State<_BedrockPublicSkin> {
                   )
                 : _textureUrl != null
                 ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 136)
-                : const Icon(
+                : Icon(
                     Icons.person_rounded,
                     color: AppTheme.textMuted,
                     size: 36,
@@ -1032,7 +1032,7 @@ class _BedrockPublicSkinState extends State<_BedrockPublicSkin> {
         const SizedBox(height: 8),
         Text(
           widget.gamertag,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 12,
             fontWeight: FontWeight.w600,
@@ -1093,13 +1093,13 @@ class _ProfileRow extends StatelessWidget {
           width: 110,
           child: Text(
             label,
-            style: const TextStyle(color: AppTheme.textMuted, fontSize: 12),
+            style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
           ),
         ),
         Expanded(
           child: Text(
             value,
-            style: const TextStyle(color: AppTheme.textPrimary, fontSize: 13),
+            style: TextStyle(color: AppTheme.textPrimary, fontSize: 13),
           ),
         ),
       ],
@@ -1189,7 +1189,7 @@ class _InfoCard extends StatelessWidget {
               const SizedBox(width: 6),
               Text(
                 label,
-                style: const TextStyle(
+                style: TextStyle(
                   color: AppTheme.textMuted,
                   fontSize: 11,
                   fontWeight: FontWeight.w600,

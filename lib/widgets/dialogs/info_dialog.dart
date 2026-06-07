@@ -82,7 +82,7 @@ class _InfoContent extends StatelessWidget {
                 Expanded(
                   child: Text(
                     title,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppTheme.textPrimary,
                       fontSize: 17,
                       fontWeight: FontWeight.w700,
@@ -99,7 +99,7 @@ class _InfoContent extends StatelessWidget {
                       shape: BoxShape.circle,
                       border: Border.all(color: AppTheme.borderGray),
                     ),
-                    child: const Icon(
+                    child: Icon(
                       Icons.close_rounded,
                       color: AppTheme.textSecondary,
                       size: 16,
@@ -117,7 +117,7 @@ class _InfoContent extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(22, 18, 22, 8),
               child: Text(
                 content,
-                style: const TextStyle(
+                style: TextStyle(
                   color: AppTheme.textSecondary,
                   fontSize: 14,
                   height: 1.7,

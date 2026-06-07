@@ -119,7 +119,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: Text(
           AppLocalizations.of(context)!.removeServerTitle,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 16,
             fontWeight: FontWeight.w600,
@@ -127,14 +127,14 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
         ),
         content: Text(
           AppLocalizations.of(context)!.removeServerConfirm(server.name),
-          style: const TextStyle(color: AppTheme.textMuted, fontSize: 14),
+          style: TextStyle(color: AppTheme.textMuted, fontSize: 14),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
             child: Text(
               AppLocalizations.of(context)!.cancel,
-              style: const TextStyle(color: AppTheme.textMuted),
+              style: TextStyle(color: AppTheme.textMuted),
             ),
           ),
           TextButton(
@@ -218,7 +218,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
           child: Row(
             children: [
               IconButton(
-                icon: const Icon(
+                icon: Icon(
                   Icons.arrow_back_ios_rounded,
                   color: AppTheme.textSecondary,
                   size: 18,
@@ -228,7 +228,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
               Expanded(
                 child: Text(
                   AppLocalizations.of(context)!.serverTrackerTitle,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppTheme.textPrimary,
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -264,7 +264,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
                         ),
                       )
                     : IconButton(
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.refresh_rounded,
                           color: AppTheme.textSecondary,
                           size: 20,
@@ -405,7 +405,7 @@ class _NotLoggedIn extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(
+            Icon(
               Icons.lock_outline_rounded,
               color: AppTheme.textMuted,
               size: 52,
@@ -413,7 +413,7 @@ class _NotLoggedIn extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               AppLocalizations.of(context)!.trackerSignInRequired,
-              style: const TextStyle(
+              style: TextStyle(
                 color: AppTheme.textPrimary,
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
@@ -423,7 +423,7 @@ class _NotLoggedIn extends StatelessWidget {
             Text(
               AppLocalizations.of(context)!.trackerSignInSubtitle,
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style: TextStyle(
                 color: AppTheme.textMuted,
                 fontSize: 13,
                 height: 1.5,
@@ -470,7 +470,7 @@ class _EmptyState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(
+            Icon(
               Icons.radar_rounded,
               color: AppTheme.textMuted,
               size: 52,
@@ -478,7 +478,7 @@ class _EmptyState extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               AppLocalizations.of(context)!.noServersTracked,
-              style: const TextStyle(
+              style: TextStyle(
                 color: AppTheme.textPrimary,
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
@@ -488,7 +488,7 @@ class _EmptyState extends StatelessWidget {
             Text(
               AppLocalizations.of(context)!.trackerEmptySubtitle,
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style: TextStyle(
                 color: AppTheme.textMuted,
                 fontSize: 13,
                 height: 1.5,
@@ -603,7 +603,7 @@ class _AddServerSheetState extends State<_AddServerSheet> {
             children: [
               Text(
                 AppLocalizations.of(context)!.addServer,
-                style: const TextStyle(
+                style: TextStyle(
                   color: AppTheme.textPrimary,
                   fontSize: 17,
                   fontWeight: FontWeight.w700,
@@ -611,7 +611,7 @@ class _AddServerSheetState extends State<_AddServerSheet> {
               ),
               const Spacer(),
               IconButton(
-                icon: const Icon(
+                icon: Icon(
                   Icons.close_rounded,
                   color: AppTheme.textMuted,
                 ),
@@ -641,7 +641,7 @@ class _AddServerSheetState extends State<_AddServerSheet> {
           const SizedBox(height: 12),
           Text(
             AppLocalizations.of(context)!.platformLabel,
-            style: const TextStyle(
+            style: TextStyle(
               color: AppTheme.textMuted,
               fontSize: 12,
               fontWeight: FontWeight.w600,
@@ -725,7 +725,7 @@ class _Field extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppTheme.textMuted,
             fontSize: 12,
             fontWeight: FontWeight.w600,
@@ -735,7 +735,7 @@ class _Field extends StatelessWidget {
         TextField(
           controller: controller,
           keyboardType: keyboard,
-          style: const TextStyle(color: AppTheme.textPrimary, fontSize: 14),
+          style: TextStyle(color: AppTheme.textPrimary, fontSize: 14),
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: const TextStyle(color: AppTheme.textDisabled),
