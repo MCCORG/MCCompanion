@@ -620,22 +620,24 @@ class SkinsScreenState extends State<SkinsScreen> {
             },
           )
         else if (isSingle)
-          if (javaAccounts.isNotEmpty)
-            _JavaSkinCard(
-              username: javaAccounts.first.javaUsername,
-              javaUuid: javaAccounts.first.javaUuid,
-              badge: 'Java',
-              badgeColor: const Color(0xFF42A5F5),
-              onEdit: _openEditor,
-            )
-          else
-            _BedrockSkinCard(
-              gamertag:
-                  bedrockAccounts.first.xboxGamertag ??
-                  bedrockAccounts.first.xboxXuid,
-              xuid: bedrockAccounts.first.xboxXuid,
-              onEdit: _openEditor,
-            )
+          SizedBox(
+            height: 210,
+            child: javaAccounts.isNotEmpty
+                ? _JavaSkinCard(
+                    username: javaAccounts.first.javaUsername,
+                    javaUuid: javaAccounts.first.javaUuid,
+                    badge: 'Java',
+                    badgeColor: const Color(0xFF42A5F5),
+                    onEdit: _openEditor,
+                  )
+                : _BedrockSkinCard(
+                    gamertag:
+                        bedrockAccounts.first.xboxGamertag ??
+                        bedrockAccounts.first.xboxXuid,
+                    xuid: bedrockAccounts.first.xboxXuid,
+                    onEdit: _openEditor,
+                  ),
+          )
         else
           SizedBox(
             height: 210,
