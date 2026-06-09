@@ -572,7 +572,7 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
   String? _error;
   bool _isRegisterMode = false;
 
-  bool get _supportsGoogle => !Platform.isWindows;
+  bool get _supportsGoogle => true;
   bool get _supportsApple => Platform.isIOS || Platform.isMacOS;
 
   @override
@@ -1003,9 +1003,7 @@ class _NotLoggedInViewState extends State<_NotLoggedInView> {
                               ),
                               const SizedBox(width: 10),
                               Text(
-                                AppLocalizations.of(
-                                  context,
-                                )!.continueWithGoogle,
+                                AppLocalizations.of(context)!.continueWithGoogle,
                                 style: TextStyle(
                                   color: AppTheme.textPrimary,
                                   fontWeight: FontWeight.w600,
