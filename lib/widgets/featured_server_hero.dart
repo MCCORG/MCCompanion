@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../util/partners_servers.dart';
 import '../services/server_status_service.dart';
+import '../services/theme_service.dart';
 import '../widgets/components/app_painters.dart';
 import '../widgets/components/app_toast.dart';
 
@@ -70,6 +71,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
   void initState() {
     super.initState();
     _heroBgController = PageController();
+    ThemeService.instance.addListener(_onThemeChanged);
     widget.partnerServersFuture?.then((list) {
       if (!mounted || list.isEmpty) return;
       final featured = list.where((s) => s.featured).toList();
@@ -78,8 +80,11 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
     });
   }
 
+  void _onThemeChanged() => setState(() {});
+
   @override
   void dispose() {
+    ThemeService.instance.removeListener(_onThemeChanged);
     _heroBgController.dispose();
     _heroTimer?.cancel();
     super.dispose();
@@ -145,21 +150,24 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                                     const SizedBox.shrink(),
                               ),
                             ),
-                            Container(
-                              decoration: const BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,
-                                  stops: [0.0, 0.45, 0.72, 1.0],
-                                  colors: [
-                                    Color(0xFF0D0B1E),
-                                    Color(0xEE0D0B1E),
-                                    Color(0x660D0B1E),
-                                    Colors.transparent,
-                                  ],
+                            Builder(builder: (context) {
+                              final bg = ThemeService.instance.background;
+                              return Container(
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    begin: Alignment.centerLeft,
+                                    end: Alignment.centerRight,
+                                    stops: const [0.0, 0.45, 0.72, 1.0],
+                                    colors: [
+                                      bg.withValues(alpha: 1.0),
+                                      bg.withValues(alpha: 0.93),
+                                      bg.withValues(alpha: 0.40),
+                                      Colors.transparent,
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ),
+                              );
+                            }),
                           ],
                         );
                       }
@@ -237,11 +245,11 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                           children: [
                             Text(
                               server?.name ?? 'MCCompanion',
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 26,
                                 fontWeight: FontWeight.w800,
                                 height: 1.2,
-                                color: Colors.white,
+                                color: ThemeService.instance.textPrimary,
                               ),
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
@@ -254,7 +262,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                                     ? server!.description
                                     : 'Connect and start your adventure.',
                                 style: TextStyle(
-                                  color: Colors.white.withValues(alpha: 0.60),
+                                  color: ThemeService.instance.textPrimary.withValues(alpha: 0.60),
                                   fontSize: 11,
                                   height: 1.5,
                                 ),
@@ -314,7 +322,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                               Text(
                                 'Play',
                                 style: TextStyle(
-                                  color: Colors.white.withValues(alpha: 
+                                  color: ThemeService.instance.textPrimary.withValues(alpha:
                                     server == null || broadcasting ? 0.35 : 1.0,
                                   ),
                                   fontSize: 14,
@@ -324,7 +332,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                               const SizedBox(width: 6),
                               Icon(
                                 Icons.play_arrow_rounded,
-                                color: Colors.white.withValues(alpha: 
+                                color: ThemeService.instance.textPrimary.withValues(alpha:
                                   server == null || broadcasting ? 0.35 : 1.0,
                                 ),
                                 size: 16,
@@ -344,15 +352,20 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
     );
   }
 
-  Widget _defaultHeroBg() => Container(
-    decoration: const BoxDecoration(
-      gradient: LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [Color(0xFF0D0D28), Color(0xFF16113A), Color(0xFF0A1830)],
+  Widget _defaultHeroBg() {
+    final bg = ThemeService.instance.background;
+    final bgLight = Color.lerp(bg, Colors.white, 0.06)!;
+    final bgMid = Color.lerp(bg, Colors.black, 0.10)!;
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [bg, bgLight, bgMid],
+        ),
       ),
-    ),
-  );
+    );
+  }
 
   Widget _heroBadge({required IconData icon, required String label}) {
     return Container(
@@ -369,8 +382,8 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
           const SizedBox(width: 5),
           Text(
             label,
-            style: const TextStyle(
-              color: Colors.white,
+            style: TextStyle(
+              color: ThemeService.instance.textPrimary,
               fontSize: 10,
               fontWeight: FontWeight.w700,
               letterSpacing: 1.2,

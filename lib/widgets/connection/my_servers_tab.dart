@@ -34,7 +34,6 @@ class _MyServersTabState extends State<MyServersTab> {
 
     return ListView.builder(
       padding: EdgeInsets.zero,
-      shrinkWrap: true,
       physics: const ClampingScrollPhysics(),
       itemCount: widget.savedServers.length,
       itemBuilder: (context, i) {

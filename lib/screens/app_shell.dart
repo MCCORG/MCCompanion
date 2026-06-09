@@ -38,8 +38,7 @@ import '../services/subscription_service.dart';
 import '../services/home_customization_service.dart';
 import '../services/theme_service.dart';
 import '../theme/app_theme.dart';
-
-enum _ActiveSheet { none, help, howTo, more, info }
+import 'package:flutter/services.dart';
 
 const int _pageHome = 0;
 const int _pageConnector = 1;
@@ -60,8 +59,7 @@ class AppShell extends StatefulWidget {
   State<AppShell> createState() => _AppShellState();
 }
 
-class _AppShellState extends State<AppShell>
-    with SingleTickerProviderStateMixin {
+class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   late final NavigationController navigationController;
   late final Future<List<FeaturedServer>> _partnerServersFuture;
   late final Logger logger;
@@ -84,26 +82,14 @@ class _AppShellState extends State<AppShell>
   int _pageIndex = _pageHome;
   int? _editingServerIndex;
 
-  _ActiveSheet _activeSheet = _ActiveSheet.none;
-  late final AnimationController _sheetAnimController;
-  late final Animation<double> _sheetAnim;
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _selectedRelay = widget.initialRelay ?? _fallbackRelay();
     RelayService.setRelay(_selectedRelay);
     _partnerServersFuture = FeaturedServersService.fetchFeaturedServers();
-
-    _sheetAnimController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 280),
-    );
-    _sheetAnim = CurvedAnimation(
-      parent: _sheetAnimController,
-      curve: Curves.easeOutCubic,
-      reverseCurve: Curves.easeInCubic,
-    );
 
     logger = Logger(debugEnabled: false, logCallback: (_) {});
     _initNavigationController();
@@ -130,6 +116,20 @@ class _AppShellState extends State<AppShell>
     if (mounted) setState(() {});
   }
 
+  void _toggleDebug() {
+    _connectorKey.currentState?.toggleDebug();
+  }
+
+  void _clearLogs() {
+    _logsNotifier.value = [];
+  }
+
+  Future<void> _copyLogs() async {
+    final logs = _logsNotifier.value;
+    if (logs.isEmpty) return;
+    await Clipboard.setData(ClipboardData(text: logs.join('\n')));
+  }
+
   RelayPingResult _fallbackRelay() {
     final first = AppConstants.relayServers[0];
     return RelayPingResult(
@@ -148,30 +148,96 @@ class _AppShellState extends State<AppShell>
       logsNotifier: _logsNotifier,
       logsScrollController: _logScrollController,
       debugEnabledNotifier: _debugEnabledNotifier,
-      showHowToMenuCallback: (_) => _openSheet(_ActiveSheet.howTo),
-      showHelpMenuCallback: (_) => _openSheet(_ActiveSheet.help),
+      toggleDebugCallback: _toggleDebug,
+      clearLogsCallback: _clearLogs,
+      copyLogsCallback: _copyLogs,
+      showHowToMenuCallback: (_) => _showHowToSheet(),
+      showHelpMenuCallback: (_) => _showHelpSheet(),
     );
   }
 
-  void _openSheet(_ActiveSheet sheet) {
-    if (_activeSheet == sheet) {
-      _closeSheet();
-      return;
-    }
-    setState(() => _activeSheet = sheet);
-    _sheetAnimController.forward(from: 0);
+  Future<T?> _showSheet<T>(Widget content) {
+    return showModalBottomSheet<T>(
+      context: context,
+      isScrollControlled: true,
+      enableDrag: true,
+      useRootNavigator: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => content,
+    );
   }
 
-  Future<void> _closeSheet() async {
-    if (_activeSheet == _ActiveSheet.none) return;
-    await _sheetAnimController.reverse();
-    if (mounted) setState(() => _activeSheet = _ActiveSheet.none);
+  void _showHowToSheet() {
+    final loc = AppLocalizations.of(context)!;
+    _showSheet(HowToSheetContent(
+      loc: loc,
+      onClose: () => Navigator.of(context).pop(),
+      onXbox: () {
+        Navigator.of(context).pop();
+        HowToDialogs.showXboxInstructions(context);
+      },
+      onNintendo: () {
+        Navigator.of(context).pop();
+        HowToDialogs.showNintendoInstructions(
+          context,
+          relayName: _selectedRelay.name,
+          relayIp: _selectedRelay.ip,
+        );
+      },
+      onFriends: () {
+        Navigator.of(context).pop();
+        HowToDialogs.showFriendsInstructions(
+          context,
+          userRegion: _selectedRelay.name.toLowerCase().contains('eu') ? 'eu' : 'us',
+        );
+      },
+      onJava: () {
+        Navigator.of(context).pop();
+        HowToDialogs.showJavaInstructions(context);
+      },
+    ));
   }
 
-  void _closeSheetInstant() {
-    _sheetAnimController.stop();
-    _sheetAnimController.value = 0;
-    setState(() => _activeSheet = _ActiveSheet.none);
+  void _showHelpSheet() {
+    final loc = AppLocalizations.of(context)!;
+    _showSheet(HelpSheetContent(
+      loc: loc,
+      onClose: () => Navigator.of(context).pop(),
+      onMCCompanion: () {
+        Navigator.of(context).pop();
+        HelpDialogs.showMCCompanionNotAppearing(context);
+      },
+      onMultiplayerFailed: () {
+        Navigator.of(context).pop();
+        HelpDialogs.showMultiplayerConnectionFailed(context);
+      },
+      onNintendoDns: () {
+        Navigator.of(context).pop();
+        HelpDialogs.showNintendoDns(context);
+      },
+      onFriendsMode: () {
+        Navigator.of(context).pop();
+        HelpDialogs.showFriendsMode(context);
+      },
+    ));
+  }
+
+  void _showInfoSheet() {
+    _showSheet(InfoSheetContent(onClose: () => Navigator.of(context).pop()));
+  }
+
+  void _showMoreSheet() {
+    final loc = AppLocalizations.of(context)!;
+    _showSheet(MoreSheetContent(
+      loc: loc,
+      navigationController: navigationController,
+      selectedRelayIp: _selectedRelay.ip,
+      onClose: () => Navigator.of(context).pop(),
+      onRelayChanged: (ip) {
+        Navigator.of(context).pop();
+        _onRelayChanged(ip);
+      },
+    ));
   }
 
   void _handleNotificationTap(RemoteMessage message) {
@@ -215,7 +281,6 @@ class _AppShellState extends State<AppShell>
   }
 
   void _goTo(int page) {
-    _closeSheetInstant();
     if (page == _pageConnector) {
       _connectorKey.currentState?.loadUserServers();
     }
@@ -280,7 +345,7 @@ class _AppShellState extends State<AppShell>
   String? get _activeNavItem {
     switch (_pageIndex) {
       case _pageHome:
-        return _activeSheet == _ActiveSheet.none ? 'home' : null;
+        return 'home';
       case _pageConnector:
         return 'connector';
       case _pageSkins:
@@ -294,13 +359,10 @@ class _AppShellState extends State<AppShell>
     }
   }
 
-  bool get _canPop =>
-      _pageIndex == _pageHome && _activeSheet == _ActiveSheet.none;
+  bool get _canPop => _pageIndex == _pageHome;
 
   void _handlePop() {
-    if (_activeSheet != _ActiveSheet.none) {
-      _closeSheet();
-    } else if (_pageIndex == _pageAddEditServer) {
+    if (_pageIndex == _pageAddEditServer) {
       setState(() => _pageIndex = _pageManageServers);
     } else if (_pageIndex == _pagePlayerLookup) {
       _goTo(_pageHome);
@@ -318,9 +380,9 @@ class _AppShellState extends State<AppShell>
   void dispose() {
     HomeCustomizationService.instance.removeListener(_onCustomizationChanged);
     ThemeService.instance.removeListener(_onCustomizationChanged);
+    WidgetsBinding.instance.removeObserver(this);
     _authSub?.cancel();
     MessageService.disconnect();
-    _sheetAnimController.dispose();
     _logScrollController.dispose();
     _logsNotifier.dispose();
     _debugEnabledNotifier.dispose();
@@ -328,6 +390,14 @@ class _AppShellState extends State<AppShell>
     _portController.dispose();
     navigationController.consoleOpen.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed &&
+        AuthService.currentUser != null) {
+      MessageService.reconnectIfNeeded();
+    }
   }
 
   bool get _isDesktop =>
@@ -375,7 +445,7 @@ class _AppShellState extends State<AppShell>
           onWebsiteTap: () => navigationController.openWebsite(context),
           onDiscordTap: () => navigationController.openDiscord(context),
           onLanguageTap: () => navigationController.showLanguageDialog(context),
-          onInfoTap: () => _openSheet(_ActiveSheet.info),
+          onInfoTap: () => _showInfoSheet(),
           partnerServersFuture: _partnerServersFuture,
           onPlayServer: (ip, port) {
             _ipController.text = ip;
@@ -391,9 +461,9 @@ class _AppShellState extends State<AppShell>
           partnerServersFuture: _partnerServersFuture,
           onOpenPartnerServers: () => _goTo(_pagePartners),
           onOpenManageServers: _openManageServers,
-          onOpenMore: () => _openSheet(_ActiveSheet.more),
-          onOpenSupport: () => _openSheet(_ActiveSheet.help),
-          onOpenHowTo: () => _openSheet(_ActiveSheet.howTo),
+          onOpenMore: () => _showMoreSheet(),
+          onOpenSupport: () => _showHelpSheet(),
+          onOpenHowTo: () => _showHowToSheet(),
           onOpenConsole: () => navigationController.showConsole(context),
           ipController: _ipController,
           portController: _portController,
@@ -446,32 +516,6 @@ class _AppShellState extends State<AppShell>
     );
   }
 
-  Widget _buildSheetOverlay(AppLocalizations loc) {
-    if (_activeSheet == _ActiveSheet.none) return const SizedBox.shrink();
-    return Stack(
-      children: [
-        AnimatedBuilder(
-          animation: _sheetAnim,
-          builder: (_, __) => GestureDetector(
-            onTap: _closeSheet,
-            child: Container(color: Colors.black.withValues(alpha: 0.45 * _sheetAnim.value)),
-          ),
-        ),
-        Positioned(
-          left: 0, right: 0, bottom: 0,
-          child: AnimatedBuilder(
-            animation: _sheetAnim,
-            builder: (_, child) => FractionalTranslation(
-              translation: Offset(0, 1 - _sheetAnim.value),
-              child: child,
-            ),
-            child: _buildActiveSheetContent(loc),
-          ),
-        ),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
@@ -510,10 +554,7 @@ class _AppShellState extends State<AppShell>
           ),
           body: SafeArea(
             top: true, bottom: false,
-            child: Stack(children: [
-              _buildPageStack(),
-              _buildSheetOverlay(loc),
-            ]),
+            child: _buildPageStack(),
           ),
         ),
       ],
@@ -539,18 +580,11 @@ class _AppShellState extends State<AppShell>
                 onNavRightTap: _navCallbackFor(svc.navRight),
                 navLeftActive: _isNavFeatureActive(svc.navLeft),
                 navRightActive: _isNavFeatureActive(svc.navRight),
-                onHelpTap: () => _openSheet(_ActiveSheet.help),
-                onHowToTap: () => _openSheet(_ActiveSheet.howTo),
+                onHelpTap: () => _showHelpSheet(),
+                onHowToTap: () => _showHowToSheet(),
               ),
               VerticalDivider(width: 1, color: AppTheme.borderGray),
-              Expanded(
-                child: Stack(
-                  children: [
-                    _buildPageStack(),
-                    _buildSheetOverlay(loc),
-                  ],
-                ),
-              ),
+              Expanded(child: _buildPageStack()),
             ],
           ),
         ),
@@ -558,74 +592,6 @@ class _AppShellState extends State<AppShell>
     );
   }
 
-  Widget _buildActiveSheetContent(AppLocalizations loc) {
-    switch (_activeSheet) {
-      case _ActiveSheet.help:
-        return HelpSheetContent(
-          loc: loc,
-          onClose: _closeSheet,
-          onMCCompanion: () {
-            _closeSheetInstant();
-            HelpDialogs.showMCCompanionNotAppearing(context);
-          },
-          onMultiplayerFailed: () {
-            _closeSheetInstant();
-            HelpDialogs.showMultiplayerConnectionFailed(context);
-          },
-          onNintendoDns: () {
-            _closeSheetInstant();
-            HelpDialogs.showNintendoDns(context);
-          },
-          onFriendsMode: () {
-            _closeSheetInstant();
-            HelpDialogs.showFriendsMode(context);
-          },
-        );
-      case _ActiveSheet.howTo:
-        return HowToSheetContent(
-          loc: loc,
-          onClose: _closeSheet,
-          onXbox: () {
-            _closeSheetInstant();
-            HowToDialogs.showXboxInstructions(context);
-          },
-          onNintendo: () {
-            _closeSheetInstant();
-            HowToDialogs.showNintendoInstructions(
-              context,
-              relayName: _selectedRelay.name,
-              relayIp: _selectedRelay.ip,
-            );
-          },
-          onFriends: () {
-            _closeSheetInstant();
-            HowToDialogs.showFriendsInstructions(
-              context,
-              userRegion: _selectedRelay.name.toLowerCase().contains('eu') ? 'eu' : 'us',
-            );
-          },
-          onJava: () {
-            _closeSheetInstant();
-            HowToDialogs.showJavaInstructions(context);
-          },
-        );
-      case _ActiveSheet.more:
-        return MoreSheetContent(
-          loc: loc,
-          navigationController: navigationController,
-          selectedRelayIp: _selectedRelay.ip,
-          onClose: _closeSheet,
-          onRelayChanged: (ip) {
-            _closeSheetInstant();
-            _onRelayChanged(ip);
-          },
-        );
-      case _ActiveSheet.info:
-        return InfoSheetContent(onClose: _closeSheet);
-      case _ActiveSheet.none:
-        return const SizedBox.shrink();
-    }
-  }
 }
 
 class _DesktopSidebar extends StatelessWidget {

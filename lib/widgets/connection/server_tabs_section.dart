@@ -31,17 +31,19 @@ class _ServerTabsSectionState extends State<ServerTabsSection> {
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
     return Column(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         _buildTabHeader(loc),
         const Divider(height: 1, thickness: 1, color: AppTheme.borderDim),
-        MyServersTab(
-          savedServers: widget.savedServers,
-          ipController: widget.ipController,
-          portController: widget.portController,
-          onServerSelected: widget.onServerSelected,
-          broadcasting: widget.broadcasting,
+        Expanded(
+          child: MyServersTab(
+            savedServers: widget.savedServers,
+            ipController: widget.ipController,
+            portController: widget.portController,
+            onServerSelected: widget.onServerSelected,
+            broadcasting: widget.broadcasting,
+          ),
         ),
       ],
     );

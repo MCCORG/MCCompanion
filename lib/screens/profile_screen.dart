@@ -233,49 +233,41 @@ class ProfileScreenState extends State<ProfileScreen>
           letterSpacing: 0.4,
         ),
         tabs: [
-          Tab(text: l.tabProfile),
-          Tab(text: l.tabFriends),
+          const Tab(icon: Icon(Icons.person_rounded, size: 22)),
+          const Tab(icon: Icon(Icons.people_rounded, size: 22)),
           Tab(
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
+            icon: Stack(
+              clipBehavior: Clip.none,
               children: [
-                Flexible(
-                  child: Text(
-                    l.tabRequests,
-                    style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700, letterSpacing: 0.4),
-                    overflow: TextOverflow.ellipsis,
+                const Icon(Icons.person_add_rounded, size: 22),
+                if (_requests.isNotEmpty)
+                  Positioned(
+                    right: -6,
+                    top: -4,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
+                      decoration: BoxDecoration(color: AppTheme.accent, borderRadius: BorderRadius.circular(10)),
+                      child: Text('${_requests.length}', style: const TextStyle(color: Colors.white, fontSize: 9, fontWeight: FontWeight.w700)),
+                    ),
                   ),
-                ),
-                if (_requests.isNotEmpty) ...[
-                  const SizedBox(width: 4),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-                    decoration: BoxDecoration(color: AppTheme.accent, borderRadius: BorderRadius.circular(10)),
-                    child: Text('${_requests.length}', style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w700)),
-                  ),
-                ],
               ],
             ),
           ),
           Tab(
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
+            icon: Stack(
+              clipBehavior: Clip.none,
               children: [
-                Flexible(
-                  child: Text(
-                    l.tabChats,
-                    style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700, letterSpacing: 0.4),
-                    overflow: TextOverflow.ellipsis,
+                const Icon(Icons.chat_bubble_rounded, size: 22),
+                if (_totalUnread > 0)
+                  Positioned(
+                    right: -6,
+                    top: -4,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
+                      decoration: BoxDecoration(color: AppTheme.error, borderRadius: BorderRadius.circular(10)),
+                      child: Text(_totalUnread > 99 ? '99+' : '$_totalUnread', style: const TextStyle(color: Colors.white, fontSize: 9, fontWeight: FontWeight.w700)),
+                    ),
                   ),
-                ),
-                if (_totalUnread > 0) ...[
-                  const SizedBox(width: 4),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-                    decoration: BoxDecoration(color: AppTheme.error, borderRadius: BorderRadius.circular(10)),
-                    child: Text(_totalUnread > 99 ? '99+' : '$_totalUnread', style: const TextStyle(color: Colors.white, fontSize: 9, fontWeight: FontWeight.w700)),
-                  ),
-                ],
               ],
             ),
           ),

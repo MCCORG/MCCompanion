@@ -48,15 +48,18 @@ class MessageService {
         (raw) {
           try {
             final json = jsonDecode(raw as String) as Map<String, dynamic>;
-            if (json['type'] == 'message') {
+            final type = json['type'] as String?;
+            if (type == 'message') {
               _incoming.add(
                 MessageModel.fromJson(json['data'] as Map<String, dynamic>),
               );
-            } else if (json['type'] == 'presence') {
+            } else if (type == 'presence') {
               _presenceController.add((
                 uid: json['uid'] as String,
                 online: json['online'] as bool,
               ));
+            } else if (type == 'ping') {
+              _channel?.sink.add(jsonEncode({'type': 'pong'}));
             }
           } catch (_) {}
         },
@@ -75,6 +78,15 @@ class MessageService {
     _channel = null;
     _reconnectTimer?.cancel();
     _reconnectTimer = Timer(const Duration(seconds: 5), connect);
+  }
+
+  /// Call this when the app returns to foreground to ensure the connection
+  /// is alive (Android kills WebSockets when backgrounded).
+  static Future<void> reconnectIfNeeded() async {
+    if (!_connected) {
+      _reconnectTimer?.cancel();
+      await connect();
+    }
   }
 
   static void disconnect() {

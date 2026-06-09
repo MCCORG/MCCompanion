@@ -74,13 +74,16 @@ class NavigationController {
     await showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (_) => ConsoleDialog(
-        logsNotifier: logsNotifier,
-        scrollController: logsScrollController,
-        debugEnabled: debugEnabledNotifier.value,
-        onToggleDebug: toggleDebugCallback ?? () {},
-        onClearLogs: clearLogsCallback ?? () {},
-        onCopyLogs: copyLogsCallback ?? () {},
+      builder: (_) => ValueListenableBuilder<bool>(
+        valueListenable: debugEnabledNotifier,
+        builder: (_, debugEnabled, __) => ConsoleDialog(
+          logsNotifier: logsNotifier,
+          scrollController: logsScrollController,
+          debugEnabled: debugEnabled,
+          onToggleDebug: toggleDebugCallback ?? () {},
+          onClearLogs: clearLogsCallback ?? () {},
+          onCopyLogs: copyLogsCallback ?? () {},
+        ),
       ),
     );
     consoleOpen.value = false;

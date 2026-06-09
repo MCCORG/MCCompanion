@@ -100,6 +100,18 @@ class AuthService {
   }
 
   static Future<void> signInWithGoogle() async {
+    if (Platform.isWindows) {
+      final provider = GoogleAuthProvider();
+      final result = await _auth.signInWithProvider(provider);
+      final user = result.user;
+      if (user == null) return;
+      _windowsIdToken = await user.getIdToken();
+      _windowsRefreshToken = null;
+      _windowsTokenExpiry = DateTime.now().add(const Duration(hours: 1));
+      _windowsUser = AuthUser._(uid: user.uid, email: user.email, sdkUser: user);
+      _windowsUserCtrl.add(_windowsUser);
+      return;
+    }
     final googleUser = await _googleSignIn.signIn();
     if (googleUser == null) return;
     final googleAuth = await googleUser.authentication;
@@ -111,6 +123,20 @@ class AuthService {
   }
 
   static Future<void> signInWithApple() async {
+    if (Platform.isWindows) {
+      final provider = OAuthProvider('apple.com')
+        ..addScope('email')
+        ..addScope('name');
+      final result = await _auth.signInWithProvider(provider);
+      final user = result.user;
+      if (user == null) return;
+      _windowsIdToken = await user.getIdToken();
+      _windowsRefreshToken = null;
+      _windowsTokenExpiry = DateTime.now().add(const Duration(hours: 1));
+      _windowsUser = AuthUser._(uid: user.uid, email: user.email, sdkUser: user);
+      _windowsUserCtrl.add(_windowsUser);
+      return;
+    }
     final rawNonce = _generateNonce();
     final nonce = _sha256(rawNonce);
 

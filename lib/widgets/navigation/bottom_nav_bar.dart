@@ -5,6 +5,7 @@ import '../../services/navigation_controller.dart';
 import '../../services/home_customization_service.dart';
 import '../../constants/app_constants.dart';
 import '../../theme/app_theme.dart';
+import '../components/app_sheet.dart';
 
 class BottomGlassSimpleNavBar extends StatelessWidget {
   final NavigationController? navigationController;
@@ -258,34 +259,12 @@ class MoreSheetContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final maxHeight = MediaQuery.of(context).size.height * 0.85;
-
-    return ConstrainedBox(
-      constraints: BoxConstraints(maxHeight: maxHeight),
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppTheme.background,
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-          border: const Border(top: BorderSide(color: AppTheme.borderGray)),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            GestureDetector(
-              onTap: onClose,
-              behavior: HitTestBehavior.opaque,
-              child: Center(
-                child: Container(
-                  width: 36,
-                  height: 4,
-                  margin: const EdgeInsets.symmetric(vertical: 14),
-                  decoration: BoxDecoration(
-                    color: AppTheme.borderLight,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                ),
-              ),
-            ),
+    return AppSheet(
+      onClose: onClose,
+      maxHeightFactor: 0.85,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
               child: Row(
@@ -336,8 +315,7 @@ class MoreSheetContent extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
+      );
   }
 }
 

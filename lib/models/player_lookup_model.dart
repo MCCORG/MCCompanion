@@ -40,6 +40,7 @@ class CombinedProfile {
 class BedrockProfile {
   final String? gamertag;
   final String xuid;
+  final String? skinUrl;
   final int? gamerscore;
   final String? tier;
   final String? gamerpicUrl;
@@ -47,6 +48,7 @@ class BedrockProfile {
   const BedrockProfile({
     this.gamertag,
     required this.xuid,
+    this.skinUrl,
     this.gamerscore,
     this.tier,
     this.gamerpicUrl,
@@ -55,6 +57,7 @@ class BedrockProfile {
   factory BedrockProfile.fromJson(Map<String, dynamic> json) => BedrockProfile(
         gamertag: json['gamertag'] as String?,
         xuid: json['xuid'] as String,
+        skinUrl: json['skinUrl'] as String?,
         gamerscore: json['gamerscore'] as int?,
         tier: json['tier'] as String?,
         gamerpicUrl: json['gamerpicUrl'] as String?,

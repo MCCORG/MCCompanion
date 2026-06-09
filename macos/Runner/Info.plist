@@ -15,7 +15,7 @@
 	<key>CFBundleName</key>
 	<string>MCCompanion</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.5.4</string>
+	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>CFBundlePackageType</key>

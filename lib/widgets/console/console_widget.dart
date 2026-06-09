@@ -1,7 +1,128 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../../l10n/app_localizations.dart';
 import '../../theme/app_theme.dart';
+import '../../services/theme_service.dart';
+
+enum _LogLevel { error, warn, info, debug, plain }
+
+_LogLevel _levelOf(String log) {
+  if (log.contains('[ERROR]')) return _LogLevel.error;
+  if (log.contains('[WARN]'))  return _LogLevel.warn;
+  if (log.contains('[INFO]'))  return _LogLevel.info;
+  if (log.contains('[DEBUG]')) return _LogLevel.debug;
+  return _LogLevel.plain;
+}
+
+Color _levelColor(_LogLevel level) => switch (level) {
+  _LogLevel.error => AppTheme.error,
+  _LogLevel.warn  => AppTheme.warning,
+  _LogLevel.info  => AppTheme.info,
+  _LogLevel.debug => AppTheme.success,
+  _LogLevel.plain => const Color(0xFF8B9099),
+};
+
+String? _levelTag(_LogLevel level) => switch (level) {
+  _LogLevel.error => 'ERR',
+  _LogLevel.warn  => 'WRN',
+  _LogLevel.info  => 'INF',
+  _LogLevel.debug => 'DBG',
+  _LogLevel.plain => null,
+};
+
+class _LogRow extends StatelessWidget {
+  final String log;
+  const _LogRow({required this.log});
+
+  @override
+  Widget build(BuildContext context) {
+    final level = _levelOf(log);
+    final color = _levelColor(level);
+    final tag   = _levelTag(level);
+    final text  = ThemeService.instance.textPrimary;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 3),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (tag != null) ...[
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+              decoration: BoxDecoration(
+                color: color.withValues(alpha: 0.12),
+                borderRadius: BorderRadius.circular(4),
+                border: Border.all(color: color.withValues(alpha: 0.25)),
+              ),
+              child: Text(
+                tag,
+                style: TextStyle(
+                  fontSize: 9,
+                  fontWeight: FontWeight.w800,
+                  color: color,
+                  letterSpacing: 0.5,
+                  fontFamily: 'monospace',
+                ),
+              ),
+            ),
+            const SizedBox(width: 8),
+          ] else ...[
+            Padding(
+              padding: const EdgeInsets.only(top: 7, right: 8),
+              child: Container(
+                width: 3,
+                height: 3,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: color.withValues(alpha: 0.4),
+                ),
+              ),
+            ),
+          ],
+          Expanded(
+            child: Text(
+              log,
+              style: TextStyle(
+                fontFamily: 'monospace',
+                fontSize: 11.5,
+                color: tag != null
+                    ? text.withValues(alpha: 0.85)
+                    : text.withValues(alpha: 0.45),
+                height: 1.55,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _EmptyConsole extends StatelessWidget {
+  final AppLocalizations loc;
+  const _EmptyConsole({required this.loc});
+
+  @override
+  Widget build(BuildContext context) {
+    final text = ThemeService.instance.textPrimary;
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.terminal_rounded, size: 32,
+              color: text.withValues(alpha: 0.08)),
+          const SizedBox(height: 10),
+          Text(loc.noLogsYet,
+              style: TextStyle(
+                  color: text.withValues(alpha: 0.20), fontSize: 13)),
+          const SizedBox(height: 4),
+          Text(loc.startBroadcastingToSeeOutput,
+              style: TextStyle(
+                  color: text.withValues(alpha: 0.10), fontSize: 11)),
+        ],
+      ),
+    );
+  }
+}
 
 class ConsoleWidget extends StatefulWidget {
   final ValueNotifier<List<String>> logsNotifier;
@@ -28,17 +149,11 @@ class ConsoleWidget extends StatefulWidget {
 class _ConsoleWidgetState extends State<ConsoleWidget> {
   bool _expanded = false;
 
-  Color _getLogColor(String log) {
-    if (log.contains('[ERROR]')) return AppTheme.error;
-    if (log.contains('[WARN]')) return AppTheme.warning;
-    if (log.contains('[INFO]')) return AppTheme.info;
-    if (log.contains('[DEBUG]')) return AppTheme.success;
-    return Colors.white.withValues(alpha: 0.5);
-  }
-
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
+    final loc  = AppLocalizations.of(context)!;
+    final bg   = ThemeService.instance.background;
+    final text = ThemeService.instance.textPrimary;
 
     return Center(
       child: ConstrainedBox(
@@ -48,16 +163,16 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
           curve: Curves.easeInOut,
           height: _expanded ? 380 : 52,
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.04),
+            color: Color.lerp(bg, Colors.black, 0.25)!.withValues(alpha: 0.85),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
+            border: Border.all(color: text.withValues(alpha: 0.07)),
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                _buildHeader(loc),
+                _buildHeader(loc, text),
                 if (_expanded) Expanded(child: _buildLogList(loc)),
               ],
             ),
@@ -67,17 +182,15 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
     );
   }
 
-  Widget _buildHeader(AppLocalizations loc) {
+  Widget _buildHeader(AppLocalizations loc, Color text) {
     return GestureDetector(
       onTap: () => setState(() => _expanded = !_expanded),
       child: Container(
         height: 52,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 14),
         decoration: BoxDecoration(
           border: _expanded
-              ? Border(
-                  bottom: BorderSide(color: Colors.white.withValues(alpha: 0.07)),
-                )
+              ? Border(bottom: BorderSide(color: text.withValues(alpha: 0.07)))
               : null,
         ),
         child: Row(
@@ -88,52 +201,43 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
                 color: AppTheme.primaryAccent.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
-                  color: AppTheme.primaryAccent.withValues(alpha: 0.2),
-                ),
+                    color: AppTheme.primaryAccent.withValues(alpha: 0.2)),
               ),
-              child: Icon(
-                Icons.terminal_rounded,
-                color: AppTheme.primaryAccent,
-                size: 14,
-              ),
+              child: Icon(Icons.terminal_rounded,
+                  color: AppTheme.primaryAccent, size: 14),
             ),
             const SizedBox(width: 10),
-
             Expanded(
               child: Text(
                 loc.consoleOutput,
-                style: const TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                ),
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                    color: text.withValues(alpha: 0.9)),
               ),
             ),
 
             if (_expanded)
               ValueListenableBuilder<List<String>>(
                 valueListenable: widget.logsNotifier,
-                builder: (context, logs, _) {
+                builder: (_, logs, __) {
                   if (logs.isEmpty) return const SizedBox.shrink();
                   return Container(
-                    margin: const EdgeInsets.only(right: 10),
+                    margin: const EdgeInsets.only(right: 8),
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 7,
-                      vertical: 2,
-                    ),
+                        horizontal: 7, vertical: 2),
                     decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.06),
+                      color: text.withValues(alpha: 0.06),
                       borderRadius: BorderRadius.circular(6),
-                      border:
-                          Border.all(color: Colors.white.withValues(alpha: 0.08)),
+                      border: Border.all(
+                          color: text.withValues(alpha: 0.08)),
                     ),
                     child: Text(
                       '${logs.length}',
                       style: TextStyle(
-                        fontSize: 10,
-                        color: Colors.white.withValues(alpha: 0.35),
-                        fontWeight: FontWeight.w600,
-                      ),
+                          fontSize: 10,
+                          color: text.withValues(alpha: 0.35),
+                          fontWeight: FontWeight.w600),
                     ),
                   );
                 },
@@ -146,19 +250,19 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
                     : Icons.bug_report_outlined,
                 color: widget.debugEnabled
                     ? AppTheme.success
-                    : Colors.white.withValues(alpha: 0.3),
+                    : text.withValues(alpha: 0.3),
                 tooltip: loc.toggleDebug,
                 onTap: widget.onToggleDebug,
               ),
               _iconBtn(
                 icon: Icons.copy_outlined,
-                color: Colors.white.withValues(alpha: 0.3),
+                color: text.withValues(alpha: 0.3),
                 tooltip: loc.copyLogs,
                 onTap: widget.onCopyLogs,
               ),
               _iconBtn(
                 icon: Icons.delete_outline_rounded,
-                color: Colors.white.withValues(alpha: 0.3),
+                color: text.withValues(alpha: 0.3),
                 tooltip: loc.clear,
                 onTap: widget.onClearLogs,
               ),
@@ -168,11 +272,8 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
             AnimatedRotation(
               turns: _expanded ? 0.5 : 0,
               duration: const Duration(milliseconds: 300),
-              child: Icon(
-                Icons.keyboard_arrow_down_rounded,
-                color: Colors.white.withValues(alpha: 0.3),
-                size: 20,
-              ),
+              child: Icon(Icons.keyboard_arrow_down_rounded,
+                  color: text.withValues(alpha: 0.3), size: 20),
             ),
           ],
         ),
@@ -183,75 +284,13 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
   Widget _buildLogList(AppLocalizations loc) {
     return ValueListenableBuilder<List<String>>(
       valueListenable: widget.logsNotifier,
-      builder: (context, logs, _) {
-        if (logs.isEmpty) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.terminal_rounded,
-                  size: 32,
-                  color: Colors.white.withValues(alpha: 0.08),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  loc.noLogsYet,
-                  style: TextStyle(
-                    color: Colors.white.withValues(alpha: 0.2),
-                    fontSize: 13,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  loc.startBroadcastingToSeeOutput,
-                  style: TextStyle(
-                    color: Colors.white.withValues(alpha: 0.1),
-                    fontSize: 11,
-                  ),
-                ),
-              ],
-            ),
-          );
-        }
-
+      builder: (_, logs, __) {
+        if (logs.isEmpty) return _EmptyConsole(loc: loc);
         return ListView.builder(
           controller: widget.scrollController,
           padding: const EdgeInsets.fromLTRB(14, 10, 14, 10),
           itemCount: logs.length,
-          itemBuilder: (context, index) {
-            final log = logs[index];
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 1.5),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 5, right: 8),
-                    child: Container(
-                      width: 4,
-                      height: 4,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: _getLogColor(log).withValues(alpha: 0.7),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      log,
-                      style: TextStyle(
-                        fontFamily: 'monospace',
-                        fontSize: 12,
-                        color: _getLogColor(log),
-                        height: 1.5,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          },
+          itemBuilder: (_, i) => _LogRow(log: logs[i]),
         );
       },
     );
@@ -262,19 +301,18 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
     required Color color,
     required String tooltip,
     required VoidCallback onTap,
-  }) {
-    return Tooltip(
-      message: tooltip,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(8),
-        child: Container(
-          padding: const EdgeInsets.all(6),
-          child: Icon(icon, size: 15, color: color),
+  }) =>
+      Tooltip(
+        message: tooltip,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(8),
+          child: Padding(
+            padding: const EdgeInsets.all(6),
+            child: Icon(icon, size: 15, color: color),
+          ),
         ),
-      ),
-    );
-  }
+      );
 }
 
 class ConsoleDialog extends StatelessWidget {
@@ -295,32 +333,17 @@ class ConsoleDialog extends StatelessWidget {
     required this.onCopyLogs,
   });
 
-  Color _getLogColor(String log) {
-    if (log.contains('[ERROR]')) return AppTheme.error;
-    if (log.contains('[WARN]')) return AppTheme.warning;
-    if (log.contains('[INFO]')) return AppTheme.info;
-    if (log.contains('[DEBUG]')) return AppTheme.success;
-    return Colors.white.withValues(alpha: 0.5);
-  }
-
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
+    final loc  = AppLocalizations.of(context)!;
+    final bg   = ThemeService.instance.background;
+    final text = ThemeService.instance.textPrimary;
+    final darkBg = Color.lerp(bg, Colors.black, 0.35)!;
 
     return Dialog.fullscreen(
       backgroundColor: Colors.transparent,
       child: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF0A0A1A),
-              Color(0xFF0D0A1F),
-              Color(0xFF080D1A),
-            ],
-          ),
-        ),
+        color: darkBg,
         child: SafeArea(
           child: Column(
             children: [
@@ -328,11 +351,9 @@ class ConsoleDialog extends StatelessWidget {
                 height: 56,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.04),
+                  color: text.withValues(alpha: 0.04),
                   border: Border(
-                    bottom: BorderSide(
-                      color: Colors.white.withValues(alpha: 0.07),
-                    ),
+                    bottom: BorderSide(color: text.withValues(alpha: 0.07)),
                   ),
                 ),
                 child: Row(
@@ -343,24 +364,19 @@ class ConsoleDialog extends StatelessWidget {
                         color: AppTheme.primaryAccent.withValues(alpha: 0.12),
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
-                          color: AppTheme.primaryAccent.withValues(alpha: 0.2),
-                        ),
+                            color: AppTheme.primaryAccent.withValues(alpha: 0.2)),
                       ),
-                      child: Icon(
-                        Icons.terminal_rounded,
-                        color: AppTheme.primaryAccent,
-                        size: 14,
-                      ),
+                      child: Icon(Icons.terminal_rounded,
+                          color: AppTheme.primaryAccent, size: 14),
                     ),
                     const SizedBox(width: 10),
                     Expanded(
                       child: Text(
                         loc.consoleOutput,
-                        style: const TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                        ),
+                        style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600,
+                            color: text.withValues(alpha: 0.9)),
                       ),
                     ),
                     _iconBtn(
@@ -369,25 +385,25 @@ class ConsoleDialog extends StatelessWidget {
                           : Icons.bug_report_outlined,
                       color: debugEnabled
                           ? AppTheme.success
-                          : Colors.white.withValues(alpha: 0.3),
+                          : text.withValues(alpha: 0.3),
                       tooltip: loc.toggleDebug,
                       onTap: onToggleDebug,
                     ),
                     _iconBtn(
                       icon: Icons.copy_outlined,
-                      color: Colors.white.withValues(alpha: 0.3),
+                      color: text.withValues(alpha: 0.3),
                       tooltip: loc.copyLogs,
                       onTap: onCopyLogs,
                     ),
                     _iconBtn(
                       icon: Icons.delete_outline_rounded,
-                      color: Colors.white.withValues(alpha: 0.3),
+                      color: text.withValues(alpha: 0.3),
                       tooltip: loc.clear,
                       onTap: onClearLogs,
                     ),
                     _iconBtn(
                       icon: Icons.close_rounded,
-                      color: Colors.white.withValues(alpha: 0.5),
+                      color: text.withValues(alpha: 0.5),
                       tooltip: loc.close,
                       onTap: () => Navigator.of(context).pop(),
                     ),
@@ -398,78 +414,13 @@ class ConsoleDialog extends StatelessWidget {
               Expanded(
                 child: ValueListenableBuilder<List<String>>(
                   valueListenable: logsNotifier,
-                  builder: (context, logs, _) {
-                    if (logs.isEmpty) {
-                      return Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.terminal_rounded,
-                              size: 40,
-                              color: Colors.white.withValues(alpha: 0.08),
-                            ),
-                            const SizedBox(height: 12),
-                            Text(
-                              loc.noLogsYet,
-                              style: TextStyle(
-                                color: Colors.white.withValues(alpha: 0.2),
-                                fontSize: 14,
-                              ),
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              loc.startBroadcastingToSeeOutput,
-                              style: TextStyle(
-                                color: Colors.white.withValues(alpha: 0.1),
-                                fontSize: 12,
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    }
+                  builder: (_, logs, __) {
+                    if (logs.isEmpty) return _EmptyConsole(loc: loc);
                     return ListView.builder(
                       controller: scrollController,
                       padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
                       itemCount: logs.length,
-                      itemBuilder: (context, index) {
-                        final log = logs[index];
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 1.5),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  top: 5,
-                                  right: 8,
-                                ),
-                                child: Container(
-                                  width: 4,
-                                  height: 4,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color:
-                                        _getLogColor(log).withValues(alpha: 0.7),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  log,
-                                  style: TextStyle(
-                                    fontFamily: 'monospace',
-                                    fontSize: 12,
-                                    color: _getLogColor(log),
-                                    height: 1.5,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
+                      itemBuilder: (_, i) => _LogRow(log: logs[i]),
                     );
                   },
                 ),
@@ -486,17 +437,16 @@ class ConsoleDialog extends StatelessWidget {
     required Color color,
     required String tooltip,
     required VoidCallback onTap,
-  }) {
-    return Tooltip(
-      message: tooltip,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(8),
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: Icon(icon, size: 16, color: color),
+  }) =>
+      Tooltip(
+        message: tooltip,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(8),
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Icon(icon, size: 16, color: color),
+          ),
         ),
-      ),
-    );
-  }
+      );
 }

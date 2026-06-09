@@ -12,6 +12,7 @@ import '../services/theme_service.dart';
 import '../services/server_status_service.dart';
 import '../util/partners_servers.dart';
 import '../widgets/components/global_notice_banner.dart';
+import '../widgets/components/app_sheet.dart';
 
 class LandingScreen extends StatefulWidget {
   final VoidCallback onGoToConnector;
@@ -91,6 +92,8 @@ class _LandingScreenState extends State<LandingScreen> {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
+      enableDrag: true,
+      useRootNavigator: true,
       backgroundColor: Colors.transparent,
       builder: (_) => _CustomizeSheet(callbackFor: _callbackFor),
     );
@@ -751,19 +754,20 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
                   ),
                   const SizedBox(height: 12),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    child: HueRingPicker(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: SlidePicker(
                       pickerColor: tmp,
                       onColorChanged: (c) {
                         tmp = c;
                         syncHex(c);
                         setDlg(() {});
                       },
-                      colorPickerHeight: 240,
-                      hueRingStrokeWidth: 28,
+                      colorModel: ColorModel.hsv,
                       enableAlpha: false,
-                      displayThumbColor: true,
-                      pickerAreaBorderRadius: const BorderRadius.all(Radius.circular(12)),
+                      showParams: false,
+                      showIndicator: true,
+                      indicatorBorderRadius: const BorderRadius.all(Radius.circular(10)),
+                      sliderSize: const Size(double.infinity, 24),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -872,29 +876,12 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
-    final maxH = MediaQuery.of(context).size.height * 0.92;
-    return ConstrainedBox(
-      constraints: BoxConstraints(maxHeight: maxH),
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppTheme.surface,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-          border: Border(top: BorderSide(color: AppTheme.borderGray)),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Center(
-              child: Container(
-                width: 36,
-                height: 4,
-                margin: const EdgeInsets.symmetric(vertical: 14),
-                decoration: BoxDecoration(
-                  color: AppTheme.borderLight,
-                  borderRadius: BorderRadius.circular(4),
-                ),
-              ),
-            ),
+    return AppSheet(
+      onClose: () => Navigator.of(context).pop(),
+      maxHeightFactor: 0.92,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 0, 16, 16),
               child: Row(
@@ -1284,8 +1271,7 @@ class _CustomizeSheetState extends State<_CustomizeSheet> {
             ),
           ],
         ),
-      ),
-    );
+      );
   }
 }
 

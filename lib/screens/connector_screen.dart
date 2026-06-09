@@ -88,6 +88,11 @@ class HomeScreenState extends State<HomeScreen> {
     _loadBedrockAccounts();
   }
 
+  void toggleDebug() {
+    logger.debugEnabled = !logger.debugEnabled;
+    widget.navigationController.debugEnabledNotifier.value = logger.debugEnabled;
+  }
+
   void _initializeComponents() {
     logger = Logger(debugEnabled: false, logCallback: _log);
     socketHandler = SocketHandler(logger: logger);

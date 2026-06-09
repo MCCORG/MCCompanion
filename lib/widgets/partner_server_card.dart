@@ -19,44 +19,10 @@ class PartnerServerCard extends StatefulWidget {
   State<PartnerServerCard> createState() => _PartnerServerCardState();
 }
 
-class _PartnerServerCardState extends State<PartnerServerCard>
-    with SingleTickerProviderStateMixin {
-  bool _expanded = false;
-  late final AnimationController _animController;
-  late final Animation<double> _expandAnimation;
-
+class _PartnerServerCardState extends State<PartnerServerCard> {
   bool get _hasIcon =>
       widget.server.iconUrl != null && widget.server.iconUrl!.isNotEmpty;
   bool get _hasDescription => widget.server.description.isNotEmpty;
-
-  @override
-  void initState() {
-    super.initState();
-    _animController = AnimationController(
-      duration: const Duration(milliseconds: 250),
-      vsync: this,
-    );
-    _expandAnimation = CurvedAnimation(
-      parent: _animController,
-      curve: Curves.easeInOut,
-    );
-  }
-
-  @override
-  void dispose() {
-    _animController.dispose();
-    super.dispose();
-  }
-
-  void _toggleExpanded() {
-    if (!_hasDescription) return;
-    setState(() => _expanded = !_expanded);
-    if (_expanded) {
-      _animController.forward();
-    } else {
-      _animController.reverse();
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +72,6 @@ class _PartnerServerCardState extends State<PartnerServerCard>
             mainAxisSize: MainAxisSize.min,
             children: [
               InkWell(
-                onTap: _hasDescription ? _toggleExpanded : null,
                 borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(12),
                 ),
@@ -150,18 +115,6 @@ class _PartnerServerCardState extends State<PartnerServerCard>
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
-                                if (_hasDescription) ...[
-                                  const SizedBox(width: 4),
-                                  AnimatedRotation(
-                                    turns: _expanded ? 0.5 : 0,
-                                    duration: const Duration(milliseconds: 250),
-                                    child: Icon(
-                                      Icons.keyboard_arrow_down_rounded,
-                                      size: 16,
-                                      color: AppTheme.textMuted,
-                                    ),
-                                  ),
-                                ],
                               ],
                             ),
                             const SizedBox(height: 4),
@@ -271,28 +224,20 @@ class _PartnerServerCardState extends State<PartnerServerCard>
                 ),
               ),
 
-              if (_hasDescription)
-                SizeTransition(
-                  sizeFactor: _expandAnimation,
-                  axisAlignment: -1,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      const Divider(height: 1, color: AppTheme.borderGray),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
-                        child: Text(
-                          widget.server.description,
-                          style: TextStyle(
-                            color: AppTheme.textSecondary,
-                            fontSize: 12,
-                            height: 1.6,
-                          ),
-                        ),
-                      ),
-                    ],
+              if (_hasDescription) ...[
+                const Divider(height: 1, color: AppTheme.borderGray),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
+                  child: Text(
+                    widget.server.description,
+                    style: TextStyle(
+                      color: AppTheme.textSecondary,
+                      fontSize: 12,
+                      height: 1.6,
+                    ),
                   ),
                 ),
+              ],
             ],
           ),
         ],

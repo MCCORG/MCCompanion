@@ -1,9 +1,9 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../l10n/app_localizations.dart';
 import '../../theme/app_theme.dart';
+import '../components/app_sheet.dart';
 
 class InfoSheetContent extends StatelessWidget {
   final VoidCallback onClose;
@@ -18,16 +18,7 @@ class InfoSheetContent extends StatelessWidget {
   }
 
   Future<void> _requestReview() async {
-    final inAppReview = InAppReview.instance;
-
-    if (Platform.isIOS || Platform.isAndroid) {
-      if (await inAppReview.isAvailable()) {
-        await inAppReview.requestReview();
-        return;
-      }
-    }
-
-    await inAppReview.openStoreListing(
+    await InAppReview.instance.openStoreListing(
       appStoreId: '6747323142',
     );
   }
@@ -35,36 +26,14 @@ class InfoSheetContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
-    final maxHeight = MediaQuery.of(context).size.height * 0.88;
 
-    return ConstrainedBox(
-      constraints: BoxConstraints(maxHeight: maxHeight),
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppTheme.background,
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-          border: const Border(top: BorderSide(color: AppTheme.borderGray)),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            GestureDetector(
-              onTap: onClose,
-              behavior: HitTestBehavior.opaque,
-              child: Center(
-                child: Container(
-                  width: 36,
-                  height: 4,
-                  margin: const EdgeInsets.symmetric(vertical: 14),
-                  decoration: BoxDecoration(
-                    color: AppTheme.borderLight,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                ),
-              ),
-            ),
-
-            Padding(
+    return AppSheet(
+      onClose: onClose,
+      maxHeightFactor: 0.92,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
               child: Row(
                 children: [
@@ -205,8 +174,7 @@ class InfoSheetContent extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
+      );
   }
 
   Widget _rateTile() {
