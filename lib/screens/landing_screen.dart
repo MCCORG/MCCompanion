@@ -21,6 +21,7 @@ class LandingScreen extends StatefulWidget {
   final VoidCallback onGoToPartners;
   final VoidCallback onGoToPlayerLookup;
   final VoidCallback? onGoToServerTracker;
+  final VoidCallback? onGoToFeedback;
   final VoidCallback? onWebsiteTap;
   final VoidCallback? onDiscordTap;
   final VoidCallback? onLanguageTap;
@@ -36,6 +37,7 @@ class LandingScreen extends StatefulWidget {
     required this.onGoToPartners,
     required this.onGoToPlayerLookup,
     this.onGoToServerTracker,
+    this.onGoToFeedback,
     this.onWebsiteTap,
     this.onDiscordTap,
     this.onLanguageTap,
@@ -170,7 +172,14 @@ class _LandingScreenState extends State<LandingScreen> {
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(14, 0, 14, 8),
                       child: Center(
-                        child: _buildGrid(tiles),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            _buildGrid(tiles),
+                            const SizedBox(height: 10),
+                            _FeedbackTile(onTap: widget.onGoToFeedback),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -236,6 +245,107 @@ class _LandingScreenState extends State<LandingScreen> {
       );
     }
     return Column(mainAxisSize: MainAxisSize.min, children: rows);
+  }
+}
+
+class _FeedbackTile extends StatefulWidget {
+  final VoidCallback? onTap;
+  const _FeedbackTile({this.onTap});
+
+  @override
+  State<_FeedbackTile> createState() => _FeedbackTileState();
+}
+
+class _FeedbackTileState extends State<_FeedbackTile> {
+  bool _pressed = false;
+
+  @override
+  Widget build(BuildContext context) {
+    const color = Color(0xFFF87171);
+    const colorAccent = Color(0xFF67E404);
+
+    return GestureDetector(
+      onTapDown: (_) => setState(() => _pressed = true),
+      onTapUp: (_) => setState(() => _pressed = false),
+      onTapCancel: () => setState(() => _pressed = false),
+      onTap: widget.onTap,
+      child: AnimatedScale(
+        scale: _pressed ? 0.97 : 1.0,
+        duration: const Duration(milliseconds: 100),
+        curve: Curves.easeOut,
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: color.withValues(alpha: 0.20)),
+            gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: [
+                Color.lerp(AppTheme.surfaceRaised, color, 0.06)!,
+                Color.lerp(AppTheme.surfaceRaised, colorAccent, 0.04)!,
+              ],
+            ),
+          ),
+          child: Row(
+            children: [
+              Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: color.withValues(alpha: 0.12),
+                ),
+                child: const Center(
+                  child: FaIcon(FontAwesomeIcons.bug, size: 15, color: color),
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      AppLocalizations.of(context)!.feedbackTileTitle,
+                      style: TextStyle(
+                        color: AppTheme.textPrimary,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      AppLocalizations.of(context)!.feedbackTileSubtitle,
+                      style: TextStyle(
+                        color: AppTheme.textMuted,
+                        fontSize: 11,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 8),
+              Container(
+                width: 28,
+                height: 28,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppTheme.surfaceRaised,
+                  border: Border.all(color: AppTheme.borderGray),
+                ),
+                child: Icon(
+                  Icons.chevron_right_rounded,
+                  size: 16,
+                  color: AppTheme.textMuted,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 

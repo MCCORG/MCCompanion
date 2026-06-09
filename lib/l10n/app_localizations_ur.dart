@@ -1560,4 +1560,82 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get accountActions => 'ACCOUNT';
+
+  @override
+  String get feedbackBugReport => 'بگ رپورٹ';
+
+  @override
+  String get feedbackFeatureRequest => 'فیچر کی درخواست';
+
+  @override
+  String get feedbackGoesToGithub => 'براہ راست GitHub پر جاتا ہے';
+
+  @override
+  String get feedbackTitleLabel => 'عنوان';
+
+  @override
+  String get feedbackTitleHintBug => 'مثلاً: سکن ایڈیٹر کھولتے وقت ایپ کریش ہوتی ہے';
+
+  @override
+  String get feedbackTitleHintFeature => 'مثلاً: سرور لسٹ میں کھلاڑی کی پنگ دکھائیں';
+
+  @override
+  String get feedbackWhatHappened => 'کیا ہوا؟';
+
+  @override
+  String get feedbackDescribeIdea => 'اپنا خیال بیان کریں';
+
+  @override
+  String get feedbackDescHintBug => 'بگ بیان کریں — آپ نے کیا کیا، کیا توقع تھی اور اس کی بجائے کیا ہوا؟';
+
+  @override
+  String get feedbackDescHintFeature => 'بتائیں کہ آپ کیا چاہتے ہیں اور یہ کیوں مفید ہوگا۔';
+
+  @override
+  String get feedbackEmailLabel => 'ای میل (اختیاری)';
+
+  @override
+  String get feedbackEmailHint => 'تاکہ ہم آپ سے رابطہ کر سکیں';
+
+  @override
+  String get feedbackEmailNote => 'آپ کی ای میل کبھی بھی عام نہیں کی جائے گی۔';
+
+  @override
+  String get feedbackSubmitBug => 'بگ رپورٹ جمع کریں';
+
+  @override
+  String get feedbackSubmitFeature => 'فیچر درخواست جمع کریں';
+
+  @override
+  String get feedbackDisclaimer => 'GitHub پر ایک عوامی ایشو بناتا ہے · پاس ورڈ شامل نہ کریں';
+
+  @override
+  String get feedbackSuccessTitle => 'فیڈبیک کے لیے شکریہ!';
+
+  @override
+  String get feedbackSuccessBody => 'آپ کی رپورٹ جمع ہو گئی ہے اور GitHub پر ایک ایشو بنایا گیا ہے۔ ہم جلد از جلد دیکھیں گے۔';
+
+  @override
+  String get feedbackViewOnGithub => 'GitHub پر دیکھیں';
+
+  @override
+  String get feedbackSubmitAnother => 'ایک اور جمع کریں';
+
+  @override
+  String get feedbackBackToApp => 'ایپ پر واپس جائیں';
+
+  @override
+  String get feedbackTitleTooShort => 'عنوان کم از کم 5 حروف کا ہونا چاہیے۔';
+
+  @override
+  String get feedbackDescTooShort => 'تفصیل کم از کم 10 حروف کی ہونی چاہیے۔';
+
+  @override
+  String get feedbackSubmitFailed => 'جمع کرنے میں ناکامی۔ دوبارہ کوشش کریں۔';
+
+  @override
+  String get feedbackTileTitle => 'ایک بگ رپورٹ کریں یا فیچر تجویز کریں';
+
+  @override
+  String get feedbackTileSubtitle => 'MCCompanion کو بہتر بنانے میں مدد کریں';
 }

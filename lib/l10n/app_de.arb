@@ -1545,5 +1545,31 @@
   "accountActions": "KONTO",
   "@accountActions": {
     "description": "Label for account danger zone section"
-  }
+  },
+  "feedbackBugReport": "Fehlermeldung",
+  "feedbackFeatureRequest": "Funktionsanfrage",
+  "feedbackGoesToGithub": "Direkt an GitHub gesendet",
+  "feedbackTitleLabel": "Titel",
+  "feedbackTitleHintBug": "z.B. App stürzt beim Öffnen des Skin-Editors ab",
+  "feedbackTitleHintFeature": "z.B. Ping des Spielers in der Serverliste anzeigen",
+  "feedbackWhatHappened": "Was ist passiert?",
+  "feedbackDescribeIdea": "Beschreibe deine Idee",
+  "feedbackDescHintBug": "Beschreibe den Fehler — was hast du getan, was hast du erwartet und was ist stattdessen passiert?",
+  "feedbackDescHintFeature": "Erkläre, was du möchtest und warum es nützlich wäre.",
+  "feedbackEmailLabel": "E-Mail (optional)",
+  "feedbackEmailHint": "Damit wir uns bei dir melden können",
+  "feedbackEmailNote": "Deine E-Mail wird nie öffentlich geteilt.",
+  "feedbackSubmitBug": "Fehlermeldung senden",
+  "feedbackSubmitFeature": "Funktionsanfrage senden",
+  "feedbackDisclaimer": "Erstellt ein öffentliches GitHub-Issue · Keine Passwörter eingeben",
+  "feedbackSuccessTitle": "Danke für das Feedback!",
+  "feedbackSuccessBody": "Dein Bericht wurde eingereicht und ein GitHub-Issue wurde erstellt. Wir schauen uns das so bald wie möglich an.",
+  "feedbackViewOnGithub": "Auf GitHub ansehen",
+  "feedbackSubmitAnother": "Noch einen einreichen",
+  "feedbackBackToApp": "Zurück zur App",
+  "feedbackTitleTooShort": "Titel muss mindestens 5 Zeichen lang sein.",
+  "feedbackDescTooShort": "Beschreibung muss mindestens 10 Zeichen lang sein.",
+  "feedbackSubmitFailed": "Senden fehlgeschlagen. Bitte erneut versuchen.",
+  "feedbackTileTitle": "Einen Fehler melden oder eine Funktion vorschlagen",
+  "feedbackTileSubtitle": "Hilf uns, MCCompanion zu verbessern"
 }

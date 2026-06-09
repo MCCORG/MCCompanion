@@ -1560,4 +1560,82 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get accountActions => 'অ্যাকাউন্ট';
+
+  @override
+  String get feedbackBugReport => 'বাগ রিপোর্ট';
+
+  @override
+  String get feedbackFeatureRequest => 'ফিচার অনুরোধ';
+
+  @override
+  String get feedbackGoesToGithub => 'সরাসরি GitHub-এ যাবে';
+
+  @override
+  String get feedbackTitleLabel => 'শিরোনাম';
+
+  @override
+  String get feedbackTitleHintBug => 'উদা. স্কিন এডিটর খুলতে গেলে অ্যাপ ক্র্যাশ করে';
+
+  @override
+  String get feedbackTitleHintFeature => 'উদা. সার্ভার তালিকায় প্লেয়ারের পিং দেখান';
+
+  @override
+  String get feedbackWhatHappened => 'কী হয়েছিল?';
+
+  @override
+  String get feedbackDescribeIdea => 'আপনার ধারণা বর্ণনা করুন';
+
+  @override
+  String get feedbackDescHintBug => 'বাগটি বর্ণনা করুন — আপনি কী করেছিলেন, কী আশা করেছিলেন এবং পরিবর্তে কী হয়েছিল?';
+
+  @override
+  String get feedbackDescHintFeature => 'আপনি কী চান এবং কেন এটি উপকারী হবে তা ব্যাখ্যা করুন।';
+
+  @override
+  String get feedbackEmailLabel => 'ইমেইল (ঐচ্ছিক)';
+
+  @override
+  String get feedbackEmailHint => 'আমরা যোগাযোগ করতে পারি বলে';
+
+  @override
+  String get feedbackEmailNote => 'আপনার ইমেইল কখনো প্রকাশ্যে শেয়ার করা হবে না।';
+
+  @override
+  String get feedbackSubmitBug => 'বাগ রিপোর্ট জমা দিন';
+
+  @override
+  String get feedbackSubmitFeature => 'ফিচার অনুরোধ জমা দিন';
+
+  @override
+  String get feedbackDisclaimer => 'GitHub-এ একটি পাবলিক ইস্যু তৈরি করে · পাসওয়ার্ড অন্তর্ভুক্ত করবেন না';
+
+  @override
+  String get feedbackSuccessTitle => 'ফিডব্যাকের জন্য ধন্যবাদ!';
+
+  @override
+  String get feedbackSuccessBody => 'আপনার রিপোর্ট জমা দেওয়া হয়েছে এবং GitHub-এ একটি ইস্যু তৈরি হয়েছে। আমরা যত দ্রুত সম্ভব দেখব।';
+
+  @override
+  String get feedbackViewOnGithub => 'GitHub-এ দেখুন';
+
+  @override
+  String get feedbackSubmitAnother => 'আরেকটি জমা দিন';
+
+  @override
+  String get feedbackBackToApp => 'অ্যাপে ফিরে যান';
+
+  @override
+  String get feedbackTitleTooShort => 'শিরোনাম কমপক্ষে ৫ অক্ষরের হতে হবে।';
+
+  @override
+  String get feedbackDescTooShort => 'বিবরণ কমপক্ষে ১০ অক্ষরের হতে হবে।';
+
+  @override
+  String get feedbackSubmitFailed => 'জমা দেওয়া ব্যর্থ হয়েছে। আবার চেষ্টা করুন।';
+
+  @override
+  String get feedbackTileTitle => 'একটি বাগ রিপোর্ট করুন বা ফিচার সাজেস্ট করুন';
+
+  @override
+  String get feedbackTileSubtitle => 'MCCompanion উন্নত করতে আমাদের সাহায্য করুন';
 }

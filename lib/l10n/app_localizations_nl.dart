@@ -1560,4 +1560,82 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get accountActions => 'ACCOUNT';
+
+  @override
+  String get feedbackBugReport => 'Bugmelding';
+
+  @override
+  String get feedbackFeatureRequest => 'Functieverzoek';
+
+  @override
+  String get feedbackGoesToGithub => 'Gaat direct naar GitHub';
+
+  @override
+  String get feedbackTitleLabel => 'Titel';
+
+  @override
+  String get feedbackTitleHintBug => 'bijv. App crasht bij openen van de skin-editor';
+
+  @override
+  String get feedbackTitleHintFeature => 'bijv. Toon ping van speler in de serverlijst';
+
+  @override
+  String get feedbackWhatHappened => 'Wat is er gebeurd?';
+
+  @override
+  String get feedbackDescribeIdea => 'Beschrijf je idee';
+
+  @override
+  String get feedbackDescHintBug => 'Beschrijf de bug — wat heb je gedaan, wat verwachtte je, en wat gebeurde er in plaats daarvan?';
+
+  @override
+  String get feedbackDescHintFeature => 'Leg uit wat je wilt en waarom het nuttig zou zijn.';
+
+  @override
+  String get feedbackEmailLabel => 'E-mail (optioneel)';
+
+  @override
+  String get feedbackEmailHint => 'Zodat we contact met je kunnen opnemen';
+
+  @override
+  String get feedbackEmailNote => 'Je e-mail wordt nooit openbaar gedeeld.';
+
+  @override
+  String get feedbackSubmitBug => 'Bugmelding indienen';
+
+  @override
+  String get feedbackSubmitFeature => 'Functieverzoek indienen';
+
+  @override
+  String get feedbackDisclaimer => 'Maakt een openbaar issue op GitHub · Geen wachtwoorden invullen';
+
+  @override
+  String get feedbackSuccessTitle => 'Bedankt voor de feedback!';
+
+  @override
+  String get feedbackSuccessBody => 'Je melding is ingediend en er is een GitHub-issue aangemaakt. We bekijken het zo snel mogelijk.';
+
+  @override
+  String get feedbackViewOnGithub => 'Bekijk op GitHub';
+
+  @override
+  String get feedbackSubmitAnother => 'Nog een indienen';
+
+  @override
+  String get feedbackBackToApp => 'Terug naar app';
+
+  @override
+  String get feedbackTitleTooShort => 'Titel moet minimaal 5 tekens zijn.';
+
+  @override
+  String get feedbackDescTooShort => 'Beschrijving moet minimaal 10 tekens zijn.';
+
+  @override
+  String get feedbackSubmitFailed => 'Indienen mislukt. Probeer het opnieuw.';
+
+  @override
+  String get feedbackTileTitle => 'Meld een bug of stel een functie voor';
+
+  @override
+  String get feedbackTileSubtitle => 'Help ons MCCompanion te verbeteren';
 }

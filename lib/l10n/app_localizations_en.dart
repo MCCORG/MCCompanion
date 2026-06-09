@@ -1560,4 +1560,82 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get accountActions => 'ACCOUNT';
+
+  @override
+  String get feedbackBugReport => 'Bug Report';
+
+  @override
+  String get feedbackFeatureRequest => 'Feature Request';
+
+  @override
+  String get feedbackGoesToGithub => 'Goes straight to GitHub';
+
+  @override
+  String get feedbackTitleLabel => 'Title';
+
+  @override
+  String get feedbackTitleHintBug => 'e.g. App crashes when opening skin editor';
+
+  @override
+  String get feedbackTitleHintFeature => 'e.g. Show player ping in the server list';
+
+  @override
+  String get feedbackWhatHappened => 'What happened?';
+
+  @override
+  String get feedbackDescribeIdea => 'Describe your idea';
+
+  @override
+  String get feedbackDescHintBug => 'Describe the bug — what did you do, what did you expect, and what happened instead?';
+
+  @override
+  String get feedbackDescHintFeature => 'Explain what you\'d like and why it would be useful.';
+
+  @override
+  String get feedbackEmailLabel => 'Email (optional)';
+
+  @override
+  String get feedbackEmailHint => 'So we can follow up with you';
+
+  @override
+  String get feedbackEmailNote => 'Your email is never shared publicly.';
+
+  @override
+  String get feedbackSubmitBug => 'Submit Bug Report';
+
+  @override
+  String get feedbackSubmitFeature => 'Submit Feature Request';
+
+  @override
+  String get feedbackDisclaimer => 'Creates a public issue on GitHub · Don\'t include passwords';
+
+  @override
+  String get feedbackSuccessTitle => 'Thanks for the feedback!';
+
+  @override
+  String get feedbackSuccessBody => 'Your report has been submitted and a GitHub issue has been created. We\'ll look into it as soon as possible.';
+
+  @override
+  String get feedbackViewOnGithub => 'View on GitHub';
+
+  @override
+  String get feedbackSubmitAnother => 'Submit another';
+
+  @override
+  String get feedbackBackToApp => 'Back to app';
+
+  @override
+  String get feedbackTitleTooShort => 'Title must be at least 5 characters.';
+
+  @override
+  String get feedbackDescTooShort => 'Description must be at least 10 characters.';
+
+  @override
+  String get feedbackSubmitFailed => 'Failed to submit. Please try again.';
+
+  @override
+  String get feedbackTileTitle => 'Report a bug or suggest a feature';
+
+  @override
+  String get feedbackTileSubtitle => 'Help us improve MCCompanion';
 }

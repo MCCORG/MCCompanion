@@ -1560,4 +1560,82 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get accountActions => '账户';
+
+  @override
+  String get feedbackBugReport => '错误报告';
+
+  @override
+  String get feedbackFeatureRequest => '功能请求';
+
+  @override
+  String get feedbackGoesToGithub => '直接发送到 GitHub';
+
+  @override
+  String get feedbackTitleLabel => '标题';
+
+  @override
+  String get feedbackTitleHintBug => '例如：打开皮肤编辑器时应用崩溃';
+
+  @override
+  String get feedbackTitleHintFeature => '例如：在服务器列表中显示玩家延迟';
+
+  @override
+  String get feedbackWhatHappened => '发生了什么？';
+
+  @override
+  String get feedbackDescribeIdea => '描述你的想法';
+
+  @override
+  String get feedbackDescHintBug => '描述该错误——你做了什么、你期望什么，以及实际发生了什么？';
+
+  @override
+  String get feedbackDescHintFeature => '解释你想要什么以及为什么有用。';
+
+  @override
+  String get feedbackEmailLabel => '电子邮件（可选）';
+
+  @override
+  String get feedbackEmailHint => '以便我们与你联系';
+
+  @override
+  String get feedbackEmailNote => '你的电子邮件永远不会公开分享。';
+
+  @override
+  String get feedbackSubmitBug => '提交错误报告';
+
+  @override
+  String get feedbackSubmitFeature => '提交功能请求';
+
+  @override
+  String get feedbackDisclaimer => '在 GitHub 上创建公开 Issue · 请勿包含密码';
+
+  @override
+  String get feedbackSuccessTitle => '感谢你的反馈！';
+
+  @override
+  String get feedbackSuccessBody => '你的报告已提交，GitHub Issue 已创建。我们会尽快查看。';
+
+  @override
+  String get feedbackViewOnGithub => '在 GitHub 上查看';
+
+  @override
+  String get feedbackSubmitAnother => '再提交一个';
+
+  @override
+  String get feedbackBackToApp => '返回应用';
+
+  @override
+  String get feedbackTitleTooShort => '标题至少需要 5 个字符。';
+
+  @override
+  String get feedbackDescTooShort => '描述至少需要 10 个字符。';
+
+  @override
+  String get feedbackSubmitFailed => '提交失败，请重试。';
+
+  @override
+  String get feedbackTileTitle => '报告错误或建议功能';
+
+  @override
+  String get feedbackTileSubtitle => '帮助我们改进 MCCompanion';
 }

@@ -1560,4 +1560,82 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get accountActions => 'الحساب';
+
+  @override
+  String get feedbackBugReport => 'تقرير خطأ';
+
+  @override
+  String get feedbackFeatureRequest => 'طلب ميزة';
+
+  @override
+  String get feedbackGoesToGithub => 'يُرسل مباشرةً إلى GitHub';
+
+  @override
+  String get feedbackTitleLabel => 'العنوان';
+
+  @override
+  String get feedbackTitleHintBug => 'مثال: التطبيق يتعطل عند فتح محرر السكن';
+
+  @override
+  String get feedbackTitleHintFeature => 'مثال: عرض بينج اللاعب في قائمة الخوادم';
+
+  @override
+  String get feedbackWhatHappened => 'ماذا حدث؟';
+
+  @override
+  String get feedbackDescribeIdea => 'صف فكرتك';
+
+  @override
+  String get feedbackDescHintBug => 'صف الخطأ — ماذا فعلت، وماذا توقعت، وماذا حدث بدلاً من ذلك؟';
+
+  @override
+  String get feedbackDescHintFeature => 'اشرح ما تريده ولماذا سيكون مفيدًا.';
+
+  @override
+  String get feedbackEmailLabel => 'البريد الإلكتروني (اختياري)';
+
+  @override
+  String get feedbackEmailHint => 'حتى نتمكن من التواصل معك';
+
+  @override
+  String get feedbackEmailNote => 'لن يُشارك بريدك الإلكتروني علنًا أبدًا.';
+
+  @override
+  String get feedbackSubmitBug => 'إرسال تقرير الخطأ';
+
+  @override
+  String get feedbackSubmitFeature => 'إرسال طلب الميزة';
+
+  @override
+  String get feedbackDisclaimer => 'ينشئ تذكرة عامة على GitHub · لا تُدرج كلمات المرور';
+
+  @override
+  String get feedbackSuccessTitle => 'شكرًا على ملاحظاتك!';
+
+  @override
+  String get feedbackSuccessBody => 'تم إرسال تقريرك وإنشاء تذكرة على GitHub. سنراجعها في أقرب وقت ممكن.';
+
+  @override
+  String get feedbackViewOnGithub => 'عرض على GitHub';
+
+  @override
+  String get feedbackSubmitAnother => 'إرسال آخر';
+
+  @override
+  String get feedbackBackToApp => 'العودة إلى التطبيق';
+
+  @override
+  String get feedbackTitleTooShort => 'يجب أن يحتوي العنوان على 5 أحرف على الأقل.';
+
+  @override
+  String get feedbackDescTooShort => 'يجب أن يحتوي الوصف على 10 أحرف على الأقل.';
+
+  @override
+  String get feedbackSubmitFailed => 'فشل الإرسال. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get feedbackTileTitle => 'الإبلاغ عن خطأ أو اقتراح ميزة';
+
+  @override
+  String get feedbackTileSubtitle => 'ساعدنا في تحسين MCCompanion';
 }

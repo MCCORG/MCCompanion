@@ -1560,4 +1560,82 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get accountActions => 'COMPTE';
+
+  @override
+  String get feedbackBugReport => 'Rapport de bug';
+
+  @override
+  String get feedbackFeatureRequest => 'Demande de fonctionnalité';
+
+  @override
+  String get feedbackGoesToGithub => 'Envoyé directement sur GitHub';
+
+  @override
+  String get feedbackTitleLabel => 'Titre';
+
+  @override
+  String get feedbackTitleHintBug => 'ex. L\'appli plante en ouvrant l\'éditeur de skin';
+
+  @override
+  String get feedbackTitleHintFeature => 'ex. Afficher le ping du joueur dans la liste des serveurs';
+
+  @override
+  String get feedbackWhatHappened => 'Que s\'est-il passé ?';
+
+  @override
+  String get feedbackDescribeIdea => 'Décris ton idée';
+
+  @override
+  String get feedbackDescHintBug => 'Décris le bug — qu\'as-tu fait, qu\'attendais-tu et que s\'est-il passé à la place ?';
+
+  @override
+  String get feedbackDescHintFeature => 'Explique ce que tu voudrais et pourquoi ce serait utile.';
+
+  @override
+  String get feedbackEmailLabel => 'E-mail (facultatif)';
+
+  @override
+  String get feedbackEmailHint => 'Pour qu\'on puisse te recontacter';
+
+  @override
+  String get feedbackEmailNote => 'Ton e-mail ne sera jamais partagé publiquement.';
+
+  @override
+  String get feedbackSubmitBug => 'Envoyer le rapport de bug';
+
+  @override
+  String get feedbackSubmitFeature => 'Envoyer la demande de fonctionnalité';
+
+  @override
+  String get feedbackDisclaimer => 'Crée un ticket public sur GitHub · Ne pas inclure de mots de passe';
+
+  @override
+  String get feedbackSuccessTitle => 'Merci pour ton retour !';
+
+  @override
+  String get feedbackSuccessBody => 'Ton rapport a été soumis et un ticket GitHub a été créé. Nous allons y jeter un œil dès que possible.';
+
+  @override
+  String get feedbackViewOnGithub => 'Voir sur GitHub';
+
+  @override
+  String get feedbackSubmitAnother => 'Envoyer un autre';
+
+  @override
+  String get feedbackBackToApp => 'Retour à l\'appli';
+
+  @override
+  String get feedbackTitleTooShort => 'Le titre doit comporter au moins 5 caractères.';
+
+  @override
+  String get feedbackDescTooShort => 'La description doit comporter au moins 10 caractères.';
+
+  @override
+  String get feedbackSubmitFailed => 'Échec de l\'envoi. Veuillez réessayer.';
+
+  @override
+  String get feedbackTileTitle => 'Signaler un bug ou suggérer une fonctionnalité';
+
+  @override
+  String get feedbackTileSubtitle => 'Aide-nous à améliorer MCCompanion';
 }

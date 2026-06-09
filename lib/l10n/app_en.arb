@@ -1755,5 +1755,109 @@
   "accountActions": "ACCOUNT",
   "@accountActions": {
     "description": "Label for account danger zone section"
+  },
+  "feedbackBugReport": "Bug Report",
+  "@feedbackBugReport": {
+    "description": "Label for bug report type"
+  },
+  "feedbackFeatureRequest": "Feature Request",
+  "@feedbackFeatureRequest": {
+    "description": "Label for feature request type"
+  },
+  "feedbackGoesToGithub": "Goes straight to GitHub",
+  "@feedbackGoesToGithub": {
+    "description": "Subtitle in feedback screen header"
+  },
+  "feedbackTitleLabel": "Title",
+  "@feedbackTitleLabel": {
+    "description": "Label above title field in feedback form"
+  },
+  "feedbackTitleHintBug": "e.g. App crashes when opening skin editor",
+  "@feedbackTitleHintBug": {
+    "description": "Hint text for title field when type is bug"
+  },
+  "feedbackTitleHintFeature": "e.g. Show player ping in the server list",
+  "@feedbackTitleHintFeature": {
+    "description": "Hint text for title field when type is feature"
+  },
+  "feedbackWhatHappened": "What happened?",
+  "@feedbackWhatHappened": {
+    "description": "Label above description field when type is bug"
+  },
+  "feedbackDescribeIdea": "Describe your idea",
+  "@feedbackDescribeIdea": {
+    "description": "Label above description field when type is feature"
+  },
+  "feedbackDescHintBug": "Describe the bug — what did you do, what did you expect, and what happened instead?",
+  "@feedbackDescHintBug": {
+    "description": "Hint in description field when type is bug"
+  },
+  "feedbackDescHintFeature": "Explain what you'd like and why it would be useful.",
+  "@feedbackDescHintFeature": {
+    "description": "Hint in description field when type is feature"
+  },
+  "feedbackEmailLabel": "Email (optional)",
+  "@feedbackEmailLabel": {
+    "description": "Label above email field in feedback form"
+  },
+  "feedbackEmailHint": "So we can follow up with you",
+  "@feedbackEmailHint": {
+    "description": "Hint text for email field"
+  },
+  "feedbackEmailNote": "Your email is never shared publicly.",
+  "@feedbackEmailNote": {
+    "description": "Note below email field"
+  },
+  "feedbackSubmitBug": "Submit Bug Report",
+  "@feedbackSubmitBug": {
+    "description": "Submit button label when type is bug"
+  },
+  "feedbackSubmitFeature": "Submit Feature Request",
+  "@feedbackSubmitFeature": {
+    "description": "Submit button label when type is feature"
+  },
+  "feedbackDisclaimer": "Creates a public issue on GitHub · Don't include passwords",
+  "@feedbackDisclaimer": {
+    "description": "Small disclaimer below submit button"
+  },
+  "feedbackSuccessTitle": "Thanks for the feedback!",
+  "@feedbackSuccessTitle": {
+    "description": "Success screen title"
+  },
+  "feedbackSuccessBody": "Your report has been submitted and a GitHub issue has been created. We'll look into it as soon as possible.",
+  "@feedbackSuccessBody": {
+    "description": "Success screen body text"
+  },
+  "feedbackViewOnGithub": "View on GitHub",
+  "@feedbackViewOnGithub": {
+    "description": "Button to open GitHub issue"
+  },
+  "feedbackSubmitAnother": "Submit another",
+  "@feedbackSubmitAnother": {
+    "description": "Button to reset and submit another report"
+  },
+  "feedbackBackToApp": "Back to app",
+  "@feedbackBackToApp": {
+    "description": "Button to go back to the app"
+  },
+  "feedbackTitleTooShort": "Title must be at least 5 characters.",
+  "@feedbackTitleTooShort": {
+    "description": "Validation error when title is too short"
+  },
+  "feedbackDescTooShort": "Description must be at least 10 characters.",
+  "@feedbackDescTooShort": {
+    "description": "Validation error when description is too short"
+  },
+  "feedbackSubmitFailed": "Failed to submit. Please try again.",
+  "@feedbackSubmitFailed": {
+    "description": "Error toast when submit fails"
+  },
+  "feedbackTileTitle": "Report a bug or suggest a feature",
+  "@feedbackTileTitle": {
+    "description": "Title on feedback tile on landing screen"
+  },
+  "feedbackTileSubtitle": "Help us improve MCCompanion",
+  "@feedbackTileSubtitle": {
+    "description": "Subtitle on feedback tile on landing screen"
   }
 }

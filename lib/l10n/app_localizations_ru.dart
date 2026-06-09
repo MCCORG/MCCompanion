@@ -1560,4 +1560,82 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get accountActions => 'АККАУНТ';
+
+  @override
+  String get feedbackBugReport => 'Сообщение об ошибке';
+
+  @override
+  String get feedbackFeatureRequest => 'Запрос функции';
+
+  @override
+  String get feedbackGoesToGithub => 'Отправляется прямо на GitHub';
+
+  @override
+  String get feedbackTitleLabel => 'Заголовок';
+
+  @override
+  String get feedbackTitleHintBug => 'напр. Приложение вылетает при открытии редактора скинов';
+
+  @override
+  String get feedbackTitleHintFeature => 'напр. Показывать пинг игрока в списке серверов';
+
+  @override
+  String get feedbackWhatHappened => 'Что произошло?';
+
+  @override
+  String get feedbackDescribeIdea => 'Опишите свою идею';
+
+  @override
+  String get feedbackDescHintBug => 'Опишите ошибку — что вы сделали, что ожидали и что произошло вместо этого?';
+
+  @override
+  String get feedbackDescHintFeature => 'Объясните, что вы хотите и почему это было бы полезно.';
+
+  @override
+  String get feedbackEmailLabel => 'Электронная почта (необязательно)';
+
+  @override
+  String get feedbackEmailHint => 'Чтобы мы могли связаться с вами';
+
+  @override
+  String get feedbackEmailNote => 'Ваш адрес электронной почты никогда не публикуется.';
+
+  @override
+  String get feedbackSubmitBug => 'Отправить сообщение об ошибке';
+
+  @override
+  String get feedbackSubmitFeature => 'Отправить запрос функции';
+
+  @override
+  String get feedbackDisclaimer => 'Создаёт публичный тикет на GitHub · Не указывайте пароли';
+
+  @override
+  String get feedbackSuccessTitle => 'Спасибо за отзыв!';
+
+  @override
+  String get feedbackSuccessBody => 'Ваш отчёт отправлен и тикет на GitHub создан. Мы рассмотрим его как можно скорее.';
+
+  @override
+  String get feedbackViewOnGithub => 'Посмотреть на GitHub';
+
+  @override
+  String get feedbackSubmitAnother => 'Отправить ещё';
+
+  @override
+  String get feedbackBackToApp => 'Вернуться в приложение';
+
+  @override
+  String get feedbackTitleTooShort => 'Заголовок должен содержать не менее 5 символов.';
+
+  @override
+  String get feedbackDescTooShort => 'Описание должно содержать не менее 10 символов.';
+
+  @override
+  String get feedbackSubmitFailed => 'Не удалось отправить. Попробуйте ещё раз.';
+
+  @override
+  String get feedbackTileTitle => 'Сообщить об ошибке или предложить функцию';
+
+  @override
+  String get feedbackTileSubtitle => 'Помогите нам улучшить MCCompanion';
 }

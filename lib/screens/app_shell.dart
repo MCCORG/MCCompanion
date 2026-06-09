@@ -33,6 +33,7 @@ import 'manage_servers_screen.dart';
 import 'profile_screen.dart';
 import 'chat_screen.dart';
 import 'server_tracker_screen.dart';
+import 'feedback_screen.dart';
 import '../services/server_tracker_service.dart';
 import '../services/subscription_service.dart';
 import '../services/home_customization_service.dart';
@@ -50,6 +51,7 @@ const int _pageWiki = 6;
 const int _pageProfile = 7;
 const int _pagePlayerLookup = 8;
 const int _pageServerTracker = 9;
+const int _pageFeedback = 10;
 
 class AppShell extends StatefulWidget {
   final RelayPingResult? initialRelay;
@@ -77,6 +79,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   final GlobalKey<SkinsScreenState> _skinsKey = GlobalKey();
   final GlobalKey<ProfileScreenState> _profileKey = GlobalKey();
   bool _loginFromTracker = false;
+  String? _lastSignedInUid;
 
   late RelayPingResult _selectedRelay;
   int _pageIndex = _pageHome;
@@ -97,10 +100,14 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     _authSub = AuthService.userStream.listen((user) {
       if (user != null) {
         MessageService.connect();
-        unawaited(PushNotificationService.onUserSignedIn());
+        if (_lastSignedInUid != user.uid) {
+          _lastSignedInUid = user.uid;
+          unawaited(PushNotificationService.onUserSignedIn());
+        }
         unawaited(ServerTrackerService.instance.start());
         unawaited(SubscriptionService.instance.init(user.uid));
       } else {
+        _lastSignedInUid = null;
         MessageService.disconnect();
         ServerTrackerService.instance.stop();
         SubscriptionService.instance.reset();
@@ -442,6 +449,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
           onGoToPartners: () => _goTo(_pagePartners),
           onGoToPlayerLookup: () => _goTo(_pagePlayerLookup),
           onGoToServerTracker: () => _goTo(_pageServerTracker),
+          onGoToFeedback: () => _goTo(_pageFeedback),
           onWebsiteTap: () => navigationController.openWebsite(context),
           onDiscordTap: () => navigationController.openDiscord(context),
           onLanguageTap: () => navigationController.showLanguageDialog(context),
@@ -512,6 +520,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
             _goTo(_pageProfile);
           },
         ),
+        FeedbackScreen(onBack: () => _goTo(_pageHome)),
       ],
     );
   }

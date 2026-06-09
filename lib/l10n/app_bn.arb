@@ -1545,5 +1545,31 @@
   "accountActions": "অ্যাকাউন্ট",
   "@accountActions": {
     "description": "Label for account danger zone section"
-  }
+  },
+  "feedbackBugReport": "বাগ রিপোর্ট",
+  "feedbackFeatureRequest": "ফিচার অনুরোধ",
+  "feedbackGoesToGithub": "সরাসরি GitHub-এ যাবে",
+  "feedbackTitleLabel": "শিরোনাম",
+  "feedbackTitleHintBug": "উদা. স্কিন এডিটর খুলতে গেলে অ্যাপ ক্র্যাশ করে",
+  "feedbackTitleHintFeature": "উদা. সার্ভার তালিকায় প্লেয়ারের পিং দেখান",
+  "feedbackWhatHappened": "কী হয়েছিল?",
+  "feedbackDescribeIdea": "আপনার ধারণা বর্ণনা করুন",
+  "feedbackDescHintBug": "বাগটি বর্ণনা করুন — আপনি কী করেছিলেন, কী আশা করেছিলেন এবং পরিবর্তে কী হয়েছিল?",
+  "feedbackDescHintFeature": "আপনি কী চান এবং কেন এটি উপকারী হবে তা ব্যাখ্যা করুন।",
+  "feedbackEmailLabel": "ইমেইল (ঐচ্ছিক)",
+  "feedbackEmailHint": "আমরা যোগাযোগ করতে পারি বলে",
+  "feedbackEmailNote": "আপনার ইমেইল কখনো প্রকাশ্যে শেয়ার করা হবে না।",
+  "feedbackSubmitBug": "বাগ রিপোর্ট জমা দিন",
+  "feedbackSubmitFeature": "ফিচার অনুরোধ জমা দিন",
+  "feedbackDisclaimer": "GitHub-এ একটি পাবলিক ইস্যু তৈরি করে · পাসওয়ার্ড অন্তর্ভুক্ত করবেন না",
+  "feedbackSuccessTitle": "ফিডব্যাকের জন্য ধন্যবাদ!",
+  "feedbackSuccessBody": "আপনার রিপোর্ট জমা দেওয়া হয়েছে এবং GitHub-এ একটি ইস্যু তৈরি হয়েছে। আমরা যত দ্রুত সম্ভব দেখব।",
+  "feedbackViewOnGithub": "GitHub-এ দেখুন",
+  "feedbackSubmitAnother": "আরেকটি জমা দিন",
+  "feedbackBackToApp": "অ্যাপে ফিরে যান",
+  "feedbackTitleTooShort": "শিরোনাম কমপক্ষে ৫ অক্ষরের হতে হবে।",
+  "feedbackDescTooShort": "বিবরণ কমপক্ষে ১০ অক্ষরের হতে হবে।",
+  "feedbackSubmitFailed": "জমা দেওয়া ব্যর্থ হয়েছে। আবার চেষ্টা করুন।",
+  "feedbackTileTitle": "একটি বাগ রিপোর্ট করুন বা ফিচার সাজেস্ট করুন",
+  "feedbackTileSubtitle": "MCCompanion উন্নত করতে আমাদের সাহায্য করুন"
 }

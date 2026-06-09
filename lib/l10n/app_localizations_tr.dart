@@ -1560,4 +1560,82 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get accountActions => 'HESAP';
+
+  @override
+  String get feedbackBugReport => 'Hata Raporu';
+
+  @override
+  String get feedbackFeatureRequest => 'Özellik İsteği';
+
+  @override
+  String get feedbackGoesToGithub => 'Doğrudan GitHub\'a gönderilir';
+
+  @override
+  String get feedbackTitleLabel => 'Başlık';
+
+  @override
+  String get feedbackTitleHintBug => 'ör. Skin editörünü açarken uygulama çöküyor';
+
+  @override
+  String get feedbackTitleHintFeature => 'ör. Sunucu listesinde oyuncu pingi göster';
+
+  @override
+  String get feedbackWhatHappened => 'Ne oldu?';
+
+  @override
+  String get feedbackDescribeIdea => 'Fikrinden bahset';
+
+  @override
+  String get feedbackDescHintBug => 'Hatayı açıkla — ne yaptın, ne bekliyordun ve bunun yerine ne oldu?';
+
+  @override
+  String get feedbackDescHintFeature => 'Ne istediğini ve neden faydalı olacağını açıkla.';
+
+  @override
+  String get feedbackEmailLabel => 'E-posta (isteğe bağlı)';
+
+  @override
+  String get feedbackEmailHint => 'Seninle iletişime geçebilmemiz için';
+
+  @override
+  String get feedbackEmailNote => 'E-posta adresin hiçbir zaman herkese açık paylaşılmaz.';
+
+  @override
+  String get feedbackSubmitBug => 'Hata Raporunu Gönder';
+
+  @override
+  String get feedbackSubmitFeature => 'Özellik İsteğini Gönder';
+
+  @override
+  String get feedbackDisclaimer => 'GitHub\'da herkese açık bir konu oluşturur · Parola ekleme';
+
+  @override
+  String get feedbackSuccessTitle => 'Geri bildirim için teşekkürler!';
+
+  @override
+  String get feedbackSuccessBody => 'Raporun gönderildi ve GitHub\'da bir konu oluşturuldu. En kısa sürede inceleyeceğiz.';
+
+  @override
+  String get feedbackViewOnGithub => 'GitHub\'da görüntüle';
+
+  @override
+  String get feedbackSubmitAnother => 'Bir tane daha gönder';
+
+  @override
+  String get feedbackBackToApp => 'Uygulamaya geri dön';
+
+  @override
+  String get feedbackTitleTooShort => 'Başlık en az 5 karakter olmalıdır.';
+
+  @override
+  String get feedbackDescTooShort => 'Açıklama en az 10 karakter olmalıdır.';
+
+  @override
+  String get feedbackSubmitFailed => 'Gönderilemedi. Lütfen tekrar deneyin.';
+
+  @override
+  String get feedbackTileTitle => 'Hata bildirin veya özellik önerin';
+
+  @override
+  String get feedbackTileSubtitle => 'MCCompanion\'ı geliştirmemize yardım edin';
 }

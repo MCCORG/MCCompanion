@@ -1545,5 +1545,31 @@
   "accountActions": "खाता",
   "@accountActions": {
     "description": "Label for account danger zone section"
-  }
+  },
+  "feedbackBugReport": "बग रिपोर्ट",
+  "feedbackFeatureRequest": "फीचर अनुरोध",
+  "feedbackGoesToGithub": "सीधे GitHub पर जाता है",
+  "feedbackTitleLabel": "शीर्षक",
+  "feedbackTitleHintBug": "उदा. स्किन एडिटर खोलने पर ऐप क्रैश होता है",
+  "feedbackTitleHintFeature": "उदा. सर्वर सूची में प्लेयर का पिंग दिखाएं",
+  "feedbackWhatHappened": "क्या हुआ?",
+  "feedbackDescribeIdea": "अपना विचार बताएं",
+  "feedbackDescHintBug": "बग का वर्णन करें — आपने क्या किया, क्या उम्मीद थी और इसके बजाय क्या हुआ?",
+  "feedbackDescHintFeature": "बताएं कि आप क्या चाहते हैं और यह क्यों उपयोगी होगा।",
+  "feedbackEmailLabel": "ईमेल (वैकल्पिक)",
+  "feedbackEmailHint": "ताकि हम आपसे संपर्क कर सकें",
+  "feedbackEmailNote": "आपका ईमेल कभी सार्वजनिक नहीं किया जाएगा।",
+  "feedbackSubmitBug": "बग रिपोर्ट सबमिट करें",
+  "feedbackSubmitFeature": "फीचर अनुरोध सबमिट करें",
+  "feedbackDisclaimer": "GitHub पर एक सार्वजनिक इशू बनाता है · पासवर्ड शामिल न करें",
+  "feedbackSuccessTitle": "फीडबैक के लिए धन्यवाद!",
+  "feedbackSuccessBody": "आपकी रिपोर्ट सबमिट हो गई है और GitHub पर एक इशू बनाया गया है। हम जल्द से जल्द देखेंगे।",
+  "feedbackViewOnGithub": "GitHub पर देखें",
+  "feedbackSubmitAnother": "एक और सबमिट करें",
+  "feedbackBackToApp": "ऐप पर वापस जाएं",
+  "feedbackTitleTooShort": "शीर्षक कम से कम 5 अक्षरों का होना चाहिए।",
+  "feedbackDescTooShort": "विवरण कम से कम 10 अक्षरों का होना चाहिए।",
+  "feedbackSubmitFailed": "सबमिट करने में विफल। कृपया पुनः प्रयास करें।",
+  "feedbackTileTitle": "एक बग रिपोर्ट करें या फीचर सुझाएं",
+  "feedbackTileSubtitle": "MCCompanion को बेहतर बनाने में मदद करें"
 }

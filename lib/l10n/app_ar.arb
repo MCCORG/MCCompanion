@@ -1545,5 +1545,31 @@
   "accountActions": "الحساب",
   "@accountActions": {
     "description": "Label for account danger zone section"
-  }
+  },
+  "feedbackBugReport": "تقرير خطأ",
+  "feedbackFeatureRequest": "طلب ميزة",
+  "feedbackGoesToGithub": "يُرسل مباشرةً إلى GitHub",
+  "feedbackTitleLabel": "العنوان",
+  "feedbackTitleHintBug": "مثال: التطبيق يتعطل عند فتح محرر السكن",
+  "feedbackTitleHintFeature": "مثال: عرض بينج اللاعب في قائمة الخوادم",
+  "feedbackWhatHappened": "ماذا حدث؟",
+  "feedbackDescribeIdea": "صف فكرتك",
+  "feedbackDescHintBug": "صف الخطأ — ماذا فعلت، وماذا توقعت، وماذا حدث بدلاً من ذلك؟",
+  "feedbackDescHintFeature": "اشرح ما تريده ولماذا سيكون مفيدًا.",
+  "feedbackEmailLabel": "البريد الإلكتروني (اختياري)",
+  "feedbackEmailHint": "حتى نتمكن من التواصل معك",
+  "feedbackEmailNote": "لن يُشارك بريدك الإلكتروني علنًا أبدًا.",
+  "feedbackSubmitBug": "إرسال تقرير الخطأ",
+  "feedbackSubmitFeature": "إرسال طلب الميزة",
+  "feedbackDisclaimer": "ينشئ تذكرة عامة على GitHub · لا تُدرج كلمات المرور",
+  "feedbackSuccessTitle": "شكرًا على ملاحظاتك!",
+  "feedbackSuccessBody": "تم إرسال تقريرك وإنشاء تذكرة على GitHub. سنراجعها في أقرب وقت ممكن.",
+  "feedbackViewOnGithub": "عرض على GitHub",
+  "feedbackSubmitAnother": "إرسال آخر",
+  "feedbackBackToApp": "العودة إلى التطبيق",
+  "feedbackTitleTooShort": "يجب أن يحتوي العنوان على 5 أحرف على الأقل.",
+  "feedbackDescTooShort": "يجب أن يحتوي الوصف على 10 أحرف على الأقل.",
+  "feedbackSubmitFailed": "فشل الإرسال. يرجى المحاولة مرة أخرى.",
+  "feedbackTileTitle": "الإبلاغ عن خطأ أو اقتراح ميزة",
+  "feedbackTileSubtitle": "ساعدنا في تحسين MCCompanion"
 }

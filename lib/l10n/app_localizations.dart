@@ -3080,6 +3080,162 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'ACCOUNT'**
   String get accountActions;
+
+  /// Label for bug report type
+  ///
+  /// In en, this message translates to:
+  /// **'Bug Report'**
+  String get feedbackBugReport;
+
+  /// Label for feature request type
+  ///
+  /// In en, this message translates to:
+  /// **'Feature Request'**
+  String get feedbackFeatureRequest;
+
+  /// Subtitle in feedback screen header
+  ///
+  /// In en, this message translates to:
+  /// **'Goes straight to GitHub'**
+  String get feedbackGoesToGithub;
+
+  /// Label above title field in feedback form
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get feedbackTitleLabel;
+
+  /// Hint text for title field when type is bug
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. App crashes when opening skin editor'**
+  String get feedbackTitleHintBug;
+
+  /// Hint text for title field when type is feature
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Show player ping in the server list'**
+  String get feedbackTitleHintFeature;
+
+  /// Label above description field when type is bug
+  ///
+  /// In en, this message translates to:
+  /// **'What happened?'**
+  String get feedbackWhatHappened;
+
+  /// Label above description field when type is feature
+  ///
+  /// In en, this message translates to:
+  /// **'Describe your idea'**
+  String get feedbackDescribeIdea;
+
+  /// Hint in description field when type is bug
+  ///
+  /// In en, this message translates to:
+  /// **'Describe the bug — what did you do, what did you expect, and what happened instead?'**
+  String get feedbackDescHintBug;
+
+  /// Hint in description field when type is feature
+  ///
+  /// In en, this message translates to:
+  /// **'Explain what you\'d like and why it would be useful.'**
+  String get feedbackDescHintFeature;
+
+  /// Label above email field in feedback form
+  ///
+  /// In en, this message translates to:
+  /// **'Email (optional)'**
+  String get feedbackEmailLabel;
+
+  /// Hint text for email field
+  ///
+  /// In en, this message translates to:
+  /// **'So we can follow up with you'**
+  String get feedbackEmailHint;
+
+  /// Note below email field
+  ///
+  /// In en, this message translates to:
+  /// **'Your email is never shared publicly.'**
+  String get feedbackEmailNote;
+
+  /// Submit button label when type is bug
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Bug Report'**
+  String get feedbackSubmitBug;
+
+  /// Submit button label when type is feature
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Feature Request'**
+  String get feedbackSubmitFeature;
+
+  /// Small disclaimer below submit button
+  ///
+  /// In en, this message translates to:
+  /// **'Creates a public issue on GitHub · Don\'t include passwords'**
+  String get feedbackDisclaimer;
+
+  /// Success screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Thanks for the feedback!'**
+  String get feedbackSuccessTitle;
+
+  /// Success screen body text
+  ///
+  /// In en, this message translates to:
+  /// **'Your report has been submitted and a GitHub issue has been created. We\'ll look into it as soon as possible.'**
+  String get feedbackSuccessBody;
+
+  /// Button to open GitHub issue
+  ///
+  /// In en, this message translates to:
+  /// **'View on GitHub'**
+  String get feedbackViewOnGithub;
+
+  /// Button to reset and submit another report
+  ///
+  /// In en, this message translates to:
+  /// **'Submit another'**
+  String get feedbackSubmitAnother;
+
+  /// Button to go back to the app
+  ///
+  /// In en, this message translates to:
+  /// **'Back to app'**
+  String get feedbackBackToApp;
+
+  /// Validation error when title is too short
+  ///
+  /// In en, this message translates to:
+  /// **'Title must be at least 5 characters.'**
+  String get feedbackTitleTooShort;
+
+  /// Validation error when description is too short
+  ///
+  /// In en, this message translates to:
+  /// **'Description must be at least 10 characters.'**
+  String get feedbackDescTooShort;
+
+  /// Error toast when submit fails
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to submit. Please try again.'**
+  String get feedbackSubmitFailed;
+
+  /// Title on feedback tile on landing screen
+  ///
+  /// In en, this message translates to:
+  /// **'Report a bug or suggest a feature'**
+  String get feedbackTileTitle;
+
+  /// Subtitle on feedback tile on landing screen
+  ///
+  /// In en, this message translates to:
+  /// **'Help us improve MCCompanion'**
+  String get feedbackTileSubtitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

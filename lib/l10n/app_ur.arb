@@ -1541,5 +1541,31 @@
   "skinExported": "اسکن کامیابی سے برآمد",
   "@skinExported": {
     "description": "Toast when skin is exported successfully"
-  }
+  },
+  "feedbackBugReport": "بگ رپورٹ",
+  "feedbackFeatureRequest": "فیچر کی درخواست",
+  "feedbackGoesToGithub": "براہ راست GitHub پر جاتا ہے",
+  "feedbackTitleLabel": "عنوان",
+  "feedbackTitleHintBug": "مثلاً: سکن ایڈیٹر کھولتے وقت ایپ کریش ہوتی ہے",
+  "feedbackTitleHintFeature": "مثلاً: سرور لسٹ میں کھلاڑی کی پنگ دکھائیں",
+  "feedbackWhatHappened": "کیا ہوا؟",
+  "feedbackDescribeIdea": "اپنا خیال بیان کریں",
+  "feedbackDescHintBug": "بگ بیان کریں — آپ نے کیا کیا، کیا توقع تھی اور اس کی بجائے کیا ہوا؟",
+  "feedbackDescHintFeature": "بتائیں کہ آپ کیا چاہتے ہیں اور یہ کیوں مفید ہوگا۔",
+  "feedbackEmailLabel": "ای میل (اختیاری)",
+  "feedbackEmailHint": "تاکہ ہم آپ سے رابطہ کر سکیں",
+  "feedbackEmailNote": "آپ کی ای میل کبھی بھی عام نہیں کی جائے گی۔",
+  "feedbackSubmitBug": "بگ رپورٹ جمع کریں",
+  "feedbackSubmitFeature": "فیچر درخواست جمع کریں",
+  "feedbackDisclaimer": "GitHub پر ایک عوامی ایشو بناتا ہے · پاس ورڈ شامل نہ کریں",
+  "feedbackSuccessTitle": "فیڈبیک کے لیے شکریہ!",
+  "feedbackSuccessBody": "آپ کی رپورٹ جمع ہو گئی ہے اور GitHub پر ایک ایشو بنایا گیا ہے۔ ہم جلد از جلد دیکھیں گے۔",
+  "feedbackViewOnGithub": "GitHub پر دیکھیں",
+  "feedbackSubmitAnother": "ایک اور جمع کریں",
+  "feedbackBackToApp": "ایپ پر واپس جائیں",
+  "feedbackTitleTooShort": "عنوان کم از کم 5 حروف کا ہونا چاہیے۔",
+  "feedbackDescTooShort": "تفصیل کم از کم 10 حروف کی ہونی چاہیے۔",
+  "feedbackSubmitFailed": "جمع کرنے میں ناکامی۔ دوبارہ کوشش کریں۔",
+  "feedbackTileTitle": "ایک بگ رپورٹ کریں یا فیچر تجویز کریں",
+  "feedbackTileSubtitle": "MCCompanion کو بہتر بنانے میں مدد کریں"
 }

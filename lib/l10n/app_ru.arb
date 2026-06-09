@@ -1545,5 +1545,31 @@
   "accountActions": "АККАУНТ",
   "@accountActions": {
     "description": "Label for account danger zone section"
-  }
+  },
+  "feedbackBugReport": "Сообщение об ошибке",
+  "feedbackFeatureRequest": "Запрос функции",
+  "feedbackGoesToGithub": "Отправляется прямо на GitHub",
+  "feedbackTitleLabel": "Заголовок",
+  "feedbackTitleHintBug": "напр. Приложение вылетает при открытии редактора скинов",
+  "feedbackTitleHintFeature": "напр. Показывать пинг игрока в списке серверов",
+  "feedbackWhatHappened": "Что произошло?",
+  "feedbackDescribeIdea": "Опишите свою идею",
+  "feedbackDescHintBug": "Опишите ошибку — что вы сделали, что ожидали и что произошло вместо этого?",
+  "feedbackDescHintFeature": "Объясните, что вы хотите и почему это было бы полезно.",
+  "feedbackEmailLabel": "Электронная почта (необязательно)",
+  "feedbackEmailHint": "Чтобы мы могли связаться с вами",
+  "feedbackEmailNote": "Ваш адрес электронной почты никогда не публикуется.",
+  "feedbackSubmitBug": "Отправить сообщение об ошибке",
+  "feedbackSubmitFeature": "Отправить запрос функции",
+  "feedbackDisclaimer": "Создаёт публичный тикет на GitHub · Не указывайте пароли",
+  "feedbackSuccessTitle": "Спасибо за отзыв!",
+  "feedbackSuccessBody": "Ваш отчёт отправлен и тикет на GitHub создан. Мы рассмотрим его как можно скорее.",
+  "feedbackViewOnGithub": "Посмотреть на GitHub",
+  "feedbackSubmitAnother": "Отправить ещё",
+  "feedbackBackToApp": "Вернуться в приложение",
+  "feedbackTitleTooShort": "Заголовок должен содержать не менее 5 символов.",
+  "feedbackDescTooShort": "Описание должно содержать не менее 10 символов.",
+  "feedbackSubmitFailed": "Не удалось отправить. Попробуйте ещё раз.",
+  "feedbackTileTitle": "Сообщить об ошибке или предложить функцию",
+  "feedbackTileSubtitle": "Помогите нам улучшить MCCompanion"
 }

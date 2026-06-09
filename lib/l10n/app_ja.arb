@@ -1545,5 +1545,31 @@
   "accountActions": "アカウント",
   "@accountActions": {
     "description": "Label for account danger zone section"
-  }
+  },
+  "feedbackBugReport": "バグ報告",
+  "feedbackFeatureRequest": "機能リクエスト",
+  "feedbackGoesToGithub": "GitHubに直接送信されます",
+  "feedbackTitleLabel": "タイトル",
+  "feedbackTitleHintBug": "例: スキンエディターを開くとアプリがクラッシュする",
+  "feedbackTitleHintFeature": "例: サーバーリストにプレイヤーのpingを表示する",
+  "feedbackWhatHappened": "何が起きましたか？",
+  "feedbackDescribeIdea": "アイデアを説明してください",
+  "feedbackDescHintBug": "バグの詳細を説明してください — 何をしたか、何を期待したか、実際に何が起きたか",
+  "feedbackDescHintFeature": "何を望んでいるか、なぜ役立つかを説明してください。",
+  "feedbackEmailLabel": "メール（任意）",
+  "feedbackEmailHint": "ご連絡できるよう",
+  "feedbackEmailNote": "メールアドレスが公開されることはありません。",
+  "feedbackSubmitBug": "バグ報告を送信",
+  "feedbackSubmitFeature": "機能リクエストを送信",
+  "feedbackDisclaimer": "GitHubに公開イシューを作成します · パスワードを含めないでください",
+  "feedbackSuccessTitle": "フィードバックをありがとう！",
+  "feedbackSuccessBody": "レポートが送信され、GitHubにイシューが作成されました。できるだけ早く確認します。",
+  "feedbackViewOnGithub": "GitHubで見る",
+  "feedbackSubmitAnother": "別のものを送信",
+  "feedbackBackToApp": "アプリに戻る",
+  "feedbackTitleTooShort": "タイトルは5文字以上必要です。",
+  "feedbackDescTooShort": "説明は10文字以上必要です。",
+  "feedbackSubmitFailed": "送信に失敗しました。もう一度お試しください。",
+  "feedbackTileTitle": "バグを報告したり機能を提案したりする",
+  "feedbackTileSubtitle": "MCCompanionの改善にご協力ください"
 }

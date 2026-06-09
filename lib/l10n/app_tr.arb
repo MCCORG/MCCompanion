@@ -1545,5 +1545,31 @@
   "accountActions": "HESAP",
   "@accountActions": {
     "description": "Label for account danger zone section"
-  }
+  },
+  "feedbackBugReport": "Hata Raporu",
+  "feedbackFeatureRequest": "Özellik İsteği",
+  "feedbackGoesToGithub": "Doğrudan GitHub'a gönderilir",
+  "feedbackTitleLabel": "Başlık",
+  "feedbackTitleHintBug": "ör. Skin editörünü açarken uygulama çöküyor",
+  "feedbackTitleHintFeature": "ör. Sunucu listesinde oyuncu pingi göster",
+  "feedbackWhatHappened": "Ne oldu?",
+  "feedbackDescribeIdea": "Fikrinden bahset",
+  "feedbackDescHintBug": "Hatayı açıkla — ne yaptın, ne bekliyordun ve bunun yerine ne oldu?",
+  "feedbackDescHintFeature": "Ne istediğini ve neden faydalı olacağını açıkla.",
+  "feedbackEmailLabel": "E-posta (isteğe bağlı)",
+  "feedbackEmailHint": "Seninle iletişime geçebilmemiz için",
+  "feedbackEmailNote": "E-posta adresin hiçbir zaman herkese açık paylaşılmaz.",
+  "feedbackSubmitBug": "Hata Raporunu Gönder",
+  "feedbackSubmitFeature": "Özellik İsteğini Gönder",
+  "feedbackDisclaimer": "GitHub'da herkese açık bir konu oluşturur · Parola ekleme",
+  "feedbackSuccessTitle": "Geri bildirim için teşekkürler!",
+  "feedbackSuccessBody": "Raporun gönderildi ve GitHub'da bir konu oluşturuldu. En kısa sürede inceleyeceğiz.",
+  "feedbackViewOnGithub": "GitHub'da görüntüle",
+  "feedbackSubmitAnother": "Bir tane daha gönder",
+  "feedbackBackToApp": "Uygulamaya geri dön",
+  "feedbackTitleTooShort": "Başlık en az 5 karakter olmalıdır.",
+  "feedbackDescTooShort": "Açıklama en az 10 karakter olmalıdır.",
+  "feedbackSubmitFailed": "Gönderilemedi. Lütfen tekrar deneyin.",
+  "feedbackTileTitle": "Hata bildirin veya özellik önerin",
+  "feedbackTileSubtitle": "MCCompanion'ı geliştirmemize yardım edin"
 }

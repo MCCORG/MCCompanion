@@ -1560,4 +1560,82 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get accountActions => 'ACCOUNT';
+
+  @override
+  String get feedbackBugReport => 'Laporan Bug';
+
+  @override
+  String get feedbackFeatureRequest => 'Permintaan Fitur';
+
+  @override
+  String get feedbackGoesToGithub => 'Langsung dikirim ke GitHub';
+
+  @override
+  String get feedbackTitleLabel => 'Judul';
+
+  @override
+  String get feedbackTitleHintBug => 'contoh: Aplikasi crash saat membuka skin editor';
+
+  @override
+  String get feedbackTitleHintFeature => 'contoh: Tampilkan ping pemain di daftar server';
+
+  @override
+  String get feedbackWhatHappened => 'Apa yang terjadi?';
+
+  @override
+  String get feedbackDescribeIdea => 'Jelaskan ide kamu';
+
+  @override
+  String get feedbackDescHintBug => 'Jelaskan bug-nya — apa yang kamu lakukan, apa yang kamu harapkan, dan apa yang terjadi?';
+
+  @override
+  String get feedbackDescHintFeature => 'Jelaskan apa yang kamu inginkan dan mengapa itu berguna.';
+
+  @override
+  String get feedbackEmailLabel => 'Email (opsional)';
+
+  @override
+  String get feedbackEmailHint => 'Agar kami bisa menghubungi kamu';
+
+  @override
+  String get feedbackEmailNote => 'Email kamu tidak akan pernah dibagikan secara publik.';
+
+  @override
+  String get feedbackSubmitBug => 'Kirim Laporan Bug';
+
+  @override
+  String get feedbackSubmitFeature => 'Kirim Permintaan Fitur';
+
+  @override
+  String get feedbackDisclaimer => 'Membuat issue publik di GitHub · Jangan sertakan kata sandi';
+
+  @override
+  String get feedbackSuccessTitle => 'Terima kasih atas masukan kamu!';
+
+  @override
+  String get feedbackSuccessBody => 'Laporan kamu telah dikirim dan issue GitHub telah dibuat. Kami akan segera meninjaunya.';
+
+  @override
+  String get feedbackViewOnGithub => 'Lihat di GitHub';
+
+  @override
+  String get feedbackSubmitAnother => 'Kirim lagi';
+
+  @override
+  String get feedbackBackToApp => 'Kembali ke aplikasi';
+
+  @override
+  String get feedbackTitleTooShort => 'Judul harus minimal 5 karakter.';
+
+  @override
+  String get feedbackDescTooShort => 'Deskripsi harus minimal 10 karakter.';
+
+  @override
+  String get feedbackSubmitFailed => 'Gagal mengirim. Coba lagi.';
+
+  @override
+  String get feedbackTileTitle => 'Laporkan bug atau sarankan fitur';
+
+  @override
+  String get feedbackTileSubtitle => 'Bantu kami meningkatkan MCCompanion';
 }

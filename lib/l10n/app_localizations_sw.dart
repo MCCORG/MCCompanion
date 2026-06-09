@@ -1560,4 +1560,82 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get accountActions => 'ACCOUNT';
+
+  @override
+  String get feedbackBugReport => 'Ripoti ya Hitilafu';
+
+  @override
+  String get feedbackFeatureRequest => 'Ombi la Kipengele';
+
+  @override
+  String get feedbackGoesToGithub => 'Inaenda moja kwa moja kwenye GitHub';
+
+  @override
+  String get feedbackTitleLabel => 'Kichwa';
+
+  @override
+  String get feedbackTitleHintBug => 'mfano: Programu inaanguka wakati wa kufungua kihariri cha ngozi';
+
+  @override
+  String get feedbackTitleHintFeature => 'mfano: Onyesha ping ya mchezaji kwenye orodha ya seva';
+
+  @override
+  String get feedbackWhatHappened => 'Nini kilitokea?';
+
+  @override
+  String get feedbackDescribeIdea => 'Elezea wazo lako';
+
+  @override
+  String get feedbackDescHintBug => 'Elezea hitilafu — ulifanya nini, ulitegemea nini na badala yake nini kilitokea?';
+
+  @override
+  String get feedbackDescHintFeature => 'Eleza unachotaka na kwa nini itakuwa ya manufaa.';
+
+  @override
+  String get feedbackEmailLabel => 'Barua pepe (si lazima)';
+
+  @override
+  String get feedbackEmailHint => 'Ili tuweze kukuwasiliana';
+
+  @override
+  String get feedbackEmailNote => 'Barua pepe yako haitashirikiwa hadharani kamwe.';
+
+  @override
+  String get feedbackSubmitBug => 'Tuma Ripoti ya Hitilafu';
+
+  @override
+  String get feedbackSubmitFeature => 'Tuma Ombi la Kipengele';
+
+  @override
+  String get feedbackDisclaimer => 'Inaunda suala la umma kwenye GitHub · Usijumuishe nywila';
+
+  @override
+  String get feedbackSuccessTitle => 'Asante kwa maoni yako!';
+
+  @override
+  String get feedbackSuccessBody => 'Ripoti yako imetumwa na suala la GitHub limeundwa. Tutaangalia haraka iwezekanavyo.';
+
+  @override
+  String get feedbackViewOnGithub => 'Tazama kwenye GitHub';
+
+  @override
+  String get feedbackSubmitAnother => 'Tuma nyingine';
+
+  @override
+  String get feedbackBackToApp => 'Rudi kwenye programu';
+
+  @override
+  String get feedbackTitleTooShort => 'Kichwa lazima kiwe na angalau herufi 5.';
+
+  @override
+  String get feedbackDescTooShort => 'Maelezo lazima yawe na angalau herufi 10.';
+
+  @override
+  String get feedbackSubmitFailed => 'Imeshindwa kutuma. Tafadhali jaribu tena.';
+
+  @override
+  String get feedbackTileTitle => 'Ripoti hitilafu au pendekeza kipengele';
+
+  @override
+  String get feedbackTileSubtitle => 'Tusaidie kuboresha MCCompanion';
 }

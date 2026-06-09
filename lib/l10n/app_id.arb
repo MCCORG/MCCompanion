@@ -1541,5 +1541,31 @@
   "skinExported": "Skin berhasil diekspor",
   "@skinExported": {
     "description": "Toast when skin is exported successfully"
-  }
+  },
+  "feedbackBugReport": "Laporan Bug",
+  "feedbackFeatureRequest": "Permintaan Fitur",
+  "feedbackGoesToGithub": "Langsung dikirim ke GitHub",
+  "feedbackTitleLabel": "Judul",
+  "feedbackTitleHintBug": "contoh: Aplikasi crash saat membuka skin editor",
+  "feedbackTitleHintFeature": "contoh: Tampilkan ping pemain di daftar server",
+  "feedbackWhatHappened": "Apa yang terjadi?",
+  "feedbackDescribeIdea": "Jelaskan ide kamu",
+  "feedbackDescHintBug": "Jelaskan bug-nya — apa yang kamu lakukan, apa yang kamu harapkan, dan apa yang terjadi?",
+  "feedbackDescHintFeature": "Jelaskan apa yang kamu inginkan dan mengapa itu berguna.",
+  "feedbackEmailLabel": "Email (opsional)",
+  "feedbackEmailHint": "Agar kami bisa menghubungi kamu",
+  "feedbackEmailNote": "Email kamu tidak akan pernah dibagikan secara publik.",
+  "feedbackSubmitBug": "Kirim Laporan Bug",
+  "feedbackSubmitFeature": "Kirim Permintaan Fitur",
+  "feedbackDisclaimer": "Membuat issue publik di GitHub · Jangan sertakan kata sandi",
+  "feedbackSuccessTitle": "Terima kasih atas masukan kamu!",
+  "feedbackSuccessBody": "Laporan kamu telah dikirim dan issue GitHub telah dibuat. Kami akan segera meninjaunya.",
+  "feedbackViewOnGithub": "Lihat di GitHub",
+  "feedbackSubmitAnother": "Kirim lagi",
+  "feedbackBackToApp": "Kembali ke aplikasi",
+  "feedbackTitleTooShort": "Judul harus minimal 5 karakter.",
+  "feedbackDescTooShort": "Deskripsi harus minimal 10 karakter.",
+  "feedbackSubmitFailed": "Gagal mengirim. Coba lagi.",
+  "feedbackTileTitle": "Laporkan bug atau sarankan fitur",
+  "feedbackTileSubtitle": "Bantu kami meningkatkan MCCompanion"
 }

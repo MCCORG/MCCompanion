@@ -860,5 +860,31 @@
   "accountActions": "ACCOUNT",
   "@accountActions": {
     "description": "Label for account danger zone section"
-  }
+  },
+  "feedbackBugReport": "Bugmelding",
+  "feedbackFeatureRequest": "Functieverzoek",
+  "feedbackGoesToGithub": "Gaat direct naar GitHub",
+  "feedbackTitleLabel": "Titel",
+  "feedbackTitleHintBug": "bijv. App crasht bij openen van de skin-editor",
+  "feedbackTitleHintFeature": "bijv. Toon ping van speler in de serverlijst",
+  "feedbackWhatHappened": "Wat is er gebeurd?",
+  "feedbackDescribeIdea": "Beschrijf je idee",
+  "feedbackDescHintBug": "Beschrijf de bug — wat heb je gedaan, wat verwachtte je, en wat gebeurde er in plaats daarvan?",
+  "feedbackDescHintFeature": "Leg uit wat je wilt en waarom het nuttig zou zijn.",
+  "feedbackEmailLabel": "E-mail (optioneel)",
+  "feedbackEmailHint": "Zodat we contact met je kunnen opnemen",
+  "feedbackEmailNote": "Je e-mail wordt nooit openbaar gedeeld.",
+  "feedbackSubmitBug": "Bugmelding indienen",
+  "feedbackSubmitFeature": "Functieverzoek indienen",
+  "feedbackDisclaimer": "Maakt een openbaar issue op GitHub · Geen wachtwoorden invullen",
+  "feedbackSuccessTitle": "Bedankt voor de feedback!",
+  "feedbackSuccessBody": "Je melding is ingediend en er is een GitHub-issue aangemaakt. We bekijken het zo snel mogelijk.",
+  "feedbackViewOnGithub": "Bekijk op GitHub",
+  "feedbackSubmitAnother": "Nog een indienen",
+  "feedbackBackToApp": "Terug naar app",
+  "feedbackTitleTooShort": "Titel moet minimaal 5 tekens zijn.",
+  "feedbackDescTooShort": "Beschrijving moet minimaal 10 tekens zijn.",
+  "feedbackSubmitFailed": "Indienen mislukt. Probeer het opnieuw.",
+  "feedbackTileTitle": "Meld een bug of stel een functie voor",
+  "feedbackTileSubtitle": "Help ons MCCompanion te verbeteren"
 }

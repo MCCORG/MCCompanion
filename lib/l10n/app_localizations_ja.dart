@@ -1560,4 +1560,82 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get accountActions => 'アカウント';
+
+  @override
+  String get feedbackBugReport => 'バグ報告';
+
+  @override
+  String get feedbackFeatureRequest => '機能リクエスト';
+
+  @override
+  String get feedbackGoesToGithub => 'GitHubに直接送信されます';
+
+  @override
+  String get feedbackTitleLabel => 'タイトル';
+
+  @override
+  String get feedbackTitleHintBug => '例: スキンエディターを開くとアプリがクラッシュする';
+
+  @override
+  String get feedbackTitleHintFeature => '例: サーバーリストにプレイヤーのpingを表示する';
+
+  @override
+  String get feedbackWhatHappened => '何が起きましたか？';
+
+  @override
+  String get feedbackDescribeIdea => 'アイデアを説明してください';
+
+  @override
+  String get feedbackDescHintBug => 'バグの詳細を説明してください — 何をしたか、何を期待したか、実際に何が起きたか';
+
+  @override
+  String get feedbackDescHintFeature => '何を望んでいるか、なぜ役立つかを説明してください。';
+
+  @override
+  String get feedbackEmailLabel => 'メール（任意）';
+
+  @override
+  String get feedbackEmailHint => 'ご連絡できるよう';
+
+  @override
+  String get feedbackEmailNote => 'メールアドレスが公開されることはありません。';
+
+  @override
+  String get feedbackSubmitBug => 'バグ報告を送信';
+
+  @override
+  String get feedbackSubmitFeature => '機能リクエストを送信';
+
+  @override
+  String get feedbackDisclaimer => 'GitHubに公開イシューを作成します · パスワードを含めないでください';
+
+  @override
+  String get feedbackSuccessTitle => 'フィードバックをありがとう！';
+
+  @override
+  String get feedbackSuccessBody => 'レポートが送信され、GitHubにイシューが作成されました。できるだけ早く確認します。';
+
+  @override
+  String get feedbackViewOnGithub => 'GitHubで見る';
+
+  @override
+  String get feedbackSubmitAnother => '別のものを送信';
+
+  @override
+  String get feedbackBackToApp => 'アプリに戻る';
+
+  @override
+  String get feedbackTitleTooShort => 'タイトルは5文字以上必要です。';
+
+  @override
+  String get feedbackDescTooShort => '説明は10文字以上必要です。';
+
+  @override
+  String get feedbackSubmitFailed => '送信に失敗しました。もう一度お試しください。';
+
+  @override
+  String get feedbackTileTitle => 'バグを報告したり機能を提案したりする';
+
+  @override
+  String get feedbackTileSubtitle => 'MCCompanionの改善にご協力ください';
 }
