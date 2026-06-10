@@ -1557,6 +1557,9 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get skinExported => 'স্কিন সফলভাবে এক্সপোর্ট হয়েছে';
+  String get skinSavedToDocuments => 'স্কিন ডকুমেন্টসে সংরক্ষিত হয়েছে';
+  String get skinMenuExport => 'এক্সপোর্ট';
+  String get skinMenuDelete => 'মুছুন';
 
   @override
   String get accountActions => 'অ্যাকাউন্ট';

@@ -464,13 +464,13 @@ class SkinsScreenState extends State<SkinsScreen> {
         final dest = File('${saveDir.path}/${skin.name}.png');
         await tmp.copy(dest.path);
         if (mounted) {
-          AppToast.show(context, message: 'Skin saved to Documents', icon: Icons.download_done_rounded, color: AppTheme.success);
+          AppToast.show(context, message: AppLocalizations.of(context)!.skinSavedToDocuments, icon: Icons.download_done_rounded, color: AppTheme.success);
         }
       } else {
         final size = MediaQuery.of(context).size;
         await Share.shareXFiles(
           [XFile(tmp.path, mimeType: 'image/png')],
-          subject: 'Minecraft Skin',
+          subject: AppLocalizations.of(context)!.skinMenuExport,
           sharePositionOrigin: Rect.fromCenter(
             center: Offset(size.width / 2, size.height / 2),
             width: 1,
@@ -845,13 +845,13 @@ Future<void> _shareTextureFile(BuildContext context, String url, String name) as
       final dest = File('${saveDir.path}/$name.png');
       await file.copy(dest.path);
       if (context.mounted) {
-        AppToast.show(context, message: 'Skin saved to Documents', icon: Icons.download_done_rounded, color: AppTheme.success);
+        AppToast.show(context, message: AppLocalizations.of(context)!.skinSavedToDocuments, icon: Icons.download_done_rounded, color: AppTheme.success);
       }
     } else {
       final size = MediaQuery.of(context).size;
       await Share.shareXFiles(
         [XFile(file.path, mimeType: 'image/png')],
-        subject: 'Minecraft Skin',
+        subject: AppLocalizations.of(context)!.skinMenuExport,
         sharePositionOrigin: Rect.fromCenter(
           center: Offset(size.width / 2, size.height / 2),
           width: 1,
@@ -945,19 +945,19 @@ class _SavedSkinMenuSheet extends StatelessWidget {
           const SizedBox(height: 20),
           _MenuTile(
             icon: FontAwesomeIcons.penToSquare,
-            label: 'Edit',
+            label: AppLocalizations.of(context)!.skinsEdit,
             color: AppTheme.accent,
             onTap: onEdit,
           ),
           _MenuTile(
             icon: FontAwesomeIcons.shareFromSquare,
-            label: 'Export',
+            label: AppLocalizations.of(context)!.skinMenuExport,
             color: AppTheme.textSecondary,
             onTap: onExport,
           ),
           _MenuTile(
             icon: FontAwesomeIcons.trash,
-            label: 'Delete',
+            label: AppLocalizations.of(context)!.skinMenuDelete,
             color: AppTheme.error,
             onTap: onDelete,
           ),

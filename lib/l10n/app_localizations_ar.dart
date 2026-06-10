@@ -1557,6 +1557,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get skinExported => 'تم تصدير السكن بنجاح';
+  String get skinSavedToDocuments => 'تم حفظ السكن في المستندات';
+  String get skinMenuExport => 'تصدير';
+  String get skinMenuDelete => 'حذف';
 
   @override
   String get accountActions => 'الحساب';

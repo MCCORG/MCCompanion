@@ -1557,6 +1557,9 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get skinExported => 'Skin imesafirishwa';
+  String get skinSavedToDocuments => 'Skin imehifadhiwa kwenye Nyaraka';
+  String get skinMenuExport => 'Hamisha';
+  String get skinMenuDelete => 'Futa';
 
   @override
   String get accountActions => 'ACCOUNT';

@@ -1557,6 +1557,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get skinExported => 'Skin exportado correctamente';
+  String get skinSavedToDocuments => 'Skin guardado en Documentos';
+  String get skinMenuExport => 'Exportar';
+  String get skinMenuDelete => 'Eliminar';
 
   @override
   String get accountActions => 'CUENTA';

@@ -1557,6 +1557,9 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get skinExported => 'Скин успешно экспортирован';
+  String get skinSavedToDocuments => 'Скин сохранён в Документы';
+  String get skinMenuExport => 'Экспорт';
+  String get skinMenuDelete => 'Удалить';
 
   @override
   String get accountActions => 'АККАУНТ';

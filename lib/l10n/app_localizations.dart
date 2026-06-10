@@ -3075,6 +3075,12 @@ abstract class AppLocalizations {
   /// **'Skin exported successfully'**
   String get skinExported;
 
+  String get skinSavedToDocuments;
+
+  String get skinMenuExport;
+
+  String get skinMenuDelete;
+
   /// Label for account danger zone section
   ///
   /// In en, this message translates to:

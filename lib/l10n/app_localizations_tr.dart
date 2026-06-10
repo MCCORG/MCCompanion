@@ -1557,6 +1557,9 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get skinExported => 'Skin basariyla disa aktarildi';
+  String get skinSavedToDocuments => 'Skin Belgeler klasörüne kaydedildi';
+  String get skinMenuExport => 'Dışa Aktar';
+  String get skinMenuDelete => 'Sil';
 
   @override
   String get accountActions => 'HESAP';

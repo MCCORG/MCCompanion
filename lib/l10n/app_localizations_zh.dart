@@ -1557,6 +1557,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get skinExported => '皮肤导出成功';
+  String get skinSavedToDocuments => '皮肤已保存到文稿';
+  String get skinMenuExport => '导出';
+  String get skinMenuDelete => '删除';
 
   @override
   String get accountActions => '账户';

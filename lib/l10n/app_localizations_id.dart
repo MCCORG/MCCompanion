@@ -1557,6 +1557,9 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get skinExported => 'Skin berhasil diekspor';
+  String get skinSavedToDocuments => 'Skin disimpan ke Dokumen';
+  String get skinMenuExport => 'Ekspor';
+  String get skinMenuDelete => 'Hapus';
 
   @override
   String get accountActions => 'ACCOUNT';
