@@ -55,6 +55,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
   static const double _canvasPx = 640.0;
   final _transformCtrl = TransformationController();
   final _uvCanvasKey = GlobalKey();
+  final _exportButtonKey = GlobalKey();
   bool _activeStroke2D = false;
 
   ui.Image? _previewImage;
@@ -499,9 +500,15 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
       await file.writeAsBytes(bytes);
 
       if (Platform.isIOS || Platform.isAndroid) {
-        await Share.shareXFiles([
-          XFile(file.path, mimeType: 'image/png'),
-        ], subject: 'Minecraft Skin');
+        final box = _exportButtonKey.currentContext?.findRenderObject() as RenderBox?;
+        final result = await Share.shareXFiles(
+          [XFile(file.path, mimeType: 'image/png')],
+          subject: 'Minecraft Skin',
+          sharePositionOrigin: box != null
+              ? box.localToGlobal(Offset.zero) & box.size
+              : null,
+        );
+        if (result.status == ShareResultStatus.dismissed) return;
       } else {
         final saveDir = await getApplicationDocumentsDirectory();
         final dest = File(
@@ -559,6 +566,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
             tooltip: 'Save to My Skins',
           ),
           IconButton(
+            key: _exportButtonKey,
             onPressed: _export,
             icon: const FaIcon(FontAwesomeIcons.download, size: 15),
             tooltip: 'Export PNG',

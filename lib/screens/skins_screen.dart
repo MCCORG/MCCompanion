@@ -6,7 +6,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
-import 'package:url_launcher/url_launcher.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../theme/app_theme.dart';
 import '../widgets/components/header_nav_bar.dart';
@@ -452,6 +453,57 @@ class SkinsScreenState extends State<SkinsScreen> {
     _loadSavedSkins();
   }
 
+  Future<void> _exportSavedSkin(SavedSkin skin) async {
+    try {
+      final bytes = await File(skin.filePath).readAsBytes();
+      final dir = await getTemporaryDirectory();
+      final tmp = File('${dir.path}/${skin.name}.png');
+      await tmp.writeAsBytes(bytes);
+      if (Platform.isWindows || Platform.isMacOS || Platform.isLinux) {
+        final saveDir = await getApplicationDocumentsDirectory();
+        final dest = File('${saveDir.path}/${skin.name}.png');
+        await tmp.copy(dest.path);
+        if (mounted) {
+          AppToast.show(context, message: 'Skin saved to Documents', icon: Icons.download_done_rounded, color: AppTheme.success);
+        }
+      } else {
+        final size = MediaQuery.of(context).size;
+        await Share.shareXFiles(
+          [XFile(tmp.path, mimeType: 'image/png')],
+          subject: 'Minecraft Skin',
+          sharePositionOrigin: Rect.fromCenter(
+            center: Offset(size.width / 2, size.height / 2),
+            width: 1,
+            height: 1,
+          ),
+        );
+      }
+    } catch (_) {}
+  }
+
+  void _showSavedSkinMenu(SavedSkin skin) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (_) => _SavedSkinMenuSheet(
+        skin: skin,
+        onEdit: () {
+          Navigator.pop(context);
+          _openEditorForSaved(skin);
+        },
+        onExport: () async {
+          Navigator.pop(context);
+          await Future.delayed(const Duration(milliseconds: 300));
+          if (mounted) _exportSavedSkin(skin);
+        },
+        onDelete: () {
+          Navigator.pop(context);
+          _deleteSavedSkin(skin);
+        },
+      ),
+    );
+  }
+
   void _openGeyserDetail(String textureUrl) {
     showModalBottomSheet(
       context: context,
@@ -537,21 +589,19 @@ class SkinsScreenState extends State<SkinsScreen> {
             itemCount: _savedSkins.length,
             itemBuilder: (_, i) => _SavedSkinCard(
               skin: _savedSkins[i],
-              onEdit: () => _openEditorForSaved(_savedSkins[i]),
-              onDelete: () => _deleteSavedSkin(_savedSkins[i]),
+              onTap: () => _showSavedSkinMenu(_savedSkins[i]),
             ),
           )
         else
           SizedBox(
-            height: 160,
+            height: 150,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemCount: _savedSkins.length,
               separatorBuilder: (_, __) => const SizedBox(width: 10),
               itemBuilder: (_, i) => _SavedSkinCard(
                 skin: _savedSkins[i],
-                onEdit: () => _openEditorForSaved(_savedSkins[i]),
-                onDelete: () => _deleteSavedSkin(_savedSkins[i]),
+                onTap: () => _showSavedSkinMenu(_savedSkins[i]),
               ),
             ),
           ),
@@ -782,88 +832,165 @@ class SkinsScreenState extends State<SkinsScreen> {
   );
 }
 
+Future<void> _shareTextureFile(BuildContext context, String url, String name) async {
+  try {
+    final resp = await http.get(Uri.parse(url), headers: {'User-Agent': 'MCCompanionApp/1.0'})
+        .timeout(const Duration(seconds: 10));
+    if (resp.statusCode != 200) return;
+    final dir = await getTemporaryDirectory();
+    final file = File('${dir.path}/$name.png');
+    await file.writeAsBytes(resp.bodyBytes);
+    if (Platform.isWindows || Platform.isMacOS || Platform.isLinux) {
+      final saveDir = await getApplicationDocumentsDirectory();
+      final dest = File('${saveDir.path}/$name.png');
+      await file.copy(dest.path);
+      if (context.mounted) {
+        AppToast.show(context, message: 'Skin saved to Documents', icon: Icons.download_done_rounded, color: AppTheme.success);
+      }
+    } else {
+      final size = MediaQuery.of(context).size;
+      await Share.shareXFiles(
+        [XFile(file.path, mimeType: 'image/png')],
+        subject: 'Minecraft Skin',
+        sharePositionOrigin: Rect.fromCenter(
+          center: Offset(size.width / 2, size.height / 2),
+          width: 1,
+          height: 1,
+        ),
+      );
+    }
+  } catch (_) {}
+}
+
 class _SavedSkinCard extends StatelessWidget {
   final SavedSkin skin;
+  final VoidCallback onTap;
+  const _SavedSkinCard({required this.skin, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 100,
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 8),
+        decoration: BoxDecoration(
+          color: AppTheme.surface,
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: AppTheme.borderGray),
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: Center(
+                child: _LocalSkinBodyImage(filePath: skin.filePath, height: 100),
+              ),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              skin.name,
+              style: TextStyle(
+                color: AppTheme.textPrimary,
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 4),
+            FaIcon(FontAwesomeIcons.ellipsis, size: 10, color: AppTheme.textMuted),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SavedSkinMenuSheet extends StatelessWidget {
+  final SavedSkin skin;
   final VoidCallback onEdit;
+  final VoidCallback onExport;
   final VoidCallback onDelete;
-  const _SavedSkinCard({
+  const _SavedSkinMenuSheet({
     required this.skin,
     required this.onEdit,
+    required this.onExport,
     required this.onDelete,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 110,
-      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: AppTheme.surface,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppTheme.borderGray),
+        color: AppTheme.background,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+        border: Border(top: BorderSide(color: AppTheme.borderGray)),
       ),
+      padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Expanded(
-            child: Center(
-              child: _LocalSkinBodyImage(filePath: skin.filePath, height: 90),
+          Container(
+            width: 36, height: 4,
+            margin: const EdgeInsets.only(bottom: 16),
+            decoration: BoxDecoration(
+              color: AppTheme.borderLight,
+              borderRadius: BorderRadius.circular(4),
             ),
           ),
-          const SizedBox(height: 6),
           Text(
             skin.name,
-            style: TextStyle(
-              color: AppTheme.textPrimary,
-              fontSize: 11,
-              fontWeight: FontWeight.w600,
-            ),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
+            style: TextStyle(color: AppTheme.textPrimary, fontSize: 16, fontWeight: FontWeight.w700),
           ),
-          const SizedBox(height: 6),
-          Row(
-            children: [
-              Expanded(
-                child: GestureDetector(
-                  onTap: onEdit,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 5),
-                    decoration: BoxDecoration(
-                      color: AppTheme.accent.withValues(alpha: 0.12),
-                      borderRadius: BorderRadius.circular(7),
-                    ),
-                    child: Center(
-                      child: FaIcon(
-                        FontAwesomeIcons.penToSquare,
-                        size: 11,
-                        color: AppTheme.accent,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 6),
-              GestureDetector(
-                onTap: onDelete,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 5,
-                    horizontal: 7,
-                  ),
-                  decoration: BoxDecoration(
-                    color: AppTheme.error.withValues(alpha: 0.12),
-                    borderRadius: BorderRadius.circular(7),
-                  ),
-                  child: const FaIcon(
-                    FontAwesomeIcons.trash,
-                    size: 11,
-                    color: AppTheme.error,
-                  ),
-                ),
-              ),
-            ],
+          const SizedBox(height: 20),
+          _MenuTile(
+            icon: FontAwesomeIcons.penToSquare,
+            label: 'Edit',
+            color: AppTheme.accent,
+            onTap: onEdit,
+          ),
+          _MenuTile(
+            icon: FontAwesomeIcons.shareFromSquare,
+            label: 'Export',
+            color: AppTheme.textSecondary,
+            onTap: onExport,
+          ),
+          _MenuTile(
+            icon: FontAwesomeIcons.trash,
+            label: 'Delete',
+            color: AppTheme.error,
+            onTap: onDelete,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _MenuTile extends StatelessWidget {
+  final FaIconData icon;
+  final String label;
+  final Color color;
+  final VoidCallback onTap;
+  const _MenuTile({required this.icon, required this.label, required this.color, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 4),
+        child: Row(
+          children: [
+            SizedBox(
+              width: 28,
+              child: FaIcon(icon, size: 15, color: color),
+            ),
+            const SizedBox(width: 14),
+            Text(label, style: TextStyle(color: color, fontSize: 15, fontWeight: FontWeight.w500)),
+          ],
+        ),
       ),
     );
   }
@@ -977,11 +1104,10 @@ class _SkinDetailSheet extends StatelessWidget {
       textureUrl ??
       (javaUuid != null ? 'https://visage.surgeplay.com/skin/$javaUuid' : null);
 
-  Future<void> _download() async {
+  Future<void> _download(BuildContext context) async {
     final url = _downloadUrl;
     if (url == null) return;
-    final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) await launchUrl(uri);
+    await _shareTextureFile(context, url, username ?? 'skin');
   }
 
   @override
@@ -1035,7 +1161,7 @@ class _SkinDetailSheet extends StatelessWidget {
                 children: [
                   Expanded(
                     child: FilledButton.icon(
-                      onPressed: _downloadUrl != null ? _download : null,
+                      onPressed: _downloadUrl != null ? () => _download(context) : null,
                       icon: const FaIcon(FontAwesomeIcons.download, size: 13),
                       label: Text(l.skinsDownload),
                       style: FilledButton.styleFrom(
@@ -1148,10 +1274,8 @@ class _JavaSkinCardState extends State<_JavaSkinCard> {
   }
 
   Future<void> _download() async {
-    final url =
-        _textureUrl ?? 'https://visage.surgeplay.com/skin/${widget.javaUuid}';
-    final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) await launchUrl(uri);
+    final url = _textureUrl ?? 'https://visage.surgeplay.com/skin/${widget.javaUuid}';
+    await _shareTextureFile(context, url, widget.username);
   }
 
   void _openDetail() {
@@ -1333,8 +1457,7 @@ class _BedrockSkinCardState extends State<_BedrockSkinCard> {
 
   Future<void> _download() async {
     if (_textureUrl == null) return;
-    final uri = Uri.parse(_textureUrl!);
-    if (await canLaunchUrl(uri)) await launchUrl(uri);
+    await _shareTextureFile(context, _textureUrl!, widget.gamertag);
   }
 
   void _openDetail() {
