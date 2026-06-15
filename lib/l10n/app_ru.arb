@@ -1571,5 +1571,22 @@
   "feedbackDescTooShort": "Описание должно содержать не менее 10 символов.",
   "feedbackSubmitFailed": "Не удалось отправить. Попробуйте ещё раз.",
   "feedbackTileTitle": "Сообщить об ошибке или предложить функцию",
-  "feedbackTileSubtitle": "Помогите нам улучшить MCCompanion"
+  "feedbackTileSubtitle": "Помогите нам улучшить MCCompanion",
+  "friendsHowToStep1": "Откройте приложение Xbox на телефоне или консоли.",
+  "friendsHowToStep2": "Добавьте одного из ботов ниже в друзья на Xbox.",
+  "friendsHowToStep3": "Откройте Minecraft и перейдите на вкладку «Друзья».",
+  "friendsHowToStep4": "Найдите свой сервер в разделе «Локальные миры» и подключитесь.",
+  "friendsHowToNote": "⚠️ Каждый раз, когда хотите играть, сначала запустите режим Друзья в приложении MCCompanion. После запуска приложение можно закрыть.",
+  "friendsBotLoadError": "⚠️ Не удалось загрузить список ботов. Попробуйте позже.",
+  "regionEurope": "Европа",
+  "regionUnitedStates": "США",
+  "yourRegion": "ВАШ РЕГИОН",
+  "botStatusOffline": "Офлайн",
+  "botStatusFull": "Полный",
+  "botFriendCount": "{current} / {max} друзей",
+  "botCopied": "{gamertag} скопирован",
+  "copyLabel": "Копировать",
+  "skinSavedToDocuments": "Скин сохранён в Документы",
+  "skinMenuExport": "Экспорт",
+  "skinMenuDelete": "Удалить"
 }

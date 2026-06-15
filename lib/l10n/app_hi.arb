@@ -1571,5 +1571,22 @@
   "feedbackDescTooShort": "विवरण कम से कम 10 अक्षरों का होना चाहिए।",
   "feedbackSubmitFailed": "सबमिट करने में विफल। कृपया पुनः प्रयास करें।",
   "feedbackTileTitle": "एक बग रिपोर्ट करें या फीचर सुझाएं",
-  "feedbackTileSubtitle": "MCCompanion को बेहतर बनाने में मदद करें"
+  "feedbackTileSubtitle": "MCCompanion को बेहतर बनाने में मदद करें",
+  "friendsHowToStep1": "अपने फ़ोन या कंसोल पर Xbox ऐप खोलें।",
+  "friendsHowToStep2": "नीचे दिए गए किसी एक बॉट को Xbox पर मित्र के रूप में जोड़ें।",
+  "friendsHowToStep3": "Minecraft खोलें और Friends टैब पर जाएं।",
+  "friendsHowToStep4": "LAN Worlds में अपना सर्वर खोजें और शामिल हों।",
+  "friendsHowToNote": "⚠️ हर बार खेलने से पहले MCCompanion ऐप में Friends mode शुरू करें। शुरू करने के बाद ऐप बंद किया जा सकता है।",
+  "friendsBotLoadError": "⚠️ बॉट सूची लोड नहीं हो सकी। बाद में पुनः प्रयास करें।",
+  "regionEurope": "यूरोप",
+  "regionUnitedStates": "संयुक्त राज्य अमेरिका",
+  "yourRegion": "आपका क्षेत्र",
+  "botStatusOffline": "ऑफ़लाइन",
+  "botStatusFull": "भरा हुआ",
+  "botFriendCount": "{current} / {max} मित्र",
+  "botCopied": "{gamertag} कॉपी किया गया",
+  "copyLabel": "कॉपी करें",
+  "skinSavedToDocuments": "स्किन डॉक्युमेंट्स में सेव हुई",
+  "skinMenuExport": "निर्यात",
+  "skinMenuDelete": "हटाएं"
 }

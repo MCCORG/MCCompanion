@@ -3075,12 +3075,6 @@ abstract class AppLocalizations {
   /// **'Skin exported successfully'**
   String get skinExported;
 
-  String get skinSavedToDocuments;
-
-  String get skinMenuExport;
-
-  String get skinMenuDelete;
-
   /// Label for account danger zone section
   ///
   /// In en, this message translates to:
@@ -3242,6 +3236,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Help us improve MCCompanion'**
   String get feedbackTileSubtitle;
+
+  /// Friends how-to: step 1 - open Xbox app
+  ///
+  /// In en, this message translates to:
+  /// **'Open the Xbox app on your phone or console.'**
+  String get friendsHowToStep1;
+
+  /// Friends how-to: step 2 - add bot as friend
+  ///
+  /// In en, this message translates to:
+  /// **'Add one of the bots below as a friend on Xbox.'**
+  String get friendsHowToStep2;
+
+  /// Friends how-to: step 3 - open Minecraft friends tab
+  ///
+  /// In en, this message translates to:
+  /// **'Open Minecraft and go to the Friends tab.'**
+  String get friendsHowToStep3;
+
+  /// Friends how-to: step 4 - join via LAN Worlds
+  ///
+  /// In en, this message translates to:
+  /// **'Look for your server under LAN Worlds and join.'**
+  String get friendsHowToStep4;
+
+  /// Friends how-to: warning note about starting mode
+  ///
+  /// In en, this message translates to:
+  /// **'⚠️ Every time you want to play, you need to start Friends mode in the MCCompanion app first. You can close the app after starting.'**
+  String get friendsHowToNote;
+
+  /// Friends how-to: error when bot list fails to load
+  ///
+  /// In en, this message translates to:
+  /// **'⚠️ Could not load bot list. Try again later.'**
+  String get friendsBotLoadError;
+
+  /// Region label: Europe
+  ///
+  /// In en, this message translates to:
+  /// **'Europe'**
+  String get regionEurope;
+
+  /// Region label: United States
+  ///
+  /// In en, this message translates to:
+  /// **'United States'**
+  String get regionUnitedStates;
+
+  /// Badge label indicating the user's own region
+  ///
+  /// In en, this message translates to:
+  /// **'YOUR REGION'**
+  String get yourRegion;
+
+  /// Bot status: offline
+  ///
+  /// In en, this message translates to:
+  /// **'Offline'**
+  String get botStatusOffline;
+
+  /// Bot status: full
+  ///
+  /// In en, this message translates to:
+  /// **'Full'**
+  String get botStatusFull;
+
+  /// Bot friend count display
+  ///
+  /// In en, this message translates to:
+  /// **'{current} / {max} friends'**
+  String botFriendCount(Object current, Object max);
+
+  /// Toast message when gamertag is copied
+  ///
+  /// In en, this message translates to:
+  /// **'Copied {gamertag}'**
+  String botCopied(Object gamertag);
+
+  /// Copy button label
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get copyLabel;
+
+  /// Toast when skin is saved to documents
+  ///
+  /// In en, this message translates to:
+  /// **'Skin saved to Documents'**
+  String get skinSavedToDocuments;
+
+  /// Skin context menu: export option
+  ///
+  /// In en, this message translates to:
+  /// **'Export'**
+  String get skinMenuExport;
+
+  /// Skin context menu: delete option
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get skinMenuDelete;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

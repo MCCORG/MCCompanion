@@ -1557,9 +1557,6 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get skinExported => 'স্কিন সফলভাবে এক্সপোর্ট হয়েছে';
-  String get skinSavedToDocuments => 'স্কিন ডকুমেন্টসে সংরক্ষিত হয়েছে';
-  String get skinMenuExport => 'এক্সপোর্ট';
-  String get skinMenuDelete => 'মুছুন';
 
   @override
   String get accountActions => 'অ্যাকাউন্ট';
@@ -1641,4 +1638,59 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get feedbackTileSubtitle => 'MCCompanion উন্নত করতে আমাদের সাহায্য করুন';
+
+  @override
+  String get friendsHowToStep1 => 'আপনার ফোন বা কনসোলে Xbox অ্যাপ খুলুন।';
+
+  @override
+  String get friendsHowToStep2 => 'নিচের যেকোনো একটি বট Xbox-এ বন্ধু হিসেবে যোগ করুন।';
+
+  @override
+  String get friendsHowToStep3 => 'Minecraft খুলুন এবং Friends ট্যাবে যান।';
+
+  @override
+  String get friendsHowToStep4 => 'LAN Worlds-এ আপনার সার্ভার খুঁজুন এবং যোগ দিন।';
+
+  @override
+  String get friendsHowToNote => '⚠️ প্রতিবার খেলতে চাইলে প্রথমে MCCompanion অ্যাপে Friends mode চালু করুন। চালু করার পরে অ্যাপ বন্ধ করা যাবে।';
+
+  @override
+  String get friendsBotLoadError => '⚠️ বট তালিকা লোড করা যায়নি। পরে আবার চেষ্টা করুন।';
+
+  @override
+  String get regionEurope => 'ইউরোপ';
+
+  @override
+  String get regionUnitedStates => 'যুক্তরাষ্ট্র';
+
+  @override
+  String get yourRegion => 'আপনার অঞ্চল';
+
+  @override
+  String get botStatusOffline => 'অফলাইন';
+
+  @override
+  String get botStatusFull => 'পূর্ণ';
+
+  @override
+  String botFriendCount(Object current, Object max) {
+    return '$current / $max বন্ধু';
+  }
+
+  @override
+  String botCopied(Object gamertag) {
+    return '$gamertag কপি করা হয়েছে';
+  }
+
+  @override
+  String get copyLabel => 'কপি করুন';
+
+  @override
+  String get skinSavedToDocuments => 'স্কিন ডকুমেন্টসে সংরক্ষিত হয়েছে';
+
+  @override
+  String get skinMenuExport => 'এক্সপোর্ট';
+
+  @override
+  String get skinMenuDelete => 'মুছুন';
 }

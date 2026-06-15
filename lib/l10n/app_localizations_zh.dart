@@ -1557,9 +1557,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get skinExported => '皮肤导出成功';
-  String get skinSavedToDocuments => '皮肤已保存到文稿';
-  String get skinMenuExport => '导出';
-  String get skinMenuDelete => '删除';
 
   @override
   String get accountActions => '账户';
@@ -1641,4 +1638,59 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get feedbackTileSubtitle => '帮助我们改进 MCCompanion';
+
+  @override
+  String get friendsHowToStep1 => '在手机或主机上打开 Xbox 应用。';
+
+  @override
+  String get friendsHowToStep2 => '将下方的一个机器人添加为 Xbox 好友。';
+
+  @override
+  String get friendsHowToStep3 => '打开 Minecraft，前往好友选项卡。';
+
+  @override
+  String get friendsHowToStep4 => '在局域网世界中找到你的服务器并加入。';
+
+  @override
+  String get friendsHowToNote => '⚠️ 每次想玩时，请先在 MCCompanion 应用中启动好友模式。启动后可以关闭应用。';
+
+  @override
+  String get friendsBotLoadError => '⚠️ 无法加载机器人列表，请稍后重试。';
+
+  @override
+  String get regionEurope => '欧洲';
+
+  @override
+  String get regionUnitedStates => '美国';
+
+  @override
+  String get yourRegion => '您的地区';
+
+  @override
+  String get botStatusOffline => '离线';
+
+  @override
+  String get botStatusFull => '已满';
+
+  @override
+  String botFriendCount(Object current, Object max) {
+    return '$current / $max 好友';
+  }
+
+  @override
+  String botCopied(Object gamertag) {
+    return '已复制 $gamertag';
+  }
+
+  @override
+  String get copyLabel => '复制';
+
+  @override
+  String get skinSavedToDocuments => '皮肤已保存到文稿';
+
+  @override
+  String get skinMenuExport => '导出';
+
+  @override
+  String get skinMenuDelete => '删除';
 }

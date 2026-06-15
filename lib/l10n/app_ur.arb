@@ -1567,5 +1567,22 @@
   "feedbackDescTooShort": "تفصیل کم از کم 10 حروف کی ہونی چاہیے۔",
   "feedbackSubmitFailed": "جمع کرنے میں ناکامی۔ دوبارہ کوشش کریں۔",
   "feedbackTileTitle": "ایک بگ رپورٹ کریں یا فیچر تجویز کریں",
-  "feedbackTileSubtitle": "MCCompanion کو بہتر بنانے میں مدد کریں"
+  "feedbackTileSubtitle": "MCCompanion کو بہتر بنانے میں مدد کریں",
+  "friendsHowToStep1": "اپنے فون یا کنسول پر Xbox ایپ کھولیں۔",
+  "friendsHowToStep2": "نیچے دیے گئے کسی ایک بوٹ کو Xbox پر دوست کے طور پر شامل کریں۔",
+  "friendsHowToStep3": "Minecraft کھولیں اور Friends ٹیب پر جائیں۔",
+  "friendsHowToStep4": "LAN Worlds میں اپنا سرور تلاش کریں اور شامل ہوں۔",
+  "friendsHowToNote": "⚠️ ہر بار کھیلنے سے پہلے MCCompanion ایپ میں Friends mode شروع کریں۔ شروع کرنے کے بعد ایپ بند کی جا سکتی ہے۔",
+  "friendsBotLoadError": "⚠️ بوٹ لسٹ لوڈ نہیں ہو سکی۔ بعد میں دوبارہ کوشش کریں۔",
+  "regionEurope": "یورپ",
+  "regionUnitedStates": "ریاستہائے متحدہ",
+  "yourRegion": "آپ کا علاقہ",
+  "botStatusOffline": "آف لائن",
+  "botStatusFull": "بھرا ہوا",
+  "botFriendCount": "{current} / {max} دوست",
+  "botCopied": "{gamertag} کاپی کیا گیا",
+  "copyLabel": "کاپی کریں",
+  "skinSavedToDocuments": "اسکن دستاویزات میں محفوظ ہوگیا",
+  "skinMenuExport": "برآمد کریں",
+  "skinMenuDelete": "حذف کریں"
 }

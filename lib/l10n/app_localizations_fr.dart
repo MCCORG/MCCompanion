@@ -1557,9 +1557,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get skinExported => 'Skin exporte avec succes';
-  String get skinSavedToDocuments => 'Skin enregistré dans Documents';
-  String get skinMenuExport => 'Exporter';
-  String get skinMenuDelete => 'Supprimer';
 
   @override
   String get accountActions => 'COMPTE';
@@ -1641,4 +1638,59 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get feedbackTileSubtitle => 'Aide-nous à améliorer MCCompanion';
+
+  @override
+  String get friendsHowToStep1 => 'Ouvre l\'application Xbox sur ton téléphone ou ta console.';
+
+  @override
+  String get friendsHowToStep2 => 'Ajoute l\'un des bots ci-dessous comme ami sur Xbox.';
+
+  @override
+  String get friendsHowToStep3 => 'Ouvre Minecraft et va dans l\'onglet Amis.';
+
+  @override
+  String get friendsHowToStep4 => 'Cherche ton serveur sous Mondes LAN et rejoins-le.';
+
+  @override
+  String get friendsHowToNote => '⚠️ Chaque fois que tu veux jouer, tu dois d\'abord démarrer le mode Amis dans l\'application MCCompanion. Tu peux fermer l\'application après le démarrage.';
+
+  @override
+  String get friendsBotLoadError => '⚠️ Impossible de charger la liste des bots. Réessaie plus tard.';
+
+  @override
+  String get regionEurope => 'Europe';
+
+  @override
+  String get regionUnitedStates => 'États-Unis';
+
+  @override
+  String get yourRegion => 'VOTRE RÉGION';
+
+  @override
+  String get botStatusOffline => 'Hors ligne';
+
+  @override
+  String get botStatusFull => 'Complet';
+
+  @override
+  String botFriendCount(Object current, Object max) {
+    return '$current / $max amis';
+  }
+
+  @override
+  String botCopied(Object gamertag) {
+    return '$gamertag copié';
+  }
+
+  @override
+  String get copyLabel => 'Copier';
+
+  @override
+  String get skinSavedToDocuments => 'Skin enregistré dans Documents';
+
+  @override
+  String get skinMenuExport => 'Exporter';
+
+  @override
+  String get skinMenuDelete => 'Supprimer';
 }

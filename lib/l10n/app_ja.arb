@@ -1571,5 +1571,22 @@
   "feedbackDescTooShort": "説明は10文字以上必要です。",
   "feedbackSubmitFailed": "送信に失敗しました。もう一度お試しください。",
   "feedbackTileTitle": "バグを報告したり機能を提案したりする",
-  "feedbackTileSubtitle": "MCCompanionの改善にご協力ください"
+  "feedbackTileSubtitle": "MCCompanionの改善にご協力ください",
+  "friendsHowToStep1": "スマートフォンまたはコンソールでXboxアプリを開く。",
+  "friendsHowToStep2": "下記のボットをXboxで友達に追加する。",
+  "friendsHowToStep3": "Minecraftを開いてフレンドタブに移動する。",
+  "friendsHowToStep4": "LANワールドでサーバーを探して参加する。",
+  "friendsHowToNote": "⚠️ プレイするたびに、まずMCCompanionアプリでフレンドモードを起動してください。起動後はアプリを閉じても大丈夫です。",
+  "friendsBotLoadError": "⚠️ ボットリストを読み込めませんでした。後でもう一度お試しください。",
+  "regionEurope": "ヨーロッパ",
+  "regionUnitedStates": "アメリカ",
+  "yourRegion": "あなたの地域",
+  "botStatusOffline": "オフライン",
+  "botStatusFull": "満員",
+  "botFriendCount": "{current} / {max} フレンド",
+  "botCopied": "{gamertag} をコピーしました",
+  "copyLabel": "コピー",
+  "skinSavedToDocuments": "スキンを書類に保存しました",
+  "skinMenuExport": "エクスポート",
+  "skinMenuDelete": "削除"
 }

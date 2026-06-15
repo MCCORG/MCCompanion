@@ -1557,9 +1557,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get skinExported => 'Skin imesafirishwa';
-  String get skinSavedToDocuments => 'Skin imehifadhiwa kwenye Nyaraka';
-  String get skinMenuExport => 'Hamisha';
-  String get skinMenuDelete => 'Futa';
 
   @override
   String get accountActions => 'ACCOUNT';
@@ -1641,4 +1638,59 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get feedbackTileSubtitle => 'Tusaidie kuboresha MCCompanion';
+
+  @override
+  String get friendsHowToStep1 => 'Fungua programu ya Xbox kwenye simu au konsoli yako.';
+
+  @override
+  String get friendsHowToStep2 => 'Ongeza moja ya boti zilizo hapa chini kama rafiki kwenye Xbox.';
+
+  @override
+  String get friendsHowToStep3 => 'Fungua Minecraft na nenda kwenye kichupo cha Marafiki.';
+
+  @override
+  String get friendsHowToStep4 => 'Tafuta seva yako chini ya Ulimwengu wa LAN na jiunge.';
+
+  @override
+  String get friendsHowToNote => '⚠️ Kila wakati unapotaka kucheza, lazima kwanza uanzishe hali ya Marafiki kwenye programu ya MCCompanion. Unaweza kufunga programu baada ya kuanzisha.';
+
+  @override
+  String get friendsBotLoadError => '⚠️ Haikuweza kupakia orodha ya boti. Jaribu tena baadaye.';
+
+  @override
+  String get regionEurope => 'Ulaya';
+
+  @override
+  String get regionUnitedStates => 'Marekani';
+
+  @override
+  String get yourRegion => 'ENEO LAKO';
+
+  @override
+  String get botStatusOffline => 'Nje ya mtandao';
+
+  @override
+  String get botStatusFull => 'Imejaa';
+
+  @override
+  String botFriendCount(Object current, Object max) {
+    return '$current / $max marafiki';
+  }
+
+  @override
+  String botCopied(Object gamertag) {
+    return '$gamertag imenakiliwa';
+  }
+
+  @override
+  String get copyLabel => 'Nakili';
+
+  @override
+  String get skinSavedToDocuments => 'Skin imehifadhiwa kwenye Nyaraka';
+
+  @override
+  String get skinMenuExport => 'Hamisha';
+
+  @override
+  String get skinMenuDelete => 'Futa';
 }

@@ -886,5 +886,22 @@
   "feedbackDescTooShort": "Beschrijving moet minimaal 10 tekens zijn.",
   "feedbackSubmitFailed": "Indienen mislukt. Probeer het opnieuw.",
   "feedbackTileTitle": "Meld een bug of stel een functie voor",
-  "feedbackTileSubtitle": "Help ons MCCompanion te verbeteren"
+  "feedbackTileSubtitle": "Help ons MCCompanion te verbeteren",
+  "friendsHowToStep1": "Open de Xbox-app op je telefoon of console.",
+  "friendsHowToStep2": "Voeg een van de bots hieronder toe als vriend op Xbox.",
+  "friendsHowToStep3": "Open Minecraft en ga naar het tabblad Vrienden.",
+  "friendsHowToStep4": "Zoek naar je server onder LAN-werelden en sluit je aan.",
+  "friendsHowToNote": "⚠️ Elke keer dat je wilt spelen, moet je eerst Vriendenmodus starten in de MCCompanion-app. Je kunt de app daarna sluiten.",
+  "friendsBotLoadError": "⚠️ Kan de botlijst niet laden. Probeer het later opnieuw.",
+  "regionEurope": "Europa",
+  "regionUnitedStates": "Verenigde Staten",
+  "yourRegion": "JOUW REGIO",
+  "botStatusOffline": "Offline",
+  "botStatusFull": "Vol",
+  "botFriendCount": "{current} / {max} vrienden",
+  "botCopied": "{gamertag} gekopieerd",
+  "copyLabel": "Kopieer",
+  "skinSavedToDocuments": "Skin opgeslagen in Documenten",
+  "skinMenuExport": "Exporteren",
+  "skinMenuDelete": "Verwijderen"
 }

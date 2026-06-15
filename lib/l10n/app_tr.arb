@@ -1571,5 +1571,22 @@
   "feedbackDescTooShort": "Açıklama en az 10 karakter olmalıdır.",
   "feedbackSubmitFailed": "Gönderilemedi. Lütfen tekrar deneyin.",
   "feedbackTileTitle": "Hata bildirin veya özellik önerin",
-  "feedbackTileSubtitle": "MCCompanion'ı geliştirmemize yardım edin"
+  "feedbackTileSubtitle": "MCCompanion'ı geliştirmemize yardım edin",
+  "friendsHowToStep1": "Telefonunda veya konsolunda Xbox uygulamasını aç.",
+  "friendsHowToStep2": "Aşağıdaki botlardan birini Xbox'ta arkadaş olarak ekle.",
+  "friendsHowToStep3": "Minecraft'ı aç ve Arkadaşlar sekmesine git.",
+  "friendsHowToStep4": "LAN Dünyaları altında sunucunu bul ve katıl.",
+  "friendsHowToNote": "⚠️ Her oynamak istediğinde önce MCCompanion uygulamasında Arkadaşlar modunu başlatman gerekir. Başlattıktan sonra uygulamayı kapatabilirsin.",
+  "friendsBotLoadError": "⚠️ Bot listesi yüklenemedi. Daha sonra tekrar deneyin.",
+  "regionEurope": "Avrupa",
+  "regionUnitedStates": "Amerika Birleşik Devletleri",
+  "yourRegion": "BÖLGENİZ",
+  "botStatusOffline": "Çevrimdışı",
+  "botStatusFull": "Dolu",
+  "botFriendCount": "{current} / {max} arkadaş",
+  "botCopied": "{gamertag} kopyalandı",
+  "copyLabel": "Kopyala",
+  "skinSavedToDocuments": "Skin Belgeler klasörüne kaydedildi",
+  "skinMenuExport": "Dışa Aktar",
+  "skinMenuDelete": "Sil"
 }

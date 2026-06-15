@@ -1567,5 +1567,22 @@
   "feedbackDescTooShort": "Deskripsi harus minimal 10 karakter.",
   "feedbackSubmitFailed": "Gagal mengirim. Coba lagi.",
   "feedbackTileTitle": "Laporkan bug atau sarankan fitur",
-  "feedbackTileSubtitle": "Bantu kami meningkatkan MCCompanion"
+  "feedbackTileSubtitle": "Bantu kami meningkatkan MCCompanion",
+  "friendsHowToStep1": "Buka aplikasi Xbox di ponsel atau konsolmu.",
+  "friendsHowToStep2": "Tambahkan salah satu bot di bawah ini sebagai teman di Xbox.",
+  "friendsHowToStep3": "Buka Minecraft dan buka tab Teman.",
+  "friendsHowToStep4": "Cari servermu di bawah Dunia LAN dan bergabung.",
+  "friendsHowToNote": "⚠️ Setiap kali ingin bermain, kamu harus terlebih dahulu memulai mode Teman di aplikasi MCCompanion. Kamu bisa menutup aplikasi setelah memulai.",
+  "friendsBotLoadError": "⚠️ Gagal memuat daftar bot. Coba lagi nanti.",
+  "regionEurope": "Eropa",
+  "regionUnitedStates": "Amerika Serikat",
+  "yourRegion": "WILAYAH ANDA",
+  "botStatusOffline": "Offline",
+  "botStatusFull": "Penuh",
+  "botFriendCount": "{current} / {max} teman",
+  "botCopied": "{gamertag} disalin",
+  "copyLabel": "Salin",
+  "skinSavedToDocuments": "Skin disimpan ke Dokumen",
+  "skinMenuExport": "Ekspor",
+  "skinMenuDelete": "Hapus"
 }

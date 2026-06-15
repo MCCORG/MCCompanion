@@ -1557,9 +1557,6 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get skinExported => 'Skin erfolgreich exportiert';
-  String get skinSavedToDocuments => 'Skin in Dokumente gespeichert';
-  String get skinMenuExport => 'Exportieren';
-  String get skinMenuDelete => 'Löschen';
 
   @override
   String get accountActions => 'KONTO';
@@ -1641,4 +1638,59 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get feedbackTileSubtitle => 'Hilf uns, MCCompanion zu verbessern';
+
+  @override
+  String get friendsHowToStep1 => 'Öffne die Xbox-App auf deinem Handy oder deiner Konsole.';
+
+  @override
+  String get friendsHowToStep2 => 'Füge einen der unten aufgeführten Bots als Freund auf Xbox hinzu.';
+
+  @override
+  String get friendsHowToStep3 => 'Öffne Minecraft und gehe zum Tab „Freunde\".';
+
+  @override
+  String get friendsHowToStep4 => 'Suche deinen Server unter LAN-Welten und tritt bei.';
+
+  @override
+  String get friendsHowToNote => '⚠️ Jedes Mal, wenn du spielen möchtest, musst du zuerst den Freundesmodus in der MCCompanion-App starten. Du kannst die App danach schließen.';
+
+  @override
+  String get friendsBotLoadError => '⚠️ Bot-Liste konnte nicht geladen werden. Versuche es später erneut.';
+
+  @override
+  String get regionEurope => 'Europa';
+
+  @override
+  String get regionUnitedStates => 'Vereinigte Staaten';
+
+  @override
+  String get yourRegion => 'DEINE REGION';
+
+  @override
+  String get botStatusOffline => 'Offline';
+
+  @override
+  String get botStatusFull => 'Voll';
+
+  @override
+  String botFriendCount(Object current, Object max) {
+    return '$current / $max Freunde';
+  }
+
+  @override
+  String botCopied(Object gamertag) {
+    return '$gamertag kopiert';
+  }
+
+  @override
+  String get copyLabel => 'Kopieren';
+
+  @override
+  String get skinSavedToDocuments => 'Skin in Dokumente gespeichert';
+
+  @override
+  String get skinMenuExport => 'Exportieren';
+
+  @override
+  String get skinMenuDelete => 'Löschen';
 }

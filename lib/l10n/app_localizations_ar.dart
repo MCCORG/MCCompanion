@@ -1557,9 +1557,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get skinExported => 'تم تصدير السكن بنجاح';
-  String get skinSavedToDocuments => 'تم حفظ السكن في المستندات';
-  String get skinMenuExport => 'تصدير';
-  String get skinMenuDelete => 'حذف';
 
   @override
   String get accountActions => 'الحساب';
@@ -1641,4 +1638,59 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get feedbackTileSubtitle => 'ساعدنا في تحسين MCCompanion';
+
+  @override
+  String get friendsHowToStep1 => 'افتح تطبيق Xbox على هاتفك أو جهاز اللعب.';
+
+  @override
+  String get friendsHowToStep2 => 'أضف أحد الروبوتات أدناه كصديق على Xbox.';
+
+  @override
+  String get friendsHowToStep3 => 'افتح Minecraft وانتقل إلى تبويب الأصدقاء.';
+
+  @override
+  String get friendsHowToStep4 => 'ابحث عن خادمك ضمن عوالم الشبكة المحلية وانضم.';
+
+  @override
+  String get friendsHowToNote => '⚠️ في كل مرة تريد اللعب، يجب عليك أولاً تشغيل وضع الأصدقاء في تطبيق MCCompanion. يمكنك إغلاق التطبيق بعد التشغيل.';
+
+  @override
+  String get friendsBotLoadError => '⚠️ تعذّر تحميل قائمة الروبوتات. حاول مرة أخرى لاحقاً.';
+
+  @override
+  String get regionEurope => 'أوروبا';
+
+  @override
+  String get regionUnitedStates => 'الولايات المتحدة';
+
+  @override
+  String get yourRegion => 'منطقتك';
+
+  @override
+  String get botStatusOffline => 'غير متصل';
+
+  @override
+  String get botStatusFull => 'ممتلئ';
+
+  @override
+  String botFriendCount(Object current, Object max) {
+    return '$current / $max أصدقاء';
+  }
+
+  @override
+  String botCopied(Object gamertag) {
+    return 'تم نسخ $gamertag';
+  }
+
+  @override
+  String get copyLabel => 'نسخ';
+
+  @override
+  String get skinSavedToDocuments => 'تم حفظ السكن في المستندات';
+
+  @override
+  String get skinMenuExport => 'تصدير';
+
+  @override
+  String get skinMenuDelete => 'حذف';
 }

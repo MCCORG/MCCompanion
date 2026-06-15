@@ -1571,5 +1571,22 @@
   "feedbackDescTooShort": "يجب أن يحتوي الوصف على 10 أحرف على الأقل.",
   "feedbackSubmitFailed": "فشل الإرسال. يرجى المحاولة مرة أخرى.",
   "feedbackTileTitle": "الإبلاغ عن خطأ أو اقتراح ميزة",
-  "feedbackTileSubtitle": "ساعدنا في تحسين MCCompanion"
+  "feedbackTileSubtitle": "ساعدنا في تحسين MCCompanion",
+  "friendsHowToStep1": "افتح تطبيق Xbox على هاتفك أو جهاز اللعب.",
+  "friendsHowToStep2": "أضف أحد الروبوتات أدناه كصديق على Xbox.",
+  "friendsHowToStep3": "افتح Minecraft وانتقل إلى تبويب الأصدقاء.",
+  "friendsHowToStep4": "ابحث عن خادمك ضمن عوالم الشبكة المحلية وانضم.",
+  "friendsHowToNote": "⚠️ في كل مرة تريد اللعب، يجب عليك أولاً تشغيل وضع الأصدقاء في تطبيق MCCompanion. يمكنك إغلاق التطبيق بعد التشغيل.",
+  "friendsBotLoadError": "⚠️ تعذّر تحميل قائمة الروبوتات. حاول مرة أخرى لاحقاً.",
+  "regionEurope": "أوروبا",
+  "regionUnitedStates": "الولايات المتحدة",
+  "yourRegion": "منطقتك",
+  "botStatusOffline": "غير متصل",
+  "botStatusFull": "ممتلئ",
+  "botFriendCount": "{current} / {max} أصدقاء",
+  "botCopied": "تم نسخ {gamertag}",
+  "copyLabel": "نسخ",
+  "skinSavedToDocuments": "تم حفظ السكن في المستندات",
+  "skinMenuExport": "تصدير",
+  "skinMenuDelete": "حذف"
 }

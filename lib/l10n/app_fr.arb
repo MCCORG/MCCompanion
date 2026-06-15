@@ -1571,5 +1571,22 @@
   "feedbackDescTooShort": "La description doit comporter au moins 10 caractères.",
   "feedbackSubmitFailed": "Échec de l'envoi. Veuillez réessayer.",
   "feedbackTileTitle": "Signaler un bug ou suggérer une fonctionnalité",
-  "feedbackTileSubtitle": "Aide-nous à améliorer MCCompanion"
+  "feedbackTileSubtitle": "Aide-nous à améliorer MCCompanion",
+  "friendsHowToStep1": "Ouvre l'application Xbox sur ton téléphone ou ta console.",
+  "friendsHowToStep2": "Ajoute l'un des bots ci-dessous comme ami sur Xbox.",
+  "friendsHowToStep3": "Ouvre Minecraft et va dans l'onglet Amis.",
+  "friendsHowToStep4": "Cherche ton serveur sous Mondes LAN et rejoins-le.",
+  "friendsHowToNote": "⚠️ Chaque fois que tu veux jouer, tu dois d'abord démarrer le mode Amis dans l'application MCCompanion. Tu peux fermer l'application après le démarrage.",
+  "friendsBotLoadError": "⚠️ Impossible de charger la liste des bots. Réessaie plus tard.",
+  "regionEurope": "Europe",
+  "regionUnitedStates": "États-Unis",
+  "yourRegion": "VOTRE RÉGION",
+  "botStatusOffline": "Hors ligne",
+  "botStatusFull": "Complet",
+  "botFriendCount": "{current} / {max} amis",
+  "botCopied": "{gamertag} copié",
+  "copyLabel": "Copier",
+  "skinSavedToDocuments": "Skin enregistré dans Documents",
+  "skinMenuExport": "Exporter",
+  "skinMenuDelete": "Supprimer"
 }

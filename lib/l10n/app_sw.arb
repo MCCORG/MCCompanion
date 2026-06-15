@@ -1567,5 +1567,22 @@
   "feedbackDescTooShort": "Maelezo lazima yawe na angalau herufi 10.",
   "feedbackSubmitFailed": "Imeshindwa kutuma. Tafadhali jaribu tena.",
   "feedbackTileTitle": "Ripoti hitilafu au pendekeza kipengele",
-  "feedbackTileSubtitle": "Tusaidie kuboresha MCCompanion"
+  "feedbackTileSubtitle": "Tusaidie kuboresha MCCompanion",
+  "friendsHowToStep1": "Fungua programu ya Xbox kwenye simu au konsoli yako.",
+  "friendsHowToStep2": "Ongeza moja ya boti zilizo hapa chini kama rafiki kwenye Xbox.",
+  "friendsHowToStep3": "Fungua Minecraft na nenda kwenye kichupo cha Marafiki.",
+  "friendsHowToStep4": "Tafuta seva yako chini ya Ulimwengu wa LAN na jiunge.",
+  "friendsHowToNote": "⚠️ Kila wakati unapotaka kucheza, lazima kwanza uanzishe hali ya Marafiki kwenye programu ya MCCompanion. Unaweza kufunga programu baada ya kuanzisha.",
+  "friendsBotLoadError": "⚠️ Haikuweza kupakia orodha ya boti. Jaribu tena baadaye.",
+  "regionEurope": "Ulaya",
+  "regionUnitedStates": "Marekani",
+  "yourRegion": "ENEO LAKO",
+  "botStatusOffline": "Nje ya mtandao",
+  "botStatusFull": "Imejaa",
+  "botFriendCount": "{current} / {max} marafiki",
+  "botCopied": "{gamertag} imenakiliwa",
+  "copyLabel": "Nakili",
+  "skinSavedToDocuments": "Skin imehifadhiwa kwenye Nyaraka",
+  "skinMenuExport": "Hamisha",
+  "skinMenuDelete": "Futa"
 }

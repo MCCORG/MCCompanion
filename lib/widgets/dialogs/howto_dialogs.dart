@@ -219,9 +219,9 @@ class _FriendsSheetState extends State<_FriendsSheet> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _StepCard(number: 1, text: 'Open the Xbox app on your phone or console.', color: color),
+                  _StepCard(number: 1, text: loc.friendsHowToStep1, color: color),
                   const SizedBox(height: 8),
-                  _StepCard(number: 2, text: 'Add one of the bots below as a friend on Xbox.', color: color),
+                  _StepCard(number: 2, text: loc.friendsHowToStep2, color: color),
                   const SizedBox(height: 12),
                   if (_loading)
                     const Center(child: Padding(
@@ -229,19 +229,19 @@ class _FriendsSheetState extends State<_FriendsSheet> {
                       child: CircularProgressIndicator(),
                     ))
                   else if (_bots == null || (_bots!.eu.isEmpty && _bots!.us.isEmpty))
-                    _NoteBubble(text: '⚠️ Could not load bot list. Try again later.', color: color)
+                    _NoteBubble(text: loc.friendsBotLoadError, color: color)
                   else ...[
-                    _BotRegionSection(flag: '🇪🇺', regionLabel: 'Europe', bots: _bots!.eu, color: color, isUserRegion: widget.userRegion == 'eu'),
+                    _BotRegionSection(flag: '🇪🇺', regionLabel: loc.regionEurope, bots: _bots!.eu, color: color, isUserRegion: widget.userRegion == 'eu'),
                     const SizedBox(height: 10),
-                    _BotRegionSection(flag: '🇺🇸', regionLabel: 'United States', bots: _bots!.us, color: color, isUserRegion: widget.userRegion == 'us'),
+                    _BotRegionSection(flag: '🇺🇸', regionLabel: loc.regionUnitedStates, bots: _bots!.us, color: color, isUserRegion: widget.userRegion == 'us'),
                   ],
                   const SizedBox(height: 12),
-                  _StepCard(number: 3, text: 'Open Minecraft and go to the Friends tab.', color: color),
+                  _StepCard(number: 3, text: loc.friendsHowToStep3, color: color),
                   const SizedBox(height: 8),
-                  _StepCard(number: 4, text: 'Look for your server under LAN Worlds and join.', color: color),
+                  _StepCard(number: 4, text: loc.friendsHowToStep4, color: color),
                   const SizedBox(height: 12),
                   _NoteBubble(
-                    text: '⚠️ Every time you want to play, you need to start Friends mode in the MCCompanion app first. Keep the app open while playing.',
+                    text: loc.friendsHowToNote,
                     color: color,
                   ),
                   const SizedBox(height: 8),
@@ -615,7 +615,7 @@ class _BotRegionSection extends StatelessWidget {
                       color: color.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(6),
                     ),
-                    child: Text('YOUR REGION', style: TextStyle(color: color, fontSize: 9, fontWeight: FontWeight.w700)),
+                    child: Text(AppLocalizations.of(context)!.yourRegion, style: TextStyle(color: color, fontSize: 9, fontWeight: FontWeight.w700)),
                   ),
                 ],
               ],
@@ -656,21 +656,22 @@ class _BotRow extends StatelessWidget {
               children: [
                 Text(bot.gamertag, style: TextStyle(color: textColor, fontSize: 14, fontWeight: FontWeight.w600)),
                 if (!isOnline)
-                  Text('Offline', style: TextStyle(color: AppTheme.textSecondary.withValues(alpha: 0.6), fontSize: 11))
+                  Text(AppLocalizations.of(context)!.botStatusOffline, style: TextStyle(color: AppTheme.textSecondary.withValues(alpha: 0.6), fontSize: 11))
                 else if (isFull)
-                  Text('Full', style: const TextStyle(color: AppTheme.warning, fontSize: 11))
+                  Text(AppLocalizations.of(context)!.botStatusFull, style: const TextStyle(color: AppTheme.warning, fontSize: 11))
                 else
-                  Text('${bot.friendCount} / ${bot.maxFriends} friends', style: TextStyle(color: AppTheme.textSecondary, fontSize: 11)),
+                  Text(AppLocalizations.of(context)!.botFriendCount(bot.friendCount ?? 0, bot.maxFriends), style: TextStyle(color: AppTheme.textSecondary, fontSize: 11)),
               ],
             ),
           ),
           if (isOnline && !isFull)
             GestureDetector(
               onTap: () {
+                final l = AppLocalizations.of(context)!;
                 Clipboard.setData(ClipboardData(text: bot.gamertag));
                 AppToast.show(
                   context,
-                  message: 'Copied ${bot.gamertag}',
+                  message: l.botCopied(bot.gamertag),
                   icon: Icons.copy_rounded,
                   color: AppTheme.success,
                 );
@@ -682,7 +683,7 @@ class _BotRow extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(color: color.withValues(alpha: 0.25)),
                 ),
-                child: Text('Copy', style: TextStyle(color: color, fontSize: 12, fontWeight: FontWeight.w600)),
+                child: Text(AppLocalizations.of(context)!.copyLabel, style: TextStyle(color: color, fontSize: 12, fontWeight: FontWeight.w600)),
               ),
             ),
         ],

@@ -1571,5 +1571,22 @@
   "feedbackDescTooShort": "বিবরণ কমপক্ষে ১০ অক্ষরের হতে হবে।",
   "feedbackSubmitFailed": "জমা দেওয়া ব্যর্থ হয়েছে। আবার চেষ্টা করুন।",
   "feedbackTileTitle": "একটি বাগ রিপোর্ট করুন বা ফিচার সাজেস্ট করুন",
-  "feedbackTileSubtitle": "MCCompanion উন্নত করতে আমাদের সাহায্য করুন"
+  "feedbackTileSubtitle": "MCCompanion উন্নত করতে আমাদের সাহায্য করুন",
+  "friendsHowToStep1": "আপনার ফোন বা কনসোলে Xbox অ্যাপ খুলুন।",
+  "friendsHowToStep2": "নিচের যেকোনো একটি বট Xbox-এ বন্ধু হিসেবে যোগ করুন।",
+  "friendsHowToStep3": "Minecraft খুলুন এবং Friends ট্যাবে যান।",
+  "friendsHowToStep4": "LAN Worlds-এ আপনার সার্ভার খুঁজুন এবং যোগ দিন।",
+  "friendsHowToNote": "⚠️ প্রতিবার খেলতে চাইলে প্রথমে MCCompanion অ্যাপে Friends mode চালু করুন। চালু করার পরে অ্যাপ বন্ধ করা যাবে।",
+  "friendsBotLoadError": "⚠️ বট তালিকা লোড করা যায়নি। পরে আবার চেষ্টা করুন।",
+  "regionEurope": "ইউরোপ",
+  "regionUnitedStates": "যুক্তরাষ্ট্র",
+  "yourRegion": "আপনার অঞ্চল",
+  "botStatusOffline": "অফলাইন",
+  "botStatusFull": "পূর্ণ",
+  "botFriendCount": "{current} / {max} বন্ধু",
+  "botCopied": "{gamertag} কপি করা হয়েছে",
+  "copyLabel": "কপি করুন",
+  "skinSavedToDocuments": "স্কিন ডকুমেন্টসে সংরক্ষিত হয়েছে",
+  "skinMenuExport": "এক্সপোর্ট",
+  "skinMenuDelete": "মুছুন"
 }

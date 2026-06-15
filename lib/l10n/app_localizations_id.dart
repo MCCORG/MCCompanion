@@ -1557,9 +1557,6 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get skinExported => 'Skin berhasil diekspor';
-  String get skinSavedToDocuments => 'Skin disimpan ke Dokumen';
-  String get skinMenuExport => 'Ekspor';
-  String get skinMenuDelete => 'Hapus';
 
   @override
   String get accountActions => 'ACCOUNT';
@@ -1641,4 +1638,59 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get feedbackTileSubtitle => 'Bantu kami meningkatkan MCCompanion';
+
+  @override
+  String get friendsHowToStep1 => 'Buka aplikasi Xbox di ponsel atau konsolmu.';
+
+  @override
+  String get friendsHowToStep2 => 'Tambahkan salah satu bot di bawah ini sebagai teman di Xbox.';
+
+  @override
+  String get friendsHowToStep3 => 'Buka Minecraft dan buka tab Teman.';
+
+  @override
+  String get friendsHowToStep4 => 'Cari servermu di bawah Dunia LAN dan bergabung.';
+
+  @override
+  String get friendsHowToNote => '⚠️ Setiap kali ingin bermain, kamu harus terlebih dahulu memulai mode Teman di aplikasi MCCompanion. Kamu bisa menutup aplikasi setelah memulai.';
+
+  @override
+  String get friendsBotLoadError => '⚠️ Gagal memuat daftar bot. Coba lagi nanti.';
+
+  @override
+  String get regionEurope => 'Eropa';
+
+  @override
+  String get regionUnitedStates => 'Amerika Serikat';
+
+  @override
+  String get yourRegion => 'WILAYAH ANDA';
+
+  @override
+  String get botStatusOffline => 'Offline';
+
+  @override
+  String get botStatusFull => 'Penuh';
+
+  @override
+  String botFriendCount(Object current, Object max) {
+    return '$current / $max teman';
+  }
+
+  @override
+  String botCopied(Object gamertag) {
+    return '$gamertag disalin';
+  }
+
+  @override
+  String get copyLabel => 'Salin';
+
+  @override
+  String get skinSavedToDocuments => 'Skin disimpan ke Dokumen';
+
+  @override
+  String get skinMenuExport => 'Ekspor';
+
+  @override
+  String get skinMenuDelete => 'Hapus';
 }

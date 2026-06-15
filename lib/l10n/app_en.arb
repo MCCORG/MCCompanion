@@ -1859,5 +1859,86 @@
   "feedbackTileSubtitle": "Help us improve MCCompanion",
   "@feedbackTileSubtitle": {
     "description": "Subtitle on feedback tile on landing screen"
+  },
+  "friendsHowToStep1": "Open the Xbox app on your phone or console.",
+  "@friendsHowToStep1": {
+    "description": "Friends how-to: step 1 - open Xbox app"
+  },
+  "friendsHowToStep2": "Add one of the bots below as a friend on Xbox.",
+  "@friendsHowToStep2": {
+    "description": "Friends how-to: step 2 - add bot as friend"
+  },
+  "friendsHowToStep3": "Open Minecraft and go to the Friends tab.",
+  "@friendsHowToStep3": {
+    "description": "Friends how-to: step 3 - open Minecraft friends tab"
+  },
+  "friendsHowToStep4": "Look for your server under LAN Worlds and join.",
+  "@friendsHowToStep4": {
+    "description": "Friends how-to: step 4 - join via LAN Worlds"
+  },
+  "friendsHowToNote": "⚠️ Every time you want to play, you need to start Friends mode in the MCCompanion app first. You can close the app after starting.",
+  "@friendsHowToNote": {
+    "description": "Friends how-to: warning note about starting mode"
+  },
+  "friendsBotLoadError": "⚠️ Could not load bot list. Try again later.",
+  "@friendsBotLoadError": {
+    "description": "Friends how-to: error when bot list fails to load"
+  },
+  "regionEurope": "Europe",
+  "@regionEurope": {
+    "description": "Region label: Europe"
+  },
+  "regionUnitedStates": "United States",
+  "@regionUnitedStates": {
+    "description": "Region label: United States"
+  },
+  "yourRegion": "YOUR REGION",
+  "@yourRegion": {
+    "description": "Badge label indicating the user's own region"
+  },
+  "botStatusOffline": "Offline",
+  "@botStatusOffline": {
+    "description": "Bot status: offline"
+  },
+  "botStatusFull": "Full",
+  "@botStatusFull": {
+    "description": "Bot status: full"
+  },
+  "botFriendCount": "{current} / {max} friends",
+  "@botFriendCount": {
+    "description": "Bot friend count display",
+    "placeholders": {
+      "current": {
+        "type": "Object"
+      },
+      "max": {
+        "type": "Object"
+      }
+    }
+  },
+  "botCopied": "Copied {gamertag}",
+  "@botCopied": {
+    "description": "Toast message when gamertag is copied",
+    "placeholders": {
+      "gamertag": {
+        "type": "Object"
+      }
+    }
+  },
+  "copyLabel": "Copy",
+  "@copyLabel": {
+    "description": "Copy button label"
+  },
+  "skinSavedToDocuments": "Skin saved to Documents",
+  "skinMenuExport": "Export",
+  "skinMenuDelete": "Delete",
+  "@skinSavedToDocuments": {
+    "description": "Toast when skin is saved to documents"
+  },
+  "@skinMenuExport": {
+    "description": "Skin context menu: export option"
+  },
+  "@skinMenuDelete": {
+    "description": "Skin context menu: delete option"
   }
 }

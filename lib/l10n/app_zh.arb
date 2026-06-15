@@ -1571,5 +1571,22 @@
   "feedbackDescTooShort": "描述至少需要 10 个字符。",
   "feedbackSubmitFailed": "提交失败，请重试。",
   "feedbackTileTitle": "报告错误或建议功能",
-  "feedbackTileSubtitle": "帮助我们改进 MCCompanion"
+  "feedbackTileSubtitle": "帮助我们改进 MCCompanion",
+  "friendsHowToStep1": "在手机或主机上打开 Xbox 应用。",
+  "friendsHowToStep2": "将下方的一个机器人添加为 Xbox 好友。",
+  "friendsHowToStep3": "打开 Minecraft，前往好友选项卡。",
+  "friendsHowToStep4": "在局域网世界中找到你的服务器并加入。",
+  "friendsHowToNote": "⚠️ 每次想玩时，请先在 MCCompanion 应用中启动好友模式。启动后可以关闭应用。",
+  "friendsBotLoadError": "⚠️ 无法加载机器人列表，请稍后重试。",
+  "regionEurope": "欧洲",
+  "regionUnitedStates": "美国",
+  "yourRegion": "您的地区",
+  "botStatusOffline": "离线",
+  "botStatusFull": "已满",
+  "botFriendCount": "{current} / {max} 好友",
+  "botCopied": "已复制 {gamertag}",
+  "copyLabel": "复制",
+  "skinSavedToDocuments": "皮肤已保存到文稿",
+  "skinMenuExport": "导出",
+  "skinMenuDelete": "删除"
 }
