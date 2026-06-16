@@ -54,3 +54,6 @@ dart_defines.json
 
 # Copilot local worktree metadata
 .claude/worktrees/
+
+# GH workflow protection
+/android/gradle.properties
