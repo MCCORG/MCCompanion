@@ -1701,7 +1701,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpWhatIsThis => '这是什么？';
 
   @override
-  String get rpExplanation => '您可以添加自己的资源包（材质包），每次通过 MCCompanion 连接时都会应用该资源包。资源包只需下载一次并缓存 — 连接时不会有任何延迟。';
+  String get rpExplanation => '资源包可以改变你游戏机上Minecraft的外观——新的方块、颜色或音效。在下方粘贴.mcpack文件的链接，启用后保存。MCCompanion每次连接时会自动加载。';
 
   @override
   String get rpPackUrlLabel => '包 URL';
@@ -1750,4 +1750,46 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get rpToastSaved => '资源包设置已保存。';
+
+  @override
+  String get rpClearMinecraftTitle => '第一次使用此资源包？';
+
+  @override
+  String get rpClearMinecraftBody => 'Minecraft 会在本地缓存资源包。如果您在启用 MCCompanion 资源包之前已连接过此服务器，Minecraft 已缓存了原始资源包，不会重新下载合并后的版本。';
+
+  @override
+  String get rpClearStep1 => '在主机上打开 Minecraft，前往设置 → 存储';
+
+  @override
+  String get rpClearStep2 => '点击材质包旁边的“清除”或“重置”——这会删除所有本地缓存的材质包';
+
+  @override
+  String get rpClearStep3 => '通过 MCCompanion 重新连接——合并后的材质包将自动下载';
+
+  @override
+  String get rpRelayTitle => '资源包显示有问题？';
+
+  @override
+  String get rpRelayBody => '中继服务器会将合并的材质包缓存 1 小时。要提前强制重新合并，请稍微修改材质包链接（例如在末尾添加 ?v=2）并保存——这会给中继服务器一个新的缓存键。';
+
+  @override
+  String get rpWorksGithubHint => '直接下载链接，始终可访问';
+
+  @override
+  String get rpWorksCloudflareHint => '公共云存储，快速可靠';
+
+  @override
+  String get rpWorksDirectHint => '任何公开的 HTTPS .mcpack 或 .zip 链接';
+
+  @override
+  String get rpNoDiscordHint => 'Discord CDN 链接会在短时间内失效';
+
+  @override
+  String get rpNoDriveHint => '无直接下载，会跳转到预览页面';
+
+  @override
+  String get rpNoEncryptedHint => 'MCCompanion 无法合并加密的材质包内容';
+
+  @override
+  String get rpClearWhy => 'Minecraft 会通过唯一 ID 将材质包缓存在本地。当 MCCompanion 将您的材质包与服务器的材质包合并后，会生成新的 ID。如果 Minecraft 已缓存了旧版本，就不会重新下载新的——这就是为什么需要先清除缓存。';
 }

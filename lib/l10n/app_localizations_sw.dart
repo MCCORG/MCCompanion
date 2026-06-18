@@ -1701,7 +1701,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get rpWhatIsThis => 'Hii ni nini?';
 
   @override
-  String get rpExplanation => 'Unaweza kuongeza kifurushi chako cha rasilimali (pakiti ya texture) ambacho kinatumika kila wakati unaounganika kupitia MCCompanion. Kifurushi kinapakuliwa mara moja na kuhifadhiwa — hutaona ucheleweshaji wowote unapoungana.';
+  String get rpExplanation => 'Pakiti ya rasilimali hubadilisha mwonekano wa Minecraft kwenye konsoli yako — vitalu, rangi au sauti mpya. Bandika kiungo cha faili la .mcpack hapa chini, washa na uhifadhi. MCCompanion hupakia kiotomatiki kila wakati unapoungana.';
 
   @override
   String get rpPackUrlLabel => 'URL ya Pakiti';
@@ -1750,4 +1750,46 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get rpToastSaved => 'Mipangilio ya kifurushi cha rasilimali imehifadhiwa.';
+
+  @override
+  String get rpClearMinecraftTitle => 'Mara ya kwanza na pakiti hii?';
+
+  @override
+  String get rpClearMinecraftBody => 'Minecraft huhifadhi pakiti za rasilimali kwenye cache ya ndani. Ikiwa uliounganika kwenye seva hii kabla ya kuwezesha pakiti ya MCCompanion, Minecraft tayari ina pakiti asili kwenye cache na haitaipakua tena toleo lililounganishwa.';
+
+  @override
+  String get rpClearStep1 => 'Fungua Minecraft kwenye konsoli yako na nenda Mipangilio → Hifadhi';
+
+  @override
+  String get rpClearStep2 => 'Gonga \'Futa\' au \'Weka upya\' karibu na Pakiti za Rasilimali — hii huondoa pakiti zote zilizohifadhiwa ndani';
+
+  @override
+  String get rpClearStep3 => 'Unganisha tena kupitia MCCompanion — pakiti iliyochanganywa itapakuliwa kiotomatiki';
+
+  @override
+  String get rpRelayTitle => 'Pack inaonekana vibaya?';
+
+  @override
+  String get rpRelayBody => 'Relay huhifadhi pakiti zilizochanganywa kwa saa 1. Kulazimisha muunganiko mpya mapema, badilisha kidogo URL ya pakiti (mfano ongeza ?v=2 mwishoni) na uhifadhi — hii humpa relay ufunguo mpya wa akiba.';
+
+  @override
+  String get rpWorksGithubHint => 'Kiungo cha kupakua moja kwa moja — daima kinafikiwa';
+
+  @override
+  String get rpWorksCloudflareHint => 'Hifadhi ya wingu ya umma — haraka na ya kuaminika';
+
+  @override
+  String get rpWorksDirectHint => 'URL yoyote ya umma ya HTTPS .mcpack au .zip';
+
+  @override
+  String get rpNoDiscordHint => 'Viungo vya Discord CDN vinaisha baada ya muda mfupi';
+
+  @override
+  String get rpNoDriveHint => 'Hakuna upakuaji wa moja kwa moja — inaelekeza kwenye ukurasa wa hakiki';
+
+  @override
+  String get rpNoEncryptedHint => 'MCCompanion haiwezi kuchanganya maudhui ya pakiti zilizosimbwa';
+
+  @override
+  String get rpClearWhy => 'Minecraft inahifadhi pakiti za rasilimali kwa ndani kwa kutumia kitambulisho chake cha kipekee. MCCompanion inapochanganya pakiti yako na ile ya seva, inapata kitambulisho kipya. Ikiwa Minecraft tayari imehifadhi toleo la zamani, haitapakua jipya — ndiyo maana unahitaji kwanza kufuta akiba.';
 }

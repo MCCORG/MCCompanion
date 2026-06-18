@@ -1701,7 +1701,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get rpWhatIsThis => 'Apa ini?';
 
   @override
-  String get rpExplanation => 'Kamu bisa menambahkan paket sumber daya (texture pack) sendiri yang diterapkan setiap kali kamu terhubung melalui MCCompanion. Paket diunduh sekali dan di-cache — kamu tidak akan merasakan penundaan saat menghubungkan.';
+  String get rpExplanation => 'Pack sumber daya mengubah tampilan Minecraft di konsol kamu — blok, warna, atau suara baru. Tempel tautan file .mcpack di bawah, aktifkan, dan simpan. MCCompanion memuat secara otomatis setiap kali kamu terhubung.';
 
   @override
   String get rpPackUrlLabel => 'URL Paket';
@@ -1750,4 +1750,46 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get rpToastSaved => 'Pengaturan paket sumber daya disimpan.';
+
+  @override
+  String get rpClearMinecraftTitle => 'Pertama kali dengan pack ini?';
+
+  @override
+  String get rpClearMinecraftBody => 'Minecraft menyimpan paket sumber daya secara lokal. Jika kamu pernah terhubung ke server ini sebelum mengaktifkan paket MCCompanion, Minecraft sudah menyimpan paket asli dan tidak akan mengunduh ulang versi yang telah digabungkan.';
+
+  @override
+  String get rpClearStep1 => 'Buka Minecraft di konsolmu dan pergi ke Pengaturan → Penyimpanan';
+
+  @override
+  String get rpClearStep2 => 'Ketuk ‘Hapus’ atau ‘Reset’ di sebelah Pack Sumber Daya — ini menghapus semua pack yang tersimpan lokal';
+
+  @override
+  String get rpClearStep3 => 'Sambungkan kembali melalui MCCompanion — pack yang digabungkan akan diunduh secara otomatis';
+
+  @override
+  String get rpRelayTitle => 'Pack terlihat tidak benar?';
+
+  @override
+  String get rpRelayBody => 'Relay menyimpan pack yang digabungkan selama 1 jam. Untuk memaksa penggabungan baru lebih cepat, ubah sedikit URL pack-mu (mis. tambahkan ?v=2 di akhir) dan simpan — ini memberi relay kunci cache baru.';
+
+  @override
+  String get rpWorksGithubHint => 'Tautan unduhan langsung — selalu bisa diakses';
+
+  @override
+  String get rpWorksCloudflareHint => 'Penyimpanan cloud publik — cepat dan andal';
+
+  @override
+  String get rpWorksDirectHint => 'URL HTTPS publik .mcpack atau .zip apa pun';
+
+  @override
+  String get rpNoDiscordHint => 'Tautan Discord CDN kadaluarsa setelah waktu singkat';
+
+  @override
+  String get rpNoDriveHint => 'Tidak ada unduhan langsung — mengarahkan ke halaman pratinjau';
+
+  @override
+  String get rpNoEncryptedHint => 'MCCompanion tidak dapat menggabungkan konten pack terenkripsi';
+
+  @override
+  String get rpClearWhy => 'Minecraft menyimpan pack sumber daya secara lokal berdasarkan ID uniknya. Ketika MCCompanion menggabungkan pack-mu dengan pack server, pack tersebut mendapat ID baru. Jika Minecraft sudah menyimpan versi lama, ia tidak akan mengunduh yang baru — itulah mengapa cache perlu dihapus terlebih dahulu.';
 }

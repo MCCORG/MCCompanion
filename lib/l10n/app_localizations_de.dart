@@ -1701,7 +1701,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get rpWhatIsThis => 'Was ist das?';
 
   @override
-  String get rpExplanation => 'Du kannst dein eigenes Ressourcenpaket (Texturpaket) hinzufügen, das bei jeder Verbindung über MCCompanion angewendet wird. Das Paket wird einmal heruntergeladen und zwischengespeichert — beim Verbinden gibt es keine Verzögerung.';
+  String get rpExplanation => 'Ein Ressourcenpaket verändert das Aussehen von Minecraft auf deiner Konsole — neue Blöcke, Farben oder Sounds. Füge den Link zu einer .mcpack-Datei unten ein, aktiviere es und speichere. MCCompanion lädt es automatisch bei jeder Verbindung.';
 
   @override
   String get rpPackUrlLabel => 'Paket-URL';
@@ -1750,4 +1750,46 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get rpToastSaved => 'Ressourcenpaket-Einstellungen gespeichert.';
+
+  @override
+  String get rpClearMinecraftTitle => 'Erstes Mal mit diesem Paket?';
+
+  @override
+  String get rpClearMinecraftBody => 'Minecraft speichert Ressourcenpakete lokal im Cache. Wenn du dich vor der Aktivierung von MCCompanions Ressourcenpaket mit diesem Server verbunden hast, hat Minecraft das Originalpaket bereits gecacht und lädt die zusammengeführte Version nicht erneut herunter.';
+
+  @override
+  String get rpClearStep1 => 'Offne Minecraft auf deiner Konsole und gehe zu Einstellungen → Speicher';
+
+  @override
+  String get rpClearStep2 => 'Tippe neben Ressourcenpakete auf ‘Löschen’ oder ‘Zurücksetzen’ — das entfernt alle lokal gecachten Packs';
+
+  @override
+  String get rpClearStep3 => 'Verbinde dich erneut über MCCompanion — das zusammengeführte Pack wird automatisch heruntergeladen';
+
+  @override
+  String get rpRelayTitle => 'Paket sieht falsch aus?';
+
+  @override
+  String get rpRelayBody => 'Der Relay speichert zusammengeführte Packs 1 Stunde lang. Um früher eine neue Zusammenführung zu erzwingen, ändere die Pack-URL leicht (z. B. ?v=2 am Ende) und speichere — das gibt dem Relay einen neuen Cache-Schlüssel.';
+
+  @override
+  String get rpWorksGithubHint => 'Direkter Download-Link — immer erreichbar';
+
+  @override
+  String get rpWorksCloudflareHint => 'Offentlicher Cloud-Speicher — schnell und zuverlässig';
+
+  @override
+  String get rpWorksDirectHint => 'Jede offentliche HTTPS .mcpack- oder .zip-URL';
+
+  @override
+  String get rpNoDiscordHint => 'Discord CDN-Links laufen nach kurzer Zeit ab';
+
+  @override
+  String get rpNoDriveHint => 'Kein Direktdownload — leitet zu einer Vorschauseite weiter';
+
+  @override
+  String get rpNoEncryptedHint => 'MCCompanion kann verschlüsselten Pack-Inhalt nicht zusammenführen';
+
+  @override
+  String get rpClearWhy => 'Minecraft speichert Ressourcenpakete lokal anhand einer eindeutigen ID. Wenn MCCompanion dein Pack mit dem Server-Pack zusammenführt, erhält es eine neue ID. Falls Minecraft die alte Version bereits gecacht hat, lädt es das neue nicht herunter — deshalb muss der Cache zuerst geleert werden.';
 }

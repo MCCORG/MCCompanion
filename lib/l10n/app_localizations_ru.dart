@@ -1701,7 +1701,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get rpWhatIsThis => 'Что это?';
 
   @override
-  String get rpExplanation => 'Вы можете добавить собственный пакет ресурсов (текстурный пакет), который будет применяться при каждом подключении через MCCompanion. Пакет загружается один раз и кэшируется — вы не заметите задержки при подключении.';
+  String get rpExplanation => 'Пакет ресурсов меняет внешний вид Minecraft на твоей консоли — новые блоки, цвета или звуки. Вставь ссылку на файл .mcpack ниже, включи его и сохрани. MCCompanion загружает его автоматически при каждом подключении.';
 
   @override
   String get rpPackUrlLabel => 'URL пакета';
@@ -1750,4 +1750,46 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get rpToastSaved => 'Настройки пакета ресурсов сохранены.';
+
+  @override
+  String get rpClearMinecraftTitle => 'Первый раз с этим пакетом?';
+
+  @override
+  String get rpClearMinecraftBody => 'Minecraft кэширует пакеты ресурсов локально. Если вы подключались к этому серверу до включения пакета MCCompanion, Minecraft уже кэшировал оригинальный пакет и не будет повторно загружать объединённую версию.';
+
+  @override
+  String get rpClearStep1 => 'Открой Minecraft на консоли и перейди в Настройки → Хранилище';
+
+  @override
+  String get rpClearStep2 => 'Нажми «Очистить» рядом с Пакеты ресурсов — это удалит все кэшированные паки';
+
+  @override
+  String get rpClearStep3 => 'Подключись через MCCompanion — объединённый пак скачается автоматически';
+
+  @override
+  String get rpRelayTitle => 'Пакет выглядит неправильно?';
+
+  @override
+  String get rpRelayBody => 'Relay хранит объединённые паки 1 час. Чтобы обновить раньше, чуть измени URL пака (например, добавь ?v=2 в конец) и сохрани — это даст relay новый ключ кэша.';
+
+  @override
+  String get rpWorksGithubHint => 'Прямая ссылка — всегда доступна';
+
+  @override
+  String get rpWorksCloudflareHint => 'Публичное облако — быстро и надёжно';
+
+  @override
+  String get rpWorksDirectHint => 'Любой публичный HTTPS-адрес .mcpack или .zip';
+
+  @override
+  String get rpNoDiscordHint => 'Ссылки Discord CDN истекают через короткое время';
+
+  @override
+  String get rpNoDriveHint => 'Нет прямой загрузки — перенаправляет на страницу предпросмотра';
+
+  @override
+  String get rpNoEncryptedHint => 'MCCompanion не может объединить зашифрованный пак';
+
+  @override
+  String get rpClearWhy => 'Minecraft кэширует паки локально по уникальному ID. Когда MCCompanion объединяет твой пак с серверным, он получает новый ID. Если Minecraft уже закэшировал старую версию, он не скачает новую — поэтому нужно сначала очистить кэш.';
 }

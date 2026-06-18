@@ -1701,7 +1701,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rpWhatIsThis => 'What is this?';
 
   @override
-  String get rpExplanation => 'You can add your own resource pack (texture pack) that gets applied every time you connect through MCCompanion. The pack is downloaded once and cached — you won\'t notice any delay when connecting.';
+  String get rpExplanation => 'A resource pack changes how Minecraft looks on your console — new blocks, colors, or sounds. Paste the link to a .mcpack file below, enable it, and save. MCCompanion loads it automatically every time you connect.';
 
   @override
   String get rpPackUrlLabel => 'Pack URL';
@@ -1750,4 +1750,46 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get rpToastSaved => 'Resource pack settings saved.';
+
+  @override
+  String get rpClearMinecraftTitle => 'First time with this pack?';
+
+  @override
+  String get rpClearMinecraftBody => 'Minecraft caches resource packs locally. If you connected to this server before enabling MCCompanion\'s resource pack, Minecraft already has the original pack cached and won\'t re-download the merged version.';
+
+  @override
+  String get rpClearStep1 => 'Open Minecraft on your console and go to Settings → Storage';
+
+  @override
+  String get rpClearStep2 => 'Tap ‘Clear’ or ‘Reset’ next to Resource Packs — this removes all locally cached packs';
+
+  @override
+  String get rpClearStep3 => 'Reconnect through MCCompanion — the merged pack will download automatically';
+
+  @override
+  String get rpRelayTitle => 'Pack looks wrong?';
+
+  @override
+  String get rpRelayBody => 'The relay caches merged packs for 1 hour. To force a fresh merge sooner, slightly change your pack URL (e.g. add ?v=2 at the end) and save — this gives the relay a new cache key.';
+
+  @override
+  String get rpWorksGithubHint => 'Direct download link — always accessible';
+
+  @override
+  String get rpWorksCloudflareHint => 'Public cloud storage — fast and reliable';
+
+  @override
+  String get rpWorksDirectHint => 'Any public HTTPS .mcpack or .zip URL';
+
+  @override
+  String get rpNoDiscordHint => 'Discord CDN links expire after a short time';
+
+  @override
+  String get rpNoDriveHint => 'No direct download — sends you to a preview page';
+
+  @override
+  String get rpNoEncryptedHint => 'MCCompanion cannot merge encrypted pack content';
+
+  @override
+  String get rpClearWhy => 'Minecraft caches resource packs locally by their unique ID. When MCCompanion merges your pack with the server’s pack, it gets a new ID. If Minecraft already cached the old version, it won’t re-download the new merged one — that’s why you need to clear it first.';
 }

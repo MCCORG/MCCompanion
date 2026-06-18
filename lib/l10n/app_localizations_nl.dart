@@ -1701,7 +1701,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get rpWhatIsThis => 'Wat is dit?';
 
   @override
-  String get rpExplanation => 'Je kunt je eigen resourcepakket (texturenpack) toevoegen dat wordt toegepast elke keer dat je via MCCompanion verbindt. Het pakket wordt eenmalig gedownload en gecached — je merkt geen vertraging bij het verbinden.';
+  String get rpExplanation => 'Een resourcepakket verandert hoe Minecraft er op jouw console uitziet — nieuwe blokken, kleuren of geluiden. Plak hieronder de link van een .mcpack bestand, zet het aan en sla op. MCCompanion laadt het automatisch elke keer als je verbindt.';
 
   @override
   String get rpPackUrlLabel => 'Pack-URL';
@@ -1750,4 +1750,46 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get rpToastSaved => 'Instellingen resourcepakket opgeslagen.';
+
+  @override
+  String get rpClearMinecraftTitle => 'Eerste keer met dit pakket?';
+
+  @override
+  String get rpClearMinecraftBody => 'Minecraft slaat resourcepakketten lokaal op in de cache. Als je eerder verbinding hebt gemaakt met deze server vóór het inschakelen van MCCompanion\'s resourcepakket, heeft Minecraft het originele pakket al gecached en zal de samengevoegde versie niet opnieuw downloaden.';
+
+  @override
+  String get rpClearStep1 => 'Open Minecraft op je console en ga naar Instellingen → Opslag';
+
+  @override
+  String get rpClearStep2 => 'Tik op ‘Wissen’ of ‘Opnieuw instellen’ naast Resourcepakketten — dit verwijdert alle lokaal opgeslagen packs';
+
+  @override
+  String get rpClearStep3 => 'Verbind opnieuw via MCCompanion — het samengevoegde pakket wordt automatisch gedownload';
+
+  @override
+  String get rpRelayTitle => 'Pack ziet er niet goed uit?';
+
+  @override
+  String get rpRelayBody => 'De relay bewaart samengevoegde packs 1 uur in de cache. Wil je eerder een verse samenvoeging? Pas de pack-URL iets aan (bijv. voeg ?v=2 toe aan het einde) en sla op — dit geeft de relay een nieuwe cachesleutel.';
+
+  @override
+  String get rpWorksGithubHint => 'Directe downloadlink — altijd bereikbaar';
+
+  @override
+  String get rpWorksCloudflareHint => 'Publieke cloudopslag — snel en betrouwbaar';
+
+  @override
+  String get rpWorksDirectHint => 'Elke publieke HTTPS .mcpack of .zip URL';
+
+  @override
+  String get rpNoDiscordHint => 'Discord CDN-links verlopen na korte tijd';
+
+  @override
+  String get rpNoDriveHint => 'Geen directe download — stuurt door naar een voorbeeldpagina';
+
+  @override
+  String get rpNoEncryptedHint => 'MCCompanion kan versleutelde packinhoud niet samenvoegen';
+
+  @override
+  String get rpClearWhy => 'Minecraft slaat resourcepakketten lokaal op via een uniek ID. Wanneer MCCompanion jouw pack samenvoegt met die van de server, krijgt die pack een nieuw ID. Als Minecraft de oude versie al heeft opgeslagen, downloadt het de nieuwe samengevoegde versie niet opnieuw — daarom moet je de cache eerst wissen.';
 }

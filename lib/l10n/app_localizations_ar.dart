@@ -1701,7 +1701,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get rpWhatIsThis => 'ما هذا؟';
 
   @override
-  String get rpExplanation => 'يمكنك إضافة حزمة موارد خاصة بك (حزمة نسيج) يتم تطبيقها في كل مرة تتصل فيها عبر MCCompanion. يتم تنزيل الحزمة مرة واحدة وتخزينها مؤقتًا — لن تلاحظ أي تأخير عند الاتصال.';
+  String get rpExplanation => 'حزمة الموارد تغيّر مظهر Minecraft على جهازك — كتل وألوان وأصوات جديدة. الصق رابط ملف .mcpack أدناه، فعّله واحفظ. يحمله MCCompanion تلقائيًا في كل مرة تتصل.';
 
   @override
   String get rpPackUrlLabel => 'رابط الحزمة';
@@ -1750,4 +1750,46 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get rpToastSaved => 'تم حفظ إعدادات حزمة الموارد.';
+
+  @override
+  String get rpClearMinecraftTitle => 'أول مرة مع هذه الحزمة؟';
+
+  @override
+  String get rpClearMinecraftBody => 'يقوم Minecraft بتخزين حزم الموارد محليًا. إذا كنت قد اتصلت بهذا الخادم قبل تفعيل حزمة MCCompanion، فإن Minecraft يملك الحزمة الأصلية محفوظة ولن يعيد تنزيل النسخة المدمجة.';
+
+  @override
+  String get rpClearStep1 => 'افتح Minecraft على جهازك وانتقل إلى الإعدادات → التخزين';
+
+  @override
+  String get rpClearStep2 => 'انقر على ‘مسح’ أو ‘إعادة تعيين’ بجانب حزم الموارد — سيزيل جميع الحزم المخزّنة محليًا';
+
+  @override
+  String get rpClearStep3 => 'أعد الاتصال عبر MCCompanion — ستُنزّل الحزمة المدمجة تلقائيًا';
+
+  @override
+  String get rpRelayTitle => 'الحزمة تبدو خاطئة؟';
+
+  @override
+  String get rpRelayBody => 'يحتفظ الريلاي بالحزم المدمجة ساعة واحدة. لإجبار دمج جديد مبكرًا، عدّل رابط الحزمة قليلاً (مثلاً أضف ?v=2 في النهاية) واحفظ — سيعطي ذلك الريلاي مفتاح تخزين مؤقت جديدًا.';
+
+  @override
+  String get rpWorksGithubHint => 'رابط تنزيل مباشر — دائمًا متاح';
+
+  @override
+  String get rpWorksCloudflareHint => 'تخزين سحابي عام — سريع وموثوق';
+
+  @override
+  String get rpWorksDirectHint => 'أي رابط HTTPS عام .mcpack أو .zip';
+
+  @override
+  String get rpNoDiscordHint => 'روابط Discord CDN تنتهي صلاحيتها بعد وقت قصير';
+
+  @override
+  String get rpNoDriveHint => 'لا يوجد تنزيل مباشر — يعيد التوجيه إلى صفحة معاينة';
+
+  @override
+  String get rpNoEncryptedHint => 'لا يستطيع MCCompanion دمج محتوى الحزم المشفرة';
+
+  @override
+  String get rpClearWhy => 'يخزن Minecraft حزم الموارد محليًا بمعرف فريد. عندما يدمج MCCompanion حزمتك مع حزمة الخادم، تحصل على معرف جديد. إذا خزّن Minecraft النسخة القديمة مسبقًا، فلن يعيد تنزيل الجديدة — لذلك تحتاج إلى مسح ذاكرة التخزين المؤقت أولاً.';
 }

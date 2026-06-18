@@ -3354,7 +3354,7 @@ abstract class AppLocalizations {
   /// Body text explaining what the resource pack feature does
   ///
   /// In en, this message translates to:
-  /// **'You can add your own resource pack (texture pack) that gets applied every time you connect through MCCompanion. The pack is downloaded once and cached — you won\'t notice any delay when connecting.'**
+  /// **'A resource pack changes how Minecraft looks on your console — new blocks, colors, or sounds. Paste the link to a .mcpack file below, enable it, and save. MCCompanion loads it automatically every time you connect.'**
   String get rpExplanation;
 
   /// Label for the pack URL text field
@@ -3452,6 +3452,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Resource pack settings saved.'**
   String get rpToastSaved;
+
+  /// Section title: already connected before info card
+  ///
+  /// In en, this message translates to:
+  /// **'First time with this pack?'**
+  String get rpClearMinecraftTitle;
+
+  /// Explanation of why Minecraft cache needs clearing when switching to MCCompanion resource pack
+  ///
+  /// In en, this message translates to:
+  /// **'Minecraft caches resource packs locally. If you connected to this server before enabling MCCompanion\'s resource pack, Minecraft already has the original pack cached and won\'t re-download the merged version.'**
+  String get rpClearMinecraftBody;
+
+  /// Step 1: open Minecraft storage settings
+  ///
+  /// In en, this message translates to:
+  /// **'Open Minecraft on your console and go to Settings → Storage'**
+  String get rpClearStep1;
+
+  /// Step 2: clear resource packs in Minecraft storage
+  ///
+  /// In en, this message translates to:
+  /// **'Tap ‘Clear’ or ‘Reset’ next to Resource Packs — this removes all locally cached packs'**
+  String get rpClearStep2;
+
+  /// Step 3: reconnect to get merged pack
+  ///
+  /// In en, this message translates to:
+  /// **'Reconnect through MCCompanion — the merged pack will download automatically'**
+  String get rpClearStep3;
+
+  /// Section title: pack looks wrong info card
+  ///
+  /// In en, this message translates to:
+  /// **'Pack looks wrong?'**
+  String get rpRelayTitle;
+
+  /// Explanation of what to do when merged pack has issues — toggle pack off/on and reconnect
+  ///
+  /// In en, this message translates to:
+  /// **'The relay caches merged packs for 1 hour. To force a fresh merge sooner, slightly change your pack URL (e.g. add ?v=2 at the end) and save — this gives the relay a new cache key.'**
+  String get rpRelayBody;
+
+  /// No description provided for @rpWorksGithubHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Direct download link — always accessible'**
+  String get rpWorksGithubHint;
+
+  /// No description provided for @rpWorksCloudflareHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Public cloud storage — fast and reliable'**
+  String get rpWorksCloudflareHint;
+
+  /// No description provided for @rpWorksDirectHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Any public HTTPS .mcpack or .zip URL'**
+  String get rpWorksDirectHint;
+
+  /// No description provided for @rpNoDiscordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Discord CDN links expire after a short time'**
+  String get rpNoDiscordHint;
+
+  /// No description provided for @rpNoDriveHint.
+  ///
+  /// In en, this message translates to:
+  /// **'No direct download — sends you to a preview page'**
+  String get rpNoDriveHint;
+
+  /// No description provided for @rpNoEncryptedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'MCCompanion cannot merge encrypted pack content'**
+  String get rpNoEncryptedHint;
+
+  /// No description provided for @rpClearWhy.
+  ///
+  /// In en, this message translates to:
+  /// **'Minecraft caches resource packs locally by their unique ID. When MCCompanion merges your pack with the server’s pack, it gets a new ID. If Minecraft already cached the old version, it won’t re-download the new merged one — that’s why you need to clear it first.'**
+  String get rpClearWhy;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

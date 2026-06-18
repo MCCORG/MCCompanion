@@ -1701,7 +1701,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get rpWhatIsThis => 'یہ کیا ہے؟';
 
   @override
-  String get rpExplanation => 'آپ اپنا ریسورس پیک (ٹیکسچر پیک) شامل کر سکتے ہیں جو ہر بار MCCompanion کے ذریعے کنیکٹ ہونے پر لاگو ہوتا ہے۔ پیک ایک بار ڈاؤن لوڈ اور کیش ہوتا ہے — کنیکٹ کرتے وقت کوئی تاخیر نہیں ہوگی۔';
+  String get rpExplanation => 'ایک ریسورس پیک آپ کے کنسول پر Minecraft کی ظاہری شکل بدلتا ہے — نئے بلاکس، رنگ یا آوازیں۔ نیچے .mcpack فائل کا لنک پیسٹ کریں، فعال کریں اور محفوظ کریں۔ MCCompanion ہر بار خودکار لوڈ کرتا ہے۔';
 
   @override
   String get rpPackUrlLabel => 'پیک URL';
@@ -1750,4 +1750,46 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get rpToastSaved => 'ریسورس پیک سیٹنگز محفوظ ہو گئیں۔';
+
+  @override
+  String get rpClearMinecraftTitle => 'اس پیک کے ساتھ پہلی بار؟';
+
+  @override
+  String get rpClearMinecraftBody => 'Minecraft ریسورس پیک کو لوکل کیش میں محفوظ کرتا ہے۔ اگر آپ نے MCCompanion کا پیک فعال کرنے سے پہلے اس سرور سے کنیکট کیا تھا, تو Minecraft نے اصل پیک پہلے سے کیش کیا ہوا ہے۔';
+
+  @override
+  String get rpClearStep1 => 'اپنے کنسول پر Minecraft کھولیں اور Settings → Storage میں جائیں';
+
+  @override
+  String get rpClearStep2 => 'Resource Packs کے ساتھ ‘Clear’ یا ‘Reset’ دبائیں — یہ تمام مقامی کیشڈ پیکس ہٹا دے گا';
+
+  @override
+  String get rpClearStep3 => 'MCCompanion کے ذریعے دوبارہ جڑیں — مرج کیا گیا پیک خودبخود ڈاؤنلوڈ ہو جائے گا';
+
+  @override
+  String get rpRelayTitle => 'پیک ٹھیک نہیں لگ رہا؟';
+
+  @override
+  String get rpRelayBody => 'ریلے مرج کیے گئے پیکس کو 1 گھنٹے کیش میں رکھتا ہے۔ جلدی نیا مرج کروانے کے لیے پیک URL تھوڑا بدلیں (مثلاً آخر میں ?v=2 لگائیں) اور سیو کریں — اس سے ریلے کو نئی کیش کی ملتی ہے۔';
+
+  @override
+  String get rpWorksGithubHint => 'براہ راست ڈاؤنلوڈ لنک — ہمیشہ قابل رسائی';
+
+  @override
+  String get rpWorksCloudflareHint => 'عوامی کلائڈ اسٹوریج — تیز اور قابل بھروسہ';
+
+  @override
+  String get rpWorksDirectHint => 'کوئی بھی عوامی HTTPS .mcpack یا .zip URL';
+
+  @override
+  String get rpNoDiscordHint => 'Discord CDN لنکس تھوڑی دیر بعد ختم ہو جاتے ہیں';
+
+  @override
+  String get rpNoDriveHint => 'براہ راست ڈاؤنلوڈ نہیں — پریویو صفحے پر بھیجتا ہے';
+
+  @override
+  String get rpNoEncryptedHint => 'MCCompanion انکرپٹیڈ پیک کا مواد یکجا نہیں کر سکتا';
+
+  @override
+  String get rpClearWhy => 'Minecraft ریسورس پیک کو ان کے منفرد ID کے ذریعے مقامی طور پر کیش کرتا ہے۔ جب MCCompanion آپ کے پیک کو سرور کے پیک سے مرج کرتا ہے, تو نیا ID بنتا ہے۔ اگر Minecraft پہلے سے پرانی ورژن کیش کر چکا ہے تو نئی ڈاؤنلوڈ نہیں ہوگی — اس لیے پہلے کیش صاف کرنا ضروری ہے۔';
 }

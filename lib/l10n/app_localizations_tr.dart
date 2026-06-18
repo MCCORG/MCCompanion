@@ -1701,7 +1701,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get rpWhatIsThis => 'Bu nedir?';
 
   @override
-  String get rpExplanation => 'MCCompanion üzerinden her bağlandığınızda uygulanan kendi kaynak paketinizi (doku paketi) ekleyebilirsiniz. Paket bir kez indirilir ve önbelleğe alınır — bağlanırken herhangi bir gecikme fark etmezsiniz.';
+  String get rpExplanation => 'Bir kaynak paketi konsolundaki Minecraft\'ın görünümünü değiştirir — yeni bloklar, renkler veya sesler. Aşağıya .mcpack dosyasının bağlantısını yapıştır, etkinleştir ve kaydet. MCCompanion her bağlandığında otomatik olarak yükler.';
 
   @override
   String get rpPackUrlLabel => 'Paket URL\'si';
@@ -1750,4 +1750,46 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get rpToastSaved => 'Kaynak paketi ayarları kaydedildi.';
+
+  @override
+  String get rpClearMinecraftTitle => 'Bu paketle ilk kez mi?';
+
+  @override
+  String get rpClearMinecraftBody => 'Minecraft kaynak paketlerini yerel olarak ön belleğe alır. MCCompanion paketini etkinleştirmeden önce bu sunucuya bağlandıysanız, Minecraft orijinal paketi zaten ön bellekte tutuyor ve birleştirilmiş sürümü yeniden indirmeyecektir.';
+
+  @override
+  String get rpClearStep1 => 'Konsolunda Minecraft\'ı aç ve Ayarlar → Depolama\'ya git';
+
+  @override
+  String get rpClearStep2 => 'Kaynak Paketleri\'nin yanındaki \'Temizle\' veya \'Sıfırla\'ya dokun — yerel olarak önbelleğe alınmış tüm paketleri siler';
+
+  @override
+  String get rpClearStep3 => 'MCCompanion üzerinden yeniden bağlan — birleştirilmiş paket otomatik olarak indirilecek';
+
+  @override
+  String get rpRelayTitle => 'Pack bozuk görünüyor mu?';
+
+  @override
+  String get rpRelayBody => 'Relay birleştirilmiş paketleri 1 saat boyunca önbelleğe alır. Daha erken yeni bir birleştirme zorlamak için pack URL\'ini biraz değiştir (orn. sona ?v=2 ekle) ve kaydet — bu relay\'e yeni bir önbelleğ anahtarı verir.';
+
+  @override
+  String get rpWorksGithubHint => 'Doğrudan indirme bağlantısı — her zaman erişilebilir';
+
+  @override
+  String get rpWorksCloudflareHint => 'Genel bulut depolama — hızlı ve güvenilir';
+
+  @override
+  String get rpWorksDirectHint => 'Herhangi bir genel HTTPS .mcpack veya .zip URL';
+
+  @override
+  String get rpNoDiscordHint => 'Discord CDN bağlantıları kısa süre sonra sona erer';
+
+  @override
+  String get rpNoDriveHint => 'Doğrudan indirme yok — önizleme sayfasına yönlendirir';
+
+  @override
+  String get rpNoEncryptedHint => 'MCCompanion şifrelenmiş pack içeriğini birleştiremez';
+
+  @override
+  String get rpClearWhy => 'Minecraft, kaynak paketlerini benzersiz kimliğine göre yerel olarak önbelleğe alır. MCCompanion paketi sunucunun paketiyle birleştirdiğinde yeni bir kimlik alır. Minecraft eski sürümü önbelleğe almışsa yenisini indirmez — bu yüzden önce önbelleği temizlemek gerekir.';
 }

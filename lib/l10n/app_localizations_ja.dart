@@ -1701,7 +1701,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get rpWhatIsThis => 'これは何ですか？';
 
   @override
-  String get rpExplanation => 'MCCompanion経由で接続するたびに適用される独自のリソースパック（テクスチャパック）を追加できます。パックは一度ダウンロードされてキャッシュされます — 接続時に遅延は発生しません。';
+  String get rpExplanation => 'リソースパックはコンソール上のMinecraftの見た目を変えます — 新しいブロック、色、サウンド。下に.mcpackファイルのリンクを貼り付け、有効にして保存してください。MCCompanionは接続のたびに自動的に読み込みます。';
 
   @override
   String get rpPackUrlLabel => 'パックURL';
@@ -1750,4 +1750,46 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get rpToastSaved => 'リソースパックの設定を保存しました。';
+
+  @override
+  String get rpClearMinecraftTitle => 'このパックを初めて使う？';
+
+  @override
+  String get rpClearMinecraftBody => 'Minecraftはリソースパックをローカルにキャッシュします。MCCompanionのリソースパックを有効にする前にこのサーバーに接続したことがある場合、Minecraftはシュートダウンをキャッシュしており、マージ後のバージョンを再ダウンロードしません。';
+
+  @override
+  String get rpClearStep1 => 'コンソールでMinecraftを開き、設定 → ストレージに移動する';
+
+  @override
+  String get rpClearStep2 => 'リソースパックの横の「クリア」または「リセット」をタップ — ローカルにキャッシュされたパックがすべて削除されます';
+
+  @override
+  String get rpClearStep3 => 'MCCompanion経由で再接続する — 結合されたパックが自動的にダウンロードされます';
+
+  @override
+  String get rpRelayTitle => 'パックがおかしく見える？';
+
+  @override
+  String get rpRelayBody => 'リレーは結合されたパックを1時間キャッシュします。早めに再結合を強制するには、パック URLを少し変更し（例：末尾に?v=2を追加）して保存してください。';
+
+  @override
+  String get rpWorksGithubHint => '直接ダウンロードリンク — 常にアクセス可能';
+
+  @override
+  String get rpWorksCloudflareHint => 'パブリッククラウドストレージ — 高速かつ信頼性が高い';
+
+  @override
+  String get rpWorksDirectHint => '公開されたHTTPS .mcpackまたは.zip URL';
+
+  @override
+  String get rpNoDiscordHint => 'Discord CDNのリンクは短時間で期限切れになります';
+
+  @override
+  String get rpNoDriveHint => '直接ダウンロードなし — プレビューページにリダイレクトされます';
+
+  @override
+  String get rpNoEncryptedHint => 'MCCompanionは暗号化されたパックを結合できません';
+
+  @override
+  String get rpClearWhy => 'Minecraftはリソースパックを固有IDでローカルにキャッシュします。MCCompanionがあなたのパックとサーバーのパックを結合すると新しいIDが付与されます。古いバージョンがすでにキャッシュされている場合、新しいパックはダウンロードされません。そのためまずキャッシュをクリアする必要があります。';
 }

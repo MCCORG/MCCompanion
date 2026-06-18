@@ -1701,7 +1701,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get rpWhatIsThis => '¿Qué es esto?';
 
   @override
-  String get rpExplanation => 'Puedes añadir tu propio paquete de recursos (paquete de texturas) que se aplica cada vez que te conectas a través de MCCompanion. El paquete se descarga una vez y se almacena en caché — no notarás ningún retraso al conectarte.';
+  String get rpExplanation => 'Un paquete de recursos cambia el aspecto de Minecraft en tu consola — nuevos bloques, colores o sonidos. Pega el enlace a un archivo .mcpack abajo, actívalo y guarda. MCCompanion lo carga automáticamente cada vez que te conectas.';
 
   @override
   String get rpPackUrlLabel => 'URL del paquete';
@@ -1750,4 +1750,46 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get rpToastSaved => 'Configuración del paquete de recursos guardada.';
+
+  @override
+  String get rpClearMinecraftTitle => '¿Primera vez con este pack?';
+
+  @override
+  String get rpClearMinecraftBody => 'Minecraft almacena los paquetes de recursos en caché localmente. Si te conectaste a este servidor antes de activar el paquete de recursos de MCCompanion, Minecraft ya tiene el paquete original en caché y no volverá a descargar la versión combinada.';
+
+  @override
+  String get rpClearStep1 => 'Abre Minecraft en tu consola y ve a Configuración → Almacenamiento';
+
+  @override
+  String get rpClearStep2 => 'Toca ‘Borrar’ o ‘Restablecer’ junto a Packs de recursos — esto elimina todos los packs en caché';
+
+  @override
+  String get rpClearStep3 => 'Vuélvete a conectar a través de MCCompanion — el pack fusionado se descargará automáticamente';
+
+  @override
+  String get rpRelayTitle => '¿El pack se ve mal?';
+
+  @override
+  String get rpRelayBody => 'El relay almacena packs fusionados durante 1 hora. Para forzar una fusión antes, cambia ligeramente la URL del pack (p. ej. añade ?v=2 al final) y guarda — esto da al relay una nueva clave de caché.';
+
+  @override
+  String get rpWorksGithubHint => 'Enlace de descarga directa — siempre accesible';
+
+  @override
+  String get rpWorksCloudflareHint => 'Almacenamiento en la nube público — rápido y fiable';
+
+  @override
+  String get rpWorksDirectHint => 'Cualquier URL HTTPS pública .mcpack o .zip';
+
+  @override
+  String get rpNoDiscordHint => 'Los enlaces de Discord CDN caducan después de poco tiempo';
+
+  @override
+  String get rpNoDriveHint => 'Sin descarga directa — redirige a una página de vista previa';
+
+  @override
+  String get rpNoEncryptedHint => 'MCCompanion no puede combinar contenido de packs cifrados';
+
+  @override
+  String get rpClearWhy => 'Minecraft almacena los packs de recursos localmente por su ID único. Cuando MCCompanion fusiona tu pack con el del servidor, obtiene un nuevo ID. Si Minecraft ya tiene en caché la versión anterior, no descargará la nueva — por eso hay que borrar la caché primero.';
 }

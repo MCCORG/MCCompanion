@@ -1949,7 +1949,7 @@
   "@rpWhatIsThis": {
     "description": "Section title for the what-is-this explanation card"
   },
-  "rpExplanation": "You can add your own resource pack (texture pack) that gets applied every time you connect through MCCompanion. The pack is downloaded once and cached — you won't notice any delay when connecting.",
+  "rpExplanation": "A resource pack changes how Minecraft looks on your console — new blocks, colors, or sounds. Paste the link to a .mcpack file below, enable it, and save. MCCompanion loads it automatically every time you connect.",
   "@rpExplanation": {
     "description": "Body text explaining what the resource pack feature does"
   },
@@ -2016,5 +2016,40 @@
   "rpToastSaved": "Resource pack settings saved.",
   "@rpToastSaved": {
     "description": "Toast shown after resource pack settings are saved successfully"
-  }
+  },
+  "rpClearMinecraftTitle": "First time with this pack?",
+  "@rpClearMinecraftTitle": {
+    "description": "Section title: already connected before info card"
+  },
+  "rpClearMinecraftBody": "Minecraft caches resource packs locally. If you connected to this server before enabling MCCompanion's resource pack, Minecraft already has the original pack cached and won't re-download the merged version.",
+  "@rpClearMinecraftBody": {
+    "description": "Explanation of why Minecraft cache needs clearing when switching to MCCompanion resource pack"
+  },
+  "rpClearStep1": "Open Minecraft on your console and go to Settings → Storage",
+  "@rpClearStep1": {
+    "description": "Step 1: open Minecraft storage settings"
+  },
+  "rpClearStep2": "Tap ‘Clear’ or ‘Reset’ next to Resource Packs — this removes all locally cached packs",
+  "@rpClearStep2": {
+    "description": "Step 2: clear resource packs in Minecraft storage"
+  },
+  "rpClearStep3": "Reconnect through MCCompanion — the merged pack will download automatically",
+  "@rpClearStep3": {
+    "description": "Step 3: reconnect to get merged pack"
+  },
+  "rpRelayTitle": "Pack looks wrong?",
+  "@rpRelayTitle": {
+    "description": "Section title: pack looks wrong info card"
+  },
+  "rpRelayBody": "The relay caches merged packs for 1 hour. To force a fresh merge sooner, slightly change your pack URL (e.g. add ?v=2 at the end) and save — this gives the relay a new cache key.",
+  "@rpRelayBody": {
+    "description": "Explanation of what to do when merged pack has issues — toggle pack off/on and reconnect"
+  },
+  "rpWorksGithubHint": "Direct download link — always accessible",
+  "rpWorksCloudflareHint": "Public cloud storage — fast and reliable",
+  "rpWorksDirectHint": "Any public HTTPS .mcpack or .zip URL",
+  "rpNoDiscordHint": "Discord CDN links expire after a short time",
+  "rpNoDriveHint": "No direct download — sends you to a preview page",
+  "rpNoEncryptedHint": "MCCompanion cannot merge encrypted pack content",
+  "rpClearWhy": "Minecraft caches resource packs locally by their unique ID. When MCCompanion merges your pack with the server’s pack, it gets a new ID. If Minecraft already cached the old version, it won’t re-download the new merged one — that’s why you need to clear it first."
 }

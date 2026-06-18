@@ -1701,7 +1701,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get rpWhatIsThis => 'এটি কী?';
 
   @override
-  String get rpExplanation => 'আপনি নিজের রিসোর্স প্যাক (টেক্সচার প্যাক) যোগ করতে পারেন যা MCCompanion এর মাধ্যমে প্রতিটি সংযোগে প্রয়োগ হয়। প্যাকটি একবার ডাউনলোড করে ক্যাশ করা হয় — সংযোগের সময় কোনো বিলম্ব লক্ষ্য করবেন না।';
+  String get rpExplanation => 'একটি রিসোর্স প্যাক আপনার কনসোলে Minecraft-এর চেহারা পরিবর্তন করে — নতুন ব্লক, রঙ বা শব্দ। নিচে .mcpack ফাইলের লিঙ্ক পেস্ট করুন, চালু করুন ও সেভ করুন। MCCompanion প্রতিবার সংযোগের সময় স্বয়ংক্রিয়ভাবে লোড করে।';
 
   @override
   String get rpPackUrlLabel => 'প্যাক URL';
@@ -1750,4 +1750,46 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get rpToastSaved => 'রিসোর্স প্যাক সেটিংস সংরক্ষিত।';
+
+  @override
+  String get rpClearMinecraftTitle => 'প্রথমবার এই প্যাক দিয়ে?';
+
+  @override
+  String get rpClearMinecraftBody => 'Minecraft রিসোর্স প্যাক লোকালি ক্যাশ করে। MCCompanion-এর প্যাক সক্রিয় করার আগে যদি সংযুক্ত হয়ে থাকেন, তাহলে Minecraft মূল প্যাক ক্যাশ করে রেখেছে।';
+
+  @override
+  String get rpClearStep1 => 'কনসোলে Minecraft খুলুন ও Settings → Storage-এ যান';
+
+  @override
+  String get rpClearStep2 => 'Resource Packs-এর পাশে \'Clear\' বা \'Reset\' চাপুন — এটি সব লোকাললি ক্যাশড প্যাক সরিয়ে দেবে';
+
+  @override
+  String get rpClearStep3 => 'MCCompanion-এর মাধ্যমে আবার সংযুক্ত হন — মার্জ করা প্যাক স্বয়ংক্রিয়ভাবে ডাউনলোড হবে';
+
+  @override
+  String get rpRelayTitle => 'প্যাক ঠিকমতো দেখাচ্ছে না?';
+
+  @override
+  String get rpRelayBody => 'রিলে মার্জ করা প্যাক 1 ঘন্টা ক্যাশে রাখে। জলদি নতুন মার্জ করতে, URL বদলান (যেমন ?v=2 যোগ করুন) ও সেভ করুন।';
+
+  @override
+  String get rpWorksGithubHint => 'সরাসরি ডাউনলোড লিঙ্ক — সবসময় অ্যাক্সেসযোগ্য';
+
+  @override
+  String get rpWorksCloudflareHint => 'পাবলিক ক্লাউড স্টোরেজ — দ্রুত ও নির্ভরযোগ্য';
+
+  @override
+  String get rpWorksDirectHint => 'যেকোনো পাবলিক HTTPS .mcpack বা .zip URL';
+
+  @override
+  String get rpNoDiscordHint => 'Discord CDN লিঙ্ক অল্প সময়ের মধ্যে মেয়াদ শেষ হয়';
+
+  @override
+  String get rpNoDriveHint => 'সরাসরি ডাউনলোড নেই — প্রিভিউ পেজে রিডাইরেক্ট করে';
+
+  @override
+  String get rpNoEncryptedHint => 'MCCompanion এন্ক্রিপ্টেড প্যাক মার্জ করতে পারে না';
+
+  @override
+  String get rpClearWhy => 'Minecraft রিসোর্স প্যাক তাদের অনন্য ID দিয়ে লোকালে ক্যাশ করে। MCCompanion যখন আপনার প্যাক সার্ভারের প্যাকের সাথে মার্জ করে, তখন নতুন ID তৈরি হয়। Minecraft যদি আগেই পুরনো সংস্করণ ক্যাশ করে রাখে, তাহলে নতুনটি ডাউনলোড হবে না — সেজন্য আগে ক্যাশ পরিষ্কার করতে হবে।';
 }

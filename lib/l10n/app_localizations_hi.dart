@@ -1701,7 +1701,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get rpWhatIsThis => 'यह क्या है?';
 
   @override
-  String get rpExplanation => 'आप अपना खुद का रिसोर्स पैक (टेक्सचर पैक) जोड़ सकते हैं जो हर बार MCCompanion के माध्यम से कनेक्ट होने पर लागू होता है। पैक एक बार डाउनलोड होकर कैश हो जाता है — कनेक्ट करते समय कोई देरी नहीं होगी।';
+  String get rpExplanation => 'एक रिसोर्स पैक आपके कंसोल पर Minecraft का रूप बदलता है — नए ब्लॉक, रंग या आवाज़ें। नीचे .mcpack फ़ाइल का लिंक पेस्ट करें, चालू करें और सेव करें। MCCompanion हर बार कनेक्ट होने पर इसे अपने आप लोड करता है।';
 
   @override
   String get rpPackUrlLabel => 'पैक URL';
@@ -1750,4 +1750,46 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get rpToastSaved => 'रिसोर्स पैक सेटिंग्स सहेजी गईं।';
+
+  @override
+  String get rpClearMinecraftTitle => 'पहली बार इस पैक के साथ?';
+
+  @override
+  String get rpClearMinecraftBody => 'Minecraft रिसोर्स पैक को लोकल में कैश करता है। अगर आपने MCCompanion का पैक एक्टिव करने से पहले इस सर्वर से कनेक्ट किया था, तो Minecraft ने ओरिजिनल पैक कैश कर लिया है।';
+
+  @override
+  String get rpClearStep1 => 'अपने कंसोल पर Minecraft खोलें और Settings → Storage में जाएं';
+
+  @override
+  String get rpClearStep2 => 'Resource Packs के बगल में ‘Clear’ या ‘Reset’ दबाएं — यह सभी लोकली कैश्ड पैक हटा देगा';
+
+  @override
+  String get rpClearStep3 => 'MCCompanion के ज़रिए फिर से कनेक्ट करें — मर्ज किया गया पैक अपने आप डाउनलोड हो जाएगा';
+
+  @override
+  String get rpRelayTitle => 'पैक ठीक नहीं दिख रहा?';
+
+  @override
+  String get rpRelayBody => 'रिले मर्ज किए गए पैक को 1 घंटे तक कैश में रखता है। जल्दी नया मर्ज करवाने के लिए, पैक URL में थोडा बदलाव करें (जैसे अंत में ?v=2 जोड़ें) और सेव करें — इससे रिले को नई कैश की मिलती है।';
+
+  @override
+  String get rpWorksGithubHint => 'सीधा डाउनलोड लिंक — हमेशा उपलब्ध';
+
+  @override
+  String get rpWorksCloudflareHint => 'पब्लिक क्लाउड स्टोरेज — तेज़ और भरोसेमंद';
+
+  @override
+  String get rpWorksDirectHint => 'कोई भी सार्वजनिक HTTPS .mcpack या .zip URL';
+
+  @override
+  String get rpNoDiscordHint => 'Discord CDN लिंक थोड़े समय बाद समाप्त हो जाते हैं';
+
+  @override
+  String get rpNoDriveHint => 'सीधा डाउनलोड नहीं — प्रीव्यू पेज पर रीडायरेक्ट करता है';
+
+  @override
+  String get rpNoEncryptedHint => 'MCCompanion एन्क्रिप्टेड पैक मर्ज नहीं कर सकता';
+
+  @override
+  String get rpClearWhy => 'Minecraft रिसोर्स पैक को उनके अनूठे ID से लोकल में कैश करता है। जब MCCompanion आपके पैक को सर्वर के पैक से मर्ज करता है, तो उसे नया ID मिलता है। अगर Minecraft पहले से पुराना वर्शन कैश कर चुका है, तो वह नया डाउनलोड नहीं करेगा — इसलिए पहले कैश साफ़ करना ज़रूरी है।';
 }
