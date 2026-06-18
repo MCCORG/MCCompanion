@@ -1693,4 +1693,61 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get skinMenuDelete => 'حذف';
+
+  @override
+  String get rpScreenTitle => 'حزمة الموارد';
+
+  @override
+  String get rpWhatIsThis => 'ما هذا؟';
+
+  @override
+  String get rpExplanation => 'يمكنك إضافة حزمة موارد خاصة بك (حزمة نسيج) يتم تطبيقها في كل مرة تتصل فيها عبر MCCompanion. يتم تنزيل الحزمة مرة واحدة وتخزينها مؤقتًا — لن تلاحظ أي تأخير عند الاتصال.';
+
+  @override
+  String get rpPackUrlLabel => 'رابط الحزمة';
+
+  @override
+  String get rpPackUrlHint => 'https://example.com/pack.mcpack';
+
+  @override
+  String get rpEnableToggle => 'تفعيل حزمة الموارد';
+
+  @override
+  String get rpWhatWorks => 'ما يعمل';
+
+  @override
+  String get rpWhatDoesntWork => 'ما لا يعمل';
+
+  @override
+  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+
+  @override
+  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 حاوية عامة';
+
+  @override
+  String get rpWorksDirect => 'أي رابط HTTPS مباشر ينتهي بـ .mcpack أو .zip';
+
+  @override
+  String get rpNoDiscord => 'روابط Discord — لا تحتوي على امتداد .mcpack وتنتهي صلاحيتها بعد ساعات قليلة';
+
+  @override
+  String get rpNoDrive => 'روابط مشاركة Google Drive / Dropbox — ليست تنزيلات مباشرة';
+
+  @override
+  String get rpNoEncrypted => 'الخوادم ذات الحزم المشفرة أو المحمية بكلمة مرور';
+
+  @override
+  String get rpWarnDiscord => 'روابط Discord تنتهي صلاحيتها وستتوقف عن العمل. استخدم مضيفًا دائمًا بدلاً من ذلك.';
+
+  @override
+  String get rpWarnHttps => 'يجب أن يبدأ الرابط بـ https://';
+
+  @override
+  String get rpWarnExtension => 'يجب أن ينتهي الرابط بـ .mcpack أو .zip';
+
+  @override
+  String get rpToastEnterUrl => 'أدخل رابطًا قبل تفعيل حزمة الموارد.';
+
+  @override
+  String get rpToastSaved => 'تم حفظ إعدادات حزمة الموارد.';
 }

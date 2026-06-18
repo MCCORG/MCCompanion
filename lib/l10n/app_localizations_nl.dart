@@ -1693,4 +1693,61 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get skinMenuDelete => 'Verwijderen';
+
+  @override
+  String get rpScreenTitle => 'Resourcepakket';
+
+  @override
+  String get rpWhatIsThis => 'Wat is dit?';
+
+  @override
+  String get rpExplanation => 'Je kunt je eigen resourcepakket (texturenpack) toevoegen dat wordt toegepast elke keer dat je via MCCompanion verbindt. Het pakket wordt eenmalig gedownload en gecached — je merkt geen vertraging bij het verbinden.';
+
+  @override
+  String get rpPackUrlLabel => 'Pack-URL';
+
+  @override
+  String get rpPackUrlHint => 'https://example.com/pack.mcpack';
+
+  @override
+  String get rpEnableToggle => 'Resourcepakket inschakelen';
+
+  @override
+  String get rpWhatWorks => 'Wat werkt';
+
+  @override
+  String get rpWhatDoesntWork => 'Wat niet werkt';
+
+  @override
+  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+
+  @override
+  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 publieke bucket';
+
+  @override
+  String get rpWorksDirect => 'Elke directe HTTPS-link die eindigt op .mcpack of .zip';
+
+  @override
+  String get rpNoDiscord => 'Discord-links — geen .mcpack-extensie en verlopen na een paar uur';
+
+  @override
+  String get rpNoDrive => 'Gedeelde links van Google Drive / Dropbox — geen directe downloads';
+
+  @override
+  String get rpNoEncrypted => 'Servers met versleutelde of wachtwoordbeveiligde packs';
+
+  @override
+  String get rpWarnDiscord => 'Discord-links verlopen en werken dan niet meer. Gebruik een permanente host.';
+
+  @override
+  String get rpWarnHttps => 'URL moet beginnen met https://';
+
+  @override
+  String get rpWarnExtension => 'URL moet eindigen op .mcpack of .zip';
+
+  @override
+  String get rpToastEnterUrl => 'Voer een URL in voordat je het resourcepakket inschakelt.';
+
+  @override
+  String get rpToastSaved => 'Instellingen resourcepakket opgeslagen.';
 }

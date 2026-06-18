@@ -25,6 +25,7 @@ class RelayConfigSender {
     required String base,
     String? bedrockGamertag,
     String? authToken,
+    String? resourcePackUrl,
   }) async {
     final uri = Uri.parse('${base.replaceAll(RegExp(r'/$'), '')}/api/route');
 
@@ -33,6 +34,7 @@ class RelayConfigSender {
       'remotePort': remoteServerPort,
       'mode': broadcastModeToString(mode),
       if (bedrockGamertag != null) 'bedrockGamertag': bedrockGamertag,
+      if (resourcePackUrl != null) 'resourcePackUrl': resourcePackUrl,
     });
 
     HttpClient? client;

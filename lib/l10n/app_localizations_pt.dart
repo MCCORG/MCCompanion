@@ -1693,4 +1693,61 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get skinMenuDelete => 'Excluir';
+
+  @override
+  String get rpScreenTitle => 'Pacote de recursos';
+
+  @override
+  String get rpWhatIsThis => 'O que é isso?';
+
+  @override
+  String get rpExplanation => 'Você pode adicionar seu próprio pacote de recursos (pacote de texturas) que é aplicado toda vez que você se conecta pelo MCCompanion. O pacote é baixado uma vez e armazenado em cache — você não vai notar nenhum atraso ao conectar.';
+
+  @override
+  String get rpPackUrlLabel => 'URL do pacote';
+
+  @override
+  String get rpPackUrlHint => 'https://example.com/pack.mcpack';
+
+  @override
+  String get rpEnableToggle => 'Ativar pacote de recursos';
+
+  @override
+  String get rpWhatWorks => 'O que funciona';
+
+  @override
+  String get rpWhatDoesntWork => 'O que não funciona';
+
+  @override
+  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+
+  @override
+  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 bucket público';
+
+  @override
+  String get rpWorksDirect => 'Qualquer link HTTPS direto terminado em .mcpack ou .zip';
+
+  @override
+  String get rpNoDiscord => 'Links do Discord — sem extensão .mcpack e expiram após algumas horas';
+
+  @override
+  String get rpNoDrive => 'Links de compartilhamento do Google Drive / Dropbox — não são downloads diretos';
+
+  @override
+  String get rpNoEncrypted => 'Servidores com pacotes criptografados ou protegidos por senha';
+
+  @override
+  String get rpWarnDiscord => 'Links do Discord expiram e pararão de funcionar. Use um host permanente.';
+
+  @override
+  String get rpWarnHttps => 'A URL deve começar com https://';
+
+  @override
+  String get rpWarnExtension => 'A URL deve terminar em .mcpack ou .zip';
+
+  @override
+  String get rpToastEnterUrl => 'Insira uma URL antes de ativar o pacote de recursos.';
+
+  @override
+  String get rpToastSaved => 'Configurações do pacote de recursos salvas.';
 }

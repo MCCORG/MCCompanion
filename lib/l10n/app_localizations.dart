@@ -3338,6 +3338,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Delete'**
   String get skinMenuDelete;
+
+  /// Title of the resource pack screen
+  ///
+  /// In en, this message translates to:
+  /// **'Resource Pack'**
+  String get rpScreenTitle;
+
+  /// Section title for the what-is-this explanation card
+  ///
+  /// In en, this message translates to:
+  /// **'What is this?'**
+  String get rpWhatIsThis;
+
+  /// Body text explaining what the resource pack feature does
+  ///
+  /// In en, this message translates to:
+  /// **'You can add your own resource pack (texture pack) that gets applied every time you connect through MCCompanion. The pack is downloaded once and cached — you won\'t notice any delay when connecting.'**
+  String get rpExplanation;
+
+  /// Label for the pack URL text field
+  ///
+  /// In en, this message translates to:
+  /// **'Pack URL'**
+  String get rpPackUrlLabel;
+
+  /// Hint/placeholder for the pack URL text field
+  ///
+  /// In en, this message translates to:
+  /// **'https://example.com/pack.mcpack'**
+  String get rpPackUrlHint;
+
+  /// Label for the enable resource pack toggle
+  ///
+  /// In en, this message translates to:
+  /// **'Enable resource pack'**
+  String get rpEnableToggle;
+
+  /// Section title for the 'what works' card
+  ///
+  /// In en, this message translates to:
+  /// **'What works'**
+  String get rpWhatWorks;
+
+  /// Section title for the 'what doesn't work' card
+  ///
+  /// In en, this message translates to:
+  /// **'What doesn\'t work'**
+  String get rpWhatDoesntWork;
+
+  /// Bullet: GitHub Releases works as a pack host
+  ///
+  /// In en, this message translates to:
+  /// **'GitHub Releases (github.com/…/releases/download/…)'**
+  String get rpWorksGithub;
+
+  /// Bullet: Cloudflare R2 / S3 works as a pack host
+  ///
+  /// In en, this message translates to:
+  /// **'Cloudflare R2 / AWS S3 public bucket'**
+  String get rpWorksCloudflare;
+
+  /// Bullet: direct HTTPS .mcpack or .zip links work
+  ///
+  /// In en, this message translates to:
+  /// **'Any direct HTTPS link ending in .mcpack or .zip'**
+  String get rpWorksDirect;
+
+  /// Bullet: Discord links don't work (warning)
+  ///
+  /// In en, this message translates to:
+  /// **'Discord links — no .mcpack extension and expire after a few hours'**
+  String get rpNoDiscord;
+
+  /// Bullet: Google Drive/Dropbox links don't work (warning)
+  ///
+  /// In en, this message translates to:
+  /// **'Google Drive / Dropbox share links — not direct downloads'**
+  String get rpNoDrive;
+
+  /// Bullet: encrypted packs don't work (warning)
+  ///
+  /// In en, this message translates to:
+  /// **'Servers with encrypted or password-protected packs'**
+  String get rpNoEncrypted;
+
+  /// Inline warning shown when user enters a Discord CDN URL
+  ///
+  /// In en, this message translates to:
+  /// **'Discord links expire and will stop working. Use a permanent host instead.'**
+  String get rpWarnDiscord;
+
+  /// Inline warning when URL does not start with https://
+  ///
+  /// In en, this message translates to:
+  /// **'URL must start with https://'**
+  String get rpWarnHttps;
+
+  /// Inline warning when URL does not end with .mcpack or .zip
+  ///
+  /// In en, this message translates to:
+  /// **'URL must end in .mcpack or .zip'**
+  String get rpWarnExtension;
+
+  /// Toast shown when save is pressed with pack enabled but no URL
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a URL before enabling the resource pack.'**
+  String get rpToastEnterUrl;
+
+  /// Toast shown after resource pack settings are saved successfully
+  ///
+  /// In en, this message translates to:
+  /// **'Resource pack settings saved.'**
+  String get rpToastSaved;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -1693,4 +1693,61 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get skinMenuDelete => 'Delete';
+
+  @override
+  String get rpScreenTitle => 'Resource Pack';
+
+  @override
+  String get rpWhatIsThis => 'What is this?';
+
+  @override
+  String get rpExplanation => 'You can add your own resource pack (texture pack) that gets applied every time you connect through MCCompanion. The pack is downloaded once and cached — you won\'t notice any delay when connecting.';
+
+  @override
+  String get rpPackUrlLabel => 'Pack URL';
+
+  @override
+  String get rpPackUrlHint => 'https://example.com/pack.mcpack';
+
+  @override
+  String get rpEnableToggle => 'Enable resource pack';
+
+  @override
+  String get rpWhatWorks => 'What works';
+
+  @override
+  String get rpWhatDoesntWork => 'What doesn\'t work';
+
+  @override
+  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+
+  @override
+  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 public bucket';
+
+  @override
+  String get rpWorksDirect => 'Any direct HTTPS link ending in .mcpack or .zip';
+
+  @override
+  String get rpNoDiscord => 'Discord links — no .mcpack extension and expire after a few hours';
+
+  @override
+  String get rpNoDrive => 'Google Drive / Dropbox share links — not direct downloads';
+
+  @override
+  String get rpNoEncrypted => 'Servers with encrypted or password-protected packs';
+
+  @override
+  String get rpWarnDiscord => 'Discord links expire and will stop working. Use a permanent host instead.';
+
+  @override
+  String get rpWarnHttps => 'URL must start with https://';
+
+  @override
+  String get rpWarnExtension => 'URL must end in .mcpack or .zip';
+
+  @override
+  String get rpToastEnterUrl => 'Enter a URL before enabling the resource pack.';
+
+  @override
+  String get rpToastSaved => 'Resource pack settings saved.';
 }

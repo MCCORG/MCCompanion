@@ -1693,4 +1693,61 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get skinMenuDelete => 'Eliminar';
+
+  @override
+  String get rpScreenTitle => 'Paquete de recursos';
+
+  @override
+  String get rpWhatIsThis => '¿Qué es esto?';
+
+  @override
+  String get rpExplanation => 'Puedes añadir tu propio paquete de recursos (paquete de texturas) que se aplica cada vez que te conectas a través de MCCompanion. El paquete se descarga una vez y se almacena en caché — no notarás ningún retraso al conectarte.';
+
+  @override
+  String get rpPackUrlLabel => 'URL del paquete';
+
+  @override
+  String get rpPackUrlHint => 'https://example.com/pack.mcpack';
+
+  @override
+  String get rpEnableToggle => 'Activar paquete de recursos';
+
+  @override
+  String get rpWhatWorks => 'Qué funciona';
+
+  @override
+  String get rpWhatDoesntWork => 'Qué no funciona';
+
+  @override
+  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+
+  @override
+  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 bucket público';
+
+  @override
+  String get rpWorksDirect => 'Cualquier enlace HTTPS directo que termine en .mcpack o .zip';
+
+  @override
+  String get rpNoDiscord => 'Enlaces de Discord — sin extensión .mcpack y caducan a las pocas horas';
+
+  @override
+  String get rpNoDrive => 'Enlaces de Google Drive / Dropbox — no son descargas directas';
+
+  @override
+  String get rpNoEncrypted => 'Servidores con paquetes cifrados o protegidos con contraseña';
+
+  @override
+  String get rpWarnDiscord => 'Los enlaces de Discord caducan y dejarán de funcionar. Usa un host permanente en su lugar.';
+
+  @override
+  String get rpWarnHttps => 'La URL debe comenzar con https://';
+
+  @override
+  String get rpWarnExtension => 'La URL debe terminar en .mcpack o .zip';
+
+  @override
+  String get rpToastEnterUrl => 'Introduce una URL antes de activar el paquete de recursos.';
+
+  @override
+  String get rpToastSaved => 'Configuración del paquete de recursos guardada.';
 }

@@ -1693,4 +1693,61 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get skinMenuDelete => 'Löschen';
+
+  @override
+  String get rpScreenTitle => 'Ressourcenpaket';
+
+  @override
+  String get rpWhatIsThis => 'Was ist das?';
+
+  @override
+  String get rpExplanation => 'Du kannst dein eigenes Ressourcenpaket (Texturpaket) hinzufügen, das bei jeder Verbindung über MCCompanion angewendet wird. Das Paket wird einmal heruntergeladen und zwischengespeichert — beim Verbinden gibt es keine Verzögerung.';
+
+  @override
+  String get rpPackUrlLabel => 'Paket-URL';
+
+  @override
+  String get rpPackUrlHint => 'https://example.com/pack.mcpack';
+
+  @override
+  String get rpEnableToggle => 'Ressourcenpaket aktivieren';
+
+  @override
+  String get rpWhatWorks => 'Was funktioniert';
+
+  @override
+  String get rpWhatDoesntWork => 'Was nicht funktioniert';
+
+  @override
+  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+
+  @override
+  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 öffentlicher Bucket';
+
+  @override
+  String get rpWorksDirect => 'Jeder direkte HTTPS-Link, der auf .mcpack oder .zip endet';
+
+  @override
+  String get rpNoDiscord => 'Discord-Links — keine .mcpack-Erweiterung und laufen nach wenigen Stunden ab';
+
+  @override
+  String get rpNoDrive => 'Google Drive / Dropbox-Freigabelinks — keine direkten Downloads';
+
+  @override
+  String get rpNoEncrypted => 'Server mit verschlüsselten oder passwortgeschützten Paketen';
+
+  @override
+  String get rpWarnDiscord => 'Discord-Links laufen ab und funktionieren dann nicht mehr. Verwende stattdessen einen dauerhaften Host.';
+
+  @override
+  String get rpWarnHttps => 'Die URL muss mit https:// beginnen';
+
+  @override
+  String get rpWarnExtension => 'Die URL muss auf .mcpack oder .zip enden';
+
+  @override
+  String get rpToastEnterUrl => 'Gib eine URL ein, bevor du das Ressourcenpaket aktivierst.';
+
+  @override
+  String get rpToastSaved => 'Ressourcenpaket-Einstellungen gespeichert.';
 }

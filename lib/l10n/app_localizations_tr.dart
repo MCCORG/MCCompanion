@@ -1693,4 +1693,61 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get skinMenuDelete => 'Sil';
+
+  @override
+  String get rpScreenTitle => 'Kaynak Paketi';
+
+  @override
+  String get rpWhatIsThis => 'Bu nedir?';
+
+  @override
+  String get rpExplanation => 'MCCompanion üzerinden her bağlandığınızda uygulanan kendi kaynak paketinizi (doku paketi) ekleyebilirsiniz. Paket bir kez indirilir ve önbelleğe alınır — bağlanırken herhangi bir gecikme fark etmezsiniz.';
+
+  @override
+  String get rpPackUrlLabel => 'Paket URL\'si';
+
+  @override
+  String get rpPackUrlHint => 'https://example.com/pack.mcpack';
+
+  @override
+  String get rpEnableToggle => 'Kaynak paketini etkinleştir';
+
+  @override
+  String get rpWhatWorks => 'Çalışanlar';
+
+  @override
+  String get rpWhatDoesntWork => 'Çalışmayanlar';
+
+  @override
+  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+
+  @override
+  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 genel bucket';
+
+  @override
+  String get rpWorksDirect => '.mcpack veya .zip ile biten herhangi bir doğrudan HTTPS bağlantısı';
+
+  @override
+  String get rpNoDiscord => 'Discord bağlantıları — .mcpack uzantısı yok ve birkaç saat sonra süresi doluyor';
+
+  @override
+  String get rpNoDrive => 'Google Drive / Dropbox paylaşım bağlantıları — doğrudan indirme değil';
+
+  @override
+  String get rpNoEncrypted => 'Şifrelenmiş veya parola korumalı paketlere sahip sunucular';
+
+  @override
+  String get rpWarnDiscord => 'Discord bağlantılarının süresi dolup çalışmayı durdurur. Bunun yerine kalıcı bir host kullanın.';
+
+  @override
+  String get rpWarnHttps => 'URL https:// ile başlamalıdır';
+
+  @override
+  String get rpWarnExtension => 'URL .mcpack veya .zip ile bitmelidir';
+
+  @override
+  String get rpToastEnterUrl => 'Kaynak paketini etkinleştirmeden önce bir URL girin.';
+
+  @override
+  String get rpToastSaved => 'Kaynak paketi ayarları kaydedildi.';
 }

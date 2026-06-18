@@ -1693,4 +1693,61 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get skinMenuDelete => '删除';
+
+  @override
+  String get rpScreenTitle => '资源包';
+
+  @override
+  String get rpWhatIsThis => '这是什么？';
+
+  @override
+  String get rpExplanation => '您可以添加自己的资源包（材质包），每次通过 MCCompanion 连接时都会应用该资源包。资源包只需下载一次并缓存 — 连接时不会有任何延迟。';
+
+  @override
+  String get rpPackUrlLabel => '包 URL';
+
+  @override
+  String get rpPackUrlHint => 'https://example.com/pack.mcpack';
+
+  @override
+  String get rpEnableToggle => '启用资源包';
+
+  @override
+  String get rpWhatWorks => '有效的方式';
+
+  @override
+  String get rpWhatDoesntWork => '无效的方式';
+
+  @override
+  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+
+  @override
+  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 公共存储桶';
+
+  @override
+  String get rpWorksDirect => '以 .mcpack 或 .zip 结尾的任何直接 HTTPS 链接';
+
+  @override
+  String get rpNoDiscord => 'Discord 链接 — 没有 .mcpack 扩展名，且会在几小时后失效';
+
+  @override
+  String get rpNoDrive => 'Google Drive / Dropbox 分享链接 — 非直接下载';
+
+  @override
+  String get rpNoEncrypted => '带有加密或密码保护包的服务器';
+
+  @override
+  String get rpWarnDiscord => 'Discord 链接会过期并停止工作。请改用永久性托管服务。';
+
+  @override
+  String get rpWarnHttps => 'URL 必须以 https:// 开头';
+
+  @override
+  String get rpWarnExtension => 'URL 必须以 .mcpack 或 .zip 结尾';
+
+  @override
+  String get rpToastEnterUrl => '启用资源包前请先输入 URL。';
+
+  @override
+  String get rpToastSaved => '资源包设置已保存。';
 }

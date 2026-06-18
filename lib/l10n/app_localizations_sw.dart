@@ -1693,4 +1693,61 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get skinMenuDelete => 'Futa';
+
+  @override
+  String get rpScreenTitle => 'Kifurushi cha Rasilimali';
+
+  @override
+  String get rpWhatIsThis => 'Hii ni nini?';
+
+  @override
+  String get rpExplanation => 'Unaweza kuongeza kifurushi chako cha rasilimali (pakiti ya texture) ambacho kinatumika kila wakati unaounganika kupitia MCCompanion. Kifurushi kinapakuliwa mara moja na kuhifadhiwa — hutaona ucheleweshaji wowote unapoungana.';
+
+  @override
+  String get rpPackUrlLabel => 'URL ya Pakiti';
+
+  @override
+  String get rpPackUrlHint => 'https://example.com/pack.mcpack';
+
+  @override
+  String get rpEnableToggle => 'Wezesha kifurushi cha rasilimali';
+
+  @override
+  String get rpWhatWorks => 'Kinachofanya kazi';
+
+  @override
+  String get rpWhatDoesntWork => 'Kisichofanya kazi';
+
+  @override
+  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+
+  @override
+  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 bucket ya umma';
+
+  @override
+  String get rpWorksDirect => 'Kiungo chochote cha moja kwa moja cha HTTPS kinachoishia .mcpack au .zip';
+
+  @override
+  String get rpNoDiscord => 'Viungo vya Discord — hakuna ugani wa .mcpack na vinaisha baada ya masaa machache';
+
+  @override
+  String get rpNoDrive => 'Viungo vya kushiriki vya Google Drive / Dropbox — si upakuaji wa moja kwa moja';
+
+  @override
+  String get rpNoEncrypted => 'Seva zenye pakiti zilizosimbwa au zilindwa na nywila';
+
+  @override
+  String get rpWarnDiscord => 'Viungo vya Discord vinaisha na vitaacha kufanya kazi. Tumia seva ya kudumu badala yake.';
+
+  @override
+  String get rpWarnHttps => 'URL lazima ianze na https://';
+
+  @override
+  String get rpWarnExtension => 'URL lazima iishie .mcpack au .zip';
+
+  @override
+  String get rpToastEnterUrl => 'Ingiza URL kabla ya kuwezesha kifurushi cha rasilimali.';
+
+  @override
+  String get rpToastSaved => 'Mipangilio ya kifurushi cha rasilimali imehifadhiwa.';
 }

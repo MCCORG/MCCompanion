@@ -1693,4 +1693,61 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get skinMenuDelete => 'Supprimer';
+
+  @override
+  String get rpScreenTitle => 'Pack de ressources';
+
+  @override
+  String get rpWhatIsThis => 'Qu\'est-ce que c\'est ?';
+
+  @override
+  String get rpExplanation => 'Vous pouvez ajouter votre propre pack de ressources (pack de textures) qui s\'applique à chaque connexion via MCCompanion. Le pack est téléchargé une fois et mis en cache — vous ne remarquerez aucun délai lors de la connexion.';
+
+  @override
+  String get rpPackUrlLabel => 'URL du pack';
+
+  @override
+  String get rpPackUrlHint => 'https://example.com/pack.mcpack';
+
+  @override
+  String get rpEnableToggle => 'Activer le pack de ressources';
+
+  @override
+  String get rpWhatWorks => 'Ce qui fonctionne';
+
+  @override
+  String get rpWhatDoesntWork => 'Ce qui ne fonctionne pas';
+
+  @override
+  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+
+  @override
+  String get rpWorksCloudflare => 'Cloudflare R2 / bucket public AWS S3';
+
+  @override
+  String get rpWorksDirect => 'Tout lien HTTPS direct se terminant par .mcpack ou .zip';
+
+  @override
+  String get rpNoDiscord => 'Liens Discord — pas d\'extension .mcpack et expirent après quelques heures';
+
+  @override
+  String get rpNoDrive => 'Liens de partage Google Drive / Dropbox — pas des téléchargements directs';
+
+  @override
+  String get rpNoEncrypted => 'Serveurs avec des packs chiffrés ou protégés par mot de passe';
+
+  @override
+  String get rpWarnDiscord => 'Les liens Discord expirent et cesseront de fonctionner. Utilisez un hébergement permanent à la place.';
+
+  @override
+  String get rpWarnHttps => 'L\'URL doit commencer par https://';
+
+  @override
+  String get rpWarnExtension => 'L\'URL doit se terminer par .mcpack ou .zip';
+
+  @override
+  String get rpToastEnterUrl => 'Entrez une URL avant d\'activer le pack de ressources.';
+
+  @override
+  String get rpToastSaved => 'Paramètres du pack de ressources sauvegardés.';
 }

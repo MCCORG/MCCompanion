@@ -30,6 +30,7 @@ import 'wiki_screen.dart';
 import 'partner_servers_screen.dart';
 import 'player_lookup_screen.dart';
 import 'manage_servers_screen.dart';
+import 'resource_pack_screen.dart';
 import 'profile_screen.dart';
 import 'chat_screen.dart';
 import 'server_tracker_screen.dart';
@@ -52,6 +53,7 @@ const int _pageProfile = 7;
 const int _pagePlayerLookup = 8;
 const int _pageServerTracker = 9;
 const int _pageFeedback = 10;
+const int _pageResourcePack = 11;
 
 class AppShell extends StatefulWidget {
   final RelayPingResult? initialRelay;
@@ -375,6 +377,9 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       _goTo(_pageHome);
     } else if (_pageIndex == _pageServerTracker) {
       _goTo(_pageHome);
+    } else if (_pageIndex == _pageResourcePack) {
+      _connectorKey.currentState?.reloadResourcePackUrl();
+      _goTo(_pageConnector);
     } else if (_pageIndex == _pageManageServers ||
         _pageIndex == _pagePartners) {
       _goTo(_pageConnector);
@@ -469,6 +474,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
           partnerServersFuture: _partnerServersFuture,
           onOpenPartnerServers: () => _goTo(_pagePartners),
           onOpenManageServers: _openManageServers,
+          onOpenResourcePack: () => _goTo(_pageResourcePack),
           onOpenMore: () => _showMoreSheet(),
           onOpenSupport: () => _showHelpSheet(),
           onOpenHowTo: () => _showHowToSheet(),
@@ -521,6 +527,12 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
           },
         ),
         FeedbackScreen(onBack: () => _goTo(_pageHome)),
+        ResourcePackScreen(
+          onBack: () {
+            _connectorKey.currentState?.reloadResourcePackUrl();
+            _goTo(_pageConnector);
+          },
+        ),
       ],
     );
   }

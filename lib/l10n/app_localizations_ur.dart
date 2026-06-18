@@ -1693,4 +1693,61 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get skinMenuDelete => 'حذف کریں';
+
+  @override
+  String get rpScreenTitle => 'ریسورس پیک';
+
+  @override
+  String get rpWhatIsThis => 'یہ کیا ہے؟';
+
+  @override
+  String get rpExplanation => 'آپ اپنا ریسورس پیک (ٹیکسچر پیک) شامل کر سکتے ہیں جو ہر بار MCCompanion کے ذریعے کنیکٹ ہونے پر لاگو ہوتا ہے۔ پیک ایک بار ڈاؤن لوڈ اور کیش ہوتا ہے — کنیکٹ کرتے وقت کوئی تاخیر نہیں ہوگی۔';
+
+  @override
+  String get rpPackUrlLabel => 'پیک URL';
+
+  @override
+  String get rpPackUrlHint => 'https://example.com/pack.mcpack';
+
+  @override
+  String get rpEnableToggle => 'ریسورس پیک فعال کریں';
+
+  @override
+  String get rpWhatWorks => 'کیا کام کرتا ہے';
+
+  @override
+  String get rpWhatDoesntWork => 'کیا کام نہیں کرتا';
+
+  @override
+  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+
+  @override
+  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 عوامی بکیٹ';
+
+  @override
+  String get rpWorksDirect => 'کوئی بھی براہ راست HTTPS لنک جو .mcpack یا .zip پر ختم ہو';
+
+  @override
+  String get rpNoDiscord => 'Discord لنکس — کوئی .mcpack توسیع نہیں اور چند گھنٹوں میں ختم ہو جاتے ہیں';
+
+  @override
+  String get rpNoDrive => 'Google Drive / Dropbox شیئر لنکس — براہ راست ڈاؤن لوڈ نہیں';
+
+  @override
+  String get rpNoEncrypted => 'خفیہ کردہ یا پاس ورڈ محفوظ پیک والے سرور';
+
+  @override
+  String get rpWarnDiscord => 'Discord لنکس ختم ہو جاتے ہیں اور کام کرنا بند کر دیتے ہیں۔ اس کی بجائے ایک مستقل ہوسٹ استعمال کریں۔';
+
+  @override
+  String get rpWarnHttps => 'URL کو https:// سے شروع ہونا چاہیے';
+
+  @override
+  String get rpWarnExtension => 'URL کو .mcpack یا .zip پر ختم ہونا چاہیے';
+
+  @override
+  String get rpToastEnterUrl => 'ریسورس پیک فعال کرنے سے پہلے URL درج کریں۔';
+
+  @override
+  String get rpToastSaved => 'ریسورس پیک سیٹنگز محفوظ ہو گئیں۔';
 }

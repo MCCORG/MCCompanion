@@ -1693,4 +1693,61 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get skinMenuDelete => '削除';
+
+  @override
+  String get rpScreenTitle => 'リソースパック';
+
+  @override
+  String get rpWhatIsThis => 'これは何ですか？';
+
+  @override
+  String get rpExplanation => 'MCCompanion経由で接続するたびに適用される独自のリソースパック（テクスチャパック）を追加できます。パックは一度ダウンロードされてキャッシュされます — 接続時に遅延は発生しません。';
+
+  @override
+  String get rpPackUrlLabel => 'パックURL';
+
+  @override
+  String get rpPackUrlHint => 'https://example.com/pack.mcpack';
+
+  @override
+  String get rpEnableToggle => 'リソースパックを有効にする';
+
+  @override
+  String get rpWhatWorks => '動作するもの';
+
+  @override
+  String get rpWhatDoesntWork => '動作しないもの';
+
+  @override
+  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+
+  @override
+  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 パブリックバケット';
+
+  @override
+  String get rpWorksDirect => '.mcpack または .zip で終わる直接HTTPSリンク';
+
+  @override
+  String get rpNoDiscord => 'Discordリンク — .mcpack 拡張子がなく、数時間で期限切れになります';
+
+  @override
+  String get rpNoDrive => 'Google Drive / Dropbox 共有リンク — 直接ダウンロードではありません';
+
+  @override
+  String get rpNoEncrypted => '暗号化またはパスワード保護されたパックのサーバー';
+
+  @override
+  String get rpWarnDiscord => 'DiscordリンクはExpireし、動作しなくなります。代わりに永続的なホストを使用してください。';
+
+  @override
+  String get rpWarnHttps => 'URLはhttps://で始まる必要があります';
+
+  @override
+  String get rpWarnExtension => 'URLは.mcpackまたは.zipで終わる必要があります';
+
+  @override
+  String get rpToastEnterUrl => 'リソースパックを有効にする前にURLを入力してください。';
+
+  @override
+  String get rpToastSaved => 'リソースパックの設定を保存しました。';
 }

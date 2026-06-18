@@ -1693,4 +1693,61 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get skinMenuDelete => 'Hapus';
+
+  @override
+  String get rpScreenTitle => 'Paket Sumber Daya';
+
+  @override
+  String get rpWhatIsThis => 'Apa ini?';
+
+  @override
+  String get rpExplanation => 'Kamu bisa menambahkan paket sumber daya (texture pack) sendiri yang diterapkan setiap kali kamu terhubung melalui MCCompanion. Paket diunduh sekali dan di-cache — kamu tidak akan merasakan penundaan saat menghubungkan.';
+
+  @override
+  String get rpPackUrlLabel => 'URL Paket';
+
+  @override
+  String get rpPackUrlHint => 'https://example.com/pack.mcpack';
+
+  @override
+  String get rpEnableToggle => 'Aktifkan paket sumber daya';
+
+  @override
+  String get rpWhatWorks => 'Yang berfungsi';
+
+  @override
+  String get rpWhatDoesntWork => 'Yang tidak berfungsi';
+
+  @override
+  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+
+  @override
+  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 bucket publik';
+
+  @override
+  String get rpWorksDirect => 'Tautan HTTPS langsung yang diakhiri dengan .mcpack atau .zip';
+
+  @override
+  String get rpNoDiscord => 'Tautan Discord — tidak ada ekstensi .mcpack dan kedaluwarsa setelah beberapa jam';
+
+  @override
+  String get rpNoDrive => 'Tautan berbagi Google Drive / Dropbox — bukan unduhan langsung';
+
+  @override
+  String get rpNoEncrypted => 'Server dengan paket terenkripsi atau dilindungi kata sandi';
+
+  @override
+  String get rpWarnDiscord => 'Tautan Discord kedaluwarsa dan tidak akan berfungsi. Gunakan host permanen sebagai gantinya.';
+
+  @override
+  String get rpWarnHttps => 'URL harus dimulai dengan https://';
+
+  @override
+  String get rpWarnExtension => 'URL harus diakhiri dengan .mcpack atau .zip';
+
+  @override
+  String get rpToastEnterUrl => 'Masukkan URL sebelum mengaktifkan paket sumber daya.';
+
+  @override
+  String get rpToastSaved => 'Pengaturan paket sumber daya disimpan.';
 }

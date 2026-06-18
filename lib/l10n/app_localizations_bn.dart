@@ -1693,4 +1693,61 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get skinMenuDelete => 'মুছুন';
+
+  @override
+  String get rpScreenTitle => 'রিসোর্স প্যাক';
+
+  @override
+  String get rpWhatIsThis => 'এটি কী?';
+
+  @override
+  String get rpExplanation => 'আপনি নিজের রিসোর্স প্যাক (টেক্সচার প্যাক) যোগ করতে পারেন যা MCCompanion এর মাধ্যমে প্রতিটি সংযোগে প্রয়োগ হয়। প্যাকটি একবার ডাউনলোড করে ক্যাশ করা হয় — সংযোগের সময় কোনো বিলম্ব লক্ষ্য করবেন না।';
+
+  @override
+  String get rpPackUrlLabel => 'প্যাক URL';
+
+  @override
+  String get rpPackUrlHint => 'https://example.com/pack.mcpack';
+
+  @override
+  String get rpEnableToggle => 'রিসোর্স প্যাক সক্রিয় করুন';
+
+  @override
+  String get rpWhatWorks => 'যা কাজ করে';
+
+  @override
+  String get rpWhatDoesntWork => 'যা কাজ করে না';
+
+  @override
+  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+
+  @override
+  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 পাবলিক বাকেট';
+
+  @override
+  String get rpWorksDirect => '.mcpack বা .zip দিয়ে শেষ হওয়া যেকোনো সরাসরি HTTPS লিঙ্ক';
+
+  @override
+  String get rpNoDiscord => 'Discord লিঙ্ক — .mcpack এক্সটেনশন নেই এবং কয়েক ঘণ্টায় মেয়াদ শেষ';
+
+  @override
+  String get rpNoDrive => 'Google Drive / Dropbox শেয়ার লিঙ্ক — সরাসরি ডাউনলোড নয়';
+
+  @override
+  String get rpNoEncrypted => 'এনক্রিপ্টেড বা পাসওয়ার্ড-সুরক্ষিত প্যাক সহ সার্ভার';
+
+  @override
+  String get rpWarnDiscord => 'Discord লিঙ্কগুলির মেয়াদ শেষ হয়ে যায় এবং কাজ করা বন্ধ করবে। পরিবর্তে একটি স্থায়ী হোস্ট ব্যবহার করুন।';
+
+  @override
+  String get rpWarnHttps => 'URL অবশ্যই https:// দিয়ে শুরু হতে হবে';
+
+  @override
+  String get rpWarnExtension => 'URL অবশ্যই .mcpack বা .zip দিয়ে শেষ হতে হবে';
+
+  @override
+  String get rpToastEnterUrl => 'রিসোর্স প্যাক সক্রিয় করার আগে একটি URL দিন।';
+
+  @override
+  String get rpToastSaved => 'রিসোর্স প্যাক সেটিংস সংরক্ষিত।';
 }

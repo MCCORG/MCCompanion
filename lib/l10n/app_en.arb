@@ -1940,5 +1940,81 @@
   },
   "@skinMenuDelete": {
     "description": "Skin context menu: delete option"
+  },
+  "rpScreenTitle": "Resource Pack",
+  "@rpScreenTitle": {
+    "description": "Title of the resource pack screen"
+  },
+  "rpWhatIsThis": "What is this?",
+  "@rpWhatIsThis": {
+    "description": "Section title for the what-is-this explanation card"
+  },
+  "rpExplanation": "You can add your own resource pack (texture pack) that gets applied every time you connect through MCCompanion. The pack is downloaded once and cached — you won't notice any delay when connecting.",
+  "@rpExplanation": {
+    "description": "Body text explaining what the resource pack feature does"
+  },
+  "rpPackUrlLabel": "Pack URL",
+  "@rpPackUrlLabel": {
+    "description": "Label for the pack URL text field"
+  },
+  "rpPackUrlHint": "https://example.com/pack.mcpack",
+  "@rpPackUrlHint": {
+    "description": "Hint/placeholder for the pack URL text field"
+  },
+  "rpEnableToggle": "Enable resource pack",
+  "@rpEnableToggle": {
+    "description": "Label for the enable resource pack toggle"
+  },
+  "rpWhatWorks": "What works",
+  "@rpWhatWorks": {
+    "description": "Section title for the 'what works' card"
+  },
+  "rpWhatDoesntWork": "What doesn't work",
+  "@rpWhatDoesntWork": {
+    "description": "Section title for the 'what doesn't work' card"
+  },
+  "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
+  "@rpWorksGithub": {
+    "description": "Bullet: GitHub Releases works as a pack host"
+  },
+  "rpWorksCloudflare": "Cloudflare R2 / AWS S3 public bucket",
+  "@rpWorksCloudflare": {
+    "description": "Bullet: Cloudflare R2 / S3 works as a pack host"
+  },
+  "rpWorksDirect": "Any direct HTTPS link ending in .mcpack or .zip",
+  "@rpWorksDirect": {
+    "description": "Bullet: direct HTTPS .mcpack or .zip links work"
+  },
+  "rpNoDiscord": "Discord links — no .mcpack extension and expire after a few hours",
+  "@rpNoDiscord": {
+    "description": "Bullet: Discord links don't work (warning)"
+  },
+  "rpNoDrive": "Google Drive / Dropbox share links — not direct downloads",
+  "@rpNoDrive": {
+    "description": "Bullet: Google Drive/Dropbox links don't work (warning)"
+  },
+  "rpNoEncrypted": "Servers with encrypted or password-protected packs",
+  "@rpNoEncrypted": {
+    "description": "Bullet: encrypted packs don't work (warning)"
+  },
+  "rpWarnDiscord": "Discord links expire and will stop working. Use a permanent host instead.",
+  "@rpWarnDiscord": {
+    "description": "Inline warning shown when user enters a Discord CDN URL"
+  },
+  "rpWarnHttps": "URL must start with https://",
+  "@rpWarnHttps": {
+    "description": "Inline warning when URL does not start with https://"
+  },
+  "rpWarnExtension": "URL must end in .mcpack or .zip",
+  "@rpWarnExtension": {
+    "description": "Inline warning when URL does not end with .mcpack or .zip"
+  },
+  "rpToastEnterUrl": "Enter a URL before enabling the resource pack.",
+  "@rpToastEnterUrl": {
+    "description": "Toast shown when save is pressed with pack enabled but no URL"
+  },
+  "rpToastSaved": "Resource pack settings saved.",
+  "@rpToastSaved": {
+    "description": "Toast shown after resource pack settings are saved successfully"
   }
 }

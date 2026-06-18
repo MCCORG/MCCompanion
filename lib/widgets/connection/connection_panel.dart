@@ -35,6 +35,7 @@ class ConnectionPanel extends StatefulWidget {
     required this.savedServers,
     required this.onServerSelected,
     required this.onManageServers,
+    required this.onResourcePack,
     required this.selectedRelayIp,
     required this.onRelayChanged,
     required this.nintendoDnsMode,
@@ -46,6 +47,7 @@ class ConnectionPanel extends StatefulWidget {
     this.selectedBedrockXuid,
     this.onBedrockAccountChanged,
     this.navChips,
+    this.resourcePackActive = false,
   });
 
   final TextEditingController ipController;
@@ -56,6 +58,7 @@ class ConnectionPanel extends StatefulWidget {
   final List<UserServer> savedServers;
   final Function(UserServer) onServerSelected;
   final VoidCallback onManageServers;
+  final VoidCallback onResourcePack;
   final String? selectedRelayIp;
   final void Function(String?) onRelayChanged;
   final bool nintendoDnsMode;
@@ -67,6 +70,7 @@ class ConnectionPanel extends StatefulWidget {
   final String? selectedBedrockXuid;
   final ValueChanged<String>? onBedrockAccountChanged;
   final Widget? navChips;
+  final bool resourcePackActive;
 
   @override
   State<ConnectionPanel> createState() => _ConnectionPanelState();
@@ -207,6 +211,8 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                   portController: widget.portController,
                   onServerSelected: widget.onServerSelected,
                   onManageServers: widget.onManageServers,
+                  onResourcePack: widget.onResourcePack,
+                  resourcePackActive: widget.resourcePackActive,
                   broadcasting: broadcasting,
                 ),
               ),

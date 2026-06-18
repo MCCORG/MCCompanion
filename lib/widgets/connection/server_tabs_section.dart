@@ -12,7 +12,9 @@ class ServerTabsSection extends StatefulWidget {
     required this.portController,
     required this.onServerSelected,
     required this.onManageServers,
+    required this.onResourcePack,
     required this.broadcasting,
+    this.resourcePackActive = false,
   });
 
   final List<UserServer> savedServers;
@@ -20,7 +22,9 @@ class ServerTabsSection extends StatefulWidget {
   final TextEditingController portController;
   final Function(UserServer) onServerSelected;
   final VoidCallback onManageServers;
+  final VoidCallback onResourcePack;
   final bool broadcasting;
+  final bool resourcePackActive;
 
   @override
   State<ServerTabsSection> createState() => _ServerTabsSectionState();
@@ -62,6 +66,14 @@ class _ServerTabsSectionState extends State<ServerTabsSection> {
             disabled: disabled,
             onTap: disabled ? null : widget.onManageServers,
           ),
+          const SizedBox(width: 8),
+          _TabButton(
+            label: 'Resource Pack',
+            icon: Icons.extension_rounded,
+            disabled: disabled,
+            active: widget.resourcePackActive,
+            onTap: disabled ? null : widget.onResourcePack,
+          ),
         ],
       ),
     );
@@ -71,29 +83,36 @@ class _ServerTabsSectionState extends State<ServerTabsSection> {
 class _TabButton extends StatelessWidget {
   final String label;
   final bool disabled;
+  final bool active;
   final IconData? icon;
-  final IconData? trailing;
   final VoidCallback? onTap;
 
   const _TabButton({
     required this.label,
     this.disabled = false,
+    this.active = false,
     this.icon,
     this.onTap,
-  }) : trailing = null;
+  });
 
   @override
   Widget build(BuildContext context) {
-    final Color fg = disabled ? AppTheme.textDisabled : AppTheme.textSecondary;
+    final Color fg = disabled
+        ? AppTheme.textDisabled
+        : active
+            ? AppTheme.accent
+            : AppTheme.textSecondary;
 
     return GestureDetector(
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
         decoration: BoxDecoration(
-          color: AppTheme.surfaceRaised,
+          color: active ? AppTheme.accent.withValues(alpha: 0.10) : AppTheme.surfaceRaised,
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: AppTheme.borderGray),
+          border: Border.all(
+            color: active ? AppTheme.accent.withValues(alpha: 0.35) : AppTheme.borderGray,
+          ),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -110,10 +129,6 @@ class _TabButton extends StatelessWidget {
                 color: fg,
               ),
             ),
-            if (trailing != null) ...[
-              const SizedBox(width: 4),
-              Icon(trailing, size: 10, color: fg),
-            ],
           ],
         ),
       ),

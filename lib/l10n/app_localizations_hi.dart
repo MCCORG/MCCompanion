@@ -1693,4 +1693,61 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get skinMenuDelete => 'हटाएं';
+
+  @override
+  String get rpScreenTitle => 'रिसोर्स पैक';
+
+  @override
+  String get rpWhatIsThis => 'यह क्या है?';
+
+  @override
+  String get rpExplanation => 'आप अपना खुद का रिसोर्स पैक (टेक्सचर पैक) जोड़ सकते हैं जो हर बार MCCompanion के माध्यम से कनेक्ट होने पर लागू होता है। पैक एक बार डाउनलोड होकर कैश हो जाता है — कनेक्ट करते समय कोई देरी नहीं होगी।';
+
+  @override
+  String get rpPackUrlLabel => 'पैक URL';
+
+  @override
+  String get rpPackUrlHint => 'https://example.com/pack.mcpack';
+
+  @override
+  String get rpEnableToggle => 'रिसोर्स पैक सक्षम करें';
+
+  @override
+  String get rpWhatWorks => 'क्या काम करता है';
+
+  @override
+  String get rpWhatDoesntWork => 'क्या काम नहीं करता';
+
+  @override
+  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+
+  @override
+  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 पब्लिक बकेट';
+
+  @override
+  String get rpWorksDirect => '.mcpack या .zip में समाप्त होने वाला कोई भी सीधा HTTPS लिंक';
+
+  @override
+  String get rpNoDiscord => 'Discord लिंक — .mcpack एक्सटेंशन नहीं और कुछ घंटों में समाप्त हो जाते हैं';
+
+  @override
+  String get rpNoDrive => 'Google Drive / Dropbox शेयर लिंक — सीधे डाउनलोड नहीं';
+
+  @override
+  String get rpNoEncrypted => 'एन्क्रिप्टेड या पासवर्ड-सुरक्षित पैक वाले सर्वर';
+
+  @override
+  String get rpWarnDiscord => 'Discord लिंक समाप्त हो जाते हैं और काम करना बंद कर देंगे। इसके बजाय एक स्थायी होस्ट का उपयोग करें।';
+
+  @override
+  String get rpWarnHttps => 'URL https:// से शुरू होना चाहिए';
+
+  @override
+  String get rpWarnExtension => 'URL .mcpack या .zip से समाप्त होना चाहिए';
+
+  @override
+  String get rpToastEnterUrl => 'रिसोर्स पैक सक्षम करने से पहले एक URL दर्ज करें।';
+
+  @override
+  String get rpToastSaved => 'रिसोर्स पैक सेटिंग्स सहेजी गईं।';
 }

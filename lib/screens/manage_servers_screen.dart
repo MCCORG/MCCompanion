@@ -144,7 +144,6 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
   final TextEditingController _addressCtrl = TextEditingController();
   final TextEditingController _portCtrl = TextEditingController(text: '19132');
   final TextEditingController _descCtrl = TextEditingController();
-
   bool _isJava = false;
   bool _loaded = false;
 
@@ -320,6 +319,7 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
                         icon: Icons.notes_rounded,
                         maxLines: 3,
                       ),
+                      const SizedBox(height: 12),
                       const SizedBox(height: 24),
                       SizedBox(
                         width: double.infinity,

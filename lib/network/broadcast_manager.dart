@@ -105,6 +105,7 @@ class BroadcastManager {
     required String relayBase,
     required BroadcastMode mode,
     String? bedrockGamertag,
+    String? resourcePackUrl,
   }) async {
     final usedRelayName = _relayNameForIp(relayIp);
 
@@ -119,6 +120,7 @@ class BroadcastManager {
         remoteServerPort: remotePort,
         mode: mode,
         bedrockGamertag: bedrockGamertag,
+        resourcePackUrl: resourcePackUrl,
       );
 
       if (result.success) {
@@ -157,6 +159,7 @@ class BroadcastManager {
     required BroadcastMode mode,
     String? bedrockGamertag,
     String? authToken,
+    String? resourcePackUrl,
   }) async {
     const relayPort = 19132;
     final usedRelayName = _relayNameForIp(relayIp);
@@ -173,6 +176,7 @@ class BroadcastManager {
         mode: mode,
         bedrockGamertag: bedrockGamertag,
         authToken: authToken,
+        resourcePackUrl: resourcePackUrl,
       );
 
       if (!result.success) {

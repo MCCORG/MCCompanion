@@ -22,6 +22,7 @@ import '../services/user_service.dart';
 import '../services/auth_service.dart';
 import '../models/user_model.dart';
 import '../util/bedrock_account_prefs.dart';
+import '../util/resource_pack_prefs.dart';
 import '../widgets/dialogs/howto_dialogs.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -31,6 +32,7 @@ class HomeScreen extends StatefulWidget {
   final Future<List<FeaturedServer>> partnerServersFuture;
   final VoidCallback onOpenPartnerServers;
   final VoidCallback onOpenManageServers;
+  final VoidCallback onOpenResourcePack;
   final VoidCallback? onOpenMore;
   final VoidCallback? onOpenSupport;
   final VoidCallback? onOpenHowTo;
@@ -46,6 +48,7 @@ class HomeScreen extends StatefulWidget {
     required this.partnerServersFuture,
     required this.onOpenPartnerServers,
     required this.onOpenManageServers,
+    required this.onOpenResourcePack,
     required this.ipController,
     required this.portController,
     this.onOpenMore,
@@ -78,6 +81,7 @@ class HomeScreenState extends State<HomeScreen> {
   bool _nintendoDnsMode = false;
   List<BedrockAccount>? _cachedBedrockAccounts;
   String? _selectedBedrockXuid;
+  String? _activeResourcePackUrl;
 
 
   @override
@@ -86,6 +90,7 @@ class HomeScreenState extends State<HomeScreen> {
     _initializeComponents();
     loadUserServers();
     _loadBedrockAccounts();
+    _loadResourcePackUrl();
   }
 
   void toggleDebug() {
@@ -180,6 +185,13 @@ class HomeScreenState extends State<HomeScreen> {
     await _handleBroadcastMode(mode, remoteHost, remotePortParsed, loc);
   }
 
+  Future<void> _loadResourcePackUrl() async {
+    final url = await ResourcePackPrefs.getActiveUrl();
+    if (mounted) setState(() => _activeResourcePackUrl = url);
+  }
+
+  Future<void> reloadResourcePackUrl() => _loadResourcePackUrl();
+
   Future<void> _loadBedrockAccounts() async {
     try {
       final me = await UserService.getMe();
@@ -229,6 +241,7 @@ class HomeScreenState extends State<HomeScreen> {
       relayBase: widget.selectedRelay.base,
       mode: BroadcastMode.values[mode.index],
       bedrockGamertag: gamertag,
+      resourcePackUrl: _activeResourcePackUrl,
     );
     if (!ok) return;
     if (mode == PanelMode.nintendo) {
@@ -268,6 +281,7 @@ class HomeScreenState extends State<HomeScreen> {
       mode: BroadcastMode.values[mode.index],
       bedrockGamertag: gamertag,
       authToken: authToken,
+      resourcePackUrl: _activeResourcePackUrl,
     );
     _broadcastingNotifier.value = success;
     if (success) {
@@ -329,6 +343,8 @@ class HomeScreenState extends State<HomeScreen> {
             savedServers: userServers,
             onServerSelected: _onUserServerSelected,
             onManageServers: widget.onOpenManageServers,
+            onResourcePack: widget.onOpenResourcePack,
+            resourcePackActive: _activeResourcePackUrl != null,
             selectedRelayIp: widget.selectedRelay.ip,
             onRelayChanged: widget.onRelayChanged,
             nintendoDnsMode: _nintendoDnsMode,
