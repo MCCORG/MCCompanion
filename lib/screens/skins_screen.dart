@@ -529,7 +529,10 @@ class SkinsScreenState extends State<SkinsScreen> {
         final isDesktop = constraints.maxWidth > 700;
         return SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(16, 20, 16, 32),
-          child: Column(
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 900),
+              child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Align(
@@ -550,6 +553,8 @@ class SkinsScreenState extends State<SkinsScreen> {
               const SizedBox(height: 10),
               _buildRecentSkins(l),
             ],
+          ),
+            ),
           ),
         );
       },
@@ -760,11 +765,11 @@ class SkinsScreenState extends State<SkinsScreen> {
           GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4,
-              mainAxisSpacing: 8,
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 160,
+              mainAxisExtent: 200,
               crossAxisSpacing: 8,
-              childAspectRatio: 0.52,
+              mainAxisSpacing: 8,
             ),
             itemCount: _recentSkins.length,
             itemBuilder: (_, i) {

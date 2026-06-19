@@ -215,9 +215,12 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
   Widget build(BuildContext context) {
     return SwipeBack(
       onBack: widget.onBack,
-      child: Column(
-      children: [
-        Row(
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final isWide = constraints.maxWidth > 700;
+          Widget content = Column(
+          children: [
+            Row(
             children: [
               const Spacer(),
               if (_isLoggedIn && _slots != null)
@@ -374,8 +377,19 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
                   ),
                 ),
         ),
-      ],
-    ),
+          ],
+          );
+          if (isWide) {
+            content = Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 900),
+                child: content,
+              ),
+            );
+          }
+          return content;
+        },
+      ),
     );
   }
 }

@@ -6,7 +6,6 @@ import '../theme/app_theme.dart';
 import '../util/partners_servers.dart';
 import '../services/server_status_service.dart';
 import '../services/theme_service.dart';
-import '../widgets/components/app_painters.dart';
 import '../widgets/components/app_toast.dart';
 
 class FeaturedServerHero extends StatefulWidget {
@@ -38,36 +37,6 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
   Timer? _heroTimer;
   final Map<String, Future<ServerStatus>> _statusCache = {};
   final Map<String, List<Color>> _paletteCache = {};
-
-  List<WaveConfig> get _heroWaves => [
-    WaveConfig(
-      yFraction: 0.72,
-      amplitude: 18,
-      frequency: 2.5,
-      phase: 0.3,
-      color: AppTheme.accent,
-      opacity: 0.12,
-      strokeWidth: 1.8,
-    ),
-    WaveConfig(
-      yFraction: 0.55,
-      amplitude: 10,
-      frequency: 3.8,
-      phase: 1.8,
-      color: AppTheme.accent,
-      opacity: 0.07,
-      strokeWidth: 1.2,
-    ),
-    WaveConfig(
-      yFraction: 0.88,
-      amplitude: 7,
-      frequency: 5.0,
-      phase: 0.9,
-      color: Colors.white,
-      opacity: 0.04,
-      strokeWidth: 1.0,
-    ),
-  ];
 
   @override
   void initState() {

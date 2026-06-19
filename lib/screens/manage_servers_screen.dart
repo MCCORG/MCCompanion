@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
-import '../services/theme_service.dart';
 import '../util/user_servers.dart';
 import '../util/user_servers_storage.dart';
 import '../l10n/app_localizations.dart';

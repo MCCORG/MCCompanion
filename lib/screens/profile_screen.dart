@@ -146,20 +146,22 @@ class ProfileScreenState extends State<ProfileScreen>
 
   Future<void> _fetchFriends() async {
     final friends = await UserService.getFriends();
-    if (mounted)
+    if (mounted) {
       setState(() {
         _friends = friends;
         _loadingFriends = false;
       });
+    }
   }
 
   Future<void> _fetchRequests() async {
     final requests = await UserService.getFriendRequests();
-    if (mounted)
+    if (mounted) {
       setState(() {
         _requests = requests;
         _loadingRequests = false;
       });
+    }
   }
 
   Future<void> _refreshUnread() async {
@@ -218,7 +220,6 @@ class ProfileScreenState extends State<ProfileScreen>
   }
 
   Widget _buildTabBar(BuildContext context) {
-    final l = AppLocalizations.of(context)!;
     return Container(
       color: AppTheme.surfaceRaised,
       child: TabBar(

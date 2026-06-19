@@ -173,13 +173,16 @@ class _LandingScreenState extends State<LandingScreen> {
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(14, 0, 14, 8),
                       child: Center(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            _buildGrid(tiles),
-                            const SizedBox(height: 10),
-                            _FeedbackTile(onTap: widget.onGoToFeedback),
-                          ],
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(maxWidth: constraints.maxWidth > 700 ? 860 : double.infinity),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              _buildGrid(tiles),
+                              const SizedBox(height: 10),
+                              _FeedbackTile(onTap: widget.onGoToFeedback),
+                            ],
+                          ),
                         ),
                       ),
                     ),

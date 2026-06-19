@@ -419,7 +419,7 @@ class WikiResult {
   });
 }
 
-enum _View { root, subs, pages, search }
+enum _View { root, subs, pages, search, detail }
 
 class WikiScreen extends StatefulWidget {
   const WikiScreen({super.key, this.onBack});
@@ -436,6 +436,7 @@ class _WikiScreenState extends State<WikiScreen> {
   _View _view = _View.root;
   _Section? _activeSection;
   _Sub? _activeSub;
+  WikiResult? _detailResult;
 
   List<WikiResult> _pages = [];
   List<WikiResult> _searchResults = [];
@@ -566,6 +567,10 @@ class _WikiScreenState extends State<WikiScreen> {
   }
 
   void _goBack() {
+    if (_view == _View.detail) {
+      setState(() => _view = _previousView);
+      return;
+    }
     if (_view == _View.pages) {
       setState(() {
         _view = _View.subs;
@@ -933,9 +938,10 @@ class _WikiScreenState extends State<WikiScreen> {
       .replaceAll('&#039;', "'")
       .trim();
 
-  void _openDetail(WikiResult r) => Navigator.of(
-    context,
-  ).push(MaterialPageRoute(builder: (_) => WikiDetailScreen(result: r)));
+  void _openDetail(WikiResult r) => setState(() {
+    _detailResult = r;
+    _view = _View.detail;
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -968,6 +974,9 @@ class _WikiScreenState extends State<WikiScreen> {
         break;
       case _View.root:
         title = l.wikiTitle;
+        break;
+      case _View.detail:
+        title = _detailResult?.title ?? l.wikiTitle;
         break;
     }
 
@@ -1036,6 +1045,7 @@ class _WikiScreenState extends State<WikiScreen> {
                 ),
             ],
           ),
+          if (_view != _View.detail) ...[
           const SizedBox(height: 14),
           TextField(
             controller: _searchController,
@@ -1089,6 +1099,7 @@ class _WikiScreenState extends State<WikiScreen> {
               ),
             ),
           ),
+          ], // end if (_view != _View.detail)
         ],
       ),
     );
@@ -1134,7 +1145,21 @@ class _WikiScreenState extends State<WikiScreen> {
         return _buildPageList(_pages);
       case _View.search:
         return _buildPageList(_searchResults);
+      case _View.detail:
+        if (_detailResult == null) return _buildRoot();
+        return WikiDetailScreen(
+          key: ValueKey(_detailResult!.title),
+          result: _detailResult!,
+          onBack: () => setState(() => _view = _previousView),
+        );
     }
+  }
+
+  _View get _previousView {
+    if (_pages.isNotEmpty) return _View.pages;
+    if (_searchResults.isNotEmpty) return _View.search;
+    if (_activeSub != null) return _View.pages;
+    return _View.root;
   }
 
   Widget _buildRoot() {
@@ -1174,9 +1199,14 @@ class _WikiScreenState extends State<WikiScreen> {
         padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
         child: ConstrainedBox(
           constraints: BoxConstraints(minHeight: constraints.maxHeight - 28),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: rows,
+          child: Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: constraints.maxWidth > 700 ? 900 : double.infinity),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: rows,
+              ),
+            ),
           ),
         ),
       ),
@@ -1223,9 +1253,14 @@ class _WikiScreenState extends State<WikiScreen> {
         padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
         child: ConstrainedBox(
           constraints: BoxConstraints(minHeight: constraints.maxHeight - 28),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: rows,
+          child: Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: constraints.maxWidth > 700 ? 900 : double.infinity),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: rows,
+              ),
+            ),
           ),
         ),
       ),
@@ -1265,12 +1300,20 @@ class _WikiScreenState extends State<WikiScreen> {
         ),
       );
     }
-    return ListView.separated(
-      padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
-      itemCount: results.length,
-      separatorBuilder: (_, __) => const SizedBox(height: 8),
-      itemBuilder: (_, i) =>
-          _PageCard(result: results[i], onTap: () => _openDetail(results[i])),
+    return LayoutBuilder(
+      builder: (context, constraints) => ListView.separated(
+        padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
+        itemCount: results.length,
+        separatorBuilder: (_, __) => const SizedBox(height: 8),
+        itemBuilder: (_, i) => constraints.maxWidth > 700
+            ? Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 900),
+                  child: _PageCard(result: results[i], onTap: () => _openDetail(results[i])),
+                ),
+              )
+            : _PageCard(result: results[i], onTap: () => _openDetail(results[i])),
+      ),
     );
   }
 }
@@ -1540,7 +1583,8 @@ class _CraftingRecipe {
 
 class WikiDetailScreen extends StatefulWidget {
   final WikiResult result;
-  const WikiDetailScreen({super.key, required this.result});
+  final VoidCallback? onBack;
+  const WikiDetailScreen({super.key, required this.result, this.onBack});
 
   @override
   State<WikiDetailScreen> createState() => _WikiDetailScreenState();
@@ -1784,15 +1828,18 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppTheme.background,
-      body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(4, 8, 8, 0),
-              child: Row(
-                children: [
+    final body = LayoutBuilder(
+      builder: (context, constraints) {
+        final isWide = constraints.maxWidth > 700;
+        return Center(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: isWide ? 900 : double.infinity),
+            child: Column(
+              children: [
+        if (widget.onBack == null) Padding(
+          padding: const EdgeInsets.fromLTRB(4, 8, 8, 0),
+          child: Row(
+            children: [
                   IconButton(
                     onPressed: () => Navigator.of(context).pop(),
                     icon: Icon(
@@ -1825,9 +1872,16 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
               ),
             ),
             Expanded(child: _buildContent()),
-          ],
-        ),
-      ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+    if (widget.onBack != null) return body;
+    return Scaffold(
+      backgroundColor: AppTheme.background,
+      body: SafeArea(child: body),
     );
   }
 

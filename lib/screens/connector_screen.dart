@@ -332,7 +332,11 @@ class HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Widget content = Padding(
+    Widget content = LayoutBuilder(
+      builder: (context, constraints) => Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: constraints.maxWidth > 700 ? 900 : double.infinity),
+          child: Padding(
       padding: const EdgeInsets.fromLTRB(14, 12, 14, 0),
       child: SingleChildScrollView(
         controller: _mainScrollController,
@@ -372,6 +376,9 @@ class HomeScreenState extends State<HomeScreen> {
               await loadUserServers();
               widget.onServerDeleted?.call();
             },
+          ),
+        ),
+      ),
           ),
         ),
       ),
