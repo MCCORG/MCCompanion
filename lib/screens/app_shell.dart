@@ -481,6 +481,8 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
           onOpenConsole: () => navigationController.showConsole(context),
           ipController: _ipController,
           portController: _portController,
+          onBack: () => _goTo(_pageHome),
+          onServerDeleted: () => _manageServersKey.currentState?.reload(),
         ),
         PartnerServersScreen(
           partnerServersFuture: _partnerServersFuture,
@@ -503,8 +505,8 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
           },
           onCancel: () => setState(() => _pageIndex = _pageManageServers),
         ),
-        SkinsScreen(key: _skinsKey),
-        WikiScreen(),
+        SkinsScreen(key: _skinsKey, onBack: () => _goTo(_pageHome)),
+        WikiScreen(onBack: () => _goTo(_pageHome)),
         ProfileScreen(
           key: _profileKey,
           onGoToHome: () => _goTo(_pageHome),

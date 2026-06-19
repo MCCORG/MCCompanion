@@ -3,7 +3,6 @@ import '../../theme/app_theme.dart';
 import '../../util/user_servers.dart';
 import '../../services/server_status_service.dart';
 import '../../l10n/app_localizations.dart';
-import '../components/app_painters.dart';
 
 class MyServersTab extends StatefulWidget {
   const MyServersTab({
@@ -13,6 +12,7 @@ class MyServersTab extends StatefulWidget {
     required this.portController,
     required this.onServerSelected,
     required this.broadcasting,
+    this.onDelete,
   });
 
   final List<UserServer> savedServers;
@@ -20,6 +20,7 @@ class MyServersTab extends StatefulWidget {
   final TextEditingController portController;
   final Function(UserServer) onServerSelected;
   final bool broadcasting;
+  final Function(int index)? onDelete;
 
   @override
   State<MyServersTab> createState() => _MyServersTabState();
@@ -43,7 +44,7 @@ class _MyServersTabState extends State<MyServersTab> {
             _selectedServer?.address == server.address &&
             _selectedServer?.port == server.port;
 
-        return _ServerTile(
+        final tile = _ServerTile(
           server: server,
           isSelected: isSelected,
           isLast: isLast,
@@ -56,6 +57,21 @@ class _MyServersTabState extends State<MyServersTab> {
                   widget.ipController.text = server.address;
                   widget.portController.text = server.port.toString();
                 },
+        );
+
+        if (widget.onDelete == null || widget.broadcasting) return tile;
+
+        return Dismissible(
+          key: ValueKey('${server.address}:${server.port}'),
+          direction: DismissDirection.endToStart,
+          background: Container(
+            alignment: Alignment.centerRight,
+            padding: const EdgeInsets.only(right: 20),
+            color: AppTheme.error.withValues(alpha: 0.85),
+            child: const Icon(Icons.delete_outline_rounded, color: Colors.white, size: 22),
+          ),
+          onDismissed: (_) => widget.onDelete!(i),
+          child: tile,
         );
       },
     );
@@ -102,114 +118,58 @@ class _ServerTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tileColor = isSelected ? AppTheme.accent : AppTheme.textMuted;
-    final tileOpacity = isSelected ? 0.035 : 0.018;
-
     return GestureDetector(
       onTap: broadcasting ? null : onTap,
-      child: ClipRect(
-        child: Stack(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        color: isSelected
+            ? AppTheme.accent.withValues(alpha: 0.07)
+            : Colors.transparent,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Positioned.fill(
-              child: Container(
-                color: isSelected
-                    ? AppTheme.accent.withValues(alpha: 0.06)
-                    : Colors.transparent,
-              ),
-            ),
-
-            Positioned.fill(
-              child: CustomPaint(
-                painter: AppNoisePainter(
-                  color: tileColor,
-                  opacity: tileOpacity,
-                  seed: server.address.hashCode,
-                  count: 120,
-                ),
-              ),
-            ),
-
-            if (isSelected)
-              Positioned.fill(
-                child: CustomPaint(
-                  painter: AppWavePainter(
-                    waves: [
-                      WaveConfig(
-                        yFraction: 0.35,
-                        amplitude: 4,
-                        frequency: 3.5,
-                        phase: 0.6,
-                        color: AppTheme.accent,
-                        opacity: 0.10,
-                        strokeWidth: 1.0,
-                      ),
-                      WaveConfig(
-                        yFraction: 0.70,
-                        amplitude: 3,
-                        frequency: 5.0,
-                        phase: 1.8,
-                        color: AppTheme.accent,
-                        opacity: 0.06,
-                        strokeWidth: 0.8,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-
-            if (!isLast)
-              const Positioned(
-                left: 0,
-                right: 0,
-                bottom: 0,
-                child: Divider(
-                  height: 1,
-                  thickness: 1,
-                  color: AppTheme.borderDim,
-                ),
-              ),
-
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               child: Row(
                 children: [
-                  Container(
-                    width: 38,
-                    height: 38,
+                  AnimatedContainer(
+                    duration: const Duration(milliseconds: 150),
+                    width: 3,
+                    height: 32,
+                    margin: const EdgeInsets.only(right: 12),
                     decoration: BoxDecoration(
                       color: isSelected
-                          ? AppTheme.accent.withValues(alpha: 0.12)
-                          : AppTheme.surfaceRaisedSolid,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: isSelected
-                            ? AppTheme.accent.withValues(alpha: 0.30)
-                            : AppTheme.borderGray,
-                      ),
-                    ),
-                    child: Icon(
-                      Icons.dns_rounded,
-                      size: 17,
-                      color: isSelected ? AppTheme.accent : AppTheme.textMuted,
+                          ? AppTheme.accent
+                          : AppTheme.accent.withValues(alpha: 0),
+                      borderRadius: BorderRadius.circular(2),
                     ),
                   ),
-                  const SizedBox(width: 12),
 
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          server.name,
-                          style: TextStyle(
-                            color: AppTheme.textPrimary,
-                            fontSize: 13,
-                            fontWeight: FontWeight.w600,
-                          ),
+                        Row(
+                          children: [
+                            Flexible(
+                              child: Text(
+                                server.name,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  color: isSelected ? AppTheme.accent : AppTheme.textPrimary,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            _StatusDot(address: server.address, port: server.port, isJava: server.isJava),
+                          ],
                         ),
-                        const SizedBox(height: 2),
+                        const SizedBox(height: 3),
                         Text(
                           '${server.address}:${server.port}',
+                          overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             color: AppTheme.textMuted,
                             fontSize: 11,
@@ -219,65 +179,43 @@ class _ServerTile extends StatelessWidget {
                     ),
                   ),
 
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      _StatusBadge(address: server.address, port: server.port, isJava: server.isJava),
-                      const SizedBox(width: 8),
-                      AnimatedContainer(
-                        duration: const Duration(milliseconds: 150),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 7,
-                        ),
-                        decoration: BoxDecoration(
-                          color: broadcasting
-                              ? AppTheme.surfaceRaisedSolid
-                              : isSelected
-                              ? AppTheme.accent
-                              : AppTheme.accent.withValues(alpha: 0.15),
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(
-                            color: broadcasting
-                                ? AppTheme.borderGray
-                                : isSelected
-                                ? AppTheme.accent
-                                : AppTheme.accent.withValues(alpha: 0.35),
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.play_arrow_rounded,
-                              size: 13,
-                              color: broadcasting
-                                  ? AppTheme.textDisabled
-                                  : isSelected
-                                  ? Colors.white
-                                  : AppTheme.accent,
-                            ),
-                            const SizedBox(width: 4),
-                            Text(
-                              'Play',
-                              style: TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.w700,
-                                color: broadcasting
-                                    ? AppTheme.textDisabled
-                                    : isSelected
-                                    ? Colors.white
-                                    : AppTheme.accent,
-                              ),
-                            ),
-                          ],
-                        ),
+                  const SizedBox(width: 12),
+
+                  // Right: play button
+                  AnimatedContainer(
+                    duration: const Duration(milliseconds: 150),
+                    width: 36,
+                    height: 36,
+                    decoration: BoxDecoration(
+                      color: broadcasting
+                          ? AppTheme.surfaceRaisedSolid
+                          : isSelected
+                          ? AppTheme.accent
+                          : AppTheme.accent.withValues(alpha: 0.12),
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: broadcasting
+                            ? AppTheme.borderGray
+                            : isSelected
+                            ? AppTheme.accent
+                            : AppTheme.accent.withValues(alpha: 0.30),
                       ),
-                    ],
+                    ),
+                    child: Icon(
+                      Icons.play_arrow_rounded,
+                      size: 18,
+                      color: broadcasting
+                          ? AppTheme.textDisabled
+                          : isSelected
+                          ? Colors.white
+                          : AppTheme.accent,
+                    ),
                   ),
                 ],
               ),
             ),
+            if (!isLast)
+              const Divider(height: 1, thickness: 1, indent: 16, endIndent: 16, color: AppTheme.borderDim),
           ],
         ),
       ),
@@ -285,17 +223,17 @@ class _ServerTile extends StatelessWidget {
   }
 }
 
-class _StatusBadge extends StatefulWidget {
+class _StatusDot extends StatefulWidget {
   final String address;
   final int port;
   final bool isJava;
-  const _StatusBadge({required this.address, required this.port, this.isJava = false});
+  const _StatusDot({required this.address, required this.port, this.isJava = false});
 
   @override
-  State<_StatusBadge> createState() => _StatusBadgeState();
+  State<_StatusDot> createState() => _StatusDotState();
 }
 
-class _StatusBadgeState extends State<_StatusBadge> {
+class _StatusDotState extends State<_StatusDot> {
   late Future<ServerStatus> _statusFuture;
 
   @override
@@ -310,68 +248,38 @@ class _StatusBadgeState extends State<_StatusBadge> {
       future: _statusFuture,
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return _pill(dot: AppTheme.textMuted, label: '...', sub: null);
+          return const SizedBox(width: 6, height: 6);
         }
         final status = snapshot.data!;
-        if (!status.isOnline) {
-          return _pill(dot: AppTheme.textMuted, label: 'Offline', sub: null);
-        }
-        final playerText = (status.players != null && status.maxPlayers != null)
-            ? '${status.players}/${status.maxPlayers}'
+        final online = status.isOnline;
+        final color = online ? AppTheme.success : AppTheme.textMuted.withValues(alpha: 0.4);
+        final label = online
+            ? (status.players != null && status.maxPlayers != null
+                ? '${status.players}/${status.maxPlayers}'
+                : null)
             : null;
-        return _pill(dot: AppTheme.success, label: 'Online', sub: playerText);
-      },
-    );
-  }
-
-  Widget _pill({
-    required Color dot,
-    required String label,
-    required String? sub,
-  }) {
-    final online = dot == AppTheme.success;
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(
-        color: online
-            ? AppTheme.success.withValues(alpha: 0.08)
-            : AppTheme.surfaceRaisedSolid,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: online
-              ? AppTheme.success.withValues(alpha: 0.30)
-              : AppTheme.borderGray,
-        ),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 5,
-            height: 5,
-            decoration: BoxDecoration(color: dot, shape: BoxShape.circle),
-          ),
-          const SizedBox(width: 5),
-          Text(
-            label,
-            style: TextStyle(
-              color: online ? AppTheme.success : AppTheme.textMuted,
-              fontSize: 10,
-              fontWeight: FontWeight.w600,
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 6,
+              height: 6,
+              decoration: BoxDecoration(color: color, shape: BoxShape.circle),
             ),
-          ),
-          if (sub != null) ...[
-            const SizedBox(width: 4),
-            Text(
-              sub,
-              style: TextStyle(
-                color: AppTheme.success.withValues(alpha: 0.70),
-                fontSize: 10,
+            if (label != null) ...[
+              const SizedBox(width: 4),
+              Text(
+                label,
+                style: TextStyle(
+                  color: AppTheme.success.withValues(alpha: 0.7),
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            ),
+            ],
           ],
-        ],
-      ),
+        );
+      },
     );
   }
 }

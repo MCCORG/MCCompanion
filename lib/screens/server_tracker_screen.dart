@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import '../services/theme_service.dart';
 import '../l10n/app_localizations.dart';
 import '../models/tracked_server_model.dart';
 import '../services/auth_service.dart';
@@ -8,6 +9,7 @@ import '../services/server_tracker_service.dart';
 import '../services/tracker_api_service.dart';
 import '../theme/app_theme.dart';
 import '../widgets/components/app_toast.dart';
+import '../widgets/components/swipe_back.dart';
 import '../widgets/tracked_server_card.dart';
 import 'paywall_screen.dart';
 
@@ -44,6 +46,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
     _checkAuth();
     _startCountdown();
     _authSub = AuthService.userStream.listen((_) => _checkAuth());
+    ThemeService.instance.addListener(_onTheme);
   }
 
   void _startCountdown() {
@@ -107,7 +110,12 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
     _slotsSub?.cancel();
     _authSub?.cancel();
     _countdownTimer?.cancel();
+    ThemeService.instance.removeListener(_onTheme);
     super.dispose();
+  }
+
+  void _onTheme() {
+    if (mounted) setState(() {});
   }
 
   Future<void> _deleteServer(TrackedServer server) async {
@@ -205,36 +213,13 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return SwipeBack(
+      onBack: widget.onBack,
+      child: Column(
       children: [
-        Container(
-          decoration: BoxDecoration(
-            color: AppTheme.surface,
-            border: Border(
-              bottom: BorderSide(color: AppTheme.borderGray, width: 0.5),
-            ),
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          child: Row(
+        Row(
             children: [
-              IconButton(
-                icon: Icon(
-                  Icons.arrow_back_ios_rounded,
-                  color: AppTheme.textSecondary,
-                  size: 18,
-                ),
-                onPressed: widget.onBack,
-              ),
-              Expanded(
-                child: Text(
-                  AppLocalizations.of(context)!.serverTrackerTitle,
-                  style: TextStyle(
-                    color: AppTheme.textPrimary,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
+              const Spacer(),
               if (_isLoggedIn && _slots != null)
                 Padding(
                   padding: const EdgeInsets.only(right: 4),
@@ -279,22 +264,23 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
                       ),
               ],
               if (_isLoggedIn)
-                IconButton(
-                  icon: Icon(
-                    Icons.add_rounded,
-                    color: _slots != null && _slots!.remaining == 0 && !Platform.isWindows
-                        ? AppTheme.textDisabled
-                        : AppTheme.brand,
-                    size: 24,
-                  ),
-                  onPressed: _slots != null && _slots!.remaining == 0 && !Platform.isWindows
+                GestureDetector(
+                  onTap: _slots != null && _slots!.remaining == 0 && !Platform.isWindows
                       ? _openPaywall
                       : _openAddSheet,
-                  tooltip: AppLocalizations.of(context)!.addServer,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Icon(
+                      Icons.add_rounded,
+                      size: 24,
+                      color: _slots != null && _slots!.remaining == 0 && !Platform.isWindows
+                          ? AppTheme.textDisabled
+                          : AppTheme.accent,
+                    ),
+                  ),
                 ),
             ],
           ),
-        ),
 
         if (_slots != null && _slots!.remaining == 0 && !_loading && _isLoggedIn && !Platform.isWindows)
           Padding(
@@ -389,6 +375,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
                 ),
         ),
       ],
+    ),
     );
   }
 }
@@ -495,23 +482,30 @@ class _EmptyState extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
-            FilledButton.icon(
-              onPressed: onAdd,
-              style: FilledButton.styleFrom(
-                backgroundColor: AppTheme.brand,
-                foregroundColor: Colors.black,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 13,
-                ),
-                shape: RoundedRectangleBorder(
+            GestureDetector(
+              onTap: onAdd,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 13),
+                decoration: BoxDecoration(
+                  color: AppTheme.accent.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: AppTheme.accent.withValues(alpha: 0.35)),
                 ),
-              ),
-              icon: const Icon(Icons.add_rounded),
-              label: Text(
-                AppLocalizations.of(context)!.addServer,
-                style: const TextStyle(fontWeight: FontWeight.w700),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.add_rounded, size: 18, color: AppTheme.accent),
+                    const SizedBox(width: 8),
+                    Text(
+                      AppLocalizations.of(context)!.addServer,
+                      style: TextStyle(
+                        color: AppTheme.accent,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

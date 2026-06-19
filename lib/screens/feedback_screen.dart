@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import '../widgets/components/swipe_back.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import '../theme/app_theme.dart';
@@ -104,9 +105,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   Widget build(BuildContext context) {
     final isDesktop = Platform.isMacOS || Platform.isWindows || Platform.isLinux;
 
-    return Scaffold(
-      backgroundColor: AppTheme.background,
-      body: Column(
+    return SwipeBack(
+      onBack: widget.onBack ?? () {},
+      child: Column(
         children: [
           _Header(onBack: widget.onBack, isBug: _isBug, typeColor: _typeColor),
           Expanded(
@@ -141,24 +142,15 @@ class _Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
-    return Container(
+    return Padding(
       padding: EdgeInsets.only(
         top: MediaQuery.of(context).padding.top + 8,
         bottom: 12,
-        left: 8,
+        left: 16,
         right: 16,
-      ),
-      decoration: BoxDecoration(
-        color: AppTheme.surface,
-        border: Border(bottom: BorderSide(color: AppTheme.borderGray)),
       ),
       child: Row(
         children: [
-          IconButton(
-            onPressed: onBack,
-            icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 18),
-            color: AppTheme.textSecondary,
-          ),
           Container(
             width: 32,
             height: 32,

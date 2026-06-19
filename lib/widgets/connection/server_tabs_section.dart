@@ -15,6 +15,7 @@ class ServerTabsSection extends StatefulWidget {
     required this.onResourcePack,
     required this.broadcasting,
     this.resourcePackActive = false,
+    this.onDelete,
   });
 
   final List<UserServer> savedServers;
@@ -25,6 +26,7 @@ class ServerTabsSection extends StatefulWidget {
   final VoidCallback onResourcePack;
   final bool broadcasting;
   final bool resourcePackActive;
+  final Function(int index)? onDelete;
 
   @override
   State<ServerTabsSection> createState() => _ServerTabsSectionState();
@@ -47,6 +49,7 @@ class _ServerTabsSectionState extends State<ServerTabsSection> {
             portController: widget.portController,
             onServerSelected: widget.onServerSelected,
             broadcasting: widget.broadcasting,
+            onDelete: widget.onDelete,
           ),
         ),
       ],

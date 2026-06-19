@@ -9,6 +9,7 @@ import '../services/auth_service.dart';
 import '../theme/app_theme.dart';
 import '../util/resource_pack_prefs.dart';
 import '../widgets/components/app_toast.dart';
+import '../widgets/components/swipe_back.dart';
 
 enum _InputMode { upload, url }
 
@@ -287,7 +288,9 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
-    return Column(
+    return SwipeBack(
+      onBack: widget.onBack,
+      child: Column(
       children: [
         // Nav bar
         Container(
@@ -620,6 +623,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                 ),
         ),
       ],
+    ),
     );
   }
 

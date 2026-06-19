@@ -2,7 +2,7 @@ name: MCCompanion
 description: "A Minecraft companion app."
 
 publish_to: 'none'
-version: 4.0.6+31
+version: 4.1.0+32
 
 environment:
   sdk: ^3.8.1
@@ -39,6 +39,7 @@ dependencies:
   purchases_flutter: ^10.2.0
   flutter_colorpicker: ^1.1.0
   in_app_review: ^2.0.9
+  palette_generator: ^0.3.3
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:math' as math;
+import 'package:palette_generator/palette_generator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter/services.dart';
@@ -435,6 +436,32 @@ class _PartnerBannerState extends State<_PartnerBanner> {
           child: Stack(
             alignment: Alignment.center,
             children: [
+              if (s.iconUrl != null && s.iconUrl!.isNotEmpty)
+                Positioned.fill(
+                  child: FutureBuilder<PaletteGenerator>(
+                    future: PaletteGenerator.fromImageProvider(
+                      NetworkImage(s.iconUrl!),
+                      size: const Size(80, 80),
+                    ),
+                    builder: (context, snap) {
+                      final color = snap.data?.vibrantColor?.color ??
+                          snap.data?.dominantColor?.color;
+                      if (color == null) return const SizedBox.shrink();
+                      return Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                            colors: [
+                              color.withValues(alpha: 0.15),
+                              color.withValues(alpha: 0.40),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
               Positioned(
                 left: 0,
                 top: 0,

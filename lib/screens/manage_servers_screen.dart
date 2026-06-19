@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
+import '../services/theme_service.dart';
 import '../util/user_servers.dart';
 import '../util/user_servers_storage.dart';
 import '../l10n/app_localizations.dart';
 import '../widgets/components/app_toast.dart';
+import '../widgets/components/swipe_back.dart';
 
 class ManageServersScreen extends StatefulWidget {
   final VoidCallback onBack;
@@ -59,56 +61,27 @@ class ManageServersScreenState extends State<ManageServersScreen> {
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
 
-    return Column(
+    return SwipeBack(
+      onBack: widget.onBack,
+      child: Column(
       children: [
-        Container(
-          decoration: BoxDecoration(
-            color: AppTheme.surface,
-            border: Border(
-              bottom: BorderSide(color: AppTheme.borderGray, width: 0.5),
+        Align(
+          alignment: Alignment.centerRight,
+          child: GestureDetector(
+            onTap: widget.onAddServer,
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: Icon(Icons.add_rounded, size: 22, color: AppTheme.accent),
             ),
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          child: Row(
-            children: [
-              IconButton(
-                icon: Icon(
-                  Icons.arrow_back_ios_rounded,
-                  color: AppTheme.textSecondary,
-                  size: 18,
-                ),
-                onPressed: widget.onBack,
-              ),
-              Expanded(
-                child: Text(
-                  loc.myServers,
-                  style: TextStyle(
-                    color: AppTheme.textPrimary,
-                    fontSize: 17,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-              IconButton(
-                icon: Icon(Icons.add_rounded, color: AppTheme.accent, size: 22),
-                onPressed: widget.onAddServer,
-              ),
-            ],
-          ),
         ),
-
         Expanded(
           child: _loading
-              ? Center(
-                  child: CircularProgressIndicator(
-                    strokeWidth: 2,
-                    color: AppTheme.accent,
-                  ),
-                )
+              ? Center(child: CircularProgressIndicator(strokeWidth: 2, color: AppTheme.accent))
               : _servers.isEmpty
               ? _EmptyState(loc: loc, onAdd: widget.onAddServer)
               : ListView.separated(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                   itemCount: _servers.length,
                   separatorBuilder: (_, __) => const SizedBox(height: 10),
                   itemBuilder: (_, i) => _ServerCard(
@@ -119,6 +92,7 @@ class ManageServersScreenState extends State<ManageServersScreen> {
                 ),
         ),
       ],
+    ),
     );
   }
 }

@@ -48,6 +48,7 @@ class ConnectionPanel extends StatefulWidget {
     this.onBedrockAccountChanged,
     this.navChips,
     this.resourcePackActive = false,
+    this.onDeleteServer,
   });
 
   final TextEditingController ipController;
@@ -71,6 +72,7 @@ class ConnectionPanel extends StatefulWidget {
   final ValueChanged<String>? onBedrockAccountChanged;
   final Widget? navChips;
   final bool resourcePackActive;
+  final Function(int index)? onDeleteServer;
 
   @override
   State<ConnectionPanel> createState() => _ConnectionPanelState();
@@ -214,6 +216,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                   onResourcePack: widget.onResourcePack,
                   resourcePackActive: widget.resourcePackActive,
                   broadcasting: broadcasting,
+                  onDelete: widget.onDeleteServer,
                 ),
               ),
             ),

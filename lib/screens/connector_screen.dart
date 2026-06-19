@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:async' show unawaited;
 import 'package:flutter/material.dart';
+import '../widgets/components/swipe_back.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
 import '../l10n/app_localizations.dart';
@@ -37,6 +38,8 @@ class HomeScreen extends StatefulWidget {
   final VoidCallback? onOpenSupport;
   final VoidCallback? onOpenHowTo;
   final VoidCallback? onOpenConsole;
+  final VoidCallback? onBack;
+  final VoidCallback? onServerDeleted;
   final TextEditingController ipController;
   final TextEditingController portController;
 
@@ -55,6 +58,8 @@ class HomeScreen extends StatefulWidget {
     this.onOpenSupport,
     this.onOpenHowTo,
     this.onOpenConsole,
+    this.onBack,
+    this.onServerDeleted,
   });
 
   @override
@@ -327,7 +332,7 @@ class HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    Widget content = Padding(
       padding: const EdgeInsets.fromLTRB(14, 12, 14, 0),
       child: SingleChildScrollView(
         controller: _mainScrollController,
@@ -362,10 +367,19 @@ class HomeScreenState extends State<HomeScreen> {
               onConsole: widget.onOpenConsole,
               onRelay: widget.onOpenMore,
             ),
+            onDeleteServer: (index) async {
+              await UserServersStorage.removeServer(index);
+              await loadUserServers();
+              widget.onServerDeleted?.call();
+            },
           ),
         ),
       ),
     );
+    if (widget.onBack != null) {
+      content = SwipeBack(onBack: widget.onBack!, child: content);
+    }
+    return content;
   }
 }
 

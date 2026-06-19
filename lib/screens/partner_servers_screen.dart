@@ -4,6 +4,7 @@ import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../util/partners_servers.dart';
 import '../widgets/components/app_toast.dart';
+import '../widgets/components/swipe_back.dart';
 import '../widgets/partner_server_card.dart';
 
 class PartnerServersScreen extends StatefulWidget {
@@ -31,39 +32,10 @@ class _PartnerServersScreenState extends State<PartnerServersScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return SwipeBack(
+      onBack: widget.onBack,
+      child: Column(
       children: [
-        Container(
-          color: AppTheme.surface,
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(
-                        Icons.arrow_back_rounded,
-                        color: AppTheme.textPrimary,
-                      ),
-                      onPressed: widget.onBack,
-                    ),
-                    Text(
-                      AppLocalizations.of(context)!.partnerServersTitle,
-                      style: TextStyle(
-                        color: AppTheme.textPrimary,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const Divider(height: 1, color: AppTheme.borderGray),
-            ],
-          ),
-        ),
-
         Expanded(
           child: FutureBuilder<List<FeaturedServer>>(
             future: widget.partnerServersFuture,
@@ -151,6 +123,7 @@ class _PartnerServersScreenState extends State<PartnerServersScreen> {
           ),
         ),
       ],
+    ),
     );
   }
 }

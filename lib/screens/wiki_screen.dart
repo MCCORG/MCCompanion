@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import '../widgets/components/swipe_back.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
@@ -421,7 +422,8 @@ class WikiResult {
 enum _View { root, subs, pages, search }
 
 class WikiScreen extends StatefulWidget {
-  const WikiScreen({super.key});
+  const WikiScreen({super.key, this.onBack});
+  final VoidCallback? onBack;
 
   @override
   State<WikiScreen> createState() => _WikiScreenState();
@@ -937,12 +939,17 @@ class _WikiScreenState extends State<WikiScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    final column = Column(
       children: [
         _buildHeader(),
         Expanded(child: _buildBody()),
       ],
     );
+    final backFn = _view != _View.root ? _goBack : widget.onBack;
+    if (backFn != null) {
+      return SwipeBack(onBack: backFn, child: column);
+    }
+    return column;
   }
 
   Widget _buildHeader() {

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import '../widgets/components/swipe_back.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import '../l10n/app_localizations.dart';
@@ -8,6 +9,7 @@ import '../services/player_lookup_service.dart';
 import '../theme/app_theme.dart';
 import '../widgets/components/app_toast.dart';
 import '../widgets/skin_3d_viewer.dart';
+import 'skin_editor_screen.dart';
 
 class PlayerLookupScreen extends StatefulWidget {
   final VoidCallback onBack;
@@ -74,39 +76,10 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return SwipeBack(
+      onBack: widget.onBack,
+      child: Column(
       children: [
-        Container(
-          color: AppTheme.surface,
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(
-                        Icons.arrow_back_rounded,
-                        color: AppTheme.textPrimary,
-                      ),
-                      onPressed: widget.onBack,
-                    ),
-                    Text(
-                      AppLocalizations.of(context)!.playerLookupTitle,
-                      style: TextStyle(
-                        color: AppTheme.textPrimary,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const Divider(height: 1, color: AppTheme.borderGray),
-            ],
-          ),
-        ),
-
         Expanded(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(16),
@@ -238,6 +211,7 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
           ),
         ),
       ],
+      ),
     );
   }
 }
@@ -368,11 +342,12 @@ class _JavaSkinViewerState extends State<_JavaSkinViewer> {
         return;
       }
       final url = _extractTextureUrl(resp.body);
-      if (mounted)
+      if (mounted) {
         setState(() {
           _textureUrl = url;
           _loading = false;
         });
+      }
     } catch (_) {
       if (mounted) setState(() => _loading = false);
     }
@@ -393,6 +368,13 @@ class _JavaSkinViewerState extends State<_JavaSkinViewer> {
     return null;
   }
 
+  void _openEditor() {
+    if (_textureUrl == null) return;
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (_) => SkinEditorScreen(initialTextureUrl: _textureUrl),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -401,12 +383,26 @@ class _JavaSkinViewerState extends State<_JavaSkinViewer> {
         child: _loading
             ? CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
             : _textureUrl != null
-            ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156)
-            : Icon(
-                Icons.person_rounded,
-                color: AppTheme.textMuted,
-                size: 48,
-              ),
+            ? GestureDetector(
+                onTap: _openEditor,
+                child: Stack(alignment: Alignment.bottomCenter, children: [
+                  SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156),
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 4),
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                    decoration: BoxDecoration(
+                      color: Colors.black.withValues(alpha: 0.55),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Row(mainAxisSize: MainAxisSize.min, children: [
+                      Icon(Icons.edit_rounded, size: 10, color: Colors.white70),
+                      const SizedBox(width: 4),
+                      Text('Edit skin', style: const TextStyle(color: Colors.white70, fontSize: 10)),
+                    ]),
+                  ),
+                ]),
+              )
+            : Icon(Icons.person_rounded, color: AppTheme.textMuted, size: 48),
       ),
     );
   }
@@ -528,6 +524,13 @@ class _BedrockSkinViewerState extends State<_BedrockSkinViewer> {
     if (mounted) setState(() => _loading = false);
   }
 
+  void _openEditor() {
+    if (_textureUrl == null) return;
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (_) => SkinEditorScreen(initialTextureUrl: _textureUrl),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -536,12 +539,26 @@ class _BedrockSkinViewerState extends State<_BedrockSkinViewer> {
         child: _loading
             ? CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
             : _textureUrl != null
-            ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156)
-            : Icon(
-                Icons.gamepad_rounded,
-                color: AppTheme.textMuted,
-                size: 48,
-              ),
+            ? GestureDetector(
+                onTap: _openEditor,
+                child: Stack(alignment: Alignment.bottomCenter, children: [
+                  SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156),
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 4),
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                    decoration: BoxDecoration(
+                      color: Colors.black.withValues(alpha: 0.55),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Row(mainAxisSize: MainAxisSize.min, children: [
+                      Icon(Icons.edit_rounded, size: 10, color: Colors.white70),
+                      const SizedBox(width: 4),
+                      Text('Edit skin', style: const TextStyle(color: Colors.white70, fontSize: 10)),
+                    ]),
+                  ),
+                ]),
+              )
+            : Icon(Icons.gamepad_rounded, color: AppTheme.textMuted, size: 48),
       ),
     );
   }

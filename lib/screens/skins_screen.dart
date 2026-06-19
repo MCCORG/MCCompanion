@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:ui' as ui;
 import 'package:file_picker/file_picker.dart';
+import '../widgets/components/swipe_back.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
@@ -278,7 +279,8 @@ class _BodyPainter extends CustomPainter {
 }
 
 class SkinsScreen extends StatefulWidget {
-  const SkinsScreen({super.key});
+  const SkinsScreen({super.key, this.onBack});
+  final VoidCallback? onBack;
 
   @override
   State<SkinsScreen> createState() => SkinsScreenState();
@@ -522,7 +524,7 @@ class SkinsScreenState extends State<SkinsScreen> {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
-    return LayoutBuilder(
+    final content = LayoutBuilder(
       builder: (context, constraints) {
         final isDesktop = constraints.maxWidth > 700;
         return SingleChildScrollView(
@@ -552,6 +554,10 @@ class SkinsScreenState extends State<SkinsScreen> {
         );
       },
     );
+    if (widget.onBack != null) {
+      return SwipeBack(onBack: widget.onBack!, child: content);
+    }
+    return content;
   }
 
   Widget _buildSavedSkins(AppLocalizations l, {bool isDesktop = false}) {

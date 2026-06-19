@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:palette_generator/palette_generator.dart';
 import '../theme/app_theme.dart';
 import '../util/partners_servers.dart';
 import '../services/server_status_service.dart';
@@ -36,6 +37,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
   int _heroBgPage = 0;
   Timer? _heroTimer;
   final Map<String, Future<ServerStatus>> _statusCache = {};
+  final Map<String, Color?> _paletteCache = {};
 
   List<WaveConfig> get _heroWaves => [
     WaveConfig(
@@ -103,6 +105,23 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
     });
   }
 
+  Future<Color?> _getDominantColor(String url) async {
+    if (_paletteCache.containsKey(url)) return _paletteCache[url];
+    try {
+      final generator = await PaletteGenerator.fromImageProvider(
+        NetworkImage(url),
+        size: const Size(80, 80),
+      );
+      final color = generator.vibrantColor?.color ??
+          generator.dominantColor?.color;
+      _paletteCache[url] = color;
+      return color;
+    } catch (_) {
+      _paletteCache[url] = null;
+      return null;
+    }
+  }
+
   Future<ServerStatus> _getHeroStatus(FeaturedServer server) {
     final key = '${server.address}:${server.port}';
     return _statusCache.putIfAbsent(
@@ -136,11 +155,21 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                     itemBuilder: (_, i) {
                       final url = _featuredServers[i].iconUrl;
                       if (url != null && url.isNotEmpty) {
-                        return Stack(
-                          fit: StackFit.expand,
-                          children: [
-                            _defaultHeroBg(),
-                            Align(
+                        return FutureBuilder<Color?>(
+                          future: _getDominantColor(url),
+                          builder: (context, snap) {
+                            final accent = snap.data;
+                            return Stack(
+                              fit: StackFit.expand,
+                              children: [
+                                _defaultHeroBg(),
+                                if (accent != null)
+                                  Positioned.fill(
+                                    child: Container(
+                                      color: accent.withValues(alpha: 0.35),
+                                    ),
+                                  ),
+                                Align(
                               alignment: Alignment.centerRight,
                               child: Image.network(
                                 url,
@@ -169,6 +198,8 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                               );
                             }),
                           ],
+                        );
+                          },
                         );
                       }
                       return _defaultHeroBg();
