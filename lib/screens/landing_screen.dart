@@ -444,18 +444,31 @@ class _PartnerBannerState extends State<_PartnerBanner> {
                       size: const Size(80, 80),
                     ),
                     builder: (context, snap) {
-                      final color = snap.data?.vibrantColor?.color ??
-                          snap.data?.dominantColor?.color;
-                      if (color == null) return const SizedBox.shrink();
+                      final g = snap.data;
+                      if (g == null) return const SizedBox.shrink();
+                      final colors = [
+                        g.vibrantColor?.color,
+                        g.lightVibrantColor?.color,
+                        g.mutedColor?.color,
+                        g.dominantColor?.color,
+                      ].whereType<Color>().take(3).toList();
+                      if (colors.isEmpty) return const SizedBox.shrink();
                       return Container(
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             begin: Alignment.centerLeft,
                             end: Alignment.centerRight,
-                            colors: [
-                              color.withValues(alpha: 0.15),
-                              color.withValues(alpha: 0.40),
-                            ],
+                            colors: colors.length >= 2
+                                ? [
+                                    colors[0].withValues(alpha: 0.12),
+                                    colors[1].withValues(alpha: 0.22),
+                                    if (colors.length >= 3)
+                                      colors[2].withValues(alpha: 0.16),
+                                  ]
+                                : [
+                                    colors[0].withValues(alpha: 0.12),
+                                    colors[0].withValues(alpha: 0.22),
+                                  ],
                           ),
                         ),
                       );

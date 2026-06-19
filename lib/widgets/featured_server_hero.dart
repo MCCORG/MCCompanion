@@ -37,7 +37,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
   int _heroBgPage = 0;
   Timer? _heroTimer;
   final Map<String, Future<ServerStatus>> _statusCache = {};
-  final Map<String, Color?> _paletteCache = {};
+  final Map<String, List<Color>> _paletteCache = {};
 
   List<WaveConfig> get _heroWaves => [
     WaveConfig(
@@ -105,20 +105,24 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
     });
   }
 
-  Future<Color?> _getDominantColor(String url) async {
-    if (_paletteCache.containsKey(url)) return _paletteCache[url];
+  Future<List<Color>> _getPalette(String url) async {
+    if (_paletteCache.containsKey(url)) return _paletteCache[url]!;
     try {
       final generator = await PaletteGenerator.fromImageProvider(
         NetworkImage(url),
         size: const Size(80, 80),
       );
-      final color = generator.vibrantColor?.color ??
-          generator.dominantColor?.color;
-      _paletteCache[url] = color;
-      return color;
+      final colors = [
+        generator.vibrantColor?.color,
+        generator.lightVibrantColor?.color,
+        generator.mutedColor?.color,
+        generator.dominantColor?.color,
+      ].whereType<Color>().take(3).toList();
+      _paletteCache[url] = colors;
+      return colors;
     } catch (_) {
-      _paletteCache[url] = null;
-      return null;
+      _paletteCache[url] = [];
+      return [];
     }
   }
 
@@ -146,84 +150,90 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            _featuredServers.isEmpty
-                ? _defaultHeroBg()
-                : PageView.builder(
-                    controller: _heroBgController,
-                    onPageChanged: (i) => setState(() => _heroBgPage = i),
-                    itemCount: _featuredServers.length,
-                    itemBuilder: (_, i) {
-                      final url = _featuredServers[i].iconUrl;
-                      if (url != null && url.isNotEmpty) {
-                        return FutureBuilder<Color?>(
-                          future: _getDominantColor(url),
-                          builder: (context, snap) {
-                            final accent = snap.data;
-                            return Stack(
-                              fit: StackFit.expand,
-                              children: [
-                                _defaultHeroBg(),
-                                if (accent != null)
-                                  Positioned.fill(
-                                    child: Container(
-                                      color: accent.withValues(alpha: 0.35),
-                                    ),
-                                  ),
-                                Align(
-                              alignment: Alignment.centerRight,
-                              child: Image.network(
-                                url,
-                                height: double.infinity,
-                                fit: BoxFit.fitHeight,
-                                errorBuilder: (_, __, ___) =>
-                                    const SizedBox.shrink(),
-                              ),
-                            ),
-                            Builder(builder: (context) {
-                              final bg = ThemeService.instance.background;
-                              return Container(
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    begin: Alignment.centerLeft,
-                                    end: Alignment.centerRight,
-                                    stops: const [0.0, 0.45, 0.72, 1.0],
-                                    colors: [
-                                      bg.withValues(alpha: 1.0),
-                                      bg.withValues(alpha: 0.93),
-                                      bg.withValues(alpha: 0.40),
-                                      Colors.transparent,
-                                    ],
-                                  ),
-                                ),
-                              );
-                            }),
-                          ],
-                        );
-                          },
-                        );
-                      }
-                      return _defaultHeroBg();
-                    },
-                  ),
-            const CustomPaint(
-              painter: AppNoisePainter(
-                color: Colors.white,
-                opacity: 0.030,
-                seed: 99,
-                count: 320,
-              ),
+            FutureBuilder<List<Color>>(
+              future: (_currentHeroServer?.iconUrl ?? '').isNotEmpty
+                  ? _getPalette(_currentHeroServer!.iconUrl!)
+                  : Future.value([]),
+              builder: (context, snap) {
+                final colors = snap.data ?? [];
+                if (colors.length >= 2) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                          colors[0],
+                          colors[1],
+                          if (colors.length >= 3) colors[2],
+                        ],
+                      ),
+                    ),
+                  );
+                }
+                if (colors.length == 1) {
+                  return Container(color: colors[0]);
+                }
+                return _defaultHeroBg();
+              },
             ),
-            CustomPaint(painter: AppWavePainter(waves: _heroWaves)),
+            PageView.builder(
+              controller: _heroBgController,
+              onPageChanged: (i) => setState(() => _heroBgPage = i),
+              itemCount: _featuredServers.isEmpty ? 1 : _featuredServers.length,
+              itemBuilder: (_, i) {
+                if (_featuredServers.isEmpty) return const SizedBox.shrink();
+                final url = _featuredServers[i].iconUrl;
+                if (url != null && url.isNotEmpty) {
+                  return Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: Image.network(
+                            url,
+                            height: 180,
+                            fit: BoxFit.fitHeight,
+                            errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+                          ),
+                        ),
+                      ),
+                      Positioned.fill(
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                              stops: [0.0, 0.40, 0.75, 1.0],
+                              colors: [
+                                Color(0xFF000000),
+                                Color(0xCC000000),
+                                Color(0x44000000),
+                                Colors.transparent,
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                }
+                return const SizedBox.shrink();
+              },
+            ),
             Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  stops: [0.0, 0.4, 1.0],
+                  stops: [0.0, 0.3, 0.7, 1.0],
                   colors: [
-                    Color(0x55000000),
+                    Color(0x66000000),
                     Color(0x00000000),
-                    Color(0xBB000000),
+                    Color(0x00000000),
+                    Color(0x99000000),
                   ],
                 ),
               ),
