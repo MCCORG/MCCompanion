@@ -1716,16 +1716,28 @@ class AppLocalizationsJa extends AppLocalizations {
   String get rpWhatWorks => '動作するもの';
 
   @override
-  String get rpWhatDoesntWork => '動作しないもの';
+  String get rpSupportedBedrockOnly => 'Bedrock Edition only (.mcpack or .zip)';
 
   @override
-  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+  String get rpSupportedBedrockOnlyHint => 'Java packs don\'t work on consoles.';
 
   @override
-  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 パブリックバケット';
+  String get rpSupportedTexture => 'Resource packs & texture packs';
 
   @override
-  String get rpWorksDirect => '.mcpack または .zip で終わる直接HTTPSリンク';
+  String get rpSupportedTextureHint => 'These are officially supported and work reliably.';
+
+  @override
+  String get rpUnsupportedShaders => 'Shaders, behavior packs, skin packs';
+
+  @override
+  String get rpUnsupportedShadersHint => 'These won\'t load on consoles via MCCompanion.';
+
+  @override
+  String get rpUnsupportedAddons => 'Add-ons & UI mods';
+
+  @override
+  String get rpUnsupportedAddonsHint => 'May sometimes work, but not officially supported. Use at your own risk.';
 
   @override
   String get rpNoDiscord => 'Discordリンク — .mcpack 拡張子がなく、数時間で期限切れになります';
@@ -1735,6 +1747,12 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get rpNoEncrypted => '暗号化またはパスワード保護されたパックのサーバー';
+
+  @override
+  String get rpConsolePerformanceTitle => 'Console performance';
+
+  @override
+  String get rpConsolePerformanceBody => 'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.';
 
   @override
   String get rpWarnDiscord => 'DiscordリンクはExpireし、動作しなくなります。代わりに永続的なホストを使用してください。';
@@ -1770,7 +1788,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get rpRelayTitle => 'パックがおかしく見える？';
 
   @override
-  String get rpRelayBody => 'リレーは結合されたパックを1時間キャッシュします。早めに再結合を強制するには、パック URLを少し変更し（例：末尾に?v=2を追加）して保存してください。';
+  String get rpRelayBody => 'リレーはオーバーレイURLをキーとして結合されたパックを1時間キャッシュします。新しい結合を強制するには：パックURLを少し変更（例：末尾に?v=2を追加）して保存してください。その後、MinecraftのパックキャッシュもクリアしてくださいQ — 結合されたパックは引き続きサーバーのUUIDを使用するため、そのままではMinecraftが古いキャッシュ版を表示します。';
 
   @override
   String get rpWorksGithubHint => '直接ダウンロードリンク — 常にアクセス可能';
@@ -1791,5 +1809,20 @@ class AppLocalizationsJa extends AppLocalizations {
   String get rpNoEncryptedHint => 'MCCompanionは暗号化されたパックを結合できません';
 
   @override
-  String get rpClearWhy => 'Minecraftはリソースパックを固有IDでローカルにキャッシュします。MCCompanionがあなたのパックとサーバーのパックを結合すると新しいIDが付与されます。古いバージョンがすでにキャッシュされている場合、新しいパックはダウンロードされません。そのためまずキャッシュをクリアする必要があります。';
+  String get rpClearWhy => 'MinecraftはリソースパックをUUIDでキャッシュします。結合されたパックはサーバーの元のUUIDを保持します — MCCompanionを有効にする前のセッションでMinecraftがサーバーのパックをキャッシュしていた場合、新しい結合バージョンをダウンロードしません。キャッシュをクリアして、Minecraftが新しい結合パックを読み込むようにしてください。';
+
+  @override
+  String get rpUploadTab => 'Upload';
+
+  @override
+  String get rpUrlTab => 'URL';
+
+  @override
+  String get rpUploadButton => 'Tap to select your pack';
+
+  @override
+  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+
+  @override
+  String get rpUploading => 'Uploading...';
 }

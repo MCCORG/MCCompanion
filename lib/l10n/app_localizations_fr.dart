@@ -1716,16 +1716,28 @@ class AppLocalizationsFr extends AppLocalizations {
   String get rpWhatWorks => 'Ce qui fonctionne';
 
   @override
-  String get rpWhatDoesntWork => 'Ce qui ne fonctionne pas';
+  String get rpSupportedBedrockOnly => 'Bedrock Edition only (.mcpack or .zip)';
 
   @override
-  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+  String get rpSupportedBedrockOnlyHint => 'Java packs don\'t work on consoles.';
 
   @override
-  String get rpWorksCloudflare => 'Cloudflare R2 / bucket public AWS S3';
+  String get rpSupportedTexture => 'Resource packs & texture packs';
 
   @override
-  String get rpWorksDirect => 'Tout lien HTTPS direct se terminant par .mcpack ou .zip';
+  String get rpSupportedTextureHint => 'These are officially supported and work reliably.';
+
+  @override
+  String get rpUnsupportedShaders => 'Shaders, behavior packs, skin packs';
+
+  @override
+  String get rpUnsupportedShadersHint => 'These won\'t load on consoles via MCCompanion.';
+
+  @override
+  String get rpUnsupportedAddons => 'Add-ons & UI mods';
+
+  @override
+  String get rpUnsupportedAddonsHint => 'May sometimes work, but not officially supported. Use at your own risk.';
 
   @override
   String get rpNoDiscord => 'Liens Discord — pas d\'extension .mcpack et expirent après quelques heures';
@@ -1735,6 +1747,12 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get rpNoEncrypted => 'Serveurs avec des packs chiffrés ou protégés par mot de passe';
+
+  @override
+  String get rpConsolePerformanceTitle => 'Console performance';
+
+  @override
+  String get rpConsolePerformanceBody => 'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.';
 
   @override
   String get rpWarnDiscord => 'Les liens Discord expirent et cesseront de fonctionner. Utilisez un hébergement permanent à la place.';
@@ -1770,7 +1788,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get rpRelayTitle => 'Le pack ne s\'affiche pas bien ?';
 
   @override
-  String get rpRelayBody => 'Le relais met en cache les packs fusionnés pendant 1 heure. Pour forcer une fusion plus tôt, modifie l’URL du pack (ex. ajoute ?v=2 à la fin) et sauvegarde — cela donne une nouvelle clé de cache au relais.';
+  String get rpRelayBody => 'Le relais met en cache le pack fusionné pendant 1 heure, en utilisant l\'URL de l\'overlay comme clé. Pour forcer une nouvelle fusion : modifie légèrement l\'URL du pack (ex. ajoute ?v=2) et sauvegarde. Vide ensuite aussi le cache des packs Minecraft — le pack fusionné utilise toujours l\'UUID du serveur, donc Minecraft afficherait sinon l\'ancienne version en cache.';
 
   @override
   String get rpWorksGithubHint => 'Lien de téléchargement direct — toujours accessible';
@@ -1791,5 +1809,20 @@ class AppLocalizationsFr extends AppLocalizations {
   String get rpNoEncryptedHint => 'MCCompanion ne peut pas fusionner du contenu chiffré';
 
   @override
-  String get rpClearWhy => 'Minecraft stocke les packs de ressources localement par leur identifiant unique. Quand MCCompanion fusionne ton pack avec celui du serveur, il obtient un nouvel identifiant. Si Minecraft a déjà mis en cache l’ancienne version, il ne téléchargera pas la nouvelle — c’est pourquoi il faut vider le cache en premier.';
+  String get rpClearWhy => 'Minecraft met en cache les packs de ressources via leur UUID. Le pack fusionné conserve l\'UUID original du serveur — si Minecraft a déjà mis en cache le pack du serveur lors d\'une session précédente (avant MCCompanion), il ne téléchargera pas la nouvelle version fusionnée. Vide le cache pour que Minecraft charge le nouveau pack.';
+
+  @override
+  String get rpUploadTab => 'Upload';
+
+  @override
+  String get rpUrlTab => 'URL';
+
+  @override
+  String get rpUploadButton => 'Tap to select your pack';
+
+  @override
+  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+
+  @override
+  String get rpUploading => 'Uploading...';
 }

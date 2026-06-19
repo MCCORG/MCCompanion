@@ -1610,12 +1610,17 @@
   "rpClearStep2": "Ketuk ‘Hapus’ atau ‘Reset’ di sebelah Pack Sumber Daya — ini menghapus semua pack yang tersimpan lokal",
   "rpClearStep3": "Sambungkan kembali melalui MCCompanion — pack yang digabungkan akan diunduh secara otomatis",
   "rpRelayTitle": "Pack terlihat tidak benar?",
-  "rpRelayBody": "Relay menyimpan pack yang digabungkan selama 1 jam. Untuk memaksa penggabungan baru lebih cepat, ubah sedikit URL pack-mu (mis. tambahkan ?v=2 di akhir) dan simpan — ini memberi relay kunci cache baru.",
+  "rpRelayBody": "Relay menyimpan pack yang digabungkan selama 1 jam menggunakan URL overlay-mu sebagai kunci cache. Untuk memaksa penggabungan baru: ubah sedikit URL pack (mis. tambahkan ?v=2) dan simpan. Setelah itu, hapus juga cache pack Minecraft — pack yang digabungkan masih menggunakan UUID server, jadi Minecraft akan tetap menampilkan versi lama dari cache.",
   "rpWorksGithubHint": "Tautan unduhan langsung — selalu bisa diakses",
   "rpWorksCloudflareHint": "Penyimpanan cloud publik — cepat dan andal",
   "rpWorksDirectHint": "URL HTTPS publik .mcpack atau .zip apa pun",
   "rpNoDiscordHint": "Tautan Discord CDN kadaluarsa setelah waktu singkat",
   "rpNoDriveHint": "Tidak ada unduhan langsung — mengarahkan ke halaman pratinjau",
   "rpNoEncryptedHint": "MCCompanion tidak dapat menggabungkan konten pack terenkripsi",
-  "rpClearWhy": "Minecraft menyimpan pack sumber daya secara lokal berdasarkan ID uniknya. Ketika MCCompanion menggabungkan pack-mu dengan pack server, pack tersebut mendapat ID baru. Jika Minecraft sudah menyimpan versi lama, ia tidak akan mengunduh yang baru — itulah mengapa cache perlu dihapus terlebih dahulu."
+  "rpClearWhy": "Minecraft menyimpan pack sumber daya berdasarkan UUID. Pack yang digabungkan tetap menggunakan UUID asli server — jika Minecraft sudah menyimpan pack server dari sesi sebelumnya (sebelum MCCompanion aktif), ia tidak akan mengunduh versi gabungan yang baru. Hapus cache agar Minecraft memuat pack gabungan terbaru.",
+  "rpUploadTab": "Upload",
+  "rpUrlTab": "URL",
+  "rpUploadButton": "Tap to select your pack",
+  "rpUploadHint": ".mcpack or .zip • max 100 MB",
+  "rpUploading": "Uploading..."
 }

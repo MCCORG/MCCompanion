@@ -1716,16 +1716,28 @@ class AppLocalizationsNl extends AppLocalizations {
   String get rpWhatWorks => 'Wat werkt';
 
   @override
-  String get rpWhatDoesntWork => 'Wat niet werkt';
+  String get rpSupportedBedrockOnly => 'Bedrock Edition only (.mcpack or .zip)';
 
   @override
-  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+  String get rpSupportedBedrockOnlyHint => 'Java packs don\'t work on consoles.';
 
   @override
-  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 publieke bucket';
+  String get rpSupportedTexture => 'Resource packs & texture packs';
 
   @override
-  String get rpWorksDirect => 'Elke directe HTTPS-link die eindigt op .mcpack of .zip';
+  String get rpSupportedTextureHint => 'These are officially supported and work reliably.';
+
+  @override
+  String get rpUnsupportedShaders => 'Shaders, behavior packs, skin packs';
+
+  @override
+  String get rpUnsupportedShadersHint => 'These won\'t load on consoles via MCCompanion.';
+
+  @override
+  String get rpUnsupportedAddons => 'Add-ons & UI mods';
+
+  @override
+  String get rpUnsupportedAddonsHint => 'May sometimes work, but not officially supported. Use at your own risk.';
 
   @override
   String get rpNoDiscord => 'Discord-links — geen .mcpack-extensie en verlopen na een paar uur';
@@ -1735,6 +1747,12 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get rpNoEncrypted => 'Servers met versleutelde of wachtwoordbeveiligde packs';
+
+  @override
+  String get rpConsolePerformanceTitle => 'Console performance';
+
+  @override
+  String get rpConsolePerformanceBody => 'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.';
 
   @override
   String get rpWarnDiscord => 'Discord-links verlopen en werken dan niet meer. Gebruik een permanente host.';
@@ -1770,7 +1788,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get rpRelayTitle => 'Pack ziet er niet goed uit?';
 
   @override
-  String get rpRelayBody => 'De relay bewaart samengevoegde packs 1 uur in de cache. Wil je eerder een verse samenvoeging? Pas de pack-URL iets aan (bijv. voeg ?v=2 toe aan het einde) en sla op — dit geeft de relay een nieuwe cachesleutel.';
+  String get rpRelayBody => 'De relay bewaart de samengevoegde pack 1 uur in de cache op basis van jouw overlay-URL. Om een verse samenvoeging te forceren: pas de pack-URL iets aan (bijv. voeg ?v=2 toe) en sla op. Wis daarna ook de Minecraft-packcache — de samengevoegde pack gebruikt nog steeds de UUID van de server, dus Minecraft serveert anders gewoon de oude gecachte versie.';
 
   @override
   String get rpWorksGithubHint => 'Directe downloadlink — altijd bereikbaar';
@@ -1791,5 +1809,20 @@ class AppLocalizationsNl extends AppLocalizations {
   String get rpNoEncryptedHint => 'MCCompanion kan versleutelde packinhoud niet samenvoegen';
 
   @override
-  String get rpClearWhy => 'Minecraft slaat resourcepakketten lokaal op via een uniek ID. Wanneer MCCompanion jouw pack samenvoegt met die van de server, krijgt die pack een nieuw ID. Als Minecraft de oude versie al heeft opgeslagen, downloadt het de nieuwe samengevoegde versie niet opnieuw — daarom moet je de cache eerst wissen.';
+  String get rpClearWhy => 'Minecraft slaat resourcepakketten op via hun UUID. De samengevoegde pack behoudt de originele UUID van de server — als Minecraft de serverpack al gecacht heeft van een vorige sessie (vóór MCCompanion was ingeschakeld), downloadt het de nieuwe samengevoegde versie niet opnieuw. Wis de cache zodat Minecraft de verse samengevoegde pack oppikt.';
+
+  @override
+  String get rpUploadTab => 'Upload';
+
+  @override
+  String get rpUrlTab => 'URL';
+
+  @override
+  String get rpUploadButton => 'Tap to select your pack';
+
+  @override
+  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+
+  @override
+  String get rpUploading => 'Uploading...';
 }

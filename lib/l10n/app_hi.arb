@@ -1614,12 +1614,17 @@
   "rpClearStep2": "Resource Packs के बगल में ‘Clear’ या ‘Reset’ दबाएं — यह सभी लोकली कैश्ड पैक हटा देगा",
   "rpClearStep3": "MCCompanion के ज़रिए फिर से कनेक्ट करें — मर्ज किया गया पैक अपने आप डाउनलोड हो जाएगा",
   "rpRelayTitle": "पैक ठीक नहीं दिख रहा?",
-  "rpRelayBody": "रिले मर्ज किए गए पैक को 1 घंटे तक कैश में रखता है। जल्दी नया मर्ज करवाने के लिए, पैक URL में थोडा बदलाव करें (जैसे अंत में ?v=2 जोड़ें) और सेव करें — इससे रिले को नई कैश की मिलती है।",
+  "rpRelayBody": "रिले आपकी overlay URL को key के रूप में उपयोग करके merged pack को 1 घंटे तक cache करता है। नई merge के लिए: pack URL थोड़ा बदलें (जैसे ?v=2 जोड़ें) और save करें। इसके बाद Minecraft का pack cache भी साफ़ करें — merged pack अभी भी server का UUID उपयोग करता है, इसलिए Minecraft वरना पुराना cached version दिखाता रहेगा।",
   "rpWorksGithubHint": "सीधा डाउनलोड लिंक — हमेशा उपलब्ध",
   "rpWorksCloudflareHint": "पब्लिक क्लाउड स्टोरेज — तेज़ और भरोसेमंद",
   "rpWorksDirectHint": "कोई भी सार्वजनिक HTTPS .mcpack या .zip URL",
   "rpNoDiscordHint": "Discord CDN लिंक थोड़े समय बाद समाप्त हो जाते हैं",
   "rpNoDriveHint": "सीधा डाउनलोड नहीं — प्रीव्यू पेज पर रीडायरेक्ट करता है",
   "rpNoEncryptedHint": "MCCompanion एन्क्रिप्टेड पैक मर्ज नहीं कर सकता",
-  "rpClearWhy": "Minecraft रिसोर्स पैक को उनके अनूठे ID से लोकल में कैश करता है। जब MCCompanion आपके पैक को सर्वर के पैक से मर्ज करता है, तो उसे नया ID मिलता है। अगर Minecraft पहले से पुराना वर्शन कैश कर चुका है, तो वह नया डाउनलोड नहीं करेगा — इसलिए पहले कैश साफ़ करना ज़रूरी है।"
+  "rpClearWhy": "Minecraft रिसोर्स पैक को उनके UUID से कैश करता है। मर्ज किया गया पैक सर्वर का मूल UUID रखता है — अगर Minecraft ने पहले से किसी पुरानी सेशन में (MCCompanion चालू होने से पहले) सर्वर का पैक कैश किया हुआ है, तो वह नई मर्ज की गई वर्शन डाउनलोड नहीं करेगा। कैश साफ़ करें ताकि Minecraft ताज़ा मर्ज किया पैक लोड करे।",
+  "rpUploadTab": "Upload",
+  "rpUrlTab": "URL",
+  "rpUploadButton": "Tap to select your pack",
+  "rpUploadHint": ".mcpack or .zip • max 100 MB",
+  "rpUploading": "Uploading..."
 }

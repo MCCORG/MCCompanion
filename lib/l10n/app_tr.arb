@@ -1614,12 +1614,17 @@
   "rpClearStep2": "Kaynak Paketleri'nin yanındaki 'Temizle' veya 'Sıfırla'ya dokun — yerel olarak önbelleğe alınmış tüm paketleri siler",
   "rpClearStep3": "MCCompanion üzerinden yeniden bağlan — birleştirilmiş paket otomatik olarak indirilecek",
   "rpRelayTitle": "Pack bozuk görünüyor mu?",
-  "rpRelayBody": "Relay birleştirilmiş paketleri 1 saat boyunca önbelleğe alır. Daha erken yeni bir birleştirme zorlamak için pack URL'ini biraz değiştir (orn. sona ?v=2 ekle) ve kaydet — bu relay'e yeni bir önbelleğ anahtarı verir.",
+  "rpRelayBody": "Relay, overlay URL'yi önbellek anahtarı olarak kullanarak birleştirilmiş paketi 1 saat boyunca önbelleğe alır. Yeni bir birleştirme zorlamak için: pack URL'ini biraz değiştir (ör. ?v=2 ekle) ve kaydet. Ardından Minecraft'ın pack önbelleğini de temizle — birleştirilmiş pack hâlâ sunucunun UUID'sini kullandığından, Minecraft aksi takdirde eski önbelleğe alınmış sürümü gösterir.",
   "rpWorksGithubHint": "Doğrudan indirme bağlantısı — her zaman erişilebilir",
   "rpWorksCloudflareHint": "Genel bulut depolama — hızlı ve güvenilir",
   "rpWorksDirectHint": "Herhangi bir genel HTTPS .mcpack veya .zip URL",
   "rpNoDiscordHint": "Discord CDN bağlantıları kısa süre sonra sona erer",
   "rpNoDriveHint": "Doğrudan indirme yok — önizleme sayfasına yönlendirir",
   "rpNoEncryptedHint": "MCCompanion şifrelenmiş pack içeriğini birleştiremez",
-  "rpClearWhy": "Minecraft, kaynak paketlerini benzersiz kimliğine göre yerel olarak önbelleğe alır. MCCompanion paketi sunucunun paketiyle birleştirdiğinde yeni bir kimlik alır. Minecraft eski sürümü önbelleğe almışsa yenisini indirmez — bu yüzden önce önbelleği temizlemek gerekir."
+  "rpClearWhy": "Minecraft, kaynak paketlerini UUID'lerine göre önbelleğe alır. Birleştirilmiş paket, sunucunun orijinal UUID'sini korur — Minecraft, önceki bir oturumdan (MCCompanion etkinleştirilmeden önce) sunucu paketini zaten önbelleğe almışsa, yeni birleştirilmiş sürümü indirmez. Minecraft'ın yeni birleştirilmiş paketi yüklemesi için önbelleği temizle.",
+  "rpUploadTab": "Upload",
+  "rpUrlTab": "URL",
+  "rpUploadButton": "Tap to select your pack",
+  "rpUploadHint": ".mcpack or .zip • max 100 MB",
+  "rpUploading": "Uploading..."
 }

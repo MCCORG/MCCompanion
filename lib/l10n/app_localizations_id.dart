@@ -1716,16 +1716,28 @@ class AppLocalizationsId extends AppLocalizations {
   String get rpWhatWorks => 'Yang berfungsi';
 
   @override
-  String get rpWhatDoesntWork => 'Yang tidak berfungsi';
+  String get rpSupportedBedrockOnly => 'Bedrock Edition only (.mcpack or .zip)';
 
   @override
-  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+  String get rpSupportedBedrockOnlyHint => 'Java packs don\'t work on consoles.';
 
   @override
-  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 bucket publik';
+  String get rpSupportedTexture => 'Resource packs & texture packs';
 
   @override
-  String get rpWorksDirect => 'Tautan HTTPS langsung yang diakhiri dengan .mcpack atau .zip';
+  String get rpSupportedTextureHint => 'These are officially supported and work reliably.';
+
+  @override
+  String get rpUnsupportedShaders => 'Shaders, behavior packs, skin packs';
+
+  @override
+  String get rpUnsupportedShadersHint => 'These won\'t load on consoles via MCCompanion.';
+
+  @override
+  String get rpUnsupportedAddons => 'Add-ons & UI mods';
+
+  @override
+  String get rpUnsupportedAddonsHint => 'May sometimes work, but not officially supported. Use at your own risk.';
 
   @override
   String get rpNoDiscord => 'Tautan Discord — tidak ada ekstensi .mcpack dan kedaluwarsa setelah beberapa jam';
@@ -1735,6 +1747,12 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get rpNoEncrypted => 'Server dengan paket terenkripsi atau dilindungi kata sandi';
+
+  @override
+  String get rpConsolePerformanceTitle => 'Console performance';
+
+  @override
+  String get rpConsolePerformanceBody => 'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.';
 
   @override
   String get rpWarnDiscord => 'Tautan Discord kedaluwarsa dan tidak akan berfungsi. Gunakan host permanen sebagai gantinya.';
@@ -1770,7 +1788,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get rpRelayTitle => 'Pack terlihat tidak benar?';
 
   @override
-  String get rpRelayBody => 'Relay menyimpan pack yang digabungkan selama 1 jam. Untuk memaksa penggabungan baru lebih cepat, ubah sedikit URL pack-mu (mis. tambahkan ?v=2 di akhir) dan simpan — ini memberi relay kunci cache baru.';
+  String get rpRelayBody => 'Relay menyimpan pack yang digabungkan selama 1 jam menggunakan URL overlay-mu sebagai kunci cache. Untuk memaksa penggabungan baru: ubah sedikit URL pack (mis. tambahkan ?v=2) dan simpan. Setelah itu, hapus juga cache pack Minecraft — pack yang digabungkan masih menggunakan UUID server, jadi Minecraft akan tetap menampilkan versi lama dari cache.';
 
   @override
   String get rpWorksGithubHint => 'Tautan unduhan langsung — selalu bisa diakses';
@@ -1791,5 +1809,20 @@ class AppLocalizationsId extends AppLocalizations {
   String get rpNoEncryptedHint => 'MCCompanion tidak dapat menggabungkan konten pack terenkripsi';
 
   @override
-  String get rpClearWhy => 'Minecraft menyimpan pack sumber daya secara lokal berdasarkan ID uniknya. Ketika MCCompanion menggabungkan pack-mu dengan pack server, pack tersebut mendapat ID baru. Jika Minecraft sudah menyimpan versi lama, ia tidak akan mengunduh yang baru — itulah mengapa cache perlu dihapus terlebih dahulu.';
+  String get rpClearWhy => 'Minecraft menyimpan pack sumber daya berdasarkan UUID. Pack yang digabungkan tetap menggunakan UUID asli server — jika Minecraft sudah menyimpan pack server dari sesi sebelumnya (sebelum MCCompanion aktif), ia tidak akan mengunduh versi gabungan yang baru. Hapus cache agar Minecraft memuat pack gabungan terbaru.';
+
+  @override
+  String get rpUploadTab => 'Upload';
+
+  @override
+  String get rpUrlTab => 'URL';
+
+  @override
+  String get rpUploadButton => 'Tap to select your pack';
+
+  @override
+  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+
+  @override
+  String get rpUploading => 'Uploading...';
 }

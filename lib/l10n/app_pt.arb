@@ -1614,12 +1614,17 @@
   "rpClearStep2": "Toque em ‘Limpar’ ou ‘Redefinir’ ao lado de Pacotes de recursos — isso remove todos os packs em cache",
   "rpClearStep3": "Reconecte pelo MCCompanion — o pack mesclado será baixado automaticamente",
   "rpRelayTitle": "O pack está com problema?",
-  "rpRelayBody": "O relay armazena packs mesclados por 1 hora. Para forçar uma nova mesclagem antes, altere levemente a URL do pack (ex: adicione ?v=2 no final) e salve — isso dá ao relay uma nova chave de cache.",
+  "rpRelayBody": "O relay armazena o pack mesclado por 1 hora usando sua URL de overlay como chave. Para forçar uma nova mesclagem: altere levemente a URL do pack (ex: adicione ?v=2) e salve. Depois, limpe também o cache de packs do Minecraft — o pack mesclado ainda usa o UUID do servidor, então o Minecraft mostraria a versão antiga em cache.",
   "rpWorksGithubHint": "Link de download direto — sempre acessível",
   "rpWorksCloudflareHint": "Armazenamento em nuvem público — rápido e confiável",
   "rpWorksDirectHint": "Qualquer URL HTTPS pública .mcpack ou .zip",
   "rpNoDiscordHint": "Links do Discord CDN expiram após pouco tempo",
   "rpNoDriveHint": "Sem download direto — redireciona para uma página de visualização",
   "rpNoEncryptedHint": "MCCompanion não pode mesclar conteúdo de packs criptografados",
-  "rpClearWhy": "O Minecraft armazena packs de recursos localmente pelo ID único. Quando o MCCompanion mescla seu pack com o do servidor, ele recebe um novo ID. Se o Minecraft já armazenou a versão antiga, não baixará a nova — por isso é preciso limpar o cache primeiro."
+  "rpClearWhy": "O Minecraft armazena packs de recursos pelo UUID. O pack mesclado mantém o UUID original do servidor — se o Minecraft já tiver o pack do servidor em cache de uma sessão anterior (antes do MCCompanion), não baixará a nova versão mesclada. Limpe o cache para que o Minecraft carregue o pack atualizado.",
+  "rpUploadTab": "Upload",
+  "rpUrlTab": "URL",
+  "rpUploadButton": "Tap to select your pack",
+  "rpUploadHint": ".mcpack or .zip • max 100 MB",
+  "rpUploading": "Uploading..."
 }

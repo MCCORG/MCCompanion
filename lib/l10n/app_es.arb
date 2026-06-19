@@ -1614,12 +1614,17 @@
   "rpClearStep2": "Toca ‘Borrar’ o ‘Restablecer’ junto a Packs de recursos — esto elimina todos los packs en caché",
   "rpClearStep3": "Vuélvete a conectar a través de MCCompanion — el pack fusionado se descargará automáticamente",
   "rpRelayTitle": "¿El pack se ve mal?",
-  "rpRelayBody": "El relay almacena packs fusionados durante 1 hora. Para forzar una fusión antes, cambia ligeramente la URL del pack (p. ej. añade ?v=2 al final) y guarda — esto da al relay una nueva clave de caché.",
+  "rpRelayBody": "El relay almacena el pack fusionado durante 1 hora usando tu URL de overlay como clave. Para forzar una nueva fusión: cambia ligeramente la URL del pack (p. ej. añade ?v=2) y guarda. Después, borra también la caché de packs de Minecraft — el pack fusionado sigue usando el UUID del servidor, por lo que Minecraft mostraría de todas formas la versión en caché.",
   "rpWorksGithubHint": "Enlace de descarga directa — siempre accesible",
   "rpWorksCloudflareHint": "Almacenamiento en la nube público — rápido y fiable",
   "rpWorksDirectHint": "Cualquier URL HTTPS pública .mcpack o .zip",
   "rpNoDiscordHint": "Los enlaces de Discord CDN caducan después de poco tiempo",
   "rpNoDriveHint": "Sin descarga directa — redirige a una página de vista previa",
   "rpNoEncryptedHint": "MCCompanion no puede combinar contenido de packs cifrados",
-  "rpClearWhy": "Minecraft almacena los packs de recursos localmente por su ID único. Cuando MCCompanion fusiona tu pack con el del servidor, obtiene un nuevo ID. Si Minecraft ya tiene en caché la versión anterior, no descargará la nueva — por eso hay que borrar la caché primero."
+  "rpClearWhy": "Minecraft almacena los packs de recursos por su UUID. El pack fusionado conserva el UUID original del servidor — si Minecraft ya tiene en caché el pack del servidor de una sesión anterior (antes de MCCompanion), no descargará la nueva versión fusionada. Borra la caché para que Minecraft cargue el pack fusionado.",
+  "rpUploadTab": "Upload",
+  "rpUrlTab": "URL",
+  "rpUploadButton": "Tap to select your pack",
+  "rpUploadHint": ".mcpack or .zip • max 100 MB",
+  "rpUploading": "Uploading..."
 }

@@ -1716,16 +1716,28 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpWhatWorks => '有效的方式';
 
   @override
-  String get rpWhatDoesntWork => '无效的方式';
+  String get rpSupportedBedrockOnly => 'Bedrock Edition only (.mcpack or .zip)';
 
   @override
-  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+  String get rpSupportedBedrockOnlyHint => 'Java packs don\'t work on consoles.';
 
   @override
-  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 公共存储桶';
+  String get rpSupportedTexture => 'Resource packs & texture packs';
 
   @override
-  String get rpWorksDirect => '以 .mcpack 或 .zip 结尾的任何直接 HTTPS 链接';
+  String get rpSupportedTextureHint => 'These are officially supported and work reliably.';
+
+  @override
+  String get rpUnsupportedShaders => 'Shaders, behavior packs, skin packs';
+
+  @override
+  String get rpUnsupportedShadersHint => 'These won\'t load on consoles via MCCompanion.';
+
+  @override
+  String get rpUnsupportedAddons => 'Add-ons & UI mods';
+
+  @override
+  String get rpUnsupportedAddonsHint => 'May sometimes work, but not officially supported. Use at your own risk.';
 
   @override
   String get rpNoDiscord => 'Discord 链接 — 没有 .mcpack 扩展名，且会在几小时后失效';
@@ -1735,6 +1747,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get rpNoEncrypted => '带有加密或密码保护包的服务器';
+
+  @override
+  String get rpConsolePerformanceTitle => 'Console performance';
+
+  @override
+  String get rpConsolePerformanceBody => 'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.';
 
   @override
   String get rpWarnDiscord => 'Discord 链接会过期并停止工作。请改用永久性托管服务。';
@@ -1770,7 +1788,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpRelayTitle => '资源包显示有问题？';
 
   @override
-  String get rpRelayBody => '中继服务器会将合并的材质包缓存 1 小时。要提前强制重新合并，请稍微修改材质包链接（例如在末尾添加 ?v=2）并保存——这会给中继服务器一个新的缓存键。';
+  String get rpRelayBody => '中继服务器以您的覆盖层 URL 为缓存键，将合并后的材质包缓存 1 小时。要强制重新合并：稍微修改材质包链接（例如在末尾添加 ?v=2）并保存。之后还需要清除 Minecraft 的材质包缓存——合并后的材质包仍使用服务器的 UUID，否则 Minecraft 会直接使用旧的缓存版本。';
 
   @override
   String get rpWorksGithubHint => '直接下载链接，始终可访问';
@@ -1791,5 +1809,20 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpNoEncryptedHint => 'MCCompanion 无法合并加密的材质包内容';
 
   @override
-  String get rpClearWhy => 'Minecraft 会通过唯一 ID 将材质包缓存在本地。当 MCCompanion 将您的材质包与服务器的材质包合并后，会生成新的 ID。如果 Minecraft 已缓存了旧版本，就不会重新下载新的——这就是为什么需要先清除缓存。';
+  String get rpClearWhy => 'Minecraft 通过 UUID 缓存材质包。合并后的材质包保留服务器原有的 UUID——如果 Minecraft 在之前的游戏中（启用 MCCompanion 之前）已经缓存了服务器的材质包，它就不会重新下载新的合并版本。清除缓存，让 Minecraft 加载最新的合并材质包。';
+
+  @override
+  String get rpUploadTab => 'Upload';
+
+  @override
+  String get rpUrlTab => 'URL';
+
+  @override
+  String get rpUploadButton => 'Tap to select your pack';
+
+  @override
+  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+
+  @override
+  String get rpUploading => 'Uploading...';
 }

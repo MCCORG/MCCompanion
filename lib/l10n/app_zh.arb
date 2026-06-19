@@ -1614,12 +1614,17 @@
   "rpClearStep2": "点击材质包旁边的“清除”或“重置”——这会删除所有本地缓存的材质包",
   "rpClearStep3": "通过 MCCompanion 重新连接——合并后的材质包将自动下载",
   "rpRelayTitle": "资源包显示有问题？",
-  "rpRelayBody": "中继服务器会将合并的材质包缓存 1 小时。要提前强制重新合并，请稍微修改材质包链接（例如在末尾添加 ?v=2）并保存——这会给中继服务器一个新的缓存键。",
+  "rpRelayBody": "中继服务器以您的覆盖层 URL 为缓存键，将合并后的材质包缓存 1 小时。要强制重新合并：稍微修改材质包链接（例如在末尾添加 ?v=2）并保存。之后还需要清除 Minecraft 的材质包缓存——合并后的材质包仍使用服务器的 UUID，否则 Minecraft 会直接使用旧的缓存版本。",
   "rpWorksGithubHint": "直接下载链接，始终可访问",
   "rpWorksCloudflareHint": "公共云存储，快速可靠",
   "rpWorksDirectHint": "任何公开的 HTTPS .mcpack 或 .zip 链接",
   "rpNoDiscordHint": "Discord CDN 链接会在短时间内失效",
   "rpNoDriveHint": "无直接下载，会跳转到预览页面",
   "rpNoEncryptedHint": "MCCompanion 无法合并加密的材质包内容",
-  "rpClearWhy": "Minecraft 会通过唯一 ID 将材质包缓存在本地。当 MCCompanion 将您的材质包与服务器的材质包合并后，会生成新的 ID。如果 Minecraft 已缓存了旧版本，就不会重新下载新的——这就是为什么需要先清除缓存。"
+  "rpClearWhy": "Minecraft 通过 UUID 缓存材质包。合并后的材质包保留服务器原有的 UUID——如果 Minecraft 在之前的游戏中（启用 MCCompanion 之前）已经缓存了服务器的材质包，它就不会重新下载新的合并版本。清除缓存，让 Minecraft 加载最新的合并材质包。",
+  "rpUploadTab": "Upload",
+  "rpUrlTab": "URL",
+  "rpUploadButton": "Tap to select your pack",
+  "rpUploadHint": ".mcpack or .zip • max 100 MB",
+  "rpUploading": "Uploading..."
 }

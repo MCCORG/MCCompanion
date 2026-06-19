@@ -1614,12 +1614,17 @@
   "rpClearStep2": "Appuie sur ‘Effacer’ ou ‘Réinitialiser’ à côté de Packs de ressources — cela supprime tous les packs en cache",
   "rpClearStep3": "Reconnecte-toi via MCCompanion — le pack fusionné se téléchargera automatiquement",
   "rpRelayTitle": "Le pack ne s'affiche pas bien ?",
-  "rpRelayBody": "Le relais met en cache les packs fusionnés pendant 1 heure. Pour forcer une fusion plus tôt, modifie l’URL du pack (ex. ajoute ?v=2 à la fin) et sauvegarde — cela donne une nouvelle clé de cache au relais.",
+  "rpRelayBody": "Le relais met en cache le pack fusionné pendant 1 heure, en utilisant l'URL de l'overlay comme clé. Pour forcer une nouvelle fusion : modifie légèrement l'URL du pack (ex. ajoute ?v=2) et sauvegarde. Vide ensuite aussi le cache des packs Minecraft — le pack fusionné utilise toujours l'UUID du serveur, donc Minecraft afficherait sinon l'ancienne version en cache.",
   "rpWorksGithubHint": "Lien de téléchargement direct — toujours accessible",
   "rpWorksCloudflareHint": "Stockage cloud public — rapide et fiable",
   "rpWorksDirectHint": "N’importe quelle URL HTTPS publique .mcpack ou .zip",
   "rpNoDiscordHint": "Les liens Discord CDN expirent après peu de temps",
   "rpNoDriveHint": "Pas de téléchargement direct — redirige vers une page d’aperçu",
   "rpNoEncryptedHint": "MCCompanion ne peut pas fusionner du contenu chiffré",
-  "rpClearWhy": "Minecraft stocke les packs de ressources localement par leur identifiant unique. Quand MCCompanion fusionne ton pack avec celui du serveur, il obtient un nouvel identifiant. Si Minecraft a déjà mis en cache l’ancienne version, il ne téléchargera pas la nouvelle — c’est pourquoi il faut vider le cache en premier."
+  "rpClearWhy": "Minecraft met en cache les packs de ressources via leur UUID. Le pack fusionné conserve l'UUID original du serveur — si Minecraft a déjà mis en cache le pack du serveur lors d'une session précédente (avant MCCompanion), il ne téléchargera pas la nouvelle version fusionnée. Vide le cache pour que Minecraft charge le nouveau pack.",
+  "rpUploadTab": "Upload",
+  "rpUrlTab": "URL",
+  "rpUploadButton": "Tap to select your pack",
+  "rpUploadHint": ".mcpack or .zip • max 100 MB",
+  "rpUploading": "Uploading..."
 }

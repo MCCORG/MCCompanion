@@ -1716,16 +1716,28 @@ class AppLocalizationsAr extends AppLocalizations {
   String get rpWhatWorks => 'ما يعمل';
 
   @override
-  String get rpWhatDoesntWork => 'ما لا يعمل';
+  String get rpSupportedBedrockOnly => 'Bedrock Edition only (.mcpack or .zip)';
 
   @override
-  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+  String get rpSupportedBedrockOnlyHint => 'Java packs don\'t work on consoles.';
 
   @override
-  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 حاوية عامة';
+  String get rpSupportedTexture => 'Resource packs & texture packs';
 
   @override
-  String get rpWorksDirect => 'أي رابط HTTPS مباشر ينتهي بـ .mcpack أو .zip';
+  String get rpSupportedTextureHint => 'These are officially supported and work reliably.';
+
+  @override
+  String get rpUnsupportedShaders => 'Shaders, behavior packs, skin packs';
+
+  @override
+  String get rpUnsupportedShadersHint => 'These won\'t load on consoles via MCCompanion.';
+
+  @override
+  String get rpUnsupportedAddons => 'Add-ons & UI mods';
+
+  @override
+  String get rpUnsupportedAddonsHint => 'May sometimes work, but not officially supported. Use at your own risk.';
 
   @override
   String get rpNoDiscord => 'روابط Discord — لا تحتوي على امتداد .mcpack وتنتهي صلاحيتها بعد ساعات قليلة';
@@ -1735,6 +1747,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get rpNoEncrypted => 'الخوادم ذات الحزم المشفرة أو المحمية بكلمة مرور';
+
+  @override
+  String get rpConsolePerformanceTitle => 'Console performance';
+
+  @override
+  String get rpConsolePerformanceBody => 'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.';
 
   @override
   String get rpWarnDiscord => 'روابط Discord تنتهي صلاحيتها وستتوقف عن العمل. استخدم مضيفًا دائمًا بدلاً من ذلك.';
@@ -1770,7 +1788,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get rpRelayTitle => 'الحزمة تبدو خاطئة؟';
 
   @override
-  String get rpRelayBody => 'يحتفظ الريلاي بالحزم المدمجة ساعة واحدة. لإجبار دمج جديد مبكرًا، عدّل رابط الحزمة قليلاً (مثلاً أضف ?v=2 في النهاية) واحفظ — سيعطي ذلك الريلاي مفتاح تخزين مؤقت جديدًا.';
+  String get rpRelayBody => 'يحتفظ الريلاي بالحزمة المدمجة في الذاكرة المؤقتة لمدة ساعة باستخدام رابط الـ overlay كمفتاح. لإجبار دمج جديد: عدّل الرابط قليلاً (مثلاً أضف ?v=2) واحفظ. بعد ذلك، امسح أيضاً ذاكرة حزم Minecraft — فالحزمة المدمجة لا تزال تستخدم UUID الخادم، وإلا سيعرض Minecraft النسخة القديمة من الذاكرة.';
 
   @override
   String get rpWorksGithubHint => 'رابط تنزيل مباشر — دائمًا متاح';
@@ -1791,5 +1809,20 @@ class AppLocalizationsAr extends AppLocalizations {
   String get rpNoEncryptedHint => 'لا يستطيع MCCompanion دمج محتوى الحزم المشفرة';
 
   @override
-  String get rpClearWhy => 'يخزن Minecraft حزم الموارد محليًا بمعرف فريد. عندما يدمج MCCompanion حزمتك مع حزمة الخادم، تحصل على معرف جديد. إذا خزّن Minecraft النسخة القديمة مسبقًا، فلن يعيد تنزيل الجديدة — لذلك تحتاج إلى مسح ذاكرة التخزين المؤقت أولاً.';
+  String get rpClearWhy => 'يخزن Minecraft حزم الموارد بواسطة UUID الخاصة بها. تحتفظ الحزمة المدمجة بـ UUID الأصلي للخادم — إذا كان Minecraft قد خزّن حزمة الخادم بالفعل من جلسة سابقة (قبل تفعيل MCCompanion)، فلن يعيد تنزيل النسخة المدمجة الجديدة. امسح ذاكرة التخزين المؤقت حتى يحمّل Minecraft الحزمة المدمجة الجديدة.';
+
+  @override
+  String get rpUploadTab => 'Upload';
+
+  @override
+  String get rpUrlTab => 'URL';
+
+  @override
+  String get rpUploadButton => 'Tap to select your pack';
+
+  @override
+  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+
+  @override
+  String get rpUploading => 'Uploading...';
 }

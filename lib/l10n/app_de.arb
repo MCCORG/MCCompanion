@@ -1614,12 +1614,17 @@
   "rpClearStep2": "Tippe neben Ressourcenpakete auf ‘Löschen’ oder ‘Zurücksetzen’ — das entfernt alle lokal gecachten Packs",
   "rpClearStep3": "Verbinde dich erneut über MCCompanion — das zusammengeführte Pack wird automatisch heruntergeladen",
   "rpRelayTitle": "Paket sieht falsch aus?",
-  "rpRelayBody": "Der Relay speichert zusammengeführte Packs 1 Stunde lang. Um früher eine neue Zusammenführung zu erzwingen, ändere die Pack-URL leicht (z. B. ?v=2 am Ende) und speichere — das gibt dem Relay einen neuen Cache-Schlüssel.",
+  "rpRelayBody": "Der Relay speichert das zusammengeführte Pack 1 Stunde lang anhand der Overlay-URL als Cache-Schlüssel. Um eine neue Zusammenführung zu erzwingen: Pack-URL leicht ändern (z. B. ?v=2 anhängen) und speichern. Danach auch den Minecraft-Pack-Cache leeren — da das zusammengeführte Pack weiterhin die UUID des Servers verwendet, würde Minecraft sonst die alte gecachte Version anzeigen.",
   "rpWorksGithubHint": "Direkter Download-Link — immer erreichbar",
   "rpWorksCloudflareHint": "Offentlicher Cloud-Speicher — schnell und zuverlässig",
   "rpWorksDirectHint": "Jede offentliche HTTPS .mcpack- oder .zip-URL",
   "rpNoDiscordHint": "Discord CDN-Links laufen nach kurzer Zeit ab",
   "rpNoDriveHint": "Kein Direktdownload — leitet zu einer Vorschauseite weiter",
   "rpNoEncryptedHint": "MCCompanion kann verschlüsselten Pack-Inhalt nicht zusammenführen",
-  "rpClearWhy": "Minecraft speichert Ressourcenpakete lokal anhand einer eindeutigen ID. Wenn MCCompanion dein Pack mit dem Server-Pack zusammenführt, erhält es eine neue ID. Falls Minecraft die alte Version bereits gecacht hat, lädt es das neue nicht herunter — deshalb muss der Cache zuerst geleert werden."
+  "rpClearWhy": "Minecraft speichert Ressourcenpakete anhand ihrer UUID. Das zusammengeführte Paket behält die ursprüngliche UUID des Servers — wenn Minecraft das Serverpaket bereits aus einer früheren Sitzung (vor MCCompanion) gecacht hat, lädt es die neue zusammengeführte Version nicht erneut herunter. Leere den Cache, damit Minecraft das frische Paket lädt.",
+  "rpUploadTab": "Upload",
+  "rpUrlTab": "URL",
+  "rpUploadButton": "Tap to select your pack",
+  "rpUploadHint": ".mcpack or .zip • max 100 MB",
+  "rpUploading": "Uploading..."
 }

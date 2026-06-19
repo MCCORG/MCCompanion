@@ -1716,16 +1716,28 @@ class AppLocalizationsRu extends AppLocalizations {
   String get rpWhatWorks => 'Что работает';
 
   @override
-  String get rpWhatDoesntWork => 'Что не работает';
+  String get rpSupportedBedrockOnly => 'Bedrock Edition only (.mcpack or .zip)';
 
   @override
-  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+  String get rpSupportedBedrockOnlyHint => 'Java packs don\'t work on consoles.';
 
   @override
-  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 публичный бакет';
+  String get rpSupportedTexture => 'Resource packs & texture packs';
 
   @override
-  String get rpWorksDirect => 'Любая прямая HTTPS-ссылка, заканчивающаяся на .mcpack или .zip';
+  String get rpSupportedTextureHint => 'These are officially supported and work reliably.';
+
+  @override
+  String get rpUnsupportedShaders => 'Shaders, behavior packs, skin packs';
+
+  @override
+  String get rpUnsupportedShadersHint => 'These won\'t load on consoles via MCCompanion.';
+
+  @override
+  String get rpUnsupportedAddons => 'Add-ons & UI mods';
+
+  @override
+  String get rpUnsupportedAddonsHint => 'May sometimes work, but not officially supported. Use at your own risk.';
 
   @override
   String get rpNoDiscord => 'Ссылки Discord — нет расширения .mcpack и истекают через несколько часов';
@@ -1735,6 +1747,12 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get rpNoEncrypted => 'Серверы с зашифрованными или защищёнными паролем пакетами';
+
+  @override
+  String get rpConsolePerformanceTitle => 'Console performance';
+
+  @override
+  String get rpConsolePerformanceBody => 'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.';
 
   @override
   String get rpWarnDiscord => 'Ссылки Discord истекают и перестают работать. Используйте постоянный хостинг.';
@@ -1770,7 +1788,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get rpRelayTitle => 'Пакет выглядит неправильно?';
 
   @override
-  String get rpRelayBody => 'Relay хранит объединённые паки 1 час. Чтобы обновить раньше, чуть измени URL пака (например, добавь ?v=2 в конец) и сохрани — это даст relay новый ключ кэша.';
+  String get rpRelayBody => 'Relay кэширует объединённый пак на 1 час, используя URL overlay как ключ. Чтобы принудительно обновить: немного измени URL пака (например, добавь ?v=2) и сохрани. После этого также очисти кэш паков в Minecraft — объединённый пак по-прежнему использует UUID сервера, поэтому Minecraft иначе покажет старую кэшированную версию.';
 
   @override
   String get rpWorksGithubHint => 'Прямая ссылка — всегда доступна';
@@ -1791,5 +1809,20 @@ class AppLocalizationsRu extends AppLocalizations {
   String get rpNoEncryptedHint => 'MCCompanion не может объединить зашифрованный пак';
 
   @override
-  String get rpClearWhy => 'Minecraft кэширует паки локально по уникальному ID. Когда MCCompanion объединяет твой пак с серверным, он получает новый ID. Если Minecraft уже закэшировал старую версию, он не скачает новую — поэтому нужно сначала очистить кэш.';
+  String get rpClearWhy => 'Minecraft кэширует пакеты ресурсов по их UUID. Объединённый пак сохраняет оригинальный UUID сервера — если Minecraft уже закэшировал серверный пак из предыдущей сессии (до включения MCCompanion), он не скачает новую версию. Очисти кэш, чтобы Minecraft загрузил свежий пак.';
+
+  @override
+  String get rpUploadTab => 'Upload';
+
+  @override
+  String get rpUrlTab => 'URL';
+
+  @override
+  String get rpUploadButton => 'Tap to select your pack';
+
+  @override
+  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+
+  @override
+  String get rpUploading => 'Uploading...';
 }

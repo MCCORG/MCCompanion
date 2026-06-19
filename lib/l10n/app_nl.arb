@@ -929,12 +929,17 @@
   "rpClearStep2": "Tik op ‘Wissen’ of ‘Opnieuw instellen’ naast Resourcepakketten — dit verwijdert alle lokaal opgeslagen packs",
   "rpClearStep3": "Verbind opnieuw via MCCompanion — het samengevoegde pakket wordt automatisch gedownload",
   "rpRelayTitle": "Pack ziet er niet goed uit?",
-  "rpRelayBody": "De relay bewaart samengevoegde packs 1 uur in de cache. Wil je eerder een verse samenvoeging? Pas de pack-URL iets aan (bijv. voeg ?v=2 toe aan het einde) en sla op — dit geeft de relay een nieuwe cachesleutel.",
+  "rpRelayBody": "De relay bewaart de samengevoegde pack 1 uur in de cache op basis van jouw overlay-URL. Om een verse samenvoeging te forceren: pas de pack-URL iets aan (bijv. voeg ?v=2 toe) en sla op. Wis daarna ook de Minecraft-packcache — de samengevoegde pack gebruikt nog steeds de UUID van de server, dus Minecraft serveert anders gewoon de oude gecachte versie.",
   "rpWorksGithubHint": "Directe downloadlink — altijd bereikbaar",
   "rpWorksCloudflareHint": "Publieke cloudopslag — snel en betrouwbaar",
   "rpWorksDirectHint": "Elke publieke HTTPS .mcpack of .zip URL",
   "rpNoDiscordHint": "Discord CDN-links verlopen na korte tijd",
   "rpNoDriveHint": "Geen directe download — stuurt door naar een voorbeeldpagina",
   "rpNoEncryptedHint": "MCCompanion kan versleutelde packinhoud niet samenvoegen",
-  "rpClearWhy": "Minecraft slaat resourcepakketten lokaal op via een uniek ID. Wanneer MCCompanion jouw pack samenvoegt met die van de server, krijgt die pack een nieuw ID. Als Minecraft de oude versie al heeft opgeslagen, downloadt het de nieuwe samengevoegde versie niet opnieuw — daarom moet je de cache eerst wissen."
+  "rpClearWhy": "Minecraft slaat resourcepakketten op via hun UUID. De samengevoegde pack behoudt de originele UUID van de server — als Minecraft de serverpack al gecacht heeft van een vorige sessie (vóór MCCompanion was ingeschakeld), downloadt het de nieuwe samengevoegde versie niet opnieuw. Wis de cache zodat Minecraft de verse samengevoegde pack oppikt.",
+  "rpUploadTab": "Upload",
+  "rpUrlTab": "URL",
+  "rpUploadButton": "Tap to select your pack",
+  "rpUploadHint": ".mcpack or .zip • max 100 MB",
+  "rpUploading": "Uploading..."
 }

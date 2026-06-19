@@ -1716,16 +1716,28 @@ class AppLocalizationsTr extends AppLocalizations {
   String get rpWhatWorks => 'Çalışanlar';
 
   @override
-  String get rpWhatDoesntWork => 'Çalışmayanlar';
+  String get rpSupportedBedrockOnly => 'Bedrock Edition only (.mcpack or .zip)';
 
   @override
-  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+  String get rpSupportedBedrockOnlyHint => 'Java packs don\'t work on consoles.';
 
   @override
-  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 genel bucket';
+  String get rpSupportedTexture => 'Resource packs & texture packs';
 
   @override
-  String get rpWorksDirect => '.mcpack veya .zip ile biten herhangi bir doğrudan HTTPS bağlantısı';
+  String get rpSupportedTextureHint => 'These are officially supported and work reliably.';
+
+  @override
+  String get rpUnsupportedShaders => 'Shaders, behavior packs, skin packs';
+
+  @override
+  String get rpUnsupportedShadersHint => 'These won\'t load on consoles via MCCompanion.';
+
+  @override
+  String get rpUnsupportedAddons => 'Add-ons & UI mods';
+
+  @override
+  String get rpUnsupportedAddonsHint => 'May sometimes work, but not officially supported. Use at your own risk.';
 
   @override
   String get rpNoDiscord => 'Discord bağlantıları — .mcpack uzantısı yok ve birkaç saat sonra süresi doluyor';
@@ -1735,6 +1747,12 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get rpNoEncrypted => 'Şifrelenmiş veya parola korumalı paketlere sahip sunucular';
+
+  @override
+  String get rpConsolePerformanceTitle => 'Console performance';
+
+  @override
+  String get rpConsolePerformanceBody => 'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.';
 
   @override
   String get rpWarnDiscord => 'Discord bağlantılarının süresi dolup çalışmayı durdurur. Bunun yerine kalıcı bir host kullanın.';
@@ -1770,7 +1788,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get rpRelayTitle => 'Pack bozuk görünüyor mu?';
 
   @override
-  String get rpRelayBody => 'Relay birleştirilmiş paketleri 1 saat boyunca önbelleğe alır. Daha erken yeni bir birleştirme zorlamak için pack URL\'ini biraz değiştir (orn. sona ?v=2 ekle) ve kaydet — bu relay\'e yeni bir önbelleğ anahtarı verir.';
+  String get rpRelayBody => 'Relay, overlay URL\'yi önbellek anahtarı olarak kullanarak birleştirilmiş paketi 1 saat boyunca önbelleğe alır. Yeni bir birleştirme zorlamak için: pack URL\'ini biraz değiştir (ör. ?v=2 ekle) ve kaydet. Ardından Minecraft\'ın pack önbelleğini de temizle — birleştirilmiş pack hâlâ sunucunun UUID\'sini kullandığından, Minecraft aksi takdirde eski önbelleğe alınmış sürümü gösterir.';
 
   @override
   String get rpWorksGithubHint => 'Doğrudan indirme bağlantısı — her zaman erişilebilir';
@@ -1791,5 +1809,20 @@ class AppLocalizationsTr extends AppLocalizations {
   String get rpNoEncryptedHint => 'MCCompanion şifrelenmiş pack içeriğini birleştiremez';
 
   @override
-  String get rpClearWhy => 'Minecraft, kaynak paketlerini benzersiz kimliğine göre yerel olarak önbelleğe alır. MCCompanion paketi sunucunun paketiyle birleştirdiğinde yeni bir kimlik alır. Minecraft eski sürümü önbelleğe almışsa yenisini indirmez — bu yüzden önce önbelleği temizlemek gerekir.';
+  String get rpClearWhy => 'Minecraft, kaynak paketlerini UUID\'lerine göre önbelleğe alır. Birleştirilmiş paket, sunucunun orijinal UUID\'sini korur — Minecraft, önceki bir oturumdan (MCCompanion etkinleştirilmeden önce) sunucu paketini zaten önbelleğe almışsa, yeni birleştirilmiş sürümü indirmez. Minecraft\'ın yeni birleştirilmiş paketi yüklemesi için önbelleği temizle.';
+
+  @override
+  String get rpUploadTab => 'Upload';
+
+  @override
+  String get rpUrlTab => 'URL';
+
+  @override
+  String get rpUploadButton => 'Tap to select your pack';
+
+  @override
+  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+
+  @override
+  String get rpUploading => 'Uploading...';
 }

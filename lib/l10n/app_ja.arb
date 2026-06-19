@@ -1614,12 +1614,17 @@
   "rpClearStep2": "リソースパックの横の「クリア」または「リセット」をタップ — ローカルにキャッシュされたパックがすべて削除されます",
   "rpClearStep3": "MCCompanion経由で再接続する — 結合されたパックが自動的にダウンロードされます",
   "rpRelayTitle": "パックがおかしく見える？",
-  "rpRelayBody": "リレーは結合されたパックを1時間キャッシュします。早めに再結合を強制するには、パック URLを少し変更し（例：末尾に?v=2を追加）して保存してください。",
+  "rpRelayBody": "リレーはオーバーレイURLをキーとして結合されたパックを1時間キャッシュします。新しい結合を強制するには：パックURLを少し変更（例：末尾に?v=2を追加）して保存してください。その後、MinecraftのパックキャッシュもクリアしてくださいQ — 結合されたパックは引き続きサーバーのUUIDを使用するため、そのままではMinecraftが古いキャッシュ版を表示します。",
   "rpWorksGithubHint": "直接ダウンロードリンク — 常にアクセス可能",
   "rpWorksCloudflareHint": "パブリッククラウドストレージ — 高速かつ信頼性が高い",
   "rpWorksDirectHint": "公開されたHTTPS .mcpackまたは.zip URL",
   "rpNoDiscordHint": "Discord CDNのリンクは短時間で期限切れになります",
   "rpNoDriveHint": "直接ダウンロードなし — プレビューページにリダイレクトされます",
   "rpNoEncryptedHint": "MCCompanionは暗号化されたパックを結合できません",
-  "rpClearWhy": "Minecraftはリソースパックを固有IDでローカルにキャッシュします。MCCompanionがあなたのパックとサーバーのパックを結合すると新しいIDが付与されます。古いバージョンがすでにキャッシュされている場合、新しいパックはダウンロードされません。そのためまずキャッシュをクリアする必要があります。"
+  "rpClearWhy": "MinecraftはリソースパックをUUIDでキャッシュします。結合されたパックはサーバーの元のUUIDを保持します — MCCompanionを有効にする前のセッションでMinecraftがサーバーのパックをキャッシュしていた場合、新しい結合バージョンをダウンロードしません。キャッシュをクリアして、Minecraftが新しい結合パックを読み込むようにしてください。",
+  "rpUploadTab": "Upload",
+  "rpUrlTab": "URL",
+  "rpUploadButton": "Tap to select your pack",
+  "rpUploadHint": ".mcpack or .zip • max 100 MB",
+  "rpUploading": "Uploading..."
 }

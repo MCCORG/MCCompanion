@@ -1,8 +1,16 @@
+import 'dart:convert';
+import 'dart:io';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import '../constants/app_constants.dart';
 import '../l10n/app_localizations.dart';
+import '../services/auth_service.dart';
 import '../theme/app_theme.dart';
 import '../util/resource_pack_prefs.dart';
 import '../widgets/components/app_toast.dart';
+
+enum _InputMode { upload, url }
 
 class ResourcePackScreen extends StatefulWidget {
   final VoidCallback onBack;
@@ -17,6 +25,12 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   bool _enabled = false;
   bool _loaded = false;
   String? _urlWarning;
+  _InputMode _mode = _InputMode.upload;
+
+  String? _uploadedFilename;
+  String? _uploadedUrl;
+  bool _uploading = false;
+  double _uploadProgress = 0;
 
   @override
   void initState() {
@@ -28,10 +42,15 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   Future<void> _load() async {
     final url = await ResourcePackPrefs.getUrl();
     final enabled = await ResourcePackPrefs.isEnabled();
+    final filename = await ResourcePackPrefs.getFilename();
+    final isUpload = await ResourcePackPrefs.isUpload();
     if (!mounted) return;
     setState(() {
-      _urlCtrl.text = url ?? '';
       _enabled = enabled;
+      _mode = isUpload ? _InputMode.upload : _InputMode.url;
+      _uploadedFilename = filename;
+      _uploadedUrl = (isUpload && url != null && url.isNotEmpty) ? url : null;
+      if (!isUpload) _urlCtrl.text = url ?? '';
       _loaded = true;
     });
     _validateUrl();
@@ -54,7 +73,90 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     if (warning != _urlWarning) setState(() => _urlWarning = warning);
   }
 
-  Future<void> _save() async {
+  Future<void> _pickAndUpload() async {
+    final result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['mcpack', 'zip'],
+    );
+    if (result == null || result.files.isEmpty) return;
+    final file = result.files.first;
+    final path = file.path;
+    if (path == null) return;
+
+    setState(() {
+      _uploading = true;
+      _uploadProgress = 0;
+    });
+
+    try {
+      final token = await AuthService.getIdToken();
+      final bytes = await File(path).readAsBytes();
+      final request = http.MultipartRequest(
+        'POST',
+        Uri.parse('${AppConstants.apiBase}/resource-pack/upload'),
+      );
+      if (token != null) request.headers['Authorization'] = 'Bearer $token';
+      request.files.add(
+        http.MultipartFile.fromBytes('pack', bytes, filename: file.name),
+      );
+
+      final streamed = await request.send();
+      final body = await streamed.stream.bytesToString();
+
+      if (streamed.statusCode == 200) {
+        final data = jsonDecode(body) as Map<String, dynamic>;
+        final url = data['url'] as String;
+        await ResourcePackPrefs.save(
+          url: url,
+          enabled: _enabled,
+          filename: file.name,
+          isUpload: true,
+        );
+        if (!mounted) return;
+        setState(() {
+          _uploadedUrl = url;
+          _uploadedFilename = file.name;
+          _uploading = false;
+        });
+        AppToast.show(
+          context,
+          message: AppLocalizations.of(context)!.rpToastSaved,
+          icon: Icons.check_rounded,
+          color: AppTheme.accent,
+        );
+      } else {
+        if (!mounted) return;
+        setState(() => _uploading = false);
+        AppToast.show(
+          context,
+          message: 'Upload failed (${streamed.statusCode})',
+          icon: Icons.error_outline_rounded,
+          color: AppTheme.error,
+        );
+      }
+    } catch (e) {
+      if (!mounted) return;
+      setState(() => _uploading = false);
+      AppToast.show(
+        context,
+        message: 'Upload failed: $e',
+        icon: Icons.error_outline_rounded,
+        color: AppTheme.error,
+      );
+    }
+  }
+
+  Future<void> _deleteUpload() async {
+    await ResourcePackPrefs.clear();
+    if (!mounted) return;
+    setState(() {
+      _uploadedFilename = null;
+      _uploadedUrl = null;
+      _enabled = false;
+    });
+  }
+
+  Future<void> _saveUrl() async {
     final url = _urlCtrl.text.trim();
     final l = AppLocalizations.of(context)!;
     if (_enabled && url.isEmpty) {
@@ -75,7 +177,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
       );
       return;
     }
-    await ResourcePackPrefs.save(url: url, enabled: _enabled);
+    await ResourcePackPrefs.save(url: url, enabled: _enabled, isUpload: false);
     if (!mounted) return;
     AppToast.show(
       context,
@@ -86,7 +188,19 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     widget.onBack();
   }
 
-  void _showHelpSheet(
+  Future<void> _toggleEnabled(bool v) async {
+    setState(() => _enabled = v);
+    if (_mode == _InputMode.upload && _uploadedUrl != null) {
+      await ResourcePackPrefs.save(
+        url: _uploadedUrl,
+        enabled: v,
+        filename: _uploadedFilename,
+        isUpload: true,
+      );
+    }
+  }
+
+  void _showDialog(
     BuildContext context,
     String title,
     Widget body, {
@@ -105,7 +219,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                padding: const EdgeInsets.fromLTRB(20, 20, 16, 16),
+                padding: const EdgeInsets.fromLTRB(20, 20, 12, 16),
                 decoration: BoxDecoration(
                   color: iconColor.withValues(alpha: 0.08),
                   borderRadius: const BorderRadius.vertical(
@@ -148,12 +262,11 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                       ),
                       padding: EdgeInsets.zero,
                       constraints: const BoxConstraints(),
-                      splashRadius: 16,
                     ),
                   ],
                 ),
               ),
-              Padding(
+              SingleChildScrollView(
                 padding: const EdgeInsets.fromLTRB(20, 18, 20, 22),
                 child: body,
               ),
@@ -174,9 +287,9 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
-
     return Column(
       children: [
+        // Nav bar
         Container(
           decoration: BoxDecoration(
             color: AppTheme.surface,
@@ -218,7 +331,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                   ),
                 )
               : SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   keyboardDismissBehavior:
                       ScrollViewKeyboardDismissBehavior.onDrag,
                   child: ConstrainedBox(
@@ -226,33 +339,9 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(height: 28),
-                        Container(
-                          width: 56,
-                          height: 56,
-                          decoration: BoxDecoration(
-                            color: AppTheme.accent.withValues(alpha: 0.12),
-                            borderRadius: BorderRadius.circular(16),
-                            border: Border.all(
-                              color: AppTheme.accent.withValues(alpha: 0.3),
-                            ),
-                          ),
-                          child: Icon(
-                            Icons.layers_rounded,
-                            color: AppTheme.accent,
-                            size: 26,
-                          ),
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          l.rpScreenTitle,
-                          style: TextStyle(
-                            color: AppTheme.textPrimary,
-                            fontSize: 22,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
+                        const SizedBox(height: 20),
+
+                        // Description
                         Text(
                           l.rpExplanation,
                           style: TextStyle(
@@ -262,75 +351,45 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                           ),
                         ),
 
-                        const SizedBox(height: 28),
-
-                        Text(
-                          l.rpPackUrlLabel.toUpperCase(),
-                          style: TextStyle(
-                            color: AppTheme.textMuted,
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 0.5,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        TextField(
-                          controller: _urlCtrl,
-                          keyboardType: TextInputType.url,
-                          autocorrect: false,
-                          style: TextStyle(
-                            color: AppTheme.textPrimary,
-                            fontSize: 14,
-                          ),
-                          decoration: InputDecoration(
-                            hintText: l.rpPackUrlHint,
-                            prefixIcon: Icon(
-                              Icons.link_rounded,
-                              color: AppTheme.textMuted,
-                              size: 18,
-                            ),
-                          ),
-                        ),
-                        if (_urlWarning != null) ...[
-                          const SizedBox(height: 8),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12,
-                              vertical: 10,
-                            ),
-                            decoration: BoxDecoration(
-                              color: AppTheme.warning.withValues(alpha: 0.08),
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(
-                                color: AppTheme.warning.withValues(alpha: 0.3),
-                              ),
-                            ),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.warning_amber_rounded,
-                                  color: AppTheme.warning,
-                                  size: 14,
-                                ),
-                                const SizedBox(width: 8),
-                                Expanded(
-                                  child: Text(
-                                    _urlWarning!,
-                                    style: TextStyle(
-                                      color: AppTheme.warning,
-                                      fontSize: 12,
-                                      height: 1.4,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-
                         const SizedBox(height: 20),
 
+                        // Upload / URL tab toggle
+                        Container(
+                          decoration: BoxDecoration(
+                            color: AppTheme.surfaceRaised,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: AppTheme.borderGray),
+                          ),
+                          padding: const EdgeInsets.all(3),
+                          child: Row(
+                            children: [
+                              _Tab(
+                                label: l.rpUploadTab,
+                                icon: Icons.upload_rounded,
+                                selected: _mode == _InputMode.upload,
+                                onTap: () =>
+                                    setState(() => _mode = _InputMode.upload),
+                              ),
+                              _Tab(
+                                label: l.rpUrlTab,
+                                icon: Icons.link_rounded,
+                                selected: _mode == _InputMode.url,
+                                onTap: () =>
+                                    setState(() => _mode = _InputMode.url),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        const SizedBox(height: 12),
+
+                        // Content area
+                        if (_mode == _InputMode.upload) _buildUploadSection(l),
+                        if (_mode == _InputMode.url) _buildUrlSection(l),
+
+                        const SizedBox(height: 16),
+
+                        // Enable toggle
                         Container(
                           decoration: BoxDecoration(
                             color: AppTheme.surfaceRaised,
@@ -339,7 +398,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                           ),
                           padding: const EdgeInsets.symmetric(
                             horizontal: 14,
-                            vertical: 6,
+                            vertical: 4,
                           ),
                           child: Row(
                             children: [
@@ -365,34 +424,39 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                               ),
                               Switch(
                                 value: _enabled,
-                                onChanged: (v) => setState(() => _enabled = v),
+                                onChanged: _toggleEnabled,
                               ),
                             ],
                           ),
                         ),
 
-                        const SizedBox(height: 16),
-
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton.icon(
-                            onPressed: _save,
-                            icon: const Icon(Icons.save_rounded, size: 18),
-                            label: Text(
-                              l.save,
-                              style: const TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700,
+                        // Save button (URL mode only)
+                        if (_mode == _InputMode.url) ...[
+                          const SizedBox(height: 12),
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton.icon(
+                              onPressed: _saveUrl,
+                              icon: const Icon(Icons.save_rounded, size: 18),
+                              label: Text(
+                                l.save,
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 14,
+                                ),
                               ),
                             ),
-                            style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(vertical: 16),
-                            ),
                           ),
-                        ),
+                        ],
 
-                        const SizedBox(height: 32),
+                        const SizedBox(height: 28),
 
+                        // Info rows
                         Container(
                           decoration: BoxDecoration(
                             color: AppTheme.surfaceRaised,
@@ -405,7 +469,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                                 icon: Icons.check_circle_outline_rounded,
                                 iconColor: AppTheme.success,
                                 label: l.rpWhatWorks,
-                                onTap: () => _showHelpSheet(
+                                onTap: () => _showDialog(
                                   context,
                                   l.rpWhatWorks,
                                   Column(
@@ -414,19 +478,28 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       _ModalBullet(
-                                        title: l.rpWorksGithub,
-                                        hint: l.rpWorksGithubHint,
+                                        title: l.rpSupportedBedrockOnly,
+                                        hint: l.rpSupportedBedrockOnlyHint,
                                         ok: true,
                                       ),
                                       _ModalBullet(
-                                        title: l.rpWorksCloudflare,
-                                        hint: l.rpWorksCloudflareHint,
+                                        title: l.rpSupportedTexture,
+                                        hint: l.rpSupportedTextureHint,
                                         ok: true,
                                       ),
+                                      Divider(
+                                        height: 20,
+                                        color: AppTheme.borderGray,
+                                      ),
                                       _ModalBullet(
-                                        title: l.rpWorksDirect,
-                                        hint: l.rpWorksDirectHint,
-                                        ok: true,
+                                        title: l.rpUnsupportedShaders,
+                                        hint: l.rpUnsupportedShadersHint,
+                                        ok: false,
+                                      ),
+                                      _ModalBullet(
+                                        title: l.rpUnsupportedAddons,
+                                        hint: l.rpUnsupportedAddonsHint,
+                                        ok: false,
                                       ),
                                       Divider(
                                         height: 20,
@@ -459,10 +532,34 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                                 indent: 52,
                               ),
                               _InfoRow(
-                                icon: Icons.cleaning_services_rounded,
+                                icon: Icons.speed_rounded,
                                 iconColor: Colors.orangeAccent,
+                                label: l.rpConsolePerformanceTitle,
+                                onTap: () => _showDialog(
+                                  context,
+                                  l.rpConsolePerformanceTitle,
+                                  Text(
+                                    l.rpConsolePerformanceBody,
+                                    style: TextStyle(
+                                      color: AppTheme.textSecondary,
+                                      fontSize: 14,
+                                      height: 1.65,
+                                    ),
+                                  ),
+                                  icon: Icons.speed_rounded,
+                                  iconColor: Colors.orangeAccent,
+                                ),
+                              ),
+                              Divider(
+                                height: 1,
+                                color: AppTheme.borderGray,
+                                indent: 52,
+                              ),
+                              _InfoRow(
+                                icon: Icons.cleaning_services_rounded,
+                                iconColor: AppTheme.info,
                                 label: l.rpClearMinecraftTitle,
-                                onTap: () => _showHelpSheet(
+                                onTap: () => _showDialog(
                                   context,
                                   l.rpClearMinecraftTitle,
                                   Column(
@@ -485,7 +582,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                                     ],
                                   ),
                                   icon: Icons.cleaning_services_rounded,
-                                  iconColor: Colors.orangeAccent,
+                                  iconColor: AppTheme.info,
                                 ),
                               ),
                               Divider(
@@ -495,9 +592,9 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                               ),
                               _InfoRow(
                                 icon: Icons.refresh_rounded,
-                                iconColor: AppTheme.info,
+                                iconColor: const Color(0xFF8B5CF6),
                                 label: l.rpRelayTitle,
-                                onTap: () => _showHelpSheet(
+                                onTap: () => _showDialog(
                                   context,
                                   l.rpRelayTitle,
                                   Text(
@@ -509,7 +606,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                                     ),
                                   ),
                                   icon: Icons.refresh_rounded,
-                                  iconColor: AppTheme.info,
+                                  iconColor: const Color(0xFF8B5CF6),
                                 ),
                               ),
                             ],
@@ -523,6 +620,249 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                 ),
         ),
       ],
+    );
+  }
+
+  Widget _buildUploadSection(AppLocalizations l) {
+    if (_uploadedUrl != null && _uploadedFilename != null) {
+      return _buildUploadedCard(l);
+    }
+    return _buildUploadButton(l);
+  }
+
+  Widget _buildUploadedCard(AppLocalizations l) {
+    return Container(
+      decoration: BoxDecoration(
+        color: AppTheme.surfaceRaised,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppTheme.accent.withValues(alpha: 0.4)),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+      child: Row(
+        children: [
+          Container(
+            width: 36,
+            height: 36,
+            decoration: BoxDecoration(
+              color: AppTheme.accent.withValues(alpha: 0.12),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Icon(Icons.layers_rounded, color: AppTheme.accent, size: 18),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  _uploadedFilename!,
+                  style: TextStyle(
+                    color: AppTheme.textPrimary,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  'MCCompanion Cloud',
+                  style: TextStyle(color: AppTheme.accent, fontSize: 11),
+                ),
+              ],
+            ),
+          ),
+          IconButton(
+            onPressed: _deleteUpload,
+            icon: Icon(
+              Icons.delete_outline_rounded,
+              color: AppTheme.textMuted,
+              size: 18,
+            ),
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildUploadButton(AppLocalizations l) {
+    return GestureDetector(
+      onTap: _uploading ? null : _pickAndUpload,
+      behavior: HitTestBehavior.opaque,
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(vertical: 28),
+        decoration: BoxDecoration(
+          color: AppTheme.surfaceRaised,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: _uploading
+                ? AppTheme.accent.withValues(alpha: 0.5)
+                : AppTheme.borderGray,
+            width: _uploading ? 1.5 : 1,
+          ),
+        ),
+        child: _uploading
+            ? Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    width: 28,
+                    height: 28,
+                    child: CircularProgressIndicator(
+                      value: _uploadProgress > 0 ? _uploadProgress : null,
+                      strokeWidth: 2.5,
+                      color: AppTheme.accent,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    l.rpUploading,
+                    style: TextStyle(
+                      color: AppTheme.textSecondary,
+                      fontSize: 13,
+                    ),
+                  ),
+                ],
+              )
+            : Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.upload_file_rounded,
+                    color: AppTheme.textMuted,
+                    size: 28,
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    l.rpUploadButton,
+                    style: TextStyle(
+                      color: AppTheme.textPrimary,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 3),
+                  Text(
+                    l.rpUploadHint,
+                    style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
+                  ),
+                ],
+              ),
+      ),
+    );
+  }
+
+  Widget _buildUrlSection(AppLocalizations l) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        TextField(
+          controller: _urlCtrl,
+          keyboardType: TextInputType.url,
+          autocorrect: false,
+          style: TextStyle(color: AppTheme.textPrimary, fontSize: 14),
+          decoration: InputDecoration(
+            hintText: l.rpPackUrlHint,
+            prefixIcon: Icon(
+              Icons.link_rounded,
+              color: AppTheme.textMuted,
+              size: 18,
+            ),
+          ),
+        ),
+        if (_urlWarning != null) ...[
+          const SizedBox(height: 8),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            decoration: BoxDecoration(
+              color: AppTheme.warning.withValues(alpha: 0.08),
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                color: AppTheme.warning.withValues(alpha: 0.3),
+              ),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(
+                  Icons.warning_amber_rounded,
+                  color: AppTheme.warning,
+                  size: 14,
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    _urlWarning!,
+                    style: TextStyle(
+                      color: AppTheme.warning,
+                      fontSize: 12,
+                      height: 1.4,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+class _Tab extends StatelessWidget {
+  final String label;
+  final IconData icon;
+  final bool selected;
+  final VoidCallback onTap;
+  const _Tab({
+    required this.label,
+    required this.icon,
+    required this.selected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: onTap,
+        behavior: HitTestBehavior.opaque,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 150),
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          decoration: BoxDecoration(
+            color: selected
+                ? AppTheme.accent.withValues(alpha: 0.15)
+                : Colors.transparent,
+            borderRadius: BorderRadius.circular(8),
+            border: selected
+                ? Border.all(color: AppTheme.accent.withValues(alpha: 0.35))
+                : null,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                icon,
+                size: 15,
+                color: selected ? AppTheme.accent : AppTheme.textMuted,
+              ),
+              const SizedBox(width: 6),
+              Text(
+                label,
+                style: TextStyle(
+                  color: selected ? AppTheme.accent : AppTheme.textMuted,
+                  fontSize: 13,
+                  fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
@@ -599,8 +939,8 @@ class _ModalBullet extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: 24,
-            height: 24,
+            width: 22,
+            height: 22,
             decoration: BoxDecoration(
               color: color.withValues(alpha: 0.12),
               shape: BoxShape.circle,
@@ -608,7 +948,7 @@ class _ModalBullet extends StatelessWidget {
             child: Icon(
               ok ? Icons.check_rounded : Icons.close_rounded,
               color: color,
-              size: 13,
+              size: 12,
             ),
           ),
           const SizedBox(width: 10),
@@ -650,23 +990,23 @@ class _ModalStep extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.only(bottom: 14),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: 26,
-            height: 26,
+            width: 24,
+            height: 24,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: Colors.orangeAccent.withValues(alpha: 0.15),
-              borderRadius: BorderRadius.circular(8),
+              color: AppTheme.info.withValues(alpha: 0.15),
+              borderRadius: BorderRadius.circular(7),
             ),
             child: Text(
               n,
-              style: const TextStyle(
-                color: Colors.orangeAccent,
-                fontSize: 13,
+              style: TextStyle(
+                color: AppTheme.info,
+                fontSize: 12,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -674,7 +1014,7 @@ class _ModalStep extends StatelessWidget {
           const SizedBox(width: 12),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.only(top: 3),
+              padding: const EdgeInsets.only(top: 2),
               child: Text(
                 text,
                 style: TextStyle(

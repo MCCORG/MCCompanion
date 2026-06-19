@@ -1610,12 +1610,17 @@
   "rpClearStep2": "Gonga 'Futa' au 'Weka upya' karibu na Pakiti za Rasilimali — hii huondoa pakiti zote zilizohifadhiwa ndani",
   "rpClearStep3": "Unganisha tena kupitia MCCompanion — pakiti iliyochanganywa itapakuliwa kiotomatiki",
   "rpRelayTitle": "Pack inaonekana vibaya?",
-  "rpRelayBody": "Relay huhifadhi pakiti zilizochanganywa kwa saa 1. Kulazimisha muunganiko mpya mapema, badilisha kidogo URL ya pakiti (mfano ongeza ?v=2 mwishoni) na uhifadhi — hii humpa relay ufunguo mpya wa akiba.",
+  "rpRelayBody": "Relay huhifadhi pakiti iliyounganishwa kwa saa 1 ukitumia URL ya overlay kama ufunguo wa akiba. Kulazimisha muunganiko mpya: badilisha kidogo URL ya pakiti (mfano ongeza ?v=2) na uhifadhi. Kisha futa pia akiba ya pakiti ya Minecraft — pakiti iliyounganishwa bado inatumia UUID ya seva, kwa hivyo Minecraft vinginevyo itaonyesha toleo la zamani kutoka akibani.",
   "rpWorksGithubHint": "Kiungo cha kupakua moja kwa moja — daima kinafikiwa",
   "rpWorksCloudflareHint": "Hifadhi ya wingu ya umma — haraka na ya kuaminika",
   "rpWorksDirectHint": "URL yoyote ya umma ya HTTPS .mcpack au .zip",
   "rpNoDiscordHint": "Viungo vya Discord CDN vinaisha baada ya muda mfupi",
   "rpNoDriveHint": "Hakuna upakuaji wa moja kwa moja — inaelekeza kwenye ukurasa wa hakiki",
   "rpNoEncryptedHint": "MCCompanion haiwezi kuchanganya maudhui ya pakiti zilizosimbwa",
-  "rpClearWhy": "Minecraft inahifadhi pakiti za rasilimali kwa ndani kwa kutumia kitambulisho chake cha kipekee. MCCompanion inapochanganya pakiti yako na ile ya seva, inapata kitambulisho kipya. Ikiwa Minecraft tayari imehifadhi toleo la zamani, haitapakua jipya — ndiyo maana unahitaji kwanza kufuta akiba."
+  "rpClearWhy": "Minecraft huhifadhi pakiti za rasilimali kwa UUID zao. Pakiti iliyounganishwa inabaki na UUID ya asili ya seva — ikiwa Minecraft tayari imehifadhi pakiti ya seva kutoka kipindi kilichopita (kabla ya MCCompanion kuwezeshwa), haitapakua toleo jipya lililounganishwa. Futa akiba ili Minecraft ipakue pakiti mpya iliyounganishwa.",
+  "rpUploadTab": "Upload",
+  "rpUrlTab": "URL",
+  "rpUploadButton": "Tap to select your pack",
+  "rpUploadHint": ".mcpack or .zip • max 100 MB",
+  "rpUploading": "Uploading..."
 }

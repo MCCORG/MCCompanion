@@ -1716,16 +1716,28 @@ class AppLocalizationsDe extends AppLocalizations {
   String get rpWhatWorks => 'Was funktioniert';
 
   @override
-  String get rpWhatDoesntWork => 'Was nicht funktioniert';
+  String get rpSupportedBedrockOnly => 'Bedrock Edition only (.mcpack or .zip)';
 
   @override
-  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+  String get rpSupportedBedrockOnlyHint => 'Java packs don\'t work on consoles.';
 
   @override
-  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 öffentlicher Bucket';
+  String get rpSupportedTexture => 'Resource packs & texture packs';
 
   @override
-  String get rpWorksDirect => 'Jeder direkte HTTPS-Link, der auf .mcpack oder .zip endet';
+  String get rpSupportedTextureHint => 'These are officially supported and work reliably.';
+
+  @override
+  String get rpUnsupportedShaders => 'Shaders, behavior packs, skin packs';
+
+  @override
+  String get rpUnsupportedShadersHint => 'These won\'t load on consoles via MCCompanion.';
+
+  @override
+  String get rpUnsupportedAddons => 'Add-ons & UI mods';
+
+  @override
+  String get rpUnsupportedAddonsHint => 'May sometimes work, but not officially supported. Use at your own risk.';
 
   @override
   String get rpNoDiscord => 'Discord-Links — keine .mcpack-Erweiterung und laufen nach wenigen Stunden ab';
@@ -1735,6 +1747,12 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get rpNoEncrypted => 'Server mit verschlüsselten oder passwortgeschützten Paketen';
+
+  @override
+  String get rpConsolePerformanceTitle => 'Console performance';
+
+  @override
+  String get rpConsolePerformanceBody => 'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.';
 
   @override
   String get rpWarnDiscord => 'Discord-Links laufen ab und funktionieren dann nicht mehr. Verwende stattdessen einen dauerhaften Host.';
@@ -1770,7 +1788,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get rpRelayTitle => 'Paket sieht falsch aus?';
 
   @override
-  String get rpRelayBody => 'Der Relay speichert zusammengeführte Packs 1 Stunde lang. Um früher eine neue Zusammenführung zu erzwingen, ändere die Pack-URL leicht (z. B. ?v=2 am Ende) und speichere — das gibt dem Relay einen neuen Cache-Schlüssel.';
+  String get rpRelayBody => 'Der Relay speichert das zusammengeführte Pack 1 Stunde lang anhand der Overlay-URL als Cache-Schlüssel. Um eine neue Zusammenführung zu erzwingen: Pack-URL leicht ändern (z. B. ?v=2 anhängen) und speichern. Danach auch den Minecraft-Pack-Cache leeren — da das zusammengeführte Pack weiterhin die UUID des Servers verwendet, würde Minecraft sonst die alte gecachte Version anzeigen.';
 
   @override
   String get rpWorksGithubHint => 'Direkter Download-Link — immer erreichbar';
@@ -1791,5 +1809,20 @@ class AppLocalizationsDe extends AppLocalizations {
   String get rpNoEncryptedHint => 'MCCompanion kann verschlüsselten Pack-Inhalt nicht zusammenführen';
 
   @override
-  String get rpClearWhy => 'Minecraft speichert Ressourcenpakete lokal anhand einer eindeutigen ID. Wenn MCCompanion dein Pack mit dem Server-Pack zusammenführt, erhält es eine neue ID. Falls Minecraft die alte Version bereits gecacht hat, lädt es das neue nicht herunter — deshalb muss der Cache zuerst geleert werden.';
+  String get rpClearWhy => 'Minecraft speichert Ressourcenpakete anhand ihrer UUID. Das zusammengeführte Paket behält die ursprüngliche UUID des Servers — wenn Minecraft das Serverpaket bereits aus einer früheren Sitzung (vor MCCompanion) gecacht hat, lädt es die neue zusammengeführte Version nicht erneut herunter. Leere den Cache, damit Minecraft das frische Paket lädt.';
+
+  @override
+  String get rpUploadTab => 'Upload';
+
+  @override
+  String get rpUrlTab => 'URL';
+
+  @override
+  String get rpUploadButton => 'Tap to select your pack';
+
+  @override
+  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+
+  @override
+  String get rpUploading => 'Uploading...';
 }

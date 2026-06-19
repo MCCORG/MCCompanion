@@ -1716,16 +1716,28 @@ class AppLocalizationsBn extends AppLocalizations {
   String get rpWhatWorks => 'যা কাজ করে';
 
   @override
-  String get rpWhatDoesntWork => 'যা কাজ করে না';
+  String get rpSupportedBedrockOnly => 'Bedrock Edition only (.mcpack or .zip)';
 
   @override
-  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+  String get rpSupportedBedrockOnlyHint => 'Java packs don\'t work on consoles.';
 
   @override
-  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 পাবলিক বাকেট';
+  String get rpSupportedTexture => 'Resource packs & texture packs';
 
   @override
-  String get rpWorksDirect => '.mcpack বা .zip দিয়ে শেষ হওয়া যেকোনো সরাসরি HTTPS লিঙ্ক';
+  String get rpSupportedTextureHint => 'These are officially supported and work reliably.';
+
+  @override
+  String get rpUnsupportedShaders => 'Shaders, behavior packs, skin packs';
+
+  @override
+  String get rpUnsupportedShadersHint => 'These won\'t load on consoles via MCCompanion.';
+
+  @override
+  String get rpUnsupportedAddons => 'Add-ons & UI mods';
+
+  @override
+  String get rpUnsupportedAddonsHint => 'May sometimes work, but not officially supported. Use at your own risk.';
 
   @override
   String get rpNoDiscord => 'Discord লিঙ্ক — .mcpack এক্সটেনশন নেই এবং কয়েক ঘণ্টায় মেয়াদ শেষ';
@@ -1735,6 +1747,12 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get rpNoEncrypted => 'এনক্রিপ্টেড বা পাসওয়ার্ড-সুরক্ষিত প্যাক সহ সার্ভার';
+
+  @override
+  String get rpConsolePerformanceTitle => 'Console performance';
+
+  @override
+  String get rpConsolePerformanceBody => 'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.';
 
   @override
   String get rpWarnDiscord => 'Discord লিঙ্কগুলির মেয়াদ শেষ হয়ে যায় এবং কাজ করা বন্ধ করবে। পরিবর্তে একটি স্থায়ী হোস্ট ব্যবহার করুন।';
@@ -1770,7 +1788,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get rpRelayTitle => 'প্যাক ঠিকমতো দেখাচ্ছে না?';
 
   @override
-  String get rpRelayBody => 'রিলে মার্জ করা প্যাক 1 ঘন্টা ক্যাশে রাখে। জলদি নতুন মার্জ করতে, URL বদলান (যেমন ?v=2 যোগ করুন) ও সেভ করুন।';
+  String get rpRelayBody => 'রিলে আপনার overlay URL কে key হিসেবে ব্যবহার করে merged pack ১ ঘন্টা ক্যাশ করে। নতুন merge করতে: pack URL একটু বদলান (যেমন ?v=2 যোগ করুন) এবং সেভ করুন। এরপর Minecraft-এর pack cache-ও পরিষ্কার করুন — merged pack এখনও server-এর UUID ব্যবহার করে, তাই না করলে Minecraft পুরনো cached version দেখাবে।';
 
   @override
   String get rpWorksGithubHint => 'সরাসরি ডাউনলোড লিঙ্ক — সবসময় অ্যাক্সেসযোগ্য';
@@ -1791,5 +1809,20 @@ class AppLocalizationsBn extends AppLocalizations {
   String get rpNoEncryptedHint => 'MCCompanion এন্ক্রিপ্টেড প্যাক মার্জ করতে পারে না';
 
   @override
-  String get rpClearWhy => 'Minecraft রিসোর্স প্যাক তাদের অনন্য ID দিয়ে লোকালে ক্যাশ করে। MCCompanion যখন আপনার প্যাক সার্ভারের প্যাকের সাথে মার্জ করে, তখন নতুন ID তৈরি হয়। Minecraft যদি আগেই পুরনো সংস্করণ ক্যাশ করে রাখে, তাহলে নতুনটি ডাউনলোড হবে না — সেজন্য আগে ক্যাশ পরিষ্কার করতে হবে।';
+  String get rpClearWhy => 'Minecraft রিসোর্স প্যাক তাদের UUID দিয়ে ক্যাশ করে। মার্জ করা প্যাক সার্ভারের আসল UUID ধরে রাখে — যদি Minecraft আগের কোনো সেশনে (MCCompanion চালু হওয়ার আগে) সার্ভারের প্যাক ক্যাশ করে রাখে, তাহলে নতুন মার্জ করা ভার্সন ডাউনলোড করবে না। ক্যাশ পরিষ্কার করুন যাতে Minecraft তাজা মার্জ করা প্যাক লোড করে।';
+
+  @override
+  String get rpUploadTab => 'Upload';
+
+  @override
+  String get rpUrlTab => 'URL';
+
+  @override
+  String get rpUploadButton => 'Tap to select your pack';
+
+  @override
+  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+
+  @override
+  String get rpUploading => 'Uploading...';
 }

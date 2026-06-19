@@ -1701,7 +1701,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rpWhatIsThis => 'What is this?';
 
   @override
-  String get rpExplanation => 'A resource pack changes how Minecraft looks on your console — new blocks, colors, or sounds. Paste the link to a .mcpack file below, enable it, and save. MCCompanion loads it automatically every time you connect.';
+  String get rpExplanation => 'Customize how Minecraft looks on your console with a resource pack. Upload a file or paste a direct link. MCCompanion sends it to your console automatically every time you connect.';
 
   @override
   String get rpPackUrlLabel => 'Pack URL';
@@ -1713,28 +1713,46 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rpEnableToggle => 'Enable resource pack';
 
   @override
-  String get rpWhatWorks => 'What works';
+  String get rpWhatWorks => 'Supported formats';
 
   @override
-  String get rpWhatDoesntWork => 'What doesn\'t work';
+  String get rpSupportedBedrockOnly => 'Bedrock Edition only (.mcpack or .zip)';
 
   @override
-  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+  String get rpSupportedBedrockOnlyHint => 'Java packs don\'t work on consoles.';
 
   @override
-  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 public bucket';
+  String get rpSupportedTexture => 'Resource packs & texture packs';
 
   @override
-  String get rpWorksDirect => 'Any direct HTTPS link ending in .mcpack or .zip';
+  String get rpSupportedTextureHint => 'These are officially supported and work reliably.';
 
   @override
-  String get rpNoDiscord => 'Discord links — no .mcpack extension and expire after a few hours';
+  String get rpUnsupportedShaders => 'Shaders, behavior packs, skin packs';
 
   @override
-  String get rpNoDrive => 'Google Drive / Dropbox share links — not direct downloads';
+  String get rpUnsupportedShadersHint => 'These won\'t load on consoles via MCCompanion.';
 
   @override
-  String get rpNoEncrypted => 'Servers with encrypted or password-protected packs';
+  String get rpUnsupportedAddons => 'Add-ons & UI mods';
+
+  @override
+  String get rpUnsupportedAddonsHint => 'May sometimes work, but not officially supported. Use at your own risk.';
+
+  @override
+  String get rpNoDiscord => 'Discord links';
+
+  @override
+  String get rpNoDrive => 'Google Drive / Dropbox share links';
+
+  @override
+  String get rpNoEncrypted => 'Encrypted or password-protected packs';
+
+  @override
+  String get rpConsolePerformanceTitle => 'Console performance';
+
+  @override
+  String get rpConsolePerformanceBody => 'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.';
 
   @override
   String get rpWarnDiscord => 'Discord links expire and will stop working. Use a permanent host instead.';
@@ -1761,35 +1779,50 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rpClearStep1 => 'Open Minecraft on your console and go to Settings → Storage';
 
   @override
-  String get rpClearStep2 => 'Tap ‘Clear’ or ‘Reset’ next to Resource Packs — this removes all locally cached packs';
+  String get rpClearStep2 => 'Tap ‘Clear’ or ‘Reset’ next to Resource Packs. This removes all locally cached packs.';
 
   @override
-  String get rpClearStep3 => 'Reconnect through MCCompanion — the merged pack will download automatically';
+  String get rpClearStep3 => 'Reconnect through MCCompanion. The merged pack will download automatically.';
 
   @override
   String get rpRelayTitle => 'Pack looks wrong?';
 
   @override
-  String get rpRelayBody => 'The relay caches merged packs for 1 hour. To force a fresh merge sooner, slightly change your pack URL (e.g. add ?v=2 at the end) and save — this gives the relay a new cache key.';
+  String get rpRelayBody => 'The relay caches the merged pack for 1 hour using your overlay URL as the cache key. To force a fresh merge, change your pack URL slightly (e.g. add ?v=2 at the end) and save. After that, also clear Minecraft\'s pack cache. The merged pack still uses the server\'s UUID, so Minecraft will otherwise serve the old cached version.';
 
   @override
-  String get rpWorksGithubHint => 'Direct download link — always accessible';
+  String get rpWorksGithubHint => 'Direct download link, always accessible.';
 
   @override
-  String get rpWorksCloudflareHint => 'Public cloud storage — fast and reliable';
+  String get rpWorksCloudflareHint => 'Public cloud storage, fast and reliable.';
 
   @override
   String get rpWorksDirectHint => 'Any public HTTPS .mcpack or .zip URL';
 
   @override
-  String get rpNoDiscordHint => 'Discord CDN links expire after a short time';
+  String get rpNoDiscordHint => 'Links expire after a few hours and can\'t be used as a permanent pack URL.';
 
   @override
-  String get rpNoDriveHint => 'No direct download — sends you to a preview page';
+  String get rpNoDriveHint => 'Not a direct download, sends you to a preview page instead.';
 
   @override
-  String get rpNoEncryptedHint => 'MCCompanion cannot merge encrypted pack content';
+  String get rpNoEncryptedHint => 'MCCompanion cannot read or merge encrypted pack content.';
 
   @override
-  String get rpClearWhy => 'Minecraft caches resource packs locally by their unique ID. When MCCompanion merges your pack with the server’s pack, it gets a new ID. If Minecraft already cached the old version, it won’t re-download the new merged one — that’s why you need to clear it first.';
+  String get rpClearWhy => 'Minecraft caches resource packs by their UUID. The merged pack keeps the server\'s original UUID, so if Minecraft already has the server\'s pack cached from a previous session, it won\'t re-download the new merged version. Clear the cache so Minecraft picks up the fresh merged pack.';
+
+  @override
+  String get rpUploadTab => 'Upload';
+
+  @override
+  String get rpUrlTab => 'URL';
+
+  @override
+  String get rpUploadButton => 'Tap to select your pack';
+
+  @override
+  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+
+  @override
+  String get rpUploading => 'Uploading...';
 }

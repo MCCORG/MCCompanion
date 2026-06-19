@@ -3354,7 +3354,7 @@ abstract class AppLocalizations {
   /// Body text explaining what the resource pack feature does
   ///
   /// In en, this message translates to:
-  /// **'A resource pack changes how Minecraft looks on your console — new blocks, colors, or sounds. Paste the link to a .mcpack file below, enable it, and save. MCCompanion loads it automatically every time you connect.'**
+  /// **'Customize how Minecraft looks on your console with a resource pack. Upload a file or paste a direct link. MCCompanion sends it to your console automatically every time you connect.'**
   String get rpExplanation;
 
   /// Label for the pack URL text field
@@ -3375,53 +3375,89 @@ abstract class AppLocalizations {
   /// **'Enable resource pack'**
   String get rpEnableToggle;
 
-  /// Section title for the 'what works' card
+  /// Section title for the supported formats card
   ///
   /// In en, this message translates to:
-  /// **'What works'**
+  /// **'Supported formats'**
   String get rpWhatWorks;
 
-  /// Section title for the 'what doesn't work' card
+  /// No description provided for @rpSupportedBedrockOnly.
   ///
   /// In en, this message translates to:
-  /// **'What doesn\'t work'**
-  String get rpWhatDoesntWork;
+  /// **'Bedrock Edition only (.mcpack or .zip)'**
+  String get rpSupportedBedrockOnly;
 
-  /// Bullet: GitHub Releases works as a pack host
+  /// No description provided for @rpSupportedBedrockOnlyHint.
   ///
   /// In en, this message translates to:
-  /// **'GitHub Releases (github.com/…/releases/download/…)'**
-  String get rpWorksGithub;
+  /// **'Java packs don\'t work on consoles.'**
+  String get rpSupportedBedrockOnlyHint;
 
-  /// Bullet: Cloudflare R2 / S3 works as a pack host
+  /// No description provided for @rpSupportedTexture.
   ///
   /// In en, this message translates to:
-  /// **'Cloudflare R2 / AWS S3 public bucket'**
-  String get rpWorksCloudflare;
+  /// **'Resource packs & texture packs'**
+  String get rpSupportedTexture;
 
-  /// Bullet: direct HTTPS .mcpack or .zip links work
+  /// No description provided for @rpSupportedTextureHint.
   ///
   /// In en, this message translates to:
-  /// **'Any direct HTTPS link ending in .mcpack or .zip'**
-  String get rpWorksDirect;
+  /// **'These are officially supported and work reliably.'**
+  String get rpSupportedTextureHint;
+
+  /// No description provided for @rpUnsupportedShaders.
+  ///
+  /// In en, this message translates to:
+  /// **'Shaders, behavior packs, skin packs'**
+  String get rpUnsupportedShaders;
+
+  /// No description provided for @rpUnsupportedShadersHint.
+  ///
+  /// In en, this message translates to:
+  /// **'These won\'t load on consoles via MCCompanion.'**
+  String get rpUnsupportedShadersHint;
+
+  /// No description provided for @rpUnsupportedAddons.
+  ///
+  /// In en, this message translates to:
+  /// **'Add-ons & UI mods'**
+  String get rpUnsupportedAddons;
+
+  /// No description provided for @rpUnsupportedAddonsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'May sometimes work, but not officially supported. Use at your own risk.'**
+  String get rpUnsupportedAddonsHint;
 
   /// Bullet: Discord links don't work (warning)
   ///
   /// In en, this message translates to:
-  /// **'Discord links — no .mcpack extension and expire after a few hours'**
+  /// **'Discord links'**
   String get rpNoDiscord;
 
   /// Bullet: Google Drive/Dropbox links don't work (warning)
   ///
   /// In en, this message translates to:
-  /// **'Google Drive / Dropbox share links — not direct downloads'**
+  /// **'Google Drive / Dropbox share links'**
   String get rpNoDrive;
 
   /// Bullet: encrypted packs don't work (warning)
   ///
   /// In en, this message translates to:
-  /// **'Servers with encrypted or password-protected packs'**
+  /// **'Encrypted or password-protected packs'**
   String get rpNoEncrypted;
+
+  /// No description provided for @rpConsolePerformanceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Console performance'**
+  String get rpConsolePerformanceTitle;
+
+  /// No description provided for @rpConsolePerformanceBody.
+  ///
+  /// In en, this message translates to:
+  /// **'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.'**
+  String get rpConsolePerformanceBody;
 
   /// Inline warning shown when user enters a Discord CDN URL
   ///
@@ -3474,13 +3510,13 @@ abstract class AppLocalizations {
   /// Step 2: clear resource packs in Minecraft storage
   ///
   /// In en, this message translates to:
-  /// **'Tap ‘Clear’ or ‘Reset’ next to Resource Packs — this removes all locally cached packs'**
+  /// **'Tap ‘Clear’ or ‘Reset’ next to Resource Packs. This removes all locally cached packs.'**
   String get rpClearStep2;
 
   /// Step 3: reconnect to get merged pack
   ///
   /// In en, this message translates to:
-  /// **'Reconnect through MCCompanion — the merged pack will download automatically'**
+  /// **'Reconnect through MCCompanion. The merged pack will download automatically.'**
   String get rpClearStep3;
 
   /// Section title: pack looks wrong info card
@@ -3492,19 +3528,19 @@ abstract class AppLocalizations {
   /// Explanation of what to do when merged pack has issues — toggle pack off/on and reconnect
   ///
   /// In en, this message translates to:
-  /// **'The relay caches merged packs for 1 hour. To force a fresh merge sooner, slightly change your pack URL (e.g. add ?v=2 at the end) and save — this gives the relay a new cache key.'**
+  /// **'The relay caches the merged pack for 1 hour using your overlay URL as the cache key. To force a fresh merge, change your pack URL slightly (e.g. add ?v=2 at the end) and save. After that, also clear Minecraft\'s pack cache. The merged pack still uses the server\'s UUID, so Minecraft will otherwise serve the old cached version.'**
   String get rpRelayBody;
 
   /// No description provided for @rpWorksGithubHint.
   ///
   /// In en, this message translates to:
-  /// **'Direct download link — always accessible'**
+  /// **'Direct download link, always accessible.'**
   String get rpWorksGithubHint;
 
   /// No description provided for @rpWorksCloudflareHint.
   ///
   /// In en, this message translates to:
-  /// **'Public cloud storage — fast and reliable'**
+  /// **'Public cloud storage, fast and reliable.'**
   String get rpWorksCloudflareHint;
 
   /// No description provided for @rpWorksDirectHint.
@@ -3516,26 +3552,56 @@ abstract class AppLocalizations {
   /// No description provided for @rpNoDiscordHint.
   ///
   /// In en, this message translates to:
-  /// **'Discord CDN links expire after a short time'**
+  /// **'Links expire after a few hours and can\'t be used as a permanent pack URL.'**
   String get rpNoDiscordHint;
 
   /// No description provided for @rpNoDriveHint.
   ///
   /// In en, this message translates to:
-  /// **'No direct download — sends you to a preview page'**
+  /// **'Not a direct download, sends you to a preview page instead.'**
   String get rpNoDriveHint;
 
   /// No description provided for @rpNoEncryptedHint.
   ///
   /// In en, this message translates to:
-  /// **'MCCompanion cannot merge encrypted pack content'**
+  /// **'MCCompanion cannot read or merge encrypted pack content.'**
   String get rpNoEncryptedHint;
 
   /// No description provided for @rpClearWhy.
   ///
   /// In en, this message translates to:
-  /// **'Minecraft caches resource packs locally by their unique ID. When MCCompanion merges your pack with the server’s pack, it gets a new ID. If Minecraft already cached the old version, it won’t re-download the new merged one — that’s why you need to clear it first.'**
+  /// **'Minecraft caches resource packs by their UUID. The merged pack keeps the server\'s original UUID, so if Minecraft already has the server\'s pack cached from a previous session, it won\'t re-download the new merged version. Clear the cache so Minecraft picks up the fresh merged pack.'**
   String get rpClearWhy;
+
+  /// Tab label for uploading a pack file
+  ///
+  /// In en, this message translates to:
+  /// **'Upload'**
+  String get rpUploadTab;
+
+  /// Tab label for entering a pack URL
+  ///
+  /// In en, this message translates to:
+  /// **'URL'**
+  String get rpUrlTab;
+
+  /// Upload area primary label
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to select your pack'**
+  String get rpUploadButton;
+
+  /// Upload area hint
+  ///
+  /// In en, this message translates to:
+  /// **'.mcpack or .zip • max 100 MB'**
+  String get rpUploadHint;
+
+  /// Shown while upload is in progress
+  ///
+  /// In en, this message translates to:
+  /// **'Uploading...'**
+  String get rpUploading;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

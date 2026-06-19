@@ -1716,16 +1716,28 @@ class AppLocalizationsSw extends AppLocalizations {
   String get rpWhatWorks => 'Kinachofanya kazi';
 
   @override
-  String get rpWhatDoesntWork => 'Kisichofanya kazi';
+  String get rpSupportedBedrockOnly => 'Bedrock Edition only (.mcpack or .zip)';
 
   @override
-  String get rpWorksGithub => 'GitHub Releases (github.com/…/releases/download/…)';
+  String get rpSupportedBedrockOnlyHint => 'Java packs don\'t work on consoles.';
 
   @override
-  String get rpWorksCloudflare => 'Cloudflare R2 / AWS S3 bucket ya umma';
+  String get rpSupportedTexture => 'Resource packs & texture packs';
 
   @override
-  String get rpWorksDirect => 'Kiungo chochote cha moja kwa moja cha HTTPS kinachoishia .mcpack au .zip';
+  String get rpSupportedTextureHint => 'These are officially supported and work reliably.';
+
+  @override
+  String get rpUnsupportedShaders => 'Shaders, behavior packs, skin packs';
+
+  @override
+  String get rpUnsupportedShadersHint => 'These won\'t load on consoles via MCCompanion.';
+
+  @override
+  String get rpUnsupportedAddons => 'Add-ons & UI mods';
+
+  @override
+  String get rpUnsupportedAddonsHint => 'May sometimes work, but not officially supported. Use at your own risk.';
 
   @override
   String get rpNoDiscord => 'Viungo vya Discord — hakuna ugani wa .mcpack na vinaisha baada ya masaa machache';
@@ -1735,6 +1747,12 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get rpNoEncrypted => 'Seva zenye pakiti zilizosimbwa au zilindwa na nywila';
+
+  @override
+  String get rpConsolePerformanceTitle => 'Console performance';
+
+  @override
+  String get rpConsolePerformanceBody => 'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.';
 
   @override
   String get rpWarnDiscord => 'Viungo vya Discord vinaisha na vitaacha kufanya kazi. Tumia seva ya kudumu badala yake.';
@@ -1770,7 +1788,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get rpRelayTitle => 'Pack inaonekana vibaya?';
 
   @override
-  String get rpRelayBody => 'Relay huhifadhi pakiti zilizochanganywa kwa saa 1. Kulazimisha muunganiko mpya mapema, badilisha kidogo URL ya pakiti (mfano ongeza ?v=2 mwishoni) na uhifadhi — hii humpa relay ufunguo mpya wa akiba.';
+  String get rpRelayBody => 'Relay huhifadhi pakiti iliyounganishwa kwa saa 1 ukitumia URL ya overlay kama ufunguo wa akiba. Kulazimisha muunganiko mpya: badilisha kidogo URL ya pakiti (mfano ongeza ?v=2) na uhifadhi. Kisha futa pia akiba ya pakiti ya Minecraft — pakiti iliyounganishwa bado inatumia UUID ya seva, kwa hivyo Minecraft vinginevyo itaonyesha toleo la zamani kutoka akibani.';
 
   @override
   String get rpWorksGithubHint => 'Kiungo cha kupakua moja kwa moja — daima kinafikiwa';
@@ -1791,5 +1809,20 @@ class AppLocalizationsSw extends AppLocalizations {
   String get rpNoEncryptedHint => 'MCCompanion haiwezi kuchanganya maudhui ya pakiti zilizosimbwa';
 
   @override
-  String get rpClearWhy => 'Minecraft inahifadhi pakiti za rasilimali kwa ndani kwa kutumia kitambulisho chake cha kipekee. MCCompanion inapochanganya pakiti yako na ile ya seva, inapata kitambulisho kipya. Ikiwa Minecraft tayari imehifadhi toleo la zamani, haitapakua jipya — ndiyo maana unahitaji kwanza kufuta akiba.';
+  String get rpClearWhy => 'Minecraft huhifadhi pakiti za rasilimali kwa UUID zao. Pakiti iliyounganishwa inabaki na UUID ya asili ya seva — ikiwa Minecraft tayari imehifadhi pakiti ya seva kutoka kipindi kilichopita (kabla ya MCCompanion kuwezeshwa), haitapakua toleo jipya lililounganishwa. Futa akiba ili Minecraft ipakue pakiti mpya iliyounganishwa.';
+
+  @override
+  String get rpUploadTab => 'Upload';
+
+  @override
+  String get rpUrlTab => 'URL';
+
+  @override
+  String get rpUploadButton => 'Tap to select your pack';
+
+  @override
+  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+
+  @override
+  String get rpUploading => 'Uploading...';
 }
