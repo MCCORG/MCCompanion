@@ -1825,4 +1825,55 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get rpUploading => 'Uploading...';
+
+  @override
+  String get rpMergerTitle => 'RP মার্জার';
+
+  @override
+  String get rpMergerSubtitle => 'সর্বোচ্চ ৪টি রিসোর্স প্যাক একত্রিত করুন';
+
+  @override
+  String get rpMergerPriorityHint => 'শীর্ষ প্যাকের সর্বোচ্চ অগ্রাধিকার — তার ফাইলগুলো দ্বন্দ্বে জেতে।';
+
+  @override
+  String get rpMergerTopBadge => 'শীর্ষ';
+
+  @override
+  String get rpMergerAddPacks => 'রিসোর্স প্যাক যোগ করুন';
+
+  @override
+  String rpMergerAddAnother(int current) {
+    return 'আরেকটি প্যাক যোগ করুন ($current/4)';
+  }
+
+  @override
+  String get rpMergerFileTypes => '.zip বা .mcpack';
+
+  @override
+  String get rpMergerMerging => 'একত্রিত হচ্ছে…';
+
+  @override
+  String rpMergerButton(int count) {
+    return '$countটি প্যাক একত্রিত করুন';
+  }
+
+  @override
+  String get rpMergerComplete => 'একত্রীকরণ সম্পন্ন!';
+
+  @override
+  String rpMergerConflicts(int count) {
+    return '$countটি দ্বন্দ্ব সমাধান হয়েছে — শীর্ষ প্যাক জিতেছে।';
+  }
+
+  @override
+  String get rpMergerSetActive => 'সক্রিয় রিসোর্স প্যাক হিসেবে সেট করুন';
+
+  @override
+  String get rpMergerSetActiveToast => 'সক্রিয় রিসোর্স প্যাক হিসেবে সেট করা হয়েছে';
+
+  @override
+  String get rpMergerOpenButton => 'রিসোর্স প্যাক একত্রিত করুন';
+
+  @override
+  String get rpMergerOpenSubtitle => '২-৪টি প্যাক একটিতে একত্রিত করুন';
 }

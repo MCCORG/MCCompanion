@@ -40,6 +40,8 @@ dependencies:
   flutter_colorpicker: ^1.1.0
   in_app_review: ^2.0.9
   palette_generator: ^0.3.3
+  archive: ^4.0.9
+  desktop_drop: ^0.4.4
 
 dev_dependencies:
   flutter_test:

@@ -1825,4 +1825,55 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get rpUploading => 'Uploading...';
+
+  @override
+  String get rpMergerTitle => 'Fusão de RP';
+
+  @override
+  String get rpMergerSubtitle => 'Combine até 4 pacotes de recursos';
+
+  @override
+  String get rpMergerPriorityHint => 'O pacote do topo tem maior prioridade — seus arquivos vencem conflitos.';
+
+  @override
+  String get rpMergerTopBadge => 'TOPO';
+
+  @override
+  String get rpMergerAddPacks => 'Adicionar pacotes de recursos';
+
+  @override
+  String rpMergerAddAnother(int current) {
+    return 'Adicionar outro pacote ($current/4)';
+  }
+
+  @override
+  String get rpMergerFileTypes => '.zip ou .mcpack';
+
+  @override
+  String get rpMergerMerging => 'Fundindo…';
+
+  @override
+  String rpMergerButton(int count) {
+    return 'Fundir $count pacotes';
+  }
+
+  @override
+  String get rpMergerComplete => 'Fusão concluída!';
+
+  @override
+  String rpMergerConflicts(int count) {
+    return '$count conflito(s) resolvido(s) — pacote do topo venceu.';
+  }
+
+  @override
+  String get rpMergerSetActive => 'Definir como pacote de recursos ativo';
+
+  @override
+  String get rpMergerSetActiveToast => 'Definido como pacote de recursos ativo';
+
+  @override
+  String get rpMergerOpenButton => 'Fundir pacotes de recursos';
+
+  @override
+  String get rpMergerOpenSubtitle => 'Combine 2–4 pacotes em um';
 }

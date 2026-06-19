@@ -1627,4 +1627,20 @@
   "rpUploadButton": "Tap to select your pack",
   "rpUploadHint": ".mcpack or .zip • max 100 MB",
   "rpUploading": "Uploading..."
+,
+  "rpMergerTitle": "RP 合并工具",
+  "rpMergerSubtitle": "合并最多 4 个资源包",
+  "rpMergerPriorityHint": "最顶部的包优先级最高 — 冲突时其文件获胜。",
+  "rpMergerTopBadge": "顶部",
+  "rpMergerAddPacks": "添加资源包",
+  "rpMergerAddAnother": "再添加一个包 ({current}/4)",
+  "rpMergerFileTypes": ".zip 或 .mcpack",
+  "rpMergerMerging": "合并中…",
+  "rpMergerButton": "合并 {count} 个包",
+  "rpMergerComplete": "合并完成！",
+  "rpMergerConflicts": "已解决 {count} 个冲突 — 顶部包获胜。",
+  "rpMergerSetActive": "设为活跃资源包",
+  "rpMergerSetActiveToast": "已设为活跃资源包",
+  "rpMergerOpenButton": "合并资源包",
+  "rpMergerOpenSubtitle": "将 2–4 个包合并为一个"
 }

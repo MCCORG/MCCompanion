@@ -1825,4 +1825,55 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get rpUploading => 'Uploading...';
+
+  @override
+  String get rpMergerTitle => 'RP Birleştirici';
+
+  @override
+  String get rpMergerSubtitle => '4\'e kadar kaynak paketi birleştir';
+
+  @override
+  String get rpMergerPriorityHint => 'En üstteki paketin en yüksek önceliği var — dosyaları çakışmalarda kazanır.';
+
+  @override
+  String get rpMergerTopBadge => 'ÜST';
+
+  @override
+  String get rpMergerAddPacks => 'Kaynak paketi ekle';
+
+  @override
+  String rpMergerAddAnother(int current) {
+    return 'Başka paket ekle ($current/4)';
+  }
+
+  @override
+  String get rpMergerFileTypes => '.zip veya .mcpack';
+
+  @override
+  String get rpMergerMerging => 'Birleştiriliyor…';
+
+  @override
+  String rpMergerButton(int count) {
+    return '$count paketi birleştir';
+  }
+
+  @override
+  String get rpMergerComplete => 'Birleştirme tamamlandı!';
+
+  @override
+  String rpMergerConflicts(int count) {
+    return '$count çakışma çözüldü — en üstteki paket kazandı.';
+  }
+
+  @override
+  String get rpMergerSetActive => 'Etkin kaynak paketi olarak ayarla';
+
+  @override
+  String get rpMergerSetActiveToast => 'Etkin kaynak paketi olarak ayarlandı';
+
+  @override
+  String get rpMergerOpenButton => 'Kaynak paketleri birleştir';
+
+  @override
+  String get rpMergerOpenSubtitle => '2–4 paketi tek pakette birleştir';
 }

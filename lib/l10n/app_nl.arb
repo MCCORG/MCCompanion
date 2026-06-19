@@ -942,4 +942,20 @@
   "rpUploadButton": "Tap to select your pack",
   "rpUploadHint": ".mcpack or .zip • max 100 MB",
   "rpUploading": "Uploading..."
+,
+  "rpMergerTitle": "RP Merger",
+  "rpMergerSubtitle": "Combineer tot 4 resourcepacks",
+  "rpMergerPriorityHint": "Het bovenste pack heeft de hoogste prioriteit — zijn bestanden winnen conflicten.",
+  "rpMergerTopBadge": "TOP",
+  "rpMergerAddPacks": "Resourcepacks toevoegen",
+  "rpMergerAddAnother": "Nog een pack toevoegen ({current}/4)",
+  "rpMergerFileTypes": ".zip of .mcpack",
+  "rpMergerMerging": "Samenvoegen…",
+  "rpMergerButton": "{count} packs samenvoegen",
+  "rpMergerComplete": "Samenvoegen voltooid!",
+  "rpMergerConflicts": "{count} conflict(en) opgelost — bovenste pack won.",
+  "rpMergerSetActive": "Instellen als actief resourcepack",
+  "rpMergerSetActiveToast": "Ingesteld als actief resourcepack",
+  "rpMergerOpenButton": "Resourcepacks samenvoegen",
+  "rpMergerOpenSubtitle": "Combineer 2-4 packs in een"
 }

@@ -1825,4 +1825,55 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get rpUploading => 'Uploading...';
+
+  @override
+  String get rpMergerTitle => 'RP ضم کنندہ';
+
+  @override
+  String get rpMergerSubtitle => '4 تک ریسورس پیک یکجا کریں';
+
+  @override
+  String get rpMergerPriorityHint => 'سب سے اوپر کا پیک سب سے زیادہ ترجیح رکھتا ہے — اس کی فائلیں تنازعات جیتتی ہیں۔';
+
+  @override
+  String get rpMergerTopBadge => 'سرفہرست';
+
+  @override
+  String get rpMergerAddPacks => 'ریسورس پیک شامل کریں';
+
+  @override
+  String rpMergerAddAnother(int current) {
+    return 'ایک اور پیک شامل کریں ($current/4)';
+  }
+
+  @override
+  String get rpMergerFileTypes => '.zip یا .mcpack';
+
+  @override
+  String get rpMergerMerging => 'ضم ہو رہا ہے…';
+
+  @override
+  String rpMergerButton(int count) {
+    return '$count پیک ضم کریں';
+  }
+
+  @override
+  String get rpMergerComplete => 'ضم کرنا مکمل!';
+
+  @override
+  String rpMergerConflicts(int count) {
+    return '$count تنازع حل ہوئے — سرفہرست پیک جیتا۔';
+  }
+
+  @override
+  String get rpMergerSetActive => 'فعال ریسورس پیک کے طور پر سیٹ کریں';
+
+  @override
+  String get rpMergerSetActiveToast => 'فعال ریسورس پیک کے طور پر سیٹ کیا گیا';
+
+  @override
+  String get rpMergerOpenButton => 'ریسورس پیک ضم کریں';
+
+  @override
+  String get rpMergerOpenSubtitle => '2–4 پیک کو ایک میں ملائیں';
 }

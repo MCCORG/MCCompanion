@@ -1825,4 +1825,55 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get rpUploading => 'Uploading...';
+
+  @override
+  String get rpMergerTitle => 'Fusionador de RP';
+
+  @override
+  String get rpMergerSubtitle => 'Combina hasta 4 paquetes de recursos';
+
+  @override
+  String get rpMergerPriorityHint => 'El paquete superior tiene la mayor prioridad — sus archivos ganan conflictos.';
+
+  @override
+  String get rpMergerTopBadge => 'TOP';
+
+  @override
+  String get rpMergerAddPacks => 'Agregar paquetes de recursos';
+
+  @override
+  String rpMergerAddAnother(int current) {
+    return 'Agregar otro paquete ($current/4)';
+  }
+
+  @override
+  String get rpMergerFileTypes => '.zip o .mcpack';
+
+  @override
+  String get rpMergerMerging => 'Fusionando…';
+
+  @override
+  String rpMergerButton(int count) {
+    return 'Fusionar $count paquetes';
+  }
+
+  @override
+  String get rpMergerComplete => '¡Fusión completa!';
+
+  @override
+  String rpMergerConflicts(int count) {
+    return '$count conflicto(s) resuelto(s) — ganó el paquete superior.';
+  }
+
+  @override
+  String get rpMergerSetActive => 'Establecer como paquete de recursos activo';
+
+  @override
+  String get rpMergerSetActiveToast => 'Establecido como paquete de recursos activo';
+
+  @override
+  String get rpMergerOpenButton => 'Fusionar paquetes de recursos';
+
+  @override
+  String get rpMergerOpenSubtitle => 'Combina 2–4 paquetes en uno';
 }

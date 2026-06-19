@@ -1627,4 +1627,20 @@
   "rpUploadButton": "Tap to select your pack",
   "rpUploadHint": ".mcpack or .zip • max 100 MB",
   "rpUploading": "Uploading..."
+,
+  "rpMergerTitle": "Слияние RP",
+  "rpMergerSubtitle": "Объединить до 4 ресурс-паков",
+  "rpMergerPriorityHint": "Верхний пак имеет наивысший приоритет — его файлы побеждают в конфликтах.",
+  "rpMergerTopBadge": "ТОП",
+  "rpMergerAddPacks": "Добавить ресурс-паки",
+  "rpMergerAddAnother": "Добавить ещё пак ({current}/4)",
+  "rpMergerFileTypes": ".zip или .mcpack",
+  "rpMergerMerging": "Слияние…",
+  "rpMergerButton": "Объединить {count} пака",
+  "rpMergerComplete": "Слияние завершено!",
+  "rpMergerConflicts": "Разрешено конфликтов: {count} — победил верхний пак.",
+  "rpMergerSetActive": "Сделать активным ресурс-паком",
+  "rpMergerSetActiveToast": "Установлен как активный ресурс-пак",
+  "rpMergerOpenButton": "Объединить ресурс-паки",
+  "rpMergerOpenSubtitle": "Объедините 2–4 пака в один"
 }

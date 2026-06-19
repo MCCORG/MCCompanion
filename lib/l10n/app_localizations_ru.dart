@@ -1825,4 +1825,55 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get rpUploading => 'Uploading...';
+
+  @override
+  String get rpMergerTitle => 'Слияние RP';
+
+  @override
+  String get rpMergerSubtitle => 'Объединить до 4 ресурс-паков';
+
+  @override
+  String get rpMergerPriorityHint => 'Верхний пак имеет наивысший приоритет — его файлы побеждают в конфликтах.';
+
+  @override
+  String get rpMergerTopBadge => 'ТОП';
+
+  @override
+  String get rpMergerAddPacks => 'Добавить ресурс-паки';
+
+  @override
+  String rpMergerAddAnother(int current) {
+    return 'Добавить ещё пак ($current/4)';
+  }
+
+  @override
+  String get rpMergerFileTypes => '.zip или .mcpack';
+
+  @override
+  String get rpMergerMerging => 'Слияние…';
+
+  @override
+  String rpMergerButton(int count) {
+    return 'Объединить $count пака';
+  }
+
+  @override
+  String get rpMergerComplete => 'Слияние завершено!';
+
+  @override
+  String rpMergerConflicts(int count) {
+    return 'Разрешено конфликтов: $count — победил верхний пак.';
+  }
+
+  @override
+  String get rpMergerSetActive => 'Сделать активным ресурс-паком';
+
+  @override
+  String get rpMergerSetActiveToast => 'Установлен как активный ресурс-пак';
+
+  @override
+  String get rpMergerOpenButton => 'Объединить ресурс-паки';
+
+  @override
+  String get rpMergerOpenSubtitle => 'Объедините 2–4 пака в один';
 }

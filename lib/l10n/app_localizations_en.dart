@@ -1825,4 +1825,55 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get rpUploading => 'Uploading...';
+
+  @override
+  String get rpMergerTitle => 'RP Merger';
+
+  @override
+  String get rpMergerSubtitle => 'Combine up to 4 resource packs';
+
+  @override
+  String get rpMergerPriorityHint => 'Top pack has highest priority — its files win conflicts.';
+
+  @override
+  String get rpMergerTopBadge => 'TOP';
+
+  @override
+  String get rpMergerAddPacks => 'Add resource packs';
+
+  @override
+  String rpMergerAddAnother(int current) {
+    return 'Add another pack ($current/4)';
+  }
+
+  @override
+  String get rpMergerFileTypes => '.zip or .mcpack';
+
+  @override
+  String get rpMergerMerging => 'Merging…';
+
+  @override
+  String rpMergerButton(int count) {
+    return 'Merge $count packs';
+  }
+
+  @override
+  String get rpMergerComplete => 'Merge complete!';
+
+  @override
+  String rpMergerConflicts(int count) {
+    return '$count conflict(s) resolved — top pack won.';
+  }
+
+  @override
+  String get rpMergerSetActive => 'Set as active resource pack';
+
+  @override
+  String get rpMergerSetActiveToast => 'Set as active resource pack';
+
+  @override
+  String get rpMergerOpenButton => 'Merge resource packs';
+
+  @override
+  String get rpMergerOpenSubtitle => 'Combine 2–4 packs into one';
 }

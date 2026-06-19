@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:desktop_drop/desktop_drop.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../constants/app_constants.dart';
+import 'rp_merger_screen.dart';
 import '../l10n/app_localizations.dart';
 import '../services/auth_service.dart';
 import '../theme/app_theme.dart';
@@ -11,7 +13,7 @@ import '../util/resource_pack_prefs.dart';
 import '../widgets/components/app_toast.dart';
 import '../widgets/components/swipe_back.dart';
 
-enum _InputMode { upload, url }
+enum _InputMode { upload, url, merge }
 
 class ResourcePackScreen extends StatefulWidget {
   final VoidCallback onBack;
@@ -31,6 +33,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   String? _uploadedFilename;
   String? _uploadedUrl;
   bool _uploading = false;
+  bool _isDragging = false;
   double _uploadProgress = 0;
 
   @override
@@ -81,25 +84,21 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     );
     if (result == null || result.files.isEmpty) return;
     final file = result.files.first;
-    final path = file.path;
-    if (path == null) return;
+    if (file.path == null) return;
+    await _uploadFile(file.path!, file.name);
+  }
 
-    setState(() {
-      _uploading = true;
-      _uploadProgress = 0;
-    });
-
+  Future<void> _uploadFile(String path, String name) async {
+    setState(() { _uploading = true; _uploadProgress = 0; });
     try {
       final token = await AuthService.getIdToken();
       final bytes = await File(path).readAsBytes();
       final request = http.MultipartRequest(
         'POST',
-        Uri.parse('${AppConstants.apiBase}/resource-pack/upload'),
+        Uri.parse('${AppConstants.apiBase}/api/resource-pack/upload'),
       );
       if (token != null) request.headers['Authorization'] = 'Bearer $token';
-      request.files.add(
-        http.MultipartFile.fromBytes('pack', bytes, filename: file.name),
-      );
+      request.files.add(http.MultipartFile.fromBytes('pack', bytes, filename: name));
 
       final streamed = await request.send();
       final body = await streamed.stream.bytesToString();
@@ -107,43 +106,19 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
       if (streamed.statusCode == 200) {
         final data = jsonDecode(body) as Map<String, dynamic>;
         final url = data['url'] as String;
-        await ResourcePackPrefs.save(
-          url: url,
-          enabled: _enabled,
-          filename: file.name,
-          isUpload: true,
-        );
+        await ResourcePackPrefs.save(url: url, enabled: _enabled, filename: name, isUpload: true);
         if (!mounted) return;
-        setState(() {
-          _uploadedUrl = url;
-          _uploadedFilename = file.name;
-          _uploading = false;
-        });
-        AppToast.show(
-          context,
-          message: AppLocalizations.of(context)!.rpToastSaved,
-          icon: Icons.check_rounded,
-          color: AppTheme.accent,
-        );
+        setState(() { _uploadedUrl = url; _uploadedFilename = name; _uploading = false; });
+        AppToast.show(context, message: AppLocalizations.of(context)!.rpToastSaved, icon: Icons.check_rounded, color: AppTheme.accent);
       } else {
         if (!mounted) return;
         setState(() => _uploading = false);
-        AppToast.show(
-          context,
-          message: 'Upload failed (${streamed.statusCode})',
-          icon: Icons.error_outline_rounded,
-          color: AppTheme.error,
-        );
+        AppToast.show(context, message: 'Upload failed (${streamed.statusCode})', icon: Icons.error_outline_rounded, color: AppTheme.error);
       }
     } catch (e) {
       if (!mounted) return;
       setState(() => _uploading = false);
-      AppToast.show(
-        context,
-        message: 'Upload failed: $e',
-        icon: Icons.error_outline_rounded,
-        color: AppTheme.error,
-      );
+      AppToast.show(context, message: 'Upload failed: $e', icon: Icons.error_outline_rounded, color: AppTheme.error);
     }
   }
 
@@ -292,7 +267,6 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
       onBack: widget.onBack,
       child: Column(
       children: [
-        // Nav bar
         Container(
           decoration: BoxDecoration(
             color: AppTheme.surface,
@@ -344,7 +318,6 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                       children: [
                         const SizedBox(height: 20),
 
-                        // Description
                         Text(
                           l.rpExplanation,
                           style: TextStyle(
@@ -356,7 +329,6 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
 
                         const SizedBox(height: 20),
 
-                        // Upload / URL tab toggle
                         Container(
                           decoration: BoxDecoration(
                             color: AppTheme.surfaceRaised,
@@ -370,15 +342,19 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                                 label: l.rpUploadTab,
                                 icon: Icons.upload_rounded,
                                 selected: _mode == _InputMode.upload,
-                                onTap: () =>
-                                    setState(() => _mode = _InputMode.upload),
+                                onTap: () => setState(() => _mode = _InputMode.upload),
                               ),
                               _Tab(
                                 label: l.rpUrlTab,
                                 icon: Icons.link_rounded,
                                 selected: _mode == _InputMode.url,
-                                onTap: () =>
-                                    setState(() => _mode = _InputMode.url),
+                                onTap: () => setState(() => _mode = _InputMode.url),
+                              ),
+                              _Tab(
+                                label: l.rpMergerTitle,
+                                icon: Icons.merge_rounded,
+                                selected: _mode == _InputMode.merge,
+                                onTap: () => setState(() => _mode = _InputMode.merge),
                               ),
                             ],
                           ),
@@ -386,13 +362,22 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
 
                         const SizedBox(height: 12),
 
-                        // Content area
                         if (_mode == _InputMode.upload) _buildUploadSection(l),
                         if (_mode == _InputMode.url) _buildUrlSection(l),
+                        Offstage(
+                          offstage: _mode != _InputMode.merge,
+                          child: RpMergerWidget(
+                            key: const ValueKey('merger'),
+                            onActivated: (url, filename) {
+                              setState(() { _uploadedUrl = url; _uploadedFilename = filename; _mode = _InputMode.upload; });
+                              AppToast.show(context, message: AppLocalizations.of(context)!.rpMergerSetActiveToast, icon: Icons.check_rounded, color: AppTheme.accent);
+                            },
+                          ),
+                        ),
 
+                        if (_mode != _InputMode.merge) ...[
                         const SizedBox(height: 16),
 
-                        // Enable toggle
                         Container(
                           decoration: BoxDecoration(
                             color: AppTheme.surfaceRaised,
@@ -432,8 +417,8 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                             ],
                           ),
                         ),
+                        ],
 
-                        // Save button (URL mode only)
                         if (_mode == _InputMode.url) ...[
                           const SizedBox(height: 12),
                           SizedBox(
@@ -459,7 +444,6 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
 
                         const SizedBox(height: 28),
 
-                        // Info rows
                         Container(
                           decoration: BoxDecoration(
                             color: AppTheme.surfaceRaised,
@@ -692,69 +676,78 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   }
 
   Widget _buildUploadButton(AppLocalizations l) {
-    return GestureDetector(
-      onTap: _uploading ? null : _pickAndUpload,
-      behavior: HitTestBehavior.opaque,
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.symmetric(vertical: 28),
-        decoration: BoxDecoration(
-          color: AppTheme.surfaceRaised,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: _uploading
-                ? AppTheme.accent.withValues(alpha: 0.5)
-                : AppTheme.borderGray,
-            width: _uploading ? 1.5 : 1,
+    final active = _isDragging && !_uploading;
+    return DropTarget(
+      onDragEntered: (_) => setState(() => _isDragging = true),
+      onDragExited: (_) => setState(() => _isDragging = false),
+      onDragDone: (detail) {
+        setState(() => _isDragging = false);
+        if (_uploading) return;
+        final file = detail.files.firstWhere(
+          (f) => f.name.endsWith('.zip') || f.name.endsWith('.mcpack'),
+          orElse: () => detail.files.first,
+        );
+        if (!file.name.endsWith('.zip') && !file.name.endsWith('.mcpack')) return;
+        _uploadFile(file.path, file.name);
+      },
+      child: GestureDetector(
+        onTap: _uploading ? null : _pickAndUpload,
+        behavior: HitTestBehavior.opaque,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 150),
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(vertical: 28),
+          decoration: BoxDecoration(
+            color: active ? AppTheme.accent.withValues(alpha: 0.06) : AppTheme.surfaceRaised,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: active
+                  ? AppTheme.accent.withValues(alpha: 0.6)
+                  : _uploading
+                      ? AppTheme.accent.withValues(alpha: 0.5)
+                      : AppTheme.borderGray,
+              width: active || _uploading ? 1.5 : 1,
+            ),
           ),
+          child: _uploading
+              ? Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(
+                      width: 28,
+                      height: 28,
+                      child: CircularProgressIndicator(
+                        value: _uploadProgress > 0 ? _uploadProgress : null,
+                        strokeWidth: 2.5,
+                        color: AppTheme.accent,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Text(l.rpUploading, style: TextStyle(color: AppTheme.textSecondary, fontSize: 13)),
+                  ],
+                )
+              : Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      active ? Icons.file_download_rounded : Icons.upload_file_rounded,
+                      color: active ? AppTheme.accent : AppTheme.textMuted,
+                      size: 28,
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      active ? 'Drop to upload' : l.rpUploadButton,
+                      style: TextStyle(
+                        color: active ? AppTheme.accent : AppTheme.textPrimary,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 3),
+                    Text(l.rpUploadHint, style: TextStyle(color: AppTheme.textMuted, fontSize: 12)),
+                  ],
+                ),
         ),
-        child: _uploading
-            ? Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(
-                    width: 28,
-                    height: 28,
-                    child: CircularProgressIndicator(
-                      value: _uploadProgress > 0 ? _uploadProgress : null,
-                      strokeWidth: 2.5,
-                      color: AppTheme.accent,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    l.rpUploading,
-                    style: TextStyle(
-                      color: AppTheme.textSecondary,
-                      fontSize: 13,
-                    ),
-                  ),
-                ],
-              )
-            : Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    Icons.upload_file_rounded,
-                    color: AppTheme.textMuted,
-                    size: 28,
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    l.rpUploadButton,
-                    style: TextStyle(
-                      color: AppTheme.textPrimary,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(height: 3),
-                  Text(
-                    l.rpUploadHint,
-                    style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
-                  ),
-                ],
-              ),
       ),
     );
   }

@@ -1627,4 +1627,20 @@
   "rpUploadButton": "Tap to select your pack",
   "rpUploadHint": ".mcpack or .zip • max 100 MB",
   "rpUploading": "Uploading..."
+,
+  "rpMergerTitle": "RP Birleştirici",
+  "rpMergerSubtitle": "4'e kadar kaynak paketi birleştir",
+  "rpMergerPriorityHint": "En üstteki paketin en yüksek önceliği var — dosyaları çakışmalarda kazanır.",
+  "rpMergerTopBadge": "ÜST",
+  "rpMergerAddPacks": "Kaynak paketi ekle",
+  "rpMergerAddAnother": "Başka paket ekle ({current}/4)",
+  "rpMergerFileTypes": ".zip veya .mcpack",
+  "rpMergerMerging": "Birleştiriliyor…",
+  "rpMergerButton": "{count} paketi birleştir",
+  "rpMergerComplete": "Birleştirme tamamlandı!",
+  "rpMergerConflicts": "{count} çakışma çözüldü — en üstteki paket kazandı.",
+  "rpMergerSetActive": "Etkin kaynak paketi olarak ayarla",
+  "rpMergerSetActiveToast": "Etkin kaynak paketi olarak ayarlandı",
+  "rpMergerOpenButton": "Kaynak paketleri birleştir",
+  "rpMergerOpenSubtitle": "2–4 paketi tek pakette birleştir"
 }

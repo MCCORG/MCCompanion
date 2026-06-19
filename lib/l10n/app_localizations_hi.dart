@@ -1825,4 +1825,55 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get rpUploading => 'Uploading...';
+
+  @override
+  String get rpMergerTitle => 'RP मर्जर';
+
+  @override
+  String get rpMergerSubtitle => '4 तक रिसोर्स पैक संयोजित करें';
+
+  @override
+  String get rpMergerPriorityHint => 'शीर्ष पैक की उच्चतम प्राथमिकता है — इसकी फ़ाइलें विवादों में जीतती हैं।';
+
+  @override
+  String get rpMergerTopBadge => 'शीर्ष';
+
+  @override
+  String get rpMergerAddPacks => 'रिसोर्स पैक जोड़ें';
+
+  @override
+  String rpMergerAddAnother(int current) {
+    return 'एक और पैक जोड़ें ($current/4)';
+  }
+
+  @override
+  String get rpMergerFileTypes => '.zip या .mcpack';
+
+  @override
+  String get rpMergerMerging => 'मर्ज हो रहा है…';
+
+  @override
+  String rpMergerButton(int count) {
+    return '$count पैक मर्ज करें';
+  }
+
+  @override
+  String get rpMergerComplete => 'मर्ज पूर्ण!';
+
+  @override
+  String rpMergerConflicts(int count) {
+    return '$count टकराव हल हुए — शीर्ष पैक जीता।';
+  }
+
+  @override
+  String get rpMergerSetActive => 'सक्रिय रिसोर्स पैक के रूप में सेट करें';
+
+  @override
+  String get rpMergerSetActiveToast => 'सक्रिय रिसोर्स पैक के रूप में सेट किया गया';
+
+  @override
+  String get rpMergerOpenButton => 'रिसोर्स पैक मर्ज करें';
+
+  @override
+  String get rpMergerOpenSubtitle => '2–4 पैक को एक में संयोजित करें';
 }

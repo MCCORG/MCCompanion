@@ -1825,4 +1825,55 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get rpUploading => 'Uploading...';
+
+  @override
+  String get rpMergerTitle => 'Muunganisho wa RP';
+
+  @override
+  String get rpMergerSubtitle => 'Unganisha hadi pakiti 4 za rasilimali';
+
+  @override
+  String get rpMergerPriorityHint => 'Pakiti ya juu ina kipaumbele zaidi — faili zake zinashinda migogoro.';
+
+  @override
+  String get rpMergerTopBadge => 'JUU';
+
+  @override
+  String get rpMergerAddPacks => 'Ongeza pakiti za rasilimali';
+
+  @override
+  String rpMergerAddAnother(int current) {
+    return 'Ongeza pakiti nyingine ($current/4)';
+  }
+
+  @override
+  String get rpMergerFileTypes => '.zip au .mcpack';
+
+  @override
+  String get rpMergerMerging => 'Inaunganisha…';
+
+  @override
+  String rpMergerButton(int count) {
+    return 'Unganisha pakiti $count';
+  }
+
+  @override
+  String get rpMergerComplete => 'Uunganisho umekamilika!';
+
+  @override
+  String rpMergerConflicts(int count) {
+    return 'Migogoro $count imetatuliwa — pakiti ya juu ilishinda.';
+  }
+
+  @override
+  String get rpMergerSetActive => 'Weka kama pakiti ya rasilimali inayotumika';
+
+  @override
+  String get rpMergerSetActiveToast => 'Imewekwa kama pakiti ya rasilimali inayotumika';
+
+  @override
+  String get rpMergerOpenButton => 'Unganisha pakiti za rasilimali';
+
+  @override
+  String get rpMergerOpenSubtitle => 'Unganisha pakiti 2–4 kuwa moja';
 }

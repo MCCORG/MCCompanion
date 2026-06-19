@@ -1825,4 +1825,55 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get rpUploading => 'Uploading...';
+
+  @override
+  String get rpMergerTitle => 'Penggabung RP';
+
+  @override
+  String get rpMergerSubtitle => 'Gabungkan hingga 4 paket sumber daya';
+
+  @override
+  String get rpMergerPriorityHint => 'Paket teratas memiliki prioritas tertinggi — filenya menang dalam konflik.';
+
+  @override
+  String get rpMergerTopBadge => 'ATAS';
+
+  @override
+  String get rpMergerAddPacks => 'Tambah paket sumber daya';
+
+  @override
+  String rpMergerAddAnother(int current) {
+    return 'Tambah paket lain ($current/4)';
+  }
+
+  @override
+  String get rpMergerFileTypes => '.zip atau .mcpack';
+
+  @override
+  String get rpMergerMerging => 'Menggabungkan…';
+
+  @override
+  String rpMergerButton(int count) {
+    return 'Gabungkan $count paket';
+  }
+
+  @override
+  String get rpMergerComplete => 'Penggabungan selesai!';
+
+  @override
+  String rpMergerConflicts(int count) {
+    return '$count konflik terselesaikan — paket teratas menang.';
+  }
+
+  @override
+  String get rpMergerSetActive => 'Jadikan paket sumber daya aktif';
+
+  @override
+  String get rpMergerSetActiveToast => 'Dijadikan paket sumber daya aktif';
+
+  @override
+  String get rpMergerOpenButton => 'Gabungkan paket sumber daya';
+
+  @override
+  String get rpMergerOpenSubtitle => 'Gabungkan 2–4 paket menjadi satu';
 }

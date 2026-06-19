@@ -1627,4 +1627,20 @@
   "rpUploadButton": "Tap to select your pack",
   "rpUploadHint": ".mcpack or .zip • max 100 MB",
   "rpUploading": "Uploading..."
+,
+  "rpMergerTitle": "RP মার্জার",
+  "rpMergerSubtitle": "সর্বোচ্চ ৪টি রিসোর্স প্যাক একত্রিত করুন",
+  "rpMergerPriorityHint": "শীর্ষ প্যাকের সর্বোচ্চ অগ্রাধিকার — তার ফাইলগুলো দ্বন্দ্বে জেতে।",
+  "rpMergerTopBadge": "শীর্ষ",
+  "rpMergerAddPacks": "রিসোর্স প্যাক যোগ করুন",
+  "rpMergerAddAnother": "আরেকটি প্যাক যোগ করুন ({current}/4)",
+  "rpMergerFileTypes": ".zip বা .mcpack",
+  "rpMergerMerging": "একত্রিত হচ্ছে…",
+  "rpMergerButton": "{count}টি প্যাক একত্রিত করুন",
+  "rpMergerComplete": "একত্রীকরণ সম্পন্ন!",
+  "rpMergerConflicts": "{count}টি দ্বন্দ্ব সমাধান হয়েছে — শীর্ষ প্যাক জিতেছে।",
+  "rpMergerSetActive": "সক্রিয় রিসোর্স প্যাক হিসেবে সেট করুন",
+  "rpMergerSetActiveToast": "সক্রিয় রিসোর্স প্যাক হিসেবে সেট করা হয়েছে",
+  "rpMergerOpenButton": "রিসোর্স প্যাক একত্রিত করুন",
+  "rpMergerOpenSubtitle": "২-৪টি প্যাক একটিতে একত্রিত করুন"
 }

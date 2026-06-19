@@ -3602,6 +3602,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Uploading...'**
   String get rpUploading;
+
+  /// No description provided for @rpMergerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'RP Merger'**
+  String get rpMergerTitle;
+
+  /// No description provided for @rpMergerSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Combine up to 4 resource packs'**
+  String get rpMergerSubtitle;
+
+  /// No description provided for @rpMergerPriorityHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Top pack has highest priority — its files win conflicts.'**
+  String get rpMergerPriorityHint;
+
+  /// No description provided for @rpMergerTopBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'TOP'**
+  String get rpMergerTopBadge;
+
+  /// No description provided for @rpMergerAddPacks.
+  ///
+  /// In en, this message translates to:
+  /// **'Add resource packs'**
+  String get rpMergerAddPacks;
+
+  /// No description provided for @rpMergerAddAnother.
+  ///
+  /// In en, this message translates to:
+  /// **'Add another pack ({current}/4)'**
+  String rpMergerAddAnother(int current);
+
+  /// No description provided for @rpMergerFileTypes.
+  ///
+  /// In en, this message translates to:
+  /// **'.zip or .mcpack'**
+  String get rpMergerFileTypes;
+
+  /// No description provided for @rpMergerMerging.
+  ///
+  /// In en, this message translates to:
+  /// **'Merging…'**
+  String get rpMergerMerging;
+
+  /// No description provided for @rpMergerButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Merge {count} packs'**
+  String rpMergerButton(int count);
+
+  /// No description provided for @rpMergerComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Merge complete!'**
+  String get rpMergerComplete;
+
+  /// No description provided for @rpMergerConflicts.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} conflict(s) resolved — top pack won.'**
+  String rpMergerConflicts(int count);
+
+  /// No description provided for @rpMergerSetActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Set as active resource pack'**
+  String get rpMergerSetActive;
+
+  /// No description provided for @rpMergerSetActiveToast.
+  ///
+  /// In en, this message translates to:
+  /// **'Set as active resource pack'**
+  String get rpMergerSetActiveToast;
+
+  /// No description provided for @rpMergerOpenButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Merge resource packs'**
+  String get rpMergerOpenButton;
+
+  /// No description provided for @rpMergerOpenSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Combine 2–4 packs into one'**
+  String get rpMergerOpenSubtitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

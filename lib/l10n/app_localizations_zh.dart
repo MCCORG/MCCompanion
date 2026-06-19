@@ -1825,4 +1825,55 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get rpUploading => 'Uploading...';
+
+  @override
+  String get rpMergerTitle => 'RP 合并工具';
+
+  @override
+  String get rpMergerSubtitle => '合并最多 4 个资源包';
+
+  @override
+  String get rpMergerPriorityHint => '最顶部的包优先级最高 — 冲突时其文件获胜。';
+
+  @override
+  String get rpMergerTopBadge => '顶部';
+
+  @override
+  String get rpMergerAddPacks => '添加资源包';
+
+  @override
+  String rpMergerAddAnother(int current) {
+    return '再添加一个包 ($current/4)';
+  }
+
+  @override
+  String get rpMergerFileTypes => '.zip 或 .mcpack';
+
+  @override
+  String get rpMergerMerging => '合并中…';
+
+  @override
+  String rpMergerButton(int count) {
+    return '合并 $count 个包';
+  }
+
+  @override
+  String get rpMergerComplete => '合并完成！';
+
+  @override
+  String rpMergerConflicts(int count) {
+    return '已解决 $count 个冲突 — 顶部包获胜。';
+  }
+
+  @override
+  String get rpMergerSetActive => '设为活跃资源包';
+
+  @override
+  String get rpMergerSetActiveToast => '已设为活跃资源包';
+
+  @override
+  String get rpMergerOpenButton => '合并资源包';
+
+  @override
+  String get rpMergerOpenSubtitle => '将 2–4 个包合并为一个';
 }

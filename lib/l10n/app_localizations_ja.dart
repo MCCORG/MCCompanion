@@ -1825,4 +1825,55 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get rpUploading => 'Uploading...';
+
+  @override
+  String get rpMergerTitle => 'RPマージャー';
+
+  @override
+  String get rpMergerSubtitle => '最大4つのリソースパックを統合';
+
+  @override
+  String get rpMergerPriorityHint => '最上位のパックが最高優先度 — そのファイルが競合に勝ちます。';
+
+  @override
+  String get rpMergerTopBadge => 'TOP';
+
+  @override
+  String get rpMergerAddPacks => 'リソースパックを追加';
+
+  @override
+  String rpMergerAddAnother(int current) {
+    return '別のパックを追加 ($current/4)';
+  }
+
+  @override
+  String get rpMergerFileTypes => '.zip または .mcpack';
+
+  @override
+  String get rpMergerMerging => 'マージ中…';
+
+  @override
+  String rpMergerButton(int count) {
+    return '$count個のパックをマージ';
+  }
+
+  @override
+  String get rpMergerComplete => 'マージ完了！';
+
+  @override
+  String rpMergerConflicts(int count) {
+    return '$count件の競合が解決 — 最上位パックが勝ちました。';
+  }
+
+  @override
+  String get rpMergerSetActive => 'アクティブなリソースパックに設定';
+
+  @override
+  String get rpMergerSetActiveToast => 'アクティブなリソースパックに設定しました';
+
+  @override
+  String get rpMergerOpenButton => 'リソースパックをマージ';
+
+  @override
+  String get rpMergerOpenSubtitle => '2〜4個のパックを1つに統合';
 }

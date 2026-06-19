@@ -1825,4 +1825,55 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get rpUploading => 'Uploading...';
+
+  @override
+  String get rpMergerTitle => 'Fusionneur de RP';
+
+  @override
+  String get rpMergerSubtitle => 'Combinez jusqu\'à 4 packs de ressources';
+
+  @override
+  String get rpMergerPriorityHint => 'Le pack du haut a la priorité la plus haute — ses fichiers gagnent les conflits.';
+
+  @override
+  String get rpMergerTopBadge => 'TOP';
+
+  @override
+  String get rpMergerAddPacks => 'Ajouter des packs de ressources';
+
+  @override
+  String rpMergerAddAnother(int current) {
+    return 'Ajouter un autre pack ($current/4)';
+  }
+
+  @override
+  String get rpMergerFileTypes => '.zip ou .mcpack';
+
+  @override
+  String get rpMergerMerging => 'Fusion en cours…';
+
+  @override
+  String rpMergerButton(int count) {
+    return 'Fusionner $count packs';
+  }
+
+  @override
+  String get rpMergerComplete => 'Fusion terminée !';
+
+  @override
+  String rpMergerConflicts(int count) {
+    return '$count conflit(s) résolu(s) — le pack du haut a gagné.';
+  }
+
+  @override
+  String get rpMergerSetActive => 'Définir comme pack de ressources actif';
+
+  @override
+  String get rpMergerSetActiveToast => 'Défini comme pack de ressources actif';
+
+  @override
+  String get rpMergerOpenButton => 'Fusionner les packs de ressources';
+
+  @override
+  String get rpMergerOpenSubtitle => 'Combinez 2–4 packs en un seul';
 }

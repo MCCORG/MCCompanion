@@ -1623,4 +1623,20 @@
   "rpUploadButton": "Tap to select your pack",
   "rpUploadHint": ".mcpack or .zip • max 100 MB",
   "rpUploading": "Uploading..."
+,
+  "rpMergerTitle": "RP ضم کنندہ",
+  "rpMergerSubtitle": "4 تک ریسورس پیک یکجا کریں",
+  "rpMergerPriorityHint": "سب سے اوپر کا پیک سب سے زیادہ ترجیح رکھتا ہے — اس کی فائلیں تنازعات جیتتی ہیں۔",
+  "rpMergerTopBadge": "سرفہرست",
+  "rpMergerAddPacks": "ریسورس پیک شامل کریں",
+  "rpMergerAddAnother": "ایک اور پیک شامل کریں ({current}/4)",
+  "rpMergerFileTypes": ".zip یا .mcpack",
+  "rpMergerMerging": "ضم ہو رہا ہے…",
+  "rpMergerButton": "{count} پیک ضم کریں",
+  "rpMergerComplete": "ضم کرنا مکمل!",
+  "rpMergerConflicts": "{count} تنازع حل ہوئے — سرفہرست پیک جیتا۔",
+  "rpMergerSetActive": "فعال ریسورس پیک کے طور پر سیٹ کریں",
+  "rpMergerSetActiveToast": "فعال ریسورس پیک کے طور پر سیٹ کیا گیا",
+  "rpMergerOpenButton": "ریسورس پیک ضم کریں",
+  "rpMergerOpenSubtitle": "2–4 پیک کو ایک میں ملائیں"
 }

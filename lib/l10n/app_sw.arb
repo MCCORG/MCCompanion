@@ -1623,4 +1623,20 @@
   "rpUploadButton": "Tap to select your pack",
   "rpUploadHint": ".mcpack or .zip • max 100 MB",
   "rpUploading": "Uploading..."
+,
+  "rpMergerTitle": "Muunganisho wa RP",
+  "rpMergerSubtitle": "Unganisha hadi pakiti 4 za rasilimali",
+  "rpMergerPriorityHint": "Pakiti ya juu ina kipaumbele zaidi — faili zake zinashinda migogoro.",
+  "rpMergerTopBadge": "JUU",
+  "rpMergerAddPacks": "Ongeza pakiti za rasilimali",
+  "rpMergerAddAnother": "Ongeza pakiti nyingine ({current}/4)",
+  "rpMergerFileTypes": ".zip au .mcpack",
+  "rpMergerMerging": "Inaunganisha…",
+  "rpMergerButton": "Unganisha pakiti {count}",
+  "rpMergerComplete": "Uunganisho umekamilika!",
+  "rpMergerConflicts": "Migogoro {count} imetatuliwa — pakiti ya juu ilishinda.",
+  "rpMergerSetActive": "Weka kama pakiti ya rasilimali inayotumika",
+  "rpMergerSetActiveToast": "Imewekwa kama pakiti ya rasilimali inayotumika",
+  "rpMergerOpenButton": "Unganisha pakiti za rasilimali",
+  "rpMergerOpenSubtitle": "Unganisha pakiti 2–4 kuwa moja"
 }

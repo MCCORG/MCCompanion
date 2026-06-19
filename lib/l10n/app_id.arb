@@ -1623,4 +1623,20 @@
   "rpUploadButton": "Tap to select your pack",
   "rpUploadHint": ".mcpack or .zip • max 100 MB",
   "rpUploading": "Uploading..."
+,
+  "rpMergerTitle": "Penggabung RP",
+  "rpMergerSubtitle": "Gabungkan hingga 4 paket sumber daya",
+  "rpMergerPriorityHint": "Paket teratas memiliki prioritas tertinggi — filenya menang dalam konflik.",
+  "rpMergerTopBadge": "ATAS",
+  "rpMergerAddPacks": "Tambah paket sumber daya",
+  "rpMergerAddAnother": "Tambah paket lain ({current}/4)",
+  "rpMergerFileTypes": ".zip atau .mcpack",
+  "rpMergerMerging": "Menggabungkan…",
+  "rpMergerButton": "Gabungkan {count} paket",
+  "rpMergerComplete": "Penggabungan selesai!",
+  "rpMergerConflicts": "{count} konflik terselesaikan — paket teratas menang.",
+  "rpMergerSetActive": "Jadikan paket sumber daya aktif",
+  "rpMergerSetActiveToast": "Dijadikan paket sumber daya aktif",
+  "rpMergerOpenButton": "Gabungkan paket sumber daya",
+  "rpMergerOpenSubtitle": "Gabungkan 2–4 paket menjadi satu"
 }

@@ -1825,4 +1825,55 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get rpUploading => 'Uploading...';
+
+  @override
+  String get rpMergerTitle => 'دمج حزم الموارد';
+
+  @override
+  String get rpMergerSubtitle => 'ادمج حتى 4 حزم موارد';
+
+  @override
+  String get rpMergerPriorityHint => 'الحزمة العلوية لها أعلى أولوية — ملفاتها تفوز في النزاعات.';
+
+  @override
+  String get rpMergerTopBadge => 'أعلى';
+
+  @override
+  String get rpMergerAddPacks => 'إضافة حزم موارد';
+
+  @override
+  String rpMergerAddAnother(int current) {
+    return 'إضافة حزمة أخرى ($current/4)';
+  }
+
+  @override
+  String get rpMergerFileTypes => '.zip أو .mcpack';
+
+  @override
+  String get rpMergerMerging => 'جارٍ الدمج…';
+
+  @override
+  String rpMergerButton(int count) {
+    return 'دمج $count حزم';
+  }
+
+  @override
+  String get rpMergerComplete => 'اكتمل الدمج!';
+
+  @override
+  String rpMergerConflicts(int count) {
+    return 'تم حل $count تعارض — فازت الحزمة العلوية.';
+  }
+
+  @override
+  String get rpMergerSetActive => 'تعيين كحزمة موارد نشطة';
+
+  @override
+  String get rpMergerSetActiveToast => 'تم تعيينها كحزمة موارد نشطة';
+
+  @override
+  String get rpMergerOpenButton => 'دمج حزم الموارد';
+
+  @override
+  String get rpMergerOpenSubtitle => 'ادمج 2-4 حزم في واحدة';
 }

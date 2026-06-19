@@ -2055,5 +2055,29 @@
   "rpUploadHint": ".mcpack or .zip • max 100 MB",
   "@rpUploadHint": { "description": "Upload area hint" },
   "rpUploading": "Uploading...",
-  "@rpUploading": { "description": "Shown while upload is in progress" }
+  "@rpUploading": { "description": "Shown while upload is in progress" },
+  "rpMergerTitle": "RP Merger",
+  "rpMergerSubtitle": "Combine up to 4 resource packs",
+  "rpMergerPriorityHint": "Top pack has highest priority — its files win conflicts.",
+  "rpMergerTopBadge": "TOP",
+  "rpMergerAddPacks": "Add resource packs",
+  "rpMergerAddAnother": "Add another pack ({current}/4)",
+  "@rpMergerAddAnother": {
+    "placeholders": { "current": { "type": "int" } }
+  },
+  "rpMergerFileTypes": ".zip or .mcpack",
+  "rpMergerMerging": "Merging…",
+  "rpMergerButton": "Merge {count} packs",
+  "@rpMergerButton": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "rpMergerComplete": "Merge complete!",
+  "rpMergerConflicts": "{count} conflict(s) resolved — top pack won.",
+  "@rpMergerConflicts": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "rpMergerSetActive": "Set as active resource pack",
+  "rpMergerSetActiveToast": "Set as active resource pack",
+  "rpMergerOpenButton": "Merge resource packs",
+  "rpMergerOpenSubtitle": "Combine 2–4 packs into one"
 }

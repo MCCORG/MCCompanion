@@ -1627,4 +1627,20 @@
   "rpUploadButton": "Tap to select your pack",
   "rpUploadHint": ".mcpack or .zip • max 100 MB",
   "rpUploading": "Uploading..."
+,
+  "rpMergerTitle": "Fusão de RP",
+  "rpMergerSubtitle": "Combine até 4 pacotes de recursos",
+  "rpMergerPriorityHint": "O pacote do topo tem maior prioridade — seus arquivos vencem conflitos.",
+  "rpMergerTopBadge": "TOPO",
+  "rpMergerAddPacks": "Adicionar pacotes de recursos",
+  "rpMergerAddAnother": "Adicionar outro pacote ({current}/4)",
+  "rpMergerFileTypes": ".zip ou .mcpack",
+  "rpMergerMerging": "Fundindo…",
+  "rpMergerButton": "Fundir {count} pacotes",
+  "rpMergerComplete": "Fusão concluída!",
+  "rpMergerConflicts": "{count} conflito(s) resolvido(s) — pacote do topo venceu.",
+  "rpMergerSetActive": "Definir como pacote de recursos ativo",
+  "rpMergerSetActiveToast": "Definido como pacote de recursos ativo",
+  "rpMergerOpenButton": "Fundir pacotes de recursos",
+  "rpMergerOpenSubtitle": "Combine 2–4 pacotes em um"
 }

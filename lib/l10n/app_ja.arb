@@ -1627,4 +1627,20 @@
   "rpUploadButton": "Tap to select your pack",
   "rpUploadHint": ".mcpack or .zip • max 100 MB",
   "rpUploading": "Uploading..."
+,
+  "rpMergerTitle": "RPマージャー",
+  "rpMergerSubtitle": "最大4つのリソースパックを統合",
+  "rpMergerPriorityHint": "最上位のパックが最高優先度 — そのファイルが競合に勝ちます。",
+  "rpMergerTopBadge": "TOP",
+  "rpMergerAddPacks": "リソースパックを追加",
+  "rpMergerAddAnother": "別のパックを追加 ({current}/4)",
+  "rpMergerFileTypes": ".zip または .mcpack",
+  "rpMergerMerging": "マージ中…",
+  "rpMergerButton": "{count}個のパックをマージ",
+  "rpMergerComplete": "マージ完了！",
+  "rpMergerConflicts": "{count}件の競合が解決 — 最上位パックが勝ちました。",
+  "rpMergerSetActive": "アクティブなリソースパックに設定",
+  "rpMergerSetActiveToast": "アクティブなリソースパックに設定しました",
+  "rpMergerOpenButton": "リソースパックをマージ",
+  "rpMergerOpenSubtitle": "2〜4個のパックを1つに統合"
 }

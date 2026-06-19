@@ -1627,4 +1627,20 @@
   "rpUploadButton": "Tap to select your pack",
   "rpUploadHint": ".mcpack or .zip • max 100 MB",
   "rpUploading": "Uploading..."
+,
+  "rpMergerTitle": "دمج حزم الموارد",
+  "rpMergerSubtitle": "ادمج حتى 4 حزم موارد",
+  "rpMergerPriorityHint": "الحزمة العلوية لها أعلى أولوية — ملفاتها تفوز في النزاعات.",
+  "rpMergerTopBadge": "أعلى",
+  "rpMergerAddPacks": "إضافة حزم موارد",
+  "rpMergerAddAnother": "إضافة حزمة أخرى ({current}/4)",
+  "rpMergerFileTypes": ".zip أو .mcpack",
+  "rpMergerMerging": "جارٍ الدمج…",
+  "rpMergerButton": "دمج {count} حزم",
+  "rpMergerComplete": "اكتمل الدمج!",
+  "rpMergerConflicts": "تم حل {count} تعارض — فازت الحزمة العلوية.",
+  "rpMergerSetActive": "تعيين كحزمة موارد نشطة",
+  "rpMergerSetActiveToast": "تم تعيينها كحزمة موارد نشطة",
+  "rpMergerOpenButton": "دمج حزم الموارد",
+  "rpMergerOpenSubtitle": "ادمج 2-4 حزم في واحدة"
 }
