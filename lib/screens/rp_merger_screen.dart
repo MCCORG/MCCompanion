@@ -141,11 +141,14 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
   Future<void> _pickPack() async {
     if (_packs.length >= 4) return;
     final result = await FilePicker.platform.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ['zip', 'mcpack'],
+      type: FileType.any,
       allowMultiple: true,
     );
     if (result == null) return;
+    result.files.removeWhere((f) {
+      final n = f.name.toLowerCase();
+      return !n.endsWith('.zip') && !n.endsWith('.mcpack');
+    });
     setState(() => _error = null);
     for (final f in result.files) {
       if (_packs.length >= 4) break;

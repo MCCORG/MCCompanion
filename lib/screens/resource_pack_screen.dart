@@ -79,12 +79,13 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
 
   Future<void> _pickAndUpload() async {
     final result = await FilePicker.platform.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ['mcpack', 'zip'],
+      type: FileType.any,
     );
     if (result == null || result.files.isEmpty) return;
     final file = result.files.first;
     if (file.path == null) return;
+    final name = file.name.toLowerCase();
+    if (!name.endsWith('.zip') && !name.endsWith('.mcpack')) return;
     await _uploadFile(file.path!, file.name);
   }
 
