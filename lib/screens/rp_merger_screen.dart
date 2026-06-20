@@ -143,6 +143,7 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
     final result = await FilePicker.platform.pickFiles(
       type: FileType.any,
       allowMultiple: true,
+      withData: true,
     );
     if (result == null) return;
     result.files.removeWhere((f) {

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:desktop_drop/desktop_drop.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -80,20 +81,21 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   Future<void> _pickAndUpload() async {
     final result = await FilePicker.platform.pickFiles(
       type: FileType.any,
+      withData: true,
     );
     if (result == null || result.files.isEmpty) return;
     final file = result.files.first;
-    if (file.path == null) return;
     final name = file.name.toLowerCase();
     if (!name.endsWith('.zip') && !name.endsWith('.mcpack')) return;
-    await _uploadFile(file.path!, file.name);
+    final bytes = file.bytes ?? (file.path != null ? await File(file.path!).readAsBytes() : null);
+    if (bytes == null) return;
+    await _uploadBytes(bytes, file.name);
   }
 
-  Future<void> _uploadFile(String path, String name) async {
+  Future<void> _uploadBytes(Uint8List bytes, String name) async {
     setState(() { _uploading = true; _uploadProgress = 0; });
     try {
       final token = await AuthService.getIdToken();
-      final bytes = await File(path).readAsBytes();
       final request = http.MultipartRequest(
         'POST',
         Uri.parse('${AppConstants.apiBase}/api/resource-pack/upload'),
@@ -175,6 +177,11 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
         isUpload: true,
       );
     }
+  }
+
+  Future<void> _uploadFromPath(String path, String name) async {
+    final bytes = await File(path).readAsBytes();
+    await _uploadBytes(bytes, name);
   }
 
   void _showDialog(
@@ -689,7 +696,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
           orElse: () => detail.files.first,
         );
         if (!file.name.endsWith('.zip') && !file.name.endsWith('.mcpack')) return;
-        _uploadFile(file.path, file.name);
+        _uploadFromPath(file.path, file.name);
       },
       child: GestureDetector(
         onTap: _uploading ? null : _pickAndUpload,
