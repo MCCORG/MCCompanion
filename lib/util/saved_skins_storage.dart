@@ -23,10 +23,14 @@ class SavedSkinsStorage {
     try {
       final file = await _metaFilePath();
       if (!await file.exists()) return [];
+      final base = await getApplicationDocumentsDirectory();
       final decoded = jsonDecode(await file.readAsString()) as List;
-      return decoded
-          .map((e) => SavedSkin.fromJson(e as Map<String, dynamic>))
-          .toList();
+      return decoded.map((e) {
+        final map = e as Map<String, dynamic>;
+        final id = map['id'] as String;
+        final resolvedPath = '${base.path}/skins/$id.png';
+        return SavedSkin.fromJson({...map, 'filePath': resolvedPath});
+      }).toList();
     } catch (_) {
       return [];
     }

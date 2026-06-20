@@ -14,7 +14,6 @@ class SavedSkin {
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
-    'filePath': filePath,
     'createdAt': createdAt.millisecondsSinceEpoch,
   };
 
