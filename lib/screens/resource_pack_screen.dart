@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:desktop_drop/desktop_drop.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../constants/app_constants.dart';
@@ -10,6 +9,7 @@ import 'rp_merger_screen.dart';
 import '../l10n/app_localizations.dart';
 import '../services/auth_service.dart';
 import '../theme/app_theme.dart';
+import '../util/pack_file_picker.dart';
 import '../util/resource_pack_prefs.dart';
 import '../widgets/components/app_toast.dart';
 import '../widgets/components/swipe_back.dart';
@@ -79,14 +79,9 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   }
 
   Future<void> _pickAndUpload() async {
-    final result = await FilePicker.platform.pickFiles(
-      type: FileType.any,
-      withData: true,
-    );
-    if (result == null || result.files.isEmpty) return;
-    final file = result.files.first;
-    final name = file.name.toLowerCase();
-    if (!name.endsWith('.zip') && !name.endsWith('.mcpack')) return;
+    final files = await pickPackFiles();
+    if (files.isEmpty) return;
+    final file = files.first;
     final bytes = file.bytes ?? (file.path != null ? await File(file.path!).readAsBytes() : null);
     if (bytes == null) return;
     await _uploadBytes(bytes, file.name);

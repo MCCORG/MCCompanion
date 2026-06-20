@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:archive/archive_io.dart';
 import 'package:crypto/crypto.dart';
 import 'package:desktop_drop/desktop_drop.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
@@ -12,6 +11,7 @@ import '../constants/app_constants.dart';
 import '../l10n/app_localizations.dart';
 import '../services/auth_service.dart';
 import '../theme/app_theme.dart';
+import '../util/pack_file_picker.dart';
 import '../util/resource_pack_prefs.dart';
 import '../widgets/components/app_toast.dart';
 
@@ -138,23 +138,37 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
     setState(() => _packs.add(_PackEntry(id: UniqueKey().toString(), path: path, name: name, size: size)));
   }
 
+  Future<void> _addPackFromBytes(List<int> bytes, {required String name, int? size}) async {
+    if (_packs.length >= 4) return;
+    String displayName = name.replaceAll(RegExp(r'\.(zip|mcpack)$', caseSensitive: false), '');
+    final tmp = await getTemporaryDirectory();
+    final tmpFile = File('${tmp.path}/$name');
+    await tmpFile.writeAsBytes(bytes);
+    try {
+      final archive = ZipDecoder().decodeBytes(bytes);
+      for (final entry in archive) {
+        if (entry.name == 'manifest.json' || entry.name.endsWith('/manifest.json')) {
+          final json = jsonDecode(utf8.decode(entry.content as List<int>));
+          final n = json['header']?['name'] ?? json['name'];
+          if (n is String && n.isNotEmpty) { displayName = n; break; }
+        }
+      }
+    } catch (_) {}
+    setState(() => _packs.add(_PackEntry(id: UniqueKey().toString(), path: tmpFile.path, name: displayName, size: size)));
+  }
+
   Future<void> _pickPack() async {
     if (_packs.length >= 4) return;
-    final result = await FilePicker.platform.pickFiles(
-      type: FileType.any,
-      allowMultiple: true,
-      withData: true,
-    );
-    if (result == null) return;
-    result.files.removeWhere((f) {
-      final n = f.name.toLowerCase();
-      return !n.endsWith('.zip') && !n.endsWith('.mcpack');
-    });
+    final picked = await pickPackFiles(allowMultiple: true);
+    if (picked.isEmpty) return;
     setState(() => _error = null);
-    for (final f in result.files) {
+    for (final f in picked) {
       if (_packs.length >= 4) break;
-      if (f.path == null) continue;
-      await _addPackFromPath(f.path!, size: f.size);
+      if (f.bytes != null) {
+        await _addPackFromBytes(f.bytes!, name: f.name, size: f.size);
+      } else if (f.path != null) {
+        await _addPackFromPath(f.path!, size: f.size);
+      }
     }
   }
 
