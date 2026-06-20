@@ -1637,6 +1637,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get feedbackTileTitle => 'একটি বাগ রিপোর্ট করুন বা ফিচার সাজেস্ট করুন';
 
   @override
+  String get reportBug => 'Feedback';
+
+  @override
   String get feedbackTileSubtitle => 'MCCompanion উন্নত করতে আমাদের সাহায্য করুন';
 
   @override

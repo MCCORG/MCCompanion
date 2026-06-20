@@ -1637,6 +1637,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get feedbackTileTitle => 'ایک بگ رپورٹ کریں یا فیچر تجویز کریں';
 
   @override
+  String get reportBug => 'Feedback';
+
+  @override
   String get feedbackTileSubtitle => 'MCCompanion کو بہتر بنانے میں مدد کریں';
 
   @override

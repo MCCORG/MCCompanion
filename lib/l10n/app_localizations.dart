@@ -3231,6 +3231,12 @@ abstract class AppLocalizations {
   /// **'Report a bug or suggest a feature'**
   String get feedbackTileTitle;
 
+  /// Short label for feedback/bug report in desktop sidebar
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback'**
+  String get reportBug;
+
   /// Subtitle on feedback tile on landing screen
   ///
   /// In en, this message translates to:

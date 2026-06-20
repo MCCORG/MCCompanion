@@ -1637,6 +1637,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get feedbackTileTitle => 'Hata bildirin veya özellik önerin';
 
   @override
+  String get reportBug => 'Feedback';
+
+  @override
   String get feedbackTileSubtitle => 'MCCompanion\'ı geliştirmemize yardım edin';
 
   @override

@@ -1637,6 +1637,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get feedbackTileTitle => 'Meld een bug of stel een functie voor';
 
   @override
+  String get reportBug => 'Feedback';
+
+  @override
   String get feedbackTileSubtitle => 'Help ons MCCompanion te verbeteren';
 
   @override

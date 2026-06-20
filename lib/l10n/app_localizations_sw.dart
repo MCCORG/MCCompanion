@@ -1637,6 +1637,9 @@ class AppLocalizationsSw extends AppLocalizations {
   String get feedbackTileTitle => 'Ripoti hitilafu au pendekeza kipengele';
 
   @override
+  String get reportBug => 'Feedback';
+
+  @override
   String get feedbackTileSubtitle => 'Tusaidie kuboresha MCCompanion';
 
   @override

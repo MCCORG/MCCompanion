@@ -1856,6 +1856,10 @@
   "@feedbackTileTitle": {
     "description": "Title on feedback tile on landing screen"
   },
+  "reportBug": "Feedback",
+  "@reportBug": {
+    "description": "Short label for feedback/bug report in desktop sidebar"
+  },
   "feedbackTileSubtitle": "Help us improve MCCompanion",
   "@feedbackTileSubtitle": {
     "description": "Subtitle on feedback tile on landing screen"

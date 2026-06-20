@@ -1637,6 +1637,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get feedbackTileTitle => 'Report a bug or suggest a feature';
 
   @override
+  String get reportBug => 'Feedback';
+
+  @override
   String get feedbackTileSubtitle => 'Help us improve MCCompanion';
 
   @override

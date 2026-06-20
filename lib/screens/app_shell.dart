@@ -88,7 +88,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   int _pageIndex = _pageHome;
   int? _editingServerIndex;
 
-
   @override
   void initState() {
     super.initState();
@@ -179,57 +178,63 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
 
   void _showHowToSheet() {
     final loc = AppLocalizations.of(context)!;
-    _showSheet(HowToSheetContent(
-      loc: loc,
-      onClose: () => Navigator.of(context).pop(),
-      onXbox: () {
-        Navigator.of(context).pop();
-        HowToDialogs.showXboxInstructions(context);
-      },
-      onNintendo: () {
-        Navigator.of(context).pop();
-        HowToDialogs.showNintendoInstructions(
-          context,
-          relayName: _selectedRelay.name,
-          relayIp: _selectedRelay.ip,
-        );
-      },
-      onFriends: () {
-        Navigator.of(context).pop();
-        HowToDialogs.showFriendsInstructions(
-          context,
-          userRegion: _selectedRelay.name.toLowerCase().contains('eu') ? 'eu' : 'us',
-        );
-      },
-      onJava: () {
-        Navigator.of(context).pop();
-        HowToDialogs.showJavaInstructions(context);
-      },
-    ));
+    _showSheet(
+      HowToSheetContent(
+        loc: loc,
+        onClose: () => Navigator.of(context).pop(),
+        onXbox: () {
+          Navigator.of(context).pop();
+          HowToDialogs.showXboxInstructions(context);
+        },
+        onNintendo: () {
+          Navigator.of(context).pop();
+          HowToDialogs.showNintendoInstructions(
+            context,
+            relayName: _selectedRelay.name,
+            relayIp: _selectedRelay.ip,
+          );
+        },
+        onFriends: () {
+          Navigator.of(context).pop();
+          HowToDialogs.showFriendsInstructions(
+            context,
+            userRegion: _selectedRelay.name.toLowerCase().contains('eu')
+                ? 'eu'
+                : 'us',
+          );
+        },
+        onJava: () {
+          Navigator.of(context).pop();
+          HowToDialogs.showJavaInstructions(context);
+        },
+      ),
+    );
   }
 
   void _showHelpSheet() {
     final loc = AppLocalizations.of(context)!;
-    _showSheet(HelpSheetContent(
-      loc: loc,
-      onClose: () => Navigator.of(context).pop(),
-      onMCCompanion: () {
-        Navigator.of(context).pop();
-        HelpDialogs.showMCCompanionNotAppearing(context);
-      },
-      onMultiplayerFailed: () {
-        Navigator.of(context).pop();
-        HelpDialogs.showMultiplayerConnectionFailed(context);
-      },
-      onNintendoDns: () {
-        Navigator.of(context).pop();
-        HelpDialogs.showNintendoDns(context);
-      },
-      onFriendsMode: () {
-        Navigator.of(context).pop();
-        HelpDialogs.showFriendsMode(context);
-      },
-    ));
+    _showSheet(
+      HelpSheetContent(
+        loc: loc,
+        onClose: () => Navigator.of(context).pop(),
+        onMCCompanion: () {
+          Navigator.of(context).pop();
+          HelpDialogs.showMCCompanionNotAppearing(context);
+        },
+        onMultiplayerFailed: () {
+          Navigator.of(context).pop();
+          HelpDialogs.showMultiplayerConnectionFailed(context);
+        },
+        onNintendoDns: () {
+          Navigator.of(context).pop();
+          HelpDialogs.showNintendoDns(context);
+        },
+        onFriendsMode: () {
+          Navigator.of(context).pop();
+          HelpDialogs.showFriendsMode(context);
+        },
+      ),
+    );
   }
 
   void _showInfoSheet() {
@@ -238,16 +243,18 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
 
   void _showMoreSheet() {
     final loc = AppLocalizations.of(context)!;
-    _showSheet(MoreSheetContent(
-      loc: loc,
-      navigationController: navigationController,
-      selectedRelayIp: _selectedRelay.ip,
-      onClose: () => Navigator.of(context).pop(),
-      onRelayChanged: (ip) {
-        Navigator.of(context).pop();
-        _onRelayChanged(ip);
-      },
-    ));
+    _showSheet(
+      MoreSheetContent(
+        loc: loc,
+        navigationController: navigationController,
+        selectedRelayIp: _selectedRelay.ip,
+        onClose: () => Navigator.of(context).pop(),
+        onRelayChanged: (ip) {
+          Navigator.of(context).pop();
+          _onRelayChanged(ip);
+        },
+      ),
+    );
   }
 
   void _handleNotificationTap(RemoteMessage message) {
@@ -364,6 +371,14 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
         return 'wiki';
       case _pageProfile:
         return 'profile';
+      case _pagePartners:
+        return 'partners';
+      case _pagePlayerLookup:
+        return 'lookup';
+      case _pageServerTracker:
+        return 'tracker';
+      case _pageFeedback:
+        return 'feedback';
       default:
         return null;
     }
@@ -407,8 +422,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed &&
-        AuthService.currentUser != null) {
+    if (state == AppLifecycleState.resumed && AuthService.currentUser != null) {
       MessageService.reconnectIfNeeded();
     }
   }
@@ -425,7 +439,10 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
             gradient: RadialGradient(
               center: const Alignment(0.8, -1.1),
               radius: 0.9,
-              colors: [AppTheme.accent.withValues(alpha: 0.07), Colors.transparent],
+              colors: [
+                AppTheme.accent.withValues(alpha: 0.07),
+                Colors.transparent,
+              ],
             ),
           ),
         ),
@@ -436,7 +453,10 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
             gradient: RadialGradient(
               center: const Alignment(-1.0, 1.2),
               radius: 0.7,
-              colors: [AppTheme.accent.withValues(alpha: 0.04), Colors.transparent],
+              colors: [
+                AppTheme.accent.withValues(alpha: 0.04),
+                Colors.transparent,
+              ],
             ),
           ),
         ),
@@ -557,7 +577,9 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
 
     return PopScope(
       canPop: _canPop,
-      onPopInvoked: (didPop) { if (!didPop) _handlePop(); },
+      onPopInvoked: (didPop) {
+        if (!didPop) _handlePop();
+      },
       child: _isDesktop
           ? _buildDesktopShell(loc, svc)
           : _buildMobileShell(loc, svc),
@@ -578,7 +600,11 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
             activeItem: _activeNavItem,
             onHomeTap: () => _goTo(_pageHome),
             onConnectorTap: () => _goTo(_pageConnector),
-            onProfileTap: () { _loginFromTracker = false; _loginFromRp = false; _goTo(_pageProfile); },
+            onProfileTap: () {
+              _loginFromTracker = false;
+              _loginFromRp = false;
+              _goTo(_pageProfile);
+            },
             navLeftFeature: svc.navLeft,
             navRightFeature: svc.navRight,
             onNavLeftTap: _navCallbackFor(svc.navLeft),
@@ -586,16 +612,16 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
             navLeftActive: _isNavFeatureActive(svc.navLeft),
             navRightActive: _isNavFeatureActive(svc.navRight),
           ),
-          body: SafeArea(
-            top: true, bottom: false,
-            child: _buildPageStack(),
-          ),
+          body: SafeArea(top: true, bottom: false, child: _buildPageStack()),
         ),
       ],
     );
   }
 
-  Widget _buildDesktopShell(AppLocalizations loc, HomeCustomizationService svc) {
+  Widget _buildDesktopShell(
+    AppLocalizations loc,
+    HomeCustomizationService svc,
+  ) {
     return Stack(
       children: [
         _buildBackground(),
@@ -607,13 +633,17 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
                 activeItem: _activeNavItem,
                 onHomeTap: () => _goTo(_pageHome),
                 onConnectorTap: () => _goTo(_pageConnector),
-                onProfileTap: () { _loginFromTracker = false; _loginFromRp = false; _goTo(_pageProfile); },
-                navLeftFeature: svc.navLeft,
-                navRightFeature: svc.navRight,
-                onNavLeftTap: _navCallbackFor(svc.navLeft),
-                onNavRightTap: _navCallbackFor(svc.navRight),
-                navLeftActive: _isNavFeatureActive(svc.navLeft),
-                navRightActive: _isNavFeatureActive(svc.navRight),
+                onSkinsTap: () => _goTo(_pageSkins),
+                onWikiTap: () => _goTo(_pageWiki),
+                onPartnersTap: () => _goTo(_pagePartners),
+                onLookupTap: () => _goTo(_pagePlayerLookup),
+                onTrackerTap: () => _goTo(_pageServerTracker),
+                onProfileTap: () {
+                  _loginFromTracker = false;
+                  _loginFromRp = false;
+                  _goTo(_pageProfile);
+                },
+                onFeedbackTap: () => _goTo(_pageFeedback),
                 onHelpTap: () => _showHelpSheet(),
                 onHowToTap: () => _showHowToSheet(),
               ),
@@ -625,20 +655,19 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       ],
     );
   }
-
 }
 
 class _DesktopSidebar extends StatelessWidget {
   final String? activeItem;
   final VoidCallback onHomeTap;
   final VoidCallback onConnectorTap;
+  final VoidCallback onSkinsTap;
+  final VoidCallback onWikiTap;
+  final VoidCallback onPartnersTap;
+  final VoidCallback onLookupTap;
+  final VoidCallback onTrackerTap;
   final VoidCallback onProfileTap;
-  final AppFeature navLeftFeature;
-  final AppFeature navRightFeature;
-  final VoidCallback? onNavLeftTap;
-  final VoidCallback? onNavRightTap;
-  final bool navLeftActive;
-  final bool navRightActive;
+  final VoidCallback onFeedbackTap;
   final VoidCallback onHelpTap;
   final VoidCallback onHowToTap;
 
@@ -646,25 +675,16 @@ class _DesktopSidebar extends StatelessWidget {
     required this.activeItem,
     required this.onHomeTap,
     required this.onConnectorTap,
+    required this.onSkinsTap,
+    required this.onWikiTap,
+    required this.onPartnersTap,
+    required this.onLookupTap,
+    required this.onTrackerTap,
     required this.onProfileTap,
-    required this.navLeftFeature,
-    required this.navRightFeature,
-    required this.onNavLeftTap,
-    required this.onNavRightTap,
-    required this.navLeftActive,
-    required this.navRightActive,
+    required this.onFeedbackTap,
     required this.onHelpTap,
     required this.onHowToTap,
   });
-
-  static FaIconData _iconFor(AppFeature f) => switch (f) {
-    AppFeature.connector => FontAwesomeIcons.play,
-    AppFeature.skins => FontAwesomeIcons.shirt,
-    AppFeature.wiki => FontAwesomeIcons.bookOpen,
-    AppFeature.partners => FontAwesomeIcons.server,
-    AppFeature.lookup => FontAwesomeIcons.magnifyingGlass,
-    AppFeature.tracker => FontAwesomeIcons.satellite,
-  };
 
   @override
   Widget build(BuildContext context) {
@@ -700,16 +720,34 @@ class _DesktopSidebar extends StatelessWidget {
             onTap: onConnectorTap,
           ),
           _SidebarItem(
-            icon: _iconFor(navLeftFeature),
-            label: navLeftFeature.label(l),
-            isActive: navLeftActive,
-            onTap: onNavLeftTap,
+            icon: FontAwesomeIcons.server,
+            label: AppFeature.partners.label(l),
+            isActive: activeItem == 'partners',
+            onTap: onPartnersTap,
           ),
           _SidebarItem(
-            icon: _iconFor(navRightFeature),
-            label: navRightFeature.label(l),
-            isActive: navRightActive,
-            onTap: onNavRightTap,
+            icon: FontAwesomeIcons.satellite,
+            label: AppFeature.tracker.label(l),
+            isActive: activeItem == 'tracker',
+            onTap: onTrackerTap,
+          ),
+          _SidebarItem(
+            icon: FontAwesomeIcons.magnifyingGlass,
+            label: AppFeature.lookup.label(l),
+            isActive: activeItem == 'lookup',
+            onTap: onLookupTap,
+          ),
+          _SidebarItem(
+            icon: FontAwesomeIcons.shirt,
+            label: AppFeature.skins.label(l),
+            isActive: activeItem == 'skins',
+            onTap: onSkinsTap,
+          ),
+          _SidebarItem(
+            icon: FontAwesomeIcons.bookOpen,
+            label: AppFeature.wiki.label(l),
+            isActive: activeItem == 'wiki',
+            onTap: onWikiTap,
           ),
           _SidebarItem(
             icon: FontAwesomeIcons.user,
@@ -721,13 +759,19 @@ class _DesktopSidebar extends StatelessWidget {
           Divider(color: AppTheme.borderGray, height: 1),
           const SizedBox(height: 8),
           _SidebarItem(
+            icon: FontAwesomeIcons.bug,
+            label: l.reportBug,
+            isActive: activeItem == 'feedback',
+            onTap: onFeedbackTap,
+          ),
+          _SidebarItem(
             icon: FontAwesomeIcons.circleQuestion,
             label: l.support,
             isActive: false,
             onTap: onHelpTap,
           ),
           _SidebarItem(
-            icon: FontAwesomeIcons.bookOpen,
+            icon: FontAwesomeIcons.lightbulb,
             label: l.howToUseMenu,
             isActive: false,
             onTap: onHowToTap,
@@ -762,10 +806,15 @@ class _SidebarItem extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
         decoration: BoxDecoration(
-          color: isActive ? AppTheme.brand.withValues(alpha: 0.13) : Colors.transparent,
+          color: isActive
+              ? AppTheme.brand.withValues(alpha: 0.13)
+              : Colors.transparent,
           borderRadius: BorderRadius.circular(8),
           border: isActive
-              ? Border.all(color: AppTheme.brand.withValues(alpha: 0.25), width: 0.8)
+              ? Border.all(
+                  color: AppTheme.brand.withValues(alpha: 0.25),
+                  width: 0.8,
+                )
               : null,
         ),
         child: Row(

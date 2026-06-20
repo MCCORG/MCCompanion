@@ -1637,6 +1637,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get feedbackTileTitle => '报告错误或建议功能';
 
   @override
+  String get reportBug => 'Feedback';
+
+  @override
   String get feedbackTileSubtitle => '帮助我们改进 MCCompanion';
 
   @override
