@@ -81,6 +81,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   final GlobalKey<SkinsScreenState> _skinsKey = GlobalKey();
   final GlobalKey<ProfileScreenState> _profileKey = GlobalKey();
   bool _loginFromTracker = false;
+  bool _loginFromRp = false;
   String? _lastSignedInUid;
 
   late RelayPingResult _selectedRelay;
@@ -474,7 +475,14 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
           partnerServersFuture: _partnerServersFuture,
           onOpenPartnerServers: () => _goTo(_pagePartners),
           onOpenManageServers: _openManageServers,
-          onOpenResourcePack: () => _goTo(_pageResourcePack),
+          onOpenResourcePack: () {
+            if (AuthService.currentUser == null) {
+              _loginFromRp = true;
+              _goTo(_pageProfile);
+            } else {
+              _goTo(_pageResourcePack);
+            }
+          },
           onOpenMore: () => _showMoreSheet(),
           onOpenSupport: () => _showHelpSheet(),
           onOpenHowTo: () => _showHowToSheet(),
@@ -517,6 +525,9 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
             if (_loginFromTracker) {
               _loginFromTracker = false;
               _goTo(_pageServerTracker);
+            } else if (_loginFromRp) {
+              _loginFromRp = false;
+              _goTo(_pageResourcePack);
             }
           },
         ),
@@ -567,7 +578,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
             activeItem: _activeNavItem,
             onHomeTap: () => _goTo(_pageHome),
             onConnectorTap: () => _goTo(_pageConnector),
-            onProfileTap: () { _loginFromTracker = false; _goTo(_pageProfile); },
+            onProfileTap: () { _loginFromTracker = false; _loginFromRp = false; _goTo(_pageProfile); },
             navLeftFeature: svc.navLeft,
             navRightFeature: svc.navRight,
             onNavLeftTap: _navCallbackFor(svc.navLeft),
@@ -596,7 +607,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
                 activeItem: _activeNavItem,
                 onHomeTap: () => _goTo(_pageHome),
                 onConnectorTap: () => _goTo(_pageConnector),
-                onProfileTap: () { _loginFromTracker = false; _goTo(_pageProfile); },
+                onProfileTap: () { _loginFromTracker = false; _loginFromRp = false; _goTo(_pageProfile); },
                 navLeftFeature: svc.navLeft,
                 navRightFeature: svc.navRight,
                 onNavLeftTap: _navCallbackFor(svc.navLeft),
