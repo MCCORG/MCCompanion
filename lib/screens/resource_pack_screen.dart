@@ -171,6 +171,11 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
         filename: _uploadedFilename,
         isUpload: true,
       );
+    } else if (_mode == _InputMode.url) {
+      final url = _urlCtrl.text.trim();
+      if (url.isNotEmpty) {
+        await ResourcePackPrefs.save(url: url, enabled: v, isUpload: false);
+      }
     }
   }
 

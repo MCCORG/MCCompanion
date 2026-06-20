@@ -142,7 +142,8 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
     if (_packs.length >= 4) return;
     String displayName = name.replaceAll(RegExp(r'\.(zip|mcpack)$', caseSensitive: false), '');
     final tmp = await getTemporaryDirectory();
-    final tmpFile = File('${tmp.path}/$name');
+    final unique = '${DateTime.now().millisecondsSinceEpoch}_${name}';
+    final tmpFile = File('${tmp.path}/$unique');
     await tmpFile.writeAsBytes(bytes);
     try {
       final archive = ZipDecoder().decodeBytes(bytes);
