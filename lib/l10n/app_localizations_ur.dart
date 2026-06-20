@@ -1770,6 +1770,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get rpToastSaved => 'ریسورس پیک سیٹنگز محفوظ ہو گئیں۔';
 
   @override
+  String get rpInvalidPackFormat => 'This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.';
+
+  @override
   String get rpClearMinecraftTitle => 'اس پیک کے ساتھ پہلی بار؟';
 
   @override

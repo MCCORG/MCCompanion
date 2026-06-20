@@ -2011,6 +2011,10 @@
   "@rpToastSaved": {
     "description": "Toast shown after resource pack settings are saved successfully"
   },
+  "rpInvalidPackFormat": "This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.",
+  "@rpInvalidPackFormat": {
+    "description": "Error shown when user uploads a Java Edition resource pack instead of Bedrock"
+  },
   "rpClearMinecraftTitle": "First time with this pack?",
   "@rpClearMinecraftTitle": {
     "description": "Section title: already connected before info card"

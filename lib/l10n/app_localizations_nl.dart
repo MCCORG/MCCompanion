@@ -1770,6 +1770,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get rpToastSaved => 'Instellingen resourcepakket opgeslagen.';
 
   @override
+  String get rpInvalidPackFormat => 'Dit is een Java Edition-pakket en wordt niet ondersteund. Gebruik een Bedrock Edition-resourcepakket.';
+
+  @override
   String get rpClearMinecraftTitle => 'Eerste keer met dit pakket?';
 
   @override

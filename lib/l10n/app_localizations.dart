@@ -3489,6 +3489,12 @@ abstract class AppLocalizations {
   /// **'Resource pack settings saved.'**
   String get rpToastSaved;
 
+  /// Error shown when user uploads a Java Edition resource pack instead of Bedrock
+  ///
+  /// In en, this message translates to:
+  /// **'This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.'**
+  String get rpInvalidPackFormat;
+
   /// Section title: already connected before info card
   ///
   /// In en, this message translates to:

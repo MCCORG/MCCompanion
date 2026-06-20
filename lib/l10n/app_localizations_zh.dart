@@ -1770,6 +1770,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpToastSaved => '资源包设置已保存。';
 
   @override
+  String get rpInvalidPackFormat => 'This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.';
+
+  @override
   String get rpClearMinecraftTitle => '第一次使用此资源包？';
 
   @override

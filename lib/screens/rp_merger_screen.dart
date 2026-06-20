@@ -140,6 +140,10 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
 
   Future<void> _addPackFromBytes(List<int> bytes, {required String name, int? size}) async {
     if (_packs.length >= 4) return;
+    if (!isBedrockPack(bytes)) {
+      if (mounted) AppToast.show(context, message: AppLocalizations.of(context)!.rpInvalidPackFormat, icon: Icons.error_outline_rounded, color: Colors.red);
+      return;
+    }
     String displayName = name.replaceAll(RegExp(r'\.(zip|mcpack)$', caseSensitive: false), '');
     final tmp = await getTemporaryDirectory();
     final safeName = name.replaceAll(RegExp(r'[^a-zA-Z0-9._-]'), '_');

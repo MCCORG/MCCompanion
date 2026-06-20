@@ -1770,6 +1770,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get rpToastSaved => 'Kaynak paketi ayarları kaydedildi.';
 
   @override
+  String get rpInvalidPackFormat => 'This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.';
+
+  @override
   String get rpClearMinecraftTitle => 'Bu paketle ilk kez mi?';
 
   @override

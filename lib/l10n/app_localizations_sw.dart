@@ -1770,6 +1770,9 @@ class AppLocalizationsSw extends AppLocalizations {
   String get rpToastSaved => 'Mipangilio ya kifurushi cha rasilimali imehifadhiwa.';
 
   @override
+  String get rpInvalidPackFormat => 'This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.';
+
+  @override
   String get rpClearMinecraftTitle => 'Mara ya kwanza na pakiti hii?';
 
   @override

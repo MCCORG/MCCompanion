@@ -1770,6 +1770,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get rpToastSaved => 'リソースパックの設定を保存しました。';
 
   @override
+  String get rpInvalidPackFormat => 'This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.';
+
+  @override
   String get rpClearMinecraftTitle => 'このパックを初めて使う？';
 
   @override
