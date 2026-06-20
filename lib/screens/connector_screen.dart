@@ -192,10 +192,14 @@ class HomeScreenState extends State<HomeScreen> {
 
   Future<void> _loadResourcePackUrl() async {
     if (mounted) setState(() => _rpLoading = true);
-    final enabled = await ResourcePackPrefs.isEnabled();
-    final url = enabled ? await ResourcePackPrefs.getUrl() : null;
-    final activeUrl = (enabled && url != null && url.isNotEmpty) ? url : null;
-    if (mounted) setState(() { _activeResourcePackUrl = activeUrl; _rpLoading = false; });
+    try {
+      final enabled = await ResourcePackPrefs.isEnabled();
+      final url = enabled ? await ResourcePackPrefs.getUrl() : null;
+      final activeUrl = (enabled && url != null && url.isNotEmpty) ? url : null;
+      if (mounted) setState(() { _activeResourcePackUrl = activeUrl; _rpLoading = false; });
+    } catch (_) {
+      if (mounted) setState(() => _rpLoading = false);
+    }
   }
 
   Future<void> reloadResourcePackUrl() => _loadResourcePackUrl();

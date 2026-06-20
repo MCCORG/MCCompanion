@@ -79,6 +79,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   }
 
   Future<void> _pickAndUpload() async {
+    if (_uploading) return;
     final files = await pickPackFiles();
     if (files.isEmpty) return;
     final file = files.first;
