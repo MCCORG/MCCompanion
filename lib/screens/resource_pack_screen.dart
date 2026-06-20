@@ -114,6 +114,24 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
         if (!mounted) return;
         setState(() { _uploadedUrl = url; _uploadedFilename = name; _uploading = false; });
         AppToast.show(context, message: AppLocalizations.of(context)!.rpToastSaved, icon: Icons.check_rounded, color: AppTheme.accent);
+        final l = AppLocalizations.of(context)!;
+        _showDialog(
+          context,
+          l.rpClearMinecraftTitle,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(l.rpClearWhy, style: TextStyle(color: AppTheme.textSecondary, fontSize: 13, height: 1.6)),
+              const SizedBox(height: 16),
+              _ModalStep(n: '1', text: l.rpClearStep1),
+              _ModalStep(n: '2', text: l.rpClearStep2),
+              _ModalStep(n: '3', text: l.rpClearStep3),
+            ],
+          ),
+          icon: Icons.cleaning_services_rounded,
+          iconColor: AppTheme.info,
+        );
       } else {
         if (!mounted) return;
         setState(() => _uploading = false);
