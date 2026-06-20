@@ -87,7 +87,7 @@ class HomeScreenState extends State<HomeScreen> {
   List<BedrockAccount>? _cachedBedrockAccounts;
   String? _selectedBedrockXuid;
   String? _activeResourcePackUrl;
-
+  bool _rpLoading = true;
 
   @override
   void initState() {
@@ -191,8 +191,11 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _loadResourcePackUrl() async {
-    final url = await ResourcePackPrefs.getActiveUrl();
-    if (mounted) setState(() => _activeResourcePackUrl = url);
+    if (mounted) setState(() => _rpLoading = true);
+    final enabled = await ResourcePackPrefs.isEnabled();
+    final url = enabled ? await ResourcePackPrefs.getUrl() : null;
+    final activeUrl = (enabled && url != null && url.isNotEmpty) ? url : null;
+    if (mounted) setState(() { _activeResourcePackUrl = activeUrl; _rpLoading = false; });
   }
 
   Future<void> reloadResourcePackUrl() => _loadResourcePackUrl();
@@ -239,6 +242,7 @@ class HomeScreenState extends State<HomeScreen> {
     AppLocalizations loc,
   ) async {
     final gamertag = _getBedrockGamertag();
+    final resourcePackUrl = await ResourcePackPrefs.getActiveUrl();
     final ok = await _broadcastManager.sendRelayConfigOnly(
       host,
       port,
@@ -246,7 +250,7 @@ class HomeScreenState extends State<HomeScreen> {
       relayBase: widget.selectedRelay.base,
       mode: BroadcastMode.values[mode.index],
       bedrockGamertag: gamertag,
-      resourcePackUrl: _activeResourcePackUrl,
+      resourcePackUrl: resourcePackUrl,
     );
     if (!ok) return;
     if (mode == PanelMode.nintendo) {
@@ -277,6 +281,7 @@ class HomeScreenState extends State<HomeScreen> {
     }
     final gamertag = _getBedrockGamertag();
     final authToken = await AuthService.getIdToken();
+    final resourcePackUrl = await ResourcePackPrefs.getActiveUrl();
     final success = await _broadcastManager.startBroadcast(
       host,
       port,
@@ -286,7 +291,7 @@ class HomeScreenState extends State<HomeScreen> {
       mode: BroadcastMode.values[mode.index],
       bedrockGamertag: gamertag,
       authToken: authToken,
-      resourcePackUrl: _activeResourcePackUrl,
+      resourcePackUrl: resourcePackUrl,
     );
     _broadcastingNotifier.value = success;
     if (success) {
@@ -354,6 +359,7 @@ class HomeScreenState extends State<HomeScreen> {
             onManageServers: widget.onOpenManageServers,
             onResourcePack: widget.onOpenResourcePack,
             resourcePackActive: _activeResourcePackUrl != null,
+            resourcePackLoading: _rpLoading,
             selectedRelayIp: widget.selectedRelay.ip,
             onRelayChanged: widget.onRelayChanged,
             nintendoDnsMode: _nintendoDnsMode,

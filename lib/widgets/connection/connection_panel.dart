@@ -48,6 +48,7 @@ class ConnectionPanel extends StatefulWidget {
     this.onBedrockAccountChanged,
     this.navChips,
     this.resourcePackActive = false,
+    this.resourcePackLoading = false,
     this.onDeleteServer,
   });
 
@@ -72,6 +73,7 @@ class ConnectionPanel extends StatefulWidget {
   final ValueChanged<String>? onBedrockAccountChanged;
   final Widget? navChips;
   final bool resourcePackActive;
+  final bool resourcePackLoading;
   final Function(int index)? onDeleteServer;
 
   @override
@@ -137,7 +139,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
   }
 
   Future<void> _handleStart() async {
-    if (_starting) return;
+    if (_starting || widget.resourcePackLoading) return;
     setState(() => _starting = true);
 
     try {
@@ -459,7 +461,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                   ),
                   const SizedBox(width: 12),
                   GestureDetector(
-                    onTap: _starting
+                    onTap: (_starting || widget.resourcePackLoading)
                         ? null
                         : broadcasting
                         ? widget.onStopBroadcast
@@ -471,10 +473,10 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                         vertical: 12,
                       ),
                       decoration: BoxDecoration(
-                        color: _starting ? color.withValues(alpha: 0.55) : color,
+                        color: (_starting || widget.resourcePackLoading) ? color.withValues(alpha: 0.55) : color,
                         borderRadius: BorderRadius.circular(11),
                       ),
-                      child: _starting
+                      child: (_starting || widget.resourcePackLoading)
                           ? SizedBox(
                               width: 18,
                               height: 18,
