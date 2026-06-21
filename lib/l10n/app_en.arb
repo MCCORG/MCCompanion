@@ -1165,9 +1165,9 @@
   "@wikiItems": {
     "description": "Wiki category: Items"
   },
-  "wikiBiomes": "Biomes",
-  "@wikiBiomes": {
-    "description": "Wiki category: Biomes"
+  "wikiDimensions": "Dimensions",
+  "@wikiDimensions": {
+    "description": "Wiki category: Dimensions"
   },
   "wikiStructures": "Structures",
   "@wikiStructures": {

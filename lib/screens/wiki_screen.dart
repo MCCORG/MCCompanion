@@ -340,7 +340,7 @@ String _wikiL10n(AppLocalizations l, String key) {
     case 'Items':
       return l.wikiItems;
     case 'Biomes':
-      return l.wikiBiomes;
+      return l.wikiDimensions;
     case 'Structures':
       return l.wikiStructures;
     case 'Enchantments':

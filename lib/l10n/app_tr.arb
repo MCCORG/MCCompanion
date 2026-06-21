@@ -1221,9 +1221,9 @@
   "@wikiArmor": {
     "description": "Wiki item sub-category: Armor"
   },
-  "wikiBiomes": "Biyomlar",
-  "@wikiBiomes": {
-    "description": "Wiki category: Biomes"
+  "wikiDimensions": "Boyutlar",
+  "@wikiDimensions": {
+    "description": "Wiki category: Dimensions"
   },
   "wikiBlocks": "Bloklar",
   "@wikiBlocks": {

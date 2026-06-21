@@ -1221,9 +1221,9 @@
   "@wikiArmor": {
     "description": "Wiki item sub-category: Armor"
   },
-  "wikiBiomes": "Биомы",
-  "@wikiBiomes": {
-    "description": "Wiki category: Biomes"
+  "wikiDimensions": "измерения",
+  "@wikiDimensions": {
+    "description": "Wiki category: Dimensions"
   },
   "wikiBlocks": "Блоки",
   "@wikiBlocks": {

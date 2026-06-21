@@ -1014,7 +1014,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get wikiItems => 'Items';
 
   @override
-  String get wikiBiomes => 'Biomes';
+  String get wikiDimensions => 'Dimensions';
 
   @override
   String get wikiStructures => 'Structures';

@@ -2013,11 +2013,11 @@ abstract class AppLocalizations {
   /// **'Items'**
   String get wikiItems;
 
-  /// Wiki category: Biomes
+  /// Wiki category: Dimensions
   ///
   /// In en, this message translates to:
-  /// **'Biomes'**
-  String get wikiBiomes;
+  /// **'Dimensions'**
+  String get wikiDimensions;
 
   /// Wiki category: Structures
   ///
