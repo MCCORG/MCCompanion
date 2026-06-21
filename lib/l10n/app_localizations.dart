@@ -1107,6 +1107,90 @@ abstract class AppLocalizations {
   /// **'Right slot (next to Profile)'**
   String get rightSlot;
 
+  /// Tooltip on wide-tile icon when tile is already wide — tap to remove
+  ///
+  /// In en, this message translates to:
+  /// **'Remove wide layout'**
+  String get tileWideTooltipRemove;
+
+  /// Tooltip on wide-tile icon — tap to make this tile full-width
+  ///
+  /// In en, this message translates to:
+  /// **'Make wide tile'**
+  String get tileWideTooltipAdd;
+
+  /// Tooltip on eye icon when tile is hidden — tap to show
+  ///
+  /// In en, this message translates to:
+  /// **'Show tile'**
+  String get tileVisibilityShow;
+
+  /// Tooltip on eye icon when tile is visible — tap to hide
+  ///
+  /// In en, this message translates to:
+  /// **'Hide tile'**
+  String get tileVisibilityHide;
+
+  /// Tooltip shown when hide is disabled because minimum visible tile count is reached
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot hide (last tile)'**
+  String get tileVisibilityMin;
+
+  /// Apply button in the custom colour picker dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get colorPickerApply;
+
+  /// Label for the hex colour input field in the colour picker
+  ///
+  /// In en, this message translates to:
+  /// **'Hex'**
+  String get colorPickerHex;
+
+  /// Section header for the text colour customization area
+  ///
+  /// In en, this message translates to:
+  /// **'TEXT COLOR'**
+  String get textColorSection;
+
+  /// Title of the text colour picker dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Text Color'**
+  String get textColorPickerTitle;
+
+  /// Hint shown below the text colour circle picker
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the circle to pick a custom text colour'**
+  String get textColorHint;
+
+  /// Preview label showing primary text colour
+  ///
+  /// In en, this message translates to:
+  /// **'Primary'**
+  String get textColorPreviewPrimary;
+
+  /// Preview label showing secondary text colour
+  ///
+  /// In en, this message translates to:
+  /// **'Secondary'**
+  String get textColorPreviewSecondary;
+
+  /// Preview label showing muted text colour
+  ///
+  /// In en, this message translates to:
+  /// **'Muted'**
+  String get textColorPreviewMuted;
+
+  /// Label on the custom colour swatch in the colour picker section
+  ///
+  /// In en, this message translates to:
+  /// **'Custom'**
+  String get colorSwatchCustom;
+
   /// Section header for accent color in customize sheet
   ///
   /// In en, this message translates to:

@@ -519,6 +519,48 @@ class AppLocalizationsJa extends AppLocalizations {
   String get rightSlot => '右スロット（プロフィールの隣）';
 
   @override
+  String get tileWideTooltipRemove => 'ワイドレイアウトを解除';
+
+  @override
+  String get tileWideTooltipAdd => 'ワイドタイルにする';
+
+  @override
+  String get tileVisibilityShow => 'タイルを表示';
+
+  @override
+  String get tileVisibilityHide => 'タイルを非表示';
+
+  @override
+  String get tileVisibilityMin => '非表示にできません（最後のタイル）';
+
+  @override
+  String get colorPickerApply => '適用';
+
+  @override
+  String get colorPickerHex => 'Hex';
+
+  @override
+  String get textColorSection => 'テキストカラー';
+
+  @override
+  String get textColorPickerTitle => 'テキストカラー';
+
+  @override
+  String get textColorHint => '円をタップしてカスタムテキストカラーを選択';
+
+  @override
+  String get textColorPreviewPrimary => 'メイン';
+
+  @override
+  String get textColorPreviewSecondary => 'サブ';
+
+  @override
+  String get textColorPreviewMuted => 'ミュート';
+
+  @override
+  String get colorSwatchCustom => 'カスタム';
+
+  @override
   String get accentColorSection => 'アクセントカラー';
 
   @override

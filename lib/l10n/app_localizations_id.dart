@@ -519,6 +519,48 @@ class AppLocalizationsId extends AppLocalizations {
   String get rightSlot => 'Slot kanan (di sebelah Profil)';
 
   @override
+  String get tileWideTooltipRemove => 'Hapus tata letak lebar';
+
+  @override
+  String get tileWideTooltipAdd => 'Jadikan ubin lebar';
+
+  @override
+  String get tileVisibilityShow => 'Tampilkan ubin';
+
+  @override
+  String get tileVisibilityHide => 'Sembunyikan ubin';
+
+  @override
+  String get tileVisibilityMin => 'Tidak dapat disembunyikan (ubin terakhir)';
+
+  @override
+  String get colorPickerApply => 'Terapkan';
+
+  @override
+  String get colorPickerHex => 'Hex';
+
+  @override
+  String get textColorSection => 'WARNA TEKS';
+
+  @override
+  String get textColorPickerTitle => 'Warna Teks';
+
+  @override
+  String get textColorHint => 'Ketuk lingkaran untuk memilih warna teks kustom';
+
+  @override
+  String get textColorPreviewPrimary => 'Utama';
+
+  @override
+  String get textColorPreviewSecondary => 'Sekunder';
+
+  @override
+  String get textColorPreviewMuted => 'Redup';
+
+  @override
+  String get colorSwatchCustom => 'Kustom';
+
+  @override
   String get accentColorSection => 'WARNA AKSEN';
 
   @override

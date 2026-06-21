@@ -519,6 +519,48 @@ class AppLocalizationsFr extends AppLocalizations {
   String get rightSlot => 'Emplacement droit (à côté du Profil)';
 
   @override
+  String get tileWideTooltipRemove => 'Supprimer la mise en page large';
+
+  @override
+  String get tileWideTooltipAdd => 'Mettre en tuile large';
+
+  @override
+  String get tileVisibilityShow => 'Afficher la tuile';
+
+  @override
+  String get tileVisibilityHide => 'Masquer la tuile';
+
+  @override
+  String get tileVisibilityMin => 'Impossible de masquer (dernière tuile)';
+
+  @override
+  String get colorPickerApply => 'Appliquer';
+
+  @override
+  String get colorPickerHex => 'Hex';
+
+  @override
+  String get textColorSection => 'COULEUR DU TEXTE';
+
+  @override
+  String get textColorPickerTitle => 'Couleur du texte';
+
+  @override
+  String get textColorHint => 'Appuyez sur le cercle pour choisir une couleur de texte personnalisée';
+
+  @override
+  String get textColorPreviewPrimary => 'Primaire';
+
+  @override
+  String get textColorPreviewSecondary => 'Secondaire';
+
+  @override
+  String get textColorPreviewMuted => 'Atténué';
+
+  @override
+  String get colorSwatchCustom => 'Personnalisé';
+
+  @override
   String get accentColorSection => 'COULEUR D\'ACCENTUATION';
 
   @override

@@ -519,6 +519,48 @@ class AppLocalizationsSw extends AppLocalizations {
   String get rightSlot => 'Nafasi ya kulia (karibu na Wasifu)';
 
   @override
+  String get tileWideTooltipRemove => 'Ondoa mpangilio mpana';
+
+  @override
+  String get tileWideTooltipAdd => 'Fanya tile pana';
+
+  @override
+  String get tileVisibilityShow => 'Onyesha tile';
+
+  @override
+  String get tileVisibilityHide => 'Ficha tile';
+
+  @override
+  String get tileVisibilityMin => 'Haiwezi kufichwa (tile ya mwisho)';
+
+  @override
+  String get colorPickerApply => 'Tumia';
+
+  @override
+  String get colorPickerHex => 'Hex';
+
+  @override
+  String get textColorSection => 'RANGI YA MAANDISHI';
+
+  @override
+  String get textColorPickerTitle => 'Rangi ya Maandishi';
+
+  @override
+  String get textColorHint => 'Gonga duara ili kuchagua rangi ya maandishi ya kibinafsi';
+
+  @override
+  String get textColorPreviewPrimary => 'Msingi';
+
+  @override
+  String get textColorPreviewSecondary => 'Sekondari';
+
+  @override
+  String get textColorPreviewMuted => 'Fifu';
+
+  @override
+  String get colorSwatchCustom => 'Maalum';
+
+  @override
   String get accentColorSection => 'RANGI YA KIVUTIO';
 
   @override

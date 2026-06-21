@@ -519,6 +519,48 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rightSlot => '右槽（个人资料旁边）';
 
   @override
+  String get tileWideTooltipRemove => '移除宽布局';
+
+  @override
+  String get tileWideTooltipAdd => '设为宽磁贴';
+
+  @override
+  String get tileVisibilityShow => '显示磁贴';
+
+  @override
+  String get tileVisibilityHide => '隐藏磁贴';
+
+  @override
+  String get tileVisibilityMin => '无法隐藏（最后一个磁贴）';
+
+  @override
+  String get colorPickerApply => '应用';
+
+  @override
+  String get colorPickerHex => 'Hex';
+
+  @override
+  String get textColorSection => '文字颜色';
+
+  @override
+  String get textColorPickerTitle => '文字颜色';
+
+  @override
+  String get textColorHint => '点击圆圈以选择自定义文字颜色';
+
+  @override
+  String get textColorPreviewPrimary => '主要';
+
+  @override
+  String get textColorPreviewSecondary => '次要';
+
+  @override
+  String get textColorPreviewMuted => '柔和';
+
+  @override
+  String get colorSwatchCustom => '自定义';
+
+  @override
   String get accentColorSection => '强调色';
 
   @override

@@ -519,6 +519,48 @@ class AppLocalizationsBn extends AppLocalizations {
   String get rightSlot => 'ডান স্লট (প্রোফাইলের পাশে)';
 
   @override
+  String get tileWideTooltipRemove => 'প্রশস্ত লেআউট সরান';
+
+  @override
+  String get tileWideTooltipAdd => 'প্রশস্ত টাইল করুন';
+
+  @override
+  String get tileVisibilityShow => 'টাইল দেখান';
+
+  @override
+  String get tileVisibilityHide => 'টাইল লুকান';
+
+  @override
+  String get tileVisibilityMin => 'লুকানো যাচ্ছে না (শেষ টাইল)';
+
+  @override
+  String get colorPickerApply => 'প্রয়োগ করুন';
+
+  @override
+  String get colorPickerHex => 'Hex';
+
+  @override
+  String get textColorSection => 'টেক্সট রঙ';
+
+  @override
+  String get textColorPickerTitle => 'টেক্সট রঙ';
+
+  @override
+  String get textColorHint => 'কাস্টম টেক্সট রঙ বাছাই করতে বৃত্তে ট্যাপ করুন';
+
+  @override
+  String get textColorPreviewPrimary => 'প্রাথমিক';
+
+  @override
+  String get textColorPreviewSecondary => 'মাধ্যমিক';
+
+  @override
+  String get textColorPreviewMuted => 'মৃদু';
+
+  @override
+  String get colorSwatchCustom => 'কাস্টম';
+
+  @override
   String get accentColorSection => 'অ্যাকসেন্ট রঙ';
 
   @override

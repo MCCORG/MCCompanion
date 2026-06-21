@@ -519,6 +519,48 @@ class AppLocalizationsTr extends AppLocalizations {
   String get rightSlot => 'Sağ yuva (Profilin yanında)';
 
   @override
+  String get tileWideTooltipRemove => 'Geniş düzeni kaldır';
+
+  @override
+  String get tileWideTooltipAdd => 'Geniş karo yap';
+
+  @override
+  String get tileVisibilityShow => 'Karoyu göster';
+
+  @override
+  String get tileVisibilityHide => 'Karoyu gizle';
+
+  @override
+  String get tileVisibilityMin => 'Gizlenemiyor (son karo)';
+
+  @override
+  String get colorPickerApply => 'Uygula';
+
+  @override
+  String get colorPickerHex => 'Hex';
+
+  @override
+  String get textColorSection => 'METİN RENGİ';
+
+  @override
+  String get textColorPickerTitle => 'Metin Rengi';
+
+  @override
+  String get textColorHint => 'Özel metin rengi seçmek için daireye dokunun';
+
+  @override
+  String get textColorPreviewPrimary => 'Birincil';
+
+  @override
+  String get textColorPreviewSecondary => 'İkincil';
+
+  @override
+  String get textColorPreviewMuted => 'Soluk';
+
+  @override
+  String get colorSwatchCustom => 'Özel';
+
+  @override
   String get accentColorSection => 'VURGU RENGİ';
 
   @override

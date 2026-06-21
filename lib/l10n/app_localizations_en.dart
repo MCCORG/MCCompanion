@@ -519,6 +519,48 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rightSlot => 'Right slot (next to Profile)';
 
   @override
+  String get tileWideTooltipRemove => 'Remove wide layout';
+
+  @override
+  String get tileWideTooltipAdd => 'Make wide tile';
+
+  @override
+  String get tileVisibilityShow => 'Show tile';
+
+  @override
+  String get tileVisibilityHide => 'Hide tile';
+
+  @override
+  String get tileVisibilityMin => 'Cannot hide (last tile)';
+
+  @override
+  String get colorPickerApply => 'Apply';
+
+  @override
+  String get colorPickerHex => 'Hex';
+
+  @override
+  String get textColorSection => 'TEXT COLOR';
+
+  @override
+  String get textColorPickerTitle => 'Text Color';
+
+  @override
+  String get textColorHint => 'Tap the circle to pick a custom text colour';
+
+  @override
+  String get textColorPreviewPrimary => 'Primary';
+
+  @override
+  String get textColorPreviewSecondary => 'Secondary';
+
+  @override
+  String get textColorPreviewMuted => 'Muted';
+
+  @override
+  String get colorSwatchCustom => 'Custom';
+
+  @override
   String get accentColorSection => 'ACCENT COLOR';
 
   @override

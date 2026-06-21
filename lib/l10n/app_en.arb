@@ -497,6 +497,62 @@
   "@rightSlot": {
     "description": "Label for right navigation slot selector"
   },
+  "tileWideTooltipRemove": "Remove wide layout",
+  "@tileWideTooltipRemove": {
+    "description": "Tooltip on wide-tile icon when tile is already wide — tap to remove"
+  },
+  "tileWideTooltipAdd": "Make wide tile",
+  "@tileWideTooltipAdd": {
+    "description": "Tooltip on wide-tile icon — tap to make this tile full-width"
+  },
+  "tileVisibilityShow": "Show tile",
+  "@tileVisibilityShow": {
+    "description": "Tooltip on eye icon when tile is hidden — tap to show"
+  },
+  "tileVisibilityHide": "Hide tile",
+  "@tileVisibilityHide": {
+    "description": "Tooltip on eye icon when tile is visible — tap to hide"
+  },
+  "tileVisibilityMin": "Cannot hide (last tile)",
+  "@tileVisibilityMin": {
+    "description": "Tooltip shown when hide is disabled because minimum visible tile count is reached"
+  },
+  "colorPickerApply": "Apply",
+  "@colorPickerApply": {
+    "description": "Apply button in the custom colour picker dialog"
+  },
+  "colorPickerHex": "Hex",
+  "@colorPickerHex": {
+    "description": "Label for the hex colour input field in the colour picker"
+  },
+  "textColorSection": "TEXT COLOR",
+  "@textColorSection": {
+    "description": "Section header for the text colour customization area"
+  },
+  "textColorPickerTitle": "Text Color",
+  "@textColorPickerTitle": {
+    "description": "Title of the text colour picker dialog"
+  },
+  "textColorHint": "Tap the circle to pick a custom text colour",
+  "@textColorHint": {
+    "description": "Hint shown below the text colour circle picker"
+  },
+  "textColorPreviewPrimary": "Primary",
+  "@textColorPreviewPrimary": {
+    "description": "Preview label showing primary text colour"
+  },
+  "textColorPreviewSecondary": "Secondary",
+  "@textColorPreviewSecondary": {
+    "description": "Preview label showing secondary text colour"
+  },
+  "textColorPreviewMuted": "Muted",
+  "@textColorPreviewMuted": {
+    "description": "Preview label showing muted text colour"
+  },
+  "colorSwatchCustom": "Custom",
+  "@colorSwatchCustom": {
+    "description": "Label on the custom colour swatch in the colour picker section"
+  },
   "accentColorSection": "ACCENT COLOR",
   "@accentColorSection": {
     "description": "Section header for accent color in customize sheet"

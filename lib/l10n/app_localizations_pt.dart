@@ -519,6 +519,48 @@ class AppLocalizationsPt extends AppLocalizations {
   String get rightSlot => 'Slot direito (ao lado de Perfil)';
 
   @override
+  String get tileWideTooltipRemove => 'Remover layout largo';
+
+  @override
+  String get tileWideTooltipAdd => 'Tornar mosaico largo';
+
+  @override
+  String get tileVisibilityShow => 'Mostrar mosaico';
+
+  @override
+  String get tileVisibilityHide => 'Ocultar mosaico';
+
+  @override
+  String get tileVisibilityMin => 'Não é possível ocultar (último mosaico)';
+
+  @override
+  String get colorPickerApply => 'Aplicar';
+
+  @override
+  String get colorPickerHex => 'Hex';
+
+  @override
+  String get textColorSection => 'COR DO TEXTO';
+
+  @override
+  String get textColorPickerTitle => 'Cor do texto';
+
+  @override
+  String get textColorHint => 'Toque no círculo para escolher uma cor de texto personalizada';
+
+  @override
+  String get textColorPreviewPrimary => 'Primário';
+
+  @override
+  String get textColorPreviewSecondary => 'Secundário';
+
+  @override
+  String get textColorPreviewMuted => 'Silenciado';
+
+  @override
+  String get colorSwatchCustom => 'Personalizado';
+
+  @override
   String get accentColorSection => 'COR DE DESTAQUE';
 
   @override

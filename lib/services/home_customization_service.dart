@@ -51,6 +51,10 @@ class HomeCustomizationService extends ChangeNotifier {
   static const _keyTileOrder = 'home_tile_order';
   static const _keyNavLeft = 'home_nav_left';
   static const _keyNavRight = 'home_nav_right';
+  static const _keyHiddenTiles = 'home_hidden_tiles';
+  static const _keyWideTile = 'home_wide_tile';
+
+  static const int minVisibleTiles = 1;
 
   static const List<AppFeature> defaultTileOrder = [
     AppFeature.connector,
@@ -65,14 +69,22 @@ class HomeCustomizationService extends ChangeNotifier {
   static const AppFeature defaultNavRight = AppFeature.wiki;
 
   static const Set<AppFeature> navSlotBlacklist = {AppFeature.connector};
+  static const Set<AppFeature> alwaysVisible = {};
 
   List<AppFeature> _tileOrder = List.from(defaultTileOrder);
   AppFeature _navLeft = defaultNavLeft;
   AppFeature _navRight = defaultNavRight;
+  Set<AppFeature> _hiddenTiles = {};
+  AppFeature? _wideTile;
 
   List<AppFeature> get tileOrder => List.unmodifiable(_tileOrder);
   AppFeature get navLeft => _navLeft;
   AppFeature get navRight => _navRight;
+  Set<AppFeature> get hiddenTiles => Set.unmodifiable(_hiddenTiles);
+  AppFeature? get wideTile => _wideTile;
+
+  List<AppFeature> get visibleTiles =>
+      _tileOrder.where((f) => !_hiddenTiles.contains(f)).toList();
 
   Future<void> load() async {
     final prefs = await SharedPreferences.getInstance();
@@ -104,6 +116,22 @@ class HomeCustomizationService extends ChangeNotifier {
         orElse: () => defaultNavRight,
       );
     }
+
+    final savedHidden = prefs.getStringList(_keyHiddenTiles);
+    if (savedHidden != null) {
+      _hiddenTiles = savedHidden
+          .map((s) => AppFeature.values.where((f) => f.id == s).firstOrNull)
+          .whereType<AppFeature>()
+          .where((f) => !alwaysVisible.contains(f))
+          .toSet();
+    }
+
+    final savedWide = prefs.getString(_keyWideTile);
+    if (savedWide != null) {
+      _wideTile = AppFeature.values.where((f) => f.id == savedWide).firstOrNull;
+      if (_wideTile != null && _hiddenTiles.contains(_wideTile))
+        _wideTile = null;
+    }
   }
 
   Future<void> saveTileOrder(List<AppFeature> order) async {
@@ -127,14 +155,41 @@ class HomeCustomizationService extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> saveHiddenTiles(Set<AppFeature> hidden) async {
+    _hiddenTiles = Set.from(hidden.where((f) => !alwaysVisible.contains(f)));
+    if (_wideTile != null && _hiddenTiles.contains(_wideTile)) _wideTile = null;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList(
+      _keyHiddenTiles,
+      _hiddenTiles.map((f) => f.id).toList(),
+    );
+    if (_wideTile == null) await prefs.remove(_keyWideTile);
+    notifyListeners();
+  }
+
+  Future<void> saveWideTile(AppFeature? tile) async {
+    _wideTile = tile;
+    final prefs = await SharedPreferences.getInstance();
+    if (tile == null) {
+      await prefs.remove(_keyWideTile);
+    } else {
+      await prefs.setString(_keyWideTile, tile.id);
+    }
+    notifyListeners();
+  }
+
   Future<void> reset() async {
     _tileOrder = List.from(defaultTileOrder);
     _navLeft = defaultNavLeft;
     _navRight = defaultNavRight;
+    _hiddenTiles = {};
+    _wideTile = null;
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_keyTileOrder);
     await prefs.remove(_keyNavLeft);
     await prefs.remove(_keyNavRight);
+    await prefs.remove(_keyHiddenTiles);
+    await prefs.remove(_keyWideTile);
     notifyListeners();
   }
 }

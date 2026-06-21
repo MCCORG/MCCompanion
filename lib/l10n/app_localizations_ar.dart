@@ -519,6 +519,48 @@ class AppLocalizationsAr extends AppLocalizations {
   String get rightSlot => 'الفتحة اليمنى (بجانب الملف الشخصي)';
 
   @override
+  String get tileWideTooltipRemove => 'إزالة التخطيط العريض';
+
+  @override
+  String get tileWideTooltipAdd => 'جعل البلاطة عريضة';
+
+  @override
+  String get tileVisibilityShow => 'إظهار البلاطة';
+
+  @override
+  String get tileVisibilityHide => 'إخفاء البلاطة';
+
+  @override
+  String get tileVisibilityMin => 'لا يمكن الإخفاء (آخر بلاطة)';
+
+  @override
+  String get colorPickerApply => 'تطبيق';
+
+  @override
+  String get colorPickerHex => 'Hex';
+
+  @override
+  String get textColorSection => 'لون النص';
+
+  @override
+  String get textColorPickerTitle => 'لون النص';
+
+  @override
+  String get textColorHint => 'اضغط على الدائرة لاختيار لون نص مخصص';
+
+  @override
+  String get textColorPreviewPrimary => 'رئيسي';
+
+  @override
+  String get textColorPreviewSecondary => 'ثانوي';
+
+  @override
+  String get textColorPreviewMuted => 'خافت';
+
+  @override
+  String get colorSwatchCustom => 'مخصص';
+
+  @override
   String get accentColorSection => 'لون التمييز';
 
   @override

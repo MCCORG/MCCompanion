@@ -519,6 +519,48 @@ class AppLocalizationsDe extends AppLocalizations {
   String get rightSlot => 'Rechter Slot (neben Profil)';
 
   @override
+  String get tileWideTooltipRemove => 'Breites Layout entfernen';
+
+  @override
+  String get tileWideTooltipAdd => 'Als breite Kachel festlegen';
+
+  @override
+  String get tileVisibilityShow => 'Kachel anzeigen';
+
+  @override
+  String get tileVisibilityHide => 'Kachel ausblenden';
+
+  @override
+  String get tileVisibilityMin => 'Kann nicht ausgeblendet werden (letzte Kachel)';
+
+  @override
+  String get colorPickerApply => 'Anwenden';
+
+  @override
+  String get colorPickerHex => 'Hex';
+
+  @override
+  String get textColorSection => 'TEXTFARBE';
+
+  @override
+  String get textColorPickerTitle => 'Textfarbe';
+
+  @override
+  String get textColorHint => 'Tippe auf den Kreis, um eine benutzerdefinierte Textfarbe auszuwählen';
+
+  @override
+  String get textColorPreviewPrimary => 'Primär';
+
+  @override
+  String get textColorPreviewSecondary => 'Sekundär';
+
+  @override
+  String get textColorPreviewMuted => 'Gedämpft';
+
+  @override
+  String get colorSwatchCustom => 'Benutzerdefiniert';
+
+  @override
   String get accentColorSection => 'AKZENTFARBE';
 
   @override

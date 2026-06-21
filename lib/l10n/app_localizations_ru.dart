@@ -519,6 +519,48 @@ class AppLocalizationsRu extends AppLocalizations {
   String get rightSlot => 'Правый слот (рядом с Профилем)';
 
   @override
+  String get tileWideTooltipRemove => 'Убрать широкий макет';
+
+  @override
+  String get tileWideTooltipAdd => 'Сделать плитку широкой';
+
+  @override
+  String get tileVisibilityShow => 'Показать плитку';
+
+  @override
+  String get tileVisibilityHide => 'Скрыть плитку';
+
+  @override
+  String get tileVisibilityMin => 'Нельзя скрыть (последняя плитка)';
+
+  @override
+  String get colorPickerApply => 'Применить';
+
+  @override
+  String get colorPickerHex => 'Hex';
+
+  @override
+  String get textColorSection => 'ЦВЕТ ТЕКСТА';
+
+  @override
+  String get textColorPickerTitle => 'Цвет текста';
+
+  @override
+  String get textColorHint => 'Нажмите на круг, чтобы выбрать пользовательский цвет текста';
+
+  @override
+  String get textColorPreviewPrimary => 'Основной';
+
+  @override
+  String get textColorPreviewSecondary => 'Дополнительный';
+
+  @override
+  String get textColorPreviewMuted => 'Приглушённый';
+
+  @override
+  String get colorSwatchCustom => 'Пользовательский';
+
+  @override
   String get accentColorSection => 'АКЦЕНТНЫЙ ЦВЕТ';
 
   @override

@@ -519,6 +519,48 @@ class AppLocalizationsUr extends AppLocalizations {
   String get rightSlot => 'دایاں سلاٹ (پروفائل کے قریب)';
 
   @override
+  String get tileWideTooltipRemove => 'چوڑا لے آؤٹ ہٹائیں';
+
+  @override
+  String get tileWideTooltipAdd => 'چوڑی ٹائل بنائیں';
+
+  @override
+  String get tileVisibilityShow => 'ٹائل دکھائیں';
+
+  @override
+  String get tileVisibilityHide => 'ٹائل چھپائیں';
+
+  @override
+  String get tileVisibilityMin => 'چھپا نہیں سکتے (آخری ٹائل)';
+
+  @override
+  String get colorPickerApply => 'لاگو کریں';
+
+  @override
+  String get colorPickerHex => 'Hex';
+
+  @override
+  String get textColorSection => 'متن کا رنگ';
+
+  @override
+  String get textColorPickerTitle => 'متن کا رنگ';
+
+  @override
+  String get textColorHint => 'کسٹم متن رنگ منتخب کرنے کے لیے دائرے پر ٹیپ کریں';
+
+  @override
+  String get textColorPreviewPrimary => 'بنیادی';
+
+  @override
+  String get textColorPreviewSecondary => 'ثانوی';
+
+  @override
+  String get textColorPreviewMuted => 'دھیما';
+
+  @override
+  String get colorSwatchCustom => 'کسٹم';
+
+  @override
   String get accentColorSection => 'ایکسینٹ رنگ';
 
   @override

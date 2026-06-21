@@ -519,6 +519,48 @@ class AppLocalizationsNl extends AppLocalizations {
   String get rightSlot => 'Rechter slot (naast Profiel)';
 
   @override
+  String get tileWideTooltipRemove => 'Brede indeling verwijderen';
+
+  @override
+  String get tileWideTooltipAdd => 'Brede tegel maken';
+
+  @override
+  String get tileVisibilityShow => 'Tegel tonen';
+
+  @override
+  String get tileVisibilityHide => 'Tegel verbergen';
+
+  @override
+  String get tileVisibilityMin => 'Kan niet verbergen (laatste tegel)';
+
+  @override
+  String get colorPickerApply => 'Toepassen';
+
+  @override
+  String get colorPickerHex => 'Hex';
+
+  @override
+  String get textColorSection => 'TEKSTKLEUR';
+
+  @override
+  String get textColorPickerTitle => 'Tekstkleur';
+
+  @override
+  String get textColorHint => 'Tik op de cirkel om een aangepaste tekstkleur te kiezen';
+
+  @override
+  String get textColorPreviewPrimary => 'Primair';
+
+  @override
+  String get textColorPreviewSecondary => 'Secundair';
+
+  @override
+  String get textColorPreviewMuted => 'Gedempt';
+
+  @override
+  String get colorSwatchCustom => 'Aangepast';
+
+  @override
   String get accentColorSection => 'ACCENTKLEUR';
 
   @override

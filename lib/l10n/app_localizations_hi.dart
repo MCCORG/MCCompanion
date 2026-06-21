@@ -519,6 +519,48 @@ class AppLocalizationsHi extends AppLocalizations {
   String get rightSlot => 'दायां स्लॉट (प्रोफ़ाइल के बगल में)';
 
   @override
+  String get tileWideTooltipRemove => 'चौड़ा लेआउट हटाएं';
+
+  @override
+  String get tileWideTooltipAdd => 'चौड़ी टाइल बनाएं';
+
+  @override
+  String get tileVisibilityShow => 'टाइल दिखाएं';
+
+  @override
+  String get tileVisibilityHide => 'टाइल छुपाएं';
+
+  @override
+  String get tileVisibilityMin => 'छुपा नहीं सकते (आखिरी टाइल)';
+
+  @override
+  String get colorPickerApply => 'लागू करें';
+
+  @override
+  String get colorPickerHex => 'Hex';
+
+  @override
+  String get textColorSection => 'टेक्स्ट रंग';
+
+  @override
+  String get textColorPickerTitle => 'टेक्स्ट रंग';
+
+  @override
+  String get textColorHint => 'कस्टम टेक्स्ट रंग चुनने के लिए सर्कल पर टैप करें';
+
+  @override
+  String get textColorPreviewPrimary => 'प्राथमिक';
+
+  @override
+  String get textColorPreviewSecondary => 'द्वितीयक';
+
+  @override
+  String get textColorPreviewMuted => 'म्यूट';
+
+  @override
+  String get colorSwatchCustom => 'कस्टम';
+
+  @override
   String get accentColorSection => 'एक्सेंट रंग';
 
   @override

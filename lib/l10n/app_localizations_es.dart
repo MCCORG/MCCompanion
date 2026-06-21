@@ -519,6 +519,48 @@ class AppLocalizationsEs extends AppLocalizations {
   String get rightSlot => 'Ranura derecha (junto a Perfil)';
 
   @override
+  String get tileWideTooltipRemove => 'Quitar diseño ancho';
+
+  @override
+  String get tileWideTooltipAdd => 'Hacer mosaico ancho';
+
+  @override
+  String get tileVisibilityShow => 'Mostrar mosaico';
+
+  @override
+  String get tileVisibilityHide => 'Ocultar mosaico';
+
+  @override
+  String get tileVisibilityMin => 'No se puede ocultar (último mosaico)';
+
+  @override
+  String get colorPickerApply => 'Aplicar';
+
+  @override
+  String get colorPickerHex => 'Hex';
+
+  @override
+  String get textColorSection => 'COLOR DE TEXTO';
+
+  @override
+  String get textColorPickerTitle => 'Color de texto';
+
+  @override
+  String get textColorHint => 'Toca el círculo para elegir un color de texto personalizado';
+
+  @override
+  String get textColorPreviewPrimary => 'Primario';
+
+  @override
+  String get textColorPreviewSecondary => 'Secundario';
+
+  @override
+  String get textColorPreviewMuted => 'Silenciado';
+
+  @override
+  String get colorSwatchCustom => 'Personalizado';
+
+  @override
   String get accentColorSection => 'COLOR DE ACENTO';
 
   @override
