@@ -30,6 +30,72 @@ class AppLocalizationsEs extends AppLocalizations {
   String get ok => 'OK';
 
   @override
+  String get back => 'Atrás';
+
+  @override
+  String get next => 'Siguiente';
+
+  @override
+  String get done => 'Listo';
+
+  @override
+  String get none => 'Ninguno';
+
+  @override
+  String get onboardingThemeTitle => 'Elige un tema';
+
+  @override
+  String get onboardingThemeSubtitle => 'Puedes ajustar cada color en los ajustes más tarde.';
+
+  @override
+  String get onboardingNavTitle => 'Acceso rápido';
+
+  @override
+  String get onboardingNavSubtitle => 'Elige dos funciones para tu barra de navegación.';
+
+  @override
+  String get onboardingNavLeftLabel => 'BOTÓN IZQUIERDO';
+
+  @override
+  String get onboardingNavRightLabel => 'BOTÓN DERECHO';
+
+  @override
+  String get onboardingNavPreviewHome => 'Inicio';
+
+  @override
+  String get onboardingNavPreviewConnector => 'Conector';
+
+  @override
+  String get onboardingNavPreviewProfile => 'Perfil';
+
+  @override
+  String get onboardingNavPreviewEmpty => 'Vacío';
+
+  @override
+  String get onboardingStartTitle => 'Página de inicio';
+
+  @override
+  String get onboardingStartSubtitle => 'La app se abre aquí cada vez que la inicias.';
+
+  @override
+  String get onboardingCustomizeDetail => 'Personalizar en detalle →';
+
+  @override
+  String get startPageHome => 'Inicio';
+
+  @override
+  String get startPageHomeSubtitle => 'Mostrar la pantalla de inicio con mosaicos';
+
+  @override
+  String get startPageFeature => 'Función';
+
+  @override
+  String get startPageFeatureSubtitle => 'Abrir directamente en una página específica';
+
+  @override
+  String get startPageSectionLabel => 'PÁGINA DE INICIO';
+
+  @override
   String get joinUs => 'Únete';
 
   @override

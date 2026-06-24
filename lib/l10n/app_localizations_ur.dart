@@ -30,6 +30,72 @@ class AppLocalizationsUr extends AppLocalizations {
   String get ok => 'OK';
 
   @override
+  String get back => 'واپس';
+
+  @override
+  String get next => 'اگلا';
+
+  @override
+  String get done => 'مکمل';
+
+  @override
+  String get none => 'کوئی نہیں';
+
+  @override
+  String get onboardingThemeTitle => 'تھیم منتخب کریں';
+
+  @override
+  String get onboardingThemeSubtitle => 'آپ بعد میں سیٹنگز میں ہر رنگ کو تبدیل کر سکتے ہیں۔';
+
+  @override
+  String get onboardingNavTitle => 'فوری رسائی';
+
+  @override
+  String get onboardingNavSubtitle => 'نیویگیشن بار کے لیے دو خصوصیات منتخب کریں۔';
+
+  @override
+  String get onboardingNavLeftLabel => 'بائیں بٹن';
+
+  @override
+  String get onboardingNavRightLabel => 'دائیں بٹن';
+
+  @override
+  String get onboardingNavPreviewHome => 'ہوم';
+
+  @override
+  String get onboardingNavPreviewConnector => 'کنیکٹر';
+
+  @override
+  String get onboardingNavPreviewProfile => 'پروفائل';
+
+  @override
+  String get onboardingNavPreviewEmpty => 'خالی';
+
+  @override
+  String get onboardingStartTitle => 'شروعاتی صفحہ';
+
+  @override
+  String get onboardingStartSubtitle => 'ایپ ہر بار یہاں سے کھلتی ہے۔';
+
+  @override
+  String get onboardingCustomizeDetail => 'تفصیل میں اپنی مرضی کے مطابق بنائیں →';
+
+  @override
+  String get startPageHome => 'ہوم';
+
+  @override
+  String get startPageHomeSubtitle => 'ٹائلوں کے ساتھ ہوم اسکرین دکھائیں';
+
+  @override
+  String get startPageFeature => 'خصوصیت';
+
+  @override
+  String get startPageFeatureSubtitle => 'براہ راست ایک مخصوص صفحے پر کھولیں';
+
+  @override
+  String get startPageSectionLabel => 'شروعاتی صفحہ';
+
+  @override
   String get joinUs => 'ہمارے ساتھ شامل ہوں';
 
   @override

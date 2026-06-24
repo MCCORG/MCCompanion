@@ -198,20 +198,18 @@ class _LandingScreenState extends State<LandingScreen> {
                                 ? 860
                                 : double.infinity,
                           ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              _buildGrid(tiles),
-                              const SizedBox(height: 10),
-                              LandingFeedbackTile(onTap: widget.onGoToFeedback),
-                            ],
-                          ),
+                          child: _buildGrid(tiles),
                         ),
                       ),
                     ),
                   ),
                 ),
               ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.fromLTRB(14, 6, 14, 10),
+              child: LandingFeedbackTile(onTap: widget.onGoToFeedback),
             ),
           ],
         ),

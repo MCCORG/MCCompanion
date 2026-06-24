@@ -30,6 +30,72 @@ class AppLocalizationsJa extends AppLocalizations {
   String get ok => 'OK';
 
   @override
+  String get back => '戻る';
+
+  @override
+  String get next => '次へ';
+
+  @override
+  String get done => '完了';
+
+  @override
+  String get none => 'なし';
+
+  @override
+  String get onboardingThemeTitle => 'テーマを選択';
+
+  @override
+  String get onboardingThemeSubtitle => '後で設定から各色を細かく調整できます。';
+
+  @override
+  String get onboardingNavTitle => 'クイックアクセス';
+
+  @override
+  String get onboardingNavSubtitle => 'ナビゲーションバーに2つの機能を選択してください。';
+
+  @override
+  String get onboardingNavLeftLabel => '左ボタン';
+
+  @override
+  String get onboardingNavRightLabel => '右ボタン';
+
+  @override
+  String get onboardingNavPreviewHome => 'ホーム';
+
+  @override
+  String get onboardingNavPreviewConnector => '接続';
+
+  @override
+  String get onboardingNavPreviewProfile => 'プロフィール';
+
+  @override
+  String get onboardingNavPreviewEmpty => '空';
+
+  @override
+  String get onboardingStartTitle => 'スタートページ';
+
+  @override
+  String get onboardingStartSubtitle => '起動するたびにここが開きます。';
+
+  @override
+  String get onboardingCustomizeDetail => '詳しくカスタマイズ →';
+
+  @override
+  String get startPageHome => 'ホーム';
+
+  @override
+  String get startPageHomeSubtitle => 'タイル付きのホーム画面を表示';
+
+  @override
+  String get startPageFeature => '機能';
+
+  @override
+  String get startPageFeatureSubtitle => '特定のページを直接開く';
+
+  @override
+  String get startPageSectionLabel => 'スタートページ';
+
+  @override
   String get joinUs => '参加する';
 
   @override

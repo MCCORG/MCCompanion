@@ -25,6 +25,7 @@ import '../l10n/app_localizations.dart';
 import '../services/user_service.dart';
 import '../models/user_model.dart';
 import 'landing_screen.dart';
+import '../widgets/landing/landing_customize_sheet.dart';
 import 'connector_screen.dart';
 import 'skins_screen.dart';
 import 'wiki_screen.dart';
@@ -42,6 +43,7 @@ import '../services/subscription_service.dart';
 import '../services/home_customization_service.dart';
 import '../services/theme_service.dart';
 import '../theme/app_theme.dart';
+import '../widgets/onboarding/onboarding_wizard.dart';
 import 'package:flutter/services.dart';
 
 const int _pageHome = 0;
@@ -123,7 +125,57 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     HomeCustomizationService.instance.addListener(_onCustomizationChanged);
     ThemeService.instance.addListener(_onCustomizationChanged);
     _initDeepLinks();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _checkOnboarding());
   }
+
+  void _checkOnboarding() {
+    final svc = HomeCustomizationService.instance;
+    if (!svc.isOnboardingDone) {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        barrierColor: Colors.black87,
+        builder: (_) => OnboardingWizard(
+          onComplete: _goToStartPage,
+          onCustomize: () {
+            _goToStartPage();
+            _showCustomizeSheet();
+          },
+        ),
+      );
+    } else {
+      _goToStartPage();
+    }
+  }
+
+  void _goToStartPage() {
+    final svc = HomeCustomizationService.instance;
+    if (svc.useLandingAsStart) {
+      _goTo(_pageHome);
+    } else {
+      _goTo(_pageIndexFor(svc.startPage));
+    }
+  }
+
+  void _showCustomizeSheet() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => LandingCustomizeSheet(
+        callbackFor: _navCallbackFor,
+      ),
+    );
+  }
+
+  int _pageIndexFor(AppFeature feature) => switch (feature) {
+    AppFeature.connector => _pageConnector,
+    AppFeature.skins => _pageSkins,
+    AppFeature.wiki => _pageWiki,
+    AppFeature.partners => _pagePartners,
+    AppFeature.lookup => _pagePlayerLookup,
+    AppFeature.tracker => _pageServerTracker,
+  };
 
   void _onCustomizationChanged() {
     if (mounted) setState(() {});
@@ -650,10 +702,10 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
             },
             navLeftFeature: svc.navLeft,
             navRightFeature: svc.navRight,
-            onNavLeftTap: _navCallbackFor(svc.navLeft),
-            onNavRightTap: _navCallbackFor(svc.navRight),
-            navLeftActive: _isNavFeatureActive(svc.navLeft),
-            navRightActive: _isNavFeatureActive(svc.navRight),
+            onNavLeftTap: svc.navLeft != null ? _navCallbackFor(svc.navLeft!) : null,
+            onNavRightTap: svc.navRight != null ? _navCallbackFor(svc.navRight!) : null,
+            navLeftActive: svc.navLeft != null && _isNavFeatureActive(svc.navLeft!),
+            navRightActive: svc.navRight != null && _isNavFeatureActive(svc.navRight!),
           ),
           body: SafeArea(top: true, bottom: false, child: _buildPageStack()),
         ),

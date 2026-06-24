@@ -30,6 +30,72 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ok => 'OK';
 
   @override
+  String get back => 'Back';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String get done => 'Done';
+
+  @override
+  String get none => 'None';
+
+  @override
+  String get onboardingThemeTitle => 'Choose a theme';
+
+  @override
+  String get onboardingThemeSubtitle => 'You can fine-tune every color in the settings later.';
+
+  @override
+  String get onboardingNavTitle => 'Quick access';
+
+  @override
+  String get onboardingNavSubtitle => 'Pick two features for your bottom bar shortcuts.';
+
+  @override
+  String get onboardingNavLeftLabel => 'LEFT SHORTCUT';
+
+  @override
+  String get onboardingNavRightLabel => 'RIGHT SHORTCUT';
+
+  @override
+  String get onboardingNavPreviewHome => 'Home';
+
+  @override
+  String get onboardingNavPreviewConnector => 'Connector';
+
+  @override
+  String get onboardingNavPreviewProfile => 'Profile';
+
+  @override
+  String get onboardingNavPreviewEmpty => 'Empty';
+
+  @override
+  String get onboardingStartTitle => 'Start page';
+
+  @override
+  String get onboardingStartSubtitle => 'The app opens here every time you launch.';
+
+  @override
+  String get onboardingCustomizeDetail => 'Customize in detail →';
+
+  @override
+  String get startPageHome => 'Home';
+
+  @override
+  String get startPageHomeSubtitle => 'Show the home screen with tiles';
+
+  @override
+  String get startPageFeature => 'Feature';
+
+  @override
+  String get startPageFeatureSubtitle => 'Open directly on a specific page';
+
+  @override
+  String get startPageSectionLabel => 'START PAGE';
+
+  @override
   String get joinUs => 'Join Us';
 
   @override

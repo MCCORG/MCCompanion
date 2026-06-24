@@ -30,6 +30,72 @@ class AppLocalizationsSw extends AppLocalizations {
   String get ok => 'OK';
 
   @override
+  String get back => 'Rudi';
+
+  @override
+  String get next => 'Inayofuata';
+
+  @override
+  String get done => 'Imekamilika';
+
+  @override
+  String get none => 'Hakuna';
+
+  @override
+  String get onboardingThemeTitle => 'Chagua mandhari';
+
+  @override
+  String get onboardingThemeSubtitle => 'Unaweza kurekebisha kila rangi katika mipangilio baadaye.';
+
+  @override
+  String get onboardingNavTitle => 'Ufikiaji wa haraka';
+
+  @override
+  String get onboardingNavSubtitle => 'Chagua vipengele viwili kwa upau wa urambazaji.';
+
+  @override
+  String get onboardingNavLeftLabel => 'KITUFE CHA KUSHOTO';
+
+  @override
+  String get onboardingNavRightLabel => 'KITUFE CHA KULIA';
+
+  @override
+  String get onboardingNavPreviewHome => 'Nyumbani';
+
+  @override
+  String get onboardingNavPreviewConnector => 'Kiunganishi';
+
+  @override
+  String get onboardingNavPreviewProfile => 'Wasifu';
+
+  @override
+  String get onboardingNavPreviewEmpty => 'Tupu';
+
+  @override
+  String get onboardingStartTitle => 'Ukurasa wa mwanzo';
+
+  @override
+  String get onboardingStartSubtitle => 'Programu inafungua hapa kila wakati.';
+
+  @override
+  String get onboardingCustomizeDetail => 'Binafsisha kwa undani →';
+
+  @override
+  String get startPageHome => 'Nyumbani';
+
+  @override
+  String get startPageHomeSubtitle => 'Onyesha skrini ya nyumbani na vigae';
+
+  @override
+  String get startPageFeature => 'Kipengele';
+
+  @override
+  String get startPageFeatureSubtitle => 'Fungua moja kwa moja kwenye ukurasa mahususi';
+
+  @override
+  String get startPageSectionLabel => 'UKURASA WA MWANZO';
+
+  @override
   String get joinUs => 'Jiunge Nasi';
 
   @override

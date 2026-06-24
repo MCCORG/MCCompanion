@@ -30,6 +30,72 @@ class AppLocalizationsZh extends AppLocalizations {
   String get ok => 'OK';
 
   @override
+  String get back => '返回';
+
+  @override
+  String get next => '下一步';
+
+  @override
+  String get done => '完成';
+
+  @override
+  String get none => '无';
+
+  @override
+  String get onboardingThemeTitle => '选择主题';
+
+  @override
+  String get onboardingThemeSubtitle => '您可以稍后在设置中微调每种颜色。';
+
+  @override
+  String get onboardingNavTitle => '快速访问';
+
+  @override
+  String get onboardingNavSubtitle => '为导航栏选择两个功能。';
+
+  @override
+  String get onboardingNavLeftLabel => '左侧按钮';
+
+  @override
+  String get onboardingNavRightLabel => '右侧按钮';
+
+  @override
+  String get onboardingNavPreviewHome => '主页';
+
+  @override
+  String get onboardingNavPreviewConnector => '连接器';
+
+  @override
+  String get onboardingNavPreviewProfile => '个人资料';
+
+  @override
+  String get onboardingNavPreviewEmpty => '空';
+
+  @override
+  String get onboardingStartTitle => '起始页面';
+
+  @override
+  String get onboardingStartSubtitle => '每次启动时应用都会在此处打开。';
+
+  @override
+  String get onboardingCustomizeDetail => '详细自定义 →';
+
+  @override
+  String get startPageHome => '主页';
+
+  @override
+  String get startPageHomeSubtitle => '显示带有磁贴的主屏幕';
+
+  @override
+  String get startPageFeature => '功能';
+
+  @override
+  String get startPageFeatureSubtitle => '直接在特定页面打开';
+
+  @override
+  String get startPageSectionLabel => '起始页面';
+
+  @override
   String get joinUs => '加入我们';
 
   @override

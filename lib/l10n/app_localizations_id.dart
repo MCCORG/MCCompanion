@@ -30,6 +30,72 @@ class AppLocalizationsId extends AppLocalizations {
   String get ok => 'OK';
 
   @override
+  String get back => 'Kembali';
+
+  @override
+  String get next => 'Lanjut';
+
+  @override
+  String get done => 'Selesai';
+
+  @override
+  String get none => 'Tidak ada';
+
+  @override
+  String get onboardingThemeTitle => 'Pilih tema';
+
+  @override
+  String get onboardingThemeSubtitle => 'Kamu bisa menyesuaikan setiap warna di pengaturan nanti.';
+
+  @override
+  String get onboardingNavTitle => 'Akses cepat';
+
+  @override
+  String get onboardingNavSubtitle => 'Pilih dua fitur untuk bilah navigasi kamu.';
+
+  @override
+  String get onboardingNavLeftLabel => 'TOMBOL KIRI';
+
+  @override
+  String get onboardingNavRightLabel => 'TOMBOL KANAN';
+
+  @override
+  String get onboardingNavPreviewHome => 'Beranda';
+
+  @override
+  String get onboardingNavPreviewConnector => 'Konektor';
+
+  @override
+  String get onboardingNavPreviewProfile => 'Profil';
+
+  @override
+  String get onboardingNavPreviewEmpty => 'Kosong';
+
+  @override
+  String get onboardingStartTitle => 'Halaman awal';
+
+  @override
+  String get onboardingStartSubtitle => 'Aplikasi terbuka di sini setiap kali diluncurkan.';
+
+  @override
+  String get onboardingCustomizeDetail => 'Kustomisasi lebih lanjut →';
+
+  @override
+  String get startPageHome => 'Beranda';
+
+  @override
+  String get startPageHomeSubtitle => 'Tampilkan layar beranda dengan ubin';
+
+  @override
+  String get startPageFeature => 'Fitur';
+
+  @override
+  String get startPageFeatureSubtitle => 'Buka langsung ke halaman tertentu';
+
+  @override
+  String get startPageSectionLabel => 'HALAMAN AWAL';
+
+  @override
   String get joinUs => 'Gabung dengan Kami';
 
   @override

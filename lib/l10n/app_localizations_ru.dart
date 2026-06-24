@@ -30,6 +30,72 @@ class AppLocalizationsRu extends AppLocalizations {
   String get ok => 'OK';
 
   @override
+  String get back => 'Назад';
+
+  @override
+  String get next => 'Далее';
+
+  @override
+  String get done => 'Готово';
+
+  @override
+  String get none => 'Нет';
+
+  @override
+  String get onboardingThemeTitle => 'Выберите тему';
+
+  @override
+  String get onboardingThemeSubtitle => 'Вы можете изменить каждый цвет в настройках позже.';
+
+  @override
+  String get onboardingNavTitle => 'Быстрый доступ';
+
+  @override
+  String get onboardingNavSubtitle => 'Выберите две функции для панели навигации.';
+
+  @override
+  String get onboardingNavLeftLabel => 'ЛЕВАЯ КНОПКА';
+
+  @override
+  String get onboardingNavRightLabel => 'ПРАВАЯ КНОПКА';
+
+  @override
+  String get onboardingNavPreviewHome => 'Главная';
+
+  @override
+  String get onboardingNavPreviewConnector => 'Коннектор';
+
+  @override
+  String get onboardingNavPreviewProfile => 'Профиль';
+
+  @override
+  String get onboardingNavPreviewEmpty => 'Пусто';
+
+  @override
+  String get onboardingStartTitle => 'Стартовая страница';
+
+  @override
+  String get onboardingStartSubtitle => 'Приложение открывается здесь при каждом запуске.';
+
+  @override
+  String get onboardingCustomizeDetail => 'Настроить подробнее →';
+
+  @override
+  String get startPageHome => 'Главная';
+
+  @override
+  String get startPageHomeSubtitle => 'Показать главный экран с плитками';
+
+  @override
+  String get startPageFeature => 'Функция';
+
+  @override
+  String get startPageFeatureSubtitle => 'Открывать сразу на определённой странице';
+
+  @override
+  String get startPageSectionLabel => 'СТАРТОВАЯ СТРАНИЦА';
+
+  @override
   String get joinUs => 'Присоединяйтесь';
 
   @override

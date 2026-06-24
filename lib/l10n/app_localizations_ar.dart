@@ -30,6 +30,72 @@ class AppLocalizationsAr extends AppLocalizations {
   String get ok => 'OK';
 
   @override
+  String get back => 'رجوع';
+
+  @override
+  String get next => 'التالي';
+
+  @override
+  String get done => 'تم';
+
+  @override
+  String get none => 'لا شيء';
+
+  @override
+  String get onboardingThemeTitle => 'اختر ثيمًا';
+
+  @override
+  String get onboardingThemeSubtitle => 'يمكنك ضبط كل لون في الإعدادات لاحقًا.';
+
+  @override
+  String get onboardingNavTitle => 'وصول سريع';
+
+  @override
+  String get onboardingNavSubtitle => 'اختر ميزتين لشريط التنقل.';
+
+  @override
+  String get onboardingNavLeftLabel => 'الزر الأيسر';
+
+  @override
+  String get onboardingNavRightLabel => 'الزر الأيمن';
+
+  @override
+  String get onboardingNavPreviewHome => 'الرئيسية';
+
+  @override
+  String get onboardingNavPreviewConnector => 'الاتصال';
+
+  @override
+  String get onboardingNavPreviewProfile => 'الملف الشخصي';
+
+  @override
+  String get onboardingNavPreviewEmpty => 'فارغ';
+
+  @override
+  String get onboardingStartTitle => 'صفحة البداية';
+
+  @override
+  String get onboardingStartSubtitle => 'يفتح التطبيق هنا في كل مرة.';
+
+  @override
+  String get onboardingCustomizeDetail => 'تخصيص بالتفصيل ←';
+
+  @override
+  String get startPageHome => 'الرئيسية';
+
+  @override
+  String get startPageHomeSubtitle => 'عرض الشاشة الرئيسية مع البلاطات';
+
+  @override
+  String get startPageFeature => 'ميزة';
+
+  @override
+  String get startPageFeatureSubtitle => 'الفتح مباشرة على صفحة محددة';
+
+  @override
+  String get startPageSectionLabel => 'صفحة البداية';
+
+  @override
   String get joinUs => 'انضم إلينا';
 
   @override

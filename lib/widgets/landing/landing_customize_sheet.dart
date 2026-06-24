@@ -261,8 +261,8 @@ class LandingTileRow extends StatelessWidget {
 
 class LandingNavEditor extends StatelessWidget {
   final String label;
-  final AppFeature selected;
-  final void Function(AppFeature) onChanged;
+  final AppFeature? selected;
+  final void Function(AppFeature?) onChanged;
 
   const LandingNavEditor({
     super.key,
@@ -300,39 +300,56 @@ class LandingNavEditor extends StatelessWidget {
           Wrap(
             spacing: 8,
             runSpacing: 8,
-            children: options.map((f) {
-              final isSelected = f == selected;
-              final color = Color(f.colorValue);
-              return GestureDetector(
-                onTap: () => onChanged(f),
+            children: [
+              GestureDetector(
+                onTap: () => onChanged(null),
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 150),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 7,
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
                   decoration: BoxDecoration(
-                    color: isSelected
-                        ? color.withValues(alpha: 0.15)
-                        : AppTheme.surfaceLight,
+                    color: selected == null ? AppTheme.textMuted.withValues(alpha: 0.12) : AppTheme.surfaceLight,
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
-                      color: isSelected ? color : AppTheme.borderGray,
+                      color: selected == null ? AppTheme.textMuted : AppTheme.borderGray,
                     ),
                   ),
                   child: Text(
-                    f.label(l),
+                    AppLocalizations.of(context)!.none,
                     style: TextStyle(
-                      color: isSelected ? color : AppTheme.textMuted,
-                      fontWeight: isSelected
-                          ? FontWeight.w600
-                          : FontWeight.w400,
+                      color: selected == null ? AppTheme.textPrimary : AppTheme.textMuted,
+                      fontWeight: selected == null ? FontWeight.w600 : FontWeight.w400,
                       fontSize: 13,
                     ),
                   ),
                 ),
-              );
-            }).toList(),
+              ),
+              ...options.map((f) {
+                final isSelected = f == selected;
+                final color = Color(f.colorValue);
+                return GestureDetector(
+                  onTap: () => onChanged(f),
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 150),
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+                    decoration: BoxDecoration(
+                      color: isSelected ? color.withValues(alpha: 0.15) : AppTheme.surfaceLight,
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: isSelected ? color : AppTheme.borderGray,
+                      ),
+                    ),
+                    child: Text(
+                      f.label(l),
+                      style: TextStyle(
+                        color: isSelected ? color : AppTheme.textMuted,
+                        fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                        fontSize: 13,
+                      ),
+                    ),
+                  ),
+                );
+              }),
+            ],
           ),
         ],
       ),
@@ -350,9 +367,11 @@ class LandingCustomizeSheet extends StatefulWidget {
 
 class LandingCustomizeSheetState extends State<LandingCustomizeSheet> {
   late List<AppFeature> _order;
-  late AppFeature _navLeft;
-  late AppFeature _navRight;
+  AppFeature? _navLeft;
+  AppFeature? _navRight;
   late Set<AppFeature> _hidden;
+  late bool _useLanding;
+  late AppFeature _startPage;
   AppFeature? _wideTile;
   late AccentPreset _accent;
   late BgPreset _bg;
@@ -378,6 +397,8 @@ class LandingCustomizeSheetState extends State<LandingCustomizeSheet> {
     _navLeft = svc.navLeft;
     _navRight = svc.navRight;
     _hidden = Set.from(svc.hiddenTiles);
+    _useLanding = svc.useLandingAsStart;
+    _startPage = svc.startPage;
     _wideTile = svc.wideTile;
     _accent = ThemeService.instance.accent;
     _bg = ThemeService.instance.bg;
@@ -596,6 +617,7 @@ class LandingCustomizeSheetState extends State<LandingCustomizeSheet> {
       svc.saveNavRight(_navRight),
       svc.saveHiddenTiles(_hidden),
       svc.saveWideTile(_wideTile),
+      svc.completeOnboarding(_startPage, useLanding: _useLanding),
       ThemeService.instance.saveAll(),
     ]);
     if (mounted) Navigator.of(context).pop();
@@ -775,6 +797,15 @@ class LandingCustomizeSheetState extends State<LandingCustomizeSheet> {
                     label: l.rightSlot,
                     selected: _navRight,
                     onChanged: (f) => setState(() => _navRight = f),
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  _StartPageEditor(
+                    useLanding: _useLanding,
+                    startPage: _startPage,
+                    onUseLandingChanged: (v) => setState(() => _useLanding = v),
+                    onStartPageChanged: (f) => setState(() => _startPage = f),
                   ),
 
                   const SizedBox(height: 24),
@@ -1093,6 +1124,150 @@ class LandingCustomizeSheetState extends State<LandingCustomizeSheet> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _StartPageEditor extends StatelessWidget {
+  final bool useLanding;
+  final AppFeature startPage;
+  final ValueChanged<bool> onUseLandingChanged;
+  final ValueChanged<AppFeature> onStartPageChanged;
+
+  const _StartPageEditor({
+    required this.useLanding,
+    required this.startPage,
+    required this.onUseLandingChanged,
+    required this.onStartPageChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+    return Container(
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: AppTheme.surfaceRaised,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppTheme.borderGray),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            AppLocalizations.of(context)!.startPageSectionLabel,
+            style: TextStyle(
+              color: AppTheme.textMuted,
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          const SizedBox(height: 10),
+          _StartOption(
+            label: AppLocalizations.of(context)!.startPageHome,
+            subtitle: AppLocalizations.of(context)!.startPageHomeSubtitle,
+            selected: useLanding,
+            onTap: () => onUseLandingChanged(true),
+          ),
+          const SizedBox(height: 8),
+          _StartOption(
+            label: AppLocalizations.of(context)!.startPageFeature,
+            subtitle: AppLocalizations.of(context)!.startPageFeatureSubtitle,
+            selected: !useLanding,
+            onTap: () => onUseLandingChanged(false),
+          ),
+          if (!useLanding) ...[
+            const SizedBox(height: 12),
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: AppFeature.values.map((f) {
+                final isSelected = f == startPage;
+                final color = Color(f.colorValue);
+                return GestureDetector(
+                  onTap: () => onStartPageChanged(f),
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 150),
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+                    decoration: BoxDecoration(
+                      color: isSelected ? color.withValues(alpha: 0.15) : AppTheme.surfaceLight,
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: isSelected ? color : AppTheme.borderGray,
+                      ),
+                    ),
+                    child: Text(
+                      f.label(l),
+                      style: TextStyle(
+                        color: isSelected ? color : AppTheme.textMuted,
+                        fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                        fontSize: 13,
+                      ),
+                    ),
+                  ),
+                );
+              }).toList(),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+class _StartOption extends StatelessWidget {
+  final String label;
+  final String subtitle;
+  final bool selected;
+  final VoidCallback onTap;
+
+  const _StartOption({
+    required this.label,
+    required this.subtitle,
+    required this.selected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+        decoration: BoxDecoration(
+          color: selected ? AppTheme.accent.withValues(alpha: 0.10) : AppTheme.surfaceLight,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(
+            color: selected ? AppTheme.accent.withValues(alpha: 0.40) : AppTheme.borderGray,
+          ),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    label,
+                    style: TextStyle(
+                      color: selected ? AppTheme.accent : AppTheme.textPrimary,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text(
+                    subtitle,
+                    style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
+                  ),
+                ],
+              ),
+            ),
+            if (selected)
+              Icon(Icons.check_circle_rounded, color: AppTheme.accent, size: 16),
+          ],
+        ),
       ),
     );
   }

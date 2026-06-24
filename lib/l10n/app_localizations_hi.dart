@@ -30,6 +30,72 @@ class AppLocalizationsHi extends AppLocalizations {
   String get ok => 'OK';
 
   @override
+  String get back => 'वापस';
+
+  @override
+  String get next => 'आगे';
+
+  @override
+  String get done => 'हो गया';
+
+  @override
+  String get none => 'कोई नहीं';
+
+  @override
+  String get onboardingThemeTitle => 'थीम चुनें';
+
+  @override
+  String get onboardingThemeSubtitle => 'आप बाद में सेटिंग में हर रंग को बदल सकते हैं।';
+
+  @override
+  String get onboardingNavTitle => 'त्वरित पहुँच';
+
+  @override
+  String get onboardingNavSubtitle => 'नेविगेशन बार के लिए दो सुविधाएँ चुनें।';
+
+  @override
+  String get onboardingNavLeftLabel => 'बायाँ बटन';
+
+  @override
+  String get onboardingNavRightLabel => 'दायाँ बटन';
+
+  @override
+  String get onboardingNavPreviewHome => 'होम';
+
+  @override
+  String get onboardingNavPreviewConnector => 'कनेक्टर';
+
+  @override
+  String get onboardingNavPreviewProfile => 'प्रोफ़ाइल';
+
+  @override
+  String get onboardingNavPreviewEmpty => 'खाली';
+
+  @override
+  String get onboardingStartTitle => 'शुरुआती पृष्ठ';
+
+  @override
+  String get onboardingStartSubtitle => 'ऐप हर बार यहाँ से खुलती है।';
+
+  @override
+  String get onboardingCustomizeDetail => 'विस्तार से अनुकूलित करें →';
+
+  @override
+  String get startPageHome => 'होम';
+
+  @override
+  String get startPageHomeSubtitle => 'टाइल्स के साथ होम स्क्रीन दिखाएं';
+
+  @override
+  String get startPageFeature => 'सुविधा';
+
+  @override
+  String get startPageFeatureSubtitle => 'किसी विशिष्ट पृष्ठ पर सीधे खोलें';
+
+  @override
+  String get startPageSectionLabel => 'शुरुआती पृष्ठ';
+
+  @override
   String get joinUs => 'हमसे जुड़ें';
 
   @override

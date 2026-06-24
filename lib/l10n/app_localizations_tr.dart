@@ -30,6 +30,72 @@ class AppLocalizationsTr extends AppLocalizations {
   String get ok => 'OK';
 
   @override
+  String get back => 'Geri';
+
+  @override
+  String get next => 'İleri';
+
+  @override
+  String get done => 'Bitti';
+
+  @override
+  String get none => 'Yok';
+
+  @override
+  String get onboardingThemeTitle => 'Tema seç';
+
+  @override
+  String get onboardingThemeSubtitle => 'Her rengi daha sonra ayarlardan ince ayarlayabilirsin.';
+
+  @override
+  String get onboardingNavTitle => 'Hızlı erişim';
+
+  @override
+  String get onboardingNavSubtitle => 'Gezinme çubuğun için iki özellik seç.';
+
+  @override
+  String get onboardingNavLeftLabel => 'SOL DÜĞME';
+
+  @override
+  String get onboardingNavRightLabel => 'SAĞ DÜĞME';
+
+  @override
+  String get onboardingNavPreviewHome => 'Ana Sayfa';
+
+  @override
+  String get onboardingNavPreviewConnector => 'Bağlayıcı';
+
+  @override
+  String get onboardingNavPreviewProfile => 'Profil';
+
+  @override
+  String get onboardingNavPreviewEmpty => 'Boş';
+
+  @override
+  String get onboardingStartTitle => 'Başlangıç sayfası';
+
+  @override
+  String get onboardingStartSubtitle => 'Uygulama her açıldığında burası açılır.';
+
+  @override
+  String get onboardingCustomizeDetail => 'Ayrıntılı özelleştir →';
+
+  @override
+  String get startPageHome => 'Ana Sayfa';
+
+  @override
+  String get startPageHomeSubtitle => 'Kutucuklu ana ekranı göster';
+
+  @override
+  String get startPageFeature => 'Özellik';
+
+  @override
+  String get startPageFeatureSubtitle => 'Doğrudan belirli bir sayfada aç';
+
+  @override
+  String get startPageSectionLabel => 'BAŞLANGIÇ SAYFASI';
+
+  @override
   String get joinUs => 'Bize Katılın';
 
   @override

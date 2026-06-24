@@ -30,6 +30,72 @@ class AppLocalizationsNl extends AppLocalizations {
   String get ok => 'OK';
 
   @override
+  String get back => 'Terug';
+
+  @override
+  String get next => 'Volgende';
+
+  @override
+  String get done => 'Klaar';
+
+  @override
+  String get none => 'Geen';
+
+  @override
+  String get onboardingThemeTitle => 'Kies een thema';
+
+  @override
+  String get onboardingThemeSubtitle => 'Je kunt elke kleur later aanpassen in de instellingen.';
+
+  @override
+  String get onboardingNavTitle => 'Snelle toegang';
+
+  @override
+  String get onboardingNavSubtitle => 'Kies twee functies voor je navigatiebalk.';
+
+  @override
+  String get onboardingNavLeftLabel => 'LINKER KNOP';
+
+  @override
+  String get onboardingNavRightLabel => 'RECHTER KNOP';
+
+  @override
+  String get onboardingNavPreviewHome => 'Home';
+
+  @override
+  String get onboardingNavPreviewConnector => 'Connector';
+
+  @override
+  String get onboardingNavPreviewProfile => 'Profiel';
+
+  @override
+  String get onboardingNavPreviewEmpty => 'Leeg';
+
+  @override
+  String get onboardingStartTitle => 'Startpagina';
+
+  @override
+  String get onboardingStartSubtitle => 'De app opent hier elke keer bij het opstarten.';
+
+  @override
+  String get onboardingCustomizeDetail => 'In detail aanpassen →';
+
+  @override
+  String get startPageHome => 'Home';
+
+  @override
+  String get startPageHomeSubtitle => 'Toon het startscherm met tegels';
+
+  @override
+  String get startPageFeature => 'Functie';
+
+  @override
+  String get startPageFeatureSubtitle => 'Open direct op een specifieke pagina';
+
+  @override
+  String get startPageSectionLabel => 'STARTPAGINA';
+
+  @override
   String get joinUs => 'Word lid';
 
   @override

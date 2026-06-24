@@ -30,6 +30,72 @@ class AppLocalizationsDe extends AppLocalizations {
   String get ok => 'OK';
 
   @override
+  String get back => 'Zurück';
+
+  @override
+  String get next => 'Weiter';
+
+  @override
+  String get done => 'Fertig';
+
+  @override
+  String get none => 'Keine';
+
+  @override
+  String get onboardingThemeTitle => 'Thema wählen';
+
+  @override
+  String get onboardingThemeSubtitle => 'Du kannst alle Farben später in den Einstellungen anpassen.';
+
+  @override
+  String get onboardingNavTitle => 'Schnellzugriff';
+
+  @override
+  String get onboardingNavSubtitle => 'Wähle zwei Funktionen für deine Navigationsleiste.';
+
+  @override
+  String get onboardingNavLeftLabel => 'LINKE TASTE';
+
+  @override
+  String get onboardingNavRightLabel => 'RECHTE TASTE';
+
+  @override
+  String get onboardingNavPreviewHome => 'Home';
+
+  @override
+  String get onboardingNavPreviewConnector => 'Verbinden';
+
+  @override
+  String get onboardingNavPreviewProfile => 'Profil';
+
+  @override
+  String get onboardingNavPreviewEmpty => 'Leer';
+
+  @override
+  String get onboardingStartTitle => 'Startseite';
+
+  @override
+  String get onboardingStartSubtitle => 'Die App öffnet hier bei jedem Start.';
+
+  @override
+  String get onboardingCustomizeDetail => 'Im Detail anpassen →';
+
+  @override
+  String get startPageHome => 'Home';
+
+  @override
+  String get startPageHomeSubtitle => 'Startbildschirm mit Kacheln anzeigen';
+
+  @override
+  String get startPageFeature => 'Funktion';
+
+  @override
+  String get startPageFeatureSubtitle => 'Direkt auf einer bestimmten Seite öffnen';
+
+  @override
+  String get startPageSectionLabel => 'STARTSEITE';
+
+  @override
   String get joinUs => 'Mach mit';
 
   @override

@@ -165,6 +165,138 @@ abstract class AppLocalizations {
   /// **'OK'**
   String get ok;
 
+  /// No description provided for @back.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get back;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @done.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get done;
+
+  /// No description provided for @none.
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get none;
+
+  /// No description provided for @onboardingThemeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a theme'**
+  String get onboardingThemeTitle;
+
+  /// No description provided for @onboardingThemeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You can fine-tune every color in the settings later.'**
+  String get onboardingThemeSubtitle;
+
+  /// No description provided for @onboardingNavTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick access'**
+  String get onboardingNavTitle;
+
+  /// No description provided for @onboardingNavSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick two features for your bottom bar shortcuts.'**
+  String get onboardingNavSubtitle;
+
+  /// No description provided for @onboardingNavLeftLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'LEFT SHORTCUT'**
+  String get onboardingNavLeftLabel;
+
+  /// No description provided for @onboardingNavRightLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'RIGHT SHORTCUT'**
+  String get onboardingNavRightLabel;
+
+  /// No description provided for @onboardingNavPreviewHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get onboardingNavPreviewHome;
+
+  /// No description provided for @onboardingNavPreviewConnector.
+  ///
+  /// In en, this message translates to:
+  /// **'Connector'**
+  String get onboardingNavPreviewConnector;
+
+  /// No description provided for @onboardingNavPreviewProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get onboardingNavPreviewProfile;
+
+  /// No description provided for @onboardingNavPreviewEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Empty'**
+  String get onboardingNavPreviewEmpty;
+
+  /// No description provided for @onboardingStartTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Start page'**
+  String get onboardingStartTitle;
+
+  /// No description provided for @onboardingStartSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The app opens here every time you launch.'**
+  String get onboardingStartSubtitle;
+
+  /// No description provided for @onboardingCustomizeDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Customize in detail →'**
+  String get onboardingCustomizeDetail;
+
+  /// No description provided for @startPageHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get startPageHome;
+
+  /// No description provided for @startPageHomeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Show the home screen with tiles'**
+  String get startPageHomeSubtitle;
+
+  /// No description provided for @startPageFeature.
+  ///
+  /// In en, this message translates to:
+  /// **'Feature'**
+  String get startPageFeature;
+
+  /// No description provided for @startPageFeatureSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Open directly on a specific page'**
+  String get startPageFeatureSubtitle;
+
+  /// No description provided for @startPageSectionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'START PAGE'**
+  String get startPageSectionLabel;
+
   /// No description provided for @joinUs.
   ///
   /// In en, this message translates to:

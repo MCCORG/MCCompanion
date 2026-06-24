@@ -17,8 +17,8 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
   final String? selectedRelayIp;
   final void Function(String?)? onRelayChanged;
 
-  final AppFeature navLeftFeature;
-  final AppFeature navRightFeature;
+  final AppFeature? navLeftFeature;
+  final AppFeature? navRightFeature;
   final VoidCallback? onNavLeftTap;
   final VoidCallback? onNavRightTap;
   final bool navLeftActive;
@@ -33,8 +33,8 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
     this.activeItem,
     this.dark = true,
     this.selectedRelayIp,
-    this.navLeftFeature = AppFeature.skins,
-    this.navRightFeature = AppFeature.wiki,
+    this.navLeftFeature,
+    this.navRightFeature,
     this.onNavLeftTap,
     this.onNavRightTap,
     this.navLeftActive = false,
@@ -86,22 +86,24 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
                       isActive: activeItem == 'home',
                       onTap: onHomeTap,
                     ),
-                    _NavItem(
-                      icon: _iconFor(navLeftFeature),
-                      label: navLeftFeature.label(l),
-                      isActive: navLeftActive,
-                      onTap: onNavLeftTap,
-                    ),
+                    if (navLeftFeature != null)
+                      _NavItem(
+                        icon: _iconFor(navLeftFeature!),
+                        label: navLeftFeature!.label(l),
+                        isActive: navLeftActive,
+                        onTap: onNavLeftTap,
+                      ),
                     _NavFab(
                       isActive: activeItem == 'connector',
                       onTap: onConnectorTap,
                     ),
-                    _NavItem(
-                      icon: _iconFor(navRightFeature),
-                      label: navRightFeature.label(l),
-                      isActive: navRightActive,
-                      onTap: onNavRightTap,
-                    ),
+                    if (navRightFeature != null)
+                      _NavItem(
+                        icon: _iconFor(navRightFeature!),
+                        label: navRightFeature!.label(l),
+                        isActive: navRightActive,
+                        onTap: onNavRightTap,
+                      ),
                     _NavItem(
                       icon: FontAwesomeIcons.user,
                       label: l.navProfile,

@@ -53,6 +53,8 @@ class HomeCustomizationService extends ChangeNotifier {
   static const _keyNavRight = 'home_nav_right';
   static const _keyHiddenTiles = 'home_hidden_tiles';
   static const _keyWideTile = 'home_wide_tile';
+  static const _keyOnboardingDone = 'home_onboarding_done';
+  static const _keyStartPage = 'home_start_page';
 
   static const int minVisibleTiles = 1;
 
@@ -65,23 +67,27 @@ class HomeCustomizationService extends ChangeNotifier {
     AppFeature.tracker,
   ];
 
-  static const AppFeature defaultNavLeft = AppFeature.skins;
-  static const AppFeature defaultNavRight = AppFeature.wiki;
+  static const AppFeature? defaultNavLeft = AppFeature.skins;
+  static const AppFeature? defaultNavRight = AppFeature.wiki;
 
   static const Set<AppFeature> navSlotBlacklist = {AppFeature.connector};
   static const Set<AppFeature> alwaysVisible = {};
 
   List<AppFeature> _tileOrder = List.from(defaultTileOrder);
-  AppFeature _navLeft = defaultNavLeft;
-  AppFeature _navRight = defaultNavRight;
+  AppFeature? _navLeft = defaultNavLeft;
+  AppFeature? _navRight = defaultNavRight;
   Set<AppFeature> _hiddenTiles = {};
   AppFeature? _wideTile;
+  bool _onboardingDone = false;
+  AppFeature _startPage = AppFeature.connector;
 
   List<AppFeature> get tileOrder => List.unmodifiable(_tileOrder);
-  AppFeature get navLeft => _navLeft;
-  AppFeature get navRight => _navRight;
+  AppFeature? get navLeft => _navLeft;
+  AppFeature? get navRight => _navRight;
   Set<AppFeature> get hiddenTiles => Set.unmodifiable(_hiddenTiles);
   AppFeature? get wideTile => _wideTile;
+  bool get isOnboardingDone => _onboardingDone;
+  AppFeature get startPage => _startPage;
 
   List<AppFeature> get visibleTiles =>
       _tileOrder.where((f) => !_hiddenTiles.contains(f)).toList();
@@ -102,19 +108,17 @@ class HomeCustomizationService extends ChangeNotifier {
     }
 
     final savedLeft = prefs.getString(_keyNavLeft);
-    if (savedLeft != null) {
-      _navLeft = AppFeature.values.firstWhere(
-        (f) => f.id == savedLeft,
-        orElse: () => defaultNavLeft,
-      );
+    if (savedLeft == 'none') {
+      _navLeft = null;
+    } else if (savedLeft != null) {
+      _navLeft = AppFeature.values.where((f) => f.id == savedLeft).firstOrNull ?? defaultNavLeft;
     }
 
     final savedRight = prefs.getString(_keyNavRight);
-    if (savedRight != null) {
-      _navRight = AppFeature.values.firstWhere(
-        (f) => f.id == savedRight,
-        orElse: () => defaultNavRight,
-      );
+    if (savedRight == 'none') {
+      _navRight = null;
+    } else if (savedRight != null) {
+      _navRight = AppFeature.values.where((f) => f.id == savedRight).firstOrNull ?? defaultNavRight;
     }
 
     final savedHidden = prefs.getStringList(_keyHiddenTiles);
@@ -132,6 +136,44 @@ class HomeCustomizationService extends ChangeNotifier {
       if (_wideTile != null && _hiddenTiles.contains(_wideTile))
         _wideTile = null;
     }
+
+    _onboardingDone = prefs.getBool(_keyOnboardingDone) ?? false;
+    _useLandingAsStart = prefs.getBool('home_use_landing') ?? true;
+    final savedStart = prefs.getString(_keyStartPage);
+    if (savedStart != null) {
+      _startPage = AppFeature.values.firstWhere(
+        (f) => f.id == savedStart,
+        orElse: () => AppFeature.connector,
+      );
+    }
+  }
+
+  bool _useLandingAsStart = true;
+  bool get useLandingAsStart => _useLandingAsStart;
+
+  Future<void> resetOnboarding() async {
+    _onboardingDone = false;
+    _useLandingAsStart = true;
+    _startPage = AppFeature.connector;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_keyOnboardingDone);
+    await prefs.remove(_keyStartPage);
+    await prefs.remove('home_use_landing');
+    notifyListeners();
+  }
+
+  Future<void> completeOnboarding(
+    AppFeature startPage, {
+    bool useLanding = true,
+  }) async {
+    _onboardingDone = true;
+    _startPage = startPage;
+    _useLandingAsStart = useLanding;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_keyOnboardingDone, true);
+    await prefs.setString(_keyStartPage, startPage.id);
+    await prefs.setBool('home_use_landing', useLanding);
+    notifyListeners();
   }
 
   Future<void> saveTileOrder(List<AppFeature> order) async {
@@ -141,17 +183,17 @@ class HomeCustomizationService extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> saveNavLeft(AppFeature feature) async {
+  Future<void> saveNavLeft(AppFeature? feature) async {
     _navLeft = feature;
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_keyNavLeft, feature.id);
+    await prefs.setString(_keyNavLeft, feature?.id ?? 'none');
     notifyListeners();
   }
 
-  Future<void> saveNavRight(AppFeature feature) async {
+  Future<void> saveNavRight(AppFeature? feature) async {
     _navRight = feature;
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_keyNavRight, feature.id);
+    await prefs.setString(_keyNavRight, feature?.id ?? 'none');
     notifyListeners();
   }
 
