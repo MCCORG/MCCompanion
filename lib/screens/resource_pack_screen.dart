@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
@@ -18,6 +19,8 @@ import '../widgets/resource_pack/rp_featured_pack_card.dart';
 import '../widgets/resource_pack/rp_info_section.dart';
 import '../widgets/resource_pack/rp_tab_bar.dart';
 import '../widgets/resource_pack/rp_tab_info_box.dart';
+
+const _kPackCategories = ['realism','faithful','pvp','cartoon','dark','medieval','nature','themed','other'];
 
 class ResourcePackScreen extends StatefulWidget {
   final VoidCallback onBack;
@@ -42,7 +45,13 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
 
   List<Map<String, dynamic>> _featuredPacks = [];
   bool _featuredLoading = false;
+  bool _featuredError = false;
   String? _applyingPackId;
+
+  String _featuredSearch = '';
+  List<String> _selectedTags = [];
+  String? _selectedCategory;
+  final _searchCtrl = TextEditingController();
 
   bool _hasPack = false;
   String? _activePackName;
@@ -67,7 +76,9 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
         final list = (data['packs'] as List).cast<Map<String, dynamic>>();
         if (mounted) setState(() => _featuredPacks = list);
       }
-    } catch (_) {}
+    } catch (_) {
+      if (mounted) setState(() => _featuredError = true);
+    }
     if (mounted) setState(() => _featuredLoading = false);
   }
 
@@ -77,6 +88,19 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     final name = pack['name'] as String;
     setState(() => _applyingPackId = id);
     await ResourcePackPrefs.save(url: url, enabled: true, filename: '$name.mcpack', isUpload: false);
+    final sha = pack['sha256'] as String?;
+    if (sha != null) {
+      unawaited(
+        AuthService.getIdToken().then((token) => http.post(
+          Uri.parse('${AppConstants.apiBase}/api/packs/track'),
+          headers: {
+            'Content-Type': 'application/json',
+            if (token != null) 'Authorization': 'Bearer $token',
+          },
+          body: jsonEncode({'sha256': sha}),
+        )).catchError((_) {}),
+      );
+    }
     if (!mounted) return;
     setState(() {
       _applyingPackId = null;
@@ -301,10 +325,34 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     );
   }
 
+  List<String> get _allTags {
+    final tags = <String>{};
+    for (final p in _featuredPacks) {
+      final t = p['tags'];
+      if (t is List) tags.addAll(t.cast<String>());
+    }
+    return tags.toList()..sort();
+  }
+
+  List<Map<String, dynamic>> get _filteredPacks {
+    final q = _featuredSearch.toLowerCase();
+    return _featuredPacks.where((p) {
+      final name = (p['name'] as String? ?? '').toLowerCase();
+      final desc = (p['description'] as String? ?? '').toLowerCase();
+      final matchesSearch = q.isEmpty || name.contains(q) || desc.contains(q);
+      if (!matchesSearch) return false;
+      if (_selectedCategory != null && p['category'] != _selectedCategory) return false;
+      if (_selectedTags.isEmpty) return true;
+      final tags = (p['tags'] as List?)?.cast<String>() ?? [];
+      return _selectedTags.every((t) => tags.contains(t));
+    }).toList();
+  }
+
   @override
   void dispose() {
     _urlCtrl.removeListener(_validateUrl);
     _urlCtrl.dispose();
+    _searchCtrl.dispose();
     super.dispose();
   }
 
@@ -431,6 +479,18 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
             padding: const EdgeInsets.symmetric(vertical: 48),
             child: Center(child: CircularProgressIndicator(strokeWidth: 2, color: AppTheme.accent)),
           )
+        else if (_featuredError)
+          Center(
+            child: Column(
+              children: [
+                Text('Failed to load packs', style: TextStyle(color: AppTheme.textMuted)),
+                TextButton(
+                  onPressed: () { setState(() => _featuredError = false); _loadFeaturedPacks(); },
+                  child: Text('Retry', style: TextStyle(color: AppTheme.accent)),
+                ),
+              ],
+            ),
+          )
         else if (_featuredPacks.isEmpty)
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 48),
@@ -447,7 +507,80 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
         else ...[
           Text(l.rpBrowseSubtitle, style: TextStyle(color: AppTheme.textMuted, fontSize: 12)),
           const SizedBox(height: 12),
-          ..._featuredPacks.map((pack) => RpFeaturedPackCard(
+          TextField(
+            controller: _searchCtrl,
+            onChanged: (v) => setState(() => _featuredSearch = v),
+            style: TextStyle(color: AppTheme.textPrimary, fontSize: 14),
+            decoration: InputDecoration(
+              hintText: 'Search packs...',
+              prefixIcon: Icon(Icons.search_rounded, color: AppTheme.textMuted, size: 18),
+              contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+            ),
+          ),
+          const SizedBox(height: 8),
+          Wrap(
+            spacing: 6,
+            runSpacing: 6,
+            children: _kPackCategories.map((cat) {
+              final selected = _selectedCategory == cat;
+              return GestureDetector(
+                onTap: () => setState(() => _selectedCategory = selected ? null : cat),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: BoxDecoration(
+                    color: selected ? const Color(0xFF60a5fa) : const Color(0xFF60a5fa).withValues(alpha: 0.08),
+                    borderRadius: BorderRadius.circular(6),
+                    border: Border.all(color: const Color(0xFF60a5fa).withValues(alpha: selected ? 1.0 : 0.22)),
+                  ),
+                  child: Text(
+                    cat,
+                    style: TextStyle(
+                      color: selected ? AppTheme.surfaceRaised : const Color(0xFF60a5fa),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              );
+            }).toList(),
+          ),
+          if (_allTags.isNotEmpty) ...[
+            const SizedBox(height: 8),
+            Wrap(
+              spacing: 6,
+              runSpacing: 6,
+              children: _allTags.map((tag) {
+                  final selected = _selectedTags.contains(tag);
+                  return GestureDetector(
+                    onTap: () => setState(() {
+                      if (selected) {
+                        _selectedTags.remove(tag);
+                      } else {
+                        _selectedTags.add(tag);
+                      }
+                    }),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
+                        color: selected ? AppTheme.accent : AppTheme.accent.withValues(alpha: 0.08),
+                        borderRadius: BorderRadius.circular(6),
+                        border: Border.all(color: AppTheme.accent.withValues(alpha: selected ? 1.0 : 0.22)),
+                      ),
+                      child: Text(
+                        tag,
+                        style: TextStyle(
+                          color: selected ? AppTheme.surfaceRaised : AppTheme.accent,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  );
+                }).toList(),
+            ),
+          ],
+          const SizedBox(height: 12),
+          ..._filteredPacks.map((pack) => RpFeaturedPackCard(
             pack: pack,
             isApplying: _applyingPackId == pack['id'].toString(),
             onUse: () => _applyFeaturedPack(pack),
@@ -463,7 +596,9 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
       children: [
         RpTabInfoBox(text: l.rpTabUploadInfo),
         const SizedBox(height: 16),
-        if (_uploadedUrl != null && _uploadedFilename != null)
+        if (_uploading)
+          _buildUploadButton(l)
+        else if (_uploadedUrl != null && _uploadedFilename != null)
           _buildReplaceHint(l)
         else
           _buildUploadButton(l),
@@ -473,21 +608,32 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
 
   Widget _buildReplaceHint(AppLocalizations l) {
     return GestureDetector(
-      onTap: _pickAndUpload,
+      onTap: _uploading ? null : _pickAndUpload,
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
         decoration: BoxDecoration(
           color: AppTheme.surfaceRaised,
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: AppTheme.borderGray),
+          border: Border.all(
+            color: _uploading ? AppTheme.accent.withValues(alpha: 0.5) : AppTheme.borderGray,
+          ),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.swap_horiz_rounded, color: AppTheme.textMuted, size: 18),
-            const SizedBox(width: 8),
-            Text(l.rpReplaceFile, style: TextStyle(color: AppTheme.textSecondary, fontSize: 13, fontWeight: FontWeight.w500)),
+            if (_uploading) ...[
+              SizedBox(
+                width: 16, height: 16,
+                child: CircularProgressIndicator(strokeWidth: 2, color: AppTheme.accent),
+              ),
+              const SizedBox(width: 8),
+              Text(l.rpUploading, style: TextStyle(color: AppTheme.textSecondary, fontSize: 13, fontWeight: FontWeight.w500)),
+            ] else ...[
+              Icon(Icons.swap_horiz_rounded, color: AppTheme.textMuted, size: 18),
+              const SizedBox(width: 8),
+              Text(l.rpReplaceFile, style: TextStyle(color: AppTheme.textSecondary, fontSize: 13, fontWeight: FontWeight.w500)),
+            ],
           ],
         ),
       ),
