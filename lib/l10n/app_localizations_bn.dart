@@ -1926,6 +1926,42 @@ class AppLocalizationsBn extends AppLocalizations {
   String get rpMergerOpenSubtitle => '২-৪টি প্যাক একটিতে একত্রিত করুন';
 
   @override
+  String get rpDisabled => 'নিষ্ক্রিয়';
+
+  @override
+  String get rpNoPackSelected => 'কোনো রিসোর্স প্যাক নির্বাচিত নয়';
+
+  @override
+  String get rpActiveOnConnect => 'সক্রিয় — সংযোগের সময় প্রয়োগ হয়';
+
+  @override
+  String get rpBrowseSubtitle => 'কিউরেটেড প্যাক, ব্যবহারের জন্য প্রস্তুত';
+
+  @override
+  String get rpBrowseEmpty => 'এখনো কোনো প্যাক উপলব্ধ নেই';
+
+  @override
+  String get rpBrowseEmptyHint => 'কিউরেটেড প্যাকের জন্য পরে আবার দেখুন।';
+
+  @override
+  String get rpReplaceFile => 'অন্য ফাইল দিয়ে প্রতিস্থাপন করুন';
+
+  @override
+  String get rpDropToUpload => 'আপলোড করতে ছেড়ে দিন';
+
+  @override
+  String get rpTabBrowseInfo => 'MCCompanion দ্বারা নির্বাচিত প্যাক ব্রাউজ করুন। তাৎক্ষণিকভাবে একটি প্যাক সক্রিয় করতে ব্যবহার করুন ট্যাপ করুন — কোনো আপলোড বা লিঙ্কের প্রয়োজন নেই।';
+
+  @override
+  String get rpTabUploadInfo => 'আপনার নিজস্ব .mcpack বা .zip ফাইল আপলোড করুন। MCCompanion এটি ক্লাউডে নিরাপদে সংরক্ষণ করে এবং প্রতিবার সংযোগের সময় আপনার কনসোলে পাঠায়।';
+
+  @override
+  String get rpTabUrlInfo => '.mcpack বা .zip ফাইলে একটি সরাসরি ডাউনলোড লিঙ্ক পেস্ট করুন। URL সার্বজনীনভাবে অ্যাক্সেসযোগ্য হতে হবে — Discord বা Google Drive লিঙ্ক নয়।';
+
+  @override
+  String get rpTabMergeInfo => '2 থেকে 4টি প্যাক একটিতে একত্রিত করুন। একত্রিত প্যাক MCCompanion Cloud-এ আপলোড হয় এবং স্বয়ংক্রিয়ভাবে সক্রিয় হয়।';
+
+  @override
   String get shareLabel => 'শেয়ার করুন';
 
   @override

@@ -1926,6 +1926,42 @@ class AppLocalizationsSw extends AppLocalizations {
   String get rpMergerOpenSubtitle => 'Unganisha pakiti 2–4 kuwa moja';
 
   @override
+  String get rpDisabled => 'Imezimwa';
+
+  @override
+  String get rpNoPackSelected => 'Hakuna pakiti ya rasilimali iliyochaguliwa';
+
+  @override
+  String get rpActiveOnConnect => 'Inafanya kazi — inatumika unapounganisha';
+
+  @override
+  String get rpBrowseSubtitle => 'Pakiti zilizochaguliwa, tayari kutumika';
+
+  @override
+  String get rpBrowseEmpty => 'Hakuna pakiti zinazopatikana bado';
+
+  @override
+  String get rpBrowseEmptyHint => 'Rudi baadaye kwa pakiti zilizochaguliwa.';
+
+  @override
+  String get rpReplaceFile => 'Badilisha na faili nyingine';
+
+  @override
+  String get rpDropToUpload => 'Acha ili kupakia';
+
+  @override
+  String get rpTabBrowseInfo => 'Vinjari pakiti zilizochaguliwa na MCCompanion. Gusa Tumia ili kuamsha pakiti mara moja — bila kupakia au kiungo.';
+
+  @override
+  String get rpTabUploadInfo => 'Pakia faili yako ya .mcpack au .zip. MCCompanion inihifadhi kwa usalama kwenye wingu na kuipeleka kwa konsoli yako kila unapounganisha.';
+
+  @override
+  String get rpTabUrlInfo => 'Bandika kiungo cha kupakuliwa moja kwa moja kwa faili ya .mcpack au .zip. URL lazima iwe ya umma — hakuna viungo vya Discord au Google Drive.';
+
+  @override
+  String get rpTabMergeInfo => 'Unganisha pakiti 2 hadi 4 kuwa moja. Pakiti iliyounganishwa inapakiwa kwenye MCCompanion Cloud na kuamilishwa kiotomatiki.';
+
+  @override
   String get shareLabel => 'Shiriki';
 
   @override

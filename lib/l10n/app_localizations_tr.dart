@@ -1926,6 +1926,42 @@ class AppLocalizationsTr extends AppLocalizations {
   String get rpMergerOpenSubtitle => '2–4 paketi tek pakette birleştir';
 
   @override
+  String get rpDisabled => 'Devre dışı';
+
+  @override
+  String get rpNoPackSelected => 'Kaynak paketi seçilmedi';
+
+  @override
+  String get rpActiveOnConnect => 'Aktif — bağlanırken uygulanır';
+
+  @override
+  String get rpBrowseSubtitle => 'Seçilmiş paketler, kullanıma hazır';
+
+  @override
+  String get rpBrowseEmpty => 'Henüz paket yok';
+
+  @override
+  String get rpBrowseEmptyHint => 'Seçilmiş paketler için daha sonra tekrar bakın.';
+
+  @override
+  String get rpReplaceFile => 'Başka bir dosyayla değiştir';
+
+  @override
+  String get rpDropToUpload => 'Yüklemek için bırak';
+
+  @override
+  String get rpTabBrowseInfo => 'MCCompanion tarafından seçilmiş paketlere göz atın. Anında bir paketi etkinleştirmek için Kullan\'a dokunun — yükleme veya bağlantı gerekmez.';
+
+  @override
+  String get rpTabUploadInfo => 'Kendi .mcpack veya .zip dosyanızı yükleyin. MCCompanion onu bulutta güvenle saklar ve her bağlandığınızda konsolunuza gönderir.';
+
+  @override
+  String get rpTabUrlInfo => 'Bir .mcpack veya .zip dosyasına doğrudan indirme bağlantısı yapıştırın. URL herkese açık olmalıdır — Discord veya Google Drive bağlantıları kullanılamaz.';
+
+  @override
+  String get rpTabMergeInfo => '2 ila 4 paketi tek bir pakette birleştirin. Birleştirilen paket MCCompanion Cloud\'a yüklenir ve otomatik olarak etkinleştirilir.';
+
+  @override
   String get shareLabel => 'Paylaş';
 
   @override

@@ -1926,6 +1926,42 @@ class AppLocalizationsJa extends AppLocalizations {
   String get rpMergerOpenSubtitle => '2〜4個のパックを1つに統合';
 
   @override
+  String get rpDisabled => '無効';
+
+  @override
+  String get rpNoPackSelected => 'リソースパックが選択されていません';
+
+  @override
+  String get rpActiveOnConnect => '有効 — 接続時に適用されます';
+
+  @override
+  String get rpBrowseSubtitle => '厳選パック、すぐに使えます';
+
+  @override
+  String get rpBrowseEmpty => 'まだパックはありません';
+
+  @override
+  String get rpBrowseEmptyHint => '後ほど厳選パックをご確認ください。';
+
+  @override
+  String get rpReplaceFile => '別のファイルに置き換える';
+
+  @override
+  String get rpDropToUpload => 'ドロップしてアップロード';
+
+  @override
+  String get rpTabBrowseInfo => 'MCCompanionが厳選したパックを閲覧できます。「使用」をタップすると即座にパックを有効化できます — アップロードやリンク不要。';
+
+  @override
+  String get rpTabUploadInfo => '独自の.mcpackまたは.zipファイルをアップロードします。MCCompanionがクラウドに安全に保存し、接続のたびにコンソールに送信します。';
+
+  @override
+  String get rpTabUrlInfo => '.mcpackまたは.zipファイルへの直接ダウンロードリンクを貼り付けます。URLは公開アクセス可能である必要があります — DiscordやGoogleドライブのリンクは使用不可。';
+
+  @override
+  String get rpTabMergeInfo => '2〜4つのパックを1つに統合します。統合されたパックはMCCompanion Cloudにアップロードされ、自動的に有効化されます。';
+
+  @override
   String get shareLabel => 'シェア';
 
   @override

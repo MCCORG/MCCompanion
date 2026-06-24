@@ -1926,6 +1926,42 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rpMergerOpenSubtitle => 'Combine 2–4 packs into one';
 
   @override
+  String get rpDisabled => 'Disabled';
+
+  @override
+  String get rpNoPackSelected => 'No resource pack selected';
+
+  @override
+  String get rpActiveOnConnect => 'Active — applied on connect';
+
+  @override
+  String get rpBrowseSubtitle => 'Curated packs, ready to use';
+
+  @override
+  String get rpBrowseEmpty => 'No packs available yet';
+
+  @override
+  String get rpBrowseEmptyHint => 'Check back later for curated packs.';
+
+  @override
+  String get rpReplaceFile => 'Replace with another file';
+
+  @override
+  String get rpDropToUpload => 'Drop to upload';
+
+  @override
+  String get rpTabBrowseInfo => 'Browse curated packs selected by MCCompanion. Tap Use to activate a pack instantly — no upload or link needed.';
+
+  @override
+  String get rpTabUploadInfo => 'Upload your own .mcpack or .zip file. MCCompanion stores it securely in the cloud and sends it to your console every time you connect.';
+
+  @override
+  String get rpTabUrlInfo => 'Paste a direct download link to a .mcpack or .zip file. The URL must be publicly accessible — no Discord or Google Drive links.';
+
+  @override
+  String get rpTabMergeInfo => 'Combine 2 to 4 packs into one. The merged pack is uploaded to MCCompanion Cloud and activated automatically.';
+
+  @override
   String get shareLabel => 'Share';
 
   @override

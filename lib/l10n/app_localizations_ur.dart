@@ -1926,6 +1926,42 @@ class AppLocalizationsUr extends AppLocalizations {
   String get rpMergerOpenSubtitle => '2–4 پیک کو ایک میں ملائیں';
 
   @override
+  String get rpDisabled => 'غیر فعال';
+
+  @override
+  String get rpNoPackSelected => 'کوئی ریسورس پیک منتخب نہیں';
+
+  @override
+  String get rpActiveOnConnect => 'فعال — کنیکٹ ہونے پر لاگو ہوتا ہے';
+
+  @override
+  String get rpBrowseSubtitle => 'منتخب شدہ پیک، استعمال کے لیے تیار';
+
+  @override
+  String get rpBrowseEmpty => 'ابھی کوئی پیک دستیاب نہیں';
+
+  @override
+  String get rpBrowseEmptyHint => 'منتخب شدہ پیکس کے لیے بعد میں دیکھیں۔';
+
+  @override
+  String get rpReplaceFile => 'کسی دوسری فائل سے تبدیل کریں';
+
+  @override
+  String get rpDropToUpload => 'اپ لوڈ کرنے کے لیے چھوڑیں';
+
+  @override
+  String get rpTabBrowseInfo => 'MCCompanion کے منتخب کردہ پیکس براؤز کریں۔ فوری طور پر پیک کو فعال کرنے کے لیے استعمال کریں ٹیپ کریں — کوئی اپ لوڈ یا لنک کی ضرورت نہیں۔';
+
+  @override
+  String get rpTabUploadInfo => 'اپنی .mcpack یا .zip فائل اپ لوڈ کریں۔ MCCompanion اسے کلاؤڈ میں محفوظ رکھتا ہے اور ہر بار کنیکٹ ہونے پر آپ کے کنسول پر بھیجتا ہے۔';
+
+  @override
+  String get rpTabUrlInfo => '.mcpack یا .zip فائل کا براہ راست ڈاؤن لوڈ لنک چسپاں کریں۔ URL عوامی طور پر قابل رسائی ہونا چاہیے — Discord یا Google Drive لنک نہیں۔';
+
+  @override
+  String get rpTabMergeInfo => '2 سے 4 پیکس کو ایک میں ضم کریں۔ ضم شدہ پیک MCCompanion Cloud پر اپ لوڈ ہوتا ہے اور خودکار طور پر فعال ہو جاتا ہے۔';
+
+  @override
   String get shareLabel => 'شیئر کریں';
 
   @override

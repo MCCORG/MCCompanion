@@ -1926,6 +1926,42 @@ class AppLocalizationsHi extends AppLocalizations {
   String get rpMergerOpenSubtitle => '2–4 पैक को एक में संयोजित करें';
 
   @override
+  String get rpDisabled => 'अक्षम';
+
+  @override
+  String get rpNoPackSelected => 'कोई संसाधन पैक चुना नहीं गया';
+
+  @override
+  String get rpActiveOnConnect => 'सक्रिय — कनेक्ट होने पर लागू होता है';
+
+  @override
+  String get rpBrowseSubtitle => 'क्यूरेटेड पैक, उपयोग के लिए तैयार';
+
+  @override
+  String get rpBrowseEmpty => 'अभी कोई पैक उपलब्ध नहीं';
+
+  @override
+  String get rpBrowseEmptyHint => 'क्यूरेटेड पैक के लिए बाद में वापस आएं।';
+
+  @override
+  String get rpReplaceFile => 'किसी अन्य फ़ाइल से बदलें';
+
+  @override
+  String get rpDropToUpload => 'अपलोड करने के लिए छोड़ें';
+
+  @override
+  String get rpTabBrowseInfo => 'MCCompanion द्वारा चुने गए पैक ब्राउज़ करें। तुरंत पैक सक्रिय करने के लिए उपयोग करें टैप करें — कोई अपलोड या लिंक की जरूरत नहीं।';
+
+  @override
+  String get rpTabUploadInfo => 'अपनी खुद की .mcpack या .zip फ़ाइल अपलोड करें। MCCompanion इसे क्लाउड में सुरक्षित रखता है और हर बार कनेक्ट होने पर आपके कंसोल पर भेजता है।';
+
+  @override
+  String get rpTabUrlInfo => '.mcpack या .zip फ़ाइल का सीधा डाउनलोड लिंक पेस्ट करें। URL सार्वजनिक रूप से accessible होनी चाहिए — Discord या Google Drive लिंक नहीं।';
+
+  @override
+  String get rpTabMergeInfo => '2 से 4 पैक को एक में मिलाएं। मर्ज किया गया पैक MCCompanion Cloud पर अपलोड होता है और स्वतः सक्रिय हो जाता है।';
+
+  @override
   String get shareLabel => 'शेयर करें';
 
   @override

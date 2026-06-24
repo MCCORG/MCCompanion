@@ -13,8 +13,11 @@ import '../util/pack_file_picker.dart';
 import '../util/resource_pack_prefs.dart';
 import '../widgets/components/app_toast.dart';
 import '../widgets/components/swipe_back.dart';
-
-enum _InputMode { upload, url, merge }
+import '../widgets/resource_pack/rp_active_pack_banner.dart';
+import '../widgets/resource_pack/rp_featured_pack_card.dart';
+import '../widgets/resource_pack/rp_info_section.dart';
+import '../widgets/resource_pack/rp_tab_bar.dart';
+import '../widgets/resource_pack/rp_tab_info_box.dart';
 
 class ResourcePackScreen extends StatefulWidget {
   final VoidCallback onBack;
@@ -29,7 +32,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   bool _enabled = false;
   bool _loaded = false;
   String? _urlWarning;
-  _InputMode _mode = _InputMode.upload;
+  RpInputMode _mode = RpInputMode.browse;
 
   String? _uploadedFilename;
   String? _uploadedUrl;
@@ -37,11 +40,52 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   bool _isDragging = false;
   double _uploadProgress = 0;
 
+  List<Map<String, dynamic>> _featuredPacks = [];
+  bool _featuredLoading = false;
+  String? _applyingPackId;
+
+  bool _hasPack = false;
+  String? _activePackName;
+
   @override
   void initState() {
     super.initState();
     _load();
+    _loadFeaturedPacks();
     _urlCtrl.addListener(_validateUrl);
+  }
+
+  Future<void> _loadFeaturedPacks() async {
+    if (_featuredLoading) return;
+    setState(() => _featuredLoading = true);
+    try {
+      final res = await http.get(
+        Uri.parse('${AppConstants.apiBase}/api/featured-packs'),
+      ).timeout(const Duration(seconds: 10));
+      if (res.statusCode == 200) {
+        final data = jsonDecode(res.body) as Map<String, dynamic>;
+        final list = (data['packs'] as List).cast<Map<String, dynamic>>();
+        if (mounted) setState(() => _featuredPacks = list);
+      }
+    } catch (_) {}
+    if (mounted) setState(() => _featuredLoading = false);
+  }
+
+  Future<void> _applyFeaturedPack(Map<String, dynamic> pack) async {
+    final id = pack['id'].toString();
+    final url = pack['downloadUrl'] as String;
+    final name = pack['name'] as String;
+    setState(() => _applyingPackId = id);
+    await ResourcePackPrefs.save(url: url, enabled: true, filename: '$name.mcpack', isUpload: false);
+    if (!mounted) return;
+    setState(() {
+      _applyingPackId = null;
+      _enabled = true;
+      _hasPack = true;
+      _activePackName = name;
+      _urlCtrl.text = url;
+    });
+    AppToast.show(context, message: AppLocalizations.of(context)!.rpToastSaved, icon: Icons.check_rounded, color: AppTheme.accent);
   }
 
   Future<void> _load() async {
@@ -50,12 +94,14 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     final filename = await ResourcePackPrefs.getFilename();
     final isUpload = await ResourcePackPrefs.isUpload();
     if (!mounted) return;
+    final hasPack = url != null && url.isNotEmpty;
     setState(() {
       _enabled = enabled;
-      _mode = isUpload ? _InputMode.upload : _InputMode.url;
       _uploadedFilename = filename;
       _uploadedUrl = (isUpload && url != null && url.isNotEmpty) ? url : null;
       if (!isUpload) _urlCtrl.text = url ?? '';
+      _hasPack = hasPack;
+      _activePackName = filename;
       _loaded = true;
     });
     _validateUrl();
@@ -66,8 +112,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     final l = AppLocalizations.of(context);
     String? warning;
     if (url.isNotEmpty && l != null) {
-      if (url.contains('cdn.discordapp.com') ||
-          url.contains('media.discordapp.net')) {
+      if (url.contains('cdn.discordapp.com') || url.contains('media.discordapp.net')) {
         warning = l.rpWarnDiscord;
       } else if (!url.startsWith('https://')) {
         warning = l.rpWarnHttps;
@@ -112,7 +157,13 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
         final url = data['url'] as String;
         await ResourcePackPrefs.save(url: url, enabled: _enabled, filename: name, isUpload: true);
         if (!mounted) return;
-        setState(() { _uploadedUrl = url; _uploadedFilename = name; _uploading = false; });
+        setState(() {
+          _uploadedUrl = url;
+          _uploadedFilename = name;
+          _hasPack = true;
+          _activePackName = name;
+          _uploading = false;
+        });
         AppToast.show(context, message: AppLocalizations.of(context)!.rpToastSaved, icon: Icons.check_rounded, color: AppTheme.accent);
         final l = AppLocalizations.of(context)!;
         _showDialog(
@@ -124,9 +175,9 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
             children: [
               Text(l.rpClearWhy, style: TextStyle(color: AppTheme.textSecondary, fontSize: 13, height: 1.6)),
               const SizedBox(height: 16),
-              _ModalStep(n: '1', text: l.rpClearStep1),
-              _ModalStep(n: '2', text: l.rpClearStep2),
-              _ModalStep(n: '3', text: l.rpClearStep3),
+              RpModalStep(n: '1', text: l.rpClearStep1),
+              RpModalStep(n: '2', text: l.rpClearStep2),
+              RpModalStep(n: '3', text: l.rpClearStep3),
             ],
           ),
           icon: Icons.cleaning_services_rounded,
@@ -151,6 +202,8 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
       _uploadedFilename = null;
       _uploadedUrl = null;
       _enabled = false;
+      _hasPack = false;
+      _activePackName = null;
     });
   }
 
@@ -158,44 +211,28 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     final url = _urlCtrl.text.trim();
     final l = AppLocalizations.of(context)!;
     if (_enabled && url.isEmpty) {
-      AppToast.show(
-        context,
-        message: l.rpToastEnterUrl,
-        icon: Icons.warning_rounded,
-        color: AppTheme.warning,
-      );
+      AppToast.show(context, message: l.rpToastEnterUrl, icon: Icons.warning_rounded, color: AppTheme.warning);
       return;
     }
     if (_enabled && _urlWarning != null) {
-      AppToast.show(
-        context,
-        message: _urlWarning!,
-        icon: Icons.warning_rounded,
-        color: AppTheme.warning,
-      );
+      AppToast.show(context, message: _urlWarning!, icon: Icons.warning_rounded, color: AppTheme.warning);
       return;
     }
     await ResourcePackPrefs.save(url: url, enabled: _enabled, isUpload: false);
     if (!mounted) return;
-    AppToast.show(
-      context,
-      message: l.rpToastSaved,
-      icon: Icons.check_rounded,
-      color: AppTheme.accent,
-    );
+    setState(() {
+      _hasPack = url.isNotEmpty;
+      _activePackName = url.isNotEmpty ? url.split('/').last : null;
+    });
+    AppToast.show(context, message: l.rpToastSaved, icon: Icons.check_rounded, color: AppTheme.accent);
     widget.onBack();
   }
 
   Future<void> _toggleEnabled(bool v) async {
     setState(() => _enabled = v);
-    if (_mode == _InputMode.upload && _uploadedUrl != null) {
-      await ResourcePackPrefs.save(
-        url: _uploadedUrl,
-        enabled: v,
-        filename: _uploadedFilename,
-        isUpload: true,
-      );
-    } else if (_mode == _InputMode.url) {
+    if (_mode == RpInputMode.upload && _uploadedUrl != null) {
+      await ResourcePackPrefs.save(url: _uploadedUrl, enabled: v, filename: _uploadedFilename, isUpload: true);
+    } else if (_mode == RpInputMode.url) {
       final url = _urlCtrl.text.trim();
       if (url.isNotEmpty) {
         await ResourcePackPrefs.save(url: url, enabled: v, isUpload: false);
@@ -208,10 +245,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     await _uploadBytes(bytes, name);
   }
 
-  void _showDialog(
-    BuildContext context,
-    String title,
-    Widget body, {
+  void _showDialog(BuildContext context, String title, Widget body, {
     IconData icon = Icons.info_rounded,
     Color iconColor = const Color(0xFF60A5FA),
   }) {
@@ -230,20 +264,13 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                 padding: const EdgeInsets.fromLTRB(20, 20, 12, 16),
                 decoration: BoxDecoration(
                   color: iconColor.withValues(alpha: 0.08),
-                  borderRadius: const BorderRadius.vertical(
-                    top: Radius.circular(16),
-                  ),
-                  border: Border(
-                    bottom: BorderSide(
-                      color: iconColor.withValues(alpha: 0.18),
-                    ),
-                  ),
+                  borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+                  border: Border(bottom: BorderSide(color: iconColor.withValues(alpha: 0.18))),
                 ),
                 child: Row(
                   children: [
                     Container(
-                      width: 36,
-                      height: 36,
+                      width: 36, height: 36,
                       decoration: BoxDecoration(
                         color: iconColor.withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(10),
@@ -252,22 +279,11 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                     ),
                     const SizedBox(width: 12),
                     Expanded(
-                      child: Text(
-                        title,
-                        style: TextStyle(
-                          color: AppTheme.textPrimary,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
+                      child: Text(title, style: TextStyle(color: AppTheme.textPrimary, fontSize: 15, fontWeight: FontWeight.w700)),
                     ),
                     IconButton(
                       onPressed: () => Navigator.of(ctx).pop(),
-                      icon: Icon(
-                        Icons.close_rounded,
-                        color: AppTheme.textMuted,
-                        size: 18,
-                      ),
+                      icon: Icon(Icons.close_rounded, color: AppTheme.textMuted, size: 18),
                       padding: EdgeInsets.zero,
                       constraints: const BoxConstraints(),
                     ),
@@ -295,414 +311,185 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
+    final showControls = _mode == RpInputMode.upload || _mode == RpInputMode.url;
+
     return SwipeBack(
       onBack: widget.onBack,
       child: Column(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: AppTheme.surface,
-            border: Border(
-              bottom: BorderSide(color: AppTheme.borderGray, width: 0.5),
-            ),
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          child: Row(
-            children: [
-              IconButton(
-                icon: Icon(
-                  Icons.arrow_back_ios_rounded,
-                  color: AppTheme.textSecondary,
-                  size: 18,
-                ),
-                onPressed: widget.onBack,
-              ),
-              Expanded(
-                child: Text(
-                  l.rpScreenTitle,
-                  style: TextStyle(
-                    color: AppTheme.textPrimary,
-                    fontSize: 17,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-
-        Expanded(
-          child: !_loaded
-              ? Center(
-                  child: CircularProgressIndicator(
-                    strokeWidth: 2,
-                    color: AppTheme.accent,
-                  ),
-                )
-              : SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  keyboardDismissBehavior:
-                      ScrollViewKeyboardDismissBehavior.onDrag,
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 480),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 20),
-
-                        Text(
-                          l.rpExplanation,
-                          style: TextStyle(
-                            color: AppTheme.textSecondary,
-                            fontSize: 13,
-                            height: 1.6,
-                          ),
-                        ),
-
-                        const SizedBox(height: 20),
-
-                        Container(
-                          decoration: BoxDecoration(
-                            color: AppTheme.surfaceRaised,
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: AppTheme.borderGray),
-                          ),
-                          padding: const EdgeInsets.all(3),
-                          child: Row(
-                            children: [
-                              _Tab(
-                                label: l.rpUploadTab,
-                                icon: Icons.upload_rounded,
-                                selected: _mode == _InputMode.upload,
-                                onTap: () => setState(() => _mode = _InputMode.upload),
-                              ),
-                              _Tab(
-                                label: l.rpUrlTab,
-                                icon: Icons.link_rounded,
-                                selected: _mode == _InputMode.url,
-                                onTap: () => setState(() => _mode = _InputMode.url),
-                              ),
-                              _Tab(
-                                label: l.rpMergerTitle,
-                                icon: Icons.merge_rounded,
-                                selected: _mode == _InputMode.merge,
-                                onTap: () => setState(() => _mode = _InputMode.merge),
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        const SizedBox(height: 12),
-
-                        if (_mode == _InputMode.upload) _buildUploadSection(l),
-                        if (_mode == _InputMode.url) _buildUrlSection(l),
-                        Offstage(
-                          offstage: _mode != _InputMode.merge,
-                          child: RpMergerWidget(
-                            key: const ValueKey('merger'),
-                            onActivated: (url, filename) {
-                              setState(() { _uploadedUrl = url; _uploadedFilename = filename; _mode = _InputMode.upload; });
-                              AppToast.show(context, message: AppLocalizations.of(context)!.rpMergerSetActiveToast, icon: Icons.check_rounded, color: AppTheme.accent);
-                            },
-                          ),
-                        ),
-
-                        if (_mode != _InputMode.merge) ...[
-                        const SizedBox(height: 16),
-
-                        Container(
-                          decoration: BoxDecoration(
-                            color: AppTheme.surfaceRaised,
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(color: AppTheme.borderGray),
-                          ),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 14,
-                            vertical: 4,
-                          ),
-                          child: Row(
-                            children: [
-                              Icon(
-                                _enabled
-                                    ? Icons.check_circle_rounded
-                                    : Icons.radio_button_unchecked_rounded,
-                                color: _enabled
-                                    ? AppTheme.accent
-                                    : AppTheme.textMuted,
-                                size: 20,
-                              ),
-                              const SizedBox(width: 12),
-                              Expanded(
-                                child: Text(
-                                  l.rpEnableToggle,
-                                  style: TextStyle(
-                                    color: AppTheme.textPrimary,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                              Switch(
-                                value: _enabled,
-                                onChanged: _toggleEnabled,
-                              ),
-                            ],
-                          ),
-                        ),
-                        ],
-
-                        if (_mode == _InputMode.url) ...[
-                          const SizedBox(height: 12),
-                          SizedBox(
-                            width: double.infinity,
-                            child: ElevatedButton.icon(
-                              onPressed: _saveUrl,
-                              icon: const Icon(Icons.save_rounded, size: 18),
-                              label: Text(
-                                l.save,
-                                style: const TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 14,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-
-                        const SizedBox(height: 28),
-
-                        Container(
-                          decoration: BoxDecoration(
-                            color: AppTheme.surfaceRaised,
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(color: AppTheme.borderGray),
-                          ),
-                          child: Column(
-                            children: [
-                              _InfoRow(
-                                icon: Icons.check_circle_outline_rounded,
-                                iconColor: AppTheme.success,
-                                label: l.rpWhatWorks,
-                                onTap: () => _showDialog(
-                                  context,
-                                  l.rpWhatWorks,
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      _ModalBullet(
-                                        title: l.rpSupportedBedrockOnly,
-                                        hint: l.rpSupportedBedrockOnlyHint,
-                                        ok: true,
-                                      ),
-                                      _ModalBullet(
-                                        title: l.rpSupportedTexture,
-                                        hint: l.rpSupportedTextureHint,
-                                        ok: true,
-                                      ),
-                                      Divider(
-                                        height: 20,
-                                        color: AppTheme.borderGray,
-                                      ),
-                                      _ModalBullet(
-                                        title: l.rpUnsupportedShaders,
-                                        hint: l.rpUnsupportedShadersHint,
-                                        ok: false,
-                                      ),
-                                      _ModalBullet(
-                                        title: l.rpUnsupportedAddons,
-                                        hint: l.rpUnsupportedAddonsHint,
-                                        ok: false,
-                                      ),
-                                      Divider(
-                                        height: 20,
-                                        color: AppTheme.borderGray,
-                                      ),
-                                      _ModalBullet(
-                                        title: l.rpNoDiscord,
-                                        hint: l.rpNoDiscordHint,
-                                        ok: false,
-                                      ),
-                                      _ModalBullet(
-                                        title: l.rpNoDrive,
-                                        hint: l.rpNoDriveHint,
-                                        ok: false,
-                                      ),
-                                      _ModalBullet(
-                                        title: l.rpNoEncrypted,
-                                        hint: l.rpNoEncryptedHint,
-                                        ok: false,
-                                      ),
-                                    ],
-                                  ),
-                                  icon: Icons.check_circle_outline_rounded,
-                                  iconColor: AppTheme.success,
-                                ),
-                              ),
-                              Divider(
-                                height: 1,
-                                color: AppTheme.borderGray,
-                                indent: 52,
-                              ),
-                              _InfoRow(
-                                icon: Icons.speed_rounded,
-                                iconColor: Colors.orangeAccent,
-                                label: l.rpConsolePerformanceTitle,
-                                onTap: () => _showDialog(
-                                  context,
-                                  l.rpConsolePerformanceTitle,
-                                  Text(
-                                    l.rpConsolePerformanceBody,
-                                    style: TextStyle(
-                                      color: AppTheme.textSecondary,
-                                      fontSize: 14,
-                                      height: 1.65,
-                                    ),
-                                  ),
-                                  icon: Icons.speed_rounded,
-                                  iconColor: Colors.orangeAccent,
-                                ),
-                              ),
-                              Divider(
-                                height: 1,
-                                color: AppTheme.borderGray,
-                                indent: 52,
-                              ),
-                              _InfoRow(
-                                icon: Icons.cleaning_services_rounded,
-                                iconColor: AppTheme.info,
-                                label: l.rpClearMinecraftTitle,
-                                onTap: () => _showDialog(
-                                  context,
-                                  l.rpClearMinecraftTitle,
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        l.rpClearWhy,
-                                        style: TextStyle(
-                                          color: AppTheme.textSecondary,
-                                          fontSize: 13,
-                                          height: 1.6,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 16),
-                                      _ModalStep(n: '1', text: l.rpClearStep1),
-                                      _ModalStep(n: '2', text: l.rpClearStep2),
-                                      _ModalStep(n: '3', text: l.rpClearStep3),
-                                    ],
-                                  ),
-                                  icon: Icons.cleaning_services_rounded,
-                                  iconColor: AppTheme.info,
-                                ),
-                              ),
-                              Divider(
-                                height: 1,
-                                color: AppTheme.borderGray,
-                                indent: 52,
-                              ),
-                              _InfoRow(
-                                icon: Icons.refresh_rounded,
-                                iconColor: const Color(0xFF8B5CF6),
-                                label: l.rpRelayTitle,
-                                onTap: () => _showDialog(
-                                  context,
-                                  l.rpRelayTitle,
-                                  Text(
-                                    l.rpRelayBody,
-                                    style: TextStyle(
-                                      color: AppTheme.textSecondary,
-                                      fontSize: 14,
-                                      height: 1.65,
-                                    ),
-                                  ),
-                                  icon: Icons.refresh_rounded,
-                                  iconColor: const Color(0xFF8B5CF6),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        const SizedBox(height: 32),
-                      ],
-                    ),
-                  ),
-                ),
-        ),
-      ],
-    ),
-    );
-  }
-
-  Widget _buildUploadSection(AppLocalizations l) {
-    if (_uploadedUrl != null && _uploadedFilename != null) {
-      return _buildUploadedCard(l);
-    }
-    return _buildUploadButton(l);
-  }
-
-  Widget _buildUploadedCard(AppLocalizations l) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppTheme.accent.withValues(alpha: 0.4)),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-      child: Row(
         children: [
           Container(
-            width: 36,
-            height: 36,
             decoration: BoxDecoration(
-              color: AppTheme.accent.withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(10),
+              color: AppTheme.surface,
+              border: Border(bottom: BorderSide(color: AppTheme.borderGray, width: 0.5)),
             ),
-            child: Icon(Icons.layers_rounded, color: AppTheme.accent, size: 18),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            child: Row(
               children: [
-                Text(
-                  _uploadedFilename!,
-                  style: TextStyle(
-                    color: AppTheme.textPrimary,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                IconButton(
+                  icon: Icon(Icons.arrow_back_ios_rounded, color: AppTheme.textSecondary, size: 18),
+                  onPressed: widget.onBack,
                 ),
-                const SizedBox(height: 2),
-                Text(
-                  'MCCompanion Cloud',
-                  style: TextStyle(color: AppTheme.accent, fontSize: 11),
+                Expanded(
+                  child: Text(
+                    l.rpScreenTitle,
+                    style: TextStyle(color: AppTheme.textPrimary, fontSize: 17, fontWeight: FontWeight.w700),
+                  ),
                 ),
               ],
             ),
           ),
-          IconButton(
-            onPressed: _deleteUpload,
-            icon: Icon(
-              Icons.delete_outline_rounded,
-              color: AppTheme.textMuted,
-              size: 18,
-            ),
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(),
+
+          Expanded(
+            child: !_loaded
+                ? Center(child: CircularProgressIndicator(strokeWidth: 2, color: AppTheme.accent))
+                : SingleChildScrollView(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 480),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 20),
+
+                          RpActivePackBanner(
+                            name: _hasPack ? _activePackName : null,
+                            enabled: _enabled,
+                            onToggle: _hasPack ? _toggleEnabled : null,
+                            onRemove: (_hasPack && _mode == RpInputMode.upload) ? _deleteUpload : null,
+                          ),
+                          const SizedBox(height: 16),
+
+                          RpTabBar(
+                            mode: _mode,
+                            onSelect: (m) => setState(() => _mode = m),
+                          ),
+                          const SizedBox(height: 16),
+
+                          if (_mode == RpInputMode.browse) _buildBrowseSection(),
+                          if (_mode == RpInputMode.upload) _buildUploadSection(l),
+                          if (_mode == RpInputMode.url) _buildUrlSection(l),
+                          if (_mode == RpInputMode.merge) ...[
+                            RpTabInfoBox(text: l.rpTabMergeInfo),
+                            const SizedBox(height: 16),
+                          ],
+                          Offstage(
+                            offstage: _mode != RpInputMode.merge,
+                            child: RpMergerWidget(
+                              key: const ValueKey('merger'),
+                              onActivated: (url, filename) {
+                                setState(() {
+                                  _uploadedUrl = url;
+                                  _uploadedFilename = filename;
+                                  _hasPack = true;
+                                  _activePackName = filename;
+                                  _mode = RpInputMode.upload;
+                                });
+                                AppToast.show(context, message: AppLocalizations.of(context)!.rpMergerSetActiveToast, icon: Icons.check_rounded, color: AppTheme.accent);
+                              },
+                            ),
+                          ),
+
+                          if (_mode == RpInputMode.url) ...[
+                            const SizedBox(height: 12),
+                            SizedBox(
+                              width: double.infinity,
+                              child: ElevatedButton.icon(
+                                onPressed: _saveUrl,
+                                icon: const Icon(Icons.save_rounded, size: 18),
+                                label: Text(l.save, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
+                                style: ElevatedButton.styleFrom(padding: const EdgeInsets.symmetric(vertical: 14)),
+                              ),
+                            ),
+                          ],
+
+                          if (showControls) ...[
+                            const SizedBox(height: 28),
+                            RpInfoSection(showDialog: _showDialog),
+                          ],
+
+                          const SizedBox(height: 32),
+                        ],
+                      ),
+                    ),
+                  ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildBrowseSection() {
+    final l = AppLocalizations.of(context)!;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        RpTabInfoBox(text: l.rpTabBrowseInfo),
+        const SizedBox(height: 16),
+        if (_featuredLoading)
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 48),
+            child: Center(child: CircularProgressIndicator(strokeWidth: 2, color: AppTheme.accent)),
+          )
+        else if (_featuredPacks.isEmpty)
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 48),
+            child: Column(
+              children: [
+                Icon(Icons.explore_off_rounded, color: AppTheme.textMuted, size: 40),
+                const SizedBox(height: 12),
+                Text(l.rpBrowseEmpty, style: TextStyle(color: AppTheme.textMuted, fontSize: 14)),
+                const SizedBox(height: 4),
+                Text(l.rpBrowseEmptyHint, style: TextStyle(color: AppTheme.textMuted, fontSize: 12)),
+              ],
+            ),
+          )
+        else ...[
+          Text(l.rpBrowseSubtitle, style: TextStyle(color: AppTheme.textMuted, fontSize: 12)),
+          const SizedBox(height: 12),
+          ..._featuredPacks.map((pack) => RpFeaturedPackCard(
+            pack: pack,
+            isApplying: _applyingPackId == pack['id'].toString(),
+            onUse: () => _applyFeaturedPack(pack),
+          )),
+        ],
+      ],
+    );
+  }
+
+  Widget _buildUploadSection(AppLocalizations l) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        RpTabInfoBox(text: l.rpTabUploadInfo),
+        const SizedBox(height: 16),
+        if (_uploadedUrl != null && _uploadedFilename != null)
+          _buildReplaceHint(l)
+        else
+          _buildUploadButton(l),
+      ],
+    );
+  }
+
+  Widget _buildReplaceHint(AppLocalizations l) {
+    return GestureDetector(
+      onTap: _pickAndUpload,
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
+        decoration: BoxDecoration(
+          color: AppTheme.surfaceRaised,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: AppTheme.borderGray),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.swap_horiz_rounded, color: AppTheme.textMuted, size: 18),
+            const SizedBox(width: 8),
+            Text(l.rpReplaceFile, style: TextStyle(color: AppTheme.textSecondary, fontSize: 13, fontWeight: FontWeight.w500)),
+          ],
+        ),
       ),
     );
   }
@@ -728,7 +515,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 150),
           width: double.infinity,
-          padding: const EdgeInsets.symmetric(vertical: 28),
+          padding: const EdgeInsets.symmetric(vertical: 32),
           decoration: BoxDecoration(
             color: active ? AppTheme.accent.withValues(alpha: 0.06) : AppTheme.surfaceRaised,
             borderRadius: BorderRadius.circular(12),
@@ -746,8 +533,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     SizedBox(
-                      width: 28,
-                      height: 28,
+                      width: 28, height: 28,
                       child: CircularProgressIndicator(
                         value: _uploadProgress > 0 ? _uploadProgress : null,
                         strokeWidth: 2.5,
@@ -764,11 +550,11 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                     Icon(
                       active ? Icons.file_download_rounded : Icons.upload_file_rounded,
                       color: active ? AppTheme.accent : AppTheme.textMuted,
-                      size: 28,
+                      size: 32,
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 10),
                     Text(
-                      active ? 'Drop to upload' : l.rpUploadButton,
+                      active ? l.rpDropToUpload : l.rpUploadButton,
                       style: TextStyle(
                         color: active ? AppTheme.accent : AppTheme.textPrimary,
                         fontSize: 14,
@@ -788,6 +574,8 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        RpTabInfoBox(text: l.rpTabUrlInfo),
+        const SizedBox(height: 16),
         TextField(
           controller: _urlCtrl,
           keyboardType: TextInputType.url,
@@ -795,11 +583,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
           style: TextStyle(color: AppTheme.textPrimary, fontSize: 14),
           decoration: InputDecoration(
             hintText: l.rpPackUrlHint,
-            prefixIcon: Icon(
-              Icons.link_rounded,
-              color: AppTheme.textMuted,
-              size: 18,
-            ),
+            prefixIcon: Icon(Icons.link_rounded, color: AppTheme.textMuted, size: 18),
           ),
         ),
         if (_urlWarning != null) ...[
@@ -809,27 +593,17 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
             decoration: BoxDecoration(
               color: AppTheme.warning.withValues(alpha: 0.08),
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(
-                color: AppTheme.warning.withValues(alpha: 0.3),
-              ),
+              border: Border.all(color: AppTheme.warning.withValues(alpha: 0.3)),
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(
-                  Icons.warning_amber_rounded,
-                  color: AppTheme.warning,
-                  size: 14,
-                ),
+                Icon(Icons.warning_amber_rounded, color: AppTheme.warning, size: 14),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
                     _urlWarning!,
-                    style: TextStyle(
-                      color: AppTheme.warning,
-                      fontSize: 12,
-                      height: 1.4,
-                    ),
+                    style: TextStyle(color: AppTheme.warning, fontSize: 12, height: 1.4),
                   ),
                 ),
               ],
@@ -837,225 +611,6 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
           ),
         ],
       ],
-    );
-  }
-}
-
-class _Tab extends StatelessWidget {
-  final String label;
-  final IconData icon;
-  final bool selected;
-  final VoidCallback onTap;
-  const _Tab({
-    required this.label,
-    required this.icon,
-    required this.selected,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: GestureDetector(
-        onTap: onTap,
-        behavior: HitTestBehavior.opaque,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 150),
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          decoration: BoxDecoration(
-            color: selected
-                ? AppTheme.accent.withValues(alpha: 0.15)
-                : Colors.transparent,
-            borderRadius: BorderRadius.circular(8),
-            border: selected
-                ? Border.all(color: AppTheme.accent.withValues(alpha: 0.35))
-                : null,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                icon,
-                size: 15,
-                color: selected ? AppTheme.accent : AppTheme.textMuted,
-              ),
-              const SizedBox(width: 6),
-              Text(
-                label,
-                style: TextStyle(
-                  color: selected ? AppTheme.accent : AppTheme.textMuted,
-                  fontSize: 13,
-                  fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _InfoRow extends StatelessWidget {
-  final IconData icon;
-  final Color iconColor;
-  final String label;
-  final VoidCallback onTap;
-  const _InfoRow({
-    required this.icon,
-    required this.iconColor,
-    required this.label,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
-        child: Row(
-          children: [
-            Container(
-              width: 30,
-              height: 30,
-              decoration: BoxDecoration(
-                color: iconColor.withValues(alpha: 0.12),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Icon(icon, color: iconColor, size: 16),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Text(
-                label,
-                style: TextStyle(
-                  color: AppTheme.textPrimary,
-                  fontSize: 13,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-            Icon(
-              Icons.chevron_right_rounded,
-              color: AppTheme.textMuted,
-              size: 18,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _ModalBullet extends StatelessWidget {
-  final String title;
-  final String hint;
-  final bool ok;
-  const _ModalBullet({
-    required this.title,
-    required this.hint,
-    required this.ok,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final color = ok ? AppTheme.success : AppTheme.error;
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 22,
-            height: 22,
-            decoration: BoxDecoration(
-              color: color.withValues(alpha: 0.12),
-              shape: BoxShape.circle,
-            ),
-            child: Icon(
-              ok ? Icons.check_rounded : Icons.close_rounded,
-              color: color,
-              size: 12,
-            ),
-          ),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                    color: AppTheme.textPrimary,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  hint,
-                  style: TextStyle(
-                    color: AppTheme.textMuted,
-                    fontSize: 12,
-                    height: 1.4,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _ModalStep extends StatelessWidget {
-  final String n;
-  final String text;
-  const _ModalStep({required this.n, required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 14),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 24,
-            height: 24,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: AppTheme.info.withValues(alpha: 0.15),
-              borderRadius: BorderRadius.circular(7),
-            ),
-            child: Text(
-              n,
-              style: TextStyle(
-                color: AppTheme.info,
-                fontSize: 12,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 2),
-              child: Text(
-                text,
-                style: TextStyle(
-                  color: AppTheme.textSecondary,
-                  fontSize: 14,
-                  height: 1.5,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

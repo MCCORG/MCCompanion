@@ -1926,6 +1926,42 @@ class AppLocalizationsAr extends AppLocalizations {
   String get rpMergerOpenSubtitle => 'ادمج 2-4 حزم في واحدة';
 
   @override
+  String get rpDisabled => 'معطّل';
+
+  @override
+  String get rpNoPackSelected => 'لم يتم تحديد حزمة موارد';
+
+  @override
+  String get rpActiveOnConnect => 'نشط — يُطبَّق عند الاتصال';
+
+  @override
+  String get rpBrowseSubtitle => 'حزم منتقاة، جاهزة للاستخدام';
+
+  @override
+  String get rpBrowseEmpty => 'لا توجد حزم متاحة بعد';
+
+  @override
+  String get rpBrowseEmptyHint => 'تفقد لاحقًا للحصول على حزم منتقاة.';
+
+  @override
+  String get rpReplaceFile => 'استبدل بملف آخر';
+
+  @override
+  String get rpDropToUpload => 'أفلت للرفع';
+
+  @override
+  String get rpTabBrowseInfo => 'تصفح الحزم التي اختارها MCCompanion. اضغط استخدام لتفعيل حزمة فورًا — دون رفع أو رابط.';
+
+  @override
+  String get rpTabUploadInfo => 'ارفع ملف .mcpack أو .zip الخاص بك. يخزنه MCCompanion بأمان في السحابة ويرسله إلى وحدتك في كل مرة تتصل فيها.';
+
+  @override
+  String get rpTabUrlInfo => 'الصق رابط تنزيل مباشر لملف .mcpack أو .zip. يجب أن يكون الرابط متاحًا للعموم — لا روابط Discord أو Google Drive.';
+
+  @override
+  String get rpTabMergeInfo => 'ادمج من 2 إلى 4 حزم في حزمة واحدة. يتم رفع الحزمة المدمجة إلى MCCompanion Cloud وتفعيلها تلقائيًا.';
+
+  @override
   String get shareLabel => 'مشاركة';
 
   @override

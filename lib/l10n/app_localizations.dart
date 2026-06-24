@@ -3789,6 +3789,78 @@ abstract class AppLocalizations {
   /// **'Combine 2–4 packs into one'**
   String get rpMergerOpenSubtitle;
 
+  /// Status label when the resource pack is disabled
+  ///
+  /// In en, this message translates to:
+  /// **'Disabled'**
+  String get rpDisabled;
+
+  /// Shown in the active pack banner when no pack is configured
+  ///
+  /// In en, this message translates to:
+  /// **'No resource pack selected'**
+  String get rpNoPackSelected;
+
+  /// Status label when pack is enabled and will be applied
+  ///
+  /// In en, this message translates to:
+  /// **'Active — applied on connect'**
+  String get rpActiveOnConnect;
+
+  /// Subtitle shown at the top of the Browse tab
+  ///
+  /// In en, this message translates to:
+  /// **'Curated packs, ready to use'**
+  String get rpBrowseSubtitle;
+
+  /// Empty state title in Browse tab
+  ///
+  /// In en, this message translates to:
+  /// **'No packs available yet'**
+  String get rpBrowseEmpty;
+
+  /// Empty state subtitle in Browse tab
+  ///
+  /// In en, this message translates to:
+  /// **'Check back later for curated packs.'**
+  String get rpBrowseEmptyHint;
+
+  /// Button to replace the currently uploaded pack file
+  ///
+  /// In en, this message translates to:
+  /// **'Replace with another file'**
+  String get rpReplaceFile;
+
+  /// Label shown when a file is dragged over the upload area
+  ///
+  /// In en, this message translates to:
+  /// **'Drop to upload'**
+  String get rpDropToUpload;
+
+  /// Info text shown under the Browse tab
+  ///
+  /// In en, this message translates to:
+  /// **'Browse curated packs selected by MCCompanion. Tap Use to activate a pack instantly — no upload or link needed.'**
+  String get rpTabBrowseInfo;
+
+  /// Info text shown under the Upload tab
+  ///
+  /// In en, this message translates to:
+  /// **'Upload your own .mcpack or .zip file. MCCompanion stores it securely in the cloud and sends it to your console every time you connect.'**
+  String get rpTabUploadInfo;
+
+  /// Info text shown under the URL tab
+  ///
+  /// In en, this message translates to:
+  /// **'Paste a direct download link to a .mcpack or .zip file. The URL must be publicly accessible — no Discord or Google Drive links.'**
+  String get rpTabUrlInfo;
+
+  /// Info text shown under the RP Merger tab
+  ///
+  /// In en, this message translates to:
+  /// **'Combine 2 to 4 packs into one. The merged pack is uploaded to MCCompanion Cloud and activated automatically.'**
+  String get rpTabMergeInfo;
+
   /// Share button label
   ///
   /// In en, this message translates to:

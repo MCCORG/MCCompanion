@@ -1926,6 +1926,42 @@ class AppLocalizationsEs extends AppLocalizations {
   String get rpMergerOpenSubtitle => 'Combina 2–4 paquetes en uno';
 
   @override
+  String get rpDisabled => 'Desactivado';
+
+  @override
+  String get rpNoPackSelected => 'Ningún paquete de recursos seleccionado';
+
+  @override
+  String get rpActiveOnConnect => 'Activo — se aplica al conectar';
+
+  @override
+  String get rpBrowseSubtitle => 'Paquetes curados, listos para usar';
+
+  @override
+  String get rpBrowseEmpty => 'Aún no hay paquetes disponibles';
+
+  @override
+  String get rpBrowseEmptyHint => 'Vuelve más tarde para encontrar paquetes curados.';
+
+  @override
+  String get rpReplaceFile => 'Reemplazar con otro archivo';
+
+  @override
+  String get rpDropToUpload => 'Soltar para subir';
+
+  @override
+  String get rpTabBrowseInfo => 'Explora paquetes seleccionados por MCCompanion. Toca Usar para activar un paquete al instante — sin subida ni enlace.';
+
+  @override
+  String get rpTabUploadInfo => 'Sube tu propio archivo .mcpack o .zip. MCCompanion lo almacena de forma segura en la nube y lo envía a tu consola cada vez que te conectas.';
+
+  @override
+  String get rpTabUrlInfo => 'Pega un enlace de descarga directa a un archivo .mcpack o .zip. La URL debe ser accesible públicamente — sin enlaces de Discord ni Google Drive.';
+
+  @override
+  String get rpTabMergeInfo => 'Combina 2 a 4 paquetes en uno. El paquete combinado se sube a MCCompanion Cloud y se activa automáticamente.';
+
+  @override
   String get shareLabel => 'Compartir';
 
   @override

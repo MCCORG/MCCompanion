@@ -1926,6 +1926,42 @@ class AppLocalizationsId extends AppLocalizations {
   String get rpMergerOpenSubtitle => 'Gabungkan 2–4 paket menjadi satu';
 
   @override
+  String get rpDisabled => 'Nonaktif';
+
+  @override
+  String get rpNoPackSelected => 'Tidak ada paket sumber daya yang dipilih';
+
+  @override
+  String get rpActiveOnConnect => 'Aktif — diterapkan saat terhubung';
+
+  @override
+  String get rpBrowseSubtitle => 'Paket pilihan, siap digunakan';
+
+  @override
+  String get rpBrowseEmpty => 'Belum ada paket tersedia';
+
+  @override
+  String get rpBrowseEmptyHint => 'Periksa lagi nanti untuk paket pilihan.';
+
+  @override
+  String get rpReplaceFile => 'Ganti dengan file lain';
+
+  @override
+  String get rpDropToUpload => 'Lepaskan untuk mengunggah';
+
+  @override
+  String get rpTabBrowseInfo => 'Jelajahi paket pilihan MCCompanion. Ketuk Gunakan untuk mengaktifkan paket seketika — tanpa unggah atau tautan.';
+
+  @override
+  String get rpTabUploadInfo => 'Unggah file .mcpack atau .zip Anda sendiri. MCCompanion menyimpannya dengan aman di cloud dan mengirimkannya ke konsol Anda setiap kali terhubung.';
+
+  @override
+  String get rpTabUrlInfo => 'Tempel tautan unduhan langsung ke file .mcpack atau .zip. URL harus dapat diakses publik — tidak ada tautan Discord atau Google Drive.';
+
+  @override
+  String get rpTabMergeInfo => 'Gabungkan 2 hingga 4 paket menjadi satu. Paket gabungan diunggah ke MCCompanion Cloud dan diaktifkan secara otomatis.';
+
+  @override
   String get shareLabel => 'Bagikan';
 
   @override

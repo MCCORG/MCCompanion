@@ -1926,6 +1926,42 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpMergerOpenSubtitle => '将 2–4 个包合并为一个';
 
   @override
+  String get rpDisabled => '已禁用';
+
+  @override
+  String get rpNoPackSelected => '未选择资源包';
+
+  @override
+  String get rpActiveOnConnect => '已激活 — 连接时自动应用';
+
+  @override
+  String get rpBrowseSubtitle => '精选资源包，即刻可用';
+
+  @override
+  String get rpBrowseEmpty => '暂无可用资源包';
+
+  @override
+  String get rpBrowseEmptyHint => '稍后再来查看精选资源包。';
+
+  @override
+  String get rpReplaceFile => '替换为其他文件';
+
+  @override
+  String get rpDropToUpload => '拖放以上传';
+
+  @override
+  String get rpTabBrowseInfo => '浏览 MCCompanion 精选的资源包。点击使用即可立即激活 — 无需上传或链接。';
+
+  @override
+  String get rpTabUploadInfo => '上传您自己的 .mcpack 或 .zip 文件。MCCompanion 将其安全存储在云端，每次连接时自动发送到您的主机。';
+
+  @override
+  String get rpTabUrlInfo => '粘贴 .mcpack 或 .zip 文件的直接下载链接。URL 必须可公开访问 — 不支持 Discord 或 Google Drive 链接。';
+
+  @override
+  String get rpTabMergeInfo => '将 2 至 4 个资源包合并为一个。合并后的资源包将上传至 MCCompanion Cloud 并自动激活。';
+
+  @override
   String get shareLabel => '分享';
 
   @override
