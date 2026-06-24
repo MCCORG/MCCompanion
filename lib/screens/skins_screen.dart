@@ -20,263 +20,9 @@ import '../util/saved_skins_storage.dart';
 import 'skin_editor_screen.dart';
 import '../l10n/app_localizations.dart';
 import '../widgets/components/app_toast.dart';
-
-class _GeyserSkin {
-  final int id;
-  final bool isSteve;
-  final String textureId;
-  String get textureUrl => 'https://textures.minecraft.net/texture/$textureId';
-  const _GeyserSkin({
-    required this.id,
-    required this.isSteve,
-    required this.textureId,
-  });
-}
-
-class _SkinFaceImage extends StatefulWidget {
-  final String textureUrl;
-  final double size;
-  const _SkinFaceImage({required this.textureUrl}) : size = 64;
-
-  @override
-  State<_SkinFaceImage> createState() => _SkinFaceImageState();
-}
-
-class _SkinFaceImageState extends State<_SkinFaceImage> {
-  ui.Image? _image;
-  bool _loading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _load();
-  }
-
-  @override
-  void didUpdateWidget(_SkinFaceImage old) {
-    super.didUpdateWidget(old);
-    if (old.textureUrl != widget.textureUrl) _load();
-  }
-
-  Future<void> _load() async {
-    setState(() {
-      _loading = true;
-      _image = null;
-    });
-    try {
-      final resp = await http
-          .get(
-            Uri.parse(widget.textureUrl),
-            headers: {'User-Agent': 'MCCompanionApp/1.0'},
-          )
-          .timeout(const Duration(seconds: 10));
-      if (!mounted) return;
-      final codec = await ui.instantiateImageCodec(resp.bodyBytes);
-      final frame = await codec.getNextFrame();
-      if (mounted)
-        setState(() {
-          _image = frame.image;
-          _loading = false;
-        });
-    } catch (_) {
-      if (mounted) setState(() => _loading = false);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final s = widget.size;
-    if (_loading) {
-      return SizedBox(
-        width: s,
-        height: s,
-        child: Center(
-          child: CircularProgressIndicator(
-            color: AppTheme.accent,
-            strokeWidth: 2,
-          ),
-        ),
-      );
-    }
-    if (_image == null) {
-      return SizedBox(
-        width: s,
-        height: s,
-        child: Center(
-          child: FaIcon(
-            FontAwesomeIcons.user,
-            color: AppTheme.textMuted,
-            size: 22,
-          ),
-        ),
-      );
-    }
-    return CustomPaint(size: Size(s, s), painter: _FacePainter(_image!));
-  }
-}
-
-class _FacePainter extends CustomPainter {
-  final ui.Image image;
-  _FacePainter(this.image);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final sc = image.width / 64.0;
-    final paint = Paint()
-      ..filterQuality = FilterQuality.none
-      ..isAntiAlias = false;
-    final dst = Offset.zero & size;
-    canvas.drawImageRect(
-      image,
-      Rect.fromLTWH(8 * sc, 8 * sc, 8 * sc, 8 * sc),
-      dst,
-      paint,
-    );
-    canvas.drawImageRect(
-      image,
-      Rect.fromLTWH(40 * sc, 8 * sc, 8 * sc, 8 * sc),
-      dst,
-      paint,
-    );
-  }
-
-  @override
-  bool shouldRepaint(_FacePainter old) => old.image != image;
-}
-
-class _SkinBodyImage extends StatefulWidget {
-  final String textureUrl;
-  final double height;
-  const _SkinBodyImage({required this.textureUrl, this.height = 128});
-
-  @override
-  State<_SkinBodyImage> createState() => _SkinBodyImageState();
-}
-
-class _SkinBodyImageState extends State<_SkinBodyImage> {
-  ui.Image? _image;
-  bool _loading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _load();
-  }
-
-  @override
-  void didUpdateWidget(_SkinBodyImage old) {
-    super.didUpdateWidget(old);
-    if (old.textureUrl != widget.textureUrl) _load();
-  }
-
-  Future<void> _load() async {
-    setState(() {
-      _loading = true;
-      _image = null;
-    });
-    try {
-      final resp = await http
-          .get(
-            Uri.parse(widget.textureUrl),
-            headers: {'User-Agent': 'MCCompanionApp/1.0'},
-          )
-          .timeout(const Duration(seconds: 10));
-      if (!mounted) return;
-      final codec = await ui.instantiateImageCodec(resp.bodyBytes);
-      final frame = await codec.getNextFrame();
-      if (mounted)
-        setState(() {
-          _image = frame.image;
-          _loading = false;
-        });
-    } catch (_) {
-      if (mounted) setState(() => _loading = false);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final h = widget.height;
-    final w = h / 2.0;
-    if (_loading)
-      return SizedBox(
-        width: w,
-        height: h,
-        child: Center(
-          child: CircularProgressIndicator(
-            color: AppTheme.accent,
-            strokeWidth: 2,
-          ),
-        ),
-      );
-    if (_image == null)
-      return SizedBox(
-        width: w,
-        height: h,
-        child: Center(
-          child: FaIcon(
-            FontAwesomeIcons.personRunning,
-            color: AppTheme.textMuted,
-            size: 28,
-          ),
-        ),
-      );
-    return CustomPaint(size: Size(w, h), painter: _BodyPainter(_image!));
-  }
-}
-
-class _BodyPainter extends CustomPainter {
-  final ui.Image image;
-  _BodyPainter(this.image);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final sc = image.width / 64.0;
-    final px = size.width / 16.0;
-    final paint = Paint()
-      ..filterQuality = FilterQuality.none
-      ..isAntiAlias = false;
-
-    void draw(
-      double dx,
-      double dy,
-      double dw,
-      double dh,
-      double sx,
-      double sy,
-      double sw,
-      double sh,
-    ) {
-      canvas.drawImageRect(
-        image,
-        Rect.fromLTWH(sx * sc, sy * sc, sw * sc, sh * sc),
-        Rect.fromLTWH(dx * px, dy * px, dw * px, dh * px),
-        paint,
-      );
-    }
-
-    draw(4, 0, 8, 8, 8, 8, 8, 8);
-    draw(4, 0, 8, 8, 40, 8, 8, 8);
-
-    draw(4, 8, 8, 12, 20, 20, 8, 12);
-    draw(4, 8, 8, 12, 20, 36, 8, 12);
-
-    draw(0, 8, 4, 12, 44, 20, 4, 12);
-    draw(0, 8, 4, 12, 44, 36, 4, 12);
-
-    draw(12, 8, 4, 12, 36, 52, 4, 12);
-    draw(12, 8, 4, 12, 52, 52, 4, 12);
-
-    draw(4, 20, 4, 12, 4, 20, 4, 12);
-    draw(4, 20, 4, 12, 4, 36, 4, 12);
-
-    draw(8, 20, 4, 12, 20, 52, 4, 12);
-    draw(8, 20, 4, 12, 4, 52, 4, 12);
-  }
-
-  @override
-  bool shouldRepaint(_BodyPainter old) => old.image != image;
-}
+import '../widgets/skins/skin_painters.dart';
+import '../widgets/skins/skin_cards.dart';
+import '../widgets/skins/skin_detail_sheets.dart';
 
 class SkinsScreen extends StatefulWidget {
   const SkinsScreen({super.key, this.onBack});
@@ -296,7 +42,7 @@ class SkinsScreenState extends State<SkinsScreen> {
   List<SavedSkin> _savedSkins = [];
   bool _loadingSaved = true;
 
-  List<_GeyserSkin> _recentSkins = [];
+  List<GeyserSkin> _recentSkins = [];
   int _page = 1;
   int _totalPages = 10;
   bool _loadingRecent = false;
@@ -353,7 +99,7 @@ class SkinsScreenState extends State<SkinsScreen> {
         final total = json['total_pages'] as int? ?? 10;
         final skins = data
             .map(
-              (e) => _GeyserSkin(
+              (e) => GeyserSkin(
                 id: e['id'] as int,
                 isSteve: e['is_steve'] as bool? ?? false,
                 textureId: e['texture_id'] as String,
@@ -487,7 +233,7 @@ class SkinsScreenState extends State<SkinsScreen> {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
-      builder: (_) => _SavedSkinMenuSheet(
+      builder: (_) => SavedSkinMenuSheet(
         skin: skin,
         onEdit: () {
           Navigator.pop(context);
@@ -511,7 +257,7 @@ class SkinsScreenState extends State<SkinsScreen> {
       context: context,
       backgroundColor: Colors.transparent,
       isScrollControlled: true,
-      builder: (_) => _SkinDetailSheet(
+      builder: (_) => SkinDetailSheet(
         textureUrl: textureUrl,
         onEdit: () {
           Navigator.pop(context);
@@ -598,7 +344,7 @@ class SkinsScreenState extends State<SkinsScreen> {
               mainAxisSpacing: 10,
             ),
             itemCount: _savedSkins.length,
-            itemBuilder: (_, i) => _SavedSkinCard(
+            itemBuilder: (_, i) => SavedSkinCard(
               skin: _savedSkins[i],
               onTap: () => _showSavedSkinMenu(_savedSkins[i]),
             ),
@@ -610,7 +356,7 @@ class SkinsScreenState extends State<SkinsScreen> {
               scrollDirection: Axis.horizontal,
               itemCount: _savedSkins.length,
               separatorBuilder: (_, __) => const SizedBox(width: 10),
-              itemBuilder: (_, i) => _SavedSkinCard(
+              itemBuilder: (_, i) => SavedSkinCard(
                 skin: _savedSkins[i],
                 onTap: () => _showSavedSkinMenu(_savedSkins[i]),
               ),
@@ -633,13 +379,13 @@ class SkinsScreenState extends State<SkinsScreen> {
       );
     }
 
-    if (_me == null) return const _NotLoggedInCard();
+    if (_me == null) return const SkinsNotLoggedInCard();
 
     final javaAccounts = _me!.javaAccounts;
     final bedrockAccounts = _me!.bedrockAccounts;
 
     if (javaAccounts.isEmpty && bedrockAccounts.isEmpty) {
-      return const _NoAccountsCard();
+      return const SkinsNoAccountsCard();
     }
 
     final totalCards = javaAccounts.length + bedrockAccounts.length;
@@ -664,7 +410,7 @@ class SkinsScreenState extends State<SkinsScreen> {
             itemBuilder: (_, i) {
               if (i < javaAccounts.length) {
                 final acc = javaAccounts[i];
-                return _JavaSkinCard(
+                return JavaSkinCard(
                   username: acc.javaUsername,
                   javaUuid: acc.javaUuid,
                   badge: l.labelJava,
@@ -673,7 +419,7 @@ class SkinsScreenState extends State<SkinsScreen> {
                 );
               }
               final acc = bedrockAccounts[i - javaAccounts.length];
-              return _BedrockSkinCard(
+              return BedrockSkinCard(
                 gamertag: acc.xboxGamertag ?? acc.xboxXuid,
                 xuid: acc.xboxXuid,
                 onEdit: _openEditor,
@@ -684,14 +430,14 @@ class SkinsScreenState extends State<SkinsScreen> {
           SizedBox(
             height: 210,
             child: javaAccounts.isNotEmpty
-                ? _JavaSkinCard(
+                ? JavaSkinCard(
                     username: javaAccounts.first.javaUsername,
                     javaUuid: javaAccounts.first.javaUuid,
                     badge: 'Java',
                     badgeColor: const Color(0xFF42A5F5),
                     onEdit: _openEditor,
                   )
-                : _BedrockSkinCard(
+                : BedrockSkinCard(
                     gamertag:
                         bedrockAccounts.first.xboxGamertag ??
                         bedrockAccounts.first.xboxXuid,
@@ -711,7 +457,7 @@ class SkinsScreenState extends State<SkinsScreen> {
                   final acc = javaAccounts[i];
                   return SizedBox(
                     width: 140,
-                    child: _JavaSkinCard(
+                    child: JavaSkinCard(
                       username: acc.javaUsername,
                       javaUuid: acc.javaUuid,
                       badge: l.labelJava,
@@ -724,7 +470,7 @@ class SkinsScreenState extends State<SkinsScreen> {
                 final acc = bedrockAccounts[i - javaAccounts.length];
                 return SizedBox(
                   width: 140,
-                  child: _BedrockSkinCard(
+                  child: BedrockSkinCard(
                     gamertag: acc.xboxGamertag ?? acc.xboxXuid,
                     xuid: acc.xboxXuid,
                     onEdit: _openEditor,
@@ -774,7 +520,7 @@ class SkinsScreenState extends State<SkinsScreen> {
             itemCount: _recentSkins.length,
             itemBuilder: (_, i) {
               final skin = _recentSkins[i];
-              return _GeyserSkinChip(
+              return GeyserSkinChip(
                 skin: skin,
                 onTap: () => _openGeyserDetail(skin.textureUrl),
               );
@@ -841,850 +587,4 @@ class SkinsScreenState extends State<SkinsScreen> {
       letterSpacing: 1.2,
     ),
   );
-}
-
-Future<void> _shareTextureFile(BuildContext context, String url, String name) async {
-  try {
-    final resp = await http.get(Uri.parse(url), headers: {'User-Agent': 'MCCompanionApp/1.0'})
-        .timeout(const Duration(seconds: 10));
-    if (resp.statusCode != 200) return;
-    final dir = await getTemporaryDirectory();
-    final file = File('${dir.path}/$name.png');
-    await file.writeAsBytes(resp.bodyBytes);
-    if (Platform.isWindows || Platform.isMacOS || Platform.isLinux) {
-      final saveDir = await getApplicationDocumentsDirectory();
-      final dest = File('${saveDir.path}/$name.png');
-      await file.copy(dest.path);
-      if (context.mounted) {
-        AppToast.show(context, message: AppLocalizations.of(context)!.skinSavedToDocuments, icon: Icons.download_done_rounded, color: AppTheme.success);
-      }
-    } else {
-      final size = MediaQuery.of(context).size;
-      await Share.shareXFiles(
-        [XFile(file.path, mimeType: 'image/png')],
-        subject: AppLocalizations.of(context)!.skinMenuExport,
-        sharePositionOrigin: Rect.fromCenter(
-          center: Offset(size.width / 2, size.height / 2),
-          width: 1,
-          height: 1,
-        ),
-      );
-    }
-  } catch (_) {}
-}
-
-class _SavedSkinCard extends StatelessWidget {
-  final SavedSkin skin;
-  final VoidCallback onTap;
-  const _SavedSkinCard({required this.skin, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 100,
-        padding: const EdgeInsets.fromLTRB(10, 10, 10, 8),
-        decoration: BoxDecoration(
-          color: AppTheme.surface,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: AppTheme.borderGray),
-        ),
-        child: Column(
-          children: [
-            Expanded(
-              child: Center(
-                child: _LocalSkinBodyImage(filePath: skin.filePath, height: 100),
-              ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              skin.name,
-              style: TextStyle(
-                color: AppTheme.textPrimary,
-                fontSize: 11,
-                fontWeight: FontWeight.w600,
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            const SizedBox(height: 4),
-            FaIcon(FontAwesomeIcons.ellipsis, size: 10, color: AppTheme.textMuted),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _SavedSkinMenuSheet extends StatelessWidget {
-  final SavedSkin skin;
-  final VoidCallback onEdit;
-  final VoidCallback onExport;
-  final VoidCallback onDelete;
-  const _SavedSkinMenuSheet({
-    required this.skin,
-    required this.onEdit,
-    required this.onExport,
-    required this.onDelete,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppTheme.background,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-        border: Border(top: BorderSide(color: AppTheme.borderGray)),
-      ),
-      padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 36, height: 4,
-            margin: const EdgeInsets.only(bottom: 16),
-            decoration: BoxDecoration(
-              color: AppTheme.borderLight,
-              borderRadius: BorderRadius.circular(4),
-            ),
-          ),
-          Text(
-            skin.name,
-            style: TextStyle(color: AppTheme.textPrimary, fontSize: 16, fontWeight: FontWeight.w700),
-          ),
-          const SizedBox(height: 20),
-          _MenuTile(
-            icon: FontAwesomeIcons.penToSquare,
-            label: AppLocalizations.of(context)!.skinsEdit,
-            color: AppTheme.accent,
-            onTap: onEdit,
-          ),
-          _MenuTile(
-            icon: FontAwesomeIcons.shareFromSquare,
-            label: AppLocalizations.of(context)!.skinMenuExport,
-            color: AppTheme.textSecondary,
-            onTap: onExport,
-          ),
-          _MenuTile(
-            icon: FontAwesomeIcons.trash,
-            label: AppLocalizations.of(context)!.skinMenuDelete,
-            color: AppTheme.error,
-            onTap: onDelete,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _MenuTile extends StatelessWidget {
-  final FaIconData icon;
-  final String label;
-  final Color color;
-  final VoidCallback onTap;
-  const _MenuTile({required this.icon, required this.label, required this.color, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 4),
-        child: Row(
-          children: [
-            SizedBox(
-              width: 28,
-              child: FaIcon(icon, size: 15, color: color),
-            ),
-            const SizedBox(width: 14),
-            Text(label, style: TextStyle(color: color, fontSize: 15, fontWeight: FontWeight.w500)),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _LocalSkinBodyImage extends StatefulWidget {
-  final String filePath;
-  final double height;
-  const _LocalSkinBodyImage({required this.filePath, required this.height});
-
-  @override
-  State<_LocalSkinBodyImage> createState() => _LocalSkinBodyImageState();
-}
-
-class _LocalSkinBodyImageState extends State<_LocalSkinBodyImage> {
-  ui.Image? _image;
-
-  @override
-  void initState() {
-    super.initState();
-    _load();
-  }
-
-  @override
-  void didUpdateWidget(_LocalSkinBodyImage old) {
-    super.didUpdateWidget(old);
-    if (old.filePath != widget.filePath) _load();
-  }
-
-  Future<void> _load() async {
-    try {
-      final bytes = await File(widget.filePath).readAsBytes();
-      final codec = await ui.instantiateImageCodec(bytes);
-      final frame = await codec.getNextFrame();
-      if (mounted) setState(() => _image = frame.image);
-    } catch (_) {}
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final h = widget.height;
-    final w = h / 2;
-    if (_image == null) {
-      return SizedBox(
-        width: w,
-        height: h,
-        child: Center(
-          child: FaIcon(
-            FontAwesomeIcons.personRunning,
-            color: AppTheme.textMuted,
-            size: 22,
-          ),
-        ),
-      );
-    }
-    return CustomPaint(size: Size(w, h), painter: _BodyPainter(_image!));
-  }
-}
-
-class _GeyserSkinChip extends StatelessWidget {
-  final _GeyserSkin skin;
-  final VoidCallback onTap;
-  const _GeyserSkinChip({required this.skin, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppTheme.surface,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: AppTheme.borderGray),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(6),
-                child: LayoutBuilder(
-                  builder: (_, constraints) => Center(
-                    child: _SkinBodyImage(
-                      textureUrl: skin.textureUrl,
-                      height: constraints.maxHeight,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _SkinDetailSheet extends StatelessWidget {
-  final String? username;
-  final String? javaUuid;
-  final String? textureUrl;
-  final VoidCallback? onEdit;
-  const _SkinDetailSheet({
-    this.username,
-    this.javaUuid,
-    this.textureUrl,
-    this.onEdit,
-  });
-
-  String? get _downloadUrl =>
-      textureUrl ??
-      (javaUuid != null ? 'https://visage.surgeplay.com/skin/$javaUuid' : null);
-
-  Future<void> _download(BuildContext context) async {
-    final url = _downloadUrl;
-    if (url == null) return;
-    await _shareTextureFile(context, url, username ?? 'skin');
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppTheme.background,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-        border: Border(top: BorderSide(color: AppTheme.borderGray)),
-      ),
-      padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 36,
-            height: 4,
-            margin: const EdgeInsets.only(bottom: 20),
-            decoration: BoxDecoration(
-              color: AppTheme.borderLight,
-              borderRadius: BorderRadius.circular(4),
-            ),
-          ),
-          if (username != null)
-            Text(
-              username!,
-              style: TextStyle(
-                color: AppTheme.textPrimary,
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          if (username != null) const SizedBox(height: 20),
-          SizedBox(
-            height: 200,
-            child: Center(
-              child: textureUrl != null
-                  ? _SkinBodyImage(textureUrl: textureUrl!, height: 196)
-                  : FaIcon(
-                      FontAwesomeIcons.personRunning,
-                      color: AppTheme.textMuted,
-                      size: 40,
-                    ),
-            ),
-          ),
-          const SizedBox(height: 24),
-          Builder(
-            builder: (context) {
-              final l = AppLocalizations.of(context)!;
-              return Row(
-                children: [
-                  Expanded(
-                    child: FilledButton.icon(
-                      onPressed: _downloadUrl != null ? () => _download(context) : null,
-                      icon: const FaIcon(FontAwesomeIcons.download, size: 13),
-                      label: Text(l.skinsDownload),
-                      style: FilledButton.styleFrom(
-                        backgroundColor: AppTheme.accent,
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                        textStyle: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ),
-                  if (onEdit != null) ...[
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: OutlinedButton.icon(
-                        onPressed: onEdit,
-                        icon: const FaIcon(
-                          FontAwesomeIcons.penToSquare,
-                          size: 13,
-                        ),
-                        label: Text(l.skinsEdit),
-                        style: OutlinedButton.styleFrom(
-                          foregroundColor: AppTheme.textSecondary,
-                          side: const BorderSide(color: AppTheme.borderGray),
-                          padding: const EdgeInsets.symmetric(vertical: 14),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                          textStyle: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ],
-              );
-            },
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _JavaSkinCard extends StatefulWidget {
-  final String username;
-  final String javaUuid;
-  final String? badge;
-  final Color? badgeColor;
-  final void Function(String?)? onEdit;
-  final bool compact;
-  const _JavaSkinCard({
-    required this.username,
-    required this.javaUuid,
-    this.badge,
-    this.badgeColor,
-    this.onEdit,
-    this.compact = false,
-  });
-
-  @override
-  State<_JavaSkinCard> createState() => _JavaSkinCardState();
-}
-
-class _JavaSkinCardState extends State<_JavaSkinCard> {
-  String? _textureUrl;
-
-  @override
-  void initState() {
-    super.initState();
-    _fetchTexture();
-  }
-
-  Future<void> _fetchTexture() async {
-    try {
-      final resp = await http
-          .get(
-            Uri.parse(
-              'https://sessionserver.mojang.com/session/minecraft/profile/${widget.javaUuid}',
-            ),
-            headers: {'User-Agent': 'MCCompanionApp/1.0'},
-          )
-          .timeout(const Duration(seconds: 8));
-      if (!mounted || resp.statusCode != 200) return;
-      final url = _extractTextureUrl(resp.body);
-      if (url != null && mounted) setState(() => _textureUrl = url);
-    } catch (_) {}
-  }
-
-  String? _extractTextureUrl(String body) {
-    try {
-      final props = (jsonDecode(body)['properties'] as List?) ?? [];
-      for (final p in props) {
-        if (p['name'] == 'textures') {
-          final decoded = jsonDecode(
-            utf8.decode(base64.decode(p['value'] as String)),
-          );
-          return decoded['textures']?['SKIN']?['url'] as String?;
-        }
-      }
-    } catch (_) {}
-    return null;
-  }
-
-  Future<void> _download() async {
-    final url = _textureUrl ?? 'https://visage.surgeplay.com/skin/${widget.javaUuid}';
-    await _shareTextureFile(context, url, widget.username);
-  }
-
-  void _openDetail() {
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: Colors.transparent,
-      isScrollControlled: true,
-      builder: (_) => _SkinDetailSheet(
-        username: widget.username,
-        javaUuid: widget.javaUuid,
-        textureUrl: _textureUrl,
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final badge = widget.badge;
-    final badgeColor = widget.badgeColor ?? AppTheme.accent;
-
-    final compact = widget.compact;
-    final pad = compact ? 10.0 : 14.0;
-
-    return GestureDetector(
-      onTap: _openDetail,
-      child: Container(
-        padding: EdgeInsets.all(pad),
-        decoration: BoxDecoration(
-          color: AppTheme.surface,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: AppTheme.borderGray),
-        ),
-        child: Column(
-          children: [
-            if (badge != null) ...[
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 3,
-                  ),
-                  decoration: BoxDecoration(
-                    color: badgeColor.withValues(alpha: 0.15),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  child: Text(
-                    badge,
-                    style: TextStyle(
-                      color: badgeColor,
-                      fontSize: 10,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 6),
-            ],
-            Expanded(
-              child: Center(
-                child: LayoutBuilder(
-                  builder: (_, constraints) => _textureUrl != null
-                      ? _SkinBodyImage(
-                          textureUrl: _textureUrl!,
-                          height: constraints.maxHeight,
-                        )
-                      : CircularProgressIndicator(
-                          color: AppTheme.accent,
-                          strokeWidth: 2,
-                        ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              widget.username,
-              style: TextStyle(
-                color: AppTheme.textPrimary,
-                fontSize: 12,
-                fontWeight: FontWeight.w700,
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            const SizedBox(height: 6),
-            Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: _download,
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: AppTheme.accent,
-                      side: BorderSide(color: AppTheme.accent),
-                      padding: const EdgeInsets.symmetric(vertical: 6),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    child: const FaIcon(FontAwesomeIcons.download, size: 11),
-                  ),
-                ),
-                if (widget.onEdit != null) ...[
-                  const SizedBox(width: 6),
-                  Expanded(
-                    child: OutlinedButton(
-                      onPressed: () => widget.onEdit!(_textureUrl),
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: AppTheme.textSecondary,
-                        side: const BorderSide(color: AppTheme.borderGray),
-                        padding: const EdgeInsets.symmetric(vertical: 6),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      child: const FaIcon(
-                        FontAwesomeIcons.penToSquare,
-                        size: 11,
-                      ),
-                    ),
-                  ),
-                ],
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _BedrockSkinCard extends StatefulWidget {
-  final String gamertag;
-  final String xuid;
-  final void Function(String?)? onEdit;
-  final bool compact;
-  const _BedrockSkinCard({
-    required this.gamertag,
-    required this.xuid,
-    this.onEdit,
-    this.compact = false,
-  });
-
-  @override
-  State<_BedrockSkinCard> createState() => _BedrockSkinCardState();
-}
-
-class _BedrockSkinCardState extends State<_BedrockSkinCard> {
-  String? _textureUrl;
-  bool _loading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _fetch();
-  }
-
-  Future<void> _fetch() async {
-    try {
-      final resp = await http
-          .get(
-            Uri.parse('https://api.geysermc.org/v2/skin/${widget.xuid}'),
-            headers: {'User-Agent': 'MCCompanionApp/1.0'},
-          )
-          .timeout(const Duration(seconds: 8));
-      if (!mounted) return;
-      if (resp.statusCode == 200) {
-        final id = jsonDecode(resp.body)['texture_id'] as String?;
-        if (id != null) {
-          setState(() {
-            _textureUrl = 'https://textures.minecraft.net/texture/$id';
-            _loading = false;
-          });
-          return;
-        }
-      }
-    } catch (_) {}
-    if (mounted) setState(() => _loading = false);
-  }
-
-  Future<void> _download() async {
-    if (_textureUrl == null) return;
-    await _shareTextureFile(context, _textureUrl!, widget.gamertag);
-  }
-
-  void _openDetail() {
-    if (_textureUrl == null) return;
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: Colors.transparent,
-      isScrollControlled: true,
-      builder: (_) =>
-          _SkinDetailSheet(username: widget.gamertag, textureUrl: _textureUrl),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final compact = widget.compact;
-    final pad = compact ? 10.0 : 14.0;
-
-    return GestureDetector(
-      onTap: _openDetail,
-      child: Container(
-        padding: EdgeInsets.all(pad),
-        decoration: BoxDecoration(
-          color: AppTheme.surface,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: AppTheme.borderGray),
-        ),
-        child: Column(
-          children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF4CAF50).withValues(alpha: 0.15),
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: Text(
-                  AppLocalizations.of(context)!.bedrockLabel,
-                  style: const TextStyle(
-                    color: Color(0xFF4CAF50),
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 6),
-            Expanded(
-              child: Center(
-                child: _loading
-                    ? CircularProgressIndicator(
-                        color: AppTheme.accent,
-                        strokeWidth: 2,
-                      )
-                    : LayoutBuilder(
-                        builder: (_, constraints) => _textureUrl != null
-                            ? _SkinBodyImage(
-                                textureUrl: _textureUrl!,
-                                height: constraints.maxHeight,
-                              )
-                            : FaIcon(
-                                FontAwesomeIcons.personRunning,
-                                color: AppTheme.textMuted,
-                                size: 28,
-                              ),
-                      ),
-              ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              widget.gamertag,
-              style: TextStyle(
-                color: AppTheme.textPrimary,
-                fontSize: 12,
-                fontWeight: FontWeight.w700,
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            const SizedBox(height: 6),
-            Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: _textureUrl != null ? _download : null,
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: const Color(0xFF4CAF50),
-                      side: const BorderSide(color: Color(0xFF4CAF50)),
-                      padding: const EdgeInsets.symmetric(vertical: 6),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    child: const FaIcon(FontAwesomeIcons.download, size: 11),
-                  ),
-                ),
-                if (widget.onEdit != null) ...[
-                  const SizedBox(width: 6),
-                  Expanded(
-                    child: OutlinedButton(
-                      onPressed: _textureUrl != null
-                          ? () => widget.onEdit!(_textureUrl)
-                          : null,
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: AppTheme.textSecondary,
-                        side: const BorderSide(color: AppTheme.borderGray),
-                        padding: const EdgeInsets.symmetric(vertical: 6),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      child: const FaIcon(
-                        FontAwesomeIcons.penToSquare,
-                        size: 11,
-                      ),
-                    ),
-                  ),
-                ],
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _NoAccountsCard extends StatelessWidget {
-  const _NoAccountsCard();
-
-  @override
-  Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context)!;
-    return _InfoCard(
-      icon: FontAwesomeIcons.shirt,
-      iconColor: const Color(0xFF42A5F5),
-      title: l.skinsNoAccountsTitle,
-      subtitle: l.skinsNoAccountsSubtitle,
-    );
-  }
-}
-
-class _NotLoggedInCard extends StatelessWidget {
-  const _NotLoggedInCard();
-
-  @override
-  Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context)!;
-    return _InfoCard(
-      icon: FontAwesomeIcons.user,
-      iconColor: AppTheme.accent,
-      title: l.skinsSignInTitle,
-      subtitle: l.skinsSignInSubtitle,
-    );
-  }
-}
-
-class _InfoCard extends StatelessWidget {
-  final FaIconData icon;
-  final Color iconColor;
-  final String title;
-  final String subtitle;
-  const _InfoCard({
-    required this.icon,
-    required this.iconColor,
-    required this.title,
-    required this.subtitle,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppTheme.surface,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppTheme.borderGray),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 44,
-            height: 44,
-            decoration: BoxDecoration(
-              color: iconColor.withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Center(child: FaIcon(icon, color: iconColor, size: 18)),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                    color: AppTheme.textPrimary,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 14,
-                  ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  subtitle,
-                  style: TextStyle(
-                    color: AppTheme.textSecondary,
-                    fontSize: 12,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }

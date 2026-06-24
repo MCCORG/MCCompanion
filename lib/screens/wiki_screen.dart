@@ -5,18 +5,19 @@ import '../widgets/components/swipe_back.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
-import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
+import '../widgets/wiki/wiki_cards.dart';
+import 'wiki_detail_screen.dart';
 
-class _Sub {
+class WikiSub {
   final String label;
   final String emoji;
   final String category;
   final List<String>? hardcoded;
   final String? jsonKey;
   final String? imagePath;
-  const _Sub({
+  const WikiSub({
     required this.label,
     required this.emoji,
     required this.category,
@@ -26,13 +27,13 @@ class _Sub {
   });
 }
 
-class _Section {
+class WikiSection {
   final String label;
   final String emoji;
   final Color color;
-  final List<_Sub> subs;
+  final List<WikiSub> subs;
   final String imagePath;
-  const _Section({
+  const WikiSection({
     required this.label,
     required this.emoji,
     required this.color,
@@ -42,41 +43,41 @@ class _Section {
 }
 
 const _sections = [
-  _Section(
+  WikiSection(
     label: 'Mobs',
     emoji: '🧟',
     color: Color(0xFF4CAF50),
     imagePath: 'assets/images/wiki/mobs.png',
     subs: [
-      _Sub(
+      WikiSub(
         label: 'Passive',
         emoji: '🐄',
         category: 'Category:Passive mobs',
         jsonKey: 'mobs_passive',
         imagePath: 'assets/images/wiki/chicken.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'Neutral',
         emoji: '🐺',
         category: 'Category:Neutral mobs',
         jsonKey: 'mobs_neutral',
         imagePath: 'assets/images/wiki/spider.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'Hostile',
         emoji: '💀',
         category: 'Category:Hostile mobs',
         jsonKey: 'mobs_hostile',
         imagePath: 'assets/images/wiki/creeper.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'Boss',
         emoji: '👑',
         category: 'Category:Boss mobs',
         jsonKey: 'mobs_boss',
         imagePath: 'assets/images/wiki/ender_dragon.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'Utility',
         emoji: '🤖',
         category: 'Category:Utility mobs',
@@ -85,55 +86,55 @@ const _sections = [
       ),
     ],
   ),
-  _Section(
+  WikiSection(
     label: 'Blocks',
     emoji: '🧱',
     color: Color(0xFF795548),
     imagePath: 'assets/images/wiki/blocks.png',
     subs: [
-      _Sub(
+      WikiSub(
         label: 'Natural',
         emoji: '🌿',
         category: 'Category:Natural blocks',
         jsonKey: 'blocks_natural',
         imagePath: 'assets/images/wiki/dirt.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'Ores',
         emoji: '💎',
         category: 'Category:Ores',
         jsonKey: 'blocks_ores',
         imagePath: 'assets/images/wiki/raw_gold.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'Wood',
         emoji: '🌲',
         category: 'Category:Wood',
         jsonKey: 'blocks_wood',
         imagePath: 'assets/images/wiki/log.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'Stone',
         emoji: '🪨',
         category: 'Category:Stone',
         jsonKey: 'blocks_stone',
         imagePath: 'assets/images/wiki/stone.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'Redstone',
         emoji: '🔴',
         category: 'Category:Redstone components',
         jsonKey: 'blocks_redstone',
         imagePath: 'assets/images/wiki/redstone.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'Plants',
         emoji: '🌱',
         category: 'Category:Plants',
         jsonKey: 'blocks_plants',
         imagePath: 'assets/images/wiki/bamboo.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'Decoration',
         emoji: '🪟',
         category: 'Category:Decoration blocks',
@@ -142,20 +143,20 @@ const _sections = [
       ),
     ],
   ),
-  _Section(
+  WikiSection(
     label: 'Items',
     emoji: '⚔️',
     color: Color(0xFF2196F3),
     imagePath: 'assets/images/wiki/items.png',
     subs: [
-      _Sub(
+      WikiSub(
         label: 'Tools',
         emoji: '🪓',
         category: 'Category:Tools',
         jsonKey: 'items_tools',
         imagePath: 'assets/images/wiki/tools.gif',
       ),
-      _Sub(
+      WikiSub(
         label: 'Swords',
         emoji: '⚔️',
         category: 'Category:Swords',
@@ -169,35 +170,35 @@ const _sections = [
           'Netherite Sword',
         ],
       ),
-      _Sub(
+      WikiSub(
         label: 'Ranged',
         emoji: '🏹',
         category: 'Category:Ranged weapons',
         imagePath: 'assets/images/wiki/bow.png',
         hardcoded: ['Bow', 'Crossbow', 'Trident', 'Wind Charge'],
       ),
-      _Sub(
+      WikiSub(
         label: 'Armor',
         emoji: '🛡️',
         category: 'Category:Armor',
         jsonKey: 'items_armor',
         imagePath: 'assets/images/wiki/armor.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'Food',
         emoji: '🍎',
         category: 'Category:Food',
         jsonKey: 'items_food',
         imagePath: 'assets/images/wiki/apple.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'Brewing',
         emoji: '🧪',
         category: 'Category:Brewing',
         jsonKey: 'items_brewing',
         imagePath: 'assets/images/wiki/brew.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'Materials',
         emoji: '🔩',
         category: 'Category:Materials',
@@ -206,27 +207,27 @@ const _sections = [
       ),
     ],
   ),
-  _Section(
+  WikiSection(
     label: 'Biomes',
     emoji: '🌿',
     color: Color(0xFF66BB6A),
     imagePath: 'assets/images/wiki/biomes.png',
     subs: [
-      _Sub(
+      WikiSub(
         label: 'Overworld',
         emoji: '☀️',
         category: 'Category:Overworld biomes',
         jsonKey: 'biomes_overworld',
         imagePath: 'assets/images/wiki/overworld.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'Nether',
         emoji: '🔥',
         category: 'Category:Nether biomes',
         jsonKey: 'biomes_nether',
         imagePath: 'assets/images/wiki/nether.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'The End',
         emoji: '🌑',
         category: 'Category:The End biomes',
@@ -235,27 +236,27 @@ const _sections = [
       ),
     ],
   ),
-  _Section(
+  WikiSection(
     label: 'Structures',
     emoji: '🏰',
     color: Color(0xFF9C27B0),
     imagePath: 'assets/images/wiki/structures.png',
     subs: [
-      _Sub(
+      WikiSub(
         label: 'Overworld',
         emoji: '🗺️',
         category: 'Category:Overworld structures',
         jsonKey: 'structures_overworld',
         imagePath: 'assets/images/wiki/overworld.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'Nether',
         emoji: '🔥',
         category: 'Category:Nether structures',
         jsonKey: 'structures_nether',
         imagePath: 'assets/images/wiki/nether.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'The End',
         emoji: '🌑',
         category: 'Category:The End structures',
@@ -264,41 +265,41 @@ const _sections = [
       ),
     ],
   ),
-  _Section(
+  WikiSection(
     label: 'Enchantments',
     emoji: '✨',
     color: Color(0xFFFF9800),
     imagePath: 'assets/images/wiki/enchantments.png',
     subs: [
-      _Sub(
+      WikiSub(
         label: 'Sword',
         emoji: '⚔️',
         category: 'Category:Sword enchantments',
         jsonKey: 'enchantments_sword',
         imagePath: 'assets/images/wiki/sword.gif',
       ),
-      _Sub(
+      WikiSub(
         label: 'Armor',
         emoji: '🛡️',
         category: 'Category:Armor enchantments',
         jsonKey: 'enchantments_armor',
         imagePath: 'assets/images/wiki/armor.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'Tool',
         emoji: '🪓',
         category: 'Category:Tool enchantments',
         jsonKey: 'enchantments_tool',
         imagePath: 'assets/images/wiki/tools.gif',
       ),
-      _Sub(
+      WikiSub(
         label: 'Bow',
         emoji: '🏹',
         category: 'Category:Bow enchantments',
         jsonKey: 'enchantments_bow',
         imagePath: 'assets/images/wiki/bow.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'Fishing',
         emoji: '🎣',
         category: 'Category:Fishing Rod enchantments',
@@ -307,20 +308,20 @@ const _sections = [
       ),
     ],
   ),
-  _Section(
+  WikiSection(
     label: 'Potions',
     emoji: '🧪',
     color: Color(0xFFE91E63),
     imagePath: 'assets/images/wiki/potions.png',
     subs: [
-      _Sub(
+      WikiSub(
         label: 'Potions',
         emoji: '🧪',
         category: 'Category:Potions',
         jsonKey: 'potions_potions',
         imagePath: 'assets/images/wiki/brew.png',
       ),
-      _Sub(
+      WikiSub(
         label: 'Status Effects',
         emoji: '💫',
         category: 'Category:Status effects',
@@ -331,7 +332,7 @@ const _sections = [
   ),
 ];
 
-String _wikiL10n(AppLocalizations l, String key) {
+String wikiL10n(AppLocalizations l, String key) {
   switch (key) {
     case 'Mobs':
       return l.wikiMobs;
@@ -434,8 +435,8 @@ class _WikiScreenState extends State<WikiScreen> {
   Timer? _debounce;
 
   _View _view = _View.root;
-  _Section? _activeSection;
-  _Sub? _activeSub;
+  WikiSection? _activeSection;
+  WikiSub? _activeSub;
   WikiResult? _detailResult;
 
   List<WikiResult> _pages = [];
@@ -469,7 +470,7 @@ class _WikiScreenState extends State<WikiScreen> {
     super.dispose();
   }
 
-  void _openSection(_Section section) {
+  void _openSection(WikiSection section) {
     setState(() {
       _activeSection = section;
       _activeSub = null;
@@ -477,7 +478,7 @@ class _WikiScreenState extends State<WikiScreen> {
     });
   }
 
-  void _openSub(_Sub sub) {
+  void _openSub(WikiSub sub) {
     setState(() {
       _activeSub = sub;
       _pages = [];
@@ -964,10 +965,10 @@ class _WikiScreenState extends State<WikiScreen> {
     String title;
     switch (_view) {
       case _View.subs:
-        title = _wikiL10n(l, _activeSection!.label);
+        title = wikiL10n(l, _activeSection!.label);
         break;
       case _View.pages:
-        title = _wikiL10n(l, _activeSub!.label);
+        title = wikiL10n(l, _activeSub!.label);
         break;
       case _View.search:
         title = l.wikiTitle;
@@ -1006,7 +1007,7 @@ class _WikiScreenState extends State<WikiScreen> {
                     _pages = [];
                   }),
                   child: Text(
-                    _wikiL10n(l, _activeSection!.label),
+                    wikiL10n(l, _activeSection!.label),
                     style: TextStyle(
                       color: AppTheme.accent,
                       fontSize: 14,
@@ -1099,7 +1100,7 @@ class _WikiScreenState extends State<WikiScreen> {
               ),
             ),
           ),
-          ], // end if (_view != _View.detail)
+          ],
         ],
       ),
     );
@@ -1173,7 +1174,7 @@ class _WikiScreenState extends State<WikiScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(
-                child: _WikiCard(
+                child: WikiSectionCard(
                   section: items[i],
                   onTap: () => _openSection(items[i]),
                 ),
@@ -1181,7 +1182,7 @@ class _WikiScreenState extends State<WikiScreen> {
               if (!isLast) ...[
                 const SizedBox(width: 10),
                 Expanded(
-                  child: _WikiCard(
+                  child: WikiSectionCard(
                     section: items[i + 1],
                     onTap: () => _openSection(items[i + 1]),
                   ),
@@ -1225,7 +1226,7 @@ class _WikiScreenState extends State<WikiScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(
-                child: _SubCard(
+                child: WikiSubCard(
                   sub: subs[i],
                   color: color,
                   onTap: () => _openSub(subs[i]),
@@ -1234,7 +1235,7 @@ class _WikiScreenState extends State<WikiScreen> {
               if (!isLast) ...[
                 const SizedBox(width: 10),
                 Expanded(
-                  child: _SubCard(
+                  child: WikiSubCard(
                     sub: subs[i + 1],
                     color: color,
                     onTap: () => _openSub(subs[i + 1]),
@@ -1309,823 +1310,11 @@ class _WikiScreenState extends State<WikiScreen> {
             ? Center(
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 900),
-                  child: _PageCard(result: results[i], onTap: () => _openDetail(results[i])),
+                  child: WikiPageCard(result: results[i], onTap: () => _openDetail(results[i])),
                 ),
               )
-            : _PageCard(result: results[i], onTap: () => _openDetail(results[i])),
+            : WikiPageCard(result: results[i], onTap: () => _openDetail(results[i])),
       ),
-    );
-  }
-}
-
-class _WikiCard extends StatefulWidget {
-  final _Section section;
-  final VoidCallback onTap;
-
-  const _WikiCard({required this.section, required this.onTap});
-
-  @override
-  State<_WikiCard> createState() => _WikiCardState();
-}
-
-class _WikiCardState extends State<_WikiCard> {
-  bool _pressed = false;
-
-  @override
-  Widget build(BuildContext context) {
-    final color = widget.section.color;
-    return GestureDetector(
-      onTapDown: (_) => setState(() => _pressed = true),
-      onTapUp: (_) => setState(() => _pressed = false),
-      onTapCancel: () => setState(() => _pressed = false),
-      onTap: widget.onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 120),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 22),
-        decoration: BoxDecoration(
-          color: _pressed
-              ? AppTheme.surfaceRaised.withValues(alpha: 0.75)
-              : AppTheme.surface.withValues(alpha: 0.60),
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: AppTheme.borderGray),
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(14),
-              child: Image.asset(
-                widget.section.imagePath,
-                width: 52,
-                height: 52,
-                fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => Container(
-                  width: 52,
-                  height: 52,
-                  decoration: BoxDecoration(
-                    color: color.withValues(alpha: 0.12),
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                  child: Center(
-                    child: Text(
-                      widget.section.emoji,
-                      style: const TextStyle(fontSize: 26),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(width: 14),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    _wikiL10n(
-                      AppLocalizations.of(context)!,
-                      widget.section.label,
-                    ),
-                    style: TextStyle(
-                      color: AppTheme.textPrimary,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(height: 3),
-                  Text(
-                    AppLocalizations.of(
-                      context,
-                    )!.wikiCategories(widget.section.subs.length),
-                    style: TextStyle(
-                      color: AppTheme.textMuted,
-                      fontSize: 11,
-                      height: 1.4,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Icon(
-              Icons.arrow_forward_ios_rounded,
-              size: 11,
-              color: color.withValues(alpha: 0.60),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _SubCard extends StatelessWidget {
-  final _Sub sub;
-  final Color color;
-  final VoidCallback onTap;
-  const _SubCard({required this.sub, required this.color, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 22),
-        decoration: BoxDecoration(
-          color: AppTheme.surface.withValues(alpha: 0.60),
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: AppTheme.borderGray),
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            if (sub.imagePath != null)
-              ClipRRect(
-                borderRadius: BorderRadius.circular(14),
-                child: Image.asset(
-                  sub.imagePath!,
-                  width: 52,
-                  height: 52,
-                  fit: BoxFit.cover,
-                  errorBuilder: (_, __, ___) => Container(
-                    width: 52,
-                    height: 52,
-                    decoration: BoxDecoration(
-                      color: color.withValues(alpha: 0.12),
-                      borderRadius: BorderRadius.circular(14),
-                    ),
-                    child: Center(
-                      child: Text(
-                        sub.emoji,
-                        style: const TextStyle(fontSize: 26),
-                      ),
-                    ),
-                  ),
-                ),
-              )
-            else
-              Container(
-                width: 52,
-                height: 52,
-                decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.12),
-                  borderRadius: BorderRadius.circular(14),
-                ),
-                child: Center(
-                  child: Text(sub.emoji, style: const TextStyle(fontSize: 26)),
-                ),
-              ),
-            const SizedBox(width: 14),
-            Expanded(
-              child: Text(
-                _wikiL10n(AppLocalizations.of(context)!, sub.label),
-                style: TextStyle(
-                  color: AppTheme.textPrimary,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 14,
-                ),
-              ),
-            ),
-            Icon(
-              Icons.arrow_forward_ios_rounded,
-              size: 11,
-              color: color.withValues(alpha: 0.60),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _PageCard extends StatelessWidget {
-  final WikiResult result;
-  final VoidCallback onTap;
-  const _PageCard({required this.result, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(14),
-        child: Container(
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: AppTheme.surface,
-            borderRadius: BorderRadius.circular(14),
-            border: Border.all(color: AppTheme.borderGray),
-          ),
-          child: Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: result.thumbnailUrl != null
-                    ? Image.network(
-                        result.thumbnailUrl!,
-                        width: 48,
-                        height: 48,
-                        fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) => _placeholder(),
-                      )
-                    : _placeholder(),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Text(
-                  result.title,
-                  style: TextStyle(
-                    color: AppTheme.textPrimary,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                  ),
-                ),
-              ),
-              Icon(
-                Icons.arrow_forward_ios_rounded,
-                color: AppTheme.textMuted,
-                size: 13,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _placeholder() => Container(
-    width: 48,
-    height: 48,
-    decoration: BoxDecoration(
-      color: AppTheme.accent.withValues(alpha: 0.08),
-      borderRadius: BorderRadius.circular(8),
-    ),
-    child: const Center(child: Text('⛏️', style: TextStyle(fontSize: 20))),
-  );
-}
-
-class _ArticleSection {
-  final String? title;
-  final String content;
-  const _ArticleSection({required this.title, required this.content});
-}
-
-class _CraftingRecipe {
-  final Map<String, String> grid;
-  final String output;
-  final int outputCount;
-  const _CraftingRecipe({
-    required this.grid,
-    required this.output,
-    this.outputCount = 1,
-  });
-}
-
-class WikiDetailScreen extends StatefulWidget {
-  final WikiResult result;
-  final VoidCallback? onBack;
-  const WikiDetailScreen({super.key, required this.result, this.onBack});
-
-  @override
-  State<WikiDetailScreen> createState() => _WikiDetailScreenState();
-}
-
-class _WikiDetailScreenState extends State<WikiDetailScreen> {
-  List<_ArticleSection> _sections = [];
-  List<_CraftingRecipe> _craftingRecipes = [];
-  String? _imageUrl;
-  bool _loading = true;
-  String? _error;
-
-  static const _hiddenSections = {
-    'History',
-    'Trivia',
-    'Gallery',
-    'References',
-    'Videos',
-    'Navigation',
-    'See also',
-    'Advancements',
-    'Data values',
-    'Sounds',
-    'Issues',
-    'Notes',
-    'Crafting',
-  };
-
-  @override
-  void initState() {
-    super.initState();
-    _loadDetail();
-  }
-
-  Future<void> _loadDetail() async {
-    try {
-      final results = await Future.wait([
-        http
-            .get(
-              Uri.parse('https://minecraft.wiki/api.php').replace(
-                queryParameters: {
-                  'action': 'query',
-                  'titles': widget.result.title,
-                  'prop': 'extracts|pageimages',
-                  'explaintext': '1',
-                  'exsectionformat': 'wiki',
-                  'pithumbsize': '400',
-                  'format': 'json',
-                  'origin': '*',
-                },
-              ),
-              headers: {'User-Agent': 'MCCompanionApp/1.0'},
-            )
-            .timeout(const Duration(seconds: 10)),
-        http
-            .get(
-              Uri.parse('https://minecraft.wiki/api.php').replace(
-                queryParameters: {
-                  'action': 'parse',
-                  'page': widget.result.title,
-                  'prop': 'wikitext',
-                  'format': 'json',
-                  'origin': '*',
-                },
-              ),
-              headers: {'User-Agent': 'MCCompanionApp/1.0'},
-            )
-            .timeout(const Duration(seconds: 10)),
-      ]);
-      if (!mounted) return;
-
-      final pages =
-          (jsonDecode(results[0].body)['query']?['pages']
-              as Map<String, dynamic>?) ??
-          {};
-      final page = pages.values.first as Map<String, dynamic>? ?? {};
-      final raw = (page['extract'] as String?)?.trim() ?? '';
-      final imgUrl = page['thumbnail']?['source'] as String?;
-
-      final wikitext =
-          jsonDecode(results[1].body)['parse']?['wikitext']?['*'] as String? ??
-          '';
-      final recipes = _parseCraftingRecipes(wikitext);
-
-      setState(() {
-        _sections = _parseSections(raw);
-        _craftingRecipes = recipes;
-        _imageUrl = imgUrl;
-        _loading = false;
-      });
-    } catch (_) {
-      if (!mounted) return;
-      setState(() {
-        _error = AppLocalizations.of(context)!.wikiCouldNotLoadContent;
-        _loading = false;
-      });
-    }
-  }
-
-  List<_ArticleSection> _parseSections(String text) {
-    final result = <_ArticleSection>[];
-    final headerRx = RegExp(r'^={2,4}\s*(.+?)\s*={2,4}\s*$', multiLine: true);
-    int lastEnd = 0;
-    String? lastTitle;
-    for (final m in headerRx.allMatches(text)) {
-      final content = text.substring(lastEnd, m.start).trim();
-      if (content.isNotEmpty || lastTitle != null)
-        result.add(_ArticleSection(title: lastTitle, content: content));
-      lastTitle = m.group(1);
-      lastEnd = m.end;
-    }
-    final tail = text.substring(lastEnd).trim();
-    if (tail.isNotEmpty || lastTitle != null)
-      result.add(_ArticleSection(title: lastTitle, content: tail));
-    return result
-        .where(
-          (s) => s.content.isNotEmpty && !_hiddenSections.contains(s.title),
-        )
-        .toList();
-  }
-
-  List<_CraftingRecipe> _parseCraftingRecipes(String wikitext) {
-    final result = <_CraftingRecipe>[];
-    int i = 0;
-    while (i < wikitext.length) {
-      final sub = wikitext.substring(i);
-      final idx = sub.toLowerCase().indexOf('{{crafting');
-      if (idx < 0) break;
-      final start = i + idx;
-      int depth = 0, j = start;
-      int? end;
-      while (j < wikitext.length - 1) {
-        if (wikitext[j] == '{' && wikitext[j + 1] == '{') {
-          depth++;
-          j += 2;
-        } else if (wikitext[j] == '}' && wikitext[j + 1] == '}') {
-          depth--;
-          if (depth == 0) {
-            end = j + 2;
-            break;
-          }
-          j += 2;
-        } else {
-          j++;
-        }
-      }
-      if (end == null) break;
-      final recipe = _parseOneTemplate(wikitext.substring(start, end));
-      if (recipe != null) result.add(recipe);
-      i = end;
-    }
-    return result;
-  }
-
-  _CraftingRecipe? _parseOneTemplate(String block) {
-    final params = <String, String>{};
-    final sb = StringBuffer();
-    int depth = 0;
-    final inner = block.substring(2, block.length - 2);
-    for (int k = 0; k < inner.length; k++) {
-      final c = inner[k];
-      if (c == '{' && k + 1 < inner.length && inner[k + 1] == '{') {
-        depth++;
-        sb.write(c);
-      } else if (c == '}' && k + 1 < inner.length && inner[k + 1] == '}') {
-        depth--;
-        sb.write(c);
-      } else if (c == '|' && depth == 0) {
-        _addParam(sb.toString(), params);
-        sb.clear();
-      } else {
-        sb.write(c);
-      }
-    }
-    _addParam(sb.toString(), params);
-
-    final output = _clean(params['Output'] ?? params['output'] ?? '');
-    if (output.isEmpty) return null;
-
-    final grid = <String, String>{};
-    for (final pos in ['A1', 'B1', 'C1', 'A2', 'B2', 'C2', 'A3', 'B3', 'C3']) {
-      final v = _clean(params[pos] ?? '');
-      if (v.isNotEmpty) grid[pos] = v;
-    }
-    if (grid.isEmpty) {
-      const numbered = {
-        '1': 'A1',
-        '2': 'B1',
-        '3': 'C1',
-        '4': 'A2',
-        '5': 'B2',
-        '6': 'C2',
-        '7': 'A3',
-        '8': 'B3',
-        '9': 'C3',
-      };
-      for (final e in numbered.entries) {
-        final v = _clean(params[e.key] ?? '');
-        if (v.isNotEmpty) grid[e.value] = v;
-      }
-    }
-    if (grid.isEmpty) return null;
-
-    final count = int.tryParse(params['OA'] ?? params['count'] ?? '1') ?? 1;
-    return _CraftingRecipe(grid: grid, output: output, outputCount: count);
-  }
-
-  void _addParam(String part, Map<String, String> out) {
-    final eq = part.indexOf('=');
-    if (eq < 0) return;
-    final key = part
-        .substring(0, eq)
-        .trim()
-        .replaceAll(RegExp(r'[\n\r\s]+'), '');
-    final val = part.substring(eq + 1).trim();
-    if (key.isNotEmpty) out[key] = val;
-  }
-
-  String _clean(String raw) {
-    var s = raw.trim();
-    if (s.contains(';')) s = s.split(';').first.trim();
-    if (s.startsWith('{{')) {
-      final inner = s.replaceAll(RegExp(r'^\{\{|\}\}$'), '');
-      s = inner.split('|').last.trim();
-    }
-    s = s.replaceAll(RegExp(r'\[\[(?:[^\]|]*\|)?([^\]]*)\]\]'), r'\1');
-    s = s
-        .replaceAll(RegExp(r'[{}\[\]]'), '')
-        .replaceAll(RegExp(r'<[^>]*>'), '')
-        .trim();
-    return s;
-  }
-
-  Future<void> _openInBrowser() async {
-    final url = Uri.parse(
-      'https://minecraft.wiki/w/${Uri.encodeComponent(widget.result.title.replaceAll(' ', '_'))}',
-    );
-    if (await canLaunchUrl(url))
-      await launchUrl(url, mode: LaunchMode.externalApplication);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final body = LayoutBuilder(
-      builder: (context, constraints) {
-        final isWide = constraints.maxWidth > 700;
-        return Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: isWide ? 900 : double.infinity),
-            child: Column(
-              children: [
-        if (widget.onBack == null) Padding(
-          padding: const EdgeInsets.fromLTRB(4, 8, 8, 0),
-          child: Row(
-            children: [
-                  IconButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    icon: Icon(
-                      Icons.arrow_back_ios_new_rounded,
-                      color: AppTheme.textSecondary,
-                      size: 18,
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      widget.result.title,
-                      style: TextStyle(
-                        color: AppTheme.textPrimary,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w700,
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: _openInBrowser,
-                    icon: FaIcon(
-                      FontAwesomeIcons.arrowUpRightFromSquare,
-                      size: 15,
-                      color: AppTheme.textMuted,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(child: _buildContent()),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-    if (widget.onBack != null) return body;
-    return Scaffold(
-      backgroundColor: AppTheme.background,
-      body: SafeArea(child: body),
-    );
-  }
-
-  Widget _buildContent() {
-    if (_loading)
-      return Center(child: CircularProgressIndicator(color: AppTheme.accent));
-
-    if (_error != null) {
-      return Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const FaIcon(
-              FontAwesomeIcons.triangleExclamation,
-              color: AppTheme.error,
-              size: 28,
-            ),
-            const SizedBox(height: 12),
-            Text(
-              _error!,
-              style: TextStyle(color: AppTheme.textSecondary),
-            ),
-            const SizedBox(height: 16),
-            FilledButton.icon(
-              onPressed: _openInBrowser,
-              icon: const FaIcon(
-                FontAwesomeIcons.arrowUpRightFromSquare,
-                size: 13,
-              ),
-              label: Text(AppLocalizations.of(context)!.wikiOpenInBrowser),
-              style: FilledButton.styleFrom(backgroundColor: AppTheme.accent),
-            ),
-          ],
-        ),
-      );
-    }
-
-    final intro = _sections.where((s) => s.title == null).firstOrNull;
-    final rest = _sections.where((s) => s.title != null).toList();
-
-    return ListView(
-      padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
-      children: [
-        if (_imageUrl != null) ...[
-          Center(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(14),
-              child: Image.network(
-                _imageUrl!,
-                height: 180,
-                fit: BoxFit.contain,
-                errorBuilder: (_, __, ___) => const SizedBox.shrink(),
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
-        ],
-
-        if (_craftingRecipes.isNotEmpty) ...[
-          Text(
-            AppLocalizations.of(context)!.wikiCrafting,
-            style: TextStyle(
-              color: AppTheme.textPrimary,
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          const SizedBox(height: 12),
-          ..._craftingRecipes.map(
-            (r) => Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: _CraftingGridWidget(recipe: r),
-            ),
-          ),
-          const SizedBox(height: 8),
-          const Divider(color: AppTheme.borderDim, height: 1),
-          const SizedBox(height: 20),
-        ],
-
-        if (intro != null && intro.content.isNotEmpty) ...[
-          Text(
-            intro.content,
-            style: TextStyle(
-              color: AppTheme.textSecondary,
-              fontSize: 14,
-              height: 1.65,
-            ),
-          ),
-          const SizedBox(height: 16),
-        ],
-
-        if (rest.isNotEmpty) ...[
-          const Divider(color: AppTheme.borderDim, height: 1),
-          const SizedBox(height: 20),
-          ...rest.expand(
-            (s) => [
-              Text(
-                s.title!,
-                style: TextStyle(
-                  color: AppTheme.textPrimary,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                s.content,
-                style: TextStyle(
-                  color: AppTheme.textSecondary,
-                  fontSize: 13,
-                  height: 1.65,
-                ),
-              ),
-              const SizedBox(height: 20),
-              const Divider(color: AppTheme.borderDim, height: 1),
-              const SizedBox(height: 20),
-            ],
-          ),
-        ],
-
-        OutlinedButton.icon(
-          onPressed: _openInBrowser,
-          icon: const FaIcon(FontAwesomeIcons.arrowUpRightFromSquare, size: 12),
-          label: Text(AppLocalizations.of(context)!.wikiReadFullArticle),
-          style: OutlinedButton.styleFrom(
-            foregroundColor: AppTheme.accent,
-            side: BorderSide(color: AppTheme.accent),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _CraftingGridWidget extends StatelessWidget {
-  final _CraftingRecipe recipe;
-  const _CraftingGridWidget({required this.recipe});
-
-  static const _cellSize = 46.0;
-  static const _gap = 3.0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: const Color(0xFF141C24),
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppTheme.borderGray),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _row(['A1', 'B1', 'C1']),
-              const SizedBox(height: _gap),
-              _row(['A2', 'B2', 'C2']),
-              const SizedBox(height: _gap),
-              _row(['A3', 'B3', 'C3']),
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 14),
-            child: Icon(
-              Icons.arrow_forward_rounded,
-              color: AppTheme.textMuted,
-              size: 20,
-            ),
-          ),
-          Stack(
-            clipBehavior: Clip.none,
-            children: [
-              _cell(recipe.output),
-              if (recipe.outputCount > 1)
-                Positioned(
-                  right: 2,
-                  bottom: 2,
-                  child: Text(
-                    '${recipe.outputCount}',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 9,
-                      fontWeight: FontWeight.bold,
-                      shadows: [Shadow(blurRadius: 2, color: Colors.black)],
-                    ),
-                  ),
-                ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _row(List<String> positions) => Row(
-    mainAxisSize: MainAxisSize.min,
-    children: [
-      for (int i = 0; i < positions.length; i++) ...[
-        if (i > 0) const SizedBox(width: _gap),
-        _cell(recipe.grid[positions[i]]),
-      ],
-    ],
-  );
-
-  Widget _cell(String? item) {
-    return Container(
-      width: _cellSize,
-      height: _cellSize,
-      decoration: BoxDecoration(
-        color: const Color(0xFF2D3A4A),
-        borderRadius: BorderRadius.circular(6),
-        border: Border.all(color: const Color(0xFF1A2530), width: 1.5),
-      ),
-      child: item != null && item.isNotEmpty
-          ? Padding(
-              padding: const EdgeInsets.all(4),
-              child: Image.network(
-                'https://minecraft.wiki/images/Invicon_${item.replaceAll(' ', '_')}.png',
-                fit: BoxFit.contain,
-                errorBuilder: (_, __, ___) => Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(2),
-                    child: Text(
-                      item.length > 12 ? '${item.substring(0, 11)}…' : item,
-                      style: TextStyle(
-                        color: AppTheme.textSecondary,
-                        fontSize: 7.5,
-                        height: 1.2,
-                      ),
-                      textAlign: TextAlign.center,
-                      maxLines: 3,
-                    ),
-                  ),
-                ),
-              ),
-            )
-          : null,
     );
   }
 }
