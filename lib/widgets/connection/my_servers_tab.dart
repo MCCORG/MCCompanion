@@ -33,11 +33,18 @@ class _MyServersTabState extends State<MyServersTab> {
   Widget build(BuildContext context) {
     if (widget.savedServers.isEmpty) return _emptyState(context);
 
-    return ListView.builder(
-      padding: EdgeInsets.zero,
-      physics: const ClampingScrollPhysics(),
-      itemCount: widget.savedServers.length,
-      itemBuilder: (context, i) {
+    return NotificationListener<ScrollNotification>(
+      onNotification: (n) {
+        if (n is OverscrollNotification) {
+          Scrollable.of(context).position.pointerScroll(n.overscroll);
+        }
+        return false;
+      },
+      child: ListView.builder(
+        padding: EdgeInsets.zero,
+        physics: const ClampingScrollPhysics(),
+        itemCount: widget.savedServers.length,
+        itemBuilder: (context, i) {
         final server = widget.savedServers[i];
         final isLast = i == widget.savedServers.length - 1;
         final isSelected =
@@ -74,6 +81,7 @@ class _MyServersTabState extends State<MyServersTab> {
           child: tile,
         );
       },
+    ),
     );
   }
 

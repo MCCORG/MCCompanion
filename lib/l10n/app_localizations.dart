@@ -3788,6 +3788,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Combine 2–4 packs into one'**
   String get rpMergerOpenSubtitle;
+
+  /// Share button label
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get shareLabel;
+
+  /// Section header for linked Minecraft accounts
+  ///
+  /// In en, this message translates to:
+  /// **'Minecraft Accounts'**
+  String get sectionMinecraftAccounts;
+
+  /// Section header for settings
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get sectionSettings;
+
+  /// Toast when avatar upload succeeds
+  ///
+  /// In en, this message translates to:
+  /// **'Avatar updated'**
+  String get avatarUpdated;
+
+  /// Toast when avatar upload fails
+  ///
+  /// In en, this message translates to:
+  /// **'Upload failed'**
+  String get uploadFailed;
+
+  /// Toast when profile URL is copied to clipboard on desktop
+  ///
+  /// In en, this message translates to:
+  /// **'Profile link copied!'**
+  String get profileLinkCopied;
+
+  /// Tooltip on share icon button in public profile app bar
+  ///
+  /// In en, this message translates to:
+  /// **'Share profile'**
+  String get shareProfileTooltip;
+
+  /// AppBar title when profile user is not yet loaded
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profileFallbackTitle;
+
+  /// Empty state in user search
+  ///
+  /// In en, this message translates to:
+  /// **'No users found'**
+  String get noUsersFound;
+
+  /// Label when user has exactly one skin
+  ///
+  /// In en, this message translates to:
+  /// **'SKIN'**
+  String get skinLabel;
+
+  /// Label when user has multiple skins
+  ///
+  /// In en, this message translates to:
+  /// **'SKINS'**
+  String get skinsLabel;
+
+  /// Java edition badge on skin/account
+  ///
+  /// In en, this message translates to:
+  /// **'Java'**
+  String get javaEditionBadge;
+
+  /// Bedrock edition badge on skin/account
+  ///
+  /// In en, this message translates to:
+  /// **'Bedrock'**
+  String get bedrockEditionBadge;
+
+  /// Download button label
+  ///
+  /// In en, this message translates to:
+  /// **'Download'**
+  String get downloadLabel;
+
+  /// Relative time: less than 2 minutes ago
+  ///
+  /// In en, this message translates to:
+  /// **'Just now'**
+  String get justNow;
+
+  /// Relative time in minutes
+  ///
+  /// In en, this message translates to:
+  /// **'{count}m ago'**
+  String minutesAgo(int count);
+
+  /// Relative time in hours
+  ///
+  /// In en, this message translates to:
+  /// **'{count}h ago'**
+  String hoursAgo(int count);
+
+  /// Relative time in days
+  ///
+  /// In en, this message translates to:
+  /// **'{count}d ago'**
+  String daysAgo(int count);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

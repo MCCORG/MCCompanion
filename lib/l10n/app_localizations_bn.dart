@@ -1924,4 +1924,64 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get rpMergerOpenSubtitle => '২-৪টি প্যাক একটিতে একত্রিত করুন';
+
+  @override
+  String get shareLabel => 'শেয়ার করুন';
+
+  @override
+  String get sectionMinecraftAccounts => 'Minecraft অ্যাকাউন্ট';
+
+  @override
+  String get sectionSettings => 'সেটিংস';
+
+  @override
+  String get avatarUpdated => 'অবতার আপডেট হয়েছে';
+
+  @override
+  String get uploadFailed => 'আপলোড ব্যর্থ হয়েছে';
+
+  @override
+  String get profileLinkCopied => 'প্রোফাইল লিংক কপি হয়েছে!';
+
+  @override
+  String get shareProfileTooltip => 'প্রোফাইল শেয়ার করুন';
+
+  @override
+  String get profileFallbackTitle => 'প্রোফাইল';
+
+  @override
+  String get noUsersFound => 'কোনো ব্যবহারকারী পাওয়া যায়নি';
+
+  @override
+  String get skinLabel => 'স্কিন';
+
+  @override
+  String get skinsLabel => 'স্কিনস';
+
+  @override
+  String get javaEditionBadge => 'Java';
+
+  @override
+  String get bedrockEditionBadge => 'Bedrock';
+
+  @override
+  String get downloadLabel => 'ডাউনলোড';
+
+  @override
+  String get justNow => 'এইমাত্র';
+
+  @override
+  String minutesAgo(int count) {
+    return '$countমি আগে';
+  }
+
+  @override
+  String hoursAgo(int count) {
+    return '$countঘ আগে';
+  }
+
+  @override
+  String daysAgo(int count) {
+    return '$countদি আগে';
+  }
 }

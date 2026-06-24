@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'auth_service.dart';
 import '../constants/app_constants.dart';
@@ -82,6 +83,68 @@ class UserService {
         return UserModel.fromJson(
           (jsonDecode(res.body) as Map<String, dynamic>)['user']
               as Map<String, dynamic>,
+        );
+      }
+    } catch (_) {}
+    return null;
+  }
+
+  static Future<({UserModel? user, String? error})> uploadAvatar(File file) async {
+    try {
+      final ext = file.path.split('.').last.toLowerCase();
+      final mime = switch (ext) {
+        'png' => 'image/png',
+        'webp' => 'image/webp',
+        'gif' => 'image/gif',
+        _ => 'image/jpeg',
+      };
+
+      final presignRes = await http.post(
+        Uri.parse('$_base/api/users/me/avatar/presign'),
+        headers: await _headers(),
+        body: jsonEncode({'mime': mime}),
+      ).timeout(_timeout);
+      if (presignRes.statusCode != 200) {
+        final b = jsonDecode(presignRes.body) as Map<String, dynamic>;
+        return (user: null, error: b['message'] as String? ?? 'presign_failed');
+      }
+      final presignBody = jsonDecode(presignRes.body) as Map<String, dynamic>;
+      final uploadUrl = presignBody['uploadUrl'] as String;
+      final r2Key = presignBody['r2Key'] as String;
+
+      final bytes = await file.readAsBytes();
+      final putRes = await http.put(
+        Uri.parse(uploadUrl),
+        headers: {'Content-Type': mime},
+        body: bytes,
+      ).timeout(const Duration(seconds: 60));
+      if (putRes.statusCode != 200) {
+        return (user: null, error: 'upload_failed');
+      }
+
+      final confirmRes = await http.post(
+        Uri.parse('$_base/api/users/me/avatar/confirm'),
+        headers: await _headers(),
+        body: jsonEncode({'r2Key': r2Key}),
+      ).timeout(_timeout);
+      final confirmBody = jsonDecode(confirmRes.body) as Map<String, dynamic>;
+      if (confirmRes.statusCode == 200) {
+        return (user: UserModel.fromJson(confirmBody['user'] as Map<String, dynamic>), error: null);
+      }
+      return (user: null, error: confirmBody['message'] as String? ?? 'confirm_failed');
+    } catch (_) {
+      return (user: null, error: 'network_error');
+    }
+  }
+
+  static Future<UserModel?> removeAvatar() async {
+    try {
+      final res = await http
+          .delete(Uri.parse('$_base/api/users/me/avatar'), headers: await _headers())
+          .timeout(_timeout);
+      if (res.statusCode == 200) {
+        return UserModel.fromJson(
+          (jsonDecode(res.body) as Map<String, dynamic>)['user'] as Map<String, dynamic>,
         );
       }
     } catch (_) {}

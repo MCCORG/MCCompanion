@@ -1,7 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show Clipboard, ClipboardData;
 import 'package:http/http.dart' as http;
+import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
@@ -154,7 +157,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
       appBar: AppBar(
         backgroundColor: AppTheme.surface,
         title: Text(
-          _user != null ? '@${_user!.username}' : 'Profile',
+          _user != null ? '@${_user!.username}' : AppLocalizations.of(context)!.profileFallbackTitle,
           style: TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 16,
@@ -163,6 +166,25 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
         ),
         iconTheme: IconThemeData(color: AppTheme.textPrimary),
         elevation: 0,
+        actions: _user == null ? null : [
+          IconButton(
+            icon: const Icon(Icons.share_rounded, size: 20),
+            tooltip: AppLocalizations.of(context)!.shareProfileTooltip,
+            onPressed: () {
+              final url = 'https://mccompanion.net/u?name=${_user!.username}';
+              final isDesktop = Platform.isMacOS || Platform.isWindows || Platform.isLinux;
+              if (isDesktop) {
+                Clipboard.setData(ClipboardData(text: url));
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(AppLocalizations.of(context)!.profileLinkCopied),
+                  duration: const Duration(seconds: 2),
+                ));
+              } else {
+                Share.share(url);
+              }
+            },
+          ),
+        ],
       ),
       bottomNavigationBar: BottomGlassSimpleNavBar(
         navigationController: null,
@@ -268,7 +290,7 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
                     const SizedBox(height: 8),
                     _ProfileRow(
                       label: l.lastSeenLabel,
-                      value: _formatDate(u.lastSeenAt!),
+                      value: _formatDate(u.lastSeenAt!, AppLocalizations.of(context)!),
                     ),
                   ],
                 ],
@@ -616,7 +638,7 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
             ),
             SizedBox(height: 12),
             Text(
-              'No users found',
+              AppLocalizations.of(context)!.noUsersFound,
               style: TextStyle(
                 color: AppTheme.textSecondary,
                 fontSize: 14,
@@ -768,7 +790,7 @@ class _PublicSkinsSection extends StatelessWidget {
               ),
               const SizedBox(width: 6),
               Text(
-                all.length == 1 ? 'SKIN' : 'SKINS',
+                all.length == 1 ? AppLocalizations.of(context)!.skinLabel : AppLocalizations.of(context)!.skinsLabel,
                 style: TextStyle(
                   color: AppTheme.textMuted,
                   fontSize: 11,
@@ -878,8 +900,8 @@ class _JavaPublicSkinState extends State<_JavaPublicSkin> {
               color: AppTheme.javaBlue.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(6),
             ),
-            child: const Text(
-              'Java',
+            child: Text(
+              AppLocalizations.of(context)!.javaEditionBadge,
               style: TextStyle(
                 color: AppTheme.javaBlue,
                 fontSize: 10,
@@ -924,7 +946,7 @@ class _JavaPublicSkinState extends State<_JavaPublicSkin> {
           child: OutlinedButton.icon(
             onPressed: _download,
             icon: const Icon(Icons.download_rounded, size: 13),
-            label: const Text('Download'),
+            label: Text(AppLocalizations.of(context)!.downloadLabel),
             style: OutlinedButton.styleFrom(
               foregroundColor: AppTheme.javaBlue,
               side: const BorderSide(color: AppTheme.javaBlue, width: 0.8),
@@ -1001,8 +1023,8 @@ class _BedrockPublicSkinState extends State<_BedrockPublicSkin> {
               color: const Color(0xFF4CAF50).withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(6),
             ),
-            child: const Text(
-              'Bedrock',
+            child: Text(
+              AppLocalizations.of(context)!.bedrockEditionBadge,
               style: TextStyle(
                 color: Color(0xFF4CAF50),
                 fontSize: 10,
@@ -1047,7 +1069,7 @@ class _BedrockPublicSkinState extends State<_BedrockPublicSkin> {
           child: OutlinedButton.icon(
             onPressed: _textureUrl != null ? _download : null,
             icon: const Icon(Icons.download_rounded, size: 13),
-            label: const Text('Download'),
+            label: Text(AppLocalizations.of(context)!.downloadLabel),
             style: OutlinedButton.styleFrom(
               foregroundColor: const Color(0xFF4CAF50),
               side: const BorderSide(color: Color(0xFF4CAF50), width: 0.8),
@@ -1064,15 +1086,15 @@ class _BedrockPublicSkinState extends State<_BedrockPublicSkin> {
   }
 }
 
-String _formatDate(String iso) {
+String _formatDate(String iso, AppLocalizations l) {
   try {
     final dt = DateTime.parse(iso).toLocal();
     final now = DateTime.now();
     final diff = now.difference(dt);
-    if (diff.inMinutes < 2) return 'Just now';
-    if (diff.inMinutes < 60) return '${diff.inMinutes}m ago';
-    if (diff.inHours < 24) return '${diff.inHours}h ago';
-    if (diff.inDays < 7) return '${diff.inDays}d ago';
+    if (diff.inMinutes < 2) return l.justNow;
+    if (diff.inMinutes < 60) return l.minutesAgo(diff.inMinutes);
+    if (diff.inHours < 24) return l.hoursAgo(diff.inHours);
+    if (diff.inDays < 7) return l.daysAgo(diff.inDays);
     return '${dt.day}/${dt.month}/${dt.year}';
   } catch (_) {
     return '—';

@@ -973,5 +973,25 @@
   "rpMergerSetActive": "Instellen als actief resourcepack",
   "rpMergerSetActiveToast": "Ingesteld als actief resourcepack",
   "rpMergerOpenButton": "Resourcepacks samenvoegen",
-  "rpMergerOpenSubtitle": "Combineer 2-4 packs in een"
+  "rpMergerOpenSubtitle": "Combineer 2-4 packs in een",
+
+  "shareLabel": "Delen",
+  "sectionMinecraftAccounts": "Minecraft-accounts",
+  "sectionSettings": "Instellingen",
+  "avatarUpdated": "Avatar bijgewerkt",
+  "uploadFailed": "Upload mislukt",
+  "profileLinkCopied": "Profiellink gekopieerd!",
+
+  "shareProfileTooltip": "Profiel delen",
+  "profileFallbackTitle": "Profiel",
+  "noUsersFound": "Geen gebruikers gevonden",
+  "skinLabel": "SKIN",
+  "skinsLabel": "SKINS",
+  "javaEditionBadge": "Java",
+  "bedrockEditionBadge": "Bedrock",
+  "downloadLabel": "Downloaden",
+  "justNow": "Zojuist",
+  "minutesAgo": "{count}m geleden",
+  "hoursAgo": "{count}u geleden",
+  "daysAgo": "{count}d geleden"
 }

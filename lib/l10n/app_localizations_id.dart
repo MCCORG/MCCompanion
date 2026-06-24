@@ -1924,4 +1924,64 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get rpMergerOpenSubtitle => 'Gabungkan 2–4 paket menjadi satu';
+
+  @override
+  String get shareLabel => 'Bagikan';
+
+  @override
+  String get sectionMinecraftAccounts => 'Akun Minecraft';
+
+  @override
+  String get sectionSettings => 'Pengaturan';
+
+  @override
+  String get avatarUpdated => 'Avatar diperbarui';
+
+  @override
+  String get uploadFailed => 'Unggah gagal';
+
+  @override
+  String get profileLinkCopied => 'Tautan profil disalin!';
+
+  @override
+  String get shareProfileTooltip => 'Bagikan profil';
+
+  @override
+  String get profileFallbackTitle => 'Profil';
+
+  @override
+  String get noUsersFound => 'Pengguna tidak ditemukan';
+
+  @override
+  String get skinLabel => 'SKIN';
+
+  @override
+  String get skinsLabel => 'SKINS';
+
+  @override
+  String get javaEditionBadge => 'Java';
+
+  @override
+  String get bedrockEditionBadge => 'Bedrock';
+
+  @override
+  String get downloadLabel => 'Unduh';
+
+  @override
+  String get justNow => 'Baru saja';
+
+  @override
+  String minutesAgo(int count) {
+    return '${count}m lalu';
+  }
+
+  @override
+  String hoursAgo(int count) {
+    return '${count}j lalu';
+  }
+
+  @override
+  String daysAgo(int count) {
+    return '${count}h lalu';
+  }
 }

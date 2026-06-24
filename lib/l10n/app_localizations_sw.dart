@@ -1924,4 +1924,64 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get rpMergerOpenSubtitle => 'Unganisha pakiti 2–4 kuwa moja';
+
+  @override
+  String get shareLabel => 'Shiriki';
+
+  @override
+  String get sectionMinecraftAccounts => 'Akaunti za Minecraft';
+
+  @override
+  String get sectionSettings => 'Mipangilio';
+
+  @override
+  String get avatarUpdated => 'Picha ya wasifu imesasishwa';
+
+  @override
+  String get uploadFailed => 'Upakiaji umeshindwa';
+
+  @override
+  String get profileLinkCopied => 'Kiungo cha wasifu kamenakiliwa!';
+
+  @override
+  String get shareProfileTooltip => 'Shiriki wasifu';
+
+  @override
+  String get profileFallbackTitle => 'Wasifu';
+
+  @override
+  String get noUsersFound => 'Hakuna watumiaji waliopatikana';
+
+  @override
+  String get skinLabel => 'NGOZI';
+
+  @override
+  String get skinsLabel => 'NGOZI';
+
+  @override
+  String get javaEditionBadge => 'Java';
+
+  @override
+  String get bedrockEditionBadge => 'Bedrock';
+
+  @override
+  String get downloadLabel => 'Pakua';
+
+  @override
+  String get justNow => 'Sasa hivi';
+
+  @override
+  String minutesAgo(int count) {
+    return 'Dakika $count zilizopita';
+  }
+
+  @override
+  String hoursAgo(int count) {
+    return 'Saa $count zilizopita';
+  }
+
+  @override
+  String daysAgo(int count) {
+    return 'Siku $count zilizopita';
+  }
 }

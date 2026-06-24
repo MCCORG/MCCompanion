@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:app_links/app_links.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../services/navigation_controller.dart';
@@ -32,6 +33,7 @@ import 'player_lookup_screen.dart';
 import 'manage_servers_screen.dart';
 import 'resource_pack_screen.dart';
 import 'profile_screen.dart';
+import 'public_profile_screen.dart';
 import 'chat_screen.dart';
 import 'server_tracker_screen.dart';
 import 'feedback_screen.dart';
@@ -68,6 +70,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   late final Future<List<FeaturedServer>> _partnerServersFuture;
   late final Logger logger;
   StreamSubscription? _authSub;
+  StreamSubscription? _linkSub;
 
   final ValueNotifier<bool> _debugEnabledNotifier = ValueNotifier(false);
   final ValueNotifier<List<String>> _logsNotifier = ValueNotifier([]);
@@ -119,10 +122,49 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     PushNotificationService.init(onNotificationTap: _handleNotificationTap);
     HomeCustomizationService.instance.addListener(_onCustomizationChanged);
     ThemeService.instance.addListener(_onCustomizationChanged);
+    _initDeepLinks();
   }
 
   void _onCustomizationChanged() {
     if (mounted) setState(() {});
+  }
+
+  void _initDeepLinks() {
+    final appLinks = AppLinks();
+    appLinks.getInitialLink().then((uri) {
+      if (uri != null) _handleDeepLink(uri);
+    });
+    _linkSub = appLinks.uriLinkStream.listen(_handleDeepLink);
+  }
+
+  void _handleDeepLink(Uri uri) {
+    String? username;
+    if (uri.scheme == 'mccompanion' && uri.host == 'user') {
+      username = uri.pathSegments.isNotEmpty ? uri.pathSegments.first : null;
+    }
+    else if ((uri.scheme == 'https' || uri.scheme == 'http') &&
+        uri.host == 'mccompanion.net' &&
+        uri.path == '/u') {
+      username = uri.queryParameters['name'];
+    }
+    if (username != null && username.isNotEmpty) {
+      _openPublicProfile(username);
+    }
+  }
+
+  void _openPublicProfile(String username) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => PublicProfileScreen(
+            username: username,
+            onGoToHome: () { Navigator.of(context).pop(); _goTo(_pageHome); },
+            onGoToConnector: () { Navigator.of(context).pop(); _goTo(_pageConnector); },
+          ),
+        ),
+      );
+    });
   }
 
   void _toggleDebug() {
@@ -410,6 +452,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     ThemeService.instance.removeListener(_onCustomizationChanged);
     WidgetsBinding.instance.removeObserver(this);
     _authSub?.cancel();
+    _linkSub?.cancel();
     MessageService.disconnect();
     _logScrollController.dispose();
     _logsNotifier.dispose();

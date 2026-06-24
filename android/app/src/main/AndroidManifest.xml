@@ -27,6 +27,22 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
+            <!-- Custom URL scheme: mccompanion://user/USERNAME -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="mccompanion"/>
+            </intent-filter>
+
+            <!-- App Links: https://mccompanion.net/u?name=USERNAME -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="https" android:host="mccompanion.net" android:pathPrefix="/u"/>
+            </intent-filter>
         </activity>
         
         <meta-data

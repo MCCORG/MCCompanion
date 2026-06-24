@@ -1924,4 +1924,64 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get rpMergerOpenSubtitle => '2–4 paketi tek pakette birleştir';
+
+  @override
+  String get shareLabel => 'Paylaş';
+
+  @override
+  String get sectionMinecraftAccounts => 'Minecraft Hesapları';
+
+  @override
+  String get sectionSettings => 'Ayarlar';
+
+  @override
+  String get avatarUpdated => 'Avatar güncellendi';
+
+  @override
+  String get uploadFailed => 'Yükleme başarısız';
+
+  @override
+  String get profileLinkCopied => 'Profil bağlantısı kopyalandı!';
+
+  @override
+  String get shareProfileTooltip => 'Profili paylaş';
+
+  @override
+  String get profileFallbackTitle => 'Profil';
+
+  @override
+  String get noUsersFound => 'Kullanıcı bulunamadı';
+
+  @override
+  String get skinLabel => 'SKIN';
+
+  @override
+  String get skinsLabel => 'SKINLER';
+
+  @override
+  String get javaEditionBadge => 'Java';
+
+  @override
+  String get bedrockEditionBadge => 'Bedrock';
+
+  @override
+  String get downloadLabel => 'İndir';
+
+  @override
+  String get justNow => 'Az önce';
+
+  @override
+  String minutesAgo(int count) {
+    return '${count}d önce';
+  }
+
+  @override
+  String hoursAgo(int count) {
+    return '${count}s önce';
+  }
+
+  @override
+  String daysAgo(int count) {
+    return '${count}g önce';
+  }
 }

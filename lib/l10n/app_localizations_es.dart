@@ -1924,4 +1924,64 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get rpMergerOpenSubtitle => 'Combina 2–4 paquetes en uno';
+
+  @override
+  String get shareLabel => 'Compartir';
+
+  @override
+  String get sectionMinecraftAccounts => 'Cuentas de Minecraft';
+
+  @override
+  String get sectionSettings => 'Configuración';
+
+  @override
+  String get avatarUpdated => 'Avatar actualizado';
+
+  @override
+  String get uploadFailed => 'Error al subir';
+
+  @override
+  String get profileLinkCopied => '¡Enlace del perfil copiado!';
+
+  @override
+  String get shareProfileTooltip => 'Compartir perfil';
+
+  @override
+  String get profileFallbackTitle => 'Perfil';
+
+  @override
+  String get noUsersFound => 'No se encontraron usuarios';
+
+  @override
+  String get skinLabel => 'SKIN';
+
+  @override
+  String get skinsLabel => 'SKINS';
+
+  @override
+  String get javaEditionBadge => 'Java';
+
+  @override
+  String get bedrockEditionBadge => 'Bedrock';
+
+  @override
+  String get downloadLabel => 'Descargar';
+
+  @override
+  String get justNow => 'Ahora mismo';
+
+  @override
+  String minutesAgo(int count) {
+    return 'Hace ${count}m';
+  }
+
+  @override
+  String hoursAgo(int count) {
+    return 'Hace ${count}h';
+  }
+
+  @override
+  String daysAgo(int count) {
+    return 'Hace ${count}d';
+  }
 }

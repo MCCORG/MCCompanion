@@ -1924,4 +1924,64 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get rpMergerOpenSubtitle => '将 2–4 个包合并为一个';
+
+  @override
+  String get shareLabel => '分享';
+
+  @override
+  String get sectionMinecraftAccounts => 'Minecraft 账号';
+
+  @override
+  String get sectionSettings => '设置';
+
+  @override
+  String get avatarUpdated => '头像已更新';
+
+  @override
+  String get uploadFailed => '上传失败';
+
+  @override
+  String get profileLinkCopied => '个人资料链接已复制！';
+
+  @override
+  String get shareProfileTooltip => '分享主页';
+
+  @override
+  String get profileFallbackTitle => '主页';
+
+  @override
+  String get noUsersFound => '未找到用户';
+
+  @override
+  String get skinLabel => '皮肤';
+
+  @override
+  String get skinsLabel => '皮肤';
+
+  @override
+  String get javaEditionBadge => 'Java';
+
+  @override
+  String get bedrockEditionBadge => '基岩版';
+
+  @override
+  String get downloadLabel => '下载';
+
+  @override
+  String get justNow => '刚刚';
+
+  @override
+  String minutesAgo(int count) {
+    return '$count分钟前';
+  }
+
+  @override
+  String hoursAgo(int count) {
+    return '$count小时前';
+  }
+
+  @override
+  String daysAgo(int count) {
+    return '$count天前';
+  }
 }

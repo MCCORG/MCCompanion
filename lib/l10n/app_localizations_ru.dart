@@ -1924,4 +1924,64 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get rpMergerOpenSubtitle => 'Объедините 2–4 пака в один';
+
+  @override
+  String get shareLabel => 'Поделиться';
+
+  @override
+  String get sectionMinecraftAccounts => 'Аккаунты Minecraft';
+
+  @override
+  String get sectionSettings => 'Настройки';
+
+  @override
+  String get avatarUpdated => 'Аватар обновлён';
+
+  @override
+  String get uploadFailed => 'Ошибка загрузки';
+
+  @override
+  String get profileLinkCopied => 'Ссылка на профиль скопирована!';
+
+  @override
+  String get shareProfileTooltip => 'Поделиться профилем';
+
+  @override
+  String get profileFallbackTitle => 'Профиль';
+
+  @override
+  String get noUsersFound => 'Пользователи не найдены';
+
+  @override
+  String get skinLabel => 'СКИН';
+
+  @override
+  String get skinsLabel => 'СКИНЫ';
+
+  @override
+  String get javaEditionBadge => 'Java';
+
+  @override
+  String get bedrockEditionBadge => 'Bedrock';
+
+  @override
+  String get downloadLabel => 'Скачать';
+
+  @override
+  String get justNow => 'Только что';
+
+  @override
+  String minutesAgo(int count) {
+    return '$countм назад';
+  }
+
+  @override
+  String hoursAgo(int count) {
+    return '$countч назад';
+  }
+
+  @override
+  String daysAgo(int count) {
+    return '$countд назад';
+  }
 }

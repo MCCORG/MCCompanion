@@ -42,6 +42,7 @@ dependencies:
   palette_generator: ^0.3.3
   archive: ^4.0.9
   desktop_drop: ^0.4.4
+  app_links: ^7.2.0
 
 dev_dependencies:
   flutter_test:

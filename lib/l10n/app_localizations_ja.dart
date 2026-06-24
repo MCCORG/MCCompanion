@@ -1924,4 +1924,64 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get rpMergerOpenSubtitle => '2〜4個のパックを1つに統合';
+
+  @override
+  String get shareLabel => 'シェア';
+
+  @override
+  String get sectionMinecraftAccounts => 'Minecraftアカウント';
+
+  @override
+  String get sectionSettings => '設定';
+
+  @override
+  String get avatarUpdated => 'アバターを更新しました';
+
+  @override
+  String get uploadFailed => 'アップロード失敗';
+
+  @override
+  String get profileLinkCopied => 'プロフィールリンクをコピーしました！';
+
+  @override
+  String get shareProfileTooltip => 'プロフィールをシェア';
+
+  @override
+  String get profileFallbackTitle => 'プロフィール';
+
+  @override
+  String get noUsersFound => 'ユーザーが見つかりません';
+
+  @override
+  String get skinLabel => 'スキン';
+
+  @override
+  String get skinsLabel => 'スキン';
+
+  @override
+  String get javaEditionBadge => 'Java';
+
+  @override
+  String get bedrockEditionBadge => 'Bedrock';
+
+  @override
+  String get downloadLabel => 'ダウンロード';
+
+  @override
+  String get justNow => 'たった今';
+
+  @override
+  String minutesAgo(int count) {
+    return '$count分前';
+  }
+
+  @override
+  String hoursAgo(int count) {
+    return '$count時間前';
+  }
+
+  @override
+  String daysAgo(int count) {
+    return '$count日前';
+  }
 }

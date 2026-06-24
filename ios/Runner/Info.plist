@@ -96,6 +96,16 @@
 				<string>com.googleusercontent.apps.670852401318-ijnjdpd3cpucr2qg9ei582iig1ao57vq</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>net.mccompanion.app</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>mccompanion</string>
+			</array>
+		</dict>
 	</array>
 </dict>
 </plist>

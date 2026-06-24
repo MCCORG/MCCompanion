@@ -1924,4 +1924,64 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get rpMergerOpenSubtitle => 'ادمج 2-4 حزم في واحدة';
+
+  @override
+  String get shareLabel => 'مشاركة';
+
+  @override
+  String get sectionMinecraftAccounts => 'حسابات Minecraft';
+
+  @override
+  String get sectionSettings => 'الإعدادات';
+
+  @override
+  String get avatarUpdated => 'تم تحديث الصورة الرمزية';
+
+  @override
+  String get uploadFailed => 'فشل الرفع';
+
+  @override
+  String get profileLinkCopied => 'تم نسخ رابط الملف الشخصي!';
+
+  @override
+  String get shareProfileTooltip => 'مشاركة الملف الشخصي';
+
+  @override
+  String get profileFallbackTitle => 'الملف الشخصي';
+
+  @override
+  String get noUsersFound => 'لم يتم العثور على مستخدمين';
+
+  @override
+  String get skinLabel => 'سكن';
+
+  @override
+  String get skinsLabel => 'سكنات';
+
+  @override
+  String get javaEditionBadge => 'Java';
+
+  @override
+  String get bedrockEditionBadge => 'Bedrock';
+
+  @override
+  String get downloadLabel => 'تنزيل';
+
+  @override
+  String get justNow => 'الآن';
+
+  @override
+  String minutesAgo(int count) {
+    return 'منذ $countد';
+  }
+
+  @override
+  String hoursAgo(int count) {
+    return 'منذ $countس';
+  }
+
+  @override
+  String daysAgo(int count) {
+    return 'منذ $countي';
+  }
 }

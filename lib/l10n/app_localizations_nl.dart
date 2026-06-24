@@ -1924,4 +1924,64 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get rpMergerOpenSubtitle => 'Combineer 2-4 packs in een';
+
+  @override
+  String get shareLabel => 'Delen';
+
+  @override
+  String get sectionMinecraftAccounts => 'Minecraft-accounts';
+
+  @override
+  String get sectionSettings => 'Instellingen';
+
+  @override
+  String get avatarUpdated => 'Avatar bijgewerkt';
+
+  @override
+  String get uploadFailed => 'Upload mislukt';
+
+  @override
+  String get profileLinkCopied => 'Profiellink gekopieerd!';
+
+  @override
+  String get shareProfileTooltip => 'Profiel delen';
+
+  @override
+  String get profileFallbackTitle => 'Profiel';
+
+  @override
+  String get noUsersFound => 'Geen gebruikers gevonden';
+
+  @override
+  String get skinLabel => 'SKIN';
+
+  @override
+  String get skinsLabel => 'SKINS';
+
+  @override
+  String get javaEditionBadge => 'Java';
+
+  @override
+  String get bedrockEditionBadge => 'Bedrock';
+
+  @override
+  String get downloadLabel => 'Downloaden';
+
+  @override
+  String get justNow => 'Zojuist';
+
+  @override
+  String minutesAgo(int count) {
+    return '${count}m geleden';
+  }
+
+  @override
+  String hoursAgo(int count) {
+    return '${count}u geleden';
+  }
+
+  @override
+  String daysAgo(int count) {
+    return '${count}d geleden';
+  }
 }

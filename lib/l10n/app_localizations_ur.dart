@@ -1924,4 +1924,64 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get rpMergerOpenSubtitle => '2–4 پیک کو ایک میں ملائیں';
+
+  @override
+  String get shareLabel => 'شیئر کریں';
+
+  @override
+  String get sectionMinecraftAccounts => 'Minecraft اکاؤنٹس';
+
+  @override
+  String get sectionSettings => 'ترتیبات';
+
+  @override
+  String get avatarUpdated => 'اوتار اپڈیٹ ہو گیا';
+
+  @override
+  String get uploadFailed => 'اپلوڈ ناکام';
+
+  @override
+  String get profileLinkCopied => 'پروفائل لنک کاپی ہو گیا!';
+
+  @override
+  String get shareProfileTooltip => 'پروفائل شیئر کریں';
+
+  @override
+  String get profileFallbackTitle => 'پروفائل';
+
+  @override
+  String get noUsersFound => 'کوئی صارف نہیں ملا';
+
+  @override
+  String get skinLabel => 'SKIN';
+
+  @override
+  String get skinsLabel => 'SKINS';
+
+  @override
+  String get javaEditionBadge => 'Java';
+
+  @override
+  String get bedrockEditionBadge => 'Bedrock';
+
+  @override
+  String get downloadLabel => 'ڈاؤنلوڈ';
+
+  @override
+  String get justNow => 'ابھی';
+
+  @override
+  String minutesAgo(int count) {
+    return '$countم پہلے';
+  }
+
+  @override
+  String hoursAgo(int count) {
+    return '$countگ پہلے';
+  }
+
+  @override
+  String daysAgo(int count) {
+    return '$countد پہلے';
+  }
 }

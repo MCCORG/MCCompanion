@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show Clipboard, ClipboardData;
+import 'package:file_picker/file_picker.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -1265,23 +1268,297 @@ class _ProfileTabState extends State<_ProfileTab> {
       backgroundColor: AppTheme.surfaceRaised,
       onRefresh: widget.onRefresh,
       child: ListView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.fromLTRB(16, 20, 16, 24),
         children: [
-          _EditProfileCard(me: widget.me!, onUpdated: widget.onRefresh),
-          const SizedBox(height: 12),
+          _ProfileHero(me: widget.me!, onUpdated: widget.onRefresh),
+          const SizedBox(height: 20),
+          _SectionHeader(AppLocalizations.of(context)!.sectionMinecraftAccounts),
+          const SizedBox(height: 8),
           _LinkedAccountsCard(me: widget.me!, onRefresh: widget.onRefresh),
-          const SizedBox(height: 12),
+          const SizedBox(height: 20),
+          _SectionHeader(AppLocalizations.of(context)!.sectionSettings),
+          const SizedBox(height: 8),
           _SettingsCard(
             appearOffline: _effectiveAppearOffline,
             onToggleAppearOffline: _toggleAppearOffline,
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 32),
           _DangerZoneCard(
             onSignOut: widget.onSignOut,
             onDeleteAccount: widget.onDeleteAccount,
           ),
-          const SizedBox(height: 16),
         ],
+      ),
+    );
+  }
+}
+
+class _SectionHeader extends StatelessWidget {
+  final String title;
+  const _SectionHeader(this.title);
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title.toUpperCase(),
+      style: TextStyle(
+        color: AppTheme.textMuted,
+        fontSize: 11,
+        fontWeight: FontWeight.w700,
+        letterSpacing: 0.8,
+      ),
+    );
+  }
+}
+
+class _ProfileHero extends StatefulWidget {
+  final UserModel me;
+  final Future<void> Function() onUpdated;
+  const _ProfileHero({required this.me, required this.onUpdated});
+
+  @override
+  State<_ProfileHero> createState() => _ProfileHeroState();
+}
+
+class _ProfileHeroState extends State<_ProfileHero> {
+  bool _editing = false;
+  bool _saving = false;
+  bool _uploadingAvatar = false;
+  late final TextEditingController _displayNameCtrl;
+  late final TextEditingController _bioCtrl;
+
+  @override
+  void initState() {
+    super.initState();
+    _displayNameCtrl = TextEditingController(text: widget.me.displayName ?? '');
+    _bioCtrl = TextEditingController(text: widget.me.bio ?? '');
+  }
+
+  @override
+  void dispose() {
+    _displayNameCtrl.dispose();
+    _bioCtrl.dispose();
+    super.dispose();
+  }
+
+  void _shareProfile(BuildContext context, String username) {
+    final url = 'https://mccompanion.net/u?name=$username';
+    final isDesktop = Platform.isMacOS || Platform.isWindows || Platform.isLinux;
+    if (isDesktop) {
+      Clipboard.setData(ClipboardData(text: url));
+      AppToast.show(context, message: AppLocalizations.of(context)!.profileLinkCopied, icon: Icons.link_rounded, color: AppTheme.success);
+    } else {
+      Share.share(url);
+    }
+  }
+
+  Future<void> _pickAndUploadAvatar() async {
+    final result = await FilePicker.platform.pickFiles(type: FileType.image, allowMultiple: false);
+    if (result == null || result.files.single.path == null) return;
+    final file = File(result.files.single.path!);
+    setState(() => _uploadingAvatar = true);
+    try {
+      final (:user, :error) = await UserService.uploadAvatar(file);
+      if (!mounted) return;
+      if (user != null) {
+        await widget.onUpdated();
+        AppToast.show(context, message: AppLocalizations.of(context)!.avatarUpdated, icon: Icons.check_circle_rounded, color: AppTheme.success);
+      } else {
+        AppToast.show(context, message: AppLocalizations.of(context)!.uploadFailed, icon: Icons.error_rounded, color: AppTheme.error);
+      }
+    } finally {
+      if (mounted) setState(() => _uploadingAvatar = false);
+    }
+  }
+
+  Future<void> _save() async {
+    setState(() => _saving = true);
+    final updated = await UserService.updateMe(
+      displayName: _displayNameCtrl.text.trim(),
+      bio: _bioCtrl.text.trim(),
+    );
+    if (!mounted) return;
+    setState(() { _saving = false; _editing = false; });
+    if (updated != null) {
+      await widget.onUpdated();
+      if (mounted) AppToast.show(context, message: AppLocalizations.of(context)!.profileUpdated, icon: Icons.check_circle_rounded, color: AppTheme.success);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final me = widget.me;
+    final displayName = me.displayName?.isNotEmpty == true ? me.displayName! : me.username;
+    return Container(
+      decoration: BoxDecoration(
+        color: AppTheme.surfaceRaised,
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: AppTheme.borderGray),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 28, 20, 24),
+            child: Column(
+              children: [
+                GestureDetector(
+                  onTap: _uploadingAvatar ? null : _pickAndUploadAvatar,
+                  child: Stack(
+                    alignment: Alignment.bottomRight,
+                    children: [
+                      _Avatar(initials: me.initials, size: 84, avatarUrl: me.avatarUrl),
+                      Container(
+                        width: 28,
+                        height: 28,
+                        decoration: BoxDecoration(
+                          color: AppTheme.accent,
+                          shape: BoxShape.circle,
+                          border: Border.all(color: AppTheme.surfaceRaised, width: 2.5),
+                        ),
+                        child: _uploadingAvatar
+                            ? const Padding(
+                                padding: EdgeInsets.all(6),
+                                child: CircularProgressIndicator(strokeWidth: 2, color: Colors.black),
+                              )
+                            : const Icon(Icons.camera_alt_rounded, size: 14, color: Colors.black),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 14),
+                Text(
+                  displayName,
+                  style: TextStyle(color: AppTheme.textPrimary, fontSize: 20, fontWeight: FontWeight.w700),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  '@${me.username}',
+                  style: TextStyle(color: AppTheme.textMuted, fontSize: 13),
+                  textAlign: TextAlign.center,
+                ),
+                if (me.bio?.isNotEmpty == true) ...[
+                  const SizedBox(height: 8),
+                  Text(
+                    me.bio!,
+                    style: TextStyle(color: AppTheme.textSecondary, fontSize: 13, height: 1.4),
+                    textAlign: TextAlign.center,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+                const SizedBox(height: 18),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _HeroActionBtn(
+                      icon: Icons.edit_rounded,
+                      label: AppLocalizations.of(context)!.edit,
+                      onTap: _editing ? null : () => setState(() {
+                        _displayNameCtrl.text = me.displayName ?? '';
+                        _bioCtrl.text = me.bio ?? '';
+                        _editing = true;
+                      }),
+                    ),
+                    const SizedBox(width: 10),
+                    _HeroActionBtn(
+                      icon: Icons.share_rounded,
+                      label: AppLocalizations.of(context)!.shareLabel,
+                      onTap: () => _shareProfile(context, me.username),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          AnimatedSize(
+            duration: const Duration(milliseconds: 220),
+            curve: Curves.easeInOut,
+            child: _editing
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Divider(height: 1, color: AppTheme.borderGray),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            _FieldLabel(AppLocalizations.of(context)!.displayNameLabel),
+                            const SizedBox(height: 6),
+                            TextField(
+                              controller: _displayNameCtrl,
+                              style: TextStyle(color: AppTheme.textPrimary),
+                              decoration: InputDecoration(hintText: AppLocalizations.of(context)!.yourNameHint),
+                            ),
+                            const SizedBox(height: 14),
+                            _FieldLabel(AppLocalizations.of(context)!.bioLabel),
+                            const SizedBox(height: 6),
+                            TextField(
+                              controller: _bioCtrl,
+                              style: TextStyle(color: AppTheme.textPrimary),
+                              maxLines: 3,
+                              decoration: InputDecoration(hintText: AppLocalizations.of(context)!.bioHint),
+                            ),
+                            const SizedBox(height: 16),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: OutlinedButton(
+                                    onPressed: _saving ? null : () => setState(() => _editing = false),
+                                    child: Text(AppLocalizations.of(context)!.cancel),
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                Expanded(
+                                  child: ElevatedButton(
+                                    onPressed: _saving ? null : _save,
+                                    child: _saving
+                                        ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2))
+                                        : Text(AppLocalizations.of(context)!.save),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )
+                : const SizedBox.shrink(),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _HeroActionBtn extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final VoidCallback? onTap;
+  const _HeroActionBtn({required this.icon, required this.label, this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(10),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 9),
+        decoration: BoxDecoration(
+          color: AppTheme.background,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: AppTheme.borderGray),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, size: 15, color: AppTheme.textSecondary),
+            const SizedBox(width: 7),
+            Text(label, style: TextStyle(color: AppTheme.textSecondary, fontSize: 13, fontWeight: FontWeight.w600)),
+          ],
+        ),
       ),
     );
   }
@@ -1491,17 +1768,6 @@ class _LinkedAccountsCardState extends State<_LinkedAccountsCard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 14, 16, 12),
-            child: Text(
-              AppLocalizations.of(context)!.linkedAccountsTitle,
-              style: TextStyle(
-                color: AppTheme.textPrimary,
-                fontWeight: FontWeight.w700,
-                fontSize: 14,
-              ),
-            ),
-          ),
           if (!hasAny)
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 14),
@@ -1662,217 +1928,6 @@ class _AccountRow extends StatelessWidget {
   }
 }
 
-class _EditProfileCard extends StatefulWidget {
-  final UserModel me;
-  final Future<void> Function() onUpdated;
-  const _EditProfileCard({required this.me, required this.onUpdated});
-
-  @override
-  State<_EditProfileCard> createState() => _EditProfileCardState();
-}
-
-class _EditProfileCardState extends State<_EditProfileCard> {
-  bool _editing = false;
-  bool _saving = false;
-  bool _obscureAvatar = false;
-  late final TextEditingController _displayNameCtrl;
-  late final TextEditingController _bioCtrl;
-  late final TextEditingController _avatarUrlCtrl;
-
-  @override
-  void initState() {
-    super.initState();
-    _displayNameCtrl = TextEditingController(text: widget.me.displayName ?? '');
-    _bioCtrl = TextEditingController(text: widget.me.bio ?? '');
-    _avatarUrlCtrl = TextEditingController(text: widget.me.avatarUrl ?? '');
-  }
-
-  @override
-  void dispose() {
-    _displayNameCtrl.dispose();
-    _bioCtrl.dispose();
-    _avatarUrlCtrl.dispose();
-    super.dispose();
-  }
-
-  Future<void> _save() async {
-    setState(() => _saving = true);
-    final avatarVal = _avatarUrlCtrl.text.trim();
-    final updated = await UserService.updateMe(
-      displayName: _displayNameCtrl.text.trim(),
-      bio: _bioCtrl.text.trim(),
-      avatarUrl: avatarVal.isNotEmpty ? avatarVal : null,
-    );
-    if (!mounted) return;
-    setState(() {
-      _saving = false;
-      _editing = false;
-    });
-    if (updated != null) {
-      await widget.onUpdated();
-      if (mounted) {
-        AppToast.show(
-          context,
-          message: AppLocalizations.of(context)!.profileUpdated,
-          icon: Icons.check_circle_rounded,
-          color: AppTheme.success,
-        );
-      }
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(14),
-        border: const Border.fromBorderSide(
-          BorderSide(color: AppTheme.borderGray),
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Row(
-            children: [
-              Text(
-                AppLocalizations.of(context)!.profileCardTitle,
-                style: TextStyle(
-                  color: AppTheme.textPrimary,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 14,
-                ),
-              ),
-              const Spacer(),
-              if (!_editing)
-                TextButton.icon(
-                  onPressed: () => setState(() => _editing = true),
-                  icon: const Icon(Icons.edit_rounded, size: 14),
-                  label: Text(AppLocalizations.of(context)!.edit),
-                  style: TextButton.styleFrom(
-                    foregroundColor: AppTheme.accent,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 4,
-                    ),
-                  ),
-                ),
-            ],
-          ),
-          const SizedBox(height: 12),
-          if (_editing) ...[
-            _FieldLabel(AppLocalizations.of(context)!.displayNameLabel),
-            const SizedBox(height: 6),
-            TextField(
-              controller: _displayNameCtrl,
-              style: TextStyle(color: AppTheme.textPrimary),
-              decoration: InputDecoration(
-                hintText: AppLocalizations.of(context)!.yourNameHint,
-              ),
-            ),
-            const SizedBox(height: 14),
-            _FieldLabel(AppLocalizations.of(context)!.bioLabel),
-            const SizedBox(height: 6),
-            TextField(
-              controller: _bioCtrl,
-              style: TextStyle(color: AppTheme.textPrimary),
-              maxLines: 3,
-              decoration: InputDecoration(
-                hintText: AppLocalizations.of(context)!.bioHint,
-              ),
-            ),
-            const SizedBox(height: 14),
-            _FieldLabel(AppLocalizations.of(context)!.avatarUrlLabel),
-            const SizedBox(height: 6),
-            TextField(
-              controller: _avatarUrlCtrl,
-              style: TextStyle(color: AppTheme.textPrimary),
-              keyboardType: TextInputType.url,
-              autocorrect: false,
-              obscureText: _obscureAvatar,
-              decoration: InputDecoration(
-                hintText: AppLocalizations.of(context)!.avatarUrlHint,
-                prefixIcon: Icon(
-                  Icons.image_rounded,
-                  size: 18,
-                  color: AppTheme.textMuted,
-                ),
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    _obscureAvatar
-                        ? Icons.visibility_off_rounded
-                        : Icons.visibility_rounded,
-                    size: 18,
-                    color: AppTheme.textMuted,
-                  ),
-                  onPressed: () =>
-                      setState(() => _obscureAvatar = !_obscureAvatar),
-                ),
-              ),
-            ),
-            const SizedBox(height: 16),
-            Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: _saving
-                        ? null
-                        : () => setState(() => _editing = false),
-                    child: Text(AppLocalizations.of(context)!.cancel),
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: _saving ? null : _save,
-                    child: _saving
-                        ? const SizedBox(
-                            width: 18,
-                            height: 18,
-                            child: CircularProgressIndicator(
-                              color: Colors.white,
-                              strokeWidth: 2,
-                            ),
-                          )
-                        : Text(AppLocalizations.of(context)!.save),
-                  ),
-                ),
-              ],
-            ),
-          ] else ...[
-            _ProfileRow(
-              label: AppLocalizations.of(context)!.displayNameLabel,
-              value: widget.me.displayName?.isNotEmpty == true
-                  ? widget.me.displayName!
-                  : '—',
-            ),
-            const SizedBox(height: 8),
-            _ProfileRow(
-              label: AppLocalizations.of(context)!.usernameDisplayLabel,
-              value: '@${widget.me.username}',
-            ),
-            if (widget.me.bio?.isNotEmpty == true) ...[
-              const SizedBox(height: 8),
-              _ProfileRow(
-                label: AppLocalizations.of(context)!.aboutMe,
-                value: widget.me.bio!,
-              ),
-            ],
-            if (widget.me.avatarUrl?.isNotEmpty == true) ...[
-              const SizedBox(height: 8),
-              _ProfileRow(
-                label: AppLocalizations.of(context)!.avatarUrlLabel,
-                value: '••••••••••••',
-              ),
-            ],
-          ],
-        ],
-      ),
-    );
-  }
-}
 
 class _FriendsTab extends StatelessWidget {
   final List<FriendModel> friends;
@@ -2349,33 +2404,6 @@ class _SectionLabel extends StatelessWidget {
   );
 }
 
-class _ProfileRow extends StatelessWidget {
-  final String label;
-  final String value;
-  const _ProfileRow({required this.label, required this.value});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: 120,
-          child: Text(
-            label,
-            style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
-          ),
-        ),
-        Expanded(
-          child: Text(
-            value,
-            style: TextStyle(color: AppTheme.textPrimary, fontSize: 13),
-          ),
-        ),
-      ],
-    );
-  }
-}
 
 class _FieldLabel extends StatelessWidget {
   final String text;
