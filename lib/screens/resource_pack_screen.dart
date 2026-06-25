@@ -394,7 +394,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
                     child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 480),
+                      constraints: const BoxConstraints(maxWidth: 720),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
