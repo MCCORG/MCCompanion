@@ -231,36 +231,11 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     });
   }
 
-  Future<void> _saveUrl() async {
-    final url = _urlCtrl.text.trim();
-    final l = AppLocalizations.of(context)!;
-    if (_enabled && url.isEmpty) {
-      AppToast.show(context, message: l.rpToastEnterUrl, icon: Icons.warning_rounded, color: AppTheme.warning);
-      return;
-    }
-    if (_enabled && _urlWarning != null) {
-      AppToast.show(context, message: _urlWarning!, icon: Icons.warning_rounded, color: AppTheme.warning);
-      return;
-    }
-    await ResourcePackPrefs.save(url: url, enabled: _enabled, isUpload: false);
-    if (!mounted) return;
-    setState(() {
-      _hasPack = url.isNotEmpty;
-      _activePackName = url.isNotEmpty ? url.split('/').last : null;
-    });
-    AppToast.show(context, message: l.rpToastSaved, icon: Icons.check_rounded, color: AppTheme.accent);
-    widget.onBack();
-  }
 
   Future<void> _toggleEnabled(bool v) async {
     setState(() => _enabled = v);
     if (_mode == RpInputMode.upload && _uploadedUrl != null) {
       await ResourcePackPrefs.save(url: _uploadedUrl, enabled: v, filename: _uploadedFilename, isUpload: true);
-    } else if (_mode == RpInputMode.url) {
-      final url = _urlCtrl.text.trim();
-      if (url.isNotEmpty) {
-        await ResourcePackPrefs.save(url: url, enabled: v, isUpload: false);
-      }
     }
   }
 
@@ -359,7 +334,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
-    final showControls = _mode == RpInputMode.upload || _mode == RpInputMode.url;
+    final showControls = _mode == RpInputMode.upload;
 
     return SwipeBack(
       onBack: widget.onBack,
@@ -416,7 +391,6 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
 
                           if (_mode == RpInputMode.browse) _buildBrowseSection(),
                           if (_mode == RpInputMode.upload) _buildUploadSection(l),
-                          if (_mode == RpInputMode.url) _buildUrlSection(l),
                           if (_mode == RpInputMode.merge) ...[
                             RpTabInfoBox(text: l.rpTabMergeInfo),
                             const SizedBox(height: 16),
@@ -438,18 +412,6 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                             ),
                           ),
 
-                          if (_mode == RpInputMode.url) ...[
-                            const SizedBox(height: 12),
-                            SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton.icon(
-                                onPressed: _saveUrl,
-                                icon: const Icon(Icons.save_rounded, size: 18),
-                                label: Text(l.save, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
-                                style: ElevatedButton.styleFrom(padding: const EdgeInsets.symmetric(vertical: 14)),
-                              ),
-                            ),
-                          ],
 
                           if (showControls) ...[
                             const SizedBox(height: 28),

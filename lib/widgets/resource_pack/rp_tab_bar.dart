@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../l10n/app_localizations.dart';
 import '../../theme/app_theme.dart';
 
-enum RpInputMode { browse, upload, url, merge }
+enum RpInputMode { browse, upload, merge }
 
 class RpTabBar extends StatelessWidget {
   final RpInputMode mode;
@@ -24,8 +24,7 @@ class RpTabBar extends StatelessWidget {
         children: [
           _Tab(label: 'Browse', icon: Icons.explore_rounded, selected: mode == RpInputMode.browse, onTap: () => onSelect(RpInputMode.browse)),
           _Tab(label: l.rpUploadTab, icon: Icons.upload_rounded, selected: mode == RpInputMode.upload, onTap: () => onSelect(RpInputMode.upload)),
-          _Tab(label: l.rpUrlTab, icon: Icons.link_rounded, selected: mode == RpInputMode.url, onTap: () => onSelect(RpInputMode.url)),
-          _Tab(label: l.rpMergerTitle, icon: Icons.merge_rounded, selected: mode == RpInputMode.merge, onTap: () => onSelect(RpInputMode.merge)),
+_Tab(label: l.rpMergerTitle, icon: Icons.merge_rounded, selected: mode == RpInputMode.merge, onTap: () => onSelect(RpInputMode.merge)),
         ],
       ),
     );
