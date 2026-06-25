@@ -1613,6 +1613,16 @@
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "تفعيل حزمة الموارد",
   "rpWhatWorks": "ما يعمل",
+  "rpSupportedBedrockOnly": "Bedrock Edition فقط (.mcpack أو .zip)",
+  "rpSupportedBedrockOnlyHint": "حزم Java لا تعمل على أجهزة الألعاب.",
+  "rpSupportedTexture": "حزم الموارد وحزم القوام",
+  "rpSupportedTextureHint": "هذه مدعومة رسميًا وتعمل بشكل موثوق.",
+  "rpUnsupportedShaders": "المظللات وحزم السلوك وحزم الجلود",
+  "rpUnsupportedShadersHint": "لن يتم تحميل هذه على أجهزة الألعاب عبر MCCompanion.",
+  "rpUnsupportedAddons": "الإضافات وتعديلات الواجهة",
+  "rpUnsupportedAddonsHint": "قد تعمل أحيانًا لكنها غير مدعومة رسميًا. استخدمها على مسؤوليتك الخاصة.",
+  "rpConsolePerformanceTitle": "أداء وحدة التحكم",
+  "rpConsolePerformanceBody": "يمكن أن تتسبب حزم القوام عالية الدقة في تأخر أو تعطل وحدات التحكم. إذا واجهت مشاكل، انتقل إلى حزمة بدقة أقل أو اختر حزمة فرعية أخف إذا كانت الحزمة تدعم ذلك.",
   "rpWhatDoesntWork": "ما لا يعمل",
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 حاوية عامة",
@@ -1707,5 +1717,30 @@
   "startPageHomeSubtitle": "عرض الشاشة الرئيسية مع البلاطات",
   "startPageFeature": "ميزة",
   "startPageFeatureSubtitle": "الفتح مباشرة على صفحة محددة",
-  "startPageSectionLabel": "صفحة البداية"
+  "startPageSectionLabel": "صفحة البداية",
+  "rpPackInfo": "معلومات",
+  "@rpPackInfo": {
+    "description": "rpPackInfo label"
+  },
+  "rpUseThisPack": "استخدم هذه الحزمة",
+  "@rpUseThisPack": {
+    "description": "rpUseThisPack label"
+  },
+  "rpViewOnWebsite": "عرض على الموقع →",
+  "@rpViewOnWebsite": {
+    "description": "rpViewOnWebsite label"
+  },
+  "rpDownloads": "{count} تنزيلات",
+  "@rpDownloads": {
+    "description": "Download count label",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rpPackDetailTitle": "تفاصيل الحزمة",
+  "@rpPackDetailTitle": {
+    "description": "rpPackDetailTitle label"
+  }
 }

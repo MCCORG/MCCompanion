@@ -1827,28 +1827,28 @@ class AppLocalizationsAr extends AppLocalizations {
   String get rpWhatWorks => 'ما يعمل';
 
   @override
-  String get rpSupportedBedrockOnly => 'Bedrock Edition only (.mcpack or .zip)';
+  String get rpSupportedBedrockOnly => 'Bedrock Edition فقط (.mcpack أو .zip)';
 
   @override
-  String get rpSupportedBedrockOnlyHint => 'Java packs don\'t work on consoles.';
+  String get rpSupportedBedrockOnlyHint => 'حزم Java لا تعمل على أجهزة الألعاب.';
 
   @override
-  String get rpSupportedTexture => 'Resource packs & texture packs';
+  String get rpSupportedTexture => 'حزم الموارد وحزم القوام';
 
   @override
-  String get rpSupportedTextureHint => 'These are officially supported and work reliably.';
+  String get rpSupportedTextureHint => 'هذه مدعومة رسميًا وتعمل بشكل موثوق.';
 
   @override
-  String get rpUnsupportedShaders => 'Shaders, behavior packs, skin packs';
+  String get rpUnsupportedShaders => 'المظللات وحزم السلوك وحزم الجلود';
 
   @override
-  String get rpUnsupportedShadersHint => 'These won\'t load on consoles via MCCompanion.';
+  String get rpUnsupportedShadersHint => 'لن يتم تحميل هذه على أجهزة الألعاب عبر MCCompanion.';
 
   @override
-  String get rpUnsupportedAddons => 'Add-ons & UI mods';
+  String get rpUnsupportedAddons => 'الإضافات وتعديلات الواجهة';
 
   @override
-  String get rpUnsupportedAddonsHint => 'May sometimes work, but not officially supported. Use at your own risk.';
+  String get rpUnsupportedAddonsHint => 'قد تعمل أحيانًا لكنها غير مدعومة رسميًا. استخدمها على مسؤوليتك الخاصة.';
 
   @override
   String get rpNoDiscord => 'روابط Discord — لا تحتوي على امتداد .mcpack وتنتهي صلاحيتها بعد ساعات قليلة';
@@ -1860,10 +1860,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get rpNoEncrypted => 'الخوادم ذات الحزم المشفرة أو المحمية بكلمة مرور';
 
   @override
-  String get rpConsolePerformanceTitle => 'Console performance';
+  String get rpConsolePerformanceTitle => 'أداء وحدة التحكم';
 
   @override
-  String get rpConsolePerformanceBody => 'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.';
+  String get rpConsolePerformanceBody => 'يمكن أن تتسبب حزم القوام عالية الدقة في تأخر أو تعطل وحدات التحكم. إذا واجهت مشاكل، انتقل إلى حزمة بدقة أقل أو اختر حزمة فرعية أخف إذا كانت الحزمة تدعم ذلك.';
 
   @override
   String get rpWarnDiscord => 'روابط Discord تنتهي صلاحيتها وستتوقف عن العمل. استخدم مضيفًا دائمًا بدلاً من ذلك.';
@@ -2086,4 +2086,21 @@ class AppLocalizationsAr extends AppLocalizations {
   String daysAgo(int count) {
     return 'منذ $countي';
   }
+
+  @override
+  String get rpPackInfo => 'معلومات';
+
+  @override
+  String get rpUseThisPack => 'استخدم هذه الحزمة';
+
+  @override
+  String get rpViewOnWebsite => 'عرض على الموقع →';
+
+  @override
+  String rpDownloads(int count) {
+    return '$count تنزيلات';
+  }
+
+  @override
+  String get rpPackDetailTitle => 'تفاصيل الحزمة';
 }

@@ -2133,15 +2133,25 @@
   "rpNoEncryptedHint": "MCCompanion cannot read or merge encrypted pack content.",
   "rpClearWhy": "Minecraft caches resource packs by their UUID. The merged pack keeps the server's original UUID, so if Minecraft already has the server's pack cached from a previous session, it won't re-download the new merged version. Clear the cache so Minecraft picks up the fresh merged pack.",
   "rpUploadTab": "Upload",
-  "@rpUploadTab": { "description": "Tab label for uploading a pack file" },
+  "@rpUploadTab": {
+    "description": "Tab label for uploading a pack file"
+  },
   "rpUrlTab": "URL",
-  "@rpUrlTab": { "description": "Tab label for entering a pack URL" },
+  "@rpUrlTab": {
+    "description": "Tab label for entering a pack URL"
+  },
   "rpUploadButton": "Tap to select your pack",
-  "@rpUploadButton": { "description": "Upload area primary label" },
+  "@rpUploadButton": {
+    "description": "Upload area primary label"
+  },
   "rpUploadHint": ".mcpack or .zip • max 100 MB",
-  "@rpUploadHint": { "description": "Upload area hint" },
+  "@rpUploadHint": {
+    "description": "Upload area hint"
+  },
   "rpUploading": "Uploading...",
-  "@rpUploading": { "description": "Shown while upload is in progress" },
+  "@rpUploading": {
+    "description": "Shown while upload is in progress"
+  },
   "rpMergerTitle": "RP Merger",
   "rpMergerSubtitle": "Combine up to 4 resource packs",
   "rpMergerPriorityHint": "Top pack has highest priority — its files win conflicts.",
@@ -2149,84 +2159,193 @@
   "rpMergerAddPacks": "Add resource packs",
   "rpMergerAddAnother": "Add another pack ({current}/4)",
   "@rpMergerAddAnother": {
-    "placeholders": { "current": { "type": "int" } }
+    "placeholders": {
+      "current": {
+        "type": "int"
+      }
+    }
   },
   "rpMergerFileTypes": ".zip or .mcpack",
   "rpMergerMerging": "Merging…",
   "rpMergerButton": "Merge {count} packs",
   "@rpMergerButton": {
-    "placeholders": { "count": { "type": "int" } }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "rpMergerComplete": "Merge complete!",
   "rpMergerConflicts": "{count} conflict(s) resolved — top pack won.",
   "@rpMergerConflicts": {
-    "placeholders": { "count": { "type": "int" } }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "rpMergerSetActive": "Set as active resource pack",
   "rpMergerSetActiveToast": "Set as active resource pack",
   "rpMergerOpenButton": "Merge resource packs",
   "rpMergerOpenSubtitle": "Combine 2–4 packs into one",
-
   "rpDisabled": "Disabled",
-  "@rpDisabled": { "description": "Status label when the resource pack is disabled" },
+  "@rpDisabled": {
+    "description": "Status label when the resource pack is disabled"
+  },
   "rpNoPackSelected": "No resource pack selected",
-  "@rpNoPackSelected": { "description": "Shown in the active pack banner when no pack is configured" },
+  "@rpNoPackSelected": {
+    "description": "Shown in the active pack banner when no pack is configured"
+  },
   "rpActiveOnConnect": "Active — applied on connect",
-  "@rpActiveOnConnect": { "description": "Status label when pack is enabled and will be applied" },
+  "@rpActiveOnConnect": {
+    "description": "Status label when pack is enabled and will be applied"
+  },
   "rpBrowseSubtitle": "Curated packs, ready to use",
-  "@rpBrowseSubtitle": { "description": "Subtitle shown at the top of the Browse tab" },
+  "@rpBrowseSubtitle": {
+    "description": "Subtitle shown at the top of the Browse tab"
+  },
   "rpBrowseEmpty": "No packs available yet",
-  "@rpBrowseEmpty": { "description": "Empty state title in Browse tab" },
+  "@rpBrowseEmpty": {
+    "description": "Empty state title in Browse tab"
+  },
   "rpBrowseEmptyHint": "Check back later for curated packs.",
-  "@rpBrowseEmptyHint": { "description": "Empty state subtitle in Browse tab" },
+  "@rpBrowseEmptyHint": {
+    "description": "Empty state subtitle in Browse tab"
+  },
   "rpReplaceFile": "Replace with another file",
-  "@rpReplaceFile": { "description": "Button to replace the currently uploaded pack file" },
+  "@rpReplaceFile": {
+    "description": "Button to replace the currently uploaded pack file"
+  },
   "rpDropToUpload": "Drop to upload",
-  "@rpDropToUpload": { "description": "Label shown when a file is dragged over the upload area" },
+  "@rpDropToUpload": {
+    "description": "Label shown when a file is dragged over the upload area"
+  },
   "rpTabBrowseInfo": "Browse curated packs selected by MCCompanion. Tap Use to activate a pack instantly — no upload or link needed.",
-  "@rpTabBrowseInfo": { "description": "Info text shown under the Browse tab" },
+  "@rpTabBrowseInfo": {
+    "description": "Info text shown under the Browse tab"
+  },
   "rpTabUploadInfo": "Upload your own .mcpack or .zip file. MCCompanion stores it securely in the cloud and sends it to your console every time you connect.",
-  "@rpTabUploadInfo": { "description": "Info text shown under the Upload tab" },
+  "@rpTabUploadInfo": {
+    "description": "Info text shown under the Upload tab"
+  },
   "rpTabUrlInfo": "Paste a direct download link to a .mcpack or .zip file. The URL must be publicly accessible — no Discord or Google Drive links.",
-  "@rpTabUrlInfo": { "description": "Info text shown under the URL tab" },
+  "@rpTabUrlInfo": {
+    "description": "Info text shown under the URL tab"
+  },
   "rpTabMergeInfo": "Combine 2 to 4 packs into one. The merged pack is uploaded to MCCompanion Cloud and activated automatically.",
-  "@rpTabMergeInfo": { "description": "Info text shown under the RP Merger tab" },
-
+  "@rpTabMergeInfo": {
+    "description": "Info text shown under the RP Merger tab"
+  },
   "shareLabel": "Share",
-  "@shareLabel": { "description": "Share button label" },
+  "@shareLabel": {
+    "description": "Share button label"
+  },
   "sectionMinecraftAccounts": "Minecraft Accounts",
-  "@sectionMinecraftAccounts": { "description": "Section header for linked Minecraft accounts" },
+  "@sectionMinecraftAccounts": {
+    "description": "Section header for linked Minecraft accounts"
+  },
   "sectionSettings": "Settings",
-  "@sectionSettings": { "description": "Section header for settings" },
+  "@sectionSettings": {
+    "description": "Section header for settings"
+  },
   "avatarUpdated": "Avatar updated",
-  "@avatarUpdated": { "description": "Toast when avatar upload succeeds" },
+  "@avatarUpdated": {
+    "description": "Toast when avatar upload succeeds"
+  },
   "uploadFailed": "Upload failed",
-  "@uploadFailed": { "description": "Toast when avatar upload fails" },
+  "@uploadFailed": {
+    "description": "Toast when avatar upload fails"
+  },
   "profileLinkCopied": "Profile link copied!",
-  "@profileLinkCopied": { "description": "Toast when profile URL is copied to clipboard on desktop" },
-
+  "@profileLinkCopied": {
+    "description": "Toast when profile URL is copied to clipboard on desktop"
+  },
   "shareProfileTooltip": "Share profile",
-  "@shareProfileTooltip": { "description": "Tooltip on share icon button in public profile app bar" },
+  "@shareProfileTooltip": {
+    "description": "Tooltip on share icon button in public profile app bar"
+  },
   "profileFallbackTitle": "Profile",
-  "@profileFallbackTitle": { "description": "AppBar title when profile user is not yet loaded" },
+  "@profileFallbackTitle": {
+    "description": "AppBar title when profile user is not yet loaded"
+  },
   "noUsersFound": "No users found",
-  "@noUsersFound": { "description": "Empty state in user search" },
+  "@noUsersFound": {
+    "description": "Empty state in user search"
+  },
   "skinLabel": "SKIN",
-  "@skinLabel": { "description": "Label when user has exactly one skin" },
+  "@skinLabel": {
+    "description": "Label when user has exactly one skin"
+  },
   "skinsLabel": "SKINS",
-  "@skinsLabel": { "description": "Label when user has multiple skins" },
+  "@skinsLabel": {
+    "description": "Label when user has multiple skins"
+  },
   "javaEditionBadge": "Java",
-  "@javaEditionBadge": { "description": "Java edition badge on skin/account" },
+  "@javaEditionBadge": {
+    "description": "Java edition badge on skin/account"
+  },
   "bedrockEditionBadge": "Bedrock",
-  "@bedrockEditionBadge": { "description": "Bedrock edition badge on skin/account" },
+  "@bedrockEditionBadge": {
+    "description": "Bedrock edition badge on skin/account"
+  },
   "downloadLabel": "Download",
-  "@downloadLabel": { "description": "Download button label" },
+  "@downloadLabel": {
+    "description": "Download button label"
+  },
   "justNow": "Just now",
-  "@justNow": { "description": "Relative time: less than 2 minutes ago" },
+  "@justNow": {
+    "description": "Relative time: less than 2 minutes ago"
+  },
   "minutesAgo": "{count}m ago",
-  "@minutesAgo": { "description": "Relative time in minutes", "placeholders": { "count": { "type": "int" } } },
+  "@minutesAgo": {
+    "description": "Relative time in minutes",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "hoursAgo": "{count}h ago",
-  "@hoursAgo": { "description": "Relative time in hours", "placeholders": { "count": { "type": "int" } } },
+  "@hoursAgo": {
+    "description": "Relative time in hours",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "daysAgo": "{count}d ago",
-  "@daysAgo": { "description": "Relative time in days", "placeholders": { "count": { "type": "int" } } }
+  "@daysAgo": {
+    "description": "Relative time in days",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rpPackInfo": "Info",
+  "@rpPackInfo": {
+    "description": "rpPackInfo label"
+  },
+  "rpUseThisPack": "Use this pack",
+  "@rpUseThisPack": {
+    "description": "rpUseThisPack label"
+  },
+  "rpViewOnWebsite": "View on website →",
+  "@rpViewOnWebsite": {
+    "description": "rpViewOnWebsite label"
+  },
+  "rpDownloads": "{count} downloads",
+  "@rpDownloads": {
+    "description": "Download count label",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rpPackDetailTitle": "Pack details",
+  "@rpPackDetailTitle": {
+    "description": "rpPackDetailTitle label"
+  }
 }

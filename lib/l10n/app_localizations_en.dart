@@ -2086,4 +2086,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String daysAgo(int count) {
     return '${count}d ago';
   }
+
+  @override
+  String get rpPackInfo => 'Info';
+
+  @override
+  String get rpUseThisPack => 'Use this pack';
+
+  @override
+  String get rpViewOnWebsite => 'View on website →';
+
+  @override
+  String rpDownloads(int count) {
+    return '$count downloads';
+  }
+
+  @override
+  String get rpPackDetailTitle => 'Pack details';
 }

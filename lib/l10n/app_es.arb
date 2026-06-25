@@ -1613,6 +1613,16 @@
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "Activar paquete de recursos",
   "rpWhatWorks": "Qué funciona",
+  "rpSupportedBedrockOnly": "Solo Bedrock Edition (.mcpack o .zip)",
+  "rpSupportedBedrockOnlyHint": "Los packs de Java no funcionan en consolas.",
+  "rpSupportedTexture": "Packs de recursos y texturas",
+  "rpSupportedTextureHint": "Estos son oficialmente compatibles y funcionan de forma fiable.",
+  "rpUnsupportedShaders": "Shaders, packs de comportamiento, packs de skins",
+  "rpUnsupportedShadersHint": "Estos no se cargarán en consolas a través de MCCompanion.",
+  "rpUnsupportedAddons": "Complementos y mods de UI",
+  "rpUnsupportedAddonsHint": "A veces pueden funcionar, pero no son oficialmente compatibles. Úsalos bajo tu propio riesgo.",
+  "rpConsolePerformanceTitle": "Rendimiento de la consola",
+  "rpConsolePerformanceBody": "Los packs de texturas de alta resolución pueden causar lag o bloqueos en las consolas. Si experimentas problemas, cambia a un pack de menor resolución o selecciona un subpack más ligero si el pack lo permite.",
   "rpWhatDoesntWork": "Qué no funciona",
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 bucket público",
@@ -1707,5 +1717,30 @@
   "startPageHomeSubtitle": "Mostrar la pantalla de inicio con mosaicos",
   "startPageFeature": "Función",
   "startPageFeatureSubtitle": "Abrir directamente en una página específica",
-  "startPageSectionLabel": "PÁGINA DE INICIO"
+  "startPageSectionLabel": "PÁGINA DE INICIO",
+  "rpPackInfo": "Info",
+  "@rpPackInfo": {
+    "description": "rpPackInfo label"
+  },
+  "rpUseThisPack": "Usar este pack",
+  "@rpUseThisPack": {
+    "description": "rpUseThisPack label"
+  },
+  "rpViewOnWebsite": "Ver en el sitio web →",
+  "@rpViewOnWebsite": {
+    "description": "rpViewOnWebsite label"
+  },
+  "rpDownloads": "{count} descargas",
+  "@rpDownloads": {
+    "description": "Download count label",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rpPackDetailTitle": "Detalles del pack",
+  "@rpPackDetailTitle": {
+    "description": "rpPackDetailTitle label"
+  }
 }

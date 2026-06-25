@@ -1609,6 +1609,16 @@
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "ریسورس پیک فعال کریں",
   "rpWhatWorks": "کیا کام کرتا ہے",
+  "rpSupportedBedrockOnly": "صرف Bedrock Edition (.mcpack یا .zip)",
+  "rpSupportedBedrockOnlyHint": "Java پیک کنسول پر کام نہیں کرتے۔",
+  "rpSupportedTexture": "ریسورس پیک اور ٹیکسچر پیک",
+  "rpSupportedTextureHint": "یہ باضابطہ طور پر سپورٹ ہیں اور قابل اعتماد طریقے سے کام کرتے ہیں۔",
+  "rpUnsupportedShaders": "شیڈرز، بیہیوئیر پیک، اسکن پیک",
+  "rpUnsupportedShadersHint": "یہ MCCompanion کے ذریعے کنسول پر لوڈ نہیں ہوں گے۔",
+  "rpUnsupportedAddons": "ایڈ آن اور UI موڈز",
+  "rpUnsupportedAddonsHint": "کبھی کبھی کام کر سکتے ہیں لیکن باضابطہ طور پر سپورٹ نہیں ہیں۔ اپنی ذمہ داری پر استعمال کریں۔",
+  "rpConsolePerformanceTitle": "کنسول کارکردگی",
+  "rpConsolePerformanceBody": "اعلی ریزولیوشن ٹیکسچر پیک کنسول پر لیگ یا کریش کا باعث بن سکتے ہیں۔ اگر مسائل آئیں تو کم ریزولیوشن پیک پر سوئچ کریں یا اگر پیک سپورٹ کرے تو ہلکا سب پیک منتخب کریں۔",
   "rpWhatDoesntWork": "کیا کام نہیں کرتا",
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 عوامی بکیٹ",
@@ -1703,5 +1713,30 @@
   "startPageHomeSubtitle": "ٹائلوں کے ساتھ ہوم اسکرین دکھائیں",
   "startPageFeature": "خصوصیت",
   "startPageFeatureSubtitle": "براہ راست ایک مخصوص صفحے پر کھولیں",
-  "startPageSectionLabel": "شروعاتی صفحہ"
+  "startPageSectionLabel": "شروعاتی صفحہ",
+  "rpPackInfo": "معلومات",
+  "@rpPackInfo": {
+    "description": "rpPackInfo label"
+  },
+  "rpUseThisPack": "یہ پیک استعمال کریں",
+  "@rpUseThisPack": {
+    "description": "rpUseThisPack label"
+  },
+  "rpViewOnWebsite": "ویب سائٹ پر دیکھیں →",
+  "@rpViewOnWebsite": {
+    "description": "rpViewOnWebsite label"
+  },
+  "rpDownloads": "{count} ڈاؤنلوڈ",
+  "@rpDownloads": {
+    "description": "Download count label",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rpPackDetailTitle": "پیک کی تفصیلات",
+  "@rpPackDetailTitle": {
+    "description": "rpPackDetailTitle label"
+  }
 }

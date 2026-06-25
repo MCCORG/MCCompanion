@@ -1613,6 +1613,16 @@
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "রিসোর্স প্যাক সক্রিয় করুন",
   "rpWhatWorks": "যা কাজ করে",
+  "rpSupportedBedrockOnly": "শুধুমাত্র Bedrock Edition (.mcpack বা .zip)",
+  "rpSupportedBedrockOnlyHint": "Java প্যাকগুলো কনসোলে কাজ করে না।",
+  "rpSupportedTexture": "রিসোর্স প্যাক ও টেক্সচার প্যাক",
+  "rpSupportedTextureHint": "এগুলো আনুষ্ঠানিকভাবে সমর্থিত এবং নির্ভরযোগ্যভাবে কাজ করে।",
+  "rpUnsupportedShaders": "শেডার, বিহেভিয়ার প্যাক, স্কিন প্যাক",
+  "rpUnsupportedShadersHint": "এগুলো MCCompanion-এর মাধ্যমে কনসোলে লোড হবে না।",
+  "rpUnsupportedAddons": "অ্যাড-অন ও UI মড",
+  "rpUnsupportedAddonsHint": "কখনো কখনো কাজ করতে পারে, তবে আনুষ্ঠানিকভাবে সমর্থিত নয়। নিজের ঝুঁকিতে ব্যবহার করুন।",
+  "rpConsolePerformanceTitle": "কনসোল পারফরম্যান্স",
+  "rpConsolePerformanceBody": "উচ্চ-রেজোলিউশন টেক্সচার প্যাক কনসোলে ল্যাগ বা ক্র্যাশ ঘটাতে পারে। সমস্যা হলে কম রেজোলিউশনের প্যাকে স্যুইচ করুন বা প্যাক সমর্থন করলে হালকা সাবপ্যাক বেছে নিন।",
   "rpWhatDoesntWork": "যা কাজ করে না",
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 পাবলিক বাকেট",
@@ -1707,5 +1717,30 @@
   "startPageHomeSubtitle": "টাইলসহ হোম স্ক্রিন দেখান",
   "startPageFeature": "ফিচার",
   "startPageFeatureSubtitle": "সরাসরি একটি নির্দিষ্ট পৃষ্ঠায় খুলুন",
-  "startPageSectionLabel": "শুরুর পৃষ্ঠা"
+  "startPageSectionLabel": "শুরুর পৃষ্ঠা",
+  "rpPackInfo": "তথ্য",
+  "@rpPackInfo": {
+    "description": "rpPackInfo label"
+  },
+  "rpUseThisPack": "এই প্যাক ব্যবহার করুন",
+  "@rpUseThisPack": {
+    "description": "rpUseThisPack label"
+  },
+  "rpViewOnWebsite": "ওয়েবসাইটে দেখুন →",
+  "@rpViewOnWebsite": {
+    "description": "rpViewOnWebsite label"
+  },
+  "rpDownloads": "{count} ডাউনলোড",
+  "@rpDownloads": {
+    "description": "Download count label",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rpPackDetailTitle": "প্যাক বিবরণ",
+  "@rpPackDetailTitle": {
+    "description": "rpPackDetailTitle label"
+  }
 }

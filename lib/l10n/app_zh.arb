@@ -1613,6 +1613,16 @@
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "启用资源包",
   "rpWhatWorks": "有效的方式",
+  "rpSupportedBedrockOnly": "仅限基岩版（.mcpack 或 .zip）",
+  "rpSupportedBedrockOnlyHint": "Java版材质包不适用于主机。",
+  "rpSupportedTexture": "资源包和材质包",
+  "rpSupportedTextureHint": "这些受到官方支持，可靠运行。",
+  "rpUnsupportedShaders": "光影、行为包、皮肤包",
+  "rpUnsupportedShadersHint": "这些无法通过MCCompanion在主机上加载。",
+  "rpUnsupportedAddons": "附加包和UI模组",
+  "rpUnsupportedAddonsHint": "有时可能有效，但未得到官方支持。使用风险自负。",
+  "rpConsolePerformanceTitle": "主机性能",
+  "rpConsolePerformanceBody": "高分辨率材质包可能导致主机卡顿或崩溃。如果遇到问题，请切换至低分辨率包，或选择较轻量的子包（如果该包支持）。",
   "rpWhatDoesntWork": "无效的方式",
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 公共存储桶",
@@ -1707,5 +1717,30 @@
   "startPageHomeSubtitle": "显示带有磁贴的主屏幕",
   "startPageFeature": "功能",
   "startPageFeatureSubtitle": "直接在特定页面打开",
-  "startPageSectionLabel": "起始页面"
+  "startPageSectionLabel": "起始页面",
+  "rpPackInfo": "信息",
+  "@rpPackInfo": {
+    "description": "rpPackInfo label"
+  },
+  "rpUseThisPack": "使用此包",
+  "@rpUseThisPack": {
+    "description": "rpUseThisPack label"
+  },
+  "rpViewOnWebsite": "在网站上查看 →",
+  "@rpViewOnWebsite": {
+    "description": "rpViewOnWebsite label"
+  },
+  "rpDownloads": "{count} 次下载",
+  "@rpDownloads": {
+    "description": "Download count label",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rpPackDetailTitle": "包详情",
+  "@rpPackDetailTitle": {
+    "description": "rpPackDetailTitle label"
+  }
 }

@@ -1827,28 +1827,28 @@ class AppLocalizationsJa extends AppLocalizations {
   String get rpWhatWorks => '動作するもの';
 
   @override
-  String get rpSupportedBedrockOnly => 'Bedrock Edition only (.mcpack or .zip)';
+  String get rpSupportedBedrockOnly => '統合版のみ（.mcpack または .zip）';
 
   @override
-  String get rpSupportedBedrockOnlyHint => 'Java packs don\'t work on consoles.';
+  String get rpSupportedBedrockOnlyHint => 'Java版パックはコンソールでは動作しません。';
 
   @override
-  String get rpSupportedTexture => 'Resource packs & texture packs';
+  String get rpSupportedTexture => 'リソースパック＆テクスチャパック';
 
   @override
-  String get rpSupportedTextureHint => 'These are officially supported and work reliably.';
+  String get rpSupportedTextureHint => 'これらは公式にサポートされており、確実に動作します。';
 
   @override
-  String get rpUnsupportedShaders => 'Shaders, behavior packs, skin packs';
+  String get rpUnsupportedShaders => 'シェーダー、ビヘイビアパック、スキンパック';
 
   @override
-  String get rpUnsupportedShadersHint => 'These won\'t load on consoles via MCCompanion.';
+  String get rpUnsupportedShadersHint => 'これらはMCCompanion経由でコンソールに読み込まれません。';
 
   @override
-  String get rpUnsupportedAddons => 'Add-ons & UI mods';
+  String get rpUnsupportedAddons => 'アドオン＆UIモッド';
 
   @override
-  String get rpUnsupportedAddonsHint => 'May sometimes work, but not officially supported. Use at your own risk.';
+  String get rpUnsupportedAddonsHint => '動作することもありますが、公式にはサポートされていません。自己責任でご使用ください。';
 
   @override
   String get rpNoDiscord => 'Discordリンク — .mcpack 拡張子がなく、数時間で期限切れになります';
@@ -1860,10 +1860,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get rpNoEncrypted => '暗号化またはパスワード保護されたパックのサーバー';
 
   @override
-  String get rpConsolePerformanceTitle => 'Console performance';
+  String get rpConsolePerformanceTitle => 'コンソールのパフォーマンス';
 
   @override
-  String get rpConsolePerformanceBody => 'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.';
+  String get rpConsolePerformanceBody => '高解像度テクスチャパックはコンソールでのラグやクラッシュを引き起こす可能性があります。問題が発生した場合は、低解像度のパックに切り替えるか、パックがサポートしている場合は軽量なサブパックを選択してください。';
 
   @override
   String get rpWarnDiscord => 'DiscordリンクはExpireし、動作しなくなります。代わりに永続的なホストを使用してください。';
@@ -2086,4 +2086,21 @@ class AppLocalizationsJa extends AppLocalizations {
   String daysAgo(int count) {
     return '$count日前';
   }
+
+  @override
+  String get rpPackInfo => '詳細';
+
+  @override
+  String get rpUseThisPack => 'このパックを使う';
+
+  @override
+  String get rpViewOnWebsite => 'ウェブサイトで見る →';
+
+  @override
+  String rpDownloads(int count) {
+    return '$count ダウンロード';
+  }
+
+  @override
+  String get rpPackDetailTitle => 'パックの詳細';
 }

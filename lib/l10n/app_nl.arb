@@ -929,6 +929,16 @@
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "Resourcepakket inschakelen",
   "rpWhatWorks": "Wat werkt",
+  "rpSupportedBedrockOnly": "Alleen Bedrock Edition (.mcpack of .zip)",
+  "rpSupportedBedrockOnlyHint": "Java-packs werken niet op consoles.",
+  "rpSupportedTexture": "Resourcepaketten & texturepaketten",
+  "rpSupportedTextureHint": "Deze worden officieel ondersteund en werken betrouwbaar.",
+  "rpUnsupportedShaders": "Shaders, gedragspaketten, skinpaketten",
+  "rpUnsupportedShadersHint": "Deze worden niet geladen op consoles via MCCompanion.",
+  "rpUnsupportedAddons": "Add-ons & UI-mods",
+  "rpUnsupportedAddonsHint": "Kunnen soms werken, maar worden niet officieel ondersteund. Gebruik op eigen risico.",
+  "rpConsolePerformanceTitle": "Consoleprestaties",
+  "rpConsolePerformanceBody": "Texturepaketten met hoge resolutie kunnen lag of crashes veroorzaken op consoles. Als je problemen ervaart, schakel over op een pakket met lagere resolutie of selecteer een lichter subpakket als dat beschikbaar is.",
   "rpWhatDoesntWork": "Wat niet werkt",
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 publieke bucket",
@@ -1024,5 +1034,30 @@
   "startPageHomeSubtitle": "Toon het startscherm met tegels",
   "startPageFeature": "Functie",
   "startPageFeatureSubtitle": "Open direct op een specifieke pagina",
-  "startPageSectionLabel": "STARTPAGINA"
+  "startPageSectionLabel": "STARTPAGINA",
+  "rpPackInfo": "Info",
+  "@rpPackInfo": {
+    "description": "rpPackInfo label"
+  },
+  "rpUseThisPack": "Gebruik dit pack",
+  "@rpUseThisPack": {
+    "description": "rpUseThisPack label"
+  },
+  "rpViewOnWebsite": "Bekijk op website →",
+  "@rpViewOnWebsite": {
+    "description": "rpViewOnWebsite label"
+  },
+  "rpDownloads": "{count} downloads",
+  "@rpDownloads": {
+    "description": "Download count label",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rpPackDetailTitle": "Pack details",
+  "@rpPackDetailTitle": {
+    "description": "rpPackDetailTitle label"
+  }
 }

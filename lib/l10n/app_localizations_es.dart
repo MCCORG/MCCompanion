@@ -1827,28 +1827,28 @@ class AppLocalizationsEs extends AppLocalizations {
   String get rpWhatWorks => 'Qué funciona';
 
   @override
-  String get rpSupportedBedrockOnly => 'Bedrock Edition only (.mcpack or .zip)';
+  String get rpSupportedBedrockOnly => 'Solo Bedrock Edition (.mcpack o .zip)';
 
   @override
-  String get rpSupportedBedrockOnlyHint => 'Java packs don\'t work on consoles.';
+  String get rpSupportedBedrockOnlyHint => 'Los packs de Java no funcionan en consolas.';
 
   @override
-  String get rpSupportedTexture => 'Resource packs & texture packs';
+  String get rpSupportedTexture => 'Packs de recursos y texturas';
 
   @override
-  String get rpSupportedTextureHint => 'These are officially supported and work reliably.';
+  String get rpSupportedTextureHint => 'Estos son oficialmente compatibles y funcionan de forma fiable.';
 
   @override
-  String get rpUnsupportedShaders => 'Shaders, behavior packs, skin packs';
+  String get rpUnsupportedShaders => 'Shaders, packs de comportamiento, packs de skins';
 
   @override
-  String get rpUnsupportedShadersHint => 'These won\'t load on consoles via MCCompanion.';
+  String get rpUnsupportedShadersHint => 'Estos no se cargarán en consolas a través de MCCompanion.';
 
   @override
-  String get rpUnsupportedAddons => 'Add-ons & UI mods';
+  String get rpUnsupportedAddons => 'Complementos y mods de UI';
 
   @override
-  String get rpUnsupportedAddonsHint => 'May sometimes work, but not officially supported. Use at your own risk.';
+  String get rpUnsupportedAddonsHint => 'A veces pueden funcionar, pero no son oficialmente compatibles. Úsalos bajo tu propio riesgo.';
 
   @override
   String get rpNoDiscord => 'Enlaces de Discord — sin extensión .mcpack y caducan a las pocas horas';
@@ -1860,10 +1860,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get rpNoEncrypted => 'Servidores con paquetes cifrados o protegidos con contraseña';
 
   @override
-  String get rpConsolePerformanceTitle => 'Console performance';
+  String get rpConsolePerformanceTitle => 'Rendimiento de la consola';
 
   @override
-  String get rpConsolePerformanceBody => 'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.';
+  String get rpConsolePerformanceBody => 'Los packs de texturas de alta resolución pueden causar lag o bloqueos en las consolas. Si experimentas problemas, cambia a un pack de menor resolución o selecciona un subpack más ligero si el pack lo permite.';
 
   @override
   String get rpWarnDiscord => 'Los enlaces de Discord caducan y dejarán de funcionar. Usa un host permanente en su lugar.';
@@ -2086,4 +2086,21 @@ class AppLocalizationsEs extends AppLocalizations {
   String daysAgo(int count) {
     return 'Hace ${count}d';
   }
+
+  @override
+  String get rpPackInfo => 'Info';
+
+  @override
+  String get rpUseThisPack => 'Usar este pack';
+
+  @override
+  String get rpViewOnWebsite => 'Ver en el sitio web →';
+
+  @override
+  String rpDownloads(int count) {
+    return '$count descargas';
+  }
+
+  @override
+  String get rpPackDetailTitle => 'Detalles del pack';
 }

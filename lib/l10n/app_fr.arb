@@ -1613,6 +1613,16 @@
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "Activer le pack de ressources",
   "rpWhatWorks": "Ce qui fonctionne",
+  "rpSupportedBedrockOnly": "Bedrock Edition uniquement (.mcpack ou .zip)",
+  "rpSupportedBedrockOnlyHint": "Les packs Java ne fonctionnent pas sur les consoles.",
+  "rpSupportedTexture": "Packs de ressources & packs de textures",
+  "rpSupportedTextureHint": "Ceux-ci sont officiellement pris en charge et fonctionnent de manière fiable.",
+  "rpUnsupportedShaders": "Shaders, packs de comportement, packs de skins",
+  "rpUnsupportedShadersHint": "Ceux-ci ne se chargeront pas sur les consoles via MCCompanion.",
+  "rpUnsupportedAddons": "Compléments & mods UI",
+  "rpUnsupportedAddonsHint": "Peuvent parfois fonctionner, mais ne sont pas officiellement pris en charge. À utiliser à vos risques et périls.",
+  "rpConsolePerformanceTitle": "Performances de la console",
+  "rpConsolePerformanceBody": "Les packs de textures haute résolution peuvent provoquer des lags ou des plantages sur les consoles. Si vous rencontrez des problèmes, passez à un pack de résolution inférieure ou sélectionnez un sous-pack plus léger si le pack le prend en charge.",
   "rpWhatDoesntWork": "Ce qui ne fonctionne pas",
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / bucket public AWS S3",
@@ -1707,5 +1717,30 @@
   "startPageHomeSubtitle": "Afficher l'écran d'accueil avec les tuiles",
   "startPageFeature": "Fonction",
   "startPageFeatureSubtitle": "Ouvrir directement sur une page spécifique",
-  "startPageSectionLabel": "PAGE DE DÉMARRAGE"
+  "startPageSectionLabel": "PAGE DE DÉMARRAGE",
+  "rpPackInfo": "Info",
+  "@rpPackInfo": {
+    "description": "rpPackInfo label"
+  },
+  "rpUseThisPack": "Utiliser ce pack",
+  "@rpUseThisPack": {
+    "description": "rpUseThisPack label"
+  },
+  "rpViewOnWebsite": "Voir sur le site →",
+  "@rpViewOnWebsite": {
+    "description": "rpViewOnWebsite label"
+  },
+  "rpDownloads": "{count} téléchargements",
+  "@rpDownloads": {
+    "description": "Download count label",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rpPackDetailTitle": "Détails du pack",
+  "@rpPackDetailTitle": {
+    "description": "rpPackDetailTitle label"
+  }
 }

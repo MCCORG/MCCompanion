@@ -1613,6 +1613,16 @@
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "Ressourcenpaket aktivieren",
   "rpWhatWorks": "Was funktioniert",
+  "rpSupportedBedrockOnly": "Nur Bedrock Edition (.mcpack oder .zip)",
+  "rpSupportedBedrockOnlyHint": "Java-Packs funktionieren nicht auf Konsolen.",
+  "rpSupportedTexture": "Ressourcenpakete & Texturpakete",
+  "rpSupportedTextureHint": "Diese werden offiziell unterstützt und funktionieren zuverlässig.",
+  "rpUnsupportedShaders": "Shader, Verhaltenspakete, Skin-Packs",
+  "rpUnsupportedShadersHint": "Diese werden auf Konsolen über MCCompanion nicht geladen.",
+  "rpUnsupportedAddons": "Add-ons & UI-Mods",
+  "rpUnsupportedAddonsHint": "Funktionieren manchmal, werden aber nicht offiziell unterstützt. Nutzung auf eigene Gefahr.",
+  "rpConsolePerformanceTitle": "Konsolenleistung",
+  "rpConsolePerformanceBody": "Texturpakete mit hoher Auflösung können auf Konsolen Lag oder Abstürze verursachen. Bei Problemen wechsle zu einem Paket mit niedrigerer Auflösung oder wähle ein leichteres Subpaket, falls vorhanden.",
   "rpWhatDoesntWork": "Was nicht funktioniert",
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 öffentlicher Bucket",
@@ -1707,5 +1717,30 @@
   "startPageHomeSubtitle": "Startbildschirm mit Kacheln anzeigen",
   "startPageFeature": "Funktion",
   "startPageFeatureSubtitle": "Direkt auf einer bestimmten Seite öffnen",
-  "startPageSectionLabel": "STARTSEITE"
+  "startPageSectionLabel": "STARTSEITE",
+  "rpPackInfo": "Info",
+  "@rpPackInfo": {
+    "description": "rpPackInfo label"
+  },
+  "rpUseThisPack": "Dieses Pack verwenden",
+  "@rpUseThisPack": {
+    "description": "rpUseThisPack label"
+  },
+  "rpViewOnWebsite": "Auf Website ansehen →",
+  "@rpViewOnWebsite": {
+    "description": "rpViewOnWebsite label"
+  },
+  "rpDownloads": "{count} Downloads",
+  "@rpDownloads": {
+    "description": "Download count label",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rpPackDetailTitle": "Pack-Details",
+  "@rpPackDetailTitle": {
+    "description": "rpPackDetailTitle label"
+  }
 }

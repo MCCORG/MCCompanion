@@ -1613,6 +1613,16 @@
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "リソースパックを有効にする",
   "rpWhatWorks": "動作するもの",
+  "rpSupportedBedrockOnly": "統合版のみ（.mcpack または .zip）",
+  "rpSupportedBedrockOnlyHint": "Java版パックはコンソールでは動作しません。",
+  "rpSupportedTexture": "リソースパック＆テクスチャパック",
+  "rpSupportedTextureHint": "これらは公式にサポートされており、確実に動作します。",
+  "rpUnsupportedShaders": "シェーダー、ビヘイビアパック、スキンパック",
+  "rpUnsupportedShadersHint": "これらはMCCompanion経由でコンソールに読み込まれません。",
+  "rpUnsupportedAddons": "アドオン＆UIモッド",
+  "rpUnsupportedAddonsHint": "動作することもありますが、公式にはサポートされていません。自己責任でご使用ください。",
+  "rpConsolePerformanceTitle": "コンソールのパフォーマンス",
+  "rpConsolePerformanceBody": "高解像度テクスチャパックはコンソールでのラグやクラッシュを引き起こす可能性があります。問題が発生した場合は、低解像度のパックに切り替えるか、パックがサポートしている場合は軽量なサブパックを選択してください。",
   "rpWhatDoesntWork": "動作しないもの",
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 パブリックバケット",
@@ -1707,5 +1717,30 @@
   "startPageHomeSubtitle": "タイル付きのホーム画面を表示",
   "startPageFeature": "機能",
   "startPageFeatureSubtitle": "特定のページを直接開く",
-  "startPageSectionLabel": "スタートページ"
+  "startPageSectionLabel": "スタートページ",
+  "rpPackInfo": "詳細",
+  "@rpPackInfo": {
+    "description": "rpPackInfo label"
+  },
+  "rpUseThisPack": "このパックを使う",
+  "@rpUseThisPack": {
+    "description": "rpUseThisPack label"
+  },
+  "rpViewOnWebsite": "ウェブサイトで見る →",
+  "@rpViewOnWebsite": {
+    "description": "rpViewOnWebsite label"
+  },
+  "rpDownloads": "{count} ダウンロード",
+  "@rpDownloads": {
+    "description": "Download count label",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rpPackDetailTitle": "パックの詳細",
+  "@rpPackDetailTitle": {
+    "description": "rpPackDetailTitle label"
+  }
 }

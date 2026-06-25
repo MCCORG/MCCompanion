@@ -1827,28 +1827,28 @@ class AppLocalizationsSw extends AppLocalizations {
   String get rpWhatWorks => 'Kinachofanya kazi';
 
   @override
-  String get rpSupportedBedrockOnly => 'Bedrock Edition only (.mcpack or .zip)';
+  String get rpSupportedBedrockOnly => 'Bedrock Edition pekee (.mcpack au .zip)';
 
   @override
-  String get rpSupportedBedrockOnlyHint => 'Java packs don\'t work on consoles.';
+  String get rpSupportedBedrockOnlyHint => 'Pakiti za Java hazifanyi kazi kwenye consoles.';
 
   @override
-  String get rpSupportedTexture => 'Resource packs & texture packs';
+  String get rpSupportedTexture => 'Pakiti za rasilimali na pakiti za muundo';
 
   @override
-  String get rpSupportedTextureHint => 'These are officially supported and work reliably.';
+  String get rpSupportedTextureHint => 'Hizi zinasaidiwa rasmi na hufanya kazi kwa uhakika.';
 
   @override
-  String get rpUnsupportedShaders => 'Shaders, behavior packs, skin packs';
+  String get rpUnsupportedShaders => 'Vivuli, pakiti za tabia, pakiti za ngozi';
 
   @override
-  String get rpUnsupportedShadersHint => 'These won\'t load on consoles via MCCompanion.';
+  String get rpUnsupportedShadersHint => 'Hizi hazitapakiwa kwenye consoles kupitia MCCompanion.';
 
   @override
-  String get rpUnsupportedAddons => 'Add-ons & UI mods';
+  String get rpUnsupportedAddons => 'Nyongeza na mabadiliko ya UI';
 
   @override
-  String get rpUnsupportedAddonsHint => 'May sometimes work, but not officially supported. Use at your own risk.';
+  String get rpUnsupportedAddonsHint => 'Wakati mwingine zinaweza kufanya kazi, lakini hazisaidiwa rasmi. Tumia kwa hatari yako.';
 
   @override
   String get rpNoDiscord => 'Viungo vya Discord — hakuna ugani wa .mcpack na vinaisha baada ya masaa machache';
@@ -1860,10 +1860,10 @@ class AppLocalizationsSw extends AppLocalizations {
   String get rpNoEncrypted => 'Seva zenye pakiti zilizosimbwa au zilindwa na nywila';
 
   @override
-  String get rpConsolePerformanceTitle => 'Console performance';
+  String get rpConsolePerformanceTitle => 'Utendaji wa console';
 
   @override
-  String get rpConsolePerformanceBody => 'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.';
+  String get rpConsolePerformanceBody => 'Pakiti za muundo zenye azimio la juu zinaweza kusababisha ucheleweshaji au kuacha kufanya kazi kwenye consoles. Ukipata matatizo, badili hadi pakiti yenye azimio la chini au chagua subpackage nyepesi ikiwa pakiti inaauni.';
 
   @override
   String get rpWarnDiscord => 'Viungo vya Discord vinaisha na vitaacha kufanya kazi. Tumia seva ya kudumu badala yake.';
@@ -2086,4 +2086,21 @@ class AppLocalizationsSw extends AppLocalizations {
   String daysAgo(int count) {
     return 'Siku $count zilizopita';
   }
+
+  @override
+  String get rpPackInfo => 'Maelezo';
+
+  @override
+  String get rpUseThisPack => 'Tumia pakiti hii';
+
+  @override
+  String get rpViewOnWebsite => 'Tazama kwenye tovuti →';
+
+  @override
+  String rpDownloads(int count) {
+    return 'Vipakuliwa $count';
+  }
+
+  @override
+  String get rpPackDetailTitle => 'Maelezo ya pakiti';
 }

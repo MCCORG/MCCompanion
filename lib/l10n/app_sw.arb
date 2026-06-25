@@ -1609,6 +1609,16 @@
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "Wezesha kifurushi cha rasilimali",
   "rpWhatWorks": "Kinachofanya kazi",
+  "rpSupportedBedrockOnly": "Bedrock Edition pekee (.mcpack au .zip)",
+  "rpSupportedBedrockOnlyHint": "Pakiti za Java hazifanyi kazi kwenye consoles.",
+  "rpSupportedTexture": "Pakiti za rasilimali na pakiti za muundo",
+  "rpSupportedTextureHint": "Hizi zinasaidiwa rasmi na hufanya kazi kwa uhakika.",
+  "rpUnsupportedShaders": "Vivuli, pakiti za tabia, pakiti za ngozi",
+  "rpUnsupportedShadersHint": "Hizi hazitapakiwa kwenye consoles kupitia MCCompanion.",
+  "rpUnsupportedAddons": "Nyongeza na mabadiliko ya UI",
+  "rpUnsupportedAddonsHint": "Wakati mwingine zinaweza kufanya kazi, lakini hazisaidiwa rasmi. Tumia kwa hatari yako.",
+  "rpConsolePerformanceTitle": "Utendaji wa console",
+  "rpConsolePerformanceBody": "Pakiti za muundo zenye azimio la juu zinaweza kusababisha ucheleweshaji au kuacha kufanya kazi kwenye consoles. Ukipata matatizo, badili hadi pakiti yenye azimio la chini au chagua subpackage nyepesi ikiwa pakiti inaauni.",
   "rpWhatDoesntWork": "Kisichofanya kazi",
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 bucket ya umma",
@@ -1703,5 +1713,30 @@
   "startPageHomeSubtitle": "Onyesha skrini ya nyumbani na vigae",
   "startPageFeature": "Kipengele",
   "startPageFeatureSubtitle": "Fungua moja kwa moja kwenye ukurasa mahususi",
-  "startPageSectionLabel": "UKURASA WA MWANZO"
+  "startPageSectionLabel": "UKURASA WA MWANZO",
+  "rpPackInfo": "Maelezo",
+  "@rpPackInfo": {
+    "description": "rpPackInfo label"
+  },
+  "rpUseThisPack": "Tumia pakiti hii",
+  "@rpUseThisPack": {
+    "description": "rpUseThisPack label"
+  },
+  "rpViewOnWebsite": "Tazama kwenye tovuti →",
+  "@rpViewOnWebsite": {
+    "description": "rpViewOnWebsite label"
+  },
+  "rpDownloads": "Vipakuliwa {count}",
+  "@rpDownloads": {
+    "description": "Download count label",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rpPackDetailTitle": "Maelezo ya pakiti",
+  "@rpPackDetailTitle": {
+    "description": "rpPackDetailTitle label"
+  }
 }

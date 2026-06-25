@@ -1613,6 +1613,16 @@
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "रिसोर्स पैक सक्षम करें",
   "rpWhatWorks": "क्या काम करता है",
+  "rpSupportedBedrockOnly": "केवल Bedrock Edition (.mcpack या .zip)",
+  "rpSupportedBedrockOnlyHint": "Java पैक्स कंसोल पर काम नहीं करते।",
+  "rpSupportedTexture": "रिसोर्स पैक्स और टेक्सचर पैक्स",
+  "rpSupportedTextureHint": "ये आधिकारिक रूप से समर्थित हैं और विश्वसनीय रूप से काम करते हैं।",
+  "rpUnsupportedShaders": "शेडर्स, बिहेवियर पैक्स, स्किन पैक्स",
+  "rpUnsupportedShadersHint": "ये MCCompanion के माध्यम से कंसोल पर लोड नहीं होंगे।",
+  "rpUnsupportedAddons": "ऐड-ऑन और UI मॉड्स",
+  "rpUnsupportedAddonsHint": "कभी-कभी काम कर सकते हैं, लेकिन आधिकारिक रूप से समर्थित नहीं हैं। अपने जोखिम पर उपयोग करें।",
+  "rpConsolePerformanceTitle": "कंसोल प्रदर्शन",
+  "rpConsolePerformanceBody": "उच्च-रिज़ॉल्यूशन टेक्सचर पैक्स कंसोल पर लैग या क्रैश का कारण बन सकते हैं। यदि समस्याएं आती हैं, तो कम रिज़ॉल्यूशन पैक पर स्विच करें या यदि पैक समर्थन करता है तो हल्का सबपैक चुनें।",
   "rpWhatDoesntWork": "क्या काम नहीं करता",
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 पब्लिक बकेट",
@@ -1707,5 +1717,30 @@
   "startPageHomeSubtitle": "टाइल्स के साथ होम स्क्रीन दिखाएं",
   "startPageFeature": "सुविधा",
   "startPageFeatureSubtitle": "किसी विशिष्ट पृष्ठ पर सीधे खोलें",
-  "startPageSectionLabel": "शुरुआती पृष्ठ"
+  "startPageSectionLabel": "शुरुआती पृष्ठ",
+  "rpPackInfo": "जानकारी",
+  "@rpPackInfo": {
+    "description": "rpPackInfo label"
+  },
+  "rpUseThisPack": "यह पैक उपयोग करें",
+  "@rpUseThisPack": {
+    "description": "rpUseThisPack label"
+  },
+  "rpViewOnWebsite": "वेबसाइट पर देखें →",
+  "@rpViewOnWebsite": {
+    "description": "rpViewOnWebsite label"
+  },
+  "rpDownloads": "{count} डाउनलोड",
+  "@rpDownloads": {
+    "description": "Download count label",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rpPackDetailTitle": "पैक विवरण",
+  "@rpPackDetailTitle": {
+    "description": "rpPackDetailTitle label"
+  }
 }

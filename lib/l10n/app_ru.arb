@@ -1613,6 +1613,16 @@
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "Включить пакет ресурсов",
   "rpWhatWorks": "Что работает",
+  "rpSupportedBedrockOnly": "Только Bedrock Edition (.mcpack или .zip)",
+  "rpSupportedBedrockOnlyHint": "Пакеты Java не работают на консолях.",
+  "rpSupportedTexture": "Пакеты ресурсов и текстур",
+  "rpSupportedTextureHint": "Официально поддерживаются и работают надёжно.",
+  "rpUnsupportedShaders": "Шейдеры, пакеты поведения, пакеты скинов",
+  "rpUnsupportedShadersHint": "Они не будут загружаться на консолях через MCCompanion.",
+  "rpUnsupportedAddons": "Дополнения и моды интерфейса",
+  "rpUnsupportedAddonsHint": "Иногда могут работать, но официально не поддерживаются. Используйте на свой риск.",
+  "rpConsolePerformanceTitle": "Производительность консоли",
+  "rpConsolePerformanceBody": "Пакеты текстур высокого разрешения могут вызывать лаги или сбои на консолях. Если у вас возникают проблемы, переключитесь на пакет с более низким разрешением или выберите более лёгкий субпакет, если пакет поддерживает это.",
   "rpWhatDoesntWork": "Что не работает",
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 публичный бакет",
@@ -1707,5 +1717,30 @@
   "startPageHomeSubtitle": "Показать главный экран с плитками",
   "startPageFeature": "Функция",
   "startPageFeatureSubtitle": "Открывать сразу на определённой странице",
-  "startPageSectionLabel": "СТАРТОВАЯ СТРАНИЦА"
+  "startPageSectionLabel": "СТАРТОВАЯ СТРАНИЦА",
+  "rpPackInfo": "Инфо",
+  "@rpPackInfo": {
+    "description": "rpPackInfo label"
+  },
+  "rpUseThisPack": "Использовать пак",
+  "@rpUseThisPack": {
+    "description": "rpUseThisPack label"
+  },
+  "rpViewOnWebsite": "Открыть на сайте →",
+  "@rpViewOnWebsite": {
+    "description": "rpViewOnWebsite label"
+  },
+  "rpDownloads": "{count} загрузок",
+  "@rpDownloads": {
+    "description": "Download count label",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rpPackDetailTitle": "Детали пака",
+  "@rpPackDetailTitle": {
+    "description": "rpPackDetailTitle label"
+  }
 }

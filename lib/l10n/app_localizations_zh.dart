@@ -1827,28 +1827,28 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpWhatWorks => '有效的方式';
 
   @override
-  String get rpSupportedBedrockOnly => 'Bedrock Edition only (.mcpack or .zip)';
+  String get rpSupportedBedrockOnly => '仅限基岩版（.mcpack 或 .zip）';
 
   @override
-  String get rpSupportedBedrockOnlyHint => 'Java packs don\'t work on consoles.';
+  String get rpSupportedBedrockOnlyHint => 'Java版材质包不适用于主机。';
 
   @override
-  String get rpSupportedTexture => 'Resource packs & texture packs';
+  String get rpSupportedTexture => '资源包和材质包';
 
   @override
-  String get rpSupportedTextureHint => 'These are officially supported and work reliably.';
+  String get rpSupportedTextureHint => '这些受到官方支持，可靠运行。';
 
   @override
-  String get rpUnsupportedShaders => 'Shaders, behavior packs, skin packs';
+  String get rpUnsupportedShaders => '光影、行为包、皮肤包';
 
   @override
-  String get rpUnsupportedShadersHint => 'These won\'t load on consoles via MCCompanion.';
+  String get rpUnsupportedShadersHint => '这些无法通过MCCompanion在主机上加载。';
 
   @override
-  String get rpUnsupportedAddons => 'Add-ons & UI mods';
+  String get rpUnsupportedAddons => '附加包和UI模组';
 
   @override
-  String get rpUnsupportedAddonsHint => 'May sometimes work, but not officially supported. Use at your own risk.';
+  String get rpUnsupportedAddonsHint => '有时可能有效，但未得到官方支持。使用风险自负。';
 
   @override
   String get rpNoDiscord => 'Discord 链接 — 没有 .mcpack 扩展名，且会在几小时后失效';
@@ -1860,10 +1860,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpNoEncrypted => '带有加密或密码保护包的服务器';
 
   @override
-  String get rpConsolePerformanceTitle => 'Console performance';
+  String get rpConsolePerformanceTitle => '主机性能';
 
   @override
-  String get rpConsolePerformanceBody => 'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.';
+  String get rpConsolePerformanceBody => '高分辨率材质包可能导致主机卡顿或崩溃。如果遇到问题，请切换至低分辨率包，或选择较轻量的子包（如果该包支持）。';
 
   @override
   String get rpWarnDiscord => 'Discord 链接会过期并停止工作。请改用永久性托管服务。';
@@ -2086,4 +2086,21 @@ class AppLocalizationsZh extends AppLocalizations {
   String daysAgo(int count) {
     return '$count天前';
   }
+
+  @override
+  String get rpPackInfo => '信息';
+
+  @override
+  String get rpUseThisPack => '使用此包';
+
+  @override
+  String get rpViewOnWebsite => '在网站上查看 →';
+
+  @override
+  String rpDownloads(int count) {
+    return '$count 次下载';
+  }
+
+  @override
+  String get rpPackDetailTitle => '包详情';
 }

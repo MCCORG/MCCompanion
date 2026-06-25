@@ -1613,6 +1613,16 @@
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "Ativar pacote de recursos",
   "rpWhatWorks": "O que funciona",
+  "rpSupportedBedrockOnly": "Somente Bedrock Edition (.mcpack ou .zip)",
+  "rpSupportedBedrockOnlyHint": "Packs de Java não funcionam em consoles.",
+  "rpSupportedTexture": "Packs de recursos & packs de texturas",
+  "rpSupportedTextureHint": "Esses são oficialmente suportados e funcionam de forma confiável.",
+  "rpUnsupportedShaders": "Shaders, packs de comportamento, packs de skins",
+  "rpUnsupportedShadersHint": "Esses não serão carregados em consoles via MCCompanion.",
+  "rpUnsupportedAddons": "Add-ons & mods de UI",
+  "rpUnsupportedAddonsHint": "Podem funcionar às vezes, mas não são oficialmente suportados. Use por sua conta e risco.",
+  "rpConsolePerformanceTitle": "Desempenho do console",
+  "rpConsolePerformanceBody": "Packs de texturas de alta resolução podem causar lag ou travamentos em consoles. Se você tiver problemas, mude para um pack de resolução menor ou selecione um subpack mais leve, se o pack suportar.",
   "rpWhatDoesntWork": "O que não funciona",
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 bucket público",
@@ -1707,5 +1717,30 @@
   "startPageHomeSubtitle": "Mostrar a tela inicial com blocos",
   "startPageFeature": "Recurso",
   "startPageFeatureSubtitle": "Abrir diretamente em uma página específica",
-  "startPageSectionLabel": "PÁGINA INICIAL"
+  "startPageSectionLabel": "PÁGINA INICIAL",
+  "rpPackInfo": "Info",
+  "@rpPackInfo": {
+    "description": "rpPackInfo label"
+  },
+  "rpUseThisPack": "Usar este pack",
+  "@rpUseThisPack": {
+    "description": "rpUseThisPack label"
+  },
+  "rpViewOnWebsite": "Ver no site →",
+  "@rpViewOnWebsite": {
+    "description": "rpViewOnWebsite label"
+  },
+  "rpDownloads": "{count} downloads",
+  "@rpDownloads": {
+    "description": "Download count label",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rpPackDetailTitle": "Detalhes do pack",
+  "@rpPackDetailTitle": {
+    "description": "rpPackDetailTitle label"
+  }
 }

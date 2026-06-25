@@ -4100,6 +4100,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count}d ago'**
   String daysAgo(int count);
+
+  /// rpPackInfo label
+  ///
+  /// In en, this message translates to:
+  /// **'Info'**
+  String get rpPackInfo;
+
+  /// rpUseThisPack label
+  ///
+  /// In en, this message translates to:
+  /// **'Use this pack'**
+  String get rpUseThisPack;
+
+  /// rpViewOnWebsite label
+  ///
+  /// In en, this message translates to:
+  /// **'View on website →'**
+  String get rpViewOnWebsite;
+
+  /// Download count label
+  ///
+  /// In en, this message translates to:
+  /// **'{count} downloads'**
+  String rpDownloads(int count);
+
+  /// rpPackDetailTitle label
+  ///
+  /// In en, this message translates to:
+  /// **'Pack details'**
+  String get rpPackDetailTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

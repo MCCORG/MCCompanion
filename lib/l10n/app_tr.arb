@@ -1613,6 +1613,16 @@
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "Kaynak paketini etkinleştir",
   "rpWhatWorks": "Çalışanlar",
+  "rpSupportedBedrockOnly": "Yalnızca Bedrock Edition (.mcpack veya .zip)",
+  "rpSupportedBedrockOnlyHint": "Java paketleri konsolda çalışmaz.",
+  "rpSupportedTexture": "Kaynak paketleri ve doku paketleri",
+  "rpSupportedTextureHint": "Bunlar resmi olarak desteklenir ve güvenilir biçimde çalışır.",
+  "rpUnsupportedShaders": "Gölgelendiriciler, davranış paketleri, görünüm paketleri",
+  "rpUnsupportedShadersHint": "Bunlar MCCompanion aracılığıyla konsolda yüklenmeyecek.",
+  "rpUnsupportedAddons": "Eklentiler ve UI modları",
+  "rpUnsupportedAddonsHint": "Bazen çalışabilir ancak resmi olarak desteklenmez. Kendi riskinizle kullanın.",
+  "rpConsolePerformanceTitle": "Konsol performansı",
+  "rpConsolePerformanceBody": "Yüksek çözünürlüklü doku paketleri konsolda takılma veya çökmeye neden olabilir. Sorun yaşarsanız daha düşük çözünürlüklü bir pakete geçin veya paket destekliyorsa daha hafif bir altpaket seçin.",
   "rpWhatDoesntWork": "Çalışmayanlar",
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 genel bucket",
@@ -1707,5 +1717,30 @@
   "startPageHomeSubtitle": "Kutucuklu ana ekranı göster",
   "startPageFeature": "Özellik",
   "startPageFeatureSubtitle": "Doğrudan belirli bir sayfada aç",
-  "startPageSectionLabel": "BAŞLANGIÇ SAYFASI"
+  "startPageSectionLabel": "BAŞLANGIÇ SAYFASI",
+  "rpPackInfo": "Bilgi",
+  "@rpPackInfo": {
+    "description": "rpPackInfo label"
+  },
+  "rpUseThisPack": "Bu paketi kullan",
+  "@rpUseThisPack": {
+    "description": "rpUseThisPack label"
+  },
+  "rpViewOnWebsite": "Web sitesinde görüntüle →",
+  "@rpViewOnWebsite": {
+    "description": "rpViewOnWebsite label"
+  },
+  "rpDownloads": "{count} indirme",
+  "@rpDownloads": {
+    "description": "Download count label",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rpPackDetailTitle": "Paket detayları",
+  "@rpPackDetailTitle": {
+    "description": "rpPackDetailTitle label"
+  }
 }

@@ -1609,6 +1609,16 @@
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "Aktifkan paket sumber daya",
   "rpWhatWorks": "Yang berfungsi",
+  "rpSupportedBedrockOnly": "Hanya Bedrock Edition (.mcpack atau .zip)",
+  "rpSupportedBedrockOnlyHint": "Pack Java tidak berfungsi di konsol.",
+  "rpSupportedTexture": "Resource pack & texture pack",
+  "rpSupportedTextureHint": "Ini didukung secara resmi dan bekerja dengan andal.",
+  "rpUnsupportedShaders": "Shader, behavior pack, skin pack",
+  "rpUnsupportedShadersHint": "Ini tidak akan dimuat di konsol melalui MCCompanion.",
+  "rpUnsupportedAddons": "Add-on & mod UI",
+  "rpUnsupportedAddonsHint": "Kadang bisa berfungsi, tetapi tidak didukung secara resmi. Gunakan dengan risiko sendiri.",
+  "rpConsolePerformanceTitle": "Performa konsol",
+  "rpConsolePerformanceBody": "Texture pack beresolusi tinggi dapat menyebabkan lag atau crash di konsol. Jika mengalami masalah, beralih ke pack beresolusi lebih rendah atau pilih subpack yang lebih ringan jika pack mendukungnya.",
   "rpWhatDoesntWork": "Yang tidak berfungsi",
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 bucket publik",
@@ -1703,5 +1713,30 @@
   "startPageHomeSubtitle": "Tampilkan layar beranda dengan ubin",
   "startPageFeature": "Fitur",
   "startPageFeatureSubtitle": "Buka langsung ke halaman tertentu",
-  "startPageSectionLabel": "HALAMAN AWAL"
+  "startPageSectionLabel": "HALAMAN AWAL",
+  "rpPackInfo": "Info",
+  "@rpPackInfo": {
+    "description": "rpPackInfo label"
+  },
+  "rpUseThisPack": "Gunakan paket ini",
+  "@rpUseThisPack": {
+    "description": "rpUseThisPack label"
+  },
+  "rpViewOnWebsite": "Lihat di website →",
+  "@rpViewOnWebsite": {
+    "description": "rpViewOnWebsite label"
+  },
+  "rpDownloads": "{count} unduhan",
+  "@rpDownloads": {
+    "description": "Download count label",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rpPackDetailTitle": "Detail paket",
+  "@rpPackDetailTitle": {
+    "description": "rpPackDetailTitle label"
+  }
 }
