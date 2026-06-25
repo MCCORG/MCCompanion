@@ -25,13 +25,20 @@ class RpFeaturedPackCard extends StatelessWidget {
     final name = pack['name'] as String;
     final description = pack['description'] as String?;
     final thumbnailUrl = pack['thumbnailUrl'] as String?;
-    final tags = pack['tags'] is List ? (pack['tags'] as List).cast<String>() : <String>[];
+    final tags = pack['tags'] is List
+        ? (pack['tags'] as List).cast<String>()
+        : <String>[];
     final category = pack['category'] as String?;
-    final downloadCount = pack['downloadCount'] is int ? pack['downloadCount'] as int : int.tryParse(pack['downloadCount']?.toString() ?? '');
-    final sizeBytes = pack['sizeBytes'] is int ? pack['sizeBytes'] as int : int.tryParse(pack['sizeBytes']?.toString() ?? '');
+    final slug = pack['slug'] as String?;
+    final downloadCount = pack['downloadCount'] is int
+        ? pack['downloadCount'] as int
+        : int.tryParse(pack['downloadCount']?.toString() ?? '');
+    final sizeBytes = pack['sizeBytes'] is int
+        ? pack['sizeBytes'] as int
+        : int.tryParse(pack['sizeBytes']?.toString() ?? '');
 
     return Container(
-      margin: const EdgeInsets.only(bottom: 10),
+      margin: const EdgeInsets.only(bottom: 8),
       decoration: BoxDecoration(
         color: AppTheme.surfaceRaised,
         borderRadius: BorderRadius.circular(12),
@@ -40,120 +47,167 @@ class RpFeaturedPackCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: thumbnailUrl != null
-                  ? Image.network(
-                      thumbnailUrl,
-                      width: 72, height: 72,
-                      fit: BoxFit.contain,
-                      filterQuality: FilterQuality.none,
-                      errorBuilder: (ctx, err, st) => _placeholder(),
-                    )
-                  : _placeholder(),
+            Container(
+              width: 80,
+              height: 80,
+              decoration: BoxDecoration(
+                color: const Color(0xFF1a1f2a),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: thumbnailUrl != null
+                    ? Image.network(
+                        thumbnailUrl,
+                        width: 80,
+                        height: 80,
+                        fit: BoxFit.contain,
+                        filterQuality: FilterQuality.none,
+                        errorBuilder: (ctx, err, st) => Icon(
+                          Icons.extension_rounded,
+                          color: AppTheme.textMuted,
+                          size: 30,
+                        ),
+                      )
+                    : Icon(
+                        Icons.extension_rounded,
+                        color: AppTheme.textMuted,
+                        size: 30,
+                      ),
+              ),
             ),
-            const SizedBox(width: 12),
+            const SizedBox(width: 14),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    name,
-                    style: TextStyle(color: AppTheme.textPrimary, fontSize: 13, fontWeight: FontWeight.w700),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          name,
+                          style: TextStyle(
+                            color: AppTheme.textPrimary,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      isApplying
+                          ? SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                color: AppTheme.accent,
+                              ),
+                            )
+                          : GestureDetector(
+                              onTap: onUse,
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 7,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: AppTheme.accent,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Text(
+                                  'Use',
+                                  style: TextStyle(
+                                    color: AppTheme.surfaceRaised,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ),
+                            ),
+                    ],
                   ),
                   if (description != null && description.isNotEmpty) ...[
                     const SizedBox(height: 3),
                     Text(
                       description,
-                      style: TextStyle(color: AppTheme.textMuted, fontSize: 12, height: 1.4),
+                      style: TextStyle(
+                        color: AppTheme.textMuted,
+                        fontSize: 12,
+                        height: 1.4,
+                      ),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ],
-                  if (category != null || tags.isNotEmpty || downloadCount != null || (sizeBytes != null && sizeBytes > 0)) ...[
-                    const SizedBox(height: 6),
-                    Wrap(
-                      spacing: 4,
-                      runSpacing: 4,
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [
-                        if (category != null)
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
-                            decoration: BoxDecoration(
-                              color: const Color(0xFF60a5fa).withValues(alpha: 0.10),
-                              borderRadius: BorderRadius.circular(4),
-                              border: Border.all(color: const Color(0xFF60a5fa).withValues(alpha: 0.30)),
-                            ),
-                            child: Text(category, style: const TextStyle(color: Color(0xFF60a5fa), fontSize: 10, fontWeight: FontWeight.w600)),
+                  const SizedBox(height: 7),
+                  Wrap(
+                    spacing: 4,
+                    runSpacing: 4,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      if (category != null)
+                        _chip(category, const Color(0xFF60a5fa)),
+                      ...tags.map((t) => _chip(t, AppTheme.accent)),
+                      if (downloadCount != null)
+                        Text(
+                          '↓ $downloadCount',
+                          style: TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 11,
                           ),
-                        ...tags.map((tag) => Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
-                          decoration: BoxDecoration(
-                            color: AppTheme.accent.withValues(alpha: 0.08),
-                            borderRadius: BorderRadius.circular(4),
-                            border: Border.all(color: AppTheme.accent.withValues(alpha: 0.22)),
+                        ),
+                      if (sizeBytes != null && sizeBytes > 0)
+                        Text(
+                          _formatSize(sizeBytes),
+                          style: TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 11,
                           ),
-                          child: Text(tag, style: TextStyle(color: AppTheme.accent, fontSize: 10, fontWeight: FontWeight.w600)),
-                        )),
-                        if (downloadCount != null)
-                          Text(
-                            '↓ $downloadCount',
-                            style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
+                        ),
+                      GestureDetector(
+                        onTap: () => launchUrl(
+                          Uri.parse(
+                            slug != null
+                                ? 'https://mccompanion.net/packs?slug=$slug'
+                                : 'https://mccompanion.net/packs',
                           ),
-                        if (sizeBytes != null && sizeBytes > 0)
-                          Text(
-                            _formatSize(sizeBytes),
-                            style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
+                          mode: LaunchMode.externalApplication,
+                        ),
+                        child: Text(
+                          'Website →',
+                          style: TextStyle(
+                            color: AppTheme.accent,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w500,
                           ),
-                      ],
-                    ),
-                  ],
-                  const SizedBox(height: 4),
-                  GestureDetector(
-                    onTap: () {
-                      final slug = pack['slug'] as String?;
-                      final websiteUrl = slug != null
-                          ? 'https://mccompanion.net/packs?slug=$slug'
-                          : 'https://mccompanion.net/packs';
-                      launchUrl(Uri.parse(websiteUrl), mode: LaunchMode.externalApplication);
-                    },
-                    child: Text(
-                      'View on website →',
-                      style: TextStyle(color: AppTheme.accent, fontSize: 11, fontWeight: FontWeight.w600, decoration: TextDecoration.underline, decorationColor: AppTheme.accent),
-                    ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
-            const SizedBox(width: 10),
-            isApplying
-                ? SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: AppTheme.accent))
-                : GestureDetector(
-                    onTap: onUse,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-                      decoration: BoxDecoration(
-                        color: AppTheme.accent.withValues(alpha: 0.12),
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: AppTheme.accent.withValues(alpha: 0.30)),
-                      ),
-                      child: Text('Use', style: TextStyle(color: AppTheme.accent, fontSize: 13, fontWeight: FontWeight.w600)),
-                    ),
-                  ),
           ],
         ),
       ),
     );
   }
 
-  Widget _placeholder() => Container(
-    width: 72, height: 72,
-    color: AppTheme.surfaceRaisedSolid,
-    child: Icon(Icons.extension_rounded, color: AppTheme.textMuted, size: 28),
+  Widget _chip(String label, Color color) => Container(
+    padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
+    decoration: BoxDecoration(
+      color: color.withValues(alpha: 0.10),
+      borderRadius: BorderRadius.circular(4),
+      border: Border.all(color: color.withValues(alpha: 0.28)),
+    ),
+    child: Text(
+      label,
+      style: TextStyle(color: color, fontSize: 10, fontWeight: FontWeight.w600),
+    ),
   );
 }
