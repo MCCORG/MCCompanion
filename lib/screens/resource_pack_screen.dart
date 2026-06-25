@@ -678,47 +678,4 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     );
   }
 
-  Widget _buildUrlSection(AppLocalizations l) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        RpTabInfoBox(text: l.rpTabUrlInfo),
-        const SizedBox(height: 16),
-        TextField(
-          controller: _urlCtrl,
-          keyboardType: TextInputType.url,
-          autocorrect: false,
-          style: TextStyle(color: AppTheme.textPrimary, fontSize: 14),
-          decoration: InputDecoration(
-            hintText: l.rpPackUrlHint,
-            prefixIcon: Icon(Icons.link_rounded, color: AppTheme.textMuted, size: 18),
-          ),
-        ),
-        if (_urlWarning != null) ...[
-          const SizedBox(height: 8),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-            decoration: BoxDecoration(
-              color: AppTheme.warning.withValues(alpha: 0.08),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: AppTheme.warning.withValues(alpha: 0.3)),
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Icon(Icons.warning_amber_rounded, color: AppTheme.warning, size: 14),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    _urlWarning!,
-                    style: TextStyle(color: AppTheme.warning, fontSize: 12, height: 1.4),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ],
-    );
-  }
 }
