@@ -334,7 +334,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
-    final showControls = _mode == RpInputMode.upload;
+    final showControls = _mode == RpInputMode.upload || _mode == RpInputMode.browse;
 
     return SwipeBack(
       onBack: widget.onBack,
