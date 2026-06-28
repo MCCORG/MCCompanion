@@ -1742,5 +1742,31 @@
   "rpPackDetailTitle": "पैक विवरण",
   "@rpPackDetailTitle": {
     "description": "rpPackDetailTitle label"
-  }
+  },
+  "skinsSavedToMySkins": "मेरे स्किन्स में सहेजा गया",
+  "skinsDownloadFailed": "डाउनलोड विफल हुआ",
+  "skinsDeletedFromCloud": "क्लाउड से हटाया गया",
+  "skinsDeleteFailed": "हटाना विफल हुआ",
+  "skinsLoginToUpload": "स्किन अपलोड करने के लिए लॉग इन करें",
+  "skinsUploading": "अपलोड हो रहा है…",
+  "skinUploaded": "स्किन अपलोड हो गया!",
+  "skinUploadFailed": "अपलोड विफल: {error}",
+  "skinsTabSkins": "स्किन्स",
+  "skinsTabRecent": "हाल के",
+  "skinsEmptyCloudSkins": "अभी तक कोई क्लाउड स्किन नहीं। इसे यहाँ देखने के लिए एक स्किन अपलोड करें।",
+  "skinsEmptyLocalSkins": "अभी तक कोई स्किन नहीं। शुरू करने के लिए एक स्किन बनाएँ या अपलोड करें।",
+  "skinUploadToWebsite": "वेबसाइट पर अपलोड करें",
+  "skinReuploadToWebsite": "वेबसाइट पर पुनः अपलोड करें",
+  "skinCloudEdit": "संपादित करें",
+  "skinCloudSaveToDevice": "डिवाइस पर सहेजें",
+  "skinCloudDelete": "क्लाउड से हटाएँ",
+  "skinsTabGallery": "गैलरी",
+  "skinsGalleryEmpty": "अभी तक कोई कम्युनिटी स्किन नहीं।",
+  "skinsTopLabel": "शीर्ष 30",
+  "skinsAllLabel": "सभी स्किन्स",
+  "skinUploadToCloud": "क्लाउड पर अपलोड करें",
+  "skinSaveDialog": "स्किन सहेजें",
+  "skinNameHint": "स्किन का नाम",
+  "skinDefaultName": "मेरी स्किन",
+  "skinUpdatedInCloud": "स्किन क्लाउड में अपडेट हुआ"
 }

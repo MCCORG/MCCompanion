@@ -224,7 +224,7 @@ class _OnboardingWizardState extends State<OnboardingWizard> {
                 onPressed: _back,
                 child: Text(
                   l.back,
-                  style: TextStyle(color: AppTheme.textMuted, fontSize: 14),
+                  style: TextStyle(color: Colors.white.withValues(alpha: 0.6), fontSize: 14),
                 ),
               )
             else
@@ -308,8 +308,8 @@ class _ThemeStep extends StatelessWidget {
       children: [
         Text(
           AppLocalizations.of(context)!.onboardingThemeTitle,
-          style: TextStyle(
-            color: AppTheme.textPrimary,
+          style: const TextStyle(
+            color: Colors.white,
             fontSize: 20,
             fontWeight: FontWeight.w700,
           ),
@@ -317,7 +317,7 @@ class _ThemeStep extends StatelessWidget {
         const SizedBox(height: 6),
         Text(
           AppLocalizations.of(context)!.onboardingThemeSubtitle,
-          style: TextStyle(color: AppTheme.textMuted, fontSize: 13, height: 1.5),
+          style: TextStyle(color: Colors.white.withValues(alpha: 0.6), fontSize: 13, height: 1.5),
         ),
         const SizedBox(height: 20),
         GridView.builder(
@@ -328,7 +328,7 @@ class _ThemeStep extends StatelessWidget {
             crossAxisCount: 2,
             mainAxisSpacing: 8,
             crossAxisSpacing: 8,
-            childAspectRatio: 2.2,
+            childAspectRatio: 1.7,
           ),
           itemBuilder: (_, i) {
             final t = themePresets[i];
@@ -389,8 +389,8 @@ class _ThemeStep extends StatelessWidget {
                     const SizedBox(height: 5),
                     Text(
                       t.label,
-                      style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.9),
+                      style: const TextStyle(
+                        color: Colors.white,
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                       ),
@@ -466,8 +466,8 @@ class _NavStep extends StatelessWidget {
       children: [
         Text(
           l.onboardingNavTitle,
-          style: TextStyle(
-            color: AppTheme.textPrimary,
+          style: const TextStyle(
+            color: Colors.white,
             fontSize: 20,
             fontWeight: FontWeight.w700,
           ),
@@ -475,7 +475,7 @@ class _NavStep extends StatelessWidget {
         const SizedBox(height: 6),
         Text(
           l.onboardingNavSubtitle,
-          style: TextStyle(color: AppTheme.textMuted, fontSize: 13, height: 1.5),
+          style: TextStyle(color: Colors.white.withValues(alpha: 0.6), fontSize: 13, height: 1.5),
         ),
         const SizedBox(height: 20),
         _NavPreview(left: navLeft, right: navRight, l: l),
@@ -616,8 +616,8 @@ class _StartPageStep extends StatelessWidget {
       children: [
         Text(
           l.onboardingStartTitle,
-          style: TextStyle(
-            color: AppTheme.textPrimary,
+          style: const TextStyle(
+            color: Colors.white,
             fontSize: 20,
             fontWeight: FontWeight.w700,
           ),
@@ -625,7 +625,7 @@ class _StartPageStep extends StatelessWidget {
         const SizedBox(height: 6),
         Text(
           l.onboardingStartSubtitle,
-          style: TextStyle(color: AppTheme.textMuted, fontSize: 13, height: 1.5),
+          style: TextStyle(color: Colors.white.withValues(alpha: 0.6), fontSize: 13, height: 1.5),
         ),
         const SizedBox(height: 20),
         GridView.count(
@@ -655,13 +655,13 @@ class _StartPageStep extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    Icon(o.icon, size: 16, color: isSelected ? color : AppTheme.textMuted),
+                    Icon(o.icon, size: 16, color: isSelected ? color : Colors.white.withValues(alpha: 0.5)),
                     const SizedBox(width: 8),
                     Expanded(
                       child: Text(
                         o.label,
                         style: TextStyle(
-                          color: isSelected ? color : AppTheme.textPrimary,
+                          color: isSelected ? color : Colors.white,
                           fontSize: 13,
                           fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
                         ),

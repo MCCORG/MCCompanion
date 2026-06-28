@@ -1742,5 +1742,31 @@
   "rpPackDetailTitle": "প্যাক বিবরণ",
   "@rpPackDetailTitle": {
     "description": "rpPackDetailTitle label"
-  }
+  },
+  "skinsSavedToMySkins": "আমার স্কিনে সংরক্ষিত হয়েছে",
+  "skinsDownloadFailed": "ডাউনলোড ব্যর্থ হয়েছে",
+  "skinsDeletedFromCloud": "ক্লাউড থেকে মুছে ফেলা হয়েছে",
+  "skinsDeleteFailed": "মুছে ফেলা ব্যর্থ হয়েছে",
+  "skinsLoginToUpload": "স্কিন আপলোড করতে লগ ইন করুন",
+  "skinsUploading": "আপলোড হচ্ছে…",
+  "skinUploaded": "স্কিন আপলোড হয়েছে!",
+  "skinUploadFailed": "আপলোড ব্যর্থ: {error}",
+  "skinsTabSkins": "স্কিন",
+  "skinsTabRecent": "সাম্প্রতিক",
+  "skinsEmptyCloudSkins": "এখনো কোনো ক্লাউড স্কিন নেই। এখানে দেখতে একটি স্কিন আপলোড করুন।",
+  "skinsEmptyLocalSkins": "এখনো কোনো স্কিন নেই। শুরু করতে একটি স্কিন তৈরি বা আপলোড করুন।",
+  "skinUploadToWebsite": "ওয়েবসাইটে আপলোড করুন",
+  "skinReuploadToWebsite": "ওয়েবসাইটে পুনরায় আপলোড করুন",
+  "skinCloudEdit": "সম্পাদনা করুন",
+  "skinCloudSaveToDevice": "ডিভাইসে সংরক্ষণ করুন",
+  "skinCloudDelete": "ক্লাউড থেকে মুছুন",
+  "skinsTabGallery": "গ্যালারি",
+  "skinsGalleryEmpty": "এখনো কোনো কমিউনিটি স্কিন নেই।",
+  "skinsTopLabel": "শীর্ষ ৩০",
+  "skinsAllLabel": "সব স্কিন",
+  "skinUploadToCloud": "ক্লাউডে আপলোড করুন",
+  "skinSaveDialog": "স্কিন সেভ করুন",
+  "skinNameHint": "স্কিনের নাম",
+  "skinDefaultName": "আমার স্কিন",
+  "skinUpdatedInCloud": "ক্লাউডে স্কিন আপডেট হয়েছে"
 }

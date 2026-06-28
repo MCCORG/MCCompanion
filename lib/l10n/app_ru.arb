@@ -1742,5 +1742,31 @@
   "rpPackDetailTitle": "Детали пака",
   "@rpPackDetailTitle": {
     "description": "rpPackDetailTitle label"
-  }
+  },
+  "skinsSavedToMySkins": "Сохранено в Мои скины",
+  "skinsDownloadFailed": "Ошибка загрузки",
+  "skinsDeletedFromCloud": "Удалено из облака",
+  "skinsDeleteFailed": "Ошибка удаления",
+  "skinsLoginToUpload": "Войдите, чтобы загружать скины",
+  "skinsUploading": "Загрузка…",
+  "skinUploaded": "Скин загружен!",
+  "skinUploadFailed": "Ошибка загрузки: {error}",
+  "skinsTabSkins": "Скины",
+  "skinsTabRecent": "Недавние",
+  "skinsEmptyCloudSkins": "Облачных скинов пока нет. Загрузите скин, чтобы увидеть его здесь.",
+  "skinsEmptyLocalSkins": "Скинов пока нет. Создайте или загрузите скин, чтобы начать.",
+  "skinUploadToWebsite": "Загрузить на сайт",
+  "skinReuploadToWebsite": "Перезагрузить на сайт",
+  "skinCloudEdit": "Редактировать",
+  "skinCloudSaveToDevice": "Сохранить на устройство",
+  "skinCloudDelete": "Удалить из облака",
+  "skinsTabGallery": "Галерея",
+  "skinsGalleryEmpty": "Скинов сообщества пока нет.",
+  "skinsTopLabel": "Топ 30",
+  "skinsAllLabel": "Все скины",
+  "skinUploadToCloud": "Загрузить в облако",
+  "skinSaveDialog": "Сохранить скин",
+  "skinNameHint": "Название скина",
+  "skinDefaultName": "Мой скин",
+  "skinUpdatedInCloud": "Скин обновлён в облаке"
 }

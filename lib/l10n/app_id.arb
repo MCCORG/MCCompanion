@@ -1738,5 +1738,31 @@
   "rpPackDetailTitle": "Detail paket",
   "@rpPackDetailTitle": {
     "description": "rpPackDetailTitle label"
-  }
+  },
+  "skinsSavedToMySkins": "Disimpan ke Skin Saya",
+  "skinsDownloadFailed": "Unduhan gagal",
+  "skinsDeletedFromCloud": "Dihapus dari cloud",
+  "skinsDeleteFailed": "Penghapusan gagal",
+  "skinsLoginToUpload": "Masuk untuk mengunggah skin",
+  "skinsUploading": "Mengunggah…",
+  "skinUploaded": "Skin berhasil diunggah!",
+  "skinUploadFailed": "Pengunggahan gagal: {error}",
+  "skinsTabSkins": "Skin",
+  "skinsTabRecent": "Terbaru",
+  "skinsEmptyCloudSkins": "Belum ada skin cloud. Unggah skin untuk melihatnya di sini.",
+  "skinsEmptyLocalSkins": "Belum ada skin. Buat atau unggah skin untuk memulai.",
+  "skinUploadToWebsite": "Unggah ke situs web",
+  "skinReuploadToWebsite": "Unggah ulang ke situs web",
+  "skinCloudEdit": "Edit",
+  "skinCloudSaveToDevice": "Simpan ke perangkat",
+  "skinCloudDelete": "Hapus dari cloud",
+  "skinsTabGallery": "Galeri",
+  "skinsGalleryEmpty": "Belum ada skin komunitas.",
+  "skinsTopLabel": "30 Teratas",
+  "skinsAllLabel": "Semua Skin",
+  "skinUploadToCloud": "Unggah ke Cloud",
+  "skinSaveDialog": "Simpan Skin",
+  "skinNameHint": "Nama skin",
+  "skinDefaultName": "Skin saya",
+  "skinUpdatedInCloud": "Skin diperbarui di cloud"
 }

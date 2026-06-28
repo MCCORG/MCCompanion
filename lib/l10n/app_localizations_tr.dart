@@ -2103,4 +2103,84 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get rpPackDetailTitle => 'Paket detayları';
+
+  @override
+  String get skinsSavedToMySkins => 'Skinlerime kaydedildi';
+
+  @override
+  String get skinsDownloadFailed => 'İndirme başarısız oldu';
+
+  @override
+  String get skinsDeletedFromCloud => 'Buluttan silindi';
+
+  @override
+  String get skinsDeleteFailed => 'Silme başarısız oldu';
+
+  @override
+  String get skinsLoginToUpload => 'Skin yüklemek için giriş yapın';
+
+  @override
+  String get skinsUploading => 'Yükleniyor…';
+
+  @override
+  String get skinUploaded => 'Skin yüklendi!';
+
+  @override
+  String skinUploadFailed(String error) {
+    return 'Yükleme başarısız: $error';
+  }
+
+  @override
+  String get skinsTabSkins => 'Skinler';
+
+  @override
+  String get skinsTabRecent => 'Son';
+
+  @override
+  String get skinsEmptyCloudSkins => 'Henüz bulut skini yok. Burada görmek için bir skin yükleyin.';
+
+  @override
+  String get skinsEmptyLocalSkins => 'Henüz skin yok. Başlamak için bir skin oluşturun veya yükleyin.';
+
+  @override
+  String get skinUploadToWebsite => 'Web sitesine yükle';
+
+  @override
+  String get skinReuploadToWebsite => 'Web sitesine yeniden yükle';
+
+  @override
+  String get skinCloudEdit => 'Düzenle';
+
+  @override
+  String get skinCloudSaveToDevice => 'Cihaza kaydet';
+
+  @override
+  String get skinCloudDelete => 'Buluttan sil';
+
+  @override
+  String get skinsTabGallery => 'Galeri';
+
+  @override
+  String get skinsGalleryEmpty => 'Henüz topluluk skini yok.';
+
+  @override
+  String get skinsTopLabel => 'Top 30';
+
+  @override
+  String get skinsAllLabel => 'Tüm Skinler';
+
+  @override
+  String get skinUploadToCloud => 'Buluta yükle';
+
+  @override
+  String get skinSaveDialog => 'Skin kaydet';
+
+  @override
+  String get skinNameHint => 'Skin adı';
+
+  @override
+  String get skinDefaultName => 'Benim skinim';
+
+  @override
+  String get skinUpdatedInCloud => 'Skin bulutta güncellendi';
 }

@@ -2103,4 +2103,84 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get rpPackDetailTitle => 'Pack details';
+
+  @override
+  String get skinsSavedToMySkins => 'Saved to My Skins';
+
+  @override
+  String get skinsDownloadFailed => 'Download failed';
+
+  @override
+  String get skinsDeletedFromCloud => 'Deleted from cloud';
+
+  @override
+  String get skinsDeleteFailed => 'Delete failed';
+
+  @override
+  String get skinsLoginToUpload => 'Log in to upload skins';
+
+  @override
+  String get skinsUploading => 'Uploading…';
+
+  @override
+  String get skinUploaded => 'Skin uploaded!';
+
+  @override
+  String skinUploadFailed(String error) {
+    return 'Upload failed: $error';
+  }
+
+  @override
+  String get skinsTabSkins => 'Skins';
+
+  @override
+  String get skinsTabRecent => 'Recent';
+
+  @override
+  String get skinsEmptyCloudSkins => 'No cloud skins yet. Upload a skin to see it here.';
+
+  @override
+  String get skinsEmptyLocalSkins => 'No skins yet. Create or upload a skin to get started.';
+
+  @override
+  String get skinUploadToWebsite => 'Upload to website';
+
+  @override
+  String get skinReuploadToWebsite => 'Re-upload to website';
+
+  @override
+  String get skinCloudEdit => 'Edit';
+
+  @override
+  String get skinCloudSaveToDevice => 'Save to device';
+
+  @override
+  String get skinCloudDelete => 'Delete from cloud';
+
+  @override
+  String get skinsTabGallery => 'Gallery';
+
+  @override
+  String get skinsGalleryEmpty => 'No community skins yet.';
+
+  @override
+  String get skinsTopLabel => 'Top 30';
+
+  @override
+  String get skinsAllLabel => 'All Skins';
+
+  @override
+  String get skinUploadToCloud => 'Upload to Cloud';
+
+  @override
+  String get skinSaveDialog => 'Save Skin';
+
+  @override
+  String get skinNameHint => 'Skin name';
+
+  @override
+  String get skinDefaultName => 'My Skin';
+
+  @override
+  String get skinUpdatedInCloud => 'Skin updated in cloud';
 }

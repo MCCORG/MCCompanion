@@ -2103,4 +2103,84 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get rpPackDetailTitle => 'Detail paket';
+
+  @override
+  String get skinsSavedToMySkins => 'Disimpan ke Skin Saya';
+
+  @override
+  String get skinsDownloadFailed => 'Unduhan gagal';
+
+  @override
+  String get skinsDeletedFromCloud => 'Dihapus dari cloud';
+
+  @override
+  String get skinsDeleteFailed => 'Penghapusan gagal';
+
+  @override
+  String get skinsLoginToUpload => 'Masuk untuk mengunggah skin';
+
+  @override
+  String get skinsUploading => 'Mengunggah…';
+
+  @override
+  String get skinUploaded => 'Skin berhasil diunggah!';
+
+  @override
+  String skinUploadFailed(String error) {
+    return 'Pengunggahan gagal: $error';
+  }
+
+  @override
+  String get skinsTabSkins => 'Skin';
+
+  @override
+  String get skinsTabRecent => 'Terbaru';
+
+  @override
+  String get skinsEmptyCloudSkins => 'Belum ada skin cloud. Unggah skin untuk melihatnya di sini.';
+
+  @override
+  String get skinsEmptyLocalSkins => 'Belum ada skin. Buat atau unggah skin untuk memulai.';
+
+  @override
+  String get skinUploadToWebsite => 'Unggah ke situs web';
+
+  @override
+  String get skinReuploadToWebsite => 'Unggah ulang ke situs web';
+
+  @override
+  String get skinCloudEdit => 'Edit';
+
+  @override
+  String get skinCloudSaveToDevice => 'Simpan ke perangkat';
+
+  @override
+  String get skinCloudDelete => 'Hapus dari cloud';
+
+  @override
+  String get skinsTabGallery => 'Galeri';
+
+  @override
+  String get skinsGalleryEmpty => 'Belum ada skin komunitas.';
+
+  @override
+  String get skinsTopLabel => '30 Teratas';
+
+  @override
+  String get skinsAllLabel => 'Semua Skin';
+
+  @override
+  String get skinUploadToCloud => 'Unggah ke Cloud';
+
+  @override
+  String get skinSaveDialog => 'Simpan Skin';
+
+  @override
+  String get skinNameHint => 'Nama skin';
+
+  @override
+  String get skinDefaultName => 'Skin saya';
+
+  @override
+  String get skinUpdatedInCloud => 'Skin diperbarui di cloud';
 }

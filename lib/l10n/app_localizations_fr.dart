@@ -2103,4 +2103,84 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get rpPackDetailTitle => 'Détails du pack';
+
+  @override
+  String get skinsSavedToMySkins => 'Enregistré dans Mes Skins';
+
+  @override
+  String get skinsDownloadFailed => 'Échec du téléchargement';
+
+  @override
+  String get skinsDeletedFromCloud => 'Supprimé du cloud';
+
+  @override
+  String get skinsDeleteFailed => 'Échec de la suppression';
+
+  @override
+  String get skinsLoginToUpload => 'Connectez-vous pour téléverser des skins';
+
+  @override
+  String get skinsUploading => 'Téléversement en cours…';
+
+  @override
+  String get skinUploaded => 'Skin téléversé !';
+
+  @override
+  String skinUploadFailed(String error) {
+    return 'Échec du téléversement : $error';
+  }
+
+  @override
+  String get skinsTabSkins => 'Skins';
+
+  @override
+  String get skinsTabRecent => 'Récents';
+
+  @override
+  String get skinsEmptyCloudSkins => 'Aucun skin dans le cloud pour l\'instant. Téléversez un skin pour le voir ici.';
+
+  @override
+  String get skinsEmptyLocalSkins => 'Aucun skin pour l\'instant. Créez ou téléversez un skin pour commencer.';
+
+  @override
+  String get skinUploadToWebsite => 'Téléverser sur le site';
+
+  @override
+  String get skinReuploadToWebsite => 'Re-téléverser sur le site';
+
+  @override
+  String get skinCloudEdit => 'Modifier';
+
+  @override
+  String get skinCloudSaveToDevice => 'Enregistrer sur l\'appareil';
+
+  @override
+  String get skinCloudDelete => 'Supprimer du cloud';
+
+  @override
+  String get skinsTabGallery => 'Galerie';
+
+  @override
+  String get skinsGalleryEmpty => 'Aucun skin communautaire pour l\'instant.';
+
+  @override
+  String get skinsTopLabel => 'Top 30';
+
+  @override
+  String get skinsAllLabel => 'Tous les Skins';
+
+  @override
+  String get skinUploadToCloud => 'Envoyer au cloud';
+
+  @override
+  String get skinSaveDialog => 'Enregistrer le skin';
+
+  @override
+  String get skinNameHint => 'Nom du skin';
+
+  @override
+  String get skinDefaultName => 'Mon skin';
+
+  @override
+  String get skinUpdatedInCloud => 'Skin mis à jour dans le cloud';
 }

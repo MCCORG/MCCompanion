@@ -1738,5 +1738,31 @@
   "rpPackDetailTitle": "پیک کی تفصیلات",
   "@rpPackDetailTitle": {
     "description": "rpPackDetailTitle label"
-  }
+  },
+  "skinsSavedToMySkins": "میری اسکنز میں محفوظ ہو گیا",
+  "skinsDownloadFailed": "ڈاؤنلوڈ ناکام رہا",
+  "skinsDeletedFromCloud": "کلاؤڈ سے حذف کر دیا گیا",
+  "skinsDeleteFailed": "حذف کرنا ناکام رہا",
+  "skinsLoginToUpload": "اسکنز اپلوڈ کرنے کے لیے لاگ ان کریں",
+  "skinsUploading": "اپلوڈ ہو رہا ہے…",
+  "skinUploaded": "اسکن اپلوڈ ہو گیا!",
+  "skinUploadFailed": "اپلوڈ ناکام: {error}",
+  "skinsTabSkins": "اسکنز",
+  "skinsTabRecent": "حالیہ",
+  "skinsEmptyCloudSkins": "ابھی تک کوئی کلاؤڈ اسکن نہیں۔ یہاں دیکھنے کے لیے ایک اسکن اپلوڈ کریں۔",
+  "skinsEmptyLocalSkins": "ابھی تک کوئی اسکن نہیں۔ شروع کرنے کے لیے ایک اسکن بنائیں یا اپلوڈ کریں۔",
+  "skinUploadToWebsite": "ویب سائٹ پر اپلوڈ کریں",
+  "skinReuploadToWebsite": "ویب سائٹ پر دوبارہ اپلوڈ کریں",
+  "skinCloudEdit": "ترمیم کریں",
+  "skinCloudSaveToDevice": "ڈیوائس پر محفوظ کریں",
+  "skinCloudDelete": "کلاؤڈ سے حذف کریں",
+  "skinsTabGallery": "گیلری",
+  "skinsGalleryEmpty": "ابھی تک کوئی کمیونٹی اسکن نہیں۔",
+  "skinsTopLabel": "ٹاپ 30",
+  "skinsAllLabel": "تمام اسکنز",
+  "skinUploadToCloud": "کلاؤڈ پر اپ لوڈ کریں",
+  "skinSaveDialog": "سکن محفوظ کریں",
+  "skinNameHint": "سکن کا نام",
+  "skinDefaultName": "میرا سکن",
+  "skinUpdatedInCloud": "سکن کلاؤڈ میں اپ ڈیٹ ہو گیا"
 }

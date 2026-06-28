@@ -1742,5 +1742,31 @@
   "rpPackDetailTitle": "تفاصيل الحزمة",
   "@rpPackDetailTitle": {
     "description": "rpPackDetailTitle label"
-  }
+  },
+  "skinsSavedToMySkins": "تم الحفظ في سكناتي",
+  "skinsDownloadFailed": "فشل التنزيل",
+  "skinsDeletedFromCloud": "تم الحذف من السحابة",
+  "skinsDeleteFailed": "فشل الحذف",
+  "skinsLoginToUpload": "سجّل دخولك لرفع السكنات",
+  "skinsUploading": "جارٍ الرفع…",
+  "skinUploaded": "تم رفع السكن!",
+  "skinUploadFailed": "فشل الرفع: {error}",
+  "skinsTabSkins": "السكنات",
+  "skinsTabRecent": "الأخيرة",
+  "skinsEmptyCloudSkins": "لا توجد سكنات سحابية بعد. ارفع سكناً لتراه هنا.",
+  "skinsEmptyLocalSkins": "لا توجد سكنات بعد. أنشئ أو ارفع سكناً للبدء.",
+  "skinUploadToWebsite": "رفع إلى الموقع",
+  "skinReuploadToWebsite": "إعادة الرفع إلى الموقع",
+  "skinCloudEdit": "تعديل",
+  "skinCloudSaveToDevice": "حفظ على الجهاز",
+  "skinCloudDelete": "حذف من السحابة",
+  "skinsTabGallery": "معرض الصور",
+  "skinsGalleryEmpty": "لا توجد سكنات مجتمعية بعد.",
+  "skinsTopLabel": "أفضل 30",
+  "skinsAllLabel": "جميع السكنات",
+  "skinUploadToCloud": "رفع إلى السحابة",
+  "skinSaveDialog": "حفظ السكن",
+  "skinNameHint": "اسم السكن",
+  "skinDefaultName": "سكني",
+  "skinUpdatedInCloud": "تم تحديث السكن في السحابة"
 }

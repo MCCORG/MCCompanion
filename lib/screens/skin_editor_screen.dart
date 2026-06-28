@@ -12,6 +12,8 @@ import 'package:share_plus/share_plus.dart';
 import '../theme/app_theme.dart';
 import '../models/saved_skin.dart';
 import '../util/saved_skins_storage.dart';
+import '../services/skin_upload_service.dart';
+import '../services/auth_service.dart';
 import '../widgets/skin_3d_viewer.dart';
 import '../widgets/components/app_toast.dart';
 import '../l10n/app_localizations.dart';
@@ -21,11 +23,13 @@ enum _Tool { draw, fill, erase }
 class SkinEditorScreen extends StatefulWidget {
   final String? initialTextureUrl;
   final SavedSkin? existingSkin;
+  final Map<String, dynamic>? cloudSkin;
 
   const SkinEditorScreen({
     super.key,
     this.initialTextureUrl,
     this.existingSkin,
+    this.cloudSkin,
   });
 
   @override
@@ -38,6 +42,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
 
   late Uint8List _pixels;
   bool _loading = true;
+  String? _sessionCloudSkinId; // reused across uploads within this editor session
 
   _Tool _activeTool = _Tool.draw;
   Color _activeColor = const Color(0xFF3F51B5);
@@ -45,8 +50,8 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
   bool _uvMode = false;
   bool _panModeUV = false;
 
-  double _rotY = -0.5;
-  double _rotX = 0.0;
+  double _rotY = 0.4;
+  double _rotX = 0.1;
   late final AnimationController _spinCtrl;
   double _spinVelocityY = 0;
   double _spinVelocityX = 0;
@@ -73,6 +78,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
     _pixels = Uint8List(_sz * _sz * 4);
     _spinCtrl = AnimationController(vsync: this, duration: const Duration(seconds: 1))
       ..addListener(_onSpinTick);
+    _updatePreview(); // render blank canvas immediately so gestures work before texture loads
     _init();
   }
 
@@ -107,6 +113,12 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
     if (widget.existingSkin != null) {
       try {
         rawBytes = await File(widget.existingSkin!.filePath).readAsBytes();
+      } catch (_) {}
+    } else if (widget.cloudSkin != null) {
+      try {
+        final url = (widget.cloudSkin!['public_url'] ?? widget.cloudSkin!['publicUrl']) as String;
+        final resp = await http.get(Uri.parse(url), headers: {'User-Agent': 'MCCompanionApp/1.0'}).timeout(const Duration(seconds: 10));
+        rawBytes = resp.bodyBytes;
       } catch (_) {}
     } else if (widget.initialTextureUrl != null) {
       try {
@@ -376,9 +388,91 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
     _paintAt(d.localPosition);
   }
 
+  Future<void> _saveToCloud() async {
+    final pngBytes = await _toPng();
+    if (pngBytes == null) return;
+
+    if (widget.cloudSkin != null) {
+      await _saveSkin();
+      return;
+    }
+
+    final l = AppLocalizations.of(context)!;
+    String name = widget.existingSkin?.name ?? '';
+    if (name.isEmpty && _sessionCloudSkinId == null) {
+      final ctrl = TextEditingController(text: l.skinDefaultName);
+      final confirmed = await showDialog<bool>(
+        context: context,
+        builder: (ctx) {
+          final ll = AppLocalizations.of(ctx)!;
+          return AlertDialog(
+            backgroundColor: AppTheme.surface,
+            title: Text(ll.skinUploadToCloud, style: TextStyle(color: AppTheme.textPrimary, fontSize: 16, fontWeight: FontWeight.w700)),
+            content: TextField(
+              controller: ctrl,
+              autofocus: true,
+              style: TextStyle(color: AppTheme.textPrimary),
+              decoration: InputDecoration(
+                hintText: ll.skinNameHint,
+                hintStyle: TextStyle(color: AppTheme.textMuted),
+                filled: true,
+                fillColor: AppTheme.background,
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: AppTheme.borderGray)),
+                enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: AppTheme.borderGray)),
+                focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: AppTheme.accent)),
+              ),
+            ),
+            actions: [
+              TextButton(onPressed: () => Navigator.pop(ctx, false), child: Text(ll.cancel, style: TextStyle(color: AppTheme.textMuted))),
+              FilledButton(onPressed: () => Navigator.pop(ctx, true), style: FilledButton.styleFrom(backgroundColor: AppTheme.accent), child: Text(ll.skinsUpload)),
+            ],
+          );
+        },
+      );
+      if (confirmed != true || !mounted) return;
+      name = ctrl.text.trim().isEmpty ? l.skinDefaultName : ctrl.text.trim();
+    }
+
+    try {
+      _sessionCloudSkinId ??= widget.existingSkin?.id ?? DateTime.now().millisecondsSinceEpoch.toString();
+      final skinId = _sessionCloudSkinId!;
+      final dir = await getTemporaryDirectory();
+      final tmp = File('${dir.path}/$skinId.png');
+      await tmp.writeAsBytes(pngBytes);
+      await SkinUploadService.uploadSkin(skinId: skinId, name: name, filePath: tmp.path);
+      await tmp.delete();
+      if (mounted) {
+        AppToast.show(context, message: l.skinUploaded, icon: Icons.cloud_done_outlined, color: AppTheme.success, duration: const Duration(seconds: 2));
+        Navigator.pop(context, 'cloud');
+      }
+    } catch (e) {
+      if (mounted) AppToast.show(context, message: l.skinUploadFailed(e.toString().replaceAll('Exception: ', '')), icon: Icons.error_outline_rounded, color: AppTheme.error);
+    }
+  }
+
   Future<void> _saveSkin() async {
     final pngBytes = await _toPng();
     if (pngBytes == null) return;
+
+    if (widget.cloudSkin != null) {
+      final l = AppLocalizations.of(context)!;
+      final skinId = widget.cloudSkin!['id'] as String;
+      final name = widget.cloudSkin!['name'] as String? ?? l.skinDefaultName;
+      try {
+        final dir = await getTemporaryDirectory();
+        final tmp = File('${dir.path}/$skinId.png');
+        await tmp.writeAsBytes(pngBytes);
+        await SkinUploadService.uploadSkin(skinId: skinId, name: name, filePath: tmp.path);
+        await tmp.delete();
+        if (mounted) {
+          AppToast.show(context, message: l.skinUpdatedInCloud, icon: Icons.check_circle_outline_rounded, color: AppTheme.success, duration: const Duration(seconds: 2));
+          Navigator.pop(context, 'cloud');
+        }
+      } catch (e) {
+        if (mounted) AppToast.show(context, message: l.skinUploadFailed(e.toString().replaceAll('Exception: ', '')), icon: Icons.error_outline_rounded, color: AppTheme.error);
+      }
+      return;
+    }
 
     if (widget.existingSkin != null) {
       await SavedSkinsStorage.update(widget.existingSkin!.id, pngBytes);
@@ -394,62 +488,41 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
       return;
     }
 
-    final nameCtrl = TextEditingController(text: 'My Skin');
+    final l2 = AppLocalizations.of(context)!;
+    final nameCtrl = TextEditingController(text: l2.skinDefaultName);
     final confirmed = await showDialog<bool>(
       context: context,
-      builder: (_) => AlertDialog(
-        backgroundColor: AppTheme.surface,
-        title: Text(
-          'Save Skin',
-          style: TextStyle(
-            color: AppTheme.textPrimary,
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
+      builder: (ctx) {
+        final ll = AppLocalizations.of(ctx)!;
+        return AlertDialog(
+          backgroundColor: AppTheme.surface,
+          title: Text(
+            ll.skinSaveDialog,
+            style: TextStyle(color: AppTheme.textPrimary, fontSize: 16, fontWeight: FontWeight.w700),
           ),
-        ),
-        content: TextField(
-          controller: nameCtrl,
-          autofocus: true,
-          style: TextStyle(color: AppTheme.textPrimary),
-          decoration: InputDecoration(
-            hintText: 'Skin name',
-            hintStyle: TextStyle(color: AppTheme.textMuted),
-            filled: true,
-            fillColor: AppTheme.background,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(color: AppTheme.borderGray),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(color: AppTheme.borderGray),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: AppTheme.accent),
+          content: TextField(
+            controller: nameCtrl,
+            autofocus: true,
+            style: TextStyle(color: AppTheme.textPrimary),
+            decoration: InputDecoration(
+              hintText: ll.skinNameHint,
+              hintStyle: TextStyle(color: AppTheme.textMuted),
+              filled: true,
+              fillColor: AppTheme.background,
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: AppTheme.borderGray)),
+              enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: AppTheme.borderGray)),
+              focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: AppTheme.accent)),
             ),
           ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: Text(
-              'Cancel',
-              style: TextStyle(color: AppTheme.textMuted),
-            ),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.pop(context, true),
-            style: FilledButton.styleFrom(backgroundColor: AppTheme.accent),
-            child: const Text('Save'),
-          ),
-        ],
-      ),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(ctx, false), child: Text(ll.cancel, style: TextStyle(color: AppTheme.textMuted))),
+            FilledButton(onPressed: () => Navigator.pop(ctx, true), style: FilledButton.styleFrom(backgroundColor: AppTheme.accent), child: Text(ll.save)),
+          ],
+        );
+      },
     );
     if (confirmed != true || !mounted) return;
-    final name = nameCtrl.text.trim().isEmpty
-        ? 'My Skin'
-        : nameCtrl.text.trim();
+    final name = nameCtrl.text.trim().isEmpty ? l2.skinDefaultName : nameCtrl.text.trim();
     await SavedSkinsStorage.add(pngBytes, name);
     if (mounted) {
       AppToast.show(
@@ -560,11 +633,18 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
             icon: const FaIcon(FontAwesomeIcons.rotateLeft, size: 15),
             tooltip: 'Undo',
           ),
-          IconButton(
-            onPressed: _saveSkin,
-            icon: const FaIcon(FontAwesomeIcons.floppyDisk, size: 15),
-            tooltip: 'Save to My Skins',
-          ),
+          if (widget.cloudSkin == null)
+            IconButton(
+              onPressed: _saveSkin,
+              icon: const FaIcon(FontAwesomeIcons.floppyDisk, size: 15),
+              tooltip: 'Save to My Skins',
+            ),
+          if (AuthService.currentUser != null)
+            IconButton(
+              onPressed: _saveToCloud,
+              icon: const FaIcon(FontAwesomeIcons.cloudArrowUp, size: 15),
+              tooltip: widget.cloudSkin != null ? 'Update in cloud' : 'Upload to cloud',
+            ),
           IconButton(
             key: _exportButtonKey,
             onPressed: _export,

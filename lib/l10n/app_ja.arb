@@ -1742,5 +1742,31 @@
   "rpPackDetailTitle": "パックの詳細",
   "@rpPackDetailTitle": {
     "description": "rpPackDetailTitle label"
-  }
+  },
+  "skinsSavedToMySkins": "マイスキンに保存しました",
+  "skinsDownloadFailed": "ダウンロードに失敗しました",
+  "skinsDeletedFromCloud": "クラウドから削除しました",
+  "skinsDeleteFailed": "削除に失敗しました",
+  "skinsLoginToUpload": "スキンをアップロードするにはログインしてください",
+  "skinsUploading": "アップロード中…",
+  "skinUploaded": "スキンをアップロードしました！",
+  "skinUploadFailed": "アップロードに失敗しました: {error}",
+  "skinsTabSkins": "スキン",
+  "skinsTabRecent": "最近",
+  "skinsEmptyCloudSkins": "クラウドスキンはまだありません。スキンをアップロードするとここに表示されます。",
+  "skinsEmptyLocalSkins": "スキンはまだありません。スキンを作成またはアップロードして始めましょう。",
+  "skinUploadToWebsite": "ウェブサイトにアップロード",
+  "skinReuploadToWebsite": "ウェブサイトに再アップロード",
+  "skinCloudEdit": "編集",
+  "skinCloudSaveToDevice": "デバイスに保存",
+  "skinCloudDelete": "クラウドから削除",
+  "skinsTabGallery": "ギャラリー",
+  "skinsGalleryEmpty": "まだコミュニティスキンはありません。",
+  "skinsTopLabel": "トップ30",
+  "skinsAllLabel": "すべてのスキン",
+  "skinUploadToCloud": "クラウドにアップロード",
+  "skinSaveDialog": "スキンを保存",
+  "skinNameHint": "スキン名",
+  "skinDefaultName": "マイスキン",
+  "skinUpdatedInCloud": "クラウドのスキンが更新されました"
 }

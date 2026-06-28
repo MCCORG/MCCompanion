@@ -1059,5 +1059,31 @@
   "rpPackDetailTitle": "Pack details",
   "@rpPackDetailTitle": {
     "description": "rpPackDetailTitle label"
-  }
+  },
+  "skinsSavedToMySkins": "Opgeslagen in Mijn Skins",
+  "skinsDownloadFailed": "Download mislukt",
+  "skinsDeletedFromCloud": "Verwijderd uit de cloud",
+  "skinsDeleteFailed": "Verwijderen mislukt",
+  "skinsLoginToUpload": "Log in om skins te uploaden",
+  "skinsUploading": "Uploaden…",
+  "skinUploaded": "Skin geüpload!",
+  "skinUploadFailed": "Upload mislukt: {error}",
+  "skinsTabSkins": "Skins",
+  "skinsTabRecent": "Recent",
+  "skinsEmptyCloudSkins": "Nog geen cloud-skins. Upload een skin om deze hier te zien.",
+  "skinsEmptyLocalSkins": "Nog geen skins. Maak of upload een skin om te beginnen.",
+  "skinUploadToWebsite": "Uploaden naar website",
+  "skinReuploadToWebsite": "Opnieuw uploaden naar website",
+  "skinCloudEdit": "Bewerken",
+  "skinCloudSaveToDevice": "Opslaan op apparaat",
+  "skinCloudDelete": "Verwijderen uit cloud",
+  "skinsTabGallery": "Galerij",
+  "skinsGalleryEmpty": "Nog geen community-skins.",
+  "skinsTopLabel": "Top 30",
+  "skinsAllLabel": "Alle Skins",
+  "skinUploadToCloud": "Uploaden naar cloud",
+  "skinSaveDialog": "Skin opslaan",
+  "skinNameHint": "Skin naam",
+  "skinDefaultName": "Mijn skin",
+  "skinUpdatedInCloud": "Skin bijgewerkt in cloud"
 }

@@ -2103,4 +2103,84 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get rpPackDetailTitle => 'Maelezo ya pakiti';
+
+  @override
+  String get skinsSavedToMySkins => 'Imehifadhiwa katika Ngozi Zangu';
+
+  @override
+  String get skinsDownloadFailed => 'Upakuaji umeshindwa';
+
+  @override
+  String get skinsDeletedFromCloud => 'Imefutwa kutoka kwenye wingu';
+
+  @override
+  String get skinsDeleteFailed => 'Kufuta kumeshindwa';
+
+  @override
+  String get skinsLoginToUpload => 'Ingia ili kupakia ngozi';
+
+  @override
+  String get skinsUploading => 'Inapakia…';
+
+  @override
+  String get skinUploaded => 'Ngozi imepakiwa!';
+
+  @override
+  String skinUploadFailed(String error) {
+    return 'Upakiaji umeshindwa: $error';
+  }
+
+  @override
+  String get skinsTabSkins => 'Ngozi';
+
+  @override
+  String get skinsTabRecent => 'Za Hivi Karibuni';
+
+  @override
+  String get skinsEmptyCloudSkins => 'Hakuna ngozi za wingu bado. Pakia ngozi ili kuiona hapa.';
+
+  @override
+  String get skinsEmptyLocalSkins => 'Hakuna ngozi bado. Unda au pakia ngozi ili kuanza.';
+
+  @override
+  String get skinUploadToWebsite => 'Pakia kwenye tovuti';
+
+  @override
+  String get skinReuploadToWebsite => 'Pakia tena kwenye tovuti';
+
+  @override
+  String get skinCloudEdit => 'Hariri';
+
+  @override
+  String get skinCloudSaveToDevice => 'Hifadhi kwenye kifaa';
+
+  @override
+  String get skinCloudDelete => 'Futa kutoka kwenye wingu';
+
+  @override
+  String get skinsTabGallery => 'Matunzio';
+
+  @override
+  String get skinsGalleryEmpty => 'Bado hakuna ngozi za jamii.';
+
+  @override
+  String get skinsTopLabel => 'Bora 30';
+
+  @override
+  String get skinsAllLabel => 'Ngozi Zote';
+
+  @override
+  String get skinUploadToCloud => 'Pakia kwa Wingu';
+
+  @override
+  String get skinSaveDialog => 'Hifadhi Skin';
+
+  @override
+  String get skinNameHint => 'Jina la skin';
+
+  @override
+  String get skinDefaultName => 'Skin yangu';
+
+  @override
+  String get skinUpdatedInCloud => 'Skin imesasishwa kwenye wingu';
 }

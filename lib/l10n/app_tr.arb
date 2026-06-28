@@ -1742,5 +1742,31 @@
   "rpPackDetailTitle": "Paket detayları",
   "@rpPackDetailTitle": {
     "description": "rpPackDetailTitle label"
-  }
+  },
+  "skinsSavedToMySkins": "Skinlerime kaydedildi",
+  "skinsDownloadFailed": "İndirme başarısız oldu",
+  "skinsDeletedFromCloud": "Buluttan silindi",
+  "skinsDeleteFailed": "Silme başarısız oldu",
+  "skinsLoginToUpload": "Skin yüklemek için giriş yapın",
+  "skinsUploading": "Yükleniyor…",
+  "skinUploaded": "Skin yüklendi!",
+  "skinUploadFailed": "Yükleme başarısız: {error}",
+  "skinsTabSkins": "Skinler",
+  "skinsTabRecent": "Son",
+  "skinsEmptyCloudSkins": "Henüz bulut skini yok. Burada görmek için bir skin yükleyin.",
+  "skinsEmptyLocalSkins": "Henüz skin yok. Başlamak için bir skin oluşturun veya yükleyin.",
+  "skinUploadToWebsite": "Web sitesine yükle",
+  "skinReuploadToWebsite": "Web sitesine yeniden yükle",
+  "skinCloudEdit": "Düzenle",
+  "skinCloudSaveToDevice": "Cihaza kaydet",
+  "skinCloudDelete": "Buluttan sil",
+  "skinsTabGallery": "Galeri",
+  "skinsGalleryEmpty": "Henüz topluluk skini yok.",
+  "skinsTopLabel": "Top 30",
+  "skinsAllLabel": "Tüm Skinler",
+  "skinUploadToCloud": "Buluta yükle",
+  "skinSaveDialog": "Skin kaydet",
+  "skinNameHint": "Skin adı",
+  "skinDefaultName": "Benim skinim",
+  "skinUpdatedInCloud": "Skin bulutta güncellendi"
 }

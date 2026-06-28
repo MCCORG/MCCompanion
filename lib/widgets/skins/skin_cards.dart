@@ -9,6 +9,172 @@ import '../../models/saved_skin.dart';
 import 'skin_painters.dart';
 import 'skin_detail_sheets.dart';
 
+const _api = 'https://api.mccompanion.net';
+
+class GallerySkinCard extends StatefulWidget {
+  final Map<String, dynamic> skin;
+  final VoidCallback? onTap;
+  final String? idToken;
+  final bool initialLiked;
+  const GallerySkinCard({super.key, required this.skin, this.onTap, this.idToken, this.initialLiked = false});
+
+  @override
+  State<GallerySkinCard> createState() => _GallerySkinCardState();
+}
+
+class _GallerySkinCardState extends State<GallerySkinCard> {
+  late int _likes;
+  late bool _liked;
+  bool _liking = false;
+  DateTime? _lastLike;
+
+  @override
+  void initState() {
+    super.initState();
+    _likes = (widget.skin['like_count'] as num?)?.toInt() ?? 0;
+    _liked = widget.initialLiked;
+  }
+
+  Future<void> _toggleLike() async {
+    if (widget.idToken == null) return;
+    final now = DateTime.now();
+    if (_liking || (_lastLike != null && now.difference(_lastLike!) < const Duration(seconds: 2))) return;
+    _lastLike = now;
+    setState(() => _liking = true);
+    try {
+      final id = widget.skin['id'] as String;
+      final resp = await http
+          .post(Uri.parse('$_api/api/skins/$id/like'),
+              headers: {'Authorization': 'Bearer ${widget.idToken}'})
+          .timeout(const Duration(seconds: 8));
+      if (resp.statusCode == 200) {
+        final data = jsonDecode(resp.body);
+        setState(() {
+          _liked = data['liked'] as bool;
+          _likes = (data['like_count'] as num).toInt();
+        });
+      }
+    } catch (_) {}
+    if (mounted) setState(() => _liking = false);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final name = widget.skin['name'] as String? ?? '';
+    final url = (widget.skin['public_url'] ?? widget.skin['publicUrl']) as String? ?? '';
+    return GestureDetector(
+      onTap: widget.onTap,
+      child: Container(
+        width: 100,
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 8),
+        decoration: BoxDecoration(
+          color: AppTheme.surface,
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: AppTheme.borderGray),
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: Center(
+                child: url.isNotEmpty
+                    ? SkinBodyImage(textureUrl: url, height: 100)
+                    : const SizedBox(),
+              ),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              name,
+              style: TextStyle(color: AppTheme.textPrimary, fontSize: 11, fontWeight: FontWeight.w600),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 4),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (widget.idToken != null)
+                  GestureDetector(
+                    onTap: _toggleLike,
+                    behavior: HitTestBehavior.opaque,
+                    child: FaIcon(
+                      _liked ? FontAwesomeIcons.solidHeart : FontAwesomeIcons.heart,
+                      size: 10,
+                      color: _liked ? const Color(0xFFf87171) : AppTheme.textMuted,
+                    ),
+                  ),
+                if (_likes > 0) ...[
+                  const SizedBox(width: 3),
+                  Text('$_likes', style: TextStyle(color: AppTheme.textMuted, fontSize: 9, fontWeight: FontWeight.w600)),
+                ],
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CloudSkinCard extends StatelessWidget {
+  final Map<String, dynamic> skin;
+  final VoidCallback? onTap;
+  const CloudSkinCard({super.key, required this.skin, this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final name = skin['name'] as String? ?? '';
+    final url = (skin['public_url'] ?? skin['publicUrl']) as String? ?? '';
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 100,
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 8),
+        decoration: BoxDecoration(
+          color: AppTheme.surface,
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: AppTheme.borderGray),
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: Stack(
+                children: [
+                  Center(
+                    child: url.isNotEmpty
+                        ? SkinBodyImage(textureUrl: url, height: 100)
+                        : const SizedBox(),
+                  ),
+                  Positioned(
+                    top: 0, right: 0,
+                    child: Container(
+                      padding: const EdgeInsets.all(3),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF3b82f6),
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: const FaIcon(FontAwesomeIcons.cloud, size: 8, color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              name,
+              style: TextStyle(color: AppTheme.textPrimary, fontSize: 11, fontWeight: FontWeight.w600),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 4),
+            FaIcon(FontAwesomeIcons.ellipsis, size: 10, color: AppTheme.textMuted),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class SavedSkinCard extends StatelessWidget {
   final SavedSkin skin;
   final VoidCallback onTap;
@@ -29,21 +195,25 @@ class SavedSkinCard extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: Center(
-                child: LocalSkinBodyImage(filePath: skin.filePath, height: 100),
+              child: Stack(
+                children: [
+                  Center(child: LocalSkinBodyImage(filePath: skin.filePath, height: 100)),
+                  Positioned(
+                    top: 0, left: 0,
+                    child: Container(
+                      padding: const EdgeInsets.all(3),
+                      decoration: BoxDecoration(
+                        color: AppTheme.accent.withValues(alpha: 0.18),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: FaIcon(FontAwesomeIcons.mobileScreen, size: 7, color: AppTheme.accent),
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 6),
-            Text(
-              skin.name,
-              style: TextStyle(
-                color: AppTheme.textPrimary,
-                fontSize: 11,
-                fontWeight: FontWeight.w600,
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
+            Text(skin.name, style: TextStyle(color: AppTheme.textPrimary, fontSize: 11, fontWeight: FontWeight.w600), maxLines: 1, overflow: TextOverflow.ellipsis),
             const SizedBox(height: 4),
             FaIcon(FontAwesomeIcons.ellipsis, size: 10, color: AppTheme.textMuted),
           ],
@@ -97,7 +267,6 @@ class JavaSkinCard extends StatefulWidget {
   final String? badge;
   final Color? badgeColor;
   final void Function(String?)? onEdit;
-  final bool compact;
   const JavaSkinCard({
     super.key,
     required this.username,
@@ -105,7 +274,6 @@ class JavaSkinCard extends StatefulWidget {
     this.badge,
     this.badgeColor,
     this.onEdit,
-    this.compact = false,
   });
 
   @override
@@ -152,11 +320,6 @@ class JavaSkinCardState extends State<JavaSkinCard> {
     return null;
   }
 
-  Future<void> _download() async {
-    final url = _textureUrl ?? 'https://visage.surgeplay.com/skin/${widget.javaUuid}';
-    await shareTextureFile(context, url, widget.username);
-  }
-
   void _openDetail() {
     showModalBottomSheet(
       context: context,
@@ -175,109 +338,51 @@ class JavaSkinCardState extends State<JavaSkinCard> {
     final badge = widget.badge;
     final badgeColor = widget.badgeColor ?? AppTheme.accent;
 
-    final compact = widget.compact;
-    final pad = compact ? 10.0 : 14.0;
-
     return GestureDetector(
       onTap: _openDetail,
       child: Container(
-        padding: EdgeInsets.all(pad),
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 8),
         decoration: BoxDecoration(
           color: AppTheme.surface,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(14),
           border: Border.all(color: AppTheme.borderGray),
         ),
         child: Column(
           children: [
-            if (badge != null) ...[
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 3,
-                  ),
-                  decoration: BoxDecoration(
-                    color: badgeColor.withValues(alpha: 0.15),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  child: Text(
-                    badge,
-                    style: TextStyle(
-                      color: badgeColor,
-                      fontSize: 10,
-                      fontWeight: FontWeight.w700,
+            Expanded(
+              child: Stack(
+                children: [
+                  Center(
+                    child: LayoutBuilder(
+                      builder: (_, constraints) => _textureUrl != null
+                          ? SkinBodyImage(textureUrl: _textureUrl!, height: constraints.maxHeight)
+                          : CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2),
                     ),
                   ),
-                ),
-              ),
-              const SizedBox(height: 6),
-            ],
-            Expanded(
-              child: Center(
-                child: LayoutBuilder(
-                  builder: (_, constraints) => _textureUrl != null
-                      ? SkinBodyImage(
-                          textureUrl: _textureUrl!,
-                          height: constraints.maxHeight,
-                        )
-                      : CircularProgressIndicator(
-                          color: AppTheme.accent,
-                          strokeWidth: 2,
+                  if (badge != null)
+                    Positioned(
+                      top: 0, left: 0,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                        decoration: BoxDecoration(
+                          color: badgeColor.withValues(alpha: 0.18),
+                          borderRadius: BorderRadius.circular(5),
                         ),
-                ),
+                        child: Text(badge, style: TextStyle(color: badgeColor, fontSize: 8, fontWeight: FontWeight.w700)),
+                      ),
+                    ),
+                ],
               ),
             ),
             const SizedBox(height: 6),
             Text(
               widget.username,
-              style: TextStyle(
-                color: AppTheme.textPrimary,
-                fontSize: 12,
-                fontWeight: FontWeight.w700,
-              ),
+              style: TextStyle(color: AppTheme.textPrimary, fontSize: 11, fontWeight: FontWeight.w600),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
-            const SizedBox(height: 6),
-            Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: _download,
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: AppTheme.accent,
-                      side: BorderSide(color: AppTheme.accent),
-                      padding: const EdgeInsets.symmetric(vertical: 6),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    child: const FaIcon(FontAwesomeIcons.download, size: 11),
-                  ),
-                ),
-                if (widget.onEdit != null) ...[
-                  const SizedBox(width: 6),
-                  Expanded(
-                    child: OutlinedButton(
-                      onPressed: () => widget.onEdit!(_textureUrl),
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: AppTheme.textSecondary,
-                        side: const BorderSide(color: AppTheme.borderGray),
-                        padding: const EdgeInsets.symmetric(vertical: 6),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      child: const FaIcon(
-                        FontAwesomeIcons.penToSquare,
-                        size: 11,
-                      ),
-                    ),
-                  ),
-                ],
-              ],
-            ),
+            const SizedBox(height: 4),
+            FaIcon(FontAwesomeIcons.ellipsis, size: 10, color: AppTheme.textMuted),
           ],
         ),
       ),
@@ -289,13 +394,11 @@ class BedrockSkinCard extends StatefulWidget {
   final String gamertag;
   final String xuid;
   final void Function(String?)? onEdit;
-  final bool compact;
   const BedrockSkinCard({
     super.key,
     required this.gamertag,
     required this.xuid,
     this.onEdit,
-    this.compact = false,
   });
 
   @override
@@ -335,11 +438,6 @@ class BedrockSkinCardState extends State<BedrockSkinCard> {
     if (mounted) setState(() => _loading = false);
   }
 
-  Future<void> _download() async {
-    if (_textureUrl == null) return;
-    await shareTextureFile(context, _textureUrl!, widget.gamertag);
-  }
-
   void _openDetail() {
     if (_textureUrl == null) return;
     showModalBottomSheet(
@@ -353,112 +451,54 @@ class BedrockSkinCardState extends State<BedrockSkinCard> {
 
   @override
   Widget build(BuildContext context) {
-    final compact = widget.compact;
-    final pad = compact ? 10.0 : 14.0;
+    final bedrockLabel = AppLocalizations.of(context)!.bedrockLabel;
 
     return GestureDetector(
       onTap: _openDetail,
       child: Container(
-        padding: EdgeInsets.all(pad),
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 8),
         decoration: BoxDecoration(
           color: AppTheme.surface,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(14),
           border: Border.all(color: AppTheme.borderGray),
         ),
         child: Column(
           children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF4CAF50).withValues(alpha: 0.15),
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: Text(
-                  AppLocalizations.of(context)!.bedrockLabel,
-                  style: const TextStyle(
-                    color: Color(0xFF4CAF50),
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 6),
             Expanded(
-              child: Center(
-                child: _loading
-                    ? CircularProgressIndicator(
-                        color: AppTheme.accent,
-                        strokeWidth: 2,
-                      )
-                    : LayoutBuilder(
-                        builder: (_, constraints) => _textureUrl != null
-                            ? SkinBodyImage(
-                                textureUrl: _textureUrl!,
-                                height: constraints.maxHeight,
-                              )
-                            : FaIcon(
-                                FontAwesomeIcons.personRunning,
-                                color: AppTheme.textMuted,
-                                size: 28,
-                              ),
+              child: Stack(
+                children: [
+                  Center(
+                    child: _loading
+                        ? CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
+                        : LayoutBuilder(
+                            builder: (_, constraints) => _textureUrl != null
+                                ? SkinBodyImage(textureUrl: _textureUrl!, height: constraints.maxHeight)
+                                : FaIcon(FontAwesomeIcons.personRunning, color: AppTheme.textMuted, size: 28),
+                          ),
+                  ),
+                  Positioned(
+                    top: 0, left: 0,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF4CAF50).withValues(alpha: 0.18),
+                        borderRadius: BorderRadius.circular(5),
                       ),
+                      child: Text(bedrockLabel, style: const TextStyle(color: Color(0xFF4CAF50), fontSize: 8, fontWeight: FontWeight.w700)),
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 6),
             Text(
               widget.gamertag,
-              style: TextStyle(
-                color: AppTheme.textPrimary,
-                fontSize: 12,
-                fontWeight: FontWeight.w700,
-              ),
+              style: TextStyle(color: AppTheme.textPrimary, fontSize: 11, fontWeight: FontWeight.w600),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
-            const SizedBox(height: 6),
-            Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: _textureUrl != null ? _download : null,
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: const Color(0xFF4CAF50),
-                      side: const BorderSide(color: Color(0xFF4CAF50)),
-                      padding: const EdgeInsets.symmetric(vertical: 6),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    child: const FaIcon(FontAwesomeIcons.download, size: 11),
-                  ),
-                ),
-                if (widget.onEdit != null) ...[
-                  const SizedBox(width: 6),
-                  Expanded(
-                    child: OutlinedButton(
-                      onPressed: _textureUrl != null
-                          ? () => widget.onEdit!(_textureUrl)
-                          : null,
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: AppTheme.textSecondary,
-                        side: const BorderSide(color: AppTheme.borderGray),
-                        padding: const EdgeInsets.symmetric(vertical: 6),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      child: const FaIcon(
-                        FontAwesomeIcons.penToSquare,
-                        size: 11,
-                      ),
-                    ),
-                  ),
-                ],
-              ],
-            ),
+            const SizedBox(height: 4),
+            FaIcon(FontAwesomeIcons.ellipsis, size: 10, color: AppTheme.textMuted),
           ],
         ),
       ),

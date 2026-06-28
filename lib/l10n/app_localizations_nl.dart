@@ -2103,4 +2103,84 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get rpPackDetailTitle => 'Pack details';
+
+  @override
+  String get skinsSavedToMySkins => 'Opgeslagen in Mijn Skins';
+
+  @override
+  String get skinsDownloadFailed => 'Download mislukt';
+
+  @override
+  String get skinsDeletedFromCloud => 'Verwijderd uit de cloud';
+
+  @override
+  String get skinsDeleteFailed => 'Verwijderen mislukt';
+
+  @override
+  String get skinsLoginToUpload => 'Log in om skins te uploaden';
+
+  @override
+  String get skinsUploading => 'Uploaden…';
+
+  @override
+  String get skinUploaded => 'Skin geüpload!';
+
+  @override
+  String skinUploadFailed(String error) {
+    return 'Upload mislukt: $error';
+  }
+
+  @override
+  String get skinsTabSkins => 'Skins';
+
+  @override
+  String get skinsTabRecent => 'Recent';
+
+  @override
+  String get skinsEmptyCloudSkins => 'Nog geen cloud-skins. Upload een skin om deze hier te zien.';
+
+  @override
+  String get skinsEmptyLocalSkins => 'Nog geen skins. Maak of upload een skin om te beginnen.';
+
+  @override
+  String get skinUploadToWebsite => 'Uploaden naar website';
+
+  @override
+  String get skinReuploadToWebsite => 'Opnieuw uploaden naar website';
+
+  @override
+  String get skinCloudEdit => 'Bewerken';
+
+  @override
+  String get skinCloudSaveToDevice => 'Opslaan op apparaat';
+
+  @override
+  String get skinCloudDelete => 'Verwijderen uit cloud';
+
+  @override
+  String get skinsTabGallery => 'Galerij';
+
+  @override
+  String get skinsGalleryEmpty => 'Nog geen community-skins.';
+
+  @override
+  String get skinsTopLabel => 'Top 30';
+
+  @override
+  String get skinsAllLabel => 'Alle Skins';
+
+  @override
+  String get skinUploadToCloud => 'Uploaden naar cloud';
+
+  @override
+  String get skinSaveDialog => 'Skin opslaan';
+
+  @override
+  String get skinNameHint => 'Skin naam';
+
+  @override
+  String get skinDefaultName => 'Mijn skin';
+
+  @override
+  String get skinUpdatedInCloud => 'Skin bijgewerkt in cloud';
 }

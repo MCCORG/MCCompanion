@@ -1738,5 +1738,31 @@
   "rpPackDetailTitle": "Maelezo ya pakiti",
   "@rpPackDetailTitle": {
     "description": "rpPackDetailTitle label"
-  }
+  },
+  "skinsSavedToMySkins": "Imehifadhiwa katika Ngozi Zangu",
+  "skinsDownloadFailed": "Upakuaji umeshindwa",
+  "skinsDeletedFromCloud": "Imefutwa kutoka kwenye wingu",
+  "skinsDeleteFailed": "Kufuta kumeshindwa",
+  "skinsLoginToUpload": "Ingia ili kupakia ngozi",
+  "skinsUploading": "Inapakia…",
+  "skinUploaded": "Ngozi imepakiwa!",
+  "skinUploadFailed": "Upakiaji umeshindwa: {error}",
+  "skinsTabSkins": "Ngozi",
+  "skinsTabRecent": "Za Hivi Karibuni",
+  "skinsEmptyCloudSkins": "Hakuna ngozi za wingu bado. Pakia ngozi ili kuiona hapa.",
+  "skinsEmptyLocalSkins": "Hakuna ngozi bado. Unda au pakia ngozi ili kuanza.",
+  "skinUploadToWebsite": "Pakia kwenye tovuti",
+  "skinReuploadToWebsite": "Pakia tena kwenye tovuti",
+  "skinCloudEdit": "Hariri",
+  "skinCloudSaveToDevice": "Hifadhi kwenye kifaa",
+  "skinCloudDelete": "Futa kutoka kwenye wingu",
+  "skinsTabGallery": "Matunzio",
+  "skinsGalleryEmpty": "Bado hakuna ngozi za jamii.",
+  "skinsTopLabel": "Bora 30",
+  "skinsAllLabel": "Ngozi Zote",
+  "skinUploadToCloud": "Pakia kwa Wingu",
+  "skinSaveDialog": "Hifadhi Skin",
+  "skinNameHint": "Jina la skin",
+  "skinDefaultName": "Skin yangu",
+  "skinUpdatedInCloud": "Skin imesasishwa kwenye wingu"
 }

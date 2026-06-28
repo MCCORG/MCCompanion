@@ -2103,4 +2103,84 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get rpPackDetailTitle => '包详情';
+
+  @override
+  String get skinsSavedToMySkins => '已保存到我的皮肤';
+
+  @override
+  String get skinsDownloadFailed => '下载失败';
+
+  @override
+  String get skinsDeletedFromCloud => '已从云端删除';
+
+  @override
+  String get skinsDeleteFailed => '删除失败';
+
+  @override
+  String get skinsLoginToUpload => '登录以上传皮肤';
+
+  @override
+  String get skinsUploading => '上传中…';
+
+  @override
+  String get skinUploaded => '皮肤已上传！';
+
+  @override
+  String skinUploadFailed(String error) {
+    return '上传失败：$error';
+  }
+
+  @override
+  String get skinsTabSkins => '皮肤';
+
+  @override
+  String get skinsTabRecent => '最近';
+
+  @override
+  String get skinsEmptyCloudSkins => '暂无云端皮肤。上传一个皮肤即可在此查看。';
+
+  @override
+  String get skinsEmptyLocalSkins => '暂无皮肤。创建或上传皮肤以开始使用。';
+
+  @override
+  String get skinUploadToWebsite => '上传到网站';
+
+  @override
+  String get skinReuploadToWebsite => '重新上传到网站';
+
+  @override
+  String get skinCloudEdit => '编辑';
+
+  @override
+  String get skinCloudSaveToDevice => '保存到设备';
+
+  @override
+  String get skinCloudDelete => '从云端删除';
+
+  @override
+  String get skinsTabGallery => '社区画廊';
+
+  @override
+  String get skinsGalleryEmpty => '暂无社区皮肤。';
+
+  @override
+  String get skinsTopLabel => '前30名';
+
+  @override
+  String get skinsAllLabel => '所有皮肤';
+
+  @override
+  String get skinUploadToCloud => '上传到云端';
+
+  @override
+  String get skinSaveDialog => '保存皮肤';
+
+  @override
+  String get skinNameHint => '皮肤名称';
+
+  @override
+  String get skinDefaultName => '我的皮肤';
+
+  @override
+  String get skinUpdatedInCloud => '皮肤已在云端更新';
 }

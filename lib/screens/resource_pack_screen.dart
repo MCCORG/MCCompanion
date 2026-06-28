@@ -88,19 +88,6 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     final name = pack['name'] as String;
     setState(() => _applyingPackId = id);
     await ResourcePackPrefs.save(url: url, enabled: true, filename: '$name.mcpack', isUpload: false);
-    final sha = pack['sha256'] as String?;
-    if (sha != null) {
-      unawaited(
-        AuthService.getIdToken().then((token) => http.post(
-          Uri.parse('${AppConstants.apiBase}/api/packs/track'),
-          headers: {
-            'Content-Type': 'application/json',
-            if (token != null) 'Authorization': 'Bearer $token',
-          },
-          body: jsonEncode({'sha256': sha}),
-        )).catchError((_) {}),
-      );
-    }
     if (!mounted) return;
     setState(() {
       _applyingPackId = null;
@@ -110,6 +97,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
       _urlCtrl.text = url;
     });
     AppToast.show(context, message: AppLocalizations.of(context)!.rpToastSaved, icon: Icons.check_rounded, color: AppTheme.accent);
+    _loadFeaturedPacks();
   }
 
   Future<void> _load() async {

@@ -2103,4 +2103,84 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get rpPackDetailTitle => 'تفاصيل الحزمة';
+
+  @override
+  String get skinsSavedToMySkins => 'تم الحفظ في سكناتي';
+
+  @override
+  String get skinsDownloadFailed => 'فشل التنزيل';
+
+  @override
+  String get skinsDeletedFromCloud => 'تم الحذف من السحابة';
+
+  @override
+  String get skinsDeleteFailed => 'فشل الحذف';
+
+  @override
+  String get skinsLoginToUpload => 'سجّل دخولك لرفع السكنات';
+
+  @override
+  String get skinsUploading => 'جارٍ الرفع…';
+
+  @override
+  String get skinUploaded => 'تم رفع السكن!';
+
+  @override
+  String skinUploadFailed(String error) {
+    return 'فشل الرفع: $error';
+  }
+
+  @override
+  String get skinsTabSkins => 'السكنات';
+
+  @override
+  String get skinsTabRecent => 'الأخيرة';
+
+  @override
+  String get skinsEmptyCloudSkins => 'لا توجد سكنات سحابية بعد. ارفع سكناً لتراه هنا.';
+
+  @override
+  String get skinsEmptyLocalSkins => 'لا توجد سكنات بعد. أنشئ أو ارفع سكناً للبدء.';
+
+  @override
+  String get skinUploadToWebsite => 'رفع إلى الموقع';
+
+  @override
+  String get skinReuploadToWebsite => 'إعادة الرفع إلى الموقع';
+
+  @override
+  String get skinCloudEdit => 'تعديل';
+
+  @override
+  String get skinCloudSaveToDevice => 'حفظ على الجهاز';
+
+  @override
+  String get skinCloudDelete => 'حذف من السحابة';
+
+  @override
+  String get skinsTabGallery => 'معرض الصور';
+
+  @override
+  String get skinsGalleryEmpty => 'لا توجد سكنات مجتمعية بعد.';
+
+  @override
+  String get skinsTopLabel => 'أفضل 30';
+
+  @override
+  String get skinsAllLabel => 'جميع السكنات';
+
+  @override
+  String get skinUploadToCloud => 'رفع إلى السحابة';
+
+  @override
+  String get skinSaveDialog => 'حفظ السكن';
+
+  @override
+  String get skinNameHint => 'اسم السكن';
+
+  @override
+  String get skinDefaultName => 'سكني';
+
+  @override
+  String get skinUpdatedInCloud => 'تم تحديث السكن في السحابة';
 }

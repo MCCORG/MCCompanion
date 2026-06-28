@@ -2103,4 +2103,84 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get rpPackDetailTitle => 'پیک کی تفصیلات';
+
+  @override
+  String get skinsSavedToMySkins => 'میری اسکنز میں محفوظ ہو گیا';
+
+  @override
+  String get skinsDownloadFailed => 'ڈاؤنلوڈ ناکام رہا';
+
+  @override
+  String get skinsDeletedFromCloud => 'کلاؤڈ سے حذف کر دیا گیا';
+
+  @override
+  String get skinsDeleteFailed => 'حذف کرنا ناکام رہا';
+
+  @override
+  String get skinsLoginToUpload => 'اسکنز اپلوڈ کرنے کے لیے لاگ ان کریں';
+
+  @override
+  String get skinsUploading => 'اپلوڈ ہو رہا ہے…';
+
+  @override
+  String get skinUploaded => 'اسکن اپلوڈ ہو گیا!';
+
+  @override
+  String skinUploadFailed(String error) {
+    return 'اپلوڈ ناکام: $error';
+  }
+
+  @override
+  String get skinsTabSkins => 'اسکنز';
+
+  @override
+  String get skinsTabRecent => 'حالیہ';
+
+  @override
+  String get skinsEmptyCloudSkins => 'ابھی تک کوئی کلاؤڈ اسکن نہیں۔ یہاں دیکھنے کے لیے ایک اسکن اپلوڈ کریں۔';
+
+  @override
+  String get skinsEmptyLocalSkins => 'ابھی تک کوئی اسکن نہیں۔ شروع کرنے کے لیے ایک اسکن بنائیں یا اپلوڈ کریں۔';
+
+  @override
+  String get skinUploadToWebsite => 'ویب سائٹ پر اپلوڈ کریں';
+
+  @override
+  String get skinReuploadToWebsite => 'ویب سائٹ پر دوبارہ اپلوڈ کریں';
+
+  @override
+  String get skinCloudEdit => 'ترمیم کریں';
+
+  @override
+  String get skinCloudSaveToDevice => 'ڈیوائس پر محفوظ کریں';
+
+  @override
+  String get skinCloudDelete => 'کلاؤڈ سے حذف کریں';
+
+  @override
+  String get skinsTabGallery => 'گیلری';
+
+  @override
+  String get skinsGalleryEmpty => 'ابھی تک کوئی کمیونٹی اسکن نہیں۔';
+
+  @override
+  String get skinsTopLabel => 'ٹاپ 30';
+
+  @override
+  String get skinsAllLabel => 'تمام اسکنز';
+
+  @override
+  String get skinUploadToCloud => 'کلاؤڈ پر اپ لوڈ کریں';
+
+  @override
+  String get skinSaveDialog => 'سکن محفوظ کریں';
+
+  @override
+  String get skinNameHint => 'سکن کا نام';
+
+  @override
+  String get skinDefaultName => 'میرا سکن';
+
+  @override
+  String get skinUpdatedInCloud => 'سکن کلاؤڈ میں اپ ڈیٹ ہو گیا';
 }

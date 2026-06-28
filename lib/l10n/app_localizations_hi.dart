@@ -2103,4 +2103,84 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get rpPackDetailTitle => 'पैक विवरण';
+
+  @override
+  String get skinsSavedToMySkins => 'मेरे स्किन्स में सहेजा गया';
+
+  @override
+  String get skinsDownloadFailed => 'डाउनलोड विफल हुआ';
+
+  @override
+  String get skinsDeletedFromCloud => 'क्लाउड से हटाया गया';
+
+  @override
+  String get skinsDeleteFailed => 'हटाना विफल हुआ';
+
+  @override
+  String get skinsLoginToUpload => 'स्किन अपलोड करने के लिए लॉग इन करें';
+
+  @override
+  String get skinsUploading => 'अपलोड हो रहा है…';
+
+  @override
+  String get skinUploaded => 'स्किन अपलोड हो गया!';
+
+  @override
+  String skinUploadFailed(String error) {
+    return 'अपलोड विफल: $error';
+  }
+
+  @override
+  String get skinsTabSkins => 'स्किन्स';
+
+  @override
+  String get skinsTabRecent => 'हाल के';
+
+  @override
+  String get skinsEmptyCloudSkins => 'अभी तक कोई क्लाउड स्किन नहीं। इसे यहाँ देखने के लिए एक स्किन अपलोड करें।';
+
+  @override
+  String get skinsEmptyLocalSkins => 'अभी तक कोई स्किन नहीं। शुरू करने के लिए एक स्किन बनाएँ या अपलोड करें।';
+
+  @override
+  String get skinUploadToWebsite => 'वेबसाइट पर अपलोड करें';
+
+  @override
+  String get skinReuploadToWebsite => 'वेबसाइट पर पुनः अपलोड करें';
+
+  @override
+  String get skinCloudEdit => 'संपादित करें';
+
+  @override
+  String get skinCloudSaveToDevice => 'डिवाइस पर सहेजें';
+
+  @override
+  String get skinCloudDelete => 'क्लाउड से हटाएँ';
+
+  @override
+  String get skinsTabGallery => 'गैलरी';
+
+  @override
+  String get skinsGalleryEmpty => 'अभी तक कोई कम्युनिटी स्किन नहीं।';
+
+  @override
+  String get skinsTopLabel => 'शीर्ष 30';
+
+  @override
+  String get skinsAllLabel => 'सभी स्किन्स';
+
+  @override
+  String get skinUploadToCloud => 'क्लाउड पर अपलोड करें';
+
+  @override
+  String get skinSaveDialog => 'स्किन सहेजें';
+
+  @override
+  String get skinNameHint => 'स्किन का नाम';
+
+  @override
+  String get skinDefaultName => 'मेरी स्किन';
+
+  @override
+  String get skinUpdatedInCloud => 'स्किन क्लाउड में अपडेट हुआ';
 }

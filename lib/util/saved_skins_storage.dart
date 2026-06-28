@@ -36,7 +36,7 @@ class SavedSkinsStorage {
     }
   }
 
-  static Future<void> _saveMeta(List<SavedSkin> skins) async {
+  static Future<void> saveMeta(List<SavedSkin> skins) async {
     final file = await _metaFilePath();
     await file.writeAsString(jsonEncode(skins.map((s) => s.toJson()).toList()));
   }
@@ -55,7 +55,7 @@ class SavedSkinsStorage {
     );
     final all = await loadAll();
     all.insert(0, skin);
-    await _saveMeta(all);
+    await saveMeta(all);
     return skin;
   }
 
@@ -73,7 +73,7 @@ class SavedSkinsStorage {
     final i = all.indexWhere((s) => s.id == id);
     if (i < 0) return;
     all[i] = all[i].copyWith(name: newName);
-    await _saveMeta(all);
+    await saveMeta(all);
   }
 
   static Future<void> delete(String id) async {
@@ -85,6 +85,6 @@ class SavedSkinsStorage {
     final file = File(skin.filePath);
     if (await file.exists()) await file.delete();
     all.removeWhere((s) => s.id == id);
-    await _saveMeta(all);
+    await saveMeta(all);
   }
 }

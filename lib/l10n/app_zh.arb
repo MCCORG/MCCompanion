@@ -1742,5 +1742,31 @@
   "rpPackDetailTitle": "包详情",
   "@rpPackDetailTitle": {
     "description": "rpPackDetailTitle label"
-  }
+  },
+  "skinsSavedToMySkins": "已保存到我的皮肤",
+  "skinsDownloadFailed": "下载失败",
+  "skinsDeletedFromCloud": "已从云端删除",
+  "skinsDeleteFailed": "删除失败",
+  "skinsLoginToUpload": "登录以上传皮肤",
+  "skinsUploading": "上传中…",
+  "skinUploaded": "皮肤已上传！",
+  "skinUploadFailed": "上传失败：{error}",
+  "skinsTabSkins": "皮肤",
+  "skinsTabRecent": "最近",
+  "skinsEmptyCloudSkins": "暂无云端皮肤。上传一个皮肤即可在此查看。",
+  "skinsEmptyLocalSkins": "暂无皮肤。创建或上传皮肤以开始使用。",
+  "skinUploadToWebsite": "上传到网站",
+  "skinReuploadToWebsite": "重新上传到网站",
+  "skinCloudEdit": "编辑",
+  "skinCloudSaveToDevice": "保存到设备",
+  "skinCloudDelete": "从云端删除",
+  "skinsTabGallery": "社区画廊",
+  "skinsGalleryEmpty": "暂无社区皮肤。",
+  "skinsTopLabel": "前30名",
+  "skinsAllLabel": "所有皮肤",
+  "skinUploadToCloud": "上传到云端",
+  "skinSaveDialog": "保存皮肤",
+  "skinNameHint": "皮肤名称",
+  "skinDefaultName": "我的皮肤",
+  "skinUpdatedInCloud": "皮肤已在云端更新"
 }

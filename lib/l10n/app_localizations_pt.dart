@@ -2103,4 +2103,84 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get rpPackDetailTitle => 'Detalhes do pack';
+
+  @override
+  String get skinsSavedToMySkins => 'Salvo em Meus Skins';
+
+  @override
+  String get skinsDownloadFailed => 'Falha no download';
+
+  @override
+  String get skinsDeletedFromCloud => 'Excluído da nuvem';
+
+  @override
+  String get skinsDeleteFailed => 'Falha ao excluir';
+
+  @override
+  String get skinsLoginToUpload => 'Entre para fazer upload de skins';
+
+  @override
+  String get skinsUploading => 'Enviando…';
+
+  @override
+  String get skinUploaded => 'Skin enviado!';
+
+  @override
+  String skinUploadFailed(String error) {
+    return 'Falha no upload: $error';
+  }
+
+  @override
+  String get skinsTabSkins => 'Skins';
+
+  @override
+  String get skinsTabRecent => 'Recentes';
+
+  @override
+  String get skinsEmptyCloudSkins => 'Nenhum skin na nuvem ainda. Faça upload de um skin para vê-lo aqui.';
+
+  @override
+  String get skinsEmptyLocalSkins => 'Nenhum skin ainda. Crie ou faça upload de um skin para começar.';
+
+  @override
+  String get skinUploadToWebsite => 'Enviar para o site';
+
+  @override
+  String get skinReuploadToWebsite => 'Reenviar para o site';
+
+  @override
+  String get skinCloudEdit => 'Editar';
+
+  @override
+  String get skinCloudSaveToDevice => 'Salvar no dispositivo';
+
+  @override
+  String get skinCloudDelete => 'Excluir da nuvem';
+
+  @override
+  String get skinsTabGallery => 'Galeria';
+
+  @override
+  String get skinsGalleryEmpty => 'Ainda não há skins da comunidade.';
+
+  @override
+  String get skinsTopLabel => 'Top 30';
+
+  @override
+  String get skinsAllLabel => 'Todos os Skins';
+
+  @override
+  String get skinUploadToCloud => 'Enviar para nuvem';
+
+  @override
+  String get skinSaveDialog => 'Salvar skin';
+
+  @override
+  String get skinNameHint => 'Nome do skin';
+
+  @override
+  String get skinDefaultName => 'Meu skin';
+
+  @override
+  String get skinUpdatedInCloud => 'Skin atualizado na nuvem';
 }

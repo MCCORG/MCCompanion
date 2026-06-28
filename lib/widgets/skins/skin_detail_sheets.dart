@@ -172,12 +172,14 @@ class SavedSkinMenuSheet extends StatelessWidget {
   final VoidCallback onEdit;
   final VoidCallback onExport;
   final VoidCallback onDelete;
+  final VoidCallback? onUpload;
   const SavedSkinMenuSheet({
     super.key,
     required this.skin,
     required this.onEdit,
     required this.onExport,
     required this.onDelete,
+    this.onUpload,
   });
 
   @override
@@ -211,6 +213,13 @@ class SavedSkinMenuSheet extends StatelessWidget {
             color: AppTheme.accent,
             onTap: onEdit,
           ),
+          if (onUpload != null)
+            SkinMenuTile(
+              icon: FontAwesomeIcons.cloudArrowUp,
+              label: skin.uploadedUrl != null ? AppLocalizations.of(context)!.skinReuploadToWebsite : AppLocalizations.of(context)!.skinUploadToWebsite,
+              color: const Color(0xFF60a5fa),
+              onTap: onUpload!,
+            ),
           SkinMenuTile(
             icon: FontAwesomeIcons.shareFromSquare,
             label: AppLocalizations.of(context)!.skinMenuExport,
@@ -223,6 +232,79 @@ class SavedSkinMenuSheet extends StatelessWidget {
             color: AppTheme.error,
             onTap: onDelete,
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class CloudSkinMenuSheet extends StatelessWidget {
+  final Map<String, dynamic> skin;
+  final VoidCallback? onEdit;
+  final VoidCallback onDownload;
+  final VoidCallback? onDelete;
+  const CloudSkinMenuSheet({
+    super.key,
+    required this.skin,
+    this.onEdit,
+    required this.onDownload,
+    this.onDelete,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final name = skin['name'] as String? ?? '';
+    return Container(
+      decoration: BoxDecoration(
+        color: AppTheme.background,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+        border: Border(top: BorderSide(color: AppTheme.borderGray)),
+      ),
+      padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 36, height: 4,
+            margin: const EdgeInsets.only(bottom: 16),
+            decoration: BoxDecoration(
+              color: AppTheme.borderLight,
+              borderRadius: BorderRadius.circular(4),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(name, style: TextStyle(color: AppTheme.textPrimary, fontSize: 16, fontWeight: FontWeight.w700)),
+              const SizedBox(width: 8),
+              Container(
+                padding: const EdgeInsets.all(4),
+                decoration: BoxDecoration(color: const Color(0x263b82f6), borderRadius: BorderRadius.circular(6)),
+                child: const FaIcon(FontAwesomeIcons.cloud, size: 10, color: Color(0xFF60a5fa)),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          if (onEdit != null)
+            SkinMenuTile(
+              icon: FontAwesomeIcons.penToSquare,
+              label: AppLocalizations.of(context)!.skinCloudEdit,
+              color: AppTheme.accent,
+              onTap: onEdit!,
+            ),
+          SkinMenuTile(
+            icon: FontAwesomeIcons.download,
+            label: AppLocalizations.of(context)!.skinCloudSaveToDevice,
+            color: AppTheme.textSecondary,
+            onTap: onDownload,
+          ),
+          if (onDelete != null)
+            SkinMenuTile(
+              icon: FontAwesomeIcons.trash,
+              label: AppLocalizations.of(context)!.skinCloudDelete,
+              color: AppTheme.error,
+              onTap: onDelete!,
+            ),
         ],
       ),
     );

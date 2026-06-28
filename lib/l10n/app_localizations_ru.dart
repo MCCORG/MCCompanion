@@ -2103,4 +2103,84 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get rpPackDetailTitle => 'Детали пака';
+
+  @override
+  String get skinsSavedToMySkins => 'Сохранено в Мои скины';
+
+  @override
+  String get skinsDownloadFailed => 'Ошибка загрузки';
+
+  @override
+  String get skinsDeletedFromCloud => 'Удалено из облака';
+
+  @override
+  String get skinsDeleteFailed => 'Ошибка удаления';
+
+  @override
+  String get skinsLoginToUpload => 'Войдите, чтобы загружать скины';
+
+  @override
+  String get skinsUploading => 'Загрузка…';
+
+  @override
+  String get skinUploaded => 'Скин загружен!';
+
+  @override
+  String skinUploadFailed(String error) {
+    return 'Ошибка загрузки: $error';
+  }
+
+  @override
+  String get skinsTabSkins => 'Скины';
+
+  @override
+  String get skinsTabRecent => 'Недавние';
+
+  @override
+  String get skinsEmptyCloudSkins => 'Облачных скинов пока нет. Загрузите скин, чтобы увидеть его здесь.';
+
+  @override
+  String get skinsEmptyLocalSkins => 'Скинов пока нет. Создайте или загрузите скин, чтобы начать.';
+
+  @override
+  String get skinUploadToWebsite => 'Загрузить на сайт';
+
+  @override
+  String get skinReuploadToWebsite => 'Перезагрузить на сайт';
+
+  @override
+  String get skinCloudEdit => 'Редактировать';
+
+  @override
+  String get skinCloudSaveToDevice => 'Сохранить на устройство';
+
+  @override
+  String get skinCloudDelete => 'Удалить из облака';
+
+  @override
+  String get skinsTabGallery => 'Галерея';
+
+  @override
+  String get skinsGalleryEmpty => 'Скинов сообщества пока нет.';
+
+  @override
+  String get skinsTopLabel => 'Топ 30';
+
+  @override
+  String get skinsAllLabel => 'Все скины';
+
+  @override
+  String get skinUploadToCloud => 'Загрузить в облако';
+
+  @override
+  String get skinSaveDialog => 'Сохранить скин';
+
+  @override
+  String get skinNameHint => 'Название скина';
+
+  @override
+  String get skinDefaultName => 'Мой скин';
+
+  @override
+  String get skinUpdatedInCloud => 'Скин обновлён в облаке';
 }

@@ -1742,5 +1742,31 @@
   "rpPackDetailTitle": "Detalhes do pack",
   "@rpPackDetailTitle": {
     "description": "rpPackDetailTitle label"
-  }
+  },
+  "skinsSavedToMySkins": "Salvo em Meus Skins",
+  "skinsDownloadFailed": "Falha no download",
+  "skinsDeletedFromCloud": "Excluído da nuvem",
+  "skinsDeleteFailed": "Falha ao excluir",
+  "skinsLoginToUpload": "Entre para fazer upload de skins",
+  "skinsUploading": "Enviando…",
+  "skinUploaded": "Skin enviado!",
+  "skinUploadFailed": "Falha no upload: {error}",
+  "skinsTabSkins": "Skins",
+  "skinsTabRecent": "Recentes",
+  "skinsEmptyCloudSkins": "Nenhum skin na nuvem ainda. Faça upload de um skin para vê-lo aqui.",
+  "skinsEmptyLocalSkins": "Nenhum skin ainda. Crie ou faça upload de um skin para começar.",
+  "skinUploadToWebsite": "Enviar para o site",
+  "skinReuploadToWebsite": "Reenviar para o site",
+  "skinCloudEdit": "Editar",
+  "skinCloudSaveToDevice": "Salvar no dispositivo",
+  "skinCloudDelete": "Excluir da nuvem",
+  "skinsTabGallery": "Galeria",
+  "skinsGalleryEmpty": "Ainda não há skins da comunidade.",
+  "skinsTopLabel": "Top 30",
+  "skinsAllLabel": "Todos os Skins",
+  "skinUploadToCloud": "Enviar para nuvem",
+  "skinSaveDialog": "Salvar skin",
+  "skinNameHint": "Nome do skin",
+  "skinDefaultName": "Meu skin",
+  "skinUpdatedInCloud": "Skin atualizado na nuvem"
 }

@@ -4130,6 +4130,162 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Pack details'**
   String get rpPackDetailTitle;
+
+  /// Toast when cloud skin is saved to local library
+  ///
+  /// In en, this message translates to:
+  /// **'Saved to My Skins'**
+  String get skinsSavedToMySkins;
+
+  /// Toast when skin download fails
+  ///
+  /// In en, this message translates to:
+  /// **'Download failed'**
+  String get skinsDownloadFailed;
+
+  /// Toast when cloud skin is deleted
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted from cloud'**
+  String get skinsDeletedFromCloud;
+
+  /// Toast when skin delete fails
+  ///
+  /// In en, this message translates to:
+  /// **'Delete failed'**
+  String get skinsDeleteFailed;
+
+  /// Toast when user tries to upload without being logged in
+  ///
+  /// In en, this message translates to:
+  /// **'Log in to upload skins'**
+  String get skinsLoginToUpload;
+
+  /// Toast while skin is uploading
+  ///
+  /// In en, this message translates to:
+  /// **'Uploading…'**
+  String get skinsUploading;
+
+  /// Toast when skin upload succeeds
+  ///
+  /// In en, this message translates to:
+  /// **'Skin uploaded!'**
+  String get skinUploaded;
+
+  /// Toast when skin upload fails
+  ///
+  /// In en, this message translates to:
+  /// **'Upload failed: {error}'**
+  String skinUploadFailed(String error);
+
+  /// Skins tab label
+  ///
+  /// In en, this message translates to:
+  /// **'Skins'**
+  String get skinsTabSkins;
+
+  /// Recent tab label on skins screen
+  ///
+  /// In en, this message translates to:
+  /// **'Recent'**
+  String get skinsTabRecent;
+
+  /// Empty state for cloud skins tab
+  ///
+  /// In en, this message translates to:
+  /// **'No cloud skins yet. Upload a skin to see it here.'**
+  String get skinsEmptyCloudSkins;
+
+  /// Empty state for local skins tab
+  ///
+  /// In en, this message translates to:
+  /// **'No skins yet. Create or upload a skin to get started.'**
+  String get skinsEmptyLocalSkins;
+
+  /// Menu option to upload skin to website
+  ///
+  /// In en, this message translates to:
+  /// **'Upload to website'**
+  String get skinUploadToWebsite;
+
+  /// Menu option to re-upload skin to website
+  ///
+  /// In en, this message translates to:
+  /// **'Re-upload to website'**
+  String get skinReuploadToWebsite;
+
+  /// Edit button in cloud skin menu
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get skinCloudEdit;
+
+  /// Save to device button in cloud skin menu
+  ///
+  /// In en, this message translates to:
+  /// **'Save to device'**
+  String get skinCloudSaveToDevice;
+
+  /// Delete from cloud button in cloud skin menu
+  ///
+  /// In en, this message translates to:
+  /// **'Delete from cloud'**
+  String get skinCloudDelete;
+
+  /// Gallery tab label on skins screen
+  ///
+  /// In en, this message translates to:
+  /// **'Gallery'**
+  String get skinsTabGallery;
+
+  /// Empty state for public gallery tab
+  ///
+  /// In en, this message translates to:
+  /// **'No community skins yet.'**
+  String get skinsGalleryEmpty;
+
+  /// Section header for top 30 liked skins
+  ///
+  /// In en, this message translates to:
+  /// **'Top 30'**
+  String get skinsTopLabel;
+
+  /// Section header for all gallery skins
+  ///
+  /// In en, this message translates to:
+  /// **'All Skins'**
+  String get skinsAllLabel;
+
+  /// Dialog title for uploading skin to cloud
+  ///
+  /// In en, this message translates to:
+  /// **'Upload to Cloud'**
+  String get skinUploadToCloud;
+
+  /// Dialog title for saving skin locally
+  ///
+  /// In en, this message translates to:
+  /// **'Save Skin'**
+  String get skinSaveDialog;
+
+  /// Hint text for skin name input field
+  ///
+  /// In en, this message translates to:
+  /// **'Skin name'**
+  String get skinNameHint;
+
+  /// Default name for a new skin
+  ///
+  /// In en, this message translates to:
+  /// **'My Skin'**
+  String get skinDefaultName;
+
+  /// Toast when cloud skin is updated
+  ///
+  /// In en, this message translates to:
+  /// **'Skin updated in cloud'**
+  String get skinUpdatedInCloud;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

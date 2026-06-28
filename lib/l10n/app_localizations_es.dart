@@ -2103,4 +2103,84 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get rpPackDetailTitle => 'Detalles del pack';
+
+  @override
+  String get skinsSavedToMySkins => 'Guardado en Mis Skins';
+
+  @override
+  String get skinsDownloadFailed => 'Error al descargar';
+
+  @override
+  String get skinsDeletedFromCloud => 'Eliminado de la nube';
+
+  @override
+  String get skinsDeleteFailed => 'Error al eliminar';
+
+  @override
+  String get skinsLoginToUpload => 'Inicia sesión para subir skins';
+
+  @override
+  String get skinsUploading => 'Subiendo…';
+
+  @override
+  String get skinUploaded => '¡Skin subido!';
+
+  @override
+  String skinUploadFailed(String error) {
+    return 'Error al subir: $error';
+  }
+
+  @override
+  String get skinsTabSkins => 'Skins';
+
+  @override
+  String get skinsTabRecent => 'Recientes';
+
+  @override
+  String get skinsEmptyCloudSkins => 'Aún no hay skins en la nube. Sube un skin para verlo aquí.';
+
+  @override
+  String get skinsEmptyLocalSkins => 'Aún no hay skins. Crea o sube un skin para empezar.';
+
+  @override
+  String get skinUploadToWebsite => 'Subir al sitio web';
+
+  @override
+  String get skinReuploadToWebsite => 'Volver a subir al sitio web';
+
+  @override
+  String get skinCloudEdit => 'Editar';
+
+  @override
+  String get skinCloudSaveToDevice => 'Guardar en dispositivo';
+
+  @override
+  String get skinCloudDelete => 'Eliminar de la nube';
+
+  @override
+  String get skinsTabGallery => 'Galería';
+
+  @override
+  String get skinsGalleryEmpty => 'Aún no hay skins de la comunidad.';
+
+  @override
+  String get skinsTopLabel => 'Top 30';
+
+  @override
+  String get skinsAllLabel => 'Todos los Skins';
+
+  @override
+  String get skinUploadToCloud => 'Subir a la nube';
+
+  @override
+  String get skinSaveDialog => 'Guardar skin';
+
+  @override
+  String get skinNameHint => 'Nombre del skin';
+
+  @override
+  String get skinDefaultName => 'Mi skin';
+
+  @override
+  String get skinUpdatedInCloud => 'Skin actualizado en la nube';
 }

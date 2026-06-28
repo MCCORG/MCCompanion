@@ -2103,4 +2103,84 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get rpPackDetailTitle => 'Pack-Details';
+
+  @override
+  String get skinsSavedToMySkins => 'In Meine Skins gespeichert';
+
+  @override
+  String get skinsDownloadFailed => 'Download fehlgeschlagen';
+
+  @override
+  String get skinsDeletedFromCloud => 'Aus der Cloud gelöscht';
+
+  @override
+  String get skinsDeleteFailed => 'Löschen fehlgeschlagen';
+
+  @override
+  String get skinsLoginToUpload => 'Anmelden, um Skins hochzuladen';
+
+  @override
+  String get skinsUploading => 'Wird hochgeladen…';
+
+  @override
+  String get skinUploaded => 'Skin hochgeladen!';
+
+  @override
+  String skinUploadFailed(String error) {
+    return 'Upload fehlgeschlagen: $error';
+  }
+
+  @override
+  String get skinsTabSkins => 'Skins';
+
+  @override
+  String get skinsTabRecent => 'Zuletzt';
+
+  @override
+  String get skinsEmptyCloudSkins => 'Noch keine Cloud-Skins. Lade einen Skin hoch, um ihn hier zu sehen.';
+
+  @override
+  String get skinsEmptyLocalSkins => 'Noch keine Skins. Erstelle oder lade einen Skin hoch, um loszulegen.';
+
+  @override
+  String get skinUploadToWebsite => 'Auf Website hochladen';
+
+  @override
+  String get skinReuploadToWebsite => 'Erneut auf Website hochladen';
+
+  @override
+  String get skinCloudEdit => 'Bearbeiten';
+
+  @override
+  String get skinCloudSaveToDevice => 'Auf Gerät speichern';
+
+  @override
+  String get skinCloudDelete => 'Aus Cloud löschen';
+
+  @override
+  String get skinsTabGallery => 'Galerie';
+
+  @override
+  String get skinsGalleryEmpty => 'Noch keine Community-Skins.';
+
+  @override
+  String get skinsTopLabel => 'Top 30';
+
+  @override
+  String get skinsAllLabel => 'Alle Skins';
+
+  @override
+  String get skinUploadToCloud => 'In Cloud laden';
+
+  @override
+  String get skinSaveDialog => 'Skin speichern';
+
+  @override
+  String get skinNameHint => 'Skin-Name';
+
+  @override
+  String get skinDefaultName => 'Mein Skin';
+
+  @override
+  String get skinUpdatedInCloud => 'Skin in der Cloud aktualisiert';
 }

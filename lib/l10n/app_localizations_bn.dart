@@ -2103,4 +2103,84 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get rpPackDetailTitle => 'প্যাক বিবরণ';
+
+  @override
+  String get skinsSavedToMySkins => 'আমার স্কিনে সংরক্ষিত হয়েছে';
+
+  @override
+  String get skinsDownloadFailed => 'ডাউনলোড ব্যর্থ হয়েছে';
+
+  @override
+  String get skinsDeletedFromCloud => 'ক্লাউড থেকে মুছে ফেলা হয়েছে';
+
+  @override
+  String get skinsDeleteFailed => 'মুছে ফেলা ব্যর্থ হয়েছে';
+
+  @override
+  String get skinsLoginToUpload => 'স্কিন আপলোড করতে লগ ইন করুন';
+
+  @override
+  String get skinsUploading => 'আপলোড হচ্ছে…';
+
+  @override
+  String get skinUploaded => 'স্কিন আপলোড হয়েছে!';
+
+  @override
+  String skinUploadFailed(String error) {
+    return 'আপলোড ব্যর্থ: $error';
+  }
+
+  @override
+  String get skinsTabSkins => 'স্কিন';
+
+  @override
+  String get skinsTabRecent => 'সাম্প্রতিক';
+
+  @override
+  String get skinsEmptyCloudSkins => 'এখনো কোনো ক্লাউড স্কিন নেই। এখানে দেখতে একটি স্কিন আপলোড করুন।';
+
+  @override
+  String get skinsEmptyLocalSkins => 'এখনো কোনো স্কিন নেই। শুরু করতে একটি স্কিন তৈরি বা আপলোড করুন।';
+
+  @override
+  String get skinUploadToWebsite => 'ওয়েবসাইটে আপলোড করুন';
+
+  @override
+  String get skinReuploadToWebsite => 'ওয়েবসাইটে পুনরায় আপলোড করুন';
+
+  @override
+  String get skinCloudEdit => 'সম্পাদনা করুন';
+
+  @override
+  String get skinCloudSaveToDevice => 'ডিভাইসে সংরক্ষণ করুন';
+
+  @override
+  String get skinCloudDelete => 'ক্লাউড থেকে মুছুন';
+
+  @override
+  String get skinsTabGallery => 'গ্যালারি';
+
+  @override
+  String get skinsGalleryEmpty => 'এখনো কোনো কমিউনিটি স্কিন নেই।';
+
+  @override
+  String get skinsTopLabel => 'শীর্ষ ৩০';
+
+  @override
+  String get skinsAllLabel => 'সব স্কিন';
+
+  @override
+  String get skinUploadToCloud => 'ক্লাউডে আপলোড করুন';
+
+  @override
+  String get skinSaveDialog => 'স্কিন সেভ করুন';
+
+  @override
+  String get skinNameHint => 'স্কিনের নাম';
+
+  @override
+  String get skinDefaultName => 'আমার স্কিন';
+
+  @override
+  String get skinUpdatedInCloud => 'ক্লাউডে স্কিন আপডেট হয়েছে';
 }
