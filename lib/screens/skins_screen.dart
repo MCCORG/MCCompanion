@@ -24,12 +24,6 @@ import '../widgets/components/app_toast.dart';
 import '../widgets/skins/skin_cards.dart';
 import '../widgets/skins/skin_detail_sheets.dart';
 
-class _TabDef {
-  final FaIconData icon;
-  final String label;
-  const _TabDef({required this.icon, required this.label});
-}
-
 class SkinsScreen extends StatefulWidget {
   const SkinsScreen({super.key, this.onBack});
   final VoidCallback? onBack;
@@ -38,10 +32,9 @@ class SkinsScreen extends StatefulWidget {
   State<SkinsScreen> createState() => SkinsScreenState();
 }
 
-class SkinsScreenState extends State<SkinsScreen> with SingleTickerProviderStateMixin {
+class SkinsScreenState extends State<SkinsScreen> {
   void refresh() => _loadMe();
   StreamSubscription<AuthUser?>? _authSub;
-  late TabController _tabController;
 
   UserModel? _me;
   bool _loading = true;
@@ -65,8 +58,6 @@ class SkinsScreenState extends State<SkinsScreen> with SingleTickerProviderState
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
-    _tabController.addListener(() => setState(() {}));
     _authSub = AuthService.userStream.listen((_) { _loadMe(); _loadCloudSkins(); _loadLikedIds(); });
     _loadMe();
     _loadSavedSkins();
@@ -78,7 +69,6 @@ class SkinsScreenState extends State<SkinsScreen> with SingleTickerProviderState
 
   @override
   void dispose() {
-    _tabController.dispose();
     _authSub?.cancel();
     super.dispose();
   }
@@ -412,54 +402,16 @@ class SkinsScreenState extends State<SkinsScreen> with SingleTickerProviderState
     final l = AppLocalizations.of(context)!;
     final isLoggedIn = AuthService.currentUser != null;
 
-    final tabs = [
-      _TabDef(icon: FontAwesomeIcons.shirt, label: l.skinsTabSkins),
-      _TabDef(icon: FontAwesomeIcons.earthAmericas, label: l.skinsTabGallery),
-    ];
-
     final content = LayoutBuilder(
       builder: (context, constraints) {
         final isDesktop = constraints.maxWidth > 700;
         return Column(
           children: [
-            // Top bar
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
               child: Row(
                 children: [
-                  // Custom pill tab bar
-                  Expanded(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: List.generate(tabs.length, (i) {
-                          final selected = _tabController.index == i;
-                          return GestureDetector(
-                            onTap: () => _tabController.animateTo(i),
-                            child: AnimatedContainer(
-                              duration: const Duration(milliseconds: 180),
-                              margin: const EdgeInsets.only(right: 6),
-                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
-                              decoration: BoxDecoration(
-                                color: selected ? AppTheme.accent : AppTheme.surface,
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: selected ? AppTheme.accent : AppTheme.borderGray),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  FaIcon(tabs[i].icon, size: 10, color: selected ? Colors.white : AppTheme.textMuted),
-                                  const SizedBox(width: 5),
-                                  Text(tabs[i].label, style: TextStyle(color: selected ? Colors.white : AppTheme.textSecondary, fontSize: 12, fontWeight: FontWeight.w600)),
-                                ],
-                              ),
-                            ),
-                          );
-                        }),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
+                  const Spacer(),
                   HeaderNavBar(
                     items: [
                       HeaderNavItem(label: l.skinsUpload, onTap: _uploadSkin),
@@ -470,15 +422,26 @@ class SkinsScreenState extends State<SkinsScreen> with SingleTickerProviderState
               ),
             ),
             const SizedBox(height: 12),
-            // Tab content
             Expanded(
-              child: TabBarView(
-                controller: _tabController,
-                physics: const NeverScrollableScrollPhysics(),
-                children: [
-                  _scrollTab(child: _buildAllSkins(l, isDesktop: isDesktop, isLoggedIn: isLoggedIn), isDesktop: isDesktop),
-                  _scrollTab(child: _buildGallerySkins(l, isDesktop: isDesktop), isDesktop: isDesktop),
-                ],
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(16, 4, 16, 32),
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 900),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _sectionHeader(l.skinsLabel, icon: FontAwesomeIcons.shirt),
+                        const SizedBox(height: 10),
+                        _buildAllSkins(l, isDesktop: isDesktop, isLoggedIn: isLoggedIn),
+                        const SizedBox(height: 24),
+                        const Divider(color: AppTheme.borderGray, thickness: 1),
+                        const SizedBox(height: 24),
+                        _buildGallerySkins(l, isDesktop: isDesktop),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ),
           ],
@@ -490,18 +453,6 @@ class SkinsScreenState extends State<SkinsScreen> with SingleTickerProviderState
       return SwipeBack(onBack: widget.onBack!, child: content);
     }
     return content;
-  }
-
-  Widget _scrollTab({required Widget child, required bool isDesktop}) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 900),
-          child: child,
-        ),
-      ),
-    );
   }
 
   Widget _buildAllSkins(AppLocalizations l, {required bool isDesktop, required bool isLoggedIn}) {
@@ -543,7 +494,7 @@ class SkinsScreenState extends State<SkinsScreen> with SingleTickerProviderState
     if (_loadingGallery && _gallerySkins.isEmpty) {
       return SizedBox(height: 60, child: Center(child: CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)));
     }
-    if (_gallerySkins.isEmpty) return _emptyState(l.skinsGalleryEmpty);
+    if (_gallerySkins.isEmpty) return const SizedBox.shrink();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

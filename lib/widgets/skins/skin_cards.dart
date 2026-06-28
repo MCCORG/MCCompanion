@@ -93,16 +93,15 @@ class _GallerySkinCardState extends State<GallerySkinCard> {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                if (widget.idToken != null)
-                  GestureDetector(
-                    onTap: _toggleLike,
-                    behavior: HitTestBehavior.opaque,
-                    child: FaIcon(
-                      _liked ? FontAwesomeIcons.solidHeart : FontAwesomeIcons.heart,
-                      size: 10,
-                      color: _liked ? const Color(0xFFf87171) : AppTheme.textMuted,
-                    ),
+                GestureDetector(
+                  onTap: widget.idToken != null ? _toggleLike : null,
+                  behavior: HitTestBehavior.opaque,
+                  child: FaIcon(
+                    _liked ? FontAwesomeIcons.solidHeart : FontAwesomeIcons.heart,
+                    size: 10,
+                    color: _liked ? const Color(0xFFf87171) : AppTheme.textMuted,
                   ),
+                ),
                 if (_likes > 0) ...[
                   const SizedBox(width: 3),
                   Text('$_likes', style: TextStyle(color: AppTheme.textMuted, fontSize: 9, fontWeight: FontWeight.w600)),
