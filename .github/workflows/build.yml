@@ -115,6 +115,9 @@ jobs:
         env:
           CMAKE_POLICY_VERSION_MINIMUM: "3.5"
 
+      - name: Build MSIX
+        run: dart run msix:create
+
       - name: Zip Windows build
         shell: pwsh
         run: |
@@ -124,6 +127,11 @@ jobs:
         with:
           name: windows-zip
           path: MCCompanion-windows.zip
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: windows-msix
+          path: build/windows/x64/runner/Release/MCCompanion.msix
 
   build-macos:
     name: Build macOS DMG
@@ -218,6 +226,11 @@ jobs:
 
       - uses: actions/download-artifact@v8
         with:
+          name: windows-msix
+          path: artifacts/
+
+      - uses: actions/download-artifact@v8
+        with:
           name: macos-dmg
           path: artifacts/
 
@@ -238,6 +251,7 @@ jobs:
             artifacts/MCCompanion-android.apk
             artifacts/MCCompanion-windows.zip
             artifacts/MCCompanion-macos.dmg
+            artifacts/MCCompanion.msix
 
   notify-discord:
     name: Notify Discord
@@ -349,6 +363,11 @@ jobs:
 
       - uses: actions/download-artifact@v8
         with:
+          name: windows-msix
+          path: artifacts/
+
+      - uses: actions/download-artifact@v8
+        with:
           name: macos-dmg
           path: artifacts/
 
@@ -370,6 +389,7 @@ jobs:
             artifacts/MCCompanion-android.apk
             artifacts/MCCompanion-windows.zip
             artifacts/MCCompanion-macos.dmg
+            artifacts/MCCompanion.msix
 
   notify-discord-beta:
     name: Notify Discord Beta Release
