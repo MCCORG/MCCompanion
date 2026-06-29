@@ -1768,5 +1768,9 @@
   "skinSaveDialog": "Сохранить скин",
   "skinNameHint": "Название скина",
   "skinDefaultName": "Мой скин",
-  "skinUpdatedInCloud": "Скин обновлён в облаке"
+  "skinUpdatedInCloud": "Скин обновлён в облаке",
+  "skinByCreator": "от {name}",
+  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "skinLikesCount": "{count} лайков",
+  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}}
 }

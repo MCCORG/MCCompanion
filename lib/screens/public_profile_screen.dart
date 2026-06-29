@@ -6,6 +6,7 @@ import 'package:flutter/services.dart' show Clipboard, ClipboardData;
 import 'package:http/http.dart' as http;
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../constants/app_constants.dart';
 import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../models/user_model.dart';
@@ -13,6 +14,7 @@ import '../services/user_service.dart';
 import '../widgets/skin_3d_viewer.dart';
 import '../widgets/navigation/bottom_nav_bar.dart';
 import '../widgets/components/app_toast.dart';
+import '../widgets/skins/skin_painters.dart';
 
 class PublicProfileScreen extends StatefulWidget {
   final String username;
@@ -382,6 +384,8 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
             const SizedBox(height: 12),
             _PublicSkinsSection(user: u),
           ],
+          const SizedBox(height: 12),
+          _CloudSkinsSection(username: widget.username),
         ],
       ),
     );
@@ -1222,6 +1226,128 @@ class _InfoCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           child,
+        ],
+      ),
+    );
+  }
+}
+
+class _CloudSkinsSection extends StatefulWidget {
+  final String username;
+  const _CloudSkinsSection({required this.username});
+
+  @override
+  State<_CloudSkinsSection> createState() => _CloudSkinsSectionState();
+}
+
+class _CloudSkinsSectionState extends State<_CloudSkinsSection> {
+  List<Map<String, dynamic>> _skins = [];
+  bool _loading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  Future<void> _load() async {
+    try {
+      final resp = await http.get(
+        Uri.parse('${AppConstants.apiBase}/api/skins/user/${widget.username}'),
+      ).timeout(const Duration(seconds: 10));
+      if (!mounted) return;
+      if (resp.statusCode == 200) {
+        final data = jsonDecode(resp.body) as Map<String, dynamic>;
+        final skins = (data['skins'] as List?)?.cast<Map<String, dynamic>>() ?? [];
+        setState(() { _skins = skins; _loading = false; });
+      } else {
+        setState(() => _loading = false);
+      }
+    } catch (_) {
+      if (mounted) setState(() => _loading = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_loading) {
+      return const Center(child: Padding(
+        padding: EdgeInsets.all(16),
+        child: CircularProgressIndicator(strokeWidth: 2),
+      ));
+    }
+    if (_skins.isEmpty) return const SizedBox.shrink();
+
+    return Container(
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: AppTheme.surfaceRaised,
+        borderRadius: BorderRadius.circular(12),
+        border: const Border.fromBorderSide(BorderSide(color: AppTheme.borderGray)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(Icons.palette_rounded, size: 14, color: AppTheme.textMuted),
+              const SizedBox(width: 6),
+              Text(
+                AppLocalizations.of(context)!.skinsTabGallery,
+                style: TextStyle(color: AppTheme.textMuted, fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 0.4),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 110,
+              mainAxisExtent: 160,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+            ),
+            itemCount: _skins.length,
+            itemBuilder: (_, i) {
+              final skin = _skins[i];
+              final url = (skin['public_url'] ?? skin['publicUrl']) as String? ?? '';
+              final name = skin['name'] as String? ?? '';
+              final likes = (skin['like_count'] as num?)?.toInt() ?? 0;
+              return Container(
+                decoration: BoxDecoration(
+                  color: AppTheme.surface,
+                  borderRadius: BorderRadius.circular(14),
+                  border: Border.all(color: AppTheme.borderGray),
+                ),
+                padding: const EdgeInsets.fromLTRB(8, 10, 8, 8),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 6),
+                        child: Center(child: url.isNotEmpty ? SkinBodyImage(textureUrl: url, height: 90) : const SizedBox()),
+                      ),
+                    ),
+                    Divider(height: 1, thickness: 1, color: AppTheme.borderGray),
+                    const SizedBox(height: 6),
+                    Text(name, style: TextStyle(color: AppTheme.textPrimary, fontSize: 10, fontWeight: FontWeight.w600), maxLines: 1, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center),
+                    if (likes > 0) ...[
+                      const SizedBox(height: 2),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.favorite_rounded, size: 9, color: const Color(0xFFf87171)),
+                          const SizedBox(width: 2),
+                          Text('$likes', style: TextStyle(color: AppTheme.textMuted, fontSize: 9)),
+                        ],
+                      ),
+                    ],
+                  ],
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

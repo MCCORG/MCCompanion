@@ -1768,5 +1768,9 @@
   "skinSaveDialog": "حفظ السكن",
   "skinNameHint": "اسم السكن",
   "skinDefaultName": "سكني",
-  "skinUpdatedInCloud": "تم تحديث السكن في السحابة"
+  "skinUpdatedInCloud": "تم تحديث السكن في السحابة",
+  "skinByCreator": "بواسطة {name}",
+  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "skinLikesCount": "{count} إعجاب",
+  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}}
 }

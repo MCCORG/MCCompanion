@@ -1768,5 +1768,9 @@
   "skinSaveDialog": "स्किन सहेजें",
   "skinNameHint": "स्किन का नाम",
   "skinDefaultName": "मेरी स्किन",
-  "skinUpdatedInCloud": "स्किन क्लाउड में अपडेट हुआ"
+  "skinUpdatedInCloud": "स्किन क्लाउड में अपडेट हुआ",
+  "skinByCreator": "{name} द्वारा",
+  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "skinLikesCount": "{count} लाइक",
+  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}}
 }

@@ -1764,5 +1764,9 @@
   "skinSaveDialog": "Hifadhi Skin",
   "skinNameHint": "Jina la skin",
   "skinDefaultName": "Skin yangu",
-  "skinUpdatedInCloud": "Skin imesasishwa kwenye wingu"
+  "skinUpdatedInCloud": "Skin imesasishwa kwenye wingu",
+  "skinByCreator": "na {name}",
+  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "skinLikesCount": "{count} likes",
+  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}}
 }

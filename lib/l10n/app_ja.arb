@@ -1768,5 +1768,9 @@
   "skinSaveDialog": "スキンを保存",
   "skinNameHint": "スキン名",
   "skinDefaultName": "マイスキン",
-  "skinUpdatedInCloud": "クラウドのスキンが更新されました"
+  "skinUpdatedInCloud": "クラウドのスキンが更新されました",
+  "skinByCreator": "{name} 作",
+  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "skinLikesCount": "{count} いいね",
+  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}}
 }

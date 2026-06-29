@@ -2183,4 +2183,14 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get skinUpdatedInCloud => 'Skin imesasishwa kwenye wingu';
+
+  @override
+  String skinByCreator(String name) {
+    return 'na $name';
+  }
+
+  @override
+  String skinLikesCount(int count) {
+    return '$count likes';
+  }
 }

@@ -20,6 +20,7 @@ import '../models/saved_skin.dart';
 import '../util/saved_skins_storage.dart';
 import 'skin_editor_screen.dart';
 import '../l10n/app_localizations.dart';
+import '../constants/app_constants.dart';
 import '../widgets/components/app_toast.dart';
 import '../widgets/skins/skin_cards.dart';
 import '../widgets/skins/skin_detail_sheets.dart';
@@ -58,7 +59,11 @@ class SkinsScreenState extends State<SkinsScreen> {
   @override
   void initState() {
     super.initState();
-    _authSub = AuthService.userStream.listen((_) { _loadMe(); _loadCloudSkins(); _loadLikedIds(); });
+    _authSub = AuthService.userStream.listen((user) {
+      _loadMe();
+      _loadCloudSkins();
+      if (user?.uid != AuthService.currentUser?.uid || user == null) _loadLikedIds();
+    });
     _loadMe();
     _loadSavedSkins();
     _loadCloudSkins();
@@ -96,7 +101,7 @@ class SkinsScreenState extends State<SkinsScreen> {
     setState(() => _loadingGallery = true);
     try {
       final resp = await http
-          .get(Uri.parse('https://api.mccompanion.net/api/skins?limit=48'))
+          .get(Uri.parse('${AppConstants.apiBase}/api/skins?limit=100'))
           .timeout(const Duration(seconds: 10));
       if (!mounted) return;
       if (resp.statusCode == 200) {
@@ -114,7 +119,7 @@ class SkinsScreenState extends State<SkinsScreen> {
     setState(() => _loadingTop = true);
     try {
       final resp = await http
-          .get(Uri.parse('https://api.mccompanion.net/api/skins/top?limit=30'))
+          .get(Uri.parse('${AppConstants.apiBase}/api/skins/top?limit=30'))
           .timeout(const Duration(seconds: 10));
       if (!mounted) return;
       if (resp.statusCode == 200) {
@@ -133,7 +138,7 @@ class SkinsScreenState extends State<SkinsScreen> {
     try {
       final token = await AuthService.getIdToken();
       final resp = await http
-          .get(Uri.parse('https://api.mccompanion.net/api/skins/me/likes'),
+          .get(Uri.parse('${AppConstants.apiBase}/api/skins/me/likes'),
               headers: {'Authorization': 'Bearer $token'})
           .timeout(const Duration(seconds: 10));
       if (!mounted) return;
@@ -190,21 +195,35 @@ class SkinsScreenState extends State<SkinsScreen> {
   void _showGallerySkinMenu(Map<String, dynamic> skin) {
     final currentUid = AuthService.currentUser?.uid;
     final isOwn = currentUid != null && skin['uid'] == currentUid;
-    if (isOwn) {
-      _showCloudSkinMenu(skin);
-      return;
-    }
+    final textureUrl = (skin['public_url'] ?? skin['publicUrl']) as String?;
+    final skinId = skin['id'] as String?;
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
-      builder: (_) => CloudSkinMenuSheet(
+      isScrollControlled: true,
+      builder: (_) => GallerySkinPreviewSheet(
         skin: skin,
-        onEdit: null,
+        idToken: _idToken,
+        isOwn: isOwn,
+        initialLiked: skinId != null && _likedIds.contains(skinId),
+        onEdit: textureUrl != null ? () {
+          Navigator.pop(context);
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => isOwn
+                  ? SkinEditorScreen(cloudSkin: skin)
+                  : SkinEditorScreen(initialTextureUrl: textureUrl),
+            ),
+          ).then((result) { if (result == 'cloud') _loadCloudSkins(); });
+        } : null,
         onDownload: () {
           Navigator.pop(context);
           _downloadCloudSkin(skin);
         },
-        onDelete: null,
+        onDelete: isOwn ? () {
+          Navigator.pop(context);
+          _deleteCloudSkin(skin);
+        } : null,
       ),
     );
   }
@@ -509,6 +528,7 @@ class SkinsScreenState extends State<SkinsScreen> {
               onTap: () => _showGallerySkinMenu(_topSkins[i]),
               idToken: _idToken,
               initialLiked: _likedIds.contains(_topSkins[i]['id'] as String?),
+              isOwn: AuthService.currentUser?.uid == _topSkins[i]['uid'],
             )),
           ),
           const SizedBox(height: 20),
@@ -522,6 +542,7 @@ class SkinsScreenState extends State<SkinsScreen> {
             onTap: () => _showGallerySkinMenu(_gallerySkins[i]),
             idToken: _idToken,
             initialLiked: _likedIds.contains(_gallerySkins[i]['id'] as String?),
+            isOwn: AuthService.currentUser?.uid == _gallerySkins[i]['uid'],
           )),
         ),
       ],

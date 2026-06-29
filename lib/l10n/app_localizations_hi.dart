@@ -2183,4 +2183,14 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get skinUpdatedInCloud => 'स्किन क्लाउड में अपडेट हुआ';
+
+  @override
+  String skinByCreator(String name) {
+    return '$name द्वारा';
+  }
+
+  @override
+  String skinLikesCount(int count) {
+    return '$count लाइक';
+  }
 }

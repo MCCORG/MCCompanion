@@ -1768,5 +1768,9 @@
   "skinSaveDialog": "Salvar skin",
   "skinNameHint": "Nome do skin",
   "skinDefaultName": "Meu skin",
-  "skinUpdatedInCloud": "Skin atualizado na nuvem"
+  "skinUpdatedInCloud": "Skin atualizado na nuvem",
+  "skinByCreator": "por {name}",
+  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "skinLikesCount": "{count} curtidas",
+  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}}
 }

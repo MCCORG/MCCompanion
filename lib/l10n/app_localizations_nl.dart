@@ -2183,4 +2183,14 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get skinUpdatedInCloud => 'Skin bijgewerkt in cloud';
+
+  @override
+  String skinByCreator(String name) {
+    return 'door $name';
+  }
+
+  @override
+  String skinLikesCount(int count) {
+    return '$count likes';
+  }
 }

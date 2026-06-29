@@ -1764,5 +1764,9 @@
   "skinSaveDialog": "سکن محفوظ کریں",
   "skinNameHint": "سکن کا نام",
   "skinDefaultName": "میرا سکن",
-  "skinUpdatedInCloud": "سکن کلاؤڈ میں اپ ڈیٹ ہو گیا"
+  "skinUpdatedInCloud": "سکن کلاؤڈ میں اپ ڈیٹ ہو گیا",
+  "skinByCreator": "{name} کی طرف سے",
+  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "skinLikesCount": "{count} پسند",
+  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}}
 }

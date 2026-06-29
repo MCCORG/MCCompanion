@@ -2402,5 +2402,15 @@
   "skinDefaultName": "My Skin",
   "@skinDefaultName": { "description": "Default name for a new skin" },
   "skinUpdatedInCloud": "Skin updated in cloud",
-  "@skinUpdatedInCloud": { "description": "Toast when cloud skin is updated" }
+  "@skinUpdatedInCloud": { "description": "Toast when cloud skin is updated" },
+  "skinByCreator": "by {name}",
+  "@skinByCreator": {
+    "description": "Creator attribution on skin cards and preview sheet",
+    "placeholders": { "name": { "type": "String" } }
+  },
+  "skinLikesCount": "{count} likes",
+  "@skinLikesCount": {
+    "description": "Like count shown under skin name in preview sheet",
+    "placeholders": { "count": { "type": "int" } }
+  }
 }

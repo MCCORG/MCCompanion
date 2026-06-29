@@ -2183,4 +2183,14 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get skinUpdatedInCloud => 'Skin actualizado en la nube';
+
+  @override
+  String skinByCreator(String name) {
+    return 'por $name';
+  }
+
+  @override
+  String skinLikesCount(int count) {
+    return '$count me gusta';
+  }
 }

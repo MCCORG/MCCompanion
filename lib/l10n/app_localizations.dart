@@ -4286,6 +4286,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Skin updated in cloud'**
   String get skinUpdatedInCloud;
+
+  /// Creator attribution on skin cards and preview sheet
+  ///
+  /// In en, this message translates to:
+  /// **'by {name}'**
+  String skinByCreator(String name);
+
+  /// Like count shown under skin name in preview sheet
+  ///
+  /// In en, this message translates to:
+  /// **'{count} likes'**
+  String skinLikesCount(int count);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

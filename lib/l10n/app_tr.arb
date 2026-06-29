@@ -1768,5 +1768,9 @@
   "skinSaveDialog": "Skin kaydet",
   "skinNameHint": "Skin adı",
   "skinDefaultName": "Benim skinim",
-  "skinUpdatedInCloud": "Skin bulutta güncellendi"
+  "skinUpdatedInCloud": "Skin bulutta güncellendi",
+  "skinByCreator": "{name} tarafından",
+  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "skinLikesCount": "{count} beğeni",
+  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}}
 }

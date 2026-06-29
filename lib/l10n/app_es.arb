@@ -1768,5 +1768,9 @@
   "skinSaveDialog": "Guardar skin",
   "skinNameHint": "Nombre del skin",
   "skinDefaultName": "Mi skin",
-  "skinUpdatedInCloud": "Skin actualizado en la nube"
+  "skinUpdatedInCloud": "Skin actualizado en la nube",
+  "skinByCreator": "por {name}",
+  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "skinLikesCount": "{count} me gusta",
+  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}}
 }

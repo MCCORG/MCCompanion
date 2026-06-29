@@ -2183,4 +2183,14 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get skinUpdatedInCloud => '皮肤已在云端更新';
+
+  @override
+  String skinByCreator(String name) {
+    return '由 $name';
+  }
+
+  @override
+  String skinLikesCount(int count) {
+    return '$count 个赞';
+  }
 }

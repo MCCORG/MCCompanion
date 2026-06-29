@@ -2183,4 +2183,14 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get skinUpdatedInCloud => 'ক্লাউডে স্কিন আপডেট হয়েছে';
+
+  @override
+  String skinByCreator(String name) {
+    return '$name দ্বারা';
+  }
+
+  @override
+  String skinLikesCount(int count) {
+    return '$count পছন্দ';
+  }
 }

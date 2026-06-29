@@ -3,20 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 
+import '../../constants/app_constants.dart';
 import '../../theme/app_theme.dart';
 import '../../l10n/app_localizations.dart';
 import '../../models/saved_skin.dart';
+import '../../screens/public_profile_screen.dart';
 import 'skin_painters.dart';
 import 'skin_detail_sheets.dart';
-
-const _api = 'https://api.mccompanion.net';
 
 class GallerySkinCard extends StatefulWidget {
   final Map<String, dynamic> skin;
   final VoidCallback? onTap;
   final String? idToken;
   final bool initialLiked;
-  const GallerySkinCard({super.key, required this.skin, this.onTap, this.idToken, this.initialLiked = false});
+  final bool isOwn;
+  const GallerySkinCard({super.key, required this.skin, this.onTap, this.idToken, this.initialLiked = false, this.isOwn = false});
 
   @override
   State<GallerySkinCard> createState() => _GallerySkinCardState();
@@ -35,8 +36,16 @@ class _GallerySkinCardState extends State<GallerySkinCard> {
     _liked = widget.initialLiked;
   }
 
+  @override
+  void didUpdateWidget(GallerySkinCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.initialLiked != widget.initialLiked && !_liking) {
+      setState(() => _liked = widget.initialLiked);
+    }
+  }
+
   Future<void> _toggleLike() async {
-    if (widget.idToken == null) return;
+    if (widget.idToken == null || widget.isOwn) return;
     final now = DateTime.now();
     if (_liking || (_lastLike != null && now.difference(_lastLike!) < const Duration(seconds: 2))) return;
     _lastLike = now;
@@ -44,7 +53,7 @@ class _GallerySkinCardState extends State<GallerySkinCard> {
     try {
       final id = widget.skin['id'] as String;
       final resp = await http
-          .post(Uri.parse('$_api/api/skins/$id/like'),
+          .post(Uri.parse('${AppConstants.apiBase}/api/skins/$id/like'),
               headers: {'Authorization': 'Bearer ${widget.idToken}'})
           .timeout(const Duration(seconds: 8));
       if (resp.statusCode == 200) {
@@ -62,52 +71,82 @@ class _GallerySkinCardState extends State<GallerySkinCard> {
   Widget build(BuildContext context) {
     final name = widget.skin['name'] as String? ?? '';
     final url = (widget.skin['public_url'] ?? widget.skin['publicUrl']) as String? ?? '';
+    final creatorUsername = widget.isOwn ? null : widget.skin['username'] as String?;
+    final creatorName = widget.isOwn ? null : (widget.skin['display_name'] ?? widget.skin['username']) as String?;
+
     return GestureDetector(
       onTap: widget.onTap,
       child: Container(
         width: 100,
-        padding: const EdgeInsets.fromLTRB(10, 10, 10, 8),
         decoration: BoxDecoration(
           color: AppTheme.surface,
           borderRadius: BorderRadius.circular(14),
           border: Border.all(color: AppTheme.borderGray),
         ),
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 8),
         child: Column(
           children: [
             Expanded(
-              child: Center(
-                child: url.isNotEmpty
-                    ? SkinBodyImage(textureUrl: url, height: 100)
-                    : const SizedBox(),
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 6),
+                child: Center(
+                  child: url.isNotEmpty
+                      ? SkinBodyImage(textureUrl: url, height: 90)
+                      : const SizedBox(),
+                ),
               ),
             ),
-            const SizedBox(height: 6),
+            Divider(height: 1, thickness: 1, color: AppTheme.borderGray),
+            const SizedBox(height: 8),
             Text(
               name,
               style: TextStyle(color: AppTheme.textPrimary, fontSize: 11, fontWeight: FontWeight.w600),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 4),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                GestureDetector(
-                  onTap: widget.idToken != null ? _toggleLike : null,
-                  behavior: HitTestBehavior.opaque,
-                  child: FaIcon(
-                    _liked ? FontAwesomeIcons.solidHeart : FontAwesomeIcons.heart,
-                    size: 10,
-                    color: _liked ? const Color(0xFFf87171) : AppTheme.textMuted,
-                  ),
+            const SizedBox(height: 3),
+            if (creatorUsername != null)
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => PublicProfileScreen(username: creatorUsername),
+                  ));
+                },
+                behavior: HitTestBehavior.opaque,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        AppLocalizations.of(context)!.skinByCreator(creatorName ?? creatorUsername),
+                        style: TextStyle(color: AppTheme.accent, fontSize: 9),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () { if (widget.idToken != null) _toggleLike(); },
+                      behavior: HitTestBehavior.opaque,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          FaIcon(
+                            _liked ? FontAwesomeIcons.solidHeart : FontAwesomeIcons.heart,
+                            size: 10,
+                            color: _liked ? const Color(0xFFf87171) : AppTheme.textMuted,
+                          ),
+                          if (_likes > 0) ...[
+                            const SizedBox(width: 2),
+                            Text('$_likes', style: TextStyle(color: _liked ? const Color(0xFFf87171) : AppTheme.textMuted, fontSize: 9, fontWeight: FontWeight.w600)),
+                          ],
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                if (_likes > 0) ...[
-                  const SizedBox(width: 3),
-                  Text('$_likes', style: TextStyle(color: AppTheme.textMuted, fontSize: 9, fontWeight: FontWeight.w600)),
-                ],
-              ],
-            ),
+              )
+            else
+              const SizedBox(height: 11),
           ],
         ),
       ),

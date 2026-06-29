@@ -1764,5 +1764,9 @@
   "skinSaveDialog": "Simpan Skin",
   "skinNameHint": "Nama skin",
   "skinDefaultName": "Skin saya",
-  "skinUpdatedInCloud": "Skin diperbarui di cloud"
+  "skinUpdatedInCloud": "Skin diperbarui di cloud",
+  "skinByCreator": "oleh {name}",
+  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "skinLikesCount": "{count} suka",
+  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}}
 }

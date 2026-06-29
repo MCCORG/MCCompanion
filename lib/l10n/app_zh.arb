@@ -1768,5 +1768,9 @@
   "skinSaveDialog": "保存皮肤",
   "skinNameHint": "皮肤名称",
   "skinDefaultName": "我的皮肤",
-  "skinUpdatedInCloud": "皮肤已在云端更新"
+  "skinUpdatedInCloud": "皮肤已在云端更新",
+  "skinByCreator": "由 {name}",
+  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "skinLikesCount": "{count} 个赞",
+  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}}
 }

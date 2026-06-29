@@ -2183,4 +2183,14 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get skinUpdatedInCloud => 'Skin atualizado na nuvem';
+
+  @override
+  String skinByCreator(String name) {
+    return 'por $name';
+  }
+
+  @override
+  String skinLikesCount(int count) {
+    return '$count curtidas';
+  }
 }

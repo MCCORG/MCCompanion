@@ -2183,4 +2183,14 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get skinUpdatedInCloud => 'Скин обновлён в облаке';
+
+  @override
+  String skinByCreator(String name) {
+    return 'от $name';
+  }
+
+  @override
+  String skinLikesCount(int count) {
+    return '$count лайков';
+  }
 }

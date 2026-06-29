@@ -1768,5 +1768,9 @@
   "skinSaveDialog": "স্কিন সেভ করুন",
   "skinNameHint": "স্কিনের নাম",
   "skinDefaultName": "আমার স্কিন",
-  "skinUpdatedInCloud": "ক্লাউডে স্কিন আপডেট হয়েছে"
+  "skinUpdatedInCloud": "ক্লাউডে স্কিন আপডেট হয়েছে",
+  "skinByCreator": "{name} দ্বারা",
+  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "skinLikesCount": "{count} পছন্দ",
+  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}}
 }
