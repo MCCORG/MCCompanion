@@ -1813,5 +1813,11 @@
   "notifPrefPackRejected": "প্যাক প্রত্যাখ্যাত",
   "notifPrefFriendRequest": "বন্ধুত্বের অনুরোধ",
   "notifPrefFriendAccepted": "বন্ধু যোগ করা হয়েছে",
-  "notifPrefMessageReceived": "নতুন বার্তা"
+  "notifPrefMessageReceived": "নতুন বার্তা",
+
+  "commentsTitle": "মন্তব্য",
+  "commentsEmpty": "এখনো কোনো মন্তব্য নেই। প্রথম হন!",
+  "commentsPlaceholder": "মন্তব্য লিখুন…",
+
+  "loadMore": "আরও লোড করুন"
 }

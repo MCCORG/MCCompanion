@@ -2304,4 +2304,16 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get notifPrefMessageReceived => '新消息';
+
+  @override
+  String get commentsTitle => '评论';
+
+  @override
+  String get commentsEmpty => '暂无评论。成为第一个！';
+
+  @override
+  String get commentsPlaceholder => '写评论…';
+
+  @override
+  String get loadMore => '加载更多';
 }

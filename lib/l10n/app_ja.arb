@@ -1813,5 +1813,11 @@
   "notifPrefPackRejected": "パック拒否",
   "notifPrefFriendRequest": "フレンド申請",
   "notifPrefFriendAccepted": "フレンド追加",
-  "notifPrefMessageReceived": "新しいメッセージ"
+  "notifPrefMessageReceived": "新しいメッセージ",
+
+  "commentsTitle": "コメント",
+  "commentsEmpty": "まだコメントはありません。最初のコメントを残しましょう！",
+  "commentsPlaceholder": "コメントを書く…",
+
+  "loadMore": "もっと読み込む"
 }

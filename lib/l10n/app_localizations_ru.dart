@@ -2304,4 +2304,16 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get notifPrefMessageReceived => 'Новое сообщение';
+
+  @override
+  String get commentsTitle => 'Комментарии';
+
+  @override
+  String get commentsEmpty => 'Комментариев пока нет. Будьте первым!';
+
+  @override
+  String get commentsPlaceholder => 'Написать комментарий…';
+
+  @override
+  String get loadMore => 'Загрузить ещё';
 }

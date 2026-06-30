@@ -1813,5 +1813,11 @@
   "notifPrefPackRejected": "Пак отклонён",
   "notifPrefFriendRequest": "Запрос в друзья",
   "notifPrefFriendAccepted": "Друг добавлен",
-  "notifPrefMessageReceived": "Новое сообщение"
+  "notifPrefMessageReceived": "Новое сообщение",
+
+  "commentsTitle": "Комментарии",
+  "commentsEmpty": "Комментариев пока нет. Будьте первым!",
+  "commentsPlaceholder": "Написать комментарий…",
+
+  "loadMore": "Загрузить ещё"
 }

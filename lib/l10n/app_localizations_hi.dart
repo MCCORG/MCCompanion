@@ -2304,4 +2304,16 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get notifPrefMessageReceived => 'नया संदेश';
+
+  @override
+  String get commentsTitle => 'टिप्पणियाँ';
+
+  @override
+  String get commentsEmpty => 'अभी कोई टिप्पणी नहीं। पहले बनें!';
+
+  @override
+  String get commentsPlaceholder => 'टिप्पणी लिखें…';
+
+  @override
+  String get loadMore => 'और लोड करें';
 }

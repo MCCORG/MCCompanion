@@ -1813,5 +1813,11 @@
   "notifPrefPackRejected": "资源包被拒",
   "notifPrefFriendRequest": "好友请求",
   "notifPrefFriendAccepted": "添加好友",
-  "notifPrefMessageReceived": "新消息"
+  "notifPrefMessageReceived": "新消息",
+
+  "commentsTitle": "评论",
+  "commentsEmpty": "暂无评论。成为第一个！",
+  "commentsPlaceholder": "写评论…",
+
+  "loadMore": "加载更多"
 }

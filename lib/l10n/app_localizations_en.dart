@@ -2304,4 +2304,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get notifPrefMessageReceived => 'New message';
+
+  @override
+  String get commentsTitle => 'Comments';
+
+  @override
+  String get commentsEmpty => 'No comments yet. Be the first!';
+
+  @override
+  String get commentsPlaceholder => 'Write a comment…';
+
+  @override
+  String get loadMore => 'Load more';
 }

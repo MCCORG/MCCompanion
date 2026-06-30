@@ -49,6 +49,9 @@ class SkinsScreenState extends State<SkinsScreen> {
 
   List<Map<String, dynamic>> _gallerySkins = [];
   bool _loadingGallery = false;
+  bool _galleryHasMore = true;
+  int _galleryOffset = 0;
+  static const int _galleryPageSize = 30;
 
   List<Map<String, dynamic>> _topSkins = [];
   bool _loadingTop = false;
@@ -96,18 +99,25 @@ class SkinsScreenState extends State<SkinsScreen> {
     });
   }
 
-  Future<void> _loadGallerySkins() async {
+  Future<void> _loadGallerySkins({bool reset = false}) async {
     if (_loadingGallery) return;
+    if (!reset && !_galleryHasMore) return;
     setState(() => _loadingGallery = true);
+    final offset = reset ? 0 : _galleryOffset;
     try {
       final resp = await http
-          .get(Uri.parse('${AppConstants.apiBase}/api/skins?limit=100'))
+          .get(Uri.parse('${AppConstants.apiBase}/api/skins?limit=$_galleryPageSize&offset=$offset'))
           .timeout(const Duration(seconds: 10));
       if (!mounted) return;
       if (resp.statusCode == 200) {
         final json = jsonDecode(resp.body);
         final skins = (json['skins'] as List?)?.cast<Map<String, dynamic>>() ?? [];
-        setState(() { _gallerySkins = skins; _loadingGallery = false; });
+        setState(() {
+          _gallerySkins = reset ? skins : [..._gallerySkins, ...skins];
+          _galleryOffset = offset + skins.length;
+          _galleryHasMore = skins.length >= _galleryPageSize;
+          _loadingGallery = false;
+        });
         return;
       }
     } catch (_) {}
@@ -204,6 +214,7 @@ class SkinsScreenState extends State<SkinsScreen> {
       builder: (_) => GallerySkinPreviewSheet(
         skin: skin,
         idToken: _idToken,
+        currentUid: currentUid,
         isOwn: isOwn,
         initialLiked: skinId != null && _likedIds.contains(skinId),
         onEdit: textureUrl != null ? () {
@@ -545,6 +556,23 @@ class SkinsScreenState extends State<SkinsScreen> {
             isOwn: AuthService.currentUser?.uid == _gallerySkins[i]['uid'],
           )),
         ),
+        if (_galleryHasMore || _loadingGallery) ...[
+          const SizedBox(height: 16),
+          Center(
+            child: _loadingGallery && _gallerySkins.isNotEmpty
+                ? const SizedBox(height: 24, width: 24, child: CircularProgressIndicator(strokeWidth: 2))
+                : OutlinedButton(
+                    onPressed: _loadingGallery ? null : () => _loadGallerySkins(),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: AppTheme.textSecondary,
+                      side: const BorderSide(color: AppTheme.borderGray),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    ),
+                    child: Text(l.loadMore),
+                  ),
+          ),
+          const SizedBox(height: 16),
+        ],
       ],
     );
   }
@@ -606,8 +634,8 @@ class SkinsScreenState extends State<SkinsScreen> {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: isDesktop ? 130 : 110,
-        mainAxisExtent: isDesktop ? 180 : 160,
+        maxCrossAxisExtent: isDesktop ? 200 : 175,
+        mainAxisExtent: isDesktop ? 240 : 215,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
       ),

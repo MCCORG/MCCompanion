@@ -1809,5 +1809,11 @@
   "notifPrefPackRejected": "Pack ditolak",
   "notifPrefFriendRequest": "Permintaan pertemanan",
   "notifPrefFriendAccepted": "Teman ditambahkan",
-  "notifPrefMessageReceived": "Pesan baru"
+  "notifPrefMessageReceived": "Pesan baru",
+
+  "commentsTitle": "Komentar",
+  "commentsEmpty": "Belum ada komentar. Jadilah yang pertama!",
+  "commentsPlaceholder": "Tulis komentar…",
+
+  "loadMore": "Muat lebih banyak"
 }

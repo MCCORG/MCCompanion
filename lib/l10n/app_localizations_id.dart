@@ -2304,4 +2304,16 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get notifPrefMessageReceived => 'Pesan baru';
+
+  @override
+  String get commentsTitle => 'Komentar';
+
+  @override
+  String get commentsEmpty => 'Belum ada komentar. Jadilah yang pertama!';
+
+  @override
+  String get commentsPlaceholder => 'Tulis komentar…';
+
+  @override
+  String get loadMore => 'Muat lebih banyak';
 }

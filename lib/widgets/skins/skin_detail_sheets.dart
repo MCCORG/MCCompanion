@@ -14,6 +14,331 @@ import '../../constants/app_constants.dart';
 import '../../widgets/components/app_toast.dart';
 import 'skin_painters.dart';
 
+class _Comment {
+  final int id;
+  final String username;
+  final String? avatarUrl;
+  final String content;
+  final DateTime createdAt;
+  final String uid;
+
+  const _Comment({
+    required this.id,
+    required this.username,
+    this.avatarUrl,
+    required this.content,
+    required this.createdAt,
+    required this.uid,
+  });
+
+  factory _Comment.fromJson(Map<String, dynamic> j) => _Comment(
+        id: j['id'] as int,
+        username: j['username'] as String? ?? '',
+        avatarUrl: j['avatarUrl'] as String?,
+        content: j['content'] as String? ?? '',
+        createdAt: DateTime.parse(j['createdAt'] as String),
+        uid: j['uid'] as String? ?? '',
+      );
+}
+
+class SkinCommentsSection extends StatefulWidget {
+  final String skinId;
+  final String? idToken;
+  final String? currentUid;
+
+  const SkinCommentsSection({
+    super.key,
+    required this.skinId,
+    this.idToken,
+    this.currentUid,
+  });
+
+  @override
+  State<SkinCommentsSection> createState() => _SkinCommentsSectionState();
+}
+
+class _SkinCommentsSectionState extends State<SkinCommentsSection> {
+  List<_Comment> _comments = [];
+  bool _loading = true;
+  bool _posting = false;
+  final _ctrl = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  Future<void> _load() async {
+    try {
+      final res = await http
+          .get(Uri.parse('${AppConstants.apiBase}/api/comments/skin/${widget.skinId}'))
+          .timeout(const Duration(seconds: 8));
+      if (res.statusCode == 200 && mounted) {
+        final body = jsonDecode(res.body) as Map<String, dynamic>;
+        final list = (body['comments'] as List<dynamic>)
+            .map((e) => _Comment.fromJson(e as Map<String, dynamic>))
+            .toList();
+        setState(() { _comments = list; _loading = false; });
+      } else {
+        if (mounted) setState(() => _loading = false);
+      }
+    } catch (_) {
+      if (mounted) setState(() => _loading = false);
+    }
+  }
+
+  Future<void> _post() async {
+    final text = _ctrl.text.trim();
+    if (text.isEmpty || text.length > 500 || widget.idToken == null) return;
+    setState(() => _posting = true);
+    try {
+      final res = await http
+          .post(
+            Uri.parse('${AppConstants.apiBase}/api/comments/skin/${widget.skinId}'),
+            headers: {
+              'Authorization': 'Bearer ${widget.idToken}',
+              'Content-Type': 'application/json',
+            },
+            body: jsonEncode({'content': text}),
+          )
+          .timeout(const Duration(seconds: 8));
+      if (res.statusCode == 201 && mounted) {
+        final body = jsonDecode(res.body) as Map<String, dynamic>;
+        final newComment = _Comment.fromJson(body['comment'] as Map<String, dynamic>);
+        _ctrl.clear();
+        setState(() => _comments = [..._comments, newComment]);
+      }
+    } finally {
+      if (mounted) setState(() => _posting = false);
+    }
+  }
+
+  Future<void> _delete(int id) async {
+    if (widget.idToken == null) return;
+    await http.delete(
+      Uri.parse('${AppConstants.apiBase}/api/comments/$id'),
+      headers: {'Authorization': 'Bearer ${widget.idToken}'},
+    ).timeout(const Duration(seconds: 8));
+    if (mounted) setState(() => _comments.removeWhere((c) => c.id == id));
+  }
+
+  String _timeAgo(DateTime dt, AppLocalizations l) {
+    final diff = DateTime.now().difference(dt);
+    if (diff.inMinutes < 1) return l.timeJustNow;
+    if (diff.inMinutes < 60) return l.timeMinutesAgo(diff.inMinutes);
+    if (diff.inHours < 24) return l.timeHoursAgo(diff.inHours);
+    if (diff.inDays < 30) return l.timeDaysAgo(diff.inDays);
+    return l.timeMonthsAgo((diff.inDays / 30).floor());
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Icon(Icons.comment_rounded, size: 14, color: AppTheme.textMuted),
+            const SizedBox(width: 6),
+            Text(
+              l.commentsTitle.toUpperCase(),
+              style: TextStyle(
+                color: AppTheme.textMuted,
+                fontSize: 10,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 1.2,
+              ),
+            ),
+            if (_comments.isNotEmpty) ...[
+              const SizedBox(width: 6),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+                decoration: BoxDecoration(
+                  color: AppTheme.accent.withValues(alpha: 0.15),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Text(
+                  '${_comments.length}',
+                  style: TextStyle(
+                    color: AppTheme.accent,
+                    fontSize: 10,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ],
+          ],
+        ),
+        const SizedBox(height: 10),
+        if (_loading)
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: SizedBox(
+                width: 18,
+                height: 18,
+                child: CircularProgressIndicator(strokeWidth: 2, color: AppTheme.accent),
+              ),
+            ),
+          )
+        else if (_comments.isEmpty)
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            child: Text(
+              l.commentsEmpty,
+              style: TextStyle(color: AppTheme.textMuted, fontSize: 13),
+            ),
+          )
+        else
+          ..._comments.map((c) => _CommentTile(
+                comment: c,
+                isOwn: c.uid == widget.currentUid,
+                timeAgo: _timeAgo(c.createdAt, l),
+                onDelete: () => _delete(c.id),
+              )),
+        if (widget.idToken != null) ...[
+          const SizedBox(height: 12),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: _ctrl,
+                  maxLength: 500,
+                  maxLines: 3,
+                  minLines: 1,
+                  style: TextStyle(color: AppTheme.textPrimary, fontSize: 13),
+                  decoration: InputDecoration(
+                    hintText: l.commentsPlaceholder,
+                    hintStyle: TextStyle(color: AppTheme.textMuted, fontSize: 13),
+                    counterText: '',
+                    filled: true,
+                    fillColor: AppTheme.surfaceRaised,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(color: AppTheme.borderGray),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(color: AppTheme.borderGray),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(color: AppTheme.accent),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              SizedBox(
+                width: 40,
+                height: 40,
+                child: FilledButton(
+                  onPressed: _posting ? null : _post,
+                  style: FilledButton.styleFrom(
+                    backgroundColor: AppTheme.accent,
+                    padding: EdgeInsets.zero,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  ),
+                  child: _posting
+                      ? const SizedBox(
+                          width: 16,
+                          height: 16,
+                          child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                        )
+                      : const Icon(Icons.send_rounded, size: 18, color: Colors.white),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+class _CommentTile extends StatelessWidget {
+  final _Comment comment;
+  final bool isOwn;
+  final String timeAgo;
+  final VoidCallback onDelete;
+
+  const _CommentTile({
+    required this.comment,
+    required this.isOwn,
+    required this.timeAgo,
+    required this.onDelete,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final hasAvatar = comment.avatarUrl != null && comment.avatarUrl!.isNotEmpty;
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: 30,
+            height: 30,
+            decoration: BoxDecoration(
+              color: AppTheme.accent.withValues(alpha: 0.15),
+              shape: BoxShape.circle,
+            ),
+            child: ClipOval(
+              child: hasAvatar
+                  ? Image.network(comment.avatarUrl!, fit: BoxFit.cover)
+                  : Center(
+                      child: Text(
+                        comment.username.isNotEmpty ? comment.username[0].toUpperCase() : '?',
+                        style: TextStyle(color: AppTheme.accent, fontSize: 13, fontWeight: FontWeight.w700),
+                      ),
+                    ),
+            ),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      comment.username,
+                      style: TextStyle(color: AppTheme.textPrimary, fontSize: 12, fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(width: 6),
+                    Text(timeAgo, style: TextStyle(color: AppTheme.textMuted, fontSize: 11)),
+                    const Spacer(),
+                    if (isOwn)
+                      GestureDetector(
+                        onTap: onDelete,
+                        child: Icon(Icons.delete_outline_rounded, size: 16, color: AppTheme.textMuted),
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 2),
+                Text(comment.content, style: TextStyle(color: AppTheme.textSecondary, fontSize: 13)),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 Future<void> shareTextureFile(BuildContext context, String url, String name) async {
   try {
     final resp = await http.get(Uri.parse(url), headers: {'User-Agent': 'MCCompanionApp/1.0'})
@@ -47,6 +372,7 @@ Future<void> shareTextureFile(BuildContext context, String url, String name) asy
 class GallerySkinPreviewSheet extends StatefulWidget {
   final Map<String, dynamic> skin;
   final String? idToken;
+  final String? currentUid;
   final bool initialLiked;
   final bool isOwn;
   final VoidCallback? onEdit;
@@ -57,6 +383,7 @@ class GallerySkinPreviewSheet extends StatefulWidget {
     super.key,
     required this.skin,
     this.idToken,
+    this.currentUid,
     this.initialLiked = false,
     this.isOwn = false,
     this.onEdit,
@@ -109,14 +436,23 @@ class _GallerySkinPreviewSheetState extends State<GallerySkinPreviewSheet> {
     final creatorUsername = widget.skin['username'] as String?;
     final creatorName = (widget.skin['display_name'] ?? widget.skin['username']) as String?;
 
-    return Container(
+    final skinId = (widget.skin['id'] ?? widget.skin['skin_id']) as String?;
+
+    return DraggableScrollableSheet(
+      initialChildSize: 0.85,
+      minChildSize: 0.5,
+      maxChildSize: 0.95,
+      expand: false,
+      builder: (context, scrollController) => Container(
       decoration: BoxDecoration(
         color: AppTheme.background,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
         border: Border(top: BorderSide(color: AppTheme.borderGray)),
       ),
-      padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
-      child: Column(
+      child: SingleChildScrollView(
+        controller: scrollController,
+        padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
+        child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
@@ -170,6 +506,16 @@ class _GallerySkinPreviewSheetState extends State<GallerySkinPreviewSheet> {
               child: url.isNotEmpty ? SkinBodyImage(textureUrl: url, height: 216) : const SizedBox(),
             ),
           ),
+          if (skinId != null) ...[
+            const SizedBox(height: 20),
+            const Divider(color: AppTheme.borderGray),
+            const SizedBox(height: 16),
+            SkinCommentsSection(
+              skinId: skinId,
+              idToken: widget.idToken,
+              currentUid: widget.currentUid,
+            ),
+          ],
           const SizedBox(height: 24),
           Row(
             children: [
@@ -217,7 +563,7 @@ class _GallerySkinPreviewSheetState extends State<GallerySkinPreviewSheet> {
                 label: Text(l.skinMenuDelete),
                 style: OutlinedButton.styleFrom(
                   foregroundColor: AppTheme.error,
-                  side: BorderSide(color: AppTheme.error.withOpacity(0.4)),
+                  side: BorderSide(color: AppTheme.error.withValues(alpha: 0.4)),
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                   textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
@@ -226,6 +572,8 @@ class _GallerySkinPreviewSheetState extends State<GallerySkinPreviewSheet> {
             ),
           ],
         ],
+      ),
+      ),
       ),
     );
   }

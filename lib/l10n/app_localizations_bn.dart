@@ -2304,4 +2304,16 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get notifPrefMessageReceived => 'নতুন বার্তা';
+
+  @override
+  String get commentsTitle => 'মন্তব্য';
+
+  @override
+  String get commentsEmpty => 'এখনো কোনো মন্তব্য নেই। প্রথম হন!';
+
+  @override
+  String get commentsPlaceholder => 'মন্তব্য লিখুন…';
+
+  @override
+  String get loadMore => 'আরও লোড করুন';
 }

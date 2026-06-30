@@ -2304,4 +2304,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get notifPrefMessageReceived => 'رسالة جديدة';
+
+  @override
+  String get commentsTitle => 'التعليقات';
+
+  @override
+  String get commentsEmpty => 'لا توجد تعليقات بعد. كن الأول!';
+
+  @override
+  String get commentsPlaceholder => 'اكتب تعليقاً…';
+
+  @override
+  String get loadMore => 'تحميل المزيد';
 }

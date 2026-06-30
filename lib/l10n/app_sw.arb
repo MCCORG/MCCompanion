@@ -1809,5 +1809,11 @@
   "notifPrefPackRejected": "Pakiti imekataliwa",
   "notifPrefFriendRequest": "Ombi la urafiki",
   "notifPrefFriendAccepted": "Rafiki ameongezwa",
-  "notifPrefMessageReceived": "Ujumbe mpya"
+  "notifPrefMessageReceived": "Ujumbe mpya",
+
+  "commentsTitle": "Maoni",
+  "commentsEmpty": "Bado hakuna maoni. Kuwa wa kwanza!",
+  "commentsPlaceholder": "Andika maoni…",
+
+  "loadMore": "Pakia zaidi"
 }

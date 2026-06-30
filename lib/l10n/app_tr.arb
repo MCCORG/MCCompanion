@@ -1813,5 +1813,11 @@
   "notifPrefPackRejected": "Paket reddedildi",
   "notifPrefFriendRequest": "Arkadaşlık isteği",
   "notifPrefFriendAccepted": "Arkadaş eklendi",
-  "notifPrefMessageReceived": "Yeni mesaj"
+  "notifPrefMessageReceived": "Yeni mesaj",
+
+  "commentsTitle": "Yorumlar",
+  "commentsEmpty": "Henüz yorum yok. İlk sen ol!",
+  "commentsPlaceholder": "Yorum yaz…",
+
+  "loadMore": "Daha fazla yükle"
 }

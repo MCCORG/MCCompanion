@@ -2304,4 +2304,16 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get notifPrefMessageReceived => 'Ujumbe mpya';
+
+  @override
+  String get commentsTitle => 'Maoni';
+
+  @override
+  String get commentsEmpty => 'Bado hakuna maoni. Kuwa wa kwanza!';
+
+  @override
+  String get commentsPlaceholder => 'Andika maoni…';
+
+  @override
+  String get loadMore => 'Pakia zaidi';
 }

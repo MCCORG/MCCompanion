@@ -2304,4 +2304,16 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get notifPrefMessageReceived => 'نیا پیغام';
+
+  @override
+  String get commentsTitle => 'تبصرے';
+
+  @override
+  String get commentsEmpty => 'ابھی کوئی تبصرہ نہیں۔ پہلے بنیں!';
+
+  @override
+  String get commentsPlaceholder => 'تبصرہ لکھیں…';
+
+  @override
+  String get loadMore => 'مزید لوڈ کریں';
 }

@@ -2304,4 +2304,16 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get notifPrefMessageReceived => '新しいメッセージ';
+
+  @override
+  String get commentsTitle => 'コメント';
+
+  @override
+  String get commentsEmpty => 'まだコメントはありません。最初のコメントを残しましょう！';
+
+  @override
+  String get commentsPlaceholder => 'コメントを書く…';
+
+  @override
+  String get loadMore => 'もっと読み込む';
 }

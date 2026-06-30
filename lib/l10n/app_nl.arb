@@ -1130,5 +1130,11 @@
   "notifPrefPackRejected": "Pack afgewezen",
   "notifPrefFriendRequest": "Vriendschapsverzoek",
   "notifPrefFriendAccepted": "Vriend toegevoegd",
-  "notifPrefMessageReceived": "Nieuw bericht"
+  "notifPrefMessageReceived": "Nieuw bericht",
+
+  "commentsTitle": "Reacties",
+  "commentsEmpty": "Nog geen reacties. Wees de eerste!",
+  "commentsPlaceholder": "Schrijf een reactie…",
+
+  "loadMore": "Meer laden"
 }

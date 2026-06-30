@@ -4484,6 +4484,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'New message'**
   String get notifPrefMessageReceived;
+
+  /// Section header for the comments section on a skin
+  ///
+  /// In en, this message translates to:
+  /// **'Comments'**
+  String get commentsTitle;
+
+  /// Shown when a skin has no comments
+  ///
+  /// In en, this message translates to:
+  /// **'No comments yet. Be the first!'**
+  String get commentsEmpty;
+
+  /// Placeholder text in the comment input field
+  ///
+  /// In en, this message translates to:
+  /// **'Write a comment…'**
+  String get commentsPlaceholder;
+
+  /// No description provided for @loadMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Load more'**
+  String get loadMore;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

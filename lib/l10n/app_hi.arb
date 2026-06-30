@@ -1813,5 +1813,11 @@
   "notifPrefPackRejected": "पैक अस्वीकृत",
   "notifPrefFriendRequest": "मित्र अनुरोध",
   "notifPrefFriendAccepted": "मित्र जोड़ा गया",
-  "notifPrefMessageReceived": "नया संदेश"
+  "notifPrefMessageReceived": "नया संदेश",
+
+  "commentsTitle": "टिप्पणियाँ",
+  "commentsEmpty": "अभी कोई टिप्पणी नहीं। पहले बनें!",
+  "commentsPlaceholder": "टिप्पणी लिखें…",
+
+  "loadMore": "और लोड करें"
 }

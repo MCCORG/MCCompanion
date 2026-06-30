@@ -2304,4 +2304,16 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get notifPrefMessageReceived => 'Yeni mesaj';
+
+  @override
+  String get commentsTitle => 'Yorumlar';
+
+  @override
+  String get commentsEmpty => 'Henüz yorum yok. İlk sen ol!';
+
+  @override
+  String get commentsPlaceholder => 'Yorum yaz…';
+
+  @override
+  String get loadMore => 'Daha fazla yükle';
 }

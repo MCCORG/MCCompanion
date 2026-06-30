@@ -1813,5 +1813,11 @@
   "notifPrefPackRejected": "Pack rechazado",
   "notifPrefFriendRequest": "Solicitud de amistad",
   "notifPrefFriendAccepted": "Amigo añadido",
-  "notifPrefMessageReceived": "Nuevo mensaje"
+  "notifPrefMessageReceived": "Nuevo mensaje",
+
+  "commentsTitle": "Comentarios",
+  "commentsEmpty": "Aún no hay comentarios. ¡Sé el primero!",
+  "commentsPlaceholder": "Escribe un comentario…",
+
+  "loadMore": "Cargar más"
 }

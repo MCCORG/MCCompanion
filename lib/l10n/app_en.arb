@@ -2532,5 +2532,16 @@
   "@notifPrefFriendAccepted": { "description": "Notification preference toggle label: friend accepted" },
 
   "notifPrefMessageReceived": "New message",
-  "@notifPrefMessageReceived": { "description": "Notification preference toggle label: new message" }
+  "@notifPrefMessageReceived": { "description": "Notification preference toggle label: new message" },
+
+  "commentsTitle": "Comments",
+  "@commentsTitle": { "description": "Section header for the comments section on a skin" },
+
+  "commentsEmpty": "No comments yet. Be the first!",
+  "@commentsEmpty": { "description": "Shown when a skin has no comments" },
+
+  "commentsPlaceholder": "Write a comment…",
+  "@commentsPlaceholder": { "description": "Placeholder text in the comment input field" },
+
+  "loadMore": "Load more"
 }

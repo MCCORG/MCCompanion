@@ -1809,5 +1809,11 @@
   "notifPrefPackRejected": "پیک مسترد",
   "notifPrefFriendRequest": "دوستی کی درخواست",
   "notifPrefFriendAccepted": "دوست شامل",
-  "notifPrefMessageReceived": "نیا پیغام"
+  "notifPrefMessageReceived": "نیا پیغام",
+
+  "commentsTitle": "تبصرے",
+  "commentsEmpty": "ابھی کوئی تبصرہ نہیں۔ پہلے بنیں!",
+  "commentsPlaceholder": "تبصرہ لکھیں…",
+
+  "loadMore": "مزید لوڈ کریں"
 }

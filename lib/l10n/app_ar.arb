@@ -1813,5 +1813,11 @@
   "notifPrefPackRejected": "حزمة مرفوضة",
   "notifPrefFriendRequest": "طلب صداقة",
   "notifPrefFriendAccepted": "صديق مضاف",
-  "notifPrefMessageReceived": "رسالة جديدة"
+  "notifPrefMessageReceived": "رسالة جديدة",
+
+  "commentsTitle": "التعليقات",
+  "commentsEmpty": "لا توجد تعليقات بعد. كن الأول!",
+  "commentsPlaceholder": "اكتب تعليقاً…",
+
+  "loadMore": "تحميل المزيد"
 }
