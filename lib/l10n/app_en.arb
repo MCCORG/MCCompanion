@@ -2412,5 +2412,125 @@
   "@skinLikesCount": {
     "description": "Like count shown under skin name in preview sheet",
     "placeholders": { "count": { "type": "int" } }
-  }
+  },
+
+  "sectionRecentActivity": "Recent Activity",
+  "@sectionRecentActivity": { "description": "Section header for the recent activity feed in the profile tab" },
+
+  "activityNoEvents": "No recent activity yet.",
+  "@activityNoEvents": { "description": "Shown when the activity feed is empty" },
+
+  "activitySkinUploaded": "Uploaded skin",
+  "@activitySkinUploaded": { "description": "Activity feed row: user uploaded a skin" },
+
+  "activitySkinLiked": "Liked a skin",
+  "@activitySkinLiked": { "description": "Activity feed row: user liked a skin" },
+
+  "activityPackSubmitted": "Submitted pack",
+  "@activityPackSubmitted": { "description": "Activity feed row: user submitted a resource pack" },
+
+  "activityPackApproved": "Pack approved",
+  "@activityPackApproved": { "description": "Activity feed row: pack was approved" },
+
+  "activityPackRejected": "Pack not approved",
+  "@activityPackRejected": { "description": "Activity feed row: pack was not approved" },
+
+  "timeJustNow": "just now",
+  "@timeJustNow": { "description": "Relative timestamp: less than a minute ago" },
+
+  "timeMinutesAgo": "{count}m ago",
+  "@timeMinutesAgo": {
+    "description": "Relative timestamp: X minutes ago",
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "timeHoursAgo": "{count}h ago",
+  "@timeHoursAgo": {
+    "description": "Relative timestamp: X hours ago",
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "timeDaysAgo": "{count}d ago",
+  "@timeDaysAgo": {
+    "description": "Relative timestamp: X days ago",
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "timeMonthsAgo": "{count}mo ago",
+  "@timeMonthsAgo": {
+    "description": "Relative timestamp: X months ago",
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "sectionNotifications": "Notifications",
+  "@sectionNotifications": { "description": "Section header for the notifications feed in the bell tab" },
+
+  "sectionNotificationTypes": "Notification Types",
+  "@sectionNotificationTypes": { "description": "Section header for notification preference toggles" },
+
+  "notifMarkAllRead": "Mark all read",
+  "@notifMarkAllRead": { "description": "Button to mark all notifications as read" },
+
+  "notifEmpty": "No notifications yet. Likes, comments, and friend activity will appear here.",
+  "@notifEmpty": { "description": "Shown when the notification feed is empty" },
+
+  "notifSomeone": "Someone",
+  "@notifSomeone": { "description": "Fallback actor name when sender is unknown" },
+
+  "notifSkinLiked": "{actor} liked your skin",
+  "@notifSkinLiked": {
+    "description": "Notification title: someone liked the user's skin",
+    "placeholders": { "actor": { "type": "String" } }
+  },
+
+  "notifCommentReceived": "{actor} commented on your skin",
+  "@notifCommentReceived": {
+    "description": "Notification title: someone commented on the user's skin",
+    "placeholders": { "actor": { "type": "String" } }
+  },
+
+  "notifPackApproved": "Pack approved",
+  "@notifPackApproved": { "description": "Notification title: a submitted pack was approved" },
+
+  "notifPackRejected": "Pack not approved",
+  "@notifPackRejected": { "description": "Notification title: a submitted pack was rejected" },
+
+  "notifFriendRequest": "{actor} sent you a friend request",
+  "@notifFriendRequest": {
+    "description": "Notification title: someone sent a friend request",
+    "placeholders": { "actor": { "type": "String" } }
+  },
+
+  "notifFriendAccepted": "{actor} accepted your request",
+  "@notifFriendAccepted": {
+    "description": "Notification title: someone accepted the user's friend request",
+    "placeholders": { "actor": { "type": "String" } }
+  },
+
+  "notifMessageReceived": "New message from {actor}",
+  "@notifMessageReceived": {
+    "description": "Notification title: new direct message received",
+    "placeholders": { "actor": { "type": "String" } }
+  },
+
+  "notifPrefSkinLiked": "Skin liked",
+  "@notifPrefSkinLiked": { "description": "Notification preference toggle label: skin liked" },
+
+  "notifPrefCommentReceived": "Comment received",
+  "@notifPrefCommentReceived": { "description": "Notification preference toggle label: comment received" },
+
+  "notifPrefPackApproved": "Pack approved",
+  "@notifPrefPackApproved": { "description": "Notification preference toggle label: pack approved" },
+
+  "notifPrefPackRejected": "Pack rejected",
+  "@notifPrefPackRejected": { "description": "Notification preference toggle label: pack rejected" },
+
+  "notifPrefFriendRequest": "Friend request",
+  "@notifPrefFriendRequest": { "description": "Notification preference toggle label: friend request" },
+
+  "notifPrefFriendAccepted": "Friend accepted",
+  "@notifPrefFriendAccepted": { "description": "Notification preference toggle label: friend accepted" },
+
+  "notifPrefMessageReceived": "New message",
+  "@notifPrefMessageReceived": { "description": "Notification preference toggle label: new message" }
 }

@@ -2193,4 +2193,115 @@ class AppLocalizationsUr extends AppLocalizations {
   String skinLikesCount(int count) {
     return '$count پسند';
   }
+
+  @override
+  String get sectionRecentActivity => 'حالیہ سرگرمی';
+
+  @override
+  String get activityNoEvents => 'ابھی تک کوئی حالیہ سرگرمی نہیں۔';
+
+  @override
+  String get activitySkinUploaded => 'اسکن اپلوڈ کی';
+
+  @override
+  String get activitySkinLiked => 'اسکن پسند کی';
+
+  @override
+  String get activityPackSubmitted => 'پیک جمع کیا';
+
+  @override
+  String get activityPackApproved => 'پیک منظور ہوا';
+
+  @override
+  String get activityPackRejected => 'پیک منظور نہیں ہوا';
+
+  @override
+  String get timeJustNow => 'ابھی';
+
+  @override
+  String timeMinutesAgo(int count) {
+    return '$count منٹ پہلے';
+  }
+
+  @override
+  String timeHoursAgo(int count) {
+    return '$count گھنٹے پہلے';
+  }
+
+  @override
+  String timeDaysAgo(int count) {
+    return '$count دن پہلے';
+  }
+
+  @override
+  String timeMonthsAgo(int count) {
+    return '$count مہینے پہلے';
+  }
+
+  @override
+  String get sectionNotifications => 'اطلاعات';
+
+  @override
+  String get sectionNotificationTypes => 'اطلاع کی اقسام';
+
+  @override
+  String get notifMarkAllRead => 'سب کو پڑھا ہوا نشان لگائیں';
+
+  @override
+  String get notifEmpty => 'ابھی کوئی اطلاع نہیں۔ لائکس، تبصرے اور دوستوں کی سرگرمی یہاں نظر آئے گی۔';
+
+  @override
+  String get notifSomeone => 'کسی نے';
+
+  @override
+  String notifSkinLiked(String actor) {
+    return '$actor نے آپ کی اسکن پسند کی';
+  }
+
+  @override
+  String notifCommentReceived(String actor) {
+    return '$actor نے آپ کی اسکن پر تبصرہ کیا';
+  }
+
+  @override
+  String get notifPackApproved => 'پیک منظور ہوا';
+
+  @override
+  String get notifPackRejected => 'پیک منظور نہیں ہوا';
+
+  @override
+  String notifFriendRequest(String actor) {
+    return '$actor نے آپ کو دوستی کی درخواست بھیجی';
+  }
+
+  @override
+  String notifFriendAccepted(String actor) {
+    return '$actor نے آپ کی درخواست قبول کی';
+  }
+
+  @override
+  String notifMessageReceived(String actor) {
+    return '$actor کا نیا پیغام';
+  }
+
+  @override
+  String get notifPrefSkinLiked => 'اسکن پسند';
+
+  @override
+  String get notifPrefCommentReceived => 'تبصرہ موصول';
+
+  @override
+  String get notifPrefPackApproved => 'پیک منظور';
+
+  @override
+  String get notifPrefPackRejected => 'پیک مسترد';
+
+  @override
+  String get notifPrefFriendRequest => 'دوستی کی درخواست';
+
+  @override
+  String get notifPrefFriendAccepted => 'دوست شامل';
+
+  @override
+  String get notifPrefMessageReceived => 'نیا پیغام';
 }

@@ -2193,4 +2193,115 @@ class AppLocalizationsEs extends AppLocalizations {
   String skinLikesCount(int count) {
     return '$count me gusta';
   }
+
+  @override
+  String get sectionRecentActivity => 'Actividad reciente';
+
+  @override
+  String get activityNoEvents => 'Sin actividad reciente todavía.';
+
+  @override
+  String get activitySkinUploaded => 'Skin subida';
+
+  @override
+  String get activitySkinLiked => 'Skin con me gusta';
+
+  @override
+  String get activityPackSubmitted => 'Pack enviado';
+
+  @override
+  String get activityPackApproved => 'Pack aprobado';
+
+  @override
+  String get activityPackRejected => 'Pack no aprobado';
+
+  @override
+  String get timeJustNow => 'ahora mismo';
+
+  @override
+  String timeMinutesAgo(int count) {
+    return 'hace $count min';
+  }
+
+  @override
+  String timeHoursAgo(int count) {
+    return 'hace $count h';
+  }
+
+  @override
+  String timeDaysAgo(int count) {
+    return 'hace $count días';
+  }
+
+  @override
+  String timeMonthsAgo(int count) {
+    return 'hace $count meses';
+  }
+
+  @override
+  String get sectionNotifications => 'Notificaciones';
+
+  @override
+  String get sectionNotificationTypes => 'Tipos de notificación';
+
+  @override
+  String get notifMarkAllRead => 'Marcar todo como leído';
+
+  @override
+  String get notifEmpty => 'Sin notificaciones todavía. Los likes, comentarios y actividad de amigos aparecerán aquí.';
+
+  @override
+  String get notifSomeone => 'Alguien';
+
+  @override
+  String notifSkinLiked(String actor) {
+    return 'A $actor le gusta tu skin';
+  }
+
+  @override
+  String notifCommentReceived(String actor) {
+    return '$actor comentó tu skin';
+  }
+
+  @override
+  String get notifPackApproved => 'Pack aprobado';
+
+  @override
+  String get notifPackRejected => 'Pack no aprobado';
+
+  @override
+  String notifFriendRequest(String actor) {
+    return '$actor te envió una solicitud de amistad';
+  }
+
+  @override
+  String notifFriendAccepted(String actor) {
+    return '$actor aceptó tu solicitud';
+  }
+
+  @override
+  String notifMessageReceived(String actor) {
+    return 'Nuevo mensaje de $actor';
+  }
+
+  @override
+  String get notifPrefSkinLiked => 'Skin con me gusta';
+
+  @override
+  String get notifPrefCommentReceived => 'Comentario recibido';
+
+  @override
+  String get notifPrefPackApproved => 'Pack aprobado';
+
+  @override
+  String get notifPrefPackRejected => 'Pack rechazado';
+
+  @override
+  String get notifPrefFriendRequest => 'Solicitud de amistad';
+
+  @override
+  String get notifPrefFriendAccepted => 'Amigo añadido';
+
+  @override
+  String get notifPrefMessageReceived => 'Nuevo mensaje';
 }

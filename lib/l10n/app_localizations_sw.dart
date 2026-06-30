@@ -2193,4 +2193,115 @@ class AppLocalizationsSw extends AppLocalizations {
   String skinLikesCount(int count) {
     return '$count likes';
   }
+
+  @override
+  String get sectionRecentActivity => 'Shughuli za hivi karibuni';
+
+  @override
+  String get activityNoEvents => 'Hakuna shughuli za hivi karibuni bado.';
+
+  @override
+  String get activitySkinUploaded => 'Skin imepakiwa';
+
+  @override
+  String get activitySkinLiked => 'Skin imependwa';
+
+  @override
+  String get activityPackSubmitted => 'Pakiti imetumwa';
+
+  @override
+  String get activityPackApproved => 'Pakiti imeidhinishwa';
+
+  @override
+  String get activityPackRejected => 'Pakiti haikuidhinishwa';
+
+  @override
+  String get timeJustNow => 'sasa hivi';
+
+  @override
+  String timeMinutesAgo(int count) {
+    return 'dakika $count zilizopita';
+  }
+
+  @override
+  String timeHoursAgo(int count) {
+    return 'saa $count zilizopita';
+  }
+
+  @override
+  String timeDaysAgo(int count) {
+    return 'siku $count zilizopita';
+  }
+
+  @override
+  String timeMonthsAgo(int count) {
+    return 'miezi $count iliyopita';
+  }
+
+  @override
+  String get sectionNotifications => 'Arifa';
+
+  @override
+  String get sectionNotificationTypes => 'Aina za arifa';
+
+  @override
+  String get notifMarkAllRead => 'Weka alama zote kama zilizosomwa';
+
+  @override
+  String get notifEmpty => 'Hakuna arifa bado. Vipendwa, maoni na shughuli za marafiki vitaonekana hapa.';
+
+  @override
+  String get notifSomeone => 'Mtu fulani';
+
+  @override
+  String notifSkinLiked(String actor) {
+    return '$actor alipenda skin yako';
+  }
+
+  @override
+  String notifCommentReceived(String actor) {
+    return '$actor alitoa maoni kwenye skin yako';
+  }
+
+  @override
+  String get notifPackApproved => 'Pakiti imeidhinishwa';
+
+  @override
+  String get notifPackRejected => 'Pakiti haikuidhinishwa';
+
+  @override
+  String notifFriendRequest(String actor) {
+    return '$actor amekutumia ombi la urafiki';
+  }
+
+  @override
+  String notifFriendAccepted(String actor) {
+    return '$actor amekubali ombi lako';
+  }
+
+  @override
+  String notifMessageReceived(String actor) {
+    return 'Ujumbe mpya kutoka $actor';
+  }
+
+  @override
+  String get notifPrefSkinLiked => 'Skin imependwa';
+
+  @override
+  String get notifPrefCommentReceived => 'Maoni yamepokelewa';
+
+  @override
+  String get notifPrefPackApproved => 'Pakiti imeidhinishwa';
+
+  @override
+  String get notifPrefPackRejected => 'Pakiti imekataliwa';
+
+  @override
+  String get notifPrefFriendRequest => 'Ombi la urafiki';
+
+  @override
+  String get notifPrefFriendAccepted => 'Rafiki ameongezwa';
+
+  @override
+  String get notifPrefMessageReceived => 'Ujumbe mpya';
 }

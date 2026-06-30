@@ -2193,4 +2193,115 @@ class AppLocalizationsAr extends AppLocalizations {
   String skinLikesCount(int count) {
     return '$count إعجاب';
   }
+
+  @override
+  String get sectionRecentActivity => 'النشاط الأخير';
+
+  @override
+  String get activityNoEvents => 'لا يوجد نشاط حديث بعد.';
+
+  @override
+  String get activitySkinUploaded => 'تم رفع السكن';
+
+  @override
+  String get activitySkinLiked => 'أُعجب بالسكن';
+
+  @override
+  String get activityPackSubmitted => 'تم إرسال الحزمة';
+
+  @override
+  String get activityPackApproved => 'تمت الموافقة على الحزمة';
+
+  @override
+  String get activityPackRejected => 'لم تتم الموافقة على الحزمة';
+
+  @override
+  String get timeJustNow => 'الآن';
+
+  @override
+  String timeMinutesAgo(int count) {
+    return 'منذ $count د';
+  }
+
+  @override
+  String timeHoursAgo(int count) {
+    return 'منذ $count س';
+  }
+
+  @override
+  String timeDaysAgo(int count) {
+    return 'منذ $count أيام';
+  }
+
+  @override
+  String timeMonthsAgo(int count) {
+    return 'منذ $count أشهر';
+  }
+
+  @override
+  String get sectionNotifications => 'الإشعارات';
+
+  @override
+  String get sectionNotificationTypes => 'أنواع الإشعارات';
+
+  @override
+  String get notifMarkAllRead => 'تحديد الكل كمقروء';
+
+  @override
+  String get notifEmpty => 'لا توجد إشعارات بعد. ستظهر الإعجابات والتعليقات ونشاط الأصدقاء هنا.';
+
+  @override
+  String get notifSomeone => 'شخص ما';
+
+  @override
+  String notifSkinLiked(String actor) {
+    return '$actor أعجب بسكنك';
+  }
+
+  @override
+  String notifCommentReceived(String actor) {
+    return '$actor علّق على سكنك';
+  }
+
+  @override
+  String get notifPackApproved => 'تمت الموافقة على الحزمة';
+
+  @override
+  String get notifPackRejected => 'لم تتم الموافقة على الحزمة';
+
+  @override
+  String notifFriendRequest(String actor) {
+    return '$actor أرسل لك طلب صداقة';
+  }
+
+  @override
+  String notifFriendAccepted(String actor) {
+    return '$actor قبل طلبك';
+  }
+
+  @override
+  String notifMessageReceived(String actor) {
+    return 'رسالة جديدة من $actor';
+  }
+
+  @override
+  String get notifPrefSkinLiked => 'إعجاب بالسكن';
+
+  @override
+  String get notifPrefCommentReceived => 'تعليق مستلم';
+
+  @override
+  String get notifPrefPackApproved => 'حزمة موافق عليها';
+
+  @override
+  String get notifPrefPackRejected => 'حزمة مرفوضة';
+
+  @override
+  String get notifPrefFriendRequest => 'طلب صداقة';
+
+  @override
+  String get notifPrefFriendAccepted => 'صديق مضاف';
+
+  @override
+  String get notifPrefMessageReceived => 'رسالة جديدة';
 }

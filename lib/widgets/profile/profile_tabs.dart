@@ -8,6 +8,7 @@ import 'profile_common.dart';
 import 'profile_header.dart';
 import 'profile_cards.dart';
 import 'profile_friend_tiles.dart';
+import 'profile_activity_feed.dart';
 
 class ProfileTab extends StatefulWidget {
   final UserModel? me;
@@ -72,6 +73,10 @@ class ProfileTabState extends State<ProfileTab> {
             appearOffline: _effectiveAppearOffline,
             onToggleAppearOffline: _toggleAppearOffline,
           ),
+          const SizedBox(height: 20),
+          ProfileSectionHeader(AppLocalizations.of(context)!.sectionRecentActivity),
+          const SizedBox(height: 8),
+          const ProfileActivityFeed(),
           const SizedBox(height: 32),
           ProfileDangerZoneCard(
             onSignOut: widget.onSignOut,

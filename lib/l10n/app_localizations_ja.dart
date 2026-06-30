@@ -2193,4 +2193,115 @@ class AppLocalizationsJa extends AppLocalizations {
   String skinLikesCount(int count) {
     return '$count いいね';
   }
+
+  @override
+  String get sectionRecentActivity => '最近のアクティビティ';
+
+  @override
+  String get activityNoEvents => 'まだアクティビティはありません。';
+
+  @override
+  String get activitySkinUploaded => 'スキンをアップロード';
+
+  @override
+  String get activitySkinLiked => 'スキンにいいね';
+
+  @override
+  String get activityPackSubmitted => 'パックを送信';
+
+  @override
+  String get activityPackApproved => 'パックが承認されました';
+
+  @override
+  String get activityPackRejected => 'パックが承認されませんでした';
+
+  @override
+  String get timeJustNow => '今';
+
+  @override
+  String timeMinutesAgo(int count) {
+    return '$count分前';
+  }
+
+  @override
+  String timeHoursAgo(int count) {
+    return '$count時間前';
+  }
+
+  @override
+  String timeDaysAgo(int count) {
+    return '$count日前';
+  }
+
+  @override
+  String timeMonthsAgo(int count) {
+    return '$countか月前';
+  }
+
+  @override
+  String get sectionNotifications => '通知';
+
+  @override
+  String get sectionNotificationTypes => '通知の種類';
+
+  @override
+  String get notifMarkAllRead => 'すべて既読にする';
+
+  @override
+  String get notifEmpty => 'まだ通知はありません。いいね、コメント、フレンドのアクティビティがここに表示されます。';
+
+  @override
+  String get notifSomeone => '誰か';
+
+  @override
+  String notifSkinLiked(String actor) {
+    return '$actorがあなたのスキンにいいねしました';
+  }
+
+  @override
+  String notifCommentReceived(String actor) {
+    return '$actorがあなたのスキンにコメントしました';
+  }
+
+  @override
+  String get notifPackApproved => 'パックが承認されました';
+
+  @override
+  String get notifPackRejected => 'パックが承認されませんでした';
+
+  @override
+  String notifFriendRequest(String actor) {
+    return '$actorからフレンド申請が届きました';
+  }
+
+  @override
+  String notifFriendAccepted(String actor) {
+    return '$actorがあなたの申請を承認しました';
+  }
+
+  @override
+  String notifMessageReceived(String actor) {
+    return '$actorからの新しいメッセージ';
+  }
+
+  @override
+  String get notifPrefSkinLiked => 'スキンへのいいね';
+
+  @override
+  String get notifPrefCommentReceived => 'コメント受信';
+
+  @override
+  String get notifPrefPackApproved => 'パック承認';
+
+  @override
+  String get notifPrefPackRejected => 'パック拒否';
+
+  @override
+  String get notifPrefFriendRequest => 'フレンド申請';
+
+  @override
+  String get notifPrefFriendAccepted => 'フレンド追加';
+
+  @override
+  String get notifPrefMessageReceived => '新しいメッセージ';
 }

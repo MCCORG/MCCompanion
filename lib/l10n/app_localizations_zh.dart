@@ -2193,4 +2193,115 @@ class AppLocalizationsZh extends AppLocalizations {
   String skinLikesCount(int count) {
     return '$count 个赞';
   }
+
+  @override
+  String get sectionRecentActivity => '最近动态';
+
+  @override
+  String get activityNoEvents => '暂无最近动态。';
+
+  @override
+  String get activitySkinUploaded => '上传了皮肤';
+
+  @override
+  String get activitySkinLiked => '点赞了皮肤';
+
+  @override
+  String get activityPackSubmitted => '提交了资源包';
+
+  @override
+  String get activityPackApproved => '资源包已通过';
+
+  @override
+  String get activityPackRejected => '资源包未通过';
+
+  @override
+  String get timeJustNow => '刚刚';
+
+  @override
+  String timeMinutesAgo(int count) {
+    return '$count分钟前';
+  }
+
+  @override
+  String timeHoursAgo(int count) {
+    return '$count小时前';
+  }
+
+  @override
+  String timeDaysAgo(int count) {
+    return '$count天前';
+  }
+
+  @override
+  String timeMonthsAgo(int count) {
+    return '$count个月前';
+  }
+
+  @override
+  String get sectionNotifications => '通知';
+
+  @override
+  String get sectionNotificationTypes => '通知类型';
+
+  @override
+  String get notifMarkAllRead => '全部标为已读';
+
+  @override
+  String get notifEmpty => '暂无通知。点赞、评论和好友动态将显示在此处。';
+
+  @override
+  String get notifSomeone => '某人';
+
+  @override
+  String notifSkinLiked(String actor) {
+    return '$actor喜欢了你的皮肤';
+  }
+
+  @override
+  String notifCommentReceived(String actor) {
+    return '$actor评论了你的皮肤';
+  }
+
+  @override
+  String get notifPackApproved => '资源包已通过';
+
+  @override
+  String get notifPackRejected => '资源包未通过';
+
+  @override
+  String notifFriendRequest(String actor) {
+    return '$actor向你发送了好友请求';
+  }
+
+  @override
+  String notifFriendAccepted(String actor) {
+    return '$actor接受了你的请求';
+  }
+
+  @override
+  String notifMessageReceived(String actor) {
+    return '来自$actor的新消息';
+  }
+
+  @override
+  String get notifPrefSkinLiked => '皮肤被点赞';
+
+  @override
+  String get notifPrefCommentReceived => '收到评论';
+
+  @override
+  String get notifPrefPackApproved => '资源包通过';
+
+  @override
+  String get notifPrefPackRejected => '资源包被拒';
+
+  @override
+  String get notifPrefFriendRequest => '好友请求';
+
+  @override
+  String get notifPrefFriendAccepted => '添加好友';
+
+  @override
+  String get notifPrefMessageReceived => '新消息';
 }

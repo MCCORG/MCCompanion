@@ -2193,4 +2193,115 @@ class AppLocalizationsHi extends AppLocalizations {
   String skinLikesCount(int count) {
     return '$count लाइक';
   }
+
+  @override
+  String get sectionRecentActivity => 'हालिया गतिविधि';
+
+  @override
+  String get activityNoEvents => 'अभी तक कोई हालिया गतिविधि नहीं।';
+
+  @override
+  String get activitySkinUploaded => 'स्किन अपलोड की';
+
+  @override
+  String get activitySkinLiked => 'स्किन पसंद की';
+
+  @override
+  String get activityPackSubmitted => 'पैक सबमिट किया';
+
+  @override
+  String get activityPackApproved => 'पैक स्वीकृत';
+
+  @override
+  String get activityPackRejected => 'पैक अस्वीकृत';
+
+  @override
+  String get timeJustNow => 'अभी-अभी';
+
+  @override
+  String timeMinutesAgo(int count) {
+    return '$count मिनट पहले';
+  }
+
+  @override
+  String timeHoursAgo(int count) {
+    return '$count घंटे पहले';
+  }
+
+  @override
+  String timeDaysAgo(int count) {
+    return '$count दिन पहले';
+  }
+
+  @override
+  String timeMonthsAgo(int count) {
+    return '$count महीने पहले';
+  }
+
+  @override
+  String get sectionNotifications => 'सूचनाएं';
+
+  @override
+  String get sectionNotificationTypes => 'सूचना प्रकार';
+
+  @override
+  String get notifMarkAllRead => 'सभी को पढ़ा हुआ चिह्नित करें';
+
+  @override
+  String get notifEmpty => 'अभी कोई सूचना नहीं। लाइक, टिप्पणियां और मित्र गतिविधि यहां दिखेंगी।';
+
+  @override
+  String get notifSomeone => 'किसी ने';
+
+  @override
+  String notifSkinLiked(String actor) {
+    return '$actor ने आपकी स्किन पसंद की';
+  }
+
+  @override
+  String notifCommentReceived(String actor) {
+    return '$actor ने आपकी स्किन पर टिप्पणी की';
+  }
+
+  @override
+  String get notifPackApproved => 'पैक स्वीकृत';
+
+  @override
+  String get notifPackRejected => 'पैक अस्वीकृत';
+
+  @override
+  String notifFriendRequest(String actor) {
+    return '$actor ने आपको मित्र अनुरोध भेजा';
+  }
+
+  @override
+  String notifFriendAccepted(String actor) {
+    return '$actor ने आपका अनुरोध स्वीकार किया';
+  }
+
+  @override
+  String notifMessageReceived(String actor) {
+    return '$actor का नया संदेश';
+  }
+
+  @override
+  String get notifPrefSkinLiked => 'स्किन पसंद की';
+
+  @override
+  String get notifPrefCommentReceived => 'टिप्पणी मिली';
+
+  @override
+  String get notifPrefPackApproved => 'पैक स्वीकृत';
+
+  @override
+  String get notifPrefPackRejected => 'पैक अस्वीकृत';
+
+  @override
+  String get notifPrefFriendRequest => 'मित्र अनुरोध';
+
+  @override
+  String get notifPrefFriendAccepted => 'मित्र जोड़ा गया';
+
+  @override
+  String get notifPrefMessageReceived => 'नया संदेश';
 }

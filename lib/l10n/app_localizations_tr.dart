@@ -2193,4 +2193,115 @@ class AppLocalizationsTr extends AppLocalizations {
   String skinLikesCount(int count) {
     return '$count beğeni';
   }
+
+  @override
+  String get sectionRecentActivity => 'Son etkinlik';
+
+  @override
+  String get activityNoEvents => 'Henüz son etkinlik yok.';
+
+  @override
+  String get activitySkinUploaded => 'Skin yüklendi';
+
+  @override
+  String get activitySkinLiked => 'Skin beğenildi';
+
+  @override
+  String get activityPackSubmitted => 'Paket gönderildi';
+
+  @override
+  String get activityPackApproved => 'Paket onaylandı';
+
+  @override
+  String get activityPackRejected => 'Paket onaylanmadı';
+
+  @override
+  String get timeJustNow => 'şimdi';
+
+  @override
+  String timeMinutesAgo(int count) {
+    return '$count dk önce';
+  }
+
+  @override
+  String timeHoursAgo(int count) {
+    return '$count sa önce';
+  }
+
+  @override
+  String timeDaysAgo(int count) {
+    return '$count gün önce';
+  }
+
+  @override
+  String timeMonthsAgo(int count) {
+    return '$count ay önce';
+  }
+
+  @override
+  String get sectionNotifications => 'Bildirimler';
+
+  @override
+  String get sectionNotificationTypes => 'Bildirim türleri';
+
+  @override
+  String get notifMarkAllRead => 'Tümünü okundu işaretle';
+
+  @override
+  String get notifEmpty => 'Henüz bildirim yok. Beğeniler, yorumlar ve arkadaş etkinlikleri burada görünecek.';
+
+  @override
+  String get notifSomeone => 'Biri';
+
+  @override
+  String notifSkinLiked(String actor) {
+    return '$actor skininizi beğendi';
+  }
+
+  @override
+  String notifCommentReceived(String actor) {
+    return '$actor skininize yorum yaptı';
+  }
+
+  @override
+  String get notifPackApproved => 'Paket onaylandı';
+
+  @override
+  String get notifPackRejected => 'Paket onaylanmadı';
+
+  @override
+  String notifFriendRequest(String actor) {
+    return '$actor size arkadaşlık isteği gönderdi';
+  }
+
+  @override
+  String notifFriendAccepted(String actor) {
+    return '$actor isteğinizi kabul etti';
+  }
+
+  @override
+  String notifMessageReceived(String actor) {
+    return '$actor adlı kişiden yeni mesaj';
+  }
+
+  @override
+  String get notifPrefSkinLiked => 'Skin beğenildi';
+
+  @override
+  String get notifPrefCommentReceived => 'Yorum alındı';
+
+  @override
+  String get notifPrefPackApproved => 'Paket onaylandı';
+
+  @override
+  String get notifPrefPackRejected => 'Paket reddedildi';
+
+  @override
+  String get notifPrefFriendRequest => 'Arkadaşlık isteği';
+
+  @override
+  String get notifPrefFriendAccepted => 'Arkadaş eklendi';
+
+  @override
+  String get notifPrefMessageReceived => 'Yeni mesaj';
 }

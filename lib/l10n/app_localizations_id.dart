@@ -2193,4 +2193,115 @@ class AppLocalizationsId extends AppLocalizations {
   String skinLikesCount(int count) {
     return '$count suka';
   }
+
+  @override
+  String get sectionRecentActivity => 'Aktivitas terbaru';
+
+  @override
+  String get activityNoEvents => 'Belum ada aktivitas terbaru.';
+
+  @override
+  String get activitySkinUploaded => 'Skin diunggah';
+
+  @override
+  String get activitySkinLiked => 'Skin disukai';
+
+  @override
+  String get activityPackSubmitted => 'Pack dikirim';
+
+  @override
+  String get activityPackApproved => 'Pack disetujui';
+
+  @override
+  String get activityPackRejected => 'Pack tidak disetujui';
+
+  @override
+  String get timeJustNow => 'baru saja';
+
+  @override
+  String timeMinutesAgo(int count) {
+    return '$count mnt lalu';
+  }
+
+  @override
+  String timeHoursAgo(int count) {
+    return '$count jam lalu';
+  }
+
+  @override
+  String timeDaysAgo(int count) {
+    return '$count hari lalu';
+  }
+
+  @override
+  String timeMonthsAgo(int count) {
+    return '$count bln lalu';
+  }
+
+  @override
+  String get sectionNotifications => 'Notifikasi';
+
+  @override
+  String get sectionNotificationTypes => 'Jenis notifikasi';
+
+  @override
+  String get notifMarkAllRead => 'Tandai semua sudah dibaca';
+
+  @override
+  String get notifEmpty => 'Belum ada notifikasi. Like, komentar, dan aktivitas teman akan muncul di sini.';
+
+  @override
+  String get notifSomeone => 'Seseorang';
+
+  @override
+  String notifSkinLiked(String actor) {
+    return '$actor menyukai skin Anda';
+  }
+
+  @override
+  String notifCommentReceived(String actor) {
+    return '$actor mengomentari skin Anda';
+  }
+
+  @override
+  String get notifPackApproved => 'Pack disetujui';
+
+  @override
+  String get notifPackRejected => 'Pack tidak disetujui';
+
+  @override
+  String notifFriendRequest(String actor) {
+    return '$actor mengirim permintaan pertemanan';
+  }
+
+  @override
+  String notifFriendAccepted(String actor) {
+    return '$actor menerima permintaan Anda';
+  }
+
+  @override
+  String notifMessageReceived(String actor) {
+    return 'Pesan baru dari $actor';
+  }
+
+  @override
+  String get notifPrefSkinLiked => 'Skin disukai';
+
+  @override
+  String get notifPrefCommentReceived => 'Komentar diterima';
+
+  @override
+  String get notifPrefPackApproved => 'Pack disetujui';
+
+  @override
+  String get notifPrefPackRejected => 'Pack ditolak';
+
+  @override
+  String get notifPrefFriendRequest => 'Permintaan pertemanan';
+
+  @override
+  String get notifPrefFriendAccepted => 'Teman ditambahkan';
+
+  @override
+  String get notifPrefMessageReceived => 'Pesan baru';
 }

@@ -11,6 +11,8 @@ import '../widgets/profile/profile_auth_views.dart';
 import '../widgets/profile/profile_header.dart';
 import '../widgets/profile/profile_tabs.dart';
 import '../widgets/profile/profile_desktop_sidebar.dart';
+import '../widgets/profile/profile_notifications_tab.dart';
+import '../services/notification_api_service.dart';
 import 'register_screen.dart';
 import 'chat_screen.dart';
 import 'conversations_screen.dart';
@@ -49,12 +51,13 @@ class ProfileScreenState extends State<ProfileScreen>
   bool _loadingFriends = true;
   bool _loadingRequests = true;
   int _totalUnread = 0;
+  int _unreadNotifCount = 0;
   StreamSubscription<dynamic>? _incomingSub;
 
   @override
   void initState() {
     super.initState();
-    _tabs = TabController(length: 4, vsync: this);
+    _tabs = TabController(length: 5, vsync: this);
     _authSubscription = AuthService.userStream.listen((_) => _checkAuth());
     _presenceSub = MessageService.presenceStream.listen(_onPresence);
     _incomingSub = MessageService.incoming.listen((_) => _refreshUnread());
@@ -133,6 +136,7 @@ class ProfileScreenState extends State<ProfileScreen>
     _fetchFriends();
     _fetchRequests();
     _refreshUnread();
+    _refreshNotifCount();
   }
 
   Future<void> _fetchMe() async {
@@ -165,6 +169,13 @@ class ProfileScreenState extends State<ProfileScreen>
     if (!mounted) return;
     final total = convs.fold(0, (sum, c) => sum + c.unreadCount);
     if (total != _totalUnread) setState(() => _totalUnread = total);
+  }
+
+  Future<void> _refreshNotifCount() async {
+    final result = await NotificationApiService.getNotifications(limit: 1);
+    if (!mounted) return;
+    final count = result.unreadCount;
+    if (count != _unreadNotifCount) setState(() => _unreadNotifCount = count);
   }
 
   void _openRegister() {
@@ -268,6 +279,24 @@ class ProfileScreenState extends State<ProfileScreen>
               ],
             ),
           ),
+          Tab(
+            icon: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                const Icon(Icons.notifications_rounded, size: 22),
+                if (_unreadNotifCount > 0)
+                  Positioned(
+                    right: -6,
+                    top: -4,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
+                      decoration: BoxDecoration(color: AppTheme.accent, borderRadius: BorderRadius.circular(10)),
+                      child: Text(_unreadNotifCount > 99 ? '99+' : '$_unreadNotifCount', style: const TextStyle(color: Colors.white, fontSize: 9, fontWeight: FontWeight.w700)),
+                    ),
+                  ),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -302,6 +331,11 @@ class ProfileScreenState extends State<ProfileScreen>
           onDecline: _declineRequest,
         ),
         ConversationsScreen(),
+        ProfileNotificationsTab(
+          onCountChanged: (count) {
+            if (mounted) setState(() => _unreadNotifCount = count);
+          },
+        ),
       ],
     );
   }

@@ -2193,4 +2193,115 @@ class AppLocalizationsNl extends AppLocalizations {
   String skinLikesCount(int count) {
     return '$count likes';
   }
+
+  @override
+  String get sectionRecentActivity => 'Recente activiteit';
+
+  @override
+  String get activityNoEvents => 'Nog geen recente activiteit.';
+
+  @override
+  String get activitySkinUploaded => 'Skin geüpload';
+
+  @override
+  String get activitySkinLiked => 'Skin geliket';
+
+  @override
+  String get activityPackSubmitted => 'Pack ingediend';
+
+  @override
+  String get activityPackApproved => 'Pack goedgekeurd';
+
+  @override
+  String get activityPackRejected => 'Pack niet goedgekeurd';
+
+  @override
+  String get timeJustNow => 'zojuist';
+
+  @override
+  String timeMinutesAgo(int count) {
+    return '${count}m geleden';
+  }
+
+  @override
+  String timeHoursAgo(int count) {
+    return '${count}u geleden';
+  }
+
+  @override
+  String timeDaysAgo(int count) {
+    return '${count}d geleden';
+  }
+
+  @override
+  String timeMonthsAgo(int count) {
+    return '${count}ma geleden';
+  }
+
+  @override
+  String get sectionNotifications => 'Meldingen';
+
+  @override
+  String get sectionNotificationTypes => 'Meldingstypen';
+
+  @override
+  String get notifMarkAllRead => 'Alles als gelezen markeren';
+
+  @override
+  String get notifEmpty => 'Nog geen meldingen. Likes, reacties en vriendenactiviteit verschijnen hier.';
+
+  @override
+  String get notifSomeone => 'Iemand';
+
+  @override
+  String notifSkinLiked(String actor) {
+    return '$actor vindt je skin leuk';
+  }
+
+  @override
+  String notifCommentReceived(String actor) {
+    return '$actor reageerde op je skin';
+  }
+
+  @override
+  String get notifPackApproved => 'Pack goedgekeurd';
+
+  @override
+  String get notifPackRejected => 'Pack niet goedgekeurd';
+
+  @override
+  String notifFriendRequest(String actor) {
+    return '$actor stuurde je een vriendschapsverzoek';
+  }
+
+  @override
+  String notifFriendAccepted(String actor) {
+    return '$actor accepteerde je verzoek';
+  }
+
+  @override
+  String notifMessageReceived(String actor) {
+    return 'Nieuw bericht van $actor';
+  }
+
+  @override
+  String get notifPrefSkinLiked => 'Skin geliket';
+
+  @override
+  String get notifPrefCommentReceived => 'Reactie ontvangen';
+
+  @override
+  String get notifPrefPackApproved => 'Pack goedgekeurd';
+
+  @override
+  String get notifPrefPackRejected => 'Pack afgewezen';
+
+  @override
+  String get notifPrefFriendRequest => 'Vriendschapsverzoek';
+
+  @override
+  String get notifPrefFriendAccepted => 'Vriend toegevoegd';
+
+  @override
+  String get notifPrefMessageReceived => 'Nieuw bericht';
 }

@@ -4298,6 +4298,192 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count} likes'**
   String skinLikesCount(int count);
+
+  /// Section header for the recent activity feed in the profile tab
+  ///
+  /// In en, this message translates to:
+  /// **'Recent Activity'**
+  String get sectionRecentActivity;
+
+  /// Shown when the activity feed is empty
+  ///
+  /// In en, this message translates to:
+  /// **'No recent activity yet.'**
+  String get activityNoEvents;
+
+  /// Activity feed row: user uploaded a skin
+  ///
+  /// In en, this message translates to:
+  /// **'Uploaded skin'**
+  String get activitySkinUploaded;
+
+  /// Activity feed row: user liked a skin
+  ///
+  /// In en, this message translates to:
+  /// **'Liked a skin'**
+  String get activitySkinLiked;
+
+  /// Activity feed row: user submitted a resource pack
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted pack'**
+  String get activityPackSubmitted;
+
+  /// Activity feed row: pack was approved
+  ///
+  /// In en, this message translates to:
+  /// **'Pack approved'**
+  String get activityPackApproved;
+
+  /// Activity feed row: pack was not approved
+  ///
+  /// In en, this message translates to:
+  /// **'Pack not approved'**
+  String get activityPackRejected;
+
+  /// Relative timestamp: less than a minute ago
+  ///
+  /// In en, this message translates to:
+  /// **'just now'**
+  String get timeJustNow;
+
+  /// Relative timestamp: X minutes ago
+  ///
+  /// In en, this message translates to:
+  /// **'{count}m ago'**
+  String timeMinutesAgo(int count);
+
+  /// Relative timestamp: X hours ago
+  ///
+  /// In en, this message translates to:
+  /// **'{count}h ago'**
+  String timeHoursAgo(int count);
+
+  /// Relative timestamp: X days ago
+  ///
+  /// In en, this message translates to:
+  /// **'{count}d ago'**
+  String timeDaysAgo(int count);
+
+  /// Relative timestamp: X months ago
+  ///
+  /// In en, this message translates to:
+  /// **'{count}mo ago'**
+  String timeMonthsAgo(int count);
+
+  /// Section header for the notifications feed in the bell tab
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get sectionNotifications;
+
+  /// Section header for notification preference toggles
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Types'**
+  String get sectionNotificationTypes;
+
+  /// Button to mark all notifications as read
+  ///
+  /// In en, this message translates to:
+  /// **'Mark all read'**
+  String get notifMarkAllRead;
+
+  /// Shown when the notification feed is empty
+  ///
+  /// In en, this message translates to:
+  /// **'No notifications yet. Likes, comments, and friend activity will appear here.'**
+  String get notifEmpty;
+
+  /// Fallback actor name when sender is unknown
+  ///
+  /// In en, this message translates to:
+  /// **'Someone'**
+  String get notifSomeone;
+
+  /// Notification title: someone liked the user's skin
+  ///
+  /// In en, this message translates to:
+  /// **'{actor} liked your skin'**
+  String notifSkinLiked(String actor);
+
+  /// Notification title: someone commented on the user's skin
+  ///
+  /// In en, this message translates to:
+  /// **'{actor} commented on your skin'**
+  String notifCommentReceived(String actor);
+
+  /// Notification title: a submitted pack was approved
+  ///
+  /// In en, this message translates to:
+  /// **'Pack approved'**
+  String get notifPackApproved;
+
+  /// Notification title: a submitted pack was rejected
+  ///
+  /// In en, this message translates to:
+  /// **'Pack not approved'**
+  String get notifPackRejected;
+
+  /// Notification title: someone sent a friend request
+  ///
+  /// In en, this message translates to:
+  /// **'{actor} sent you a friend request'**
+  String notifFriendRequest(String actor);
+
+  /// Notification title: someone accepted the user's friend request
+  ///
+  /// In en, this message translates to:
+  /// **'{actor} accepted your request'**
+  String notifFriendAccepted(String actor);
+
+  /// Notification title: new direct message received
+  ///
+  /// In en, this message translates to:
+  /// **'New message from {actor}'**
+  String notifMessageReceived(String actor);
+
+  /// Notification preference toggle label: skin liked
+  ///
+  /// In en, this message translates to:
+  /// **'Skin liked'**
+  String get notifPrefSkinLiked;
+
+  /// Notification preference toggle label: comment received
+  ///
+  /// In en, this message translates to:
+  /// **'Comment received'**
+  String get notifPrefCommentReceived;
+
+  /// Notification preference toggle label: pack approved
+  ///
+  /// In en, this message translates to:
+  /// **'Pack approved'**
+  String get notifPrefPackApproved;
+
+  /// Notification preference toggle label: pack rejected
+  ///
+  /// In en, this message translates to:
+  /// **'Pack rejected'**
+  String get notifPrefPackRejected;
+
+  /// Notification preference toggle label: friend request
+  ///
+  /// In en, this message translates to:
+  /// **'Friend request'**
+  String get notifPrefFriendRequest;
+
+  /// Notification preference toggle label: friend accepted
+  ///
+  /// In en, this message translates to:
+  /// **'Friend accepted'**
+  String get notifPrefFriendAccepted;
+
+  /// Notification preference toggle label: new message
+  ///
+  /// In en, this message translates to:
+  /// **'New message'**
+  String get notifPrefMessageReceived;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

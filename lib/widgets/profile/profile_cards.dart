@@ -3,6 +3,7 @@ import '../../l10n/app_localizations.dart';
 import '../../theme/app_theme.dart';
 import '../../models/user_model.dart';
 import '../../services/user_service.dart';
+import '../../services/notification_api_service.dart';
 import '../../screens/xbox_link_screen.dart';
 import '../../screens/java_link_screen.dart';
 
@@ -479,6 +480,151 @@ class ProfileDangerRow extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ProfileNotificationPrefsCard extends StatefulWidget {
+  const ProfileNotificationPrefsCard({super.key});
+
+  @override
+  State<ProfileNotificationPrefsCard> createState() =>
+      _ProfileNotificationPrefsCardState();
+}
+
+class _ProfileNotificationPrefsCardState
+    extends State<ProfileNotificationPrefsCard> {
+  static const _typeKeys = [
+    ('skin_liked', Icons.favorite_rounded),
+    ('comment_received', Icons.comment_rounded),
+    ('pack_approved', Icons.check_circle_rounded),
+    ('pack_rejected', Icons.cancel_rounded),
+    ('friend_request', Icons.person_add_rounded),
+    ('friend_accepted', Icons.people_rounded),
+    ('message_received', Icons.chat_bubble_rounded),
+  ];
+
+  String _prefLabel(String key, AppLocalizations l) {
+    switch (key) {
+      case 'skin_liked':        return l.notifPrefSkinLiked;
+      case 'comment_received':  return l.notifPrefCommentReceived;
+      case 'pack_approved':     return l.notifPrefPackApproved;
+      case 'pack_rejected':     return l.notifPrefPackRejected;
+      case 'friend_request':    return l.notifPrefFriendRequest;
+      case 'friend_accepted':   return l.notifPrefFriendAccepted;
+      case 'message_received':  return l.notifPrefMessageReceived;
+      default:                  return key;
+    }
+  }
+
+  Map<String, bool> _prefs = {};
+  bool _loading = true;
+  bool _saving = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  Future<void> _load() async {
+    final prefs = await NotificationApiService.getPrefs();
+    if (mounted) setState(() { _prefs = prefs; _loading = false; });
+  }
+
+  Future<void> _toggle(String key, bool value) async {
+    setState(() => _prefs = {..._prefs, key: value});
+    setState(() => _saving = true);
+    await NotificationApiService.updatePrefs({key: value});
+    if (mounted) setState(() => _saving = false);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: AppTheme.surfaceRaised,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: AppTheme.borderGray),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          if (_saving)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(14, 8, 14, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  SizedBox(
+                    width: 12,
+                    height: 12,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: AppTheme.accent,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          if (_loading)
+            const Padding(
+              padding: EdgeInsets.all(20),
+              child: Center(
+                child: SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                ),
+              ),
+            )
+          else
+            ..._typeKeys.map((entry) {
+              final (key, icon) = entry;
+              final enabled = _prefs[key] ?? true;
+              final l = AppLocalizations.of(context)!;
+              return Column(
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                    child: Row(
+                      children: [
+                        Icon(icon,
+                            size: 16,
+                            color: enabled
+                                ? AppTheme.accent
+                                : AppTheme.textDisabled),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            _prefLabel(key, l),
+                            style: TextStyle(
+                              color: enabled
+                                  ? AppTheme.textPrimary
+                                  : AppTheme.textMuted,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                        Switch(
+                          value: enabled,
+                          onChanged: (v) => _toggle(key, v),
+                          activeThumbColor: AppTheme.accent,
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                        ),
+                      ],
+                    ),
+                  ),
+                  if (key != _typeKeys.last.$1)
+                    const Divider(height: 1, color: AppTheme.borderDim),
+                ],
+              );
+            }),
+        ],
       ),
     );
   }
