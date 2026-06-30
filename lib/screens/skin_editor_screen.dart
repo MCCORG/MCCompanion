@@ -107,6 +107,8 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
     super.dispose();
   }
 
+  static const _steveSkinUrl = 'https://textures.minecraft.net/texture/31f477eb1a7beee631c2ca64d06f8f68fa93a3386d04452ab27f43acdf1b60cb';
+
   Future<void> _init() async {
     Uint8List? rawBytes;
 
@@ -128,6 +130,13 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
               headers: {'User-Agent': 'MCCompanionApp/1.0'},
             )
             .timeout(const Duration(seconds: 10));
+        rawBytes = resp.bodyBytes;
+      } catch (_) {}
+    }
+
+    if (rawBytes == null) {
+      try {
+        final resp = await http.get(Uri.parse(_steveSkinUrl), headers: {'User-Agent': 'MCCompanionApp/1.0'}).timeout(const Duration(seconds: 10));
         rawBytes = resp.bodyBytes;
       } catch (_) {}
     }
