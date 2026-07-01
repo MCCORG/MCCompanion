@@ -2211,6 +2211,18 @@ abstract class AppLocalizations {
   /// **'Read full article'**
   String get wikiReadFullArticle;
 
+  /// Section label for recently viewed wiki articles
+  ///
+  /// In en, this message translates to:
+  /// **'Recently viewed'**
+  String get wikiRecent;
+
+  /// Section label for favourited wiki articles
+  ///
+  /// In en, this message translates to:
+  /// **'Favourites'**
+  String get wikiFavourites;
+
   /// Wiki category: Mobs
   ///
   /// In en, this message translates to:

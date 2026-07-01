@@ -1113,6 +1113,12 @@ class AppLocalizationsPt extends AppLocalizations {
   String get wikiReadFullArticle => 'Ler artigo completo';
 
   @override
+  String get wikiRecent => 'Recently viewed';
+
+  @override
+  String get wikiFavourites => 'Favourites';
+
+  @override
   String get wikiMobs => 'Mobs';
 
   @override

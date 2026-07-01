@@ -1231,6 +1231,14 @@
   "@wikiReadFullArticle": {
     "description": "Button at bottom of wiki detail to open full article"
   },
+  "wikiRecent": "Recently viewed",
+  "@wikiRecent": {
+    "description": "Section label for recently viewed wiki articles"
+  },
+  "wikiFavourites": "Favourites",
+  "@wikiFavourites": {
+    "description": "Section label for favourited wiki articles"
+  },
   "wikiMobs": "Mobs",
   "@wikiMobs": {
     "description": "Wiki category: Mobs"

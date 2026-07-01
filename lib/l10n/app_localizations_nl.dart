@@ -1113,6 +1113,12 @@ class AppLocalizationsNl extends AppLocalizations {
   String get wikiReadFullArticle => 'Volledig artikel lezen';
 
   @override
+  String get wikiRecent => 'Onlangs bekeken';
+
+  @override
+  String get wikiFavourites => 'Favorieten';
+
+  @override
   String get wikiMobs => 'Mobs';
 
   @override

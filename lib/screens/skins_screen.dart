@@ -506,8 +506,7 @@ class SkinsScreenState extends State<SkinsScreen> {
   }
 
   Widget _buildGallerySkins(AppLocalizations l, {bool isDesktop = false}) {
-    final cardH = isDesktop ? 215.0 : 190.0;
-    final cardW = isDesktop ? 170.0 : 148.0;
+    const rankBadges = ['🥇', '🥈', '🥉'];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -515,37 +514,33 @@ class SkinsScreenState extends State<SkinsScreen> {
         _sectionHeader(l.skinsTopLabel, icon: FontAwesomeIcons.trophy, iconColor: const Color(0xFFfbbf24)),
         const SizedBox(height: 10),
         if (_loadingTop)
-          SizedBox(height: cardH, child: Center(child: CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)))
+          SizedBox(height: 60, child: Center(child: CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)))
         else if (_topSkins.isEmpty)
           const SizedBox.shrink()
         else
-          ShaderMask(
-            shaderCallback: (bounds) => LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              colors: [Colors.white, Colors.white, Colors.transparent],
-              stops: const [0.0, 0.82, 1.0],
-            ).createShader(bounds),
-            blendMode: BlendMode.dstIn,
-            child: SizedBox(
-              height: cardH,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.only(left: 2, right: 48),
-                itemCount: _topSkins.length,
-                separatorBuilder: (_, __) => const SizedBox(width: 10),
-                itemBuilder: (_, i) => SizedBox(
-                  width: cardW,
-                  child: GallerySkinCard(
-                    skin: _topSkins[i],
-                    onTap: () => _showGallerySkinMenu(_topSkins[i]),
+          _skinGrid(
+            isDesktop: isDesktop,
+            items: List.generate(_topSkins.length > 9 ? 9 : _topSkins.length, (i) {
+              final skin = _topSkins[i];
+              final badge = i < 3 ? rankBadges[i] : null;
+              return Stack(
+                children: [
+                  GallerySkinCard(
+                    skin: skin,
+                    onTap: () => _showGallerySkinMenu(skin),
                     idToken: _idToken,
-                    initialLiked: _likedIds.contains(_topSkins[i]['id'] as String?),
-                    isOwn: AuthService.currentUser?.uid == _topSkins[i]['uid'],
+                    initialLiked: _likedIds.contains(skin['id'] as String?),
+                    isOwn: AuthService.currentUser?.uid == skin['uid'],
                   ),
-                ),
-              ),
-            ),
+                  if (badge != null)
+                    Positioned(
+                      top: 6,
+                      left: 6,
+                      child: Text(badge, style: const TextStyle(fontSize: 16)),
+                    ),
+                ],
+              );
+            }),
           ),
 
         const SizedBox(height: 24),

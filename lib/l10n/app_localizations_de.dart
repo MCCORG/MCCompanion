@@ -1113,6 +1113,12 @@ class AppLocalizationsDe extends AppLocalizations {
   String get wikiReadFullArticle => 'Vollständigen Artikel lesen';
 
   @override
+  String get wikiRecent => 'Recently viewed';
+
+  @override
+  String get wikiFavourites => 'Favourites';
+
+  @override
   String get wikiMobs => 'Mobs';
 
   @override

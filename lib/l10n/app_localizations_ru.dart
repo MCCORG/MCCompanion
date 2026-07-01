@@ -1113,6 +1113,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get wikiReadFullArticle => 'Читать полную статью';
 
   @override
+  String get wikiRecent => 'Recently viewed';
+
+  @override
+  String get wikiFavourites => 'Favourites';
+
+  @override
   String get wikiMobs => 'Мобы';
 
   @override

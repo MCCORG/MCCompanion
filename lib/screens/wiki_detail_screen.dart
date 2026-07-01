@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
+import '../util/wiki_history_storage.dart';
 import '../widgets/wiki/wiki_crafting_grid.dart';
 import 'wiki_screen.dart';
 
@@ -40,6 +41,7 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
   String? _imageUrl;
   bool _loading = true;
   String? _error;
+  bool _isFavourite = false;
 
   static const _hiddenSections = {
     'History',
@@ -61,6 +63,22 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
   void initState() {
     super.initState();
     _loadDetail();
+    _checkFavourite();
+  }
+
+  Future<void> _checkFavourite() async {
+    final fav = await WikiHistoryStorage.isFavourite(widget.result.title);
+    if (mounted) setState(() => _isFavourite = fav);
+  }
+
+  Future<void> _toggleFavourite() async {
+    await WikiHistoryStorage.toggleFavourite(WikiHistoryEntry(
+      pageId: widget.result.pageId,
+      title: widget.result.title,
+      thumbnailUrl: widget.result.thumbnailUrl ?? _imageUrl,
+      visitedAt: DateTime.now(),
+    ));
+    if (mounted) setState(() => _isFavourite = !_isFavourite);
   }
 
   Future<void> _loadDetail() async {
@@ -302,6 +320,14 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: _toggleFavourite,
+                    icon: FaIcon(
+                      _isFavourite ? FontAwesomeIcons.solidStar : FontAwesomeIcons.star,
+                      size: 15,
+                      color: _isFavourite ? const Color(0xFFfbbf24) : AppTheme.textMuted,
                     ),
                   ),
                   IconButton(

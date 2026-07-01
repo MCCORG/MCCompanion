@@ -1113,6 +1113,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get wikiReadFullArticle => 'Tam makaleyi oku';
 
   @override
+  String get wikiRecent => 'Recently viewed';
+
+  @override
+  String get wikiFavourites => 'Favourites';
+
+  @override
   String get wikiMobs => 'Yaratıklar';
 
   @override

@@ -1113,6 +1113,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get wikiReadFullArticle => 'Leer artículo completo';
 
   @override
+  String get wikiRecent => 'Recently viewed';
+
+  @override
+  String get wikiFavourites => 'Favourites';
+
+  @override
   String get wikiMobs => 'Mobs';
 
   @override

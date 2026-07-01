@@ -21,6 +21,7 @@ class _SwipeBackState extends State<SwipeBack> with SingleTickerProviderStateMix
   double _lastDx = 0;
   int _lastTime = 0;
   double _velocity = 0;
+  bool _childScrollingHorizontally = false;
 
   @override
   void initState() {
@@ -60,7 +61,7 @@ class _SwipeBackState extends State<SwipeBack> with SingleTickerProviderStateMix
       final dx = e.localPosition.dx - _start!.dx;
       final dy = e.localPosition.dy - _start!.dy;
       if (dx.abs() < 8 && dy.abs() < 8) return;
-      if (dx > 0 && dx.abs() > dy.abs()) {
+      if (dx > 0 && dx.abs() > dy.abs() && !_childScrollingHorizontally) {
         _tracking = true;
         _decided = true;
         _controller.value = 0;
@@ -106,7 +107,24 @@ class _SwipeBackState extends State<SwipeBack> with SingleTickerProviderStateMix
   Widget build(BuildContext context) {
     if (!_isMobile) return widget.child;
 
-    return Listener(
+    return NotificationListener<ScrollNotification>(
+      onNotification: (n) {
+        if (n.metrics.axis == Axis.horizontal) {
+          if (n is ScrollStartNotification || n is ScrollUpdateNotification) {
+            _childScrollingHorizontally = true;
+            if (_tracking) {
+              _tracking = false;
+              _decided = true;
+              if (_controller.value > 0) {
+                _controller.animateBack(0, duration: const Duration(milliseconds: 150), curve: Curves.easeOut);
+              }
+            }
+          }
+          if (n is ScrollEndNotification) _childScrollingHorizontally = false;
+        }
+        return false;
+      },
+      child: Listener(
       behavior: HitTestBehavior.translucent,
       onPointerDown: _onPointerDown,
       onPointerMove: _onPointerMove,
@@ -126,6 +144,7 @@ class _SwipeBackState extends State<SwipeBack> with SingleTickerProviderStateMix
           );
         },
         child: widget.child,
+      ),
       ),
     );
   }

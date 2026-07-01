@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../widgets/wiki/wiki_cards.dart';
+import '../util/wiki_history_storage.dart';
 import 'wiki_detail_screen.dart';
 
 class WikiSub {
@@ -447,10 +448,20 @@ class _WikiScreenState extends State<WikiScreen> {
 
   Map<String, List<String>>? _wikiData;
 
+  List<WikiHistoryEntry> _recent = [];
+  List<WikiHistoryEntry> _favourites = [];
+
   @override
   void initState() {
     super.initState();
     _loadWikiData();
+    _loadHistory();
+  }
+
+  Future<void> _loadHistory() async {
+    final recent = await WikiHistoryStorage.loadRecent();
+    final favs = await WikiHistoryStorage.loadFavourites();
+    if (mounted) setState(() { _recent = recent; _favourites = favs; });
   }
 
   Future<void> _loadWikiData() async {
@@ -939,10 +950,18 @@ class _WikiScreenState extends State<WikiScreen> {
       .replaceAll('&#039;', "'")
       .trim();
 
-  void _openDetail(WikiResult r) => setState(() {
-    _detailResult = r;
-    _view = _View.detail;
-  });
+  void _openDetail(WikiResult r) {
+    setState(() {
+      _detailResult = r;
+      _view = _View.detail;
+    });
+    WikiHistoryStorage.addRecent(WikiHistoryEntry(
+      pageId: r.pageId,
+      title: r.title,
+      thumbnailUrl: r.thumbnailUrl,
+      visitedAt: DateTime.now(),
+    )).then((_) => _loadHistory());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -965,10 +984,10 @@ class _WikiScreenState extends State<WikiScreen> {
     String title;
     switch (_view) {
       case _View.subs:
-        title = wikiL10n(l, _activeSection!.label);
+        title = _activeSection != null ? wikiL10n(l, _activeSection!.label) : l.wikiTitle;
         break;
       case _View.pages:
-        title = wikiL10n(l, _activeSub!.label);
+        title = _activeSub != null ? wikiL10n(l, _activeSub!.label) : l.wikiTitle;
         break;
       case _View.search:
         title = l.wikiTitle;
@@ -1000,7 +1019,7 @@ class _WikiScreenState extends State<WikiScreen> {
                     ),
                   ),
                 ),
-              if (_view == _View.pages) ...[
+              if (_view == _View.pages && _activeSection != null) ...[
                 GestureDetector(
                   onTap: () => setState(() {
                     _view = _View.subs;
@@ -1163,7 +1182,51 @@ class _WikiScreenState extends State<WikiScreen> {
     return _View.root;
   }
 
+  Widget _buildHistoryRow(List<WikiHistoryEntry> entries) {
+    return SizedBox(
+      height: 82,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 2),
+        itemCount: entries.length,
+        separatorBuilder: (_, __) => const SizedBox(width: 8),
+        itemBuilder: (_, i) {
+          final e = entries[i];
+          return GestureDetector(
+            onTap: () => _openDetail(WikiResult(pageId: e.pageId, title: e.title, snippet: '', thumbnailUrl: e.thumbnailUrl)),
+            child: Container(
+              width: 72,
+              decoration: BoxDecoration(
+                color: AppTheme.surface,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: AppTheme.borderGray),
+              ),
+              padding: const EdgeInsets.all(6),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (e.thumbnailUrl != null)
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(6),
+                      child: Image.network(e.thumbnailUrl!, width: 36, height: 36, fit: BoxFit.contain,
+                        errorBuilder: (_, __, ___) => Icon(Icons.image_not_supported_outlined, size: 28, color: AppTheme.textMuted)),
+                    )
+                  else
+                    Icon(Icons.article_outlined, size: 28, color: AppTheme.textMuted),
+                  const SizedBox(height: 5),
+                  Text(e.title, style: TextStyle(color: AppTheme.textSecondary, fontSize: 9, fontWeight: FontWeight.w500),
+                    maxLines: 2, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
   Widget _buildRoot() {
+    final l = AppLocalizations.of(context)!;
     final items = _sections;
     final rows = <Widget>[];
     for (int i = 0; i < items.length; i += 2) {
@@ -1205,7 +1268,21 @@ class _WikiScreenState extends State<WikiScreen> {
               constraints: BoxConstraints(maxWidth: constraints.maxWidth > 700 ? 900 : double.infinity),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: rows,
+                children: [
+                  if (_favourites.isNotEmpty) ...[
+                    _rootSectionLabel(l.wikiFavourites, FontAwesomeIcons.star, const Color(0xFFfbbf24)),
+                    const SizedBox(height: 8),
+                    _buildHistoryRow(_favourites),
+                    const SizedBox(height: 16),
+                  ],
+                  if (_recent.isNotEmpty) ...[
+                    _rootSectionLabel(l.wikiRecent, FontAwesomeIcons.clockRotateLeft, AppTheme.textMuted),
+                    const SizedBox(height: 8),
+                    _buildHistoryRow(_recent),
+                    const SizedBox(height: 16),
+                  ],
+                  ...rows,
+                ],
               ),
             ),
           ),
@@ -1214,7 +1291,16 @@ class _WikiScreenState extends State<WikiScreen> {
     );
   }
 
+  Widget _rootSectionLabel(String label, FaIconData icon, Color iconColor) {
+    return Row(children: [
+      FaIcon(icon, size: 11, color: iconColor),
+      const SizedBox(width: 7),
+      Text(label.toUpperCase(), style: TextStyle(color: AppTheme.textMuted, fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1.1)),
+    ]);
+  }
+
   Widget _buildSubs() {
+    if (_activeSection == null) return _buildRoot();
     final subs = _activeSection!.subs;
     final color = _activeSection!.color;
     final rows = <Widget>[];

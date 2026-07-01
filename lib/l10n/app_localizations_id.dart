@@ -1113,6 +1113,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get wikiReadFullArticle => 'Read full article';
 
   @override
+  String get wikiRecent => 'Recently viewed';
+
+  @override
+  String get wikiFavourites => 'Favourites';
+
+  @override
   String get wikiMobs => 'Mobs';
 
   @override
