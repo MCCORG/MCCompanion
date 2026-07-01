@@ -13,7 +13,6 @@ import '../widgets/profile/profile_header.dart';
 import '../widgets/profile/profile_tabs.dart';
 import '../widgets/profile/profile_desktop_sidebar.dart';
 import '../widgets/profile/profile_notifications_tab.dart';
-import '../services/notification_api_service.dart';
 import 'register_screen.dart';
 import 'chat_screen.dart';
 import 'conversations_screen.dart';
@@ -112,13 +111,13 @@ class ProfileScreenState extends State<ProfileScreen>
       return;
     }
 
-    final me = await UserService.getMe();
+    final init = await UserService.getSocialInit();
     if (!mounted) {
       _checking = false;
       return;
     }
 
-    if (me == null) {
+    if (init == null || init.user == null) {
       setState(() => _authState = _AuthState.notRegistered);
       _checking = false;
       return;
@@ -127,19 +126,17 @@ class ProfileScreenState extends State<ProfileScreen>
     final justLoggedIn = _wasNotLoggedIn;
     _wasNotLoggedIn = false;
     setState(() {
-      _me = me;
+      _me = init.user;
+      _friends = init.friends;
+      _requests = init.friendRequests;
+      _totalUnread = init.unreadMessageCount;
+      _unreadNotifCount = init.unreadNotifCount;
       _authState = _AuthState.loggedIn;
-      _loadingFriends = true;
-      _loadingRequests = true;
+      _loadingFriends = false;
+      _loadingRequests = false;
     });
     _checking = false;
     if (justLoggedIn) widget.onLoggedIn?.call();
-    unawaited(Future.wait([
-      _fetchFriends(),
-      _fetchRequests(),
-      _refreshUnread(),
-      _refreshNotifCount(),
-    ]));
   }
 
   Future<void> _fetchMe() async {
@@ -172,13 +169,6 @@ class ProfileScreenState extends State<ProfileScreen>
     if (!mounted) return;
     final total = convs.fold(0, (sum, c) => sum + c.unreadCount);
     if (total != _totalUnread) setState(() => _totalUnread = total);
-  }
-
-  Future<void> _refreshNotifCount() async {
-    final result = await NotificationApiService.getNotifications(limit: 1);
-    if (!mounted) return;
-    final count = result.unreadCount;
-    if (count != _unreadNotifCount) setState(() => _unreadNotifCount = count);
   }
 
   void _openRegister() {

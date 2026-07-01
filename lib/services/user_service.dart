@@ -359,6 +359,30 @@ class UserService {
     }
   }
 
+  static Future<({UserModel? user, List<FriendModel> friends, List<FriendRequest> friendRequests, int unreadMessageCount, int unreadNotifCount})?> getSocialInit() async {
+    try {
+      final res = await http
+          .get(
+            Uri.parse('$_base/api/users/me/social-init'),
+            headers: await ApiClientBase.headers(),
+          )
+          .timeout(_timeout);
+      if (res.statusCode == 200) {
+        final body = jsonDecode(res.body) as Map<String, dynamic>;
+        return (
+          user: body['user'] != null ? UserModel.fromJson(body['user'] as Map<String, dynamic>) : null,
+          friends: (body['friends'] as List<dynamic>).map((e) => FriendModel.fromJson(e as Map<String, dynamic>)).toList(),
+          friendRequests: (body['friendRequests'] as List<dynamic>).map((e) => FriendRequest.fromJson(e as Map<String, dynamic>)).toList(),
+          unreadMessageCount: (body['unreadMessageCount'] as num?)?.toInt() ?? 0,
+          unreadNotifCount: (body['unreadNotifCount'] as num?)?.toInt() ?? 0,
+        );
+      }
+    } catch (e) {
+      debugPrint('[UserService.getSocialInit] $e');
+    }
+    return null;
+  }
+
   static Future<List<FriendModel>> getFriends() async {
     try {
       final res = await http
@@ -453,7 +477,7 @@ class UserService {
     try {
       final res = await http
           .get(
-            Uri.parse('$_base/api/users/$username'),
+            Uri.parse('$_base/api/users/$username/profile'),
             headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
@@ -469,6 +493,7 @@ class UserService {
     return null;
   }
 
+  // @deprecated — use getProfileWithFriendship() instead
   static Future<String> getFriendshipStatus(String username) async {
     try {
       final res = await http
@@ -490,14 +515,26 @@ class UserService {
 
   static Future<({UserModel? user, String friendshipStatus})>
   getProfileWithFriendship(String username) async {
-    final results = await Future.wait([
-      getProfile(username),
-      getFriendshipStatus(username),
-    ]);
-    return (
-      user: results[0] as UserModel?,
-      friendshipStatus: results[1] as String,
-    );
+    try {
+      final res = await http
+          .get(
+            Uri.parse('$_base/api/users/$username/profile'),
+            headers: await ApiClientBase.headers(),
+          )
+          .timeout(_timeout);
+      if (res.statusCode == 200) {
+        final body = jsonDecode(res.body) as Map<String, dynamic>;
+        return (
+          user: body['user'] != null
+              ? UserModel.fromJson(body['user'] as Map<String, dynamic>)
+              : null,
+          friendshipStatus: body['friendshipStatus'] as String? ?? 'none',
+        );
+      }
+    } catch (e) {
+      debugPrint('[UserService.getProfileWithFriendship] $e');
+    }
+    return (user: null, friendshipStatus: 'none');
   }
 
   static Future<List<UserModel>> searchUsers(String query) async {
