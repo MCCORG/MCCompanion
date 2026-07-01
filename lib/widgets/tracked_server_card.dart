@@ -72,11 +72,39 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
     );
   }
 
+  void _openMoreMenu() {
+    final l = AppLocalizations.of(context)!;
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (_) => Container(
+        decoration: BoxDecoration(
+          color: AppTheme.surface,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+        ),
+        padding: const EdgeInsets.fromLTRB(20, 16, 20, 32),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(width: 36, height: 4, decoration: BoxDecoration(color: AppTheme.borderGray, borderRadius: BorderRadius.circular(2))),
+            const SizedBox(height: 16),
+            _MenuTile(icon: Icons.edit_rounded, label: l.editLabel, onTap: () { Navigator.pop(context); _openEditSheet(); }),
+            const SizedBox(height: 4),
+            _MenuTile(icon: Icons.delete_outline_rounded, label: l.delete, color: AppTheme.error, onTap: () { Navigator.pop(context); widget.onDelete(); }),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final color = _statusColor;
     final s = widget.server;
     final hasPlayers = s.players != null && s.maxPlayers != null;
+    final playerFraction = hasPlayers ? (s.players! / s.maxPlayers!).clamp(0.0, 1.0) : 0.0;
+    final isOnline = s.lastStatus == 'online';
+    final isJava = s.platform == 'java';
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
@@ -85,242 +113,210 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
         child: Stack(
           children: [
             Positioned.fill(child: Container(color: AppTheme.surfaceRaised)),
-            Positioned.fill(child: Container(color: color.withValues(alpha: 0.08))),
-
+            Positioned.fill(child: Container(color: color.withValues(alpha: 0.06))),
             Positioned.fill(
               child: CustomPaint(
-                painter: AppNoisePainter(
-                  color: color,
-                  opacity: 0.045,
-                  seed: s.id.hashCode & 0xFFFF,
-                  count: 140,
-                ),
+                painter: AppNoisePainter(color: color, opacity: 0.035, seed: s.id.hashCode & 0xFFFF, count: 120),
               ),
             ),
-            Positioned.fill(
-              child: CustomPaint(
-                painter: AppWavePainter(
-                  waves: [
-                    WaveConfig(
-                      yFraction: 0.40,
-                      amplitude: 10,
-                      frequency: 3.2,
-                      phase: 0.5,
-                      color: color,
-                      opacity: 0.14,
-                      strokeWidth: 1.4,
-                    ),
-                    WaveConfig(
-                      yFraction: 0.65,
-                      amplitude: 7,
-                      frequency: 4.5,
-                      phase: 1.8,
-                      color: color,
-                      opacity: 0.07,
-                      strokeWidth: 1.0,
-                    ),
-                  ],
+            if (isOnline)
+              Positioned.fill(
+                child: CustomPaint(
+                  painter: AppWavePainter(waves: [
+                    WaveConfig(yFraction: 0.55, amplitude: 8, frequency: 3.0, phase: 0.4, color: color, opacity: 0.10, strokeWidth: 1.2),
+                    WaveConfig(yFraction: 0.75, amplitude: 5, frequency: 4.8, phase: 2.1, color: color, opacity: 0.05, strokeWidth: 0.9),
+                  ]),
                 ),
               ),
-            ),
-
             Positioned.fill(
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: color.withValues(alpha: 0.35)),
+                  border: Border.all(color: color.withValues(alpha: 0.28)),
                 ),
               ),
             ),
 
-            Padding(
-              padding: const EdgeInsets.fromLTRB(14, 12, 8, 12),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 42,
-                    height: 42,
-                    decoration: BoxDecoration(
-                      color: color.withValues(alpha: 0.12),
-                      borderRadius: BorderRadius.circular(11),
-                      border: Border.all(color: color.withValues(alpha: 0.28)),
-                    ),
-                    child: Icon(Icons.circle, color: color, size: 12),
-                  ),
-                  const SizedBox(width: 12),
-
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          s.name,
-                          style: TextStyle(
-                            color: AppTheme.textPrimary,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w700,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        const SizedBox(height: 2),
-                        Text(
-                          '${s.ip}:${s.port}',
-                          style: TextStyle(
-                            color: AppTheme.textMuted,
-                            fontSize: 12,
-                          ),
-                        ),
-                        const SizedBox(height: 5),
-                        Row(
-                          children: [
-                            Icon(Icons.circle, color: color, size: 8),
-                            const SizedBox(width: 4),
-                            Text(
-                              _statusLabel(context),
-                              style: TextStyle(
-                                color: color,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 5,
-                                vertical: 2,
-                              ),
-                              decoration: BoxDecoration(
-                                color: color.withValues(alpha: 0.12),
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              child: Text(
-                                s.platform.toUpperCase(),
-                                style: TextStyle(
-                                  color: color,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w700,
-                                  letterSpacing: 0.5,
-                                ),
-                              ),
-                            ),
-                            if (s.version != null) ...[
-                              const SizedBox(width: 6),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 5,
-                                  vertical: 2,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: AppTheme.borderDim,
-                                  borderRadius: BorderRadius.circular(4),
-                                ),
-                                child: Text(
-                                  s.version!,
-                                  style: TextStyle(
-                                    color: AppTheme.textMuted,
-                                    fontSize: 10,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ],
-                        ),
-                        if (hasPlayers) ...[
-                          const SizedBox(height: 4),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.people_outline_rounded,
-                                color: AppTheme.textMuted,
-                                size: 12,
-                              ),
-                              const SizedBox(width: 4),
-                              Text(
-                                AppLocalizations.of(context)!.playersCount(s.players!, s.maxPlayers!),
-                                style: TextStyle(
-                                  color: AppTheme.textMuted,
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ],
-                    ),
-                  ),
-
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(14, 14, 10, 12),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      _togglingNotif
-                          ? SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: CircularProgressIndicator(
-                                strokeWidth: 2,
-                                color: color,
-                              ),
-                            )
-                          : IconButton(
-                              onPressed: _toggleNotifications,
-                              icon: Icon(
-                                s.notificationsEnabled
-                                    ? Icons.notifications_active_rounded
-                                    : Icons.notifications_off_rounded,
-                                color: s.notificationsEnabled
-                                    ? color
-                                    : AppTheme.textDisabled,
-                                size: 20,
-                              ),
-                              tooltip: s.notificationsEnabled
-                                  ? AppLocalizations.of(
-                                      context,
-                                    )!.notificationsOn
-                                  : AppLocalizations.of(
-                                      context,
-                                    )!.notificationsOff,
-                              padding: EdgeInsets.zero,
-                              constraints: const BoxConstraints(
-                                minWidth: 36,
-                                minHeight: 36,
-                              ),
-                            ),
-                      IconButton(
-                        onPressed: _openEditSheet,
-                        icon: Icon(
-                          Icons.edit_rounded,
-                          color: AppTheme.textMuted,
-                          size: 18,
+                      Container(
+                        width: 46,
+                        height: 46,
+                        decoration: BoxDecoration(
+                          color: color.withValues(alpha: 0.10),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: color.withValues(alpha: 0.22)),
                         ),
-                        tooltip: AppLocalizations.of(context)!.editLabel,
-                        padding: EdgeInsets.zero,
-                        constraints: const BoxConstraints(
-                          minWidth: 36,
-                          minHeight: 36,
+                        child: Center(
+                          child: Icon(
+                            isJava ? Icons.computer_rounded : Icons.sports_esports_rounded,
+                            color: color,
+                            size: 22,
+                          ),
                         ),
                       ),
-                      IconButton(
-                        onPressed: widget.onDelete,
-                        icon: Icon(
-                          Icons.delete_outline_rounded,
-                          color: AppTheme.textMuted,
-                          size: 18,
+                      const SizedBox(width: 12),
+
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    s.name,
+                                    style: TextStyle(color: AppTheme.textPrimary, fontSize: 15, fontWeight: FontWeight.w700),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              '${s.ip}:${s.port}',
+                              style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
+                            ),
+                            const SizedBox(height: 6),
+                            Row(
+                              children: [
+                                Container(
+                                  width: 7, height: 7,
+                                  decoration: BoxDecoration(color: color, shape: BoxShape.circle,
+                                    boxShadow: isOnline ? [BoxShadow(color: color.withValues(alpha: 0.5), blurRadius: 4, spreadRadius: 1)] : null),
+                                ),
+                                const SizedBox(width: 5),
+                                Text(_statusLabel(context), style: TextStyle(color: color, fontSize: 12, fontWeight: FontWeight.w600)),
+                                const SizedBox(width: 8),
+                                _Badge(label: s.platform.toUpperCase(), color: color),
+                                if (s.version != null) ...[
+                                  const SizedBox(width: 5),
+                                  _Badge(label: s.version!, color: AppTheme.textMuted, bg: AppTheme.borderDim),
+                                ],
+                                if (s.gameMode != null) ...[
+                                  const SizedBox(width: 5),
+                                  _Badge(label: s.gameMode!.toUpperCase(), color: AppTheme.textMuted, bg: AppTheme.borderDim),
+                                ],
+                              ],
+                            ),
+                          ],
                         ),
-                        tooltip: AppLocalizations.of(context)!.delete,
-                        padding: EdgeInsets.zero,
-                        constraints: const BoxConstraints(
-                          minWidth: 36,
-                          minHeight: 36,
-                        ),
+                      ),
+
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          _togglingNotif
+                              ? const SizedBox(width: 36, height: 36, child: Center(child: SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2))))
+                              : IconButton(
+                                  onPressed: _toggleNotifications,
+                                  icon: Icon(
+                                    s.notificationsEnabled ? Icons.notifications_active_rounded : Icons.notifications_off_outlined,
+                                    color: s.notificationsEnabled ? color : AppTheme.textDisabled,
+                                    size: 20,
+                                  ),
+                                  padding: EdgeInsets.zero,
+                                  constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
+                                ),
+                          IconButton(
+                            onPressed: _openMoreMenu,
+                            icon: Icon(Icons.more_vert_rounded, color: AppTheme.textMuted, size: 20),
+                            padding: EdgeInsets.zero,
+                            constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
+                          ),
+                        ],
                       ),
                     ],
                   ),
+                ),
+
+                if (hasPlayers) ...[
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(14, 0, 14, 12),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.people_outline_rounded, color: AppTheme.textMuted, size: 11),
+                            const SizedBox(width: 4),
+                            Text(
+                              AppLocalizations.of(context)!.playersCount(s.players!, s.maxPlayers!),
+                              style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 5),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(4),
+                          child: LinearProgressIndicator(
+                            value: playerFraction,
+                            backgroundColor: color.withValues(alpha: 0.12),
+                            valueColor: AlwaysStoppedAnimation(color),
+                            minHeight: 4,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
-              ),
+              ],
             ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _Badge extends StatelessWidget {
+  final String label;
+  final Color color;
+  final Color? bg;
+  const _Badge({required this.label, required this.color, this.bg});
+
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+    decoration: BoxDecoration(
+      color: bg ?? color.withValues(alpha: 0.12),
+      borderRadius: BorderRadius.circular(4),
+    ),
+    child: Text(label, style: TextStyle(color: color, fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 0.4)),
+  );
+}
+
+class _MenuTile extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+  final Color? color;
+  const _MenuTile({required this.icon, required this.label, required this.onTap, this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    final c = color ?? AppTheme.textSecondary;
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        decoration: BoxDecoration(
+          color: AppTheme.surfaceRaised,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          children: [
+            Icon(icon, color: c, size: 18),
+            const SizedBox(width: 12),
+            Text(label, style: TextStyle(color: c, fontSize: 14, fontWeight: FontWeight.w500)),
           ],
         ),
       ),
