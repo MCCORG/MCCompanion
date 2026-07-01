@@ -47,14 +47,15 @@ class SkinsScreenState extends State<SkinsScreen> {
   bool _loadingCloud = false;
 
 
-  List<Map<String, dynamic>> _gallerySkins = [];
-  bool _loadingGallery = false;
-  bool _galleryHasMore = true;
-  int _galleryOffset = 0;
-  static const int _galleryPageSize = 30;
-
   List<Map<String, dynamic>> _topSkins = [];
   bool _loadingTop = false;
+
+  List<Map<String, dynamic>> _allSkins = [];
+  bool _loadingAll = false;
+  bool _allHasMore = true;
+  int _allOffset = 0;
+  int _allTotal = 0;
+  static const int _allPageSize = 20;
 
   Set<String> _likedIds = {};
   String? _idToken;
@@ -68,7 +69,8 @@ class SkinsScreenState extends State<SkinsScreen> {
     });
     _loadMe();
     _loadSavedSkins();
-    _loadGallery();
+    _loadTopSkins();
+    _loadAllSkins();
     _loadMeDashboard();
   }
 
@@ -96,8 +98,8 @@ class SkinsScreenState extends State<SkinsScreen> {
     });
   }
 
-  Future<void> _loadGallery() async {
-    setState(() { _loadingGallery = true; _loadingTop = true; });
+  Future<void> _loadTopSkins() async {
+    setState(() => _loadingTop = true);
     try {
       final resp = await http
           .get(Uri.parse('${AppConstants.apiBase}/api/skins/gallery'))
@@ -105,20 +107,39 @@ class SkinsScreenState extends State<SkinsScreen> {
       if (!mounted) return;
       if (resp.statusCode == 200) {
         final data = jsonDecode(resp.body);
-        final recent = (data['recent'] as List?)?.cast<Map<String, dynamic>>() ?? [];
         final top = (data['top'] as List?)?.cast<Map<String, dynamic>>() ?? [];
+        setState(() { _topSkins = top; _loadingTop = false; });
+        return;
+      }
+    } catch (_) {}
+    if (mounted) setState(() => _loadingTop = false);
+  }
+
+  Future<void> _loadAllSkins({ bool reset = false }) async {
+    if (_loadingAll) return;
+    if (reset) setState(() { _allSkins = []; _allOffset = 0; _allHasMore = true; _allTotal = 0; });
+    setState(() => _loadingAll = true);
+    try {
+      final offset = reset ? 0 : _allOffset;
+      final resp = await http
+          .get(Uri.parse('${AppConstants.apiBase}/api/skins/gallery/all?limit=$_allPageSize&offset=$offset'))
+          .timeout(const Duration(seconds: 10));
+      if (!mounted) return;
+      if (resp.statusCode == 200) {
+        final data = jsonDecode(resp.body);
+        final skins = (data['skins'] as List?)?.cast<Map<String, dynamic>>() ?? [];
+        final total = (data['total'] as num?)?.toInt() ?? 0;
         setState(() {
-          _gallerySkins = recent;
-          _galleryOffset = recent.length;
-          _galleryHasMore = false;
-          _topSkins = top;
-          _loadingGallery = false;
-          _loadingTop = false;
+          _allSkins = reset ? skins : [..._allSkins, ...skins];
+          _allOffset = (reset ? 0 : _allOffset) + skins.length;
+          _allTotal = total;
+          _allHasMore = _allOffset < total;
+          _loadingAll = false;
         });
         return;
       }
     } catch (_) {}
-    if (mounted) setState(() { _loadingGallery = false; _loadingTop = false; });
+    if (mounted) setState(() => _loadingAll = false);
   }
 
   Future<void> _loadMeDashboard() async {
@@ -391,21 +412,6 @@ class SkinsScreenState extends State<SkinsScreen> {
     );
   }
 
-  void _openGeyserDetail(String textureUrl) {
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: Colors.transparent,
-      isScrollControlled: true,
-      builder: (_) => SkinDetailSheet(
-        textureUrl: textureUrl,
-        onEdit: () {
-          Navigator.pop(context);
-          _openEditor(textureUrl);
-        },
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
@@ -500,48 +506,92 @@ class SkinsScreenState extends State<SkinsScreen> {
   }
 
   Widget _buildGallerySkins(AppLocalizations l, {bool isDesktop = false}) {
-    if (_loadingGallery && _gallerySkins.isEmpty) {
-      return SizedBox(height: 60, child: Center(child: CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)));
-    }
-    if (_gallerySkins.isEmpty) return const SizedBox.shrink();
+    final cardH = isDesktop ? 215.0 : 190.0;
+    final cardW = isDesktop ? 170.0 : 148.0;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (_topSkins.isNotEmpty) ...[
-          _sectionHeader(l.skinsTopLabel, icon: FontAwesomeIcons.trophy, iconColor: const Color(0xFFfbbf24)),
-          const SizedBox(height: 10),
+        _sectionHeader(l.skinsTopLabel, icon: FontAwesomeIcons.trophy, iconColor: const Color(0xFFfbbf24)),
+        const SizedBox(height: 10),
+        if (_loadingTop)
+          SizedBox(height: cardH, child: Center(child: CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)))
+        else if (_topSkins.isEmpty)
+          const SizedBox.shrink()
+        else
+          ShaderMask(
+            shaderCallback: (bounds) => LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: [Colors.white, Colors.white, Colors.transparent],
+              stops: const [0.0, 0.82, 1.0],
+            ).createShader(bounds),
+            blendMode: BlendMode.dstIn,
+            child: SizedBox(
+              height: cardH,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.only(left: 2, right: 48),
+                itemCount: _topSkins.length,
+                separatorBuilder: (_, __) => const SizedBox(width: 10),
+                itemBuilder: (_, i) => SizedBox(
+                  width: cardW,
+                  child: GallerySkinCard(
+                    skin: _topSkins[i],
+                    onTap: () => _showGallerySkinMenu(_topSkins[i]),
+                    idToken: _idToken,
+                    initialLiked: _likedIds.contains(_topSkins[i]['id'] as String?),
+                    isOwn: AuthService.currentUser?.uid == _topSkins[i]['uid'],
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+        const SizedBox(height: 24),
+
+        Row(
+          children: [
+            Expanded(child: _sectionHeader(
+              l.skinsAllLabel,
+              icon: FontAwesomeIcons.earthAmericas,
+              count: _allTotal > 0 ? _allTotal : null,
+            )),
+          ],
+        ),
+        const SizedBox(height: 10),
+        if (_loadingAll && _allSkins.isEmpty)
+          SizedBox(height: 60, child: Center(child: CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)))
+        else if (_allSkins.isEmpty)
+          const SizedBox.shrink()
+        else
           _skinGrid(
             isDesktop: isDesktop,
-            items: List.generate(_topSkins.length, (i) => GallerySkinCard(
-              skin: _topSkins[i],
-              onTap: () => _showGallerySkinMenu(_topSkins[i]),
+            items: List.generate(_allSkins.length, (i) => GallerySkinCard(
+              skin: _allSkins[i],
+              onTap: () => _showGallerySkinMenu(_allSkins[i]),
               idToken: _idToken,
-              initialLiked: _likedIds.contains(_topSkins[i]['id'] as String?),
-              isOwn: AuthService.currentUser?.uid == _topSkins[i]['uid'],
+              initialLiked: _likedIds.contains(_allSkins[i]['id'] as String?),
+              isOwn: AuthService.currentUser?.uid == _allSkins[i]['uid'],
             )),
           ),
-          const SizedBox(height: 20),
-          _sectionHeader(l.skinsAllLabel, icon: FontAwesomeIcons.earthAmericas),
-          const SizedBox(height: 10),
-        ],
-        _skinGrid(
-          isDesktop: isDesktop,
-          items: List.generate(_gallerySkins.length, (i) => GallerySkinCard(
-            skin: _gallerySkins[i],
-            onTap: () => _showGallerySkinMenu(_gallerySkins[i]),
-            idToken: _idToken,
-            initialLiked: _likedIds.contains(_gallerySkins[i]['id'] as String?),
-            isOwn: AuthService.currentUser?.uid == _gallerySkins[i]['uid'],
-          )),
-        ),
-        if (_galleryHasMore || _loadingGallery) ...[
-          const SizedBox(height: 16),
+
+        if (_allSkins.isNotEmpty) ...[
+          const SizedBox(height: 12),
           Center(
-            child: _loadingGallery && _gallerySkins.isNotEmpty
+            child: Text(
+              '${_allSkins.length} / $_allTotal',
+              style: TextStyle(color: AppTheme.textMuted, fontSize: 11, fontWeight: FontWeight.w500),
+            ),
+          ),
+        ],
+        if (_allHasMore || (_loadingAll && _allSkins.isNotEmpty)) ...[
+          const SizedBox(height: 8),
+          Center(
+            child: _loadingAll
                 ? const SizedBox(height: 24, width: 24, child: CircularProgressIndicator(strokeWidth: 2))
                 : OutlinedButton(
-                    onPressed: _loadingGallery ? null : () => _loadGallery(),
+                    onPressed: () => _loadAllSkins(),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: AppTheme.textSecondary,
                       side: const BorderSide(color: AppTheme.borderGray),
@@ -555,38 +605,6 @@ class SkinsScreenState extends State<SkinsScreen> {
       ],
     );
   }
-
-  Widget _buildYourSkins(AppLocalizations l, {bool isDesktop = false}) {
-    if (_loading) {
-      return SizedBox(height: 60, child: Center(child: CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)));
-    }
-    if (_me == null) return const SkinsNotLoggedInCard();
-    final java = _me!.javaAccounts;
-    final bedrock = _me!.bedrockAccounts;
-    final totalCards = java.length + bedrock.length;
-    if (totalCards == 0) return const SkinsNoAccountsCard();
-    return _skinGrid(
-      isDesktop: isDesktop,
-      items: List.generate(totalCards, (i) {
-        if (i < java.length) {
-          return JavaSkinCard(
-            username: java[i].javaUsername,
-            javaUuid: java[i].javaUuid,
-            badge: l.labelJava,
-            badgeColor: const Color(0xFF42A5F5),
-            onEdit: _openEditor,
-          );
-        }
-        final acc = bedrock[i - java.length];
-        return BedrockSkinCard(
-          gamertag: acc.xboxGamertag ?? acc.xboxXuid,
-          xuid: acc.xboxXuid,
-          onEdit: _openEditor,
-        );
-      }),
-    );
-  }
-
 
   Widget _sectionHeader(String label, {int? count, FaIconData? icon, Color? iconColor}) {
     return Row(
