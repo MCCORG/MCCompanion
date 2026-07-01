@@ -1700,7 +1700,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get feedbackDescHintFeature => 'Eleza unachotaka na kwa nini itakuwa ya manufaa.';
 
   @override
-  String get feedbackEmailLabel => 'Barua pepe (si lazima)';
+  String get feedbackEmailLabel => 'Barua pepe';
 
   @override
   String get feedbackEmailHint => 'Ili tuweze kukuwasiliana';
@@ -1737,6 +1737,9 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get feedbackDescTooShort => 'Maelezo lazima yawe na angalau herufi 10.';
+
+  @override
+  String get feedbackEmailInvalid => 'Tafadhali ingiza anwani ya barua pepe halali.';
 
   @override
   String get feedbackSubmitFailed => 'Imeshindwa kutuma. Tafadhali jaribu tena.';

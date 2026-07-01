@@ -1874,7 +1874,7 @@
   "@feedbackDescHintFeature": {
     "description": "Hint in description field when type is feature"
   },
-  "feedbackEmailLabel": "Email (optional)",
+  "feedbackEmailLabel": "Email",
   "@feedbackEmailLabel": {
     "description": "Label above email field in feedback form"
   },
@@ -1925,6 +1925,10 @@
   "feedbackDescTooShort": "Description must be at least 10 characters.",
   "@feedbackDescTooShort": {
     "description": "Validation error when description is too short"
+  },
+  "feedbackEmailInvalid": "Please enter a valid email address.",
+  "@feedbackEmailInvalid": {
+    "description": "Validation error when email is missing or invalid"
   },
   "feedbackSubmitFailed": "Failed to submit. Please try again.",
   "@feedbackSubmitFailed": {

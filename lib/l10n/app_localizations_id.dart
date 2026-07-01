@@ -1700,7 +1700,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get feedbackDescHintFeature => 'Jelaskan apa yang kamu inginkan dan mengapa itu berguna.';
 
   @override
-  String get feedbackEmailLabel => 'Email (opsional)';
+  String get feedbackEmailLabel => 'Email';
 
   @override
   String get feedbackEmailHint => 'Agar kami bisa menghubungi kamu';
@@ -1737,6 +1737,9 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get feedbackDescTooShort => 'Deskripsi harus minimal 10 karakter.';
+
+  @override
+  String get feedbackEmailInvalid => 'Harap masukkan alamat email yang valid.';
 
   @override
   String get feedbackSubmitFailed => 'Gagal mengirim. Coba lagi.';

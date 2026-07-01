@@ -1700,7 +1700,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get feedbackDescHintFeature => 'Explique ce que tu voudrais et pourquoi ce serait utile.';
 
   @override
-  String get feedbackEmailLabel => 'E-mail (facultatif)';
+  String get feedbackEmailLabel => 'E-mail';
 
   @override
   String get feedbackEmailHint => 'Pour qu\'on puisse te recontacter';
@@ -1737,6 +1737,9 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get feedbackDescTooShort => 'La description doit comporter au moins 10 caractères.';
+
+  @override
+  String get feedbackEmailInvalid => 'Veuillez saisir une adresse e-mail valide.';
 
   @override
   String get feedbackSubmitFailed => 'Échec de l\'envoi. Veuillez réessayer.';

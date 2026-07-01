@@ -1700,7 +1700,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get feedbackDescHintFeature => 'بتائیں کہ آپ کیا چاہتے ہیں اور یہ کیوں مفید ہوگا۔';
 
   @override
-  String get feedbackEmailLabel => 'ای میل (اختیاری)';
+  String get feedbackEmailLabel => 'ای میل';
 
   @override
   String get feedbackEmailHint => 'تاکہ ہم آپ سے رابطہ کر سکیں';
@@ -1737,6 +1737,9 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get feedbackDescTooShort => 'تفصیل کم از کم 10 حروف کی ہونی چاہیے۔';
+
+  @override
+  String get feedbackEmailInvalid => 'براہ کرم ایک درست ای میل پتہ درج کریں۔';
 
   @override
   String get feedbackSubmitFailed => 'جمع کرنے میں ناکامی۔ دوبارہ کوشش کریں۔';

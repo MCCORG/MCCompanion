@@ -1573,7 +1573,7 @@
   "feedbackDescribeIdea": "صف فكرتك",
   "feedbackDescHintBug": "صف الخطأ — ماذا فعلت، وماذا توقعت، وماذا حدث بدلاً من ذلك؟",
   "feedbackDescHintFeature": "اشرح ما تريده ولماذا سيكون مفيدًا.",
-  "feedbackEmailLabel": "البريد الإلكتروني (اختياري)",
+  "feedbackEmailLabel": "البريد الإلكتروني",
   "feedbackEmailHint": "حتى نتمكن من التواصل معك",
   "feedbackEmailNote": "لن يُشارك بريدك الإلكتروني علنًا أبدًا.",
   "feedbackSubmitBug": "إرسال تقرير الخطأ",
@@ -1586,6 +1586,10 @@
   "feedbackBackToApp": "العودة إلى التطبيق",
   "feedbackTitleTooShort": "يجب أن يحتوي العنوان على 5 أحرف على الأقل.",
   "feedbackDescTooShort": "يجب أن يحتوي الوصف على 10 أحرف على الأقل.",
+  "feedbackEmailInvalid": "يرجى إدخال عنوان بريد إلكتروني صالح.",
+  "@feedbackEmailInvalid": {
+    "description": "Validation error when email is missing or invalid"
+  },
   "feedbackSubmitFailed": "فشل الإرسال. يرجى المحاولة مرة أخرى.",
   "feedbackTileTitle": "الإبلاغ عن خطأ أو اقتراح ميزة",
   "feedbackTileSubtitle": "ساعدنا في تحسين MCCompanion",

@@ -3360,7 +3360,7 @@ abstract class AppLocalizations {
   /// Label above email field in feedback form
   ///
   /// In en, this message translates to:
-  /// **'Email (optional)'**
+  /// **'Email'**
   String get feedbackEmailLabel;
 
   /// Hint text for email field
@@ -3434,6 +3434,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Description must be at least 10 characters.'**
   String get feedbackDescTooShort;
+
+  /// Validation error when email is missing or invalid
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email address.'**
+  String get feedbackEmailInvalid;
 
   /// Error toast when submit fails
   ///

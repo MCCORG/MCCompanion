@@ -62,13 +62,19 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
       return;
     }
 
+    final email = _emailCtrl.text.trim();
+    if (email.isEmpty || !RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(email)) {
+      AppToast.show(context, message: l.feedbackEmailInvalid, icon: Icons.warning_rounded, color: AppTheme.warning);
+      return;
+    }
+
     setState(() => _submitting = true);
 
     final result = await FeedbackService.submit(
       type: _isBug ? 'bug' : 'feature',
       title: title,
       description: desc,
-      email: _emailCtrl.text.trim().isEmpty ? null : _emailCtrl.text.trim(),
+      email: email,
       appVersion: _appVersion,
     );
 
@@ -310,7 +316,7 @@ class _FormView extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            _Label(l.feedbackEmailLabel),
+            _Label(l.feedbackEmailLabel, required: true),
             const SizedBox(height: 8),
             TextField(
               controller: emailCtrl,

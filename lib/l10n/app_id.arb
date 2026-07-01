@@ -1569,7 +1569,7 @@
   "feedbackDescribeIdea": "Jelaskan ide kamu",
   "feedbackDescHintBug": "Jelaskan bug-nya — apa yang kamu lakukan, apa yang kamu harapkan, dan apa yang terjadi?",
   "feedbackDescHintFeature": "Jelaskan apa yang kamu inginkan dan mengapa itu berguna.",
-  "feedbackEmailLabel": "Email (opsional)",
+  "feedbackEmailLabel": "Email",
   "feedbackEmailHint": "Agar kami bisa menghubungi kamu",
   "feedbackEmailNote": "Email kamu tidak akan pernah dibagikan secara publik.",
   "feedbackSubmitBug": "Kirim Laporan Bug",
@@ -1582,6 +1582,10 @@
   "feedbackBackToApp": "Kembali ke aplikasi",
   "feedbackTitleTooShort": "Judul harus minimal 5 karakter.",
   "feedbackDescTooShort": "Deskripsi harus minimal 10 karakter.",
+  "feedbackEmailInvalid": "Harap masukkan alamat email yang valid.",
+  "@feedbackEmailInvalid": {
+    "description": "Validation error when email is missing or invalid"
+  },
   "feedbackSubmitFailed": "Gagal mengirim. Coba lagi.",
   "feedbackTileTitle": "Laporkan bug atau sarankan fitur",
   "feedbackTileSubtitle": "Bantu kami meningkatkan MCCompanion",

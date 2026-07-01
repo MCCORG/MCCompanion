@@ -1573,7 +1573,7 @@
   "feedbackDescribeIdea": "アイデアを説明してください",
   "feedbackDescHintBug": "バグの詳細を説明してください — 何をしたか、何を期待したか、実際に何が起きたか",
   "feedbackDescHintFeature": "何を望んでいるか、なぜ役立つかを説明してください。",
-  "feedbackEmailLabel": "メール（任意）",
+  "feedbackEmailLabel": "メールアドレス",
   "feedbackEmailHint": "ご連絡できるよう",
   "feedbackEmailNote": "メールアドレスが公開されることはありません。",
   "feedbackSubmitBug": "バグ報告を送信",
@@ -1586,6 +1586,10 @@
   "feedbackBackToApp": "アプリに戻る",
   "feedbackTitleTooShort": "タイトルは5文字以上必要です。",
   "feedbackDescTooShort": "説明は10文字以上必要です。",
+  "feedbackEmailInvalid": "有効なメールアドレスを入力してください。",
+  "@feedbackEmailInvalid": {
+    "description": "Validation error when email is missing or invalid"
+  },
   "feedbackSubmitFailed": "送信に失敗しました。もう一度お試しください。",
   "feedbackTileTitle": "バグを報告したり機能を提案したりする",
   "feedbackTileSubtitle": "MCCompanionの改善にご協力ください",

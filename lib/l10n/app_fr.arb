@@ -1573,7 +1573,7 @@
   "feedbackDescribeIdea": "Décris ton idée",
   "feedbackDescHintBug": "Décris le bug — qu'as-tu fait, qu'attendais-tu et que s'est-il passé à la place ?",
   "feedbackDescHintFeature": "Explique ce que tu voudrais et pourquoi ce serait utile.",
-  "feedbackEmailLabel": "E-mail (facultatif)",
+  "feedbackEmailLabel": "E-mail",
   "feedbackEmailHint": "Pour qu'on puisse te recontacter",
   "feedbackEmailNote": "Ton e-mail ne sera jamais partagé publiquement.",
   "feedbackSubmitBug": "Envoyer le rapport de bug",
@@ -1586,6 +1586,10 @@
   "feedbackBackToApp": "Retour à l'appli",
   "feedbackTitleTooShort": "Le titre doit comporter au moins 5 caractères.",
   "feedbackDescTooShort": "La description doit comporter au moins 10 caractères.",
+  "feedbackEmailInvalid": "Veuillez saisir une adresse e-mail valide.",
+  "@feedbackEmailInvalid": {
+    "description": "Validation error when email is missing or invalid"
+  },
   "feedbackSubmitFailed": "Échec de l'envoi. Veuillez réessayer.",
   "feedbackTileTitle": "Signaler un bug ou suggérer une fonctionnalité",
   "feedbackTileSubtitle": "Aide-nous à améliorer MCCompanion",

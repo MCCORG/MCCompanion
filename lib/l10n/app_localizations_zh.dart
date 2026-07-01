@@ -1700,7 +1700,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get feedbackDescHintFeature => '解释你想要什么以及为什么有用。';
 
   @override
-  String get feedbackEmailLabel => '电子邮件（可选）';
+  String get feedbackEmailLabel => '电子邮件';
 
   @override
   String get feedbackEmailHint => '以便我们与你联系';
@@ -1737,6 +1737,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get feedbackDescTooShort => '描述至少需要 10 个字符。';
+
+  @override
+  String get feedbackEmailInvalid => '请输入有效的电子邮件地址。';
 
   @override
   String get feedbackSubmitFailed => '提交失败，请重试。';

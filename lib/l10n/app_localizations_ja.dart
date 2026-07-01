@@ -1700,7 +1700,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get feedbackDescHintFeature => '何を望んでいるか、なぜ役立つかを説明してください。';
 
   @override
-  String get feedbackEmailLabel => 'メール（任意）';
+  String get feedbackEmailLabel => 'メールアドレス';
 
   @override
   String get feedbackEmailHint => 'ご連絡できるよう';
@@ -1737,6 +1737,9 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get feedbackDescTooShort => '説明は10文字以上必要です。';
+
+  @override
+  String get feedbackEmailInvalid => '有効なメールアドレスを入力してください。';
 
   @override
   String get feedbackSubmitFailed => '送信に失敗しました。もう一度お試しください。';

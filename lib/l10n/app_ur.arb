@@ -1569,7 +1569,7 @@
   "feedbackDescribeIdea": "اپنا خیال بیان کریں",
   "feedbackDescHintBug": "بگ بیان کریں — آپ نے کیا کیا، کیا توقع تھی اور اس کی بجائے کیا ہوا؟",
   "feedbackDescHintFeature": "بتائیں کہ آپ کیا چاہتے ہیں اور یہ کیوں مفید ہوگا۔",
-  "feedbackEmailLabel": "ای میل (اختیاری)",
+  "feedbackEmailLabel": "ای میل",
   "feedbackEmailHint": "تاکہ ہم آپ سے رابطہ کر سکیں",
   "feedbackEmailNote": "آپ کی ای میل کبھی بھی عام نہیں کی جائے گی۔",
   "feedbackSubmitBug": "بگ رپورٹ جمع کریں",
@@ -1582,6 +1582,10 @@
   "feedbackBackToApp": "ایپ پر واپس جائیں",
   "feedbackTitleTooShort": "عنوان کم از کم 5 حروف کا ہونا چاہیے۔",
   "feedbackDescTooShort": "تفصیل کم از کم 10 حروف کی ہونی چاہیے۔",
+  "feedbackEmailInvalid": "براہ کرم ایک درست ای میل پتہ درج کریں۔",
+  "@feedbackEmailInvalid": {
+    "description": "Validation error when email is missing or invalid"
+  },
   "feedbackSubmitFailed": "جمع کرنے میں ناکامی۔ دوبارہ کوشش کریں۔",
   "feedbackTileTitle": "ایک بگ رپورٹ کریں یا فیچر تجویز کریں",
   "feedbackTileSubtitle": "MCCompanion کو بہتر بنانے میں مدد کریں",

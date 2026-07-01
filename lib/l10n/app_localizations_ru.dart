@@ -1700,7 +1700,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get feedbackDescHintFeature => 'Объясните, что вы хотите и почему это было бы полезно.';
 
   @override
-  String get feedbackEmailLabel => 'Электронная почта (необязательно)';
+  String get feedbackEmailLabel => 'Электронная почта';
 
   @override
   String get feedbackEmailHint => 'Чтобы мы могли связаться с вами';
@@ -1737,6 +1737,9 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get feedbackDescTooShort => 'Описание должно содержать не менее 10 символов.';
+
+  @override
+  String get feedbackEmailInvalid => 'Пожалуйста, введите действительный адрес электронной почты.';
 
   @override
   String get feedbackSubmitFailed => 'Не удалось отправить. Попробуйте ещё раз.';

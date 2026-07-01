@@ -1573,7 +1573,7 @@
   "feedbackDescribeIdea": "描述你的想法",
   "feedbackDescHintBug": "描述该错误——你做了什么、你期望什么，以及实际发生了什么？",
   "feedbackDescHintFeature": "解释你想要什么以及为什么有用。",
-  "feedbackEmailLabel": "电子邮件（可选）",
+  "feedbackEmailLabel": "电子邮件",
   "feedbackEmailHint": "以便我们与你联系",
   "feedbackEmailNote": "你的电子邮件永远不会公开分享。",
   "feedbackSubmitBug": "提交错误报告",
@@ -1586,6 +1586,10 @@
   "feedbackBackToApp": "返回应用",
   "feedbackTitleTooShort": "标题至少需要 5 个字符。",
   "feedbackDescTooShort": "描述至少需要 10 个字符。",
+  "feedbackEmailInvalid": "请输入有效的电子邮件地址。",
+  "@feedbackEmailInvalid": {
+    "description": "Validation error when email is missing or invalid"
+  },
   "feedbackSubmitFailed": "提交失败，请重试。",
   "feedbackTileTitle": "报告错误或建议功能",
   "feedbackTileSubtitle": "帮助我们改进 MCCompanion",

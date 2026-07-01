@@ -1700,7 +1700,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get feedbackDescHintFeature => 'Ne istediğini ve neden faydalı olacağını açıkla.';
 
   @override
-  String get feedbackEmailLabel => 'E-posta (isteğe bağlı)';
+  String get feedbackEmailLabel => 'E-posta';
 
   @override
   String get feedbackEmailHint => 'Seninle iletişime geçebilmemiz için';
@@ -1737,6 +1737,9 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get feedbackDescTooShort => 'Açıklama en az 10 karakter olmalıdır.';
+
+  @override
+  String get feedbackEmailInvalid => 'Lütfen geçerli bir e-posta adresi girin.';
 
   @override
   String get feedbackSubmitFailed => 'Gönderilemedi. Lütfen tekrar deneyin.';

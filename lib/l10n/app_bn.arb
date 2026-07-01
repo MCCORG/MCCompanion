@@ -1573,7 +1573,7 @@
   "feedbackDescribeIdea": "আপনার ধারণা বর্ণনা করুন",
   "feedbackDescHintBug": "বাগটি বর্ণনা করুন — আপনি কী করেছিলেন, কী আশা করেছিলেন এবং পরিবর্তে কী হয়েছিল?",
   "feedbackDescHintFeature": "আপনি কী চান এবং কেন এটি উপকারী হবে তা ব্যাখ্যা করুন।",
-  "feedbackEmailLabel": "ইমেইল (ঐচ্ছিক)",
+  "feedbackEmailLabel": "ইমেইল",
   "feedbackEmailHint": "আমরা যোগাযোগ করতে পারি বলে",
   "feedbackEmailNote": "আপনার ইমেইল কখনো প্রকাশ্যে শেয়ার করা হবে না।",
   "feedbackSubmitBug": "বাগ রিপোর্ট জমা দিন",
@@ -1586,6 +1586,10 @@
   "feedbackBackToApp": "অ্যাপে ফিরে যান",
   "feedbackTitleTooShort": "শিরোনাম কমপক্ষে ৫ অক্ষরের হতে হবে।",
   "feedbackDescTooShort": "বিবরণ কমপক্ষে ১০ অক্ষরের হতে হবে।",
+  "feedbackEmailInvalid": "অনুগ্রহ করে একটি বৈধ ইমেইল ঠিকানা দিন।",
+  "@feedbackEmailInvalid": {
+    "description": "Validation error when email is missing or invalid"
+  },
   "feedbackSubmitFailed": "জমা দেওয়া ব্যর্থ হয়েছে। আবার চেষ্টা করুন।",
   "feedbackTileTitle": "একটি বাগ রিপোর্ট করুন বা ফিচার সাজেস্ট করুন",
   "feedbackTileSubtitle": "MCCompanion উন্নত করতে আমাদের সাহায্য করুন",

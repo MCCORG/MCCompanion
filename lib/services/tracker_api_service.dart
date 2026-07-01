@@ -29,13 +29,14 @@ class TrackerApiService {
   TrackerApiService._();
 
   static const String _base = AppConstants.apiBase;
+  static const Duration _timeout = Duration(seconds: 10);
 
   static Future<TrackerData?> getServers() async {
     try {
       final res = await http.get(
         Uri.parse('$_base/api/tracker/servers'),
         headers: await ApiClientBase.headers(),
-      );
+      ).timeout(_timeout);
       if (res.statusCode == 200) {
         final body = jsonDecode(res.body) as Map<String, dynamic>;
         final list = body['servers'] as List<dynamic>;
@@ -61,7 +62,7 @@ class TrackerApiService {
         Uri.parse('$_base/api/tracker/servers'),
         headers: await ApiClientBase.headers(),
         body: jsonEncode({'name': name, 'ip': ip, 'port': port, 'platform': platform}),
-      );
+      ).timeout(_timeout);
       if (res.statusCode == 201) {
         final server = TrackedServer.fromJson(jsonDecode(res.body) as Map<String, dynamic>);
         return (server: server, error: null);
@@ -95,7 +96,7 @@ class TrackerApiService {
         Uri.parse('$_base/api/tracker/servers/$serverId'),
         headers: await ApiClientBase.headers(),
         body: jsonEncode(body),
-      );
+      ).timeout(_timeout);
       if (res.statusCode == 200) {
         return TrackedServer.fromJson(jsonDecode(res.body) as Map<String, dynamic>);
       }
@@ -110,7 +111,7 @@ class TrackerApiService {
       final res = await http.delete(
         Uri.parse('$_base/api/tracker/servers/$serverId'),
         headers: await ApiClientBase.headers(),
-      );
+      ).timeout(_timeout);
       return res.statusCode == 200;
     } catch (_) {
       return false;

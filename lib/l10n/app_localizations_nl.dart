@@ -1700,7 +1700,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get feedbackDescHintFeature => 'Leg uit wat je wilt en waarom het nuttig zou zijn.';
 
   @override
-  String get feedbackEmailLabel => 'E-mail (optioneel)';
+  String get feedbackEmailLabel => 'E-mail';
 
   @override
   String get feedbackEmailHint => 'Zodat we contact met je kunnen opnemen';
@@ -1737,6 +1737,9 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get feedbackDescTooShort => 'Beschrijving moet minimaal 10 tekens zijn.';
+
+  @override
+  String get feedbackEmailInvalid => 'Voer een geldig e-mailadres in.';
 
   @override
   String get feedbackSubmitFailed => 'Indienen mislukt. Probeer het opnieuw.';

@@ -888,7 +888,7 @@
   "feedbackDescribeIdea": "Beschrijf je idee",
   "feedbackDescHintBug": "Beschrijf de bug — wat heb je gedaan, wat verwachtte je, en wat gebeurde er in plaats daarvan?",
   "feedbackDescHintFeature": "Leg uit wat je wilt en waarom het nuttig zou zijn.",
-  "feedbackEmailLabel": "E-mail (optioneel)",
+  "feedbackEmailLabel": "E-mail",
   "feedbackEmailHint": "Zodat we contact met je kunnen opnemen",
   "feedbackEmailNote": "Je e-mail wordt nooit openbaar gedeeld.",
   "feedbackSubmitBug": "Bugmelding indienen",
@@ -901,6 +901,10 @@
   "feedbackBackToApp": "Terug naar app",
   "feedbackTitleTooShort": "Titel moet minimaal 5 tekens zijn.",
   "feedbackDescTooShort": "Beschrijving moet minimaal 10 tekens zijn.",
+  "feedbackEmailInvalid": "Voer een geldig e-mailadres in.",
+  "@feedbackEmailInvalid": {
+    "description": "Validation error when email is missing or invalid"
+  },
   "feedbackSubmitFailed": "Indienen mislukt. Probeer het opnieuw.",
   "feedbackTileTitle": "Meld een bug of stel een functie voor",
   "reportBug": "Feedback",

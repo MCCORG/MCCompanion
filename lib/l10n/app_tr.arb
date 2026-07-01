@@ -1573,7 +1573,7 @@
   "feedbackDescribeIdea": "Fikrinden bahset",
   "feedbackDescHintBug": "Hatayı açıkla — ne yaptın, ne bekliyordun ve bunun yerine ne oldu?",
   "feedbackDescHintFeature": "Ne istediğini ve neden faydalı olacağını açıkla.",
-  "feedbackEmailLabel": "E-posta (isteğe bağlı)",
+  "feedbackEmailLabel": "E-posta",
   "feedbackEmailHint": "Seninle iletişime geçebilmemiz için",
   "feedbackEmailNote": "E-posta adresin hiçbir zaman herkese açık paylaşılmaz.",
   "feedbackSubmitBug": "Hata Raporunu Gönder",
@@ -1586,6 +1586,10 @@
   "feedbackBackToApp": "Uygulamaya geri dön",
   "feedbackTitleTooShort": "Başlık en az 5 karakter olmalıdır.",
   "feedbackDescTooShort": "Açıklama en az 10 karakter olmalıdır.",
+  "feedbackEmailInvalid": "Lütfen geçerli bir e-posta adresi girin.",
+  "@feedbackEmailInvalid": {
+    "description": "Validation error when email is missing or invalid"
+  },
   "feedbackSubmitFailed": "Gönderilemedi. Lütfen tekrar deneyin.",
   "feedbackTileTitle": "Hata bildirin veya özellik önerin",
   "feedbackTileSubtitle": "MCCompanion'ı geliştirmemize yardım edin",
