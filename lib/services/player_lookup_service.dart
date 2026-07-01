@@ -1,20 +1,12 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/player_lookup_model.dart';
-import 'auth_service.dart';
+import 'api_client_base.dart';
 import '../constants/app_constants.dart';
 
 class PlayerLookupService {
   static const String _base = AppConstants.apiBase;
   static const Duration _timeout = Duration(seconds: 12);
-
-  static Future<Map<String, String>> _headers() async {
-    final token = await AuthService.getIdToken();
-    return {
-      'Content-Type': 'application/json',
-      if (token != null) 'Authorization': 'Bearer $token',
-    };
-  }
 
   static Future<({JavaProfile? profile, String? error})> lookupJava(
     String identifier,
@@ -25,7 +17,7 @@ class PlayerLookupService {
             Uri.parse(
               '$_base/api/lookup/java/${Uri.encodeComponent(identifier)}',
             ),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
       if (res.statusCode == 404) {
@@ -54,7 +46,7 @@ class PlayerLookupService {
             Uri.parse(
               '$_base/api/lookup/bedrock-java/${Uri.encodeComponent(identifier)}',
             ),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
       if (res.statusCode == 404) {
@@ -89,7 +81,7 @@ class PlayerLookupService {
             Uri.parse(
               '$_base/api/lookup/bedrock/${Uri.encodeComponent(identifier)}',
             ),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
       if (res.statusCode == 404) {

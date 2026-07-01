@@ -1,20 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'auth_service.dart';
+import 'api_client_base.dart';
 import '../constants/app_constants.dart';
 
 class FeedbackService {
   static const String _base = AppConstants.apiBase;
   static const Duration _timeout = Duration(seconds: 10);
-
-  static Future<Map<String, String>> _headers() async {
-    final token = await AuthService.getIdToken();
-    return {
-      'Content-Type': 'application/json',
-      if (token != null) 'Authorization': 'Bearer $token',
-    };
-  }
 
   static String get _platform {
     if (Platform.isAndroid) return 'android';
@@ -35,7 +27,7 @@ class FeedbackService {
       final res = await http
           .post(
             Uri.parse('$_base/api/feedback'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
             body: jsonEncode({
               'type': type,
               'title': title,

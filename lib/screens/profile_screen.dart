@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../services/auth_service.dart';
+import '../services/push_notification_service.dart';
 import '../services/user_service.dart';
 import '../services/message_service.dart';
 import '../models/user_model.dart';
@@ -133,10 +134,12 @@ class ProfileScreenState extends State<ProfileScreen>
     });
     _checking = false;
     if (justLoggedIn) widget.onLoggedIn?.call();
-    _fetchFriends();
-    _fetchRequests();
-    _refreshUnread();
-    _refreshNotifCount();
+    unawaited(Future.wait([
+      _fetchFriends(),
+      _fetchRequests(),
+      _refreshUnread(),
+      _refreshNotifCount(),
+    ]));
   }
 
   Future<void> _fetchMe() async {
@@ -309,7 +312,7 @@ class ProfileScreenState extends State<ProfileScreen>
         ProfileTab(
           me: _me,
           onRefresh: () async => _fetchMe(),
-          onSignOut: () async { await AuthService.signOut(); },
+          onSignOut: () async { await PushNotificationService.dispose(); await AuthService.signOut(); },
           onDeleteAccount: _deleteAccount,
         ),
         ProfileFriendsTab(

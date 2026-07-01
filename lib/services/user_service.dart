@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'auth_service.dart';
+import 'api_client_base.dart';
 import '../constants/app_constants.dart';
 import '../models/user_model.dart';
 
@@ -9,18 +10,13 @@ class UserService {
   static const String _base = AppConstants.apiBase;
   static const Duration _timeout = Duration(seconds: 8);
 
-  static Future<Map<String, String>> _headers() async {
-    final token = await AuthService.getIdToken();
-    return {
-      'Content-Type': 'application/json',
-      if (token != null) 'Authorization': 'Bearer $token',
-    };
-  }
-
   static Future<UserModel?> getMe() async {
     try {
       final res = await http
-          .get(Uri.parse('$_base/api/users/me'), headers: await _headers())
+          .get(
+            Uri.parse('$_base/api/users/me'),
+            headers: await ApiClientBase.headers(),
+          )
           .timeout(_timeout);
       if (res.statusCode == 200) {
         return UserModel.fromJson(
@@ -28,7 +24,9 @@ class UserService {
               as Map<String, dynamic>,
         );
       }
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('[UserService.getMe] $e');
+    }
     return null;
   }
 
@@ -40,7 +38,7 @@ class UserService {
       final res = await http
           .post(
             Uri.parse('$_base/api/users/register'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
             body: jsonEncode({
               'username': username,
               if (displayName?.isNotEmpty == true) 'displayName': displayName,
@@ -55,7 +53,8 @@ class UserService {
         );
       }
       return (user: null, error: body['error'] as String?);
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[UserService.register] $e');
       return (user: null, error: 'network_error');
     }
   }
@@ -70,7 +69,7 @@ class UserService {
       final res = await http
           .patch(
             Uri.parse('$_base/api/users/me'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
             body: jsonEncode({
               if (displayName != null) 'displayName': displayName,
               if (avatarUrl != null) 'avatarUrl': avatarUrl,
@@ -85,11 +84,15 @@ class UserService {
               as Map<String, dynamic>,
         );
       }
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('[UserService.updateMe] $e');
+    }
     return null;
   }
 
-  static Future<({UserModel? user, String? error})> uploadAvatar(File file) async {
+  static Future<({UserModel? user, String? error})> uploadAvatar(
+    File file,
+  ) async {
     try {
       final ext = file.path.split('.').last.toLowerCase();
       final mime = switch (ext) {
@@ -99,11 +102,13 @@ class UserService {
         _ => 'image/jpeg',
       };
 
-      final presignRes = await http.post(
-        Uri.parse('$_base/api/users/me/avatar/presign'),
-        headers: await _headers(),
-        body: jsonEncode({'mime': mime}),
-      ).timeout(_timeout);
+      final presignRes = await http
+          .post(
+            Uri.parse('$_base/api/users/me/avatar/presign'),
+            headers: await ApiClientBase.headers(),
+            body: jsonEncode({'mime': mime}),
+          )
+          .timeout(_timeout);
       if (presignRes.statusCode != 200) {
         final b = jsonDecode(presignRes.body) as Map<String, dynamic>;
         return (user: null, error: b['message'] as String? ?? 'presign_failed');
@@ -113,26 +118,37 @@ class UserService {
       final r2Key = presignBody['r2Key'] as String;
 
       final bytes = await file.readAsBytes();
-      final putRes = await http.put(
-        Uri.parse(uploadUrl),
-        headers: {'Content-Type': mime},
-        body: bytes,
-      ).timeout(const Duration(seconds: 60));
+      final putRes = await http
+          .put(
+            Uri.parse(uploadUrl),
+            headers: {'Content-Type': mime},
+            body: bytes,
+          )
+          .timeout(const Duration(seconds: 60));
       if (putRes.statusCode != 200) {
         return (user: null, error: 'upload_failed');
       }
 
-      final confirmRes = await http.post(
-        Uri.parse('$_base/api/users/me/avatar/confirm'),
-        headers: await _headers(),
-        body: jsonEncode({'r2Key': r2Key}),
-      ).timeout(_timeout);
+      final confirmRes = await http
+          .post(
+            Uri.parse('$_base/api/users/me/avatar/confirm'),
+            headers: await ApiClientBase.headers(),
+            body: jsonEncode({'r2Key': r2Key}),
+          )
+          .timeout(_timeout);
       final confirmBody = jsonDecode(confirmRes.body) as Map<String, dynamic>;
       if (confirmRes.statusCode == 200) {
-        return (user: UserModel.fromJson(confirmBody['user'] as Map<String, dynamic>), error: null);
+        return (
+          user: UserModel.fromJson(confirmBody['user'] as Map<String, dynamic>),
+          error: null,
+        );
       }
-      return (user: null, error: confirmBody['message'] as String? ?? 'confirm_failed');
-    } catch (_) {
+      return (
+        user: null,
+        error: confirmBody['message'] as String? ?? 'confirm_failed',
+      );
+    } catch (e) {
+      debugPrint('[UserService.uploadAvatar] $e');
       return (user: null, error: 'network_error');
     }
   }
@@ -140,14 +156,20 @@ class UserService {
   static Future<UserModel?> removeAvatar() async {
     try {
       final res = await http
-          .delete(Uri.parse('$_base/api/users/me/avatar'), headers: await _headers())
+          .delete(
+            Uri.parse('$_base/api/users/me/avatar'),
+            headers: await ApiClientBase.headers(),
+          )
           .timeout(_timeout);
       if (res.statusCode == 200) {
         return UserModel.fromJson(
-          (jsonDecode(res.body) as Map<String, dynamic>)['user'] as Map<String, dynamic>,
+          (jsonDecode(res.body) as Map<String, dynamic>)['user']
+              as Map<String, dynamic>,
         );
       }
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('[UserService.removeAvatar] $e');
+    }
     return null;
   }
 
@@ -159,7 +181,7 @@ class UserService {
       final res = await http
           .post(
             Uri.parse('$_base/api/users/me/xbox/start'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(const Duration(seconds: 35));
       final body = jsonDecode(res.body) as Map<String, dynamic>;
@@ -177,7 +199,8 @@ class UserService {
         expiresIn: null,
         error: body['error'] as String?,
       );
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[UserService.startXboxLink] $e');
       return (
         userCode: null,
         verificationUri: null,
@@ -193,7 +216,7 @@ class UserService {
       final res = await http
           .get(
             Uri.parse('$_base/api/users/me/xbox/status'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
       final body = jsonDecode(res.body) as Map<String, dynamic>;
@@ -202,7 +225,8 @@ class UserService {
         gamertag: body['gamertag'] as String?,
         error: body['error'] as String?,
       );
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[UserService.getXboxStatus] $e');
       return (status: 'error', gamertag: null, error: 'network_error');
     }
   }
@@ -212,11 +236,12 @@ class UserService {
       final res = await http
           .delete(
             Uri.parse('$_base/api/users/me/xbox'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
       return res.statusCode == 200;
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[UserService.unlinkXbox] $e');
       return false;
     }
   }
@@ -226,11 +251,12 @@ class UserService {
       final res = await http
           .delete(
             Uri.parse('$_base/api/users/me/xbox/${Uri.encodeComponent(xuid)}'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
       return res.statusCode == 200;
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[UserService.unlinkBedrockAccount] $e');
       return false;
     }
   }
@@ -243,7 +269,7 @@ class UserService {
       final res = await http
           .post(
             Uri.parse('$_base/api/users/me/java/start'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(const Duration(seconds: 35));
       final body = jsonDecode(res.body) as Map<String, dynamic>;
@@ -261,7 +287,8 @@ class UserService {
         expiresIn: null,
         error: body['error'] as String?,
       );
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[UserService.startJavaLink] $e');
       return (
         userCode: null,
         verificationUri: null,
@@ -279,7 +306,7 @@ class UserService {
       final res = await http
           .get(
             Uri.parse('$_base/api/users/me/java/status'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
       final body = jsonDecode(res.body) as Map<String, dynamic>;
@@ -289,7 +316,8 @@ class UserService {
         javaUuid: body['javaUuid'] as String?,
         error: body['error'] as String?,
       );
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[UserService.getJavaStatus] $e');
       return (
         status: 'error',
         javaUsername: null,
@@ -304,11 +332,12 @@ class UserService {
       final res = await http
           .delete(
             Uri.parse('$_base/api/users/me/java'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
       return res.statusCode == 200;
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[UserService.unlinkJava] $e');
       return false;
     }
   }
@@ -320,11 +349,12 @@ class UserService {
             Uri.parse(
               '$_base/api/users/me/java/${Uri.encodeComponent(javaUuid)}',
             ),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
       return res.statusCode == 200;
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[UserService.unlinkJavaAccount] $e');
       return false;
     }
   }
@@ -334,7 +364,7 @@ class UserService {
       final res = await http
           .get(
             Uri.parse('$_base/api/users/me/friends'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
       if (res.statusCode == 200) {
@@ -345,7 +375,9 @@ class UserService {
             .map((e) => FriendModel.fromJson(e as Map<String, dynamic>))
             .toList();
       }
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('[UserService.getFriends] $e');
+    }
     return [];
   }
 
@@ -354,7 +386,7 @@ class UserService {
       final res = await http
           .get(
             Uri.parse('$_base/api/users/me/friend-requests'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
       if (res.statusCode == 200) {
@@ -365,7 +397,9 @@ class UserService {
             .map((e) => FriendRequest.fromJson(e as Map<String, dynamic>))
             .toList();
       }
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('[UserService.getFriendRequests] $e');
+    }
     return [];
   }
 
@@ -374,12 +408,13 @@ class UserService {
       final res = await http
           .post(
             Uri.parse('$_base/api/users/me/friends/$username'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
       if (res.statusCode == 201) return null;
       return (jsonDecode(res.body) as Map<String, dynamic>)['error'] as String?;
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[UserService.sendFriendRequest] $e');
       return 'network_error';
     }
   }
@@ -389,11 +424,12 @@ class UserService {
       final res = await http
           .patch(
             Uri.parse('$_base/api/users/me/friends/$username/accept'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
       return res.statusCode == 200;
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[UserService.acceptFriendRequest] $e');
       return false;
     }
   }
@@ -403,11 +439,12 @@ class UserService {
       final res = await http
           .delete(
             Uri.parse('$_base/api/users/me/friends/$username'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
       return res.statusCode == 200;
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[UserService.removeFriend] $e');
       return false;
     }
   }
@@ -417,7 +454,7 @@ class UserService {
       final res = await http
           .get(
             Uri.parse('$_base/api/users/$username'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
       if (res.statusCode == 200) {
@@ -426,7 +463,9 @@ class UserService {
               as Map<String, dynamic>,
         );
       }
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('[UserService.getProfile] $e');
+    }
     return null;
   }
 
@@ -435,7 +474,7 @@ class UserService {
       final res = await http
           .get(
             Uri.parse('$_base/api/users/me/friendship/$username'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
       if (res.statusCode == 200) {
@@ -443,8 +482,22 @@ class UserService {
                 as String? ??
             'none';
       }
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('[UserService.getFriendshipStatus] $e');
+    }
     return 'none';
+  }
+
+  static Future<({UserModel? user, String friendshipStatus})>
+  getProfileWithFriendship(String username) async {
+    final results = await Future.wait([
+      getProfile(username),
+      getFriendshipStatus(username),
+    ]);
+    return (
+      user: results[0] as UserModel?,
+      friendshipStatus: results[1] as String,
+    );
   }
 
   static Future<List<UserModel>> searchUsers(String query) async {
@@ -453,7 +506,7 @@ class UserService {
         '$_base/api/users/search',
       ).replace(queryParameters: {'q': query});
       final res = await http
-          .get(uri, headers: await _headers())
+          .get(uri, headers: await ApiClientBase.headers())
           .timeout(_timeout);
       if (res.statusCode == 200) {
         final list =
@@ -463,17 +516,23 @@ class UserService {
             .map((e) => UserModel.fromJson(e as Map<String, dynamic>))
             .toList();
       }
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('[UserService.searchUsers] $e');
+    }
     return [];
   }
 
   static Future<bool> deleteAccount() async {
     try {
       final res = await http
-          .delete(Uri.parse('$_base/api/users/me'), headers: await _headers())
+          .delete(
+            Uri.parse('$_base/api/users/me'),
+            headers: await ApiClientBase.headers(),
+          )
           .timeout(_timeout);
       return res.statusCode == 200;
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[UserService.deleteAccount] $e');
       return false;
     }
   }
@@ -483,11 +542,12 @@ class UserService {
       final res = await http
           .post(
             Uri.parse('$_base/api/users/me/block/$username'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
       return res.statusCode == 200;
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[UserService.blockUser] $e');
       return false;
     }
   }
@@ -497,11 +557,13 @@ class UserService {
       await http
           .post(
             Uri.parse('$_base/api/users/me/fcm-token'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
             body: jsonEncode({'token': token}),
           )
           .timeout(_timeout);
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('[UserService.registerFcmToken] $e');
+    }
   }
 
   static Future<void> unregisterFcmToken(String token) async {
@@ -509,10 +571,12 @@ class UserService {
       await http
           .delete(
             Uri.parse('$_base/api/users/me/fcm-token'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
             body: jsonEncode({'token': token}),
           )
           .timeout(_timeout);
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('[UserService.unregisterFcmToken] $e');
+    }
   }
 }

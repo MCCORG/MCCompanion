@@ -1,3 +1,5 @@
+import 'displayable_name.dart';
+
 class JavaAccount {
   final String javaUsername;
   final String javaUuid;
@@ -22,7 +24,7 @@ class BedrockAccount {
   );
 }
 
-class UserModel {
+class UserModel with DisplayableName {
   final String username;
   final String? displayName;
   final String? avatarUrl;
@@ -77,17 +79,6 @@ class UserModel {
     );
   }
 
-  String get displayLabel =>
-      displayName?.isNotEmpty == true ? displayName! : username;
-
-  String get initials {
-    final label = displayLabel;
-    final parts = label.trim().split(RegExp(r'\s+'));
-    if (parts.length >= 2) {
-      return '${parts[0][0]}${parts[1][0]}'.toUpperCase();
-    }
-    return label.substring(0, label.length.clamp(0, 2)).toUpperCase();
-  }
 }
 
 class FriendSession {
@@ -108,7 +99,7 @@ class FriendSession {
   );
 }
 
-class FriendModel {
+class FriendModel with DisplayableName {
   final String firebaseUid;
   final String username;
   final String? displayName;
@@ -139,17 +130,6 @@ class FriendModel {
     lastSeenAt: json['lastSeenAt'] as String?,
   );
 
-  String get displayLabel =>
-      displayName?.isNotEmpty == true ? displayName! : username;
-
-  String get initials {
-    final label = displayLabel;
-    final parts = label.trim().split(RegExp(r'\s+'));
-    if (parts.length >= 2) {
-      return '${parts[0][0]}${parts[1][0]}'.toUpperCase();
-    }
-    return label.substring(0, label.length.clamp(0, 2)).toUpperCase();
-  }
 }
 
 class FriendRequest {

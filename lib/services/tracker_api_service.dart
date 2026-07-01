@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../constants/app_constants.dart';
-import '../services/auth_service.dart';
+import '../services/api_client_base.dart';
 import '../models/tracked_server_model.dart';
 
 class TrackerSlots {
@@ -30,19 +30,11 @@ class TrackerApiService {
 
   static const String _base = AppConstants.apiBase;
 
-  static Future<Map<String, String>> _headers() async {
-    final token = await AuthService.getIdToken();
-    return {
-      'Content-Type': 'application/json',
-      if (token != null) 'Authorization': 'Bearer $token',
-    };
-  }
-
   static Future<TrackerData?> getServers() async {
     try {
       final res = await http.get(
         Uri.parse('$_base/api/tracker/servers'),
-        headers: await _headers(),
+        headers: await ApiClientBase.headers(),
       );
       if (res.statusCode == 200) {
         final body = jsonDecode(res.body) as Map<String, dynamic>;
@@ -67,7 +59,7 @@ class TrackerApiService {
     try {
       final res = await http.post(
         Uri.parse('$_base/api/tracker/servers'),
-        headers: await _headers(),
+        headers: await ApiClientBase.headers(),
         body: jsonEncode({'name': name, 'ip': ip, 'port': port, 'platform': platform}),
       );
       if (res.statusCode == 201) {
@@ -101,7 +93,7 @@ class TrackerApiService {
 
       final res = await http.patch(
         Uri.parse('$_base/api/tracker/servers/$serverId'),
-        headers: await _headers(),
+        headers: await ApiClientBase.headers(),
         body: jsonEncode(body),
       );
       if (res.statusCode == 200) {
@@ -117,7 +109,7 @@ class TrackerApiService {
     try {
       final res = await http.delete(
         Uri.parse('$_base/api/tracker/servers/$serverId'),
-        headers: await _headers(),
+        headers: await ApiClientBase.headers(),
       );
       return res.statusCode == 200;
     } catch (_) {

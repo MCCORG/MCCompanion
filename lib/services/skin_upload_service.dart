@@ -1,27 +1,19 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'auth_service.dart';
+import 'api_client_base.dart';
 import '../constants/app_constants.dart';
 
 class SkinUploadService {
   static const String _base = AppConstants.apiBase;
   static const Duration _timeout = Duration(seconds: 15);
 
-  static Future<Map<String, String>> _headers() async {
-    final token = await AuthService.getIdToken();
-    return {
-      'Content-Type': 'application/json',
-      if (token != null) 'Authorization': 'Bearer $token',
-    };
-  }
-
   static Future<String> uploadSkin({
     required String skinId,
     required String name,
     required String filePath,
   }) async {
-    final headers = await _headers();
+    final headers = await ApiClientBase.headers();
 
     final presignRes = await http
         .post(
@@ -72,7 +64,7 @@ class SkinUploadService {
 
   static Future<List<Map<String, dynamic>>> getMySkins() async {
     final res = await http
-        .get(Uri.parse('$_base/api/skins/me'), headers: await _headers())
+        .get(Uri.parse('$_base/api/skins/me'), headers: await ApiClientBase.headers())
         .timeout(_timeout);
     if (res.statusCode == 200) {
       final body = jsonDecode(res.body) as Map<String, dynamic>;
@@ -85,7 +77,7 @@ class SkinUploadService {
     await http
         .delete(
           Uri.parse('$_base/api/skins/me/$skinId'),
-          headers: await _headers(),
+          headers: await ApiClientBase.headers(),
         )
         .timeout(_timeout);
   }

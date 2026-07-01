@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import '../constants/app_constants.dart';
 import '../models/bot_model.dart';
@@ -45,7 +46,8 @@ class BotService {
         return (a.friendCount ?? 0).compareTo(b.friendCount ?? 0);
       });
       return bots;
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[BotService._fetchFromNode] $e');
       return [];
     }
   }

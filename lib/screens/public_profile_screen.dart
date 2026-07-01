@@ -50,14 +50,11 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
 
   Future<void> _load() async {
     setState(() => _loading = true);
-    final results = await Future.wait([
-      UserService.getProfile(widget.username),
-      UserService.getFriendshipStatus(widget.username),
-    ]);
+    final result = await UserService.getProfileWithFriendship(widget.username);
     if (!mounted) return;
     setState(() {
-      _user = results[0] as UserModel?;
-      _friendStatus = results[1] as String;
+      _user = result.user;
+      _friendStatus = result.friendshipStatus;
       _loading = false;
     });
   }

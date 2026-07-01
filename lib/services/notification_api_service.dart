@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'auth_service.dart';
+import 'api_client_base.dart';
 import '../constants/app_constants.dart';
 
 class AppNotification {
@@ -43,21 +43,14 @@ class NotificationApiService {
   static const String _base = AppConstants.apiBase;
   static const Duration _timeout = Duration(seconds: 8);
 
-  static Future<Map<String, String>> _headers() async {
-    final token = await AuthService.getIdToken();
-    return {
-      'Content-Type': 'application/json',
-      if (token != null) 'Authorization': 'Bearer $token',
-    };
-  }
 
   static Future<({List<AppNotification> notifications, int unreadCount})>
       getNotifications({int limit = 30}) async {
     try {
       final res = await http
           .get(
-            Uri.parse('$_base/api/notifications?limit=$limit'),
-            headers: await _headers(),
+            Uri.parse('$_base/api/notifications').replace(queryParameters: {'limit': '$limit'}),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
       if (res.statusCode == 200) {
@@ -80,7 +73,7 @@ class NotificationApiService {
       final res = await http
           .post(
             Uri.parse('$_base/api/notifications/read'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
             body: jsonEncode({'ids': ids}),
           )
           .timeout(_timeout);
@@ -95,7 +88,7 @@ class NotificationApiService {
       final res = await http
           .get(
             Uri.parse('$_base/api/notifications/prefs'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
       if (res.statusCode == 200) {
@@ -113,7 +106,7 @@ class NotificationApiService {
       final res = await http
           .patch(
             Uri.parse('$_base/api/notifications/prefs'),
-            headers: await _headers(),
+            headers: await ApiClientBase.headers(),
             body: jsonEncode(prefs),
           )
           .timeout(_timeout);

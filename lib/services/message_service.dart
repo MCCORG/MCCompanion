@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_socket_channel/web_socket_channel.dart';
 import '../models/message_model.dart';
 import 'auth_service.dart';
+import 'api_client_base.dart';
 import '../constants/app_constants.dart';
 import 'relay_service.dart';
 
@@ -23,14 +25,6 @@ class MessageService {
 
   static bool _connected = false;
   static Timer? _reconnectTimer;
-
-  static Future<Map<String, String>> _headers() async {
-    final token = await AuthService.getIdToken();
-    return {
-      'Content-Type': 'application/json',
-      if (token != null) 'Authorization': 'Bearer $token',
-    };
-  }
 
   static Future<void> connect() async {
     if (_connected) return;
@@ -61,12 +55,15 @@ class MessageService {
             } else if (type == 'ping') {
               _channel?.sink.add(jsonEncode({'type': 'pong'}));
             }
-          } catch (_) {}
+          } catch (e) {
+            debugPrint('[MessageService.connect] message parse error: $e');
+          }
         },
         onDone: _scheduleReconnect,
         onError: (_) => _scheduleReconnect(),
       );
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[MessageService.connect] $e');
       _connected = false;
       _scheduleReconnect();
     }
@@ -80,8 +77,6 @@ class MessageService {
     _reconnectTimer = Timer(const Duration(seconds: 5), connect);
   }
 
-  /// Call this when the app returns to foreground to ensure the connection
-  /// is alive (Android kills WebSockets when backgrounded).
   static Future<void> reconnectIfNeeded() async {
     if (!_connected) {
       _reconnectTimer?.cancel();
@@ -101,14 +96,15 @@ class MessageService {
     try {
       final resp = await http.get(
         Uri.parse('$_base/api/messages/conversations'),
-        headers: await _headers(),
+        headers: await ApiClientBase.headers(),
       );
       if (resp.statusCode != 200) return [];
       final data = jsonDecode(resp.body) as Map<String, dynamic>;
       return (data['conversations'] as List)
           .map((e) => ConversationModel.fromJson(e as Map<String, dynamic>))
           .toList();
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[MessageService.getConversations] $e');
       return [];
     }
   }
@@ -121,13 +117,14 @@ class MessageService {
       final uri = Uri.parse(
         '$_base/api/messages/$username',
       ).replace(queryParameters: {if (before != null) 'before': before});
-      final resp = await http.get(uri, headers: await _headers());
+      final resp = await http.get(uri, headers: await ApiClientBase.headers());
       if (resp.statusCode != 200) return [];
       final data = jsonDecode(resp.body) as Map<String, dynamic>;
       return (data['messages'] as List)
           .map((e) => MessageModel.fromJson(e as Map<String, dynamic>))
           .toList();
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[MessageService.getMessages] $e');
       return [];
     }
   }
@@ -139,13 +136,14 @@ class MessageService {
     try {
       final resp = await http.post(
         Uri.parse('$_base/api/messages/$username'),
-        headers: await _headers(),
+        headers: await ApiClientBase.headers(),
         body: jsonEncode({'content': content}),
       );
       if (resp.statusCode != 201) return null;
       final data = jsonDecode(resp.body) as Map<String, dynamic>;
       return MessageModel.fromJson(data['message'] as Map<String, dynamic>);
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[MessageService.sendMessage] $e');
       return null;
     }
   }
@@ -154,8 +152,10 @@ class MessageService {
     try {
       await http.patch(
         Uri.parse('$_base/api/messages/$username/read'),
-        headers: await _headers(),
+        headers: await ApiClientBase.headers(),
       );
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('[MessageService.markRead] $e');
+    }
   }
 }

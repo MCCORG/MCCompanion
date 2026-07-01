@@ -1,3 +1,5 @@
+import 'displayable_name.dart';
+
 class MessageModel {
   final int id;
   final String senderUid;
@@ -29,7 +31,7 @@ class MessageModel {
       );
 }
 
-class ConversationModel {
+class ConversationModel with DisplayableName {
   final String otherUid;
   final String username;
   final String? displayName;
@@ -38,17 +40,6 @@ class ConversationModel {
   final DateTime lastMessageAt;
   final bool lastMessageIsMine;
   final int unreadCount;
-
-  String get displayLabel =>
-      displayName?.isNotEmpty == true ? displayName! : username;
-
-  String get initials {
-    final parts = displayLabel.trim().split(RegExp(r'\s+'));
-    if (parts.length >= 2) {
-      return '${parts[0][0]}${parts[1][0]}'.toUpperCase();
-    }
-    return displayLabel.substring(0, displayLabel.length.clamp(0, 2)).toUpperCase();
-  }
 
   const ConversationModel({
     required this.otherUid,

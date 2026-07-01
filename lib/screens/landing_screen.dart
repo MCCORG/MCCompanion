@@ -74,6 +74,7 @@ class _LandingScreenState extends State<LandingScreen> {
     final notice = await NotificationService.fetchNotice();
     if (!mounted || notice == null) return;
     setState(() => _notice = notice);
+    _noticeTimer?.cancel();
     _noticeTimer = Timer(const Duration(seconds: 20), () {
       if (mounted) setState(() => _notice = null);
     });

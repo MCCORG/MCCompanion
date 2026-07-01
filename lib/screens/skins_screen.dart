@@ -34,7 +34,7 @@ class SkinsScreen extends StatefulWidget {
 }
 
 class SkinsScreenState extends State<SkinsScreen> {
-  void refresh() => _loadMe();
+  void refresh() { _loadMe(); _loadMeDashboard(); }
   StreamSubscription<AuthUser?>? _authSub;
 
   UserModel? _me;
@@ -64,15 +64,12 @@ class SkinsScreenState extends State<SkinsScreen> {
     super.initState();
     _authSub = AuthService.userStream.listen((user) {
       _loadMe();
-      _loadCloudSkins();
-      if (user?.uid != AuthService.currentUser?.uid || user == null) _loadLikedIds();
+      _loadMeDashboard();
     });
     _loadMe();
     _loadSavedSkins();
-    _loadCloudSkins();
-    _loadGallerySkins();
-    _loadTopSkins();
-    _loadLikedIds();
+    _loadGallery();
+    _loadMeDashboard();
   }
 
   @override
@@ -99,65 +96,54 @@ class SkinsScreenState extends State<SkinsScreen> {
     });
   }
 
-  Future<void> _loadGallerySkins({bool reset = false}) async {
-    if (_loadingGallery) return;
-    if (!reset && !_galleryHasMore) return;
-    setState(() => _loadingGallery = true);
-    final offset = reset ? 0 : _galleryOffset;
+  Future<void> _loadGallery() async {
+    setState(() { _loadingGallery = true; _loadingTop = true; });
     try {
       final resp = await http
-          .get(Uri.parse('${AppConstants.apiBase}/api/skins?limit=$_galleryPageSize&offset=$offset'))
+          .get(Uri.parse('${AppConstants.apiBase}/api/skins/gallery'))
           .timeout(const Duration(seconds: 10));
       if (!mounted) return;
       if (resp.statusCode == 200) {
-        final json = jsonDecode(resp.body);
-        final skins = (json['skins'] as List?)?.cast<Map<String, dynamic>>() ?? [];
+        final data = jsonDecode(resp.body);
+        final recent = (data['recent'] as List?)?.cast<Map<String, dynamic>>() ?? [];
+        final top = (data['top'] as List?)?.cast<Map<String, dynamic>>() ?? [];
         setState(() {
-          _gallerySkins = reset ? skins : [..._gallerySkins, ...skins];
-          _galleryOffset = offset + skins.length;
-          _galleryHasMore = skins.length >= _galleryPageSize;
+          _gallerySkins = recent;
+          _galleryOffset = recent.length;
+          _galleryHasMore = false;
+          _topSkins = top;
           _loadingGallery = false;
+          _loadingTop = false;
         });
         return;
       }
     } catch (_) {}
-    if (mounted) setState(() => _loadingGallery = false);
+    if (mounted) setState(() { _loadingGallery = false; _loadingTop = false; });
   }
 
-  Future<void> _loadTopSkins() async {
-    if (_loadingTop) return;
-    setState(() => _loadingTop = true);
-    try {
-      final resp = await http
-          .get(Uri.parse('${AppConstants.apiBase}/api/skins/top?limit=30'))
-          .timeout(const Duration(seconds: 10));
-      if (!mounted) return;
-      if (resp.statusCode == 200) {
-        final json = jsonDecode(resp.body);
-        final skins = (json['skins'] as List?)?.cast<Map<String, dynamic>>() ?? [];
-        setState(() { _topSkins = skins; _loadingTop = false; });
-        return;
-      }
-    } catch (_) {}
-    if (mounted) setState(() => _loadingTop = false);
-  }
-
-  Future<void> _loadLikedIds() async {
+  Future<void> _loadMeDashboard() async {
     final user = AuthService.currentUser;
-    if (user == null) { setState(() { _likedIds = {}; _idToken = null; }); return; }
+    if (user == null) {
+      setState(() { _cloudSkins = []; _likedIds = {}; _idToken = null; _loadingCloud = false; });
+      return;
+    }
+    setState(() => _loadingCloud = true);
     try {
       final token = await AuthService.getIdToken();
       final resp = await http
-          .get(Uri.parse('${AppConstants.apiBase}/api/skins/me/likes'),
+          .get(Uri.parse('${AppConstants.apiBase}/api/skins/me/dashboard'),
               headers: {'Authorization': 'Bearer $token'})
           .timeout(const Duration(seconds: 10));
       if (!mounted) return;
       if (resp.statusCode == 200) {
         final data = jsonDecode(resp.body);
+        final skins = (data['skins'] as List?)?.cast<Map<String, dynamic>>() ?? [];
         final ids = (data['liked'] as List?)?.cast<String>().toSet() ?? {};
-        setState(() { _likedIds = ids; _idToken = token; });
+        setState(() { _cloudSkins = skins; _likedIds = ids; _idToken = token; _loadingCloud = false; });
+        return;
       }
     } catch (_) {}
+    if (mounted) setState(() { _loadingCloud = false; });
   }
 
   Future<void> _loadSavedSkins() async {
@@ -167,13 +153,6 @@ class SkinsScreenState extends State<SkinsScreen> {
         _savedSkins = skins;
         _loadingSaved = false;
       });
-  }
-
-  Future<void> _loadCloudSkins() async {
-    if (AuthService.currentUser == null) return;
-    setState(() => _loadingCloud = true);
-    final skins = await SkinUploadService.getMySkins();
-    if (mounted) setState(() { _cloudSkins = skins; _loadingCloud = false; });
   }
 
   Future<void> _downloadCloudSkin(Map<String, dynamic> skin) async {
@@ -195,7 +174,7 @@ class SkinsScreenState extends State<SkinsScreen> {
     try {
       final id = skin['id'] as String;
       await SkinUploadService.deleteSkin(id);
-      await _loadCloudSkins();
+      await _loadMeDashboard();
       if (mounted) AppToast.show(context, message: AppLocalizations.of(context)!.skinsDeletedFromCloud, icon: Icons.check_circle_outline_rounded, color: AppTheme.success);
     } catch (e) {
       if (mounted) AppToast.show(context, message: AppLocalizations.of(context)!.skinsDeleteFailed, icon: Icons.error_outline_rounded, color: AppTheme.error);
@@ -225,7 +204,7 @@ class SkinsScreenState extends State<SkinsScreen> {
                   ? SkinEditorScreen(cloudSkin: skin)
                   : SkinEditorScreen(initialTextureUrl: textureUrl),
             ),
-          ).then((result) { if (result == 'cloud') _loadCloudSkins(); });
+          ).then((result) { if (result == 'cloud') _loadMeDashboard(); });
         } : null,
         onDownload: () {
           Navigator.pop(context);
@@ -251,7 +230,7 @@ class SkinsScreenState extends State<SkinsScreen> {
             MaterialPageRoute(
               builder: (_) => SkinEditorScreen(cloudSkin: skin),
             ),
-          ).then((result) { if (result == 'cloud') _loadCloudSkins(); });
+          ).then((result) { if (result == 'cloud') _loadMeDashboard(); });
         },
         onDownload: () {
           Navigator.pop(context);
@@ -268,13 +247,13 @@ class SkinsScreenState extends State<SkinsScreen> {
   void _openEditor(String? textureUrl) {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (_) => SkinEditorScreen(initialTextureUrl: textureUrl)))
-        .then((result) { _loadSavedSkins(); if (result == 'cloud') _loadCloudSkins(); });
+        .then((result) { _loadSavedSkins(); if (result == 'cloud') _loadMeDashboard(); });
   }
 
   void _openEditorForSaved(SavedSkin skin) {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (_) => SkinEditorScreen(initialTextureUrl: null, existingSkin: skin)))
-        .then((result) { _loadSavedSkins(); if (result == 'cloud') _loadCloudSkins(); });
+        .then((result) { _loadSavedSkins(); if (result == 'cloud') _loadMeDashboard(); });
   }
 
   Future<void> _uploadSkin() async {
@@ -348,7 +327,7 @@ class SkinsScreenState extends State<SkinsScreen> {
 
       await SavedSkinsStorage.delete(skin.id);
       await _loadSavedSkins();
-      await _loadCloudSkins();
+      await _loadMeDashboard();
 
       if (mounted) AppToast.show(context, message: AppLocalizations.of(context)!.skinUploaded, icon: Icons.check_circle_outline_rounded, color: AppTheme.success);
     } catch (e) {
@@ -562,7 +541,7 @@ class SkinsScreenState extends State<SkinsScreen> {
             child: _loadingGallery && _gallerySkins.isNotEmpty
                 ? const SizedBox(height: 24, width: 24, child: CircularProgressIndicator(strokeWidth: 2))
                 : OutlinedButton(
-                    onPressed: _loadingGallery ? null : () => _loadGallerySkins(),
+                    onPressed: _loadingGallery ? null : () => _loadGallery(),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: AppTheme.textSecondary,
                       side: const BorderSide(color: AppTheme.borderGray),
