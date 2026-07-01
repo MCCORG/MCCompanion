@@ -2319,4 +2319,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get loadMore => 'Загрузить ещё';
+
+  @override
+  String get skinLayerInner => 'Внутренний';
+
+  @override
+  String get skinLayerOuter => 'Внешний';
 }

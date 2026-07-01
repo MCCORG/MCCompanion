@@ -2319,4 +2319,10 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get loadMore => 'Pakia zaidi';
+
+  @override
+  String get skinLayerInner => 'Ndani';
+
+  @override
+  String get skinLayerOuter => 'Nje';
 }

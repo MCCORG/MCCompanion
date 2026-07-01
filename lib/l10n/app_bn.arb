@@ -1823,5 +1823,10 @@
   "commentsEmpty": "এখনো কোনো মন্তব্য নেই। প্রথম হন!",
   "commentsPlaceholder": "মন্তব্য লিখুন…",
 
-  "loadMore": "আরও লোড করুন"
+  "loadMore": "আরও লোড করুন",
+
+  "skinLayerInner": "অভ্যন্তরীণ",
+  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "skinLayerOuter": "বাহ্যিক",
+  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
 }

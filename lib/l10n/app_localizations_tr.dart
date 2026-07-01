@@ -2319,4 +2319,10 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get loadMore => 'Daha fazla yükle';
+
+  @override
+  String get skinLayerInner => 'İç';
+
+  @override
+  String get skinLayerOuter => 'Dış';
 }

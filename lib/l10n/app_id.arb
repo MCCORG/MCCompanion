@@ -1819,5 +1819,10 @@
   "commentsEmpty": "Belum ada komentar. Jadilah yang pertama!",
   "commentsPlaceholder": "Tulis komentar…",
 
-  "loadMore": "Muat lebih banyak"
+  "loadMore": "Muat lebih banyak",
+
+  "skinLayerInner": "Dalam",
+  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "skinLayerOuter": "Luar",
+  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
 }

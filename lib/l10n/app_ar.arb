@@ -1823,5 +1823,10 @@
   "commentsEmpty": "لا توجد تعليقات بعد. كن الأول!",
   "commentsPlaceholder": "اكتب تعليقاً…",
 
-  "loadMore": "تحميل المزيد"
+  "loadMore": "تحميل المزيد",
+
+  "skinLayerInner": "داخلي",
+  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "skinLayerOuter": "خارجي",
+  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
 }

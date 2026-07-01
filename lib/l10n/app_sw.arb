@@ -1819,5 +1819,10 @@
   "commentsEmpty": "Bado hakuna maoni. Kuwa wa kwanza!",
   "commentsPlaceholder": "Andika maoni…",
 
-  "loadMore": "Pakia zaidi"
+  "loadMore": "Pakia zaidi",
+
+  "skinLayerInner": "Ndani",
+  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "skinLayerOuter": "Nje",
+  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
 }

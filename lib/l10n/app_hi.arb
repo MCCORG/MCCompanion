@@ -1823,5 +1823,10 @@
   "commentsEmpty": "अभी कोई टिप्पणी नहीं। पहले बनें!",
   "commentsPlaceholder": "टिप्पणी लिखें…",
 
-  "loadMore": "और लोड करें"
+  "loadMore": "और लोड करें",
+
+  "skinLayerInner": "आंतरिक",
+  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "skinLayerOuter": "बाहरी",
+  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
 }

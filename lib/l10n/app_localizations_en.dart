@@ -2319,4 +2319,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get loadMore => 'Load more';
+
+  @override
+  String get skinLayerInner => 'Inner';
+
+  @override
+  String get skinLayerOuter => 'Outer';
 }

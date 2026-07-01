@@ -1823,5 +1823,10 @@
   "commentsEmpty": "Ainda sem comentários. Seja o primeiro!",
   "commentsPlaceholder": "Escreva um comentário…",
 
-  "loadMore": "Carregar mais"
+  "loadMore": "Carregar mais",
+
+  "skinLayerInner": "Interior",
+  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "skinLayerOuter": "Exterior",
+  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
 }

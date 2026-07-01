@@ -1819,5 +1819,10 @@
   "commentsEmpty": "ابھی کوئی تبصرہ نہیں۔ پہلے بنیں!",
   "commentsPlaceholder": "تبصرہ لکھیں…",
 
-  "loadMore": "مزید لوڈ کریں"
+  "loadMore": "مزید لوڈ کریں",
+
+  "skinLayerInner": "اندرونی",
+  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "skinLayerOuter": "بیرونی",
+  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
 }

@@ -2319,4 +2319,10 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get loadMore => 'Muat lebih banyak';
+
+  @override
+  String get skinLayerInner => 'Dalam';
+
+  @override
+  String get skinLayerOuter => 'Luar';
 }

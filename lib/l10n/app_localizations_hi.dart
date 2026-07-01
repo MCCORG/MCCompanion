@@ -2319,4 +2319,10 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get loadMore => 'और लोड करें';
+
+  @override
+  String get skinLayerInner => 'आंतरिक';
+
+  @override
+  String get skinLayerOuter => 'बाहरी';
 }

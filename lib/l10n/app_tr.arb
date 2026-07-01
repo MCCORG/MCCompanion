@@ -1823,5 +1823,10 @@
   "commentsEmpty": "Henüz yorum yok. İlk sen ol!",
   "commentsPlaceholder": "Yorum yaz…",
 
-  "loadMore": "Daha fazla yükle"
+  "loadMore": "Daha fazla yükle",
+
+  "skinLayerInner": "İç",
+  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "skinLayerOuter": "Dış",
+  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
 }

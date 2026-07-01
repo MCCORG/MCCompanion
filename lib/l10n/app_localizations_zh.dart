@@ -2319,4 +2319,10 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get loadMore => '加载更多';
+
+  @override
+  String get skinLayerInner => '内层';
+
+  @override
+  String get skinLayerOuter => '外层';
 }

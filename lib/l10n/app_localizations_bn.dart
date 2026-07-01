@@ -2319,4 +2319,10 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get loadMore => 'আরও লোড করুন';
+
+  @override
+  String get skinLayerInner => 'অভ্যন্তরীণ';
+
+  @override
+  String get skinLayerOuter => 'বাহ্যিক';
 }

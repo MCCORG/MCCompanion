@@ -1140,5 +1140,10 @@
   "commentsEmpty": "Nog geen reacties. Wees de eerste!",
   "commentsPlaceholder": "Schrijf een reactie…",
 
-  "loadMore": "Meer laden"
+  "loadMore": "Meer laden",
+
+  "skinLayerInner": "Binnen",
+  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "skinLayerOuter": "Buiten",
+  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
 }

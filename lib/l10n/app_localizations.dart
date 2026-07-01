@@ -4514,6 +4514,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Load more'**
   String get loadMore;
+
+  /// Skin editor layer toggle — inner/base layer
+  ///
+  /// In en, this message translates to:
+  /// **'Inner'**
+  String get skinLayerInner;
+
+  /// Skin editor layer toggle — outer/overlay layer
+  ///
+  /// In en, this message translates to:
+  /// **'Outer'**
+  String get skinLayerOuter;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

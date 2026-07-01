@@ -1823,5 +1823,10 @@
   "commentsEmpty": "暂无评论。成为第一个！",
   "commentsPlaceholder": "写评论…",
 
-  "loadMore": "加载更多"
+  "loadMore": "加载更多",
+
+  "skinLayerInner": "内层",
+  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "skinLayerOuter": "外层",
+  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
 }

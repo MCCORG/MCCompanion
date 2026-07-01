@@ -2547,5 +2547,10 @@
   "commentsPlaceholder": "Write a comment…",
   "@commentsPlaceholder": { "description": "Placeholder text in the comment input field" },
 
-  "loadMore": "Load more"
+  "loadMore": "Load more",
+
+  "skinLayerInner": "Inner",
+  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "skinLayerOuter": "Outer",
+  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
 }

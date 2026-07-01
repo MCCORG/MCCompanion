@@ -1823,5 +1823,10 @@
   "commentsEmpty": "まだコメントはありません。最初のコメントを残しましょう！",
   "commentsPlaceholder": "コメントを書く…",
 
-  "loadMore": "もっと読み込む"
+  "loadMore": "もっと読み込む",
+
+  "skinLayerInner": "内側",
+  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "skinLayerOuter": "外側",
+  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
 }

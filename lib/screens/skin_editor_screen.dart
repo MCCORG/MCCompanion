@@ -42,13 +42,14 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
 
   late Uint8List _pixels;
   bool _loading = true;
-  String? _sessionCloudSkinId; // reused across uploads within this editor session
+  String? _sessionCloudSkinId;
 
   _Tool _activeTool = _Tool.draw;
   Color _activeColor = const Color(0xFF3F51B5);
   bool _rotateMode = true;
   bool _uvMode = false;
   bool _panModeUV = false;
+  bool _outerLayer = false;
 
   double _rotY = 0.4;
   double _rotX = 0.1;
@@ -258,8 +259,10 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
       slim: false,
       canvasSize: _canvasSize,
     );
+    final wantBase = !_outerLayer;
     for (int i = faces.length - 1; i >= 0; i--) {
       final face = faces[i];
+      if (face.isBase != wantBase) continue;
       final p = face.screen;
       final uv = face.uvs;
 
@@ -729,7 +732,35 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
               ),
             ),
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: 6),
+          GestureDetector(
+            onTap: () => setState(() => _outerLayer = !_outerLayer),
+            child: Builder(builder: (ctx) {
+              final l = AppLocalizations.of(ctx)!;
+              return Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              decoration: BoxDecoration(
+                color: _outerLayer
+                    ? const Color(0xFFFFA726).withValues(alpha: 0.15)
+                    : Colors.transparent,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: _outerLayer ? const Color(0xFFFFA726) : AppTheme.borderGray,
+                  width: _outerLayer ? 1.5 : 1,
+                ),
+              ),
+              child: Text(
+                _outerLayer ? l.skinLayerOuter : l.skinLayerInner,
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w700,
+                  color: _outerLayer ? const Color(0xFFFFA726) : AppTheme.textMuted,
+                ),
+              ),
+            );
+          }),
+          ),
+          const SizedBox(width: 6),
           GestureDetector(
             onTap: () => setState(() {
               _uvMode = !_uvMode;
