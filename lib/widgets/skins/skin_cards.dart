@@ -89,10 +89,12 @@ class _GallerySkinCardState extends State<GallerySkinCard> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 6),
-                child: Center(
-                  child: url.isNotEmpty
-                      ? SkinBodyImage(textureUrl: url, height: 90)
-                      : const SizedBox(),
+                child: LayoutBuilder(
+                  builder: (_, constraints) => Center(
+                    child: url.isNotEmpty
+                        ? SkinBodyImage(textureUrl: url, height: constraints.maxHeight)
+                        : const SizedBox(),
+                  ),
                 ),
               ),
             ),
@@ -114,39 +116,47 @@ class _GallerySkinCardState extends State<GallerySkinCard> {
                   ));
                 },
                 behavior: HitTestBehavior.opaque,
-                child: Row(
+                child: Text(
+                  AppLocalizations.of(context)!.skinByCreator(creatorName ?? creatorUsername),
+                  style: TextStyle(color: AppTheme.accent, fontSize: 9),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            const SizedBox(height: 5),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () { if (widget.idToken != null) _toggleLike(); },
+                  behavior: HitTestBehavior.opaque,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      FaIcon(
+                        _liked ? FontAwesomeIcons.solidHeart : FontAwesomeIcons.heart,
+                        size: 11,
+                        color: _liked ? const Color(0xFFf87171) : AppTheme.textMuted,
+                      ),
+                      const SizedBox(width: 3),
+                      Text('$_likes', style: TextStyle(color: _liked ? const Color(0xFFf87171) : AppTheme.textMuted, fontSize: 9, fontWeight: FontWeight.w600)),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Expanded(
-                      child: Text(
-                        AppLocalizations.of(context)!.skinByCreator(creatorName ?? creatorUsername),
-                        style: TextStyle(color: AppTheme.accent, fontSize: 9),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () { if (widget.idToken != null) _toggleLike(); },
-                      behavior: HitTestBehavior.opaque,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          FaIcon(
-                            _liked ? FontAwesomeIcons.solidHeart : FontAwesomeIcons.heart,
-                            size: 10,
-                            color: _liked ? const Color(0xFFf87171) : AppTheme.textMuted,
-                          ),
-                          if (_likes > 0) ...[
-                            const SizedBox(width: 2),
-                            Text('$_likes', style: TextStyle(color: _liked ? const Color(0xFFf87171) : AppTheme.textMuted, fontSize: 9, fontWeight: FontWeight.w600)),
-                          ],
-                        ],
-                      ),
+                    FaIcon(FontAwesomeIcons.comment, size: 11, color: AppTheme.textMuted),
+                    const SizedBox(width: 3),
+                    Text(
+                      '${(widget.skin['comment_count'] as num?)?.toInt() ?? 0}',
+                      style: TextStyle(color: AppTheme.textMuted, fontSize: 9, fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),
-              )
-            else
-              const SizedBox(height: 11),
+              ],
+            ),
           ],
         ),
       ),
@@ -178,10 +188,12 @@ class CloudSkinCard extends StatelessWidget {
             Expanded(
               child: Stack(
                 children: [
-                  Center(
-                    child: url.isNotEmpty
-                        ? SkinBodyImage(textureUrl: url, height: 100)
-                        : const SizedBox(),
+                  LayoutBuilder(
+                    builder: (_, constraints) => Center(
+                      child: url.isNotEmpty
+                          ? SkinBodyImage(textureUrl: url, height: constraints.maxHeight)
+                          : const SizedBox(),
+                    ),
                   ),
                   Positioned(
                     top: 0, right: 0,
@@ -235,7 +247,11 @@ class SavedSkinCard extends StatelessWidget {
             Expanded(
               child: Stack(
                 children: [
-                  Center(child: LocalSkinBodyImage(filePath: skin.filePath, height: 100)),
+                  LayoutBuilder(
+                    builder: (_, constraints) => Center(
+                      child: LocalSkinBodyImage(filePath: skin.filePath, height: constraints.maxHeight),
+                    ),
+                  ),
                   Positioned(
                     top: 0, left: 0,
                     child: Container(

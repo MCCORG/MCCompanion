@@ -524,6 +524,7 @@ class SkinsScreenState extends State<SkinsScreen> {
               final skin = _topSkins[i];
               final badge = i < 3 ? rankBadges[i] : null;
               return Stack(
+                fit: StackFit.expand,
                 children: [
                   GallerySkinCard(
                     skin: skin,
