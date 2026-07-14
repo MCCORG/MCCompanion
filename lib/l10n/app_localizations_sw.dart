@@ -45,13 +45,15 @@ class AppLocalizationsSw extends AppLocalizations {
   String get onboardingThemeTitle => 'Chagua mandhari';
 
   @override
-  String get onboardingThemeSubtitle => 'Unaweza kurekebisha kila rangi katika mipangilio baadaye.';
+  String get onboardingThemeSubtitle =>
+      'Unaweza kurekebisha kila rangi katika mipangilio baadaye.';
 
   @override
   String get onboardingNavTitle => 'Ufikiaji wa haraka';
 
   @override
-  String get onboardingNavSubtitle => 'Chagua vipengele viwili kwa upau wa urambazaji.';
+  String get onboardingNavSubtitle =>
+      'Chagua vipengele viwili kwa upau wa urambazaji.';
 
   @override
   String get onboardingNavLeftLabel => 'KITUFE CHA KUSHOTO';
@@ -90,7 +92,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get startPageFeature => 'Kipengele';
 
   @override
-  String get startPageFeatureSubtitle => 'Fungua moja kwa moja kwenye ukurasa mahususi';
+  String get startPageFeatureSubtitle =>
+      'Fungua moja kwa moja kwenye ukurasa mahususi';
 
   @override
   String get startPageSectionLabel => 'UKURASA WA MWANZO';
@@ -140,13 +143,15 @@ class AppLocalizationsSw extends AppLocalizations {
   String get howToJavaTitle => 'Hali ya Java';
 
   @override
-  String get howToJavaSubtitle => 'Unganisha kwenye seva za Java Edition kupitia MCCompanion';
+  String get howToJavaSubtitle =>
+      'Unganisha kwenye seva za Java Edition kupitia MCCompanion';
 
   @override
   String get aternosSubtext => 'Skapa din egen gratis Minecraft-server';
 
   @override
-  String get howToJavaBody => 'Hali ya Java — hatua za haraka:\n1. Kwenye programu, chagua hali ya Java.\n2. Weka anwani na port ya seva yako ya Java Edition (chaguomsingi: 25565).\n3. Bonyeza \"Anza hali ya Java\" — MCCompanion itaunganisha muunganisho.\n4. Fungua Minecraft Bedrock na uende kwenye kichupo cha Marafiki.\n5. Chagua seva ya LAN inayoitwa \"MCCompanion\" ili kujiunga na seva ya Java.\n\n⚠️ Maonyo muhimu:\n- Akaunti halali ya Java Edition (Microsoft) inahitajika.\n- Baadhi ya seva hutumia mifumo ya anti-cheat ambayo inaweza kugundua na kupiga marufuku akaunti yako.\n- Baadhi ya seva hukataza wazi wateja wa Bedrock — hakikisha unakagua sheria za seva kila wakati.\n- MCCompanion haiwajibiki kwa marufuku, kusimamishwa au matatizo mengine yanayohusiana na akaunti yanayoweza kusababishwa na kutumia kipengele hiki.\n- Tumia kwa hatari yako mwenyewe.';
+  String get howToJavaBody =>
+      'Hali ya Java — hatua za haraka:\n1. Kwenye programu, chagua hali ya Java.\n2. Weka anwani na port ya seva yako ya Java Edition (chaguomsingi: 25565).\n3. Bonyeza \"Anza hali ya Java\" — MCCompanion itaunganisha muunganisho.\n4. Fungua Minecraft Bedrock na uende kwenye kichupo cha Marafiki.\n5. Chagua seva ya LAN inayoitwa \"MCCompanion\" ili kujiunga na seva ya Java.\n\n⚠️ Maonyo muhimu:\n- Akaunti halali ya Java Edition (Microsoft) inahitajika.\n- Baadhi ya seva hutumia mifumo ya anti-cheat ambayo inaweza kugundua na kupiga marufuku akaunti yako.\n- Baadhi ya seva hukataza wazi wateja wa Bedrock — hakikisha unakagua sheria za seva kila wakati.\n- MCCompanion haiwajibiki kwa marufuku, kusimamishwa au matatizo mengine yanayohusiana na akaunti yanayoweza kusababishwa na kutumia kipengele hiki.\n- Tumia kwa hatari yako mwenyewe.';
 
   @override
   String get language => 'Kiswahili';
@@ -209,7 +214,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get bedrockBridge => 'Daraja la Bedrock';
 
   @override
-  String get clientDisconnected => 'Mteja ametenganishwa — Utangazaji umesimama';
+  String get clientDisconnected =>
+      'Mteja ametenganishwa — Utangazaji umesimama';
 
   @override
   String get pleaseEnterServer => '⚠️ Tafadhali weka anwani ya seva';
@@ -299,7 +305,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get manageServersTooltip => 'Dhibiti seva';
 
   @override
-  String get noServerYet => 'Bado hakuna seva zilizohifadhiwa.\nGusa Dhibiti ili kuongeza moja.';
+  String get noServerYet =>
+      'Bado hakuna seva zilizohifadhiwa.\nGusa Dhibiti ili kuongeza moja.';
 
   @override
   String get serverNotSelected => 'Hakuna seva iliyochaguliwa';
@@ -317,10 +324,12 @@ class AppLocalizationsSw extends AppLocalizations {
   String get noWifi => 'Haupo kwenye Wi‑Fi';
 
   @override
-  String get vpnActive => 'Tumegundua kuwa VPN yako imewashwa.\n\nTafadhali izime kabla ya kutumia MCCompanion, la sivyo matangazo ya LAN yanaweza yasifikie konsoli yako.';
+  String get vpnActive =>
+      'Tumegundua kuwa VPN yako imewashwa.\n\nTafadhali izime kabla ya kutumia MCCompanion, la sivyo matangazo ya LAN yanaweza yasifikie konsoli yako.';
 
   @override
-  String get mobileActive => 'Imegunduliwa: Data ya simu\n\nMCCompanion inahitaji kuwa kwenye mtandao ule ule na konsoli yako. Unganisha kwenye Wi‑Fi ya nyumbani au hotspot kabla ya kuendelea.';
+  String get mobileActive =>
+      'Imegunduliwa: Data ya simu\n\nMCCompanion inahitaji kuwa kwenye mtandao ule ule na konsoli yako. Unganisha kwenye Wi‑Fi ya nyumbani au hotspot kabla ya kuendelea.';
 
   @override
   String get continueAnyway => 'Endelea hata hivyo';
@@ -329,19 +338,22 @@ class AppLocalizationsSw extends AppLocalizations {
   String get sameWifi => 'Mtandao ule ule wa Wi‑Fi';
 
   @override
-  String get needSameWifi => 'Kifaa kinachoendesha MCCompanion LAZIMA kiwe kwenye mtandao ule ule wa Wi‑Fi na konsoli unayotumia kucheza Minecraft.';
+  String get needSameWifi =>
+      'Kifaa kinachoendesha MCCompanion LAZIMA kiwe kwenye mtandao ule ule wa Wi‑Fi na konsoli unayotumia kucheza Minecraft.';
 
   @override
   String get subscription => 'Usajili wa mtandaoni unahitajika';
 
   @override
-  String get needSubscription => 'Kila konsoli inahitaji usajili wake wa mtandaoni ulio hai (Xbox Live, PS Plus, NSO). Bila huo, MCCompanion haitaonekana.';
+  String get needSubscription =>
+      'Kila konsoli inahitaji usajili wake wa mtandaoni ulio hai (Xbox Live, PS Plus, NSO). Bila huo, MCCompanion haitaonekana.';
 
   @override
   String get updateAvailable => 'Sasisho linapatikana';
 
   @override
-  String get newVersion => 'Toleo jipya la programu linapatikana.\nSasisha sasa kwa vipengele na marekebisho mapya zaidi.';
+  String get newVersion =>
+      'Toleo jipya la programu linapatikana.\nSasisha sasa kwa vipengele na marekebisho mapya zaidi.';
 
   @override
   String get later => 'Baadaye';
@@ -380,13 +392,15 @@ class AppLocalizationsSw extends AppLocalizations {
   String get nintendoInfoTitle => 'Hali ya DNS ya Nintendo Switch';
 
   @override
-  String get nintendoInfoText => 'Anza kwenye hali ya Nintendo, weka DNS yako na jiunge na seva iliyopendekezwa.';
+  String get nintendoInfoText =>
+      'Anza kwenye hali ya Nintendo, weka DNS yako na jiunge na seva iliyopendekezwa.';
 
   @override
   String get friendModeTitle => 'Hali ya Marafiki';
 
   @override
-  String get friendModeText => 'Ongeza roboti za marafiki za MCCompanion kama rafiki. Anza hali ya Marafiki na ucheze';
+  String get friendModeText =>
+      'Ongeza roboti za marafiki za MCCompanion kama rafiki. Anza hali ya Marafiki na ucheze';
 
   @override
   String get selectedRelayCheck => 'Imechaguliwa';
@@ -397,7 +411,8 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get relayUnableConnect => 'Imeshindikana kuunganika kwa seva YOYOTE ya relay ya MCCompanion. Jaribu tena baadaye au angalia intaneti yako.';
+  String get relayUnableConnect =>
+      'Imeshindikana kuunganika kwa seva YOYOTE ya relay ya MCCompanion. Jaribu tena baadaye au angalia intaneti yako.';
 
   @override
   String get howToXboxTitle => 'Xbox / PS4-5 (LAN / proksi)';
@@ -406,7 +421,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get howToXboxSubtitle => 'Cheza kupitia utangazaji wa LAN au proxy';
 
   @override
-  String get howToXboxBody => 'Jinsi ya kuunganika (Xbox / PS4 / PS5):\r\n1. Hakikisha kifaa chako kinachoendesha MCCompanion na konsoli yako viko kwenye mtandao mmoja wa ndani.\r\n2. Kwenye programu, weka anwani na port ya seva yako ya Minecraft kisha bonyeza \"Anza Kutangaza\".\r\n3. Kwenye konsoli, fungua Minecraft → Play → tafuta LAN Worlds au kichupo cha Friends kisha sasisha orodha.\r\n4. Chagua seva ya LAN iitwayo \"MCCompanion\" ili kujiunga.\r\nVidokezo:\r\n- Ikiwa seva haionekani, hakikisha vifaa vyote viko kwenye subnet moja na programu bado inatangaza.\r\n- Baadhi ya miundo ya konsoli au router inaweza kuzuia ugunduzi wa LAN; jaribu kubadili mipangilio ya programu au router ikihitajika.';
+  String get howToXboxBody =>
+      'Jinsi ya kuunganika (Xbox / PS4 / PS5):\r\n1. Hakikisha kifaa chako kinachoendesha MCCompanion na konsoli yako viko kwenye mtandao mmoja wa ndani.\r\n2. Kwenye programu, weka anwani na port ya seva yako ya Minecraft kisha bonyeza \"Anza Kutangaza\".\r\n3. Kwenye konsoli, fungua Minecraft → Play → tafuta LAN Worlds au kichupo cha Friends kisha sasisha orodha.\r\n4. Chagua seva ya LAN iitwayo \"MCCompanion\" ili kujiunga.\r\nVidokezo:\r\n- Ikiwa seva haionekani, hakikisha vifaa vyote viko kwenye subnet moja na programu bado inatangaza.\r\n- Baadhi ya miundo ya konsoli au router inaweza kuzuia ugunduzi wa LAN; jaribu kubadili mipangilio ya programu au router ikihitajika.';
 
   @override
   String get howToNintendoTitle => 'Nintendo Switch (hali ya DNS)';
@@ -415,7 +431,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get howToNintendoSubtitle => 'Maelekezo ya DNS relay kwa Switch';
 
   @override
-  String get howToNintendoBody => 'Nintendo Switch — hali ya DNS (hatua kwa hatua):\r\n1. Kwenye programu, washa hali ya \"Nintendo\" na uchague Relay Server (EU au US).\r\n2. Gusa \"Send DNS Config\" ili kutuma DNS IP kwa relay.\r\n3. Kwenye Nintendo Switch yako nenda kwenye System Settings → Internet → Internet Settings → (mtandao wako) → Change Settings → DNS na weka Primary DNS kuwa relay IP.\r\n4. Fungua Minecraft na ujiunge na seva ya umma; utaelekezwa kwenye seva yako kwa kutumia relay DNS.\r\nVidokezo:\r\n- Hali ya DNS haitangazi seva ya LAN; inaelekeza trafiki ya mchezo kupitia relay.\r\n- Rudisha DNS yako baada ya kumaliza ikiwa unahitaji tabia ya kawaida ya mtandao.';
+  String get howToNintendoBody =>
+      'Nintendo Switch — hali ya DNS (hatua kwa hatua):\r\n1. Kwenye programu, washa hali ya \"Nintendo\" na uchague Relay Server (EU au US).\r\n2. Gusa \"Send DNS Config\" ili kutuma DNS IP kwa relay.\r\n3. Kwenye Nintendo Switch yako nenda kwenye System Settings → Internet → Internet Settings → (mtandao wako) → Change Settings → DNS na weka Primary DNS kuwa relay IP.\r\n4. Fungua Minecraft na ujiunge na seva ya umma; utaelekezwa kwenye seva yako kwa kutumia relay DNS.\r\nVidokezo:\r\n- Hali ya DNS haitangazi seva ya LAN; inaelekeza trafiki ya mchezo kupitia relay.\r\n- Rudisha DNS yako baada ya kumaliza ikiwa unahitaji tabia ya kawaida ya mtandao.';
 
   @override
   String get howToFriendsTitle => 'Hali ya Marafiki';
@@ -424,25 +441,31 @@ class AppLocalizationsSw extends AppLocalizations {
   String get howToFriendsSubtitle => 'Alika marafiki na ujiunge kupitia LAN';
 
   @override
-  String get howToFriendsBody => 'Hali ya Marafiki — hatua za haraka:\r\n1. Ongeza akaunti ya rafiki ya MCCompanion kwenye konsoli au jukwaa lako ikiwa inahitajika.\r\n2. Kwenye programu washa hali ya Marafiki na utume usanidi wa relay (ikiwa unatumika).\r\n3. Kwenye konsoli yako fungua Minecraft → Friends na utafute LAN Worlds — seva yako inapaswa kuonekana hapo kama ulimwengu wa LAN.\r\n4. Ichague ili kujiunga na seva yako pamoja na marafiki.\r\nVidokezo:\r\n- Hakikisha wewe na marafiki zako mna NAT/mipangilio sawa inayoruhusu uwepo wa marafiki.\r\n- Hali ya Marafiki hutegemea vipengele vya urafiki vya jukwaa na huenda ikahitaji kukubali maombi ya urafiki.';
+  String get howToFriendsBody =>
+      'Hali ya Marafiki — hatua za haraka:\r\n1. Ongeza akaunti ya rafiki ya MCCompanion kwenye konsoli au jukwaa lako ikiwa inahitajika.\r\n2. Kwenye programu washa hali ya Marafiki na utume usanidi wa relay (ikiwa unatumika).\r\n3. Kwenye konsoli yako fungua Minecraft → Friends na utafute LAN Worlds — seva yako inapaswa kuonekana hapo kama ulimwengu wa LAN.\r\n4. Ichague ili kujiunga na seva yako pamoja na marafiki.\r\nVidokezo:\r\n- Hakikisha wewe na marafiki zako mna NAT/mipangilio sawa inayoruhusu uwepo wa marafiki.\r\n- Hali ya Marafiki hutegemea vipengele vya urafiki vya jukwaa na huenda ikahitaji kukubali maombi ya urafiki.';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion haionekani';
 
   @override
-  String get helpMCCompanionSubtitle => 'Utatuzi wa matatizo ya ugunduzi wa LAN';
+  String get helpMCCompanionSubtitle =>
+      'Utatuzi wa matatizo ya ugunduzi wa LAN';
 
   @override
-  String get helpMCCompanionBody => 'Ikiwa seva haionekani kwenye konsoli yako, jaribu hatua hizi:\r\n\r\n✅ Ukaguzi wa msingi:\r\n1. Mtandao ule ule wa WiFi - Simu/tablet yako na konsoli LAZIMA ziwe kwenye WiFi ile ile\r\n2. Anwani sahihi ya seva - Hakiki tena IP na port (chaguo-msingi: 19132)\r\n3. Utangazaji uko hai - Hakikisha MCCompanion inaonyesha hali ya \"Inatangaza\"\r\n\r\n🔄 Marekebisho ya haraka:\r\n• Anzisha tena programu: simamisha utangazaji, funga MCCompanion kabisa, ifungue tena na ujaribu upya\r\n• Anzisha tena konsoli yako: wakati mwingine konsoli huhitaji kusasishwa ili kugundua michezo ya LAN\r\n• Angalia kichupo cha Friends/LAN: seva huonekana chini ya \"Friends\" au \"LAN Games\", SI kwenye orodha ya seva\r\n• Subiri sekunde 10-15 baada ya kuanza kutangaza\r\n• Zima VPN: VPN zinaweza kuzuia matangazo ya ndani\r\n\r\n⚠️ Matatizo ya kawaida:\r\n\"No route found for user\" → Hakikisha vifaa vyote viwili viko kwenye Wi‑Fi ile ile (epuka mitandao ya wageni)\r\n\"Unable to connect to MCCompanion relay server\" → Angalia intaneti yako / hali ya relay\r\n\r\n📱 Bado una matatizo? Washa hali ya utatuzi kwenye MCCompanion na uangalie kumbukumbu, au jaribu seva tofauti.';
+  String get helpMCCompanionBody =>
+      'Ikiwa seva haionekani kwenye konsoli yako, jaribu hatua hizi:\r\n\r\n✅ Ukaguzi wa msingi:\r\n1. Mtandao ule ule wa WiFi - Simu/tablet yako na konsoli LAZIMA ziwe kwenye WiFi ile ile\r\n2. Anwani sahihi ya seva - Hakiki tena IP na port (chaguo-msingi: 19132)\r\n3. Utangazaji uko hai - Hakikisha MCCompanion inaonyesha hali ya \"Inatangaza\"\r\n\r\n🔄 Marekebisho ya haraka:\r\n• Anzisha tena programu: simamisha utangazaji, funga MCCompanion kabisa, ifungue tena na ujaribu upya\r\n• Anzisha tena konsoli yako: wakati mwingine konsoli huhitaji kusasishwa ili kugundua michezo ya LAN\r\n• Angalia kichupo cha Friends/LAN: seva huonekana chini ya \"Friends\" au \"LAN Games\", SI kwenye orodha ya seva\r\n• Subiri sekunde 10-15 baada ya kuanza kutangaza\r\n• Zima VPN: VPN zinaweza kuzuia matangazo ya ndani\r\n\r\n⚠️ Matatizo ya kawaida:\r\n\"No route found for user\" → Hakikisha vifaa vyote viwili viko kwenye Wi‑Fi ile ile (epuka mitandao ya wageni)\r\n\"Unable to connect to MCCompanion relay server\" → Angalia intaneti yako / hali ya relay\r\n\r\n📱 Bado una matatizo? Washa hali ya utatuzi kwenye MCCompanion na uangalie kumbukumbu, au jaribu seva tofauti.';
 
   @override
-  String get helpMultiplayerFailedTitle => 'Muunganisho wa Multiplayer Umeshindikana';
+  String get helpMultiplayerFailedTitle =>
+      'Muunganisho wa Multiplayer Umeshindikana';
 
   @override
-  String get helpMultiplayerFailedSubtitle => 'Maelezo kwa nini hili si kosa la MCCompanion';
+  String get helpMultiplayerFailedSubtitle =>
+      'Maelezo kwa nini hili si kosa la MCCompanion';
 
   @override
-  String get helpMultiplayerFailedBody => '⚠️ Hili si tatizo la MCCompanion!\r\n\r\nMCCompanion ilikuelekeza kwa mafanikio kwenye seva iliyoombwa. Ujumbe wa \"Multiplayer Connection Failed\" unaonyesha kuwa seva lengwa haipatikani kwa sasa. Sababu zinazowezekana:\r\n\r\n• Seva lengwa ya Minecraft iko nje ya mtandao au imeelemewa\r\n• Seva inahitaji toleo la mteja lililosasishwa au toleo maalum\r\n• Matatizo ya mtandao kati ya relay na seva lengwa\r\n\r\nJaribu kuunganika kwenye seva tofauti au wasiliana na msaada wa seva husika. Tatizo likiendelea kwenye seva nyingi, washa hali ya utatuzi kwenye MCCompanion na uangalie kumbukumbu.';
+  String get helpMultiplayerFailedBody =>
+      '⚠️ Hili si tatizo la MCCompanion!\r\n\r\nMCCompanion ilikuelekeza kwa mafanikio kwenye seva iliyoombwa. Ujumbe wa \"Multiplayer Connection Failed\" unaonyesha kuwa seva lengwa haipatikani kwa sasa. Sababu zinazowezekana:\r\n\r\n• Seva lengwa ya Minecraft iko nje ya mtandao au imeelemewa\r\n• Seva inahitaji toleo la mteja lililosasishwa au toleo maalum\r\n• Matatizo ya mtandao kati ya relay na seva lengwa\r\n\r\nJaribu kuunganika kwenye seva tofauti au wasiliana na msaada wa seva husika. Tatizo likiendelea kwenye seva nyingi, washa hali ya utatuzi kwenye MCCompanion na uangalie kumbukumbu.';
 
   @override
   String get helpNintendoDnsTitle => 'DNS ya Nintendo haifanyi kazi';
@@ -451,7 +474,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get helpNintendoDnsSubtitle => 'Matatizo ya kawaida ya DNS / relay';
 
   @override
-  String get helpNintendoDnsBody => 'Ikiwa hali ya DNS ya Nintendo haifanyi kazi, angalia yafuatayo:\r\n\r\n1. Thibitisha kuwa umetuma usanidi wa DNS kutoka kwenye programu (Send DNS Config).\r\n2. Thibitisha kuwa umetumia relay IP kama DNS Kuu kwenye Switch.\r\n3. Hakikisha seva ya relay iliyochaguliwa (EU/US) iko mtandaoni na haijaelemewa.\r\n4. Baadhi ya mitandao (kwa mfano captive portals) huzuia DNS maalum — jaribu kwenye mtandao tofauti.\r\n\r\nTatizo likiendelea, washa hali ya utatuzi na uangalie kumbukumbu au ujaribu mbadala wa hali ya Marafiki.';
+  String get helpNintendoDnsBody =>
+      'Ikiwa hali ya DNS ya Nintendo haifanyi kazi, angalia yafuatayo:\r\n\r\n1. Thibitisha kuwa umetuma usanidi wa DNS kutoka kwenye programu (Send DNS Config).\r\n2. Thibitisha kuwa umetumia relay IP kama DNS Kuu kwenye Switch.\r\n3. Hakikisha seva ya relay iliyochaguliwa (EU/US) iko mtandaoni na haijaelemewa.\r\n4. Baadhi ya mitandao (kwa mfano captive portals) huzuia DNS maalum — jaribu kwenye mtandao tofauti.\r\n\r\nTatizo likiendelea, washa hali ya utatuzi na uangalie kumbukumbu au ujaribu mbadala wa hali ya Marafiki.';
 
   @override
   String get helpFriendsModeTitle => 'Hali ya Marafiki haifanyi kazi';
@@ -460,7 +484,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get helpFriendsModeSubtitle => 'Matatizo ya kawaida ya marafiki';
 
   @override
-  String get helpFriendsModeBody => 'Vidokezo vya utatuzi wa hali ya Marafiki:\r\n\r\n1. Hakikisha akaunti ya rafiki ya relay imeongezwa/imekubaliwa kwenye konsoli (ikiwa inahitajika).\r\n2. Jaribu kuanzisha tena mchezo na kusasisha kichupo cha Friends/LAN baada ya kuwasha hali ya Marafiki.\r\n\r\nIkiwa seva bado haionekani kwa marafiki, washa hali ya utatuzi na uangalie kumbukumbu ili kutambua makosa.';
+  String get helpFriendsModeBody =>
+      'Vidokezo vya utatuzi wa hali ya Marafiki:\r\n\r\n1. Hakikisha akaunti ya rafiki ya relay imeongezwa/imekubaliwa kwenye konsoli (ikiwa inahitajika).\r\n2. Jaribu kuanzisha tena mchezo na kusasisha kichupo cha Friends/LAN baada ya kuwasha hali ya Marafiki.\r\n\r\nIkiwa seva bado haionekani kwa marafiki, washa hali ya utatuzi na uangalie kumbukumbu ili kutambua makosa.';
 
   @override
   String get changeLanguageTitle => 'Badilisha lugha';
@@ -495,7 +520,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get trackerSignInRequired => 'Ingia inahitajika';
 
   @override
-  String get trackerSignInSubtitle => 'Ingia ili kufuatilia seva na kupokea arifa za nje ya mtandao.';
+  String get trackerSignInSubtitle =>
+      'Ingia ili kufuatilia seva na kupokea arifa za nje ya mtandao.';
 
   @override
   String get signIn => 'Ingia';
@@ -504,16 +530,19 @@ class AppLocalizationsSw extends AppLocalizations {
   String get noServersTracked => 'Hakuna seva zinazofuatiliwa';
 
   @override
-  String get trackerEmptySubtitle => 'Ongeza seva ya Minecraft ili ufuatilie hali yake na upokee arifa.';
+  String get trackerEmptySubtitle =>
+      'Ongeza seva ya Minecraft ili ufuatilie hali yake na upokee arifa.';
 
   @override
   String get fillAllFields => 'Tafadhali jaza sehemu zote kwa usahihi';
 
   @override
-  String get slotUsedUpgrade => 'Nafasi yako ya bure imetumika. Boresha kwa seva zaidi.';
+  String get slotUsedUpgrade =>
+      'Nafasi yako ya bure imetumika. Boresha kwa seva zaidi.';
 
   @override
-  String get addServerFailed => 'Imeshindwa kuongeza seva. Angalia maelezo yako.';
+  String get addServerFailed =>
+      'Imeshindwa kuongeza seva. Angalia maelezo yako.';
 
   @override
   String get ipAddressLabel => 'Anwani ya IP';
@@ -612,7 +641,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get textColorPickerTitle => 'Rangi ya Maandishi';
 
   @override
-  String get textColorHint => 'Gonga duara ili kuchagua rangi ya maandishi ya kibinafsi';
+  String get textColorHint =>
+      'Gonga duara ili kuchagua rangi ya maandishi ya kibinafsi';
 
   @override
   String get textColorPreviewPrimary => 'Msingi';
@@ -684,7 +714,8 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get reportDisclaimer => 'Reports are reviewed by our team. False reports may result in action against your account.';
+  String get reportDisclaimer =>
+      'Reports are reviewed by our team. False reports may result in action against your account.';
 
   @override
   String get reportReasonSpam => 'Spam';
@@ -735,7 +766,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get playerLookupTitle => 'Player Lookup';
 
   @override
-  String get playerLookupSubtitle => 'Search for a Java or Bedrock player by username';
+  String get playerLookupSubtitle =>
+      'Search for a Java or Bedrock player by username';
 
   @override
   String get playerLookupHint => 'Enter a username…';
@@ -817,13 +849,15 @@ class AppLocalizationsSw extends AppLocalizations {
   String get deleteAccountTitle => 'Delete Account';
 
   @override
-  String get deleteAccountBody => 'This will permanently delete your account and all data. This action cannot be undone.';
+  String get deleteAccountBody =>
+      'This will permanently delete your account and all data. This action cannot be undone.';
 
   @override
   String get deletePermanently => 'Delete Permanently';
 
   @override
-  String get couldNotDeleteAccount => 'Could not delete account. Please try again.';
+  String get couldNotDeleteAccount =>
+      'Could not delete account. Please try again.';
 
   @override
   String get removeFriendTitle => 'Remove Friend';
@@ -842,7 +876,8 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get emailDifferentMethod => 'This email is linked to a different sign-in method';
+  String get emailDifferentMethod =>
+      'This email is linked to a different sign-in method';
 
   @override
   String get googleSignInFailed => 'Google sign-in failed. Please try again.';
@@ -854,7 +889,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get resetPasswordTitle => 'Reset Password';
 
   @override
-  String get resetPasswordBody => 'Enter your email address and we will send you a link to reset your password.';
+  String get resetPasswordBody =>
+      'Enter your email address and we will send you a link to reset your password.';
 
   @override
   String get emailAddressHint => 'Email address';
@@ -874,7 +910,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get invalidEmailError => 'The email address is not valid';
 
   @override
-  String get couldNotSendResetEmail => 'Could not send reset email. Please try again.';
+  String get couldNotSendResetEmail =>
+      'Could not send reset email. Please try again.';
 
   @override
   String get enterEmailAndPassword => 'Please enter your email and password';
@@ -886,13 +923,15 @@ class AppLocalizationsSw extends AppLocalizations {
   String get emailAlreadyInUse => 'This email address is already in use';
 
   @override
-  String get weakPassword => 'Password is too weak. Please choose a stronger one.';
+  String get weakPassword =>
+      'Password is too weak. Please choose a stronger one.';
 
   @override
   String get createAccount => 'Create Account';
 
   @override
-  String get signInSubtitle => 'Sign in to access your profile, friends, and chats.';
+  String get signInSubtitle =>
+      'Sign in to access your profile, friends, and chats.';
 
   @override
   String get passwordHint => 'Password';
@@ -916,7 +955,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get profileNotSetUp => 'Profile not set up';
 
   @override
-  String get chooseUsernameSubtitle => 'Choose a username to start connecting with other players.';
+  String get chooseUsernameSubtitle =>
+      'Choose a username to start connecting with other players.';
 
   @override
   String get createProfile => 'Create Profile';
@@ -962,7 +1002,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get linkedAccountsTitle => 'Linked Accounts';
 
   @override
-  String get linkAccountsHint => 'Link your Minecraft accounts to show your skins and stats.';
+  String get linkAccountsHint =>
+      'Link your Minecraft accounts to show your skins and stats.';
 
   @override
   String get linkXbox => 'Link Xbox';
@@ -1029,13 +1070,15 @@ class AppLocalizationsSw extends AppLocalizations {
   String get skinsNoAccountsTitle => 'No Minecraft accounts linked';
 
   @override
-  String get skinsNoAccountsSubtitle => 'Link a Java or Bedrock account to view your skins.';
+  String get skinsNoAccountsSubtitle =>
+      'Link a Java or Bedrock account to view your skins.';
 
   @override
   String get skinsSignInTitle => 'Sign in to view your skins';
 
   @override
-  String get skinsSignInSubtitle => 'Sign in and link your Minecraft accounts to see your skins here.';
+  String get skinsSignInSubtitle =>
+      'Sign in and link your Minecraft accounts to see your skins here.';
 
   @override
   String get skinsMustBe64 => 'Skin must be 64×64 pixels';
@@ -1085,7 +1128,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get wikiCouldNotLoadPages => 'Could not load pages. Please try again.';
 
   @override
-  String get wikiCouldNotReach => 'Could not reach the wiki. Check your connection.';
+  String get wikiCouldNotReach =>
+      'Could not reach the wiki. Check your connection.';
 
   @override
   String wikiNoResults(Object query) {
@@ -1221,7 +1265,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get wikiStatusEffects => 'Status Effects';
 
   @override
-  String get chooseUniqueUsername => 'Chagua jina la mtumiaji la kipekee kuanza.';
+  String get chooseUniqueUsername =>
+      'Chagua jina la mtumiaji la kipekee kuanza.';
 
   @override
   String get usernameFieldLabel => 'Jina la mtumiaji';
@@ -1230,7 +1275,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get usernameExampleHint => 'mf. CoolPlayer123';
 
   @override
-  String get usernameFormatHint => 'Herufi 3–20 · herufi, nambari na vistari chini tu';
+  String get usernameFormatHint =>
+      'Herufi 3–20 · herufi, nambari na vistari chini tu';
 
   @override
   String get displayNameOptional => 'Jina la kuonyesha (hiari)';
@@ -1242,13 +1288,15 @@ class AppLocalizationsSw extends AppLocalizations {
   String get usernameRequired => 'Jina la mtumiaji linahitajika';
 
   @override
-  String get usernameFormatError => 'Jina la mtumiaji lazima liwe na herufi 3–20 na liwe na herufi, nambari na vistari chini tu';
+  String get usernameFormatError =>
+      'Jina la mtumiaji lazima liwe na herufi 3–20 na liwe na herufi, nambari na vistari chini tu';
 
   @override
   String get usernameTaken => 'Jina hili la mtumiaji tayari limechukuliwa';
 
   @override
-  String get noConnectionError => 'Hakuna muunganiko. Angalia mtandao wako na ujaribu tena.';
+  String get noConnectionError =>
+      'Hakuna muunganiko. Angalia mtandao wako na ujaribu tena.';
 
   @override
   String get home => 'Nyumbani';
@@ -1282,7 +1330,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get paywallSavePercent => 'Save ~17%';
 
   @override
-  String get paywallSubtitle => 'Track more servers and get notified\nwhen they go online or offline.';
+  String get paywallSubtitle =>
+      'Track more servers and get notified\nwhen they go online or offline.';
 
   @override
   String paywallSlotLabel(Object slots) {
@@ -1358,34 +1407,40 @@ class AppLocalizationsSw extends AppLocalizations {
   String get dataSourcesSection => 'Data Sources & Credits';
 
   @override
-  String get creditMinecraftWikiSubtitle => 'Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.';
+  String get creditMinecraftWikiSubtitle =>
+      'Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
 
   @override
-  String get creditMojangSubtitle => 'Java player skins, UUIDs, and profile data via the official Mojang API.';
+  String get creditMojangSubtitle =>
+      'Java player skins, UUIDs, and profile data via the official Mojang API.';
 
   @override
   String get creditGeyserTitle => 'GeyserMC';
 
   @override
-  String get creditGeyserSubtitle => 'Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.';
+  String get creditGeyserSubtitle =>
+      'Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.';
 
   @override
   String get creditXboxTitle => 'Xbox / Microsoft';
 
   @override
-  String get creditXboxSubtitle => 'Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.';
+  String get creditXboxSubtitle =>
+      'Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.';
 
   @override
   String get aboutMCCompanionSection => 'About MCCompanion';
 
   @override
-  String get aboutMCCompanionDisclaimer => 'MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.';
+  String get aboutMCCompanionDisclaimer =>
+      'MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.';
 
   @override
-  String get minecraftTrademark => '\"Minecraft\" is a trademark of Microsoft Corporation.';
+  String get minecraftTrademark =>
+      '\"Minecraft\" is a trademark of Microsoft Corporation.';
 
   @override
   String get nldServerLabelShort => 'MCCompanion Server';
@@ -1445,7 +1500,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get xboxSignInWithMicrosoft => 'Sign in with Microsoft';
 
   @override
-  String get xboxGoToLink => 'Go to the link below and enter the code to connect your Xbox account.';
+  String get xboxGoToLink =>
+      'Go to the link below and enter the code to connect your Xbox account.';
 
   @override
   String get xboxYourCode => 'Your code';
@@ -1466,7 +1522,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get xboxCodeCopied => 'Code copied to clipboard';
 
   @override
-  String get xboxCouldNotStart => 'Could not start Xbox login. Please try again.';
+  String get xboxCouldNotStart =>
+      'Could not start Xbox login. Please try again.';
 
   @override
   String get xboxCodeExpired => 'The code expired. Please try again.';
@@ -1542,7 +1599,8 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get trackerLimitReached => 'You\'ve reached your server limit. Upgrade to track more servers.';
+  String get trackerLimitReached =>
+      'You\'ve reached your server limit. Upgrade to track more servers.';
 
   @override
   String get upgradeButton => 'Upgrade';
@@ -1557,7 +1615,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get javaSignInWithMicrosoft => 'Sign in with Microsoft';
 
   @override
-  String get javaGoToLink => 'Go to the link below and enter the code to connect your Minecraft Java Edition account.';
+  String get javaGoToLink =>
+      'Go to the link below and enter the code to connect your Minecraft Java Edition account.';
 
   @override
   String get javaYourCode => 'Your code';
@@ -1578,13 +1637,15 @@ class AppLocalizationsSw extends AppLocalizations {
   String get javaNoJavaTitle => 'No Java Edition found';
 
   @override
-  String get javaNoJavaBody => 'The Microsoft account you signed in with does not own Minecraft Java Edition.';
+  String get javaNoJavaBody =>
+      'The Microsoft account you signed in with does not own Minecraft Java Edition.';
 
   @override
   String get javaTryDifferentAccount => 'Try a different account';
 
   @override
-  String get javaCouldNotStart => 'Could not start Microsoft login. Please try again.';
+  String get javaCouldNotStart =>
+      'Could not start Microsoft login. Please try again.';
 
   @override
   String get javaCodeExpired => 'The code expired. Please try again.';
@@ -1647,13 +1708,15 @@ class AppLocalizationsSw extends AppLocalizations {
   String get userSearchHint => 'Jina la mtumiaji, gamertag au jina la Java…';
 
   @override
-  String get userSearchSub => 'Tafuta kwa jina la mtumiaji, gamertag ya Xbox au jina la Java';
+  String get userSearchSub =>
+      'Tafuta kwa jina la mtumiaji, gamertag ya Xbox au jina la Java';
 
   @override
   String get onlineStatus => 'Mtandaoni';
 
   @override
-  String get upgradeWindowsHint => 'Uboreshaji unapatikana kwenye Microsoft Store';
+  String get upgradeWindowsHint =>
+      'Uboreshaji unapatikana kwenye Microsoft Store';
 
   @override
   String get chatEmptyHint => 'Kuwa wa kwanza kusema kitu!';
@@ -1688,10 +1751,12 @@ class AppLocalizationsSw extends AppLocalizations {
   String get feedbackTitleLabel => 'Kichwa';
 
   @override
-  String get feedbackTitleHintBug => 'mfano: Programu inaanguka wakati wa kufungua kihariri cha ngozi';
+  String get feedbackTitleHintBug =>
+      'mfano: Programu inaanguka wakati wa kufungua kihariri cha ngozi';
 
   @override
-  String get feedbackTitleHintFeature => 'mfano: Onyesha ping ya mchezaji kwenye orodha ya seva';
+  String get feedbackTitleHintFeature =>
+      'mfano: Onyesha ping ya mchezaji kwenye orodha ya seva';
 
   @override
   String get feedbackWhatHappened => 'Nini kilitokea?';
@@ -1700,10 +1765,12 @@ class AppLocalizationsSw extends AppLocalizations {
   String get feedbackDescribeIdea => 'Elezea wazo lako';
 
   @override
-  String get feedbackDescHintBug => 'Elezea hitilafu — ulifanya nini, ulitegemea nini na badala yake nini kilitokea?';
+  String get feedbackDescHintBug =>
+      'Elezea hitilafu — ulifanya nini, ulitegemea nini na badala yake nini kilitokea?';
 
   @override
-  String get feedbackDescHintFeature => 'Eleza unachotaka na kwa nini itakuwa ya manufaa.';
+  String get feedbackDescHintFeature =>
+      'Eleza unachotaka na kwa nini itakuwa ya manufaa.';
 
   @override
   String get feedbackEmailLabel => 'Barua pepe';
@@ -1712,7 +1779,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get feedbackEmailHint => 'Ili tuweze kukuwasiliana';
 
   @override
-  String get feedbackEmailNote => 'Barua pepe yako haitashirikiwa hadharani kamwe.';
+  String get feedbackEmailNote =>
+      'Barua pepe yako haitashirikiwa hadharani kamwe.';
 
   @override
   String get feedbackSubmitBug => 'Tuma Ripoti ya Hitilafu';
@@ -1721,13 +1789,15 @@ class AppLocalizationsSw extends AppLocalizations {
   String get feedbackSubmitFeature => 'Tuma Ombi la Kipengele';
 
   @override
-  String get feedbackDisclaimer => 'Inaunda suala la umma kwenye GitHub · Usijumuishe nywila';
+  String get feedbackDisclaimer =>
+      'Inaunda suala la umma kwenye GitHub · Usijumuishe nywila';
 
   @override
   String get feedbackSuccessTitle => 'Asante kwa maoni yako!';
 
   @override
-  String get feedbackSuccessBody => 'Ripoti yako imetumwa na suala la GitHub limeundwa. Tutaangalia haraka iwezekanavyo.';
+  String get feedbackSuccessBody =>
+      'Ripoti yako imetumwa na suala la GitHub limeundwa. Tutaangalia haraka iwezekanavyo.';
 
   @override
   String get feedbackViewOnGithub => 'Tazama kwenye GitHub';
@@ -1742,13 +1812,16 @@ class AppLocalizationsSw extends AppLocalizations {
   String get feedbackTitleTooShort => 'Kichwa lazima kiwe na angalau herufi 5.';
 
   @override
-  String get feedbackDescTooShort => 'Maelezo lazima yawe na angalau herufi 10.';
+  String get feedbackDescTooShort =>
+      'Maelezo lazima yawe na angalau herufi 10.';
 
   @override
-  String get feedbackEmailInvalid => 'Tafadhali ingiza anwani ya barua pepe halali.';
+  String get feedbackEmailInvalid =>
+      'Tafadhali ingiza anwani ya barua pepe halali.';
 
   @override
-  String get feedbackSubmitFailed => 'Imeshindwa kutuma. Tafadhali jaribu tena.';
+  String get feedbackSubmitFailed =>
+      'Imeshindwa kutuma. Tafadhali jaribu tena.';
 
   @override
   String get feedbackTileTitle => 'Ripoti hitilafu au pendekeza kipengele';
@@ -1760,22 +1833,28 @@ class AppLocalizationsSw extends AppLocalizations {
   String get feedbackTileSubtitle => 'Tusaidie kuboresha MCCompanion';
 
   @override
-  String get friendsHowToStep1 => 'Fungua programu ya Xbox kwenye simu au konsoli yako.';
+  String get friendsHowToStep1 =>
+      'Fungua programu ya Xbox kwenye simu au konsoli yako.';
 
   @override
-  String get friendsHowToStep2 => 'Ongeza moja ya boti zilizo hapa chini kama rafiki kwenye Xbox.';
+  String get friendsHowToStep2 =>
+      'Ongeza moja ya boti zilizo hapa chini kama rafiki kwenye Xbox.';
 
   @override
-  String get friendsHowToStep3 => 'Fungua Minecraft na nenda kwenye kichupo cha Marafiki.';
+  String get friendsHowToStep3 =>
+      'Fungua Minecraft na nenda kwenye kichupo cha Marafiki.';
 
   @override
-  String get friendsHowToStep4 => 'Tafuta seva yako chini ya Ulimwengu wa LAN na jiunge.';
+  String get friendsHowToStep4 =>
+      'Tafuta seva yako chini ya Ulimwengu wa LAN na jiunge.';
 
   @override
-  String get friendsHowToNote => '⚠️ Kila wakati unapotaka kucheza, lazima kwanza uanzishe hali ya Marafiki kwenye programu ya MCCompanion. Unaweza kufunga programu baada ya kuanzisha.';
+  String get friendsHowToNote =>
+      '⚠️ Kila wakati unapotaka kucheza, lazima kwanza uanzishe hali ya Marafiki kwenye programu ya MCCompanion. Unaweza kufunga programu baada ya kuanzisha.';
 
   @override
-  String get friendsBotLoadError => '⚠️ Haikuweza kupakia orodha ya boti. Jaribu tena baadaye.';
+  String get friendsBotLoadError =>
+      '⚠️ Haikuweza kupakia orodha ya boti. Jaribu tena baadaye.';
 
   @override
   String get regionEurope => 'Ulaya';
@@ -1821,7 +1900,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get rpWhatIsThis => 'Hii ni nini?';
 
   @override
-  String get rpExplanation => 'Pakiti ya rasilimali hubadilisha mwonekano wa Minecraft kwenye konsoli yako — vitalu, rangi au sauti mpya. Bandika kiungo cha faili la .mcpack hapa chini, washa na uhifadhi. MCCompanion hupakia kiotomatiki kila wakati unapoungana.';
+  String get rpExplanation =>
+      'Pakiti ya rasilimali hubadilisha mwonekano wa Minecraft kwenye konsoli yako — vitalu, rangi au sauti mpya. Bandika kiungo cha faili la .mcpack hapa chini, washa na uhifadhi. MCCompanion hupakia kiotomatiki kila wakati unapoungana.';
 
   @override
   String get rpPackUrlLabel => 'URL ya Pakiti';
@@ -1836,46 +1916,56 @@ class AppLocalizationsSw extends AppLocalizations {
   String get rpWhatWorks => 'Kinachofanya kazi';
 
   @override
-  String get rpSupportedBedrockOnly => 'Bedrock Edition pekee (.mcpack au .zip)';
+  String get rpSupportedBedrockOnly =>
+      'Bedrock Edition pekee (.mcpack au .zip)';
 
   @override
-  String get rpSupportedBedrockOnlyHint => 'Pakiti za Java hazifanyi kazi kwenye consoles.';
+  String get rpSupportedBedrockOnlyHint =>
+      'Pakiti za Java hazifanyi kazi kwenye consoles.';
 
   @override
   String get rpSupportedTexture => 'Pakiti za rasilimali na pakiti za muundo';
 
   @override
-  String get rpSupportedTextureHint => 'Hizi zinasaidiwa rasmi na hufanya kazi kwa uhakika.';
+  String get rpSupportedTextureHint =>
+      'Hizi zinasaidiwa rasmi na hufanya kazi kwa uhakika.';
 
   @override
   String get rpUnsupportedShaders => 'Vivuli, pakiti za tabia, pakiti za ngozi';
 
   @override
-  String get rpUnsupportedShadersHint => 'Hizi hazitapakiwa kwenye consoles kupitia MCCompanion.';
+  String get rpUnsupportedShadersHint =>
+      'Hizi hazitapakiwa kwenye consoles kupitia MCCompanion.';
 
   @override
   String get rpUnsupportedAddons => 'Nyongeza na mabadiliko ya UI';
 
   @override
-  String get rpUnsupportedAddonsHint => 'Wakati mwingine zinaweza kufanya kazi, lakini hazisaidiwa rasmi. Tumia kwa hatari yako.';
+  String get rpUnsupportedAddonsHint =>
+      'Wakati mwingine zinaweza kufanya kazi, lakini hazisaidiwa rasmi. Tumia kwa hatari yako.';
 
   @override
-  String get rpNoDiscord => 'Viungo vya Discord — hakuna ugani wa .mcpack na vinaisha baada ya masaa machache';
+  String get rpNoDiscord =>
+      'Viungo vya Discord — hakuna ugani wa .mcpack na vinaisha baada ya masaa machache';
 
   @override
-  String get rpNoDrive => 'Viungo vya kushiriki vya Google Drive / Dropbox — si upakuaji wa moja kwa moja';
+  String get rpNoDrive =>
+      'Viungo vya kushiriki vya Google Drive / Dropbox — si upakuaji wa moja kwa moja';
 
   @override
-  String get rpNoEncrypted => 'Seva zenye pakiti zilizosimbwa au zilindwa na nywila';
+  String get rpNoEncrypted =>
+      'Seva zenye pakiti zilizosimbwa au zilindwa na nywila';
 
   @override
   String get rpConsolePerformanceTitle => 'Utendaji wa console';
 
   @override
-  String get rpConsolePerformanceBody => 'Pakiti za muundo zenye azimio la juu zinaweza kusababisha ucheleweshaji au kuacha kufanya kazi kwenye consoles. Ukipata matatizo, badili hadi pakiti yenye azimio la chini au chagua subpackage nyepesi ikiwa pakiti inaauni.';
+  String get rpConsolePerformanceBody =>
+      'Pakiti za muundo zenye azimio la juu zinaweza kusababisha ucheleweshaji au kuacha kufanya kazi kwenye consoles. Ukipata matatizo, badili hadi pakiti yenye azimio la chini au chagua subpackage nyepesi ikiwa pakiti inaauni.';
 
   @override
-  String get rpWarnDiscord => 'Viungo vya Discord vinaisha na vitaacha kufanya kazi. Tumia seva ya kudumu badala yake.';
+  String get rpWarnDiscord =>
+      'Viungo vya Discord vinaisha na vitaacha kufanya kazi. Tumia seva ya kudumu badala yake.';
 
   @override
   String get rpWarnHttps => 'URL lazima ianze na https://';
@@ -1884,55 +1974,73 @@ class AppLocalizationsSw extends AppLocalizations {
   String get rpWarnExtension => 'URL lazima iishie .mcpack au .zip';
 
   @override
-  String get rpToastEnterUrl => 'Ingiza URL kabla ya kuwezesha kifurushi cha rasilimali.';
+  String get rpToastEnterUrl =>
+      'Ingiza URL kabla ya kuwezesha kifurushi cha rasilimali.';
 
   @override
-  String get rpToastSaved => 'Mipangilio ya kifurushi cha rasilimali imehifadhiwa.';
+  String get rpToastSaved =>
+      'Mipangilio ya kifurushi cha rasilimali imehifadhiwa.';
 
   @override
-  String get rpInvalidPackFormat => 'This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.';
+  String get rpInvalidPackFormat =>
+      'This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.';
+
+  @override
+  String get rpBehaviorContentWarning =>
+      'This pack contains behavior pack data, which won\'t work on servers. The textures will still work.';
 
   @override
   String get rpClearMinecraftTitle => 'Mara ya kwanza na pakiti hii?';
 
   @override
-  String get rpClearMinecraftBody => 'Minecraft huhifadhi pakiti za rasilimali kwenye cache ya ndani. Ikiwa uliounganika kwenye seva hii kabla ya kuwezesha pakiti ya MCCompanion, Minecraft tayari ina pakiti asili kwenye cache na haitaipakua tena toleo lililounganishwa.';
+  String get rpClearMinecraftBody =>
+      'Minecraft huhifadhi pakiti za rasilimali kwenye cache ya ndani. Ikiwa uliounganika kwenye seva hii kabla ya kuwezesha pakiti ya MCCompanion, Minecraft tayari ina pakiti asili kwenye cache na haitaipakua tena toleo lililounganishwa.';
 
   @override
-  String get rpClearStep1 => 'Fungua Minecraft kwenye konsoli yako na nenda Mipangilio → Hifadhi';
+  String get rpClearStep1 =>
+      'Fungua Minecraft kwenye konsoli yako na nenda Mipangilio → Hifadhi';
 
   @override
-  String get rpClearStep2 => 'Gonga \'Futa\' au \'Weka upya\' karibu na Pakiti za Rasilimali — hii huondoa pakiti zote zilizohifadhiwa ndani';
+  String get rpClearStep2 =>
+      'Gonga \'Futa\' au \'Weka upya\' karibu na Pakiti za Rasilimali — hii huondoa pakiti zote zilizohifadhiwa ndani';
 
   @override
-  String get rpClearStep3 => 'Unganisha tena kupitia MCCompanion — pakiti iliyochanganywa itapakuliwa kiotomatiki';
+  String get rpClearStep3 =>
+      'Unganisha tena kupitia MCCompanion — pakiti iliyochanganywa itapakuliwa kiotomatiki';
 
   @override
   String get rpRelayTitle => 'Pack inaonekana vibaya?';
 
   @override
-  String get rpRelayBody => 'Relay huhifadhi pakiti iliyounganishwa kwa saa 1 ukitumia URL ya overlay kama ufunguo wa akiba. Kulazimisha muunganiko mpya: badilisha kidogo URL ya pakiti (mfano ongeza ?v=2) na uhifadhi. Kisha futa pia akiba ya pakiti ya Minecraft — pakiti iliyounganishwa bado inatumia UUID ya seva, kwa hivyo Minecraft vinginevyo itaonyesha toleo la zamani kutoka akibani.';
+  String get rpRelayBody =>
+      'Relay huhifadhi pakiti iliyounganishwa kwa saa 1 ukitumia URL ya overlay kama ufunguo wa akiba. Kulazimisha muunganiko mpya: badilisha kidogo URL ya pakiti (mfano ongeza ?v=2) na uhifadhi. Kisha futa pia akiba ya pakiti ya Minecraft — pakiti iliyounganishwa bado inatumia UUID ya seva, kwa hivyo Minecraft vinginevyo itaonyesha toleo la zamani kutoka akibani.';
 
   @override
-  String get rpWorksGithubHint => 'Kiungo cha kupakua moja kwa moja — daima kinafikiwa';
+  String get rpWorksGithubHint =>
+      'Kiungo cha kupakua moja kwa moja — daima kinafikiwa';
 
   @override
-  String get rpWorksCloudflareHint => 'Hifadhi ya wingu ya umma — haraka na ya kuaminika';
+  String get rpWorksCloudflareHint =>
+      'Hifadhi ya wingu ya umma — haraka na ya kuaminika';
 
   @override
   String get rpWorksDirectHint => 'URL yoyote ya umma ya HTTPS .mcpack au .zip';
 
   @override
-  String get rpNoDiscordHint => 'Viungo vya Discord CDN vinaisha baada ya muda mfupi';
+  String get rpNoDiscordHint =>
+      'Viungo vya Discord CDN vinaisha baada ya muda mfupi';
 
   @override
-  String get rpNoDriveHint => 'Hakuna upakuaji wa moja kwa moja — inaelekeza kwenye ukurasa wa hakiki';
+  String get rpNoDriveHint =>
+      'Hakuna upakuaji wa moja kwa moja — inaelekeza kwenye ukurasa wa hakiki';
 
   @override
-  String get rpNoEncryptedHint => 'MCCompanion haiwezi kuchanganya maudhui ya pakiti zilizosimbwa';
+  String get rpNoEncryptedHint =>
+      'MCCompanion haiwezi kuchanganya maudhui ya pakiti zilizosimbwa';
 
   @override
-  String get rpClearWhy => 'Minecraft huhifadhi pakiti za rasilimali kwa UUID zao. Pakiti iliyounganishwa inabaki na UUID ya asili ya seva — ikiwa Minecraft tayari imehifadhi pakiti ya seva kutoka kipindi kilichopita (kabla ya MCCompanion kuwezeshwa), haitapakua toleo jipya lililounganishwa. Futa akiba ili Minecraft ipakue pakiti mpya iliyounganishwa.';
+  String get rpClearWhy =>
+      'Minecraft huhifadhi pakiti za rasilimali kwa UUID zao. Pakiti iliyounganishwa inabaki na UUID ya asili ya seva — ikiwa Minecraft tayari imehifadhi pakiti ya seva kutoka kipindi kilichopita (kabla ya MCCompanion kuwezeshwa), haitapakua toleo jipya lililounganishwa. Futa akiba ili Minecraft ipakue pakiti mpya iliyounganishwa.';
 
   @override
   String get rpUploadTab => 'Upload';
@@ -1956,7 +2064,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get rpMergerSubtitle => 'Unganisha hadi pakiti 4 za rasilimali';
 
   @override
-  String get rpMergerPriorityHint => 'Pakiti ya juu ina kipaumbele zaidi — faili zake zinashinda migogoro.';
+  String get rpMergerPriorityHint =>
+      'Pakiti ya juu ina kipaumbele zaidi — faili zake zinashinda migogoro.';
 
   @override
   String get rpMergerTopBadge => 'JUU';
@@ -1992,7 +2101,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get rpMergerSetActive => 'Weka kama pakiti ya rasilimali inayotumika';
 
   @override
-  String get rpMergerSetActiveToast => 'Imewekwa kama pakiti ya rasilimali inayotumika';
+  String get rpMergerSetActiveToast =>
+      'Imewekwa kama pakiti ya rasilimali inayotumika';
 
   @override
   String get rpMergerOpenButton => 'Unganisha pakiti za rasilimali';
@@ -2025,16 +2135,20 @@ class AppLocalizationsSw extends AppLocalizations {
   String get rpDropToUpload => 'Acha ili kupakia';
 
   @override
-  String get rpTabBrowseInfo => 'Vinjari pakiti zilizochaguliwa na MCCompanion. Gusa Tumia ili kuamsha pakiti mara moja — bila kupakia au kiungo.';
+  String get rpTabBrowseInfo =>
+      'Vinjari pakiti zilizochaguliwa na MCCompanion. Gusa Tumia ili kuamsha pakiti mara moja — bila kupakia au kiungo.';
 
   @override
-  String get rpTabUploadInfo => 'Pakia faili yako ya .mcpack au .zip. MCCompanion inihifadhi kwa usalama kwenye wingu na kuipeleka kwa konsoli yako kila unapounganisha.';
+  String get rpTabUploadInfo =>
+      'Pakia faili yako ya .mcpack au .zip. MCCompanion inihifadhi kwa usalama kwenye wingu na kuipeleka kwa konsoli yako kila unapounganisha.';
 
   @override
-  String get rpTabUrlInfo => 'Bandika kiungo cha kupakuliwa moja kwa moja kwa faili ya .mcpack au .zip. URL lazima iwe ya umma — hakuna viungo vya Discord au Google Drive.';
+  String get rpTabUrlInfo =>
+      'Bandika kiungo cha kupakuliwa moja kwa moja kwa faili ya .mcpack au .zip. URL lazima iwe ya umma — hakuna viungo vya Discord au Google Drive.';
 
   @override
-  String get rpTabMergeInfo => 'Unganisha pakiti 2 hadi 4 kuwa moja. Pakiti iliyounganishwa inapakiwa kwenye MCCompanion Cloud na kuamilishwa kiotomatiki.';
+  String get rpTabMergeInfo =>
+      'Unganisha pakiti 2 hadi 4 kuwa moja. Pakiti iliyounganishwa inapakiwa kwenye MCCompanion Cloud na kuamilishwa kiotomatiki.';
 
   @override
   String get shareLabel => 'Shiriki';
@@ -2146,10 +2260,12 @@ class AppLocalizationsSw extends AppLocalizations {
   String get skinsTabRecent => 'Za Hivi Karibuni';
 
   @override
-  String get skinsEmptyCloudSkins => 'Hakuna ngozi za wingu bado. Pakia ngozi ili kuiona hapa.';
+  String get skinsEmptyCloudSkins =>
+      'Hakuna ngozi za wingu bado. Pakia ngozi ili kuiona hapa.';
 
   @override
-  String get skinsEmptyLocalSkins => 'Hakuna ngozi bado. Unda au pakia ngozi ili kuanza.';
+  String get skinsEmptyLocalSkins =>
+      'Hakuna ngozi bado. Unda au pakia ngozi ili kuanza.';
 
   @override
   String get skinUploadToWebsite => 'Pakia kwenye tovuti';
@@ -2257,7 +2373,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get notifMarkAllRead => 'Weka alama zote kama zilizosomwa';
 
   @override
-  String get notifEmpty => 'Hakuna arifa bado. Vipendwa, maoni na shughuli za marafiki vitaonekana hapa.';
+  String get notifEmpty =>
+      'Hakuna arifa bado. Vipendwa, maoni na shughuli za marafiki vitaonekana hapa.';
 
   @override
   String get notifSomeone => 'Mtu fulani';

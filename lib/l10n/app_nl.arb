@@ -958,6 +958,7 @@
   "rpToastEnterUrl": "Voer een URL in voordat je het resourcepakket inschakelt.",
   "rpToastSaved": "Instellingen resourcepakket opgeslagen.",
   "rpInvalidPackFormat": "Dit is een Java Edition-pakket en wordt niet ondersteund. Gebruik een Bedrock Edition-resourcepakket.",
+  "rpBehaviorContentWarning": "Dit pakket bevat behavior pack-data, die werkt niet op servers. De textures werken wel gewoon.",
   "rpClearMinecraftTitle": "Eerste keer met dit pakket?",
   "rpClearMinecraftBody": "Minecraft slaat resourcepakketten lokaal op in de cache. Als je eerder verbinding hebt gemaakt met deze server vóór het inschakelen van MCCompanion's resourcepakket, heeft Minecraft het originele pakket al gecached en zal de samengevoegde versie niet opnieuw downloaden.",
   "rpClearStep1": "Open Minecraft op je console en ga naar Instellingen → Opslag",

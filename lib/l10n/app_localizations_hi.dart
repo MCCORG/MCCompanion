@@ -21,7 +21,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get noLogsYet => 'अभी तक कोई लॉग नहीं';
 
   @override
-  String get startBroadcastingToSeeOutput => 'आउटपुट देखने के लिए ब्रॉडकास्टिंग शुरू करें';
+  String get startBroadcastingToSeeOutput =>
+      'आउटपुट देखने के लिए ब्रॉडकास्टिंग शुरू करें';
 
   @override
   String get close => 'बंद करें';
@@ -45,7 +46,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get onboardingThemeTitle => 'थीम चुनें';
 
   @override
-  String get onboardingThemeSubtitle => 'आप बाद में सेटिंग में हर रंग को बदल सकते हैं।';
+  String get onboardingThemeSubtitle =>
+      'आप बाद में सेटिंग में हर रंग को बदल सकते हैं।';
 
   @override
   String get onboardingNavTitle => 'त्वरित पहुँच';
@@ -140,13 +142,15 @@ class AppLocalizationsHi extends AppLocalizations {
   String get howToJavaTitle => 'जावा मोड';
 
   @override
-  String get howToJavaSubtitle => 'MCCompanion के माध्यम से Java Edition सर्वरों से कनेक्ट करें';
+  String get howToJavaSubtitle =>
+      'MCCompanion के माध्यम से Java Edition सर्वरों से कनेक्ट करें';
 
   @override
   String get aternosSubtext => 'अपना खुद का मुफ़्त Minecraft सर्वर बनाएँ';
 
   @override
-  String get howToJavaBody => 'जावा मोड — त्वरित चरण:\n1. ऐप में जावा मोड चुनें।\n2. अपने Java Edition सर्वर का पता और पोर्ट दर्ज करें (डिफ़ॉल्ट: 25565)।\n3. \"जावा मोड शुरू करें\" दबाएँ — MCCompanion कनेक्शन को ब्रिज करेगा।\n4. Minecraft Bedrock खोलें और Friends टैब पर जाएँ।\n5. Java सर्वर से जुड़ने के लिए \"MCCompanion\" नाम वाले LAN सर्वर को चुनें।\n\n⚠️ महत्वपूर्ण चेतावनियाँ:\n- एक वैध Java Edition खाता (Microsoft) आवश्यक है।\n- कुछ सर्वर anti-cheat सिस्टम का उपयोग करते हैं जो आपके खाते का पता लगाकर उसे बैन कर सकते हैं।\n- कुछ सर्वर Bedrock क्लाइंट को स्पष्ट रूप से प्रतिबंधित करते हैं — हमेशा सर्वर नियम जाँचें।\n- इस सुविधा के उपयोग से होने वाले किसी भी अकाउंट बैन, निलंबन या अन्य अकाउंट-संबंधित समस्याओं के लिए MCCompanion जिम्मेदार नहीं है।\n- अपने जोखिम पर उपयोग करें।';
+  String get howToJavaBody =>
+      'जावा मोड — त्वरित चरण:\n1. ऐप में जावा मोड चुनें।\n2. अपने Java Edition सर्वर का पता और पोर्ट दर्ज करें (डिफ़ॉल्ट: 25565)।\n3. \"जावा मोड शुरू करें\" दबाएँ — MCCompanion कनेक्शन को ब्रिज करेगा।\n4. Minecraft Bedrock खोलें और Friends टैब पर जाएँ।\n5. Java सर्वर से जुड़ने के लिए \"MCCompanion\" नाम वाले LAN सर्वर को चुनें।\n\n⚠️ महत्वपूर्ण चेतावनियाँ:\n- एक वैध Java Edition खाता (Microsoft) आवश्यक है।\n- कुछ सर्वर anti-cheat सिस्टम का उपयोग करते हैं जो आपके खाते का पता लगाकर उसे बैन कर सकते हैं।\n- कुछ सर्वर Bedrock क्लाइंट को स्पष्ट रूप से प्रतिबंधित करते हैं — हमेशा सर्वर नियम जाँचें।\n- इस सुविधा के उपयोग से होने वाले किसी भी अकाउंट बैन, निलंबन या अन्य अकाउंट-संबंधित समस्याओं के लिए MCCompanion जिम्मेदार नहीं है।\n- अपने जोखिम पर उपयोग करें।';
 
   @override
   String get language => 'हिन्दी';
@@ -209,7 +213,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get bedrockBridge => 'बेडरॉक ब्रिज';
 
   @override
-  String get clientDisconnected => 'क्लाइंट डिस्कनेक्ट हो गया — ब्रॉडकास्ट बंद हो गया';
+  String get clientDisconnected =>
+      'क्लाइंट डिस्कनेक्ट हो गया — ब्रॉडकास्ट बंद हो गया';
 
   @override
   String get pleaseEnterServer => '⚠️ कृपया एक सर्वर पता दर्ज करें';
@@ -299,7 +304,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get manageServersTooltip => 'सर्वर प्रबंधित करें';
 
   @override
-  String get noServerYet => 'अभी तक कोई सेव किया हुआ सर्वर नहीं है।\nएक जोड़ने के लिए मैनेज पर टैप करें।';
+  String get noServerYet =>
+      'अभी तक कोई सेव किया हुआ सर्वर नहीं है।\nएक जोड़ने के लिए मैनेज पर टैप करें।';
 
   @override
   String get serverNotSelected => 'कोई सर्वर चयनित नहीं है';
@@ -317,10 +323,12 @@ class AppLocalizationsHi extends AppLocalizations {
   String get noWifi => 'Wi‑Fi पर नहीं';
 
   @override
-  String get vpnActive => 'हमें पता चला है कि आपका VPN सक्रिय है।\n\nMCCompanion का उपयोग करने से पहले कृपया अपना VPN बंद करें, नहीं तो LAN प्रसारण आपके कंसोल तक नहीं पहुंच सकता।';
+  String get vpnActive =>
+      'हमें पता चला है कि आपका VPN सक्रिय है।\n\nMCCompanion का उपयोग करने से पहले कृपया अपना VPN बंद करें, नहीं तो LAN प्रसारण आपके कंसोल तक नहीं पहुंच सकता।';
 
   @override
-  String get mobileActive => 'पता चला: मोबाइल डेटा\n\nMCCompanion को आपके कंसोल के उसी नेटवर्क पर होना चाहिए। आगे बढ़ने से पहले अपने घर के Wi‑Fi या हॉटस्पॉट से जुड़ें।';
+  String get mobileActive =>
+      'पता चला: मोबाइल डेटा\n\nMCCompanion को आपके कंसोल के उसी नेटवर्क पर होना चाहिए। आगे बढ़ने से पहले अपने घर के Wi‑Fi या हॉटस्पॉट से जुड़ें।';
 
   @override
   String get continueAnyway => 'फिर भी जारी रखें';
@@ -329,19 +337,22 @@ class AppLocalizationsHi extends AppLocalizations {
   String get sameWifi => 'एक ही Wi‑Fi नेटवर्क';
 
   @override
-  String get needSameWifi => 'जिस डिवाइस पर MCCompanion चल रहा है, वह उसी Wi‑Fi नेटवर्क पर होना चाहिए जिस पर आपका Minecraft कंसोल जुड़ा है।';
+  String get needSameWifi =>
+      'जिस डिवाइस पर MCCompanion चल रहा है, वह उसी Wi‑Fi नेटवर्क पर होना चाहिए जिस पर आपका Minecraft कंसोल जुड़ा है।';
 
   @override
   String get subscription => 'ऑनलाइन सदस्यता आवश्यक';
 
   @override
-  String get needSubscription => 'हर कंसोल के लिए अलग सक्रिय ऑनलाइन सदस्यता (Xbox Live, PS Plus, NSO) आवश्यक है। इसके बिना MCCompanion दिखाई नहीं देगा।';
+  String get needSubscription =>
+      'हर कंसोल के लिए अलग सक्रिय ऑनलाइन सदस्यता (Xbox Live, PS Plus, NSO) आवश्यक है। इसके बिना MCCompanion दिखाई नहीं देगा।';
 
   @override
   String get updateAvailable => 'अपडेट उपलब्ध है';
 
   @override
-  String get newVersion => 'ऐप का नया संस्करण उपलब्ध है।\nनवीनतम सुविधाओं और सुधारों के लिए अभी अपडेट करें।';
+  String get newVersion =>
+      'ऐप का नया संस्करण उपलब्ध है।\nनवीनतम सुविधाओं और सुधारों के लिए अभी अपडेट करें।';
 
   @override
   String get later => 'बाद में';
@@ -380,13 +391,15 @@ class AppLocalizationsHi extends AppLocalizations {
   String get nintendoInfoTitle => 'Nintendo Switch DNS मोड';
 
   @override
-  String get nintendoInfoText => 'Nintendo मोड में शुरू करें, अपना DNS सेट करें और किसी चुने हुए सर्वर से जुड़ें।';
+  String get nintendoInfoText =>
+      'Nintendo मोड में शुरू करें, अपना DNS सेट करें और किसी चुने हुए सर्वर से जुड़ें।';
 
   @override
   String get friendModeTitle => 'मित्र मोड';
 
   @override
-  String get friendModeText => 'MCCompanion के मित्र बॉट्स को मित्र के रूप में जोड़ें। मित्र मोड शुरू करें और खेलें';
+  String get friendModeText =>
+      'MCCompanion के मित्र बॉट्स को मित्र के रूप में जोड़ें। मित्र मोड शुरू करें और खेलें';
 
   @override
   String get selectedRelayCheck => 'चयनित';
@@ -397,16 +410,19 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get relayUnableConnect => 'किसी भी MCCompanion relay server से कनेक्ट नहीं हो सका। बाद में फिर प्रयास करें या अपना इंटरनेट जाँचें।';
+  String get relayUnableConnect =>
+      'किसी भी MCCompanion relay server से कनेक्ट नहीं हो सका। बाद में फिर प्रयास करें या अपना इंटरनेट जाँचें।';
 
   @override
   String get howToXboxTitle => 'Xbox / PS4-5 (LAN / प्रॉक्सी)';
 
   @override
-  String get howToXboxSubtitle => 'LAN ब्रॉडकास्ट या प्रॉक्सी के माध्यम से खेलें';
+  String get howToXboxSubtitle =>
+      'LAN ब्रॉडकास्ट या प्रॉक्सी के माध्यम से खेलें';
 
   @override
-  String get howToXboxBody => 'कैसे कनेक्ट करें (Xbox / PS4 / PS5):\r\n1. सुनिश्चित करें कि MCCompanion चलाने वाला आपका डिवाइस और आपका कंसोल एक ही लोकल नेटवर्क पर हैं।\r\n2. ऐप में अपना Minecraft server address और port दर्ज करें और \\\"ब्रॉडकास्टिंग शुरू करें\\\" दबाएँ।\r\n3. कंसोल पर Minecraft → Play खोलें → LAN Worlds या Friends टैब देखें और सूची को रिफ्रेश करें।\r\n4. जुड़ने के लिए \\\"MCCompanion\\\" नाम वाले LAN server को चुनें।\r\nनोट्स:\r\n- यदि सर्वर दिखाई नहीं देता, तो पुष्टि करें कि दोनों डिवाइस एक ही subnet पर हैं और ऐप अभी भी ब्रॉडकास्ट कर रही है।\r\n- कुछ कंसोल मॉडल या राउटर LAN discovery को ब्लॉक कर सकते हैं; जरूरत पड़ने पर ऐप या राउटर सेटिंग्स बदलकर देखें।';
+  String get howToXboxBody =>
+      'कैसे कनेक्ट करें (Xbox / PS4 / PS5):\r\n1. सुनिश्चित करें कि MCCompanion चलाने वाला आपका डिवाइस और आपका कंसोल एक ही लोकल नेटवर्क पर हैं।\r\n2. ऐप में अपना Minecraft server address और port दर्ज करें और \\\"ब्रॉडकास्टिंग शुरू करें\\\" दबाएँ।\r\n3. कंसोल पर Minecraft → Play खोलें → LAN Worlds या Friends टैब देखें और सूची को रिफ्रेश करें।\r\n4. जुड़ने के लिए \\\"MCCompanion\\\" नाम वाले LAN server को चुनें।\r\nनोट्स:\r\n- यदि सर्वर दिखाई नहीं देता, तो पुष्टि करें कि दोनों डिवाइस एक ही subnet पर हैं और ऐप अभी भी ब्रॉडकास्ट कर रही है।\r\n- कुछ कंसोल मॉडल या राउटर LAN discovery को ब्लॉक कर सकते हैं; जरूरत पड़ने पर ऐप या राउटर सेटिंग्स बदलकर देखें।';
 
   @override
   String get howToNintendoTitle => 'Nintendo Switch (DNS मोड)';
@@ -415,16 +431,19 @@ class AppLocalizationsHi extends AppLocalizations {
   String get howToNintendoSubtitle => 'Switch के लिए DNS रिले निर्देश';
 
   @override
-  String get howToNintendoBody => 'Nintendo Switch — DNS मोड (स्टेप-बाय-स्टेप):\r\n1. ऐप में \\\"Nintendo\\\" मोड सक्षम करें और एक रिले सर्वर (EU या US) चुनें।\r\n2. DNS IP को रिले तक भेजने के लिए \\\"DNS Config भेजें\\\" पर टैप करें।\r\n3. अपने Nintendo Switch पर System Settings → Internet → Internet Settings → (your network) → Change Settings → DNS पर जाएँ और Primary DNS को रिले IP पर सेट करें।\r\n4. Minecraft खोलें और किसी सार्वजनिक सर्वर से जुड़ें; रिले DNS का उपयोग करते हुए आपको आपके सर्वर पर रीडायरेक्ट कर दिया जाएगा।\r\nनोट्स:\r\n- DNS मोड LAN सर्वर ब्रॉडकास्ट नहीं करता; यह गेम ट्रैफ़िक को रिले के माध्यम से रूट करता है।\r\n- काम पूरा होने के बाद यदि सामान्य नेटवर्क व्यवहार चाहिए, तो DNS वापस बदल दें।';
+  String get howToNintendoBody =>
+      'Nintendo Switch — DNS मोड (स्टेप-बाय-स्टेप):\r\n1. ऐप में \\\"Nintendo\\\" मोड सक्षम करें और एक रिले सर्वर (EU या US) चुनें।\r\n2. DNS IP को रिले तक भेजने के लिए \\\"DNS Config भेजें\\\" पर टैप करें।\r\n3. अपने Nintendo Switch पर System Settings → Internet → Internet Settings → (your network) → Change Settings → DNS पर जाएँ और Primary DNS को रिले IP पर सेट करें।\r\n4. Minecraft खोलें और किसी सार्वजनिक सर्वर से जुड़ें; रिले DNS का उपयोग करते हुए आपको आपके सर्वर पर रीडायरेक्ट कर दिया जाएगा।\r\nनोट्स:\r\n- DNS मोड LAN सर्वर ब्रॉडकास्ट नहीं करता; यह गेम ट्रैफ़िक को रिले के माध्यम से रूट करता है।\r\n- काम पूरा होने के बाद यदि सामान्य नेटवर्क व्यवहार चाहिए, तो DNS वापस बदल दें।';
 
   @override
   String get howToFriendsTitle => 'मित्र मोड';
 
   @override
-  String get howToFriendsSubtitle => 'मित्रों को आमंत्रित करें और LAN के माध्यम से जुड़ें';
+  String get howToFriendsSubtitle =>
+      'मित्रों को आमंत्रित करें और LAN के माध्यम से जुड़ें';
 
   @override
-  String get howToFriendsBody => 'मित्र मोड — त्वरित चरण:\r\n1. यदि आवश्यक हो, तो अपने कंसोल या प्लेटफ़ॉर्म पर MCCompanion friend account (relay friend) जोड़ें।\r\n2. ऐप में मित्र मोड सक्षम करें और रिले configuration भेजें (यदि लागू हो)।\r\n3. अपने कंसोल पर Minecraft → Friends खोलें और LAN Worlds खोजें — आपका सर्वर वहाँ LAN world के रूप में दिखाई देना चाहिए।\r\n4. मित्रों के साथ अपने सर्वर से जुड़ने के लिए उसे चुनें।\r\nनोट्स:\r\n- सुनिश्चित करें कि आप और आपके मित्र एक जैसे NAT/settings का उपयोग कर रहे हैं जो friend presence की अनुमति देते हैं।\r\n- मित्र मोड प्लेटफ़ॉर्म के friend features पर निर्भर करता है और friend requests स्वीकार करने की आवश्यकता हो सकती है।';
+  String get howToFriendsBody =>
+      'मित्र मोड — त्वरित चरण:\r\n1. यदि आवश्यक हो, तो अपने कंसोल या प्लेटफ़ॉर्म पर MCCompanion friend account (relay friend) जोड़ें।\r\n2. ऐप में मित्र मोड सक्षम करें और रिले configuration भेजें (यदि लागू हो)।\r\n3. अपने कंसोल पर Minecraft → Friends खोलें और LAN Worlds खोजें — आपका सर्वर वहाँ LAN world के रूप में दिखाई देना चाहिए।\r\n4. मित्रों के साथ अपने सर्वर से जुड़ने के लिए उसे चुनें।\r\nनोट्स:\r\n- सुनिश्चित करें कि आप और आपके मित्र एक जैसे NAT/settings का उपयोग कर रहे हैं जो friend presence की अनुमति देते हैं।\r\n- मित्र मोड प्लेटफ़ॉर्म के friend features पर निर्भर करता है और friend requests स्वीकार करने की आवश्यकता हो सकती है।';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion दिखाई नहीं दे रहा';
@@ -433,16 +452,19 @@ class AppLocalizationsHi extends AppLocalizations {
   String get helpMCCompanionSubtitle => 'LAN खोज संबंधी समस्याओं का समाधान';
 
   @override
-  String get helpMCCompanionBody => 'यदि सर्वर आपके कंसोल पर दिखाई नहीं दे रहा है, तो ये चरण आज़माएँ:\r\n\r\n✅ बुनियादी जाँच:\r\n1. एक ही WiFi नेटवर्क - आपका फ़ोन/टैबलेट और कंसोल एक ही WiFi पर होना चाहिए\r\n2. सही सर्वर पता - IP और port दोबारा जाँचें (डिफ़ॉल्ट: 19132)\r\n3. ब्रॉडकास्टिंग सक्रिय - पुष्टि करें कि MCCompanion \\\"Broadcasting\\\" स्थिति दिखा रहा है\r\n\r\n🔄 त्वरित समाधान:\r\n• ऐप को पुनः आरंभ करें: ब्रॉडकास्टिंग बंद करें, MCCompanion को पूरी तरह बंद करें, फिर दोबारा खोलकर प्रयास करें\r\n• अपने कंसोल को पुनः आरंभ करें: कभी-कभी LAN games का पता लगाने के लिए कंसोल को रिफ्रेश की आवश्यकता होती है\r\n• Friends/LAN टैब जाँचें: सर्वर \\\"Friends\\\" या \\\"LAN Games\\\" के अंतर्गत दिखाई देता है, server list में नहीं\r\n• ब्रॉडकास्टिंग शुरू करने के बाद 10-15 सेकंड प्रतीक्षा करें\r\n• VPN अक्षम करें: VPN लोकल ब्रॉडकास्ट को ब्लॉक कर सकते हैं\r\n\r\n⚠️ सामान्य समस्याएँ:\r\n\\\"No route found for user\\\" → सुनिश्चित करें कि दोनों डिवाइस एक ही Wi‑Fi पर हैं (Guest networks से बचें)\r\n\\\"Unable to connect to MCCompanion relay server\\\" → अपना इंटरनेट / relay status जाँचें\r\n\r\n📱 अभी भी समस्या है? MCCompanion में Debug Mode सक्षम करें और logs जाँचें, या कोई दूसरा सर्वर आज़माएँ।';
+  String get helpMCCompanionBody =>
+      'यदि सर्वर आपके कंसोल पर दिखाई नहीं दे रहा है, तो ये चरण आज़माएँ:\r\n\r\n✅ बुनियादी जाँच:\r\n1. एक ही WiFi नेटवर्क - आपका फ़ोन/टैबलेट और कंसोल एक ही WiFi पर होना चाहिए\r\n2. सही सर्वर पता - IP और port दोबारा जाँचें (डिफ़ॉल्ट: 19132)\r\n3. ब्रॉडकास्टिंग सक्रिय - पुष्टि करें कि MCCompanion \\\"Broadcasting\\\" स्थिति दिखा रहा है\r\n\r\n🔄 त्वरित समाधान:\r\n• ऐप को पुनः आरंभ करें: ब्रॉडकास्टिंग बंद करें, MCCompanion को पूरी तरह बंद करें, फिर दोबारा खोलकर प्रयास करें\r\n• अपने कंसोल को पुनः आरंभ करें: कभी-कभी LAN games का पता लगाने के लिए कंसोल को रिफ्रेश की आवश्यकता होती है\r\n• Friends/LAN टैब जाँचें: सर्वर \\\"Friends\\\" या \\\"LAN Games\\\" के अंतर्गत दिखाई देता है, server list में नहीं\r\n• ब्रॉडकास्टिंग शुरू करने के बाद 10-15 सेकंड प्रतीक्षा करें\r\n• VPN अक्षम करें: VPN लोकल ब्रॉडकास्ट को ब्लॉक कर सकते हैं\r\n\r\n⚠️ सामान्य समस्याएँ:\r\n\\\"No route found for user\\\" → सुनिश्चित करें कि दोनों डिवाइस एक ही Wi‑Fi पर हैं (Guest networks से बचें)\r\n\\\"Unable to connect to MCCompanion relay server\\\" → अपना इंटरनेट / relay status जाँचें\r\n\r\n📱 अभी भी समस्या है? MCCompanion में Debug Mode सक्षम करें और logs जाँचें, या कोई दूसरा सर्वर आज़माएँ।';
 
   @override
   String get helpMultiplayerFailedTitle => 'मल्टीप्लेयर कनेक्शन विफल';
 
   @override
-  String get helpMultiplayerFailedSubtitle => 'यह MCCompanion त्रुटि क्यों नहीं है, इसका स्पष्टीकरण';
+  String get helpMultiplayerFailedSubtitle =>
+      'यह MCCompanion त्रुटि क्यों नहीं है, इसका स्पष्टीकरण';
 
   @override
-  String get helpMultiplayerFailedBody => '⚠️ यह MCCompanion की समस्या नहीं है!\r\n\r\nMCCompanion ने आपको सफलतापूर्वक अनुरोधित सर्वर पर रीडायरेक्ट कर दिया। \\\"Multiplayer Connection Failed\\\" संदेश का अर्थ है कि लक्ष्य सर्वर इस समय पहुँच से बाहर है। संभावित कारण:\r\n\r\n• लक्ष्य Minecraft सर्वर ऑफ़लाइन है या अत्यधिक लोड में है\r\n• सर्वर को अपडेटेड client version या किसी विशेष edition की आवश्यकता है\r\n• relay और लक्ष्य सर्वर के बीच नेटवर्क समस्याएँ हैं\r\n\r\nकिसी दूसरे सर्वर से कनेक्ट करने का प्रयास करें या सर्वर के support से संपर्क करें। यदि समस्या कई सर्वरों पर बनी रहती है, तो MCCompanion में Debug Mode सक्षम करें और logs जाँचें।';
+  String get helpMultiplayerFailedBody =>
+      '⚠️ यह MCCompanion की समस्या नहीं है!\r\n\r\nMCCompanion ने आपको सफलतापूर्वक अनुरोधित सर्वर पर रीडायरेक्ट कर दिया। \\\"Multiplayer Connection Failed\\\" संदेश का अर्थ है कि लक्ष्य सर्वर इस समय पहुँच से बाहर है। संभावित कारण:\r\n\r\n• लक्ष्य Minecraft सर्वर ऑफ़लाइन है या अत्यधिक लोड में है\r\n• सर्वर को अपडेटेड client version या किसी विशेष edition की आवश्यकता है\r\n• relay और लक्ष्य सर्वर के बीच नेटवर्क समस्याएँ हैं\r\n\r\nकिसी दूसरे सर्वर से कनेक्ट करने का प्रयास करें या सर्वर के support से संपर्क करें। यदि समस्या कई सर्वरों पर बनी रहती है, तो MCCompanion में Debug Mode सक्षम करें और logs जाँचें।';
 
   @override
   String get helpNintendoDnsTitle => 'Nintendo DNS काम नहीं कर रहा';
@@ -451,7 +473,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get helpNintendoDnsSubtitle => 'सामान्य DNS / relay समस्याएँ';
 
   @override
-  String get helpNintendoDnsBody => 'यदि Nintendo DNS मोड काम नहीं कर रहा है, तो निम्नलिखित जाँचें:\r\n\r\n1. पुष्टि करें कि आपने ऐप से DNS config भेजा है (DNS Config भेजें)।\r\n2. पुष्टि करें कि आपने Switch पर relay IP को Primary DNS के रूप में लागू किया है।\r\n3. सुनिश्चित करें कि चुना गया relay server (EU/US) ऑनलाइन है और ओवरलोड नहीं है।\r\n4. कुछ नेटवर्क (जैसे captive portals) custom DNS को रोकते हैं — किसी दूसरे नेटवर्क पर परीक्षण करें।\r\n\r\nयदि समस्या बनी रहती है, तो Debug Mode सक्षम करें और logs जाँचें या Friends-mode विकल्प आज़माएँ।';
+  String get helpNintendoDnsBody =>
+      'यदि Nintendo DNS मोड काम नहीं कर रहा है, तो निम्नलिखित जाँचें:\r\n\r\n1. पुष्टि करें कि आपने ऐप से DNS config भेजा है (DNS Config भेजें)।\r\n2. पुष्टि करें कि आपने Switch पर relay IP को Primary DNS के रूप में लागू किया है।\r\n3. सुनिश्चित करें कि चुना गया relay server (EU/US) ऑनलाइन है और ओवरलोड नहीं है।\r\n4. कुछ नेटवर्क (जैसे captive portals) custom DNS को रोकते हैं — किसी दूसरे नेटवर्क पर परीक्षण करें।\r\n\r\nयदि समस्या बनी रहती है, तो Debug Mode सक्षम करें और logs जाँचें या Friends-mode विकल्प आज़माएँ।';
 
   @override
   String get helpFriendsModeTitle => 'मित्र मोड काम नहीं कर रहा';
@@ -460,7 +483,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get helpFriendsModeSubtitle => 'सामान्य मित्र समस्याएँ';
 
   @override
-  String get helpFriendsModeBody => 'मित्र मोड के लिए समस्या-निवारण सुझाव:\r\n\r\n1. सुनिश्चित करें कि relay friend account कंसोल पर जोड़ा/स्वीकार किया गया है (यदि आवश्यक हो)।\r\n2. मित्र मोड सक्षम करने के बाद गेम को पुनः आरंभ करें और Friends/LAN टैब को रिफ्रेश करें।\r\n\r\nयदि सर्वर अब भी मित्रों को दिखाई नहीं देता, तो त्रुटियाँ पहचानने के लिए Debug Mode सक्षम करें और logs जाँचें।';
+  String get helpFriendsModeBody =>
+      'मित्र मोड के लिए समस्या-निवारण सुझाव:\r\n\r\n1. सुनिश्चित करें कि relay friend account कंसोल पर जोड़ा/स्वीकार किया गया है (यदि आवश्यक हो)।\r\n2. मित्र मोड सक्षम करने के बाद गेम को पुनः आरंभ करें और Friends/LAN टैब को रिफ्रेश करें।\r\n\r\nयदि सर्वर अब भी मित्रों को दिखाई नहीं देता, तो त्रुटियाँ पहचानने के लिए Debug Mode सक्षम करें और logs जाँचें।';
 
   @override
   String get changeLanguageTitle => 'भाषा बदलें';
@@ -495,7 +519,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get trackerSignInRequired => 'साइन इन आवश्यक है';
 
   @override
-  String get trackerSignInSubtitle => 'सर्वर ट्रैक करने और ऑफलाइन सूचनाएं पाने के लिए साइन इन करें।';
+  String get trackerSignInSubtitle =>
+      'सर्वर ट्रैक करने और ऑफलाइन सूचनाएं पाने के लिए साइन इन करें।';
 
   @override
   String get signIn => 'साइन इन';
@@ -504,13 +529,15 @@ class AppLocalizationsHi extends AppLocalizations {
   String get noServersTracked => 'कोई सर्वर ट्रैक नहीं किया गया';
 
   @override
-  String get trackerEmptySubtitle => 'स्थिति मॉनिटर करने और सूचनाएं पाने के लिए एक Minecraft सर्वर जोड़ें।';
+  String get trackerEmptySubtitle =>
+      'स्थिति मॉनिटर करने और सूचनाएं पाने के लिए एक Minecraft सर्वर जोड़ें।';
 
   @override
   String get fillAllFields => 'कृपया सभी फ़ील्ड सही से भरें';
 
   @override
-  String get slotUsedUpgrade => 'आपका निःशुल्क स्लॉट उपयोग में है। अधिक सर्वर के लिए अपग्रेड करें।';
+  String get slotUsedUpgrade =>
+      'आपका निःशुल्क स्लॉट उपयोग में है। अधिक सर्वर के लिए अपग्रेड करें।';
 
   @override
   String get addServerFailed => 'सर्वर जोड़ने में विफल। अपनी जानकारी जांचें।';
@@ -561,7 +588,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get customizeLabel => 'अनुकूलित करें';
 
   @override
-  String get customizeSubtitle => 'टाइल्स को पुनर्व्यवस्थित करें और नेविगेशन अनुकूलित करें';
+  String get customizeSubtitle =>
+      'टाइल्स को पुनर्व्यवस्थित करें और नेविगेशन अनुकूलित करें';
 
   @override
   String get resetLabel => 'रीसेट';
@@ -612,7 +640,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get textColorPickerTitle => 'टेक्स्ट रंग';
 
   @override
-  String get textColorHint => 'कस्टम टेक्स्ट रंग चुनने के लिए सर्कल पर टैप करें';
+  String get textColorHint =>
+      'कस्टम टेक्स्ट रंग चुनने के लिए सर्कल पर टैप करें';
 
   @override
   String get textColorPreviewPrimary => 'प्राथमिक';
@@ -684,7 +713,8 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get reportDisclaimer => 'Reports are reviewed by our team. False reports may result in action against your account.';
+  String get reportDisclaimer =>
+      'Reports are reviewed by our team. False reports may result in action against your account.';
 
   @override
   String get reportReasonSpam => 'Spam';
@@ -735,7 +765,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get playerLookupTitle => 'Player Lookup';
 
   @override
-  String get playerLookupSubtitle => 'Search for a Java or Bedrock player by username';
+  String get playerLookupSubtitle =>
+      'Search for a Java or Bedrock player by username';
 
   @override
   String get playerLookupHint => 'Enter a username…';
@@ -817,13 +848,15 @@ class AppLocalizationsHi extends AppLocalizations {
   String get deleteAccountTitle => 'Delete Account';
 
   @override
-  String get deleteAccountBody => 'This will permanently delete your account and all data. This action cannot be undone.';
+  String get deleteAccountBody =>
+      'This will permanently delete your account and all data. This action cannot be undone.';
 
   @override
   String get deletePermanently => 'Delete Permanently';
 
   @override
-  String get couldNotDeleteAccount => 'Could not delete account. Please try again.';
+  String get couldNotDeleteAccount =>
+      'Could not delete account. Please try again.';
 
   @override
   String get removeFriendTitle => 'Remove Friend';
@@ -842,7 +875,8 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get emailDifferentMethod => 'This email is linked to a different sign-in method';
+  String get emailDifferentMethod =>
+      'This email is linked to a different sign-in method';
 
   @override
   String get googleSignInFailed => 'Google sign-in failed. Please try again.';
@@ -854,7 +888,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get resetPasswordTitle => 'Reset Password';
 
   @override
-  String get resetPasswordBody => 'Enter your email address and we will send you a link to reset your password.';
+  String get resetPasswordBody =>
+      'Enter your email address and we will send you a link to reset your password.';
 
   @override
   String get emailAddressHint => 'Email address';
@@ -874,7 +909,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get invalidEmailError => 'The email address is not valid';
 
   @override
-  String get couldNotSendResetEmail => 'Could not send reset email. Please try again.';
+  String get couldNotSendResetEmail =>
+      'Could not send reset email. Please try again.';
 
   @override
   String get enterEmailAndPassword => 'Please enter your email and password';
@@ -886,13 +922,15 @@ class AppLocalizationsHi extends AppLocalizations {
   String get emailAlreadyInUse => 'This email address is already in use';
 
   @override
-  String get weakPassword => 'Password is too weak. Please choose a stronger one.';
+  String get weakPassword =>
+      'Password is too weak. Please choose a stronger one.';
 
   @override
   String get createAccount => 'Create Account';
 
   @override
-  String get signInSubtitle => 'Sign in to access your profile, friends, and chats.';
+  String get signInSubtitle =>
+      'Sign in to access your profile, friends, and chats.';
 
   @override
   String get passwordHint => 'Password';
@@ -916,7 +954,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get profileNotSetUp => 'Profile not set up';
 
   @override
-  String get chooseUsernameSubtitle => 'Choose a username to start connecting with other players.';
+  String get chooseUsernameSubtitle =>
+      'Choose a username to start connecting with other players.';
 
   @override
   String get createProfile => 'Create Profile';
@@ -962,7 +1001,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get linkedAccountsTitle => 'Linked Accounts';
 
   @override
-  String get linkAccountsHint => 'Link your Minecraft accounts to show your skins and stats.';
+  String get linkAccountsHint =>
+      'Link your Minecraft accounts to show your skins and stats.';
 
   @override
   String get linkXbox => 'Link Xbox';
@@ -1029,13 +1069,15 @@ class AppLocalizationsHi extends AppLocalizations {
   String get skinsNoAccountsTitle => 'No Minecraft accounts linked';
 
   @override
-  String get skinsNoAccountsSubtitle => 'Link a Java or Bedrock account to view your skins.';
+  String get skinsNoAccountsSubtitle =>
+      'Link a Java or Bedrock account to view your skins.';
 
   @override
   String get skinsSignInTitle => 'Sign in to view your skins';
 
   @override
-  String get skinsSignInSubtitle => 'Sign in and link your Minecraft accounts to see your skins here.';
+  String get skinsSignInSubtitle =>
+      'Sign in and link your Minecraft accounts to see your skins here.';
 
   @override
   String get skinsMustBe64 => 'Skin must be 64×64 pixels';
@@ -1085,7 +1127,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get wikiCouldNotLoadPages => 'Could not load pages. Please try again.';
 
   @override
-  String get wikiCouldNotReach => 'Could not reach the wiki. Check your connection.';
+  String get wikiCouldNotReach =>
+      'Could not reach the wiki. Check your connection.';
 
   @override
   String wikiNoResults(Object query) {
@@ -1221,7 +1264,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get wikiStatusEffects => 'Status Effects';
 
   @override
-  String get chooseUniqueUsername => 'शुरू करने के लिए एक अनोखा उपयोगकर्ता नाम चुनें।';
+  String get chooseUniqueUsername =>
+      'शुरू करने के लिए एक अनोखा उपयोगकर्ता नाम चुनें।';
 
   @override
   String get usernameFieldLabel => 'उपयोगकर्ता नाम';
@@ -1230,7 +1274,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get usernameExampleHint => 'जैसे: CoolPlayer123';
 
   @override
-  String get usernameFormatHint => '3–20 अक्षर · केवल अक्षर, संख्याएं और अंडरस्कोर';
+  String get usernameFormatHint =>
+      '3–20 अक्षर · केवल अक्षर, संख्याएं और अंडरस्कोर';
 
   @override
   String get displayNameOptional => 'प्रदर्शन नाम (वैकल्पिक)';
@@ -1242,13 +1287,15 @@ class AppLocalizationsHi extends AppLocalizations {
   String get usernameRequired => 'उपयोगकर्ता नाम आवश्यक है';
 
   @override
-  String get usernameFormatError => 'उपयोगकर्ता नाम 3–20 अक्षर का होना चाहिए और केवल अक्षर, संख्याएं और अंडरस्कोर हो सकते हैं';
+  String get usernameFormatError =>
+      'उपयोगकर्ता नाम 3–20 अक्षर का होना चाहिए और केवल अक्षर, संख्याएं और अंडरस्कोर हो सकते हैं';
 
   @override
   String get usernameTaken => 'यह उपयोगकर्ता नाम पहले से लिया गया है';
 
   @override
-  String get noConnectionError => 'कोई कनेक्शन नहीं। अपना इंटरनेट जांचें और पुनः प्रयास करें।';
+  String get noConnectionError =>
+      'कोई कनेक्शन नहीं। अपना इंटरनेट जांचें और पुनः प्रयास करें।';
 
   @override
   String get home => 'होम';
@@ -1282,7 +1329,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get paywallSavePercent => 'Save ~17%';
 
   @override
-  String get paywallSubtitle => 'Track more servers and get notified\nwhen they go online or offline.';
+  String get paywallSubtitle =>
+      'Track more servers and get notified\nwhen they go online or offline.';
 
   @override
   String paywallSlotLabel(Object slots) {
@@ -1358,34 +1406,40 @@ class AppLocalizationsHi extends AppLocalizations {
   String get dataSourcesSection => 'Data Sources & Credits';
 
   @override
-  String get creditMinecraftWikiSubtitle => 'Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.';
+  String get creditMinecraftWikiSubtitle =>
+      'Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
 
   @override
-  String get creditMojangSubtitle => 'Java player skins, UUIDs, and profile data via the official Mojang API.';
+  String get creditMojangSubtitle =>
+      'Java player skins, UUIDs, and profile data via the official Mojang API.';
 
   @override
   String get creditGeyserTitle => 'GeyserMC';
 
   @override
-  String get creditGeyserSubtitle => 'Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.';
+  String get creditGeyserSubtitle =>
+      'Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.';
 
   @override
   String get creditXboxTitle => 'Xbox / Microsoft';
 
   @override
-  String get creditXboxSubtitle => 'Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.';
+  String get creditXboxSubtitle =>
+      'Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.';
 
   @override
   String get aboutMCCompanionSection => 'About MCCompanion';
 
   @override
-  String get aboutMCCompanionDisclaimer => 'MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.';
+  String get aboutMCCompanionDisclaimer =>
+      'MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.';
 
   @override
-  String get minecraftTrademark => '\"Minecraft\" is a trademark of Microsoft Corporation.';
+  String get minecraftTrademark =>
+      '\"Minecraft\" is a trademark of Microsoft Corporation.';
 
   @override
   String get nldServerLabelShort => 'MCCompanion Server';
@@ -1445,7 +1499,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get xboxSignInWithMicrosoft => 'Sign in with Microsoft';
 
   @override
-  String get xboxGoToLink => 'Go to the link below and enter the code to connect your Xbox account.';
+  String get xboxGoToLink =>
+      'Go to the link below and enter the code to connect your Xbox account.';
 
   @override
   String get xboxYourCode => 'Your code';
@@ -1466,7 +1521,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get xboxCodeCopied => 'Code copied to clipboard';
 
   @override
-  String get xboxCouldNotStart => 'Could not start Xbox login. Please try again.';
+  String get xboxCouldNotStart =>
+      'Could not start Xbox login. Please try again.';
 
   @override
   String get xboxCodeExpired => 'The code expired. Please try again.';
@@ -1542,7 +1598,8 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get trackerLimitReached => 'You\'ve reached your server limit. Upgrade to track more servers.';
+  String get trackerLimitReached =>
+      'You\'ve reached your server limit. Upgrade to track more servers.';
 
   @override
   String get upgradeButton => 'Upgrade';
@@ -1557,7 +1614,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get javaSignInWithMicrosoft => 'Sign in with Microsoft';
 
   @override
-  String get javaGoToLink => 'Go to the link below and enter the code to connect your Minecraft Java Edition account.';
+  String get javaGoToLink =>
+      'Go to the link below and enter the code to connect your Minecraft Java Edition account.';
 
   @override
   String get javaYourCode => 'Your code';
@@ -1578,13 +1636,15 @@ class AppLocalizationsHi extends AppLocalizations {
   String get javaNoJavaTitle => 'No Java Edition found';
 
   @override
-  String get javaNoJavaBody => 'The Microsoft account you signed in with does not own Minecraft Java Edition.';
+  String get javaNoJavaBody =>
+      'The Microsoft account you signed in with does not own Minecraft Java Edition.';
 
   @override
   String get javaTryDifferentAccount => 'Try a different account';
 
   @override
-  String get javaCouldNotStart => 'Could not start Microsoft login. Please try again.';
+  String get javaCouldNotStart =>
+      'Could not start Microsoft login. Please try again.';
 
   @override
   String get javaCodeExpired => 'The code expired. Please try again.';
@@ -1629,7 +1689,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get featureSubtitleConnector => 'कंसोल को Minecraft से कनेक्ट करें';
 
   @override
-  String get featureSubtitleSkins => 'Minecraft स्किन्स ब्राउज़ और प्रबंधित करें';
+  String get featureSubtitleSkins =>
+      'Minecraft स्किन्स ब्राउज़ और प्रबंधित करें';
 
   @override
   String get featureSubtitleWiki => 'Minecraft विश्वकोश';
@@ -1641,7 +1702,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get featureSubtitleLookup => 'Java और Bedrock प्रोफाइल खोजें';
 
   @override
-  String get featureSubtitleTracker => 'सर्वर स्थिति मॉनिटर करें और सूचनाएं पाएं';
+  String get featureSubtitleTracker =>
+      'सर्वर स्थिति मॉनिटर करें और सूचनाएं पाएं';
 
   @override
   String get userSearchHint => 'यूज़रनाम, गेमरटैग या Java नाम…';
@@ -1688,10 +1750,12 @@ class AppLocalizationsHi extends AppLocalizations {
   String get feedbackTitleLabel => 'शीर्षक';
 
   @override
-  String get feedbackTitleHintBug => 'उदा. स्किन एडिटर खोलने पर ऐप क्रैश होता है';
+  String get feedbackTitleHintBug =>
+      'उदा. स्किन एडिटर खोलने पर ऐप क्रैश होता है';
 
   @override
-  String get feedbackTitleHintFeature => 'उदा. सर्वर सूची में प्लेयर का पिंग दिखाएं';
+  String get feedbackTitleHintFeature =>
+      'उदा. सर्वर सूची में प्लेयर का पिंग दिखाएं';
 
   @override
   String get feedbackWhatHappened => 'क्या हुआ?';
@@ -1700,10 +1764,12 @@ class AppLocalizationsHi extends AppLocalizations {
   String get feedbackDescribeIdea => 'अपना विचार बताएं';
 
   @override
-  String get feedbackDescHintBug => 'बग का वर्णन करें — आपने क्या किया, क्या उम्मीद थी और इसके बजाय क्या हुआ?';
+  String get feedbackDescHintBug =>
+      'बग का वर्णन करें — आपने क्या किया, क्या उम्मीद थी और इसके बजाय क्या हुआ?';
 
   @override
-  String get feedbackDescHintFeature => 'बताएं कि आप क्या चाहते हैं और यह क्यों उपयोगी होगा।';
+  String get feedbackDescHintFeature =>
+      'बताएं कि आप क्या चाहते हैं और यह क्यों उपयोगी होगा।';
 
   @override
   String get feedbackEmailLabel => 'ईमेल';
@@ -1721,13 +1787,15 @@ class AppLocalizationsHi extends AppLocalizations {
   String get feedbackSubmitFeature => 'फीचर अनुरोध सबमिट करें';
 
   @override
-  String get feedbackDisclaimer => 'GitHub पर एक सार्वजनिक इशू बनाता है · पासवर्ड शामिल न करें';
+  String get feedbackDisclaimer =>
+      'GitHub पर एक सार्वजनिक इशू बनाता है · पासवर्ड शामिल न करें';
 
   @override
   String get feedbackSuccessTitle => 'फीडबैक के लिए धन्यवाद!';
 
   @override
-  String get feedbackSuccessBody => 'आपकी रिपोर्ट सबमिट हो गई है और GitHub पर एक इशू बनाया गया है। हम जल्द से जल्द देखेंगे।';
+  String get feedbackSuccessBody =>
+      'आपकी रिपोर्ट सबमिट हो गई है और GitHub पर एक इशू बनाया गया है। हम जल्द से जल्द देखेंगे।';
 
   @override
   String get feedbackViewOnGithub => 'GitHub पर देखें';
@@ -1739,7 +1807,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get feedbackBackToApp => 'ऐप पर वापस जाएं';
 
   @override
-  String get feedbackTitleTooShort => 'शीर्षक कम से कम 5 अक्षरों का होना चाहिए।';
+  String get feedbackTitleTooShort =>
+      'शीर्षक कम से कम 5 अक्षरों का होना चाहिए।';
 
   @override
   String get feedbackDescTooShort => 'विवरण कम से कम 10 अक्षरों का होना चाहिए।';
@@ -1748,7 +1817,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get feedbackEmailInvalid => 'कृपया एक वैध ईमेल पता दर्ज करें।';
 
   @override
-  String get feedbackSubmitFailed => 'सबमिट करने में विफल। कृपया पुनः प्रयास करें।';
+  String get feedbackSubmitFailed =>
+      'सबमिट करने में विफल। कृपया पुनः प्रयास करें।';
 
   @override
   String get feedbackTileTitle => 'एक बग रिपोर्ट करें या फीचर सुझाएं';
@@ -1763,19 +1833,23 @@ class AppLocalizationsHi extends AppLocalizations {
   String get friendsHowToStep1 => 'अपने फ़ोन या कंसोल पर Xbox ऐप खोलें।';
 
   @override
-  String get friendsHowToStep2 => 'नीचे दिए गए किसी एक बॉट को Xbox पर मित्र के रूप में जोड़ें।';
+  String get friendsHowToStep2 =>
+      'नीचे दिए गए किसी एक बॉट को Xbox पर मित्र के रूप में जोड़ें।';
 
   @override
   String get friendsHowToStep3 => 'Minecraft खोलें और Friends टैब पर जाएं।';
 
   @override
-  String get friendsHowToStep4 => 'LAN Worlds में अपना सर्वर खोजें और शामिल हों।';
+  String get friendsHowToStep4 =>
+      'LAN Worlds में अपना सर्वर खोजें और शामिल हों।';
 
   @override
-  String get friendsHowToNote => '⚠️ हर बार खेलने से पहले MCCompanion ऐप में Friends mode शुरू करें। शुरू करने के बाद ऐप बंद किया जा सकता है।';
+  String get friendsHowToNote =>
+      '⚠️ हर बार खेलने से पहले MCCompanion ऐप में Friends mode शुरू करें। शुरू करने के बाद ऐप बंद किया जा सकता है।';
 
   @override
-  String get friendsBotLoadError => '⚠️ बॉट सूची लोड नहीं हो सकी। बाद में पुनः प्रयास करें।';
+  String get friendsBotLoadError =>
+      '⚠️ बॉट सूची लोड नहीं हो सकी। बाद में पुनः प्रयास करें।';
 
   @override
   String get regionEurope => 'यूरोप';
@@ -1821,7 +1895,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get rpWhatIsThis => 'यह क्या है?';
 
   @override
-  String get rpExplanation => 'एक रिसोर्स पैक आपके कंसोल पर Minecraft का रूप बदलता है — नए ब्लॉक, रंग या आवाज़ें। नीचे .mcpack फ़ाइल का लिंक पेस्ट करें, चालू करें और सेव करें। MCCompanion हर बार कनेक्ट होने पर इसे अपने आप लोड करता है।';
+  String get rpExplanation =>
+      'एक रिसोर्स पैक आपके कंसोल पर Minecraft का रूप बदलता है — नए ब्लॉक, रंग या आवाज़ें। नीचे .mcpack फ़ाइल का लिंक पेस्ट करें, चालू करें और सेव करें। MCCompanion हर बार कनेक्ट होने पर इसे अपने आप लोड करता है।';
 
   @override
   String get rpPackUrlLabel => 'पैक URL';
@@ -1845,25 +1920,30 @@ class AppLocalizationsHi extends AppLocalizations {
   String get rpSupportedTexture => 'रिसोर्स पैक्स और टेक्सचर पैक्स';
 
   @override
-  String get rpSupportedTextureHint => 'ये आधिकारिक रूप से समर्थित हैं और विश्वसनीय रूप से काम करते हैं।';
+  String get rpSupportedTextureHint =>
+      'ये आधिकारिक रूप से समर्थित हैं और विश्वसनीय रूप से काम करते हैं।';
 
   @override
   String get rpUnsupportedShaders => 'शेडर्स, बिहेवियर पैक्स, स्किन पैक्स';
 
   @override
-  String get rpUnsupportedShadersHint => 'ये MCCompanion के माध्यम से कंसोल पर लोड नहीं होंगे।';
+  String get rpUnsupportedShadersHint =>
+      'ये MCCompanion के माध्यम से कंसोल पर लोड नहीं होंगे।';
 
   @override
   String get rpUnsupportedAddons => 'ऐड-ऑन और UI मॉड्स';
 
   @override
-  String get rpUnsupportedAddonsHint => 'कभी-कभी काम कर सकते हैं, लेकिन आधिकारिक रूप से समर्थित नहीं हैं। अपने जोखिम पर उपयोग करें।';
+  String get rpUnsupportedAddonsHint =>
+      'कभी-कभी काम कर सकते हैं, लेकिन आधिकारिक रूप से समर्थित नहीं हैं। अपने जोखिम पर उपयोग करें।';
 
   @override
-  String get rpNoDiscord => 'Discord लिंक — .mcpack एक्सटेंशन नहीं और कुछ घंटों में समाप्त हो जाते हैं';
+  String get rpNoDiscord =>
+      'Discord लिंक — .mcpack एक्सटेंशन नहीं और कुछ घंटों में समाप्त हो जाते हैं';
 
   @override
-  String get rpNoDrive => 'Google Drive / Dropbox शेयर लिंक — सीधे डाउनलोड नहीं';
+  String get rpNoDrive =>
+      'Google Drive / Dropbox शेयर लिंक — सीधे डाउनलोड नहीं';
 
   @override
   String get rpNoEncrypted => 'एन्क्रिप्टेड या पासवर्ड-सुरक्षित पैक वाले सर्वर';
@@ -1872,10 +1952,12 @@ class AppLocalizationsHi extends AppLocalizations {
   String get rpConsolePerformanceTitle => 'कंसोल प्रदर्शन';
 
   @override
-  String get rpConsolePerformanceBody => 'उच्च-रिज़ॉल्यूशन टेक्सचर पैक्स कंसोल पर लैग या क्रैश का कारण बन सकते हैं। यदि समस्याएं आती हैं, तो कम रिज़ॉल्यूशन पैक पर स्विच करें या यदि पैक समर्थन करता है तो हल्का सबपैक चुनें।';
+  String get rpConsolePerformanceBody =>
+      'उच्च-रिज़ॉल्यूशन टेक्सचर पैक्स कंसोल पर लैग या क्रैश का कारण बन सकते हैं। यदि समस्याएं आती हैं, तो कम रिज़ॉल्यूशन पैक पर स्विच करें या यदि पैक समर्थन करता है तो हल्का सबपैक चुनें।';
 
   @override
-  String get rpWarnDiscord => 'Discord लिंक समाप्त हो जाते हैं और काम करना बंद कर देंगे। इसके बजाय एक स्थायी होस्ट का उपयोग करें।';
+  String get rpWarnDiscord =>
+      'Discord लिंक समाप्त हो जाते हैं और काम करना बंद कर देंगे। इसके बजाय एक स्थायी होस्ट का उपयोग करें।';
 
   @override
   String get rpWarnHttps => 'URL https:// से शुरू होना चाहिए';
@@ -1884,55 +1966,71 @@ class AppLocalizationsHi extends AppLocalizations {
   String get rpWarnExtension => 'URL .mcpack या .zip से समाप्त होना चाहिए';
 
   @override
-  String get rpToastEnterUrl => 'रिसोर्स पैक सक्षम करने से पहले एक URL दर्ज करें।';
+  String get rpToastEnterUrl =>
+      'रिसोर्स पैक सक्षम करने से पहले एक URL दर्ज करें।';
 
   @override
   String get rpToastSaved => 'रिसोर्स पैक सेटिंग्स सहेजी गईं।';
 
   @override
-  String get rpInvalidPackFormat => 'This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.';
+  String get rpInvalidPackFormat =>
+      'This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.';
+
+  @override
+  String get rpBehaviorContentWarning =>
+      'This pack contains behavior pack data, which won\'t work on servers. The textures will still work.';
 
   @override
   String get rpClearMinecraftTitle => 'पहली बार इस पैक के साथ?';
 
   @override
-  String get rpClearMinecraftBody => 'Minecraft रिसोर्स पैक को लोकल में कैश करता है। अगर आपने MCCompanion का पैक एक्टिव करने से पहले इस सर्वर से कनेक्ट किया था, तो Minecraft ने ओरिजिनल पैक कैश कर लिया है।';
+  String get rpClearMinecraftBody =>
+      'Minecraft रिसोर्स पैक को लोकल में कैश करता है। अगर आपने MCCompanion का पैक एक्टिव करने से पहले इस सर्वर से कनेक्ट किया था, तो Minecraft ने ओरिजिनल पैक कैश कर लिया है।';
 
   @override
-  String get rpClearStep1 => 'अपने कंसोल पर Minecraft खोलें और Settings → Storage में जाएं';
+  String get rpClearStep1 =>
+      'अपने कंसोल पर Minecraft खोलें और Settings → Storage में जाएं';
 
   @override
-  String get rpClearStep2 => 'Resource Packs के बगल में ‘Clear’ या ‘Reset’ दबाएं — यह सभी लोकली कैश्ड पैक हटा देगा';
+  String get rpClearStep2 =>
+      'Resource Packs के बगल में ‘Clear’ या ‘Reset’ दबाएं — यह सभी लोकली कैश्ड पैक हटा देगा';
 
   @override
-  String get rpClearStep3 => 'MCCompanion के ज़रिए फिर से कनेक्ट करें — मर्ज किया गया पैक अपने आप डाउनलोड हो जाएगा';
+  String get rpClearStep3 =>
+      'MCCompanion के ज़रिए फिर से कनेक्ट करें — मर्ज किया गया पैक अपने आप डाउनलोड हो जाएगा';
 
   @override
   String get rpRelayTitle => 'पैक ठीक नहीं दिख रहा?';
 
   @override
-  String get rpRelayBody => 'रिले आपकी overlay URL को key के रूप में उपयोग करके merged pack को 1 घंटे तक cache करता है। नई merge के लिए: pack URL थोड़ा बदलें (जैसे ?v=2 जोड़ें) और save करें। इसके बाद Minecraft का pack cache भी साफ़ करें — merged pack अभी भी server का UUID उपयोग करता है, इसलिए Minecraft वरना पुराना cached version दिखाता रहेगा।';
+  String get rpRelayBody =>
+      'रिले आपकी overlay URL को key के रूप में उपयोग करके merged pack को 1 घंटे तक cache करता है। नई merge के लिए: pack URL थोड़ा बदलें (जैसे ?v=2 जोड़ें) और save करें। इसके बाद Minecraft का pack cache भी साफ़ करें — merged pack अभी भी server का UUID उपयोग करता है, इसलिए Minecraft वरना पुराना cached version दिखाता रहेगा।';
 
   @override
   String get rpWorksGithubHint => 'सीधा डाउनलोड लिंक — हमेशा उपलब्ध';
 
   @override
-  String get rpWorksCloudflareHint => 'पब्लिक क्लाउड स्टोरेज — तेज़ और भरोसेमंद';
+  String get rpWorksCloudflareHint =>
+      'पब्लिक क्लाउड स्टोरेज — तेज़ और भरोसेमंद';
 
   @override
   String get rpWorksDirectHint => 'कोई भी सार्वजनिक HTTPS .mcpack या .zip URL';
 
   @override
-  String get rpNoDiscordHint => 'Discord CDN लिंक थोड़े समय बाद समाप्त हो जाते हैं';
+  String get rpNoDiscordHint =>
+      'Discord CDN लिंक थोड़े समय बाद समाप्त हो जाते हैं';
 
   @override
-  String get rpNoDriveHint => 'सीधा डाउनलोड नहीं — प्रीव्यू पेज पर रीडायरेक्ट करता है';
+  String get rpNoDriveHint =>
+      'सीधा डाउनलोड नहीं — प्रीव्यू पेज पर रीडायरेक्ट करता है';
 
   @override
-  String get rpNoEncryptedHint => 'MCCompanion एन्क्रिप्टेड पैक मर्ज नहीं कर सकता';
+  String get rpNoEncryptedHint =>
+      'MCCompanion एन्क्रिप्टेड पैक मर्ज नहीं कर सकता';
 
   @override
-  String get rpClearWhy => 'Minecraft रिसोर्स पैक को उनके UUID से कैश करता है। मर्ज किया गया पैक सर्वर का मूल UUID रखता है — अगर Minecraft ने पहले से किसी पुरानी सेशन में (MCCompanion चालू होने से पहले) सर्वर का पैक कैश किया हुआ है, तो वह नई मर्ज की गई वर्शन डाउनलोड नहीं करेगा। कैश साफ़ करें ताकि Minecraft ताज़ा मर्ज किया पैक लोड करे।';
+  String get rpClearWhy =>
+      'Minecraft रिसोर्स पैक को उनके UUID से कैश करता है। मर्ज किया गया पैक सर्वर का मूल UUID रखता है — अगर Minecraft ने पहले से किसी पुरानी सेशन में (MCCompanion चालू होने से पहले) सर्वर का पैक कैश किया हुआ है, तो वह नई मर्ज की गई वर्शन डाउनलोड नहीं करेगा। कैश साफ़ करें ताकि Minecraft ताज़ा मर्ज किया पैक लोड करे।';
 
   @override
   String get rpUploadTab => 'Upload';
@@ -1956,7 +2054,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get rpMergerSubtitle => '4 तक रिसोर्स पैक संयोजित करें';
 
   @override
-  String get rpMergerPriorityHint => 'शीर्ष पैक की उच्चतम प्राथमिकता है — इसकी फ़ाइलें विवादों में जीतती हैं।';
+  String get rpMergerPriorityHint =>
+      'शीर्ष पैक की उच्चतम प्राथमिकता है — इसकी फ़ाइलें विवादों में जीतती हैं।';
 
   @override
   String get rpMergerTopBadge => 'शीर्ष';
@@ -1992,7 +2091,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get rpMergerSetActive => 'सक्रिय रिसोर्स पैक के रूप में सेट करें';
 
   @override
-  String get rpMergerSetActiveToast => 'सक्रिय रिसोर्स पैक के रूप में सेट किया गया';
+  String get rpMergerSetActiveToast =>
+      'सक्रिय रिसोर्स पैक के रूप में सेट किया गया';
 
   @override
   String get rpMergerOpenButton => 'रिसोर्स पैक मर्ज करें';
@@ -2025,16 +2125,20 @@ class AppLocalizationsHi extends AppLocalizations {
   String get rpDropToUpload => 'अपलोड करने के लिए छोड़ें';
 
   @override
-  String get rpTabBrowseInfo => 'MCCompanion द्वारा चुने गए पैक ब्राउज़ करें। तुरंत पैक सक्रिय करने के लिए उपयोग करें टैप करें — कोई अपलोड या लिंक की जरूरत नहीं।';
+  String get rpTabBrowseInfo =>
+      'MCCompanion द्वारा चुने गए पैक ब्राउज़ करें। तुरंत पैक सक्रिय करने के लिए उपयोग करें टैप करें — कोई अपलोड या लिंक की जरूरत नहीं।';
 
   @override
-  String get rpTabUploadInfo => 'अपनी खुद की .mcpack या .zip फ़ाइल अपलोड करें। MCCompanion इसे क्लाउड में सुरक्षित रखता है और हर बार कनेक्ट होने पर आपके कंसोल पर भेजता है।';
+  String get rpTabUploadInfo =>
+      'अपनी खुद की .mcpack या .zip फ़ाइल अपलोड करें। MCCompanion इसे क्लाउड में सुरक्षित रखता है और हर बार कनेक्ट होने पर आपके कंसोल पर भेजता है।';
 
   @override
-  String get rpTabUrlInfo => '.mcpack या .zip फ़ाइल का सीधा डाउनलोड लिंक पेस्ट करें। URL सार्वजनिक रूप से accessible होनी चाहिए — Discord या Google Drive लिंक नहीं।';
+  String get rpTabUrlInfo =>
+      '.mcpack या .zip फ़ाइल का सीधा डाउनलोड लिंक पेस्ट करें। URL सार्वजनिक रूप से accessible होनी चाहिए — Discord या Google Drive लिंक नहीं।';
 
   @override
-  String get rpTabMergeInfo => '2 से 4 पैक को एक में मिलाएं। मर्ज किया गया पैक MCCompanion Cloud पर अपलोड होता है और स्वतः सक्रिय हो जाता है।';
+  String get rpTabMergeInfo =>
+      '2 से 4 पैक को एक में मिलाएं। मर्ज किया गया पैक MCCompanion Cloud पर अपलोड होता है और स्वतः सक्रिय हो जाता है।';
 
   @override
   String get shareLabel => 'शेयर करें';
@@ -2146,10 +2250,12 @@ class AppLocalizationsHi extends AppLocalizations {
   String get skinsTabRecent => 'हाल के';
 
   @override
-  String get skinsEmptyCloudSkins => 'अभी तक कोई क्लाउड स्किन नहीं। इसे यहाँ देखने के लिए एक स्किन अपलोड करें।';
+  String get skinsEmptyCloudSkins =>
+      'अभी तक कोई क्लाउड स्किन नहीं। इसे यहाँ देखने के लिए एक स्किन अपलोड करें।';
 
   @override
-  String get skinsEmptyLocalSkins => 'अभी तक कोई स्किन नहीं। शुरू करने के लिए एक स्किन बनाएँ या अपलोड करें।';
+  String get skinsEmptyLocalSkins =>
+      'अभी तक कोई स्किन नहीं। शुरू करने के लिए एक स्किन बनाएँ या अपलोड करें।';
 
   @override
   String get skinUploadToWebsite => 'वेबसाइट पर अपलोड करें';
@@ -2257,7 +2363,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get notifMarkAllRead => 'सभी को पढ़ा हुआ चिह्नित करें';
 
   @override
-  String get notifEmpty => 'अभी कोई सूचना नहीं। लाइक, टिप्पणियां और मित्र गतिविधि यहां दिखेंगी।';
+  String get notifEmpty =>
+      'अभी कोई सूचना नहीं। लाइक, टिप्पणियां और मित्र गतिविधि यहां दिखेंगी।';
 
   @override
   String get notifSomeone => 'किसी ने';

@@ -20,7 +20,8 @@ class _PackEntry {
   final String path;
   final String name;
   final int? size;
-  _PackEntry({required this.id, required this.path, required this.name, required this.size});
+  final bool hasBehaviorContent;
+  _PackEntry({required this.id, required this.path, required this.name, required this.size, this.hasBehaviorContent = false});
 }
 
 class _SavedMerge {
@@ -107,8 +108,6 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
     await prefs.setString(_kSavedKey, jsonEncode(_saved.map((m) => m.toJson()).toList()));
   }
 
-  // Converts a SHA256 hex string to a UUID v4-formatted string.
-  // The UUID is deterministic for the same content — same merge = same UUID.
   static String _hashToUuid(String hash) {
     final h = hash.padRight(32, '0').substring(0, 32);
     return '${h.substring(0, 8)}-${h.substring(8, 12)}-4${h.substring(13, 16)}-${h.substring(16, 20)}-${h.substring(20, 32)}';
@@ -121,46 +120,48 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
     return '${(bytes / 1024 / 1024).toStringAsFixed(1)} MB';
   }
 
+  bool _validatePack(PackInspection inspection) {
+    if (!mounted) return false;
+    if (inspection.format != PackFormat.bedrock) {
+      AppToast.show(context, message: AppLocalizations.of(context)!.rpInvalidPackFormat, icon: Icons.error_outline_rounded, color: Colors.red);
+      return false;
+    }
+    return true;
+  }
+
   Future<void> _addPackFromPath(String path, {int? size}) async {
     if (_packs.length >= 4) return;
-    String name = path.split('/').last.replaceAll(RegExp(r'\.(zip|mcpack)$', caseSensitive: false), '');
+    List<int> bytes;
     try {
-      final bytes = await File(path).readAsBytes();
-      final archive = ZipDecoder().decodeBytes(bytes);
-      for (final entry in archive) {
-        if (entry.name == 'manifest.json' || entry.name.endsWith('/manifest.json')) {
-          final json = jsonDecode(utf8.decode(entry.content as List<int>));
-          final n = json['header']?['name'] ?? json['name'];
-          if (n is String && n.isNotEmpty) { name = n; break; }
-        }
-      }
-    } catch (_) {}
-    setState(() => _packs.add(_PackEntry(id: UniqueKey().toString(), path: path, name: name, size: size)));
+      bytes = await File(path).readAsBytes();
+    } catch (_) {
+      return;
+    }
+    final inspection = inspectPackBytes(bytes);
+    if (!_validatePack(inspection)) return;
+    final name = inspection.name ??
+        path.split('/').last.replaceAll(RegExp(r'\.(zip|mcpack)$', caseSensitive: false), '');
+    setState(() => _packs.add(_PackEntry(
+      id: UniqueKey().toString(), path: path, name: name, size: size,
+      hasBehaviorContent: inspection.hasBehaviorContent,
+    )));
   }
 
   Future<void> _addPackFromBytes(List<int> bytes, {required String name, int? size}) async {
     if (_packs.length >= 4) return;
-    if (!isBedrockPack(bytes)) {
-      if (mounted) AppToast.show(context, message: AppLocalizations.of(context)!.rpInvalidPackFormat, icon: Icons.error_outline_rounded, color: Colors.red);
-      return;
-    }
-    String displayName = name.replaceAll(RegExp(r'\.(zip|mcpack)$', caseSensitive: false), '');
+    final inspection = inspectPackBytes(bytes);
+    if (!_validatePack(inspection)) return;
+    final displayName = inspection.name ??
+        name.replaceAll(RegExp(r'\.(zip|mcpack)$', caseSensitive: false), '');
     final tmp = await getTemporaryDirectory();
     final safeName = name.replaceAll(RegExp(r'[^a-zA-Z0-9._-]'), '_');
     final unique = '${DateTime.now().millisecondsSinceEpoch}_$safeName';
     final tmpFile = File('${tmp.path}/$unique');
     await tmpFile.writeAsBytes(bytes);
-    try {
-      final archive = ZipDecoder().decodeBytes(bytes);
-      for (final entry in archive) {
-        if (entry.name == 'manifest.json' || entry.name.endsWith('/manifest.json')) {
-          final json = jsonDecode(utf8.decode(entry.content as List<int>));
-          final n = json['header']?['name'] ?? json['name'];
-          if (n is String && n.isNotEmpty) { displayName = n; break; }
-        }
-      }
-    } catch (_) {}
-    setState(() => _packs.add(_PackEntry(id: UniqueKey().toString(), path: tmpFile.path, name: displayName, size: size)));
+    setState(() => _packs.add(_PackEntry(
+      id: UniqueKey().toString(), path: tmpFile.path, name: displayName, size: size,
+      hasBehaviorContent: inspection.hasBehaviorContent,
+    )));
   }
 
   Future<void> _pickPack() async {
@@ -201,28 +202,36 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
       for (int i = _packs.length - 1; i >= 0; i--) {
         final bytes = await File(_packs[i].path).readAsBytes();
         final archive = ZipDecoder().decodeBytes(bytes);
+        final prefix = packRootPrefix(archive);
         for (final entry in archive) {
-          if (entry.isFile) merged[entry.name] = entry.content as List<int>;
+          if (!entry.isFile || isJunkPackEntry(entry.name)) continue;
+          if (prefix.isNotEmpty && !entry.name.startsWith(prefix)) continue;
+          final rel = entry.name.substring(prefix.length);
+          if (rel.isNotEmpty) merged[rel] = entry.content as List<int>;
         }
       }
 
-      // Rewrite manifest.json with a deterministic UUID derived from content hash
-      // so every unique merge combination gets its own UUID — prevents Minecraft
-      // from caching a stale pack when the same UUID appears with different content.
-      final manifestKey = merged.keys.firstWhere(
-        (k) => k == 'manifest.json' || k.endsWith('/manifest.json'),
-        orElse: () => '',
-      );
+      final manifestKey = merged.containsKey('manifest.json')
+          ? 'manifest.json'
+          : merged.keys.firstWhere((k) => k.endsWith('/manifest.json'), orElse: () => '');
       if (manifestKey.isNotEmpty) {
         try {
           final manifestJson = jsonDecode(utf8.decode(merged[manifestKey]!)) as Map<String, dynamic>;
           final contentHash = sha256.convert(
             merged.values.expand((b) => b).toList(),
           ).toString();
-          final newUuid = _hashToUuid(contentHash);
           final header = manifestJson['header'] as Map<String, dynamic>? ?? {};
-          header['uuid'] = newUuid;
+          header['uuid'] = _hashToUuid(contentHash);
           manifestJson['header'] = header;
+          final modules = manifestJson['modules'];
+          if (modules is List) {
+            for (var i = 0; i < modules.length; i++) {
+              final m = modules[i];
+              if (m is Map<String, dynamic>) {
+                m['uuid'] = _hashToUuid(sha256.convert(utf8.encode('$contentHash#$i')).toString());
+              }
+            }
+          }
           final newManifest = utf8.encode(jsonEncode(manifestJson));
           merged[manifestKey] = newManifest;
         } catch (_) {}
@@ -236,9 +245,14 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
 
       final dir = await getApplicationDocumentsDirectory();
       final id = DateTime.now().millisecondsSinceEpoch.toString();
-      final slug = _packs
-          .map((p) => p.name.replaceAll(RegExp(r'[^a-zA-Z0-9]'), '_').replaceAll(RegExp(r'_+'), '_').replaceAll(RegExp(r'^_|_$'), '').substring(0, p.name.length.clamp(0, 20)))
-          .join('+');
+      final slug = _packs.map((p) {
+        var s = p.name
+            .replaceAll(RegExp(r'[^a-zA-Z0-9]'), '_')
+            .replaceAll(RegExp(r'_+'), '_')
+            .replaceAll(RegExp(r'^_|_$'), '');
+        if (s.isEmpty) s = 'pack';
+        return s.substring(0, s.length.clamp(0, 20));
+      }).join('+');
       final filename = '$slug.zip';
       final outFile = File('${dir.path}/merged_$id.zip');
       await outFile.writeAsBytes(outBytes);
@@ -258,7 +272,7 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
       _saveSavedState();
     } catch (e) {
       if (!mounted) return;
-      setState(() { _error = e.toString(); _merging = false; });
+      setState(() { _error = 'Merge failed: $e'; _merging = false; });
     }
   }
 
@@ -625,7 +639,8 @@ class _PackCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(14),
         border: Border.all(color: isTop ? AppTheme.accent.withValues(alpha: 0.30) : AppTheme.borderGray),
       ),
-      child: Padding(
+      child: Column(children: [
+        Padding(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         child: Row(children: [
           Container(
@@ -664,7 +679,26 @@ class _PackCard extends StatelessWidget {
           const SizedBox(width: 6),
           _SmallBtn(icon: Icons.close_rounded, enabled: true, onTap: onRemove, color: AppTheme.error),
         ]),
-      ),
+        ),
+        if (pack.hasBehaviorContent)
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+            decoration: BoxDecoration(
+              color: AppTheme.warning.withValues(alpha: 0.08),
+              border: Border(top: BorderSide(color: AppTheme.warning.withValues(alpha: 0.2))),
+              borderRadius: const BorderRadius.vertical(bottom: Radius.circular(13)),
+            ),
+            child: Row(children: [
+              Icon(Icons.warning_amber_rounded, size: 14, color: AppTheme.warning),
+              const SizedBox(width: 8),
+              Expanded(child: Text(
+                AppLocalizations.of(context)!.rpBehaviorContentWarning,
+                style: TextStyle(fontSize: 11, color: AppTheme.warning),
+              )),
+            ]),
+          ),
+      ]),
     );
   }
 }

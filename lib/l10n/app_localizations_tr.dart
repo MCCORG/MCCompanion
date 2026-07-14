@@ -21,7 +21,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get noLogsYet => 'Henüz kayıt yok';
 
   @override
-  String get startBroadcastingToSeeOutput => 'Çıktıyı görmek için yayına başlayın';
+  String get startBroadcastingToSeeOutput =>
+      'Çıktıyı görmek için yayına başlayın';
 
   @override
   String get close => 'Kapat';
@@ -45,7 +46,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get onboardingThemeTitle => 'Tema seç';
 
   @override
-  String get onboardingThemeSubtitle => 'Her rengi daha sonra ayarlardan ince ayarlayabilirsin.';
+  String get onboardingThemeSubtitle =>
+      'Her rengi daha sonra ayarlardan ince ayarlayabilirsin.';
 
   @override
   String get onboardingNavTitle => 'Hızlı erişim';
@@ -75,7 +77,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get onboardingStartTitle => 'Başlangıç sayfası';
 
   @override
-  String get onboardingStartSubtitle => 'Uygulama her açıldığında burası açılır.';
+  String get onboardingStartSubtitle =>
+      'Uygulama her açıldığında burası açılır.';
 
   @override
   String get onboardingCustomizeDetail => 'Ayrıntılı özelleştir →';
@@ -140,13 +143,15 @@ class AppLocalizationsTr extends AppLocalizations {
   String get howToJavaTitle => 'Java Modu';
 
   @override
-  String get howToJavaSubtitle => 'MCCompanion üzerinden Java Edition sunucularına bağlanın';
+  String get howToJavaSubtitle =>
+      'MCCompanion üzerinden Java Edition sunucularına bağlanın';
 
   @override
   String get aternosSubtext => 'Kendi ücretsiz Minecraft sunucunuzu oluşturun';
 
   @override
-  String get howToJavaBody => 'Java Modu — hızlı adımlar:\n1. Uygulamada Java modunu seçin.\n2. Java Edition sunucu adresinizi ve portunuzu girin (varsayılan: 25565).\n3. \"Java Modunu Başlat\" düğmesine basın — MCCompanion bağlantıyı köprüleyecektir.\n4. Minecraft Bedrock\'u açın ve Arkadaşlar sekmesine gidin.\n5. Java sunucusuna katılmak için \"MCCompanion\" adlı LAN sunucusunu seçin.\n\n⚠️ Önemli uyarılar:\n- Geçerli bir Java Edition hesabı (Microsoft) gereklidir.\n- Bazı sunucular hesabınızı tespit edip yasaklayabilecek hile önleme sistemleri kullanır.\n- Bazı sunucular Bedrock istemcilerini açıkça yasaklar — her zaman sunucu kurallarını kontrol edin.\n- Bu özelliğin kullanılmasından kaynaklanabilecek hesap yasakları, askıya almalar veya hesapla ilgili diğer sorunlardan MCCompanion sorumlu değildir.\n- Kendi riskinizle kullanın.';
+  String get howToJavaBody =>
+      'Java Modu — hızlı adımlar:\n1. Uygulamada Java modunu seçin.\n2. Java Edition sunucu adresinizi ve portunuzu girin (varsayılan: 25565).\n3. \"Java Modunu Başlat\" düğmesine basın — MCCompanion bağlantıyı köprüleyecektir.\n4. Minecraft Bedrock\'u açın ve Arkadaşlar sekmesine gidin.\n5. Java sunucusuna katılmak için \"MCCompanion\" adlı LAN sunucusunu seçin.\n\n⚠️ Önemli uyarılar:\n- Geçerli bir Java Edition hesabı (Microsoft) gereklidir.\n- Bazı sunucular hesabınızı tespit edip yasaklayabilecek hile önleme sistemleri kullanır.\n- Bazı sunucular Bedrock istemcilerini açıkça yasaklar — her zaman sunucu kurallarını kontrol edin.\n- Bu özelliğin kullanılmasından kaynaklanabilecek hesap yasakları, askıya almalar veya hesapla ilgili diğer sorunlardan MCCompanion sorumlu değildir.\n- Kendi riskinizle kullanın.';
 
   @override
   String get language => 'Türkçe';
@@ -182,7 +187,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get addServer => 'Sunucu Ekle';
 
   @override
-  String get addServersHint => 'Daha sonra hızlıca bağlanmak için sunucu ekleyin';
+  String get addServersHint =>
+      'Daha sonra hızlıca bağlanmak için sunucu ekleyin';
 
   @override
   String get serverNameLabel => 'Sunucu Adı *';
@@ -209,7 +215,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get bedrockBridge => 'Bedrock Köprüsü';
 
   @override
-  String get clientDisconnected => 'İstemci bağlantısı kesildi — Yayın durduruldu';
+  String get clientDisconnected =>
+      'İstemci bağlantısı kesildi — Yayın durduruldu';
 
   @override
   String get pleaseEnterServer => '⚠️ Lütfen bir sunucu adresi girin';
@@ -299,7 +306,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get manageServersTooltip => 'Sunucuları yönet';
 
   @override
-  String get noServerYet => 'Henüz kaydedilmiş sunucu yok.\nBir tane eklemek için Yönet\'e dokunun.';
+  String get noServerYet =>
+      'Henüz kaydedilmiş sunucu yok.\nBir tane eklemek için Yönet\'e dokunun.';
 
   @override
   String get serverNotSelected => 'Sunucu seçilmedi';
@@ -317,10 +325,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get noWifi => 'Wi‑Fi\'a bağlı değil';
 
   @override
-  String get vpnActive => 'VPN\'inizin etkin olduğunu tespit ettik.\n\nLütfen MCCompanion\'i kullanmadan önce VPN\'inizi devre dışı bırakın, aksi halde LAN yayını konsolunuza ulaşmayabilir.';
+  String get vpnActive =>
+      'VPN\'inizin etkin olduğunu tespit ettik.\n\nLütfen MCCompanion\'i kullanmadan önce VPN\'inizi devre dışı bırakın, aksi halde LAN yayını konsolunuza ulaşmayabilir.';
 
   @override
-  String get mobileActive => 'Tespit edildi: Mobil Veri\n\nMCCompanion\'in konsolunuzla aynı ağda olması gerekir. Devam etmeden önce ev Wi‑Fi\'nize veya erişim noktanıza bağlanın.';
+  String get mobileActive =>
+      'Tespit edildi: Mobil Veri\n\nMCCompanion\'in konsolunuzla aynı ağda olması gerekir. Devam etmeden önce ev Wi‑Fi\'nize veya erişim noktanıza bağlanın.';
 
   @override
   String get continueAnyway => 'Yine de Devam Et';
@@ -329,19 +339,22 @@ class AppLocalizationsTr extends AppLocalizations {
   String get sameWifi => 'Aynı Wi‑Fi Ağı';
 
   @override
-  String get needSameWifi => 'MCCompanion\'i çalıştıran cihaz, Minecraft oynadığınız konsolla AYNI Wi‑Fi ağına bağlı OLMALIDIR.';
+  String get needSameWifi =>
+      'MCCompanion\'i çalıştıran cihaz, Minecraft oynadığınız konsolla AYNI Wi‑Fi ağına bağlı OLMALIDIR.';
 
   @override
   String get subscription => 'Çevrim İçi Abonelik Gerekli';
 
   @override
-  String get needSubscription => 'Her konsolun kendi etkin çevrim içi aboneliği (Xbox Live, PS Plus, NSO) olmalıdır. Aksi halde MCCompanion görünmez.';
+  String get needSubscription =>
+      'Her konsolun kendi etkin çevrim içi aboneliği (Xbox Live, PS Plus, NSO) olmalıdır. Aksi halde MCCompanion görünmez.';
 
   @override
   String get updateAvailable => 'Güncelleme Mevcut';
 
   @override
-  String get newVersion => 'Uygulamanın yeni bir sürümü mevcut.\nEn son özellikler ve düzeltmeler için şimdi güncelleyin.';
+  String get newVersion =>
+      'Uygulamanın yeni bir sürümü mevcut.\nEn son özellikler ve düzeltmeler için şimdi güncelleyin.';
 
   @override
   String get later => 'Daha Sonra';
@@ -380,13 +393,15 @@ class AppLocalizationsTr extends AppLocalizations {
   String get nintendoInfoTitle => 'Nintendo Switch DNS modu';
 
   @override
-  String get nintendoInfoText => 'Nintendo modunu başlatın, DNS ayarlarınızı ayarlayın ve öne çıkan bir sunucuya bağlanın.';
+  String get nintendoInfoText =>
+      'Nintendo modunu başlatın, DNS ayarlarınızı ayarlayın ve öne çıkan bir sunucuya bağlanın.';
 
   @override
   String get friendModeTitle => 'Arkadaş modu';
 
   @override
-  String get friendModeText => 'MCCompanion\'in arkadaş botlarını arkadaş olarak ekle. Arkadaş modunu başlat ve oyna';
+  String get friendModeText =>
+      'MCCompanion\'in arkadaş botlarını arkadaş olarak ekle. Arkadaş modunu başlat ve oyna';
 
   @override
   String get selectedRelayCheck => 'Seçilen';
@@ -397,7 +412,8 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get relayUnableConnect => 'Hiçbir MCCompanion aktarım sunucusuna bağlanılamıyor. Daha sonra tekrar deneyin veya internet bağlantınızı kontrol edin.';
+  String get relayUnableConnect =>
+      'Hiçbir MCCompanion aktarım sunucusuna bağlanılamıyor. Daha sonra tekrar deneyin veya internet bağlantınızı kontrol edin.';
 
   @override
   String get howToXboxTitle => 'Xbox / PS4-5 (LAN / vekil)';
@@ -406,7 +422,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get howToXboxSubtitle => 'LAN yayını veya proxy ile oyna';
 
   @override
-  String get howToXboxBody => 'Xbox / PS4 / PS5 için bağlanma adımları:\n1. MCCompanion çalıştıran cihazınızın ve konsolunuzun aynı yerel ağda olduğundan emin olun.\n2. Uygulamada Minecraft sunucu adresinizi ve portunuzu girin, ardından \"Yayına Başla\" düğmesine basın.\n3. Konsolda Minecraft → Oyna bölümünü açın, LAN Dünyaları veya Arkadaşlar sekmesini bulun ve listeyi yenileyin.\n4. Katılmak için \"MCCompanion\" adlı LAN sunucusunu seçin.\nNotlar:\n- Sunucu görünmüyorsa, iki cihazın da aynı alt ağda olduğunu ve uygulamanın hâlâ yayın yaptığını doğrulayın.\n- Bazı konsol modelleri veya yönlendiriciler LAN keşfini engelleyebilir; gerekirse uygulama ya da yönlendirici ayarlarını değiştirerek tekrar deneyin.';
+  String get howToXboxBody =>
+      'Xbox / PS4 / PS5 için bağlanma adımları:\n1. MCCompanion çalıştıran cihazınızın ve konsolunuzun aynı yerel ağda olduğundan emin olun.\n2. Uygulamada Minecraft sunucu adresinizi ve portunuzu girin, ardından \"Yayına Başla\" düğmesine basın.\n3. Konsolda Minecraft → Oyna bölümünü açın, LAN Dünyaları veya Arkadaşlar sekmesini bulun ve listeyi yenileyin.\n4. Katılmak için \"MCCompanion\" adlı LAN sunucusunu seçin.\nNotlar:\n- Sunucu görünmüyorsa, iki cihazın da aynı alt ağda olduğunu ve uygulamanın hâlâ yayın yaptığını doğrulayın.\n- Bazı konsol modelleri veya yönlendiriciler LAN keşfini engelleyebilir; gerekirse uygulama ya da yönlendirici ayarlarını değiştirerek tekrar deneyin.';
 
   @override
   String get howToNintendoTitle => 'Nintendo Switch (DNS modu)';
@@ -415,16 +432,19 @@ class AppLocalizationsTr extends AppLocalizations {
   String get howToNintendoSubtitle => 'Switch için DNS aktarıcı talimatları';
 
   @override
-  String get howToNintendoBody => 'Nintendo Switch — DNS modu (adım adım):\n1. Uygulamada \"Nintendo\" modunu etkinleştirin ve bir Aktarım Sunucusu (EU veya US) seçin.\n2. DNS IP adresini aktarıcıya göndermek için \"DNS Yapılandırmasını Gönder\" düğmesine dokunun.\n3. Nintendo Switch\'inizde Sistem Ayarları → İnternet → İnternet Ayarları → (ağınız) → Ayarları Değiştir → DNS bölümüne gidin ve Birincil DNS\'i aktarıcı IP adresi olarak ayarlayın.\n4. Minecraft\'ı açın ve herkese açık bir sunucuya katılın; aktarıcı DNS\'i üzerinden kendi sunucunuza yönlendirileceksiniz.\nNotlar:\n- DNS modu bir LAN sunucusu yayınlamaz; oyun trafiğini aktarıcı üzerinden yönlendirir.\n- Normal ağ davranışına dönmek istediğinizde DNS ayarınızı eski haline getirin.';
+  String get howToNintendoBody =>
+      'Nintendo Switch — DNS modu (adım adım):\n1. Uygulamada \"Nintendo\" modunu etkinleştirin ve bir Aktarım Sunucusu (EU veya US) seçin.\n2. DNS IP adresini aktarıcıya göndermek için \"DNS Yapılandırmasını Gönder\" düğmesine dokunun.\n3. Nintendo Switch\'inizde Sistem Ayarları → İnternet → İnternet Ayarları → (ağınız) → Ayarları Değiştir → DNS bölümüne gidin ve Birincil DNS\'i aktarıcı IP adresi olarak ayarlayın.\n4. Minecraft\'ı açın ve herkese açık bir sunucuya katılın; aktarıcı DNS\'i üzerinden kendi sunucunuza yönlendirileceksiniz.\nNotlar:\n- DNS modu bir LAN sunucusu yayınlamaz; oyun trafiğini aktarıcı üzerinden yönlendirir.\n- Normal ağ davranışına dönmek istediğinizde DNS ayarınızı eski haline getirin.';
 
   @override
   String get howToFriendsTitle => 'Arkadaş modu';
 
   @override
-  String get howToFriendsSubtitle => 'Arkadaşlarını davet et ve LAN üzerinden katıl';
+  String get howToFriendsSubtitle =>
+      'Arkadaşlarını davet et ve LAN üzerinden katıl';
 
   @override
-  String get howToFriendsBody => 'Arkadaş modu — hızlı adımlar:\n1. Gerekliyse MCCompanion arkadaş hesabını (aktarıcı arkadaş) konsolunuza veya platformunuza ekleyin.\n2. Uygulamada Arkadaş modunu etkinleştirin ve aktarıcı yapılandırmasını gönderin (uygunsa).\n3. Konsolunuzda Minecraft → Arkadaşlar bölümünü açın ve LAN Dünyaları\'nı arayın; sunucunuz orada bir LAN dünyası olarak görünmelidir.\n4. Arkadaşlarınızla sunucunuza katılmak için onu seçin.\nNotlar:\n- Hem sizin hem de arkadaşlarınızın arkadaş görünürlüğüne izin veren aynı NAT/ayarlarına sahip olduğundan emin olun.\n- Arkadaş modu, platformun arkadaş özelliklerine dayanır ve arkadaşlık isteklerinin kabul edilmesini gerektirebilir.';
+  String get howToFriendsBody =>
+      'Arkadaş modu — hızlı adımlar:\n1. Gerekliyse MCCompanion arkadaş hesabını (aktarıcı arkadaş) konsolunuza veya platformunuza ekleyin.\n2. Uygulamada Arkadaş modunu etkinleştirin ve aktarıcı yapılandırmasını gönderin (uygunsa).\n3. Konsolunuzda Minecraft → Arkadaşlar bölümünü açın ve LAN Dünyaları\'nı arayın; sunucunuz orada bir LAN dünyası olarak görünmelidir.\n4. Arkadaşlarınızla sunucunuza katılmak için onu seçin.\nNotlar:\n- Hem sizin hem de arkadaşlarınızın arkadaş görünürlüğüne izin veren aynı NAT/ayarlarına sahip olduğundan emin olun.\n- Arkadaş modu, platformun arkadaş özelliklerine dayanır ve arkadaşlık isteklerinin kabul edilmesini gerektirebilir.';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion görünmüyor';
@@ -433,16 +453,19 @@ class AppLocalizationsTr extends AppLocalizations {
   String get helpMCCompanionSubtitle => 'LAN keşif sorunlarını giderme';
 
   @override
-  String get helpMCCompanionBody => 'Sunucu konsolunuzda görünmüyorsa şu adımları deneyin:\n\n✅ Temel Kontroller:\n1. Aynı WiFi Ağı - Telefonunuz/tabletiniz ve konsolunuz AYNI WiFi ağına bağlı olmalıdır\n2. Doğru Sunucu Adresi - IP ve portu tekrar kontrol edin (varsayılan: 19132)\n3. Yayın Aktif - MCCompanion\'in \"Yayın Yapılıyor\" durumunu gösterdiğini doğrulayın\n\n🔄 Hızlı Çözümler:\n• Uygulamayı yeniden başlatın: Yayını durdurun, MCCompanion\'i tamamen kapatın, yeniden açın ve tekrar deneyin\n• Konsolunuzu yeniden başlatın: Bazen konsolun LAN oyunlarını algılaması için yenilenmesi gerekir\n• Arkadaşlar/LAN sekmesini kontrol edin: Sunucu, sunucu listesinde DEĞİL, \"Arkadaşlar\" veya \"LAN Oyunları\" altında görünür\n• Yayını başlattıktan sonra 10-15 saniye bekleyin\n• VPN\'leri devre dışı bırakın: VPN\'ler yerel yayınları engelleyebilir\n\n⚠️ Yaygın Sorunlar:\n\"Kullanıcı için rota bulunamadı\" → Her iki cihazın da aynı Wi‑Fi ağına bağlı olduğundan emin olun (Misafir ağlarından kaçının)\n\"MCCompanion aktarıcı sunucusuna bağlanılamıyor\" → İnternet bağlantınızı / aktarıcı durumunu kontrol edin\n\n📱 Hâlâ sorun mu yaşıyorsunuz? MCCompanion\'te Hata Ayıklama Modunu etkinleştirin ve kayıtları kontrol edin ya da farklı bir sunucu deneyin.';
+  String get helpMCCompanionBody =>
+      'Sunucu konsolunuzda görünmüyorsa şu adımları deneyin:\n\n✅ Temel Kontroller:\n1. Aynı WiFi Ağı - Telefonunuz/tabletiniz ve konsolunuz AYNI WiFi ağına bağlı olmalıdır\n2. Doğru Sunucu Adresi - IP ve portu tekrar kontrol edin (varsayılan: 19132)\n3. Yayın Aktif - MCCompanion\'in \"Yayın Yapılıyor\" durumunu gösterdiğini doğrulayın\n\n🔄 Hızlı Çözümler:\n• Uygulamayı yeniden başlatın: Yayını durdurun, MCCompanion\'i tamamen kapatın, yeniden açın ve tekrar deneyin\n• Konsolunuzu yeniden başlatın: Bazen konsolun LAN oyunlarını algılaması için yenilenmesi gerekir\n• Arkadaşlar/LAN sekmesini kontrol edin: Sunucu, sunucu listesinde DEĞİL, \"Arkadaşlar\" veya \"LAN Oyunları\" altında görünür\n• Yayını başlattıktan sonra 10-15 saniye bekleyin\n• VPN\'leri devre dışı bırakın: VPN\'ler yerel yayınları engelleyebilir\n\n⚠️ Yaygın Sorunlar:\n\"Kullanıcı için rota bulunamadı\" → Her iki cihazın da aynı Wi‑Fi ağına bağlı olduğundan emin olun (Misafir ağlarından kaçının)\n\"MCCompanion aktarıcı sunucusuna bağlanılamıyor\" → İnternet bağlantınızı / aktarıcı durumunu kontrol edin\n\n📱 Hâlâ sorun mu yaşıyorsunuz? MCCompanion\'te Hata Ayıklama Modunu etkinleştirin ve kayıtları kontrol edin ya da farklı bir sunucu deneyin.';
 
   @override
   String get helpMultiplayerFailedTitle => 'Çok Oyunculu Bağlantı Başarısız';
 
   @override
-  String get helpMultiplayerFailedSubtitle => 'Bunun neden bir MCCompanion hatası olmadığının açıklaması';
+  String get helpMultiplayerFailedSubtitle =>
+      'Bunun neden bir MCCompanion hatası olmadığının açıklaması';
 
   @override
-  String get helpMultiplayerFailedBody => '⚠️ Bu, MCCompanion ile ilgili bir sorun değildir!\n\nMCCompanion sizi istenen sunucuya başarıyla yönlendirdi. \"Çok Oyunculu Bağlantı Başarısız\" mesajı, hedef sunucunun şu anda erişilemez olduğunu gösterir. Olası nedenler:\n\n• Hedef Minecraft sunucusu çevrimdışı veya aşırı yüklü olabilir\n• Sunucu güncel bir istemci sürümü ya da belirli bir sürüm gerektiriyor olabilir\n• Aktarıcı ile hedef sunucu arasında ağ sorunları olabilir\n\nFarklı bir sunucuya bağlanmayı deneyin veya sunucunun destek ekibiyle iletişime geçin. Sorun birden fazla sunucuda sürerse, MCCompanion\'te Hata Ayıklama Modunu etkinleştirip kayıtları kontrol edin.';
+  String get helpMultiplayerFailedBody =>
+      '⚠️ Bu, MCCompanion ile ilgili bir sorun değildir!\n\nMCCompanion sizi istenen sunucuya başarıyla yönlendirdi. \"Çok Oyunculu Bağlantı Başarısız\" mesajı, hedef sunucunun şu anda erişilemez olduğunu gösterir. Olası nedenler:\n\n• Hedef Minecraft sunucusu çevrimdışı veya aşırı yüklü olabilir\n• Sunucu güncel bir istemci sürümü ya da belirli bir sürüm gerektiriyor olabilir\n• Aktarıcı ile hedef sunucu arasında ağ sorunları olabilir\n\nFarklı bir sunucuya bağlanmayı deneyin veya sunucunun destek ekibiyle iletişime geçin. Sorun birden fazla sunucuda sürerse, MCCompanion\'te Hata Ayıklama Modunu etkinleştirip kayıtları kontrol edin.';
 
   @override
   String get helpNintendoDnsTitle => 'Nintendo DNS çalışmıyor';
@@ -451,7 +474,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get helpNintendoDnsSubtitle => 'Yaygın DNS / aktarıcı sorunları';
 
   @override
-  String get helpNintendoDnsBody => 'Nintendo DNS modu çalışmıyorsa aşağıdakileri kontrol edin:\n\n1. Uygulamadan DNS yapılandırmasını gönderdiğinizi doğrulayın (DNS Yapılandırmasını Gönder).\n2. Aktarıcı IP adresini Switch\'te Birincil DNS olarak uyguladığınızı doğrulayın.\n3. Seçilen aktarıcı sunucusunun (EU/US) çevrimiçi ve aşırı yük altında olmadığından emin olun.\n4. Bazı ağlar (örneğin captive portal kullanılan ağlar) özel DNS kullanımını engeller; farklı bir ağda test edin.\n\nSorun devam ederse Hata Ayıklama Modunu etkinleştirip kayıtları kontrol edin veya Arkadaş modu alternatifini deneyin.';
+  String get helpNintendoDnsBody =>
+      'Nintendo DNS modu çalışmıyorsa aşağıdakileri kontrol edin:\n\n1. Uygulamadan DNS yapılandırmasını gönderdiğinizi doğrulayın (DNS Yapılandırmasını Gönder).\n2. Aktarıcı IP adresini Switch\'te Birincil DNS olarak uyguladığınızı doğrulayın.\n3. Seçilen aktarıcı sunucusunun (EU/US) çevrimiçi ve aşırı yük altında olmadığından emin olun.\n4. Bazı ağlar (örneğin captive portal kullanılan ağlar) özel DNS kullanımını engeller; farklı bir ağda test edin.\n\nSorun devam ederse Hata Ayıklama Modunu etkinleştirip kayıtları kontrol edin veya Arkadaş modu alternatifini deneyin.';
 
   @override
   String get helpFriendsModeTitle => 'Arkadaş modu çalışmıyor';
@@ -460,7 +484,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get helpFriendsModeSubtitle => 'Yaygın arkadaş sorunları';
 
   @override
-  String get helpFriendsModeBody => 'Arkadaş modu için sorun giderme ipuçları:\n\n1. Aktarıcı arkadaş hesabının konsolda eklendiğinden/kabul edildiğinden emin olun (gerekiyorsa).\n2. Arkadaş modunu etkinleştirdikten sonra oyunu yeniden başlatmayı ve Arkadaşlar/LAN sekmesini yenilemeyi deneyin.\n\nSunucu arkadaşlarınıza hâlâ görünmüyorsa hataları belirlemek için Hata Ayıklama Modunu etkinleştirin ve kayıtları kontrol edin.';
+  String get helpFriendsModeBody =>
+      'Arkadaş modu için sorun giderme ipuçları:\n\n1. Aktarıcı arkadaş hesabının konsolda eklendiğinden/kabul edildiğinden emin olun (gerekiyorsa).\n2. Arkadaş modunu etkinleştirdikten sonra oyunu yeniden başlatmayı ve Arkadaşlar/LAN sekmesini yenilemeyi deneyin.\n\nSunucu arkadaşlarınıza hâlâ görünmüyorsa hataları belirlemek için Hata Ayıklama Modunu etkinleştirin ve kayıtları kontrol edin.';
 
   @override
   String get changeLanguageTitle => 'Dili değiştir';
@@ -495,7 +520,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get trackerSignInRequired => 'Giriş yapılması gerekiyor';
 
   @override
-  String get trackerSignInSubtitle => 'Sunucuları takip etmek ve çevrimdışı bildirimler almak için giriş yapın.';
+  String get trackerSignInSubtitle =>
+      'Sunucuları takip etmek ve çevrimdışı bildirimler almak için giriş yapın.';
 
   @override
   String get signIn => 'Giriş yap';
@@ -504,16 +530,19 @@ class AppLocalizationsTr extends AppLocalizations {
   String get noServersTracked => 'Takip edilen sunucu yok';
 
   @override
-  String get trackerEmptySubtitle => 'Durumunu izlemek ve bildirim almak için bir Minecraft sunucusu ekleyin.';
+  String get trackerEmptySubtitle =>
+      'Durumunu izlemek ve bildirim almak için bir Minecraft sunucusu ekleyin.';
 
   @override
   String get fillAllFields => 'Lütfen tüm alanları doğru doldurun';
 
   @override
-  String get slotUsedUpgrade => 'Ücretsiz alanınız kullanıldı. Daha fazla sunucu için yükseltin.';
+  String get slotUsedUpgrade =>
+      'Ücretsiz alanınız kullanıldı. Daha fazla sunucu için yükseltin.';
 
   @override
-  String get addServerFailed => 'Sunucu eklenemedi. Bilgilerinizi kontrol edin.';
+  String get addServerFailed =>
+      'Sunucu eklenemedi. Bilgilerinizi kontrol edin.';
 
   @override
   String get ipAddressLabel => 'IP adresi';
@@ -561,7 +590,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get customizeLabel => 'Özelleştir';
 
   @override
-  String get customizeSubtitle => 'Karoları yeniden sırala ve gezinmeyi özelleştir';
+  String get customizeSubtitle =>
+      'Karoları yeniden sırala ve gezinmeyi özelleştir';
 
   @override
   String get resetLabel => 'Sıfırla';
@@ -817,7 +847,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get deleteAccountTitle => 'Hesabı sil';
 
   @override
-  String get deleteAccountBody => 'Bu işlem hesabınızı ve tüm verilerinizi kalıcı olarak siler.';
+  String get deleteAccountBody =>
+      'Bu işlem hesabınızı ve tüm verilerinizi kalıcı olarak siler.';
 
   @override
   String get deletePermanently => 'Kalıcı olarak sil';
@@ -854,7 +885,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get resetPasswordTitle => 'Şifreyi sıfırla';
 
   @override
-  String get resetPasswordBody => 'Sıfırlama bağlantısı almak için e-postanızı girin.';
+  String get resetPasswordBody =>
+      'Sıfırlama bağlantısı almak için e-postanızı girin.';
 
   @override
   String get emailAddressHint => 'E-posta adresi';
@@ -916,7 +948,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get profileNotSetUp => 'Profil ayarlanmamış';
 
   @override
-  String get chooseUsernameSubtitle => 'Bağlanmak için bir kullanıcı adı seçin.';
+  String get chooseUsernameSubtitle =>
+      'Bağlanmak için bir kullanıcı adı seçin.';
 
   @override
   String get createProfile => 'Profil oluştur';
@@ -1020,7 +1053,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get noPendingRequests => 'Bekleyen istek yok';
 
   @override
-  String get requestsAppearHere => 'Yeni arkadaşlık istekleri burada görünecek.';
+  String get requestsAppearHere =>
+      'Yeni arkadaşlık istekleri burada görünecek.';
 
   @override
   String get skinsEdit => 'Düzenle';
@@ -1029,7 +1063,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get skinsNoAccountsTitle => 'Minecraft hesabı bağlı değil';
 
   @override
-  String get skinsNoAccountsSubtitle => 'Skinlerinizi görmek için bir hesap bağlayın.';
+  String get skinsNoAccountsSubtitle =>
+      'Skinlerinizi görmek için bir hesap bağlayın.';
 
   @override
   String get skinsSignInTitle => 'Skinleri görmek için giriş yapın';
@@ -1221,7 +1256,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get wikiStatusEffects => 'Durum efektleri';
 
   @override
-  String get chooseUniqueUsername => 'Başlamak için benzersiz bir kullanıcı adı seç.';
+  String get chooseUniqueUsername =>
+      'Başlamak için benzersiz bir kullanıcı adı seç.';
 
   @override
   String get usernameFieldLabel => 'Kullanıcı adı';
@@ -1242,13 +1278,15 @@ class AppLocalizationsTr extends AppLocalizations {
   String get usernameRequired => 'Kullanıcı adı gerekli';
 
   @override
-  String get usernameFormatError => 'Kullanıcı adı 3–20 karakter olmalı ve yalnızca harf, rakam ve alt çizgi içerebilir';
+  String get usernameFormatError =>
+      'Kullanıcı adı 3–20 karakter olmalı ve yalnızca harf, rakam ve alt çizgi içerebilir';
 
   @override
   String get usernameTaken => 'Bu kullanıcı adı zaten kullanımda';
 
   @override
-  String get noConnectionError => 'Bağlantı yok. İnternet bağlantını kontrol et ve tekrar dene.';
+  String get noConnectionError =>
+      'Bağlantı yok. İnternet bağlantını kontrol et ve tekrar dene.';
 
   @override
   String get home => 'Ana Sayfa';
@@ -1282,7 +1320,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get paywallSavePercent => '~%17 tasarruf';
 
   @override
-  String get paywallSubtitle => 'Daha fazla sunucu takip edin ve bildirim alın.';
+  String get paywallSubtitle =>
+      'Daha fazla sunucu takip edin ve bildirim alın.';
 
   @override
   String paywallSlotLabel(Object slots) {
@@ -1299,7 +1338,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get paywallNoPkgs => 'Paket yok.';
 
   @override
-  String get paywallManaged => 'Apple/Google tarafından yönetilir. İstediğiniz zaman iptal edin.';
+  String get paywallManaged =>
+      'Apple/Google tarafından yönetilir. İstediğiniz zaman iptal edin.';
 
   @override
   String get paywallPurchaseSuccess => 'Satın alma başarılı!';
@@ -1358,13 +1398,15 @@ class AppLocalizationsTr extends AppLocalizations {
   String get dataSourcesSection => 'Veri kaynakları ve katkılar';
 
   @override
-  String get creditMinecraftWikiSubtitle => 'Wiki özelliği için veri kaynağı. Creative Commons altında içerik.';
+  String get creditMinecraftWikiSubtitle =>
+      'Wiki özelliği için veri kaynağı. Creative Commons altında içerik.';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
 
   @override
-  String get creditMojangSubtitle => 'Mojang API üzerinden Java oyuncu skinleri ve profilleri.';
+  String get creditMojangSubtitle =>
+      'Mojang API üzerinden Java oyuncu skinleri ve profilleri.';
 
   @override
   String get creditGeyserTitle => 'GeyserMC';
@@ -1382,10 +1424,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get aboutMCCompanionSection => 'MCCompanion Hakkında';
 
   @override
-  String get aboutMCCompanionDisclaimer => 'MCCompanion, Mojang veya Microsoft ile bağlantısı olmayan bağımsız bir uygulamadır.';
+  String get aboutMCCompanionDisclaimer =>
+      'MCCompanion, Mojang veya Microsoft ile bağlantısı olmayan bağımsız bir uygulamadır.';
 
   @override
-  String get minecraftTrademark => '\"Minecraft\", Microsoft Corporation\'ın tescilli markasıdır.';
+  String get minecraftTrademark =>
+      '\"Minecraft\", Microsoft Corporation\'ın tescilli markasıdır.';
 
   @override
   String get nldServerLabelShort => 'MCCompanion Sunucu';
@@ -1400,7 +1444,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get serverAddressExampleHint => 'play.example.com';
 
   @override
-  String get serverDescriptionExampleHint => 'Arkadaşlarla hayatta kalma sunucusu';
+  String get serverDescriptionExampleHint =>
+      'Arkadaşlarla hayatta kalma sunucusu';
 
   @override
   String get editionLabel => 'Sürüm';
@@ -1542,7 +1587,8 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get trackerLimitReached => 'Sunucu limitinize ulaştınız. Daha fazlası için yükseltin.';
+  String get trackerLimitReached =>
+      'Sunucu limitinize ulaştınız. Daha fazlası için yükseltin.';
 
   @override
   String get upgradeButton => 'Yükselt';
@@ -1557,7 +1603,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get javaSignInWithMicrosoft => 'Microsoft ile giriş yap';
 
   @override
-  String get javaGoToLink => 'Aşağıdaki bağlantıya git ve Minecraft Java Edition hesabını bağlamak için kodu gir.';
+  String get javaGoToLink =>
+      'Aşağıdaki bağlantıya git ve Minecraft Java Edition hesabını bağlamak için kodu gir.';
 
   @override
   String get javaYourCode => 'Kodun';
@@ -1578,13 +1625,15 @@ class AppLocalizationsTr extends AppLocalizations {
   String get javaNoJavaTitle => 'Java Edition bulunamadı';
 
   @override
-  String get javaNoJavaBody => 'Giriş yaptığın Microsoft hesabı Minecraft Java Edition\'a sahip değil.';
+  String get javaNoJavaBody =>
+      'Giriş yaptığın Microsoft hesabı Minecraft Java Edition\'a sahip değil.';
 
   @override
   String get javaTryDifferentAccount => 'Farklı hesap dene';
 
   @override
-  String get javaCouldNotStart => 'Microsoft girişi başlatılamadı. Tekrar deneyin.';
+  String get javaCouldNotStart =>
+      'Microsoft girişi başlatılamadı. Tekrar deneyin.';
 
   @override
   String get javaCodeExpired => 'Kod süresi doldu. Tekrar deneyin.';
@@ -1641,13 +1690,15 @@ class AppLocalizationsTr extends AppLocalizations {
   String get featureSubtitleLookup => 'Java ve Bedrock profillerini arayın';
 
   @override
-  String get featureSubtitleTracker => 'Sunucu durumunu izleyin ve bildirim alın';
+  String get featureSubtitleTracker =>
+      'Sunucu durumunu izleyin ve bildirim alın';
 
   @override
   String get userSearchHint => 'Kullanıcı adı, gamertag veya Java adı…';
 
   @override
-  String get userSearchSub => 'Kullanıcı adı, Xbox gamertag veya Java adıyla ara';
+  String get userSearchSub =>
+      'Kullanıcı adı, Xbox gamertag veya Java adıyla ara';
 
   @override
   String get onlineStatus => 'Çevrimiçi';
@@ -1688,10 +1739,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get feedbackTitleLabel => 'Başlık';
 
   @override
-  String get feedbackTitleHintBug => 'ör. Skin editörünü açarken uygulama çöküyor';
+  String get feedbackTitleHintBug =>
+      'ör. Skin editörünü açarken uygulama çöküyor';
 
   @override
-  String get feedbackTitleHintFeature => 'ör. Sunucu listesinde oyuncu pingi göster';
+  String get feedbackTitleHintFeature =>
+      'ör. Sunucu listesinde oyuncu pingi göster';
 
   @override
   String get feedbackWhatHappened => 'Ne oldu?';
@@ -1700,10 +1753,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get feedbackDescribeIdea => 'Fikrinden bahset';
 
   @override
-  String get feedbackDescHintBug => 'Hatayı açıkla — ne yaptın, ne bekliyordun ve bunun yerine ne oldu?';
+  String get feedbackDescHintBug =>
+      'Hatayı açıkla — ne yaptın, ne bekliyordun ve bunun yerine ne oldu?';
 
   @override
-  String get feedbackDescHintFeature => 'Ne istediğini ve neden faydalı olacağını açıkla.';
+  String get feedbackDescHintFeature =>
+      'Ne istediğini ve neden faydalı olacağını açıkla.';
 
   @override
   String get feedbackEmailLabel => 'E-posta';
@@ -1712,7 +1767,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get feedbackEmailHint => 'Seninle iletişime geçebilmemiz için';
 
   @override
-  String get feedbackEmailNote => 'E-posta adresin hiçbir zaman herkese açık paylaşılmaz.';
+  String get feedbackEmailNote =>
+      'E-posta adresin hiçbir zaman herkese açık paylaşılmaz.';
 
   @override
   String get feedbackSubmitBug => 'Hata Raporunu Gönder';
@@ -1721,13 +1777,15 @@ class AppLocalizationsTr extends AppLocalizations {
   String get feedbackSubmitFeature => 'Özellik İsteğini Gönder';
 
   @override
-  String get feedbackDisclaimer => 'GitHub\'da herkese açık bir konu oluşturur · Parola ekleme';
+  String get feedbackDisclaimer =>
+      'GitHub\'da herkese açık bir konu oluşturur · Parola ekleme';
 
   @override
   String get feedbackSuccessTitle => 'Geri bildirim için teşekkürler!';
 
   @override
-  String get feedbackSuccessBody => 'Raporun gönderildi ve GitHub\'da bir konu oluşturuldu. En kısa sürede inceleyeceğiz.';
+  String get feedbackSuccessBody =>
+      'Raporun gönderildi ve GitHub\'da bir konu oluşturuldu. En kısa sürede inceleyeceğiz.';
 
   @override
   String get feedbackViewOnGithub => 'GitHub\'da görüntüle';
@@ -1757,25 +1815,32 @@ class AppLocalizationsTr extends AppLocalizations {
   String get reportBug => 'Feedback';
 
   @override
-  String get feedbackTileSubtitle => 'MCCompanion\'ı geliştirmemize yardım edin';
+  String get feedbackTileSubtitle =>
+      'MCCompanion\'ı geliştirmemize yardım edin';
 
   @override
-  String get friendsHowToStep1 => 'Telefonunda veya konsolunda Xbox uygulamasını aç.';
+  String get friendsHowToStep1 =>
+      'Telefonunda veya konsolunda Xbox uygulamasını aç.';
 
   @override
-  String get friendsHowToStep2 => 'Aşağıdaki botlardan birini Xbox\'ta arkadaş olarak ekle.';
+  String get friendsHowToStep2 =>
+      'Aşağıdaki botlardan birini Xbox\'ta arkadaş olarak ekle.';
 
   @override
-  String get friendsHowToStep3 => 'Minecraft\'ı aç ve Arkadaşlar sekmesine git.';
+  String get friendsHowToStep3 =>
+      'Minecraft\'ı aç ve Arkadaşlar sekmesine git.';
 
   @override
-  String get friendsHowToStep4 => 'LAN Dünyaları altında sunucunu bul ve katıl.';
+  String get friendsHowToStep4 =>
+      'LAN Dünyaları altında sunucunu bul ve katıl.';
 
   @override
-  String get friendsHowToNote => '⚠️ Her oynamak istediğinde önce MCCompanion uygulamasında Arkadaşlar modunu başlatman gerekir. Başlattıktan sonra uygulamayı kapatabilirsin.';
+  String get friendsHowToNote =>
+      '⚠️ Her oynamak istediğinde önce MCCompanion uygulamasında Arkadaşlar modunu başlatman gerekir. Başlattıktan sonra uygulamayı kapatabilirsin.';
 
   @override
-  String get friendsBotLoadError => '⚠️ Bot listesi yüklenemedi. Daha sonra tekrar deneyin.';
+  String get friendsBotLoadError =>
+      '⚠️ Bot listesi yüklenemedi. Daha sonra tekrar deneyin.';
 
   @override
   String get regionEurope => 'Avrupa';
@@ -1821,7 +1886,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get rpWhatIsThis => 'Bu nedir?';
 
   @override
-  String get rpExplanation => 'Bir kaynak paketi konsolundaki Minecraft\'ın görünümünü değiştirir — yeni bloklar, renkler veya sesler. Aşağıya .mcpack dosyasının bağlantısını yapıştır, etkinleştir ve kaydet. MCCompanion her bağlandığında otomatik olarak yükler.';
+  String get rpExplanation =>
+      'Bir kaynak paketi konsolundaki Minecraft\'ın görünümünü değiştirir — yeni bloklar, renkler veya sesler. Aşağıya .mcpack dosyasının bağlantısını yapıştır, etkinleştir ve kaydet. MCCompanion her bağlandığında otomatik olarak yükler.';
 
   @override
   String get rpPackUrlLabel => 'Paket URL\'si';
@@ -1836,7 +1902,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get rpWhatWorks => 'Çalışanlar';
 
   @override
-  String get rpSupportedBedrockOnly => 'Yalnızca Bedrock Edition (.mcpack veya .zip)';
+  String get rpSupportedBedrockOnly =>
+      'Yalnızca Bedrock Edition (.mcpack veya .zip)';
 
   @override
   String get rpSupportedBedrockOnlyHint => 'Java paketleri konsolda çalışmaz.';
@@ -1845,37 +1912,46 @@ class AppLocalizationsTr extends AppLocalizations {
   String get rpSupportedTexture => 'Kaynak paketleri ve doku paketleri';
 
   @override
-  String get rpSupportedTextureHint => 'Bunlar resmi olarak desteklenir ve güvenilir biçimde çalışır.';
+  String get rpSupportedTextureHint =>
+      'Bunlar resmi olarak desteklenir ve güvenilir biçimde çalışır.';
 
   @override
-  String get rpUnsupportedShaders => 'Gölgelendiriciler, davranış paketleri, görünüm paketleri';
+  String get rpUnsupportedShaders =>
+      'Gölgelendiriciler, davranış paketleri, görünüm paketleri';
 
   @override
-  String get rpUnsupportedShadersHint => 'Bunlar MCCompanion aracılığıyla konsolda yüklenmeyecek.';
+  String get rpUnsupportedShadersHint =>
+      'Bunlar MCCompanion aracılığıyla konsolda yüklenmeyecek.';
 
   @override
   String get rpUnsupportedAddons => 'Eklentiler ve UI modları';
 
   @override
-  String get rpUnsupportedAddonsHint => 'Bazen çalışabilir ancak resmi olarak desteklenmez. Kendi riskinizle kullanın.';
+  String get rpUnsupportedAddonsHint =>
+      'Bazen çalışabilir ancak resmi olarak desteklenmez. Kendi riskinizle kullanın.';
 
   @override
-  String get rpNoDiscord => 'Discord bağlantıları — .mcpack uzantısı yok ve birkaç saat sonra süresi doluyor';
+  String get rpNoDiscord =>
+      'Discord bağlantıları — .mcpack uzantısı yok ve birkaç saat sonra süresi doluyor';
 
   @override
-  String get rpNoDrive => 'Google Drive / Dropbox paylaşım bağlantıları — doğrudan indirme değil';
+  String get rpNoDrive =>
+      'Google Drive / Dropbox paylaşım bağlantıları — doğrudan indirme değil';
 
   @override
-  String get rpNoEncrypted => 'Şifrelenmiş veya parola korumalı paketlere sahip sunucular';
+  String get rpNoEncrypted =>
+      'Şifrelenmiş veya parola korumalı paketlere sahip sunucular';
 
   @override
   String get rpConsolePerformanceTitle => 'Konsol performansı';
 
   @override
-  String get rpConsolePerformanceBody => 'Yüksek çözünürlüklü doku paketleri konsolda takılma veya çökmeye neden olabilir. Sorun yaşarsanız daha düşük çözünürlüklü bir pakete geçin veya paket destekliyorsa daha hafif bir altpaket seçin.';
+  String get rpConsolePerformanceBody =>
+      'Yüksek çözünürlüklü doku paketleri konsolda takılma veya çökmeye neden olabilir. Sorun yaşarsanız daha düşük çözünürlüklü bir pakete geçin veya paket destekliyorsa daha hafif bir altpaket seçin.';
 
   @override
-  String get rpWarnDiscord => 'Discord bağlantılarının süresi dolup çalışmayı durdurur. Bunun yerine kalıcı bir host kullanın.';
+  String get rpWarnDiscord =>
+      'Discord bağlantılarının süresi dolup çalışmayı durdurur. Bunun yerine kalıcı bir host kullanın.';
 
   @override
   String get rpWarnHttps => 'URL https:// ile başlamalıdır';
@@ -1884,55 +1960,73 @@ class AppLocalizationsTr extends AppLocalizations {
   String get rpWarnExtension => 'URL .mcpack veya .zip ile bitmelidir';
 
   @override
-  String get rpToastEnterUrl => 'Kaynak paketini etkinleştirmeden önce bir URL girin.';
+  String get rpToastEnterUrl =>
+      'Kaynak paketini etkinleştirmeden önce bir URL girin.';
 
   @override
   String get rpToastSaved => 'Kaynak paketi ayarları kaydedildi.';
 
   @override
-  String get rpInvalidPackFormat => 'This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.';
+  String get rpInvalidPackFormat =>
+      'This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.';
+
+  @override
+  String get rpBehaviorContentWarning =>
+      'This pack contains behavior pack data, which won\'t work on servers. The textures will still work.';
 
   @override
   String get rpClearMinecraftTitle => 'Bu paketle ilk kez mi?';
 
   @override
-  String get rpClearMinecraftBody => 'Minecraft kaynak paketlerini yerel olarak ön belleğe alır. MCCompanion paketini etkinleştirmeden önce bu sunucuya bağlandıysanız, Minecraft orijinal paketi zaten ön bellekte tutuyor ve birleştirilmiş sürümü yeniden indirmeyecektir.';
+  String get rpClearMinecraftBody =>
+      'Minecraft kaynak paketlerini yerel olarak ön belleğe alır. MCCompanion paketini etkinleştirmeden önce bu sunucuya bağlandıysanız, Minecraft orijinal paketi zaten ön bellekte tutuyor ve birleştirilmiş sürümü yeniden indirmeyecektir.';
 
   @override
-  String get rpClearStep1 => 'Konsolunda Minecraft\'ı aç ve Ayarlar → Depolama\'ya git';
+  String get rpClearStep1 =>
+      'Konsolunda Minecraft\'ı aç ve Ayarlar → Depolama\'ya git';
 
   @override
-  String get rpClearStep2 => 'Kaynak Paketleri\'nin yanındaki \'Temizle\' veya \'Sıfırla\'ya dokun — yerel olarak önbelleğe alınmış tüm paketleri siler';
+  String get rpClearStep2 =>
+      'Kaynak Paketleri\'nin yanındaki \'Temizle\' veya \'Sıfırla\'ya dokun — yerel olarak önbelleğe alınmış tüm paketleri siler';
 
   @override
-  String get rpClearStep3 => 'MCCompanion üzerinden yeniden bağlan — birleştirilmiş paket otomatik olarak indirilecek';
+  String get rpClearStep3 =>
+      'MCCompanion üzerinden yeniden bağlan — birleştirilmiş paket otomatik olarak indirilecek';
 
   @override
   String get rpRelayTitle => 'Pack bozuk görünüyor mu?';
 
   @override
-  String get rpRelayBody => 'Relay, overlay URL\'yi önbellek anahtarı olarak kullanarak birleştirilmiş paketi 1 saat boyunca önbelleğe alır. Yeni bir birleştirme zorlamak için: pack URL\'ini biraz değiştir (ör. ?v=2 ekle) ve kaydet. Ardından Minecraft\'ın pack önbelleğini de temizle — birleştirilmiş pack hâlâ sunucunun UUID\'sini kullandığından, Minecraft aksi takdirde eski önbelleğe alınmış sürümü gösterir.';
+  String get rpRelayBody =>
+      'Relay, overlay URL\'yi önbellek anahtarı olarak kullanarak birleştirilmiş paketi 1 saat boyunca önbelleğe alır. Yeni bir birleştirme zorlamak için: pack URL\'ini biraz değiştir (ör. ?v=2 ekle) ve kaydet. Ardından Minecraft\'ın pack önbelleğini de temizle — birleştirilmiş pack hâlâ sunucunun UUID\'sini kullandığından, Minecraft aksi takdirde eski önbelleğe alınmış sürümü gösterir.';
 
   @override
-  String get rpWorksGithubHint => 'Doğrudan indirme bağlantısı — her zaman erişilebilir';
+  String get rpWorksGithubHint =>
+      'Doğrudan indirme bağlantısı — her zaman erişilebilir';
 
   @override
-  String get rpWorksCloudflareHint => 'Genel bulut depolama — hızlı ve güvenilir';
+  String get rpWorksCloudflareHint =>
+      'Genel bulut depolama — hızlı ve güvenilir';
 
   @override
-  String get rpWorksDirectHint => 'Herhangi bir genel HTTPS .mcpack veya .zip URL';
+  String get rpWorksDirectHint =>
+      'Herhangi bir genel HTTPS .mcpack veya .zip URL';
 
   @override
-  String get rpNoDiscordHint => 'Discord CDN bağlantıları kısa süre sonra sona erer';
+  String get rpNoDiscordHint =>
+      'Discord CDN bağlantıları kısa süre sonra sona erer';
 
   @override
-  String get rpNoDriveHint => 'Doğrudan indirme yok — önizleme sayfasına yönlendirir';
+  String get rpNoDriveHint =>
+      'Doğrudan indirme yok — önizleme sayfasına yönlendirir';
 
   @override
-  String get rpNoEncryptedHint => 'MCCompanion şifrelenmiş pack içeriğini birleştiremez';
+  String get rpNoEncryptedHint =>
+      'MCCompanion şifrelenmiş pack içeriğini birleştiremez';
 
   @override
-  String get rpClearWhy => 'Minecraft, kaynak paketlerini UUID\'lerine göre önbelleğe alır. Birleştirilmiş paket, sunucunun orijinal UUID\'sini korur — Minecraft, önceki bir oturumdan (MCCompanion etkinleştirilmeden önce) sunucu paketini zaten önbelleğe almışsa, yeni birleştirilmiş sürümü indirmez. Minecraft\'ın yeni birleştirilmiş paketi yüklemesi için önbelleği temizle.';
+  String get rpClearWhy =>
+      'Minecraft, kaynak paketlerini UUID\'lerine göre önbelleğe alır. Birleştirilmiş paket, sunucunun orijinal UUID\'sini korur — Minecraft, önceki bir oturumdan (MCCompanion etkinleştirilmeden önce) sunucu paketini zaten önbelleğe almışsa, yeni birleştirilmiş sürümü indirmez. Minecraft\'ın yeni birleştirilmiş paketi yüklemesi için önbelleği temizle.';
 
   @override
   String get rpUploadTab => 'Upload';
@@ -1956,7 +2050,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get rpMergerSubtitle => '4\'e kadar kaynak paketi birleştir';
 
   @override
-  String get rpMergerPriorityHint => 'En üstteki paketin en yüksek önceliği var — dosyaları çakışmalarda kazanır.';
+  String get rpMergerPriorityHint =>
+      'En üstteki paketin en yüksek önceliği var — dosyaları çakışmalarda kazanır.';
 
   @override
   String get rpMergerTopBadge => 'ÜST';
@@ -2016,7 +2111,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get rpBrowseEmpty => 'Henüz paket yok';
 
   @override
-  String get rpBrowseEmptyHint => 'Seçilmiş paketler için daha sonra tekrar bakın.';
+  String get rpBrowseEmptyHint =>
+      'Seçilmiş paketler için daha sonra tekrar bakın.';
 
   @override
   String get rpReplaceFile => 'Başka bir dosyayla değiştir';
@@ -2025,16 +2121,20 @@ class AppLocalizationsTr extends AppLocalizations {
   String get rpDropToUpload => 'Yüklemek için bırak';
 
   @override
-  String get rpTabBrowseInfo => 'MCCompanion tarafından seçilmiş paketlere göz atın. Anında bir paketi etkinleştirmek için Kullan\'a dokunun — yükleme veya bağlantı gerekmez.';
+  String get rpTabBrowseInfo =>
+      'MCCompanion tarafından seçilmiş paketlere göz atın. Anında bir paketi etkinleştirmek için Kullan\'a dokunun — yükleme veya bağlantı gerekmez.';
 
   @override
-  String get rpTabUploadInfo => 'Kendi .mcpack veya .zip dosyanızı yükleyin. MCCompanion onu bulutta güvenle saklar ve her bağlandığınızda konsolunuza gönderir.';
+  String get rpTabUploadInfo =>
+      'Kendi .mcpack veya .zip dosyanızı yükleyin. MCCompanion onu bulutta güvenle saklar ve her bağlandığınızda konsolunuza gönderir.';
 
   @override
-  String get rpTabUrlInfo => 'Bir .mcpack veya .zip dosyasına doğrudan indirme bağlantısı yapıştırın. URL herkese açık olmalıdır — Discord veya Google Drive bağlantıları kullanılamaz.';
+  String get rpTabUrlInfo =>
+      'Bir .mcpack veya .zip dosyasına doğrudan indirme bağlantısı yapıştırın. URL herkese açık olmalıdır — Discord veya Google Drive bağlantıları kullanılamaz.';
 
   @override
-  String get rpTabMergeInfo => '2 ila 4 paketi tek bir pakette birleştirin. Birleştirilen paket MCCompanion Cloud\'a yüklenir ve otomatik olarak etkinleştirilir.';
+  String get rpTabMergeInfo =>
+      '2 ila 4 paketi tek bir pakette birleştirin. Birleştirilen paket MCCompanion Cloud\'a yüklenir ve otomatik olarak etkinleştirilir.';
 
   @override
   String get shareLabel => 'Paylaş';
@@ -2146,10 +2246,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get skinsTabRecent => 'Son';
 
   @override
-  String get skinsEmptyCloudSkins => 'Henüz bulut skini yok. Burada görmek için bir skin yükleyin.';
+  String get skinsEmptyCloudSkins =>
+      'Henüz bulut skini yok. Burada görmek için bir skin yükleyin.';
 
   @override
-  String get skinsEmptyLocalSkins => 'Henüz skin yok. Başlamak için bir skin oluşturun veya yükleyin.';
+  String get skinsEmptyLocalSkins =>
+      'Henüz skin yok. Başlamak için bir skin oluşturun veya yükleyin.';
 
   @override
   String get skinUploadToWebsite => 'Web sitesine yükle';
@@ -2257,7 +2359,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get notifMarkAllRead => 'Tümünü okundu işaretle';
 
   @override
-  String get notifEmpty => 'Henüz bildirim yok. Beğeniler, yorumlar ve arkadaş etkinlikleri burada görünecek.';
+  String get notifEmpty =>
+      'Henüz bildirim yok. Beğeniler, yorumlar ve arkadaş etkinlikleri burada görünecek.';
 
   @override
   String get notifSomeone => 'Biri';

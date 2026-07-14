@@ -146,7 +146,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get aternosSubtext => '创建你自己的免费 Minecraft 服务器';
 
   @override
-  String get howToJavaBody => 'Java 模式 — 快速步骤：\n1. 在应用中选择 Java 模式。\n2. 输入你的 Java Edition 服务器地址和端口（默认：25565）。\n3. 点击 \"启动 Java 模式\" —— MCCompanion 会桥接该连接。\n4. 打开 Minecraft Bedrock 并前往好友标签页。\n5. 选择名为 \"MCCompanion\" 的 LAN 服务器以加入 Java 服务器。\n\n⚠️ 重要警告：\n- 需要有效的 Java Edition 账户（Microsoft）。\n- 一些服务器使用反作弊系统，可能会检测并封禁你的账户。\n- 某些服务器明确禁止 Bedrock 客户端 —— 请务必查看服务器规则。\n- 对于因使用此功能而导致的账户封禁、停用或其他账户相关问题，MCCompanion 不承担责任。\n- 请自行承担使用风险。';
+  String get howToJavaBody =>
+      'Java 模式 — 快速步骤：\n1. 在应用中选择 Java 模式。\n2. 输入你的 Java Edition 服务器地址和端口（默认：25565）。\n3. 点击 \"启动 Java 模式\" —— MCCompanion 会桥接该连接。\n4. 打开 Minecraft Bedrock 并前往好友标签页。\n5. 选择名为 \"MCCompanion\" 的 LAN 服务器以加入 Java 服务器。\n\n⚠️ 重要警告：\n- 需要有效的 Java Edition 账户（Microsoft）。\n- 一些服务器使用反作弊系统，可能会检测并封禁你的账户。\n- 某些服务器明确禁止 Bedrock 客户端 —— 请务必查看服务器规则。\n- 对于因使用此功能而导致的账户封禁、停用或其他账户相关问题，MCCompanion 不承担责任。\n- 请自行承担使用风险。';
 
   @override
   String get language => '简体中文';
@@ -317,10 +318,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get noWifi => '未连接到 Wi‑Fi';
 
   @override
-  String get vpnActive => '我们检测到您的 VPN 已开启。\n\n请先关闭 VPN 再使用 MCCompanion，否则局域网广播可能无法到达您的主机。';
+  String get vpnActive =>
+      '我们检测到您的 VPN 已开启。\n\n请先关闭 VPN 再使用 MCCompanion，否则局域网广播可能无法到达您的主机。';
 
   @override
-  String get mobileActive => '检测到：移动数据\n\nMCCompanion 必须与您的主机位于同一网络。请先连接家庭 Wi‑Fi 或热点后再继续。';
+  String get mobileActive =>
+      '检测到：移动数据\n\nMCCompanion 必须与您的主机位于同一网络。请先连接家庭 Wi‑Fi 或热点后再继续。';
 
   @override
   String get continueAnyway => '仍然继续';
@@ -329,13 +332,15 @@ class AppLocalizationsZh extends AppLocalizations {
   String get sameWifi => '同一 Wi‑Fi 网络';
 
   @override
-  String get needSameWifi => '运行 MCCompanion 的设备必须与您游玩 Minecraft 的主机连接到同一个 Wi‑Fi 网络。';
+  String get needSameWifi =>
+      '运行 MCCompanion 的设备必须与您游玩 Minecraft 的主机连接到同一个 Wi‑Fi 网络。';
 
   @override
   String get subscription => '需要在线订阅';
 
   @override
-  String get needSubscription => '每台主机都需要各自有效的在线订阅服务（Xbox Live、PS Plus、NSO）。否则 MCCompanion 不会显示。';
+  String get needSubscription =>
+      '每台主机都需要各自有效的在线订阅服务（Xbox Live、PS Plus、NSO）。否则 MCCompanion 不会显示。';
 
   @override
   String get updateAvailable => '有可用更新';
@@ -397,7 +402,8 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get relayUnableConnect => '无法连接到任何 MCCompanion Relay 服务器。请稍后再试或检查你的网络连接。';
+  String get relayUnableConnect =>
+      '无法连接到任何 MCCompanion Relay 服务器。请稍后再试或检查你的网络连接。';
 
   @override
   String get howToXboxTitle => 'Xbox / PS4-5（LAN / 代理）';
@@ -406,7 +412,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get howToXboxSubtitle => '通过局域网广播或代理游玩';
 
   @override
-  String get howToXboxBody => '连接方法（Xbox / PS4 / PS5）：\r\n1. 确保运行 MCCompanion 的设备和你的主机位于同一本地网络中。\r\n2. 在应用中输入你的 Minecraft 服务器地址和端口，然后按下 \\\"开始广播\\\"。\r\n3. 在主机上打开 Minecraft → Play → 查找 LAN Worlds 或 Friends 标签页，并刷新列表。\r\n4. 选择名为 \\\"MCCompanion\\\" 的局域网服务器以加入。\r\n注意：\r\n- 如果服务器没有出现，请确认两台设备位于同一子网，并且应用仍在广播。\r\n- 某些主机型号或路由器可能会阻止局域网发现；如有需要，请尝试切换应用或路由器设置。';
+  String get howToXboxBody =>
+      '连接方法（Xbox / PS4 / PS5）：\r\n1. 确保运行 MCCompanion 的设备和你的主机位于同一本地网络中。\r\n2. 在应用中输入你的 Minecraft 服务器地址和端口，然后按下 \\\"开始广播\\\"。\r\n3. 在主机上打开 Minecraft → Play → 查找 LAN Worlds 或 Friends 标签页，并刷新列表。\r\n4. 选择名为 \\\"MCCompanion\\\" 的局域网服务器以加入。\r\n注意：\r\n- 如果服务器没有出现，请确认两台设备位于同一子网，并且应用仍在广播。\r\n- 某些主机型号或路由器可能会阻止局域网发现；如有需要，请尝试切换应用或路由器设置。';
 
   @override
   String get howToNintendoTitle => 'Nintendo Switch（DNS 模式）';
@@ -415,7 +422,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get howToNintendoSubtitle => '适用于 Switch 的 DNS 中继说明';
 
   @override
-  String get howToNintendoBody => 'Nintendo Switch — DNS 模式（分步说明）：\r\n1. 在应用中启用 \\\"Nintendo\\\" 模式，并选择一个中继服务器（EU 或 US）。\r\n2. 点击 \\\"发送 DNS 配置\\\"，将 DNS IP 发送到中继服务器。\r\n3. 在你的 Nintendo Switch 上前往系统设置 → 网络 → 互联网设置 → （你的网络）→ 更改设置 → DNS，并将主 DNS 设置为中继服务器 IP。\r\n4. 打开 Minecraft 并加入一个公共服务器；你将通过中继 DNS 被重定向到你的服务器。\r\n注意：\r\n- DNS 模式不会广播局域网服务器；它会通过中继服务器路由游戏流量。\r\n- 使用结束后，如果你需要恢复正常网络行为，请将 DNS 改回原设置。';
+  String get howToNintendoBody =>
+      'Nintendo Switch — DNS 模式（分步说明）：\r\n1. 在应用中启用 \\\"Nintendo\\\" 模式，并选择一个中继服务器（EU 或 US）。\r\n2. 点击 \\\"发送 DNS 配置\\\"，将 DNS IP 发送到中继服务器。\r\n3. 在你的 Nintendo Switch 上前往系统设置 → 网络 → 互联网设置 → （你的网络）→ 更改设置 → DNS，并将主 DNS 设置为中继服务器 IP。\r\n4. 打开 Minecraft 并加入一个公共服务器；你将通过中继 DNS 被重定向到你的服务器。\r\n注意：\r\n- DNS 模式不会广播局域网服务器；它会通过中继服务器路由游戏流量。\r\n- 使用结束后，如果你需要恢复正常网络行为，请将 DNS 改回原设置。';
 
   @override
   String get howToFriendsTitle => '好友模式';
@@ -424,7 +432,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get howToFriendsSubtitle => '邀请好友并通过局域网加入';
 
   @override
-  String get howToFriendsBody => '好友模式 — 快速步骤：\r\n1. 如有需要，请在你的主机或平台上添加 MCCompanion 好友账号（Relay 好友）。\r\n2. 在应用中启用好友模式并发送 Relay 配置（如果适用）。\r\n3. 在你的主机上打开 Minecraft → Friends，并搜索 LAN Worlds —— 你的服务器应当会显示为一个局域网世界。\r\n4. 选择它即可与你的好友一起加入服务器。\r\n注意：\r\n- 请确保你和你的好友拥有相同且允许好友在线显示的 NAT/设置。\r\n- 好友模式依赖平台的好友功能，可能需要接受好友请求。';
+  String get howToFriendsBody =>
+      '好友模式 — 快速步骤：\r\n1. 如有需要，请在你的主机或平台上添加 MCCompanion 好友账号（Relay 好友）。\r\n2. 在应用中启用好友模式并发送 Relay 配置（如果适用）。\r\n3. 在你的主机上打开 Minecraft → Friends，并搜索 LAN Worlds —— 你的服务器应当会显示为一个局域网世界。\r\n4. 选择它即可与你的好友一起加入服务器。\r\n注意：\r\n- 请确保你和你的好友拥有相同且允许好友在线显示的 NAT/设置。\r\n- 好友模式依赖平台的好友功能，可能需要接受好友请求。';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion 未显示';
@@ -433,7 +442,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get helpMCCompanionSubtitle => '局域网发现问题排查';
 
   @override
-  String get helpMCCompanionBody => '如果服务器没有出现在你的主机上，请尝试以下步骤：\r\n\r\n✅ 基本检查：\r\n1. 相同的 WiFi 网络 - 你的手机/平板和主机必须连接到同一个 WiFi\r\n2. 正确的服务器地址 - 再次检查 IP 和端口（默认：19132）\r\n3. 广播已激活 - 确认 MCCompanion 显示 \\\"正在广播\\\" 状态\r\n\r\n🔄 快速修复：\r\n• 重启应用：停止广播，完全关闭 MCCompanion，重新打开后再试一次\r\n• 重启主机：有时主机需要刷新才能检测到局域网游戏\r\n• 检查好友/LAN 标签页：服务器会显示在 \\\"好友\\\" 或 \\\"局域网游戏\\\" 下，而不是服务器列表中\r\n• 开始广播后等待 10-15 秒\r\n• 禁用 VPN：VPN 可能会阻止本地广播\r\n\r\n⚠️ 常见问题：\r\n\\\"No route found for user\\\" → 确保两台设备位于同一个 Wi‑Fi（避免使用访客网络）\r\n\\\"Unable to connect to MCCompanion relay server\\\" → 检查你的网络 / 中继服务器状态\r\n\r\n📱 仍然有问题？请在 MCCompanion 中启用调试模式并检查日志，或尝试其他服务器。';
+  String get helpMCCompanionBody =>
+      '如果服务器没有出现在你的主机上，请尝试以下步骤：\r\n\r\n✅ 基本检查：\r\n1. 相同的 WiFi 网络 - 你的手机/平板和主机必须连接到同一个 WiFi\r\n2. 正确的服务器地址 - 再次检查 IP 和端口（默认：19132）\r\n3. 广播已激活 - 确认 MCCompanion 显示 \\\"正在广播\\\" 状态\r\n\r\n🔄 快速修复：\r\n• 重启应用：停止广播，完全关闭 MCCompanion，重新打开后再试一次\r\n• 重启主机：有时主机需要刷新才能检测到局域网游戏\r\n• 检查好友/LAN 标签页：服务器会显示在 \\\"好友\\\" 或 \\\"局域网游戏\\\" 下，而不是服务器列表中\r\n• 开始广播后等待 10-15 秒\r\n• 禁用 VPN：VPN 可能会阻止本地广播\r\n\r\n⚠️ 常见问题：\r\n\\\"No route found for user\\\" → 确保两台设备位于同一个 Wi‑Fi（避免使用访客网络）\r\n\\\"Unable to connect to MCCompanion relay server\\\" → 检查你的网络 / 中继服务器状态\r\n\r\n📱 仍然有问题？请在 MCCompanion 中启用调试模式并检查日志，或尝试其他服务器。';
 
   @override
   String get helpMultiplayerFailedTitle => '多人连接失败';
@@ -442,7 +452,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get helpMultiplayerFailedSubtitle => '说明这为什么不是 MCCompanion 错误';
 
   @override
-  String get helpMultiplayerFailedBody => '⚠️ 这不是 MCCompanion 的问题！\r\n\r\nMCCompanion 已成功将你重定向到请求的服务器。\\\"多人连接失败\\\" 这条消息表示目标服务器当前无法访问。可能原因包括：\r\n\r\n• 目标 Minecraft 服务器离线或负载过高\r\n• 服务器需要更新的客户端版本或特定版本\r\n• Relay 与目标服务器之间存在网络问题\r\n\r\n请尝试连接到其他服务器，或联系该服务器的支持团队。如果多个服务器都出现此问题，请在 MCCompanion 中启用调试模式并检查日志。';
+  String get helpMultiplayerFailedBody =>
+      '⚠️ 这不是 MCCompanion 的问题！\r\n\r\nMCCompanion 已成功将你重定向到请求的服务器。\\\"多人连接失败\\\" 这条消息表示目标服务器当前无法访问。可能原因包括：\r\n\r\n• 目标 Minecraft 服务器离线或负载过高\r\n• 服务器需要更新的客户端版本或特定版本\r\n• Relay 与目标服务器之间存在网络问题\r\n\r\n请尝试连接到其他服务器，或联系该服务器的支持团队。如果多个服务器都出现此问题，请在 MCCompanion 中启用调试模式并检查日志。';
 
   @override
   String get helpNintendoDnsTitle => 'Nintendo DNS 无法工作';
@@ -451,7 +462,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get helpNintendoDnsSubtitle => '常见 DNS / Relay 问题';
 
   @override
-  String get helpNintendoDnsBody => '如果 Nintendo DNS 模式无法工作，请检查以下内容：\r\n\r\n1. 确认你已从应用中发送 DNS 配置（发送 DNS 配置）。\r\n2. 确认你已在 Switch 上将 Relay IP 设置为主 DNS。\r\n3. 确保所选的 Relay 服务器（EU/US）在线且未过载。\r\n4. 某些网络（例如强制门户网络）会阻止自定义 DNS —— 请在其他网络上测试。\r\n\r\n如果问题仍然存在，请启用调试模式并检查日志，或尝试好友模式这一替代方案。';
+  String get helpNintendoDnsBody =>
+      '如果 Nintendo DNS 模式无法工作，请检查以下内容：\r\n\r\n1. 确认你已从应用中发送 DNS 配置（发送 DNS 配置）。\r\n2. 确认你已在 Switch 上将 Relay IP 设置为主 DNS。\r\n3. 确保所选的 Relay 服务器（EU/US）在线且未过载。\r\n4. 某些网络（例如强制门户网络）会阻止自定义 DNS —— 请在其他网络上测试。\r\n\r\n如果问题仍然存在，请启用调试模式并检查日志，或尝试好友模式这一替代方案。';
 
   @override
   String get helpFriendsModeTitle => '好友模式无法工作';
@@ -460,7 +472,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get helpFriendsModeSubtitle => '常见好友问题';
 
   @override
-  String get helpFriendsModeBody => '好友模式故障排除提示：\r\n\r\n1. 确保 Relay 好友账号已在主机上添加/接受（如有需要）。\r\n2. 启用好友模式后，尝试重新启动游戏并刷新 Friends/LAN 标签页。\r\n\r\n如果服务器仍未显示给好友，请启用调试模式并检查日志以识别错误。';
+  String get helpFriendsModeBody =>
+      '好友模式故障排除提示：\r\n\r\n1. 确保 Relay 好友账号已在主机上添加/接受（如有需要）。\r\n2. 启用好友模式后，尝试重新启动游戏并刷新 Friends/LAN 标签页。\r\n\r\n如果服务器仍未显示给好友，请启用调试模式并检查日志以识别错误。';
 
   @override
   String get changeLanguageTitle => '更改语言';
@@ -684,7 +697,8 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get reportDisclaimer => 'Reports are reviewed by our team. False reports may result in action against your account.';
+  String get reportDisclaimer =>
+      'Reports are reviewed by our team. False reports may result in action against your account.';
 
   @override
   String get reportReasonSpam => 'Spam';
@@ -735,7 +749,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get playerLookupTitle => 'Player Lookup';
 
   @override
-  String get playerLookupSubtitle => 'Search for a Java or Bedrock player by username';
+  String get playerLookupSubtitle =>
+      'Search for a Java or Bedrock player by username';
 
   @override
   String get playerLookupHint => 'Enter a username…';
@@ -817,13 +832,15 @@ class AppLocalizationsZh extends AppLocalizations {
   String get deleteAccountTitle => 'Delete Account';
 
   @override
-  String get deleteAccountBody => 'This will permanently delete your account and all data. This action cannot be undone.';
+  String get deleteAccountBody =>
+      'This will permanently delete your account and all data. This action cannot be undone.';
 
   @override
   String get deletePermanently => 'Delete Permanently';
 
   @override
-  String get couldNotDeleteAccount => 'Could not delete account. Please try again.';
+  String get couldNotDeleteAccount =>
+      'Could not delete account. Please try again.';
 
   @override
   String get removeFriendTitle => 'Remove Friend';
@@ -842,7 +859,8 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get emailDifferentMethod => 'This email is linked to a different sign-in method';
+  String get emailDifferentMethod =>
+      'This email is linked to a different sign-in method';
 
   @override
   String get googleSignInFailed => 'Google sign-in failed. Please try again.';
@@ -854,7 +872,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get resetPasswordTitle => 'Reset Password';
 
   @override
-  String get resetPasswordBody => 'Enter your email address and we will send you a link to reset your password.';
+  String get resetPasswordBody =>
+      'Enter your email address and we will send you a link to reset your password.';
 
   @override
   String get emailAddressHint => 'Email address';
@@ -874,7 +893,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get invalidEmailError => 'The email address is not valid';
 
   @override
-  String get couldNotSendResetEmail => 'Could not send reset email. Please try again.';
+  String get couldNotSendResetEmail =>
+      'Could not send reset email. Please try again.';
 
   @override
   String get enterEmailAndPassword => 'Please enter your email and password';
@@ -886,13 +906,15 @@ class AppLocalizationsZh extends AppLocalizations {
   String get emailAlreadyInUse => 'This email address is already in use';
 
   @override
-  String get weakPassword => 'Password is too weak. Please choose a stronger one.';
+  String get weakPassword =>
+      'Password is too weak. Please choose a stronger one.';
 
   @override
   String get createAccount => 'Create Account';
 
   @override
-  String get signInSubtitle => 'Sign in to access your profile, friends, and chats.';
+  String get signInSubtitle =>
+      'Sign in to access your profile, friends, and chats.';
 
   @override
   String get passwordHint => 'Password';
@@ -916,7 +938,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get profileNotSetUp => 'Profile not set up';
 
   @override
-  String get chooseUsernameSubtitle => 'Choose a username to start connecting with other players.';
+  String get chooseUsernameSubtitle =>
+      'Choose a username to start connecting with other players.';
 
   @override
   String get createProfile => 'Create Profile';
@@ -962,7 +985,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get linkedAccountsTitle => 'Linked Accounts';
 
   @override
-  String get linkAccountsHint => 'Link your Minecraft accounts to show your skins and stats.';
+  String get linkAccountsHint =>
+      'Link your Minecraft accounts to show your skins and stats.';
 
   @override
   String get linkXbox => 'Link Xbox';
@@ -1029,13 +1053,15 @@ class AppLocalizationsZh extends AppLocalizations {
   String get skinsNoAccountsTitle => 'No Minecraft accounts linked';
 
   @override
-  String get skinsNoAccountsSubtitle => 'Link a Java or Bedrock account to view your skins.';
+  String get skinsNoAccountsSubtitle =>
+      'Link a Java or Bedrock account to view your skins.';
 
   @override
   String get skinsSignInTitle => 'Sign in to view your skins';
 
   @override
-  String get skinsSignInSubtitle => 'Sign in and link your Minecraft accounts to see your skins here.';
+  String get skinsSignInSubtitle =>
+      'Sign in and link your Minecraft accounts to see your skins here.';
 
   @override
   String get skinsMustBe64 => 'Skin must be 64×64 pixels';
@@ -1085,7 +1111,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get wikiCouldNotLoadPages => 'Could not load pages. Please try again.';
 
   @override
-  String get wikiCouldNotReach => 'Could not reach the wiki. Check your connection.';
+  String get wikiCouldNotReach =>
+      'Could not reach the wiki. Check your connection.';
 
   @override
   String wikiNoResults(Object query) {
@@ -1282,7 +1309,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get paywallSavePercent => 'Save ~17%';
 
   @override
-  String get paywallSubtitle => 'Track more servers and get notified\nwhen they go online or offline.';
+  String get paywallSubtitle =>
+      'Track more servers and get notified\nwhen they go online or offline.';
 
   @override
   String paywallSlotLabel(Object slots) {
@@ -1358,34 +1386,40 @@ class AppLocalizationsZh extends AppLocalizations {
   String get dataSourcesSection => 'Data Sources & Credits';
 
   @override
-  String get creditMinecraftWikiSubtitle => 'Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.';
+  String get creditMinecraftWikiSubtitle =>
+      'Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
 
   @override
-  String get creditMojangSubtitle => 'Java player skins, UUIDs, and profile data via the official Mojang API.';
+  String get creditMojangSubtitle =>
+      'Java player skins, UUIDs, and profile data via the official Mojang API.';
 
   @override
   String get creditGeyserTitle => 'GeyserMC';
 
   @override
-  String get creditGeyserSubtitle => 'Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.';
+  String get creditGeyserSubtitle =>
+      'Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.';
 
   @override
   String get creditXboxTitle => 'Xbox / Microsoft';
 
   @override
-  String get creditXboxSubtitle => 'Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.';
+  String get creditXboxSubtitle =>
+      'Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.';
 
   @override
   String get aboutMCCompanionSection => 'About MCCompanion';
 
   @override
-  String get aboutMCCompanionDisclaimer => 'MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.';
+  String get aboutMCCompanionDisclaimer =>
+      'MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.';
 
   @override
-  String get minecraftTrademark => '\"Minecraft\" is a trademark of Microsoft Corporation.';
+  String get minecraftTrademark =>
+      '\"Minecraft\" is a trademark of Microsoft Corporation.';
 
   @override
   String get nldServerLabelShort => 'MCCompanion Server';
@@ -1445,7 +1479,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get xboxSignInWithMicrosoft => 'Sign in with Microsoft';
 
   @override
-  String get xboxGoToLink => 'Go to the link below and enter the code to connect your Xbox account.';
+  String get xboxGoToLink =>
+      'Go to the link below and enter the code to connect your Xbox account.';
 
   @override
   String get xboxYourCode => 'Your code';
@@ -1466,7 +1501,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get xboxCodeCopied => 'Code copied to clipboard';
 
   @override
-  String get xboxCouldNotStart => 'Could not start Xbox login. Please try again.';
+  String get xboxCouldNotStart =>
+      'Could not start Xbox login. Please try again.';
 
   @override
   String get xboxCodeExpired => 'The code expired. Please try again.';
@@ -1542,7 +1578,8 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get trackerLimitReached => 'You\'ve reached your server limit. Upgrade to track more servers.';
+  String get trackerLimitReached =>
+      'You\'ve reached your server limit. Upgrade to track more servers.';
 
   @override
   String get upgradeButton => 'Upgrade';
@@ -1557,7 +1594,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get javaSignInWithMicrosoft => 'Sign in with Microsoft';
 
   @override
-  String get javaGoToLink => 'Go to the link below and enter the code to connect your Minecraft Java Edition account.';
+  String get javaGoToLink =>
+      'Go to the link below and enter the code to connect your Minecraft Java Edition account.';
 
   @override
   String get javaYourCode => 'Your code';
@@ -1578,13 +1616,15 @@ class AppLocalizationsZh extends AppLocalizations {
   String get javaNoJavaTitle => 'No Java Edition found';
 
   @override
-  String get javaNoJavaBody => 'The Microsoft account you signed in with does not own Minecraft Java Edition.';
+  String get javaNoJavaBody =>
+      'The Microsoft account you signed in with does not own Minecraft Java Edition.';
 
   @override
   String get javaTryDifferentAccount => 'Try a different account';
 
   @override
-  String get javaCouldNotStart => 'Could not start Microsoft login. Please try again.';
+  String get javaCouldNotStart =>
+      'Could not start Microsoft login. Please try again.';
 
   @override
   String get javaCodeExpired => 'The code expired. Please try again.';
@@ -1772,7 +1812,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get friendsHowToStep4 => '在局域网世界中找到你的服务器并加入。';
 
   @override
-  String get friendsHowToNote => '⚠️ 每次想玩时，请先在 MCCompanion 应用中启动好友模式。启动后可以关闭应用。';
+  String get friendsHowToNote =>
+      '⚠️ 每次想玩时，请先在 MCCompanion 应用中启动好友模式。启动后可以关闭应用。';
 
   @override
   String get friendsBotLoadError => '⚠️ 无法加载机器人列表，请稍后重试。';
@@ -1821,7 +1862,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpWhatIsThis => '这是什么？';
 
   @override
-  String get rpExplanation => '资源包可以改变你游戏机上Minecraft的外观——新的方块、颜色或音效。在下方粘贴.mcpack文件的链接，启用后保存。MCCompanion每次连接时会自动加载。';
+  String get rpExplanation =>
+      '资源包可以改变你游戏机上Minecraft的外观——新的方块、颜色或音效。在下方粘贴.mcpack文件的链接，启用后保存。MCCompanion每次连接时会自动加载。';
 
   @override
   String get rpPackUrlLabel => '包 URL';
@@ -1872,7 +1914,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpConsolePerformanceTitle => '主机性能';
 
   @override
-  String get rpConsolePerformanceBody => '高分辨率材质包可能导致主机卡顿或崩溃。如果遇到问题，请切换至低分辨率包，或选择较轻量的子包（如果该包支持）。';
+  String get rpConsolePerformanceBody =>
+      '高分辨率材质包可能导致主机卡顿或崩溃。如果遇到问题，请切换至低分辨率包，或选择较轻量的子包（如果该包支持）。';
 
   @override
   String get rpWarnDiscord => 'Discord 链接会过期并停止工作。请改用永久性托管服务。';
@@ -1890,13 +1933,19 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpToastSaved => '资源包设置已保存。';
 
   @override
-  String get rpInvalidPackFormat => 'This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.';
+  String get rpInvalidPackFormat =>
+      'This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.';
+
+  @override
+  String get rpBehaviorContentWarning =>
+      'This pack contains behavior pack data, which won\'t work on servers. The textures will still work.';
 
   @override
   String get rpClearMinecraftTitle => '第一次使用此资源包？';
 
   @override
-  String get rpClearMinecraftBody => 'Minecraft 会在本地缓存资源包。如果您在启用 MCCompanion 资源包之前已连接过此服务器，Minecraft 已缓存了原始资源包，不会重新下载合并后的版本。';
+  String get rpClearMinecraftBody =>
+      'Minecraft 会在本地缓存资源包。如果您在启用 MCCompanion 资源包之前已连接过此服务器，Minecraft 已缓存了原始资源包，不会重新下载合并后的版本。';
 
   @override
   String get rpClearStep1 => '在主机上打开 Minecraft，前往设置 → 存储';
@@ -1911,7 +1960,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpRelayTitle => '资源包显示有问题？';
 
   @override
-  String get rpRelayBody => '中继服务器以您的覆盖层 URL 为缓存键，将合并后的材质包缓存 1 小时。要强制重新合并：稍微修改材质包链接（例如在末尾添加 ?v=2）并保存。之后还需要清除 Minecraft 的材质包缓存——合并后的材质包仍使用服务器的 UUID，否则 Minecraft 会直接使用旧的缓存版本。';
+  String get rpRelayBody =>
+      '中继服务器以您的覆盖层 URL 为缓存键，将合并后的材质包缓存 1 小时。要强制重新合并：稍微修改材质包链接（例如在末尾添加 ?v=2）并保存。之后还需要清除 Minecraft 的材质包缓存——合并后的材质包仍使用服务器的 UUID，否则 Minecraft 会直接使用旧的缓存版本。';
 
   @override
   String get rpWorksGithubHint => '直接下载链接，始终可访问';
@@ -1932,7 +1982,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpNoEncryptedHint => 'MCCompanion 无法合并加密的材质包内容';
 
   @override
-  String get rpClearWhy => 'Minecraft 通过 UUID 缓存材质包。合并后的材质包保留服务器原有的 UUID——如果 Minecraft 在之前的游戏中（启用 MCCompanion 之前）已经缓存了服务器的材质包，它就不会重新下载新的合并版本。清除缓存，让 Minecraft 加载最新的合并材质包。';
+  String get rpClearWhy =>
+      'Minecraft 通过 UUID 缓存材质包。合并后的材质包保留服务器原有的 UUID——如果 Minecraft 在之前的游戏中（启用 MCCompanion 之前）已经缓存了服务器的材质包，它就不会重新下载新的合并版本。清除缓存，让 Minecraft 加载最新的合并材质包。';
 
   @override
   String get rpUploadTab => 'Upload';
@@ -2028,13 +2079,16 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpTabBrowseInfo => '浏览 MCCompanion 精选的资源包。点击使用即可立即激活 — 无需上传或链接。';
 
   @override
-  String get rpTabUploadInfo => '上传您自己的 .mcpack 或 .zip 文件。MCCompanion 将其安全存储在云端，每次连接时自动发送到您的主机。';
+  String get rpTabUploadInfo =>
+      '上传您自己的 .mcpack 或 .zip 文件。MCCompanion 将其安全存储在云端，每次连接时自动发送到您的主机。';
 
   @override
-  String get rpTabUrlInfo => '粘贴 .mcpack 或 .zip 文件的直接下载链接。URL 必须可公开访问 — 不支持 Discord 或 Google Drive 链接。';
+  String get rpTabUrlInfo =>
+      '粘贴 .mcpack 或 .zip 文件的直接下载链接。URL 必须可公开访问 — 不支持 Discord 或 Google Drive 链接。';
 
   @override
-  String get rpTabMergeInfo => '将 2 至 4 个资源包合并为一个。合并后的资源包将上传至 MCCompanion Cloud 并自动激活。';
+  String get rpTabMergeInfo =>
+      '将 2 至 4 个资源包合并为一个。合并后的资源包将上传至 MCCompanion Cloud 并自动激活。';
 
   @override
   String get shareLabel => '分享';

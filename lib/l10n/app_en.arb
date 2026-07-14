@@ -2109,6 +2109,10 @@
   "@rpInvalidPackFormat": {
     "description": "Error shown when user uploads a Java Edition resource pack instead of Bedrock"
   },
+  "rpBehaviorContentWarning": "This pack contains behavior pack data, which won't work on servers. The textures will still work.",
+  "@rpBehaviorContentWarning": {
+    "description": "Warning (non-blocking) shown when an added pack contains behavior pack modules or folders"
+  },
   "rpClearMinecraftTitle": "First time with this pack?",
   "@rpClearMinecraftTitle": {
     "description": "Section title: already connected before info card"

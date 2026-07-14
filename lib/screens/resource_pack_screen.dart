@@ -142,10 +142,14 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     final file = files.first;
     final bytes = file.bytes ?? (file.path != null ? await File(file.path!).readAsBytes() : null);
     if (bytes == null) return;
-    if (!isBedrockPack(bytes)) {
-      if (!mounted) return;
+    final inspection = inspectPackBytes(bytes);
+    if (!mounted) return;
+    if (inspection.format != PackFormat.bedrock) {
       AppToast.show(context, message: AppLocalizations.of(context)!.rpInvalidPackFormat, icon: Icons.error_outline_rounded, color: Colors.red);
       return;
+    }
+    if (inspection.hasBehaviorContent) {
+      AppToast.show(context, message: AppLocalizations.of(context)!.rpBehaviorContentWarning, icon: Icons.warning_amber_rounded, color: Colors.orange);
     }
     await _uploadBytes(bytes, file.name);
   }
