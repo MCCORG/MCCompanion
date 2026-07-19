@@ -11,7 +11,18 @@ import 'relay_service.dart';
 
 class MessageService {
   static const String _base = AppConstants.apiBase;
-  static String get _wsBase => RelayService.wsBase;
+
+  static int _failCount = 0;
+
+  static String get _wsBase {
+    final preferred = RelayService.wsBase;
+    if ((_failCount ~/ 2) % 2 == 0) return preferred;
+    final alt = AppConstants.relayServers.firstWhere(
+      (r) => r['base'] != preferred,
+      orElse: () => AppConstants.relayServers.first,
+    );
+    return alt['base']!;
+  }
 
   static WebSocketChannel? _channel;
   static StreamSubscription<dynamic>? _sub;
@@ -40,6 +51,7 @@ class MessageService {
 
       _sub = _channel!.stream.listen(
         (raw) {
+          _failCount = 0;
           try {
             final json = jsonDecode(raw as String) as Map<String, dynamic>;
             final type = json['type'] as String?;
@@ -71,6 +83,7 @@ class MessageService {
 
   static void _scheduleReconnect() {
     _connected = false;
+    _failCount++;
     _sub?.cancel();
     _channel = null;
     _reconnectTimer?.cancel();

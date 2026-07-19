@@ -15,7 +15,7 @@
   "aternosSubtext": "Создайте свой собственный бесплатный сервер Minecraft",
   "howToUseMenu": "Как использовать",
   "support": "Поддержка",
-  "helpText": "Создано {appCreator}.\r\n\r\nКак использовать:\r\n1. Введите адрес и порт вашего сервера Minecraft (по умолчанию: 19132)\r\n   — или выберите ранее сохраненный сервер из выпадающего списка\r\n2. (Необязательно) Выберите relay-сервер (EU или US), ближайший к вашему местоположению\r\n3. Нажмите \\\"Начать трансляцию\\\", чтобы начать\r\n4. На вашей консоли/устройстве: Minecraft > Играть > Друзья\r\n5. Вы должны увидеть LAN-сервер с названием \\\"MCCompanion\\\"\r\n6. Нажмите на него, чтобы подключиться к вашему внешнему серверу через MCCompanion\r\n\r\nNintendo Switch (режим DNS):\r\n1. Включите \\\"Nintendo Switch\\\" в панели подключения\r\n2. Выберите relay-сервер (EU или US)\r\n3. Нажмите \\\"Отправить конфигурацию DNS\\\" — это отправит вашу конфигурацию на relay\r\n   (это НЕ транслирует LAN-сервер)\r\n4. На вашей Switch примените настройки DNS MCCompanion и подключитесь\r\n   используя запись сервера, которую вы используете для MCCompanion\r\n\r\nПримечания:\r\n- Для LAN-трансляции MCCompanion и консоль должны находиться в одной локальной сети.\r\n- Совет: выберите relay-сервер, который ближе всего к вам, для лучшей производительности.",
+  "helpText": "Создано {appCreator}.\r\n\r\nКак использовать:\r\n1. Введите адрес и порт вашего сервера Minecraft (по умолчанию: 19132)\r\n  , или выберите ранее сохраненный сервер из выпадающего списка\r\n2. (Необязательно) Выберите relay-сервер (EU или US), ближайший к вашему местоположению\r\n3. Нажмите \\\"Начать трансляцию\\\", чтобы начать\r\n4. На вашей консоли/устройстве: Minecraft > Играть > Друзья\r\n5. Вы должны увидеть LAN-сервер с названием \\\"MCCompanion\\\"\r\n6. Нажмите на него, чтобы подключиться к вашему внешнему серверу через MCCompanion\r\n\r\nNintendo Switch (режим DNS):\r\n1. Включите \\\"Nintendo Switch\\\" в панели подключения\r\n2. Выберите relay-сервер (EU или US)\r\n3. Нажмите \\\"Отправить конфигурацию DNS\\\", это отправит вашу конфигурацию на relay\r\n   (это НЕ транслирует LAN-сервер)\r\n4. На вашей Switch примените настройки DNS MCCompanion и подключитесь\r\n   используя запись сервера, которую вы используете для MCCompanion\r\n\r\nПримечания:\r\n- Для LAN-трансляции MCCompanion и консоль должны находиться в одной локальной сети.\r\n- Совет: выберите relay-сервер, который ближе всего к вам, для лучшей производительности.",
   "@helpText": {
     "description": "Detailed help / instructions shown in the help dialog",
     "placeholders": {
@@ -37,7 +37,7 @@
   "@howToJavaSubtitle": {
     "description": "Short subtitle for Java menu tile"
   },
-  "howToJavaBody": "Режим Java — быстрые шаги:\n1. В приложении выберите режим Java.\n2. Введите адрес и порт вашего сервера Java Edition (по умолчанию: 25565).\n3. Нажмите \"Запустить режим Java\" — MCCompanion свяжет соединение.\n4. Откройте Minecraft Bedrock и перейдите на вкладку Друзья.\n5. Выберите LAN-сервер с названием \"MCCompanion\", чтобы подключиться к серверу Java.\n\n⚠️ Важные предупреждения:\n- Требуется действующая учётная запись Java Edition (Microsoft).\n- Некоторые серверы используют античит-системы, которые могут обнаружить и заблокировать вашу учётную запись.\n- Некоторые серверы прямо запрещают клиентов Bedrock — всегда проверяйте правила сервера.\n- MCCompanion не несёт ответственности за блокировки, ограничения или другие проблемы, связанные с учётной записью, которые могут возникнуть при использовании этой функции.\n- Используйте на свой страх и риск.",
+  "howToJavaBody": "Режим Java: быстрые шаги:\n1. В приложении выберите режим Java.\n2. Введите адрес и порт вашего сервера Java Edition (по умолчанию: 25565).\n3. Нажмите \"Запустить режим Java\": MCCompanion свяжет соединение.\n4. Откройте Minecraft Bedrock и перейдите на вкладку Друзья.\n5. Выберите LAN-сервер с названием \"MCCompanion\", чтобы подключиться к серверу Java.\n\n⚠️ Важные предупреждения:\n- Требуется действующая учётная запись Java Edition (Microsoft).\n- Некоторые серверы используют античит-системы, которые могут обнаружить и заблокировать вашу учётную запись.\n- Некоторые серверы прямо запрещают клиентов Bedrock, всегда проверяйте правила сервера.\n- MCCompanion не несёт ответственности за блокировки, ограничения или другие проблемы, связанные с учётной записью, которые могут возникнуть при использовании этой функции.\n- Используйте на свой страх и риск.",
   "@howToJavaBody": {
     "description": "Detailed steps for Java mode how-to modal"
   },
@@ -121,7 +121,7 @@
   "@bedrockBridge": {
     "description": "Subtitle on splash screen"
   },
-  "clientDisconnected": "Клиент отключен — трансляция остановлена",
+  "clientDisconnected": "Клиент отключен: трансляция остановлена",
   "@clientDisconnected": {
     "description": "Snackbar shown when clients disconnect automatically"
   },
@@ -254,7 +254,7 @@
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
-  "howToNintendoBody": "Nintendo Switch — режим DNS (пошагово):\r\n1. В приложении включите режим \\\"Nintendo\\\" и выберите relay-сервер (EU или US).\r\n2. Нажмите \\\"Отправить конфигурацию DNS\\\", чтобы отправить DNS IP на relay.\r\n3. На вашей Nintendo Switch перейдите в настройки системы → интернет → настройки интернета → (ваша сеть) → изменить настройки → DNS и установите основной DNS на relay IP.\r\n4. Откройте Minecraft и присоединитесь к публичному серверу; вы будете перенаправлены на свой сервер с помощью relay DNS.\r\nПримечания:\r\n- Режим DNS не транслирует LAN-сервер; он направляет игровой трафик через relay.\r\n- Верните DNS обратно после завершения, если вам нужно обычное поведение сети.",
+  "howToNintendoBody": "Nintendo Switch: режим DNS (пошагово):\r\n1. В приложении включите режим \\\"Nintendo\\\" и выберите relay-сервер (EU или US).\r\n2. Нажмите \\\"Отправить конфигурацию DNS\\\", чтобы отправить DNS IP на relay.\r\n3. На вашей Nintendo Switch перейдите в настройки системы → интернет → настройки интернета → (ваша сеть) → изменить настройки → DNS и установите основной DNS на relay IP.\r\n4. Откройте Minecraft и присоединитесь к публичному серверу; вы будете перенаправлены на свой сервер с помощью relay DNS.\r\nПримечания:\r\n- Режим DNS не транслирует LAN-сервер; он направляет игровой трафик через relay.\r\n- Верните DNS обратно после завершения, если вам нужно обычное поведение сети.",
   "@howToNintendoBody": {
     "description": "Detailed steps for Nintendo Switch DNS setup"
   },
@@ -266,7 +266,7 @@
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
   },
-  "howToFriendsBody": "Режим друзей — быстрые шаги:\r\n1. При необходимости добавьте учетную запись друга MCCompanion (relay friend) на вашей консоли или платформе.\r\n2. В приложении включите режим друзей и отправьте конфигурацию relay (если применимо).\r\n3. На вашей консоли откройте Minecraft → Friends и найдите LAN Worlds — ваш сервер должен появиться там как LAN-мир.\r\n4. Выберите его, чтобы присоединиться к вашему серверу вместе с друзьями.\r\nПримечания:\r\n- Убедитесь, что у вас и ваших друзей одинаковые NAT/settings, которые позволяют видеть друзей.\r\n- Режим друзей зависит от функций друзей платформы и может потребовать принятия запросов в друзья.",
+  "howToFriendsBody": "Режим друзей: быстрые шаги:\r\n1. При необходимости добавьте учетную запись друга MCCompanion (relay friend) на вашей консоли или платформе.\r\n2. В приложении включите режим друзей и отправьте конфигурацию relay (если применимо).\r\n3. На вашей консоли откройте Minecraft → Friends и найдите LAN Worlds, ваш сервер должен появиться там как LAN-мир.\r\n4. Выберите его, чтобы присоединиться к вашему серверу вместе с друзьями.\r\nПримечания:\r\n- Убедитесь, что у вас и ваших друзей одинаковые NAT/settings, которые позволяют видеть друзей.\r\n- Режим друзей зависит от функций друзей платформы и может потребовать принятия запросов в друзья.",
   "@howToFriendsBody": {
     "description": "Detailed steps for Friends mode"
   },
@@ -302,7 +302,7 @@
   "@helpNintendoDnsSubtitle": {
     "description": "Short subtitle for Nintendo DNS troubleshooting tile"
   },
-  "helpNintendoDnsBody": "Если режим Nintendo DNS не работает, проверьте следующее:\r\n\r\n1. Убедитесь, что вы отправили DNS config из приложения (Send DNS Config).\r\n2. Убедитесь, что вы применили relay IP как Primary DNS на Switch.\r\n3. Убедитесь, что выбранный relay server (EU/US) находится в сети и не перегружен.\r\n4. Некоторые сети (например, captive portals) не позволяют использовать пользовательский DNS — протестируйте в другой сети.\r\n\r\nЕсли проблемы сохраняются, включите Debug Mode и проверьте журналы или попробуйте альтернативу Friends-mode.",
+  "helpNintendoDnsBody": "Если режим Nintendo DNS не работает, проверьте следующее:\r\n\r\n1. Убедитесь, что вы отправили DNS config из приложения (Send DNS Config).\r\n2. Убедитесь, что вы применили relay IP как Primary DNS на Switch.\r\n3. Убедитесь, что выбранный relay server (EU/US) находится в сети и не перегружен.\r\n4. Некоторые сети (например, captive portals) не позволяют использовать пользовательский DNS, протестируйте в другой сети.\r\n\r\nЕсли проблемы сохраняются, включите Debug Mode и проверьте журналы или попробуйте альтернативу Friends-mode.",
   "@helpNintendoDnsBody": {
     "description": "Detailed placeholder for Nintendo DNS troubleshooting"
   },
@@ -432,7 +432,7 @@
   "navProfile": "Профиль",
   "serverRemoved": "{name} удалён",
   "serverAdded": "{name} добавлен",
-  "aboutMCCompanionDisclaimer": "MCCompanion — независимое приложение, не связанное с Mojang или Microsoft.",
+  "aboutMCCompanionDisclaimer": "MCCompanion: независимое приложение, не связанное с Mojang или Microsoft.",
   "@aboutMCCompanionDisclaimer": {
     "description": "Disclaimer text in About MCCompanion section"
   },
@@ -518,7 +518,7 @@
   "@checkBackLater": {
     "description": "Secondary empty state text on partner servers screen"
   },
-  "chooseUsernameSubtitle": "Выберите имя пользователя для подключения.",
+  "chooseUsernameSubtitle": "Выберите имя пользователя, чтобы другие игроки могли вас найти.",
   "@chooseUsernameSubtitle": {
     "description": "Subtitle shown when profile is not yet set up"
   },
@@ -1571,7 +1571,7 @@
   "feedbackTitleHintFeature": "напр. Показывать пинг игрока в списке серверов",
   "feedbackWhatHappened": "Что произошло?",
   "feedbackDescribeIdea": "Опишите свою идею",
-  "feedbackDescHintBug": "Опишите ошибку — что вы сделали, что ожидали и что произошло вместо этого?",
+  "feedbackDescHintBug": "Опишите ошибку: что вы сделали, что ожидали и что произошло вместо этого?",
   "feedbackDescHintFeature": "Объясните, что вы хотите и почему это было бы полезно.",
   "feedbackEmailLabel": "Электронная почта",
   "feedbackEmailHint": "Чтобы мы могли связаться с вами",
@@ -1580,7 +1580,7 @@
   "feedbackSubmitFeature": "Отправить запрос функции",
   "feedbackDisclaimer": "Создаёт публичный тикет на GitHub · Не указывайте пароли",
   "feedbackSuccessTitle": "Спасибо за отзыв!",
-  "feedbackSuccessBody": "Ваш отчёт отправлен и тикет на GitHub создан. Мы рассмотрим его как можно скорее.",
+  "feedbackSuccessBody": "Спасибо! Ваш отчёт получен. Посмотрим его как можно скорее.",
   "feedbackViewOnGithub": "Посмотреть на GitHub",
   "feedbackSubmitAnother": "Отправить ещё",
   "feedbackBackToApp": "Вернуться в приложение",
@@ -1612,7 +1612,7 @@
   "skinMenuDelete": "Удалить",
   "rpScreenTitle": "Пакет ресурсов",
   "rpWhatIsThis": "Что это?",
-  "rpExplanation": "Пакет ресурсов меняет внешний вид Minecraft на твоей консоли — новые блоки, цвета или звуки. Вставь ссылку на файл .mcpack ниже, включи его и сохрани. MCCompanion загружает его автоматически при каждом подключении.",
+  "rpExplanation": "Пакет ресурсов меняет внешний вид Minecraft на твоей консоли, новые блоки, цвета или звуки. Вставь ссылку на файл .mcpack ниже, включи его и сохрани. MCCompanion загружает его автоматически при каждом подключении.",
   "rpPackUrlLabel": "URL пакета",
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "Включить пакет ресурсов",
@@ -1631,8 +1631,8 @@
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 публичный бакет",
   "rpWorksDirect": "Любая прямая HTTPS-ссылка, заканчивающаяся на .mcpack или .zip",
-  "rpNoDiscord": "Ссылки Discord — нет расширения .mcpack и истекают через несколько часов",
-  "rpNoDrive": "Ссылки Google Drive / Dropbox — не прямые загрузки",
+  "rpNoDiscord": "Ссылки Discord: нет расширения .mcpack и истекают через несколько часов",
+  "rpNoDrive": "Ссылки Google Drive / Dropbox: не прямые загрузки",
   "rpNoEncrypted": "Серверы с зашифрованными или защищёнными паролем пакетами",
   "rpWarnDiscord": "Ссылки Discord истекают и перестают работать. Используйте постоянный хостинг.",
   "rpWarnHttps": "URL должен начинаться с https://",
@@ -1642,17 +1642,17 @@
   "rpClearMinecraftTitle": "Первый раз с этим пакетом?",
   "rpClearMinecraftBody": "Minecraft кэширует пакеты ресурсов локально. Если вы подключались к этому серверу до включения пакета MCCompanion, Minecraft уже кэшировал оригинальный пакет и не будет повторно загружать объединённую версию.",
   "rpClearStep1": "Открой Minecraft на консоли и перейди в Настройки → Хранилище",
-  "rpClearStep2": "Нажми «Очистить» рядом с Пакеты ресурсов — это удалит все кэшированные паки",
-  "rpClearStep3": "Подключись через MCCompanion — объединённый пак скачается автоматически",
+  "rpClearStep2": "Нажми «Очистить» рядом с Пакеты ресурсов: это удалит все кэшированные паки",
+  "rpClearStep3": "Подключись через MCCompanion: объединённый пак скачается автоматически",
   "rpRelayTitle": "Пакет выглядит неправильно?",
-  "rpRelayBody": "Relay кэширует объединённый пак на 1 час, используя URL overlay как ключ. Чтобы принудительно обновить: немного измени URL пака (например, добавь ?v=2) и сохрани. После этого также очисти кэш паков в Minecraft — объединённый пак по-прежнему использует UUID сервера, поэтому Minecraft иначе покажет старую кэшированную версию.",
-  "rpWorksGithubHint": "Прямая ссылка — всегда доступна",
-  "rpWorksCloudflareHint": "Публичное облако — быстро и надёжно",
+  "rpRelayBody": "Relay кэширует объединённый пак на 1 час, используя URL overlay как ключ. Чтобы принудительно обновить: немного измени URL пака (например, добавь ?v=2) и сохрани. После этого также очисти кэш паков в Minecraft, объединённый пак по-прежнему использует UUID сервера, поэтому Minecraft иначе покажет старую кэшированную версию.",
+  "rpWorksGithubHint": "Прямая ссылка: всегда доступна",
+  "rpWorksCloudflareHint": "Публичное облако: быстро и надёжно",
   "rpWorksDirectHint": "Любой публичный HTTPS-адрес .mcpack или .zip",
   "rpNoDiscordHint": "Ссылки Discord CDN истекают через короткое время",
-  "rpNoDriveHint": "Нет прямой загрузки — перенаправляет на страницу предпросмотра",
+  "rpNoDriveHint": "Нет прямой загрузки: перенаправляет на страницу предпросмотра",
   "rpNoEncryptedHint": "MCCompanion не может объединить зашифрованный пак",
-  "rpClearWhy": "Minecraft кэширует пакеты ресурсов по их UUID. Объединённый пак сохраняет оригинальный UUID сервера — если Minecraft уже закэшировал серверный пак из предыдущей сессии (до включения MCCompanion), он не скачает новую версию. Очисти кэш, чтобы Minecraft загрузил свежий пак.",
+  "rpClearWhy": "Minecraft кэширует пакеты ресурсов по их UUID. Объединённый пак сохраняет оригинальный UUID сервера, если Minecraft уже закэшировал серверный пак из предыдущей сессии (до включения MCCompanion), он не скачает новую версию. Очисти кэш, чтобы Minecraft загрузил свежий пак.",
   "rpUploadTab": "Upload",
   "rpUrlTab": "URL",
   "rpUploadButton": "Tap to select your pack",
@@ -1660,7 +1660,7 @@
   "rpUploading": "Uploading...",
   "rpMergerTitle": "Слияние RP",
   "rpMergerSubtitle": "Объединить до 4 ресурс-паков",
-  "rpMergerPriorityHint": "Верхний пак имеет наивысший приоритет — его файлы побеждают в конфликтах.",
+  "rpMergerPriorityHint": "Верхний пак имеет наивысший приоритет: его файлы побеждают в конфликтах.",
   "rpMergerTopBadge": "ТОП",
   "rpMergerAddPacks": "Добавить ресурс-паки",
   "rpMergerAddAnother": "Добавить ещё пак ({current}/4)",
@@ -1668,22 +1668,22 @@
   "rpMergerMerging": "Слияние…",
   "rpMergerButton": "Объединить {count} пака",
   "rpMergerComplete": "Слияние завершено!",
-  "rpMergerConflicts": "Разрешено конфликтов: {count} — победил верхний пак.",
+  "rpMergerConflicts": "Разрешено конфликтов: {count}: победил верхний пак.",
   "rpMergerSetActive": "Сделать активным ресурс-паком",
   "rpMergerSetActiveToast": "Установлен как активный ресурс-пак",
   "rpMergerOpenButton": "Объединить ресурс-паки",
   "rpMergerOpenSubtitle": "Объедините 2–4 пака в один",
   "rpDisabled": "Отключено",
   "rpNoPackSelected": "Пакет ресурсов не выбран",
-  "rpActiveOnConnect": "Активен — применяется при подключении",
+  "rpActiveOnConnect": "Активен: применяется при подключении",
   "rpBrowseSubtitle": "Подборка паков, готовых к использованию",
   "rpBrowseEmpty": "Пока нет доступных паков",
   "rpBrowseEmptyHint": "Загляните позже для подобранных паков.",
   "rpReplaceFile": "Заменить другим файлом",
   "rpDropToUpload": "Бросьте для загрузки",
-  "rpTabBrowseInfo": "Просматривайте паки, подобранные MCCompanion. Нажмите Использовать, чтобы мгновенно активировать пак — без загрузки и ссылок.",
+  "rpTabBrowseInfo": "Просматривайте паки, подобранные MCCompanion. Нажмите Использовать, чтобы мгновенно активировать пак, без загрузки и ссылок.",
   "rpTabUploadInfo": "Загрузите собственный файл .mcpack или .zip. MCCompanion безопасно хранит его в облаке и отправляет на консоль при каждом подключении.",
-  "rpTabUrlInfo": "Вставьте прямую ссылку на скачивание файла .mcpack или .zip. URL должен быть общедоступным — без ссылок Discord или Google Drive.",
+  "rpTabUrlInfo": "Вставьте прямую ссылку на скачивание файла .mcpack или .zip. URL должен быть общедоступным, без ссылок Discord или Google Drive.",
   "rpTabMergeInfo": "Объедините от 2 до 4 паков в один. Объединённый пак загружается в MCCompanion Cloud и активируется автоматически.",
   "shareLabel": "Поделиться",
   "sectionMinecraftAccounts": "Аккаунты Minecraft",
@@ -1774,10 +1774,23 @@
   "skinDefaultName": "Мой скин",
   "skinUpdatedInCloud": "Скин обновлён в облаке",
   "skinByCreator": "от {name}",
-  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "@skinByCreator": {
+    "description": "Creator attribution",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "skinLikesCount": "{count} лайков",
-  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}},
-
+  "@skinLikesCount": {
+    "description": "Like count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionRecentActivity": "Последняя активность",
   "activityNoEvents": "Нет последней активности.",
   "activitySkinUploaded": "Скин загружен",
@@ -1787,30 +1800,84 @@
   "activityPackRejected": "Пак не одобрен",
   "timeJustNow": "только что",
   "timeMinutesAgo": "{count} мин. назад",
-  "@timeMinutesAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeHoursAgo": "{count} ч. назад",
-  "@timeHoursAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeDaysAgo": "{count} дн. назад",
-  "@timeDaysAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeMonthsAgo": "{count} мес. назад",
-  "@timeMonthsAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMonthsAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionNotifications": "Уведомления",
   "sectionNotificationTypes": "Типы уведомлений",
   "notifMarkAllRead": "Отметить всё как прочитанное",
   "notifEmpty": "Нет уведомлений. Лайки, комментарии и активность друзей появятся здесь.",
   "notifSomeone": "Кто-то",
   "notifSkinLiked": "{actor} понравился ваш скин",
-  "@notifSkinLiked": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifSkinLiked": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifCommentReceived": "{actor} прокомментировал ваш скин",
-  "@notifCommentReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifCommentReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPackApproved": "Пак одобрен",
   "notifPackRejected": "Пак не одобрен",
   "notifFriendRequest": "{actor} отправил вам запрос в друзья",
-  "@notifFriendRequest": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendRequest": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifFriendAccepted": "{actor} принял ваш запрос",
-  "@notifFriendAccepted": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendAccepted": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifMessageReceived": "Новое сообщение от {actor}",
-  "@notifMessageReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifMessageReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPrefSkinLiked": "Скин понравился",
   "notifPrefCommentReceived": "Получен комментарий",
   "notifPrefPackApproved": "Пак одобрен",
@@ -1818,15 +1885,66 @@
   "notifPrefFriendRequest": "Запрос в друзья",
   "notifPrefFriendAccepted": "Друг добавлен",
   "notifPrefMessageReceived": "Новое сообщение",
-
   "commentsTitle": "Комментарии",
   "commentsEmpty": "Комментариев пока нет. Будьте первым!",
   "commentsPlaceholder": "Написать комментарий…",
-
   "loadMore": "Загрузить ещё",
-
   "skinLayerInner": "Внутренний",
-  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "@skinLayerInner": {
+    "description": "Skin editor layer toggle, inner/base layer"
+  },
   "skinLayerOuter": "Внешний",
-  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
+  "@skinLayerOuter": {
+    "description": "Skin editor layer toggle, outer/overlay layer"
+  },
+  "feedbackLoginRequiredTitle": "Войдите, чтобы отправить отзыв",
+  "feedbackLoginRequiredBody": "Отзывы привязаны к вашему аккаунту MCCompanion, чтобы мы могли ответить вам прямо в приложении.",
+  "feedbackLoginButton": "Войти",
+  "reportBug": "Обратная связь",
+  "rpBehaviorContentWarning": "Этот пак содержит данные пакета поведения, которые не работают на серверах. Текстуры при этом будут работать.",
+  "rpInvalidPackFormat": "Это пак для Java Edition, он не поддерживается. Используйте ресурс-пак для Bedrock Edition.",
+  "wikiFavourites": "Избранное",
+  "wikiRecent": "Недавно просмотренные",
+  "supportInboxTitle": "Входящие поддержки",
+  "supportInboxSubtitle": "Все обращения в поддержку, доступны всем админам",
+  "adminBadge": "Админ",
+  "skinShareSubject": "Скин Minecraft",
+  "skinEditorTitle": "Редактор скинов",
+  "skinToolUndo": "Отменить",
+  "skinSaveToMySkins": "Сохранить в мои скины",
+  "skinUpdateInCloud": "Обновить в облаке",
+  "skinExportPng": "Экспорт PNG",
+  "skinToolDraw": "Рисовать",
+  "skinToolFill": "Заливка",
+  "skinToolErase": "Стереть",
+  "customColour": "Свой цвет",
+  "featuredServerLabel": "ИЗБРАННЫЙ СЕРВЕР",
+  "featuredServerTagline": "Заходи и играй.",
+  "featuredServerPlay": "Играть",
+  "rpUploadFailedCode": "Не удалось загрузить ({code})",
+  "rpUploadFailed": "Не удалось загрузить: {error}",
+  "rpLoadFailed": "Не удалось загрузить паки",
+  "rpRetry": "Повторить",
+  "rpSearchHint": "Поиск паков…",
+  "rpMergeFailed": "Не удалось объединить: {error}",
+  "rpMergerSize": "Размер",
+  "rpMergerCreated": "Создано",
+  "rpMergerSourcePacks": "Исходные паки",
+  "rpMergerDropToAdd": "Отпустите, чтобы добавить",
+  "rpMergerSavedMerges": "Сохранённые объединения",
+  "rpMergerUse": "Использовать",
+  "supportInboxShared": "Доступно всем админам",
+  "supportInboxEmpty": "Обращений в поддержку пока нет",
+  "supportReplyingAs": "Вы отвечаете как MCCompanion Support",
+  "supportReplyHint": "Ответить от имени поддержки…",
+  "relayBlocked": "Ваш IP или аккаунт заблокирован MCCompanion. Если это ошибка, загляните в наш Discord.",
+  "relayBlockedWithReason": "Ваш IP или аккаунт заблокирован MCCompanion.\nПричина: {reason}\nЕсли это ошибка, загляните в наш Discord.",
+  "relayConfigFailed": "Не удалось настроить релей (статус {code}). Попробуйте другой релей или загляните в наш Discord.",
+  "relayConfigFailedDetail": "Не удалось настроить релей (статус {code}): {detail}. Попробуйте другой релей или загляните в наш Discord.",
+  "relayTimeout": "Релей не ответил вовремя.",
+  "relayUnreachable": "Не удалось связаться с релеем.",
+  "lookupNotFound": "Игрок не найден.",
+  "lookupNetworkError": "Ошибка сети. Попробуйте ещё раз.",
+  "lookupBedrockUnavailable": "Поиск Bedrock сейчас недоступен.",
+  "lookupFailed": "Не удалось выполнить поиск."
 }

@@ -35,95 +35,101 @@ class _PartnerServersScreenState extends State<PartnerServersScreen> {
     return SwipeBack(
       onBack: widget.onBack,
       child: Column(
-      children: [
-        Expanded(
-          child: FutureBuilder<List<FeaturedServer>>(
-            future: widget.partnerServersFuture,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
+        children: [
+          Expanded(
+            child: FutureBuilder<List<FeaturedServer>>(
+              future: widget.partnerServersFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: SizedBox(
+                      width: 24,
+                      height: 24,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 1.5,
+                        color: AppTheme.textMuted,
+                      ),
+                    ),
+                  );
+                }
+
+                if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          width: 56,
+                          height: 56,
+                          decoration: BoxDecoration(
+                            color: AppTheme.surfaceRaised,
+                            borderRadius: BorderRadius.circular(14),
+                            border: Border.all(color: AppTheme.borderGray),
+                          ),
+                          child: Icon(
+                            Icons.handshake_outlined,
+                            size: 24,
+                            color: AppTheme.textMuted,
+                          ),
+                        ),
+                        const SizedBox(height: 14),
+                        Text(
+                          AppLocalizations.of(context)!.noPartnerServers,
+                          style: TextStyle(
+                            color: AppTheme.textSecondary,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          AppLocalizations.of(context)!.checkBackLater,
+                          style: TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+
+                _shuffled ??= List.from(snapshot.data!)..shuffle(Random());
+                final servers = _shuffled!;
+
                 return Center(
-                  child: SizedBox(
-                    width: 24,
-                    height: 24,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 1.5,
-                      color: AppTheme.textMuted,
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 760),
+                    child: ListView.separated(
+                      padding: const EdgeInsets.all(12),
+                      itemCount: servers.length,
+                      separatorBuilder: (_, __) => const SizedBox(height: 8),
+                      itemBuilder: (context, i) => PartnerServerCard(
+                        server: servers[i],
+                        onPlay: () {
+                          widget.ipController.text = servers[i].address;
+                          widget.portController.text = servers[i].port
+                              .toString();
+                          AppToast.show(
+                            context,
+                            message: AppLocalizations.of(
+                              context,
+                            )!.selectedFeaturedServer(servers[i].name),
+                            icon: Icons.play_arrow_rounded,
+                            color: AppTheme.success,
+                            duration: const Duration(seconds: 2),
+                          );
+                          (widget.onPlay ?? widget.onBack)();
+                        },
+                      ),
                     ),
                   ),
                 );
-              }
-
-              if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                return Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        width: 56,
-                        height: 56,
-                        decoration: BoxDecoration(
-                          color: AppTheme.surfaceRaised,
-                          borderRadius: BorderRadius.circular(14),
-                          border: Border.all(color: AppTheme.borderGray),
-                        ),
-                        child: Icon(
-                          Icons.handshake_outlined,
-                          size: 24,
-                          color: AppTheme.textMuted,
-                        ),
-                      ),
-                      const SizedBox(height: 14),
-                      Text(
-                        AppLocalizations.of(context)!.noPartnerServers,
-                        style: TextStyle(
-                          color: AppTheme.textSecondary,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        AppLocalizations.of(context)!.checkBackLater,
-                        style: TextStyle(
-                          color: AppTheme.textMuted,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              }
-
-              _shuffled ??= List.from(snapshot.data!)..shuffle(Random());
-              final servers = _shuffled!;
-
-              return ListView.separated(
-                padding: const EdgeInsets.all(12),
-                itemCount: servers.length,
-                separatorBuilder: (_, __) => const SizedBox(height: 8),
-                itemBuilder: (context, i) => PartnerServerCard(
-                  server: servers[i],
-                  onPlay: () {
-                    widget.ipController.text = servers[i].address;
-                    widget.portController.text = servers[i].port.toString();
-                    AppToast.show(
-                      context,
-                      message: AppLocalizations.of(
-                        context,
-                      )!.selectedFeaturedServer(servers[i].name),
-                      icon: Icons.play_arrow_rounded,
-                      color: AppTheme.success,
-                      duration: const Duration(seconds: 2),
-                    );
-                    (widget.onPlay ?? widget.onBack)();
-                  },
-                ),
-              );
-            },
+              },
+            ),
           ),
-        ),
-      ],
-    ),
+        ],
+      ),
     );
   }
 }

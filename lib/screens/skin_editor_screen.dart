@@ -588,7 +588,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
         final box = _exportButtonKey.currentContext?.findRenderObject() as RenderBox?;
         final result = await Share.shareXFiles(
           [XFile(file.path, mimeType: 'image/png')],
-          subject: 'Minecraft Skin',
+          subject: AppLocalizations.of(context)!.skinShareSubject,
           sharePositionOrigin: box != null
               ? box.localToGlobal(Offset.zero) & box.size
               : null,
@@ -631,7 +631,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
         foregroundColor: AppTheme.textPrimary,
         elevation: 0,
         title: Text(
-          'Skin Editor',
+          AppLocalizations.of(context)!.skinEditorTitle,
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w700,
@@ -643,25 +643,25 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
           IconButton(
             onPressed: _undoStack.isNotEmpty ? _undo : null,
             icon: const FaIcon(FontAwesomeIcons.rotateLeft, size: 15),
-            tooltip: 'Undo',
+            tooltip: AppLocalizations.of(context)!.skinToolUndo,
           ),
           if (widget.cloudSkin == null)
             IconButton(
               onPressed: _saveSkin,
               icon: const FaIcon(FontAwesomeIcons.floppyDisk, size: 15),
-              tooltip: 'Save to My Skins',
+              tooltip: AppLocalizations.of(context)!.skinSaveToMySkins,
             ),
           if (AuthService.currentUser != null)
             IconButton(
               onPressed: _saveToCloud,
               icon: const FaIcon(FontAwesomeIcons.cloudArrowUp, size: 15),
-              tooltip: widget.cloudSkin != null ? 'Update in cloud' : 'Upload to cloud',
+              tooltip: widget.cloudSkin != null ? AppLocalizations.of(context)!.skinUpdateInCloud : AppLocalizations.of(context)!.skinUploadToCloud,
             ),
           IconButton(
             key: _exportButtonKey,
             onPressed: _export,
             icon: const FaIcon(FontAwesomeIcons.download, size: 15),
-            tooltip: 'Export PNG',
+            tooltip: AppLocalizations.of(context)!.skinExportPng,
           ),
           const SizedBox(width: 4),
         ],
@@ -698,7 +698,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
                 children: [
                   _ToolButton(
                     icon: FontAwesomeIcons.pencil,
-                    label: 'Draw',
+                    label: AppLocalizations.of(context)!.skinToolDraw,
                     active: _activeTool == _Tool.draw && !_rotateMode && !_panModeUV,
                     onTap: () => setState(() {
                       _activeTool = _Tool.draw;
@@ -709,7 +709,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
                   const SizedBox(width: 6),
                   _ToolButton(
                     icon: FontAwesomeIcons.fillDrip,
-                    label: 'Fill',
+                    label: AppLocalizations.of(context)!.skinToolFill,
                     active: _activeTool == _Tool.fill && !_rotateMode && !_panModeUV,
                     onTap: () => setState(() {
                       _activeTool = _Tool.fill;
@@ -720,7 +720,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
                   const SizedBox(width: 6),
                   _ToolButton(
                     icon: FontAwesomeIcons.eraser,
-                    label: 'Erase',
+                    label: AppLocalizations.of(context)!.skinToolErase,
                     active: _activeTool == _Tool.erase && !_rotateMode && !_panModeUV,
                     onTap: () => setState(() {
                       _activeTool = _Tool.erase;
@@ -1366,7 +1366,7 @@ class _ColorPickerSheetState extends State<_ColorPickerSheet> {
             ),
           ),
           Text(
-            'Custom Colour',
+            AppLocalizations.of(context)!.customColour,
             style: TextStyle(
               color: AppTheme.textPrimary,
               fontSize: 16,
@@ -1484,8 +1484,8 @@ class _ColorPickerSheetState extends State<_ColorPickerSheet> {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              child: const Text(
-                'Apply',
+              child: Text(
+                AppLocalizations.of(context)!.colorPickerApply,
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
               ),
             ),

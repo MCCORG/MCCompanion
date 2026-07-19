@@ -23,7 +23,7 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
     with SingleTickerProviderStateMixin {
   final _ctrl = TextEditingController();
   bool _loading = false;
-  String? _error;
+  LookupError? _error;
   CombinedProfile? _result;
 
   late final AnimationController _resultAnim;
@@ -74,143 +74,160 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
     if (_result != null) _resultAnim.forward();
   }
 
+  String _lookupErrorText(LookupError e) {
+    final l = AppLocalizations.of(context)!;
+    return switch (e) {
+      LookupError.notFound => l.lookupNotFound,
+      LookupError.network => l.lookupNetworkError,
+      LookupError.bedrockUnavailable => l.lookupBedrockUnavailable,
+      LookupError.failed => l.lookupFailed,
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
     return SwipeBack(
       onBack: widget.onBack,
       child: Column(
-      children: [
-        Expanded(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  AppLocalizations.of(context)!.playerLookupSubtitle,
-                  style: TextStyle(
-                    color: AppTheme.textMuted,
-                    fontSize: 12,
-                  ),
-                ),
-                const SizedBox(height: 10),
-
-                Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: AppTheme.surfaceRaised,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: AppTheme.borderGray),
-                        ),
-                        child: TextField(
-                          controller: _ctrl,
-                          style: TextStyle(
-                            color: AppTheme.textPrimary,
-                            fontSize: 14,
-                          ),
-                          decoration: InputDecoration(
-                            hintText: AppLocalizations.of(
-                              context,
-                            )!.playerLookupHint,
-                            hintStyle: TextStyle(
-                              color: AppTheme.textMuted,
-                              fontSize: 13,
-                            ),
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.symmetric(
-                              horizontal: 14,
-                              vertical: 13,
-                            ),
-                            prefixIcon: Icon(
-                              Icons.manage_search_rounded,
-                              color: AppTheme.textMuted,
-                              size: 18,
-                            ),
-                          ),
-                          onSubmitted: (_) => _search(),
-                          textInputAction: TextInputAction.search,
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(16),
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 680),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        AppLocalizations.of(context)!.playerLookupSubtitle,
+                        style: TextStyle(
+                          color: AppTheme.textMuted,
+                          fontSize: 12,
                         ),
                       ),
-                    ),
-                    const SizedBox(width: 10),
-                    SizedBox(
-                      height: 48,
-                      child: ElevatedButton(
-                        onPressed: _loading ? null : _search,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppTheme.accent,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          padding: const EdgeInsets.symmetric(horizontal: 18),
-                          elevation: 0,
-                        ),
-                        child: _loading
-                            ? const SizedBox(
-                                width: 18,
-                                height: 18,
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 2,
-                                  color: Colors.white,
+                      const SizedBox(height: 10),
+
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: AppTheme.surfaceRaised,
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(color: AppTheme.borderGray),
+                              ),
+                              child: TextField(
+                                controller: _ctrl,
+                                style: TextStyle(
+                                  color: AppTheme.textPrimary,
+                                  fontSize: 14,
                                 ),
-                              )
-                            : const Icon(Icons.search_rounded, size: 20),
-                      ),
-                    ),
-                  ],
-                ),
-
-                if (_error != null) ...[
-                  const SizedBox(height: 14),
-                  Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: AppTheme.error.withValues(alpha: 0.10),
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: AppTheme.error.withValues(alpha: 0.30),
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.error_outline_rounded,
-                          color: AppTheme.error,
-                          size: 16,
-                        ),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: Text(
-                            _error!,
-                            style: const TextStyle(
-                              color: AppTheme.error,
-                              fontSize: 13,
+                                decoration: InputDecoration(
+                                  hintText: AppLocalizations.of(
+                                    context,
+                                  )!.playerLookupHint,
+                                  hintStyle: TextStyle(
+                                    color: AppTheme.textMuted,
+                                    fontSize: 13,
+                                  ),
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.symmetric(
+                                    horizontal: 14,
+                                    vertical: 13,
+                                  ),
+                                  prefixIcon: Icon(
+                                    Icons.manage_search_rounded,
+                                    color: AppTheme.textMuted,
+                                    size: 18,
+                                  ),
+                                ),
+                                onSubmitted: (_) => _search(),
+                                textInputAction: TextInputAction.search,
+                              ),
                             ),
+                          ),
+                          const SizedBox(width: 10),
+                          SizedBox(
+                            height: 48,
+                            child: ElevatedButton(
+                              onPressed: _loading ? null : _search,
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppTheme.accent,
+                                foregroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 18,
+                                ),
+                                elevation: 0,
+                              ),
+                              child: _loading
+                                  ? const SizedBox(
+                                      width: 18,
+                                      height: 18,
+                                      child: CircularProgressIndicator(
+                                        strokeWidth: 2,
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  : const Icon(Icons.search_rounded, size: 20),
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      if (_error != null) ...[
+                        const SizedBox(height: 14),
+                        Container(
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color: AppTheme.error.withValues(alpha: 0.10),
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: AppTheme.error.withValues(alpha: 0.30),
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              const Icon(
+                                Icons.error_outline_rounded,
+                                color: AppTheme.error,
+                                size: 16,
+                              ),
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  _lookupErrorText(_error!),
+                                  style: const TextStyle(
+                                    color: AppTheme.error,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
-                    ),
-                  ),
-                ],
 
-                if (_result != null) ...[
-                  const SizedBox(height: 20),
-                  FadeTransition(
-                    opacity: _fadeAnim,
-                    child: SlideTransition(
-                      position: _slideAnim,
-                      child: _CombinedResultCard(result: _result!),
-                    ),
+                      if (_result != null) ...[
+                        const SizedBox(height: 20),
+                        FadeTransition(
+                          opacity: _fadeAnim,
+                          child: SlideTransition(
+                            position: _slideAnim,
+                            child: _CombinedResultCard(result: _result!),
+                          ),
+                        ),
+                      ],
+                    ],
                   ),
-                ],
-              ],
+                ),
+              ),
             ),
           ),
-        ),
-      ],
+        ],
       ),
     );
   }
@@ -231,7 +248,9 @@ class _CombinedResultCard extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppTheme.success.withValues(alpha: 0.10),
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: AppTheme.success.withValues(alpha: 0.30)),
+              border: Border.all(
+                color: AppTheme.success.withValues(alpha: 0.30),
+              ),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -370,9 +389,11 @@ class _JavaSkinViewerState extends State<_JavaSkinViewer> {
 
   void _openEditor() {
     if (_textureUrl == null) return;
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (_) => SkinEditorScreen(initialTextureUrl: _textureUrl),
-    ));
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => SkinEditorScreen(initialTextureUrl: _textureUrl),
+      ),
+    );
   }
 
   @override
@@ -385,22 +406,41 @@ class _JavaSkinViewerState extends State<_JavaSkinViewer> {
             : _textureUrl != null
             ? GestureDetector(
                 onTap: _openEditor,
-                child: Stack(alignment: Alignment.bottomCenter, children: [
-                  SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156),
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 4),
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                    decoration: BoxDecoration(
-                      color: Colors.black.withValues(alpha: 0.55),
-                      borderRadius: BorderRadius.circular(6),
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156),
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 4),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 3,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withValues(alpha: 0.55),
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.edit_rounded,
+                            size: 10,
+                            color: Colors.white70,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(
+                            'Edit skin',
+                            style: const TextStyle(
+                              color: Colors.white70,
+                              fontSize: 10,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    child: Row(mainAxisSize: MainAxisSize.min, children: [
-                      Icon(Icons.edit_rounded, size: 10, color: Colors.white70),
-                      const SizedBox(width: 4),
-                      Text('Edit skin', style: const TextStyle(color: Colors.white70, fontSize: 10)),
-                    ]),
-                  ),
-                ]),
+                  ],
+                ),
               )
             : Icon(Icons.person_rounded, color: AppTheme.textMuted, size: 48),
       ),
@@ -432,18 +472,11 @@ class _BedrockCard extends StatelessWidget {
               ),
               if (profile.gamerscore != null) ...[
                 const Spacer(),
-                Icon(
-                  Icons.star_rounded,
-                  size: 13,
-                  color: AppTheme.textMuted,
-                ),
+                Icon(Icons.star_rounded, size: 13, color: AppTheme.textMuted),
                 const SizedBox(width: 3),
                 Text(
                   '${profile.gamerscore}G',
-                  style: TextStyle(
-                    color: AppTheme.textMuted,
-                    fontSize: 12,
-                  ),
+                  style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
                 ),
               ],
             ],
@@ -526,9 +559,11 @@ class _BedrockSkinViewerState extends State<_BedrockSkinViewer> {
 
   void _openEditor() {
     if (_textureUrl == null) return;
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (_) => SkinEditorScreen(initialTextureUrl: _textureUrl),
-    ));
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => SkinEditorScreen(initialTextureUrl: _textureUrl),
+      ),
+    );
   }
 
   @override
@@ -541,22 +576,41 @@ class _BedrockSkinViewerState extends State<_BedrockSkinViewer> {
             : _textureUrl != null
             ? GestureDetector(
                 onTap: _openEditor,
-                child: Stack(alignment: Alignment.bottomCenter, children: [
-                  SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156),
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 4),
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                    decoration: BoxDecoration(
-                      color: Colors.black.withValues(alpha: 0.55),
-                      borderRadius: BorderRadius.circular(6),
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156),
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 4),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 3,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withValues(alpha: 0.55),
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.edit_rounded,
+                            size: 10,
+                            color: Colors.white70,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(
+                            'Edit skin',
+                            style: const TextStyle(
+                              color: Colors.white70,
+                              fontSize: 10,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    child: Row(mainAxisSize: MainAxisSize.min, children: [
-                      Icon(Icons.edit_rounded, size: 10, color: Colors.white70),
-                      const SizedBox(width: 4),
-                      Text('Edit skin', style: const TextStyle(color: Colors.white70, fontSize: 10)),
-                    ]),
-                  ),
-                ]),
+                  ],
+                ),
               )
             : Icon(Icons.gamepad_rounded, color: AppTheme.textMuted, size: 48),
       ),

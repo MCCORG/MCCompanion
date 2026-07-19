@@ -9,6 +9,24 @@ import 'relay_config_sender.dart';
 import 'package:flutter/widgets.dart';
 import 'broadcast_mode.dart';
 
+enum RelayErrorKind { blocked, configFailed, timeout, unreachable }
+
+class RelayError {
+  final RelayErrorKind kind;
+  final String? reason;
+  final int? statusCode;
+  final String? detail;
+
+  const RelayError._(this.kind, {this.reason, this.statusCode, this.detail});
+
+  factory RelayError.blocked({String? reason}) =>
+      RelayError._(RelayErrorKind.blocked, reason: reason);
+  factory RelayError.configFailed({required int statusCode, String? detail}) =>
+      RelayError._(RelayErrorKind.configFailed, statusCode: statusCode, detail: detail);
+  factory RelayError.timeout() => const RelayError._(RelayErrorKind.timeout);
+  factory RelayError.unreachable() => const RelayError._(RelayErrorKind.unreachable);
+}
+
 class BroadcastManager {
   late Logger logger;
 
@@ -20,7 +38,7 @@ class BroadcastManager {
   bool _isBroadcasting = false;
 
   Function()? onAutoDisconnect;
-  Function(String message)? onRelayError;
+  Function(RelayError error)? onRelayError;
 
   BroadcastManager({required this.socketHandler, required this.logger}) {
     socketHandler.onAllClientsDisconnected = _handleAllClientsDisconnected;
@@ -78,24 +96,23 @@ class BroadcastManager {
     }
   }
 
-  String _formatRelayErrorMessage(int statusCode, String responseBody) {
+  RelayError _relayError(int statusCode, String responseBody) {
     if (statusCode == 403) {
       try {
         final parsed = json.decode(responseBody);
         if (parsed is Map &&
             parsed['message'] != null &&
             (parsed['message'] as String).trim().isNotEmpty) {
-          final reason = (parsed['message'] as String).trim();
-          return 'Your IP/account has been blocked by MCCompanion.\nReason: $reason\nIf you believe this is a mistake, join our discord.';
+          return RelayError.blocked(reason: (parsed['message'] as String).trim());
         }
       } catch (_) {}
-      return 'Your IP/account has been blocked by MCCompanion. If you believe this is a mistake, join our discord.';
+      return RelayError.blocked();
     }
 
-    final bodySnippet = (responseBody.isNotEmpty && responseBody.length <= 200)
-        ? ' — ${responseBody.replaceAll('\n', ' ')}'
-        : '';
-    return 'Could not configure relay (status $statusCode)$bodySnippet. Try another relay or join our discord.';
+    final detail = (responseBody.isNotEmpty && responseBody.length <= 200)
+        ? responseBody.replaceAll('\n', ' ')
+        : null;
+    return RelayError.configFailed(statusCode: statusCode, detail: detail);
   }
 
   Future<bool> sendRelayConfigOnly(
@@ -129,23 +146,20 @@ class BroadcastManager {
         );
         return true;
       } else {
-        final userMessage = _formatRelayErrorMessage(
-          result.statusCode,
-          result.body,
-        );
+        final relayError = _relayError(result.statusCode, result.body);
         logger.error(
           'Relay rejected request (status ${result.statusCode}): ${result.body}',
         );
-        onRelayError?.call(userMessage);
+        onRelayError?.call(relayError);
         return false;
       }
     } on TimeoutException catch (te) {
       logger.warning('Timeout when sending config to $relayBase: $te');
-      onRelayError?.call('Timeout contacting relay.');
+      onRelayError?.call(RelayError.timeout());
       return false;
     } catch (e, st) {
       logger.error('Error sending config to $relayBase: $e\n$st');
-      onRelayError?.call('Error contacting relay.');
+      onRelayError?.call(RelayError.unreachable());
       return false;
     }
   }
@@ -180,14 +194,11 @@ class BroadcastManager {
       );
 
       if (!result.success) {
-        final userMessage = _formatRelayErrorMessage(
-          result.statusCode,
-          result.body,
-        );
+        final relayError = _relayError(result.statusCode, result.body);
         logger.error(
           'Relay rejected request (status ${result.statusCode}): ${result.body}',
         );
-        onRelayError?.call(userMessage);
+        onRelayError?.call(relayError);
         return false;
       }
 
@@ -228,11 +239,11 @@ class BroadcastManager {
       return true;
     } on TimeoutException catch (te) {
       logger.warning('Timeout when sending config to $relayBase: $te');
-      onRelayError?.call('Timeout contacting relay.');
+      onRelayError?.call(RelayError.timeout());
       return false;
     } catch (e, st) {
       logger.error('Error sending config to $relayBase: $e\n$st');
-      onRelayError?.call('Error contacting relay.');
+      onRelayError?.call(RelayError.unreachable());
       return false;
     }
   }

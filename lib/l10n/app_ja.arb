@@ -15,7 +15,7 @@
   "aternosSubtext": "自分だけの無料Minecraftサーバーを作成しましょう",
   "howToUseMenu": "使い方",
   "support": "サポート",
-  "helpText": "{appCreator} によって作成されました。\r\n\r\n使い方:\r\n1. Minecraft サーバーのアドレスとポートを入力します（デフォルト: 19132）\r\n   — またはドロップダウンから以前保存したサーバーを選択します\r\n2. （任意）現在地に最も近い Relay Server（EU または US）を選択します\r\n3. \"ブロードキャスト開始\" をクリックして開始します\r\n4. コンソール/デバイスで: Minecraft > Play > Friends\r\n5. \"MCCompanion\" という名前の LAN サーバーが表示されます\r\n6. それをクリックすると、MCCompanion 経由で外部サーバーに参加できます\r\n\r\nNintendo Switch（DNS モード）:\r\n1. 接続パネルで \"Nintendo Switch\" を有効にします\r\n2. Relay Server（EU または US）を選択します\r\n3. \"Send DNS Config\" をクリックすると、設定が relay に送信されます\r\n   （これは LAN サーバーをブロードキャストしません）\r\n4. Switch で MCCompanion の DNS 設定を適用し、\r\n   MCCompanion 用に使っているサーバー項目から参加します\r\n\r\nメモ:\r\n- LAN ブロードキャストでは、MCCompanion とコンソールが同じローカルネットワーク上にある必要があります。\r\n- ヒント: 最良のパフォーマンスを得るには、最も近い relay サーバーを選択してください。",
+  "helpText": "{appCreator} によって作成されました。\r\n\r\n使い方:\r\n1. Minecraft サーバーのアドレスとポートを入力します（デフォルト: 19132）\r\n  , またはドロップダウンから以前保存したサーバーを選択します\r\n2. （任意）現在地に最も近い Relay Server（EU または US）を選択します\r\n3. \"ブロードキャスト開始\" をクリックして開始します\r\n4. コンソール/デバイスで: Minecraft > Play > Friends\r\n5. \"MCCompanion\" という名前の LAN サーバーが表示されます\r\n6. それをクリックすると、MCCompanion 経由で外部サーバーに参加できます\r\n\r\nNintendo Switch（DNS モード）:\r\n1. 接続パネルで \"Nintendo Switch\" を有効にします\r\n2. Relay Server（EU または US）を選択します\r\n3. \"Send DNS Config\" をクリックすると、設定が relay に送信されます\r\n   （これは LAN サーバーをブロードキャストしません）\r\n4. Switch で MCCompanion の DNS 設定を適用し、\r\n   MCCompanion 用に使っているサーバー項目から参加します\r\n\r\nメモ:\r\n- LAN ブロードキャストでは、MCCompanion とコンソールが同じローカルネットワーク上にある必要があります。\r\n- ヒント: 最良のパフォーマンスを得るには、最も近い relay サーバーを選択してください。",
   "@helpText": {
     "description": "Detailed help / instructions shown in the help dialog",
     "placeholders": {
@@ -37,7 +37,7 @@
   "@howToJavaSubtitle": {
     "description": "Short subtitle for Java menu tile"
   },
-  "howToJavaBody": "Javaモード — クイック手順:\n1. アプリでJavaモードを選択します。\n2. Java Editionサーバーのアドレスとポートを入力します（既定: 25565）。\n3. 「Javaモードを開始」を押します — MCCompanionが接続を橋渡しします。\n4. Minecraft Bedrockを開いて、フレンドタブに移動します。\n5. Javaサーバーに参加するには、「MCCompanion」という名前のLANサーバーを選択します。\n\n⚠️ 重要な警告:\n- 有効なJava Editionアカウント（Microsoft）が必要です。\n- 一部のサーバーではアンチチートシステムが使用されており、アカウントが検出されてBANされる可能性があります。\n- Bedrockクライアントを明確に禁止しているサーバーもあります — 必ずサーバールールを確認してください。\n- この機能の使用によって発生するアカウントBAN、利用停止、その他のアカウント関連の問題について、MCCompanionは責任を負いません。\n- 自己責任で使用してください。",
+  "howToJavaBody": "Javaモード: クイック手順:\n1. アプリでJavaモードを選択します。\n2. Java Editionサーバーのアドレスとポートを入力します（既定: 25565）。\n3. 「Javaモードを開始」を押します: MCCompanionが接続を橋渡しします。\n4. Minecraft Bedrockを開いて、フレンドタブに移動します。\n5. Javaサーバーに参加するには、「MCCompanion」という名前のLANサーバーを選択します。\n\n⚠️ 重要な警告:\n- 有効なJava Editionアカウント（Microsoft）が必要です。\n- 一部のサーバーではアンチチートシステムが使用されており、アカウントが検出されてBANされる可能性があります。\n- Bedrockクライアントを明確に禁止しているサーバーもあります: 必ずサーバールールを確認してください。\n- この機能の使用によって発生するアカウントBAN、利用停止、その他のアカウント関連の問題について、MCCompanionは責任を負いません。\n- 自己責任で使用してください。",
   "@howToJavaBody": {
     "description": "Detailed steps for Java mode how-to modal"
   },
@@ -121,7 +121,7 @@
   "@bedrockBridge": {
     "description": "Subtitle on splash screen"
   },
-  "clientDisconnected": "クライアントが切断されました — ブロードキャストを停止しました",
+  "clientDisconnected": "クライアントが切断されました: ブロードキャストを停止しました",
   "@clientDisconnected": {
     "description": "Snackbar shown when clients disconnect automatically"
   },
@@ -254,7 +254,7 @@
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
-  "howToNintendoBody": "Nintendo Switch — DNS モード（手順）:\r\n1. アプリで \"Nintendo\" モードを有効にし、Relay Server（EU または US）を選択します。\r\n2. \"Send DNS Config\" をタップして DNS IP を relay に送信します。\r\n3. Nintendo Switch で System Settings → Internet → Internet Settings → （使用中のネットワーク）→ Change Settings → DNS に進み、Primary DNS を relay IP に設定します。\r\n4. Minecraft を開いて公開サーバーに参加すると、relay DNS を使って自分のサーバーへリダイレクトされます。\r\nメモ:\r\n- DNS モードは LAN サーバーをブロードキャストせず、ゲーム通信を relay 経由でルーティングします。\r\n- 通常のネットワーク動作が必要な場合は、完了後に DNS を元に戻してください。",
+  "howToNintendoBody": "Nintendo Switch: DNS モード（手順）:\r\n1. アプリで \"Nintendo\" モードを有効にし、Relay Server（EU または US）を選択します。\r\n2. \"Send DNS Config\" をタップして DNS IP を relay に送信します。\r\n3. Nintendo Switch で System Settings → Internet → Internet Settings → （使用中のネットワーク）→ Change Settings → DNS に進み、Primary DNS を relay IP に設定します。\r\n4. Minecraft を開いて公開サーバーに参加すると、relay DNS を使って自分のサーバーへリダイレクトされます。\r\nメモ:\r\n- DNS モードは LAN サーバーをブロードキャストせず、ゲーム通信を relay 経由でルーティングします。\r\n- 通常のネットワーク動作が必要な場合は、完了後に DNS を元に戻してください。",
   "@howToNintendoBody": {
     "description": "Detailed steps for Nintendo Switch DNS setup"
   },
@@ -266,7 +266,7 @@
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
   },
-  "howToFriendsBody": "フレンドモード — 簡単な手順:\r\n1. 必要に応じて、コンソールまたはプラットフォームで MCCompanion のフレンドアカウントを追加します。\r\n2. アプリでフレンドモードを有効にし、relay 設定を送信します（該当する場合）。\r\n3. コンソールで Minecraft → Friends を開き、LAN Worlds を探します。そこに LAN ワールドとして自分のサーバーが表示されるはずです。\r\n4. それを選択して、友達と一緒に自分のサーバーへ参加します。\r\nメモ:\r\n- 自分と友達の両方が、フレンド表示を許可する同じ NAT/設定になっていることを確認してください。\r\n- フレンドモードはプラットフォームのフレンド機能に依存し、フレンド申請の承認が必要な場合があります。",
+  "howToFriendsBody": "フレンドモード: 簡単な手順:\r\n1. 必要に応じて、コンソールまたはプラットフォームで MCCompanion のフレンドアカウントを追加します。\r\n2. アプリでフレンドモードを有効にし、relay 設定を送信します（該当する場合）。\r\n3. コンソールで Minecraft → Friends を開き、LAN Worlds を探します。そこに LAN ワールドとして自分のサーバーが表示されるはずです。\r\n4. それを選択して、友達と一緒に自分のサーバーへ参加します。\r\nメモ:\r\n- 自分と友達の両方が、フレンド表示を許可する同じ NAT/設定になっていることを確認してください。\r\n- フレンドモードはプラットフォームのフレンド機能に依存し、フレンド申請の承認が必要な場合があります。",
   "@howToFriendsBody": {
     "description": "Detailed steps for Friends mode"
   },
@@ -518,7 +518,7 @@
   "@checkBackLater": {
     "description": "Secondary empty state text on partner servers screen"
   },
-  "chooseUsernameSubtitle": "Choose a username to start connecting with other players.",
+  "chooseUsernameSubtitle": "他のプレイヤーが見つけられるように、ユーザー名を決めましょう。",
   "@chooseUsernameSubtitle": {
     "description": "Subtitle shown when profile is not yet set up"
   },
@@ -1571,7 +1571,7 @@
   "feedbackTitleHintFeature": "例: サーバーリストにプレイヤーのpingを表示する",
   "feedbackWhatHappened": "何が起きましたか？",
   "feedbackDescribeIdea": "アイデアを説明してください",
-  "feedbackDescHintBug": "バグの詳細を説明してください — 何をしたか、何を期待したか、実際に何が起きたか",
+  "feedbackDescHintBug": "バグの詳細を説明してください: 何をしたか、何を期待したか、実際に何が起きたか",
   "feedbackDescHintFeature": "何を望んでいるか、なぜ役立つかを説明してください。",
   "feedbackEmailLabel": "メールアドレス",
   "feedbackEmailHint": "ご連絡できるよう",
@@ -1580,7 +1580,7 @@
   "feedbackSubmitFeature": "機能リクエストを送信",
   "feedbackDisclaimer": "GitHubに公開イシューを作成します · パスワードを含めないでください",
   "feedbackSuccessTitle": "フィードバックをありがとう！",
-  "feedbackSuccessBody": "レポートが送信され、GitHubにイシューが作成されました。できるだけ早く確認します。",
+  "feedbackSuccessBody": "ありがとうございます！レポートを受け取りました。できるだけ早く確認します。",
   "feedbackViewOnGithub": "GitHubで見る",
   "feedbackSubmitAnother": "別のものを送信",
   "feedbackBackToApp": "アプリに戻る",
@@ -1612,7 +1612,7 @@
   "skinMenuDelete": "削除",
   "rpScreenTitle": "リソースパック",
   "rpWhatIsThis": "これは何ですか？",
-  "rpExplanation": "リソースパックはコンソール上のMinecraftの見た目を変えます — 新しいブロック、色、サウンド。下に.mcpackファイルのリンクを貼り付け、有効にして保存してください。MCCompanionは接続のたびに自動的に読み込みます。",
+  "rpExplanation": "リソースパックはコンソール上のMinecraftの見た目を変えます: 新しいブロック、色、サウンド。下に.mcpackファイルのリンクを貼り付け、有効にして保存してください。MCCompanionは接続のたびに自動的に読み込みます。",
   "rpPackUrlLabel": "パックURL",
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "リソースパックを有効にする",
@@ -1631,8 +1631,8 @@
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 パブリックバケット",
   "rpWorksDirect": ".mcpack または .zip で終わる直接HTTPSリンク",
-  "rpNoDiscord": "Discordリンク — .mcpack 拡張子がなく、数時間で期限切れになります",
-  "rpNoDrive": "Google Drive / Dropbox 共有リンク — 直接ダウンロードではありません",
+  "rpNoDiscord": "Discordリンク: .mcpack 拡張子がなく、数時間で期限切れになります",
+  "rpNoDrive": "Google Drive / Dropbox 共有リンク: 直接ダウンロードではありません",
   "rpNoEncrypted": "暗号化またはパスワード保護されたパックのサーバー",
   "rpWarnDiscord": "DiscordリンクはExpireし、動作しなくなります。代わりに永続的なホストを使用してください。",
   "rpWarnHttps": "URLはhttps://で始まる必要があります",
@@ -1642,17 +1642,17 @@
   "rpClearMinecraftTitle": "このパックを初めて使う？",
   "rpClearMinecraftBody": "Minecraftはリソースパックをローカルにキャッシュします。MCCompanionのリソースパックを有効にする前にこのサーバーに接続したことがある場合、Minecraftはシュートダウンをキャッシュしており、マージ後のバージョンを再ダウンロードしません。",
   "rpClearStep1": "コンソールでMinecraftを開き、設定 → ストレージに移動する",
-  "rpClearStep2": "リソースパックの横の「クリア」または「リセット」をタップ — ローカルにキャッシュされたパックがすべて削除されます",
-  "rpClearStep3": "MCCompanion経由で再接続する — 結合されたパックが自動的にダウンロードされます",
+  "rpClearStep2": "リソースパックの横の「クリア」または「リセット」をタップ: ローカルにキャッシュされたパックがすべて削除されます",
+  "rpClearStep3": "MCCompanion経由で再接続する: 結合されたパックが自動的にダウンロードされます",
   "rpRelayTitle": "パックがおかしく見える？",
-  "rpRelayBody": "リレーはオーバーレイURLをキーとして結合されたパックを1時間キャッシュします。新しい結合を強制するには：パックURLを少し変更（例：末尾に?v=2を追加）して保存してください。その後、MinecraftのパックキャッシュもクリアしてくださいQ — 結合されたパックは引き続きサーバーのUUIDを使用するため、そのままではMinecraftが古いキャッシュ版を表示します。",
-  "rpWorksGithubHint": "直接ダウンロードリンク — 常にアクセス可能",
-  "rpWorksCloudflareHint": "パブリッククラウドストレージ — 高速かつ信頼性が高い",
+  "rpRelayBody": "リレーはオーバーレイURLをキーとして結合されたパックを1時間キャッシュします。新しい結合を強制するには：パックURLを少し変更（例：末尾に?v=2を追加）して保存してください。その後、MinecraftのパックキャッシュもクリアしてくださいQ, 結合されたパックは引き続きサーバーのUUIDを使用するため、そのままではMinecraftが古いキャッシュ版を表示します。",
+  "rpWorksGithubHint": "直接ダウンロードリンク: 常にアクセス可能",
+  "rpWorksCloudflareHint": "パブリッククラウドストレージ: 高速かつ信頼性が高い",
   "rpWorksDirectHint": "公開されたHTTPS .mcpackまたは.zip URL",
   "rpNoDiscordHint": "Discord CDNのリンクは短時間で期限切れになります",
-  "rpNoDriveHint": "直接ダウンロードなし — プレビューページにリダイレクトされます",
+  "rpNoDriveHint": "直接ダウンロードなし: プレビューページにリダイレクトされます",
   "rpNoEncryptedHint": "MCCompanionは暗号化されたパックを結合できません",
-  "rpClearWhy": "MinecraftはリソースパックをUUIDでキャッシュします。結合されたパックはサーバーの元のUUIDを保持します — MCCompanionを有効にする前のセッションでMinecraftがサーバーのパックをキャッシュしていた場合、新しい結合バージョンをダウンロードしません。キャッシュをクリアして、Minecraftが新しい結合パックを読み込むようにしてください。",
+  "rpClearWhy": "MinecraftはリソースパックをUUIDでキャッシュします。結合されたパックはサーバーの元のUUIDを保持します, MCCompanionを有効にする前のセッションでMinecraftがサーバーのパックをキャッシュしていた場合、新しい結合バージョンをダウンロードしません。キャッシュをクリアして、Minecraftが新しい結合パックを読み込むようにしてください。",
   "rpUploadTab": "Upload",
   "rpUrlTab": "URL",
   "rpUploadButton": "Tap to select your pack",
@@ -1660,7 +1660,7 @@
   "rpUploading": "Uploading...",
   "rpMergerTitle": "RPマージャー",
   "rpMergerSubtitle": "最大4つのリソースパックを統合",
-  "rpMergerPriorityHint": "最上位のパックが最高優先度 — そのファイルが競合に勝ちます。",
+  "rpMergerPriorityHint": "最上位のパックが最高優先度: そのファイルが競合に勝ちます。",
   "rpMergerTopBadge": "TOP",
   "rpMergerAddPacks": "リソースパックを追加",
   "rpMergerAddAnother": "別のパックを追加 ({current}/4)",
@@ -1668,22 +1668,22 @@
   "rpMergerMerging": "マージ中…",
   "rpMergerButton": "{count}個のパックをマージ",
   "rpMergerComplete": "マージ完了！",
-  "rpMergerConflicts": "{count}件の競合が解決 — 最上位パックが勝ちました。",
+  "rpMergerConflicts": "{count}件の競合が解決: 最上位パックが勝ちました。",
   "rpMergerSetActive": "アクティブなリソースパックに設定",
   "rpMergerSetActiveToast": "アクティブなリソースパックに設定しました",
   "rpMergerOpenButton": "リソースパックをマージ",
   "rpMergerOpenSubtitle": "2〜4個のパックを1つに統合",
   "rpDisabled": "無効",
   "rpNoPackSelected": "リソースパックが選択されていません",
-  "rpActiveOnConnect": "有効 — 接続時に適用されます",
+  "rpActiveOnConnect": "有効, 接続時に適用されます",
   "rpBrowseSubtitle": "厳選パック、すぐに使えます",
   "rpBrowseEmpty": "まだパックはありません",
   "rpBrowseEmptyHint": "後ほど厳選パックをご確認ください。",
   "rpReplaceFile": "別のファイルに置き換える",
   "rpDropToUpload": "ドロップしてアップロード",
-  "rpTabBrowseInfo": "MCCompanionが厳選したパックを閲覧できます。「使用」をタップすると即座にパックを有効化できます — アップロードやリンク不要。",
+  "rpTabBrowseInfo": "MCCompanionが厳選したパックを閲覧できます。「使用」をタップすると即座にパックを有効化できます, アップロードやリンク不要。",
   "rpTabUploadInfo": "独自の.mcpackまたは.zipファイルをアップロードします。MCCompanionがクラウドに安全に保存し、接続のたびにコンソールに送信します。",
-  "rpTabUrlInfo": ".mcpackまたは.zipファイルへの直接ダウンロードリンクを貼り付けます。URLは公開アクセス可能である必要があります — DiscordやGoogleドライブのリンクは使用不可。",
+  "rpTabUrlInfo": ".mcpackまたは.zipファイルへの直接ダウンロードリンクを貼り付けます。URLは公開アクセス可能である必要があります, DiscordやGoogleドライブのリンクは使用不可。",
   "rpTabMergeInfo": "2〜4つのパックを1つに統合します。統合されたパックはMCCompanion Cloudにアップロードされ、自動的に有効化されます。",
   "shareLabel": "シェア",
   "sectionMinecraftAccounts": "Minecraftアカウント",
@@ -1774,10 +1774,23 @@
   "skinDefaultName": "マイスキン",
   "skinUpdatedInCloud": "クラウドのスキンが更新されました",
   "skinByCreator": "{name} 作",
-  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "@skinByCreator": {
+    "description": "Creator attribution",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "skinLikesCount": "{count} いいね",
-  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}},
-
+  "@skinLikesCount": {
+    "description": "Like count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionRecentActivity": "最近のアクティビティ",
   "activityNoEvents": "まだアクティビティはありません。",
   "activitySkinUploaded": "スキンをアップロード",
@@ -1787,30 +1800,84 @@
   "activityPackRejected": "パックが承認されませんでした",
   "timeJustNow": "今",
   "timeMinutesAgo": "{count}分前",
-  "@timeMinutesAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeHoursAgo": "{count}時間前",
-  "@timeHoursAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeDaysAgo": "{count}日前",
-  "@timeDaysAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeMonthsAgo": "{count}か月前",
-  "@timeMonthsAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMonthsAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionNotifications": "通知",
   "sectionNotificationTypes": "通知の種類",
   "notifMarkAllRead": "すべて既読にする",
   "notifEmpty": "まだ通知はありません。いいね、コメント、フレンドのアクティビティがここに表示されます。",
   "notifSomeone": "誰か",
   "notifSkinLiked": "{actor}があなたのスキンにいいねしました",
-  "@notifSkinLiked": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifSkinLiked": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifCommentReceived": "{actor}があなたのスキンにコメントしました",
-  "@notifCommentReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifCommentReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPackApproved": "パックが承認されました",
   "notifPackRejected": "パックが承認されませんでした",
   "notifFriendRequest": "{actor}からフレンド申請が届きました",
-  "@notifFriendRequest": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendRequest": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifFriendAccepted": "{actor}があなたの申請を承認しました",
-  "@notifFriendAccepted": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendAccepted": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifMessageReceived": "{actor}からの新しいメッセージ",
-  "@notifMessageReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifMessageReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPrefSkinLiked": "スキンへのいいね",
   "notifPrefCommentReceived": "コメント受信",
   "notifPrefPackApproved": "パック承認",
@@ -1818,15 +1885,66 @@
   "notifPrefFriendRequest": "フレンド申請",
   "notifPrefFriendAccepted": "フレンド追加",
   "notifPrefMessageReceived": "新しいメッセージ",
-
   "commentsTitle": "コメント",
   "commentsEmpty": "まだコメントはありません。最初のコメントを残しましょう！",
   "commentsPlaceholder": "コメントを書く…",
-
   "loadMore": "もっと読み込む",
-
   "skinLayerInner": "内側",
-  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "@skinLayerInner": {
+    "description": "Skin editor layer toggle, inner/base layer"
+  },
   "skinLayerOuter": "外側",
-  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
+  "@skinLayerOuter": {
+    "description": "Skin editor layer toggle, outer/overlay layer"
+  },
+  "feedbackLoginRequiredTitle": "フィードバックを送信するにはログインしてください",
+  "feedbackLoginRequiredBody": "フィードバックはMCCompanionアカウントに紐づけられ、アプリ内で直接返信できます。",
+  "feedbackLoginButton": "ログイン",
+  "reportBug": "フィードバック",
+  "rpBehaviorContentWarning": "このパックにはビヘイビアーパックのデータが含まれており、サーバーでは動作しません。テクスチャは引き続き使えます。",
+  "rpInvalidPackFormat": "これはJava Editionのパックのため対応していません。Bedrock Editionのリソースパックを使用してください。",
+  "wikiFavourites": "お気に入り",
+  "wikiRecent": "最近見たページ",
+  "supportInboxTitle": "サポート受信箱",
+  "supportInboxSubtitle": "すべてのサポートチャットを管理者全員で共有",
+  "adminBadge": "管理者",
+  "skinShareSubject": "Minecraft スキン",
+  "skinEditorTitle": "スキンエディター",
+  "skinToolUndo": "元に戻す",
+  "skinSaveToMySkins": "マイスキンに保存",
+  "skinUpdateInCloud": "クラウドで更新",
+  "skinExportPng": "PNG を書き出す",
+  "skinToolDraw": "描く",
+  "skinToolFill": "塗りつぶし",
+  "skinToolErase": "消す",
+  "customColour": "カスタムカラー",
+  "featuredServerLabel": "注目のサーバー",
+  "featuredServerTagline": "参加してすぐに遊べます。",
+  "featuredServerPlay": "プレイ",
+  "rpUploadFailedCode": "アップロードに失敗しました（{code}）",
+  "rpUploadFailed": "アップロードに失敗しました: {error}",
+  "rpLoadFailed": "パックを読み込めませんでした",
+  "rpRetry": "再試行",
+  "rpSearchHint": "パックを検索…",
+  "rpMergeFailed": "結合に失敗しました: {error}",
+  "rpMergerSize": "サイズ",
+  "rpMergerCreated": "作成日",
+  "rpMergerSourcePacks": "元のパック",
+  "rpMergerDropToAdd": "ドロップして追加",
+  "rpMergerSavedMerges": "保存した結合",
+  "rpMergerUse": "使う",
+  "supportInboxShared": "管理者全員で共有",
+  "supportInboxEmpty": "サポートのやり取りはまだありません",
+  "supportReplyingAs": "MCCompanion Support として返信中",
+  "supportReplyHint": "サポートとして返信…",
+  "relayBlocked": "あなたの IP またはアカウントは MCCompanion によりブロックされています。心当たりがなければ Discord までお越しください。",
+  "relayBlockedWithReason": "あなたの IP またはアカウントは MCCompanion によりブロックされています。\n理由: {reason}\n心当たりがなければ Discord までお越しください。",
+  "relayConfigFailed": "リレーを設定できませんでした（ステータス {code}）。別のリレーを試すか、Discord までお越しください。",
+  "relayConfigFailedDetail": "リレーを設定できませんでした（ステータス {code}）: {detail}。別のリレーを試すか、Discord までお越しください。",
+  "relayTimeout": "リレーが時間内に応答しませんでした。",
+  "relayUnreachable": "リレーに接続できませんでした。",
+  "lookupNotFound": "プレイヤーが見つかりません。",
+  "lookupNetworkError": "ネットワークエラーです。もう一度お試しください。",
+  "lookupBedrockUnavailable": "Bedrock の検索は現在利用できません。",
+  "lookupFailed": "検索に失敗しました。"
 }

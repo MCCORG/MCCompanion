@@ -112,7 +112,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String helpText(Object appCreator) {
-    return 'تم الإنشاء بواسطة $appCreator.\r\n\r\nطريقة الاستخدام:\r\n1. أدخل عنوان خادم Minecraft والمنفذ الخاص بك (الافتراضي: 19132)\r\n   — أو اختر خادمًا محفوظًا مسبقًا من القائمة المنسدلة\r\n2. (اختياري) اختر خادم ترحيل (EU أو US) الأقرب إلى موقعك\r\n3. اضغط على \\\"بدء البث\\\" للبدء\r\n4. على جهازك/وحدة التحكم: Minecraft > لعب > الأصدقاء\r\n5. يجب أن ترى خادم شبكة محلية باسم \\\"MCCompanion\\\"\r\n6. اضغط عليه للانضمام إلى خادمك الخارجي عبر MCCompanion\r\n\r\nNintendo Switch (وضع DNS):\r\n1. فعّل \\\"Nintendo Switch\\\" في لوحة الاتصال\r\n2. اختر خادم ترحيل (EU أو US)\r\n3. اضغط على \\\"إرسال إعداد DNS\\\" — سيؤدي ذلك إلى إرسال إعداداتك إلى خادم الترحيل\r\n   (لن يقوم ببث خادم شبكة محلية)\r\n4. على جهاز Switch الخاص بك، طبّق إعدادات DNS الخاصة بـ MCCompanion وانضم\r\n   باستخدام إدخال الخادم الذي تستخدمه مع MCCompanion\r\n\r\nملاحظات:\r\n- لكي يعمل بث الشبكة المحلية، يجب أن يكون MCCompanion ووحدة التحكم على نفس الشبكة المحلية.\r\n- نصيحة: اختر خادم الترحيل الأقرب إليك للحصول على أفضل أداء.';
+    return 'تم الإنشاء بواسطة $appCreator.\r\n\r\nطريقة الاستخدام:\r\n1. أدخل عنوان خادم Minecraft والمنفذ الخاص بك (الافتراضي: 19132)\r\n  , أو اختر خادمًا محفوظًا مسبقًا من القائمة المنسدلة\r\n2. (اختياري) اختر خادم ترحيل (EU أو US) الأقرب إلى موقعك\r\n3. اضغط على \\\"بدء البث\\\" للبدء\r\n4. على جهازك/وحدة التحكم: Minecraft > لعب > الأصدقاء\r\n5. يجب أن ترى خادم شبكة محلية باسم \\\"MCCompanion\\\"\r\n6. اضغط عليه للانضمام إلى خادمك الخارجي عبر MCCompanion\r\n\r\nNintendo Switch (وضع DNS):\r\n1. فعّل \\\"Nintendo Switch\\\" في لوحة الاتصال\r\n2. اختر خادم ترحيل (EU أو US)\r\n3. اضغط على \\\"إرسال إعداد DNS\\\": سيؤدي ذلك إلى إرسال إعداداتك إلى خادم الترحيل\r\n   (لن يقوم ببث خادم شبكة محلية)\r\n4. على جهاز Switch الخاص بك، طبّق إعدادات DNS الخاصة بـ MCCompanion وانضم\r\n   باستخدام إدخال الخادم الذي تستخدمه مع MCCompanion\r\n\r\nملاحظات:\r\n- لكي يعمل بث الشبكة المحلية، يجب أن يكون MCCompanion ووحدة التحكم على نفس الشبكة المحلية.\r\n- نصيحة: اختر خادم الترحيل الأقرب إليك للحصول على أفضل أداء.';
   }
 
   @override
@@ -147,7 +147,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get howToJavaBody =>
-      'وضع Java — خطوات سريعة:\n1. في التطبيق، اختر وضع Java.\n2. أدخل عنوان خادم Java Edition والمنفذ (الافتراضي: 25565).\n3. اضغط على \"ابدأ وضع Java\" — سيقوم MCCompanion بربط الاتصال.\n4. افتح Minecraft Bedrock وانتقل إلى علامة تبويب الأصدقاء.\n5. اختر خادم LAN المسمى \"MCCompanion\" للانضمام إلى خادم Java.\n\n⚠️ تحذيرات مهمة:\n- يلزم وجود حساب Java Edition صالح (Microsoft).\n- تستخدم بعض الخوادم أنظمة مكافحة الغش وقد تكتشف حسابك وتحظره.\n- بعض الخوادم تحظر عملاء Bedrock صراحةً — تحقق دائمًا من قواعد الخادم.\n- MCCompanion غير مسؤول عن أي حظر أو تعليق أو أي مشكلات أخرى متعلقة بالحساب قد تنتج عن استخدام هذه الميزة.\n- استخدمها على مسؤوليتك الخاصة.';
+      'وضع Java: خطوات سريعة:\n1. في التطبيق، اختر وضع Java.\n2. أدخل عنوان خادم Java Edition والمنفذ (الافتراضي: 25565).\n3. اضغط على \"ابدأ وضع Java\": سيقوم MCCompanion بربط الاتصال.\n4. افتح Minecraft Bedrock وانتقل إلى علامة تبويب الأصدقاء.\n5. اختر خادم LAN المسمى \"MCCompanion\" للانضمام إلى خادم Java.\n\n⚠️ تحذيرات مهمة:\n- يلزم وجود حساب Java Edition صالح (Microsoft).\n- تستخدم بعض الخوادم أنظمة مكافحة الغش وقد تكتشف حسابك وتحظره.\n- بعض الخوادم تحظر عملاء Bedrock صراحةً: تحقق دائمًا من قواعد الخادم.\n- MCCompanion غير مسؤول عن أي حظر أو تعليق أو أي مشكلات أخرى متعلقة بالحساب قد تنتج عن استخدام هذه الميزة.\n- استخدمها على مسؤوليتك الخاصة.';
 
   @override
   String get language => 'العربية';
@@ -210,7 +210,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get bedrockBridge => 'جسر Bedrock';
 
   @override
-  String get clientDisconnected => 'تم فصل العميل — تم إيقاف البث';
+  String get clientDisconnected => 'تم فصل العميل: تم إيقاف البث';
 
   @override
   String get pleaseEnterServer => '⚠️ يرجى إدخال عنوان الخادم';
@@ -427,7 +427,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get howToNintendoBody =>
-      'Nintendo Switch — وضع DNS (خطوة بخطوة):\r\n1. في التطبيق، فعّل وضع \\\"Nintendo\\\" واختر خادم ترحيل (EU أو US).\r\n2. اضغط على \\\"إرسال إعداد DNS\\\" لإرسال عنوان DNS IP إلى خادم الترحيل.\r\n3. على جهاز Nintendo Switch، انتقل إلى إعدادات النظام → الإنترنت → إعدادات الإنترنت → (شبكتك) → تغيير الإعدادات → DNS واضبط DNS الأساسي على عنوان IP الخاص بخادم الترحيل.\r\n4. افتح Minecraft وانضم إلى خادم عام؛ سيتم توجيهك إلى خادمك باستخدام DNS الخاص بخادم الترحيل.\r\nملاحظات:\r\n- وضع DNS لا يقوم ببث خادم شبكة محلية؛ بل يوجّه حركة مرور اللعبة عبر خادم الترحيل.\r\n- أعد DNS إلى وضعه السابق بعد الانتهاء إذا كنت بحاجة إلى سلوك شبكة طبيعي.';
+      'Nintendo Switch: وضع DNS (خطوة بخطوة):\r\n1. في التطبيق، فعّل وضع \\\"Nintendo\\\" واختر خادم ترحيل (EU أو US).\r\n2. اضغط على \\\"إرسال إعداد DNS\\\" لإرسال عنوان DNS IP إلى خادم الترحيل.\r\n3. على جهاز Nintendo Switch، انتقل إلى إعدادات النظام → الإنترنت → إعدادات الإنترنت → (شبكتك) → تغيير الإعدادات → DNS واضبط DNS الأساسي على عنوان IP الخاص بخادم الترحيل.\r\n4. افتح Minecraft وانضم إلى خادم عام؛ سيتم توجيهك إلى خادمك باستخدام DNS الخاص بخادم الترحيل.\r\nملاحظات:\r\n- وضع DNS لا يقوم ببث خادم شبكة محلية؛ بل يوجّه حركة مرور اللعبة عبر خادم الترحيل.\r\n- أعد DNS إلى وضعه السابق بعد الانتهاء إذا كنت بحاجة إلى سلوك شبكة طبيعي.';
 
   @override
   String get howToFriendsTitle => 'وضع الأصدقاء';
@@ -437,7 +437,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get howToFriendsBody =>
-      'وضع الأصدقاء — خطوات سريعة:\r\n1. أضف حساب صديق MCCompanion (صديق الترحيل) على وحدة التحكم أو المنصة إذا لزم الأمر.\r\n2. في التطبيق، فعّل وضع الأصدقاء وأرسل إعداد خادم الترحيل (إذا كان ذلك مطلوبًا).\r\n3. على وحدة التحكم، افتح Minecraft → الأصدقاء وابحث عن عوالم الشبكة المحلية — يجب أن يظهر خادمك هناك كعالم شبكة محلية.\r\n4. اختره للانضمام إلى خادمك مع الأصدقاء.\r\nملاحظات:\r\n- تأكد من أن لديك أنت وأصدقاؤك نفس إعدادات NAT/الإعدادات التي تسمح بظهور الأصدقاء.\r\n- يعتمد وضع الأصدقاء على ميزات الأصدقاء الخاصة بالمنصة وقد يتطلب قبول طلبات الصداقة.';
+      'وضع الأصدقاء: خطوات سريعة:\r\n1. أضف حساب صديق MCCompanion (صديق الترحيل) على وحدة التحكم أو المنصة إذا لزم الأمر.\r\n2. في التطبيق، فعّل وضع الأصدقاء وأرسل إعداد خادم الترحيل (إذا كان ذلك مطلوبًا).\r\n3. على وحدة التحكم، افتح Minecraft → الأصدقاء وابحث عن عوالم الشبكة المحلية, يجب أن يظهر خادمك هناك كعالم شبكة محلية.\r\n4. اختره للانضمام إلى خادمك مع الأصدقاء.\r\nملاحظات:\r\n- تأكد من أن لديك أنت وأصدقاؤك نفس إعدادات NAT/الإعدادات التي تسمح بظهور الأصدقاء.\r\n- يعتمد وضع الأصدقاء على ميزات الأصدقاء الخاصة بالمنصة وقد يتطلب قبول طلبات الصداقة.';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion لا يظهر';
@@ -469,7 +469,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get helpNintendoDnsBody =>
-      'إذا لم يعمل وضع DNS الخاص بـ Nintendo، فتحقق مما يلي:\r\n\r\n1. تأكد من أنك أرسلت إعداد DNS من التطبيق (إرسال إعداد DNS).\r\n2. تحقق من أنك طبّقت عنوان IP الخاص بخادم الترحيل كـ DNS أساسي على Switch.\r\n3. تأكد من أن خادم الترحيل المحدد (EU/US) متصل وغير مثقل بالتحميل.\r\n4. بعض الشبكات (مثل البوابات المقيدة) تمنع DNS المخصص — جرّب على شبكة مختلفة.\r\n\r\nإذا استمرت المشكلات، فعّل وضع التصحيح وافحص السجلات أو جرّب البديل وهو وضع الأصدقاء.';
+      'إذا لم يعمل وضع DNS الخاص بـ Nintendo، فتحقق مما يلي:\r\n\r\n1. تأكد من أنك أرسلت إعداد DNS من التطبيق (إرسال إعداد DNS).\r\n2. تحقق من أنك طبّقت عنوان IP الخاص بخادم الترحيل كـ DNS أساسي على Switch.\r\n3. تأكد من أن خادم الترحيل المحدد (EU/US) متصل وغير مثقل بالتحميل.\r\n4. بعض الشبكات (مثل البوابات المقيدة) تمنع DNS المخصص, جرّب على شبكة مختلفة.\r\n\r\nإذا استمرت المشكلات، فعّل وضع التصحيح وافحص السجلات أو جرّب البديل وهو وضع الأصدقاء.';
 
   @override
   String get helpFriendsModeTitle => 'وضع الأصدقاء لا يعمل';
@@ -948,7 +948,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get chooseUsernameSubtitle =>
-      'Choose a username to start connecting with other players.';
+      'اختر اسم مستخدم ليتمكن اللاعبون الآخرون من العثور عليك.';
 
   @override
   String get createProfile => 'Create Profile';
@@ -1149,10 +1149,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get wikiReadFullArticle => 'Read full article';
 
   @override
-  String get wikiRecent => 'Recently viewed';
+  String get wikiRecent => 'شوهدت مؤخرًا';
 
   @override
-  String get wikiFavourites => 'Favourites';
+  String get wikiFavourites => 'المفضلة';
 
   @override
   String get wikiMobs => 'Mobs';
@@ -1753,7 +1753,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get feedbackDescHintBug =>
-      'صف الخطأ — ماذا فعلت، وماذا توقعت، وماذا حدث بدلاً من ذلك؟';
+      'صف الخطأ: ماذا فعلت، وماذا توقعت، وماذا حدث بدلاً من ذلك؟';
 
   @override
   String get feedbackDescHintFeature => 'اشرح ما تريده ولماذا سيكون مفيدًا.';
@@ -1782,7 +1782,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get feedbackSuccessBody =>
-      'تم إرسال تقريرك وإنشاء تذكرة على GitHub. سنراجعها في أقرب وقت ممكن.';
+      'شكرًا! وصلنا تقريرك وسنطّلع عليه في أقرب وقت.';
 
   @override
   String get feedbackViewOnGithub => 'عرض على GitHub';
@@ -1811,7 +1811,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get feedbackTileTitle => 'الإبلاغ عن خطأ أو اقتراح ميزة';
 
   @override
-  String get reportBug => 'Feedback';
+  String get reportBug => 'ملاحظات';
 
   @override
   String get feedbackTileSubtitle => 'ساعدنا في تحسين MCCompanion';
@@ -1882,7 +1882,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get rpExplanation =>
-      'حزمة الموارد تغيّر مظهر Minecraft على جهازك — كتل وألوان وأصوات جديدة. الصق رابط ملف .mcpack أدناه، فعّله واحفظ. يحمله MCCompanion تلقائيًا في كل مرة تتصل.';
+      'حزمة الموارد تغيّر مظهر Minecraft على جهازك, كتل وألوان وأصوات جديدة. الصق رابط ملف .mcpack أدناه، فعّله واحفظ. يحمله MCCompanion تلقائيًا في كل مرة تتصل.';
 
   @override
   String get rpPackUrlLabel => 'رابط الحزمة';
@@ -1925,11 +1925,11 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get rpNoDiscord =>
-      'روابط Discord — لا تحتوي على امتداد .mcpack وتنتهي صلاحيتها بعد ساعات قليلة';
+      'روابط Discord: لا تحتوي على امتداد .mcpack وتنتهي صلاحيتها بعد ساعات قليلة';
 
   @override
   String get rpNoDrive =>
-      'روابط مشاركة Google Drive / Dropbox — ليست تنزيلات مباشرة';
+      'روابط مشاركة Google Drive / Dropbox: ليست تنزيلات مباشرة';
 
   @override
   String get rpNoEncrypted => 'الخوادم ذات الحزم المشفرة أو المحمية بكلمة مرور';
@@ -1959,11 +1959,11 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get rpInvalidPackFormat =>
-      'This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.';
+      'هذه حزمة إصدار Java وهي غير مدعومة. يرجى استخدام حزمة موارد لإصدار Bedrock.';
 
   @override
   String get rpBehaviorContentWarning =>
-      'This pack contains behavior pack data, which won\'t work on servers. The textures will still work.';
+      'تحتوي هذه الحزمة على بيانات حزمة سلوك لن تعمل على الخوادم. ستظل الإكساءات تعمل.';
 
   @override
   String get rpClearMinecraftTitle => 'أول مرة مع هذه الحزمة؟';
@@ -1978,24 +1978,24 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get rpClearStep2 =>
-      'انقر على ‘مسح’ أو ‘إعادة تعيين’ بجانب حزم الموارد — سيزيل جميع الحزم المخزّنة محليًا';
+      'انقر على ‘مسح’ أو ‘إعادة تعيين’ بجانب حزم الموارد, سيزيل جميع الحزم المخزّنة محليًا';
 
   @override
   String get rpClearStep3 =>
-      'أعد الاتصال عبر MCCompanion — ستُنزّل الحزمة المدمجة تلقائيًا';
+      'أعد الاتصال عبر MCCompanion: ستُنزّل الحزمة المدمجة تلقائيًا';
 
   @override
   String get rpRelayTitle => 'الحزمة تبدو خاطئة؟';
 
   @override
   String get rpRelayBody =>
-      'يحتفظ الريلاي بالحزمة المدمجة في الذاكرة المؤقتة لمدة ساعة باستخدام رابط الـ overlay كمفتاح. لإجبار دمج جديد: عدّل الرابط قليلاً (مثلاً أضف ?v=2) واحفظ. بعد ذلك، امسح أيضاً ذاكرة حزم Minecraft — فالحزمة المدمجة لا تزال تستخدم UUID الخادم، وإلا سيعرض Minecraft النسخة القديمة من الذاكرة.';
+      'يحتفظ الريلاي بالحزمة المدمجة في الذاكرة المؤقتة لمدة ساعة باستخدام رابط الـ overlay كمفتاح. لإجبار دمج جديد: عدّل الرابط قليلاً (مثلاً أضف ?v=2) واحفظ. بعد ذلك، امسح أيضاً ذاكرة حزم Minecraft, فالحزمة المدمجة لا تزال تستخدم UUID الخادم، وإلا سيعرض Minecraft النسخة القديمة من الذاكرة.';
 
   @override
-  String get rpWorksGithubHint => 'رابط تنزيل مباشر — دائمًا متاح';
+  String get rpWorksGithubHint => 'رابط تنزيل مباشر: دائمًا متاح';
 
   @override
-  String get rpWorksCloudflareHint => 'تخزين سحابي عام — سريع وموثوق';
+  String get rpWorksCloudflareHint => 'تخزين سحابي عام: سريع وموثوق';
 
   @override
   String get rpWorksDirectHint => 'أي رابط HTTPS عام .mcpack أو .zip';
@@ -2005,7 +2005,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get rpNoDriveHint =>
-      'لا يوجد تنزيل مباشر — يعيد التوجيه إلى صفحة معاينة';
+      'لا يوجد تنزيل مباشر: يعيد التوجيه إلى صفحة معاينة';
 
   @override
   String get rpNoEncryptedHint =>
@@ -2013,7 +2013,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get rpClearWhy =>
-      'يخزن Minecraft حزم الموارد بواسطة UUID الخاصة بها. تحتفظ الحزمة المدمجة بـ UUID الأصلي للخادم — إذا كان Minecraft قد خزّن حزمة الخادم بالفعل من جلسة سابقة (قبل تفعيل MCCompanion)، فلن يعيد تنزيل النسخة المدمجة الجديدة. امسح ذاكرة التخزين المؤقت حتى يحمّل Minecraft الحزمة المدمجة الجديدة.';
+      'يخزن Minecraft حزم الموارد بواسطة UUID الخاصة بها. تحتفظ الحزمة المدمجة بـ UUID الأصلي للخادم, إذا كان Minecraft قد خزّن حزمة الخادم بالفعل من جلسة سابقة (قبل تفعيل MCCompanion)، فلن يعيد تنزيل النسخة المدمجة الجديدة. امسح ذاكرة التخزين المؤقت حتى يحمّل Minecraft الحزمة المدمجة الجديدة.';
 
   @override
   String get rpUploadTab => 'Upload';
@@ -2038,7 +2038,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get rpMergerPriorityHint =>
-      'الحزمة العلوية لها أعلى أولوية — ملفاتها تفوز في النزاعات.';
+      'الحزمة العلوية لها أعلى أولوية: ملفاتها تفوز في النزاعات.';
 
   @override
   String get rpMergerTopBadge => 'أعلى';
@@ -2067,7 +2067,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String rpMergerConflicts(int count) {
-    return 'تم حل $count تعارض — فازت الحزمة العلوية.';
+    return 'تم حل $count تعارض: فازت الحزمة العلوية.';
   }
 
   @override
@@ -2089,7 +2089,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get rpNoPackSelected => 'لم يتم تحديد حزمة موارد';
 
   @override
-  String get rpActiveOnConnect => 'نشط — يُطبَّق عند الاتصال';
+  String get rpActiveOnConnect => 'نشط: يُطبَّق عند الاتصال';
 
   @override
   String get rpBrowseSubtitle => 'حزم منتقاة، جاهزة للاستخدام';
@@ -2108,7 +2108,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get rpTabBrowseInfo =>
-      'تصفح الحزم التي اختارها MCCompanion. اضغط استخدام لتفعيل حزمة فورًا — دون رفع أو رابط.';
+      'تصفح الحزم التي اختارها MCCompanion. اضغط استخدام لتفعيل حزمة فورًا, دون رفع أو رابط.';
 
   @override
   String get rpTabUploadInfo =>
@@ -2116,7 +2116,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get rpTabUrlInfo =>
-      'الصق رابط تنزيل مباشر لملف .mcpack أو .zip. يجب أن يكون الرابط متاحًا للعموم — لا روابط Discord أو Google Drive.';
+      'الصق رابط تنزيل مباشر لملف .mcpack أو .zip. يجب أن يكون الرابط متاحًا للعموم, لا روابط Discord أو Google Drive.';
 
   @override
   String get rpTabMergeInfo =>
@@ -2420,4 +2420,153 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get skinLayerOuter => 'خارجي';
+
+  @override
+  String get feedbackLoginRequiredTitle => 'سجّل الدخول لإرسال الملاحظات';
+
+  @override
+  String get feedbackLoginRequiredBody =>
+      'ترتبط الملاحظات بحساب MCCompanion الخاص بك حتى نتمكن من الرد عليك مباشرة داخل التطبيق.';
+
+  @override
+  String get feedbackLoginButton => 'تسجيل الدخول';
+
+  @override
+  String get supportInboxTitle => 'بريد الدعم';
+
+  @override
+  String get supportInboxSubtitle => 'كل محادثات الدعم، متاحة لجميع المشرفين';
+
+  @override
+  String get adminBadge => 'مشرف';
+
+  @override
+  String get skinShareSubject => 'سكين Minecraft';
+
+  @override
+  String get skinEditorTitle => 'محرر السكين';
+
+  @override
+  String get skinToolUndo => 'تراجع';
+
+  @override
+  String get skinSaveToMySkins => 'حفظ في سكيناتي';
+
+  @override
+  String get skinUpdateInCloud => 'تحديث في السحابة';
+
+  @override
+  String get skinExportPng => 'تصدير PNG';
+
+  @override
+  String get skinToolDraw => 'رسم';
+
+  @override
+  String get skinToolFill => 'تعبئة';
+
+  @override
+  String get skinToolErase => 'مسح';
+
+  @override
+  String get customColour => 'لون مخصص';
+
+  @override
+  String get featuredServerLabel => 'خادم مميز';
+
+  @override
+  String get featuredServerTagline => 'انضم وابدأ اللعب.';
+
+  @override
+  String get featuredServerPlay => 'العب';
+
+  @override
+  String rpUploadFailedCode(int code) {
+    return 'فشل الرفع ($code)';
+  }
+
+  @override
+  String rpUploadFailed(String error) {
+    return 'فشل الرفع: $error';
+  }
+
+  @override
+  String get rpLoadFailed => 'تعذر تحميل الحزم';
+
+  @override
+  String get rpRetry => 'أعد المحاولة';
+
+  @override
+  String get rpSearchHint => 'ابحث عن حزم…';
+
+  @override
+  String rpMergeFailed(String error) {
+    return 'فشل الدمج: $error';
+  }
+
+  @override
+  String get rpMergerSize => 'الحجم';
+
+  @override
+  String get rpMergerCreated => 'أُنشئ';
+
+  @override
+  String get rpMergerSourcePacks => 'الحزم المصدر';
+
+  @override
+  String get rpMergerDropToAdd => 'أفلت للإضافة';
+
+  @override
+  String get rpMergerSavedMerges => 'عمليات الدمج المحفوظة';
+
+  @override
+  String get rpMergerUse => 'استخدام';
+
+  @override
+  String get supportInboxShared => 'متاح لجميع المشرفين';
+
+  @override
+  String get supportInboxEmpty => 'لا توجد محادثات دعم بعد';
+
+  @override
+  String get supportReplyingAs => 'أنت ترد باسم MCCompanion Support';
+
+  @override
+  String get supportReplyHint => 'رد بصفتك الدعم…';
+
+  @override
+  String get relayBlocked =>
+      'تم حظر عنوان IP أو حسابك من MCCompanion. إذا كنت تظن أن هذا خطأ، انضم إلى Discord الخاص بنا.';
+
+  @override
+  String relayBlockedWithReason(String reason) {
+    return 'تم حظر عنوان IP أو حسابك من MCCompanion.\nالسبب: $reason\nإذا كنت تظن أن هذا خطأ، انضم إلى Discord الخاص بنا.';
+  }
+
+  @override
+  String relayConfigFailed(int code) {
+    return 'تعذر إعداد الريلاي (الحالة $code). جرب ريلاي آخر أو انضم إلى Discord الخاص بنا.';
+  }
+
+  @override
+  String relayConfigFailedDetail(int code, String detail) {
+    return 'تعذر إعداد الريلاي (الحالة $code): $detail. جرب ريلاي آخر أو انضم إلى Discord الخاص بنا.';
+  }
+
+  @override
+  String get relayTimeout => 'لم يرد الريلاي في الوقت المحدد.';
+
+  @override
+  String get relayUnreachable => 'تعذر الوصول إلى الريلاي.';
+
+  @override
+  String get lookupNotFound => 'لم يتم العثور على اللاعب.';
+
+  @override
+  String get lookupNetworkError => 'خطأ في الشبكة. حاول مرة أخرى.';
+
+  @override
+  String get lookupBedrockUnavailable => 'بحث Bedrock غير متاح حاليًا.';
+
+  @override
+  String get lookupFailed => 'فشل البحث.';
 }

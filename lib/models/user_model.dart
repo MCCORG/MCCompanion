@@ -107,6 +107,7 @@ class FriendModel with DisplayableName {
   final bool online;
   final FriendSession? session;
   final String? lastSeenAt;
+  final bool isAdmin;
 
   const FriendModel({
     required this.firebaseUid,
@@ -116,6 +117,7 @@ class FriendModel with DisplayableName {
     required this.online,
     this.session,
     this.lastSeenAt,
+    this.isAdmin = false,
   });
 
   factory FriendModel.fromJson(Map<String, dynamic> json) => FriendModel(

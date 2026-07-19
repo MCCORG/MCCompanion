@@ -7,6 +7,7 @@ import '../util/partners_servers.dart';
 import '../services/server_status_service.dart';
 import '../services/theme_service.dart';
 import '../widgets/components/app_toast.dart';
+import '../l10n/app_localizations.dart';
 
 class FeaturedServerHero extends StatefulWidget {
   final Future<List<FeaturedServer>>? partnerServersFuture;
@@ -216,7 +217,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                     children: [
                       _heroBadge(
                         icon: Icons.star_rounded,
-                        label: 'FEATURED SERVER',
+                        label: AppLocalizations.of(context)!.featuredServerLabel,
                       ),
                       const Spacer(),
                       if (_featuredServers.length > 1)
@@ -270,7 +271,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                               child: Text(
                                 server?.description.isNotEmpty == true
                                     ? server!.description
-                                    : 'Connect and start your adventure.',
+                                    : AppLocalizations.of(context)!.featuredServerTagline,
                                 style: TextStyle(
                                   color: ThemeService.instance.textPrimary.withValues(alpha: 0.60),
                                   fontSize: 11,
@@ -330,7 +331,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
-                                'Play',
+                                AppLocalizations.of(context)!.featuredServerPlay,
                                 style: TextStyle(
                                   color: ThemeService.instance.textPrimary.withValues(alpha:
                                     server == null || broadcasting ? 0.35 : 1.0,
@@ -455,7 +456,7 @@ class _HeroStatusBadge extends StatelessWidget {
         if (!status.isOnline) {
           return _badge(
             dot: AppTheme.error.withValues(alpha: 0.80),
-            label: 'Offline',
+            label: AppLocalizations.of(context)!.statusOffline,
             sub: null,
           );
         }
@@ -464,7 +465,7 @@ class _HeroStatusBadge extends StatelessWidget {
             : null;
         return _badge(
           dot: const Color(0xFF4ADE80),
-          label: 'Online',
+          label: AppLocalizations.of(context)!.statusOnline,
           sub: playerText,
         );
       },

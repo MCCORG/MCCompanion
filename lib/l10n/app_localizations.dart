@@ -333,7 +333,7 @@ abstract class AppLocalizations {
   /// Detailed help / instructions shown in the help dialog
   ///
   /// In en, this message translates to:
-  /// **'Created by {appCreator}.\n\nHow to use:\n1. Enter your Minecraft server address and port (default: 19132)\n   — or select a previously saved server from the dropdown\n2. (Optional) Choose a Relay Server (EU or US) closest to your location\n3. Click \"Start Broadcasting\" to begin\n4. On your console/device: Minecraft > Play > Friends\n5. You should see a LAN server called \"MCCompanion\"\n6. Click it to join your external server via MCCompanion\n\nNintendo Switch (DNS mode):\n1. Enable \"Nintendo Switch\" in the connection panel\n2. Select a Relay Server (EU or US)\n3. Click \"Send DNS Config\" — this sends your config to the relay\n   (it does NOT broadcast a LAN server)\n4. On your Switch, apply your MCCompanion DNS setup and join\n   using the server entry you use for MCCompanion\n\nNotes:\n- For LAN broadcasting, MCCompanion and console must be on the same local network.\n- Tip: Choose the relay server closest to you for the best performance.'**
+  /// **'Created by {appCreator}.\n\nHow to use:\n1. Enter your Minecraft server address and port (default: 19132)\n   or select a previously saved server from the dropdown\n2. (Optional) Choose a Relay Server (EU or US) closest to your location\n3. Click \"Start Broadcasting\" to begin\n4. On your console/device: Minecraft > Play > Friends\n5. You should see a LAN server called \"MCCompanion\"\n6. Click it to join your external server via MCCompanion\n\nNintendo Switch (DNS mode):\n1. Enable \"Nintendo Switch\" in the connection panel\n2. Select a Relay Server (EU or US)\n3. Click \"Send DNS Config\": this sends your config to the relay\n   (it does NOT broadcast a LAN server)\n4. On your Switch, apply your MCCompanion DNS setup and join\n   using the server entry you use for MCCompanion\n\nNotes:\n- For LAN broadcasting, MCCompanion and console must be on the same local network.\n- Tip: Choose the relay server closest to you for the best performance.'**
   String helpText(Object appCreator);
 
   /// No description provided for @serverDetailsLabel.
@@ -399,7 +399,7 @@ abstract class AppLocalizations {
   /// Detailed steps for Java mode how-to modal
   ///
   /// In en, this message translates to:
-  /// **'Java Mode — quick steps:\n1. In the app, select Java mode.\n2. Enter your Java Edition server address and port (default: 25565).\n3. Press \"Start Java Mode\" — MCCompanion bridges the connection.\n4. Open Minecraft Bedrock and go to the Friends tab.\n5. Select the LAN server named \"MCCompanion\" to join the Java server.\n\n⚠️ Important warnings:\n- A valid Java Edition account (Microsoft) is required.\n- Some servers use anti-cheat systems that may detect and ban your account.\n- Certain servers explicitly prohibit Bedrock clients — always check the server rules.\n- MCCompanion is not responsible for any account bans, suspensions, or other account-related issues that may result from using this feature.\n- Use at your own risk.'**
+  /// **'Java Mode: quick steps:\n1. In the app, select Java mode.\n2. Enter your Java Edition server address and port (default: 25565).\n3. Press \"Start Java Mode\": MCCompanion bridges the connection.\n4. Open Minecraft Bedrock and go to the Friends tab.\n5. Select the LAN server named \"MCCompanion\" to join the Java server.\n\n⚠️ Important warnings:\n- A valid Java Edition account (Microsoft) is required.\n- Some servers use anti-cheat systems that may detect and ban your account.\n- Certain servers explicitly prohibit Bedrock clients, always check the server rules.\n- MCCompanion is not responsible for any account bans, suspensions, or other account-related issues that may result from using this feature.\n- Use at your own risk.'**
   String get howToJavaBody;
 
   /// Your language name in your own language
@@ -525,7 +525,7 @@ abstract class AppLocalizations {
   /// Snackbar shown when clients disconnect automatically
   ///
   /// In en, this message translates to:
-  /// **'Client disconnected — Broadcast stopped'**
+  /// **'Client disconnected: Broadcast stopped'**
   String get clientDisconnected;
 
   /// Validation message when server address field is empty
@@ -909,7 +909,7 @@ abstract class AppLocalizations {
   /// Detailed steps for Nintendo Switch DNS setup
   ///
   /// In en, this message translates to:
-  /// **'Nintendo Switch — DNS mode (step-by-step):\n1. In the app enable \"Nintendo\" mode and select a Relay Server (EU or US).\n2. Tap \"Send DNS Config\" to push the DNS IP to the relay.\n3. On your Nintendo Switch go to System Settings → Internet → Internet Settings → (your network) → Change Settings → DNS and set the Primary DNS to the relay IP.\n4. Open Minecraft and join a public server; you will be redirected to your server using the relay DNS.\nNotes:\n- DNS mode does not broadcast a LAN server; it routes game traffic through the relay.\n- Revert your DNS after you are done if you need normal network behavior.'**
+  /// **'Nintendo Switch: DNS mode (step-by-step):\n1. In the app enable \"Nintendo\" mode and select a Relay Server (EU or US).\n2. Tap \"Send DNS Config\" to push the DNS IP to the relay.\n3. On your Nintendo Switch go to System Settings → Internet → Internet Settings → (your network) → Change Settings → DNS and set the Primary DNS to the relay IP.\n4. Open Minecraft and join a public server; you will be redirected to your server using the relay DNS.\nNotes:\n- DNS mode does not broadcast a LAN server; it routes game traffic through the relay.\n- Revert your DNS after you are done if you need normal network behavior.'**
   String get howToNintendoBody;
 
   /// Title for the Friends-mode how-to modal
@@ -927,7 +927,7 @@ abstract class AppLocalizations {
   /// Detailed steps for Friends mode
   ///
   /// In en, this message translates to:
-  /// **'Friends mode — quick steps:\n1. Add the MCCompanion friend account (relay friend) on your console or platform if required.\n2. In the app enable Friends mode and send the relay configuration (if applicable).\n3. On your console open Minecraft → Friends and search for LAN Worlds — your server should appear there as a LAN world.\n4. Select it to join your server with friends.\nNotes:\n- Make sure both you and your friends have the same NAT/settings that allow friend presence.\n- Friend-mode relies on platform friend features and may require accepting friend requests.'**
+  /// **'Friends mode: quick steps:\n1. Add the MCCompanion friend account (relay friend) on your console or platform if required.\n2. In the app enable Friends mode and send the relay configuration (if applicable).\n3. On your console open Minecraft → Friends and search for LAN Worlds, your server should appear there as a LAN world.\n4. Select it to join your server with friends.\nNotes:\n- Make sure both you and your friends have the same NAT/settings that allow friend presence.\n- Friend-mode relies on platform friend features and may require accepting friend requests.'**
   String get howToFriendsBody;
 
   /// Title for help topic when MCCompanion isn't visible on console
@@ -981,7 +981,7 @@ abstract class AppLocalizations {
   /// Detailed placeholder for Nintendo DNS troubleshooting
   ///
   /// In en, this message translates to:
-  /// **'If Nintendo DNS mode isn\'t working, check the following:\n\n1. Confirm you pushed DNS config from the app (Send DNS Config).\n2. Verify you applied the relay IP as Primary DNS on the Switch.\n3. Ensure the relay server selected (EU/US) is online and not overloaded.\n4. Some networks (e.g., captive portals) prevent custom DNS — test on a different network.\n\nIf issues persist, enable Debug Mode and check logs or try the Friends-mode alternative.'**
+  /// **'If Nintendo DNS mode isn\'t working, check the following:\n\n1. Confirm you pushed DNS config from the app (Send DNS Config).\n2. Verify you applied the relay IP as Primary DNS on the Switch.\n3. Ensure the relay server selected (EU/US) is online and not overloaded.\n4. Some networks (e.g., captive portals) prevent custom DNS, test on a different network.\n\nIf issues persist, enable Debug Mode and check logs or try the Friends-mode alternative.'**
   String get helpNintendoDnsBody;
 
   /// Title for Friends mode troubleshooting
@@ -1242,25 +1242,25 @@ abstract class AppLocalizations {
   /// **'Right slot (next to Profile)'**
   String get rightSlot;
 
-  /// Tooltip on wide-tile icon when tile is already wide — tap to remove
+  /// Tooltip on wide-tile icon when tile is already wide, tap to remove
   ///
   /// In en, this message translates to:
   /// **'Remove wide layout'**
   String get tileWideTooltipRemove;
 
-  /// Tooltip on wide-tile icon — tap to make this tile full-width
+  /// Tooltip on wide-tile icon, tap to make this tile full-width
   ///
   /// In en, this message translates to:
   /// **'Make wide tile'**
   String get tileWideTooltipAdd;
 
-  /// Tooltip on eye icon when tile is hidden — tap to show
+  /// Tooltip on eye icon when tile is hidden, tap to show
   ///
   /// In en, this message translates to:
   /// **'Show tile'**
   String get tileVisibilityShow;
 
-  /// Tooltip on eye icon when tile is visible — tap to hide
+  /// Tooltip on eye icon when tile is visible, tap to hide
   ///
   /// In en, this message translates to:
   /// **'Hide tile'**
@@ -1851,7 +1851,7 @@ abstract class AppLocalizations {
   /// Subtitle shown when profile is not yet set up
   ///
   /// In en, this message translates to:
-  /// **'Choose a username to start connecting with other players.'**
+  /// **'Pick a username so other players can find you.'**
   String get chooseUsernameSubtitle;
 
   /// Button to navigate to profile creation/registration
@@ -3363,7 +3363,7 @@ abstract class AppLocalizations {
   /// Hint in description field when type is bug
   ///
   /// In en, this message translates to:
-  /// **'Describe the bug — what did you do, what did you expect, and what happened instead?'**
+  /// **'Describe the bug: what did you do, what did you expect, and what happened instead?'**
   String get feedbackDescHintBug;
 
   /// Hint in description field when type is feature
@@ -3417,7 +3417,7 @@ abstract class AppLocalizations {
   /// Success screen body text
   ///
   /// In en, this message translates to:
-  /// **'Your report has been submitted and a GitHub issue has been created. We\'ll look into it as soon as possible.'**
+  /// **'Thanks! Your report is in. We\'ll take a look as soon as we can.'**
   String get feedbackSuccessBody;
 
   /// Button to open GitHub issue
@@ -3780,7 +3780,7 @@ abstract class AppLocalizations {
   /// **'Pack looks wrong?'**
   String get rpRelayTitle;
 
-  /// Explanation of what to do when merged pack has issues — toggle pack off/on and reconnect
+  /// Explanation of what to do when merged pack has issues, toggle pack off/on and reconnect
   ///
   /// In en, this message translates to:
   /// **'The relay caches the merged pack for 1 hour using your overlay URL as the cache key. To force a fresh merge, change your pack URL slightly (e.g. add ?v=2 at the end) and save. After that, also clear Minecraft\'s pack cache. The merged pack still uses the server\'s UUID, so Minecraft will otherwise serve the old cached version.'**
@@ -3873,7 +3873,7 @@ abstract class AppLocalizations {
   /// No description provided for @rpMergerPriorityHint.
   ///
   /// In en, this message translates to:
-  /// **'Top pack has highest priority — its files win conflicts.'**
+  /// **'Top pack has highest priority: its files win conflicts.'**
   String get rpMergerPriorityHint;
 
   /// No description provided for @rpMergerTopBadge.
@@ -3921,7 +3921,7 @@ abstract class AppLocalizations {
   /// No description provided for @rpMergerConflicts.
   ///
   /// In en, this message translates to:
-  /// **'{count} conflict(s) resolved — top pack won.'**
+  /// **'{count} conflict(s) resolved: top pack won.'**
   String rpMergerConflicts(int count);
 
   /// No description provided for @rpMergerSetActive.
@@ -3963,7 +3963,7 @@ abstract class AppLocalizations {
   /// Status label when pack is enabled and will be applied
   ///
   /// In en, this message translates to:
-  /// **'Active — applied on connect'**
+  /// **'Active: applied on connect'**
   String get rpActiveOnConnect;
 
   /// Subtitle shown at the top of the Browse tab
@@ -3999,7 +3999,7 @@ abstract class AppLocalizations {
   /// Info text shown under the Browse tab
   ///
   /// In en, this message translates to:
-  /// **'Browse curated packs selected by MCCompanion. Tap Use to activate a pack instantly — no upload or link needed.'**
+  /// **'Browse curated packs selected by MCCompanion. Tap Use to activate a pack instantly, no upload or link needed.'**
   String get rpTabBrowseInfo;
 
   /// Info text shown under the Upload tab
@@ -4011,7 +4011,7 @@ abstract class AppLocalizations {
   /// Info text shown under the URL tab
   ///
   /// In en, this message translates to:
-  /// **'Paste a direct download link to a .mcpack or .zip file. The URL must be publicly accessible — no Discord or Google Drive links.'**
+  /// **'Paste a direct download link to a .mcpack or .zip file. The URL must be publicly accessible, no Discord or Google Drive links.'**
   String get rpTabUrlInfo;
 
   /// Info text shown under the RP Merger tab
@@ -4536,17 +4536,287 @@ abstract class AppLocalizations {
   /// **'Load more'**
   String get loadMore;
 
-  /// Skin editor layer toggle — inner/base layer
+  /// Skin editor layer toggle, inner/base layer
   ///
   /// In en, this message translates to:
   /// **'Inner'**
   String get skinLayerInner;
 
-  /// Skin editor layer toggle — outer/overlay layer
+  /// Skin editor layer toggle, outer/overlay layer
   ///
   /// In en, this message translates to:
   /// **'Outer'**
   String get skinLayerOuter;
+
+  /// Title shown when user must log in before sending feedback
+  ///
+  /// In en, this message translates to:
+  /// **'Log in to send feedback'**
+  String get feedbackLoginRequiredTitle;
+
+  /// Body text explaining why feedback requires login
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback is linked to your MCCompanion account so we can reply to you directly in the app.'**
+  String get feedbackLoginRequiredBody;
+
+  /// Button label to go to login
+  ///
+  /// In en, this message translates to:
+  /// **'Log in'**
+  String get feedbackLoginButton;
+
+  /// Header title of the shared admin support inbox card
+  ///
+  /// In en, this message translates to:
+  /// **'Support inbox'**
+  String get supportInboxTitle;
+
+  /// Subtitle explaining the support inbox is shared between admins
+  ///
+  /// In en, this message translates to:
+  /// **'Every support chat, shared with all admins'**
+  String get supportInboxSubtitle;
+
+  /// Small badge shown next to a user who is an admin
+  ///
+  /// In en, this message translates to:
+  /// **'Admin'**
+  String get adminBadge;
+
+  /// No description provided for @skinShareSubject.
+  ///
+  /// In en, this message translates to:
+  /// **'Minecraft Skin'**
+  String get skinShareSubject;
+
+  /// No description provided for @skinEditorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Skin Editor'**
+  String get skinEditorTitle;
+
+  /// No description provided for @skinToolUndo.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get skinToolUndo;
+
+  /// No description provided for @skinSaveToMySkins.
+  ///
+  /// In en, this message translates to:
+  /// **'Save to My Skins'**
+  String get skinSaveToMySkins;
+
+  /// No description provided for @skinUpdateInCloud.
+  ///
+  /// In en, this message translates to:
+  /// **'Update in cloud'**
+  String get skinUpdateInCloud;
+
+  /// No description provided for @skinExportPng.
+  ///
+  /// In en, this message translates to:
+  /// **'Export PNG'**
+  String get skinExportPng;
+
+  /// No description provided for @skinToolDraw.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw'**
+  String get skinToolDraw;
+
+  /// No description provided for @skinToolFill.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill'**
+  String get skinToolFill;
+
+  /// No description provided for @skinToolErase.
+  ///
+  /// In en, this message translates to:
+  /// **'Erase'**
+  String get skinToolErase;
+
+  /// No description provided for @customColour.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom colour'**
+  String get customColour;
+
+  /// No description provided for @featuredServerLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'FEATURED SERVER'**
+  String get featuredServerLabel;
+
+  /// No description provided for @featuredServerTagline.
+  ///
+  /// In en, this message translates to:
+  /// **'Hop in and start playing.'**
+  String get featuredServerTagline;
+
+  /// No description provided for @featuredServerPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Play'**
+  String get featuredServerPlay;
+
+  /// No description provided for @rpUploadFailedCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload failed ({code})'**
+  String rpUploadFailedCode(int code);
+
+  /// No description provided for @rpUploadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload failed: {error}'**
+  String rpUploadFailed(String error);
+
+  /// No description provided for @rpLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load packs'**
+  String get rpLoadFailed;
+
+  /// No description provided for @rpRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get rpRetry;
+
+  /// No description provided for @rpSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search packs…'**
+  String get rpSearchHint;
+
+  /// No description provided for @rpMergeFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Merge failed: {error}'**
+  String rpMergeFailed(String error);
+
+  /// No description provided for @rpMergerSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Size'**
+  String get rpMergerSize;
+
+  /// No description provided for @rpMergerCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Created'**
+  String get rpMergerCreated;
+
+  /// No description provided for @rpMergerSourcePacks.
+  ///
+  /// In en, this message translates to:
+  /// **'Source packs'**
+  String get rpMergerSourcePacks;
+
+  /// No description provided for @rpMergerDropToAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Drop to add'**
+  String get rpMergerDropToAdd;
+
+  /// No description provided for @rpMergerSavedMerges.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved merges'**
+  String get rpMergerSavedMerges;
+
+  /// No description provided for @rpMergerUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Use'**
+  String get rpMergerUse;
+
+  /// No description provided for @supportInboxShared.
+  ///
+  /// In en, this message translates to:
+  /// **'Shared with all admins'**
+  String get supportInboxShared;
+
+  /// No description provided for @supportInboxEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No support chats yet'**
+  String get supportInboxEmpty;
+
+  /// No description provided for @supportReplyingAs.
+  ///
+  /// In en, this message translates to:
+  /// **'Replying as MCCompanion Support'**
+  String get supportReplyingAs;
+
+  /// No description provided for @supportReplyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Reply as support…'**
+  String get supportReplyHint;
+
+  /// No description provided for @relayBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Your IP or account is blocked by MCCompanion. If you think this is a mistake, join our Discord.'**
+  String get relayBlocked;
+
+  /// No description provided for @relayBlockedWithReason.
+  ///
+  /// In en, this message translates to:
+  /// **'Your IP or account is blocked by MCCompanion.\nReason: {reason}\nIf you think this is a mistake, join our Discord.'**
+  String relayBlockedWithReason(String reason);
+
+  /// No description provided for @relayConfigFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not set up the relay (status {code}). Try another relay, or join our Discord.'**
+  String relayConfigFailed(int code);
+
+  /// No description provided for @relayConfigFailedDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not set up the relay (status {code}): {detail}. Try another relay, or join our Discord.'**
+  String relayConfigFailedDetail(int code, String detail);
+
+  /// No description provided for @relayTimeout.
+  ///
+  /// In en, this message translates to:
+  /// **'The relay did not respond in time.'**
+  String get relayTimeout;
+
+  /// No description provided for @relayUnreachable.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not reach the relay.'**
+  String get relayUnreachable;
+
+  /// No description provided for @lookupNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Player not found.'**
+  String get lookupNotFound;
+
+  /// No description provided for @lookupNetworkError.
+  ///
+  /// In en, this message translates to:
+  /// **'Network error. Please try again.'**
+  String get lookupNetworkError;
+
+  /// No description provided for @lookupBedrockUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Bedrock lookup is not available right now.'**
+  String get lookupBedrockUnavailable;
+
+  /// No description provided for @lookupFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Lookup failed.'**
+  String get lookupFailed;
 }
 
 class _AppLocalizationsDelegate

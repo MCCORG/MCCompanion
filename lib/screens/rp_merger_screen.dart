@@ -272,7 +272,7 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
       _saveSavedState();
     } catch (e) {
       if (!mounted) return;
-      setState(() { _error = 'Merge failed: $e'; _merging = false; });
+      setState(() { _error = AppLocalizations.of(context)!.rpMergeFailed(e.toString()); _merging = false; });
     }
   }
 
@@ -335,10 +335,10 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
                   GestureDetector(onTap: () => Navigator.pop(ctx), child: Icon(Icons.close_rounded, size: 20, color: AppTheme.textMuted)),
                 ]),
                 const SizedBox(height: 16),
-                _InfoRow(label: 'Size', value: _humanSize(merge.size)),
-                _InfoRow(label: 'Created', value: _formatDate(merge.createdAt)),
+                _InfoRow(label: AppLocalizations.of(context)!.rpMergerSize, value: _humanSize(merge.size)),
+                _InfoRow(label: AppLocalizations.of(context)!.rpMergerCreated, value: _formatDate(merge.createdAt)),
                 const SizedBox(height: 12),
-                Text('Source packs', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: AppTheme.textMuted)),
+                Text(AppLocalizations.of(context)!.rpMergerSourcePacks, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: AppTheme.textMuted)),
                 const SizedBox(height: 8),
                 ...merge.sourceNames.asMap().entries.map((e) => Padding(
                   padding: const EdgeInsets.only(bottom: 6),
@@ -437,7 +437,7 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
                   Icon(_isDragging ? Icons.file_download_rounded : Icons.add_rounded, size: 28, color: _isDragging ? AppTheme.accent : AppTheme.textMuted),
                   const SizedBox(height: 6),
                   Text(
-                    _isDragging ? 'Drop to add' : _packs.isEmpty ? l.rpMergerAddPacks : l.rpMergerAddAnother(_packs.length),
+                    _isDragging ? AppLocalizations.of(context)!.rpMergerDropToAdd : _packs.isEmpty ? l.rpMergerAddPacks : l.rpMergerAddAnother(_packs.length),
                     style: TextStyle(fontSize: 13, color: _isDragging ? AppTheme.accent : AppTheme.textMuted, fontWeight: FontWeight.w600),
                   ),
                   const SizedBox(height: 2),
@@ -485,7 +485,7 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
 
         if (_saved.isNotEmpty) ...[
           const SizedBox(height: 28),
-          Text('Saved merges', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: AppTheme.textMuted)),
+          Text(AppLocalizations.of(context)!.rpMergerSavedMerges, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: AppTheme.textMuted)),
           const SizedBox(height: 10),
           ..._saved.map((merge) => Padding(
             padding: const EdgeInsets.only(bottom: 10),
@@ -583,7 +583,7 @@ class _SavedMergeCard extends StatelessWidget {
                 : Row(mainAxisSize: MainAxisSize.min, children: [
                     Icon(Icons.play_arrow_rounded, size: 15, color: AppTheme.accent),
                     const SizedBox(width: 4),
-                    Text('Use', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: AppTheme.accent)),
+                    Text(AppLocalizations.of(context)!.rpMergerUse, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: AppTheme.accent)),
                   ]),
           ),
         ),

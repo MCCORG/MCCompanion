@@ -152,7 +152,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get howToJavaBody =>
-      'Java-modus — snelle stappen:\n1. Selecteer in de app de Java-modus.\n2. Voer het adres en de poort van je Java Edition-server in (standaard: 25565).\n3. Druk op \"Java-modus starten\" — MCCompanion overbrugt de verbinding.\n4. Open Minecraft Bedrock en ga naar het tabblad Vrienden.\n5. Selecteer de LAN-server met de naam \"MCCompanion\" om deel te nemen aan de Java-server.\n\n⚠️ Belangrijke waarschuwingen:\n- Een geldig Java Edition-account (Microsoft) is vereist.\n- Sommige servers gebruiken anti-cheat-systemen die je account kunnen detecteren en verbannen.\n- Sommige servers verbieden Bedrock-clients expliciet — controleer altijd de serverregels.\n- MCCompanion is niet verantwoordelijk voor accountverboden, schorsingen of andere accountgerelateerde problemen die uit het gebruik van deze functie kunnen voortkomen.\n- Gebruik op eigen risico.';
+      'Java-modus: snelle stappen:\n1. Selecteer in de app de Java-modus.\n2. Voer het adres en de poort van je Java Edition-server in (standaard: 25565).\n3. Druk op \"Java-modus starten\": MCCompanion overbrugt de verbinding.\n4. Open Minecraft Bedrock en ga naar het tabblad Vrienden.\n5. Selecteer de LAN-server met de naam \"MCCompanion\" om deel te nemen aan de Java-server.\n\n⚠️ Belangrijke waarschuwingen:\n- Een geldig Java Edition-account (Microsoft) is vereist.\n- Sommige servers gebruiken anti-cheat-systemen die je account kunnen detecteren en verbannen.\n- Sommige servers verbieden Bedrock-clients expliciet, controleer altijd de serverregels.\n- MCCompanion is niet verantwoordelijk voor accountverboden, schorsingen of andere accountgerelateerde problemen die uit het gebruik van deze functie kunnen voortkomen.\n- Gebruik op eigen risico.';
 
   @override
   String get language => 'Nederlands';
@@ -475,7 +475,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get helpNintendoDnsBody =>
-      'Als Nintendo DNS modus niet werkt, controleer dan het volgende:\n\n1. Bevestig dat je DNS-configuratie hebt gestuurd (Send DNS Config).\n2. Controleer of u het relais-IP als primaire DNS heeft toegepast op de Switch.\n3. Zorg ervoor dat de relaisserver (EU/US) online is en niet overbelast.\n4. Sommige netwerken (bijv. captive portals) voorkomen aangepaste DNS — test op een ander netwerk.\n\nAls problemen aanhouden, schakel dan Debug Mode in en bekijk de logs of probeer het alternatief Vriends-modus.';
+      'Als Nintendo DNS modus niet werkt, controleer dan het volgende:\n\n1. Bevestig dat je DNS-configuratie hebt gestuurd (Send DNS Config).\n2. Controleer of u het relais-IP als primaire DNS heeft toegepast op de Switch.\n3. Zorg ervoor dat de relaisserver (EU/US) online is en niet overbelast.\n4. Sommige netwerken (bijv. captive portals) voorkomen aangepaste DNS, test op een ander netwerk.\n\nAls problemen aanhouden, schakel dan Debug Mode in en bekijk de logs of probeer het alternatief Vriends-modus.';
 
   @override
   String get helpFriendsModeTitle => 'Vrienden modus werkt niet';
@@ -959,7 +959,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get chooseUsernameSubtitle =>
-      'Kies een gebruikersnaam om te verbinden met andere spelers.';
+      'Kies een gebruikersnaam zodat andere spelers je kunnen vinden.';
 
   @override
   String get createProfile => 'Profiel aanmaken';
@@ -1777,7 +1777,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get feedbackDescHintBug =>
-      'Beschrijf de bug — wat heb je gedaan, wat verwachtte je, en wat gebeurde er in plaats daarvan?';
+      'Beschrijf de bug: wat heb je gedaan, wat verwachtte je, en wat gebeurde er in plaats daarvan?';
 
   @override
   String get feedbackDescHintFeature =>
@@ -1807,7 +1807,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get feedbackSuccessBody =>
-      'Je melding is ingediend en er is een GitHub-issue aangemaakt. We bekijken het zo snel mogelijk.';
+      'Bedankt! Je melding staat erin. We bekijken het zo snel mogelijk.';
 
   @override
   String get feedbackViewOnGithub => 'Bekijk op GitHub';
@@ -1908,7 +1908,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get rpExplanation =>
-      'Een resourcepakket verandert hoe Minecraft er op jouw console uitziet — nieuwe blokken, kleuren of geluiden. Plak hieronder de link van een .mcpack bestand, zet het aan en sla op. MCCompanion laadt het automatisch elke keer als je verbindt.';
+      'Een resourcepakket verandert hoe Minecraft er op jouw console uitziet, nieuwe blokken, kleuren of geluiden. Plak hieronder de link van een .mcpack bestand, zet het aan en sla op. MCCompanion laadt het automatisch elke keer als je verbindt.';
 
   @override
   String get rpPackUrlLabel => 'Pack-URL';
@@ -1953,11 +1953,11 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get rpNoDiscord =>
-      'Discord-links — geen .mcpack-extensie en verlopen na een paar uur';
+      'Discord-links: geen .mcpack-extensie en verlopen na een paar uur';
 
   @override
   String get rpNoDrive =>
-      'Gedeelde links van Google Drive / Dropbox — geen directe downloads';
+      'Gedeelde links van Google Drive / Dropbox, geen directe downloads';
 
   @override
   String get rpNoEncrypted =>
@@ -2008,25 +2008,25 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get rpClearStep2 =>
-      'Tik op ‘Wissen’ of ‘Opnieuw instellen’ naast Resourcepakketten — dit verwijdert alle lokaal opgeslagen packs';
+      'Tik op ‘Wissen’ of ‘Opnieuw instellen’ naast Resourcepakketten, dit verwijdert alle lokaal opgeslagen packs';
 
   @override
   String get rpClearStep3 =>
-      'Verbind opnieuw via MCCompanion — het samengevoegde pakket wordt automatisch gedownload';
+      'Verbind opnieuw via MCCompanion: het samengevoegde pakket wordt automatisch gedownload';
 
   @override
   String get rpRelayTitle => 'Pack ziet er niet goed uit?';
 
   @override
   String get rpRelayBody =>
-      'De relay bewaart de samengevoegde pack 1 uur in de cache op basis van jouw overlay-URL. Om een verse samenvoeging te forceren: pas de pack-URL iets aan (bijv. voeg ?v=2 toe) en sla op. Wis daarna ook de Minecraft-packcache — de samengevoegde pack gebruikt nog steeds de UUID van de server, dus Minecraft serveert anders gewoon de oude gecachte versie.';
+      'De relay bewaart de samengevoegde pack 1 uur in de cache op basis van jouw overlay-URL. Om een verse samenvoeging te forceren: pas de pack-URL iets aan (bijv. voeg ?v=2 toe) en sla op. Wis daarna ook de Minecraft-packcache, de samengevoegde pack gebruikt nog steeds de UUID van de server, dus Minecraft serveert anders gewoon de oude gecachte versie.';
 
   @override
-  String get rpWorksGithubHint => 'Directe downloadlink — altijd bereikbaar';
+  String get rpWorksGithubHint => 'Directe downloadlink: altijd bereikbaar';
 
   @override
   String get rpWorksCloudflareHint =>
-      'Publieke cloudopslag — snel en betrouwbaar';
+      'Publieke cloudopslag: snel en betrouwbaar';
 
   @override
   String get rpWorksDirectHint => 'Elke publieke HTTPS .mcpack of .zip URL';
@@ -2036,7 +2036,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get rpNoDriveHint =>
-      'Geen directe download — stuurt door naar een voorbeeldpagina';
+      'Geen directe download: stuurt door naar een voorbeeldpagina';
 
   @override
   String get rpNoEncryptedHint =>
@@ -2044,7 +2044,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get rpClearWhy =>
-      'Minecraft slaat resourcepakketten op via hun UUID. De samengevoegde pack behoudt de originele UUID van de server — als Minecraft de serverpack al gecacht heeft van een vorige sessie (vóór MCCompanion was ingeschakeld), downloadt het de nieuwe samengevoegde versie niet opnieuw. Wis de cache zodat Minecraft de verse samengevoegde pack oppikt.';
+      'Minecraft slaat resourcepakketten op via hun UUID. De samengevoegde pack behoudt de originele UUID van de server, als Minecraft de serverpack al gecacht heeft van een vorige sessie (vóór MCCompanion was ingeschakeld), downloadt het de nieuwe samengevoegde versie niet opnieuw. Wis de cache zodat Minecraft de verse samengevoegde pack oppikt.';
 
   @override
   String get rpUploadTab => 'Upload';
@@ -2069,7 +2069,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get rpMergerPriorityHint =>
-      'Het bovenste pack heeft de hoogste prioriteit — zijn bestanden winnen conflicten.';
+      'Het bovenste pack heeft de hoogste prioriteit, zijn bestanden winnen conflicten.';
 
   @override
   String get rpMergerTopBadge => 'TOP';
@@ -2098,7 +2098,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String rpMergerConflicts(int count) {
-    return '$count conflict(en) opgelost — bovenste pack won.';
+    return '$count conflict(en) opgelost: bovenste pack won.';
   }
 
   @override
@@ -2120,7 +2120,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get rpNoPackSelected => 'Geen resource pack geselecteerd';
 
   @override
-  String get rpActiveOnConnect => 'Actief — toegepast bij verbinding';
+  String get rpActiveOnConnect => 'Actief: toegepast bij verbinding';
 
   @override
   String get rpBrowseSubtitle => 'Gecureerde packs, klaar voor gebruik';
@@ -2139,7 +2139,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get rpTabBrowseInfo =>
-      'Blader door packs geselecteerd door MCCompanion. Tik op Gebruik om een pack direct te activeren — geen upload of link nodig.';
+      'Blader door packs geselecteerd door MCCompanion. Tik op Gebruik om een pack direct te activeren, geen upload of link nodig.';
 
   @override
   String get rpTabUploadInfo =>
@@ -2147,7 +2147,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get rpTabUrlInfo =>
-      'Plak een directe downloadlink naar een .mcpack of .zip bestand. De URL moet publiek toegankelijk zijn — geen Discord- of Google Drive-links.';
+      'Plak een directe downloadlink naar een .mcpack of .zip bestand. De URL moet publiek toegankelijk zijn, geen Discord- of Google Drive-links.';
 
   @override
   String get rpTabMergeInfo =>
@@ -2451,4 +2451,155 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get skinLayerOuter => 'Buiten';
+
+  @override
+  String get feedbackLoginRequiredTitle => 'Log in om feedback te sturen';
+
+  @override
+  String get feedbackLoginRequiredBody =>
+      'Feedback is gekoppeld aan je MCCompanion-account zodat we je rechtstreeks in de app kunnen antwoorden.';
+
+  @override
+  String get feedbackLoginButton => 'Inloggen';
+
+  @override
+  String get supportInboxTitle => 'Supportinbox';
+
+  @override
+  String get supportInboxSubtitle =>
+      'Alle supportgesprekken, gedeeld met alle admins';
+
+  @override
+  String get adminBadge => 'Admin';
+
+  @override
+  String get skinShareSubject => 'Minecraft-skin';
+
+  @override
+  String get skinEditorTitle => 'Skin-editor';
+
+  @override
+  String get skinToolUndo => 'Ongedaan maken';
+
+  @override
+  String get skinSaveToMySkins => 'Opslaan bij mijn skins';
+
+  @override
+  String get skinUpdateInCloud => 'Bijwerken in cloud';
+
+  @override
+  String get skinExportPng => 'PNG exporteren';
+
+  @override
+  String get skinToolDraw => 'Tekenen';
+
+  @override
+  String get skinToolFill => 'Vullen';
+
+  @override
+  String get skinToolErase => 'Wissen';
+
+  @override
+  String get customColour => 'Eigen kleur';
+
+  @override
+  String get featuredServerLabel => 'UITGELICHTE SERVER';
+
+  @override
+  String get featuredServerTagline => 'Spring erin en begin met spelen.';
+
+  @override
+  String get featuredServerPlay => 'Spelen';
+
+  @override
+  String rpUploadFailedCode(int code) {
+    return 'Uploaden mislukt ($code)';
+  }
+
+  @override
+  String rpUploadFailed(String error) {
+    return 'Uploaden mislukt: $error';
+  }
+
+  @override
+  String get rpLoadFailed => 'Kon packs niet laden';
+
+  @override
+  String get rpRetry => 'Opnieuw';
+
+  @override
+  String get rpSearchHint => 'Zoek packs…';
+
+  @override
+  String rpMergeFailed(String error) {
+    return 'Samenvoegen mislukt: $error';
+  }
+
+  @override
+  String get rpMergerSize => 'Grootte';
+
+  @override
+  String get rpMergerCreated => 'Aangemaakt';
+
+  @override
+  String get rpMergerSourcePacks => 'Bronpacks';
+
+  @override
+  String get rpMergerDropToAdd => 'Sleep hierheen';
+
+  @override
+  String get rpMergerSavedMerges => 'Opgeslagen merges';
+
+  @override
+  String get rpMergerUse => 'Gebruiken';
+
+  @override
+  String get supportInboxShared => 'Gedeeld met alle admins';
+
+  @override
+  String get supportInboxEmpty => 'Nog geen supportgesprekken';
+
+  @override
+  String get supportReplyingAs => 'Je antwoordt als MCCompanion Support';
+
+  @override
+  String get supportReplyHint => 'Antwoord als support…';
+
+  @override
+  String get relayBlocked =>
+      'Je IP of account is geblokkeerd door MCCompanion. Denk je dat dit een vergissing is, kom dan naar onze Discord.';
+
+  @override
+  String relayBlockedWithReason(String reason) {
+    return 'Je IP of account is geblokkeerd door MCCompanion.\nReden: $reason\nDenk je dat dit een vergissing is, kom dan naar onze Discord.';
+  }
+
+  @override
+  String relayConfigFailed(int code) {
+    return 'Kon de relay niet instellen (status $code). Probeer een andere relay of kom naar onze Discord.';
+  }
+
+  @override
+  String relayConfigFailedDetail(int code, String detail) {
+    return 'Kon de relay niet instellen (status $code): $detail. Probeer een andere relay of kom naar onze Discord.';
+  }
+
+  @override
+  String get relayTimeout => 'De relay reageerde niet op tijd.';
+
+  @override
+  String get relayUnreachable => 'Kon de relay niet bereiken.';
+
+  @override
+  String get lookupNotFound => 'Speler niet gevonden.';
+
+  @override
+  String get lookupNetworkError => 'Netwerkfout. Probeer het opnieuw.';
+
+  @override
+  String get lookupBedrockUnavailable =>
+      'Bedrock-lookup is nu niet beschikbaar.';
+
+  @override
+  String get lookupFailed => 'Zoeken mislukt.';
 }

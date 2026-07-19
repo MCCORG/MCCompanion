@@ -15,7 +15,7 @@
   "aternosSubtext": "Skapa din egen gratis Minecraft-server",
   "howToUseMenu": "Jinsi ya kutumia",
   "support": "Msaada",
-  "helpText": "Imetengenezwa na {appCreator}.\r\n\r\nJinsi ya kutumia:\r\n1. Weka anwani na port ya seva yako ya Minecraft (chaguo-msingi: 19132)\r\n   — au chagua seva iliyohifadhiwa awali kutoka kwenye menyu ya kushuka\r\n2. (Hiari) Chagua Relay Server (EU au US) iliyo karibu zaidi na eneo lako\r\n3. Bofya \"Anza Kutangaza\" ili kuanza\r\n4. Kwenye konsoli/kifaa chako: Minecraft > Play > Friends\r\n5. Unapaswa kuona seva ya LAN inayoitwa \"MCCompanion\"\r\n6. Bofya ili kujiunga na seva yako ya nje kupitia MCCompanion\r\n\r\nNintendo Switch (hali ya DNS):\r\n1. Washa \"Nintendo Switch\" kwenye paneli ya muunganisho\r\n2. Chagua Relay Server (EU au US)\r\n3. Bofya \"Send DNS Config\" — hii hutuma usanidi wako kwa relay\r\n   (hii HAITANGAZI seva ya LAN)\r\n4. Kwenye Switch yako, tumia mipangilio ya DNS ya MCCompanion kisha jiunge\r\n   kwa kutumia ingizo la seva unalotumia kwa MCCompanion\r\n\r\nVidokezo:\r\n- Kwa utangazaji wa LAN, MCCompanion na konsoli lazima ziwe kwenye mtandao mmoja wa ndani.\r\n- Dokezo: Chagua seva ya relay iliyo karibu zaidi nawe kwa utendaji bora.",
+  "helpText": "Imetengenezwa na {appCreator}.\r\n\r\nJinsi ya kutumia:\r\n1. Weka anwani na port ya seva yako ya Minecraft (chaguo-msingi: 19132)\r\n  , au chagua seva iliyohifadhiwa awali kutoka kwenye menyu ya kushuka\r\n2. (Hiari) Chagua Relay Server (EU au US) iliyo karibu zaidi na eneo lako\r\n3. Bofya \"Anza Kutangaza\" ili kuanza\r\n4. Kwenye konsoli/kifaa chako: Minecraft > Play > Friends\r\n5. Unapaswa kuona seva ya LAN inayoitwa \"MCCompanion\"\r\n6. Bofya ili kujiunga na seva yako ya nje kupitia MCCompanion\r\n\r\nNintendo Switch (hali ya DNS):\r\n1. Washa \"Nintendo Switch\" kwenye paneli ya muunganisho\r\n2. Chagua Relay Server (EU au US)\r\n3. Bofya \"Send DNS Config\": hii hutuma usanidi wako kwa relay\r\n   (hii HAITANGAZI seva ya LAN)\r\n4. Kwenye Switch yako, tumia mipangilio ya DNS ya MCCompanion kisha jiunge\r\n   kwa kutumia ingizo la seva unalotumia kwa MCCompanion\r\n\r\nVidokezo:\r\n- Kwa utangazaji wa LAN, MCCompanion na konsoli lazima ziwe kwenye mtandao mmoja wa ndani.\r\n- Dokezo: Chagua seva ya relay iliyo karibu zaidi nawe kwa utendaji bora.",
   "@helpText": {
     "description": "Detailed help / instructions shown in the help dialog",
     "placeholders": {
@@ -37,7 +37,7 @@
   "@howToJavaSubtitle": {
     "description": "Short subtitle for Java menu tile"
   },
-  "howToJavaBody": "Hali ya Java — hatua za haraka:\n1. Kwenye programu, chagua hali ya Java.\n2. Weka anwani na port ya seva yako ya Java Edition (chaguomsingi: 25565).\n3. Bonyeza \"Anza hali ya Java\" — MCCompanion itaunganisha muunganisho.\n4. Fungua Minecraft Bedrock na uende kwenye kichupo cha Marafiki.\n5. Chagua seva ya LAN inayoitwa \"MCCompanion\" ili kujiunga na seva ya Java.\n\n⚠️ Maonyo muhimu:\n- Akaunti halali ya Java Edition (Microsoft) inahitajika.\n- Baadhi ya seva hutumia mifumo ya anti-cheat ambayo inaweza kugundua na kupiga marufuku akaunti yako.\n- Baadhi ya seva hukataza wazi wateja wa Bedrock — hakikisha unakagua sheria za seva kila wakati.\n- MCCompanion haiwajibiki kwa marufuku, kusimamishwa au matatizo mengine yanayohusiana na akaunti yanayoweza kusababishwa na kutumia kipengele hiki.\n- Tumia kwa hatari yako mwenyewe.",
+  "howToJavaBody": "Hali ya Java: hatua za haraka:\n1. Kwenye programu, chagua hali ya Java.\n2. Weka anwani na port ya seva yako ya Java Edition (chaguomsingi: 25565).\n3. Bonyeza \"Anza hali ya Java\": MCCompanion itaunganisha muunganisho.\n4. Fungua Minecraft Bedrock na uende kwenye kichupo cha Marafiki.\n5. Chagua seva ya LAN inayoitwa \"MCCompanion\" ili kujiunga na seva ya Java.\n\n⚠️ Maonyo muhimu:\n- Akaunti halali ya Java Edition (Microsoft) inahitajika.\n- Baadhi ya seva hutumia mifumo ya anti-cheat ambayo inaweza kugundua na kupiga marufuku akaunti yako.\n- Baadhi ya seva hukataza wazi wateja wa Bedrock, hakikisha unakagua sheria za seva kila wakati.\n- MCCompanion haiwajibiki kwa marufuku, kusimamishwa au matatizo mengine yanayohusiana na akaunti yanayoweza kusababishwa na kutumia kipengele hiki.\n- Tumia kwa hatari yako mwenyewe.",
   "@howToJavaBody": {
     "description": "Detailed steps for Java mode how-to modal"
   },
@@ -121,7 +121,7 @@
   "@bedrockBridge": {
     "description": "Subtitle on splash screen"
   },
-  "clientDisconnected": "Mteja ametenganishwa — Utangazaji umesimama",
+  "clientDisconnected": "Mteja ametenganishwa: Utangazaji umesimama",
   "@clientDisconnected": {
     "description": "Snackbar shown when clients disconnect automatically"
   },
@@ -254,7 +254,7 @@
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
-  "howToNintendoBody": "Nintendo Switch — hali ya DNS (hatua kwa hatua):\r\n1. Kwenye programu, washa hali ya \"Nintendo\" na uchague Relay Server (EU au US).\r\n2. Gusa \"Send DNS Config\" ili kutuma DNS IP kwa relay.\r\n3. Kwenye Nintendo Switch yako nenda kwenye System Settings → Internet → Internet Settings → (mtandao wako) → Change Settings → DNS na weka Primary DNS kuwa relay IP.\r\n4. Fungua Minecraft na ujiunge na seva ya umma; utaelekezwa kwenye seva yako kwa kutumia relay DNS.\r\nVidokezo:\r\n- Hali ya DNS haitangazi seva ya LAN; inaelekeza trafiki ya mchezo kupitia relay.\r\n- Rudisha DNS yako baada ya kumaliza ikiwa unahitaji tabia ya kawaida ya mtandao.",
+  "howToNintendoBody": "Nintendo Switch: hali ya DNS (hatua kwa hatua):\r\n1. Kwenye programu, washa hali ya \"Nintendo\" na uchague Relay Server (EU au US).\r\n2. Gusa \"Send DNS Config\" ili kutuma DNS IP kwa relay.\r\n3. Kwenye Nintendo Switch yako nenda kwenye System Settings → Internet → Internet Settings → (mtandao wako) → Change Settings → DNS na weka Primary DNS kuwa relay IP.\r\n4. Fungua Minecraft na ujiunge na seva ya umma; utaelekezwa kwenye seva yako kwa kutumia relay DNS.\r\nVidokezo:\r\n- Hali ya DNS haitangazi seva ya LAN; inaelekeza trafiki ya mchezo kupitia relay.\r\n- Rudisha DNS yako baada ya kumaliza ikiwa unahitaji tabia ya kawaida ya mtandao.",
   "@howToNintendoBody": {
     "description": "Detailed steps for Nintendo Switch DNS setup"
   },
@@ -266,7 +266,7 @@
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
   },
-  "howToFriendsBody": "Hali ya Marafiki — hatua za haraka:\r\n1. Ongeza akaunti ya rafiki ya MCCompanion kwenye konsoli au jukwaa lako ikiwa inahitajika.\r\n2. Kwenye programu washa hali ya Marafiki na utume usanidi wa relay (ikiwa unatumika).\r\n3. Kwenye konsoli yako fungua Minecraft → Friends na utafute LAN Worlds — seva yako inapaswa kuonekana hapo kama ulimwengu wa LAN.\r\n4. Ichague ili kujiunga na seva yako pamoja na marafiki.\r\nVidokezo:\r\n- Hakikisha wewe na marafiki zako mna NAT/mipangilio sawa inayoruhusu uwepo wa marafiki.\r\n- Hali ya Marafiki hutegemea vipengele vya urafiki vya jukwaa na huenda ikahitaji kukubali maombi ya urafiki.",
+  "howToFriendsBody": "Hali ya Marafiki: hatua za haraka:\r\n1. Ongeza akaunti ya rafiki ya MCCompanion kwenye konsoli au jukwaa lako ikiwa inahitajika.\r\n2. Kwenye programu washa hali ya Marafiki na utume usanidi wa relay (ikiwa unatumika).\r\n3. Kwenye konsoli yako fungua Minecraft → Friends na utafute LAN Worlds, seva yako inapaswa kuonekana hapo kama ulimwengu wa LAN.\r\n4. Ichague ili kujiunga na seva yako pamoja na marafiki.\r\nVidokezo:\r\n- Hakikisha wewe na marafiki zako mna NAT/mipangilio sawa inayoruhusu uwepo wa marafiki.\r\n- Hali ya Marafiki hutegemea vipengele vya urafiki vya jukwaa na huenda ikahitaji kukubali maombi ya urafiki.",
   "@howToFriendsBody": {
     "description": "Detailed steps for Friends mode"
   },
@@ -302,7 +302,7 @@
   "@helpNintendoDnsSubtitle": {
     "description": "Short subtitle for Nintendo DNS troubleshooting tile"
   },
-  "helpNintendoDnsBody": "Ikiwa hali ya DNS ya Nintendo haifanyi kazi, angalia yafuatayo:\r\n\r\n1. Thibitisha kuwa umetuma usanidi wa DNS kutoka kwenye programu (Send DNS Config).\r\n2. Thibitisha kuwa umetumia relay IP kama DNS Kuu kwenye Switch.\r\n3. Hakikisha seva ya relay iliyochaguliwa (EU/US) iko mtandaoni na haijaelemewa.\r\n4. Baadhi ya mitandao (kwa mfano captive portals) huzuia DNS maalum — jaribu kwenye mtandao tofauti.\r\n\r\nTatizo likiendelea, washa hali ya utatuzi na uangalie kumbukumbu au ujaribu mbadala wa hali ya Marafiki.",
+  "helpNintendoDnsBody": "Ikiwa hali ya DNS ya Nintendo haifanyi kazi, angalia yafuatayo:\r\n\r\n1. Thibitisha kuwa umetuma usanidi wa DNS kutoka kwenye programu (Send DNS Config).\r\n2. Thibitisha kuwa umetumia relay IP kama DNS Kuu kwenye Switch.\r\n3. Hakikisha seva ya relay iliyochaguliwa (EU/US) iko mtandaoni na haijaelemewa.\r\n4. Baadhi ya mitandao (kwa mfano captive portals) huzuia DNS maalum, jaribu kwenye mtandao tofauti.\r\n\r\nTatizo likiendelea, washa hali ya utatuzi na uangalie kumbukumbu au ujaribu mbadala wa hali ya Marafiki.",
   "@helpNintendoDnsBody": {
     "description": "Detailed placeholder for Nintendo DNS troubleshooting"
   },
@@ -518,7 +518,7 @@
   "@checkBackLater": {
     "description": "Secondary empty state text on partner servers screen"
   },
-  "chooseUsernameSubtitle": "Choose a username to start connecting with other players.",
+  "chooseUsernameSubtitle": "Chagua jina la mtumiaji ili wachezaji wengine wakupate.",
   "@chooseUsernameSubtitle": {
     "description": "Subtitle shown when profile is not yet set up"
   },
@@ -1567,7 +1567,7 @@
   "feedbackTitleHintFeature": "mfano: Onyesha ping ya mchezaji kwenye orodha ya seva",
   "feedbackWhatHappened": "Nini kilitokea?",
   "feedbackDescribeIdea": "Elezea wazo lako",
-  "feedbackDescHintBug": "Elezea hitilafu — ulifanya nini, ulitegemea nini na badala yake nini kilitokea?",
+  "feedbackDescHintBug": "Elezea hitilafu: ulifanya nini, ulitegemea nini na badala yake nini kilitokea?",
   "feedbackDescHintFeature": "Eleza unachotaka na kwa nini itakuwa ya manufaa.",
   "feedbackEmailLabel": "Barua pepe",
   "feedbackEmailHint": "Ili tuweze kukuwasiliana",
@@ -1576,7 +1576,7 @@
   "feedbackSubmitFeature": "Tuma Ombi la Kipengele",
   "feedbackDisclaimer": "Inaunda suala la umma kwenye GitHub · Usijumuishe nywila",
   "feedbackSuccessTitle": "Asante kwa maoni yako!",
-  "feedbackSuccessBody": "Ripoti yako imetumwa na suala la GitHub limeundwa. Tutaangalia haraka iwezekanavyo.",
+  "feedbackSuccessBody": "Asante! Ripoti yako imepokelewa. Tutaiangalia haraka iwezekanavyo.",
   "feedbackViewOnGithub": "Tazama kwenye GitHub",
   "feedbackSubmitAnother": "Tuma nyingine",
   "feedbackBackToApp": "Rudi kwenye programu",
@@ -1608,7 +1608,7 @@
   "skinMenuDelete": "Futa",
   "rpScreenTitle": "Kifurushi cha Rasilimali",
   "rpWhatIsThis": "Hii ni nini?",
-  "rpExplanation": "Pakiti ya rasilimali hubadilisha mwonekano wa Minecraft kwenye konsoli yako — vitalu, rangi au sauti mpya. Bandika kiungo cha faili la .mcpack hapa chini, washa na uhifadhi. MCCompanion hupakia kiotomatiki kila wakati unapoungana.",
+  "rpExplanation": "Pakiti ya rasilimali hubadilisha mwonekano wa Minecraft kwenye konsoli yako, vitalu, rangi au sauti mpya. Bandika kiungo cha faili la .mcpack hapa chini, washa na uhifadhi. MCCompanion hupakia kiotomatiki kila wakati unapoungana.",
   "rpPackUrlLabel": "URL ya Pakiti",
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "Wezesha kifurushi cha rasilimali",
@@ -1627,8 +1627,8 @@
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 bucket ya umma",
   "rpWorksDirect": "Kiungo chochote cha moja kwa moja cha HTTPS kinachoishia .mcpack au .zip",
-  "rpNoDiscord": "Viungo vya Discord — hakuna ugani wa .mcpack na vinaisha baada ya masaa machache",
-  "rpNoDrive": "Viungo vya kushiriki vya Google Drive / Dropbox — si upakuaji wa moja kwa moja",
+  "rpNoDiscord": "Viungo vya Discord: hakuna ugani wa .mcpack na vinaisha baada ya masaa machache",
+  "rpNoDrive": "Viungo vya kushiriki vya Google Drive / Dropbox, si upakuaji wa moja kwa moja",
   "rpNoEncrypted": "Seva zenye pakiti zilizosimbwa au zilindwa na nywila",
   "rpWarnDiscord": "Viungo vya Discord vinaisha na vitaacha kufanya kazi. Tumia seva ya kudumu badala yake.",
   "rpWarnHttps": "URL lazima ianze na https://",
@@ -1638,17 +1638,17 @@
   "rpClearMinecraftTitle": "Mara ya kwanza na pakiti hii?",
   "rpClearMinecraftBody": "Minecraft huhifadhi pakiti za rasilimali kwenye cache ya ndani. Ikiwa uliounganika kwenye seva hii kabla ya kuwezesha pakiti ya MCCompanion, Minecraft tayari ina pakiti asili kwenye cache na haitaipakua tena toleo lililounganishwa.",
   "rpClearStep1": "Fungua Minecraft kwenye konsoli yako na nenda Mipangilio → Hifadhi",
-  "rpClearStep2": "Gonga 'Futa' au 'Weka upya' karibu na Pakiti za Rasilimali — hii huondoa pakiti zote zilizohifadhiwa ndani",
-  "rpClearStep3": "Unganisha tena kupitia MCCompanion — pakiti iliyochanganywa itapakuliwa kiotomatiki",
+  "rpClearStep2": "Gonga 'Futa' au 'Weka upya' karibu na Pakiti za Rasilimali, hii huondoa pakiti zote zilizohifadhiwa ndani",
+  "rpClearStep3": "Unganisha tena kupitia MCCompanion: pakiti iliyochanganywa itapakuliwa kiotomatiki",
   "rpRelayTitle": "Pack inaonekana vibaya?",
-  "rpRelayBody": "Relay huhifadhi pakiti iliyounganishwa kwa saa 1 ukitumia URL ya overlay kama ufunguo wa akiba. Kulazimisha muunganiko mpya: badilisha kidogo URL ya pakiti (mfano ongeza ?v=2) na uhifadhi. Kisha futa pia akiba ya pakiti ya Minecraft — pakiti iliyounganishwa bado inatumia UUID ya seva, kwa hivyo Minecraft vinginevyo itaonyesha toleo la zamani kutoka akibani.",
-  "rpWorksGithubHint": "Kiungo cha kupakua moja kwa moja — daima kinafikiwa",
-  "rpWorksCloudflareHint": "Hifadhi ya wingu ya umma — haraka na ya kuaminika",
+  "rpRelayBody": "Relay huhifadhi pakiti iliyounganishwa kwa saa 1 ukitumia URL ya overlay kama ufunguo wa akiba. Kulazimisha muunganiko mpya: badilisha kidogo URL ya pakiti (mfano ongeza ?v=2) na uhifadhi. Kisha futa pia akiba ya pakiti ya Minecraft, pakiti iliyounganishwa bado inatumia UUID ya seva, kwa hivyo Minecraft vinginevyo itaonyesha toleo la zamani kutoka akibani.",
+  "rpWorksGithubHint": "Kiungo cha kupakua moja kwa moja: daima kinafikiwa",
+  "rpWorksCloudflareHint": "Hifadhi ya wingu ya umma: haraka na ya kuaminika",
   "rpWorksDirectHint": "URL yoyote ya umma ya HTTPS .mcpack au .zip",
   "rpNoDiscordHint": "Viungo vya Discord CDN vinaisha baada ya muda mfupi",
-  "rpNoDriveHint": "Hakuna upakuaji wa moja kwa moja — inaelekeza kwenye ukurasa wa hakiki",
+  "rpNoDriveHint": "Hakuna upakuaji wa moja kwa moja: inaelekeza kwenye ukurasa wa hakiki",
   "rpNoEncryptedHint": "MCCompanion haiwezi kuchanganya maudhui ya pakiti zilizosimbwa",
-  "rpClearWhy": "Minecraft huhifadhi pakiti za rasilimali kwa UUID zao. Pakiti iliyounganishwa inabaki na UUID ya asili ya seva — ikiwa Minecraft tayari imehifadhi pakiti ya seva kutoka kipindi kilichopita (kabla ya MCCompanion kuwezeshwa), haitapakua toleo jipya lililounganishwa. Futa akiba ili Minecraft ipakue pakiti mpya iliyounganishwa.",
+  "rpClearWhy": "Minecraft huhifadhi pakiti za rasilimali kwa UUID zao. Pakiti iliyounganishwa inabaki na UUID ya asili ya seva, ikiwa Minecraft tayari imehifadhi pakiti ya seva kutoka kipindi kilichopita (kabla ya MCCompanion kuwezeshwa), haitapakua toleo jipya lililounganishwa. Futa akiba ili Minecraft ipakue pakiti mpya iliyounganishwa.",
   "rpUploadTab": "Upload",
   "rpUrlTab": "URL",
   "rpUploadButton": "Tap to select your pack",
@@ -1656,7 +1656,7 @@
   "rpUploading": "Uploading...",
   "rpMergerTitle": "Muunganisho wa RP",
   "rpMergerSubtitle": "Unganisha hadi pakiti 4 za rasilimali",
-  "rpMergerPriorityHint": "Pakiti ya juu ina kipaumbele zaidi — faili zake zinashinda migogoro.",
+  "rpMergerPriorityHint": "Pakiti ya juu ina kipaumbele zaidi: faili zake zinashinda migogoro.",
   "rpMergerTopBadge": "JUU",
   "rpMergerAddPacks": "Ongeza pakiti za rasilimali",
   "rpMergerAddAnother": "Ongeza pakiti nyingine ({current}/4)",
@@ -1664,22 +1664,22 @@
   "rpMergerMerging": "Inaunganisha…",
   "rpMergerButton": "Unganisha pakiti {count}",
   "rpMergerComplete": "Uunganisho umekamilika!",
-  "rpMergerConflicts": "Migogoro {count} imetatuliwa — pakiti ya juu ilishinda.",
+  "rpMergerConflicts": "Migogoro {count} imetatuliwa: pakiti ya juu ilishinda.",
   "rpMergerSetActive": "Weka kama pakiti ya rasilimali inayotumika",
   "rpMergerSetActiveToast": "Imewekwa kama pakiti ya rasilimali inayotumika",
   "rpMergerOpenButton": "Unganisha pakiti za rasilimali",
   "rpMergerOpenSubtitle": "Unganisha pakiti 2–4 kuwa moja",
   "rpDisabled": "Imezimwa",
   "rpNoPackSelected": "Hakuna pakiti ya rasilimali iliyochaguliwa",
-  "rpActiveOnConnect": "Inafanya kazi — inatumika unapounganisha",
+  "rpActiveOnConnect": "Inafanya kazi: inatumika unapounganisha",
   "rpBrowseSubtitle": "Pakiti zilizochaguliwa, tayari kutumika",
   "rpBrowseEmpty": "Hakuna pakiti zinazopatikana bado",
   "rpBrowseEmptyHint": "Rudi baadaye kwa pakiti zilizochaguliwa.",
   "rpReplaceFile": "Badilisha na faili nyingine",
   "rpDropToUpload": "Acha ili kupakia",
-  "rpTabBrowseInfo": "Vinjari pakiti zilizochaguliwa na MCCompanion. Gusa Tumia ili kuamsha pakiti mara moja — bila kupakia au kiungo.",
+  "rpTabBrowseInfo": "Vinjari pakiti zilizochaguliwa na MCCompanion. Gusa Tumia ili kuamsha pakiti mara moja, bila kupakia au kiungo.",
   "rpTabUploadInfo": "Pakia faili yako ya .mcpack au .zip. MCCompanion inihifadhi kwa usalama kwenye wingu na kuipeleka kwa konsoli yako kila unapounganisha.",
-  "rpTabUrlInfo": "Bandika kiungo cha kupakuliwa moja kwa moja kwa faili ya .mcpack au .zip. URL lazima iwe ya umma — hakuna viungo vya Discord au Google Drive.",
+  "rpTabUrlInfo": "Bandika kiungo cha kupakuliwa moja kwa moja kwa faili ya .mcpack au .zip. URL lazima iwe ya umma, hakuna viungo vya Discord au Google Drive.",
   "rpTabMergeInfo": "Unganisha pakiti 2 hadi 4 kuwa moja. Pakiti iliyounganishwa inapakiwa kwenye MCCompanion Cloud na kuamilishwa kiotomatiki.",
   "shareLabel": "Shiriki",
   "sectionMinecraftAccounts": "Akaunti za Minecraft",
@@ -1770,10 +1770,23 @@
   "skinDefaultName": "Skin yangu",
   "skinUpdatedInCloud": "Skin imesasishwa kwenye wingu",
   "skinByCreator": "na {name}",
-  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "@skinByCreator": {
+    "description": "Creator attribution",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "skinLikesCount": "{count} likes",
-  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}},
-
+  "@skinLikesCount": {
+    "description": "Like count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionRecentActivity": "Shughuli za hivi karibuni",
   "activityNoEvents": "Hakuna shughuli za hivi karibuni bado.",
   "activitySkinUploaded": "Skin imepakiwa",
@@ -1783,30 +1796,84 @@
   "activityPackRejected": "Pakiti haikuidhinishwa",
   "timeJustNow": "sasa hivi",
   "timeMinutesAgo": "dakika {count} zilizopita",
-  "@timeMinutesAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeHoursAgo": "saa {count} zilizopita",
-  "@timeHoursAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeDaysAgo": "siku {count} zilizopita",
-  "@timeDaysAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeMonthsAgo": "miezi {count} iliyopita",
-  "@timeMonthsAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMonthsAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionNotifications": "Arifa",
   "sectionNotificationTypes": "Aina za arifa",
   "notifMarkAllRead": "Weka alama zote kama zilizosomwa",
   "notifEmpty": "Hakuna arifa bado. Vipendwa, maoni na shughuli za marafiki vitaonekana hapa.",
   "notifSomeone": "Mtu fulani",
   "notifSkinLiked": "{actor} alipenda skin yako",
-  "@notifSkinLiked": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifSkinLiked": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifCommentReceived": "{actor} alitoa maoni kwenye skin yako",
-  "@notifCommentReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifCommentReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPackApproved": "Pakiti imeidhinishwa",
   "notifPackRejected": "Pakiti haikuidhinishwa",
   "notifFriendRequest": "{actor} amekutumia ombi la urafiki",
-  "@notifFriendRequest": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendRequest": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifFriendAccepted": "{actor} amekubali ombi lako",
-  "@notifFriendAccepted": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendAccepted": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifMessageReceived": "Ujumbe mpya kutoka {actor}",
-  "@notifMessageReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifMessageReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPrefSkinLiked": "Skin imependwa",
   "notifPrefCommentReceived": "Maoni yamepokelewa",
   "notifPrefPackApproved": "Pakiti imeidhinishwa",
@@ -1814,15 +1881,67 @@
   "notifPrefFriendRequest": "Ombi la urafiki",
   "notifPrefFriendAccepted": "Rafiki ameongezwa",
   "notifPrefMessageReceived": "Ujumbe mpya",
-
   "commentsTitle": "Maoni",
   "commentsEmpty": "Bado hakuna maoni. Kuwa wa kwanza!",
   "commentsPlaceholder": "Andika maoni…",
-
   "loadMore": "Pakia zaidi",
-
   "skinLayerInner": "Ndani",
-  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "@skinLayerInner": {
+    "description": "Skin editor layer toggle, inner/base layer"
+  },
   "skinLayerOuter": "Nje",
-  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
+  "@skinLayerOuter": {
+    "description": "Skin editor layer toggle, outer/overlay layer"
+  },
+  "feedbackLoginRequiredTitle": "Ingia ili kutuma maoni",
+  "feedbackLoginRequiredBody": "Maoni yanaunganishwa na akaunti yako ya MCCompanion ili tuweze kukujibu moja kwa moja ndani ya programu.",
+  "feedbackLoginButton": "Ingia",
+  "reportBug": "Maoni",
+  "rpBehaviorContentWarning": "Paki hii ina data ya behavior pack ambayo haitafanya kazi kwenye seva. Textures zitaendelea kufanya kazi.",
+  "rpInvalidPackFormat": "Hii ni paki ya Java Edition na haitumiki. Tafadhali tumia resource pack ya Bedrock Edition.",
+  "wikiFavourites": "Vipendwa",
+  "wikiRecent": "Zilizotazamwa hivi karibuni",
+  "accountActions": "AKAUNTI",
+  "supportInboxTitle": "Kikasha cha usaidizi",
+  "supportInboxSubtitle": "Mazungumzo yote ya usaidizi, yanayoshirikiwa na wasimamizi wote",
+  "adminBadge": "Msimamizi",
+  "skinShareSubject": "Skin ya Minecraft",
+  "skinEditorTitle": "Kihariri cha skin",
+  "skinToolUndo": "Tendua",
+  "skinSaveToMySkins": "Hifadhi kwenye skin zangu",
+  "skinUpdateInCloud": "Sasisha kwenye wingu",
+  "skinExportPng": "Hamisha PNG",
+  "skinToolDraw": "Chora",
+  "skinToolFill": "Jaza",
+  "skinToolErase": "Futa",
+  "customColour": "Rangi yako",
+  "featuredServerLabel": "SEVA ILIYOANGAZIWA",
+  "featuredServerTagline": "Jiunge uanze kucheza.",
+  "featuredServerPlay": "Cheza",
+  "rpUploadFailedCode": "Kupakia kumeshindikana ({code})",
+  "rpUploadFailed": "Kupakia kumeshindikana: {error}",
+  "rpLoadFailed": "Imeshindwa kupakia pakiti",
+  "rpRetry": "Jaribu tena",
+  "rpSearchHint": "Tafuta pakiti…",
+  "rpMergeFailed": "Kuunganisha kumeshindikana: {error}",
+  "rpMergerSize": "Ukubwa",
+  "rpMergerCreated": "Iliundwa",
+  "rpMergerSourcePacks": "Pakiti chanzo",
+  "rpMergerDropToAdd": "Achia ili kuongeza",
+  "rpMergerSavedMerges": "Miunganisho iliyohifadhiwa",
+  "rpMergerUse": "Tumia",
+  "supportInboxShared": "Inashirikiwa na wasimamizi wote",
+  "supportInboxEmpty": "Bado hakuna mazungumzo ya usaidizi",
+  "supportReplyingAs": "Unajibu kama MCCompanion Support",
+  "supportReplyHint": "Jibu kama usaidizi…",
+  "relayBlocked": "IP au akaunti yako imezuiwa na MCCompanion. Kama unadhani ni kosa, jiunge na Discord yetu.",
+  "relayBlockedWithReason": "IP au akaunti yako imezuiwa na MCCompanion.\nSababu: {reason}\nKama unadhani ni kosa, jiunge na Discord yetu.",
+  "relayConfigFailed": "Imeshindwa kusanidi relay (hali {code}). Jaribu relay nyingine au jiunge na Discord yetu.",
+  "relayConfigFailedDetail": "Imeshindwa kusanidi relay (hali {code}): {detail}. Jaribu relay nyingine au jiunge na Discord yetu.",
+  "relayTimeout": "Relay haikujibu kwa wakati.",
+  "relayUnreachable": "Imeshindwa kufikia relay.",
+  "lookupNotFound": "Mchezaji hakupatikana.",
+  "lookupNetworkError": "Hitilafu ya mtandao. Jaribu tena.",
+  "lookupBedrockUnavailable": "Utafutaji wa Bedrock haupatikani kwa sasa.",
+  "lookupFailed": "Utafutaji umeshindikana."
 }

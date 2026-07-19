@@ -189,7 +189,6 @@ class _ServerTile extends StatelessWidget {
 
                   const SizedBox(width: 12),
 
-                  // Right: play button
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 150),
                     width: 36,

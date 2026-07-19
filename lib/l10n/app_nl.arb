@@ -37,7 +37,7 @@
   "@howToJavaSubtitle": {
     "description": "Short subtitle for Java menu tile"
   },
-  "howToJavaBody": "Java-modus — snelle stappen:\n1. Selecteer in de app de Java-modus.\n2. Voer het adres en de poort van je Java Edition-server in (standaard: 25565).\n3. Druk op \"Java-modus starten\" — MCCompanion overbrugt de verbinding.\n4. Open Minecraft Bedrock en ga naar het tabblad Vrienden.\n5. Selecteer de LAN-server met de naam \"MCCompanion\" om deel te nemen aan de Java-server.\n\n⚠️ Belangrijke waarschuwingen:\n- Een geldig Java Edition-account (Microsoft) is vereist.\n- Sommige servers gebruiken anti-cheat-systemen die je account kunnen detecteren en verbannen.\n- Sommige servers verbieden Bedrock-clients expliciet — controleer altijd de serverregels.\n- MCCompanion is niet verantwoordelijk voor accountverboden, schorsingen of andere accountgerelateerde problemen die uit het gebruik van deze functie kunnen voortkomen.\n- Gebruik op eigen risico.",
+  "howToJavaBody": "Java-modus: snelle stappen:\n1. Selecteer in de app de Java-modus.\n2. Voer het adres en de poort van je Java Edition-server in (standaard: 25565).\n3. Druk op \"Java-modus starten\": MCCompanion overbrugt de verbinding.\n4. Open Minecraft Bedrock en ga naar het tabblad Vrienden.\n5. Selecteer de LAN-server met de naam \"MCCompanion\" om deel te nemen aan de Java-server.\n\n⚠️ Belangrijke waarschuwingen:\n- Een geldig Java Edition-account (Microsoft) is vereist.\n- Sommige servers gebruiken anti-cheat-systemen die je account kunnen detecteren en verbannen.\n- Sommige servers verbieden Bedrock-clients expliciet, controleer altijd de serverregels.\n- MCCompanion is niet verantwoordelijk voor accountverboden, schorsingen of andere accountgerelateerde problemen die uit het gebruik van deze functie kunnen voortkomen.\n- Gebruik op eigen risico.",
   "@howToJavaBody": {
     "description": "Detailed steps for Java mode how-to modal"
   },
@@ -302,7 +302,7 @@
   "@helpNintendoDnsSubtitle": {
     "description": "Short subtitle for Nintendo DNS troubleshooting tile"
   },
-  "helpNintendoDnsBody": "Als Nintendo DNS modus niet werkt, controleer dan het volgende:\n\n1. Bevestig dat je DNS-configuratie hebt gestuurd (Send DNS Config).\n2. Controleer of u het relais-IP als primaire DNS heeft toegepast op de Switch.\n3. Zorg ervoor dat de relaisserver (EU/US) online is en niet overbelast.\n4. Sommige netwerken (bijv. captive portals) voorkomen aangepaste DNS — test op een ander netwerk.\n\nAls problemen aanhouden, schakel dan Debug Mode in en bekijk de logs of probeer het alternatief Vriends-modus.",
+  "helpNintendoDnsBody": "Als Nintendo DNS modus niet werkt, controleer dan het volgende:\n\n1. Bevestig dat je DNS-configuratie hebt gestuurd (Send DNS Config).\n2. Controleer of u het relais-IP als primaire DNS heeft toegepast op de Switch.\n3. Zorg ervoor dat de relaisserver (EU/US) online is en niet overbelast.\n4. Sommige netwerken (bijv. captive portals) voorkomen aangepaste DNS, test op een ander netwerk.\n\nAls problemen aanhouden, schakel dan Debug Mode in en bekijk de logs of probeer het alternatief Vriends-modus.",
   "@helpNintendoDnsBody": {
     "description": "Detailed placeholder for Nintendo DNS troubleshooting"
   },
@@ -458,7 +458,7 @@
       "name": {}
     }
   },
-  "chooseUsernameSubtitle": "Kies een gebruikersnaam om te verbinden met andere spelers.",
+  "chooseUsernameSubtitle": "Kies een gebruikersnaam zodat andere spelers je kunnen vinden.",
   "continueWithGoogle": "Doorgaan met Google",
   "couldNotDeleteAccount": "Kon account niet verwijderen. Probeer opnieuw.",
   "couldNotSendResetEmail": "Kon reset-e-mail niet versturen. Probeer opnieuw.",
@@ -888,7 +888,7 @@
   "feedbackTitleHintFeature": "bijv. Toon ping van speler in de serverlijst",
   "feedbackWhatHappened": "Wat is er gebeurd?",
   "feedbackDescribeIdea": "Beschrijf je idee",
-  "feedbackDescHintBug": "Beschrijf de bug — wat heb je gedaan, wat verwachtte je, en wat gebeurde er in plaats daarvan?",
+  "feedbackDescHintBug": "Beschrijf de bug: wat heb je gedaan, wat verwachtte je, en wat gebeurde er in plaats daarvan?",
   "feedbackDescHintFeature": "Leg uit wat je wilt en waarom het nuttig zou zijn.",
   "feedbackEmailLabel": "E-mail",
   "feedbackEmailHint": "Zodat we contact met je kunnen opnemen",
@@ -897,7 +897,7 @@
   "feedbackSubmitFeature": "Functieverzoek indienen",
   "feedbackDisclaimer": "Maakt een openbaar issue op GitHub · Geen wachtwoorden invullen",
   "feedbackSuccessTitle": "Bedankt voor de feedback!",
-  "feedbackSuccessBody": "Je melding is ingediend en er is een GitHub-issue aangemaakt. We bekijken het zo snel mogelijk.",
+  "feedbackSuccessBody": "Bedankt! Je melding staat erin. We bekijken het zo snel mogelijk.",
   "feedbackViewOnGithub": "Bekijk op GitHub",
   "feedbackSubmitAnother": "Nog een indienen",
   "feedbackBackToApp": "Terug naar app",
@@ -930,7 +930,7 @@
   "skinMenuDelete": "Verwijderen",
   "rpScreenTitle": "Resourcepakket",
   "rpWhatIsThis": "Wat is dit?",
-  "rpExplanation": "Een resourcepakket verandert hoe Minecraft er op jouw console uitziet — nieuwe blokken, kleuren of geluiden. Plak hieronder de link van een .mcpack bestand, zet het aan en sla op. MCCompanion laadt het automatisch elke keer als je verbindt.",
+  "rpExplanation": "Een resourcepakket verandert hoe Minecraft er op jouw console uitziet, nieuwe blokken, kleuren of geluiden. Plak hieronder de link van een .mcpack bestand, zet het aan en sla op. MCCompanion laadt het automatisch elke keer als je verbindt.",
   "rpPackUrlLabel": "Pack-URL",
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "Resourcepakket inschakelen",
@@ -949,8 +949,8 @@
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 publieke bucket",
   "rpWorksDirect": "Elke directe HTTPS-link die eindigt op .mcpack of .zip",
-  "rpNoDiscord": "Discord-links — geen .mcpack-extensie en verlopen na een paar uur",
-  "rpNoDrive": "Gedeelde links van Google Drive / Dropbox — geen directe downloads",
+  "rpNoDiscord": "Discord-links: geen .mcpack-extensie en verlopen na een paar uur",
+  "rpNoDrive": "Gedeelde links van Google Drive / Dropbox, geen directe downloads",
   "rpNoEncrypted": "Servers met versleutelde of wachtwoordbeveiligde packs",
   "rpWarnDiscord": "Discord-links verlopen en werken dan niet meer. Gebruik een permanente host.",
   "rpWarnHttps": "URL moet beginnen met https://",
@@ -962,17 +962,17 @@
   "rpClearMinecraftTitle": "Eerste keer met dit pakket?",
   "rpClearMinecraftBody": "Minecraft slaat resourcepakketten lokaal op in de cache. Als je eerder verbinding hebt gemaakt met deze server vóór het inschakelen van MCCompanion's resourcepakket, heeft Minecraft het originele pakket al gecached en zal de samengevoegde versie niet opnieuw downloaden.",
   "rpClearStep1": "Open Minecraft op je console en ga naar Instellingen → Opslag",
-  "rpClearStep2": "Tik op ‘Wissen’ of ‘Opnieuw instellen’ naast Resourcepakketten — dit verwijdert alle lokaal opgeslagen packs",
-  "rpClearStep3": "Verbind opnieuw via MCCompanion — het samengevoegde pakket wordt automatisch gedownload",
+  "rpClearStep2": "Tik op ‘Wissen’ of ‘Opnieuw instellen’ naast Resourcepakketten, dit verwijdert alle lokaal opgeslagen packs",
+  "rpClearStep3": "Verbind opnieuw via MCCompanion: het samengevoegde pakket wordt automatisch gedownload",
   "rpRelayTitle": "Pack ziet er niet goed uit?",
-  "rpRelayBody": "De relay bewaart de samengevoegde pack 1 uur in de cache op basis van jouw overlay-URL. Om een verse samenvoeging te forceren: pas de pack-URL iets aan (bijv. voeg ?v=2 toe) en sla op. Wis daarna ook de Minecraft-packcache — de samengevoegde pack gebruikt nog steeds de UUID van de server, dus Minecraft serveert anders gewoon de oude gecachte versie.",
-  "rpWorksGithubHint": "Directe downloadlink — altijd bereikbaar",
-  "rpWorksCloudflareHint": "Publieke cloudopslag — snel en betrouwbaar",
+  "rpRelayBody": "De relay bewaart de samengevoegde pack 1 uur in de cache op basis van jouw overlay-URL. Om een verse samenvoeging te forceren: pas de pack-URL iets aan (bijv. voeg ?v=2 toe) en sla op. Wis daarna ook de Minecraft-packcache, de samengevoegde pack gebruikt nog steeds de UUID van de server, dus Minecraft serveert anders gewoon de oude gecachte versie.",
+  "rpWorksGithubHint": "Directe downloadlink: altijd bereikbaar",
+  "rpWorksCloudflareHint": "Publieke cloudopslag: snel en betrouwbaar",
   "rpWorksDirectHint": "Elke publieke HTTPS .mcpack of .zip URL",
   "rpNoDiscordHint": "Discord CDN-links verlopen na korte tijd",
-  "rpNoDriveHint": "Geen directe download — stuurt door naar een voorbeeldpagina",
+  "rpNoDriveHint": "Geen directe download: stuurt door naar een voorbeeldpagina",
   "rpNoEncryptedHint": "MCCompanion kan versleutelde packinhoud niet samenvoegen",
-  "rpClearWhy": "Minecraft slaat resourcepakketten op via hun UUID. De samengevoegde pack behoudt de originele UUID van de server — als Minecraft de serverpack al gecacht heeft van een vorige sessie (vóór MCCompanion was ingeschakeld), downloadt het de nieuwe samengevoegde versie niet opnieuw. Wis de cache zodat Minecraft de verse samengevoegde pack oppikt.",
+  "rpClearWhy": "Minecraft slaat resourcepakketten op via hun UUID. De samengevoegde pack behoudt de originele UUID van de server, als Minecraft de serverpack al gecacht heeft van een vorige sessie (vóór MCCompanion was ingeschakeld), downloadt het de nieuwe samengevoegde versie niet opnieuw. Wis de cache zodat Minecraft de verse samengevoegde pack oppikt.",
   "rpUploadTab": "Upload",
   "rpUrlTab": "URL",
   "rpUploadButton": "Tap to select your pack",
@@ -980,7 +980,7 @@
   "rpUploading": "Uploading...",
   "rpMergerTitle": "RP Merger",
   "rpMergerSubtitle": "Combineer tot 4 resourcepacks",
-  "rpMergerPriorityHint": "Het bovenste pack heeft de hoogste prioriteit — zijn bestanden winnen conflicten.",
+  "rpMergerPriorityHint": "Het bovenste pack heeft de hoogste prioriteit, zijn bestanden winnen conflicten.",
   "rpMergerTopBadge": "TOP",
   "rpMergerAddPacks": "Resourcepacks toevoegen",
   "rpMergerAddAnother": "Nog een pack toevoegen ({current}/4)",
@@ -988,22 +988,22 @@
   "rpMergerMerging": "Samenvoegen…",
   "rpMergerButton": "{count} packs samenvoegen",
   "rpMergerComplete": "Samenvoegen voltooid!",
-  "rpMergerConflicts": "{count} conflict(en) opgelost — bovenste pack won.",
+  "rpMergerConflicts": "{count} conflict(en) opgelost: bovenste pack won.",
   "rpMergerSetActive": "Instellen als actief resourcepack",
   "rpMergerSetActiveToast": "Ingesteld als actief resourcepack",
   "rpMergerOpenButton": "Resourcepacks samenvoegen",
   "rpMergerOpenSubtitle": "Combineer 2-4 packs in een",
   "rpDisabled": "Uitgeschakeld",
   "rpNoPackSelected": "Geen resource pack geselecteerd",
-  "rpActiveOnConnect": "Actief — toegepast bij verbinding",
+  "rpActiveOnConnect": "Actief: toegepast bij verbinding",
   "rpBrowseSubtitle": "Gecureerde packs, klaar voor gebruik",
   "rpBrowseEmpty": "Nog geen packs beschikbaar",
   "rpBrowseEmptyHint": "Kom later terug voor gecureerde packs.",
   "rpReplaceFile": "Vervang door een ander bestand",
   "rpDropToUpload": "Laat los om te uploaden",
-  "rpTabBrowseInfo": "Blader door packs geselecteerd door MCCompanion. Tik op Gebruik om een pack direct te activeren — geen upload of link nodig.",
+  "rpTabBrowseInfo": "Blader door packs geselecteerd door MCCompanion. Tik op Gebruik om een pack direct te activeren, geen upload of link nodig.",
   "rpTabUploadInfo": "Upload je eigen .mcpack of .zip bestand. MCCompanion slaat het veilig op in de cloud en stuurt het elke keer naar je console wanneer je verbindt.",
-  "rpTabUrlInfo": "Plak een directe downloadlink naar een .mcpack of .zip bestand. De URL moet publiek toegankelijk zijn — geen Discord- of Google Drive-links.",
+  "rpTabUrlInfo": "Plak een directe downloadlink naar een .mcpack of .zip bestand. De URL moet publiek toegankelijk zijn, geen Discord- of Google Drive-links.",
   "rpTabMergeInfo": "Combineer 2 tot 4 packs tot één. Het samengevoegde pack wordt geüpload naar MCCompanion Cloud en automatisch geactiveerd.",
   "shareLabel": "Delen",
   "sectionMinecraftAccounts": "Minecraft-accounts",
@@ -1094,10 +1094,23 @@
   "skinDefaultName": "Mijn skin",
   "skinUpdatedInCloud": "Skin bijgewerkt in cloud",
   "skinByCreator": "door {name}",
-  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "@skinByCreator": {
+    "description": "Creator attribution",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "skinLikesCount": "{count} likes",
-  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}},
-
+  "@skinLikesCount": {
+    "description": "Like count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionRecentActivity": "Recente activiteit",
   "activityNoEvents": "Nog geen recente activiteit.",
   "activitySkinUploaded": "Skin geüpload",
@@ -1107,30 +1120,84 @@
   "activityPackRejected": "Pack niet goedgekeurd",
   "timeJustNow": "zojuist",
   "timeMinutesAgo": "{count}m geleden",
-  "@timeMinutesAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeHoursAgo": "{count}u geleden",
-  "@timeHoursAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeDaysAgo": "{count}d geleden",
-  "@timeDaysAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeMonthsAgo": "{count}ma geleden",
-  "@timeMonthsAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMonthsAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionNotifications": "Meldingen",
   "sectionNotificationTypes": "Meldingstypen",
   "notifMarkAllRead": "Alles als gelezen markeren",
   "notifEmpty": "Nog geen meldingen. Likes, reacties en vriendenactiviteit verschijnen hier.",
   "notifSomeone": "Iemand",
   "notifSkinLiked": "{actor} vindt je skin leuk",
-  "@notifSkinLiked": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifSkinLiked": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifCommentReceived": "{actor} reageerde op je skin",
-  "@notifCommentReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifCommentReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPackApproved": "Pack goedgekeurd",
   "notifPackRejected": "Pack niet goedgekeurd",
   "notifFriendRequest": "{actor} stuurde je een vriendschapsverzoek",
-  "@notifFriendRequest": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendRequest": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifFriendAccepted": "{actor} accepteerde je verzoek",
-  "@notifFriendAccepted": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendAccepted": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifMessageReceived": "Nieuw bericht van {actor}",
-  "@notifMessageReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifMessageReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPrefSkinLiked": "Skin geliket",
   "notifPrefCommentReceived": "Reactie ontvangen",
   "notifPrefPackApproved": "Pack goedgekeurd",
@@ -1138,15 +1205,61 @@
   "notifPrefFriendRequest": "Vriendschapsverzoek",
   "notifPrefFriendAccepted": "Vriend toegevoegd",
   "notifPrefMessageReceived": "Nieuw bericht",
-
   "commentsTitle": "Reacties",
   "commentsEmpty": "Nog geen reacties. Wees de eerste!",
   "commentsPlaceholder": "Schrijf een reactie…",
-
   "loadMore": "Meer laden",
-
   "skinLayerInner": "Binnen",
-  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "@skinLayerInner": {
+    "description": "Skin editor layer toggle, inner/base layer"
+  },
   "skinLayerOuter": "Buiten",
-  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
+  "@skinLayerOuter": {
+    "description": "Skin editor layer toggle, outer/overlay layer"
+  },
+  "feedbackLoginRequiredTitle": "Log in om feedback te sturen",
+  "feedbackLoginRequiredBody": "Feedback is gekoppeld aan je MCCompanion-account zodat we je rechtstreeks in de app kunnen antwoorden.",
+  "feedbackLoginButton": "Inloggen",
+  "supportInboxTitle": "Supportinbox",
+  "supportInboxSubtitle": "Alle supportgesprekken, gedeeld met alle admins",
+  "adminBadge": "Admin",
+  "skinShareSubject": "Minecraft-skin",
+  "skinEditorTitle": "Skin-editor",
+  "skinToolUndo": "Ongedaan maken",
+  "skinSaveToMySkins": "Opslaan bij mijn skins",
+  "skinUpdateInCloud": "Bijwerken in cloud",
+  "skinExportPng": "PNG exporteren",
+  "skinToolDraw": "Tekenen",
+  "skinToolFill": "Vullen",
+  "skinToolErase": "Wissen",
+  "customColour": "Eigen kleur",
+  "featuredServerLabel": "UITGELICHTE SERVER",
+  "featuredServerTagline": "Spring erin en begin met spelen.",
+  "featuredServerPlay": "Spelen",
+  "rpUploadFailedCode": "Uploaden mislukt ({code})",
+  "rpUploadFailed": "Uploaden mislukt: {error}",
+  "rpLoadFailed": "Kon packs niet laden",
+  "rpRetry": "Opnieuw",
+  "rpSearchHint": "Zoek packs…",
+  "rpMergeFailed": "Samenvoegen mislukt: {error}",
+  "rpMergerSize": "Grootte",
+  "rpMergerCreated": "Aangemaakt",
+  "rpMergerSourcePacks": "Bronpacks",
+  "rpMergerDropToAdd": "Sleep hierheen",
+  "rpMergerSavedMerges": "Opgeslagen merges",
+  "rpMergerUse": "Gebruiken",
+  "supportInboxShared": "Gedeeld met alle admins",
+  "supportInboxEmpty": "Nog geen supportgesprekken",
+  "supportReplyingAs": "Je antwoordt als MCCompanion Support",
+  "supportReplyHint": "Antwoord als support…",
+  "relayBlocked": "Je IP of account is geblokkeerd door MCCompanion. Denk je dat dit een vergissing is, kom dan naar onze Discord.",
+  "relayBlockedWithReason": "Je IP of account is geblokkeerd door MCCompanion.\nReden: {reason}\nDenk je dat dit een vergissing is, kom dan naar onze Discord.",
+  "relayConfigFailed": "Kon de relay niet instellen (status {code}). Probeer een andere relay of kom naar onze Discord.",
+  "relayConfigFailedDetail": "Kon de relay niet instellen (status {code}): {detail}. Probeer een andere relay of kom naar onze Discord.",
+  "relayTimeout": "De relay reageerde niet op tijd.",
+  "relayUnreachable": "Kon de relay niet bereiken.",
+  "lookupNotFound": "Speler niet gevonden.",
+  "lookupNetworkError": "Netwerkfout. Probeer het opnieuw.",
+  "lookupBedrockUnavailable": "Bedrock-lookup is nu niet beschikbaar.",
+  "lookupFailed": "Zoeken mislukt."
 }

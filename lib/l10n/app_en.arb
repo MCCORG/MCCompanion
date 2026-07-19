@@ -34,7 +34,7 @@
   "website": "Website",
   "howToUseMenu": "How to use",
   "support": "Support",
-  "helpText": "Created by {appCreator}.\n\nHow to use:\n1. Enter your Minecraft server address and port (default: 19132)\n   — or select a previously saved server from the dropdown\n2. (Optional) Choose a Relay Server (EU or US) closest to your location\n3. Click \"Start Broadcasting\" to begin\n4. On your console/device: Minecraft > Play > Friends\n5. You should see a LAN server called \"MCCompanion\"\n6. Click it to join your external server via MCCompanion\n\nNintendo Switch (DNS mode):\n1. Enable \"Nintendo Switch\" in the connection panel\n2. Select a Relay Server (EU or US)\n3. Click \"Send DNS Config\" — this sends your config to the relay\n   (it does NOT broadcast a LAN server)\n4. On your Switch, apply your MCCompanion DNS setup and join\n   using the server entry you use for MCCompanion\n\nNotes:\n- For LAN broadcasting, MCCompanion and console must be on the same local network.\n- Tip: Choose the relay server closest to you for the best performance.",
+  "helpText": "Created by {appCreator}.\n\nHow to use:\n1. Enter your Minecraft server address and port (default: 19132)\n   or select a previously saved server from the dropdown\n2. (Optional) Choose a Relay Server (EU or US) closest to your location\n3. Click \"Start Broadcasting\" to begin\n4. On your console/device: Minecraft > Play > Friends\n5. You should see a LAN server called \"MCCompanion\"\n6. Click it to join your external server via MCCompanion\n\nNintendo Switch (DNS mode):\n1. Enable \"Nintendo Switch\" in the connection panel\n2. Select a Relay Server (EU or US)\n3. Click \"Send DNS Config\": this sends your config to the relay\n   (it does NOT broadcast a LAN server)\n4. On your Switch, apply your MCCompanion DNS setup and join\n   using the server entry you use for MCCompanion\n\nNotes:\n- For LAN broadcasting, MCCompanion and console must be on the same local network.\n- Tip: Choose the relay server closest to you for the best performance.",
   "@helpText": {
     "description": "Detailed help / instructions shown in the help dialog",
     "placeholders": {
@@ -57,7 +57,7 @@
     "description": "Short subtitle for Java menu tile"
   },
   "aternosSubtext": "Create your own free Minecraft server",
-  "howToJavaBody": "Java Mode — quick steps:\n1. In the app, select Java mode.\n2. Enter your Java Edition server address and port (default: 25565).\n3. Press \"Start Java Mode\" — MCCompanion bridges the connection.\n4. Open Minecraft Bedrock and go to the Friends tab.\n5. Select the LAN server named \"MCCompanion\" to join the Java server.\n\n⚠️ Important warnings:\n- A valid Java Edition account (Microsoft) is required.\n- Some servers use anti-cheat systems that may detect and ban your account.\n- Certain servers explicitly prohibit Bedrock clients — always check the server rules.\n- MCCompanion is not responsible for any account bans, suspensions, or other account-related issues that may result from using this feature.\n- Use at your own risk.",
+  "howToJavaBody": "Java Mode: quick steps:\n1. In the app, select Java mode.\n2. Enter your Java Edition server address and port (default: 25565).\n3. Press \"Start Java Mode\": MCCompanion bridges the connection.\n4. Open Minecraft Bedrock and go to the Friends tab.\n5. Select the LAN server named \"MCCompanion\" to join the Java server.\n\n⚠️ Important warnings:\n- A valid Java Edition account (Microsoft) is required.\n- Some servers use anti-cheat systems that may detect and ban your account.\n- Certain servers explicitly prohibit Bedrock clients, always check the server rules.\n- MCCompanion is not responsible for any account bans, suspensions, or other account-related issues that may result from using this feature.\n- Use at your own risk.",
   "@howToJavaBody": {
     "description": "Detailed steps for Java mode how-to modal"
   },
@@ -141,7 +141,7 @@
   "@bedrockBridge": {
     "description": "Subtitle on splash screen"
   },
-  "clientDisconnected": "Client disconnected — Broadcast stopped",
+  "clientDisconnected": "Client disconnected: Broadcast stopped",
   "@clientDisconnected": {
     "description": "Snackbar shown when clients disconnect automatically"
   },
@@ -292,7 +292,7 @@
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
-  "howToNintendoBody": "Nintendo Switch — DNS mode (step-by-step):\n1. In the app enable \"Nintendo\" mode and select a Relay Server (EU or US).\n2. Tap \"Send DNS Config\" to push the DNS IP to the relay.\n3. On your Nintendo Switch go to System Settings → Internet → Internet Settings → (your network) → Change Settings → DNS and set the Primary DNS to the relay IP.\n4. Open Minecraft and join a public server; you will be redirected to your server using the relay DNS.\nNotes:\n- DNS mode does not broadcast a LAN server; it routes game traffic through the relay.\n- Revert your DNS after you are done if you need normal network behavior.",
+  "howToNintendoBody": "Nintendo Switch: DNS mode (step-by-step):\n1. In the app enable \"Nintendo\" mode and select a Relay Server (EU or US).\n2. Tap \"Send DNS Config\" to push the DNS IP to the relay.\n3. On your Nintendo Switch go to System Settings → Internet → Internet Settings → (your network) → Change Settings → DNS and set the Primary DNS to the relay IP.\n4. Open Minecraft and join a public server; you will be redirected to your server using the relay DNS.\nNotes:\n- DNS mode does not broadcast a LAN server; it routes game traffic through the relay.\n- Revert your DNS after you are done if you need normal network behavior.",
   "@howToNintendoBody": {
     "description": "Detailed steps for Nintendo Switch DNS setup"
   },
@@ -304,7 +304,7 @@
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
   },
-  "howToFriendsBody": "Friends mode — quick steps:\n1. Add the MCCompanion friend account (relay friend) on your console or platform if required.\n2. In the app enable Friends mode and send the relay configuration (if applicable).\n3. On your console open Minecraft → Friends and search for LAN Worlds — your server should appear there as a LAN world.\n4. Select it to join your server with friends.\nNotes:\n- Make sure both you and your friends have the same NAT/settings that allow friend presence.\n- Friend-mode relies on platform friend features and may require accepting friend requests.",
+  "howToFriendsBody": "Friends mode: quick steps:\n1. Add the MCCompanion friend account (relay friend) on your console or platform if required.\n2. In the app enable Friends mode and send the relay configuration (if applicable).\n3. On your console open Minecraft → Friends and search for LAN Worlds, your server should appear there as a LAN world.\n4. Select it to join your server with friends.\nNotes:\n- Make sure both you and your friends have the same NAT/settings that allow friend presence.\n- Friend-mode relies on platform friend features and may require accepting friend requests.",
   "@howToFriendsBody": {
     "description": "Detailed steps for Friends mode"
   },
@@ -340,7 +340,7 @@
   "@helpNintendoDnsSubtitle": {
     "description": "Short subtitle for Nintendo DNS troubleshooting tile"
   },
-  "helpNintendoDnsBody": "If Nintendo DNS mode isn't working, check the following:\n\n1. Confirm you pushed DNS config from the app (Send DNS Config).\n2. Verify you applied the relay IP as Primary DNS on the Switch.\n3. Ensure the relay server selected (EU/US) is online and not overloaded.\n4. Some networks (e.g., captive portals) prevent custom DNS — test on a different network.\n\nIf issues persist, enable Debug Mode and check logs or try the Friends-mode alternative.",
+  "helpNintendoDnsBody": "If Nintendo DNS mode isn't working, check the following:\n\n1. Confirm you pushed DNS config from the app (Send DNS Config).\n2. Verify you applied the relay IP as Primary DNS on the Switch.\n3. Ensure the relay server selected (EU/US) is online and not overloaded.\n4. Some networks (e.g., captive portals) prevent custom DNS, test on a different network.\n\nIf issues persist, enable Debug Mode and check logs or try the Friends-mode alternative.",
   "@helpNintendoDnsBody": {
     "description": "Detailed placeholder for Nintendo DNS troubleshooting"
   },
@@ -521,19 +521,19 @@
   },
   "tileWideTooltipRemove": "Remove wide layout",
   "@tileWideTooltipRemove": {
-    "description": "Tooltip on wide-tile icon when tile is already wide — tap to remove"
+    "description": "Tooltip on wide-tile icon when tile is already wide, tap to remove"
   },
   "tileWideTooltipAdd": "Make wide tile",
   "@tileWideTooltipAdd": {
-    "description": "Tooltip on wide-tile icon — tap to make this tile full-width"
+    "description": "Tooltip on wide-tile icon, tap to make this tile full-width"
   },
   "tileVisibilityShow": "Show tile",
   "@tileVisibilityShow": {
-    "description": "Tooltip on eye icon when tile is hidden — tap to show"
+    "description": "Tooltip on eye icon when tile is hidden, tap to show"
   },
   "tileVisibilityHide": "Hide tile",
   "@tileVisibilityHide": {
-    "description": "Tooltip on eye icon when tile is visible — tap to hide"
+    "description": "Tooltip on eye icon when tile is visible, tap to hide"
   },
   "tileVisibilityMin": "Cannot hide (last tile)",
   "@tileVisibilityMin": {
@@ -965,7 +965,7 @@
   "@profileNotSetUp": {
     "description": "Title when user is authenticated but has no profile"
   },
-  "chooseUsernameSubtitle": "Choose a username to start connecting with other players.",
+  "chooseUsernameSubtitle": "Pick a username so other players can find you.",
   "@chooseUsernameSubtitle": {
     "description": "Subtitle shown when profile is not yet set up"
   },
@@ -1874,7 +1874,7 @@
   "@feedbackDescribeIdea": {
     "description": "Label above description field when type is feature"
   },
-  "feedbackDescHintBug": "Describe the bug — what did you do, what did you expect, and what happened instead?",
+  "feedbackDescHintBug": "Describe the bug: what did you do, what did you expect, and what happened instead?",
   "@feedbackDescHintBug": {
     "description": "Hint in description field when type is bug"
   },
@@ -1910,7 +1910,7 @@
   "@feedbackSuccessTitle": {
     "description": "Success screen title"
   },
-  "feedbackSuccessBody": "Your report has been submitted and a GitHub issue has been created. We'll look into it as soon as possible.",
+  "feedbackSuccessBody": "Thanks! Your report is in. We'll take a look as soon as we can.",
   "@feedbackSuccessBody": {
     "description": "Success screen body text"
   },
@@ -2139,7 +2139,7 @@
   },
   "rpRelayBody": "The relay caches the merged pack for 1 hour using your overlay URL as the cache key. To force a fresh merge, change your pack URL slightly (e.g. add ?v=2 at the end) and save. After that, also clear Minecraft's pack cache. The merged pack still uses the server's UUID, so Minecraft will otherwise serve the old cached version.",
   "@rpRelayBody": {
-    "description": "Explanation of what to do when merged pack has issues — toggle pack off/on and reconnect"
+    "description": "Explanation of what to do when merged pack has issues, toggle pack off/on and reconnect"
   },
   "rpWorksGithubHint": "Direct download link, always accessible.",
   "rpWorksCloudflareHint": "Public cloud storage, fast and reliable.",
@@ -2170,7 +2170,7 @@
   },
   "rpMergerTitle": "RP Merger",
   "rpMergerSubtitle": "Combine up to 4 resource packs",
-  "rpMergerPriorityHint": "Top pack has highest priority — its files win conflicts.",
+  "rpMergerPriorityHint": "Top pack has highest priority: its files win conflicts.",
   "rpMergerTopBadge": "TOP",
   "rpMergerAddPacks": "Add resource packs",
   "rpMergerAddAnother": "Add another pack ({current}/4)",
@@ -2192,7 +2192,7 @@
     }
   },
   "rpMergerComplete": "Merge complete!",
-  "rpMergerConflicts": "{count} conflict(s) resolved — top pack won.",
+  "rpMergerConflicts": "{count} conflict(s) resolved: top pack won.",
   "@rpMergerConflicts": {
     "placeholders": {
       "count": {
@@ -2212,7 +2212,7 @@
   "@rpNoPackSelected": {
     "description": "Shown in the active pack banner when no pack is configured"
   },
-  "rpActiveOnConnect": "Active — applied on connect",
+  "rpActiveOnConnect": "Active: applied on connect",
   "@rpActiveOnConnect": {
     "description": "Status label when pack is enabled and will be applied"
   },
@@ -2236,7 +2236,7 @@
   "@rpDropToUpload": {
     "description": "Label shown when a file is dragged over the upload area"
   },
-  "rpTabBrowseInfo": "Browse curated packs selected by MCCompanion. Tap Use to activate a pack instantly — no upload or link needed.",
+  "rpTabBrowseInfo": "Browse curated packs selected by MCCompanion. Tap Use to activate a pack instantly, no upload or link needed.",
   "@rpTabBrowseInfo": {
     "description": "Info text shown under the Browse tab"
   },
@@ -2244,7 +2244,7 @@
   "@rpTabUploadInfo": {
     "description": "Info text shown under the Upload tab"
   },
-  "rpTabUrlInfo": "Paste a direct download link to a .mcpack or .zip file. The URL must be publicly accessible — no Discord or Google Drive links.",
+  "rpTabUrlInfo": "Paste a direct download link to a .mcpack or .zip file. The URL must be publicly accessible, no Discord or Google Drive links.",
   "@rpTabUrlInfo": {
     "description": "Info text shown under the URL tab"
   },
@@ -2365,204 +2365,428 @@
     "description": "rpPackDetailTitle label"
   },
   "skinsSavedToMySkins": "Saved to My Skins",
-  "@skinsSavedToMySkins": { "description": "Toast when cloud skin is saved to local library" },
+  "@skinsSavedToMySkins": {
+    "description": "Toast when cloud skin is saved to local library"
+  },
   "skinsDownloadFailed": "Download failed",
-  "@skinsDownloadFailed": { "description": "Toast when skin download fails" },
+  "@skinsDownloadFailed": {
+    "description": "Toast when skin download fails"
+  },
   "skinsDeletedFromCloud": "Deleted from cloud",
-  "@skinsDeletedFromCloud": { "description": "Toast when cloud skin is deleted" },
+  "@skinsDeletedFromCloud": {
+    "description": "Toast when cloud skin is deleted"
+  },
   "skinsDeleteFailed": "Delete failed",
-  "@skinsDeleteFailed": { "description": "Toast when skin delete fails" },
+  "@skinsDeleteFailed": {
+    "description": "Toast when skin delete fails"
+  },
   "skinsLoginToUpload": "Log in to upload skins",
-  "@skinsLoginToUpload": { "description": "Toast when user tries to upload without being logged in" },
+  "@skinsLoginToUpload": {
+    "description": "Toast when user tries to upload without being logged in"
+  },
   "skinsUploading": "Uploading…",
-  "@skinsUploading": { "description": "Toast while skin is uploading" },
+  "@skinsUploading": {
+    "description": "Toast while skin is uploading"
+  },
   "skinUploaded": "Skin uploaded!",
-  "@skinUploaded": { "description": "Toast when skin upload succeeds" },
+  "@skinUploaded": {
+    "description": "Toast when skin upload succeeds"
+  },
   "skinUploadFailed": "Upload failed: {error}",
   "@skinUploadFailed": {
     "description": "Toast when skin upload fails",
-    "placeholders": { "error": { "type": "String" } }
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
   },
   "skinsTabSkins": "Skins",
-  "@skinsTabSkins": { "description": "Skins tab label" },
+  "@skinsTabSkins": {
+    "description": "Skins tab label"
+  },
   "skinsTabRecent": "Recent",
-  "@skinsTabRecent": { "description": "Recent tab label on skins screen" },
+  "@skinsTabRecent": {
+    "description": "Recent tab label on skins screen"
+  },
   "skinsEmptyCloudSkins": "No cloud skins yet. Upload a skin to see it here.",
-  "@skinsEmptyCloudSkins": { "description": "Empty state for cloud skins tab" },
+  "@skinsEmptyCloudSkins": {
+    "description": "Empty state for cloud skins tab"
+  },
   "skinsEmptyLocalSkins": "No skins yet. Create or upload a skin to get started.",
-  "@skinsEmptyLocalSkins": { "description": "Empty state for local skins tab" },
+  "@skinsEmptyLocalSkins": {
+    "description": "Empty state for local skins tab"
+  },
   "skinUploadToWebsite": "Upload to website",
-  "@skinUploadToWebsite": { "description": "Menu option to upload skin to website" },
+  "@skinUploadToWebsite": {
+    "description": "Menu option to upload skin to website"
+  },
   "skinReuploadToWebsite": "Re-upload to website",
-  "@skinReuploadToWebsite": { "description": "Menu option to re-upload skin to website" },
+  "@skinReuploadToWebsite": {
+    "description": "Menu option to re-upload skin to website"
+  },
   "skinCloudEdit": "Edit",
-  "@skinCloudEdit": { "description": "Edit button in cloud skin menu" },
+  "@skinCloudEdit": {
+    "description": "Edit button in cloud skin menu"
+  },
   "skinCloudSaveToDevice": "Save to device",
-  "@skinCloudSaveToDevice": { "description": "Save to device button in cloud skin menu" },
+  "@skinCloudSaveToDevice": {
+    "description": "Save to device button in cloud skin menu"
+  },
   "skinCloudDelete": "Delete from cloud",
-  "@skinCloudDelete": { "description": "Delete from cloud button in cloud skin menu" },
+  "@skinCloudDelete": {
+    "description": "Delete from cloud button in cloud skin menu"
+  },
   "skinsTabGallery": "Gallery",
-  "@skinsTabGallery": { "description": "Gallery tab label on skins screen" },
+  "@skinsTabGallery": {
+    "description": "Gallery tab label on skins screen"
+  },
   "skinsGalleryEmpty": "No community skins yet.",
-  "@skinsGalleryEmpty": { "description": "Empty state for public gallery tab" },
+  "@skinsGalleryEmpty": {
+    "description": "Empty state for public gallery tab"
+  },
   "skinsTopLabel": "Top 30",
-  "@skinsTopLabel": { "description": "Section header for top 30 liked skins" },
+  "@skinsTopLabel": {
+    "description": "Section header for top 30 liked skins"
+  },
   "skinsAllLabel": "All Skins",
-  "@skinsAllLabel": { "description": "Section header for all gallery skins" },
+  "@skinsAllLabel": {
+    "description": "Section header for all gallery skins"
+  },
   "skinUploadToCloud": "Upload to Cloud",
-  "@skinUploadToCloud": { "description": "Dialog title for uploading skin to cloud" },
+  "@skinUploadToCloud": {
+    "description": "Dialog title for uploading skin to cloud"
+  },
   "skinSaveDialog": "Save Skin",
-  "@skinSaveDialog": { "description": "Dialog title for saving skin locally" },
+  "@skinSaveDialog": {
+    "description": "Dialog title for saving skin locally"
+  },
   "skinNameHint": "Skin name",
-  "@skinNameHint": { "description": "Hint text for skin name input field" },
+  "@skinNameHint": {
+    "description": "Hint text for skin name input field"
+  },
   "skinDefaultName": "My Skin",
-  "@skinDefaultName": { "description": "Default name for a new skin" },
+  "@skinDefaultName": {
+    "description": "Default name for a new skin"
+  },
   "skinUpdatedInCloud": "Skin updated in cloud",
-  "@skinUpdatedInCloud": { "description": "Toast when cloud skin is updated" },
+  "@skinUpdatedInCloud": {
+    "description": "Toast when cloud skin is updated"
+  },
   "skinByCreator": "by {name}",
   "@skinByCreator": {
     "description": "Creator attribution on skin cards and preview sheet",
-    "placeholders": { "name": { "type": "String" } }
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
   },
   "skinLikesCount": "{count} likes",
   "@skinLikesCount": {
     "description": "Like count shown under skin name in preview sheet",
-    "placeholders": { "count": { "type": "int" } }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
-
   "sectionRecentActivity": "Recent Activity",
-  "@sectionRecentActivity": { "description": "Section header for the recent activity feed in the profile tab" },
-
+  "@sectionRecentActivity": {
+    "description": "Section header for the recent activity feed in the profile tab"
+  },
   "activityNoEvents": "No recent activity yet.",
-  "@activityNoEvents": { "description": "Shown when the activity feed is empty" },
-
+  "@activityNoEvents": {
+    "description": "Shown when the activity feed is empty"
+  },
   "activitySkinUploaded": "Uploaded skin",
-  "@activitySkinUploaded": { "description": "Activity feed row: user uploaded a skin" },
-
+  "@activitySkinUploaded": {
+    "description": "Activity feed row: user uploaded a skin"
+  },
   "activitySkinLiked": "Liked a skin",
-  "@activitySkinLiked": { "description": "Activity feed row: user liked a skin" },
-
+  "@activitySkinLiked": {
+    "description": "Activity feed row: user liked a skin"
+  },
   "activityPackSubmitted": "Submitted pack",
-  "@activityPackSubmitted": { "description": "Activity feed row: user submitted a resource pack" },
-
+  "@activityPackSubmitted": {
+    "description": "Activity feed row: user submitted a resource pack"
+  },
   "activityPackApproved": "Pack approved",
-  "@activityPackApproved": { "description": "Activity feed row: pack was approved" },
-
+  "@activityPackApproved": {
+    "description": "Activity feed row: pack was approved"
+  },
   "activityPackRejected": "Pack not approved",
-  "@activityPackRejected": { "description": "Activity feed row: pack was not approved" },
-
+  "@activityPackRejected": {
+    "description": "Activity feed row: pack was not approved"
+  },
   "timeJustNow": "just now",
-  "@timeJustNow": { "description": "Relative timestamp: less than a minute ago" },
-
+  "@timeJustNow": {
+    "description": "Relative timestamp: less than a minute ago"
+  },
   "timeMinutesAgo": "{count}m ago",
   "@timeMinutesAgo": {
     "description": "Relative timestamp: X minutes ago",
-    "placeholders": { "count": { "type": "int" } }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
-
   "timeHoursAgo": "{count}h ago",
   "@timeHoursAgo": {
     "description": "Relative timestamp: X hours ago",
-    "placeholders": { "count": { "type": "int" } }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
-
   "timeDaysAgo": "{count}d ago",
   "@timeDaysAgo": {
     "description": "Relative timestamp: X days ago",
-    "placeholders": { "count": { "type": "int" } }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
-
   "timeMonthsAgo": "{count}mo ago",
   "@timeMonthsAgo": {
     "description": "Relative timestamp: X months ago",
-    "placeholders": { "count": { "type": "int" } }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
-
   "sectionNotifications": "Notifications",
-  "@sectionNotifications": { "description": "Section header for the notifications feed in the bell tab" },
-
+  "@sectionNotifications": {
+    "description": "Section header for the notifications feed in the bell tab"
+  },
   "sectionNotificationTypes": "Notification Types",
-  "@sectionNotificationTypes": { "description": "Section header for notification preference toggles" },
-
+  "@sectionNotificationTypes": {
+    "description": "Section header for notification preference toggles"
+  },
   "notifMarkAllRead": "Mark all read",
-  "@notifMarkAllRead": { "description": "Button to mark all notifications as read" },
-
+  "@notifMarkAllRead": {
+    "description": "Button to mark all notifications as read"
+  },
   "notifEmpty": "No notifications yet. Likes, comments, and friend activity will appear here.",
-  "@notifEmpty": { "description": "Shown when the notification feed is empty" },
-
+  "@notifEmpty": {
+    "description": "Shown when the notification feed is empty"
+  },
   "notifSomeone": "Someone",
-  "@notifSomeone": { "description": "Fallback actor name when sender is unknown" },
-
+  "@notifSomeone": {
+    "description": "Fallback actor name when sender is unknown"
+  },
   "notifSkinLiked": "{actor} liked your skin",
   "@notifSkinLiked": {
     "description": "Notification title: someone liked the user's skin",
-    "placeholders": { "actor": { "type": "String" } }
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
   },
-
   "notifCommentReceived": "{actor} commented on your skin",
   "@notifCommentReceived": {
     "description": "Notification title: someone commented on the user's skin",
-    "placeholders": { "actor": { "type": "String" } }
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
   },
-
   "notifPackApproved": "Pack approved",
-  "@notifPackApproved": { "description": "Notification title: a submitted pack was approved" },
-
+  "@notifPackApproved": {
+    "description": "Notification title: a submitted pack was approved"
+  },
   "notifPackRejected": "Pack not approved",
-  "@notifPackRejected": { "description": "Notification title: a submitted pack was rejected" },
-
+  "@notifPackRejected": {
+    "description": "Notification title: a submitted pack was rejected"
+  },
   "notifFriendRequest": "{actor} sent you a friend request",
   "@notifFriendRequest": {
     "description": "Notification title: someone sent a friend request",
-    "placeholders": { "actor": { "type": "String" } }
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
   },
-
   "notifFriendAccepted": "{actor} accepted your request",
   "@notifFriendAccepted": {
     "description": "Notification title: someone accepted the user's friend request",
-    "placeholders": { "actor": { "type": "String" } }
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
   },
-
   "notifMessageReceived": "New message from {actor}",
   "@notifMessageReceived": {
     "description": "Notification title: new direct message received",
-    "placeholders": { "actor": { "type": "String" } }
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
   },
-
   "notifPrefSkinLiked": "Skin liked",
-  "@notifPrefSkinLiked": { "description": "Notification preference toggle label: skin liked" },
-
+  "@notifPrefSkinLiked": {
+    "description": "Notification preference toggle label: skin liked"
+  },
   "notifPrefCommentReceived": "Comment received",
-  "@notifPrefCommentReceived": { "description": "Notification preference toggle label: comment received" },
-
+  "@notifPrefCommentReceived": {
+    "description": "Notification preference toggle label: comment received"
+  },
   "notifPrefPackApproved": "Pack approved",
-  "@notifPrefPackApproved": { "description": "Notification preference toggle label: pack approved" },
-
+  "@notifPrefPackApproved": {
+    "description": "Notification preference toggle label: pack approved"
+  },
   "notifPrefPackRejected": "Pack rejected",
-  "@notifPrefPackRejected": { "description": "Notification preference toggle label: pack rejected" },
-
+  "@notifPrefPackRejected": {
+    "description": "Notification preference toggle label: pack rejected"
+  },
   "notifPrefFriendRequest": "Friend request",
-  "@notifPrefFriendRequest": { "description": "Notification preference toggle label: friend request" },
-
+  "@notifPrefFriendRequest": {
+    "description": "Notification preference toggle label: friend request"
+  },
   "notifPrefFriendAccepted": "Friend accepted",
-  "@notifPrefFriendAccepted": { "description": "Notification preference toggle label: friend accepted" },
-
+  "@notifPrefFriendAccepted": {
+    "description": "Notification preference toggle label: friend accepted"
+  },
   "notifPrefMessageReceived": "New message",
-  "@notifPrefMessageReceived": { "description": "Notification preference toggle label: new message" },
-
+  "@notifPrefMessageReceived": {
+    "description": "Notification preference toggle label: new message"
+  },
   "commentsTitle": "Comments",
-  "@commentsTitle": { "description": "Section header for the comments section on a skin" },
-
+  "@commentsTitle": {
+    "description": "Section header for the comments section on a skin"
+  },
   "commentsEmpty": "No comments yet. Be the first!",
-  "@commentsEmpty": { "description": "Shown when a skin has no comments" },
-
+  "@commentsEmpty": {
+    "description": "Shown when a skin has no comments"
+  },
   "commentsPlaceholder": "Write a comment…",
-  "@commentsPlaceholder": { "description": "Placeholder text in the comment input field" },
-
+  "@commentsPlaceholder": {
+    "description": "Placeholder text in the comment input field"
+  },
   "loadMore": "Load more",
-
   "skinLayerInner": "Inner",
-  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "@skinLayerInner": {
+    "description": "Skin editor layer toggle, inner/base layer"
+  },
   "skinLayerOuter": "Outer",
-  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
+  "@skinLayerOuter": {
+    "description": "Skin editor layer toggle, outer/overlay layer"
+  },
+  "feedbackLoginRequiredTitle": "Log in to send feedback",
+  "feedbackLoginRequiredBody": "Feedback is linked to your MCCompanion account so we can reply to you directly in the app.",
+  "feedbackLoginButton": "Log in",
+  "@feedbackLoginRequiredTitle": {
+    "description": "Title shown when user must log in before sending feedback"
+  },
+  "@feedbackLoginRequiredBody": {
+    "description": "Body text explaining why feedback requires login"
+  },
+  "@feedbackLoginButton": {
+    "description": "Button label to go to login"
+  },
+  "supportInboxTitle": "Support inbox",
+  "@supportInboxTitle": {
+    "description": "Header title of the shared admin support inbox card"
+  },
+  "supportInboxSubtitle": "Every support chat, shared with all admins",
+  "@supportInboxSubtitle": {
+    "description": "Subtitle explaining the support inbox is shared between admins"
+  },
+  "adminBadge": "Admin",
+  "@adminBadge": {
+    "description": "Small badge shown next to a user who is an admin"
+  },
+  "skinShareSubject": "Minecraft Skin",
+  "skinEditorTitle": "Skin Editor",
+  "skinToolUndo": "Undo",
+  "skinSaveToMySkins": "Save to My Skins",
+  "skinUpdateInCloud": "Update in cloud",
+  "skinExportPng": "Export PNG",
+  "skinToolDraw": "Draw",
+  "skinToolFill": "Fill",
+  "skinToolErase": "Erase",
+  "customColour": "Custom colour",
+  "featuredServerLabel": "FEATURED SERVER",
+  "featuredServerTagline": "Hop in and start playing.",
+  "featuredServerPlay": "Play",
+  "rpUploadFailedCode": "Upload failed ({code})",
+  "@rpUploadFailedCode": {
+      "placeholders": {
+          "code": {
+              "type": "int"
+          }
+      }
+  },
+  "rpUploadFailed": "Upload failed: {error}",
+  "@rpUploadFailed": {
+      "placeholders": {
+          "error": {
+              "type": "String"
+          }
+      }
+  },
+  "rpLoadFailed": "Could not load packs",
+  "rpRetry": "Retry",
+  "rpSearchHint": "Search packs…",
+  "rpMergeFailed": "Merge failed: {error}",
+  "@rpMergeFailed": {
+      "placeholders": {
+          "error": {
+              "type": "String"
+          }
+      }
+  },
+  "rpMergerSize": "Size",
+  "rpMergerCreated": "Created",
+  "rpMergerSourcePacks": "Source packs",
+  "rpMergerDropToAdd": "Drop to add",
+  "rpMergerSavedMerges": "Saved merges",
+  "rpMergerUse": "Use",
+  "supportInboxShared": "Shared with all admins",
+  "supportInboxEmpty": "No support chats yet",
+  "supportReplyingAs": "Replying as MCCompanion Support",
+  "supportReplyHint": "Reply as support…",
+  "relayBlocked": "Your IP or account is blocked by MCCompanion. If you think this is a mistake, join our Discord.",
+  "relayBlockedWithReason": "Your IP or account is blocked by MCCompanion.\nReason: {reason}\nIf you think this is a mistake, join our Discord.",
+  "@relayBlockedWithReason": {
+      "placeholders": {
+          "reason": {
+              "type": "String"
+          }
+      }
+  },
+  "relayConfigFailed": "Could not set up the relay (status {code}). Try another relay, or join our Discord.",
+  "@relayConfigFailed": {
+      "placeholders": {
+          "code": {
+              "type": "int"
+          }
+      }
+  },
+  "relayConfigFailedDetail": "Could not set up the relay (status {code}): {detail}. Try another relay, or join our Discord.",
+  "@relayConfigFailedDetail": {
+      "placeholders": {
+          "code": {
+              "type": "int"
+          },
+          "detail": {
+              "type": "String"
+          }
+      }
+  },
+  "relayTimeout": "The relay did not respond in time.",
+  "relayUnreachable": "Could not reach the relay.",
+  "lookupNotFound": "Player not found.",
+  "lookupNetworkError": "Network error. Please try again.",
+  "lookupBedrockUnavailable": "Bedrock lookup is not available right now.",
+  "lookupFailed": "Lookup failed."
 }

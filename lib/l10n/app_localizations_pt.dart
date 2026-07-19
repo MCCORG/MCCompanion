@@ -117,7 +117,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String helpText(Object appCreator) {
-    return 'Criado por $appCreator.\r\n\r\nComo usar:\r\n1. Digite o endereço e a porta do seu servidor de Minecraft (padrão: 19132)\r\n   — ou selecione um servidor salvo anteriormente no menu suspenso\r\n2. (Opcional) Escolha um Servidor Relay (EU ou US) mais próximo da sua localização\r\n3. Clique em \\\"Iniciar Transmissão\\\" para começar\r\n4. No seu console/dispositivo: Minecraft > Jogar > Amigos\r\n5. Você deverá ver um servidor LAN chamado \\\"MCCompanion\\\"\r\n6. Clique nele para entrar no seu servidor externo via MCCompanion\r\n\r\nNintendo Switch (modo DNS):\r\n1. Ative \\\"Nintendo Switch\\\" no painel de conexão\r\n2. Selecione um Servidor Relay (EU ou US)\r\n3. Clique em \\\"Enviar Configuração DNS\\\" — isso envia sua configuração ao relay\r\n   (isso NÃO transmite um servidor LAN)\r\n4. No seu Switch, aplique a configuração DNS do MCCompanion e entre\r\n   usando a entrada de servidor que você usa para o MCCompanion\r\n\r\nNotas:\r\n- Para transmissão LAN, o MCCompanion e o console devem estar na mesma rede local.\r\n- Dica: escolha o servidor relay mais próximo de você para obter o melhor desempenho.';
+    return 'Criado por $appCreator.\r\n\r\nComo usar:\r\n1. Digite o endereço e a porta do seu servidor de Minecraft (padrão: 19132)\r\n  , ou selecione um servidor salvo anteriormente no menu suspenso\r\n2. (Opcional) Escolha um Servidor Relay (EU ou US) mais próximo da sua localização\r\n3. Clique em \\\"Iniciar Transmissão\\\" para começar\r\n4. No seu console/dispositivo: Minecraft > Jogar > Amigos\r\n5. Você deverá ver um servidor LAN chamado \\\"MCCompanion\\\"\r\n6. Clique nele para entrar no seu servidor externo via MCCompanion\r\n\r\nNintendo Switch (modo DNS):\r\n1. Ative \\\"Nintendo Switch\\\" no painel de conexão\r\n2. Selecione um Servidor Relay (EU ou US)\r\n3. Clique em \\\"Enviar Configuração DNS\\\": isso envia sua configuração ao relay\r\n   (isso NÃO transmite um servidor LAN)\r\n4. No seu Switch, aplique a configuração DNS do MCCompanion e entre\r\n   usando a entrada de servidor que você usa para o MCCompanion\r\n\r\nNotas:\r\n- Para transmissão LAN, o MCCompanion e o console devem estar na mesma rede local.\r\n- Dica: escolha o servidor relay mais próximo de você para obter o melhor desempenho.';
   }
 
   @override
@@ -153,7 +153,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get howToJavaBody =>
-      'Modo Java — etapas rápidas:\n1. No aplicativo, selecione o modo Java.\n2. Digite o endereço e a porta do seu servidor Java Edition (padrão: 25565).\n3. Toque em \"Iniciar modo Java\" — o MCCompanion fará a ponte da conexão.\n4. Abra o Minecraft Bedrock e vá para a aba Amigos.\n5. Selecione o servidor LAN chamado \"MCCompanion\" para entrar no servidor Java.\n\n⚠️ Avisos importantes:\n- É necessária uma conta válida do Java Edition (Microsoft).\n- Alguns servidores usam sistemas anti-cheat que podem detectar e banir sua conta.\n- Alguns servidores proíbem explicitamente clientes Bedrock — sempre verifique as regras do servidor.\n- O MCCompanion não se responsabiliza por banimentos, suspensões ou outros problemas relacionados à conta que possam resultar do uso deste recurso.\n- Use por sua conta e risco.';
+      'Modo Java: etapas rápidas:\n1. No aplicativo, selecione o modo Java.\n2. Digite o endereço e a porta do seu servidor Java Edition (padrão: 25565).\n3. Toque em \"Iniciar modo Java\": o MCCompanion fará a ponte da conexão.\n4. Abra o Minecraft Bedrock e vá para a aba Amigos.\n5. Selecione o servidor LAN chamado \"MCCompanion\" para entrar no servidor Java.\n\n⚠️ Avisos importantes:\n- É necessária uma conta válida do Java Edition (Microsoft).\n- Alguns servidores usam sistemas anti-cheat que podem detectar e banir sua conta.\n- Alguns servidores proíbem explicitamente clientes Bedrock, sempre verifique as regras do servidor.\n- O MCCompanion não se responsabiliza por banimentos, suspensões ou outros problemas relacionados à conta que possam resultar do uso deste recurso.\n- Use por sua conta e risco.';
 
   @override
   String get language => 'Português';
@@ -218,7 +218,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get clientDisconnected =>
-      'Cliente desconectado — transmissão interrompida';
+      'Cliente desconectado: transmissão interrompida';
 
   @override
   String get pleaseEnterServer =>
@@ -436,7 +436,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get howToNintendoBody =>
-      'Nintendo Switch — modo DNS (passo a passo):\r\n1. No aplicativo, ative o modo \\\"Nintendo\\\" e selecione um Servidor Relay (EU ou US).\r\n2. Toque em \\\"Enviar Configuração DNS\\\" para enviar o IP DNS ao relay.\r\n3. No seu Nintendo Switch, vá para Configurações do sistema → Internet → Configurações de Internet → (sua rede) → Alterar configurações → DNS e defina o DNS primário como o IP do relay.\r\n4. Abra o Minecraft e entre em um servidor público; você será redirecionado ao seu servidor usando o DNS do relay.\r\nNotas:\r\n- O modo DNS não transmite um servidor LAN; ele roteia o tráfego do jogo pelo relay.\r\n- Reverta seu DNS quando terminar se precisar do comportamento normal da rede.';
+      'Nintendo Switch: modo DNS (passo a passo):\r\n1. No aplicativo, ative o modo \\\"Nintendo\\\" e selecione um Servidor Relay (EU ou US).\r\n2. Toque em \\\"Enviar Configuração DNS\\\" para enviar o IP DNS ao relay.\r\n3. No seu Nintendo Switch, vá para Configurações do sistema → Internet → Configurações de Internet → (sua rede) → Alterar configurações → DNS e defina o DNS primário como o IP do relay.\r\n4. Abra o Minecraft e entre em um servidor público; você será redirecionado ao seu servidor usando o DNS do relay.\r\nNotas:\r\n- O modo DNS não transmite um servidor LAN; ele roteia o tráfego do jogo pelo relay.\r\n- Reverta seu DNS quando terminar se precisar do comportamento normal da rede.';
 
   @override
   String get howToFriendsTitle => 'Modo Amigos';
@@ -446,7 +446,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get howToFriendsBody =>
-      'Modo Amigos — passos rápidos:\r\n1. Adicione a conta de amigo do MCCompanion no seu console ou plataforma, se necessário.\r\n2. No aplicativo, ative o modo Amigos e envie a configuração do relay (se aplicável).\r\n3. No seu console, abra Minecraft → Amigos e procure por Mundos LAN — seu servidor deve aparecer lá como um mundo LAN.\r\n4. Selecione-o para entrar no seu servidor com amigos.\r\nNotas:\r\n- Certifique-se de que você e seus amigos tenham as mesmas configurações de NAT/configurações que permitem presença de amigos.\r\n- O modo Amigos depende dos recursos de amizade da plataforma e pode exigir aceitar solicitações de amizade.';
+      'Modo Amigos: passos rápidos:\r\n1. Adicione a conta de amigo do MCCompanion no seu console ou plataforma, se necessário.\r\n2. No aplicativo, ative o modo Amigos e envie a configuração do relay (se aplicável).\r\n3. No seu console, abra Minecraft → Amigos e procure por Mundos LAN, seu servidor deve aparecer lá como um mundo LAN.\r\n4. Selecione-o para entrar no seu servidor com amigos.\r\nNotas:\r\n- Certifique-se de que você e seus amigos tenham as mesmas configurações de NAT/configurações que permitem presença de amigos.\r\n- O modo Amigos depende dos recursos de amizade da plataforma e pode exigir aceitar solicitações de amizade.';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion não aparece';
@@ -478,7 +478,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get helpNintendoDnsBody =>
-      'Se o modo DNS do Nintendo não estiver funcionando, verifique o seguinte:\r\n\r\n1. Confirme que você enviou a configuração DNS pelo aplicativo (Enviar Configuração DNS).\r\n2. Verifique se você aplicou o IP do relay como DNS Primário no Switch.\r\n3. Certifique-se de que o servidor relay selecionado (EU/US) está online e não está sobrecarregado.\r\n4. Algumas redes (por exemplo, captive portals) impedem DNS personalizado — teste em outra rede.\r\n\r\nSe os problemas persistirem, ative o Modo de depuração e verifique os logs, ou tente a alternativa do modo Amigos.';
+      'Se o modo DNS do Nintendo não estiver funcionando, verifique o seguinte:\r\n\r\n1. Confirme que você enviou a configuração DNS pelo aplicativo (Enviar Configuração DNS).\r\n2. Verifique se você aplicou o IP do relay como DNS Primário no Switch.\r\n3. Certifique-se de que o servidor relay selecionado (EU/US) está online e não está sobrecarregado.\r\n4. Algumas redes (por exemplo, captive portals) impedem DNS personalizado, teste em outra rede.\r\n\r\nSe os problemas persistirem, ative o Modo de depuração e verifique os logs, ou tente a alternativa do modo Amigos.';
 
   @override
   String get helpFriendsModeTitle => 'O modo Amigos não funciona';
@@ -954,7 +954,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get chooseUsernameSubtitle =>
-      'Escolhe um nome de utilizador para te conectares.';
+      'Escolhe um nome de utilizador para que outros jogadores te encontrem.';
 
   @override
   String get createProfile => 'Criar perfil';
@@ -1154,10 +1154,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get wikiReadFullArticle => 'Ler artigo completo';
 
   @override
-  String get wikiRecent => 'Recently viewed';
+  String get wikiRecent => 'Vistos recentemente';
 
   @override
-  String get wikiFavourites => 'Favourites';
+  String get wikiFavourites => 'Favoritos';
 
   @override
   String get wikiMobs => 'Mobs';
@@ -1759,7 +1759,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get feedbackDescHintBug =>
-      'Descreva o bug — o que você fez, o que esperava e o que aconteceu em vez disso?';
+      'Descreva o bug: o que você fez, o que esperava e o que aconteceu em vez disso?';
 
   @override
   String get feedbackDescHintFeature =>
@@ -1790,7 +1790,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get feedbackSuccessBody =>
-      'Seu relatório foi enviado e um ticket no GitHub foi criado. Vamos analisar o mais rápido possível.';
+      'Obrigado! Recebemos o teu relatório. Vamos analisá-lo o mais depressa possível.';
 
   @override
   String get feedbackViewOnGithub => 'Ver no GitHub';
@@ -1893,7 +1893,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get rpExplanation =>
-      'Um pacote de recursos muda a aparência do Minecraft no seu console — novos blocos, cores ou sons. Cole o link de um arquivo .mcpack abaixo, ative-o e salve. O MCCompanion carrega automaticamente toda vez que você se conecta.';
+      'Um pacote de recursos muda a aparência do Minecraft no seu console, novos blocos, cores ou sons. Cole o link de um arquivo .mcpack abaixo, ative-o e salve. O MCCompanion carrega automaticamente toda vez que você se conecta.';
 
   @override
   String get rpPackUrlLabel => 'URL do pacote';
@@ -1939,11 +1939,11 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get rpNoDiscord =>
-      'Links do Discord — sem extensão .mcpack e expiram após algumas horas';
+      'Links do Discord: sem extensão .mcpack e expiram após algumas horas';
 
   @override
   String get rpNoDrive =>
-      'Links de compartilhamento do Google Drive / Dropbox — não são downloads diretos';
+      'Links de compartilhamento do Google Drive / Dropbox, não são downloads diretos';
 
   @override
   String get rpNoEncrypted =>
@@ -1975,11 +1975,11 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get rpInvalidPackFormat =>
-      'This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.';
+      'Este é um pack da Java Edition e não é suportado. Usa um resource pack da Bedrock Edition.';
 
   @override
   String get rpBehaviorContentWarning =>
-      'This pack contains behavior pack data, which won\'t work on servers. The textures will still work.';
+      'Este pack contém dados de behavior pack que não funcionam em servidores. As texturas continuam a funcionar.';
 
   @override
   String get rpClearMinecraftTitle => 'Primeira vez com este pack?';
@@ -1994,25 +1994,25 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get rpClearStep2 =>
-      'Toque em ‘Limpar’ ou ‘Redefinir’ ao lado de Pacotes de recursos — isso remove todos os packs em cache';
+      'Toque em ‘Limpar’ ou ‘Redefinir’ ao lado de Pacotes de recursos, isso remove todos os packs em cache';
 
   @override
   String get rpClearStep3 =>
-      'Reconecte pelo MCCompanion — o pack mesclado será baixado automaticamente';
+      'Reconecte pelo MCCompanion: o pack mesclado será baixado automaticamente';
 
   @override
   String get rpRelayTitle => 'O pack está com problema?';
 
   @override
   String get rpRelayBody =>
-      'O relay armazena o pack mesclado por 1 hora usando sua URL de overlay como chave. Para forçar uma nova mesclagem: altere levemente a URL do pack (ex: adicione ?v=2) e salve. Depois, limpe também o cache de packs do Minecraft — o pack mesclado ainda usa o UUID do servidor, então o Minecraft mostraria a versão antiga em cache.';
+      'O relay armazena o pack mesclado por 1 hora usando sua URL de overlay como chave. Para forçar uma nova mesclagem: altere levemente a URL do pack (ex: adicione ?v=2) e salve. Depois, limpe também o cache de packs do Minecraft, o pack mesclado ainda usa o UUID do servidor, então o Minecraft mostraria a versão antiga em cache.';
 
   @override
-  String get rpWorksGithubHint => 'Link de download direto — sempre acessível';
+  String get rpWorksGithubHint => 'Link de download direto: sempre acessível';
 
   @override
   String get rpWorksCloudflareHint =>
-      'Armazenamento em nuvem público — rápido e confiável';
+      'Armazenamento em nuvem público: rápido e confiável';
 
   @override
   String get rpWorksDirectHint => 'Qualquer URL HTTPS pública .mcpack ou .zip';
@@ -2022,7 +2022,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get rpNoDriveHint =>
-      'Sem download direto — redireciona para uma página de visualização';
+      'Sem download direto: redireciona para uma página de visualização';
 
   @override
   String get rpNoEncryptedHint =>
@@ -2030,7 +2030,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get rpClearWhy =>
-      'O Minecraft armazena packs de recursos pelo UUID. O pack mesclado mantém o UUID original do servidor — se o Minecraft já tiver o pack do servidor em cache de uma sessão anterior (antes do MCCompanion), não baixará a nova versão mesclada. Limpe o cache para que o Minecraft carregue o pack atualizado.';
+      'O Minecraft armazena packs de recursos pelo UUID. O pack mesclado mantém o UUID original do servidor, se o Minecraft já tiver o pack do servidor em cache de uma sessão anterior (antes do MCCompanion), não baixará a nova versão mesclada. Limpe o cache para que o Minecraft carregue o pack atualizado.';
 
   @override
   String get rpUploadTab => 'Upload';
@@ -2055,7 +2055,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get rpMergerPriorityHint =>
-      'O pacote do topo tem maior prioridade — seus arquivos vencem conflitos.';
+      'O pacote do topo tem maior prioridade: seus arquivos vencem conflitos.';
 
   @override
   String get rpMergerTopBadge => 'TOPO';
@@ -2084,7 +2084,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String rpMergerConflicts(int count) {
-    return '$count conflito(s) resolvido(s) — pacote do topo venceu.';
+    return '$count conflito(s) resolvido(s): pacote do topo venceu.';
   }
 
   @override
@@ -2106,7 +2106,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get rpNoPackSelected => 'Nenhum pacote de recursos selecionado';
 
   @override
-  String get rpActiveOnConnect => 'Ativo — aplicado ao conectar';
+  String get rpActiveOnConnect => 'Ativo: aplicado ao conectar';
 
   @override
   String get rpBrowseSubtitle => 'Pacotes curados, prontos para usar';
@@ -2125,7 +2125,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get rpTabBrowseInfo =>
-      'Explore pacotes selecionados pelo MCCompanion. Toque em Usar para ativar um pacote instantaneamente — sem upload ou link necessário.';
+      'Explore pacotes selecionados pelo MCCompanion. Toque em Usar para ativar um pacote instantaneamente, sem upload ou link necessário.';
 
   @override
   String get rpTabUploadInfo =>
@@ -2133,7 +2133,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get rpTabUrlInfo =>
-      'Cole um link de download direto para um arquivo .mcpack ou .zip. O URL deve ser acessível publicamente — sem links do Discord ou Google Drive.';
+      'Cole um link de download direto para um arquivo .mcpack ou .zip. O URL deve ser acessível publicamente, sem links do Discord ou Google Drive.';
 
   @override
   String get rpTabMergeInfo =>
@@ -2437,4 +2437,155 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get skinLayerOuter => 'Exterior';
+
+  @override
+  String get feedbackLoginRequiredTitle => 'Inicie sessão para enviar feedback';
+
+  @override
+  String get feedbackLoginRequiredBody =>
+      'O feedback está associado à sua conta MCCompanion para podermos responder diretamente na app.';
+
+  @override
+  String get feedbackLoginButton => 'Iniciar sessão';
+
+  @override
+  String get supportInboxTitle => 'Caixa de suporte';
+
+  @override
+  String get supportInboxSubtitle =>
+      'Todas as conversas de suporte, partilhadas com os admins';
+
+  @override
+  String get adminBadge => 'Admin';
+
+  @override
+  String get skinShareSubject => 'Skin de Minecraft';
+
+  @override
+  String get skinEditorTitle => 'Editor de skins';
+
+  @override
+  String get skinToolUndo => 'Anular';
+
+  @override
+  String get skinSaveToMySkins => 'Guardar nas minhas skins';
+
+  @override
+  String get skinUpdateInCloud => 'Atualizar na nuvem';
+
+  @override
+  String get skinExportPng => 'Exportar PNG';
+
+  @override
+  String get skinToolDraw => 'Desenhar';
+
+  @override
+  String get skinToolFill => 'Preencher';
+
+  @override
+  String get skinToolErase => 'Apagar';
+
+  @override
+  String get customColour => 'Cor personalizada';
+
+  @override
+  String get featuredServerLabel => 'SERVIDOR EM DESTAQUE';
+
+  @override
+  String get featuredServerTagline => 'Entra e começa a jogar.';
+
+  @override
+  String get featuredServerPlay => 'Jogar';
+
+  @override
+  String rpUploadFailedCode(int code) {
+    return 'Falha no envio ($code)';
+  }
+
+  @override
+  String rpUploadFailed(String error) {
+    return 'Falha no envio: $error';
+  }
+
+  @override
+  String get rpLoadFailed => 'Não foi possível carregar os packs';
+
+  @override
+  String get rpRetry => 'Tentar de novo';
+
+  @override
+  String get rpSearchHint => 'Procurar packs…';
+
+  @override
+  String rpMergeFailed(String error) {
+    return 'Falha ao juntar: $error';
+  }
+
+  @override
+  String get rpMergerSize => 'Tamanho';
+
+  @override
+  String get rpMergerCreated => 'Criado';
+
+  @override
+  String get rpMergerSourcePacks => 'Packs de origem';
+
+  @override
+  String get rpMergerDropToAdd => 'Larga para adicionar';
+
+  @override
+  String get rpMergerSavedMerges => 'Junções guardadas';
+
+  @override
+  String get rpMergerUse => 'Usar';
+
+  @override
+  String get supportInboxShared => 'Partilhado com todos os admins';
+
+  @override
+  String get supportInboxEmpty => 'Ainda não há conversas de suporte';
+
+  @override
+  String get supportReplyingAs => 'Estás a responder como MCCompanion Support';
+
+  @override
+  String get supportReplyHint => 'Responder como suporte…';
+
+  @override
+  String get relayBlocked =>
+      'O teu IP ou a tua conta está bloqueada pela MCCompanion. Se achas que é um erro, entra no nosso Discord.';
+
+  @override
+  String relayBlockedWithReason(String reason) {
+    return 'O teu IP ou a tua conta está bloqueada pela MCCompanion.\nMotivo: $reason\nSe achas que é um erro, entra no nosso Discord.';
+  }
+
+  @override
+  String relayConfigFailed(int code) {
+    return 'Não foi possível configurar o relay (estado $code). Experimenta outro relay ou entra no nosso Discord.';
+  }
+
+  @override
+  String relayConfigFailedDetail(int code, String detail) {
+    return 'Não foi possível configurar o relay (estado $code): $detail. Experimenta outro relay ou entra no nosso Discord.';
+  }
+
+  @override
+  String get relayTimeout => 'O relay não respondeu a tempo.';
+
+  @override
+  String get relayUnreachable => 'Não foi possível contactar o relay.';
+
+  @override
+  String get lookupNotFound => 'Jogador não encontrado.';
+
+  @override
+  String get lookupNetworkError => 'Erro de rede. Tenta de novo.';
+
+  @override
+  String get lookupBedrockUnavailable =>
+      'A pesquisa Bedrock não está disponível de momento.';
+
+  @override
+  String get lookupFailed => 'A pesquisa falhou.';
 }

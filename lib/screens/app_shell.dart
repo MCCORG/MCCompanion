@@ -90,8 +90,15 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   String? _lastSignedInUid;
 
   late RelayPingResult _selectedRelay;
-  int _pageIndex = _pageHome;
+  final ValueNotifier<int> _pageIndexNotifier = ValueNotifier(_pageHome);
+  int get _pageIndex => _pageIndexNotifier.value;
+  set _pageIndex(int v) => _pageIndexNotifier.value = v;
   int? _editingServerIndex;
+
+  final GlobalKey<NavigatorState> _desktopNavKey = GlobalKey<NavigatorState>();
+
+  NavigatorState get _contentNavigator =>
+      _desktopNavKey.currentState ?? Navigator.of(context);
 
   @override
   void initState() {
@@ -162,9 +169,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (_) => LandingCustomizeSheet(
-        callbackFor: _navCallbackFor,
-      ),
+      builder: (_) => LandingCustomizeSheet(callbackFor: _navCallbackFor),
     );
   }
 
@@ -193,8 +198,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     String? username;
     if (uri.scheme == 'mccompanion' && uri.host == 'user') {
       username = uri.pathSegments.isNotEmpty ? uri.pathSegments.first : null;
-    }
-    else if ((uri.scheme == 'https' || uri.scheme == 'http') &&
+    } else if ((uri.scheme == 'https' || uri.scheme == 'http') &&
         uri.host == 'mccompanion.net' &&
         uri.path == '/u') {
       username = uri.queryParameters['name'];
@@ -207,12 +211,19 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   void _openPublicProfile(String username) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      Navigator.of(context).push(
+      final nav = _contentNavigator;
+      nav.push(
         MaterialPageRoute(
           builder: (_) => PublicProfileScreen(
             username: username,
-            onGoToHome: () { Navigator.of(context).pop(); _goTo(_pageHome); },
-            onGoToConnector: () { Navigator.of(context).pop(); _goTo(_pageConnector); },
+            onGoToHome: () {
+              nav.pop();
+              _goTo(_pageHome);
+            },
+            onGoToConnector: () {
+              nav.pop();
+              _goTo(_pageConnector);
+            },
           ),
         ),
       );
@@ -386,12 +397,13 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       online: false,
     );
     if (!mounted) return;
-    Navigator.of(
-      context,
-    ).push(MaterialPageRoute(builder: (_) => ChatScreen(friend: friend)));
+    _contentNavigator.push(
+      MaterialPageRoute(builder: (_) => ChatScreen(friend: friend)),
+    );
   }
 
   void _goTo(int page) {
+    _desktopNavKey.currentState?.popUntil((r) => r.isFirst);
     if (page == _pageConnector) {
       _connectorKey.currentState?.loadUserServers();
     }
@@ -511,6 +523,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     _debugEnabledNotifier.dispose();
     _ipController.dispose();
     _portController.dispose();
+    _pageIndexNotifier.dispose();
     navigationController.consoleOpen.dispose();
     super.dispose();
   }
@@ -654,7 +667,10 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
             _goTo(_pageProfile);
           },
         ),
-        FeedbackScreen(onBack: () => _goTo(_pageHome)),
+        FeedbackScreen(
+          onBack: () => _goTo(_pageHome),
+          onGoToLogin: () => _goTo(_pageProfile),
+        ),
         ResourcePackScreen(
           onBack: () {
             _connectorKey.currentState?.reloadResourcePackUrl();
@@ -702,10 +718,16 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
             },
             navLeftFeature: svc.navLeft,
             navRightFeature: svc.navRight,
-            onNavLeftTap: svc.navLeft != null ? _navCallbackFor(svc.navLeft!) : null,
-            onNavRightTap: svc.navRight != null ? _navCallbackFor(svc.navRight!) : null,
-            navLeftActive: svc.navLeft != null && _isNavFeatureActive(svc.navLeft!),
-            navRightActive: svc.navRight != null && _isNavFeatureActive(svc.navRight!),
+            onNavLeftTap: svc.navLeft != null
+                ? _navCallbackFor(svc.navLeft!)
+                : null,
+            onNavRightTap: svc.navRight != null
+                ? _navCallbackFor(svc.navRight!)
+                : null,
+            navLeftActive:
+                svc.navLeft != null && _isNavFeatureActive(svc.navLeft!),
+            navRightActive:
+                svc.navRight != null && _isNavFeatureActive(svc.navRight!),
           ),
           body: SafeArea(top: true, bottom: false, child: _buildPageStack()),
         ),
@@ -743,7 +765,20 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
                 onHowToTap: () => _showHowToSheet(),
               ),
               VerticalDivider(width: 1, color: AppTheme.borderGray),
-              Expanded(child: _buildPageStack()),
+              Expanded(
+                child: ClipRect(
+                  child: Navigator(
+                    key: _desktopNavKey,
+                    onGenerateRoute: (settings) => MaterialPageRoute(
+                      settings: settings,
+                      builder: (_) => ValueListenableBuilder<int>(
+                        valueListenable: _pageIndexNotifier,
+                        builder: (_, _, _) => _buildPageStack(),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -802,55 +837,63 @@ class _DesktopSidebar extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 4),
-          _SidebarItem(
-            icon: FontAwesomeIcons.house,
-            label: l.home,
-            isActive: activeItem == 'home',
-            onTap: onHomeTap,
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  _SidebarItem(
+                    icon: FontAwesomeIcons.house,
+                    label: l.home,
+                    isActive: activeItem == 'home',
+                    onTap: onHomeTap,
+                  ),
+                  _SidebarItem(
+                    icon: FontAwesomeIcons.play,
+                    label: 'Connector',
+                    isActive: activeItem == 'connector',
+                    onTap: onConnectorTap,
+                  ),
+                  _SidebarItem(
+                    icon: FontAwesomeIcons.server,
+                    label: AppFeature.partners.label(l),
+                    isActive: activeItem == 'partners',
+                    onTap: onPartnersTap,
+                  ),
+                  _SidebarItem(
+                    icon: FontAwesomeIcons.satellite,
+                    label: AppFeature.tracker.label(l),
+                    isActive: activeItem == 'tracker',
+                    onTap: onTrackerTap,
+                  ),
+                  _SidebarItem(
+                    icon: FontAwesomeIcons.magnifyingGlass,
+                    label: AppFeature.lookup.label(l),
+                    isActive: activeItem == 'lookup',
+                    onTap: onLookupTap,
+                  ),
+                  _SidebarItem(
+                    icon: FontAwesomeIcons.shirt,
+                    label: AppFeature.skins.label(l),
+                    isActive: activeItem == 'skins',
+                    onTap: onSkinsTap,
+                  ),
+                  _SidebarItem(
+                    icon: FontAwesomeIcons.bookOpen,
+                    label: AppFeature.wiki.label(l),
+                    isActive: activeItem == 'wiki',
+                    onTap: onWikiTap,
+                  ),
+                  _SidebarItem(
+                    icon: FontAwesomeIcons.user,
+                    label: l.navProfile,
+                    isActive: activeItem == 'profile',
+                    onTap: onProfileTap,
+                  ),
+                ],
+              ),
+            ),
           ),
-          _SidebarItem(
-            icon: FontAwesomeIcons.play,
-            label: 'Connector',
-            isActive: activeItem == 'connector',
-            onTap: onConnectorTap,
-          ),
-          _SidebarItem(
-            icon: FontAwesomeIcons.server,
-            label: AppFeature.partners.label(l),
-            isActive: activeItem == 'partners',
-            onTap: onPartnersTap,
-          ),
-          _SidebarItem(
-            icon: FontAwesomeIcons.satellite,
-            label: AppFeature.tracker.label(l),
-            isActive: activeItem == 'tracker',
-            onTap: onTrackerTap,
-          ),
-          _SidebarItem(
-            icon: FontAwesomeIcons.magnifyingGlass,
-            label: AppFeature.lookup.label(l),
-            isActive: activeItem == 'lookup',
-            onTap: onLookupTap,
-          ),
-          _SidebarItem(
-            icon: FontAwesomeIcons.shirt,
-            label: AppFeature.skins.label(l),
-            isActive: activeItem == 'skins',
-            onTap: onSkinsTap,
-          ),
-          _SidebarItem(
-            icon: FontAwesomeIcons.bookOpen,
-            label: AppFeature.wiki.label(l),
-            isActive: activeItem == 'wiki',
-            onTap: onWikiTap,
-          ),
-          _SidebarItem(
-            icon: FontAwesomeIcons.user,
-            label: l.navProfile,
-            isActive: activeItem == 'profile',
-            onTap: onProfileTap,
-          ),
-          const Spacer(),
           Divider(color: AppTheme.borderGray, height: 1),
           const SizedBox(height: 8),
           _SidebarItem(

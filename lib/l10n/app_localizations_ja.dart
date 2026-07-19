@@ -112,7 +112,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String helpText(Object appCreator) {
-    return '$appCreator によって作成されました。\r\n\r\n使い方:\r\n1. Minecraft サーバーのアドレスとポートを入力します（デフォルト: 19132）\r\n   — またはドロップダウンから以前保存したサーバーを選択します\r\n2. （任意）現在地に最も近い Relay Server（EU または US）を選択します\r\n3. \"ブロードキャスト開始\" をクリックして開始します\r\n4. コンソール/デバイスで: Minecraft > Play > Friends\r\n5. \"MCCompanion\" という名前の LAN サーバーが表示されます\r\n6. それをクリックすると、MCCompanion 経由で外部サーバーに参加できます\r\n\r\nNintendo Switch（DNS モード）:\r\n1. 接続パネルで \"Nintendo Switch\" を有効にします\r\n2. Relay Server（EU または US）を選択します\r\n3. \"Send DNS Config\" をクリックすると、設定が relay に送信されます\r\n   （これは LAN サーバーをブロードキャストしません）\r\n4. Switch で MCCompanion の DNS 設定を適用し、\r\n   MCCompanion 用に使っているサーバー項目から参加します\r\n\r\nメモ:\r\n- LAN ブロードキャストでは、MCCompanion とコンソールが同じローカルネットワーク上にある必要があります。\r\n- ヒント: 最良のパフォーマンスを得るには、最も近い relay サーバーを選択してください。';
+    return '$appCreator によって作成されました。\r\n\r\n使い方:\r\n1. Minecraft サーバーのアドレスとポートを入力します（デフォルト: 19132）\r\n  , またはドロップダウンから以前保存したサーバーを選択します\r\n2. （任意）現在地に最も近い Relay Server（EU または US）を選択します\r\n3. \"ブロードキャスト開始\" をクリックして開始します\r\n4. コンソール/デバイスで: Minecraft > Play > Friends\r\n5. \"MCCompanion\" という名前の LAN サーバーが表示されます\r\n6. それをクリックすると、MCCompanion 経由で外部サーバーに参加できます\r\n\r\nNintendo Switch（DNS モード）:\r\n1. 接続パネルで \"Nintendo Switch\" を有効にします\r\n2. Relay Server（EU または US）を選択します\r\n3. \"Send DNS Config\" をクリックすると、設定が relay に送信されます\r\n   （これは LAN サーバーをブロードキャストしません）\r\n4. Switch で MCCompanion の DNS 設定を適用し、\r\n   MCCompanion 用に使っているサーバー項目から参加します\r\n\r\nメモ:\r\n- LAN ブロードキャストでは、MCCompanion とコンソールが同じローカルネットワーク上にある必要があります。\r\n- ヒント: 最良のパフォーマンスを得るには、最も近い relay サーバーを選択してください。';
   }
 
   @override
@@ -147,7 +147,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get howToJavaBody =>
-      'Javaモード — クイック手順:\n1. アプリでJavaモードを選択します。\n2. Java Editionサーバーのアドレスとポートを入力します（既定: 25565）。\n3. 「Javaモードを開始」を押します — MCCompanionが接続を橋渡しします。\n4. Minecraft Bedrockを開いて、フレンドタブに移動します。\n5. Javaサーバーに参加するには、「MCCompanion」という名前のLANサーバーを選択します。\n\n⚠️ 重要な警告:\n- 有効なJava Editionアカウント（Microsoft）が必要です。\n- 一部のサーバーではアンチチートシステムが使用されており、アカウントが検出されてBANされる可能性があります。\n- Bedrockクライアントを明確に禁止しているサーバーもあります — 必ずサーバールールを確認してください。\n- この機能の使用によって発生するアカウントBAN、利用停止、その他のアカウント関連の問題について、MCCompanionは責任を負いません。\n- 自己責任で使用してください。';
+      'Javaモード: クイック手順:\n1. アプリでJavaモードを選択します。\n2. Java Editionサーバーのアドレスとポートを入力します（既定: 25565）。\n3. 「Javaモードを開始」を押します: MCCompanionが接続を橋渡しします。\n4. Minecraft Bedrockを開いて、フレンドタブに移動します。\n5. Javaサーバーに参加するには、「MCCompanion」という名前のLANサーバーを選択します。\n\n⚠️ 重要な警告:\n- 有効なJava Editionアカウント（Microsoft）が必要です。\n- 一部のサーバーではアンチチートシステムが使用されており、アカウントが検出されてBANされる可能性があります。\n- Bedrockクライアントを明確に禁止しているサーバーもあります: 必ずサーバールールを確認してください。\n- この機能の使用によって発生するアカウントBAN、利用停止、その他のアカウント関連の問題について、MCCompanionは責任を負いません。\n- 自己責任で使用してください。';
 
   @override
   String get language => '日本語';
@@ -210,7 +210,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get bedrockBridge => 'Bedrockブリッジ';
 
   @override
-  String get clientDisconnected => 'クライアントが切断されました — ブロードキャストを停止しました';
+  String get clientDisconnected => 'クライアントが切断されました: ブロードキャストを停止しました';
 
   @override
   String get pleaseEnterServer => '⚠️ サーバーアドレスを入力してください';
@@ -424,7 +424,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get howToNintendoBody =>
-      'Nintendo Switch — DNS モード（手順）:\r\n1. アプリで \"Nintendo\" モードを有効にし、Relay Server（EU または US）を選択します。\r\n2. \"Send DNS Config\" をタップして DNS IP を relay に送信します。\r\n3. Nintendo Switch で System Settings → Internet → Internet Settings → （使用中のネットワーク）→ Change Settings → DNS に進み、Primary DNS を relay IP に設定します。\r\n4. Minecraft を開いて公開サーバーに参加すると、relay DNS を使って自分のサーバーへリダイレクトされます。\r\nメモ:\r\n- DNS モードは LAN サーバーをブロードキャストせず、ゲーム通信を relay 経由でルーティングします。\r\n- 通常のネットワーク動作が必要な場合は、完了後に DNS を元に戻してください。';
+      'Nintendo Switch: DNS モード（手順）:\r\n1. アプリで \"Nintendo\" モードを有効にし、Relay Server（EU または US）を選択します。\r\n2. \"Send DNS Config\" をタップして DNS IP を relay に送信します。\r\n3. Nintendo Switch で System Settings → Internet → Internet Settings → （使用中のネットワーク）→ Change Settings → DNS に進み、Primary DNS を relay IP に設定します。\r\n4. Minecraft を開いて公開サーバーに参加すると、relay DNS を使って自分のサーバーへリダイレクトされます。\r\nメモ:\r\n- DNS モードは LAN サーバーをブロードキャストせず、ゲーム通信を relay 経由でルーティングします。\r\n- 通常のネットワーク動作が必要な場合は、完了後に DNS を元に戻してください。';
 
   @override
   String get howToFriendsTitle => 'Friends モード';
@@ -434,7 +434,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get howToFriendsBody =>
-      'フレンドモード — 簡単な手順:\r\n1. 必要に応じて、コンソールまたはプラットフォームで MCCompanion のフレンドアカウントを追加します。\r\n2. アプリでフレンドモードを有効にし、relay 設定を送信します（該当する場合）。\r\n3. コンソールで Minecraft → Friends を開き、LAN Worlds を探します。そこに LAN ワールドとして自分のサーバーが表示されるはずです。\r\n4. それを選択して、友達と一緒に自分のサーバーへ参加します。\r\nメモ:\r\n- 自分と友達の両方が、フレンド表示を許可する同じ NAT/設定になっていることを確認してください。\r\n- フレンドモードはプラットフォームのフレンド機能に依存し、フレンド申請の承認が必要な場合があります。';
+      'フレンドモード: 簡単な手順:\r\n1. 必要に応じて、コンソールまたはプラットフォームで MCCompanion のフレンドアカウントを追加します。\r\n2. アプリでフレンドモードを有効にし、relay 設定を送信します（該当する場合）。\r\n3. コンソールで Minecraft → Friends を開き、LAN Worlds を探します。そこに LAN ワールドとして自分のサーバーが表示されるはずです。\r\n4. それを選択して、友達と一緒に自分のサーバーへ参加します。\r\nメモ:\r\n- 自分と友達の両方が、フレンド表示を許可する同じ NAT/設定になっていることを確認してください。\r\n- フレンドモードはプラットフォームのフレンド機能に依存し、フレンド申請の承認が必要な場合があります。';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion が表示されない';
@@ -939,8 +939,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get profileNotSetUp => 'Profile not set up';
 
   @override
-  String get chooseUsernameSubtitle =>
-      'Choose a username to start connecting with other players.';
+  String get chooseUsernameSubtitle => '他のプレイヤーが見つけられるように、ユーザー名を決めましょう。';
 
   @override
   String get createProfile => 'Create Profile';
@@ -1141,10 +1140,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get wikiReadFullArticle => 'Read full article';
 
   @override
-  String get wikiRecent => 'Recently viewed';
+  String get wikiRecent => '最近見たページ';
 
   @override
-  String get wikiFavourites => 'Favourites';
+  String get wikiFavourites => 'お気に入り';
 
   @override
   String get wikiMobs => 'Mobs';
@@ -1741,7 +1740,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get feedbackDescribeIdea => 'アイデアを説明してください';
 
   @override
-  String get feedbackDescHintBug => 'バグの詳細を説明してください — 何をしたか、何を期待したか、実際に何が起きたか';
+  String get feedbackDescHintBug => 'バグの詳細を説明してください: 何をしたか、何を期待したか、実際に何が起きたか';
 
   @override
   String get feedbackDescHintFeature => '何を望んでいるか、なぜ役立つかを説明してください。';
@@ -1768,8 +1767,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get feedbackSuccessTitle => 'フィードバックをありがとう！';
 
   @override
-  String get feedbackSuccessBody =>
-      'レポートが送信され、GitHubにイシューが作成されました。できるだけ早く確認します。';
+  String get feedbackSuccessBody => 'ありがとうございます！レポートを受け取りました。できるだけ早く確認します。';
 
   @override
   String get feedbackViewOnGithub => 'GitHubで見る';
@@ -1796,7 +1794,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get feedbackTileTitle => 'バグを報告したり機能を提案したりする';
 
   @override
-  String get reportBug => 'Feedback';
+  String get reportBug => 'フィードバック';
 
   @override
   String get feedbackTileSubtitle => 'MCCompanionの改善にご協力ください';
@@ -1865,7 +1863,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get rpExplanation =>
-      'リソースパックはコンソール上のMinecraftの見た目を変えます — 新しいブロック、色、サウンド。下に.mcpackファイルのリンクを貼り付け、有効にして保存してください。MCCompanionは接続のたびに自動的に読み込みます。';
+      'リソースパックはコンソール上のMinecraftの見た目を変えます: 新しいブロック、色、サウンド。下に.mcpackファイルのリンクを貼り付け、有効にして保存してください。MCCompanionは接続のたびに自動的に読み込みます。';
 
   @override
   String get rpPackUrlLabel => 'パックURL';
@@ -1905,10 +1903,10 @@ class AppLocalizationsJa extends AppLocalizations {
       '動作することもありますが、公式にはサポートされていません。自己責任でご使用ください。';
 
   @override
-  String get rpNoDiscord => 'Discordリンク — .mcpack 拡張子がなく、数時間で期限切れになります';
+  String get rpNoDiscord => 'Discordリンク: .mcpack 拡張子がなく、数時間で期限切れになります';
 
   @override
-  String get rpNoDrive => 'Google Drive / Dropbox 共有リンク — 直接ダウンロードではありません';
+  String get rpNoDrive => 'Google Drive / Dropbox 共有リンク: 直接ダウンロードではありません';
 
   @override
   String get rpNoEncrypted => '暗号化またはパスワード保護されたパックのサーバー';
@@ -1938,11 +1936,11 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get rpInvalidPackFormat =>
-      'This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.';
+      'これはJava Editionのパックのため対応していません。Bedrock Editionのリソースパックを使用してください。';
 
   @override
   String get rpBehaviorContentWarning =>
-      'This pack contains behavior pack data, which won\'t work on servers. The textures will still work.';
+      'このパックにはビヘイビアーパックのデータが含まれており、サーバーでは動作しません。テクスチャは引き続き使えます。';
 
   @override
   String get rpClearMinecraftTitle => 'このパックを初めて使う？';
@@ -1956,23 +1954,23 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get rpClearStep2 =>
-      'リソースパックの横の「クリア」または「リセット」をタップ — ローカルにキャッシュされたパックがすべて削除されます';
+      'リソースパックの横の「クリア」または「リセット」をタップ: ローカルにキャッシュされたパックがすべて削除されます';
 
   @override
-  String get rpClearStep3 => 'MCCompanion経由で再接続する — 結合されたパックが自動的にダウンロードされます';
+  String get rpClearStep3 => 'MCCompanion経由で再接続する: 結合されたパックが自動的にダウンロードされます';
 
   @override
   String get rpRelayTitle => 'パックがおかしく見える？';
 
   @override
   String get rpRelayBody =>
-      'リレーはオーバーレイURLをキーとして結合されたパックを1時間キャッシュします。新しい結合を強制するには：パックURLを少し変更（例：末尾に?v=2を追加）して保存してください。その後、MinecraftのパックキャッシュもクリアしてくださいQ — 結合されたパックは引き続きサーバーのUUIDを使用するため、そのままではMinecraftが古いキャッシュ版を表示します。';
+      'リレーはオーバーレイURLをキーとして結合されたパックを1時間キャッシュします。新しい結合を強制するには：パックURLを少し変更（例：末尾に?v=2を追加）して保存してください。その後、MinecraftのパックキャッシュもクリアしてくださいQ, 結合されたパックは引き続きサーバーのUUIDを使用するため、そのままではMinecraftが古いキャッシュ版を表示します。';
 
   @override
-  String get rpWorksGithubHint => '直接ダウンロードリンク — 常にアクセス可能';
+  String get rpWorksGithubHint => '直接ダウンロードリンク: 常にアクセス可能';
 
   @override
-  String get rpWorksCloudflareHint => 'パブリッククラウドストレージ — 高速かつ信頼性が高い';
+  String get rpWorksCloudflareHint => 'パブリッククラウドストレージ: 高速かつ信頼性が高い';
 
   @override
   String get rpWorksDirectHint => '公開されたHTTPS .mcpackまたは.zip URL';
@@ -1981,14 +1979,14 @@ class AppLocalizationsJa extends AppLocalizations {
   String get rpNoDiscordHint => 'Discord CDNのリンクは短時間で期限切れになります';
 
   @override
-  String get rpNoDriveHint => '直接ダウンロードなし — プレビューページにリダイレクトされます';
+  String get rpNoDriveHint => '直接ダウンロードなし: プレビューページにリダイレクトされます';
 
   @override
   String get rpNoEncryptedHint => 'MCCompanionは暗号化されたパックを結合できません';
 
   @override
   String get rpClearWhy =>
-      'MinecraftはリソースパックをUUIDでキャッシュします。結合されたパックはサーバーの元のUUIDを保持します — MCCompanionを有効にする前のセッションでMinecraftがサーバーのパックをキャッシュしていた場合、新しい結合バージョンをダウンロードしません。キャッシュをクリアして、Minecraftが新しい結合パックを読み込むようにしてください。';
+      'MinecraftはリソースパックをUUIDでキャッシュします。結合されたパックはサーバーの元のUUIDを保持します, MCCompanionを有効にする前のセッションでMinecraftがサーバーのパックをキャッシュしていた場合、新しい結合バージョンをダウンロードしません。キャッシュをクリアして、Minecraftが新しい結合パックを読み込むようにしてください。';
 
   @override
   String get rpUploadTab => 'Upload';
@@ -2012,7 +2010,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get rpMergerSubtitle => '最大4つのリソースパックを統合';
 
   @override
-  String get rpMergerPriorityHint => '最上位のパックが最高優先度 — そのファイルが競合に勝ちます。';
+  String get rpMergerPriorityHint => '最上位のパックが最高優先度: そのファイルが競合に勝ちます。';
 
   @override
   String get rpMergerTopBadge => 'TOP';
@@ -2041,7 +2039,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String rpMergerConflicts(int count) {
-    return '$count件の競合が解決 — 最上位パックが勝ちました。';
+    return '$count件の競合が解決: 最上位パックが勝ちました。';
   }
 
   @override
@@ -2063,7 +2061,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get rpNoPackSelected => 'リソースパックが選択されていません';
 
   @override
-  String get rpActiveOnConnect => '有効 — 接続時に適用されます';
+  String get rpActiveOnConnect => '有効, 接続時に適用されます';
 
   @override
   String get rpBrowseSubtitle => '厳選パック、すぐに使えます';
@@ -2082,7 +2080,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get rpTabBrowseInfo =>
-      'MCCompanionが厳選したパックを閲覧できます。「使用」をタップすると即座にパックを有効化できます — アップロードやリンク不要。';
+      'MCCompanionが厳選したパックを閲覧できます。「使用」をタップすると即座にパックを有効化できます, アップロードやリンク不要。';
 
   @override
   String get rpTabUploadInfo =>
@@ -2090,7 +2088,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get rpTabUrlInfo =>
-      '.mcpackまたは.zipファイルへの直接ダウンロードリンクを貼り付けます。URLは公開アクセス可能である必要があります — DiscordやGoogleドライブのリンクは使用不可。';
+      '.mcpackまたは.zipファイルへの直接ダウンロードリンクを貼り付けます。URLは公開アクセス可能である必要があります, DiscordやGoogleドライブのリンクは使用不可。';
 
   @override
   String get rpTabMergeInfo =>
@@ -2391,4 +2389,153 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get skinLayerOuter => '外側';
+
+  @override
+  String get feedbackLoginRequiredTitle => 'フィードバックを送信するにはログインしてください';
+
+  @override
+  String get feedbackLoginRequiredBody =>
+      'フィードバックはMCCompanionアカウントに紐づけられ、アプリ内で直接返信できます。';
+
+  @override
+  String get feedbackLoginButton => 'ログイン';
+
+  @override
+  String get supportInboxTitle => 'サポート受信箱';
+
+  @override
+  String get supportInboxSubtitle => 'すべてのサポートチャットを管理者全員で共有';
+
+  @override
+  String get adminBadge => '管理者';
+
+  @override
+  String get skinShareSubject => 'Minecraft スキン';
+
+  @override
+  String get skinEditorTitle => 'スキンエディター';
+
+  @override
+  String get skinToolUndo => '元に戻す';
+
+  @override
+  String get skinSaveToMySkins => 'マイスキンに保存';
+
+  @override
+  String get skinUpdateInCloud => 'クラウドで更新';
+
+  @override
+  String get skinExportPng => 'PNG を書き出す';
+
+  @override
+  String get skinToolDraw => '描く';
+
+  @override
+  String get skinToolFill => '塗りつぶし';
+
+  @override
+  String get skinToolErase => '消す';
+
+  @override
+  String get customColour => 'カスタムカラー';
+
+  @override
+  String get featuredServerLabel => '注目のサーバー';
+
+  @override
+  String get featuredServerTagline => '参加してすぐに遊べます。';
+
+  @override
+  String get featuredServerPlay => 'プレイ';
+
+  @override
+  String rpUploadFailedCode(int code) {
+    return 'アップロードに失敗しました（$code）';
+  }
+
+  @override
+  String rpUploadFailed(String error) {
+    return 'アップロードに失敗しました: $error';
+  }
+
+  @override
+  String get rpLoadFailed => 'パックを読み込めませんでした';
+
+  @override
+  String get rpRetry => '再試行';
+
+  @override
+  String get rpSearchHint => 'パックを検索…';
+
+  @override
+  String rpMergeFailed(String error) {
+    return '結合に失敗しました: $error';
+  }
+
+  @override
+  String get rpMergerSize => 'サイズ';
+
+  @override
+  String get rpMergerCreated => '作成日';
+
+  @override
+  String get rpMergerSourcePacks => '元のパック';
+
+  @override
+  String get rpMergerDropToAdd => 'ドロップして追加';
+
+  @override
+  String get rpMergerSavedMerges => '保存した結合';
+
+  @override
+  String get rpMergerUse => '使う';
+
+  @override
+  String get supportInboxShared => '管理者全員で共有';
+
+  @override
+  String get supportInboxEmpty => 'サポートのやり取りはまだありません';
+
+  @override
+  String get supportReplyingAs => 'MCCompanion Support として返信中';
+
+  @override
+  String get supportReplyHint => 'サポートとして返信…';
+
+  @override
+  String get relayBlocked =>
+      'あなたの IP またはアカウントは MCCompanion によりブロックされています。心当たりがなければ Discord までお越しください。';
+
+  @override
+  String relayBlockedWithReason(String reason) {
+    return 'あなたの IP またはアカウントは MCCompanion によりブロックされています。\n理由: $reason\n心当たりがなければ Discord までお越しください。';
+  }
+
+  @override
+  String relayConfigFailed(int code) {
+    return 'リレーを設定できませんでした（ステータス $code）。別のリレーを試すか、Discord までお越しください。';
+  }
+
+  @override
+  String relayConfigFailedDetail(int code, String detail) {
+    return 'リレーを設定できませんでした（ステータス $code）: $detail。別のリレーを試すか、Discord までお越しください。';
+  }
+
+  @override
+  String get relayTimeout => 'リレーが時間内に応答しませんでした。';
+
+  @override
+  String get relayUnreachable => 'リレーに接続できませんでした。';
+
+  @override
+  String get lookupNotFound => 'プレイヤーが見つかりません。';
+
+  @override
+  String get lookupNetworkError => 'ネットワークエラーです。もう一度お試しください。';
+
+  @override
+  String get lookupBedrockUnavailable => 'Bedrock の検索は現在利用できません。';
+
+  @override
+  String get lookupFailed => '検索に失敗しました。';
 }

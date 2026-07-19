@@ -116,7 +116,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String helpText(Object appCreator) {
-    return 'Dibuat oleh $appCreator.\r\n\r\nCara menggunakan:\r\n1. Masukkan alamat dan port server Minecraft Anda (default: 19132)\r\n   — atau pilih server yang sebelumnya disimpan dari menu dropdown\r\n2. (Opsional) Pilih Server Relay (EU atau US) yang paling dekat dengan lokasi Anda\r\n3. Klik \"Mulai Siaran\" untuk memulai\r\n4. Di konsol/perangkat Anda: Minecraft > Play > Friends\r\n5. Anda akan melihat server LAN bernama \"MCCompanion\"\r\n6. Klik server tersebut untuk bergabung ke server eksternal Anda melalui MCCompanion\r\n\r\nNintendo Switch (mode DNS):\r\n1. Aktifkan \"Nintendo Switch\" di panel koneksi\r\n2. Pilih Server Relay (EU atau US)\r\n3. Klik \"Send DNS Config\" — ini mengirim konfigurasi Anda ke relay\r\n   (ini TIDAK menyiarkan server LAN)\r\n4. Di Switch Anda, terapkan pengaturan DNS MCCompanion lalu bergabung\r\n   menggunakan entri server yang Anda pakai untuk MCCompanion\r\n\r\nCatatan:\r\n- Untuk siaran LAN, MCCompanion dan konsol harus berada di jaringan lokal yang sama.\r\n- Tips: Pilih server relay yang paling dekat dengan Anda untuk performa terbaik.';
+    return 'Dibuat oleh $appCreator.\r\n\r\nCara menggunakan:\r\n1. Masukkan alamat dan port server Minecraft Anda (default: 19132)\r\n  , atau pilih server yang sebelumnya disimpan dari menu dropdown\r\n2. (Opsional) Pilih Server Relay (EU atau US) yang paling dekat dengan lokasi Anda\r\n3. Klik \"Mulai Siaran\" untuk memulai\r\n4. Di konsol/perangkat Anda: Minecraft > Play > Friends\r\n5. Anda akan melihat server LAN bernama \"MCCompanion\"\r\n6. Klik server tersebut untuk bergabung ke server eksternal Anda melalui MCCompanion\r\n\r\nNintendo Switch (mode DNS):\r\n1. Aktifkan \"Nintendo Switch\" di panel koneksi\r\n2. Pilih Server Relay (EU atau US)\r\n3. Klik \"Send DNS Config\": ini mengirim konfigurasi Anda ke relay\r\n   (ini TIDAK menyiarkan server LAN)\r\n4. Di Switch Anda, terapkan pengaturan DNS MCCompanion lalu bergabung\r\n   menggunakan entri server yang Anda pakai untuk MCCompanion\r\n\r\nCatatan:\r\n- Untuk siaran LAN, MCCompanion dan konsol harus berada di jaringan lokal yang sama.\r\n- Tips: Pilih server relay yang paling dekat dengan Anda untuk performa terbaik.';
   }
 
   @override
@@ -152,7 +152,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get howToJavaBody =>
-      'Mode Java — langkah cepat:\n1. Di aplikasi, pilih mode Java.\n2. Masukkan alamat dan port server Java Edition Anda (default: 25565).\n3. Tekan \"Mulai Mode Java\" — MCCompanion akan menjembatani koneksi.\n4. Buka Minecraft Bedrock dan masuk ke tab Teman.\n5. Pilih server LAN bernama \"MCCompanion\" untuk bergabung ke server Java.\n\n⚠️ Peringatan penting:\n- Diperlukan akun Java Edition yang valid (Microsoft).\n- Beberapa server menggunakan sistem anti-cheat yang dapat mendeteksi dan memblokir akun Anda.\n- Beberapa server secara eksplisit melarang klien Bedrock — selalu periksa aturan server.\n- MCCompanion tidak bertanggung jawab atas ban akun, penangguhan, atau masalah terkait akun lainnya yang mungkin terjadi akibat penggunaan fitur ini.\n- Gunakan dengan risiko Anda sendiri.';
+      'Mode Java: langkah cepat:\n1. Di aplikasi, pilih mode Java.\n2. Masukkan alamat dan port server Java Edition Anda (default: 25565).\n3. Tekan \"Mulai Mode Java\": MCCompanion akan menjembatani koneksi.\n4. Buka Minecraft Bedrock dan masuk ke tab Teman.\n5. Pilih server LAN bernama \"MCCompanion\" untuk bergabung ke server Java.\n\n⚠️ Peringatan penting:\n- Diperlukan akun Java Edition yang valid (Microsoft).\n- Beberapa server menggunakan sistem anti-cheat yang dapat mendeteksi dan memblokir akun Anda.\n- Beberapa server secara eksplisit melarang klien Bedrock, selalu periksa aturan server.\n- MCCompanion tidak bertanggung jawab atas ban akun, penangguhan, atau masalah terkait akun lainnya yang mungkin terjadi akibat penggunaan fitur ini.\n- Gunakan dengan risiko Anda sendiri.';
 
   @override
   String get language => 'Indonesia';
@@ -215,7 +215,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get bedrockBridge => 'Jembatan Bedrock';
 
   @override
-  String get clientDisconnected => 'Klien terputus — Siaran dihentikan';
+  String get clientDisconnected => 'Klien terputus: Siaran dihentikan';
 
   @override
   String get pleaseEnterServer => '⚠️ Harap masukkan alamat server';
@@ -432,7 +432,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get howToNintendoBody =>
-      'Nintendo Switch — mode DNS (langkah demi langkah):\r\n1. Di aplikasi, aktifkan mode \"Nintendo\" dan pilih Server Relay (EU atau US).\r\n2. Ketuk \"Send DNS Config\" untuk mengirim IP DNS ke relay.\r\n3. Di Nintendo Switch Anda buka System Settings → Internet → Internet Settings → (jaringan Anda) → Change Settings → DNS lalu atur Primary DNS ke IP relay.\r\n4. Buka Minecraft dan gabung ke server publik; Anda akan diarahkan ke server Anda menggunakan DNS relay.\r\nCatatan:\r\n- Mode DNS tidak menyiarkan server LAN; mode ini mengarahkan lalu lintas game melalui relay.\r\n- Kembalikan DNS Anda setelah selesai jika Anda memerlukan perilaku jaringan normal.';
+      'Nintendo Switch: mode DNS (langkah demi langkah):\r\n1. Di aplikasi, aktifkan mode \"Nintendo\" dan pilih Server Relay (EU atau US).\r\n2. Ketuk \"Send DNS Config\" untuk mengirim IP DNS ke relay.\r\n3. Di Nintendo Switch Anda buka System Settings → Internet → Internet Settings → (jaringan Anda) → Change Settings → DNS lalu atur Primary DNS ke IP relay.\r\n4. Buka Minecraft dan gabung ke server publik; Anda akan diarahkan ke server Anda menggunakan DNS relay.\r\nCatatan:\r\n- Mode DNS tidak menyiarkan server LAN; mode ini mengarahkan lalu lintas game melalui relay.\r\n- Kembalikan DNS Anda setelah selesai jika Anda memerlukan perilaku jaringan normal.';
 
   @override
   String get howToFriendsTitle => 'Mode Teman';
@@ -442,7 +442,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get howToFriendsBody =>
-      'Mode Teman — langkah cepat:\r\n1. Tambahkan akun teman MCCompanion di konsol atau platform Anda jika diperlukan.\r\n2. Di aplikasi, aktifkan mode Teman dan kirim konfigurasi relay (jika berlaku).\r\n3. Di konsol, buka Minecraft → Friends dan cari LAN Worlds — server Anda seharusnya muncul di sana sebagai dunia LAN.\r\n4. Pilih server tersebut untuk bergabung ke server Anda bersama teman.\r\nCatatan:\r\n- Pastikan Anda dan teman Anda memiliki NAT/pengaturan yang sama yang memungkinkan kehadiran teman.\r\n- Mode Teman bergantung pada fitur pertemanan platform dan mungkin memerlukan penerimaan permintaan pertemanan.';
+      'Mode Teman: langkah cepat:\r\n1. Tambahkan akun teman MCCompanion di konsol atau platform Anda jika diperlukan.\r\n2. Di aplikasi, aktifkan mode Teman dan kirim konfigurasi relay (jika berlaku).\r\n3. Di konsol, buka Minecraft → Friends dan cari LAN Worlds, server Anda seharusnya muncul di sana sebagai dunia LAN.\r\n4. Pilih server tersebut untuk bergabung ke server Anda bersama teman.\r\nCatatan:\r\n- Pastikan Anda dan teman Anda memiliki NAT/pengaturan yang sama yang memungkinkan kehadiran teman.\r\n- Mode Teman bergantung pada fitur pertemanan platform dan mungkin memerlukan penerimaan permintaan pertemanan.';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion tidak muncul';
@@ -473,7 +473,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get helpNintendoDnsBody =>
-      'Jika mode DNS Nintendo tidak berfungsi, periksa hal berikut:\r\n\r\n1. Pastikan Anda mengirim konfigurasi DNS dari aplikasi (Send DNS Config).\r\n2. Pastikan Anda menerapkan IP relay sebagai DNS Utama di Switch.\r\n3. Pastikan server relay yang dipilih (EU/US) sedang online dan tidak kelebihan beban.\r\n4. Beberapa jaringan (misalnya captive portal) mencegah DNS kustom — uji di jaringan lain.\r\n\r\nJika masalah berlanjut, aktifkan Mode Debug dan periksa log atau coba alternatif mode Teman.';
+      'Jika mode DNS Nintendo tidak berfungsi, periksa hal berikut:\r\n\r\n1. Pastikan Anda mengirim konfigurasi DNS dari aplikasi (Send DNS Config).\r\n2. Pastikan Anda menerapkan IP relay sebagai DNS Utama di Switch.\r\n3. Pastikan server relay yang dipilih (EU/US) sedang online dan tidak kelebihan beban.\r\n4. Beberapa jaringan (misalnya captive portal) mencegah DNS kustom, uji di jaringan lain.\r\n\r\nJika masalah berlanjut, aktifkan Mode Debug dan periksa log atau coba alternatif mode Teman.';
 
   @override
   String get helpFriendsModeTitle => 'Mode Teman tidak berfungsi';
@@ -953,7 +953,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get chooseUsernameSubtitle =>
-      'Choose a username to start connecting with other players.';
+      'Pilih username agar pemain lain bisa menemukanmu.';
 
   @override
   String get createProfile => 'Create Profile';
@@ -1154,10 +1154,10 @@ class AppLocalizationsId extends AppLocalizations {
   String get wikiReadFullArticle => 'Read full article';
 
   @override
-  String get wikiRecent => 'Recently viewed';
+  String get wikiRecent => 'Baru dilihat';
 
   @override
-  String get wikiFavourites => 'Favourites';
+  String get wikiFavourites => 'Favorit';
 
   @override
   String get wikiMobs => 'Mobs';
@@ -1732,7 +1732,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get skinExported => 'Skin berhasil diekspor';
 
   @override
-  String get accountActions => 'ACCOUNT';
+  String get accountActions => 'AKUN';
 
   @override
   String get feedbackBugReport => 'Laporan Bug';
@@ -1762,7 +1762,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get feedbackDescHintBug =>
-      'Jelaskan bug-nya — apa yang kamu lakukan, apa yang kamu harapkan, dan apa yang terjadi?';
+      'Jelaskan bug-nya: apa yang kamu lakukan, apa yang kamu harapkan, dan apa yang terjadi?';
 
   @override
   String get feedbackDescHintFeature =>
@@ -1793,7 +1793,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get feedbackSuccessBody =>
-      'Laporan kamu telah dikirim dan issue GitHub telah dibuat. Kami akan segera meninjaunya.';
+      'Terima kasih! Laporanmu sudah masuk. Kami akan segera memeriksanya.';
 
   @override
   String get feedbackViewOnGithub => 'Lihat di GitHub';
@@ -1820,7 +1820,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get feedbackTileTitle => 'Laporkan bug atau sarankan fitur';
 
   @override
-  String get reportBug => 'Feedback';
+  String get reportBug => 'Masukan';
 
   @override
   String get feedbackTileSubtitle => 'Bantu kami meningkatkan MCCompanion';
@@ -1892,7 +1892,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get rpExplanation =>
-      'Pack sumber daya mengubah tampilan Minecraft di konsol kamu — blok, warna, atau suara baru. Tempel tautan file .mcpack di bawah, aktifkan, dan simpan. MCCompanion memuat secara otomatis setiap kali kamu terhubung.';
+      'Pack sumber daya mengubah tampilan Minecraft di konsol kamu, blok, warna, atau suara baru. Tempel tautan file .mcpack di bawah, aktifkan, dan simpan. MCCompanion memuat secara otomatis setiap kali kamu terhubung.';
 
   @override
   String get rpPackUrlLabel => 'URL Paket';
@@ -1937,11 +1937,11 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get rpNoDiscord =>
-      'Tautan Discord — tidak ada ekstensi .mcpack dan kedaluwarsa setelah beberapa jam';
+      'Tautan Discord: tidak ada ekstensi .mcpack dan kedaluwarsa setelah beberapa jam';
 
   @override
   String get rpNoDrive =>
-      'Tautan berbagi Google Drive / Dropbox — bukan unduhan langsung';
+      'Tautan berbagi Google Drive / Dropbox: bukan unduhan langsung';
 
   @override
   String get rpNoEncrypted =>
@@ -1973,11 +1973,11 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get rpInvalidPackFormat =>
-      'This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.';
+      'Ini adalah pack Java Edition dan tidak didukung. Gunakan resource pack Bedrock Edition.';
 
   @override
   String get rpBehaviorContentWarning =>
-      'This pack contains behavior pack data, which won\'t work on servers. The textures will still work.';
+      'Pack ini berisi data behavior pack yang tidak akan berfungsi di server. Teksturnya tetap berfungsi.';
 
   @override
   String get rpClearMinecraftTitle => 'Pertama kali dengan pack ini?';
@@ -1992,26 +1992,26 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get rpClearStep2 =>
-      'Ketuk ‘Hapus’ atau ‘Reset’ di sebelah Pack Sumber Daya — ini menghapus semua pack yang tersimpan lokal';
+      'Ketuk ‘Hapus’ atau ‘Reset’ di sebelah Pack Sumber Daya, ini menghapus semua pack yang tersimpan lokal';
 
   @override
   String get rpClearStep3 =>
-      'Sambungkan kembali melalui MCCompanion — pack yang digabungkan akan diunduh secara otomatis';
+      'Sambungkan kembali melalui MCCompanion: pack yang digabungkan akan diunduh secara otomatis';
 
   @override
   String get rpRelayTitle => 'Pack terlihat tidak benar?';
 
   @override
   String get rpRelayBody =>
-      'Relay menyimpan pack yang digabungkan selama 1 jam menggunakan URL overlay-mu sebagai kunci cache. Untuk memaksa penggabungan baru: ubah sedikit URL pack (mis. tambahkan ?v=2) dan simpan. Setelah itu, hapus juga cache pack Minecraft — pack yang digabungkan masih menggunakan UUID server, jadi Minecraft akan tetap menampilkan versi lama dari cache.';
+      'Relay menyimpan pack yang digabungkan selama 1 jam menggunakan URL overlay-mu sebagai kunci cache. Untuk memaksa penggabungan baru: ubah sedikit URL pack (mis. tambahkan ?v=2) dan simpan. Setelah itu, hapus juga cache pack Minecraft, pack yang digabungkan masih menggunakan UUID server, jadi Minecraft akan tetap menampilkan versi lama dari cache.';
 
   @override
   String get rpWorksGithubHint =>
-      'Tautan unduhan langsung — selalu bisa diakses';
+      'Tautan unduhan langsung: selalu bisa diakses';
 
   @override
   String get rpWorksCloudflareHint =>
-      'Penyimpanan cloud publik — cepat dan andal';
+      'Penyimpanan cloud publik: cepat dan andal';
 
   @override
   String get rpWorksDirectHint => 'URL HTTPS publik .mcpack atau .zip apa pun';
@@ -2022,7 +2022,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get rpNoDriveHint =>
-      'Tidak ada unduhan langsung — mengarahkan ke halaman pratinjau';
+      'Tidak ada unduhan langsung: mengarahkan ke halaman pratinjau';
 
   @override
   String get rpNoEncryptedHint =>
@@ -2030,7 +2030,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get rpClearWhy =>
-      'Minecraft menyimpan pack sumber daya berdasarkan UUID. Pack yang digabungkan tetap menggunakan UUID asli server — jika Minecraft sudah menyimpan pack server dari sesi sebelumnya (sebelum MCCompanion aktif), ia tidak akan mengunduh versi gabungan yang baru. Hapus cache agar Minecraft memuat pack gabungan terbaru.';
+      'Minecraft menyimpan pack sumber daya berdasarkan UUID. Pack yang digabungkan tetap menggunakan UUID asli server, jika Minecraft sudah menyimpan pack server dari sesi sebelumnya (sebelum MCCompanion aktif), ia tidak akan mengunduh versi gabungan yang baru. Hapus cache agar Minecraft memuat pack gabungan terbaru.';
 
   @override
   String get rpUploadTab => 'Upload';
@@ -2055,7 +2055,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get rpMergerPriorityHint =>
-      'Paket teratas memiliki prioritas tertinggi — filenya menang dalam konflik.';
+      'Paket teratas memiliki prioritas tertinggi, filenya menang dalam konflik.';
 
   @override
   String get rpMergerTopBadge => 'ATAS';
@@ -2084,7 +2084,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String rpMergerConflicts(int count) {
-    return '$count konflik terselesaikan — paket teratas menang.';
+    return '$count konflik terselesaikan: paket teratas menang.';
   }
 
   @override
@@ -2106,7 +2106,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get rpNoPackSelected => 'Tidak ada paket sumber daya yang dipilih';
 
   @override
-  String get rpActiveOnConnect => 'Aktif — diterapkan saat terhubung';
+  String get rpActiveOnConnect => 'Aktif: diterapkan saat terhubung';
 
   @override
   String get rpBrowseSubtitle => 'Paket pilihan, siap digunakan';
@@ -2125,7 +2125,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get rpTabBrowseInfo =>
-      'Jelajahi paket pilihan MCCompanion. Ketuk Gunakan untuk mengaktifkan paket seketika — tanpa unggah atau tautan.';
+      'Jelajahi paket pilihan MCCompanion. Ketuk Gunakan untuk mengaktifkan paket seketika, tanpa unggah atau tautan.';
 
   @override
   String get rpTabUploadInfo =>
@@ -2133,7 +2133,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get rpTabUrlInfo =>
-      'Tempel tautan unduhan langsung ke file .mcpack atau .zip. URL harus dapat diakses publik — tidak ada tautan Discord atau Google Drive.';
+      'Tempel tautan unduhan langsung ke file .mcpack atau .zip. URL harus dapat diakses publik, tidak ada tautan Discord atau Google Drive.';
 
   @override
   String get rpTabMergeInfo =>
@@ -2437,4 +2437,155 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get skinLayerOuter => 'Luar';
+
+  @override
+  String get feedbackLoginRequiredTitle => 'Masuk untuk mengirim masukan';
+
+  @override
+  String get feedbackLoginRequiredBody =>
+      'Masukan terhubung dengan akun MCCompanion Anda sehingga kami dapat membalas Anda langsung di aplikasi.';
+
+  @override
+  String get feedbackLoginButton => 'Masuk';
+
+  @override
+  String get supportInboxTitle => 'Kotak masuk dukungan';
+
+  @override
+  String get supportInboxSubtitle =>
+      'Semua obrolan dukungan, dibagikan ke semua admin';
+
+  @override
+  String get adminBadge => 'Admin';
+
+  @override
+  String get skinShareSubject => 'Skin Minecraft';
+
+  @override
+  String get skinEditorTitle => 'Editor skin';
+
+  @override
+  String get skinToolUndo => 'Urungkan';
+
+  @override
+  String get skinSaveToMySkins => 'Simpan ke skin saya';
+
+  @override
+  String get skinUpdateInCloud => 'Perbarui di cloud';
+
+  @override
+  String get skinExportPng => 'Ekspor PNG';
+
+  @override
+  String get skinToolDraw => 'Gambar';
+
+  @override
+  String get skinToolFill => 'Isi';
+
+  @override
+  String get skinToolErase => 'Hapus';
+
+  @override
+  String get customColour => 'Warna khusus';
+
+  @override
+  String get featuredServerLabel => 'SERVER PILIHAN';
+
+  @override
+  String get featuredServerTagline => 'Langsung gabung dan main.';
+
+  @override
+  String get featuredServerPlay => 'Main';
+
+  @override
+  String rpUploadFailedCode(int code) {
+    return 'Gagal mengunggah ($code)';
+  }
+
+  @override
+  String rpUploadFailed(String error) {
+    return 'Gagal mengunggah: $error';
+  }
+
+  @override
+  String get rpLoadFailed => 'Tidak bisa memuat pack';
+
+  @override
+  String get rpRetry => 'Coba lagi';
+
+  @override
+  String get rpSearchHint => 'Cari pack…';
+
+  @override
+  String rpMergeFailed(String error) {
+    return 'Gagal menggabungkan: $error';
+  }
+
+  @override
+  String get rpMergerSize => 'Ukuran';
+
+  @override
+  String get rpMergerCreated => 'Dibuat';
+
+  @override
+  String get rpMergerSourcePacks => 'Pack sumber';
+
+  @override
+  String get rpMergerDropToAdd => 'Lepas untuk menambah';
+
+  @override
+  String get rpMergerSavedMerges => 'Gabungan tersimpan';
+
+  @override
+  String get rpMergerUse => 'Pakai';
+
+  @override
+  String get supportInboxShared => 'Dibagikan ke semua admin';
+
+  @override
+  String get supportInboxEmpty => 'Belum ada obrolan dukungan';
+
+  @override
+  String get supportReplyingAs => 'Kamu membalas sebagai MCCompanion Support';
+
+  @override
+  String get supportReplyHint => 'Balas sebagai dukungan…';
+
+  @override
+  String get relayBlocked =>
+      'IP atau akunmu diblokir oleh MCCompanion. Kalau menurutmu ini keliru, gabung ke Discord kami.';
+
+  @override
+  String relayBlockedWithReason(String reason) {
+    return 'IP atau akunmu diblokir oleh MCCompanion.\nAlasan: $reason\nKalau menurutmu ini keliru, gabung ke Discord kami.';
+  }
+
+  @override
+  String relayConfigFailed(int code) {
+    return 'Tidak bisa menyiapkan relay (status $code). Coba relay lain atau gabung ke Discord kami.';
+  }
+
+  @override
+  String relayConfigFailedDetail(int code, String detail) {
+    return 'Tidak bisa menyiapkan relay (status $code): $detail. Coba relay lain atau gabung ke Discord kami.';
+  }
+
+  @override
+  String get relayTimeout => 'Relay tidak menjawab tepat waktu.';
+
+  @override
+  String get relayUnreachable => 'Tidak bisa menghubungi relay.';
+
+  @override
+  String get lookupNotFound => 'Pemain tidak ditemukan.';
+
+  @override
+  String get lookupNetworkError => 'Kesalahan jaringan. Coba lagi.';
+
+  @override
+  String get lookupBedrockUnavailable =>
+      'Pencarian Bedrock sedang tidak tersedia.';
+
+  @override
+  String get lookupFailed => 'Pencarian gagal.';
 }

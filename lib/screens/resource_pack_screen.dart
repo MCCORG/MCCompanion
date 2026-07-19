@@ -202,12 +202,12 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
       } else {
         if (!mounted) return;
         setState(() => _uploading = false);
-        AppToast.show(context, message: 'Upload failed (${streamed.statusCode})', icon: Icons.error_outline_rounded, color: AppTheme.error);
+        AppToast.show(context, message: AppLocalizations.of(context)!.rpUploadFailedCode(streamed.statusCode), icon: Icons.error_outline_rounded, color: AppTheme.error);
       }
     } catch (e) {
       if (!mounted) return;
       setState(() => _uploading = false);
-      AppToast.show(context, message: 'Upload failed: $e', icon: Icons.error_outline_rounded, color: AppTheme.error);
+      AppToast.show(context, message: AppLocalizations.of(context)!.rpUploadFailed(e.toString()), icon: Icons.error_outline_rounded, color: AppTheme.error);
     }
   }
 
@@ -437,10 +437,10 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
           Center(
             child: Column(
               children: [
-                Text('Failed to load packs', style: TextStyle(color: AppTheme.textMuted)),
+                Text(AppLocalizations.of(context)!.rpLoadFailed, style: TextStyle(color: AppTheme.textMuted)),
                 TextButton(
                   onPressed: () { setState(() => _featuredError = false); _loadFeaturedPacks(); },
-                  child: Text('Retry', style: TextStyle(color: AppTheme.accent)),
+                  child: Text(AppLocalizations.of(context)!.rpRetry, style: TextStyle(color: AppTheme.accent)),
                 ),
               ],
             ),
@@ -466,7 +466,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
             onChanged: (v) => setState(() => _featuredSearch = v),
             style: TextStyle(color: AppTheme.textPrimary, fontSize: 14),
             decoration: InputDecoration(
-              hintText: 'Search packs...',
+              hintText: AppLocalizations.of(context)!.rpSearchHint,
               prefixIcon: Icon(Icons.search_rounded, color: AppTheme.textMuted, size: 18),
               contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
             ),

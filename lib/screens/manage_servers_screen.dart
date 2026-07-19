@@ -62,36 +62,50 @@ class ManageServersScreenState extends State<ManageServersScreen> {
 
     return SwipeBack(
       onBack: widget.onBack,
-      child: Column(
-      children: [
-        Align(
-          alignment: Alignment.centerRight,
-          child: GestureDetector(
-            onTap: widget.onAddServer,
-            child: Padding(
-              padding: const EdgeInsets.all(8),
-              child: Icon(Icons.add_rounded, size: 22, color: AppTheme.accent),
-            ),
-          ),
-        ),
-        Expanded(
-          child: _loading
-              ? Center(child: CircularProgressIndicator(strokeWidth: 2, color: AppTheme.accent))
-              : _servers.isEmpty
-              ? _EmptyState(loc: loc, onAdd: widget.onAddServer)
-              : ListView.separated(
-                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                  itemCount: _servers.length,
-                  separatorBuilder: (_, __) => const SizedBox(height: 10),
-                  itemBuilder: (_, i) => _ServerCard(
-                    server: _servers[i],
-                    onEdit: () => widget.onEditServer(i),
-                    onDelete: () => _deleteServer(i),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 760),
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.centerRight,
+                child: GestureDetector(
+                  onTap: widget.onAddServer,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Icon(
+                      Icons.add_rounded,
+                      size: 22,
+                      color: AppTheme.accent,
+                    ),
                   ),
                 ),
+              ),
+              Expanded(
+                child: _loading
+                    ? Center(
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: AppTheme.accent,
+                        ),
+                      )
+                    : _servers.isEmpty
+                    ? _EmptyState(loc: loc, onAdd: widget.onAddServer)
+                    : ListView.separated(
+                        padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                        itemCount: _servers.length,
+                        separatorBuilder: (_, __) => const SizedBox(height: 10),
+                        itemBuilder: (_, i) => _ServerCard(
+                          server: _servers[i],
+                          onEdit: () => widget.onEditServer(i),
+                          onDelete: () => _deleteServer(i),
+                        ),
+                      ),
+              ),
+            ],
+          ),
         ),
-      ],
-    ),
+      ),
     );
   }
 }
@@ -246,75 +260,82 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
                   padding: const EdgeInsets.all(16),
                   keyboardDismissBehavior:
                       ScrollViewKeyboardDismissBehavior.onDrag,
-                  child: Column(
-                    children: [
-                      _Field(
-                        controller: _nameCtrl,
-                        label: loc.serverNameLabel,
-                        hint: loc.serverNameExampleHint,
-                        icon: Icons.label_rounded,
-                        autofocus: true,
-                      ),
-                      const SizedBox(height: 12),
-                      _Field(
-                        controller: _addressCtrl,
-                        label: loc.addressLabel,
-                        hint: loc.serverAddressExampleHint,
-                        icon: Icons.dns_rounded,
-                      ),
-                      const SizedBox(height: 12),
-                      _Field(
-                        controller: _portCtrl,
-                        label: loc.portLabel,
-                        icon: Icons.numbers_rounded,
-                        keyboardType: TextInputType.number,
-                      ),
-                      const SizedBox(height: 12),
-                      _EditionToggle(
-                        isJava: _isJava,
-                        onChanged: (value) {
-                          setState(() {
-                            _isJava = value;
-                            final currentPort = int.tryParse(_portCtrl.text.trim());
-                            if (value && currentPort == 19132) {
-                              _portCtrl.text = '25565';
-                            } else if (!value && currentPort == 25565) {
-                              _portCtrl.text = '19132';
-                            }
-                          });
-                        },
-                      ),
-                      const SizedBox(height: 12),
-                      _Field(
-                        controller: _descCtrl,
-                        label: loc.descriptionLabel,
-                        hint: loc.serverDescriptionExampleHint,
-                        icon: Icons.notes_rounded,
-                        maxLines: 3,
-                      ),
-                      const SizedBox(height: 12),
-                      const SizedBox(height: 24),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: _save,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppTheme.accent,
-                            foregroundColor: Colors.white,
-                            elevation: 0,
-                            textStyle: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w700,
-                            ),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(13),
+                  child: Center(
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 560),
+                      child: Column(
+                        children: [
+                          _Field(
+                            controller: _nameCtrl,
+                            label: loc.serverNameLabel,
+                            hint: loc.serverNameExampleHint,
+                            icon: Icons.label_rounded,
+                            autofocus: true,
+                          ),
+                          const SizedBox(height: 12),
+                          _Field(
+                            controller: _addressCtrl,
+                            label: loc.addressLabel,
+                            hint: loc.serverAddressExampleHint,
+                            icon: Icons.dns_rounded,
+                          ),
+                          const SizedBox(height: 12),
+                          _Field(
+                            controller: _portCtrl,
+                            label: loc.portLabel,
+                            icon: Icons.numbers_rounded,
+                            keyboardType: TextInputType.number,
+                          ),
+                          const SizedBox(height: 12),
+                          _EditionToggle(
+                            isJava: _isJava,
+                            onChanged: (value) {
+                              setState(() {
+                                _isJava = value;
+                                final currentPort = int.tryParse(
+                                  _portCtrl.text.trim(),
+                                );
+                                if (value && currentPort == 19132) {
+                                  _portCtrl.text = '25565';
+                                } else if (!value && currentPort == 25565) {
+                                  _portCtrl.text = '19132';
+                                }
+                              });
+                            },
+                          ),
+                          const SizedBox(height: 12),
+                          _Field(
+                            controller: _descCtrl,
+                            label: loc.descriptionLabel,
+                            hint: loc.serverDescriptionExampleHint,
+                            icon: Icons.notes_rounded,
+                            maxLines: 3,
+                          ),
+                          const SizedBox(height: 12),
+                          const SizedBox(height: 24),
+                          SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: ElevatedButton(
+                              onPressed: _save,
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppTheme.accent,
+                                foregroundColor: Colors.white,
+                                elevation: 0,
+                                textStyle: const TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(13),
+                                ),
+                              ),
+                              child: Text(loc.save),
                             ),
                           ),
-                          child: Text(loc.save),
-                        ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
         ),
@@ -414,7 +435,9 @@ class _ServerCard extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppTheme.accent.withValues(alpha: 0.10),
               borderRadius: BorderRadius.circular(11),
-              border: Border.all(color: AppTheme.accent.withValues(alpha: 0.22)),
+              border: Border.all(
+                color: AppTheme.accent.withValues(alpha: 0.22),
+              ),
             ),
             child: Icon(Icons.dns_rounded, color: AppTheme.accent, size: 18),
           ),
@@ -436,10 +459,7 @@ class _ServerCard extends StatelessWidget {
                 const SizedBox(height: 2),
                 Text(
                   '${server.address}:${server.port}',
-                  style: TextStyle(
-                    color: AppTheme.textSecondary,
-                    fontSize: 12,
-                  ),
+                  style: TextStyle(color: AppTheme.textSecondary, fontSize: 12),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -448,10 +468,7 @@ class _ServerCard extends StatelessWidget {
                   const SizedBox(height: 2),
                   Text(
                     server.description!,
-                    style: TextStyle(
-                      color: AppTheme.textMuted,
-                      fontSize: 11,
-                    ),
+                    style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -540,7 +557,9 @@ class _ConfirmDeleteDialog extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppTheme.error.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: AppTheme.error.withValues(alpha: 0.30)),
+                border: Border.all(
+                  color: AppTheme.error.withValues(alpha: 0.30),
+                ),
               ),
               child: const Icon(
                 Icons.delete_outline_rounded,
@@ -639,10 +658,7 @@ class _Field extends StatelessWidget {
       decoration: InputDecoration(
         labelText: label,
         hintText: hint,
-        labelStyle: TextStyle(
-          color: AppTheme.textSecondary,
-          fontSize: 13,
-        ),
+        labelStyle: TextStyle(color: AppTheme.textSecondary, fontSize: 13),
         hintStyle: TextStyle(color: AppTheme.textMuted, fontSize: 13),
         prefixIcon: Icon(icon, color: AppTheme.textMuted, size: 18),
         filled: true,
@@ -686,7 +702,11 @@ class _EditionToggle extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
       child: Row(
         children: [
-          Icon(Icons.sports_esports_rounded, color: AppTheme.textMuted, size: 18),
+          Icon(
+            Icons.sports_esports_rounded,
+            color: AppTheme.textMuted,
+            size: 18,
+          ),
           const SizedBox(width: 10),
           Expanded(
             child: Text(
@@ -694,9 +714,17 @@ class _EditionToggle extends StatelessWidget {
               style: TextStyle(color: AppTheme.textSecondary, fontSize: 13),
             ),
           ),
-          _EditionChip(label: AppLocalizations.of(context)!.bedrockLabel, selected: !isJava, onTap: () => onChanged(false)),
+          _EditionChip(
+            label: AppLocalizations.of(context)!.bedrockLabel,
+            selected: !isJava,
+            onTap: () => onChanged(false),
+          ),
           const SizedBox(width: 6),
-          _EditionChip(label: AppLocalizations.of(context)!.labelJava, selected: isJava, onTap: () => onChanged(true)),
+          _EditionChip(
+            label: AppLocalizations.of(context)!.labelJava,
+            selected: isJava,
+            onTap: () => onChanged(true),
+          ),
         ],
       ),
     );
@@ -708,7 +736,11 @@ class _EditionChip extends StatelessWidget {
   final bool selected;
   final VoidCallback onTap;
 
-  const _EditionChip({required this.label, required this.selected, required this.onTap});
+  const _EditionChip({
+    required this.label,
+    required this.selected,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {

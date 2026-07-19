@@ -15,7 +15,7 @@
   "aternosSubtext": "اپنا مفت مائن کرافٹ سرور بنائیں",
   "howToUseMenu": "استعمال کا طریقہ",
   "support": "مدد",
-  "helpText": "{appCreator} کی طرف سے بنایا گیا۔\r\n\r\nاستعمال کا طریقہ:\r\n1. اپنے Minecraft سرور کا ایڈریس اور پورٹ درج کریں (ڈیفالٹ: 19132)\r\n   — یا ڈراپ ڈاؤن سے پہلے سے محفوظ شدہ سرور منتخب کریں\r\n2. (اختیاری) اپنی جگہ کے قریب ترین Relay Server (EU یا US) منتخب کریں\r\n3. شروع کرنے کے لیے \"براڈکاسٹنگ شروع کریں\" پر کلک کریں\r\n4. اپنے کنسول/ڈیوائس پر: Minecraft > Play > Friends\r\n5. آپ کو \"MCCompanion\" نام کا ایک LAN سرور نظر آنا چاہیے\r\n6. اپنے بیرونی سرور میں شامل ہونے کے لیے اس پر کلک کریں\r\n\r\nNintendo Switch (DNS mode):\r\n1. کنیکشن پینل میں \"Nintendo Switch\" فعال کریں\r\n2. ایک Relay Server (EU یا US) منتخب کریں\r\n3. \"Send DNS Config\" پر کلک کریں — یہ آپ کی سیٹنگ relay کو بھیجتا ہے\r\n   (یہ LAN سرور براڈکاسٹ نہیں کرتا)\r\n4. اپنے Switch پر MCCompanion DNS سیٹ اپ لاگو کریں اور شامل ہوں\r\n   اس سرور اندراج کو استعمال کرتے ہوئے جو آپ MCCompanion کے لیے استعمال کرتے ہیں\r\n\r\nنوٹس:\r\n- LAN براڈکاسٹنگ کے لیے MCCompanion اور کنسول کا ایک ہی مقامی نیٹ ورک پر ہونا ضروری ہے۔\r\n- مشورہ: بہترین کارکردگی کے لیے اپنے قریب ترین relay سرور کا انتخاب کریں۔",
+  "helpText": "{appCreator} کی طرف سے بنایا گیا۔\r\n\r\nاستعمال کا طریقہ:\r\n1. اپنے Minecraft سرور کا ایڈریس اور پورٹ درج کریں (ڈیفالٹ: 19132)\r\n  , یا ڈراپ ڈاؤن سے پہلے سے محفوظ شدہ سرور منتخب کریں\r\n2. (اختیاری) اپنی جگہ کے قریب ترین Relay Server (EU یا US) منتخب کریں\r\n3. شروع کرنے کے لیے \"براڈکاسٹنگ شروع کریں\" پر کلک کریں\r\n4. اپنے کنسول/ڈیوائس پر: Minecraft > Play > Friends\r\n5. آپ کو \"MCCompanion\" نام کا ایک LAN سرور نظر آنا چاہیے\r\n6. اپنے بیرونی سرور میں شامل ہونے کے لیے اس پر کلک کریں\r\n\r\nNintendo Switch (DNS mode):\r\n1. کنیکشن پینل میں \"Nintendo Switch\" فعال کریں\r\n2. ایک Relay Server (EU یا US) منتخب کریں\r\n3. \"Send DNS Config\" پر کلک کریں: یہ آپ کی سیٹنگ relay کو بھیجتا ہے\r\n   (یہ LAN سرور براڈکاسٹ نہیں کرتا)\r\n4. اپنے Switch پر MCCompanion DNS سیٹ اپ لاگو کریں اور شامل ہوں\r\n   اس سرور اندراج کو استعمال کرتے ہوئے جو آپ MCCompanion کے لیے استعمال کرتے ہیں\r\n\r\nنوٹس:\r\n- LAN براڈکاسٹنگ کے لیے MCCompanion اور کنسول کا ایک ہی مقامی نیٹ ورک پر ہونا ضروری ہے۔\r\n- مشورہ: بہترین کارکردگی کے لیے اپنے قریب ترین relay سرور کا انتخاب کریں۔",
   "@helpText": {
     "description": "Detailed help / instructions shown in the help dialog",
     "placeholders": {
@@ -37,7 +37,7 @@
   "@howToJavaSubtitle": {
     "description": "Short subtitle for Java menu tile"
   },
-  "howToJavaBody": "جاوا موڈ — فوری مراحل:\n1. ایپ میں جاوا موڈ منتخب کریں۔\n2. اپنے Java Edition سرور کا پتہ اور پورٹ درج کریں (ڈیفالٹ: 25565)۔\n3. \"جاوا موڈ شروع کریں\" دبائیں — MCCompanion کنکشن کو جوڑ دے گا۔\n4. Minecraft Bedrock کھولیں اور Friends ٹیب پر جائیں۔\n5. Java سرور میں شامل ہونے کے لیے \"MCCompanion\" نام کا LAN سرور منتخب کریں۔\n\n⚠️ اہم انتباہات:\n- ایک درست Java Edition اکاؤنٹ (Microsoft) درکار ہے۔\n- کچھ سرور anti-cheat سسٹمز استعمال کرتے ہیں جو آپ کے اکاؤنٹ کا پتا لگا کر اسے بین کر سکتے ہیں۔\n- کچھ سرور Bedrock کلائنٹس کو واضح طور پر منع کرتے ہیں — ہمیشہ سرور کے قواعد چیک کریں۔\n- اس خصوصیت کے استعمال سے پیدا ہونے والی کسی بھی پابندی، معطلی یا اکاؤنٹ سے متعلق دیگر مسائل کے لیے MCCompanion ذمہ دار نہیں ہے۔\n- اسے اپنے ذمہ استعمال کریں۔",
+  "howToJavaBody": "جاوا موڈ: فوری مراحل:\n1. ایپ میں جاوا موڈ منتخب کریں۔\n2. اپنے Java Edition سرور کا پتہ اور پورٹ درج کریں (ڈیفالٹ: 25565)۔\n3. \"جاوا موڈ شروع کریں\" دبائیں: MCCompanion کنکشن کو جوڑ دے گا۔\n4. Minecraft Bedrock کھولیں اور Friends ٹیب پر جائیں۔\n5. Java سرور میں شامل ہونے کے لیے \"MCCompanion\" نام کا LAN سرور منتخب کریں۔\n\n⚠️ اہم انتباہات:\n- ایک درست Java Edition اکاؤنٹ (Microsoft) درکار ہے۔\n- کچھ سرور anti-cheat سسٹمز استعمال کرتے ہیں جو آپ کے اکاؤنٹ کا پتا لگا کر اسے بین کر سکتے ہیں۔\n- کچھ سرور Bedrock کلائنٹس کو واضح طور پر منع کرتے ہیں, ہمیشہ سرور کے قواعد چیک کریں۔\n- اس خصوصیت کے استعمال سے پیدا ہونے والی کسی بھی پابندی، معطلی یا اکاؤنٹ سے متعلق دیگر مسائل کے لیے MCCompanion ذمہ دار نہیں ہے۔\n- اسے اپنے ذمہ استعمال کریں۔",
   "@howToJavaBody": {
     "description": "Detailed steps for Java mode how-to modal"
   },
@@ -121,7 +121,7 @@
   "@bedrockBridge": {
     "description": "Subtitle on splash screen"
   },
-  "clientDisconnected": "کلائنٹ منقطع ہو گیا — براڈکاسٹ بند ہو گئی",
+  "clientDisconnected": "کلائنٹ منقطع ہو گیا: براڈکاسٹ بند ہو گئی",
   "@clientDisconnected": {
     "description": "Snackbar shown when clients disconnect automatically"
   },
@@ -254,7 +254,7 @@
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
-  "howToNintendoBody": "Nintendo Switch — DNS موڈ (مرحلہ وار):\r\n1. ایپ میں \"Nintendo\" موڈ فعال کریں اور ایک Relay Server (EU یا US) منتخب کریں۔\r\n2. DNS IP کو relay پر بھیجنے کے لیے \"Send DNS Config\" پر ٹیپ کریں۔\r\n3. اپنے Nintendo Switch پر System Settings → Internet → Internet Settings → (آپ کا نیٹ ورک) → Change Settings → DNS میں جائیں اور Primary DNS کو relay IP پر سیٹ کریں۔\r\n4. Minecraft کھولیں اور کسی عوامی سرور میں شامل ہوں؛ آپ relay DNS کے ذریعے اپنے سرور پر ری ڈائریکٹ ہو جائیں گے۔\r\nنوٹس:\r\n- DNS موڈ LAN سرور براڈکاسٹ نہیں کرتا؛ یہ گیم ٹریفک کو relay کے ذریعے چلاتا ہے۔\r\n- اگر آپ کو عام نیٹ ورک رویہ چاہیے تو کام مکمل ہونے کے بعد اپنا DNS واپس تبدیل کر دیں۔",
+  "howToNintendoBody": "Nintendo Switch: DNS موڈ (مرحلہ وار):\r\n1. ایپ میں \"Nintendo\" موڈ فعال کریں اور ایک Relay Server (EU یا US) منتخب کریں۔\r\n2. DNS IP کو relay پر بھیجنے کے لیے \"Send DNS Config\" پر ٹیپ کریں۔\r\n3. اپنے Nintendo Switch پر System Settings → Internet → Internet Settings → (آپ کا نیٹ ورک) → Change Settings → DNS میں جائیں اور Primary DNS کو relay IP پر سیٹ کریں۔\r\n4. Minecraft کھولیں اور کسی عوامی سرور میں شامل ہوں؛ آپ relay DNS کے ذریعے اپنے سرور پر ری ڈائریکٹ ہو جائیں گے۔\r\nنوٹس:\r\n- DNS موڈ LAN سرور براڈکاسٹ نہیں کرتا؛ یہ گیم ٹریفک کو relay کے ذریعے چلاتا ہے۔\r\n- اگر آپ کو عام نیٹ ورک رویہ چاہیے تو کام مکمل ہونے کے بعد اپنا DNS واپس تبدیل کر دیں۔",
   "@howToNintendoBody": {
     "description": "Detailed steps for Nintendo Switch DNS setup"
   },
@@ -266,7 +266,7 @@
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
   },
-  "howToFriendsBody": "دوست موڈ — فوری مراحل:\r\n1. اگر ضرورت ہو تو اپنے کنسول یا پلیٹ فارم پر MCCompanion دوست اکاؤنٹ شامل کریں۔\r\n2. ایپ میں دوست موڈ فعال کریں اور relay کنفیگریشن بھیجیں (اگر لاگو ہو)۔\r\n3. اپنے کنسول پر Minecraft → Friends کھولیں اور LAN Worlds تلاش کریں — آپ کا سرور وہاں LAN world کے طور پر ظاہر ہونا چاہیے۔\r\n4. دوستوں کے ساتھ اپنے سرور میں شامل ہونے کے لیے اسے منتخب کریں۔\r\nنوٹس:\r\n- یقینی بنائیں کہ آپ اور آپ کے دوست ایک جیسی NAT/settings رکھتے ہوں جو دوستوں کی موجودگی کی اجازت دیتی ہیں۔\r\n- دوست موڈ پلیٹ فارم کے دوستی features پر انحصار کرتا ہے اور friend requests قبول کرنے کی ضرورت پڑ سکتی ہے۔",
+  "howToFriendsBody": "دوست موڈ: فوری مراحل:\r\n1. اگر ضرورت ہو تو اپنے کنسول یا پلیٹ فارم پر MCCompanion دوست اکاؤنٹ شامل کریں۔\r\n2. ایپ میں دوست موڈ فعال کریں اور relay کنفیگریشن بھیجیں (اگر لاگو ہو)۔\r\n3. اپنے کنسول پر Minecraft → Friends کھولیں اور LAN Worlds تلاش کریں, آپ کا سرور وہاں LAN world کے طور پر ظاہر ہونا چاہیے۔\r\n4. دوستوں کے ساتھ اپنے سرور میں شامل ہونے کے لیے اسے منتخب کریں۔\r\nنوٹس:\r\n- یقینی بنائیں کہ آپ اور آپ کے دوست ایک جیسی NAT/settings رکھتے ہوں جو دوستوں کی موجودگی کی اجازت دیتی ہیں۔\r\n- دوست موڈ پلیٹ فارم کے دوستی features پر انحصار کرتا ہے اور friend requests قبول کرنے کی ضرورت پڑ سکتی ہے۔",
   "@howToFriendsBody": {
     "description": "Detailed steps for Friends mode"
   },
@@ -302,7 +302,7 @@
   "@helpNintendoDnsSubtitle": {
     "description": "Short subtitle for Nintendo DNS troubleshooting tile"
   },
-  "helpNintendoDnsBody": "اگر Nintendo DNS موڈ کام نہیں کر رہا تو درج ذیل چیک کریں:\r\n\r\n1. تصدیق کریں کہ آپ نے ایپ سے DNS config بھیجی ہے (Send DNS Config)۔\r\n2. تصدیق کریں کہ آپ نے Switch پر relay IP کو Primary DNS کے طور پر لاگو کیا ہے۔\r\n3. یقینی بنائیں کہ منتخب کردہ relay سرور (EU/US) آن لائن ہے اور بہت زیادہ بوجھ میں نہیں۔\r\n4. کچھ نیٹ ورکس (مثلاً captive portals) کسٹم DNS کو روکتے ہیں — کسی دوسرے نیٹ ورک پر آزما کر دیکھیں۔\r\n\r\nاگر مسئلہ برقرار رہے تو ڈیبگ موڈ فعال کریں اور لاگز چیک کریں یا دوست موڈ متبادل آزمائیں۔",
+  "helpNintendoDnsBody": "اگر Nintendo DNS موڈ کام نہیں کر رہا تو درج ذیل چیک کریں:\r\n\r\n1. تصدیق کریں کہ آپ نے ایپ سے DNS config بھیجی ہے (Send DNS Config)۔\r\n2. تصدیق کریں کہ آپ نے Switch پر relay IP کو Primary DNS کے طور پر لاگو کیا ہے۔\r\n3. یقینی بنائیں کہ منتخب کردہ relay سرور (EU/US) آن لائن ہے اور بہت زیادہ بوجھ میں نہیں۔\r\n4. کچھ نیٹ ورکس (مثلاً captive portals) کسٹم DNS کو روکتے ہیں, کسی دوسرے نیٹ ورک پر آزما کر دیکھیں۔\r\n\r\nاگر مسئلہ برقرار رہے تو ڈیبگ موڈ فعال کریں اور لاگز چیک کریں یا دوست موڈ متبادل آزمائیں۔",
   "@helpNintendoDnsBody": {
     "description": "Detailed placeholder for Nintendo DNS troubleshooting"
   },
@@ -518,7 +518,7 @@
   "@checkBackLater": {
     "description": "Secondary empty state text on partner servers screen"
   },
-  "chooseUsernameSubtitle": "Choose a username to start connecting with other players.",
+  "chooseUsernameSubtitle": "ایک صارف نام چنیں تاکہ دوسرے کھلاڑی آپ کو تلاش کر سکیں۔",
   "@chooseUsernameSubtitle": {
     "description": "Subtitle shown when profile is not yet set up"
   },
@@ -1567,7 +1567,7 @@
   "feedbackTitleHintFeature": "مثلاً: سرور لسٹ میں کھلاڑی کی پنگ دکھائیں",
   "feedbackWhatHappened": "کیا ہوا؟",
   "feedbackDescribeIdea": "اپنا خیال بیان کریں",
-  "feedbackDescHintBug": "بگ بیان کریں — آپ نے کیا کیا، کیا توقع تھی اور اس کی بجائے کیا ہوا؟",
+  "feedbackDescHintBug": "بگ بیان کریں: آپ نے کیا کیا، کیا توقع تھی اور اس کی بجائے کیا ہوا؟",
   "feedbackDescHintFeature": "بتائیں کہ آپ کیا چاہتے ہیں اور یہ کیوں مفید ہوگا۔",
   "feedbackEmailLabel": "ای میل",
   "feedbackEmailHint": "تاکہ ہم آپ سے رابطہ کر سکیں",
@@ -1576,7 +1576,7 @@
   "feedbackSubmitFeature": "فیچر درخواست جمع کریں",
   "feedbackDisclaimer": "GitHub پر ایک عوامی ایشو بناتا ہے · پاس ورڈ شامل نہ کریں",
   "feedbackSuccessTitle": "فیڈبیک کے لیے شکریہ!",
-  "feedbackSuccessBody": "آپ کی رپورٹ جمع ہو گئی ہے اور GitHub پر ایک ایشو بنایا گیا ہے۔ ہم جلد از جلد دیکھیں گے۔",
+  "feedbackSuccessBody": "شکریہ! آپ کی رپورٹ موصول ہو گئی ہے۔ ہم جلد از جلد دیکھیں گے۔",
   "feedbackViewOnGithub": "GitHub پر دیکھیں",
   "feedbackSubmitAnother": "ایک اور جمع کریں",
   "feedbackBackToApp": "ایپ پر واپس جائیں",
@@ -1608,7 +1608,7 @@
   "skinMenuDelete": "حذف کریں",
   "rpScreenTitle": "ریسورس پیک",
   "rpWhatIsThis": "یہ کیا ہے؟",
-  "rpExplanation": "ایک ریسورس پیک آپ کے کنسول پر Minecraft کی ظاہری شکل بدلتا ہے — نئے بلاکس، رنگ یا آوازیں۔ نیچے .mcpack فائل کا لنک پیسٹ کریں، فعال کریں اور محفوظ کریں۔ MCCompanion ہر بار خودکار لوڈ کرتا ہے۔",
+  "rpExplanation": "ایک ریسورس پیک آپ کے کنسول پر Minecraft کی ظاہری شکل بدلتا ہے, نئے بلاکس، رنگ یا آوازیں۔ نیچے .mcpack فائل کا لنک پیسٹ کریں، فعال کریں اور محفوظ کریں۔ MCCompanion ہر بار خودکار لوڈ کرتا ہے۔",
   "rpPackUrlLabel": "پیک URL",
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "ریسورس پیک فعال کریں",
@@ -1627,8 +1627,8 @@
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 عوامی بکیٹ",
   "rpWorksDirect": "کوئی بھی براہ راست HTTPS لنک جو .mcpack یا .zip پر ختم ہو",
-  "rpNoDiscord": "Discord لنکس — کوئی .mcpack توسیع نہیں اور چند گھنٹوں میں ختم ہو جاتے ہیں",
-  "rpNoDrive": "Google Drive / Dropbox شیئر لنکس — براہ راست ڈاؤن لوڈ نہیں",
+  "rpNoDiscord": "Discord لنکس: کوئی .mcpack توسیع نہیں اور چند گھنٹوں میں ختم ہو جاتے ہیں",
+  "rpNoDrive": "Google Drive / Dropbox شیئر لنکس: براہ راست ڈاؤن لوڈ نہیں",
   "rpNoEncrypted": "خفیہ کردہ یا پاس ورڈ محفوظ پیک والے سرور",
   "rpWarnDiscord": "Discord لنکس ختم ہو جاتے ہیں اور کام کرنا بند کر دیتے ہیں۔ اس کی بجائے ایک مستقل ہوسٹ استعمال کریں۔",
   "rpWarnHttps": "URL کو https:// سے شروع ہونا چاہیے",
@@ -1638,17 +1638,17 @@
   "rpClearMinecraftTitle": "اس پیک کے ساتھ پہلی بار؟",
   "rpClearMinecraftBody": "Minecraft ریسورس پیک کو لوکل کیش میں محفوظ کرتا ہے۔ اگر آپ نے MCCompanion کا پیک فعال کرنے سے پہلے اس سرور سے کنیکট کیا تھا, تو Minecraft نے اصل پیک پہلے سے کیش کیا ہوا ہے۔",
   "rpClearStep1": "اپنے کنسول پر Minecraft کھولیں اور Settings → Storage میں جائیں",
-  "rpClearStep2": "Resource Packs کے ساتھ ‘Clear’ یا ‘Reset’ دبائیں — یہ تمام مقامی کیشڈ پیکس ہٹا دے گا",
-  "rpClearStep3": "MCCompanion کے ذریعے دوبارہ جڑیں — مرج کیا گیا پیک خودبخود ڈاؤنلوڈ ہو جائے گا",
+  "rpClearStep2": "Resource Packs کے ساتھ ‘Clear’ یا ‘Reset’ دبائیں, یہ تمام مقامی کیشڈ پیکس ہٹا دے گا",
+  "rpClearStep3": "MCCompanion کے ذریعے دوبارہ جڑیں: مرج کیا گیا پیک خودبخود ڈاؤنلوڈ ہو جائے گا",
   "rpRelayTitle": "پیک ٹھیک نہیں لگ رہا؟",
-  "rpRelayBody": "ریلے آپ کی overlay URL کو کیش کی بطور استعمال کرتے ہوئے مرج شدہ پیک کو 1 گھنٹے کیش میں رکھتا ہے۔ نیا مرج کروانے کے لیے: پیک URL تھوڑا بدلیں (مثلاً ?v=2 لگائیں) اور سیو کریں۔ اس کے بعد Minecraft کی پیک کیش بھی صاف کریں — مرج شدہ پیک اب بھی سرور کا UUID استعمال کرتا ہے، ورنہ Minecraft پرانی کیشڈ ورژن دکھاتا رہے گا۔",
-  "rpWorksGithubHint": "براہ راست ڈاؤنلوڈ لنک — ہمیشہ قابل رسائی",
-  "rpWorksCloudflareHint": "عوامی کلائڈ اسٹوریج — تیز اور قابل بھروسہ",
+  "rpRelayBody": "ریلے آپ کی overlay URL کو کیش کی بطور استعمال کرتے ہوئے مرج شدہ پیک کو 1 گھنٹے کیش میں رکھتا ہے۔ نیا مرج کروانے کے لیے: پیک URL تھوڑا بدلیں (مثلاً ?v=2 لگائیں) اور سیو کریں۔ اس کے بعد Minecraft کی پیک کیش بھی صاف کریں, مرج شدہ پیک اب بھی سرور کا UUID استعمال کرتا ہے، ورنہ Minecraft پرانی کیشڈ ورژن دکھاتا رہے گا۔",
+  "rpWorksGithubHint": "براہ راست ڈاؤنلوڈ لنک: ہمیشہ قابل رسائی",
+  "rpWorksCloudflareHint": "عوامی کلائڈ اسٹوریج: تیز اور قابل بھروسہ",
   "rpWorksDirectHint": "کوئی بھی عوامی HTTPS .mcpack یا .zip URL",
   "rpNoDiscordHint": "Discord CDN لنکس تھوڑی دیر بعد ختم ہو جاتے ہیں",
-  "rpNoDriveHint": "براہ راست ڈاؤنلوڈ نہیں — پریویو صفحے پر بھیجتا ہے",
+  "rpNoDriveHint": "براہ راست ڈاؤنلوڈ نہیں: پریویو صفحے پر بھیجتا ہے",
   "rpNoEncryptedHint": "MCCompanion انکرپٹیڈ پیک کا مواد یکجا نہیں کر سکتا",
-  "rpClearWhy": "Minecraft ریسورس پیکس کو ان کے UUID سے کیش کرتا ہے۔ مرج شدہ پیک سرور کا اصل UUID رکھتا ہے — اگر Minecraft نے پہلے کسی سیشن میں (MCCompanion فعال ہونے سے پہلے) سرور کا پیک کیش کیا ہوا ہے، تو نئی مرج شدہ ورژن ڈاؤنلوڈ نہیں کرے گا۔ کیش صاف کریں تاکہ Minecraft تازہ مرج شدہ پیک لوڈ کرے۔",
+  "rpClearWhy": "Minecraft ریسورس پیکس کو ان کے UUID سے کیش کرتا ہے۔ مرج شدہ پیک سرور کا اصل UUID رکھتا ہے, اگر Minecraft نے پہلے کسی سیشن میں (MCCompanion فعال ہونے سے پہلے) سرور کا پیک کیش کیا ہوا ہے، تو نئی مرج شدہ ورژن ڈاؤنلوڈ نہیں کرے گا۔ کیش صاف کریں تاکہ Minecraft تازہ مرج شدہ پیک لوڈ کرے۔",
   "rpUploadTab": "Upload",
   "rpUrlTab": "URL",
   "rpUploadButton": "Tap to select your pack",
@@ -1656,7 +1656,7 @@
   "rpUploading": "Uploading...",
   "rpMergerTitle": "RP ضم کنندہ",
   "rpMergerSubtitle": "4 تک ریسورس پیک یکجا کریں",
-  "rpMergerPriorityHint": "سب سے اوپر کا پیک سب سے زیادہ ترجیح رکھتا ہے — اس کی فائلیں تنازعات جیتتی ہیں۔",
+  "rpMergerPriorityHint": "سب سے اوپر کا پیک سب سے زیادہ ترجیح رکھتا ہے, اس کی فائلیں تنازعات جیتتی ہیں۔",
   "rpMergerTopBadge": "سرفہرست",
   "rpMergerAddPacks": "ریسورس پیک شامل کریں",
   "rpMergerAddAnother": "ایک اور پیک شامل کریں ({current}/4)",
@@ -1664,22 +1664,22 @@
   "rpMergerMerging": "ضم ہو رہا ہے…",
   "rpMergerButton": "{count} پیک ضم کریں",
   "rpMergerComplete": "ضم کرنا مکمل!",
-  "rpMergerConflicts": "{count} تنازع حل ہوئے — سرفہرست پیک جیتا۔",
+  "rpMergerConflicts": "{count} تنازع حل ہوئے: سرفہرست پیک جیتا۔",
   "rpMergerSetActive": "فعال ریسورس پیک کے طور پر سیٹ کریں",
   "rpMergerSetActiveToast": "فعال ریسورس پیک کے طور پر سیٹ کیا گیا",
   "rpMergerOpenButton": "ریسورس پیک ضم کریں",
   "rpMergerOpenSubtitle": "2–4 پیک کو ایک میں ملائیں",
   "rpDisabled": "غیر فعال",
   "rpNoPackSelected": "کوئی ریسورس پیک منتخب نہیں",
-  "rpActiveOnConnect": "فعال — کنیکٹ ہونے پر لاگو ہوتا ہے",
+  "rpActiveOnConnect": "فعال: کنیکٹ ہونے پر لاگو ہوتا ہے",
   "rpBrowseSubtitle": "منتخب شدہ پیک، استعمال کے لیے تیار",
   "rpBrowseEmpty": "ابھی کوئی پیک دستیاب نہیں",
   "rpBrowseEmptyHint": "منتخب شدہ پیکس کے لیے بعد میں دیکھیں۔",
   "rpReplaceFile": "کسی دوسری فائل سے تبدیل کریں",
   "rpDropToUpload": "اپ لوڈ کرنے کے لیے چھوڑیں",
-  "rpTabBrowseInfo": "MCCompanion کے منتخب کردہ پیکس براؤز کریں۔ فوری طور پر پیک کو فعال کرنے کے لیے استعمال کریں ٹیپ کریں — کوئی اپ لوڈ یا لنک کی ضرورت نہیں۔",
+  "rpTabBrowseInfo": "MCCompanion کے منتخب کردہ پیکس براؤز کریں۔ فوری طور پر پیک کو فعال کرنے کے لیے استعمال کریں ٹیپ کریں, کوئی اپ لوڈ یا لنک کی ضرورت نہیں۔",
   "rpTabUploadInfo": "اپنی .mcpack یا .zip فائل اپ لوڈ کریں۔ MCCompanion اسے کلاؤڈ میں محفوظ رکھتا ہے اور ہر بار کنیکٹ ہونے پر آپ کے کنسول پر بھیجتا ہے۔",
-  "rpTabUrlInfo": ".mcpack یا .zip فائل کا براہ راست ڈاؤن لوڈ لنک چسپاں کریں۔ URL عوامی طور پر قابل رسائی ہونا چاہیے — Discord یا Google Drive لنک نہیں۔",
+  "rpTabUrlInfo": ".mcpack یا .zip فائل کا براہ راست ڈاؤن لوڈ لنک چسپاں کریں۔ URL عوامی طور پر قابل رسائی ہونا چاہیے, Discord یا Google Drive لنک نہیں۔",
   "rpTabMergeInfo": "2 سے 4 پیکس کو ایک میں ضم کریں۔ ضم شدہ پیک MCCompanion Cloud پر اپ لوڈ ہوتا ہے اور خودکار طور پر فعال ہو جاتا ہے۔",
   "shareLabel": "شیئر کریں",
   "sectionMinecraftAccounts": "Minecraft اکاؤنٹس",
@@ -1770,10 +1770,23 @@
   "skinDefaultName": "میرا سکن",
   "skinUpdatedInCloud": "سکن کلاؤڈ میں اپ ڈیٹ ہو گیا",
   "skinByCreator": "{name} کی طرف سے",
-  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "@skinByCreator": {
+    "description": "Creator attribution",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "skinLikesCount": "{count} پسند",
-  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}},
-
+  "@skinLikesCount": {
+    "description": "Like count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionRecentActivity": "حالیہ سرگرمی",
   "activityNoEvents": "ابھی تک کوئی حالیہ سرگرمی نہیں۔",
   "activitySkinUploaded": "اسکن اپلوڈ کی",
@@ -1783,30 +1796,84 @@
   "activityPackRejected": "پیک منظور نہیں ہوا",
   "timeJustNow": "ابھی",
   "timeMinutesAgo": "{count} منٹ پہلے",
-  "@timeMinutesAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeHoursAgo": "{count} گھنٹے پہلے",
-  "@timeHoursAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeDaysAgo": "{count} دن پہلے",
-  "@timeDaysAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeMonthsAgo": "{count} مہینے پہلے",
-  "@timeMonthsAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMonthsAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionNotifications": "اطلاعات",
   "sectionNotificationTypes": "اطلاع کی اقسام",
   "notifMarkAllRead": "سب کو پڑھا ہوا نشان لگائیں",
   "notifEmpty": "ابھی کوئی اطلاع نہیں۔ لائکس، تبصرے اور دوستوں کی سرگرمی یہاں نظر آئے گی۔",
   "notifSomeone": "کسی نے",
   "notifSkinLiked": "{actor} نے آپ کی اسکن پسند کی",
-  "@notifSkinLiked": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifSkinLiked": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifCommentReceived": "{actor} نے آپ کی اسکن پر تبصرہ کیا",
-  "@notifCommentReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifCommentReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPackApproved": "پیک منظور ہوا",
   "notifPackRejected": "پیک منظور نہیں ہوا",
   "notifFriendRequest": "{actor} نے آپ کو دوستی کی درخواست بھیجی",
-  "@notifFriendRequest": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendRequest": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifFriendAccepted": "{actor} نے آپ کی درخواست قبول کی",
-  "@notifFriendAccepted": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendAccepted": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifMessageReceived": "{actor} کا نیا پیغام",
-  "@notifMessageReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifMessageReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPrefSkinLiked": "اسکن پسند",
   "notifPrefCommentReceived": "تبصرہ موصول",
   "notifPrefPackApproved": "پیک منظور",
@@ -1814,15 +1881,67 @@
   "notifPrefFriendRequest": "دوستی کی درخواست",
   "notifPrefFriendAccepted": "دوست شامل",
   "notifPrefMessageReceived": "نیا پیغام",
-
   "commentsTitle": "تبصرے",
   "commentsEmpty": "ابھی کوئی تبصرہ نہیں۔ پہلے بنیں!",
   "commentsPlaceholder": "تبصرہ لکھیں…",
-
   "loadMore": "مزید لوڈ کریں",
-
   "skinLayerInner": "اندرونی",
-  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "@skinLayerInner": {
+    "description": "Skin editor layer toggle, inner/base layer"
+  },
   "skinLayerOuter": "بیرونی",
-  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
+  "@skinLayerOuter": {
+    "description": "Skin editor layer toggle, outer/overlay layer"
+  },
+  "feedbackLoginRequiredTitle": "رائے بھیجنے کے لیے لاگ ان کریں",
+  "feedbackLoginRequiredBody": "رائے آپ کے MCCompanion اکاؤنٹ سے منسلک ہوتی ہے تاکہ ہم ایپ میں براہِ راست آپ کو جواب دے سکیں۔",
+  "feedbackLoginButton": "لاگ ان",
+  "reportBug": "رائے",
+  "rpBehaviorContentWarning": "اس پیک میں بیہیویئر پیک ڈیٹا شامل ہے جو سرورز پر کام نہیں کرے گا۔ ٹیکسچرز پھر بھی کام کریں گے۔",
+  "rpInvalidPackFormat": "یہ Java Edition پیک ہے اور تعاون یافتہ نہیں۔ براہ کرم Bedrock Edition ریسورس پیک استعمال کریں۔",
+  "wikiFavourites": "پسندیدہ",
+  "wikiRecent": "حال ہی میں دیکھے گئے",
+  "accountActions": "اکاؤنٹ",
+  "supportInboxTitle": "سپورٹ ان باکس",
+  "supportInboxSubtitle": "تمام سپورٹ چیٹس، سب ایڈمنز کے ساتھ شیئر",
+  "adminBadge": "ایڈمن",
+  "skinShareSubject": "Minecraft سکن",
+  "skinEditorTitle": "سکن ایڈیٹر",
+  "skinToolUndo": "واپس",
+  "skinSaveToMySkins": "میری سکنز میں محفوظ کریں",
+  "skinUpdateInCloud": "کلاؤڈ میں اپ ڈیٹ کریں",
+  "skinExportPng": "PNG ایکسپورٹ کریں",
+  "skinToolDraw": "بنائیں",
+  "skinToolFill": "بھریں",
+  "skinToolErase": "مٹائیں",
+  "customColour": "اپنی مرضی کا رنگ",
+  "featuredServerLabel": "نمایاں سرور",
+  "featuredServerTagline": "شامل ہوں اور کھیلنا شروع کریں۔",
+  "featuredServerPlay": "کھیلیں",
+  "rpUploadFailedCode": "اپ لوڈ ناکام ({code})",
+  "rpUploadFailed": "اپ لوڈ ناکام: {error}",
+  "rpLoadFailed": "پیک لوڈ نہیں ہو سکے",
+  "rpRetry": "دوبارہ کوشش کریں",
+  "rpSearchHint": "پیک تلاش کریں…",
+  "rpMergeFailed": "مرج ناکام: {error}",
+  "rpMergerSize": "سائز",
+  "rpMergerCreated": "بنایا گیا",
+  "rpMergerSourcePacks": "سورس پیکس",
+  "rpMergerDropToAdd": "شامل کرنے کے لیے چھوڑیں",
+  "rpMergerSavedMerges": "محفوظ مرجز",
+  "rpMergerUse": "استعمال کریں",
+  "supportInboxShared": "تمام ایڈمنز کے ساتھ شیئر",
+  "supportInboxEmpty": "ابھی کوئی سپورٹ چیٹ نہیں",
+  "supportReplyingAs": "آپ MCCompanion Support کے طور پر جواب دے رہے ہیں",
+  "supportReplyHint": "سپورٹ کے طور پر جواب دیں…",
+  "relayBlocked": "آپ کا IP یا اکاؤنٹ MCCompanion نے بلاک کر دیا ہے۔ اگر آپ کو لگتا ہے یہ غلطی ہے تو ہمارے Discord پر آئیں۔",
+  "relayBlockedWithReason": "آپ کا IP یا اکاؤنٹ MCCompanion نے بلاک کر دیا ہے۔\nوجہ: {reason}\nاگر آپ کو لگتا ہے یہ غلطی ہے تو ہمارے Discord پر آئیں۔",
+  "relayConfigFailed": "ریلے سیٹ نہیں ہو سکا (اسٹیٹس {code})۔ دوسرا ریلے آزمائیں یا ہمارے Discord پر آئیں۔",
+  "relayConfigFailedDetail": "ریلے سیٹ نہیں ہو سکا (اسٹیٹس {code}): {detail}۔ دوسرا ریلے آزمائیں یا ہمارے Discord پر آئیں۔",
+  "relayTimeout": "ریلے نے وقت پر جواب نہیں دیا۔",
+  "relayUnreachable": "ریلے تک نہیں پہنچ سکے۔",
+  "lookupNotFound": "کھلاڑی نہیں ملا۔",
+  "lookupNetworkError": "نیٹ ورک کی خرابی۔ دوبارہ کوشش کریں۔",
+  "lookupBedrockUnavailable": "Bedrock لک اپ اس وقت دستیاب نہیں۔",
+  "lookupFailed": "تلاش ناکام۔"
 }

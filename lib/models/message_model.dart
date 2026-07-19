@@ -40,6 +40,7 @@ class ConversationModel with DisplayableName {
   final DateTime lastMessageAt;
   final bool lastMessageIsMine;
   final int unreadCount;
+  final bool otherIsAdmin;
 
   const ConversationModel({
     required this.otherUid,
@@ -50,6 +51,7 @@ class ConversationModel with DisplayableName {
     required this.lastMessageAt,
     required this.lastMessageIsMine,
     required this.unreadCount,
+    this.otherIsAdmin = false,
   });
 
   factory ConversationModel.fromJson(Map<String, dynamic> j) => ConversationModel(
@@ -61,5 +63,6 @@ class ConversationModel with DisplayableName {
         lastMessageAt: DateTime.parse(j['lastMessageAt'] as String),
         lastMessageIsMine: j['lastMessageIsMine'] as bool,
         unreadCount: j['unreadCount'] as int,
+        otherIsAdmin: j['otherIsAdmin'] as bool? ?? false,
       );
 }

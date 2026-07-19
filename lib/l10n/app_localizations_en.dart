@@ -115,7 +115,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String helpText(Object appCreator) {
-    return 'Created by $appCreator.\n\nHow to use:\n1. Enter your Minecraft server address and port (default: 19132)\n   — or select a previously saved server from the dropdown\n2. (Optional) Choose a Relay Server (EU or US) closest to your location\n3. Click \"Start Broadcasting\" to begin\n4. On your console/device: Minecraft > Play > Friends\n5. You should see a LAN server called \"MCCompanion\"\n6. Click it to join your external server via MCCompanion\n\nNintendo Switch (DNS mode):\n1. Enable \"Nintendo Switch\" in the connection panel\n2. Select a Relay Server (EU or US)\n3. Click \"Send DNS Config\" — this sends your config to the relay\n   (it does NOT broadcast a LAN server)\n4. On your Switch, apply your MCCompanion DNS setup and join\n   using the server entry you use for MCCompanion\n\nNotes:\n- For LAN broadcasting, MCCompanion and console must be on the same local network.\n- Tip: Choose the relay server closest to you for the best performance.';
+    return 'Created by $appCreator.\n\nHow to use:\n1. Enter your Minecraft server address and port (default: 19132)\n   or select a previously saved server from the dropdown\n2. (Optional) Choose a Relay Server (EU or US) closest to your location\n3. Click \"Start Broadcasting\" to begin\n4. On your console/device: Minecraft > Play > Friends\n5. You should see a LAN server called \"MCCompanion\"\n6. Click it to join your external server via MCCompanion\n\nNintendo Switch (DNS mode):\n1. Enable \"Nintendo Switch\" in the connection panel\n2. Select a Relay Server (EU or US)\n3. Click \"Send DNS Config\": this sends your config to the relay\n   (it does NOT broadcast a LAN server)\n4. On your Switch, apply your MCCompanion DNS setup and join\n   using the server entry you use for MCCompanion\n\nNotes:\n- For LAN broadcasting, MCCompanion and console must be on the same local network.\n- Tip: Choose the relay server closest to you for the best performance.';
   }
 
   @override
@@ -151,7 +151,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get howToJavaBody =>
-      'Java Mode — quick steps:\n1. In the app, select Java mode.\n2. Enter your Java Edition server address and port (default: 25565).\n3. Press \"Start Java Mode\" — MCCompanion bridges the connection.\n4. Open Minecraft Bedrock and go to the Friends tab.\n5. Select the LAN server named \"MCCompanion\" to join the Java server.\n\n⚠️ Important warnings:\n- A valid Java Edition account (Microsoft) is required.\n- Some servers use anti-cheat systems that may detect and ban your account.\n- Certain servers explicitly prohibit Bedrock clients — always check the server rules.\n- MCCompanion is not responsible for any account bans, suspensions, or other account-related issues that may result from using this feature.\n- Use at your own risk.';
+      'Java Mode: quick steps:\n1. In the app, select Java mode.\n2. Enter your Java Edition server address and port (default: 25565).\n3. Press \"Start Java Mode\": MCCompanion bridges the connection.\n4. Open Minecraft Bedrock and go to the Friends tab.\n5. Select the LAN server named \"MCCompanion\" to join the Java server.\n\n⚠️ Important warnings:\n- A valid Java Edition account (Microsoft) is required.\n- Some servers use anti-cheat systems that may detect and ban your account.\n- Certain servers explicitly prohibit Bedrock clients, always check the server rules.\n- MCCompanion is not responsible for any account bans, suspensions, or other account-related issues that may result from using this feature.\n- Use at your own risk.';
 
   @override
   String get language => 'English';
@@ -214,7 +214,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bedrockBridge => 'Bedrock Bridge';
 
   @override
-  String get clientDisconnected => 'Client disconnected — Broadcast stopped';
+  String get clientDisconnected => 'Client disconnected: Broadcast stopped';
 
   @override
   String get pleaseEnterServer => '⚠️ Please enter a server address';
@@ -430,7 +430,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get howToNintendoBody =>
-      'Nintendo Switch — DNS mode (step-by-step):\n1. In the app enable \"Nintendo\" mode and select a Relay Server (EU or US).\n2. Tap \"Send DNS Config\" to push the DNS IP to the relay.\n3. On your Nintendo Switch go to System Settings → Internet → Internet Settings → (your network) → Change Settings → DNS and set the Primary DNS to the relay IP.\n4. Open Minecraft and join a public server; you will be redirected to your server using the relay DNS.\nNotes:\n- DNS mode does not broadcast a LAN server; it routes game traffic through the relay.\n- Revert your DNS after you are done if you need normal network behavior.';
+      'Nintendo Switch: DNS mode (step-by-step):\n1. In the app enable \"Nintendo\" mode and select a Relay Server (EU or US).\n2. Tap \"Send DNS Config\" to push the DNS IP to the relay.\n3. On your Nintendo Switch go to System Settings → Internet → Internet Settings → (your network) → Change Settings → DNS and set the Primary DNS to the relay IP.\n4. Open Minecraft and join a public server; you will be redirected to your server using the relay DNS.\nNotes:\n- DNS mode does not broadcast a LAN server; it routes game traffic through the relay.\n- Revert your DNS after you are done if you need normal network behavior.';
 
   @override
   String get howToFriendsTitle => 'Friends mode';
@@ -440,7 +440,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get howToFriendsBody =>
-      'Friends mode — quick steps:\n1. Add the MCCompanion friend account (relay friend) on your console or platform if required.\n2. In the app enable Friends mode and send the relay configuration (if applicable).\n3. On your console open Minecraft → Friends and search for LAN Worlds — your server should appear there as a LAN world.\n4. Select it to join your server with friends.\nNotes:\n- Make sure both you and your friends have the same NAT/settings that allow friend presence.\n- Friend-mode relies on platform friend features and may require accepting friend requests.';
+      'Friends mode: quick steps:\n1. Add the MCCompanion friend account (relay friend) on your console or platform if required.\n2. In the app enable Friends mode and send the relay configuration (if applicable).\n3. On your console open Minecraft → Friends and search for LAN Worlds, your server should appear there as a LAN world.\n4. Select it to join your server with friends.\nNotes:\n- Make sure both you and your friends have the same NAT/settings that allow friend presence.\n- Friend-mode relies on platform friend features and may require accepting friend requests.';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion does not appear';
@@ -471,7 +471,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get helpNintendoDnsBody =>
-      'If Nintendo DNS mode isn\'t working, check the following:\n\n1. Confirm you pushed DNS config from the app (Send DNS Config).\n2. Verify you applied the relay IP as Primary DNS on the Switch.\n3. Ensure the relay server selected (EU/US) is online and not overloaded.\n4. Some networks (e.g., captive portals) prevent custom DNS — test on a different network.\n\nIf issues persist, enable Debug Mode and check logs or try the Friends-mode alternative.';
+      'If Nintendo DNS mode isn\'t working, check the following:\n\n1. Confirm you pushed DNS config from the app (Send DNS Config).\n2. Verify you applied the relay IP as Primary DNS on the Switch.\n3. Ensure the relay server selected (EU/US) is online and not overloaded.\n4. Some networks (e.g., captive portals) prevent custom DNS, test on a different network.\n\nIf issues persist, enable Debug Mode and check logs or try the Friends-mode alternative.';
 
   @override
   String get helpFriendsModeTitle => 'Friends mode does not work';
@@ -950,7 +950,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get chooseUsernameSubtitle =>
-      'Choose a username to start connecting with other players.';
+      'Pick a username so other players can find you.';
 
   @override
   String get createProfile => 'Create Profile';
@@ -1757,7 +1757,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get feedbackDescHintBug =>
-      'Describe the bug — what did you do, what did you expect, and what happened instead?';
+      'Describe the bug: what did you do, what did you expect, and what happened instead?';
 
   @override
   String get feedbackDescHintFeature =>
@@ -1787,7 +1787,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get feedbackSuccessBody =>
-      'Your report has been submitted and a GitHub issue has been created. We\'ll look into it as soon as possible.';
+      'Thanks! Your report is in. We\'ll take a look as soon as we can.';
 
   @override
   String get feedbackViewOnGithub => 'View on GitHub';
@@ -2045,7 +2045,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get rpMergerPriorityHint =>
-      'Top pack has highest priority — its files win conflicts.';
+      'Top pack has highest priority: its files win conflicts.';
 
   @override
   String get rpMergerTopBadge => 'TOP';
@@ -2074,7 +2074,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String rpMergerConflicts(int count) {
-    return '$count conflict(s) resolved — top pack won.';
+    return '$count conflict(s) resolved: top pack won.';
   }
 
   @override
@@ -2096,7 +2096,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rpNoPackSelected => 'No resource pack selected';
 
   @override
-  String get rpActiveOnConnect => 'Active — applied on connect';
+  String get rpActiveOnConnect => 'Active: applied on connect';
 
   @override
   String get rpBrowseSubtitle => 'Curated packs, ready to use';
@@ -2115,7 +2115,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get rpTabBrowseInfo =>
-      'Browse curated packs selected by MCCompanion. Tap Use to activate a pack instantly — no upload or link needed.';
+      'Browse curated packs selected by MCCompanion. Tap Use to activate a pack instantly, no upload or link needed.';
 
   @override
   String get rpTabUploadInfo =>
@@ -2123,7 +2123,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get rpTabUrlInfo =>
-      'Paste a direct download link to a .mcpack or .zip file. The URL must be publicly accessible — no Discord or Google Drive links.';
+      'Paste a direct download link to a .mcpack or .zip file. The URL must be publicly accessible, no Discord or Google Drive links.';
 
   @override
   String get rpTabMergeInfo =>
@@ -2427,4 +2427,155 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get skinLayerOuter => 'Outer';
+
+  @override
+  String get feedbackLoginRequiredTitle => 'Log in to send feedback';
+
+  @override
+  String get feedbackLoginRequiredBody =>
+      'Feedback is linked to your MCCompanion account so we can reply to you directly in the app.';
+
+  @override
+  String get feedbackLoginButton => 'Log in';
+
+  @override
+  String get supportInboxTitle => 'Support inbox';
+
+  @override
+  String get supportInboxSubtitle =>
+      'Every support chat, shared with all admins';
+
+  @override
+  String get adminBadge => 'Admin';
+
+  @override
+  String get skinShareSubject => 'Minecraft Skin';
+
+  @override
+  String get skinEditorTitle => 'Skin Editor';
+
+  @override
+  String get skinToolUndo => 'Undo';
+
+  @override
+  String get skinSaveToMySkins => 'Save to My Skins';
+
+  @override
+  String get skinUpdateInCloud => 'Update in cloud';
+
+  @override
+  String get skinExportPng => 'Export PNG';
+
+  @override
+  String get skinToolDraw => 'Draw';
+
+  @override
+  String get skinToolFill => 'Fill';
+
+  @override
+  String get skinToolErase => 'Erase';
+
+  @override
+  String get customColour => 'Custom colour';
+
+  @override
+  String get featuredServerLabel => 'FEATURED SERVER';
+
+  @override
+  String get featuredServerTagline => 'Hop in and start playing.';
+
+  @override
+  String get featuredServerPlay => 'Play';
+
+  @override
+  String rpUploadFailedCode(int code) {
+    return 'Upload failed ($code)';
+  }
+
+  @override
+  String rpUploadFailed(String error) {
+    return 'Upload failed: $error';
+  }
+
+  @override
+  String get rpLoadFailed => 'Could not load packs';
+
+  @override
+  String get rpRetry => 'Retry';
+
+  @override
+  String get rpSearchHint => 'Search packs…';
+
+  @override
+  String rpMergeFailed(String error) {
+    return 'Merge failed: $error';
+  }
+
+  @override
+  String get rpMergerSize => 'Size';
+
+  @override
+  String get rpMergerCreated => 'Created';
+
+  @override
+  String get rpMergerSourcePacks => 'Source packs';
+
+  @override
+  String get rpMergerDropToAdd => 'Drop to add';
+
+  @override
+  String get rpMergerSavedMerges => 'Saved merges';
+
+  @override
+  String get rpMergerUse => 'Use';
+
+  @override
+  String get supportInboxShared => 'Shared with all admins';
+
+  @override
+  String get supportInboxEmpty => 'No support chats yet';
+
+  @override
+  String get supportReplyingAs => 'Replying as MCCompanion Support';
+
+  @override
+  String get supportReplyHint => 'Reply as support…';
+
+  @override
+  String get relayBlocked =>
+      'Your IP or account is blocked by MCCompanion. If you think this is a mistake, join our Discord.';
+
+  @override
+  String relayBlockedWithReason(String reason) {
+    return 'Your IP or account is blocked by MCCompanion.\nReason: $reason\nIf you think this is a mistake, join our Discord.';
+  }
+
+  @override
+  String relayConfigFailed(int code) {
+    return 'Could not set up the relay (status $code). Try another relay, or join our Discord.';
+  }
+
+  @override
+  String relayConfigFailedDetail(int code, String detail) {
+    return 'Could not set up the relay (status $code): $detail. Try another relay, or join our Discord.';
+  }
+
+  @override
+  String get relayTimeout => 'The relay did not respond in time.';
+
+  @override
+  String get relayUnreachable => 'Could not reach the relay.';
+
+  @override
+  String get lookupNotFound => 'Player not found.';
+
+  @override
+  String get lookupNetworkError => 'Network error. Please try again.';
+
+  @override
+  String get lookupBedrockUnavailable =>
+      'Bedrock lookup is not available right now.';
+
+  @override
+  String get lookupFailed => 'Lookup failed.';
 }

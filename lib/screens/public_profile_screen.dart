@@ -11,6 +11,7 @@ import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../models/user_model.dart';
 import '../services/user_service.dart';
+import 'chat_screen.dart';
 import '../widgets/skin_3d_viewer.dart';
 import '../widgets/navigation/bottom_nav_bar.dart';
 import '../widgets/components/app_toast.dart';
@@ -41,6 +42,8 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
   bool _loading = true;
   String? _friendStatus;
   bool _actionLoading = false;
+  String _targetUid = '';
+  bool _isTargetAdmin = false;
 
   @override
   void initState() {
@@ -55,6 +58,8 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
     setState(() {
       _user = result.user;
       _friendStatus = result.friendshipStatus;
+      _targetUid = result.targetUid;
+      _isTargetAdmin = result.isTargetAdmin;
       _loading = false;
     });
   }
@@ -261,11 +266,64 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
                     fontSize: 13,
                   ),
                 ),
+                if (_isTargetAdmin) ...[
+                  const SizedBox(height: 6),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                    decoration: BoxDecoration(
+                      color: AppTheme.accent.withValues(alpha: 0.12),
+                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(color: AppTheme.accent.withValues(alpha: 0.35)),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.shield_rounded, size: 11, color: AppTheme.accent),
+                        const SizedBox(width: 4),
+                        Text(
+                          'MCCompanion Admin',
+                          style: TextStyle(
+                            color: AppTheme.accent,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ],
             ),
           ),
           const SizedBox(height: 20),
 
+          if (UserService.isAdmin) ...[
+            OutlinedButton.icon(
+              onPressed: () {
+                final u = _user!;
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => ChatScreen(
+                    friend: FriendModel(
+                      firebaseUid: _targetUid,
+                      username: u.username,
+                      displayName: u.displayName,
+                      avatarUrl: u.avatarUrl,
+                      online: false,
+                      isAdmin: _isTargetAdmin,
+                    ),
+                  ),
+                ));
+              },
+              icon: const Icon(Icons.message_rounded, size: 16),
+              label: const Text('Message user'),
+              style: OutlinedButton.styleFrom(
+                foregroundColor: AppTheme.accent,
+                side: BorderSide(color: AppTheme.accent.withValues(alpha: 0.40)),
+                padding: const EdgeInsets.symmetric(vertical: 12),
+              ),
+            ),
+            const SizedBox(height: 8),
+          ],
           _buildFriendButton(),
           const SizedBox(height: 16),
 

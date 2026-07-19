@@ -4,7 +4,9 @@ import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../models/message_model.dart';
 import '../services/message_service.dart';
+import '../services/user_service.dart';
 import 'chat_screen.dart';
+import 'support_inbox_screen.dart';
 import '../models/user_model.dart';
 
 class ConversationsScreen extends StatefulWidget {
@@ -55,6 +57,7 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
       displayName: conv.displayName,
       avatarUrl: conv.avatarUrl,
       online: false,
+      isAdmin: conv.otherIsAdmin,
     );
     await Navigator.of(
       context,
@@ -73,7 +76,9 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
       );
     }
 
-    if (_conversations.isEmpty) {
+    final isAdmin = UserService.isAdmin;
+
+    if (_conversations.isEmpty && !isAdmin) {
       final l = AppLocalizations.of(context)!;
       return Center(
         child: Padding(
@@ -107,17 +112,94 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
       );
     }
 
+    final extraCount = isAdmin ? 1 : 0;
+
     return RefreshIndicator(
       color: AppTheme.accent,
       backgroundColor: AppTheme.surfaceRaised,
       onRefresh: _load,
-      child: ListView.separated(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        itemCount: _conversations.length,
-        separatorBuilder: (_, __) => const SizedBox(height: 8),
-        itemBuilder: (_, i) => _ConvTile(
-          conv: _conversations[i],
-          onTap: () => _openChat(_conversations[i]),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 720),
+          child: ListView.separated(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            itemCount: _conversations.length + extraCount,
+            separatorBuilder: (_, __) => const SizedBox(height: 8),
+            itemBuilder: (_, i) {
+              if (isAdmin && i == 0) {
+                return _SupportInboxTile(
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => const SupportInboxScreen(),
+                    ),
+                  ),
+                );
+              }
+              final conv = _conversations[i - extraCount];
+              return _ConvTile(conv: conv, onTap: () => _openChat(conv));
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _SupportInboxTile extends StatelessWidget {
+  final VoidCallback onTap;
+  const _SupportInboxTile({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+        decoration: BoxDecoration(
+          color: AppTheme.accent.withValues(alpha: 0.08),
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: AppTheme.accent.withValues(alpha: 0.35)),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 42,
+              height: 42,
+              decoration: BoxDecoration(
+                color: AppTheme.accent.withValues(alpha: 0.15),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(
+                Icons.support_agent_rounded,
+                size: 22,
+                color: AppTheme.accent,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    AppLocalizations.of(context)!.supportInboxTitle,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      color: AppTheme.accent,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    AppLocalizations.of(context)!.supportInboxSubtitle,
+                    style: TextStyle(fontSize: 12, color: AppTheme.textMuted),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+            Icon(Icons.chevron_right_rounded, size: 20, color: AppTheme.accent),
+          ],
         ),
       ),
     );
@@ -157,13 +239,47 @@ class _ConvTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    conv.displayLabel,
-                    style: TextStyle(
-                      color: AppTheme.textPrimary,
-                      fontWeight: hasUnread ? FontWeight.w700 : FontWeight.w600,
-                      fontSize: 14,
-                    ),
+                  Row(
+                    children: [
+                      Flexible(
+                        child: Text(
+                          conv.displayLabel,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: AppTheme.textPrimary,
+                            fontWeight: hasUnread
+                                ? FontWeight.w700
+                                : FontWeight.w600,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                      if (conv.otherIsAdmin) ...[
+                        const SizedBox(width: 6),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 5,
+                            vertical: 2,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppTheme.accent.withValues(alpha: 0.15),
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(
+                              color: AppTheme.accent.withValues(alpha: 0.35),
+                            ),
+                          ),
+                          child: Text(
+                            AppLocalizations.of(context)!.adminBadge,
+                            style: TextStyle(
+                              color: AppTheme.accent,
+                              fontSize: 9,
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 0.4,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
                   ),
                   const SizedBox(height: 2),
                   Text(

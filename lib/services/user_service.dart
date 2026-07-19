@@ -10,6 +10,9 @@ class UserService {
   static const String _base = AppConstants.apiBase;
   static const Duration _timeout = Duration(seconds: 8);
 
+  static bool _isAdmin = false;
+  static bool get isAdmin => _isAdmin;
+
   static Future<UserModel?> getMe() async {
     try {
       final res = await http
@@ -19,10 +22,9 @@ class UserService {
           )
           .timeout(_timeout);
       if (res.statusCode == 200) {
-        return UserModel.fromJson(
-          (jsonDecode(res.body) as Map<String, dynamic>)['user']
-              as Map<String, dynamic>,
-        );
+        final body = jsonDecode(res.body) as Map<String, dynamic>;
+        _isAdmin = body['isAdmin'] as bool? ?? false;
+        return UserModel.fromJson(body['user'] as Map<String, dynamic>);
       }
     } catch (e) {
       debugPrint('[UserService.getMe] $e');
@@ -493,7 +495,6 @@ class UserService {
     return null;
   }
 
-  // @deprecated — use getProfileWithFriendship() instead
   static Future<String> getFriendshipStatus(String username) async {
     try {
       final res = await http
@@ -513,7 +514,7 @@ class UserService {
     return 'none';
   }
 
-  static Future<({UserModel? user, String friendshipStatus})>
+  static Future<({UserModel? user, String friendshipStatus, String targetUid, bool isTargetAdmin})>
   getProfileWithFriendship(String username) async {
     try {
       final res = await http
@@ -529,12 +530,14 @@ class UserService {
               ? UserModel.fromJson(body['user'] as Map<String, dynamic>)
               : null,
           friendshipStatus: body['friendshipStatus'] as String? ?? 'none',
+          targetUid: body['targetUid'] as String? ?? '',
+          isTargetAdmin: body['isAdmin'] as bool? ?? false,
         );
       }
     } catch (e) {
       debugPrint('[UserService.getProfileWithFriendship] $e');
     }
-    return (user: null, friendshipStatus: 'none');
+    return (user: null, friendshipStatus: 'none', targetUid: '', isTargetAdmin: false);
   }
 
   static Future<List<UserModel>> searchUsers(String query) async {

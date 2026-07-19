@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import '../theme/app_theme.dart';
 import '../services/feedback_service.dart';
+import '../services/auth_service.dart';
 import '../widgets/components/app_toast.dart';
 import '../l10n/app_localizations.dart';
 
@@ -12,7 +13,8 @@ enum _FeedbackType { bug, feature }
 
 class FeedbackScreen extends StatefulWidget {
   final VoidCallback? onBack;
-  const FeedbackScreen({super.key, this.onBack});
+  final VoidCallback? onGoToLogin;
+  const FeedbackScreen({super.key, this.onBack, this.onGoToLogin});
 
   @override
   State<FeedbackScreen> createState() => _FeedbackScreenState();
@@ -21,7 +23,6 @@ class FeedbackScreen extends StatefulWidget {
 class _FeedbackScreenState extends State<FeedbackScreen> {
   final _titleCtrl = TextEditingController();
   final _descCtrl = TextEditingController();
-  final _emailCtrl = TextEditingController();
 
   _FeedbackType _type = _FeedbackType.bug;
   bool _submitting = false;
@@ -41,7 +42,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   void dispose() {
     _titleCtrl.dispose();
     _descCtrl.dispose();
-    _emailCtrl.dispose();
     super.dispose();
   }
 
@@ -62,19 +62,12 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
       return;
     }
 
-    final email = _emailCtrl.text.trim();
-    if (email.isEmpty || !RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(email)) {
-      AppToast.show(context, message: l.feedbackEmailInvalid, icon: Icons.warning_rounded, color: AppTheme.warning);
-      return;
-    }
-
     setState(() => _submitting = true);
 
     final result = await FeedbackService.submit(
       type: _isBug ? 'bug' : 'feature',
       title: title,
       description: desc,
-      email: email,
       appVersion: _appVersion,
     );
 
@@ -99,7 +92,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   void _reset() {
     _titleCtrl.clear();
     _descCtrl.clear();
-    _emailCtrl.clear();
     setState(() {
       _success = false;
       _issueUrl = null;
@@ -110,6 +102,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   @override
   Widget build(BuildContext context) {
     final isDesktop = Platform.isMacOS || Platform.isWindows || Platform.isLinux;
+    final loggedIn = AuthService.currentUser != null;
 
     return SwipeBack(
       onBack: widget.onBack ?? () {},
@@ -117,22 +110,84 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
         children: [
           _Header(onBack: widget.onBack, isBug: _isBug, typeColor: _typeColor),
           Expanded(
-            child: _success
-                ? _SuccessView(issueUrl: _issueUrl, onReset: _reset, onBack: widget.onBack)
-                : _FormView(
-                    type: _type,
-                    onTypeChange: (t) => setState(() => _type = t),
-                    titleCtrl: _titleCtrl,
-                    descCtrl: _descCtrl,
-                    emailCtrl: _emailCtrl,
-                    submitting: _submitting,
-                    onSubmit: _submit,
-                    isBug: _isBug,
-                    typeColor: _typeColor,
-                    isDesktop: isDesktop,
-                  ),
+            child: !loggedIn
+                ? _LoginRequiredView(onGoToLogin: widget.onGoToLogin, onBack: widget.onBack)
+                : _success
+                    ? _SuccessView(issueUrl: _issueUrl, onReset: _reset, onBack: widget.onBack)
+                    : _FormView(
+                        type: _type,
+                        onTypeChange: (t) => setState(() => _type = t),
+                        titleCtrl: _titleCtrl,
+                        descCtrl: _descCtrl,
+                        submitting: _submitting,
+                        onSubmit: _submit,
+                        isBug: _isBug,
+                        typeColor: _typeColor,
+                        isDesktop: isDesktop,
+                      ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _LoginRequiredView extends StatelessWidget {
+  final VoidCallback? onGoToLogin;
+  final VoidCallback? onBack;
+
+  const _LoginRequiredView({required this.onGoToLogin, required this.onBack});
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(32),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                color: AppTheme.accent.withValues(alpha: 0.12),
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(color: AppTheme.accent.withValues(alpha: 0.30)),
+              ),
+              child: Icon(Icons.person_rounded, size: 28, color: AppTheme.accent),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              l.feedbackLoginRequiredTitle,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: AppTheme.textPrimary),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              l.feedbackLoginRequiredBody,
+              style: TextStyle(fontSize: 13, color: AppTheme.textSecondary, height: 1.6),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 24),
+            ElevatedButton(
+              onPressed: onGoToLogin,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppTheme.accent,
+                foregroundColor: Colors.black,
+                padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 13),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                elevation: 0,
+              ),
+              child: Text(l.feedbackLoginButton, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700)),
+            ),
+            const SizedBox(height: 12),
+            TextButton(
+              onPressed: onBack,
+              child: Text(l.feedbackBackToApp, style: TextStyle(color: AppTheme.textMuted, fontSize: 13)),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -256,7 +311,6 @@ class _FormView extends StatelessWidget {
   final ValueChanged<_FeedbackType> onTypeChange;
   final TextEditingController titleCtrl;
   final TextEditingController descCtrl;
-  final TextEditingController emailCtrl;
   final bool submitting;
   final VoidCallback onSubmit;
   final bool isBug;
@@ -268,7 +322,6 @@ class _FormView extends StatelessWidget {
     required this.onTypeChange,
     required this.titleCtrl,
     required this.descCtrl,
-    required this.emailCtrl,
     required this.submitting,
     required this.onSubmit,
     required this.isBug,
@@ -314,22 +367,6 @@ class _FormView extends StatelessWidget {
                 alignLabelWithHint: true,
                 counterText: '',
               ),
-            ),
-            const SizedBox(height: 16),
-            _Label(l.feedbackEmailLabel, required: true),
-            const SizedBox(height: 8),
-            TextField(
-              controller: emailCtrl,
-              keyboardType: TextInputType.emailAddress,
-              style: TextStyle(fontSize: 14, color: AppTheme.textPrimary),
-              decoration: InputDecoration(
-                hintText: l.feedbackEmailHint,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              l.feedbackEmailNote,
-              style: TextStyle(fontSize: 11, color: AppTheme.textMuted),
             ),
             const SizedBox(height: 28),
             SizedBox(

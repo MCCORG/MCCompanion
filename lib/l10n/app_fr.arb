@@ -15,7 +15,7 @@
   "aternosSubtext": "Créez votre propre serveur Minecraft gratuit",
   "howToUseMenu": "Comment utiliser",
   "support": "Assistance",
-  "helpText": "Créé par {appCreator}.\r\n\r\nComment utiliser :\r\n1. Saisissez l'adresse et le port de votre serveur Minecraft (par défaut : 19132)\r\n   — ou sélectionnez un serveur précédemment enregistré dans la liste déroulante\r\n2. (Optionnel) Choisissez un serveur relais (EU ou US) proche de votre position\r\n3. Cliquez sur \\\"Démarrer la diffusion\\\" pour commencer\r\n4. Sur votre console/appareil : Minecraft > Jouer > Amis\r\n5. Vous devriez voir un serveur LAN appelé \\\"MCCompanion\\\"\r\n6. Cliquez dessus pour rejoindre votre serveur externe via MCCompanion\r\n\r\nNintendo Switch (mode DNS) :\r\n1. Activez \\\"Nintendo Switch\\\" dans le panneau de connexion\r\n2. Sélectionnez un serveur relais (EU ou US)\r\n3. Cliquez sur \\\"Envoyer la configuration DNS\\\" — cela envoie votre configuration au relais\r\n   (cela ne diffuse PAS de serveur LAN)\r\n4. Sur votre Switch, appliquez votre configuration DNS MCCompanion et rejoignez\r\n   en utilisant l'entrée de serveur que vous utilisez pour MCCompanion\r\n\r\nNotes :\r\n- Pour la diffusion LAN, MCCompanion et la console doivent être sur le même réseau local.\r\n- Astuce : choisissez le serveur relais le plus proche de vous pour obtenir les meilleures performances.",
+  "helpText": "Créé par {appCreator}.\r\n\r\nComment utiliser :\r\n1. Saisissez l'adresse et le port de votre serveur Minecraft (par défaut : 19132)\r\n  , ou sélectionnez un serveur précédemment enregistré dans la liste déroulante\r\n2. (Optionnel) Choisissez un serveur relais (EU ou US) proche de votre position\r\n3. Cliquez sur \\\"Démarrer la diffusion\\\" pour commencer\r\n4. Sur votre console/appareil : Minecraft > Jouer > Amis\r\n5. Vous devriez voir un serveur LAN appelé \\\"MCCompanion\\\"\r\n6. Cliquez dessus pour rejoindre votre serveur externe via MCCompanion\r\n\r\nNintendo Switch (mode DNS) :\r\n1. Activez \\\"Nintendo Switch\\\" dans le panneau de connexion\r\n2. Sélectionnez un serveur relais (EU ou US)\r\n3. Cliquez sur \\\"Envoyer la configuration DNS\\\", cela envoie votre configuration au relais\r\n   (cela ne diffuse PAS de serveur LAN)\r\n4. Sur votre Switch, appliquez votre configuration DNS MCCompanion et rejoignez\r\n   en utilisant l'entrée de serveur que vous utilisez pour MCCompanion\r\n\r\nNotes :\r\n- Pour la diffusion LAN, MCCompanion et la console doivent être sur le même réseau local.\r\n- Astuce : choisissez le serveur relais le plus proche de vous pour obtenir les meilleures performances.",
   "@helpText": {
     "description": "Detailed help / instructions shown in the help dialog",
     "placeholders": {
@@ -37,7 +37,7 @@
   "@howToJavaSubtitle": {
     "description": "Short subtitle for Java menu tile"
   },
-  "howToJavaBody": "Mode Java — étapes rapides :\n1. Dans l'application, sélectionnez le mode Java.\n2. Saisissez l'adresse et le port de votre serveur Java Edition (par défaut : 25565).\n3. Appuyez sur \"Démarrer le mode Java\" — MCCompanion fera le lien entre les connexions.\n4. Ouvrez Minecraft Bedrock et allez dans l'onglet Amis.\n5. Sélectionnez le serveur LAN nommé \"MCCompanion\" pour rejoindre le serveur Java.\n\n⚠️ Avertissements importants :\n- Un compte Java Edition valide (Microsoft) est requis.\n- Certains serveurs utilisent des systèmes anti-triche qui peuvent détecter et bannir votre compte.\n- Certains serveurs interdisent explicitement les clients Bedrock — vérifiez toujours les règles du serveur.\n- MCCompanion n'est pas responsable des bannissements, suspensions ou autres problèmes liés au compte pouvant résulter de l'utilisation de cette fonctionnalité.\n- Utilisation à vos risques et périls.",
+  "howToJavaBody": "Mode Java: étapes rapides :\n1. Dans l'application, sélectionnez le mode Java.\n2. Saisissez l'adresse et le port de votre serveur Java Edition (par défaut : 25565).\n3. Appuyez sur \"Démarrer le mode Java\": MCCompanion fera le lien entre les connexions.\n4. Ouvrez Minecraft Bedrock et allez dans l'onglet Amis.\n5. Sélectionnez le serveur LAN nommé \"MCCompanion\" pour rejoindre le serveur Java.\n\n⚠️ Avertissements importants :\n- Un compte Java Edition valide (Microsoft) est requis.\n- Certains serveurs utilisent des systèmes anti-triche qui peuvent détecter et bannir votre compte.\n- Certains serveurs interdisent explicitement les clients Bedrock, vérifiez toujours les règles du serveur.\n- MCCompanion n'est pas responsable des bannissements, suspensions ou autres problèmes liés au compte pouvant résulter de l'utilisation de cette fonctionnalité.\n- Utilisation à vos risques et périls.",
   "@howToJavaBody": {
     "description": "Detailed steps for Java mode how-to modal"
   },
@@ -121,7 +121,7 @@
   "@bedrockBridge": {
     "description": "Subtitle on splash screen"
   },
-  "clientDisconnected": "Client déconnecté — diffusion arrêtée",
+  "clientDisconnected": "Client déconnecté: diffusion arrêtée",
   "@clientDisconnected": {
     "description": "Snackbar shown when clients disconnect automatically"
   },
@@ -254,7 +254,7 @@
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
-  "howToNintendoBody": "Nintendo Switch — mode DNS (étape par étape) :\r\n1. Dans l'application, activez le mode \\\"Nintendo\\\" et sélectionnez un serveur relais (EU ou US).\r\n2. Appuyez sur \\\"Envoyer la configuration DNS\\\" pour envoyer l'IP DNS au relais.\r\n3. Sur votre Nintendo Switch, allez dans Paramètres de la console → Internet → Paramètres Internet → (votre réseau) → Modifier les paramètres → DNS et définissez le DNS primaire sur l'IP du relais.\r\n4. Ouvrez Minecraft et rejoignez un serveur public ; vous serez redirigé vers votre serveur en utilisant le DNS du relais.\r\nNotes :\r\n- Le mode DNS ne diffuse pas de serveur LAN ; il achemine le trafic du jeu via le relais.\r\n- Réinitialisez votre DNS lorsque vous avez terminé si vous avez besoin d'un comportement réseau normal.",
+  "howToNintendoBody": "Nintendo Switch: mode DNS (étape par étape) :\r\n1. Dans l'application, activez le mode \\\"Nintendo\\\" et sélectionnez un serveur relais (EU ou US).\r\n2. Appuyez sur \\\"Envoyer la configuration DNS\\\" pour envoyer l'IP DNS au relais.\r\n3. Sur votre Nintendo Switch, allez dans Paramètres de la console → Internet → Paramètres Internet → (votre réseau) → Modifier les paramètres → DNS et définissez le DNS primaire sur l'IP du relais.\r\n4. Ouvrez Minecraft et rejoignez un serveur public ; vous serez redirigé vers votre serveur en utilisant le DNS du relais.\r\nNotes :\r\n- Le mode DNS ne diffuse pas de serveur LAN ; il achemine le trafic du jeu via le relais.\r\n- Réinitialisez votre DNS lorsque vous avez terminé si vous avez besoin d'un comportement réseau normal.",
   "@howToNintendoBody": {
     "description": "Detailed steps for Nintendo Switch DNS setup"
   },
@@ -266,7 +266,7 @@
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
   },
-  "howToFriendsBody": "Mode Amis — étapes rapides :\r\n1. Ajoutez le compte ami MCCompanion (relay friend) sur votre console ou votre plateforme si nécessaire.\r\n2. Dans l'application, activez le mode Amis et envoyez la configuration du relais (si applicable).\r\n3. Sur votre console, ouvrez Minecraft → Amis et recherchez Mondes LAN — votre serveur devrait y apparaître comme un monde LAN.\r\n4. Sélectionnez-le pour rejoindre votre serveur avec des amis.\r\nNotes :\r\n- Assurez-vous que vous et vos amis avez les mêmes paramètres NAT/réglages autorisant la présence des amis.\r\n- Le mode Amis dépend des fonctionnalités d'amis de la plateforme et peut nécessiter l'acceptation des demandes d'ami.",
+  "howToFriendsBody": "Mode Amis: étapes rapides :\r\n1. Ajoutez le compte ami MCCompanion (relay friend) sur votre console ou votre plateforme si nécessaire.\r\n2. Dans l'application, activez le mode Amis et envoyez la configuration du relais (si applicable).\r\n3. Sur votre console, ouvrez Minecraft → Amis et recherchez Mondes LAN, votre serveur devrait y apparaître comme un monde LAN.\r\n4. Sélectionnez-le pour rejoindre votre serveur avec des amis.\r\nNotes :\r\n- Assurez-vous que vous et vos amis avez les mêmes paramètres NAT/réglages autorisant la présence des amis.\r\n- Le mode Amis dépend des fonctionnalités d'amis de la plateforme et peut nécessiter l'acceptation des demandes d'ami.",
   "@howToFriendsBody": {
     "description": "Detailed steps for Friends mode"
   },
@@ -302,7 +302,7 @@
   "@helpNintendoDnsSubtitle": {
     "description": "Short subtitle for Nintendo DNS troubleshooting tile"
   },
-  "helpNintendoDnsBody": "Si le mode DNS Nintendo ne fonctionne pas, vérifiez les points suivants :\r\n\r\n1. Confirmez que vous avez envoyé la configuration DNS depuis l'application (Envoyer la configuration DNS).\r\n2. Vérifiez que vous avez appliqué l'IP du relais comme DNS primaire sur la Switch.\r\n3. Assurez-vous que le serveur relais sélectionné (EU/US) est en ligne et non surchargé.\r\n4. Certains réseaux (par exemple, les portails captifs) empêchent l'utilisation d'un DNS personnalisé — testez sur un autre réseau.\r\n\r\nSi les problèmes persistent, activez le mode débogage et consultez les journaux ou essayez l'alternative du mode Amis.",
+  "helpNintendoDnsBody": "Si le mode DNS Nintendo ne fonctionne pas, vérifiez les points suivants :\r\n\r\n1. Confirmez que vous avez envoyé la configuration DNS depuis l'application (Envoyer la configuration DNS).\r\n2. Vérifiez que vous avez appliqué l'IP du relais comme DNS primaire sur la Switch.\r\n3. Assurez-vous que le serveur relais sélectionné (EU/US) est en ligne et non surchargé.\r\n4. Certains réseaux (par exemple, les portails captifs) empêchent l'utilisation d'un DNS personnalisé, testez sur un autre réseau.\r\n\r\nSi les problèmes persistent, activez le mode débogage et consultez les journaux ou essayez l'alternative du mode Amis.",
   "@helpNintendoDnsBody": {
     "description": "Detailed placeholder for Nintendo DNS troubleshooting"
   },
@@ -518,7 +518,7 @@
   "@checkBackLater": {
     "description": "Secondary empty state text on partner servers screen"
   },
-  "chooseUsernameSubtitle": "Choisissez un nom d'utilisateur pour vous connecter.",
+  "chooseUsernameSubtitle": "Choisissez un pseudo pour que les autres joueurs puissent vous trouver.",
   "@chooseUsernameSubtitle": {
     "description": "Subtitle shown when profile is not yet set up"
   },
@@ -1571,7 +1571,7 @@
   "feedbackTitleHintFeature": "ex. Afficher le ping du joueur dans la liste des serveurs",
   "feedbackWhatHappened": "Que s'est-il passé ?",
   "feedbackDescribeIdea": "Décris ton idée",
-  "feedbackDescHintBug": "Décris le bug — qu'as-tu fait, qu'attendais-tu et que s'est-il passé à la place ?",
+  "feedbackDescHintBug": "Décris le bug: qu'as-tu fait, qu'attendais-tu et que s'est-il passé à la place ?",
   "feedbackDescHintFeature": "Explique ce que tu voudrais et pourquoi ce serait utile.",
   "feedbackEmailLabel": "E-mail",
   "feedbackEmailHint": "Pour qu'on puisse te recontacter",
@@ -1580,7 +1580,7 @@
   "feedbackSubmitFeature": "Envoyer la demande de fonctionnalité",
   "feedbackDisclaimer": "Crée un ticket public sur GitHub · Ne pas inclure de mots de passe",
   "feedbackSuccessTitle": "Merci pour ton retour !",
-  "feedbackSuccessBody": "Ton rapport a été soumis et un ticket GitHub a été créé. Nous allons y jeter un œil dès que possible.",
+  "feedbackSuccessBody": "Merci ! Votre signalement est bien reçu. On y jette un œil dès que possible.",
   "feedbackViewOnGithub": "Voir sur GitHub",
   "feedbackSubmitAnother": "Envoyer un autre",
   "feedbackBackToApp": "Retour à l'appli",
@@ -1612,7 +1612,7 @@
   "skinMenuDelete": "Supprimer",
   "rpScreenTitle": "Pack de ressources",
   "rpWhatIsThis": "Qu'est-ce que c'est ?",
-  "rpExplanation": "Un pack de ressources change l'apparence de Minecraft sur ta console — nouveaux blocs, couleurs ou sons. Colle le lien d'un fichier .mcpack ci-dessous, active-le et sauvegarde. MCCompanion le charge automatiquement à chaque connexion.",
+  "rpExplanation": "Un pack de ressources change l'apparence de Minecraft sur ta console, nouveaux blocs, couleurs ou sons. Colle le lien d'un fichier .mcpack ci-dessous, active-le et sauvegarde. MCCompanion le charge automatiquement à chaque connexion.",
   "rpPackUrlLabel": "URL du pack",
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "Activer le pack de ressources",
@@ -1631,8 +1631,8 @@
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / bucket public AWS S3",
   "rpWorksDirect": "Tout lien HTTPS direct se terminant par .mcpack ou .zip",
-  "rpNoDiscord": "Liens Discord — pas d'extension .mcpack et expirent après quelques heures",
-  "rpNoDrive": "Liens de partage Google Drive / Dropbox — pas des téléchargements directs",
+  "rpNoDiscord": "Liens Discord: pas d'extension .mcpack et expirent après quelques heures",
+  "rpNoDrive": "Liens de partage Google Drive / Dropbox: pas des téléchargements directs",
   "rpNoEncrypted": "Serveurs avec des packs chiffrés ou protégés par mot de passe",
   "rpWarnDiscord": "Les liens Discord expirent et cesseront de fonctionner. Utilisez un hébergement permanent à la place.",
   "rpWarnHttps": "L'URL doit commencer par https://",
@@ -1642,17 +1642,17 @@
   "rpClearMinecraftTitle": "Première fois avec ce pack ?",
   "rpClearMinecraftBody": "Minecraft met en cache les packs de ressources localement. Si vous vous êtes connecté à ce serveur avant d’activer le pack MCCompanion, Minecraft a déjà mis en cache le pack original et ne téléchargera pas la version fusionnée.",
   "rpClearStep1": "Ouvre Minecraft sur ta console et va dans Paramètres → Stockage",
-  "rpClearStep2": "Appuie sur ‘Effacer’ ou ‘Réinitialiser’ à côté de Packs de ressources — cela supprime tous les packs en cache",
-  "rpClearStep3": "Reconnecte-toi via MCCompanion — le pack fusionné se téléchargera automatiquement",
+  "rpClearStep2": "Appuie sur ‘Effacer’ ou ‘Réinitialiser’ à côté de Packs de ressources, cela supprime tous les packs en cache",
+  "rpClearStep3": "Reconnecte-toi via MCCompanion: le pack fusionné se téléchargera automatiquement",
   "rpRelayTitle": "Le pack ne s'affiche pas bien ?",
-  "rpRelayBody": "Le relais met en cache le pack fusionné pendant 1 heure, en utilisant l'URL de l'overlay comme clé. Pour forcer une nouvelle fusion : modifie légèrement l'URL du pack (ex. ajoute ?v=2) et sauvegarde. Vide ensuite aussi le cache des packs Minecraft — le pack fusionné utilise toujours l'UUID du serveur, donc Minecraft afficherait sinon l'ancienne version en cache.",
-  "rpWorksGithubHint": "Lien de téléchargement direct — toujours accessible",
-  "rpWorksCloudflareHint": "Stockage cloud public — rapide et fiable",
+  "rpRelayBody": "Le relais met en cache le pack fusionné pendant 1 heure, en utilisant l'URL de l'overlay comme clé. Pour forcer une nouvelle fusion : modifie légèrement l'URL du pack (ex. ajoute ?v=2) et sauvegarde. Vide ensuite aussi le cache des packs Minecraft, le pack fusionné utilise toujours l'UUID du serveur, donc Minecraft afficherait sinon l'ancienne version en cache.",
+  "rpWorksGithubHint": "Lien de téléchargement direct: toujours accessible",
+  "rpWorksCloudflareHint": "Stockage cloud public: rapide et fiable",
   "rpWorksDirectHint": "N’importe quelle URL HTTPS publique .mcpack ou .zip",
   "rpNoDiscordHint": "Les liens Discord CDN expirent après peu de temps",
-  "rpNoDriveHint": "Pas de téléchargement direct — redirige vers une page d’aperçu",
+  "rpNoDriveHint": "Pas de téléchargement direct: redirige vers une page d’aperçu",
   "rpNoEncryptedHint": "MCCompanion ne peut pas fusionner du contenu chiffré",
-  "rpClearWhy": "Minecraft met en cache les packs de ressources via leur UUID. Le pack fusionné conserve l'UUID original du serveur — si Minecraft a déjà mis en cache le pack du serveur lors d'une session précédente (avant MCCompanion), il ne téléchargera pas la nouvelle version fusionnée. Vide le cache pour que Minecraft charge le nouveau pack.",
+  "rpClearWhy": "Minecraft met en cache les packs de ressources via leur UUID. Le pack fusionné conserve l'UUID original du serveur, si Minecraft a déjà mis en cache le pack du serveur lors d'une session précédente (avant MCCompanion), il ne téléchargera pas la nouvelle version fusionnée. Vide le cache pour que Minecraft charge le nouveau pack.",
   "rpUploadTab": "Upload",
   "rpUrlTab": "URL",
   "rpUploadButton": "Tap to select your pack",
@@ -1660,7 +1660,7 @@
   "rpUploading": "Uploading...",
   "rpMergerTitle": "Fusionneur de RP",
   "rpMergerSubtitle": "Combinez jusqu'à 4 packs de ressources",
-  "rpMergerPriorityHint": "Le pack du haut a la priorité la plus haute — ses fichiers gagnent les conflits.",
+  "rpMergerPriorityHint": "Le pack du haut a la priorité la plus haute, ses fichiers gagnent les conflits.",
   "rpMergerTopBadge": "TOP",
   "rpMergerAddPacks": "Ajouter des packs de ressources",
   "rpMergerAddAnother": "Ajouter un autre pack ({current}/4)",
@@ -1668,22 +1668,22 @@
   "rpMergerMerging": "Fusion en cours…",
   "rpMergerButton": "Fusionner {count} packs",
   "rpMergerComplete": "Fusion terminée !",
-  "rpMergerConflicts": "{count} conflit(s) résolu(s) — le pack du haut a gagné.",
+  "rpMergerConflicts": "{count} conflit(s) résolu(s): le pack du haut a gagné.",
   "rpMergerSetActive": "Définir comme pack de ressources actif",
   "rpMergerSetActiveToast": "Défini comme pack de ressources actif",
   "rpMergerOpenButton": "Fusionner les packs de ressources",
   "rpMergerOpenSubtitle": "Combinez 2–4 packs en un seul",
   "rpDisabled": "Désactivé",
   "rpNoPackSelected": "Aucun pack de ressources sélectionné",
-  "rpActiveOnConnect": "Actif — appliqué à la connexion",
+  "rpActiveOnConnect": "Actif: appliqué à la connexion",
   "rpBrowseSubtitle": "Packs sélectionnés, prêts à l'emploi",
   "rpBrowseEmpty": "Aucun pack disponible pour l'instant",
   "rpBrowseEmptyHint": "Revenez plus tard pour des packs sélectionnés.",
   "rpReplaceFile": "Remplacer par un autre fichier",
   "rpDropToUpload": "Déposer pour téléverser",
-  "rpTabBrowseInfo": "Parcourez les packs sélectionnés par MCCompanion. Appuyez sur Utiliser pour activer un pack instantanément — sans upload ni lien.",
+  "rpTabBrowseInfo": "Parcourez les packs sélectionnés par MCCompanion. Appuyez sur Utiliser pour activer un pack instantanément, sans upload ni lien.",
   "rpTabUploadInfo": "Téléversez votre propre fichier .mcpack ou .zip. MCCompanion le stocke en toute sécurité dans le cloud et l'envoie à votre console à chaque connexion.",
-  "rpTabUrlInfo": "Collez un lien de téléchargement direct vers un fichier .mcpack ou .zip. L'URL doit être accessible publiquement — pas de liens Discord ou Google Drive.",
+  "rpTabUrlInfo": "Collez un lien de téléchargement direct vers un fichier .mcpack ou .zip. L'URL doit être accessible publiquement, pas de liens Discord ou Google Drive.",
   "rpTabMergeInfo": "Combinez 2 à 4 packs en un seul. Le pack fusionné est téléversé sur MCCompanion Cloud et activé automatiquement.",
   "shareLabel": "Partager",
   "sectionMinecraftAccounts": "Comptes Minecraft",
@@ -1774,10 +1774,23 @@
   "skinDefaultName": "Mon skin",
   "skinUpdatedInCloud": "Skin mis à jour dans le cloud",
   "skinByCreator": "par {name}",
-  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "@skinByCreator": {
+    "description": "Creator attribution",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "skinLikesCount": "{count} likes",
-  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}},
-
+  "@skinLikesCount": {
+    "description": "Like count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionRecentActivity": "Activité récente",
   "activityNoEvents": "Aucune activité récente pour l'instant.",
   "activitySkinUploaded": "Skin téléchargé",
@@ -1787,30 +1800,84 @@
   "activityPackRejected": "Pack non approuvé",
   "timeJustNow": "à l'instant",
   "timeMinutesAgo": "il y a {count} min",
-  "@timeMinutesAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeHoursAgo": "il y a {count} h",
-  "@timeHoursAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeDaysAgo": "il y a {count} j",
-  "@timeDaysAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeMonthsAgo": "il y a {count} mois",
-  "@timeMonthsAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMonthsAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionNotifications": "Notifications",
   "sectionNotificationTypes": "Types de notification",
   "notifMarkAllRead": "Tout marquer comme lu",
   "notifEmpty": "Aucune notification pour l'instant. Les likes, commentaires et activités d'amis apparaîtront ici.",
   "notifSomeone": "Quelqu'un",
   "notifSkinLiked": "{actor} aime votre skin",
-  "@notifSkinLiked": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifSkinLiked": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifCommentReceived": "{actor} a commenté votre skin",
-  "@notifCommentReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifCommentReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPackApproved": "Pack approuvé",
   "notifPackRejected": "Pack non approuvé",
   "notifFriendRequest": "{actor} vous a envoyé une demande d'ami",
-  "@notifFriendRequest": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendRequest": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifFriendAccepted": "{actor} a accepté votre demande",
-  "@notifFriendAccepted": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendAccepted": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifMessageReceived": "Nouveau message de {actor}",
-  "@notifMessageReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifMessageReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPrefSkinLiked": "Skin aimé",
   "notifPrefCommentReceived": "Commentaire reçu",
   "notifPrefPackApproved": "Pack approuvé",
@@ -1818,15 +1885,66 @@
   "notifPrefFriendRequest": "Demande d'ami",
   "notifPrefFriendAccepted": "Ami ajouté",
   "notifPrefMessageReceived": "Nouveau message",
-
   "commentsTitle": "Commentaires",
   "commentsEmpty": "Pas encore de commentaires. Soyez le premier !",
   "commentsPlaceholder": "Écrire un commentaire…",
-
   "loadMore": "Charger plus",
-
   "skinLayerInner": "Intérieur",
-  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "@skinLayerInner": {
+    "description": "Skin editor layer toggle, inner/base layer"
+  },
   "skinLayerOuter": "Extérieur",
-  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
+  "@skinLayerOuter": {
+    "description": "Skin editor layer toggle, outer/overlay layer"
+  },
+  "feedbackLoginRequiredTitle": "Connectez-vous pour envoyer un retour",
+  "feedbackLoginRequiredBody": "Les retours sont liés à votre compte MCCompanion afin que nous puissions vous répondre directement dans l'application.",
+  "feedbackLoginButton": "Se connecter",
+  "reportBug": "Retour d'expérience",
+  "rpBehaviorContentWarning": "Ce pack contient des données de behavior pack qui ne fonctionneront pas sur les serveurs. Les textures fonctionneront quand même.",
+  "rpInvalidPackFormat": "Ceci est un pack Java Edition, non pris en charge. Veuillez utiliser un pack de ressources Bedrock Edition.",
+  "wikiFavourites": "Favoris",
+  "wikiRecent": "Consultés récemment",
+  "supportInboxTitle": "Boîte de support",
+  "supportInboxSubtitle": "Toutes les conversations d'assistance, partagées avec les admins",
+  "adminBadge": "Admin",
+  "skinShareSubject": "Skin Minecraft",
+  "skinEditorTitle": "Éditeur de skin",
+  "skinToolUndo": "Annuler",
+  "skinSaveToMySkins": "Enregistrer dans mes skins",
+  "skinUpdateInCloud": "Mettre à jour dans le cloud",
+  "skinExportPng": "Exporter en PNG",
+  "skinToolDraw": "Dessiner",
+  "skinToolFill": "Remplir",
+  "skinToolErase": "Effacer",
+  "customColour": "Couleur personnalisée",
+  "featuredServerLabel": "SERVEUR À LA UNE",
+  "featuredServerTagline": "Lance-toi et joue.",
+  "featuredServerPlay": "Jouer",
+  "rpUploadFailedCode": "Échec de l'envoi ({code})",
+  "rpUploadFailed": "Échec de l'envoi : {error}",
+  "rpLoadFailed": "Impossible de charger les packs",
+  "rpRetry": "Réessayer",
+  "rpSearchHint": "Rechercher des packs…",
+  "rpMergeFailed": "Échec de la fusion : {error}",
+  "rpMergerSize": "Taille",
+  "rpMergerCreated": "Créé",
+  "rpMergerSourcePacks": "Packs source",
+  "rpMergerDropToAdd": "Déposer pour ajouter",
+  "rpMergerSavedMerges": "Fusions enregistrées",
+  "rpMergerUse": "Utiliser",
+  "supportInboxShared": "Partagé avec tous les admins",
+  "supportInboxEmpty": "Aucune conversation de support",
+  "supportReplyingAs": "Tu réponds en tant que MCCompanion Support",
+  "supportReplyHint": "Répondre en tant que support…",
+  "relayBlocked": "Ton IP ou ton compte est bloqué par MCCompanion. Si c'est une erreur, rejoins notre Discord.",
+  "relayBlockedWithReason": "Ton IP ou ton compte est bloqué par MCCompanion.\nRaison : {reason}\nSi c'est une erreur, rejoins notre Discord.",
+  "relayConfigFailed": "Impossible de configurer le relais (statut {code}). Essaie un autre relais ou rejoins notre Discord.",
+  "relayConfigFailedDetail": "Impossible de configurer le relais (statut {code}) : {detail}. Essaie un autre relais ou rejoins notre Discord.",
+  "relayTimeout": "Le relais n'a pas répondu à temps.",
+  "relayUnreachable": "Relais injoignable.",
+  "lookupNotFound": "Joueur introuvable.",
+  "lookupNetworkError": "Erreur réseau. Réessaie.",
+  "lookupBedrockUnavailable": "La recherche Bedrock n'est pas disponible pour le moment.",
+  "lookupFailed": "Échec de la recherche."
 }

@@ -34,7 +34,11 @@ class SkinsScreen extends StatefulWidget {
 }
 
 class SkinsScreenState extends State<SkinsScreen> {
-  void refresh() { _loadMe(); _loadMeDashboard(); }
+  void refresh() {
+    _loadMe();
+    _loadMeDashboard();
+  }
+
   StreamSubscription<AuthUser?>? _authSub;
 
   UserModel? _me;
@@ -45,7 +49,6 @@ class SkinsScreenState extends State<SkinsScreen> {
 
   List<Map<String, dynamic>> _cloudSkins = [];
   bool _loadingCloud = false;
-
 
   List<Map<String, dynamic>> _topSkins = [];
   bool _loadingTop = false;
@@ -108,26 +111,40 @@ class SkinsScreenState extends State<SkinsScreen> {
       if (resp.statusCode == 200) {
         final data = jsonDecode(resp.body);
         final top = (data['top'] as List?)?.cast<Map<String, dynamic>>() ?? [];
-        setState(() { _topSkins = top; _loadingTop = false; });
+        setState(() {
+          _topSkins = top;
+          _loadingTop = false;
+        });
         return;
       }
     } catch (_) {}
     if (mounted) setState(() => _loadingTop = false);
   }
 
-  Future<void> _loadAllSkins({ bool reset = false }) async {
+  Future<void> _loadAllSkins({bool reset = false}) async {
     if (_loadingAll) return;
-    if (reset) setState(() { _allSkins = []; _allOffset = 0; _allHasMore = true; _allTotal = 0; });
+    if (reset)
+      setState(() {
+        _allSkins = [];
+        _allOffset = 0;
+        _allHasMore = true;
+        _allTotal = 0;
+      });
     setState(() => _loadingAll = true);
     try {
       final offset = reset ? 0 : _allOffset;
       final resp = await http
-          .get(Uri.parse('${AppConstants.apiBase}/api/skins/gallery/all?limit=$_allPageSize&offset=$offset'))
+          .get(
+            Uri.parse(
+              '${AppConstants.apiBase}/api/skins/gallery/all?limit=$_allPageSize&offset=$offset',
+            ),
+          )
           .timeout(const Duration(seconds: 10));
       if (!mounted) return;
       if (resp.statusCode == 200) {
         final data = jsonDecode(resp.body);
-        final skins = (data['skins'] as List?)?.cast<Map<String, dynamic>>() ?? [];
+        final skins =
+            (data['skins'] as List?)?.cast<Map<String, dynamic>>() ?? [];
         final total = (data['total'] as num?)?.toInt() ?? 0;
         setState(() {
           _allSkins = reset ? skins : [..._allSkins, ...skins];
@@ -145,26 +162,42 @@ class SkinsScreenState extends State<SkinsScreen> {
   Future<void> _loadMeDashboard() async {
     final user = AuthService.currentUser;
     if (user == null) {
-      setState(() { _cloudSkins = []; _likedIds = {}; _idToken = null; _loadingCloud = false; });
+      setState(() {
+        _cloudSkins = [];
+        _likedIds = {};
+        _idToken = null;
+        _loadingCloud = false;
+      });
       return;
     }
     setState(() => _loadingCloud = true);
     try {
       final token = await AuthService.getIdToken();
       final resp = await http
-          .get(Uri.parse('${AppConstants.apiBase}/api/skins/me/dashboard'),
-              headers: {'Authorization': 'Bearer $token'})
+          .get(
+            Uri.parse('${AppConstants.apiBase}/api/skins/me/dashboard'),
+            headers: {'Authorization': 'Bearer $token'},
+          )
           .timeout(const Duration(seconds: 10));
       if (!mounted) return;
       if (resp.statusCode == 200) {
         final data = jsonDecode(resp.body);
-        final skins = (data['skins'] as List?)?.cast<Map<String, dynamic>>() ?? [];
+        final skins =
+            (data['skins'] as List?)?.cast<Map<String, dynamic>>() ?? [];
         final ids = (data['liked'] as List?)?.cast<String>().toSet() ?? {};
-        setState(() { _cloudSkins = skins; _likedIds = ids; _idToken = token; _loadingCloud = false; });
+        setState(() {
+          _cloudSkins = skins;
+          _likedIds = ids;
+          _idToken = token;
+          _loadingCloud = false;
+        });
         return;
       }
     } catch (_) {}
-    if (mounted) setState(() { _loadingCloud = false; });
+    if (mounted)
+      setState(() {
+        _loadingCloud = false;
+      });
   }
 
   Future<void> _loadSavedSkins() async {
@@ -180,14 +213,28 @@ class SkinsScreenState extends State<SkinsScreen> {
     try {
       final url = (skin['public_url'] ?? skin['publicUrl']) as String;
       final name = skin['name'] as String? ?? 'skin';
-      final resp = await http.get(Uri.parse(url)).timeout(const Duration(seconds: 10));
+      final resp = await http
+          .get(Uri.parse(url))
+          .timeout(const Duration(seconds: 10));
       if (resp.statusCode == 200) {
         await SavedSkinsStorage.add(resp.bodyBytes, name);
         await _loadSavedSkins();
-        if (mounted) AppToast.show(context, message: AppLocalizations.of(context)!.skinsSavedToMySkins, icon: Icons.download_done_rounded, color: AppTheme.success);
+        if (mounted)
+          AppToast.show(
+            context,
+            message: AppLocalizations.of(context)!.skinsSavedToMySkins,
+            icon: Icons.download_done_rounded,
+            color: AppTheme.success,
+          );
       }
     } catch (e) {
-      if (mounted) AppToast.show(context, message: AppLocalizations.of(context)!.skinsDownloadFailed, icon: Icons.error_outline_rounded, color: AppTheme.error);
+      if (mounted)
+        AppToast.show(
+          context,
+          message: AppLocalizations.of(context)!.skinsDownloadFailed,
+          icon: Icons.error_outline_rounded,
+          color: AppTheme.error,
+        );
     }
   }
 
@@ -196,9 +243,21 @@ class SkinsScreenState extends State<SkinsScreen> {
       final id = skin['id'] as String;
       await SkinUploadService.deleteSkin(id);
       await _loadMeDashboard();
-      if (mounted) AppToast.show(context, message: AppLocalizations.of(context)!.skinsDeletedFromCloud, icon: Icons.check_circle_outline_rounded, color: AppTheme.success);
+      if (mounted)
+        AppToast.show(
+          context,
+          message: AppLocalizations.of(context)!.skinsDeletedFromCloud,
+          icon: Icons.check_circle_outline_rounded,
+          color: AppTheme.success,
+        );
     } catch (e) {
-      if (mounted) AppToast.show(context, message: AppLocalizations.of(context)!.skinsDeleteFailed, icon: Icons.error_outline_rounded, color: AppTheme.error);
+      if (mounted)
+        AppToast.show(
+          context,
+          message: AppLocalizations.of(context)!.skinsDeleteFailed,
+          icon: Icons.error_outline_rounded,
+          color: AppTheme.error,
+        );
     }
   }
 
@@ -217,24 +276,32 @@ class SkinsScreenState extends State<SkinsScreen> {
         currentUid: currentUid,
         isOwn: isOwn,
         initialLiked: skinId != null && _likedIds.contains(skinId),
-        onEdit: textureUrl != null ? () {
-          Navigator.pop(context);
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (_) => isOwn
-                  ? SkinEditorScreen(cloudSkin: skin)
-                  : SkinEditorScreen(initialTextureUrl: textureUrl),
-            ),
-          ).then((result) { if (result == 'cloud') _loadMeDashboard(); });
-        } : null,
+        onEdit: textureUrl != null
+            ? () {
+                Navigator.pop(context);
+                Navigator.of(context)
+                    .push(
+                      MaterialPageRoute(
+                        builder: (_) => isOwn
+                            ? SkinEditorScreen(cloudSkin: skin)
+                            : SkinEditorScreen(initialTextureUrl: textureUrl),
+                      ),
+                    )
+                    .then((result) {
+                      if (result == 'cloud') _loadMeDashboard();
+                    });
+              }
+            : null,
         onDownload: () {
           Navigator.pop(context);
           _downloadCloudSkin(skin);
         },
-        onDelete: isOwn ? () {
-          Navigator.pop(context);
-          _deleteCloudSkin(skin);
-        } : null,
+        onDelete: isOwn
+            ? () {
+                Navigator.pop(context);
+                _deleteCloudSkin(skin);
+              }
+            : null,
       ),
     );
   }
@@ -247,11 +314,15 @@ class SkinsScreenState extends State<SkinsScreen> {
         skin: skin,
         onEdit: () {
           Navigator.pop(context);
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (_) => SkinEditorScreen(cloudSkin: skin),
-            ),
-          ).then((result) { if (result == 'cloud') _loadMeDashboard(); });
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (_) => SkinEditorScreen(cloudSkin: skin),
+                ),
+              )
+              .then((result) {
+                if (result == 'cloud') _loadMeDashboard();
+              });
         },
         onDownload: () {
           Navigator.pop(context);
@@ -267,14 +338,29 @@ class SkinsScreenState extends State<SkinsScreen> {
 
   void _openEditor(String? textureUrl) {
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (_) => SkinEditorScreen(initialTextureUrl: textureUrl)))
-        .then((result) { _loadSavedSkins(); if (result == 'cloud') _loadMeDashboard(); });
+        .push(
+          MaterialPageRoute(
+            builder: (_) => SkinEditorScreen(initialTextureUrl: textureUrl),
+          ),
+        )
+        .then((result) {
+          _loadSavedSkins();
+          if (result == 'cloud') _loadMeDashboard();
+        });
   }
 
   void _openEditorForSaved(SavedSkin skin) {
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (_) => SkinEditorScreen(initialTextureUrl: null, existingSkin: skin)))
-        .then((result) { _loadSavedSkins(); if (result == 'cloud') _loadMeDashboard(); });
+        .push(
+          MaterialPageRoute(
+            builder: (_) =>
+                SkinEditorScreen(initialTextureUrl: null, existingSkin: skin),
+          ),
+        )
+        .then((result) {
+          _loadSavedSkins();
+          if (result == 'cloud') _loadMeDashboard();
+        });
   }
 
   Future<void> _uploadSkin() async {
@@ -333,11 +419,23 @@ class SkinsScreenState extends State<SkinsScreen> {
   Future<void> _uploadSkinToCloud(SavedSkin skin) async {
     final user = AuthService.currentUser;
     if (user == null) {
-      if (mounted) AppToast.show(context, message: AppLocalizations.of(context)!.skinsLoginToUpload, icon: Icons.lock_outline_rounded, color: AppTheme.error);
+      if (mounted)
+        AppToast.show(
+          context,
+          message: AppLocalizations.of(context)!.skinsLoginToUpload,
+          icon: Icons.lock_outline_rounded,
+          color: AppTheme.error,
+        );
       return;
     }
 
-    if (mounted) AppToast.show(context, message: AppLocalizations.of(context)!.skinsUploading, icon: Icons.cloud_upload_outlined, color: AppTheme.accent);
+    if (mounted)
+      AppToast.show(
+        context,
+        message: AppLocalizations.of(context)!.skinsUploading,
+        icon: Icons.cloud_upload_outlined,
+        color: AppTheme.accent,
+      );
 
     try {
       await SkinUploadService.uploadSkin(
@@ -350,9 +448,23 @@ class SkinsScreenState extends State<SkinsScreen> {
       await _loadSavedSkins();
       await _loadMeDashboard();
 
-      if (mounted) AppToast.show(context, message: AppLocalizations.of(context)!.skinUploaded, icon: Icons.check_circle_outline_rounded, color: AppTheme.success);
+      if (mounted)
+        AppToast.show(
+          context,
+          message: AppLocalizations.of(context)!.skinUploaded,
+          icon: Icons.check_circle_outline_rounded,
+          color: AppTheme.success,
+        );
     } catch (e) {
-      if (mounted) AppToast.show(context, message: AppLocalizations.of(context)!.skinUploadFailed(e.toString().replaceAll('Exception: ', '')), icon: Icons.error_outline_rounded, color: AppTheme.error);
+      if (mounted)
+        AppToast.show(
+          context,
+          message: AppLocalizations.of(
+            context,
+          )!.skinUploadFailed(e.toString().replaceAll('Exception: ', '')),
+          icon: Icons.error_outline_rounded,
+          color: AppTheme.error,
+        );
     }
   }
 
@@ -367,7 +479,12 @@ class SkinsScreenState extends State<SkinsScreen> {
         final dest = File('${saveDir.path}/${skin.name}.png');
         await tmp.copy(dest.path);
         if (mounted) {
-          AppToast.show(context, message: AppLocalizations.of(context)!.skinSavedToDocuments, icon: Icons.download_done_rounded, color: AppTheme.success);
+          AppToast.show(
+            context,
+            message: AppLocalizations.of(context)!.skinSavedToDocuments,
+            icon: Icons.download_done_rounded,
+            color: AppTheme.success,
+          );
         }
       } else {
         final size = MediaQuery.of(context).size;
@@ -395,10 +512,12 @@ class SkinsScreenState extends State<SkinsScreen> {
           Navigator.pop(context);
           _openEditorForSaved(skin);
         },
-        onUpload: isLoggedIn ? () {
-          Navigator.pop(context);
-          _uploadSkinToCloud(skin);
-        } : null,
+        onUpload: isLoggedIn
+            ? () {
+                Navigator.pop(context);
+                _uploadSkinToCloud(skin);
+              }
+            : null,
         onExport: () async {
           Navigator.pop(context);
           await Future.delayed(const Duration(milliseconds: 300));
@@ -430,7 +549,10 @@ class SkinsScreenState extends State<SkinsScreen> {
                   HeaderNavBar(
                     items: [
                       HeaderNavItem(label: l.skinsUpload, onTap: _uploadSkin),
-                      HeaderNavItem(label: l.skinsCreate, onTap: () => _openEditor(null)),
+                      HeaderNavItem(
+                        label: l.skinsCreate,
+                        onTap: () => _openEditor(null),
+                      ),
                     ],
                   ),
                 ],
@@ -446,9 +568,16 @@ class SkinsScreenState extends State<SkinsScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _sectionHeader(l.skinsLabel, icon: FontAwesomeIcons.shirt),
+                        _sectionHeader(
+                          l.skinsLabel,
+                          icon: FontAwesomeIcons.shirt,
+                        ),
                         const SizedBox(height: 10),
-                        _buildAllSkins(l, isDesktop: isDesktop, isLoggedIn: isLoggedIn),
+                        _buildAllSkins(
+                          l,
+                          isDesktop: isDesktop,
+                          isLoggedIn: isLoggedIn,
+                        ),
                         const SizedBox(height: 24),
                         const Divider(color: AppTheme.borderGray, thickness: 1),
                         const SizedBox(height: 24),
@@ -470,36 +599,63 @@ class SkinsScreenState extends State<SkinsScreen> {
     return content;
   }
 
-  Widget _buildAllSkins(AppLocalizations l, {required bool isDesktop, required bool isLoggedIn}) {
+  Widget _buildAllSkins(
+    AppLocalizations l, {
+    required bool isDesktop,
+    required bool isLoggedIn,
+  }) {
     final items = <Widget>[
-      ...List.generate(_savedSkins.length, (i) => SavedSkinCard(
-        skin: _savedSkins[i],
-        onTap: () => _showSavedSkinMenu(_savedSkins[i]),
-      )),
+      ...List.generate(
+        _savedSkins.length,
+        (i) => SavedSkinCard(
+          skin: _savedSkins[i],
+          onTap: () => _showSavedSkinMenu(_savedSkins[i]),
+        ),
+      ),
       if (isLoggedIn)
-        ...List.generate(_cloudSkins.length, (i) => CloudSkinCard(
-          skin: _cloudSkins[i],
-          onTap: () => _showCloudSkinMenu(_cloudSkins[i]),
-        )),
+        ...List.generate(
+          _cloudSkins.length,
+          (i) => CloudSkinCard(
+            skin: _cloudSkins[i],
+            onTap: () => _showCloudSkinMenu(_cloudSkins[i]),
+          ),
+        ),
       if (_me != null) ...[
-        ...List.generate(_me!.javaAccounts.length, (i) => JavaSkinCard(
-          username: _me!.javaAccounts[i].javaUsername,
-          javaUuid: _me!.javaAccounts[i].javaUuid,
-          badge: l.labelJava,
-          badgeColor: const Color(0xFF42A5F5),
-          onEdit: _openEditor,
-        )),
-        ...List.generate(_me!.bedrockAccounts.length, (i) => BedrockSkinCard(
-          gamertag: _me!.bedrockAccounts[i].xboxGamertag ?? _me!.bedrockAccounts[i].xboxXuid,
-          xuid: _me!.bedrockAccounts[i].xboxXuid,
-          onEdit: _openEditor,
-        )),
+        ...List.generate(
+          _me!.javaAccounts.length,
+          (i) => JavaSkinCard(
+            username: _me!.javaAccounts[i].javaUsername,
+            javaUuid: _me!.javaAccounts[i].javaUuid,
+            badge: l.labelJava,
+            badgeColor: const Color(0xFF42A5F5),
+            onEdit: _openEditor,
+          ),
+        ),
+        ...List.generate(
+          _me!.bedrockAccounts.length,
+          (i) => BedrockSkinCard(
+            gamertag:
+                _me!.bedrockAccounts[i].xboxGamertag ??
+                _me!.bedrockAccounts[i].xboxXuid,
+            xuid: _me!.bedrockAccounts[i].xboxXuid,
+            onEdit: _openEditor,
+          ),
+        ),
       ],
     ];
 
-    final isAnyLoading = _loadingSaved || (isLoggedIn && _loadingCloud) || _loading;
+    final isAnyLoading =
+        _loadingSaved || (isLoggedIn && _loadingCloud) || _loading;
     if (isAnyLoading) {
-      return SizedBox(height: 60, child: Center(child: CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)));
+      return SizedBox(
+        height: 60,
+        child: Center(
+          child: CircularProgressIndicator(
+            color: AppTheme.accent,
+            strokeWidth: 2,
+          ),
+        ),
+      );
     }
     if (items.isEmpty) return _emptyState(l.skinsEmptyLocalSkins);
     return _skinGrid(isDesktop: isDesktop, items: items);
@@ -511,65 +667,125 @@ class SkinsScreenState extends State<SkinsScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _sectionHeader(l.skinsTopLabel, icon: FontAwesomeIcons.trophy, iconColor: const Color(0xFFfbbf24)),
+        _sectionHeader(
+          l.skinsTopLabel,
+          icon: FontAwesomeIcons.trophy,
+          iconColor: const Color(0xFFfbbf24),
+          count: _topSkins.isNotEmpty ? _topSkins.length : null,
+        ),
         const SizedBox(height: 10),
         if (_loadingTop)
-          SizedBox(height: 60, child: Center(child: CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)))
+          SizedBox(
+            height: 60,
+            child: Center(
+              child: CircularProgressIndicator(
+                color: AppTheme.accent,
+                strokeWidth: 2,
+              ),
+            ),
+          )
         else if (_topSkins.isEmpty)
           const SizedBox.shrink()
         else
-          _skinGrid(
-            isDesktop: isDesktop,
-            items: List.generate(_topSkins.length > 9 ? 9 : _topSkins.length, (i) {
-              final skin = _topSkins[i];
-              final badge = i < 3 ? rankBadges[i] : null;
-              return Stack(
-                fit: StackFit.expand,
-                children: [
-                  GallerySkinCard(
-                    skin: skin,
-                    onTap: () => _showGallerySkinMenu(skin),
-                    idToken: _idToken,
-                    initialLiked: _likedIds.contains(skin['id'] as String?),
-                    isOwn: AuthService.currentUser?.uid == skin['uid'],
+          SizedBox(
+            height: isDesktop ? 240 : 215,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 2),
+              itemCount: _topSkins.length,
+              separatorBuilder: (_, __) => const SizedBox(width: 10),
+              itemBuilder: (_, i) {
+                final skin = _topSkins[i];
+                final badge = i < 3 ? rankBadges[i] : null;
+                return SizedBox(
+                  width: isDesktop ? 170 : 150,
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      GallerySkinCard(
+                        skin: skin,
+                        onTap: () => _showGallerySkinMenu(skin),
+                        idToken: _idToken,
+                        initialLiked: _likedIds.contains(skin['id'] as String?),
+                        isOwn: AuthService.currentUser?.uid == skin['uid'],
+                      ),
+                      if (badge != null)
+                        Positioned(
+                          top: 6,
+                          left: 6,
+                          child: Text(
+                            badge,
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                        ),
+                      Positioned(
+                        top: 8,
+                        right: 8,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 6,
+                            vertical: 2,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.black.withValues(alpha: 0.55),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Text(
+                            '#${i + 1}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  if (badge != null)
-                    Positioned(
-                      top: 6,
-                      left: 6,
-                      child: Text(badge, style: const TextStyle(fontSize: 16)),
-                    ),
-                ],
-              );
-            }),
+                );
+              },
+            ),
           ),
 
         const SizedBox(height: 24),
 
         Row(
           children: [
-            Expanded(child: _sectionHeader(
-              l.skinsAllLabel,
-              icon: FontAwesomeIcons.earthAmericas,
-              count: _allTotal > 0 ? _allTotal : null,
-            )),
+            Expanded(
+              child: _sectionHeader(
+                l.skinsAllLabel,
+                icon: FontAwesomeIcons.earthAmericas,
+                count: _allTotal > 0 ? _allTotal : null,
+              ),
+            ),
           ],
         ),
         const SizedBox(height: 10),
         if (_loadingAll && _allSkins.isEmpty)
-          SizedBox(height: 60, child: Center(child: CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)))
+          SizedBox(
+            height: 60,
+            child: Center(
+              child: CircularProgressIndicator(
+                color: AppTheme.accent,
+                strokeWidth: 2,
+              ),
+            ),
+          )
         else if (_allSkins.isEmpty)
           const SizedBox.shrink()
         else
           _skinGrid(
             isDesktop: isDesktop,
-            items: List.generate(_allSkins.length, (i) => GallerySkinCard(
-              skin: _allSkins[i],
-              onTap: () => _showGallerySkinMenu(_allSkins[i]),
-              idToken: _idToken,
-              initialLiked: _likedIds.contains(_allSkins[i]['id'] as String?),
-              isOwn: AuthService.currentUser?.uid == _allSkins[i]['uid'],
-            )),
+            items: List.generate(
+              _allSkins.length,
+              (i) => GallerySkinCard(
+                skin: _allSkins[i],
+                onTap: () => _showGallerySkinMenu(_allSkins[i]),
+                idToken: _idToken,
+                initialLiked: _likedIds.contains(_allSkins[i]['id'] as String?),
+                isOwn: AuthService.currentUser?.uid == _allSkins[i]['uid'],
+              ),
+            ),
           ),
 
         if (_allSkins.isNotEmpty) ...[
@@ -577,7 +793,11 @@ class SkinsScreenState extends State<SkinsScreen> {
           Center(
             child: Text(
               '${_allSkins.length} / $_allTotal',
-              style: TextStyle(color: AppTheme.textMuted, fontSize: 11, fontWeight: FontWeight.w500),
+              style: TextStyle(
+                color: AppTheme.textMuted,
+                fontSize: 11,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
         ],
@@ -585,13 +805,19 @@ class SkinsScreenState extends State<SkinsScreen> {
           const SizedBox(height: 8),
           Center(
             child: _loadingAll
-                ? const SizedBox(height: 24, width: 24, child: CircularProgressIndicator(strokeWidth: 2))
+                ? const SizedBox(
+                    height: 24,
+                    width: 24,
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  )
                 : OutlinedButton(
                     onPressed: () => _loadAllSkins(),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: AppTheme.textSecondary,
                       side: const BorderSide(color: AppTheme.borderGray),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
                     child: Text(l.loadMore),
                   ),
@@ -602,20 +828,44 @@ class SkinsScreenState extends State<SkinsScreen> {
     );
   }
 
-  Widget _sectionHeader(String label, {int? count, FaIconData? icon, Color? iconColor}) {
+  Widget _sectionHeader(
+    String label, {
+    int? count,
+    FaIconData? icon,
+    Color? iconColor,
+  }) {
     return Row(
       children: [
         if (icon != null) ...[
           FaIcon(icon, size: 12, color: iconColor ?? AppTheme.textMuted),
           const SizedBox(width: 7),
         ],
-        Text(label.toUpperCase(), style: TextStyle(color: AppTheme.textMuted, fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1.2)),
+        Text(
+          label.toUpperCase(),
+          style: TextStyle(
+            color: AppTheme.textMuted,
+            fontSize: 11,
+            fontWeight: FontWeight.w700,
+            letterSpacing: 1.2,
+          ),
+        ),
         if (count != null) ...[
           const SizedBox(width: 8),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
-            decoration: BoxDecoration(color: AppTheme.surface, borderRadius: BorderRadius.circular(20), border: Border.all(color: AppTheme.borderGray)),
-            child: Text('$count', style: TextStyle(color: AppTheme.textSecondary, fontSize: 10, fontWeight: FontWeight.w600)),
+            decoration: BoxDecoration(
+              color: AppTheme.surface,
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: AppTheme.borderGray),
+            ),
+            child: Text(
+              '$count',
+              style: TextStyle(
+                color: AppTheme.textSecondary,
+                fontSize: 10,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
           ),
         ],
       ],
@@ -645,6 +895,10 @@ class SkinsScreenState extends State<SkinsScreen> {
       borderRadius: BorderRadius.circular(14),
       border: Border.all(color: AppTheme.borderGray),
     ),
-    child: Text(message, style: TextStyle(color: AppTheme.textMuted, fontSize: 13), textAlign: TextAlign.center),
+    child: Text(
+      message,
+      style: TextStyle(color: AppTheme.textMuted, fontSize: 13),
+      textAlign: TextAlign.center,
+    ),
   );
 }

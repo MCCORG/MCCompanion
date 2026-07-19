@@ -3,7 +3,7 @@ import 'package:in_app_review/in_app_review.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Tracks positive usage events and requests an in-app review at the right
-/// moment — after enough successful connections, and not more than once per
+/// moment: after enough successful connections, and not more than once per
 /// 60 days.
 class ReviewService {
   ReviewService._();
@@ -21,17 +21,14 @@ class ReviewService {
 
     final prefs = await SharedPreferences.getInstance();
 
-    // Respect cooldown
     final lastMs = prefs.getInt(_keyLastRequested) ?? 0;
     final daysSinceLast =
         DateTime.now().difference(DateTime.fromMillisecondsSinceEpoch(lastMs)).inDays;
     if (lastMs > 0 && daysSinceLast < _cooldownDays) return;
 
-    // Increment counter
     final count = (prefs.getInt(_keyConnections) ?? 0) + 1;
     await prefs.setInt(_keyConnections, count);
 
-    // Only prompt after reaching the threshold
     if (count < _threshold) return;
 
     final inAppReview = InAppReview.instance;
@@ -39,7 +36,7 @@ class ReviewService {
 
     await inAppReview.requestReview();
 
-    // Record when we last asked (reset counter so next cycle = another 3 connections)
+    // Reset the counter so the next prompt needs another full cycle.
     await prefs.setInt(_keyLastRequested, DateTime.now().millisecondsSinceEpoch);
     await prefs.setInt(_keyConnections, 0);
   }

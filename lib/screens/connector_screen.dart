@@ -318,8 +318,19 @@ class HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void _handleRelayError(String message) {
+  void _handleRelayError(RelayError error) {
     if (!mounted) return;
+    final l = AppLocalizations.of(context)!;
+    final message = switch (error.kind) {
+      RelayErrorKind.blocked => error.reason != null
+          ? l.relayBlockedWithReason(error.reason!)
+          : l.relayBlocked,
+      RelayErrorKind.configFailed => error.detail != null
+          ? l.relayConfigFailedDetail(error.statusCode ?? 0, error.detail!)
+          : l.relayConfigFailed(error.statusCode ?? 0),
+      RelayErrorKind.timeout => l.relayTimeout,
+      RelayErrorKind.unreachable => l.relayUnreachable,
+    };
     _snack(message, AppTheme.error, icon: Icons.error_outline_rounded);
   }
 

@@ -15,7 +15,7 @@
   "aternosSubtext": "Kendi ücretsiz Minecraft sunucunuzu oluşturun",
   "howToUseMenu": "Nasıl kullanılır",
   "support": "Destek",
-  "helpText": "Yapan: {appCreator}\n\nKullanım Talimatları:\n1. Minecraft sunucu adresinizi ve portunuzu girin (varsayılan: 19132)\n   — veya daha önce kaydedilmiş bir sunucuyu açılır menüden seçin\n2. (İsteğe bağlı) Konumunuza en yakın aktarma sunucusunu (EU veya US) seçin\n3. Yayına başlamak için \"Yayına Başla\" düğmesine tıklayın\n4. Konsolunuz/cihazınızda: Minecraft > Oyna > Arkadaşlar\n5. \"MCCompanion\" adlı bir LAN sunucusu görmelisiniz\n6. MCCompanion üzerinden seçtiğiniz sunucunuya katılmak için üzerine tıklayın\n\nNintendo Switch (DNS modu):\n1. Bağlantı panelinde \"Nintendo Switch\"i etkinleştirin\n2. Bir  aktarma sunucusu  (EU veya US) seçin\n3. \"DNS Yapılandırmasını Gönder\" düğmesine tıklayın — bu yapılandırmanızı aktarıcıya gönderir\n   (LAN sunucusu yayınlamaz)\n4. Switch’inizde MCCompanion DNS ayarlarınızı uygulayın ve MCCompanion için kullandığınız sunucu girişini kullanarak katılın\n\nNotlar:\n- LAN yayını için MCCompanion ve konsol aynı yerel ağda olmalıdır.\n- İpucu: En iyi performans için size en yakın aktarma sunucusunu seçin.",
+  "helpText": "Yapan: {appCreator}\n\nKullanım Talimatları:\n1. Minecraft sunucu adresinizi ve portunuzu girin (varsayılan: 19132)\n  , veya daha önce kaydedilmiş bir sunucuyu açılır menüden seçin\n2. (İsteğe bağlı) Konumunuza en yakın aktarma sunucusunu (EU veya US) seçin\n3. Yayına başlamak için \"Yayına Başla\" düğmesine tıklayın\n4. Konsolunuz/cihazınızda: Minecraft > Oyna > Arkadaşlar\n5. \"MCCompanion\" adlı bir LAN sunucusu görmelisiniz\n6. MCCompanion üzerinden seçtiğiniz sunucunuya katılmak için üzerine tıklayın\n\nNintendo Switch (DNS modu):\n1. Bağlantı panelinde \"Nintendo Switch\"i etkinleştirin\n2. Bir  aktarma sunucusu  (EU veya US) seçin\n3. \"DNS Yapılandırmasını Gönder\" düğmesine tıklayın, bu yapılandırmanızı aktarıcıya gönderir\n   (LAN sunucusu yayınlamaz)\n4. Switch’inizde MCCompanion DNS ayarlarınızı uygulayın ve MCCompanion için kullandığınız sunucu girişini kullanarak katılın\n\nNotlar:\n- LAN yayını için MCCompanion ve konsol aynı yerel ağda olmalıdır.\n- İpucu: En iyi performans için size en yakın aktarma sunucusunu seçin.",
   "@helpText": {
     "description": "Detailed help / instructions shown in the help dialog",
     "placeholders": {
@@ -37,7 +37,7 @@
   "@howToJavaSubtitle": {
     "description": "Short subtitle for Java menu tile"
   },
-  "howToJavaBody": "Java Modu — hızlı adımlar:\n1. Uygulamada Java modunu seçin.\n2. Java Edition sunucu adresinizi ve portunuzu girin (varsayılan: 25565).\n3. \"Java Modunu Başlat\" düğmesine basın — MCCompanion bağlantıyı köprüleyecektir.\n4. Minecraft Bedrock'u açın ve Arkadaşlar sekmesine gidin.\n5. Java sunucusuna katılmak için \"MCCompanion\" adlı LAN sunucusunu seçin.\n\n⚠️ Önemli uyarılar:\n- Geçerli bir Java Edition hesabı (Microsoft) gereklidir.\n- Bazı sunucular hesabınızı tespit edip yasaklayabilecek hile önleme sistemleri kullanır.\n- Bazı sunucular Bedrock istemcilerini açıkça yasaklar — her zaman sunucu kurallarını kontrol edin.\n- Bu özelliğin kullanılmasından kaynaklanabilecek hesap yasakları, askıya almalar veya hesapla ilgili diğer sorunlardan MCCompanion sorumlu değildir.\n- Kendi riskinizle kullanın.",
+  "howToJavaBody": "Java Modu: hızlı adımlar:\n1. Uygulamada Java modunu seçin.\n2. Java Edition sunucu adresinizi ve portunuzu girin (varsayılan: 25565).\n3. \"Java Modunu Başlat\" düğmesine basın: MCCompanion bağlantıyı köprüleyecektir.\n4. Minecraft Bedrock'u açın ve Arkadaşlar sekmesine gidin.\n5. Java sunucusuna katılmak için \"MCCompanion\" adlı LAN sunucusunu seçin.\n\n⚠️ Önemli uyarılar:\n- Geçerli bir Java Edition hesabı (Microsoft) gereklidir.\n- Bazı sunucular hesabınızı tespit edip yasaklayabilecek hile önleme sistemleri kullanır.\n- Bazı sunucular Bedrock istemcilerini açıkça yasaklar, her zaman sunucu kurallarını kontrol edin.\n- Bu özelliğin kullanılmasından kaynaklanabilecek hesap yasakları, askıya almalar veya hesapla ilgili diğer sorunlardan MCCompanion sorumlu değildir.\n- Kendi riskinizle kullanın.",
   "@howToJavaBody": {
     "description": "Detailed steps for Java mode how-to modal"
   },
@@ -121,7 +121,7 @@
   "@bedrockBridge": {
     "description": "Subtitle on splash screen"
   },
-  "clientDisconnected": "İstemci bağlantısı kesildi — Yayın durduruldu",
+  "clientDisconnected": "İstemci bağlantısı kesildi: Yayın durduruldu",
   "@clientDisconnected": {
     "description": "Snackbar shown when clients disconnect automatically"
   },
@@ -254,7 +254,7 @@
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
-  "howToNintendoBody": "Nintendo Switch — DNS modu (adım adım):\n1. Uygulamada \"Nintendo\" modunu etkinleştirin ve bir Aktarım Sunucusu (EU veya US) seçin.\n2. DNS IP adresini aktarıcıya göndermek için \"DNS Yapılandırmasını Gönder\" düğmesine dokunun.\n3. Nintendo Switch'inizde Sistem Ayarları → İnternet → İnternet Ayarları → (ağınız) → Ayarları Değiştir → DNS bölümüne gidin ve Birincil DNS'i aktarıcı IP adresi olarak ayarlayın.\n4. Minecraft'ı açın ve herkese açık bir sunucuya katılın; aktarıcı DNS'i üzerinden kendi sunucunuza yönlendirileceksiniz.\nNotlar:\n- DNS modu bir LAN sunucusu yayınlamaz; oyun trafiğini aktarıcı üzerinden yönlendirir.\n- Normal ağ davranışına dönmek istediğinizde DNS ayarınızı eski haline getirin.",
+  "howToNintendoBody": "Nintendo Switch: DNS modu (adım adım):\n1. Uygulamada \"Nintendo\" modunu etkinleştirin ve bir Aktarım Sunucusu (EU veya US) seçin.\n2. DNS IP adresini aktarıcıya göndermek için \"DNS Yapılandırmasını Gönder\" düğmesine dokunun.\n3. Nintendo Switch'inizde Sistem Ayarları → İnternet → İnternet Ayarları → (ağınız) → Ayarları Değiştir → DNS bölümüne gidin ve Birincil DNS'i aktarıcı IP adresi olarak ayarlayın.\n4. Minecraft'ı açın ve herkese açık bir sunucuya katılın; aktarıcı DNS'i üzerinden kendi sunucunuza yönlendirileceksiniz.\nNotlar:\n- DNS modu bir LAN sunucusu yayınlamaz; oyun trafiğini aktarıcı üzerinden yönlendirir.\n- Normal ağ davranışına dönmek istediğinizde DNS ayarınızı eski haline getirin.",
   "@howToNintendoBody": {
     "description": "Detailed steps for Nintendo Switch DNS setup"
   },
@@ -266,7 +266,7 @@
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
   },
-  "howToFriendsBody": "Arkadaş modu — hızlı adımlar:\n1. Gerekliyse MCCompanion arkadaş hesabını (aktarıcı arkadaş) konsolunuza veya platformunuza ekleyin.\n2. Uygulamada Arkadaş modunu etkinleştirin ve aktarıcı yapılandırmasını gönderin (uygunsa).\n3. Konsolunuzda Minecraft → Arkadaşlar bölümünü açın ve LAN Dünyaları'nı arayın; sunucunuz orada bir LAN dünyası olarak görünmelidir.\n4. Arkadaşlarınızla sunucunuza katılmak için onu seçin.\nNotlar:\n- Hem sizin hem de arkadaşlarınızın arkadaş görünürlüğüne izin veren aynı NAT/ayarlarına sahip olduğundan emin olun.\n- Arkadaş modu, platformun arkadaş özelliklerine dayanır ve arkadaşlık isteklerinin kabul edilmesini gerektirebilir.",
+  "howToFriendsBody": "Arkadaş modu: hızlı adımlar:\n1. Gerekliyse MCCompanion arkadaş hesabını (aktarıcı arkadaş) konsolunuza veya platformunuza ekleyin.\n2. Uygulamada Arkadaş modunu etkinleştirin ve aktarıcı yapılandırmasını gönderin (uygunsa).\n3. Konsolunuzda Minecraft → Arkadaşlar bölümünü açın ve LAN Dünyaları'nı arayın; sunucunuz orada bir LAN dünyası olarak görünmelidir.\n4. Arkadaşlarınızla sunucunuza katılmak için onu seçin.\nNotlar:\n- Hem sizin hem de arkadaşlarınızın arkadaş görünürlüğüne izin veren aynı NAT/ayarlarına sahip olduğundan emin olun.\n- Arkadaş modu, platformun arkadaş özelliklerine dayanır ve arkadaşlık isteklerinin kabul edilmesini gerektirebilir.",
   "@howToFriendsBody": {
     "description": "Detailed steps for Friends mode"
   },
@@ -518,7 +518,7 @@
   "@checkBackLater": {
     "description": "Secondary empty state text on partner servers screen"
   },
-  "chooseUsernameSubtitle": "Bağlanmak için bir kullanıcı adı seçin.",
+  "chooseUsernameSubtitle": "Diğer oyuncuların seni bulabilmesi için bir kullanıcı adı seç.",
   "@chooseUsernameSubtitle": {
     "description": "Subtitle shown when profile is not yet set up"
   },
@@ -1571,7 +1571,7 @@
   "feedbackTitleHintFeature": "ör. Sunucu listesinde oyuncu pingi göster",
   "feedbackWhatHappened": "Ne oldu?",
   "feedbackDescribeIdea": "Fikrinden bahset",
-  "feedbackDescHintBug": "Hatayı açıkla — ne yaptın, ne bekliyordun ve bunun yerine ne oldu?",
+  "feedbackDescHintBug": "Hatayı açıkla: ne yaptın, ne bekliyordun ve bunun yerine ne oldu?",
   "feedbackDescHintFeature": "Ne istediğini ve neden faydalı olacağını açıkla.",
   "feedbackEmailLabel": "E-posta",
   "feedbackEmailHint": "Seninle iletişime geçebilmemiz için",
@@ -1580,7 +1580,7 @@
   "feedbackSubmitFeature": "Özellik İsteğini Gönder",
   "feedbackDisclaimer": "GitHub'da herkese açık bir konu oluşturur · Parola ekleme",
   "feedbackSuccessTitle": "Geri bildirim için teşekkürler!",
-  "feedbackSuccessBody": "Raporun gönderildi ve GitHub'da bir konu oluşturuldu. En kısa sürede inceleyeceğiz.",
+  "feedbackSuccessBody": "Teşekkürler! Bildirimin bize ulaştı. En kısa sürede bakacağız.",
   "feedbackViewOnGithub": "GitHub'da görüntüle",
   "feedbackSubmitAnother": "Bir tane daha gönder",
   "feedbackBackToApp": "Uygulamaya geri dön",
@@ -1612,7 +1612,7 @@
   "skinMenuDelete": "Sil",
   "rpScreenTitle": "Kaynak Paketi",
   "rpWhatIsThis": "Bu nedir?",
-  "rpExplanation": "Bir kaynak paketi konsolundaki Minecraft'ın görünümünü değiştirir — yeni bloklar, renkler veya sesler. Aşağıya .mcpack dosyasının bağlantısını yapıştır, etkinleştir ve kaydet. MCCompanion her bağlandığında otomatik olarak yükler.",
+  "rpExplanation": "Bir kaynak paketi konsolundaki Minecraft'ın görünümünü değiştirir, yeni bloklar, renkler veya sesler. Aşağıya .mcpack dosyasının bağlantısını yapıştır, etkinleştir ve kaydet. MCCompanion her bağlandığında otomatik olarak yükler.",
   "rpPackUrlLabel": "Paket URL'si",
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "Kaynak paketini etkinleştir",
@@ -1631,8 +1631,8 @@
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 genel bucket",
   "rpWorksDirect": ".mcpack veya .zip ile biten herhangi bir doğrudan HTTPS bağlantısı",
-  "rpNoDiscord": "Discord bağlantıları — .mcpack uzantısı yok ve birkaç saat sonra süresi doluyor",
-  "rpNoDrive": "Google Drive / Dropbox paylaşım bağlantıları — doğrudan indirme değil",
+  "rpNoDiscord": "Discord bağlantıları: .mcpack uzantısı yok ve birkaç saat sonra süresi doluyor",
+  "rpNoDrive": "Google Drive / Dropbox paylaşım bağlantıları, doğrudan indirme değil",
   "rpNoEncrypted": "Şifrelenmiş veya parola korumalı paketlere sahip sunucular",
   "rpWarnDiscord": "Discord bağlantılarının süresi dolup çalışmayı durdurur. Bunun yerine kalıcı bir host kullanın.",
   "rpWarnHttps": "URL https:// ile başlamalıdır",
@@ -1642,17 +1642,17 @@
   "rpClearMinecraftTitle": "Bu paketle ilk kez mi?",
   "rpClearMinecraftBody": "Minecraft kaynak paketlerini yerel olarak ön belleğe alır. MCCompanion paketini etkinleştirmeden önce bu sunucuya bağlandıysanız, Minecraft orijinal paketi zaten ön bellekte tutuyor ve birleştirilmiş sürümü yeniden indirmeyecektir.",
   "rpClearStep1": "Konsolunda Minecraft'ı aç ve Ayarlar → Depolama'ya git",
-  "rpClearStep2": "Kaynak Paketleri'nin yanındaki 'Temizle' veya 'Sıfırla'ya dokun — yerel olarak önbelleğe alınmış tüm paketleri siler",
-  "rpClearStep3": "MCCompanion üzerinden yeniden bağlan — birleştirilmiş paket otomatik olarak indirilecek",
+  "rpClearStep2": "Kaynak Paketleri'nin yanındaki 'Temizle' veya 'Sıfırla'ya dokun, yerel olarak önbelleğe alınmış tüm paketleri siler",
+  "rpClearStep3": "MCCompanion üzerinden yeniden bağlan: birleştirilmiş paket otomatik olarak indirilecek",
   "rpRelayTitle": "Pack bozuk görünüyor mu?",
-  "rpRelayBody": "Relay, overlay URL'yi önbellek anahtarı olarak kullanarak birleştirilmiş paketi 1 saat boyunca önbelleğe alır. Yeni bir birleştirme zorlamak için: pack URL'ini biraz değiştir (ör. ?v=2 ekle) ve kaydet. Ardından Minecraft'ın pack önbelleğini de temizle — birleştirilmiş pack hâlâ sunucunun UUID'sini kullandığından, Minecraft aksi takdirde eski önbelleğe alınmış sürümü gösterir.",
-  "rpWorksGithubHint": "Doğrudan indirme bağlantısı — her zaman erişilebilir",
-  "rpWorksCloudflareHint": "Genel bulut depolama — hızlı ve güvenilir",
+  "rpRelayBody": "Relay, overlay URL'yi önbellek anahtarı olarak kullanarak birleştirilmiş paketi 1 saat boyunca önbelleğe alır. Yeni bir birleştirme zorlamak için: pack URL'ini biraz değiştir (ör. ?v=2 ekle) ve kaydet. Ardından Minecraft'ın pack önbelleğini de temizle, birleştirilmiş pack hâlâ sunucunun UUID'sini kullandığından, Minecraft aksi takdirde eski önbelleğe alınmış sürümü gösterir.",
+  "rpWorksGithubHint": "Doğrudan indirme bağlantısı: her zaman erişilebilir",
+  "rpWorksCloudflareHint": "Genel bulut depolama: hızlı ve güvenilir",
   "rpWorksDirectHint": "Herhangi bir genel HTTPS .mcpack veya .zip URL",
   "rpNoDiscordHint": "Discord CDN bağlantıları kısa süre sonra sona erer",
-  "rpNoDriveHint": "Doğrudan indirme yok — önizleme sayfasına yönlendirir",
+  "rpNoDriveHint": "Doğrudan indirme yok: önizleme sayfasına yönlendirir",
   "rpNoEncryptedHint": "MCCompanion şifrelenmiş pack içeriğini birleştiremez",
-  "rpClearWhy": "Minecraft, kaynak paketlerini UUID'lerine göre önbelleğe alır. Birleştirilmiş paket, sunucunun orijinal UUID'sini korur — Minecraft, önceki bir oturumdan (MCCompanion etkinleştirilmeden önce) sunucu paketini zaten önbelleğe almışsa, yeni birleştirilmiş sürümü indirmez. Minecraft'ın yeni birleştirilmiş paketi yüklemesi için önbelleği temizle.",
+  "rpClearWhy": "Minecraft, kaynak paketlerini UUID'lerine göre önbelleğe alır. Birleştirilmiş paket, sunucunun orijinal UUID'sini korur, Minecraft, önceki bir oturumdan (MCCompanion etkinleştirilmeden önce) sunucu paketini zaten önbelleğe almışsa, yeni birleştirilmiş sürümü indirmez. Minecraft'ın yeni birleştirilmiş paketi yüklemesi için önbelleği temizle.",
   "rpUploadTab": "Upload",
   "rpUrlTab": "URL",
   "rpUploadButton": "Tap to select your pack",
@@ -1660,7 +1660,7 @@
   "rpUploading": "Uploading...",
   "rpMergerTitle": "RP Birleştirici",
   "rpMergerSubtitle": "4'e kadar kaynak paketi birleştir",
-  "rpMergerPriorityHint": "En üstteki paketin en yüksek önceliği var — dosyaları çakışmalarda kazanır.",
+  "rpMergerPriorityHint": "En üstteki paketin en yüksek önceliği var, dosyaları çakışmalarda kazanır.",
   "rpMergerTopBadge": "ÜST",
   "rpMergerAddPacks": "Kaynak paketi ekle",
   "rpMergerAddAnother": "Başka paket ekle ({current}/4)",
@@ -1668,22 +1668,22 @@
   "rpMergerMerging": "Birleştiriliyor…",
   "rpMergerButton": "{count} paketi birleştir",
   "rpMergerComplete": "Birleştirme tamamlandı!",
-  "rpMergerConflicts": "{count} çakışma çözüldü — en üstteki paket kazandı.",
+  "rpMergerConflicts": "{count} çakışma çözüldü: en üstteki paket kazandı.",
   "rpMergerSetActive": "Etkin kaynak paketi olarak ayarla",
   "rpMergerSetActiveToast": "Etkin kaynak paketi olarak ayarlandı",
   "rpMergerOpenButton": "Kaynak paketleri birleştir",
   "rpMergerOpenSubtitle": "2–4 paketi tek pakette birleştir",
   "rpDisabled": "Devre dışı",
   "rpNoPackSelected": "Kaynak paketi seçilmedi",
-  "rpActiveOnConnect": "Aktif — bağlanırken uygulanır",
+  "rpActiveOnConnect": "Aktif: bağlanırken uygulanır",
   "rpBrowseSubtitle": "Seçilmiş paketler, kullanıma hazır",
   "rpBrowseEmpty": "Henüz paket yok",
   "rpBrowseEmptyHint": "Seçilmiş paketler için daha sonra tekrar bakın.",
   "rpReplaceFile": "Başka bir dosyayla değiştir",
   "rpDropToUpload": "Yüklemek için bırak",
-  "rpTabBrowseInfo": "MCCompanion tarafından seçilmiş paketlere göz atın. Anında bir paketi etkinleştirmek için Kullan'a dokunun — yükleme veya bağlantı gerekmez.",
+  "rpTabBrowseInfo": "MCCompanion tarafından seçilmiş paketlere göz atın. Anında bir paketi etkinleştirmek için Kullan'a dokunun, yükleme veya bağlantı gerekmez.",
   "rpTabUploadInfo": "Kendi .mcpack veya .zip dosyanızı yükleyin. MCCompanion onu bulutta güvenle saklar ve her bağlandığınızda konsolunuza gönderir.",
-  "rpTabUrlInfo": "Bir .mcpack veya .zip dosyasına doğrudan indirme bağlantısı yapıştırın. URL herkese açık olmalıdır — Discord veya Google Drive bağlantıları kullanılamaz.",
+  "rpTabUrlInfo": "Bir .mcpack veya .zip dosyasına doğrudan indirme bağlantısı yapıştırın. URL herkese açık olmalıdır, Discord veya Google Drive bağlantıları kullanılamaz.",
   "rpTabMergeInfo": "2 ila 4 paketi tek bir pakette birleştirin. Birleştirilen paket MCCompanion Cloud'a yüklenir ve otomatik olarak etkinleştirilir.",
   "shareLabel": "Paylaş",
   "sectionMinecraftAccounts": "Minecraft Hesapları",
@@ -1774,10 +1774,23 @@
   "skinDefaultName": "Benim skinim",
   "skinUpdatedInCloud": "Skin bulutta güncellendi",
   "skinByCreator": "{name} tarafından",
-  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "@skinByCreator": {
+    "description": "Creator attribution",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "skinLikesCount": "{count} beğeni",
-  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}},
-
+  "@skinLikesCount": {
+    "description": "Like count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionRecentActivity": "Son etkinlik",
   "activityNoEvents": "Henüz son etkinlik yok.",
   "activitySkinUploaded": "Skin yüklendi",
@@ -1787,30 +1800,84 @@
   "activityPackRejected": "Paket onaylanmadı",
   "timeJustNow": "şimdi",
   "timeMinutesAgo": "{count} dk önce",
-  "@timeMinutesAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeHoursAgo": "{count} sa önce",
-  "@timeHoursAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeDaysAgo": "{count} gün önce",
-  "@timeDaysAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeMonthsAgo": "{count} ay önce",
-  "@timeMonthsAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMonthsAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionNotifications": "Bildirimler",
   "sectionNotificationTypes": "Bildirim türleri",
   "notifMarkAllRead": "Tümünü okundu işaretle",
   "notifEmpty": "Henüz bildirim yok. Beğeniler, yorumlar ve arkadaş etkinlikleri burada görünecek.",
   "notifSomeone": "Biri",
   "notifSkinLiked": "{actor} skininizi beğendi",
-  "@notifSkinLiked": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifSkinLiked": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifCommentReceived": "{actor} skininize yorum yaptı",
-  "@notifCommentReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifCommentReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPackApproved": "Paket onaylandı",
   "notifPackRejected": "Paket onaylanmadı",
   "notifFriendRequest": "{actor} size arkadaşlık isteği gönderdi",
-  "@notifFriendRequest": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendRequest": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifFriendAccepted": "{actor} isteğinizi kabul etti",
-  "@notifFriendAccepted": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendAccepted": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifMessageReceived": "{actor} adlı kişiden yeni mesaj",
-  "@notifMessageReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifMessageReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPrefSkinLiked": "Skin beğenildi",
   "notifPrefCommentReceived": "Yorum alındı",
   "notifPrefPackApproved": "Paket onaylandı",
@@ -1818,15 +1885,66 @@
   "notifPrefFriendRequest": "Arkadaşlık isteği",
   "notifPrefFriendAccepted": "Arkadaş eklendi",
   "notifPrefMessageReceived": "Yeni mesaj",
-
   "commentsTitle": "Yorumlar",
   "commentsEmpty": "Henüz yorum yok. İlk sen ol!",
   "commentsPlaceholder": "Yorum yaz…",
-
   "loadMore": "Daha fazla yükle",
-
   "skinLayerInner": "İç",
-  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "@skinLayerInner": {
+    "description": "Skin editor layer toggle, inner/base layer"
+  },
   "skinLayerOuter": "Dış",
-  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
+  "@skinLayerOuter": {
+    "description": "Skin editor layer toggle, outer/overlay layer"
+  },
+  "feedbackLoginRequiredTitle": "Geri bildirim göndermek için giriş yapın",
+  "feedbackLoginRequiredBody": "Geri bildirim, size doğrudan uygulama içinden yanıt verebilmemiz için MCCompanion hesabınıza bağlıdır.",
+  "feedbackLoginButton": "Giriş yap",
+  "reportBug": "Geri bildirim",
+  "rpBehaviorContentWarning": "Bu paket, sunucularda çalışmayan davranış paketi verileri içeriyor. Dokular yine de çalışacaktır.",
+  "rpInvalidPackFormat": "Bu bir Java Edition paketi ve desteklenmiyor. Lütfen Bedrock Edition kaynak paketi kullanın.",
+  "wikiFavourites": "Favoriler",
+  "wikiRecent": "Son görüntülenenler",
+  "supportInboxTitle": "Destek kutusu",
+  "supportInboxSubtitle": "Tüm destek sohbetleri, tüm yöneticilerle paylaşılır",
+  "adminBadge": "Yönetici",
+  "skinShareSubject": "Minecraft skini",
+  "skinEditorTitle": "Skin düzenleyici",
+  "skinToolUndo": "Geri al",
+  "skinSaveToMySkins": "Skinlerime kaydet",
+  "skinUpdateInCloud": "Bulutta güncelle",
+  "skinExportPng": "PNG dışa aktar",
+  "skinToolDraw": "Çiz",
+  "skinToolFill": "Doldur",
+  "skinToolErase": "Sil",
+  "customColour": "Özel renk",
+  "featuredServerLabel": "ÖNE ÇIKAN SUNUCU",
+  "featuredServerTagline": "Hemen katıl ve oynamaya başla.",
+  "featuredServerPlay": "Oyna",
+  "rpUploadFailedCode": "Yükleme başarısız ({code})",
+  "rpUploadFailed": "Yükleme başarısız: {error}",
+  "rpLoadFailed": "Paketler yüklenemedi",
+  "rpRetry": "Tekrar dene",
+  "rpSearchHint": "Paket ara…",
+  "rpMergeFailed": "Birleştirme başarısız: {error}",
+  "rpMergerSize": "Boyut",
+  "rpMergerCreated": "Oluşturuldu",
+  "rpMergerSourcePacks": "Kaynak paketler",
+  "rpMergerDropToAdd": "Eklemek için bırak",
+  "rpMergerSavedMerges": "Kayıtlı birleştirmeler",
+  "rpMergerUse": "Kullan",
+  "supportInboxShared": "Tüm yöneticilerle paylaşılır",
+  "supportInboxEmpty": "Henüz destek sohbeti yok",
+  "supportReplyingAs": "MCCompanion Support olarak yanıtlıyorsun",
+  "supportReplyHint": "Destek olarak yanıtla…",
+  "relayBlocked": "IP adresin veya hesabın MCCompanion tarafından engellendi. Bunun bir hata olduğunu düşünüyorsan Discord'umuza katıl.",
+  "relayBlockedWithReason": "IP adresin veya hesabın MCCompanion tarafından engellendi.\nSebep: {reason}\nBunun bir hata olduğunu düşünüyorsan Discord'umuza katıl.",
+  "relayConfigFailed": "Relay kurulamadı (durum {code}). Başka bir relay dene ya da Discord'umuza katıl.",
+  "relayConfigFailedDetail": "Relay kurulamadı (durum {code}): {detail}. Başka bir relay dene ya da Discord'umuza katıl.",
+  "relayTimeout": "Relay zamanında yanıt vermedi.",
+  "relayUnreachable": "Relay'e ulaşılamadı.",
+  "lookupNotFound": "Oyuncu bulunamadı.",
+  "lookupNetworkError": "Ağ hatası. Tekrar dene.",
+  "lookupBedrockUnavailable": "Bedrock araması şu anda kullanılamıyor.",
+  "lookupFailed": "Arama başarısız."
 }

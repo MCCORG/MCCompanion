@@ -15,7 +15,7 @@
   "aternosSubtext": "أنشئ خادم ماينكرافت مجاني خاص بك",
   "howToUseMenu": "طريقة الاستخدام",
   "support": "الدعم",
-  "helpText": "تم الإنشاء بواسطة {appCreator}.\r\n\r\nطريقة الاستخدام:\r\n1. أدخل عنوان خادم Minecraft والمنفذ الخاص بك (الافتراضي: 19132)\r\n   — أو اختر خادمًا محفوظًا مسبقًا من القائمة المنسدلة\r\n2. (اختياري) اختر خادم ترحيل (EU أو US) الأقرب إلى موقعك\r\n3. اضغط على \\\"بدء البث\\\" للبدء\r\n4. على جهازك/وحدة التحكم: Minecraft > لعب > الأصدقاء\r\n5. يجب أن ترى خادم شبكة محلية باسم \\\"MCCompanion\\\"\r\n6. اضغط عليه للانضمام إلى خادمك الخارجي عبر MCCompanion\r\n\r\nNintendo Switch (وضع DNS):\r\n1. فعّل \\\"Nintendo Switch\\\" في لوحة الاتصال\r\n2. اختر خادم ترحيل (EU أو US)\r\n3. اضغط على \\\"إرسال إعداد DNS\\\" — سيؤدي ذلك إلى إرسال إعداداتك إلى خادم الترحيل\r\n   (لن يقوم ببث خادم شبكة محلية)\r\n4. على جهاز Switch الخاص بك، طبّق إعدادات DNS الخاصة بـ MCCompanion وانضم\r\n   باستخدام إدخال الخادم الذي تستخدمه مع MCCompanion\r\n\r\nملاحظات:\r\n- لكي يعمل بث الشبكة المحلية، يجب أن يكون MCCompanion ووحدة التحكم على نفس الشبكة المحلية.\r\n- نصيحة: اختر خادم الترحيل الأقرب إليك للحصول على أفضل أداء.",
+  "helpText": "تم الإنشاء بواسطة {appCreator}.\r\n\r\nطريقة الاستخدام:\r\n1. أدخل عنوان خادم Minecraft والمنفذ الخاص بك (الافتراضي: 19132)\r\n  , أو اختر خادمًا محفوظًا مسبقًا من القائمة المنسدلة\r\n2. (اختياري) اختر خادم ترحيل (EU أو US) الأقرب إلى موقعك\r\n3. اضغط على \\\"بدء البث\\\" للبدء\r\n4. على جهازك/وحدة التحكم: Minecraft > لعب > الأصدقاء\r\n5. يجب أن ترى خادم شبكة محلية باسم \\\"MCCompanion\\\"\r\n6. اضغط عليه للانضمام إلى خادمك الخارجي عبر MCCompanion\r\n\r\nNintendo Switch (وضع DNS):\r\n1. فعّل \\\"Nintendo Switch\\\" في لوحة الاتصال\r\n2. اختر خادم ترحيل (EU أو US)\r\n3. اضغط على \\\"إرسال إعداد DNS\\\": سيؤدي ذلك إلى إرسال إعداداتك إلى خادم الترحيل\r\n   (لن يقوم ببث خادم شبكة محلية)\r\n4. على جهاز Switch الخاص بك، طبّق إعدادات DNS الخاصة بـ MCCompanion وانضم\r\n   باستخدام إدخال الخادم الذي تستخدمه مع MCCompanion\r\n\r\nملاحظات:\r\n- لكي يعمل بث الشبكة المحلية، يجب أن يكون MCCompanion ووحدة التحكم على نفس الشبكة المحلية.\r\n- نصيحة: اختر خادم الترحيل الأقرب إليك للحصول على أفضل أداء.",
   "@helpText": {
     "description": "Detailed help / instructions shown in the help dialog",
     "placeholders": {
@@ -37,7 +37,7 @@
   "@howToJavaSubtitle": {
     "description": "Short subtitle for Java menu tile"
   },
-  "howToJavaBody": "وضع Java — خطوات سريعة:\n1. في التطبيق، اختر وضع Java.\n2. أدخل عنوان خادم Java Edition والمنفذ (الافتراضي: 25565).\n3. اضغط على \"ابدأ وضع Java\" — سيقوم MCCompanion بربط الاتصال.\n4. افتح Minecraft Bedrock وانتقل إلى علامة تبويب الأصدقاء.\n5. اختر خادم LAN المسمى \"MCCompanion\" للانضمام إلى خادم Java.\n\n⚠️ تحذيرات مهمة:\n- يلزم وجود حساب Java Edition صالح (Microsoft).\n- تستخدم بعض الخوادم أنظمة مكافحة الغش وقد تكتشف حسابك وتحظره.\n- بعض الخوادم تحظر عملاء Bedrock صراحةً — تحقق دائمًا من قواعد الخادم.\n- MCCompanion غير مسؤول عن أي حظر أو تعليق أو أي مشكلات أخرى متعلقة بالحساب قد تنتج عن استخدام هذه الميزة.\n- استخدمها على مسؤوليتك الخاصة.",
+  "howToJavaBody": "وضع Java: خطوات سريعة:\n1. في التطبيق، اختر وضع Java.\n2. أدخل عنوان خادم Java Edition والمنفذ (الافتراضي: 25565).\n3. اضغط على \"ابدأ وضع Java\": سيقوم MCCompanion بربط الاتصال.\n4. افتح Minecraft Bedrock وانتقل إلى علامة تبويب الأصدقاء.\n5. اختر خادم LAN المسمى \"MCCompanion\" للانضمام إلى خادم Java.\n\n⚠️ تحذيرات مهمة:\n- يلزم وجود حساب Java Edition صالح (Microsoft).\n- تستخدم بعض الخوادم أنظمة مكافحة الغش وقد تكتشف حسابك وتحظره.\n- بعض الخوادم تحظر عملاء Bedrock صراحةً: تحقق دائمًا من قواعد الخادم.\n- MCCompanion غير مسؤول عن أي حظر أو تعليق أو أي مشكلات أخرى متعلقة بالحساب قد تنتج عن استخدام هذه الميزة.\n- استخدمها على مسؤوليتك الخاصة.",
   "@howToJavaBody": {
     "description": "Detailed steps for Java mode how-to modal"
   },
@@ -121,7 +121,7 @@
   "@bedrockBridge": {
     "description": "Subtitle on splash screen"
   },
-  "clientDisconnected": "تم فصل العميل — تم إيقاف البث",
+  "clientDisconnected": "تم فصل العميل: تم إيقاف البث",
   "@clientDisconnected": {
     "description": "Snackbar shown when clients disconnect automatically"
   },
@@ -254,7 +254,7 @@
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
-  "howToNintendoBody": "Nintendo Switch — وضع DNS (خطوة بخطوة):\r\n1. في التطبيق، فعّل وضع \\\"Nintendo\\\" واختر خادم ترحيل (EU أو US).\r\n2. اضغط على \\\"إرسال إعداد DNS\\\" لإرسال عنوان DNS IP إلى خادم الترحيل.\r\n3. على جهاز Nintendo Switch، انتقل إلى إعدادات النظام → الإنترنت → إعدادات الإنترنت → (شبكتك) → تغيير الإعدادات → DNS واضبط DNS الأساسي على عنوان IP الخاص بخادم الترحيل.\r\n4. افتح Minecraft وانضم إلى خادم عام؛ سيتم توجيهك إلى خادمك باستخدام DNS الخاص بخادم الترحيل.\r\nملاحظات:\r\n- وضع DNS لا يقوم ببث خادم شبكة محلية؛ بل يوجّه حركة مرور اللعبة عبر خادم الترحيل.\r\n- أعد DNS إلى وضعه السابق بعد الانتهاء إذا كنت بحاجة إلى سلوك شبكة طبيعي.",
+  "howToNintendoBody": "Nintendo Switch: وضع DNS (خطوة بخطوة):\r\n1. في التطبيق، فعّل وضع \\\"Nintendo\\\" واختر خادم ترحيل (EU أو US).\r\n2. اضغط على \\\"إرسال إعداد DNS\\\" لإرسال عنوان DNS IP إلى خادم الترحيل.\r\n3. على جهاز Nintendo Switch، انتقل إلى إعدادات النظام → الإنترنت → إعدادات الإنترنت → (شبكتك) → تغيير الإعدادات → DNS واضبط DNS الأساسي على عنوان IP الخاص بخادم الترحيل.\r\n4. افتح Minecraft وانضم إلى خادم عام؛ سيتم توجيهك إلى خادمك باستخدام DNS الخاص بخادم الترحيل.\r\nملاحظات:\r\n- وضع DNS لا يقوم ببث خادم شبكة محلية؛ بل يوجّه حركة مرور اللعبة عبر خادم الترحيل.\r\n- أعد DNS إلى وضعه السابق بعد الانتهاء إذا كنت بحاجة إلى سلوك شبكة طبيعي.",
   "@howToNintendoBody": {
     "description": "Detailed steps for Nintendo Switch DNS setup"
   },
@@ -266,7 +266,7 @@
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
   },
-  "howToFriendsBody": "وضع الأصدقاء — خطوات سريعة:\r\n1. أضف حساب صديق MCCompanion (صديق الترحيل) على وحدة التحكم أو المنصة إذا لزم الأمر.\r\n2. في التطبيق، فعّل وضع الأصدقاء وأرسل إعداد خادم الترحيل (إذا كان ذلك مطلوبًا).\r\n3. على وحدة التحكم، افتح Minecraft → الأصدقاء وابحث عن عوالم الشبكة المحلية — يجب أن يظهر خادمك هناك كعالم شبكة محلية.\r\n4. اختره للانضمام إلى خادمك مع الأصدقاء.\r\nملاحظات:\r\n- تأكد من أن لديك أنت وأصدقاؤك نفس إعدادات NAT/الإعدادات التي تسمح بظهور الأصدقاء.\r\n- يعتمد وضع الأصدقاء على ميزات الأصدقاء الخاصة بالمنصة وقد يتطلب قبول طلبات الصداقة.",
+  "howToFriendsBody": "وضع الأصدقاء: خطوات سريعة:\r\n1. أضف حساب صديق MCCompanion (صديق الترحيل) على وحدة التحكم أو المنصة إذا لزم الأمر.\r\n2. في التطبيق، فعّل وضع الأصدقاء وأرسل إعداد خادم الترحيل (إذا كان ذلك مطلوبًا).\r\n3. على وحدة التحكم، افتح Minecraft → الأصدقاء وابحث عن عوالم الشبكة المحلية, يجب أن يظهر خادمك هناك كعالم شبكة محلية.\r\n4. اختره للانضمام إلى خادمك مع الأصدقاء.\r\nملاحظات:\r\n- تأكد من أن لديك أنت وأصدقاؤك نفس إعدادات NAT/الإعدادات التي تسمح بظهور الأصدقاء.\r\n- يعتمد وضع الأصدقاء على ميزات الأصدقاء الخاصة بالمنصة وقد يتطلب قبول طلبات الصداقة.",
   "@howToFriendsBody": {
     "description": "Detailed steps for Friends mode"
   },
@@ -302,7 +302,7 @@
   "@helpNintendoDnsSubtitle": {
     "description": "Short subtitle for Nintendo DNS troubleshooting tile"
   },
-  "helpNintendoDnsBody": "إذا لم يعمل وضع DNS الخاص بـ Nintendo، فتحقق مما يلي:\r\n\r\n1. تأكد من أنك أرسلت إعداد DNS من التطبيق (إرسال إعداد DNS).\r\n2. تحقق من أنك طبّقت عنوان IP الخاص بخادم الترحيل كـ DNS أساسي على Switch.\r\n3. تأكد من أن خادم الترحيل المحدد (EU/US) متصل وغير مثقل بالتحميل.\r\n4. بعض الشبكات (مثل البوابات المقيدة) تمنع DNS المخصص — جرّب على شبكة مختلفة.\r\n\r\nإذا استمرت المشكلات، فعّل وضع التصحيح وافحص السجلات أو جرّب البديل وهو وضع الأصدقاء.",
+  "helpNintendoDnsBody": "إذا لم يعمل وضع DNS الخاص بـ Nintendo، فتحقق مما يلي:\r\n\r\n1. تأكد من أنك أرسلت إعداد DNS من التطبيق (إرسال إعداد DNS).\r\n2. تحقق من أنك طبّقت عنوان IP الخاص بخادم الترحيل كـ DNS أساسي على Switch.\r\n3. تأكد من أن خادم الترحيل المحدد (EU/US) متصل وغير مثقل بالتحميل.\r\n4. بعض الشبكات (مثل البوابات المقيدة) تمنع DNS المخصص, جرّب على شبكة مختلفة.\r\n\r\nإذا استمرت المشكلات، فعّل وضع التصحيح وافحص السجلات أو جرّب البديل وهو وضع الأصدقاء.",
   "@helpNintendoDnsBody": {
     "description": "Detailed placeholder for Nintendo DNS troubleshooting"
   },
@@ -518,7 +518,7 @@
   "@checkBackLater": {
     "description": "Secondary empty state text on partner servers screen"
   },
-  "chooseUsernameSubtitle": "Choose a username to start connecting with other players.",
+  "chooseUsernameSubtitle": "اختر اسم مستخدم ليتمكن اللاعبون الآخرون من العثور عليك.",
   "@chooseUsernameSubtitle": {
     "description": "Subtitle shown when profile is not yet set up"
   },
@@ -1571,7 +1571,7 @@
   "feedbackTitleHintFeature": "مثال: عرض بينج اللاعب في قائمة الخوادم",
   "feedbackWhatHappened": "ماذا حدث؟",
   "feedbackDescribeIdea": "صف فكرتك",
-  "feedbackDescHintBug": "صف الخطأ — ماذا فعلت، وماذا توقعت، وماذا حدث بدلاً من ذلك؟",
+  "feedbackDescHintBug": "صف الخطأ: ماذا فعلت، وماذا توقعت، وماذا حدث بدلاً من ذلك؟",
   "feedbackDescHintFeature": "اشرح ما تريده ولماذا سيكون مفيدًا.",
   "feedbackEmailLabel": "البريد الإلكتروني",
   "feedbackEmailHint": "حتى نتمكن من التواصل معك",
@@ -1580,7 +1580,7 @@
   "feedbackSubmitFeature": "إرسال طلب الميزة",
   "feedbackDisclaimer": "ينشئ تذكرة عامة على GitHub · لا تُدرج كلمات المرور",
   "feedbackSuccessTitle": "شكرًا على ملاحظاتك!",
-  "feedbackSuccessBody": "تم إرسال تقريرك وإنشاء تذكرة على GitHub. سنراجعها في أقرب وقت ممكن.",
+  "feedbackSuccessBody": "شكرًا! وصلنا تقريرك وسنطّلع عليه في أقرب وقت.",
   "feedbackViewOnGithub": "عرض على GitHub",
   "feedbackSubmitAnother": "إرسال آخر",
   "feedbackBackToApp": "العودة إلى التطبيق",
@@ -1612,7 +1612,7 @@
   "skinMenuDelete": "حذف",
   "rpScreenTitle": "حزمة الموارد",
   "rpWhatIsThis": "ما هذا؟",
-  "rpExplanation": "حزمة الموارد تغيّر مظهر Minecraft على جهازك — كتل وألوان وأصوات جديدة. الصق رابط ملف .mcpack أدناه، فعّله واحفظ. يحمله MCCompanion تلقائيًا في كل مرة تتصل.",
+  "rpExplanation": "حزمة الموارد تغيّر مظهر Minecraft على جهازك, كتل وألوان وأصوات جديدة. الصق رابط ملف .mcpack أدناه، فعّله واحفظ. يحمله MCCompanion تلقائيًا في كل مرة تتصل.",
   "rpPackUrlLabel": "رابط الحزمة",
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "تفعيل حزمة الموارد",
@@ -1631,8 +1631,8 @@
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 حاوية عامة",
   "rpWorksDirect": "أي رابط HTTPS مباشر ينتهي بـ .mcpack أو .zip",
-  "rpNoDiscord": "روابط Discord — لا تحتوي على امتداد .mcpack وتنتهي صلاحيتها بعد ساعات قليلة",
-  "rpNoDrive": "روابط مشاركة Google Drive / Dropbox — ليست تنزيلات مباشرة",
+  "rpNoDiscord": "روابط Discord: لا تحتوي على امتداد .mcpack وتنتهي صلاحيتها بعد ساعات قليلة",
+  "rpNoDrive": "روابط مشاركة Google Drive / Dropbox: ليست تنزيلات مباشرة",
   "rpNoEncrypted": "الخوادم ذات الحزم المشفرة أو المحمية بكلمة مرور",
   "rpWarnDiscord": "روابط Discord تنتهي صلاحيتها وستتوقف عن العمل. استخدم مضيفًا دائمًا بدلاً من ذلك.",
   "rpWarnHttps": "يجب أن يبدأ الرابط بـ https://",
@@ -1642,17 +1642,17 @@
   "rpClearMinecraftTitle": "أول مرة مع هذه الحزمة؟",
   "rpClearMinecraftBody": "يقوم Minecraft بتخزين حزم الموارد محليًا. إذا كنت قد اتصلت بهذا الخادم قبل تفعيل حزمة MCCompanion، فإن Minecraft يملك الحزمة الأصلية محفوظة ولن يعيد تنزيل النسخة المدمجة.",
   "rpClearStep1": "افتح Minecraft على جهازك وانتقل إلى الإعدادات → التخزين",
-  "rpClearStep2": "انقر على ‘مسح’ أو ‘إعادة تعيين’ بجانب حزم الموارد — سيزيل جميع الحزم المخزّنة محليًا",
-  "rpClearStep3": "أعد الاتصال عبر MCCompanion — ستُنزّل الحزمة المدمجة تلقائيًا",
+  "rpClearStep2": "انقر على ‘مسح’ أو ‘إعادة تعيين’ بجانب حزم الموارد, سيزيل جميع الحزم المخزّنة محليًا",
+  "rpClearStep3": "أعد الاتصال عبر MCCompanion: ستُنزّل الحزمة المدمجة تلقائيًا",
   "rpRelayTitle": "الحزمة تبدو خاطئة؟",
-  "rpRelayBody": "يحتفظ الريلاي بالحزمة المدمجة في الذاكرة المؤقتة لمدة ساعة باستخدام رابط الـ overlay كمفتاح. لإجبار دمج جديد: عدّل الرابط قليلاً (مثلاً أضف ?v=2) واحفظ. بعد ذلك، امسح أيضاً ذاكرة حزم Minecraft — فالحزمة المدمجة لا تزال تستخدم UUID الخادم، وإلا سيعرض Minecraft النسخة القديمة من الذاكرة.",
-  "rpWorksGithubHint": "رابط تنزيل مباشر — دائمًا متاح",
-  "rpWorksCloudflareHint": "تخزين سحابي عام — سريع وموثوق",
+  "rpRelayBody": "يحتفظ الريلاي بالحزمة المدمجة في الذاكرة المؤقتة لمدة ساعة باستخدام رابط الـ overlay كمفتاح. لإجبار دمج جديد: عدّل الرابط قليلاً (مثلاً أضف ?v=2) واحفظ. بعد ذلك، امسح أيضاً ذاكرة حزم Minecraft, فالحزمة المدمجة لا تزال تستخدم UUID الخادم، وإلا سيعرض Minecraft النسخة القديمة من الذاكرة.",
+  "rpWorksGithubHint": "رابط تنزيل مباشر: دائمًا متاح",
+  "rpWorksCloudflareHint": "تخزين سحابي عام: سريع وموثوق",
   "rpWorksDirectHint": "أي رابط HTTPS عام .mcpack أو .zip",
   "rpNoDiscordHint": "روابط Discord CDN تنتهي صلاحيتها بعد وقت قصير",
-  "rpNoDriveHint": "لا يوجد تنزيل مباشر — يعيد التوجيه إلى صفحة معاينة",
+  "rpNoDriveHint": "لا يوجد تنزيل مباشر: يعيد التوجيه إلى صفحة معاينة",
   "rpNoEncryptedHint": "لا يستطيع MCCompanion دمج محتوى الحزم المشفرة",
-  "rpClearWhy": "يخزن Minecraft حزم الموارد بواسطة UUID الخاصة بها. تحتفظ الحزمة المدمجة بـ UUID الأصلي للخادم — إذا كان Minecraft قد خزّن حزمة الخادم بالفعل من جلسة سابقة (قبل تفعيل MCCompanion)، فلن يعيد تنزيل النسخة المدمجة الجديدة. امسح ذاكرة التخزين المؤقت حتى يحمّل Minecraft الحزمة المدمجة الجديدة.",
+  "rpClearWhy": "يخزن Minecraft حزم الموارد بواسطة UUID الخاصة بها. تحتفظ الحزمة المدمجة بـ UUID الأصلي للخادم, إذا كان Minecraft قد خزّن حزمة الخادم بالفعل من جلسة سابقة (قبل تفعيل MCCompanion)، فلن يعيد تنزيل النسخة المدمجة الجديدة. امسح ذاكرة التخزين المؤقت حتى يحمّل Minecraft الحزمة المدمجة الجديدة.",
   "rpUploadTab": "Upload",
   "rpUrlTab": "URL",
   "rpUploadButton": "Tap to select your pack",
@@ -1660,7 +1660,7 @@
   "rpUploading": "Uploading...",
   "rpMergerTitle": "دمج حزم الموارد",
   "rpMergerSubtitle": "ادمج حتى 4 حزم موارد",
-  "rpMergerPriorityHint": "الحزمة العلوية لها أعلى أولوية — ملفاتها تفوز في النزاعات.",
+  "rpMergerPriorityHint": "الحزمة العلوية لها أعلى أولوية: ملفاتها تفوز في النزاعات.",
   "rpMergerTopBadge": "أعلى",
   "rpMergerAddPacks": "إضافة حزم موارد",
   "rpMergerAddAnother": "إضافة حزمة أخرى ({current}/4)",
@@ -1668,22 +1668,22 @@
   "rpMergerMerging": "جارٍ الدمج…",
   "rpMergerButton": "دمج {count} حزم",
   "rpMergerComplete": "اكتمل الدمج!",
-  "rpMergerConflicts": "تم حل {count} تعارض — فازت الحزمة العلوية.",
+  "rpMergerConflicts": "تم حل {count} تعارض: فازت الحزمة العلوية.",
   "rpMergerSetActive": "تعيين كحزمة موارد نشطة",
   "rpMergerSetActiveToast": "تم تعيينها كحزمة موارد نشطة",
   "rpMergerOpenButton": "دمج حزم الموارد",
   "rpMergerOpenSubtitle": "ادمج 2-4 حزم في واحدة",
   "rpDisabled": "معطّل",
   "rpNoPackSelected": "لم يتم تحديد حزمة موارد",
-  "rpActiveOnConnect": "نشط — يُطبَّق عند الاتصال",
+  "rpActiveOnConnect": "نشط: يُطبَّق عند الاتصال",
   "rpBrowseSubtitle": "حزم منتقاة، جاهزة للاستخدام",
   "rpBrowseEmpty": "لا توجد حزم متاحة بعد",
   "rpBrowseEmptyHint": "تفقد لاحقًا للحصول على حزم منتقاة.",
   "rpReplaceFile": "استبدل بملف آخر",
   "rpDropToUpload": "أفلت للرفع",
-  "rpTabBrowseInfo": "تصفح الحزم التي اختارها MCCompanion. اضغط استخدام لتفعيل حزمة فورًا — دون رفع أو رابط.",
+  "rpTabBrowseInfo": "تصفح الحزم التي اختارها MCCompanion. اضغط استخدام لتفعيل حزمة فورًا, دون رفع أو رابط.",
   "rpTabUploadInfo": "ارفع ملف .mcpack أو .zip الخاص بك. يخزنه MCCompanion بأمان في السحابة ويرسله إلى وحدتك في كل مرة تتصل فيها.",
-  "rpTabUrlInfo": "الصق رابط تنزيل مباشر لملف .mcpack أو .zip. يجب أن يكون الرابط متاحًا للعموم — لا روابط Discord أو Google Drive.",
+  "rpTabUrlInfo": "الصق رابط تنزيل مباشر لملف .mcpack أو .zip. يجب أن يكون الرابط متاحًا للعموم, لا روابط Discord أو Google Drive.",
   "rpTabMergeInfo": "ادمج من 2 إلى 4 حزم في حزمة واحدة. يتم رفع الحزمة المدمجة إلى MCCompanion Cloud وتفعيلها تلقائيًا.",
   "shareLabel": "مشاركة",
   "sectionMinecraftAccounts": "حسابات Minecraft",
@@ -1774,10 +1774,23 @@
   "skinDefaultName": "سكني",
   "skinUpdatedInCloud": "تم تحديث السكن في السحابة",
   "skinByCreator": "بواسطة {name}",
-  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "@skinByCreator": {
+    "description": "Creator attribution",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "skinLikesCount": "{count} إعجاب",
-  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}},
-
+  "@skinLikesCount": {
+    "description": "Like count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionRecentActivity": "النشاط الأخير",
   "activityNoEvents": "لا يوجد نشاط حديث بعد.",
   "activitySkinUploaded": "تم رفع السكن",
@@ -1787,30 +1800,84 @@
   "activityPackRejected": "لم تتم الموافقة على الحزمة",
   "timeJustNow": "الآن",
   "timeMinutesAgo": "منذ {count} د",
-  "@timeMinutesAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeHoursAgo": "منذ {count} س",
-  "@timeHoursAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeDaysAgo": "منذ {count} أيام",
-  "@timeDaysAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeMonthsAgo": "منذ {count} أشهر",
-  "@timeMonthsAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMonthsAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionNotifications": "الإشعارات",
   "sectionNotificationTypes": "أنواع الإشعارات",
   "notifMarkAllRead": "تحديد الكل كمقروء",
   "notifEmpty": "لا توجد إشعارات بعد. ستظهر الإعجابات والتعليقات ونشاط الأصدقاء هنا.",
   "notifSomeone": "شخص ما",
   "notifSkinLiked": "{actor} أعجب بسكنك",
-  "@notifSkinLiked": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifSkinLiked": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifCommentReceived": "{actor} علّق على سكنك",
-  "@notifCommentReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifCommentReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPackApproved": "تمت الموافقة على الحزمة",
   "notifPackRejected": "لم تتم الموافقة على الحزمة",
   "notifFriendRequest": "{actor} أرسل لك طلب صداقة",
-  "@notifFriendRequest": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendRequest": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifFriendAccepted": "{actor} قبل طلبك",
-  "@notifFriendAccepted": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendAccepted": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifMessageReceived": "رسالة جديدة من {actor}",
-  "@notifMessageReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifMessageReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPrefSkinLiked": "إعجاب بالسكن",
   "notifPrefCommentReceived": "تعليق مستلم",
   "notifPrefPackApproved": "حزمة موافق عليها",
@@ -1818,15 +1885,66 @@
   "notifPrefFriendRequest": "طلب صداقة",
   "notifPrefFriendAccepted": "صديق مضاف",
   "notifPrefMessageReceived": "رسالة جديدة",
-
   "commentsTitle": "التعليقات",
   "commentsEmpty": "لا توجد تعليقات بعد. كن الأول!",
   "commentsPlaceholder": "اكتب تعليقاً…",
-
   "loadMore": "تحميل المزيد",
-
   "skinLayerInner": "داخلي",
-  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "@skinLayerInner": {
+    "description": "Skin editor layer toggle, inner/base layer"
+  },
   "skinLayerOuter": "خارجي",
-  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
+  "@skinLayerOuter": {
+    "description": "Skin editor layer toggle, outer/overlay layer"
+  },
+  "feedbackLoginRequiredTitle": "سجّل الدخول لإرسال الملاحظات",
+  "feedbackLoginRequiredBody": "ترتبط الملاحظات بحساب MCCompanion الخاص بك حتى نتمكن من الرد عليك مباشرة داخل التطبيق.",
+  "feedbackLoginButton": "تسجيل الدخول",
+  "reportBug": "ملاحظات",
+  "rpBehaviorContentWarning": "تحتوي هذه الحزمة على بيانات حزمة سلوك لن تعمل على الخوادم. ستظل الإكساءات تعمل.",
+  "rpInvalidPackFormat": "هذه حزمة إصدار Java وهي غير مدعومة. يرجى استخدام حزمة موارد لإصدار Bedrock.",
+  "wikiFavourites": "المفضلة",
+  "wikiRecent": "شوهدت مؤخرًا",
+  "supportInboxTitle": "بريد الدعم",
+  "supportInboxSubtitle": "كل محادثات الدعم، متاحة لجميع المشرفين",
+  "adminBadge": "مشرف",
+  "skinShareSubject": "سكين Minecraft",
+  "skinEditorTitle": "محرر السكين",
+  "skinToolUndo": "تراجع",
+  "skinSaveToMySkins": "حفظ في سكيناتي",
+  "skinUpdateInCloud": "تحديث في السحابة",
+  "skinExportPng": "تصدير PNG",
+  "skinToolDraw": "رسم",
+  "skinToolFill": "تعبئة",
+  "skinToolErase": "مسح",
+  "customColour": "لون مخصص",
+  "featuredServerLabel": "خادم مميز",
+  "featuredServerTagline": "انضم وابدأ اللعب.",
+  "featuredServerPlay": "العب",
+  "rpUploadFailedCode": "فشل الرفع ({code})",
+  "rpUploadFailed": "فشل الرفع: {error}",
+  "rpLoadFailed": "تعذر تحميل الحزم",
+  "rpRetry": "أعد المحاولة",
+  "rpSearchHint": "ابحث عن حزم…",
+  "rpMergeFailed": "فشل الدمج: {error}",
+  "rpMergerSize": "الحجم",
+  "rpMergerCreated": "أُنشئ",
+  "rpMergerSourcePacks": "الحزم المصدر",
+  "rpMergerDropToAdd": "أفلت للإضافة",
+  "rpMergerSavedMerges": "عمليات الدمج المحفوظة",
+  "rpMergerUse": "استخدام",
+  "supportInboxShared": "متاح لجميع المشرفين",
+  "supportInboxEmpty": "لا توجد محادثات دعم بعد",
+  "supportReplyingAs": "أنت ترد باسم MCCompanion Support",
+  "supportReplyHint": "رد بصفتك الدعم…",
+  "relayBlocked": "تم حظر عنوان IP أو حسابك من MCCompanion. إذا كنت تظن أن هذا خطأ، انضم إلى Discord الخاص بنا.",
+  "relayBlockedWithReason": "تم حظر عنوان IP أو حسابك من MCCompanion.\nالسبب: {reason}\nإذا كنت تظن أن هذا خطأ، انضم إلى Discord الخاص بنا.",
+  "relayConfigFailed": "تعذر إعداد الريلاي (الحالة {code}). جرب ريلاي آخر أو انضم إلى Discord الخاص بنا.",
+  "relayConfigFailedDetail": "تعذر إعداد الريلاي (الحالة {code}): {detail}. جرب ريلاي آخر أو انضم إلى Discord الخاص بنا.",
+  "relayTimeout": "لم يرد الريلاي في الوقت المحدد.",
+  "relayUnreachable": "تعذر الوصول إلى الريلاي.",
+  "lookupNotFound": "لم يتم العثور على اللاعب.",
+  "lookupNetworkError": "خطأ في الشبكة. حاول مرة أخرى.",
+  "lookupBedrockUnavailable": "بحث Bedrock غير متاح حاليًا.",
+  "lookupFailed": "فشل البحث."
 }

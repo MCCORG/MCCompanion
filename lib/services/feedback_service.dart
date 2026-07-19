@@ -20,7 +20,6 @@ class FeedbackService {
     required String type,
     required String title,
     required String description,
-    String? email,
     String? appVersion,
   }) async {
     try {
@@ -34,7 +33,6 @@ class FeedbackService {
               'description': description,
               'platform': _platform,
               if (appVersion case final v?) 'appVersion': v,
-              if (email case final e? when e.isNotEmpty) 'email': e,
             }),
           )
           .timeout(_timeout);

@@ -84,6 +84,25 @@ class ProfileHeader extends StatelessWidget {
                           ),
                         ),
                       ],
+                      if (UserService.isAdmin) ...[
+                        const SizedBox(height: 6),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                          decoration: BoxDecoration(
+                            color: AppTheme.accent.withValues(alpha: 0.12),
+                            borderRadius: BorderRadius.circular(6),
+                            border: Border.all(color: AppTheme.accent.withValues(alpha: 0.35)),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(Icons.shield_rounded, size: 11, color: AppTheme.accent),
+                              const SizedBox(width: 4),
+                              Text('MCCompanion Admin', style: TextStyle(color: AppTheme.accent, fontSize: 11, fontWeight: FontWeight.w600)),
+                            ],
+                          ),
+                        ),
+                      ],
                       if (hasBio) ...[
                         const SizedBox(height: 5),
                         Text(

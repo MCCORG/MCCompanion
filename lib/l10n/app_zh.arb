@@ -15,7 +15,7 @@
   "aternosSubtext": "创建你自己的免费 Minecraft 服务器",
   "howToUseMenu": "使用方法",
   "support": "支持",
-  "helpText": "由 {appCreator} 创建。\r\n\r\n使用方法：\r\n1. 输入你的 Minecraft 服务器地址和端口（默认：19132）\r\n   — 或从下拉菜单中选择之前保存的服务器\r\n2. （可选）选择离你位置最近的中继服务器（EU 或 US）\r\n3. 点击 \\\"开始广播\\\" 以开始\r\n4. 在你的主机/设备上：Minecraft > 游玩 > 好友\r\n5. 你应该会看到一个名为 \\\"MCCompanion\\\" 的局域网服务器\r\n6. 点击它即可通过 MCCompanion 加入你的外部服务器\r\n\r\nNintendo Switch（DNS 模式）：\r\n1. 在连接面板中启用 \\\"Nintendo Switch\\\"\r\n2. 选择一个中继服务器（EU 或 US）\r\n3. 点击 \\\"发送 DNS 配置\\\" — 这会将你的配置发送到中继服务器\r\n   （它不会广播局域网服务器）\r\n4. 在你的 Switch 上应用 MCCompanion DNS 设置并加入\r\n   使用你为 MCCompanion 所使用的服务器条目\r\n\r\n注意：\r\n- 进行局域网广播时，MCCompanion 和主机必须位于同一局域网中。\r\n- 提示：选择离你最近的中继服务器以获得最佳性能。",
+  "helpText": "由 {appCreator} 创建。\r\n\r\n使用方法：\r\n1. 输入你的 Minecraft 服务器地址和端口（默认：19132）\r\n  , 或从下拉菜单中选择之前保存的服务器\r\n2. （可选）选择离你位置最近的中继服务器（EU 或 US）\r\n3. 点击 \\\"开始广播\\\" 以开始\r\n4. 在你的主机/设备上：Minecraft > 游玩 > 好友\r\n5. 你应该会看到一个名为 \\\"MCCompanion\\\" 的局域网服务器\r\n6. 点击它即可通过 MCCompanion 加入你的外部服务器\r\n\r\nNintendo Switch（DNS 模式）：\r\n1. 在连接面板中启用 \\\"Nintendo Switch\\\"\r\n2. 选择一个中继服务器（EU 或 US）\r\n3. 点击 \\\"发送 DNS 配置\\\": 这会将你的配置发送到中继服务器\r\n   （它不会广播局域网服务器）\r\n4. 在你的 Switch 上应用 MCCompanion DNS 设置并加入\r\n   使用你为 MCCompanion 所使用的服务器条目\r\n\r\n注意：\r\n- 进行局域网广播时，MCCompanion 和主机必须位于同一局域网中。\r\n- 提示：选择离你最近的中继服务器以获得最佳性能。",
   "@helpText": {
     "description": "Detailed help / instructions shown in the help dialog",
     "placeholders": {
@@ -37,7 +37,7 @@
   "@howToJavaSubtitle": {
     "description": "Short subtitle for Java menu tile"
   },
-  "howToJavaBody": "Java 模式 — 快速步骤：\n1. 在应用中选择 Java 模式。\n2. 输入你的 Java Edition 服务器地址和端口（默认：25565）。\n3. 点击 \"启动 Java 模式\" —— MCCompanion 会桥接该连接。\n4. 打开 Minecraft Bedrock 并前往好友标签页。\n5. 选择名为 \"MCCompanion\" 的 LAN 服务器以加入 Java 服务器。\n\n⚠️ 重要警告：\n- 需要有效的 Java Edition 账户（Microsoft）。\n- 一些服务器使用反作弊系统，可能会检测并封禁你的账户。\n- 某些服务器明确禁止 Bedrock 客户端 —— 请务必查看服务器规则。\n- 对于因使用此功能而导致的账户封禁、停用或其他账户相关问题，MCCompanion 不承担责任。\n- 请自行承担使用风险。",
+  "howToJavaBody": "Java 模式: 快速步骤：\n1. 在应用中选择 Java 模式。\n2. 输入你的 Java Edition 服务器地址和端口（默认：25565）。\n3. 点击 \"启动 Java 模式\" -- MCCompanion 会桥接该连接。\n4. 打开 Minecraft Bedrock 并前往好友标签页。\n5. 选择名为 \"MCCompanion\" 的 LAN 服务器以加入 Java 服务器。\n\n⚠️ 重要警告：\n- 需要有效的 Java Edition 账户（Microsoft）。\n- 一些服务器使用反作弊系统，可能会检测并封禁你的账户。\n- 某些服务器明确禁止 Bedrock 客户端 -- 请务必查看服务器规则。\n- 对于因使用此功能而导致的账户封禁、停用或其他账户相关问题，MCCompanion 不承担责任。\n- 请自行承担使用风险。",
   "@howToJavaBody": {
     "description": "Detailed steps for Java mode how-to modal"
   },
@@ -121,7 +121,7 @@
   "@bedrockBridge": {
     "description": "Subtitle on splash screen"
   },
-  "clientDisconnected": "客户端已断开连接 — 广播已停止",
+  "clientDisconnected": "客户端已断开连接: 广播已停止",
   "@clientDisconnected": {
     "description": "Snackbar shown when clients disconnect automatically"
   },
@@ -254,7 +254,7 @@
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
-  "howToNintendoBody": "Nintendo Switch — DNS 模式（分步说明）：\r\n1. 在应用中启用 \\\"Nintendo\\\" 模式，并选择一个中继服务器（EU 或 US）。\r\n2. 点击 \\\"发送 DNS 配置\\\"，将 DNS IP 发送到中继服务器。\r\n3. 在你的 Nintendo Switch 上前往系统设置 → 网络 → 互联网设置 → （你的网络）→ 更改设置 → DNS，并将主 DNS 设置为中继服务器 IP。\r\n4. 打开 Minecraft 并加入一个公共服务器；你将通过中继 DNS 被重定向到你的服务器。\r\n注意：\r\n- DNS 模式不会广播局域网服务器；它会通过中继服务器路由游戏流量。\r\n- 使用结束后，如果你需要恢复正常网络行为，请将 DNS 改回原设置。",
+  "howToNintendoBody": "Nintendo Switch: DNS 模式（分步说明）：\r\n1. 在应用中启用 \\\"Nintendo\\\" 模式，并选择一个中继服务器（EU 或 US）。\r\n2. 点击 \\\"发送 DNS 配置\\\"，将 DNS IP 发送到中继服务器。\r\n3. 在你的 Nintendo Switch 上前往系统设置 → 网络 → 互联网设置 → （你的网络）→ 更改设置 → DNS，并将主 DNS 设置为中继服务器 IP。\r\n4. 打开 Minecraft 并加入一个公共服务器；你将通过中继 DNS 被重定向到你的服务器。\r\n注意：\r\n- DNS 模式不会广播局域网服务器；它会通过中继服务器路由游戏流量。\r\n- 使用结束后，如果你需要恢复正常网络行为，请将 DNS 改回原设置。",
   "@howToNintendoBody": {
     "description": "Detailed steps for Nintendo Switch DNS setup"
   },
@@ -266,7 +266,7 @@
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
   },
-  "howToFriendsBody": "好友模式 — 快速步骤：\r\n1. 如有需要，请在你的主机或平台上添加 MCCompanion 好友账号（Relay 好友）。\r\n2. 在应用中启用好友模式并发送 Relay 配置（如果适用）。\r\n3. 在你的主机上打开 Minecraft → Friends，并搜索 LAN Worlds —— 你的服务器应当会显示为一个局域网世界。\r\n4. 选择它即可与你的好友一起加入服务器。\r\n注意：\r\n- 请确保你和你的好友拥有相同且允许好友在线显示的 NAT/设置。\r\n- 好友模式依赖平台的好友功能，可能需要接受好友请求。",
+  "howToFriendsBody": "好友模式: 快速步骤：\r\n1. 如有需要，请在你的主机或平台上添加 MCCompanion 好友账号（Relay 好友）。\r\n2. 在应用中启用好友模式并发送 Relay 配置（如果适用）。\r\n3. 在你的主机上打开 Minecraft → Friends，并搜索 LAN Worlds -- 你的服务器应当会显示为一个局域网世界。\r\n4. 选择它即可与你的好友一起加入服务器。\r\n注意：\r\n- 请确保你和你的好友拥有相同且允许好友在线显示的 NAT/设置。\r\n- 好友模式依赖平台的好友功能，可能需要接受好友请求。",
   "@howToFriendsBody": {
     "description": "Detailed steps for Friends mode"
   },
@@ -302,7 +302,7 @@
   "@helpNintendoDnsSubtitle": {
     "description": "Short subtitle for Nintendo DNS troubleshooting tile"
   },
-  "helpNintendoDnsBody": "如果 Nintendo DNS 模式无法工作，请检查以下内容：\r\n\r\n1. 确认你已从应用中发送 DNS 配置（发送 DNS 配置）。\r\n2. 确认你已在 Switch 上将 Relay IP 设置为主 DNS。\r\n3. 确保所选的 Relay 服务器（EU/US）在线且未过载。\r\n4. 某些网络（例如强制门户网络）会阻止自定义 DNS —— 请在其他网络上测试。\r\n\r\n如果问题仍然存在，请启用调试模式并检查日志，或尝试好友模式这一替代方案。",
+  "helpNintendoDnsBody": "如果 Nintendo DNS 模式无法工作，请检查以下内容：\r\n\r\n1. 确认你已从应用中发送 DNS 配置（发送 DNS 配置）。\r\n2. 确认你已在 Switch 上将 Relay IP 设置为主 DNS。\r\n3. 确保所选的 Relay 服务器（EU/US）在线且未过载。\r\n4. 某些网络（例如强制门户网络）会阻止自定义 DNS -- 请在其他网络上测试。\r\n\r\n如果问题仍然存在，请启用调试模式并检查日志，或尝试好友模式这一替代方案。",
   "@helpNintendoDnsBody": {
     "description": "Detailed placeholder for Nintendo DNS troubleshooting"
   },
@@ -518,7 +518,7 @@
   "@checkBackLater": {
     "description": "Secondary empty state text on partner servers screen"
   },
-  "chooseUsernameSubtitle": "Choose a username to start connecting with other players.",
+  "chooseUsernameSubtitle": "取一个用户名，方便其他玩家找到你。",
   "@chooseUsernameSubtitle": {
     "description": "Subtitle shown when profile is not yet set up"
   },
@@ -1571,7 +1571,7 @@
   "feedbackTitleHintFeature": "例如：在服务器列表中显示玩家延迟",
   "feedbackWhatHappened": "发生了什么？",
   "feedbackDescribeIdea": "描述你的想法",
-  "feedbackDescHintBug": "描述该错误——你做了什么、你期望什么，以及实际发生了什么？",
+  "feedbackDescHintBug": "描述该错误--你做了什么、你期望什么，以及实际发生了什么？",
   "feedbackDescHintFeature": "解释你想要什么以及为什么有用。",
   "feedbackEmailLabel": "电子邮件",
   "feedbackEmailHint": "以便我们与你联系",
@@ -1580,7 +1580,7 @@
   "feedbackSubmitFeature": "提交功能请求",
   "feedbackDisclaimer": "在 GitHub 上创建公开 Issue · 请勿包含密码",
   "feedbackSuccessTitle": "感谢你的反馈！",
-  "feedbackSuccessBody": "你的报告已提交，GitHub Issue 已创建。我们会尽快查看。",
+  "feedbackSuccessBody": "谢谢！我们已收到你的反馈，会尽快查看。",
   "feedbackViewOnGithub": "在 GitHub 上查看",
   "feedbackSubmitAnother": "再提交一个",
   "feedbackBackToApp": "返回应用",
@@ -1612,7 +1612,7 @@
   "skinMenuDelete": "删除",
   "rpScreenTitle": "资源包",
   "rpWhatIsThis": "这是什么？",
-  "rpExplanation": "资源包可以改变你游戏机上Minecraft的外观——新的方块、颜色或音效。在下方粘贴.mcpack文件的链接，启用后保存。MCCompanion每次连接时会自动加载。",
+  "rpExplanation": "资源包可以改变你游戏机上Minecraft的外观--新的方块、颜色或音效。在下方粘贴.mcpack文件的链接，启用后保存。MCCompanion每次连接时会自动加载。",
   "rpPackUrlLabel": "包 URL",
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "启用资源包",
@@ -1631,8 +1631,8 @@
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 公共存储桶",
   "rpWorksDirect": "以 .mcpack 或 .zip 结尾的任何直接 HTTPS 链接",
-  "rpNoDiscord": "Discord 链接 — 没有 .mcpack 扩展名，且会在几小时后失效",
-  "rpNoDrive": "Google Drive / Dropbox 分享链接 — 非直接下载",
+  "rpNoDiscord": "Discord 链接: 没有 .mcpack 扩展名，且会在几小时后失效",
+  "rpNoDrive": "Google Drive / Dropbox 分享链接: 非直接下载",
   "rpNoEncrypted": "带有加密或密码保护包的服务器",
   "rpWarnDiscord": "Discord 链接会过期并停止工作。请改用永久性托管服务。",
   "rpWarnHttps": "URL 必须以 https:// 开头",
@@ -1642,17 +1642,17 @@
   "rpClearMinecraftTitle": "第一次使用此资源包？",
   "rpClearMinecraftBody": "Minecraft 会在本地缓存资源包。如果您在启用 MCCompanion 资源包之前已连接过此服务器，Minecraft 已缓存了原始资源包，不会重新下载合并后的版本。",
   "rpClearStep1": "在主机上打开 Minecraft，前往设置 → 存储",
-  "rpClearStep2": "点击材质包旁边的“清除”或“重置”——这会删除所有本地缓存的材质包",
-  "rpClearStep3": "通过 MCCompanion 重新连接——合并后的材质包将自动下载",
+  "rpClearStep2": "点击材质包旁边的“清除”或“重置”--这会删除所有本地缓存的材质包",
+  "rpClearStep3": "通过 MCCompanion 重新连接--合并后的材质包将自动下载",
   "rpRelayTitle": "资源包显示有问题？",
-  "rpRelayBody": "中继服务器以您的覆盖层 URL 为缓存键，将合并后的材质包缓存 1 小时。要强制重新合并：稍微修改材质包链接（例如在末尾添加 ?v=2）并保存。之后还需要清除 Minecraft 的材质包缓存——合并后的材质包仍使用服务器的 UUID，否则 Minecraft 会直接使用旧的缓存版本。",
+  "rpRelayBody": "中继服务器以您的覆盖层 URL 为缓存键，将合并后的材质包缓存 1 小时。要强制重新合并：稍微修改材质包链接（例如在末尾添加 ?v=2）并保存。之后还需要清除 Minecraft 的材质包缓存--合并后的材质包仍使用服务器的 UUID，否则 Minecraft 会直接使用旧的缓存版本。",
   "rpWorksGithubHint": "直接下载链接，始终可访问",
   "rpWorksCloudflareHint": "公共云存储，快速可靠",
   "rpWorksDirectHint": "任何公开的 HTTPS .mcpack 或 .zip 链接",
   "rpNoDiscordHint": "Discord CDN 链接会在短时间内失效",
   "rpNoDriveHint": "无直接下载，会跳转到预览页面",
   "rpNoEncryptedHint": "MCCompanion 无法合并加密的材质包内容",
-  "rpClearWhy": "Minecraft 通过 UUID 缓存材质包。合并后的材质包保留服务器原有的 UUID——如果 Minecraft 在之前的游戏中（启用 MCCompanion 之前）已经缓存了服务器的材质包，它就不会重新下载新的合并版本。清除缓存，让 Minecraft 加载最新的合并材质包。",
+  "rpClearWhy": "Minecraft 通过 UUID 缓存材质包。合并后的材质包保留服务器原有的 UUID--如果 Minecraft 在之前的游戏中（启用 MCCompanion 之前）已经缓存了服务器的材质包，它就不会重新下载新的合并版本。清除缓存，让 Minecraft 加载最新的合并材质包。",
   "rpUploadTab": "Upload",
   "rpUrlTab": "URL",
   "rpUploadButton": "Tap to select your pack",
@@ -1660,7 +1660,7 @@
   "rpUploading": "Uploading...",
   "rpMergerTitle": "RP 合并工具",
   "rpMergerSubtitle": "合并最多 4 个资源包",
-  "rpMergerPriorityHint": "最顶部的包优先级最高 — 冲突时其文件获胜。",
+  "rpMergerPriorityHint": "最顶部的包优先级最高: 冲突时其文件获胜。",
   "rpMergerTopBadge": "顶部",
   "rpMergerAddPacks": "添加资源包",
   "rpMergerAddAnother": "再添加一个包 ({current}/4)",
@@ -1668,22 +1668,22 @@
   "rpMergerMerging": "合并中…",
   "rpMergerButton": "合并 {count} 个包",
   "rpMergerComplete": "合并完成！",
-  "rpMergerConflicts": "已解决 {count} 个冲突 — 顶部包获胜。",
+  "rpMergerConflicts": "已解决 {count} 个冲突: 顶部包获胜。",
   "rpMergerSetActive": "设为活跃资源包",
   "rpMergerSetActiveToast": "已设为活跃资源包",
   "rpMergerOpenButton": "合并资源包",
   "rpMergerOpenSubtitle": "将 2–4 个包合并为一个",
   "rpDisabled": "已禁用",
   "rpNoPackSelected": "未选择资源包",
-  "rpActiveOnConnect": "已激活 — 连接时自动应用",
+  "rpActiveOnConnect": "已激活: 连接时自动应用",
   "rpBrowseSubtitle": "精选资源包，即刻可用",
   "rpBrowseEmpty": "暂无可用资源包",
   "rpBrowseEmptyHint": "稍后再来查看精选资源包。",
   "rpReplaceFile": "替换为其他文件",
   "rpDropToUpload": "拖放以上传",
-  "rpTabBrowseInfo": "浏览 MCCompanion 精选的资源包。点击使用即可立即激活 — 无需上传或链接。",
+  "rpTabBrowseInfo": "浏览 MCCompanion 精选的资源包。点击使用即可立即激活: 无需上传或链接。",
   "rpTabUploadInfo": "上传您自己的 .mcpack 或 .zip 文件。MCCompanion 将其安全存储在云端，每次连接时自动发送到您的主机。",
-  "rpTabUrlInfo": "粘贴 .mcpack 或 .zip 文件的直接下载链接。URL 必须可公开访问 — 不支持 Discord 或 Google Drive 链接。",
+  "rpTabUrlInfo": "粘贴 .mcpack 或 .zip 文件的直接下载链接。URL 必须可公开访问: 不支持 Discord 或 Google Drive 链接。",
   "rpTabMergeInfo": "将 2 至 4 个资源包合并为一个。合并后的资源包将上传至 MCCompanion Cloud 并自动激活。",
   "shareLabel": "分享",
   "sectionMinecraftAccounts": "Minecraft 账号",
@@ -1774,10 +1774,23 @@
   "skinDefaultName": "我的皮肤",
   "skinUpdatedInCloud": "皮肤已在云端更新",
   "skinByCreator": "由 {name}",
-  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "@skinByCreator": {
+    "description": "Creator attribution",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "skinLikesCount": "{count} 个赞",
-  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}},
-
+  "@skinLikesCount": {
+    "description": "Like count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionRecentActivity": "最近动态",
   "activityNoEvents": "暂无最近动态。",
   "activitySkinUploaded": "上传了皮肤",
@@ -1787,30 +1800,84 @@
   "activityPackRejected": "资源包未通过",
   "timeJustNow": "刚刚",
   "timeMinutesAgo": "{count}分钟前",
-  "@timeMinutesAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeHoursAgo": "{count}小时前",
-  "@timeHoursAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeDaysAgo": "{count}天前",
-  "@timeDaysAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeMonthsAgo": "{count}个月前",
-  "@timeMonthsAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMonthsAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionNotifications": "通知",
   "sectionNotificationTypes": "通知类型",
   "notifMarkAllRead": "全部标为已读",
   "notifEmpty": "暂无通知。点赞、评论和好友动态将显示在此处。",
   "notifSomeone": "某人",
   "notifSkinLiked": "{actor}喜欢了你的皮肤",
-  "@notifSkinLiked": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifSkinLiked": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifCommentReceived": "{actor}评论了你的皮肤",
-  "@notifCommentReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifCommentReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPackApproved": "资源包已通过",
   "notifPackRejected": "资源包未通过",
   "notifFriendRequest": "{actor}向你发送了好友请求",
-  "@notifFriendRequest": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendRequest": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifFriendAccepted": "{actor}接受了你的请求",
-  "@notifFriendAccepted": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendAccepted": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifMessageReceived": "来自{actor}的新消息",
-  "@notifMessageReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifMessageReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPrefSkinLiked": "皮肤被点赞",
   "notifPrefCommentReceived": "收到评论",
   "notifPrefPackApproved": "资源包通过",
@@ -1818,15 +1885,66 @@
   "notifPrefFriendRequest": "好友请求",
   "notifPrefFriendAccepted": "添加好友",
   "notifPrefMessageReceived": "新消息",
-
   "commentsTitle": "评论",
   "commentsEmpty": "暂无评论。成为第一个！",
   "commentsPlaceholder": "写评论…",
-
   "loadMore": "加载更多",
-
   "skinLayerInner": "内层",
-  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "@skinLayerInner": {
+    "description": "Skin editor layer toggle, inner/base layer"
+  },
   "skinLayerOuter": "外层",
-  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
+  "@skinLayerOuter": {
+    "description": "Skin editor layer toggle, outer/overlay layer"
+  },
+  "feedbackLoginRequiredTitle": "登录以发送反馈",
+  "feedbackLoginRequiredBody": "反馈会关联到你的 MCCompanion 账号，以便我们直接在应用内回复你。",
+  "feedbackLoginButton": "登录",
+  "reportBug": "反馈",
+  "rpBehaviorContentWarning": "此材质包包含行为包数据，在服务器上无法生效。贴图仍然可以正常使用。",
+  "rpInvalidPackFormat": "这是 Java 版材质包，不受支持。请使用基岩版资源包。",
+  "wikiFavourites": "收藏",
+  "wikiRecent": "最近浏览",
+  "supportInboxTitle": "支持收件箱",
+  "supportInboxSubtitle": "所有支持对话，全体管理员共享",
+  "adminBadge": "管理员",
+  "skinShareSubject": "Minecraft 皮肤",
+  "skinEditorTitle": "皮肤编辑器",
+  "skinToolUndo": "撤销",
+  "skinSaveToMySkins": "保存到我的皮肤",
+  "skinUpdateInCloud": "更新到云端",
+  "skinExportPng": "导出 PNG",
+  "skinToolDraw": "绘制",
+  "skinToolFill": "填充",
+  "skinToolErase": "擦除",
+  "customColour": "自定义颜色",
+  "featuredServerLabel": "精选服务器",
+  "featuredServerTagline": "进来一起玩吧。",
+  "featuredServerPlay": "开始玩",
+  "rpUploadFailedCode": "上传失败（{code}）",
+  "rpUploadFailed": "上传失败：{error}",
+  "rpLoadFailed": "无法加载材质包",
+  "rpRetry": "重试",
+  "rpSearchHint": "搜索材质包…",
+  "rpMergeFailed": "合并失败：{error}",
+  "rpMergerSize": "大小",
+  "rpMergerCreated": "创建时间",
+  "rpMergerSourcePacks": "源材质包",
+  "rpMergerDropToAdd": "拖到此处添加",
+  "rpMergerSavedMerges": "已保存的合并",
+  "rpMergerUse": "使用",
+  "supportInboxShared": "全体管理员共享",
+  "supportInboxEmpty": "还没有支持对话",
+  "supportReplyingAs": "你正以 MCCompanion Support 身份回复",
+  "supportReplyHint": "以支持身份回复…",
+  "relayBlocked": "你的 IP 或账号已被 MCCompanion 封禁。如果你认为这是误判，来我们的 Discord 找我们。",
+  "relayBlockedWithReason": "你的 IP 或账号已被 MCCompanion 封禁。\n原因：{reason}\n如果你认为这是误判，来我们的 Discord 找我们。",
+  "relayConfigFailed": "无法配置中继（状态 {code}）。换一个中继，或来我们的 Discord。",
+  "relayConfigFailedDetail": "无法配置中继（状态 {code}）：{detail}。换一个中继，或来我们的 Discord。",
+  "relayTimeout": "中继未在规定时间内响应。",
+  "relayUnreachable": "无法连接到中继。",
+  "lookupNotFound": "未找到玩家。",
+  "lookupNetworkError": "网络错误，请重试。",
+  "lookupBedrockUnavailable": "Bedrock 查询暂时不可用。",
+  "lookupFailed": "查询失败。"
 }

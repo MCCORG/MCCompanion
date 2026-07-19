@@ -112,7 +112,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String helpText(Object appCreator) {
-    return '由 $appCreator 创建。\r\n\r\n使用方法：\r\n1. 输入你的 Minecraft 服务器地址和端口（默认：19132）\r\n   — 或从下拉菜单中选择之前保存的服务器\r\n2. （可选）选择离你位置最近的中继服务器（EU 或 US）\r\n3. 点击 \\\"开始广播\\\" 以开始\r\n4. 在你的主机/设备上：Minecraft > 游玩 > 好友\r\n5. 你应该会看到一个名为 \\\"MCCompanion\\\" 的局域网服务器\r\n6. 点击它即可通过 MCCompanion 加入你的外部服务器\r\n\r\nNintendo Switch（DNS 模式）：\r\n1. 在连接面板中启用 \\\"Nintendo Switch\\\"\r\n2. 选择一个中继服务器（EU 或 US）\r\n3. 点击 \\\"发送 DNS 配置\\\" — 这会将你的配置发送到中继服务器\r\n   （它不会广播局域网服务器）\r\n4. 在你的 Switch 上应用 MCCompanion DNS 设置并加入\r\n   使用你为 MCCompanion 所使用的服务器条目\r\n\r\n注意：\r\n- 进行局域网广播时，MCCompanion 和主机必须位于同一局域网中。\r\n- 提示：选择离你最近的中继服务器以获得最佳性能。';
+    return '由 $appCreator 创建。\r\n\r\n使用方法：\r\n1. 输入你的 Minecraft 服务器地址和端口（默认：19132）\r\n  , 或从下拉菜单中选择之前保存的服务器\r\n2. （可选）选择离你位置最近的中继服务器（EU 或 US）\r\n3. 点击 \\\"开始广播\\\" 以开始\r\n4. 在你的主机/设备上：Minecraft > 游玩 > 好友\r\n5. 你应该会看到一个名为 \\\"MCCompanion\\\" 的局域网服务器\r\n6. 点击它即可通过 MCCompanion 加入你的外部服务器\r\n\r\nNintendo Switch（DNS 模式）：\r\n1. 在连接面板中启用 \\\"Nintendo Switch\\\"\r\n2. 选择一个中继服务器（EU 或 US）\r\n3. 点击 \\\"发送 DNS 配置\\\": 这会将你的配置发送到中继服务器\r\n   （它不会广播局域网服务器）\r\n4. 在你的 Switch 上应用 MCCompanion DNS 设置并加入\r\n   使用你为 MCCompanion 所使用的服务器条目\r\n\r\n注意：\r\n- 进行局域网广播时，MCCompanion 和主机必须位于同一局域网中。\r\n- 提示：选择离你最近的中继服务器以获得最佳性能。';
   }
 
   @override
@@ -147,7 +147,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get howToJavaBody =>
-      'Java 模式 — 快速步骤：\n1. 在应用中选择 Java 模式。\n2. 输入你的 Java Edition 服务器地址和端口（默认：25565）。\n3. 点击 \"启动 Java 模式\" —— MCCompanion 会桥接该连接。\n4. 打开 Minecraft Bedrock 并前往好友标签页。\n5. 选择名为 \"MCCompanion\" 的 LAN 服务器以加入 Java 服务器。\n\n⚠️ 重要警告：\n- 需要有效的 Java Edition 账户（Microsoft）。\n- 一些服务器使用反作弊系统，可能会检测并封禁你的账户。\n- 某些服务器明确禁止 Bedrock 客户端 —— 请务必查看服务器规则。\n- 对于因使用此功能而导致的账户封禁、停用或其他账户相关问题，MCCompanion 不承担责任。\n- 请自行承担使用风险。';
+      'Java 模式: 快速步骤：\n1. 在应用中选择 Java 模式。\n2. 输入你的 Java Edition 服务器地址和端口（默认：25565）。\n3. 点击 \"启动 Java 模式\" -- MCCompanion 会桥接该连接。\n4. 打开 Minecraft Bedrock 并前往好友标签页。\n5. 选择名为 \"MCCompanion\" 的 LAN 服务器以加入 Java 服务器。\n\n⚠️ 重要警告：\n- 需要有效的 Java Edition 账户（Microsoft）。\n- 一些服务器使用反作弊系统，可能会检测并封禁你的账户。\n- 某些服务器明确禁止 Bedrock 客户端 -- 请务必查看服务器规则。\n- 对于因使用此功能而导致的账户封禁、停用或其他账户相关问题，MCCompanion 不承担责任。\n- 请自行承担使用风险。';
 
   @override
   String get language => '简体中文';
@@ -210,7 +210,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get bedrockBridge => '基岩桥';
 
   @override
-  String get clientDisconnected => '客户端已断开连接 — 广播已停止';
+  String get clientDisconnected => '客户端已断开连接: 广播已停止';
 
   @override
   String get pleaseEnterServer => '⚠️ 请输入服务器地址';
@@ -423,7 +423,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get howToNintendoBody =>
-      'Nintendo Switch — DNS 模式（分步说明）：\r\n1. 在应用中启用 \\\"Nintendo\\\" 模式，并选择一个中继服务器（EU 或 US）。\r\n2. 点击 \\\"发送 DNS 配置\\\"，将 DNS IP 发送到中继服务器。\r\n3. 在你的 Nintendo Switch 上前往系统设置 → 网络 → 互联网设置 → （你的网络）→ 更改设置 → DNS，并将主 DNS 设置为中继服务器 IP。\r\n4. 打开 Minecraft 并加入一个公共服务器；你将通过中继 DNS 被重定向到你的服务器。\r\n注意：\r\n- DNS 模式不会广播局域网服务器；它会通过中继服务器路由游戏流量。\r\n- 使用结束后，如果你需要恢复正常网络行为，请将 DNS 改回原设置。';
+      'Nintendo Switch: DNS 模式（分步说明）：\r\n1. 在应用中启用 \\\"Nintendo\\\" 模式，并选择一个中继服务器（EU 或 US）。\r\n2. 点击 \\\"发送 DNS 配置\\\"，将 DNS IP 发送到中继服务器。\r\n3. 在你的 Nintendo Switch 上前往系统设置 → 网络 → 互联网设置 → （你的网络）→ 更改设置 → DNS，并将主 DNS 设置为中继服务器 IP。\r\n4. 打开 Minecraft 并加入一个公共服务器；你将通过中继 DNS 被重定向到你的服务器。\r\n注意：\r\n- DNS 模式不会广播局域网服务器；它会通过中继服务器路由游戏流量。\r\n- 使用结束后，如果你需要恢复正常网络行为，请将 DNS 改回原设置。';
 
   @override
   String get howToFriendsTitle => '好友模式';
@@ -433,7 +433,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get howToFriendsBody =>
-      '好友模式 — 快速步骤：\r\n1. 如有需要，请在你的主机或平台上添加 MCCompanion 好友账号（Relay 好友）。\r\n2. 在应用中启用好友模式并发送 Relay 配置（如果适用）。\r\n3. 在你的主机上打开 Minecraft → Friends，并搜索 LAN Worlds —— 你的服务器应当会显示为一个局域网世界。\r\n4. 选择它即可与你的好友一起加入服务器。\r\n注意：\r\n- 请确保你和你的好友拥有相同且允许好友在线显示的 NAT/设置。\r\n- 好友模式依赖平台的好友功能，可能需要接受好友请求。';
+      '好友模式: 快速步骤：\r\n1. 如有需要，请在你的主机或平台上添加 MCCompanion 好友账号（Relay 好友）。\r\n2. 在应用中启用好友模式并发送 Relay 配置（如果适用）。\r\n3. 在你的主机上打开 Minecraft → Friends，并搜索 LAN Worlds -- 你的服务器应当会显示为一个局域网世界。\r\n4. 选择它即可与你的好友一起加入服务器。\r\n注意：\r\n- 请确保你和你的好友拥有相同且允许好友在线显示的 NAT/设置。\r\n- 好友模式依赖平台的好友功能，可能需要接受好友请求。';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion 未显示';
@@ -463,7 +463,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get helpNintendoDnsBody =>
-      '如果 Nintendo DNS 模式无法工作，请检查以下内容：\r\n\r\n1. 确认你已从应用中发送 DNS 配置（发送 DNS 配置）。\r\n2. 确认你已在 Switch 上将 Relay IP 设置为主 DNS。\r\n3. 确保所选的 Relay 服务器（EU/US）在线且未过载。\r\n4. 某些网络（例如强制门户网络）会阻止自定义 DNS —— 请在其他网络上测试。\r\n\r\n如果问题仍然存在，请启用调试模式并检查日志，或尝试好友模式这一替代方案。';
+      '如果 Nintendo DNS 模式无法工作，请检查以下内容：\r\n\r\n1. 确认你已从应用中发送 DNS 配置（发送 DNS 配置）。\r\n2. 确认你已在 Switch 上将 Relay IP 设置为主 DNS。\r\n3. 确保所选的 Relay 服务器（EU/US）在线且未过载。\r\n4. 某些网络（例如强制门户网络）会阻止自定义 DNS -- 请在其他网络上测试。\r\n\r\n如果问题仍然存在，请启用调试模式并检查日志，或尝试好友模式这一替代方案。';
 
   @override
   String get helpFriendsModeTitle => '好友模式无法工作';
@@ -938,8 +938,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get profileNotSetUp => 'Profile not set up';
 
   @override
-  String get chooseUsernameSubtitle =>
-      'Choose a username to start connecting with other players.';
+  String get chooseUsernameSubtitle => '取一个用户名，方便其他玩家找到你。';
 
   @override
   String get createProfile => 'Create Profile';
@@ -1140,10 +1139,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get wikiReadFullArticle => 'Read full article';
 
   @override
-  String get wikiRecent => 'Recently viewed';
+  String get wikiRecent => '最近浏览';
 
   @override
-  String get wikiFavourites => 'Favourites';
+  String get wikiFavourites => '收藏';
 
   @override
   String get wikiMobs => 'Mobs';
@@ -1740,7 +1739,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get feedbackDescribeIdea => '描述你的想法';
 
   @override
-  String get feedbackDescHintBug => '描述该错误——你做了什么、你期望什么，以及实际发生了什么？';
+  String get feedbackDescHintBug => '描述该错误--你做了什么、你期望什么，以及实际发生了什么？';
 
   @override
   String get feedbackDescHintFeature => '解释你想要什么以及为什么有用。';
@@ -1767,7 +1766,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get feedbackSuccessTitle => '感谢你的反馈！';
 
   @override
-  String get feedbackSuccessBody => '你的报告已提交，GitHub Issue 已创建。我们会尽快查看。';
+  String get feedbackSuccessBody => '谢谢！我们已收到你的反馈，会尽快查看。';
 
   @override
   String get feedbackViewOnGithub => '在 GitHub 上查看';
@@ -1794,7 +1793,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get feedbackTileTitle => '报告错误或建议功能';
 
   @override
-  String get reportBug => 'Feedback';
+  String get reportBug => '反馈';
 
   @override
   String get feedbackTileSubtitle => '帮助我们改进 MCCompanion';
@@ -1863,7 +1862,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get rpExplanation =>
-      '资源包可以改变你游戏机上Minecraft的外观——新的方块、颜色或音效。在下方粘贴.mcpack文件的链接，启用后保存。MCCompanion每次连接时会自动加载。';
+      '资源包可以改变你游戏机上Minecraft的外观--新的方块、颜色或音效。在下方粘贴.mcpack文件的链接，启用后保存。MCCompanion每次连接时会自动加载。';
 
   @override
   String get rpPackUrlLabel => '包 URL';
@@ -1902,10 +1901,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpUnsupportedAddonsHint => '有时可能有效，但未得到官方支持。使用风险自负。';
 
   @override
-  String get rpNoDiscord => 'Discord 链接 — 没有 .mcpack 扩展名，且会在几小时后失效';
+  String get rpNoDiscord => 'Discord 链接: 没有 .mcpack 扩展名，且会在几小时后失效';
 
   @override
-  String get rpNoDrive => 'Google Drive / Dropbox 分享链接 — 非直接下载';
+  String get rpNoDrive => 'Google Drive / Dropbox 分享链接: 非直接下载';
 
   @override
   String get rpNoEncrypted => '带有加密或密码保护包的服务器';
@@ -1933,12 +1932,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpToastSaved => '资源包设置已保存。';
 
   @override
-  String get rpInvalidPackFormat =>
-      'This is a Java Edition pack and is not supported. Please use a Bedrock Edition resource pack.';
+  String get rpInvalidPackFormat => '这是 Java 版材质包，不受支持。请使用基岩版资源包。';
 
   @override
-  String get rpBehaviorContentWarning =>
-      'This pack contains behavior pack data, which won\'t work on servers. The textures will still work.';
+  String get rpBehaviorContentWarning => '此材质包包含行为包数据，在服务器上无法生效。贴图仍然可以正常使用。';
 
   @override
   String get rpClearMinecraftTitle => '第一次使用此资源包？';
@@ -1951,17 +1948,17 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpClearStep1 => '在主机上打开 Minecraft，前往设置 → 存储';
 
   @override
-  String get rpClearStep2 => '点击材质包旁边的“清除”或“重置”——这会删除所有本地缓存的材质包';
+  String get rpClearStep2 => '点击材质包旁边的“清除”或“重置”--这会删除所有本地缓存的材质包';
 
   @override
-  String get rpClearStep3 => '通过 MCCompanion 重新连接——合并后的材质包将自动下载';
+  String get rpClearStep3 => '通过 MCCompanion 重新连接--合并后的材质包将自动下载';
 
   @override
   String get rpRelayTitle => '资源包显示有问题？';
 
   @override
   String get rpRelayBody =>
-      '中继服务器以您的覆盖层 URL 为缓存键，将合并后的材质包缓存 1 小时。要强制重新合并：稍微修改材质包链接（例如在末尾添加 ?v=2）并保存。之后还需要清除 Minecraft 的材质包缓存——合并后的材质包仍使用服务器的 UUID，否则 Minecraft 会直接使用旧的缓存版本。';
+      '中继服务器以您的覆盖层 URL 为缓存键，将合并后的材质包缓存 1 小时。要强制重新合并：稍微修改材质包链接（例如在末尾添加 ?v=2）并保存。之后还需要清除 Minecraft 的材质包缓存--合并后的材质包仍使用服务器的 UUID，否则 Minecraft 会直接使用旧的缓存版本。';
 
   @override
   String get rpWorksGithubHint => '直接下载链接，始终可访问';
@@ -1983,7 +1980,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get rpClearWhy =>
-      'Minecraft 通过 UUID 缓存材质包。合并后的材质包保留服务器原有的 UUID——如果 Minecraft 在之前的游戏中（启用 MCCompanion 之前）已经缓存了服务器的材质包，它就不会重新下载新的合并版本。清除缓存，让 Minecraft 加载最新的合并材质包。';
+      'Minecraft 通过 UUID 缓存材质包。合并后的材质包保留服务器原有的 UUID--如果 Minecraft 在之前的游戏中（启用 MCCompanion 之前）已经缓存了服务器的材质包，它就不会重新下载新的合并版本。清除缓存，让 Minecraft 加载最新的合并材质包。';
 
   @override
   String get rpUploadTab => 'Upload';
@@ -2007,7 +2004,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpMergerSubtitle => '合并最多 4 个资源包';
 
   @override
-  String get rpMergerPriorityHint => '最顶部的包优先级最高 — 冲突时其文件获胜。';
+  String get rpMergerPriorityHint => '最顶部的包优先级最高: 冲突时其文件获胜。';
 
   @override
   String get rpMergerTopBadge => '顶部';
@@ -2036,7 +2033,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String rpMergerConflicts(int count) {
-    return '已解决 $count 个冲突 — 顶部包获胜。';
+    return '已解决 $count 个冲突: 顶部包获胜。';
   }
 
   @override
@@ -2058,7 +2055,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpNoPackSelected => '未选择资源包';
 
   @override
-  String get rpActiveOnConnect => '已激活 — 连接时自动应用';
+  String get rpActiveOnConnect => '已激活: 连接时自动应用';
 
   @override
   String get rpBrowseSubtitle => '精选资源包，即刻可用';
@@ -2076,7 +2073,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpDropToUpload => '拖放以上传';
 
   @override
-  String get rpTabBrowseInfo => '浏览 MCCompanion 精选的资源包。点击使用即可立即激活 — 无需上传或链接。';
+  String get rpTabBrowseInfo => '浏览 MCCompanion 精选的资源包。点击使用即可立即激活: 无需上传或链接。';
 
   @override
   String get rpTabUploadInfo =>
@@ -2084,7 +2081,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get rpTabUrlInfo =>
-      '粘贴 .mcpack 或 .zip 文件的直接下载链接。URL 必须可公开访问 — 不支持 Discord 或 Google Drive 链接。';
+      '粘贴 .mcpack 或 .zip 文件的直接下载链接。URL 必须可公开访问: 不支持 Discord 或 Google Drive 链接。';
 
   @override
   String get rpTabMergeInfo =>
@@ -2385,4 +2382,153 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get skinLayerOuter => '外层';
+
+  @override
+  String get feedbackLoginRequiredTitle => '登录以发送反馈';
+
+  @override
+  String get feedbackLoginRequiredBody =>
+      '反馈会关联到你的 MCCompanion 账号，以便我们直接在应用内回复你。';
+
+  @override
+  String get feedbackLoginButton => '登录';
+
+  @override
+  String get supportInboxTitle => '支持收件箱';
+
+  @override
+  String get supportInboxSubtitle => '所有支持对话，全体管理员共享';
+
+  @override
+  String get adminBadge => '管理员';
+
+  @override
+  String get skinShareSubject => 'Minecraft 皮肤';
+
+  @override
+  String get skinEditorTitle => '皮肤编辑器';
+
+  @override
+  String get skinToolUndo => '撤销';
+
+  @override
+  String get skinSaveToMySkins => '保存到我的皮肤';
+
+  @override
+  String get skinUpdateInCloud => '更新到云端';
+
+  @override
+  String get skinExportPng => '导出 PNG';
+
+  @override
+  String get skinToolDraw => '绘制';
+
+  @override
+  String get skinToolFill => '填充';
+
+  @override
+  String get skinToolErase => '擦除';
+
+  @override
+  String get customColour => '自定义颜色';
+
+  @override
+  String get featuredServerLabel => '精选服务器';
+
+  @override
+  String get featuredServerTagline => '进来一起玩吧。';
+
+  @override
+  String get featuredServerPlay => '开始玩';
+
+  @override
+  String rpUploadFailedCode(int code) {
+    return '上传失败（$code）';
+  }
+
+  @override
+  String rpUploadFailed(String error) {
+    return '上传失败：$error';
+  }
+
+  @override
+  String get rpLoadFailed => '无法加载材质包';
+
+  @override
+  String get rpRetry => '重试';
+
+  @override
+  String get rpSearchHint => '搜索材质包…';
+
+  @override
+  String rpMergeFailed(String error) {
+    return '合并失败：$error';
+  }
+
+  @override
+  String get rpMergerSize => '大小';
+
+  @override
+  String get rpMergerCreated => '创建时间';
+
+  @override
+  String get rpMergerSourcePacks => '源材质包';
+
+  @override
+  String get rpMergerDropToAdd => '拖到此处添加';
+
+  @override
+  String get rpMergerSavedMerges => '已保存的合并';
+
+  @override
+  String get rpMergerUse => '使用';
+
+  @override
+  String get supportInboxShared => '全体管理员共享';
+
+  @override
+  String get supportInboxEmpty => '还没有支持对话';
+
+  @override
+  String get supportReplyingAs => '你正以 MCCompanion Support 身份回复';
+
+  @override
+  String get supportReplyHint => '以支持身份回复…';
+
+  @override
+  String get relayBlocked =>
+      '你的 IP 或账号已被 MCCompanion 封禁。如果你认为这是误判，来我们的 Discord 找我们。';
+
+  @override
+  String relayBlockedWithReason(String reason) {
+    return '你的 IP 或账号已被 MCCompanion 封禁。\n原因：$reason\n如果你认为这是误判，来我们的 Discord 找我们。';
+  }
+
+  @override
+  String relayConfigFailed(int code) {
+    return '无法配置中继（状态 $code）。换一个中继，或来我们的 Discord。';
+  }
+
+  @override
+  String relayConfigFailedDetail(int code, String detail) {
+    return '无法配置中继（状态 $code）：$detail。换一个中继，或来我们的 Discord。';
+  }
+
+  @override
+  String get relayTimeout => '中继未在规定时间内响应。';
+
+  @override
+  String get relayUnreachable => '无法连接到中继。';
+
+  @override
+  String get lookupNotFound => '未找到玩家。';
+
+  @override
+  String get lookupNetworkError => '网络错误，请重试。';
+
+  @override
+  String get lookupBedrockUnavailable => 'Bedrock 查询暂时不可用。';
+
+  @override
+  String get lookupFailed => '查询失败。';
 }

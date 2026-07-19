@@ -28,11 +28,13 @@ class _ChatScreenState extends State<ChatScreen> {
   bool _loadingMore = false;
   bool _hasMore = true;
   String? _myUid;
+  String? _otherUid; 
 
   @override
   void initState() {
     super.initState();
     _myUid = AuthService.currentUser?.uid;
+    _otherUid = widget.friend.firebaseUid.isNotEmpty ? widget.friend.firebaseUid : null;
     _loadMessages();
     _sub = MessageService.incoming.listen(_onIncoming);
     _scrollCtrl.addListener(_onScroll);
@@ -57,11 +59,11 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void _onIncoming(MessageModel msg) {
     if (!mounted) return;
+    final uid = _otherUid;
+    if (uid == null) return;
     final isRelevant =
-        (msg.senderUid == widget.friend.firebaseUid &&
-            msg.receiverUid == _myUid) ||
-        (msg.senderUid == _myUid &&
-            msg.receiverUid == widget.friend.firebaseUid);
+        (msg.senderUid == uid && msg.receiverUid == _myUid) ||
+        (msg.senderUid == _myUid && msg.receiverUid == uid);
     if (!isRelevant) return;
     setState(() => _messages = [..._messages, msg]);
     _scrollToBottom();
@@ -72,6 +74,11 @@ class _ChatScreenState extends State<ChatScreen> {
     setState(() => _loading = true);
     final msgs = await MessageService.getMessages(widget.friend.username);
     if (!mounted) return;
+    if (_otherUid == null && msgs.isNotEmpty) {
+      _otherUid = msgs.first.senderUid == _myUid
+          ? msgs.first.receiverUid
+          : msgs.first.senderUid;
+    }
     setState(() {
       _messages = msgs;
       _loading = false;
@@ -176,31 +183,44 @@ class _ChatScreenState extends State<ChatScreen> {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                Text(
-                  widget.friend.online
-                      ? AppLocalizations.of(context)!.onlineStatus
-                      : '@${widget.friend.username}',
-                  style: TextStyle(
-                    color: widget.friend.online
-                        ? AppTheme.success
-                        : AppTheme.textMuted,
-                    fontSize: 11,
+                if (widget.friend.isAdmin)
+                  Row(
+                    children: [
+                      Icon(Icons.shield_rounded, size: 10, color: AppTheme.accent),
+                      const SizedBox(width: 3),
+                      Text(
+                        'MCCompanion Admin',
+                        style: TextStyle(color: AppTheme.accent, fontSize: 11, fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  )
+                else
+                  Text(
+                    widget.friend.online
+                        ? AppLocalizations.of(context)!.onlineStatus
+                        : '@${widget.friend.username}',
+                    style: TextStyle(
+                      color: widget.friend.online
+                          ? AppTheme.success
+                          : AppTheme.textMuted,
+                      fontSize: 11,
+                    ),
                   ),
-                ),
               ],
             ),
           ],
         ),
         actions: [
-          IconButton(
-            icon: Icon(
-              Icons.flag_outlined,
-              color: AppTheme.textSecondary,
-              size: 20,
+          if (!widget.friend.isAdmin)
+            IconButton(
+              icon: Icon(
+                Icons.flag_outlined,
+                color: AppTheme.textSecondary,
+                size: 20,
+              ),
+              tooltip: AppLocalizations.of(context)!.reportUser,
+              onPressed: () => _showReportSheet(),
             ),
-            tooltip: AppLocalizations.of(context)!.reportUser,
-            onPressed: () => _showReportSheet(),
-          ),
         ],
       ),
       body: Column(
@@ -251,7 +271,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       return Column(
                         children: [
                           if (showDate) _DateDivider(date: msg.createdAt),
-                          if (!isMine)
+                          if (!isMine && !widget.friend.isAdmin)
                             GestureDetector(
                               onLongPress: () => _showReportSheet(message: msg),
                               child: _Bubble(msg: msg, isMine: isMine),
@@ -435,6 +455,7 @@ class _Bubble extends StatelessWidget {
     return Align(
       alignment: isMine ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(
+        constraints: const BoxConstraints(maxWidth: 520),
         margin: EdgeInsets.only(
           top: 2,
           bottom: 2,

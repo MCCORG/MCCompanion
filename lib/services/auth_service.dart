@@ -281,7 +281,7 @@ class AuthService {
         _windowsTokenExpiry = DateTime.now().add(Duration(seconds: expiresIn));
       }
     } catch (_) {
-      // Silently fail — caller will use the (possibly stale) token
+      // Silently fail, the caller will use the (possibly stale) token.
     }
   }
 

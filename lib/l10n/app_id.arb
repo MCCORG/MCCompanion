@@ -15,7 +15,7 @@
   "aternosSubtext": "Buat server Minecraft gratis Anda sendiri",
   "howToUseMenu": "Cara menggunakan",
   "support": "Dukungan",
-  "helpText": "Dibuat oleh {appCreator}.\r\n\r\nCara menggunakan:\r\n1. Masukkan alamat dan port server Minecraft Anda (default: 19132)\r\n   — atau pilih server yang sebelumnya disimpan dari menu dropdown\r\n2. (Opsional) Pilih Server Relay (EU atau US) yang paling dekat dengan lokasi Anda\r\n3. Klik \"Mulai Siaran\" untuk memulai\r\n4. Di konsol/perangkat Anda: Minecraft > Play > Friends\r\n5. Anda akan melihat server LAN bernama \"MCCompanion\"\r\n6. Klik server tersebut untuk bergabung ke server eksternal Anda melalui MCCompanion\r\n\r\nNintendo Switch (mode DNS):\r\n1. Aktifkan \"Nintendo Switch\" di panel koneksi\r\n2. Pilih Server Relay (EU atau US)\r\n3. Klik \"Send DNS Config\" — ini mengirim konfigurasi Anda ke relay\r\n   (ini TIDAK menyiarkan server LAN)\r\n4. Di Switch Anda, terapkan pengaturan DNS MCCompanion lalu bergabung\r\n   menggunakan entri server yang Anda pakai untuk MCCompanion\r\n\r\nCatatan:\r\n- Untuk siaran LAN, MCCompanion dan konsol harus berada di jaringan lokal yang sama.\r\n- Tips: Pilih server relay yang paling dekat dengan Anda untuk performa terbaik.",
+  "helpText": "Dibuat oleh {appCreator}.\r\n\r\nCara menggunakan:\r\n1. Masukkan alamat dan port server Minecraft Anda (default: 19132)\r\n  , atau pilih server yang sebelumnya disimpan dari menu dropdown\r\n2. (Opsional) Pilih Server Relay (EU atau US) yang paling dekat dengan lokasi Anda\r\n3. Klik \"Mulai Siaran\" untuk memulai\r\n4. Di konsol/perangkat Anda: Minecraft > Play > Friends\r\n5. Anda akan melihat server LAN bernama \"MCCompanion\"\r\n6. Klik server tersebut untuk bergabung ke server eksternal Anda melalui MCCompanion\r\n\r\nNintendo Switch (mode DNS):\r\n1. Aktifkan \"Nintendo Switch\" di panel koneksi\r\n2. Pilih Server Relay (EU atau US)\r\n3. Klik \"Send DNS Config\": ini mengirim konfigurasi Anda ke relay\r\n   (ini TIDAK menyiarkan server LAN)\r\n4. Di Switch Anda, terapkan pengaturan DNS MCCompanion lalu bergabung\r\n   menggunakan entri server yang Anda pakai untuk MCCompanion\r\n\r\nCatatan:\r\n- Untuk siaran LAN, MCCompanion dan konsol harus berada di jaringan lokal yang sama.\r\n- Tips: Pilih server relay yang paling dekat dengan Anda untuk performa terbaik.",
   "@helpText": {
     "description": "Detailed help / instructions shown in the help dialog",
     "placeholders": {
@@ -37,7 +37,7 @@
   "@howToJavaSubtitle": {
     "description": "Short subtitle for Java menu tile"
   },
-  "howToJavaBody": "Mode Java — langkah cepat:\n1. Di aplikasi, pilih mode Java.\n2. Masukkan alamat dan port server Java Edition Anda (default: 25565).\n3. Tekan \"Mulai Mode Java\" — MCCompanion akan menjembatani koneksi.\n4. Buka Minecraft Bedrock dan masuk ke tab Teman.\n5. Pilih server LAN bernama \"MCCompanion\" untuk bergabung ke server Java.\n\n⚠️ Peringatan penting:\n- Diperlukan akun Java Edition yang valid (Microsoft).\n- Beberapa server menggunakan sistem anti-cheat yang dapat mendeteksi dan memblokir akun Anda.\n- Beberapa server secara eksplisit melarang klien Bedrock — selalu periksa aturan server.\n- MCCompanion tidak bertanggung jawab atas ban akun, penangguhan, atau masalah terkait akun lainnya yang mungkin terjadi akibat penggunaan fitur ini.\n- Gunakan dengan risiko Anda sendiri.",
+  "howToJavaBody": "Mode Java: langkah cepat:\n1. Di aplikasi, pilih mode Java.\n2. Masukkan alamat dan port server Java Edition Anda (default: 25565).\n3. Tekan \"Mulai Mode Java\": MCCompanion akan menjembatani koneksi.\n4. Buka Minecraft Bedrock dan masuk ke tab Teman.\n5. Pilih server LAN bernama \"MCCompanion\" untuk bergabung ke server Java.\n\n⚠️ Peringatan penting:\n- Diperlukan akun Java Edition yang valid (Microsoft).\n- Beberapa server menggunakan sistem anti-cheat yang dapat mendeteksi dan memblokir akun Anda.\n- Beberapa server secara eksplisit melarang klien Bedrock, selalu periksa aturan server.\n- MCCompanion tidak bertanggung jawab atas ban akun, penangguhan, atau masalah terkait akun lainnya yang mungkin terjadi akibat penggunaan fitur ini.\n- Gunakan dengan risiko Anda sendiri.",
   "@howToJavaBody": {
     "description": "Detailed steps for Java mode how-to modal"
   },
@@ -121,7 +121,7 @@
   "@bedrockBridge": {
     "description": "Subtitle on splash screen"
   },
-  "clientDisconnected": "Klien terputus — Siaran dihentikan",
+  "clientDisconnected": "Klien terputus: Siaran dihentikan",
   "@clientDisconnected": {
     "description": "Snackbar shown when clients disconnect automatically"
   },
@@ -254,7 +254,7 @@
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
-  "howToNintendoBody": "Nintendo Switch — mode DNS (langkah demi langkah):\r\n1. Di aplikasi, aktifkan mode \"Nintendo\" dan pilih Server Relay (EU atau US).\r\n2. Ketuk \"Send DNS Config\" untuk mengirim IP DNS ke relay.\r\n3. Di Nintendo Switch Anda buka System Settings → Internet → Internet Settings → (jaringan Anda) → Change Settings → DNS lalu atur Primary DNS ke IP relay.\r\n4. Buka Minecraft dan gabung ke server publik; Anda akan diarahkan ke server Anda menggunakan DNS relay.\r\nCatatan:\r\n- Mode DNS tidak menyiarkan server LAN; mode ini mengarahkan lalu lintas game melalui relay.\r\n- Kembalikan DNS Anda setelah selesai jika Anda memerlukan perilaku jaringan normal.",
+  "howToNintendoBody": "Nintendo Switch: mode DNS (langkah demi langkah):\r\n1. Di aplikasi, aktifkan mode \"Nintendo\" dan pilih Server Relay (EU atau US).\r\n2. Ketuk \"Send DNS Config\" untuk mengirim IP DNS ke relay.\r\n3. Di Nintendo Switch Anda buka System Settings → Internet → Internet Settings → (jaringan Anda) → Change Settings → DNS lalu atur Primary DNS ke IP relay.\r\n4. Buka Minecraft dan gabung ke server publik; Anda akan diarahkan ke server Anda menggunakan DNS relay.\r\nCatatan:\r\n- Mode DNS tidak menyiarkan server LAN; mode ini mengarahkan lalu lintas game melalui relay.\r\n- Kembalikan DNS Anda setelah selesai jika Anda memerlukan perilaku jaringan normal.",
   "@howToNintendoBody": {
     "description": "Detailed steps for Nintendo Switch DNS setup"
   },
@@ -266,7 +266,7 @@
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
   },
-  "howToFriendsBody": "Mode Teman — langkah cepat:\r\n1. Tambahkan akun teman MCCompanion di konsol atau platform Anda jika diperlukan.\r\n2. Di aplikasi, aktifkan mode Teman dan kirim konfigurasi relay (jika berlaku).\r\n3. Di konsol, buka Minecraft → Friends dan cari LAN Worlds — server Anda seharusnya muncul di sana sebagai dunia LAN.\r\n4. Pilih server tersebut untuk bergabung ke server Anda bersama teman.\r\nCatatan:\r\n- Pastikan Anda dan teman Anda memiliki NAT/pengaturan yang sama yang memungkinkan kehadiran teman.\r\n- Mode Teman bergantung pada fitur pertemanan platform dan mungkin memerlukan penerimaan permintaan pertemanan.",
+  "howToFriendsBody": "Mode Teman: langkah cepat:\r\n1. Tambahkan akun teman MCCompanion di konsol atau platform Anda jika diperlukan.\r\n2. Di aplikasi, aktifkan mode Teman dan kirim konfigurasi relay (jika berlaku).\r\n3. Di konsol, buka Minecraft → Friends dan cari LAN Worlds, server Anda seharusnya muncul di sana sebagai dunia LAN.\r\n4. Pilih server tersebut untuk bergabung ke server Anda bersama teman.\r\nCatatan:\r\n- Pastikan Anda dan teman Anda memiliki NAT/pengaturan yang sama yang memungkinkan kehadiran teman.\r\n- Mode Teman bergantung pada fitur pertemanan platform dan mungkin memerlukan penerimaan permintaan pertemanan.",
   "@howToFriendsBody": {
     "description": "Detailed steps for Friends mode"
   },
@@ -302,7 +302,7 @@
   "@helpNintendoDnsSubtitle": {
     "description": "Short subtitle for Nintendo DNS troubleshooting tile"
   },
-  "helpNintendoDnsBody": "Jika mode DNS Nintendo tidak berfungsi, periksa hal berikut:\r\n\r\n1. Pastikan Anda mengirim konfigurasi DNS dari aplikasi (Send DNS Config).\r\n2. Pastikan Anda menerapkan IP relay sebagai DNS Utama di Switch.\r\n3. Pastikan server relay yang dipilih (EU/US) sedang online dan tidak kelebihan beban.\r\n4. Beberapa jaringan (misalnya captive portal) mencegah DNS kustom — uji di jaringan lain.\r\n\r\nJika masalah berlanjut, aktifkan Mode Debug dan periksa log atau coba alternatif mode Teman.",
+  "helpNintendoDnsBody": "Jika mode DNS Nintendo tidak berfungsi, periksa hal berikut:\r\n\r\n1. Pastikan Anda mengirim konfigurasi DNS dari aplikasi (Send DNS Config).\r\n2. Pastikan Anda menerapkan IP relay sebagai DNS Utama di Switch.\r\n3. Pastikan server relay yang dipilih (EU/US) sedang online dan tidak kelebihan beban.\r\n4. Beberapa jaringan (misalnya captive portal) mencegah DNS kustom, uji di jaringan lain.\r\n\r\nJika masalah berlanjut, aktifkan Mode Debug dan periksa log atau coba alternatif mode Teman.",
   "@helpNintendoDnsBody": {
     "description": "Detailed placeholder for Nintendo DNS troubleshooting"
   },
@@ -518,7 +518,7 @@
   "@checkBackLater": {
     "description": "Secondary empty state text on partner servers screen"
   },
-  "chooseUsernameSubtitle": "Choose a username to start connecting with other players.",
+  "chooseUsernameSubtitle": "Pilih username agar pemain lain bisa menemukanmu.",
   "@chooseUsernameSubtitle": {
     "description": "Subtitle shown when profile is not yet set up"
   },
@@ -1567,7 +1567,7 @@
   "feedbackTitleHintFeature": "contoh: Tampilkan ping pemain di daftar server",
   "feedbackWhatHappened": "Apa yang terjadi?",
   "feedbackDescribeIdea": "Jelaskan ide kamu",
-  "feedbackDescHintBug": "Jelaskan bug-nya — apa yang kamu lakukan, apa yang kamu harapkan, dan apa yang terjadi?",
+  "feedbackDescHintBug": "Jelaskan bug-nya: apa yang kamu lakukan, apa yang kamu harapkan, dan apa yang terjadi?",
   "feedbackDescHintFeature": "Jelaskan apa yang kamu inginkan dan mengapa itu berguna.",
   "feedbackEmailLabel": "Email",
   "feedbackEmailHint": "Agar kami bisa menghubungi kamu",
@@ -1576,7 +1576,7 @@
   "feedbackSubmitFeature": "Kirim Permintaan Fitur",
   "feedbackDisclaimer": "Membuat issue publik di GitHub · Jangan sertakan kata sandi",
   "feedbackSuccessTitle": "Terima kasih atas masukan kamu!",
-  "feedbackSuccessBody": "Laporan kamu telah dikirim dan issue GitHub telah dibuat. Kami akan segera meninjaunya.",
+  "feedbackSuccessBody": "Terima kasih! Laporanmu sudah masuk. Kami akan segera memeriksanya.",
   "feedbackViewOnGithub": "Lihat di GitHub",
   "feedbackSubmitAnother": "Kirim lagi",
   "feedbackBackToApp": "Kembali ke aplikasi",
@@ -1608,7 +1608,7 @@
   "skinMenuDelete": "Hapus",
   "rpScreenTitle": "Paket Sumber Daya",
   "rpWhatIsThis": "Apa ini?",
-  "rpExplanation": "Pack sumber daya mengubah tampilan Minecraft di konsol kamu — blok, warna, atau suara baru. Tempel tautan file .mcpack di bawah, aktifkan, dan simpan. MCCompanion memuat secara otomatis setiap kali kamu terhubung.",
+  "rpExplanation": "Pack sumber daya mengubah tampilan Minecraft di konsol kamu, blok, warna, atau suara baru. Tempel tautan file .mcpack di bawah, aktifkan, dan simpan. MCCompanion memuat secara otomatis setiap kali kamu terhubung.",
   "rpPackUrlLabel": "URL Paket",
   "rpPackUrlHint": "https://example.com/pack.mcpack",
   "rpEnableToggle": "Aktifkan paket sumber daya",
@@ -1627,8 +1627,8 @@
   "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
   "rpWorksCloudflare": "Cloudflare R2 / AWS S3 bucket publik",
   "rpWorksDirect": "Tautan HTTPS langsung yang diakhiri dengan .mcpack atau .zip",
-  "rpNoDiscord": "Tautan Discord — tidak ada ekstensi .mcpack dan kedaluwarsa setelah beberapa jam",
-  "rpNoDrive": "Tautan berbagi Google Drive / Dropbox — bukan unduhan langsung",
+  "rpNoDiscord": "Tautan Discord: tidak ada ekstensi .mcpack dan kedaluwarsa setelah beberapa jam",
+  "rpNoDrive": "Tautan berbagi Google Drive / Dropbox: bukan unduhan langsung",
   "rpNoEncrypted": "Server dengan paket terenkripsi atau dilindungi kata sandi",
   "rpWarnDiscord": "Tautan Discord kedaluwarsa dan tidak akan berfungsi. Gunakan host permanen sebagai gantinya.",
   "rpWarnHttps": "URL harus dimulai dengan https://",
@@ -1638,17 +1638,17 @@
   "rpClearMinecraftTitle": "Pertama kali dengan pack ini?",
   "rpClearMinecraftBody": "Minecraft menyimpan paket sumber daya secara lokal. Jika kamu pernah terhubung ke server ini sebelum mengaktifkan paket MCCompanion, Minecraft sudah menyimpan paket asli dan tidak akan mengunduh ulang versi yang telah digabungkan.",
   "rpClearStep1": "Buka Minecraft di konsolmu dan pergi ke Pengaturan → Penyimpanan",
-  "rpClearStep2": "Ketuk ‘Hapus’ atau ‘Reset’ di sebelah Pack Sumber Daya — ini menghapus semua pack yang tersimpan lokal",
-  "rpClearStep3": "Sambungkan kembali melalui MCCompanion — pack yang digabungkan akan diunduh secara otomatis",
+  "rpClearStep2": "Ketuk ‘Hapus’ atau ‘Reset’ di sebelah Pack Sumber Daya, ini menghapus semua pack yang tersimpan lokal",
+  "rpClearStep3": "Sambungkan kembali melalui MCCompanion: pack yang digabungkan akan diunduh secara otomatis",
   "rpRelayTitle": "Pack terlihat tidak benar?",
-  "rpRelayBody": "Relay menyimpan pack yang digabungkan selama 1 jam menggunakan URL overlay-mu sebagai kunci cache. Untuk memaksa penggabungan baru: ubah sedikit URL pack (mis. tambahkan ?v=2) dan simpan. Setelah itu, hapus juga cache pack Minecraft — pack yang digabungkan masih menggunakan UUID server, jadi Minecraft akan tetap menampilkan versi lama dari cache.",
-  "rpWorksGithubHint": "Tautan unduhan langsung — selalu bisa diakses",
-  "rpWorksCloudflareHint": "Penyimpanan cloud publik — cepat dan andal",
+  "rpRelayBody": "Relay menyimpan pack yang digabungkan selama 1 jam menggunakan URL overlay-mu sebagai kunci cache. Untuk memaksa penggabungan baru: ubah sedikit URL pack (mis. tambahkan ?v=2) dan simpan. Setelah itu, hapus juga cache pack Minecraft, pack yang digabungkan masih menggunakan UUID server, jadi Minecraft akan tetap menampilkan versi lama dari cache.",
+  "rpWorksGithubHint": "Tautan unduhan langsung: selalu bisa diakses",
+  "rpWorksCloudflareHint": "Penyimpanan cloud publik: cepat dan andal",
   "rpWorksDirectHint": "URL HTTPS publik .mcpack atau .zip apa pun",
   "rpNoDiscordHint": "Tautan Discord CDN kadaluarsa setelah waktu singkat",
-  "rpNoDriveHint": "Tidak ada unduhan langsung — mengarahkan ke halaman pratinjau",
+  "rpNoDriveHint": "Tidak ada unduhan langsung: mengarahkan ke halaman pratinjau",
   "rpNoEncryptedHint": "MCCompanion tidak dapat menggabungkan konten pack terenkripsi",
-  "rpClearWhy": "Minecraft menyimpan pack sumber daya berdasarkan UUID. Pack yang digabungkan tetap menggunakan UUID asli server — jika Minecraft sudah menyimpan pack server dari sesi sebelumnya (sebelum MCCompanion aktif), ia tidak akan mengunduh versi gabungan yang baru. Hapus cache agar Minecraft memuat pack gabungan terbaru.",
+  "rpClearWhy": "Minecraft menyimpan pack sumber daya berdasarkan UUID. Pack yang digabungkan tetap menggunakan UUID asli server, jika Minecraft sudah menyimpan pack server dari sesi sebelumnya (sebelum MCCompanion aktif), ia tidak akan mengunduh versi gabungan yang baru. Hapus cache agar Minecraft memuat pack gabungan terbaru.",
   "rpUploadTab": "Upload",
   "rpUrlTab": "URL",
   "rpUploadButton": "Tap to select your pack",
@@ -1656,7 +1656,7 @@
   "rpUploading": "Uploading...",
   "rpMergerTitle": "Penggabung RP",
   "rpMergerSubtitle": "Gabungkan hingga 4 paket sumber daya",
-  "rpMergerPriorityHint": "Paket teratas memiliki prioritas tertinggi — filenya menang dalam konflik.",
+  "rpMergerPriorityHint": "Paket teratas memiliki prioritas tertinggi, filenya menang dalam konflik.",
   "rpMergerTopBadge": "ATAS",
   "rpMergerAddPacks": "Tambah paket sumber daya",
   "rpMergerAddAnother": "Tambah paket lain ({current}/4)",
@@ -1664,22 +1664,22 @@
   "rpMergerMerging": "Menggabungkan…",
   "rpMergerButton": "Gabungkan {count} paket",
   "rpMergerComplete": "Penggabungan selesai!",
-  "rpMergerConflicts": "{count} konflik terselesaikan — paket teratas menang.",
+  "rpMergerConflicts": "{count} konflik terselesaikan: paket teratas menang.",
   "rpMergerSetActive": "Jadikan paket sumber daya aktif",
   "rpMergerSetActiveToast": "Dijadikan paket sumber daya aktif",
   "rpMergerOpenButton": "Gabungkan paket sumber daya",
   "rpMergerOpenSubtitle": "Gabungkan 2–4 paket menjadi satu",
   "rpDisabled": "Nonaktif",
   "rpNoPackSelected": "Tidak ada paket sumber daya yang dipilih",
-  "rpActiveOnConnect": "Aktif — diterapkan saat terhubung",
+  "rpActiveOnConnect": "Aktif: diterapkan saat terhubung",
   "rpBrowseSubtitle": "Paket pilihan, siap digunakan",
   "rpBrowseEmpty": "Belum ada paket tersedia",
   "rpBrowseEmptyHint": "Periksa lagi nanti untuk paket pilihan.",
   "rpReplaceFile": "Ganti dengan file lain",
   "rpDropToUpload": "Lepaskan untuk mengunggah",
-  "rpTabBrowseInfo": "Jelajahi paket pilihan MCCompanion. Ketuk Gunakan untuk mengaktifkan paket seketika — tanpa unggah atau tautan.",
+  "rpTabBrowseInfo": "Jelajahi paket pilihan MCCompanion. Ketuk Gunakan untuk mengaktifkan paket seketika, tanpa unggah atau tautan.",
   "rpTabUploadInfo": "Unggah file .mcpack atau .zip Anda sendiri. MCCompanion menyimpannya dengan aman di cloud dan mengirimkannya ke konsol Anda setiap kali terhubung.",
-  "rpTabUrlInfo": "Tempel tautan unduhan langsung ke file .mcpack atau .zip. URL harus dapat diakses publik — tidak ada tautan Discord atau Google Drive.",
+  "rpTabUrlInfo": "Tempel tautan unduhan langsung ke file .mcpack atau .zip. URL harus dapat diakses publik, tidak ada tautan Discord atau Google Drive.",
   "rpTabMergeInfo": "Gabungkan 2 hingga 4 paket menjadi satu. Paket gabungan diunggah ke MCCompanion Cloud dan diaktifkan secara otomatis.",
   "shareLabel": "Bagikan",
   "sectionMinecraftAccounts": "Akun Minecraft",
@@ -1770,10 +1770,23 @@
   "skinDefaultName": "Skin saya",
   "skinUpdatedInCloud": "Skin diperbarui di cloud",
   "skinByCreator": "oleh {name}",
-  "@skinByCreator": {"description": "Creator attribution", "placeholders": {"name": {"type": "String"}}},
+  "@skinByCreator": {
+    "description": "Creator attribution",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "skinLikesCount": "{count} suka",
-  "@skinLikesCount": {"description": "Like count", "placeholders": {"count": {"type": "int"}}},
-
+  "@skinLikesCount": {
+    "description": "Like count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionRecentActivity": "Aktivitas terbaru",
   "activityNoEvents": "Belum ada aktivitas terbaru.",
   "activitySkinUploaded": "Skin diunggah",
@@ -1783,30 +1796,84 @@
   "activityPackRejected": "Pack tidak disetujui",
   "timeJustNow": "baru saja",
   "timeMinutesAgo": "{count} mnt lalu",
-  "@timeMinutesAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeHoursAgo": "{count} jam lalu",
-  "@timeHoursAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeDaysAgo": "{count} hari lalu",
-  "@timeDaysAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "timeMonthsAgo": "{count} bln lalu",
-  "@timeMonthsAgo": {"placeholders": {"count": {"type": "int"}}},
+  "@timeMonthsAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "sectionNotifications": "Notifikasi",
   "sectionNotificationTypes": "Jenis notifikasi",
   "notifMarkAllRead": "Tandai semua sudah dibaca",
   "notifEmpty": "Belum ada notifikasi. Like, komentar, dan aktivitas teman akan muncul di sini.",
   "notifSomeone": "Seseorang",
   "notifSkinLiked": "{actor} menyukai skin Anda",
-  "@notifSkinLiked": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifSkinLiked": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifCommentReceived": "{actor} mengomentari skin Anda",
-  "@notifCommentReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifCommentReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPackApproved": "Pack disetujui",
   "notifPackRejected": "Pack tidak disetujui",
   "notifFriendRequest": "{actor} mengirim permintaan pertemanan",
-  "@notifFriendRequest": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendRequest": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifFriendAccepted": "{actor} menerima permintaan Anda",
-  "@notifFriendAccepted": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifFriendAccepted": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifMessageReceived": "Pesan baru dari {actor}",
-  "@notifMessageReceived": {"placeholders": {"actor": {"type": "String"}}},
+  "@notifMessageReceived": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
   "notifPrefSkinLiked": "Skin disukai",
   "notifPrefCommentReceived": "Komentar diterima",
   "notifPrefPackApproved": "Pack disetujui",
@@ -1814,15 +1881,67 @@
   "notifPrefFriendRequest": "Permintaan pertemanan",
   "notifPrefFriendAccepted": "Teman ditambahkan",
   "notifPrefMessageReceived": "Pesan baru",
-
   "commentsTitle": "Komentar",
   "commentsEmpty": "Belum ada komentar. Jadilah yang pertama!",
   "commentsPlaceholder": "Tulis komentar…",
-
   "loadMore": "Muat lebih banyak",
-
   "skinLayerInner": "Dalam",
-  "@skinLayerInner": { "description": "Skin editor layer toggle — inner/base layer" },
+  "@skinLayerInner": {
+    "description": "Skin editor layer toggle, inner/base layer"
+  },
   "skinLayerOuter": "Luar",
-  "@skinLayerOuter": { "description": "Skin editor layer toggle — outer/overlay layer" }
+  "@skinLayerOuter": {
+    "description": "Skin editor layer toggle, outer/overlay layer"
+  },
+  "feedbackLoginRequiredTitle": "Masuk untuk mengirim masukan",
+  "feedbackLoginRequiredBody": "Masukan terhubung dengan akun MCCompanion Anda sehingga kami dapat membalas Anda langsung di aplikasi.",
+  "feedbackLoginButton": "Masuk",
+  "reportBug": "Masukan",
+  "rpBehaviorContentWarning": "Pack ini berisi data behavior pack yang tidak akan berfungsi di server. Teksturnya tetap berfungsi.",
+  "rpInvalidPackFormat": "Ini adalah pack Java Edition dan tidak didukung. Gunakan resource pack Bedrock Edition.",
+  "wikiFavourites": "Favorit",
+  "wikiRecent": "Baru dilihat",
+  "accountActions": "AKUN",
+  "supportInboxTitle": "Kotak masuk dukungan",
+  "supportInboxSubtitle": "Semua obrolan dukungan, dibagikan ke semua admin",
+  "adminBadge": "Admin",
+  "skinShareSubject": "Skin Minecraft",
+  "skinEditorTitle": "Editor skin",
+  "skinToolUndo": "Urungkan",
+  "skinSaveToMySkins": "Simpan ke skin saya",
+  "skinUpdateInCloud": "Perbarui di cloud",
+  "skinExportPng": "Ekspor PNG",
+  "skinToolDraw": "Gambar",
+  "skinToolFill": "Isi",
+  "skinToolErase": "Hapus",
+  "customColour": "Warna khusus",
+  "featuredServerLabel": "SERVER PILIHAN",
+  "featuredServerTagline": "Langsung gabung dan main.",
+  "featuredServerPlay": "Main",
+  "rpUploadFailedCode": "Gagal mengunggah ({code})",
+  "rpUploadFailed": "Gagal mengunggah: {error}",
+  "rpLoadFailed": "Tidak bisa memuat pack",
+  "rpRetry": "Coba lagi",
+  "rpSearchHint": "Cari pack…",
+  "rpMergeFailed": "Gagal menggabungkan: {error}",
+  "rpMergerSize": "Ukuran",
+  "rpMergerCreated": "Dibuat",
+  "rpMergerSourcePacks": "Pack sumber",
+  "rpMergerDropToAdd": "Lepas untuk menambah",
+  "rpMergerSavedMerges": "Gabungan tersimpan",
+  "rpMergerUse": "Pakai",
+  "supportInboxShared": "Dibagikan ke semua admin",
+  "supportInboxEmpty": "Belum ada obrolan dukungan",
+  "supportReplyingAs": "Kamu membalas sebagai MCCompanion Support",
+  "supportReplyHint": "Balas sebagai dukungan…",
+  "relayBlocked": "IP atau akunmu diblokir oleh MCCompanion. Kalau menurutmu ini keliru, gabung ke Discord kami.",
+  "relayBlockedWithReason": "IP atau akunmu diblokir oleh MCCompanion.\nAlasan: {reason}\nKalau menurutmu ini keliru, gabung ke Discord kami.",
+  "relayConfigFailed": "Tidak bisa menyiapkan relay (status {code}). Coba relay lain atau gabung ke Discord kami.",
+  "relayConfigFailedDetail": "Tidak bisa menyiapkan relay (status {code}): {detail}. Coba relay lain atau gabung ke Discord kami.",
+  "relayTimeout": "Relay tidak menjawab tepat waktu.",
+  "relayUnreachable": "Tidak bisa menghubungi relay.",
+  "lookupNotFound": "Pemain tidak ditemukan.",
+  "lookupNetworkError": "Kesalahan jaringan. Coba lagi.",
+  "lookupBedrockUnavailable": "Pencarian Bedrock sedang tidak tersedia.",
+  "lookupFailed": "Pencarian gagal."
 }
