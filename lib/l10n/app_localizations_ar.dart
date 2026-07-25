@@ -2569,4 +2569,64 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get lookupFailed => 'فشل البحث.';
+
+  @override
+  String get myFeedbackTitle => 'ملاحظاتي';
+
+  @override
+  String get myFeedbackEmpty => 'لم ترسل لنا شيئًا بعد.';
+
+  @override
+  String get myFeedbackOpenList => 'ملاحظاتي';
+
+  @override
+  String get fbStatusOpen => 'مفتوح';
+
+  @override
+  String get fbStatusPlanned => 'مخطط له';
+
+  @override
+  String get fbStatusInProgress => 'قيد العمل';
+
+  @override
+  String get fbStatusImplemented => 'تم';
+
+  @override
+  String get fbStatusNotPlanned => 'غير مخطط له';
+
+  @override
+  String get fbStatusDuplicate => 'مكرر';
+
+  @override
+  String get fbNoReplies => 'لا يوجد رد بعد. سنخبرك هنا.';
+
+  @override
+  String get fbReplyHint => 'أضف شيئًا إلى هذا البلاغ…';
+
+  @override
+  String get fbFromTeam => 'MCCompanion';
+
+  @override
+  String get fbFromYou => 'أنت';
+
+  @override
+  String get feedbackGoesToTeam => 'يصل مباشرة إلى الفريق';
+
+  @override
+  String get notifFeedbackStatus => 'تحديث بشأن ملاحظاتك';
+
+  @override
+  String get notifFeedbackReply => 'رد على ملاحظاتك';
+
+  @override
+  String get adminTicketsHeader => 'البلاغات والطلبات';
+
+  @override
+  String get adminGeneralChat => 'محادثة عامة';
+
+  @override
+  String get adminTicketReplyHint => 'رد بخصوص هذه التذكرة…';
+
+  @override
+  String get adminNoTicketsForUser => 'لا توجد تذاكر من هذا المستخدم';
 }

@@ -11,6 +11,7 @@ import '../widgets/components/app_toast.dart';
 import '../widgets/profile/profile_auth_views.dart';
 import '../widgets/profile/profile_header.dart';
 import '../widgets/profile/profile_tabs.dart';
+import 'support_inbox_screen.dart';
 import '../widgets/profile/profile_desktop_sidebar.dart';
 import '../widgets/profile/profile_notifications_tab.dart';
 import 'register_screen.dart';
@@ -37,8 +38,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class ProfileScreenState extends State<ProfileScreen>
-    with SingleTickerProviderStateMixin {
-  late final TabController _tabs;
+    with TickerProviderStateMixin {
+  late TabController _tabs;
   StreamSubscription<AuthUser?>? _authSubscription;
   StreamSubscription<({String uid, bool online})>? _presenceSub;
   bool _checking = false;
@@ -54,10 +55,13 @@ class ProfileScreenState extends State<ProfileScreen>
   int _unreadNotifCount = 0;
   StreamSubscription<dynamic>? _incomingSub;
 
+  bool _isAdmin = UserService.isAdmin;
+  int get _tabCount => _isAdmin ? 6 : 5;
+
   @override
   void initState() {
     super.initState();
-    _tabs = TabController(length: 5, vsync: this);
+    _tabs = TabController(length: _tabCount, vsync: this);
     _authSubscription = AuthService.userStream.listen((_) => _checkAuth());
     _presenceSub = MessageService.presenceStream.listen(_onPresence);
     _incomingSub = MessageService.incoming.listen((_) => _refreshUnread());
@@ -75,7 +79,7 @@ class ProfileScreenState extends State<ProfileScreen>
 
   void switchToTab(int index) {
     if (!mounted) return;
-    _tabs.animateTo(index);
+    _tabs.animateTo(index.clamp(0, _tabs.length - 1));
   }
 
   void _onPresence(({String uid, bool online}) event) {
@@ -136,12 +140,31 @@ class ProfileScreenState extends State<ProfileScreen>
       _loadingRequests = false;
     });
     _checking = false;
+    _syncAdminTab();
     if (justLoggedIn) widget.onLoggedIn?.call();
   }
 
   Future<void> _fetchMe() async {
     final me = await UserService.getMe();
-    if (mounted) setState(() => _me = me);
+    if (!mounted) return;
+    setState(() => _me = me);
+    _syncAdminTab();
+  }
+
+  void _syncAdminTab() {
+    if (_isAdmin == UserService.isAdmin) return;
+    setState(() => _isAdmin = UserService.isAdmin);
+  }
+
+  void _ensureTabController() {
+    if (_tabs.length == _tabCount) return;
+    final previous = _tabs;
+    _tabs = TabController(
+      length: _tabCount,
+      vsync: this,
+      initialIndex: previous.index.clamp(0, _tabCount - 1),
+    );
+    WidgetsBinding.instance.addPostFrameCallback((_) => previous.dispose());
   }
 
   Future<void> _fetchFriends() async {
@@ -192,6 +215,8 @@ class ProfileScreenState extends State<ProfileScreen>
 
   @override
   Widget build(BuildContext context) {
+    _ensureTabController();
+
     if (_authState == _AuthState.loading) {
       return Center(
         child: CircularProgressIndicator(
@@ -290,6 +315,8 @@ class ProfileScreenState extends State<ProfileScreen>
               ],
             ),
           ),
+          if (_isAdmin)
+            const Tab(icon: Icon(Icons.support_agent_rounded, size: 22)),
         ],
       ),
     );
@@ -329,6 +356,7 @@ class ProfileScreenState extends State<ProfileScreen>
             if (mounted) setState(() => _unreadNotifCount = count);
           },
         ),
+        if (_isAdmin) const SupportInboxScreen(embedded: true),
       ],
     );
   }

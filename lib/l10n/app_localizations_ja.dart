@@ -2538,4 +2538,64 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get lookupFailed => '検索に失敗しました。';
+
+  @override
+  String get myFeedbackTitle => 'マイフィードバック';
+
+  @override
+  String get myFeedbackEmpty => 'まだ何も送信されていません。';
+
+  @override
+  String get myFeedbackOpenList => 'マイフィードバック';
+
+  @override
+  String get fbStatusOpen => '未対応';
+
+  @override
+  String get fbStatusPlanned => '予定あり';
+
+  @override
+  String get fbStatusInProgress => '対応中';
+
+  @override
+  String get fbStatusImplemented => '完了';
+
+  @override
+  String get fbStatusNotPlanned => '予定なし';
+
+  @override
+  String get fbStatusDuplicate => '重複';
+
+  @override
+  String get fbNoReplies => 'まだ返信はありません。ここでお知らせします。';
+
+  @override
+  String get fbReplyHint => 'この報告に追記する…';
+
+  @override
+  String get fbFromTeam => 'MCCompanion';
+
+  @override
+  String get fbFromYou => 'あなた';
+
+  @override
+  String get feedbackGoesToTeam => 'チームに直接届きます';
+
+  @override
+  String get notifFeedbackStatus => 'フィードバックの進捗';
+
+  @override
+  String get notifFeedbackReply => 'フィードバックへの返信';
+
+  @override
+  String get adminTicketsHeader => '報告とリクエスト';
+
+  @override
+  String get adminGeneralChat => '一般チャット';
+
+  @override
+  String get adminTicketReplyHint => 'このチケットについて返信…';
+
+  @override
+  String get adminNoTicketsForUser => 'このユーザーのチケットはありません';
 }

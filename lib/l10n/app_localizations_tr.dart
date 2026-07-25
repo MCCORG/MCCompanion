@@ -2586,4 +2586,64 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get lookupFailed => 'Arama başarısız.';
+
+  @override
+  String get myFeedbackTitle => 'Geri bildirimlerim';
+
+  @override
+  String get myFeedbackEmpty => 'Bize henüz bir şey göndermedin.';
+
+  @override
+  String get myFeedbackOpenList => 'Geri bildirimlerim';
+
+  @override
+  String get fbStatusOpen => 'Açık';
+
+  @override
+  String get fbStatusPlanned => 'Planlandı';
+
+  @override
+  String get fbStatusInProgress => 'Üzerinde çalışılıyor';
+
+  @override
+  String get fbStatusImplemented => 'Tamamlandı';
+
+  @override
+  String get fbStatusNotPlanned => 'Planlanmıyor';
+
+  @override
+  String get fbStatusDuplicate => 'Kopya';
+
+  @override
+  String get fbNoReplies => 'Henüz yanıt yok. Buradan haber vereceğiz.';
+
+  @override
+  String get fbReplyHint => 'Bu bildirime bir şey ekle…';
+
+  @override
+  String get fbFromTeam => 'MCCompanion';
+
+  @override
+  String get fbFromYou => 'Sen';
+
+  @override
+  String get feedbackGoesToTeam => 'Doğrudan ekibe gider';
+
+  @override
+  String get notifFeedbackStatus => 'Geri bildiriminde güncelleme';
+
+  @override
+  String get notifFeedbackReply => 'Geri bildirimine yanıt';
+
+  @override
+  String get adminTicketsHeader => 'Bildirimler ve istekler';
+
+  @override
+  String get adminGeneralChat => 'Genel sohbet';
+
+  @override
+  String get adminTicketReplyHint => 'Bu bilet hakkında yanıtla…';
+
+  @override
+  String get adminNoTicketsForUser => 'Bu kullanıcıdan bilet yok';
 }

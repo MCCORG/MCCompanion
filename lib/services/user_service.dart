@@ -371,6 +371,7 @@ class UserService {
           .timeout(_timeout);
       if (res.statusCode == 200) {
         final body = jsonDecode(res.body) as Map<String, dynamic>;
+        _isAdmin = body['isAdmin'] as bool? ?? false;
         return (
           user: body['user'] != null ? UserModel.fromJson(body['user'] as Map<String, dynamic>) : null,
           friends: (body['friends'] as List<dynamic>).map((e) => FriendModel.fromJson(e as Map<String, dynamic>)).toList(),

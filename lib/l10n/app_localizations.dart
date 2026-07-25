@@ -4817,6 +4817,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Lookup failed.'**
   String get lookupFailed;
+
+  /// No description provided for @myFeedbackTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My feedback'**
+  String get myFeedbackTitle;
+
+  /// No description provided for @myFeedbackEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'You have not sent us anything yet.'**
+  String get myFeedbackEmpty;
+
+  /// No description provided for @myFeedbackOpenList.
+  ///
+  /// In en, this message translates to:
+  /// **'My feedback'**
+  String get myFeedbackOpenList;
+
+  /// No description provided for @fbStatusOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get fbStatusOpen;
+
+  /// No description provided for @fbStatusPlanned.
+  ///
+  /// In en, this message translates to:
+  /// **'Planned'**
+  String get fbStatusPlanned;
+
+  /// No description provided for @fbStatusInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'In progress'**
+  String get fbStatusInProgress;
+
+  /// No description provided for @fbStatusImplemented.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get fbStatusImplemented;
+
+  /// No description provided for @fbStatusNotPlanned.
+  ///
+  /// In en, this message translates to:
+  /// **'Not planned'**
+  String get fbStatusNotPlanned;
+
+  /// No description provided for @fbStatusDuplicate.
+  ///
+  /// In en, this message translates to:
+  /// **'Duplicate'**
+  String get fbStatusDuplicate;
+
+  /// No description provided for @fbNoReplies.
+  ///
+  /// In en, this message translates to:
+  /// **'No replies yet. We will let you know here.'**
+  String get fbNoReplies;
+
+  /// No description provided for @fbReplyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Add something to this report…'**
+  String get fbReplyHint;
+
+  /// No description provided for @fbFromTeam.
+  ///
+  /// In en, this message translates to:
+  /// **'MCCompanion'**
+  String get fbFromTeam;
+
+  /// No description provided for @fbFromYou.
+  ///
+  /// In en, this message translates to:
+  /// **'You'**
+  String get fbFromYou;
+
+  /// No description provided for @feedbackGoesToTeam.
+  ///
+  /// In en, this message translates to:
+  /// **'Goes straight to the team'**
+  String get feedbackGoesToTeam;
+
+  /// No description provided for @notifFeedbackStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Update on your feedback'**
+  String get notifFeedbackStatus;
+
+  /// No description provided for @notifFeedbackReply.
+  ///
+  /// In en, this message translates to:
+  /// **'Reply on your feedback'**
+  String get notifFeedbackReply;
+
+  /// No description provided for @adminTicketsHeader.
+  ///
+  /// In en, this message translates to:
+  /// **'Reports and requests'**
+  String get adminTicketsHeader;
+
+  /// No description provided for @adminGeneralChat.
+  ///
+  /// In en, this message translates to:
+  /// **'General chat'**
+  String get adminGeneralChat;
+
+  /// No description provided for @adminTicketReplyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Reply about this ticket…'**
+  String get adminTicketReplyHint;
+
+  /// No description provided for @adminNoTicketsForUser.
+  ///
+  /// In en, this message translates to:
+  /// **'No tickets from this user'**
+  String get adminNoTicketsForUser;
 }
 
 class _AppLocalizationsDelegate

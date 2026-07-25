@@ -2598,4 +2598,64 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get lookupFailed => 'Utafutaji umeshindikana.';
+
+  @override
+  String get myFeedbackTitle => 'Maoni yangu';
+
+  @override
+  String get myFeedbackEmpty => 'Bado hujatutumia chochote.';
+
+  @override
+  String get myFeedbackOpenList => 'Maoni yangu';
+
+  @override
+  String get fbStatusOpen => 'Wazi';
+
+  @override
+  String get fbStatusPlanned => 'Imepangwa';
+
+  @override
+  String get fbStatusInProgress => 'Inashughulikiwa';
+
+  @override
+  String get fbStatusImplemented => 'Imekamilika';
+
+  @override
+  String get fbStatusNotPlanned => 'Haijapangwa';
+
+  @override
+  String get fbStatusDuplicate => 'Nakala';
+
+  @override
+  String get fbNoReplies => 'Bado hakuna jibu. Tutakujulisha hapa.';
+
+  @override
+  String get fbReplyHint => 'Ongeza kitu kwenye ripoti hii…';
+
+  @override
+  String get fbFromTeam => 'MCCompanion';
+
+  @override
+  String get fbFromYou => 'Wewe';
+
+  @override
+  String get feedbackGoesToTeam => 'Huenda moja kwa moja kwa timu';
+
+  @override
+  String get notifFeedbackStatus => 'Taarifa kuhusu maoni yako';
+
+  @override
+  String get notifFeedbackReply => 'Jibu kwa maoni yako';
+
+  @override
+  String get adminTicketsHeader => 'Ripoti na maombi';
+
+  @override
+  String get adminGeneralChat => 'Gumzo la jumla';
+
+  @override
+  String get adminTicketReplyHint => 'Jibu kuhusu tiketi hii…';
+
+  @override
+  String get adminNoTicketsForUser => 'Hakuna tiketi kutoka kwa mtumiaji huyu';
 }

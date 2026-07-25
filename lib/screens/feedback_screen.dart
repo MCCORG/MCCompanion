@@ -8,6 +8,7 @@ import '../services/feedback_service.dart';
 import '../services/auth_service.dart';
 import '../widgets/components/app_toast.dart';
 import '../l10n/app_localizations.dart';
+import 'my_feedback_screen.dart';
 
 enum _FeedbackType { bug, feature }
 
@@ -240,10 +241,25 @@ class _Header extends StatelessWidget {
                 ),
               ),
               Text(
-                l.feedbackGoesToGithub,
+                l.feedbackGoesToTeam,
                 style: TextStyle(fontSize: 11, color: AppTheme.textMuted),
               ),
             ],
+          ),
+          const Spacer(),
+          TextButton(
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const MyFeedbackScreen()),
+            ),
+            style: TextButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              minimumSize: Size.zero,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+            child: Text(
+              l.myFeedbackOpenList,
+              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: AppTheme.accent),
+            ),
           ),
         ],
       ),

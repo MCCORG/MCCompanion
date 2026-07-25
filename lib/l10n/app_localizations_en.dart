@@ -2578,4 +2578,64 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get lookupFailed => 'Lookup failed.';
+
+  @override
+  String get myFeedbackTitle => 'My feedback';
+
+  @override
+  String get myFeedbackEmpty => 'You have not sent us anything yet.';
+
+  @override
+  String get myFeedbackOpenList => 'My feedback';
+
+  @override
+  String get fbStatusOpen => 'Open';
+
+  @override
+  String get fbStatusPlanned => 'Planned';
+
+  @override
+  String get fbStatusInProgress => 'In progress';
+
+  @override
+  String get fbStatusImplemented => 'Done';
+
+  @override
+  String get fbStatusNotPlanned => 'Not planned';
+
+  @override
+  String get fbStatusDuplicate => 'Duplicate';
+
+  @override
+  String get fbNoReplies => 'No replies yet. We will let you know here.';
+
+  @override
+  String get fbReplyHint => 'Add something to this report…';
+
+  @override
+  String get fbFromTeam => 'MCCompanion';
+
+  @override
+  String get fbFromYou => 'You';
+
+  @override
+  String get feedbackGoesToTeam => 'Goes straight to the team';
+
+  @override
+  String get notifFeedbackStatus => 'Update on your feedback';
+
+  @override
+  String get notifFeedbackReply => 'Reply on your feedback';
+
+  @override
+  String get adminTicketsHeader => 'Reports and requests';
+
+  @override
+  String get adminGeneralChat => 'General chat';
+
+  @override
+  String get adminTicketReplyHint => 'Reply about this ticket…';
+
+  @override
+  String get adminNoTicketsForUser => 'No tickets from this user';
 }

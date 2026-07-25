@@ -2587,4 +2587,64 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get lookupFailed => 'Не удалось выполнить поиск.';
+
+  @override
+  String get myFeedbackTitle => 'Мои отзывы';
+
+  @override
+  String get myFeedbackEmpty => 'Вы пока ничего нам не отправляли.';
+
+  @override
+  String get myFeedbackOpenList => 'Мои отзывы';
+
+  @override
+  String get fbStatusOpen => 'Открыт';
+
+  @override
+  String get fbStatusPlanned => 'Запланировано';
+
+  @override
+  String get fbStatusInProgress => 'В работе';
+
+  @override
+  String get fbStatusImplemented => 'Готово';
+
+  @override
+  String get fbStatusNotPlanned => 'Не планируется';
+
+  @override
+  String get fbStatusDuplicate => 'Дубликат';
+
+  @override
+  String get fbNoReplies => 'Ответа пока нет. Мы напишем здесь.';
+
+  @override
+  String get fbReplyHint => 'Добавить что-то к этому сообщению…';
+
+  @override
+  String get fbFromTeam => 'MCCompanion';
+
+  @override
+  String get fbFromYou => 'Вы';
+
+  @override
+  String get feedbackGoesToTeam => 'Отправляется прямо команде';
+
+  @override
+  String get notifFeedbackStatus => 'Обновление по вашему отзыву';
+
+  @override
+  String get notifFeedbackReply => 'Ответ на ваш отзыв';
+
+  @override
+  String get adminTicketsHeader => 'Сообщения и запросы';
+
+  @override
+  String get adminGeneralChat => 'Общий чат';
+
+  @override
+  String get adminTicketReplyHint => 'Ответить по этому обращению…';
+
+  @override
+  String get adminNoTicketsForUser => 'У этого пользователя нет обращений';
 }

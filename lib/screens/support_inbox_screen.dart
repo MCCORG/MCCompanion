@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../models/message_model.dart';
 import '../services/support_service.dart';
+import '../services/feedback_service.dart';
 import '../widgets/components/swipe_back.dart';
 import '../widgets/profile/profile_common.dart';
 import '../l10n/app_localizations.dart';
 
 class SupportInboxScreen extends StatefulWidget {
-  const SupportInboxScreen({super.key});
+  final bool embedded;
+  const SupportInboxScreen({super.key, this.embedded = false});
 
   @override
   State<SupportInboxScreen> createState() => _SupportInboxScreenState();
@@ -16,7 +18,19 @@ class SupportInboxScreen extends StatefulWidget {
 
 class _SupportInboxScreenState extends State<SupportInboxScreen> {
   List<ConversationModel> _conversations = [];
+  List<FeedbackTicket> _tickets = [];
+  bool _showClosed = false;
   bool _loading = true;
+
+  Map<String, List<FeedbackTicket>> get _byUser {
+    final map = <String, List<FeedbackTicket>>{};
+    for (final t in _tickets) {
+      final u = t.username;
+      if (u == null) continue;
+      (map[u] ??= []).add(t);
+    }
+    return map;
+  }
 
   @override
   void initState() {
@@ -26,20 +40,20 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
 
   Future<void> _load() async {
     final convs = await SupportService.getConversations();
+    final tickets = await SupportService.tickets(includeClosed: _showClosed);
     if (!mounted) return;
     setState(() {
       _conversations = convs;
+      _tickets = tickets;
       _loading = false;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return SwipeBack(
-      onBack: () => Navigator.of(context).pop(),
-      child: Column(
+    final content = Column(
         children: [
-          Padding(
+          if (!widget.embedded) Padding(
             padding: EdgeInsets.only(
               top: MediaQuery.of(context).padding.top + 8,
               left: 8,
@@ -103,6 +117,33 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
               ],
             ),
           ),
+          Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 720),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
+                child: Row(
+                  children: [
+                    for (final closed in [false, true])
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.only(right: closed ? 0 : 8),
+                          child: _FilterButton(
+                            label: closed ? 'All' : 'Open',
+                            active: _showClosed == closed,
+                            onTap: () {
+                              if (_showClosed == closed) return;
+                              setState(() => _showClosed = closed);
+                              _load();
+                            },
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ),
+          ),
           Expanded(
             child: _loading
                 ? Center(
@@ -137,6 +178,7 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
                             final c = _conversations[i];
                             return _SupportConvTile(
                               conv: c,
+                              tickets: _byUser[c.username] ?? const [],
                               onTap: () async {
                                 await Navigator.of(context).push(
                                   MaterialPageRoute(
@@ -156,6 +198,41 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
                   ),
           ),
         ],
+      );
+
+    if (widget.embedded) return content;
+    return SwipeBack(onBack: () => Navigator.of(context).pop(), child: content);
+  }
+}
+
+class _FilterButton extends StatelessWidget {
+  final String label;
+  final bool active;
+  final VoidCallback onTap;
+  const _FilterButton({required this.label, required this.active, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        alignment: Alignment.center,
+        padding: const EdgeInsets.symmetric(vertical: 9),
+        decoration: BoxDecoration(
+          color: active ? AppTheme.accent.withValues(alpha: 0.12) : Colors.transparent,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: active ? AppTheme.accent.withValues(alpha: 0.35) : AppTheme.borderGray,
+          ),
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w600,
+            color: active ? AppTheme.accent : AppTheme.textSecondary,
+          ),
+        ),
       ),
     );
   }
@@ -163,8 +240,36 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
 
 class _SupportConvTile extends StatelessWidget {
   final ConversationModel conv;
+  final List<FeedbackTicket> tickets;
   final VoidCallback onTap;
-  const _SupportConvTile({required this.conv, required this.onTap});
+  const _SupportConvTile({
+    required this.conv,
+    required this.onTap,
+    this.tickets = const [],
+  });
+
+  List<Widget> _badges() {
+    final bugs = tickets.where((t) => t.isBug).length;
+    final feats = tickets.length - bugs;
+    Widget pill(int n, String word, Color c) => Container(
+          margin: const EdgeInsets.only(left: 6),
+          padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+          decoration: BoxDecoration(
+            color: c.withValues(alpha: 0.12),
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(color: c.withValues(alpha: 0.3)),
+          ),
+          child: Text(
+            '$n $word',
+            style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: c),
+          ),
+        );
+    return [
+      if (bugs > 0) pill(bugs, bugs == 1 ? 'bug' : 'bugs', AppTheme.error),
+      if (feats > 0)
+        pill(feats, feats == 1 ? 'feature request' : 'feature requests', AppTheme.accent),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -194,15 +299,22 @@ class _SupportConvTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    conv.displayName ?? conv.username,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      color: AppTheme.textPrimary,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                  Row(
+                    children: [
+                      Flexible(
+                        child: Text(
+                          conv.displayName ?? conv.username,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            color: AppTheme.textPrimary,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      ..._badges(),
+                    ],
                   ),
                   const SizedBox(height: 2),
                   Text(
@@ -262,6 +374,12 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
   bool _sending = false;
   Timer? _pollTimer;
 
+  List<FeedbackTicket> _tickets = [];
+  int? _openTicket;
+  final Map<int, List<FeedbackMessage>> _ticketThreads = {};
+  final Map<int, TextEditingController> _ticketCtrls = {};
+  int? _ticketSending;
+
   @override
   void initState() {
     super.initState();
@@ -277,20 +395,261 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
     _pollTimer?.cancel();
     _ctrl.dispose();
     _scrollCtrl.dispose();
+    for (final c in _ticketCtrls.values) {
+      c.dispose();
+    }
     super.dispose();
   }
 
   Future<void> _load({bool silent = false}) async {
     if (!silent) setState(() => _loading = true);
     final result = await SupportService.getMessages(widget.username);
+    final all = await SupportService.tickets();
     if (!mounted) return;
     setState(() {
       _messages = result.messages;
       _sentBy = result.sentBy;
       _supportUid = result.supportUid ?? _supportUid;
+      _tickets = all.where((t) => t.username == widget.username).toList();
       _loading = false;
     });
   }
+
+  Future<void> _toggleTicket(FeedbackTicket t) async {
+    final next = _openTicket == t.id ? null : t.id;
+    setState(() => _openTicket = next);
+    if (next != null && !_ticketThreads.containsKey(t.id)) {
+      final msgs = await SupportService.ticketMessages(t.id);
+      if (mounted) setState(() => _ticketThreads[t.id] = msgs);
+    }
+  }
+
+  Future<void> _sendTicketReply(FeedbackTicket t) async {
+    final ctrl = _ticketCtrls[t.id]!;
+    final text = ctrl.text.trim();
+    if (text.isEmpty || _ticketSending != null) return;
+    setState(() => _ticketSending = t.id);
+    final msg = await SupportService.replyToTicket(t.id, text);
+    if (!mounted) return;
+    setState(() {
+      if (msg != null) {
+        _ticketThreads[t.id] = [...?_ticketThreads[t.id], msg];
+        ctrl.clear();
+      }
+      _ticketSending = null;
+    });
+  }
+
+  Future<void> _setTicketStatus(FeedbackTicket t, String status) async {
+    if (status == t.status) return;
+    final updated = await SupportService.setTicketStatus(t.id, status);
+    if (!mounted || updated == null) return;
+    setState(() {
+      const closed = {'implemented', 'not_planned', 'duplicate'};
+      if (closed.contains(updated.status)) {
+        _tickets = _tickets.where((x) => x.id != t.id).toList();
+        if (_openTicket == t.id) _openTicket = null;
+      } else {
+        _tickets = _tickets.map((x) => x.id == t.id ? updated : x).toList();
+      }
+    });
+  }
+
+  String _ticketStatusLabel(AppLocalizations l, String status) => switch (status) {
+        'planned' => l.fbStatusPlanned,
+        'in_progress' => l.fbStatusInProgress,
+        'implemented' => l.fbStatusImplemented,
+        'not_planned' => l.fbStatusNotPlanned,
+        'duplicate' => l.fbStatusDuplicate,
+        _ => l.fbStatusOpen,
+      };
+
+  Widget _ticketsSection(AppLocalizations l) {
+    if (_tickets.isEmpty) return const SizedBox.shrink();
+    return Container(
+      constraints: const BoxConstraints(maxHeight: 300),
+      decoration: BoxDecoration(
+        border: Border(bottom: BorderSide(color: AppTheme.borderDim)),
+      ),
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              l.adminTicketsHeader.toUpperCase(),
+              style: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.5,
+                color: AppTheme.textMuted,
+              ),
+            ),
+            const SizedBox(height: 8),
+            ..._tickets.map((t) => _adminTicketCard(l, t)),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _adminTicketCard(AppLocalizations l, FeedbackTicket t) {
+    _ticketCtrls.putIfAbsent(t.id, () => TextEditingController());
+    final expanded = _openTicket == t.id;
+    final color = t.isBug ? AppTheme.error : AppTheme.accent;
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 8),
+      decoration: BoxDecoration(
+        color: AppTheme.surfaceCard,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: color.withValues(alpha: 0.25)),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          InkWell(
+            onTap: () => _toggleTicket(t),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              child: Row(
+                children: [
+                  Text(t.isBug ? '🐛' : '💡', style: const TextStyle(fontSize: 13)),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      t.title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: AppTheme.textPrimary,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    _ticketStatusLabel(l, t.status),
+                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: color),
+                  ),
+                  Icon(
+                    expanded ? Icons.expand_less_rounded : Icons.expand_more_rounded,
+                    size: 18,
+                    color: AppTheme.textMuted,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          if (expanded) _adminTicketBody(l, t),
+        ],
+      ),
+    );
+  }
+
+  Widget _adminTicketBody(AppLocalizations l, FeedbackTicket t) {
+    final msgs = _ticketThreads[t.id];
+    final ctrl = _ticketCtrls[t.id]!;
+
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            t.description,
+            style: TextStyle(fontSize: 12, color: AppTheme.textSecondary, height: 1.5),
+          ),
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              Text('Status', style: TextStyle(fontSize: 11, color: AppTheme.textMuted)),
+              const SizedBox(width: 8),
+              DropdownButton<String>(
+                value: t.status,
+                isDense: true,
+                dropdownColor: AppTheme.surfaceRaisedSolid,
+                underline: const SizedBox.shrink(),
+                style: TextStyle(fontSize: 12, color: AppTheme.textPrimary),
+                items: const ['open', 'planned', 'in_progress', 'implemented', 'not_planned', 'duplicate']
+                    .map((v) => DropdownMenuItem(value: v, child: Text(_statusText(l, v))))
+                    .toList(),
+                onChanged: (v) => v == null ? null : _setTicketStatus(t, v),
+              ),
+            ],
+          ),
+          if (msgs == null)
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: SizedBox(
+                width: 16,
+                height: 16,
+                child: CircularProgressIndicator(strokeWidth: 2, color: AppTheme.accent),
+              ),
+            )
+          else
+            ...msgs.map((m) => Align(
+                  alignment: m.fromAdmin ? Alignment.centerRight : Alignment.centerLeft,
+                  child: Container(
+                    margin: const EdgeInsets.only(bottom: 5),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+                    constraints: const BoxConstraints(maxWidth: 260),
+                    decoration: BoxDecoration(
+                      color: m.fromAdmin
+                          ? AppTheme.accent.withValues(alpha: 0.10)
+                          : AppTheme.surfaceRaised,
+                      borderRadius: BorderRadius.circular(9),
+                    ),
+                    child: Text(
+                      m.body,
+                      style: TextStyle(fontSize: 12, color: AppTheme.textPrimary, height: 1.4),
+                    ),
+                  ),
+                )),
+          Row(
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: ctrl,
+                  style: TextStyle(fontSize: 12, color: AppTheme.textPrimary),
+                  decoration: InputDecoration(
+                    hintText: l.adminTicketReplyHint,
+                    hintStyle: TextStyle(fontSize: 12, color: AppTheme.textMuted),
+                    isDense: true,
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
+                    filled: true,
+                    fillColor: AppTheme.background,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(9),
+                      borderSide: BorderSide(color: AppTheme.borderDim),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(9),
+                      borderSide: BorderSide(color: AppTheme.borderDim),
+                    ),
+                  ),
+                ),
+              ),
+              IconButton(
+                onPressed: _ticketSending == t.id ? null : () => _sendTicketReply(t),
+                icon: Icon(Icons.send_rounded, size: 16, color: AppTheme.accent),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  static String _statusText(AppLocalizations l, String v) => switch (v) {
+        'planned' => l.fbStatusPlanned,
+        'in_progress' => l.fbStatusInProgress,
+        'implemented' => l.fbStatusImplemented,
+        'not_planned' => l.fbStatusNotPlanned,
+        'duplicate' => l.fbStatusDuplicate,
+        _ => l.fbStatusOpen,
+      };
 
   Future<void> _send() async {
     final text = _ctrl.text.trim();
@@ -307,6 +666,7 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: AppTheme.background,
       body: Column(
@@ -371,6 +731,7 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
               ],
             ),
           ),
+          if (!_loading) _ticketsSection(l),
           Expanded(
             child: _loading
                 ? Center(

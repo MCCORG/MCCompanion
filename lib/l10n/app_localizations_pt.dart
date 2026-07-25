@@ -2588,4 +2588,64 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get lookupFailed => 'A pesquisa falhou.';
+
+  @override
+  String get myFeedbackTitle => 'O meu feedback';
+
+  @override
+  String get myFeedbackEmpty => 'Ainda não nos enviaste nada.';
+
+  @override
+  String get myFeedbackOpenList => 'O meu feedback';
+
+  @override
+  String get fbStatusOpen => 'Aberto';
+
+  @override
+  String get fbStatusPlanned => 'Planeado';
+
+  @override
+  String get fbStatusInProgress => 'Em curso';
+
+  @override
+  String get fbStatusImplemented => 'Concluído';
+
+  @override
+  String get fbStatusNotPlanned => 'Não planeado';
+
+  @override
+  String get fbStatusDuplicate => 'Duplicado';
+
+  @override
+  String get fbNoReplies => 'Ainda sem resposta. Avisamos-te aqui.';
+
+  @override
+  String get fbReplyHint => 'Acrescenta algo a este relatório…';
+
+  @override
+  String get fbFromTeam => 'MCCompanion';
+
+  @override
+  String get fbFromYou => 'Tu';
+
+  @override
+  String get feedbackGoesToTeam => 'Vai direto para a equipa';
+
+  @override
+  String get notifFeedbackStatus => 'Novidades sobre o teu feedback';
+
+  @override
+  String get notifFeedbackReply => 'Resposta ao teu feedback';
+
+  @override
+  String get adminTicketsHeader => 'Relatórios e pedidos';
+
+  @override
+  String get adminGeneralChat => 'Conversa geral';
+
+  @override
+  String get adminTicketReplyHint => 'Responder sobre este ticket…';
+
+  @override
+  String get adminNoTicketsForUser => 'Sem tickets deste utilizador';
 }

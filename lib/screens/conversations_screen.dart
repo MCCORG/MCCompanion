@@ -4,9 +4,7 @@ import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../models/message_model.dart';
 import '../services/message_service.dart';
-import '../services/user_service.dart';
 import 'chat_screen.dart';
-import 'support_inbox_screen.dart';
 import '../models/user_model.dart';
 
 class ConversationsScreen extends StatefulWidget {
@@ -76,9 +74,7 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
       );
     }
 
-    final isAdmin = UserService.isAdmin;
-
-    if (_conversations.isEmpty && !isAdmin) {
+    if (_conversations.isEmpty) {
       final l = AppLocalizations.of(context)!;
       return Center(
         child: Padding(
@@ -112,8 +108,6 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
       );
     }
 
-    final extraCount = isAdmin ? 1 : 0;
-
     return RefreshIndicator(
       color: AppTheme.accent,
       backgroundColor: AppTheme.surfaceRaised,
@@ -123,83 +117,13 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
           constraints: const BoxConstraints(maxWidth: 720),
           child: ListView.separated(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            itemCount: _conversations.length + extraCount,
+            itemCount: _conversations.length,
             separatorBuilder: (_, __) => const SizedBox(height: 8),
             itemBuilder: (_, i) {
-              if (isAdmin && i == 0) {
-                return _SupportInboxTile(
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => const SupportInboxScreen(),
-                    ),
-                  ),
-                );
-              }
-              final conv = _conversations[i - extraCount];
+              final conv = _conversations[i];
               return _ConvTile(conv: conv, onTap: () => _openChat(conv));
             },
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _SupportInboxTile extends StatelessWidget {
-  final VoidCallback onTap;
-  const _SupportInboxTile({required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-        decoration: BoxDecoration(
-          color: AppTheme.accent.withValues(alpha: 0.08),
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: AppTheme.accent.withValues(alpha: 0.35)),
-        ),
-        child: Row(
-          children: [
-            Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: AppTheme.accent.withValues(alpha: 0.15),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Icon(
-                Icons.support_agent_rounded,
-                size: 22,
-                color: AppTheme.accent,
-              ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.supportInboxTitle,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      color: AppTheme.accent,
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    AppLocalizations.of(context)!.supportInboxSubtitle,
-                    style: TextStyle(fontSize: 12, color: AppTheme.textMuted),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
-              ),
-            ),
-            Icon(Icons.chevron_right_rounded, size: 20, color: AppTheme.accent),
-          ],
         ),
       ),
     );

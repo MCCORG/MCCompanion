@@ -2588,4 +2588,64 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get lookupFailed => 'Pencarian gagal.';
+
+  @override
+  String get myFeedbackTitle => 'Masukan saya';
+
+  @override
+  String get myFeedbackEmpty => 'Kamu belum mengirim apa pun.';
+
+  @override
+  String get myFeedbackOpenList => 'Masukan saya';
+
+  @override
+  String get fbStatusOpen => 'Terbuka';
+
+  @override
+  String get fbStatusPlanned => 'Direncanakan';
+
+  @override
+  String get fbStatusInProgress => 'Sedang dikerjakan';
+
+  @override
+  String get fbStatusImplemented => 'Selesai';
+
+  @override
+  String get fbStatusNotPlanned => 'Tidak direncanakan';
+
+  @override
+  String get fbStatusDuplicate => 'Duplikat';
+
+  @override
+  String get fbNoReplies => 'Belum ada balasan. Kami kabari di sini.';
+
+  @override
+  String get fbReplyHint => 'Tambahkan sesuatu ke laporan ini…';
+
+  @override
+  String get fbFromTeam => 'MCCompanion';
+
+  @override
+  String get fbFromYou => 'Kamu';
+
+  @override
+  String get feedbackGoesToTeam => 'Langsung ke tim kami';
+
+  @override
+  String get notifFeedbackStatus => 'Kabar tentang masukanmu';
+
+  @override
+  String get notifFeedbackReply => 'Balasan untuk masukanmu';
+
+  @override
+  String get adminTicketsHeader => 'Laporan dan permintaan';
+
+  @override
+  String get adminGeneralChat => 'Obrolan umum';
+
+  @override
+  String get adminTicketReplyHint => 'Balas tentang tiket ini…';
+
+  @override
+  String get adminNoTicketsForUser => 'Tidak ada tiket dari pengguna ini';
 }

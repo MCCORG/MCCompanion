@@ -50,4 +50,110 @@ class FeedbackService {
       return (ok: false, issueNumber: null, issueUrl: null);
     }
   }
+
+  static Future<List<FeedbackTicket>> myTickets() async {
+    try {
+      final res = await http
+          .get(Uri.parse('$_base/api/feedback/me'), headers: await ApiClientBase.headers())
+          .timeout(_timeout);
+      if (res.statusCode != 200) return [];
+      final data = jsonDecode(res.body) as Map<String, dynamic>;
+      return (data['tickets'] as List)
+          .map((e) => FeedbackTicket.fromJson(e as Map<String, dynamic>))
+          .toList();
+    } catch (_) {
+      return [];
+    }
+  }
+
+  static Future<List<FeedbackMessage>> messages(int ticketId) async {
+    try {
+      final res = await http
+          .get(Uri.parse('$_base/api/feedback/$ticketId/messages'), headers: await ApiClientBase.headers())
+          .timeout(_timeout);
+      if (res.statusCode != 200) return [];
+      final data = jsonDecode(res.body) as Map<String, dynamic>;
+      return (data['messages'] as List)
+          .map((e) => FeedbackMessage.fromJson(e as Map<String, dynamic>))
+          .toList();
+    } catch (_) {
+      return [];
+    }
+  }
+
+  static Future<FeedbackMessage?> reply(int ticketId, String body) async {
+    try {
+      final res = await http
+          .post(
+            Uri.parse('$_base/api/feedback/$ticketId/messages'),
+            headers: await ApiClientBase.headers(),
+            body: jsonEncode({'body': body}),
+          )
+          .timeout(_timeout);
+      if (res.statusCode != 201) return null;
+      final data = jsonDecode(res.body) as Map<String, dynamic>;
+      return FeedbackMessage.fromJson(data['message'] as Map<String, dynamic>);
+    } catch (_) {
+      return null;
+    }
+  }
+}
+
+class FeedbackTicket {
+  final int id;
+  final String? username;
+  final String type;
+  final String title;
+  final String description;
+  final String status;
+  final String? platform;
+  final String? appVersion;
+  final DateTime createdAt;
+
+  const FeedbackTicket({
+    required this.id,
+    required this.username,
+    required this.type,
+    required this.title,
+    required this.description,
+    required this.status,
+    required this.platform,
+    required this.appVersion,
+    required this.createdAt,
+  });
+
+  bool get isBug => type == 'bug';
+
+  factory FeedbackTicket.fromJson(Map<String, dynamic> j) => FeedbackTicket(
+        id: j['id'] as int,
+        username: j['username'] as String?,
+        type: j['type'] as String? ?? 'bug',
+        title: j['title'] as String? ?? '',
+        description: j['description'] as String? ?? '',
+        status: j['status'] as String? ?? 'open',
+        platform: j['platform'] as String?,
+        appVersion: j['appVersion'] as String?,
+        createdAt: DateTime.tryParse(j['createdAt'] as String? ?? '') ?? DateTime.now(),
+      );
+}
+
+class FeedbackMessage {
+  final int id;
+  final String body;
+  final bool fromAdmin;
+  final DateTime createdAt;
+
+  const FeedbackMessage({
+    required this.id,
+    required this.body,
+    required this.fromAdmin,
+    required this.createdAt,
+  });
+
+  factory FeedbackMessage.fromJson(Map<String, dynamic> j) => FeedbackMessage(
+        id: j['id'] as int,
+        body: j['body'] as String? ?? '',
+        fromAdmin: j['fromAdmin'] as bool? ?? false,
+        createdAt: DateTime.tryParse(j['createdAt'] as String? ?? '') ?? DateTime.now(),
+      );
 }

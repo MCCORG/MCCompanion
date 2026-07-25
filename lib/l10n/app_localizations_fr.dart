@@ -2593,4 +2593,64 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get lookupFailed => 'Échec de la recherche.';
+
+  @override
+  String get myFeedbackTitle => 'Mes retours';
+
+  @override
+  String get myFeedbackEmpty => 'Tu ne nous as encore rien envoyé.';
+
+  @override
+  String get myFeedbackOpenList => 'Mes retours';
+
+  @override
+  String get fbStatusOpen => 'Ouvert';
+
+  @override
+  String get fbStatusPlanned => 'Prévu';
+
+  @override
+  String get fbStatusInProgress => 'En cours';
+
+  @override
+  String get fbStatusImplemented => 'Terminé';
+
+  @override
+  String get fbStatusNotPlanned => 'Non prévu';
+
+  @override
+  String get fbStatusDuplicate => 'Doublon';
+
+  @override
+  String get fbNoReplies => 'Pas encore de réponse. On te répond ici.';
+
+  @override
+  String get fbReplyHint => 'Ajouter quelque chose à ce signalement…';
+
+  @override
+  String get fbFromTeam => 'MCCompanion';
+
+  @override
+  String get fbFromYou => 'Toi';
+
+  @override
+  String get feedbackGoesToTeam => 'Va directement à l\'équipe';
+
+  @override
+  String get notifFeedbackStatus => 'Mise à jour sur ton retour';
+
+  @override
+  String get notifFeedbackReply => 'Réponse à ton retour';
+
+  @override
+  String get adminTicketsHeader => 'Signalements et demandes';
+
+  @override
+  String get adminGeneralChat => 'Discussion générale';
+
+  @override
+  String get adminTicketReplyHint => 'Répondre à propos de ce ticket…';
+
+  @override
+  String get adminNoTicketsForUser => 'Aucun ticket de cet utilisateur';
 }

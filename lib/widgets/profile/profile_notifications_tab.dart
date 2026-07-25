@@ -163,6 +163,8 @@ class _NotificationTile extends StatelessWidget {
     'friend_request': Icons.person_add_rounded,
     'friend_accepted': Icons.people_rounded,
     'message_received': Icons.chat_bubble_rounded,
+    'feedback_status': Icons.campaign_rounded,
+    'feedback_reply': Icons.forum_rounded,
   };
 
   static const Map<String, Color> _colors = {
@@ -173,6 +175,8 @@ class _NotificationTile extends StatelessWidget {
     'friend_request': Color(0xFF3b82f6),
     'friend_accepted': Color(0xFF3b82f6),
     'message_received': Color(0xFF8b5cf6),
+    'feedback_status': Color(0xFFfbbf24),
+    'feedback_reply': Color(0xFF67e404),
   };
 
   String _title(AppLocalizations l) {
@@ -185,6 +189,8 @@ class _NotificationTile extends StatelessWidget {
       case 'friend_request':    return l.notifFriendRequest(a);
       case 'friend_accepted':   return l.notifFriendAccepted(a);
       case 'message_received':  return l.notifMessageReceived(a);
+      case 'feedback_status':   return l.notifFeedbackStatus;
+      case 'feedback_reply':    return l.notifFeedbackReply;
       default:                  return notification.type;
     }
   }
@@ -199,6 +205,8 @@ class _NotificationTile extends StatelessWidget {
       case 'pack_rejected':
         return '"$name"';
       case 'message_received':
+      case 'feedback_status':
+      case 'feedback_reply':
         return name;
       default:
         return null;

@@ -2531,4 +2531,64 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get lookupFailed => '查询失败。';
+
+  @override
+  String get myFeedbackTitle => '我的反馈';
+
+  @override
+  String get myFeedbackEmpty => '你还没有向我们发送任何内容。';
+
+  @override
+  String get myFeedbackOpenList => '我的反馈';
+
+  @override
+  String get fbStatusOpen => '待处理';
+
+  @override
+  String get fbStatusPlanned => '已计划';
+
+  @override
+  String get fbStatusInProgress => '进行中';
+
+  @override
+  String get fbStatusImplemented => '已完成';
+
+  @override
+  String get fbStatusNotPlanned => '不计划';
+
+  @override
+  String get fbStatusDuplicate => '重复';
+
+  @override
+  String get fbNoReplies => '还没有回复，我们会在这里通知你。';
+
+  @override
+  String get fbReplyHint => '补充一些内容…';
+
+  @override
+  String get fbFromTeam => 'MCCompanion';
+
+  @override
+  String get fbFromYou => '你';
+
+  @override
+  String get feedbackGoesToTeam => '直接发送给团队';
+
+  @override
+  String get notifFeedbackStatus => '你的反馈有更新';
+
+  @override
+  String get notifFeedbackReply => '你的反馈有回复';
+
+  @override
+  String get adminTicketsHeader => '报告与需求';
+
+  @override
+  String get adminGeneralChat => '常规聊天';
+
+  @override
+  String get adminTicketReplyHint => '回复此工单…';
+
+  @override
+  String get adminNoTicketsForUser => '该用户没有工单';
 }

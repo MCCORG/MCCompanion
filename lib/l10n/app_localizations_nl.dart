@@ -2602,4 +2602,64 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get lookupFailed => 'Zoeken mislukt.';
+
+  @override
+  String get myFeedbackTitle => 'Mijn feedback';
+
+  @override
+  String get myFeedbackEmpty => 'Je hebt ons nog niets gestuurd.';
+
+  @override
+  String get myFeedbackOpenList => 'Mijn feedback';
+
+  @override
+  String get fbStatusOpen => 'Open';
+
+  @override
+  String get fbStatusPlanned => 'Gepland';
+
+  @override
+  String get fbStatusInProgress => 'Mee bezig';
+
+  @override
+  String get fbStatusImplemented => 'Klaar';
+
+  @override
+  String get fbStatusNotPlanned => 'Niet gepland';
+
+  @override
+  String get fbStatusDuplicate => 'Dubbel';
+
+  @override
+  String get fbNoReplies => 'Nog geen antwoord. We laten het hier weten.';
+
+  @override
+  String get fbReplyHint => 'Voeg iets toe aan deze melding…';
+
+  @override
+  String get fbFromTeam => 'MCCompanion';
+
+  @override
+  String get fbFromYou => 'Jij';
+
+  @override
+  String get feedbackGoesToTeam => 'Gaat rechtstreeks naar het team';
+
+  @override
+  String get notifFeedbackStatus => 'Update over je feedback';
+
+  @override
+  String get notifFeedbackReply => 'Antwoord op je feedback';
+
+  @override
+  String get adminTicketsHeader => 'Meldingen en verzoeken';
+
+  @override
+  String get adminGeneralChat => 'Algemene chat';
+
+  @override
+  String get adminTicketReplyHint => 'Antwoord over dit ticket…';
+
+  @override
+  String get adminNoTicketsForUser => 'Geen tickets van deze gebruiker';
 }

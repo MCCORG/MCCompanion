@@ -2587,4 +2587,64 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get lookupFailed => 'खोज विफल।';
+
+  @override
+  String get myFeedbackTitle => 'मेरा फ़ीडबैक';
+
+  @override
+  String get myFeedbackEmpty => 'आपने अभी तक कुछ नहीं भेजा है।';
+
+  @override
+  String get myFeedbackOpenList => 'मेरा फ़ीडबैक';
+
+  @override
+  String get fbStatusOpen => 'खुला';
+
+  @override
+  String get fbStatusPlanned => 'योजना में';
+
+  @override
+  String get fbStatusInProgress => 'काम चल रहा है';
+
+  @override
+  String get fbStatusImplemented => 'पूरा';
+
+  @override
+  String get fbStatusNotPlanned => 'योजना नहीं';
+
+  @override
+  String get fbStatusDuplicate => 'डुप्लिकेट';
+
+  @override
+  String get fbNoReplies => 'अभी कोई जवाब नहीं। हम यहीं बताएंगे।';
+
+  @override
+  String get fbReplyHint => 'इस रिपोर्ट में कुछ जोड़ें…';
+
+  @override
+  String get fbFromTeam => 'MCCompanion';
+
+  @override
+  String get fbFromYou => 'आप';
+
+  @override
+  String get feedbackGoesToTeam => 'सीधे टीम तक जाता है';
+
+  @override
+  String get notifFeedbackStatus => 'आपके फ़ीडबैक पर अपडेट';
+
+  @override
+  String get notifFeedbackReply => 'आपके फ़ीडबैक का जवाब';
+
+  @override
+  String get adminTicketsHeader => 'रिपोर्ट और अनुरोध';
+
+  @override
+  String get adminGeneralChat => 'सामान्य चैट';
+
+  @override
+  String get adminTicketReplyHint => 'इस टिकट पर जवाब दें…';
+
+  @override
+  String get adminNoTicketsForUser => 'इस उपयोगकर्ता से कोई टिकट नहीं';
 }
