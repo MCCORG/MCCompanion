@@ -121,7 +121,7 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 720),
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
+                padding: EdgeInsets.fromLTRB(16, widget.embedded ? 12 : 0, 16, 10),
                 child: Row(
                   children: [
                     for (final closed in [false, true])
