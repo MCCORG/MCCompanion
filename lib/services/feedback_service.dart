@@ -101,6 +101,7 @@ class FeedbackService {
 
 class FeedbackTicket {
   final int id;
+  final String? uid;
   final String? username;
   final String type;
   final String title;
@@ -112,6 +113,7 @@ class FeedbackTicket {
 
   const FeedbackTicket({
     required this.id,
+    required this.uid,
     required this.username,
     required this.type,
     required this.title,
@@ -123,9 +125,12 @@ class FeedbackTicket {
   });
 
   bool get isBug => type == 'bug';
+  bool get isClosed =>
+      status == 'implemented' || status == 'not_planned' || status == 'duplicate';
 
   factory FeedbackTicket.fromJson(Map<String, dynamic> j) => FeedbackTicket(
         id: j['id'] as int,
+        uid: j['uid'] as String?,
         username: j['username'] as String?,
         type: j['type'] as String? ?? 'bug',
         title: j['title'] as String? ?? '',

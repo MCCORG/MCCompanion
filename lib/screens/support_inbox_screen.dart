@@ -22,15 +22,18 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
   bool _showClosed = false;
   bool _loading = true;
 
-  Map<String, List<FeedbackTicket>> get _byUser {
+  Map<String, List<FeedbackTicket>> get _byUid {
     final map = <String, List<FeedbackTicket>>{};
     for (final t in _tickets) {
-      final u = t.username;
-      if (u == null) continue;
-      (map[u] ??= []).add(t);
+      final key = t.uid ?? t.username;
+      if (key == null) continue;
+      (map[key] ??= []).add(t);
     }
     return map;
   }
+
+  List<FeedbackTicket> _ticketsFor(ConversationModel c) =>
+      _byUid[c.otherUid] ?? _byUid[c.username] ?? const [];
 
   @override
   void initState() {
@@ -44,7 +47,8 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
     if (!mounted) return;
     setState(() {
       _conversations = convs;
-      _tickets = tickets;
+      // Filter here too: an older API ignores ?state and returns everything.
+      _tickets = _showClosed ? tickets : tickets.where((t) => !t.isClosed).toList();
       _loading = false;
     });
   }
@@ -167,9 +171,12 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
                       child: ConstrainedBox(
                         constraints: const BoxConstraints(maxWidth: 720),
                         child: ListView.separated(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 8,
+                          padding: EdgeInsets.fromLTRB(
+                            16,
+                            8,
+                            16,
+                            8 + MediaQuery.of(context).padding.bottom +
+                                (widget.embedded ? 72 : 0),
                           ),
                           itemCount: _conversations.length,
                           separatorBuilder: (_, __) =>
@@ -178,11 +185,12 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
                             final c = _conversations[i];
                             return _SupportConvTile(
                               conv: c,
-                              tickets: _byUser[c.username] ?? const [],
+                              tickets: _ticketsFor(c),
                               onTap: () async {
                                 await Navigator.of(context).push(
                                   MaterialPageRoute(
                                     builder: (_) => SupportChatScreen(
+                                      uid: c.otherUid,
                                       username: c.username,
                                       displayName: c.displayName ?? c.username,
                                     ),
@@ -354,7 +362,9 @@ class _SupportConvTile extends StatelessWidget {
 class SupportChatScreen extends StatefulWidget {
   final String username;
   final String displayName;
+  final String? uid;
   const SupportChatScreen({
+    this.uid,
     super.key,
     required this.username,
     required this.displayName,
@@ -410,7 +420,12 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
       _messages = result.messages;
       _sentBy = result.sentBy;
       _supportUid = result.supportUid ?? _supportUid;
-      _tickets = all.where((t) => t.username == widget.username).toList();
+      _tickets = all
+          .where((t) => widget.uid != null && t.uid != null
+              ? t.uid == widget.uid
+              : t.username == widget.username)
+          .where((t) => !t.isClosed)
+          .toList();
       _loading = false;
     });
   }
