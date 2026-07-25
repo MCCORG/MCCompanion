@@ -2638,4 +2638,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get adminNoTicketsForUser => 'No tickets from this user';
+
+  @override
+  String get hideConversation => 'Hide';
+
+  @override
+  String get conversationHidden => 'Conversation hidden';
+
+  @override
+  String get undo => 'Undo';
 }

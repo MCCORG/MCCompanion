@@ -2658,4 +2658,13 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get adminNoTicketsForUser => 'Hakuna tiketi kutoka kwa mtumiaji huyu';
+
+  @override
+  String get hideConversation => 'Ficha';
+
+  @override
+  String get conversationHidden => 'Mazungumzo yamefichwa';
+
+  @override
+  String get undo => 'Tendua';
 }

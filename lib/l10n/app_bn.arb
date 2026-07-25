@@ -1966,5 +1966,8 @@
   "adminTicketsHeader": "রিপোর্ট ও অনুরোধ",
   "adminGeneralChat": "সাধারণ চ্যাট",
   "adminTicketReplyHint": "এই টিকিট নিয়ে উত্তর দিন…",
-  "adminNoTicketsForUser": "এই ব্যবহারকারীর কোনও টিকিট নেই"
+  "adminNoTicketsForUser": "এই ব্যবহারকারীর কোনও টিকিট নেই",
+  "hideConversation": "লুকান",
+  "conversationHidden": "কথোপকথন লুকানো হয়েছে",
+  "undo": "আগের অবস্থায়"
 }

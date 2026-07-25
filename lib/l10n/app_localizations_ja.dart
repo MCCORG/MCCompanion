@@ -2598,4 +2598,13 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get adminNoTicketsForUser => 'このユーザーのチケットはありません';
+
+  @override
+  String get hideConversation => '非表示';
+
+  @override
+  String get conversationHidden => '会話を非表示にしました';
+
+  @override
+  String get undo => '元に戻す';
 }

@@ -1966,5 +1966,8 @@
   "adminTicketsHeader": "Relatórios e pedidos",
   "adminGeneralChat": "Conversa geral",
   "adminTicketReplyHint": "Responder sobre este ticket…",
-  "adminNoTicketsForUser": "Sem tickets deste utilizador"
+  "adminNoTicketsForUser": "Sem tickets deste utilizador",
+  "hideConversation": "Ocultar",
+  "conversationHidden": "Conversa ocultada",
+  "undo": "Anular"
 }

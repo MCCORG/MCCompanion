@@ -2650,4 +2650,13 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get adminNoTicketsForUser => 'এই ব্যবহারকারীর কোনও টিকিট নেই';
+
+  @override
+  String get hideConversation => 'লুকান';
+
+  @override
+  String get conversationHidden => 'কথোপকথন লুকানো হয়েছে';
+
+  @override
+  String get undo => 'আগের অবস্থায়';
 }

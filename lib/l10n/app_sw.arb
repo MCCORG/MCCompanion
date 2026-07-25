@@ -1963,5 +1963,8 @@
   "adminTicketsHeader": "Ripoti na maombi",
   "adminGeneralChat": "Gumzo la jumla",
   "adminTicketReplyHint": "Jibu kuhusu tiketi hii…",
-  "adminNoTicketsForUser": "Hakuna tiketi kutoka kwa mtumiaji huyu"
+  "adminNoTicketsForUser": "Hakuna tiketi kutoka kwa mtumiaji huyu",
+  "hideConversation": "Ficha",
+  "conversationHidden": "Mazungumzo yamefichwa",
+  "undo": "Tendua"
 }

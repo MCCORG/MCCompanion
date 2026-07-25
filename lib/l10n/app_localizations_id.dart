@@ -2648,4 +2648,13 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get adminNoTicketsForUser => 'Tidak ada tiket dari pengguna ini';
+
+  @override
+  String get hideConversation => 'Sembunyikan';
+
+  @override
+  String get conversationHidden => 'Obrolan disembunyikan';
+
+  @override
+  String get undo => 'Urungkan';
 }

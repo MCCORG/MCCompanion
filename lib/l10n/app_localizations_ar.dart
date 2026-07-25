@@ -2629,4 +2629,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get adminNoTicketsForUser => 'لا توجد تذاكر من هذا المستخدم';
+
+  @override
+  String get hideConversation => 'إخفاء';
+
+  @override
+  String get conversationHidden => 'تم إخفاء المحادثة';
+
+  @override
+  String get undo => 'تراجع';
 }

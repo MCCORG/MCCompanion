@@ -1963,5 +1963,8 @@
   "adminTicketsHeader": "Laporan dan permintaan",
   "adminGeneralChat": "Obrolan umum",
   "adminTicketReplyHint": "Balas tentang tiket ini…",
-  "adminNoTicketsForUser": "Tidak ada tiket dari pengguna ini"
+  "adminNoTicketsForUser": "Tidak ada tiket dari pengguna ini",
+  "hideConversation": "Sembunyikan",
+  "conversationHidden": "Obrolan disembunyikan",
+  "undo": "Urungkan"
 }

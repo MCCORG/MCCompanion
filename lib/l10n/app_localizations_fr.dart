@@ -2653,4 +2653,13 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get adminNoTicketsForUser => 'Aucun ticket de cet utilisateur';
+
+  @override
+  String get hideConversation => 'Masquer';
+
+  @override
+  String get conversationHidden => 'Conversation masquée';
+
+  @override
+  String get undo => 'Annuler';
 }

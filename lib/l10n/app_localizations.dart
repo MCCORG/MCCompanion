@@ -4937,6 +4937,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No tickets from this user'**
   String get adminNoTicketsForUser;
+
+  /// No description provided for @hideConversation.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide'**
+  String get hideConversation;
+
+  /// No description provided for @conversationHidden.
+  ///
+  /// In en, this message translates to:
+  /// **'Conversation hidden'**
+  String get conversationHidden;
+
+  /// No description provided for @undo.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get undo;
 }
 
 class _AppLocalizationsDelegate

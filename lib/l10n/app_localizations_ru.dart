@@ -2647,4 +2647,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get adminNoTicketsForUser => 'У этого пользователя нет обращений';
+
+  @override
+  String get hideConversation => 'Скрыть';
+
+  @override
+  String get conversationHidden => 'Диалог скрыт';
+
+  @override
+  String get undo => 'Отменить';
 }

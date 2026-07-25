@@ -1966,5 +1966,8 @@
   "adminTicketsHeader": "Signalements et demandes",
   "adminGeneralChat": "Discussion générale",
   "adminTicketReplyHint": "Répondre à propos de ce ticket…",
-  "adminNoTicketsForUser": "Aucun ticket de cet utilisateur"
+  "adminNoTicketsForUser": "Aucun ticket de cet utilisateur",
+  "hideConversation": "Masquer",
+  "conversationHidden": "Conversation masquée",
+  "undo": "Annuler"
 }

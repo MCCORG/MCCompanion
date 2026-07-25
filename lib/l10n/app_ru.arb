@@ -1966,5 +1966,8 @@
   "adminTicketsHeader": "Сообщения и запросы",
   "adminGeneralChat": "Общий чат",
   "adminTicketReplyHint": "Ответить по этому обращению…",
-  "adminNoTicketsForUser": "У этого пользователя нет обращений"
+  "adminNoTicketsForUser": "У этого пользователя нет обращений",
+  "hideConversation": "Скрыть",
+  "conversationHidden": "Диалог скрыт",
+  "undo": "Отменить"
 }

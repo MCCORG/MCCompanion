@@ -2662,4 +2662,13 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get adminNoTicketsForUser => 'Geen tickets van deze gebruiker';
+
+  @override
+  String get hideConversation => 'Verbergen';
+
+  @override
+  String get conversationHidden => 'Gesprek verborgen';
+
+  @override
+  String get undo => 'Ongedaan maken';
 }

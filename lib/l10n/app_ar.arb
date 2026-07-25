@@ -1966,5 +1966,8 @@
   "adminTicketsHeader": "البلاغات والطلبات",
   "adminGeneralChat": "محادثة عامة",
   "adminTicketReplyHint": "رد بخصوص هذه التذكرة…",
-  "adminNoTicketsForUser": "لا توجد تذاكر من هذا المستخدم"
+  "adminNoTicketsForUser": "لا توجد تذاكر من هذا المستخدم",
+  "hideConversation": "إخفاء",
+  "conversationHidden": "تم إخفاء المحادثة",
+  "undo": "تراجع"
 }

@@ -1966,5 +1966,8 @@
   "adminTicketsHeader": "Bildirimler ve istekler",
   "adminGeneralChat": "Genel sohbet",
   "adminTicketReplyHint": "Bu bilet hakkında yanıtla…",
-  "adminNoTicketsForUser": "Bu kullanıcıdan bilet yok"
+  "adminNoTicketsForUser": "Bu kullanıcıdan bilet yok",
+  "hideConversation": "Gizle",
+  "conversationHidden": "Sohbet gizlendi",
+  "undo": "Geri al"
 }

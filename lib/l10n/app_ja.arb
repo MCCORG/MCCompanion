@@ -1966,5 +1966,8 @@
   "adminTicketsHeader": "報告とリクエスト",
   "adminGeneralChat": "一般チャット",
   "adminTicketReplyHint": "このチケットについて返信…",
-  "adminNoTicketsForUser": "このユーザーのチケットはありません"
+  "adminNoTicketsForUser": "このユーザーのチケットはありません",
+  "hideConversation": "非表示",
+  "conversationHidden": "会話を非表示にしました",
+  "undo": "元に戻す"
 }

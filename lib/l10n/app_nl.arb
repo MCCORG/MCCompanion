@@ -1281,5 +1281,8 @@
   "adminTicketsHeader": "Meldingen en verzoeken",
   "adminGeneralChat": "Algemene chat",
   "adminTicketReplyHint": "Antwoord over dit ticket…",
-  "adminNoTicketsForUser": "Geen tickets van deze gebruiker"
+  "adminNoTicketsForUser": "Geen tickets van deze gebruiker",
+  "hideConversation": "Verbergen",
+  "conversationHidden": "Gesprek verborgen",
+  "undo": "Ongedaan maken"
 }

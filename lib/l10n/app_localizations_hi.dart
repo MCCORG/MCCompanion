@@ -2647,4 +2647,13 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get adminNoTicketsForUser => 'इस उपयोगकर्ता से कोई टिकट नहीं';
+
+  @override
+  String get hideConversation => 'छिपाएं';
+
+  @override
+  String get conversationHidden => 'बातचीत छिपाई गई';
+
+  @override
+  String get undo => 'पहले जैसा करें';
 }

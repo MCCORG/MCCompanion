@@ -1966,5 +1966,8 @@
   "adminTicketsHeader": "报告与需求",
   "adminGeneralChat": "常规聊天",
   "adminTicketReplyHint": "回复此工单…",
-  "adminNoTicketsForUser": "该用户没有工单"
+  "adminNoTicketsForUser": "该用户没有工单",
+  "hideConversation": "隐藏",
+  "conversationHidden": "对话已隐藏",
+  "undo": "撤销"
 }

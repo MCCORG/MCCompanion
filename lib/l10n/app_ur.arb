@@ -1963,5 +1963,8 @@
   "adminTicketsHeader": "رپورٹس اور درخواستیں",
   "adminGeneralChat": "عام چیٹ",
   "adminTicketReplyHint": "اس ٹکٹ کے بارے میں جواب دیں…",
-  "adminNoTicketsForUser": "اس صارف کا کوئی ٹکٹ نہیں"
+  "adminNoTicketsForUser": "اس صارف کا کوئی ٹکٹ نہیں",
+  "hideConversation": "چھپائیں",
+  "conversationHidden": "گفتگو چھپا دی گئی",
+  "undo": "واپس"
 }

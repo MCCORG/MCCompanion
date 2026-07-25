@@ -2654,4 +2654,13 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get adminNoTicketsForUser => 'Keine Tickets von diesem Nutzer';
+
+  @override
+  String get hideConversation => 'Ausblenden';
+
+  @override
+  String get conversationHidden => 'Unterhaltung ausgeblendet';
+
+  @override
+  String get undo => 'Rückgängig';
 }

@@ -2643,4 +2643,13 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get adminNoTicketsForUser => 'اس صارف کا کوئی ٹکٹ نہیں';
+
+  @override
+  String get hideConversation => 'چھپائیں';
+
+  @override
+  String get conversationHidden => 'گفتگو چھپا دی گئی';
+
+  @override
+  String get undo => 'واپس';
 }

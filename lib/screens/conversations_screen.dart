@@ -48,6 +48,64 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
     });
   }
 
+  Future<void> _hide(ConversationModel conv) async {
+    final l = AppLocalizations.of(context)!;
+    final messenger = ScaffoldMessenger.of(context);
+    setState(() => _conversations.removeWhere((c) => c.otherUid == conv.otherUid));
+
+    final ok = await MessageService.hideConversation(conv.username);
+    if (!mounted) return;
+    if (!ok) {
+      _load();
+      return;
+    }
+    messenger.hideCurrentSnackBar();
+    messenger.showSnackBar(
+      SnackBar(
+        content: SizedBox(
+          height: 22,
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  l.conversationHidden,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontSize: 13, color: AppTheme.textPrimary),
+                ),
+              ),
+              GestureDetector(
+                onTap: () async {
+                  messenger.hideCurrentSnackBar();
+                  await MessageService.unhideConversation(conv.username);
+                  _load();
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 12),
+                  child: Text(
+                    l.undo,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w700,
+                      color: AppTheme.accent,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        backgroundColor: AppTheme.surfaceRaisedSolid,
+        behavior: SnackBarBehavior.floating,
+        elevation: 4,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        duration: const Duration(seconds: 4),
+      ),
+    );
+  }
+
   Future<void> _openChat(ConversationModel conv) async {
     final friend = FriendModel(
       firebaseUid: conv.otherUid,
@@ -121,7 +179,25 @@ class _ConversationsScreenState extends State<ConversationsScreen> {
             separatorBuilder: (_, __) => const SizedBox(height: 8),
             itemBuilder: (_, i) {
               final conv = _conversations[i];
-              return _ConvTile(conv: conv, onTap: () => _openChat(conv));
+              return Dismissible(
+                key: ValueKey(conv.otherUid),
+                direction: DismissDirection.endToStart,
+                background: Container(
+                  alignment: Alignment.centerRight,
+                  padding: const EdgeInsets.only(right: 20),
+                  decoration: BoxDecoration(
+                    color: AppTheme.surfaceRaised,
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: Icon(
+                    Icons.visibility_off_rounded,
+                    color: AppTheme.textSecondary,
+                    size: 20,
+                  ),
+                ),
+                onDismissed: (_) => _hide(conv),
+                child: _ConvTile(conv: conv, onTap: () => _openChat(conv)),
+              );
             },
           ),
         ),

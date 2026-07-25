@@ -1966,5 +1966,8 @@
   "adminTicketsHeader": "Meldungen und Wünsche",
   "adminGeneralChat": "Allgemeiner Chat",
   "adminTicketReplyHint": "Antwort zu diesem Ticket…",
-  "adminNoTicketsForUser": "Keine Tickets von diesem Nutzer"
+  "adminNoTicketsForUser": "Keine Tickets von diesem Nutzer",
+  "hideConversation": "Ausblenden",
+  "conversationHidden": "Unterhaltung ausgeblendet",
+  "undo": "Rückgängig"
 }

@@ -2591,4 +2591,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get adminNoTicketsForUser => '该用户没有工单';
+
+  @override
+  String get hideConversation => '隐藏';
+
+  @override
+  String get conversationHidden => '对话已隐藏';
+
+  @override
+  String get undo => '撤销';
 }

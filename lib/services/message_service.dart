@@ -161,6 +161,32 @@ class MessageService {
     }
   }
 
+  static Future<bool> hideConversation(String username) async {
+    try {
+      final resp = await http.post(
+        Uri.parse('$_base/api/messages/$username/hide'),
+        headers: await ApiClientBase.headers(),
+      );
+      return resp.statusCode == 200;
+    } catch (e) {
+      debugPrint('[MessageService.hideConversation] $e');
+      return false;
+    }
+  }
+
+  static Future<bool> unhideConversation(String username) async {
+    try {
+      final resp = await http.delete(
+        Uri.parse('$_base/api/messages/$username/hide'),
+        headers: await ApiClientBase.headers(),
+      );
+      return resp.statusCode == 200;
+    } catch (e) {
+      debugPrint('[MessageService.unhideConversation] $e');
+      return false;
+    }
+  }
+
   static Future<void> markRead(String username) async {
     try {
       await http.patch(

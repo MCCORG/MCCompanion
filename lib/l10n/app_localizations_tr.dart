@@ -2646,4 +2646,13 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get adminNoTicketsForUser => 'Bu kullanıcıdan bilet yok';
+
+  @override
+  String get hideConversation => 'Gizle';
+
+  @override
+  String get conversationHidden => 'Sohbet gizlendi';
+
+  @override
+  String get undo => 'Geri al';
 }

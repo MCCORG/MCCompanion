@@ -2808,5 +2808,8 @@
   "adminTicketsHeader": "Reports and requests",
   "adminGeneralChat": "General chat",
   "adminTicketReplyHint": "Reply about this ticket…",
-  "adminNoTicketsForUser": "No tickets from this user"
+  "adminNoTicketsForUser": "No tickets from this user",
+  "hideConversation": "Hide",
+  "conversationHidden": "Conversation hidden",
+  "undo": "Undo"
 }
