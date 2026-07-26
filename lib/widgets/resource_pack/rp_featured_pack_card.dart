@@ -274,7 +274,12 @@ class _PackDetailSheet extends StatelessWidget {
             Expanded(
               child: ListView(
                 controller: scrollCtrl,
-                padding: const EdgeInsets.fromLTRB(20, 16, 20, 32),
+                padding: EdgeInsets.fromLTRB(
+                  20,
+                  16,
+                  20,
+                  32 + MediaQuery.of(ctx).padding.bottom,
+                ),
                 children: [
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,

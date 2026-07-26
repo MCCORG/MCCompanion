@@ -1,4 +1,7 @@
+import 'dart:ui' show ImageFilter;
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../l10n/app_localizations.dart';
 import '../../services/navigation_controller.dart';
@@ -53,27 +56,20 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.transparent,
-      child: SafeArea(
-        top: false,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-            decoration: BoxDecoration(
-              color: AppTheme.surfaceRaised,
-              borderRadius: BorderRadius.circular(28),
-              border: Border.all(color: AppTheme.borderGray, width: 0.8),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.45),
-                  blurRadius: 28,
-                  spreadRadius: 0,
-                  offset: const Offset(0, 6),
-                ),
-              ],
+    return ClipRect(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
+        child: Container(
+          decoration: BoxDecoration(
+            color: AppTheme.surfaceRaised.withValues(alpha: 0.88),
+            border: Border(
+              top: BorderSide(color: AppTheme.borderGray, width: 0.5),
             ),
+          ),
+          child: SafeArea(
+            top: false,
+            child: Container(
+            padding: const EdgeInsets.fromLTRB(4, 6, 4, 0),
             child: Builder(
               builder: (context) {
                 final l = AppLocalizations.of(context)!;
@@ -93,7 +89,9 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
                         isActive: navLeftActive,
                         onTap: onNavLeftTap,
                       ),
-                    _NavFab(
+                    _NavItem(
+                      icon: FontAwesomeIcons.play,
+                      label: l.featureLabelConnector,
                       isActive: activeItem == 'connector',
                       onTap: onConnectorTap,
                     ),
@@ -113,6 +111,7 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
                   ],
                 );
               },
+            ),
             ),
           ),
         ),
@@ -139,102 +138,42 @@ class _NavItem extends StatelessWidget {
     final color = isActive ? AppTheme.brand : AppTheme.textMuted;
 
     return Expanded(
-      child: GestureDetector(
-        onTap: onTap,
-        behavior: HitTestBehavior.opaque,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 10,
-              child: Align(
-                alignment: Alignment.center,
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 220),
-                  curve: Curves.easeOutCubic,
-                  width: isActive ? 18 : 0,
-                  height: 2,
-                  decoration: BoxDecoration(
-                    color: AppTheme.brand,
-                    borderRadius: BorderRadius.circular(2),
+      child: Semantics(
+        button: true,
+        selected: isActive,
+        child: GestureDetector(
+          onTap: onTap == null
+              ? null
+              : () {
+                  HapticFeedback.selectionClick();
+                  onTap!();
+                },
+          behavior: HitTestBehavior.opaque,
+          child: Align(
+            alignment: Alignment.center,
+            heightFactor: 1.0,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                FaIcon(icon, size: 19, color: color),
+                const SizedBox(height: 5),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 2),
+                  child: Text(
+                    label,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: color,
+                      fontSize: 10,
+                      height: 1.1,
+                      fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
+                      letterSpacing: -0.1,
+                    ),
                   ),
                 ),
-              ),
-            ),
-            FaIcon(icon, size: 18, color: color),
-            const SizedBox(height: 5),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4),
-              child: Text(
-                label,
-                style: TextStyle(
-                  color: color,
-                  fontSize: 10,
-                  fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
-                  letterSpacing: -0.1,
-                ),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _NavFab extends StatelessWidget {
-  final bool isActive;
-  final VoidCallback? onTap;
-
-  const _NavFab({required this.isActive, this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: GestureDetector(
-        onTap: onTap,
-        behavior: HitTestBehavior.opaque,
-        child: Align(
-          alignment: Alignment.center,
-          heightFactor: 1.0,
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 220),
-            curve: Curves.easeOutCubic,
-            width: 50,
-            height: 50,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: isActive ? AppTheme.brand : AppTheme.surfaceRaisedSolid,
-              border: Border.all(
-                color: isActive ? AppTheme.brand : AppTheme.borderGray,
-                width: isActive ? 1.5 : 1.0,
-              ),
-              boxShadow: [
-                if (isActive)
-                  BoxShadow(
-                    color: AppTheme.brand.withValues(alpha: 0.35),
-                    blurRadius: 14,
-                    spreadRadius: 1,
-                    offset: const Offset(0, 3),
-                  )
-                else
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.30),
-                    blurRadius: 10,
-                    offset: const Offset(0, 3),
-                  ),
               ],
-            ),
-            child: Center(
-              child: FaIcon(
-                FontAwesomeIcons.play,
-                size: 18,
-                color: isActive ? Colors.white : AppTheme.textPrimary,
-              ),
             ),
           ),
         ),

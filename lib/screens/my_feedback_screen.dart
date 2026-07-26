@@ -65,21 +65,21 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
   }
 
   String _statusLabel(AppLocalizations l, String status) => switch (status) {
-        'planned' => l.fbStatusPlanned,
-        'in_progress' => l.fbStatusInProgress,
-        'implemented' => l.fbStatusImplemented,
-        'not_planned' => l.fbStatusNotPlanned,
-        'duplicate' => l.fbStatusDuplicate,
-        _ => l.fbStatusOpen,
-      };
+    'planned' => l.fbStatusPlanned,
+    'in_progress' => l.fbStatusInProgress,
+    'implemented' => l.fbStatusImplemented,
+    'not_planned' => l.fbStatusNotPlanned,
+    'duplicate' => l.fbStatusDuplicate,
+    _ => l.fbStatusOpen,
+  };
 
   Color _statusColor(String status) => switch (status) {
-        'planned' => const Color(0xFF60A5FA),
-        'in_progress' => const Color(0xFFFBBF24),
-        'implemented' => const Color(0xFF34D399),
-        'not_planned' || 'duplicate' => AppTheme.textMuted,
-        _ => AppTheme.accent,
-      };
+    'planned' => const Color(0xFF60A5FA),
+    'in_progress' => const Color(0xFFFBBF24),
+    'implemented' => const Color(0xFF34D399),
+    'not_planned' || 'duplicate' => AppTheme.textMuted,
+    _ => AppTheme.accent,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -101,26 +101,31 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
         body: _tickets == null
             ? Center(child: CircularProgressIndicator(color: AppTheme.accent))
             : _tickets!.isEmpty
-                ? Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(32),
-                      child: Text(
-                        l.myFeedbackEmpty,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: AppTheme.textMuted, fontSize: 14),
-                      ),
-                    ),
-                  )
-                : RefreshIndicator(
-                    color: AppTheme.accent,
-                    onRefresh: _load,
-                    child: ListView.separated(
-                      padding: const EdgeInsets.all(14),
-                      itemCount: _tickets!.length,
-                      separatorBuilder: (_, _) => const SizedBox(height: 10),
-                      itemBuilder: (_, i) => _ticketCard(l, _tickets![i]),
-                    ),
+            ? Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(32),
+                  child: Text(
+                    l.myFeedbackEmpty,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: AppTheme.textMuted, fontSize: 14),
                   ),
+                ),
+              )
+            : RefreshIndicator(
+                color: AppTheme.accent,
+                onRefresh: _load,
+                child: ListView.separated(
+                  padding: EdgeInsets.fromLTRB(
+                    14,
+                    14,
+                    14,
+                    14 + MediaQuery.of(context).padding.bottom,
+                  ),
+                  itemCount: _tickets!.length,
+                  separatorBuilder: (_, _) => const SizedBox(height: 10),
+                  itemBuilder: (_, i) => _ticketCard(l, _tickets![i]),
+                ),
+              ),
       ),
     );
   }
@@ -147,7 +152,10 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(t.isBug ? '🐛' : '💡', style: const TextStyle(fontSize: 15)),
+                  Text(
+                    t.isBug ? '🐛' : '💡',
+                    style: const TextStyle(fontSize: 15),
+                  ),
                   const SizedBox(width: 10),
                   Expanded(
                     child: Column(
@@ -163,11 +171,16 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
                         ),
                         const SizedBox(height: 3),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 7,
+                            vertical: 2,
+                          ),
                           decoration: BoxDecoration(
                             color: color.withValues(alpha: 0.12),
                             borderRadius: BorderRadius.circular(5),
-                            border: Border.all(color: color.withValues(alpha: 0.3)),
+                            border: Border.all(
+                              color: color.withValues(alpha: 0.3),
+                            ),
                           ),
                           child: Text(
                             _statusLabel(l, t.status),
@@ -182,7 +195,9 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
                     ),
                   ),
                   Icon(
-                    expanded ? Icons.expand_less_rounded : Icons.expand_more_rounded,
+                    expanded
+                        ? Icons.expand_less_rounded
+                        : Icons.expand_more_rounded,
                     size: 20,
                     color: AppTheme.textMuted,
                   ),
@@ -210,7 +225,11 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
         children: [
           Text(
             t.description,
-            style: TextStyle(fontSize: 13, color: AppTheme.textSecondary, height: 1.55),
+            style: TextStyle(
+              fontSize: 13,
+              color: AppTheme.textSecondary,
+              height: 1.55,
+            ),
           ),
           const SizedBox(height: 12),
           if (msgs == null)
@@ -220,7 +239,10 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
                 child: SizedBox(
                   width: 18,
                   height: 18,
-                  child: CircularProgressIndicator(strokeWidth: 2, color: AppTheme.accent),
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    color: AppTheme.accent,
+                  ),
                 ),
               ),
             )
@@ -242,10 +264,16 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
                   style: TextStyle(fontSize: 13, color: AppTheme.textPrimary),
                   decoration: InputDecoration(
                     hintText: l.fbReplyHint,
-                    hintStyle: TextStyle(fontSize: 13, color: AppTheme.textMuted),
+                    hintStyle: TextStyle(
+                      fontSize: 13,
+                      color: AppTheme.textMuted,
+                    ),
                     filled: true,
                     fillColor: AppTheme.background,
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 10,
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide(color: AppTheme.borderDim),
@@ -256,7 +284,9 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: AppTheme.accent.withValues(alpha: 0.5)),
+                      borderSide: BorderSide(
+                        color: AppTheme.accent.withValues(alpha: 0.5),
+                      ),
                     ),
                   ),
                 ),
@@ -268,9 +298,16 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
                     ? SizedBox(
                         width: 16,
                         height: 16,
-                        child: CircularProgressIndicator(strokeWidth: 2, color: AppTheme.accent),
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: AppTheme.accent,
+                        ),
                       )
-                    : Icon(Icons.send_rounded, size: 18, color: AppTheme.accent),
+                    : Icon(
+                        Icons.send_rounded,
+                        size: 18,
+                        color: AppTheme.accent,
+                      ),
               ),
             ],
           ),
@@ -302,7 +339,11 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
           children: [
             Text(
               m.body,
-              style: TextStyle(fontSize: 13, color: AppTheme.textPrimary, height: 1.45),
+              style: TextStyle(
+                fontSize: 13,
+                color: AppTheme.textPrimary,
+                height: 1.45,
+              ),
             ),
             const SizedBox(height: 3),
             Text(

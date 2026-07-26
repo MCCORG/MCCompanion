@@ -32,13 +32,13 @@ class _Comment {
   });
 
   factory _Comment.fromJson(Map<String, dynamic> j) => _Comment(
-        id: j['id'] as int,
-        username: j['username'] as String? ?? '',
-        avatarUrl: j['avatarUrl'] as String?,
-        content: j['content'] as String? ?? '',
-        createdAt: DateTime.parse(j['createdAt'] as String),
-        uid: j['uid'] as String? ?? '',
-      );
+    id: j['id'] as int,
+    username: j['username'] as String? ?? '',
+    avatarUrl: j['avatarUrl'] as String?,
+    content: j['content'] as String? ?? '',
+    createdAt: DateTime.parse(j['createdAt'] as String),
+    uid: j['uid'] as String? ?? '',
+  );
 }
 
 class SkinCommentsSection extends StatefulWidget {
@@ -78,14 +78,21 @@ class _SkinCommentsSectionState extends State<SkinCommentsSection> {
   Future<void> _load() async {
     try {
       final res = await http
-          .get(Uri.parse('${AppConstants.apiBase}/api/comments/skin/${widget.skinId}'))
+          .get(
+            Uri.parse(
+              '${AppConstants.apiBase}/api/comments/skin/${widget.skinId}',
+            ),
+          )
           .timeout(const Duration(seconds: 8));
       if (res.statusCode == 200 && mounted) {
         final body = jsonDecode(res.body) as Map<String, dynamic>;
         final list = (body['comments'] as List<dynamic>)
             .map((e) => _Comment.fromJson(e as Map<String, dynamic>))
             .toList();
-        setState(() { _comments = list; _loading = false; });
+        setState(() {
+          _comments = list;
+          _loading = false;
+        });
       } else {
         if (mounted) setState(() => _loading = false);
       }
@@ -101,7 +108,9 @@ class _SkinCommentsSectionState extends State<SkinCommentsSection> {
     try {
       final res = await http
           .post(
-            Uri.parse('${AppConstants.apiBase}/api/comments/skin/${widget.skinId}'),
+            Uri.parse(
+              '${AppConstants.apiBase}/api/comments/skin/${widget.skinId}',
+            ),
             headers: {
               'Authorization': 'Bearer ${widget.idToken}',
               'Content-Type': 'application/json',
@@ -111,7 +120,9 @@ class _SkinCommentsSectionState extends State<SkinCommentsSection> {
           .timeout(const Duration(seconds: 8));
       if (res.statusCode == 201 && mounted) {
         final body = jsonDecode(res.body) as Map<String, dynamic>;
-        final newComment = _Comment.fromJson(body['comment'] as Map<String, dynamic>);
+        final newComment = _Comment.fromJson(
+          body['comment'] as Map<String, dynamic>,
+        );
         _ctrl.clear();
         setState(() => _comments = [..._comments, newComment]);
       }
@@ -122,10 +133,12 @@ class _SkinCommentsSectionState extends State<SkinCommentsSection> {
 
   Future<void> _delete(int id) async {
     if (widget.idToken == null) return;
-    await http.delete(
-      Uri.parse('${AppConstants.apiBase}/api/comments/$id'),
-      headers: {'Authorization': 'Bearer ${widget.idToken}'},
-    ).timeout(const Duration(seconds: 8));
+    await http
+        .delete(
+          Uri.parse('${AppConstants.apiBase}/api/comments/$id'),
+          headers: {'Authorization': 'Bearer ${widget.idToken}'},
+        )
+        .timeout(const Duration(seconds: 8));
     if (mounted) setState(() => _comments.removeWhere((c) => c.id == id));
   }
 
@@ -186,7 +199,10 @@ class _SkinCommentsSectionState extends State<SkinCommentsSection> {
               child: SizedBox(
                 width: 18,
                 height: 18,
-                child: CircularProgressIndicator(strokeWidth: 2, color: AppTheme.accent),
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  color: AppTheme.accent,
+                ),
               ),
             ),
           )
@@ -199,12 +215,14 @@ class _SkinCommentsSectionState extends State<SkinCommentsSection> {
             ),
           )
         else
-          ..._comments.map((c) => _CommentTile(
-                comment: c,
-                isOwn: c.uid == widget.currentUid,
-                timeAgo: _timeAgo(c.createdAt, l),
-                onDelete: () => _delete(c.id),
-              )),
+          ..._comments.map(
+            (c) => _CommentTile(
+              comment: c,
+              isOwn: c.uid == widget.currentUid,
+              timeAgo: _timeAgo(c.createdAt, l),
+              onDelete: () => _delete(c.id),
+            ),
+          ),
         if (widget.idToken != null) ...[
           const SizedBox(height: 12),
           Row(
@@ -219,7 +237,10 @@ class _SkinCommentsSectionState extends State<SkinCommentsSection> {
                   style: TextStyle(color: AppTheme.textPrimary, fontSize: 13),
                   decoration: InputDecoration(
                     hintText: l.commentsPlaceholder,
-                    hintStyle: TextStyle(color: AppTheme.textMuted, fontSize: 13),
+                    hintStyle: TextStyle(
+                      color: AppTheme.textMuted,
+                      fontSize: 13,
+                    ),
                     counterText: '',
                     filled: true,
                     fillColor: AppTheme.surfaceRaised,
@@ -235,7 +256,10 @@ class _SkinCommentsSectionState extends State<SkinCommentsSection> {
                       borderRadius: BorderRadius.circular(12),
                       borderSide: BorderSide(color: AppTheme.accent),
                     ),
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 10,
+                    ),
                   ),
                 ),
               ),
@@ -248,15 +272,24 @@ class _SkinCommentsSectionState extends State<SkinCommentsSection> {
                   style: FilledButton.styleFrom(
                     backgroundColor: AppTheme.accent,
                     padding: EdgeInsets.zero,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                   child: _posting
                       ? const SizedBox(
                           width: 16,
                           height: 16,
-                          child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: Colors.white,
+                          ),
                         )
-                      : const Icon(Icons.send_rounded, size: 18, color: Colors.white),
+                      : const Icon(
+                          Icons.send_rounded,
+                          size: 18,
+                          color: Colors.white,
+                        ),
                 ),
               ),
             ],
@@ -282,7 +315,8 @@ class _CommentTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hasAvatar = comment.avatarUrl != null && comment.avatarUrl!.isNotEmpty;
+    final hasAvatar =
+        comment.avatarUrl != null && comment.avatarUrl!.isNotEmpty;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
@@ -301,8 +335,14 @@ class _CommentTile extends StatelessWidget {
                   ? Image.network(comment.avatarUrl!, fit: BoxFit.cover)
                   : Center(
                       child: Text(
-                        comment.username.isNotEmpty ? comment.username[0].toUpperCase() : '?',
-                        style: TextStyle(color: AppTheme.accent, fontSize: 13, fontWeight: FontWeight.w700),
+                        comment.username.isNotEmpty
+                            ? comment.username[0].toUpperCase()
+                            : '?',
+                        style: TextStyle(
+                          color: AppTheme.accent,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
             ),
@@ -316,20 +356,34 @@ class _CommentTile extends StatelessWidget {
                   children: [
                     Text(
                       comment.username,
-                      style: TextStyle(color: AppTheme.textPrimary, fontSize: 12, fontWeight: FontWeight.w600),
+                      style: TextStyle(
+                        color: AppTheme.textPrimary,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                     const SizedBox(width: 6),
-                    Text(timeAgo, style: TextStyle(color: AppTheme.textMuted, fontSize: 11)),
+                    Text(
+                      timeAgo,
+                      style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
+                    ),
                     const Spacer(),
                     if (isOwn)
                       GestureDetector(
                         onTap: onDelete,
-                        child: Icon(Icons.delete_outline_rounded, size: 16, color: AppTheme.textMuted),
+                        child: Icon(
+                          Icons.delete_outline_rounded,
+                          size: 16,
+                          color: AppTheme.textMuted,
+                        ),
                       ),
                   ],
                 ),
                 const SizedBox(height: 2),
-                Text(comment.content, style: TextStyle(color: AppTheme.textSecondary, fontSize: 13)),
+                Text(
+                  comment.content,
+                  style: TextStyle(color: AppTheme.textSecondary, fontSize: 13),
+                ),
               ],
             ),
           ),
@@ -339,9 +393,14 @@ class _CommentTile extends StatelessWidget {
   }
 }
 
-Future<void> shareTextureFile(BuildContext context, String url, String name) async {
+Future<void> shareTextureFile(
+  BuildContext context,
+  String url,
+  String name,
+) async {
   try {
-    final resp = await http.get(Uri.parse(url), headers: {'User-Agent': 'MCCompanionApp/1.0'})
+    final resp = await http
+        .get(Uri.parse(url), headers: {'User-Agent': 'MCCompanionApp/1.0'})
         .timeout(const Duration(seconds: 10));
     if (resp.statusCode != 200) return;
     final dir = await getTemporaryDirectory();
@@ -352,7 +411,12 @@ Future<void> shareTextureFile(BuildContext context, String url, String name) asy
       final dest = File('${saveDir.path}/$name.png');
       await file.copy(dest.path);
       if (context.mounted) {
-        AppToast.show(context, message: AppLocalizations.of(context)!.skinSavedToDocuments, icon: Icons.download_done_rounded, color: AppTheme.success);
+        AppToast.show(
+          context,
+          message: AppLocalizations.of(context)!.skinSavedToDocuments,
+          icon: Icons.download_done_rounded,
+          color: AppTheme.success,
+        );
       }
     } else {
       final size = MediaQuery.of(context).size;
@@ -392,7 +456,8 @@ class GallerySkinPreviewSheet extends StatefulWidget {
   });
 
   @override
-  State<GallerySkinPreviewSheet> createState() => _GallerySkinPreviewSheetState();
+  State<GallerySkinPreviewSheet> createState() =>
+      _GallerySkinPreviewSheetState();
 }
 
 class _GallerySkinPreviewSheetState extends State<GallerySkinPreviewSheet> {
@@ -409,22 +474,31 @@ class _GallerySkinPreviewSheetState extends State<GallerySkinPreviewSheet> {
 
   Future<void> _toggleLike() async {
     if (_liking || widget.idToken == null) return;
-    setState(() { _liking = true; });
+    setState(() {
+      _liking = true;
+    });
     try {
       final skinId = widget.skin['id'] ?? widget.skin['skin_id'];
       final resp = await http.post(
         Uri.parse('${AppConstants.apiBase}/api/skins/$skinId/like'),
-        headers: {'Authorization': 'Bearer ${widget.idToken}', 'Content-Type': 'application/json'},
+        headers: {
+          'Authorization': 'Bearer ${widget.idToken}',
+          'Content-Type': 'application/json',
+        },
       );
       if (resp.statusCode == 200) {
         final data = jsonDecode(resp.body) as Map<String, dynamic>;
         setState(() {
           _liked = data['liked'] as bool? ?? !_liked;
-          _likes = (data['likes'] as num?)?.toInt() ?? (_liked ? _likes + 1 : _likes - 1);
+          _likes =
+              (data['likes'] as num?)?.toInt() ??
+              (_liked ? _likes + 1 : _likes - 1);
         });
       }
     } finally {
-      setState(() { _liking = false; });
+      setState(() {
+        _liking = false;
+      });
     }
   }
 
@@ -432,9 +506,12 @@ class _GallerySkinPreviewSheetState extends State<GallerySkinPreviewSheet> {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
     final name = widget.skin['name'] as String? ?? '';
-    final url = (widget.skin['public_url'] ?? widget.skin['publicUrl']) as String? ?? '';
+    final url =
+        (widget.skin['public_url'] ?? widget.skin['publicUrl']) as String? ??
+        '';
     final creatorUsername = widget.skin['username'] as String?;
-    final creatorName = (widget.skin['display_name'] ?? widget.skin['username']) as String?;
+    final creatorName =
+        (widget.skin['display_name'] ?? widget.skin['username']) as String?;
 
     final skinId = (widget.skin['id'] ?? widget.skin['skin_id']) as String?;
 
@@ -444,136 +521,190 @@ class _GallerySkinPreviewSheetState extends State<GallerySkinPreviewSheet> {
       maxChildSize: 0.95,
       expand: false,
       builder: (context, scrollController) => Container(
-      decoration: BoxDecoration(
-        color: AppTheme.background,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
-        border: Border(top: BorderSide(color: AppTheme.borderGray)),
-      ),
-      child: SingleChildScrollView(
-        controller: scrollController,
-        padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
-        child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 36, height: 4,
-            margin: const EdgeInsets.only(bottom: 20),
-            decoration: BoxDecoration(color: AppTheme.borderLight, borderRadius: BorderRadius.circular(4)),
+        decoration: BoxDecoration(
+          color: AppTheme.background,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+          border: Border(top: BorderSide(color: AppTheme.borderGray)),
+        ),
+        child: SingleChildScrollView(
+          controller: scrollController,
+          padding: EdgeInsets.fromLTRB(
+            24,
+            16,
+            24,
+            32 + MediaQuery.of(context).padding.bottom,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Flexible(
-                child: Text(name, style: TextStyle(color: AppTheme.textPrimary, fontSize: 20, fontWeight: FontWeight.w700), textAlign: TextAlign.center),
+              Container(
+                width: 36,
+                height: 4,
+                margin: const EdgeInsets.only(bottom: 20),
+                decoration: BoxDecoration(
+                  color: AppTheme.borderLight,
+                  borderRadius: BorderRadius.circular(4),
+                ),
               ),
-              if (!widget.isOwn) ...[
-                const SizedBox(width: 12),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Flexible(
+                    child: Text(
+                      name,
+                      style: TextStyle(
+                        color: AppTheme.textPrimary,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  if (!widget.isOwn) ...[
+                    const SizedBox(width: 12),
+                    GestureDetector(
+                      onTap: _toggleLike,
+                      child: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 200),
+                        child: FaIcon(
+                          _liked
+                              ? FontAwesomeIcons.solidHeart
+                              : FontAwesomeIcons.heart,
+                          key: ValueKey(_liked),
+                          size: 22,
+                          color: _liked
+                              ? const Color(0xFFf87171)
+                              : AppTheme.textMuted,
+                        ),
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+              if (_likes > 0) ...[
+                const SizedBox(height: 4),
+                Text(
+                  l.skinLikesCount(_likes),
+                  style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
+                ),
+              ],
+              if (!widget.isOwn && creatorUsername != null) ...[
+                const SizedBox(height: 6),
                 GestureDetector(
-                  onTap: _toggleLike,
-                  child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 200),
-                    child: FaIcon(
-                      _liked ? FontAwesomeIcons.solidHeart : FontAwesomeIcons.heart,
-                      key: ValueKey(_liked),
-                      size: 22,
-                      color: _liked ? const Color(0xFFf87171) : AppTheme.textMuted,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) =>
+                          PublicProfileScreen(username: creatorUsername),
+                    ),
+                  ),
+                  child: Text(
+                    l.skinByCreator(creatorName ?? creatorUsername),
+                    style: TextStyle(
+                      color: AppTheme.accent,
+                      fontSize: 13,
+                      decoration: TextDecoration.underline,
+                      decorationColor: AppTheme.accent,
                     ),
                   ),
                 ),
               ],
-            ],
-          ),
-          if (_likes > 0) ...[
-            const SizedBox(height: 4),
-            Text(l.skinLikesCount(_likes), style: TextStyle(color: AppTheme.textMuted, fontSize: 12)),
-          ],
-          if (!widget.isOwn && creatorUsername != null) ...[
-            const SizedBox(height: 6),
-            GestureDetector(
-              onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => PublicProfileScreen(username: creatorUsername),
-              )),
-              child: Text(
-                l.skinByCreator(creatorName ?? creatorUsername),
-                style: TextStyle(color: AppTheme.accent, fontSize: 13, decoration: TextDecoration.underline, decorationColor: AppTheme.accent),
+              const SizedBox(height: 20),
+              SizedBox(
+                height: 220,
+                child: Center(
+                  child: url.isNotEmpty
+                      ? SkinBodyImage(textureUrl: url, height: 216)
+                      : const SizedBox(),
+                ),
               ),
-            ),
-          ],
-          const SizedBox(height: 20),
-          SizedBox(
-            height: 220,
-            child: Center(
-              child: url.isNotEmpty ? SkinBodyImage(textureUrl: url, height: 216) : const SizedBox(),
-            ),
-          ),
-          if (skinId != null) ...[
-            const SizedBox(height: 20),
-            const Divider(color: AppTheme.borderGray),
-            const SizedBox(height: 16),
-            SkinCommentsSection(
-              skinId: skinId,
-              idToken: widget.idToken,
-              currentUid: widget.currentUid,
-            ),
-          ],
-          const SizedBox(height: 24),
-          Row(
-            children: [
-              if (widget.onEdit != null) ...[
-                Expanded(
+              if (skinId != null) ...[
+                const SizedBox(height: 20),
+                const Divider(color: AppTheme.borderGray),
+                const SizedBox(height: 16),
+                SkinCommentsSection(
+                  skinId: skinId,
+                  idToken: widget.idToken,
+                  currentUid: widget.currentUid,
+                ),
+              ],
+              const SizedBox(height: 24),
+              Row(
+                children: [
+                  if (widget.onEdit != null) ...[
+                    Expanded(
+                      child: OutlinedButton.icon(
+                        onPressed: widget.onEdit,
+                        icon: const FaIcon(
+                          FontAwesomeIcons.penToSquare,
+                          size: 13,
+                        ),
+                        label: Text(l.skinsEdit),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: AppTheme.textSecondary,
+                          side: const BorderSide(color: AppTheme.borderGray),
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                          textStyle: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                  ],
+                  if (widget.onDownload != null)
+                    Expanded(
+                      child: FilledButton.icon(
+                        onPressed: widget.onDownload,
+                        icon: const FaIcon(FontAwesomeIcons.download, size: 13),
+                        label: Text(l.skinsDownload),
+                        style: FilledButton.styleFrom(
+                          backgroundColor: AppTheme.accent,
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                          textStyle: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+              if (widget.onDelete != null) ...[
+                const SizedBox(height: 10),
+                SizedBox(
+                  width: double.infinity,
                   child: OutlinedButton.icon(
-                    onPressed: widget.onEdit,
-                    icon: const FaIcon(FontAwesomeIcons.penToSquare, size: 13),
-                    label: Text(l.skinsEdit),
+                    onPressed: widget.onDelete,
+                    icon: const FaIcon(FontAwesomeIcons.trash, size: 13),
+                    label: Text(l.skinMenuDelete),
                     style: OutlinedButton.styleFrom(
-                      foregroundColor: AppTheme.textSecondary,
-                      side: const BorderSide(color: AppTheme.borderGray),
+                      foregroundColor: AppTheme.error,
+                      side: BorderSide(
+                        color: AppTheme.error.withValues(alpha: 0.4),
+                      ),
                       padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                      textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      textStyle: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),
-                const SizedBox(width: 10),
               ],
-              if (widget.onDownload != null)
-                Expanded(
-                  child: FilledButton.icon(
-                    onPressed: widget.onDownload,
-                    icon: const FaIcon(FontAwesomeIcons.download, size: 13),
-                    label: Text(l.skinsDownload),
-                    style: FilledButton.styleFrom(
-                      backgroundColor: AppTheme.accent,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                      textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                ),
             ],
           ),
-          if (widget.onDelete != null) ...[
-            const SizedBox(height: 10),
-            SizedBox(
-              width: double.infinity,
-              child: OutlinedButton.icon(
-                onPressed: widget.onDelete,
-                icon: const FaIcon(FontAwesomeIcons.trash, size: 13),
-                label: Text(l.skinMenuDelete),
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: AppTheme.error,
-                  side: BorderSide(color: AppTheme.error.withValues(alpha: 0.4)),
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                  textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-                ),
-              ),
-            ),
-          ],
-        ],
-      ),
-      ),
+        ),
       ),
     );
   }
@@ -610,7 +741,12 @@ class SkinDetailSheet extends StatelessWidget {
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
         border: Border(top: BorderSide(color: AppTheme.borderGray)),
       ),
-      padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
+      padding: EdgeInsets.fromLTRB(
+        24,
+        16,
+        24,
+        32 + MediaQuery.of(context).padding.bottom,
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -653,7 +789,9 @@ class SkinDetailSheet extends StatelessWidget {
                 children: [
                   Expanded(
                     child: FilledButton.icon(
-                      onPressed: _downloadUrl != null ? () => _download(context) : null,
+                      onPressed: _downloadUrl != null
+                          ? () => _download(context)
+                          : null,
                       icon: const FaIcon(FontAwesomeIcons.download, size: 13),
                       label: Text(l.skinsDownload),
                       style: FilledButton.styleFrom(
@@ -728,12 +866,18 @@ class SavedSkinMenuSheet extends StatelessWidget {
         borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
         border: Border(top: BorderSide(color: AppTheme.borderGray)),
       ),
-      padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
+      padding: EdgeInsets.fromLTRB(
+        24,
+        16,
+        24,
+        32 + MediaQuery.of(context).padding.bottom,
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            width: 36, height: 4,
+            width: 36,
+            height: 4,
             margin: const EdgeInsets.only(bottom: 16),
             decoration: BoxDecoration(
               color: AppTheme.borderLight,
@@ -742,7 +886,11 @@ class SavedSkinMenuSheet extends StatelessWidget {
           ),
           Text(
             skin.name,
-            style: TextStyle(color: AppTheme.textPrimary, fontSize: 16, fontWeight: FontWeight.w700),
+            style: TextStyle(
+              color: AppTheme.textPrimary,
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+            ),
           ),
           const SizedBox(height: 20),
           SkinMenuTile(
@@ -754,7 +902,9 @@ class SavedSkinMenuSheet extends StatelessWidget {
           if (onUpload != null)
             SkinMenuTile(
               icon: FontAwesomeIcons.cloudArrowUp,
-              label: skin.uploadedUrl != null ? AppLocalizations.of(context)!.skinReuploadToWebsite : AppLocalizations.of(context)!.skinUploadToWebsite,
+              label: skin.uploadedUrl != null
+                  ? AppLocalizations.of(context)!.skinReuploadToWebsite
+                  : AppLocalizations.of(context)!.skinUploadToWebsite,
               color: const Color(0xFF60a5fa),
               onTap: onUpload!,
             ),
@@ -798,12 +948,18 @@ class CloudSkinMenuSheet extends StatelessWidget {
         borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
         border: Border(top: BorderSide(color: AppTheme.borderGray)),
       ),
-      padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
+      padding: EdgeInsets.fromLTRB(
+        24,
+        16,
+        24,
+        32 + MediaQuery.of(context).padding.bottom,
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            width: 36, height: 4,
+            width: 36,
+            height: 4,
             margin: const EdgeInsets.only(bottom: 16),
             decoration: BoxDecoration(
               color: AppTheme.borderLight,
@@ -818,14 +974,25 @@ class CloudSkinMenuSheet extends StatelessWidget {
                   name,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(color: AppTheme.textPrimary, fontSize: 16, fontWeight: FontWeight.w700),
+                  style: TextStyle(
+                    color: AppTheme.textPrimary,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
               const SizedBox(width: 8),
               Container(
                 padding: const EdgeInsets.all(4),
-                decoration: BoxDecoration(color: const Color(0x263b82f6), borderRadius: BorderRadius.circular(6)),
-                child: const FaIcon(FontAwesomeIcons.cloud, size: 10, color: Color(0xFF60a5fa)),
+                decoration: BoxDecoration(
+                  color: const Color(0x263b82f6),
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: const FaIcon(
+                  FontAwesomeIcons.cloud,
+                  size: 10,
+                  color: Color(0xFF60a5fa),
+                ),
               ),
             ],
           ),
@@ -868,7 +1035,13 @@ class SkinMenuTile extends StatelessWidget {
   final String label;
   final Color color;
   final VoidCallback onTap;
-  const SkinMenuTile({super.key, required this.icon, required this.label, required this.color, required this.onTap});
+  const SkinMenuTile({
+    super.key,
+    required this.icon,
+    required this.label,
+    required this.color,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -879,12 +1052,16 @@ class SkinMenuTile extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 4),
         child: Row(
           children: [
-            SizedBox(
-              width: 28,
-              child: FaIcon(icon, size: 15, color: color),
-            ),
+            SizedBox(width: 28, child: FaIcon(icon, size: 15, color: color)),
             const SizedBox(width: 14),
-            Text(label, style: TextStyle(color: color, fontSize: 15, fontWeight: FontWeight.w500)),
+            Text(
+              label,
+              style: TextStyle(
+                color: color,
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
           ],
         ),
       ),

@@ -116,7 +116,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
     return ClipRRect(
       borderRadius: widget.borderRadius,
       child: SizedBox(
-        height: 230,
+        height: 190,
         child: Stack(
           fit: StackFit.expand,
           children: [
@@ -164,7 +164,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                           padding: const EdgeInsets.only(right: 8),
                           child: Image.network(
                             url,
-                            height: 180,
+                            height: 150,
                             fit: BoxFit.fitHeight,
                             errorBuilder: (_, __, ___) => const SizedBox.shrink(),
                           ),
@@ -209,7 +209,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(18),
+              padding: const EdgeInsets.all(14),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -257,15 +257,15 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                             Text(
                               server?.name ?? 'MCCompanion',
                               style: TextStyle(
-                                fontSize: 26,
+                                fontSize: 22,
                                 fontWeight: FontWeight.w800,
-                                height: 1.2,
+                                height: 1.15,
                                 color: ThemeService.instance.textPrimary,
                               ),
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
-                            const SizedBox(height: 5),
+                            const SizedBox(height: 4),
                             ConstrainedBox(
                               constraints: const BoxConstraints(maxWidth: 220),
                               child: Text(
@@ -275,13 +275,13 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                                 style: TextStyle(
                                   color: ThemeService.instance.textPrimary.withValues(alpha: 0.60),
                                   fontSize: 11,
-                                  height: 1.5,
+                                  height: 1.35,
                                 ),
                                 maxLines: 3,
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
-                            const SizedBox(height: 10),
+                            const SizedBox(height: 8),
                             if (server != null)
                               _HeroStatusBadge(
                                 statusFuture: _getHeroStatus(server),

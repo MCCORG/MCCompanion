@@ -19,7 +19,7 @@ class _PaywallScreenState extends State<PaywallScreen> {
   bool _loading = true;
   bool _purchasing = false;
   bool _yearly = false;
-  String? _selectedTier; 
+  String? _selectedTier;
 
   @override
   void initState() {
@@ -42,7 +42,9 @@ class _PaywallScreenState extends State<PaywallScreen> {
     final id = 'mcc_${tier}_${yearly ? 'yearly' : 'monthly'}';
     try {
       return _packages.firstWhere(
-        (p) => p.storeProduct.identifier == id || p.storeProduct.identifier.startsWith('$id:'),
+        (p) =>
+            p.storeProduct.identifier == id ||
+            p.storeProduct.identifier.startsWith('$id:'),
       );
     } catch (_) {
       return null;
@@ -80,7 +82,9 @@ class _PaywallScreenState extends State<PaywallScreen> {
       final isPro = SubscriptionService.instance.isPro;
       AppToast.show(
         context,
-        message: isPro ? l10n.paywallPurchasesRestored : l10n.paywallNoActivePurchases,
+        message: isPro
+            ? l10n.paywallPurchasesRestored
+            : l10n.paywallNoActivePurchases,
       );
       if (isPro) {
         widget.onSuccess?.call();
@@ -106,14 +110,22 @@ class _PaywallScreenState extends State<PaywallScreen> {
         actions: [
           TextButton(
             onPressed: _purchasing ? null : _restore,
-            child: Text(AppLocalizations.of(context)!.paywallRestore, style: TextStyle(color: AppTheme.textMuted, fontSize: 13)),
+            child: Text(
+              AppLocalizations.of(context)!.paywallRestore,
+              style: TextStyle(color: AppTheme.textMuted, fontSize: 13),
+            ),
           ),
         ],
       ),
       body: _loading
           ? const Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(24, 8, 24, 40),
+              padding: EdgeInsets.fromLTRB(
+                24,
+                8,
+                24,
+                40 + MediaQuery.of(context).padding.bottom,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -124,10 +136,16 @@ class _PaywallScreenState extends State<PaywallScreen> {
                       decoration: BoxDecoration(
                         color: AppTheme.brand.withValues(alpha: 0.15),
                         shape: BoxShape.circle,
-                        border: Border.all(color: AppTheme.brand.withValues(alpha: 0.3)),
+                        border: Border.all(
+                          color: AppTheme.brand.withValues(alpha: 0.3),
+                        ),
                       ),
                       child: Center(
-                        child: FaIcon(FontAwesomeIcons.satellite, color: AppTheme.brand, size: 24),
+                        child: FaIcon(
+                          FontAwesomeIcons.satellite,
+                          color: AppTheme.brand,
+                          size: 24,
+                        ),
                       ),
                     ),
                   ),
@@ -136,13 +154,21 @@ class _PaywallScreenState extends State<PaywallScreen> {
                   Text(
                     AppLocalizations.of(context)!.serverTrackerTitle,
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: AppTheme.textPrimary, fontSize: 22, fontWeight: FontWeight.w800),
+                    style: TextStyle(
+                      color: AppTheme.textPrimary,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w800,
+                    ),
                   ),
                   const SizedBox(height: 6),
                   Text(
                     AppLocalizations.of(context)!.paywallSubtitle,
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: AppTheme.textSecondary, fontSize: 13, height: 1.5),
+                    style: TextStyle(
+                      color: AppTheme.textSecondary,
+                      fontSize: 13,
+                      height: 1.5,
+                    ),
                   ),
                   const SizedBox(height: 28),
 
@@ -154,12 +180,18 @@ class _PaywallScreenState extends State<PaywallScreen> {
                     ),
                     child: Row(
                       children: [
-                        _ToggleBtn(label: AppLocalizations.of(context)!.paywallMonthly, active: !_yearly, onTap: () => setState(() => _yearly = false)),
+                        _ToggleBtn(
+                          label: AppLocalizations.of(context)!.paywallMonthly,
+                          active: !_yearly,
+                          onTap: () => setState(() => _yearly = false),
+                        ),
                         _ToggleBtn(
                           label: AppLocalizations.of(context)!.paywallYearly,
                           active: _yearly,
                           onTap: () => setState(() => _yearly = true),
-                          badge: AppLocalizations.of(context)!.paywallSavePercent,
+                          badge: AppLocalizations.of(
+                            context,
+                          )!.paywallSavePercent,
                         ),
                       ],
                     ),
@@ -167,7 +199,12 @@ class _PaywallScreenState extends State<PaywallScreen> {
                   const SizedBox(height: 16),
 
                   if (_packages.isEmpty)
-                    Center(child: Text(AppLocalizations.of(context)!.paywallNoPkgs, style: TextStyle(color: AppTheme.textMuted)))
+                    Center(
+                      child: Text(
+                        AppLocalizations.of(context)!.paywallNoPkgs,
+                        style: TextStyle(color: AppTheme.textMuted),
+                      ),
+                    )
                   else ...[
                     _TierCard(
                       tier: 'starter',
@@ -186,7 +223,9 @@ class _PaywallScreenState extends State<PaywallScreen> {
                       selected: _selectedTier == 'pro',
                       onTap: () => setState(() => _selectedTier = 'pro'),
                       highlighted: true,
-                      popularLabel: AppLocalizations.of(context)!.paywallPopular,
+                      popularLabel: AppLocalizations.of(
+                        context,
+                      )!.paywallPopular,
                     ),
                     const SizedBox(height: 10),
                     _TierCard(
@@ -209,12 +248,27 @@ class _PaywallScreenState extends State<PaywallScreen> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppTheme.brand,
                           foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
                           elevation: 0,
                         ),
                         child: _purchasing
-                            ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
-                            : Text(AppLocalizations.of(context)!.paywallContinue, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+                            ? const SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: Colors.white,
+                                ),
+                              )
+                            : Text(
+                                AppLocalizations.of(context)!.paywallContinue,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
                       ),
                     ),
 
@@ -222,7 +276,10 @@ class _PaywallScreenState extends State<PaywallScreen> {
                   Text(
                     AppLocalizations.of(context)!.paywallManaged,
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: AppTheme.textDisabled, fontSize: 11),
+                    style: TextStyle(
+                      color: AppTheme.textDisabled,
+                      fontSize: 11,
+                    ),
                   ),
                 ],
               ),
@@ -237,7 +294,12 @@ class _ToggleBtn extends StatelessWidget {
   final VoidCallback onTap;
   final String? badge;
 
-  const _ToggleBtn({required this.label, required this.active, required this.onTap, this.badge});
+  const _ToggleBtn({
+    required this.label,
+    required this.active,
+    required this.onTap,
+    this.badge,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -266,9 +328,14 @@ class _ToggleBtn extends StatelessWidget {
               if (badge != null) ...[
                 const SizedBox(width: 6),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 2,
+                  ),
                   decoration: BoxDecoration(
-                    color: active ? Colors.white.withValues(alpha: 0.2) : AppTheme.brand.withValues(alpha: 0.15),
+                    color: active
+                        ? Colors.white.withValues(alpha: 0.2)
+                        : AppTheme.brand.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: Text(
@@ -323,11 +390,15 @@ class _TierCard extends StatelessWidget {
           color: selected
               ? AppTheme.brand.withValues(alpha: 0.08)
               : highlighted
-                  ? AppTheme.surfaceRaised
-                  : AppTheme.surface,
+              ? AppTheme.surfaceRaised
+              : AppTheme.surface,
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
-            color: selected ? AppTheme.brand : highlighted ? AppTheme.borderLight : AppTheme.borderGray,
+            color: selected
+                ? AppTheme.brand
+                : highlighted
+                ? AppTheme.borderLight
+                : AppTheme.borderGray,
             width: selected ? 1.5 : 1.0,
           ),
         ),
@@ -345,7 +416,9 @@ class _TierCard extends StatelessWidget {
                   width: 2,
                 ),
               ),
-              child: selected ? const Icon(Icons.check, size: 12, color: Colors.white) : null,
+              child: selected
+                  ? const Icon(Icons.check, size: 12, color: Colors.white)
+                  : null,
             ),
             const SizedBox(width: 14),
 
@@ -366,14 +439,21 @@ class _TierCard extends StatelessWidget {
                       if (highlighted && popularLabel != null) ...[
                         const SizedBox(width: 8),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 7,
+                            vertical: 2,
+                          ),
                           decoration: BoxDecoration(
                             color: AppTheme.brand.withValues(alpha: 0.15),
                             borderRadius: BorderRadius.circular(6),
                           ),
                           child: Text(
                             popularLabel!,
-                            style: TextStyle(color: AppTheme.brand, fontSize: 10, fontWeight: FontWeight.w700),
+                            style: TextStyle(
+                              color: AppTheme.brand,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                         ),
                       ],
@@ -382,7 +462,10 @@ class _TierCard extends StatelessWidget {
                   const SizedBox(height: 2),
                   Text(
                     AppLocalizations.of(context)!.paywallSlotLabel(slots),
-                    style: TextStyle(color: AppTheme.textSecondary, fontSize: 12),
+                    style: TextStyle(
+                      color: AppTheme.textSecondary,
+                      fontSize: 12,
+                    ),
                   ),
                 ],
               ),

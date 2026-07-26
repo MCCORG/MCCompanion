@@ -461,7 +461,11 @@ class _WikiScreenState extends State<WikiScreen> {
   Future<void> _loadHistory() async {
     final recent = await WikiHistoryStorage.loadRecent();
     final favs = await WikiHistoryStorage.loadFavourites();
-    if (mounted) setState(() { _recent = recent; _favourites = favs; });
+    if (mounted)
+      setState(() {
+        _recent = recent;
+        _favourites = favs;
+      });
   }
 
   Future<void> _loadWikiData() async {
@@ -955,12 +959,14 @@ class _WikiScreenState extends State<WikiScreen> {
       _detailResult = r;
       _view = _View.detail;
     });
-    WikiHistoryStorage.addRecent(WikiHistoryEntry(
-      pageId: r.pageId,
-      title: r.title,
-      thumbnailUrl: r.thumbnailUrl,
-      visitedAt: DateTime.now(),
-    )).then((_) => _loadHistory());
+    WikiHistoryStorage.addRecent(
+      WikiHistoryEntry(
+        pageId: r.pageId,
+        title: r.title,
+        thumbnailUrl: r.thumbnailUrl,
+        visitedAt: DateTime.now(),
+      ),
+    ).then((_) => _loadHistory());
   }
 
   @override
@@ -984,10 +990,14 @@ class _WikiScreenState extends State<WikiScreen> {
     String title;
     switch (_view) {
       case _View.subs:
-        title = _activeSection != null ? wikiL10n(l, _activeSection!.label) : l.wikiTitle;
+        title = _activeSection != null
+            ? wikiL10n(l, _activeSection!.label)
+            : l.wikiTitle;
         break;
       case _View.pages:
-        title = _activeSub != null ? wikiL10n(l, _activeSub!.label) : l.wikiTitle;
+        title = _activeSub != null
+            ? wikiL10n(l, _activeSub!.label)
+            : l.wikiTitle;
         break;
       case _View.search:
         title = l.wikiTitle;
@@ -1058,67 +1068,61 @@ class _WikiScreenState extends State<WikiScreen> {
               if (_view == _View.root)
                 Text(
                   l.wikiMinecraftWiki,
-                  style: TextStyle(
-                    color: AppTheme.textMuted,
-                    fontSize: 12,
-                  ),
+                  style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
                 ),
             ],
           ),
           if (_view != _View.detail) ...[
-          const SizedBox(height: 14),
-          TextField(
-            controller: _searchController,
-            onChanged: _onSearchChanged,
-            style: TextStyle(color: AppTheme.textPrimary, fontSize: 14),
-            decoration: InputDecoration(
-              hintText: l.wikiSearchHint,
-              hintStyle: TextStyle(
-                color: AppTheme.textMuted,
-                fontSize: 13,
-              ),
-              prefixIcon: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12),
-                child: FaIcon(
-                  FontAwesomeIcons.magnifyingGlass,
-                  size: 14,
-                  color: AppTheme.textMuted,
+            const SizedBox(height: 14),
+            TextField(
+              controller: _searchController,
+              onChanged: _onSearchChanged,
+              style: TextStyle(color: AppTheme.textPrimary, fontSize: 14),
+              decoration: InputDecoration(
+                hintText: l.wikiSearchHint,
+                hintStyle: TextStyle(color: AppTheme.textMuted, fontSize: 13),
+                prefixIcon: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  child: FaIcon(
+                    FontAwesomeIcons.magnifyingGlass,
+                    size: 14,
+                    color: AppTheme.textMuted,
+                  ),
+                ),
+                prefixIconConstraints: const BoxConstraints(
+                  minWidth: 40,
+                  minHeight: 40,
+                ),
+                suffixIcon: _searchController.text.isNotEmpty
+                    ? IconButton(
+                        icon: Icon(
+                          Icons.close_rounded,
+                          color: AppTheme.textMuted,
+                          size: 18,
+                        ),
+                        onPressed: _clearSearch,
+                      )
+                    : null,
+                filled: true,
+                fillColor: AppTheme.surface,
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 12,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: AppTheme.borderGray),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: AppTheme.borderGray),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(color: AppTheme.accent, width: 1.5),
                 ),
               ),
-              prefixIconConstraints: const BoxConstraints(
-                minWidth: 40,
-                minHeight: 40,
-              ),
-              suffixIcon: _searchController.text.isNotEmpty
-                  ? IconButton(
-                      icon: Icon(
-                        Icons.close_rounded,
-                        color: AppTheme.textMuted,
-                        size: 18,
-                      ),
-                      onPressed: _clearSearch,
-                    )
-                  : null,
-              filled: true,
-              fillColor: AppTheme.surface,
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 14,
-                vertical: 12,
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: AppTheme.borderGray),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: AppTheme.borderGray),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: AppTheme.accent, width: 1.5),
-              ),
             ),
-          ),
           ],
         ],
       ),
@@ -1145,10 +1149,7 @@ class _WikiScreenState extends State<WikiScreen> {
               Text(
                 _error!,
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: AppTheme.textSecondary,
-                  fontSize: 13,
-                ),
+                style: TextStyle(color: AppTheme.textSecondary, fontSize: 13),
               ),
             ],
           ),
@@ -1193,7 +1194,14 @@ class _WikiScreenState extends State<WikiScreen> {
         itemBuilder: (_, i) {
           final e = entries[i];
           return GestureDetector(
-            onTap: () => _openDetail(WikiResult(pageId: e.pageId, title: e.title, snippet: '', thumbnailUrl: e.thumbnailUrl)),
+            onTap: () => _openDetail(
+              WikiResult(
+                pageId: e.pageId,
+                title: e.title,
+                snippet: '',
+                thumbnailUrl: e.thumbnailUrl,
+              ),
+            ),
             child: Container(
               width: 72,
               decoration: BoxDecoration(
@@ -1208,14 +1216,36 @@ class _WikiScreenState extends State<WikiScreen> {
                   if (e.thumbnailUrl != null)
                     ClipRRect(
                       borderRadius: BorderRadius.circular(6),
-                      child: Image.network(e.thumbnailUrl!, width: 36, height: 36, fit: BoxFit.contain,
-                        errorBuilder: (_, __, ___) => Icon(Icons.image_not_supported_outlined, size: 28, color: AppTheme.textMuted)),
+                      child: Image.network(
+                        e.thumbnailUrl!,
+                        width: 36,
+                        height: 36,
+                        fit: BoxFit.contain,
+                        errorBuilder: (_, __, ___) => Icon(
+                          Icons.image_not_supported_outlined,
+                          size: 28,
+                          color: AppTheme.textMuted,
+                        ),
+                      ),
                     )
                   else
-                    Icon(Icons.article_outlined, size: 28, color: AppTheme.textMuted),
+                    Icon(
+                      Icons.article_outlined,
+                      size: 28,
+                      color: AppTheme.textMuted,
+                    ),
                   const SizedBox(height: 5),
-                  Text(e.title, style: TextStyle(color: AppTheme.textSecondary, fontSize: 9, fontWeight: FontWeight.w500),
-                    maxLines: 2, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center),
+                  Text(
+                    e.title,
+                    style: TextStyle(
+                      color: AppTheme.textSecondary,
+                      fontSize: 9,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                  ),
                 ],
               ),
             ),
@@ -1262,21 +1292,33 @@ class _WikiScreenState extends State<WikiScreen> {
       builder: (context, constraints) => SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
         child: ConstrainedBox(
-          constraints: BoxConstraints(minHeight: constraints.maxHeight - 28),
+          constraints: BoxConstraints(
+            minHeight: (constraints.maxHeight - 28).clamp(0.0, double.infinity),
+          ),
           child: Center(
             child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: constraints.maxWidth > 700 ? 900 : double.infinity),
+              constraints: BoxConstraints(
+                maxWidth: constraints.maxWidth > 700 ? 900 : double.infinity,
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   if (_favourites.isNotEmpty) ...[
-                    _rootSectionLabel(l.wikiFavourites, FontAwesomeIcons.star, const Color(0xFFfbbf24)),
+                    _rootSectionLabel(
+                      l.wikiFavourites,
+                      FontAwesomeIcons.star,
+                      const Color(0xFFfbbf24),
+                    ),
                     const SizedBox(height: 8),
                     _buildHistoryRow(_favourites),
                     const SizedBox(height: 16),
                   ],
                   if (_recent.isNotEmpty) ...[
-                    _rootSectionLabel(l.wikiRecent, FontAwesomeIcons.clockRotateLeft, AppTheme.textMuted),
+                    _rootSectionLabel(
+                      l.wikiRecent,
+                      FontAwesomeIcons.clockRotateLeft,
+                      AppTheme.textMuted,
+                    ),
                     const SizedBox(height: 8),
                     _buildHistoryRow(_recent),
                     const SizedBox(height: 16),
@@ -1292,11 +1334,21 @@ class _WikiScreenState extends State<WikiScreen> {
   }
 
   Widget _rootSectionLabel(String label, FaIconData icon, Color iconColor) {
-    return Row(children: [
-      FaIcon(icon, size: 11, color: iconColor),
-      const SizedBox(width: 7),
-      Text(label.toUpperCase(), style: TextStyle(color: AppTheme.textMuted, fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1.1)),
-    ]);
+    return Row(
+      children: [
+        FaIcon(icon, size: 11, color: iconColor),
+        const SizedBox(width: 7),
+        Text(
+          label.toUpperCase(),
+          style: TextStyle(
+            color: AppTheme.textMuted,
+            fontSize: 11,
+            fontWeight: FontWeight.w700,
+            letterSpacing: 1.1,
+          ),
+        ),
+      ],
+    );
   }
 
   Widget _buildSubs() {
@@ -1339,10 +1391,14 @@ class _WikiScreenState extends State<WikiScreen> {
       builder: (context, constraints) => SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
         child: ConstrainedBox(
-          constraints: BoxConstraints(minHeight: constraints.maxHeight - 28),
+          constraints: BoxConstraints(
+            minHeight: (constraints.maxHeight - 28).clamp(0.0, double.infinity),
+          ),
           child: Center(
             child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: constraints.maxWidth > 700 ? 900 : double.infinity),
+              constraints: BoxConstraints(
+                maxWidth: constraints.maxWidth > 700 ? 900 : double.infinity,
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: rows,
@@ -1370,10 +1426,7 @@ class _WikiScreenState extends State<WikiScreen> {
             Text(
               l.wikiNoResults(_searchController.text),
               textAlign: TextAlign.center,
-              style: TextStyle(
-                color: AppTheme.textSecondary,
-                fontSize: 13,
-              ),
+              style: TextStyle(color: AppTheme.textSecondary, fontSize: 13),
             ),
           ],
         ),
@@ -1396,10 +1449,16 @@ class _WikiScreenState extends State<WikiScreen> {
             ? Center(
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 900),
-                  child: WikiPageCard(result: results[i], onTap: () => _openDetail(results[i])),
+                  child: WikiPageCard(
+                    result: results[i],
+                    onTap: () => _openDetail(results[i]),
+                  ),
                 ),
               )
-            : WikiPageCard(result: results[i], onTap: () => _openDetail(results[i])),
+            : WikiPageCard(
+                result: results[i],
+                onTap: () => _openDetail(results[i]),
+              ),
       ),
     );
   }

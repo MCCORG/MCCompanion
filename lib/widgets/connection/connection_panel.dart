@@ -377,41 +377,53 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                   Expanded(
                     child: Row(
                       children: [
-                        Container(
-                          width: 42,
-                          height: 42,
-                          decoration: BoxDecoration(
-                            color: color.withValues(alpha: 0.12),
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(color: color.withValues(alpha: 0.28)),
-                          ),
-                          child: Icon(
-                            broadcasting
-                                ? Icons.sensors_rounded
-                                : Icons.sensors_off_rounded,
-                            color: color,
-                            size: 20,
-                          ),
-                        ),
-                        const SizedBox(width: 12),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Row(),
-                              const SizedBox(height: 3),
-                              Text(
-                                broadcasting
-                                    ? loc.stopBroadcasting
-                                    : buttonLabel,
-                                style: TextStyle(
-                                  color: AppTheme.textPrimary,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
+                              Row(
+                                children: [
+                                  AnimatedContainer(
+                                    duration: const Duration(milliseconds: 250),
+                                    width: 7,
+                                    height: 7,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: broadcasting
+                                          ? color
+                                          : color.withValues(alpha: 0.30),
+                                      boxShadow: broadcasting
+                                          ? [
+                                              BoxShadow(
+                                                color: color.withValues(alpha: 0.6),
+                                                blurRadius: 6,
+                                                spreadRadius: 1,
+                                              ),
+                                            ]
+                                          : null,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Expanded(
+                                    child: FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        broadcasting
+                                            ? loc.stopBroadcasting
+                                            : buttonLabel,
+                                        style: TextStyle(
+                                          color: AppTheme.textPrimary,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                        maxLines: 1,
+                                        softWrap: false,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                               const SizedBox(height: 2),
                               Row(
