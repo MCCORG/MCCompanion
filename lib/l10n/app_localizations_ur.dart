@@ -2652,4 +2652,25 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get undo => 'واپس';
+
+  @override
+  String get modeXboxDesc =>
+      'آپ کے سرور کو اس وائی فائی نیٹ ورک پر موجود کنسول تک نشر کرتا ہے۔';
+
+  @override
+  String get modeNintendoDesc =>
+      'اپنے Switch کا DNS ریلے پر لگائیں، پھر Minecraft سے شامل ہوں۔';
+
+  @override
+  String get modeFriendsDesc =>
+      'ریلے بوٹ کو دوست بنائیں، پھر اس کی دنیا میں شامل ہوں۔';
+
+  @override
+  String get modeJavaDesc => 'ریلے کے ذریعے Java Edition سرور سے جڑیں۔';
+
+  @override
+  String get chooseServerTitle => 'سرور منتخب کریں';
+
+  @override
+  String get changeLabel => 'تبدیل کریں';
 }

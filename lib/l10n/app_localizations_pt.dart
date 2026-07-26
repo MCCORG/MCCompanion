@@ -2657,4 +2657,26 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get undo => 'Anular';
+
+  @override
+  String get modeXboxDesc =>
+      'Transmite o teu servidor para a consola nesta rede Wi-Fi.';
+
+  @override
+  String get modeNintendoDesc =>
+      'Aponta o DNS da tua Switch para o relay e depois entra pelo Minecraft.';
+
+  @override
+  String get modeFriendsDesc =>
+      'Adiciona o bot do relay como amigo e entra no mundo que ele aloja.';
+
+  @override
+  String get modeJavaDesc =>
+      'Liga-te a um servidor Java Edition através do relay.';
+
+  @override
+  String get chooseServerTitle => 'Escolhe um servidor';
+
+  @override
+  String get changeLabel => 'Alterar';
 }

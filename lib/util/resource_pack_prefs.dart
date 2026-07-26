@@ -24,6 +24,13 @@ class ResourcePackPrefs {
     }
   }
 
+  static Future<void> setEnabled(bool enabled) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool(_keyEnabled, enabled);
+    } catch (_) {}
+  }
+
   static Future<String?> getFilename() async {
     try {
       final prefs = await SharedPreferences.getInstance();

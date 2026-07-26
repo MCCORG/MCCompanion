@@ -9,7 +9,7 @@ import '../../services/navigation_controller.dart';
 import '../../widgets/components/app_painters.dart';
 import '../../widgets/dialogs/howto_dialogs.dart';
 import '../../widgets/featured_server_hero.dart';
-import 'server_tabs_section.dart';
+import 'server_picker_sheet.dart';
 
 enum PanelMode { lan, nintendo, friends, java }
 
@@ -47,9 +47,13 @@ class ConnectionPanel extends StatefulWidget {
     this.selectedBedrockXuid,
     this.onBedrockAccountChanged,
     this.navChips,
-    this.resourcePackActive = false,
+    this.resourcePackConfigured = false,
+    this.resourcePackEnabled = false,
+    this.resourcePackName,
+    this.onResourcePackToggle,
     this.resourcePackLoading = false,
     this.onDeleteServer,
+    this.availableHeight,
   });
 
   final TextEditingController ipController;
@@ -72,9 +76,15 @@ class ConnectionPanel extends StatefulWidget {
   final String? selectedBedrockXuid;
   final ValueChanged<String>? onBedrockAccountChanged;
   final Widget? navChips;
-  final bool resourcePackActive;
+
+  final bool resourcePackConfigured;
+  final bool resourcePackEnabled;
+  final String? resourcePackName;
+  final ValueChanged<bool>? onResourcePackToggle;
   final bool resourcePackLoading;
   final Function(int index)? onDeleteServer;
+
+  final double? availableHeight;
 
   @override
   State<ConnectionPanel> createState() => _ConnectionPanelState();
@@ -173,61 +183,86 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     final loc = AppLocalizations.of(context)!;
     final broadcasting = _broadcasting;
 
-    return LayoutBuilder(builder: (context, constraints) {
-      final isDesktop = constraints.maxWidth > 800;
-      return Center(
-      child: ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: isDesktop ? double.infinity : 720),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            FeaturedServerHero(
-              partnerServersFuture: widget.partnerServersFuture,
-              ipController: widget.ipController,
-              portController: widget.portController,
-              broadcasting: broadcasting,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isDesktop = constraints.maxWidth > 800;
+        return Align(
+          alignment: Alignment.topCenter,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: isDesktop ? double.infinity : 720,
             ),
-            if (widget.navChips != null) ...[
-              const SizedBox(height: 10),
-              widget.navChips!,
-            ],
-            const SizedBox(height: 18),
-            _sectionLabel(loc.selectModeSection),
-            const SizedBox(height: 10),
-            _buildModeChips(broadcasting, loc),
-            const SizedBox(height: 12),
-            _buildBroadcastCard(broadcasting, loc),
-            const SizedBox(height: 22),
-            _sectionLabel(loc.serversSection),
-            const SizedBox(height: 10),
-            ConstrainedBox(
-              constraints: const BoxConstraints(maxHeight: 300),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: AppTheme.surface,
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: AppTheme.borderGray),
-                ),
-                child: ServerTabsSection(
-                  savedServers: widget.savedServers,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                FeaturedServerHero(
+                  partnerServersFuture: widget.partnerServersFuture,
                   ipController: widget.ipController,
                   portController: widget.portController,
-                  onServerSelected: widget.onServerSelected,
-                  onManageServers: widget.onManageServers,
-                  onResourcePack: widget.onResourcePack,
-                  resourcePackActive: widget.resourcePackActive,
                   broadcasting: broadcasting,
-                  onDelete: widget.onDeleteServer,
                 ),
-              ),
+                _spreadBelowHero(_buildSteps(broadcasting, loc)),
+              ],
             ),
-            const SizedBox(height: 16),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
-    });
+  }
+
+  Widget _spreadBelowHero(Widget steps) {
+    final available = widget.availableHeight;
+    if (available == null) return steps;
+
+    final remaining = available - FeaturedServerHero.height;
+    if (remaining <= 0) return steps;
+
+    return ConstrainedBox(
+      constraints: BoxConstraints(minHeight: remaining),
+      child: Center(child: steps),
+    );
+  }
+
+  Widget _buildSteps(bool broadcasting, AppLocalizations loc) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const SizedBox(height: 22),
+        _stepLabel('1', loc.serversSection),
+        const SizedBox(height: 10),
+        _buildServerCard(broadcasting, loc),
+        const SizedBox(height: 30),
+        _stepLabel('2', loc.selectModeSection),
+        const SizedBox(height: 10),
+        _buildModeChips(broadcasting, loc),
+        const SizedBox(height: 10),
+        _buildModeDescription(loc),
+        if (_mode == PanelMode.lan && widget.bedrockAccounts.length > 1) ...[
+          const SizedBox(height: 10),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: _BedrockAccountSelector(
+              accounts: widget.bedrockAccounts,
+              selectedXuid: widget.selectedBedrockXuid,
+              onChanged: widget.onBedrockAccountChanged,
+              color: _modes.firstWhere((c) => c.mode == _mode).color,
+              enabled: !broadcasting,
+            ),
+          ),
+        ],
+        const SizedBox(height: 30),
+        _buildStartButton(broadcasting, loc),
+        const SizedBox(height: 22),
+        _buildResourcePackRow(broadcasting, loc),
+        if (widget.navChips != null) ...[
+          const SizedBox(height: 24),
+          widget.navChips!,
+        ],
+        const SizedBox(height: 18),
+      ],
+    );
   }
 
   Widget _buildModeChips(bool broadcasting, AppLocalizations loc) {
@@ -308,235 +343,409 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     );
   }
 
-  Widget _buildBroadcastCard(bool broadcasting, AppLocalizations loc) {
-    final cfg = _modes.firstWhere((c) => c.mode == _mode);
-    final color = broadcasting ? AppTheme.error : cfg.color;
-    final hasServer = widget.ipController.text.isNotEmpty;
-    final serverLabel = hasServer
-        ? '${widget.ipController.text}:${widget.portController.text}'
-        : loc.noServerSelected;
+  String _modeDescription(PanelMode mode, AppLocalizations loc) =>
+      switch (mode) {
+        PanelMode.lan => loc.modeXboxDesc,
+        PanelMode.nintendo => loc.modeNintendoDesc,
+        PanelMode.friends => loc.modeFriendsDesc,
+        PanelMode.java => loc.modeJavaDesc,
+      };
 
-    final buttonLabel = switch (_mode) {
-      PanelMode.lan => loc.startBroadcasting,
-      PanelMode.nintendo => loc.startNintendoMode,
-      PanelMode.friends => loc.startFriendsMode,
-      PanelMode.java => loc.startJavaMode,
-    };
+  void _openServerPicker() {
+    ServerPickerSheet.show(
+      context,
+      savedServers: widget.savedServers,
+      ipController: widget.ipController,
+      portController: widget.portController,
+      onServerSelected: widget.onServerSelected,
+      onManageServers: widget.onManageServers,
+      onDelete: widget.onDeleteServer,
+    );
+  }
 
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(16),
-      child: SizedBox(
-        height: 88,
-        child: Stack(
-          fit: StackFit.expand,
+  UserServer? get _selectedServer {
+    final address = widget.ipController.text.trim();
+    final port = int.tryParse(widget.portController.text);
+    if (address.isEmpty) return null;
+    for (final server in widget.savedServers) {
+      if (server.address == address && server.port == port) return server;
+    }
+    return null;
+  }
+
+  Widget _buildServerCard(bool broadcasting, AppLocalizations loc) {
+    final address = widget.ipController.text.trim();
+    final hasServer = address.isNotEmpty;
+    final saved = _selectedServer;
+    final title = saved?.name ?? (hasServer ? address : loc.noServerSelected);
+    final subtitle = hasServer
+        ? '$address:${widget.portController.text}'
+        : widget.savedServers.isEmpty
+        ? loc.noServerYet.split('\n').first
+        : loc.chooseServerTitle;
+
+    return GestureDetector(
+      onTap: broadcasting ? null : _openServerPicker,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
+        decoration: BoxDecoration(
+          color: AppTheme.surface,
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(
+            color: hasServer ? AppTheme.borderGray : AppTheme.borderLight,
+          ),
+        ),
+        child: Row(
           children: [
-            Container(color: AppTheme.surfaceRaisedSolid),
-            Container(color: color.withValues(alpha: 0.14)),
-            CustomPaint(
-              painter: AppNoisePainter(
-                color: color,
-                opacity: 0.055,
-                seed: 42,
-                count: 180,
-              ),
-            ),
-            CustomPaint(
-              painter: AppWavePainter(
-                waves: [
-                  WaveConfig(
-                    yFraction: 0.45,
-                    amplitude: 12,
-                    frequency: 3.0,
-                    phase: 0.5,
-                    color: color,
-                    opacity: 0.18,
-                    strokeWidth: 1.5,
-                  ),
-                  WaveConfig(
-                    yFraction: 0.65,
-                    amplitude: 8,
-                    frequency: 4.0,
-                    phase: 1.2,
-                    color: color,
-                    opacity: 0.09,
-                    strokeWidth: 1.0,
-                  ),
-                ],
-              ),
-            ),
             Container(
+              width: 36,
+              height: 36,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: color.withValues(alpha: 0.40)),
+                color: hasServer
+                    ? AppTheme.accent.withValues(alpha: 0.12)
+                    : AppTheme.surfaceRaised,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Icon(
+                Icons.dns_rounded,
+                size: 17,
+                color: hasServer ? AppTheme.accent : AppTheme.textMuted,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Expanded(
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Row(
-                                children: [
-                                  AnimatedContainer(
-                                    duration: const Duration(milliseconds: 250),
-                                    width: 7,
-                                    height: 7,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: broadcasting
-                                          ? color
-                                          : color.withValues(alpha: 0.30),
-                                      boxShadow: broadcasting
-                                          ? [
-                                              BoxShadow(
-                                                color: color.withValues(alpha: 0.6),
-                                                blurRadius: 6,
-                                                spreadRadius: 1,
-                                              ),
-                                            ]
-                                          : null,
-                                    ),
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Expanded(
-                                    child: FittedBox(
-                                      fit: BoxFit.scaleDown,
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        broadcasting
-                                            ? loc.stopBroadcasting
-                                            : buttonLabel,
-                                        style: TextStyle(
-                                          color: AppTheme.textPrimary,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                        maxLines: 1,
-                                        softWrap: false,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 2),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.dns_rounded,
-                                    size: 10,
-                                    color: hasServer
-                                        ? color.withValues(alpha: 0.70)
-                                        : AppTheme.textDisabled,
-                                  ),
-                                  const SizedBox(width: 4),
-                                  Flexible(
-                                    child: Text(
-                                      serverLabel,
-                                      style: TextStyle(
-                                        fontSize: 11,
-                                        color: hasServer
-                                            ? AppTheme.textSecondary
-                                            : AppTheme.textDisabled,
-                                        fontStyle: hasServer
-                                            ? FontStyle.normal
-                                            : FontStyle.italic,
-                                      ),
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              if (_mode == PanelMode.lan &&
-                                  widget.bedrockAccounts.length > 1) ...[
-                                const SizedBox(height: 5),
-                                _BedrockAccountSelector(
-                                  accounts: widget.bedrockAccounts,
-                                  selectedXuid: widget.selectedBedrockXuid,
-                                  onChanged: widget.onBedrockAccountChanged,
-                                  color: color,
-                                  enabled: !broadcasting,
-                                ),
-                              ],
-                            ],
-                          ),
-                        ),
-                      ],
+                  Text(
+                    title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: hasServer
+                          ? AppTheme.textPrimary
+                          : AppTheme.textMuted,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(width: 12),
-                  GestureDetector(
-                    onTap: (_starting || widget.resourcePackLoading)
-                        ? null
-                        : broadcasting
-                        ? widget.onStopBroadcast
-                        : _handleStart,
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 150),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 12,
-                      ),
-                      decoration: BoxDecoration(
-                        color: (_starting || widget.resourcePackLoading) ? color.withValues(alpha: 0.55) : color,
-                        borderRadius: BorderRadius.circular(11),
-                      ),
-                      child: (_starting || widget.resourcePackLoading)
-                          ? SizedBox(
-                              width: 18,
-                              height: 18,
-                              child: CircularProgressIndicator(
-                                strokeWidth: 2,
-                                color: Colors.white.withValues(alpha: 0.80),
-                              ),
-                            )
-                          : Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(
-                                  broadcasting
-                                      ? Icons.stop_rounded
-                                      : Icons.play_arrow_rounded,
-                                  color: Colors.white,
-                                  size: 18,
-                                ),
-                                const SizedBox(width: 5),
-                                Text(
-                                  broadcasting ? loc.stop : loc.start,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ],
-                            ),
-                    ),
+                  const SizedBox(height: 2),
+                  Text(
+                    subtitle,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
                   ),
                 ],
               ),
             ),
+            const SizedBox(width: 10),
+            if (!broadcasting)
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    loc.changeLabel,
+                    style: TextStyle(
+                      color: AppTheme.textSecondary,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Icon(
+                    Icons.chevron_right_rounded,
+                    size: 18,
+                    color: AppTheme.textMuted,
+                  ),
+                ],
+              ),
           ],
         ),
       ),
     );
   }
 
-  Widget _sectionLabel(String text) => Text(
-    text,
-    style: TextStyle(
-      color: AppTheme.textMuted,
-      fontSize: 10,
-      fontWeight: FontWeight.w700,
-      letterSpacing: 1.4,
-    ),
+  Widget _buildModeDescription(AppLocalizations loc) => Text(
+    _modeDescription(_mode, loc),
+    style: TextStyle(color: AppTheme.textSecondary, fontSize: 12, height: 1.45),
+  );
+
+  Widget _buildResourcePackRow(bool broadcasting, AppLocalizations loc) {
+    final configured = widget.resourcePackConfigured;
+    final on = configured && widget.resourcePackEnabled;
+    final canToggle =
+        configured && !broadcasting && widget.onResourcePackToggle != null;
+
+    final subtitle = !configured
+        ? loc.rpNoPackSelected
+        : widget.resourcePackName ??
+              (on ? loc.rpActiveOnConnect : loc.rpDisabled);
+
+    return Container(
+      decoration: BoxDecoration(
+        color: AppTheme.surface.withValues(alpha: 0.60),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(
+          color: on
+              ? AppTheme.accent.withValues(alpha: 0.30)
+              : AppTheme.borderLight,
+        ),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: GestureDetector(
+              onTap: broadcasting ? null : widget.onResourcePack,
+              behavior: HitTestBehavior.opaque,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(14, 14, 8, 14),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 34,
+                      height: 34,
+                      decoration: BoxDecoration(
+                        color: on
+                            ? AppTheme.accent.withValues(alpha: 0.12)
+                            : AppTheme.surfaceRaised,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Icon(
+                        Icons.extension_rounded,
+                        size: 16,
+                        color: broadcasting
+                            ? AppTheme.textDisabled
+                            : on
+                            ? AppTheme.accent
+                            : AppTheme.textMuted,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            loc.rpScreenTitle,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: broadcasting
+                                  ? AppTheme.textDisabled
+                                  : AppTheme.textPrimary,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            subtitle,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: AppTheme.textMuted,
+                              fontSize: 11,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    if (!broadcasting) ...[
+                      Text(
+                        loc.changeLabel,
+                        style: TextStyle(
+                          color: AppTheme.textSecondary,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Icon(
+                        Icons.chevron_right_rounded,
+                        size: 18,
+                        color: AppTheme.textMuted,
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Container(width: 1, height: 32, color: AppTheme.borderDim),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: widget.resourcePackLoading
+                ? const SizedBox(
+                    width: 18,
+                    height: 18,
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  )
+                : Switch.adaptive(
+                    value: on,
+                    onChanged: canToggle
+                        ? (value) => widget.onResourcePackToggle!(value)
+                        : null,
+                    activeThumbColor: Colors.white,
+                    activeTrackColor: AppTheme.accent,
+                  ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStartButton(bool broadcasting, AppLocalizations loc) {
+    final cfg = _modes.firstWhere((c) => c.mode == _mode);
+    final color = broadcasting ? AppTheme.error : cfg.color;
+    final hasServer = widget.ipController.text.trim().isNotEmpty;
+    final busy = _starting || widget.resourcePackLoading;
+    final enabled = !busy && (broadcasting || hasServer);
+
+    final label = broadcasting
+        ? loc.stopBroadcasting
+        : switch (_mode) {
+            PanelMode.lan => loc.startBroadcasting,
+            PanelMode.nintendo => loc.startNintendoMode,
+            PanelMode.friends => loc.startFriendsMode,
+            PanelMode.java => loc.startJavaMode,
+          };
+
+    return GestureDetector(
+      onTap: enabled
+          ? (broadcasting ? widget.onStopBroadcast : _handleStart)
+          : null,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: SizedBox(
+          height: 62,
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Container(
+                color: enabled
+                    ? color
+                    : Color.alphaBlend(
+                        color.withValues(alpha: 0.28),
+                        AppTheme.surfaceRaisedSolid,
+                      ),
+              ),
+              CustomPaint(
+                painter: AppNoisePainter(
+                  color: Colors.white,
+                  opacity: 0.05,
+                  seed: 42,
+                  count: 160,
+                ),
+              ),
+              CustomPaint(
+                painter: AppWavePainter(
+                  waves: [
+                    WaveConfig(
+                      yFraction: 0.42,
+                      amplitude: 10,
+                      frequency: 2.6,
+                      phase: 0.5,
+                      color: Colors.white,
+                      opacity: 0.16,
+                      strokeWidth: 1.4,
+                    ),
+                    WaveConfig(
+                      yFraction: 0.68,
+                      amplitude: 7,
+                      frequency: 3.6,
+                      phase: 1.2,
+                      color: Colors.white,
+                      opacity: 0.09,
+                      strokeWidth: 1.0,
+                    ),
+                  ],
+                ),
+              ),
+              Center(
+                child: busy
+                    ? SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: Colors.white.withValues(alpha: 0.85),
+                        ),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 18),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              broadcasting
+                                  ? Icons.stop_rounded
+                                  : Icons.play_arrow_rounded,
+                              color: Colors.white.withValues(
+                                alpha: enabled ? 1.0 : 0.55,
+                              ),
+                              size: 22,
+                            ),
+                            const SizedBox(width: 8),
+                            Flexible(
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  label,
+                                  maxLines: 1,
+                                  softWrap: false,
+                                  style: TextStyle(
+                                    color: Colors.white.withValues(
+                                      alpha: enabled ? 1.0 : 0.55,
+                                    ),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _stepLabel(String step, String text) => Row(
+    children: [
+      Container(
+        width: 18,
+        height: 18,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: AppTheme.surfaceRaised,
+          shape: BoxShape.circle,
+          border: Border.all(color: AppTheme.borderGray),
+        ),
+        child: Text(
+          step,
+          style: TextStyle(
+            color: AppTheme.textSecondary,
+            fontSize: 10,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+      ),
+      const SizedBox(width: 8),
+      Text(
+        text,
+        style: TextStyle(
+          color: AppTheme.textMuted,
+          fontSize: 10,
+          fontWeight: FontWeight.w700,
+          letterSpacing: 1.4,
+        ),
+      ),
+    ],
   );
 }
 
@@ -573,7 +782,9 @@ class _BedrockAccountSelector extends StatelessWidget {
           Icon(
             Icons.sports_esports_rounded,
             size: 10,
-            color: enabled ? color.withValues(alpha: 0.70) : AppTheme.textDisabled,
+            color: enabled
+                ? color.withValues(alpha: 0.70)
+                : AppTheme.textDisabled,
           ),
           const SizedBox(width: 4),
           Text(

@@ -13,6 +13,9 @@ class MyServersTab extends StatefulWidget {
     required this.onServerSelected,
     required this.broadcasting,
     this.onDelete,
+    this.shrinkWrap = false,
+    this.selectedAddress,
+    this.selectedPort,
   });
 
   final List<UserServer> savedServers;
@@ -21,6 +24,9 @@ class MyServersTab extends StatefulWidget {
   final Function(UserServer) onServerSelected;
   final bool broadcasting;
   final Function(int index)? onDelete;
+  final bool shrinkWrap;
+  final String? selectedAddress;
+  final int? selectedPort;
 
   @override
   State<MyServersTab> createState() => _MyServersTabState();
@@ -36,52 +42,59 @@ class _MyServersTabState extends State<MyServersTab> {
     return NotificationListener<ScrollNotification>(
       onNotification: (n) {
         if (n is OverscrollNotification) {
-          Scrollable.of(context).position.pointerScroll(n.overscroll);
+          Scrollable.maybeOf(context)?.position.pointerScroll(n.overscroll);
         }
         return false;
       },
       child: ListView.builder(
         padding: EdgeInsets.zero,
+        shrinkWrap: widget.shrinkWrap,
         physics: const ClampingScrollPhysics(),
         itemCount: widget.savedServers.length,
         itemBuilder: (context, i) {
-        final server = widget.savedServers[i];
-        final isLast = i == widget.savedServers.length - 1;
-        final isSelected =
-            _selectedServer?.address == server.address &&
-            _selectedServer?.port == server.port;
+          final server = widget.savedServers[i];
+          final isLast = i == widget.savedServers.length - 1;
+          final isSelected = widget.selectedAddress != null
+              ? widget.selectedAddress == server.address &&
+                    widget.selectedPort == server.port
+              : _selectedServer?.address == server.address &&
+                    _selectedServer?.port == server.port;
 
-        final tile = _ServerTile(
-          server: server,
-          isSelected: isSelected,
-          isLast: isLast,
-          broadcasting: widget.broadcasting,
-          onTap: widget.broadcasting
-              ? null
-              : () {
-                  setState(() => _selectedServer = server);
-                  widget.onServerSelected(server);
-                  widget.ipController.text = server.address;
-                  widget.portController.text = server.port.toString();
-                },
-        );
+          final tile = _ServerTile(
+            server: server,
+            isSelected: isSelected,
+            isLast: isLast,
+            broadcasting: widget.broadcasting,
+            onTap: widget.broadcasting
+                ? null
+                : () {
+                    setState(() => _selectedServer = server);
+                    widget.onServerSelected(server);
+                    widget.ipController.text = server.address;
+                    widget.portController.text = server.port.toString();
+                  },
+          );
 
-        if (widget.onDelete == null || widget.broadcasting) return tile;
+          if (widget.onDelete == null || widget.broadcasting) return tile;
 
-        return Dismissible(
-          key: ValueKey('${server.address}:${server.port}'),
-          direction: DismissDirection.endToStart,
-          background: Container(
-            alignment: Alignment.centerRight,
-            padding: const EdgeInsets.only(right: 20),
-            color: AppTheme.error.withValues(alpha: 0.85),
-            child: const Icon(Icons.delete_outline_rounded, color: Colors.white, size: 22),
-          ),
-          onDismissed: (_) => widget.onDelete!(i),
-          child: tile,
-        );
-      },
-    ),
+          return Dismissible(
+            key: ValueKey('${server.address}:${server.port}'),
+            direction: DismissDirection.endToStart,
+            background: Container(
+              alignment: Alignment.centerRight,
+              padding: const EdgeInsets.only(right: 20),
+              color: AppTheme.error.withValues(alpha: 0.85),
+              child: const Icon(
+                Icons.delete_outline_rounded,
+                color: Colors.white,
+                size: 22,
+              ),
+            ),
+            onDismissed: (_) => widget.onDelete!(i),
+            child: tile,
+          );
+        },
+      ),
     );
   }
 
@@ -164,14 +177,20 @@ class _ServerTile extends StatelessWidget {
                                 server.name,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
-                                  color: isSelected ? AppTheme.accent : AppTheme.textPrimary,
+                                  color: isSelected
+                                      ? AppTheme.accent
+                                      : AppTheme.textPrimary,
                                   fontSize: 13,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                             ),
                             const SizedBox(width: 8),
-                            _StatusDot(address: server.address, port: server.port, isJava: server.isJava),
+                            _StatusDot(
+                              address: server.address,
+                              port: server.port,
+                              isJava: server.isJava,
+                            ),
                           ],
                         ),
                         const SizedBox(height: 3),
@@ -191,38 +210,37 @@ class _ServerTile extends StatelessWidget {
 
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 150),
-                    width: 36,
-                    height: 36,
+                    width: 24,
+                    height: 24,
                     decoration: BoxDecoration(
-                      color: broadcasting
-                          ? AppTheme.surfaceRaisedSolid
-                          : isSelected
-                          ? AppTheme.accent
-                          : AppTheme.accent.withValues(alpha: 0.12),
-                      borderRadius: BorderRadius.circular(10),
+                      color: isSelected ? AppTheme.accent : Colors.transparent,
+                      shape: BoxShape.circle,
                       border: Border.all(
-                        color: broadcasting
-                            ? AppTheme.borderGray
-                            : isSelected
+                        color: isSelected
                             ? AppTheme.accent
-                            : AppTheme.accent.withValues(alpha: 0.30),
+                            : AppTheme.borderLight,
+                        width: 1.5,
                       ),
                     ),
-                    child: Icon(
-                      Icons.play_arrow_rounded,
-                      size: 18,
-                      color: broadcasting
-                          ? AppTheme.textDisabled
-                          : isSelected
-                          ? Colors.white
-                          : AppTheme.accent,
-                    ),
+                    child: isSelected
+                        ? const Icon(
+                            Icons.check_rounded,
+                            size: 15,
+                            color: Colors.white,
+                          )
+                        : null,
                   ),
                 ],
               ),
             ),
             if (!isLast)
-              const Divider(height: 1, thickness: 1, indent: 16, endIndent: 16, color: AppTheme.borderDim),
+              const Divider(
+                height: 1,
+                thickness: 1,
+                indent: 16,
+                endIndent: 16,
+                color: AppTheme.borderDim,
+              ),
           ],
         ),
       ),
@@ -234,7 +252,11 @@ class _StatusDot extends StatefulWidget {
   final String address;
   final int port;
   final bool isJava;
-  const _StatusDot({required this.address, required this.port, this.isJava = false});
+  const _StatusDot({
+    required this.address,
+    required this.port,
+    this.isJava = false,
+  });
 
   @override
   State<_StatusDot> createState() => _StatusDotState();
@@ -246,7 +268,11 @@ class _StatusDotState extends State<_StatusDot> {
   @override
   void initState() {
     super.initState();
-    _statusFuture = ServerStatusService.getStatus(widget.address, widget.port, isJava: widget.isJava);
+    _statusFuture = ServerStatusService.getStatus(
+      widget.address,
+      widget.port,
+      isJava: widget.isJava,
+    );
   }
 
   @override
@@ -259,11 +285,13 @@ class _StatusDotState extends State<_StatusDot> {
         }
         final status = snapshot.data!;
         final online = status.isOnline;
-        final color = online ? AppTheme.success : AppTheme.textMuted.withValues(alpha: 0.4);
+        final color = online
+            ? AppTheme.success
+            : AppTheme.textMuted.withValues(alpha: 0.4);
         final label = online
             ? (status.players != null && status.maxPlayers != null
-                ? '${status.players}/${status.maxPlayers}'
-                : null)
+                  ? '${status.players}/${status.maxPlayers}'
+                  : null)
             : null;
         return Row(
           mainAxisSize: MainAxisSize.min,

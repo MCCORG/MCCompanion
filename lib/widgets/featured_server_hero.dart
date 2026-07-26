@@ -10,6 +10,8 @@ import '../widgets/components/app_toast.dart';
 import '../l10n/app_localizations.dart';
 
 class FeaturedServerHero extends StatefulWidget {
+  static const double height = 190;
+
   final Future<List<FeaturedServer>>? partnerServersFuture;
   final TextEditingController ipController;
   final TextEditingController portController;
@@ -112,11 +114,12 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
   Widget build(BuildContext context) {
     final server = _currentHeroServer;
     final broadcasting = widget.broadcasting;
+    final card = AppTheme.surfaceRaisedSolid;
 
     return ClipRRect(
       borderRadius: widget.borderRadius,
       child: SizedBox(
-        height: 190,
+        height: FeaturedServerHero.height,
         child: Stack(
           fit: StackFit.expand,
           children: [
@@ -166,22 +169,23 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                             url,
                             height: 150,
                             fit: BoxFit.fitHeight,
-                            errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+                            errorBuilder: (_, __, ___) =>
+                                const SizedBox.shrink(),
                           ),
                         ),
                       ),
                       Positioned.fill(
                         child: Container(
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             gradient: LinearGradient(
                               begin: Alignment.centerLeft,
                               end: Alignment.centerRight,
-                              stops: [0.0, 0.40, 0.75, 1.0],
+                              stops: const [0.0, 0.40, 0.75, 1.0],
                               colors: [
-                                Color(0xFF000000),
-                                Color(0xCC000000),
-                                Color(0x44000000),
-                                Colors.transparent,
+                                card,
+                                card.withValues(alpha: 0.80),
+                                card.withValues(alpha: 0.27),
+                                card.withValues(alpha: 0.0),
                               ],
                             ),
                           ),
@@ -194,16 +198,16 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
               },
             ),
             Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  stops: [0.0, 0.3, 0.7, 1.0],
+                  stops: const [0.0, 0.3, 0.7, 1.0],
                   colors: [
-                    Color(0x66000000),
-                    Color(0x00000000),
-                    Color(0x00000000),
-                    Color(0x99000000),
+                    card.withValues(alpha: 0.40),
+                    card.withValues(alpha: 0.0),
+                    card.withValues(alpha: 0.0),
+                    card.withValues(alpha: 0.60),
                   ],
                 ),
               ),
@@ -217,7 +221,9 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                     children: [
                       _heroBadge(
                         icon: Icons.star_rounded,
-                        label: AppLocalizations.of(context)!.featuredServerLabel,
+                        label: AppLocalizations.of(
+                          context,
+                        )!.featuredServerLabel,
                       ),
                       const Spacer(),
                       if (_featuredServers.length > 1)
@@ -271,9 +277,12 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                               child: Text(
                                 server?.description.isNotEmpty == true
                                     ? server!.description
-                                    : AppLocalizations.of(context)!.featuredServerTagline,
+                                    : AppLocalizations.of(
+                                        context,
+                                      )!.featuredServerTagline,
                                 style: TextStyle(
-                                  color: ThemeService.instance.textPrimary.withValues(alpha: 0.60),
+                                  color: ThemeService.instance.textPrimary
+                                      .withValues(alpha: 0.60),
                                   fontSize: 11,
                                   height: 1.35,
                                 ),
@@ -317,13 +326,17 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                             vertical: 12,
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.white.withValues(alpha: 
-                              server == null || broadcasting ? 0.08 : 0.15,
+                            color: Colors.white.withValues(
+                              alpha: server == null || broadcasting
+                                  ? 0.08
+                                  : 0.15,
                             ),
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
-                              color: Colors.white.withValues(alpha: 
-                                server == null || broadcasting ? 0.10 : 0.30,
+                              color: Colors.white.withValues(
+                                alpha: server == null || broadcasting
+                                    ? 0.10
+                                    : 0.30,
                               ),
                             ),
                           ),
@@ -331,11 +344,16 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
-                                AppLocalizations.of(context)!.featuredServerPlay,
+                                AppLocalizations.of(
+                                  context,
+                                )!.featuredServerPlay,
                                 style: TextStyle(
-                                  color: ThemeService.instance.textPrimary.withValues(alpha:
-                                    server == null || broadcasting ? 0.35 : 1.0,
-                                  ),
+                                  color: ThemeService.instance.textPrimary
+                                      .withValues(
+                                        alpha: server == null || broadcasting
+                                            ? 0.35
+                                            : 1.0,
+                                      ),
                                   fontSize: 14,
                                   fontWeight: FontWeight.w700,
                                 ),
@@ -343,9 +361,12 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                               const SizedBox(width: 6),
                               Icon(
                                 Icons.play_arrow_rounded,
-                                color: ThemeService.instance.textPrimary.withValues(alpha:
-                                  server == null || broadcasting ? 0.35 : 1.0,
-                                ),
+                                color: ThemeService.instance.textPrimary
+                                    .withValues(
+                                      alpha: server == null || broadcasting
+                                          ? 0.35
+                                          : 1.0,
+                                    ),
                                 size: 16,
                               ),
                             ],

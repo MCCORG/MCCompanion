@@ -1966,5 +1966,11 @@
   "adminNoTicketsForUser": "Tidak ada tiket dari pengguna ini",
   "hideConversation": "Sembunyikan",
   "conversationHidden": "Obrolan disembunyikan",
-  "undo": "Urungkan"
+  "undo": "Urungkan",
+  "modeXboxDesc": "Menyiarkan servermu ke konsol di jaringan Wi-Fi ini.",
+  "modeNintendoDesc": "Arahkan DNS Switch-mu ke relay, lalu gabung dari Minecraft.",
+  "modeFriendsDesc": "Tambahkan bot relay sebagai teman, lalu gabung ke dunia yang dihosting.",
+  "modeJavaDesc": "Sambungkan ke server Java Edition lewat relay.",
+  "chooseServerTitle": "Pilih server",
+  "changeLabel": "Ubah"
 }

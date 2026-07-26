@@ -2659,4 +2659,26 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get undo => 'আগের অবস্থায়';
+
+  @override
+  String get modeXboxDesc =>
+      'এই ওয়াই-ফাই নেটওয়ার্কে থাকা কনসোলে আপনার সার্ভার সম্প্রচার করে।';
+
+  @override
+  String get modeNintendoDesc =>
+      'আপনার Switch-এর DNS রিলেতে সেট করুন, তারপর Minecraft থেকে যোগ দিন।';
+
+  @override
+  String get modeFriendsDesc =>
+      'রিলে বটটিকে বন্ধু হিসেবে যোগ করুন, তারপর তার ওয়ার্ল্ডে যোগ দিন।';
+
+  @override
+  String get modeJavaDesc =>
+      'রিলের মাধ্যমে একটি Java Edition সার্ভারে যুক্ত হন।';
+
+  @override
+  String get chooseServerTitle => 'একটি সার্ভার বেছে নিন';
+
+  @override
+  String get changeLabel => 'পরিবর্তন';
 }

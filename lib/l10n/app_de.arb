@@ -1969,5 +1969,11 @@
   "adminNoTicketsForUser": "Keine Tickets von diesem Nutzer",
   "hideConversation": "Ausblenden",
   "conversationHidden": "Unterhaltung ausgeblendet",
-  "undo": "Rückgängig"
+  "undo": "Rückgängig",
+  "modeXboxDesc": "Überträgt deinen Server an die Konsole in diesem WLAN.",
+  "modeNintendoDesc": "Richte die DNS deiner Switch auf das Relay und tritt dann in Minecraft bei.",
+  "modeFriendsDesc": "Füge den Relay-Bot als Freund hinzu und tritt dann seiner Welt bei.",
+  "modeJavaDesc": "Verbinde dich über das Relay mit einem Java-Edition-Server.",
+  "chooseServerTitle": "Server auswählen",
+  "changeLabel": "Ändern"
 }

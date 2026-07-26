@@ -86,7 +86,9 @@ class HomeScreenState extends State<HomeScreen> {
   bool _nintendoDnsMode = false;
   List<BedrockAccount>? _cachedBedrockAccounts;
   String? _selectedBedrockXuid;
-  String? _activeResourcePackUrl;
+  String? _resourcePackUrl;
+  String? _resourcePackName;
+  bool _resourcePackEnabled = false;
   bool _rpLoading = true;
 
   @override
@@ -100,7 +102,8 @@ class HomeScreenState extends State<HomeScreen> {
 
   void toggleDebug() {
     logger.debugEnabled = !logger.debugEnabled;
-    widget.navigationController.debugEnabledNotifier.value = logger.debugEnabled;
+    widget.navigationController.debugEnabledNotifier.value =
+        logger.debugEnabled;
   }
 
   void _initializeComponents() {
@@ -194,12 +197,24 @@ class HomeScreenState extends State<HomeScreen> {
     if (mounted) setState(() => _rpLoading = true);
     try {
       final enabled = await ResourcePackPrefs.isEnabled();
-      final url = enabled ? await ResourcePackPrefs.getUrl() : null;
-      final activeUrl = (enabled && url != null && url.isNotEmpty) ? url : null;
-      if (mounted) setState(() { _activeResourcePackUrl = activeUrl; _rpLoading = false; });
+      final url = await ResourcePackPrefs.getUrl();
+      final name = await ResourcePackPrefs.getFilename();
+      if (mounted) {
+        setState(() {
+          _resourcePackUrl = (url != null && url.isNotEmpty) ? url : null;
+          _resourcePackName = (name != null && name.isNotEmpty) ? name : null;
+          _resourcePackEnabled = enabled;
+          _rpLoading = false;
+        });
+      }
     } catch (_) {
       if (mounted) setState(() => _rpLoading = false);
     }
+  }
+
+  Future<void> _toggleResourcePack(bool enabled) async {
+    setState(() => _resourcePackEnabled = enabled);
+    await ResourcePackPrefs.setEnabled(enabled);
   }
 
   Future<void> reloadResourcePackUrl() => _loadResourcePackUrl();
@@ -266,7 +281,9 @@ class HomeScreenState extends State<HomeScreen> {
     } else {
       await HowToDialogs.showFriendsInstructions(
         context,
-        userRegion: widget.selectedRelay.name.toLowerCase().contains('eu') ? 'eu' : 'us',
+        userRegion: widget.selectedRelay.name.toLowerCase().contains('eu')
+            ? 'eu'
+            : 'us',
       );
     }
   }
@@ -322,12 +339,14 @@ class HomeScreenState extends State<HomeScreen> {
     if (!mounted) return;
     final l = AppLocalizations.of(context)!;
     final message = switch (error.kind) {
-      RelayErrorKind.blocked => error.reason != null
-          ? l.relayBlockedWithReason(error.reason!)
-          : l.relayBlocked,
-      RelayErrorKind.configFailed => error.detail != null
-          ? l.relayConfigFailedDetail(error.statusCode ?? 0, error.detail!)
-          : l.relayConfigFailed(error.statusCode ?? 0),
+      RelayErrorKind.blocked =>
+        error.reason != null
+            ? l.relayBlockedWithReason(error.reason!)
+            : l.relayBlocked,
+      RelayErrorKind.configFailed =>
+        error.detail != null
+            ? l.relayConfigFailedDetail(error.statusCode ?? 0, error.detail!)
+            : l.relayConfigFailed(error.statusCode ?? 0),
       RelayErrorKind.timeout => l.relayTimeout,
       RelayErrorKind.unreachable => l.relayUnreachable,
     };
@@ -353,53 +372,62 @@ class HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Widget content = LayoutBuilder(
-      builder: (context, constraints) => Center(
+      builder: (context, constraints) => Align(
+        alignment: Alignment.topCenter,
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: constraints.maxWidth > 700 ? 900 : double.infinity),
-          child: Padding(
-      padding: const EdgeInsets.fromLTRB(14, 12, 14, 0),
-      child: SingleChildScrollView(
-        controller: _mainScrollController,
-        physics: const ClampingScrollPhysics(),
-        child: ValueListenableBuilder<List<UserServer>>(
-          valueListenable: _userServersNotifier,
-          builder: (context, userServers, _) => ConnectionPanel(
-            ipController: widget.ipController,
-            portController: widget.portController,
-            broadcastingNotifier: _broadcastingNotifier,
-            onStartBroadcast: _startBroadcast,
-            onStopBroadcast: _stopBroadcast,
-            savedServers: userServers,
-            onServerSelected: _onUserServerSelected,
-            onManageServers: widget.onOpenManageServers,
-            onResourcePack: widget.onOpenResourcePack,
-            resourcePackActive: _activeResourcePackUrl != null,
-            resourcePackLoading: _rpLoading,
-            selectedRelayIp: widget.selectedRelay.ip,
-            onRelayChanged: widget.onRelayChanged,
-            nintendoDnsMode: _nintendoDnsMode,
-            onNintendoDnsModeChanged: (value) =>
-                setState(() => _nintendoDnsMode = value),
-            navigationController: widget.navigationController,
-            partnerServersFuture: widget.partnerServersFuture,
-            onOpenPartnerServers: widget.onOpenPartnerServers,
-            bedrockAccounts: _cachedBedrockAccounts ?? [],
-            selectedBedrockXuid: _selectedBedrockXuid,
-            onBedrockAccountChanged: _onBedrockAccountChanged,
-            navChips: _ConnectorNavChips(
-              onSupport: widget.onOpenSupport,
-              onHowTo: widget.onOpenHowTo,
-              onConsole: widget.onOpenConsole,
-              onRelay: widget.onOpenMore,
-            ),
-            onDeleteServer: (index) async {
-              await UserServersStorage.removeServer(index);
-              await loadUserServers();
-              widget.onServerDeleted?.call();
-            },
+          constraints: BoxConstraints(
+            maxWidth: constraints.maxWidth > 700 ? 900 : double.infinity,
           ),
-        ),
-      ),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(14, 12, 14, 0),
+            child: SingleChildScrollView(
+              controller: _mainScrollController,
+              physics: const ClampingScrollPhysics(),
+              child: ValueListenableBuilder<List<UserServer>>(
+                valueListenable: _userServersNotifier,
+                builder: (context, userServers, _) => ConnectionPanel(
+                  availableHeight: constraints.maxHeight.isFinite
+                      ? constraints.maxHeight - 12
+                      : null,
+                  ipController: widget.ipController,
+                  portController: widget.portController,
+                  broadcastingNotifier: _broadcastingNotifier,
+                  onStartBroadcast: _startBroadcast,
+                  onStopBroadcast: _stopBroadcast,
+                  savedServers: userServers,
+                  onServerSelected: _onUserServerSelected,
+                  onManageServers: widget.onOpenManageServers,
+                  onResourcePack: widget.onOpenResourcePack,
+                  resourcePackConfigured: _resourcePackUrl != null,
+                  resourcePackEnabled: _resourcePackEnabled,
+                  resourcePackName: _resourcePackName,
+                  onResourcePackToggle: _toggleResourcePack,
+                  resourcePackLoading: _rpLoading,
+                  selectedRelayIp: widget.selectedRelay.ip,
+                  onRelayChanged: widget.onRelayChanged,
+                  nintendoDnsMode: _nintendoDnsMode,
+                  onNintendoDnsModeChanged: (value) =>
+                      setState(() => _nintendoDnsMode = value),
+                  navigationController: widget.navigationController,
+                  partnerServersFuture: widget.partnerServersFuture,
+                  onOpenPartnerServers: widget.onOpenPartnerServers,
+                  bedrockAccounts: _cachedBedrockAccounts ?? [],
+                  selectedBedrockXuid: _selectedBedrockXuid,
+                  onBedrockAccountChanged: _onBedrockAccountChanged,
+                  navChips: _ConnectorNavChips(
+                    onSupport: widget.onOpenSupport,
+                    onHowTo: widget.onOpenHowTo,
+                    onConsole: widget.onOpenConsole,
+                    onRelay: widget.onOpenMore,
+                  ),
+                  onDeleteServer: (index) async {
+                    await UserServersStorage.removeServer(index);
+                    await loadUserServers();
+                    widget.onServerDeleted?.call();
+                  },
+                ),
+              ),
+            ),
           ),
         ),
       ),
@@ -427,81 +455,75 @@ class _ConnectorNavChips extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
-    final chips = <({IconData icon, String label, VoidCallback onTap})>[
-      if (onSupport != null)
-        (icon: Icons.help_outline_rounded, label: loc.support, onTap: onSupport!),
+    final links = <({IconData icon, String label, VoidCallback onTap})>[
       if (onHowTo != null)
-        (icon: Icons.lightbulb_outline_rounded, label: loc.howToUseMenu, onTap: onHowTo!),
+        (
+          icon: Icons.lightbulb_outline_rounded,
+          label: loc.howToUseMenu,
+          onTap: onHowTo!,
+        ),
       if (onConsole != null)
         (icon: Icons.terminal_rounded, label: loc.console, onTap: onConsole!),
       if (onRelay != null)
-        (icon: Icons.settings_ethernet_rounded, label: loc.relay, onTap: onRelay!),
+        (
+          icon: Icons.settings_ethernet_rounded,
+          label: loc.relay,
+          onTap: onRelay!,
+        ),
+      if (onSupport != null)
+        (
+          icon: Icons.help_outline_rounded,
+          label: loc.support,
+          onTap: onSupport!,
+        ),
     ];
 
-    return Row(
-      children: List.generate(chips.length, (i) {
-        final c = chips[i];
-        return Expanded(
-          child: Padding(
-            padding: EdgeInsets.only(right: i < chips.length - 1 ? 8 : 0),
-            child: _NavChip(icon: c.icon, label: c.label, onTap: c.onTap),
-          ),
-        );
-      }),
+    if (links.isEmpty) return const SizedBox.shrink();
+
+    return Wrap(
+      alignment: WrapAlignment.center,
+      spacing: 18,
+      runSpacing: 10,
+      children: [
+        for (final link in links)
+          _NavLink(icon: link.icon, label: link.label, onTap: link.onTap),
+      ],
     );
   }
 }
 
-class _NavChip extends StatefulWidget {
+class _NavLink extends StatelessWidget {
   final IconData icon;
   final String label;
   final VoidCallback onTap;
 
-  const _NavChip({required this.icon, required this.label, required this.onTap});
-
-  @override
-  State<_NavChip> createState() => _NavChipState();
-}
-
-class _NavChipState extends State<_NavChip> {
-  bool _hovered = false;
-  bool _pressed = false;
+  const _NavLink({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Tooltip(
-      message: widget.label,
-      waitDuration: const Duration(milliseconds: 600),
-      child: MouseRegion(
-        onEnter: (_) => setState(() => _hovered = true),
-        onExit: (_) => setState(() => _hovered = false),
-        child: GestureDetector(
-          onTapDown: (_) => setState(() => _pressed = true),
-          onTapUp: (_) => setState(() => _pressed = false),
-          onTapCancel: () => setState(() => _pressed = false),
-          onTap: widget.onTap,
-          child: AnimatedScale(
-            scale: _pressed ? 0.95 : 1.0,
-            duration: const Duration(milliseconds: 100),
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 160),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              decoration: BoxDecoration(
-                color: _hovered
-                    ? AppTheme.surfaceRaised
-                    : AppTheme.surface.withValues(alpha: 0.60),
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: _hovered ? AppTheme.borderGray : AppTheme.borderLight,
-                ),
-              ),
-              child: Icon(
-                widget.icon,
-                size: 18,
-                color: _hovered ? AppTheme.textSecondary : AppTheme.textMuted,
+    return GestureDetector(
+      onTap: onTap,
+      behavior: HitTestBehavior.opaque,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 6),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, size: 14, color: AppTheme.textMuted),
+            const SizedBox(width: 6),
+            Text(
+              label,
+              style: TextStyle(
+                color: AppTheme.textSecondary,
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
               ),
             ),
-          ),
+          ],
         ),
       ),
     );

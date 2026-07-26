@@ -2663,4 +2663,26 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get undo => 'Rückgängig';
+
+  @override
+  String get modeXboxDesc =>
+      'Überträgt deinen Server an die Konsole in diesem WLAN.';
+
+  @override
+  String get modeNintendoDesc =>
+      'Richte die DNS deiner Switch auf das Relay und tritt dann in Minecraft bei.';
+
+  @override
+  String get modeFriendsDesc =>
+      'Füge den Relay-Bot als Freund hinzu und tritt dann seiner Welt bei.';
+
+  @override
+  String get modeJavaDesc =>
+      'Verbinde dich über das Relay mit einem Java-Edition-Server.';
+
+  @override
+  String get chooseServerTitle => 'Server auswählen';
+
+  @override
+  String get changeLabel => 'Ändern';
 }

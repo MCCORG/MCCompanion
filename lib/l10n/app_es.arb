@@ -1969,5 +1969,11 @@
   "adminNoTicketsForUser": "Sin tickets de este usuario",
   "hideConversation": "Ocultar",
   "conversationHidden": "Conversación oculta",
-  "undo": "Deshacer"
+  "undo": "Deshacer",
+  "modeXboxDesc": "Transmite tu servidor a la consola en esta red Wi-Fi.",
+  "modeNintendoDesc": "Apunta el DNS de tu Switch al relé y luego entra desde Minecraft.",
+  "modeFriendsDesc": "Añade el bot del relé como amigo y entra al mundo que aloja.",
+  "modeJavaDesc": "Conéctate a un servidor de Java Edition a través del relé.",
+  "chooseServerTitle": "Elige un servidor",
+  "changeLabel": "Cambiar"
 }

@@ -2720,30 +2720,30 @@
   "featuredServerPlay": "Play",
   "rpUploadFailedCode": "Upload failed ({code})",
   "@rpUploadFailedCode": {
-      "placeholders": {
-          "code": {
-              "type": "int"
-          }
+    "placeholders": {
+      "code": {
+        "type": "int"
       }
+    }
   },
   "rpUploadFailed": "Upload failed: {error}",
   "@rpUploadFailed": {
-      "placeholders": {
-          "error": {
-              "type": "String"
-          }
+    "placeholders": {
+      "error": {
+        "type": "String"
       }
+    }
   },
   "rpLoadFailed": "Could not load packs",
   "rpRetry": "Retry",
   "rpSearchHint": "Search packs…",
   "rpMergeFailed": "Merge failed: {error}",
   "@rpMergeFailed": {
-      "placeholders": {
-          "error": {
-              "type": "String"
-          }
+    "placeholders": {
+      "error": {
+        "type": "String"
       }
+    }
   },
   "rpMergerSize": "Size",
   "rpMergerCreated": "Created",
@@ -2758,30 +2758,30 @@
   "relayBlocked": "Your IP or account is blocked by MCCompanion. If you think this is a mistake, join our Discord.",
   "relayBlockedWithReason": "Your IP or account is blocked by MCCompanion.\nReason: {reason}\nIf you think this is a mistake, join our Discord.",
   "@relayBlockedWithReason": {
-      "placeholders": {
-          "reason": {
-              "type": "String"
-          }
+    "placeholders": {
+      "reason": {
+        "type": "String"
       }
+    }
   },
   "relayConfigFailed": "Could not set up the relay (status {code}). Try another relay, or join our Discord.",
   "@relayConfigFailed": {
-      "placeholders": {
-          "code": {
-              "type": "int"
-          }
+    "placeholders": {
+      "code": {
+        "type": "int"
       }
+    }
   },
   "relayConfigFailedDetail": "Could not set up the relay (status {code}): {detail}. Try another relay, or join our Discord.",
   "@relayConfigFailedDetail": {
-      "placeholders": {
-          "code": {
-              "type": "int"
-          },
-          "detail": {
-              "type": "String"
-          }
+    "placeholders": {
+      "code": {
+        "type": "int"
+      },
+      "detail": {
+        "type": "String"
       }
+    }
   },
   "relayTimeout": "The relay did not respond in time.",
   "relayUnreachable": "Could not reach the relay.",
@@ -2811,5 +2811,29 @@
   "adminNoTicketsForUser": "No tickets from this user",
   "hideConversation": "Hide",
   "conversationHidden": "Conversation hidden",
-  "undo": "Undo"
+  "undo": "Undo",
+  "modeXboxDesc": "Broadcasts your server to the console on this Wi-Fi network.",
+  "@modeXboxDesc": {
+    "description": "One line explaining what Xbox mode does, shown under the mode picker"
+  },
+  "modeNintendoDesc": "Point your Switch DNS at the relay, then join from Minecraft.",
+  "@modeNintendoDesc": {
+    "description": "One line explaining what Nintendo mode does, shown under the mode picker"
+  },
+  "modeFriendsDesc": "Add the relay bot as a friend, then join the world it hosts.",
+  "@modeFriendsDesc": {
+    "description": "One line explaining what Friends mode does, shown under the mode picker"
+  },
+  "modeJavaDesc": "Connect to a Java Edition server through the relay.",
+  "@modeJavaDesc": {
+    "description": "One line explaining what Java mode does, shown under the mode picker"
+  },
+  "chooseServerTitle": "Choose a server",
+  "@chooseServerTitle": {
+    "description": "Title of the sheet that lists saved servers"
+  },
+  "changeLabel": "Change",
+  "@changeLabel": {
+    "description": "Button that opens the saved server list"
+  }
 }

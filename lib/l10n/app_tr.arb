@@ -1969,5 +1969,11 @@
   "adminNoTicketsForUser": "Bu kullanıcıdan bilet yok",
   "hideConversation": "Gizle",
   "conversationHidden": "Sohbet gizlendi",
-  "undo": "Geri al"
+  "undo": "Geri al",
+  "modeXboxDesc": "Sunucunu bu Wi-Fi ağındaki konsola yayınlar.",
+  "modeNintendoDesc": "Switch'inin DNS'ini röleye yönlendir, sonra Minecraft'tan katıl.",
+  "modeFriendsDesc": "Röle botunu arkadaş olarak ekle, sonra barındırdığı dünyaya katıl.",
+  "modeJavaDesc": "Röle üzerinden bir Java Edition sunucusuna bağlan.",
+  "chooseServerTitle": "Bir sunucu seç",
+  "changeLabel": "Değiştir"
 }

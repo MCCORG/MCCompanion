@@ -2664,4 +2664,26 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get undo => 'Deshacer';
+
+  @override
+  String get modeXboxDesc =>
+      'Transmite tu servidor a la consola en esta red Wi-Fi.';
+
+  @override
+  String get modeNintendoDesc =>
+      'Apunta el DNS de tu Switch al relé y luego entra desde Minecraft.';
+
+  @override
+  String get modeFriendsDesc =>
+      'Añade el bot del relé como amigo y entra al mundo que aloja.';
+
+  @override
+  String get modeJavaDesc =>
+      'Conéctate a un servidor de Java Edition a través del relé.';
+
+  @override
+  String get chooseServerTitle => 'Elige un servidor';
+
+  @override
+  String get changeLabel => 'Cambiar';
 }

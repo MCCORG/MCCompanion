@@ -1284,5 +1284,11 @@
   "adminNoTicketsForUser": "Geen tickets van deze gebruiker",
   "hideConversation": "Verbergen",
   "conversationHidden": "Gesprek verborgen",
-  "undo": "Ongedaan maken"
+  "undo": "Ongedaan maken",
+  "modeXboxDesc": "Zendt je server uit naar de console op dit wifi-netwerk.",
+  "modeNintendoDesc": "Zet de DNS van je Switch op de relay en join daarna in Minecraft.",
+  "modeFriendsDesc": "Voeg de relay-bot toe als vriend en join daarna zijn wereld.",
+  "modeJavaDesc": "Verbind met een Java Edition-server via de relay.",
+  "chooseServerTitle": "Kies een server",
+  "changeLabel": "Wijzigen"
 }

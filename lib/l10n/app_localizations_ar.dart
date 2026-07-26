@@ -2638,4 +2638,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get undo => 'تراجع';
+
+  @override
+  String get modeXboxDesc =>
+      'يبث الخادم الخاص بك إلى وحدة التحكم على شبكة Wi-Fi هذه.';
+
+  @override
+  String get modeNintendoDesc =>
+      'وجّه إعداد DNS في جهاز Switch إلى المُرحّل، ثم انضم من Minecraft.';
+
+  @override
+  String get modeFriendsDesc =>
+      'أضف بوت المُرحّل كصديق، ثم انضم إلى العالم الذي يستضيفه.';
+
+  @override
+  String get modeJavaDesc => 'اتصل بخادم Java Edition عبر المُرحّل.';
+
+  @override
+  String get chooseServerTitle => 'اختر خادمًا';
+
+  @override
+  String get changeLabel => 'تغيير';
 }
