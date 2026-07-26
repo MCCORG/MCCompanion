@@ -133,10 +133,7 @@
   "@invalidPort": {
     "description": "Validation message when port is invalid"
   },
-  "dnsConfigSent": "✅ DNS কনফিগ relay-এ পাঠানো হয়েছে",
-  "@dnsConfigSent": {
-    "description": "Confirmation after sending DNS config to relay"
-  },
+  "dataSentToServers": "ডেটা MCCompanion সার্ভারে পাঠানো হয়েছে",
   "broadcastingStarted": "সম্প্রচার শুরু হয়েছে",
   "@broadcastingStarted": {
     "description": "Snackbar shown when broadcasting starts"
@@ -1971,5 +1968,6 @@
   "conversationHidden": "কথোপকথন লুকানো হয়েছে",
   "undo": "আগের অবস্থায়",
   "chooseServerTitle": "একটি সার্ভার বেছে নিন",
-  "changeLabel": "পরিবর্তন"
+  "changeLabel": "পরিবর্তন",
+  "howToAutoShow": "শুরু করার সময় এটি দেখান"
 }

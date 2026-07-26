@@ -219,7 +219,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get invalidPort => '⚠️ 無効なポート番号です（1-65535）';
 
   @override
-  String get dnsConfigSent => '✅ DNS 設定を relay に送信しました';
+  String get dataSentToServers => 'データをMCCompanionのサーバーに送信しました';
 
   @override
   String get broadcastingStarted => 'ブロードキャストを開始しました';
@@ -2613,4 +2613,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get changeLabel => '変更';
+
+  @override
+  String get howToAutoShow => '開始時にこれを表示';
 }

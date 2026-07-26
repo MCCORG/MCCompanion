@@ -26,16 +26,26 @@ class RelayConfigSender {
     String? bedrockGamertag,
     String? authToken,
     String? resourcePackUrl,
+    void Function(String message)? onDebug,
   }) async {
     final uri = Uri.parse('${base.replaceAll(RegExp(r'/$'), '')}/api/route');
 
-    final body = jsonEncode({
+    final payload = <String, dynamic>{
       'remoteIP': remoteServerIp,
       'remotePort': remoteServerPort,
       'mode': broadcastModeToString(mode),
       if (bedrockGamertag != null) 'bedrockGamertag': bedrockGamertag,
       if (resourcePackUrl != null) 'resourcePackUrl': resourcePackUrl,
-    });
+    };
+    final body = jsonEncode(payload);
+
+    // Reported from the same map that is sent, so the log cannot drift from
+    // the request. The token itself is never printed: logs get copied around.
+    onDebug?.call(
+      'POST $uri\n'
+      'Authorization: ${authToken != null ? 'Bearer <set>' : '<none>'}\n'
+      '${const JsonEncoder.withIndent('  ').convert(payload)}',
+    );
 
     HttpClient? client;
     try {

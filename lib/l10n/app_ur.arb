@@ -133,10 +133,7 @@
   "@invalidPort": {
     "description": "Validation message when port is invalid"
   },
-  "dnsConfigSent": "✅ DNS کنفیگ relay کو بھیج دی گئی",
-  "@dnsConfigSent": {
-    "description": "Confirmation after sending DNS config to relay"
-  },
+  "dataSentToServers": "ڈیٹا MCCompanion سرورز کو بھیج دیا گیا",
   "broadcastingStarted": "براڈکاسٹنگ شروع ہو گئی",
   "@broadcastingStarted": {
     "description": "Snackbar shown when broadcasting starts"
@@ -1968,5 +1965,6 @@
   "conversationHidden": "گفتگو چھپا دی گئی",
   "undo": "واپس",
   "chooseServerTitle": "سرور منتخب کریں",
-  "changeLabel": "تبدیل کریں"
+  "changeLabel": "تبدیل کریں",
+  "howToAutoShow": "شروع کرتے وقت یہ دکھائیں"
 }

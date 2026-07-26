@@ -23,6 +23,7 @@ import '../services/user_service.dart';
 import '../services/auth_service.dart';
 import '../models/user_model.dart';
 import '../util/bedrock_account_prefs.dart';
+import '../util/howto_prefs.dart';
 import '../util/resource_pack_prefs.dart';
 import '../widgets/dialogs/howto_dialogs.dart';
 
@@ -272,6 +273,14 @@ class HomeScreenState extends State<HomeScreen> {
       resourcePackUrl: resourcePackUrl,
     );
     if (!ok) return;
+    final topic = mode == PanelMode.nintendo
+        ? HowToTopic.nintendo
+        : HowToTopic.friends;
+    if (!await HowToPrefs.isAutoShowEnabled(topic)) {
+      _snack(loc.dataSentToServers, AppTheme.accent, icon: Icons.check_rounded);
+      return;
+    }
+    if (!mounted) return;
     if (mode == PanelMode.nintendo) {
       await HowToDialogs.showNintendoInstructions(
         context,

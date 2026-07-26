@@ -224,7 +224,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get invalidPort => '⚠️ অবৈধ পোর্ট নম্বর (1-65535)';
 
   @override
-  String get dnsConfigSent => '✅ DNS কনফিগ relay-এ পাঠানো হয়েছে';
+  String get dataSentToServers => 'ডেটা MCCompanion সার্ভারে পাঠানো হয়েছে';
 
   @override
   String get broadcastingStarted => 'সম্প্রচার শুরু হয়েছে';
@@ -2665,4 +2665,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get changeLabel => 'পরিবর্তন';
+
+  @override
+  String get howToAutoShow => 'শুরু করার সময় এটি দেখান';
 }

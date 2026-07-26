@@ -227,7 +227,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get invalidPort => '⚠️ Numéro de port invalide (1-65535)';
 
   @override
-  String get dnsConfigSent => '✅ Configuration DNS envoyée au relais';
+  String get dataSentToServers => 'Données envoyées aux serveurs MCCompanion';
 
   @override
   String get broadcastingStarted => 'Diffusion démarrée';
@@ -2668,4 +2668,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get changeLabel => 'Modifier';
+
+  @override
+  String get howToAutoShow => 'Afficher ceci au démarrage';
 }

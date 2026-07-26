@@ -225,7 +225,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get invalidPort => '⚠️ Geçersiz port numarası (1-65535)';
 
   @override
-  String get dnsConfigSent => '✅ DNS yapılandırması aktarıcıya gönderildi';
+  String get dataSentToServers => 'Veriler MCCompanion sunucularına gönderildi';
 
   @override
   String get broadcastingStarted => 'Yayın başladı';
@@ -2661,4 +2661,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get changeLabel => 'Değiştir';
+
+  @override
+  String get howToAutoShow => 'Başlatınca bunu göster';
 }

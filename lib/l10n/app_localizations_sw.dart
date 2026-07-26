@@ -223,7 +223,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get invalidPort => '⚠️ Nambari ya port si sahihi (1-65535)';
 
   @override
-  String get dnsConfigSent => '✅ Usanidi wa DNS umetumwa kwa relay';
+  String get dataSentToServers => 'Data imetumwa kwa seva za MCCompanion';
 
   @override
   String get broadcastingStarted => 'Utangazaji umeanza';
@@ -2673,4 +2673,7 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get changeLabel => 'Badilisha';
+
+  @override
+  String get howToAutoShow => 'Onyesha hii ninapoanza';
 }

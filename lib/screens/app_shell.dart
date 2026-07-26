@@ -12,6 +12,7 @@ import '../services/message_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import '../services/push_notification_service.dart';
 import '../constants/app_constants.dart';
+import '../widgets/console/console_widget.dart';
 import '../widgets/navigation/bottom_nav_bar.dart';
 import '../widgets/navigation/howto_menu.dart';
 import '../widgets/navigation/help_menu.dart';
@@ -43,6 +44,7 @@ import '../services/subscription_service.dart';
 import '../services/home_customization_service.dart';
 import '../services/theme_service.dart';
 import '../theme/app_theme.dart';
+import '../widgets/components/app_toast.dart';
 import '../widgets/onboarding/onboarding_wizard.dart';
 import 'package:flutter/services.dart';
 
@@ -242,6 +244,13 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     final logs = _logsNotifier.value;
     if (logs.isEmpty) return;
     await Clipboard.setData(ClipboardData(text: logs.join('\n')));
+    if (!mounted) return;
+    AppToast.show(
+      context,
+      message: AppLocalizations.of(context)!.copiedLogs(logs.length),
+      icon: Icons.check_rounded,
+      color: AppTheme.accent,
+    );
   }
 
   RelayPingResult _fallbackRelay() {
@@ -729,9 +738,37 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
             navRightActive:
                 svc.navRight != null && _isNavFeatureActive(svc.navRight!),
           ),
-          body: SafeArea(top: true, bottom: false, child: _buildPageStack()),
+          body: Stack(
+            children: [
+              SafeArea(top: true, bottom: false, child: _buildPageStack()),
+              _buildConsoleOverlay(),
+            ],
+          ),
         ),
       ],
+    );
+  }
+
+  Widget _buildConsoleOverlay() {
+    return ValueListenableBuilder<bool>(
+      valueListenable: navigationController.consoleOpen,
+      builder: (_, open, __) {
+        if (!open) return const SizedBox.shrink();
+        return Positioned.fill(
+          child: ValueListenableBuilder<bool>(
+            valueListenable: _debugEnabledNotifier,
+            builder: (_, debugEnabled, __) => ConsoleDialog(
+              logsNotifier: _logsNotifier,
+              scrollController: _logScrollController,
+              debugEnabled: debugEnabled,
+              onToggleDebug: _toggleDebug,
+              onClearLogs: _clearLogs,
+              onCopyLogs: _copyLogs,
+              onClose: navigationController.hideConsole,
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -767,15 +804,20 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
               VerticalDivider(width: 1, color: AppTheme.borderGray),
               Expanded(
                 child: ClipRect(
-                  child: Navigator(
-                    key: _desktopNavKey,
-                    onGenerateRoute: (settings) => MaterialPageRoute(
-                      settings: settings,
-                      builder: (_) => ValueListenableBuilder<int>(
-                        valueListenable: _pageIndexNotifier,
-                        builder: (_, _, _) => _buildPageStack(),
+                  child: Stack(
+                    children: [
+                      Navigator(
+                        key: _desktopNavKey,
+                        onGenerateRoute: (settings) => MaterialPageRoute(
+                          settings: settings,
+                          builder: (_) => ValueListenableBuilder<int>(
+                            valueListenable: _pageIndexNotifier,
+                            builder: (_, _, _) => _buildPageStack(),
+                          ),
+                        ),
                       ),
-                    ),
+                      _buildConsoleOverlay(),
+                    ],
                   ),
                 ),
               ),

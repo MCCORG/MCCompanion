@@ -133,10 +133,7 @@
   "@invalidPort": {
     "description": "Validation message when port is invalid"
   },
-  "dnsConfigSent": "✅ Usanidi wa DNS umetumwa kwa relay",
-  "@dnsConfigSent": {
-    "description": "Confirmation after sending DNS config to relay"
-  },
+  "dataSentToServers": "Data imetumwa kwa seva za MCCompanion",
   "broadcastingStarted": "Utangazaji umeanza",
   "@broadcastingStarted": {
     "description": "Snackbar shown when broadcasting starts"
@@ -1968,5 +1965,6 @@
   "conversationHidden": "Mazungumzo yamefichwa",
   "undo": "Tendua",
   "chooseServerTitle": "Chagua seva",
-  "changeLabel": "Badilisha"
+  "changeLabel": "Badilisha",
+  "howToAutoShow": "Onyesha hii ninapoanza"
 }

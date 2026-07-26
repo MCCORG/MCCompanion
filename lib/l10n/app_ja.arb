@@ -133,10 +133,7 @@
   "@invalidPort": {
     "description": "Validation message when port is invalid"
   },
-  "dnsConfigSent": "✅ DNS 設定を relay に送信しました",
-  "@dnsConfigSent": {
-    "description": "Confirmation after sending DNS config to relay"
-  },
+  "dataSentToServers": "データをMCCompanionのサーバーに送信しました",
   "broadcastingStarted": "ブロードキャストを開始しました",
   "@broadcastingStarted": {
     "description": "Snackbar shown when broadcasting starts"
@@ -1971,5 +1968,6 @@
   "conversationHidden": "会話を非表示にしました",
   "undo": "元に戻す",
   "chooseServerTitle": "サーバーを選ぶ",
-  "changeLabel": "変更"
+  "changeLabel": "変更",
+  "howToAutoShow": "開始時にこれを表示"
 }

@@ -133,10 +133,7 @@
   "@invalidPort": {
     "description": "Validation message when port is invalid"
   },
-  "dnsConfigSent": "✅ Konfigurasi DNS dikirim ke relay",
-  "@dnsConfigSent": {
-    "description": "Confirmation after sending DNS config to relay"
-  },
+  "dataSentToServers": "Data dikirim ke server MCCompanion",
   "broadcastingStarted": "Siaran dimulai",
   "@broadcastingStarted": {
     "description": "Snackbar shown when broadcasting starts"
@@ -1968,5 +1965,6 @@
   "conversationHidden": "Obrolan disembunyikan",
   "undo": "Urungkan",
   "chooseServerTitle": "Pilih server",
-  "changeLabel": "Ubah"
+  "changeLabel": "Ubah",
+  "howToAutoShow": "Tampilkan ini saat mulai"
 }

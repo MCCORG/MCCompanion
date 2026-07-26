@@ -7,6 +7,7 @@ import '../../util/user_servers.dart';
 import '../../util/partners_servers.dart';
 import '../../services/navigation_controller.dart';
 import '../../widgets/components/app_painters.dart';
+import '../../util/howto_prefs.dart';
 import '../../widgets/dialogs/howto_dialogs.dart';
 import '../../widgets/featured_server_hero.dart';
 import 'my_servers_tab.dart';
@@ -159,13 +160,17 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
       if (mounted) setState(() => _starting = false);
     }
 
+    if (!mounted || !_broadcasting) return;
+
+    final topic = _mode == PanelMode.java ? HowToTopic.java : HowToTopic.xbox;
+    if (!await HowToPrefs.isAutoShowEnabled(topic)) return;
     if (!mounted) return;
 
     switch (_mode) {
       case PanelMode.lan:
-        if (_broadcasting) await HowToDialogs.showXboxInstructions(context);
+        await HowToDialogs.showXboxInstructions(context);
       case PanelMode.java:
-        if (_broadcasting) await HowToDialogs.showJavaInstructions(context);
+        await HowToDialogs.showJavaInstructions(context);
       case PanelMode.nintendo:
       case PanelMode.friends:
         break;

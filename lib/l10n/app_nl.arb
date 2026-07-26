@@ -133,10 +133,7 @@
   "@invalidPort": {
     "description": "Validation message when port is invalid"
   },
-  "dnsConfigSent": "✅ DNS configuratie verzonden naar relay",
-  "@dnsConfigSent": {
-    "description": "Confirmation after sending DNS config to relay"
-  },
+  "dataSentToServers": "Gegevens verstuurd naar de MCCompanion-servers",
   "broadcastingStarted": "Uitzending gestart",
   "@broadcastingStarted": {
     "description": "Snackbar shown when broadcasting starts"
@@ -1286,5 +1283,6 @@
   "conversationHidden": "Gesprek verborgen",
   "undo": "Ongedaan maken",
   "chooseServerTitle": "Kies een server",
-  "changeLabel": "Wijzigen"
+  "changeLabel": "Wijzigen",
+  "howToAutoShow": "Dit tonen als ik start"
 }

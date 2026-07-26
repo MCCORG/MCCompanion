@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../widgets/components/app_toast.dart';
-import '../widgets/console/console_widget.dart';
 import '../widgets/dialogs/language_dialog.dart';
 
 class NavigationController {
@@ -69,25 +68,10 @@ class NavigationController {
   }
 
   Future<void> showConsole(BuildContext context) async {
-    if (consoleOpen.value) return;
     consoleOpen.value = true;
-    await showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (_) => ValueListenableBuilder<bool>(
-        valueListenable: debugEnabledNotifier,
-        builder: (_, debugEnabled, __) => ConsoleDialog(
-          logsNotifier: logsNotifier,
-          scrollController: logsScrollController,
-          debugEnabled: debugEnabled,
-          onToggleDebug: toggleDebugCallback ?? () {},
-          onClearLogs: clearLogsCallback ?? () {},
-          onCopyLogs: copyLogsCallback ?? () {},
-        ),
-      ),
-    );
-    consoleOpen.value = false;
   }
+
+  void hideConsole() => consoleOpen.value = false;
 
   void showHowToMenu(BuildContext context) =>
       showHowToMenuCallback?.call(context);

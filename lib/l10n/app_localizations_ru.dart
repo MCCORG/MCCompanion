@@ -227,7 +227,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get invalidPort => '⚠️ Неверный номер порта (1-65535)';
 
   @override
-  String get dnsConfigSent => '✅ Конфигурация DNS отправлена на relay-сервер';
+  String get dataSentToServers => 'Данные отправлены на серверы MCCompanion';
 
   @override
   String get broadcastingStarted => 'Трансляция началась';
@@ -2662,4 +2662,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get changeLabel => 'Изменить';
+
+  @override
+  String get howToAutoShow => 'Показывать это при запуске';
 }

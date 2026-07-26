@@ -22,9 +22,14 @@ class RelayError {
   factory RelayError.blocked({String? reason}) =>
       RelayError._(RelayErrorKind.blocked, reason: reason);
   factory RelayError.configFailed({required int statusCode, String? detail}) =>
-      RelayError._(RelayErrorKind.configFailed, statusCode: statusCode, detail: detail);
+      RelayError._(
+        RelayErrorKind.configFailed,
+        statusCode: statusCode,
+        detail: detail,
+      );
   factory RelayError.timeout() => const RelayError._(RelayErrorKind.timeout);
-  factory RelayError.unreachable() => const RelayError._(RelayErrorKind.unreachable);
+  factory RelayError.unreachable() =>
+      const RelayError._(RelayErrorKind.unreachable);
 }
 
 class BroadcastManager {
@@ -103,7 +108,9 @@ class BroadcastManager {
         if (parsed is Map &&
             parsed['message'] != null &&
             (parsed['message'] as String).trim().isNotEmpty) {
-          return RelayError.blocked(reason: (parsed['message'] as String).trim());
+          return RelayError.blocked(
+            reason: (parsed['message'] as String).trim(),
+          );
         }
       } catch (_) {}
       return RelayError.blocked();
@@ -138,6 +145,7 @@ class BroadcastManager {
         mode: mode,
         bedrockGamertag: bedrockGamertag,
         resourcePackUrl: resourcePackUrl,
+        onDebug: (message) => logger.debug('Relay config\n$message'),
       );
 
       if (result.success) {
@@ -191,6 +199,7 @@ class BroadcastManager {
         bedrockGamertag: bedrockGamertag,
         authToken: authToken,
         resourcePackUrl: resourcePackUrl,
+        onDebug: (message) => logger.debug('Relay config\n$message'),
       );
 
       if (!result.success) {

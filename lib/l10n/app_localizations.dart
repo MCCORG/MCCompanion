@@ -540,11 +540,11 @@ abstract class AppLocalizations {
   /// **'⚠️ Invalid port number (1-65535)'**
   String get invalidPort;
 
-  /// Confirmation after sending DNS config to relay
+  /// Confirmation toast after a DNS mode config reaches the relay
   ///
   /// In en, this message translates to:
-  /// **'✅ DNS config sent to relay'**
-  String get dnsConfigSent;
+  /// **'Data sent to MCCompanion servers'**
+  String get dataSentToServers;
 
   /// Snackbar shown when broadcasting starts
   ///
@@ -4967,6 +4967,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Change'**
   String get changeLabel;
+
+  /// Toggle inside the how to sheet: whether it opens by itself after starting a broadcast
+  ///
+  /// In en, this message translates to:
+  /// **'Show this when I start'**
+  String get howToAutoShow;
 }
 
 class _AppLocalizationsDelegate

@@ -153,9 +153,9 @@
   "@invalidPort": {
     "description": "Validation message when port is invalid"
   },
-  "dnsConfigSent": "✅ DNS config sent to relay",
-  "@dnsConfigSent": {
-    "description": "Confirmation after sending DNS config to relay"
+  "dataSentToServers": "Data sent to MCCompanion servers",
+  "@dataSentToServers": {
+    "description": "Confirmation toast after a DNS mode config reaches the relay"
   },
   "broadcastingStarted": "Broadcasting started",
   "@broadcastingStarted": {
@@ -2819,5 +2819,9 @@
   "changeLabel": "Change",
   "@changeLabel": {
     "description": "Button that opens the saved server list"
+  },
+  "howToAutoShow": "Show this when I start",
+  "@howToAutoShow": {
+    "description": "Toggle inside the how to sheet: whether it opens by itself after starting a broadcast"
   }
 }

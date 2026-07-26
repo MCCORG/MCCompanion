@@ -223,7 +223,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get invalidPort => '⚠️ अमान्य पोर्ट नंबर (1-65535)';
 
   @override
-  String get dnsConfigSent => '✅ DNS config relay को भेज दिया गया';
+  String get dataSentToServers => 'डेटा MCCompanion सर्वर पर भेज दिया गया';
 
   @override
   String get broadcastingStarted => 'ब्रॉडकास्टिंग शुरू हो गई';
@@ -2662,4 +2662,7 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get changeLabel => 'बदलें';
+
+  @override
+  String get howToAutoShow => 'शुरू करते समय यह दिखाएं';
 }

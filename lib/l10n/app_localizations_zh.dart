@@ -219,7 +219,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get invalidPort => '⚠️ 无效的端口号（1-65535）';
 
   @override
-  String get dnsConfigSent => '✅ DNS 配置已发送到中继服务器';
+  String get dataSentToServers => '数据已发送到 MCCompanion 服务器';
 
   @override
   String get broadcastingStarted => '广播已开始';
@@ -2606,4 +2606,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get changeLabel => '更改';
+
+  @override
+  String get howToAutoShow => '启动时显示此说明';
 }

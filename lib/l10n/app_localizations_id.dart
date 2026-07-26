@@ -224,7 +224,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get invalidPort => '⚠️ Nomor port tidak valid (1-65535)';
 
   @override
-  String get dnsConfigSent => '✅ Konfigurasi DNS dikirim ke relay';
+  String get dataSentToServers => 'Data dikirim ke server MCCompanion';
 
   @override
   String get broadcastingStarted => 'Siaran dimulai';
@@ -2663,4 +2663,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get changeLabel => 'Ubah';
+
+  @override
+  String get howToAutoShow => 'Tampilkan ini saat mulai';
 }

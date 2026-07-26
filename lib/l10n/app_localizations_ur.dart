@@ -224,7 +224,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get invalidPort => '⚠️ غلط پورٹ نمبر (1-65535)';
 
   @override
-  String get dnsConfigSent => '✅ DNS کنفیگ relay کو بھیج دی گئی';
+  String get dataSentToServers => 'ڈیٹا MCCompanion سرورز کو بھیج دیا گیا';
 
   @override
   String get broadcastingStarted => 'براڈکاسٹنگ شروع ہو گئی';
@@ -2658,4 +2658,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get changeLabel => 'تبدیل کریں';
+
+  @override
+  String get howToAutoShow => 'شروع کرتے وقت یہ دکھائیں';
 }

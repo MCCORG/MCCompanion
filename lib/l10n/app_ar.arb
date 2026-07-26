@@ -133,10 +133,7 @@
   "@invalidPort": {
     "description": "Validation message when port is invalid"
   },
-  "dnsConfigSent": "✅ تم إرسال إعداد DNS إلى خادم الترحيل",
-  "@dnsConfigSent": {
-    "description": "Confirmation after sending DNS config to relay"
-  },
+  "dataSentToServers": "تم إرسال البيانات إلى خوادم MCCompanion",
   "broadcastingStarted": "تم بدء البث",
   "@broadcastingStarted": {
     "description": "Snackbar shown when broadcasting starts"
@@ -1971,5 +1968,6 @@
   "conversationHidden": "تم إخفاء المحادثة",
   "undo": "تراجع",
   "chooseServerTitle": "اختر خادمًا",
-  "changeLabel": "تغيير"
+  "changeLabel": "تغيير",
+  "howToAutoShow": "أظهر هذا عند البدء"
 }

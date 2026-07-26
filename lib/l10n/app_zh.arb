@@ -133,10 +133,7 @@
   "@invalidPort": {
     "description": "Validation message when port is invalid"
   },
-  "dnsConfigSent": "✅ DNS 配置已发送到中继服务器",
-  "@dnsConfigSent": {
-    "description": "Confirmation after sending DNS config to relay"
-  },
+  "dataSentToServers": "数据已发送到 MCCompanion 服务器",
   "broadcastingStarted": "广播已开始",
   "@broadcastingStarted": {
     "description": "Snackbar shown when broadcasting starts"
@@ -1971,5 +1968,6 @@
   "conversationHidden": "对话已隐藏",
   "undo": "撤销",
   "chooseServerTitle": "选择服务器",
-  "changeLabel": "更改"
+  "changeLabel": "更改",
+  "howToAutoShow": "启动时显示此说明"
 }

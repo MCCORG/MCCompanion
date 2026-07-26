@@ -133,10 +133,7 @@
   "@invalidPort": {
     "description": "Validation message when port is invalid"
   },
-  "dnsConfigSent": "✅ Configuração DNS enviada ao relay",
-  "@dnsConfigSent": {
-    "description": "Confirmation after sending DNS config to relay"
-  },
+  "dataSentToServers": "Dados enviados para os servidores MCCompanion",
   "broadcastingStarted": "Transmissão iniciada",
   "@broadcastingStarted": {
     "description": "Snackbar shown when broadcasting starts"
@@ -1971,5 +1968,6 @@
   "conversationHidden": "Conversa ocultada",
   "undo": "Anular",
   "chooseServerTitle": "Escolhe um servidor",
-  "changeLabel": "Alterar"
+  "changeLabel": "Alterar",
+  "howToAutoShow": "Mostrar isto ao iniciar"
 }

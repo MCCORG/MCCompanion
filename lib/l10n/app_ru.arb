@@ -133,10 +133,7 @@
   "@invalidPort": {
     "description": "Validation message when port is invalid"
   },
-  "dnsConfigSent": "✅ Конфигурация DNS отправлена на relay-сервер",
-  "@dnsConfigSent": {
-    "description": "Confirmation after sending DNS config to relay"
-  },
+  "dataSentToServers": "Данные отправлены на серверы MCCompanion",
   "broadcastingStarted": "Трансляция началась",
   "@broadcastingStarted": {
     "description": "Snackbar shown when broadcasting starts"
@@ -1971,5 +1968,6 @@
   "conversationHidden": "Диалог скрыт",
   "undo": "Отменить",
   "chooseServerTitle": "Выберите сервер",
-  "changeLabel": "Изменить"
+  "changeLabel": "Изменить",
+  "howToAutoShow": "Показывать это при запуске"
 }

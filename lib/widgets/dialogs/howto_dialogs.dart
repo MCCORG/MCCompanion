@@ -5,6 +5,7 @@ import '../../l10n/app_localizations.dart';
 import '../../models/bot_model.dart';
 import '../../services/bot_service.dart';
 import '../../theme/app_theme.dart';
+import '../../util/howto_prefs.dart';
 import '../components/app_toast.dart';
 
 class HowToDialogs {
@@ -12,6 +13,7 @@ class HowToDialogs {
     final loc = AppLocalizations.of(context)!;
     return _showSheet(
       context,
+      topic: HowToTopic.xbox,
       icon: FontAwesomeIcons.xbox,
       color: AppTheme.modeXbox,
       title: loc.howToXboxTitle,
@@ -28,6 +30,7 @@ class HowToDialogs {
     final loc = AppLocalizations.of(context)!;
     return _showSheet(
       context,
+      topic: HowToTopic.nintendo,
       icon: FontAwesomeIcons.gamepad,
       color: AppTheme.modeNintendo,
       title: loc.howToNintendoTitle,
@@ -46,6 +49,7 @@ class HowToDialogs {
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (_) => _FriendsSheet(
+        topic: HowToTopic.friends,
         color: AppTheme.modeFriends,
         title: loc.howToFriendsTitle,
         subtitle: loc.howToFriendsSubtitle,
@@ -58,6 +62,7 @@ class HowToDialogs {
     final loc = AppLocalizations.of(context)!;
     return _showSheet(
       context,
+      topic: HowToTopic.java,
       icon: FontAwesomeIcons.java,
       color: AppTheme.modeJava,
       title: loc.howToJavaTitle,
@@ -68,6 +73,7 @@ class HowToDialogs {
 
   static Future<void> _showSheet(
     BuildContext context, {
+    required HowToTopic topic,
     required FaIconData icon,
     required Color color,
     required String title,
@@ -79,6 +85,7 @@ class HowToDialogs {
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (_) => _InstructionSheet(
+        topic: topic,
         icon: icon,
         color: color,
         title: title,
@@ -90,6 +97,7 @@ class HowToDialogs {
 }
 
 class _InstructionSheet extends StatelessWidget {
+  final HowToTopic? topic;
   final FaIconData icon;
   final Color color;
   final String title;
@@ -97,6 +105,7 @@ class _InstructionSheet extends StatelessWidget {
   final String body;
 
   const _InstructionSheet({
+    this.topic,
     required this.icon,
     required this.color,
     required this.title,
@@ -120,7 +129,12 @@ class _InstructionSheet extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           _DragHandle(color: color),
-          _SheetHeader(icon: icon, color: color, title: title, subtitle: subtitle),
+          _SheetHeader(
+            icon: icon,
+            color: color,
+            title: title,
+            subtitle: subtitle,
+          ),
           const Divider(height: 1, color: AppTheme.borderDim),
           Flexible(
             child: SingleChildScrollView(
@@ -130,26 +144,35 @@ class _InstructionSheet extends StatelessWidget {
           ),
           Container(
             color: AppTheme.surface,
-            padding: EdgeInsets.fromLTRB(16, 10, 16, 14 + bottom),
-            child: SizedBox(
-              height: 50,
-              width: double.infinity,
-              child: ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: color,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14),
+            padding: EdgeInsets.fromLTRB(16, 4, 16, 14 + bottom),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (topic != null) AutoShowToggle(topic: topic!, color: color),
+                SizedBox(
+                  height: 50,
+                  width: double.infinity,
+                  child: ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: color,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      elevation: 0,
+                    ),
+                    onPressed: () => Navigator.of(context).pop(),
+                    icon: const Icon(Icons.check_rounded, size: 18),
+                    label: Text(
+                      loc.iUnderstand,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 15,
+                      ),
+                    ),
                   ),
-                  elevation: 0,
                 ),
-                onPressed: () => Navigator.of(context).pop(),
-                icon: const Icon(Icons.check_rounded, size: 18),
-                label: Text(
-                  loc.iUnderstand,
-                  style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
-                ),
-              ),
+              ],
             ),
           ),
         ],
@@ -159,12 +182,14 @@ class _InstructionSheet extends StatelessWidget {
 }
 
 class _FriendsSheet extends StatefulWidget {
+  final HowToTopic? topic;
   final Color color;
   final String title;
   final String subtitle;
   final String? userRegion;
 
   const _FriendsSheet({
+    this.topic,
     required this.color,
     required this.title,
     required this.subtitle,
@@ -182,11 +207,20 @@ class _FriendsSheetState extends State<_FriendsSheet> {
   @override
   void initState() {
     super.initState();
-    BotService.fetchAllBots().then((data) {
-      if (mounted) setState(() { _bots = data; _loading = false; });
-    }).catchError((_) {
-      if (mounted) setState(() { _loading = false; });
-    });
+    BotService.fetchAllBots()
+        .then((data) {
+          if (mounted)
+            setState(() {
+              _bots = data;
+              _loading = false;
+            });
+        })
+        .catchError((_) {
+          if (mounted)
+            setState(() {
+              _loading = false;
+            });
+        });
   }
 
   @override
@@ -219,31 +253,59 @@ class _FriendsSheetState extends State<_FriendsSheet> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _StepCard(number: 1, text: loc.friendsHowToStep1, color: color),
-                  const SizedBox(height: 8),
-                  _StepCard(number: 2, text: loc.friendsHowToStep2, color: color),
-                  const SizedBox(height: 12),
-                  if (_loading)
-                    const Center(child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 16),
-                      child: CircularProgressIndicator(),
-                    ))
-                  else if (_bots == null || (_bots!.eu.isEmpty && _bots!.us.isEmpty))
-                    _NoteBubble(text: loc.friendsBotLoadError, color: color)
-                  else ...[
-                    _BotRegionSection(flag: '🇪🇺', regionLabel: loc.regionEurope, bots: _bots!.eu, color: color, isUserRegion: widget.userRegion == 'eu'),
-                    const SizedBox(height: 10),
-                    _BotRegionSection(flag: '🇺🇸', regionLabel: loc.regionUnitedStates, bots: _bots!.us, color: color, isUserRegion: widget.userRegion == 'us'),
-                  ],
-                  const SizedBox(height: 12),
-                  _StepCard(number: 3, text: loc.friendsHowToStep3, color: color),
-                  const SizedBox(height: 8),
-                  _StepCard(number: 4, text: loc.friendsHowToStep4, color: color),
-                  const SizedBox(height: 12),
-                  _NoteBubble(
-                    text: loc.friendsHowToNote,
+                  _StepCard(
+                    number: 1,
+                    text: loc.friendsHowToStep1,
                     color: color,
                   ),
+                  const SizedBox(height: 8),
+                  _StepCard(
+                    number: 2,
+                    text: loc.friendsHowToStep2,
+                    color: color,
+                  ),
+                  const SizedBox(height: 12),
+                  if (_loading)
+                    const Center(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 16),
+                        child: CircularProgressIndicator(),
+                      ),
+                    )
+                  else if (_bots == null ||
+                      (_bots!.eu.isEmpty && _bots!.us.isEmpty))
+                    _NoteBubble(text: loc.friendsBotLoadError, color: color)
+                  else ...[
+                    _BotRegionSection(
+                      flag: '🇪🇺',
+                      regionLabel: loc.regionEurope,
+                      bots: _bots!.eu,
+                      color: color,
+                      isUserRegion: widget.userRegion == 'eu',
+                    ),
+                    const SizedBox(height: 10),
+                    _BotRegionSection(
+                      flag: '🇺🇸',
+                      regionLabel: loc.regionUnitedStates,
+                      bots: _bots!.us,
+                      color: color,
+                      isUserRegion: widget.userRegion == 'us',
+                    ),
+                  ],
+                  const SizedBox(height: 12),
+                  _StepCard(
+                    number: 3,
+                    text: loc.friendsHowToStep3,
+                    color: color,
+                  ),
+                  const SizedBox(height: 8),
+                  _StepCard(
+                    number: 4,
+                    text: loc.friendsHowToStep4,
+                    color: color,
+                  ),
+                  const SizedBox(height: 12),
+                  _NoteBubble(text: loc.friendsHowToNote, color: color),
                   const SizedBox(height: 8),
                 ],
               ),
@@ -251,21 +313,36 @@ class _FriendsSheetState extends State<_FriendsSheet> {
           ),
           Container(
             color: AppTheme.surface,
-            padding: EdgeInsets.fromLTRB(16, 10, 16, 14 + bottom),
-            child: SizedBox(
-              height: 50,
-              width: double.infinity,
-              child: ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: color,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                  elevation: 0,
+            padding: EdgeInsets.fromLTRB(16, 4, 16, 14 + bottom),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (widget.topic != null)
+                  AutoShowToggle(topic: widget.topic!, color: color),
+                SizedBox(
+                  height: 50,
+                  width: double.infinity,
+                  child: ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: color,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      elevation: 0,
+                    ),
+                    onPressed: () => Navigator.of(context).pop(),
+                    icon: const Icon(Icons.check_rounded, size: 18),
+                    label: Text(
+                      loc.iUnderstand,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
                 ),
-                onPressed: () => Navigator.of(context).pop(),
-                icon: const Icon(Icons.check_rounded, size: 18),
-                label: Text(loc.iUnderstand, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15)),
-              ),
+              ],
             ),
           ),
         ],
@@ -358,7 +435,11 @@ class _SheetHeader extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: AppTheme.borderGray),
               ),
-              child: Icon(Icons.close_rounded, size: 16, color: AppTheme.textMuted),
+              child: Icon(
+                Icons.close_rounded,
+                size: 16,
+                color: AppTheme.textMuted,
+              ),
             ),
           ),
         ],
@@ -388,48 +469,68 @@ class StepContent extends StatelessWidget {
 
       final stepMatch = RegExp(r'^(\d+)\.\s+(.+)$').firstMatch(line);
       if (stepMatch != null) {
-        widgets.add(_StepCard(
-          number: int.parse(stepMatch.group(1)!),
-          text: stepMatch.group(2)!,
-          color: color,
-        ));
+        widgets.add(
+          _StepCard(
+            number: int.parse(stepMatch.group(1)!),
+            text: stepMatch.group(2)!,
+            color: color,
+          ),
+        );
         widgets.add(const SizedBox(height: 8));
         continue;
       }
 
-      if (line.startsWith('- ') || line.startsWith('– ') || line.startsWith('• ')) {
+      if (line.startsWith('- ') ||
+          line.startsWith('– ') ||
+          line.startsWith('• ')) {
         widgets.add(_BulletCard(text: line.substring(2), color: color));
         widgets.add(const SizedBox(height: 6));
         continue;
       }
 
       if (line.endsWith(':') ||
-          (line == line.toUpperCase() && line.length > 2 && !line.contains('.'))) {
+          (line == line.toUpperCase() &&
+              line.length > 2 &&
+              !line.contains('.'))) {
         widgets.add(_SectionHeader(text: line, color: color));
         widgets.add(const SizedBox(height: 8));
         continue;
       }
 
-      if (line.startsWith('⚠️') || line.startsWith('✅') ||
-          line.startsWith('📱') || line.startsWith('🔄')) {
+      if (line.startsWith('⚠️') ||
+          line.startsWith('✅') ||
+          line.startsWith('📱') ||
+          line.startsWith('🔄')) {
         widgets.add(_NoteBubble(text: line, color: color));
         widgets.add(const SizedBox(height: 8));
         continue;
       }
 
-      widgets.add(Container(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-        decoration: BoxDecoration(
-          color: AppTheme.surface,
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: AppTheme.borderDim),
+      widgets.add(
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          decoration: BoxDecoration(
+            color: AppTheme.surface,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: AppTheme.borderDim),
+          ),
+          child: Text(
+            line,
+            style: TextStyle(
+              color: AppTheme.textSecondary,
+              fontSize: 13,
+              height: 1.65,
+            ),
+          ),
         ),
-        child: Text(line, style: TextStyle(color: AppTheme.textSecondary, fontSize: 13, height: 1.65)),
-      ));
+      );
       widgets.add(const SizedBox(height: 8));
     }
 
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: widgets);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: widgets,
+    );
   }
 }
 
@@ -438,7 +539,11 @@ class _StepCard extends StatelessWidget {
   final String text;
   final Color color;
 
-  const _StepCard({required this.number, required this.text, required this.color});
+  const _StepCard({
+    required this.number,
+    required this.text,
+    required this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -461,14 +566,28 @@ class _StepCard extends StatelessWidget {
               border: Border.all(color: color.withValues(alpha: 0.40)),
             ),
             child: Center(
-              child: Text('$number', style: TextStyle(color: color, fontSize: 13, fontWeight: FontWeight.w700)),
+              child: Text(
+                '$number',
+                style: TextStyle(
+                  color: color,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
             ),
           ),
           const SizedBox(width: 12),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(top: 5),
-              child: Text(text, style: TextStyle(color: AppTheme.textPrimary, fontSize: 14, height: 1.55)),
+              child: Text(
+                text,
+                style: TextStyle(
+                  color: AppTheme.textPrimary,
+                  fontSize: 14,
+                  height: 1.55,
+                ),
+              ),
             ),
           ),
         ],
@@ -499,12 +618,22 @@ class _BulletCard extends StatelessWidget {
             child: Container(
               width: 5,
               height: 5,
-              decoration: BoxDecoration(color: color.withValues(alpha: 0.65), shape: BoxShape.circle),
+              decoration: BoxDecoration(
+                color: color.withValues(alpha: 0.65),
+                shape: BoxShape.circle,
+              ),
             ),
           ),
           const SizedBox(width: 12),
           Expanded(
-            child: Text(text, style: TextStyle(color: AppTheme.textSecondary, fontSize: 13, height: 1.60)),
+            child: Text(
+              text,
+              style: TextStyle(
+                color: AppTheme.textSecondary,
+                fontSize: 13,
+                height: 1.60,
+              ),
+            ),
           ),
         ],
       ),
@@ -526,13 +655,21 @@ class _SectionHeader extends StatelessWidget {
           Container(
             width: 3,
             height: 16,
-            decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(2)),
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.circular(2),
+            ),
           ),
           const SizedBox(width: 8),
           Flexible(
             child: Text(
               text,
-              style: TextStyle(color: color, fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1.1),
+              style: TextStyle(
+                color: color,
+                fontSize: 11,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 1.1,
+              ),
               overflow: TextOverflow.ellipsis,
             ),
           ),
@@ -559,7 +696,15 @@ class _NoteBubble extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         border: Border.all(color: bubbleColor.withValues(alpha: 0.25)),
       ),
-      child: Text(text, style: TextStyle(color: bubbleColor, fontSize: 13, height: 1.6, fontWeight: FontWeight.w500)),
+      child: Text(
+        text,
+        style: TextStyle(
+          color: bubbleColor,
+          fontSize: 13,
+          height: 1.6,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
     );
   }
 }
@@ -586,7 +731,9 @@ class _BotRegionSection extends StatelessWidget {
         color: AppTheme.surface,
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
-          color: isUserRegion ? color.withValues(alpha: 0.35) : AppTheme.borderGray,
+          color: isUserRegion
+              ? color.withValues(alpha: 0.35)
+              : AppTheme.borderGray,
         ),
       ),
       child: Column(
@@ -610,12 +757,22 @@ class _BotRegionSection extends StatelessWidget {
                 if (isUserRegion) ...[
                   const SizedBox(width: 6),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 7,
+                      vertical: 2,
+                    ),
                     decoration: BoxDecoration(
                       color: color.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(6),
                     ),
-                    child: Text(AppLocalizations.of(context)!.yourRegion, style: TextStyle(color: color, fontSize: 9, fontWeight: FontWeight.w700)),
+                    child: Text(
+                      AppLocalizations.of(context)!.yourRegion,
+                      style: TextStyle(
+                        color: color,
+                        fontSize: 9,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
                   ),
                 ],
               ],
@@ -638,15 +795,20 @@ class _BotRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final isOnline = bot.isOnline;
     final isFull = bot.isFull;
-    final textColor = isOnline && !isFull ? AppTheme.textPrimary : AppTheme.textSecondary;
-    final dotColor = isFull ? AppTheme.warning : (isOnline ? AppTheme.success : AppTheme.textSecondary);
+    final textColor = isOnline && !isFull
+        ? AppTheme.textPrimary
+        : AppTheme.textSecondary;
+    final dotColor = isFull
+        ? AppTheme.warning
+        : (isOnline ? AppTheme.success : AppTheme.textSecondary);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       child: Row(
         children: [
           Container(
-            width: 8, height: 8,
+            width: 8,
+            height: 8,
             decoration: BoxDecoration(color: dotColor, shape: BoxShape.circle),
           ),
           const SizedBox(width: 10),
@@ -654,13 +816,40 @@ class _BotRow extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(bot.gamertag, style: TextStyle(color: textColor, fontSize: 14, fontWeight: FontWeight.w600)),
+                Text(
+                  bot.gamertag,
+                  style: TextStyle(
+                    color: textColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
                 if (!isOnline)
-                  Text(AppLocalizations.of(context)!.botStatusOffline, style: TextStyle(color: AppTheme.textSecondary.withValues(alpha: 0.6), fontSize: 11))
+                  Text(
+                    AppLocalizations.of(context)!.botStatusOffline,
+                    style: TextStyle(
+                      color: AppTheme.textSecondary.withValues(alpha: 0.6),
+                      fontSize: 11,
+                    ),
+                  )
                 else if (isFull)
-                  Text(AppLocalizations.of(context)!.botStatusFull, style: const TextStyle(color: AppTheme.warning, fontSize: 11))
+                  Text(
+                    AppLocalizations.of(context)!.botStatusFull,
+                    style: const TextStyle(
+                      color: AppTheme.warning,
+                      fontSize: 11,
+                    ),
+                  )
                 else
-                  Text(AppLocalizations.of(context)!.botFriendCount(bot.friendCount ?? 0, bot.maxFriends), style: TextStyle(color: AppTheme.textSecondary, fontSize: 11)),
+                  Text(
+                    AppLocalizations.of(
+                      context,
+                    )!.botFriendCount(bot.friendCount ?? 0, bot.maxFriends),
+                    style: TextStyle(
+                      color: AppTheme.textSecondary,
+                      fontSize: 11,
+                    ),
+                  ),
               ],
             ),
           ),
@@ -677,13 +866,23 @@ class _BotRow extends StatelessWidget {
                 );
               },
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
                 decoration: BoxDecoration(
                   color: color.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(color: color.withValues(alpha: 0.25)),
                 ),
-                child: Text(AppLocalizations.of(context)!.copyLabel, style: TextStyle(color: color, fontSize: 12, fontWeight: FontWeight.w600)),
+                child: Text(
+                  AppLocalizations.of(context)!.copyLabel,
+                  style: TextStyle(
+                    color: color,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
             ),
         ],
@@ -710,7 +909,11 @@ class InstructionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => _InstructionSheet(
-    icon: icon, color: color, title: title, subtitle: subtitle, body: body,
+    icon: icon,
+    color: color,
+    title: title,
+    subtitle: subtitle,
+    body: body,
   );
 }
 
@@ -730,6 +933,62 @@ class FriendsInstructionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => _FriendsSheet(
-    color: color, title: title, subtitle: subtitle, userRegion: userRegion,
+    color: color,
+    title: title,
+    subtitle: subtitle,
+    userRegion: userRegion,
   );
+}
+
+class AutoShowToggle extends StatefulWidget {
+  final HowToTopic topic;
+  final Color color;
+  const AutoShowToggle({super.key, required this.topic, required this.color});
+
+  @override
+  State<AutoShowToggle> createState() => _AutoShowToggleState();
+}
+
+class _AutoShowToggleState extends State<AutoShowToggle> {
+  bool? _enabled;
+
+  @override
+  void initState() {
+    super.initState();
+    HowToPrefs.isAutoShowEnabled(widget.topic).then((value) {
+      if (mounted) setState(() => _enabled = value);
+    });
+  }
+
+  Future<void> _set(bool value) async {
+    setState(() => _enabled = value);
+    await HowToPrefs.setAutoShow(widget.topic, value);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    final enabled = _enabled;
+    if (enabled == null) return const SizedBox(height: 44);
+
+    return SizedBox(
+      height: 44,
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              loc.howToAutoShow,
+              style: TextStyle(color: AppTheme.textSecondary, fontSize: 13),
+            ),
+          ),
+          Switch.adaptive(
+            value: enabled,
+            onChanged: _set,
+            activeThumbColor: Colors.white,
+            activeTrackColor: widget.color,
+          ),
+        ],
+      ),
+    );
+  }
 }

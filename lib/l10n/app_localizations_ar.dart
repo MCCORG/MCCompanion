@@ -219,7 +219,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get invalidPort => '⚠️ رقم منفذ غير صالح (1-65535)';
 
   @override
-  String get dnsConfigSent => '✅ تم إرسال إعداد DNS إلى خادم الترحيل';
+  String get dataSentToServers => 'تم إرسال البيانات إلى خوادم MCCompanion';
 
   @override
   String get broadcastingStarted => 'تم بدء البث';
@@ -2644,4 +2644,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get changeLabel => 'تغيير';
+
+  @override
+  String get howToAutoShow => 'أظهر هذا عند البدء';
 }

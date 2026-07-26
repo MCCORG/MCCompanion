@@ -224,7 +224,8 @@ class AppLocalizationsNl extends AppLocalizations {
   String get invalidPort => '⚠️ Ongeldig poortnummer (1-65535)';
 
   @override
-  String get dnsConfigSent => '✅ DNS configuratie verzonden naar relay';
+  String get dataSentToServers =>
+      'Gegevens verstuurd naar de MCCompanion-servers';
 
   @override
   String get broadcastingStarted => 'Uitzending gestart';
@@ -2677,4 +2678,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get changeLabel => 'Wijzigen';
+
+  @override
+  String get howToAutoShow => 'Dit tonen als ik start';
 }
