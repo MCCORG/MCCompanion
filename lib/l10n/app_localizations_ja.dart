@@ -2609,18 +2609,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get undo => '元に戻す';
 
   @override
-  String get modeXboxDesc => '同じWi-Fi上のコンソールにサーバーを配信します。';
-
-  @override
-  String get modeNintendoDesc => 'SwitchのDNSをリレーに設定してから、Minecraftで参加します。';
-
-  @override
-  String get modeFriendsDesc => 'リレーのボットをフレンド登録し、そのワールドに参加します。';
-
-  @override
-  String get modeJavaDesc => 'リレー経由でJava Editionのサーバーに接続します。';
-
-  @override
   String get chooseServerTitle => 'サーバーを選ぶ';
 
   @override

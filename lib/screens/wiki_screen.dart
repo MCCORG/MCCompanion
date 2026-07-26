@@ -1184,8 +1184,9 @@ class _WikiScreenState extends State<WikiScreen> {
   }
 
   Widget _buildHistoryRow(List<WikiHistoryEntry> entries) {
+    const contentHeight = 36.0 + 5 + 30;
     return SizedBox(
-      height: 82,
+      height: contentHeight + 14,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 2),
@@ -1235,16 +1236,18 @@ class _WikiScreenState extends State<WikiScreen> {
                       color: AppTheme.textMuted,
                     ),
                   const SizedBox(height: 5),
-                  Text(
-                    e.title,
-                    style: TextStyle(
-                      color: AppTheme.textSecondary,
-                      fontSize: 9,
-                      fontWeight: FontWeight.w500,
+                  Flexible(
+                    child: Text(
+                      e.title,
+                      style: TextStyle(
+                        color: AppTheme.textSecondary,
+                        fontSize: 9,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
                     ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
                   ),
                 ],
               ),

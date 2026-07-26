@@ -2673,22 +2673,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get undo => 'Ongedaan maken';
 
   @override
-  String get modeXboxDesc =>
-      'Zendt je server uit naar de console op dit wifi-netwerk.';
-
-  @override
-  String get modeNintendoDesc =>
-      'Zet de DNS van je Switch op de relay en join daarna in Minecraft.';
-
-  @override
-  String get modeFriendsDesc =>
-      'Voeg de relay-bot toe als vriend en join daarna zijn wereld.';
-
-  @override
-  String get modeJavaDesc =>
-      'Verbind met een Java Edition-server via de relay.';
-
-  @override
   String get chooseServerTitle => 'Kies een server';
 
   @override

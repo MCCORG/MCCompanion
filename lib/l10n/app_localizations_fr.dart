@@ -2664,22 +2664,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get undo => 'Annuler';
 
   @override
-  String get modeXboxDesc =>
-      'Diffuse ton serveur vers la console sur ce réseau Wi-Fi.';
-
-  @override
-  String get modeNintendoDesc =>
-      'Dirige le DNS de ta Switch vers le relais, puis rejoins depuis Minecraft.';
-
-  @override
-  String get modeFriendsDesc =>
-      'Ajoute le bot du relais en ami, puis rejoins le monde qu\'il héberge.';
-
-  @override
-  String get modeJavaDesc =>
-      'Connecte-toi à un serveur Java Edition via le relais.';
-
-  @override
   String get chooseServerTitle => 'Choisir un serveur';
 
   @override

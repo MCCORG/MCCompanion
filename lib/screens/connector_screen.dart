@@ -376,7 +376,7 @@ class HomeScreenState extends State<HomeScreen> {
         alignment: Alignment.topCenter,
         child: ConstrainedBox(
           constraints: BoxConstraints(
-            maxWidth: constraints.maxWidth > 700 ? 900 : double.infinity,
+            maxWidth: constraints.maxWidth > 700 ? 1180 : double.infinity,
           ),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(14, 12, 14, 0),
@@ -414,10 +414,10 @@ class HomeScreenState extends State<HomeScreen> {
                   bedrockAccounts: _cachedBedrockAccounts ?? [],
                   selectedBedrockXuid: _selectedBedrockXuid,
                   onBedrockAccountChanged: _onBedrockAccountChanged,
-                  navChips: _ConnectorNavChips(
+                  navChipsBuilder: (consoleVisible) => _ConnectorNavChips(
                     onSupport: widget.onOpenSupport,
                     onHowTo: widget.onOpenHowTo,
-                    onConsole: widget.onOpenConsole,
+                    onConsole: consoleVisible ? null : widget.onOpenConsole,
                     onRelay: widget.onOpenMore,
                   ),
                   onDeleteServer: (index) async {
@@ -492,7 +492,7 @@ class _ConnectorNavChips extends StatelessWidget {
   }
 }
 
-class _NavLink extends StatelessWidget {
+class _NavLink extends StatefulWidget {
   final IconData icon;
   final String label;
   final VoidCallback onTap;
@@ -504,26 +504,42 @@ class _NavLink extends StatelessWidget {
   });
 
   @override
+  State<_NavLink> createState() => _NavLinkState();
+}
+
+class _NavLinkState extends State<_NavLink> {
+  bool _hovered = false;
+
+  @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      behavior: HitTestBehavior.opaque,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 6),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 14, color: AppTheme.textMuted),
-            const SizedBox(width: 6),
-            Text(
-              label,
-              style: TextStyle(
-                color: AppTheme.textSecondary,
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: GestureDetector(
+        onTap: widget.onTap,
+        behavior: HitTestBehavior.opaque,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                widget.icon,
+                size: 14,
+                color: _hovered ? AppTheme.accent : AppTheme.textMuted,
               ),
-            ),
-          ],
+              const SizedBox(width: 6),
+              Text(
+                widget.label,
+                style: TextStyle(
+                  color: _hovered ? AppTheme.accent : AppTheme.textSecondary,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1970,10 +1970,6 @@
   "hideConversation": "লুকান",
   "conversationHidden": "কথোপকথন লুকানো হয়েছে",
   "undo": "আগের অবস্থায়",
-  "modeXboxDesc": "এই ওয়াই-ফাই নেটওয়ার্কে থাকা কনসোলে আপনার সার্ভার সম্প্রচার করে।",
-  "modeNintendoDesc": "আপনার Switch-এর DNS রিলেতে সেট করুন, তারপর Minecraft থেকে যোগ দিন।",
-  "modeFriendsDesc": "রিলে বটটিকে বন্ধু হিসেবে যোগ করুন, তারপর তার ওয়ার্ল্ডে যোগ দিন।",
-  "modeJavaDesc": "রিলের মাধ্যমে একটি Java Edition সার্ভারে যুক্ত হন।",
   "chooseServerTitle": "একটি সার্ভার বেছে নিন",
   "changeLabel": "পরিবর্তন"
 }

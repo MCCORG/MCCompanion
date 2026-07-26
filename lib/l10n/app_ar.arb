@@ -1970,10 +1970,6 @@
   "hideConversation": "إخفاء",
   "conversationHidden": "تم إخفاء المحادثة",
   "undo": "تراجع",
-  "modeXboxDesc": "يبث الخادم الخاص بك إلى وحدة التحكم على شبكة Wi-Fi هذه.",
-  "modeNintendoDesc": "وجّه إعداد DNS في جهاز Switch إلى المُرحّل، ثم انضم من Minecraft.",
-  "modeFriendsDesc": "أضف بوت المُرحّل كصديق، ثم انضم إلى العالم الذي يستضيفه.",
-  "modeJavaDesc": "اتصل بخادم Java Edition عبر المُرحّل.",
   "chooseServerTitle": "اختر خادمًا",
   "changeLabel": "تغيير"
 }

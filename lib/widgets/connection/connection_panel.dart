@@ -9,6 +9,7 @@ import '../../services/navigation_controller.dart';
 import '../../widgets/components/app_painters.dart';
 import '../../widgets/dialogs/howto_dialogs.dart';
 import '../../widgets/featured_server_hero.dart';
+import 'my_servers_tab.dart';
 import 'server_picker_sheet.dart';
 
 enum PanelMode { lan, nintendo, friends, java }
@@ -46,7 +47,7 @@ class ConnectionPanel extends StatefulWidget {
     this.bedrockAccounts = const [],
     this.selectedBedrockXuid,
     this.onBedrockAccountChanged,
-    this.navChips,
+    this.navChipsBuilder,
     this.resourcePackConfigured = false,
     this.resourcePackEnabled = false,
     this.resourcePackName,
@@ -75,7 +76,7 @@ class ConnectionPanel extends StatefulWidget {
   final List<BedrockAccount> bedrockAccounts;
   final String? selectedBedrockXuid;
   final ValueChanged<String>? onBedrockAccountChanged;
-  final Widget? navChips;
+  final Widget Function(bool consoleVisible)? navChipsBuilder;
 
   final bool resourcePackConfigured;
   final bool resourcePackEnabled;
@@ -185,37 +186,32 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final isDesktop = constraints.maxWidth > 800;
+        final wide = constraints.maxWidth >= 900;
         return Align(
           alignment: Alignment.topCenter,
           child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: isDesktop ? double.infinity : 720,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                FeaturedServerHero(
-                  partnerServersFuture: widget.partnerServersFuture,
-                  ipController: widget.ipController,
-                  portController: widget.portController,
-                  broadcasting: broadcasting,
-                ),
-                _spreadBelowHero(_buildSteps(broadcasting, loc)),
-              ],
-            ),
+            constraints: BoxConstraints(maxWidth: wide ? 1180 : 720),
+            child: wide
+                ? _buildWideLayout(broadcasting, loc)
+                : _buildNarrowLayout(broadcasting, loc),
           ),
         );
       },
     );
   }
 
+  Widget _hero(bool broadcasting) => FeaturedServerHero(
+    partnerServersFuture: widget.partnerServersFuture,
+    ipController: widget.ipController,
+    portController: widget.portController,
+    broadcasting: broadcasting,
+  );
+
   Widget _spreadBelowHero(Widget steps) {
     final available = widget.availableHeight;
     if (available == null) return steps;
 
-    final remaining = available - FeaturedServerHero.height;
+    final remaining = available - FeaturedServerHero.defaultHeight;
     if (remaining <= 0) return steps;
 
     return ConstrainedBox(
@@ -224,21 +220,57 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     );
   }
 
-  Widget _buildSteps(bool broadcasting, AppLocalizations loc) {
+  Widget _buildNarrowLayout(bool broadcasting, AppLocalizations loc) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
       children: [
-        const SizedBox(height: 22),
-        _stepLabel('1', loc.serversSection),
-        const SizedBox(height: 10),
-        _buildServerCard(broadcasting, loc),
-        const SizedBox(height: 30),
-        _stepLabel('2', loc.selectModeSection),
+        _hero(broadcasting),
+        _spreadBelowHero(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(height: 22),
+              _buildConfigColumn(broadcasting, loc),
+              const SizedBox(height: 30),
+              _buildActionColumn(broadcasting, loc),
+              const SizedBox(height: 18),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildWideLayout(bool broadcasting, AppLocalizations loc) {
+    final available = widget.availableHeight;
+    final rowHeight = available != null
+        ? (available - 24).clamp(520.0, 1100.0)
+        : 620.0;
+
+    return SizedBox(
+      height: rowHeight,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(flex: 4, child: _buildWideLeft(broadcasting, loc)),
+          const SizedBox(width: 32),
+          Expanded(flex: 3, child: _buildWideRight(broadcasting, loc)),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildWideLeft(bool broadcasting, AppLocalizations loc) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        _hero(broadcasting),
+        const SizedBox(height: 34),
+        _stepLabel(null, loc.selectModeSection),
         const SizedBox(height: 10),
         _buildModeChips(broadcasting, loc),
-        const SizedBox(height: 10),
-        _buildModeDescription(loc),
         if (_mode == PanelMode.lan && widget.bedrockAccounts.length > 1) ...[
           const SizedBox(height: 10),
           Align(
@@ -254,13 +286,66 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
         ],
         const SizedBox(height: 30),
         _buildStartButton(broadcasting, loc),
+        const SizedBox(height: 26),
+        _buildResourcePackRow(broadcasting, loc),
+        const Spacer(),
+        if (widget.navChipsBuilder != null) widget.navChipsBuilder!(false),
+      ],
+    );
+  }
+
+  Widget _buildWideRight(bool broadcasting, AppLocalizations loc) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        _stepLabel(null, loc.serversSection),
+        const SizedBox(height: 10),
+        Expanded(child: _buildInlineServerList(broadcasting, loc)),
+      ],
+    );
+  }
+
+  Widget _buildConfigColumn(bool broadcasting, AppLocalizations loc) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _stepLabel('1', loc.serversSection),
+        const SizedBox(height: 10),
+        _buildServerCard(broadcasting, loc),
+        const SizedBox(height: 30),
+        _stepLabel('2', loc.selectModeSection),
+        const SizedBox(height: 10),
+        _buildModeChips(broadcasting, loc),
+        if (_mode == PanelMode.lan && widget.bedrockAccounts.length > 1) ...[
+          const SizedBox(height: 10),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: _BedrockAccountSelector(
+              accounts: widget.bedrockAccounts,
+              selectedXuid: widget.selectedBedrockXuid,
+              onChanged: widget.onBedrockAccountChanged,
+              color: _modes.firstWhere((c) => c.mode == _mode).color,
+              enabled: !broadcasting,
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+
+  Widget _buildActionColumn(bool broadcasting, AppLocalizations loc) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _buildStartButton(broadcasting, loc),
         const SizedBox(height: 22),
         _buildResourcePackRow(broadcasting, loc),
-        if (widget.navChips != null) ...[
+        if (widget.navChipsBuilder != null) ...[
           const SizedBox(height: 24),
-          widget.navChips!,
+          widget.navChipsBuilder!(false),
         ],
-        const SizedBox(height: 18),
       ],
     );
   }
@@ -275,7 +360,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
         return Expanded(
           child: Padding(
             padding: EdgeInsets.only(right: i < _modes.length - 1 ? 8 : 0),
-            child: GestureDetector(
+            child: _Hoverable(
               onTap: broadcasting || isSelected
                   ? null
                   : () {
@@ -285,7 +370,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                             cfg.mode == PanelMode.friends,
                       );
                     },
-              child: AnimatedContainer(
+              builder: (hovered) => AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
                 height: 84,
                 decoration: BoxDecoration(
@@ -294,11 +379,18 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                           cfg.color.withValues(alpha: 0.32),
                           AppTheme.surfaceRaisedSolid,
                         )
+                      : hovered
+                      ? Color.alphaBlend(
+                          cfg.color.withValues(alpha: 0.12),
+                          AppTheme.surfaceRaisedSolid,
+                        )
                       : AppTheme.surface.withValues(alpha: 0.50),
                   borderRadius: BorderRadius.circular(14),
                   border: Border.all(
                     color: isSelected
                         ? cfg.color.withValues(alpha: 0.55)
+                        : hovered
+                        ? cfg.color.withValues(alpha: 0.35)
                         : AppTheme.borderLight,
                     width: isSelected ? 1.5 : 1.0,
                   ),
@@ -343,14 +435,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     );
   }
 
-  String _modeDescription(PanelMode mode, AppLocalizations loc) =>
-      switch (mode) {
-        PanelMode.lan => loc.modeXboxDesc,
-        PanelMode.nintendo => loc.modeNintendoDesc,
-        PanelMode.friends => loc.modeFriendsDesc,
-        PanelMode.java => loc.modeJavaDesc,
-      };
-
   void _openServerPicker() {
     ServerPickerSheet.show(
       context,
@@ -384,15 +468,20 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
         ? loc.noServerYet.split('\n').first
         : loc.chooseServerTitle;
 
-    return GestureDetector(
+    return _Hoverable(
       onTap: broadcasting ? null : _openServerPicker,
-      child: Container(
+      builder: (hovered) => AnimatedContainer(
+        duration: const Duration(milliseconds: 140),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
         decoration: BoxDecoration(
-          color: AppTheme.surface,
+          color: hovered ? AppTheme.surfaceRaised : AppTheme.surface,
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
-            color: hasServer ? AppTheme.borderGray : AppTheme.borderLight,
+            color: hovered
+                ? AppTheme.accent.withValues(alpha: 0.35)
+                : hasServer
+                ? AppTheme.borderGray
+                : AppTheme.borderLight,
           ),
         ),
         child: Row(
@@ -466,10 +555,70 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     );
   }
 
-  Widget _buildModeDescription(AppLocalizations loc) => Text(
-    _modeDescription(_mode, loc),
-    style: TextStyle(color: AppTheme.textSecondary, fontSize: 12, height: 1.45),
-  );
+  Widget _buildInlineServerList(bool broadcasting, AppLocalizations loc) {
+    return Container(
+      decoration: BoxDecoration(
+        color: AppTheme.surface.withValues(alpha: 0.45),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: AppTheme.borderLight),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: MyServersTab(
+              savedServers: widget.savedServers,
+              ipController: widget.ipController,
+              portController: widget.portController,
+              onServerSelected: widget.onServerSelected,
+              broadcasting: broadcasting,
+              onDelete: widget.onDeleteServer,
+              selectedAddress: widget.ipController.text.trim(),
+              selectedPort: int.tryParse(widget.portController.text),
+            ),
+          ),
+          const Divider(height: 1, thickness: 1, color: AppTheme.borderDim),
+          _Hoverable(
+            onTap: broadcasting ? null : widget.onManageServers,
+            builder: (hovered) => AnimatedContainer(
+              duration: const Duration(milliseconds: 140),
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
+              color: hovered
+                  ? AppTheme.surfaceRaised.withValues(alpha: 0.55)
+                  : Colors.transparent,
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.settings_rounded,
+                    size: 14,
+                    color: broadcasting
+                        ? AppTheme.textDisabled
+                        : hovered
+                        ? AppTheme.accent
+                        : AppTheme.textMuted,
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    loc.manageServers,
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: broadcasting
+                          ? AppTheme.textDisabled
+                          : hovered
+                          ? AppTheme.accent
+                          : AppTheme.textSecondary,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget _buildResourcePackRow(bool broadcasting, AppLocalizations loc) {
     final configured = widget.resourcePackConfigured;
@@ -492,13 +641,17 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
               : AppTheme.borderLight,
         ),
       ),
+      clipBehavior: Clip.antiAlias,
       child: Row(
         children: [
           Expanded(
-            child: GestureDetector(
+            child: _Hoverable(
               onTap: broadcasting ? null : widget.onResourcePack,
-              behavior: HitTestBehavior.opaque,
-              child: Padding(
+              builder: (hovered) => AnimatedContainer(
+                duration: const Duration(milliseconds: 140),
+                color: hovered
+                    ? AppTheme.surfaceRaised.withValues(alpha: 0.55)
+                    : Colors.transparent,
                 padding: const EdgeInsets.fromLTRB(14, 14, 8, 14),
                 child: Row(
                   children: [
@@ -611,20 +764,26 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
             PanelMode.java => loc.startJavaMode,
           };
 
-    return GestureDetector(
+    return _Hoverable(
       onTap: enabled
           ? (broadcasting ? widget.onStopBroadcast : _handleStart)
           : null,
-      child: ClipRRect(
+      builder: (hovered) => ClipRRect(
         borderRadius: BorderRadius.circular(16),
         child: SizedBox(
           height: 62,
           child: Stack(
             fit: StackFit.expand,
             children: [
-              Container(
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 140),
                 color: enabled
-                    ? color
+                    ? (hovered
+                          ? Color.alphaBlend(
+                              Colors.white.withValues(alpha: 0.12),
+                              color,
+                            )
+                          : color)
                     : Color.alphaBlend(
                         color.withValues(alpha: 0.28),
                         AppTheme.surfaceRaisedSolid,
@@ -715,27 +874,29 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     );
   }
 
-  Widget _stepLabel(String step, String text) => Row(
+  Widget _stepLabel(String? step, String text) => Row(
     children: [
-      Container(
-        width: 18,
-        height: 18,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: AppTheme.surfaceRaised,
-          shape: BoxShape.circle,
-          border: Border.all(color: AppTheme.borderGray),
-        ),
-        child: Text(
-          step,
-          style: TextStyle(
-            color: AppTheme.textSecondary,
-            fontSize: 10,
-            fontWeight: FontWeight.w700,
+      if (step != null) ...[
+        Container(
+          width: 18,
+          height: 18,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: AppTheme.surfaceRaised,
+            shape: BoxShape.circle,
+            border: Border.all(color: AppTheme.borderGray),
+          ),
+          child: Text(
+            step,
+            style: TextStyle(
+              color: AppTheme.textSecondary,
+              fontSize: 10,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ),
-      ),
-      const SizedBox(width: 8),
+        const SizedBox(width: 8),
+      ],
       Text(
         text,
         style: TextStyle(
@@ -869,6 +1030,35 @@ class _BedrockAccountSelector extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _Hoverable extends StatefulWidget {
+  final VoidCallback? onTap;
+  final Widget Function(bool hovered) builder;
+
+  const _Hoverable({required this.onTap, required this.builder});
+
+  @override
+  State<_Hoverable> createState() => _HoverableState();
+}
+
+class _HoverableState extends State<_Hoverable> {
+  bool _hovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final enabled = widget.onTap != null;
+    return MouseRegion(
+      cursor: enabled ? SystemMouseCursors.click : MouseCursor.defer,
+      onEnter: enabled ? (_) => setState(() => _hovered = true) : null,
+      onExit: enabled ? (_) => setState(() => _hovered = false) : null,
+      child: GestureDetector(
+        onTap: widget.onTap,
+        behavior: HitTestBehavior.opaque,
+        child: widget.builder(enabled && _hovered),
       ),
     );
   }

@@ -2602,18 +2602,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get undo => '撤销';
 
   @override
-  String get modeXboxDesc => '将你的服务器广播到此 Wi-Fi 网络中的主机。';
-
-  @override
-  String get modeNintendoDesc => '将 Switch 的 DNS 指向中继，然后在 Minecraft 中加入。';
-
-  @override
-  String get modeFriendsDesc => '将中继机器人加为好友，然后加入它托管的世界。';
-
-  @override
-  String get modeJavaDesc => '通过中继连接到 Java 版服务器。';
-
-  @override
   String get chooseServerTitle => '选择服务器';
 
   @override

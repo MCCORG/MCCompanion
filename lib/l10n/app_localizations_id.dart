@@ -2659,21 +2659,6 @@ class AppLocalizationsId extends AppLocalizations {
   String get undo => 'Urungkan';
 
   @override
-  String get modeXboxDesc =>
-      'Menyiarkan servermu ke konsol di jaringan Wi-Fi ini.';
-
-  @override
-  String get modeNintendoDesc =>
-      'Arahkan DNS Switch-mu ke relay, lalu gabung dari Minecraft.';
-
-  @override
-  String get modeFriendsDesc =>
-      'Tambahkan bot relay sebagai teman, lalu gabung ke dunia yang dihosting.';
-
-  @override
-  String get modeJavaDesc => 'Sambungkan ke server Java Edition lewat relay.';
-
-  @override
   String get chooseServerTitle => 'Pilih server';
 
   @override

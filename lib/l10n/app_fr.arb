@@ -1970,10 +1970,6 @@
   "hideConversation": "Masquer",
   "conversationHidden": "Conversation masquée",
   "undo": "Annuler",
-  "modeXboxDesc": "Diffuse ton serveur vers la console sur ce réseau Wi-Fi.",
-  "modeNintendoDesc": "Dirige le DNS de ta Switch vers le relais, puis rejoins depuis Minecraft.",
-  "modeFriendsDesc": "Ajoute le bot du relais en ami, puis rejoins le monde qu'il héberge.",
-  "modeJavaDesc": "Connecte-toi à un serveur Java Edition via le relais.",
   "chooseServerTitle": "Choisir un serveur",
   "changeLabel": "Modifier"
 }

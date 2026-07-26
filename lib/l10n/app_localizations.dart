@@ -4956,30 +4956,6 @@ abstract class AppLocalizations {
   /// **'Undo'**
   String get undo;
 
-  /// One line explaining what Xbox mode does, shown under the mode picker
-  ///
-  /// In en, this message translates to:
-  /// **'Broadcasts your server to the console on this Wi-Fi network.'**
-  String get modeXboxDesc;
-
-  /// One line explaining what Nintendo mode does, shown under the mode picker
-  ///
-  /// In en, this message translates to:
-  /// **'Point your Switch DNS at the relay, then join from Minecraft.'**
-  String get modeNintendoDesc;
-
-  /// One line explaining what Friends mode does, shown under the mode picker
-  ///
-  /// In en, this message translates to:
-  /// **'Add the relay bot as a friend, then join the world it hosts.'**
-  String get modeFriendsDesc;
-
-  /// One line explaining what Java mode does, shown under the mode picker
-  ///
-  /// In en, this message translates to:
-  /// **'Connect to a Java Edition server through the relay.'**
-  String get modeJavaDesc;
-
   /// Title of the sheet that lists saved servers
   ///
   /// In en, this message translates to:

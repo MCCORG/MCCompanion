@@ -1970,10 +1970,6 @@
   "hideConversation": "Скрыть",
   "conversationHidden": "Диалог скрыт",
   "undo": "Отменить",
-  "modeXboxDesc": "Транслирует ваш сервер на консоль в этой сети Wi-Fi.",
-  "modeNintendoDesc": "Укажите DNS вашей Switch на релей, затем подключитесь из Minecraft.",
-  "modeFriendsDesc": "Добавьте бота релея в друзья и зайдите в его мир.",
-  "modeJavaDesc": "Подключитесь к серверу Java Edition через релей.",
   "chooseServerTitle": "Выберите сервер",
   "changeLabel": "Изменить"
 }

@@ -1970,10 +1970,6 @@
   "hideConversation": "隐藏",
   "conversationHidden": "对话已隐藏",
   "undo": "撤销",
-  "modeXboxDesc": "将你的服务器广播到此 Wi-Fi 网络中的主机。",
-  "modeNintendoDesc": "将 Switch 的 DNS 指向中继，然后在 Minecraft 中加入。",
-  "modeFriendsDesc": "将中继机器人加为好友，然后加入它托管的世界。",
-  "modeJavaDesc": "通过中继连接到 Java 版服务器。",
   "chooseServerTitle": "选择服务器",
   "changeLabel": "更改"
 }

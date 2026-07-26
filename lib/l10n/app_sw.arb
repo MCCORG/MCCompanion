@@ -1967,10 +1967,6 @@
   "hideConversation": "Ficha",
   "conversationHidden": "Mazungumzo yamefichwa",
   "undo": "Tendua",
-  "modeXboxDesc": "Hutangaza seva yako kwa konsoli iliyo kwenye mtandao huu wa Wi-Fi.",
-  "modeNintendoDesc": "Elekeza DNS ya Switch yako kwenye relay, kisha jiunge kutoka Minecraft.",
-  "modeFriendsDesc": "Mwongeze boti ya relay kama rafiki, kisha jiunge na ulimwengu wake.",
-  "modeJavaDesc": "Unganisha kwenye seva ya Java Edition kupitia relay.",
   "chooseServerTitle": "Chagua seva",
   "changeLabel": "Badilisha"
 }

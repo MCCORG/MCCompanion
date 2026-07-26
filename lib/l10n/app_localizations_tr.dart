@@ -2657,21 +2657,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get undo => 'Geri al';
 
   @override
-  String get modeXboxDesc => 'Sunucunu bu Wi-Fi ağındaki konsola yayınlar.';
-
-  @override
-  String get modeNintendoDesc =>
-      'Switch\'inin DNS\'ini röleye yönlendir, sonra Minecraft\'tan katıl.';
-
-  @override
-  String get modeFriendsDesc =>
-      'Röle botunu arkadaş olarak ekle, sonra barındırdığı dünyaya katıl.';
-
-  @override
-  String get modeJavaDesc =>
-      'Röle üzerinden bir Java Edition sunucusuna bağlan.';
-
-  @override
   String get chooseServerTitle => 'Bir sunucu seç';
 
   @override

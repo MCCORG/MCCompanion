@@ -10,7 +10,7 @@ import '../widgets/components/app_toast.dart';
 import '../l10n/app_localizations.dart';
 
 class FeaturedServerHero extends StatefulWidget {
-  static const double height = 190;
+  static const double defaultHeight = 190;
 
   final Future<List<FeaturedServer>>? partnerServersFuture;
   final TextEditingController ipController;
@@ -18,6 +18,7 @@ class FeaturedServerHero extends StatefulWidget {
   final bool broadcasting;
   final VoidCallback? onSelected;
   final BorderRadius borderRadius;
+  final double height;
 
   const FeaturedServerHero({
     super.key,
@@ -27,6 +28,7 @@ class FeaturedServerHero extends StatefulWidget {
     this.broadcasting = false,
     this.onSelected,
     this.borderRadius = const BorderRadius.all(Radius.circular(20)),
+    this.height = defaultHeight,
   });
 
   @override
@@ -106,281 +108,256 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
     );
   }
 
-  FeaturedServer? get _currentHeroServer => _featuredServers.isEmpty
-      ? null
-      : _featuredServers[_heroBgPage % _featuredServers.length];
-
   @override
   Widget build(BuildContext context) {
-    final server = _currentHeroServer;
-    final broadcasting = widget.broadcasting;
-    final card = AppTheme.surfaceRaisedSolid;
-
     return ClipRRect(
       borderRadius: widget.borderRadius,
       child: SizedBox(
-        height: FeaturedServerHero.height,
+        height: widget.height,
         child: Stack(
           fit: StackFit.expand,
           children: [
-            FutureBuilder<List<Color>>(
-              future: (_currentHeroServer?.iconUrl ?? '').isNotEmpty
-                  ? _getPalette(_currentHeroServer!.iconUrl!)
-                  : Future.value([]),
-              builder: (context, snap) {
-                final colors = snap.data ?? [];
-                if (colors.length >= 2) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [
-                          colors[0],
-                          colors[1],
-                          if (colors.length >= 3) colors[2],
-                        ],
-                      ),
-                    ),
-                  );
-                }
-                if (colors.length == 1) {
-                  return Container(color: colors[0]);
-                }
-                return _defaultHeroBg();
-              },
-            ),
-            PageView.builder(
-              controller: _heroBgController,
-              onPageChanged: (i) => setState(() => _heroBgPage = i),
-              itemCount: _featuredServers.isEmpty ? 1 : _featuredServers.length,
-              itemBuilder: (_, i) {
-                if (_featuredServers.isEmpty) return const SizedBox.shrink();
-                final url = _featuredServers[i].iconUrl;
-                if (url != null && url.isNotEmpty) {
-                  return Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 8),
-                          child: Image.network(
-                            url,
-                            height: 150,
-                            fit: BoxFit.fitHeight,
-                            errorBuilder: (_, __, ___) =>
-                                const SizedBox.shrink(),
-                          ),
-                        ),
-                      ),
-                      Positioned.fill(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                              stops: const [0.0, 0.40, 0.75, 1.0],
-                              colors: [
-                                card,
-                                card.withValues(alpha: 0.80),
-                                card.withValues(alpha: 0.27),
-                                card.withValues(alpha: 0.0),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  );
-                }
-                return const SizedBox.shrink();
-              },
-            ),
-            Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  stops: const [0.0, 0.3, 0.7, 1.0],
-                  colors: [
-                    card.withValues(alpha: 0.40),
-                    card.withValues(alpha: 0.0),
-                    card.withValues(alpha: 0.0),
-                    card.withValues(alpha: 0.60),
-                  ],
-                ),
+            if (_featuredServers.isEmpty)
+              _heroPage(context, null)
+            else
+              PageView.builder(
+                controller: _heroBgController,
+                onPageChanged: (i) => setState(() => _heroBgPage = i),
+                itemCount: _featuredServers.length,
+                itemBuilder: (context, i) =>
+                    _heroPage(context, _featuredServers[i]),
               ),
-            ),
+
             Padding(
               padding: const EdgeInsets.all(14),
-              child: Column(
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      _heroBadge(
-                        icon: Icons.star_rounded,
-                        label: AppLocalizations.of(
-                          context,
-                        )!.featuredServerLabel,
-                      ),
-                      const Spacer(),
-                      if (_featuredServers.length > 1)
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: List.generate(
-                            _featuredServers.length.clamp(0, 6),
-                            (i) {
-                              final active =
-                                  i == _heroBgPage % _featuredServers.length;
-                              return AnimatedContainer(
-                                duration: const Duration(milliseconds: 300),
-                                margin: const EdgeInsets.only(left: 4),
-                                width: active ? 14 : 5,
-                                height: 5,
-                                decoration: BoxDecoration(
-                                  color: active
-                                      ? Colors.white
-                                      : Colors.white.withValues(alpha: 0.25),
-                                  borderRadius: BorderRadius.circular(3),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                    ],
+                  _heroBadge(
+                    icon: Icons.star_rounded,
+                    label: AppLocalizations.of(context)!.featuredServerLabel,
                   ),
                   const Spacer(),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              server?.name ?? 'MCCompanion',
-                              style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w800,
-                                height: 1.15,
-                                color: ThemeService.instance.textPrimary,
-                              ),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
+                  if (_featuredServers.length > 1)
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: List.generate(
+                        _featuredServers.length.clamp(0, 6),
+                        (i) {
+                          final active =
+                              i == _heroBgPage % _featuredServers.length;
+                          return AnimatedContainer(
+                            duration: const Duration(milliseconds: 300),
+                            margin: const EdgeInsets.only(left: 4),
+                            width: active ? 14 : 5,
+                            height: 5,
+                            decoration: BoxDecoration(
+                              color: active
+                                  ? Colors.white
+                                  : Colors.white.withValues(alpha: 0.25),
+                              borderRadius: BorderRadius.circular(3),
                             ),
-                            const SizedBox(height: 4),
-                            ConstrainedBox(
-                              constraints: const BoxConstraints(maxWidth: 220),
-                              child: Text(
-                                server?.description.isNotEmpty == true
-                                    ? server!.description
-                                    : AppLocalizations.of(
-                                        context,
-                                      )!.featuredServerTagline,
-                                style: TextStyle(
-                                  color: ThemeService.instance.textPrimary
-                                      .withValues(alpha: 0.60),
-                                  fontSize: 11,
-                                  height: 1.35,
-                                ),
-                                maxLines: 3,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            if (server != null)
-                              _HeroStatusBadge(
-                                statusFuture: _getHeroStatus(server),
-                              )
-                            else
-                              _staticStatusBadge(
-                                dot: AppTheme.textMuted,
-                                label: '...',
-                              ),
-                          ],
-                        ),
+                          );
+                        },
                       ),
-                      const SizedBox(width: 12),
-                      GestureDetector(
-                        onTap: server == null || broadcasting
-                            ? null
-                            : () {
-                                widget.ipController.text = server.address;
-                                widget.portController.text = server.port
-                                    .toString();
-                                AppToast.show(
-                                  context,
-                                  message: server.name,
-                                  icon: Icons.play_arrow_rounded,
-                                  color: AppTheme.accent,
-                                );
-                                widget.onSelected?.call();
-                              },
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 200),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 18,
-                            vertical: 12,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withValues(
-                              alpha: server == null || broadcasting
-                                  ? 0.08
-                                  : 0.15,
-                            ),
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                              color: Colors.white.withValues(
-                                alpha: server == null || broadcasting
-                                    ? 0.10
-                                    : 0.30,
-                              ),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                AppLocalizations.of(
-                                  context,
-                                )!.featuredServerPlay,
-                                style: TextStyle(
-                                  color: ThemeService.instance.textPrimary
-                                      .withValues(
-                                        alpha: server == null || broadcasting
-                                            ? 0.35
-                                            : 1.0,
-                                      ),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                              const SizedBox(width: 6),
-                              Icon(
-                                Icons.play_arrow_rounded,
-                                color: ThemeService.instance.textPrimary
-                                    .withValues(
-                                      alpha: server == null || broadcasting
-                                          ? 0.35
-                                          : 1.0,
-                                    ),
-                                size: 16,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
                 ],
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _heroPage(BuildContext context, FeaturedServer? server) {
+    final broadcasting = widget.broadcasting;
+    final card = AppTheme.surfaceRaisedSolid;
+    final iconUrl = server?.iconUrl;
+    final hasIcon = iconUrl != null && iconUrl.isNotEmpty;
+
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        FutureBuilder<List<Color>>(
+          future: hasIcon ? _getPalette(iconUrl) : Future.value(const []),
+          builder: (context, snap) {
+            final colors = snap.data ?? const <Color>[];
+            if (colors.length >= 2) {
+              return Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      colors[0],
+                      colors[1],
+                      if (colors.length >= 3) colors[2],
+                    ],
+                  ),
+                ),
+              );
+            }
+            if (colors.length == 1) return Container(color: colors[0]);
+            return _defaultHeroBg();
+          },
+        ),
+        if (hasIcon) ...[
+          Align(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: Image.network(
+                iconUrl,
+                height: widget.height * 0.79,
+                fit: BoxFit.fitHeight,
+                errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+              ),
+            ),
+          ),
+          Positioned.fill(
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  stops: const [0.0, 0.40, 0.75, 1.0],
+                  colors: [
+                    card,
+                    card.withValues(alpha: 0.80),
+                    card.withValues(alpha: 0.27),
+                    card.withValues(alpha: 0.0),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+        Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: const [0.0, 0.3, 0.7, 1.0],
+              colors: [
+                card.withValues(alpha: 0.40),
+                card.withValues(alpha: 0.0),
+                card.withValues(alpha: 0.0),
+                card.withValues(alpha: 0.60),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(14, 46, 14, 14),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      server?.name ?? 'MCCompanion',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w800,
+                        height: 1.15,
+                        color: ThemeService.instance.textPrimary,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 4),
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 220),
+                      child: Text(
+                        server?.description.isNotEmpty == true
+                            ? server!.description
+                            : AppLocalizations.of(
+                                context,
+                              )!.featuredServerTagline,
+                        style: TextStyle(
+                          color: ThemeService.instance.textPrimary.withValues(
+                            alpha: 0.60,
+                          ),
+                          fontSize: 11,
+                          height: 1.35,
+                        ),
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    if (server != null)
+                      _HeroStatusBadge(statusFuture: _getHeroStatus(server))
+                    else
+                      _staticStatusBadge(dot: AppTheme.textMuted, label: '...'),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 12),
+              GestureDetector(
+                onTap: server == null || broadcasting
+                    ? null
+                    : () {
+                        widget.ipController.text = server.address;
+                        widget.portController.text = server.port.toString();
+                        AppToast.show(
+                          context,
+                          message: server.name,
+                          icon: Icons.play_arrow_rounded,
+                          color: AppTheme.accent,
+                        );
+                        widget.onSelected?.call();
+                      },
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 18,
+                    vertical: 12,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(
+                      alpha: server == null || broadcasting ? 0.08 : 0.15,
+                    ),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: Colors.white.withValues(
+                        alpha: server == null || broadcasting ? 0.10 : 0.30,
+                      ),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        AppLocalizations.of(context)!.featuredServerPlay,
+                        style: TextStyle(
+                          color: ThemeService.instance.textPrimary.withValues(
+                            alpha: server == null || broadcasting ? 0.35 : 1.0,
+                          ),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      const SizedBox(width: 6),
+                      Icon(
+                        Icons.play_arrow_rounded,
+                        color: ThemeService.instance.textPrimary.withValues(
+                          alpha: server == null || broadcasting ? 0.35 : 1.0,
+                        ),
+                        size: 16,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 

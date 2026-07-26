@@ -1967,10 +1967,6 @@
   "hideConversation": "چھپائیں",
   "conversationHidden": "گفتگو چھپا دی گئی",
   "undo": "واپس",
-  "modeXboxDesc": "آپ کے سرور کو اس وائی فائی نیٹ ورک پر موجود کنسول تک نشر کرتا ہے۔",
-  "modeNintendoDesc": "اپنے Switch کا DNS ریلے پر لگائیں، پھر Minecraft سے شامل ہوں۔",
-  "modeFriendsDesc": "ریلے بوٹ کو دوست بنائیں، پھر اس کی دنیا میں شامل ہوں۔",
-  "modeJavaDesc": "ریلے کے ذریعے Java Edition سرور سے جڑیں۔",
   "chooseServerTitle": "سرور منتخب کریں",
   "changeLabel": "تبدیل کریں"
 }

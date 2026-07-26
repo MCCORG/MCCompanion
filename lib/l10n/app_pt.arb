@@ -1970,10 +1970,6 @@
   "hideConversation": "Ocultar",
   "conversationHidden": "Conversa ocultada",
   "undo": "Anular",
-  "modeXboxDesc": "Transmite o teu servidor para a consola nesta rede Wi-Fi.",
-  "modeNintendoDesc": "Aponta o DNS da tua Switch para o relay e depois entra pelo Minecraft.",
-  "modeFriendsDesc": "Adiciona o bot do relay como amigo e entra no mundo que ele aloja.",
-  "modeJavaDesc": "Liga-te a um servidor Java Edition através do relay.",
   "chooseServerTitle": "Escolhe um servidor",
   "changeLabel": "Alterar"
 }

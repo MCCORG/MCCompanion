@@ -2658,21 +2658,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get undo => 'Отменить';
 
   @override
-  String get modeXboxDesc =>
-      'Транслирует ваш сервер на консоль в этой сети Wi-Fi.';
-
-  @override
-  String get modeNintendoDesc =>
-      'Укажите DNS вашей Switch на релей, затем подключитесь из Minecraft.';
-
-  @override
-  String get modeFriendsDesc =>
-      'Добавьте бота релея в друзья и зайдите в его мир.';
-
-  @override
-  String get modeJavaDesc => 'Подключитесь к серверу Java Edition через релей.';
-
-  @override
   String get chooseServerTitle => 'Выберите сервер';
 
   @override

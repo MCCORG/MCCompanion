@@ -2669,22 +2669,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get undo => 'Tendua';
 
   @override
-  String get modeXboxDesc =>
-      'Hutangaza seva yako kwa konsoli iliyo kwenye mtandao huu wa Wi-Fi.';
-
-  @override
-  String get modeNintendoDesc =>
-      'Elekeza DNS ya Switch yako kwenye relay, kisha jiunge kutoka Minecraft.';
-
-  @override
-  String get modeFriendsDesc =>
-      'Mwongeze boti ya relay kama rafiki, kisha jiunge na ulimwengu wake.';
-
-  @override
-  String get modeJavaDesc =>
-      'Unganisha kwenye seva ya Java Edition kupitia relay.';
-
-  @override
   String get chooseServerTitle => 'Chagua seva';
 
   @override

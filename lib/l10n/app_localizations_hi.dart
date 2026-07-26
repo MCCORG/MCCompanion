@@ -2658,21 +2658,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get undo => 'पहले जैसा करें';
 
   @override
-  String get modeXboxDesc =>
-      'आपके सर्वर को इस वाई-फ़ाई नेटवर्क पर मौजूद कंसोल तक पहुंचाता है।';
-
-  @override
-  String get modeNintendoDesc =>
-      'अपने Switch का DNS रिले पर सेट करें, फिर Minecraft से जुड़ें।';
-
-  @override
-  String get modeFriendsDesc =>
-      'रिले बॉट को दोस्त बनाएं, फिर उसकी दुनिया में शामिल हों।';
-
-  @override
-  String get modeJavaDesc => 'रिले के ज़रिए किसी Java Edition सर्वर से जुड़ें।';
-
-  @override
   String get chooseServerTitle => 'सर्वर चुनें';
 
   @override

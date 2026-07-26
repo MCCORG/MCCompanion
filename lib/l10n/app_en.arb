@@ -2812,22 +2812,6 @@
   "hideConversation": "Hide",
   "conversationHidden": "Conversation hidden",
   "undo": "Undo",
-  "modeXboxDesc": "Broadcasts your server to the console on this Wi-Fi network.",
-  "@modeXboxDesc": {
-    "description": "One line explaining what Xbox mode does, shown under the mode picker"
-  },
-  "modeNintendoDesc": "Point your Switch DNS at the relay, then join from Minecraft.",
-  "@modeNintendoDesc": {
-    "description": "One line explaining what Nintendo mode does, shown under the mode picker"
-  },
-  "modeFriendsDesc": "Add the relay bot as a friend, then join the world it hosts.",
-  "@modeFriendsDesc": {
-    "description": "One line explaining what Friends mode does, shown under the mode picker"
-  },
-  "modeJavaDesc": "Connect to a Java Edition server through the relay.",
-  "@modeJavaDesc": {
-    "description": "One line explaining what Java mode does, shown under the mode picker"
-  },
   "chooseServerTitle": "Choose a server",
   "@chooseServerTitle": {
     "description": "Title of the sheet that lists saved servers"
