@@ -892,7 +892,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String resetLinkSent(Object email) {
-    return 'Password reset link sent to $email';
+    return 'إذا كان هناك حساب لـ $email، فالرابط في طريقه';
   }
 
   @override

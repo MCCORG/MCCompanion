@@ -894,7 +894,7 @@
   "@sendLink": {
     "description": "Button to send the password reset link"
   },
-  "resetLinkSent": "Password reset link sent to {email}",
+  "resetLinkSent": "If an account exists for {email}, a reset link is on its way",
   "@resetLinkSent": {
     "description": "Toast after reset email is sent",
     "placeholders": {

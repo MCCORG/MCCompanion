@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'app_blur.dart';
 import '../../l10n/app_localizations.dart';
 import '../../constants/app_constants.dart';
 import '../../theme/app_theme.dart';
@@ -55,7 +56,10 @@ class _RelaySelectorState extends State<RelaySelector> {
         ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+            filter: ImageFilter.blur(
+              sigmaX: AppBlur.sigmaFor(6),
+              sigmaY: AppBlur.sigmaFor(6),
+            ),
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white.withValues(alpha: 0.03),

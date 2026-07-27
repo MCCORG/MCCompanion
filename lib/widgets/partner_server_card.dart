@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'components/app_blur.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../theme/app_theme.dart';
 import '../util/partners_servers.dart';
@@ -32,12 +33,17 @@ class _PartnerServerCardState extends State<PartnerServerCard> {
         children: [
           if (_hasIcon)
             Positioned.fill(
-              child: ImageFiltered(
-                imageFilter: ImageFilter.blur(sigmaX: 28, sigmaY: 28),
-                child: Image.network(
-                  widget.server.iconUrl!,
-                  fit: BoxFit.cover,
-                  errorBuilder: (_, __, ___) => _solidBg(),
+              child: RepaintBoundary(
+                child: ImageFiltered(
+                  imageFilter: ImageFilter.blur(
+                    sigmaX: AppBlur.sigmaFor(28),
+                    sigmaY: AppBlur.sigmaFor(28),
+                  ),
+                  child: Image.network(
+                    widget.server.iconUrl!,
+                    fit: BoxFit.cover,
+                    errorBuilder: (_, __, ___) => _solidBg(),
+                  ),
                 ),
               ),
             )
@@ -187,8 +193,8 @@ class _PartnerServerCardState extends State<PartnerServerCard> {
                                   vertical: 8,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: AppTheme.surfaceRaised.withValues(alpha: 
-                                    0.80,
+                                  color: AppTheme.surfaceRaised.withValues(
+                                    alpha: 0.80,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                   border: Border.all(

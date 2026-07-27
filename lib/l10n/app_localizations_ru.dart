@@ -901,7 +901,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String resetLinkSent(Object email) {
-    return 'Ссылка отправлена на $email';
+    return 'Если для $email есть аккаунт, ссылка уже в пути';
   }
 
   @override

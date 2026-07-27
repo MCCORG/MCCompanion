@@ -1,6 +1,7 @@
 import 'dart:ui' show ImageFilter;
 
 import 'package:flutter/material.dart';
+import '../components/app_blur.dart';
 import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../l10n/app_localizations.dart';
@@ -58,7 +59,10 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRect(
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
+        filter: ImageFilter.blur(
+          sigmaX: AppBlur.sigmaFor(18),
+          sigmaY: AppBlur.sigmaFor(18),
+        ),
         child: Container(
           decoration: BoxDecoration(
             color: AppTheme.surfaceRaised.withValues(alpha: 0.88),
@@ -69,49 +73,49 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
           child: SafeArea(
             top: false,
             child: Container(
-            padding: const EdgeInsets.fromLTRB(4, 6, 4, 0),
-            child: Builder(
-              builder: (context) {
-                final l = AppLocalizations.of(context)!;
-                return Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    _NavItem(
-                      icon: FontAwesomeIcons.house,
-                      label: l.home,
-                      isActive: activeItem == 'home',
-                      onTap: onHomeTap,
-                    ),
-                    if (navLeftFeature != null)
+              padding: const EdgeInsets.fromLTRB(4, 6, 4, 0),
+              child: Builder(
+                builder: (context) {
+                  final l = AppLocalizations.of(context)!;
+                  return Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
                       _NavItem(
-                        icon: _iconFor(navLeftFeature!),
-                        label: navLeftFeature!.label(l),
-                        isActive: navLeftActive,
-                        onTap: onNavLeftTap,
+                        icon: FontAwesomeIcons.house,
+                        label: l.home,
+                        isActive: activeItem == 'home',
+                        onTap: onHomeTap,
                       ),
-                    _NavItem(
-                      icon: FontAwesomeIcons.play,
-                      label: l.featureLabelConnector,
-                      isActive: activeItem == 'connector',
-                      onTap: onConnectorTap,
-                    ),
-                    if (navRightFeature != null)
+                      if (navLeftFeature != null)
+                        _NavItem(
+                          icon: _iconFor(navLeftFeature!),
+                          label: navLeftFeature!.label(l),
+                          isActive: navLeftActive,
+                          onTap: onNavLeftTap,
+                        ),
                       _NavItem(
-                        icon: _iconFor(navRightFeature!),
-                        label: navRightFeature!.label(l),
-                        isActive: navRightActive,
-                        onTap: onNavRightTap,
+                        icon: FontAwesomeIcons.play,
+                        label: l.featureLabelConnector,
+                        isActive: activeItem == 'connector',
+                        onTap: onConnectorTap,
                       ),
-                    _NavItem(
-                      icon: FontAwesomeIcons.user,
-                      label: l.navProfile,
-                      isActive: activeItem == 'profile',
-                      onTap: onProfileTap,
-                    ),
-                  ],
-                );
-              },
-            ),
+                      if (navRightFeature != null)
+                        _NavItem(
+                          icon: _iconFor(navRightFeature!),
+                          label: navRightFeature!.label(l),
+                          isActive: navRightActive,
+                          onTap: onNavRightTap,
+                        ),
+                      _NavItem(
+                        icon: FontAwesomeIcons.user,
+                        label: l.navProfile,
+                        isActive: activeItem == 'profile',
+                        onTap: onProfileTap,
+                      ),
+                    ],
+                  );
+                },
+              ),
             ),
           ),
         ),
@@ -206,57 +210,57 @@ class MoreSheetContent extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
-              child: Row(
-                children: [
-                  Container(
-                    width: 38,
-                    height: 38,
-                    decoration: BoxDecoration(
-                      color: AppTheme.accent.withValues(alpha: 0.12),
-                      borderRadius: BorderRadius.circular(11),
-                      border: Border.all(
-                        color: AppTheme.accent.withValues(alpha: 0.25),
-                      ),
-                    ),
-                    child: Center(
-                      child: FaIcon(
-                        FontAwesomeIcons.ellipsis,
-                        color: AppTheme.accent,
-                        size: 15,
-                      ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+            child: Row(
+              children: [
+                Container(
+                  width: 38,
+                  height: 38,
+                  decoration: BoxDecoration(
+                    color: AppTheme.accent.withValues(alpha: 0.12),
+                    borderRadius: BorderRadius.circular(11),
+                    border: Border.all(
+                      color: AppTheme.accent.withValues(alpha: 0.25),
                     ),
                   ),
-                  const SizedBox(width: 12),
-                  Text(
-                    loc.relay,
-                    style: TextStyle(
-                      color: AppTheme.textPrimary,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w700,
+                  child: Center(
+                    child: FaIcon(
+                      FontAwesomeIcons.ellipsis,
+                      color: AppTheme.accent,
+                      size: 15,
                     ),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Text(
+                  loc.relay,
+                  style: TextStyle(
+                    color: AppTheme.textPrimary,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Flexible(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  _RegionSelector(
+                    selectedIp: selectedRelayIp,
+                    onChanged: onRelayChanged,
                   ),
                 ],
               ),
             ),
-            Flexible(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(16, 0, 16, 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    _RegionSelector(
-                      selectedIp: selectedRelayIp,
-                      onChanged: onRelayChanged,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
+          ),
+        ],
+      ),
+    );
   }
 }
 

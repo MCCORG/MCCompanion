@@ -884,7 +884,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String resetLinkSent(Object email) {
-    return 'Password reset link sent to $email';
+    return '$email のアカウントがあれば、リンクを送信しました';
   }
 
   @override

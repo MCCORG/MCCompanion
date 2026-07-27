@@ -899,7 +899,7 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String resetLinkSent(Object email) {
-    return 'Password reset link sent to $email';
+    return 'Kama kuna akaunti ya $email, kiungo kinatumwa';
   }
 
   @override

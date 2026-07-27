@@ -94,7 +94,13 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   late RelayPingResult _selectedRelay;
   final ValueNotifier<int> _pageIndexNotifier = ValueNotifier(_pageHome);
   int get _pageIndex => _pageIndexNotifier.value;
-  set _pageIndex(int v) => _pageIndexNotifier.value = v;
+  final Set<int> _builtPages = {};
+
+  set _pageIndex(int v) {
+    _builtPages.add(v);
+    _pageIndexNotifier.value = v;
+  }
+
   int? _editingServerIndex;
 
   final GlobalKey<NavigatorState> _desktopNavKey = GlobalKey<NavigatorState>();
@@ -122,6 +128,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
         }
         unawaited(ServerTrackerService.instance.start());
         unawaited(SubscriptionService.instance.init(user.uid));
+        _warmLikelyScreens();
       } else {
         _lastSignedInUid = null;
         MessageService.disconnect();
@@ -135,6 +142,15 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     ThemeService.instance.addListener(_onCustomizationChanged);
     _initDeepLinks();
     WidgetsBinding.instance.addPostFrameCallback((_) => _checkOnboarding());
+  }
+
+  void _warmLikelyScreens() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(const Duration(milliseconds: 600), () {
+        if (!mounted) return;
+        unawaited(UserService.warmSocialInit());
+      });
+    });
   }
 
   void _checkOnboarding() {
@@ -547,145 +563,122 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   bool get _isDesktop =>
       Platform.isMacOS || Platform.isWindows || Platform.isLinux;
 
-  Widget _buildBackground() => Stack(
-    children: [
-      Positioned.fill(child: ColoredBox(color: AppTheme.background)),
-      Positioned.fill(
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            gradient: RadialGradient(
-              center: const Alignment(0.8, -1.1),
-              radius: 0.9,
-              colors: [
-                AppTheme.accent.withValues(alpha: 0.07),
-                Colors.transparent,
-              ],
-            ),
-          ),
-        ),
-      ),
-      Positioned.fill(
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            gradient: RadialGradient(
-              center: const Alignment(-1.0, 1.2),
-              radius: 0.7,
-              colors: [
-                AppTheme.accent.withValues(alpha: 0.04),
-                Colors.transparent,
-              ],
-            ),
-          ),
-        ),
-      ),
-    ],
-  );
+  Widget _buildBackground() =>
+      Positioned.fill(child: ColoredBox(color: AppTheme.background));
 
   Widget _buildPageStack() {
+    final pages = <Widget>[
+      LandingScreen(
+        onGoToConnector: () => _goTo(_pageConnector),
+        onGoToSkins: () => _goTo(_pageSkins),
+        onGoToWiki: () => _goTo(_pageWiki),
+        onGoToPartners: () => _goTo(_pagePartners),
+        onGoToPlayerLookup: () => _goTo(_pagePlayerLookup),
+        onGoToServerTracker: () => _goTo(_pageServerTracker),
+        onGoToFeedback: () => _goTo(_pageFeedback),
+        onWebsiteTap: () => navigationController.openWebsite(context),
+        onDiscordTap: () => navigationController.openDiscord(context),
+        onLanguageTap: () => navigationController.showLanguageDialog(context),
+        onInfoTap: () => _showInfoSheet(),
+        partnerServersFuture: _partnerServersFuture,
+        onPlayServer: (ip, port) {
+          _ipController.text = ip;
+          _portController.text = port.toString();
+          _goTo(_pageConnector);
+        },
+      ),
+      HomeScreen(
+        key: _connectorKey,
+        selectedRelay: _selectedRelay,
+        onRelayChanged: _onRelayChanged,
+        navigationController: navigationController,
+        partnerServersFuture: _partnerServersFuture,
+        onOpenPartnerServers: () => _goTo(_pagePartners),
+        onOpenManageServers: _openManageServers,
+        onOpenResourcePack: () {
+          if (AuthService.currentUser == null) {
+            _loginFromRp = true;
+            _goTo(_pageProfile);
+          } else {
+            _goTo(_pageResourcePack);
+          }
+        },
+        onOpenMore: () => _showMoreSheet(),
+        onOpenSupport: () => _showHelpSheet(),
+        onOpenHowTo: () => _showHowToSheet(),
+        onOpenConsole: () => navigationController.showConsole(context),
+        ipController: _ipController,
+        portController: _portController,
+        onBack: () => _goTo(_pageHome),
+        onServerDeleted: () => _manageServersKey.currentState?.reload(),
+      ),
+      PartnerServersScreen(
+        partnerServersFuture: _partnerServersFuture,
+        ipController: _ipController,
+        portController: _portController,
+        onBack: () => _goTo(_pageHome),
+        onPlay: () => _goTo(_pageConnector),
+      ),
+      ManageServersScreen(
+        key: _manageServersKey,
+        onBack: () => _goTo(_pageConnector),
+        onAddServer: _openAddServer,
+        onEditServer: _openEditServer,
+      ),
+      AddEditServerScreen(
+        editingIndex: _editingServerIndex,
+        onSaved: () {
+          _manageServersKey.currentState?.reload();
+          setState(() => _pageIndex = _pageManageServers);
+        },
+        onCancel: () => setState(() => _pageIndex = _pageManageServers),
+      ),
+      SkinsScreen(key: _skinsKey, onBack: () => _goTo(_pageHome)),
+      WikiScreen(onBack: () => _goTo(_pageHome)),
+      ProfileScreen(
+        key: _profileKey,
+        onGoToHome: () => _goTo(_pageHome),
+        onGoToConnector: () => _goTo(_pageConnector),
+        onGoToSkins: () => _goTo(_pageSkins),
+        onGoToWiki: () => _goTo(_pageWiki),
+        onLoggedIn: () {
+          if (_loginFromTracker) {
+            _loginFromTracker = false;
+            _goTo(_pageServerTracker);
+          } else if (_loginFromRp) {
+            _loginFromRp = false;
+            _goTo(_pageResourcePack);
+          }
+        },
+      ),
+      PlayerLookupScreen(onBack: () => _goTo(_pageHome)),
+      ServerTrackerScreen(
+        onBack: () => _goTo(_pageHome),
+        onGoToLogin: () {
+          _loginFromTracker = true;
+          _goTo(_pageProfile);
+        },
+      ),
+      FeedbackScreen(
+        onBack: () => _goTo(_pageHome),
+        onGoToLogin: () => _goTo(_pageProfile),
+      ),
+      ResourcePackScreen(
+        onBack: () {
+          _connectorKey.currentState?.reloadResourcePackUrl();
+          _goTo(_pageConnector);
+        },
+      ),
+    ];
+
     return IndexedStack(
       index: _pageIndex,
       children: [
-        LandingScreen(
-          onGoToConnector: () => _goTo(_pageConnector),
-          onGoToSkins: () => _goTo(_pageSkins),
-          onGoToWiki: () => _goTo(_pageWiki),
-          onGoToPartners: () => _goTo(_pagePartners),
-          onGoToPlayerLookup: () => _goTo(_pagePlayerLookup),
-          onGoToServerTracker: () => _goTo(_pageServerTracker),
-          onGoToFeedback: () => _goTo(_pageFeedback),
-          onWebsiteTap: () => navigationController.openWebsite(context),
-          onDiscordTap: () => navigationController.openDiscord(context),
-          onLanguageTap: () => navigationController.showLanguageDialog(context),
-          onInfoTap: () => _showInfoSheet(),
-          partnerServersFuture: _partnerServersFuture,
-          onPlayServer: (ip, port) {
-            _ipController.text = ip;
-            _portController.text = port.toString();
-            _goTo(_pageConnector);
-          },
-        ),
-        HomeScreen(
-          key: _connectorKey,
-          selectedRelay: _selectedRelay,
-          onRelayChanged: _onRelayChanged,
-          navigationController: navigationController,
-          partnerServersFuture: _partnerServersFuture,
-          onOpenPartnerServers: () => _goTo(_pagePartners),
-          onOpenManageServers: _openManageServers,
-          onOpenResourcePack: () {
-            if (AuthService.currentUser == null) {
-              _loginFromRp = true;
-              _goTo(_pageProfile);
-            } else {
-              _goTo(_pageResourcePack);
-            }
-          },
-          onOpenMore: () => _showMoreSheet(),
-          onOpenSupport: () => _showHelpSheet(),
-          onOpenHowTo: () => _showHowToSheet(),
-          onOpenConsole: () => navigationController.showConsole(context),
-          ipController: _ipController,
-          portController: _portController,
-          onBack: () => _goTo(_pageHome),
-          onServerDeleted: () => _manageServersKey.currentState?.reload(),
-        ),
-        PartnerServersScreen(
-          partnerServersFuture: _partnerServersFuture,
-          ipController: _ipController,
-          portController: _portController,
-          onBack: () => _goTo(_pageHome),
-          onPlay: () => _goTo(_pageConnector),
-        ),
-        ManageServersScreen(
-          key: _manageServersKey,
-          onBack: () => _goTo(_pageConnector),
-          onAddServer: _openAddServer,
-          onEditServer: _openEditServer,
-        ),
-        AddEditServerScreen(
-          editingIndex: _editingServerIndex,
-          onSaved: () {
-            _manageServersKey.currentState?.reload();
-            setState(() => _pageIndex = _pageManageServers);
-          },
-          onCancel: () => setState(() => _pageIndex = _pageManageServers),
-        ),
-        SkinsScreen(key: _skinsKey, onBack: () => _goTo(_pageHome)),
-        WikiScreen(onBack: () => _goTo(_pageHome)),
-        ProfileScreen(
-          key: _profileKey,
-          onGoToHome: () => _goTo(_pageHome),
-          onGoToConnector: () => _goTo(_pageConnector),
-          onGoToSkins: () => _goTo(_pageSkins),
-          onGoToWiki: () => _goTo(_pageWiki),
-          onLoggedIn: () {
-            if (_loginFromTracker) {
-              _loginFromTracker = false;
-              _goTo(_pageServerTracker);
-            } else if (_loginFromRp) {
-              _loginFromRp = false;
-              _goTo(_pageResourcePack);
-            }
-          },
-        ),
-        PlayerLookupScreen(onBack: () => _goTo(_pageHome)),
-        ServerTrackerScreen(
-          onBack: () => _goTo(_pageHome),
-          onGoToLogin: () {
-            _loginFromTracker = true;
-            _goTo(_pageProfile);
-          },
-        ),
-        FeedbackScreen(
-          onBack: () => _goTo(_pageHome),
-          onGoToLogin: () => _goTo(_pageProfile),
-        ),
-        ResourcePackScreen(
-          onBack: () {
-            _connectorKey.currentState?.reloadResourcePackUrl();
-            _goTo(_pageConnector);
-          },
-        ),
+        for (var i = 0; i < pages.length; i++)
+          if (i == _pageIndex || _builtPages.contains(i))
+            TickerMode(enabled: i == _pageIndex, child: pages[i])
+          else
+            const SizedBox.shrink(),
       ],
     );
   }

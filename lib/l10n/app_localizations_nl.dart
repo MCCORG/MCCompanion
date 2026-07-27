@@ -904,7 +904,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String resetLinkSent(Object email) {
-    return 'Wachtwoord-resetlink verstuurd naar $email';
+    return 'Bestaat er een account voor $email, dan is er een resetlink onderweg';
   }
 
   @override

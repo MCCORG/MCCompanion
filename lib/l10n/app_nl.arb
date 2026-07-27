@@ -585,7 +585,7 @@
     }
   },
   "requestsAppearHere": "Nieuwe vriendschapsverzoeken verschijnen hier.",
-  "resetLinkSent": "Wachtwoord-resetlink verstuurd naar {email}",
+  "resetLinkSent": "Bestaat er een account voor {email}, dan is er een resetlink onderweg",
   "@resetLinkSent": {
     "placeholders": {
       "email": {}

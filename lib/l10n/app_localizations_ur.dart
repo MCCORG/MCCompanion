@@ -900,7 +900,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String resetLinkSent(Object email) {
-    return 'Password reset link sent to $email';
+    return 'اگر $email کے لیے اکاؤنٹ موجود ہے تو لنک بھیجا جا رہا ہے';
   }
 
   @override

@@ -1,10 +1,15 @@
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ResourcePackPrefs {
-  static const _keyUrl      = 'resource_pack_url';
-  static const _keyEnabled  = 'resource_pack_enabled';
+  static const _keyUrl = 'resource_pack_url';
+  static const _keyEnabled = 'resource_pack_enabled';
   static const _keyFilename = 'resource_pack_filename';
   static const _keyIsUpload = 'resource_pack_is_upload';
+
+  static final ValueNotifier<int> revision = ValueNotifier<int>(0);
+
+  static void _notify() => revision.value++;
 
   static Future<String?> getUrl() async {
     try {
@@ -28,6 +33,7 @@ class ResourcePackPrefs {
     try {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setBool(_keyEnabled, enabled);
+      _notify();
     } catch (_) {}
   }
 
@@ -69,6 +75,7 @@ class ResourcePackPrefs {
       }
       await prefs.setBool(_keyIsUpload, isUpload);
       await prefs.setBool(_keyEnabled, enabled);
+      _notify();
     } catch (_) {}
   }
 
@@ -79,6 +86,7 @@ class ResourcePackPrefs {
       await prefs.remove(_keyFilename);
       await prefs.remove(_keyIsUpload);
       await prefs.setBool(_keyEnabled, false);
+      _notify();
     } catch (_) {}
   }
 

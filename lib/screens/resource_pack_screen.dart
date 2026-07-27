@@ -20,7 +20,17 @@ import '../widgets/resource_pack/rp_info_section.dart';
 import '../widgets/resource_pack/rp_tab_bar.dart';
 import '../widgets/resource_pack/rp_tab_info_box.dart';
 
-const _kPackCategories = ['realism','faithful','pvp','cartoon','dark','medieval','nature','themed','other'];
+const _kPackCategories = [
+  'realism',
+  'faithful',
+  'pvp',
+  'cartoon',
+  'dark',
+  'medieval',
+  'nature',
+  'themed',
+  'other',
+];
 
 class ResourcePackScreen extends StatefulWidget {
   final VoidCallback onBack;
@@ -62,15 +72,16 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     _load();
     _loadFeaturedPacks();
     _urlCtrl.addListener(_validateUrl);
+    ResourcePackPrefs.revision.addListener(_load);
   }
 
   Future<void> _loadFeaturedPacks() async {
     if (_featuredLoading) return;
     setState(() => _featuredLoading = true);
     try {
-      final res = await http.get(
-        Uri.parse('${AppConstants.apiBase}/api/featured-packs'),
-      ).timeout(const Duration(seconds: 10));
+      final res = await http
+          .get(Uri.parse('${AppConstants.apiBase}/api/featured-packs'))
+          .timeout(const Duration(seconds: 10));
       if (res.statusCode == 200) {
         final data = jsonDecode(res.body) as Map<String, dynamic>;
         final list = (data['packs'] as List).cast<Map<String, dynamic>>();
@@ -87,7 +98,12 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     final url = pack['downloadUrl'] as String;
     final name = pack['name'] as String;
     setState(() => _applyingPackId = id);
-    await ResourcePackPrefs.save(url: url, enabled: true, filename: '$name.mcpack', isUpload: false);
+    await ResourcePackPrefs.save(
+      url: url,
+      enabled: true,
+      filename: '$name.mcpack',
+      isUpload: false,
+    );
     if (!mounted) return;
     setState(() {
       _applyingPackId = null;
@@ -96,7 +112,12 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
       _activePackName = name;
       _urlCtrl.text = url;
     });
-    AppToast.show(context, message: AppLocalizations.of(context)!.rpToastSaved, icon: Icons.check_rounded, color: AppTheme.accent);
+    AppToast.show(
+      context,
+      message: AppLocalizations.of(context)!.rpToastSaved,
+      icon: Icons.check_rounded,
+      color: AppTheme.accent,
+    );
     _loadFeaturedPacks();
   }
 
@@ -124,7 +145,8 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     final l = AppLocalizations.of(context);
     String? warning;
     if (url.isNotEmpty && l != null) {
-      if (url.contains('cdn.discordapp.com') || url.contains('media.discordapp.net')) {
+      if (url.contains('cdn.discordapp.com') ||
+          url.contains('media.discordapp.net')) {
         warning = l.rpWarnDiscord;
       } else if (!url.startsWith('https://')) {
         warning = l.rpWarnHttps;
@@ -140,22 +162,37 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     final files = await pickPackFiles();
     if (files.isEmpty) return;
     final file = files.first;
-    final bytes = file.bytes ?? (file.path != null ? await File(file.path!).readAsBytes() : null);
+    final bytes =
+        file.bytes ??
+        (file.path != null ? await File(file.path!).readAsBytes() : null);
     if (bytes == null) return;
     final inspection = inspectPackBytes(bytes);
     if (!mounted) return;
     if (inspection.format != PackFormat.bedrock) {
-      AppToast.show(context, message: AppLocalizations.of(context)!.rpInvalidPackFormat, icon: Icons.error_outline_rounded, color: Colors.red);
+      AppToast.show(
+        context,
+        message: AppLocalizations.of(context)!.rpInvalidPackFormat,
+        icon: Icons.error_outline_rounded,
+        color: Colors.red,
+      );
       return;
     }
     if (inspection.hasBehaviorContent) {
-      AppToast.show(context, message: AppLocalizations.of(context)!.rpBehaviorContentWarning, icon: Icons.warning_amber_rounded, color: Colors.orange);
+      AppToast.show(
+        context,
+        message: AppLocalizations.of(context)!.rpBehaviorContentWarning,
+        icon: Icons.warning_amber_rounded,
+        color: Colors.orange,
+      );
     }
     await _uploadBytes(bytes, file.name);
   }
 
   Future<void> _uploadBytes(Uint8List bytes, String name) async {
-    setState(() { _uploading = true; _uploadProgress = 0; });
+    setState(() {
+      _uploading = true;
+      _uploadProgress = 0;
+    });
     try {
       final token = await AuthService.getIdToken();
       final request = http.MultipartRequest(
@@ -163,7 +200,9 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
         Uri.parse('${AppConstants.apiBase}/api/resource-pack/upload'),
       );
       if (token != null) request.headers['Authorization'] = 'Bearer $token';
-      request.files.add(http.MultipartFile.fromBytes('pack', bytes, filename: name));
+      request.files.add(
+        http.MultipartFile.fromBytes('pack', bytes, filename: name),
+      );
 
       final streamed = await request.send();
       final body = await streamed.stream.bytesToString();
@@ -171,7 +210,12 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
       if (streamed.statusCode == 200) {
         final data = jsonDecode(body) as Map<String, dynamic>;
         final url = data['url'] as String;
-        await ResourcePackPrefs.save(url: url, enabled: _enabled, filename: name, isUpload: true);
+        await ResourcePackPrefs.save(
+          url: url,
+          enabled: _enabled,
+          filename: name,
+          isUpload: true,
+        );
         if (!mounted) return;
         setState(() {
           _uploadedUrl = url;
@@ -180,7 +224,12 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
           _activePackName = name;
           _uploading = false;
         });
-        AppToast.show(context, message: AppLocalizations.of(context)!.rpToastSaved, icon: Icons.check_rounded, color: AppTheme.accent);
+        AppToast.show(
+          context,
+          message: AppLocalizations.of(context)!.rpToastSaved,
+          icon: Icons.check_rounded,
+          color: AppTheme.accent,
+        );
         final l = AppLocalizations.of(context)!;
         _showDialog(
           context,
@@ -189,7 +238,14 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(l.rpClearWhy, style: TextStyle(color: AppTheme.textSecondary, fontSize: 13, height: 1.6)),
+              Text(
+                l.rpClearWhy,
+                style: TextStyle(
+                  color: AppTheme.textSecondary,
+                  fontSize: 13,
+                  height: 1.6,
+                ),
+              ),
               const SizedBox(height: 16),
               RpModalStep(n: '1', text: l.rpClearStep1),
               RpModalStep(n: '2', text: l.rpClearStep2),
@@ -202,12 +258,24 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
       } else {
         if (!mounted) return;
         setState(() => _uploading = false);
-        AppToast.show(context, message: AppLocalizations.of(context)!.rpUploadFailedCode(streamed.statusCode), icon: Icons.error_outline_rounded, color: AppTheme.error);
+        AppToast.show(
+          context,
+          message: AppLocalizations.of(
+            context,
+          )!.rpUploadFailedCode(streamed.statusCode),
+          icon: Icons.error_outline_rounded,
+          color: AppTheme.error,
+        );
       }
     } catch (e) {
       if (!mounted) return;
       setState(() => _uploading = false);
-      AppToast.show(context, message: AppLocalizations.of(context)!.rpUploadFailed(e.toString()), icon: Icons.error_outline_rounded, color: AppTheme.error);
+      AppToast.show(
+        context,
+        message: AppLocalizations.of(context)!.rpUploadFailed(e.toString()),
+        icon: Icons.error_outline_rounded,
+        color: AppTheme.error,
+      );
     }
   }
 
@@ -223,12 +291,9 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     });
   }
 
-
   Future<void> _toggleEnabled(bool v) async {
     setState(() => _enabled = v);
-    if (_mode == RpInputMode.upload && _uploadedUrl != null) {
-      await ResourcePackPrefs.save(url: _uploadedUrl, enabled: v, filename: _uploadedFilename, isUpload: true);
-    }
+    await ResourcePackPrefs.setEnabled(v);
   }
 
   Future<void> _uploadFromPath(String path, String name) async {
@@ -236,7 +301,10 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     await _uploadBytes(bytes, name);
   }
 
-  void _showDialog(BuildContext context, String title, Widget body, {
+  void _showDialog(
+    BuildContext context,
+    String title,
+    Widget body, {
     IconData icon = Icons.info_rounded,
     Color iconColor = const Color(0xFF60A5FA),
   }) {
@@ -255,13 +323,20 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                 padding: const EdgeInsets.fromLTRB(20, 20, 12, 16),
                 decoration: BoxDecoration(
                   color: iconColor.withValues(alpha: 0.08),
-                  borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-                  border: Border(bottom: BorderSide(color: iconColor.withValues(alpha: 0.18))),
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(16),
+                  ),
+                  border: Border(
+                    bottom: BorderSide(
+                      color: iconColor.withValues(alpha: 0.18),
+                    ),
+                  ),
                 ),
                 child: Row(
                   children: [
                     Container(
-                      width: 36, height: 36,
+                      width: 36,
+                      height: 36,
                       decoration: BoxDecoration(
                         color: iconColor.withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(10),
@@ -270,11 +345,22 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                     ),
                     const SizedBox(width: 12),
                     Expanded(
-                      child: Text(title, style: TextStyle(color: AppTheme.textPrimary, fontSize: 15, fontWeight: FontWeight.w700)),
+                      child: Text(
+                        title,
+                        style: TextStyle(
+                          color: AppTheme.textPrimary,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
                     ),
                     IconButton(
                       onPressed: () => Navigator.of(ctx).pop(),
-                      icon: Icon(Icons.close_rounded, color: AppTheme.textMuted, size: 18),
+                      icon: Icon(
+                        Icons.close_rounded,
+                        color: AppTheme.textMuted,
+                        size: 18,
+                      ),
                       padding: EdgeInsets.zero,
                       constraints: const BoxConstraints(),
                     ),
@@ -308,7 +394,8 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
       final desc = (p['description'] as String? ?? '').toLowerCase();
       final matchesSearch = q.isEmpty || name.contains(q) || desc.contains(q);
       if (!matchesSearch) return false;
-      if (_selectedCategory != null && p['category'] != _selectedCategory) return false;
+      if (_selectedCategory != null && p['category'] != _selectedCategory)
+        return false;
       if (_selectedTags.isEmpty) return true;
       final tags = (p['tags'] as List?)?.cast<String>() ?? [];
       return _selectedTags.every((t) => tags.contains(t));
@@ -317,6 +404,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
 
   @override
   void dispose() {
+    ResourcePackPrefs.revision.removeListener(_load);
     _urlCtrl.removeListener(_validateUrl);
     _urlCtrl.dispose();
     _searchCtrl.dispose();
@@ -326,7 +414,8 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
-    final showControls = _mode == RpInputMode.upload || _mode == RpInputMode.browse;
+    final showControls =
+        _mode == RpInputMode.upload || _mode == RpInputMode.browse;
 
     return SwipeBack(
       onBack: widget.onBack,
@@ -335,19 +424,29 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
           Container(
             decoration: BoxDecoration(
               color: AppTheme.surface,
-              border: Border(bottom: BorderSide(color: AppTheme.borderGray, width: 0.5)),
+              border: Border(
+                bottom: BorderSide(color: AppTheme.borderGray, width: 0.5),
+              ),
             ),
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             child: Row(
               children: [
                 IconButton(
-                  icon: Icon(Icons.arrow_back_ios_rounded, color: AppTheme.textSecondary, size: 18),
+                  icon: Icon(
+                    Icons.arrow_back_ios_rounded,
+                    color: AppTheme.textSecondary,
+                    size: 18,
+                  ),
                   onPressed: widget.onBack,
                 ),
                 Expanded(
                   child: Text(
                     l.rpScreenTitle,
-                    style: TextStyle(color: AppTheme.textPrimary, fontSize: 17, fontWeight: FontWeight.w700),
+                    style: TextStyle(
+                      color: AppTheme.textPrimary,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
               ],
@@ -356,10 +455,16 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
 
           Expanded(
             child: !_loaded
-                ? Center(child: CircularProgressIndicator(strokeWidth: 2, color: AppTheme.accent))
+                ? Center(
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: AppTheme.accent,
+                    ),
+                  )
                 : SingleChildScrollView(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+                    keyboardDismissBehavior:
+                        ScrollViewKeyboardDismissBehavior.onDrag,
                     child: ConstrainedBox(
                       constraints: const BoxConstraints(maxWidth: 720),
                       child: Column(
@@ -371,7 +476,9 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                             name: _hasPack ? _activePackName : null,
                             enabled: _enabled,
                             onToggle: _hasPack ? _toggleEnabled : null,
-                            onRemove: (_hasPack && _mode == RpInputMode.upload) ? _deleteUpload : null,
+                            onRemove: (_hasPack && _mode == RpInputMode.upload)
+                                ? _deleteUpload
+                                : null,
                           ),
                           const SizedBox(height: 16),
 
@@ -381,8 +488,10 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                           ),
                           const SizedBox(height: 16),
 
-                          if (_mode == RpInputMode.browse) _buildBrowseSection(),
-                          if (_mode == RpInputMode.upload) _buildUploadSection(l),
+                          if (_mode == RpInputMode.browse)
+                            _buildBrowseSection(),
+                          if (_mode == RpInputMode.upload)
+                            _buildUploadSection(l),
                           if (_mode == RpInputMode.merge) ...[
                             RpTabInfoBox(text: l.rpTabMergeInfo),
                             const SizedBox(height: 16),
@@ -399,11 +508,17 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                                   _activePackName = filename;
                                   _mode = RpInputMode.upload;
                                 });
-                                AppToast.show(context, message: AppLocalizations.of(context)!.rpMergerSetActiveToast, icon: Icons.check_rounded, color: AppTheme.accent);
+                                AppToast.show(
+                                  context,
+                                  message: AppLocalizations.of(
+                                    context,
+                                  )!.rpMergerSetActiveToast,
+                                  icon: Icons.check_rounded,
+                                  color: AppTheme.accent,
+                                );
                               },
                             ),
                           ),
-
 
                           if (showControls) ...[
                             const SizedBox(height: 28),
@@ -431,16 +546,30 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
         if (_featuredLoading)
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 48),
-            child: Center(child: CircularProgressIndicator(strokeWidth: 2, color: AppTheme.accent)),
+            child: Center(
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                color: AppTheme.accent,
+              ),
+            ),
           )
         else if (_featuredError)
           Center(
             child: Column(
               children: [
-                Text(AppLocalizations.of(context)!.rpLoadFailed, style: TextStyle(color: AppTheme.textMuted)),
+                Text(
+                  AppLocalizations.of(context)!.rpLoadFailed,
+                  style: TextStyle(color: AppTheme.textMuted),
+                ),
                 TextButton(
-                  onPressed: () { setState(() => _featuredError = false); _loadFeaturedPacks(); },
-                  child: Text(AppLocalizations.of(context)!.rpRetry, style: TextStyle(color: AppTheme.accent)),
+                  onPressed: () {
+                    setState(() => _featuredError = false);
+                    _loadFeaturedPacks();
+                  },
+                  child: Text(
+                    AppLocalizations.of(context)!.rpRetry,
+                    style: TextStyle(color: AppTheme.accent),
+                  ),
                 ),
               ],
             ),
@@ -450,16 +579,29 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
             padding: const EdgeInsets.symmetric(vertical: 48),
             child: Column(
               children: [
-                Icon(Icons.explore_off_rounded, color: AppTheme.textMuted, size: 40),
+                Icon(
+                  Icons.explore_off_rounded,
+                  color: AppTheme.textMuted,
+                  size: 40,
+                ),
                 const SizedBox(height: 12),
-                Text(l.rpBrowseEmpty, style: TextStyle(color: AppTheme.textMuted, fontSize: 14)),
+                Text(
+                  l.rpBrowseEmpty,
+                  style: TextStyle(color: AppTheme.textMuted, fontSize: 14),
+                ),
                 const SizedBox(height: 4),
-                Text(l.rpBrowseEmptyHint, style: TextStyle(color: AppTheme.textMuted, fontSize: 12)),
+                Text(
+                  l.rpBrowseEmptyHint,
+                  style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
+                ),
               ],
             ),
           )
         else ...[
-          Text(l.rpBrowseSubtitle, style: TextStyle(color: AppTheme.textMuted, fontSize: 12)),
+          Text(
+            l.rpBrowseSubtitle,
+            style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
+          ),
           const SizedBox(height: 12),
           TextField(
             controller: _searchCtrl,
@@ -467,8 +609,15 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
             style: TextStyle(color: AppTheme.textPrimary, fontSize: 14),
             decoration: InputDecoration(
               hintText: AppLocalizations.of(context)!.rpSearchHint,
-              prefixIcon: Icon(Icons.search_rounded, color: AppTheme.textMuted, size: 18),
-              contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+              prefixIcon: Icon(
+                Icons.search_rounded,
+                color: AppTheme.textMuted,
+                size: 18,
+              ),
+              contentPadding: const EdgeInsets.symmetric(
+                vertical: 10,
+                horizontal: 12,
+              ),
             ),
           ),
           const SizedBox(height: 8),
@@ -478,18 +627,30 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
             children: _kPackCategories.map((cat) {
               final selected = _selectedCategory == cat;
               return GestureDetector(
-                onTap: () => setState(() => _selectedCategory = selected ? null : cat),
+                onTap: () =>
+                    setState(() => _selectedCategory = selected ? null : cat),
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 5,
+                  ),
                   decoration: BoxDecoration(
-                    color: selected ? const Color(0xFF60a5fa) : const Color(0xFF60a5fa).withValues(alpha: 0.08),
+                    color: selected
+                        ? const Color(0xFF60a5fa)
+                        : const Color(0xFF60a5fa).withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(6),
-                    border: Border.all(color: const Color(0xFF60a5fa).withValues(alpha: selected ? 1.0 : 0.22)),
+                    border: Border.all(
+                      color: const Color(
+                        0xFF60a5fa,
+                      ).withValues(alpha: selected ? 1.0 : 0.22),
+                    ),
                   ),
                   child: Text(
                     cat,
                     style: TextStyle(
-                      color: selected ? AppTheme.surfaceRaised : const Color(0xFF60a5fa),
+                      color: selected
+                          ? AppTheme.surfaceRaised
+                          : const Color(0xFF60a5fa),
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
                     ),
@@ -504,41 +665,54 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
               spacing: 6,
               runSpacing: 6,
               children: _allTags.map((tag) {
-                  final selected = _selectedTags.contains(tag);
-                  return GestureDetector(
-                    onTap: () => setState(() {
-                      if (selected) {
-                        _selectedTags.remove(tag);
-                      } else {
-                        _selectedTags.add(tag);
-                      }
-                    }),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                      decoration: BoxDecoration(
-                        color: selected ? AppTheme.accent : AppTheme.accent.withValues(alpha: 0.08),
-                        borderRadius: BorderRadius.circular(6),
-                        border: Border.all(color: AppTheme.accent.withValues(alpha: selected ? 1.0 : 0.22)),
-                      ),
-                      child: Text(
-                        tag,
-                        style: TextStyle(
-                          color: selected ? AppTheme.surfaceRaised : AppTheme.accent,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
+                final selected = _selectedTags.contains(tag);
+                return GestureDetector(
+                  onTap: () => setState(() {
+                    if (selected) {
+                      _selectedTags.remove(tag);
+                    } else {
+                      _selectedTags.add(tag);
+                    }
+                  }),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 5,
+                    ),
+                    decoration: BoxDecoration(
+                      color: selected
+                          ? AppTheme.accent
+                          : AppTheme.accent.withValues(alpha: 0.08),
+                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(
+                        color: AppTheme.accent.withValues(
+                          alpha: selected ? 1.0 : 0.22,
                         ),
                       ),
                     ),
-                  );
-                }).toList(),
+                    child: Text(
+                      tag,
+                      style: TextStyle(
+                        color: selected
+                            ? AppTheme.surfaceRaised
+                            : AppTheme.accent,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                );
+              }).toList(),
             ),
           ],
           const SizedBox(height: 12),
-          ..._filteredPacks.map((pack) => RpFeaturedPackCard(
-            pack: pack,
-            isApplying: _applyingPackId == pack['id'].toString(),
-            onUse: () => _applyFeaturedPack(pack),
-          )),
+          ..._filteredPacks.map(
+            (pack) => RpFeaturedPackCard(
+              pack: pack,
+              isApplying: _applyingPackId == pack['id'].toString(),
+              onUse: () => _applyFeaturedPack(pack),
+            ),
+          ),
         ],
       ],
     );
@@ -570,7 +744,9 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
           color: AppTheme.surfaceRaised,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color: _uploading ? AppTheme.accent.withValues(alpha: 0.5) : AppTheme.borderGray,
+            color: _uploading
+                ? AppTheme.accent.withValues(alpha: 0.5)
+                : AppTheme.borderGray,
           ),
         ),
         child: Row(
@@ -578,15 +754,37 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
           children: [
             if (_uploading) ...[
               SizedBox(
-                width: 16, height: 16,
-                child: CircularProgressIndicator(strokeWidth: 2, color: AppTheme.accent),
+                width: 16,
+                height: 16,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  color: AppTheme.accent,
+                ),
               ),
               const SizedBox(width: 8),
-              Text(l.rpUploading, style: TextStyle(color: AppTheme.textSecondary, fontSize: 13, fontWeight: FontWeight.w500)),
+              Text(
+                l.rpUploading,
+                style: TextStyle(
+                  color: AppTheme.textSecondary,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ] else ...[
-              Icon(Icons.swap_horiz_rounded, color: AppTheme.textMuted, size: 18),
+              Icon(
+                Icons.swap_horiz_rounded,
+                color: AppTheme.textMuted,
+                size: 18,
+              ),
               const SizedBox(width: 8),
-              Text(l.rpReplaceFile, style: TextStyle(color: AppTheme.textSecondary, fontSize: 13, fontWeight: FontWeight.w500)),
+              Text(
+                l.rpReplaceFile,
+                style: TextStyle(
+                  color: AppTheme.textSecondary,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ],
           ],
         ),
@@ -606,7 +804,8 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
           (f) => f.name.endsWith('.zip') || f.name.endsWith('.mcpack'),
           orElse: () => detail.files.first,
         );
-        if (!file.name.endsWith('.zip') && !file.name.endsWith('.mcpack')) return;
+        if (!file.name.endsWith('.zip') && !file.name.endsWith('.mcpack'))
+          return;
         _uploadFromPath(file.path, file.name);
       },
       child: GestureDetector(
@@ -617,14 +816,16 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
           width: double.infinity,
           padding: const EdgeInsets.symmetric(vertical: 32),
           decoration: BoxDecoration(
-            color: active ? AppTheme.accent.withValues(alpha: 0.06) : AppTheme.surfaceRaised,
+            color: active
+                ? AppTheme.accent.withValues(alpha: 0.06)
+                : AppTheme.surfaceRaised,
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: active
                   ? AppTheme.accent.withValues(alpha: 0.6)
                   : _uploading
-                      ? AppTheme.accent.withValues(alpha: 0.5)
-                      : AppTheme.borderGray,
+                  ? AppTheme.accent.withValues(alpha: 0.5)
+                  : AppTheme.borderGray,
               width: active || _uploading ? 1.5 : 1,
             ),
           ),
@@ -633,7 +834,8 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     SizedBox(
-                      width: 28, height: 28,
+                      width: 28,
+                      height: 28,
                       child: CircularProgressIndicator(
                         value: _uploadProgress > 0 ? _uploadProgress : null,
                         strokeWidth: 2.5,
@@ -641,14 +843,22 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    Text(l.rpUploading, style: TextStyle(color: AppTheme.textSecondary, fontSize: 13)),
+                    Text(
+                      l.rpUploading,
+                      style: TextStyle(
+                        color: AppTheme.textSecondary,
+                        fontSize: 13,
+                      ),
+                    ),
                   ],
                 )
               : Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Icon(
-                      active ? Icons.file_download_rounded : Icons.upload_file_rounded,
+                      active
+                          ? Icons.file_download_rounded
+                          : Icons.upload_file_rounded,
                       color: active ? AppTheme.accent : AppTheme.textMuted,
                       size: 32,
                     ),
@@ -662,12 +872,14 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                       ),
                     ),
                     const SizedBox(height: 3),
-                    Text(l.rpUploadHint, style: TextStyle(color: AppTheme.textMuted, fontSize: 12)),
+                    Text(
+                      l.rpUploadHint,
+                      style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
+                    ),
                   ],
                 ),
         ),
       ),
     );
   }
-
 }

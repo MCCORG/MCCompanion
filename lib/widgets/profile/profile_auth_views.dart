@@ -160,38 +160,16 @@ class ProfileNotLoggedInViewState extends State<ProfileNotLoggedInView> {
 
     if (email == null || email.isEmpty || !mounted) return;
 
-    try {
-      await AuthService.sendPasswordResetEmail(email);
-      if (!mounted) return;
-      AppToast.show(
-        context,
-        message: AppLocalizations.of(context)!.resetLinkSent(email),
-        icon: Icons.mark_email_read_rounded,
-        color: AppTheme.success,
-      );
-    } on FirebaseAuthException catch (e) {
-      if (!mounted) return;
-      final l = AppLocalizations.of(context)!;
-      final msg = switch (e.code) {
-        'user-not-found' => l.noAccountForEmail,
-        'invalid-email' => l.invalidEmailError,
-        _ => l.couldNotSendResetEmail,
-      };
-      AppToast.show(
-        context,
-        message: msg,
-        icon: Icons.error_outline_rounded,
-        color: AppTheme.error,
-      );
-    } catch (_) {
-      if (!mounted) return;
-      AppToast.show(
-        context,
-        message: AppLocalizations.of(context)!.couldNotSendResetEmail,
-        icon: Icons.error_outline_rounded,
-        color: AppTheme.error,
-      );
-    }
+    final ok = await AuthService.sendPasswordResetEmail(email);
+    if (!mounted) return;
+    AppToast.show(
+      context,
+      message: ok
+          ? AppLocalizations.of(context)!.resetLinkSent(email)
+          : AppLocalizations.of(context)!.couldNotSendResetEmail,
+      icon: ok ? Icons.mark_email_read_rounded : Icons.error_outline_rounded,
+      color: ok ? AppTheme.success : AppTheme.error,
+    );
   }
 
   Future<void> _submit() async {
@@ -251,7 +229,9 @@ class ProfileNotLoggedInViewState extends State<ProfileNotLoggedInView> {
                 decoration: BoxDecoration(
                   color: AppTheme.accent.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(18),
-                  border: Border.all(color: AppTheme.accent.withValues(alpha: 0.30)),
+                  border: Border.all(
+                    color: AppTheme.accent.withValues(alpha: 0.30),
+                  ),
                 ),
                 child: Icon(
                   Icons.person_rounded,
@@ -333,10 +313,7 @@ class ProfileNotLoggedInViewState extends State<ProfileNotLoggedInView> {
                     ),
                     child: Text(
                       AppLocalizations.of(context)!.forgotPassword,
-                      style: TextStyle(
-                        color: AppTheme.textMuted,
-                        fontSize: 12,
-                      ),
+                      style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
                     ),
                   ),
                 ),
@@ -351,7 +328,9 @@ class ProfileNotLoggedInViewState extends State<ProfileNotLoggedInView> {
                   decoration: BoxDecoration(
                     color: AppTheme.error.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: AppTheme.error.withValues(alpha: 0.30)),
+                    border: Border.all(
+                      color: AppTheme.error.withValues(alpha: 0.30),
+                    ),
                   ),
                   child: Row(
                     children: [
@@ -457,7 +436,9 @@ class ProfileNotLoggedInViewState extends State<ProfileNotLoggedInView> {
                               ),
                               const SizedBox(width: 10),
                               Text(
-                                AppLocalizations.of(context)!.continueWithGoogle,
+                                AppLocalizations.of(
+                                  context,
+                                )!.continueWithGoogle,
                                 style: TextStyle(
                                   color: AppTheme.textPrimary,
                                   fontWeight: FontWeight.w600,
@@ -476,10 +457,7 @@ class ProfileNotLoggedInViewState extends State<ProfileNotLoggedInView> {
                   _isRegisterMode
                       ? AppLocalizations.of(context)!.alreadyHaveAccount
                       : AppLocalizations.of(context)!.noAccountYet,
-                  style: TextStyle(
-                    color: AppTheme.textSecondary,
-                    fontSize: 13,
-                  ),
+                  style: TextStyle(color: AppTheme.textSecondary, fontSize: 13),
                 ),
               ),
             ],
@@ -508,7 +486,9 @@ class ProfileNotRegisteredView extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppTheme.accent.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(18),
-                border: Border.all(color: AppTheme.accent.withValues(alpha: 0.30)),
+                border: Border.all(
+                  color: AppTheme.accent.withValues(alpha: 0.30),
+                ),
               ),
               child: Icon(
                 Icons.person_add_rounded,

@@ -896,7 +896,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String resetLinkSent(Object email) {
-    return '$email adresine bağlantı gönderildi';
+    return '$email için bir hesap varsa, bağlantı yolda';
   }
 
   @override

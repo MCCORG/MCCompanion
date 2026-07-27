@@ -7,7 +7,6 @@ import '../services/notification_service.dart';
 import '../services/home_customization_service.dart';
 import '../util/partners_servers.dart';
 import '../widgets/components/global_notice_banner.dart';
-import '../widgets/landing/landing_aurora_background.dart';
 import '../widgets/landing/landing_partner_banner.dart';
 import '../widgets/landing/landing_quick_card.dart';
 import '../widgets/landing/landing_customize_sheet.dart';
@@ -108,8 +107,6 @@ class _LandingScreenState extends State<LandingScreen> {
 
     return Stack(
       children: [
-        const Positioned.fill(child: LandingAuroraBackground()),
-
         Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [

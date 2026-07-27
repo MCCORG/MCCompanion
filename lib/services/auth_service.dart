@@ -6,6 +6,8 @@ import 'package:crypto/crypto.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
+import '../constants/app_constants.dart';
+import 'user_service.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart'
     show SignInWithApple, AppleIDAuthorizationScopes;
 
@@ -31,7 +33,8 @@ class AuthService {
 
   static final FirebaseAuth _auth = FirebaseAuth.instance;
   static final GoogleSignIn _googleSignIn = GoogleSignIn(
-    serverClientId: '670852401318-1g70oikt58ouipfc09re6ik60odu5vhs.apps.googleusercontent.com',
+    serverClientId:
+        '670852401318-1g70oikt58ouipfc09re6ik60odu5vhs.apps.googleusercontent.com',
   );
 
   static final _windowsUserCtrl = StreamController<AuthUser?>.broadcast();
@@ -41,7 +44,17 @@ class AuthService {
   static DateTime? _windowsTokenExpiry;
 
   static Stream<AuthUser?> get userStream {
-    if (Platform.isWindows) return _windowsUserCtrl.stream;
+    if (Platform.isWindows) {
+      return Stream<AuthUser?>.multi((controller) {
+        controller.add(_windowsUser);
+        final sub = _windowsUserCtrl.stream.listen(
+          controller.add,
+          onError: controller.addError,
+          onDone: controller.close,
+        );
+        controller.onCancel = sub.cancel;
+      });
+    }
     return _auth.authStateChanges().map(
       (u) =>
           u == null ? null : AuthUser._(uid: u.uid, email: u.email, sdkUser: u),
@@ -56,9 +69,6 @@ class AuthService {
         : AuthUser._(uid: u.uid, email: u.email, sdkUser: u);
   }
 
-  /// Returns a fresh Firebase ID token for use in API calls.
-  /// On Windows, automatically refreshes the token when within 5 minutes
-  /// of expiry (Firebase ID tokens last 1 hour).
   static Future<String?> getIdToken() async {
     if (Platform.isWindows) {
       if (_windowsIdToken != null &&
@@ -108,7 +118,11 @@ class AuthService {
       _windowsIdToken = await user.getIdToken();
       _windowsRefreshToken = null;
       _windowsTokenExpiry = DateTime.now().add(const Duration(hours: 1));
-      _windowsUser = AuthUser._(uid: user.uid, email: user.email, sdkUser: user);
+      _windowsUser = AuthUser._(
+        uid: user.uid,
+        email: user.email,
+        sdkUser: user,
+      );
       _windowsUserCtrl.add(_windowsUser);
       return;
     }
@@ -133,7 +147,11 @@ class AuthService {
       _windowsIdToken = await user.getIdToken();
       _windowsRefreshToken = null;
       _windowsTokenExpiry = DateTime.now().add(const Duration(hours: 1));
-      _windowsUser = AuthUser._(uid: user.uid, email: user.email, sdkUser: user);
+      _windowsUser = AuthUser._(
+        uid: user.uid,
+        email: user.email,
+        sdkUser: user,
+      );
       _windowsUserCtrl.add(_windowsUser);
       return;
     }
@@ -172,15 +190,23 @@ class AuthService {
     return sha256.convert(bytes).toString();
   }
 
-  static Future<void> sendPasswordResetEmail(String email) async {
-    if (Platform.isWindows) {
-      await _windowsSendPasswordReset(email);
-      return;
+  static Future<bool> sendPasswordResetEmail(String email) async {
+    try {
+      final res = await http
+          .post(
+            Uri.parse('${AppConstants.apiBase}/api/auth/password-reset'),
+            headers: {'Content-Type': 'application/json'},
+            body: jsonEncode({'email': email.trim()}),
+          )
+          .timeout(const Duration(seconds: 10));
+      return res.statusCode == 200;
+    } catch (_) {
+      return false;
     }
-    await _auth.sendPasswordResetEmail(email: email);
   }
 
   static Future<void> signOut() async {
+    UserService.invalidateMe();
     if (Platform.isWindows) {
       _windowsUser = null;
       _windowsIdToken = null;
@@ -191,30 +217,6 @@ class AuthService {
     }
     await _googleSignIn.signOut();
     await _auth.signOut();
-  }
-
-  static Future<void> _windowsSendPasswordReset(String email) async {
-    final res = await http
-        .post(
-          Uri.parse(
-            'https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=$_windowsApiKey',
-          ),
-          headers: {'Content-Type': 'application/json'},
-          body: jsonEncode({'requestType': 'PASSWORD_RESET', 'email': email}),
-        )
-        .timeout(const Duration(seconds: 15));
-
-    if (res.statusCode != 200) {
-      final body = jsonDecode(res.body) as Map<String, dynamic>;
-      final message =
-          ((body['error'] as Map<String, dynamic>?)?['message'] as String?) ??
-          '';
-      throw switch (message) {
-        'EMAIL_NOT_FOUND' => FirebaseAuthException(code: 'user-not-found'),
-        'INVALID_EMAIL' => FirebaseAuthException(code: 'invalid-email'),
-        _ => FirebaseAuthException(code: 'unknown', message: message),
-      };
-    }
   }
 
   static Future<void> _windowsEmailAuth(
@@ -281,7 +283,6 @@ class AuthService {
         _windowsTokenExpiry = DateTime.now().add(Duration(seconds: expiresIn));
       }
     } catch (_) {
-      // Silently fail, the caller will use the (possibly stale) token.
     }
   }
 

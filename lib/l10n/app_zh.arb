@@ -1017,7 +1017,7 @@
   "@requestsAppearHere": {
     "description": "Empty state subtitle on requests tab"
   },
-  "resetLinkSent": "Password reset link sent to {email}",
+  "resetLinkSent": "如果 {email} 有账号，重置链接已在发送中",
   "@resetLinkSent": {
     "description": "Toast after reset email is sent",
     "placeholders": {

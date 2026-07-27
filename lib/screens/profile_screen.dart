@@ -65,7 +65,6 @@ class ProfileScreenState extends State<ProfileScreen>
     _authSubscription = AuthService.userStream.listen((_) => _checkAuth());
     _presenceSub = MessageService.presenceStream.listen(_onPresence);
     _incomingSub = MessageService.incoming.listen((_) => _refreshUnread());
-    _checkAuth();
   }
 
   @override
@@ -271,9 +270,22 @@ class ProfileScreenState extends State<ProfileScreen>
                     right: -6,
                     top: -4,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
-                      decoration: BoxDecoration(color: AppTheme.accent, borderRadius: BorderRadius.circular(10)),
-                      child: Text('${_requests.length}', style: const TextStyle(color: Colors.white, fontSize: 9, fontWeight: FontWeight.w700)),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 4,
+                        vertical: 1,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppTheme.accent,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Text(
+                        '${_requests.length}',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 9,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
                     ),
                   ),
               ],
@@ -289,9 +301,22 @@ class ProfileScreenState extends State<ProfileScreen>
                     right: -6,
                     top: -4,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
-                      decoration: BoxDecoration(color: AppTheme.error, borderRadius: BorderRadius.circular(10)),
-                      child: Text(_totalUnread > 99 ? '99+' : '$_totalUnread', style: const TextStyle(color: Colors.white, fontSize: 9, fontWeight: FontWeight.w700)),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 4,
+                        vertical: 1,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppTheme.error,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Text(
+                        _totalUnread > 99 ? '99+' : '$_totalUnread',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 9,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
                     ),
                   ),
               ],
@@ -307,9 +332,22 @@ class ProfileScreenState extends State<ProfileScreen>
                     right: -6,
                     top: -4,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
-                      decoration: BoxDecoration(color: AppTheme.accent, borderRadius: BorderRadius.circular(10)),
-                      child: Text(_unreadNotifCount > 99 ? '99+' : '$_unreadNotifCount', style: const TextStyle(color: Colors.white, fontSize: 9, fontWeight: FontWeight.w700)),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 4,
+                        vertical: 1,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppTheme.accent,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Text(
+                        _unreadNotifCount > 99 ? '99+' : '$_unreadNotifCount',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 9,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
                     ),
                   ),
               ],
@@ -329,7 +367,10 @@ class ProfileScreenState extends State<ProfileScreen>
         ProfileTab(
           me: _me,
           onRefresh: () async => _fetchMe(),
-          onSignOut: () async { await PushNotificationService.dispose(); await AuthService.signOut(); },
+          onSignOut: () async {
+            await PushNotificationService.dispose();
+            await AuthService.signOut();
+          },
           onDeleteAccount: _deleteAccount,
         ),
         ProfileFriendsTab(

@@ -897,7 +897,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String resetLinkSent(Object email) {
-    return 'Password reset link sent to $email';
+    return 'Jika ada akun untuk $email, tautan sedang dikirim';
   }
 
   @override

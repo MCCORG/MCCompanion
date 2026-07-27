@@ -1017,7 +1017,7 @@
   "@requestsAppearHere": {
     "description": "Empty state subtitle on requests tab"
   },
-  "resetLinkSent": "{email} adresine bağlantı gönderildi",
+  "resetLinkSent": "{email} için bir hesap varsa, bağlantı yolda",
   "@resetLinkSent": {
     "description": "Toast after reset email is sent",
     "placeholders": {

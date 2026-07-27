@@ -899,7 +899,7 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String resetLinkSent(Object email) {
-    return 'Password reset link sent to $email';
+    return 'अगर $email के लिए कोई खाता है, तो लिंक भेजा जा रहा है';
   }
 
   @override

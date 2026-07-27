@@ -1017,7 +1017,7 @@
   "@requestsAppearHere": {
     "description": "Empty state subtitle on requests tab"
   },
-  "resetLinkSent": "Password reset link sent to {email}",
+  "resetLinkSent": "अगर {email} के लिए कोई खाता है, तो लिंक भेजा जा रहा है",
   "@resetLinkSent": {
     "description": "Toast after reset email is sent",
     "placeholders": {

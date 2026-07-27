@@ -902,7 +902,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String resetLinkSent(Object email) {
-    return 'Link enviado para $email';
+    return 'Se existir uma conta para $email, o link já vai a caminho';
   }
 
   @override

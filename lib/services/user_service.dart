@@ -6,6 +6,14 @@ import 'api_client_base.dart';
 import '../constants/app_constants.dart';
 import '../models/user_model.dart';
 
+typedef SocialInit = ({
+  UserModel? user,
+  List<FriendModel> friends,
+  List<FriendRequest> friendRequests,
+  int unreadMessageCount,
+  int unreadNotifCount,
+});
+
 class UserService {
   static const String _base = AppConstants.apiBase;
   static const Duration _timeout = Duration(seconds: 8);
@@ -13,7 +21,32 @@ class UserService {
   static bool _isAdmin = false;
   static bool get isAdmin => _isAdmin;
 
-  static Future<UserModel?> getMe() async {
+  static UserModel? _cachedMe;
+  static DateTime? _cachedMeAt;
+  static Future<UserModel?>? _meInFlight;
+
+  static const _meCacheTtl = Duration(seconds: 30);
+
+  static Future<UserModel?> getMe({bool forceRefresh = false}) {
+    if (!forceRefresh) {
+      final at = _cachedMeAt;
+      if (_cachedMe != null &&
+          at != null &&
+          DateTime.now().difference(at) < _meCacheTtl) {
+        return Future.value(_cachedMe);
+      }
+      final pending = _meInFlight;
+      if (pending != null) return pending;
+    }
+
+    final future = _fetchMe();
+    _meInFlight = future;
+    return future.whenComplete(() {
+      if (identical(_meInFlight, future)) _meInFlight = null;
+    });
+  }
+
+  static Future<UserModel?> _fetchMe() async {
     try {
       final res = await http
           .get(
@@ -24,12 +57,22 @@ class UserService {
       if (res.statusCode == 200) {
         final body = jsonDecode(res.body) as Map<String, dynamic>;
         _isAdmin = body['isAdmin'] as bool? ?? false;
-        return UserModel.fromJson(body['user'] as Map<String, dynamic>);
+        final user = UserModel.fromJson(body['user'] as Map<String, dynamic>);
+        _cachedMe = user;
+        _cachedMeAt = DateTime.now();
+        return user;
       }
     } catch (e) {
       debugPrint('[UserService.getMe] $e');
     }
     return null;
+  }
+
+  static void invalidateMe() {
+    _cachedMe = null;
+    _cachedMeAt = null;
+    _cachedSocial = null;
+    _cachedSocialAt = null;
   }
 
   static Future<({UserModel? user, String? error})> register({
@@ -81,10 +124,14 @@ class UserService {
           )
           .timeout(_timeout);
       if (res.statusCode == 200) {
-        return UserModel.fromJson(
+        final user = UserModel.fromJson(
           (jsonDecode(res.body) as Map<String, dynamic>)['user']
               as Map<String, dynamic>,
         );
+
+        _cachedMe = user;
+        _cachedMeAt = DateTime.now();
+        return user;
       }
     } catch (e) {
       debugPrint('[UserService.updateMe] $e');
@@ -361,7 +408,38 @@ class UserService {
     }
   }
 
-  static Future<({UserModel? user, List<FriendModel> friends, List<FriendRequest> friendRequests, int unreadMessageCount, int unreadNotifCount})?> getSocialInit() async {
+  static SocialInit? _cachedSocial;
+  static DateTime? _cachedSocialAt;
+  static Future<SocialInit?>? _socialInFlight;
+
+  static const _socialCacheTtl = Duration(seconds: 30);
+
+  static Future<SocialInit?> getSocialInit({bool forceRefresh = false}) {
+    if (!forceRefresh) {
+      final at = _cachedSocialAt;
+      if (_cachedSocial != null &&
+          at != null &&
+          DateTime.now().difference(at) < _socialCacheTtl) {
+        return Future.value(_cachedSocial);
+      }
+      final pending = _socialInFlight;
+      if (pending != null) return pending;
+    }
+
+    final future = _fetchSocialInit();
+    _socialInFlight = future;
+    return future.whenComplete(() {
+      if (identical(_socialInFlight, future)) _socialInFlight = null;
+    });
+  }
+
+  static Future<void> warmSocialInit() async {
+    try {
+      await getSocialInit();
+    } catch (_) {}
+  }
+
+  static Future<SocialInit?> _fetchSocialInit() async {
     try {
       final res = await http
           .get(
@@ -372,13 +450,23 @@ class UserService {
       if (res.statusCode == 200) {
         final body = jsonDecode(res.body) as Map<String, dynamic>;
         _isAdmin = body['isAdmin'] as bool? ?? false;
-        return (
-          user: body['user'] != null ? UserModel.fromJson(body['user'] as Map<String, dynamic>) : null,
-          friends: (body['friends'] as List<dynamic>).map((e) => FriendModel.fromJson(e as Map<String, dynamic>)).toList(),
-          friendRequests: (body['friendRequests'] as List<dynamic>).map((e) => FriendRequest.fromJson(e as Map<String, dynamic>)).toList(),
-          unreadMessageCount: (body['unreadMessageCount'] as num?)?.toInt() ?? 0,
+        final result = (
+          user: body['user'] != null
+              ? UserModel.fromJson(body['user'] as Map<String, dynamic>)
+              : null,
+          friends: (body['friends'] as List<dynamic>)
+              .map((e) => FriendModel.fromJson(e as Map<String, dynamic>))
+              .toList(),
+          friendRequests: (body['friendRequests'] as List<dynamic>)
+              .map((e) => FriendRequest.fromJson(e as Map<String, dynamic>))
+              .toList(),
+          unreadMessageCount:
+              (body['unreadMessageCount'] as num?)?.toInt() ?? 0,
           unreadNotifCount: (body['unreadNotifCount'] as num?)?.toInt() ?? 0,
         );
+        _cachedSocial = result;
+        _cachedSocialAt = DateTime.now();
+        return result;
       }
     } catch (e) {
       debugPrint('[UserService.getSocialInit] $e');
@@ -515,7 +603,14 @@ class UserService {
     return 'none';
   }
 
-  static Future<({UserModel? user, String friendshipStatus, String targetUid, bool isTargetAdmin})>
+  static Future<
+    ({
+      UserModel? user,
+      String friendshipStatus,
+      String targetUid,
+      bool isTargetAdmin,
+    })
+  >
   getProfileWithFriendship(String username) async {
     try {
       final res = await http
@@ -538,7 +633,12 @@ class UserService {
     } catch (e) {
       debugPrint('[UserService.getProfileWithFriendship] $e');
     }
-    return (user: null, friendshipStatus: 'none', targetUid: '', isTargetAdmin: false);
+    return (
+      user: null,
+      friendshipStatus: 'none',
+      targetUid: '',
+      isTargetAdmin: false,
+    );
   }
 
   static Future<List<UserModel>> searchUsers(String query) async {

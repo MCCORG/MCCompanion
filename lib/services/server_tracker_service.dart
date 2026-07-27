@@ -40,7 +40,20 @@ class ServerTrackerService {
 
   Future<void> refresh() => _load();
 
-  Future<void> _load() async {
+  Future<void>? _loading;
+
+  Future<void> _load() {
+    final pending = _loading;
+    if (pending != null) return pending;
+
+    final future = _fetch();
+    _loading = future;
+    return future.whenComplete(() {
+      if (identical(_loading, future)) _loading = null;
+    });
+  }
+
+  Future<void> _fetch() async {
     final data = await TrackerApiService.getServers();
     if (data == null) return;
 

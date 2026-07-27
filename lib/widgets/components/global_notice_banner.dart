@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'app_blur.dart';
 import '../../theme/app_theme.dart';
 
 class GlobalNoticeBanner extends StatefulWidget {
@@ -68,7 +69,10 @@ class _GlobalNoticeBannerState extends State<GlobalNoticeBanner>
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+              filter: ImageFilter.blur(
+                sigmaX: AppBlur.sigmaFor(12),
+                sigmaY: AppBlur.sigmaFor(12),
+              ),
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white.withValues(alpha: 0.05),

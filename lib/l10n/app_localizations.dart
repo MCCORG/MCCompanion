@@ -1749,7 +1749,7 @@ abstract class AppLocalizations {
   /// Toast after reset email is sent
   ///
   /// In en, this message translates to:
-  /// **'Password reset link sent to {email}'**
+  /// **'If an account exists for {email}, a reset link is on its way'**
   String resetLinkSent(Object email);
 
   /// Error when no account exists for the email

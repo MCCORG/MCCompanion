@@ -99,6 +99,7 @@ class HomeScreenState extends State<HomeScreen> {
     loadUserServers();
     _loadBedrockAccounts();
     _loadResourcePackUrl();
+    ResourcePackPrefs.revision.addListener(_loadResourcePackUrl);
   }
 
   void toggleDebug() {
@@ -120,6 +121,7 @@ class HomeScreenState extends State<HomeScreen> {
 
   @override
   void dispose() {
+    ResourcePackPrefs.revision.removeListener(_loadResourcePackUrl);
     _mainScrollController.dispose();
     _broadcastingNotifier.dispose();
     _userServersNotifier.dispose();

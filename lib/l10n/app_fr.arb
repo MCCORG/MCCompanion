@@ -1017,7 +1017,7 @@
   "@requestsAppearHere": {
     "description": "Empty state subtitle on requests tab"
   },
-  "resetLinkSent": "Lien envoyé à {email}",
+  "resetLinkSent": "Si un compte existe pour {email}, un lien est en route",
   "@resetLinkSent": {
     "description": "Toast after reset email is sent",
     "placeholders": {

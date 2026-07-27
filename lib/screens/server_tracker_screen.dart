@@ -43,7 +43,6 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
   @override
   void initState() {
     super.initState();
-    _checkAuth();
     _startCountdown();
     _authSub = AuthService.userStream.listen((_) => _checkAuth());
     ThemeService.instance.addListener(_onTheme);
@@ -83,6 +82,10 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
   }
 
   void _startListening() {
+    // _checkAuth can fire again on any auth change, and without this the old
+    // subscriptions stayed alive and setState ran once per past sign in.
+    _sub?.cancel();
+    _slotsSub?.cancel();
     _sub = ServerTrackerService.instance.serversStream.listen((servers) {
       if (mounted)
         setState(() {
@@ -219,165 +222,197 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
         builder: (context, constraints) {
           final isWide = constraints.maxWidth > 700;
           Widget content = Column(
-          children: [
-            Row(
             children: [
-              const Spacer(),
-              if (_isLoggedIn && _slots != null)
-                Padding(
-                  padding: const EdgeInsets.only(right: 4),
-                  child: Text(
-                    '${_slots!.used}/${_slots!.total}',
-                    style: TextStyle(
-                      color: _slots!.remaining == 0
-                          ? AppTheme.warning
-                          : AppTheme.textMuted,
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              if (_isLoggedIn && !_loading && _servers.isNotEmpty) ...[
-                _CountdownLabel(countdown: _countdown),
-                _refreshing
-                    ? SizedBox(
-                        width: 36,
-                        height: 36,
-                        child: Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            color: AppTheme.brand,
-                          ),
-                        ),
-                      )
-                    : IconButton(
-                        icon: Icon(
-                          Icons.refresh_rounded,
-                          color: AppTheme.textSecondary,
-                          size: 20,
-                        ),
-                        onPressed: _manualRefresh,
-                        tooltip: AppLocalizations.of(context)!.refreshStatus,
-                        padding: EdgeInsets.zero,
-                        constraints: const BoxConstraints(
-                          minWidth: 36,
-                          minHeight: 36,
+              Row(
+                children: [
+                  const Spacer(),
+                  if (_isLoggedIn && _slots != null)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 4),
+                      child: Text(
+                        '${_slots!.used}/${_slots!.total}',
+                        style: TextStyle(
+                          color: _slots!.remaining == 0
+                              ? AppTheme.warning
+                              : AppTheme.textMuted,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-              ],
-              if (_isLoggedIn)
-                GestureDetector(
-                  onTap: _slots != null && _slots!.remaining == 0 && !Platform.isWindows
-                      ? _openPaywall
-                      : _openAddSheet,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Icon(
-                      Icons.add_rounded,
-                      size: 24,
-                      color: _slots != null && _slots!.remaining == 0 && !Platform.isWindows
-                          ? AppTheme.textDisabled
-                          : AppTheme.accent,
                     ),
-                  ),
-                ),
-            ],
-          ),
-
-        if (_slots != null && _slots!.remaining == 0 && !_loading && _isLoggedIn && !Platform.isWindows)
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 10, 16, 2),
-            child: GestureDetector(
-              onTap: _openPaywall,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-                decoration: BoxDecoration(
-                  color: AppTheme.warning.withValues(alpha: 0.08),
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: AppTheme.warning.withValues(alpha: 0.30)),
-                ),
-                child: Row(
-                  children: [
-                    Icon(Icons.lock_outline_rounded, color: AppTheme.warning, size: 20),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            AppLocalizations.of(context)!.trackerLimitReached,
-                            style: TextStyle(
-                              color: AppTheme.warning,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w700,
+                  if (_isLoggedIn && !_loading && _servers.isNotEmpty) ...[
+                    _CountdownLabel(countdown: _countdown),
+                    _refreshing
+                        ? SizedBox(
+                            width: 36,
+                            height: 36,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                color: AppTheme.brand,
+                              ),
+                            ),
+                          )
+                        : IconButton(
+                            icon: Icon(
+                              Icons.refresh_rounded,
+                              color: AppTheme.textSecondary,
+                              size: 20,
+                            ),
+                            onPressed: _manualRefresh,
+                            tooltip: AppLocalizations.of(
+                              context,
+                            )!.refreshStatus,
+                            padding: EdgeInsets.zero,
+                            constraints: const BoxConstraints(
+                              minWidth: 36,
+                              minHeight: 36,
                             ),
                           ),
-                          const SizedBox(height: 2),
-                          Text(
-                            AppLocalizations.of(context)!.upgradeWindowsHint,
-                            style: TextStyle(
-                              color: AppTheme.warning.withValues(alpha: 0.70),
-                              fontSize: 11,
+                  ],
+                  if (_isLoggedIn)
+                    GestureDetector(
+                      onTap:
+                          _slots != null &&
+                              _slots!.remaining == 0 &&
+                              !Platform.isWindows
+                          ? _openPaywall
+                          : _openAddSheet,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: Icon(
+                          Icons.add_rounded,
+                          size: 24,
+                          color:
+                              _slots != null &&
+                                  _slots!.remaining == 0 &&
+                                  !Platform.isWindows
+                              ? AppTheme.textDisabled
+                              : AppTheme.accent,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+
+              if (_slots != null &&
+                  _slots!.remaining == 0 &&
+                  !_loading &&
+                  _isLoggedIn &&
+                  !Platform.isWindows)
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 10, 16, 2),
+                  child: GestureDetector(
+                    onTap: _openPaywall,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 14,
+                        vertical: 12,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppTheme.warning.withValues(alpha: 0.08),
+                        borderRadius: BorderRadius.circular(14),
+                        border: Border.all(
+                          color: AppTheme.warning.withValues(alpha: 0.30),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.lock_outline_rounded,
+                            color: AppTheme.warning,
+                            size: 20,
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  AppLocalizations.of(
+                                    context,
+                                  )!.trackerLimitReached,
+                                  style: TextStyle(
+                                    color: AppTheme.warning,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                const SizedBox(height: 2),
+                                Text(
+                                  AppLocalizations.of(
+                                    context,
+                                  )!.upgradeWindowsHint,
+                                  style: TextStyle(
+                                    color: AppTheme.warning.withValues(
+                                      alpha: 0.70,
+                                    ),
+                                    fontSize: 11,
+                                  ),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
                             ),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(width: 12),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 7,
+                            ),
+                            decoration: BoxDecoration(
+                              color: AppTheme.brand,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Text(
+                              AppLocalizations.of(context)!.upgradeButton,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(width: 12),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
-                      decoration: BoxDecoration(
-                        color: AppTheme.brand,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        AppLocalizations.of(context)!.upgradeButton,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-
-        Expanded(
-          child: !_isLoggedIn
-              ? _NotLoggedIn(onLogin: widget.onGoToLogin)
-              : _loading
-              ? Center(child: CircularProgressIndicator(color: AppTheme.brand))
-              : _servers.isEmpty
-              ? _EmptyState(onAdd: _openAddSheet)
-              : RefreshIndicator(
-                  color: AppTheme.brand,
-                  onRefresh: ServerTrackerService.instance.refresh,
-                  child: ListView.builder(
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    itemCount: _servers.length,
-                    itemBuilder: (_, i) => TrackedServerCard(
-                      server: _servers[i],
-                      onDelete: () => _deleteServer(_servers[i]),
-                      onUpdated: (updated) {
-                        setState(() {
-                          _servers = [
-                            for (final s in _servers)
-                              if (s.id == updated.id) updated else s,
-                          ];
-                        });
-                      },
-                    ),
                   ),
                 ),
-        ),
-          ],
+
+              Expanded(
+                child: !_isLoggedIn
+                    ? _NotLoggedIn(onLogin: widget.onGoToLogin)
+                    : _loading
+                    ? Center(
+                        child: CircularProgressIndicator(color: AppTheme.brand),
+                      )
+                    : _servers.isEmpty
+                    ? _EmptyState(onAdd: _openAddSheet)
+                    : RefreshIndicator(
+                        color: AppTheme.brand,
+                        onRefresh: ServerTrackerService.instance.refresh,
+                        child: ListView.builder(
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          itemCount: _servers.length,
+                          itemBuilder: (_, i) => TrackedServerCard(
+                            server: _servers[i],
+                            onDelete: () => _deleteServer(_servers[i]),
+                            onUpdated: (updated) {
+                              setState(() {
+                                _servers = [
+                                  for (final s in _servers)
+                                    if (s.id == updated.id) updated else s,
+                                ];
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+              ),
+            ],
           );
           if (isWide) {
             content = Center(
@@ -471,11 +506,7 @@ class _EmptyState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              Icons.radar_rounded,
-              color: AppTheme.textMuted,
-              size: 52,
-            ),
+            Icon(Icons.radar_rounded, color: AppTheme.textMuted, size: 52),
             const SizedBox(height: 16),
             Text(
               AppLocalizations.of(context)!.noServersTracked,
@@ -499,11 +530,16 @@ class _EmptyState extends StatelessWidget {
             GestureDetector(
               onTap: onAdd,
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 13),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 13,
+                ),
                 decoration: BoxDecoration(
                   color: AppTheme.accent.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: AppTheme.accent.withValues(alpha: 0.35)),
+                  border: Border.all(
+                    color: AppTheme.accent.withValues(alpha: 0.35),
+                  ),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -619,10 +655,7 @@ class _AddServerSheetState extends State<_AddServerSheet> {
               ),
               const Spacer(),
               IconButton(
-                icon: Icon(
-                  Icons.close_rounded,
-                  color: AppTheme.textMuted,
-                ),
+                icon: Icon(Icons.close_rounded, color: AppTheme.textMuted),
                 onPressed: () => Navigator.of(context).pop(),
               ),
             ],

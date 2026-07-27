@@ -1017,7 +1017,7 @@
   "@requestsAppearHere": {
     "description": "Empty state subtitle on requests tab"
   },
-  "resetLinkSent": "Password reset link sent to {email}",
+  "resetLinkSent": "{email} のアカウントがあれば、リンクを送信しました",
   "@resetLinkSent": {
     "description": "Toast after reset email is sent",
     "placeholders": {

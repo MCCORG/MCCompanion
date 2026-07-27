@@ -883,7 +883,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String resetLinkSent(Object email) {
-    return 'Password reset link sent to $email';
+    return '如果 $email 有账号，重置链接已在发送中';
   }
 
   @override

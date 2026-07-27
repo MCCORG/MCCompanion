@@ -70,11 +70,9 @@ class SkinsScreenState extends State<SkinsScreen> {
       _loadMe();
       _loadMeDashboard();
     });
-    _loadMe();
     _loadSavedSkins();
     _loadTopSkins();
     _loadAllSkins();
-    _loadMeDashboard();
   }
 
   @override
@@ -92,7 +90,8 @@ class SkinsScreenState extends State<SkinsScreen> {
       });
       return;
     }
-    setState(() => _loading = true);
+
+    if (_me == null) setState(() => _loading = true);
     final me = await UserService.getMe();
     if (!mounted) return;
     setState(() {
@@ -170,7 +169,7 @@ class SkinsScreenState extends State<SkinsScreen> {
       });
       return;
     }
-    setState(() => _loadingCloud = true);
+    if (_cloudSkins.isEmpty) setState(() => _loadingCloud = true);
     try {
       final token = await AuthService.getIdToken();
       final resp = await http
