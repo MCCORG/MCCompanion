@@ -16,24 +16,65 @@ class SupportInboxScreen extends StatefulWidget {
   State<SupportInboxScreen> createState() => _SupportInboxScreenState();
 }
 
+class _SupportEntry {
+  final String? uid;
+  final String username;
+  final ConversationModel? conv;
+  final List<FeedbackTicket> tickets;
+
+  const _SupportEntry({
+    required this.username,
+    this.uid,
+    this.conv,
+    this.tickets = const [],
+  });
+
+  String get label => conv?.displayName ?? username;
+  String? get avatarUrl => conv?.avatarUrl;
+
+  DateTime get lastActivity {
+    var latest = conv?.lastMessageAt ?? DateTime.fromMillisecondsSinceEpoch(0);
+    for (final t in tickets) {
+      if (t.createdAt.isAfter(latest)) latest = t.createdAt;
+    }
+    return latest;
+  }
+}
+
 class _SupportInboxScreenState extends State<SupportInboxScreen> {
   List<ConversationModel> _conversations = [];
   List<FeedbackTicket> _tickets = [];
   bool _showClosed = false;
   bool _loading = true;
 
-  Map<String, List<FeedbackTicket>> get _byUid {
-    final map = <String, List<FeedbackTicket>>{};
-    for (final t in _tickets) {
-      final key = t.uid ?? t.username;
-      if (key == null) continue;
-      (map[key] ??= []).add(t);
-    }
-    return map;
-  }
+  List<_SupportEntry> get _entries {
+    String keyFor(String? uid, String username) => uid ?? 'n:$username';
+    final byKey = <String, _SupportEntry>{};
 
-  List<FeedbackTicket> _ticketsFor(ConversationModel c) =>
-      _byUid[c.otherUid] ?? _byUid[c.username] ?? const [];
+    for (final c in _conversations) {
+      byKey[keyFor(c.otherUid, c.username)] = _SupportEntry(
+        uid: c.otherUid,
+        username: c.username,
+        conv: c,
+      );
+    }
+
+    for (final t in _tickets) {
+      final username = t.username;
+      if (username == null) continue;
+      final key = keyFor(t.uid, username);
+      final existing = byKey[key];
+      byKey[key] = _SupportEntry(
+        uid: existing?.uid ?? t.uid,
+        username: existing?.username ?? username,
+        conv: existing?.conv,
+        tickets: [...?existing?.tickets, t],
+      );
+    }
+
+    return byKey.values.toList()
+      ..sort((a, b) => b.lastActivity.compareTo(a.lastActivity));
+  }
 
   @override
   void initState() {
@@ -47,17 +88,20 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
     if (!mounted) return;
     setState(() {
       _conversations = convs;
-      // Filter here too: an older API ignores ?state and returns everything.
-      _tickets = _showClosed ? tickets : tickets.where((t) => !t.isClosed).toList();
+      _tickets = _showClosed
+          ? tickets
+          : tickets.where((t) => !t.isClosed).toList();
       _loading = false;
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final entries = _entries;
     final content = Column(
-        children: [
-          if (!widget.embedded) Padding(
+      children: [
+        if (!widget.embedded)
+          Padding(
             padding: EdgeInsets.only(
               top: MediaQuery.of(context).padding.top + 8,
               left: 8,
@@ -121,92 +165,96 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
               ],
             ),
           ),
-          Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 720),
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(16, widget.embedded ? 12 : 0, 16, 10),
-                child: Row(
-                  children: [
-                    for (final closed in [false, true])
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.only(right: closed ? 0 : 8),
-                          child: _FilterButton(
-                            label: closed ? 'All' : 'Open',
-                            active: _showClosed == closed,
-                            onTap: () {
-                              if (_showClosed == closed) return;
-                              setState(() => _showClosed = closed);
-                              _load();
-                            },
-                          ),
-                        ),
-                      ),
-                  ],
-                ),
+        Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 720),
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(
+                16,
+                widget.embedded ? 12 : 0,
+                16,
+                10,
               ),
-            ),
-          ),
-          Expanded(
-            child: _loading
-                ? Center(
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                      color: AppTheme.accent,
-                    ),
-                  )
-                : _conversations.isEmpty
-                ? Center(
-                    child: Text(
-                      AppLocalizations.of(context)!.supportInboxEmpty,
-                      style: TextStyle(color: AppTheme.textMuted, fontSize: 13),
-                    ),
-                  )
-                : RefreshIndicator(
-                    color: AppTheme.accent,
-                    backgroundColor: AppTheme.surfaceRaised,
-                    onRefresh: _load,
-                    child: Center(
-                      child: ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: 720),
-                        child: ListView.separated(
-                          padding: EdgeInsets.fromLTRB(
-                            16,
-                            8,
-                            16,
-                            8 + MediaQuery.of(context).padding.bottom +
-                                (widget.embedded ? 72 : 0),
-                          ),
-                          itemCount: _conversations.length,
-                          separatorBuilder: (_, __) =>
-                              const SizedBox(height: 8),
-                          itemBuilder: (_, i) {
-                            final c = _conversations[i];
-                            return _SupportConvTile(
-                              conv: c,
-                              tickets: _ticketsFor(c),
-                              onTap: () async {
-                                await Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (_) => SupportChatScreen(
-                                      uid: c.otherUid,
-                                      username: c.username,
-                                      displayName: c.displayName ?? c.username,
-                                    ),
-                                  ),
-                                );
-                                _load();
-                              },
-                            );
+              child: Row(
+                children: [
+                  for (final closed in [false, true])
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(right: closed ? 0 : 8),
+                        child: _FilterButton(
+                          label: closed ? 'All' : 'Open',
+                          active: _showClosed == closed,
+                          onTap: () {
+                            if (_showClosed == closed) return;
+                            setState(() => _showClosed = closed);
+                            _load();
                           },
                         ),
                       ),
                     ),
-                  ),
+                ],
+              ),
+            ),
           ),
-        ],
-      );
+        ),
+        Expanded(
+          child: _loading
+              ? Center(
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    color: AppTheme.accent,
+                  ),
+                )
+              : entries.isEmpty
+              ? Center(
+                  child: Text(
+                    AppLocalizations.of(context)!.supportInboxEmpty,
+                    style: TextStyle(color: AppTheme.textMuted, fontSize: 13),
+                  ),
+                )
+              : RefreshIndicator(
+                  color: AppTheme.accent,
+                  backgroundColor: AppTheme.surfaceRaised,
+                  onRefresh: _load,
+                  child: Center(
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 720),
+                      child: ListView.separated(
+                        padding: EdgeInsets.fromLTRB(
+                          16,
+                          8,
+                          16,
+                          8 +
+                              MediaQuery.of(context).padding.bottom +
+                              (widget.embedded ? 72 : 0),
+                        ),
+                        itemCount: entries.length,
+                        separatorBuilder: (_, __) => const SizedBox(height: 8),
+                        itemBuilder: (_, i) {
+                          final e = entries[i];
+                          return _SupportConvTile(
+                            entry: e,
+                            onTap: () async {
+                              await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (_) => SupportChatScreen(
+                                    uid: e.uid,
+                                    username: e.username,
+                                    displayName: e.label,
+                                  ),
+                                ),
+                              );
+                              _load();
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+        ),
+      ],
+    );
 
     if (widget.embedded) return content;
     return SwipeBack(onBack: () => Navigator.of(context).pop(), child: content);
@@ -217,7 +265,11 @@ class _FilterButton extends StatelessWidget {
   final String label;
   final bool active;
   final VoidCallback onTap;
-  const _FilterButton({required this.label, required this.active, required this.onTap});
+  const _FilterButton({
+    required this.label,
+    required this.active,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -227,10 +279,14 @@ class _FilterButton extends StatelessWidget {
         alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(vertical: 9),
         decoration: BoxDecoration(
-          color: active ? AppTheme.accent.withValues(alpha: 0.12) : Colors.transparent,
+          color: active
+              ? AppTheme.accent.withValues(alpha: 0.12)
+              : Colors.transparent,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color: active ? AppTheme.accent.withValues(alpha: 0.35) : AppTheme.borderGray,
+            color: active
+                ? AppTheme.accent.withValues(alpha: 0.35)
+                : AppTheme.borderGray,
           ),
         ),
         child: Text(
@@ -247,35 +303,51 @@ class _FilterButton extends StatelessWidget {
 }
 
 class _SupportConvTile extends StatelessWidget {
-  final ConversationModel conv;
-  final List<FeedbackTicket> tickets;
+  final _SupportEntry entry;
   final VoidCallback onTap;
-  const _SupportConvTile({
-    required this.conv,
-    required this.onTap,
-    this.tickets = const [],
-  });
+  const _SupportConvTile({required this.entry, required this.onTap});
+
+  List<FeedbackTicket> get tickets => entry.tickets;
+  ConversationModel? get conv => entry.conv;
+
+  int get unread => conv?.unreadCount ?? 0;
+
+  String get preview {
+    final c = conv;
+    if (c != null) {
+      return '${c.lastMessageIsMine ? "Support: " : ""}${c.lastMessage}';
+    }
+    if (tickets.isEmpty) return '';
+    final newest = tickets.reduce(
+      (a, b) => a.createdAt.isAfter(b.createdAt) ? a : b,
+    );
+    return newest.title;
+  }
 
   List<Widget> _badges() {
     final bugs = tickets.where((t) => t.isBug).length;
     final feats = tickets.length - bugs;
     Widget pill(int n, String word, Color c) => Container(
-          margin: const EdgeInsets.only(left: 6),
-          padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
-          decoration: BoxDecoration(
-            color: c.withValues(alpha: 0.12),
-            borderRadius: BorderRadius.circular(5),
-            border: Border.all(color: c.withValues(alpha: 0.3)),
-          ),
-          child: Text(
-            '$n $word',
-            style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: c),
-          ),
-        );
+      margin: const EdgeInsets.only(left: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+      decoration: BoxDecoration(
+        color: c.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(5),
+        border: Border.all(color: c.withValues(alpha: 0.3)),
+      ),
+      child: Text(
+        '$n $word',
+        style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: c),
+      ),
+    );
     return [
       if (bugs > 0) pill(bugs, bugs == 1 ? 'bug' : 'bugs', AppTheme.error),
       if (feats > 0)
-        pill(feats, feats == 1 ? 'feature request' : 'feature requests', AppTheme.accent),
+        pill(
+          feats,
+          feats == 1 ? 'feature request' : 'feature requests',
+          AppTheme.accent,
+        ),
     ];
   }
 
@@ -289,7 +361,7 @@ class _SupportConvTile extends StatelessWidget {
           color: AppTheme.surface,
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
-            color: conv.unreadCount > 0
+            color: unread > 0
                 ? AppTheme.accent.withValues(alpha: 0.4)
                 : AppTheme.borderGray,
           ),
@@ -297,10 +369,10 @@ class _SupportConvTile extends StatelessWidget {
         child: Row(
           children: [
             ProfileAvatar(
-              initials: (conv.username.isNotEmpty ? conv.username[0] : '?')
+              initials: (entry.username.isNotEmpty ? entry.username[0] : '?')
                   .toUpperCase(),
               size: 42,
-              avatarUrl: conv.avatarUrl,
+              avatarUrl: entry.avatarUrl,
             ),
             const SizedBox(width: 12),
             Expanded(
@@ -311,7 +383,7 @@ class _SupportConvTile extends StatelessWidget {
                     children: [
                       Flexible(
                         child: Text(
-                          conv.displayName ?? conv.username,
+                          entry.label,
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w700,
@@ -326,7 +398,7 @@ class _SupportConvTile extends StatelessWidget {
                   ),
                   const SizedBox(height: 2),
                   Text(
-                    '${conv.lastMessageIsMine ? "Support: " : ""}${conv.lastMessage}',
+                    preview,
                     style: TextStyle(fontSize: 12, color: AppTheme.textMuted),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -334,7 +406,7 @@ class _SupportConvTile extends StatelessWidget {
                 ],
               ),
             ),
-            if (conv.unreadCount > 0) ...[
+            if (unread > 0) ...[
               const SizedBox(width: 8),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
@@ -343,7 +415,7 @@ class _SupportConvTile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
-                  '${conv.unreadCount}',
+                  '$unread',
                   style: const TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w800,
@@ -421,9 +493,11 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
       _sentBy = result.sentBy;
       _supportUid = result.supportUid ?? _supportUid;
       _tickets = all
-          .where((t) => widget.uid != null && t.uid != null
-              ? t.uid == widget.uid
-              : t.username == widget.username)
+          .where(
+            (t) => widget.uid != null && t.uid != null
+                ? t.uid == widget.uid
+                : t.username == widget.username,
+          )
           .where((t) => !t.isClosed)
           .toList();
       _loading = false;
@@ -470,7 +544,8 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
     });
   }
 
-  String _ticketStatusLabel(AppLocalizations l, String status) => switch (status) {
+  String _ticketStatusLabel(AppLocalizations l, String status) =>
+      switch (status) {
         'planned' => l.fbStatusPlanned,
         'in_progress' => l.fbStatusInProgress,
         'implemented' => l.fbStatusImplemented,
@@ -530,7 +605,10 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               child: Row(
                 children: [
-                  Text(t.isBug ? '🐛' : '💡', style: const TextStyle(fontSize: 13)),
+                  Text(
+                    t.isBug ? '🐛' : '💡',
+                    style: const TextStyle(fontSize: 13),
+                  ),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
@@ -546,10 +624,16 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
                   ),
                   Text(
                     _ticketStatusLabel(l, t.status),
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: color),
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w700,
+                      color: color,
+                    ),
                   ),
                   Icon(
-                    expanded ? Icons.expand_less_rounded : Icons.expand_more_rounded,
+                    expanded
+                        ? Icons.expand_less_rounded
+                        : Icons.expand_more_rounded,
                     size: 18,
                     color: AppTheme.textMuted,
                   ),
@@ -574,12 +658,19 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
         children: [
           Text(
             t.description,
-            style: TextStyle(fontSize: 12, color: AppTheme.textSecondary, height: 1.5),
+            style: TextStyle(
+              fontSize: 12,
+              color: AppTheme.textSecondary,
+              height: 1.5,
+            ),
           ),
           const SizedBox(height: 8),
           Row(
             children: [
-              Text('Status', style: TextStyle(fontSize: 11, color: AppTheme.textMuted)),
+              Text(
+                'Status',
+                style: TextStyle(fontSize: 11, color: AppTheme.textMuted),
+              ),
               const SizedBox(width: 8),
               DropdownButton<String>(
                 value: t.status,
@@ -587,9 +678,22 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
                 dropdownColor: AppTheme.surfaceRaisedSolid,
                 underline: const SizedBox.shrink(),
                 style: TextStyle(fontSize: 12, color: AppTheme.textPrimary),
-                items: const ['open', 'planned', 'in_progress', 'implemented', 'not_planned', 'duplicate']
-                    .map((v) => DropdownMenuItem(value: v, child: Text(_statusText(l, v))))
-                    .toList(),
+                items:
+                    const [
+                          'open',
+                          'planned',
+                          'in_progress',
+                          'implemented',
+                          'not_planned',
+                          'duplicate',
+                        ]
+                        .map(
+                          (v) => DropdownMenuItem(
+                            value: v,
+                            child: Text(_statusText(l, v)),
+                          ),
+                        )
+                        .toList(),
                 onChanged: (v) => v == null ? null : _setTicketStatus(t, v),
               ),
             ],
@@ -600,28 +704,42 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
               child: SizedBox(
                 width: 16,
                 height: 16,
-                child: CircularProgressIndicator(strokeWidth: 2, color: AppTheme.accent),
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  color: AppTheme.accent,
+                ),
               ),
             )
           else
-            ...msgs.map((m) => Align(
-                  alignment: m.fromAdmin ? Alignment.centerRight : Alignment.centerLeft,
-                  child: Container(
-                    margin: const EdgeInsets.only(bottom: 5),
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
-                    constraints: const BoxConstraints(maxWidth: 260),
-                    decoration: BoxDecoration(
-                      color: m.fromAdmin
-                          ? AppTheme.accent.withValues(alpha: 0.10)
-                          : AppTheme.surfaceRaised,
-                      borderRadius: BorderRadius.circular(9),
-                    ),
-                    child: Text(
-                      m.body,
-                      style: TextStyle(fontSize: 12, color: AppTheme.textPrimary, height: 1.4),
+            ...msgs.map(
+              (m) => Align(
+                alignment: m.fromAdmin
+                    ? Alignment.centerRight
+                    : Alignment.centerLeft,
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 5),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 7,
+                  ),
+                  constraints: const BoxConstraints(maxWidth: 260),
+                  decoration: BoxDecoration(
+                    color: m.fromAdmin
+                        ? AppTheme.accent.withValues(alpha: 0.10)
+                        : AppTheme.surfaceRaised,
+                    borderRadius: BorderRadius.circular(9),
+                  ),
+                  child: Text(
+                    m.body,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: AppTheme.textPrimary,
+                      height: 1.4,
                     ),
                   ),
-                )),
+                ),
+              ),
+            ),
           Row(
             children: [
               Expanded(
@@ -630,9 +748,15 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
                   style: TextStyle(fontSize: 12, color: AppTheme.textPrimary),
                   decoration: InputDecoration(
                     hintText: l.adminTicketReplyHint,
-                    hintStyle: TextStyle(fontSize: 12, color: AppTheme.textMuted),
+                    hintStyle: TextStyle(
+                      fontSize: 12,
+                      color: AppTheme.textMuted,
+                    ),
                     isDense: true,
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 9,
+                    ),
                     filled: true,
                     fillColor: AppTheme.background,
                     border: OutlineInputBorder(
@@ -647,8 +771,14 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
                 ),
               ),
               IconButton(
-                onPressed: _ticketSending == t.id ? null : () => _sendTicketReply(t),
-                icon: Icon(Icons.send_rounded, size: 16, color: AppTheme.accent),
+                onPressed: _ticketSending == t.id
+                    ? null
+                    : () => _sendTicketReply(t),
+                icon: Icon(
+                  Icons.send_rounded,
+                  size: 16,
+                  color: AppTheme.accent,
+                ),
               ),
             ],
           ),
@@ -658,13 +788,13 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
   }
 
   static String _statusText(AppLocalizations l, String v) => switch (v) {
-        'planned' => l.fbStatusPlanned,
-        'in_progress' => l.fbStatusInProgress,
-        'implemented' => l.fbStatusImplemented,
-        'not_planned' => l.fbStatusNotPlanned,
-        'duplicate' => l.fbStatusDuplicate,
-        _ => l.fbStatusOpen,
-      };
+    'planned' => l.fbStatusPlanned,
+    'in_progress' => l.fbStatusInProgress,
+    'implemented' => l.fbStatusImplemented,
+    'not_planned' => l.fbStatusNotPlanned,
+    'duplicate' => l.fbStatusDuplicate,
+    _ => l.fbStatusOpen,
+  };
 
   Future<void> _send() async {
     final text = _ctrl.text.trim();
@@ -870,7 +1000,9 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
                         color: AppTheme.textPrimary,
                       ),
                       decoration: InputDecoration(
-                        hintText: AppLocalizations.of(context)!.supportReplyHint,
+                        hintText: AppLocalizations.of(
+                          context,
+                        )!.supportReplyHint,
                         hintStyle: TextStyle(
                           fontSize: 13,
                           color: AppTheme.textMuted,

@@ -6,7 +6,10 @@ import '../l10n/app_localizations.dart';
 
 class MyFeedbackScreen extends StatefulWidget {
   final VoidCallback? onBack;
-  const MyFeedbackScreen({super.key, this.onBack});
+
+  final int? initialTicketId;
+
+  const MyFeedbackScreen({super.key, this.onBack, this.initialTicketId});
 
   @override
   State<MyFeedbackScreen> createState() => _MyFeedbackScreenState();
@@ -35,13 +38,33 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
 
   Future<void> _load() async {
     final tickets = await FeedbackService.myTickets();
-    if (mounted) setState(() => _tickets = tickets);
+    if (!mounted) return;
+    setState(() => _tickets = tickets);
+
+    final wanted = widget.initialTicketId;
+    if (wanted != null && _openId == null) {
+      final match = tickets.where((t) => t.id == wanted).firstOrNull;
+      if (match != null) await _toggle(match);
+    }
   }
 
   Future<void> _toggle(FeedbackTicket t) async {
     final next = _openId == t.id ? null : t.id;
     setState(() => _openId = next);
-    if (next != null && !_threads.containsKey(t.id)) {
+    if (next == null) return;
+
+    if (t.unread > 0) {
+      final left = FeedbackService.unreadTickets.value - t.unread;
+      FeedbackService.unreadTickets.value = left < 0 ? 0 : left;
+      setState(() {
+        _tickets = [
+          for (final x in _tickets!)
+            if (x.id == t.id) x.copyWith(unread: 0) else x,
+        ];
+      });
+    }
+
+    if (!_threads.containsKey(t.id)) {
       final msgs = await FeedbackService.messages(t.id);
       if (mounted) setState(() => _threads[t.id] = msgs);
     }
@@ -165,7 +188,9 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
                           t.title,
                           style: TextStyle(
                             fontSize: 14,
-                            fontWeight: FontWeight.w600,
+                            fontWeight: t.unread > 0
+                                ? FontWeight.w800
+                                : FontWeight.w600,
                             color: AppTheme.textPrimary,
                           ),
                         ),
@@ -194,6 +219,26 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
                       ],
                     ),
                   ),
+                  if (t.unread > 0)
+                    Container(
+                      margin: const EdgeInsets.only(right: 8, top: 3),
+                      constraints: const BoxConstraints(minWidth: 18),
+                      height: 18,
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      decoration: BoxDecoration(
+                        color: AppTheme.accent,
+                        borderRadius: BorderRadius.circular(9),
+                      ),
+                      child: Text(
+                        '${t.unread}',
+                        style: const TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
                   Icon(
                     expanded
                         ? Icons.expand_less_rounded

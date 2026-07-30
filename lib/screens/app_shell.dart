@@ -24,6 +24,7 @@ import '../util/partners_servers.dart';
 import '../services/partners_servers_service.dart';
 import '../l10n/app_localizations.dart';
 import '../services/user_service.dart';
+import 'my_feedback_screen.dart';
 import '../models/user_model.dart';
 import 'landing_screen.dart';
 import '../widgets/landing/landing_customize_sheet.dart';
@@ -399,6 +400,17 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       case 'friend_online':
       case 'friend_session':
         _goToProfileTab(1);
+      case 'feedback':
+        if (UserService.isAdmin) {
+          _goToProfileTab(5);
+        } else {
+          final id = int.tryParse('${message.data['id']}');
+          _contentNavigator.push(
+            MaterialPageRoute(
+              builder: (_) => MyFeedbackScreen(initialTicketId: id),
+            ),
+          );
+        }
       default:
         _goTo(_pageHome);
     }

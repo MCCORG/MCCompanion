@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'api_client_base.dart';
+import 'feedback_service.dart';
 import '../constants/app_constants.dart';
 import '../models/user_model.dart';
 
@@ -450,6 +451,8 @@ class UserService {
       if (res.statusCode == 200) {
         final body = jsonDecode(res.body) as Map<String, dynamic>;
         _isAdmin = body['isAdmin'] as bool? ?? false;
+        FeedbackService.unreadTickets.value =
+            (body['unreadTicketCount'] as num?)?.toInt() ?? 0;
         final result = (
           user: body['user'] != null
               ? UserModel.fromJson(body['user'] as Map<String, dynamic>)

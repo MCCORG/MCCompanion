@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'api_client_base.dart';
 import '../constants/app_constants.dart';
@@ -7,6 +8,8 @@ import '../constants/app_constants.dart';
 class FeedbackService {
   static const String _base = AppConstants.apiBase;
   static const Duration _timeout = Duration(seconds: 10);
+
+  static final ValueNotifier<int> unreadTickets = ValueNotifier(0);
 
   static String get _platform {
     if (Platform.isAndroid) return 'android';
@@ -54,13 +57,20 @@ class FeedbackService {
   static Future<List<FeedbackTicket>> myTickets() async {
     try {
       final res = await http
-          .get(Uri.parse('$_base/api/feedback/me'), headers: await ApiClientBase.headers())
+          .get(
+            Uri.parse('$_base/api/feedback/me'),
+            headers: await ApiClientBase.headers(),
+          )
           .timeout(_timeout);
       if (res.statusCode != 200) return [];
       final data = jsonDecode(res.body) as Map<String, dynamic>;
-      return (data['tickets'] as List)
+      final tickets = (data['tickets'] as List)
           .map((e) => FeedbackTicket.fromJson(e as Map<String, dynamic>))
           .toList();
+      unreadTickets.value =
+          data['unreadTotal'] as int? ??
+          tickets.fold(0, (sum, t) => sum + t.unread);
+      return tickets;
     } catch (_) {
       return [];
     }
@@ -69,7 +79,10 @@ class FeedbackService {
   static Future<List<FeedbackMessage>> messages(int ticketId) async {
     try {
       final res = await http
-          .get(Uri.parse('$_base/api/feedback/$ticketId/messages'), headers: await ApiClientBase.headers())
+          .get(
+            Uri.parse('$_base/api/feedback/$ticketId/messages'),
+            headers: await ApiClientBase.headers(),
+          )
           .timeout(_timeout);
       if (res.statusCode != 200) return [];
       final data = jsonDecode(res.body) as Map<String, dynamic>;
@@ -111,6 +124,8 @@ class FeedbackTicket {
   final String? appVersion;
   final DateTime createdAt;
 
+  final int unread;
+
   const FeedbackTicket({
     required this.id,
     required this.uid,
@@ -122,24 +137,43 @@ class FeedbackTicket {
     required this.platform,
     required this.appVersion,
     required this.createdAt,
+    this.unread = 0,
   });
 
   bool get isBug => type == 'bug';
   bool get isClosed =>
-      status == 'implemented' || status == 'not_planned' || status == 'duplicate';
+      status == 'implemented' ||
+      status == 'not_planned' ||
+      status == 'duplicate';
 
   factory FeedbackTicket.fromJson(Map<String, dynamic> j) => FeedbackTicket(
-        id: j['id'] as int,
-        uid: j['uid'] as String?,
-        username: j['username'] as String?,
-        type: j['type'] as String? ?? 'bug',
-        title: j['title'] as String? ?? '',
-        description: j['description'] as String? ?? '',
-        status: j['status'] as String? ?? 'open',
-        platform: j['platform'] as String?,
-        appVersion: j['appVersion'] as String?,
-        createdAt: DateTime.tryParse(j['createdAt'] as String? ?? '') ?? DateTime.now(),
-      );
+    id: j['id'] as int,
+    uid: j['uid'] as String?,
+    username: j['username'] as String?,
+    type: j['type'] as String? ?? 'bug',
+    title: j['title'] as String? ?? '',
+    description: j['description'] as String? ?? '',
+    status: j['status'] as String? ?? 'open',
+    platform: j['platform'] as String?,
+    appVersion: j['appVersion'] as String?,
+    createdAt:
+        DateTime.tryParse(j['createdAt'] as String? ?? '') ?? DateTime.now(),
+    unread: j['unread'] as int? ?? 0,
+  );
+
+  FeedbackTicket copyWith({int? unread}) => FeedbackTicket(
+    id: id,
+    uid: uid,
+    username: username,
+    type: type,
+    title: title,
+    description: description,
+    status: status,
+    platform: platform,
+    appVersion: appVersion,
+    createdAt: createdAt,
+    unread: unread ?? this.unread,
+  );
 }
 
 class FeedbackMessage {
@@ -156,9 +190,10 @@ class FeedbackMessage {
   });
 
   factory FeedbackMessage.fromJson(Map<String, dynamic> j) => FeedbackMessage(
-        id: j['id'] as int,
-        body: j['body'] as String? ?? '',
-        fromAdmin: j['fromAdmin'] as bool? ?? false,
-        createdAt: DateTime.tryParse(j['createdAt'] as String? ?? '') ?? DateTime.now(),
-      );
+    id: j['id'] as int,
+    body: j['body'] as String? ?? '',
+    fromAdmin: j['fromAdmin'] as bool? ?? false,
+    createdAt:
+        DateTime.tryParse(j['createdAt'] as String? ?? '') ?? DateTime.now(),
+  );
 }

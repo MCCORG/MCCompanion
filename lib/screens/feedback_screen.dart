@@ -35,7 +35,8 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   void initState() {
     super.initState();
     PackageInfo.fromPlatform().then((i) {
-      if (mounted) setState(() => _appVersion = '${i.version}+${i.buildNumber}');
+      if (mounted)
+        setState(() => _appVersion = '${i.version}+${i.buildNumber}');
     });
   }
 
@@ -55,11 +56,21 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
     final desc = _descCtrl.text.trim();
 
     if (title.length < 5) {
-      AppToast.show(context, message: l.feedbackTitleTooShort, icon: Icons.warning_rounded, color: AppTheme.warning);
+      AppToast.show(
+        context,
+        message: l.feedbackTitleTooShort,
+        icon: Icons.warning_rounded,
+        color: AppTheme.warning,
+      );
       return;
     }
     if (desc.length < 10) {
-      AppToast.show(context, message: l.feedbackDescTooShort, icon: Icons.warning_rounded, color: AppTheme.warning);
+      AppToast.show(
+        context,
+        message: l.feedbackDescTooShort,
+        icon: Icons.warning_rounded,
+        color: AppTheme.warning,
+      );
       return;
     }
 
@@ -102,7 +113,8 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop = Platform.isMacOS || Platform.isWindows || Platform.isLinux;
+    final isDesktop =
+        Platform.isMacOS || Platform.isWindows || Platform.isLinux;
     final loggedIn = AuthService.currentUser != null;
 
     return SwipeBack(
@@ -112,20 +124,27 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
           _Header(onBack: widget.onBack, isBug: _isBug, typeColor: _typeColor),
           Expanded(
             child: !loggedIn
-                ? _LoginRequiredView(onGoToLogin: widget.onGoToLogin, onBack: widget.onBack)
+                ? _LoginRequiredView(
+                    onGoToLogin: widget.onGoToLogin,
+                    onBack: widget.onBack,
+                  )
                 : _success
-                    ? _SuccessView(issueUrl: _issueUrl, onReset: _reset, onBack: widget.onBack)
-                    : _FormView(
-                        type: _type,
-                        onTypeChange: (t) => setState(() => _type = t),
-                        titleCtrl: _titleCtrl,
-                        descCtrl: _descCtrl,
-                        submitting: _submitting,
-                        onSubmit: _submit,
-                        isBug: _isBug,
-                        typeColor: _typeColor,
-                        isDesktop: isDesktop,
-                      ),
+                ? _SuccessView(
+                    issueUrl: _issueUrl,
+                    onReset: _reset,
+                    onBack: widget.onBack,
+                  )
+                : _FormView(
+                    type: _type,
+                    onTypeChange: (t) => setState(() => _type = t),
+                    titleCtrl: _titleCtrl,
+                    descCtrl: _descCtrl,
+                    submitting: _submitting,
+                    onSubmit: _submit,
+                    isBug: _isBug,
+                    typeColor: _typeColor,
+                    isDesktop: isDesktop,
+                  ),
           ),
         ],
       ),
@@ -154,20 +173,34 @@ class _LoginRequiredView extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppTheme.accent.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(18),
-                border: Border.all(color: AppTheme.accent.withValues(alpha: 0.30)),
+                border: Border.all(
+                  color: AppTheme.accent.withValues(alpha: 0.30),
+                ),
               ),
-              child: Icon(Icons.person_rounded, size: 28, color: AppTheme.accent),
+              child: Icon(
+                Icons.person_rounded,
+                size: 28,
+                color: AppTheme.accent,
+              ),
             ),
             const SizedBox(height: 20),
             Text(
               l.feedbackLoginRequiredTitle,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: AppTheme.textPrimary),
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                color: AppTheme.textPrimary,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 8),
             Text(
               l.feedbackLoginRequiredBody,
-              style: TextStyle(fontSize: 13, color: AppTheme.textSecondary, height: 1.6),
+              style: TextStyle(
+                fontSize: 13,
+                color: AppTheme.textSecondary,
+                height: 1.6,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
@@ -176,16 +209,30 @@ class _LoginRequiredView extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppTheme.accent,
                 foregroundColor: Colors.black,
-                padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 13),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 28,
+                  vertical: 13,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
                 elevation: 0,
               ),
-              child: Text(l.feedbackLoginButton, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700)),
+              child: Text(
+                l.feedbackLoginButton,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
             ),
             const SizedBox(height: 12),
             TextButton(
               onPressed: onBack,
-              child: Text(l.feedbackBackToApp, style: TextStyle(color: AppTheme.textMuted, fontSize: 13)),
+              child: Text(
+                l.feedbackBackToApp,
+                style: TextStyle(color: AppTheme.textMuted, fontSize: 13),
+              ),
             ),
           ],
         ),
@@ -199,7 +246,11 @@ class _Header extends StatelessWidget {
   final bool isBug;
   final Color typeColor;
 
-  const _Header({required this.onBack, required this.isBug, required this.typeColor});
+  const _Header({
+    required this.onBack,
+    required this.isBug,
+    required this.typeColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -247,18 +298,66 @@ class _Header extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          TextButton(
-            onPressed: () => Navigator.of(context).push(
-              MaterialPageRoute(builder: (_) => const MyFeedbackScreen()),
-            ),
-            style: TextButton.styleFrom(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-              minimumSize: Size.zero,
-              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            ),
-            child: Text(
-              l.myFeedbackOpenList,
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: AppTheme.accent),
+          ValueListenableBuilder<int>(
+            valueListenable: FeedbackService.unreadTickets,
+            builder: (context, unread, _) => Material(
+              color: unread > 0
+                  ? AppTheme.accent.withValues(alpha: 0.14)
+                  : AppTheme.surfaceCard,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(9),
+                side: BorderSide(
+                  color: unread > 0
+                      ? AppTheme.accent.withValues(alpha: 0.4)
+                      : AppTheme.borderDim,
+                ),
+              ),
+              clipBehavior: Clip.antiAlias,
+              child: InkWell(
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const MyFeedbackScreen()),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 11,
+                    vertical: 7,
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        l.myFeedbackOpenList,
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          color: AppTheme.accent,
+                        ),
+                      ),
+                      if (unread > 0) ...[
+                        const SizedBox(width: 7),
+                        Container(
+                          constraints: const BoxConstraints(minWidth: 17),
+                          height: 17,
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                          decoration: BoxDecoration(
+                            color: AppTheme.accent,
+                            borderRadius: BorderRadius.circular(9),
+                          ),
+                          child: Text(
+                            '$unread',
+                            style: const TextStyle(
+                              fontSize: 10.5,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+              ),
             ),
           ),
         ],
@@ -289,10 +388,14 @@ class _TypeToggle extends StatelessWidget {
               margin: EdgeInsets.only(right: isBug ? 6 : 0),
               padding: const EdgeInsets.symmetric(vertical: 11),
               decoration: BoxDecoration(
-                color: active ? color.withValues(alpha: 0.12) : AppTheme.surfaceRaised,
+                color: active
+                    ? color.withValues(alpha: 0.12)
+                    : AppTheme.surfaceRaised,
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
-                  color: active ? color.withValues(alpha: 0.35) : AppTheme.borderGray,
+                  color: active
+                      ? color.withValues(alpha: 0.35)
+                      : AppTheme.borderGray,
                 ),
               ),
               child: Row(
@@ -349,9 +452,16 @@ class _FormView extends StatelessWidget {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
     return SingleChildScrollView(
-      padding: EdgeInsets.fromLTRB(16, 20, 16, MediaQuery.of(context).padding.bottom + 20),
+      padding: EdgeInsets.fromLTRB(
+        16,
+        20,
+        16,
+        MediaQuery.of(context).padding.bottom + 20,
+      ),
       child: ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: isDesktop ? 560 : double.infinity),
+        constraints: BoxConstraints(
+          maxWidth: isDesktop ? 560 : double.infinity,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -366,12 +476,17 @@ class _FormView extends StatelessWidget {
               maxLength: 200,
               style: TextStyle(fontSize: 14, color: AppTheme.textPrimary),
               decoration: InputDecoration(
-                hintText: isBug ? l.feedbackTitleHintBug : l.feedbackTitleHintFeature,
+                hintText: isBug
+                    ? l.feedbackTitleHintBug
+                    : l.feedbackTitleHintFeature,
                 counterText: '',
               ),
             ),
             const SizedBox(height: 16),
-            _Label(isBug ? l.feedbackWhatHappened : l.feedbackDescribeIdea, required: true),
+            _Label(
+              isBug ? l.feedbackWhatHappened : l.feedbackDescribeIdea,
+              required: true,
+            ),
             const SizedBox(height: 8),
             TextField(
               controller: descCtrl,
@@ -379,7 +494,9 @@ class _FormView extends StatelessWidget {
               maxLength: 3000,
               style: TextStyle(fontSize: 14, color: AppTheme.textPrimary),
               decoration: InputDecoration(
-                hintText: isBug ? l.feedbackDescHintBug : l.feedbackDescHintFeature,
+                hintText: isBug
+                    ? l.feedbackDescHintBug
+                    : l.feedbackDescHintFeature,
                 alignLabelWithHint: true,
                 counterText: '',
               ),
@@ -394,26 +511,38 @@ class _FormView extends StatelessWidget {
                   foregroundColor: Colors.black,
                   disabledBackgroundColor: AppTheme.surfaceRaised,
                   padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   elevation: 0,
                 ),
                 child: submitting
                     ? SizedBox(
                         width: 18,
                         height: 18,
-                        child: CircularProgressIndicator(strokeWidth: 2, color: typeColor),
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: typeColor,
+                        ),
                       )
                     : Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           FaIcon(
-                            isBug ? FontAwesomeIcons.bug : FontAwesomeIcons.lightbulb,
+                            isBug
+                                ? FontAwesomeIcons.bug
+                                : FontAwesomeIcons.lightbulb,
                             size: 13,
                           ),
                           const SizedBox(width: 8),
                           Text(
-                            isBug ? l.feedbackSubmitBug : l.feedbackSubmitFeature,
-                            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
+                            isBug
+                                ? l.feedbackSubmitBug
+                                : l.feedbackSubmitFeature,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                         ],
                       ),
@@ -439,7 +568,11 @@ class _SuccessView extends StatelessWidget {
   final VoidCallback onReset;
   final VoidCallback? onBack;
 
-  const _SuccessView({required this.issueUrl, required this.onReset, required this.onBack});
+  const _SuccessView({
+    required this.issueUrl,
+    required this.onReset,
+    required this.onBack,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -456,9 +589,15 @@ class _SuccessView extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppTheme.success.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(18),
-                border: Border.all(color: AppTheme.success.withValues(alpha: 0.30)),
+                border: Border.all(
+                  color: AppTheme.success.withValues(alpha: 0.30),
+                ),
               ),
-              child: Icon(Icons.check_rounded, size: 28, color: AppTheme.success),
+              child: Icon(
+                Icons.check_rounded,
+                size: 28,
+                color: AppTheme.success,
+              ),
             ),
             const SizedBox(height: 20),
             Text(
@@ -473,7 +612,11 @@ class _SuccessView extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               l.feedbackSuccessBody,
-              style: TextStyle(fontSize: 13, color: AppTheme.textSecondary, height: 1.6),
+              style: TextStyle(
+                fontSize: 13,
+                color: AppTheme.textSecondary,
+                height: 1.6,
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 28),
@@ -482,15 +625,21 @@ class _SuccessView extends StatelessWidget {
               children: [
                 if (issueUrl != null)
                   OutlinedButton.icon(
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                     icon: FaIcon(FontAwesomeIcons.github, size: 13),
                     label: Text(l.feedbackViewOnGithub),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: AppTheme.accent,
-                      side: BorderSide(color: AppTheme.accent.withValues(alpha: 0.35)),
-                      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      side: BorderSide(
+                        color: AppTheme.accent.withValues(alpha: 0.35),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 18,
+                        vertical: 10,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                   ),
                 const SizedBox(width: 8),
@@ -499,8 +648,13 @@ class _SuccessView extends StatelessWidget {
                   style: OutlinedButton.styleFrom(
                     foregroundColor: AppTheme.textSecondary,
                     side: BorderSide(color: AppTheme.borderGray),
-                    padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 18,
+                      vertical: 10,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                   child: Text(l.feedbackSubmitAnother),
                 ),
@@ -509,7 +663,10 @@ class _SuccessView extends StatelessWidget {
             const SizedBox(height: 12),
             TextButton(
               onPressed: onBack,
-              child: Text(l.feedbackBackToApp, style: TextStyle(color: AppTheme.textMuted, fontSize: 13)),
+              child: Text(
+                l.feedbackBackToApp,
+                style: TextStyle(color: AppTheme.textMuted, fontSize: 13),
+              ),
             ),
           ],
         ),

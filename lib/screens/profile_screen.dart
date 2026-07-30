@@ -76,9 +76,16 @@ class ProfileScreenState extends State<ProfileScreen>
     super.dispose();
   }
 
+  int? _pendingTab;
+
   void switchToTab(int index) {
     if (!mounted) return;
-    _tabs.animateTo(index.clamp(0, _tabs.length - 1));
+    if (index > _tabs.length - 1) {
+      _pendingTab = index;
+      return;
+    }
+    _pendingTab = null;
+    _tabs.animateTo(index);
   }
 
   void _onPresence(({String uid, bool online}) event) {
@@ -158,11 +165,13 @@ class ProfileScreenState extends State<ProfileScreen>
   void _ensureTabController() {
     if (_tabs.length == _tabCount) return;
     final previous = _tabs;
+    final wanted = _pendingTab;
     _tabs = TabController(
       length: _tabCount,
       vsync: this,
-      initialIndex: previous.index.clamp(0, _tabCount - 1),
+      initialIndex: (wanted ?? previous.index).clamp(0, _tabCount - 1),
     );
+    if (wanted != null && wanted <= _tabCount - 1) _pendingTab = null;
     WidgetsBinding.instance.addPostFrameCallback((_) => previous.dispose());
   }
 
