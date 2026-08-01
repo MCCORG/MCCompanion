@@ -7,7 +7,7 @@ class AppConstants {
 static const relayServers = [
   {
     'name': 'EU Server',
-    'ip': '161.97.182.113',
+    'ip': '152.53.93.178',
     'base': 'https://eubackend.mccompanion.net',
   },
   {
