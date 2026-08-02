@@ -186,7 +186,7 @@ class ProfileHeroState extends State<ProfileHero> {
   }
 
   Future<void> _pickAndUploadAvatar() async {
-    final result = await FilePicker.platform.pickFiles(type: FileType.image, allowMultiple: false);
+    final result = await FilePicker.pickFiles(type: FileType.image, allowMultiple: false);
     if (result == null || result.files.single.path == null) return;
     final file = File(result.files.single.path!);
     setState(() => _uploadingAvatar = true);
