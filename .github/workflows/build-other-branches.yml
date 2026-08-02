@@ -5,6 +5,9 @@ on:
     branches-ignore:
       - main
 
+permissions:
+  contents: read
+
 concurrency:
   group: build-other-branches-${{ github.ref }}
   cancel-in-progress: true
