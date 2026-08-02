@@ -1,0 +1,211 @@
+name: Build Other Branches
+
+on:
+  push:
+    branches-ignore:
+      - main
+
+concurrency:
+  group: build-other-branches-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-android:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.44.0'
+          channel: stable
+          cache: true
+
+      - name: Cache pub dependencies
+        uses: actions/cache@v5
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+
+      - name: Prepare signing keystore
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS || 'release' }}
+        run: |
+          if [ -z "$ANDROID_KEYSTORE_BASE64" ]; then
+            echo "Missing ANDROID_KEYSTORE_BASE64 in GitHub Secrets."
+            exit 1
+          fi
+          if [ -z "$KEYSTORE_PASSWORD" ] || [ -z "$KEY_PASSWORD" ]; then
+            echo "Missing KEYSTORE_PASSWORD or KEY_PASSWORD in GitHub Secrets."
+            exit 1
+          fi
+          TEMP_KEYSTORE_PATH="$(mktemp)"
+          trap 'rm -f "$TEMP_KEYSTORE_PATH"' EXIT
+          if ! echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > "$TEMP_KEYSTORE_PATH"; then
+            echo "Failed to decode ANDROID_KEYSTORE_BASE64. Verify it is valid base64 in GitHub Secrets."
+            exit 1
+          fi
+          if ! mv "$TEMP_KEYSTORE_PATH" android/app-release.jks; then
+            echo "Failed to write decoded keystore to android/app-release.jks. Verify the android directory is writable."
+            exit 1
+          fi
+          if ! printf '%s\n' "$KEYSTORE_PASSWORD" | keytool -list -keystore android/app-release.jks >/dev/null 2>&1; then
+            rm -f android/app-release.jks
+            echo "Keystore validation failed. Verify android/app-release.jks is a readable keystore file and KEYSTORE_PASSWORD is correct for it."
+            exit 1
+          fi
+          if ! printf '%s\n' "$KEYSTORE_PASSWORD" | keytool -list -keystore android/app-release.jks -alias "$KEY_ALIAS" >/dev/null 2>&1; then
+            rm -f android/app-release.jks
+            echo "Keystore alias validation failed. Verify KEY_ALIAS exists in the configured keystore."
+            exit 1
+          fi
+          chmod 600 android/app-release.jks
+          umask 077
+          printf 'storePassword=%s\nkeyPassword=%s\nkeyAlias=%s\nstoreFile=app-release.jks\n' \
+            "$KEYSTORE_PASSWORD" "$KEY_PASSWORD" "$KEY_ALIAS" > android/key.properties
+          chmod 600 android/key.properties
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Rename Android APK
+        run: mv build/app/outputs/flutter-apk/app-release.apk MCCompanion-android.apk
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: MCCompanion-android.apk
+          path: MCCompanion-android.apk
+
+  build-windows:
+    name: Build Windows EXE
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.44.0'
+          channel: stable
+          cache: false
+
+      - name: Cache pub dependencies
+        uses: actions/cache@v5
+        with:
+          path: ~/AppData/Local/Pub/Cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+
+      - name: Setup CMake 3.x
+        uses: jwlawson/actions-setup-cmake@v2
+        with:
+          cmake-version: '3.31.6'
+
+      - name: Build Windows
+        run: flutter build windows --release
+        env:
+          CMAKE_POLICY_VERSION_MINIMUM: "3.5"
+
+      - name: Build MSIX
+        run: dart run msix:create
+
+      - name: Zip Windows build
+        shell: pwsh
+        run: |
+          Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath MCCompanion-windows.zip
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: MCCompanion-windows.zip
+          path: MCCompanion-windows.zip
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: MCCompanion.msix
+          path: build/windows/x64/runner/Release/MCCompanion.msix
+
+  build-macos:
+    name: Build macOS DMG
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.44.0'
+          channel: stable
+          cache: true
+
+      - name: Cache pub dependencies
+        uses: actions/cache@v5
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+
+      - name: Cache CocoaPods
+        uses: actions/cache@v5
+        with:
+          path: |
+            ~/.cocoapods/repos
+            ~/Library/Caches/CocoaPods
+            macos/Pods
+          key: ${{ runner.os }}-cocoapods-${{ hashFiles('macos/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cocoapods-
+
+      - name: Prepare macOS dependency overrides
+        run: |
+          cat > pubspec_overrides.yaml <<'EOF'
+          dependency_overrides:
+            connectivity_plus: 6.1.4
+          EOF
+          flutter pub get
+
+      - name: Build macOS
+        run: flutter build macos --release
+        env:
+          FLUTTER_XCODE_CODE_SIGNING_ALLOWED: "NO"
+          FLUTTER_XCODE_CODE_SIGN_IDENTITY: ""
+          FLUTTER_XCODE_CODE_SIGNING_REQUIRED: "NO"
+
+      - name: Ad-hoc sign macOS app
+        run: |
+          APP_PATH="build/macos/Build/Products/Release/MCCompanion.app"
+          codesign --force --deep --sign - "$APP_PATH"
+          codesign --verify --deep --strict "$APP_PATH"
+
+      - name: Create macOS DMG
+        run: |
+          STAGING_DIR="$RUNNER_TEMP/dmg-staging"
+          APP_PATH="build/macos/Build/Products/Release/MCCompanion.app"
+          rm -rf "$STAGING_DIR"
+          mkdir -p "$STAGING_DIR"
+          cp -R "$APP_PATH" "$STAGING_DIR/"
+          ln -s /Applications "$STAGING_DIR/Applications"
+          hdiutil create \
+            -volname "MCCompanion" \
+            -srcfolder "$STAGING_DIR" \
+            -ov \
+            -format UDZO \
+            "$GITHUB_WORKSPACE/MCCompanion-macos.dmg"
+          codesign --force --sign - "$GITHUB_WORKSPACE/MCCompanion-macos.dmg"
+          codesign --verify --strict "$GITHUB_WORKSPACE/MCCompanion-macos.dmg"
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: MCCompanion-macos.dmg
+          path: MCCompanion-macos.dmg
