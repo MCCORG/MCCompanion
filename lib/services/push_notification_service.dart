@@ -56,7 +56,7 @@ class PushNotificationService {
 
     if (Platform.isAndroid) {
       await _localNotifications.initialize(
-        const InitializationSettings(
+        settings: const InitializationSettings(
           android: AndroidInitializationSettings('@drawable/ic_notification'),
         ),
         onDidReceiveNotificationResponse: (details) {
@@ -73,10 +73,10 @@ class PushNotificationService {
         final android = message.notification?.android;
         if (notification != null && android != null) {
           _localNotifications.show(
-            notification.hashCode,
-            notification.title,
-            notification.body,
-            NotificationDetails(
+            id: notification.hashCode,
+            title: notification.title,
+            body: notification.body,
+            notificationDetails: NotificationDetails(
               android: AndroidNotificationDetails(
                 _androidChannel.id,
                 _androidChannel.name,

@@ -88,7 +88,7 @@ Future<List<PlatformFile>> pickPackFiles({bool allowMultiple = false}) async {
 
   final bool needsData = kIsWeb || Platform.isAndroid;
 
-  final result = await FilePicker.platform.pickFiles(
+  final result = await FilePicker.pickFiles(
     type: useAny ? FileType.any : FileType.custom,
     allowedExtensions: useAny ? null : ['mcpack', 'zip'],
     allowMultiple: allowMultiple,
