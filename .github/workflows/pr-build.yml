@@ -45,7 +45,7 @@ jobs:
 
       - uses: actions/upload-artifact@v6
         with:
-          name: pr-android-apk
+          name: app-debug.apk
           path: build/app/outputs/flutter-apk/app-debug.apk
 
   build-windows:
@@ -83,7 +83,7 @@ jobs:
 
       - uses: actions/upload-artifact@v6
         with:
-          name: pr-windows-build
+          name: windows.zip
           path: build/windows/x64/runner/Release
 
   build-macos:
@@ -134,5 +134,5 @@ jobs:
 
       - uses: actions/upload-artifact@v6
         with:
-          name: pr-macos-app
+          name: macos.app
           path: build/macos/Build/Products/Release/MCCompanion.app
