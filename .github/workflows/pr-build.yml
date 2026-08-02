@@ -43,6 +43,11 @@ jobs:
       - name: Build APK
         run: flutter build apk --debug
 
+      - uses: actions/upload-artifact@v6
+        with:
+          name: pr-android-apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
+
   build-windows:
     name: Build Windows
     runs-on: windows-latest
@@ -75,6 +80,11 @@ jobs:
         run: flutter build windows --release
         env:
           CMAKE_POLICY_VERSION_MINIMUM: "3.5"
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: pr-windows-build
+          path: build/windows/x64/runner/Release
 
   build-macos:
     name: Build macOS
@@ -121,3 +131,8 @@ jobs:
           FLUTTER_XCODE_CODE_SIGNING_ALLOWED: "NO"
           FLUTTER_XCODE_CODE_SIGN_IDENTITY: ""
           FLUTTER_XCODE_CODE_SIGNING_REQUIRED: "NO"
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: pr-macos-app
+          path: build/macos/Build/Products/Release/MCCompanion.app
