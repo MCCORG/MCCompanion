@@ -1,0 +1,63 @@
+AntiFeatures:
+  NonFreeNet:
+    en-US: Uses Firebase (Google proprietary backend) for authentication and push
+      notifications. Uses Google Sign-In (proprietary OAuth). Uses RevenueCat (proprietary
+      subscription and in-app purchase service).
+  NonFreeDep:
+    en-US: Bundles RevenueCat Android SDK via purchases_flutter.
+Categories:
+  - Game Helper
+License: GPL-3.0-only
+AuthorName: MCCORG
+WebSite: https://mccompanion.net
+SourceCode: https://github.com/MCCORG/MCCompanion
+IssueTracker: https://github.com/MCCORG/MCCompanion/issues
+Changelog: https://github.com/MCCORG/MCCompanion/releases/tag/dev
+
+AutoName: MCCompanion
+Description: |-
+  MCCompanion lets you bridge external Minecraft (Bedrock Edition) servers to
+  your local network so that PlayStation, Xbox, Nintendo Switch, and other
+  consoles can join as if it were a LAN game.
+
+  Features include:
+
+  * **Connector** – Bridge any external server via EU/US relay for low latency.
+  * **Skins** – Browse, preview, and manage Minecraft skins via Geyser.
+  * **Player Lookup** – Search players by gamertag, username, or UUID.
+  * **Server Tracker** – Monitor server status and player count in real time.
+  * **Partner Servers** – Browse and connect to featured community servers.
+  * **Wiki** – Offline reference for mobs, blocks, items, biomes, potions, and more.
+  * **Profile &amp; Social** – Sign in with Xbox, Apple, or Google and chat with other users.
+
+RepoType: git
+Repo: https://github.com/MCCORG/MCCompanion
+
+Builds:
+  - versionName: 4.1.6
+    versionCode: 44
+    commit: v4.1.6
+    output: build/app/outputs/flutter-apk/app-release.apk
+    srclibs:
+      - flutter@stable
+    rm:
+      - ios
+      - macos
+      - windows
+    prebuild:
+      - export PUB_CACHE=$(pwd)/.pub-cache
+      - $$flutter$$/bin/flutter config --no-analytics
+      - $$flutter$$/bin/flutter --version
+      - $$flutter$$/bin/flutter pub get
+    scandelete:
+      - .pub-cache
+    build:
+      - export PUB_CACHE=$(pwd)/.pub-cache
+      - $$flutter$$/bin/flutter build apk --release
+
+AutoUpdateMode: Version %v
+UpdateCheckMode: HTTP
+UpdateCheckData: 'https://raw.githubusercontent.com/MCCORG/MCCompanion/main/pubspec.yaml|version:
+  \d+\.\d+\.\d+\+(\d+)|.|version: (\d+\.\d+\.\d+)\+\d+'
+CurrentVersion: 4.1.6
+CurrentVersionCode: 44
