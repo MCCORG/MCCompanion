@@ -42,8 +42,10 @@ class _SkinBodyFromUrlState extends State<SkinBodyFromUrl> {
     });
     try {
       final resp = await http
-          .get(Uri.parse(widget.textureUrl),
-              headers: {'User-Agent': 'MCCompanionApp/1.0'})
+          .get(
+            Uri.parse(widget.textureUrl),
+            headers: {'User-Agent': 'MCCompanionApp/1.0'},
+          )
           .timeout(const Duration(seconds: 10));
       if (!mounted) return;
       final codec = await ui.instantiateImageCodec(resp.bodyBytes);
@@ -68,7 +70,9 @@ class _SkinBodyFromUrlState extends State<SkinBodyFromUrl> {
         height: h,
         child: Center(
           child: CircularProgressIndicator(
-              color: AppTheme.accent, strokeWidth: 2),
+            color: AppTheme.accent,
+            strokeWidth: 2,
+          ),
         ),
       );
     }
@@ -84,24 +88,32 @@ class _SkinBodyFromUrlState extends State<SkinBodyFromUrl> {
     return CustomPaint(size: Size(w, h), painter: SkinBodyPainter(_image!));
   }
 }
+
 class SkinBodyPainter extends CustomPainter {
   final ui.Image image;
   SkinBodyPainter(this.image);
 
   @override
   void paint(Canvas canvas, Size size) {
-    final sc = image.width / 64.0; 
-    final px = size.width / 16.0; 
+    final sc = image.width / 64.0;
+    final px = size.width / 16.0;
 
-  
     final is64x64 = image.height >= 64;
 
     final paint = Paint()
       ..filterQuality = FilterQuality.none
       ..isAntiAlias = false;
 
-    void draw(double dx, double dy, double dw, double dh,
-        double sx, double sy, double sw, double sh) {
+    void draw(
+      double dx,
+      double dy,
+      double dw,
+      double dh,
+      double sx,
+      double sy,
+      double sw,
+      double sh,
+    ) {
       canvas.drawImageRect(
         image,
         Rect.fromLTWH(sx * sc, sy * sc, sw * sc, sh * sc),
@@ -110,20 +122,20 @@ class SkinBodyPainter extends CustomPainter {
       );
     }
 
-    draw(4, 0, 8, 8,  8, 8, 8, 8); 
-    draw(4, 0, 8, 8, 40, 8, 8, 8); 
+    draw(4, 0, 8, 8, 8, 8, 8, 8);
+    draw(4, 0, 8, 8, 40, 8, 8, 8);
 
-    draw(4,  8, 8, 12, 20, 20, 8, 12);
-    if (is64x64) draw(4, 8, 8, 12, 20, 36, 8, 12); 
+    draw(4, 8, 8, 12, 20, 20, 8, 12);
+    if (is64x64) draw(4, 8, 8, 12, 20, 36, 8, 12);
 
-    draw(0,  8, 4, 12, 44, 20, 4, 12); 
+    draw(0, 8, 4, 12, 44, 20, 4, 12);
     if (is64x64) draw(0, 8, 4, 12, 44, 36, 4, 12);
 
     draw(12, 8, 4, 12, is64x64 ? 36 : 44, is64x64 ? 52 : 20, 4, 12);
-    if (is64x64) draw(12, 8, 4, 12, 52, 52, 4, 12); 
+    if (is64x64) draw(12, 8, 4, 12, 52, 52, 4, 12);
 
-    draw(4, 20, 4, 12,  4, 20, 4, 12); 
-    if (is64x64) draw(4, 20, 4, 12, 4, 36, 4, 12); 
+    draw(4, 20, 4, 12, 4, 20, 4, 12);
+    if (is64x64) draw(4, 20, 4, 12, 4, 36, 4, 12);
     draw(8, 20, 4, 12, is64x64 ? 20 : 4, is64x64 ? 52 : 20, 4, 12);
     if (is64x64) draw(8, 20, 4, 12, 4, 52, 4, 12);
   }
@@ -169,8 +181,10 @@ class _Skin3DFromUrlState extends State<Skin3DFromUrl> {
     });
     try {
       final resp = await http
-          .get(Uri.parse(widget.textureUrl),
-              headers: {'User-Agent': 'MCCompanionApp/1.0'})
+          .get(
+            Uri.parse(widget.textureUrl),
+            headers: {'User-Agent': 'MCCompanionApp/1.0'},
+          )
           .timeout(const Duration(seconds: 10));
       if (!mounted) return;
       final codec = await ui.instantiateImageCodec(resp.bodyBytes);
@@ -195,7 +209,9 @@ class _Skin3DFromUrlState extends State<Skin3DFromUrl> {
         height: h,
         child: Center(
           child: CircularProgressIndicator(
-              color: AppTheme.accent, strokeWidth: 2),
+            color: AppTheme.accent,
+            strokeWidth: 2,
+          ),
         ),
       );
     }
@@ -274,27 +290,72 @@ List<_Face> _boxFaces({
   return [
     _Face(
       [_V3(-hw, hh, hd), _V3(hw, hh, hd), _V3(hw, -hh, hd), _V3(-hw, -hh, hd)],
-      [Offset(x+d, y+d), Offset(x+d+w, y+d), Offset(x+d+w, y+d+h), Offset(x+d, y+d+h)],
+      [
+        Offset(x + d, y + d),
+        Offset(x + d + w, y + d),
+        Offset(x + d + w, y + d + h),
+        Offset(x + d, y + d + h),
+      ],
     ),
     _Face(
-      [_V3(hw, hh, -hd), _V3(-hw, hh, -hd), _V3(-hw, -hh, -hd), _V3(hw, -hh, -hd)],
-      [Offset(x+d+w+d, y+d), Offset(x+d+w+d+w, y+d), Offset(x+d+w+d+w, y+d+h), Offset(x+d+w+d, y+d+h)],
+      [
+        _V3(hw, hh, -hd),
+        _V3(-hw, hh, -hd),
+        _V3(-hw, -hh, -hd),
+        _V3(hw, -hh, -hd),
+      ],
+      [
+        Offset(x + d + w + d, y + d),
+        Offset(x + d + w + d + w, y + d),
+        Offset(x + d + w + d + w, y + d + h),
+        Offset(x + d + w + d, y + d + h),
+      ],
     ),
     _Face(
       [_V3(hw, hh, hd), _V3(hw, hh, -hd), _V3(hw, -hh, -hd), _V3(hw, -hh, hd)],
-      [Offset(x+d+w, y+d), Offset(x+d+w+d, y+d), Offset(x+d+w+d, y+d+h), Offset(x+d+w, y+d+h)],
+      [
+        Offset(x + d + w, y + d),
+        Offset(x + d + w + d, y + d),
+        Offset(x + d + w + d, y + d + h),
+        Offset(x + d + w, y + d + h),
+      ],
     ),
     _Face(
-      [_V3(-hw, hh, -hd), _V3(-hw, hh, hd), _V3(-hw, -hh, hd), _V3(-hw, -hh, -hd)],
-      [Offset(x, y+d), Offset(x+d, y+d), Offset(x+d, y+d+h), Offset(x, y+d+h)],
+      [
+        _V3(-hw, hh, -hd),
+        _V3(-hw, hh, hd),
+        _V3(-hw, -hh, hd),
+        _V3(-hw, -hh, -hd),
+      ],
+      [
+        Offset(x, y + d),
+        Offset(x + d, y + d),
+        Offset(x + d, y + d + h),
+        Offset(x, y + d + h),
+      ],
     ),
     _Face(
       [_V3(-hw, hh, -hd), _V3(hw, hh, -hd), _V3(hw, hh, hd), _V3(-hw, hh, hd)],
-      [Offset(x+d, y), Offset(x+d+w, y), Offset(x+d+w, y+d), Offset(x+d, y+d)],
+      [
+        Offset(x + d, y),
+        Offset(x + d + w, y),
+        Offset(x + d + w, y + d),
+        Offset(x + d, y + d),
+      ],
     ),
     _Face(
-      [_V3(hw, -hh, hd), _V3(-hw, -hh, hd), _V3(-hw, -hh, -hd), _V3(hw, -hh, -hd)],
-      [Offset(x+d+w, y+d), Offset(x+d+w+w, y+d), Offset(x+d+w+w, y), Offset(x+d+w, y)],
+      [
+        _V3(hw, -hh, hd),
+        _V3(-hw, -hh, hd),
+        _V3(-hw, -hh, -hd),
+        _V3(hw, -hh, -hd),
+      ],
+      [
+        Offset(x + d + w, y + d),
+        Offset(x + d + w + w, y + d),
+        Offset(x + d + w + w, y),
+        Offset(x + d + w, y),
+      ],
     ),
   ];
 }
@@ -312,31 +373,52 @@ double _screenNormalZ(_Face face, double rotY, double rotX) {
 
 void _drawQuadSolid(Canvas canvas, List<Offset> p, Paint paint) {
   final pos = Float32List(12);
-  pos[0]  = p[0].dx; pos[1]  = p[0].dy;
-  pos[2]  = p[1].dx; pos[3]  = p[1].dy;
-  pos[4]  = p[2].dx; pos[5]  = p[2].dy;
-  pos[6]  = p[0].dx; pos[7]  = p[0].dy;
-  pos[8]  = p[2].dx; pos[9]  = p[2].dy;
-  pos[10] = p[3].dx; pos[11] = p[3].dy;
+  pos[0] = p[0].dx;
+  pos[1] = p[0].dy;
+  pos[2] = p[1].dx;
+  pos[3] = p[1].dy;
+  pos[4] = p[2].dx;
+  pos[5] = p[2].dy;
+  pos[6] = p[0].dx;
+  pos[7] = p[0].dy;
+  pos[8] = p[2].dx;
+  pos[9] = p[2].dy;
+  pos[10] = p[3].dx;
+  pos[11] = p[3].dy;
   canvas.drawVertices(
-      ui.Vertices.raw(ui.VertexMode.triangles, pos), BlendMode.srcOver, paint);
+    ui.Vertices.raw(ui.VertexMode.triangles, pos),
+    BlendMode.srcOver,
+    paint,
+  );
 }
 
 void _drawQuad(Canvas canvas, List<Offset> p, List<Offset> uv, Paint paint) {
   final pos = Float32List(12);
   final tex = Float32List(12);
-  pos[0]  = p[0].dx;  pos[1]  = p[0].dy;
-  pos[2]  = p[1].dx;  pos[3]  = p[1].dy;
-  pos[4]  = p[2].dx;  pos[5]  = p[2].dy;
-  pos[6]  = p[0].dx;  pos[7]  = p[0].dy;
-  pos[8]  = p[2].dx;  pos[9]  = p[2].dy;
-  pos[10] = p[3].dx;  pos[11] = p[3].dy;
-  tex[0]  = uv[0].dx; tex[1]  = uv[0].dy;
-  tex[2]  = uv[1].dx; tex[3]  = uv[1].dy;
-  tex[4]  = uv[2].dx; tex[5]  = uv[2].dy;
-  tex[6]  = uv[0].dx; tex[7]  = uv[0].dy;
-  tex[8]  = uv[2].dx; tex[9]  = uv[2].dy;
-  tex[10] = uv[3].dx; tex[11] = uv[3].dy;
+  pos[0] = p[0].dx;
+  pos[1] = p[0].dy;
+  pos[2] = p[1].dx;
+  pos[3] = p[1].dy;
+  pos[4] = p[2].dx;
+  pos[5] = p[2].dy;
+  pos[6] = p[0].dx;
+  pos[7] = p[0].dy;
+  pos[8] = p[2].dx;
+  pos[9] = p[2].dy;
+  pos[10] = p[3].dx;
+  pos[11] = p[3].dy;
+  tex[0] = uv[0].dx;
+  tex[1] = uv[0].dy;
+  tex[2] = uv[1].dx;
+  tex[3] = uv[1].dy;
+  tex[4] = uv[2].dx;
+  tex[5] = uv[2].dy;
+  tex[6] = uv[0].dx;
+  tex[7] = uv[0].dy;
+  tex[8] = uv[2].dx;
+  tex[9] = uv[2].dy;
+  tex[10] = uv[3].dx;
+  tex[11] = uv[3].dy;
   canvas.drawVertices(
     ui.Vertices.raw(ui.VertexMode.triangles, pos, textureCoordinates: tex),
     BlendMode.srcOver,
@@ -364,23 +446,155 @@ List<SkinFaceData> buildProjectedFaces({
   const charCenterY = 16.0;
 
   final armHW = slim ? 1.5 : 2.0;
-  final armW  = slim ? 3   : 4;
+  final armW = slim ? 3 : 4;
 
-  const s = 0.5;
+  const s = 0.02;
 
   final parts = <(double, double, double, List<_Face>)>[
-    (0, 28, 0, _boxFaces(hw: 4,    hh: 4,    hd: 4,    tx: 0,  ty: 0,  bw: 8,    bh: 8,  bd: 8)),
-    (0, 28, 0, _boxFaces(hw: 4.05, hh: 4.05, hd: 4.05, tx: 32, ty: 0,  bw: 8,    bh: 8,  bd: 8)),
-    (0, 18, 0, _boxFaces(hw: 4,    hh: 6 + s,      hd: 2,    tx: 16, ty: 16, bw: 8,    bh: 12, bd: 4)),
-    (0, 18, 0, _boxFaces(hw: 4.05, hh: 6.05 + s,   hd: 2.05, tx: 16, ty: 32, bw: 8,    bh: 12, bd: 4)),
-    (-(4 + armHW - s), 18, 0, _boxFaces(hw: armHW,        hh: 6 + s,      hd: 2,    tx: 40, ty: 16, bw: armW, bh: 12, bd: 4)),
-    (-(4 + armHW - s), 18, 0, _boxFaces(hw: armHW + 0.05, hh: 6.05 + s,   hd: 2.05, tx: 40, ty: 32, bw: armW, bh: 12, bd: 4)),
-    ( (4 + armHW - s), 18, 0, _boxFaces(hw: armHW,        hh: 6 + s,      hd: 2,    tx: 32, ty: 48, bw: armW, bh: 12, bd: 4)),
-    ( (4 + armHW - s), 18, 0, _boxFaces(hw: armHW + 0.05, hh: 6.05 + s,   hd: 2.05, tx: 48, ty: 48, bw: armW, bh: 12, bd: 4)),
-    (-(2.0 - s), 6, 0, _boxFaces(hw: 2,    hh: 6 + s,      hd: 2,    tx: 0,  ty: 16, bw: 4,    bh: 12, bd: 4)),
-    (-(2.0 - s), 6, 0, _boxFaces(hw: 2.05, hh: 6.05 + s,   hd: 2.05, tx: 0,  ty: 32, bw: 4,    bh: 12, bd: 4)),
-    ( (2.0 - s), 6, 0, _boxFaces(hw: 2,    hh: 6 + s,      hd: 2,    tx: 16, ty: 48, bw: 4,    bh: 12, bd: 4)),
-    ( (2.0 - s), 6, 0, _boxFaces(hw: 2.05, hh: 6.05 + s,   hd: 2.05, tx: 0,  ty: 48, bw: 4,    bh: 12, bd: 4)),
+    (
+      0,
+      28,
+      0,
+      _boxFaces(hw: 4, hh: 4, hd: 4, tx: 0, ty: 0, bw: 8, bh: 8, bd: 8),
+    ),
+    (
+      0,
+      28,
+      0,
+      _boxFaces(
+        hw: 4.05,
+        hh: 4.05,
+        hd: 4.05,
+        tx: 32,
+        ty: 0,
+        bw: 8,
+        bh: 8,
+        bd: 8,
+      ),
+    ),
+    (
+      0,
+      18,
+      0,
+      _boxFaces(hw: 4, hh: 6 + s, hd: 2, tx: 16, ty: 16, bw: 8, bh: 12, bd: 4),
+    ),
+    (
+      0,
+      18,
+      0,
+      _boxFaces(
+        hw: 4.05,
+        hh: 6.05 + s,
+        hd: 2.05,
+        tx: 16,
+        ty: 32,
+        bw: 8,
+        bh: 12,
+        bd: 4,
+      ),
+    ),
+    (
+      -(4 + armHW - s),
+      18,
+      0,
+      _boxFaces(
+        hw: armHW,
+        hh: 6 + s,
+        hd: 2,
+        tx: 40,
+        ty: 16,
+        bw: armW,
+        bh: 12,
+        bd: 4,
+      ),
+    ),
+    (
+      -(4 + armHW - s),
+      18,
+      0,
+      _boxFaces(
+        hw: armHW + 0.05,
+        hh: 6.05 + s,
+        hd: 2.05,
+        tx: 40,
+        ty: 32,
+        bw: armW,
+        bh: 12,
+        bd: 4,
+      ),
+    ),
+    (
+      (4 + armHW - s),
+      18,
+      0,
+      _boxFaces(
+        hw: armHW,
+        hh: 6 + s,
+        hd: 2,
+        tx: 32,
+        ty: 48,
+        bw: armW,
+        bh: 12,
+        bd: 4,
+      ),
+    ),
+    (
+      (4 + armHW - s),
+      18,
+      0,
+      _boxFaces(
+        hw: armHW + 0.05,
+        hh: 6.05 + s,
+        hd: 2.05,
+        tx: 48,
+        ty: 48,
+        bw: armW,
+        bh: 12,
+        bd: 4,
+      ),
+    ),
+    (
+      -(2.0 - s),
+      6,
+      0,
+      _boxFaces(hw: 2, hh: 6 + s, hd: 2, tx: 0, ty: 16, bw: 4, bh: 12, bd: 4),
+    ),
+    (
+      -(2.0 - s),
+      6,
+      0,
+      _boxFaces(
+        hw: 2.05,
+        hh: 6.05 + s,
+        hd: 2.05,
+        tx: 0,
+        ty: 32,
+        bw: 4,
+        bh: 12,
+        bd: 4,
+      ),
+    ),
+    (
+      (2.0 - s),
+      6,
+      0,
+      _boxFaces(hw: 2, hh: 6 + s, hd: 2, tx: 16, ty: 48, bw: 4, bh: 12, bd: 4),
+    ),
+    (
+      (2.0 - s),
+      6,
+      0,
+      _boxFaces(
+        hw: 2.05,
+        hh: 6.05 + s,
+        hd: 2.05,
+        tx: 0,
+        ty: 48,
+        bw: 4,
+        bh: 12,
+        bd: 4,
+      ),
+    ),
   ];
 
   final list = <SkinFaceData>[];
@@ -390,7 +604,7 @@ List<SkinFaceData> buildProjectedFaces({
     final isBase = pi % 2 == 0;
 
     int skipFaceIdx = -1;
-    if (pi == 4 || pi == 5 || pi == 8 || pi == 9)   skipFaceIdx = 2;
+    if (pi == 4 || pi == 5 || pi == 8 || pi == 9) skipFaceIdx = 2;
     if (pi == 6 || pi == 7 || pi == 10 || pi == 11) skipFaceIdx = 3;
 
     for (int fi = 0; fi < faces.length; fi++) {
@@ -425,12 +639,16 @@ List<SkinFaceData> buildProjectedFaces({
     }
   }
 
-  return list; 
+  return list;
 }
 
 void drawSkinFaces(Canvas canvas, ui.Image image, List<SkinFaceData> faces) {
   final shader = ui.ImageShader(
-      image, TileMode.clamp, TileMode.clamp, Matrix4.identity().storage);
+    image,
+    TileMode.clamp,
+    TileMode.clamp,
+    Matrix4.identity().storage,
+  );
   final texPaint = Paint()
     ..shader = shader
     ..filterQuality = FilterQuality.none
@@ -451,16 +669,32 @@ void drawSkinFaces(Canvas canvas, ui.Image image, List<SkinFaceData> faces) {
     }
     texPaint.colorFilter = s < 0.999
         ? ColorFilter.matrix([
-            s, 0, 0, 0, 0,
-            0, s, 0, 0, 0,
-            0, 0, s, 0, 0,
-            0, 0, 0, 1, 0,
+            s,
+            0,
+            0,
+            0,
+            0,
+            0,
+            s,
+            0,
+            0,
+            0,
+            0,
+            0,
+            s,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
           ])
         : null;
     _drawQuad(canvas, f.screen, f.uvs, texPaint);
   }
 
-  for (final f in baseFaces)    renderFace(f, withBackground: true);
+  for (final f in baseFaces) renderFace(f, withBackground: true);
   for (final f in overlayFaces) renderFace(f, withBackground: false);
 }
 
@@ -474,7 +708,12 @@ class _Skin3DPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final faces = buildProjectedFaces(rotY: rotY, rotX: rotX, slim: slim, canvasSize: size);
+    final faces = buildProjectedFaces(
+      rotY: rotY,
+      rotX: rotX,
+      slim: slim,
+      canvasSize: size,
+    );
     drawSkinFaces(canvas, image, faces);
   }
 

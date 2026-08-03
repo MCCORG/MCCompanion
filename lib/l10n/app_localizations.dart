@@ -4973,6 +4973,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Show this when I start'**
   String get howToAutoShow;
+
+  /// Shown when the requested skin texture could not be loaded and the editor fell back to the bundled default
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load that skin. Starting from the default one.'**
+  String get skinEditorLoadFailed;
+
+  /// Skin editor
+  ///
+  /// In en, this message translates to:
+  /// **'Recolour'**
+  String get skinToolRecolour;
+
+  /// Skin editor
+  ///
+  /// In en, this message translates to:
+  /// **'Pick'**
+  String get skinToolPick;
+
+  /// Skin editor
+  ///
+  /// In en, this message translates to:
+  /// **'Bases'**
+  String get skinBases;
+
+  /// Skin editor
+  ///
+  /// In en, this message translates to:
+  /// **'Start from a base'**
+  String get skinBasesTitle;
+
+  /// Skin editor
+  ///
+  /// In en, this message translates to:
+  /// **'This replaces what is on the canvas. Undo brings it back.'**
+  String get skinBasesSubtitle;
+
+  /// Skin editor: symmetry toggle
+  ///
+  /// In en, this message translates to:
+  /// **'Mirror'**
+  String get skinMirror;
+
+  /// Skin editor
+  ///
+  /// In en, this message translates to:
+  /// **'Surprise'**
+  String get skinSurprise;
+
+  /// Skin editor
+  ///
+  /// In en, this message translates to:
+  /// **'Fills the patch you tap'**
+  String get skinToolFillHint;
+
+  /// Skin editor
+  ///
+  /// In en, this message translates to:
+  /// **'Changes that colour everywhere on the skin'**
+  String get skinToolRecolourHint;
+
+  /// Skin editor
+  ///
+  /// In en, this message translates to:
+  /// **'Takes the colour you tap'**
+  String get skinToolPickHint;
+
+  /// Skin editor: arm width
+  ///
+  /// In en, this message translates to:
+  /// **'Wide'**
+  String get skinModelClassic;
+
+  /// Skin editor: arm width
+  ///
+  /// In en, this message translates to:
+  /// **'Slim'**
+  String get skinModelSlim;
 }
 
 class _AppLocalizationsDelegate

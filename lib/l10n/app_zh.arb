@@ -1969,5 +1969,18 @@
   "undo": "撤销",
   "chooseServerTitle": "选择服务器",
   "changeLabel": "更改",
-  "howToAutoShow": "启动时显示此说明"
+  "howToAutoShow": "启动时显示此说明",
+  "skinEditorLoadFailed": "无法加载该皮肤，将从默认皮肤开始。",
+  "skinToolRecolour": "替换颜色",
+  "skinToolPick": "取色",
+  "skinBases": "基础款",
+  "skinBasesTitle": "从基础款开始",
+  "skinBasesSubtitle": "这会替换当前画布内容，可用撤销恢复。",
+  "skinMirror": "镜像",
+  "skinSurprise": "随机生成",
+  "skinToolFillHint": "填充你点到的区域",
+  "skinToolRecolourHint": "替换整个皮肤上的该颜色",
+  "skinToolPickHint": "取用你点到的颜色",
+  "skinModelClassic": "标准",
+  "skinModelSlim": "纤细"
 }

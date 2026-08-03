@@ -2665,4 +2665,45 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get howToAutoShow => 'शुरू करते समय यह दिखाएं';
+
+  @override
+  String get skinEditorLoadFailed =>
+      'वह स्किन लोड नहीं हो सकी। हम डिफ़ॉल्ट स्किन से शुरू कर रहे हैं।';
+
+  @override
+  String get skinToolRecolour => 'रंग बदलें';
+
+  @override
+  String get skinToolPick => 'रंग चुनें';
+
+  @override
+  String get skinBases => 'बेस';
+
+  @override
+  String get skinBasesTitle => 'एक बेस से शुरू करें';
+
+  @override
+  String get skinBasesSubtitle =>
+      'यह मौजूदा चित्र बदल देगा। पूर्ववत करने पर वापस आ जाएगा।';
+
+  @override
+  String get skinMirror => 'मिरर';
+
+  @override
+  String get skinSurprise => 'सरप्राइज़';
+
+  @override
+  String get skinToolFillHint => 'आप जिस हिस्से को छूते हैं उसे भरता है';
+
+  @override
+  String get skinToolRecolourHint => 'पूरी स्किन में वह रंग बदलता है';
+
+  @override
+  String get skinToolPickHint => 'आप जिस रंग को छूते हैं वह ले लेता है';
+
+  @override
+  String get skinModelClassic => 'चौड़ा';
+
+  @override
+  String get skinModelSlim => 'पतला';
 }

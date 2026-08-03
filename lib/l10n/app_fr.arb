@@ -1969,5 +1969,18 @@
   "undo": "Annuler",
   "chooseServerTitle": "Choisir un serveur",
   "changeLabel": "Modifier",
-  "howToAutoShow": "Afficher ceci au démarrage"
+  "howToAutoShow": "Afficher ceci au démarrage",
+  "skinEditorLoadFailed": "Impossible de charger ce skin. On commence avec le skin par défaut.",
+  "skinToolRecolour": "Recolorer",
+  "skinToolPick": "Pipette",
+  "skinBases": "Bases",
+  "skinBasesTitle": "Partir d'une base",
+  "skinBasesSubtitle": "Cela remplace le dessin actuel. Annuler le restaure.",
+  "skinMirror": "Miroir",
+  "skinSurprise": "Surprise",
+  "skinToolFillHint": "Remplit la zone touchée",
+  "skinToolRecolourHint": "Change cette couleur partout",
+  "skinToolPickHint": "Prend la couleur touchée",
+  "skinModelClassic": "Large",
+  "skinModelSlim": "Fin"
 }

@@ -2681,4 +2681,45 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get howToAutoShow => 'Dit tonen als ik start';
+
+  @override
+  String get skinEditorLoadFailed =>
+      'Die skin kon niet geladen worden. We beginnen met de standaardskin.';
+
+  @override
+  String get skinToolRecolour => 'Herkleur';
+
+  @override
+  String get skinToolPick => 'Pipet';
+
+  @override
+  String get skinBases => 'Bases';
+
+  @override
+  String get skinBasesTitle => 'Begin met een basis';
+
+  @override
+  String get skinBasesSubtitle =>
+      'Dit vervangt wat er nu staat. Ongedaan maken zet het terug.';
+
+  @override
+  String get skinMirror => 'Spiegel';
+
+  @override
+  String get skinSurprise => 'Verras me';
+
+  @override
+  String get skinToolFillHint => 'Vult het vlak dat je aantikt';
+
+  @override
+  String get skinToolRecolourHint => 'Verandert die kleur overal op de skin';
+
+  @override
+  String get skinToolPickHint => 'Neemt de kleur die je aantikt';
+
+  @override
+  String get skinModelClassic => 'Breed';
+
+  @override
+  String get skinModelSlim => 'Smal';
 }

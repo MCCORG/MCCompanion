@@ -1969,5 +1969,18 @@
   "undo": "元に戻す",
   "chooseServerTitle": "サーバーを選ぶ",
   "changeLabel": "変更",
-  "howToAutoShow": "開始時にこれを表示"
+  "howToAutoShow": "開始時にこれを表示",
+  "skinEditorLoadFailed": "そのスキンを読み込めませんでした。標準のスキンから始めます。",
+  "skinToolRecolour": "色を置換",
+  "skinToolPick": "スポイト",
+  "skinBases": "ベース",
+  "skinBasesTitle": "ベースから始める",
+  "skinBasesSubtitle": "今の絵と置き換わります。元に戻すで復帰します。",
+  "skinMirror": "左右対称",
+  "skinSurprise": "おまかせ",
+  "skinToolFillHint": "タップした面を塗ります",
+  "skinToolRecolourHint": "その色をスキン全体で置き換えます",
+  "skinToolPickHint": "タップした色を取り込みます",
+  "skinModelClassic": "標準",
+  "skinModelSlim": "細身"
 }

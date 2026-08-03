@@ -1966,5 +1966,18 @@
   "undo": "Urungkan",
   "chooseServerTitle": "Pilih server",
   "changeLabel": "Ubah",
-  "howToAutoShow": "Tampilkan ini saat mulai"
+  "howToAutoShow": "Tampilkan ini saat mulai",
+  "skinEditorLoadFailed": "Skin itu tidak bisa dimuat. Kita mulai dari skin bawaan.",
+  "skinToolRecolour": "Warnai ulang",
+  "skinToolPick": "Ambil warna",
+  "skinBases": "Dasar",
+  "skinBasesTitle": "Mulai dari dasar",
+  "skinBasesSubtitle": "Ini mengganti yang ada sekarang. Urungkan mengembalikannya.",
+  "skinMirror": "Cermin",
+  "skinSurprise": "Kejutan",
+  "skinToolFillHint": "Mengisi bidang yang kamu sentuh",
+  "skinToolRecolourHint": "Mengubah warna itu di seluruh skin",
+  "skinToolPickHint": "Mengambil warna yang kamu sentuh",
+  "skinModelClassic": "Lebar",
+  "skinModelSlim": "Ramping"
 }

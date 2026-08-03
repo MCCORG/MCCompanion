@@ -1969,5 +1969,18 @@
   "undo": "Отменить",
   "chooseServerTitle": "Выберите сервер",
   "changeLabel": "Изменить",
-  "howToAutoShow": "Показывать это при запуске"
+  "howToAutoShow": "Показывать это при запуске",
+  "skinEditorLoadFailed": "Не удалось загрузить этот скин. Начнём со стандартного.",
+  "skinToolRecolour": "Перекрасить",
+  "skinToolPick": "Пипетка",
+  "skinBases": "Основы",
+  "skinBasesTitle": "Начать с основы",
+  "skinBasesSubtitle": "Это заменит текущий рисунок. Отмена вернёт его.",
+  "skinMirror": "Зеркало",
+  "skinSurprise": "Сюрприз",
+  "skinToolFillHint": "Заливает область, по которой вы нажали",
+  "skinToolRecolourHint": "Меняет этот цвет по всему скину",
+  "skinToolPickHint": "Берёт цвет, по которому вы нажали",
+  "skinModelClassic": "Широкие",
+  "skinModelSlim": "Тонкие"
 }

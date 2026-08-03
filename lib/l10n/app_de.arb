@@ -1969,5 +1969,18 @@
   "undo": "Rückgängig",
   "chooseServerTitle": "Server auswählen",
   "changeLabel": "Ändern",
-  "howToAutoShow": "Beim Starten anzeigen"
+  "howToAutoShow": "Beim Starten anzeigen",
+  "skinEditorLoadFailed": "Dieser Skin konnte nicht geladen werden. Wir starten mit dem Standard-Skin.",
+  "skinToolRecolour": "Umfärben",
+  "skinToolPick": "Pipette",
+  "skinBases": "Vorlagen",
+  "skinBasesTitle": "Mit einer Vorlage starten",
+  "skinBasesSubtitle": "Das ersetzt die aktuelle Zeichnung. Rückgängig stellt sie wieder her.",
+  "skinMirror": "Spiegeln",
+  "skinSurprise": "Überrasch mich",
+  "skinToolFillHint": "Füllt die angetippte Fläche",
+  "skinToolRecolourHint": "Ändert diese Farbe überall",
+  "skinToolPickHint": "Übernimmt die angetippte Farbe",
+  "skinModelClassic": "Breit",
+  "skinModelSlim": "Schmal"
 }

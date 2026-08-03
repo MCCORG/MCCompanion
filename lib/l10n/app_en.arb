@@ -2823,5 +2823,57 @@
   "howToAutoShow": "Show this when I start",
   "@howToAutoShow": {
     "description": "Toggle inside the how to sheet: whether it opens by itself after starting a broadcast"
+  },
+  "skinEditorLoadFailed": "Could not load that skin. Starting from the default one.",
+  "@skinEditorLoadFailed": {
+    "description": "Shown when the requested skin texture could not be loaded and the editor fell back to the bundled default"
+  },
+  "skinToolRecolour": "Recolour",
+  "@skinToolRecolour": {
+    "description": "Skin editor"
+  },
+  "skinToolPick": "Pick",
+  "@skinToolPick": {
+    "description": "Skin editor"
+  },
+  "skinBases": "Bases",
+  "@skinBases": {
+    "description": "Skin editor"
+  },
+  "skinBasesTitle": "Start from a base",
+  "@skinBasesTitle": {
+    "description": "Skin editor"
+  },
+  "skinBasesSubtitle": "This replaces what is on the canvas. Undo brings it back.",
+  "@skinBasesSubtitle": {
+    "description": "Skin editor"
+  },
+  "skinMirror": "Mirror",
+  "@skinMirror": {
+    "description": "Skin editor: symmetry toggle"
+  },
+  "skinSurprise": "Surprise",
+  "@skinSurprise": {
+    "description": "Skin editor"
+  },
+  "skinToolFillHint": "Fills the patch you tap",
+  "@skinToolFillHint": {
+    "description": "Skin editor"
+  },
+  "skinToolRecolourHint": "Changes that colour everywhere on the skin",
+  "@skinToolRecolourHint": {
+    "description": "Skin editor"
+  },
+  "skinToolPickHint": "Takes the colour you tap",
+  "@skinToolPickHint": {
+    "description": "Skin editor"
+  },
+  "skinModelClassic": "Wide",
+  "@skinModelClassic": {
+    "description": "Skin editor: arm width"
+  },
+  "skinModelSlim": "Slim",
+  "@skinModelSlim": {
+    "description": "Skin editor: arm width"
   }
 }

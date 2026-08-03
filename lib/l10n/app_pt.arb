@@ -1969,5 +1969,18 @@
   "undo": "Anular",
   "chooseServerTitle": "Escolhe um servidor",
   "changeLabel": "Alterar",
-  "howToAutoShow": "Mostrar isto ao iniciar"
+  "howToAutoShow": "Mostrar isto ao iniciar",
+  "skinEditorLoadFailed": "Não foi possível carregar essa skin. Vamos começar com a padrão.",
+  "skinToolRecolour": "Recolorir",
+  "skinToolPick": "Conta-gotas",
+  "skinBases": "Bases",
+  "skinBasesTitle": "Começar de uma base",
+  "skinBasesSubtitle": "Isto substitui o que está aí. Desfazer traz de volta.",
+  "skinMirror": "Espelho",
+  "skinSurprise": "Surpresa",
+  "skinToolFillHint": "Preenche a área que tocar",
+  "skinToolRecolourHint": "Muda essa cor na skin inteira",
+  "skinToolPickHint": "Pega a cor que tocar",
+  "skinModelClassic": "Largo",
+  "skinModelSlim": "Fino"
 }

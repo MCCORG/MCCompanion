@@ -2668,4 +2668,45 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get howToAutoShow => 'শুরু করার সময় এটি দেখান';
+
+  @override
+  String get skinEditorLoadFailed =>
+      'সেই স্কিনটি লোড করা যায়নি। আমরা ডিফল্ট স্কিন দিয়ে শুরু করছি।';
+
+  @override
+  String get skinToolRecolour => 'রং বদলান';
+
+  @override
+  String get skinToolPick => 'রং নিন';
+
+  @override
+  String get skinBases => 'বেস';
+
+  @override
+  String get skinBasesTitle => 'একটি বেস থেকে শুরু করুন';
+
+  @override
+  String get skinBasesSubtitle =>
+      'এটি বর্তমান ছবিটি প্রতিস্থাপন করবে। আনডু করলে ফিরে আসবে।';
+
+  @override
+  String get skinMirror => 'মিরর';
+
+  @override
+  String get skinSurprise => 'চমক';
+
+  @override
+  String get skinToolFillHint => 'আপনি যে অংশে ট্যাপ করবেন তা ভরে দেয়';
+
+  @override
+  String get skinToolRecolourHint => 'পুরো স্কিনে সেই রং বদলে দেয়';
+
+  @override
+  String get skinToolPickHint => 'আপনি যে রঙে ট্যাপ করবেন তা নেয়';
+
+  @override
+  String get skinModelClassic => 'চওড়া';
+
+  @override
+  String get skinModelSlim => 'সরু';
 }

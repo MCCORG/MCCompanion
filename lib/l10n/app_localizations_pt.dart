@@ -2667,4 +2667,45 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get howToAutoShow => 'Mostrar isto ao iniciar';
+
+  @override
+  String get skinEditorLoadFailed =>
+      'Não foi possível carregar essa skin. Vamos começar com a padrão.';
+
+  @override
+  String get skinToolRecolour => 'Recolorir';
+
+  @override
+  String get skinToolPick => 'Conta-gotas';
+
+  @override
+  String get skinBases => 'Bases';
+
+  @override
+  String get skinBasesTitle => 'Começar de uma base';
+
+  @override
+  String get skinBasesSubtitle =>
+      'Isto substitui o que está aí. Desfazer traz de volta.';
+
+  @override
+  String get skinMirror => 'Espelho';
+
+  @override
+  String get skinSurprise => 'Surpresa';
+
+  @override
+  String get skinToolFillHint => 'Preenche a área que tocar';
+
+  @override
+  String get skinToolRecolourHint => 'Muda essa cor na skin inteira';
+
+  @override
+  String get skinToolPickHint => 'Pega a cor que tocar';
+
+  @override
+  String get skinModelClassic => 'Largo';
+
+  @override
+  String get skinModelSlim => 'Fino';
 }

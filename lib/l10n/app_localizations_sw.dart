@@ -2676,4 +2676,46 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get howToAutoShow => 'Onyesha hii ninapoanza';
+
+  @override
+  String get skinEditorLoadFailed =>
+      'Ngozi hiyo haikuweza kupakiwa. Tunaanza na ile ya kawaida.';
+
+  @override
+  String get skinToolRecolour => 'Badili rangi';
+
+  @override
+  String get skinToolPick => 'Chagua rangi';
+
+  @override
+  String get skinBases => 'Misingi';
+
+  @override
+  String get skinBasesTitle => 'Anza na msingi';
+
+  @override
+  String get skinBasesSubtitle =>
+      'Hii inabadilisha kilichopo sasa. Tendua kinairudisha.';
+
+  @override
+  String get skinMirror => 'Kioo';
+
+  @override
+  String get skinSurprise => 'Nishangaze';
+
+  @override
+  String get skinToolFillHint => 'Hujaza eneo unalogusa';
+
+  @override
+  String get skinToolRecolourHint =>
+      'Hubadilisha rangi hiyo kwenye ngozi nzima';
+
+  @override
+  String get skinToolPickHint => 'Huchukua rangi unayogusa';
+
+  @override
+  String get skinModelClassic => 'Pana';
+
+  @override
+  String get skinModelSlim => 'Membamba';
 }

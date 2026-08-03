@@ -5,6 +5,7 @@ import 'dart:math';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
@@ -12,13 +13,15 @@ import 'package:share_plus/share_plus.dart';
 import '../theme/app_theme.dart';
 import '../models/saved_skin.dart';
 import '../util/saved_skins_storage.dart';
+import '../util/skin_format.dart';
+import '../util/skin_generator.dart';
 import '../services/skin_upload_service.dart';
 import '../services/auth_service.dart';
 import '../widgets/skin_3d_viewer.dart';
 import '../widgets/components/app_toast.dart';
 import '../l10n/app_localizations.dart';
 
-enum _Tool { draw, fill, erase }
+enum _Tool { draw, fill, erase, recolour, pick }
 
 class SkinEditorScreen extends StatefulWidget {
   final String? initialTextureUrl;
@@ -53,6 +56,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
 
   double _rotY = 0.4;
   double _rotX = 0.1;
+
   late final AnimationController _spinCtrl;
   double _spinVelocityY = 0;
   double _spinVelocityX = 0;
@@ -71,14 +75,21 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
   static const int _maxUndo = 20;
 
   bool _activeStroke = false;
+
   bool _showUVTemplate = true;
+
+  bool _slim = false;
+
+  bool _mirror = false;
 
   @override
   void initState() {
     super.initState();
     _pixels = Uint8List(_sz * _sz * 4);
-    _spinCtrl = AnimationController(vsync: this, duration: const Duration(seconds: 1))
-      ..addListener(_onSpinTick);
+    _spinCtrl = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    )..addListener(_onSpinTick);
     _updatePreview(); // render blank canvas immediately so gestures work before texture loads
     _init();
   }
@@ -108,10 +119,14 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
     super.dispose();
   }
 
-  static const _steveSkinUrl = 'https://textures.minecraft.net/texture/31f477eb1a7beee631c2ca64d06f8f68fa93a3386d04452ab27f43acdf1b60cb';
+  static const _defaultSkinAsset = 'assets/images/skins/steve.png';
 
   Future<void> _init() async {
     Uint8List? rawBytes;
+    final wantedOwnSkin =
+        widget.existingSkin != null ||
+        widget.cloudSkin != null ||
+        widget.initialTextureUrl != null;
 
     if (widget.existingSkin != null) {
       try {
@@ -119,8 +134,12 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
       } catch (_) {}
     } else if (widget.cloudSkin != null) {
       try {
-        final url = (widget.cloudSkin!['public_url'] ?? widget.cloudSkin!['publicUrl']) as String;
-        final resp = await http.get(Uri.parse(url), headers: {'User-Agent': 'MCCompanionApp/1.0'}).timeout(const Duration(seconds: 10));
+        final url =
+            (widget.cloudSkin!['public_url'] ?? widget.cloudSkin!['publicUrl'])
+                as String;
+        final resp = await http
+            .get(Uri.parse(url), headers: {'User-Agent': 'MCCompanionApp/1.0'})
+            .timeout(const Duration(seconds: 10));
         rawBytes = resp.bodyBytes;
       } catch (_) {}
     } else if (widget.initialTextureUrl != null) {
@@ -135,29 +154,260 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
       } catch (_) {}
     }
 
-    if (rawBytes == null) {
+    var loaded = rawBytes != null && await _applyTexture(rawBytes);
+
+    if (!loaded) {
       try {
-        final resp = await http.get(Uri.parse(_steveSkinUrl), headers: {'User-Agent': 'MCCompanionApp/1.0'}).timeout(const Duration(seconds: 10));
-        rawBytes = resp.bodyBytes;
+        final data = await rootBundle.load(_defaultSkinAsset);
+        loaded = await _applyTexture(data.buffer.asUint8List());
       } catch (_) {}
     }
 
-    if (rawBytes != null) {
-      try {
-        final codec = await ui.instantiateImageCodec(rawBytes);
-        final frame = await codec.getNextFrame();
-        final img = frame.image;
-        final bd = await img.toByteData(format: ui.ImageByteFormat.rawRgba);
-        if (bd != null && img.width == _sz && img.height == _sz) {
-          _pixels = bd.buffer.asUint8List();
-        }
-      } catch (_) {}
-    }
+    if (!mounted) return;
+    setState(() => _loading = false);
+    _updatePreview();
 
-    if (mounted) {
-      setState(() => _loading = false);
-      _updatePreview();
+    if (wantedOwnSkin && rawBytes == null) {
+      AppToast.show(
+        context,
+        message: AppLocalizations.of(context)!.skinEditorLoadFailed,
+        icon: Icons.wifi_off_rounded,
+        color: AppTheme.warning,
+      );
     }
+  }
+
+  Future<bool> _applyTexture(Uint8List bytes) async {
+    try {
+      final codec = await ui.instantiateImageCodec(bytes);
+      final frame = await codec.getNextFrame();
+      final img = frame.image;
+      final bd = await img.toByteData(format: ui.ImageByteFormat.rawRgba);
+      if (bd == null) return false;
+      final raw = bd.buffer.asUint8List();
+      if (img.width == _sz && img.height == _sz) {
+        _pixels = raw;
+      } else if (img.width == _sz && img.height == _sz ~/ 2) {
+        _pixels = expandLegacy(raw);
+      } else {
+        return false;
+      }
+      _slim = looksSlim(_pixels);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  static const _bases = <String>[
+    'explorer',
+    'hoodie',
+    'suit',
+    'knight',
+    'ninja',
+    'astronaut',
+    'wizard',
+    'pirate',
+    'scientist',
+    'athlete',
+    'winter',
+    'summer',
+    'robot',
+    'zombie',
+    'skeleton',
+    'alien',
+    'king',
+    'vampire',
+    'diver',
+    'chef',
+    'soldier',
+    'racer',
+    'farmer',
+    'panda',
+  ];
+
+  Future<void> _applyBase(String name) async {
+    var ok = false;
+    try {
+      final data = await rootBundle.load('assets/images/skins/$name.png');
+      _pushUndo();
+      ok = await _applyTexture(
+        data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes),
+      );
+    } catch (_) {}
+
+    if (!mounted) return;
+    if (!ok) {
+      AppToast.show(
+        context,
+        message: AppLocalizations.of(context)!.skinEditorLoadFailed,
+        icon: Icons.error_outline_rounded,
+        color: AppTheme.error,
+      );
+      return;
+    }
+    setState(() {});
+    _updatePreview();
+  }
+
+  Future<void> _toggleArmWidth() async {
+    _pushUndo();
+    final next = !_slim;
+    setState(() {
+      _pixels = setArmWidth(_pixels, slim: next);
+      _slim = next;
+    });
+    await _updatePreview();
+  }
+
+  Future<void> _surpriseMe() async {
+    _pushUndo();
+    setState(() {
+      _pixels = generateSkin();
+      _slim = false;
+    });
+    await _updatePreview();
+  }
+
+  void _openFillTools() {
+    final l = AppLocalizations.of(context)!;
+    final options = <(_Tool, FaIconData, String, String)>[
+      (
+        _Tool.fill,
+        FontAwesomeIcons.fillDrip,
+        l.skinToolFill,
+        l.skinToolFillHint,
+      ),
+      (
+        _Tool.recolour,
+        FontAwesomeIcons.paintRoller,
+        l.skinToolRecolour,
+        l.skinToolRecolourHint,
+      ),
+      (
+        _Tool.pick,
+        FontAwesomeIcons.eyeDropper,
+        l.skinToolPick,
+        l.skinToolPickHint,
+      ),
+    ];
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: AppTheme.surface,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
+      ),
+      builder: (sheetContext) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(height: 8),
+            for (final (tool, icon, name, hint) in options)
+              ListTile(
+                leading: FaIcon(
+                  icon,
+                  size: 16,
+                  color: _activeTool == tool
+                      ? AppTheme.accent
+                      : AppTheme.textMuted,
+                ),
+                title: Text(
+                  name,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: AppTheme.textPrimary,
+                  ),
+                ),
+                subtitle: Text(
+                  hint,
+                  style: TextStyle(fontSize: 11.5, color: AppTheme.textMuted),
+                ),
+                onTap: () {
+                  Navigator.of(sheetContext).pop();
+                  setState(() {
+                    _activeTool = tool;
+                    _rotateMode = false;
+                    _panModeUV = false;
+                  });
+                },
+              ),
+            const SizedBox(height: 8),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _openBasePicker() {
+    final l = AppLocalizations.of(context)!;
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: AppTheme.surface,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
+      ),
+      builder: (sheetContext) => SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                l.skinBasesTitle,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: AppTheme.textPrimary,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                l.skinBasesSubtitle,
+                style: TextStyle(fontSize: 12, color: AppTheme.textMuted),
+              ),
+              const SizedBox(height: 14),
+              SizedBox(
+                height: 230,
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                    childAspectRatio: 0.62,
+                  ),
+                  itemCount: _bases.length,
+                  itemBuilder: (_, i) {
+                    final name = _bases[i];
+                    return InkWell(
+                      borderRadius: BorderRadius.circular(10),
+                      onTap: () {
+                        Navigator.of(sheetContext).pop();
+                        _applyBase(name);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: AppTheme.background,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: AppTheme.borderDim),
+                        ),
+                        padding: const EdgeInsets.all(6),
+                        child: Image.asset(
+                          'assets/images/skins/thumbs/$name.png',
+                          filterQuality: FilterQuality.none,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   void _pushUndo() {
@@ -189,31 +439,77 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
     if (mounted) setState(() => _previewImage = img);
   }
 
-  void _paintPixel(int tx, int ty) {
+  bool _writePixel(int tx, int ty) {
     final i = (ty * _sz + tx) * 4;
-    if (_activeTool == _Tool.erase) {
-      if (_pixels[i + 3] == 0) return;
-      _pixels[i] = 0;
-      _pixels[i + 1] = 0;
-      _pixels[i + 2] = 0;
-      _pixels[i + 3] = 0;
-    } else {
-      final r = _activeColor.red,
-          g = _activeColor.green,
-          b = _activeColor.blue,
-          a = _activeColor.alpha;
-      if (_pixels[i] == r &&
-          _pixels[i + 1] == g &&
-          _pixels[i + 2] == b &&
-          _pixels[i + 3] == a)
-        return;
-      _pixels[i] = r;
-      _pixels[i + 1] = g;
-      _pixels[i + 2] = b;
-      _pixels[i + 3] = a;
+    final erase = _activeTool == _Tool.erase;
+    final r = erase ? 0 : _activeColor.red;
+    final g = erase ? 0 : _activeColor.green;
+    final b = erase ? 0 : _activeColor.blue;
+    final a = erase ? 0 : _activeColor.alpha;
+    if (_pixels[i] == r &&
+        _pixels[i + 1] == g &&
+        _pixels[i + 2] == b &&
+        _pixels[i + 3] == a) {
+      return false;
     }
+    _pixels[i] = r;
+    _pixels[i + 1] = g;
+    _pixels[i + 2] = b;
+    _pixels[i + 3] = a;
+    return true;
+  }
+
+  void _paintPixel(int tx, int ty) {
+    var touched = _writePixel(tx, ty);
+    if (_mirror) {
+      final m = mirrorPoint(tx, ty);
+      if (m != null) touched = _writePixel(m.x, m.y) || touched;
+    }
+    if (!touched) return;
     setState(() {});
     _schedulePreview();
+  }
+
+  void _recolourAll(int sx, int sy) {
+    final si = (sy * _sz + sx) * 4;
+    final tr = _pixels[si],
+        tg = _pixels[si + 1],
+        tb = _pixels[si + 2],
+        ta = _pixels[si + 3];
+    final nr = _activeColor.red,
+        ng = _activeColor.green,
+        nb = _activeColor.blue,
+        na = _activeColor.alpha;
+    if (tr == nr && tg == ng && tb == nb && ta == na) return;
+
+    _pushUndo();
+    for (var i = 0; i < _pixels.length; i += 4) {
+      if (_pixels[i] != tr ||
+          _pixels[i + 1] != tg ||
+          _pixels[i + 2] != tb ||
+          _pixels[i + 3] != ta) {
+        continue;
+      }
+      _pixels[i] = nr;
+      _pixels[i + 1] = ng;
+      _pixels[i + 2] = nb;
+      _pixels[i + 3] = na;
+    }
+    setState(() {});
+    _updatePreview();
+  }
+
+  void _pickColour(int sx, int sy) {
+    final i = (sy * _sz + sx) * 4;
+    setState(() {
+      _activeColor = Color.fromARGB(
+        _pixels[i + 3],
+        _pixels[i],
+        _pixels[i + 1],
+        _pixels[i + 2],
+      );
+      _activeTool = _Tool.draw;
+    });
   }
 
   void _floodFill(int sx, int sy) {
@@ -256,7 +552,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
     final faces = buildProjectedFaces(
       rotY: _rotY,
       rotX: _rotX,
-      slim: false,
+      slim: _slim,
       canvasSize: _canvasSize,
     );
     final wantBase = !_outerLayer;
@@ -317,11 +613,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
     final hit = _hitTest(localPos);
     if (hit == null) return;
     final (tx, ty) = hit;
-    if (_activeTool == _Tool.fill) {
-      _floodFill(tx, ty);
-    } else {
-      _paintPixel(tx, ty);
-    }
+    _applyTool(tx, ty);
   }
 
   void _zoomUV(double factor) {
@@ -349,19 +641,32 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
     final size = box.size;
     final x = (local.dx / size.width * _sz).floor().clamp(0, _sz - 1);
     final y = (local.dy / size.height * _sz).floor().clamp(0, _sz - 1);
-    if (_activeTool == _Tool.fill) {
-      _floodFill(x, y);
-    } else {
-      _paintPixel(x, y);
+    _applyTool(x, y);
+  }
+
+  void _applyTool(int x, int y) {
+    switch (_activeTool) {
+      case _Tool.fill:
+        _floodFill(x, y);
+      case _Tool.recolour:
+        _recolourAll(x, y);
+      case _Tool.pick:
+        _pickColour(x, y);
+      case _Tool.draw:
+      case _Tool.erase:
+        _paintPixel(x, y);
     }
   }
 
   void _onPanStart(DragStartDetails d) {
     if (_rotateMode) return;
     _activeStroke = true;
-    if (_activeTool != _Tool.fill) _pushUndo();
+    if (_isStrokeTool) _pushUndo();
     _paintAt(d.localPosition);
   }
+
+  bool get _isStrokeTool =>
+      _activeTool == _Tool.draw || _activeTool == _Tool.erase;
 
   void _onPanUpdate(DragUpdateDetails d) {
     if (_rotateMode) {
@@ -377,6 +682,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
       return;
     }
     if (!_activeStroke) return;
+    if (!_isStrokeTool) return;
     _paintAt(d.localPosition);
   }
 
@@ -396,7 +702,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
 
   void _onTapDown(TapDownDetails d) {
     if (_rotateMode) return;
-    if (_activeTool != _Tool.fill) _pushUndo();
+    if (_isStrokeTool) _pushUndo();
     _paintAt(d.localPosition);
   }
 
@@ -419,7 +725,14 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
           final ll = AppLocalizations.of(ctx)!;
           return AlertDialog(
             backgroundColor: AppTheme.surface,
-            title: Text(ll.skinUploadToCloud, style: TextStyle(color: AppTheme.textPrimary, fontSize: 16, fontWeight: FontWeight.w700)),
+            title: Text(
+              ll.skinUploadToCloud,
+              style: TextStyle(
+                color: AppTheme.textPrimary,
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
             content: TextField(
               controller: ctrl,
               autofocus: true,
@@ -429,14 +742,33 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
                 hintStyle: TextStyle(color: AppTheme.textMuted),
                 filled: true,
                 fillColor: AppTheme.background,
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: AppTheme.borderGray)),
-                enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: AppTheme.borderGray)),
-                focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: AppTheme.accent)),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(color: AppTheme.borderGray),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(color: AppTheme.borderGray),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(color: AppTheme.accent),
+                ),
               ),
             ),
             actions: [
-              TextButton(onPressed: () => Navigator.pop(ctx, false), child: Text(ll.cancel, style: TextStyle(color: AppTheme.textMuted))),
-              FilledButton(onPressed: () => Navigator.pop(ctx, true), style: FilledButton.styleFrom(backgroundColor: AppTheme.accent), child: Text(ll.skinsUpload)),
+              TextButton(
+                onPressed: () => Navigator.pop(ctx, false),
+                child: Text(
+                  ll.cancel,
+                  style: TextStyle(color: AppTheme.textMuted),
+                ),
+              ),
+              FilledButton(
+                onPressed: () => Navigator.pop(ctx, true),
+                style: FilledButton.styleFrom(backgroundColor: AppTheme.accent),
+                child: Text(ll.skinsUpload),
+              ),
             ],
           );
         },
@@ -446,19 +778,39 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
     }
 
     try {
-      _sessionCloudSkinId ??= widget.existingSkin?.id ?? DateTime.now().millisecondsSinceEpoch.toString();
+      _sessionCloudSkinId ??=
+          widget.existingSkin?.id ??
+          DateTime.now().millisecondsSinceEpoch.toString();
       final skinId = _sessionCloudSkinId!;
       final dir = await getTemporaryDirectory();
       final tmp = File('${dir.path}/$skinId.png');
       await tmp.writeAsBytes(pngBytes);
-      await SkinUploadService.uploadSkin(skinId: skinId, name: name, filePath: tmp.path);
+      await SkinUploadService.uploadSkin(
+        skinId: skinId,
+        name: name,
+        filePath: tmp.path,
+      );
       await tmp.delete();
       if (mounted) {
-        AppToast.show(context, message: l.skinUploaded, icon: Icons.cloud_done_outlined, color: AppTheme.success, duration: const Duration(seconds: 2));
+        AppToast.show(
+          context,
+          message: l.skinUploaded,
+          icon: Icons.cloud_done_outlined,
+          color: AppTheme.success,
+          duration: const Duration(seconds: 2),
+        );
         Navigator.pop(context, 'cloud');
       }
     } catch (e) {
-      if (mounted) AppToast.show(context, message: l.skinUploadFailed(e.toString().replaceAll('Exception: ', '')), icon: Icons.error_outline_rounded, color: AppTheme.error);
+      if (mounted)
+        AppToast.show(
+          context,
+          message: l.skinUploadFailed(
+            e.toString().replaceAll('Exception: ', ''),
+          ),
+          icon: Icons.error_outline_rounded,
+          color: AppTheme.error,
+        );
     }
   }
 
@@ -474,14 +826,32 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
         final dir = await getTemporaryDirectory();
         final tmp = File('${dir.path}/$skinId.png');
         await tmp.writeAsBytes(pngBytes);
-        await SkinUploadService.uploadSkin(skinId: skinId, name: name, filePath: tmp.path);
+        await SkinUploadService.uploadSkin(
+          skinId: skinId,
+          name: name,
+          filePath: tmp.path,
+        );
         await tmp.delete();
         if (mounted) {
-          AppToast.show(context, message: l.skinUpdatedInCloud, icon: Icons.check_circle_outline_rounded, color: AppTheme.success, duration: const Duration(seconds: 2));
+          AppToast.show(
+            context,
+            message: l.skinUpdatedInCloud,
+            icon: Icons.check_circle_outline_rounded,
+            color: AppTheme.success,
+            duration: const Duration(seconds: 2),
+          );
           Navigator.pop(context, 'cloud');
         }
       } catch (e) {
-        if (mounted) AppToast.show(context, message: l.skinUploadFailed(e.toString().replaceAll('Exception: ', '')), icon: Icons.error_outline_rounded, color: AppTheme.error);
+        if (mounted)
+          AppToast.show(
+            context,
+            message: l.skinUploadFailed(
+              e.toString().replaceAll('Exception: ', ''),
+            ),
+            icon: Icons.error_outline_rounded,
+            color: AppTheme.error,
+          );
       }
       return;
     }
@@ -510,7 +880,11 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
           backgroundColor: AppTheme.surface,
           title: Text(
             ll.skinSaveDialog,
-            style: TextStyle(color: AppTheme.textPrimary, fontSize: 16, fontWeight: FontWeight.w700),
+            style: TextStyle(
+              color: AppTheme.textPrimary,
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+            ),
           ),
           content: TextField(
             controller: nameCtrl,
@@ -521,20 +895,41 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
               hintStyle: TextStyle(color: AppTheme.textMuted),
               filled: true,
               fillColor: AppTheme.background,
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: AppTheme.borderGray)),
-              enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: AppTheme.borderGray)),
-              focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide(color: AppTheme.accent)),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: const BorderSide(color: AppTheme.borderGray),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: const BorderSide(color: AppTheme.borderGray),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(color: AppTheme.accent),
+              ),
             ),
           ),
           actions: [
-            TextButton(onPressed: () => Navigator.pop(ctx, false), child: Text(ll.cancel, style: TextStyle(color: AppTheme.textMuted))),
-            FilledButton(onPressed: () => Navigator.pop(ctx, true), style: FilledButton.styleFrom(backgroundColor: AppTheme.accent), child: Text(ll.save)),
+            TextButton(
+              onPressed: () => Navigator.pop(ctx, false),
+              child: Text(
+                ll.cancel,
+                style: TextStyle(color: AppTheme.textMuted),
+              ),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.pop(ctx, true),
+              style: FilledButton.styleFrom(backgroundColor: AppTheme.accent),
+              child: Text(ll.save),
+            ),
           ],
         );
       },
     );
     if (confirmed != true || !mounted) return;
-    final name = nameCtrl.text.trim().isEmpty ? l2.skinDefaultName : nameCtrl.text.trim();
+    final name = nameCtrl.text.trim().isEmpty
+        ? l2.skinDefaultName
+        : nameCtrl.text.trim();
     await SavedSkinsStorage.add(pngBytes, name);
     if (mounted) {
       AppToast.show(
@@ -585,7 +980,8 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
       await file.writeAsBytes(bytes);
 
       if (Platform.isIOS || Platform.isAndroid) {
-        final box = _exportButtonKey.currentContext?.findRenderObject() as RenderBox?;
+        final box =
+            _exportButtonKey.currentContext?.findRenderObject() as RenderBox?;
         final result = await Share.shareXFiles(
           [XFile(file.path, mimeType: 'image/png')],
           subject: AppLocalizations.of(context)!.skinShareSubject,
@@ -655,7 +1051,9 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
             IconButton(
               onPressed: _saveToCloud,
               icon: const FaIcon(FontAwesomeIcons.cloudArrowUp, size: 15),
-              tooltip: widget.cloudSkin != null ? AppLocalizations.of(context)!.skinUpdateInCloud : AppLocalizations.of(context)!.skinUploadToCloud,
+              tooltip: widget.cloudSkin != null
+                  ? AppLocalizations.of(context)!.skinUpdateInCloud
+                  : AppLocalizations.of(context)!.skinUploadToCloud,
             ),
           IconButton(
             key: _exportButtonKey,
@@ -699,7 +1097,10 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
                   _ToolButton(
                     icon: FontAwesomeIcons.pencil,
                     label: AppLocalizations.of(context)!.skinToolDraw,
-                    active: _activeTool == _Tool.draw && !_rotateMode && !_panModeUV,
+                    active:
+                        _activeTool == _Tool.draw &&
+                        !_rotateMode &&
+                        !_panModeUV,
                     onTap: () => setState(() {
                       _activeTool = _Tool.draw;
                       _rotateMode = false;
@@ -708,57 +1109,110 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
                   ),
                   const SizedBox(width: 6),
                   _ToolButton(
-                    icon: FontAwesomeIcons.fillDrip,
-                    label: AppLocalizations.of(context)!.skinToolFill,
-                    active: _activeTool == _Tool.fill && !_rotateMode && !_panModeUV,
-                    onTap: () => setState(() {
-                      _activeTool = _Tool.fill;
-                      _rotateMode = false;
-                      _panModeUV = false;
-                    }),
+                    icon: switch (_activeTool) {
+                      _Tool.recolour => FontAwesomeIcons.paintRoller,
+                      _Tool.pick => FontAwesomeIcons.eyeDropper,
+                      _ => FontAwesomeIcons.fillDrip,
+                    },
+                    label: switch (_activeTool) {
+                      _Tool.recolour => AppLocalizations.of(
+                        context,
+                      )!.skinToolRecolour,
+                      _Tool.pick => AppLocalizations.of(context)!.skinToolPick,
+                      _ => AppLocalizations.of(context)!.skinToolFill,
+                    },
+                    active:
+                        (_activeTool == _Tool.fill ||
+                            _activeTool == _Tool.recolour ||
+                            _activeTool == _Tool.pick) &&
+                        !_rotateMode &&
+                        !_panModeUV,
+                    onTap: _openFillTools,
                   ),
                   const SizedBox(width: 6),
                   _ToolButton(
                     icon: FontAwesomeIcons.eraser,
                     label: AppLocalizations.of(context)!.skinToolErase,
-                    active: _activeTool == _Tool.erase && !_rotateMode && !_panModeUV,
+                    active:
+                        _activeTool == _Tool.erase &&
+                        !_rotateMode &&
+                        !_panModeUV,
                     onTap: () => setState(() {
                       _activeTool = _Tool.erase;
                       _rotateMode = false;
                       _panModeUV = false;
                     }),
                   ),
+                  const SizedBox(width: 6),
+                  _ToolButton(
+                    icon: FontAwesomeIcons.shirt,
+                    label: AppLocalizations.of(context)!.skinBases,
+                    active: false,
+                    onTap: _openBasePicker,
+                  ),
+                  const SizedBox(width: 6),
+                  _ToolButton(
+                    icon: FontAwesomeIcons.personRays,
+                    label: _slim
+                        ? AppLocalizations.of(context)!.skinModelSlim
+                        : AppLocalizations.of(context)!.skinModelClassic,
+                    active: _slim,
+                    onTap: _toggleArmWidth,
+                  ),
+                  const SizedBox(width: 6),
+                  _ToolButton(
+                    icon: FontAwesomeIcons.dice,
+                    label: AppLocalizations.of(context)!.skinSurprise,
+                    active: false,
+                    onTap: _surpriseMe,
+                  ),
                 ],
               ),
             ),
           ),
           const SizedBox(width: 6),
+          _ToolButton(
+            icon: FontAwesomeIcons.leftRight,
+            label: AppLocalizations.of(context)!.skinMirror,
+            active: _mirror,
+            onTap: () => setState(() => _mirror = !_mirror),
+          ),
+          const SizedBox(width: 6),
           GestureDetector(
             onTap: () => setState(() => _outerLayer = !_outerLayer),
-            child: Builder(builder: (ctx) {
-              final l = AppLocalizations.of(ctx)!;
-              return Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-              decoration: BoxDecoration(
-                color: _outerLayer
-                    ? const Color(0xFFFFA726).withValues(alpha: 0.15)
-                    : Colors.transparent,
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(
-                  color: _outerLayer ? const Color(0xFFFFA726) : AppTheme.borderGray,
-                  width: _outerLayer ? 1.5 : 1,
-                ),
-              ),
-              child: Text(
-                _outerLayer ? l.skinLayerOuter : l.skinLayerInner,
-                style: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w700,
-                  color: _outerLayer ? const Color(0xFFFFA726) : AppTheme.textMuted,
-                ),
-              ),
-            );
-          }),
+            child: Builder(
+              builder: (ctx) {
+                final l = AppLocalizations.of(ctx)!;
+                return Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 6,
+                  ),
+                  decoration: BoxDecoration(
+                    color: _outerLayer
+                        ? const Color(0xFFFFA726).withValues(alpha: 0.15)
+                        : Colors.transparent,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      color: _outerLayer
+                          ? const Color(0xFFFFA726)
+                          : AppTheme.borderGray,
+                      width: _outerLayer ? 1.5 : 1,
+                    ),
+                  ),
+                  child: Text(
+                    _outerLayer ? l.skinLayerOuter : l.skinLayerInner,
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                      color: _outerLayer
+                          ? const Color(0xFFFFA726)
+                          : AppTheme.textMuted,
+                    ),
+                  ),
+                );
+              },
+            ),
           ),
           const SizedBox(width: 6),
           GestureDetector(
@@ -826,11 +1280,18 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
                 onTapDown: _onTapDown,
                 child: _previewImage == null
                     ? Center(
-                        child: CircularProgressIndicator(color: AppTheme.accent),
+                        child: CircularProgressIndicator(
+                          color: AppTheme.accent,
+                        ),
                       )
                     : CustomPaint(
                         size: _canvasSize,
-                        painter: _Skin3DEditorPainter(_previewImage!, _rotY, _rotX),
+                        painter: _Skin3DEditorPainter(
+                          _previewImage!,
+                          _rotY,
+                          _rotX,
+                          _slim,
+                        ),
                       ),
               );
             },
@@ -866,16 +1327,18 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
                   child: GestureDetector(
                     onPanStart: (d) {
                       _activeStroke2D = true;
-                      if (_activeTool != _Tool.fill) _pushUndo();
+                      if (_isStrokeTool) _pushUndo();
                       _pixelFromGlobal(d.globalPosition);
                     },
                     onPanUpdate: (d) {
                       if (!_activeStroke2D) return;
                       _pixelFromGlobal(d.globalPosition);
                     },
-                    onPanEnd: (_) => _activeStroke2D = false,
+                    onPanEnd: (_) {
+                      _activeStroke2D = false;
+                    },
                     onTapDown: (d) {
-                      if (_activeTool != _Tool.fill) _pushUndo();
+                      if (_isStrokeTool) _pushUndo();
                       _pixelFromGlobal(d.globalPosition);
                     },
                     child: SizedBox(
@@ -1164,14 +1627,15 @@ class _Skin3DEditorPainter extends CustomPainter {
   final ui.Image image;
   final double rotY;
   final double rotX;
-  const _Skin3DEditorPainter(this.image, this.rotY, this.rotX);
+  final bool slim;
+  const _Skin3DEditorPainter(this.image, this.rotY, this.rotX, this.slim);
 
   @override
   void paint(Canvas canvas, Size size) {
     final faces = buildProjectedFaces(
       rotY: rotY,
       rotX: rotX,
-      slim: false,
+      slim: slim,
       canvasSize: size,
     );
     drawSkinFaces(canvas, image, faces);
@@ -1179,7 +1643,10 @@ class _Skin3DEditorPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_Skin3DEditorPainter old) =>
-      old.rotY != rotY || old.rotX != rotX || old.image != image;
+      old.rotY != rotY ||
+      old.rotX != rotX ||
+      old.image != image ||
+      old.slim != slim;
 }
 
 class _PaletteCell extends StatelessWidget {

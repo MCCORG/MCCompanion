@@ -1969,5 +1969,18 @@
   "undo": "Deshacer",
   "chooseServerTitle": "Elige un servidor",
   "changeLabel": "Cambiar",
-  "howToAutoShow": "Mostrar esto al iniciar"
+  "howToAutoShow": "Mostrar esto al iniciar",
+  "skinEditorLoadFailed": "No se pudo cargar esa skin. Empezamos con la predeterminada.",
+  "skinToolRecolour": "Recolorear",
+  "skinToolPick": "Cuentagotas",
+  "skinBases": "Bases",
+  "skinBasesTitle": "Empezar desde una base",
+  "skinBasesSubtitle": "Esto reemplaza lo que hay ahora. Deshacer lo devuelve.",
+  "skinMirror": "Espejo",
+  "skinSurprise": "Sorpréndeme",
+  "skinToolFillHint": "Rellena la zona que tocas",
+  "skinToolRecolourHint": "Cambia ese color en toda la skin",
+  "skinToolPickHint": "Toma el color que tocas",
+  "skinModelClassic": "Ancho",
+  "skinModelSlim": "Delgado"
 }

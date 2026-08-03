@@ -2665,4 +2665,45 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get howToAutoShow => 'Показывать это при запуске';
+
+  @override
+  String get skinEditorLoadFailed =>
+      'Не удалось загрузить этот скин. Начнём со стандартного.';
+
+  @override
+  String get skinToolRecolour => 'Перекрасить';
+
+  @override
+  String get skinToolPick => 'Пипетка';
+
+  @override
+  String get skinBases => 'Основы';
+
+  @override
+  String get skinBasesTitle => 'Начать с основы';
+
+  @override
+  String get skinBasesSubtitle =>
+      'Это заменит текущий рисунок. Отмена вернёт его.';
+
+  @override
+  String get skinMirror => 'Зеркало';
+
+  @override
+  String get skinSurprise => 'Сюрприз';
+
+  @override
+  String get skinToolFillHint => 'Заливает область, по которой вы нажали';
+
+  @override
+  String get skinToolRecolourHint => 'Меняет этот цвет по всему скину';
+
+  @override
+  String get skinToolPickHint => 'Берёт цвет, по которому вы нажали';
+
+  @override
+  String get skinModelClassic => 'Широкие';
+
+  @override
+  String get skinModelSlim => 'Тонкие';
 }

@@ -1966,5 +1966,18 @@
   "undo": "Tendua",
   "chooseServerTitle": "Chagua seva",
   "changeLabel": "Badilisha",
-  "howToAutoShow": "Onyesha hii ninapoanza"
+  "howToAutoShow": "Onyesha hii ninapoanza",
+  "skinEditorLoadFailed": "Ngozi hiyo haikuweza kupakiwa. Tunaanza na ile ya kawaida.",
+  "skinToolRecolour": "Badili rangi",
+  "skinToolPick": "Chagua rangi",
+  "skinBases": "Misingi",
+  "skinBasesTitle": "Anza na msingi",
+  "skinBasesSubtitle": "Hii inabadilisha kilichopo sasa. Tendua kinairudisha.",
+  "skinMirror": "Kioo",
+  "skinSurprise": "Nishangaze",
+  "skinToolFillHint": "Hujaza eneo unalogusa",
+  "skinToolRecolourHint": "Hubadilisha rangi hiyo kwenye ngozi nzima",
+  "skinToolPickHint": "Huchukua rangi unayogusa",
+  "skinModelClassic": "Pana",
+  "skinModelSlim": "Membamba"
 }

@@ -2672,4 +2672,45 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get howToAutoShow => 'Beim Starten anzeigen';
+
+  @override
+  String get skinEditorLoadFailed =>
+      'Dieser Skin konnte nicht geladen werden. Wir starten mit dem Standard-Skin.';
+
+  @override
+  String get skinToolRecolour => 'Umfärben';
+
+  @override
+  String get skinToolPick => 'Pipette';
+
+  @override
+  String get skinBases => 'Vorlagen';
+
+  @override
+  String get skinBasesTitle => 'Mit einer Vorlage starten';
+
+  @override
+  String get skinBasesSubtitle =>
+      'Das ersetzt die aktuelle Zeichnung. Rückgängig stellt sie wieder her.';
+
+  @override
+  String get skinMirror => 'Spiegeln';
+
+  @override
+  String get skinSurprise => 'Überrasch mich';
+
+  @override
+  String get skinToolFillHint => 'Füllt die angetippte Fläche';
+
+  @override
+  String get skinToolRecolourHint => 'Ändert diese Farbe überall';
+
+  @override
+  String get skinToolPickHint => 'Übernimmt die angetippte Farbe';
+
+  @override
+  String get skinModelClassic => 'Breit';
+
+  @override
+  String get skinModelSlim => 'Schmal';
 }

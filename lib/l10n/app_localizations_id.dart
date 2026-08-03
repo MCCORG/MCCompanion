@@ -2666,4 +2666,45 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get howToAutoShow => 'Tampilkan ini saat mulai';
+
+  @override
+  String get skinEditorLoadFailed =>
+      'Skin itu tidak bisa dimuat. Kita mulai dari skin bawaan.';
+
+  @override
+  String get skinToolRecolour => 'Warnai ulang';
+
+  @override
+  String get skinToolPick => 'Ambil warna';
+
+  @override
+  String get skinBases => 'Dasar';
+
+  @override
+  String get skinBasesTitle => 'Mulai dari dasar';
+
+  @override
+  String get skinBasesSubtitle =>
+      'Ini mengganti yang ada sekarang. Urungkan mengembalikannya.';
+
+  @override
+  String get skinMirror => 'Cermin';
+
+  @override
+  String get skinSurprise => 'Kejutan';
+
+  @override
+  String get skinToolFillHint => 'Mengisi bidang yang kamu sentuh';
+
+  @override
+  String get skinToolRecolourHint => 'Mengubah warna itu di seluruh skin';
+
+  @override
+  String get skinToolPickHint => 'Mengambil warna yang kamu sentuh';
+
+  @override
+  String get skinModelClassic => 'Lebar';
+
+  @override
+  String get skinModelSlim => 'Ramping';
 }

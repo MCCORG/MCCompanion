@@ -2664,4 +2664,46 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get howToAutoShow => 'Başlatınca bunu göster';
+
+  @override
+  String get skinEditorLoadFailed =>
+      'Bu kaplama yüklenemedi. Varsayılan kaplamayla başlıyoruz.';
+
+  @override
+  String get skinToolRecolour => 'Yeniden renklendir';
+
+  @override
+  String get skinToolPick => 'Damlalık';
+
+  @override
+  String get skinBases => 'Şablonlar';
+
+  @override
+  String get skinBasesTitle => 'Bir şablonla başla';
+
+  @override
+  String get skinBasesSubtitle =>
+      'Bu, mevcut çizimin yerini alır. Geri al ile döner.';
+
+  @override
+  String get skinMirror => 'Aynala';
+
+  @override
+  String get skinSurprise => 'Sürpriz';
+
+  @override
+  String get skinToolFillHint => 'Dokunduğunuz alanı doldurur';
+
+  @override
+  String get skinToolRecolourHint =>
+      'O rengi kaplamanın her yerinde değiştirir';
+
+  @override
+  String get skinToolPickHint => 'Dokunduğunuz rengi alır';
+
+  @override
+  String get skinModelClassic => 'Geniş';
+
+  @override
+  String get skinModelSlim => 'İnce';
 }

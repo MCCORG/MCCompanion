@@ -2661,4 +2661,45 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get howToAutoShow => 'شروع کرتے وقت یہ دکھائیں';
+
+  @override
+  String get skinEditorLoadFailed =>
+      'وہ اسکن لوڈ نہیں ہو سکی۔ ہم ڈیفالٹ اسکن سے شروع کر رہے ہیں۔';
+
+  @override
+  String get skinToolRecolour => 'رنگ بدلیں';
+
+  @override
+  String get skinToolPick => 'رنگ چنیں';
+
+  @override
+  String get skinBases => 'بنیادی ڈیزائن';
+
+  @override
+  String get skinBasesTitle => 'ایک بنیاد سے شروع کریں';
+
+  @override
+  String get skinBasesSubtitle =>
+      'یہ موجودہ ڈرائنگ کی جگہ لے گا۔ واپس کرنے پر بحال ہو جائے گا۔';
+
+  @override
+  String get skinMirror => 'آئینہ';
+
+  @override
+  String get skinSurprise => 'حیران کریں';
+
+  @override
+  String get skinToolFillHint => 'جس حصے کو چھوئیں وہ بھر دیتا ہے';
+
+  @override
+  String get skinToolRecolourHint => 'پوری اسکن میں وہ رنگ بدل دیتا ہے';
+
+  @override
+  String get skinToolPickHint => 'جس رنگ کو چھوئیں وہ لے لیتا ہے';
+
+  @override
+  String get skinModelClassic => 'چوڑا';
+
+  @override
+  String get skinModelSlim => 'پتلا';
 }

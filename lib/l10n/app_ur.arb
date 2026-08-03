@@ -1966,5 +1966,18 @@
   "undo": "واپس",
   "chooseServerTitle": "سرور منتخب کریں",
   "changeLabel": "تبدیل کریں",
-  "howToAutoShow": "شروع کرتے وقت یہ دکھائیں"
+  "howToAutoShow": "شروع کرتے وقت یہ دکھائیں",
+  "skinEditorLoadFailed": "وہ اسکن لوڈ نہیں ہو سکی۔ ہم ڈیفالٹ اسکن سے شروع کر رہے ہیں۔",
+  "skinToolRecolour": "رنگ بدلیں",
+  "skinToolPick": "رنگ چنیں",
+  "skinBases": "بنیادی ڈیزائن",
+  "skinBasesTitle": "ایک بنیاد سے شروع کریں",
+  "skinBasesSubtitle": "یہ موجودہ ڈرائنگ کی جگہ لے گا۔ واپس کرنے پر بحال ہو جائے گا۔",
+  "skinMirror": "آئینہ",
+  "skinSurprise": "حیران کریں",
+  "skinToolFillHint": "جس حصے کو چھوئیں وہ بھر دیتا ہے",
+  "skinToolRecolourHint": "پوری اسکن میں وہ رنگ بدل دیتا ہے",
+  "skinToolPickHint": "جس رنگ کو چھوئیں وہ لے لیتا ہے",
+  "skinModelClassic": "چوڑا",
+  "skinModelSlim": "پتلا"
 }

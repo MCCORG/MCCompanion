@@ -1969,5 +1969,18 @@
   "undo": "पहले जैसा करें",
   "chooseServerTitle": "सर्वर चुनें",
   "changeLabel": "बदलें",
-  "howToAutoShow": "शुरू करते समय यह दिखाएं"
+  "howToAutoShow": "शुरू करते समय यह दिखाएं",
+  "skinEditorLoadFailed": "वह स्किन लोड नहीं हो सकी। हम डिफ़ॉल्ट स्किन से शुरू कर रहे हैं।",
+  "skinToolRecolour": "रंग बदलें",
+  "skinToolPick": "रंग चुनें",
+  "skinBases": "बेस",
+  "skinBasesTitle": "एक बेस से शुरू करें",
+  "skinBasesSubtitle": "यह मौजूदा चित्र बदल देगा। पूर्ववत करने पर वापस आ जाएगा।",
+  "skinMirror": "मिरर",
+  "skinSurprise": "सरप्राइज़",
+  "skinToolFillHint": "आप जिस हिस्से को छूते हैं उसे भरता है",
+  "skinToolRecolourHint": "पूरी स्किन में वह रंग बदलता है",
+  "skinToolPickHint": "आप जिस रंग को छूते हैं वह ले लेता है",
+  "skinModelClassic": "चौड़ा",
+  "skinModelSlim": "पतला"
 }

@@ -2647,4 +2647,44 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get howToAutoShow => 'أظهر هذا عند البدء';
+
+  @override
+  String get skinEditorLoadFailed =>
+      'تعذّر تحميل هذا الشكل. سنبدأ بالشكل الافتراضي.';
+
+  @override
+  String get skinToolRecolour => 'تغيير اللون';
+
+  @override
+  String get skinToolPick => 'القطارة';
+
+  @override
+  String get skinBases => 'قوالب';
+
+  @override
+  String get skinBasesTitle => 'ابدأ من قالب';
+
+  @override
+  String get skinBasesSubtitle => 'سيحل هذا محل الرسم الحالي. التراجع يعيده.';
+
+  @override
+  String get skinMirror => 'مرآة';
+
+  @override
+  String get skinSurprise => 'فاجئني';
+
+  @override
+  String get skinToolFillHint => 'يملأ المنطقة التي تلمسها';
+
+  @override
+  String get skinToolRecolourHint => 'يغيّر ذلك اللون في كامل الشكل';
+
+  @override
+  String get skinToolPickHint => 'يأخذ اللون الذي تلمسه';
+
+  @override
+  String get skinModelClassic => 'عريض';
+
+  @override
+  String get skinModelSlim => 'نحيف';
 }

@@ -1284,5 +1284,18 @@
   "undo": "Ongedaan maken",
   "chooseServerTitle": "Kies een server",
   "changeLabel": "Wijzigen",
-  "howToAutoShow": "Dit tonen als ik start"
+  "howToAutoShow": "Dit tonen als ik start",
+  "skinEditorLoadFailed": "Die skin kon niet geladen worden. We beginnen met de standaardskin.",
+  "skinToolRecolour": "Herkleur",
+  "skinToolPick": "Pipet",
+  "skinBases": "Bases",
+  "skinBasesTitle": "Begin met een basis",
+  "skinBasesSubtitle": "Dit vervangt wat er nu staat. Ongedaan maken zet het terug.",
+  "skinMirror": "Spiegel",
+  "skinSurprise": "Verras me",
+  "skinToolFillHint": "Vult het vlak dat je aantikt",
+  "skinToolRecolourHint": "Verandert die kleur overal op de skin",
+  "skinToolPickHint": "Neemt de kleur die je aantikt",
+  "skinModelClassic": "Breed",
+  "skinModelSlim": "Smal"
 }

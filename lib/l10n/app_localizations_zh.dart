@@ -2609,4 +2609,43 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get howToAutoShow => '启动时显示此说明';
+
+  @override
+  String get skinEditorLoadFailed => '无法加载该皮肤，将从默认皮肤开始。';
+
+  @override
+  String get skinToolRecolour => '替换颜色';
+
+  @override
+  String get skinToolPick => '取色';
+
+  @override
+  String get skinBases => '基础款';
+
+  @override
+  String get skinBasesTitle => '从基础款开始';
+
+  @override
+  String get skinBasesSubtitle => '这会替换当前画布内容，可用撤销恢复。';
+
+  @override
+  String get skinMirror => '镜像';
+
+  @override
+  String get skinSurprise => '随机生成';
+
+  @override
+  String get skinToolFillHint => '填充你点到的区域';
+
+  @override
+  String get skinToolRecolourHint => '替换整个皮肤上的该颜色';
+
+  @override
+  String get skinToolPickHint => '取用你点到的颜色';
+
+  @override
+  String get skinModelClassic => '标准';
+
+  @override
+  String get skinModelSlim => '纤细';
 }

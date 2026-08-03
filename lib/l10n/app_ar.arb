@@ -1969,5 +1969,18 @@
   "undo": "تراجع",
   "chooseServerTitle": "اختر خادمًا",
   "changeLabel": "تغيير",
-  "howToAutoShow": "أظهر هذا عند البدء"
+  "howToAutoShow": "أظهر هذا عند البدء",
+  "skinEditorLoadFailed": "تعذّر تحميل هذا الشكل. سنبدأ بالشكل الافتراضي.",
+  "skinToolRecolour": "تغيير اللون",
+  "skinToolPick": "القطارة",
+  "skinBases": "قوالب",
+  "skinBasesTitle": "ابدأ من قالب",
+  "skinBasesSubtitle": "سيحل هذا محل الرسم الحالي. التراجع يعيده.",
+  "skinMirror": "مرآة",
+  "skinSurprise": "فاجئني",
+  "skinToolFillHint": "يملأ المنطقة التي تلمسها",
+  "skinToolRecolourHint": "يغيّر ذلك اللون في كامل الشكل",
+  "skinToolPickHint": "يأخذ اللون الذي تلمسه",
+  "skinModelClassic": "عريض",
+  "skinModelSlim": "نحيف"
 }

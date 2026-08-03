@@ -2616,4 +2616,43 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get howToAutoShow => '開始時にこれを表示';
+
+  @override
+  String get skinEditorLoadFailed => 'そのスキンを読み込めませんでした。標準のスキンから始めます。';
+
+  @override
+  String get skinToolRecolour => '色を置換';
+
+  @override
+  String get skinToolPick => 'スポイト';
+
+  @override
+  String get skinBases => 'ベース';
+
+  @override
+  String get skinBasesTitle => 'ベースから始める';
+
+  @override
+  String get skinBasesSubtitle => '今の絵と置き換わります。元に戻すで復帰します。';
+
+  @override
+  String get skinMirror => '左右対称';
+
+  @override
+  String get skinSurprise => 'おまかせ';
+
+  @override
+  String get skinToolFillHint => 'タップした面を塗ります';
+
+  @override
+  String get skinToolRecolourHint => 'その色をスキン全体で置き換えます';
+
+  @override
+  String get skinToolPickHint => 'タップした色を取り込みます';
+
+  @override
+  String get skinModelClassic => '標準';
+
+  @override
+  String get skinModelSlim => '細身';
 }

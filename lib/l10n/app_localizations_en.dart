@@ -2656,4 +2656,46 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get howToAutoShow => 'Show this when I start';
+
+  @override
+  String get skinEditorLoadFailed =>
+      'Could not load that skin. Starting from the default one.';
+
+  @override
+  String get skinToolRecolour => 'Recolour';
+
+  @override
+  String get skinToolPick => 'Pick';
+
+  @override
+  String get skinBases => 'Bases';
+
+  @override
+  String get skinBasesTitle => 'Start from a base';
+
+  @override
+  String get skinBasesSubtitle =>
+      'This replaces what is on the canvas. Undo brings it back.';
+
+  @override
+  String get skinMirror => 'Mirror';
+
+  @override
+  String get skinSurprise => 'Surprise';
+
+  @override
+  String get skinToolFillHint => 'Fills the patch you tap';
+
+  @override
+  String get skinToolRecolourHint =>
+      'Changes that colour everywhere on the skin';
+
+  @override
+  String get skinToolPickHint => 'Takes the colour you tap';
+
+  @override
+  String get skinModelClassic => 'Wide';
+
+  @override
+  String get skinModelSlim => 'Slim';
 }

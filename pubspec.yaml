@@ -61,6 +61,8 @@ flutter:
     - assets/images/feature.png
     - assets/images/wiki.png
     - assets/images/skin.png
+    - assets/images/skins/
+    - assets/images/skins/thumbs/
     - assets/images/tunnel.png
     - assets/images/players.png
     - assets/data/wiki_data.json

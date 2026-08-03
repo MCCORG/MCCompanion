@@ -1969,5 +1969,18 @@
   "undo": "আগের অবস্থায়",
   "chooseServerTitle": "একটি সার্ভার বেছে নিন",
   "changeLabel": "পরিবর্তন",
-  "howToAutoShow": "শুরু করার সময় এটি দেখান"
+  "howToAutoShow": "শুরু করার সময় এটি দেখান",
+  "skinEditorLoadFailed": "সেই স্কিনটি লোড করা যায়নি। আমরা ডিফল্ট স্কিন দিয়ে শুরু করছি।",
+  "skinToolRecolour": "রং বদলান",
+  "skinToolPick": "রং নিন",
+  "skinBases": "বেস",
+  "skinBasesTitle": "একটি বেস থেকে শুরু করুন",
+  "skinBasesSubtitle": "এটি বর্তমান ছবিটি প্রতিস্থাপন করবে। আনডু করলে ফিরে আসবে।",
+  "skinMirror": "মিরর",
+  "skinSurprise": "চমক",
+  "skinToolFillHint": "আপনি যে অংশে ট্যাপ করবেন তা ভরে দেয়",
+  "skinToolRecolourHint": "পুরো স্কিনে সেই রং বদলে দেয়",
+  "skinToolPickHint": "আপনি যে রঙে ট্যাপ করবেন তা নেয়",
+  "skinModelClassic": "চওড়া",
+  "skinModelSlim": "সরু"
 }
