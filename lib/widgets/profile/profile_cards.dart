@@ -10,7 +10,6 @@ import '../../screens/java_link_screen.dart';
 class ProfileSettingsCard extends StatelessWidget {
   final bool appearOffline;
   final Future<void> Function(bool) onToggleAppearOffline;
-
   const ProfileSettingsCard({
     super.key,
     required this.appearOffline,
@@ -63,10 +62,7 @@ class ProfileSettingsCard extends StatelessWidget {
                     appearOffline
                         ? AppLocalizations.of(context)!.appearOfflineOn
                         : AppLocalizations.of(context)!.appearOfflineOff,
-                    style: TextStyle(
-                      color: AppTheme.textMuted,
-                      fontSize: 11,
-                    ),
+                    style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
                   ),
                 ],
               ),
@@ -83,13 +79,88 @@ class ProfileSettingsCard extends StatelessWidget {
   }
 }
 
+class ProfileServerVisibilityCard extends StatelessWidget {
+  final bool shareServer;
+  final Future<void> Function(bool) onToggleShareServer;
+
+  const ProfileServerVisibilityCard({
+    super.key,
+    required this.shareServer,
+    required this.onToggleShareServer,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+    return Container(
+      decoration: BoxDecoration(
+        color: AppTheme.surfaceRaised,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: AppTheme.borderGray),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+        child: Row(
+          children: [
+            Container(
+              width: 32,
+              height: 32,
+              decoration: BoxDecoration(
+                color: shareServer
+                    ? AppTheme.accent.withValues(alpha: 0.12)
+                    : AppTheme.textMuted.withValues(alpha: 0.15),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Icon(
+                shareServer ? Icons.dns_rounded : Icons.lock_outline_rounded,
+                size: 16,
+                color: shareServer ? AppTheme.accent : AppTheme.textMuted,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    l.shareServerLabel,
+                    style: TextStyle(
+                      color: AppTheme.textPrimary,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text(
+                    shareServer ? l.shareServerOn : l.shareServerOff,
+                    style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
+                  ),
+                ],
+              ),
+            ),
+            Switch(
+              value: shareServer,
+              onChanged: onToggleShareServer,
+              activeThumbColor: AppTheme.accent,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class ProfileLinkedAccountsCard extends StatefulWidget {
   final UserModel me;
   final Future<void> Function() onRefresh;
-  const ProfileLinkedAccountsCard({super.key, required this.me, required this.onRefresh});
+  const ProfileLinkedAccountsCard({
+    super.key,
+    required this.me,
+    required this.onRefresh,
+  });
 
   @override
-  State<ProfileLinkedAccountsCard> createState() => ProfileLinkedAccountsCardState();
+  State<ProfileLinkedAccountsCard> createState() =>
+      ProfileLinkedAccountsCardState();
 }
 
 class ProfileLinkedAccountsCardState extends State<ProfileLinkedAccountsCard> {
@@ -329,10 +400,7 @@ class ProfileAccountRow extends StatelessWidget {
                 ),
                 Text(
                   subtitle,
-                  style: TextStyle(
-                    color: AppTheme.textMuted,
-                    fontSize: 10,
-                  ),
+                  style: TextStyle(color: AppTheme.textMuted, fontSize: 10),
                   overflow: TextOverflow.ellipsis,
                 ),
               ],
@@ -346,7 +414,9 @@ class ProfileAccountRow extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppTheme.error.withValues(alpha: 0.08),
                 borderRadius: BorderRadius.circular(7),
-                border: Border.all(color: AppTheme.error.withValues(alpha: 0.25)),
+                border: Border.all(
+                  color: AppTheme.error.withValues(alpha: 0.25),
+                ),
               ),
               child: unlinking
                   ? const SizedBox(
@@ -507,14 +577,22 @@ class _ProfileNotificationPrefsCardState
 
   String _prefLabel(String key, AppLocalizations l) {
     switch (key) {
-      case 'skin_liked':        return l.notifPrefSkinLiked;
-      case 'comment_received':  return l.notifPrefCommentReceived;
-      case 'pack_approved':     return l.notifPrefPackApproved;
-      case 'pack_rejected':     return l.notifPrefPackRejected;
-      case 'friend_request':    return l.notifPrefFriendRequest;
-      case 'friend_accepted':   return l.notifPrefFriendAccepted;
-      case 'message_received':  return l.notifPrefMessageReceived;
-      default:                  return key;
+      case 'skin_liked':
+        return l.notifPrefSkinLiked;
+      case 'comment_received':
+        return l.notifPrefCommentReceived;
+      case 'pack_approved':
+        return l.notifPrefPackApproved;
+      case 'pack_rejected':
+        return l.notifPrefPackRejected;
+      case 'friend_request':
+        return l.notifPrefFriendRequest;
+      case 'friend_accepted':
+        return l.notifPrefFriendAccepted;
+      case 'message_received':
+        return l.notifPrefMessageReceived;
+      default:
+        return key;
     }
   }
 
@@ -530,7 +608,11 @@ class _ProfileNotificationPrefsCardState
 
   Future<void> _load() async {
     final prefs = await NotificationApiService.getPrefs();
-    if (mounted) setState(() { _prefs = prefs; _loading = false; });
+    if (mounted)
+      setState(() {
+        _prefs = prefs;
+        _loading = false;
+      });
   }
 
   Future<void> _toggle(String key, bool value) async {
@@ -587,15 +669,19 @@ class _ProfileNotificationPrefsCardState
               return Column(
                 children: [
                   Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 8,
+                    ),
                     child: Row(
                       children: [
-                        Icon(icon,
-                            size: 16,
-                            color: enabled
-                                ? AppTheme.accent
-                                : AppTheme.textDisabled),
+                        Icon(
+                          icon,
+                          size: 16,
+                          color: enabled
+                              ? AppTheme.accent
+                              : AppTheme.textDisabled,
+                        ),
                         const SizedBox(width: 12),
                         Expanded(
                           child: Text(

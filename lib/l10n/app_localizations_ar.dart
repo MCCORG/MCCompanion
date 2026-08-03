@@ -2687,4 +2687,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get skinModelSlim => 'نحيف';
+
+  @override
+  String get shareServerLabel => 'مشاركة خادمك';
+
+  @override
+  String get shareServerOn => 'يمكن لأصدقائك رؤية الخادم الذي تلعب فيه';
+
+  @override
+  String get shareServerOff => 'يرى أصدقاؤك أنك تلعب دون معرفة المكان';
 }

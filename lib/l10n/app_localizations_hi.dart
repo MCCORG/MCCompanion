@@ -2706,4 +2706,13 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get skinModelSlim => 'पतला';
+
+  @override
+  String get shareServerLabel => 'अपना सर्वर साझा करें';
+
+  @override
+  String get shareServerOn => 'दोस्त देख सकते हैं कि आप किस सर्वर पर हैं';
+
+  @override
+  String get shareServerOff => 'दोस्त देखते हैं कि आप खेल रहे हैं, कहाँ नहीं';
 }

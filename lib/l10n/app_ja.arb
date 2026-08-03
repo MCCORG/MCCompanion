@@ -1982,5 +1982,8 @@
   "skinToolRecolourHint": "その色をスキン全体で置き換えます",
   "skinToolPickHint": "タップした色を取り込みます",
   "skinModelClassic": "標準",
-  "skinModelSlim": "細身"
+  "skinModelSlim": "細身",
+  "shareServerLabel": "サーバーを共有",
+  "shareServerOn": "フレンドにいるサーバーが見えます",
+  "shareServerOff": "フレンドにはプレイ中とだけ表示されます"
 }

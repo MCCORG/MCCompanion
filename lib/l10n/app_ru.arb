@@ -1982,5 +1982,8 @@
   "skinToolRecolourHint": "Меняет этот цвет по всему скину",
   "skinToolPickHint": "Берёт цвет, по которому вы нажали",
   "skinModelClassic": "Широкие",
-  "skinModelSlim": "Тонкие"
+  "skinModelSlim": "Тонкие",
+  "shareServerLabel": "Показывать сервер",
+  "shareServerOn": "Друзья видят, на каком вы сервере",
+  "shareServerOff": "Друзья видят, что вы играете, но не где"
 }

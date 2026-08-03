@@ -1982,5 +1982,8 @@
   "skinToolRecolourHint": "O rengi kaplamanın her yerinde değiştirir",
   "skinToolPickHint": "Dokunduğunuz rengi alır",
   "skinModelClassic": "Geniş",
-  "skinModelSlim": "İnce"
+  "skinModelSlim": "İnce",
+  "shareServerLabel": "Sunucunu paylaş",
+  "shareServerOn": "Arkadaşların hangi sunucuda olduğunu görür",
+  "shareServerOff": "Arkadaşların oynadığını görür, nerede olduğunu değil"
 }

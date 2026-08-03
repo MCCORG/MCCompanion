@@ -2875,5 +2875,17 @@
   "skinModelSlim": "Slim",
   "@skinModelSlim": {
     "description": "Skin editor: arm width"
+  },
+  "shareServerLabel": "Share your server",
+  "@shareServerLabel": {
+    "description": "Profile: server visibility"
+  },
+  "shareServerOn": "Friends can see which server you are on",
+  "@shareServerOn": {
+    "description": "Profile: server visibility"
+  },
+  "shareServerOff": "Friends see you are playing, not where",
+  "@shareServerOff": {
+    "description": "Profile: server visibility"
   }
 }

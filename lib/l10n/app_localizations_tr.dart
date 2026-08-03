@@ -2706,4 +2706,14 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get skinModelSlim => 'İnce';
+
+  @override
+  String get shareServerLabel => 'Sunucunu paylaş';
+
+  @override
+  String get shareServerOn => 'Arkadaşların hangi sunucuda olduğunu görür';
+
+  @override
+  String get shareServerOff =>
+      'Arkadaşların oynadığını görür, nerede olduğunu değil';
 }

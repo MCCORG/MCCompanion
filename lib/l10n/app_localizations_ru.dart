@@ -2706,4 +2706,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get skinModelSlim => 'Тонкие';
+
+  @override
+  String get shareServerLabel => 'Показывать сервер';
+
+  @override
+  String get shareServerOn => 'Друзья видят, на каком вы сервере';
+
+  @override
+  String get shareServerOff => 'Друзья видят, что вы играете, но не где';
 }

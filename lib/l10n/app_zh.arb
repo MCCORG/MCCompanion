@@ -1982,5 +1982,8 @@
   "skinToolRecolourHint": "替换整个皮肤上的该颜色",
   "skinToolPickHint": "取用你点到的颜色",
   "skinModelClassic": "标准",
-  "skinModelSlim": "纤细"
+  "skinModelSlim": "纤细",
+  "shareServerLabel": "分享你的服务器",
+  "shareServerOn": "好友可以看到你所在的服务器",
+  "shareServerOff": "好友只知道你在游戏中，看不到位置"
 }

@@ -2707,4 +2707,13 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get skinModelSlim => 'Ramping';
+
+  @override
+  String get shareServerLabel => 'Bagikan servermu';
+
+  @override
+  String get shareServerOn => 'Teman bisa melihat server yang kamu mainkan';
+
+  @override
+  String get shareServerOff => 'Teman melihat kamu bermain, tapi tidak di mana';
 }

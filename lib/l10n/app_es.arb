@@ -1982,5 +1982,8 @@
   "skinToolRecolourHint": "Cambia ese color en toda la skin",
   "skinToolPickHint": "Toma el color que tocas",
   "skinModelClassic": "Ancho",
-  "skinModelSlim": "Delgado"
+  "skinModelSlim": "Delgado",
+  "shareServerLabel": "Compartir tu servidor",
+  "shareServerOn": "Tus amigos ven en qué servidor estás",
+  "shareServerOff": "Tus amigos ven que juegas, pero no dónde"
 }

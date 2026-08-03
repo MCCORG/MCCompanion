@@ -1979,5 +1979,8 @@
   "skinToolRecolourHint": "Hubadilisha rangi hiyo kwenye ngozi nzima",
   "skinToolPickHint": "Huchukua rangi unayogusa",
   "skinModelClassic": "Pana",
-  "skinModelSlim": "Membamba"
+  "skinModelSlim": "Membamba",
+  "shareServerLabel": "Shiriki seva yako",
+  "shareServerOn": "Marafiki wanaona seva uliyomo",
+  "shareServerOff": "Marafiki wanaona unacheza, si wapi"
 }

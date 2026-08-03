@@ -5051,6 +5051,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Slim'**
   String get skinModelSlim;
+
+  /// Profile: server visibility
+  ///
+  /// In en, this message translates to:
+  /// **'Share your server'**
+  String get shareServerLabel;
+
+  /// Profile: server visibility
+  ///
+  /// In en, this message translates to:
+  /// **'Friends can see which server you are on'**
+  String get shareServerOn;
+
+  /// Profile: server visibility
+  ///
+  /// In en, this message translates to:
+  /// **'Friends see you are playing, not where'**
+  String get shareServerOff;
 }
 
 class _AppLocalizationsDelegate

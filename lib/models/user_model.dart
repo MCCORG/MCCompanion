@@ -32,6 +32,7 @@ class UserModel with DisplayableName {
   final String? createdAt;
   final String? lastSeenAt;
   final bool appearOffline;
+  final bool shareServer;
   final String? xboxGamertag;
   final String? xboxXuid;
   final String? javaUsername;
@@ -47,6 +48,7 @@ class UserModel with DisplayableName {
     this.createdAt,
     this.lastSeenAt,
     this.appearOffline = false,
+    this.shareServer = false,
     this.xboxGamertag,
     this.xboxXuid,
     this.javaUsername,
@@ -70,6 +72,7 @@ class UserModel with DisplayableName {
       createdAt: json['createdAt'] as String?,
       lastSeenAt: json['lastSeenAt'] as String?,
       appearOffline: json['appearOffline'] as bool? ?? false,
+      shareServer: json['shareServer'] as bool? ?? false,
       xboxGamertag: json['xboxGamertag'] as String?,
       xboxXuid: json['xboxXuid'] as String?,
       javaUsername: json['javaUsername'] as String?,
@@ -78,7 +81,6 @@ class UserModel with DisplayableName {
       bedrockAccounts: bedrockList,
     );
   }
-
 }
 
 class FriendSession {
@@ -131,7 +133,6 @@ class FriendModel with DisplayableName {
         : null,
     lastSeenAt: json['lastSeenAt'] as String?,
   );
-
 }
 
 class FriendRequest {

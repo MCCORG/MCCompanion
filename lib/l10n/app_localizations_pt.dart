@@ -2708,4 +2708,14 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get skinModelSlim => 'Fino';
+
+  @override
+  String get shareServerLabel => 'Partilhar o teu servidor';
+
+  @override
+  String get shareServerOn => 'Os teus amigos veem em que servidor estás';
+
+  @override
+  String get shareServerOff =>
+      'Os teus amigos veem que estás a jogar, não onde';
 }

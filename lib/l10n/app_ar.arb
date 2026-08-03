@@ -1982,5 +1982,8 @@
   "skinToolRecolourHint": "يغيّر ذلك اللون في كامل الشكل",
   "skinToolPickHint": "يأخذ اللون الذي تلمسه",
   "skinModelClassic": "عريض",
-  "skinModelSlim": "نحيف"
+  "skinModelSlim": "نحيف",
+  "shareServerLabel": "مشاركة خادمك",
+  "shareServerOn": "يمكن لأصدقائك رؤية الخادم الذي تلعب فيه",
+  "shareServerOff": "يرى أصدقاؤك أنك تلعب دون معرفة المكان"
 }

@@ -110,6 +110,7 @@ class UserService {
     String? avatarUrl,
     String? bio,
     bool? appearOffline,
+    bool? shareServer,
   }) async {
     try {
       final res = await http
@@ -121,6 +122,7 @@ class UserService {
               if (avatarUrl != null) 'avatarUrl': avatarUrl,
               if (bio != null) 'bio': bio,
               if (appearOffline != null) 'appearOffline': appearOffline,
+              if (shareServer != null) 'shareServer': shareServer,
             }),
           )
           .timeout(_timeout);

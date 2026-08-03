@@ -1979,5 +1979,8 @@
   "skinToolRecolourHint": "Mengubah warna itu di seluruh skin",
   "skinToolPickHint": "Mengambil warna yang kamu sentuh",
   "skinModelClassic": "Lebar",
-  "skinModelSlim": "Ramping"
+  "skinModelSlim": "Ramping",
+  "shareServerLabel": "Bagikan servermu",
+  "shareServerOn": "Teman bisa melihat server yang kamu mainkan",
+  "shareServerOff": "Teman melihat kamu bermain, tapi tidak di mana"
 }

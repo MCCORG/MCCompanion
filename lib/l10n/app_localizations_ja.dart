@@ -2655,4 +2655,13 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get skinModelSlim => '細身';
+
+  @override
+  String get shareServerLabel => 'サーバーを共有';
+
+  @override
+  String get shareServerOn => 'フレンドにいるサーバーが見えます';
+
+  @override
+  String get shareServerOff => 'フレンドにはプレイ中とだけ表示されます';
 }

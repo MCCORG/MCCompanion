@@ -1297,5 +1297,8 @@
   "skinToolRecolourHint": "Verandert die kleur overal op de skin",
   "skinToolPickHint": "Neemt de kleur die je aantikt",
   "skinModelClassic": "Breed",
-  "skinModelSlim": "Smal"
+  "skinModelSlim": "Smal",
+  "shareServerLabel": "Server delen",
+  "shareServerOn": "Vrienden zien op welke server je zit",
+  "shareServerOff": "Vrienden zien dat je speelt, niet waar"
 }

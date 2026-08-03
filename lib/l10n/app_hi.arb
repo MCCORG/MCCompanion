@@ -1982,5 +1982,8 @@
   "skinToolRecolourHint": "पूरी स्किन में वह रंग बदलता है",
   "skinToolPickHint": "आप जिस रंग को छूते हैं वह ले लेता है",
   "skinModelClassic": "चौड़ा",
-  "skinModelSlim": "पतला"
+  "skinModelSlim": "पतला",
+  "shareServerLabel": "अपना सर्वर साझा करें",
+  "shareServerOn": "दोस्त देख सकते हैं कि आप किस सर्वर पर हैं",
+  "shareServerOff": "दोस्त देखते हैं कि आप खेल रहे हैं, कहाँ नहीं"
 }

@@ -1982,5 +1982,8 @@
   "skinToolRecolourHint": "পুরো স্কিনে সেই রং বদলে দেয়",
   "skinToolPickHint": "আপনি যে রঙে ট্যাপ করবেন তা নেয়",
   "skinModelClassic": "চওড়া",
-  "skinModelSlim": "সরু"
+  "skinModelSlim": "সরু",
+  "shareServerLabel": "আপনার সার্ভার শেয়ার করুন",
+  "shareServerOn": "বন্ধুরা দেখতে পাবে আপনি কোন সার্ভারে আছেন",
+  "shareServerOff": "বন্ধুরা দেখবে আপনি খেলছেন, কোথায় নয়"
 }

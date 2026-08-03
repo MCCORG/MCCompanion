@@ -2709,4 +2709,13 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get skinModelSlim => 'সরু';
+
+  @override
+  String get shareServerLabel => 'আপনার সার্ভার শেয়ার করুন';
+
+  @override
+  String get shareServerOn => 'বন্ধুরা দেখতে পাবে আপনি কোন সার্ভারে আছেন';
+
+  @override
+  String get shareServerOff => 'বন্ধুরা দেখবে আপনি খেলছেন, কোথায় নয়';
 }

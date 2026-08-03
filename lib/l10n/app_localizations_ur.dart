@@ -2702,4 +2702,13 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get skinModelSlim => 'پتلا';
+
+  @override
+  String get shareServerLabel => 'اپنا سرور شیئر کریں';
+
+  @override
+  String get shareServerOn => 'دوست دیکھ سکتے ہیں آپ کس سرور پر ہیں';
+
+  @override
+  String get shareServerOff => 'دوست دیکھتے ہیں کہ آپ کھیل رہے ہیں، کہاں نہیں';
 }

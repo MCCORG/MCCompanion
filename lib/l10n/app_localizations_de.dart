@@ -2713,4 +2713,13 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get skinModelSlim => 'Schmal';
+
+  @override
+  String get shareServerLabel => 'Server teilen';
+
+  @override
+  String get shareServerOn => 'Freunde sehen, auf welchem Server du bist';
+
+  @override
+  String get shareServerOff => 'Freunde sehen, dass du spielst, aber nicht wo';
 }

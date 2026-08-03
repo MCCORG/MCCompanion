@@ -2648,4 +2648,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get skinModelSlim => '纤细';
+
+  @override
+  String get shareServerLabel => '分享你的服务器';
+
+  @override
+  String get shareServerOn => '好友可以看到你所在的服务器';
+
+  @override
+  String get shareServerOff => '好友只知道你在游戏中，看不到位置';
 }

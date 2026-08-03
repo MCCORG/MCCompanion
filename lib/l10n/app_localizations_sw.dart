@@ -2718,4 +2718,13 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get skinModelSlim => 'Membamba';
+
+  @override
+  String get shareServerLabel => 'Shiriki seva yako';
+
+  @override
+  String get shareServerOn => 'Marafiki wanaona seva uliyomo';
+
+  @override
+  String get shareServerOff => 'Marafiki wanaona unacheza, si wapi';
 }

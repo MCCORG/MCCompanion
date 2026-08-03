@@ -15,6 +15,7 @@ import 'support_inbox_screen.dart';
 import '../widgets/profile/profile_desktop_sidebar.dart';
 import '../widgets/profile/profile_notifications_tab.dart';
 import 'register_screen.dart';
+import 'public_profile_screen.dart';
 import 'chat_screen.dart';
 import 'conversations_screen.dart';
 
@@ -457,79 +458,18 @@ class ProfileScreenState extends State<ProfileScreen>
   }
 
   void _showAddFriendDialog() {
-    final ctrl = TextEditingController();
-    final l = AppLocalizations.of(context)!;
-    showDialog(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: AppTheme.surfaceRaised,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: const BorderSide(color: AppTheme.borderGray),
-        ),
-        title: Text(l.addFriend),
-        content: TextField(
-          controller: ctrl,
-          autofocus: true,
-          autocorrect: false,
-          style: TextStyle(color: AppTheme.textPrimary),
-          decoration: InputDecoration(
-            hintText: l.usernameHint,
-            prefixIcon: Icon(
-              Icons.alternate_email_rounded,
-              size: 18,
-              color: AppTheme.textMuted,
+    Navigator.of(context)
+        .push(
+          MaterialPageRoute(
+            builder: (_) => UserSearchScreen(
+              onGoToHome: widget.onGoToHome,
+              onGoToConnector: widget.onGoToConnector,
+              onGoToSkins: widget.onGoToSkins,
+              onGoToWiki: widget.onGoToWiki,
             ),
           ),
-          onSubmitted: (_) {
-            Navigator.of(ctx).pop();
-            _sendRequest(ctrl.text.trim());
-          },
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(ctx).pop(),
-            child: Text(l.cancel),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(ctx).pop();
-              _sendRequest(ctrl.text.trim());
-            },
-            child: Text(l.send),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Future<void> _sendRequest(String username) async {
-    if (username.isEmpty) return;
-    final error = await UserService.sendFriendRequest(username);
-    if (!mounted) return;
-    final l = AppLocalizations.of(context)!;
-    if (error == null) {
-      AppToast.show(
-        context,
-        message: l.friendRequestSentTo(username),
-        icon: Icons.check_circle_rounded,
-        color: AppTheme.success,
-      );
-    } else {
-      final msg = switch (error) {
-        'already_friends' => l.alreadyFriendsWith(username),
-        'request_pending' => l.requestAlreadyPending(username),
-        'not_found' => l.userNotFoundMsg(username),
-        'blocked' => l.cannotSendRequest(username),
-        _ => l.somethingWentWrong,
-      };
-      AppToast.show(
-        context,
-        message: msg,
-        icon: Icons.error_outline_rounded,
-        color: AppTheme.error,
-      );
-    }
+        )
+        .then((_) => _fetchRequests());
   }
 
   Future<void> _acceptRequest(FriendRequest req) async {

@@ -29,9 +29,31 @@ class ProfileTab extends StatefulWidget {
 
 class ProfileTabState extends State<ProfileTab> {
   bool? _appearOffline;
+  bool? _shareServer;
 
   bool get _effectiveAppearOffline =>
       _appearOffline ?? widget.me?.appearOffline ?? false;
+
+  bool get _effectiveShareServer =>
+      _shareServer ?? widget.me?.shareServer ?? false;
+
+  Future<void> _toggleShareServer(bool value) async {
+    setState(() => _shareServer = value);
+    final updated = await UserService.updateMe(shareServer: value);
+    if (!mounted) return;
+    if (updated == null) {
+      setState(() => _shareServer = !value);
+      AppToast.show(
+        context,
+        message: AppLocalizations.of(context)!.couldNotUpdateVisibility,
+        icon: Icons.error_outline_rounded,
+        color: AppTheme.error,
+        duration: const Duration(seconds: 2),
+      );
+    } else {
+      await widget.onRefresh();
+    }
+  }
 
   Future<void> _toggleAppearOffline(bool value) async {
     setState(() => _appearOffline = value);
@@ -63,9 +85,14 @@ class ProfileTabState extends State<ProfileTab> {
         children: [
           ProfileHero(me: widget.me!, onUpdated: widget.onRefresh),
           const SizedBox(height: 20),
-          ProfileSectionHeader(AppLocalizations.of(context)!.sectionMinecraftAccounts),
+          ProfileSectionHeader(
+            AppLocalizations.of(context)!.sectionMinecraftAccounts,
+          ),
           const SizedBox(height: 8),
-          ProfileLinkedAccountsCard(me: widget.me!, onRefresh: widget.onRefresh),
+          ProfileLinkedAccountsCard(
+            me: widget.me!,
+            onRefresh: widget.onRefresh,
+          ),
           const SizedBox(height: 20),
           ProfileSectionHeader(AppLocalizations.of(context)!.sectionSettings),
           const SizedBox(height: 8),
@@ -73,8 +100,15 @@ class ProfileTabState extends State<ProfileTab> {
             appearOffline: _effectiveAppearOffline,
             onToggleAppearOffline: _toggleAppearOffline,
           ),
+          const SizedBox(height: 8),
+          ProfileServerVisibilityCard(
+            shareServer: _effectiveShareServer,
+            onToggleShareServer: _toggleShareServer,
+          ),
           const SizedBox(height: 20),
-          ProfileSectionHeader(AppLocalizations.of(context)!.sectionRecentActivity),
+          ProfileSectionHeader(
+            AppLocalizations.of(context)!.sectionRecentActivity,
+          ),
           const SizedBox(height: 8),
           const ProfileActivityFeed(),
           const SizedBox(height: 32),

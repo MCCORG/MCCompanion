@@ -2715,4 +2715,13 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get skinModelSlim => 'Delgado';
+
+  @override
+  String get shareServerLabel => 'Compartir tu servidor';
+
+  @override
+  String get shareServerOn => 'Tus amigos ven en qué servidor estás';
+
+  @override
+  String get shareServerOff => 'Tus amigos ven que juegas, pero no dónde';
 }

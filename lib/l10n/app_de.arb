@@ -1982,5 +1982,8 @@
   "skinToolRecolourHint": "Ändert diese Farbe überall",
   "skinToolPickHint": "Übernimmt die angetippte Farbe",
   "skinModelClassic": "Breit",
-  "skinModelSlim": "Schmal"
+  "skinModelSlim": "Schmal",
+  "shareServerLabel": "Server teilen",
+  "shareServerOn": "Freunde sehen, auf welchem Server du bist",
+  "shareServerOff": "Freunde sehen, dass du spielst, aber nicht wo"
 }
