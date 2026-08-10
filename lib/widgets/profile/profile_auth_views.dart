@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart'
     show SignInWithAppleButton, SignInWithAppleButtonStyle;
 import '../../l10n/app_localizations.dart';
@@ -402,7 +402,12 @@ class ProfileNotLoggedInViewState extends State<ProfileNotLoggedInView> {
                     onPressed: (_loading || _googleLoading || _appleLoading)
                         ? () {}
                         : _signInWithApple,
-                    style: SignInWithAppleButtonStyle.black,
+                    style: ThemeData.estimateBrightnessForColor(
+                              AppTheme.background,
+                            ) ==
+                            Brightness.dark
+                        ? SignInWithAppleButtonStyle.white
+                        : SignInWithAppleButtonStyle.black,
                     height: 48,
                   ),
                   if (_supportsGoogle) const SizedBox(height: 12),
@@ -414,7 +419,7 @@ class ProfileNotLoggedInViewState extends State<ProfileNotLoggedInView> {
                         : _signInWithGoogle,
                     style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 14),
-                      side: const BorderSide(color: AppTheme.borderGray),
+                      side: const BorderSide(color: Color(0xFF8E918F)),
                       backgroundColor: AppTheme.surfaceRaised,
                     ),
                     child: _googleLoading
@@ -429,10 +434,10 @@ class ProfileNotLoggedInViewState extends State<ProfileNotLoggedInView> {
                         : Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              FaIcon(
-                                FontAwesomeIcons.google,
-                                size: 16,
-                                color: AppTheme.textPrimary,
+                              SvgPicture.asset(
+                                'assets/icons/google_g.svg',
+                                width: 18,
+                                height: 18,
                               ),
                               const SizedBox(width: 10),
                               Text(
