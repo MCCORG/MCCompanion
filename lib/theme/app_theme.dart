@@ -57,15 +57,22 @@ class AppTheme {
     final ts  = textSecondary;
     final tm  = textMuted;
 
+    Color onColor(Color c) =>
+        ThemeData.estimateBrightnessForColor(c) == Brightness.dark
+            ? Colors.white
+            : const Color(0xFF0E1117);
+    final onA  = onColor(a);
+    final onAl = onColor(al);
+
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
       colorScheme: ColorScheme(
         brightness: Brightness.dark,
         primary: a,
-        onPrimary: Colors.white,
+        onPrimary: onA,
         secondary: al,
-        onSecondary: Colors.white,
+        onSecondary: onAl,
         error: error,
         onError: Colors.white,
         background: bg,
@@ -108,7 +115,7 @@ class AppTheme {
 
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          foregroundColor: Colors.white,
+          foregroundColor: onA,
           backgroundColor: a,
           elevation: 0,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),

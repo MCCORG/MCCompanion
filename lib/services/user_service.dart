@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'api_client_base.dart';
 import 'feedback_service.dart';
 import '../constants/app_constants.dart';
+import '../models/moderation_status.dart';
 import '../models/user_model.dart';
 
 typedef SocialInit = ({
@@ -21,6 +22,10 @@ class UserService {
 
   static bool _isAdmin = false;
   static bool get isAdmin => _isAdmin;
+
+  static ModerationStatus? _moderation;
+  static ModerationStatus? get moderation =>
+      _moderation?.isActive == true ? _moderation : null;
 
   static UserModel? _cachedMe;
   static DateTime? _cachedMeAt;
@@ -58,6 +63,7 @@ class UserService {
       if (res.statusCode == 200) {
         final body = jsonDecode(res.body) as Map<String, dynamic>;
         _isAdmin = body['isAdmin'] as bool? ?? false;
+        _moderation = ModerationStatus.fromJson(body['moderation']);
         final user = UserModel.fromJson(body['user'] as Map<String, dynamic>);
         _cachedMe = user;
         _cachedMeAt = DateTime.now();

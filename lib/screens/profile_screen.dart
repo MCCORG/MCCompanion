@@ -14,6 +14,7 @@ import '../widgets/profile/profile_tabs.dart';
 import 'support_inbox_screen.dart';
 import '../widgets/profile/profile_desktop_sidebar.dart';
 import '../widgets/profile/profile_notifications_tab.dart';
+import '../widgets/profile/moderation_banner.dart';
 import 'register_screen.dart';
 import 'public_profile_screen.dart';
 import 'chat_screen.dart';
@@ -243,13 +244,20 @@ class ProfileScreenState extends State<ProfileScreen>
       return ProfileNotRegisteredView(onRegister: _openRegister);
     }
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final isDesktop = constraints.maxWidth > 700;
-        return isDesktop
-            ? _buildDesktopLayout(context)
-            : _buildMobileLayout(context);
-      },
+    return Column(
+      children: [
+        ModerationBanner(status: UserService.moderation),
+        Expanded(
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              final isDesktop = constraints.maxWidth > 700;
+              return isDesktop
+                  ? _buildDesktopLayout(context)
+                  : _buildMobileLayout(context);
+            },
+          ),
+        ),
+      ],
     );
   }
 
