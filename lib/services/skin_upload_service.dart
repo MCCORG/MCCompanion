@@ -55,7 +55,7 @@ class SkinUploadService {
             'r2Key': r2Key,
             'name': name,
             'isPublic': true,
-            if (derivedFrom != null) 'derivedFrom': derivedFrom,
+            'derivedFrom': ?derivedFrom,
           }),
         )
         .timeout(_timeout);

@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen>
   late AnimationController _fadeController;
   late Animation<double> _fadeAnimation;
 
-  RelayPingResult? _detectedRelay;
+  RelaySelection? _detectedRelay;
   ConnectivityCheckResult? _connectivityResult;
 
   @override
@@ -48,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen>
     _fadeController.forward();
 
     await Future.wait([
-      RegionDetector.detectBestRelay().then((relay) {
+      RegionDetector.resolve().then((relay) {
         _detectedRelay = relay;
         RelayService.setRelay(relay);
       }).catchError((_) {}),
@@ -74,9 +74,9 @@ class _SplashScreenState extends State<SplashScreen>
   void _navigateToHome() {
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
-        pageBuilder: (_, animation, __) =>
+        pageBuilder: (_, animation, _) =>
             AppShell(initialRelay: _detectedRelay),
-        transitionsBuilder: (_, animation, __, child) =>
+        transitionsBuilder: (_, animation, _, child) =>
             FadeTransition(opacity: animation, child: child),
         transitionDuration: const Duration(milliseconds: 600),
       ),

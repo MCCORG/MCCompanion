@@ -153,14 +153,16 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
     String? lastTitle;
     for (final m in headerRx.allMatches(text)) {
       final content = text.substring(lastEnd, m.start).trim();
-      if (content.isNotEmpty || lastTitle != null)
+      if (content.isNotEmpty || lastTitle != null) {
         result.add(WikiArticleSection(title: lastTitle, content: content));
+      }
       lastTitle = m.group(1);
       lastEnd = m.end;
     }
     final tail = text.substring(lastEnd).trim();
-    if (tail.isNotEmpty || lastTitle != null)
+    if (tail.isNotEmpty || lastTitle != null) {
       result.add(WikiArticleSection(title: lastTitle, content: tail));
+    }
     return result
         .where(
           (s) => s.content.isNotEmpty && !_hiddenSections.contains(s.title),
@@ -284,8 +286,9 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
     final url = Uri.parse(
       'https://minecraft.wiki/w/${Uri.encodeComponent(widget.result.title.replaceAll(' ', '_'))}',
     );
-    if (await canLaunchUrl(url))
+    if (await canLaunchUrl(url)) {
       await launchUrl(url, mode: LaunchMode.externalApplication);
+    }
   }
 
   @override
@@ -356,8 +359,9 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
   }
 
   Widget _buildContent() {
-    if (_loading)
+    if (_loading) {
       return Center(child: CircularProgressIndicator(color: AppTheme.accent));
+    }
 
     if (_error != null) {
       return Center(
@@ -403,7 +407,7 @@ class _WikiDetailScreenState extends State<WikiDetailScreen> {
                 _imageUrl!,
                 height: 180,
                 fit: BoxFit.contain,
-                errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+                errorBuilder: (_, _, _) => const SizedBox.shrink(),
               ),
             ),
           ),

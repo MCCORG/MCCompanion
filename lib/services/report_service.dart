@@ -21,7 +21,7 @@ class ReportService {
             body: jsonEncode({
               'reportedUsername': reportedUsername,
               'reason': reason,
-              if (messageId != null) 'messageId': messageId,
+              'messageId': ?messageId,
               if (additionalInfo?.isNotEmpty == true)
                 'additionalInfo': additionalInfo,
             }),

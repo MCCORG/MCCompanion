@@ -50,11 +50,12 @@ class _SkinBodyFromUrlState extends State<SkinBodyFromUrl> {
       if (!mounted) return;
       final codec = await ui.instantiateImageCodec(resp.bodyBytes);
       final frame = await codec.getNextFrame();
-      if (mounted)
+      if (mounted) {
         setState(() {
           _image = frame.image;
           _loading = false;
         });
+      }
     } catch (_) {
       if (mounted) setState(() => _loading = false);
     }
@@ -189,11 +190,12 @@ class _Skin3DFromUrlState extends State<Skin3DFromUrl> {
       if (!mounted) return;
       final codec = await ui.instantiateImageCodec(resp.bodyBytes);
       final frame = await codec.getNextFrame();
-      if (mounted)
+      if (mounted) {
         setState(() {
           _image = frame.image;
           _loading = false;
         });
+      }
     } catch (_) {
       if (mounted) setState(() => _loading = false);
     }
@@ -694,8 +696,12 @@ void drawSkinFaces(Canvas canvas, ui.Image image, List<SkinFaceData> faces) {
     _drawQuad(canvas, f.screen, f.uvs, texPaint);
   }
 
-  for (final f in baseFaces) renderFace(f, withBackground: true);
-  for (final f in overlayFaces) renderFace(f, withBackground: false);
+  for (final f in baseFaces) {
+    renderFace(f, withBackground: true);
+  }
+  for (final f in overlayFaces) {
+    renderFace(f, withBackground: false);
+  }
 }
 
 class _Skin3DPainter extends CustomPainter {

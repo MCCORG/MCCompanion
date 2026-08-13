@@ -9,11 +9,11 @@ class ThemedButton extends StatelessWidget {
   final ThemedButtonVariant variant;
 
   const ThemedButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.child,
     this.variant = ThemedButtonVariant.primary,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

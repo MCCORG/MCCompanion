@@ -38,9 +38,9 @@ class SkinFaceImageState extends State<SkinFaceImage> {
   }
 
   @override
-  void didUpdateWidget(SkinFaceImage old) {
-    super.didUpdateWidget(old);
-    if (old.textureUrl != widget.textureUrl) _load();
+  void didUpdateWidget(SkinFaceImage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.textureUrl != widget.textureUrl) _load();
   }
 
   Future<void> _load() async {
@@ -58,11 +58,12 @@ class SkinFaceImageState extends State<SkinFaceImage> {
       if (!mounted) return;
       final codec = await ui.instantiateImageCodec(resp.bodyBytes);
       final frame = await codec.getNextFrame();
-      if (mounted)
+      if (mounted) {
         setState(() {
           _image = frame.image;
           _loading = false;
         });
+      }
     } catch (_) {
       if (mounted) setState(() => _loading = false);
     }
@@ -149,9 +150,9 @@ class SkinBodyImageState extends State<SkinBodyImage> {
   }
 
   @override
-  void didUpdateWidget(SkinBodyImage old) {
-    super.didUpdateWidget(old);
-    if (old.textureUrl != widget.textureUrl) _load();
+  void didUpdateWidget(SkinBodyImage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.textureUrl != widget.textureUrl) _load();
   }
 
   Future<void> _load() async {
@@ -169,11 +170,12 @@ class SkinBodyImageState extends State<SkinBodyImage> {
       if (!mounted) return;
       final codec = await ui.instantiateImageCodec(resp.bodyBytes);
       final frame = await codec.getNextFrame();
-      if (mounted)
+      if (mounted) {
         setState(() {
           _image = frame.image;
           _loading = false;
         });
+      }
     } catch (_) {
       if (mounted) setState(() => _loading = false);
     }
@@ -183,7 +185,7 @@ class SkinBodyImageState extends State<SkinBodyImage> {
   Widget build(BuildContext context) {
     final h = widget.height;
     final w = h / 2.0;
-    if (_loading)
+    if (_loading) {
       return SizedBox(
         width: w,
         height: h,
@@ -194,7 +196,8 @@ class SkinBodyImageState extends State<SkinBodyImage> {
           ),
         ),
       );
-    if (_image == null)
+    }
+    if (_image == null) {
       return SizedBox(
         width: w,
         height: h,
@@ -206,6 +209,7 @@ class SkinBodyImageState extends State<SkinBodyImage> {
           ),
         ),
       );
+    }
     return CustomPaint(size: Size(w, h), painter: SkinBodyPainter(_image!));
   }
 }
@@ -282,9 +286,9 @@ class LocalSkinBodyImageState extends State<LocalSkinBodyImage> {
   }
 
   @override
-  void didUpdateWidget(LocalSkinBodyImage old) {
-    super.didUpdateWidget(old);
-    if (old.filePath != widget.filePath) _load();
+  void didUpdateWidget(LocalSkinBodyImage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.filePath != widget.filePath) _load();
   }
 
   Future<void> _load() async {

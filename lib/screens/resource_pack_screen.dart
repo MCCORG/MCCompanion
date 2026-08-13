@@ -59,7 +59,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   String? _applyingPackId;
 
   String _featuredSearch = '';
-  List<String> _selectedTags = [];
+  final List<String> _selectedTags = [];
   String? _selectedCategory;
   final _searchCtrl = TextEditingController();
 
@@ -394,8 +394,9 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
       final desc = (p['description'] as String? ?? '').toLowerCase();
       final matchesSearch = q.isEmpty || name.contains(q) || desc.contains(q);
       if (!matchesSearch) return false;
-      if (_selectedCategory != null && p['category'] != _selectedCategory)
+      if (_selectedCategory != null && p['category'] != _selectedCategory) {
         return false;
+      }
       if (_selectedTags.isEmpty) return true;
       final tags = (p['tags'] as List?)?.cast<String>() ?? [];
       return _selectedTags.every((t) => tags.contains(t));
@@ -804,8 +805,9 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
           (f) => f.name.endsWith('.zip') || f.name.endsWith('.mcpack'),
           orElse: () => detail.files.first,
         );
-        if (!file.name.endsWith('.zip') && !file.name.endsWith('.mcpack'))
+        if (!file.name.endsWith('.zip') && !file.name.endsWith('.mcpack')) {
           return;
+        }
         _uploadFromPath(file.path, file.name);
       },
       child: GestureDetector(

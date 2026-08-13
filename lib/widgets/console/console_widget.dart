@@ -230,7 +230,7 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
             if (_expanded)
               ValueListenableBuilder<List<String>>(
                 valueListenable: widget.logsNotifier,
-                builder: (_, logs, __) {
+                builder: (_, logs, _) {
                   if (logs.isEmpty) return const SizedBox.shrink();
                   return Container(
                     margin: const EdgeInsets.only(right: 8),
@@ -299,7 +299,7 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
   Widget _buildLogList(AppLocalizations loc) {
     return ValueListenableBuilder<List<String>>(
       valueListenable: widget.logsNotifier,
-      builder: (_, logs, __) {
+      builder: (_, logs, _) {
         if (logs.isEmpty) return _EmptyConsole(loc: loc);
         return ListView.builder(
           controller: widget.scrollController,
@@ -436,7 +436,7 @@ class ConsoleDialog extends StatelessWidget {
               Expanded(
                 child: ValueListenableBuilder<List<String>>(
                   valueListenable: logsNotifier,
-                  builder: (_, logs, __) {
+                  builder: (_, logs, _) {
                     if (logs.isEmpty) return _EmptyConsole(loc: loc);
                     return ListView.builder(
                       controller: scrollController,

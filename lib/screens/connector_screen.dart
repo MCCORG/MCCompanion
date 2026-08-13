@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:async' show unawaited;
 import 'package:flutter/material.dart';
 import '../widgets/components/swipe_back.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
@@ -28,7 +27,7 @@ import '../util/resource_pack_prefs.dart';
 import '../widgets/dialogs/howto_dialogs.dart';
 
 class HomeScreen extends StatefulWidget {
-  final RelayPingResult selectedRelay;
+  final RelaySelection selectedRelay;
   final void Function(String?) onRelayChanged;
   final NavigationController navigationController;
   final Future<List<FeaturedServer>> partnerServersFuture;

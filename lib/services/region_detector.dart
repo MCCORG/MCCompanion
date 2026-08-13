@@ -1,104 +1,132 @@
 import 'dart:async';
-import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../constants/app_constants.dart';
+import '../util/relay_preference_storage.dart';
 
-class RelayPingResult {
+enum RelaySource {
+  manual,
+  cached,
+  geo,
+  stale,
+  failover,
+  fallback,
+}
+
+class RelaySelection {
   final String ip;
   final String base;
   final String name;
-  final int latencyMs;
-  final String? version;
+  final String region;
+  final RelaySource source;
 
-  const RelayPingResult({
+  const RelaySelection({
     required this.ip,
     required this.base,
     required this.name,
-    required this.latencyMs,
-    this.version,
+    required this.region,
+    required this.source,
   });
+
+  static RelaySelection _of(Map<String, String> relay, RelaySource source) =>
+      RelaySelection(
+        ip: relay['ip']!,
+        base: relay['base']!,
+        name: relay['name']!,
+        region: relay['region'] ?? '',
+        source: source,
+      );
+
+  static String _normalise(String url) =>
+      url.replaceAll(RegExp(r'/+$'), '').toLowerCase();
+
+  static RelaySelection? fromIp(String? ip, RelaySource source) {
+    if (ip == null) return null;
+    for (final relay in AppConstants.relayServers) {
+      if (relay['ip'] == ip) return _of(relay, source);
+    }
+    return null;
+  }
+
+  static RelaySelection? fromBase(String? base, RelaySource source) {
+    if (base == null || base.isEmpty) return null;
+    final wanted = _normalise(base);
+    for (final relay in AppConstants.relayServers) {
+      if (_normalise(relay['base']!) == wanted) return _of(relay, source);
+    }
+    return null;
+  }
+
+  static RelaySelection get first =>
+      _of(AppConstants.relayServers.first, RelaySource.fallback);
+
+  RelaySelection? get alternate {
+    for (final relay in AppConstants.relayServers) {
+      if (relay['ip'] != ip) return _of(relay, RelaySource.failover);
+    }
+    return null;
+  }
+
+  RelaySelection withSource(RelaySource next) => RelaySelection(
+    ip: ip,
+    base: base,
+    name: name,
+    region: region,
+    source: next,
+  );
+
+  @override
+  String toString() => '$name ($ip, via ${source.name})';
 }
 
 class RegionDetector {
-  static Future<RelayPingResult> detectBestRelay() async {
-    final relays = AppConstants.relayServers;
-
-    final List<RelayPingResult?> httpsResults = await Future.wait(
-      relays.map<Future<RelayPingResult?>>((r) => _versionPing(r)),
+  static Future<RelaySelection> resolve() async {
+    final manual = RelaySelection.fromIp(
+      await RelayPreferenceStorage.loadManualIp(),
+      RelaySource.manual,
     );
+    if (manual != null) return manual;
 
-    RelayPingResult? best;
-    for (final result in httpsResults) {
-      if (result != null &&
-          (best == null || result.latencyMs < best.latencyMs)) {
-        best = result;
-      }
+    final cached = await RelayPreferenceStorage.loadAutoIp();
+    if (cached != null && cached.fresh) {
+      final hit = RelaySelection.fromIp(cached.ip, RelaySource.cached);
+      if (hit != null) return hit;
     }
 
-    if (best != null) return best;
-
-    final List<int?> httpPings = await Future.wait(
-      relays.map<Future<int?>>((r) => _httpPing(r['ip']!)),
-    );
-
-    int bestMs = 999999;
-    int bestIdx = 0;
-    for (int i = 0; i < relays.length; i++) {
-      final ms = httpPings[i];
-      if (ms != null && ms < bestMs) {
-        bestMs = ms;
-        bestIdx = i;
-      }
+    final fromEdge = await askEdge();
+    if (fromEdge != null) {
+      await RelayPreferenceStorage.saveAutoIp(fromEdge.ip);
+      return fromEdge;
     }
 
-    final fallback = relays[bestIdx];
-    return RelayPingResult(
-      ip: fallback['ip']!,
-      base: fallback['base']!,
-      name: fallback['name']!,
-      latencyMs: bestMs,
-      version: null,
-    );
+    if (cached != null) {
+      final stale = RelaySelection.fromIp(cached.ip, RelaySource.stale);
+      if (stale != null) return stale;
+    }
+
+    return RelaySelection.first;
   }
-
-  static Future<RelayPingResult?> _versionPing(
-    Map<String, String> relay,
-  ) async {
+  static Future<RelaySelection?> askEdge() async {
     try {
-      final sw = Stopwatch()..start();
-      final response = await http
-          .get(Uri.parse('${relay['base']}/api/version'))
-          .timeout(const Duration(seconds: 5));
-      sw.stop();
-
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        return RelayPingResult(
-          ip: relay['ip']!,
-          base: relay['base']!,
-          name: relay['name']!,
-          latencyMs: sw.elapsedMilliseconds,
-          version: data['version'] as String?,
-        );
-      }
-      return null;
+      final res = await http
+          .get(Uri.parse('${AppConstants.apiBase}/api/health'))
+          .timeout(const Duration(seconds: 6));
+      return RelaySelection.fromBase(
+        res.headers[AppConstants.routedToHeader],
+        RelaySource.geo,
+      );
     } catch (_) {
       return null;
     }
   }
 
-  static Future<int?> _httpPing(String ip) async {
-    try {
-      final sw = Stopwatch()..start();
-      final response = await http
-          .get(Uri.parse('http://$ip/ping'))
-          .timeout(const Duration(seconds: 4));
-      sw.stop();
+  static Future<void> refreshInBackground() async {
+    final manual = await RelayPreferenceStorage.loadManualIp();
+    if (manual != null) return;
 
-      if (response.statusCode == 200) return sw.elapsedMilliseconds;
-      return null;
-    } catch (_) {
-      return null;
-    }
+    final cached = await RelayPreferenceStorage.loadAutoIp();
+    if (cached != null && cached.fresh) return;
+
+    final fromEdge = await askEdge();
+    if (fromEdge != null) await RelayPreferenceStorage.saveAutoIp(fromEdge.ip);
   }
 }

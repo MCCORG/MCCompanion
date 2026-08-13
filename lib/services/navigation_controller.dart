@@ -47,9 +47,11 @@ class NavigationController {
     }
     try {
       final opened = await launchUrl(uri, mode: LaunchMode.externalApplication);
-      if (!opened)
+      if (!opened && context.mounted) {
         AppToast.show(context, message: fallback, color: Colors.red.shade700);
+      }
     } catch (_) {
+      if (!context.mounted) return;
       AppToast.show(context, message: fallback, color: Colors.red.shade700);
     }
   }

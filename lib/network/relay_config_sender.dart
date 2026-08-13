@@ -34,8 +34,8 @@ class RelayConfigSender {
       'remoteIP': remoteServerIp,
       'remotePort': remoteServerPort,
       'mode': broadcastModeToString(mode),
-      if (bedrockGamertag != null) 'bedrockGamertag': bedrockGamertag,
-      if (resourcePackUrl != null) 'resourcePackUrl': resourcePackUrl,
+      'bedrockGamertag': ?bedrockGamertag,
+      'resourcePackUrl': ?resourcePackUrl,
     };
     final body = jsonEncode(payload);
 

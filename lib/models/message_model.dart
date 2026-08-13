@@ -33,7 +33,9 @@ class MessageModel {
 
 class ConversationModel with DisplayableName {
   final String otherUid;
+  @override
   final String username;
+  @override
   final String? displayName;
   final String? avatarUrl;
   final String lastMessage;

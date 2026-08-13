@@ -94,7 +94,7 @@ class ManageServersScreenState extends State<ManageServersScreen> {
                     : ListView.separated(
                         padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                         itemCount: _servers.length,
-                        separatorBuilder: (_, __) => const SizedBox(height: 10),
+                        separatorBuilder: (_, _) => const SizedBox(height: 10),
                         itemBuilder: (_, i) => _ServerCard(
                           server: _servers[i],
                           onEdit: () => widget.onEditServer(i),

@@ -97,12 +97,13 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
       _actionLoading = false;
       if (ok) _friendStatus = 'friends';
     });
-    if (ok)
+    if (ok) {
       _showToast(
         AppLocalizations.of(context)!.nowFriendsWith(widget.username),
         AppTheme.success,
         Icons.check_circle_rounded,
       );
+    }
   }
 
   Future<void> _removeFriend() async {
@@ -711,7 +712,7 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
     return ListView.separated(
       padding: const EdgeInsets.all(16),
       itemCount: _results.length,
-      separatorBuilder: (_, __) => const SizedBox(height: 8),
+      separatorBuilder: (_, _) => const SizedBox(height: 8),
       itemBuilder: (_, i) {
         final u = _results[i];
         return GestureDetector(
@@ -915,11 +916,12 @@ class _JavaPublicSkinState extends State<_JavaPublicSkin> {
         return;
       }
       final url = _extractTextureUrl(resp.body);
-      if (mounted)
+      if (mounted) {
         setState(() {
           _textureUrl = url;
           _loading = false;
         });
+      }
     } catch (_) {
       if (mounted) setState(() => _loading = false);
     }
@@ -1212,7 +1214,7 @@ class _Avatar extends StatelessWidget {
                 width: size,
                 height: size,
                 fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => Center(
+                errorBuilder: (_, _, _) => Center(
                   child: Text(
                     initials,
                     style: TextStyle(

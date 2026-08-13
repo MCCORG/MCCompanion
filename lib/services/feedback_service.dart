@@ -35,7 +35,7 @@ class FeedbackService {
               'title': title,
               'description': description,
               'platform': _platform,
-              if (appVersion case final v?) 'appVersion': v,
+              'appVersion': ?appVersion,
             }),
           )
           .timeout(_timeout);

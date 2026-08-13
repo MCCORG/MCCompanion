@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:wakelock_plus/wakelock_plus.dart';
 import '../util/logger.dart';
 import '../constants/app_constants.dart';
+import '../services/region_detector.dart';
+import '../services/relay_service.dart';
 import 'socket_handler.dart';
 import 'relay_config_sender.dart';
 import 'package:flutter/widgets.dart';
@@ -63,6 +65,31 @@ class BroadcastManager {
       orElse: () => {'name': ip},
     );
     return relay['name'] ?? ip;
+  }
+
+  static bool _worthRetryingElsewhere(RelayConfigResult result) =>
+      result.statusCode < 0 || result.statusCode >= 500;
+
+  Future<({RelayConfigResult result, String ip, String base})> _sendWithFailover({
+    required String relayIp,
+    required String relayBase,
+    required Future<RelayConfigResult> Function(String base) send,
+  }) async {
+    final first = await send(relayBase);
+    if (first.success || !_worthRetryingElsewhere(first)) {
+      return (result: first, ip: relayIp, base: relayBase);
+    }
+
+    final next = RelaySelection.fromIp(relayIp, RelaySource.failover)?.alternate;
+    if (next == null) return (result: first, ip: relayIp, base: relayBase);
+
+    final second = await send(next.base);
+    if (!second.success) {
+      return (result: first, ip: relayIp, base: relayBase);
+    }
+
+    RelayService.setRelay(next);
+    return (result: second, ip: next.ip, base: next.base);
   }
 
   Future<List<String>> _getLocalIPAddresses() async {
@@ -138,20 +165,22 @@ class BroadcastManager {
     );
 
     try {
-      final result = await RelayConfigSender.sendConfigSimple(
-        base: relayBase,
-        remoteServerIp: remoteHost,
-        remoteServerPort: remotePort,
-        mode: mode,
-        bedrockGamertag: bedrockGamertag,
-        resourcePackUrl: resourcePackUrl,
-        onDebug: (message) => logger.debug('Relay config\n$message'),
+      final attempt = await _sendWithFailover(
+        relayIp: relayIp,
+        relayBase: relayBase,
+        send: (base) => RelayConfigSender.sendConfigSimple(
+          base: base,
+          remoteServerIp: remoteHost,
+          remoteServerPort: remotePort,
+          mode: mode,
+          bedrockGamertag: bedrockGamertag,
+          resourcePackUrl: resourcePackUrl,
+          onDebug: (message) => logger.debug('Relay config\n$message'),
+        ),
       );
+      final result = attempt.result;
 
       if (result.success) {
-        logger.info(
-          '✅ Config sent successfully (DNS mode) to "$usedRelayName".',
-        );
         return true;
       } else {
         final relayError = _relayError(result.statusCode, result.body);
@@ -191,16 +220,21 @@ class BroadcastManager {
     );
 
     try {
-      final result = await RelayConfigSender.sendConfigSimple(
-        base: relayBase,
-        remoteServerIp: remoteHost,
-        remoteServerPort: remotePort,
-        mode: mode,
-        bedrockGamertag: bedrockGamertag,
-        authToken: authToken,
-        resourcePackUrl: resourcePackUrl,
-        onDebug: (message) => logger.debug('Relay config\n$message'),
+      final attempt = await _sendWithFailover(
+        relayIp: relayIp,
+        relayBase: relayBase,
+        send: (base) => RelayConfigSender.sendConfigSimple(
+          base: base,
+          remoteServerIp: remoteHost,
+          remoteServerPort: remotePort,
+          mode: mode,
+          bedrockGamertag: bedrockGamertag,
+          authToken: authToken,
+          resourcePackUrl: resourcePackUrl,
+          onDebug: (message) => logger.debug('Relay config\n$message'),
+        ),
       );
+      final result = attempt.result;
 
       if (!result.success) {
         final relayError = _relayError(result.statusCode, result.body);
@@ -213,7 +247,7 @@ class BroadcastManager {
 
       await Future.delayed(const Duration(milliseconds: 200));
 
-      final relayAddress = InternetAddress(relayIp);
+      final relayAddress = InternetAddress(attempt.ip);
       logger.info(
         'Connecting to MCCompanion servers (UDP target: ${relayAddress.address})',
       );

@@ -419,6 +419,7 @@ Future<void> shareTextureFile(
         );
       }
     } else {
+      if (!context.mounted) return;
       final size = MediaQuery.of(context).size;
       await Share.shareXFiles(
         [XFile(file.path, mimeType: 'image/png')],

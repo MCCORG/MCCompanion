@@ -49,8 +49,9 @@ class JavaServerPing {
           }
         },
         onError: (Object e) {
-          if (!completer.isCompleted)
+          if (!completer.isCompleted) {
             completer.complete(JavaPingResult.offline);
+          }
         },
         onDone: () {
           if (!completer.isCompleted) {

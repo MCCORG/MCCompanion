@@ -67,8 +67,8 @@ class HomeCustomizationService extends ChangeNotifier {
     AppFeature.tracker,
   ];
 
-  static const AppFeature? defaultNavLeft = AppFeature.skins;
-  static const AppFeature? defaultNavRight = AppFeature.wiki;
+  static const AppFeature defaultNavLeft = AppFeature.skins;
+  static const AppFeature defaultNavRight = AppFeature.wiki;
 
   static const Set<AppFeature> navSlotBlacklist = {AppFeature.connector};
   static const Set<AppFeature> alwaysVisible = {};
@@ -133,8 +133,9 @@ class HomeCustomizationService extends ChangeNotifier {
     final savedWide = prefs.getString(_keyWideTile);
     if (savedWide != null) {
       _wideTile = AppFeature.values.where((f) => f.id == savedWide).firstOrNull;
-      if (_wideTile != null && _hiddenTiles.contains(_wideTile))
+      if (_wideTile != null && _hiddenTiles.contains(_wideTile)) {
         _wideTile = null;
+      }
     }
 
     _onboardingDone = prefs.getBool(_keyOnboardingDone) ?? false;

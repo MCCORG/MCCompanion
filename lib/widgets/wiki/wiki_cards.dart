@@ -44,7 +44,7 @@ class WikiSectionCardState extends State<WikiSectionCard> {
                 width: 52,
                 height: 52,
                 fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => Container(
+                errorBuilder: (_, _, _) => Container(
                   width: 52,
                   height: 52,
                   decoration: BoxDecoration(
@@ -131,7 +131,7 @@ class WikiSubCard extends StatelessWidget {
                   width: 52,
                   height: 52,
                   fit: BoxFit.cover,
-                  errorBuilder: (_, __, ___) => Container(
+                  errorBuilder: (_, _, _) => Container(
                     width: 52,
                     height: 52,
                     decoration: BoxDecoration(
@@ -211,7 +211,7 @@ class WikiPageCard extends StatelessWidget {
                         width: 48,
                         height: 48,
                         fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) => _placeholder(),
+                        errorBuilder: (_, _, _) => _placeholder(),
                       )
                     : _placeholder(),
               ),

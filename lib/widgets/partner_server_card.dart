@@ -42,7 +42,7 @@ class _PartnerServerCardState extends State<PartnerServerCard> {
                   child: Image.network(
                     widget.server.iconUrl!,
                     fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) => _solidBg(),
+                    errorBuilder: (_, _, _) => _solidBg(),
                   ),
                 ),
               ),
@@ -95,7 +95,7 @@ class _PartnerServerCardState extends State<PartnerServerCard> {
                               ? Image.network(
                                   widget.server.iconUrl!,
                                   fit: BoxFit.cover,
-                                  errorBuilder: (_, __, ___) => _iconFallback(),
+                                  errorBuilder: (_, _, _) => _iconFallback(),
                                 )
                               : _iconFallback(),
                         ),
@@ -286,11 +286,13 @@ class _ServerStatusBadgeState extends State<ServerStatusBadge> {
     return FutureBuilder<ServerStatus>(
       future: _statusFuture,
       builder: (context, snapshot) {
-        if (!snapshot.hasData)
+        if (!snapshot.hasData) {
           return _pill(dot: AppTheme.textMuted, label: '...');
+        }
         final status = snapshot.data!;
-        if (!status.isOnline)
+        if (!status.isOnline) {
           return _pill(dot: AppTheme.textMuted, label: 'Offline');
+        }
         final sub = (status.players != null && status.maxPlayers != null)
             ? ' ${status.players}/${status.maxPlayers}'
             : '';

@@ -608,11 +608,12 @@ class _ProfileNotificationPrefsCardState
 
   Future<void> _load() async {
     final prefs = await NotificationApiService.getPrefs();
-    if (mounted)
+    if (mounted) {
       setState(() {
         _prefs = prefs;
         _loading = false;
       });
+    }
   }
 
   Future<void> _toggle(String key, bool value) async {

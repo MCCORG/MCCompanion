@@ -87,12 +87,13 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
     _sub?.cancel();
     _slotsSub?.cancel();
     _sub = ServerTrackerService.instance.serversStream.listen((servers) {
-      if (mounted)
+      if (mounted) {
         setState(() {
           _servers = servers;
           _loading = false;
           _countdown = ServerTrackerService.pollInterval.inSeconds;
         });
+      }
     });
     _slotsSub = ServerTrackerService.instance.slotsStream.listen((slots) {
       if (mounted) setState(() => _slots = slots);

@@ -129,7 +129,7 @@ class MessageService {
     try {
       final uri = Uri.parse(
         '$_base/api/messages/$username',
-      ).replace(queryParameters: {if (before != null) 'before': before});
+      ).replace(queryParameters: {'before': ?before});
       final resp = await http.get(uri, headers: await ApiClientBase.headers());
       if (resp.statusCode != 200) return [];
       final data = jsonDecode(resp.body) as Map<String, dynamic>;

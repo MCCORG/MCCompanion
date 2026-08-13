@@ -90,7 +90,7 @@ class WikiCraftingGrid extends StatelessWidget {
               child: Image.network(
                 'https://minecraft.wiki/images/Invicon_${item.replaceAll(' ', '_')}.png',
                 fit: BoxFit.contain,
-                errorBuilder: (_, __, ___) => Center(
+                errorBuilder: (_, _, _) => Center(
                   child: Padding(
                     padding: const EdgeInsets.all(2),
                     child: Text(

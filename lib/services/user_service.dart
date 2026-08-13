@@ -124,11 +124,11 @@ class UserService {
             Uri.parse('$_base/api/users/me'),
             headers: await ApiClientBase.headers(),
             body: jsonEncode({
-              if (displayName != null) 'displayName': displayName,
-              if (avatarUrl != null) 'avatarUrl': avatarUrl,
-              if (bio != null) 'bio': bio,
-              if (appearOffline != null) 'appearOffline': appearOffline,
-              if (shareServer != null) 'shareServer': shareServer,
+              'displayName': ?displayName,
+              'avatarUrl': ?avatarUrl,
+              'bio': ?bio,
+              'appearOffline': ?appearOffline,
+              'shareServer': ?shareServer,
             }),
           )
           .timeout(_timeout);

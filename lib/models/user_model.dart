@@ -25,7 +25,9 @@ class BedrockAccount {
 }
 
 class UserModel with DisplayableName {
+  @override
   final String username;
+  @override
   final String? displayName;
   final String? avatarUrl;
   final String? bio;
@@ -103,7 +105,9 @@ class FriendSession {
 
 class FriendModel with DisplayableName {
   final String firebaseUid;
+  @override
   final String username;
+  @override
   final String? displayName;
   final String? avatarUrl;
   final bool online;

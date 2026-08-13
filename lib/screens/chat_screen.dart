@@ -293,8 +293,8 @@ class _ChatScreenState extends State<ChatScreen> {
       a.year == b.year && a.month == b.month && a.day == b.day;
 
   void _showReportSheet({MessageModel? message}) {
-    String? _selectedReason;
-    final _infoCtrl = TextEditingController();
+    String? selectedReason;
+    final infoCtrl = TextEditingController();
     final l = AppLocalizations.of(context)!;
 
     showModalBottomSheet(
@@ -356,12 +356,12 @@ class _ChatScreenState extends State<ChatScreen> {
                   _ReasonTile(
                     label: entry.$2,
                     value: entry.$1,
-                    selected: _selectedReason == entry.$1,
-                    onTap: () => setSheet(() => _selectedReason = entry.$1),
+                    selected: selectedReason == entry.$1,
+                    onTap: () => setSheet(() => selectedReason = entry.$1),
                   ),
                 const SizedBox(height: 12),
                 TextField(
-                  controller: _infoCtrl,
+                  controller: infoCtrl,
                   maxLines: 2,
                   style: TextStyle(
                     color: AppTheme.textPrimary,
@@ -400,15 +400,15 @@ class _ChatScreenState extends State<ChatScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: _selectedReason == null
+                    onPressed: selectedReason == null
                         ? null
                         : () async {
                             Navigator.of(ctx).pop();
                             final ok = await ReportService.submitReport(
                               reportedUsername: widget.friend.username,
-                              reason: _selectedReason!,
+                              reason: selectedReason!,
                               messageId: message?.id,
-                              additionalInfo: _infoCtrl.text.trim(),
+                              additionalInfo: infoCtrl.text.trim(),
                             );
                             if (!mounted) return;
                             AppToast.show(
@@ -441,7 +441,7 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ),
       ),
-    ).whenComplete(() => _infoCtrl.dispose());
+    ).whenComplete(() => infoCtrl.dispose());
   }
 }
 
@@ -818,7 +818,7 @@ class _Avatar extends StatelessWidget {
                 width: size,
                 height: size,
                 fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => Center(
+                errorBuilder: (_, _, _) => Center(
                   child: Text(
                     initials,
                     style: TextStyle(

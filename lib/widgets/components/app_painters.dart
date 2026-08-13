@@ -1,4 +1,4 @@
-import 'dart:math' as Math;
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 class AppNoisePainter extends CustomPainter {
@@ -16,7 +16,7 @@ class AppNoisePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final rng = Math.Random(seed);
+    final rng = math.Random(seed);
     final paint = Paint()..color = color.withValues(alpha: opacity);
     for (int i = 0; i < count; i++) {
       canvas.drawCircle(
@@ -53,8 +53,8 @@ class AppWavePainter extends CustomPainter {
           x,
           size.height * w.yFraction +
               w.amplitude *
-                  Math.sin(
-                    (x / size.width) * w.frequency * Math.pi + w.phase,
+                  math.sin(
+                    (x / size.width) * w.frequency * math.pi + w.phase,
                   ),
         );
       }

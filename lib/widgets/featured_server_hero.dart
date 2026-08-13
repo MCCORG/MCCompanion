@@ -211,7 +211,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                 iconUrl,
                 height: widget.height * 0.79,
                 fit: BoxFit.fitHeight,
-                errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+                errorBuilder: (_, _, _) => const SizedBox.shrink(),
               ),
             ),
           ),

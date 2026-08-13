@@ -209,17 +209,19 @@ class _FriendsSheetState extends State<_FriendsSheet> {
     super.initState();
     BotService.fetchAllBots()
         .then((data) {
-          if (mounted)
+          if (mounted) {
             setState(() {
               _bots = data;
               _loading = false;
             });
+          }
         })
         .catchError((_) {
-          if (mounted)
+          if (mounted) {
             setState(() {
               _loading = false;
             });
+          }
         });
   }
 

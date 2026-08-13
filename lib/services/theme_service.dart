@@ -204,22 +204,25 @@ class ThemeService extends ChangeNotifier {
     final custCard = prefs.getString(_keyCustomCard);
     final custText = prefs.getString(_keyTextColor);
 
-    if (accentId != null)
+    if (accentId != null) {
       _accent = accentPresets.firstWhere(
         (p) => p.id == accentId,
         orElse: () => accentPresets[0],
       );
-    if (bgId != null)
+    }
+    if (bgId != null) {
       _bg = bgPresets.firstWhere(
         (p) => p.id == bgId,
         orElse: () => bgPresets[0],
       );
+    }
     if (op != null) _opacity = op.clamp(0.3, 1.0);
-    if (cardId != null)
+    if (cardId != null) {
       _card = cardPresets.firstWhere(
         (p) => p.id == cardId,
         orElse: () => cardPresets[0],
       );
+    }
     if (cardOp != null) _cardOpacity = cardOp.clamp(0.1, 1.0);
     if (custAcc != null) _customAccent = Color(_hexToInt(custAcc));
     if (custBg != null) _customBg = Color(_hexToInt(custBg));
@@ -284,24 +287,28 @@ class ThemeService extends ChangeNotifier {
       prefs.setString(_keyCard, _card.id),
       prefs.setDouble(_keyCardOpacity, _cardOpacity),
     ];
-    if (_customAccent != null)
+    if (_customAccent != null) {
       futures.add(
         prefs.setString(_keyCustomAccent, _colorToHex(_customAccent!)),
       );
-    else
+    } else {
       futures.add(prefs.remove(_keyCustomAccent));
-    if (_customBg != null)
+    }
+    if (_customBg != null) {
       futures.add(prefs.setString(_keyCustomBg, _colorToHex(_customBg!)));
-    else
+    } else {
       futures.add(prefs.remove(_keyCustomBg));
-    if (_customCard != null)
+    }
+    if (_customCard != null) {
       futures.add(prefs.setString(_keyCustomCard, _colorToHex(_customCard!)));
-    else
+    } else {
       futures.add(prefs.remove(_keyCustomCard));
-    if (_customText != null)
+    }
+    if (_customText != null) {
       futures.add(prefs.setString(_keyTextColor, _colorToHex(_customText!)));
-    else
+    } else {
       futures.add(prefs.remove(_keyTextColor));
+    }
     await Future.wait(futures);
   }
 

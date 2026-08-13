@@ -461,11 +461,12 @@ class _WikiScreenState extends State<WikiScreen> {
   Future<void> _loadHistory() async {
     final recent = await WikiHistoryStorage.loadRecent();
     final favs = await WikiHistoryStorage.loadFavourites();
-    if (mounted)
+    if (mounted) {
       setState(() {
         _recent = recent;
         _favourites = favs;
       });
+    }
   }
 
   Future<void> _loadWikiData() async {
@@ -679,8 +680,9 @@ class _WikiScreenState extends State<WikiScreen> {
     if (title.contains('/')) return false;
     if (title.contains('(disambiguation)')) return false;
     if (title.toLowerCase().contains(' tag ') ||
-        title.toLowerCase().endsWith(' tag'))
+        title.toLowerCase().endsWith(' tag')) {
       return false;
+    }
 
     if (title.contains('(Dungeons)')) return false;
     if (title.contains('(Legends)')) return false;
@@ -713,8 +715,9 @@ class _WikiScreenState extends State<WikiScreen> {
     if (title == 'Infiniminer') return false;
     if (title == 'Dwarf Fortress') return false;
 
-    if (title.contains('Poisonous Potato') && title != 'Poisonous Potato')
+    if (title.contains('Poisonous Potato') && title != 'Poisonous Potato') {
       return false;
+    }
 
     if (title.startsWith('Biome For Player')) return false;
 
@@ -1130,8 +1133,9 @@ class _WikiScreenState extends State<WikiScreen> {
   }
 
   Widget _buildBody() {
-    if (_loading)
+    if (_loading) {
       return Center(child: CircularProgressIndicator(color: AppTheme.accent));
+    }
 
     if (_error != null) {
       return Center(
@@ -1191,7 +1195,7 @@ class _WikiScreenState extends State<WikiScreen> {
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 2),
         itemCount: entries.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 8),
+        separatorBuilder: (_, _) => const SizedBox(width: 8),
         itemBuilder: (_, i) {
           final e = entries[i];
           return GestureDetector(
@@ -1222,7 +1226,7 @@ class _WikiScreenState extends State<WikiScreen> {
                         width: 36,
                         height: 36,
                         fit: BoxFit.contain,
-                        errorBuilder: (_, __, ___) => Icon(
+                        errorBuilder: (_, _, _) => Icon(
                           Icons.image_not_supported_outlined,
                           size: 28,
                           color: AppTheme.textMuted,
@@ -1447,7 +1451,7 @@ class _WikiScreenState extends State<WikiScreen> {
       builder: (context, constraints) => ListView.separated(
         padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
         itemCount: results.length,
-        separatorBuilder: (_, __) => const SizedBox(height: 8),
+        separatorBuilder: (_, _) => const SizedBox(height: 8),
         itemBuilder: (_, i) => constraints.maxWidth > 700
             ? Center(
                 child: ConstrainedBox(

@@ -626,11 +626,12 @@ class LandingCustomizeSheetState extends State<LandingCustomizeSheet> {
   Future<void> _reset() async {
     await HomeCustomizationService.instance.reset();
     await ThemeService.instance.reset();
-    if (mounted)
+    if (mounted) {
       setState(() {
         _hidden = {};
         _wideTile = null;
       });
+    }
     if (mounted) Navigator.of(context).pop();
   }
 
@@ -727,9 +728,8 @@ class LandingCustomizeSheetState extends State<LandingCustomizeSheet> {
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: _order.length,
-                    onReorder: (oldIndex, newIndex) {
+                    onReorderItem: (oldIndex, newIndex) {
                       setState(() {
-                        if (newIndex > oldIndex) newIndex--;
                         final item = _order.removeAt(oldIndex);
                         _order.insert(newIndex, item);
                       });

@@ -122,13 +122,14 @@ class SkinsScreenState extends State<SkinsScreen> {
 
   Future<void> _loadAllSkins({bool reset = false}) async {
     if (_loadingAll) return;
-    if (reset)
+    if (reset) {
       setState(() {
         _allSkins = [];
         _allOffset = 0;
         _allHasMore = true;
         _allTotal = 0;
       });
+    }
     setState(() => _loadingAll = true);
     try {
       final offset = reset ? 0 : _allOffset;
@@ -193,19 +194,21 @@ class SkinsScreenState extends State<SkinsScreen> {
         return;
       }
     } catch (_) {}
-    if (mounted)
+    if (mounted) {
       setState(() {
         _loadingCloud = false;
       });
+    }
   }
 
   Future<void> _loadSavedSkins() async {
     final skins = await SavedSkinsStorage.loadAll();
-    if (mounted)
+    if (mounted) {
       setState(() {
         _savedSkins = skins;
         _loadingSaved = false;
       });
+    }
   }
 
   Future<void> _downloadCloudSkin(Map<String, dynamic> skin) async {
@@ -218,22 +221,24 @@ class SkinsScreenState extends State<SkinsScreen> {
       if (resp.statusCode == 200) {
         await SavedSkinsStorage.add(resp.bodyBytes, name);
         await _loadSavedSkins();
-        if (mounted)
+        if (mounted) {
           AppToast.show(
             context,
             message: AppLocalizations.of(context)!.skinsSavedToMySkins,
             icon: Icons.download_done_rounded,
             color: AppTheme.success,
           );
+        }
       }
     } catch (e) {
-      if (mounted)
+      if (mounted) {
         AppToast.show(
           context,
           message: AppLocalizations.of(context)!.skinsDownloadFailed,
           icon: Icons.error_outline_rounded,
           color: AppTheme.error,
         );
+      }
     }
   }
 
@@ -242,21 +247,23 @@ class SkinsScreenState extends State<SkinsScreen> {
       final id = skin['id'] as String;
       await SkinUploadService.deleteSkin(id);
       await _loadMeDashboard();
-      if (mounted)
+      if (mounted) {
         AppToast.show(
           context,
           message: AppLocalizations.of(context)!.skinsDeletedFromCloud,
           icon: Icons.check_circle_outline_rounded,
           color: AppTheme.success,
         );
+      }
     } catch (e) {
-      if (mounted)
+      if (mounted) {
         AppToast.show(
           context,
           message: AppLocalizations.of(context)!.skinsDeleteFailed,
           icon: Icons.error_outline_rounded,
           color: AppTheme.error,
         );
+      }
     }
   }
 
@@ -421,23 +428,25 @@ class SkinsScreenState extends State<SkinsScreen> {
   Future<void> _uploadSkinToCloud(SavedSkin skin) async {
     final user = AuthService.currentUser;
     if (user == null) {
-      if (mounted)
+      if (mounted) {
         AppToast.show(
           context,
           message: AppLocalizations.of(context)!.skinsLoginToUpload,
           icon: Icons.lock_outline_rounded,
           color: AppTheme.error,
         );
+      }
       return;
     }
 
-    if (mounted)
+    if (mounted) {
       AppToast.show(
         context,
         message: AppLocalizations.of(context)!.skinsUploading,
         icon: Icons.cloud_upload_outlined,
         color: AppTheme.accent,
       );
+    }
 
     try {
       await SkinUploadService.uploadSkin(
@@ -450,15 +459,16 @@ class SkinsScreenState extends State<SkinsScreen> {
       await _loadSavedSkins();
       await _loadMeDashboard();
 
-      if (mounted)
+      if (mounted) {
         AppToast.show(
           context,
           message: AppLocalizations.of(context)!.skinUploaded,
           icon: Icons.check_circle_outline_rounded,
           color: AppTheme.success,
         );
+      }
     } catch (e) {
-      if (mounted)
+      if (mounted) {
         AppToast.show(
           context,
           message: AppLocalizations.of(
@@ -467,6 +477,7 @@ class SkinsScreenState extends State<SkinsScreen> {
           icon: Icons.error_outline_rounded,
           color: AppTheme.error,
         );
+      }
     }
   }
 
@@ -489,6 +500,7 @@ class SkinsScreenState extends State<SkinsScreen> {
           );
         }
       } else {
+        if (!mounted) return;
         final size = MediaQuery.of(context).size;
         await Share.shareXFiles(
           [XFile(tmp.path, mimeType: 'image/png')],
@@ -695,7 +707,7 @@ class SkinsScreenState extends State<SkinsScreen> {
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 2),
               itemCount: _topSkins.length,
-              separatorBuilder: (_, __) => const SizedBox(width: 10),
+              separatorBuilder: (_, _) => const SizedBox(width: 10),
               itemBuilder: (_, i) {
                 final skin = _topSkins[i];
                 final badge = i < 3 ? rankBadges[i] : null;

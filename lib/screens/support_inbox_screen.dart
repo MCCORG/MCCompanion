@@ -229,7 +229,7 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
                               (widget.embedded ? 72 : 0),
                         ),
                         itemCount: entries.length,
-                        separatorBuilder: (_, __) => const SizedBox(height: 8),
+                        separatorBuilder: (_, _) => const SizedBox(height: 8),
                         itemBuilder: (_, i) {
                           final e = entries[i];
                           return _SupportConvTile(

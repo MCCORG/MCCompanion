@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'user_service.dart';
@@ -41,9 +42,9 @@ class PushNotificationService {
         badge: true,
         sound: true,
       );
-      print('[FCM] Permission status: ${settings.authorizationStatus}');
+      debugPrint('[FCM] Permission status: ${settings.authorizationStatus}');
     } catch (e) {
-      print('[FCM] requestPermission error: $e');
+      debugPrint('[FCM] requestPermission error: $e');
     }
 
     if (Platform.isIOS) {
@@ -135,6 +136,7 @@ class PushNotificationService {
         await UserService.registerFcmToken(token);
       }
     } catch (e) {
+      debugPrint('[FCM] registerToken error: $e');
     }
   }
 

@@ -63,7 +63,7 @@ const int _pageFeedback = 10;
 const int _pageResourcePack = 11;
 
 class AppShell extends StatefulWidget {
-  final RelayPingResult? initialRelay;
+  final RelaySelection? initialRelay;
   const AppShell({super.key, this.initialRelay});
 
   @override
@@ -92,7 +92,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   bool _loginFromRp = false;
   String? _lastSignedInUid;
 
-  late RelayPingResult _selectedRelay;
+  late RelaySelection _selectedRelay;
   final ValueNotifier<int> _pageIndexNotifier = ValueNotifier(_pageHome);
   int get _pageIndex => _pageIndexNotifier.value;
   final Set<int> _builtPages = {};
@@ -115,6 +115,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
     _selectedRelay = widget.initialRelay ?? _fallbackRelay();
     RelayService.setRelay(_selectedRelay);
+    RelayService.selection.addListener(_onRelayServiceChanged);
     _partnerServersFuture = FeaturedServersService.fetchFeaturedServers();
 
     logger = Logger(debugEnabled: false, logCallback: (_) {});
@@ -270,15 +271,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     );
   }
 
-  RelayPingResult _fallbackRelay() {
-    final first = AppConstants.relayServers[0];
-    return RelayPingResult(
-      ip: first['ip']!,
-      base: first['base']!,
-      name: first['name']!,
-      latencyMs: 999999,
-    );
-  }
+  RelaySelection _fallbackRelay() => RelaySelection.first;
 
   void _initNavigationController() {
     navigationController = NavigationController(
@@ -486,19 +479,16 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     });
   }
 
+  void _onRelayServiceChanged() {
+    final current = RelayService.selection.value;
+    if (current == null || current.ip == _selectedRelay.ip) return;
+    if (mounted) setState(() => _selectedRelay = current);
+  }
+
   void _onRelayChanged(String? ip) {
-    if (ip == null) return;
-    final matched = AppConstants.relayServers.firstWhere(
-      (e) => e['ip'] == ip,
-      orElse: () => AppConstants.relayServers[0],
-    );
-    final relay = RelayPingResult(
-      ip: matched['ip']!,
-      base: matched['base']!,
-      name: matched['name']!,
-      latencyMs: 0,
-    );
-    RelayService.setRelay(relay);
+    final relay =
+        RelaySelection.fromIp(ip, RelaySource.manual) ?? RelaySelection.first;
+    unawaited(RelayService.setManual(relay));
     setState(() => _selectedRelay = relay);
   }
 
@@ -552,6 +542,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     HomeCustomizationService.instance.removeListener(_onCustomizationChanged);
     ThemeService.instance.removeListener(_onCustomizationChanged);
     WidgetsBinding.instance.removeObserver(this);
+    RelayService.selection.removeListener(_onRelayServiceChanged);
     _authSub?.cancel();
     _linkSub?.cancel();
     MessageService.disconnect();
@@ -567,8 +558,9 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed && AuthService.currentUser != null) {
-      MessageService.reconnectIfNeeded();
+    if (state == AppLifecycleState.resumed) {
+      if (AuthService.currentUser != null) MessageService.reconnectIfNeeded();
+      unawaited(RegionDetector.refreshInBackground());
     }
   }
 
@@ -702,7 +694,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
 
     return PopScope(
       canPop: _canPop,
-      onPopInvoked: (didPop) {
+      onPopInvokedWithResult: (didPop, result) {
         if (!didPop) _handlePop();
       },
       child: _isDesktop
@@ -757,12 +749,12 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   Widget _buildConsoleOverlay() {
     return ValueListenableBuilder<bool>(
       valueListenable: navigationController.consoleOpen,
-      builder: (_, open, __) {
+      builder: (_, open, _) {
         if (!open) return const SizedBox.shrink();
         return Positioned.fill(
           child: ValueListenableBuilder<bool>(
             valueListenable: _debugEnabledNotifier,
-            builder: (_, debugEnabled, __) => ConsoleDialog(
+            builder: (_, debugEnabled, _) => ConsoleDialog(
               logsNotifier: _logsNotifier,
               scrollController: _logScrollController,
               debugEnabled: debugEnabled,

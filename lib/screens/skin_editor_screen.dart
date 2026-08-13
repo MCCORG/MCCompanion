@@ -23,6 +23,13 @@ import '../l10n/app_localizations.dart';
 
 enum _Tool { draw, fill, erase, recolour, pick }
 
+extension _Channels8 on Color {
+  int get r8 => (r * 255.0).round().clamp(0, 255);
+  int get g8 => (g * 255.0).round().clamp(0, 255);
+  int get b8 => (b * 255.0).round().clamp(0, 255);
+  int get a8 => (a * 255.0).round().clamp(0, 255);
+}
+
 class SkinEditorScreen extends StatefulWidget {
   final String? initialTextureUrl;
   final SavedSkin? existingSkin;
@@ -445,10 +452,10 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
   bool _writePixel(int tx, int ty) {
     final i = (ty * _sz + tx) * 4;
     final erase = _activeTool == _Tool.erase;
-    final r = erase ? 0 : _activeColor.red;
-    final g = erase ? 0 : _activeColor.green;
-    final b = erase ? 0 : _activeColor.blue;
-    final a = erase ? 0 : _activeColor.alpha;
+    final r = erase ? 0 : _activeColor.r8;
+    final g = erase ? 0 : _activeColor.g8;
+    final b = erase ? 0 : _activeColor.b8;
+    final a = erase ? 0 : _activeColor.a8;
     if (_pixels[i] == r &&
         _pixels[i + 1] == g &&
         _pixels[i + 2] == b &&
@@ -479,10 +486,10 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
         tg = _pixels[si + 1],
         tb = _pixels[si + 2],
         ta = _pixels[si + 3];
-    final nr = _activeColor.red,
-        ng = _activeColor.green,
-        nb = _activeColor.blue,
-        na = _activeColor.alpha;
+    final nr = _activeColor.r8,
+        ng = _activeColor.g8,
+        nb = _activeColor.b8,
+        na = _activeColor.a8;
     if (tr == nr && tg == ng && tb == nb && ta == na) return;
 
     _pushUndo();
@@ -522,10 +529,10 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
         tg = _pixels[si + 1],
         tb = _pixels[si + 2],
         ta = _pixels[si + 3];
-    final nr = _activeColor.red,
-        ng = _activeColor.green,
-        nb = _activeColor.blue,
-        na = _activeColor.alpha;
+    final nr = _activeColor.r8,
+        ng = _activeColor.g8,
+        nb = _activeColor.b8,
+        na = _activeColor.a8;
     if (tr == nr && tg == ng && tb == nb && ta == na) return;
     final q = Queue<(int, int)>()..add((sx, sy));
     while (q.isNotEmpty) {
@@ -535,8 +542,9 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
       if (_pixels[i] != tr ||
           _pixels[i + 1] != tg ||
           _pixels[i + 2] != tb ||
-          _pixels[i + 3] != ta)
+          _pixels[i + 3] != ta) {
         continue;
+      }
       _pixels[i] = nr;
       _pixels[i + 1] = ng;
       _pixels[i + 2] = nb;
@@ -624,9 +632,9 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
     const cx = _canvasPx / 2;
     const cy = _canvasPx / 2;
     final m = Matrix4.identity()
-      ..translate(cx, cy)
-      ..scale(factor, factor)
-      ..translate(-cx, -cy);
+      ..translateByDouble(cx, cy, 0, 1)
+      ..scaleByDouble(factor, factor, factor, 1)
+      ..translateByDouble(-cx, -cy, 0, 1);
     m.multiply(current);
     final scale = m.getMaxScaleOnAxis();
     if (scale < 0.99 || scale > 20.0) return;
@@ -718,6 +726,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
       return;
     }
 
+    if (!mounted) return;
     final l = AppLocalizations.of(context)!;
     String name = widget.existingSkin?.name ?? '';
     if (name.isEmpty && _sessionCloudSkinId == null) {
@@ -806,7 +815,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
         Navigator.pop(context, 'cloud');
       }
     } catch (e) {
-      if (mounted)
+      if (mounted) {
         AppToast.show(
           context,
           message: l.skinUploadFailed(
@@ -815,12 +824,14 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
           icon: Icons.error_outline_rounded,
           color: AppTheme.error,
         );
+      }
     }
   }
 
   Future<void> _saveSkin() async {
     final pngBytes = await _toPng();
     if (pngBytes == null) return;
+    if (!mounted) return;
 
     if (widget.cloudSkin != null) {
       final l = AppLocalizations.of(context)!;
@@ -847,7 +858,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
           Navigator.pop(context, 'cloud');
         }
       } catch (e) {
-        if (mounted)
+        if (mounted) {
           AppToast.show(
             context,
             message: l.skinUploadFailed(
@@ -856,6 +867,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
             icon: Icons.error_outline_rounded,
             color: AppTheme.error,
           );
+        }
       }
       return;
     }
@@ -874,6 +886,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
       return;
     }
 
+    if (!mounted) return;
     final l2 = AppLocalizations.of(context)!;
     final nameCtrl = TextEditingController(text: l2.skinDefaultName);
     final confirmed = await showDialog<bool>(
@@ -967,13 +980,14 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
   Future<void> _export() async {
     final bytes = await _toPng();
     if (bytes == null) {
-      if (mounted)
+      if (mounted) {
         AppToast.show(
           context,
           message: AppLocalizations.of(context)!.skinExportFailed,
           icon: Icons.error_outline_rounded,
           color: AppTheme.error,
         );
+      }
       return;
     }
     try {
@@ -983,6 +997,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
       );
       await file.writeAsBytes(bytes);
 
+      if (!mounted) return;
       if (Platform.isIOS || Platform.isAndroid) {
         final box =
             _exportButtonKey.currentContext?.findRenderObject() as RenderBox?;
@@ -1011,7 +1026,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
         }
       }
     } catch (e) {
-      if (mounted)
+      if (mounted) {
         AppToast.show(
           context,
           message: AppLocalizations.of(context)!.skinExportFailed,
@@ -1019,6 +1034,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
           color: AppTheme.error,
           duration: const Duration(seconds: 4),
         );
+      }
     }
   }
 
@@ -1418,11 +1434,11 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: _palette.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 6),
+        separatorBuilder: (_, _) => const SizedBox(width: 6),
         itemBuilder: (_, i) {
           final c = _palette[i];
           final selected =
-              _activeColor.value == c.value && _activeTool != _Tool.erase;
+              _activeColor.toARGB32() == c.toARGB32() && _activeTool != _Tool.erase;
           return GestureDetector(
             onTap: () => setState(() {
               _activeColor = c;
@@ -1660,7 +1676,7 @@ class _PaletteCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isTransparent = color.alpha == 0;
+    final isTransparent = color.a8 == 0;
     return Container(
       width: 36,
       height: 36,
@@ -1770,10 +1786,10 @@ class _ColorPickerSheetState extends State<_ColorPickerSheet> {
   @override
   void initState() {
     super.initState();
-    _r = widget.initial.red.toDouble();
-    _g = widget.initial.green.toDouble();
-    _b = widget.initial.blue.toDouble();
-    _a = widget.initial.alpha.toDouble();
+    _r = widget.initial.r8.toDouble();
+    _g = widget.initial.g8.toDouble();
+    _b = widget.initial.b8.toDouble();
+    _a = widget.initial.a8.toDouble();
     _syncHex();
   }
 
@@ -1789,9 +1805,9 @@ class _ColorPickerSheetState extends State<_ColorPickerSheet> {
   void _syncHex() {
     final c = _current;
     _hexCtrl.text =
-        '#${c.red.toRadixString(16).padLeft(2, '0')}'
-                '${c.green.toRadixString(16).padLeft(2, '0')}'
-                '${c.blue.toRadixString(16).padLeft(2, '0')}'
+        '#${c.r8.toRadixString(16).padLeft(2, '0')}'
+                '${c.g8.toRadixString(16).padLeft(2, '0')}'
+                '${c.b8.toRadixString(16).padLeft(2, '0')}'
             .toUpperCase();
   }
 
@@ -1802,9 +1818,9 @@ class _ColorPickerSheetState extends State<_ColorPickerSheet> {
         final parsed = int.parse('FF$hex', radix: 16);
         final c = Color(parsed);
         setState(() {
-          _r = c.red.toDouble();
-          _g = c.green.toDouble();
-          _b = c.blue.toDouble();
+          _r = c.r8.toDouble();
+          _g = c.g8.toDouble();
+          _b = c.b8.toDouble();
         });
       } catch (_) {}
     }

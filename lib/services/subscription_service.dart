@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart' show PlatformException;
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:http/http.dart' as http;
 import '../constants/app_constants.dart';
@@ -96,18 +97,19 @@ class SubscriptionService extends ChangeNotifier {
 
   Future<({bool success, String? error})> purchase(Package package) async {
     try {
-      await Purchases.purchasePackage(package);
+      await Purchases.purchase(PurchaseParams.package(package));
       for (int i = 0; i < 5; i++) {
         await Future.delayed(const Duration(seconds: 2));
         await refreshStatus();
         if (_status.active) break;
       }
       return (success: true, error: null);
-    } on PurchasesErrorCode catch (e) {
-      if (e == PurchasesErrorCode.purchaseCancelledError) {
+    } on PlatformException catch (e) {
+      final code = PurchasesErrorHelper.getErrorCode(e);
+      if (code == PurchasesErrorCode.purchaseCancelledError) {
         return (success: false, error: 'cancelled');
       }
-      return (success: false, error: e.toString());
+      return (success: false, error: e.message ?? code.toString());
     } catch (e) {
       return (success: false, error: e.toString());
     }

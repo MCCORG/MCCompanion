@@ -35,8 +35,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   void initState() {
     super.initState();
     PackageInfo.fromPlatform().then((i) {
-      if (mounted)
+      if (mounted) {
         setState(() => _appVersion = '${i.version}+${i.buildNumber}');
+      }
     });
   }
 
