@@ -263,6 +263,15 @@ class AuthService {
   }
 
   static Future<void> _desktopRefreshIdToken() async {
+    final sdkUser = _desktopUser?._sdkUser;
+    if (sdkUser != null) {
+      try {
+        _desktopIdToken = await sdkUser.getIdToken(true);
+        _desktopTokenExpiry = DateTime.now().add(const Duration(hours: 1));
+      } catch (_) {}
+      return;
+    }
+
     final refreshToken = _desktopRefreshToken;
     if (refreshToken == null) return;
     try {
