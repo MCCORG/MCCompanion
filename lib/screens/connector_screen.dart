@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import '../widgets/components/swipe_back.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
@@ -18,6 +19,7 @@ import '../services/region_detector.dart';
 import '../network/broadcast_mode.dart';
 import '../services/navigation_controller.dart';
 import '../services/review_service.dart';
+import '../services/server_status_service.dart';
 import '../services/user_service.dart';
 import '../services/auth_service.dart';
 import '../models/user_model.dart';
@@ -115,7 +117,7 @@ class HomeScreenState extends State<HomeScreen> {
       logger: logger,
     );
     _broadcastManager.onAutoDisconnect = _handleAutoDisconnect;
-    _broadcastManager.onRelayError = _handleRelayError;
+    _broadcastManager.onConnectionError = _handleConnectionError;
   }
 
   @override
@@ -311,6 +313,58 @@ class HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  Future<bool> _canAttemptHost(String host) async {
+    final literal = InternetAddress.tryParse(host);
+    if (literal != null) return literal.type == InternetAddressType.IPv4;
+    try {
+      final found = await InternetAddress.lookup(
+        host,
+        type: InternetAddressType.IPv4,
+      ).timeout(const Duration(seconds: 8));
+      return found.isNotEmpty;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  Future<bool> _confirmDirectTarget(String host, int port) async {
+    if (!await _canAttemptHost(host)) return true;
+
+    final status = await ServerStatusService.getStatus(host, port);
+    if (status.isOnline) return true;
+    if (!mounted) return false;
+
+    final l = AppLocalizations.of(context)!;
+    final proceed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: AppTheme.surfaceRaised,
+        title: Text(
+          l.directServerOfflineTitle,
+          style: TextStyle(color: AppTheme.textPrimary),
+        ),
+        content: Text(
+          l.directServerOfflineBody('$host:$port'),
+          style: TextStyle(color: AppTheme.textSecondary),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(false),
+            child: Text(l.cancel),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(true),
+            child: Text(
+              l.directStartAnyway,
+              style: TextStyle(color: AppTheme.warning),
+            ),
+          ),
+        ],
+      ),
+    );
+    return proceed ?? false;
+  }
+
   Future<void> _handleBroadcastMode(
     PanelMode mode,
     String host,
@@ -324,6 +378,15 @@ class HomeScreenState extends State<HomeScreen> {
       logger.error('Failed to enable wakelock: $e');
     }
     final isDirect = mode == PanelMode.direct;
+    if (isDirect && !await _confirmDirectTarget(host, port)) return;
+    if (isDirect && _resourcePackEnabled && _resourcePackUrl != null) {
+      _snack(
+        loc.directNoResourcePack,
+        AppTheme.warning,
+        icon: Icons.info_outline_rounded,
+      );
+    }
+
     final gamertag = _getBedrockGamertag();
     final authToken = isDirect ? null : await AuthService.getIdToken();
     final resourcePackUrl = isDirect
@@ -334,7 +397,6 @@ class HomeScreenState extends State<HomeScreen> {
       port,
       relayIp: widget.selectedRelay.ip,
       relayBase: widget.selectedRelay.base,
-      isJava: mode == PanelMode.java,
       mode: _broadcastModeFor(mode),
       bedrockGamertag: gamertag,
       authToken: authToken,
@@ -361,20 +423,27 @@ class HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void _handleRelayError(RelayError error) {
+  void _handleConnectionError(ConnectionError error) {
     if (!mounted) return;
     final l = AppLocalizations.of(context)!;
     final message = switch (error.kind) {
-      RelayErrorKind.blocked =>
+      ConnectionErrorKind.blocked =>
         error.reason != null
             ? l.relayBlockedWithReason(error.reason!)
             : l.relayBlocked,
-      RelayErrorKind.configFailed =>
+      ConnectionErrorKind.configFailed =>
         error.detail != null
             ? l.relayConfigFailedDetail(error.statusCode ?? 0, error.detail!)
             : l.relayConfigFailed(error.statusCode ?? 0),
-      RelayErrorKind.timeout => l.relayTimeout,
-      RelayErrorKind.unreachable => l.relayUnreachable,
+      ConnectionErrorKind.timeout => l.relayTimeout,
+      ConnectionErrorKind.unreachable => l.relayUnreachable,
+      ConnectionErrorKind.hostNotFound => l.directHostNotFound(
+        error.reason ?? '',
+      ),
+      ConnectionErrorKind.localPortBusy => l.directPortBusy,
+      ConnectionErrorKind.addressNotSupported => l.directAddressNotSupported(
+        error.reason ?? '',
+      ),
     };
     _snack(message, AppTheme.error, icon: Icons.error_outline_rounded);
   }

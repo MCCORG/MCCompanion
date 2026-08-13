@@ -2747,5 +2747,34 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'Mode direct : votre appareil est la connexion.\n1. Assurez-vous que l\'appareil qui exécute MCCompanion et votre console sont sur le même réseau local.\n2. Saisissez l\'adresse et le port du serveur Bedrock, puis appuyez sur \"Démarrer le mode direct\".\n3. Sur la console, ouvrez Minecraft → Jouer → onglet Amis et actualisez la liste.\n4. Sélectionnez le serveur LAN nommé \"MCCompanion\" pour rejoindre.\n\nPourquoi ce mode existe :\n- Rien ne transite par les serveurs de MCCompanion. Votre appareil transmet le trafic lui-même, ce qui continue donc de fonctionner même quand nos relais sont injoignables.\n- Aucune connexion à un compte n\'est nécessaire.\n\nÀ retenir :\n- L\'application doit rester ouverte et à l\'écran pendant toute la session. La fermer ou passer à une autre application coupe la connexion.\n- Serveurs Bedrock uniquement. Pour les serveurs Java, utilisez le mode Java, qui effectue la traduction de notre côté.\n- La consommation de batterie est plus élevée que dans les autres modes.';
+      'Mode direct : votre appareil est la connexion.\n1. Assurez-vous que l\'appareil qui exécute MCCompanion et votre console sont sur le même réseau local.\n2. Saisissez l\'adresse et le port du serveur Bedrock, puis appuyez sur \"Démarrer le mode direct\".\n3. Sur la console, ouvrez Minecraft → Jouer → onglet Amis et actualisez la liste.\n4. Sélectionnez le serveur LAN nommé \"MCCompanion\" pour rejoindre.\n\nPourquoi ce mode existe :\n- Rien ne transite par les serveurs de MCCompanion. Votre appareil transmet le trafic lui-même, ce qui continue donc de fonctionner même quand nos relais sont injoignables.\n- Aucune connexion à un compte n\'est nécessaire.\n\nÀ retenir :\n- L\'application doit rester ouverte et à l\'écran pendant toute la session. La fermer ou passer à une autre application coupe la connexion.\n- Serveurs Bedrock uniquement. Pour les serveurs Java, utilisez le mode Java, qui effectue la traduction de notre côté.\n- La consommation de batterie est plus élevée que dans les autres modes.\n- Les packs de ressources ne sont pas appliqués. Ils passent par notre relais, que ce mode contourne.';
+
+  @override
+  String directHostNotFound(String host) {
+    return '$host est introuvable. Vérifiez l\'adresse et réessayez.';
+  }
+
+  @override
+  String get directPortBusy =>
+      'Impossible d\'ouvrir le port local. Arrêtez d\'abord la connexion en cours.';
+
+  @override
+  String get directServerOfflineTitle => 'Le serveur ne répond pas';
+
+  @override
+  String directServerOfflineBody(String target) {
+    return '$target n\'a pas répondu. Il est peut-être hors ligne, ou il ignore simplement les pings. Vous pouvez quand même démarrer le tunnel.';
+  }
+
+  @override
+  String get directStartAnyway => 'Démarrer quand même';
+
+  @override
+  String get directNoResourcePack =>
+      'Les packs de ressources ne fonctionnent pas en mode direct.';
+
+  @override
+  String directAddressNotSupported(String host) {
+    return '$host est une adresse IPv6. Le mode direct ne prend en charge que l\'IPv4. Utilisez l\'adresse IPv4 ou le nom d\'hôte.';
+  }
 }

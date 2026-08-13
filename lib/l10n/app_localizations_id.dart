@@ -2742,5 +2742,34 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'Mode langsung: perangkat Anda adalah koneksinya.\n1. Pastikan perangkat yang menjalankan MCCompanion dan konsol Anda berada di jaringan lokal yang sama.\n2. Masukkan alamat dan port server Bedrock, lalu tekan \"Mulai Mode Langsung\".\n3. Di konsol buka Minecraft → Main → tab Teman, lalu segarkan daftarnya.\n4. Pilih server LAN bernama \"MCCompanion\" untuk bergabung.\n\nMengapa mode ini ada:\n- Tidak ada yang melewati server MCCompanion. Perangkat Anda meneruskan lalu lintasnya sendiri, sehingga tetap berfungsi bahkan saat relai kami tidak dapat dijangkau.\n- Tidak perlu masuk ke akun.\n\nPerlu diingat:\n- Aplikasi harus tetap terbuka dan tampil di layar selama sesi berlangsung. Menutupnya atau berpindah ke aplikasi lain akan memutus koneksi.\n- Hanya server Bedrock. Untuk server Java gunakan Mode Java, yang menerjemahkan protokol di sisi kami.\n- Penggunaan baterai lebih tinggi dibanding mode lainnya.';
+      'Mode langsung: perangkat Anda adalah koneksinya.\n1. Pastikan perangkat yang menjalankan MCCompanion dan konsol Anda berada di jaringan lokal yang sama.\n2. Masukkan alamat dan port server Bedrock, lalu tekan \"Mulai Mode Langsung\".\n3. Di konsol buka Minecraft → Main → tab Teman, lalu segarkan daftarnya.\n4. Pilih server LAN bernama \"MCCompanion\" untuk bergabung.\n\nMengapa mode ini ada:\n- Tidak ada yang melewati server MCCompanion. Perangkat Anda meneruskan lalu lintasnya sendiri, sehingga tetap berfungsi bahkan saat relai kami tidak dapat dijangkau.\n- Tidak perlu masuk ke akun.\n\nPerlu diingat:\n- Aplikasi harus tetap terbuka dan tampil di layar selama sesi berlangsung. Menutupnya atau berpindah ke aplikasi lain akan memutus koneksi.\n- Hanya server Bedrock. Untuk server Java gunakan Mode Java, yang menerjemahkan protokol di sisi kami.\n- Penggunaan baterai lebih tinggi dibanding mode lainnya.\n- Paket sumber daya tidak diterapkan. Paket berjalan lewat relay kami, yang dilewati mode ini.';
+
+  @override
+  String directHostNotFound(String host) {
+    return '$host tidak ditemukan. Periksa alamatnya dan coba lagi.';
+  }
+
+  @override
+  String get directPortBusy =>
+      'Tidak dapat membuka port lokal. Hentikan koneksi saat ini terlebih dahulu.';
+
+  @override
+  String get directServerOfflineTitle => 'Server tidak merespons';
+
+  @override
+  String directServerOfflineBody(String target) {
+    return '$target tidak menjawab. Mungkin sedang offline, atau hanya mengabaikan ping. Anda tetap bisa memulai tunnel.';
+  }
+
+  @override
+  String get directStartAnyway => 'Tetap mulai';
+
+  @override
+  String get directNoResourcePack =>
+      'Paket sumber daya tidak berfungsi di Mode Langsung.';
+
+  @override
+  String directAddressNotSupported(String host) {
+    return '$host adalah alamat IPv6. Mode Langsung hanya mendukung IPv4. Gunakan alamat IPv4 atau nama host.';
+  }
 }

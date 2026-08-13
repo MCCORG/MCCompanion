@@ -5115,8 +5115,50 @@ abstract class AppLocalizations {
   /// No description provided for @howToDirectBody.
   ///
   /// In en, this message translates to:
-  /// **'Direct Mode: your device is the connection.\n1. Make sure the device running MCCompanion and your console are on the same local network.\n2. Enter the Bedrock server address and port, then press \"Start Direct Mode\".\n3. On the console open Minecraft → Play → Friends tab and refresh the list.\n4. Select the LAN server named \"MCCompanion\" to join.\n\nWhy this mode exists:\n- Nothing passes through MCCompanion\'s servers. Your device forwards the traffic itself, so this keeps working even when our relays cannot be reached.\n- No sign-in is needed.\n\nKeep in mind:\n- The app has to stay open and on screen for the whole session. Closing it or switching to another app ends the connection.\n- Bedrock servers only. For Java servers use Java Mode, which does the protocol translation on our side.\n- Expect more battery use than in the other modes.'**
+  /// **'Direct Mode: your device is the connection.\n1. Make sure the device running MCCompanion and your console are on the same local network.\n2. Enter the Bedrock server address and port, then press \"Start Direct Mode\".\n3. On the console open Minecraft → Play → Friends tab and refresh the list.\n4. Select the LAN server named \"MCCompanion\" to join.\n\nWhy this mode exists:\n- Nothing passes through MCCompanion\'s servers. Your device forwards the traffic itself, so this keeps working even when our relays cannot be reached.\n- No sign-in is needed.\n\nKeep in mind:\n- The app has to stay open and on screen for the whole session. Closing it or switching to another app ends the connection.\n- Bedrock servers only. For Java servers use Java Mode, which does the protocol translation on our side.\n- Expect more battery use than in the other modes.\n- Resource packs are not applied. They are handled by our relay, which this mode skips.'**
   String get howToDirectBody;
+
+  /// No description provided for @directHostNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not find {host}. Check the address and try again.'**
+  String directHostNotFound(String host);
+
+  /// No description provided for @directPortBusy.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open the local port. Stop the current connection first.'**
+  String get directPortBusy;
+
+  /// No description provided for @directServerOfflineTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Server not responding'**
+  String get directServerOfflineTitle;
+
+  /// No description provided for @directServerOfflineBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{target} did not answer. It may be offline, or it may simply hide from pings. You can still start the tunnel and try to join.'**
+  String directServerOfflineBody(String target);
+
+  /// No description provided for @directStartAnyway.
+  ///
+  /// In en, this message translates to:
+  /// **'Start anyway'**
+  String get directStartAnyway;
+
+  /// No description provided for @directNoResourcePack.
+  ///
+  /// In en, this message translates to:
+  /// **'Resource packs do not work in Direct Mode.'**
+  String get directNoResourcePack;
+
+  /// No description provided for @directAddressNotSupported.
+  ///
+  /// In en, this message translates to:
+  /// **'{host} is an IPv6 address. Direct Mode only supports IPv4. Use the IPv4 address or the hostname instead.'**
+  String directAddressNotSupported(String host);
 }
 
 class _AppLocalizationsDelegate

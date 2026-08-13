@@ -159,26 +159,6 @@ class SocketHandler {
       return;
     }
 
-    if (_broadcasting &&
-        _remoteIp != null &&
-        dg.address.address == _remoteIp!.address &&
-        dg.port == _remotePort) {
-      for (final state in _clients.values) {
-        if (socket.address.type == state.address.type) {
-          socket.send(data, state.address, state.port);
-          logger.debug(
-            '[SERVER → CLIENT] $_remoteIp:$_remotePort → '
-            '${state.address.address}:${state.port} | ${data.length} bytes',
-          );
-        } else {
-          logger.debug(
-            'Skipping send to ${state.address.address} due to IP version mismatch',
-          );
-        }
-      }
-      return;
-    }
-
     final existing = _clients[clientKey];
     if (existing != null) {
       existing.lastActivity = DateTime.now();

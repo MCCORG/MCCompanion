@@ -2742,5 +2742,34 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'Doğrudan mod: bağlantı cihazınızın kendisidir.\n1. MCCompanion\'ın çalıştığı cihaz ile konsolunuzun aynı yerel ağda olduğundan emin olun.\n2. Bedrock sunucusunun adresini ve bağlantı noktasını girin, ardından \"Doğrudan modu başlat\" düğmesine basın.\n3. Konsolda Minecraft → Oyna → Arkadaşlar sekmesini açın ve listeyi yenileyin.\n4. Katılmak için \"MCCompanion\" adlı yerel ağ sunucusunu seçin.\n\nBu mod neden var:\n- Hiçbir şey MCCompanion sunucularından geçmez. Trafiği cihazınız kendisi iletir, bu yüzden aktarıcılarımıza ulaşılamadığında bile çalışmaya devam eder.\n- Oturum açmanız gerekmez.\n\nUnutmayın:\n- Uygulamanın tüm oturum boyunca açık ve ekranda kalması gerekir. Kapatmak veya başka bir uygulamaya geçmek bağlantıyı sonlandırır.\n- Yalnızca Bedrock sunucuları. Java sunucuları için, protokol çevirisini bizim tarafımızda yapan Java modunu kullanın.\n- Pil tüketimi diğer modlara göre daha yüksektir.';
+      'Doğrudan mod: bağlantı cihazınızın kendisidir.\n1. MCCompanion\'ın çalıştığı cihaz ile konsolunuzun aynı yerel ağda olduğundan emin olun.\n2. Bedrock sunucusunun adresini ve bağlantı noktasını girin, ardından \"Doğrudan modu başlat\" düğmesine basın.\n3. Konsolda Minecraft → Oyna → Arkadaşlar sekmesini açın ve listeyi yenileyin.\n4. Katılmak için \"MCCompanion\" adlı yerel ağ sunucusunu seçin.\n\nBu mod neden var:\n- Hiçbir şey MCCompanion sunucularından geçmez. Trafiği cihazınız kendisi iletir, bu yüzden aktarıcılarımıza ulaşılamadığında bile çalışmaya devam eder.\n- Oturum açmanız gerekmez.\n\nUnutmayın:\n- Uygulamanın tüm oturum boyunca açık ve ekranda kalması gerekir. Kapatmak veya başka bir uygulamaya geçmek bağlantıyı sonlandırır.\n- Yalnızca Bedrock sunucuları. Java sunucuları için, protokol çevirisini bizim tarafımızda yapan Java modunu kullanın.\n- Pil tüketimi diğer modlara göre daha yüksektir.\n- Kaynak paketleri uygulanmaz. Bunlar bu modun atladığı aktarıcımız üzerinden çalışır.';
+
+  @override
+  String directHostNotFound(String host) {
+    return '$host bulunamadı. Adresi kontrol edip tekrar deneyin.';
+  }
+
+  @override
+  String get directPortBusy =>
+      'Yerel bağlantı noktası açılamadı. Önce mevcut bağlantıyı durdurun.';
+
+  @override
+  String get directServerOfflineTitle => 'Sunucu yanıt vermiyor';
+
+  @override
+  String directServerOfflineBody(String target) {
+    return '$target yanıt vermedi. Çevrimdışı olabilir ya da yalnızca ping\'lere yanıt vermiyor olabilir. Tüneli yine de başlatabilirsiniz.';
+  }
+
+  @override
+  String get directStartAnyway => 'Yine de başlat';
+
+  @override
+  String get directNoResourcePack =>
+      'Kaynak paketleri doğrudan modda çalışmaz.';
+
+  @override
+  String directAddressNotSupported(String host) {
+    return '$host bir IPv6 adresi. Doğrudan mod yalnızca IPv4 destekler. IPv4 adresini veya ana bilgisayar adını kullanın.';
+  }
 }

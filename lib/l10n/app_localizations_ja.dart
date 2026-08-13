@@ -2690,5 +2690,32 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'ダイレクトモード: 接続そのものが端末です。\n1. MCCompanion を動かしている端末とコンソールが同じローカルネットワークにあることを確認します。\n2. Bedrock サーバーのアドレスとポートを入力し、「ダイレクトモードを開始」を押します。\n3. コンソールで Minecraft → プレイ → フレンドタブを開き、一覧を更新します。\n4. 「MCCompanion」という名前の LAN サーバーを選んで参加します。\n\nこのモードがある理由:\n- MCCompanion のサーバーを一切経由しません。通信は端末自身が転送するため、当方のリレーに接続できない場合でも使えます。\n- サインインは不要です。\n\n注意点:\n- セッション中はアプリを開いたまま画面に表示しておく必要があります。閉じたり他のアプリに切り替えたりすると接続が切れます。\n- Bedrock サーバーのみ対応です。Java サーバーには、当方側でプロトコル変換を行う Java モードをお使いください。\n- 他のモードよりバッテリーを多く消費します。';
+      'ダイレクトモード: 接続そのものが端末です。\n1. MCCompanion を動かしている端末とコンソールが同じローカルネットワークにあることを確認します。\n2. Bedrock サーバーのアドレスとポートを入力し、「ダイレクトモードを開始」を押します。\n3. コンソールで Minecraft → プレイ → フレンドタブを開き、一覧を更新します。\n4. 「MCCompanion」という名前の LAN サーバーを選んで参加します。\n\nこのモードがある理由:\n- MCCompanion のサーバーを一切経由しません。通信は端末自身が転送するため、当方のリレーに接続できない場合でも使えます。\n- サインインは不要です。\n\n注意点:\n- セッション中はアプリを開いたまま画面に表示しておく必要があります。閉じたり他のアプリに切り替えたりすると接続が切れます。\n- Bedrock サーバーのみ対応です。Java サーバーには、当方側でプロトコル変換を行う Java モードをお使いください。\n- 他のモードよりバッテリーを多く消費します。\n- リソースパックは適用されません。リソースパックは中継サーバーが処理しますが、このモードはそれを経由しません。';
+
+  @override
+  String directHostNotFound(String host) {
+    return '$host が見つかりません。アドレスを確認してもう一度お試しください。';
+  }
+
+  @override
+  String get directPortBusy => 'ローカルポートを開けませんでした。先に現在の接続を停止してください。';
+
+  @override
+  String get directServerOfflineTitle => 'サーバーが応答しません';
+
+  @override
+  String directServerOfflineBody(String target) {
+    return '$target から応答がありませんでした。オフラインの可能性もあれば、単に ping に応答しないだけの場合もあります。そのままトンネルを開始できます。';
+  }
+
+  @override
+  String get directStartAnyway => 'それでも開始';
+
+  @override
+  String get directNoResourcePack => 'ダイレクトモードではリソースパックは使えません。';
+
+  @override
+  String directAddressNotSupported(String host) {
+    return '$host は IPv6 アドレスです。ダイレクトモードは IPv4 のみ対応しています。IPv4 アドレスかホスト名をご利用ください。';
+  }
 }

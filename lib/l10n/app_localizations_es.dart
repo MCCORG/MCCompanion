@@ -2750,5 +2750,34 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'Modo directo: tu dispositivo es la conexión.\n1. Asegúrate de que el dispositivo con MCCompanion y tu consola estén en la misma red local.\n2. Introduce la dirección y el puerto del servidor Bedrock y pulsa \"Iniciar modo directo\".\n3. En la consola abre Minecraft → Jugar → pestaña Amigos y actualiza la lista.\n4. Selecciona el servidor LAN llamado \"MCCompanion\" para entrar.\n\nPor qué existe este modo:\n- Nada pasa por los servidores de MCCompanion. Tu dispositivo reenvía el tráfico por sí mismo, así que sigue funcionando aunque nuestros relés no estén disponibles.\n- No hace falta iniciar sesión.\n\nTen en cuenta:\n- La aplicación debe permanecer abierta y en pantalla durante toda la sesión. Cerrarla o cambiar a otra aplicación corta la conexión.\n- Solo servidores Bedrock. Para servidores Java usa el modo Java, que hace la traducción en nuestro lado.\n- El consumo de batería es mayor que en los demás modos.';
+      'Modo directo: tu dispositivo es la conexión.\n1. Asegúrate de que el dispositivo con MCCompanion y tu consola estén en la misma red local.\n2. Introduce la dirección y el puerto del servidor Bedrock y pulsa \"Iniciar modo directo\".\n3. En la consola abre Minecraft → Jugar → pestaña Amigos y actualiza la lista.\n4. Selecciona el servidor LAN llamado \"MCCompanion\" para entrar.\n\nPor qué existe este modo:\n- Nada pasa por los servidores de MCCompanion. Tu dispositivo reenvía el tráfico por sí mismo, así que sigue funcionando aunque nuestros relés no estén disponibles.\n- No hace falta iniciar sesión.\n\nTen en cuenta:\n- La aplicación debe permanecer abierta y en pantalla durante toda la sesión. Cerrarla o cambiar a otra aplicación corta la conexión.\n- Solo servidores Bedrock. Para servidores Java usa el modo Java, que hace la traducción en nuestro lado.\n- El consumo de batería es mayor que en los demás modos.\n- Los paquetes de recursos no se aplican. Pasan por nuestro relé, que este modo omite.';
+
+  @override
+  String directHostNotFound(String host) {
+    return 'No se encontró $host. Comprueba la dirección e inténtalo de nuevo.';
+  }
+
+  @override
+  String get directPortBusy =>
+      'No se pudo abrir el puerto local. Detén primero la conexión actual.';
+
+  @override
+  String get directServerOfflineTitle => 'El servidor no responde';
+
+  @override
+  String directServerOfflineBody(String target) {
+    return '$target no respondió. Puede estar desconectado o simplemente ignorar los pings. Aun así puedes iniciar el túnel.';
+  }
+
+  @override
+  String get directStartAnyway => 'Iniciar de todos modos';
+
+  @override
+  String get directNoResourcePack =>
+      'Los paquetes de recursos no funcionan en modo directo.';
+
+  @override
+  String directAddressNotSupported(String host) {
+    return '$host es una dirección IPv6. El modo directo solo admite IPv4. Usa la dirección IPv4 o el nombre de host.';
+  }
 }

@@ -11,27 +11,41 @@ import 'relay_config_sender.dart';
 import 'package:flutter/widgets.dart';
 import 'broadcast_mode.dart';
 
-enum RelayErrorKind { blocked, configFailed, timeout, unreachable }
+enum ConnectionErrorKind {
+  blocked,
+  configFailed,
+  timeout,
+  unreachable,
+  hostNotFound,
+  localPortBusy,
+  addressNotSupported,
+}
 
-class RelayError {
-  final RelayErrorKind kind;
+class ConnectionError {
+  final ConnectionErrorKind kind;
   final String? reason;
   final int? statusCode;
   final String? detail;
 
-  const RelayError._(this.kind, {this.reason, this.statusCode, this.detail});
+  const ConnectionError._(this.kind, {this.reason, this.statusCode, this.detail});
 
-  factory RelayError.blocked({String? reason}) =>
-      RelayError._(RelayErrorKind.blocked, reason: reason);
-  factory RelayError.configFailed({required int statusCode, String? detail}) =>
-      RelayError._(
-        RelayErrorKind.configFailed,
+  factory ConnectionError.blocked({String? reason}) =>
+      ConnectionError._(ConnectionErrorKind.blocked, reason: reason);
+  factory ConnectionError.configFailed({required int statusCode, String? detail}) =>
+      ConnectionError._(
+        ConnectionErrorKind.configFailed,
         statusCode: statusCode,
         detail: detail,
       );
-  factory RelayError.timeout() => const RelayError._(RelayErrorKind.timeout);
-  factory RelayError.unreachable() =>
-      const RelayError._(RelayErrorKind.unreachable);
+  factory ConnectionError.timeout() => const ConnectionError._(ConnectionErrorKind.timeout);
+  factory ConnectionError.unreachable() =>
+      const ConnectionError._(ConnectionErrorKind.unreachable);
+  factory ConnectionError.hostNotFound({String? reason}) =>
+      ConnectionError._(ConnectionErrorKind.hostNotFound, reason: reason);
+  factory ConnectionError.localPortBusy() =>
+      const ConnectionError._(ConnectionErrorKind.localPortBusy);
+  factory ConnectionError.addressNotSupported({String? reason}) =>
+      ConnectionError._(ConnectionErrorKind.addressNotSupported, reason: reason);
 }
 
 class BroadcastManager {
@@ -45,7 +59,7 @@ class BroadcastManager {
   bool _isBroadcasting = false;
 
   Function()? onAutoDisconnect;
-  Function(RelayError error)? onRelayError;
+  Function(ConnectionError error)? onConnectionError;
 
   BroadcastManager({required this.socketHandler, required this.logger}) {
     socketHandler.onAllClientsDisconnected = _handleAllClientsDisconnected;
@@ -128,25 +142,25 @@ class BroadcastManager {
     }
   }
 
-  RelayError _relayError(int statusCode, String responseBody) {
+  ConnectionError _connectionError(int statusCode, String responseBody) {
     if (statusCode == 403) {
       try {
         final parsed = json.decode(responseBody);
         if (parsed is Map &&
             parsed['message'] != null &&
             (parsed['message'] as String).trim().isNotEmpty) {
-          return RelayError.blocked(
+          return ConnectionError.blocked(
             reason: (parsed['message'] as String).trim(),
           );
         }
       } catch (_) {}
-      return RelayError.blocked();
+      return ConnectionError.blocked();
     }
 
     final detail = (responseBody.isNotEmpty && responseBody.length <= 200)
         ? responseBody.replaceAll('\n', ' ')
         : null;
-    return RelayError.configFailed(statusCode: statusCode, detail: detail);
+    return ConnectionError.configFailed(statusCode: statusCode, detail: detail);
   }
 
   Future<bool> sendRelayConfigOnly(
@@ -183,20 +197,20 @@ class BroadcastManager {
       if (result.success) {
         return true;
       } else {
-        final relayError = _relayError(result.statusCode, result.body);
+        final relayError = _connectionError(result.statusCode, result.body);
         logger.error(
           'Relay rejected request (status ${result.statusCode}): ${result.body}',
         );
-        onRelayError?.call(relayError);
+        onConnectionError?.call(relayError);
         return false;
       }
     } on TimeoutException catch (te) {
       logger.warning('Timeout when sending config to $relayBase: $te');
-      onRelayError?.call(RelayError.timeout());
+      onConnectionError?.call(ConnectionError.timeout());
       return false;
     } catch (e, st) {
       logger.error('Error sending config to $relayBase: $e\n$st');
-      onRelayError?.call(RelayError.unreachable());
+      onConnectionError?.call(ConnectionError.unreachable());
       return false;
     }
   }
@@ -206,7 +220,6 @@ class BroadcastManager {
     int remotePort, {
     required String relayIp,
     required String relayBase,
-    bool isJava = false,
     required BroadcastMode mode,
     String? bedrockGamertag,
     String? authToken,
@@ -214,10 +227,6 @@ class BroadcastManager {
   }) async {
     const relayPort = 19132;
 
-    // Direct mode puts this device between the console and the server, with no
-    // relay anywhere in the path. It exists for the case where the relays
-    // cannot be reached at all, so it deliberately depends on nothing of ours:
-    // no config call, no API, no region.
     if (mode == BroadcastMode.direct) {
       return _startDirect(remoteHost, remotePort);
     }
@@ -246,11 +255,11 @@ class BroadcastManager {
       final result = attempt.result;
 
       if (!result.success) {
-        final relayError = _relayError(result.statusCode, result.body);
+        final relayError = _connectionError(result.statusCode, result.body);
         logger.error(
           'Relay rejected request (status ${result.statusCode}): ${result.body}',
         );
-        onRelayError?.call(relayError);
+        onConnectionError?.call(relayError);
         return false;
       }
 
@@ -262,24 +271,38 @@ class BroadcastManager {
       );
       logger.info('MCCompanion will forward to $remoteHost:$remotePort');
 
-      return _startLocalProxy(relayAddress, relayPort);
+      try {
+        return await _startLocalProxy(relayAddress, relayPort);
+      } catch (e, st) {
+        logger.error('Could not start the local proxy: $e\n$st');
+        onConnectionError?.call(ConnectionError.localPortBusy());
+        return false;
+      }
     } on TimeoutException catch (te) {
       logger.warning('Timeout when sending config to $relayBase: $te');
-      onRelayError?.call(RelayError.timeout());
+      onConnectionError?.call(ConnectionError.timeout());
       return false;
     } catch (e, st) {
       logger.error('Error sending config to $relayBase: $e\n$st');
-      onRelayError?.call(RelayError.unreachable());
+      onConnectionError?.call(ConnectionError.unreachable());
       return false;
     }
   }
 
   Future<bool> _startDirect(String remoteHost, int remotePort) async {
     logger.info('Direct mode: no relay involved, this device is the proxy.');
+    final literal = InternetAddress.tryParse(remoteHost);
+    if (literal != null && literal.type != InternetAddressType.IPv4) {
+      logger.error('Direct mode: $remoteHost is IPv6, which is not supported.');
+      onConnectionError?.call(
+        ConnectionError.addressNotSupported(reason: remoteHost),
+      );
+      return false;
+    }
 
     final target = await _resolveHost(remoteHost);
     if (target == null) {
-      onRelayError?.call(RelayError.unreachable());
+      onConnectionError?.call(ConnectionError.hostNotFound(reason: remoteHost));
       return false;
     }
 
@@ -292,16 +315,14 @@ class BroadcastManager {
       return await _startLocalProxy(target, remotePort);
     } catch (e, st) {
       logger.error('Direct mode: could not start the local proxy: $e\n$st');
-      onRelayError?.call(RelayError.unreachable());
+      onConnectionError?.call(ConnectionError.localPortBusy());
       return false;
     }
   }
 
   Future<InternetAddress?> _resolveHost(String host) async {
-    try {
-      return InternetAddress(host);
-    } on ArgumentError {
-    }
+    final literal = InternetAddress.tryParse(host);
+    if (literal != null) return literal;
 
     try {
       final found = await InternetAddress.lookup(
@@ -320,7 +341,7 @@ class BroadcastManager {
     socketHandler.setRemoteIp(target);
     socketHandler.setRemotePort(targetPort);
 
-    await stopBroadcast();
+    await stopBroadcast(releaseWakelock: false);
 
     _socketIPv4 = await RawDatagramSocket.bind(
       InternetAddress.anyIPv4,
@@ -346,7 +367,7 @@ class BroadcastManager {
     return true;
   }
 
-  Future<void> stopBroadcast() async {
+  Future<void> stopBroadcast({bool releaseWakelock = true}) async {
     await _subscriptionIPv4?.cancel();
     _subscriptionIPv4 = null;
 
@@ -359,7 +380,8 @@ class BroadcastManager {
     _isBroadcasting = false;
     logger.info('MCCompanion stopped.');
 
-    if (WidgetsBinding.instance.lifecycleState == AppLifecycleState.resumed) {
+    if (releaseWakelock &&
+        WidgetsBinding.instance.lifecycleState == AppLifecycleState.resumed) {
       try {
         await WakelockPlus.disable();
       } catch (e) {

@@ -2748,5 +2748,34 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'Direktmodus: dein Gerät ist die Verbindung.\n1. Stelle sicher, dass das Gerät mit MCCompanion und deine Konsole im selben Netzwerk sind.\n2. Gib Adresse und Port des Bedrock-Servers ein und drücke \"Direktmodus starten\".\n3. Öffne auf der Konsole Minecraft → Spielen → Reiter Freunde und aktualisiere die Liste.\n4. Wähle den LAN-Server namens \"MCCompanion\" aus, um beizutreten.\n\nWarum es diesen Modus gibt:\n- Nichts läuft über die Server von MCCompanion. Dein Gerät leitet den Datenverkehr selbst weiter, das funktioniert also auch dann, wenn unsere Relays nicht erreichbar sind.\n- Eine Anmeldung ist nicht nötig.\n\nZu beachten:\n- Die App muss während der gesamten Sitzung geöffnet und sichtbar bleiben. Schließen oder Wechseln zu einer anderen App beendet die Verbindung.\n- Nur Bedrock-Server. Für Java-Server nutze den Java-Modus, der die Übersetzung auf unserer Seite übernimmt.\n- Der Akkuverbrauch ist höher als in den anderen Modi.';
+      'Direktmodus: dein Gerät ist die Verbindung.\n1. Stelle sicher, dass das Gerät mit MCCompanion und deine Konsole im selben Netzwerk sind.\n2. Gib Adresse und Port des Bedrock-Servers ein und drücke \"Direktmodus starten\".\n3. Öffne auf der Konsole Minecraft → Spielen → Reiter Freunde und aktualisiere die Liste.\n4. Wähle den LAN-Server namens \"MCCompanion\" aus, um beizutreten.\n\nWarum es diesen Modus gibt:\n- Nichts läuft über die Server von MCCompanion. Dein Gerät leitet den Datenverkehr selbst weiter, das funktioniert also auch dann, wenn unsere Relays nicht erreichbar sind.\n- Eine Anmeldung ist nicht nötig.\n\nZu beachten:\n- Die App muss während der gesamten Sitzung geöffnet und sichtbar bleiben. Schließen oder Wechseln zu einer anderen App beendet die Verbindung.\n- Nur Bedrock-Server. Für Java-Server nutze den Java-Modus, der die Übersetzung auf unserer Seite übernimmt.\n- Der Akkuverbrauch ist höher als in den anderen Modi.\n- Resource Packs werden nicht angewendet. Sie laufen über unser Relay, das dieser Modus überspringt.';
+
+  @override
+  String directHostNotFound(String host) {
+    return '$host wurde nicht gefunden. Prüfe die Adresse und versuche es erneut.';
+  }
+
+  @override
+  String get directPortBusy =>
+      'Der lokale Port konnte nicht geöffnet werden. Beende zuerst die aktuelle Verbindung.';
+
+  @override
+  String get directServerOfflineTitle => 'Server antwortet nicht';
+
+  @override
+  String directServerOfflineBody(String target) {
+    return '$target hat nicht geantwortet. Der Server ist vielleicht offline oder antwortet einfach nicht auf Pings. Du kannst den Tunnel trotzdem starten.';
+  }
+
+  @override
+  String get directStartAnyway => 'Trotzdem starten';
+
+  @override
+  String get directNoResourcePack =>
+      'Resource Packs funktionieren im Direktmodus nicht.';
+
+  @override
+  String directAddressNotSupported(String host) {
+    return '$host ist eine IPv6-Adresse. Der Direktmodus unterstützt nur IPv4. Nutze die IPv4-Adresse oder den Hostnamen.';
+  }
 }
