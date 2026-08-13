@@ -214,18 +214,46 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     _linkSub = appLinks.uriLinkStream.listen(_handleDeepLink);
   }
 
+  static const String _linkHost = 'mccompanion.net';
+
+  bool _isWebLink(Uri uri, String path) =>
+      (uri.scheme == 'https' || uri.scheme == 'http') &&
+      uri.host == _linkHost &&
+      uri.path == path;
+
   void _handleDeepLink(Uri uri) {
     String? username;
     if (uri.scheme == 'mccompanion' && uri.host == 'user') {
       username = uri.pathSegments.isNotEmpty ? uri.pathSegments.first : null;
-    } else if ((uri.scheme == 'https' || uri.scheme == 'http') &&
-        uri.host == 'mccompanion.net' &&
-        uri.path == '/u') {
+    } else if (_isWebLink(uri, '/u')) {
       username = uri.queryParameters['name'];
     }
     if (username != null && username.isNotEmpty) {
       _openPublicProfile(username);
+      return;
     }
+
+    if ((uri.scheme == 'mccompanion' && uri.host == 'join') ||
+        _isWebLink(uri, '/j')) {
+      _openJoinLink(uri.queryParameters);
+    }
+  }
+
+  /// Fills the connector with a server someone shared and shows it, so the
+  /// only thing left to do is press start.
+  void _openJoinLink(Map<String, String> params) {
+    final ip = params['ip']?.trim();
+    if (ip == null || ip.isEmpty) return;
+
+    final port = int.tryParse(params['port'] ?? '');
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      _ipController.text = ip;
+      _portController.text = (port != null && port > 0 && port <= 65535)
+          ? port.toString()
+          : '19132';
+      _goTo(_pageConnector);
+    });
   }
 
   void _openPublicProfile(String username) {
