@@ -1982,5 +1982,8 @@
   "skinModelSlim": "Membamba",
   "shareServerLabel": "Shiriki seva yako",
   "shareServerOn": "Marafiki wanaona seva uliyomo",
-  "shareServerOff": "Marafiki wanaona unacheza, si wapi"
+  "shareServerOff": "Marafiki wanaona unacheza, si wapi",
+  "makeDefaultServer": "Weka kama seva chaguo-msingi",
+  "isDefaultServer": "Hufunguliwa kwa chaguo-msingi",
+  "defaultServerSet": "{name} itafunguliwa kwa chaguo-msingi"
 }

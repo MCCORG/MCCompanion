@@ -2716,4 +2716,15 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get shareServerOff =>
       'Arkadaşların oynadığını görür, nerede olduğunu değil';
+
+  @override
+  String get makeDefaultServer => 'Varsayılan sunucu yap';
+
+  @override
+  String get isDefaultServer => 'Varsayılan olarak açılır';
+
+  @override
+  String defaultServerSet(String name) {
+    return '$name varsayılan olarak açılacak';
+  }
 }

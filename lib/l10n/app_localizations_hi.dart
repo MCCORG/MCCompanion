@@ -2715,4 +2715,15 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get shareServerOff => 'दोस्त देखते हैं कि आप खेल रहे हैं, कहाँ नहीं';
+
+  @override
+  String get makeDefaultServer => 'डिफ़ॉल्ट सर्वर के रूप में सेट करें';
+
+  @override
+  String get isDefaultServer => 'डिफ़ॉल्ट रूप से खुलता है';
+
+  @override
+  String defaultServerSet(String name) {
+    return 'अब $name डिफ़ॉल्ट रूप से खुलेगा';
+  }
 }

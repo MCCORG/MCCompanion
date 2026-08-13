@@ -1985,5 +1985,8 @@
   "skinModelSlim": "Тонкие",
   "shareServerLabel": "Показывать сервер",
   "shareServerOn": "Друзья видят, на каком вы сервере",
-  "shareServerOff": "Друзья видят, что вы играете, но не где"
+  "shareServerOff": "Друзья видят, что вы играете, но не где",
+  "makeDefaultServer": "Сделать сервером по умолчанию",
+  "isDefaultServer": "Открывается по умолчанию",
+  "defaultServerSet": "{name} будет открываться по умолчанию"
 }

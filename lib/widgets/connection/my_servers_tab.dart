@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
 import '../../util/user_servers.dart';
+import '../../util/user_servers_storage.dart';
 import '../../services/server_status_service.dart';
 import '../../l10n/app_localizations.dart';
+import '../components/app_toast.dart';
 
 class MyServersTab extends StatefulWidget {
   const MyServersTab({
@@ -35,6 +37,40 @@ class MyServersTab extends StatefulWidget {
 class _MyServersTabState extends State<MyServersTab> {
   UserServer? _selectedServer;
 
+  String? _defaultKey;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadDefault();
+  }
+
+  Future<void> _loadDefault() async {
+    final pinned = await UserServersStorage.loadDefaultServer(
+      widget.savedServers,
+    );
+    if (!mounted) return;
+    setState(() => _defaultKey = pinned == null
+        ? null
+        : '${pinned.address}:${pinned.port}');
+  }
+
+  Future<void> _toggleDefault(UserServer server) async {
+    final key = '${server.address}:${server.port}';
+    final clearing = _defaultKey == key;
+    await UserServersStorage.setDefaultServer(clearing ? null : server);
+    if (!mounted) return;
+    setState(() => _defaultKey = clearing ? null : key);
+
+    if (clearing) return;
+    AppToast.show(
+      context,
+      message: AppLocalizations.of(context)!.defaultServerSet(server.name),
+      icon: Icons.star_rounded,
+      color: AppTheme.warning,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     if (widget.savedServers.isEmpty) return _emptyState(context);
@@ -65,6 +101,8 @@ class _MyServersTabState extends State<MyServersTab> {
             isSelected: isSelected,
             isLast: isLast,
             broadcasting: widget.broadcasting,
+            isDefault: _defaultKey == '${server.address}:${server.port}',
+            onToggleDefault: () => _toggleDefault(server),
             onTap: widget.broadcasting
                 ? null
                 : () {
@@ -129,6 +167,8 @@ class _ServerTile extends StatelessWidget {
     required this.isLast,
     required this.broadcasting,
     required this.onTap,
+    required this.isDefault,
+    required this.onToggleDefault,
   });
 
   final UserServer server;
@@ -136,6 +176,9 @@ class _ServerTile extends StatelessWidget {
   final bool isLast;
   final bool broadcasting;
   final VoidCallback? onTap;
+
+  final bool isDefault;
+  final VoidCallback onToggleDefault;
 
   @override
   Widget build(BuildContext context) {
@@ -206,7 +249,29 @@ class _ServerTile extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(width: 12),
+                  const SizedBox(width: 4),
+
+                  IconButton(
+                    onPressed: broadcasting ? null : onToggleDefault,
+                    visualDensity: VisualDensity.compact,
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(
+                      minWidth: 34,
+                      minHeight: 34,
+                    ),
+                    tooltip: isDefault
+                        ? AppLocalizations.of(context)!.isDefaultServer
+                        : AppLocalizations.of(context)!.makeDefaultServer,
+                    icon: Icon(
+                      isDefault ? Icons.star_rounded : Icons.star_outline_rounded,
+                      size: 19,
+                      color: isDefault
+                          ? AppTheme.warning
+                          : AppTheme.textMuted.withValues(alpha: 0.55),
+                    ),
+                  ),
+
+                  const SizedBox(width: 4),
 
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 150),

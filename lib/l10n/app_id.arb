@@ -1982,5 +1982,8 @@
   "skinModelSlim": "Ramping",
   "shareServerLabel": "Bagikan servermu",
   "shareServerOn": "Teman bisa melihat server yang kamu mainkan",
-  "shareServerOff": "Teman melihat kamu bermain, tapi tidak di mana"
+  "shareServerOff": "Teman melihat kamu bermain, tapi tidak di mana",
+  "makeDefaultServer": "Jadikan server default",
+  "isDefaultServer": "Dibuka secara default",
+  "defaultServerSet": "{name} akan dibuka secara default"
 }

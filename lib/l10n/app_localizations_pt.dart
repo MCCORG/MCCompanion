@@ -2718,4 +2718,15 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get shareServerOff =>
       'Os teus amigos veem que estás a jogar, não onde';
+
+  @override
+  String get makeDefaultServer => 'Definir como servidor padrão';
+
+  @override
+  String get isDefaultServer => 'Abre por padrão';
+
+  @override
+  String defaultServerSet(String name) {
+    return '$name será aberto por padrão';
+  }
 }

@@ -2718,4 +2718,15 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get shareServerOff => 'বন্ধুরা দেখবে আপনি খেলছেন, কোথায় নয়';
+
+  @override
+  String get makeDefaultServer => 'ডিফল্ট সার্ভার হিসেবে সেট করুন';
+
+  @override
+  String get isDefaultServer => 'ডিফল্টভাবে খোলে';
+
+  @override
+  String defaultServerSet(String name) {
+    return 'এখন থেকে $name ডিফল্টভাবে খুলবে';
+  }
 }

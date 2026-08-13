@@ -1985,5 +1985,8 @@
   "skinModelSlim": "İnce",
   "shareServerLabel": "Sunucunu paylaş",
   "shareServerOn": "Arkadaşların hangi sunucuda olduğunu görür",
-  "shareServerOff": "Arkadaşların oynadığını görür, nerede olduğunu değil"
+  "shareServerOff": "Arkadaşların oynadığını görür, nerede olduğunu değil",
+  "makeDefaultServer": "Varsayılan sunucu yap",
+  "isDefaultServer": "Varsayılan olarak açılır",
+  "defaultServerSet": "{name} varsayılan olarak açılacak"
 }

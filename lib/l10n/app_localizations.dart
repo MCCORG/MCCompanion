@@ -5069,6 +5069,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Friends see you are playing, not where'**
   String get shareServerOff;
+
+  /// Tooltip on the star that pins a saved server as the one the connector opens on
+  ///
+  /// In en, this message translates to:
+  /// **'Set as default server'**
+  String get makeDefaultServer;
+
+  /// Tooltip on the star of the server the connector already opens on
+  ///
+  /// In en, this message translates to:
+  /// **'Opens by default'**
+  String get isDefaultServer;
+
+  /// Toast shown when a saved server is pinned as the one the connector opens on
+  ///
+  /// In en, this message translates to:
+  /// **'{name} will open by default'**
+  String defaultServerSet(String name);
 }
 
 class _AppLocalizationsDelegate

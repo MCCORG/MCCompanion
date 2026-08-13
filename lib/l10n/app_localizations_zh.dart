@@ -2657,4 +2657,15 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get shareServerOff => '好友只知道你在游戏中，看不到位置';
+
+  @override
+  String get makeDefaultServer => '设为默认服务器';
+
+  @override
+  String get isDefaultServer => '默认打开';
+
+  @override
+  String defaultServerSet(String name) {
+    return '以后将默认打开 $name';
+  }
 }

@@ -2715,4 +2715,15 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get shareServerOff => 'Друзья видят, что вы играете, но не где';
+
+  @override
+  String get makeDefaultServer => 'Сделать сервером по умолчанию';
+
+  @override
+  String get isDefaultServer => 'Открывается по умолчанию';
+
+  @override
+  String defaultServerSet(String name) {
+    return '$name будет открываться по умолчанию';
+  }
 }

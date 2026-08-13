@@ -2722,4 +2722,15 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get shareServerOff => 'Freunde sehen, dass du spielst, aber nicht wo';
+
+  @override
+  String get makeDefaultServer => 'Als Standardserver festlegen';
+
+  @override
+  String get isDefaultServer => 'Wird standardmäßig geöffnet';
+
+  @override
+  String defaultServerSet(String name) {
+    return '$name wird künftig standardmäßig geöffnet';
+  }
 }

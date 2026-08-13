@@ -133,16 +133,21 @@ class HomeScreenState extends State<HomeScreen> {
     try {
       final servers = await UserServersStorage.loadServers();
       _userServersNotifier.value = servers;
-      _setDefaultServerIfNeeded(servers);
+      await _setDefaultServerIfNeeded(servers);
     } catch (e) {
       logger.error('Failed to load user servers: $e');
     }
   }
 
-  void _setDefaultServerIfNeeded(List<UserServer> servers) {
+  Future<void> _setDefaultServerIfNeeded(List<UserServer> servers) async {
     if (widget.ipController.text.trim().isNotEmpty || servers.isEmpty) return;
-    widget.ipController.text = servers.first.address;
-    widget.portController.text = servers.first.port.toString();
+
+    final preferred =
+        await UserServersStorage.loadDefaultServer(servers) ?? servers.first;
+    if (!mounted || widget.ipController.text.trim().isNotEmpty) return;
+
+    widget.ipController.text = preferred.address;
+    widget.portController.text = preferred.port.toString();
   }
 
   void _log(String message) {

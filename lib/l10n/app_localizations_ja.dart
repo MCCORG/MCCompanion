@@ -2664,4 +2664,15 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get shareServerOff => 'フレンドにはプレイ中とだけ表示されます';
+
+  @override
+  String get makeDefaultServer => 'デフォルトのサーバーに設定';
+
+  @override
+  String get isDefaultServer => 'デフォルトで開きます';
+
+  @override
+  String defaultServerSet(String name) {
+    return '今後は $name がデフォルトで開きます';
+  }
 }

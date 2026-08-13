@@ -2716,4 +2716,15 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get shareServerOff => 'Teman melihat kamu bermain, tapi tidak di mana';
+
+  @override
+  String get makeDefaultServer => 'Jadikan server default';
+
+  @override
+  String get isDefaultServer => 'Dibuka secara default';
+
+  @override
+  String defaultServerSet(String name) {
+    return '$name akan dibuka secara default';
+  }
 }

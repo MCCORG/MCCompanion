@@ -1985,5 +1985,8 @@
   "skinModelSlim": "पतला",
   "shareServerLabel": "अपना सर्वर साझा करें",
   "shareServerOn": "दोस्त देख सकते हैं कि आप किस सर्वर पर हैं",
-  "shareServerOff": "दोस्त देखते हैं कि आप खेल रहे हैं, कहाँ नहीं"
+  "shareServerOff": "दोस्त देखते हैं कि आप खेल रहे हैं, कहाँ नहीं",
+  "makeDefaultServer": "डिफ़ॉल्ट सर्वर के रूप में सेट करें",
+  "isDefaultServer": "डिफ़ॉल्ट रूप से खुलता है",
+  "defaultServerSet": "अब {name} डिफ़ॉल्ट रूप से खुलेगा"
 }

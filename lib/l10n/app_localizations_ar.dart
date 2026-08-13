@@ -2696,4 +2696,15 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get shareServerOff => 'يرى أصدقاؤك أنك تلعب دون معرفة المكان';
+
+  @override
+  String get makeDefaultServer => 'تعيين كخادم افتراضي';
+
+  @override
+  String get isDefaultServer => 'يُفتح افتراضيًا';
+
+  @override
+  String defaultServerSet(String name) {
+    return 'سيتم فتح $name افتراضيًا';
+  }
 }

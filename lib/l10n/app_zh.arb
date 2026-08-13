@@ -1985,5 +1985,8 @@
   "skinModelSlim": "纤细",
   "shareServerLabel": "分享你的服务器",
   "shareServerOn": "好友可以看到你所在的服务器",
-  "shareServerOff": "好友只知道你在游戏中，看不到位置"
+  "shareServerOff": "好友只知道你在游戏中，看不到位置",
+  "makeDefaultServer": "设为默认服务器",
+  "isDefaultServer": "默认打开",
+  "defaultServerSet": "以后将默认打开 {name}"
 }

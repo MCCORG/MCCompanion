@@ -1985,5 +1985,8 @@
   "skinModelSlim": "細身",
   "shareServerLabel": "サーバーを共有",
   "shareServerOn": "フレンドにいるサーバーが見えます",
-  "shareServerOff": "フレンドにはプレイ中とだけ表示されます"
+  "shareServerOff": "フレンドにはプレイ中とだけ表示されます",
+  "makeDefaultServer": "デフォルトのサーバーに設定",
+  "isDefaultServer": "デフォルトで開きます",
+  "defaultServerSet": "今後は {name} がデフォルトで開きます"
 }

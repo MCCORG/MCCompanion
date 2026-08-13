@@ -2731,4 +2731,15 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get shareServerOff => 'Vrienden zien dat je speelt, niet waar';
+
+  @override
+  String get makeDefaultServer => 'Als standaardserver instellen';
+
+  @override
+  String get isDefaultServer => 'Wordt standaard geopend';
+
+  @override
+  String defaultServerSet(String name) {
+    return '$name wordt voortaan standaard geopend';
+  }
 }

@@ -1985,5 +1985,8 @@
   "skinModelSlim": "نحيف",
   "shareServerLabel": "مشاركة خادمك",
   "shareServerOn": "يمكن لأصدقائك رؤية الخادم الذي تلعب فيه",
-  "shareServerOff": "يرى أصدقاؤك أنك تلعب دون معرفة المكان"
+  "shareServerOff": "يرى أصدقاؤك أنك تلعب دون معرفة المكان",
+  "makeDefaultServer": "تعيين كخادم افتراضي",
+  "isDefaultServer": "يُفتح افتراضيًا",
+  "defaultServerSet": "سيتم فتح {name} افتراضيًا"
 }

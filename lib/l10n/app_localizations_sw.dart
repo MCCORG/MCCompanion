@@ -2727,4 +2727,15 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get shareServerOff => 'Marafiki wanaona unacheza, si wapi';
+
+  @override
+  String get makeDefaultServer => 'Weka kama seva chaguo-msingi';
+
+  @override
+  String get isDefaultServer => 'Hufunguliwa kwa chaguo-msingi';
+
+  @override
+  String defaultServerSet(String name) {
+    return '$name itafunguliwa kwa chaguo-msingi';
+  }
 }

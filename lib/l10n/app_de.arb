@@ -1985,5 +1985,8 @@
   "skinModelSlim": "Schmal",
   "shareServerLabel": "Server teilen",
   "shareServerOn": "Freunde sehen, auf welchem Server du bist",
-  "shareServerOff": "Freunde sehen, dass du spielst, aber nicht wo"
+  "shareServerOff": "Freunde sehen, dass du spielst, aber nicht wo",
+  "makeDefaultServer": "Als Standardserver festlegen",
+  "isDefaultServer": "Wird standardmäßig geöffnet",
+  "defaultServerSet": "{name} wird künftig standardmäßig geöffnet"
 }

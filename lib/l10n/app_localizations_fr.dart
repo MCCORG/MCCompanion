@@ -2721,4 +2721,15 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get shareServerOff => 'Tes amis voient que tu joues, pas où';
+
+  @override
+  String get makeDefaultServer => 'Définir comme serveur par défaut';
+
+  @override
+  String get isDefaultServer => 'Ouvert par défaut';
+
+  @override
+  String defaultServerSet(String name) {
+    return '$name s\'ouvrira par défaut';
+  }
 }

@@ -2887,5 +2887,18 @@
   "shareServerOff": "Friends see you are playing, not where",
   "@shareServerOff": {
     "description": "Profile: server visibility"
+  },
+  "makeDefaultServer": "Set as default server",
+  "isDefaultServer": "Opens by default",
+  "@makeDefaultServer": {
+    "description": "Tooltip on the star that pins a saved server as the one the connector opens on"
+  },
+  "@isDefaultServer": {
+    "description": "Tooltip on the star of the server the connector already opens on"
+  },
+  "defaultServerSet": "{name} will open by default",
+  "@defaultServerSet": {
+    "description": "Toast shown when a saved server is pinned as the one the connector opens on",
+    "placeholders": { "name": { "type": "String" } }
   }
 }

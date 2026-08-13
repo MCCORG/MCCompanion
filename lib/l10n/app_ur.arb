@@ -1982,5 +1982,8 @@
   "skinModelSlim": "پتلا",
   "shareServerLabel": "اپنا سرور شیئر کریں",
   "shareServerOn": "دوست دیکھ سکتے ہیں آپ کس سرور پر ہیں",
-  "shareServerOff": "دوست دیکھتے ہیں کہ آپ کھیل رہے ہیں، کہاں نہیں"
+  "shareServerOff": "دوست دیکھتے ہیں کہ آپ کھیل رہے ہیں، کہاں نہیں",
+  "makeDefaultServer": "پہلے سے طے شدہ سرور مقرر کریں",
+  "isDefaultServer": "پہلے سے طے شدہ طور پر کھلتا ہے",
+  "defaultServerSet": "اب {name} پہلے سے طے شدہ طور پر کھلے گا"
 }

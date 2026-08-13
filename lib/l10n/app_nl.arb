@@ -1300,5 +1300,8 @@
   "skinModelSlim": "Smal",
   "shareServerLabel": "Server delen",
   "shareServerOn": "Vrienden zien op welke server je zit",
-  "shareServerOff": "Vrienden zien dat je speelt, niet waar"
+  "shareServerOff": "Vrienden zien dat je speelt, niet waar",
+  "makeDefaultServer": "Als standaardserver instellen",
+  "isDefaultServer": "Wordt standaard geopend",
+  "defaultServerSet": "{name} wordt voortaan standaard geopend"
 }

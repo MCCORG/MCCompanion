@@ -28,11 +28,14 @@ class SkinEditorScreen extends StatefulWidget {
   final SavedSkin? existingSkin;
   final Map<String, dynamic>? cloudSkin;
 
+  final String? derivedFromSkinId;
+
   const SkinEditorScreen({
     super.key,
     this.initialTextureUrl,
     this.existingSkin,
     this.cloudSkin,
+    this.derivedFromSkinId,
   });
 
   @override
@@ -789,6 +792,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
         skinId: skinId,
         name: name,
         filePath: tmp.path,
+        derivedFrom: widget.derivedFromSkinId,
       );
       await tmp.delete();
       if (mounted) {

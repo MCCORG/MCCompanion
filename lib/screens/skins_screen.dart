@@ -283,7 +283,10 @@ class SkinsScreenState extends State<SkinsScreen> {
                       MaterialPageRoute(
                         builder: (_) => isOwn
                             ? SkinEditorScreen(cloudSkin: skin)
-                            : SkinEditorScreen(initialTextureUrl: textureUrl),
+                            : SkinEditorScreen(
+                                initialTextureUrl: textureUrl,
+                                derivedFromSkinId: skin['id'] as String?,
+                              ),
                       ),
                     )
                     .then((result) {

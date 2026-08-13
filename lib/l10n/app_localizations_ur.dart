@@ -2711,4 +2711,15 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get shareServerOff => 'دوست دیکھتے ہیں کہ آپ کھیل رہے ہیں، کہاں نہیں';
+
+  @override
+  String get makeDefaultServer => 'پہلے سے طے شدہ سرور مقرر کریں';
+
+  @override
+  String get isDefaultServer => 'پہلے سے طے شدہ طور پر کھلتا ہے';
+
+  @override
+  String defaultServerSet(String name) {
+    return 'اب $name پہلے سے طے شدہ طور پر کھلے گا';
+  }
 }

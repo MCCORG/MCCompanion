@@ -12,6 +12,7 @@ class SkinUploadService {
     required String skinId,
     required String name,
     required String filePath,
+    String? derivedFrom,
   }) async {
     final headers = await ApiClientBase.headers();
 
@@ -50,7 +51,12 @@ class SkinUploadService {
         .post(
           Uri.parse('$_base/api/skins/me/confirm'),
           headers: headers,
-          body: jsonEncode({'r2Key': r2Key, 'name': name, 'isPublic': true}),
+          body: jsonEncode({
+            'r2Key': r2Key,
+            'name': name,
+            'isPublic': true,
+            if (derivedFrom != null) 'derivedFrom': derivedFrom,
+          }),
         )
         .timeout(_timeout);
 
