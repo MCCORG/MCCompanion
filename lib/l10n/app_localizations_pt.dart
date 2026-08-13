@@ -2744,21 +2744,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'Modo proxy/direto: o seu dispositivo é a ligação.
-1. Certifique-se de que o dispositivo com o MCCompanion e a sua consola estão na mesma rede local.
-2. Introduza o endereço e a porta do servidor Bedrock e prima "Iniciar modo proxy/direto".
-3. Na consola abra o Minecraft → Jogar → separador Amigos e atualize a lista.
-4. Selecione o servidor LAN chamado "MCCompanion" para entrar.
-
-Porque existe este modo:
-- Nada passa pelos servidores do MCCompanion. O seu dispositivo encaminha o tráfego sozinho, por isso continua a funcionar mesmo quando os nossos relés estão inacessíveis.
-- Não é necessário iniciar sessão.
-
-Tenha em atenção:
-- A aplicação tem de ficar aberta e no ecrã durante toda a sessão. Fechá-la ou mudar para outra aplicação termina a ligação.
-- Apenas servidores Bedrock. Para servidores Java use o modo Java, que faz a tradução do nosso lado.
-- O consumo de bateria é maior do que nos outros modos.
-- Os pacotes de recursos não são aplicados. Passam pelo nosso relay, que este modo ignora.';
+      'Modo proxy/direto: o seu dispositivo é a ligação.\n1. Certifique-se de que o dispositivo com o MCCompanion e a sua consola estão na mesma rede local.\n2. Introduza o endereço e a porta do servidor Bedrock e prima "Iniciar modo proxy/direto".\n3. Na consola abra o Minecraft → Jogar → separador Amigos e atualize a lista.\n4. Selecione o servidor LAN chamado "MCCompanion" para entrar.\n\nPorque existe este modo:\n- Nada passa pelos servidores do MCCompanion. O seu dispositivo encaminha o tráfego sozinho, por isso continua a funcionar mesmo quando os nossos relés estão inacessíveis.\n- Não é necessário iniciar sessão.\n\nTenha em atenção:\n- A aplicação tem de ficar aberta e no ecrã durante toda a sessão. Fechá-la ou mudar para outra aplicação termina a ligação.\n- Apenas servidores Bedrock. Para servidores Java use o modo Java, que faz a tradução do nosso lado.\n- O consumo de bateria é maior do que nos outros modos.\n- Os pacotes de recursos não são aplicados. Passam pelo nosso relay, que este modo ignora.';
 
   @override
   String directHostNotFound(String host) {

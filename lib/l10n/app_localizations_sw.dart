@@ -2753,21 +2753,7 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'Hali ya Proksi/Moja kwa Moja: kifaa chako ndicho muunganisho wenyewe.
-1. Hakikisha kifaa kinachoendesha MCCompanion na konsoli yako viko kwenye mtandao mmoja wa ndani.
-2. Weka anwani na mlango wa seva ya Bedrock, kisha bonyeza "Anza Hali ya Proksi/Moja kwa Moja".
-3. Kwenye konsoli fungua Minecraft → Play → kichupo cha Friends na uonyeshe upya orodha.
-4. Chagua seva ya LAN yenye jina "MCCompanion" ili kujiunga.
-
-Kwa nini hali hii ipo:
-- Hakuna kinachopita kwenye seva za MCCompanion. Kifaa chako chenyewe hupeleka data, hivyo hali hii huendelea kufanya kazi hata pale relei zetu zisipopatikana.
-- Hakuna haja ya kuingia kwenye akaunti.
-
-Kumbuka:
-- Programu lazima ibaki wazi na skrini ikiwa inaonekana kwa muda wote wa kipindi. Kuifunga au kuhamia programu nyingine kunakata muunganisho.
-- Seva za Bedrock pekee. Kwa seva za Java tumia Hali ya Java, ambayo hufanya tafsiri upande wetu.
-- Betri hutumika zaidi kuliko katika hali nyingine.
-- Vifurushi vya rasilimali havitumiki. Hupitia relay yetu, ambayo hali hii huiruka.';
+      'Hali ya Proksi/Moja kwa Moja: kifaa chako ndicho muunganisho wenyewe.\n1. Hakikisha kifaa kinachoendesha MCCompanion na konsoli yako viko kwenye mtandao mmoja wa ndani.\n2. Weka anwani na mlango wa seva ya Bedrock, kisha bonyeza "Anza Hali ya Proksi/Moja kwa Moja".\n3. Kwenye konsoli fungua Minecraft → Play → kichupo cha Friends na uonyeshe upya orodha.\n4. Chagua seva ya LAN yenye jina "MCCompanion" ili kujiunga.\n\nKwa nini hali hii ipo:\n- Hakuna kinachopita kwenye seva za MCCompanion. Kifaa chako chenyewe hupeleka data, hivyo hali hii huendelea kufanya kazi hata pale relei zetu zisipopatikana.\n- Hakuna haja ya kuingia kwenye akaunti.\n\nKumbuka:\n- Programu lazima ibaki wazi na skrini ikiwa inaonekana kwa muda wote wa kipindi. Kuifunga au kuhamia programu nyingine kunakata muunganisho.\n- Seva za Bedrock pekee. Kwa seva za Java tumia Hali ya Java, ambayo hufanya tafsiri upande wetu.\n- Betri hutumika zaidi kuliko katika hali nyingine.\n- Vifurushi vya rasilimali havitumiki. Hupitia relay yetu, ambayo hali hii huiruka.';
 
   @override
   String directHostNotFound(String host) {

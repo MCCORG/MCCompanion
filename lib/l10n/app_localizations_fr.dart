@@ -2747,21 +2747,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'Mode proxy/direct : votre appareil est la connexion.
-1. Assurez-vous que l\'appareil qui exécute MCCompanion et votre console sont sur le même réseau local.
-2. Saisissez l\'adresse et le port du serveur Bedrock, puis appuyez sur "Démarrer le mode proxy/direct".
-3. Sur la console, ouvrez Minecraft → Jouer → onglet Amis et actualisez la liste.
-4. Sélectionnez le serveur LAN nommé "MCCompanion" pour rejoindre.
-
-Pourquoi ce mode existe :
-- Rien ne transite par les serveurs de MCCompanion. Votre appareil transmet le trafic lui-même, ce qui continue donc de fonctionner même quand nos relais sont injoignables.
-- Aucune connexion à un compte n\'est nécessaire.
-
-À retenir :
-- L\'application doit rester ouverte et à l\'écran pendant toute la session. La fermer ou passer à une autre application coupe la connexion.
-- Serveurs Bedrock uniquement. Pour les serveurs Java, utilisez le mode Java, qui effectue la traduction de notre côté.
-- La consommation de batterie est plus élevée que dans les autres modes.
-- Les packs de ressources ne sont pas appliqués. Ils passent par notre relais, que ce mode contourne.';
+      'Mode proxy/direct : votre appareil est la connexion.\n1. Assurez-vous que l\'appareil qui exécute MCCompanion et votre console sont sur le même réseau local.\n2. Saisissez l\'adresse et le port du serveur Bedrock, puis appuyez sur "Démarrer le mode proxy/direct".\n3. Sur la console, ouvrez Minecraft → Jouer → onglet Amis et actualisez la liste.\n4. Sélectionnez le serveur LAN nommé "MCCompanion" pour rejoindre.\n\nPourquoi ce mode existe :\n- Rien ne transite par les serveurs de MCCompanion. Votre appareil transmet le trafic lui-même, ce qui continue donc de fonctionner même quand nos relais sont injoignables.\n- Aucune connexion à un compte n\'est nécessaire.\n\nÀ retenir :\n- L\'application doit rester ouverte et à l\'écran pendant toute la session. La fermer ou passer à une autre application coupe la connexion.\n- Serveurs Bedrock uniquement. Pour les serveurs Java, utilisez le mode Java, qui effectue la traduction de notre côté.\n- La consommation de batterie est plus élevée que dans les autres modes.\n- Les packs de ressources ne sont pas appliqués. Ils passent par notre relais, que ce mode contourne.';
 
   @override
   String directHostNotFound(String host) {

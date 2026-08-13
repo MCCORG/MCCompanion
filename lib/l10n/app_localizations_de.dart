@@ -2748,21 +2748,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'Proxy/Direktmodus: dein Gerät ist die Verbindung.
-1. Stelle sicher, dass das Gerät mit MCCompanion und deine Konsole im selben Netzwerk sind.
-2. Gib Adresse und Port des Bedrock-Servers ein und drücke "Proxy/Direktmodus starten".
-3. Öffne auf der Konsole Minecraft → Spielen → Reiter Freunde und aktualisiere die Liste.
-4. Wähle den LAN-Server namens "MCCompanion" aus, um beizutreten.
-
-Warum es diesen Modus gibt:
-- Nichts läuft über die Server von MCCompanion. Dein Gerät leitet den Datenverkehr selbst weiter, das funktioniert also auch dann, wenn unsere Relays nicht erreichbar sind.
-- Eine Anmeldung ist nicht nötig.
-
-Zu beachten:
-- Die App muss während der gesamten Sitzung geöffnet und sichtbar bleiben. Schließen oder Wechseln zu einer anderen App beendet die Verbindung.
-- Nur Bedrock-Server. Für Java-Server nutze den Java-Modus, der die Übersetzung auf unserer Seite übernimmt.
-- Der Akkuverbrauch ist höher als in den anderen Modi.
-- Resource Packs werden nicht angewendet. Sie laufen über unser Relay, das dieser Modus überspringt.';
+      'Proxy/Direktmodus: dein Gerät ist die Verbindung.\n1. Stelle sicher, dass das Gerät mit MCCompanion und deine Konsole im selben Netzwerk sind.\n2. Gib Adresse und Port des Bedrock-Servers ein und drücke "Proxy/Direktmodus starten".\n3. Öffne auf der Konsole Minecraft → Spielen → Reiter Freunde und aktualisiere die Liste.\n4. Wähle den LAN-Server namens "MCCompanion" aus, um beizutreten.\n\nWarum es diesen Modus gibt:\n- Nichts läuft über die Server von MCCompanion. Dein Gerät leitet den Datenverkehr selbst weiter, das funktioniert also auch dann, wenn unsere Relays nicht erreichbar sind.\n- Eine Anmeldung ist nicht nötig.\n\nZu beachten:\n- Die App muss während der gesamten Sitzung geöffnet und sichtbar bleiben. Schließen oder Wechseln zu einer anderen App beendet die Verbindung.\n- Nur Bedrock-Server. Für Java-Server nutze den Java-Modus, der die Übersetzung auf unserer Seite übernimmt.\n- Der Akkuverbrauch ist höher als in den anderen Modi.\n- Resource Packs werden nicht angewendet. Sie laufen über unser Relay, das dieser Modus überspringt.';
 
   @override
   String directHostNotFound(String host) {

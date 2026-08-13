@@ -2733,21 +2733,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'Proxy/Direct Mode: your device is the connection.
-1. Make sure the device running MCCompanion and your console are on the same local network.
-2. Enter the Bedrock server address and port, then press "Start Proxy/Direct Mode".
-3. On the console open Minecraft → Play → Friends tab and refresh the list.
-4. Select the LAN server named "MCCompanion" to join.
-
-Why this mode exists:
-- Nothing passes through MCCompanion\'s servers. Your device forwards the traffic itself, so this keeps working even when our relays cannot be reached.
-- No sign-in is needed.
-
-Keep in mind:
-- The app has to stay open and on screen for the whole session. Closing it or switching to another app ends the connection.
-- Bedrock servers only. For Java servers use Java Mode, which does the protocol translation on our side.
-- Expect more battery use than in the other modes.
-- Resource packs are not applied. They are handled by our relay, which this mode skips.';
+      'Proxy/Direct Mode: your device is the connection.\n1. Make sure the device running MCCompanion and your console are on the same local network.\n2. Enter the Bedrock server address and port, then press "Start Proxy/Direct Mode".\n3. On the console open Minecraft → Play → Friends tab and refresh the list.\n4. Select the LAN server named "MCCompanion" to join.\n\nWhy this mode exists:\n- Nothing passes through MCCompanion\'s servers. Your device forwards the traffic itself, so this keeps working even when our relays cannot be reached.\n- No sign-in is needed.\n\nKeep in mind:\n- The app has to stay open and on screen for the whole session. Closing it or switching to another app ends the connection.\n- Bedrock servers only. For Java servers use Java Mode, which does the protocol translation on our side.\n- Expect more battery use than in the other modes.\n- Resource packs are not applied. They are handled by our relay, which this mode skips.';
 
   @override
   String directHostNotFound(String host) {
