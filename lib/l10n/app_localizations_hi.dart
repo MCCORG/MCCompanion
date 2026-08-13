@@ -2728,7 +2728,7 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get labelDirect => 'डायरेक्ट';
+  String get labelDirect => 'प्रॉक्सी/डायरेक्ट';
 
   @override
   String get startDirectMode => 'प्रॉक्सी/डायरेक्ट मोड शुरू करें';

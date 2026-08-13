@@ -1989,7 +1989,7 @@
   "makeDefaultServer": "Varsayılan sunucu yap",
   "isDefaultServer": "Varsayılan olarak açılır",
   "defaultServerSet": "{name} varsayılan olarak açılacak",
-  "labelDirect": "Doğrudan",
+  "labelDirect": "Proxy/Doğrudan",
   "startDirectMode": "Proxy/Doğrudan modu başlat",
   "howToDirectTitle": "Proxy/Doğrudan mod",
   "howToDirectSubtitle": "Sunucularımıza uğramadan oynayın",

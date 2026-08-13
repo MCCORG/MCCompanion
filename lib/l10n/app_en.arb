@@ -2905,7 +2905,7 @@
       }
     }
   },
-  "labelDirect": "Direct",
+  "labelDirect": "Proxy/Direct",
   "startDirectMode": "Start Proxy/Direct Mode",
   "howToDirectTitle": "Proxy/Direct Mode",
   "howToDirectSubtitle": "Play without going through our servers",

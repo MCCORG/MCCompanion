@@ -2677,7 +2677,7 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get labelDirect => 'ダイレクト';
+  String get labelDirect => 'プロキシ/ダイレクト';
 
   @override
   String get startDirectMode => 'プロキシ/ダイレクトモードを開始';

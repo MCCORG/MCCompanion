@@ -1989,7 +1989,7 @@
   "makeDefaultServer": "デフォルトのサーバーに設定",
   "isDefaultServer": "デフォルトで開きます",
   "defaultServerSet": "今後は {name} がデフォルトで開きます",
-  "labelDirect": "ダイレクト",
+  "labelDirect": "プロキシ/ダイレクト",
   "startDirectMode": "プロキシ/ダイレクトモードを開始",
   "howToDirectTitle": "プロキシ/ダイレクトモード",
   "howToDirectSubtitle": "当方のサーバーを経由せずにプレイ",

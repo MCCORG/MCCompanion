@@ -1989,7 +1989,7 @@
   "makeDefaultServer": "Definir como servidor padrão",
   "isDefaultServer": "Abre por padrão",
   "defaultServerSet": "{name} será aberto por padrão",
-  "labelDirect": "Direto",
+  "labelDirect": "Proxy/Direto",
   "startDirectMode": "Iniciar modo proxy/direto",
   "howToDirectTitle": "Modo proxy/direto",
   "howToDirectSubtitle": "Jogar sem passar pelos nossos servidores",

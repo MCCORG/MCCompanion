@@ -1304,7 +1304,7 @@
   "makeDefaultServer": "Als standaardserver instellen",
   "isDefaultServer": "Wordt standaard geopend",
   "defaultServerSet": "{name} wordt voortaan standaard geopend",
-  "labelDirect": "Direct",
+  "labelDirect": "Proxy/direct",
   "startDirectMode": "Proxy/directe modus starten",
   "howToDirectTitle": "Proxy/directe modus",
   "howToDirectSubtitle": "Spelen zonder via onze servers te gaan",

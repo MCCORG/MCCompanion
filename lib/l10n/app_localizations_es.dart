@@ -2737,7 +2737,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get labelDirect => 'Directo';
+  String get labelDirect => 'Proxy/Directo';
 
   @override
   String get startDirectMode => 'Iniciar modo proxy/directo';

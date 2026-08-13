@@ -1989,7 +1989,7 @@
   "makeDefaultServer": "تعيين كخادم افتراضي",
   "isDefaultServer": "يُفتح افتراضيًا",
   "defaultServerSet": "سيتم فتح {name} افتراضيًا",
-  "labelDirect": "مباشر",
+  "labelDirect": "البروكسي/المباشر",
   "startDirectMode": "بدء وضع البروكسي/المباشر",
   "howToDirectTitle": "وضع البروكسي/المباشر",
   "howToDirectSubtitle": "اللعب دون المرور بخوادمنا",

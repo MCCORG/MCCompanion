@@ -1986,7 +1986,7 @@
   "makeDefaultServer": "پہلے سے طے شدہ سرور مقرر کریں",
   "isDefaultServer": "پہلے سے طے شدہ طور پر کھلتا ہے",
   "defaultServerSet": "اب {name} پہلے سے طے شدہ طور پر کھلے گا",
-  "labelDirect": "ڈائریکٹ",
+  "labelDirect": "پراکسی/ڈائریکٹ",
   "startDirectMode": "پراکسی/ڈائریکٹ موڈ شروع کریں",
   "howToDirectTitle": "پراکسی/ڈائریکٹ موڈ",
   "howToDirectSubtitle": "ہمارے سرورز کے بغیر کھیلیں",

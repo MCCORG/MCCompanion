@@ -1989,7 +1989,7 @@
   "makeDefaultServer": "设为默认服务器",
   "isDefaultServer": "默认打开",
   "defaultServerSet": "以后将默认打开 {name}",
-  "labelDirect": "直连",
+  "labelDirect": "代理/直连",
   "startDirectMode": "启动代理/直连模式",
   "howToDirectTitle": "代理/直连模式",
   "howToDirectSubtitle": "无需经过我们的服务器即可游玩",

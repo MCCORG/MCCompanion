@@ -5091,7 +5091,7 @@ abstract class AppLocalizations {
   /// No description provided for @labelDirect.
   ///
   /// In en, this message translates to:
-  /// **'Direct'**
+  /// **'Proxy/Direct'**
   String get labelDirect;
 
   /// No description provided for @startDirectMode.

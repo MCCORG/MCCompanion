@@ -2709,7 +2709,7 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get labelDirect => 'مباشر';
+  String get labelDirect => 'البروكسي/المباشر';
 
   @override
   String get startDirectMode => 'بدء وضع البروكسي/المباشر';

@@ -2729,7 +2729,7 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get labelDirect => 'Doğrudan';
+  String get labelDirect => 'Proxy/Doğrudan';
 
   @override
   String get startDirectMode => 'Proxy/Doğrudan modu başlat';

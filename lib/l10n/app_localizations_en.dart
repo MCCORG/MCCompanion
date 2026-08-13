@@ -2720,7 +2720,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get labelDirect => 'Direct';
+  String get labelDirect => 'Proxy/Direct';
 
   @override
   String get startDirectMode => 'Start Proxy/Direct Mode';

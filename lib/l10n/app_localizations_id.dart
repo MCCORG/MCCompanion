@@ -2729,7 +2729,7 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get labelDirect => 'Langsung';
+  String get labelDirect => 'Mode Proxy/Langsung';
 
   @override
   String get startDirectMode => 'Mulai Mode Proxy/Langsung';

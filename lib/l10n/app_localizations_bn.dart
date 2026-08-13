@@ -2731,7 +2731,7 @@ class AppLocalizationsBn extends AppLocalizations {
   }
 
   @override
-  String get labelDirect => 'সরাসরি';
+  String get labelDirect => 'প্রক্সি/সরাসরি';
 
   @override
   String get startDirectMode => 'প্রক্সি/সরাসরি মোড শুরু করুন';

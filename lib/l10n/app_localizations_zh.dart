@@ -2670,7 +2670,7 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get labelDirect => '直连';
+  String get labelDirect => '代理/直连';
 
   @override
   String get startDirectMode => '启动代理/直连模式';

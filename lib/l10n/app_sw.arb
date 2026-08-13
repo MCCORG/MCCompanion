@@ -1986,7 +1986,7 @@
   "makeDefaultServer": "Weka kama seva chaguo-msingi",
   "isDefaultServer": "Hufunguliwa kwa chaguo-msingi",
   "defaultServerSet": "{name} itafunguliwa kwa chaguo-msingi",
-  "labelDirect": "Moja kwa Moja",
+  "labelDirect": "Proksi/Moja kwa Moja",
   "startDirectMode": "Anza Hali ya Proksi/Moja kwa Moja",
   "howToDirectTitle": "Hali ya Proksi/Moja kwa Moja",
   "howToDirectSubtitle": "Cheza bila kupitia seva zetu",

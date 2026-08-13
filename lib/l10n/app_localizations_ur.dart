@@ -2724,7 +2724,7 @@ class AppLocalizationsUr extends AppLocalizations {
   }
 
   @override
-  String get labelDirect => 'ڈائریکٹ';
+  String get labelDirect => 'پراکسی/ڈائریکٹ';
 
   @override
   String get startDirectMode => 'پراکسی/ڈائریکٹ موڈ شروع کریں';

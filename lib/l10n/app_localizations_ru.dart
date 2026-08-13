@@ -2728,7 +2728,7 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get labelDirect => 'Прямой';
+  String get labelDirect => 'Прокси/прямое подключение';
 
   @override
   String get startDirectMode => 'Запустить режим прокси/прямого подключения';

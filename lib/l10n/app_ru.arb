@@ -1989,7 +1989,7 @@
   "makeDefaultServer": "Сделать сервером по умолчанию",
   "isDefaultServer": "Открывается по умолчанию",
   "defaultServerSet": "{name} будет открываться по умолчанию",
-  "labelDirect": "Прямой",
+  "labelDirect": "Прокси/прямое подключение",
   "startDirectMode": "Запустить режим прокси/прямого подключения",
   "howToDirectTitle": "Режим прокси/прямого подключения",
   "howToDirectSubtitle": "Игра без обращения к нашим серверам",

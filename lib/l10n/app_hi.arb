@@ -1989,7 +1989,7 @@
   "makeDefaultServer": "डिफ़ॉल्ट सर्वर के रूप में सेट करें",
   "isDefaultServer": "डिफ़ॉल्ट रूप से खुलता है",
   "defaultServerSet": "अब {name} डिफ़ॉल्ट रूप से खुलेगा",
-  "labelDirect": "डायरेक्ट",
+  "labelDirect": "प्रॉक्सी/डायरेक्ट",
   "startDirectMode": "प्रॉक्सी/डायरेक्ट मोड शुरू करें",
   "howToDirectTitle": "प्रॉक्सी/डायरेक्ट मोड",
   "howToDirectSubtitle": "हमारे सर्वर के बिना खेलें",

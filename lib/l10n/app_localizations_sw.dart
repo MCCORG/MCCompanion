@@ -2740,7 +2740,7 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get labelDirect => 'Moja kwa Moja';
+  String get labelDirect => 'Proksi/Moja kwa Moja';
 
   @override
   String get startDirectMode => 'Anza Hali ya Proksi/Moja kwa Moja';
