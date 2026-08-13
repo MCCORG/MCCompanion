@@ -28,6 +28,7 @@ class ServerTrackerScreen extends StatefulWidget {
 }
 
 class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
+  bool get _supportsInAppUpgrade => !Platform.isWindows && !Platform.isLinux;
   StreamSubscription<List<TrackedServer>>? _sub;
   StreamSubscription<TrackerSlots?>? _slotsSub;
   StreamSubscription? _authSub;
@@ -182,7 +183,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
   }
 
   void _openPaywall() {
-    if (Platform.isWindows) {
+    if (!_supportsInAppUpgrade) {
       AppToast.show(
         context,
         message: AppLocalizations.of(context)!.upgradeWindowsHint,
@@ -277,7 +278,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
                       onTap:
                           _slots != null &&
                               _slots!.remaining == 0 &&
-                              !Platform.isWindows
+                          _supportsInAppUpgrade
                           ? _openPaywall
                           : _openAddSheet,
                       child: Padding(
@@ -288,7 +289,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
                           color:
                               _slots != null &&
                                   _slots!.remaining == 0 &&
-                                  !Platform.isWindows
+                                  _supportsInAppUpgrade
                               ? AppTheme.textDisabled
                               : AppTheme.accent,
                         ),
@@ -301,7 +302,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
                   _slots!.remaining == 0 &&
                   !_loading &&
                   _isLoggedIn &&
-                  !Platform.isWindows)
+                  _supportsInAppUpgrade)
                 Padding(
                   padding: const EdgeInsets.fromLTRB(16, 10, 16, 2),
                   child: GestureDetector(

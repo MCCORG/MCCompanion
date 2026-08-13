@@ -34,6 +34,7 @@ Sign in with Xbox, Apple or Google. Manage your Bedrock account, view your publi
 ## Platform Support
 
 - Windows
+- Linux
 - macOS
 - Android
 - iOS

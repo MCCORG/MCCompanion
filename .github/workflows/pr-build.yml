@@ -136,3 +136,45 @@ jobs:
         with:
           name: macos.app
           path: build/macos/Build/Products/Release/MCCompanion.app
+
+  build-linux:
+    name: Build Linux
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.44.0'
+          channel: stable
+          cache: true
+
+      - name: Cache pub dependencies
+        uses: actions/cache@v5
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+
+      - name: Install Linux dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang cmake libgtk-3-dev ninja-build pkg-config
+
+      - name: Enable Linux desktop
+        run: flutter config --enable-linux-desktop
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Linux
+        run: flutter build linux --release
+
+      - name: Archive Linux build
+        run: tar -C build/linux/x64/release -czf MCCompanion-linux-x64.tar.gz bundle
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: linux.tar.gz
+          path: MCCompanion-linux-x64.tar.gz

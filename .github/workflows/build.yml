@@ -207,9 +207,51 @@ jobs:
           name: macos-dmg
           path: MCCompanion-macos.dmg
 
+  build-linux:
+    name: Build Linux tarball
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.44.0'
+          channel: stable
+          cache: true
+
+      - name: Cache pub dependencies
+        uses: actions/cache@v5
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+
+      - name: Install Linux dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang cmake libgtk-3-dev ninja-build pkg-config
+
+      - name: Enable Linux desktop
+        run: flutter config --enable-linux-desktop
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Linux
+        run: flutter build linux --release
+
+      - name: Archive Linux build
+        run: tar -C build/linux/x64/release -czf MCCompanion-linux-x64.tar.gz bundle
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: linux-tarball
+          path: MCCompanion-linux-x64.tar.gz
+
   release:
     name: Create or Update dev Release
-    needs: [build-android, build-windows, build-macos]
+    needs: [build-android, build-windows, build-macos, build-linux]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -234,6 +276,11 @@ jobs:
           name: macos-dmg
           path: artifacts/
 
+      - uses: actions/download-artifact@v8
+        with:
+          name: linux-tarball
+          path: artifacts/
+
       - name: Rename Android APK
         run: mv artifacts/app-release.apk artifacts/MCCompanion-android.apk
 
@@ -251,12 +298,13 @@ jobs:
             artifacts/MCCompanion-android.apk
             artifacts/MCCompanion-windows.zip
             artifacts/MCCompanion-macos.dmg
+            artifacts/MCCompanion-linux-x64.tar.gz
             artifacts/MCCompanion.msix
 
   notify-discord:
     name: Notify Discord
     if: ${{ always() }}
-    needs: [build-android, build-windows, build-macos, release]
+    needs: [build-android, build-windows, build-macos, build-linux, release]
     runs-on: ubuntu-latest
     permissions: {}
     steps:
@@ -266,6 +314,7 @@ jobs:
           ANDROID_RESULT: ${{ needs.build-android.result }}
           WINDOWS_RESULT: ${{ needs.build-windows.result }}
           MACOS_RESULT: ${{ needs.build-macos.result }}
+          LINUX_RESULT: ${{ needs.build-linux.result }}
           RELEASE_RESULT: ${{ needs.release.result }}
           REPOSITORY: ${{ github.repository }}
           BRANCH: ${{ github.ref_name }}
@@ -283,7 +332,7 @@ jobs:
 
           OVERALL_STATUS="✅ Build Succeeded"
           EMBED_COLOR=5763719
-          if [ "$ANDROID_RESULT" != "success" ] || [ "$WINDOWS_RESULT" != "success" ] || [ "$MACOS_RESULT" != "success" ] || [ "$RELEASE_RESULT" != "success" ]; then
+          if [ "$ANDROID_RESULT" != "success" ] || [ "$WINDOWS_RESULT" != "success" ] || [ "$MACOS_RESULT" != "success" ] || [ "$LINUX_RESULT" != "success" ] || [ "$RELEASE_RESULT" != "success" ]; then
             OVERALL_STATUS="❌ Build Failed"
             EMBED_COLOR=15548997
           fi
@@ -304,6 +353,7 @@ jobs:
             --arg android "$ANDROID_RESULT" \
             --arg windows "$WINDOWS_RESULT" \
             --arg macos "$MACOS_RESULT" \
+            --arg linux "$LINUX_RESULT" \
             --arg release "$RELEASE_RESULT" \
             --arg releasesUrl "$RELEASES_URL" \
             --argjson color "$EMBED_COLOR" \
@@ -323,6 +373,7 @@ jobs:
                     { name: "Android", value: $android, inline: true },
                     { name: "Windows", value: $windows, inline: true },
                     { name: "macOS", value: $macos, inline: true },
+                    { name: "Linux", value: $linux, inline: true },
                     { name: "Release", value: $release, inline: true },
                     { name: "Commit", value: ("[" + ($sha | .[0:7]) + "](" + $commitUrl + ")" + (if $commitSubject != "" then " " + $commitSubject else "" end)), inline: false },
                     { name: "Releases Page", value: ("[View Releases](" + $releasesUrl + ")"), inline: false }
@@ -345,8 +396,8 @@ jobs:
 
   release-beta:
     name: Create or Update beta Release
-    needs: [build-android, build-windows, build-macos]
-    if: ${{ needs.build-android.result == 'success' && needs.build-windows.result == 'success' && needs.build-macos.result == 'success' && startsWith(github.event.head_commit.message, '[beta]') }}
+    needs: [build-android, build-windows, build-macos, build-linux]
+    if: ${{ needs.build-android.result == 'success' && needs.build-windows.result == 'success' && needs.build-macos.result == 'success' && needs.build-linux.result == 'success' && startsWith(github.event.head_commit.message, '[beta]') }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -371,6 +422,11 @@ jobs:
           name: macos-dmg
           path: artifacts/
 
+      - uses: actions/download-artifact@v8
+        with:
+          name: linux-tarball
+          path: artifacts/
+
       - name: Rename Android APK
         run: mv artifacts/app-release.apk artifacts/MCCompanion-android.apk
 
@@ -389,6 +445,7 @@ jobs:
             artifacts/MCCompanion-android.apk
             artifacts/MCCompanion-windows.zip
             artifacts/MCCompanion-macos.dmg
+            artifacts/MCCompanion-linux-x64.tar.gz
             artifacts/MCCompanion.msix
 
   notify-discord-beta:
@@ -446,7 +503,7 @@ jobs:
                   },
                   fields: [
                     { name: "Commit", value: ("[" + ($sha | .[0:7]) + "](" + $commitUrl + ")" + (if $commitSubject != "" then " " + $commitSubject else "" end)), inline: false },
-                    { name: "Platforms", value: "Android • Windows • macOS", inline: true },
+                    { name: "Platforms", value: "Android • Windows • macOS • Linux", inline: true },
                     { name: "Download links", value: ("[Beta release](" + $betaReleaseUrl + ")"), inline: true },
                     { name: "Triggered by", value: $actor, inline: true },
                     { name: "Workflow", value: ("[View run](" + $runUrl + ")"), inline: true }
