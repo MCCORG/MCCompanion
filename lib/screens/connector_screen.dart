@@ -306,9 +306,7 @@ class HomeScreenState extends State<HomeScreen> {
     } else {
       await HowToDialogs.showFriendsInstructions(
         context,
-        userRegion: widget.selectedRelay.name.toLowerCase().contains('eu')
-            ? 'eu'
-            : 'us',
+        userRegion: widget.selectedRelay.region,
       );
     }
   }
@@ -372,11 +370,7 @@ class HomeScreenState extends State<HomeScreen> {
     AppLocalizations loc,
   ) async {
     logger.info('Starting MCCompanion');
-    try {
-      await WakelockPlus.enable();
-    } catch (e) {
-      logger.error('Failed to enable wakelock: $e');
-    }
+
     final isDirect = mode == PanelMode.direct;
     if (isDirect && !await _confirmDirectTarget(host, port)) return;
     if (isDirect && _resourcePackEnabled && _resourcePackUrl != null) {
@@ -385,6 +379,12 @@ class HomeScreenState extends State<HomeScreen> {
         AppTheme.warning,
         icon: Icons.info_outline_rounded,
       );
+    }
+
+    try {
+      await WakelockPlus.enable();
+    } catch (e) {
+      logger.error('Failed to enable wakelock: $e');
     }
 
     final gamertag = _getBedrockGamertag();
@@ -405,6 +405,12 @@ class HomeScreenState extends State<HomeScreen> {
     _broadcastingNotifier.value = success;
     if (success) {
       unawaited(ReviewService.instance.onSuccessfulConnection());
+    } else {
+      try {
+        await WakelockPlus.disable();
+      } catch (e) {
+        logger.error('Failed to disable wakelock: $e');
+      }
     }
   }
 

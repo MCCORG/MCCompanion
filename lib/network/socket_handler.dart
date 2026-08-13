@@ -155,7 +155,9 @@ class SocketHandler {
     if (data[0] == 0x01 && data.length >= 9) {
       final pongPacket = _createOfflinePong(Uint8List.sublistView(data, 1, 9));
       socket.send(pongPacket, dg.address, dg.port);
-      logger.debug('Responded to ping from $clientKey');
+      if (logger.debugEnabled) {
+        logger.debug('Responded to ping from $clientKey');
+      }
       return;
     }
 
@@ -164,9 +166,11 @@ class SocketHandler {
       existing.lastActivity = DateTime.now();
       if (_broadcasting && _remoteIp != null) {
         existing.socket.send(data, _remoteIp!, _remotePort);
-        logger.debug(
-          '[CLIENT → SERVER] $clientKey → $_remoteIp:$_remotePort | ${data.length} bytes',
-        );
+        if (logger.debugEnabled) {
+          logger.debug(
+            '[CLIENT → SERVER] $clientKey → $_remoteIp:$_remotePort | ${data.length} bytes',
+          );
+        }
       }
       return;
     }
@@ -193,9 +197,11 @@ class SocketHandler {
             if (resp == null) return;
             socket.send(resp.data, state.address, state.port);
             state.lastActivity = DateTime.now();
-            logger.debug(
-              '[SERVER → CLIENT] $_remoteIp:$_remotePort → $clientKey | ${resp.data.length} bytes',
-            );
+            if (logger.debugEnabled) {
+              logger.debug(
+                '[SERVER → CLIENT] $_remoteIp:$_remotePort → $clientKey | ${resp.data.length} bytes',
+              );
+            }
           });
 
           if (_broadcasting && _remoteIp != null) {
