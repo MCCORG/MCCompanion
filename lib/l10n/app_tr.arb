@@ -1989,11 +1989,11 @@
   "makeDefaultServer": "Varsayılan sunucu yap",
   "isDefaultServer": "Varsayılan olarak açılır",
   "defaultServerSet": "{name} varsayılan olarak açılacak",
-  "labelDirect": "Doğrudan",
-  "startDirectMode": "Doğrudan modu başlat",
-  "howToDirectTitle": "Doğrudan mod",
+  "labelDirect": "Proxy/Doğrudan",
+  "startDirectMode": "Proxy/Doğrudan modu başlat",
+  "howToDirectTitle": "Proxy/Doğrudan mod",
   "howToDirectSubtitle": "Sunucularımıza uğramadan oynayın",
-  "howToDirectBody": "Doğrudan mod: bağlantı cihazınızın kendisidir.\n1. MCCompanion'ın çalıştığı cihaz ile konsolunuzun aynı yerel ağda olduğundan emin olun.\n2. Bedrock sunucusunun adresini ve bağlantı noktasını girin, ardından \"Doğrudan modu başlat\" düğmesine basın.\n3. Konsolda Minecraft → Oyna → Arkadaşlar sekmesini açın ve listeyi yenileyin.\n4. Katılmak için \"MCCompanion\" adlı yerel ağ sunucusunu seçin.\n\nBu mod neden var:\n- Hiçbir şey MCCompanion sunucularından geçmez. Trafiği cihazınız kendisi iletir, bu yüzden aktarıcılarımıza ulaşılamadığında bile çalışmaya devam eder.\n- Oturum açmanız gerekmez.\n\nUnutmayın:\n- Uygulamanın tüm oturum boyunca açık ve ekranda kalması gerekir. Kapatmak veya başka bir uygulamaya geçmek bağlantıyı sonlandırır.\n- Yalnızca Bedrock sunucuları. Java sunucuları için, protokol çevirisini bizim tarafımızda yapan Java modunu kullanın.\n- Pil tüketimi diğer modlara göre daha yüksektir.\n- Kaynak paketleri uygulanmaz. Bunlar bu modun atladığı aktarıcımız üzerinden çalışır.",
+  "howToDirectBody": "Proxy/Doğrudan mod: bağlantı cihazınızın kendisidir.\n1. MCCompanion'ın çalıştığı cihaz ile konsolunuzun aynı yerel ağda olduğundan emin olun.\n2. Bedrock sunucusunun adresini ve bağlantı noktasını girin, ardından \"Proxy/Doğrudan modu başlat\" düğmesine basın.\n3. Konsolda Minecraft → Oyna → Arkadaşlar sekmesini açın ve listeyi yenileyin.\n4. Katılmak için \"MCCompanion\" adlı yerel ağ sunucusunu seçin.\n\nBu mod neden var:\n- Hiçbir şey MCCompanion sunucularından geçmez. Trafiği cihazınız kendisi iletir, bu yüzden aktarıcılarımıza ulaşılamadığında bile çalışmaya devam eder.\n- Oturum açmanız gerekmez.\n\nUnutmayın:\n- Uygulamanın tüm oturum boyunca açık ve ekranda kalması gerekir. Kapatmak veya başka bir uygulamaya geçmek bağlantıyı sonlandırır.\n- Yalnızca Bedrock sunucuları. Java sunucuları için, protokol çevirisini bizim tarafımızda yapan Java modunu kullanın.\n- Pil tüketimi diğer modlara göre daha yüksektir.\n- Kaynak paketleri uygulanmaz. Bunlar bu modun atladığı aktarıcımız üzerinden çalışır.",
   "directHostNotFound": "{host} bulunamadı. Adresi kontrol edip tekrar deneyin.",
   "@directHostNotFound": {
     "placeholders": {
@@ -2013,8 +2013,8 @@
     }
   },
   "directStartAnyway": "Yine de başlat",
-  "directNoResourcePack": "Kaynak paketleri doğrudan modda çalışmaz.",
-  "directAddressNotSupported": "{host} bir IPv6 adresi. Doğrudan mod yalnızca IPv4 destekler. IPv4 adresini veya ana bilgisayar adını kullanın.",
+  "directNoResourcePack": "Kaynak paketleri Proxy/Doğrudan modda çalışmaz.",
+  "directAddressNotSupported": "{host} bir IPv6 adresi. Proxy/Doğrudan mod yalnızca IPv4 destekler. IPv4 adresini veya ana bilgisayar adını kullanın.",
   "@directAddressNotSupported": {
     "placeholders": {
       "host": {

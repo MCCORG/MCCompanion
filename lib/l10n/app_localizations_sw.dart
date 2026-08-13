@@ -2740,20 +2740,20 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get labelDirect => 'Moja kwa Moja';
+  String get labelDirect => 'Proksi/Moja kwa Moja';
 
   @override
-  String get startDirectMode => 'Anza Hali ya Moja kwa Moja';
+  String get startDirectMode => 'Anza Hali ya Proksi/Moja kwa Moja';
 
   @override
-  String get howToDirectTitle => 'Hali ya moja kwa moja';
+  String get howToDirectTitle => 'Hali ya Proksi/Moja kwa Moja';
 
   @override
   String get howToDirectSubtitle => 'Cheza bila kupitia seva zetu';
 
   @override
   String get howToDirectBody =>
-      'Hali ya moja kwa moja: kifaa chako ndicho muunganisho wenyewe.\n1. Hakikisha kifaa kinachoendesha MCCompanion na konsoli yako viko kwenye mtandao mmoja wa ndani.\n2. Weka anwani na mlango wa seva ya Bedrock, kisha bonyeza \"Anza Hali ya Moja kwa Moja\".\n3. Kwenye konsoli fungua Minecraft → Play → kichupo cha Friends na uonyeshe upya orodha.\n4. Chagua seva ya LAN yenye jina \"MCCompanion\" ili kujiunga.\n\nKwa nini hali hii ipo:\n- Hakuna kinachopita kwenye seva za MCCompanion. Kifaa chako chenyewe hupeleka data, hivyo hali hii huendelea kufanya kazi hata pale relei zetu zisipopatikana.\n- Hakuna haja ya kuingia kwenye akaunti.\n\nKumbuka:\n- Programu lazima ibaki wazi na skrini ikiwa inaonekana kwa muda wote wa kipindi. Kuifunga au kuhamia programu nyingine kunakata muunganisho.\n- Seva za Bedrock pekee. Kwa seva za Java tumia Hali ya Java, ambayo hufanya tafsiri upande wetu.\n- Betri hutumika zaidi kuliko katika hali nyingine.\n- Vifurushi vya rasilimali havitumiki. Hupitia relay yetu, ambayo hali hii huiruka.';
+      'Hali ya Proksi/Moja kwa Moja: kifaa chako ndicho muunganisho wenyewe.\n1. Hakikisha kifaa kinachoendesha MCCompanion na konsoli yako viko kwenye mtandao mmoja wa ndani.\n2. Weka anwani na mlango wa seva ya Bedrock, kisha bonyeza "Anza Hali ya Proksi/Moja kwa Moja".\n3. Kwenye konsoli fungua Minecraft → Play → kichupo cha Friends na uonyeshe upya orodha.\n4. Chagua seva ya LAN yenye jina "MCCompanion" ili kujiunga.\n\nKwa nini hali hii ipo:\n- Hakuna kinachopita kwenye seva za MCCompanion. Kifaa chako chenyewe hupeleka data, hivyo hali hii huendelea kufanya kazi hata pale relei zetu zisipopatikana.\n- Hakuna haja ya kuingia kwenye akaunti.\n\nKumbuka:\n- Programu lazima ibaki wazi na skrini ikiwa inaonekana kwa muda wote wa kipindi. Kuifunga au kuhamia programu nyingine kunakata muunganisho.\n- Seva za Bedrock pekee. Kwa seva za Java tumia Hali ya Java, ambayo hufanya tafsiri upande wetu.\n- Betri hutumika zaidi kuliko katika hali nyingine.\n- Vifurushi vya rasilimali havitumiki. Hupitia relay yetu, ambayo hali hii huiruka.';
 
   @override
   String directHostNotFound(String host) {
@@ -2777,10 +2777,10 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get directNoResourcePack =>
-      'Vifurushi vya rasilimali havifanyi kazi katika Hali ya Moja kwa Moja.';
+      'Vifurushi vya rasilimali havifanyi kazi katika Hali ya Proksi/Moja kwa Moja.';
 
   @override
   String directAddressNotSupported(String host) {
-    return '$host ni anwani ya IPv6. Hali ya Moja kwa Moja inaunga mkono IPv4 pekee. Tumia anwani ya IPv4 au jina la mwenyeji.';
+    return '$host ni anwani ya IPv6. Hali ya Proksi/Moja kwa Moja inaunga mkono IPv4 pekee. Tumia anwani ya IPv4 au jina la mwenyeji.';
   }
 }

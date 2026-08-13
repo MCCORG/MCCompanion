@@ -2744,20 +2744,20 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get labelDirect => 'Direct';
+  String get labelDirect => 'Proxy/direct';
 
   @override
-  String get startDirectMode => 'Directe modus starten';
+  String get startDirectMode => 'Proxy/directe modus starten';
 
   @override
-  String get howToDirectTitle => 'Directe modus';
+  String get howToDirectTitle => 'Proxy/directe modus';
 
   @override
   String get howToDirectSubtitle => 'Spelen zonder via onze servers te gaan';
 
   @override
   String get howToDirectBody =>
-      'Directe modus: je toestel is de verbinding.\n1. Zorg dat het toestel met MCCompanion en je console op hetzelfde netwerk zitten.\n2. Vul het adres en de poort van de Bedrock-server in en druk op \"Directe modus starten\".\n3. Open op de console Minecraft → Spelen → tabblad Vrienden en ververs de lijst.\n4. Kies de LAN-server met de naam \"MCCompanion\" om te verbinden.\n\nWaarom deze modus bestaat:\n- Er gaat niets via de servers van MCCompanion. Je toestel stuurt het verkeer zelf door, dus dit blijft werken ook als onze relays onbereikbaar zijn.\n- Je hoeft niet aangemeld te zijn.\n\nHoud er rekening mee:\n- De app moet de hele sessie open en in beeld blijven. Sluit je hem of schakel je naar een andere app, dan valt de verbinding weg.\n- Alleen Bedrock-servers. Gebruik voor Java-servers de Java-modus, die de vertaling aan onze kant doet.\n- Verwacht meer batterijverbruik dan bij de andere modi.\n- Resourcepacks worden niet toegepast. Die lopen via onze relay, en die slaat deze modus over.';
+      'Proxy/directe modus: je toestel is de verbinding.\n1. Zorg dat het toestel met MCCompanion en je console op hetzelfde netwerk zitten.\n2. Vul het adres en de poort van de Bedrock-server in en druk op "Proxy/directe modus starten".\n3. Open op de console Minecraft → Spelen → tabblad Vrienden en ververs de lijst.\n4. Kies de LAN-server met de naam "MCCompanion" om te verbinden.\n\nWaarom deze modus bestaat:\n- Er gaat niets via de servers van MCCompanion. Je toestel stuurt het verkeer zelf door, dus dit blijft werken ook als onze relays onbereikbaar zijn.\n- Je hoeft niet aangemeld te zijn.\n\nHoud er rekening mee:\n- De app moet de hele sessie open en in beeld blijven. Sluit je hem of schakel je naar een andere app, dan valt de verbinding weg.\n- Alleen Bedrock-servers. Gebruik voor Java-servers de Java-modus, die de vertaling aan onze kant doet.\n- Verwacht meer batterijverbruik dan bij de andere modi.\n- Resourcepacks worden niet toegepast. Die lopen via onze relay, en die slaat deze modus over.';
 
   @override
   String directHostNotFound(String host) {
@@ -2781,10 +2781,10 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get directNoResourcePack =>
-      'Resourcepacks werken niet in directe modus.';
+      'Resourcepacks werken niet in proxy/directe modus.';
 
   @override
   String directAddressNotSupported(String host) {
-    return '$host is een IPv6-adres. Directe modus ondersteunt alleen IPv4. Gebruik het IPv4-adres of de hostnaam.';
+    return '$host is een IPv6-adres. Proxy/directe modus ondersteunt alleen IPv4. Gebruik het IPv4-adres of de hostnaam.';
   }
 }

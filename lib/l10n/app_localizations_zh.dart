@@ -2670,20 +2670,20 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get labelDirect => '直连';
+  String get labelDirect => '代理/直连';
 
   @override
-  String get startDirectMode => '启动直连模式';
+  String get startDirectMode => '启动代理/直连模式';
 
   @override
-  String get howToDirectTitle => '直连模式';
+  String get howToDirectTitle => '代理/直连模式';
 
   @override
   String get howToDirectSubtitle => '无需经过我们的服务器即可游玩';
 
   @override
   String get howToDirectBody =>
-      '直连模式：你的设备本身就是这条连接。\n1. 确保运行 MCCompanion 的设备与你的主机处于同一局域网。\n2. 输入 Bedrock 服务器的地址和端口，然后按下\"启动直连模式\"。\n3. 在主机上打开 Minecraft → 游玩 → 好友选项卡，并刷新列表。\n4. 选择名为\"MCCompanion\"的局域网服务器加入。\n\n为什么会有这个模式：\n- 没有任何数据经过 MCCompanion 的服务器。流量由你的设备自行转发，因此即使我们的中继无法访问，它依然可用。\n- 无需登录账号。\n\n请注意：\n- 整个过程中应用必须保持打开并停留在屏幕上。关闭应用或切换到其他应用都会中断连接。\n- 仅支持 Bedrock 服务器。Java 服务器请使用 Java 模式，协议转换在我们这一侧完成。\n- 耗电量高于其他模式。\n- 资源包不会生效。资源包由我们的中继处理，而此模式会跳过中继。';
+      '代理/直连模式：你的设备本身就是这条连接。\n1. 确保运行 MCCompanion 的设备与你的主机处于同一局域网。\n2. 输入 Bedrock 服务器的地址和端口，然后按下"启动代理/直连模式"。\n3. 在主机上打开 Minecraft → 游玩 → 好友选项卡，并刷新列表。\n4. 选择名为"MCCompanion"的局域网服务器加入。\n\n为什么会有这个模式：\n- 没有任何数据经过 MCCompanion 的服务器。流量由你的设备自行转发，因此即使我们的中继无法访问，它依然可用。\n- 无需登录账号。\n\n请注意：\n- 整个过程中应用必须保持打开并停留在屏幕上。关闭应用或切换到其他应用都会中断连接。\n- 仅支持 Bedrock 服务器。Java 服务器请使用 Java 模式，协议转换在我们这一侧完成。\n- 耗电量高于其他模式。\n- 资源包不会生效。资源包由我们的中继处理，而此模式会跳过中继。';
 
   @override
   String directHostNotFound(String host) {
@@ -2705,10 +2705,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get directStartAnyway => '仍要启动';
 
   @override
-  String get directNoResourcePack => '直连模式下资源包无法使用。';
+  String get directNoResourcePack => '代理/直连模式下资源包无法使用。';
 
   @override
   String directAddressNotSupported(String host) {
-    return '$host 是 IPv6 地址。直连模式仅支持 IPv4。请改用 IPv4 地址或主机名。';
+    return '$host 是 IPv6 地址。代理/直连模式仅支持 IPv4。请改用 IPv4 地址或主机名。';
   }
 }

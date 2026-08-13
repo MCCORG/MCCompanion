@@ -2729,20 +2729,20 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get labelDirect => 'Doğrudan';
+  String get labelDirect => 'Proxy/Doğrudan';
 
   @override
-  String get startDirectMode => 'Doğrudan modu başlat';
+  String get startDirectMode => 'Proxy/Doğrudan modu başlat';
 
   @override
-  String get howToDirectTitle => 'Doğrudan mod';
+  String get howToDirectTitle => 'Proxy/Doğrudan mod';
 
   @override
   String get howToDirectSubtitle => 'Sunucularımıza uğramadan oynayın';
 
   @override
   String get howToDirectBody =>
-      'Doğrudan mod: bağlantı cihazınızın kendisidir.\n1. MCCompanion\'ın çalıştığı cihaz ile konsolunuzun aynı yerel ağda olduğundan emin olun.\n2. Bedrock sunucusunun adresini ve bağlantı noktasını girin, ardından \"Doğrudan modu başlat\" düğmesine basın.\n3. Konsolda Minecraft → Oyna → Arkadaşlar sekmesini açın ve listeyi yenileyin.\n4. Katılmak için \"MCCompanion\" adlı yerel ağ sunucusunu seçin.\n\nBu mod neden var:\n- Hiçbir şey MCCompanion sunucularından geçmez. Trafiği cihazınız kendisi iletir, bu yüzden aktarıcılarımıza ulaşılamadığında bile çalışmaya devam eder.\n- Oturum açmanız gerekmez.\n\nUnutmayın:\n- Uygulamanın tüm oturum boyunca açık ve ekranda kalması gerekir. Kapatmak veya başka bir uygulamaya geçmek bağlantıyı sonlandırır.\n- Yalnızca Bedrock sunucuları. Java sunucuları için, protokol çevirisini bizim tarafımızda yapan Java modunu kullanın.\n- Pil tüketimi diğer modlara göre daha yüksektir.\n- Kaynak paketleri uygulanmaz. Bunlar bu modun atladığı aktarıcımız üzerinden çalışır.';
+      'Proxy/Doğrudan mod: bağlantı cihazınızın kendisidir.\n1. MCCompanion\'ın çalıştığı cihaz ile konsolunuzun aynı yerel ağda olduğundan emin olun.\n2. Bedrock sunucusunun adresini ve bağlantı noktasını girin, ardından "Proxy/Doğrudan modu başlat" düğmesine basın.\n3. Konsolda Minecraft → Oyna → Arkadaşlar sekmesini açın ve listeyi yenileyin.\n4. Katılmak için "MCCompanion" adlı yerel ağ sunucusunu seçin.\n\nBu mod neden var:\n- Hiçbir şey MCCompanion sunucularından geçmez. Trafiği cihazınız kendisi iletir, bu yüzden aktarıcılarımıza ulaşılamadığında bile çalışmaya devam eder.\n- Oturum açmanız gerekmez.\n\nUnutmayın:\n- Uygulamanın tüm oturum boyunca açık ve ekranda kalması gerekir. Kapatmak veya başka bir uygulamaya geçmek bağlantıyı sonlandırır.\n- Yalnızca Bedrock sunucuları. Java sunucuları için, protokol çevirisini bizim tarafımızda yapan Java modunu kullanın.\n- Pil tüketimi diğer modlara göre daha yüksektir.\n- Kaynak paketleri uygulanmaz. Bunlar bu modun atladığı aktarıcımız üzerinden çalışır.';
 
   @override
   String directHostNotFound(String host) {
@@ -2766,10 +2766,10 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get directNoResourcePack =>
-      'Kaynak paketleri doğrudan modda çalışmaz.';
+      'Kaynak paketleri Proxy/Doğrudan modda çalışmaz.';
 
   @override
   String directAddressNotSupported(String host) {
-    return '$host bir IPv6 adresi. Doğrudan mod yalnızca IPv4 destekler. IPv4 adresini veya ana bilgisayar adını kullanın.';
+    return '$host bir IPv6 adresi. Proxy/Doğrudan mod yalnızca IPv4 destekler. IPv4 adresini veya ana bilgisayar adını kullanın.';
   }
 }
