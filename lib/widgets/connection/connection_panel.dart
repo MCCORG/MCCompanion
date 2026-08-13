@@ -13,7 +13,7 @@ import '../../widgets/featured_server_hero.dart';
 import 'my_servers_tab.dart';
 import 'server_picker_sheet.dart';
 
-enum PanelMode { lan, nintendo, friends, java }
+enum PanelMode { lan, nintendo, friends, java, direct }
 
 class _ModeConfig {
   final PanelMode mode;
@@ -119,6 +119,11 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
       icon: FontAwesomeIcons.java,
       color: AppTheme.modeJava,
     ),
+    _ModeConfig(
+      mode: PanelMode.direct,
+      icon: FontAwesomeIcons.bolt,
+      color: AppTheme.modeDirect,
+    ),
   ];
 
   @override
@@ -162,7 +167,11 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
 
     if (!mounted || !_broadcasting) return;
 
-    final topic = _mode == PanelMode.java ? HowToTopic.java : HowToTopic.xbox;
+    final topic = switch (_mode) {
+      PanelMode.java => HowToTopic.java,
+      PanelMode.direct => HowToTopic.direct,
+      _ => HowToTopic.xbox,
+    };
     if (!await HowToPrefs.isAutoShowEnabled(topic)) return;
     if (!mounted) return;
 
@@ -171,6 +180,8 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
         await HowToDialogs.showXboxInstructions(context);
       case PanelMode.java:
         await HowToDialogs.showJavaInstructions(context);
+      case PanelMode.direct:
+        await HowToDialogs.showDirectInstructions(context);
       case PanelMode.nintendo:
       case PanelMode.friends:
         break;
@@ -182,6 +193,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     PanelMode.nintendo => loc.labelNintendo,
     PanelMode.friends => loc.labelFriends,
     PanelMode.java => loc.labelJava,
+    PanelMode.direct => loc.labelDirect,
   };
 
   @override
@@ -356,87 +368,115 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
   }
 
   Widget _buildModeChips(bool broadcasting, AppLocalizations loc) {
-    return Row(
-      children: List.generate(_modes.length, (i) {
-        final cfg = _modes[i];
-        final isSelected = cfg.mode == _mode;
-        final dimmed = broadcasting && !isSelected;
+    const gap = 8.0;
 
-        return Expanded(
-          child: Padding(
-            padding: EdgeInsets.only(right: i < _modes.length - 1 ? 8 : 0),
-            child: _Hoverable(
-              onTap: broadcasting || isSelected
-                  ? null
-                  : () {
-                      setState(() => _mode = cfg.mode);
-                      widget.onNintendoDnsModeChanged(
-                        cfg.mode == PanelMode.nintendo ||
-                            cfg.mode == PanelMode.friends,
-                      );
-                    },
-              builder: (hovered) => AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                height: 84,
-                decoration: BoxDecoration(
+    const minChipWidth = 88.0;
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final total = constraints.maxWidth;
+
+        var perRow = _modes.length;
+        if ((total - gap * (perRow - 1)) / perRow < minChipWidth) {
+          perRow = (total - gap * 2) / 3 >= minChipWidth ? 3 : 2;
+        }
+
+        final singleRow = perRow >= _modes.length;
+        final chipWidth = (total - gap * (perRow - 1)) / perRow;
+
+        return Wrap(
+          spacing: gap,
+          runSpacing: gap,
+          alignment: WrapAlignment.center,
+          children: [
+            for (final cfg in _modes)
+              SizedBox(
+                width: chipWidth,
+                child: _modeChip(cfg, broadcasting, loc, tall: singleRow),
+              ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _modeChip(
+    _ModeConfig cfg,
+    bool broadcasting,
+    AppLocalizations loc, {
+    required bool tall,
+  }) {
+    final isSelected = cfg.mode == _mode;
+    final dimmed = broadcasting && !isSelected;
+
+    return _Hoverable(
+      onTap: broadcasting || isSelected
+          ? null
+          : () {
+              setState(() => _mode = cfg.mode);
+              widget.onNintendoDnsModeChanged(
+                cfg.mode == PanelMode.nintendo || cfg.mode == PanelMode.friends,
+              );
+            },
+      builder: (hovered) => AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        height: tall ? 84 : 74,
+        decoration: BoxDecoration(
+          color: isSelected
+              ? Color.alphaBlend(
+                  cfg.color.withValues(alpha: 0.32),
+                  AppTheme.surfaceRaisedSolid,
+                )
+              : hovered
+              ? Color.alphaBlend(
+                  cfg.color.withValues(alpha: 0.12),
+                  AppTheme.surfaceRaisedSolid,
+                )
+              : AppTheme.surface.withValues(alpha: 0.50),
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(
+            color: isSelected
+                ? cfg.color.withValues(alpha: 0.55)
+                : hovered
+                ? cfg.color.withValues(alpha: 0.35)
+                : AppTheme.borderLight,
+            width: isSelected ? 1.5 : 1.0,
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            FaIcon(
+              cfg.icon,
+              size: tall ? 24 : 21,
+              color: isSelected
+                  ? cfg.color
+                  : dimmed
+                  ? AppTheme.textDisabled
+                  : AppTheme.textMuted,
+            ),
+            SizedBox(height: tall ? 8 : 6),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Text(
+                _modeLabel(cfg.mode, loc),
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
                   color: isSelected
-                      ? Color.alphaBlend(
-                          cfg.color.withValues(alpha: 0.32),
-                          AppTheme.surfaceRaisedSolid,
-                        )
-                      : hovered
-                      ? Color.alphaBlend(
-                          cfg.color.withValues(alpha: 0.12),
-                          AppTheme.surfaceRaisedSolid,
-                        )
-                      : AppTheme.surface.withValues(alpha: 0.50),
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(
-                    color: isSelected
-                        ? cfg.color.withValues(alpha: 0.55)
-                        : hovered
-                        ? cfg.color.withValues(alpha: 0.35)
-                        : AppTheme.borderLight,
-                    width: isSelected ? 1.5 : 1.0,
-                  ),
+                      ? cfg.color
+                      : dimmed
+                      ? AppTheme.textDisabled
+                      : AppTheme.textSecondary,
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    FaIcon(
-                      cfg.icon,
-                      size: 24,
-                      color: isSelected
-                          ? cfg.color
-                          : dimmed
-                          ? AppTheme.textDisabled
-                          : AppTheme.textMuted,
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      _modeLabel(cfg.mode, loc),
-                      style: TextStyle(
-                        fontSize: 11,
-                        fontWeight: isSelected
-                            ? FontWeight.w600
-                            : FontWeight.w400,
-                        color: isSelected
-                            ? cfg.color
-                            : dimmed
-                            ? AppTheme.textDisabled
-                            : AppTheme.textSecondary,
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
               ),
             ),
-          ),
-        );
-      }),
+          ],
+        ),
+      ),
     );
   }
 
@@ -767,6 +807,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
             PanelMode.nintendo => loc.startNintendoMode,
             PanelMode.friends => loc.startFriendsMode,
             PanelMode.java => loc.startJavaMode,
+            PanelMode.direct => loc.startDirectMode,
           };
 
     return _Hoverable(

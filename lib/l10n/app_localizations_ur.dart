@@ -2722,4 +2722,20 @@ class AppLocalizationsUr extends AppLocalizations {
   String defaultServerSet(String name) {
     return 'اب $name پہلے سے طے شدہ طور پر کھلے گا';
   }
+
+  @override
+  String get labelDirect => 'ڈائریکٹ';
+
+  @override
+  String get startDirectMode => 'ڈائریکٹ موڈ شروع کریں';
+
+  @override
+  String get howToDirectTitle => 'ڈائریکٹ موڈ';
+
+  @override
+  String get howToDirectSubtitle => 'ہمارے سرورز کے بغیر کھیلیں';
+
+  @override
+  String get howToDirectBody =>
+      'ڈائریکٹ موڈ: کنکشن خود آپ کا آلہ ہے۔\n1. یقینی بنائیں کہ MCCompanion چلانے والا آلہ اور آپ کا کنسول ایک ہی مقامی نیٹ ورک پر ہیں۔\n2. Bedrock سرور کا پتہ اور پورٹ درج کریں، پھر \"ڈائریکٹ موڈ شروع کریں\" دبائیں۔\n3. کنسول پر Minecraft → Play → Friends ٹیب کھولیں اور فہرست تازہ کریں۔\n4. شامل ہونے کے لیے \"MCCompanion\" نام کا LAN سرور منتخب کریں۔\n\nیہ موڈ کیوں ہے:\n- کچھ بھی MCCompanion کے سرورز سے نہیں گزرتا۔ آپ کا آلہ خود ٹریفک آگے بھیجتا ہے، اس لیے ہمارے ریلے دستیاب نہ ہونے پر بھی یہ کام کرتا رہتا ہے۔\n- سائن اِن کرنے کی ضرورت نہیں۔\n\nخیال رکھیں:\n- پورے سیشن کے دوران ایپ کھلی اور اسکرین پر رہنی چاہیے۔ اسے بند کرنے یا کسی اور ایپ پر جانے سے کنکشن ختم ہو جاتا ہے۔\n- صرف Bedrock سرورز۔ Java سرورز کے لیے Java موڈ استعمال کریں، جو ترجمہ ہماری طرف کرتا ہے۔\n- دیگر موڈز کے مقابلے میں بیٹری زیادہ خرچ ہوتی ہے۔';
 }

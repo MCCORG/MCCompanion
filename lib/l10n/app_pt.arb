@@ -1988,5 +1988,10 @@
   "shareServerOff": "Os teus amigos veem que estás a jogar, não onde",
   "makeDefaultServer": "Definir como servidor padrão",
   "isDefaultServer": "Abre por padrão",
-  "defaultServerSet": "{name} será aberto por padrão"
+  "defaultServerSet": "{name} será aberto por padrão",
+  "labelDirect": "Direto",
+  "startDirectMode": "Iniciar modo direto",
+  "howToDirectTitle": "Modo direto",
+  "howToDirectSubtitle": "Jogar sem passar pelos nossos servidores",
+  "howToDirectBody": "Modo direto: o seu dispositivo é a ligação.\n1. Certifique-se de que o dispositivo com o MCCompanion e a sua consola estão na mesma rede local.\n2. Introduza o endereço e a porta do servidor Bedrock e prima \"Iniciar modo direto\".\n3. Na consola abra o Minecraft → Jogar → separador Amigos e atualize a lista.\n4. Selecione o servidor LAN chamado \"MCCompanion\" para entrar.\n\nPorque existe este modo:\n- Nada passa pelos servidores do MCCompanion. O seu dispositivo encaminha o tráfego sozinho, por isso continua a funcionar mesmo quando os nossos relés estão inacessíveis.\n- Não é necessário iniciar sessão.\n\nTenha em atenção:\n- A aplicação tem de ficar aberta e no ecrã durante toda a sessão. Fechá-la ou mudar para outra aplicação termina a ligação.\n- Apenas servidores Bedrock. Para servidores Java use o modo Java, que faz a tradução do nosso lado.\n- O consumo de bateria é maior do que nos outros modos."
 }

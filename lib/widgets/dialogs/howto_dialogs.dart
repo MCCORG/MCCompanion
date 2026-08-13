@@ -71,6 +71,19 @@ class HowToDialogs {
     );
   }
 
+  static Future<void> showDirectInstructions(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    return _showSheet(
+      context,
+      topic: HowToTopic.direct,
+      icon: FontAwesomeIcons.bolt,
+      color: AppTheme.modeDirect,
+      title: loc.howToDirectTitle,
+      subtitle: loc.howToDirectSubtitle,
+      body: loc.howToDirectBody,
+    );
+  }
+
   static Future<void> _showSheet(
     BuildContext context, {
     required HowToTopic topic,

@@ -213,6 +213,15 @@ class BroadcastManager {
     String? resourcePackUrl,
   }) async {
     const relayPort = 19132;
+
+    // Direct mode puts this device between the console and the server, with no
+    // relay anywhere in the path. It exists for the case where the relays
+    // cannot be reached at all, so it deliberately depends on nothing of ours:
+    // no config call, no API, no region.
+    if (mode == BroadcastMode.direct) {
+      return _startDirect(remoteHost, remotePort);
+    }
+
     final usedRelayName = _relayNameForIp(relayIp);
 
     logger.info(
@@ -253,33 +262,7 @@ class BroadcastManager {
       );
       logger.info('MCCompanion will forward to $remoteHost:$remotePort');
 
-      socketHandler.setRemoteIp(relayAddress);
-      socketHandler.setRemotePort(relayPort);
-
-      await stopBroadcast();
-
-      _socketIPv4 = await RawDatagramSocket.bind(
-        InternetAddress.anyIPv4,
-        SocketHandler.proxyPort,
-      );
-      _socketIPv4!.broadcastEnabled = true;
-      logger.info(
-        'UDP broadcast socket started on 0.0.0.0 (${SocketHandler.proxyPort})',
-      );
-
-      socketHandler.setBroadcasting(true);
-
-      _subscriptionIPv4 = _socketIPv4!.listen(
-        (event) => socketHandler.handleSocketEvent(_socketIPv4!, event),
-        onError: (e, st) => logger.error('Socket error: $e'),
-        cancelOnError: false,
-      );
-
-      _isBroadcasting = true;
-      logger.info('MCCompanion started broadcasting');
-      _logLocalIPAddresses();
-
-      return true;
+      return _startLocalProxy(relayAddress, relayPort);
     } on TimeoutException catch (te) {
       logger.warning('Timeout when sending config to $relayBase: $te');
       onRelayError?.call(RelayError.timeout());
@@ -289,6 +272,78 @@ class BroadcastManager {
       onRelayError?.call(RelayError.unreachable());
       return false;
     }
+  }
+
+  Future<bool> _startDirect(String remoteHost, int remotePort) async {
+    logger.info('Direct mode: no relay involved, this device is the proxy.');
+
+    final target = await _resolveHost(remoteHost);
+    if (target == null) {
+      onRelayError?.call(RelayError.unreachable());
+      return false;
+    }
+
+    logger.info(
+      'MCCompanion will forward straight to '
+      '${target.address}:$remotePort ($remoteHost)',
+    );
+
+    try {
+      return await _startLocalProxy(target, remotePort);
+    } catch (e, st) {
+      logger.error('Direct mode: could not start the local proxy: $e\n$st');
+      onRelayError?.call(RelayError.unreachable());
+      return false;
+    }
+  }
+
+  Future<InternetAddress?> _resolveHost(String host) async {
+    try {
+      return InternetAddress(host);
+    } on ArgumentError {
+    }
+
+    try {
+      final found = await InternetAddress.lookup(
+        host,
+        type: InternetAddressType.IPv4,
+      ).timeout(const Duration(seconds: 8));
+      if (found.isNotEmpty) return found.first;
+      logger.error('Direct mode: $host has no IPv4 address.');
+    } catch (e) {
+      logger.error('Direct mode: could not resolve $host: $e');
+    }
+    return null;
+  }
+
+  Future<bool> _startLocalProxy(InternetAddress target, int targetPort) async {
+    socketHandler.setRemoteIp(target);
+    socketHandler.setRemotePort(targetPort);
+
+    await stopBroadcast();
+
+    _socketIPv4 = await RawDatagramSocket.bind(
+      InternetAddress.anyIPv4,
+      SocketHandler.proxyPort,
+    );
+    _socketIPv4!.broadcastEnabled = true;
+    logger.info(
+      'UDP broadcast socket started on 0.0.0.0 (${SocketHandler.proxyPort})',
+    );
+
+    socketHandler.setBroadcasting(true);
+
+    _subscriptionIPv4 = _socketIPv4!.listen(
+      (event) => socketHandler.handleSocketEvent(_socketIPv4!, event),
+      onError: (e, st) => logger.error('Socket error: $e'),
+      cancelOnError: false,
+    );
+
+    _isBroadcasting = true;
+    logger.info('MCCompanion started broadcasting');
+    _logLocalIPAddresses();
+
+    return true;
   }
 
   Future<void> stopBroadcast() async {

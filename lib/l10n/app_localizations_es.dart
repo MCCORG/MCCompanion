@@ -2735,4 +2735,20 @@ class AppLocalizationsEs extends AppLocalizations {
   String defaultServerSet(String name) {
     return '$name se abrirá de forma predeterminada';
   }
+
+  @override
+  String get labelDirect => 'Directo';
+
+  @override
+  String get startDirectMode => 'Iniciar modo directo';
+
+  @override
+  String get howToDirectTitle => 'Modo directo';
+
+  @override
+  String get howToDirectSubtitle => 'Jugar sin pasar por nuestros servidores';
+
+  @override
+  String get howToDirectBody =>
+      'Modo directo: tu dispositivo es la conexión.\n1. Asegúrate de que el dispositivo con MCCompanion y tu consola estén en la misma red local.\n2. Introduce la dirección y el puerto del servidor Bedrock y pulsa \"Iniciar modo directo\".\n3. En la consola abre Minecraft → Jugar → pestaña Amigos y actualiza la lista.\n4. Selecciona el servidor LAN llamado \"MCCompanion\" para entrar.\n\nPor qué existe este modo:\n- Nada pasa por los servidores de MCCompanion. Tu dispositivo reenvía el tráfico por sí mismo, así que sigue funcionando aunque nuestros relés no estén disponibles.\n- No hace falta iniciar sesión.\n\nTen en cuenta:\n- La aplicación debe permanecer abierta y en pantalla durante toda la sesión. Cerrarla o cambiar a otra aplicación corta la conexión.\n- Solo servidores Bedrock. Para servidores Java usa el modo Java, que hace la traducción en nuestro lado.\n- El consumo de batería es mayor que en los demás modos.';
 }

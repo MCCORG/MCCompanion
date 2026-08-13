@@ -2675,4 +2675,20 @@ class AppLocalizationsJa extends AppLocalizations {
   String defaultServerSet(String name) {
     return '今後は $name がデフォルトで開きます';
   }
+
+  @override
+  String get labelDirect => 'ダイレクト';
+
+  @override
+  String get startDirectMode => 'ダイレクトモードを開始';
+
+  @override
+  String get howToDirectTitle => 'ダイレクトモード';
+
+  @override
+  String get howToDirectSubtitle => '当方のサーバーを経由せずにプレイ';
+
+  @override
+  String get howToDirectBody =>
+      'ダイレクトモード: 接続そのものが端末です。\n1. MCCompanion を動かしている端末とコンソールが同じローカルネットワークにあることを確認します。\n2. Bedrock サーバーのアドレスとポートを入力し、「ダイレクトモードを開始」を押します。\n3. コンソールで Minecraft → プレイ → フレンドタブを開き、一覧を更新します。\n4. 「MCCompanion」という名前の LAN サーバーを選んで参加します。\n\nこのモードがある理由:\n- MCCompanion のサーバーを一切経由しません。通信は端末自身が転送するため、当方のリレーに接続できない場合でも使えます。\n- サインインは不要です。\n\n注意点:\n- セッション中はアプリを開いたまま画面に表示しておく必要があります。閉じたり他のアプリに切り替えたりすると接続が切れます。\n- Bedrock サーバーのみ対応です。Java サーバーには、当方側でプロトコル変換を行う Java モードをお使いください。\n- 他のモードよりバッテリーを多く消費します。';
 }

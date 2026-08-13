@@ -331,6 +331,10 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
           Navigator.of(context).pop();
           HowToDialogs.showJavaInstructions(context);
         },
+        onDirect: () {
+          Navigator.of(context).pop();
+          HowToDialogs.showDirectInstructions(context);
+        },
       ),
     );
   }

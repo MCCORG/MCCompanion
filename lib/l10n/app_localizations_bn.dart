@@ -2729,4 +2729,20 @@ class AppLocalizationsBn extends AppLocalizations {
   String defaultServerSet(String name) {
     return 'এখন থেকে $name ডিফল্টভাবে খুলবে';
   }
+
+  @override
+  String get labelDirect => 'সরাসরি';
+
+  @override
+  String get startDirectMode => 'সরাসরি মোড শুরু করুন';
+
+  @override
+  String get howToDirectTitle => 'সরাসরি মোড';
+
+  @override
+  String get howToDirectSubtitle => 'আমাদের সার্ভার ছাড়াই খেলুন';
+
+  @override
+  String get howToDirectBody =>
+      'সরাসরি মোড: সংযোগটি আপনার ডিভাইসই।\n১. নিশ্চিত করুন যে MCCompanion চালানো ডিভাইস ও আপনার কনসোল একই স্থানীয় নেটওয়ার্কে আছে।\n২. Bedrock সার্ভারের ঠিকানা ও পোর্ট লিখুন, তারপর \"সরাসরি মোড শুরু করুন\" চাপুন।\n৩. কনসোলে Minecraft → Play → Friends ট্যাব খুলে তালিকা রিফ্রেশ করুন।\n৪. যোগ দিতে \"MCCompanion\" নামের LAN সার্ভারটি বেছে নিন।\n\nএই মোড কেন আছে:\n- কিছুই MCCompanion-এর সার্ভারের মধ্য দিয়ে যায় না। আপনার ডিভাইস নিজেই ট্র্যাফিক পাঠায়, তাই আমাদের রিলে অচল থাকলেও এটি কাজ করে।\n- সাইন ইন করার প্রয়োজন নেই।\n\nমনে রাখবেন:\n- পুরো সেশন জুড়ে অ্যাপটি খোলা ও স্ক্রিনে থাকতে হবে। বন্ধ করলে বা অন্য অ্যাপে গেলে সংযোগ বিচ্ছিন্ন হয়।\n- শুধু Bedrock সার্ভার। Java সার্ভারের জন্য Java মোড ব্যবহার করুন, যা অনুবাদ আমাদের দিকে করে।\n- অন্য মোডের তুলনায় ব্যাটারি বেশি খরচ হয়।';
 }

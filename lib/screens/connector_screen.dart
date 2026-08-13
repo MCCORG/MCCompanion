@@ -261,6 +261,14 @@ class HomeScreenState extends State<HomeScreen> {
     unawaited(BedrockAccountPrefs.setSelectedXuid(xuid));
   }
 
+  BroadcastMode _broadcastModeFor(PanelMode mode) => switch (mode) {
+    PanelMode.lan => BroadcastMode.lan,
+    PanelMode.nintendo => BroadcastMode.nintendo,
+    PanelMode.friends => BroadcastMode.friends,
+    PanelMode.java => BroadcastMode.java,
+    PanelMode.direct => BroadcastMode.direct,
+  };
+
   Future<void> _handleDnsMode(
     PanelMode mode,
     String host,
@@ -274,7 +282,7 @@ class HomeScreenState extends State<HomeScreen> {
       port,
       relayIp: widget.selectedRelay.ip,
       relayBase: widget.selectedRelay.base,
-      mode: BroadcastMode.values[mode.index],
+      mode: _broadcastModeFor(mode),
       bedrockGamertag: gamertag,
       resourcePackUrl: resourcePackUrl,
     );
@@ -315,16 +323,19 @@ class HomeScreenState extends State<HomeScreen> {
     } catch (e) {
       logger.error('Failed to enable wakelock: $e');
     }
+    final isDirect = mode == PanelMode.direct;
     final gamertag = _getBedrockGamertag();
-    final authToken = await AuthService.getIdToken();
-    final resourcePackUrl = await ResourcePackPrefs.getActiveUrl();
+    final authToken = isDirect ? null : await AuthService.getIdToken();
+    final resourcePackUrl = isDirect
+        ? null
+        : await ResourcePackPrefs.getActiveUrl();
     final success = await _broadcastManager.startBroadcast(
       host,
       port,
       relayIp: widget.selectedRelay.ip,
       relayBase: widget.selectedRelay.base,
       isJava: mode == PanelMode.java,
-      mode: BroadcastMode.values[mode.index],
+      mode: _broadcastModeFor(mode),
       bedrockGamertag: gamertag,
       authToken: authToken,
       resourcePackUrl: resourcePackUrl,

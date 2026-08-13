@@ -2899,6 +2899,15 @@
   "defaultServerSet": "{name} will open by default",
   "@defaultServerSet": {
     "description": "Toast shown when a saved server is pinned as the one the connector opens on",
-    "placeholders": { "name": { "type": "String" } }
-  }
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "labelDirect": "Direct",
+  "startDirectMode": "Start Direct Mode",
+  "howToDirectTitle": "Direct Mode",
+  "howToDirectSubtitle": "Play without going through our servers",
+  "howToDirectBody": "Direct Mode: your device is the connection.\n1. Make sure the device running MCCompanion and your console are on the same local network.\n2. Enter the Bedrock server address and port, then press \"Start Direct Mode\".\n3. On the console open Minecraft → Play → Friends tab and refresh the list.\n4. Select the LAN server named \"MCCompanion\" to join.\n\nWhy this mode exists:\n- Nothing passes through MCCompanion's servers. Your device forwards the traffic itself, so this keeps working even when our relays cannot be reached.\n- No sign-in is needed.\n\nKeep in mind:\n- The app has to stay open and on screen for the whole session. Closing it or switching to another app ends the connection.\n- Bedrock servers only. For Java servers use Java Mode, which does the protocol translation on our side.\n- Expect more battery use than in the other modes."
 }

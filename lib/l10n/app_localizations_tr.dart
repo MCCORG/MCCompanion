@@ -2727,4 +2727,20 @@ class AppLocalizationsTr extends AppLocalizations {
   String defaultServerSet(String name) {
     return '$name varsayılan olarak açılacak';
   }
+
+  @override
+  String get labelDirect => 'Doğrudan';
+
+  @override
+  String get startDirectMode => 'Doğrudan modu başlat';
+
+  @override
+  String get howToDirectTitle => 'Doğrudan mod';
+
+  @override
+  String get howToDirectSubtitle => 'Sunucularımıza uğramadan oynayın';
+
+  @override
+  String get howToDirectBody =>
+      'Doğrudan mod: bağlantı cihazınızın kendisidir.\n1. MCCompanion\'ın çalıştığı cihaz ile konsolunuzun aynı yerel ağda olduğundan emin olun.\n2. Bedrock sunucusunun adresini ve bağlantı noktasını girin, ardından \"Doğrudan modu başlat\" düğmesine basın.\n3. Konsolda Minecraft → Oyna → Arkadaşlar sekmesini açın ve listeyi yenileyin.\n4. Katılmak için \"MCCompanion\" adlı yerel ağ sunucusunu seçin.\n\nBu mod neden var:\n- Hiçbir şey MCCompanion sunucularından geçmez. Trafiği cihazınız kendisi iletir, bu yüzden aktarıcılarımıza ulaşılamadığında bile çalışmaya devam eder.\n- Oturum açmanız gerekmez.\n\nUnutmayın:\n- Uygulamanın tüm oturum boyunca açık ve ekranda kalması gerekir. Kapatmak veya başka bir uygulamaya geçmek bağlantıyı sonlandırır.\n- Yalnızca Bedrock sunucuları. Java sunucuları için, protokol çevirisini bizim tarafımızda yapan Java modunu kullanın.\n- Pil tüketimi diğer modlara göre daha yüksektir.';
 }

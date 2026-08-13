@@ -2707,4 +2707,20 @@ class AppLocalizationsAr extends AppLocalizations {
   String defaultServerSet(String name) {
     return 'سيتم فتح $name افتراضيًا';
   }
+
+  @override
+  String get labelDirect => 'مباشر';
+
+  @override
+  String get startDirectMode => 'بدء الوضع المباشر';
+
+  @override
+  String get howToDirectTitle => 'الوضع المباشر';
+
+  @override
+  String get howToDirectSubtitle => 'اللعب دون المرور بخوادمنا';
+
+  @override
+  String get howToDirectBody =>
+      'الوضع المباشر: جهازك هو الاتصال نفسه.\n1. تأكد من أن الجهاز الذي يشغّل MCCompanion ووحدة التحكم على الشبكة المحلية نفسها.\n2. أدخل عنوان خادم Bedrock والمنفذ، ثم اضغط على \"بدء الوضع المباشر\".\n3. على وحدة التحكم افتح Minecraft ← Play ← تبويب Friends وحدّث القائمة.\n4. اختر خادم الشبكة المحلية المسمى \"MCCompanion\" للانضمام.\n\nلماذا يوجد هذا الوضع:\n- لا يمر أي شيء عبر خوادم MCCompanion. جهازك هو من يمرر البيانات، لذا يستمر هذا في العمل حتى عندما يتعذر الوصول إلى مرحّلاتنا.\n- لا حاجة إلى تسجيل الدخول.\n\nانتبه إلى:\n- يجب أن يبقى التطبيق مفتوحًا وظاهرًا على الشاشة طوال الجلسة. إغلاقه أو الانتقال إلى تطبيق آخر ينهي الاتصال.\n- خوادم Bedrock فقط. لخوادم Java استخدم وضع Java الذي يتولى الترجمة من جهتنا.\n- استهلاك البطارية أعلى منه في الأوضاع الأخرى.';
 }
