@@ -1986,7 +1986,7 @@
   "makeDefaultServer": "Jadikan server default",
   "isDefaultServer": "Dibuka secara default",
   "defaultServerSet": "{name} akan dibuka secara default",
-  "labelDirect": "Mode Proxy/Langsung",
+  "labelDirect": "Proxy/Langsung",
   "startDirectMode": "Mulai Mode Proxy/Langsung",
   "howToDirectTitle": "Mode Proxy/Langsung",
   "howToDirectSubtitle": "Bermain tanpa melewati server kami",
