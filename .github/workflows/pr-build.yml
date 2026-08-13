@@ -165,6 +165,9 @@ jobs:
       - name: Enable Linux desktop
         run: flutter config --enable-linux-desktop
 
+      - name: Regenerate Linux Flutter files
+        run: flutter create --platforms=linux .
+
       - name: Install dependencies
         run: flutter pub get
 
