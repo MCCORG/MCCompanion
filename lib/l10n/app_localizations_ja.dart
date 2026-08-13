@@ -2680,17 +2680,31 @@ class AppLocalizationsJa extends AppLocalizations {
   String get labelDirect => 'ダイレクト';
 
   @override
-  String get startDirectMode => 'ダイレクトモードを開始';
+  String get startDirectMode => 'プロキシ/ダイレクトモードを開始';
 
   @override
-  String get howToDirectTitle => 'ダイレクトモード';
+  String get howToDirectTitle => 'プロキシ/ダイレクトモード';
 
   @override
   String get howToDirectSubtitle => '当方のサーバーを経由せずにプレイ';
 
   @override
   String get howToDirectBody =>
-      'ダイレクトモード: 接続そのものが端末です。\n1. MCCompanion を動かしている端末とコンソールが同じローカルネットワークにあることを確認します。\n2. Bedrock サーバーのアドレスとポートを入力し、「ダイレクトモードを開始」を押します。\n3. コンソールで Minecraft → プレイ → フレンドタブを開き、一覧を更新します。\n4. 「MCCompanion」という名前の LAN サーバーを選んで参加します。\n\nこのモードがある理由:\n- MCCompanion のサーバーを一切経由しません。通信は端末自身が転送するため、当方のリレーに接続できない場合でも使えます。\n- サインインは不要です。\n\n注意点:\n- セッション中はアプリを開いたまま画面に表示しておく必要があります。閉じたり他のアプリに切り替えたりすると接続が切れます。\n- Bedrock サーバーのみ対応です。Java サーバーには、当方側でプロトコル変換を行う Java モードをお使いください。\n- 他のモードよりバッテリーを多く消費します。\n- リソースパックは適用されません。リソースパックは中継サーバーが処理しますが、このモードはそれを経由しません。';
+      'プロキシ/ダイレクトモード: 接続そのものが端末です。
+1. MCCompanion を動かしている端末とコンソールが同じローカルネットワークにあることを確認します。
+2. Bedrock サーバーのアドレスとポートを入力し、「プロキシ/ダイレクトモードを開始」を押します。
+3. コンソールで Minecraft → プレイ → フレンドタブを開き、一覧を更新します。
+4. 「MCCompanion」という名前の LAN サーバーを選んで参加します。
+
+このモードがある理由:
+- MCCompanion のサーバーを一切経由しません。通信は端末自身が転送するため、当方のリレーに接続できない場合でも使えます。
+- サインインは不要です。
+
+注意点:
+- セッション中はアプリを開いたまま画面に表示しておく必要があります。閉じたり他のアプリに切り替えたりすると接続が切れます。
+- Bedrock サーバーのみ対応です。Java サーバーには、当方側でプロトコル変換を行う Java モードをお使いください。
+- 他のモードよりバッテリーを多く消費します。
+- リソースパックは適用されません。リソースパックは中継サーバーが処理しますが、このモードはそれを経由しません。';
 
   @override
   String directHostNotFound(String host) {
@@ -2712,10 +2726,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get directStartAnyway => 'それでも開始';
 
   @override
-  String get directNoResourcePack => 'ダイレクトモードではリソースパックは使えません。';
+  String get directNoResourcePack => 'プロキシ/ダイレクトモードではリソースパックは使えません。';
 
   @override
   String directAddressNotSupported(String host) {
-    return '$host は IPv6 アドレスです。ダイレクトモードは IPv4 のみ対応しています。IPv4 アドレスかホスト名をご利用ください。';
+    return '$host は IPv6 アドレスです。プロキシ/ダイレクトモードは IPv4 のみ対応しています。IPv4 アドレスかホスト名をご利用ください。';
   }
 }
