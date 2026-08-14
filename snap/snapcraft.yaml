@@ -8,7 +8,7 @@ description: |
 base: core22
 grade: stable
 confinement: strict
-icon: logo.png
+icon: snap/local/logo.png
 
 architectures:
   - build-on: amd64
