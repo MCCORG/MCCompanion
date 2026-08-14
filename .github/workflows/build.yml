@@ -258,9 +258,15 @@ jobs:
 
   build-flatpak:
     name: Build Flatpak Bundle
+    needs: [build-linux]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: linux-tarball
+          path: /tmp/
 
       - name: Update Flatpak metadata version
         shell: bash
@@ -282,7 +288,7 @@ jobs:
           version = sys.argv[1]
           release_date = sys.argv[2]
 
-          path = Path("flatpak/com.mccorg.MCCompanion.metainfo.xml")
+          path = Path("flatpak/net.mccompanion.MCCompanion.metainfo.xml")
           text = path.read_text()
 
           text, count = re.subn(
@@ -310,27 +316,10 @@ jobs:
           print(f"Flatpak metadata updated: {version} ({release_date})")
           PY
 
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.44.0'
-          channel: stable
-          cache: true
-
-      - name: Cache pub dependencies
-        uses: actions/cache@v5
-        with:
-          path: ~/.pub-cache
-          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-pub-
-
       - name: Install Linux build dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y \
-            clang cmake libgtk-3-dev libwebkit2gtk-4.1-dev \
-            ninja-build pkg-config python3-yaml \
-            flatpak flatpak-builder
+          sudo apt-get install -y python3-yaml flatpak flatpak-builder
 
       - name: Add Flathub remote
         run: |
@@ -343,38 +332,24 @@ jobs:
             org.freedesktop.Platform//24.08 \
             org.freedesktop.Sdk//24.08
 
-      - name: Enable Linux desktop
-        run: flutter config --enable-linux-desktop
-
-      - name: Regenerate Linux Flutter files
-        run: flutter create --platforms=linux --project-name mccompanion .
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Build Linux
-        run: flutter build linux --release
-
       - name: Prepare Flatpak sources
         run: |
-          cp assets/images/logo.png flatpak/com.mccorg.MCCompanion.png
-          tar -C build/linux/x64/release -czf /tmp/MCCompanion-linux-x64.tar.gz bundle
-          ARCHIVE_SHA256=$(sha256sum /tmp/MCCompanion-linux-x64.tar.gz | awk '{print $1}')
+          cp assets/images/logo.png flatpak/net.mccompanion.MCCompanion.png
           python3 - <<EOF
           import yaml
 
-          with open('flatpak/com.mccorg.MCCompanion.yml') as f:
+          with open('flatpak/net.mccompanion.MCCompanion.yml') as f:
               data = yaml.safe_load(f)
 
           for mod in data['modules']:
               for src in mod.get('sources', []):
                   if src.get('type') == 'archive' and 'url' in src:
                       del src['url']
-                      del src['sha256']
+                      src.pop('sha256', None)
                       src.pop('x-checker-data', None)
                       src['path'] = '/tmp/MCCompanion-linux-x64.tar.gz'
 
-          with open('/tmp/com.mccorg.MCCompanion.yml', 'w') as f:
+          with open('/tmp/net.mccompanion.MCCompanion.yml', 'w') as f:
               yaml.dump(data, f, default_flow_style=False)
           EOF
 
@@ -386,12 +361,12 @@ jobs:
             --force-clean \
             --repo=/tmp/flatpak-repo \
             /tmp/flatpak-build \
-            /tmp/com.mccorg.MCCompanion.yml
+            /tmp/net.mccompanion.MCCompanion.yml
 
           flatpak build-bundle \
             /tmp/flatpak-repo \
             MCCompanion-linux.flatpak \
-            com.mccorg.MCCompanion
+            net.mccompanion.MCCompanion
 
       - uses: actions/upload-artifact@v6
         with:
@@ -400,9 +375,15 @@ jobs:
 
   build-snap:
     name: Build Snap Package
+    needs: [build-linux]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: linux-tarball
+          path: /tmp/
 
       - name: Update Snap version from pubspec
         shell: bash
@@ -438,42 +419,6 @@ jobs:
 
           print(f"Snap version updated: {version}")
           PY
-
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.44.0'
-          channel: stable
-          cache: true
-
-      - name: Cache pub dependencies
-        uses: actions/cache@v5
-        with:
-          path: ~/.pub-cache
-          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-pub-
-
-      - name: Install Linux build dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            clang cmake libgtk-3-dev libwebkit2gtk-4.1-dev \
-            ninja-build pkg-config
-
-      - name: Enable Linux desktop
-        run: flutter config --enable-linux-desktop
-
-      - name: Regenerate Linux Flutter files
-        run: flutter create --platforms=linux --project-name mccompanion .
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Build Linux
-        run: flutter build linux --release
-
-      - name: Archive Linux build for snap
-        run: tar -C build/linux/x64/release -czf /tmp/MCCompanion-linux-x64.tar.gz bundle
 
       - name: Patch snapcraft source to local archive
         run: |
