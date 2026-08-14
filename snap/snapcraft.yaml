@@ -8,6 +8,7 @@ description: |
 base: core22
 grade: stable
 confinement: strict
+icon: logo.png
 
 architectures:
   - build-on: amd64
