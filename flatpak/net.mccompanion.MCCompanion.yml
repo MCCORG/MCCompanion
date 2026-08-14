@@ -13,17 +13,18 @@ finish-args:
   - --device=dri
   # Network access (server pinger, wiki, Firebase)
   - --share=network
-  # Persistent app data (server list, settings)
-  - --filesystem=xdg-data/MCCompanion:create
-  # Notifications (local notifications plugin)
-  - --talk-name=org.freedesktop.Notifications
-  # File picker (import/export world files)
-  - --talk-name=org.freedesktop.portal.FileChooser
   # Allow connectivity_plus to communicate with NetworkManager via System D-Bus
-  - --socket=system-bus
   - --system-talk-name=org.freedesktop.NetworkManager
+  # Grant access to host Documents folder
+  - --filesystem=xdg-documents
 
 modules:
+  - name: zenity
+    buildsystem: meson
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/zenity/4.0/zenity-4.0.1.tar.xz
+        sha256: 0c2f537813b10f728470d9d05d6c95713db2512f9c95096e1e85b1a6739605e6
   - name: MCCompanion
     buildsystem: simple
     build-commands:
