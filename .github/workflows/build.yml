@@ -262,6 +262,54 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      - name: Update Flatpak metadata version
+        shell: bash
+        run: |
+          VERSION="$(sed -nE "s/^version: *['\"]?([0-9]+\.[0-9]+\.[0-9]+)(\+[0-9]+)?['\"]?.*/\1/p" pubspec.yaml | head -n1)"
+
+          if [ -z "$VERSION" ]; then
+            echo "Failed to determine version from pubspec.yaml"
+            exit 1
+          fi
+
+          RELEASE_DATE="$(date -u +%Y-%m-%d)"
+
+          python3 - "$VERSION" "$RELEASE_DATE" <<'PY'
+          import re
+          import sys
+          from pathlib import Path
+
+          version = sys.argv[1]
+          release_date = sys.argv[2]
+
+          path = Path("flatpak/com.mccorg.MCCompanion.metainfo.xml")
+          text = path.read_text()
+
+          text, count = re.subn(
+              r'(<release\s+version=")[^"]+(")',
+              rf'\g<1>{version}\g<2>',
+              text,
+              count=1,
+          )
+
+          if count != 1:
+              raise SystemExit("Could not update Flatpak release version")
+
+          text, count = re.subn(
+              rf'(<release\s+version="{re.escape(version)}"\s+date=")[^"]+(")',
+              rf'\g<1>{release_date}\g<2>',
+              text,
+              count=1,
+          )
+
+          if count != 1:
+              raise SystemExit("Could not update Flatpak release date")
+
+          path.write_text(text)
+
+          print(f"Flatpak metadata updated: {version} ({release_date})")
+          PY
+
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.44.0'
@@ -355,6 +403,41 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+
+      - name: Update Snap version from pubspec
+        shell: bash
+        run: |
+          VERSION="$(sed -nE "s/^version: *['\"]?([0-9]+\.[0-9]+\.[0-9]+)(\+[0-9]+)?['\"]?.*/\1/p" pubspec.yaml | head -n1)"
+
+          if [ -z "$VERSION" ]; then
+            echo "Failed to determine version from pubspec.yaml"
+            exit 1
+          fi
+
+          python3 - "$VERSION" <<'PY'
+          import re
+          import sys
+          from pathlib import Path
+
+          version = sys.argv[1]
+
+          path = Path("snap/snapcraft.yaml")
+          text = path.read_text()
+
+          text, count = re.subn(
+              r"(?m)^version:\s*['\"][^'\"]+['\"]\s*$",
+              f"version: '{version}'",
+              text,
+              count=1,
+          )
+
+          if count != 1:
+              raise SystemExit("Could not update version in snap/snapcraft.yaml")
+
+          path.write_text(text)
+
+          print(f"Snap version updated: {version}")
+          PY
 
       - uses: subosito/flutter-action@v2
         with:
