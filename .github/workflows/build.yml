@@ -471,7 +471,7 @@ jobs:
         with:
           tag_name: dev
           name: Development Build
-          prerelease: false
+          prerelease: true
           body: |
             Automated development build from commit ${{ github.sha }} on branch `${{ github.ref_name }}`.
             This is a development build. If you don't know what you are doing, please don't install it.
