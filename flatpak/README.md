@@ -15,8 +15,9 @@ This directory contains the files needed to distribute MCCompanion via
 ## CI workflow
 
 `.github/workflows/flatpak.yml` builds a self-contained `.flatpak` bundle
-whenever a version tag (`v*`) is pushed and attaches it to the GitHub Release.
-Users can install it with:
+(and a `.snap` package) on every push to `main` and attaches both to the
+`dev` GitHub Release. A `[beta]` commit prefix also attaches them to the
+`beta` release. Users can install it with:
 
 ```bash
 flatpak install MCCompanion-linux.flatpak
