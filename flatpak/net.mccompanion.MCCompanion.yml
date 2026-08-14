@@ -1,4 +1,4 @@
-app-id: com.mccorg.MCCompanion
+app-id: net.mccompanion.MCCompanion
 runtime: org.gnome.Platform
 runtime-version: '47'
 sdk: org.gnome.Sdk
@@ -32,18 +32,18 @@ modules:
       - cp -r lib /app/bin/lib
       - cp -r data /app/bin/data
       # Desktop entry
-      - install -Dm644 com.mccorg.MCCompanion.desktop /app/share/applications/com.mccorg.MCCompanion.desktop
+      - install -Dm644 net.mccompanion.MCCompanion.desktop /app/share/applications/net.mccompanion.MCCompanion.desktop
       # App icon (256×256 PNG)
-      - install -Dm644 com.mccorg.MCCompanion.png /app/share/icons/hicolor/256x256/apps/com.mccorg.MCCompanion.png
+      - install -Dm644 net.mccompanion.MCCompanion.png /app/share/icons/hicolor/256x256/apps/net.mccompanion.MCCompanion.png
       # AppStream metainfo
-      - install -Dm644 com.mccorg.MCCompanion.metainfo.xml /app/share/metainfo/com.mccorg.MCCompanion.metainfo.xml
+      - install -Dm644 net.mccompanion.MCCompanion.metainfo.xml /app/share/metainfo/net.mccompanion.MCCompanion.metainfo.xml
     sources:
       - type: archive
         url: https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
         sha256: 39981a793c91400eb627868ccb4e608e765ad41d805feda3861a5f9857a98a43
       - type: file
-        path: com.mccorg.MCCompanion.desktop
+        path: net.mccompanion.MCCompanion.desktop
       - type: file
-        path: com.mccorg.MCCompanion.metainfo.xml
+        path: net.mccompanion.MCCompanion.metainfo.xml
       - type: file
-        path: com.mccorg.MCCompanion.png
+        path: net.mccompanion.MCCompanion.png
