@@ -49,3 +49,5 @@ parts:
       MCCompanion: bin/MCCompanion
       lib: bin/lib
       data: bin/data
+    stage-packages:
+      - zenity
