@@ -2,7 +2,7 @@
 Name=MCCompanion
 Comment=A Minecraft companion app
 Exec=MCCompanion
-Icon=com.mccorg.MCCompanion
+Icon=net.mccompanion.MCCompanion
 Type=Application
 Categories=Game;
 StartupNotify=true
