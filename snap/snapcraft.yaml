@@ -30,7 +30,7 @@ parts:
   mccompanion:
     plugin: dump
     # Download the pre-built Flutter Linux tarball from GitHub Releases.
-    source: https://github.com/MCCORG/MCCompanion/releases/latest/download/MCCompanion-linux-x64.tar.gz
+    source: https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
     source-type: tar
     # After dump the tarball contents land at the part root; move them to bin/
     organize:
