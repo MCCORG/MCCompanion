@@ -45,9 +45,10 @@ parts:
     source-type: tar
     # After dump, the Flutter build output lives under bundle/; move it to bin/
     organize:
-      bundle/MCCompanion: bin/MCCompanion
-      bundle/lib: bin/lib
-      bundle/data: bin/data
+      MCCompanion: bin/MCCompanion
+      lib: bin/lib
+      data: bin/data
     stage-packages:
       - libgtk-3-0
       - libglib2.0-0
+      - libc6
