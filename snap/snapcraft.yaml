@@ -51,4 +51,3 @@ parts:
     stage-packages:
       - libgtk-3-0
       - libglib2.0-0
-      - libc6
