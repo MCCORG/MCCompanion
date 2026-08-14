@@ -6,6 +6,15 @@ description: |
   Ping and monitor your servers, browse the wiki, manage skins, and more.
 
 base: core22
+source-code:
+  - https://github.com/MCCORG/MCCompanion
+license: GPL-3.0+
+contact:
+  - https://mccompanion.net/contact
+issues:
+  - https://github.com/MCCORG/MCCompanion/issues
+website:
+  - https://mccompanion.net
 grade: stable
 confinement: strict
 icon: snap/local/logo.png
