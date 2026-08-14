@@ -334,7 +334,6 @@ jobs:
 
       - name: Prepare Flatpak sources
         run: |
-          cp assets/images/logo.png flatpak/net.mccompanion.MCCompanion.png
           python3 - <<EOF
           import yaml
 
@@ -439,7 +438,7 @@ jobs:
         run: sudo snap install snapcraft --classic
 
       - name: Build snap
-        run: snapcraft --destructive-mode
+        run: snapcraft pack
 
       - name: Rename snap artifact
         run: mv *.snap MCCompanion-linux.snap
