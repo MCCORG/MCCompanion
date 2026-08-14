@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -255,9 +256,174 @@ jobs:
           name: linux-tarball
           path: MCCompanion-linux-x64.tar.gz
 
+  build-flatpak:
+    name: Build Flatpak Bundle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.44.0'
+          channel: stable
+          cache: true
+
+      - name: Cache pub dependencies
+        uses: actions/cache@v5
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+
+      - name: Install Linux build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            clang cmake libgtk-3-dev libwebkit2gtk-4.1-dev \
+            ninja-build pkg-config \
+            flatpak flatpak-builder
+
+      - name: Add Flathub remote
+        run: |
+          flatpak remote-add --if-not-exists --user flathub \
+            https://dl.flathub.org/repo/flathub.flatpakrepo
+
+      - name: Install Flatpak runtime and SDK
+        run: |
+          flatpak install --user --noninteractive flathub \
+            org.freedesktop.Platform//24.08 \
+            org.freedesktop.Sdk//24.08
+
+      - name: Enable Linux desktop
+        run: flutter config --enable-linux-desktop
+
+      - name: Regenerate Linux Flutter files
+        run: flutter create --platforms=linux --project-name mccompanion .
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Linux
+        run: flutter build linux --release
+
+      - name: Prepare Flatpak sources
+        run: |
+          cp assets/images/logo.png flatpak/com.mccorg.MCCompanion.png
+          tar -C build/linux/x64/release -czf /tmp/MCCompanion-linux-x64.tar.gz bundle
+          ARCHIVE_SHA256=$(sha256sum /tmp/MCCompanion-linux-x64.tar.gz | awk '{print $1}')
+          python3 - <<EOF
+          import yaml
+
+          with open('flatpak/com.mccorg.MCCompanion.yml') as f:
+              data = yaml.safe_load(f)
+
+          for mod in data['modules']:
+              for src in mod.get('sources', []):
+                  if src.get('type') == 'archive' and 'url' in src:
+                      del src['url']
+                      del src['sha256']
+                      src.pop('x-checker-data', None)
+                      src['path'] = '/tmp/MCCompanion-linux-x64.tar.gz'
+
+          with open('/tmp/com.mccorg.MCCompanion.yml', 'w') as f:
+              yaml.dump(data, f, default_flow_style=False)
+          EOF
+
+      - name: Build Flatpak bundle
+        run: |
+          flatpak-builder \
+            --user \
+            --install-deps-from=flathub \
+            --force-clean \
+            --repo=/tmp/flatpak-repo \
+            /tmp/flatpak-build \
+            /tmp/com.mccorg.MCCompanion.yml
+
+          flatpak build-bundle \
+            /tmp/flatpak-repo \
+            MCCompanion-linux.flatpak \
+            com.mccorg.MCCompanion
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: linux-flatpak
+          path: MCCompanion-linux.flatpak
+
+  build-snap:
+    name: Build Snap Package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.44.0'
+          channel: stable
+          cache: true
+
+      - name: Cache pub dependencies
+        uses: actions/cache@v5
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+
+      - name: Install Linux build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            clang cmake libgtk-3-dev libwebkit2gtk-4.1-dev \
+            ninja-build pkg-config
+
+      - name: Enable Linux desktop
+        run: flutter config --enable-linux-desktop
+
+      - name: Regenerate Linux Flutter files
+        run: flutter create --platforms=linux --project-name mccompanion .
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Linux
+        run: flutter build linux --release
+
+      - name: Archive Linux build for snap
+        run: tar -C build/linux/x64/release -czf /tmp/MCCompanion-linux-x64.tar.gz bundle
+
+      - name: Patch snapcraft source to local archive
+        run: |
+          python3 - <<EOF
+          import yaml
+
+          with open('snap/snapcraft.yaml') as f:
+              data = yaml.safe_load(f)
+
+          data['parts']['mccompanion']['source'] = '/tmp/MCCompanion-linux-x64.tar.gz'
+          data['parts']['mccompanion']['source-type'] = 'tar'
+
+          with open('snap/snapcraft.yaml', 'w') as f:
+              yaml.dump(data, f, default_flow_style=False)
+          EOF
+
+      - name: Install snapcraft
+        run: sudo snap install snapcraft --classic
+
+      - name: Build snap
+        run: snapcraft --destructive-mode
+
+      - name: Rename snap artifact
+        run: mv *.snap MCCompanion-linux.snap
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: linux-snap
+          path: MCCompanion-linux.snap
+
   release:
     name: Create or Update dev Release
-    needs: [build-android, build-windows, build-macos, build-linux]
+    needs: [build-android, build-windows, build-macos, build-linux, build-flatpak, build-snap]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -287,6 +453,16 @@ jobs:
           name: linux-tarball
           path: artifacts/
 
+      - uses: actions/download-artifact@v8
+        with:
+          name: linux-flatpak
+          path: artifacts/
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: linux-snap
+          path: artifacts/
+
       - name: Rename Android APK
         run: mv artifacts/app-release.apk artifacts/MCCompanion-android.apk
 
@@ -306,11 +482,13 @@ jobs:
             artifacts/MCCompanion-macos.dmg
             artifacts/MCCompanion-linux-x64.tar.gz
             artifacts/MCCompanion.msix
+            artifacts/MCCompanion-linux.flatpak
+            artifacts/MCCompanion-linux.snap
 
   notify-discord:
     name: Notify Discord
     if: ${{ always() }}
-    needs: [build-android, build-windows, build-macos, build-linux, release]
+    needs: [build-android, build-windows, build-macos, build-linux, build-flatpak, build-snap, release]
     runs-on: ubuntu-latest
     permissions: {}
     steps:
@@ -321,6 +499,8 @@ jobs:
           WINDOWS_RESULT: ${{ needs.build-windows.result }}
           MACOS_RESULT: ${{ needs.build-macos.result }}
           LINUX_RESULT: ${{ needs.build-linux.result }}
+          FLATPAK_RESULT: ${{ needs.build-flatpak.result }}
+          SNAP_RESULT: ${{ needs.build-snap.result }}
           RELEASE_RESULT: ${{ needs.release.result }}
           REPOSITORY: ${{ github.repository }}
           BRANCH: ${{ github.ref_name }}
@@ -338,7 +518,7 @@ jobs:
 
           OVERALL_STATUS="✅ Build Succeeded"
           EMBED_COLOR=5763719
-          if [ "$ANDROID_RESULT" != "success" ] || [ "$WINDOWS_RESULT" != "success" ] || [ "$MACOS_RESULT" != "success" ] || [ "$LINUX_RESULT" != "success" ] || [ "$RELEASE_RESULT" != "success" ]; then
+          if [ "$ANDROID_RESULT" != "success" ] || [ "$WINDOWS_RESULT" != "success" ] || [ "$MACOS_RESULT" != "success" ] || [ "$LINUX_RESULT" != "success" ] || [ "$FLATPAK_RESULT" != "success" ] || [ "$SNAP_RESULT" != "success" ] || [ "$RELEASE_RESULT" != "success" ]; then
             OVERALL_STATUS="❌ Build Failed"
             EMBED_COLOR=15548997
           fi
@@ -360,6 +540,8 @@ jobs:
             --arg windows "$WINDOWS_RESULT" \
             --arg macos "$MACOS_RESULT" \
             --arg linux "$LINUX_RESULT" \
+            --arg flatpak "$FLATPAK_RESULT" \
+            --arg snap "$SNAP_RESULT" \
             --arg release "$RELEASE_RESULT" \
             --arg releasesUrl "$RELEASES_URL" \
             --argjson color "$EMBED_COLOR" \
@@ -380,6 +562,8 @@ jobs:
                     { name: "Windows", value: $windows, inline: true },
                     { name: "macOS", value: $macos, inline: true },
                     { name: "Linux", value: $linux, inline: true },
+                    { name: "Flatpak", value: $flatpak, inline: true },
+                    { name: "Snap", value: $snap, inline: true },
                     { name: "Release", value: $release, inline: true },
                     { name: "Commit", value: ("[" + ($sha | .[0:7]) + "](" + $commitUrl + ")" + (if $commitSubject != "" then " " + $commitSubject else "" end)), inline: false },
                     { name: "Releases Page", value: ("[View Releases](" + $releasesUrl + ")"), inline: false }
@@ -402,8 +586,8 @@ jobs:
 
   release-beta:
     name: Create or Update beta Release
-    needs: [build-android, build-windows, build-macos, build-linux]
-    if: ${{ needs.build-android.result == 'success' && needs.build-windows.result == 'success' && needs.build-macos.result == 'success' && needs.build-linux.result == 'success' && startsWith(github.event.head_commit.message, '[beta]') }}
+    needs: [build-android, build-windows, build-macos, build-linux, build-flatpak, build-snap]
+    if: ${{ needs.build-android.result == 'success' && needs.build-windows.result == 'success' && needs.build-macos.result == 'success' && needs.build-linux.result == 'success' && needs.build-flatpak.result == 'success' && needs.build-snap.result == 'success' && startsWith(github.event.head_commit.message, '[beta]') }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -433,6 +617,16 @@ jobs:
           name: linux-tarball
           path: artifacts/
 
+      - uses: actions/download-artifact@v8
+        with:
+          name: linux-flatpak
+          path: artifacts/
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: linux-snap
+          path: artifacts/
+
       - name: Rename Android APK
         run: mv artifacts/app-release.apk artifacts/MCCompanion-android.apk
 
@@ -453,6 +647,80 @@ jobs:
             artifacts/MCCompanion-macos.dmg
             artifacts/MCCompanion-linux-x64.tar.gz
             artifacts/MCCompanion.msix
+            artifacts/MCCompanion-linux.flatpak
+            artifacts/MCCompanion-linux.snap
+
+  publish-snap:
+    name: Publish to Snap Store
+    needs: [build-snap, release-beta]
+    if: ${{ needs.build-snap.result == 'success' && needs.release-beta.result == 'success' }}
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: linux-snap
+          path: artifacts/
+
+      - name: Upload snap to Snap Store (beta channel)
+        env:
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS }}
+        run: |
+          if [ -z "$SNAPCRAFT_STORE_CREDENTIALS" ]; then
+            echo "SNAPCRAFT_STORE_CREDENTIALS secret is not set. Skipping Snap Store upload."
+            exit 0
+          fi
+          sudo snap install snapcraft --classic
+          snapcraft upload artifacts/MCCompanion-linux.snap --release=beta
+
+  publish-flatpak:
+    name: Update Flathub Manifest
+    needs: [build-linux, release-beta]
+    if: ${{ needs.build-linux.result == 'success' && needs.release-beta.result == 'success' }}
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: Update Flathub manifest sha256
+        env:
+          FLATHUB_TOKEN: ${{ secrets.FLATHUB_TOKEN }}
+          FLATHUB_REPO: ${{ secrets.FLATHUB_REPO || 'flathub/com.mccorg.MCCompanion' }}
+          SHA: ${{ github.sha }}
+        run: |
+          if [ -z "$FLATHUB_TOKEN" ]; then
+            echo "FLATHUB_TOKEN secret is not set. Skipping Flathub manifest update."
+            exit 0
+          fi
+
+          # Fetch the tarball that was just published to the beta release
+          TARBALL_URL="https://github.com/${{ github.repository }}/releases/download/beta/MCCompanion-linux-x64.tar.gz"
+          curl -fsSL -o /tmp/MCCompanion-linux-x64.tar.gz "$TARBALL_URL"
+          NEW_SHA256=$(sha256sum /tmp/MCCompanion-linux-x64.tar.gz | awk '{print $1}')
+
+          # Clone the Flathub submission repository and update the manifest
+          git clone "https://x-access-token:${FLATHUB_TOKEN}@github.com/${FLATHUB_REPO}.git" /tmp/flathub-repo
+          cd /tmp/flathub-repo
+
+          python3 - <<EOF
+          import yaml
+
+          with open('com.mccorg.MCCompanion.yml') as f:
+              data = yaml.safe_load(f)
+
+          for mod in data['modules']:
+              for src in mod.get('sources', []):
+                  if src.get('type') == 'archive' and 'url' in src:
+                      src['url'] = '$TARBALL_URL'
+                      src['sha256'] = '$NEW_SHA256'
+
+          with open('com.mccorg.MCCompanion.yml', 'w') as f:
+              yaml.dump(data, f, default_flow_style=False)
+          EOF
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add com.mccorg.MCCompanion.yml
+          git diff --cached --quiet || git commit -m "Update MCCompanion to beta build ${{ github.sha }}"
+          git push
 
   notify-discord-beta:
     name: Notify Discord Beta Release
