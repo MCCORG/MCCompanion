@@ -471,7 +471,7 @@ jobs:
         with:
           tag_name: dev
           name: Development Build
-          prerelease: true
+          prerelease: false
           body: |
             Automated development build from commit ${{ github.sha }} on branch `${{ github.ref_name }}`.
             This is a development build. If you don't know what you are doing, please don't install it.
@@ -651,9 +651,9 @@ jobs:
             artifacts/MCCompanion-linux.snap
 
   publish-snap:
-    name: Publish to Snap Store
-    needs: [build-snap, release-beta]
-    if: ${{ needs.build-snap.result == 'success' && needs.release-beta.result == 'success' }}
+    name: Publish Dev Build to Snap Store
+    needs: [build-snap, release]
+    if: ${{ needs.build-snap.result == 'success' && needs.release.result == 'success' }}
     runs-on: ubuntu-latest
     permissions: {}
     steps:
@@ -662,7 +662,7 @@ jobs:
           name: linux-snap
           path: artifacts/
 
-      - name: Upload snap to Snap Store (beta channel)
+      - name: Upload snap to Snap Store (edge channel)
         env:
           SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS }}
         run: |
@@ -671,56 +671,7 @@ jobs:
             exit 0
           fi
           sudo snap install snapcraft --classic
-          snapcraft upload artifacts/MCCompanion-linux.snap --release=beta
-
-  publish-flatpak:
-    name: Update Flathub Manifest
-    needs: [build-linux, release-beta]
-    if: ${{ needs.build-linux.result == 'success' && needs.release-beta.result == 'success' }}
-    runs-on: ubuntu-latest
-    permissions: {}
-    steps:
-      - name: Update Flathub manifest sha256
-        env:
-          FLATHUB_TOKEN: ${{ secrets.FLATHUB_TOKEN }}
-          FLATHUB_REPO: ${{ secrets.FLATHUB_REPO || 'flathub/com.mccorg.MCCompanion' }}
-          SHA: ${{ github.sha }}
-        run: |
-          if [ -z "$FLATHUB_TOKEN" ]; then
-            echo "FLATHUB_TOKEN secret is not set. Skipping Flathub manifest update."
-            exit 0
-          fi
-
-          # Fetch the tarball that was just published to the beta release
-          TARBALL_URL="https://github.com/${{ github.repository }}/releases/download/beta/MCCompanion-linux-x64.tar.gz"
-          curl -fsSL -o /tmp/MCCompanion-linux-x64.tar.gz "$TARBALL_URL"
-          NEW_SHA256=$(sha256sum /tmp/MCCompanion-linux-x64.tar.gz | awk '{print $1}')
-
-          # Clone the Flathub submission repository and update the manifest
-          git clone "https://x-access-token:${FLATHUB_TOKEN}@github.com/${FLATHUB_REPO}.git" /tmp/flathub-repo
-          cd /tmp/flathub-repo
-
-          python3 - <<EOF
-          import yaml
-
-          with open('com.mccorg.MCCompanion.yml') as f:
-              data = yaml.safe_load(f)
-
-          for mod in data['modules']:
-              for src in mod.get('sources', []):
-                  if src.get('type') == 'archive' and 'url' in src:
-                      src['url'] = '$TARBALL_URL'
-                      src['sha256'] = '$NEW_SHA256'
-
-          with open('com.mccorg.MCCompanion.yml', 'w') as f:
-              yaml.dump(data, f, default_flow_style=False)
-          EOF
-
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add com.mccorg.MCCompanion.yml
-          git diff --cached --quiet || git commit -m "Update MCCompanion to beta build ${{ github.sha }}"
-          git push
+          snapcraft upload artifacts/MCCompanion-linux.snap --release=edge
 
   notify-discord-beta:
     name: Notify Discord Beta Release
