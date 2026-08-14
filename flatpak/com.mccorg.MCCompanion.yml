@@ -39,11 +39,11 @@ modules:
       # Flathub's update bot (flatpak-external-data-checker) will bump the
       # tag/sha256 automatically when a new release is tagged.
       - type: archive
-        url: https://github.com/MCCORG/MCCompanion/releases/latest/download/MCCompanion-linux-x64.tar.gz
+        url: https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
         sha256: PLACEHOLDER_SHA256
         x-checker-data:
           type: json
-          url: https://api.github.com/repos/MCCORG/MCCompanion/releases/latest
+          url: https://api.github.com/repos/MCCORG/MCCompanion/releases/tags/dev
           version-query: .tag_name
           url-query: '"https://github.com/MCCORG/MCCompanion/releases/download/" + .tag_name + "/MCCompanion-linux-x64.tar.gz"'
       - type: file

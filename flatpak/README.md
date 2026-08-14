@@ -34,8 +34,8 @@ flatpak install MCCompanion-linux.flatpak
 5. Once approved and merged, Flathub's
    [flatpak-external-data-checker](https://github.com/flathub/flatpak-external-data-checker)
    bot will automatically bump the version whenever the published `dev`
-   GitHub release is updated — no manual CI manifest pushes required for
-   future updates.
+   GitHub release is updated by polling `/releases/tags/dev` — no manual
+   CI manifest pushes required for future updates.
 
 ## Auto-updates for end users
 
