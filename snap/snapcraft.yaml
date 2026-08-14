@@ -1,0 +1,42 @@
+name: mccompanion
+version: '4.1.7'
+summary: A Minecraft companion app
+description: |
+  MCCompanion is a feature-rich Minecraft companion application.
+  Ping and monitor your servers, browse the wiki, manage skins, and more.
+
+base: core22
+grade: stable
+confinement: strict
+
+architectures:
+  - build-on: amd64
+
+apps:
+  mccompanion:
+    command: bin/MCCompanion
+    extensions: [gnome]
+    plugs:
+      - network
+      - desktop
+      - desktop-legacy
+      - wayland
+      - x11
+      - opengl
+      - home
+      - removable-media
+
+parts:
+  mccompanion:
+    plugin: dump
+    # Download the pre-built Flutter Linux tarball from GitHub Releases.
+    source: https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
+    source-type: tar
+    # After dump, the Flutter build output lives under bundle/; move it to bin/
+    organize:
+      bundle/MCCompanion: bin/MCCompanion
+      bundle/lib: bin/lib
+      bundle/data: bin/data
+    stage-packages:
+      - libgtk-3-0
+      - libglib2.0-0

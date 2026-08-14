@@ -28,6 +28,7 @@
           "configurations": {
             "android": "1:670852401318:android:9425bef5fdc0149c004c67",
             "ios": "1:670852401318:ios:5d607edeab78971d004c67",
+            "linux": "1:670852401318:web:07f43910010a80e4004c67",
             "macos": "1:670852401318:ios:5d607edeab78971d004c67",
             "windows": "1:670852401318:web:07f43910010a80e4004c67"
           }

@@ -23,13 +23,13 @@ class AuthUser {
     if (_sdkUser != null) {
       await _sdkUser.delete();
     } else {
-      await AuthService._windowsDeleteAccount();
+      await AuthService._desktopDeleteAccount();
     }
   }
 }
 
 class AuthService {
-  static const _windowsApiKey = 'AIzaSyDagxbLCjjUSnEG-KpiPyrXVKSb9i6cxXQ';
+  static const _desktopApiKey = 'AIzaSyDagxbLCjjUSnEG-KpiPyrXVKSb9i6cxXQ';
 
   static final FirebaseAuth _auth = FirebaseAuth.instance;
   static final GoogleSignIn _googleSignIn = GoogleSignIn(
@@ -37,17 +37,19 @@ class AuthService {
         '670852401318-1g70oikt58ouipfc09re6ik60odu5vhs.apps.googleusercontent.com',
   );
 
-  static final _windowsUserCtrl = StreamController<AuthUser?>.broadcast();
-  static AuthUser? _windowsUser;
-  static String? _windowsIdToken;
-  static String? _windowsRefreshToken;
-  static DateTime? _windowsTokenExpiry;
+  static final _desktopUserCtrl = StreamController<AuthUser?>.broadcast();
+  static AuthUser? _desktopUser;
+  static String? _desktopIdToken;
+  static String? _desktopRefreshToken;
+  static DateTime? _desktopTokenExpiry;
+
+  static bool get _usesDesktopAuth => Platform.isWindows || Platform.isLinux;
 
   static Stream<AuthUser?> get userStream {
-    if (Platform.isWindows) {
+    if (_usesDesktopAuth) {
       return Stream<AuthUser?>.multi((controller) {
-        controller.add(_windowsUser);
-        final sub = _windowsUserCtrl.stream.listen(
+        controller.add(_desktopUser);
+        final sub = _desktopUserCtrl.stream.listen(
           controller.add,
           onError: controller.addError,
           onDone: controller.close,
@@ -62,7 +64,7 @@ class AuthService {
   }
 
   static AuthUser? get currentUser {
-    if (Platform.isWindows) return _windowsUser;
+    if (_usesDesktopAuth) return _desktopUser;
     final u = _auth.currentUser;
     return u == null
         ? null
@@ -70,15 +72,15 @@ class AuthService {
   }
 
   static Future<String?> getIdToken() async {
-    if (Platform.isWindows) {
-      if (_windowsIdToken != null &&
-          _windowsTokenExpiry != null &&
+    if (_usesDesktopAuth) {
+      if (_desktopIdToken != null &&
+          _desktopTokenExpiry != null &&
           DateTime.now().isAfter(
-            _windowsTokenExpiry!.subtract(const Duration(minutes: 5)),
+            _desktopTokenExpiry!.subtract(const Duration(minutes: 5)),
           )) {
-        await _windowsRefreshIdToken();
+        await _desktopRefreshIdToken();
       }
-      return _windowsIdToken;
+      return _desktopIdToken;
     }
     try {
       return await _auth.currentUser?.getIdToken();
@@ -88,8 +90,8 @@ class AuthService {
   }
 
   static Future<void> signInWithEmail(String email, String password) async {
-    if (Platform.isWindows) {
-      await _windowsEmailAuth(email, password, signUp: false);
+    if (_usesDesktopAuth) {
+      await _desktopEmailAuth(email, password, signUp: false);
       return;
     }
     await _auth.signInWithEmailAndPassword(email: email, password: password);
@@ -99,8 +101,8 @@ class AuthService {
     String email,
     String password,
   ) async {
-    if (Platform.isWindows) {
-      await _windowsEmailAuth(email, password, signUp: true);
+    if (_usesDesktopAuth) {
+      await _desktopEmailAuth(email, password, signUp: true);
       return;
     }
     await _auth.createUserWithEmailAndPassword(
@@ -110,20 +112,20 @@ class AuthService {
   }
 
   static Future<void> signInWithGoogle() async {
-    if (Platform.isWindows) {
+    if (_usesDesktopAuth) {
       final provider = GoogleAuthProvider();
       final result = await _auth.signInWithProvider(provider);
       final user = result.user;
       if (user == null) return;
-      _windowsIdToken = await user.getIdToken();
-      _windowsRefreshToken = null;
-      _windowsTokenExpiry = DateTime.now().add(const Duration(hours: 1));
-      _windowsUser = AuthUser._(
+      _desktopIdToken = await user.getIdToken();
+      _desktopRefreshToken = null;
+      _desktopTokenExpiry = DateTime.now().add(const Duration(hours: 1));
+      _desktopUser = AuthUser._(
         uid: user.uid,
         email: user.email,
         sdkUser: user,
       );
-      _windowsUserCtrl.add(_windowsUser);
+      _desktopUserCtrl.add(_desktopUser);
       return;
     }
     final googleUser = await _googleSignIn.signIn();
@@ -137,22 +139,22 @@ class AuthService {
   }
 
   static Future<void> signInWithApple() async {
-    if (Platform.isWindows) {
+    if (_usesDesktopAuth) {
       final provider = OAuthProvider('apple.com')
         ..addScope('email')
         ..addScope('name');
       final result = await _auth.signInWithProvider(provider);
       final user = result.user;
       if (user == null) return;
-      _windowsIdToken = await user.getIdToken();
-      _windowsRefreshToken = null;
-      _windowsTokenExpiry = DateTime.now().add(const Duration(hours: 1));
-      _windowsUser = AuthUser._(
+      _desktopIdToken = await user.getIdToken();
+      _desktopRefreshToken = null;
+      _desktopTokenExpiry = DateTime.now().add(const Duration(hours: 1));
+      _desktopUser = AuthUser._(
         uid: user.uid,
         email: user.email,
         sdkUser: user,
       );
-      _windowsUserCtrl.add(_windowsUser);
+      _desktopUserCtrl.add(_desktopUser);
       return;
     }
     final rawNonce = _generateNonce();
@@ -207,19 +209,19 @@ class AuthService {
 
   static Future<void> signOut() async {
     UserService.invalidateMe();
-    if (Platform.isWindows) {
-      _windowsUser = null;
-      _windowsIdToken = null;
-      _windowsRefreshToken = null;
-      _windowsTokenExpiry = null;
-      _windowsUserCtrl.add(null);
+    if (_usesDesktopAuth) {
+      _desktopUser = null;
+      _desktopIdToken = null;
+      _desktopRefreshToken = null;
+      _desktopTokenExpiry = null;
+      _desktopUserCtrl.add(null);
       return;
     }
     await _googleSignIn.signOut();
     await _auth.signOut();
   }
 
-  static Future<void> _windowsEmailAuth(
+  static Future<void> _desktopEmailAuth(
     String email,
     String password, {
     required bool signUp,
@@ -229,7 +231,7 @@ class AuthService {
     final res = await http
         .post(
           Uri.parse(
-            'https://identitytoolkit.googleapis.com/v1/$endpoint?key=$_windowsApiKey',
+            'https://identitytoolkit.googleapis.com/v1/$endpoint?key=$_desktopApiKey',
           ),
           headers: {'Content-Type': 'application/json'},
           body: jsonEncode({
@@ -249,25 +251,34 @@ class AuthService {
       throw _mapRestError(message, signUp: signUp);
     }
 
-    _windowsIdToken = body['idToken'] as String?;
-    _windowsRefreshToken = body['refreshToken'] as String?;
+    _desktopIdToken = body['idToken'] as String?;
+    _desktopRefreshToken = body['refreshToken'] as String?;
     final expiresIn = int.tryParse(body['expiresIn']?.toString() ?? '') ?? 3600;
-    _windowsTokenExpiry = DateTime.now().add(Duration(seconds: expiresIn));
-    _windowsUser = AuthUser._(
+    _desktopTokenExpiry = DateTime.now().add(Duration(seconds: expiresIn));
+    _desktopUser = AuthUser._(
       uid: body['localId'] as String,
       email: (body['email'] as String?) ?? email,
     );
-    _windowsUserCtrl.add(_windowsUser);
+    _desktopUserCtrl.add(_desktopUser);
   }
 
-  static Future<void> _windowsRefreshIdToken() async {
-    final refreshToken = _windowsRefreshToken;
+  static Future<void> _desktopRefreshIdToken() async {
+    final sdkUser = _desktopUser?._sdkUser;
+    if (sdkUser != null) {
+      try {
+        _desktopIdToken = await sdkUser.getIdToken(true);
+        _desktopTokenExpiry = DateTime.now().add(const Duration(hours: 1));
+      } catch (_) {}
+      return;
+    }
+
+    final refreshToken = _desktopRefreshToken;
     if (refreshToken == null) return;
     try {
       final res = await http
           .post(
             Uri.parse(
-              'https://securetoken.googleapis.com/v1/token?key=$_windowsApiKey',
+              'https://securetoken.googleapis.com/v1/token?key=$_desktopApiKey',
             ),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             body:
@@ -276,35 +287,35 @@ class AuthService {
           .timeout(const Duration(seconds: 15));
       if (res.statusCode == 200) {
         final body = jsonDecode(res.body) as Map<String, dynamic>;
-        _windowsIdToken = body['id_token'] as String?;
-        _windowsRefreshToken = body['refresh_token'] as String?;
+        _desktopIdToken = body['id_token'] as String?;
+        _desktopRefreshToken = body['refresh_token'] as String?;
         final expiresIn =
             int.tryParse(body['expires_in']?.toString() ?? '') ?? 3600;
-        _windowsTokenExpiry = DateTime.now().add(Duration(seconds: expiresIn));
+        _desktopTokenExpiry = DateTime.now().add(Duration(seconds: expiresIn));
       }
     } catch (_) {
     }
   }
 
-  static Future<void> _windowsDeleteAccount() async {
-    final token = _windowsIdToken;
+  static Future<void> _desktopDeleteAccount() async {
+    final token = _desktopIdToken;
     if (token == null) return;
     try {
       await http
           .post(
             Uri.parse(
-              'https://identitytoolkit.googleapis.com/v1/accounts:delete?key=$_windowsApiKey',
+              'https://identitytoolkit.googleapis.com/v1/accounts:delete?key=$_desktopApiKey',
             ),
             headers: {'Content-Type': 'application/json'},
             body: jsonEncode({'idToken': token}),
           )
           .timeout(const Duration(seconds: 15));
     } catch (_) {}
-    _windowsUser = null;
-    _windowsIdToken = null;
-    _windowsRefreshToken = null;
-    _windowsTokenExpiry = null;
-    _windowsUserCtrl.add(null);
+    _desktopUser = null;
+    _desktopIdToken = null;
+    _desktopRefreshToken = null;
+    _desktopTokenExpiry = null;
+    _desktopUserCtrl.add(null);
   }
 
   static FirebaseAuthException _mapRestError(

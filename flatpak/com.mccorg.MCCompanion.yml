@@ -1,0 +1,55 @@
+app-id: com.mccorg.MCCompanion
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+command: MCCompanion
+
+finish-args:
+  # Wayland + X11 display
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=ipc
+  # OpenGL
+  - --device=dri
+  # Network access (server pinger, wiki, Firebase)
+  - --share=network
+  # Persistent app data (server list, settings)
+  - --filesystem=xdg-data/MCCompanion:create
+  # Notifications (local notifications plugin)
+  - --talk-name=org.freedesktop.Notifications
+  # File picker (import/export world files)
+  - --talk-name=org.freedesktop.portal.FileChooser
+
+modules:
+  - name: MCCompanion
+    buildsystem: simple
+    build-commands:
+      # Install the pre-built Flutter bundle produced by 'flutter build linux --release'
+      - install -Dm755 bundle/MCCompanion /app/bin/MCCompanion
+      - cp -r bundle/lib /app/bin/lib
+      - cp -r bundle/data /app/bin/data
+      # Desktop entry
+      - install -Dm644 com.mccorg.MCCompanion.desktop /app/share/applications/com.mccorg.MCCompanion.desktop
+      # App icon (256×256 PNG)
+      - install -Dm644 com.mccorg.MCCompanion.png /app/share/icons/hicolor/256x256/apps/com.mccorg.MCCompanion.png
+      # AppStream metainfo
+      - install -Dm644 com.mccorg.MCCompanion.metainfo.xml /app/share/metainfo/com.mccorg.MCCompanion.metainfo.xml
+    sources:
+      # The Flutter Linux build output tarball published in GitHub Releases.
+      # The custom flatpak-external-data-checker workflow (.github/workflows/flatpak-update.yml)
+      # detects updates by sha256 change (rolling dev tag), then opens a PR to bump the hash.
+      - type: archive
+        url: https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
+        sha256: PLACEHOLDER_SHA256
+        x-checker-data:
+          type: rotating-url
+          url: https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
+      - type: file
+        path: com.mccorg.MCCompanion.desktop
+      - type: file
+        path: com.mccorg.MCCompanion.metainfo.xml
+      # Icon: copied from assets/images/logo.png at build time via the CI workflow.
+      # During a Flathub submission this file must be present in the same directory
+      # as the manifest.
+      - type: file
+        path: com.mccorg.MCCompanion.png
