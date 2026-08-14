@@ -37,9 +37,12 @@ flatpak install MCCompanion-linux.flatpak
    GitHub release is updated by polling `/releases/tags/dev` — no manual
    CI manifest pushes required for future updates.
 
-## Auto-updates for end users
+## Auto-updates (Flatpak manifest sha256)
 
-Flatpak checks for updates on every `flatpak update` run.  Most desktop
-environments (GNOME Software, KDE Discover) trigger this automatically in the
-background, giving users the same seamless update experience as the
-Microsoft Store or Mac App Store.
+`.github/workflows/flatpak-update.yml` runs
+[flatpak-external-data-checker](https://github.com/flathub-infra/flatpak-external-data-checker)
+on a schedule (hourly). It downloads the tarball from the `dev` GitHub
+release, computes its sha256, and if it has changed since the last run it
+opens a pull request in this repo with the updated hash. This works with
+the rolling `dev` tag because detection is based on sha256 change, not
+version string change.

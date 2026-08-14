@@ -36,16 +36,14 @@ modules:
       - install -Dm644 com.mccorg.MCCompanion.metainfo.xml /app/share/metainfo/com.mccorg.MCCompanion.metainfo.xml
     sources:
       # The Flutter Linux build output tarball published in GitHub Releases.
-      # Flathub's update bot (flatpak-external-data-checker) will bump the
-      # tag/sha256 automatically when a new release is tagged.
+      # The custom flatpak-external-data-checker workflow (.github/workflows/flatpak-update.yml)
+      # detects updates by sha256 change (rolling dev tag), then opens a PR to bump the hash.
       - type: archive
         url: https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
         sha256: PLACEHOLDER_SHA256
         x-checker-data:
-          type: json
-          url: https://api.github.com/repos/MCCORG/MCCompanion/releases/tags/dev
-          version-query: .tag_name
-          url-query: '"https://github.com/MCCORG/MCCompanion/releases/download/" + .tag_name + "/MCCompanion-linux-x64.tar.gz"'
+          type: rotating-url
+          url: https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
       - type: file
         path: com.mccorg.MCCompanion.desktop
       - type: file
