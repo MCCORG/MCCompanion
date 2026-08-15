@@ -41,7 +41,7 @@ modules:
     sources:
       - type: archive
         url: https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
-        sha256: 6ceed428b3c3cfda33a9be45ed3f6d180f6de4a4991659f11b64bb40c2346ad0
+        sha256: 816a2299f71aa2b25619a02321e279c4161dcccb673f3160dfb2109e0f66dce9
         x-checker-data:
           type: rotating-location
           url: https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
