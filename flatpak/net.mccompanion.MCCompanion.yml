@@ -47,21 +47,21 @@ modules:
           url: https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
       - type: file
         url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.metainfo.xml
-        sha256: ce1f8663153c11f32f0b4bcc1f5e8a288ae55edbf57975390fd60cc73c30c027
+        sha256: ce1f8663153c11f32f0b4bcc1f5e8a288ae55edbf57975390fd60cc73c30c027wwd
         dest-filename: net.mccompanion.MCCompanion.metainfo.xml
         x-checker-data:
           type: rotating-location
           url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.metainfo.xml
       - type: file
         url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.desktop
-        sha256: 73d5677e6a6171ae6bb1b878991ee51a76dda606bdb942f9a2d953ff3703a1c3
+        sha256: 73d5677e6a6171ae6bb1b878991ee51a76dda606bdb942f9a2d953ff3703a1c3wddw
         dest-filename: net.mccompanion.MCCompanion.desktop
         x-checker-data:
           type: rotating-location
           url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.desktop
       - type: file
         url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.png
-        sha256: 0b221eeab164210039031558fe854937d0fb7658699039f967de44358d5ee5f1
+        sha256: 0b221eeab164210039031558fe854937d0fb7658699039f967de44358d5ee5f1dwdwwd
         dest-filename: net.mccompanion.MCCompanion.png
         x-checker-data:
           type: rotating-location
