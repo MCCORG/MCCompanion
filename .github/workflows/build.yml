@@ -439,7 +439,7 @@ jobs:
         run: sudo snap install snapcraft --classic
 
       - name: Build snap
-        run: sudo snapcraft pack
+        run: sudo snapcraft pack --destructive-mode
 
       - name: Rename snap artifact
         run: mv *.snap MCCompanion-linux.snap
