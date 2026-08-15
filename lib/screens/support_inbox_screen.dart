@@ -42,6 +42,7 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
   List<FeedbackTicket> _tickets = [];
   bool _showClosed = false;
   bool _loading = true;
+  _SupportEntry? _selected;
 
   List<_SupportEntry> get _entries {
     String keyFor(String? uid, String username) => uid ?? 'n:$username';
@@ -82,6 +83,13 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
 
   @override
   Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, c) => _build(context, c.maxWidth > 900),
+    );
+  }
+
+  Widget _build(BuildContext context, bool wide) {
+    final l = AppLocalizations.of(context)!;
     final entries = _entries;
     final content = Column(
       children: [
@@ -219,7 +227,12 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
                           final e = entries[i];
                           return _SupportConvTile(
                             entry: e,
+                            selected: _selected?.username == e.username,
                             onTap: () async {
+                              if (wide) {
+                                setState(() => _selected = e);
+                                return;
+                              }
                               await Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (_) => SupportChatScreen(
@@ -240,6 +253,49 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
         ),
       ],
     );
+
+    if (wide) {
+      final sel = _selected;
+      final two = Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          SizedBox(width: 340, child: content),
+          VerticalDivider(width: 1, color: AppTheme.borderGray),
+          Expanded(
+            child: sel == null
+                ? Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.support_agent_rounded,
+                          size: 30,
+                          color: AppTheme.textMuted,
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          l.supportInboxShared,
+                          style: TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 13,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : SupportChatScreen(
+                    key: ValueKey(sel.username),
+                    uid: sel.uid,
+                    username: sel.username,
+                    displayName: sel.label,
+                    embedded: true,
+                  ),
+          ),
+        ],
+      );
+      if (widget.embedded) return two;
+      return SwipeBack(onBack: () => Navigator.of(context).pop(), child: two);
+    }
 
     if (widget.embedded) return content;
     return SwipeBack(onBack: () => Navigator.of(context).pop(), child: content);
@@ -290,7 +346,12 @@ class _FilterButton extends StatelessWidget {
 class _SupportConvTile extends StatelessWidget {
   final _SupportEntry entry;
   final VoidCallback onTap;
-  const _SupportConvTile({required this.entry, required this.onTap});
+  final bool selected;
+  const _SupportConvTile({
+    required this.entry,
+    required this.onTap,
+    this.selected = false,
+  });
 
   List<FeedbackTicket> get tickets => entry.tickets;
 
@@ -338,10 +399,12 @@ class _SupportConvTile extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         decoration: BoxDecoration(
-          color: AppTheme.surface,
+          color: selected ? AppTheme.surfaceRaised : AppTheme.surface,
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
-            color: unread > 0
+            color: selected
+                ? AppTheme.accent
+                : unread > 0
                 ? AppTheme.accent.withValues(alpha: 0.4)
                 : AppTheme.borderGray,
           ),
@@ -415,11 +478,15 @@ class SupportChatScreen extends StatefulWidget {
   final String username;
   final String displayName;
   final String? uid;
+
+  final bool embedded;
+
   const SupportChatScreen({
     this.uid,
     super.key,
     required this.username,
     required this.displayName,
+    this.embedded = false,
   });
 
   @override
@@ -526,13 +593,15 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
         _ => l.fbStatusOpen,
       };
 
-  Widget _ticketsSection(AppLocalizations l) {
+  Widget _ticketsSection(AppLocalizations l, {bool fill = false}) {
     if (_tickets.isEmpty) return const SizedBox.shrink();
     return Container(
-      constraints: const BoxConstraints(maxHeight: 300),
-      decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: AppTheme.borderDim)),
-      ),
+      constraints: fill ? null : const BoxConstraints(maxHeight: 300),
+      decoration: fill
+          ? null
+          : BoxDecoration(
+              border: Border(bottom: BorderSide(color: AppTheme.borderDim)),
+            ),
       child: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
         child: Column(
@@ -771,82 +840,88 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
-    return Scaffold(
-      backgroundColor: AppTheme.background,
-      body: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.only(
-              top: MediaQuery.of(context).padding.top + 6,
-              bottom: 10,
-              left: 4,
-              right: 16,
+    final body = Column(
+      children: [
+        Container(
+          padding: EdgeInsets.only(
+            top: widget.embedded ? 10 : MediaQuery.of(context).padding.top + 6,
+            bottom: 10,
+            left: widget.embedded ? 16 : 4,
+            right: 16,
+          ),
+          decoration: BoxDecoration(
+            color: AppTheme.surface,
+            border: Border(
+              bottom: BorderSide(color: AppTheme.borderGray, width: 0.5),
             ),
-            decoration: BoxDecoration(
-              color: AppTheme.surface,
-              border: Border(
-                bottom: BorderSide(color: AppTheme.borderGray, width: 0.5),
+          ),
+          child: Row(
+            children: [
+              IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  size: 18,
+                  color: AppTheme.textSecondary,
+                ),
+                onPressed: () => Navigator.of(context).pop(),
               ),
-            ),
-            child: Row(
-              children: [
-                IconButton(
-                  icon: Icon(
-                    Icons.arrow_back_ios_new_rounded,
-                    size: 18,
-                    color: AppTheme.textSecondary,
-                  ),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        widget.displayName,
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w700,
-                          color: AppTheme.textPrimary,
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.displayName,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                        color: AppTheme.textPrimary,
                       ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.support_agent_rounded,
-                            size: 11,
-                            color: AppTheme.accent,
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            AppLocalizations.of(context)!.supportReplyingAs,
-                            style: TextStyle(
-                              fontSize: 11,
-                              color: AppTheme.textMuted,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: _loading
-                ? Center(
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                      color: AppTheme.accent,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                  )
-                : SingleChildScrollView(child: _ticketsSection(l)),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.support_agent_rounded,
+                          size: 11,
+                          color: AppTheme.accent,
+                        ),
+                        const SizedBox(width: 4),
+                        Text(
+                          AppLocalizations.of(context)!.supportReplyingAs,
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: AppTheme.textMuted,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+        Expanded(
+          child: _loading
+              ? Center(
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    color: AppTheme.accent,
+                  ),
+                )
+              : Align(
+                  alignment: Alignment.topCenter,
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 720),
+                    child: _ticketsSection(l, fill: true),
+                  ),
+                ),
+        ),
+      ],
     );
+
+    if (widget.embedded) return body;
+    return Scaffold(backgroundColor: AppTheme.background, body: body);
   }
 }

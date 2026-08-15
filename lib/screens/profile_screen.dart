@@ -64,6 +64,7 @@ class ProfileScreenState extends State<ProfileScreen>
   void initState() {
     super.initState();
     _tabs = TabController(length: _tabCount, vsync: this);
+    _tabs.addListener(_onTabChanged);
     _authSubscription = AuthService.userStream.listen((_) => _checkAuth());
     _presenceSub = MessageService.presenceStream.listen(_onPresence);
     _incomingSub = MessageService.incoming.listen((_) => _refreshUnread());
@@ -164,6 +165,10 @@ class ProfileScreenState extends State<ProfileScreen>
     setState(() => _isAdmin = UserService.isAdmin);
   }
 
+  void _onTabChanged() {
+    if (mounted && !_tabs.indexIsChanging) setState(() {});
+  }
+
   void _ensureTabController() {
     if (_tabs.length == _tabCount) return;
     final previous = _tabs;
@@ -173,6 +178,8 @@ class ProfileScreenState extends State<ProfileScreen>
       vsync: this,
       initialIndex: (wanted ?? previous.index).clamp(0, _tabCount - 1),
     );
+    _tabs.addListener(_onTabChanged);
+    previous.removeListener(_onTabChanged);
     if (wanted != null && wanted <= _tabCount - 1) _pendingTab = null;
     WidgetsBinding.instance.addPostFrameCallback((_) => previous.dispose());
   }
@@ -438,21 +445,24 @@ class ProfileScreenState extends State<ProfileScreen>
   }
 
   Widget _buildDesktopLayout(BuildContext context) {
+    final supportOpen = _isAdmin && _tabs.index == _tabCount - 1;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        SizedBox(
-          width: 280,
-          child: ProfileDesktopSidebar(
-            me: _me,
-            onAddFriend: _showAddFriendDialog,
-            onGoToHome: widget.onGoToHome,
-            onGoToConnector: widget.onGoToConnector,
-            onGoToSkins: widget.onGoToSkins,
-            onGoToWiki: widget.onGoToWiki,
+        if (!supportOpen) ...[
+          SizedBox(
+            width: 280,
+            child: ProfileDesktopSidebar(
+              me: _me,
+              onAddFriend: _showAddFriendDialog,
+              onGoToHome: widget.onGoToHome,
+              onGoToConnector: widget.onGoToConnector,
+              onGoToSkins: widget.onGoToSkins,
+              onGoToWiki: widget.onGoToWiki,
+            ),
           ),
-        ),
-        VerticalDivider(width: 1, color: AppTheme.borderGray),
+          VerticalDivider(width: 1, color: AppTheme.borderGray),
+        ],
         Expanded(
           child: Column(
             children: [
