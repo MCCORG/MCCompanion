@@ -341,12 +341,13 @@ jobs:
               data = yaml.safe_load(f)
 
           for mod in data['modules']:
-              for src in mod.get('sources', []):
-                  if src.get('type') == 'archive' and 'url' in src:
-                      del src['url']
-                      src.pop('sha256', None)
-                      src.pop('x-checker-data', None)
-                      src['path'] = '/tmp/MCCompanion-linux-x64.tar.gz'
+              if mod.get('name') == 'MCCompanion':  # <-- Only target MCCompanion
+                  for src in mod.get('sources', []):
+                      if src.get('type') == 'archive':
+                          src.pop('url', None)
+                          src.pop('sha256', None)
+                          src.pop('x-checker-data', None)
+                          src['path'] = '/tmp/MCCompanion-linux-x64.tar.gz'
 
           with open('/tmp/net.mccompanion.MCCompanion.yml', 'w') as f:
               yaml.dump(data, f, default_flow_style=False)
@@ -438,7 +439,7 @@ jobs:
         run: sudo snap install snapcraft --classic
 
       - name: Build snap
-        run: snapcraft pack
+        run: sudo snapcraft pack --destructive-mode
 
       - name: Rename snap artifact
         run: mv *.snap MCCompanion-linux.snap
