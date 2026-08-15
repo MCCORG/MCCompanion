@@ -20,6 +20,14 @@
       <caption>Home dashboard</caption>
     </screenshot>
     <screenshot>
+      <image>https://raw.githubusercontent.com/MCCORG/MCCompanion/main/assets/linux-screenshots/mccompanion-connector.png</image>
+      <caption>Server connector</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/MCCORG/MCCompanion/main/assets/linux-screenshots/mccompanion-partners.png</image>
+      <caption>Partners overview</caption>
+    </screenshot>
+    <screenshot>
       <image>https://raw.githubusercontent.com/MCCORG/MCCompanion/main/assets/linux-screenshots/mccompanion-servertracker.png</image>
       <caption>Server tracker</caption>
     </screenshot>
@@ -38,14 +46,6 @@
     <screenshot>
       <image>https://raw.githubusercontent.com/MCCORG/MCCompanion/main/assets/linux-screenshots/mccompanion-profile.png</image>
       <caption>User profile settings</caption>
-    </screenshot>
-    <screenshot>
-      <image>https://raw.githubusercontent.com/MCCORG/MCCompanion/main/assets/linux-screenshots/mccompanion-connector.png</image>
-      <caption>Server connector</caption>
-    </screenshot>
-    <screenshot>
-      <image>https://raw.githubusercontent.com/MCCORG/MCCompanion/main/assets/linux-screenshots/mccompanion-partners.png</image>
-      <caption>Partners overview</caption>
     </screenshot>
   </screenshots>
   <launchable type="desktop-id">net.mccompanion.MCCompanion.desktop</launchable>
