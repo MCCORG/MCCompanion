@@ -181,3 +181,113 @@ jobs:
         with:
           name: linux.tar.gz
           path: MCCompanion-linux-x64.tar.gz
+
+  build-flatpak:
+    name: Build Flatpak
+    needs: build-linux
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: linux.tar.gz
+          path: /tmp/
+
+      - name: Install Flatpak dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-yaml flatpak flatpak-builder
+
+      - name: Add Flathub remote
+        run: |
+          flatpak remote-add --if-not-exists --user flathub \
+            https://dl.flathub.org/repo/flathub.flatpakrepo
+
+      - name: Install Flatpak runtime and SDK
+        run: |
+          flatpak install --user --noninteractive flathub \
+            org.freedesktop.Platform//24.08 \
+            org.freedesktop.Sdk//24.08
+
+      - name: Prepare Flatpak sources
+        run: |
+          python3 - <<EOF
+          import yaml
+
+          with open("flatpak/net.mccompanion.MCCompanion.yml") as f:
+              data = yaml.safe_load(f)
+
+          for mod in data["modules"]:
+              if mod.get("name") == "MCCompanion":
+                  for src in mod.get("sources", []):
+                      if src.get("type") == "archive":
+                          src.pop("url", None)
+                          src.pop("sha256", None)
+                          src.pop("x-checker-data", None)
+                          src["path"] = "/tmp/MCCompanion-linux-x64.tar.gz"
+
+          with open("/tmp/net.mccompanion.MCCompanion.yml", "w") as f:
+              yaml.dump(data, f, default_flow_style=False)
+          EOF
+
+      - name: Build Flatpak
+        run: |
+          flatpak-builder \
+            --user \
+            --install-deps-from=flathub \
+            --force-clean \
+            --repo=/tmp/flatpak-repo \
+            /tmp/flatpak-build \
+            /tmp/net.mccompanion.MCCompanion.yml
+
+          flatpak build-bundle \
+            /tmp/flatpak-repo \
+            MCCompanion-linux.flatpak \
+            net.mccompanion.MCCompanion
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: MCCompanion-linux.flatpak
+          path: MCCompanion-linux.flatpak
+
+  build-snap:
+    name: Build Snap
+    needs: build-linux
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: linux.tar.gz
+          path: /tmp/
+
+      - name: Patch snapcraft source to local archive
+        run: |
+          python3 - <<EOF
+          import yaml
+
+          with open("snap/snapcraft.yaml") as f:
+              data = yaml.safe_load(f)
+
+          data["parts"]["mccompanion"]["source"] = "/tmp/MCCompanion-linux-x64.tar.gz"
+          data["parts"]["mccompanion"]["source-type"] = "tar"
+
+          with open("snap/snapcraft.yaml", "w") as f:
+              yaml.dump(data, f, default_flow_style=False)
+          EOF
+
+      - name: Install snapcraft
+        run: sudo snap install snapcraft --classic
+
+      - name: Build Snap
+        run: sudo snapcraft pack --destructive-mode
+
+      - name: Rename Snap artifact
+        run: mv *.snap MCCompanion-linux.snap
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: MCCompanion-linux.snap
+          path: MCCompanion-linux.snap

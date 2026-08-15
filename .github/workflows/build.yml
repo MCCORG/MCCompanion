@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  update-flatpak-resource-shas:
+  sync-flatpak-resource-shas:
     name: Sync Flatpak Resource SHAs
     runs-on: ubuntu-latest
     # Grant repository write permissions so git-auto-commit-action can push
@@ -421,7 +421,7 @@ jobs:
 
   build-flatpak:
     name: Build Flatpak Bundle
-    needs: [build-linux]
+    needs: [build-linux, sync-flatpak-resource-shas]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
