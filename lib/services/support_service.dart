@@ -4,16 +4,21 @@ import 'api_client_base.dart';
 import 'feedback_service.dart';
 import '../constants/app_constants.dart';
 import '../models/message_model.dart';
+import '../util/swallowed.dart';
 
 class SupportService {
   static const String _base = AppConstants.apiBase;
   static const Duration _timeout = Duration(seconds: 10);
 
-  static Future<List<FeedbackTicket>> tickets({bool includeClosed = false}) async {
+  static Future<List<FeedbackTicket>> tickets({
+    bool includeClosed = false,
+  }) async {
     try {
       final res = await http
           .get(
-            Uri.parse('$_base/api/admin/feedback?state=${includeClosed ? 'all' : 'open'}&limit=200'),
+            Uri.parse(
+              '$_base/api/admin/feedback?state=${includeClosed ? 'all' : 'open'}&limit=200',
+            ),
             headers: await ApiClientBase.headers(),
           )
           .timeout(_timeout);
@@ -23,7 +28,8 @@ class SupportService {
           .cast<Map<String, dynamic>>()
           .map(FeedbackTicket.fromJson)
           .toList();
-    } catch (_) {
+    } catch (e, st) {
+      swallowed('SupportService.tickets', e, st);
       return [];
     }
   }
@@ -42,12 +48,16 @@ class SupportService {
           .cast<Map<String, dynamic>>()
           .map(FeedbackMessage.fromJson)
           .toList();
-    } catch (_) {
+    } catch (e, st) {
+      swallowed('SupportService.ticketMessages', e, st);
       return [];
     }
   }
 
-  static Future<FeedbackMessage?> replyToTicket(int ticketId, String body) async {
+  static Future<FeedbackMessage?> replyToTicket(
+    int ticketId,
+    String body,
+  ) async {
     try {
       final res = await http
           .post(
@@ -59,12 +69,16 @@ class SupportService {
       if (res.statusCode != 201) return null;
       final data = jsonDecode(res.body) as Map<String, dynamic>;
       return FeedbackMessage.fromJson(data['message'] as Map<String, dynamic>);
-    } catch (_) {
+    } catch (e, st) {
+      swallowed('SupportService.replyToTicket', e, st);
       return null;
     }
   }
 
-  static Future<FeedbackTicket?> setTicketStatus(int ticketId, String status) async {
+  static Future<FeedbackTicket?> setTicketStatus(
+    int ticketId,
+    String status,
+  ) async {
     try {
       final res = await http
           .patch(
@@ -76,7 +90,8 @@ class SupportService {
       if (res.statusCode != 200) return null;
       final data = jsonDecode(res.body) as Map<String, dynamic>;
       return FeedbackTicket.fromJson(data['ticket'] as Map<String, dynamic>);
-    } catch (_) {
+    } catch (e, st) {
+      swallowed('SupportService.setTicketStatus', e, st);
       return null;
     }
   }
@@ -95,7 +110,8 @@ class SupportService {
           .cast<Map<String, dynamic>>()
           .map(ConversationModel.fromJson)
           .toList();
-    } catch (_) {
+    } catch (e, st) {
+      swallowed('SupportService.getConversations', e, st);
       return [];
     }
   }
@@ -135,7 +151,8 @@ class SupportService {
         supportUid: data['supportUid'] as String?,
         sentBy: sentBy,
       );
-    } catch (_) {
+    } catch (e, st) {
+      swallowed('SupportService.getMessages', e, st);
       return (
         messages: <MessageModel>[],
         supportUid: null,
@@ -156,7 +173,8 @@ class SupportService {
           )
           .timeout(_timeout);
       return res.statusCode == 201;
-    } catch (_) {
+    } catch (e, st) {
+      swallowed('SupportService.send', e, st);
       return false;
     }
   }

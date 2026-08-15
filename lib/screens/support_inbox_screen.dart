@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
-import '../models/message_model.dart';
 import '../services/support_service.dart';
 import '../services/feedback_service.dart';
 import '../widgets/components/swipe_back.dart';
@@ -19,21 +18,19 @@ class SupportInboxScreen extends StatefulWidget {
 class _SupportEntry {
   final String? uid;
   final String username;
-  final ConversationModel? conv;
   final List<FeedbackTicket> tickets;
 
   const _SupportEntry({
     required this.username,
     this.uid,
-    this.conv,
     this.tickets = const [],
   });
 
-  String get label => conv?.displayName ?? username;
-  String? get avatarUrl => conv?.avatarUrl;
+  String get label => username;
+  String? get avatarUrl => null;
 
   DateTime get lastActivity {
-    var latest = conv?.lastMessageAt ?? DateTime.fromMillisecondsSinceEpoch(0);
+    var latest = DateTime.fromMillisecondsSinceEpoch(0);
     for (final t in tickets) {
       if (t.createdAt.isAfter(latest)) latest = t.createdAt;
     }
@@ -42,7 +39,6 @@ class _SupportEntry {
 }
 
 class _SupportInboxScreenState extends State<SupportInboxScreen> {
-  List<ConversationModel> _conversations = [];
   List<FeedbackTicket> _tickets = [];
   bool _showClosed = false;
   bool _loading = true;
@@ -50,14 +46,6 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
   List<_SupportEntry> get _entries {
     String keyFor(String? uid, String username) => uid ?? 'n:$username';
     final byKey = <String, _SupportEntry>{};
-
-    for (final c in _conversations) {
-      byKey[keyFor(c.otherUid, c.username)] = _SupportEntry(
-        uid: c.otherUid,
-        username: c.username,
-        conv: c,
-      );
-    }
 
     for (final t in _tickets) {
       final username = t.username;
@@ -67,7 +55,6 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
       byKey[key] = _SupportEntry(
         uid: existing?.uid ?? t.uid,
         username: existing?.username ?? username,
-        conv: existing?.conv,
         tickets: [...?existing?.tickets, t],
       );
     }
@@ -83,11 +70,9 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
   }
 
   Future<void> _load() async {
-    final convs = await SupportService.getConversations();
     final tickets = await SupportService.tickets(includeClosed: _showClosed);
     if (!mounted) return;
     setState(() {
-      _conversations = convs;
       _tickets = _showClosed
           ? tickets
           : tickets.where((t) => !t.isClosed).toList();
@@ -308,15 +293,10 @@ class _SupportConvTile extends StatelessWidget {
   const _SupportConvTile({required this.entry, required this.onTap});
 
   List<FeedbackTicket> get tickets => entry.tickets;
-  ConversationModel? get conv => entry.conv;
 
-  int get unread => conv?.unreadCount ?? 0;
+  int get unread => tickets.fold<int>(0, (sum, t) => sum + t.unread);
 
   String get preview {
-    final c = conv;
-    if (c != null) {
-      return '${c.lastMessageIsMine ? "Support: " : ""}${c.lastMessage}';
-    }
     if (tickets.isEmpty) return '';
     final newest = tickets.reduce(
       (a, b) => a.createdAt.isAfter(b.createdAt) ? a : b,
@@ -449,11 +429,7 @@ class SupportChatScreen extends StatefulWidget {
 class _SupportChatScreenState extends State<SupportChatScreen> {
   final _ctrl = TextEditingController();
   final _scrollCtrl = ScrollController();
-  List<MessageModel> _messages = [];
-  Map<int, String> _sentBy = {};
-  String? _supportUid;
   bool _loading = true;
-  bool _sending = false;
   Timer? _pollTimer;
 
   List<FeedbackTicket> _tickets = [];
@@ -485,13 +461,9 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
 
   Future<void> _load({bool silent = false}) async {
     if (!silent) setState(() => _loading = true);
-    final result = await SupportService.getMessages(widget.username);
     final all = await SupportService.tickets();
     if (!mounted) return;
     setState(() {
-      _messages = result.messages;
-      _sentBy = result.sentBy;
-      _supportUid = result.supportUid ?? _supportUid;
       _tickets = all
           .where(
             (t) => widget.uid != null && t.uid != null
@@ -796,19 +768,6 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
     _ => l.fbStatusOpen,
   };
 
-  Future<void> _send() async {
-    final text = _ctrl.text.trim();
-    if (text.isEmpty || _sending) return;
-    setState(() => _sending = true);
-    final ok = await SupportService.send(widget.username, text);
-    if (!mounted) return;
-    if (ok) {
-      _ctrl.clear();
-      await _load(silent: true);
-    }
-    setState(() => _sending = false);
-  }
-
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
@@ -876,7 +835,6 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
               ],
             ),
           ),
-          if (!_loading) _ticketsSection(l),
           Expanded(
             child: _loading
                 ? Center(
@@ -885,160 +843,7 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
                       color: AppTheme.accent,
                     ),
                   )
-                : Center(
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 720),
-                      child: ListView.builder(
-                        controller: _scrollCtrl,
-                        reverse: true,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 10,
-                        ),
-                        itemCount: _messages.length,
-                        itemBuilder: (_, i) {
-                          final msg = _messages[_messages.length - 1 - i];
-                          final isSupport = msg.senderUid == _supportUid;
-                          final author = _sentBy[msg.id];
-                          return Column(
-                            crossAxisAlignment: isSupport
-                                ? CrossAxisAlignment.end
-                                : CrossAxisAlignment.start,
-                            children: [
-                              if (isSupport && author != null)
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    right: 6,
-                                    top: 4,
-                                  ),
-                                  child: Text(
-                                    author,
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      color: AppTheme.textMuted,
-                                    ),
-                                  ),
-                                ),
-                              Align(
-                                alignment: isSupport
-                                    ? Alignment.centerRight
-                                    : Alignment.centerLeft,
-                                child: Container(
-                                  constraints: const BoxConstraints(
-                                    maxWidth: 480,
-                                  ),
-                                  margin: EdgeInsets.only(
-                                    top: 2,
-                                    bottom: 2,
-                                    left: isSupport ? 60 : 0,
-                                    right: isSupport ? 0 : 60,
-                                  ),
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 14,
-                                    vertical: 10,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: isSupport
-                                        ? AppTheme.accent.withValues(
-                                            alpha: 0.85,
-                                          )
-                                        : AppTheme.surfaceRaised,
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: const Radius.circular(16),
-                                      topRight: const Radius.circular(16),
-                                      bottomLeft: Radius.circular(
-                                        isSupport ? 16 : 4,
-                                      ),
-                                      bottomRight: Radius.circular(
-                                        isSupport ? 4 : 16,
-                                      ),
-                                    ),
-                                    border: isSupport
-                                        ? null
-                                        : Border.all(
-                                            color: AppTheme.borderGray,
-                                          ),
-                                  ),
-                                  child: Text(
-                                    msg.content,
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      height: 1.4,
-                                      color: isSupport
-                                          ? Colors.black
-                                          : AppTheme.textPrimary,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-          ),
-          SafeArea(
-            top: false,
-            child: Container(
-              padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
-              decoration: BoxDecoration(
-                color: AppTheme.surface,
-                border: Border(
-                  top: BorderSide(color: AppTheme.borderGray, width: 0.5),
-                ),
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: _ctrl,
-                      minLines: 1,
-                      maxLines: 4,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: AppTheme.textPrimary,
-                      ),
-                      decoration: InputDecoration(
-                        hintText: AppLocalizations.of(
-                          context,
-                        )!.supportReplyHint,
-                        hintStyle: TextStyle(
-                          fontSize: 13,
-                          color: AppTheme.textMuted,
-                        ),
-                      ),
-                      onSubmitted: (_) => _send(),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  GestureDetector(
-                    onTap: _send,
-                    child: Container(
-                      width: 40,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: AppTheme.accent,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: _sending
-                          ? const Padding(
-                              padding: EdgeInsets.all(10),
-                              child: CircularProgressIndicator(
-                                strokeWidth: 2,
-                                color: Colors.black,
-                              ),
-                            )
-                          : const Icon(
-                              Icons.send_rounded,
-                              size: 18,
-                              color: Colors.black,
-                            ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+                : SingleChildScrollView(child: _ticketsSection(l)),
           ),
         ],
       ),

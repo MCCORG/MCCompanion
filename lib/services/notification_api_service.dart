@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'api_client_base.dart';
 import '../constants/app_constants.dart';
+import '../util/swallowed.dart';
 
 class AppNotification {
   final int id;
@@ -63,7 +64,8 @@ class NotificationApiService {
         for (final e in (body['notifications'] as List<dynamic>? ?? [])) {
           try {
             list.add(AppNotification.fromJson(e as Map<String, dynamic>));
-          } catch (_) {
+          } catch (e, st) {
+            swallowed('NotificationApi.getNotifications', e, st);
           }
         }
         return (
@@ -71,7 +73,9 @@ class NotificationApiService {
           unreadCount: (body['unreadCount'] as int?) ?? 0,
         );
       }
-    } catch (_) {}
+    } catch (e, st) {
+      swallowed('NotificationApi.getNotifications', e, st);
+    }
     return (notifications: <AppNotification>[], unreadCount: 0);
   }
 
@@ -86,7 +90,8 @@ class NotificationApiService {
           )
           .timeout(_timeout);
       return res.statusCode == 200;
-    } catch (_) {
+    } catch (e, st) {
+      swallowed('NotificationApi.markAllRead', e, st);
       return false;
     }
   }
@@ -104,7 +109,9 @@ class NotificationApiService {
         final prefs = body['prefs'] as Map<String, dynamic>? ?? {};
         return prefs.map((k, v) => MapEntry(k, v as bool? ?? true));
       }
-    } catch (_) {}
+    } catch (e, st) {
+      swallowed('NotificationApi.getPrefs', e, st);
+    }
     return {};
   }
 
@@ -122,7 +129,9 @@ class NotificationApiService {
         final updated = body['prefs'] as Map<String, dynamic>? ?? {};
         return updated.map((k, v) => MapEntry(k, v as bool? ?? true));
       }
-    } catch (_) {}
+    } catch (e, st) {
+      swallowed('NotificationApi.updatePrefs', e, st);
+    }
     return null;
   }
 }

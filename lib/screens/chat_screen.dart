@@ -28,13 +28,15 @@ class _ChatScreenState extends State<ChatScreen> {
   bool _loadingMore = false;
   bool _hasMore = true;
   String? _myUid;
-  String? _otherUid; 
+  String? _otherUid;
 
   @override
   void initState() {
     super.initState();
     _myUid = AuthService.currentUser?.uid;
-    _otherUid = widget.friend.firebaseUid.isNotEmpty ? widget.friend.firebaseUid : null;
+    _otherUid = widget.friend.firebaseUid.isNotEmpty
+        ? widget.friend.firebaseUid
+        : null;
     _loadMessages();
     _sub = MessageService.incoming.listen(_onIncoming);
     _scrollCtrl.addListener(_onScroll);
@@ -128,7 +130,15 @@ class _ChatScreenState extends State<ChatScreen> {
     if (msg != null) {
       setState(() => _messages = [..._messages, msg]);
       _scrollToBottom();
+      return;
     }
+    // The field was cleared optimistically. Putting the text back is the signal
+    // that it did not send; anything more would need a new string in all 16
+    // locales.
+    _inputCtrl.text = text;
+    _inputCtrl.selection = TextSelection.fromPosition(
+      TextPosition(offset: text.length),
+    );
   }
 
   @override
@@ -140,10 +150,7 @@ class _ChatScreenState extends State<ChatScreen> {
         elevation: 0,
         scrolledUnderElevation: 0,
         leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: AppTheme.textPrimary,
-          ),
+          icon: Icon(Icons.arrow_back_rounded, color: AppTheme.textPrimary),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Row(
@@ -165,7 +172,10 @@ class _ChatScreenState extends State<ChatScreen> {
                       decoration: BoxDecoration(
                         color: AppTheme.success,
                         shape: BoxShape.circle,
-                        border: Border.all(color: AppTheme.surfaceRaised, width: 1.5),
+                        border: Border.all(
+                          color: AppTheme.surfaceRaised,
+                          width: 1.5,
+                        ),
                       ),
                     ),
                   ),
@@ -186,11 +196,19 @@ class _ChatScreenState extends State<ChatScreen> {
                 if (widget.friend.isAdmin)
                   Row(
                     children: [
-                      Icon(Icons.shield_rounded, size: 10, color: AppTheme.accent),
+                      Icon(
+                        Icons.shield_rounded,
+                        size: 10,
+                        color: AppTheme.accent,
+                      ),
                       const SizedBox(width: 3),
                       Text(
                         'MCCompanion Admin',
-                        style: TextStyle(color: AppTheme.accent, fontSize: 11, fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                          color: AppTheme.accent,
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ],
                   )
@@ -309,7 +327,9 @@ class _ChatScreenState extends State<ChatScreen> {
           child: Container(
             decoration: BoxDecoration(
               color: AppTheme.background,
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(24),
+              ),
               border: const Border(top: BorderSide(color: AppTheme.borderGray)),
             ),
             padding: const EdgeInsets.fromLTRB(16, 14, 16, 28),
@@ -341,10 +361,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 const SizedBox(height: 4),
                 Text(
                   l.reportDisclaimer,
-                  style: TextStyle(
-                    color: AppTheme.textMuted,
-                    fontSize: 12,
-                  ),
+                  style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
                 ),
                 const SizedBox(height: 16),
                 for (final entry in [
@@ -363,10 +380,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 TextField(
                   controller: infoCtrl,
                   maxLines: 2,
-                  style: TextStyle(
-                    color: AppTheme.textPrimary,
-                    fontSize: 13,
-                  ),
+                  style: TextStyle(color: AppTheme.textPrimary, fontSize: 13),
                   decoration: InputDecoration(
                     hintText: l.reportAdditionalDetails,
                     hintStyle: TextStyle(
@@ -512,8 +526,11 @@ class _Bubble extends StatelessWidget {
 }
 
 bool _isYesterday(DateTime local, DateTime now) {
-  final yesterday = DateTime(now.year, now.month, now.day)
-      .subtract(const Duration(days: 1));
+  final yesterday = DateTime(
+    now.year,
+    now.month,
+    now.day,
+  ).subtract(const Duration(days: 1));
   return local.year == yesterday.year &&
       local.month == yesterday.month &&
       local.day == yesterday.day;
@@ -620,18 +637,23 @@ class _InputBarState extends State<_InputBar> {
                 children: [
                   TextField(
                     controller: widget.controller,
-                    style: TextStyle(
-                      color: AppTheme.textPrimary,
-                      fontSize: 14,
-                    ),
+                    style: TextStyle(color: AppTheme.textPrimary, fontSize: 14),
                     maxLines: 4,
                     minLines: 1,
                     maxLength: _maxLength,
-                    buildCounter: (_, {required currentLength, required isFocused, maxLength}) => null,
+                    buildCounter:
+                        (
+                          _, {
+                          required currentLength,
+                          required isFocused,
+                          maxLength,
+                        }) => null,
                     textInputAction: TextInputAction.send,
                     onSubmitted: (_) => widget.onSend(),
                     decoration: InputDecoration(
-                      hintText: AppLocalizations.of(context)!.messagePlaceholder,
+                      hintText: AppLocalizations.of(
+                        context,
+                      )!.messagePlaceholder,
                       hintStyle: TextStyle(
                         color: AppTheme.textMuted,
                         fontSize: 14,
@@ -642,15 +664,22 @@ class _InputBarState extends State<_InputBar> {
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: const BorderSide(color: AppTheme.borderGray),
+                        borderSide: const BorderSide(
+                          color: AppTheme.borderGray,
+                        ),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: const BorderSide(color: AppTheme.borderGray),
+                        borderSide: const BorderSide(
+                          color: AppTheme.borderGray,
+                        ),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: AppTheme.accent, width: 1.5),
+                        borderSide: BorderSide(
+                          color: AppTheme.accent,
+                          width: 1.5,
+                        ),
                       ),
                       filled: true,
                       fillColor: AppTheme.surfaceRaised,
@@ -764,7 +793,9 @@ class _ReasonTile extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 8),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         decoration: BoxDecoration(
-          color: selected ? AppTheme.error.withValues(alpha: 0.10) : AppTheme.surfaceRaised,
+          color: selected
+              ? AppTheme.error.withValues(alpha: 0.10)
+              : AppTheme.surfaceRaised,
           borderRadius: BorderRadius.circular(11),
           border: Border.all(
             color: selected

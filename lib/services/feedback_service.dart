@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'api_client_base.dart';
 import '../constants/app_constants.dart';
+import '../util/swallowed.dart';
 
 class FeedbackService {
   static const String _base = AppConstants.apiBase;
@@ -49,7 +50,8 @@ class FeedbackService {
         );
       }
       return (ok: false, issueNumber: null, issueUrl: null);
-    } catch (_) {
+    } catch (e, st) {
+      swallowed('FeedbackService.submit', e, st);
       return (ok: false, issueNumber: null, issueUrl: null);
     }
   }
@@ -71,7 +73,8 @@ class FeedbackService {
           data['unreadTotal'] as int? ??
           tickets.fold(0, (sum, t) => sum + t.unread);
       return tickets;
-    } catch (_) {
+    } catch (e, st) {
+      swallowed('FeedbackService.myTickets', e, st);
       return [];
     }
   }
@@ -89,7 +92,8 @@ class FeedbackService {
       return (data['messages'] as List)
           .map((e) => FeedbackMessage.fromJson(e as Map<String, dynamic>))
           .toList();
-    } catch (_) {
+    } catch (e, st) {
+      swallowed('FeedbackService.messages', e, st);
       return [];
     }
   }
@@ -106,7 +110,8 @@ class FeedbackService {
       if (res.statusCode != 201) return null;
       final data = jsonDecode(res.body) as Map<String, dynamic>;
       return FeedbackMessage.fromJson(data['message'] as Map<String, dynamic>);
-    } catch (_) {
+    } catch (e, st) {
+      swallowed('FeedbackService.reply', e, st);
       return null;
     }
   }
