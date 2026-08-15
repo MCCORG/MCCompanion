@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   update-flatpak-resource-shas:
-    name: Update flatpak shas
+    name: Sync Flatpak Resource SHAs
     runs-on: ubuntu-latest
     # Grant repository write permissions so git-auto-commit-action can push
     permissions:
