@@ -254,8 +254,8 @@ jobs:
           NEW_SHA256=$(sha256sum MCCompanion-linux-x64.tar.gz | awk '{print $1}')
           echo "New SHA256: $NEW_SHA256"
 
-          # Replace the sha256 line following the MCCompanion archive source
-          sed -i -E "s/(sha256: )[a-f0-9]{64}/\1${NEW_SHA256}/" flatpak/net.mccompanion.MCCompanion.yml
+          # Only replace sha256 within 3 lines after matching MCCompanion-linux-x64.tar.gz
+          sed -i '/MCCompanion-linux-x64\.tar\.gz/,+3 s/\(sha256: \)[a-f0-9]\{64\}/\1'"$NEW_SHA256"'/' flatpak/net.mccompanion.MCCompanion.yml
 
       - name: Commit updated Flatpak manifest
         uses: stefanzweifel/git-auto-commit-action@v5
