@@ -264,28 +264,37 @@ jobs:
               lines = f.readlines()
 
           updated_lines = []
-          target_found = False
+          in_target_archive = False
+          sha_updated = False
 
           for line in lines:
-              # Enable state when reaching the target release archive line
+              # Detect when we hit the main tarball source
               if 'MCCompanion-linux-x64.tar.gz' in line:
-                  target_found = True
+                  in_target_archive = True
+                  sha_updated = False
                   updated_lines.append(line)
                   continue
 
-              # Replace ONLY the first sha256 line encountered after the target archive line
-              if target_found and line.strip().startswith('sha256:'):
-                  indent = line[:line.find('sha256:')]
-                  updated_lines.append(f"{indent}sha256: {new_sha}\n")
-                  target_found = False  # Reset state so no other sha256 lines are touched
+              # Handle sha256 lines right after the tarball URL
+              if in_target_archive and line.strip().startswith('sha256:'):
+                  if not sha_updated:
+                      # Keep ONLY the first sha256 line and update its value
+                      indent = line[:line.find('sha256:')]
+                      updated_lines.append(f"{indent}sha256: {new_sha}\n")
+                      sha_updated = True
+                  # SKIP any extra duplicate sha256 lines completely
                   continue
+
+              # Exit target archive block when reaching another key/source
+              if in_target_archive and (line.strip().startswith('- type:') or line.strip().startswith('x-checker-data:')):
+                  in_target_archive = False
 
               updated_lines.append(line)
 
           with open(file_path, 'w') as f:
               f.writelines(updated_lines)
 
-          print("Successfully updated only the archive SHA256 line.")
+          print("Successfully cleaned up duplicates and updated archive SHA256.")
           PY
 
       - name: Commit updated Flatpak manifest
