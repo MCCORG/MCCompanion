@@ -13,6 +13,113 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  sync-flatpak-resource-shas:
+    name: Sync Flatpak Resource SHAs
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+
+      - name: Check for modified Flatpak resources and update SHAs
+        shell: bash
+        run: |
+          MANIFEST_FILE="flatpak/net.mccompanion.MCCompanion.yml"
+
+          CHANGED_MANIFEST=$(git diff --name-only HEAD~1 HEAD | grep -q '^flatpak/net\.mccompanion\.MCCompanion\.yml$' && echo "yes" || echo "no")
+          CHANGED_METAINFO=$(git diff --name-only HEAD~1 HEAD | grep -q '^flatpak/net\.mccompanion\.MCCompanion\.metainfo\.xml$' && echo "yes" || echo "no")
+          CHANGED_DESKTOP=$(git diff --name-only HEAD~1 HEAD | grep -q '^flatpak/net\.mccompanion\.MCCompanion\.desktop$' && echo "yes" || echo "no")
+          CHANGED_PNG=$(git diff --name-only HEAD~1 HEAD | grep -q '^flatpak/net\.mccompanion\.MCCompanion\.png$' && echo "yes" || echo "no")
+
+          if [ "$CHANGED_MANIFEST" = "no" ] && [ "$CHANGED_METAINFO" = "no" ] && [ "$CHANGED_DESKTOP" = "no" ] && [ "$CHANGED_PNG" = "no" ]; then
+            echo "No Flatpak resource files or manifest changed in this commit. Skipping SHA updates."
+            exit 0
+          fi
+
+          echo "Change flags -> Manifest: $CHANGED_MANIFEST | Metainfo: $CHANGED_METAINFO | Desktop: $CHANGED_DESKTOP | PNG: $CHANGED_PNG"
+
+          METAINFO_SHA256=$(sha256sum flatpak/net.mccompanion.MCCompanion.metainfo.xml | awk '{print $1}')
+          DESKTOP_SHA256=$(sha256sum flatpak/net.mccompanion.MCCompanion.desktop | awk '{print $1}')
+          PNG_SHA256=$(sha256sum flatpak/net.mccompanion.MCCompanion.png | awk '{print $1}')
+
+          if [ "$CHANGED_MANIFEST" = "yes" ]; then
+            CHANGED_METAINFO="yes"
+            CHANGED_DESKTOP="yes"
+            CHANGED_PNG="yes"
+          fi
+
+          python3 - "$CHANGED_METAINFO" "$CHANGED_DESKTOP" "$CHANGED_PNG" "$METAINFO_SHA256" "$DESKTOP_SHA256" "$PNG_SHA256" <<'PY'
+          import sys
+
+          chg_meta, chg_desk, chg_png = sys.argv[1] == "yes", sys.argv[2] == "yes", sys.argv[3] == "yes"
+          meta_sha, desk_sha, png_sha = sys.argv[4], sys.argv[5], sys.argv[6]
+
+          file_path = 'flatpak/net.mccompanion.MCCompanion.yml'
+
+          with open(file_path, 'r') as f:
+              lines = f.readlines()
+
+          updated_lines = []
+          active_block = None
+
+          for line in lines:
+              stripped = line.strip()
+
+              if stripped.startswith('- type:'):
+                  active_block = None
+
+              if 'net.mccompanion.MCCompanion.metainfo.xml' in line and 'dest-filename:' not in line:
+                  active_block = 'metainfo'
+              elif 'net.mccompanion.MCCompanion.desktop' in line and 'dest-filename:' not in line:
+                  active_block = 'desktop'
+              elif 'net.mccompanion.MCCompanion.png' in line and 'dest-filename:' not in line:
+                  active_block = 'png'
+
+              if stripped.startswith('sha256:'):
+                  indent = line[:line.find('sha256:')]
+
+                  if active_block == 'metainfo':
+                      if chg_meta:
+                          updated_lines.append(f"{indent}sha256: {meta_sha}\n")
+                      else:
+                          updated_lines.append(line)
+                      active_block = None
+                      continue
+
+                  elif active_block == 'desktop':
+                      if chg_desk:
+                          updated_lines.append(f"{indent}sha256: {desk_sha}\n")
+                      else:
+                          updated_lines.append(line)
+                      active_block = None
+                      continue
+
+                  elif active_block == 'png':
+                      if chg_png:
+                          updated_lines.append(f"{indent}sha256: {png_sha}\n")
+                      else:
+                          updated_lines.append(line)
+                      active_block = None
+                      continue
+
+              updated_lines.append(line)
+
+          with open(file_path, 'w') as f:
+              f.writelines(updated_lines)
+
+          print("Successfully processed manifest SHA updates.")
+          PY
+
+      - name: Commit SHA updates back to branch
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(flatpak): update resource SHA256 hashes [skip ci]"
+          file_pattern: "flatpak/net.mccompanion.MCCompanion.yml"
+
   build-android:
     name: Build Android APK
     runs-on: ubuntu-latest
@@ -216,6 +323,8 @@ jobs:
   build-linux:
     name: Build Linux tarball
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v5
 
@@ -253,7 +362,253 @@ jobs:
       - name: Archive Linux build
         run: tar -C build/linux/x64/release -czf MCCompanion-linux-x64.tar.gz bundle
 
+      - name: Update Flatpak manifest SHA256
+        shell: bash
+        run: |
+          NEW_SHA256=$(sha256sum MCCompanion-linux-x64.tar.gz | awk '{print $1}')
+          echo "New SHA256: $NEW_SHA256"
+
+          python3 - "$NEW_SHA256" <<'PY'
+          import sys
+
+          new_sha = sys.argv[1]
+          file_path = 'flatpak/net.mccompanion.MCCompanion.yml'
+
+          with open(file_path, 'r') as f:
+              lines = f.readlines()
+
+          updated_lines = []
+          in_target_archive = False
+          sha_updated = False
+
+          for line in lines:
+              if 'MCCompanion-linux-x64.tar.gz' in line:
+                  in_target_archive = True
+                  sha_updated = False
+                  updated_lines.append(line)
+                  continue
+
+              if in_target_archive and line.strip().startswith('sha256:'):
+                  if not sha_updated:
+                      indent = line[:line.find('sha256:')]
+                      updated_lines.append(f"{indent}sha256: {new_sha}\n")
+                      sha_updated = True
+                  continue
+
+              if in_target_archive and (
+                  line.strip().startswith('- type:')
+                  or line.strip().startswith('x-checker-data:')
+              ):
+                  in_target_archive = False
+
+              updated_lines.append(line)
+
+          with open(file_path, 'w') as f:
+              f.writelines(updated_lines)
+
+          print("Successfully cleaned up duplicates and updated archive SHA256.")
+          PY
+
+      - name: Commit updated Flatpak manifest
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(flatpak): update archive sha256 [skip ci]"
+          file_pattern: "flatpak/net.mccompanion.MCCompanion.yml"
+
       - uses: actions/upload-artifact@v6
         with:
           name: MCCompanion-linux-x64.tar.gz
           path: MCCompanion-linux-x64.tar.gz
+
+  build-flatpak:
+    name: Build Flatpak Bundle
+    needs: [build-linux, sync-flatpak-resource-shas]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: MCCompanion-linux-x64.tar.gz
+          path: /tmp/
+
+      - name: Update Flatpak metadata version
+        shell: bash
+        run: |
+          VERSION="$(sed -nE "s/^version: *['\"]?([0-9]+\.[0-9]+\.[0-9]+)(\+[0-9]+)?['\"]?.*/\1/p" pubspec.yaml | head -n1)"
+
+          if [ -z "$VERSION" ]; then
+            echo "Failed to determine version from pubspec.yaml"
+            exit 1
+          fi
+
+          RELEASE_DATE="$(date -u +%Y-%m-%d)"
+
+          python3 - "$VERSION" "$RELEASE_DATE" <<'PY'
+          import re
+          import sys
+          from pathlib import Path
+
+          version = sys.argv[1]
+          release_date = sys.argv[2]
+
+          path = Path("flatpak/net.mccompanion.MCCompanion.metainfo.xml")
+          text = path.read_text()
+
+          text, count = re.subn(
+              r'(<release\s+version=")[^"]+(")',
+              rf'\g<1>{version}\g<2>',
+              text,
+              count=1,
+          )
+
+          if count != 1:
+              raise SystemExit("Could not update Flatpak release version")
+
+          text, count = re.subn(
+              rf'(<release\s+version="{re.escape(version)}"\s+date=")[^"]+(")',
+              rf'\g<1>{release_date}\g<2>',
+              text,
+              count=1,
+          )
+
+          if count != 1:
+              raise SystemExit("Could not update Flatpak release date")
+
+          path.write_text(text)
+
+          print(f"Flatpak metadata updated: {version} ({release_date})")
+          PY
+
+      - name: Install Linux build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-yaml flatpak flatpak-builder
+
+      - name: Add Flathub remote
+        run: |
+          flatpak remote-add --if-not-exists --user flathub \
+            https://dl.flathub.org/repo/flathub.flatpakrepo
+
+      - name: Install Flatpak runtime and SDK
+        run: |
+          flatpak install --user --noninteractive flathub \
+            org.freedesktop.Platform//24.08 \
+            org.freedesktop.Sdk//24.08
+
+      - name: Prepare Flatpak sources
+        run: |
+          python3 - <<EOF
+          import yaml
+
+          with open('flatpak/net.mccompanion.MCCompanion.yml') as f:
+              data = yaml.safe_load(f)
+
+          for mod in data['modules']:
+              if mod.get('name') == 'MCCompanion':
+                  for src in mod.get('sources', []):
+                      if src.get('type') == 'archive':
+                          src.pop('url', None)
+                          src.pop('sha256', None)
+                          src.pop('x-checker-data', None)
+                          src['path'] = '/tmp/MCCompanion-linux-x64.tar.gz'
+
+          with open('/tmp/net.mccompanion.MCCompanion.yml', 'w') as f:
+              yaml.dump(data, f, default_flow_style=False)
+          EOF
+
+      - name: Build Flatpak bundle
+        run: |
+          flatpak-builder \
+            --user \
+            --install-deps-from=flathub \
+            --force-clean \
+            --repo=/tmp/flatpak-repo \
+            /tmp/flatpak-build \
+            /tmp/net.mccompanion.MCCompanion.yml
+
+          flatpak build-bundle \
+            /tmp/flatpak-repo \
+            MCCompanion-linux.flatpak \
+            net.mccompanion.MCCompanion
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: MCCompanion-linux.flatpak
+          path: MCCompanion-linux.flatpak
+
+  build-snap:
+    name: Build Snap Package
+    needs: [build-linux]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: MCCompanion-linux-x64.tar.gz
+          path: /tmp/
+
+      - name: Update Snap version from pubspec
+        shell: bash
+        run: |
+          VERSION="$(sed -nE "s/^version: *['\"]?([0-9]+\.[0-9]+\.[0-9]+)(\+[0-9]+)?['\"]?.*/\1/p" pubspec.yaml | head -n1)"
+
+          if [ -z "$VERSION" ]; then
+            echo "Failed to determine version from pubspec.yaml"
+            exit 1
+          fi
+
+          python3 - "$VERSION" <<'PY'
+          import re
+          import sys
+          from pathlib import Path
+
+          version = sys.argv[1]
+
+          path = Path('snap/snapcraft.yaml')
+          text = path.read_text()
+
+          text, count = re.subn(
+              r"(?m)^version:\s*['\"][^'\"]+['\"]\s*$",
+              f"version: '{version}'",
+              text,
+              count=1,
+          )
+
+          if count != 1:
+              raise SystemExit("Could not update version in snap/snapcraft.yaml")
+
+          path.write_text(text)
+
+          print(f"Snap version updated: {version}")
+          PY
+
+      - name: Patch snapcraft source to local archive
+        run: |
+          python3 - <<EOF
+          import yaml
+
+          with open('snap/snapcraft.yaml') as f:
+              data = yaml.safe_load(f)
+
+          data['parts']['mccompanion']['source'] = '/tmp/MCCompanion-linux-x64.tar.gz'
+          data['parts']['mccompanion']['source-type'] = 'tar'
+
+          with open('snap/snapcraft.yaml', 'w') as f:
+              yaml.dump(data, f, default_flow_style=False)
+          EOF
+
+      - name: Install snapcraft
+        run: sudo snap install snapcraft --classic
+
+      - name: Build snap
+        run: sudo snapcraft pack --destructive-mode
+
+      - name: Rename snap artifact
+        run: mv *.snap MCCompanion-linux.snap
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: MCCompanion-linux.snap
+          path: MCCompanion-linux.snap
