@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>net.mccompanion.MCCompanion</id>
+  <id>net.mccompanion.MCCompaniona</id>
   <name>MCCompanion</name>
   <summary>A Minecraft companion app</summary>
   <developer id="net.mccompanion.MCCompanion">
