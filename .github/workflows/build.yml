@@ -183,12 +183,6 @@ jobs:
           FLUTTER_XCODE_CODE_SIGN_IDENTITY: ""
           FLUTTER_XCODE_CODE_SIGNING_REQUIRED: "NO"
 
-      - name: Ad-hoc sign macOS app
-        run: |
-          APP_PATH="build/macos/Build/Products/Release/MCCompanion.app"
-          codesign --force --deep --sign - "$APP_PATH"
-          codesign --verify --deep --strict "$APP_PATH"
-
       - name: Create macOS DMG
         run: |
           STAGING_DIR="$RUNNER_TEMP/dmg-staging"
@@ -257,29 +251,33 @@ jobs:
       - name: Update Flatpak manifest SHA256
         shell: bash
         run: |
-          # Compute the new tarball SHA256 checksum
+          # Ensure ruamel.yaml is available
+          python3 -m pip install ruamel.yaml
+
           NEW_SHA256=$(sha256sum MCCompanion-linux-x64.tar.gz | awk '{print $1}')
           echo "New SHA256: $NEW_SHA256"
 
-          # Update the sha256 field for the archive source in net.mccompanion.MCCompanion.yml
           python3 - "$NEW_SHA256" <<'PY'
           import sys
-          import yaml
+          from ruamel.yaml import YAML
 
           new_sha = sys.argv[1]
           manifest_path = 'flatpak/net.mccompanion.MCCompanion.yml'
 
+          yaml = YAML()
+          yaml.preserve_quotes = True
+
           with open(manifest_path, 'r') as f:
-              data = yaml.safe_load(f)
+              data = yaml.load(f)
 
           for mod in data.get('modules', []):
-              if mod.get('name') == 'MCCompanion':
+              if isinstance(mod, dict) and mod.get('name') == 'MCCompanion':
                   for src in mod.get('sources', []):
-                      if src.get('type') == 'archive':
+                      if isinstance(src, dict) and src.get('type') == 'archive':
                           src['sha256'] = new_sha
 
           with open(manifest_path, 'w') as f:
-              yaml.dump(data, f, default_flow_style=False, sort_keys=False)
+              yaml.dump(data, f)
 
           print(f"Updated {manifest_path} with new SHA256: {new_sha}")
           PY
