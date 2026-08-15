@@ -251,6 +251,42 @@ jobs:
       - name: Archive Linux build
         run: tar -C build/linux/x64/release -czf MCCompanion-linux-x64.tar.gz bundle
 
+      - name: Update Flatpak manifest SHA256
+        shell: bash
+        run: |
+          # Compute the new tarball SHA256 checksum
+          NEW_SHA256=$(sha256sum MCCompanion-linux-x64.tar.gz | awk '{print $1}')
+          echo "New SHA256: $NEW_SHA256"
+
+          # Update the sha256 field for the archive source in net.mccompanion.MCCompanion.yml
+          python3 - "$NEW_SHA256" <<'PY'
+          import sys
+          import yaml
+
+          new_sha = sys.argv[1]
+          manifest_path = 'flatpak/net.mccompanion.MCCompanion.yml'
+
+          with open(manifest_path, 'r') as f:
+              data = yaml.safe_load(f)
+
+          for mod in data.get('modules', []):
+              if mod.get('name') == 'MCCompanion':
+                  for src in mod.get('sources', []):
+                      if src.get('type') == 'archive':
+                          src['sha256'] = new_sha
+
+          with open(manifest_path, 'w') as f:
+              yaml.dump(data, f, default_flow_style=False, sort_keys=False)
+
+          print(f"Updated {manifest_path} with new SHA256: {new_sha}")
+          PY
+
+      - name: Commit updated Flatpak manifest
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(flatpak): update archive sha256 [skip ci]"
+          file_pattern: "flatpak/net.mccompanion.MCCompanion.yml"
+
       - uses: actions/upload-artifact@v6
         with:
           name: linux-tarball
