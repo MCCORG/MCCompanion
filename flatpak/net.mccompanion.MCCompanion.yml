@@ -6,74 +6,63 @@ command: MCCompanion
 
 finish-args:
   # Wayland + X11 display
-- --socket=wayland
-- --socket=fallback-x11
-- --share=ipc
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=ipc
   # OpenGL
-- --device=dri
+  - --device=dri
   # Network access (server pinger, wiki, Firebase)
-- --share=network
+  - --share=network
   # Allow connectivity_plus to communicate with NetworkManager via System D-Bus
-- --system-talk-name=org.freedesktop.NetworkManager
+  - --system-talk-name=org.freedesktop.NetworkManager
   # Grant access to host Documents folder
-- --filesystem=xdg-documents
+  - --filesystem=xdg-documents
 
 modules:
-- name: zenity
-  buildsystem: meson
-  sources:
-  - type: archive
-    url: https://download.gnome.org/sources/zenity/4.0/zenity-4.0.1.tar.xz
-    sha256: 0c2f537813b10f728470d9d05d6c95713db2512f9c95096e1e85b1a6739605e6
-- name: MCCompanion
-  buildsystem: simple
-  build-commands:
+  - name: zenity
+    buildsystem: meson
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/zenity/4.0/zenity-4.0.1.tar.xz
+        sha256: 0c2f537813b10f728470d9d05d6c95713db2512f9c95096e1e85b1a6739605e6
+  - name: MCCompanion
+    buildsystem: simple
+    build-commands:
       # Install the pre-built Flutter bundle produced by 'flutter build linux --release'
-  - install -Dm755 MCCompanion /app/bin/MCCompanion
-  - cp -r lib /app/bin/lib
-  - cp -r data /app/bin/data
+      - install -Dm755 MCCompanion /app/bin/MCCompanion
+      - cp -r lib /app/bin/lib
+      - cp -r data /app/bin/data
       # Desktop entry
-  - install -Dm644 net.mccompanion.MCCompanion.desktop 
-    /app/share/applications/net.mccompanion.MCCompanion.desktop
+      - install -Dm644 net.mccompanion.MCCompanion.desktop /app/share/applications/net.mccompanion.MCCompanion.desktop
       # App icon (256×256 PNG)
-  - install -Dm644 net.mccompanion.MCCompanion.png 
-    /app/share/icons/hicolor/256x256/apps/net.mccompanion.MCCompanion.png
+      - install -Dm644 net.mccompanion.MCCompanion.png /app/share/icons/hicolor/256x256/apps/net.mccompanion.MCCompanion.png
       # AppStream metainfo
-  - install -Dm644 net.mccompanion.MCCompanion.metainfo.xml 
-    /app/share/metainfo/net.mccompanion.MCCompanion.metainfo.xml
-  sources:
-  - type: archive
-    url: 
-      https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
-    sha256: 04fcc978bc4f9e1931247cd3a698bd9a9735df9ab5dc2944f75baa4d4752a974
-    x-checker-data:
-      type: rotating-location
-      url: 
-        https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
-  - type: file
-    url: 
-      https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.metainfo.xml
-    sha256: ce1f8663153c11f32f0b4bcc1f5e8a288ae55edbf57975390fd60cc73c30c027
-    dest-filename: net.mccompanion.MCCompanion.metainfo.xml
-    x-checker-data:
-      type: rotating-location
-      url: 
-        https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.metainfo.xml
-  - type: file
-    url: 
-      https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.desktop
-    sha256: 73d5677e6a6171ae6bb1b878991ee51a76dda606bdb942f9a2d953ff3703a1c3
-    dest-filename: net.mccompanion.MCCompanion.desktop
-    x-checker-data:
-      type: rotating-location
-      url: 
-        https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.desktop
-  - type: file
-    url: 
-      https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.png
-    sha256: 0b221eeab164210039031558fe854937d0fb7658699039f967de44358d5ee5f1
-    dest-filename: net.mccompanion.MCCompanion.png
-    x-checker-data:
-      type: rotating-location
-      url: 
-        https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.png
+      - install -Dm644 net.mccompanion.MCCompanion.metainfo.xml /app/share/metainfo/net.mccompanion.MCCompanion.metainfo.xml
+    sources:
+      - type: archive
+        url: https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
+        sha256: b0afb3defd7412b7c383702c135ea884c7982dc71cf8bbeea2f62083ce7a141d
+        x-checker-data:
+          type: rotating-location
+          url: https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
+      - type: file
+        url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.metainfo.xml
+        sha256: ce1f8663153c11f32f0b4bcc1f5e8a288ae55edbf57975390fd60cc73c30c027
+        dest-filename: net.mccompanion.MCCompanion.metainfo.xml
+        x-checker-data:
+          type: rotating-location
+          url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.metainfo.xml
+      - type: file
+        url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.desktop
+        sha256: 73d5677e6a6171ae6bb1b878991ee51a76dda606bdb942f9a2d953ff3703a1c3
+        dest-filename: net.mccompanion.MCCompanion.desktop
+        x-checker-data:
+          type: rotating-location
+          url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.desktop
+      - type: file
+        url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.png
+        sha256: 0b221eeab164210039031558fe854937d0fb7658699039f967de44358d5ee5f1
+        dest-filename: net.mccompanion.MCCompanion.png
+        x-checker-data:
+          type: rotating-location
+          url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.png   
