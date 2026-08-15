@@ -14,6 +14,88 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  update-flatpak-resource-shas:
+    runs-on: ubuntu-latest
+    # Grant repository write permissions so git-auto-commit-action can push
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # Fetches current commit and parent to detect changes
+
+      - name: Check for modified Flatpak resources and update SHAs
+        shell: bash
+        run: |
+          MANIFEST_FILE="flatpak/net.mccompanion.MCCompanion.yml"
+          
+          # Check if any of the flatpak resource files changed in the latest commit
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep -E '^flatpak/net\.mccompanion\.MCCompanion\.(metainfo\.xml|desktop|png)$' || true)
+
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No Flatpak resource files changed in this commit. Skipping SHA updates."
+            exit 0
+          fi
+
+          echo "Detected changes in local Flatpak resource files:"
+          echo "$CHANGED_FILES"
+
+          # Calculate current SHA256 of local files
+          METAINFO_SHA256=$(sha256sum flatpak/net.mccompanion.MCCompanion.metainfo.xml | awk '{print $1}')
+          DESKTOP_SHA256=$(sha256sum flatpak/net.mccompanion.MCCompanion.desktop | awk '{print $1}')
+          PNG_SHA256=$(sha256sum flatpak/net.mccompanion.MCCompanion.png | awk '{print $1}')
+
+          python3 - "$METAINFO_SHA256" "$DESKTOP_SHA256" "$PNG_SHA256" <<'PY'
+          import sys
+
+          metainfo_sha = sys.argv[1]
+          desktop_sha = sys.argv[2]
+          png_sha = sys.argv[3]
+
+          file_path = 'flatpak/net.mccompanion.MCCompanion.yml'
+
+          with open(file_path, 'r') as f:
+              lines = f.readlines()
+
+          updated_lines = []
+          current_file = None
+
+          for line in lines:
+              # Identify which file block we are entering
+              if 'net.mccompanion.MCCompanion.metainfo.xml' in line and 'dest-filename:' not in line:
+                  current_file = 'metainfo'
+              elif 'net.mccompanion.MCCompanion.desktop' in line and 'dest-filename:' not in line:
+                  current_file = 'desktop'
+              elif 'net.mccompanion.MCCompanion.png' in line and 'dest-filename:' not in line:
+                  current_file = 'png'
+
+              # Update the sha256 for the matched section
+              if current_file and line.strip().startswith('sha256:'):
+                  indent = line[:line.find('sha256:')]
+                  target_sha = {
+                      'metainfo': metainfo_sha,
+                      'desktop': desktop_sha,
+                      'png': png_sha,
+                  }[current_file]
+                  updated_lines.append(f"{indent}sha256: {target_sha}\n")
+                  current_file = None  # Reset state after updating
+                  continue
+
+              updated_lines.append(line)
+
+          with open(file_path, 'w') as f:
+              f.writelines(updated_lines)
+
+          print("Successfully updated SHA256 values in the Flatpak manifest.")
+          PY
+
+      - name: Commit SHA updates back to branch
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(flatpak): update resource file SHA256 hashes [skip ci]"
+          file_pattern: "flatpak/net.mccompanion.MCCompanion.yml"
   build-android:
     name: Build Android APK
     runs-on: ubuntu-latest
