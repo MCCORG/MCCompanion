@@ -214,6 +214,9 @@ jobs:
   build-linux:
     name: Build Linux tarball
     runs-on: ubuntu-latest
+    # Grant read/write access to repository contents
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v5
 
