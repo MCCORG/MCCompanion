@@ -13,6 +13,8 @@ class PushNotificationService {
   PushNotificationService._();
 
   static FirebaseMessaging get _fcm => FirebaseMessaging.instance;
+  static bool get _supportsPushNotifications =>
+      !Platform.isWindows && !Platform.isLinux;
 
   static bool _initialized = false;
   static StreamSubscription<String>? _tokenRefreshSub;
@@ -30,7 +32,7 @@ class PushNotificationService {
   static Future<void> init({
     void Function(RemoteMessage message)? onNotificationTap,
   }) async {
-    if (Platform.isWindows) return;
+    if (!_supportsPushNotifications) return;
     if (_initialized) return;
     _initialized = true;
 
@@ -141,7 +143,7 @@ class PushNotificationService {
   }
 
   static Future<void> onUserSignedIn() async {
-    if (Platform.isWindows) return;
+    if (!_supportsPushNotifications) return;
     await _registerToken();
   }
 

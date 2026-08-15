@@ -25,7 +25,7 @@ class ProfileNotLoggedInViewState extends State<ProfileNotLoggedInView> {
   String? _error;
   bool _isRegisterMode = false;
 
-  bool get _supportsGoogle => true;
+  bool get _supportsGoogle => !Platform.isLinux;
   bool get _supportsApple => Platform.isIOS || Platform.isMacOS;
 
   @override

@@ -1,0 +1,29 @@
+name: Update Flatpak manifest
+
+on:
+  schedule:
+    # Run every hour — only takes effect when this file is on the default branch
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  flatpak-external-data-checker:
+    name: Check & update Flatpak sources
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: docker://ghcr.io/flathub/flatpak-external-data-checker:latest
+        env:
+          GIT_AUTHOR_NAME: Flatpak External Data Checker
+          GIT_COMMITTER_NAME: Flatpak External Data Checker
+          # Sets "github-actions[bot]" as the commit author
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: --update --never-fork flatpak/net.mccompanion.MCCompanion.yml

@@ -11,6 +11,8 @@ import 'auth_service.dart';
 class SubscriptionService extends ChangeNotifier {
   static final SubscriptionService instance = SubscriptionService._();
   SubscriptionService._();
+  static bool get _supportsSubscriptions =>
+      Platform.isAndroid || Platform.isIOS || Platform.isMacOS;
 
   static const String _base = AppConstants.apiBase;
   static const Duration _timeout = Duration(seconds: 10);
@@ -36,6 +38,11 @@ class SubscriptionService extends ChangeNotifier {
 
   Future<void> init(String firebaseUid) async {
     if (_initialized) return;
+    if (!_supportsSubscriptions) {
+      _initialized = true;
+      _status = SubscriptionStatus.free;
+      return;
+    }
     _initialized = true;
 
     try {
@@ -86,6 +93,7 @@ class SubscriptionService extends ChangeNotifier {
   }
 
   Future<List<Package>> getPackages() async {
+    if (!_supportsSubscriptions) return [];
     try {
       final offerings = await Purchases.getOfferings();
       return offerings.current?.availablePackages ?? [];
@@ -96,6 +104,9 @@ class SubscriptionService extends ChangeNotifier {
   }
 
   Future<({bool success, String? error})> purchase(Package package) async {
+    if (!_supportsSubscriptions) {
+      return (success: false, error: 'unsupported-platform');
+    }
     try {
       await Purchases.purchase(PurchaseParams.package(package));
       for (int i = 0; i < 5; i++) {
@@ -116,6 +127,9 @@ class SubscriptionService extends ChangeNotifier {
   }
 
   Future<({bool success, String? error})> restorePurchases() async {
+    if (!_supportsSubscriptions) {
+      return (success: false, error: 'unsupported-platform');
+    }
     try {
       await Purchases.restorePurchases();
       await refreshStatus();
