@@ -47,7 +47,7 @@ modules:
           url: https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
       - type: file
         url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.metainfo.xml
-        sha256: 43f32bd5fc52d599820804efcbcb33bbf06f572f20f8655ba8dd435b3688c376
+        sha256: ce1f8663153c11f32f0b4bcc1f5e8a288ae55edbf57975390fd60cc73c30c027
         dest-filename: net.mccompanion.MCCompanion.metainfo.xml
         x-checker-data:
           type: rotating-location
