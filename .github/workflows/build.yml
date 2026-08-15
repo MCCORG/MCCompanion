@@ -15,6 +15,7 @@ concurrency:
 
 jobs:
   update-flatpak-resource-shas:
+    name: Update flatpak shas
     runs-on: ubuntu-latest
     # Grant repository write permissions so git-auto-commit-action can push
     permissions:
@@ -31,28 +32,27 @@ jobs:
         run: |
           MANIFEST_FILE="flatpak/net.mccompanion.MCCompanion.yml"
           
-          # Check if any of the flatpak resource files changed in the latest commit
-          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep -E '^flatpak/net\.mccompanion\.MCCompanion\.(metainfo\.xml|desktop|png)$' || true)
+          # Check which specific files changed
+          CHANGED_METAINFO=$(git diff --name-only HEAD~1 HEAD | grep -q '^flatpak/net\.mccompanion\.MCCompanion\.metainfo\.xml$' && echo "yes" || echo "no")
+          CHANGED_DESKTOP=$(git diff --name-only HEAD~1 HEAD | grep -q '^flatpak/net\.mccompanion\.MCCompanion\.desktop$' && echo "yes" || echo "no")
+          CHANGED_PNG=$(git diff --name-only HEAD~1 HEAD | grep -q '^flatpak/net\.mccompanion\.MCCompanion\.png$' && echo "yes" || echo "no")
 
-          if [ -z "$CHANGED_FILES" ]; then
+          if [ "$CHANGED_METAINFO" = "no" ] && [ "$CHANGED_DESKTOP" = "no" ] && [ "$CHANGED_PNG" = "no" ]; then
             echo "No Flatpak resource files changed in this commit. Skipping SHA updates."
             exit 0
           fi
 
-          echo "Detected changes in local Flatpak resource files:"
-          echo "$CHANGED_FILES"
+          echo "Changed flags -> Metainfo: $CHANGED_METAINFO | Desktop: $CHANGED_DESKTOP | PNG: $CHANGED_PNG"
 
-          # Calculate current SHA256 of local files
           METAINFO_SHA256=$(sha256sum flatpak/net.mccompanion.MCCompanion.metainfo.xml | awk '{print $1}')
           DESKTOP_SHA256=$(sha256sum flatpak/net.mccompanion.MCCompanion.desktop | awk '{print $1}')
           PNG_SHA256=$(sha256sum flatpak/net.mccompanion.MCCompanion.png | awk '{print $1}')
 
-          python3 - "$METAINFO_SHA256" "$DESKTOP_SHA256" "$PNG_SHA256" <<'PY'
+          python3 - "$CHANGED_METAINFO" "$CHANGED_DESKTOP" "$CHANGED_PNG" "$METAINFO_SHA256" "$DESKTOP_SHA256" "$PNG_SHA256" <<'PY'
           import sys
 
-          metainfo_sha = sys.argv[1]
-          desktop_sha = sys.argv[2]
-          png_sha = sys.argv[3]
+          chg_meta, chg_desk, chg_png = sys.argv[1] == "yes", sys.argv[2] == "yes", sys.argv[3] == "yes"
+          meta_sha, desk_sha, png_sha = sys.argv[4], sys.argv[5], sys.argv[6]
 
           file_path = 'flatpak/net.mccompanion.MCCompanion.yml'
 
@@ -60,35 +60,55 @@ jobs:
               lines = f.readlines()
 
           updated_lines = []
-          current_file = None
+          active_block = None  # Tracks current source block
 
           for line in lines:
-              # Identify which file block we are entering
-              if 'net.mccompanion.MCCompanion.metainfo.xml' in line and 'dest-filename:' not in line:
-                  current_file = 'metainfo'
-              elif 'net.mccompanion.MCCompanion.desktop' in line and 'dest-filename:' not in line:
-                  current_file = 'desktop'
-              elif 'net.mccompanion.MCCompanion.png' in line and 'dest-filename:' not in line:
-                  current_file = 'png'
+              stripped = line.strip()
 
-              # Update the sha256 for the matched section
-              if current_file and line.strip().startswith('sha256:'):
+              # Detect block start
+              if stripped.startswith('- type:'):
+                  active_block = None
+
+              # Match specific block URLs
+              if 'net.mccompanion.MCCompanion.metainfo.xml' in line and 'dest-filename:' not in line:
+                  active_block = 'metainfo'
+              elif 'net.mccompanion.MCCompanion.desktop' in line and 'dest-filename:' not in line:
+                  active_block = 'desktop'
+              elif 'net.mccompanion.MCCompanion.png' in line and 'dest-filename:' not in line:
+                  active_block = 'png'
+
+              # Handle sha256 lines
+              if stripped.startswith('sha256:'):
                   indent = line[:line.find('sha256:')]
-                  target_sha = {
-                      'metainfo': metainfo_sha,
-                      'desktop': desktop_sha,
-                      'png': png_sha,
-                  }[current_file]
-                  updated_lines.append(f"{indent}sha256: {target_sha}\n")
-                  current_file = None  # Reset state after updating
-                  continue
+                  
+                  if active_block == 'metainfo':
+                      if chg_meta:
+                          updated_lines.append(f"{indent}sha256: {meta_sha}\n")
+                      else:
+                          updated_lines.append(line)
+                      active_block = None  # Clear state after handling
+                      continue
+                  elif active_block == 'desktop':
+                      if chg_desk:
+                          updated_lines.append(f"{indent}sha256: {desk_sha}\n")
+                      else:
+                          updated_lines.append(line)
+                      active_block = None  # Clear state after handling
+                      continue
+                  elif active_block == 'png':
+                      if chg_png:
+                          updated_lines.append(f"{indent}sha256: {png_sha}\n")
+                      else:
+                          updated_lines.append(line)
+                      active_block = None  # Clear state after handling
+                      continue
 
               updated_lines.append(line)
 
           with open(file_path, 'w') as f:
               f.writelines(updated_lines)
 
-          print("Successfully updated SHA256 values in the Flatpak manifest.")
+          print("Successfully processed manifest SHA updates.")
           PY
 
       - name: Commit SHA updates back to branch
