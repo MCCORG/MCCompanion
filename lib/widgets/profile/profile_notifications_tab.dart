@@ -38,26 +38,31 @@ class _ProfileNotificationsTabState extends State<ProfileNotificationsTab> {
   }
 
   Future<void> _markAllRead() async {
-    final unread = _notifications.where((n) => !n.read).map((n) => n.id).toList();
+    final unread = _notifications
+        .where((n) => !n.read)
+        .map((n) => n.id)
+        .toList();
     if (unread.isEmpty) return;
     setState(() => _marking = true);
     await NotificationApiService.markAllRead(unread);
     if (mounted) {
       setState(() {
         _notifications = _notifications
-            .map((n) => n.read
-                ? n
-                : AppNotification(
-                    id: n.id,
-                    type: n.type,
-                    actorUsername: n.actorUsername,
-                    actorAvatar: n.actorAvatar,
-                    targetType: n.targetType,
-                    targetId: n.targetId,
-                    targetName: n.targetName,
-                    read: true,
-                    createdAt: n.createdAt,
-                  ))
+            .map(
+              (n) => n.read
+                  ? n
+                  : AppNotification(
+                      id: n.id,
+                      type: n.type,
+                      actorUsername: n.actorUsername,
+                      actorAvatar: n.actorAvatar,
+                      targetType: n.targetType,
+                      targetId: n.targetId,
+                      targetName: n.targetName,
+                      read: true,
+                      createdAt: n.createdAt,
+                    ),
+            )
             .toList();
         _marking = false;
       });
@@ -108,7 +113,9 @@ class _ProfileNotificationsTabState extends State<ProfileNotificationsTab> {
                     minimumSize: Size.zero,
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     textStyle: const TextStyle(
-                        fontSize: 11, fontWeight: FontWeight.w600),
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
             ],
@@ -128,10 +135,13 @@ class _ProfileNotificationsTabState extends State<ProfileNotificationsTab> {
               ),
             )
           else
-            ...List.generate(_notifications.length, (i) => Padding(
-              padding: const EdgeInsets.only(bottom: 6),
-              child: _NotificationTile(notification: _notifications[i]),
-            )),
+            ...List.generate(
+              _notifications.length,
+              (i) => Padding(
+                padding: const EdgeInsets.only(bottom: 6),
+                child: _NotificationTile(notification: _notifications[i]),
+              ),
+            ),
 
           const SizedBox(height: 20),
           Text(
@@ -165,6 +175,10 @@ class _NotificationTile extends StatelessWidget {
     'message_received': Icons.chat_bubble_rounded,
     'feedback_status': Icons.campaign_rounded,
     'feedback_reply': Icons.forum_rounded,
+    'admin_feedback': Icons.report_problem_rounded,
+    'admin_pack_submitted': Icons.inventory_2_rounded,
+    'admin_report': Icons.flag_rounded,
+    'admin_support_message': Icons.support_agent_rounded,
   };
 
   static const Map<String, Color> _colors = {
@@ -177,21 +191,43 @@ class _NotificationTile extends StatelessWidget {
     'message_received': Color(0xFF8b5cf6),
     'feedback_status': Color(0xFFfbbf24),
     'feedback_reply': Color(0xFF67e404),
+    'admin_feedback': Color(0xFFfbbf24),
+    'admin_pack_submitted': Color(0xFF60a5fa),
+    'admin_report': Color(0xFFef4444),
+    'admin_support_message': Color(0xFF8b5cf6),
   };
 
   String _title(AppLocalizations l) {
     final a = notification.actorUsername ?? l.notifSomeone;
     switch (notification.type) {
-      case 'skin_liked':        return l.notifSkinLiked(a);
-      case 'comment_received':  return l.notifCommentReceived(a);
-      case 'pack_approved':     return l.notifPackApproved;
-      case 'pack_rejected':     return l.notifPackRejected;
-      case 'friend_request':    return l.notifFriendRequest(a);
-      case 'friend_accepted':   return l.notifFriendAccepted(a);
-      case 'message_received':  return l.notifMessageReceived(a);
-      case 'feedback_status':   return l.notifFeedbackStatus;
-      case 'feedback_reply':    return l.notifFeedbackReply;
-      default:                  return notification.type;
+      case 'skin_liked':
+        return l.notifSkinLiked(a);
+      case 'comment_received':
+        return l.notifCommentReceived(a);
+      case 'pack_approved':
+        return l.notifPackApproved;
+      case 'pack_rejected':
+        return l.notifPackRejected;
+      case 'friend_request':
+        return l.notifFriendRequest(a);
+      case 'friend_accepted':
+        return l.notifFriendAccepted(a);
+      case 'message_received':
+        return l.notifMessageReceived(a);
+      case 'feedback_status':
+        return l.notifFeedbackStatus;
+      case 'feedback_reply':
+        return l.notifFeedbackReply;
+      case 'admin_feedback':
+        return 'New feedback: ${notification.targetName ?? ''}';
+      case 'admin_pack_submitted':
+        return 'New pack: ${notification.targetName ?? ''}';
+      case 'admin_report':
+        return '@$a reported ${notification.targetName ?? ''}';
+      case 'admin_support_message':
+        return 'Support message from @$a';
+      default:
+        return notification.type;
     }
   }
 
@@ -301,10 +337,7 @@ class _NotificationTile extends StatelessWidget {
                   const SizedBox(height: 4),
                   Text(
                     _timeAgo(notification.createdAt, l),
-                    style: TextStyle(
-                      color: AppTheme.textMuted,
-                      fontSize: 11,
-                    ),
+                    style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
                   ),
                 ],
               ),
