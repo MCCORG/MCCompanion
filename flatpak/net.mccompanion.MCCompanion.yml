@@ -24,7 +24,7 @@ modules:
     sources:
       - type: archive
         url: https://download.gnome.org/sources/zenity/4.0/zenity-4.0.1.tar.xz
-        sha256: 0c2f537813b10f728470d9d05d6c95713db2512f9c95096e1e85b1a6739605e6
+        sha256: 66e2eda9d5c0b01e787f596b2a69641a27eaa5e87d4ee6140e1f449a10862f53
   - name: MCCompanion
     buildsystem: simple
     build-commands:
@@ -41,27 +41,27 @@ modules:
     sources:
       - type: archive
         url: https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
-        sha256: b0afb3defd7412b7c383702c135ea884c7982dc71cf8bbeea2f62083ce7a141d
+        sha256: 66e2eda9d5c0b01e787f596b2a69641a27eaa5e87d4ee6140e1f449a10862f53
         x-checker-data:
           type: rotating-location
           url: https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
       - type: file
         url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.metainfo.xml
-        sha256: ce1f8663153c11f32f0b4bcc1f5e8a288ae55edbf57975390fd60cc73c30c027
+        sha256: 66e2eda9d5c0b01e787f596b2a69641a27eaa5e87d4ee6140e1f449a10862f53
         dest-filename: net.mccompanion.MCCompanion.metainfo.xml
         x-checker-data:
           type: rotating-location
           url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.metainfo.xml
       - type: file
         url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.desktop
-        sha256: 73d5677e6a6171ae6bb1b878991ee51a76dda606bdb942f9a2d953ff3703a1c3
+        sha256: 66e2eda9d5c0b01e787f596b2a69641a27eaa5e87d4ee6140e1f449a10862f53
         dest-filename: net.mccompanion.MCCompanion.desktop
         x-checker-data:
           type: rotating-location
           url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.desktop
       - type: file
         url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.png
-        sha256: 0b221eeab164210039031558fe854937d0fb7658699039f967de44358d5ee5f1
+        sha256: 66e2eda9d5c0b01e787f596b2a69641a27eaa5e87d4ee6140e1f449a10862f53
         dest-filename: net.mccompanion.MCCompanion.png
         x-checker-data:
           type: rotating-location
