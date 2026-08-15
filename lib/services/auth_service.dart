@@ -180,6 +180,7 @@ class AuthService {
     final result = await FlutterWebAuth2.authenticate(
       url: authUrl.toString(),
       callbackUrlScheme: redirectUri,
+      options: const FlutterWebAuth2Options(useWebview: false),
     );
 
     final params = Uri.parse(result).queryParameters;
