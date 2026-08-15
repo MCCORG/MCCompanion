@@ -32,21 +32,30 @@ jobs:
         run: |
           MANIFEST_FILE="flatpak/net.mccompanion.MCCompanion.yml"
           
-          # Check which specific files changed
+          # Detect which specific files changed in the latest commit
+          CHANGED_MANIFEST=$(git diff --name-only HEAD~1 HEAD | grep -q '^flatpak/net\.mccompanion\.MCCompanion\.yml$' && echo "yes" || echo "no")
           CHANGED_METAINFO=$(git diff --name-only HEAD~1 HEAD | grep -q '^flatpak/net\.mccompanion\.MCCompanion\.metainfo\.xml$' && echo "yes" || echo "no")
           CHANGED_DESKTOP=$(git diff --name-only HEAD~1 HEAD | grep -q '^flatpak/net\.mccompanion\.MCCompanion\.desktop$' && echo "yes" || echo "no")
           CHANGED_PNG=$(git diff --name-only HEAD~1 HEAD | grep -q '^flatpak/net\.mccompanion\.MCCompanion\.png$' && echo "yes" || echo "no")
 
-          if [ "$CHANGED_METAINFO" = "no" ] && [ "$CHANGED_DESKTOP" = "no" ] && [ "$CHANGED_PNG" = "no" ]; then
-            echo "No Flatpak resource files changed in this commit. Skipping SHA updates."
+          if [ "$CHANGED_MANIFEST" = "no" ] && [ "$CHANGED_METAINFO" = "no" ] && [ "$CHANGED_DESKTOP" = "no" ] && [ "$CHANGED_PNG" = "no" ]; then
+            echo "No Flatpak resource files or manifest changed in this commit. Skipping SHA updates."
             exit 0
           fi
 
-          echo "Changed flags -> Metainfo: $CHANGED_METAINFO | Desktop: $CHANGED_DESKTOP | PNG: $CHANGED_PNG"
+          echo "Change flags -> Manifest: $CHANGED_MANIFEST | Metainfo: $CHANGED_METAINFO | Desktop: $CHANGED_DESKTOP | PNG: $CHANGED_PNG"
 
+          # Calculate local SHA256 hashes
           METAINFO_SHA256=$(sha256sum flatpak/net.mccompanion.MCCompanion.metainfo.xml | awk '{print $1}')
           DESKTOP_SHA256=$(sha256sum flatpak/net.mccompanion.MCCompanion.desktop | awk '{print $1}')
           PNG_SHA256=$(sha256sum flatpak/net.mccompanion.MCCompanion.png | awk '{print $1}')
+
+          # If manifest changed, enforce checking/updating all 3 resources
+          if [ "$CHANGED_MANIFEST" = "yes" ]; then
+            CHANGED_METAINFO="yes"
+            CHANGED_DESKTOP="yes"
+            CHANGED_PNG="yes"
+          fi
 
           python3 - "$CHANGED_METAINFO" "$CHANGED_DESKTOP" "$CHANGED_PNG" "$METAINFO_SHA256" "$DESKTOP_SHA256" "$PNG_SHA256" <<'PY'
           import sys
@@ -60,16 +69,16 @@ jobs:
               lines = f.readlines()
 
           updated_lines = []
-          active_block = None  # Tracks current source block
+          active_block = None  # Tracks active source block
 
           for line in lines:
               stripped = line.strip()
 
-              # Detect block start
+              # Reset block tracking on a new source item
               if stripped.startswith('- type:'):
                   active_block = None
 
-              # Match specific block URLs
+              # Identify specific file blocks
               if 'net.mccompanion.MCCompanion.metainfo.xml' in line and 'dest-filename:' not in line:
                   active_block = 'metainfo'
               elif 'net.mccompanion.MCCompanion.desktop' in line and 'dest-filename:' not in line:
@@ -77,7 +86,7 @@ jobs:
               elif 'net.mccompanion.MCCompanion.png' in line and 'dest-filename:' not in line:
                   active_block = 'png'
 
-              # Handle sha256 lines
+              # Update sha256 line when inside target block
               if stripped.startswith('sha256:'):
                   indent = line[:line.find('sha256:')]
                   
@@ -86,21 +95,21 @@ jobs:
                           updated_lines.append(f"{indent}sha256: {meta_sha}\n")
                       else:
                           updated_lines.append(line)
-                      active_block = None  # Clear state after handling
+                      active_block = None
                       continue
                   elif active_block == 'desktop':
                       if chg_desk:
                           updated_lines.append(f"{indent}sha256: {desk_sha}\n")
                       else:
                           updated_lines.append(line)
-                      active_block = None  # Clear state after handling
+                      active_block = None
                       continue
                   elif active_block == 'png':
                       if chg_png:
                           updated_lines.append(f"{indent}sha256: {png_sha}\n")
                       else:
                           updated_lines.append(line)
-                      active_block = None  # Clear state after handling
+                      active_block = None
                       continue
 
               updated_lines.append(line)
