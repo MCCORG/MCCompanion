@@ -254,8 +254,39 @@ jobs:
           NEW_SHA256=$(sha256sum MCCompanion-linux-x64.tar.gz | awk '{print $1}')
           echo "New SHA256: $NEW_SHA256"
 
-          # Only replace sha256 within 3 lines after matching MCCompanion-linux-x64.tar.gz
-          sed -i '/MCCompanion-linux-x64\.tar\.gz/,+3 s/\(sha256: \)[a-f0-9]\{64\}/\1'"$NEW_SHA256"'/' flatpak/net.mccompanion.MCCompanion.yml
+          python3 - "$NEW_SHA256" <<'PY'
+          import sys
+
+          new_sha = sys.argv[1]
+          file_path = 'flatpak/net.mccompanion.MCCompanion.yml'
+
+          with open(file_path, 'r') as f:
+              lines = f.readlines()
+
+          updated_lines = []
+          target_found = False
+
+          for line in lines:
+              # Enable state when reaching the target release archive line
+              if 'MCCompanion-linux-x64.tar.gz' in line:
+                  target_found = True
+                  updated_lines.append(line)
+                  continue
+
+              # Replace ONLY the first sha256 line encountered after the target archive line
+              if target_found and line.strip().startswith('sha256:'):
+                  indent = line[:line.find('sha256:')]
+                  updated_lines.append(f"{indent}sha256: {new_sha}\n")
+                  target_found = False  # Reset state so no other sha256 lines are touched
+                  continue
+
+              updated_lines.append(line)
+
+          with open(file_path, 'w') as f:
+              f.writelines(updated_lines)
+
+          print("Successfully updated only the archive SHA256 line.")
+          PY
 
       - name: Commit updated Flatpak manifest
         uses: stefanzweifel/git-auto-commit-action@v5
