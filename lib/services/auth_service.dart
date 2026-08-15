@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:crypto/crypto.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
 import 'package:http/http.dart' as http;
 import '../constants/app_constants.dart';
 import 'user_service.dart';
@@ -44,6 +45,15 @@ class AuthService {
   static DateTime? _desktopTokenExpiry;
 
   static bool get _usesDesktopAuth => Platform.isWindows || Platform.isLinux;
+
+  static const _linuxGoogleClientId = String.fromEnvironment(
+    'GOOGLE_DESKTOP_CLIENT_ID',
+    defaultValue:
+        '670852401318-8hcni7869tgj4fhl2oolbqnrqqhc6qop.apps.googleusercontent.com',
+  );
+  static const _linuxCallbackPort = 8123;
+
+  static bool get linuxGoogleAvailable => _linuxGoogleClientId.isNotEmpty;
 
   static Stream<AuthUser?> get userStream {
     if (_usesDesktopAuth) {
@@ -112,6 +122,7 @@ class AuthService {
   }
 
   static Future<void> signInWithGoogle() async {
+    if (Platform.isLinux) return _linuxGoogleSignIn();
     if (_usesDesktopAuth) {
       final provider = GoogleAuthProvider();
       final result = await _auth.signInWithProvider(provider);
@@ -136,6 +147,72 @@ class AuthService {
       idToken: googleAuth.idToken,
     );
     await _auth.signInWithCredential(credential);
+  }
+
+  static String _randomVerifier() {
+    const chars =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
+    final rnd = Random.secure();
+    return List.generate(64, (_) => chars[rnd.nextInt(chars.length)]).join();
+  }
+
+  static Future<void> _linuxGoogleSignIn() async {
+    if (_linuxGoogleClientId.isEmpty) {
+      throw Exception('google-signin-unavailable');
+    }
+
+    final verifier = _randomVerifier();
+    final challenge = base64Url
+        .encode(sha256.convert(ascii.encode(verifier)).bytes)
+        .replaceAll('=', '');
+    final redirectUri = 'http://localhost:$_linuxCallbackPort';
+
+    final authUrl = Uri.https('accounts.google.com', '/o/oauth2/v2/auth', {
+      'client_id': _linuxGoogleClientId,
+      'redirect_uri': redirectUri,
+      'response_type': 'code',
+      'scope': 'openid email profile',
+      'code_challenge': challenge,
+      'code_challenge_method': 'S256',
+      'prompt': 'select_account',
+    });
+
+    final result = await FlutterWebAuth2.authenticate(
+      url: authUrl.toString(),
+      callbackUrlScheme: redirectUri,
+    );
+
+    final params = Uri.parse(result).queryParameters;
+    final code = params['code'];
+    if (code == null) {
+      if (params['error'] != null) throw Exception('google-signin-cancelled');
+      return;
+    }
+
+    final res = await http
+        .post(
+          Uri.parse('${AppConstants.apiBase}/api/auth/desktop/google'),
+          headers: {'Content-Type': 'application/json'},
+          body: jsonEncode({
+            'code': code,
+            'codeVerifier': verifier,
+            'redirectUri': redirectUri,
+          }),
+        )
+        .timeout(const Duration(seconds: 20));
+
+    if (res.statusCode != 200) throw Exception('google-signin-failed');
+    final body = jsonDecode(res.body) as Map<String, dynamic>;
+
+    _desktopIdToken = body['idToken'] as String?;
+    _desktopRefreshToken = body['refreshToken'] as String?;
+    final expiresIn = int.tryParse(body['expiresIn']?.toString() ?? '') ?? 3600;
+    _desktopTokenExpiry = DateTime.now().add(Duration(seconds: expiresIn));
+    _desktopUser = AuthUser._(
+      uid: body['localId'] as String,
+      email: body['email'] as String?,
+    );
+    _desktopUserCtrl.add(_desktopUser);
   }
 
   static Future<void> signInWithApple() async {
@@ -293,8 +370,7 @@ class AuthService {
             int.tryParse(body['expires_in']?.toString() ?? '') ?? 3600;
         _desktopTokenExpiry = DateTime.now().add(Duration(seconds: expiresIn));
       }
-    } catch (_) {
-    }
+    } catch (_) {}
   }
 
   static Future<void> _desktopDeleteAccount() async {

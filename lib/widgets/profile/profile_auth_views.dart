@@ -25,7 +25,8 @@ class ProfileNotLoggedInViewState extends State<ProfileNotLoggedInView> {
   String? _error;
   bool _isRegisterMode = false;
 
-  bool get _supportsGoogle => !Platform.isLinux;
+  bool get _supportsGoogle =>
+      !Platform.isLinux || AuthService.linuxGoogleAvailable;
   bool get _supportsApple => Platform.isIOS || Platform.isMacOS;
 
   @override
@@ -402,7 +403,8 @@ class ProfileNotLoggedInViewState extends State<ProfileNotLoggedInView> {
                     onPressed: (_loading || _googleLoading || _appleLoading)
                         ? () {}
                         : _signInWithApple,
-                    style: ThemeData.estimateBrightnessForColor(
+                    style:
+                        ThemeData.estimateBrightnessForColor(
                               AppTheme.background,
                             ) ==
                             Brightness.dark
