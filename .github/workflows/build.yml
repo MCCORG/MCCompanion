@@ -251,36 +251,11 @@ jobs:
       - name: Update Flatpak manifest SHA256
         shell: bash
         run: |
-          # Ensure ruamel.yaml is available
-          python3 -m pip install ruamel.yaml
-
           NEW_SHA256=$(sha256sum MCCompanion-linux-x64.tar.gz | awk '{print $1}')
           echo "New SHA256: $NEW_SHA256"
 
-          python3 - "$NEW_SHA256" <<'PY'
-          import sys
-          from ruamel.yaml import YAML
-
-          new_sha = sys.argv[1]
-          manifest_path = 'flatpak/net.mccompanion.MCCompanion.yml'
-
-          yaml = YAML()
-          yaml.preserve_quotes = True
-
-          with open(manifest_path, 'r') as f:
-              data = yaml.load(f)
-
-          for mod in data.get('modules', []):
-              if isinstance(mod, dict) and mod.get('name') == 'MCCompanion':
-                  for src in mod.get('sources', []):
-                      if isinstance(src, dict) and src.get('type') == 'archive':
-                          src['sha256'] = new_sha
-
-          with open(manifest_path, 'w') as f:
-              yaml.dump(data, f)
-
-          print(f"Updated {manifest_path} with new SHA256: {new_sha}")
-          PY
+          # Replace the sha256 line following the MCCompanion archive source
+          sed -i -E "s/(sha256: )[a-f0-9]{64}/\1${NEW_SHA256}/" flatpak/net.mccompanion.MCCompanion.yml
 
       - name: Commit updated Flatpak manifest
         uses: stefanzweifel/git-auto-commit-action@v5
