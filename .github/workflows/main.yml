@@ -160,28 +160,6 @@ jobs:
             artifacts/MCCompanion-linux.flatpak
             artifacts/MCCompanion-linux.snap
 
-      # The website reads releases/tags/beta, so this pointer keeps that page
-      # working. The tagged release above is the real, permanent one.
-      - name: Move the beta pointer
-        uses: softprops/action-gh-release@v3
-        with:
-          tag_name: beta
-          name: Beta Build
-          prerelease: true
-          body: |
-            Beta build of ${{ needs.decide.outputs.build-name }}.
-            Permanent download: ${{ github.server_url }}/${{ github.repository }}/releases/tag/v${{ needs.decide.outputs.build-name }}
-          files: |
-            artifacts/MCCompanion-android.apk
-            artifacts/MCCompanion-android.aab
-            artifacts/MCCompanion-windows.zip
-            artifacts/MCCompanion-windows-setup.exe
-            artifacts/MCCompanion-macos.dmg
-            artifacts/MCCompanion-linux-x64.tar.gz
-            artifacts/MCCompanion.msix
-            artifacts/MCCompanion-linux.flatpak
-            artifacts/MCCompanion-linux.snap
-
   pin:
     name: Pin the Flathub manifest
     needs: [decide, release]
