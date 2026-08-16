@@ -41,7 +41,7 @@ modules:
     sources:
       - type: archive
         url: https://github.com/MCCORG/MCCompanion/releases/latest/download/MCCompanion-linux-x64.tar.gz
-        sha256: 2bc9707e4e8689dc3ecf84a7f91553bdebcd5625ad39f58c662b3ba0cc10e862
+        sha256: cd68276538f40bf7c486774394362740e0e7ecbd8d7d1003f017ae993aba2a2b
         x-checker-data:
           type: json
           url: https://api.github.com/repos/MCCORG/MCCompanion/releases/latest
@@ -50,7 +50,7 @@ modules:
           is-main-source: true
       - type: file
         url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.metainfo.xml
-        sha256: ce1f8663153c11f32f0b4bcc1f5e8a288ae55edbf57975390fd60cc73c30c027
+        sha256: 95a4393d0296a7cda57fdf354e49de47e2efed3ae7c85e7a39129b09e073746e
         dest-filename: net.mccompanion.MCCompanion.metainfo.xml
         x-checker-data:
           type: json
