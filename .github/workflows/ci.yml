@@ -1,9 +1,5 @@
 name: CI
 
-# Pull requests and side branches: prove it builds, publish nothing.
-
-# Pull requests only. A branch push used to trigger this as well, so an open
-# pull request built every commit twice.
 on:
   pull_request:
 
@@ -15,8 +11,60 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  changes:
+    name: Decide whether a build is needed
+    runs-on: ubuntu-latest
+    outputs:
+      build: ${{ steps.check.outputs.build }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Look at what the pull request touches
+        id: check
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          FILES="$(git diff --name-only "$BASE" "$HEAD")"
+          echo "Changed files:"
+          echo "$FILES" | sed 's/^/  /'
+
+          # What actually ends up in a build: the Dart code, the per-platform
+          # projects, the assets, and the two files that describe the app to
+          # the toolchain. Everything else, packaging metadata and prose
+          # included, skips the build.
+          #
+          # The workflows and scripts/ are on this list even though they ship
+          # nothing, because a change there is exactly the kind you want proven
+          # before it lands, and it is what builds everything else.
+          # l10n.yaml drives flutter gen-l10n, so a mistake there stops the
+          # translations from being generated at all. The two images are the
+          # icons that end up inside the Flatpak and the Snap.
+          MATTERS='^(lib/|android/|ios/|macos/|windows/|linux/|assets/|test/|scripts/|\.github/workflows/)|^pubspec\.(yaml|lock)$|^(analysis_options|l10n)\.yaml$|^firebase\.json$|^flatpak/net\.mccompanion\.MCCompanion\.png$|^snap/local/'
+
+          if [ -z "$FILES" ]; then
+            echo "build=false" >> "$GITHUB_OUTPUT"
+            echo "Nothing changed."
+            exit 0
+          fi
+
+          NEEDS_BUILD="$(printf '%s\n' "$FILES" | grep -E "$MATTERS" || true)"
+
+          if [ -n "$NEEDS_BUILD" ]; then
+            echo "build=true" >> "$GITHUB_OUTPUT"
+            echo "Building, because of:"
+            printf '%s\n' "$NEEDS_BUILD" | sed 's/^/  /'
+          else
+            echo "build=false" >> "$GITHUB_OUTPUT"
+            echo "Nothing that goes into a build changed, skipping it."
+          fi
+
   build:
     name: Build
+    needs: [changes]
+    if: ${{ needs.changes.outputs.build == 'true' }}
     uses: ./.github/workflows/build-app.yml
     with:
       # The version is irrelevant here, nothing is published. run_number keeps
@@ -25,3 +73,23 @@ jobs:
       build-number: ${{ github.run_number }}
       signed: false
     secrets: inherit
+
+  complete:
+    name: CI complete
+    needs: [changes, build]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report
+        env:
+          BUILD: ${{ needs.build.result }}
+        run: |
+          case "$BUILD" in
+            success)
+              echo "Everything built." ;;
+            skipped)
+              echo "No build was needed for this change." ;;
+            *)
+              echo "The build did not pass: $BUILD"
+              exit 1 ;;
+          esac
