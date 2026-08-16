@@ -88,12 +88,7 @@ jobs:
       - name: Send build status embed
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          ANDROID_RESULT: ${{ needs.build.outputs.android }}
-          WINDOWS_RESULT: ${{ needs.build.outputs.windows }}
-          MACOS_RESULT: ${{ needs.build.outputs.macos }}
-          LINUX_RESULT: ${{ needs.build.outputs.linux }}
-          FLATPAK_RESULT: ${{ needs.build.outputs.flatpak }}
-          SNAP_RESULT: ${{ needs.build.outputs.snap }}
+          BUILD_RESULT: ${{ needs.build.result }}
           RELEASE_RESULT: ${{ needs.release.result }}
           REPOSITORY: ${{ github.repository }}
           BRANCH: ${{ github.ref_name }}
@@ -111,7 +106,7 @@ jobs:
 
           OVERALL_STATUS="✅ Build Succeeded"
           EMBED_COLOR=5763719
-          if [ "$ANDROID_RESULT" != "success" ] || [ "$WINDOWS_RESULT" != "success" ] || [ "$MACOS_RESULT" != "success" ] || [ "$LINUX_RESULT" != "success" ] || [ "$FLATPAK_RESULT" != "success" ] || [ "$SNAP_RESULT" != "success" ] || [ "$RELEASE_RESULT" != "success" ]; then
+          if [ "$BUILD_RESULT" != "success" ] || [ "$RELEASE_RESULT" != "success" ]; then
             OVERALL_STATUS="❌ Build Failed"
             EMBED_COLOR=15548997
           fi
@@ -129,12 +124,7 @@ jobs:
             --arg commitUrl "$COMMIT_URL" \
             --arg sha "$SHA" \
             --arg commitSubject "$COMMIT_SUBJECT" \
-            --arg android "$ANDROID_RESULT" \
-            --arg windows "$WINDOWS_RESULT" \
-            --arg macos "$MACOS_RESULT" \
-            --arg linux "$LINUX_RESULT" \
-            --arg flatpak "$FLATPAK_RESULT" \
-            --arg snap "$SNAP_RESULT" \
+            --arg build "$BUILD_RESULT" \
             --arg release "$RELEASE_RESULT" \
             --arg releasesUrl "$RELEASES_URL" \
             --argjson color "$EMBED_COLOR" \
@@ -151,12 +141,7 @@ jobs:
                     icon_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
                   },
                   fields: [
-                    { name: "Android", value: $android, inline: true },
-                    { name: "Windows", value: $windows, inline: true },
-                    { name: "macOS", value: $macos, inline: true },
-                    { name: "Linux", value: $linux, inline: true },
-                    { name: "Flatpak", value: $flatpak, inline: true },
-                    { name: "Snap", value: $snap, inline: true },
+                    { name: "Build", value: $build, inline: true },
                     { name: "Release", value: $release, inline: true },
                     { name: "Commit", value: ("[" + ($sha | .[0:7]) + "](" + $commitUrl + ")" + (if $commitSubject != "" then " " + $commitSubject else "" end)), inline: false },
                     { name: "Releases Page", value: ("[View Releases](" + $releasesUrl + ")"), inline: false }

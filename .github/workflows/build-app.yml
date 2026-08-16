@@ -30,15 +30,6 @@ on:
         required: false
         default: true
         type: boolean
-    outputs:
-      # Passed through so the Discord embed can still name the platform that
-      # failed, which a single pass/fail on the whole call would hide.
-      android: ${{ jobs.android.result }}
-      windows: ${{ jobs.windows.result }}
-      macos: ${{ jobs.macos.result }}
-      linux: ${{ jobs.linux.result }}
-      flatpak: ${{ jobs.flatpak.result }}
-      snap: ${{ jobs.snap.result }}
 
 env:
   FLUTTER_VERSION: '3.44.0'
