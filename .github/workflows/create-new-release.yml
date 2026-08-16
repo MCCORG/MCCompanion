@@ -1,68 +1,60 @@
-name: Create New Release
+name: Create new release
 
 on:
   workflow_dispatch:
     inputs:
-      bump:
-        description: "Version bump type"
+      bump_type:
+        description: 'Version bump type (patch, minor, major, or x.y.z)'
         required: true
-        default: "patch"
-        type: choice
-        options:
-          - patch
-          - minor
-          - major
-
-permissions:
-  contents: write
+        default: 'patch'
 
 jobs:
   release:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
-      - name: Check out repository
+      - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
+          python-version: '3.x'
 
-      - name: Bump version
-        run: |
-          python3 scripts/bump_version.py "${{ inputs.bump }}"
-
-      - name: Get new version
-        id: version
-        run: |
-          # TODO: Replace this with your project's actual version source
-          VERSION=$(python3 -c 'import ...')
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-
-      - name: Commit version bump
+      - name: Configure Git author
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "Release ${{ steps.version.outputs.version }}"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Push commit
-        run: git push
-
-      - name: Create tag
-        run: git tag "v${{ steps.version.outputs.version }}"
-
-      - name: Push tag
-        run: git push origin "v${{ steps.version.outputs.version }}"
-
-      - name: Create GitHub Release
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Bump version with script
+        id: bump
         run: |
-          gh release create \
-            "v${{ steps.version.outputs.version }}" \
-            --title "v${{ steps.version.outputs.version }}" \
-            --generate-notes
+          # Run your script and capture its output
+          OUTPUT=$(python3 scripts/bump_version.py ${{ inputs.bump_type }})
+          echo "$OUTPUT"
+          
+          # Extract the new version part after the '->' arrow (e.g., extracts '4.2.1+15' from '4.2.0+14 -> 4.2.1+15')
+          NEW_FULL_VERSION=$(echo "$OUTPUT" | awk -F'->' '{print $2}' | xargs)
+          # Strip the build number off (+...) to get just the X.Y.Z version for the git tag
+          VERSION_ONLY=$(echo "$NEW_FULL_VERSION" | cut -d'+' -f1)
+          
+          echo "version=$VERSION_ONLY" >> $GITHUB_OUTPUT
+
+      - name: Commit, tag, and push release
+        run: |
+          VERSION="${{ steps.bump.outputs.version }}"
+          
+          # Stage and commit modified files (pubspec.yaml, snapcraft.yaml, metainfo.xml)
+          git add pubspec.yaml snap/snapcraft.yaml flatpak/net.mccompanion.MCCompanion.metainfo.xml
+          git commit -m "Release v$VERSION"
+          git push
+
+          # Tag and push the new release tag
+          git tag "v$VERSION"
+          git push origin "v$VERSION"
