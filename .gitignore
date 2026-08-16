@@ -57,3 +57,4 @@ dart_defines.json
 
 # GH workflow protection
 /android/gradle.properties
+flatpak/MCCompanion-linux-x64.tar.gz

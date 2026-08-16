@@ -161,7 +161,7 @@ jobs:
             artifacts/MCCompanion-linux.snap
 
   pin:
-    name: Pin the Flathub manifest
+    name: Build the Flathub manifest
     needs: [decide, release]
     runs-on: ubuntu-latest
     permissions:
@@ -174,84 +174,38 @@ jobs:
           name: linux-tarball
           path: /tmp/
 
-      # Flathub builds from a manifest whose sources are pinned by hash, so
-      # they have to point at something that never moves. The copy in this
-      # repository points at the dev release and at main, which is fine for
-      # working on but useless to Flathub.
-      #
-      # The pinned copy is attached to the release rather than committed back
-      # to main. Nothing then writes to a protected branch, and the file you
-      # need for a Flathub pull request is sitting right next to the build it
-      # describes.
-      - name: Build the pinned manifest
+      - name: Generate it
         env:
           TAG: v${{ needs.decide.outputs.build-name }}
         run: |
           python3 scripts/set_release_entry.py \
             "${{ needs.decide.outputs.build-name }}" "$(date -u +%Y-%m-%d)"
 
-          python3 - "$TAG" "${{ github.server_url }}/${{ github.repository }}" <<'PY'
-          import hashlib
-          import re
-          import sys
-          from pathlib import Path
+          python3 scripts/flathub_manifest.py "$TAG" /tmp/MCCompanion-linux-x64.tar.gz \
+            > /tmp/net.mccompanion.MCCompanion.yml
+          cat /tmp/net.mccompanion.MCCompanion.yml
 
-          tag, base = sys.argv[1], sys.argv[2]
-          raw = f"https://raw.githubusercontent.com/MCCORG/MCCompanion/{tag}/flatpak"
-          path = Path("flatpak/net.mccompanion.MCCompanion.yml")
-          text = path.read_text()
-
-          def sha_of(file_path):
-              return hashlib.sha256(Path(file_path).read_bytes()).hexdigest()
-
-          # The resource files are served from the tag created a moment ago, so
-          # hashing the local copies is the same as hashing what Flathub fetches.
-          targets = [
-              ("MCCompanion-linux-x64.tar.gz",
-               f"{base}/releases/download/{tag}/MCCompanion-linux-x64.tar.gz",
-               sha_of("/tmp/MCCompanion-linux-x64.tar.gz")),
-          ]
-          for name in ("metainfo.xml", "desktop", "png"):
-              filename = f"net.mccompanion.MCCompanion.{name}"
-              targets.append((filename, f"{raw}/{filename}", sha_of(f"flatpak/{filename}")))
-
-          for filename, url, sha in targets:
-              # Anchored on the file name. The zenity archive is a source too
-              # and comes first, so a generic pattern would rewrite that one.
-              pattern = re.compile(
-                  rf"(url: )\S*{re.escape(filename)}(\n\s+sha256: )[0-9a-f]+",
-              )
-              text, count = pattern.subn(rf"\g<1>{url}\g<2>{sha}", text, count=1)
-              if count != 1:
-                  raise SystemExit(f"Could not find the source for {filename}")
-              print(f"{filename}: {sha}")
-
-          path.write_text(text)
-          PY
-
-      # The metainfo has to be reachable at the tag with exactly the hash above,
-      # and it is, because bump_version.py wrote the same entry into the commit
-      # that was tagged. If those ever disagree, Flathub fails on the hash, so
-      # this check turns that into a clear failure here instead.
-      - name: Check the metadata at the tag matches
+      - name: Check the tag serves what the manifest pins
         env:
           TAG: v${{ needs.decide.outputs.build-name }}
         run: |
-          URL="https://raw.githubusercontent.com/${{ github.repository }}/$TAG/flatpak/net.mccompanion.MCCompanion.metainfo.xml"
-          EXPECTED="$(sha256sum flatpak/net.mccompanion.MCCompanion.metainfo.xml | cut -d' ' -f1)"
-          ACTUAL="$(curl -fsSL "$URL" | sha256sum | cut -d' ' -f1)"
-          if [ "$EXPECTED" != "$ACTUAL" ]; then
-            echo "The metadata at $TAG does not match what this manifest pins."
-            echo "Run scripts/bump_version.py for the release instead of editing the version by hand."
-            exit 1
-          fi
-          echo "Metadata at $TAG matches."
+          for NAME in metainfo.xml desktop png; do
+            FILE="flatpak/net.mccompanion.MCCompanion.$NAME"
+            URL="https://raw.githubusercontent.com/${{ github.repository }}/$TAG/$FILE"
+            EXPECTED="$(sha256sum "$FILE" | cut -d' ' -f1)"
+            ACTUAL="$(curl -fsSL "$URL" | sha256sum | cut -d' ' -f1)"
+            if [ "$EXPECTED" != "$ACTUAL" ]; then
+              echo "$FILE at $TAG does not match what the manifest pins."
+              exit 1
+            fi
+            echo "$FILE matches."
+          done
 
-      - name: Attach the manifest to the release
+      - name: Attach it to the release
         uses: softprops/action-gh-release@v3
         with:
           tag_name: v${{ needs.decide.outputs.build-name }}
-          files: flatpak/net.mccompanion.MCCompanion.yml
+          files: /tmp/net.mccompanion.MCCompanion.yml
 
   notify:
     name: Notify Discord
