@@ -1385,13 +1385,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get legalSection => 'Legal';
 
   @override
-  String get privacyPolicy => 'Privacy Policy';
+  String get privacyPolicy => 'privacy policy';
 
   @override
   String get privacyPolicySubtitle => 'How we collect and protect your data';
 
   @override
-  String get termsOfService => 'Terms of Service';
+  String get termsOfService => 'terms of service';
 
   @override
   String get termsOfServiceSubtitle => 'Rules and conditions of use';
@@ -2733,7 +2733,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'Proxy/Direct Mode: your device is the connection.\n1. Make sure the device running MCCompanion and your console are on the same local network.\n2. Enter the Bedrock server address and port, then press "Start Proxy/Direct Mode".\n3. On the console open Minecraft → Play → Friends tab and refresh the list.\n4. Select the LAN server named "MCCompanion" to join.\n\nWhy this mode exists:\n- Nothing passes through MCCompanion\'s servers. Your device forwards the traffic itself, so this keeps working even when our relays cannot be reached.\n- No sign-in is needed.\n\nKeep in mind:\n- The app has to stay open and on screen for the whole session. Closing it or switching to another app ends the connection.\n- Bedrock servers only. For Java servers use Java Mode, which does the protocol translation on our side.\n- Expect more battery use than in the other modes.\n- Resource packs are not applied. They are handled by our relay, which this mode skips.';
+      'Proxy/Direct Mode: your device is the connection.\n1. Make sure the device running MCCompanion and your console are on the same local network.\n2. Enter the Bedrock server address and port, then press \"Start Proxy/Direct Mode\".\n3. On the console open Minecraft → Play → Friends tab and refresh the list.\n4. Select the LAN server named \"MCCompanion\" to join.\n\nWhy this mode exists:\n- Nothing passes through MCCompanion\'s servers. Your device forwards the traffic itself, so this keeps working even when our relays cannot be reached.\n- No sign-in is needed.\n\nKeep in mind:\n- The app has to stay open and on screen for the whole session. Closing it or switching to another app ends the connection.\n- Bedrock servers only. For Java servers use Java Mode, which does the protocol translation on our side.\n- Expect more battery use than in the other modes.\n- Resource packs are not applied. They are handled by our relay, which this mode skips.';
 
   @override
   String directHostNotFound(String host) {
@@ -2763,4 +2763,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String directAddressNotSupported(String host) {
     return '$host is an IPv6 address. Proxy/Direct Mode only supports IPv4. Use the IPv4 address or the hostname instead.';
   }
+
+  @override
+  String termsAgreement(String terms, String privacy) {
+    return 'I agree to the $terms and the $privacy.';
+  }
+
+  @override
+  String get verifyEmailTitle => 'Verify your email';
+
+  @override
+  String get verifyEmailBody =>
+      'Needed before you can comment, upload skins or submit packs.';
+
+  @override
+  String get verifyEmailSent => 'Sent, check your inbox.';
+
+  @override
+  String get verifyEmailSending => 'Sending…';
+
+  @override
+  String get verifyEmailSend => 'Send link';
 }

@@ -864,7 +864,7 @@
   "@portRangeError": {
     "description": "Validation error when port is out of range"
   },
-  "privacyPolicy": "Privacy Policy",
+  "privacyPolicy": "隐私政策",
   "@privacyPolicy": {
     "description": "Privacy Policy tile title"
   },
@@ -1164,7 +1164,7 @@
   "@tabRequests": {
     "description": "Tab label for Requests tab"
   },
-  "termsOfService": "Terms of Service",
+  "termsOfService": "服务条款",
   "@termsOfService": {
     "description": "Terms of Service tile title"
   },
@@ -2021,5 +2021,11 @@
         "type": "String"
       }
     }
-  }
+  },
+  "termsAgreement": "我同意{terms}和{privacy}。",
+  "verifyEmailTitle": "验证你的邮箱",
+  "verifyEmailBody": "评论、上传皮肤或提交材质包前需要先验证。",
+  "verifyEmailSent": "已发送，请查看收件箱。",
+  "verifyEmailSending": "发送中…",
+  "verifyEmailSend": "发送链接"
 }

@@ -1,4 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/services.dart';
 import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
@@ -17,6 +21,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _usernameCtrl = TextEditingController();
   final _displayNameCtrl = TextEditingController();
   bool _loading = false;
+  bool _acceptedTerms = false;
   String? _error;
 
   @override
@@ -24,6 +29,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
     _usernameCtrl.dispose();
     _displayNameCtrl.dispose();
     super.dispose();
+  }
+
+  Future<void> _openPage(String path) async {
+    final uri = Uri.parse('https://mccompanion.net/$path');
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
   }
 
   Future<void> _register() async {
@@ -44,6 +56,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     });
 
     final result = await UserService.register(
+      acceptedTerms: _acceptedTerms,
       username: username,
       displayName: _displayNameCtrl.text.trim(),
     );
@@ -52,6 +65,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     if (result.user != null) {
       await PushNotificationService.onUserSignedIn();
+      unawaited(UserService.sendVerificationEmail());
       widget.onRegistered();
       return;
     }
@@ -62,7 +76,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       _error = switch (result.error) {
         'username_taken' => l.usernameTaken,
         'network_error' => l.noConnectionError,
-        _ => l.somethingWentWrong,
+        _ => result.message ?? l.somethingWentWrong,
       };
     });
   }
@@ -204,9 +218,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                   ],
-                  const SizedBox(height: 28),
+                  const SizedBox(height: 8),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Checkbox(
+                        value: _acceptedTerms,
+                        onChanged: (v) => setState(() => _acceptedTerms = v ?? false),
+                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 12),
+                          child: _TermsSentence(
+                            onOpen: _openPage,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: _loading ? null : _register,
+                    onPressed: (_loading || !_acceptedTerms) ? null : _register,
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 16),
                     ),
@@ -246,4 +279,52 @@ class _RegisterScreenState extends State<RegisterScreen> {
       letterSpacing: 0.4,
     ),
   );
+}
+
+
+class _TermsSentence extends StatelessWidget {
+  const _TermsSentence({required this.onOpen});
+
+  final void Function(String path) onOpen;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+    final terms = l.termsOfService;
+    final privacy = l.privacyPolicy;
+    final sentence = l.termsAgreement(terms, privacy);
+
+    final base = TextStyle(fontSize: 13, color: AppTheme.textSecondary);
+    final link = base.copyWith(
+      color: AppTheme.accent,
+      decoration: TextDecoration.underline,
+    );
+
+    final spans = <InlineSpan>[];
+    var rest = sentence;
+    while (rest.isNotEmpty) {
+      final iTerms = rest.indexOf(terms);
+      final iPrivacy = rest.indexOf(privacy);
+      final candidates = [
+        if (iTerms >= 0) (iTerms, terms, 'terms'),
+        if (iPrivacy >= 0) (iPrivacy, privacy, 'privacy'),
+      ]..sort((a, b) => a.$1.compareTo(b.$1));
+
+      if (candidates.isEmpty) {
+        spans.add(TextSpan(text: rest, style: base));
+        break;
+      }
+
+      final (index, label, path) = candidates.first;
+      if (index > 0) spans.add(TextSpan(text: rest.substring(0, index), style: base));
+      spans.add(TextSpan(
+        text: label,
+        style: link,
+        recognizer: TapGestureRecognizer()..onTap = () => onOpen(path),
+      ));
+      rest = rest.substring(index + label.length);
+    }
+
+    return Text.rich(TextSpan(children: spans));
+  }
 }

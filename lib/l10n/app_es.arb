@@ -864,7 +864,7 @@
   "@portRangeError": {
     "description": "Validation error when port is out of range"
   },
-  "privacyPolicy": "Política de privacidad",
+  "privacyPolicy": "política de privacidad",
   "@privacyPolicy": {
     "description": "Privacy Policy tile title"
   },
@@ -1164,7 +1164,7 @@
   "@tabRequests": {
     "description": "Tab label for Requests tab"
   },
-  "termsOfService": "Términos de servicio",
+  "termsOfService": "términos del servicio",
   "@termsOfService": {
     "description": "Terms of Service tile title"
   },
@@ -2021,5 +2021,11 @@
         "type": "String"
       }
     }
-  }
+  },
+  "termsAgreement": "Acepto los {terms} y la {privacy}.",
+  "verifyEmailTitle": "Verifica tu correo",
+  "verifyEmailBody": "Necesario antes de comentar, subir skins o enviar packs.",
+  "verifyEmailSent": "Enviado, revisa tu bandeja de entrada.",
+  "verifyEmailSending": "Enviando…",
+  "verifyEmailSend": "Enviar enlace"
 }

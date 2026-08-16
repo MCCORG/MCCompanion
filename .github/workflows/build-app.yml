@@ -1,0 +1,598 @@
+name: Build app
+
+# Every platform is built here and nowhere else, so a toolchain bump is a
+# one-line change instead of the same edit in three workflows.
+#
+# Build jobs never write to the repository. The Flatpak manifest sha256 can
+# only be computed once the tarball is published anyway, so that update lives
+# in release.yml as a single step after the release exists.
+
+on:
+  workflow_call:
+    inputs:
+      build-name:
+        description: Version shown to users, without the build number (4.1.8).
+        required: true
+        type: string
+      build-number:
+        description: Monotonic build number. The stores reject a reused one.
+        required: true
+        type: string
+      build-aab:
+        description: Also build a Play Store bundle. Only needed for releases.
+        required: false
+        default: false
+        type: boolean
+      signed:
+        description: >
+          Sign the Android build. Off for pull requests, which get no secrets
+          when they come from a fork and would otherwise fail on the keystore.
+        required: false
+        default: true
+        type: boolean
+
+env:
+  FLUTTER_VERSION: '3.44.0'
+
+jobs:
+  android:
+    name: Android
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Cache pub dependencies
+        uses: actions/cache@v5
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+
+      - name: Prepare signing keystore
+        if: ${{ inputs.signed }}
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS || 'upload' }}
+        run: |
+          if [ -z "$ANDROID_KEYSTORE_BASE64" ]; then
+            echo "Missing ANDROID_KEYSTORE_BASE64 in GitHub Secrets."
+            exit 1
+          fi
+          if [ -z "$KEYSTORE_PASSWORD" ] || [ -z "$KEY_PASSWORD" ]; then
+            echo "Missing KEYSTORE_PASSWORD or KEY_PASSWORD in GitHub Secrets."
+            exit 1
+          fi
+          TEMP_KEYSTORE_PATH="$(mktemp)"
+          trap 'rm -f "$TEMP_KEYSTORE_PATH"' EXIT
+          if ! echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > "$TEMP_KEYSTORE_PATH"; then
+            echo "Failed to decode ANDROID_KEYSTORE_BASE64. Verify it is valid base64 in GitHub Secrets."
+            exit 1
+          fi
+          if ! mv "$TEMP_KEYSTORE_PATH" android/app-release.jks; then
+            echo "Failed to write decoded keystore to android/app-release.jks."
+            exit 1
+          fi
+          if ! printf '%s\n' "$KEYSTORE_PASSWORD" | keytool -list -keystore android/app-release.jks >/dev/null 2>&1; then
+            rm -f android/app-release.jks
+            echo "Keystore validation failed. Verify KEYSTORE_PASSWORD is correct for it."
+            exit 1
+          fi
+          if ! printf '%s\n' "$KEYSTORE_PASSWORD" | keytool -list -keystore android/app-release.jks -alias "$KEY_ALIAS" >/dev/null 2>&1; then
+            rm -f android/app-release.jks
+            echo "Keystore alias validation failed. Verify KEY_ALIAS exists in the keystore."
+            exit 1
+          fi
+          chmod 600 android/app-release.jks
+          umask 077
+          printf 'storePassword=%s\nkeyPassword=%s\nkeyAlias=%s\nstoreFile=app-release.jks\n' \
+            "$KEYSTORE_PASSWORD" "$KEY_PASSWORD" "$KEY_ALIAS" > android/key.properties
+          chmod 600 android/key.properties
+
+      - name: Build APK
+        run: |
+          if [ "${{ inputs.signed }}" = "true" ]; then
+            flutter build apk --release \
+              --build-name=${{ inputs.build-name }} \
+              --build-number=${{ inputs.build-number }}
+            mv build/app/outputs/flutter-apk/app-release.apk MCCompanion-android.apk
+          else
+            flutter build apk --debug \
+              --build-name=${{ inputs.build-name }} \
+              --build-number=${{ inputs.build-number }}
+            mv build/app/outputs/flutter-apk/app-debug.apk MCCompanion-android.apk
+          fi
+
+      # A wrong keystore produces a perfectly valid APK that Play rejects and
+      # that existing users cannot upgrade onto, so check the fingerprint here
+      # rather than finding out at upload time. Set ANDROID_SIGNING_SHA256 to
+      # the SHA-256 of your upload certificate to arm this.
+      - name: Verify signing certificate
+        if: ${{ inputs.signed }}
+        env:
+          EXPECTED: ${{ secrets.ANDROID_SIGNING_SHA256 }}
+        run: |
+          APKSIGNER="$(find "$ANDROID_HOME/build-tools" -name apksigner | sort -r | head -n1)"
+          ACTUAL="$("$APKSIGNER" verify --print-certs MCCompanion-android.apk \
+            | sed -nE 's/.*SHA-256 digest: *([0-9a-f]+).*/\1/p' | head -n1)"
+
+          if [ -z "$ACTUAL" ]; then
+            echo "Could not read the signing certificate from the APK."
+            exit 1
+          fi
+          echo "Signed with SHA-256: $ACTUAL"
+
+          if [ -z "$EXPECTED" ]; then
+            echo "::warning::ANDROID_SIGNING_SHA256 is not set, so the signing key is unverified."
+            exit 0
+          fi
+
+          NORMALISED="$(printf '%s' "$EXPECTED" | tr -d ': ' | tr 'A-Z' 'a-z')"
+          if [ "$ACTUAL" != "$NORMALISED" ]; then
+            echo "Signed with the wrong key."
+            echo "  expected: $NORMALISED"
+            echo "  actual:   $ACTUAL"
+            exit 1
+          fi
+          echo "Signing key matches."
+
+      - name: Build Play Store bundle
+        if: ${{ inputs.build-aab }}
+        run: |
+          flutter build appbundle --release \
+            --build-name=${{ inputs.build-name }} \
+            --build-number=${{ inputs.build-number }}
+          mv build/app/outputs/bundle/release/app-release.aab MCCompanion-android.aab
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: android-apk
+          path: MCCompanion-android.apk
+
+      - uses: actions/upload-artifact@v6
+        if: ${{ inputs.build-aab }}
+        with:
+          name: android-aab
+          path: MCCompanion-android.aab
+
+  windows:
+    name: Windows
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: false
+
+      - name: Cache pub dependencies
+        uses: actions/cache@v5
+        with:
+          path: ~/AppData/Local/Pub/Cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+
+      - name: Setup CMake 3.x
+        uses: jwlawson/actions-setup-cmake@v2
+        with:
+          cmake-version: '3.31.6'
+
+      - name: Build Windows
+        run: |
+          flutter build windows --release `
+            --build-name=${{ inputs.build-name }} `
+            --build-number=${{ inputs.build-number }}
+        shell: pwsh
+        env:
+          CMAKE_POLICY_VERSION_MINIMUM: "3.5"
+
+      # msix:create reads msix_version from pubspec.yaml, which the bump script
+      # keeps in step with the version. The store rejects a reused one.
+      - name: Build MSIX
+        run: dart run msix:create
+
+      - name: Zip Windows build
+        shell: pwsh
+        run: |
+          Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath MCCompanion-windows.zip
+
+      # Standalone installer for people who just want to download and run it.
+      # Inno Setup ships on the windows runners.
+      - name: Build Windows installer
+        shell: pwsh
+        run: |
+          # Inno Setup ships on the runner, but not always on PATH and not
+          # always under the same Program Files, so resolve it rather than
+          # guess at a path.
+          $iscc = (Get-Command iscc.exe -ErrorAction SilentlyContinue).Source
+          if (-not $iscc) {
+            $iscc = Get-ChildItem -Path 'C:\Program Files', 'C:\Program Files (x86)' `
+              -Filter ISCC.exe -Recurse -ErrorAction SilentlyContinue |
+              Select-Object -First 1 -ExpandProperty FullName
+          }
+          if (-not $iscc) { throw 'Inno Setup compiler (ISCC.exe) not found on this runner.' }
+          Write-Host "Using $iscc"
+
+          & $iscc /DMyAppVersion=${{ inputs.build-name }} windows\installer.iss
+          if ($LASTEXITCODE -ne 0) { throw "Inno Setup failed with exit code $LASTEXITCODE" }
+
+          Move-Item installer\MCCompanion-windows-setup.exe MCCompanion-windows-setup.exe
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: windows-zip
+          path: MCCompanion-windows.zip
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: windows-setup
+          path: MCCompanion-windows-setup.exe
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: windows-msix
+          path: build/windows/x64/runner/Release/MCCompanion.msix
+
+  macos:
+    name: macOS
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Cache pub dependencies
+        uses: actions/cache@v5
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+
+      - name: Cache CocoaPods
+        uses: actions/cache@v5
+        with:
+          path: |
+            ~/.cocoapods/repos
+            ~/Library/Caches/CocoaPods
+            macos/Pods
+          key: ${{ runner.os }}-cocoapods-${{ hashFiles('macos/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cocoapods-
+
+      - name: Prepare macOS dependency overrides
+        run: |
+          cat > pubspec_overrides.yaml <<'EOF'
+          dependency_overrides:
+            connectivity_plus: 6.1.4
+          EOF
+          flutter pub get
+
+      - name: Build macOS
+        run: |
+          flutter build macos --release \
+            --build-name=${{ inputs.build-name }} \
+            --build-number=${{ inputs.build-number }}
+        env:
+          FLUTTER_XCODE_CODE_SIGNING_ALLOWED: "NO"
+          FLUTTER_XCODE_CODE_SIGN_IDENTITY: ""
+          FLUTTER_XCODE_CODE_SIGNING_REQUIRED: "NO"
+
+      # Without a Developer ID certificate the app still builds, it just gets
+      # an ad-hoc signature and Gatekeeper will warn. That keeps pull requests
+      # and forks working, where these secrets are not available.
+      - name: Import Developer ID certificate
+        id: signing
+        env:
+          CERTIFICATE_P12: ${{ secrets.MACOS_CERTIFICATE_P12 }}
+          CERTIFICATE_PASSWORD: ${{ secrets.MACOS_CERTIFICATE_PASSWORD }}
+        run: |
+          if [ -z "$CERTIFICATE_P12" ] || [ -z "$CERTIFICATE_PASSWORD" ]; then
+            echo "No Developer ID certificate configured. Falling back to ad-hoc signing."
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          KEYCHAIN="$RUNNER_TEMP/signing.keychain-db"
+          KEYCHAIN_PASSWORD="$(openssl rand -base64 24)"
+
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN"
+          security set-keychain-settings -lut 3600 "$KEYCHAIN"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN"
+
+          echo "$CERTIFICATE_P12" | base64 --decode > "$RUNNER_TEMP/certificate.p12"
+          security import "$RUNNER_TEMP/certificate.p12" \
+            -k "$KEYCHAIN" \
+            -P "$CERTIFICATE_PASSWORD" \
+            -T /usr/bin/codesign
+          rm -f "$RUNNER_TEMP/certificate.p12"
+
+          # Lets codesign use the key without an interactive prompt.
+          security set-key-partition-list -S apple-tool:,apple:,codesign: \
+            -s -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN" >/dev/null
+          security list-keychains -d user -s "$KEYCHAIN" login.keychain-db
+
+          echo "available=true" >> "$GITHUB_OUTPUT"
+
+      - name: Sign, notarize and staple
+        if: ${{ steps.signing.outputs.available == 'true' }}
+        env:
+          SIGN_IDENTITY: ${{ secrets.MACOS_SIGN_IDENTITY }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          APP="build/macos/Build/Products/Release/MCCompanion.app"
+
+          codesign --deep --force --verbose \
+            --sign "$SIGN_IDENTITY" \
+            --options runtime \
+            --entitlements macos/Runner/Release.entitlements \
+            "$APP"
+
+          # Notarization takes a zip, but the staple goes onto the .app.
+          ditto -c -k --keepParent "$APP" "$RUNNER_TEMP/MCCompanion.zip"
+          xcrun notarytool submit "$RUNNER_TEMP/MCCompanion.zip" \
+            --apple-id "$APPLE_ID" \
+            --password "$APPLE_APP_PASSWORD" \
+            --team-id "$APPLE_TEAM_ID" \
+            --wait
+          xcrun stapler staple "$APP"
+
+      - name: Create macOS DMG
+        run: |
+          STAGING_DIR="$RUNNER_TEMP/dmg-staging"
+          APP_PATH="build/macos/Build/Products/Release/MCCompanion.app"
+          rm -rf "$STAGING_DIR"
+          mkdir -p "$STAGING_DIR"
+          # ditto rather than cp, so the signature and the stapled ticket
+          # survive the copy into the disk image intact.
+          ditto "$APP_PATH" "$STAGING_DIR/MCCompanion.app"
+          ln -s /Applications "$STAGING_DIR/Applications"
+          hdiutil create \
+            -volname "MCCompanion" \
+            -srcfolder "$STAGING_DIR" \
+            -ov \
+            -format UDZO \
+            "$GITHUB_WORKSPACE/MCCompanion-macos.dmg"
+
+      # The disk image is notarized separately from the app inside it, so
+      # Gatekeeper stays quiet on the download itself.
+      - name: Sign, notarize and staple the DMG
+        if: ${{ steps.signing.outputs.available == 'true' }}
+        env:
+          SIGN_IDENTITY: ${{ secrets.MACOS_SIGN_IDENTITY }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          DMG="$GITHUB_WORKSPACE/MCCompanion-macos.dmg"
+          codesign --force --sign "$SIGN_IDENTITY" "$DMG"
+          xcrun notarytool submit "$DMG" \
+            --apple-id "$APPLE_ID" \
+            --password "$APPLE_APP_PASSWORD" \
+            --team-id "$APPLE_TEAM_ID" \
+            --wait
+          xcrun stapler staple "$DMG"
+          spctl --assess --type open --context context:primary-signature -v "$DMG"
+
+      - name: Ad-hoc sign the DMG
+        if: ${{ steps.signing.outputs.available != 'true' }}
+        run: |
+          codesign --force --sign - "$GITHUB_WORKSPACE/MCCompanion-macos.dmg"
+          codesign --verify --strict "$GITHUB_WORKSPACE/MCCompanion-macos.dmg"
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: macos-dmg
+          path: MCCompanion-macos.dmg
+
+  linux:
+    name: Linux
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Cache pub dependencies
+        uses: actions/cache@v5
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+
+      - name: Install Linux dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang cmake libgtk-3-dev libwebkit2gtk-4.1-dev ninja-build pkg-config
+
+      - name: Enable Linux desktop
+        run: flutter config --enable-linux-desktop
+
+      - name: Regenerate Linux Flutter files
+        run: flutter create --platforms=linux --project-name mccompanion .
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Linux
+        run: |
+          flutter build linux --release \
+            --build-name=${{ inputs.build-name }} \
+            --build-number=${{ inputs.build-number }}
+
+      - name: Archive Linux build
+        run: tar -C build/linux/x64/release -czf MCCompanion-linux-x64.tar.gz bundle
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: linux-tarball
+          path: MCCompanion-linux-x64.tar.gz
+
+  flatpak:
+    name: Flatpak
+    needs: [linux]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: linux-tarball
+          path: /tmp/
+
+      - name: Set version in Flatpak metadata
+        env:
+          VERSION: ${{ inputs.build-name }}
+        run: |
+          python3 - "$VERSION" "$(date -u +%Y-%m-%d)" <<'PY'
+          import re
+          import sys
+          from pathlib import Path
+
+          version, release_date = sys.argv[1], sys.argv[2]
+          path = Path("flatpak/net.mccompanion.MCCompanion.metainfo.xml")
+          text = path.read_text()
+
+          # Only rewrite the newest entry, so the release history stays intact.
+          text, count = re.subn(
+              r'(<release\s+version=")[^"]+("\s+date=")[^"]+(")',
+              rf'\g<1>{version}\g<2>{release_date}\g<3>',
+              text,
+              count=1,
+          )
+          if count != 1:
+              raise SystemExit("Could not update the Flatpak release entry")
+
+          path.write_text(text)
+          print(f"Flatpak metadata: {version} ({release_date})")
+          PY
+
+      - name: Install Flatpak tooling
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-yaml flatpak flatpak-builder
+          flatpak remote-add --if-not-exists --user flathub \
+            https://dl.flathub.org/repo/flathub.flatpakrepo
+          flatpak install --user --noninteractive flathub \
+            org.freedesktop.Platform//24.08 \
+            org.freedesktop.Sdk//24.08
+
+      # Build from the tarball this run just produced rather than the published
+      # one, so the bundle matches the commit and no sha256 is involved.
+      - name: Point the manifest at the local tarball
+        run: |
+          python3 - <<'PY'
+          import yaml
+
+          with open('flatpak/net.mccompanion.MCCompanion.yml') as f:
+              data = yaml.safe_load(f)
+
+          for mod in data['modules']:
+              if mod.get('name') == 'MCCompanion':
+                  for src in mod.get('sources', []):
+                      if src.get('type') == 'archive':
+                          src.pop('url', None)
+                          src.pop('sha256', None)
+                          src.pop('x-checker-data', None)
+                          src['path'] = '/tmp/MCCompanion-linux-x64.tar.gz'
+
+          with open('/tmp/net.mccompanion.MCCompanion.yml', 'w') as f:
+              yaml.dump(data, f, default_flow_style=False)
+          PY
+
+      - name: Build Flatpak bundle
+        run: |
+          flatpak-builder \
+            --user \
+            --install-deps-from=flathub \
+            --force-clean \
+            --repo=/tmp/flatpak-repo \
+            /tmp/flatpak-build \
+            /tmp/net.mccompanion.MCCompanion.yml
+
+          flatpak build-bundle \
+            /tmp/flatpak-repo \
+            MCCompanion-linux.flatpak \
+            net.mccompanion.MCCompanion
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: linux-flatpak
+          path: MCCompanion-linux.flatpak
+
+  snap:
+    name: Snap
+    needs: [linux]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: linux-tarball
+          path: /tmp/
+
+      - name: Set version and source in snapcraft.yaml
+        env:
+          VERSION: ${{ inputs.build-name }}
+        run: |
+          python3 - "$VERSION" <<'PY'
+          import sys
+          import yaml
+
+          version = sys.argv[1]
+
+          with open('snap/snapcraft.yaml') as f:
+              data = yaml.safe_load(f)
+
+          data['version'] = version
+          data['parts']['mccompanion']['source'] = '/tmp/MCCompanion-linux-x64.tar.gz'
+          data['parts']['mccompanion']['source-type'] = 'tar'
+
+          with open('snap/snapcraft.yaml', 'w') as f:
+              yaml.dump(data, f, default_flow_style=False)
+
+          print(f"Snap version: {version}")
+          PY
+
+      - name: Install snapcraft
+        run: sudo snap install snapcraft --classic
+
+      - name: Build snap
+        run: sudo snapcraft pack --destructive-mode
+
+      - name: Rename snap artifact
+        run: mv *.snap MCCompanion-linux.snap
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: linux-snap
+          path: MCCompanion-linux.snap

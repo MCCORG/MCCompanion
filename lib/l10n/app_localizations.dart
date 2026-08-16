@@ -2661,7 +2661,7 @@ abstract class AppLocalizations {
   /// Privacy Policy tile title
   ///
   /// In en, this message translates to:
-  /// **'Privacy Policy'**
+  /// **'privacy policy'**
   String get privacyPolicy;
 
   /// Privacy Policy tile subtitle
@@ -2673,7 +2673,7 @@ abstract class AppLocalizations {
   /// Terms of Service tile title
   ///
   /// In en, this message translates to:
-  /// **'Terms of Service'**
+  /// **'terms of service'**
   String get termsOfService;
 
   /// Terms of Service tile subtitle
@@ -5115,7 +5115,7 @@ abstract class AppLocalizations {
   /// No description provided for @howToDirectBody.
   ///
   /// In en, this message translates to:
-  /// **'Proxy/Direct Mode: your device is the connection.\n1. Make sure the device running MCCompanion and your console are on the same local network.\n2. Enter the Bedrock server address and port, then press "Start Proxy/Direct Mode".\n3. On the console open Minecraft → Play → Friends tab and refresh the list.\n4. Select the LAN server named "MCCompanion" to join.\n\nWhy this mode exists:\n- Nothing passes through MCCompanion\'s servers. Your device forwards the traffic itself, so this keeps working even when our relays cannot be reached.\n- No sign-in is needed.\n\nKeep in mind:\n- The app has to stay open and on screen for the whole session. Closing it or switching to another app ends the connection.\n- Bedrock servers only. For Java servers use Java Mode, which does the protocol translation on our side.\n- Expect more battery use than in the other modes.\n- Resource packs are not applied. They are handled by our relay, which this mode skips.'**
+  /// **'Proxy/Direct Mode: your device is the connection.\n1. Make sure the device running MCCompanion and your console are on the same local network.\n2. Enter the Bedrock server address and port, then press \"Start Proxy/Direct Mode\".\n3. On the console open Minecraft → Play → Friends tab and refresh the list.\n4. Select the LAN server named \"MCCompanion\" to join.\n\nWhy this mode exists:\n- Nothing passes through MCCompanion\'s servers. Your device forwards the traffic itself, so this keeps working even when our relays cannot be reached.\n- No sign-in is needed.\n\nKeep in mind:\n- The app has to stay open and on screen for the whole session. Closing it or switching to another app ends the connection.\n- Bedrock servers only. For Java servers use Java Mode, which does the protocol translation on our side.\n- Expect more battery use than in the other modes.\n- Resource packs are not applied. They are handled by our relay, which this mode skips.'**
   String get howToDirectBody;
 
   /// No description provided for @directHostNotFound.
@@ -5159,6 +5159,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{host} is an IPv6 address. Proxy/Direct Mode only supports IPv4. Use the IPv4 address or the hostname instead.'**
   String directAddressNotSupported(String host);
+
+  /// Consent line on the registration form. {terms} and {privacy} are tappable links.
+  ///
+  /// In en, this message translates to:
+  /// **'I agree to the {terms} and the {privacy}.'**
+  String termsAgreement(String terms, String privacy);
+
+  /// No description provided for @verifyEmailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify your email'**
+  String get verifyEmailTitle;
+
+  /// No description provided for @verifyEmailBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Needed before you can comment, upload skins or submit packs.'**
+  String get verifyEmailBody;
+
+  /// No description provided for @verifyEmailSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent, check your inbox.'**
+  String get verifyEmailSent;
+
+  /// No description provided for @verifyEmailSending.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending…'**
+  String get verifyEmailSending;
+
+  /// No description provided for @verifyEmailSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send link'**
+  String get verifyEmailSend;
 }
 
 class _AppLocalizationsDelegate

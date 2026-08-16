@@ -864,7 +864,7 @@
   "@portRangeError": {
     "description": "Validation error when port is out of range"
   },
-  "privacyPolicy": "Privacy Policy",
+  "privacyPolicy": "سياسة الخصوصية",
   "@privacyPolicy": {
     "description": "Privacy Policy tile title"
   },
@@ -1164,7 +1164,7 @@
   "@tabRequests": {
     "description": "Tab label for Requests tab"
   },
-  "termsOfService": "Terms of Service",
+  "termsOfService": "شروط الخدمة",
   "@termsOfService": {
     "description": "Terms of Service tile title"
   },
@@ -2021,5 +2021,11 @@
         "type": "String"
       }
     }
-  }
+  },
+  "termsAgreement": "أوافق على {terms} و{privacy}.",
+  "verifyEmailTitle": "أكّد بريدك الإلكتروني",
+  "verifyEmailBody": "مطلوب قبل التعليق أو رفع الجلود أو إرسال الحزم.",
+  "verifyEmailSent": "تم الإرسال، تحقّق من بريدك.",
+  "verifyEmailSending": "جارٍ الإرسال…",
+  "verifyEmailSend": "إرسال الرابط"
 }

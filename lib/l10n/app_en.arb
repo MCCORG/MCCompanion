@@ -1497,7 +1497,7 @@
   "@legalSection": {
     "description": "Section header in Info sheet"
   },
-  "privacyPolicy": "Privacy Policy",
+  "privacyPolicy": "privacy policy",
   "@privacyPolicy": {
     "description": "Privacy Policy tile title"
   },
@@ -1505,7 +1505,7 @@
   "@privacyPolicySubtitle": {
     "description": "Privacy Policy tile subtitle"
   },
-  "termsOfService": "Terms of Service",
+  "termsOfService": "terms of service",
   "@termsOfService": {
     "description": "Terms of Service tile title"
   },
@@ -2937,5 +2937,22 @@
         "type": "String"
       }
     }
-  }
+  },
+  "termsAgreement": "I agree to the {terms} and the {privacy}.",
+  "@termsAgreement": {
+    "description": "Consent line on the registration form. {terms} and {privacy} are tappable links.",
+    "placeholders": {
+      "terms": {
+        "type": "String"
+      },
+      "privacy": {
+        "type": "String"
+      }
+    }
+  },
+  "verifyEmailTitle": "Verify your email",
+  "verifyEmailBody": "Needed before you can comment, upload skins or submit packs.",
+  "verifyEmailSent": "Sent, check your inbox.",
+  "verifyEmailSending": "Sending…",
+  "verifyEmailSend": "Send link"
 }

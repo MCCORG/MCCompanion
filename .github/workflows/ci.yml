@@ -1,0 +1,28 @@
+name: CI
+
+# Pull requests and side branches: prove it builds, publish nothing.
+
+on:
+  pull_request:
+  push:
+    branches-ignore:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build
+    uses: ./.github/workflows/build-app.yml
+    with:
+      # The version is irrelevant here, nothing is published. run_number keeps
+      # it unique so a failure is traceable to one run.
+      build-name: 0.0.0
+      build-number: ${{ github.run_number }}
+      signed: false
+    secrets: inherit

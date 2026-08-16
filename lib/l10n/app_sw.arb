@@ -864,7 +864,7 @@
   "@portRangeError": {
     "description": "Validation error when port is out of range"
   },
-  "privacyPolicy": "Privacy Policy",
+  "privacyPolicy": "sera ya faragha",
   "@privacyPolicy": {
     "description": "Privacy Policy tile title"
   },
@@ -1164,7 +1164,7 @@
   "@tabRequests": {
     "description": "Tab label for Requests tab"
   },
-  "termsOfService": "Terms of Service",
+  "termsOfService": "masharti ya huduma",
   "@termsOfService": {
     "description": "Terms of Service tile title"
   },
@@ -2018,5 +2018,11 @@
         "type": "String"
       }
     }
-  }
+  },
+  "termsAgreement": "Nakubali {terms} na {privacy}.",
+  "verifyEmailTitle": "Thibitisha barua pepe yako",
+  "verifyEmailBody": "Inahitajika kabla ya kutoa maoni, kupakia skins au kuwasilisha pakiti.",
+  "verifyEmailSent": "Imetumwa, angalia kikasha chako.",
+  "verifyEmailSending": "Inatuma…",
+  "verifyEmailSend": "Tuma kiungo"
 }

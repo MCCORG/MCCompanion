@@ -864,7 +864,7 @@
   "@portRangeError": {
     "description": "Validation error when port is out of range"
   },
-  "privacyPolicy": "Privacy Policy",
+  "privacyPolicy": "プライバシーポリシー",
   "@privacyPolicy": {
     "description": "Privacy Policy tile title"
   },
@@ -1164,7 +1164,7 @@
   "@tabRequests": {
     "description": "Tab label for Requests tab"
   },
-  "termsOfService": "Terms of Service",
+  "termsOfService": "利用規約",
   "@termsOfService": {
     "description": "Terms of Service tile title"
   },
@@ -2021,5 +2021,11 @@
         "type": "String"
       }
     }
-  }
+  },
+  "termsAgreement": "{terms}と{privacy}に同意します。",
+  "verifyEmailTitle": "メールアドレスを確認",
+  "verifyEmailBody": "コメント、スキンのアップロード、パックの投稿にはメール確認が必要です。",
+  "verifyEmailSent": "送信しました。受信トレイをご確認ください。",
+  "verifyEmailSending": "送信中…",
+  "verifyEmailSend": "リンクを送信"
 }

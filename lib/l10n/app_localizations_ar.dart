@@ -1382,13 +1382,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get legalSection => 'Legal';
 
   @override
-  String get privacyPolicy => 'Privacy Policy';
+  String get privacyPolicy => 'سياسة الخصوصية';
 
   @override
   String get privacyPolicySubtitle => 'How we collect and protect your data';
 
   @override
-  String get termsOfService => 'Terms of Service';
+  String get termsOfService => 'شروط الخدمة';
 
   @override
   String get termsOfServiceSubtitle => 'Rules and conditions of use';
@@ -2722,7 +2722,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'وضع البروكسي/المباشر: جهازك هو الاتصال نفسه.\n1. تأكد من أن الجهاز الذي يشغّل MCCompanion ووحدة التحكم على الشبكة المحلية نفسها.\n2. أدخل عنوان خادم Bedrock والمنفذ، ثم اضغط على "بدء وضع البروكسي/المباشر".\n3. على وحدة التحكم افتح Minecraft ← Play ← تبويب Friends وحدّث القائمة.\n4. اختر خادم الشبكة المحلية المسمى "MCCompanion" للانضمام.\n\nلماذا يوجد هذا الوضع:\n- لا يمر أي شيء عبر خوادم MCCompanion. جهازك هو من يمرر البيانات، لذا يستمر هذا في العمل حتى عندما يتعذر الوصول إلى مرحّلاتنا.\n- لا حاجة إلى تسجيل الدخول.\n\nانتبه إلى:\n- يجب أن يبقى التطبيق مفتوحًا وظاهرًا على الشاشة طوال الجلسة. إغلاقه أو الانتقال إلى تطبيق آخر ينهي الاتصال.\n- خوادم Bedrock فقط. لخوادم Java استخدم وضع Java الذي يتولى الترجمة من جهتنا.\n- استهلاك البطارية أعلى منه في الأوضاع الأخرى.\n- لا تُطبَّق حزم الموارد. فهي تمر عبر خادم الترحيل لدينا، وهذا الوضع يتخطاه.';
+      'وضع البروكسي/المباشر: جهازك هو الاتصال نفسه.\n1. تأكد من أن الجهاز الذي يشغّل MCCompanion ووحدة التحكم على الشبكة المحلية نفسها.\n2. أدخل عنوان خادم Bedrock والمنفذ، ثم اضغط على \"بدء وضع البروكسي/المباشر\".\n3. على وحدة التحكم افتح Minecraft ← Play ← تبويب Friends وحدّث القائمة.\n4. اختر خادم الشبكة المحلية المسمى \"MCCompanion\" للانضمام.\n\nلماذا يوجد هذا الوضع:\n- لا يمر أي شيء عبر خوادم MCCompanion. جهازك هو من يمرر البيانات، لذا يستمر هذا في العمل حتى عندما يتعذر الوصول إلى مرحّلاتنا.\n- لا حاجة إلى تسجيل الدخول.\n\nانتبه إلى:\n- يجب أن يبقى التطبيق مفتوحًا وظاهرًا على الشاشة طوال الجلسة. إغلاقه أو الانتقال إلى تطبيق آخر ينهي الاتصال.\n- خوادم Bedrock فقط. لخوادم Java استخدم وضع Java الذي يتولى الترجمة من جهتنا.\n- استهلاك البطارية أعلى منه في الأوضاع الأخرى.\n- لا تُطبَّق حزم الموارد. فهي تمر عبر خادم الترحيل لدينا، وهذا الوضع يتخطاه.';
 
   @override
   String directHostNotFound(String host) {
@@ -2745,10 +2745,32 @@ class AppLocalizationsAr extends AppLocalizations {
   String get directStartAnyway => 'ابدأ على أي حال';
 
   @override
-  String get directNoResourcePack => 'حزم الموارد لا تعمل في وضع البروكسي/المباشر.';
+  String get directNoResourcePack =>
+      'حزم الموارد لا تعمل في وضع البروكسي/المباشر.';
 
   @override
   String directAddressNotSupported(String host) {
     return '‏$host عنوان IPv6. وضع البروكسي/المباشر يدعم IPv4 فقط. استخدم عنوان IPv4 أو اسم المضيف.';
   }
+
+  @override
+  String termsAgreement(String terms, String privacy) {
+    return 'أوافق على $terms و$privacy.';
+  }
+
+  @override
+  String get verifyEmailTitle => 'أكّد بريدك الإلكتروني';
+
+  @override
+  String get verifyEmailBody =>
+      'مطلوب قبل التعليق أو رفع الجلود أو إرسال الحزم.';
+
+  @override
+  String get verifyEmailSent => 'تم الإرسال، تحقّق من بريدك.';
+
+  @override
+  String get verifyEmailSending => 'جارٍ الإرسال…';
+
+  @override
+  String get verifyEmailSend => 'إرسال الرابط';
 }

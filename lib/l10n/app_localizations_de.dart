@@ -1391,7 +1391,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get legalSection => 'Rechtliches';
 
   @override
-  String get privacyPolicy => 'Datenschutzrichtlinie';
+  String get privacyPolicy => 'Datenschutzerklärung';
 
   @override
   String get privacyPolicySubtitle => 'Wie wir deine Daten schützen';
@@ -2748,7 +2748,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'Proxy/Direktmodus: dein Gerät ist die Verbindung.\n1. Stelle sicher, dass das Gerät mit MCCompanion und deine Konsole im selben Netzwerk sind.\n2. Gib Adresse und Port des Bedrock-Servers ein und drücke "Proxy/Direktmodus starten".\n3. Öffne auf der Konsole Minecraft → Spielen → Reiter Freunde und aktualisiere die Liste.\n4. Wähle den LAN-Server namens "MCCompanion" aus, um beizutreten.\n\nWarum es diesen Modus gibt:\n- Nichts läuft über die Server von MCCompanion. Dein Gerät leitet den Datenverkehr selbst weiter, das funktioniert also auch dann, wenn unsere Relays nicht erreichbar sind.\n- Eine Anmeldung ist nicht nötig.\n\nZu beachten:\n- Die App muss während der gesamten Sitzung geöffnet und sichtbar bleiben. Schließen oder Wechseln zu einer anderen App beendet die Verbindung.\n- Nur Bedrock-Server. Für Java-Server nutze den Java-Modus, der die Übersetzung auf unserer Seite übernimmt.\n- Der Akkuverbrauch ist höher als in den anderen Modi.\n- Resource Packs werden nicht angewendet. Sie laufen über unser Relay, das dieser Modus überspringt.';
+      'Proxy/Direktmodus: dein Gerät ist die Verbindung.\n1. Stelle sicher, dass das Gerät mit MCCompanion und deine Konsole im selben Netzwerk sind.\n2. Gib Adresse und Port des Bedrock-Servers ein und drücke \"Proxy/Direktmodus starten\".\n3. Öffne auf der Konsole Minecraft → Spielen → Reiter Freunde und aktualisiere die Liste.\n4. Wähle den LAN-Server namens \"MCCompanion\" aus, um beizutreten.\n\nWarum es diesen Modus gibt:\n- Nichts läuft über die Server von MCCompanion. Dein Gerät leitet den Datenverkehr selbst weiter, das funktioniert also auch dann, wenn unsere Relays nicht erreichbar sind.\n- Eine Anmeldung ist nicht nötig.\n\nZu beachten:\n- Die App muss während der gesamten Sitzung geöffnet und sichtbar bleiben. Schließen oder Wechseln zu einer anderen App beendet die Verbindung.\n- Nur Bedrock-Server. Für Java-Server nutze den Java-Modus, der die Übersetzung auf unserer Seite übernimmt.\n- Der Akkuverbrauch ist höher als in den anderen Modi.\n- Resource Packs werden nicht angewendet. Sie laufen über unser Relay, das dieser Modus überspringt.';
 
   @override
   String directHostNotFound(String host) {
@@ -2778,4 +2778,25 @@ class AppLocalizationsDe extends AppLocalizations {
   String directAddressNotSupported(String host) {
     return '$host ist eine IPv6-Adresse. Der Proxy/Direktmodus unterstützt nur IPv4. Nutze die IPv4-Adresse oder den Hostnamen.';
   }
+
+  @override
+  String termsAgreement(String terms, String privacy) {
+    return 'Ich stimme den $terms und der $privacy zu.';
+  }
+
+  @override
+  String get verifyEmailTitle => 'E-Mail bestätigen';
+
+  @override
+  String get verifyEmailBody =>
+      'Erforderlich, bevor du kommentieren, Skins hochladen oder Packs einreichen kannst.';
+
+  @override
+  String get verifyEmailSent => 'Gesendet, sieh in deinem Posteingang nach.';
+
+  @override
+  String get verifyEmailSending => 'Wird gesendet…';
+
+  @override
+  String get verifyEmailSend => 'Link senden';
 }

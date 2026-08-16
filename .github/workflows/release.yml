@@ -1,0 +1,227 @@
+name: Release
+
+# Triggered by a version tag, so releasing is a deliberate act and the result
+# is immutable. Push to main only ever produces a dev build.
+#
+#   python3 scripts/bump_version.py patch
+#   git commit -am "Release 4.1.8" && git push
+#   git tag v4.1.8 && git push origin v4.1.8
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  version:
+    name: Resolve version
+    runs-on: ubuntu-latest
+    outputs:
+      build-name: ${{ steps.read.outputs.build-name }}
+      build-number: ${{ steps.read.outputs.build-number }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Derive version from the tag
+        id: read
+        run: |
+          NAME="${GITHUB_REF_NAME#v}"
+          if ! printf '%s' "$NAME" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "Tag $GITHUB_REF_NAME is not a vX.Y.Z version tag."
+            exit 1
+          fi
+
+          # A mismatch here means the stores would show a different version
+          # than the tag claims, so fail before anything is published.
+          PUBSPEC="$(sed -nE "s/^version: *([0-9]+\.[0-9]+\.[0-9]+).*/\1/p" pubspec.yaml | head -n1)"
+          if [ "$NAME" != "$PUBSPEC" ]; then
+            echo "Tag says $NAME but pubspec.yaml says $PUBSPEC."
+            echo "Run scripts/bump_version.py and commit before tagging."
+            exit 1
+          fi
+
+          # Play refuses a versionCode it has seen before, and github.run_number
+          # restarts at 1 for a new workflow file, so it cannot be used here.
+          # bump_version.py increments this on every release.
+          NUMBER="$(sed -nE "s/^version: *[0-9]+\.[0-9]+\.[0-9]+\+([0-9]+).*/\1/p" pubspec.yaml | head -n1)"
+          if [ -z "$NUMBER" ]; then
+            echo "Could not read the build number from pubspec.yaml"
+            exit 1
+          fi
+
+          echo "build-name=$NAME" >> "$GITHUB_OUTPUT"
+          echo "build-number=$NUMBER" >> "$GITHUB_OUTPUT"
+          echo "Releasing $NAME+$NUMBER"
+
+  build:
+    name: Build
+    needs: [version]
+    uses: ./.github/workflows/build-app.yml
+    with:
+      build-name: ${{ needs.version.outputs.build-name }}
+      build-number: ${{ needs.version.outputs.build-number }}
+      build-aab: true
+    secrets: inherit
+
+  release:
+    name: Publish GitHub release
+    needs: [version, build]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          path: artifacts/
+          merge-multiple: true
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: MCCompanion ${{ needs.version.outputs.build-name }}
+          generate_release_notes: true
+          files: |
+            artifacts/MCCompanion-android.apk
+            artifacts/MCCompanion-android.aab
+            artifacts/MCCompanion-windows.zip
+            artifacts/MCCompanion-windows-setup.exe
+            artifacts/MCCompanion-macos.dmg
+            artifacts/MCCompanion-linux-x64.tar.gz
+            artifacts/MCCompanion.msix
+            artifacts/MCCompanion-linux.flatpak
+            artifacts/MCCompanion-linux.snap
+
+      # The website reads releases/tags/beta, so this pointer keeps that page
+      # working. The tagged release above is the real, permanent one.
+      - name: Move the beta pointer
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: beta
+          name: Beta Build
+          prerelease: true
+          body: |
+            Beta build of ${{ needs.version.outputs.build-name }}.
+            Permanent download: ${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ github.ref_name }}
+          files: |
+            artifacts/MCCompanion-android.apk
+            artifacts/MCCompanion-android.aab
+            artifacts/MCCompanion-windows.zip
+            artifacts/MCCompanion-windows-setup.exe
+            artifacts/MCCompanion-macos.dmg
+            artifacts/MCCompanion-linux-x64.tar.gz
+            artifacts/MCCompanion.msix
+            artifacts/MCCompanion-linux.flatpak
+            artifacts/MCCompanion-linux.snap
+
+  # The Flathub manifest points at the published tarball, so its sha256 can
+  # only be known once the release above exists. One job, after the fact,
+  # instead of two build jobs racing to push the same file.
+  flatpak-manifest:
+    name: Update Flatpak manifest
+    needs: [version, release]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: linux-tarball
+          path: /tmp/
+
+      - name: Check main still matches the tag
+        run: |
+          if ! git diff --quiet "${GITHUB_REF_NAME}" HEAD -- flatpak/; then
+            echo "flatpak/ differs between ${GITHUB_REF_NAME} and main."
+            echo "Tag from the tip of main, or update the manifest by hand."
+            git diff --stat "${GITHUB_REF_NAME}" HEAD -- flatpak/
+            exit 1
+          fi
+
+      - name: Point the manifest at this release
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          BASE="${{ github.server_url }}/${{ github.repository }}"
+          RAW="https://raw.githubusercontent.com/${{ github.repository }}/$TAG/flatpak"
+
+          python3 - "$TAG" "$BASE" "$RAW" <<'PY'
+          import hashlib
+          import re
+          import sys
+          import urllib.request
+          from pathlib import Path
+
+          tag, base, raw = sys.argv[1], sys.argv[2], sys.argv[3]
+          path = Path("flatpak/net.mccompanion.MCCompanion.yml")
+          text = path.read_text()
+
+          def sha_of(file_path):
+              return hashlib.sha256(Path(file_path).read_bytes()).hexdigest()
+
+          # The three resource files are served from the tag we just pushed, so
+          # hashing the local copies is the same as hashing what Flathub fetches.
+          targets = [
+              ("MCCompanion-linux-x64.tar.gz",
+               f"{base}/releases/download/{tag}/MCCompanion-linux-x64.tar.gz",
+               sha_of("/tmp/MCCompanion-linux-x64.tar.gz")),
+          ]
+          for name in ("metainfo.xml", "desktop", "png"):
+              filename = f"net.mccompanion.MCCompanion.{name}"
+              targets.append((filename, f"{raw}/{filename}", sha_of(f"flatpak/{filename}")))
+
+          for filename, url, sha in targets:
+              # Anchor on the file name. The zenity archive is also a source and
+              # comes first, so a generic pattern would rewrite the wrong entry.
+              pattern = re.compile(
+                  rf"(url: )\S*{re.escape(filename)}(\n\s+sha256: )[0-9a-f]+",
+              )
+              text, count = pattern.subn(rf"\g<1>{url}\g<2>{sha}", text, count=1)
+              if count != 1:
+                  raise SystemExit(f"Could not find the source for {filename}")
+              print(f"{filename}: {sha}")
+
+          path.write_text(text)
+          PY
+
+          # snapcraft.yaml carries the same URL. CI overwrites it with the local
+          # tarball at build time, so this only keeps the repo honest for anyone
+          # building the snap straight from the manifest.
+          python3 - "$TAG" <<'PY'
+          import re
+          import sys
+          from pathlib import Path
+
+          tag = sys.argv[1]
+          path = Path("snap/snapcraft.yaml")
+          text = path.read_text()
+          text, count = re.subn(
+              r"(source: https://github\.com/MCCORG/MCCompanion/releases/download/)[^/]+(/MCCompanion-linux-x64\.tar\.gz)",
+              rf"\g<1>{tag}\g<2>",
+              text,
+              count=1,
+          )
+          if count != 1:
+              raise SystemExit("Could not find the tarball source in snapcraft.yaml")
+          path.write_text(text)
+          print(f"snapcraft.yaml pinned to {tag}")
+          PY
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: main
+          commit_message: "chore(flatpak): pin manifest to ${{ github.ref_name }} [skip ci]"
+          file_pattern: "flatpak/net.mccompanion.MCCompanion.yml snap/snapcraft.yaml"
+

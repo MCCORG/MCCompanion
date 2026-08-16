@@ -1391,13 +1391,13 @@ class AppLocalizationsSw extends AppLocalizations {
   String get legalSection => 'Legal';
 
   @override
-  String get privacyPolicy => 'Privacy Policy';
+  String get privacyPolicy => 'sera ya faragha';
 
   @override
   String get privacyPolicySubtitle => 'How we collect and protect your data';
 
   @override
-  String get termsOfService => 'Terms of Service';
+  String get termsOfService => 'masharti ya huduma';
 
   @override
   String get termsOfServiceSubtitle => 'Rules and conditions of use';
@@ -2753,7 +2753,7 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'Hali ya Proksi/Moja kwa Moja: kifaa chako ndicho muunganisho wenyewe.\n1. Hakikisha kifaa kinachoendesha MCCompanion na konsoli yako viko kwenye mtandao mmoja wa ndani.\n2. Weka anwani na mlango wa seva ya Bedrock, kisha bonyeza "Anza Hali ya Proksi/Moja kwa Moja".\n3. Kwenye konsoli fungua Minecraft → Play → kichupo cha Friends na uonyeshe upya orodha.\n4. Chagua seva ya LAN yenye jina "MCCompanion" ili kujiunga.\n\nKwa nini hali hii ipo:\n- Hakuna kinachopita kwenye seva za MCCompanion. Kifaa chako chenyewe hupeleka data, hivyo hali hii huendelea kufanya kazi hata pale relei zetu zisipopatikana.\n- Hakuna haja ya kuingia kwenye akaunti.\n\nKumbuka:\n- Programu lazima ibaki wazi na skrini ikiwa inaonekana kwa muda wote wa kipindi. Kuifunga au kuhamia programu nyingine kunakata muunganisho.\n- Seva za Bedrock pekee. Kwa seva za Java tumia Hali ya Java, ambayo hufanya tafsiri upande wetu.\n- Betri hutumika zaidi kuliko katika hali nyingine.\n- Vifurushi vya rasilimali havitumiki. Hupitia relay yetu, ambayo hali hii huiruka.';
+      'Hali ya Proksi/Moja kwa Moja: kifaa chako ndicho muunganisho wenyewe.\n1. Hakikisha kifaa kinachoendesha MCCompanion na konsoli yako viko kwenye mtandao mmoja wa ndani.\n2. Weka anwani na mlango wa seva ya Bedrock, kisha bonyeza \"Anza Hali ya Proksi/Moja kwa Moja\".\n3. Kwenye konsoli fungua Minecraft → Play → kichupo cha Friends na uonyeshe upya orodha.\n4. Chagua seva ya LAN yenye jina \"MCCompanion\" ili kujiunga.\n\nKwa nini hali hii ipo:\n- Hakuna kinachopita kwenye seva za MCCompanion. Kifaa chako chenyewe hupeleka data, hivyo hali hii huendelea kufanya kazi hata pale relei zetu zisipopatikana.\n- Hakuna haja ya kuingia kwenye akaunti.\n\nKumbuka:\n- Programu lazima ibaki wazi na skrini ikiwa inaonekana kwa muda wote wa kipindi. Kuifunga au kuhamia programu nyingine kunakata muunganisho.\n- Seva za Bedrock pekee. Kwa seva za Java tumia Hali ya Java, ambayo hufanya tafsiri upande wetu.\n- Betri hutumika zaidi kuliko katika hali nyingine.\n- Vifurushi vya rasilimali havitumiki. Hupitia relay yetu, ambayo hali hii huiruka.';
 
   @override
   String directHostNotFound(String host) {
@@ -2783,4 +2783,25 @@ class AppLocalizationsSw extends AppLocalizations {
   String directAddressNotSupported(String host) {
     return '$host ni anwani ya IPv6. Hali ya Proksi/Moja kwa Moja inaunga mkono IPv4 pekee. Tumia anwani ya IPv4 au jina la mwenyeji.';
   }
+
+  @override
+  String termsAgreement(String terms, String privacy) {
+    return 'Nakubali $terms na $privacy.';
+  }
+
+  @override
+  String get verifyEmailTitle => 'Thibitisha barua pepe yako';
+
+  @override
+  String get verifyEmailBody =>
+      'Inahitajika kabla ya kutoa maoni, kupakia skins au kuwasilisha pakiti.';
+
+  @override
+  String get verifyEmailSent => 'Imetumwa, angalia kikasha chako.';
+
+  @override
+  String get verifyEmailSending => 'Inatuma…';
+
+  @override
+  String get verifyEmailSend => 'Tuma kiungo';
 }

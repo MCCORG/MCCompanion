@@ -864,7 +864,7 @@
   "@portRangeError": {
     "description": "Validation error when port is out of range"
   },
-  "privacyPolicy": "Gizlilik Politikası",
+  "privacyPolicy": "gizlilik politikasını",
   "@privacyPolicy": {
     "description": "Privacy Policy tile title"
   },
@@ -1164,7 +1164,7 @@
   "@tabRequests": {
     "description": "Tab label for Requests tab"
   },
-  "termsOfService": "Hizmet Şartları",
+  "termsOfService": "hizmet şartlarını",
   "@termsOfService": {
     "description": "Terms of Service tile title"
   },
@@ -2021,5 +2021,11 @@
         "type": "String"
       }
     }
-  }
+  },
+  "termsAgreement": "{terms} ve {privacy} kabul ediyorum.",
+  "verifyEmailTitle": "E-postanı doğrula",
+  "verifyEmailBody": "Yorum yapmadan, skin yüklemeden veya paket göndermeden önce gerekli.",
+  "verifyEmailSent": "Gönderildi, gelen kutunu kontrol et.",
+  "verifyEmailSending": "Gönderiliyor…",
+  "verifyEmailSend": "Bağlantı gönder"
 }

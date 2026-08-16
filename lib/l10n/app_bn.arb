@@ -864,7 +864,7 @@
   "@portRangeError": {
     "description": "Validation error when port is out of range"
   },
-  "privacyPolicy": "Privacy Policy",
+  "privacyPolicy": "গোপনীয়তা নীতি",
   "@privacyPolicy": {
     "description": "Privacy Policy tile title"
   },
@@ -1164,7 +1164,7 @@
   "@tabRequests": {
     "description": "Tab label for Requests tab"
   },
-  "termsOfService": "Terms of Service",
+  "termsOfService": "পরিষেবার শর্তাবলি",
   "@termsOfService": {
     "description": "Terms of Service tile title"
   },
@@ -2021,5 +2021,11 @@
         "type": "String"
       }
     }
-  }
+  },
+  "termsAgreement": "আমি {terms} এবং {privacy} মেনে নিচ্ছি।",
+  "verifyEmailTitle": "আপনার ইমেল যাচাই করুন",
+  "verifyEmailBody": "মন্তব্য করা, স্কিন আপলোড বা প্যাক জমা দেওয়ার আগে প্রয়োজন।",
+  "verifyEmailSent": "পাঠানো হয়েছে, ইনবক্স দেখুন।",
+  "verifyEmailSending": "পাঠানো হচ্ছে…",
+  "verifyEmailSend": "লিংক পাঠান"
 }

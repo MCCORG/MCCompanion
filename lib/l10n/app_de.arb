@@ -864,7 +864,7 @@
   "@portRangeError": {
     "description": "Validation error when port is out of range"
   },
-  "privacyPolicy": "Datenschutzrichtlinie",
+  "privacyPolicy": "Datenschutzerklärung",
   "@privacyPolicy": {
     "description": "Privacy Policy tile title"
   },
@@ -2021,5 +2021,11 @@
         "type": "String"
       }
     }
-  }
+  },
+  "termsAgreement": "Ich stimme den {terms} und der {privacy} zu.",
+  "verifyEmailTitle": "E-Mail bestätigen",
+  "verifyEmailBody": "Erforderlich, bevor du kommentieren, Skins hochladen oder Packs einreichen kannst.",
+  "verifyEmailSent": "Gesendet, sieh in deinem Posteingang nach.",
+  "verifyEmailSending": "Wird gesendet…",
+  "verifyEmailSend": "Link senden"
 }

@@ -794,9 +794,9 @@
   "infoAndLegal": "Info & Juridisch",
   "legalSection": "Juridisch",
   "minecraftTrademark": "\"Minecraft\" is een handelsmerk van Microsoft Corporation.",
-  "termsOfService": "Servicevoorwaarden",
+  "termsOfService": "gebruiksvoorwaarden",
   "termsOfServiceSubtitle": "Regels en gebruiksvoorwaarden",
-  "privacyPolicy": "Privacybeleid",
+  "privacyPolicy": "privacybeleid",
   "privacyPolicySubtitle": "Hoe we je gegevens verzamelen en beschermen",
   "dataSourcesSection": "Gegevensbronnen & credits",
   "creditMojangTitle": "Mojang / Microsoft",
@@ -1336,5 +1336,11 @@
         "type": "String"
       }
     }
-  }
+  },
+  "termsAgreement": "Ik ga akkoord met de {terms} en het {privacy}.",
+  "verifyEmailTitle": "Bevestig je e-mailadres",
+  "verifyEmailBody": "Nodig voordat je kunt reageren, skins uploaden of packs indienen.",
+  "verifyEmailSent": "Verstuurd, kijk in je inbox.",
+  "verifyEmailSending": "Versturen…",
+  "verifyEmailSend": "Stuur link"
 }

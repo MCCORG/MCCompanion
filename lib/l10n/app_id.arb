@@ -864,7 +864,7 @@
   "@portRangeError": {
     "description": "Validation error when port is out of range"
   },
-  "privacyPolicy": "Privacy Policy",
+  "privacyPolicy": "kebijakan privasi",
   "@privacyPolicy": {
     "description": "Privacy Policy tile title"
   },
@@ -1164,7 +1164,7 @@
   "@tabRequests": {
     "description": "Tab label for Requests tab"
   },
-  "termsOfService": "Terms of Service",
+  "termsOfService": "ketentuan layanan",
   "@termsOfService": {
     "description": "Terms of Service tile title"
   },
@@ -2018,5 +2018,11 @@
         "type": "String"
       }
     }
-  }
+  },
+  "termsAgreement": "Saya menyetujui {terms} dan {privacy}.",
+  "verifyEmailTitle": "Verifikasi email kamu",
+  "verifyEmailBody": "Diperlukan sebelum kamu bisa berkomentar, mengunggah skin, atau mengirim pack.",
+  "verifyEmailSent": "Terkirim, cek kotak masuk kamu.",
+  "verifyEmailSending": "Mengirim…",
+  "verifyEmailSend": "Kirim tautan"
 }
