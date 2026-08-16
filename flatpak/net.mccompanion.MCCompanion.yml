@@ -41,28 +41,37 @@ modules:
     sources:
       - type: archive
         url: https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
-        sha256: 816a2299f71aa2b25619a02321e279c4161dcccb673f3160dfb2109e0f66dce9
+        sha256: 2bc9707e4e8689dc3ecf84a7f91553bdebcd5625ad39f58c662b3ba0cc10e862
         x-checker-data:
-          type: rotating-location
-          url: https://github.com/MCCORG/MCCompanion/releases/download/dev/MCCompanion-linux-x64.tar.gz
+          type: json
+          url: https://api.github.com/repos/MCCORG/MCCompanion/releases/latest
+          version-query: .tag_name | sub("^v"; "")
+          url-query: .assets[] | select(.name == "MCCompanion-linux-x64.tar.gz") | .browser_download_url
+          is-main-source: true
       - type: file
         url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.metainfo.xml
         sha256: ce1f8663153c11f32f0b4bcc1f5e8a288ae55edbf57975390fd60cc73c30c027
         dest-filename: net.mccompanion.MCCompanion.metainfo.xml
         x-checker-data:
-          type: rotating-location
-          url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.metainfo.xml
+          type: json
+          url: https://api.github.com/repos/MCCORG/MCCompanion/releases/latest
+          version-query: .tag_name | sub("^v"; "")
+          url-query: '"https://raw.githubusercontent.com/MCCORG/MCCompanion/" + .tag_name + "/flatpak/net.mccompanion.MCCompanion.metainfo.xml"'
       - type: file
         url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.desktop
         sha256: 73d5677e6a6171ae6bb1b878991ee51a76dda606bdb942f9a2d953ff3703a1c3
         dest-filename: net.mccompanion.MCCompanion.desktop
         x-checker-data:
-          type: rotating-location
-          url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.desktop
+          type: json
+          url: https://api.github.com/repos/MCCORG/MCCompanion/releases/latest
+          version-query: .tag_name | sub("^v"; "")
+          url-query: '"https://raw.githubusercontent.com/MCCORG/MCCompanion/" + .tag_name + "/flatpak/net.mccompanion.MCCompanion.desktop"'
       - type: file
         url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.png
         sha256: 0b221eeab164210039031558fe854937d0fb7658699039f967de44358d5ee5f1
         dest-filename: net.mccompanion.MCCompanion.png
         x-checker-data:
-          type: rotating-location
-          url: https://raw.githubusercontent.com/MCCORG/MCCompanion/main/flatpak/net.mccompanion.MCCompanion.png   
+          type: json
+          url: https://api.github.com/repos/MCCORG/MCCompanion/releases/latest
+          version-query: .tag_name | sub("^v"; "")
+          url-query: '"https://raw.githubusercontent.com/MCCORG/MCCompanion/" + .tag_name + "/flatpak/net.mccompanion.MCCompanion.png"'

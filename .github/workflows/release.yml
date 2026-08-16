@@ -133,44 +133,82 @@ jobs:
         with:
           ref: main
 
-      - name: Point the manifest at the published tarball
+      - name: Point the manifest at this release
         env:
-          VERSION: ${{ needs.version.outputs.build-name }}
           TAG: ${{ github.ref_name }}
         run: |
-          URL="${{ github.server_url }}/${{ github.repository }}/releases/download/$TAG/MCCompanion-linux-x64.tar.gz"
-          curl -sL --retry 3 -o /tmp/release.tar.gz "$URL"
-          SHA="$(sha256sum /tmp/release.tar.gz | awk '{print $1}')"
-          echo "sha256 $SHA"
+          BASE="${{ github.server_url }}/${{ github.repository }}"
+          RAW="https://raw.githubusercontent.com/${{ github.repository }}/$TAG/flatpak"
 
-          python3 - "$URL" "$SHA" <<'PY'
+          curl -sfL --retry 3 -o /tmp/tarball "$BASE/releases/download/$TAG/MCCompanion-linux-x64.tar.gz"
+
+          python3 - "$TAG" "$BASE" "$RAW" <<'PY'
+          import hashlib
+          import re
+          import sys
+          import urllib.request
+          from pathlib import Path
+
+          tag, base, raw = sys.argv[1], sys.argv[2], sys.argv[3]
+          path = Path("flatpak/net.mccompanion.MCCompanion.yml")
+          text = path.read_text()
+
+          def sha_of(file_path):
+              return hashlib.sha256(Path(file_path).read_bytes()).hexdigest()
+
+          # The three resource files are served from the tag we just pushed, so
+          # hashing the local copies is the same as hashing what Flathub fetches.
+          targets = [
+              ("MCCompanion-linux-x64.tar.gz",
+               f"{base}/releases/download/{tag}/MCCompanion-linux-x64.tar.gz",
+               sha_of("/tmp/tarball")),
+          ]
+          for name in ("metainfo.xml", "desktop", "png"):
+              filename = f"net.mccompanion.MCCompanion.{name}"
+              targets.append((filename, f"{raw}/{filename}", sha_of(f"flatpak/{filename}")))
+
+          for filename, url, sha in targets:
+              # Anchor on the file name. The zenity archive is also a source and
+              # comes first, so a generic pattern would rewrite the wrong entry.
+              pattern = re.compile(
+                  rf"(url: )\S*{re.escape(filename)}(\n\s+sha256: )[0-9a-f]+",
+              )
+              text, count = pattern.subn(rf"\g<1>{url}\g<2>{sha}", text, count=1)
+              if count != 1:
+                  raise SystemExit(f"Could not find the source for {filename}")
+              print(f"{filename}: {sha}")
+
+          path.write_text(text)
+          PY
+
+          # snapcraft.yaml carries the same URL. CI overwrites it with the local
+          # tarball at build time, so this only keeps the repo honest for anyone
+          # building the snap straight from the manifest.
+          python3 - "$TAG" <<'PY'
           import re
           import sys
           from pathlib import Path
 
-          url, sha = sys.argv[1], sys.argv[2]
-          path = Path("flatpak/net.mccompanion.MCCompanion.yml")
+          tag = sys.argv[1]
+          path = Path("snap/snapcraft.yaml")
           text = path.read_text()
-
-          # Anchor on our own tarball by name. The zenity module is also a
-          # 'type: archive' source and comes first in the file, so a generic
-          # pattern rewrites the wrong one.
-          pattern = re.compile(
-              r"(- type: archive\n\s+url: )\S*MCCompanion-linux-x64\.tar\.gz(\n\s+sha256: )[0-9a-f]+",
+          text, count = re.subn(
+              r"(source: https://github\.com/MCCORG/MCCompanion/releases/download/)[^/]+(/MCCompanion-linux-x64\.tar\.gz)",
+              rf"\g<1>{tag}\g<2>",
+              text,
+              count=1,
           )
-          text, count = pattern.subn(rf"\g<1>{url}\g<2>{sha}", text, count=1)
           if count != 1:
-              raise SystemExit("Could not find the archive source in the manifest")
-
+              raise SystemExit("Could not find the tarball source in snapcraft.yaml")
           path.write_text(text)
-          print("Manifest updated")
+          print(f"snapcraft.yaml pinned to {tag}")
           PY
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: main
-          commit_message: "chore(flatpak): point manifest at ${{ github.ref_name }} [skip ci]"
-          file_pattern: "flatpak/net.mccompanion.MCCompanion.yml"
+          commit_message: "chore(flatpak): pin manifest to ${{ github.ref_name }} [skip ci]"
+          file_pattern: "flatpak/net.mccompanion.MCCompanion.yml snap/snapcraft.yaml"
 
   play:
     name: Google Play
