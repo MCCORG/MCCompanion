@@ -5,9 +5,10 @@ Usage:
     scripts/bump_version.py patch|minor|major
     scripts/bump_version.py 4.2.0
 
-pubspec.yaml is the only place the version is written. snapcraft.yaml, the
-AppStream metadata and the MSIX all get theirs from here during the build, so
-there is nothing left that can drift out of step.
+pubspec.yaml is the only place the version is written. snapcraft.yaml and the
+MSIX get theirs from here during the build, so there is nothing left that can
+drift out of step. The AppStream metadata gets a changelog entry, which CI
+rewrites at build time anyway.
 
 The build number always goes up by one. The stores reject a rebuild that
 reuses one, and they remember numbers from uploads you have long since
@@ -15,7 +16,9 @@ withdrawn, so it never goes back down either.
 """
 
 import re
+import subprocess
 import sys
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -63,6 +66,16 @@ def main():
     if count != 1:
         fail("could not rewrite the version line in pubspec.yaml")
     PUBSPEC.write_text(text)
+
+    # The AppStream release list is a changelog, not a second copy of the
+    # version, and Flathub shows it to users. Writing the entry here keeps that
+    # history in the repository. CI rewrites the same entry at build time, so
+    # the two cannot end up disagreeing.
+    subprocess.run(
+        [sys.executable, str(Path(__file__).with_name("set_release_entry.py")),
+         version, date.today().isoformat()],
+        check=True,
+    )
 
     print(f"{old_version}+{old_build} -> {version}+{build}")
 

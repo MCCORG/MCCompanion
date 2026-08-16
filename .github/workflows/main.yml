@@ -5,7 +5,9 @@ name: Main
 #
 # The version in pubspec.yaml decides what happens. Leave it alone and the
 # commit refreshes the rolling dev build. Raise it and the same commit becomes
-# a real release: tagged, published, and pinned in the Flathub manifest.
+# a real release: tagged and published, with a pinned Flathub manifest attached
+# to it. Nothing in here writes back to main, so branch protection can be as
+# strict as you like.
 #
 #     python3 scripts/bump_version.py patch
 #
@@ -188,19 +190,22 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v5
-        with:
-          ref: main
 
       - uses: actions/download-artifact@v8
         with:
           name: linux-tarball
           path: /tmp/
 
-      # Flathub builds from this manifest, so its sources have to point at
-      # something that never moves. Until this step runs they point at the dev
-      # release and at main, which is exactly why their hashes used to go stale
-      # every time anyone touched the metadata.
-      - name: Point the manifest at the tag
+      # Flathub builds from a manifest whose sources are pinned by hash, so
+      # they have to point at something that never moves. The copy in this
+      # repository points at the dev release and at main, which is fine for
+      # working on but useless to Flathub.
+      #
+      # The pinned copy is attached to the release rather than committed back
+      # to main. Nothing then writes to a protected branch, and the file you
+      # need for a Flathub pull request is sitting right next to the build it
+      # describes.
+      - name: Build the pinned manifest
         env:
           TAG: v${{ needs.decide.outputs.build-name }}
         run: |
@@ -246,48 +251,29 @@ jobs:
           path.write_text(text)
           PY
 
-          # snapcraft.yaml carries the same URL and version. CI overwrites both
-          # from pubspec at build time, so this only keeps the repository honest
-          # for anyone building the snap straight from the manifest.
-          python3 - "$TAG" "${{ needs.decide.outputs.build-name }}" <<'PY'
-          import re
-          import sys
-          from pathlib import Path
+      # The metainfo has to be reachable at the tag with exactly the hash above,
+      # and it is, because bump_version.py wrote the same entry into the commit
+      # that was tagged. If those ever disagree, Flathub fails on the hash, so
+      # this check turns that into a clear failure here instead.
+      - name: Check the metadata at the tag matches
+        env:
+          TAG: v${{ needs.decide.outputs.build-name }}
+        run: |
+          URL="https://raw.githubusercontent.com/${{ github.repository }}/$TAG/flatpak/net.mccompanion.MCCompanion.metainfo.xml"
+          EXPECTED="$(sha256sum flatpak/net.mccompanion.MCCompanion.metainfo.xml | cut -d' ' -f1)"
+          ACTUAL="$(curl -fsSL "$URL" | sha256sum | cut -d' ' -f1)"
+          if [ "$EXPECTED" != "$ACTUAL" ]; then
+            echo "The metadata at $TAG does not match what this manifest pins."
+            echo "Run scripts/bump_version.py for the release instead of editing the version by hand."
+            exit 1
+          fi
+          echo "Metadata at $TAG matches."
 
-          tag, version = sys.argv[1], sys.argv[2]
-          path = Path("snap/snapcraft.yaml")
-          text = path.read_text()
-
-          text, count = re.subn(
-              r"(source: https://github\.com/MCCORG/MCCompanion/releases/download/)[^/]+(/MCCompanion-linux-x64\.tar\.gz)",
-              rf"\g<1>{tag}\g<2>",
-              text,
-              count=1,
-          )
-          if count != 1:
-              raise SystemExit("Could not find the tarball source in snapcraft.yaml")
-
-          text, count = re.subn(
-              r"(?m)^version:\s*['\"][^'\"]+['\"][^\S\n]*$",
-              f"version: '{version}'",
-              text,
-              count=1,
-          )
-          if count != 1:
-              raise SystemExit("Could not find the version in snapcraft.yaml")
-
-          path.write_text(text)
-          print(f"snapcraft.yaml pinned to {tag}")
-          PY
-
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Attach the manifest to the release
+        uses: softprops/action-gh-release@v3
         with:
-          branch: main
-          commit_message: "chore: pin packaging to v${{ needs.decide.outputs.build-name }} [skip ci]"
-          file_pattern: >-
-            flatpak/net.mccompanion.MCCompanion.yml
-            flatpak/net.mccompanion.MCCompanion.metainfo.xml
-            snap/snapcraft.yaml
+          tag_name: v${{ needs.decide.outputs.build-name }}
+          files: flatpak/net.mccompanion.MCCompanion.yml
 
   notify:
     name: Notify Discord
