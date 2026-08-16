@@ -54,7 +54,7 @@ jobs:
           
           # Stage and commit version bump changes
           git add pubspec.yaml snap/snapcraft.yaml flatpak/net.mccompanion.MCCompanion.metainfo.xml
-          git commit -m "Release $VERSION"
+          git commit -m "Release v$VERSION"
           git push
 
           # Tag and push the new release tag
