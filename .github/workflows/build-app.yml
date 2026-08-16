@@ -346,8 +346,24 @@ jobs:
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          PROVISIONING_PROFILE: ${{ secrets.MACOS_PROVISIONING_PROFILE }}
         run: |
           APP="build/macos/Build/Products/Release/MCCompanion.app"
+
+          # Sign in with Apple and the keychain access group are restricted
+          # entitlements: macOS refuses to launch an app that claims them
+          # without a provisioning profile that grants them, and it says only
+          # "the application cannot be opened". Xcode embeds the profile when
+          # you build by hand, which is why manual dmgs always worked and the
+          # first signed build from here did not.
+          if [ -n "$PROVISIONING_PROFILE" ]; then
+            echo "$PROVISIONING_PROFILE" | base64 --decode \
+              > "$APP/Contents/embedded.provisionprofile"
+            echo "Embedded the provisioning profile."
+          else
+            echo "::warning::MACOS_PROVISIONING_PROFILE is not set. The app will"
+            echo "::warning::be signed and notarized but may refuse to launch."
+          fi
 
           codesign --deep --force --verbose \
             --sign "$SIGN_IDENTITY" \
