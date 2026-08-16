@@ -103,7 +103,9 @@ msix_config:
   display_name: MCCompanion
   publisher_display_name: Jens Collaert
   identity_name: JensCollaert.NetherLink
-  msix_version: 4.1.7.0
+  # No msix_version here on purpose. CI passes it to msix:create from the
+  # version above, so there is one version in this file instead of two that
+  # can disagree.
   publisher: CN=ED8BFBA1-D05A-4503-813F-9B89DB1BE8A2
   logo_path: windows\runner\resources\app_icon.ico
   store: true

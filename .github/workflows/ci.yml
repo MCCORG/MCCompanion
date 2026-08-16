@@ -2,17 +2,16 @@ name: CI
 
 # Pull requests and side branches: prove it builds, publish nothing.
 
+# Pull requests only. A branch push used to trigger this as well, so an open
+# pull request built every commit twice.
 on:
   pull_request:
-  push:
-    branches-ignore:
-      - main
 
 permissions:
   contents: read
 
 concurrency:
-  group: ci-${{ github.event.pull_request.number || github.ref }}
+  group: ci-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
 jobs:

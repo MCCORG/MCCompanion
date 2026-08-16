@@ -1,0 +1,367 @@
+name: Main
+
+# One workflow for everything that lands on main, so there is a single path
+# from commit to store and no way to end up half released.
+#
+# The version in pubspec.yaml decides what happens. Leave it alone and the
+# commit refreshes the rolling dev build. Raise it and the same commit becomes
+# a real release: tagged, published, and pinned in the Flathub manifest.
+#
+#     python3 scripts/bump_version.py patch
+#
+# Run that in your branch, open the pull request as usual, and the release
+# happens when it merges. The tag is created after the build succeeds, never
+# before, so a tag without artifacts behind it cannot exist.
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Releases are never cancelled halfway. Two pushes in a row cost two builds,
+# which is the right trade when the alternative is a torn release.
+concurrency:
+  group: main
+  cancel-in-progress: false
+
+jobs:
+  decide:
+    name: Decide what this is
+    runs-on: ubuntu-latest
+    outputs:
+      build-name: ${{ steps.check.outputs.build-name }}
+      build-number: ${{ steps.check.outputs.build-number }}
+      release: ${{ steps.check.outputs.release }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+
+      - name: Compare the version with the previous commit
+        id: check
+        run: |
+          read_version() {
+            printf '%s' "$1" | sed -nE "s/^version: *([0-9]+\.[0-9]+\.[0-9]+)\+([0-9]+).*/\1 \2/p" | head -n1
+          }
+
+          CURRENT="$(read_version "$(cat pubspec.yaml)")"
+          if [ -z "$CURRENT" ]; then
+            echo "No 'version: x.y.z+n' line in pubspec.yaml"
+            exit 1
+          fi
+          NAME="${CURRENT% *}"
+          NUMBER="${CURRENT#* }"
+
+          # A first commit, or a manual run, has nothing to compare against and
+          # is treated as a dev build.
+          PREVIOUS=""
+          if git rev-parse -q --verify HEAD~1 >/dev/null; then
+            PREVIOUS="$(read_version "$(git show HEAD~1:pubspec.yaml)")"
+          fi
+          PREVIOUS_NAME="${PREVIOUS% *}"
+
+          if [ -n "$PREVIOUS_NAME" ] && [ "$NAME" != "$PREVIOUS_NAME" ] \
+             && [ "${{ github.event_name }}" = "push" ]; then
+            if git ls-remote --exit-code --tags origin "refs/tags/v$NAME" >/dev/null 2>&1; then
+              echo "Tag v$NAME already exists. Bump to a version that was never released."
+              exit 1
+            fi
+            echo "release=true" >> "$GITHUB_OUTPUT"
+            echo "Releasing $NAME+$NUMBER, up from $PREVIOUS_NAME"
+          else
+            echo "release=false" >> "$GITHUB_OUTPUT"
+            echo "Dev build of $NAME+$NUMBER, the version did not change"
+          fi
+
+          echo "build-name=$NAME" >> "$GITHUB_OUTPUT"
+          echo "build-number=$NUMBER" >> "$GITHUB_OUTPUT"
+
+  build:
+    name: Build
+    needs: [decide]
+    uses: ./.github/workflows/build-app.yml
+    with:
+      build-name: ${{ needs.decide.outputs.build-name }}
+      build-number: ${{ needs.decide.outputs.build-number }}
+      build-aab: ${{ fromJSON(needs.decide.outputs.release) }}
+    secrets: inherit
+
+  dev:
+    name: Update dev release
+    needs: [decide, build]
+    if: ${{ needs.decide.outputs.release == 'false' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          path: artifacts/
+          merge-multiple: true
+
+      - uses: softprops/action-gh-release@v3
+        with:
+          tag_name: dev
+          name: Development Build
+          prerelease: true
+          body: |
+            Automated development build of ${{ needs.decide.outputs.build-name }}
+            from commit ${{ github.sha }}.
+            This is a development build. If you don't know what you are doing,
+            please don't install it.
+            Warning: Google/Apple authentication won't work with dev builds.
+          files: |
+            artifacts/MCCompanion-android.apk
+            artifacts/MCCompanion-windows.zip
+            artifacts/MCCompanion-windows-setup.exe
+            artifacts/MCCompanion-macos.dmg
+            artifacts/MCCompanion-linux-x64.tar.gz
+            artifacts/MCCompanion.msix
+            artifacts/MCCompanion-linux.flatpak
+            artifacts/MCCompanion-linux.snap
+
+  release:
+    name: Publish release
+    needs: [decide, build]
+    if: ${{ needs.decide.outputs.release == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          path: artifacts/
+          merge-multiple: true
+
+      # The tag is created here, by this action, on the commit that was built.
+      # That is the whole point of the ordering: the build has already passed,
+      # so a tag can never point at a version nobody managed to build.
+      - name: Publish
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: v${{ needs.decide.outputs.build-name }}
+          target_commitish: ${{ github.sha }}
+          name: MCCompanion ${{ needs.decide.outputs.build-name }}
+          generate_release_notes: true
+          files: |
+            artifacts/MCCompanion-android.apk
+            artifacts/MCCompanion-android.aab
+            artifacts/MCCompanion-windows.zip
+            artifacts/MCCompanion-windows-setup.exe
+            artifacts/MCCompanion-macos.dmg
+            artifacts/MCCompanion-linux-x64.tar.gz
+            artifacts/MCCompanion.msix
+            artifacts/MCCompanion-linux.flatpak
+            artifacts/MCCompanion-linux.snap
+
+      # The website reads releases/tags/beta, so this pointer keeps that page
+      # working. The tagged release above is the real, permanent one.
+      - name: Move the beta pointer
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: beta
+          name: Beta Build
+          prerelease: true
+          body: |
+            Beta build of ${{ needs.decide.outputs.build-name }}.
+            Permanent download: ${{ github.server_url }}/${{ github.repository }}/releases/tag/v${{ needs.decide.outputs.build-name }}
+          files: |
+            artifacts/MCCompanion-android.apk
+            artifacts/MCCompanion-android.aab
+            artifacts/MCCompanion-windows.zip
+            artifacts/MCCompanion-windows-setup.exe
+            artifacts/MCCompanion-macos.dmg
+            artifacts/MCCompanion-linux-x64.tar.gz
+            artifacts/MCCompanion.msix
+            artifacts/MCCompanion-linux.flatpak
+            artifacts/MCCompanion-linux.snap
+
+  pin:
+    name: Pin the Flathub manifest
+    needs: [decide, release]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: linux-tarball
+          path: /tmp/
+
+      # Flathub builds from this manifest, so its sources have to point at
+      # something that never moves. Until this step runs they point at the dev
+      # release and at main, which is exactly why their hashes used to go stale
+      # every time anyone touched the metadata.
+      - name: Point the manifest at the tag
+        env:
+          TAG: v${{ needs.decide.outputs.build-name }}
+        run: |
+          python3 scripts/set_release_entry.py \
+            "${{ needs.decide.outputs.build-name }}" "$(date -u +%Y-%m-%d)"
+
+          python3 - "$TAG" "${{ github.server_url }}/${{ github.repository }}" <<'PY'
+          import hashlib
+          import re
+          import sys
+          from pathlib import Path
+
+          tag, base = sys.argv[1], sys.argv[2]
+          raw = f"https://raw.githubusercontent.com/MCCORG/MCCompanion/{tag}/flatpak"
+          path = Path("flatpak/net.mccompanion.MCCompanion.yml")
+          text = path.read_text()
+
+          def sha_of(file_path):
+              return hashlib.sha256(Path(file_path).read_bytes()).hexdigest()
+
+          # The resource files are served from the tag created a moment ago, so
+          # hashing the local copies is the same as hashing what Flathub fetches.
+          targets = [
+              ("MCCompanion-linux-x64.tar.gz",
+               f"{base}/releases/download/{tag}/MCCompanion-linux-x64.tar.gz",
+               sha_of("/tmp/MCCompanion-linux-x64.tar.gz")),
+          ]
+          for name in ("metainfo.xml", "desktop", "png"):
+              filename = f"net.mccompanion.MCCompanion.{name}"
+              targets.append((filename, f"{raw}/{filename}", sha_of(f"flatpak/{filename}")))
+
+          for filename, url, sha in targets:
+              # Anchored on the file name. The zenity archive is a source too
+              # and comes first, so a generic pattern would rewrite that one.
+              pattern = re.compile(
+                  rf"(url: )\S*{re.escape(filename)}(\n\s+sha256: )[0-9a-f]+",
+              )
+              text, count = pattern.subn(rf"\g<1>{url}\g<2>{sha}", text, count=1)
+              if count != 1:
+                  raise SystemExit(f"Could not find the source for {filename}")
+              print(f"{filename}: {sha}")
+
+          path.write_text(text)
+          PY
+
+          # snapcraft.yaml carries the same URL and version. CI overwrites both
+          # from pubspec at build time, so this only keeps the repository honest
+          # for anyone building the snap straight from the manifest.
+          python3 - "$TAG" "${{ needs.decide.outputs.build-name }}" <<'PY'
+          import re
+          import sys
+          from pathlib import Path
+
+          tag, version = sys.argv[1], sys.argv[2]
+          path = Path("snap/snapcraft.yaml")
+          text = path.read_text()
+
+          text, count = re.subn(
+              r"(source: https://github\.com/MCCORG/MCCompanion/releases/download/)[^/]+(/MCCompanion-linux-x64\.tar\.gz)",
+              rf"\g<1>{tag}\g<2>",
+              text,
+              count=1,
+          )
+          if count != 1:
+              raise SystemExit("Could not find the tarball source in snapcraft.yaml")
+
+          text, count = re.subn(
+              r"(?m)^version:\s*['\"][^'\"]+['\"][^\S\n]*$",
+              f"version: '{version}'",
+              text,
+              count=1,
+          )
+          if count != 1:
+              raise SystemExit("Could not find the version in snapcraft.yaml")
+
+          path.write_text(text)
+          print(f"snapcraft.yaml pinned to {tag}")
+          PY
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: main
+          commit_message: "chore: pin packaging to v${{ needs.decide.outputs.build-name }} [skip ci]"
+          file_pattern: >-
+            flatpak/net.mccompanion.MCCompanion.yml
+            flatpak/net.mccompanion.MCCompanion.metainfo.xml
+            snap/snapcraft.yaml
+
+  notify:
+    name: Notify Discord
+    if: ${{ always() }}
+    needs: [decide, build, dev, release]
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: Send build status embed
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          BUILD_RESULT: ${{ needs.build.result }}
+          PUBLISH_RESULT: ${{ needs.decide.outputs.release == 'true' && needs.release.result || needs.dev.result }}
+          KIND: ${{ needs.decide.outputs.release == 'true' && 'Release' || 'Dev build' }}
+          VERSION: ${{ needs.decide.outputs.build-name }}
+          REPOSITORY: ${{ github.repository }}
+          ACTOR: ${{ github.actor }}
+          SHA: ${{ github.sha }}
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+          RUN_ID: ${{ github.run_id }}
+          SERVER_URL: ${{ github.server_url }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "DISCORD_WEBHOOK_URL is not configured. Skipping Discord notification."
+            exit 0
+          fi
+
+          STATUS="✅ $KIND succeeded"
+          COLOR=5763719
+          if [ "$BUILD_RESULT" != "success" ] || [ "$PUBLISH_RESULT" != "success" ]; then
+            STATUS="❌ $KIND failed"
+            COLOR=15548997
+          fi
+
+          RUN_URL="$SERVER_URL/$REPOSITORY/actions/runs/$RUN_ID"
+          COMMIT_URL="$SERVER_URL/$REPOSITORY/commit/$SHA"
+          COMMIT_SUBJECT="$(printf '%s' "$COMMIT_MESSAGE" | head -n 1)"
+
+          PAYLOAD="$(jq -n \
+            --arg status "$STATUS" \
+            --arg repository "$REPOSITORY" \
+            --arg version "$VERSION" \
+            --arg actor "$ACTOR" \
+            --arg runUrl "$RUN_URL" \
+            --arg commitUrl "$COMMIT_URL" \
+            --arg sha "$SHA" \
+            --arg commitSubject "$COMMIT_SUBJECT" \
+            --arg build "$BUILD_RESULT" \
+            --arg publish "$PUBLISH_RESULT" \
+            --argjson color "$COLOR" \
+            '{
+              username: "GitHub Actions",
+              avatar_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+              embeds: [
+                {
+                  title: $status,
+                  color: $color,
+                  description: ("**Repository:** `" + $repository + "`\n**Version:** `" + $version + "`\n**Triggered by:** `" + $actor + "`"),
+                  fields: [
+                    { name: "Build", value: $build, inline: true },
+                    { name: "Publish", value: $publish, inline: true },
+                    { name: "Commit", value: ("[" + ($sha | .[0:7]) + "](" + $commitUrl + ")" + (if $commitSubject != "" then " " + $commitSubject else "" end)), inline: false }
+                  ],
+                  url: $runUrl,
+                  timestamp: now | todateiso8601
+                }
+              ]
+            }')"
+
+          RESPONSE_FILE="$(mktemp)"
+          HTTP_STATUS="$(curl -sS -o "$RESPONSE_FILE" -w "%{http_code}" -H "Content-Type: application/json" -d "$PAYLOAD" "$DISCORD_WEBHOOK_URL" || true)"
+          if [ "${HTTP_STATUS:-000}" -lt 200 ] || [ "${HTTP_STATUS:-000}" -ge 300 ]; then
+            echo "Failed to send Discord notification. HTTP status: ${HTTP_STATUS:-000}"
+            cat "$RESPONSE_FILE"
+            exit 1
+          fi
+          rm -f "$RESPONSE_FILE"

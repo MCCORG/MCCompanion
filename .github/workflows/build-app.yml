@@ -1,11 +1,15 @@
 name: Build app
 
 # Every platform is built here and nowhere else, so a toolchain bump is a
-# one-line change instead of the same edit in three workflows.
+# one-line change instead of the same edit in every workflow. Called by ci.yml
+# for pull requests and by main.yml for everything that lands on main.
 #
-# Build jobs never write to the repository. The Flatpak manifest sha256 can
-# only be computed once the tarball is published anyway, so that update lives
-# in release.yml as a single step after the release exists.
+# The version always arrives as an input. Nothing in here reads it from a file,
+# so pubspec.yaml stays the only place it is written.
+#
+# Build jobs never write to the repository. The Flathub manifest sha256 can
+# only be computed once the tarball is published, so that lives in the pin job
+# in main.yml, after the release exists.
 
 on:
   workflow_call:
@@ -203,10 +207,10 @@ jobs:
         env:
           CMAKE_POLICY_VERSION_MINIMUM: "3.5"
 
-      # msix:create reads msix_version from pubspec.yaml, which the bump script
-      # keeps in step with the version. The store rejects a reused one.
+      # The version comes from the input rather than from pubspec.yaml, so
+      # there is no second copy of it to forget. The store rejects a reused one.
       - name: Build MSIX
-        run: dart run msix:create
+        run: dart run msix:create --version ${{ inputs.build-name }}.0
 
       - name: Zip Windows build
         shell: pwsh
@@ -468,32 +472,14 @@ jobs:
           name: linux-tarball
           path: /tmp/
 
-      - name: Set version in Flatpak metadata
-        env:
-          VERSION: ${{ inputs.build-name }}
+      # The metadata is rewritten to the version being built, and the script
+      # refuses a file that is not well formed. Hand-editing the release history
+      # has already produced a closing tag without an opening one, which
+      # flatpak-builder only reports twenty minutes in as a build failure.
+      - name: Set the release in the AppStream metadata
         run: |
-          python3 - "$VERSION" "$(date -u +%Y-%m-%d)" <<'PY'
-          import re
-          import sys
-          from pathlib import Path
-
-          version, release_date = sys.argv[1], sys.argv[2]
-          path = Path("flatpak/net.mccompanion.MCCompanion.metainfo.xml")
-          text = path.read_text()
-
-          # Only rewrite the newest entry, so the release history stays intact.
-          text, count = re.subn(
-              r'(<release\s+version=")[^"]+("\s+date=")[^"]+(")',
-              rf'\g<1>{version}\g<2>{release_date}\g<3>',
-              text,
-              count=1,
-          )
-          if count != 1:
-              raise SystemExit("Could not update the Flatpak release entry")
-
-          path.write_text(text)
-          print(f"Flatpak metadata: {version} ({release_date})")
-          PY
+          python3 scripts/set_release_entry.py \
+            "${{ inputs.build-name }}" "$(date -u +%Y-%m-%d)"
 
       - name: Install Flatpak tooling
         run: |
@@ -507,25 +493,49 @@ jobs:
 
       # Build from the tarball this run just produced rather than the published
       # one, so the bundle matches the commit and no sha256 is involved.
-      - name: Point the manifest at the local tarball
+      # Every source is swapped for the copy in this checkout, so the bundle
+      # matches the commit and no sha256 is involved anywhere in the build.
+      #
+      # This is not a detail. The manifest that ships to Flathub pins its
+      # sources by hash to the dev release and to raw.githubusercontent on
+      # main, and both of those move. Building CI straight from those URLs
+      # meant every touch of metainfo.xml broke the build until someone
+      # committed a fresh hash, and it also meant the version rewritten just
+      # above was thrown away in favour of whatever main happened to hold.
+      - name: Point the manifest at this checkout
         run: |
           python3 - <<'PY'
+          import os
           import yaml
+
+          workspace = os.environ["GITHUB_WORKSPACE"]
 
           with open('flatpak/net.mccompanion.MCCompanion.yml') as f:
               data = yaml.safe_load(f)
 
+          local = 0
           for mod in data['modules']:
-              if mod.get('name') == 'MCCompanion':
-                  for src in mod.get('sources', []):
-                      if src.get('type') == 'archive':
-                          src.pop('url', None)
-                          src.pop('sha256', None)
-                          src.pop('x-checker-data', None)
-                          src['path'] = '/tmp/MCCompanion-linux-x64.tar.gz'
+              if mod.get('name') != 'MCCompanion':
+                  continue
+              for src in mod.get('sources', []):
+                  if src.get('type') == 'archive':
+                      target = '/tmp/MCCompanion-linux-x64.tar.gz'
+                  elif src.get('type') == 'file':
+                      target = os.path.join(workspace, 'flatpak', src['dest-filename'])
+                  else:
+                      continue
+                  src.pop('url', None)
+                  src.pop('sha256', None)
+                  src.pop('x-checker-data', None)
+                  src['path'] = target
+                  local += 1
+
+          if local != 4:
+              raise SystemExit(f"Expected 4 sources to localise, rewrote {local}")
 
           with open('/tmp/net.mccompanion.MCCompanion.yml', 'w') as f:
               yaml.dump(data, f, default_flow_style=False)
+          print("Building from the local tarball, metainfo, desktop file and icon.")
           PY
 
       - name: Build Flatpak bundle
