@@ -468,6 +468,31 @@ jobs:
           name: linux-tarball
           path: /tmp/
 
+      # Two seconds here beats a broken bundle twenty minutes in. Hand-editing
+      # the release history has already left this file with a closing tag and
+      # no opening one, which flatpak-builder only reports as a build failure.
+      - name: Check the AppStream metadata is well formed
+        run: |
+          python3 - <<'PY'
+          import xml.etree.ElementTree as ET
+
+          path = "flatpak/net.mccompanion.MCCompanion.metainfo.xml"
+          try:
+              root = ET.parse(path).getroot()
+          except ET.ParseError as error:
+              raise SystemExit(f"{path} is not valid XML: {error}")
+
+          releases = root.find("releases")
+          if releases is None or len(releases) == 0:
+              raise SystemExit(f"{path} has no <releases> entries")
+
+          newest = releases[0]
+          if not newest.get("version") or not newest.get("date"):
+              raise SystemExit("The newest <release> needs both version and date")
+
+          print(f"Metadata is valid, newest release is {newest.get('version')}")
+          PY
+
       - name: Set version in Flatpak metadata
         env:
           VERSION: ${{ inputs.build-name }}
@@ -507,25 +532,49 @@ jobs:
 
       # Build from the tarball this run just produced rather than the published
       # one, so the bundle matches the commit and no sha256 is involved.
-      - name: Point the manifest at the local tarball
+      # Every source is swapped for the copy in this checkout, so the bundle
+      # matches the commit and no sha256 is involved anywhere in the build.
+      #
+      # This is not a detail. The manifest that ships to Flathub pins its
+      # sources by hash to the dev release and to raw.githubusercontent on
+      # main, and both of those move. Building CI straight from those URLs
+      # meant every touch of metainfo.xml broke the build until someone
+      # committed a fresh hash, and it also meant the version rewritten just
+      # above was thrown away in favour of whatever main happened to hold.
+      - name: Point the manifest at this checkout
         run: |
           python3 - <<'PY'
+          import os
           import yaml
+
+          workspace = os.environ["GITHUB_WORKSPACE"]
 
           with open('flatpak/net.mccompanion.MCCompanion.yml') as f:
               data = yaml.safe_load(f)
 
+          local = 0
           for mod in data['modules']:
-              if mod.get('name') == 'MCCompanion':
-                  for src in mod.get('sources', []):
-                      if src.get('type') == 'archive':
-                          src.pop('url', None)
-                          src.pop('sha256', None)
-                          src.pop('x-checker-data', None)
-                          src['path'] = '/tmp/MCCompanion-linux-x64.tar.gz'
+              if mod.get('name') != 'MCCompanion':
+                  continue
+              for src in mod.get('sources', []):
+                  if src.get('type') == 'archive':
+                      target = '/tmp/MCCompanion-linux-x64.tar.gz'
+                  elif src.get('type') == 'file':
+                      target = os.path.join(workspace, 'flatpak', src['dest-filename'])
+                  else:
+                      continue
+                  src.pop('url', None)
+                  src.pop('sha256', None)
+                  src.pop('x-checker-data', None)
+                  src['path'] = target
+                  local += 1
+
+          if local != 4:
+              raise SystemExit(f"Expected 4 sources to localise, rewrote {local}")
 
           with open('/tmp/net.mccompanion.MCCompanion.yml', 'w') as f:
               yaml.dump(data, f, default_flow_style=False)
+          print("Building from the local tarball, metainfo, desktop file and icon.")
           PY
 
       - name: Build Flatpak bundle
