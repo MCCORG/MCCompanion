@@ -20,7 +20,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # PAT_TOKEN is required so the pushed tag triggers release.yml
+          token: ${{ secrets.PAT_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -35,13 +36,11 @@ jobs:
       - name: Bump version with script
         id: bump
         run: |
-          # Run your script and capture its output
           OUTPUT=$(python3 scripts/bump_version.py ${{ inputs.bump_type }})
           echo "$OUTPUT"
           
-          # Extract the new version part after the '->' arrow (e.g., extracts '4.2.1+15' from '4.2.0+14 -> 4.2.1+15')
+          # Extract the new version (e.g. 4.1.8 from "4.1.7+12 -> 4.1.8+13")
           NEW_FULL_VERSION=$(echo "$OUTPUT" | awk -F'->' '{print $2}' | xargs)
-          # Strip the build number off (+...) to get just the X.Y.Z version for the git tag
           VERSION_ONLY=$(echo "$NEW_FULL_VERSION" | cut -d'+' -f1)
           
           echo "version=$VERSION_ONLY" >> $GITHUB_OUTPUT
@@ -50,11 +49,9 @@ jobs:
         run: |
           VERSION="${{ steps.bump.outputs.version }}"
           
-          # Stage and commit modified files (pubspec.yaml, snapcraft.yaml, metainfo.xml)
           git add pubspec.yaml snap/snapcraft.yaml flatpak/net.mccompanion.MCCompanion.metainfo.xml
-          git commit -m "Release v$VERSION"
+          git commit -m "Release $VERSION"
           git push
 
-          # Tag and push the new release tag
           git tag "v$VERSION"
           git push origin "v$VERSION"
