@@ -12,6 +12,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
 
+    # Grant write permissions to push commits and tags back to the repository
     permissions:
       contents: write
 
@@ -19,6 +20,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
+          # Fetch full history to ensure tags and commit history are complete
           fetch-depth: 0
           # PAT_TOKEN is required so the pushed tag triggers release.yml
           token: ${{ secrets.PAT_TOKEN }}
@@ -36,10 +38,11 @@ jobs:
       - name: Bump version with script
         id: bump
         run: |
+          # Execute the version bump script using the workflow input
           OUTPUT=$(python3 scripts/bump_version.py ${{ inputs.bump_type }})
           echo "$OUTPUT"
           
-          # Extract the new version (e.g. 4.1.8 from "4.1.7+12 -> 4.1.8+13")
+          # Extract the new version from the script's output
           NEW_FULL_VERSION=$(echo "$OUTPUT" | awk -F'->' '{print $2}' | xargs)
           VERSION_ONLY=$(echo "$NEW_FULL_VERSION" | cut -d'+' -f1)
           
@@ -49,9 +52,11 @@ jobs:
         run: |
           VERSION="${{ steps.bump.outputs.version }}"
           
+          # Stage and commit version bump changes
           git add pubspec.yaml snap/snapcraft.yaml flatpak/net.mccompanion.MCCompanion.metainfo.xml
           git commit -m "Release $VERSION"
           git push
 
+          # Tag and push the new release tag
           git tag "v$VERSION"
           git push origin "v$VERSION"
