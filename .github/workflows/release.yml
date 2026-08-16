@@ -90,6 +90,7 @@ jobs:
           generate_release_notes: true
           files: |
             artifacts/MCCompanion-android.apk
+            artifacts/MCCompanion-android.aab
             artifacts/MCCompanion-windows.zip
             artifacts/MCCompanion-windows-setup.exe
             artifacts/MCCompanion-macos.dmg
@@ -111,6 +112,7 @@ jobs:
             Permanent download: ${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ github.ref_name }}
           files: |
             artifacts/MCCompanion-android.apk
+            artifacts/MCCompanion-android.aab
             artifacts/MCCompanion-windows.zip
             artifacts/MCCompanion-windows-setup.exe
             artifacts/MCCompanion-macos.dmg
@@ -132,11 +134,21 @@ jobs:
       - uses: actions/checkout@v5
         with:
           ref: main
+          fetch-depth: 0
 
       - uses: actions/download-artifact@v8
         with:
           name: linux-tarball
           path: /tmp/
+
+      - name: Check main still matches the tag
+        run: |
+          if ! git diff --quiet "${GITHUB_REF_NAME}" HEAD -- flatpak/; then
+            echo "flatpak/ differs between ${GITHUB_REF_NAME} and main."
+            echo "Tag from the tip of main, or update the manifest by hand."
+            git diff --stat "${GITHUB_REF_NAME}" HEAD -- flatpak/
+            exit 1
+          fi
 
       - name: Point the manifest at this release
         env:
@@ -213,110 +225,3 @@ jobs:
           commit_message: "chore(flatpak): pin manifest to ${{ github.ref_name }} [skip ci]"
           file_pattern: "flatpak/net.mccompanion.MCCompanion.yml snap/snapcraft.yaml"
 
-  play:
-    name: Google Play
-    needs: [release]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v8
-        with:
-          name: android-aab
-          path: artifacts/
-
-      - name: Check credentials
-        id: check
-        env:
-          KEY: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
-        run: |
-          if [ -z "$KEY" ]; then
-            echo "PLAY_SERVICE_ACCOUNT_JSON is not set. Skipping Play upload."
-            echo "ready=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "ready=true" >> "$GITHUB_OUTPUT"
-          fi
-
-      # Lands in internal testing, not in front of users. Promoting to
-      # production stays a decision you make in the Play Console.
-      - name: Upload to internal testing
-        if: ${{ steps.check.outputs.ready == 'true' }}
-        uses: r0adkll/upload-google-play@v1
-        with:
-          serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
-          packageName: net.netherdev.netherLink
-          releaseFiles: artifacts/MCCompanion-android.aab
-          track: internal
-          status: completed
-
-  microsoft-store:
-    name: Microsoft Store
-    needs: [release]
-    runs-on: windows-latest
-    steps:
-      # msstore publish takes the project directory as its argument and finds
-      # the package through -i, so the repository has to be present.
-      - uses: actions/checkout@v5
-
-      - uses: actions/download-artifact@v8
-        with:
-          name: windows-msix
-          path: artifacts/
-
-      - name: Check credentials
-        id: check
-        shell: bash
-        env:
-          TENANT: ${{ secrets.MSSTORE_TENANT_ID }}
-          CLIENT: ${{ secrets.MSSTORE_CLIENT_ID }}
-          SECRET: ${{ secrets.MSSTORE_CLIENT_SECRET }}
-          SELLER: ${{ secrets.MSSTORE_SELLER_ID }}
-          PRODUCT: ${{ secrets.MSSTORE_PRODUCT_ID }}
-        run: |
-          if [ -z "$TENANT" ] || [ -z "$CLIENT" ] || [ -z "$SECRET" ] || [ -z "$SELLER" ] || [ -z "$PRODUCT" ]; then
-            echo "Microsoft Store credentials are incomplete. Skipping."
-            echo "ready=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "ready=true" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Setup Microsoft Store Developer CLI
-        if: ${{ steps.check.outputs.ready == 'true' }}
-        uses: microsoft/microsoft-store-apppublisher@v1
-
-      - name: Configure credentials
-        if: ${{ steps.check.outputs.ready == 'true' }}
-        run: |
-          msstore reconfigure \
-            --tenantId ${{ secrets.MSSTORE_TENANT_ID }} \
-            --sellerId ${{ secrets.MSSTORE_SELLER_ID }} \
-            --clientId ${{ secrets.MSSTORE_CLIENT_ID }} \
-            --clientSecret ${{ secrets.MSSTORE_CLIENT_SECRET }}
-
-      # The listing itself (description, screenshots, age rating) is managed in
-      # Partner Center. This only swaps in the new package.
-      - name: Submit MSIX
-        if: ${{ steps.check.outputs.ready == 'true' }}
-        run: |
-          msstore publish . \
-            -i artifacts/MCCompanion.msix \
-            -id ${{ secrets.MSSTORE_PRODUCT_ID }}
-
-  snap:
-    name: Snap Store
-    needs: [release]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v8
-        with:
-          name: linux-snap
-          path: artifacts/
-
-      - name: Upload to the stable channel
-        env:
-          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS }}
-        run: |
-          if [ -z "$SNAPCRAFT_STORE_CREDENTIALS" ]; then
-            echo "SNAPCRAFT_STORE_CREDENTIALS is not set. Skipping Snap upload."
-            exit 0
-          fi
-          sudo snap install snapcraft --classic
-          snapcraft upload artifacts/MCCompanion-linux.snap --release=stable
