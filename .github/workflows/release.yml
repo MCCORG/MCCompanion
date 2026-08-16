@@ -133,14 +133,17 @@ jobs:
         with:
           ref: main
 
+      - uses: actions/download-artifact@v8
+        with:
+          name: linux-tarball
+          path: /tmp/
+
       - name: Point the manifest at this release
         env:
           TAG: ${{ github.ref_name }}
         run: |
           BASE="${{ github.server_url }}/${{ github.repository }}"
           RAW="https://raw.githubusercontent.com/${{ github.repository }}/$TAG/flatpak"
-
-          curl -sfL --retry 3 -o /tmp/tarball "$BASE/releases/download/$TAG/MCCompanion-linux-x64.tar.gz"
 
           python3 - "$TAG" "$BASE" "$RAW" <<'PY'
           import hashlib
@@ -161,7 +164,7 @@ jobs:
           targets = [
               ("MCCompanion-linux-x64.tar.gz",
                f"{base}/releases/download/{tag}/MCCompanion-linux-x64.tar.gz",
-               sha_of("/tmp/tarball")),
+               sha_of("/tmp/MCCompanion-linux-x64.tar.gz")),
           ]
           for name in ("metainfo.xml", "desktop", "png"):
               filename = f"net.mccompanion.MCCompanion.{name}"
