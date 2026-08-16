@@ -20,6 +20,12 @@ class AuthUser {
   const AuthUser._({required this.uid, this.email, User? sdkUser})
     : _sdkUser = sdkUser;
 
+  bool get emailVerified => _sdkUser?.emailVerified ?? true;
+
+  Future<void> reload() async {
+    await _sdkUser?.reload();
+  }
+
   Future<void> delete() async {
     if (_sdkUser != null) {
       await _sdkUser.delete();

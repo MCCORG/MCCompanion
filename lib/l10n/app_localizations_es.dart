@@ -1391,13 +1391,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get legalSection => 'Legal';
 
   @override
-  String get privacyPolicy => 'Política de privacidad';
+  String get privacyPolicy => 'política de privacidad';
 
   @override
   String get privacyPolicySubtitle => 'Cómo recopilamos tus datos';
 
   @override
-  String get termsOfService => 'Términos de servicio';
+  String get termsOfService => 'términos del servicio';
 
   @override
   String get termsOfServiceSubtitle => 'Reglas y condiciones de uso';
@@ -2750,7 +2750,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'Modo proxy/directo: tu dispositivo es la conexión.\n1. Asegúrate de que el dispositivo con MCCompanion y tu consola estén en la misma red local.\n2. Introduce la dirección y el puerto del servidor Bedrock y pulsa "Iniciar modo proxy/directo".\n3. En la consola abre Minecraft → Jugar → pestaña Amigos y actualiza la lista.\n4. Selecciona el servidor LAN llamado "MCCompanion" para entrar.\n\nPor qué existe este modo:\n- Nada pasa por los servidores de MCCompanion. Tu dispositivo reenvía el tráfico por sí mismo, así que sigue funcionando aunque nuestros relés no estén disponibles.\n- No hace falta iniciar sesión.\n\nTen en cuenta:\n- La aplicación debe permanecer abierta y en pantalla durante toda la sesión. Cerrarla o cambiar a otra aplicación corta la conexión.\n- Solo servidores Bedrock. Para servidores Java usa el modo Java, que hace la traducción en nuestro lado.\n- El consumo de batería es mayor que en los demás modos.\n- Los paquetes de recursos no se aplican. Pasan por nuestro relé, que este modo omite.';
+      'Modo proxy/directo: tu dispositivo es la conexión.\n1. Asegúrate de que el dispositivo con MCCompanion y tu consola estén en la misma red local.\n2. Introduce la dirección y el puerto del servidor Bedrock y pulsa \"Iniciar modo proxy/directo\".\n3. En la consola abre Minecraft → Jugar → pestaña Amigos y actualiza la lista.\n4. Selecciona el servidor LAN llamado \"MCCompanion\" para entrar.\n\nPor qué existe este modo:\n- Nada pasa por los servidores de MCCompanion. Tu dispositivo reenvía el tráfico por sí mismo, así que sigue funcionando aunque nuestros relés no estén disponibles.\n- No hace falta iniciar sesión.\n\nTen en cuenta:\n- La aplicación debe permanecer abierta y en pantalla durante toda la sesión. Cerrarla o cambiar a otra aplicación corta la conexión.\n- Solo servidores Bedrock. Para servidores Java usa el modo Java, que hace la traducción en nuestro lado.\n- El consumo de batería es mayor que en los demás modos.\n- Los paquetes de recursos no se aplican. Pasan por nuestro relé, que este modo omite.';
 
   @override
   String directHostNotFound(String host) {
@@ -2780,4 +2780,25 @@ class AppLocalizationsEs extends AppLocalizations {
   String directAddressNotSupported(String host) {
     return '$host es una dirección IPv6. El modo proxy/directo solo admite IPv4. Usa la dirección IPv4 o el nombre de host.';
   }
+
+  @override
+  String termsAgreement(String terms, String privacy) {
+    return 'Acepto los $terms y la $privacy.';
+  }
+
+  @override
+  String get verifyEmailTitle => 'Verifica tu correo';
+
+  @override
+  String get verifyEmailBody =>
+      'Necesario antes de comentar, subir skins o enviar packs.';
+
+  @override
+  String get verifyEmailSent => 'Enviado, revisa tu bandeja de entrada.';
+
+  @override
+  String get verifyEmailSending => 'Enviando…';
+
+  @override
+  String get verifyEmailSend => 'Enviar enlace';
 }

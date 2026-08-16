@@ -864,7 +864,7 @@
   "@portRangeError": {
     "description": "Validation error when port is out of range"
   },
-  "privacyPolicy": "Политика конфиденциальности",
+  "privacyPolicy": "политику конфиденциальности",
   "@privacyPolicy": {
     "description": "Privacy Policy tile title"
   },
@@ -1164,7 +1164,7 @@
   "@tabRequests": {
     "description": "Tab label for Requests tab"
   },
-  "termsOfService": "Условия использования",
+  "termsOfService": "условия использования",
   "@termsOfService": {
     "description": "Terms of Service tile title"
   },
@@ -2021,5 +2021,11 @@
         "type": "String"
       }
     }
-  }
+  },
+  "termsAgreement": "Я принимаю {terms} и {privacy}.",
+  "verifyEmailTitle": "Подтвердите почту",
+  "verifyEmailBody": "Нужно, чтобы комментировать, загружать скины и отправлять паки.",
+  "verifyEmailSent": "Отправлено, проверьте почту.",
+  "verifyEmailSending": "Отправка…",
+  "verifyEmailSend": "Отправить ссылку"
 }

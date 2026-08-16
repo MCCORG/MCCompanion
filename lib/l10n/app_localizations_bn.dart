@@ -1391,13 +1391,13 @@ class AppLocalizationsBn extends AppLocalizations {
   String get legalSection => 'Legal';
 
   @override
-  String get privacyPolicy => 'Privacy Policy';
+  String get privacyPolicy => 'গোপনীয়তা নীতি';
 
   @override
   String get privacyPolicySubtitle => 'How we collect and protect your data';
 
   @override
-  String get termsOfService => 'Terms of Service';
+  String get termsOfService => 'পরিষেবার শর্তাবলি';
 
   @override
   String get termsOfServiceSubtitle => 'Rules and conditions of use';
@@ -2744,7 +2744,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'প্রক্সি/সরাসরি মোড: সংযোগটি আপনার ডিভাইসই।\n১. নিশ্চিত করুন যে MCCompanion চালানো ডিভাইস ও আপনার কনসোল একই স্থানীয় নেটওয়ার্কে আছে।\n২. Bedrock সার্ভারের ঠিকানা ও পোর্ট লিখুন, তারপর "প্রক্সি/সরাসরি মোড শুরু করুন" চাপুন।\n৩. কনসোলে Minecraft → Play → Friends ট্যাব খুলে তালিকা রিফ্রেশ করুন।\n৪. যোগ দিতে "MCCompanion" নামের LAN সার্ভারটি বেছে নিন।\n\nএই মোড কেন আছে:\n- কিছুই MCCompanion-এর সার্ভারের মধ্য দিয়ে যায় না। আপনার ডিভাইস নিজেই ট্র্যাফিক পাঠায়, তাই আমাদের রিলে অচল থাকলেও এটি কাজ করে।\n- সাইন ইন করার প্রয়োজন নেই।\n\nমনে রাখবেন:\n- পুরো সেশন জুড়ে অ্যাপটি খোলা ও স্ক্রিনে থাকতে হবে। বন্ধ করলে বা অন্য অ্যাপে গেলে সংযোগ বিচ্ছিন্ন হয়।\n- শুধু Bedrock সার্ভার। Java সার্ভারের জন্য Java মোড ব্যবহার করুন, যা অনুবাদ আমাদের দিকে করে।\n- অন্য মোডের তুলনায় ব্যাটারি বেশি খরচ হয়।\n- রিসোর্স প্যাক প্রয়োগ হয় না। সেগুলো আমাদের রিলে দিয়ে চলে, যা এই মোড এড়িয়ে যায়।';
+      'প্রক্সি/সরাসরি মোড: সংযোগটি আপনার ডিভাইসই।\n১. নিশ্চিত করুন যে MCCompanion চালানো ডিভাইস ও আপনার কনসোল একই স্থানীয় নেটওয়ার্কে আছে।\n২. Bedrock সার্ভারের ঠিকানা ও পোর্ট লিখুন, তারপর \"প্রক্সি/সরাসরি মোড শুরু করুন\" চাপুন।\n৩. কনসোলে Minecraft → Play → Friends ট্যাব খুলে তালিকা রিফ্রেশ করুন।\n৪. যোগ দিতে \"MCCompanion\" নামের LAN সার্ভারটি বেছে নিন।\n\nএই মোড কেন আছে:\n- কিছুই MCCompanion-এর সার্ভারের মধ্য দিয়ে যায় না। আপনার ডিভাইস নিজেই ট্র্যাফিক পাঠায়, তাই আমাদের রিলে অচল থাকলেও এটি কাজ করে।\n- সাইন ইন করার প্রয়োজন নেই।\n\nমনে রাখবেন:\n- পুরো সেশন জুড়ে অ্যাপটি খোলা ও স্ক্রিনে থাকতে হবে। বন্ধ করলে বা অন্য অ্যাপে গেলে সংযোগ বিচ্ছিন্ন হয়।\n- শুধু Bedrock সার্ভার। Java সার্ভারের জন্য Java মোড ব্যবহার করুন, যা অনুবাদ আমাদের দিকে করে।\n- অন্য মোডের তুলনায় ব্যাটারি বেশি খরচ হয়।\n- রিসোর্স প্যাক প্রয়োগ হয় না। সেগুলো আমাদের রিলে দিয়ে চলে, যা এই মোড এড়িয়ে যায়।';
 
   @override
   String directHostNotFound(String host) {
@@ -2767,10 +2767,32 @@ class AppLocalizationsBn extends AppLocalizations {
   String get directStartAnyway => 'তবুও শুরু করুন';
 
   @override
-  String get directNoResourcePack => 'প্রক্সি/সরাসরি মোডে রিসোর্স প্যাক কাজ করে না।';
+  String get directNoResourcePack =>
+      'প্রক্সি/সরাসরি মোডে রিসোর্স প্যাক কাজ করে না।';
 
   @override
   String directAddressNotSupported(String host) {
     return '$host একটি IPv6 ঠিকানা। প্রক্সি/সরাসরি মোড শুধু IPv4 সমর্থন করে। IPv4 ঠিকানা বা হোস্টনাম ব্যবহার করুন।';
   }
+
+  @override
+  String termsAgreement(String terms, String privacy) {
+    return 'আমি $terms এবং $privacy মেনে নিচ্ছি।';
+  }
+
+  @override
+  String get verifyEmailTitle => 'আপনার ইমেল যাচাই করুন';
+
+  @override
+  String get verifyEmailBody =>
+      'মন্তব্য করা, স্কিন আপলোড বা প্যাক জমা দেওয়ার আগে প্রয়োজন।';
+
+  @override
+  String get verifyEmailSent => 'পাঠানো হয়েছে, ইনবক্স দেখুন।';
+
+  @override
+  String get verifyEmailSending => 'পাঠানো হচ্ছে…';
+
+  @override
+  String get verifyEmailSend => 'লিংক পাঠান';
 }

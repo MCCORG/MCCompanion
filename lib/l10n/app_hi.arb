@@ -864,7 +864,7 @@
   "@portRangeError": {
     "description": "Validation error when port is out of range"
   },
-  "privacyPolicy": "Privacy Policy",
+  "privacyPolicy": "गोपनीयता नीति",
   "@privacyPolicy": {
     "description": "Privacy Policy tile title"
   },
@@ -1164,7 +1164,7 @@
   "@tabRequests": {
     "description": "Tab label for Requests tab"
   },
-  "termsOfService": "Terms of Service",
+  "termsOfService": "सेवा की शर्तों",
   "@termsOfService": {
     "description": "Terms of Service tile title"
   },
@@ -2021,5 +2021,11 @@
         "type": "String"
       }
     }
-  }
+  },
+  "termsAgreement": "मैं {terms} और {privacy} से सहमत हूँ।",
+  "verifyEmailTitle": "अपना ईमेल सत्यापित करें",
+  "verifyEmailBody": "टिप्पणी करने, स्किन अपलोड करने या पैक भेजने से पहले ज़रूरी है।",
+  "verifyEmailSent": "भेज दिया गया, अपना इनबॉक्स देखें।",
+  "verifyEmailSending": "भेजा जा रहा है…",
+  "verifyEmailSend": "लिंक भेजें"
 }

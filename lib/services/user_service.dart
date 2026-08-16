@@ -82,8 +82,26 @@ class UserService {
     _cachedSocialAt = null;
   }
 
-  static Future<({UserModel? user, String? error})> register({
+  static const termsVersion = '2026-06-29';
+
+  static Future<bool> sendVerificationEmail() async {
+    try {
+      final res = await http
+          .post(
+            Uri.parse('$_base/api/auth/send-verification'),
+            headers: await ApiClientBase.headers(),
+          )
+          .timeout(_timeout);
+      return res.statusCode == 200;
+    } catch (e) {
+      debugPrint('[UserService.sendVerificationEmail] $e');
+      return false;
+    }
+  }
+
+  static Future<({UserModel? user, String? error, String? message})> register({
     required String username,
+    required bool acceptedTerms,
     String? displayName,
   }) async {
     try {
@@ -94,6 +112,8 @@ class UserService {
             body: jsonEncode({
               'username': username,
               if (displayName?.isNotEmpty == true) 'displayName': displayName,
+              'acceptedTerms': acceptedTerms,
+              'termsVersion': termsVersion,
             }),
           )
           .timeout(_timeout);
@@ -102,12 +122,18 @@ class UserService {
         return (
           user: UserModel.fromJson(body['user'] as Map<String, dynamic>),
           error: null,
+          message: null,
         );
       }
-      return (user: null, error: body['error'] as String?);
+
+      return (
+        user: null,
+        error: body['error'] as String?,
+        message: body['message'] as String?,
+      );
     } catch (e) {
       debugPrint('[UserService.register] $e');
-      return (user: null, error: 'network_error');
+      return (user: null, error: 'network_error', message: null);
     }
   }
 

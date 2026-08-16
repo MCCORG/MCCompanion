@@ -864,7 +864,7 @@
   "@portRangeError": {
     "description": "Validation error when port is out of range"
   },
-  "privacyPolicy": "Privacy Policy",
+  "privacyPolicy": "پرائیویسی پالیسی",
   "@privacyPolicy": {
     "description": "Privacy Policy tile title"
   },
@@ -1164,7 +1164,7 @@
   "@tabRequests": {
     "description": "Tab label for Requests tab"
   },
-  "termsOfService": "Terms of Service",
+  "termsOfService": "سروس کی شرائط",
   "@termsOfService": {
     "description": "Terms of Service tile title"
   },
@@ -2018,5 +2018,11 @@
         "type": "String"
       }
     }
-  }
+  },
+  "termsAgreement": "میں {terms} اور {privacy} سے اتفاق کرتا ہوں۔",
+  "verifyEmailTitle": "اپنا ای میل تصدیق کریں",
+  "verifyEmailBody": "تبصرہ کرنے، سکن اپ لوڈ کرنے یا پیک جمع کرانے سے پہلے ضروری ہے۔",
+  "verifyEmailSent": "بھیج دیا گیا، اپنا ان باکس دیکھیں۔",
+  "verifyEmailSending": "بھیجا جا رہا ہے…",
+  "verifyEmailSend": "لنک بھیجیں"
 }

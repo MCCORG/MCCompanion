@@ -1371,13 +1371,13 @@ class AppLocalizationsJa extends AppLocalizations {
   String get legalSection => 'Legal';
 
   @override
-  String get privacyPolicy => 'Privacy Policy';
+  String get privacyPolicy => 'プライバシーポリシー';
 
   @override
   String get privacyPolicySubtitle => 'How we collect and protect your data';
 
   @override
-  String get termsOfService => 'Terms of Service';
+  String get termsOfService => '利用規約';
 
   @override
   String get termsOfServiceSubtitle => 'Rules and conditions of use';
@@ -2718,4 +2718,24 @@ class AppLocalizationsJa extends AppLocalizations {
   String directAddressNotSupported(String host) {
     return '$host は IPv6 アドレスです。プロキシ/ダイレクトモードは IPv4 のみ対応しています。IPv4 アドレスかホスト名をご利用ください。';
   }
+
+  @override
+  String termsAgreement(String terms, String privacy) {
+    return '$termsと$privacyに同意します。';
+  }
+
+  @override
+  String get verifyEmailTitle => 'メールアドレスを確認';
+
+  @override
+  String get verifyEmailBody => 'コメント、スキンのアップロード、パックの投稿にはメール確認が必要です。';
+
+  @override
+  String get verifyEmailSent => '送信しました。受信トレイをご確認ください。';
+
+  @override
+  String get verifyEmailSending => '送信中…';
+
+  @override
+  String get verifyEmailSend => 'リンクを送信';
 }

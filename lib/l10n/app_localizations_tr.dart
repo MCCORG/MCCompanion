@@ -1383,13 +1383,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get legalSection => 'Hukuki';
 
   @override
-  String get privacyPolicy => 'Gizlilik Politikası';
+  String get privacyPolicy => 'gizlilik politikasını';
 
   @override
   String get privacyPolicySubtitle => 'Verilerinizi nasıl koruyoruz';
 
   @override
-  String get termsOfService => 'Hizmet Şartları';
+  String get termsOfService => 'hizmet şartlarını';
 
   @override
   String get termsOfServiceSubtitle => 'Kullanım kuralları ve koşulları';
@@ -2742,7 +2742,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'Proxy/Doğrudan mod: bağlantı cihazınızın kendisidir.\n1. MCCompanion\'ın çalıştığı cihaz ile konsolunuzun aynı yerel ağda olduğundan emin olun.\n2. Bedrock sunucusunun adresini ve bağlantı noktasını girin, ardından "Proxy/Doğrudan modu başlat" düğmesine basın.\n3. Konsolda Minecraft → Oyna → Arkadaşlar sekmesini açın ve listeyi yenileyin.\n4. Katılmak için "MCCompanion" adlı yerel ağ sunucusunu seçin.\n\nBu mod neden var:\n- Hiçbir şey MCCompanion sunucularından geçmez. Trafiği cihazınız kendisi iletir, bu yüzden aktarıcılarımıza ulaşılamadığında bile çalışmaya devam eder.\n- Oturum açmanız gerekmez.\n\nUnutmayın:\n- Uygulamanın tüm oturum boyunca açık ve ekranda kalması gerekir. Kapatmak veya başka bir uygulamaya geçmek bağlantıyı sonlandırır.\n- Yalnızca Bedrock sunucuları. Java sunucuları için, protokol çevirisini bizim tarafımızda yapan Java modunu kullanın.\n- Pil tüketimi diğer modlara göre daha yüksektir.\n- Kaynak paketleri uygulanmaz. Bunlar bu modun atladığı aktarıcımız üzerinden çalışır.';
+      'Proxy/Doğrudan mod: bağlantı cihazınızın kendisidir.\n1. MCCompanion\'ın çalıştığı cihaz ile konsolunuzun aynı yerel ağda olduğundan emin olun.\n2. Bedrock sunucusunun adresini ve bağlantı noktasını girin, ardından \"Proxy/Doğrudan modu başlat\" düğmesine basın.\n3. Konsolda Minecraft → Oyna → Arkadaşlar sekmesini açın ve listeyi yenileyin.\n4. Katılmak için \"MCCompanion\" adlı yerel ağ sunucusunu seçin.\n\nBu mod neden var:\n- Hiçbir şey MCCompanion sunucularından geçmez. Trafiği cihazınız kendisi iletir, bu yüzden aktarıcılarımıza ulaşılamadığında bile çalışmaya devam eder.\n- Oturum açmanız gerekmez.\n\nUnutmayın:\n- Uygulamanın tüm oturum boyunca açık ve ekranda kalması gerekir. Kapatmak veya başka bir uygulamaya geçmek bağlantıyı sonlandırır.\n- Yalnızca Bedrock sunucuları. Java sunucuları için, protokol çevirisini bizim tarafımızda yapan Java modunu kullanın.\n- Pil tüketimi diğer modlara göre daha yüksektir.\n- Kaynak paketleri uygulanmaz. Bunlar bu modun atladığı aktarıcımız üzerinden çalışır.';
 
   @override
   String directHostNotFound(String host) {
@@ -2772,4 +2772,25 @@ class AppLocalizationsTr extends AppLocalizations {
   String directAddressNotSupported(String host) {
     return '$host bir IPv6 adresi. Proxy/Doğrudan mod yalnızca IPv4 destekler. IPv4 adresini veya ana bilgisayar adını kullanın.';
   }
+
+  @override
+  String termsAgreement(String terms, String privacy) {
+    return '$terms ve $privacy kabul ediyorum.';
+  }
+
+  @override
+  String get verifyEmailTitle => 'E-postanı doğrula';
+
+  @override
+  String get verifyEmailBody =>
+      'Yorum yapmadan, skin yüklemeden veya paket göndermeden önce gerekli.';
+
+  @override
+  String get verifyEmailSent => 'Gönderildi, gelen kutunu kontrol et.';
+
+  @override
+  String get verifyEmailSending => 'Gönderiliyor…';
+
+  @override
+  String get verifyEmailSend => 'Bağlantı gönder';
 }

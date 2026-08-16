@@ -1391,13 +1391,13 @@ class AppLocalizationsUr extends AppLocalizations {
   String get legalSection => 'Legal';
 
   @override
-  String get privacyPolicy => 'Privacy Policy';
+  String get privacyPolicy => 'پرائیویسی پالیسی';
 
   @override
   String get privacyPolicySubtitle => 'How we collect and protect your data';
 
   @override
-  String get termsOfService => 'Terms of Service';
+  String get termsOfService => 'سروس کی شرائط';
 
   @override
   String get termsOfServiceSubtitle => 'Rules and conditions of use';
@@ -2737,7 +2737,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'پراکسی/ڈائریکٹ موڈ: کنکشن خود آپ کا آلہ ہے۔\n1. یقینی بنائیں کہ MCCompanion چلانے والا آلہ اور آپ کا کنسول ایک ہی مقامی نیٹ ورک پر ہیں۔\n2. Bedrock سرور کا پتہ اور پورٹ درج کریں، پھر "پراکسی/ڈائریکٹ موڈ شروع کریں" دبائیں۔\n3. کنسول پر Minecraft → Play → Friends ٹیب کھولیں اور فہرست تازہ کریں۔\n4. شامل ہونے کے لیے "MCCompanion" نام کا LAN سرور منتخب کریں۔\n\nیہ موڈ کیوں ہے:\n- کچھ بھی MCCompanion کے سرورز سے نہیں گزرتا۔ آپ کا آلہ خود ٹریفک آگے بھیجتا ہے، اس لیے ہمارے ریلے دستیاب نہ ہونے پر بھی یہ کام کرتا رہتا ہے۔\n- سائن اِن کرنے کی ضرورت نہیں۔\n\nخیال رکھیں:\n- پورے سیشن کے دوران ایپ کھلی اور اسکرین پر رہنی چاہیے۔ اسے بند کرنے یا کسی اور ایپ پر جانے سے کنکشن ختم ہو جاتا ہے۔\n- صرف Bedrock سرورز۔ Java سرورز کے لیے Java موڈ استعمال کریں، جو ترجمہ ہماری طرف کرتا ہے۔\n- دیگر موڈز کے مقابلے میں بیٹری زیادہ خرچ ہوتی ہے۔\n- ریسورس پیک لاگو نہیں ہوتے۔ وہ ہمارے ریلے سے چلتے ہیں، جسے یہ موڈ چھوڑ دیتا ہے۔';
+      'پراکسی/ڈائریکٹ موڈ: کنکشن خود آپ کا آلہ ہے۔\n1. یقینی بنائیں کہ MCCompanion چلانے والا آلہ اور آپ کا کنسول ایک ہی مقامی نیٹ ورک پر ہیں۔\n2. Bedrock سرور کا پتہ اور پورٹ درج کریں، پھر \"پراکسی/ڈائریکٹ موڈ شروع کریں\" دبائیں۔\n3. کنسول پر Minecraft → Play → Friends ٹیب کھولیں اور فہرست تازہ کریں۔\n4. شامل ہونے کے لیے \"MCCompanion\" نام کا LAN سرور منتخب کریں۔\n\nیہ موڈ کیوں ہے:\n- کچھ بھی MCCompanion کے سرورز سے نہیں گزرتا۔ آپ کا آلہ خود ٹریفک آگے بھیجتا ہے، اس لیے ہمارے ریلے دستیاب نہ ہونے پر بھی یہ کام کرتا رہتا ہے۔\n- سائن اِن کرنے کی ضرورت نہیں۔\n\nخیال رکھیں:\n- پورے سیشن کے دوران ایپ کھلی اور اسکرین پر رہنی چاہیے۔ اسے بند کرنے یا کسی اور ایپ پر جانے سے کنکشن ختم ہو جاتا ہے۔\n- صرف Bedrock سرورز۔ Java سرورز کے لیے Java موڈ استعمال کریں، جو ترجمہ ہماری طرف کرتا ہے۔\n- دیگر موڈز کے مقابلے میں بیٹری زیادہ خرچ ہوتی ہے۔\n- ریسورس پیک لاگو نہیں ہوتے۔ وہ ہمارے ریلے سے چلتے ہیں، جسے یہ موڈ چھوڑ دیتا ہے۔';
 
   @override
   String directHostNotFound(String host) {
@@ -2767,4 +2767,25 @@ class AppLocalizationsUr extends AppLocalizations {
   String directAddressNotSupported(String host) {
     return '$host ایک IPv6 پتہ ہے۔ پراکسی/ڈائریکٹ موڈ صرف IPv4 کو سپورٹ کرتا ہے۔ IPv4 پتہ یا ہوسٹ نام استعمال کریں۔';
   }
+
+  @override
+  String termsAgreement(String terms, String privacy) {
+    return 'میں $terms اور $privacy سے اتفاق کرتا ہوں۔';
+  }
+
+  @override
+  String get verifyEmailTitle => 'اپنا ای میل تصدیق کریں';
+
+  @override
+  String get verifyEmailBody =>
+      'تبصرہ کرنے، سکن اپ لوڈ کرنے یا پیک جمع کرانے سے پہلے ضروری ہے۔';
+
+  @override
+  String get verifyEmailSent => 'بھیج دیا گیا، اپنا ان باکس دیکھیں۔';
+
+  @override
+  String get verifyEmailSending => 'بھیجا جا رہا ہے…';
+
+  @override
+  String get verifyEmailSend => 'لنک بھیجیں';
 }

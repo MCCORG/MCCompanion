@@ -1391,13 +1391,13 @@ class AppLocalizationsHi extends AppLocalizations {
   String get legalSection => 'Legal';
 
   @override
-  String get privacyPolicy => 'Privacy Policy';
+  String get privacyPolicy => 'गोपनीयता नीति';
 
   @override
   String get privacyPolicySubtitle => 'How we collect and protect your data';
 
   @override
-  String get termsOfService => 'Terms of Service';
+  String get termsOfService => 'सेवा की शर्तों';
 
   @override
   String get termsOfServiceSubtitle => 'Rules and conditions of use';
@@ -2741,7 +2741,7 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get howToDirectBody =>
-      'प्रॉक्सी/डायरेक्ट मोड: कनेक्शन आपका उपकरण ही है।\n1. सुनिश्चित करें कि MCCompanion चलाने वाला उपकरण और आपका कंसोल एक ही स्थानीय नेटवर्क पर हैं।\n2. Bedrock सर्वर का पता और पोर्ट दर्ज करें, फिर "प्रॉक्सी/डायरेक्ट मोड शुरू करें" दबाएँ।\n3. कंसोल पर Minecraft → Play → Friends टैब खोलें और सूची ताज़ा करें।\n4. जुड़ने के लिए "MCCompanion" नाम का LAN सर्वर चुनें।\n\nयह मोड क्यों है:\n- कुछ भी MCCompanion के सर्वर से होकर नहीं जाता। आपका उपकरण स्वयं ट्रैफ़िक आगे भेजता है, इसलिए हमारे रिले तक पहुँच न होने पर भी यह काम करता रहता है।\n- साइन इन करने की आवश्यकता नहीं है।\n\nध्यान रखें:\n- पूरे सत्र के दौरान ऐप खुला और स्क्रीन पर रहना चाहिए। इसे बंद करने या दूसरे ऐप पर जाने से कनेक्शन टूट जाता है।\n- केवल Bedrock सर्वर। Java सर्वर के लिए Java मोड का उपयोग करें, जो अनुवाद हमारी ओर से करता है।\n- अन्य मोड की तुलना में बैटरी अधिक खर्च होती है।\n- रिसोर्स पैक लागू नहीं होते। वे हमारे रिले से चलते हैं, जिसे यह मोड छोड़ देता है।';
+      'प्रॉक्सी/डायरेक्ट मोड: कनेक्शन आपका उपकरण ही है।\n1. सुनिश्चित करें कि MCCompanion चलाने वाला उपकरण और आपका कंसोल एक ही स्थानीय नेटवर्क पर हैं।\n2. Bedrock सर्वर का पता और पोर्ट दर्ज करें, फिर \"प्रॉक्सी/डायरेक्ट मोड शुरू करें\" दबाएँ।\n3. कंसोल पर Minecraft → Play → Friends टैब खोलें और सूची ताज़ा करें।\n4. जुड़ने के लिए \"MCCompanion\" नाम का LAN सर्वर चुनें।\n\nयह मोड क्यों है:\n- कुछ भी MCCompanion के सर्वर से होकर नहीं जाता। आपका उपकरण स्वयं ट्रैफ़िक आगे भेजता है, इसलिए हमारे रिले तक पहुँच न होने पर भी यह काम करता रहता है।\n- साइन इन करने की आवश्यकता नहीं है।\n\nध्यान रखें:\n- पूरे सत्र के दौरान ऐप खुला और स्क्रीन पर रहना चाहिए। इसे बंद करने या दूसरे ऐप पर जाने से कनेक्शन टूट जाता है।\n- केवल Bedrock सर्वर। Java सर्वर के लिए Java मोड का उपयोग करें, जो अनुवाद हमारी ओर से करता है।\n- अन्य मोड की तुलना में बैटरी अधिक खर्च होती है।\n- रिसोर्स पैक लागू नहीं होते। वे हमारे रिले से चलते हैं, जिसे यह मोड छोड़ देता है।';
 
   @override
   String directHostNotFound(String host) {
@@ -2771,4 +2771,25 @@ class AppLocalizationsHi extends AppLocalizations {
   String directAddressNotSupported(String host) {
     return '$host एक IPv6 पता है। प्रॉक्सी/डायरेक्ट मोड केवल IPv4 का समर्थन करता है। IPv4 पता या होस्टनाम इस्तेमाल करें।';
   }
+
+  @override
+  String termsAgreement(String terms, String privacy) {
+    return 'मैं $terms और $privacy से सहमत हूँ।';
+  }
+
+  @override
+  String get verifyEmailTitle => 'अपना ईमेल सत्यापित करें';
+
+  @override
+  String get verifyEmailBody =>
+      'टिप्पणी करने, स्किन अपलोड करने या पैक भेजने से पहले ज़रूरी है।';
+
+  @override
+  String get verifyEmailSent => 'भेज दिया गया, अपना इनबॉक्स देखें।';
+
+  @override
+  String get verifyEmailSending => 'भेजा जा रहा है…';
+
+  @override
+  String get verifyEmailSend => 'लिंक भेजें';
 }
