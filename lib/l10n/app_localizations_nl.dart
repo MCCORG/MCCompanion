@@ -2808,4 +2808,20 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get verifyEmailSend => 'Stuur link';
+
+  @override
+  String updateAvailableTitle(Object version) {
+    return 'Versie $version is beschikbaar';
+  }
+
+  @override
+  String updateAvailableBody(Object current) {
+    return 'Je draait $current. Deze versie werkt zichzelf niet bij.';
+  }
+
+  @override
+  String get updateAvailableAction => 'Downloaden';
+
+  @override
+  String get updateAvailableDismiss => 'Niet nu';
 }

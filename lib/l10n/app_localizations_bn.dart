@@ -2795,4 +2795,20 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get verifyEmailSend => 'লিংক পাঠান';
+
+  @override
+  String updateAvailableTitle(Object version) {
+    return 'সংস্করণ $version এসেছে';
+  }
+
+  @override
+  String updateAvailableBody(Object current) {
+    return 'আপনি $current চালাচ্ছেন। এই বিল্ড নিজে থেকে আপডেট হয় না।';
+  }
+
+  @override
+  String get updateAvailableAction => 'ডাউনলোড';
+
+  @override
+  String get updateAvailableDismiss => 'এখন নয়';
 }

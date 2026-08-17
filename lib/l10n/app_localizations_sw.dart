@@ -2804,4 +2804,20 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get verifyEmailSend => 'Tuma kiungo';
+
+  @override
+  String updateAvailableTitle(Object version) {
+    return 'Toleo $version limetoka';
+  }
+
+  @override
+  String updateAvailableBody(Object current) {
+    return 'Unatumia $current. Toleo hili halijisasishi lenyewe.';
+  }
+
+  @override
+  String get updateAvailableAction => 'Pakua';
+
+  @override
+  String get updateAvailableDismiss => 'Si sasa';
 }

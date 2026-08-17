@@ -2795,4 +2795,20 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get verifyEmailSend => 'Enviar link';
+
+  @override
+  String updateAvailableTitle(Object version) {
+    return 'A versão $version já saiu';
+  }
+
+  @override
+  String updateAvailableBody(Object current) {
+    return 'Você está usando $current. Esta versão não se atualiza sozinha.';
+  }
+
+  @override
+  String get updateAvailableAction => 'Baixar';
+
+  @override
+  String get updateAvailableDismiss => 'Agora não';
 }

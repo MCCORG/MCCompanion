@@ -2799,4 +2799,20 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get verifyEmailSend => 'Link senden';
+
+  @override
+  String updateAvailableTitle(Object version) {
+    return 'Version $version ist verfügbar';
+  }
+
+  @override
+  String updateAvailableBody(Object current) {
+    return 'Du nutzt $current. Diese Version aktualisiert sich nicht selbst.';
+  }
+
+  @override
+  String get updateAvailableAction => 'Herunterladen';
+
+  @override
+  String get updateAvailableDismiss => 'Später';
 }

@@ -2792,4 +2792,20 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get verifyEmailSend => 'लिंक भेजें';
+
+  @override
+  String updateAvailableTitle(Object version) {
+    return 'संस्करण $version उपलब्ध है';
+  }
+
+  @override
+  String updateAvailableBody(Object current) {
+    return 'आप $current चला रहे हैं। यह बिल्ड खुद अपडेट नहीं होता।';
+  }
+
+  @override
+  String get updateAvailableAction => 'डाउनलोड करें';
+
+  @override
+  String get updateAvailableDismiss => 'अभी नहीं';
 }

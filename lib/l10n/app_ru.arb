@@ -2027,5 +2027,19 @@
   "verifyEmailBody": "Нужно, чтобы комментировать, загружать скины и отправлять паки.",
   "verifyEmailSent": "Отправлено, проверьте почту.",
   "verifyEmailSending": "Отправка…",
-  "verifyEmailSend": "Отправить ссылку"
+  "verifyEmailSend": "Отправить ссылку",
+  "updateAvailableTitle": "Доступна версия {version}",
+  "@updateAvailableTitle": {
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "updateAvailableBody": "У вас {current}. Эта сборка не обновляется сама.",
+  "@updateAvailableBody": {
+    "placeholders": {
+      "current": {}
+    }
+  },
+  "updateAvailableAction": "Скачать",
+  "updateAvailableDismiss": "Не сейчас"
 }

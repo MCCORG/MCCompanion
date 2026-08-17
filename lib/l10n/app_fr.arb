@@ -2027,5 +2027,19 @@
   "verifyEmailBody": "Nécessaire avant de commenter, téléverser des skins ou soumettre des packs.",
   "verifyEmailSent": "Envoyé, vérifiez votre boîte de réception.",
   "verifyEmailSending": "Envoi…",
-  "verifyEmailSend": "Envoyer le lien"
+  "verifyEmailSend": "Envoyer le lien",
+  "updateAvailableTitle": "La version {version} est disponible",
+  "@updateAvailableTitle": {
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "updateAvailableBody": "Vous utilisez {current}. Cette version ne se met pas à jour toute seule.",
+  "@updateAvailableBody": {
+    "placeholders": {
+      "current": {}
+    }
+  },
+  "updateAvailableAction": "Télécharger",
+  "updateAvailableDismiss": "Plus tard"
 }

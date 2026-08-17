@@ -1342,5 +1342,19 @@
   "verifyEmailBody": "Nodig voordat je kunt reageren, skins uploaden of packs indienen.",
   "verifyEmailSent": "Verstuurd, kijk in je inbox.",
   "verifyEmailSending": "Versturen…",
-  "verifyEmailSend": "Stuur link"
+  "verifyEmailSend": "Stuur link",
+  "updateAvailableTitle": "Versie {version} is beschikbaar",
+  "@updateAvailableTitle": {
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "updateAvailableBody": "Je draait {current}. Deze versie werkt zichzelf niet bij.",
+  "@updateAvailableBody": {
+    "placeholders": {
+      "current": {}
+    }
+  },
+  "updateAvailableAction": "Downloaden",
+  "updateAvailableDismiss": "Niet nu"
 }

@@ -2027,5 +2027,19 @@
   "verifyEmailBody": "Yorum yapmadan, skin yüklemeden veya paket göndermeden önce gerekli.",
   "verifyEmailSent": "Gönderildi, gelen kutunu kontrol et.",
   "verifyEmailSending": "Gönderiliyor…",
-  "verifyEmailSend": "Bağlantı gönder"
+  "verifyEmailSend": "Bağlantı gönder",
+  "updateAvailableTitle": "Sürüm {version} yayınlandı",
+  "@updateAvailableTitle": {
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "updateAvailableBody": "Şu an {current} sürümündesiniz. Bu sürüm kendini güncellemez.",
+  "@updateAvailableBody": {
+    "placeholders": {
+      "current": {}
+    }
+  },
+  "updateAvailableAction": "İndir",
+  "updateAvailableDismiss": "Şimdi değil"
 }

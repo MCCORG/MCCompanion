@@ -5,6 +5,7 @@ import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../services/notification_service.dart';
 import '../services/home_customization_service.dart';
+import '../widgets/components/update_banner.dart';
 import '../util/partners_servers.dart';
 import '../widgets/components/global_notice_banner.dart';
 import '../widgets/landing/landing_partner_banner.dart';
@@ -110,6 +111,8 @@ class _LandingScreenState extends State<LandingScreen> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            const UpdateBanner(),
+
             if (widget.partnerServersFuture != null) ...[
               const SizedBox(height: 6),
               LandingPartnerBanner(

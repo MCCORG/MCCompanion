@@ -2801,4 +2801,20 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get verifyEmailSend => 'Enviar enlace';
+
+  @override
+  String updateAvailableTitle(Object version) {
+    return 'La versión $version ya está disponible';
+  }
+
+  @override
+  String updateAvailableBody(Object current) {
+    return 'Estás usando $current. Esta versión no se actualiza sola.';
+  }
+
+  @override
+  String get updateAvailableAction => 'Descargar';
+
+  @override
+  String get updateAvailableDismiss => 'Ahora no';
 }

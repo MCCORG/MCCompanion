@@ -2027,5 +2027,19 @@
   "verifyEmailBody": "评论、上传皮肤或提交材质包前需要先验证。",
   "verifyEmailSent": "已发送，请查看收件箱。",
   "verifyEmailSending": "发送中…",
-  "verifyEmailSend": "发送链接"
+  "verifyEmailSend": "发送链接",
+  "updateAvailableTitle": "版本 {version} 已发布",
+  "@updateAvailableTitle": {
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "updateAvailableBody": "你正在使用 {current}，此版本不会自动更新。",
+  "@updateAvailableBody": {
+    "placeholders": {
+      "current": {}
+    }
+  },
+  "updateAvailableAction": "下载",
+  "updateAvailableDismiss": "以后再说"
 }

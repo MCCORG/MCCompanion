@@ -2024,5 +2024,19 @@
   "verifyEmailBody": "Diperlukan sebelum kamu bisa berkomentar, mengunggah skin, atau mengirim pack.",
   "verifyEmailSent": "Terkirim, cek kotak masuk kamu.",
   "verifyEmailSending": "Mengirim…",
-  "verifyEmailSend": "Kirim tautan"
+  "verifyEmailSend": "Kirim tautan",
+  "updateAvailableTitle": "Versi {version} sudah tersedia",
+  "@updateAvailableTitle": {
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "updateAvailableBody": "Kamu memakai {current}. Versi ini tidak memperbarui dirinya sendiri.",
+  "@updateAvailableBody": {
+    "placeholders": {
+      "current": {}
+    }
+  },
+  "updateAvailableAction": "Unduh",
+  "updateAvailableDismiss": "Nanti saja"
 }

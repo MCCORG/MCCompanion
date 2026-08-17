@@ -5195,6 +5195,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Send link'**
   String get verifyEmailSend;
+
+  /// No description provided for @updateAvailableTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Version {version} is available'**
+  String updateAvailableTitle(Object version);
+
+  /// No description provided for @updateAvailableBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You are running {current}. This build does not update itself.'**
+  String updateAvailableBody(Object current);
+
+  /// No description provided for @updateAvailableAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Download'**
+  String get updateAvailableAction;
+
+  /// No description provided for @updateAvailableDismiss.
+  ///
+  /// In en, this message translates to:
+  /// **'Not now'**
+  String get updateAvailableDismiss;
 }
 
 class _AppLocalizationsDelegate

@@ -2793,4 +2793,20 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get verifyEmailSend => 'Bağlantı gönder';
+
+  @override
+  String updateAvailableTitle(Object version) {
+    return 'Sürüm $version yayınlandı';
+  }
+
+  @override
+  String updateAvailableBody(Object current) {
+    return 'Şu an $current sürümündesiniz. Bu sürüm kendini güncellemez.';
+  }
+
+  @override
+  String get updateAvailableAction => 'İndir';
+
+  @override
+  String get updateAvailableDismiss => 'Şimdi değil';
 }

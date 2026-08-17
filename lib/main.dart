@@ -9,6 +9,7 @@ import 'l10n/app_localizations.dart';
 import 'services/locale_provider.dart';
 import 'services/home_customization_service.dart';
 import 'services/theme_service.dart';
+import 'services/distribution_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +18,7 @@ void main() async {
       options: DefaultFirebaseOptions.currentPlatform,
     );
   }
+  await DistributionService.init();
   await loadSavedLocale();
   await HomeCustomizationService.instance.load();
   await ThemeService.instance.load();

@@ -2788,4 +2788,20 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get verifyEmailSend => 'لنک بھیجیں';
+
+  @override
+  String updateAvailableTitle(Object version) {
+    return 'ورژن $version دستیاب ہے';
+  }
+
+  @override
+  String updateAvailableBody(Object current) {
+    return 'آپ $current چلا رہے ہیں۔ یہ ورژن خود کو اپ ڈیٹ نہیں کرتا۔';
+  }
+
+  @override
+  String get updateAvailableAction => 'ڈاؤن لوڈ کریں';
+
+  @override
+  String get updateAvailableDismiss => 'ابھی نہیں';
 }

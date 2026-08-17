@@ -2027,5 +2027,19 @@
   "verifyEmailBody": "टिप्पणी करने, स्किन अपलोड करने या पैक भेजने से पहले ज़रूरी है।",
   "verifyEmailSent": "भेज दिया गया, अपना इनबॉक्स देखें।",
   "verifyEmailSending": "भेजा जा रहा है…",
-  "verifyEmailSend": "लिंक भेजें"
+  "verifyEmailSend": "लिंक भेजें",
+  "updateAvailableTitle": "संस्करण {version} उपलब्ध है",
+  "@updateAvailableTitle": {
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "updateAvailableBody": "आप {current} चला रहे हैं। यह बिल्ड खुद अपडेट नहीं होता।",
+  "@updateAvailableBody": {
+    "placeholders": {
+      "current": {}
+    }
+  },
+  "updateAvailableAction": "डाउनलोड करें",
+  "updateAvailableDismiss": "अभी नहीं"
 }

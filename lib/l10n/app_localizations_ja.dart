@@ -2738,4 +2738,20 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get verifyEmailSend => 'リンクを送信';
+
+  @override
+  String updateAvailableTitle(Object version) {
+    return 'バージョン $version が公開されました';
+  }
+
+  @override
+  String updateAvailableBody(Object current) {
+    return '現在は $current です。このビルドは自動更新されません。';
+  }
+
+  @override
+  String get updateAvailableAction => 'ダウンロード';
+
+  @override
+  String get updateAvailableDismiss => '後で';
 }

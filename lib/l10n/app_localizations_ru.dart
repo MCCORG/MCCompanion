@@ -2792,4 +2792,20 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get verifyEmailSend => 'Отправить ссылку';
+
+  @override
+  String updateAvailableTitle(Object version) {
+    return 'Доступна версия $version';
+  }
+
+  @override
+  String updateAvailableBody(Object current) {
+    return 'У вас $current. Эта сборка не обновляется сама.';
+  }
+
+  @override
+  String get updateAvailableAction => 'Скачать';
+
+  @override
+  String get updateAvailableDismiss => 'Не сейчас';
 }

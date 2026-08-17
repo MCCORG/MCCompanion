@@ -2024,5 +2024,19 @@
   "verifyEmailBody": "Inahitajika kabla ya kutoa maoni, kupakia skins au kuwasilisha pakiti.",
   "verifyEmailSent": "Imetumwa, angalia kikasha chako.",
   "verifyEmailSending": "Inatuma…",
-  "verifyEmailSend": "Tuma kiungo"
+  "verifyEmailSend": "Tuma kiungo",
+  "updateAvailableTitle": "Toleo {version} limetoka",
+  "@updateAvailableTitle": {
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "updateAvailableBody": "Unatumia {current}. Toleo hili halijisasishi lenyewe.",
+  "@updateAvailableBody": {
+    "placeholders": {
+      "current": {}
+    }
+  },
+  "updateAvailableAction": "Pakua",
+  "updateAvailableDismiss": "Si sasa"
 }

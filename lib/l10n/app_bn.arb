@@ -2027,5 +2027,19 @@
   "verifyEmailBody": "মন্তব্য করা, স্কিন আপলোড বা প্যাক জমা দেওয়ার আগে প্রয়োজন।",
   "verifyEmailSent": "পাঠানো হয়েছে, ইনবক্স দেখুন।",
   "verifyEmailSending": "পাঠানো হচ্ছে…",
-  "verifyEmailSend": "লিংক পাঠান"
+  "verifyEmailSend": "লিংক পাঠান",
+  "updateAvailableTitle": "সংস্করণ {version} এসেছে",
+  "@updateAvailableTitle": {
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "updateAvailableBody": "আপনি {current} চালাচ্ছেন। এই বিল্ড নিজে থেকে আপডেট হয় না।",
+  "@updateAvailableBody": {
+    "placeholders": {
+      "current": {}
+    }
+  },
+  "updateAvailableAction": "ডাউনলোড",
+  "updateAvailableDismiss": "এখন নয়"
 }

@@ -2024,5 +2024,19 @@
   "verifyEmailBody": "تبصرہ کرنے، سکن اپ لوڈ کرنے یا پیک جمع کرانے سے پہلے ضروری ہے۔",
   "verifyEmailSent": "بھیج دیا گیا، اپنا ان باکس دیکھیں۔",
   "verifyEmailSending": "بھیجا جا رہا ہے…",
-  "verifyEmailSend": "لنک بھیجیں"
+  "verifyEmailSend": "لنک بھیجیں",
+  "updateAvailableTitle": "ورژن {version} دستیاب ہے",
+  "@updateAvailableTitle": {
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "updateAvailableBody": "آپ {current} چلا رہے ہیں۔ یہ ورژن خود کو اپ ڈیٹ نہیں کرتا۔",
+  "@updateAvailableBody": {
+    "placeholders": {
+      "current": {}
+    }
+  },
+  "updateAvailableAction": "ڈاؤن لوڈ کریں",
+  "updateAvailableDismiss": "ابھی نہیں"
 }

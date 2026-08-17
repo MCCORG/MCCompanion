@@ -2027,5 +2027,19 @@
   "verifyEmailBody": "مطلوب قبل التعليق أو رفع الجلود أو إرسال الحزم.",
   "verifyEmailSent": "تم الإرسال، تحقّق من بريدك.",
   "verifyEmailSending": "جارٍ الإرسال…",
-  "verifyEmailSend": "إرسال الرابط"
+  "verifyEmailSend": "إرسال الرابط",
+  "updateAvailableTitle": "الإصدار {version} متاح الآن",
+  "@updateAvailableTitle": {
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "updateAvailableBody": "أنت تستخدم {current}. هذه النسخة لا تُحدّث نفسها.",
+  "@updateAvailableBody": {
+    "placeholders": {
+      "current": {}
+    }
+  },
+  "updateAvailableAction": "تنزيل",
+  "updateAvailableDismiss": "ليس الآن"
 }

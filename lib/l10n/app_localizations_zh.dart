@@ -2731,4 +2731,20 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get verifyEmailSend => '发送链接';
+
+  @override
+  String updateAvailableTitle(Object version) {
+    return '版本 $version 已发布';
+  }
+
+  @override
+  String updateAvailableBody(Object current) {
+    return '你正在使用 $current，此版本不会自动更新。';
+  }
+
+  @override
+  String get updateAvailableAction => '下载';
+
+  @override
+  String get updateAvailableDismiss => '以后再说';
 }

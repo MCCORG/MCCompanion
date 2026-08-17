@@ -2954,5 +2954,19 @@
   "verifyEmailBody": "Needed before you can comment, upload skins or submit packs.",
   "verifyEmailSent": "Sent, check your inbox.",
   "verifyEmailSending": "Sending…",
-  "verifyEmailSend": "Send link"
+  "verifyEmailSend": "Send link",
+  "updateAvailableTitle": "Version {version} is available",
+  "@updateAvailableTitle": {
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "updateAvailableBody": "You are running {current}. This build does not update itself.",
+  "@updateAvailableBody": {
+    "placeholders": {
+      "current": {}
+    }
+  },
+  "updateAvailableAction": "Download",
+  "updateAvailableDismiss": "Not now"
 }

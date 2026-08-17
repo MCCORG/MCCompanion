@@ -2793,4 +2793,20 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get verifyEmailSend => 'Kirim tautan';
+
+  @override
+  String updateAvailableTitle(Object version) {
+    return 'Versi $version sudah tersedia';
+  }
+
+  @override
+  String updateAvailableBody(Object current) {
+    return 'Kamu memakai $current. Versi ini tidak memperbarui dirinya sendiri.';
+  }
+
+  @override
+  String get updateAvailableAction => 'Unduh';
+
+  @override
+  String get updateAvailableDismiss => 'Nanti saja';
 }

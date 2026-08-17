@@ -2798,4 +2798,20 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get verifyEmailSend => 'Envoyer le lien';
+
+  @override
+  String updateAvailableTitle(Object version) {
+    return 'La version $version est disponible';
+  }
+
+  @override
+  String updateAvailableBody(Object current) {
+    return 'Vous utilisez $current. Cette version ne se met pas à jour toute seule.';
+  }
+
+  @override
+  String get updateAvailableAction => 'Télécharger';
+
+  @override
+  String get updateAvailableDismiss => 'Plus tard';
 }
