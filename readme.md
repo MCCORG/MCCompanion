@@ -45,3 +45,4 @@ Sign in with Xbox, Apple or Google. Manage your Bedrock account, view your publi
 
 - Website: https://mccompanion.net
 - Discord: https://discord.gg/xvaNzE35Rs
+- [How building and releasing works](docs/pipeline.md)
