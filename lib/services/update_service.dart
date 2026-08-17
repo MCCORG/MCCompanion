@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,6 +20,7 @@ class UpdateService {
 
   static Future<String?> latestVersion({bool force = false}) async {
     if (!DistributionService.isStandalone) return null;
+    if (kDebugMode) return null;
 
     final prefs = await SharedPreferences.getInstance();
     final cached = prefs.getString(_cachedVersionKey);

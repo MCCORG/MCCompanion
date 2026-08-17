@@ -3,17 +3,21 @@ name: Main
 # One workflow for everything that lands on main, so there is a single path
 # from commit to store and no way to end up half released.
 #
-# The version in pubspec.yaml decides what happens. Leave it alone and the
-# commit refreshes the rolling dev build. Raise it and the same commit becomes
-# a real release: tagged and published, with a pinned Flathub manifest attached
-# to it. Nothing in here writes back to main, so branch protection can be as
-# strict as you like.
+# Your commit message decides what happens. Put [patch], [minor] or [major]
+# anywhere in the first line and that commit is released. Leave it out and it
+# refreshes the rolling dev build instead.
 #
-#     python3 scripts/bump_version.py patch
+#     Fix the crash when a server times out [patch]     4.1.9 -> 4.1.10
+#     Warn standalone builds about updates [minor]      4.1.9 -> 4.2.0
+#     Drop support for the old relay [major]            4.1.9 -> 5.0.0
 #
-# Run that in your branch, open the pull request as usual, and the release
-# happens when it merges. The tag is created after the build succeeds, never
-# before, so a tag without artifacts behind it cannot exist.
+# On a squash merge the first line is the pull request title, so that is where
+# you write it.
+#
+# The version is worked out from the newest tag, never from a file, so nothing
+# has to be committed back to main and branch protection can be as strict as
+# you like. The tag is created after the build succeeds, never before, so a tag
+# without artifacts behind it cannot exist.
 
 on:
   push:
@@ -41,46 +45,67 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          fetch-depth: 2
+          # The whole history: the build number is the number of commits, and
+          # the version comes from the tags.
+          fetch-depth: 0
 
-      - name: Compare the version with the previous commit
+      - name: Read the commit message and the newest tag
         id: check
+        env:
+          # Through the environment rather than straight into the script. A
+          # commit message is text somebody else wrote, and it should never be
+          # able to become part of a command.
+          MESSAGE: ${{ github.event.head_commit.message }}
+          EVENT: ${{ github.event_name }}
         run: |
-          read_version() {
-            printf '%s' "$1" | sed -nE "s/^version: *([0-9]+\.[0-9]+\.[0-9]+)\+([0-9]+).*/\1 \2/p" | head -n1
-          }
+          SUBJECT="$(printf '%s' "$MESSAGE" | head -n1)"
+          LEVEL="$(printf '%s' "$SUBJECT" \
+            | grep -oiE '\[(major|minor|patch)\]' \
+            | head -n1 | tr -d '[]' | tr 'A-Z' 'a-z' || true)"
 
-          CURRENT="$(read_version "$(cat pubspec.yaml)")"
-          if [ -z "$CURRENT" ]; then
-            echo "No 'version: x.y.z+n' line in pubspec.yaml"
+          # Every commit is one higher than the last, it never resets, and a
+          # force push to main is blocked, so this only ever goes up. The
+          # stores refuse anything they have seen before.
+          NUMBER="$(git rev-list --count HEAD)"
+
+          LATEST="$(git tag -l 'v*' \
+            | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' \
+            | sed 's/^v//' | sort -V | tail -n1)"
+          if [ -z "$LATEST" ]; then
+            echo "No version tag yet, starting from 0.0.0"
+            LATEST="0.0.0"
+          fi
+          echo "Newest release: $LATEST"
+
+          if [ -z "$LEVEL" ] || [ "$EVENT" != "push" ]; then
+            echo "release=false" >> "$GITHUB_OUTPUT"
+            echo "build-name=$LATEST" >> "$GITHUB_OUTPUT"
+            echo "build-number=$NUMBER" >> "$GITHUB_OUTPUT"
+            echo "No [patch], [minor] or [major] in the subject, so this is a dev build."
+            exit 0
+          fi
+
+          MAJOR="${LATEST%%.*}"
+          REST="${LATEST#*.}"
+          MINOR="${REST%%.*}"
+          PATCH="${REST#*.}"
+
+          case "$LEVEL" in
+            major) MAJOR=$((MAJOR + 1)); MINOR=0; PATCH=0 ;;
+            minor) MINOR=$((MINOR + 1)); PATCH=0 ;;
+            patch) PATCH=$((PATCH + 1)) ;;
+          esac
+          NAME="$MAJOR.$MINOR.$PATCH"
+
+          if git rev-parse -q --verify "refs/tags/v$NAME" >/dev/null; then
+            echo "Tag v$NAME already exists, which should be impossible."
             exit 1
           fi
-          NAME="${CURRENT% *}"
-          NUMBER="${CURRENT#* }"
 
-          # A first commit, or a manual run, has nothing to compare against and
-          # is treated as a dev build.
-          PREVIOUS=""
-          if git rev-parse -q --verify HEAD~1 >/dev/null; then
-            PREVIOUS="$(read_version "$(git show HEAD~1:pubspec.yaml)")"
-          fi
-          PREVIOUS_NAME="${PREVIOUS% *}"
-
-          if [ -n "$PREVIOUS_NAME" ] && [ "$NAME" != "$PREVIOUS_NAME" ] \
-             && [ "${{ github.event_name }}" = "push" ]; then
-            if git ls-remote --exit-code --tags origin "refs/tags/v$NAME" >/dev/null 2>&1; then
-              echo "Tag v$NAME already exists. Bump to a version that was never released."
-              exit 1
-            fi
-            echo "release=true" >> "$GITHUB_OUTPUT"
-            echo "Releasing $NAME+$NUMBER, up from $PREVIOUS_NAME"
-          else
-            echo "release=false" >> "$GITHUB_OUTPUT"
-            echo "Dev build of $NAME+$NUMBER, the version did not change"
-          fi
-
+          echo "release=true" >> "$GITHUB_OUTPUT"
           echo "build-name=$NAME" >> "$GITHUB_OUTPUT"
           echo "build-number=$NUMBER" >> "$GITHUB_OUTPUT"
+          echo "Releasing $NAME+$NUMBER, a $LEVEL up from $LATEST"
 
   build:
     name: Build
@@ -185,60 +210,39 @@ jobs:
             > /tmp/net.mccompanion.MCCompanion.yml
           cat /tmp/net.mccompanion.MCCompanion.yml
 
-      - name: Check the tag serves what the manifest pins
-        env:
-          TAG: v${{ needs.decide.outputs.build-name }}
-        run: |
-          for NAME in metainfo.xml desktop png; do
-            FILE="flatpak/net.mccompanion.MCCompanion.$NAME"
-            URL="https://raw.githubusercontent.com/${{ github.repository }}/$TAG/$FILE"
-            EXPECTED="$(sha256sum "$FILE" | cut -d' ' -f1)"
-            ACTUAL="$(curl -fsSL "$URL" | sha256sum | cut -d' ' -f1)"
-            if [ "$EXPECTED" != "$ACTUAL" ]; then
-              echo "$FILE at $TAG does not match what the manifest pins."
-              exit 1
-            fi
-            echo "$FILE matches."
-          done
-
-      - name: Attach it to the release
+      # The metadata, the desktop file and the icon go up with it. They are
+      # what the manifest pins, and the copy on the branch is not the copy that
+      # belongs to this version: the release entry is written during the build.
+      # Attaching them keeps every file and its hash in one place, and Flathub
+      # never has to reach into the repository.
+      - name: Attach the manifest and what it points at
         uses: softprops/action-gh-release@v3
         with:
           tag_name: v${{ needs.decide.outputs.build-name }}
-          files: /tmp/net.mccompanion.MCCompanion.yml
+          files: |
+            /tmp/net.mccompanion.MCCompanion.yml
+            flatpak/net.mccompanion.MCCompanion.metainfo.xml
+            flatpak/net.mccompanion.MCCompanion.desktop
+            flatpak/net.mccompanion.MCCompanion.png
 
-  snap:
-    name: Upload to the Snap Store
-    needs: [decide, release]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v8
-        with:
-          name: linux-snap
-          path: artifacts/
-
-      # The only store that is genuinely easier to push to from here than by
-      # hand: snapcraft does not run properly on macOS, so uploading from a Mac
-      # means fighting a container. The others are a web form and stay manual.
-      #
-      # The channel defaults to edge, which is where the snap has always gone.
-      # Set a repository variable SNAP_CHANNEL to stable when you want releases
-      # to reach people who install it by searching the store.
-      - name: Upload
+      # Everything the manifest points at has to be reachable with exactly the
+      # hash it claims. This downloads it back and checks, so a mismatch fails
+      # here with an explanation instead of in Flathub's build.
+      - name: Check the release serves what the manifest pins
         env:
-          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS }}
-          CHANNEL: ${{ vars.SNAP_CHANNEL || 'edge' }}
-          VERSION: ${{ needs.decide.outputs.build-name }}
+          TAG: v${{ needs.decide.outputs.build-name }}
         run: |
-          if [ -z "$SNAPCRAFT_STORE_CREDENTIALS" ]; then
-            echo "SNAPCRAFT_STORE_CREDENTIALS is not set, so nothing was uploaded."
-            echo "The snap is still on the release if you want to push it by hand."
-            exit 0
-          fi
-
-          sudo snap install snapcraft --classic
-          echo "Uploading $VERSION to the $CHANNEL channel."
-          snapcraft upload artifacts/MCCompanion-linux.snap --release="$CHANNEL"
+          BASE="https://github.com/${{ github.repository }}/releases/download/$TAG"
+          for NAME in metainfo.xml desktop png; do
+            FILE="flatpak/net.mccompanion.MCCompanion.$NAME"
+            EXPECTED="$(sha256sum "$FILE" | cut -d' ' -f1)"
+            ACTUAL="$(curl -fsSL "$BASE/net.mccompanion.MCCompanion.$NAME" | sha256sum | cut -d' ' -f1)"
+            if [ "$EXPECTED" != "$ACTUAL" ]; then
+              echo "net.mccompanion.MCCompanion.$NAME on the release does not match what the manifest pins."
+              exit 1
+            fi
+            echo "net.mccompanion.MCCompanion.$NAME matches."
+          done
 
   notify:
     name: Notify Discord

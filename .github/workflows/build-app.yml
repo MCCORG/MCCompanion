@@ -4,8 +4,9 @@ name: Build app
 # one-line change instead of the same edit in every workflow. Called by ci.yml
 # for pull requests and by main.yml for everything that lands on main.
 #
-# The version always arrives as an input. Nothing in here reads it from a file,
-# so pubspec.yaml stays the only place it is written.
+# The version always arrives as an input, worked out by the caller from the
+# newest tag. Nothing in here reads it from a file, and pubspec.yaml is only
+# what a local build shows.
 #
 # Build jobs never write to the repository. The Flathub manifest sha256 can
 # only be computed once the tarball is published, so that lives in the pin job
@@ -207,8 +208,8 @@ jobs:
         env:
           CMAKE_POLICY_VERSION_MINIMUM: "3.5"
 
-      # The version comes from the input rather than from pubspec.yaml, so
-      # there is no second copy of it to forget. The store rejects a reused one.
+      # The version comes from the input rather than from pubspec.yaml, which
+      # does not track releases any more. The store rejects a reused one.
       - name: Build MSIX
         run: dart run msix:create --version ${{ inputs.build-name }}.0
 

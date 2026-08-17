@@ -52,10 +52,10 @@ def file_source(tag, name):
     path = ROOT / "flatpak" / name
     if not path.exists():
         fail(f"{name} is not in flatpak/")
-    raw = f"https://raw.githubusercontent.com/{REPO}/{tag}/flatpak/{name}"
-    query = f'\'"https://raw.githubusercontent.com/{REPO}/" + .tag_name + "/flatpak/{name}"\''
+    url = f"https://github.com/{REPO}/releases/download/{tag}/{name}"
+    query = f'.assets[] | select(.name == "{name}") | .browser_download_url'
     return f"""      - type: file
-        url: {raw}
+        url: {url}
         sha256: {sha256(path)}
         dest-filename: {name}
         x-checker-data:
