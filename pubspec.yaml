@@ -2,7 +2,7 @@ name: MCCompanion
 description: "A Minecraft companion app."
 
 publish_to: 'none'
-version: 4.1.8+51
+version: 4.1.9+52
 
 environment:
   sdk: ^3.8.1
