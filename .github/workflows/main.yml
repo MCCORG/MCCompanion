@@ -244,6 +244,39 @@ jobs:
             echo "net.mccompanion.MCCompanion.$NAME matches."
           done
 
+  snap:
+    name: Upload to the Snap Store
+    needs: [decide, release]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: linux-snap
+          path: artifacts/
+
+      # The only store that is genuinely easier to push to from here than by
+      # hand: snapcraft does not run properly on macOS, so uploading from a Mac
+      # means fighting a container. The others are a web form and stay manual.
+      #
+      # The channel defaults to edge, which is where the snap has always gone.
+      # Set a repository variable SNAP_CHANNEL to stable when you want releases
+      # to reach people who install it by searching the store.
+      - name: Upload
+        env:
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS }}
+          CHANNEL: ${{ vars.SNAP_CHANNEL || 'edge' }}
+          VERSION: ${{ needs.decide.outputs.build-name }}
+        run: |
+          if [ -z "$SNAPCRAFT_STORE_CREDENTIALS" ]; then
+            echo "SNAPCRAFT_STORE_CREDENTIALS is not set, so nothing was uploaded."
+            echo "The snap is still on the release if you want to push it by hand."
+            exit 0
+          fi
+
+          sudo snap install snapcraft --classic
+          echo "Uploading $VERSION to the $CHANNEL channel."
+          snapcraft upload artifacts/MCCompanion-linux.snap --release="$CHANNEL"
+
   notify:
     name: Notify Discord
     if: ${{ always() }}
