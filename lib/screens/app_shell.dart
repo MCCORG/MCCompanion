@@ -31,7 +31,7 @@ import '../widgets/landing/landing_customize_sheet.dart';
 import 'connector_screen.dart';
 import 'skins_screen.dart';
 import 'wiki_screen.dart';
-import 'partner_servers_screen.dart';
+import 'server_list_screen.dart';
 import 'player_lookup_screen.dart';
 import 'manage_servers_screen.dart';
 import 'resource_pack_screen.dart';
@@ -648,8 +648,9 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
         onBack: () => _goTo(_pageHome),
         onServerDeleted: () => _manageServersKey.currentState?.reload(),
       ),
-      PartnerServersScreen(
-        partnerServersFuture: _partnerServersFuture,
+      // The paid placements still lead this list, they are just no longer the
+      // whole of it: this is the same directory the website shows.
+      ServerListScreen(
         ipController: _ipController,
         portController: _portController,
         onBack: () => _goTo(_pageHome),

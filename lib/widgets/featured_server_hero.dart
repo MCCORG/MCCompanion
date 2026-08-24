@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:palette_generator/palette_generator.dart';
 import '../theme/app_theme.dart';
+import '../screens/server_detail_screen.dart';
 import '../util/partners_servers.dart';
 import '../services/server_status_service.dart';
 import '../services/theme_service.dart';
@@ -105,6 +106,22 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
     return _statusCache.putIfAbsent(
       key,
       () => ServerStatusService.getStatus(server.address, server.port),
+    );
+  }
+
+  void _openServer(FeaturedServer server) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => ServerDetailScreen.fromSlug(
+          slug: server.slug!,
+          onPlay: (chosen) {
+            Navigator.of(context).pop();
+            widget.ipController.text = chosen.host;
+            widget.portController.text = chosen.port.toString();
+            widget.onSelected?.call();
+          },
+        ),
+      ),
     );
   }
 
@@ -254,7 +271,10 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Expanded(
-                child: Column(
+                child: GestureDetector(
+                  onTap: server?.slug == null ? null : () => _openServer(server!),
+                  behavior: HitTestBehavior.opaque,
+                  child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -295,6 +315,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                     else
                       _staticStatusBadge(dot: AppTheme.textMuted, label: '...'),
                   ],
+                  ),
                 ),
               ),
               const SizedBox(width: 12),

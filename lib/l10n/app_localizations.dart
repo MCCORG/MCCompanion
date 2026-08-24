@@ -2829,13 +2829,13 @@ abstract class AppLocalizations {
   /// Title for the partner servers screen
   ///
   /// In en, this message translates to:
-  /// **'Partner Servers'**
+  /// **'Server List'**
   String get partnerServersTitle;
 
   /// Empty state text on partner servers screen
   ///
   /// In en, this message translates to:
-  /// **'No partner servers available yet.'**
+  /// **'No servers to show yet.'**
   String get noPartnerServers;
 
   /// Secondary empty state text on partner servers screen
@@ -3201,7 +3201,7 @@ abstract class AppLocalizations {
   /// No description provided for @featureLabelPartners.
   ///
   /// In en, this message translates to:
-  /// **'Partners'**
+  /// **'Server list'**
   String get featureLabelPartners;
 
   /// No description provided for @featureLabelLookup.
@@ -5219,6 +5219,318 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Not now'**
   String get updateAvailableDismiss;
+
+  /// No description provided for @serverListSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by name or address'**
+  String get serverListSearchHint;
+
+  /// No description provided for @serverListEditionAny.
+  ///
+  /// In en, this message translates to:
+  /// **'Java and Bedrock'**
+  String get serverListEditionAny;
+
+  /// No description provided for @serverListEditionJava.
+  ///
+  /// In en, this message translates to:
+  /// **'Java only'**
+  String get serverListEditionJava;
+
+  /// No description provided for @serverListEditionBedrock.
+  ///
+  /// In en, this message translates to:
+  /// **'Bedrock only'**
+  String get serverListEditionBedrock;
+
+  /// No description provided for @serverListSortVotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Most votes'**
+  String get serverListSortVotes;
+
+  /// No description provided for @serverListSortPlayers.
+  ///
+  /// In en, this message translates to:
+  /// **'Most players'**
+  String get serverListSortPlayers;
+
+  /// No description provided for @serverListSortPeak.
+  ///
+  /// In en, this message translates to:
+  /// **'Highest peak'**
+  String get serverListSortPeak;
+
+  /// No description provided for @serverListSortNewest.
+  ///
+  /// In en, this message translates to:
+  /// **'Newest'**
+  String get serverListSortNewest;
+
+  /// No description provided for @serverListSortName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get serverListSortName;
+
+  /// No description provided for @serverListAllCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get serverListAllCategories;
+
+  /// No description provided for @serverListLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load the server list'**
+  String get serverListLoadFailed;
+
+  /// No description provided for @serverListLoadFailedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Pull down to try again'**
+  String get serverListLoadFailedHint;
+
+  /// No description provided for @serverListNoMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'No servers match that'**
+  String get serverListNoMatch;
+
+  /// No description provided for @serverListNoMatchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Try a different search or category'**
+  String get serverListNoMatchHint;
+
+  /// No description provided for @serverCardPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Play'**
+  String get serverCardPlay;
+
+  /// No description provided for @serverCardVote.
+  ///
+  /// In en, this message translates to:
+  /// **'Vote'**
+  String get serverCardVote;
+
+  /// No description provided for @serverCardViewServer.
+  ///
+  /// In en, this message translates to:
+  /// **'View server'**
+  String get serverCardViewServer;
+
+  /// No description provided for @serverCopyIp.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy IP'**
+  String get serverCopyIp;
+
+  /// No description provided for @serverCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied'**
+  String get serverCopied;
+
+  /// No description provided for @serverStatPlayers.
+  ///
+  /// In en, this message translates to:
+  /// **'Players'**
+  String get serverStatPlayers;
+
+  /// No description provided for @serverStatPeak.
+  ///
+  /// In en, this message translates to:
+  /// **'Peak'**
+  String get serverStatPeak;
+
+  /// No description provided for @serverStatUptime.
+  ///
+  /// In en, this message translates to:
+  /// **'Uptime'**
+  String get serverStatUptime;
+
+  /// No description provided for @serverStatVotesMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Votes this month'**
+  String get serverStatVotesMonth;
+
+  /// No description provided for @serverStatVotesAllTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Votes all time'**
+  String get serverStatVotesAllTime;
+
+  /// No description provided for @serverStatPlayersHint.
+  ///
+  /// In en, this message translates to:
+  /// **'average while online'**
+  String get serverStatPlayersHint;
+
+  /// No description provided for @serverStatPeakHint.
+  ///
+  /// In en, this message translates to:
+  /// **'highest measured'**
+  String get serverStatPeakHint;
+
+  /// No description provided for @serverStatUptimeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'last 30 days'**
+  String get serverStatUptimeHint;
+
+  /// No description provided for @serverStatEditionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'edition'**
+  String get serverStatEditionHint;
+
+  /// No description provided for @serverBadgeFeatured.
+  ///
+  /// In en, this message translates to:
+  /// **'Featured'**
+  String get serverBadgeFeatured;
+
+  /// No description provided for @serverEditionJava.
+  ///
+  /// In en, this message translates to:
+  /// **'Java'**
+  String get serverEditionJava;
+
+  /// No description provided for @serverEditionBedrock.
+  ///
+  /// In en, this message translates to:
+  /// **'Bedrock'**
+  String get serverEditionBedrock;
+
+  /// No description provided for @serverEditionCrossplay.
+  ///
+  /// In en, this message translates to:
+  /// **'Crossplay'**
+  String get serverEditionCrossplay;
+
+  /// No description provided for @serverSectionMotd.
+  ///
+  /// In en, this message translates to:
+  /// **'Message of the day'**
+  String get serverSectionMotd;
+
+  /// No description provided for @serverSectionAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get serverSectionAbout;
+
+  /// No description provided for @serverSectionCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get serverSectionCategories;
+
+  /// No description provided for @serverSectionVotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Votes'**
+  String get serverSectionVotes;
+
+  /// No description provided for @serverLinkDiscord.
+  ///
+  /// In en, this message translates to:
+  /// **'Discord'**
+  String get serverLinkDiscord;
+
+  /// No description provided for @serverLinkWebsite.
+  ///
+  /// In en, this message translates to:
+  /// **'Website'**
+  String get serverLinkWebsite;
+
+  /// No description provided for @serverVotesThisMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'This month'**
+  String get serverVotesThisMonth;
+
+  /// No description provided for @serverVotesAllTime.
+  ///
+  /// In en, this message translates to:
+  /// **'All time'**
+  String get serverVotesAllTime;
+
+  /// No description provided for @serverVoteAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Vote for this server'**
+  String get serverVoteAction;
+
+  /// No description provided for @serverPlayAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Play on this server'**
+  String get serverPlayAction;
+
+  /// No description provided for @serverVoteSignInRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to vote from the app.'**
+  String get serverVoteSignInRequired;
+
+  /// No description provided for @serverVoteSheetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vote for {name}'**
+  String serverVoteSheetTitle(String name);
+
+  /// No description provided for @serverVoteSheetSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Minecraft name, so the server knows who to reward.'**
+  String get serverVoteSheetSubtitle;
+
+  /// No description provided for @serverVoteSheetHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Steve'**
+  String get serverVoteSheetHint;
+
+  /// No description provided for @serverVoteSheetButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Vote'**
+  String get serverVoteSheetButton;
+
+  /// No description provided for @serverVoteSheetLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'One vote per server per day.'**
+  String get serverVoteSheetLimit;
+
+  /// No description provided for @serverVoteDelivered.
+  ///
+  /// In en, this message translates to:
+  /// **'Voted. Your reward is on its way.'**
+  String get serverVoteDelivered;
+
+  /// No description provided for @serverVoteNoRewards.
+  ///
+  /// In en, this message translates to:
+  /// **'Voted. This server has no rewards set up.'**
+  String get serverVoteNoRewards;
+
+  /// No description provided for @serverVoteFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'That did not work, please try again.'**
+  String get serverVoteFailed;
+
+  /// No description provided for @serverVoteOffline.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not reach the server. Check your connection.'**
+  String get serverVoteOffline;
 }
 
 class _AppLocalizationsDelegate

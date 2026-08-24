@@ -2804,4 +2804,164 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get updateAvailableDismiss => 'ابھی نہیں';
+
+  @override
+  String get serverListSearchHint => 'Search by name or address';
+
+  @override
+  String get serverListEditionAny => 'Java and Bedrock';
+
+  @override
+  String get serverListEditionJava => 'Java only';
+
+  @override
+  String get serverListEditionBedrock => 'Bedrock only';
+
+  @override
+  String get serverListSortVotes => 'Most votes';
+
+  @override
+  String get serverListSortPlayers => 'Most players';
+
+  @override
+  String get serverListSortPeak => 'Highest peak';
+
+  @override
+  String get serverListSortNewest => 'Newest';
+
+  @override
+  String get serverListSortName => 'Name';
+
+  @override
+  String get serverListAllCategories => 'All';
+
+  @override
+  String get serverListLoadFailed => 'Could not load the server list';
+
+  @override
+  String get serverListLoadFailedHint => 'Pull down to try again';
+
+  @override
+  String get serverListNoMatch => 'No servers match that';
+
+  @override
+  String get serverListNoMatchHint => 'Try a different search or category';
+
+  @override
+  String get serverCardPlay => 'Play';
+
+  @override
+  String get serverCardVote => 'Vote';
+
+  @override
+  String get serverCardViewServer => 'View server';
+
+  @override
+  String get serverCopyIp => 'Copy IP';
+
+  @override
+  String get serverCopied => 'Copied';
+
+  @override
+  String get serverStatPlayers => 'Players';
+
+  @override
+  String get serverStatPeak => 'Peak';
+
+  @override
+  String get serverStatUptime => 'Uptime';
+
+  @override
+  String get serverStatVotesMonth => 'Votes this month';
+
+  @override
+  String get serverStatVotesAllTime => 'Votes all time';
+
+  @override
+  String get serverStatPlayersHint => 'average while online';
+
+  @override
+  String get serverStatPeakHint => 'highest measured';
+
+  @override
+  String get serverStatUptimeHint => 'last 30 days';
+
+  @override
+  String get serverStatEditionHint => 'edition';
+
+  @override
+  String get serverBadgeFeatured => 'Featured';
+
+  @override
+  String get serverEditionJava => 'Java';
+
+  @override
+  String get serverEditionBedrock => 'Bedrock';
+
+  @override
+  String get serverEditionCrossplay => 'Crossplay';
+
+  @override
+  String get serverSectionMotd => 'Message of the day';
+
+  @override
+  String get serverSectionAbout => 'About';
+
+  @override
+  String get serverSectionCategories => 'Categories';
+
+  @override
+  String get serverSectionVotes => 'Votes';
+
+  @override
+  String get serverLinkDiscord => 'Discord';
+
+  @override
+  String get serverLinkWebsite => 'Website';
+
+  @override
+  String get serverVotesThisMonth => 'This month';
+
+  @override
+  String get serverVotesAllTime => 'All time';
+
+  @override
+  String get serverVoteAction => 'Vote for this server';
+
+  @override
+  String get serverPlayAction => 'Play on this server';
+
+  @override
+  String get serverVoteSignInRequired => 'Sign in to vote from the app.';
+
+  @override
+  String serverVoteSheetTitle(String name) {
+    return 'Vote for $name';
+  }
+
+  @override
+  String get serverVoteSheetSubtitle =>
+      'Your Minecraft name, so the server knows who to reward.';
+
+  @override
+  String get serverVoteSheetHint => 'Steve';
+
+  @override
+  String get serverVoteSheetButton => 'Vote';
+
+  @override
+  String get serverVoteSheetLimit => 'One vote per server per day.';
+
+  @override
+  String get serverVoteDelivered => 'Voted. Your reward is on its way.';
+
+  @override
+  String get serverVoteNoRewards => 'Voted. This server has no rewards set up.';
+
+  @override
+  String get serverVoteFailed => 'That did not work, please try again.';
+
+  @override
+  String get serverVoteOffline =>
+      'Could not reach the server. Check your connection.';
 }
