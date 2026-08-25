@@ -1723,9 +1723,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get feedbackFeatureRequest => 'फीचर अनुरोध';
 
   @override
-  String get feedbackGoesToGithub => 'सीधे GitHub पर जाता है';
-
-  @override
   String get feedbackTitleLabel => 'शीर्षक';
 
   @override
@@ -1766,18 +1763,14 @@ class AppLocalizationsHi extends AppLocalizations {
   String get feedbackSubmitFeature => 'फीचर अनुरोध सबमिट करें';
 
   @override
-  String get feedbackDisclaimer =>
-      'GitHub पर एक सार्वजनिक इशू बनाता है · पासवर्ड शामिल न करें';
+  String get feedbackDisclaimer => 'हमारी टीम तक जाता है · पासवर्ड न लिखें';
 
   @override
   String get feedbackSuccessTitle => 'फीडबैक के लिए धन्यवाद!';
 
   @override
   String get feedbackSuccessBody =>
-      'धन्यवाद! आपकी रिपोर्ट मिल गई है। हम जल्द से जल्द देखेंगे।';
-
-  @override
-  String get feedbackViewOnGithub => 'GitHub पर देखें';
+      'धन्यवाद! आपकी रिपोर्ट मिल गई। हम ऐप में ही जवाब देते हैं, इसलिए जवाब देखने यहाँ लौटें।';
 
   @override
   String get feedbackSubmitAnother => 'एक और सबमिट करें';
@@ -2927,4 +2920,7 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get serverVoteOffline =>
       'सर्वर से संपर्क नहीं हो सका। अपना कनेक्शन जाँचें।';
+
+  @override
+  String get feedbackViewYourReport => 'अपनी रिपोर्ट देखें';
 }

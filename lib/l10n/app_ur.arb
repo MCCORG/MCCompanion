@@ -1530,7 +1530,6 @@
   },
   "feedbackBugReport": "بگ رپورٹ",
   "feedbackFeatureRequest": "فیچر کی درخواست",
-  "feedbackGoesToGithub": "براہ راست GitHub پر جاتا ہے",
   "feedbackTitleLabel": "عنوان",
   "feedbackTitleHintBug": "مثلاً: سکن ایڈیٹر کھولتے وقت ایپ کریش ہوتی ہے",
   "feedbackTitleHintFeature": "مثلاً: سرور لسٹ میں کھلاڑی کی پنگ دکھائیں",
@@ -1543,10 +1542,9 @@
   "feedbackEmailNote": "آپ کی ای میل کبھی بھی عام نہیں کی جائے گی۔",
   "feedbackSubmitBug": "بگ رپورٹ جمع کریں",
   "feedbackSubmitFeature": "فیچر درخواست جمع کریں",
-  "feedbackDisclaimer": "GitHub پر ایک عوامی ایشو بناتا ہے · پاس ورڈ شامل نہ کریں",
+  "feedbackDisclaimer": "ہماری ٹیم تک جاتا ہے · پاس ورڈ نہ لکھیں",
   "feedbackSuccessTitle": "فیڈبیک کے لیے شکریہ!",
-  "feedbackSuccessBody": "شکریہ! آپ کی رپورٹ موصول ہو گئی ہے۔ ہم جلد از جلد دیکھیں گے۔",
-  "feedbackViewOnGithub": "GitHub پر دیکھیں",
+  "feedbackSuccessBody": "شکریہ! آپ کی رپورٹ موصول ہو گئی۔ ہم ایپ میں جواب دیتے ہیں، اس لیے جواب دیکھنے کے لیے یہاں واپس آئیں۔",
   "feedbackSubmitAnother": "ایک اور جمع کریں",
   "feedbackBackToApp": "ایپ پر واپس جائیں",
   "feedbackTitleTooShort": "عنوان کم از کم 5 حروف کا ہونا چاہیے۔",
@@ -2055,5 +2053,6 @@
   "serverVoteDelivered": "ووٹ ہو گیا۔ آپ کا انعام راستے میں ہے۔",
   "serverVoteNoRewards": "ووٹ ہو گیا۔ اس سرور پر کوئی انعام مقرر نہیں۔",
   "serverVoteFailed": "یہ کام نہیں کیا، براہ کرم دوبارہ کوشش کریں۔",
-  "serverVoteOffline": "سرور تک رسائی نہیں ہو سکی۔ اپنا کنکشن چیک کریں۔"
+  "serverVoteOffline": "سرور تک رسائی نہیں ہو سکی۔ اپنا کنکشن چیک کریں۔",
+  "feedbackViewYourReport": "اپنی رپورٹ دیکھیں"
 }

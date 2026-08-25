@@ -1534,7 +1534,6 @@
   },
   "feedbackBugReport": "Rapport de bug",
   "feedbackFeatureRequest": "Demande de fonctionnalité",
-  "feedbackGoesToGithub": "Envoyé directement sur GitHub",
   "feedbackTitleLabel": "Titre",
   "feedbackTitleHintBug": "ex. L'appli plante en ouvrant l'éditeur de skin",
   "feedbackTitleHintFeature": "ex. Afficher le ping du joueur dans la liste des serveurs",
@@ -1547,10 +1546,9 @@
   "feedbackEmailNote": "Ton e-mail ne sera jamais partagé publiquement.",
   "feedbackSubmitBug": "Envoyer le rapport de bug",
   "feedbackSubmitFeature": "Envoyer la demande de fonctionnalité",
-  "feedbackDisclaimer": "Crée un ticket public sur GitHub · Ne pas inclure de mots de passe",
+  "feedbackDisclaimer": "Va à notre équipe · N'indiquez pas de mots de passe",
   "feedbackSuccessTitle": "Merci pour ton retour !",
-  "feedbackSuccessBody": "Merci ! Votre signalement est bien reçu. On y jette un œil dès que possible.",
-  "feedbackViewOnGithub": "Voir sur GitHub",
+  "feedbackSuccessBody": "Merci ! Votre signalement est bien reçu. Nous répondons dans l'application, revenez ici pour la réponse.",
   "feedbackSubmitAnother": "Envoyer un autre",
   "feedbackBackToApp": "Retour à l'appli",
   "feedbackTitleTooShort": "Le titre doit comporter au moins 5 caractères.",
@@ -2058,5 +2056,6 @@
   "serverVoteDelivered": "Vote enregistré. Votre récompense arrive.",
   "serverVoteNoRewards": "Vote enregistré. Ce serveur n'a aucune récompense configurée.",
   "serverVoteFailed": "Cela n'a pas fonctionné, veuillez réessayer.",
-  "serverVoteOffline": "Impossible de joindre le serveur. Vérifiez votre connexion."
+  "serverVoteOffline": "Impossible de joindre le serveur. Vérifiez votre connexion.",
+  "feedbackViewYourReport": "Voir votre signalement"
 }

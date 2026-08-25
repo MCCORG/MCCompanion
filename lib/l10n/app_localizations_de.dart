@@ -1720,9 +1720,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String get feedbackFeatureRequest => 'Funktionsanfrage';
 
   @override
-  String get feedbackGoesToGithub => 'Direkt an GitHub gesendet';
-
-  @override
   String get feedbackTitleLabel => 'Titel';
 
   @override
@@ -1764,17 +1761,14 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get feedbackDisclaimer =>
-      'Erstellt ein öffentliches GitHub-Issue · Keine Passwörter eingeben';
+      'Geht an unser Team · Keine Passwörter angeben';
 
   @override
   String get feedbackSuccessTitle => 'Danke für das Feedback!';
 
   @override
   String get feedbackSuccessBody =>
-      'Danke! Dein Bericht ist eingegangen. Wir schauen uns das so bald wie möglich an.';
-
-  @override
-  String get feedbackViewOnGithub => 'Auf GitHub ansehen';
+      'Danke! Deine Meldung ist da. Wir antworten in der App, schau also hier wieder vorbei.';
 
   @override
   String get feedbackSubmitAnother => 'Noch einen einreichen';
@@ -2938,4 +2932,7 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get serverVoteOffline =>
       'Server nicht erreichbar. Überprüfe deine Verbindung.';
+
+  @override
+  String get feedbackViewYourReport => 'Deine Meldung ansehen';
 }

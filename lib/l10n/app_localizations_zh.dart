@@ -1700,9 +1700,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get feedbackFeatureRequest => '功能请求';
 
   @override
-  String get feedbackGoesToGithub => '直接发送到 GitHub';
-
-  @override
   String get feedbackTitleLabel => '标题';
 
   @override
@@ -1739,16 +1736,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get feedbackSubmitFeature => '提交功能请求';
 
   @override
-  String get feedbackDisclaimer => '在 GitHub 上创建公开 Issue · 请勿包含密码';
+  String get feedbackDisclaimer => '直达我们的团队 · 请勿填写密码';
 
   @override
   String get feedbackSuccessTitle => '感谢你的反馈！';
 
   @override
-  String get feedbackSuccessBody => '谢谢！我们已收到你的反馈，会尽快查看。';
-
-  @override
-  String get feedbackViewOnGithub => '在 GitHub 上查看';
+  String get feedbackSuccessBody => '谢谢，你的反馈已收到。我们会在应用内回复，请回到这里查看。';
 
   @override
   String get feedbackSubmitAnother => '再提交一个';
@@ -2863,4 +2857,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get serverVoteOffline => '无法连接服务器，请检查网络。';
+
+  @override
+  String get feedbackViewYourReport => '查看你的反馈';
 }

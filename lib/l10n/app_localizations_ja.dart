@@ -1701,9 +1701,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get feedbackFeatureRequest => '機能リクエスト';
 
   @override
-  String get feedbackGoesToGithub => 'GitHubに直接送信されます';
-
-  @override
   String get feedbackTitleLabel => 'タイトル';
 
   @override
@@ -1740,16 +1737,14 @@ class AppLocalizationsJa extends AppLocalizations {
   String get feedbackSubmitFeature => '機能リクエストを送信';
 
   @override
-  String get feedbackDisclaimer => 'GitHubに公開イシューを作成します · パスワードを含めないでください';
+  String get feedbackDisclaimer => 'チームに届きます · パスワードは書かないでください';
 
   @override
   String get feedbackSuccessTitle => 'フィードバックをありがとう！';
 
   @override
-  String get feedbackSuccessBody => 'ありがとうございます！レポートを受け取りました。できるだけ早く確認します。';
-
-  @override
-  String get feedbackViewOnGithub => 'GitHubで見る';
+  String get feedbackSuccessBody =>
+      'ありがとうございます。内容を受け付けました。返信はアプリ内で行いますので、こちらをご確認ください。';
 
   @override
   String get feedbackSubmitAnother => '別のものを送信';
@@ -2870,4 +2865,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get serverVoteOffline => 'サーバーに接続できませんでした。通信環境をご確認ください。';
+
+  @override
+  String get feedbackViewYourReport => '送信した内容を見る';
 }

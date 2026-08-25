@@ -1723,9 +1723,6 @@ class AppLocalizationsBn extends AppLocalizations {
   String get feedbackFeatureRequest => 'ফিচার অনুরোধ';
 
   @override
-  String get feedbackGoesToGithub => 'সরাসরি GitHub-এ যাবে';
-
-  @override
   String get feedbackTitleLabel => 'শিরোনাম';
 
   @override
@@ -1768,17 +1765,14 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get feedbackDisclaimer =>
-      'GitHub-এ একটি পাবলিক ইস্যু তৈরি করে · পাসওয়ার্ড অন্তর্ভুক্ত করবেন না';
+      'আমাদের টিমের কাছে যায় · পাসওয়ার্ড দেবেন না';
 
   @override
   String get feedbackSuccessTitle => 'ফিডব্যাকের জন্য ধন্যবাদ!';
 
   @override
   String get feedbackSuccessBody =>
-      'ধন্যবাদ! আপনার রিপোর্ট পেয়েছি। যত তাড়াতাড়ি সম্ভব দেখে নেব।';
-
-  @override
-  String get feedbackViewOnGithub => 'GitHub-এ দেখুন';
+      'ধন্যবাদ! আপনার রিপোর্ট পেয়েছি। আমরা অ্যাপেই উত্তর দিই, তাই উত্তর দেখতে এখানে ফিরে আসুন।';
 
   @override
   String get feedbackSubmitAnother => 'আরেকটি জমা দিন';
@@ -2930,4 +2924,7 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get serverVoteOffline =>
       'সার্ভারে পৌঁছানো যায়নি। আপনার সংযোগ পরীক্ষা করুন।';
+
+  @override
+  String get feedbackViewYourReport => 'আপনার রিপোর্ট দেখুন';
 }

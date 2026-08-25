@@ -1534,7 +1534,6 @@
   },
   "feedbackBugReport": "Fehlermeldung",
   "feedbackFeatureRequest": "Funktionsanfrage",
-  "feedbackGoesToGithub": "Direkt an GitHub gesendet",
   "feedbackTitleLabel": "Titel",
   "feedbackTitleHintBug": "z.B. App stürzt beim Öffnen des Skin-Editors ab",
   "feedbackTitleHintFeature": "z.B. Ping des Spielers in der Serverliste anzeigen",
@@ -1547,10 +1546,9 @@
   "feedbackEmailNote": "Deine E-Mail wird nie öffentlich geteilt.",
   "feedbackSubmitBug": "Fehlermeldung senden",
   "feedbackSubmitFeature": "Funktionsanfrage senden",
-  "feedbackDisclaimer": "Erstellt ein öffentliches GitHub-Issue · Keine Passwörter eingeben",
+  "feedbackDisclaimer": "Geht an unser Team · Keine Passwörter angeben",
   "feedbackSuccessTitle": "Danke für das Feedback!",
-  "feedbackSuccessBody": "Danke! Dein Bericht ist eingegangen. Wir schauen uns das so bald wie möglich an.",
-  "feedbackViewOnGithub": "Auf GitHub ansehen",
+  "feedbackSuccessBody": "Danke! Deine Meldung ist da. Wir antworten in der App, schau also hier wieder vorbei.",
   "feedbackSubmitAnother": "Noch einen einreichen",
   "feedbackBackToApp": "Zurück zur App",
   "feedbackTitleTooShort": "Titel muss mindestens 5 Zeichen lang sein.",
@@ -2058,5 +2056,6 @@
   "serverVoteDelivered": "Abgestimmt. Deine Belohnung ist unterwegs.",
   "serverVoteNoRewards": "Abgestimmt. Dieser Server hat keine Belohnungen eingerichtet.",
   "serverVoteFailed": "Das hat nicht geklappt, bitte versuche es erneut.",
-  "serverVoteOffline": "Server nicht erreichbar. Überprüfe deine Verbindung."
+  "serverVoteOffline": "Server nicht erreichbar. Überprüfe deine Verbindung.",
+  "feedbackViewYourReport": "Deine Meldung ansehen"
 }

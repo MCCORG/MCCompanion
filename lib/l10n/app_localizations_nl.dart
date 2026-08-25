@@ -1736,9 +1736,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get feedbackFeatureRequest => 'Functieverzoek';
 
   @override
-  String get feedbackGoesToGithub => 'Gaat direct naar GitHub';
-
-  @override
   String get feedbackTitleLabel => 'Titel';
 
   @override
@@ -1780,17 +1777,14 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get feedbackDisclaimer =>
-      'Maakt een openbaar issue op GitHub · Geen wachtwoorden invullen';
+      'Gaat naar ons team · Zet er geen wachtwoorden in';
 
   @override
   String get feedbackSuccessTitle => 'Bedankt voor de feedback!';
 
   @override
   String get feedbackSuccessBody =>
-      'Bedankt! Je melding staat erin. We bekijken het zo snel mogelijk.';
-
-  @override
-  String get feedbackViewOnGithub => 'Bekijk op GitHub';
+      'Bedankt! Je melding staat erin. We antwoorden in de app, dus kijk hier terug voor een reactie.';
 
   @override
   String get feedbackSubmitAnother => 'Nog een indienen';
@@ -2946,4 +2940,7 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get serverVoteOffline =>
       'Kon de server niet bereiken. Controleer je verbinding.';
+
+  @override
+  String get feedbackViewYourReport => 'Bekijk je melding';
 }

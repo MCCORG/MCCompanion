@@ -1534,7 +1534,6 @@
   },
   "feedbackBugReport": "错误报告",
   "feedbackFeatureRequest": "功能请求",
-  "feedbackGoesToGithub": "直接发送到 GitHub",
   "feedbackTitleLabel": "标题",
   "feedbackTitleHintBug": "例如：打开皮肤编辑器时应用崩溃",
   "feedbackTitleHintFeature": "例如：在服务器列表中显示玩家延迟",
@@ -1547,10 +1546,9 @@
   "feedbackEmailNote": "你的电子邮件永远不会公开分享。",
   "feedbackSubmitBug": "提交错误报告",
   "feedbackSubmitFeature": "提交功能请求",
-  "feedbackDisclaimer": "在 GitHub 上创建公开 Issue · 请勿包含密码",
+  "feedbackDisclaimer": "直达我们的团队 · 请勿填写密码",
   "feedbackSuccessTitle": "感谢你的反馈！",
-  "feedbackSuccessBody": "谢谢！我们已收到你的反馈，会尽快查看。",
-  "feedbackViewOnGithub": "在 GitHub 上查看",
+  "feedbackSuccessBody": "谢谢，你的反馈已收到。我们会在应用内回复，请回到这里查看。",
   "feedbackSubmitAnother": "再提交一个",
   "feedbackBackToApp": "返回应用",
   "feedbackTitleTooShort": "标题至少需要 5 个字符。",
@@ -2058,5 +2056,6 @@
   "serverVoteDelivered": "投票成功，奖励正在发放。",
   "serverVoteNoRewards": "投票成功。该服务器尚未设置奖励。",
   "serverVoteFailed": "操作未成功，请重试。",
-  "serverVoteOffline": "无法连接服务器，请检查网络。"
+  "serverVoteOffline": "无法连接服务器，请检查网络。",
+  "feedbackViewYourReport": "查看你的反馈"
 }

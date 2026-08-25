@@ -3282,12 +3282,6 @@ abstract class AppLocalizations {
   /// **'Feature Request'**
   String get feedbackFeatureRequest;
 
-  /// Subtitle in feedback screen header
-  ///
-  /// In en, this message translates to:
-  /// **'Goes straight to GitHub'**
-  String get feedbackGoesToGithub;
-
   /// Label above title field in feedback form
   ///
   /// In en, this message translates to:
@@ -3363,7 +3357,7 @@ abstract class AppLocalizations {
   /// Small disclaimer below submit button
   ///
   /// In en, this message translates to:
-  /// **'Creates a public issue on GitHub · Don\'t include passwords'**
+  /// **'Goes to our team · Don\'t include passwords'**
   String get feedbackDisclaimer;
 
   /// Success screen title
@@ -3375,14 +3369,8 @@ abstract class AppLocalizations {
   /// Success screen body text
   ///
   /// In en, this message translates to:
-  /// **'Thanks! Your report is in. We\'ll take a look as soon as we can.'**
+  /// **'Thanks! Your report is in. We reply in the app, so check back here for an answer.'**
   String get feedbackSuccessBody;
-
-  /// Button to open GitHub issue
-  ///
-  /// In en, this message translates to:
-  /// **'View on GitHub'**
-  String get feedbackViewOnGithub;
 
   /// Button to reset and submit another report
   ///
@@ -5447,6 +5435,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Could not reach the server. Check your connection.'**
   String get serverVoteOffline;
+
+  /// No description provided for @feedbackViewYourReport.
+  ///
+  /// In en, this message translates to:
+  /// **'View your report'**
+  String get feedbackViewYourReport;
 }
 
 class _AppLocalizationsDelegate

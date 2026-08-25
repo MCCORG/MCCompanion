@@ -1722,9 +1722,6 @@ class AppLocalizationsUr extends AppLocalizations {
   String get feedbackFeatureRequest => 'فیچر کی درخواست';
 
   @override
-  String get feedbackGoesToGithub => 'براہ راست GitHub پر جاتا ہے';
-
-  @override
   String get feedbackTitleLabel => 'عنوان';
 
   @override
@@ -1765,18 +1762,14 @@ class AppLocalizationsUr extends AppLocalizations {
   String get feedbackSubmitFeature => 'فیچر درخواست جمع کریں';
 
   @override
-  String get feedbackDisclaimer =>
-      'GitHub پر ایک عوامی ایشو بناتا ہے · پاس ورڈ شامل نہ کریں';
+  String get feedbackDisclaimer => 'ہماری ٹیم تک جاتا ہے · پاس ورڈ نہ لکھیں';
 
   @override
   String get feedbackSuccessTitle => 'فیڈبیک کے لیے شکریہ!';
 
   @override
   String get feedbackSuccessBody =>
-      'شکریہ! آپ کی رپورٹ موصول ہو گئی ہے۔ ہم جلد از جلد دیکھیں گے۔';
-
-  @override
-  String get feedbackViewOnGithub => 'GitHub پر دیکھیں';
+      'شکریہ! آپ کی رپورٹ موصول ہو گئی۔ ہم ایپ میں جواب دیتے ہیں، اس لیے جواب دیکھنے کے لیے یہاں واپس آئیں۔';
 
   @override
   String get feedbackSubmitAnother => 'ایک اور جمع کریں';
@@ -2923,4 +2916,7 @@ class AppLocalizationsUr extends AppLocalizations {
   @override
   String get serverVoteOffline =>
       'سرور تک رسائی نہیں ہو سکی۔ اپنا کنکشن چیک کریں۔';
+
+  @override
+  String get feedbackViewYourReport => 'اپنی رپورٹ دیکھیں';
 }

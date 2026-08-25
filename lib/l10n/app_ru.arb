@@ -1534,7 +1534,6 @@
   },
   "feedbackBugReport": "Сообщение об ошибке",
   "feedbackFeatureRequest": "Запрос функции",
-  "feedbackGoesToGithub": "Отправляется прямо на GitHub",
   "feedbackTitleLabel": "Заголовок",
   "feedbackTitleHintBug": "напр. Приложение вылетает при открытии редактора скинов",
   "feedbackTitleHintFeature": "напр. Показывать пинг игрока в списке серверов",
@@ -1547,10 +1546,9 @@
   "feedbackEmailNote": "Ваш адрес электронной почты никогда не публикуется.",
   "feedbackSubmitBug": "Отправить сообщение об ошибке",
   "feedbackSubmitFeature": "Отправить запрос функции",
-  "feedbackDisclaimer": "Создаёт публичный тикет на GitHub · Не указывайте пароли",
+  "feedbackDisclaimer": "Попадёт к нашей команде · Не указывайте пароли",
   "feedbackSuccessTitle": "Спасибо за отзыв!",
-  "feedbackSuccessBody": "Спасибо! Ваш отчёт получен. Посмотрим его как можно скорее.",
-  "feedbackViewOnGithub": "Посмотреть на GitHub",
+  "feedbackSuccessBody": "Спасибо! Сообщение получено. Мы отвечаем в приложении, загляните сюда за ответом.",
   "feedbackSubmitAnother": "Отправить ещё",
   "feedbackBackToApp": "Вернуться в приложение",
   "feedbackTitleTooShort": "Заголовок должен содержать не менее 5 символов.",
@@ -2058,5 +2056,6 @@
   "serverVoteDelivered": "Голос учтён. Награда уже в пути.",
   "serverVoteNoRewards": "Голос учтён. На этом сервере не настроены награды.",
   "serverVoteFailed": "Не получилось, попробуйте ещё раз.",
-  "serverVoteOffline": "Не удалось связаться с сервером. Проверьте подключение."
+  "serverVoteOffline": "Не удалось связаться с сервером. Проверьте подключение.",
+  "feedbackViewYourReport": "Открыть ваше сообщение"
 }

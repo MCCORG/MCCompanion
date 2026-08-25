@@ -1712,9 +1712,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get feedbackFeatureRequest => 'Özellik İsteği';
 
   @override
-  String get feedbackGoesToGithub => 'Doğrudan GitHub\'a gönderilir';
-
-  @override
   String get feedbackTitleLabel => 'Başlık';
 
   @override
@@ -1756,18 +1753,14 @@ class AppLocalizationsTr extends AppLocalizations {
   String get feedbackSubmitFeature => 'Özellik İsteğini Gönder';
 
   @override
-  String get feedbackDisclaimer =>
-      'GitHub\'da herkese açık bir konu oluşturur · Parola ekleme';
+  String get feedbackDisclaimer => 'Ekibimize ulaşır · Şifre yazmayın';
 
   @override
   String get feedbackSuccessTitle => 'Geri bildirim için teşekkürler!';
 
   @override
   String get feedbackSuccessBody =>
-      'Teşekkürler! Bildirimin bize ulaştı. En kısa sürede bakacağız.';
-
-  @override
-  String get feedbackViewOnGithub => 'GitHub\'da görüntüle';
+      'Teşekkürler! Bildiriminiz bize ulaştı. Yanıtı uygulamada veriyoruz, cevap için buraya geri bakın.';
 
   @override
   String get feedbackSubmitAnother => 'Bir tane daha gönder';
@@ -2929,4 +2922,7 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get serverVoteOffline =>
       'Sunucuya ulaşılamadı. Bağlantınızı kontrol edin.';
+
+  @override
+  String get feedbackViewYourReport => 'Bildiriminizi görüntüle';
 }

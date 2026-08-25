@@ -1712,9 +1712,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get feedbackFeatureRequest => 'طلب ميزة';
 
   @override
-  String get feedbackGoesToGithub => 'يُرسل مباشرةً إلى GitHub';
-
-  @override
   String get feedbackTitleLabel => 'العنوان';
 
   @override
@@ -1753,18 +1750,14 @@ class AppLocalizationsAr extends AppLocalizations {
   String get feedbackSubmitFeature => 'إرسال طلب الميزة';
 
   @override
-  String get feedbackDisclaimer =>
-      'ينشئ تذكرة عامة على GitHub · لا تُدرج كلمات المرور';
+  String get feedbackDisclaimer => 'يصل إلى فريقنا · لا تضع كلمات المرور';
 
   @override
   String get feedbackSuccessTitle => 'شكرًا على ملاحظاتك!';
 
   @override
   String get feedbackSuccessBody =>
-      'شكرًا! وصلنا تقريرك وسنطّلع عليه في أقرب وقت.';
-
-  @override
-  String get feedbackViewOnGithub => 'عرض على GitHub';
+      'شكرًا لك! وصلنا بلاغك. نردّ داخل التطبيق، فعد إلى هنا لرؤية الرد.';
 
   @override
   String get feedbackSubmitAnother => 'إرسال آخر';
@@ -2906,4 +2899,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get serverVoteOffline => 'تعذّر الوصول إلى الخادم. تحقّق من اتصالك.';
+
+  @override
+  String get feedbackViewYourReport => 'عرض بلاغك';
 }

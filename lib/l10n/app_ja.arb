@@ -1534,7 +1534,6 @@
   },
   "feedbackBugReport": "バグ報告",
   "feedbackFeatureRequest": "機能リクエスト",
-  "feedbackGoesToGithub": "GitHubに直接送信されます",
   "feedbackTitleLabel": "タイトル",
   "feedbackTitleHintBug": "例: スキンエディターを開くとアプリがクラッシュする",
   "feedbackTitleHintFeature": "例: サーバーリストにプレイヤーのpingを表示する",
@@ -1547,10 +1546,9 @@
   "feedbackEmailNote": "メールアドレスが公開されることはありません。",
   "feedbackSubmitBug": "バグ報告を送信",
   "feedbackSubmitFeature": "機能リクエストを送信",
-  "feedbackDisclaimer": "GitHubに公開イシューを作成します · パスワードを含めないでください",
+  "feedbackDisclaimer": "チームに届きます · パスワードは書かないでください",
   "feedbackSuccessTitle": "フィードバックをありがとう！",
-  "feedbackSuccessBody": "ありがとうございます！レポートを受け取りました。できるだけ早く確認します。",
-  "feedbackViewOnGithub": "GitHubで見る",
+  "feedbackSuccessBody": "ありがとうございます。内容を受け付けました。返信はアプリ内で行いますので、こちらをご確認ください。",
   "feedbackSubmitAnother": "別のものを送信",
   "feedbackBackToApp": "アプリに戻る",
   "feedbackTitleTooShort": "タイトルは5文字以上必要です。",
@@ -2058,5 +2056,6 @@
   "serverVoteDelivered": "投票しました。報酬はまもなく届きます。",
   "serverVoteNoRewards": "投票しました。このサーバーには報酬が設定されていません。",
   "serverVoteFailed": "うまくいきませんでした。もう一度お試しください。",
-  "serverVoteOffline": "サーバーに接続できませんでした。通信環境をご確認ください。"
+  "serverVoteOffline": "サーバーに接続できませんでした。通信環境をご確認ください。",
+  "feedbackViewYourReport": "送信した内容を見る"
 }

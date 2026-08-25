@@ -1822,10 +1822,6 @@
   "@feedbackFeatureRequest": {
     "description": "Label for feature request type"
   },
-  "feedbackGoesToGithub": "Goes straight to GitHub",
-  "@feedbackGoesToGithub": {
-    "description": "Subtitle in feedback screen header"
-  },
   "feedbackTitleLabel": "Title",
   "@feedbackTitleLabel": {
     "description": "Label above title field in feedback form"
@@ -1874,7 +1870,7 @@
   "@feedbackSubmitFeature": {
     "description": "Submit button label when type is feature"
   },
-  "feedbackDisclaimer": "Creates a public issue on GitHub · Don't include passwords",
+  "feedbackDisclaimer": "Goes to our team · Don't include passwords",
   "@feedbackDisclaimer": {
     "description": "Small disclaimer below submit button"
   },
@@ -1882,13 +1878,9 @@
   "@feedbackSuccessTitle": {
     "description": "Success screen title"
   },
-  "feedbackSuccessBody": "Thanks! Your report is in. We'll take a look as soon as we can.",
+  "feedbackSuccessBody": "Thanks! Your report is in. We reply in the app, so check back here for an answer.",
   "@feedbackSuccessBody": {
     "description": "Success screen body text"
-  },
-  "feedbackViewOnGithub": "View on GitHub",
-  "@feedbackViewOnGithub": {
-    "description": "Button to open GitHub issue"
   },
   "feedbackSubmitAnother": "Submit another",
   "@feedbackSubmitAnother": {
@@ -2992,5 +2984,6 @@
         "type": "String"
       }
     }
-  }
+  },
+  "feedbackViewYourReport": "View your report"
 }

@@ -1530,7 +1530,6 @@
   },
   "feedbackBugReport": "Ripoti ya Hitilafu",
   "feedbackFeatureRequest": "Ombi la Kipengele",
-  "feedbackGoesToGithub": "Inaenda moja kwa moja kwenye GitHub",
   "feedbackTitleLabel": "Kichwa",
   "feedbackTitleHintBug": "mfano: Programu inaanguka wakati wa kufungua kihariri cha ngozi",
   "feedbackTitleHintFeature": "mfano: Onyesha ping ya mchezaji kwenye orodha ya seva",
@@ -1543,10 +1542,9 @@
   "feedbackEmailNote": "Barua pepe yako haitashirikiwa hadharani kamwe.",
   "feedbackSubmitBug": "Tuma Ripoti ya Hitilafu",
   "feedbackSubmitFeature": "Tuma Ombi la Kipengele",
-  "feedbackDisclaimer": "Inaunda suala la umma kwenye GitHub · Usijumuishe nywila",
+  "feedbackDisclaimer": "Huenda kwa timu yetu · Usiweke manenosiri",
   "feedbackSuccessTitle": "Asante kwa maoni yako!",
-  "feedbackSuccessBody": "Asante! Ripoti yako imepokelewa. Tutaiangalia haraka iwezekanavyo.",
-  "feedbackViewOnGithub": "Tazama kwenye GitHub",
+  "feedbackSuccessBody": "Asante! Ripoti yako imefika. Tunajibu ndani ya programu, kwa hiyo rudi hapa kuona jibu.",
   "feedbackSubmitAnother": "Tuma nyingine",
   "feedbackBackToApp": "Rudi kwenye programu",
   "feedbackTitleTooShort": "Kichwa lazima kiwe na angalau herufi 5.",
@@ -2055,5 +2053,6 @@
   "serverVoteDelivered": "Umepiga kura. Zawadi yako inakuja.",
   "serverVoteNoRewards": "Umepiga kura. Seva hii haina zawadi zilizowekwa.",
   "serverVoteFailed": "Haikufanya kazi, tafadhali jaribu tena.",
-  "serverVoteOffline": "Imeshindwa kufikia seva. Angalia muunganisho wako."
+  "serverVoteOffline": "Imeshindwa kufikia seva. Angalia muunganisho wako.",
+  "feedbackViewYourReport": "Angalia ripoti yako"
 }

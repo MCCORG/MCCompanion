@@ -1717,9 +1717,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get feedbackFeatureRequest => 'Запрос функции';
 
   @override
-  String get feedbackGoesToGithub => 'Отправляется прямо на GitHub';
-
-  @override
   String get feedbackTitleLabel => 'Заголовок';
 
   @override
@@ -1762,17 +1759,14 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get feedbackDisclaimer =>
-      'Создаёт публичный тикет на GitHub · Не указывайте пароли';
+      'Попадёт к нашей команде · Не указывайте пароли';
 
   @override
   String get feedbackSuccessTitle => 'Спасибо за отзыв!';
 
   @override
   String get feedbackSuccessBody =>
-      'Спасибо! Ваш отчёт получен. Посмотрим его как можно скорее.';
-
-  @override
-  String get feedbackViewOnGithub => 'Посмотреть на GitHub';
+      'Спасибо! Сообщение получено. Мы отвечаем в приложении, загляните сюда за ответом.';
 
   @override
   String get feedbackSubmitAnother => 'Отправить ещё';
@@ -2928,4 +2922,7 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get serverVoteOffline =>
       'Не удалось связаться с сервером. Проверьте подключение.';
+
+  @override
+  String get feedbackViewYourReport => 'Открыть ваше сообщение';
 }

@@ -1534,7 +1534,6 @@
   },
   "feedbackBugReport": "تقرير خطأ",
   "feedbackFeatureRequest": "طلب ميزة",
-  "feedbackGoesToGithub": "يُرسل مباشرةً إلى GitHub",
   "feedbackTitleLabel": "العنوان",
   "feedbackTitleHintBug": "مثال: التطبيق يتعطل عند فتح محرر السكن",
   "feedbackTitleHintFeature": "مثال: عرض بينج اللاعب في قائمة الخوادم",
@@ -1547,10 +1546,9 @@
   "feedbackEmailNote": "لن يُشارك بريدك الإلكتروني علنًا أبدًا.",
   "feedbackSubmitBug": "إرسال تقرير الخطأ",
   "feedbackSubmitFeature": "إرسال طلب الميزة",
-  "feedbackDisclaimer": "ينشئ تذكرة عامة على GitHub · لا تُدرج كلمات المرور",
+  "feedbackDisclaimer": "يصل إلى فريقنا · لا تضع كلمات المرور",
   "feedbackSuccessTitle": "شكرًا على ملاحظاتك!",
-  "feedbackSuccessBody": "شكرًا! وصلنا تقريرك وسنطّلع عليه في أقرب وقت.",
-  "feedbackViewOnGithub": "عرض على GitHub",
+  "feedbackSuccessBody": "شكرًا لك! وصلنا بلاغك. نردّ داخل التطبيق، فعد إلى هنا لرؤية الرد.",
   "feedbackSubmitAnother": "إرسال آخر",
   "feedbackBackToApp": "العودة إلى التطبيق",
   "feedbackTitleTooShort": "يجب أن يحتوي العنوان على 5 أحرف على الأقل.",
@@ -2058,5 +2056,6 @@
   "serverVoteDelivered": "تم التصويت. مكافأتك في الطريق.",
   "serverVoteNoRewards": "تم التصويت. لم يضبط هذا الخادم أي مكافآت.",
   "serverVoteFailed": "لم ينجح ذلك، يرجى المحاولة مرة أخرى.",
-  "serverVoteOffline": "تعذّر الوصول إلى الخادم. تحقّق من اتصالك."
+  "serverVoteOffline": "تعذّر الوصول إلى الخادم. تحقّق من اتصالك.",
+  "feedbackViewYourReport": "عرض بلاغك"
 }

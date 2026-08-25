@@ -1534,7 +1534,6 @@
   },
   "feedbackBugReport": "Hata Raporu",
   "feedbackFeatureRequest": "Özellik İsteği",
-  "feedbackGoesToGithub": "Doğrudan GitHub'a gönderilir",
   "feedbackTitleLabel": "Başlık",
   "feedbackTitleHintBug": "ör. Skin editörünü açarken uygulama çöküyor",
   "feedbackTitleHintFeature": "ör. Sunucu listesinde oyuncu pingi göster",
@@ -1547,10 +1546,9 @@
   "feedbackEmailNote": "E-posta adresin hiçbir zaman herkese açık paylaşılmaz.",
   "feedbackSubmitBug": "Hata Raporunu Gönder",
   "feedbackSubmitFeature": "Özellik İsteğini Gönder",
-  "feedbackDisclaimer": "GitHub'da herkese açık bir konu oluşturur · Parola ekleme",
+  "feedbackDisclaimer": "Ekibimize ulaşır · Şifre yazmayın",
   "feedbackSuccessTitle": "Geri bildirim için teşekkürler!",
-  "feedbackSuccessBody": "Teşekkürler! Bildirimin bize ulaştı. En kısa sürede bakacağız.",
-  "feedbackViewOnGithub": "GitHub'da görüntüle",
+  "feedbackSuccessBody": "Teşekkürler! Bildiriminiz bize ulaştı. Yanıtı uygulamada veriyoruz, cevap için buraya geri bakın.",
   "feedbackSubmitAnother": "Bir tane daha gönder",
   "feedbackBackToApp": "Uygulamaya geri dön",
   "feedbackTitleTooShort": "Başlık en az 5 karakter olmalıdır.",
@@ -2058,5 +2056,6 @@
   "serverVoteDelivered": "Oy verildi. Ödülünüz yolda.",
   "serverVoteNoRewards": "Oy verildi. Bu sunucuda ödül ayarlanmamış.",
   "serverVoteFailed": "Bu işe yaramadı, lütfen tekrar deneyin.",
-  "serverVoteOffline": "Sunucuya ulaşılamadı. Bağlantınızı kontrol edin."
+  "serverVoteOffline": "Sunucuya ulaşılamadı. Bağlantınızı kontrol edin.",
+  "feedbackViewYourReport": "Bildiriminizi görüntüle"
 }

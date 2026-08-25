@@ -1723,9 +1723,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get feedbackFeatureRequest => 'Ombi la Kipengele';
 
   @override
-  String get feedbackGoesToGithub => 'Inaenda moja kwa moja kwenye GitHub';
-
-  @override
   String get feedbackTitleLabel => 'Kichwa';
 
   @override
@@ -1767,18 +1764,14 @@ class AppLocalizationsSw extends AppLocalizations {
   String get feedbackSubmitFeature => 'Tuma Ombi la Kipengele';
 
   @override
-  String get feedbackDisclaimer =>
-      'Inaunda suala la umma kwenye GitHub · Usijumuishe nywila';
+  String get feedbackDisclaimer => 'Huenda kwa timu yetu · Usiweke manenosiri';
 
   @override
   String get feedbackSuccessTitle => 'Asante kwa maoni yako!';
 
   @override
   String get feedbackSuccessBody =>
-      'Asante! Ripoti yako imepokelewa. Tutaiangalia haraka iwezekanavyo.';
-
-  @override
-  String get feedbackViewOnGithub => 'Tazama kwenye GitHub';
+      'Asante! Ripoti yako imefika. Tunajibu ndani ya programu, kwa hiyo rudi hapa kuona jibu.';
 
   @override
   String get feedbackSubmitAnother => 'Tuma nyingine';
@@ -2940,4 +2933,7 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get serverVoteOffline =>
       'Imeshindwa kufikia seva. Angalia muunganisho wako.';
+
+  @override
+  String get feedbackViewYourReport => 'Angalia ripoti yako';
 }

@@ -1530,7 +1530,6 @@
   },
   "feedbackBugReport": "Laporan Bug",
   "feedbackFeatureRequest": "Permintaan Fitur",
-  "feedbackGoesToGithub": "Langsung dikirim ke GitHub",
   "feedbackTitleLabel": "Judul",
   "feedbackTitleHintBug": "contoh: Aplikasi crash saat membuka skin editor",
   "feedbackTitleHintFeature": "contoh: Tampilkan ping pemain di daftar server",
@@ -1543,10 +1542,9 @@
   "feedbackEmailNote": "Email kamu tidak akan pernah dibagikan secara publik.",
   "feedbackSubmitBug": "Kirim Laporan Bug",
   "feedbackSubmitFeature": "Kirim Permintaan Fitur",
-  "feedbackDisclaimer": "Membuat issue publik di GitHub · Jangan sertakan kata sandi",
+  "feedbackDisclaimer": "Menuju tim kami · Jangan sertakan kata sandi",
   "feedbackSuccessTitle": "Terima kasih atas masukan kamu!",
-  "feedbackSuccessBody": "Terima kasih! Laporanmu sudah masuk. Kami akan segera memeriksanya.",
-  "feedbackViewOnGithub": "Lihat di GitHub",
+  "feedbackSuccessBody": "Terima kasih! Laporanmu sudah masuk. Kami membalas di aplikasi, jadi cek lagi di sini.",
   "feedbackSubmitAnother": "Kirim lagi",
   "feedbackBackToApp": "Kembali ke aplikasi",
   "feedbackTitleTooShort": "Judul harus minimal 5 karakter.",
@@ -2055,5 +2053,6 @@
   "serverVoteDelivered": "Vote terkirim. Hadiahmu sedang dikirim.",
   "serverVoteNoRewards": "Vote terkirim. Server ini belum mengatur hadiah.",
   "serverVoteFailed": "Gagal, silakan coba lagi.",
-  "serverVoteOffline": "Tidak dapat menghubungi server. Periksa koneksimu."
+  "serverVoteOffline": "Tidak dapat menghubungi server. Periksa koneksimu.",
+  "feedbackViewYourReport": "Lihat laporanmu"
 }

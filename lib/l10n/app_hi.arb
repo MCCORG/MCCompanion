@@ -1534,7 +1534,6 @@
   },
   "feedbackBugReport": "बग रिपोर्ट",
   "feedbackFeatureRequest": "फीचर अनुरोध",
-  "feedbackGoesToGithub": "सीधे GitHub पर जाता है",
   "feedbackTitleLabel": "शीर्षक",
   "feedbackTitleHintBug": "उदा. स्किन एडिटर खोलने पर ऐप क्रैश होता है",
   "feedbackTitleHintFeature": "उदा. सर्वर सूची में प्लेयर का पिंग दिखाएं",
@@ -1547,10 +1546,9 @@
   "feedbackEmailNote": "आपका ईमेल कभी सार्वजनिक नहीं किया जाएगा।",
   "feedbackSubmitBug": "बग रिपोर्ट सबमिट करें",
   "feedbackSubmitFeature": "फीचर अनुरोध सबमिट करें",
-  "feedbackDisclaimer": "GitHub पर एक सार्वजनिक इशू बनाता है · पासवर्ड शामिल न करें",
+  "feedbackDisclaimer": "हमारी टीम तक जाता है · पासवर्ड न लिखें",
   "feedbackSuccessTitle": "फीडबैक के लिए धन्यवाद!",
-  "feedbackSuccessBody": "धन्यवाद! आपकी रिपोर्ट मिल गई है। हम जल्द से जल्द देखेंगे।",
-  "feedbackViewOnGithub": "GitHub पर देखें",
+  "feedbackSuccessBody": "धन्यवाद! आपकी रिपोर्ट मिल गई। हम ऐप में ही जवाब देते हैं, इसलिए जवाब देखने यहाँ लौटें।",
   "feedbackSubmitAnother": "एक और सबमिट करें",
   "feedbackBackToApp": "ऐप पर वापस जाएं",
   "feedbackTitleTooShort": "शीर्षक कम से कम 5 अक्षरों का होना चाहिए।",
@@ -2058,5 +2056,6 @@
   "serverVoteDelivered": "वोट हो गया। आपका इनाम रास्ते में है।",
   "serverVoteNoRewards": "वोट हो गया। इस सर्वर पर कोई इनाम सेट नहीं है।",
   "serverVoteFailed": "यह काम नहीं आया, कृपया फिर कोशिश करें।",
-  "serverVoteOffline": "सर्वर से संपर्क नहीं हो सका। अपना कनेक्शन जाँचें।"
+  "serverVoteOffline": "सर्वर से संपर्क नहीं हो सका। अपना कनेक्शन जाँचें।",
+  "feedbackViewYourReport": "अपनी रिपोर्ट देखें"
 }

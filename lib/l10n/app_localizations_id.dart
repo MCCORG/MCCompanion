@@ -1720,9 +1720,6 @@ class AppLocalizationsId extends AppLocalizations {
   String get feedbackFeatureRequest => 'Permintaan Fitur';
 
   @override
-  String get feedbackGoesToGithub => 'Langsung dikirim ke GitHub';
-
-  @override
   String get feedbackTitleLabel => 'Judul';
 
   @override
@@ -1765,17 +1762,14 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get feedbackDisclaimer =>
-      'Membuat issue publik di GitHub · Jangan sertakan kata sandi';
+      'Menuju tim kami · Jangan sertakan kata sandi';
 
   @override
   String get feedbackSuccessTitle => 'Terima kasih atas masukan kamu!';
 
   @override
   String get feedbackSuccessBody =>
-      'Terima kasih! Laporanmu sudah masuk. Kami akan segera memeriksanya.';
-
-  @override
-  String get feedbackViewOnGithub => 'Lihat di GitHub';
+      'Terima kasih! Laporanmu sudah masuk. Kami membalas di aplikasi, jadi cek lagi di sini.';
 
   @override
   String get feedbackSubmitAnother => 'Kirim lagi';
@@ -2928,4 +2922,7 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get serverVoteOffline =>
       'Tidak dapat menghubungi server. Periksa koneksimu.';
+
+  @override
+  String get feedbackViewYourReport => 'Lihat laporanmu';
 }
