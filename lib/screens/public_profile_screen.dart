@@ -9,9 +9,9 @@ import 'package:url_launcher/url_launcher.dart';
 import '../constants/app_constants.dart';
 import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
+import '../widgets/report_user_sheet.dart';
 import '../models/user_model.dart';
 import '../services/user_service.dart';
-import 'chat_screen.dart';
 import '../widgets/skin_3d_viewer.dart';
 import '../widgets/navigation/bottom_nav_bar.dart';
 import '../widgets/components/app_toast.dart';
@@ -42,7 +42,6 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
   bool _loading = true;
   String? _friendStatus;
   bool _actionLoading = false;
-  String _targetUid = '';
   bool _isTargetAdmin = false;
 
   @override
@@ -58,7 +57,6 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
     setState(() {
       _user = result.user;
       _friendStatus = result.friendshipStatus;
-      _targetUid = result.targetUid;
       _isTargetAdmin = result.isTargetAdmin;
       _loading = false;
     });
@@ -298,34 +296,17 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
           ),
           const SizedBox(height: 20),
 
-          if (UserService.isAdmin) ...[
-            OutlinedButton.icon(
-              onPressed: () {
-                final u = _user!;
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => ChatScreen(
-                    friend: FriendModel(
-                      firebaseUid: _targetUid,
-                      username: u.username,
-                      displayName: u.displayName,
-                      avatarUrl: u.avatarUrl,
-                      online: false,
-                      isAdmin: _isTargetAdmin,
-                    ),
-                  ),
-                ));
-              },
-              icon: const Icon(Icons.message_rounded, size: 16),
-              label: const Text('Message user'),
-              style: OutlinedButton.styleFrom(
-                foregroundColor: AppTheme.accent,
-                side: BorderSide(color: AppTheme.accent.withValues(alpha: 0.40)),
-                padding: const EdgeInsets.symmetric(vertical: 12),
-              ),
-            ),
-            const SizedBox(height: 8),
-          ],
           _buildFriendButton(),
+          const SizedBox(height: 8),
+          TextButton.icon(
+            onPressed: () => showReportUserSheet(context, _user!.username),
+            icon: const Icon(Icons.flag_outlined, size: 15),
+            label: Text(AppLocalizations.of(context)!.reportUser),
+            style: TextButton.styleFrom(
+              foregroundColor: AppTheme.textMuted,
+              padding: const EdgeInsets.symmetric(vertical: 10),
+            ),
+          ),
           const SizedBox(height: 16),
 
           Builder(builder: (ctx) {

@@ -690,9 +690,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get reportUser => 'Report user';
 
   @override
-  String get reportMessage => 'Report message';
-
-  @override
   String reportUserWithName(Object name) {
     return 'Report $name';
   }
@@ -732,18 +729,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get yesterday => 'Yesterday';
 
   @override
-  String get messagePlaceholder => 'Message…';
-
-  @override
-  String get noMessagesYet => 'No messages yet.\nSay hello!';
-
-  @override
-  String get noConversationsYet => 'No conversations yet';
-
-  @override
-  String get startChatHint => 'Find a friend and start chatting!';
-
-  @override
   String get youPrefix => 'You';
 
   @override
@@ -778,9 +763,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get tabRequests => 'Requests';
-
-  @override
-  String get tabChats => 'Chats';
 
   @override
   String get addFriend => 'Add Friend';
@@ -1696,9 +1678,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get upgradeWindowsHint => 'Microsoft Storeでアップグレードできます';
 
   @override
-  String get chatEmptyHint => '最初にメッセージを送りましょう！';
-
-  @override
   String get skinSaved => 'スキンを保存しました';
 
   @override
@@ -2591,19 +2570,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get adminTicketsHeader => '報告とリクエスト';
 
   @override
-  String get adminGeneralChat => '一般チャット';
-
-  @override
   String get adminTicketReplyHint => 'このチケットについて返信…';
 
   @override
   String get adminNoTicketsForUser => 'このユーザーのチケットはありません';
-
-  @override
-  String get hideConversation => '非表示';
-
-  @override
-  String get conversationHidden => '会話を非表示にしました';
 
   @override
   String get undo => '元に戻す';
@@ -2756,91 +2726,79 @@ class AppLocalizationsJa extends AppLocalizations {
   String get updateAvailableDismiss => '後で';
 
   @override
-  String get serverListSearchHint => 'Search by name or address';
+  String get serverListSearchHint => '名前またはアドレスで検索';
 
   @override
-  String get serverListEditionAny => 'Java and Bedrock';
+  String get serverListEditionAny => 'JavaとBedrock';
 
   @override
-  String get serverListEditionJava => 'Java only';
+  String get serverListEditionJava => 'Javaのみ';
 
   @override
-  String get serverListEditionBedrock => 'Bedrock only';
+  String get serverListEditionBedrock => 'Bedrockのみ';
 
   @override
-  String get serverListSortVotes => 'Most votes';
+  String get serverListSortVotes => '投票数順';
 
   @override
-  String get serverListSortPlayers => 'Most players';
+  String get serverListSortPlayers => 'プレイヤー数順';
 
   @override
-  String get serverListSortPeak => 'Highest peak';
+  String get serverListSortPeak => '最高記録順';
 
   @override
-  String get serverListSortNewest => 'Newest';
+  String get serverListSortNewest => '新着順';
 
   @override
-  String get serverListSortName => 'Name';
+  String get serverListSortName => '名前順';
 
   @override
-  String get serverListAllCategories => 'All';
+  String get serverListAllCategories => 'すべて';
 
   @override
-  String get serverListLoadFailed => 'Could not load the server list';
+  String get serverListLoadFailed => 'サーバーリストを読み込めませんでした';
 
   @override
-  String get serverListLoadFailedHint => 'Pull down to try again';
+  String get serverListLoadFailedHint => '下に引いて再試行';
 
   @override
-  String get serverListNoMatch => 'No servers match that';
+  String get serverListNoMatch => '該当するサーバーがありません';
 
   @override
-  String get serverListNoMatchHint => 'Try a different search or category';
+  String get serverListNoMatchHint => '別のキーワードかカテゴリーをお試しください';
 
   @override
-  String get serverCardPlay => 'Play';
+  String get serverCardPlay => 'プレイ';
 
   @override
-  String get serverCardVote => 'Vote';
+  String get serverCardVote => '投票';
 
   @override
-  String get serverCardViewServer => 'View server';
+  String get serverCardViewServer => 'サーバーを見る';
 
   @override
-  String get serverCopyIp => 'Copy IP';
+  String get serverCopyIp => 'IPをコピー';
 
   @override
-  String get serverCopied => 'Copied';
+  String get serverCopied => 'コピーしました';
 
   @override
-  String get serverStatPlayers => 'Players';
+  String get serverStatPlayers => 'プレイヤー';
 
   @override
-  String get serverStatPeak => 'Peak';
+  String get serverStatPeak => '最高記録';
 
   @override
-  String get serverStatUptime => 'Uptime';
+  String get serverStatUptime => '稼働率';
 
   @override
-  String get serverStatVotesMonth => 'Votes this month';
+  String get serverStatVotesMonth => '今月の投票';
 
   @override
-  String get serverStatVotesAllTime => 'Votes all time';
+  String get serverStatVotesAllTime => '累計投票';
 
   @override
-  String get serverStatPlayersHint => 'average while online';
-
-  @override
-  String get serverStatPeakHint => 'highest measured';
-
-  @override
-  String get serverStatUptimeHint => 'last 30 days';
-
-  @override
-  String get serverStatEditionHint => 'edition';
-
-  @override
-  String get serverBadgeFeatured => 'Featured';
+  String get serverBadgeFeatured => '注目';
 
   @override
   String get serverEditionJava => 'Java';
@@ -2849,69 +2807,67 @@ class AppLocalizationsJa extends AppLocalizations {
   String get serverEditionBedrock => 'Bedrock';
 
   @override
-  String get serverEditionCrossplay => 'Crossplay';
+  String get serverEditionCrossplay => 'クロスプレイ';
 
   @override
-  String get serverSectionMotd => 'Message of the day';
+  String get serverSectionMotd => '今日のメッセージ';
 
   @override
-  String get serverSectionAbout => 'About';
+  String get serverSectionAbout => '概要';
 
   @override
-  String get serverSectionCategories => 'Categories';
+  String get serverSectionCategories => 'カテゴリー';
 
   @override
-  String get serverSectionVotes => 'Votes';
+  String get serverSectionVotes => '投票';
 
   @override
   String get serverLinkDiscord => 'Discord';
 
   @override
-  String get serverLinkWebsite => 'Website';
+  String get serverLinkWebsite => 'ウェブサイト';
 
   @override
-  String get serverVotesThisMonth => 'This month';
+  String get serverVotesThisMonth => '今月';
 
   @override
-  String get serverVotesAllTime => 'All time';
+  String get serverVotesAllTime => '累計';
 
   @override
-  String get serverVoteAction => 'Vote for this server';
+  String get serverVoteAction => 'このサーバーに投票';
 
   @override
-  String get serverPlayAction => 'Play on this server';
+  String get serverPlayAction => 'このサーバーでプレイ';
 
   @override
-  String get serverVoteSignInRequired => 'Sign in to vote from the app.';
+  String get serverVoteSignInRequired => 'アプリから投票するにはログインしてください。';
 
   @override
   String serverVoteSheetTitle(String name) {
-    return 'Vote for $name';
+    return '$nameに投票';
   }
 
   @override
-  String get serverVoteSheetSubtitle =>
-      'Your Minecraft name, so the server knows who to reward.';
+  String get serverVoteSheetSubtitle => '報酬を受け取るために、Minecraftの名前を入力してください。';
 
   @override
   String get serverVoteSheetHint => 'Steve';
 
   @override
-  String get serverVoteSheetButton => 'Vote';
+  String get serverVoteSheetButton => '投票';
 
   @override
-  String get serverVoteSheetLimit => 'One vote per server per day.';
+  String get serverVoteSheetLimit => '投票は1サーバーにつき1日1回です。';
 
   @override
-  String get serverVoteDelivered => 'Voted. Your reward is on its way.';
+  String get serverVoteDelivered => '投票しました。報酬はまもなく届きます。';
 
   @override
-  String get serverVoteNoRewards => 'Voted. This server has no rewards set up.';
+  String get serverVoteNoRewards => '投票しました。このサーバーには報酬が設定されていません。';
 
   @override
-  String get serverVoteFailed => 'That did not work, please try again.';
+  String get serverVoteFailed => 'うまくいきませんでした。もう一度お試しください。';
 
   @override
-  String get serverVoteOffline =>
-      'Could not reach the server. Check your connection.';
+  String get serverVoteOffline => 'サーバーに接続できませんでした。通信環境をご確認ください。';
 }

@@ -706,9 +706,6 @@ class AppLocalizationsUr extends AppLocalizations {
   String get reportUser => 'Report user';
 
   @override
-  String get reportMessage => 'Report message';
-
-  @override
   String reportUserWithName(Object name) {
     return 'Report $name';
   }
@@ -748,18 +745,6 @@ class AppLocalizationsUr extends AppLocalizations {
   String get yesterday => 'Yesterday';
 
   @override
-  String get messagePlaceholder => 'Message…';
-
-  @override
-  String get noMessagesYet => 'No messages yet.\nSay hello!';
-
-  @override
-  String get noConversationsYet => 'No conversations yet';
-
-  @override
-  String get startChatHint => 'Find a friend and start chatting!';
-
-  @override
   String get youPrefix => 'You';
 
   @override
@@ -794,9 +779,6 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get tabRequests => 'Requests';
-
-  @override
-  String get tabChats => 'Chats';
 
   @override
   String get addFriend => 'Add Friend';
@@ -1717,9 +1699,6 @@ class AppLocalizationsUr extends AppLocalizations {
   String get upgradeWindowsHint => 'اپ گریڈ مائیکروسافٹ اسٹور پر دستیاب ہے';
 
   @override
-  String get chatEmptyHint => 'پہلے کچھ کہنے والے بنیں!';
-
-  @override
   String get skinSaved => 'اسکن محفوظ';
 
   @override
@@ -2636,19 +2615,10 @@ class AppLocalizationsUr extends AppLocalizations {
   String get adminTicketsHeader => 'رپورٹس اور درخواستیں';
 
   @override
-  String get adminGeneralChat => 'عام چیٹ';
-
-  @override
   String get adminTicketReplyHint => 'اس ٹکٹ کے بارے میں جواب دیں…';
 
   @override
   String get adminNoTicketsForUser => 'اس صارف کا کوئی ٹکٹ نہیں';
-
-  @override
-  String get hideConversation => 'چھپائیں';
-
-  @override
-  String get conversationHidden => 'گفتگو چھپا دی گئی';
 
   @override
   String get undo => 'واپس';
@@ -2806,91 +2776,79 @@ class AppLocalizationsUr extends AppLocalizations {
   String get updateAvailableDismiss => 'ابھی نہیں';
 
   @override
-  String get serverListSearchHint => 'Search by name or address';
+  String get serverListSearchHint => 'نام یا پتے سے تلاش کریں';
 
   @override
-  String get serverListEditionAny => 'Java and Bedrock';
+  String get serverListEditionAny => 'Java اور Bedrock';
 
   @override
-  String get serverListEditionJava => 'Java only';
+  String get serverListEditionJava => 'صرف Java';
 
   @override
-  String get serverListEditionBedrock => 'Bedrock only';
+  String get serverListEditionBedrock => 'صرف Bedrock';
 
   @override
-  String get serverListSortVotes => 'Most votes';
+  String get serverListSortVotes => 'سب سے زیادہ ووٹ';
 
   @override
-  String get serverListSortPlayers => 'Most players';
+  String get serverListSortPlayers => 'سب سے زیادہ کھلاڑی';
 
   @override
-  String get serverListSortPeak => 'Highest peak';
+  String get serverListSortPeak => 'سب سے بلند عروج';
 
   @override
-  String get serverListSortNewest => 'Newest';
+  String get serverListSortNewest => 'نئے ترین';
 
   @override
-  String get serverListSortName => 'Name';
+  String get serverListSortName => 'نام';
 
   @override
-  String get serverListAllCategories => 'All';
+  String get serverListAllCategories => 'سب';
 
   @override
-  String get serverListLoadFailed => 'Could not load the server list';
+  String get serverListLoadFailed => 'سرور کی فہرست لوڈ نہیں ہو سکی';
 
   @override
-  String get serverListLoadFailedHint => 'Pull down to try again';
+  String get serverListLoadFailedHint => 'دوبارہ کوشش کے لیے نیچے کھینچیں';
 
   @override
-  String get serverListNoMatch => 'No servers match that';
+  String get serverListNoMatch => 'کوئی سرور نہیں ملا';
 
   @override
-  String get serverListNoMatchHint => 'Try a different search or category';
+  String get serverListNoMatchHint => 'کوئی اور تلاش یا زمرہ آزمائیں';
 
   @override
-  String get serverCardPlay => 'Play';
+  String get serverCardPlay => 'کھیلیں';
 
   @override
-  String get serverCardVote => 'Vote';
+  String get serverCardVote => 'ووٹ دیں';
 
   @override
-  String get serverCardViewServer => 'View server';
+  String get serverCardViewServer => 'سرور دیکھیں';
 
   @override
-  String get serverCopyIp => 'Copy IP';
+  String get serverCopyIp => 'IP کاپی کریں';
 
   @override
-  String get serverCopied => 'Copied';
+  String get serverCopied => 'کاپی ہو گیا';
 
   @override
-  String get serverStatPlayers => 'Players';
+  String get serverStatPlayers => 'کھلاڑی';
 
   @override
-  String get serverStatPeak => 'Peak';
+  String get serverStatPeak => 'عروج';
 
   @override
-  String get serverStatUptime => 'Uptime';
+  String get serverStatUptime => 'اپ ٹائم';
 
   @override
-  String get serverStatVotesMonth => 'Votes this month';
+  String get serverStatVotesMonth => 'اس ماہ کے ووٹ';
 
   @override
-  String get serverStatVotesAllTime => 'Votes all time';
+  String get serverStatVotesAllTime => 'کل ووٹ';
 
   @override
-  String get serverStatPlayersHint => 'average while online';
-
-  @override
-  String get serverStatPeakHint => 'highest measured';
-
-  @override
-  String get serverStatUptimeHint => 'last 30 days';
-
-  @override
-  String get serverStatEditionHint => 'edition';
-
-  @override
-  String get serverBadgeFeatured => 'Featured';
+  String get serverBadgeFeatured => 'نمایاں';
 
   @override
   String get serverEditionJava => 'Java';
@@ -2899,69 +2857,70 @@ class AppLocalizationsUr extends AppLocalizations {
   String get serverEditionBedrock => 'Bedrock';
 
   @override
-  String get serverEditionCrossplay => 'Crossplay';
+  String get serverEditionCrossplay => 'کراس پلے';
 
   @override
-  String get serverSectionMotd => 'Message of the day';
+  String get serverSectionMotd => 'آج کا پیغام';
 
   @override
-  String get serverSectionAbout => 'About';
+  String get serverSectionAbout => 'تعارف';
 
   @override
-  String get serverSectionCategories => 'Categories';
+  String get serverSectionCategories => 'زمرے';
 
   @override
-  String get serverSectionVotes => 'Votes';
+  String get serverSectionVotes => 'ووٹ';
 
   @override
   String get serverLinkDiscord => 'Discord';
 
   @override
-  String get serverLinkWebsite => 'Website';
+  String get serverLinkWebsite => 'ویب سائٹ';
 
   @override
-  String get serverVotesThisMonth => 'This month';
+  String get serverVotesThisMonth => 'اس ماہ';
 
   @override
-  String get serverVotesAllTime => 'All time';
+  String get serverVotesAllTime => 'مجموعی';
 
   @override
-  String get serverVoteAction => 'Vote for this server';
+  String get serverVoteAction => 'اس سرور کو ووٹ دیں';
 
   @override
-  String get serverPlayAction => 'Play on this server';
+  String get serverPlayAction => 'اس سرور پر کھیلیں';
 
   @override
-  String get serverVoteSignInRequired => 'Sign in to vote from the app.';
+  String get serverVoteSignInRequired => 'ایپ سے ووٹ دینے کے لیے سائن ان کریں۔';
 
   @override
   String serverVoteSheetTitle(String name) {
-    return 'Vote for $name';
+    return '$name کو ووٹ دیں';
   }
 
   @override
   String get serverVoteSheetSubtitle =>
-      'Your Minecraft name, so the server knows who to reward.';
+      'آپ کا Minecraft نام، تاکہ سرور جان سکے کسے انعام دینا ہے۔';
 
   @override
   String get serverVoteSheetHint => 'Steve';
 
   @override
-  String get serverVoteSheetButton => 'Vote';
+  String get serverVoteSheetButton => 'ووٹ دیں';
 
   @override
-  String get serverVoteSheetLimit => 'One vote per server per day.';
+  String get serverVoteSheetLimit => 'ہر سرور پر دن میں ایک ووٹ۔';
 
   @override
-  String get serverVoteDelivered => 'Voted. Your reward is on its way.';
+  String get serverVoteDelivered => 'ووٹ ہو گیا۔ آپ کا انعام راستے میں ہے۔';
 
   @override
-  String get serverVoteNoRewards => 'Voted. This server has no rewards set up.';
+  String get serverVoteNoRewards =>
+      'ووٹ ہو گیا۔ اس سرور پر کوئی انعام مقرر نہیں۔';
 
   @override
-  String get serverVoteFailed => 'That did not work, please try again.';
+  String get serverVoteFailed => 'یہ کام نہیں کیا، براہ کرم دوبارہ کوشش کریں۔';
 
   @override
   String get serverVoteOffline =>
-      'Could not reach the server. Check your connection.';
+      'سرور تک رسائی نہیں ہو سکی۔ اپنا کنکشن چیک کریں۔';
 }

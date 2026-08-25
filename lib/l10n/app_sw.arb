@@ -704,10 +704,6 @@
   "@linkedAccountsTitle": {
     "description": "Section title for linked accounts card"
   },
-  "messagePlaceholder": "Message…",
-  "@messagePlaceholder": {
-    "description": "Hint text in the chat message input"
-  },
   "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -732,10 +728,6 @@
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noConversationsYet": "No conversations yet",
-  "@noConversationsYet": {
-    "description": "Empty state title on conversations screen"
-  },
   "noFriendsSub": "Add friends to see them here.",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
@@ -743,10 +735,6 @@
   "noFriendsYet": "No friends yet",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
-  },
-  "noMessagesYet": "No messages yet.\nSay hello!",
-  "@noMessagesYet": {
-    "description": "Empty state in chat screen"
   },
   "noPartnerServers": "No partner servers available yet.",
   "@noPartnerServers": {
@@ -952,10 +940,6 @@
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportMessage": "Report message",
-  "@reportMessage": {
-    "description": "Title when reporting a specific message"
-  },
   "reportReasonHarassment": "Harassment",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
@@ -1143,14 +1127,6 @@
   "somethingWentWrong": "Something went wrong. Please try again.",
   "@somethingWentWrong": {
     "description": "Generic error message"
-  },
-  "startChatHint": "Find a friend and start chatting!",
-  "@startChatHint": {
-    "description": "Empty state subtitle on conversations screen"
-  },
-  "tabChats": "Chats",
-  "@tabChats": {
-    "description": "Tab label for Chats tab"
   },
   "tabFriends": "Friends",
   "@tabFriends": {
@@ -1530,10 +1506,6 @@
   "upgradeWindowsHint": "Uboreshaji unapatikana kwenye Microsoft Store",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "chatEmptyHint": "Kuwa wa kwanza kusema kitu!",
-  "@chatEmptyHint": {
-    "description": "Subtitle on the empty chat screen"
   },
   "skinSaved": "Skin imehifadhiwa",
   "@skinSaved": {
@@ -1958,11 +1930,8 @@
   "notifFeedbackStatus": "Taarifa kuhusu maoni yako",
   "notifFeedbackReply": "Jibu kwa maoni yako",
   "adminTicketsHeader": "Ripoti na maombi",
-  "adminGeneralChat": "Gumzo la jumla",
   "adminTicketReplyHint": "Jibu kuhusu tiketi hii…",
   "adminNoTicketsForUser": "Hakuna tiketi kutoka kwa mtumiaji huyu",
-  "hideConversation": "Ficha",
-  "conversationHidden": "Mazungumzo yamefichwa",
   "undo": "Tendua",
   "chooseServerTitle": "Chagua seva",
   "changeLabel": "Badilisha",
@@ -2038,5 +2007,53 @@
     }
   },
   "updateAvailableAction": "Pakua",
-  "updateAvailableDismiss": "Si sasa"
+  "updateAvailableDismiss": "Si sasa",
+  "serverListSearchHint": "Tafuta kwa jina au anwani",
+  "serverListEditionAny": "Java na Bedrock",
+  "serverListEditionJava": "Java pekee",
+  "serverListEditionBedrock": "Bedrock pekee",
+  "serverListSortVotes": "Kura nyingi zaidi",
+  "serverListSortPlayers": "Wachezaji wengi zaidi",
+  "serverListSortPeak": "Kilele cha juu zaidi",
+  "serverListSortNewest": "Mpya zaidi",
+  "serverListSortName": "Jina",
+  "serverListAllCategories": "Zote",
+  "serverListLoadFailed": "Imeshindwa kupakia orodha ya seva",
+  "serverListLoadFailedHint": "Vuta chini ili kujaribu tena",
+  "serverListNoMatch": "Hakuna seva inayolingana",
+  "serverListNoMatchHint": "Jaribu utafutaji au kategoria nyingine",
+  "serverCardPlay": "Cheza",
+  "serverCardVote": "Piga kura",
+  "serverCardViewServer": "Angalia seva",
+  "serverCopyIp": "Nakili IP",
+  "serverCopied": "Imenakiliwa",
+  "serverStatPlayers": "Wachezaji",
+  "serverStatPeak": "Kilele",
+  "serverStatUptime": "Muda wa kufanya kazi",
+  "serverStatVotesMonth": "Kura za mwezi huu",
+  "serverStatVotesAllTime": "Kura zote",
+  "serverBadgeFeatured": "Iliyoangaziwa",
+  "serverEditionJava": "Java",
+  "serverEditionBedrock": "Bedrock",
+  "serverEditionCrossplay": "Crossplay",
+  "serverSectionMotd": "Ujumbe wa siku",
+  "serverSectionAbout": "Kuhusu",
+  "serverSectionCategories": "Kategoria",
+  "serverSectionVotes": "Kura",
+  "serverLinkDiscord": "Discord",
+  "serverLinkWebsite": "Tovuti",
+  "serverVotesThisMonth": "Mwezi huu",
+  "serverVotesAllTime": "Muda wote",
+  "serverVoteAction": "Piga kura kwa seva hii",
+  "serverPlayAction": "Cheza kwenye seva hii",
+  "serverVoteSignInRequired": "Ingia ili kupiga kura kupitia programu.",
+  "serverVoteSheetTitle": "Piga kura kwa {name}",
+  "serverVoteSheetSubtitle": "Jina lako la Minecraft, ili seva ijue nani wa kumzawadia.",
+  "serverVoteSheetHint": "Steve",
+  "serverVoteSheetButton": "Piga kura",
+  "serverVoteSheetLimit": "Kura moja kwa kila seva kwa siku.",
+  "serverVoteDelivered": "Umepiga kura. Zawadi yako inakuja.",
+  "serverVoteNoRewards": "Umepiga kura. Seva hii haina zawadi zilizowekwa.",
+  "serverVoteFailed": "Haikufanya kazi, tafadhali jaribu tena.",
+  "serverVoteOffline": "Imeshindwa kufikia seva. Angalia muunganisho wako."
 }

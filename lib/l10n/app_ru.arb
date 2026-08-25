@@ -704,10 +704,6 @@
   "@linkedAccountsTitle": {
     "description": "Section title for linked accounts card"
   },
-  "messagePlaceholder": "Сообщение…",
-  "@messagePlaceholder": {
-    "description": "Hint text in the chat message input"
-  },
   "minecraftTrademark": "\"Minecraft\" является торговой маркой корпорации Microsoft.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -732,10 +728,6 @@
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noConversationsYet": "Пока нет разговоров",
-  "@noConversationsYet": {
-    "description": "Empty state title on conversations screen"
-  },
   "noFriendsSub": "Добавьте друзей, чтобы видеть их здесь.",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
@@ -743,10 +735,6 @@
   "noFriendsYet": "Пока нет друзей",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
-  },
-  "noMessagesYet": "Пока нет сообщений.\nПоздоровайтесь!",
-  "@noMessagesYet": {
-    "description": "Empty state in chat screen"
   },
   "noPartnerServers": "Серверов-партнёров пока нет.",
   "@noPartnerServers": {
@@ -952,10 +940,6 @@
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportMessage": "Пожаловаться на сообщение",
-  "@reportMessage": {
-    "description": "Title when reporting a specific message"
-  },
   "reportReasonHarassment": "Преследование",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
@@ -1143,14 +1127,6 @@
   "somethingWentWrong": "Что-то пошло не так. Попробуйте снова.",
   "@somethingWentWrong": {
     "description": "Generic error message"
-  },
-  "startChatHint": "Найдите друга и начните общение!",
-  "@startChatHint": {
-    "description": "Empty state subtitle on conversations screen"
-  },
-  "tabChats": "Чаты",
-  "@tabChats": {
-    "description": "Tab label for Chats tab"
   },
   "tabFriends": "Друзья",
   "@tabFriends": {
@@ -1530,10 +1506,6 @@
   "upgradeWindowsHint": "Обновление доступно в Microsoft Store",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "chatEmptyHint": "Будьте первым, кто напишет!",
-  "@chatEmptyHint": {
-    "description": "Subtitle on the empty chat screen"
   },
   "skinSaved": "Скин сохранён",
   "@skinSaved": {
@@ -1961,11 +1933,8 @@
   "notifFeedbackStatus": "Обновление по вашему отзыву",
   "notifFeedbackReply": "Ответ на ваш отзыв",
   "adminTicketsHeader": "Сообщения и запросы",
-  "adminGeneralChat": "Общий чат",
   "adminTicketReplyHint": "Ответить по этому обращению…",
   "adminNoTicketsForUser": "У этого пользователя нет обращений",
-  "hideConversation": "Скрыть",
-  "conversationHidden": "Диалог скрыт",
   "undo": "Отменить",
   "chooseServerTitle": "Выберите сервер",
   "changeLabel": "Изменить",
@@ -2041,5 +2010,53 @@
     }
   },
   "updateAvailableAction": "Скачать",
-  "updateAvailableDismiss": "Не сейчас"
+  "updateAvailableDismiss": "Не сейчас",
+  "serverListSearchHint": "Поиск по названию или адресу",
+  "serverListEditionAny": "Java и Bedrock",
+  "serverListEditionJava": "Только Java",
+  "serverListEditionBedrock": "Только Bedrock",
+  "serverListSortVotes": "Больше всего голосов",
+  "serverListSortPlayers": "Больше всего игроков",
+  "serverListSortPeak": "Наибольший пик",
+  "serverListSortNewest": "Новые",
+  "serverListSortName": "Название",
+  "serverListAllCategories": "Все",
+  "serverListLoadFailed": "Не удалось загрузить список серверов",
+  "serverListLoadFailedHint": "Потяните вниз, чтобы повторить",
+  "serverListNoMatch": "Подходящих серверов нет",
+  "serverListNoMatchHint": "Попробуйте другой запрос или категорию",
+  "serverCardPlay": "Играть",
+  "serverCardVote": "Голосовать",
+  "serverCardViewServer": "Открыть сервер",
+  "serverCopyIp": "Копировать IP",
+  "serverCopied": "Скопировано",
+  "serverStatPlayers": "Игроки",
+  "serverStatPeak": "Пик",
+  "serverStatUptime": "Аптайм",
+  "serverStatVotesMonth": "Голоса за месяц",
+  "serverStatVotesAllTime": "Голоса за всё время",
+  "serverBadgeFeatured": "Рекомендуемый",
+  "serverEditionJava": "Java",
+  "serverEditionBedrock": "Bedrock",
+  "serverEditionCrossplay": "Кроссплей",
+  "serverSectionMotd": "Сообщение дня",
+  "serverSectionAbout": "Описание",
+  "serverSectionCategories": "Категории",
+  "serverSectionVotes": "Голоса",
+  "serverLinkDiscord": "Discord",
+  "serverLinkWebsite": "Сайт",
+  "serverVotesThisMonth": "За этот месяц",
+  "serverVotesAllTime": "За всё время",
+  "serverVoteAction": "Голосовать за этот сервер",
+  "serverPlayAction": "Играть на этом сервере",
+  "serverVoteSignInRequired": "Войдите, чтобы голосовать из приложения.",
+  "serverVoteSheetTitle": "Голосовать за {name}",
+  "serverVoteSheetSubtitle": "Ваш ник в Minecraft, чтобы сервер знал, кого наградить.",
+  "serverVoteSheetHint": "Steve",
+  "serverVoteSheetButton": "Голосовать",
+  "serverVoteSheetLimit": "Один голос за сервер в день.",
+  "serverVoteDelivered": "Голос учтён. Награда уже в пути.",
+  "serverVoteNoRewards": "Голос учтён. На этом сервере не настроены награды.",
+  "serverVoteFailed": "Не получилось, попробуйте ещё раз.",
+  "serverVoteOffline": "Не удалось связаться с сервером. Проверьте подключение."
 }

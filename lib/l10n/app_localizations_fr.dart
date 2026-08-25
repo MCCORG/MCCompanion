@@ -710,9 +710,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get reportUser => 'Signaler l\'utilisateur';
 
   @override
-  String get reportMessage => 'Signaler le message';
-
-  @override
   String reportUserWithName(Object name) {
     return 'Signaler $name';
   }
@@ -751,18 +748,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get yesterday => 'Hier';
 
   @override
-  String get messagePlaceholder => 'Message…';
-
-  @override
-  String get noMessagesYet => 'Pas encore de messages.\nDites bonjour !';
-
-  @override
-  String get noConversationsYet => 'Pas encore de conversations';
-
-  @override
-  String get startChatHint => 'Trouvez un ami et commencez à chatter !';
-
-  @override
   String get youPrefix => 'Vous';
 
   @override
@@ -796,9 +781,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get tabRequests => 'Demandes';
-
-  @override
-  String get tabChats => 'Chats';
 
   @override
   String get addFriend => 'Ajouter un ami';
@@ -1710,9 +1692,6 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get upgradeWindowsHint =>
       'Mise à niveau disponible via le Microsoft Store';
-
-  @override
-  String get chatEmptyHint => 'Sois le premier à dire quelque chose !';
 
   @override
   String get skinSaved => 'Skin sauvegarde';
@@ -2646,19 +2625,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get adminTicketsHeader => 'Signalements et demandes';
 
   @override
-  String get adminGeneralChat => 'Discussion générale';
-
-  @override
   String get adminTicketReplyHint => 'Répondre à propos de ce ticket…';
 
   @override
   String get adminNoTicketsForUser => 'Aucun ticket de cet utilisateur';
-
-  @override
-  String get hideConversation => 'Masquer';
-
-  @override
-  String get conversationHidden => 'Conversation masquée';
 
   @override
   String get undo => 'Annuler';
@@ -2816,91 +2786,81 @@ class AppLocalizationsFr extends AppLocalizations {
   String get updateAvailableDismiss => 'Plus tard';
 
   @override
-  String get serverListSearchHint => 'Search by name or address';
+  String get serverListSearchHint => 'Rechercher par nom ou adresse';
 
   @override
-  String get serverListEditionAny => 'Java and Bedrock';
+  String get serverListEditionAny => 'Java et Bedrock';
 
   @override
-  String get serverListEditionJava => 'Java only';
+  String get serverListEditionJava => 'Java uniquement';
 
   @override
-  String get serverListEditionBedrock => 'Bedrock only';
+  String get serverListEditionBedrock => 'Bedrock uniquement';
 
   @override
-  String get serverListSortVotes => 'Most votes';
+  String get serverListSortVotes => 'Plus de votes';
 
   @override
-  String get serverListSortPlayers => 'Most players';
+  String get serverListSortPlayers => 'Plus de joueurs';
 
   @override
-  String get serverListSortPeak => 'Highest peak';
+  String get serverListSortPeak => 'Pic le plus élevé';
 
   @override
-  String get serverListSortNewest => 'Newest';
+  String get serverListSortNewest => 'Plus récents';
 
   @override
-  String get serverListSortName => 'Name';
+  String get serverListSortName => 'Nom';
 
   @override
-  String get serverListAllCategories => 'All';
+  String get serverListAllCategories => 'Toutes';
 
   @override
-  String get serverListLoadFailed => 'Could not load the server list';
+  String get serverListLoadFailed =>
+      'Impossible de charger la liste des serveurs';
 
   @override
-  String get serverListLoadFailedHint => 'Pull down to try again';
+  String get serverListLoadFailedHint => 'Tirez vers le bas pour réessayer';
 
   @override
-  String get serverListNoMatch => 'No servers match that';
+  String get serverListNoMatch => 'Aucun serveur ne correspond';
 
   @override
-  String get serverListNoMatchHint => 'Try a different search or category';
+  String get serverListNoMatchHint =>
+      'Essayez une autre recherche ou catégorie';
 
   @override
-  String get serverCardPlay => 'Play';
+  String get serverCardPlay => 'Jouer';
 
   @override
-  String get serverCardVote => 'Vote';
+  String get serverCardVote => 'Voter';
 
   @override
-  String get serverCardViewServer => 'View server';
+  String get serverCardViewServer => 'Voir le serveur';
 
   @override
-  String get serverCopyIp => 'Copy IP';
+  String get serverCopyIp => 'Copier l\'IP';
 
   @override
-  String get serverCopied => 'Copied';
+  String get serverCopied => 'Copié';
 
   @override
-  String get serverStatPlayers => 'Players';
+  String get serverStatPlayers => 'Joueurs';
 
   @override
-  String get serverStatPeak => 'Peak';
+  String get serverStatPeak => 'Pic';
 
   @override
-  String get serverStatUptime => 'Uptime';
+  String get serverStatUptime => 'Disponibilité';
 
   @override
-  String get serverStatVotesMonth => 'Votes this month';
+  String get serverStatVotesMonth => 'Votes ce mois-ci';
 
   @override
-  String get serverStatVotesAllTime => 'Votes all time';
+  String get serverStatVotesAllTime => 'Votes au total';
 
   @override
-  String get serverStatPlayersHint => 'average while online';
-
-  @override
-  String get serverStatPeakHint => 'highest measured';
-
-  @override
-  String get serverStatUptimeHint => 'last 30 days';
-
-  @override
-  String get serverStatEditionHint => 'edition';
-
-  @override
-  String get serverBadgeFeatured => 'Featured';
+  String get serverBadgeFeatured => 'Mis en avant';
 
   @override
   String get serverEditionJava => 'Java';
@@ -2912,13 +2872,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get serverEditionCrossplay => 'Crossplay';
 
   @override
-  String get serverSectionMotd => 'Message of the day';
+  String get serverSectionMotd => 'Message du jour';
 
   @override
-  String get serverSectionAbout => 'About';
+  String get serverSectionAbout => 'À propos';
 
   @override
-  String get serverSectionCategories => 'Categories';
+  String get serverSectionCategories => 'Catégories';
 
   @override
   String get serverSectionVotes => 'Votes';
@@ -2927,51 +2887,54 @@ class AppLocalizationsFr extends AppLocalizations {
   String get serverLinkDiscord => 'Discord';
 
   @override
-  String get serverLinkWebsite => 'Website';
+  String get serverLinkWebsite => 'Site web';
 
   @override
-  String get serverVotesThisMonth => 'This month';
+  String get serverVotesThisMonth => 'Ce mois-ci';
 
   @override
-  String get serverVotesAllTime => 'All time';
+  String get serverVotesAllTime => 'Depuis le début';
 
   @override
-  String get serverVoteAction => 'Vote for this server';
+  String get serverVoteAction => 'Voter pour ce serveur';
 
   @override
-  String get serverPlayAction => 'Play on this server';
+  String get serverPlayAction => 'Jouer sur ce serveur';
 
   @override
-  String get serverVoteSignInRequired => 'Sign in to vote from the app.';
+  String get serverVoteSignInRequired =>
+      'Connectez-vous pour voter depuis l\'application.';
 
   @override
   String serverVoteSheetTitle(String name) {
-    return 'Vote for $name';
+    return 'Voter pour $name';
   }
 
   @override
   String get serverVoteSheetSubtitle =>
-      'Your Minecraft name, so the server knows who to reward.';
+      'Votre nom Minecraft, pour que le serveur sache qui récompenser.';
 
   @override
   String get serverVoteSheetHint => 'Steve';
 
   @override
-  String get serverVoteSheetButton => 'Vote';
+  String get serverVoteSheetButton => 'Voter';
 
   @override
-  String get serverVoteSheetLimit => 'One vote per server per day.';
+  String get serverVoteSheetLimit => 'Un vote par serveur et par jour.';
 
   @override
-  String get serverVoteDelivered => 'Voted. Your reward is on its way.';
+  String get serverVoteDelivered => 'Vote enregistré. Votre récompense arrive.';
 
   @override
-  String get serverVoteNoRewards => 'Voted. This server has no rewards set up.';
+  String get serverVoteNoRewards =>
+      'Vote enregistré. Ce serveur n\'a aucune récompense configurée.';
 
   @override
-  String get serverVoteFailed => 'That did not work, please try again.';
+  String get serverVoteFailed =>
+      'Cela n\'a pas fonctionné, veuillez réessayer.';
 
   @override
   String get serverVoteOffline =>
-      'Could not reach the server. Check your connection.';
+      'Impossible de joindre le serveur. Vérifiez votre connexion.';
 }

@@ -710,9 +710,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String get reportUser => 'Benutzer melden';
 
   @override
-  String get reportMessage => 'Nachricht melden';
-
-  @override
   String reportUserWithName(Object name) {
     return '$name melden';
   }
@@ -751,18 +748,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String get yesterday => 'Gestern';
 
   @override
-  String get messagePlaceholder => 'Nachricht…';
-
-  @override
-  String get noMessagesYet => 'Noch keine Nachrichten.\nSag Hallo!';
-
-  @override
-  String get noConversationsYet => 'Noch keine Gespräche';
-
-  @override
-  String get startChatHint => 'Finde einen Freund und fange an zu chatten!';
-
-  @override
   String get youPrefix => 'Du';
 
   @override
@@ -796,9 +781,6 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get tabRequests => 'Anfragen';
-
-  @override
-  String get tabChats => 'Chats';
 
   @override
   String get addFriend => 'Freund hinzufügen';
@@ -1713,9 +1695,6 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => 'Upgrade im Microsoft Store verfügbar';
-
-  @override
-  String get chatEmptyHint => 'Sag als Erster etwas!';
 
   @override
   String get skinSaved => 'Skin gespeichert';
@@ -2647,19 +2626,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get adminTicketsHeader => 'Meldungen und Wünsche';
 
   @override
-  String get adminGeneralChat => 'Allgemeiner Chat';
-
-  @override
   String get adminTicketReplyHint => 'Antwort zu diesem Ticket…';
 
   @override
   String get adminNoTicketsForUser => 'Keine Tickets von diesem Nutzer';
-
-  @override
-  String get hideConversation => 'Ausblenden';
-
-  @override
-  String get conversationHidden => 'Unterhaltung ausgeblendet';
 
   @override
   String get undo => 'Rückgängig';
@@ -2817,91 +2787,80 @@ class AppLocalizationsDe extends AppLocalizations {
   String get updateAvailableDismiss => 'Später';
 
   @override
-  String get serverListSearchHint => 'Search by name or address';
+  String get serverListSearchHint => 'Nach Name oder Adresse suchen';
 
   @override
-  String get serverListEditionAny => 'Java and Bedrock';
+  String get serverListEditionAny => 'Java und Bedrock';
 
   @override
-  String get serverListEditionJava => 'Java only';
+  String get serverListEditionJava => 'Nur Java';
 
   @override
-  String get serverListEditionBedrock => 'Bedrock only';
+  String get serverListEditionBedrock => 'Nur Bedrock';
 
   @override
-  String get serverListSortVotes => 'Most votes';
+  String get serverListSortVotes => 'Meiste Stimmen';
 
   @override
-  String get serverListSortPlayers => 'Most players';
+  String get serverListSortPlayers => 'Meiste Spieler';
 
   @override
-  String get serverListSortPeak => 'Highest peak';
+  String get serverListSortPeak => 'Höchster Rekord';
 
   @override
-  String get serverListSortNewest => 'Newest';
+  String get serverListSortNewest => 'Neueste';
 
   @override
   String get serverListSortName => 'Name';
 
   @override
-  String get serverListAllCategories => 'All';
+  String get serverListAllCategories => 'Alle';
 
   @override
-  String get serverListLoadFailed => 'Could not load the server list';
+  String get serverListLoadFailed => 'Serverliste konnte nicht geladen werden';
 
   @override
-  String get serverListLoadFailedHint => 'Pull down to try again';
+  String get serverListLoadFailedHint => 'Zum Wiederholen nach unten ziehen';
 
   @override
-  String get serverListNoMatch => 'No servers match that';
+  String get serverListNoMatch => 'Keine Server gefunden';
 
   @override
-  String get serverListNoMatchHint => 'Try a different search or category';
+  String get serverListNoMatchHint =>
+      'Versuche eine andere Suche oder Kategorie';
 
   @override
-  String get serverCardPlay => 'Play';
+  String get serverCardPlay => 'Spielen';
 
   @override
-  String get serverCardVote => 'Vote';
+  String get serverCardVote => 'Abstimmen';
 
   @override
-  String get serverCardViewServer => 'View server';
+  String get serverCardViewServer => 'Server ansehen';
 
   @override
-  String get serverCopyIp => 'Copy IP';
+  String get serverCopyIp => 'IP kopieren';
 
   @override
-  String get serverCopied => 'Copied';
+  String get serverCopied => 'Kopiert';
 
   @override
-  String get serverStatPlayers => 'Players';
+  String get serverStatPlayers => 'Spieler';
 
   @override
-  String get serverStatPeak => 'Peak';
+  String get serverStatPeak => 'Rekord';
 
   @override
-  String get serverStatUptime => 'Uptime';
+  String get serverStatUptime => 'Verfügbarkeit';
 
   @override
-  String get serverStatVotesMonth => 'Votes this month';
+  String get serverStatVotesMonth => 'Stimmen diesen Monat';
 
   @override
-  String get serverStatVotesAllTime => 'Votes all time';
+  String get serverStatVotesAllTime => 'Stimmen insgesamt';
 
   @override
-  String get serverStatPlayersHint => 'average while online';
-
-  @override
-  String get serverStatPeakHint => 'highest measured';
-
-  @override
-  String get serverStatUptimeHint => 'last 30 days';
-
-  @override
-  String get serverStatEditionHint => 'edition';
-
-  @override
-  String get serverBadgeFeatured => 'Featured';
+  String get serverBadgeFeatured => 'Empfohlen';
 
   @override
   String get serverEditionJava => 'Java';
@@ -2913,66 +2872,70 @@ class AppLocalizationsDe extends AppLocalizations {
   String get serverEditionCrossplay => 'Crossplay';
 
   @override
-  String get serverSectionMotd => 'Message of the day';
+  String get serverSectionMotd => 'Nachricht des Tages';
 
   @override
-  String get serverSectionAbout => 'About';
+  String get serverSectionAbout => 'Über';
 
   @override
-  String get serverSectionCategories => 'Categories';
+  String get serverSectionCategories => 'Kategorien';
 
   @override
-  String get serverSectionVotes => 'Votes';
+  String get serverSectionVotes => 'Stimmen';
 
   @override
   String get serverLinkDiscord => 'Discord';
 
   @override
-  String get serverLinkWebsite => 'Website';
+  String get serverLinkWebsite => 'Webseite';
 
   @override
-  String get serverVotesThisMonth => 'This month';
+  String get serverVotesThisMonth => 'Diesen Monat';
 
   @override
-  String get serverVotesAllTime => 'All time';
+  String get serverVotesAllTime => 'Insgesamt';
 
   @override
-  String get serverVoteAction => 'Vote for this server';
+  String get serverVoteAction => 'Für diesen Server abstimmen';
 
   @override
-  String get serverPlayAction => 'Play on this server';
+  String get serverPlayAction => 'Auf diesem Server spielen';
 
   @override
-  String get serverVoteSignInRequired => 'Sign in to vote from the app.';
+  String get serverVoteSignInRequired =>
+      'Melde dich an, um in der App abzustimmen.';
 
   @override
   String serverVoteSheetTitle(String name) {
-    return 'Vote for $name';
+    return 'Für $name abstimmen';
   }
 
   @override
   String get serverVoteSheetSubtitle =>
-      'Your Minecraft name, so the server knows who to reward.';
+      'Dein Minecraft-Name, damit der Server weiß, wen er belohnen soll.';
 
   @override
   String get serverVoteSheetHint => 'Steve';
 
   @override
-  String get serverVoteSheetButton => 'Vote';
+  String get serverVoteSheetButton => 'Abstimmen';
 
   @override
-  String get serverVoteSheetLimit => 'One vote per server per day.';
+  String get serverVoteSheetLimit => 'Eine Stimme pro Server und Tag.';
 
   @override
-  String get serverVoteDelivered => 'Voted. Your reward is on its way.';
+  String get serverVoteDelivered =>
+      'Abgestimmt. Deine Belohnung ist unterwegs.';
 
   @override
-  String get serverVoteNoRewards => 'Voted. This server has no rewards set up.';
+  String get serverVoteNoRewards =>
+      'Abgestimmt. Dieser Server hat keine Belohnungen eingerichtet.';
 
   @override
-  String get serverVoteFailed => 'That did not work, please try again.';
+  String get serverVoteFailed =>
+      'Das hat nicht geklappt, bitte versuche es erneut.';
 
   @override
   String get serverVoteOffline =>
-      'Could not reach the server. Check your connection.';
+      'Server nicht erreichbar. Überprüfe deine Verbindung.';
 }

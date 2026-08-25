@@ -704,10 +704,6 @@
   "@linkedAccountsTitle": {
     "description": "Section title for linked accounts card"
   },
-  "messagePlaceholder": "Mesaj…",
-  "@messagePlaceholder": {
-    "description": "Hint text in the chat message input"
-  },
   "minecraftTrademark": "\"Minecraft\", Microsoft Corporation'ın tescilli markasıdır.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -732,10 +728,6 @@
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noConversationsYet": "Henüz konuşma yok",
-  "@noConversationsYet": {
-    "description": "Empty state title on conversations screen"
-  },
   "noFriendsSub": "Arkadaş ekleyerek onları burada görün.",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
@@ -743,10 +735,6 @@
   "noFriendsYet": "Henüz arkadaş yok",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
-  },
-  "noMessagesYet": "Henüz mesaj yok.\nMerhaba deyin!",
-  "@noMessagesYet": {
-    "description": "Empty state in chat screen"
   },
   "noPartnerServers": "Henüz ortak sunucu yok.",
   "@noPartnerServers": {
@@ -952,10 +940,6 @@
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportMessage": "Mesajı rapor et",
-  "@reportMessage": {
-    "description": "Title when reporting a specific message"
-  },
   "reportReasonHarassment": "Taciz",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
@@ -1143,14 +1127,6 @@
   "somethingWentWrong": "Bir şeyler ters gitti. Tekrar deneyin.",
   "@somethingWentWrong": {
     "description": "Generic error message"
-  },
-  "startChatHint": "Bir arkadaş bulun ve sohbet başlatın!",
-  "@startChatHint": {
-    "description": "Empty state subtitle on conversations screen"
-  },
-  "tabChats": "Sohbetler",
-  "@tabChats": {
-    "description": "Tab label for Chats tab"
   },
   "tabFriends": "Arkadaşlar",
   "@tabFriends": {
@@ -1530,10 +1506,6 @@
   "upgradeWindowsHint": "Yükseltme Microsoft Store'da mevcut",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "chatEmptyHint": "İlk mesajı sen gönder!",
-  "@chatEmptyHint": {
-    "description": "Subtitle on the empty chat screen"
   },
   "skinSaved": "Skin kaydedildi",
   "@skinSaved": {
@@ -1961,11 +1933,8 @@
   "notifFeedbackStatus": "Geri bildiriminde güncelleme",
   "notifFeedbackReply": "Geri bildirimine yanıt",
   "adminTicketsHeader": "Bildirimler ve istekler",
-  "adminGeneralChat": "Genel sohbet",
   "adminTicketReplyHint": "Bu bilet hakkında yanıtla…",
   "adminNoTicketsForUser": "Bu kullanıcıdan bilet yok",
-  "hideConversation": "Gizle",
-  "conversationHidden": "Sohbet gizlendi",
   "undo": "Geri al",
   "chooseServerTitle": "Bir sunucu seç",
   "changeLabel": "Değiştir",
@@ -2041,5 +2010,53 @@
     }
   },
   "updateAvailableAction": "İndir",
-  "updateAvailableDismiss": "Şimdi değil"
+  "updateAvailableDismiss": "Şimdi değil",
+  "serverListSearchHint": "Ada veya adrese göre ara",
+  "serverListEditionAny": "Java ve Bedrock",
+  "serverListEditionJava": "Yalnızca Java",
+  "serverListEditionBedrock": "Yalnızca Bedrock",
+  "serverListSortVotes": "En çok oy",
+  "serverListSortPlayers": "En çok oyuncu",
+  "serverListSortPeak": "En yüksek zirve",
+  "serverListSortNewest": "En yeni",
+  "serverListSortName": "Ad",
+  "serverListAllCategories": "Tümü",
+  "serverListLoadFailed": "Sunucu listesi yüklenemedi",
+  "serverListLoadFailedHint": "Yeniden denemek için aşağı çekin",
+  "serverListNoMatch": "Eşleşen sunucu yok",
+  "serverListNoMatchHint": "Farklı bir arama veya kategori deneyin",
+  "serverCardPlay": "Oyna",
+  "serverCardVote": "Oy ver",
+  "serverCardViewServer": "Sunucuyu görüntüle",
+  "serverCopyIp": "IP'yi kopyala",
+  "serverCopied": "Kopyalandı",
+  "serverStatPlayers": "Oyuncular",
+  "serverStatPeak": "Zirve",
+  "serverStatUptime": "Çalışma süresi",
+  "serverStatVotesMonth": "Bu ayki oylar",
+  "serverStatVotesAllTime": "Toplam oy",
+  "serverBadgeFeatured": "Öne çıkan",
+  "serverEditionJava": "Java",
+  "serverEditionBedrock": "Bedrock",
+  "serverEditionCrossplay": "Crossplay",
+  "serverSectionMotd": "Günün mesajı",
+  "serverSectionAbout": "Hakkında",
+  "serverSectionCategories": "Kategoriler",
+  "serverSectionVotes": "Oylar",
+  "serverLinkDiscord": "Discord",
+  "serverLinkWebsite": "Web sitesi",
+  "serverVotesThisMonth": "Bu ay",
+  "serverVotesAllTime": "Tüm zamanlar",
+  "serverVoteAction": "Bu sunucuya oy ver",
+  "serverPlayAction": "Bu sunucuda oyna",
+  "serverVoteSignInRequired": "Uygulamadan oy vermek için giriş yapın.",
+  "serverVoteSheetTitle": "{name} için oy ver",
+  "serverVoteSheetSubtitle": "Minecraft adınız, sunucu kimi ödüllendireceğini bilsin.",
+  "serverVoteSheetHint": "Steve",
+  "serverVoteSheetButton": "Oy ver",
+  "serverVoteSheetLimit": "Sunucu başına günde bir oy.",
+  "serverVoteDelivered": "Oy verildi. Ödülünüz yolda.",
+  "serverVoteNoRewards": "Oy verildi. Bu sunucuda ödül ayarlanmamış.",
+  "serverVoteFailed": "Bu işe yaramadı, lütfen tekrar deneyin.",
+  "serverVoteOffline": "Sunucuya ulaşılamadı. Bağlantınızı kontrol edin."
 }

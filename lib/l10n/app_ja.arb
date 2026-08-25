@@ -704,10 +704,6 @@
   "@linkedAccountsTitle": {
     "description": "Section title for linked accounts card"
   },
-  "messagePlaceholder": "Message…",
-  "@messagePlaceholder": {
-    "description": "Hint text in the chat message input"
-  },
   "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -732,10 +728,6 @@
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noConversationsYet": "No conversations yet",
-  "@noConversationsYet": {
-    "description": "Empty state title on conversations screen"
-  },
   "noFriendsSub": "Add friends to see them here.",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
@@ -743,10 +735,6 @@
   "noFriendsYet": "No friends yet",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
-  },
-  "noMessagesYet": "No messages yet.\nSay hello!",
-  "@noMessagesYet": {
-    "description": "Empty state in chat screen"
   },
   "noPartnerServers": "No partner servers available yet.",
   "@noPartnerServers": {
@@ -952,10 +940,6 @@
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportMessage": "Report message",
-  "@reportMessage": {
-    "description": "Title when reporting a specific message"
-  },
   "reportReasonHarassment": "Harassment",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
@@ -1143,14 +1127,6 @@
   "somethingWentWrong": "Something went wrong. Please try again.",
   "@somethingWentWrong": {
     "description": "Generic error message"
-  },
-  "startChatHint": "Find a friend and start chatting!",
-  "@startChatHint": {
-    "description": "Empty state subtitle on conversations screen"
-  },
-  "tabChats": "Chats",
-  "@tabChats": {
-    "description": "Tab label for Chats tab"
   },
   "tabFriends": "Friends",
   "@tabFriends": {
@@ -1530,10 +1506,6 @@
   "upgradeWindowsHint": "Microsoft Storeでアップグレードできます",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "chatEmptyHint": "最初にメッセージを送りましょう！",
-  "@chatEmptyHint": {
-    "description": "Subtitle on the empty chat screen"
   },
   "skinSaved": "スキンを保存しました",
   "@skinSaved": {
@@ -1961,11 +1933,8 @@
   "notifFeedbackStatus": "フィードバックの進捗",
   "notifFeedbackReply": "フィードバックへの返信",
   "adminTicketsHeader": "報告とリクエスト",
-  "adminGeneralChat": "一般チャット",
   "adminTicketReplyHint": "このチケットについて返信…",
   "adminNoTicketsForUser": "このユーザーのチケットはありません",
-  "hideConversation": "非表示",
-  "conversationHidden": "会話を非表示にしました",
   "undo": "元に戻す",
   "chooseServerTitle": "サーバーを選ぶ",
   "changeLabel": "変更",
@@ -2041,5 +2010,53 @@
     }
   },
   "updateAvailableAction": "ダウンロード",
-  "updateAvailableDismiss": "後で"
+  "updateAvailableDismiss": "後で",
+  "serverListSearchHint": "名前またはアドレスで検索",
+  "serverListEditionAny": "JavaとBedrock",
+  "serverListEditionJava": "Javaのみ",
+  "serverListEditionBedrock": "Bedrockのみ",
+  "serverListSortVotes": "投票数順",
+  "serverListSortPlayers": "プレイヤー数順",
+  "serverListSortPeak": "最高記録順",
+  "serverListSortNewest": "新着順",
+  "serverListSortName": "名前順",
+  "serverListAllCategories": "すべて",
+  "serverListLoadFailed": "サーバーリストを読み込めませんでした",
+  "serverListLoadFailedHint": "下に引いて再試行",
+  "serverListNoMatch": "該当するサーバーがありません",
+  "serverListNoMatchHint": "別のキーワードかカテゴリーをお試しください",
+  "serverCardPlay": "プレイ",
+  "serverCardVote": "投票",
+  "serverCardViewServer": "サーバーを見る",
+  "serverCopyIp": "IPをコピー",
+  "serverCopied": "コピーしました",
+  "serverStatPlayers": "プレイヤー",
+  "serverStatPeak": "最高記録",
+  "serverStatUptime": "稼働率",
+  "serverStatVotesMonth": "今月の投票",
+  "serverStatVotesAllTime": "累計投票",
+  "serverBadgeFeatured": "注目",
+  "serverEditionJava": "Java",
+  "serverEditionBedrock": "Bedrock",
+  "serverEditionCrossplay": "クロスプレイ",
+  "serverSectionMotd": "今日のメッセージ",
+  "serverSectionAbout": "概要",
+  "serverSectionCategories": "カテゴリー",
+  "serverSectionVotes": "投票",
+  "serverLinkDiscord": "Discord",
+  "serverLinkWebsite": "ウェブサイト",
+  "serverVotesThisMonth": "今月",
+  "serverVotesAllTime": "累計",
+  "serverVoteAction": "このサーバーに投票",
+  "serverPlayAction": "このサーバーでプレイ",
+  "serverVoteSignInRequired": "アプリから投票するにはログインしてください。",
+  "serverVoteSheetTitle": "{name}に投票",
+  "serverVoteSheetSubtitle": "報酬を受け取るために、Minecraftの名前を入力してください。",
+  "serverVoteSheetHint": "Steve",
+  "serverVoteSheetButton": "投票",
+  "serverVoteSheetLimit": "投票は1サーバーにつき1日1回です。",
+  "serverVoteDelivered": "投票しました。報酬はまもなく届きます。",
+  "serverVoteNoRewards": "投票しました。このサーバーには報酬が設定されていません。",
+  "serverVoteFailed": "うまくいきませんでした。もう一度お試しください。",
+  "serverVoteOffline": "サーバーに接続できませんでした。通信環境をご確認ください。"
 }

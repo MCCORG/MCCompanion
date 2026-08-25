@@ -1416,12 +1416,6 @@ abstract class AppLocalizations {
   /// **'Report user'**
   String get reportUser;
 
-  /// Title when reporting a specific message
-  ///
-  /// In en, this message translates to:
-  /// **'Report message'**
-  String get reportMessage;
-
   /// Title when reporting a user by name
   ///
   /// In en, this message translates to:
@@ -1494,30 +1488,6 @@ abstract class AppLocalizations {
   /// **'Yesterday'**
   String get yesterday;
 
-  /// Hint text in the chat message input
-  ///
-  /// In en, this message translates to:
-  /// **'Message…'**
-  String get messagePlaceholder;
-
-  /// Empty state in chat screen
-  ///
-  /// In en, this message translates to:
-  /// **'No messages yet.\nSay hello!'**
-  String get noMessagesYet;
-
-  /// Empty state title on conversations screen
-  ///
-  /// In en, this message translates to:
-  /// **'No conversations yet'**
-  String get noConversationsYet;
-
-  /// Empty state subtitle on conversations screen
-  ///
-  /// In en, this message translates to:
-  /// **'Find a friend and start chatting!'**
-  String get startChatHint;
-
   /// Prefix for last message preview when message is from current user
   ///
   /// In en, this message translates to:
@@ -1583,12 +1553,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Requests'**
   String get tabRequests;
-
-  /// Tab label for Chats tab
-  ///
-  /// In en, this message translates to:
-  /// **'Chats'**
-  String get tabChats;
 
   /// Title/button for adding a friend
   ///
@@ -3276,12 +3240,6 @@ abstract class AppLocalizations {
   /// **'Upgrade available via the Microsoft Store'**
   String get upgradeWindowsHint;
 
-  /// Subtitle on the empty chat screen
-  ///
-  /// In en, this message translates to:
-  /// **'Be the first to say something!'**
-  String get chatEmptyHint;
-
   /// Toast when skin is saved
   ///
   /// In en, this message translates to:
@@ -4920,12 +4878,6 @@ abstract class AppLocalizations {
   /// **'Reports and requests'**
   String get adminTicketsHeader;
 
-  /// No description provided for @adminGeneralChat.
-  ///
-  /// In en, this message translates to:
-  /// **'General chat'**
-  String get adminGeneralChat;
-
   /// No description provided for @adminTicketReplyHint.
   ///
   /// In en, this message translates to:
@@ -4937,18 +4889,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No tickets from this user'**
   String get adminNoTicketsForUser;
-
-  /// No description provided for @hideConversation.
-  ///
-  /// In en, this message translates to:
-  /// **'Hide'**
-  String get hideConversation;
-
-  /// No description provided for @conversationHidden.
-  ///
-  /// In en, this message translates to:
-  /// **'Conversation hidden'**
-  String get conversationHidden;
 
   /// No description provided for @undo.
   ///
@@ -5363,30 +5303,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Votes all time'**
   String get serverStatVotesAllTime;
-
-  /// No description provided for @serverStatPlayersHint.
-  ///
-  /// In en, this message translates to:
-  /// **'average while online'**
-  String get serverStatPlayersHint;
-
-  /// No description provided for @serverStatPeakHint.
-  ///
-  /// In en, this message translates to:
-  /// **'highest measured'**
-  String get serverStatPeakHint;
-
-  /// No description provided for @serverStatUptimeHint.
-  ///
-  /// In en, this message translates to:
-  /// **'last 30 days'**
-  String get serverStatUptimeHint;
-
-  /// No description provided for @serverStatEditionHint.
-  ///
-  /// In en, this message translates to:
-  /// **'edition'**
-  String get serverStatEditionHint;
 
   /// No description provided for @serverBadgeFeatured.
   ///

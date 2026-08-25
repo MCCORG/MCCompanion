@@ -705,9 +705,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get reportUser => 'Report user';
 
   @override
-  String get reportMessage => 'Report message';
-
-  @override
   String reportUserWithName(Object name) {
     return 'Report $name';
   }
@@ -747,18 +744,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get yesterday => 'Yesterday';
 
   @override
-  String get messagePlaceholder => 'Message…';
-
-  @override
-  String get noMessagesYet => 'No messages yet.\nSay hello!';
-
-  @override
-  String get noConversationsYet => 'No conversations yet';
-
-  @override
-  String get startChatHint => 'Find a friend and start chatting!';
-
-  @override
   String get youPrefix => 'You';
 
   @override
@@ -793,9 +778,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get tabRequests => 'Requests';
-
-  @override
-  String get tabChats => 'Chats';
 
   @override
   String get addFriend => 'Add Friend';
@@ -1716,9 +1698,6 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get upgradeWindowsHint =>
       'Uboreshaji unapatikana kwenye Microsoft Store';
-
-  @override
-  String get chatEmptyHint => 'Kuwa wa kwanza kusema kitu!';
 
   @override
   String get skinSaved => 'Skin imehifadhiwa';
@@ -2651,19 +2630,10 @@ class AppLocalizationsSw extends AppLocalizations {
   String get adminTicketsHeader => 'Ripoti na maombi';
 
   @override
-  String get adminGeneralChat => 'Gumzo la jumla';
-
-  @override
   String get adminTicketReplyHint => 'Jibu kuhusu tiketi hii…';
 
   @override
   String get adminNoTicketsForUser => 'Hakuna tiketi kutoka kwa mtumiaji huyu';
-
-  @override
-  String get hideConversation => 'Ficha';
-
-  @override
-  String get conversationHidden => 'Mazungumzo yamefichwa';
 
   @override
   String get undo => 'Tendua';
@@ -2822,91 +2792,79 @@ class AppLocalizationsSw extends AppLocalizations {
   String get updateAvailableDismiss => 'Si sasa';
 
   @override
-  String get serverListSearchHint => 'Search by name or address';
+  String get serverListSearchHint => 'Tafuta kwa jina au anwani';
 
   @override
-  String get serverListEditionAny => 'Java and Bedrock';
+  String get serverListEditionAny => 'Java na Bedrock';
 
   @override
-  String get serverListEditionJava => 'Java only';
+  String get serverListEditionJava => 'Java pekee';
 
   @override
-  String get serverListEditionBedrock => 'Bedrock only';
+  String get serverListEditionBedrock => 'Bedrock pekee';
 
   @override
-  String get serverListSortVotes => 'Most votes';
+  String get serverListSortVotes => 'Kura nyingi zaidi';
 
   @override
-  String get serverListSortPlayers => 'Most players';
+  String get serverListSortPlayers => 'Wachezaji wengi zaidi';
 
   @override
-  String get serverListSortPeak => 'Highest peak';
+  String get serverListSortPeak => 'Kilele cha juu zaidi';
 
   @override
-  String get serverListSortNewest => 'Newest';
+  String get serverListSortNewest => 'Mpya zaidi';
 
   @override
-  String get serverListSortName => 'Name';
+  String get serverListSortName => 'Jina';
 
   @override
-  String get serverListAllCategories => 'All';
+  String get serverListAllCategories => 'Zote';
 
   @override
-  String get serverListLoadFailed => 'Could not load the server list';
+  String get serverListLoadFailed => 'Imeshindwa kupakia orodha ya seva';
 
   @override
-  String get serverListLoadFailedHint => 'Pull down to try again';
+  String get serverListLoadFailedHint => 'Vuta chini ili kujaribu tena';
 
   @override
-  String get serverListNoMatch => 'No servers match that';
+  String get serverListNoMatch => 'Hakuna seva inayolingana';
 
   @override
-  String get serverListNoMatchHint => 'Try a different search or category';
+  String get serverListNoMatchHint => 'Jaribu utafutaji au kategoria nyingine';
 
   @override
-  String get serverCardPlay => 'Play';
+  String get serverCardPlay => 'Cheza';
 
   @override
-  String get serverCardVote => 'Vote';
+  String get serverCardVote => 'Piga kura';
 
   @override
-  String get serverCardViewServer => 'View server';
+  String get serverCardViewServer => 'Angalia seva';
 
   @override
-  String get serverCopyIp => 'Copy IP';
+  String get serverCopyIp => 'Nakili IP';
 
   @override
-  String get serverCopied => 'Copied';
+  String get serverCopied => 'Imenakiliwa';
 
   @override
-  String get serverStatPlayers => 'Players';
+  String get serverStatPlayers => 'Wachezaji';
 
   @override
-  String get serverStatPeak => 'Peak';
+  String get serverStatPeak => 'Kilele';
 
   @override
-  String get serverStatUptime => 'Uptime';
+  String get serverStatUptime => 'Muda wa kufanya kazi';
 
   @override
-  String get serverStatVotesMonth => 'Votes this month';
+  String get serverStatVotesMonth => 'Kura za mwezi huu';
 
   @override
-  String get serverStatVotesAllTime => 'Votes all time';
+  String get serverStatVotesAllTime => 'Kura zote';
 
   @override
-  String get serverStatPlayersHint => 'average while online';
-
-  @override
-  String get serverStatPeakHint => 'highest measured';
-
-  @override
-  String get serverStatUptimeHint => 'last 30 days';
-
-  @override
-  String get serverStatEditionHint => 'edition';
-
-  @override
-  String get serverBadgeFeatured => 'Featured';
+  String get serverBadgeFeatured => 'Iliyoangaziwa';
 
   @override
   String get serverEditionJava => 'Java';
@@ -2918,66 +2876,68 @@ class AppLocalizationsSw extends AppLocalizations {
   String get serverEditionCrossplay => 'Crossplay';
 
   @override
-  String get serverSectionMotd => 'Message of the day';
+  String get serverSectionMotd => 'Ujumbe wa siku';
 
   @override
-  String get serverSectionAbout => 'About';
+  String get serverSectionAbout => 'Kuhusu';
 
   @override
-  String get serverSectionCategories => 'Categories';
+  String get serverSectionCategories => 'Kategoria';
 
   @override
-  String get serverSectionVotes => 'Votes';
+  String get serverSectionVotes => 'Kura';
 
   @override
   String get serverLinkDiscord => 'Discord';
 
   @override
-  String get serverLinkWebsite => 'Website';
+  String get serverLinkWebsite => 'Tovuti';
 
   @override
-  String get serverVotesThisMonth => 'This month';
+  String get serverVotesThisMonth => 'Mwezi huu';
 
   @override
-  String get serverVotesAllTime => 'All time';
+  String get serverVotesAllTime => 'Muda wote';
 
   @override
-  String get serverVoteAction => 'Vote for this server';
+  String get serverVoteAction => 'Piga kura kwa seva hii';
 
   @override
-  String get serverPlayAction => 'Play on this server';
+  String get serverPlayAction => 'Cheza kwenye seva hii';
 
   @override
-  String get serverVoteSignInRequired => 'Sign in to vote from the app.';
+  String get serverVoteSignInRequired =>
+      'Ingia ili kupiga kura kupitia programu.';
 
   @override
   String serverVoteSheetTitle(String name) {
-    return 'Vote for $name';
+    return 'Piga kura kwa $name';
   }
 
   @override
   String get serverVoteSheetSubtitle =>
-      'Your Minecraft name, so the server knows who to reward.';
+      'Jina lako la Minecraft, ili seva ijue nani wa kumzawadia.';
 
   @override
   String get serverVoteSheetHint => 'Steve';
 
   @override
-  String get serverVoteSheetButton => 'Vote';
+  String get serverVoteSheetButton => 'Piga kura';
 
   @override
-  String get serverVoteSheetLimit => 'One vote per server per day.';
+  String get serverVoteSheetLimit => 'Kura moja kwa kila seva kwa siku.';
 
   @override
-  String get serverVoteDelivered => 'Voted. Your reward is on its way.';
+  String get serverVoteDelivered => 'Umepiga kura. Zawadi yako inakuja.';
 
   @override
-  String get serverVoteNoRewards => 'Voted. This server has no rewards set up.';
+  String get serverVoteNoRewards =>
+      'Umepiga kura. Seva hii haina zawadi zilizowekwa.';
 
   @override
-  String get serverVoteFailed => 'That did not work, please try again.';
+  String get serverVoteFailed => 'Haikufanya kazi, tafadhali jaribu tena.';
 
   @override
   String get serverVoteOffline =>
-      'Could not reach the server. Check your connection.';
+      'Imeshindwa kufikia seva. Angalia muunganisho wako.';
 }

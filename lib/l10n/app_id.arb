@@ -704,10 +704,6 @@
   "@linkedAccountsTitle": {
     "description": "Section title for linked accounts card"
   },
-  "messagePlaceholder": "Message…",
-  "@messagePlaceholder": {
-    "description": "Hint text in the chat message input"
-  },
   "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -732,10 +728,6 @@
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noConversationsYet": "No conversations yet",
-  "@noConversationsYet": {
-    "description": "Empty state title on conversations screen"
-  },
   "noFriendsSub": "Add friends to see them here.",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
@@ -743,10 +735,6 @@
   "noFriendsYet": "No friends yet",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
-  },
-  "noMessagesYet": "No messages yet.\nSay hello!",
-  "@noMessagesYet": {
-    "description": "Empty state in chat screen"
   },
   "noPartnerServers": "No partner servers available yet.",
   "@noPartnerServers": {
@@ -952,10 +940,6 @@
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportMessage": "Report message",
-  "@reportMessage": {
-    "description": "Title when reporting a specific message"
-  },
   "reportReasonHarassment": "Harassment",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
@@ -1143,14 +1127,6 @@
   "somethingWentWrong": "Something went wrong. Please try again.",
   "@somethingWentWrong": {
     "description": "Generic error message"
-  },
-  "startChatHint": "Find a friend and start chatting!",
-  "@startChatHint": {
-    "description": "Empty state subtitle on conversations screen"
-  },
-  "tabChats": "Chats",
-  "@tabChats": {
-    "description": "Tab label for Chats tab"
   },
   "tabFriends": "Friends",
   "@tabFriends": {
@@ -1530,10 +1506,6 @@
   "upgradeWindowsHint": "Upgrade tersedia melalui Microsoft Store",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "chatEmptyHint": "Jadilah yang pertama berkata sesuatu!",
-  "@chatEmptyHint": {
-    "description": "Subtitle on the empty chat screen"
   },
   "skinSaved": "Skin disimpan",
   "@skinSaved": {
@@ -1958,11 +1930,8 @@
   "notifFeedbackStatus": "Kabar tentang masukanmu",
   "notifFeedbackReply": "Balasan untuk masukanmu",
   "adminTicketsHeader": "Laporan dan permintaan",
-  "adminGeneralChat": "Obrolan umum",
   "adminTicketReplyHint": "Balas tentang tiket ini…",
   "adminNoTicketsForUser": "Tidak ada tiket dari pengguna ini",
-  "hideConversation": "Sembunyikan",
-  "conversationHidden": "Obrolan disembunyikan",
   "undo": "Urungkan",
   "chooseServerTitle": "Pilih server",
   "changeLabel": "Ubah",
@@ -2038,5 +2007,53 @@
     }
   },
   "updateAvailableAction": "Unduh",
-  "updateAvailableDismiss": "Nanti saja"
+  "updateAvailableDismiss": "Nanti saja",
+  "serverListSearchHint": "Cari berdasarkan nama atau alamat",
+  "serverListEditionAny": "Java dan Bedrock",
+  "serverListEditionJava": "Hanya Java",
+  "serverListEditionBedrock": "Hanya Bedrock",
+  "serverListSortVotes": "Vote terbanyak",
+  "serverListSortPlayers": "Pemain terbanyak",
+  "serverListSortPeak": "Puncak tertinggi",
+  "serverListSortNewest": "Terbaru",
+  "serverListSortName": "Nama",
+  "serverListAllCategories": "Semua",
+  "serverListLoadFailed": "Tidak dapat memuat daftar server",
+  "serverListLoadFailedHint": "Tarik ke bawah untuk mencoba lagi",
+  "serverListNoMatch": "Tidak ada server yang cocok",
+  "serverListNoMatchHint": "Coba pencarian atau kategori lain",
+  "serverCardPlay": "Main",
+  "serverCardVote": "Vote",
+  "serverCardViewServer": "Lihat server",
+  "serverCopyIp": "Salin IP",
+  "serverCopied": "Disalin",
+  "serverStatPlayers": "Pemain",
+  "serverStatPeak": "Puncak",
+  "serverStatUptime": "Uptime",
+  "serverStatVotesMonth": "Vote bulan ini",
+  "serverStatVotesAllTime": "Total vote",
+  "serverBadgeFeatured": "Unggulan",
+  "serverEditionJava": "Java",
+  "serverEditionBedrock": "Bedrock",
+  "serverEditionCrossplay": "Crossplay",
+  "serverSectionMotd": "Pesan hari ini",
+  "serverSectionAbout": "Tentang",
+  "serverSectionCategories": "Kategori",
+  "serverSectionVotes": "Vote",
+  "serverLinkDiscord": "Discord",
+  "serverLinkWebsite": "Situs web",
+  "serverVotesThisMonth": "Bulan ini",
+  "serverVotesAllTime": "Sepanjang waktu",
+  "serverVoteAction": "Vote server ini",
+  "serverPlayAction": "Main di server ini",
+  "serverVoteSignInRequired": "Masuk untuk vote dari aplikasi.",
+  "serverVoteSheetTitle": "Vote untuk {name}",
+  "serverVoteSheetSubtitle": "Nama Minecraft kamu, supaya server tahu siapa yang diberi hadiah.",
+  "serverVoteSheetHint": "Steve",
+  "serverVoteSheetButton": "Vote",
+  "serverVoteSheetLimit": "Satu vote per server per hari.",
+  "serverVoteDelivered": "Vote terkirim. Hadiahmu sedang dikirim.",
+  "serverVoteNoRewards": "Vote terkirim. Server ini belum mengatur hadiah.",
+  "serverVoteFailed": "Gagal, silakan coba lagi.",
+  "serverVoteOffline": "Tidak dapat menghubungi server. Periksa koneksimu."
 }

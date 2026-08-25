@@ -704,10 +704,6 @@
   "@linkedAccountsTitle": {
     "description": "Section title for linked accounts card"
   },
-  "messagePlaceholder": "Message…",
-  "@messagePlaceholder": {
-    "description": "Hint text in the chat message input"
-  },
   "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -732,10 +728,6 @@
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noConversationsYet": "No conversations yet",
-  "@noConversationsYet": {
-    "description": "Empty state title on conversations screen"
-  },
   "noFriendsSub": "Add friends to see them here.",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
@@ -743,10 +735,6 @@
   "noFriendsYet": "No friends yet",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
-  },
-  "noMessagesYet": "No messages yet.\nSay hello!",
-  "@noMessagesYet": {
-    "description": "Empty state in chat screen"
   },
   "noPartnerServers": "No partner servers available yet.",
   "@noPartnerServers": {
@@ -952,10 +940,6 @@
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportMessage": "Report message",
-  "@reportMessage": {
-    "description": "Title when reporting a specific message"
-  },
   "reportReasonHarassment": "Harassment",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
@@ -1143,14 +1127,6 @@
   "somethingWentWrong": "Something went wrong. Please try again.",
   "@somethingWentWrong": {
     "description": "Generic error message"
-  },
-  "startChatHint": "Find a friend and start chatting!",
-  "@startChatHint": {
-    "description": "Empty state subtitle on conversations screen"
-  },
-  "tabChats": "Chats",
-  "@tabChats": {
-    "description": "Tab label for Chats tab"
   },
   "tabFriends": "Friends",
   "@tabFriends": {
@@ -1530,10 +1506,6 @@
   "upgradeWindowsHint": "মাইক্রোসফট স্টোরে আপগ্রেড পাওয়া যাচ্ছে",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "chatEmptyHint": "প্রথম কিছু বলুন!",
-  "@chatEmptyHint": {
-    "description": "Subtitle on the empty chat screen"
   },
   "skinSaved": "স্কিন সংরক্ষিত",
   "@skinSaved": {
@@ -1961,11 +1933,8 @@
   "notifFeedbackStatus": "আপনার মতামতে আপডেট",
   "notifFeedbackReply": "আপনার মতামতের উত্তর",
   "adminTicketsHeader": "রিপোর্ট ও অনুরোধ",
-  "adminGeneralChat": "সাধারণ চ্যাট",
   "adminTicketReplyHint": "এই টিকিট নিয়ে উত্তর দিন…",
   "adminNoTicketsForUser": "এই ব্যবহারকারীর কোনও টিকিট নেই",
-  "hideConversation": "লুকান",
-  "conversationHidden": "কথোপকথন লুকানো হয়েছে",
   "undo": "আগের অবস্থায়",
   "chooseServerTitle": "একটি সার্ভার বেছে নিন",
   "changeLabel": "পরিবর্তন",
@@ -2041,5 +2010,53 @@
     }
   },
   "updateAvailableAction": "ডাউনলোড",
-  "updateAvailableDismiss": "এখন নয়"
+  "updateAvailableDismiss": "এখন নয়",
+  "serverListSearchHint": "নাম বা ঠিকানা দিয়ে খুঁজুন",
+  "serverListEditionAny": "Java এবং Bedrock",
+  "serverListEditionJava": "শুধু Java",
+  "serverListEditionBedrock": "শুধু Bedrock",
+  "serverListSortVotes": "সর্বাধিক ভোট",
+  "serverListSortPlayers": "সর্বাধিক খেলোয়াড়",
+  "serverListSortPeak": "সর্বোচ্চ শীর্ষ",
+  "serverListSortNewest": "নতুনতম",
+  "serverListSortName": "নাম",
+  "serverListAllCategories": "সব",
+  "serverListLoadFailed": "সার্ভার তালিকা লোড করা যায়নি",
+  "serverListLoadFailedHint": "আবার চেষ্টা করতে নিচে টানুন",
+  "serverListNoMatch": "কোনো সার্ভার মেলেনি",
+  "serverListNoMatchHint": "অন্য কিছু খুঁজুন বা অন্য বিভাগ দেখুন",
+  "serverCardPlay": "খেলুন",
+  "serverCardVote": "ভোট দিন",
+  "serverCardViewServer": "সার্ভার দেখুন",
+  "serverCopyIp": "IP কপি করুন",
+  "serverCopied": "কপি হয়েছে",
+  "serverStatPlayers": "খেলোয়াড়",
+  "serverStatPeak": "শীর্ষ",
+  "serverStatUptime": "আপটাইম",
+  "serverStatVotesMonth": "এই মাসের ভোট",
+  "serverStatVotesAllTime": "মোট ভোট",
+  "serverBadgeFeatured": "বিশেষ",
+  "serverEditionJava": "Java",
+  "serverEditionBedrock": "Bedrock",
+  "serverEditionCrossplay": "ক্রসপ্লে",
+  "serverSectionMotd": "আজকের বার্তা",
+  "serverSectionAbout": "পরিচিতি",
+  "serverSectionCategories": "বিভাগ",
+  "serverSectionVotes": "ভোট",
+  "serverLinkDiscord": "Discord",
+  "serverLinkWebsite": "ওয়েবসাইট",
+  "serverVotesThisMonth": "এই মাসে",
+  "serverVotesAllTime": "সর্বকালের",
+  "serverVoteAction": "এই সার্ভারে ভোট দিন",
+  "serverPlayAction": "এই সার্ভারে খেলুন",
+  "serverVoteSignInRequired": "অ্যাপ থেকে ভোট দিতে সাইন ইন করুন।",
+  "serverVoteSheetTitle": "{name}-কে ভোট দিন",
+  "serverVoteSheetSubtitle": "আপনার Minecraft নাম, যাতে সার্ভার জানে কাকে পুরস্কার দিতে হবে।",
+  "serverVoteSheetHint": "Steve",
+  "serverVoteSheetButton": "ভোট দিন",
+  "serverVoteSheetLimit": "প্রতিটি সার্ভারে দিনে একটি ভোট।",
+  "serverVoteDelivered": "ভোট হয়েছে। আপনার পুরস্কার আসছে।",
+  "serverVoteNoRewards": "ভোট হয়েছে। এই সার্ভারে কোনো পুরস্কার সেট করা নেই।",
+  "serverVoteFailed": "কাজ হয়নি, আবার চেষ্টা করুন।",
+  "serverVoteOffline": "সার্ভারে পৌঁছানো যায়নি। আপনার সংযোগ পরীক্ষা করুন।"
 }

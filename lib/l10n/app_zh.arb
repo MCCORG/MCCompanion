@@ -704,10 +704,6 @@
   "@linkedAccountsTitle": {
     "description": "Section title for linked accounts card"
   },
-  "messagePlaceholder": "Message…",
-  "@messagePlaceholder": {
-    "description": "Hint text in the chat message input"
-  },
   "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -732,10 +728,6 @@
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noConversationsYet": "No conversations yet",
-  "@noConversationsYet": {
-    "description": "Empty state title on conversations screen"
-  },
   "noFriendsSub": "Add friends to see them here.",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
@@ -743,10 +735,6 @@
   "noFriendsYet": "No friends yet",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
-  },
-  "noMessagesYet": "No messages yet.\nSay hello!",
-  "@noMessagesYet": {
-    "description": "Empty state in chat screen"
   },
   "noPartnerServers": "No partner servers available yet.",
   "@noPartnerServers": {
@@ -952,10 +940,6 @@
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportMessage": "Report message",
-  "@reportMessage": {
-    "description": "Title when reporting a specific message"
-  },
   "reportReasonHarassment": "Harassment",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
@@ -1143,14 +1127,6 @@
   "somethingWentWrong": "Something went wrong. Please try again.",
   "@somethingWentWrong": {
     "description": "Generic error message"
-  },
-  "startChatHint": "Find a friend and start chatting!",
-  "@startChatHint": {
-    "description": "Empty state subtitle on conversations screen"
-  },
-  "tabChats": "Chats",
-  "@tabChats": {
-    "description": "Tab label for Chats tab"
   },
   "tabFriends": "Friends",
   "@tabFriends": {
@@ -1530,10 +1506,6 @@
   "upgradeWindowsHint": "可在 Microsoft Store 升级",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "chatEmptyHint": "率先说点什么吧！",
-  "@chatEmptyHint": {
-    "description": "Subtitle on the empty chat screen"
   },
   "skinSaved": "皮肤已保存",
   "@skinSaved": {
@@ -1961,11 +1933,8 @@
   "notifFeedbackStatus": "你的反馈有更新",
   "notifFeedbackReply": "你的反馈有回复",
   "adminTicketsHeader": "报告与需求",
-  "adminGeneralChat": "常规聊天",
   "adminTicketReplyHint": "回复此工单…",
   "adminNoTicketsForUser": "该用户没有工单",
-  "hideConversation": "隐藏",
-  "conversationHidden": "对话已隐藏",
   "undo": "撤销",
   "chooseServerTitle": "选择服务器",
   "changeLabel": "更改",
@@ -2041,5 +2010,53 @@
     }
   },
   "updateAvailableAction": "下载",
-  "updateAvailableDismiss": "以后再说"
+  "updateAvailableDismiss": "以后再说",
+  "serverListSearchHint": "按名称或地址搜索",
+  "serverListEditionAny": "Java 和 Bedrock",
+  "serverListEditionJava": "仅 Java",
+  "serverListEditionBedrock": "仅 Bedrock",
+  "serverListSortVotes": "投票最多",
+  "serverListSortPlayers": "玩家最多",
+  "serverListSortPeak": "峰值最高",
+  "serverListSortNewest": "最新",
+  "serverListSortName": "名称",
+  "serverListAllCategories": "全部",
+  "serverListLoadFailed": "无法加载服务器列表",
+  "serverListLoadFailedHint": "下拉重试",
+  "serverListNoMatch": "没有匹配的服务器",
+  "serverListNoMatchHint": "换个关键词或分类试试",
+  "serverCardPlay": "开始游戏",
+  "serverCardVote": "投票",
+  "serverCardViewServer": "查看服务器",
+  "serverCopyIp": "复制 IP",
+  "serverCopied": "已复制",
+  "serverStatPlayers": "玩家",
+  "serverStatPeak": "峰值",
+  "serverStatUptime": "在线率",
+  "serverStatVotesMonth": "本月投票",
+  "serverStatVotesAllTime": "总投票",
+  "serverBadgeFeatured": "精选",
+  "serverEditionJava": "Java",
+  "serverEditionBedrock": "Bedrock",
+  "serverEditionCrossplay": "跨平台",
+  "serverSectionMotd": "每日消息",
+  "serverSectionAbout": "简介",
+  "serverSectionCategories": "分类",
+  "serverSectionVotes": "投票",
+  "serverLinkDiscord": "Discord",
+  "serverLinkWebsite": "官网",
+  "serverVotesThisMonth": "本月",
+  "serverVotesAllTime": "全部时间",
+  "serverVoteAction": "为这个服务器投票",
+  "serverPlayAction": "在这个服务器上游玩",
+  "serverVoteSignInRequired": "登录后即可在应用内投票。",
+  "serverVoteSheetTitle": "为 {name} 投票",
+  "serverVoteSheetSubtitle": "你的 Minecraft 名称，服务器凭此发放奖励。",
+  "serverVoteSheetHint": "Steve",
+  "serverVoteSheetButton": "投票",
+  "serverVoteSheetLimit": "每个服务器每天可投一票。",
+  "serverVoteDelivered": "投票成功，奖励正在发放。",
+  "serverVoteNoRewards": "投票成功。该服务器尚未设置奖励。",
+  "serverVoteFailed": "操作未成功，请重试。",
+  "serverVoteOffline": "无法连接服务器，请检查网络。"
 }

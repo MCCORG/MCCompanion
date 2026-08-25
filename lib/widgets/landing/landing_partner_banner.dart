@@ -193,6 +193,8 @@ class LandingPartnerBannerState extends State<LandingPartnerBanner> {
                             const SizedBox(height: 2),
                             Text(
                               s.description,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                 color: AppTheme.textMuted,
                                 fontSize: 11,

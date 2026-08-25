@@ -700,9 +700,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reportUser => 'Report user';
 
   @override
-  String get reportMessage => 'Report message';
-
-  @override
   String reportUserWithName(Object name) {
     return 'Report $name';
   }
@@ -742,18 +739,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get yesterday => 'Yesterday';
 
   @override
-  String get messagePlaceholder => 'Message…';
-
-  @override
-  String get noMessagesYet => 'No messages yet.\nSay hello!';
-
-  @override
-  String get noConversationsYet => 'No conversations yet';
-
-  @override
-  String get startChatHint => 'Find a friend and start chatting!';
-
-  @override
   String get youPrefix => 'You';
 
   @override
@@ -788,9 +773,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tabRequests => 'Requests';
-
-  @override
-  String get tabChats => 'Chats';
 
   @override
   String get addFriend => 'Add Friend';
@@ -1708,9 +1690,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => 'Upgrade available via the Microsoft Store';
-
-  @override
-  String get chatEmptyHint => 'Be the first to say something!';
 
   @override
   String get skinSaved => 'Skin saved';
@@ -2631,19 +2610,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get adminTicketsHeader => 'Reports and requests';
 
   @override
-  String get adminGeneralChat => 'General chat';
-
-  @override
   String get adminTicketReplyHint => 'Reply about this ticket…';
 
   @override
   String get adminNoTicketsForUser => 'No tickets from this user';
-
-  @override
-  String get hideConversation => 'Hide';
-
-  @override
-  String get conversationHidden => 'Conversation hidden';
 
   @override
   String get undo => 'Undo';
@@ -2872,18 +2842,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get serverStatVotesAllTime => 'Votes all time';
-
-  @override
-  String get serverStatPlayersHint => 'average while online';
-
-  @override
-  String get serverStatPeakHint => 'highest measured';
-
-  @override
-  String get serverStatUptimeHint => 'last 30 days';
-
-  @override
-  String get serverStatEditionHint => 'edition';
 
   @override
   String get serverBadgeFeatured => 'Featured';

@@ -703,9 +703,6 @@ class AppLocalizationsId extends AppLocalizations {
   String get reportUser => 'Report user';
 
   @override
-  String get reportMessage => 'Report message';
-
-  @override
   String reportUserWithName(Object name) {
     return 'Report $name';
   }
@@ -745,18 +742,6 @@ class AppLocalizationsId extends AppLocalizations {
   String get yesterday => 'Yesterday';
 
   @override
-  String get messagePlaceholder => 'Message…';
-
-  @override
-  String get noMessagesYet => 'No messages yet.\nSay hello!';
-
-  @override
-  String get noConversationsYet => 'No conversations yet';
-
-  @override
-  String get startChatHint => 'Find a friend and start chatting!';
-
-  @override
   String get youPrefix => 'You';
 
   @override
@@ -791,9 +776,6 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get tabRequests => 'Requests';
-
-  @override
-  String get tabChats => 'Chats';
 
   @override
   String get addFriend => 'Add Friend';
@@ -1713,9 +1695,6 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => 'Upgrade tersedia melalui Microsoft Store';
-
-  @override
-  String get chatEmptyHint => 'Jadilah yang pertama berkata sesuatu!';
 
   @override
   String get skinSaved => 'Skin disimpan';
@@ -2641,19 +2620,10 @@ class AppLocalizationsId extends AppLocalizations {
   String get adminTicketsHeader => 'Laporan dan permintaan';
 
   @override
-  String get adminGeneralChat => 'Obrolan umum';
-
-  @override
   String get adminTicketReplyHint => 'Balas tentang tiket ini…';
 
   @override
   String get adminNoTicketsForUser => 'Tidak ada tiket dari pengguna ini';
-
-  @override
-  String get hideConversation => 'Sembunyikan';
-
-  @override
-  String get conversationHidden => 'Obrolan disembunyikan';
 
   @override
   String get undo => 'Urungkan';
@@ -2811,91 +2781,79 @@ class AppLocalizationsId extends AppLocalizations {
   String get updateAvailableDismiss => 'Nanti saja';
 
   @override
-  String get serverListSearchHint => 'Search by name or address';
+  String get serverListSearchHint => 'Cari berdasarkan nama atau alamat';
 
   @override
-  String get serverListEditionAny => 'Java and Bedrock';
+  String get serverListEditionAny => 'Java dan Bedrock';
 
   @override
-  String get serverListEditionJava => 'Java only';
+  String get serverListEditionJava => 'Hanya Java';
 
   @override
-  String get serverListEditionBedrock => 'Bedrock only';
+  String get serverListEditionBedrock => 'Hanya Bedrock';
 
   @override
-  String get serverListSortVotes => 'Most votes';
+  String get serverListSortVotes => 'Vote terbanyak';
 
   @override
-  String get serverListSortPlayers => 'Most players';
+  String get serverListSortPlayers => 'Pemain terbanyak';
 
   @override
-  String get serverListSortPeak => 'Highest peak';
+  String get serverListSortPeak => 'Puncak tertinggi';
 
   @override
-  String get serverListSortNewest => 'Newest';
+  String get serverListSortNewest => 'Terbaru';
 
   @override
-  String get serverListSortName => 'Name';
+  String get serverListSortName => 'Nama';
 
   @override
-  String get serverListAllCategories => 'All';
+  String get serverListAllCategories => 'Semua';
 
   @override
-  String get serverListLoadFailed => 'Could not load the server list';
+  String get serverListLoadFailed => 'Tidak dapat memuat daftar server';
 
   @override
-  String get serverListLoadFailedHint => 'Pull down to try again';
+  String get serverListLoadFailedHint => 'Tarik ke bawah untuk mencoba lagi';
 
   @override
-  String get serverListNoMatch => 'No servers match that';
+  String get serverListNoMatch => 'Tidak ada server yang cocok';
 
   @override
-  String get serverListNoMatchHint => 'Try a different search or category';
+  String get serverListNoMatchHint => 'Coba pencarian atau kategori lain';
 
   @override
-  String get serverCardPlay => 'Play';
+  String get serverCardPlay => 'Main';
 
   @override
   String get serverCardVote => 'Vote';
 
   @override
-  String get serverCardViewServer => 'View server';
+  String get serverCardViewServer => 'Lihat server';
 
   @override
-  String get serverCopyIp => 'Copy IP';
+  String get serverCopyIp => 'Salin IP';
 
   @override
-  String get serverCopied => 'Copied';
+  String get serverCopied => 'Disalin';
 
   @override
-  String get serverStatPlayers => 'Players';
+  String get serverStatPlayers => 'Pemain';
 
   @override
-  String get serverStatPeak => 'Peak';
+  String get serverStatPeak => 'Puncak';
 
   @override
   String get serverStatUptime => 'Uptime';
 
   @override
-  String get serverStatVotesMonth => 'Votes this month';
+  String get serverStatVotesMonth => 'Vote bulan ini';
 
   @override
-  String get serverStatVotesAllTime => 'Votes all time';
+  String get serverStatVotesAllTime => 'Total vote';
 
   @override
-  String get serverStatPlayersHint => 'average while online';
-
-  @override
-  String get serverStatPeakHint => 'highest measured';
-
-  @override
-  String get serverStatUptimeHint => 'last 30 days';
-
-  @override
-  String get serverStatEditionHint => 'edition';
-
-  @override
-  String get serverBadgeFeatured => 'Featured';
+  String get serverBadgeFeatured => 'Unggulan';
 
   @override
   String get serverEditionJava => 'Java';
@@ -2907,46 +2865,46 @@ class AppLocalizationsId extends AppLocalizations {
   String get serverEditionCrossplay => 'Crossplay';
 
   @override
-  String get serverSectionMotd => 'Message of the day';
+  String get serverSectionMotd => 'Pesan hari ini';
 
   @override
-  String get serverSectionAbout => 'About';
+  String get serverSectionAbout => 'Tentang';
 
   @override
-  String get serverSectionCategories => 'Categories';
+  String get serverSectionCategories => 'Kategori';
 
   @override
-  String get serverSectionVotes => 'Votes';
+  String get serverSectionVotes => 'Vote';
 
   @override
   String get serverLinkDiscord => 'Discord';
 
   @override
-  String get serverLinkWebsite => 'Website';
+  String get serverLinkWebsite => 'Situs web';
 
   @override
-  String get serverVotesThisMonth => 'This month';
+  String get serverVotesThisMonth => 'Bulan ini';
 
   @override
-  String get serverVotesAllTime => 'All time';
+  String get serverVotesAllTime => 'Sepanjang waktu';
 
   @override
-  String get serverVoteAction => 'Vote for this server';
+  String get serverVoteAction => 'Vote server ini';
 
   @override
-  String get serverPlayAction => 'Play on this server';
+  String get serverPlayAction => 'Main di server ini';
 
   @override
-  String get serverVoteSignInRequired => 'Sign in to vote from the app.';
+  String get serverVoteSignInRequired => 'Masuk untuk vote dari aplikasi.';
 
   @override
   String serverVoteSheetTitle(String name) {
-    return 'Vote for $name';
+    return 'Vote untuk $name';
   }
 
   @override
   String get serverVoteSheetSubtitle =>
-      'Your Minecraft name, so the server knows who to reward.';
+      'Nama Minecraft kamu, supaya server tahu siapa yang diberi hadiah.';
 
   @override
   String get serverVoteSheetHint => 'Steve';
@@ -2955,18 +2913,19 @@ class AppLocalizationsId extends AppLocalizations {
   String get serverVoteSheetButton => 'Vote';
 
   @override
-  String get serverVoteSheetLimit => 'One vote per server per day.';
+  String get serverVoteSheetLimit => 'Satu vote per server per hari.';
 
   @override
-  String get serverVoteDelivered => 'Voted. Your reward is on its way.';
+  String get serverVoteDelivered => 'Vote terkirim. Hadiahmu sedang dikirim.';
 
   @override
-  String get serverVoteNoRewards => 'Voted. This server has no rewards set up.';
+  String get serverVoteNoRewards =>
+      'Vote terkirim. Server ini belum mengatur hadiah.';
 
   @override
-  String get serverVoteFailed => 'That did not work, please try again.';
+  String get serverVoteFailed => 'Gagal, silakan coba lagi.';
 
   @override
   String get serverVoteOffline =>
-      'Could not reach the server. Check your connection.';
+      'Tidak dapat menghubungi server. Periksa koneksimu.';
 }

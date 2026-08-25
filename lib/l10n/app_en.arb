@@ -641,10 +641,6 @@
   "@reportUser": {
     "description": "Tooltip/button to report a user"
   },
-  "reportMessage": "Report message",
-  "@reportMessage": {
-    "description": "Title when reporting a specific message"
-  },
   "reportUserWithName": "Report {name}",
   "@reportUserWithName": {
     "description": "Title when reporting a user by name",
@@ -696,22 +692,6 @@
   "@yesterday": {
     "description": "Date divider label for yesterday"
   },
-  "messagePlaceholder": "Message…",
-  "@messagePlaceholder": {
-    "description": "Hint text in the chat message input"
-  },
-  "noMessagesYet": "No messages yet.\nSay hello!",
-  "@noMessagesYet": {
-    "description": "Empty state in chat screen"
-  },
-  "noConversationsYet": "No conversations yet",
-  "@noConversationsYet": {
-    "description": "Empty state title on conversations screen"
-  },
-  "startChatHint": "Find a friend and start chatting!",
-  "@startChatHint": {
-    "description": "Empty state subtitle on conversations screen"
-  },
   "youPrefix": "You",
   "@youPrefix": {
     "description": "Prefix for last message preview when message is from current user"
@@ -758,10 +738,6 @@
   "tabRequests": "Requests",
   "@tabRequests": {
     "description": "Tab label for Requests tab"
-  },
-  "tabChats": "Chats",
-  "@tabChats": {
-    "description": "Tab label for Chats tab"
   },
   "addFriend": "Add Friend",
   "@addFriend": {
@@ -1813,10 +1789,6 @@
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
   },
-  "chatEmptyHint": "Be the first to say something!",
-  "@chatEmptyHint": {
-    "description": "Subtitle on the empty chat screen"
-  },
   "skinSaved": "Skin saved",
   "@skinSaved": {
     "description": "Toast when skin is saved"
@@ -2806,11 +2778,8 @@
   "notifFeedbackStatus": "Update on your feedback",
   "notifFeedbackReply": "Reply on your feedback",
   "adminTicketsHeader": "Reports and requests",
-  "adminGeneralChat": "General chat",
   "adminTicketReplyHint": "Reply about this ticket…",
   "adminNoTicketsForUser": "No tickets from this user",
-  "hideConversation": "Hide",
-  "conversationHidden": "Conversation hidden",
   "undo": "Undo",
   "chooseServerTitle": "Choose a server",
   "@chooseServerTitle": {
@@ -2993,10 +2962,6 @@
   "serverStatUptime": "Uptime",
   "serverStatVotesMonth": "Votes this month",
   "serverStatVotesAllTime": "Votes all time",
-  "serverStatPlayersHint": "average while online",
-  "serverStatPeakHint": "highest measured",
-  "serverStatUptimeHint": "last 30 days",
-  "serverStatEditionHint": "edition",
   "serverBadgeFeatured": "Featured",
   "serverEditionJava": "Java",
   "serverEditionBedrock": "Bedrock",

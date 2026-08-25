@@ -8,7 +8,7 @@ import '../services/locale_provider.dart';
 import '../services/region_detector.dart';
 import '../services/relay_service.dart';
 import '../services/auth_service.dart';
-import '../services/message_service.dart';
+import '../services/presence_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import '../services/push_notification_service.dart';
 import '../constants/app_constants.dart';
@@ -25,7 +25,6 @@ import '../services/partners_servers_service.dart';
 import '../l10n/app_localizations.dart';
 import '../services/user_service.dart';
 import 'my_feedback_screen.dart';
-import '../models/user_model.dart';
 import 'landing_screen.dart';
 import '../widgets/landing/landing_customize_sheet.dart';
 import 'connector_screen.dart';
@@ -37,7 +36,6 @@ import 'manage_servers_screen.dart';
 import 'resource_pack_screen.dart';
 import 'profile_screen.dart';
 import 'public_profile_screen.dart';
-import 'chat_screen.dart';
 import 'server_tracker_screen.dart';
 import 'feedback_screen.dart';
 import '../services/server_tracker_service.dart';
@@ -123,7 +121,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
 
     _authSub = AuthService.userStream.listen((user) {
       if (user != null) {
-        MessageService.connect();
+        PresenceService.connect();
         if (_lastSignedInUid != user.uid) {
           _lastSignedInUid = user.uid;
           unawaited(PushNotificationService.onUserSignedIn());
@@ -133,7 +131,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
         _warmLikelyScreens();
       } else {
         _lastSignedInUid = null;
-        MessageService.disconnect();
+        PresenceService.disconnect();
         ServerTrackerService.instance.stop();
         SubscriptionService.instance.reset();
       }
@@ -416,10 +414,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   void _handleNotificationTap(RemoteMessage message) {
     final type = message.data['type'] as String? ?? 'unknown';
     switch (type) {
-      case 'message':
-        final username = message.data['senderUsername'] as String?;
-        _goToProfileTab(3);
-        if (username != null) unawaited(_openChatFromNotification(username));
       case 'friend_request':
         _goToProfileTab(2);
       case 'friend_online':
@@ -448,21 +442,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     });
   }
 
-  Future<void> _openChatFromNotification(String username) async {
-    final user = await UserService.getProfile(username);
-    if (!mounted || user == null) return;
-    final friend = FriendModel(
-      firebaseUid: '',
-      username: user.username,
-      displayName: user.displayName,
-      avatarUrl: user.avatarUrl,
-      online: false,
-    );
-    if (!mounted) return;
-    _contentNavigator.push(
-      MaterialPageRoute(builder: (_) => ChatScreen(friend: friend)),
-    );
-  }
+
 
   void _goTo(int page) {
     _desktopNavKey.currentState?.popUntil((r) => r.isFirst);
@@ -577,7 +557,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     RelayService.selection.removeListener(_onRelayServiceChanged);
     _authSub?.cancel();
     _linkSub?.cancel();
-    MessageService.disconnect();
+    PresenceService.disconnect();
     _logScrollController.dispose();
     _logsNotifier.dispose();
     _debugEnabledNotifier.dispose();
@@ -590,8 +570,12 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
+    ServerTrackerService.instance.setForeground(
+      state == AppLifecycleState.resumed,
+    );
+
     if (state == AppLifecycleState.resumed) {
-      if (AuthService.currentUser != null) MessageService.reconnectIfNeeded();
+      if (AuthService.currentUser != null) PresenceService.reconnectIfNeeded();
       unawaited(RegionDetector.refreshInBackground());
     }
   }

@@ -704,10 +704,6 @@
   "@linkedAccountsTitle": {
     "description": "Section title for linked accounts card"
   },
-  "messagePlaceholder": "Message…",
-  "@messagePlaceholder": {
-    "description": "Hint text in the chat message input"
-  },
   "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -732,10 +728,6 @@
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noConversationsYet": "No conversations yet",
-  "@noConversationsYet": {
-    "description": "Empty state title on conversations screen"
-  },
   "noFriendsSub": "Add friends to see them here.",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
@@ -743,10 +735,6 @@
   "noFriendsYet": "No friends yet",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
-  },
-  "noMessagesYet": "No messages yet.\nSay hello!",
-  "@noMessagesYet": {
-    "description": "Empty state in chat screen"
   },
   "noPartnerServers": "No partner servers available yet.",
   "@noPartnerServers": {
@@ -952,10 +940,6 @@
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportMessage": "Report message",
-  "@reportMessage": {
-    "description": "Title when reporting a specific message"
-  },
   "reportReasonHarassment": "Harassment",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
@@ -1143,14 +1127,6 @@
   "somethingWentWrong": "Something went wrong. Please try again.",
   "@somethingWentWrong": {
     "description": "Generic error message"
-  },
-  "startChatHint": "Find a friend and start chatting!",
-  "@startChatHint": {
-    "description": "Empty state subtitle on conversations screen"
-  },
-  "tabChats": "Chats",
-  "@tabChats": {
-    "description": "Tab label for Chats tab"
   },
   "tabFriends": "Friends",
   "@tabFriends": {
@@ -1530,10 +1506,6 @@
   "upgradeWindowsHint": "الترقية متاحة عبر متجر Microsoft",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "chatEmptyHint": "كن أول من يقول شيئاً!",
-  "@chatEmptyHint": {
-    "description": "Subtitle on the empty chat screen"
   },
   "skinSaved": "تم حفظ السكن",
   "@skinSaved": {
@@ -1961,11 +1933,8 @@
   "notifFeedbackStatus": "تحديث بشأن ملاحظاتك",
   "notifFeedbackReply": "رد على ملاحظاتك",
   "adminTicketsHeader": "البلاغات والطلبات",
-  "adminGeneralChat": "محادثة عامة",
   "adminTicketReplyHint": "رد بخصوص هذه التذكرة…",
   "adminNoTicketsForUser": "لا توجد تذاكر من هذا المستخدم",
-  "hideConversation": "إخفاء",
-  "conversationHidden": "تم إخفاء المحادثة",
   "undo": "تراجع",
   "chooseServerTitle": "اختر خادمًا",
   "changeLabel": "تغيير",
@@ -2041,5 +2010,53 @@
     }
   },
   "updateAvailableAction": "تنزيل",
-  "updateAvailableDismiss": "ليس الآن"
+  "updateAvailableDismiss": "ليس الآن",
+  "serverListSearchHint": "ابحث بالاسم أو العنوان",
+  "serverListEditionAny": "Java و Bedrock",
+  "serverListEditionJava": "Java فقط",
+  "serverListEditionBedrock": "Bedrock فقط",
+  "serverListSortVotes": "الأكثر تصويتًا",
+  "serverListSortPlayers": "الأكثر لاعبين",
+  "serverListSortPeak": "أعلى ذروة",
+  "serverListSortNewest": "الأحدث",
+  "serverListSortName": "الاسم",
+  "serverListAllCategories": "الكل",
+  "serverListLoadFailed": "تعذّر تحميل قائمة الخوادم",
+  "serverListLoadFailedHint": "اسحب للأسفل لإعادة المحاولة",
+  "serverListNoMatch": "لا توجد خوادم مطابقة",
+  "serverListNoMatchHint": "جرّب بحثًا أو فئة أخرى",
+  "serverCardPlay": "العب",
+  "serverCardVote": "صوّت",
+  "serverCardViewServer": "عرض الخادم",
+  "serverCopyIp": "نسخ الـ IP",
+  "serverCopied": "تم النسخ",
+  "serverStatPlayers": "اللاعبون",
+  "serverStatPeak": "الذروة",
+  "serverStatUptime": "مدة التشغيل",
+  "serverStatVotesMonth": "أصوات هذا الشهر",
+  "serverStatVotesAllTime": "إجمالي الأصوات",
+  "serverBadgeFeatured": "مميّز",
+  "serverEditionJava": "Java",
+  "serverEditionBedrock": "Bedrock",
+  "serverEditionCrossplay": "لعب مشترك",
+  "serverSectionMotd": "رسالة اليوم",
+  "serverSectionAbout": "نبذة",
+  "serverSectionCategories": "الفئات",
+  "serverSectionVotes": "الأصوات",
+  "serverLinkDiscord": "Discord",
+  "serverLinkWebsite": "الموقع",
+  "serverVotesThisMonth": "هذا الشهر",
+  "serverVotesAllTime": "كل الأوقات",
+  "serverVoteAction": "صوّت لهذا الخادم",
+  "serverPlayAction": "العب على هذا الخادم",
+  "serverVoteSignInRequired": "سجّل الدخول للتصويت من التطبيق.",
+  "serverVoteSheetTitle": "صوّت لـ {name}",
+  "serverVoteSheetSubtitle": "اسمك في Minecraft، ليعرف الخادم من يكافئ.",
+  "serverVoteSheetHint": "Steve",
+  "serverVoteSheetButton": "صوّت",
+  "serverVoteSheetLimit": "صوت واحد لكل خادم في اليوم.",
+  "serverVoteDelivered": "تم التصويت. مكافأتك في الطريق.",
+  "serverVoteNoRewards": "تم التصويت. لم يضبط هذا الخادم أي مكافآت.",
+  "serverVoteFailed": "لم ينجح ذلك، يرجى المحاولة مرة أخرى.",
+  "serverVoteOffline": "تعذّر الوصول إلى الخادم. تحقّق من اتصالك."
 }

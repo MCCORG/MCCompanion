@@ -127,7 +127,6 @@ class ProfileFriendsTab extends StatelessWidget {
   final bool loading;
   final Future<void> Function() onRefresh;
   final Future<void> Function(FriendModel) onRemove;
-  final void Function(FriendModel) onChat;
   final VoidCallback? onGoToHome;
   final VoidCallback? onGoToConnector;
   final VoidCallback? onGoToSkins;
@@ -138,7 +137,6 @@ class ProfileFriendsTab extends StatelessWidget {
     required this.loading,
     required this.onRefresh,
     required this.onRemove,
-    required this.onChat,
     this.onGoToHome,
     this.onGoToConnector,
     this.onGoToSkins,
@@ -177,7 +175,6 @@ class ProfileFriendsTab extends StatelessWidget {
                 child: ProfileFriendTile(
                   friend: f,
                   onRemove: () => onRemove(f),
-                  onChat: () => onChat(f),
                   onGoToHome: onGoToHome,
                   onGoToConnector: onGoToConnector,
                   onGoToSkins: onGoToSkins,
@@ -198,7 +195,6 @@ class ProfileFriendsTab extends StatelessWidget {
                 child: ProfileFriendTile(
                   friend: f,
                   onRemove: () => onRemove(f),
-                  onChat: () => onChat(f),
                   onGoToHome: onGoToHome,
                   onGoToConnector: onGoToConnector,
                   onGoToSkins: onGoToSkins,

@@ -704,10 +704,6 @@
   "@linkedAccountsTitle": {
     "description": "Section title for linked accounts card"
   },
-  "messagePlaceholder": "Mensagem…",
-  "@messagePlaceholder": {
-    "description": "Hint text in the chat message input"
-  },
   "minecraftTrademark": "\"Minecraft\" é uma marca registada da Microsoft Corporation.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -732,10 +728,6 @@
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noConversationsYet": "Ainda sem conversas",
-  "@noConversationsYet": {
-    "description": "Empty state title on conversations screen"
-  },
   "noFriendsSub": "Adiciona amigos para os veres aqui.",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
@@ -743,10 +735,6 @@
   "noFriendsYet": "Ainda sem amigos",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
-  },
-  "noMessagesYet": "Ainda sem mensagens.\nDiz olá!",
-  "@noMessagesYet": {
-    "description": "Empty state in chat screen"
   },
   "noPartnerServers": "Ainda sem servidores parceiros.",
   "@noPartnerServers": {
@@ -952,10 +940,6 @@
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportMessage": "Denunciar mensagem",
-  "@reportMessage": {
-    "description": "Title when reporting a specific message"
-  },
   "reportReasonHarassment": "Assédio",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
@@ -1143,14 +1127,6 @@
   "somethingWentWrong": "Algo correu mal. Tente novamente.",
   "@somethingWentWrong": {
     "description": "Generic error message"
-  },
-  "startChatHint": "Encontra um amigo e começa a conversar!",
-  "@startChatHint": {
-    "description": "Empty state subtitle on conversations screen"
-  },
-  "tabChats": "Chats",
-  "@tabChats": {
-    "description": "Tab label for Chats tab"
   },
   "tabFriends": "Amigos",
   "@tabFriends": {
@@ -1530,10 +1506,6 @@
   "upgradeWindowsHint": "Atualização disponível na Microsoft Store",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "chatEmptyHint": "Seja o primeiro a dizer algo!",
-  "@chatEmptyHint": {
-    "description": "Subtitle on the empty chat screen"
   },
   "skinSaved": "Skin salva",
   "@skinSaved": {
@@ -1961,11 +1933,8 @@
   "notifFeedbackStatus": "Novidades sobre o teu feedback",
   "notifFeedbackReply": "Resposta ao teu feedback",
   "adminTicketsHeader": "Relatórios e pedidos",
-  "adminGeneralChat": "Conversa geral",
   "adminTicketReplyHint": "Responder sobre este ticket…",
   "adminNoTicketsForUser": "Sem tickets deste utilizador",
-  "hideConversation": "Ocultar",
-  "conversationHidden": "Conversa ocultada",
   "undo": "Anular",
   "chooseServerTitle": "Escolhe um servidor",
   "changeLabel": "Alterar",
@@ -2041,5 +2010,53 @@
     }
   },
   "updateAvailableAction": "Baixar",
-  "updateAvailableDismiss": "Agora não"
+  "updateAvailableDismiss": "Agora não",
+  "serverListSearchHint": "Pesquisar por nome ou endereço",
+  "serverListEditionAny": "Java e Bedrock",
+  "serverListEditionJava": "Apenas Java",
+  "serverListEditionBedrock": "Apenas Bedrock",
+  "serverListSortVotes": "Mais votos",
+  "serverListSortPlayers": "Mais jogadores",
+  "serverListSortPeak": "Maior pico",
+  "serverListSortNewest": "Mais recentes",
+  "serverListSortName": "Nome",
+  "serverListAllCategories": "Todas",
+  "serverListLoadFailed": "Não foi possível carregar a lista de servidores",
+  "serverListLoadFailedHint": "Puxe para baixo para tentar de novo",
+  "serverListNoMatch": "Nenhum servidor corresponde",
+  "serverListNoMatchHint": "Tente outra pesquisa ou categoria",
+  "serverCardPlay": "Jogar",
+  "serverCardVote": "Votar",
+  "serverCardViewServer": "Ver servidor",
+  "serverCopyIp": "Copiar IP",
+  "serverCopied": "Copiado",
+  "serverStatPlayers": "Jogadores",
+  "serverStatPeak": "Pico",
+  "serverStatUptime": "Disponibilidade",
+  "serverStatVotesMonth": "Votos este mês",
+  "serverStatVotesAllTime": "Votos no total",
+  "serverBadgeFeatured": "Destaque",
+  "serverEditionJava": "Java",
+  "serverEditionBedrock": "Bedrock",
+  "serverEditionCrossplay": "Crossplay",
+  "serverSectionMotd": "Mensagem do dia",
+  "serverSectionAbout": "Sobre",
+  "serverSectionCategories": "Categorias",
+  "serverSectionVotes": "Votos",
+  "serverLinkDiscord": "Discord",
+  "serverLinkWebsite": "Site",
+  "serverVotesThisMonth": "Este mês",
+  "serverVotesAllTime": "Desde o início",
+  "serverVoteAction": "Votar neste servidor",
+  "serverPlayAction": "Jogar neste servidor",
+  "serverVoteSignInRequired": "Entre para votar pelo aplicativo.",
+  "serverVoteSheetTitle": "Votar em {name}",
+  "serverVoteSheetSubtitle": "Seu nome no Minecraft, para o servidor saber quem recompensar.",
+  "serverVoteSheetHint": "Steve",
+  "serverVoteSheetButton": "Votar",
+  "serverVoteSheetLimit": "Um voto por servidor por dia.",
+  "serverVoteDelivered": "Voto registrado. Sua recompensa está a caminho.",
+  "serverVoteNoRewards": "Voto registrado. Este servidor não tem recompensas configuradas.",
+  "serverVoteFailed": "Não funcionou, tente novamente.",
+  "serverVoteOffline": "Não foi possível contatar o servidor. Verifique sua conexão."
 }

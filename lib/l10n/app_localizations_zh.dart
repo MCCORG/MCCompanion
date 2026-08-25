@@ -689,9 +689,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get reportUser => 'Report user';
 
   @override
-  String get reportMessage => 'Report message';
-
-  @override
   String reportUserWithName(Object name) {
     return 'Report $name';
   }
@@ -731,18 +728,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get yesterday => 'Yesterday';
 
   @override
-  String get messagePlaceholder => 'Message…';
-
-  @override
-  String get noMessagesYet => 'No messages yet.\nSay hello!';
-
-  @override
-  String get noConversationsYet => 'No conversations yet';
-
-  @override
-  String get startChatHint => 'Find a friend and start chatting!';
-
-  @override
   String get youPrefix => 'You';
 
   @override
@@ -777,9 +762,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get tabRequests => 'Requests';
-
-  @override
-  String get tabChats => 'Chats';
 
   @override
   String get addFriend => 'Add Friend';
@@ -1695,9 +1677,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get upgradeWindowsHint => '可在 Microsoft Store 升级';
 
   @override
-  String get chatEmptyHint => '率先说点什么吧！';
-
-  @override
   String get skinSaved => '皮肤已保存';
 
   @override
@@ -2584,19 +2563,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get adminTicketsHeader => '报告与需求';
 
   @override
-  String get adminGeneralChat => '常规聊天';
-
-  @override
   String get adminTicketReplyHint => '回复此工单…';
 
   @override
   String get adminNoTicketsForUser => '该用户没有工单';
-
-  @override
-  String get hideConversation => '隐藏';
-
-  @override
-  String get conversationHidden => '对话已隐藏';
 
   @override
   String get undo => '撤销';
@@ -2749,91 +2719,79 @@ class AppLocalizationsZh extends AppLocalizations {
   String get updateAvailableDismiss => '以后再说';
 
   @override
-  String get serverListSearchHint => 'Search by name or address';
+  String get serverListSearchHint => '按名称或地址搜索';
 
   @override
-  String get serverListEditionAny => 'Java and Bedrock';
+  String get serverListEditionAny => 'Java 和 Bedrock';
 
   @override
-  String get serverListEditionJava => 'Java only';
+  String get serverListEditionJava => '仅 Java';
 
   @override
-  String get serverListEditionBedrock => 'Bedrock only';
+  String get serverListEditionBedrock => '仅 Bedrock';
 
   @override
-  String get serverListSortVotes => 'Most votes';
+  String get serverListSortVotes => '投票最多';
 
   @override
-  String get serverListSortPlayers => 'Most players';
+  String get serverListSortPlayers => '玩家最多';
 
   @override
-  String get serverListSortPeak => 'Highest peak';
+  String get serverListSortPeak => '峰值最高';
 
   @override
-  String get serverListSortNewest => 'Newest';
+  String get serverListSortNewest => '最新';
 
   @override
-  String get serverListSortName => 'Name';
+  String get serverListSortName => '名称';
 
   @override
-  String get serverListAllCategories => 'All';
+  String get serverListAllCategories => '全部';
 
   @override
-  String get serverListLoadFailed => 'Could not load the server list';
+  String get serverListLoadFailed => '无法加载服务器列表';
 
   @override
-  String get serverListLoadFailedHint => 'Pull down to try again';
+  String get serverListLoadFailedHint => '下拉重试';
 
   @override
-  String get serverListNoMatch => 'No servers match that';
+  String get serverListNoMatch => '没有匹配的服务器';
 
   @override
-  String get serverListNoMatchHint => 'Try a different search or category';
+  String get serverListNoMatchHint => '换个关键词或分类试试';
 
   @override
-  String get serverCardPlay => 'Play';
+  String get serverCardPlay => '开始游戏';
 
   @override
-  String get serverCardVote => 'Vote';
+  String get serverCardVote => '投票';
 
   @override
-  String get serverCardViewServer => 'View server';
+  String get serverCardViewServer => '查看服务器';
 
   @override
-  String get serverCopyIp => 'Copy IP';
+  String get serverCopyIp => '复制 IP';
 
   @override
-  String get serverCopied => 'Copied';
+  String get serverCopied => '已复制';
 
   @override
-  String get serverStatPlayers => 'Players';
+  String get serverStatPlayers => '玩家';
 
   @override
-  String get serverStatPeak => 'Peak';
+  String get serverStatPeak => '峰值';
 
   @override
-  String get serverStatUptime => 'Uptime';
+  String get serverStatUptime => '在线率';
 
   @override
-  String get serverStatVotesMonth => 'Votes this month';
+  String get serverStatVotesMonth => '本月投票';
 
   @override
-  String get serverStatVotesAllTime => 'Votes all time';
+  String get serverStatVotesAllTime => '总投票';
 
   @override
-  String get serverStatPlayersHint => 'average while online';
-
-  @override
-  String get serverStatPeakHint => 'highest measured';
-
-  @override
-  String get serverStatUptimeHint => 'last 30 days';
-
-  @override
-  String get serverStatEditionHint => 'edition';
-
-  @override
-  String get serverBadgeFeatured => 'Featured';
+  String get serverBadgeFeatured => '精选';
 
   @override
   String get serverEditionJava => 'Java';
@@ -2842,69 +2800,67 @@ class AppLocalizationsZh extends AppLocalizations {
   String get serverEditionBedrock => 'Bedrock';
 
   @override
-  String get serverEditionCrossplay => 'Crossplay';
+  String get serverEditionCrossplay => '跨平台';
 
   @override
-  String get serverSectionMotd => 'Message of the day';
+  String get serverSectionMotd => '每日消息';
 
   @override
-  String get serverSectionAbout => 'About';
+  String get serverSectionAbout => '简介';
 
   @override
-  String get serverSectionCategories => 'Categories';
+  String get serverSectionCategories => '分类';
 
   @override
-  String get serverSectionVotes => 'Votes';
+  String get serverSectionVotes => '投票';
 
   @override
   String get serverLinkDiscord => 'Discord';
 
   @override
-  String get serverLinkWebsite => 'Website';
+  String get serverLinkWebsite => '官网';
 
   @override
-  String get serverVotesThisMonth => 'This month';
+  String get serverVotesThisMonth => '本月';
 
   @override
-  String get serverVotesAllTime => 'All time';
+  String get serverVotesAllTime => '全部时间';
 
   @override
-  String get serverVoteAction => 'Vote for this server';
+  String get serverVoteAction => '为这个服务器投票';
 
   @override
-  String get serverPlayAction => 'Play on this server';
+  String get serverPlayAction => '在这个服务器上游玩';
 
   @override
-  String get serverVoteSignInRequired => 'Sign in to vote from the app.';
+  String get serverVoteSignInRequired => '登录后即可在应用内投票。';
 
   @override
   String serverVoteSheetTitle(String name) {
-    return 'Vote for $name';
+    return '为 $name 投票';
   }
 
   @override
-  String get serverVoteSheetSubtitle =>
-      'Your Minecraft name, so the server knows who to reward.';
+  String get serverVoteSheetSubtitle => '你的 Minecraft 名称，服务器凭此发放奖励。';
 
   @override
   String get serverVoteSheetHint => 'Steve';
 
   @override
-  String get serverVoteSheetButton => 'Vote';
+  String get serverVoteSheetButton => '投票';
 
   @override
-  String get serverVoteSheetLimit => 'One vote per server per day.';
+  String get serverVoteSheetLimit => '每个服务器每天可投一票。';
 
   @override
-  String get serverVoteDelivered => 'Voted. Your reward is on its way.';
+  String get serverVoteDelivered => '投票成功，奖励正在发放。';
 
   @override
-  String get serverVoteNoRewards => 'Voted. This server has no rewards set up.';
+  String get serverVoteNoRewards => '投票成功。该服务器尚未设置奖励。';
 
   @override
-  String get serverVoteFailed => 'That did not work, please try again.';
+  String get serverVoteFailed => '操作未成功，请重试。';
 
   @override
-  String get serverVoteOffline =>
-      'Could not reach the server. Check your connection.';
+  String get serverVoteOffline => '无法连接服务器，请检查网络。';
 }
