@@ -360,47 +360,11 @@ abstract class AppLocalizations {
   /// **'Java'**
   String get labelJava;
 
-  /// No description provided for @startJavaMode.
-  ///
-  /// In en, this message translates to:
-  /// **'Start Java Mode'**
-  String get startJavaMode;
-
-  /// No description provided for @javaInfoTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Java Mode'**
-  String get javaInfoTitle;
-
-  /// No description provided for @javaInfoText.
-  ///
-  /// In en, this message translates to:
-  /// **'Connect to Java Edition servers'**
-  String get javaInfoText;
-
-  /// Title for the Java how-to modal
-  ///
-  /// In en, this message translates to:
-  /// **'Java Mode'**
-  String get howToJavaTitle;
-
-  /// Short subtitle for Java menu tile
-  ///
-  /// In en, this message translates to:
-  /// **'Connect to Java Edition servers via MCCompanion'**
-  String get howToJavaSubtitle;
-
   /// No description provided for @aternosSubtext.
   ///
   /// In en, this message translates to:
   /// **'Create your own free Minecraft server'**
   String get aternosSubtext;
-
-  /// Detailed steps for Java mode how-to modal
-  ///
-  /// In en, this message translates to:
-  /// **'Java Mode: quick steps:\n1. In the app, select Java mode.\n2. Enter your Java Edition server address and port (default: 25565).\n3. Press \"Start Java Mode\": MCCompanion bridges the connection.\n4. Open Minecraft Bedrock and go to the Friends tab.\n5. Select the LAN server named \"MCCompanion\" to join the Java server.\n\n⚠️ Important warnings:\n- A valid Java Edition account (Microsoft) is required.\n- Some servers use anti-cheat systems that may detect and ban your account.\n- Certain servers explicitly prohibit Bedrock clients, always check the server rules.\n- MCCompanion is not responsible for any account bans, suspensions, or other account-related issues that may result from using this feature.\n- Use at your own risk.'**
-  String get howToJavaBody;
 
   /// Your language name in your own language
   ///

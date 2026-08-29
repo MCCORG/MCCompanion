@@ -267,7 +267,6 @@ class HomeScreenState extends State<HomeScreen> {
     PanelMode.lan => BroadcastMode.lan,
     PanelMode.nintendo => BroadcastMode.nintendo,
     PanelMode.friends => BroadcastMode.friends,
-    PanelMode.java => BroadcastMode.java,
     PanelMode.direct => BroadcastMode.direct,
   };
 

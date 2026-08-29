@@ -58,19 +58,6 @@ class HowToDialogs {
     );
   }
 
-  static Future<void> showJavaInstructions(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
-    return _showSheet(
-      context,
-      topic: HowToTopic.java,
-      icon: FontAwesomeIcons.java,
-      color: AppTheme.modeJava,
-      title: loc.howToJavaTitle,
-      subtitle: loc.howToJavaSubtitle,
-      body: loc.howToJavaBody,
-    );
-  }
-
   static Future<void> showDirectInstructions(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
     return _showSheet(

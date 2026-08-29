@@ -131,27 +131,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get labelJava => 'Java';
 
   @override
-  String get startJavaMode => 'Java Modunu Başlat';
-
-  @override
-  String get javaInfoTitle => 'Java Modu';
-
-  @override
-  String get javaInfoText => 'Java Edition sunucularına bağlanın';
-
-  @override
-  String get howToJavaTitle => 'Java Modu';
-
-  @override
-  String get howToJavaSubtitle =>
-      'MCCompanion üzerinden Java Edition sunucularına bağlanın';
-
-  @override
   String get aternosSubtext => 'Kendi ücretsiz Minecraft sunucunuzu oluşturun';
-
-  @override
-  String get howToJavaBody =>
-      'Java Modu: hızlı adımlar:\n1. Uygulamada Java modunu seçin.\n2. Java Edition sunucu adresinizi ve portunuzu girin (varsayılan: 25565).\n3. \"Java Modunu Başlat\" düğmesine basın: MCCompanion bağlantıyı köprüleyecektir.\n4. Minecraft Bedrock\'u açın ve Arkadaşlar sekmesine gidin.\n5. Java sunucusuna katılmak için \"MCCompanion\" adlı LAN sunucusunu seçin.\n\n⚠️ Önemli uyarılar:\n- Geçerli bir Java Edition hesabı (Microsoft) gereklidir.\n- Bazı sunucular hesabınızı tespit edip yasaklayabilecek hile önleme sistemleri kullanır.\n- Bazı sunucular Bedrock istemcilerini açıkça yasaklar, her zaman sunucu kurallarını kontrol edin.\n- Bu özelliğin kullanılmasından kaynaklanabilecek hesap yasakları, askıya almalar veya hesapla ilgili diğer sorunlardan MCCompanion sorumlu değildir.\n- Kendi riskinizle kullanın.';
 
   @override
   String get language => 'Türkçe';

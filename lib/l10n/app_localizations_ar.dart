@@ -128,26 +128,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get labelJava => 'Java';
 
   @override
-  String get startJavaMode => 'ابدأ وضع Java';
-
-  @override
-  String get javaInfoTitle => 'وضع Java';
-
-  @override
-  String get javaInfoText => 'اتصل بخوادم Java Edition';
-
-  @override
-  String get howToJavaTitle => 'وضع Java';
-
-  @override
-  String get howToJavaSubtitle => 'اتصل بخوادم Java Edition عبر MCCompanion';
-
-  @override
   String get aternosSubtext => 'أنشئ خادم ماينكرافت مجاني خاص بك';
-
-  @override
-  String get howToJavaBody =>
-      'وضع Java: خطوات سريعة:\n1. في التطبيق، اختر وضع Java.\n2. أدخل عنوان خادم Java Edition والمنفذ (الافتراضي: 25565).\n3. اضغط على \"ابدأ وضع Java\": سيقوم MCCompanion بربط الاتصال.\n4. افتح Minecraft Bedrock وانتقل إلى علامة تبويب الأصدقاء.\n5. اختر خادم LAN المسمى \"MCCompanion\" للانضمام إلى خادم Java.\n\n⚠️ تحذيرات مهمة:\n- يلزم وجود حساب Java Edition صالح (Microsoft).\n- تستخدم بعض الخوادم أنظمة مكافحة الغش وقد تكتشف حسابك وتحظره.\n- بعض الخوادم تحظر عملاء Bedrock صراحةً: تحقق دائمًا من قواعد الخادم.\n- MCCompanion غير مسؤول عن أي حظر أو تعليق أو أي مشكلات أخرى متعلقة بالحساب قد تنتج عن استخدام هذه الميزة.\n- استخدمها على مسؤوليتك الخاصة.';
 
   @override
   String get language => 'العربية';

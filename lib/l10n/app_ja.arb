@@ -26,18 +26,12 @@
   "serverDetailsLabel": "サーバー詳細",
   "start": "開始",
   "labelJava": "Java",
-  "startJavaMode": "Javaモードを開始",
-  "javaInfoTitle": "Javaモード",
-  "javaInfoText": "Java Editionサーバーに接続",
-  "howToJavaTitle": "Javaモード",
   "@howToJavaTitle": {
     "description": "Title for the Java how-to modal"
   },
-  "howToJavaSubtitle": "MCCompanion経由でJava Editionサーバーに接続",
   "@howToJavaSubtitle": {
     "description": "Short subtitle for Java menu tile"
   },
-  "howToJavaBody": "Javaモード: クイック手順:\n1. アプリでJavaモードを選択します。\n2. Java Editionサーバーのアドレスとポートを入力します（既定: 25565）。\n3. 「Javaモードを開始」を押します: MCCompanionが接続を橋渡しします。\n4. Minecraft Bedrockを開いて、フレンドタブに移動します。\n5. Javaサーバーに参加するには、「MCCompanion」という名前のLANサーバーを選択します。\n\n⚠️ 重要な警告:\n- 有効なJava Editionアカウント（Microsoft）が必要です。\n- 一部のサーバーではアンチチートシステムが使用されており、アカウントが検出されてBANされる可能性があります。\n- Bedrockクライアントを明確に禁止しているサーバーもあります: 必ずサーバールールを確認してください。\n- この機能の使用によって発生するアカウントBAN、利用停止、その他のアカウント関連の問題について、MCCompanionは責任を負いません。\n- 自己責任で使用してください。",
   "@howToJavaBody": {
     "description": "Detailed steps for Java mode how-to modal"
   },

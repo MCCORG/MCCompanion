@@ -26,18 +26,12 @@
   "serverDetailsLabel": "Serverdetails",
   "start": "Starten",
   "labelJava": "Java",
-  "startJavaMode": "Java-modus starten",
-  "javaInfoTitle": "Java-modus",
-  "javaInfoText": "Verbinden met Java Edition-servers",
-  "howToJavaTitle": "Java-modus",
   "@howToJavaTitle": {
     "description": "Title for the Java how-to modal"
   },
-  "howToJavaSubtitle": "Verbinden met Java Edition-servers via MCCompanion",
   "@howToJavaSubtitle": {
     "description": "Short subtitle for Java menu tile"
   },
-  "howToJavaBody": "Java-modus: snelle stappen:\n1. Selecteer in de app de Java-modus.\n2. Voer het adres en de poort van je Java Edition-server in (standaard: 25565).\n3. Druk op \"Java-modus starten\": MCCompanion overbrugt de verbinding.\n4. Open Minecraft Bedrock en ga naar het tabblad Vrienden.\n5. Selecteer de LAN-server met de naam \"MCCompanion\" om deel te nemen aan de Java-server.\n\n⚠️ Belangrijke waarschuwingen:\n- Een geldig Java Edition-account (Microsoft) is vereist.\n- Sommige servers gebruiken anti-cheat-systemen die je account kunnen detecteren en verbannen.\n- Sommige servers verbieden Bedrock-clients expliciet, controleer altijd de serverregels.\n- MCCompanion is niet verantwoordelijk voor accountverboden, schorsingen of andere accountgerelateerde problemen die uit het gebruik van deze functie kunnen voortkomen.\n- Gebruik op eigen risico.",
   "@howToJavaBody": {
     "description": "Detailed steps for Java mode how-to modal"
   },

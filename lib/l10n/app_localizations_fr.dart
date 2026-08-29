@@ -134,27 +134,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get labelJava => 'Java';
 
   @override
-  String get startJavaMode => 'Démarrer le mode Java';
-
-  @override
-  String get javaInfoTitle => 'Mode Java';
-
-  @override
-  String get javaInfoText => 'Se connecter aux serveurs Java Edition';
-
-  @override
-  String get howToJavaTitle => 'Mode Java';
-
-  @override
-  String get howToJavaSubtitle =>
-      'Se connecter aux serveurs Java Edition via MCCompanion';
-
-  @override
   String get aternosSubtext => 'Créez votre propre serveur Minecraft gratuit';
-
-  @override
-  String get howToJavaBody =>
-      'Mode Java: étapes rapides :\n1. Dans l\'application, sélectionnez le mode Java.\n2. Saisissez l\'adresse et le port de votre serveur Java Edition (par défaut : 25565).\n3. Appuyez sur \"Démarrer le mode Java\": MCCompanion fera le lien entre les connexions.\n4. Ouvrez Minecraft Bedrock et allez dans l\'onglet Amis.\n5. Sélectionnez le serveur LAN nommé \"MCCompanion\" pour rejoindre le serveur Java.\n\n⚠️ Avertissements importants :\n- Un compte Java Edition valide (Microsoft) est requis.\n- Certains serveurs utilisent des systèmes anti-triche qui peuvent détecter et bannir votre compte.\n- Certains serveurs interdisent explicitement les clients Bedrock, vérifiez toujours les règles du serveur.\n- MCCompanion n\'est pas responsable des bannissements, suspensions ou autres problèmes liés au compte pouvant résulter de l\'utilisation de cette fonctionnalité.\n- Utilisation à vos risques et périls.';
 
   @override
   String get language => 'Français';

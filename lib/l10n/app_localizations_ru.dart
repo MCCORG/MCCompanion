@@ -133,28 +133,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get labelJava => 'Java';
 
   @override
-  String get startJavaMode => 'Запустить режим Java';
-
-  @override
-  String get javaInfoTitle => 'Режим Java';
-
-  @override
-  String get javaInfoText => 'Подключайтесь к серверам Java Edition';
-
-  @override
-  String get howToJavaTitle => 'Режим Java';
-
-  @override
-  String get howToJavaSubtitle =>
-      'Подключайтесь к серверам Java Edition через MCCompanion';
-
-  @override
   String get aternosSubtext =>
       'Создайте свой собственный бесплатный сервер Minecraft';
-
-  @override
-  String get howToJavaBody =>
-      'Режим Java: быстрые шаги:\n1. В приложении выберите режим Java.\n2. Введите адрес и порт вашего сервера Java Edition (по умолчанию: 25565).\n3. Нажмите \"Запустить режим Java\": MCCompanion свяжет соединение.\n4. Откройте Minecraft Bedrock и перейдите на вкладку Друзья.\n5. Выберите LAN-сервер с названием \"MCCompanion\", чтобы подключиться к серверу Java.\n\n⚠️ Важные предупреждения:\n- Требуется действующая учётная запись Java Edition (Microsoft).\n- Некоторые серверы используют античит-системы, которые могут обнаружить и заблокировать вашу учётную запись.\n- Некоторые серверы прямо запрещают клиентов Bedrock, всегда проверяйте правила сервера.\n- MCCompanion не несёт ответственности за блокировки, ограничения или другие проблемы, связанные с учётной записью, которые могут возникнуть при использовании этой функции.\n- Используйте на свой страх и риск.';
 
   @override
   String get language => 'Русский';

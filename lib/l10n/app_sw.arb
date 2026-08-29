@@ -26,18 +26,12 @@
   "serverDetailsLabel": "Maelezo ya seva",
   "start": "Anza",
   "labelJava": "Java",
-  "startJavaMode": "Anza hali ya Java",
-  "javaInfoTitle": "Hali ya Java",
-  "javaInfoText": "Unganisha kwenye seva za Java Edition",
-  "howToJavaTitle": "Hali ya Java",
   "@howToJavaTitle": {
     "description": "Title for the Java how-to modal"
   },
-  "howToJavaSubtitle": "Unganisha kwenye seva za Java Edition kupitia MCCompanion",
   "@howToJavaSubtitle": {
     "description": "Short subtitle for Java menu tile"
   },
-  "howToJavaBody": "Hali ya Java: hatua za haraka:\n1. Kwenye programu, chagua hali ya Java.\n2. Weka anwani na port ya seva yako ya Java Edition (chaguomsingi: 25565).\n3. Bonyeza \"Anza hali ya Java\": MCCompanion itaunganisha muunganisho.\n4. Fungua Minecraft Bedrock na uende kwenye kichupo cha Marafiki.\n5. Chagua seva ya LAN inayoitwa \"MCCompanion\" ili kujiunga na seva ya Java.\n\n⚠️ Maonyo muhimu:\n- Akaunti halali ya Java Edition (Microsoft) inahitajika.\n- Baadhi ya seva hutumia mifumo ya anti-cheat ambayo inaweza kugundua na kupiga marufuku akaunti yako.\n- Baadhi ya seva hukataza wazi wateja wa Bedrock, hakikisha unakagua sheria za seva kila wakati.\n- MCCompanion haiwajibiki kwa marufuku, kusimamishwa au matatizo mengine yanayohusiana na akaunti yanayoweza kusababishwa na kutumia kipengele hiki.\n- Tumia kwa hatari yako mwenyewe.",
   "@howToJavaBody": {
     "description": "Detailed steps for Java mode how-to modal"
   },

@@ -13,7 +13,7 @@ import '../../widgets/featured_server_hero.dart';
 import 'my_servers_tab.dart';
 import 'server_picker_sheet.dart';
 
-enum PanelMode { lan, nintendo, friends, java, direct }
+enum PanelMode { lan, nintendo, friends, direct }
 
 class _ModeConfig {
   final PanelMode mode;
@@ -115,11 +115,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
       color: AppTheme.modeFriends,
     ),
     _ModeConfig(
-      mode: PanelMode.java,
-      icon: FontAwesomeIcons.java,
-      color: AppTheme.modeJava,
-    ),
-    _ModeConfig(
       mode: PanelMode.direct,
       icon: FontAwesomeIcons.bolt,
       color: AppTheme.modeDirect,
@@ -168,7 +163,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     if (!mounted || !_broadcasting) return;
 
     final topic = switch (_mode) {
-      PanelMode.java => HowToTopic.java,
       PanelMode.direct => HowToTopic.direct,
       _ => HowToTopic.xbox,
     };
@@ -178,8 +172,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     switch (_mode) {
       case PanelMode.lan:
         await HowToDialogs.showXboxInstructions(context);
-      case PanelMode.java:
-        await HowToDialogs.showJavaInstructions(context);
       case PanelMode.direct:
         await HowToDialogs.showDirectInstructions(context);
       case PanelMode.nintendo:
@@ -192,7 +184,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     PanelMode.lan => loc.labelXbox,
     PanelMode.nintendo => loc.labelNintendo,
     PanelMode.friends => loc.labelFriends,
-    PanelMode.java => loc.labelJava,
     PanelMode.direct => loc.labelDirect,
   };
 
@@ -806,7 +797,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
             PanelMode.lan => loc.startBroadcasting,
             PanelMode.nintendo => loc.startNintendoMode,
             PanelMode.friends => loc.startFriendsMode,
-            PanelMode.java => loc.startJavaMode,
             PanelMode.direct => loc.startDirectMode,
           };
 

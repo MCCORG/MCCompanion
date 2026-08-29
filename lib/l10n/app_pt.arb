@@ -26,18 +26,12 @@
   "serverDetailsLabel": "Detalhes do servidor",
   "start": "Iniciar",
   "labelJava": "Java",
-  "startJavaMode": "Iniciar modo Java",
-  "javaInfoTitle": "Modo Java",
-  "javaInfoText": "Conecte-se a servidores Java Edition",
-  "howToJavaTitle": "Modo Java",
   "@howToJavaTitle": {
     "description": "Title for the Java how-to modal"
   },
-  "howToJavaSubtitle": "Conecte-se a servidores Java Edition via MCCompanion",
   "@howToJavaSubtitle": {
     "description": "Short subtitle for Java menu tile"
   },
-  "howToJavaBody": "Modo Java: etapas rápidas:\n1. No aplicativo, selecione o modo Java.\n2. Digite o endereço e a porta do seu servidor Java Edition (padrão: 25565).\n3. Toque em \"Iniciar modo Java\": o MCCompanion fará a ponte da conexão.\n4. Abra o Minecraft Bedrock e vá para a aba Amigos.\n5. Selecione o servidor LAN chamado \"MCCompanion\" para entrar no servidor Java.\n\n⚠️ Avisos importantes:\n- É necessária uma conta válida do Java Edition (Microsoft).\n- Alguns servidores usam sistemas anti-cheat que podem detectar e banir sua conta.\n- Alguns servidores proíbem explicitamente clientes Bedrock, sempre verifique as regras do servidor.\n- O MCCompanion não se responsabiliza por banimentos, suspensões ou outros problemas relacionados à conta que possam resultar do uso deste recurso.\n- Use por sua conta e risco.",
   "@howToJavaBody": {
     "description": "Detailed steps for Java mode how-to modal"
   },

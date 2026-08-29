@@ -128,26 +128,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get labelJava => 'Java';
 
   @override
-  String get startJavaMode => 'Javaモードを開始';
-
-  @override
-  String get javaInfoTitle => 'Javaモード';
-
-  @override
-  String get javaInfoText => 'Java Editionサーバーに接続';
-
-  @override
-  String get howToJavaTitle => 'Javaモード';
-
-  @override
-  String get howToJavaSubtitle => 'MCCompanion経由でJava Editionサーバーに接続';
-
-  @override
   String get aternosSubtext => '自分だけの無料Minecraftサーバーを作成しましょう';
-
-  @override
-  String get howToJavaBody =>
-      'Javaモード: クイック手順:\n1. アプリでJavaモードを選択します。\n2. Java Editionサーバーのアドレスとポートを入力します（既定: 25565）。\n3. 「Javaモードを開始」を押します: MCCompanionが接続を橋渡しします。\n4. Minecraft Bedrockを開いて、フレンドタブに移動します。\n5. Javaサーバーに参加するには、「MCCompanion」という名前のLANサーバーを選択します。\n\n⚠️ 重要な警告:\n- 有効なJava Editionアカウント（Microsoft）が必要です。\n- 一部のサーバーではアンチチートシステムが使用されており、アカウントが検出されてBANされる可能性があります。\n- Bedrockクライアントを明確に禁止しているサーバーもあります: 必ずサーバールールを確認してください。\n- この機能の使用によって発生するアカウントBAN、利用停止、その他のアカウント関連の問題について、MCCompanionは責任を負いません。\n- 自己責任で使用してください。';
 
   @override
   String get language => '日本語';
