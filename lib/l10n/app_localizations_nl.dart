@@ -1085,157 +1085,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get skinsDownload => 'Downloaden';
 
   @override
-  String get wikiTitle => 'Wiki';
-
-  @override
-  String get wikiMinecraftWiki => 'Minecraft Wiki';
-
-  @override
-  String get wikiSearchHint => 'Zoek in de wiki…';
-
-  @override
-  String get wikiCouldNotLoadPages =>
-      'Pagina\'s konden niet worden geladen. Probeer opnieuw.';
-
-  @override
-  String get wikiCouldNotReach =>
-      'Wiki kon niet worden bereikt. Controleer je verbinding.';
-
-  @override
-  String wikiNoResults(Object query) {
-    return 'Geen resultaten gevonden voor \"$query\"';
-  }
-
-  @override
-  String get wikiNoPagesFound => 'Geen pagina\'s gevonden';
-
-  @override
-  String wikiCategories(Object count) {
-    return '$count categorieën';
-  }
-
-  @override
-  String get wikiCouldNotLoadContent =>
-      'Artikelinhoud kon niet worden geladen.';
-
-  @override
-  String get wikiOpenInBrowser => 'Openen in browser';
-
-  @override
-  String get wikiCrafting => 'Ambacht';
-
-  @override
-  String get wikiReadFullArticle => 'Volledig artikel lezen';
-
-  @override
-  String get wikiRecent => 'Onlangs bekeken';
-
-  @override
-  String get wikiFavourites => 'Favorieten';
-
-  @override
-  String get wikiMobs => 'Mobs';
-
-  @override
-  String get wikiBlocks => 'Blokken';
-
-  @override
-  String get wikiItems => 'Voorwerpen';
-
-  @override
-  String get wikiBiomes => 'Biotopen';
-
-  @override
-  String get wikiStructures => 'Structuren';
-
-  @override
-  String get wikiEnchantments => 'Betoveringen';
-
-  @override
-  String get wikiPotions => 'Drankjes';
-
-  @override
-  String get wikiPassive => 'Passief';
-
-  @override
-  String get wikiNeutral => 'Neutraal';
-
-  @override
-  String get wikiHostile => 'Vijandig';
-
-  @override
-  String get wikiBoss => 'Baas';
-
-  @override
-  String get wikiUtility => 'Nut';
-
-  @override
-  String get wikiNatural => 'Natuurlijk';
-
-  @override
-  String get wikiOres => 'Ertsen';
-
-  @override
-  String get wikiWood => 'Hout';
-
-  @override
-  String get wikiStone => 'Steen';
-
-  @override
-  String get wikiRedstone => 'Redstone';
-
-  @override
-  String get wikiPlants => 'Planten';
-
-  @override
-  String get wikiDecoration => 'Decoratie';
-
-  @override
-  String get wikiTools => 'Gereedschappen';
-
-  @override
-  String get wikiSwords => 'Zwaarden';
-
-  @override
-  String get wikiRanged => 'Afstand';
-
-  @override
-  String get wikiArmor => 'Wapenrusting';
-
-  @override
-  String get wikiFood => 'Eten';
-
-  @override
-  String get wikiBrewing => 'Brouwen';
-
-  @override
-  String get wikiMaterials => 'Materialen';
-
-  @override
-  String get wikiOverworld => 'Overworld';
-
-  @override
-  String get wikiNether => 'Nether';
-
-  @override
-  String get wikiTheEnd => 'The End';
-
-  @override
-  String get wikiSword => 'Zwaard';
-
-  @override
-  String get wikiTool => 'Gereedschap';
-
-  @override
-  String get wikiBow => 'Boog';
-
-  @override
-  String get wikiFishing => 'Vissen';
-
-  @override
-  String get wikiStatusEffects => 'Statuseffecten';
-
-  @override
   String get chooseUniqueUsername =>
       'Kies een unieke gebruikersnaam om te beginnen.';
 
@@ -1378,10 +1227,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get dataSourcesSection => 'Gegevensbronnen & credits';
-
-  @override
-  String get creditMinecraftWikiSubtitle =>
-      'Gebruikt als gegevensbron voor de Wiki-functie. Inhoud wordt door de community geleverd onder Creative Commons.';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
@@ -1649,9 +1494,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get featureLabelSkins => 'Skins';
 
   @override
-  String get featureLabelWiki => 'Wiki';
-
-  @override
   String get featureLabelPartners => 'Partners';
 
   @override
@@ -1665,9 +1507,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get featureSubtitleSkins => 'Blader door en beheer Minecraft-skins';
-
-  @override
-  String get featureSubtitleWiki => 'Minecraft-encyclopedie';
 
   @override
   String get featureSubtitlePartners => 'Aanbevolen servers';

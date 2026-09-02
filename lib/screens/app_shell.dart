@@ -29,7 +29,6 @@ import 'landing_screen.dart';
 import '../widgets/landing/landing_customize_sheet.dart';
 import 'connector_screen.dart';
 import 'skins_screen.dart';
-import 'wiki_screen.dart';
 import 'server_list_screen.dart';
 import 'player_lookup_screen.dart';
 import 'manage_servers_screen.dart';
@@ -53,12 +52,11 @@ const int _pagePartners = 2;
 const int _pageManageServers = 3;
 const int _pageAddEditServer = 4;
 const int _pageSkins = 5;
-const int _pageWiki = 6;
-const int _pageProfile = 7;
-const int _pagePlayerLookup = 8;
-const int _pageServerTracker = 9;
-const int _pageFeedback = 10;
-const int _pageResourcePack = 11;
+const int _pageProfile = 6;
+const int _pagePlayerLookup = 7;
+const int _pageServerTracker = 8;
+const int _pageFeedback = 9;
+const int _pageResourcePack = 10;
 
 class AppShell extends StatefulWidget {
   final RelaySelection? initialRelay;
@@ -194,7 +192,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   int _pageIndexFor(AppFeature feature) => switch (feature) {
     AppFeature.connector => _pageConnector,
     AppFeature.skins => _pageSkins,
-    AppFeature.wiki => _pageWiki,
     AppFeature.partners => _pagePartners,
     AppFeature.lookup => _pagePlayerLookup,
     AppFeature.tracker => _pageServerTracker,
@@ -456,7 +453,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   VoidCallback _navCallbackFor(AppFeature feature) => switch (feature) {
     AppFeature.connector => () => _goTo(_pageConnector),
     AppFeature.skins => () => _goTo(_pageSkins),
-    AppFeature.wiki => () => _goTo(_pageWiki),
     AppFeature.partners => () => _goTo(_pagePartners),
     AppFeature.lookup => () => _goTo(_pagePlayerLookup),
     AppFeature.tracker => () => _goTo(_pageServerTracker),
@@ -465,7 +461,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   bool _isNavFeatureActive(AppFeature feature) {
     return switch (feature) {
       AppFeature.skins => _pageIndex == _pageSkins,
-      AppFeature.wiki => _pageIndex == _pageWiki,
       AppFeature.partners => _pageIndex == _pagePartners,
       AppFeature.lookup => _pageIndex == _pagePlayerLookup,
       AppFeature.tracker => _pageIndex == _pageServerTracker,
@@ -508,8 +503,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
         return 'connector';
       case _pageSkins:
         return 'skins';
-      case _pageWiki:
-        return 'wiki';
       case _pageProfile:
         return 'profile';
       case _pagePartners:
@@ -587,7 +580,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       LandingScreen(
         onGoToConnector: () => _goTo(_pageConnector),
         onGoToSkins: () => _goTo(_pageSkins),
-        onGoToWiki: () => _goTo(_pageWiki),
         onGoToPartners: () => _goTo(_pagePartners),
         onGoToPlayerLookup: () => _goTo(_pagePlayerLookup),
         onGoToServerTracker: () => _goTo(_pageServerTracker),
@@ -651,13 +643,11 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
         onCancel: () => setState(() => _pageIndex = _pageManageServers),
       ),
       SkinsScreen(key: _skinsKey, onBack: () => _goTo(_pageHome)),
-      WikiScreen(onBack: () => _goTo(_pageHome)),
       ProfileScreen(
         key: _profileKey,
         onGoToHome: () => _goTo(_pageHome),
         onGoToConnector: () => _goTo(_pageConnector),
         onGoToSkins: () => _goTo(_pageSkins),
-        onGoToWiki: () => _goTo(_pageWiki),
         onLoggedIn: () {
           if (_loginFromTracker) {
             _loginFromTracker = false;
@@ -798,7 +788,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
                 onHomeTap: () => _goTo(_pageHome),
                 onConnectorTap: () => _goTo(_pageConnector),
                 onSkinsTap: () => _goTo(_pageSkins),
-                onWikiTap: () => _goTo(_pageWiki),
                 onPartnersTap: () => _goTo(_pagePartners),
                 onLookupTap: () => _goTo(_pagePlayerLookup),
                 onTrackerTap: () => _goTo(_pageServerTracker),
@@ -844,7 +833,6 @@ class _DesktopSidebar extends StatelessWidget {
   final VoidCallback onHomeTap;
   final VoidCallback onConnectorTap;
   final VoidCallback onSkinsTap;
-  final VoidCallback onWikiTap;
   final VoidCallback onPartnersTap;
   final VoidCallback onLookupTap;
   final VoidCallback onTrackerTap;
@@ -858,7 +846,6 @@ class _DesktopSidebar extends StatelessWidget {
     required this.onHomeTap,
     required this.onConnectorTap,
     required this.onSkinsTap,
-    required this.onWikiTap,
     required this.onPartnersTap,
     required this.onLookupTap,
     required this.onTrackerTap,
@@ -929,12 +916,6 @@ class _DesktopSidebar extends StatelessWidget {
                     label: AppFeature.skins.label(l),
                     isActive: activeItem == 'skins',
                     onTap: onSkinsTap,
-                  ),
-                  _SidebarItem(
-                    icon: FontAwesomeIcons.bookOpen,
-                    label: AppFeature.wiki.label(l),
-                    isActive: activeItem == 'wiki',
-                    onTap: onWikiTap,
                   ),
                   _SidebarItem(
                     icon: FontAwesomeIcons.user,

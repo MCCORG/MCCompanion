@@ -1076,154 +1076,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get skinsDownload => 'Télécharger';
 
   @override
-  String get wikiTitle => 'Wiki';
-
-  @override
-  String get wikiMinecraftWiki => 'Wiki Minecraft';
-
-  @override
-  String get wikiSearchHint => 'Rechercher dans le wiki…';
-
-  @override
-  String get wikiCouldNotLoadPages => 'Impossible de charger les pages.';
-
-  @override
-  String get wikiCouldNotReach => 'Impossible d\'atteindre le wiki.';
-
-  @override
-  String wikiNoResults(Object query) {
-    return 'Aucun résultat pour « $query »';
-  }
-
-  @override
-  String get wikiNoPagesFound => 'Aucune page trouvée';
-
-  @override
-  String wikiCategories(Object count) {
-    return '$count catégories';
-  }
-
-  @override
-  String get wikiCouldNotLoadContent => 'Impossible de charger le contenu.';
-
-  @override
-  String get wikiOpenInBrowser => 'Ouvrir dans le navigateur';
-
-  @override
-  String get wikiCrafting => 'Artisanat';
-
-  @override
-  String get wikiReadFullArticle => 'Lire l\'article complet';
-
-  @override
-  String get wikiRecent => 'Consultés récemment';
-
-  @override
-  String get wikiFavourites => 'Favoris';
-
-  @override
-  String get wikiMobs => 'Mobs';
-
-  @override
-  String get wikiBlocks => 'Blocs';
-
-  @override
-  String get wikiItems => 'Objets';
-
-  @override
-  String get wikiBiomes => 'Biomes';
-
-  @override
-  String get wikiStructures => 'Structures';
-
-  @override
-  String get wikiEnchantments => 'Enchantements';
-
-  @override
-  String get wikiPotions => 'Potions';
-
-  @override
-  String get wikiPassive => 'Passif';
-
-  @override
-  String get wikiNeutral => 'Neutre';
-
-  @override
-  String get wikiHostile => 'Hostile';
-
-  @override
-  String get wikiBoss => 'Boss';
-
-  @override
-  String get wikiUtility => 'Utilitaire';
-
-  @override
-  String get wikiNatural => 'Naturel';
-
-  @override
-  String get wikiOres => 'Minerais';
-
-  @override
-  String get wikiWood => 'Bois';
-
-  @override
-  String get wikiStone => 'Pierre';
-
-  @override
-  String get wikiRedstone => 'Redstone';
-
-  @override
-  String get wikiPlants => 'Plantes';
-
-  @override
-  String get wikiDecoration => 'Décoration';
-
-  @override
-  String get wikiTools => 'Outils';
-
-  @override
-  String get wikiSwords => 'Épées';
-
-  @override
-  String get wikiRanged => 'À distance';
-
-  @override
-  String get wikiArmor => 'Armure';
-
-  @override
-  String get wikiFood => 'Nourriture';
-
-  @override
-  String get wikiBrewing => 'Brassage';
-
-  @override
-  String get wikiMaterials => 'Matériaux';
-
-  @override
-  String get wikiOverworld => 'Overworld';
-
-  @override
-  String get wikiNether => 'Nether';
-
-  @override
-  String get wikiTheEnd => 'The End';
-
-  @override
-  String get wikiSword => 'Épée';
-
-  @override
-  String get wikiTool => 'Outil';
-
-  @override
-  String get wikiBow => 'Arc';
-
-  @override
-  String get wikiFishing => 'Pêche';
-
-  @override
-  String get wikiStatusEffects => 'Effets de statut';
-
-  @override
   String get chooseUniqueUsername =>
       'Choisissez un nom d\'utilisateur unique pour commencer.';
 
@@ -1363,10 +1215,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get dataSourcesSection => 'Sources de données & crédits';
-
-  @override
-  String get creditMinecraftWikiSubtitle =>
-      'Source de données pour la fonctionnalité Wiki. Contenu sous Creative Commons.';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
@@ -1629,9 +1477,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get featureLabelSkins => 'Skins';
 
   @override
-  String get featureLabelWiki => 'Wiki';
-
-  @override
   String get featureLabelPartners => 'Partenaires';
 
   @override
@@ -1645,9 +1490,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get featureSubtitleSkins => 'Parcourir et gérer les skins Minecraft';
-
-  @override
-  String get featureSubtitleWiki => 'Encyclopédie Minecraft';
 
   @override
   String get featureSubtitlePartners => 'Serveurs en vedette';

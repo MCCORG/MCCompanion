@@ -1147,204 +1147,6 @@
   "@skinsDownload": {
     "description": "Download button in skin detail sheet"
   },
-  "wikiTitle": "Wiki",
-  "@wikiTitle": {
-    "description": "Title of the wiki screen"
-  },
-  "wikiMinecraftWiki": "Minecraft Wiki",
-  "@wikiMinecraftWiki": {
-    "description": "Badge/label linking to Minecraft Wiki"
-  },
-  "wikiSearchHint": "Search the wiki…",
-  "@wikiSearchHint": {
-    "description": "Hint text for wiki search field"
-  },
-  "wikiCouldNotLoadPages": "Could not load pages. Please try again.",
-  "@wikiCouldNotLoadPages": {
-    "description": "Error when wiki pages fail to load"
-  },
-  "wikiCouldNotReach": "Could not reach the wiki. Check your connection.",
-  "@wikiCouldNotReach": {
-    "description": "Error when the wiki cannot be reached"
-  },
-  "wikiNoResults": "No results found for \"{query}\"",
-  "@wikiNoResults": {
-    "description": "Empty search results message",
-    "placeholders": {
-      "query": {}
-    }
-  },
-  "wikiNoPagesFound": "No pages found",
-  "@wikiNoPagesFound": {
-    "description": "Empty state when no wiki pages are available"
-  },
-  "wikiCategories": "{count} categories",
-  "@wikiCategories": {
-    "description": "Subtitle on wiki section card showing number of subcategories",
-    "placeholders": {
-      "count": {}
-    }
-  },
-  "wikiCouldNotLoadContent": "Could not load article content.",
-  "@wikiCouldNotLoadContent": {
-    "description": "Error when wiki article content fails to load"
-  },
-  "wikiOpenInBrowser": "Open in browser",
-  "@wikiOpenInBrowser": {
-    "description": "Button to open wiki article in external browser"
-  },
-  "wikiCrafting": "Crafting",
-  "@wikiCrafting": {
-    "description": "Section header for crafting recipes in wiki detail"
-  },
-  "wikiReadFullArticle": "Read full article",
-  "@wikiReadFullArticle": {
-    "description": "Button at bottom of wiki detail to open full article"
-  },
-  "wikiRecent": "Recently viewed",
-  "@wikiRecent": {
-    "description": "Section label for recently viewed wiki articles"
-  },
-  "wikiFavourites": "Favourites",
-  "@wikiFavourites": {
-    "description": "Section label for favourited wiki articles"
-  },
-  "wikiMobs": "Mobs",
-  "@wikiMobs": {
-    "description": "Wiki category: Mobs"
-  },
-  "wikiBlocks": "Blocks",
-  "@wikiBlocks": {
-    "description": "Wiki category: Blocks"
-  },
-  "wikiItems": "Items",
-  "@wikiItems": {
-    "description": "Wiki category: Items"
-  },
-  "wikiBiomes": "Biomes",
-  "@wikiBiomes": {
-    "description": "Wiki category: Biomes"
-  },
-  "wikiStructures": "Structures",
-  "@wikiStructures": {
-    "description": "Wiki category: Structures"
-  },
-  "wikiEnchantments": "Enchantments",
-  "@wikiEnchantments": {
-    "description": "Wiki category: Enchantments"
-  },
-  "wikiPotions": "Potions",
-  "@wikiPotions": {
-    "description": "Wiki category: Potions"
-  },
-  "wikiPassive": "Passive",
-  "@wikiPassive": {
-    "description": "Wiki mob sub-category: Passive"
-  },
-  "wikiNeutral": "Neutral",
-  "@wikiNeutral": {
-    "description": "Wiki mob sub-category: Neutral"
-  },
-  "wikiHostile": "Hostile",
-  "@wikiHostile": {
-    "description": "Wiki mob sub-category: Hostile"
-  },
-  "wikiBoss": "Boss",
-  "@wikiBoss": {
-    "description": "Wiki mob sub-category: Boss"
-  },
-  "wikiUtility": "Utility",
-  "@wikiUtility": {
-    "description": "Wiki mob sub-category: Utility"
-  },
-  "wikiNatural": "Natural",
-  "@wikiNatural": {
-    "description": "Wiki block sub-category: Natural"
-  },
-  "wikiOres": "Ores",
-  "@wikiOres": {
-    "description": "Wiki block sub-category: Ores"
-  },
-  "wikiWood": "Wood",
-  "@wikiWood": {
-    "description": "Wiki block sub-category: Wood"
-  },
-  "wikiStone": "Stone",
-  "@wikiStone": {
-    "description": "Wiki block sub-category: Stone"
-  },
-  "wikiRedstone": "Redstone",
-  "@wikiRedstone": {
-    "description": "Wiki block sub-category: Redstone"
-  },
-  "wikiPlants": "Plants",
-  "@wikiPlants": {
-    "description": "Wiki block sub-category: Plants"
-  },
-  "wikiDecoration": "Decoration",
-  "@wikiDecoration": {
-    "description": "Wiki block sub-category: Decoration"
-  },
-  "wikiTools": "Tools",
-  "@wikiTools": {
-    "description": "Wiki item sub-category: Tools"
-  },
-  "wikiSwords": "Swords",
-  "@wikiSwords": {
-    "description": "Wiki item sub-category: Swords"
-  },
-  "wikiRanged": "Ranged",
-  "@wikiRanged": {
-    "description": "Wiki item sub-category: Ranged"
-  },
-  "wikiArmor": "Armor",
-  "@wikiArmor": {
-    "description": "Wiki item sub-category: Armor"
-  },
-  "wikiFood": "Food",
-  "@wikiFood": {
-    "description": "Wiki item sub-category: Food"
-  },
-  "wikiBrewing": "Brewing",
-  "@wikiBrewing": {
-    "description": "Wiki item sub-category: Brewing"
-  },
-  "wikiMaterials": "Materials",
-  "@wikiMaterials": {
-    "description": "Wiki item sub-category: Materials"
-  },
-  "wikiOverworld": "Overworld",
-  "@wikiOverworld": {
-    "description": "Wiki biome/structure sub-category: Overworld"
-  },
-  "wikiNether": "Nether",
-  "@wikiNether": {
-    "description": "Wiki biome/structure sub-category: Nether"
-  },
-  "wikiTheEnd": "The End",
-  "@wikiTheEnd": {
-    "description": "Wiki biome/structure sub-category: The End"
-  },
-  "wikiSword": "Sword",
-  "@wikiSword": {
-    "description": "Wiki enchantment sub-category: Sword"
-  },
-  "wikiTool": "Tool",
-  "@wikiTool": {
-    "description": "Wiki enchantment sub-category: Tool"
-  },
-  "wikiBow": "Bow",
-  "@wikiBow": {
-    "description": "Wiki enchantment sub-category: Bow"
-  },
-  "wikiFishing": "Fishing",
-  "@wikiFishing": {
-    "description": "Wiki enchantment sub-category: Fishing"
-  },
-  "wikiStatusEffects": "Status Effects",
-  "@wikiStatusEffects": {
-    "description": "Wiki potion sub-category: Status Effects"
-  },
   "chooseUniqueUsername": "Choose a unique username to get started.",
   "@chooseUniqueUsername": {
     "description": "chooseUniqueUsername"
@@ -1486,10 +1288,6 @@
   "dataSourcesSection": "Data Sources & Credits",
   "@dataSourcesSection": {
     "description": "Section header for data sources in Info sheet"
-  },
-  "creditMinecraftWikiSubtitle": "Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.",
-  "@creditMinecraftWikiSubtitle": {
-    "description": "Subtitle for Minecraft Wiki credit tile"
   },
   "creditMojangTitle": "Mojang / Microsoft",
   "@creditMojangTitle": {
@@ -1763,13 +1561,11 @@
   "splashFeatureSkins": "Skins",
   "featureLabelConnector": "Connector",
   "featureLabelSkins": "Skins",
-  "featureLabelWiki": "Wiki",
   "featureLabelPartners": "Server list",
   "featureLabelLookup": "Lookup",
   "featureLabelTracker": "Server Tracker",
   "featureSubtitleConnector": "Connect consoles to Minecraft",
   "featureSubtitleSkins": "Browse & manage Minecraft skins",
-  "featureSubtitleWiki": "Minecraft encyclopedia",
   "featureSubtitlePartners": "Featured servers",
   "featureSubtitleLookup": "Look up Java & Bedrock profiles",
   "featureSubtitleTracker": "Monitor server status & get notified",

@@ -130,7 +130,6 @@ class ProfileFriendsTab extends StatelessWidget {
   final VoidCallback? onGoToHome;
   final VoidCallback? onGoToConnector;
   final VoidCallback? onGoToSkins;
-  final VoidCallback? onGoToWiki;
   const ProfileFriendsTab({
     super.key,
     required this.friends,
@@ -140,7 +139,6 @@ class ProfileFriendsTab extends StatelessWidget {
     this.onGoToHome,
     this.onGoToConnector,
     this.onGoToSkins,
-    this.onGoToWiki,
   });
 
   @override
@@ -178,7 +176,6 @@ class ProfileFriendsTab extends StatelessWidget {
                   onGoToHome: onGoToHome,
                   onGoToConnector: onGoToConnector,
                   onGoToSkins: onGoToSkins,
-                  onGoToWiki: onGoToWiki,
                 ),
               ),
             ),
@@ -198,7 +195,6 @@ class ProfileFriendsTab extends StatelessWidget {
                   onGoToHome: onGoToHome,
                   onGoToConnector: onGoToConnector,
                   onGoToSkins: onGoToSkins,
-                  onGoToWiki: onGoToWiki,
                 ),
               ),
             ),

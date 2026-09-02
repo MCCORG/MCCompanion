@@ -22,7 +22,6 @@ class PublicProfileScreen extends StatefulWidget {
   final VoidCallback? onGoToHome;
   final VoidCallback? onGoToConnector;
   final VoidCallback? onGoToSkins;
-  final VoidCallback? onGoToWiki;
 
   const PublicProfileScreen({
     super.key,
@@ -30,7 +29,6 @@ class PublicProfileScreen extends StatefulWidget {
     this.onGoToHome,
     this.onGoToConnector,
     this.onGoToSkins,
-    this.onGoToWiki,
   });
 
   @override
@@ -496,14 +494,12 @@ class UserSearchScreen extends StatefulWidget {
   final VoidCallback? onGoToHome;
   final VoidCallback? onGoToConnector;
   final VoidCallback? onGoToSkins;
-  final VoidCallback? onGoToWiki;
 
   const UserSearchScreen({
     super.key,
     this.onGoToHome,
     this.onGoToConnector,
     this.onGoToSkins,
-    this.onGoToWiki,
   });
 
   @override
@@ -562,7 +558,6 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
           onGoToHome: widget.onGoToHome,
           onGoToConnector: widget.onGoToConnector,
           onGoToSkins: widget.onGoToSkins,
-          onGoToWiki: widget.onGoToWiki,
         ),
       ),
     );

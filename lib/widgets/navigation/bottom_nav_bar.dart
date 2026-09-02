@@ -49,7 +49,6 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
   static FaIconData _iconFor(AppFeature feature) => switch (feature) {
     AppFeature.connector => FontAwesomeIcons.play,
     AppFeature.skins => FontAwesomeIcons.shirt,
-    AppFeature.wiki => FontAwesomeIcons.bookOpen,
     AppFeature.partners => FontAwesomeIcons.server,
     AppFeature.lookup => FontAwesomeIcons.magnifyingGlass,
     AppFeature.tracker => FontAwesomeIcons.satellite,

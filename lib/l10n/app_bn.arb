@@ -545,10 +545,6 @@
   "@creditGeyserTitle": {
     "description": "Title for GeyserMC credit tile"
   },
-  "creditMinecraftWikiSubtitle": "Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.",
-  "@creditMinecraftWikiSubtitle": {
-    "description": "Subtitle for Minecraft Wiki credit tile"
-  },
   "creditMojangSubtitle": "Java player skins, UUIDs, and profile data via the official Mojang API.",
   "@creditMojangSubtitle": {
     "description": "Subtitle for Mojang credit tile"
@@ -1201,196 +1197,6 @@
   "@weakPassword": {
     "description": "Error for weak password"
   },
-  "wikiArmor": "Armor",
-  "@wikiArmor": {
-    "description": "Wiki item sub-category: Armor"
-  },
-  "wikiBiomes": "Biomes",
-  "@wikiBiomes": {
-    "description": "Wiki category: Biomes"
-  },
-  "wikiBlocks": "Blocks",
-  "@wikiBlocks": {
-    "description": "Wiki category: Blocks"
-  },
-  "wikiBoss": "Boss",
-  "@wikiBoss": {
-    "description": "Wiki mob sub-category: Boss"
-  },
-  "wikiBow": "Bow",
-  "@wikiBow": {
-    "description": "Wiki enchantment sub-category: Bow"
-  },
-  "wikiBrewing": "Brewing",
-  "@wikiBrewing": {
-    "description": "Wiki item sub-category: Brewing"
-  },
-  "wikiCategories": "{count} categories",
-  "@wikiCategories": {
-    "description": "Subtitle on wiki section card showing number of subcategories",
-    "placeholders": {
-      "count": {}
-    }
-  },
-  "wikiCouldNotLoadContent": "Could not load article content.",
-  "@wikiCouldNotLoadContent": {
-    "description": "Error when wiki article content fails to load"
-  },
-  "wikiCouldNotLoadPages": "Could not load pages. Please try again.",
-  "@wikiCouldNotLoadPages": {
-    "description": "Error when wiki pages fail to load"
-  },
-  "wikiCouldNotReach": "Could not reach the wiki. Check your connection.",
-  "@wikiCouldNotReach": {
-    "description": "Error when the wiki cannot be reached"
-  },
-  "wikiCrafting": "Crafting",
-  "@wikiCrafting": {
-    "description": "Section header for crafting recipes in wiki detail"
-  },
-  "wikiDecoration": "Decoration",
-  "@wikiDecoration": {
-    "description": "Wiki block sub-category: Decoration"
-  },
-  "wikiEnchantments": "Enchantments",
-  "@wikiEnchantments": {
-    "description": "Wiki category: Enchantments"
-  },
-  "wikiFishing": "Fishing",
-  "@wikiFishing": {
-    "description": "Wiki enchantment sub-category: Fishing"
-  },
-  "wikiFood": "Food",
-  "@wikiFood": {
-    "description": "Wiki item sub-category: Food"
-  },
-  "wikiHostile": "Hostile",
-  "@wikiHostile": {
-    "description": "Wiki mob sub-category: Hostile"
-  },
-  "wikiItems": "Items",
-  "@wikiItems": {
-    "description": "Wiki category: Items"
-  },
-  "wikiMaterials": "Materials",
-  "@wikiMaterials": {
-    "description": "Wiki item sub-category: Materials"
-  },
-  "wikiMinecraftWiki": "Minecraft Wiki",
-  "@wikiMinecraftWiki": {
-    "description": "Badge/label linking to Minecraft Wiki"
-  },
-  "wikiMobs": "Mobs",
-  "@wikiMobs": {
-    "description": "Wiki category: Mobs"
-  },
-  "wikiNatural": "Natural",
-  "@wikiNatural": {
-    "description": "Wiki block sub-category: Natural"
-  },
-  "wikiNether": "Nether",
-  "@wikiNether": {
-    "description": "Wiki biome/structure sub-category: Nether"
-  },
-  "wikiNeutral": "Neutral",
-  "@wikiNeutral": {
-    "description": "Wiki mob sub-category: Neutral"
-  },
-  "wikiNoPagesFound": "No pages found",
-  "@wikiNoPagesFound": {
-    "description": "Empty state when no wiki pages are available"
-  },
-  "wikiNoResults": "No results found for \"{query}\"",
-  "@wikiNoResults": {
-    "description": "Empty search results message",
-    "placeholders": {
-      "query": {}
-    }
-  },
-  "wikiOpenInBrowser": "Open in browser",
-  "@wikiOpenInBrowser": {
-    "description": "Button to open wiki article in external browser"
-  },
-  "wikiOres": "Ores",
-  "@wikiOres": {
-    "description": "Wiki block sub-category: Ores"
-  },
-  "wikiOverworld": "Overworld",
-  "@wikiOverworld": {
-    "description": "Wiki biome/structure sub-category: Overworld"
-  },
-  "wikiPassive": "Passive",
-  "@wikiPassive": {
-    "description": "Wiki mob sub-category: Passive"
-  },
-  "wikiPlants": "Plants",
-  "@wikiPlants": {
-    "description": "Wiki block sub-category: Plants"
-  },
-  "wikiPotions": "Potions",
-  "@wikiPotions": {
-    "description": "Wiki category: Potions"
-  },
-  "wikiRanged": "Ranged",
-  "@wikiRanged": {
-    "description": "Wiki item sub-category: Ranged"
-  },
-  "wikiReadFullArticle": "Read full article",
-  "@wikiReadFullArticle": {
-    "description": "Button at bottom of wiki detail to open full article"
-  },
-  "wikiRedstone": "Redstone",
-  "@wikiRedstone": {
-    "description": "Wiki block sub-category: Redstone"
-  },
-  "wikiSearchHint": "Search the wiki…",
-  "@wikiSearchHint": {
-    "description": "Hint text for wiki search field"
-  },
-  "wikiStatusEffects": "Status Effects",
-  "@wikiStatusEffects": {
-    "description": "Wiki potion sub-category: Status Effects"
-  },
-  "wikiStone": "Stone",
-  "@wikiStone": {
-    "description": "Wiki block sub-category: Stone"
-  },
-  "wikiStructures": "Structures",
-  "@wikiStructures": {
-    "description": "Wiki category: Structures"
-  },
-  "wikiSword": "Sword",
-  "@wikiSword": {
-    "description": "Wiki enchantment sub-category: Sword"
-  },
-  "wikiSwords": "Swords",
-  "@wikiSwords": {
-    "description": "Wiki item sub-category: Swords"
-  },
-  "wikiTheEnd": "The End",
-  "@wikiTheEnd": {
-    "description": "Wiki biome/structure sub-category: The End"
-  },
-  "wikiTitle": "Wiki",
-  "@wikiTitle": {
-    "description": "Title of the wiki screen"
-  },
-  "wikiTool": "Tool",
-  "@wikiTool": {
-    "description": "Wiki enchantment sub-category: Tool"
-  },
-  "wikiTools": "Tools",
-  "@wikiTools": {
-    "description": "Wiki item sub-category: Tools"
-  },
-  "wikiUtility": "Utility",
-  "@wikiUtility": {
-    "description": "Wiki mob sub-category: Utility"
-  },
-  "wikiWood": "Wood",
-  "@wikiWood": {
-    "description": "Wiki block sub-category: Wood"
-  },
   "xboxAccountLinked": "Xbox account linked!",
   "@xboxAccountLinked": {
     "description": "Success text when Xbox account is linked"
@@ -1481,13 +1287,11 @@
   "splashFeatureSkins": "Skins",
   "featureLabelConnector": "কানেক্টর",
   "featureLabelSkins": "স্কিনস",
-  "featureLabelWiki": "উইকি",
   "featureLabelPartners": "অংশীদার",
   "featureLabelLookup": "খোঁজা",
   "featureLabelTracker": "সার্ভার ট্র্যাকার",
   "featureSubtitleConnector": "কনসোল Minecraft-এ সংযুক্ত করুন",
   "featureSubtitleSkins": "Minecraft স্কিন ব্রাউজ ও পরিচালনা করুন",
-  "featureSubtitleWiki": "Minecraft বিশ্বকোষ",
   "featureSubtitlePartners": "বৈশিষ্ট্যযুক্ত সার্ভার",
   "featureSubtitleLookup": "Java ও Bedrock প্রোফাইল খুঁজুন",
   "featureSubtitleTracker": "সার্ভার স্ট্যাটাস পর্যবেক্ষণ করুন ও বিজ্ঞপ্তি পান",
@@ -1864,8 +1668,6 @@
   "reportBug": "মতামত",
   "rpBehaviorContentWarning": "এই প্যাকে বিহেভিয়ার প্যাক ডেটা আছে, যা সার্ভারে কাজ করবে না। টেক্সচারগুলো অবশ্য কাজ করবে।",
   "rpInvalidPackFormat": "এটি একটি Java Edition প্যাক এবং সমর্থিত নয়। অনুগ্রহ করে Bedrock Edition রিসোর্স প্যাক ব্যবহার করুন।",
-  "wikiFavourites": "প্রিয়",
-  "wikiRecent": "সম্প্রতি দেখা",
   "supportInboxTitle": "সাপোর্ট ইনবক্স",
   "supportInboxSubtitle": "সব সাপোর্ট চ্যাট, সব অ্যাডমিনের সঙ্গে শেয়ার করা",
   "adminBadge": "অ্যাডমিন",

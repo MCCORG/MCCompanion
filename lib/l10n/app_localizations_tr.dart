@@ -1070,154 +1070,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get skinsDownload => 'İndir';
 
   @override
-  String get wikiTitle => 'Wiki';
-
-  @override
-  String get wikiMinecraftWiki => 'Minecraft Wiki';
-
-  @override
-  String get wikiSearchHint => 'Wiki\'de ara…';
-
-  @override
-  String get wikiCouldNotLoadPages => 'Sayfalar yüklenemedi.';
-
-  @override
-  String get wikiCouldNotReach => 'Wiki\'ye ulaşılamadı.';
-
-  @override
-  String wikiNoResults(Object query) {
-    return '\"$query\" için sonuç bulunamadı';
-  }
-
-  @override
-  String get wikiNoPagesFound => 'Sayfa bulunamadı';
-
-  @override
-  String wikiCategories(Object count) {
-    return '$count kategori';
-  }
-
-  @override
-  String get wikiCouldNotLoadContent => 'İçerik yüklenemedi.';
-
-  @override
-  String get wikiOpenInBrowser => 'Tarayıcıda aç';
-
-  @override
-  String get wikiCrafting => 'Üretim';
-
-  @override
-  String get wikiReadFullArticle => 'Tam makaleyi oku';
-
-  @override
-  String get wikiRecent => 'Son görüntülenenler';
-
-  @override
-  String get wikiFavourites => 'Favoriler';
-
-  @override
-  String get wikiMobs => 'Yaratıklar';
-
-  @override
-  String get wikiBlocks => 'Bloklar';
-
-  @override
-  String get wikiItems => 'Eşyalar';
-
-  @override
-  String get wikiBiomes => 'Biyomlar';
-
-  @override
-  String get wikiStructures => 'Yapılar';
-
-  @override
-  String get wikiEnchantments => 'Büyüler';
-
-  @override
-  String get wikiPotions => 'İksirler';
-
-  @override
-  String get wikiPassive => 'Pasif';
-
-  @override
-  String get wikiNeutral => 'Tarafsız';
-
-  @override
-  String get wikiHostile => 'Düşman';
-
-  @override
-  String get wikiBoss => 'Boss';
-
-  @override
-  String get wikiUtility => 'Faydalı';
-
-  @override
-  String get wikiNatural => 'Doğal';
-
-  @override
-  String get wikiOres => 'Cevherler';
-
-  @override
-  String get wikiWood => 'Ahşap';
-
-  @override
-  String get wikiStone => 'Taş';
-
-  @override
-  String get wikiRedstone => 'Kırmızıtaş';
-
-  @override
-  String get wikiPlants => 'Bitkiler';
-
-  @override
-  String get wikiDecoration => 'Dekorasyon';
-
-  @override
-  String get wikiTools => 'Aletler';
-
-  @override
-  String get wikiSwords => 'Kılıçlar';
-
-  @override
-  String get wikiRanged => 'Menzilli';
-
-  @override
-  String get wikiArmor => 'Zırh';
-
-  @override
-  String get wikiFood => 'Yiyecek';
-
-  @override
-  String get wikiBrewing => 'Demleme';
-
-  @override
-  String get wikiMaterials => 'Malzemeler';
-
-  @override
-  String get wikiOverworld => 'Üst Dünya';
-
-  @override
-  String get wikiNether => 'Nether';
-
-  @override
-  String get wikiTheEnd => 'Son';
-
-  @override
-  String get wikiSword => 'Kılıç';
-
-  @override
-  String get wikiTool => 'Alet';
-
-  @override
-  String get wikiBow => 'Yay';
-
-  @override
-  String get wikiFishing => 'Balıkçılık';
-
-  @override
-  String get wikiStatusEffects => 'Durum efektleri';
-
-  @override
   String get chooseUniqueUsername =>
       'Başlamak için benzersiz bir kullanıcı adı seç.';
 
@@ -1358,10 +1210,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get dataSourcesSection => 'Veri kaynakları ve katkılar';
-
-  @override
-  String get creditMinecraftWikiSubtitle =>
-      'Wiki özelliği için veri kaynağı. Creative Commons altında içerik.';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
@@ -1625,9 +1473,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get featureLabelSkins => 'Skinler';
 
   @override
-  String get featureLabelWiki => 'Wiki';
-
-  @override
   String get featureLabelPartners => 'Ortaklar';
 
   @override
@@ -1641,9 +1486,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get featureSubtitleSkins => 'Minecraft skinlerini göz atın ve yönetin';
-
-  @override
-  String get featureSubtitleWiki => 'Minecraft ansiklopedisi';
 
   @override
   String get featureSubtitlePartners => 'Öne çıkan sunucular';

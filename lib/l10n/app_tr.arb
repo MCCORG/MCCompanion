@@ -545,10 +545,6 @@
   "@creditGeyserTitle": {
     "description": "Title for GeyserMC credit tile"
   },
-  "creditMinecraftWikiSubtitle": "Wiki özelliği için veri kaynağı. Creative Commons altında içerik.",
-  "@creditMinecraftWikiSubtitle": {
-    "description": "Subtitle for Minecraft Wiki credit tile"
-  },
   "creditMojangSubtitle": "Mojang API üzerinden Java oyuncu skinleri ve profilleri.",
   "@creditMojangSubtitle": {
     "description": "Subtitle for Mojang credit tile"
@@ -1201,196 +1197,6 @@
   "@weakPassword": {
     "description": "Error for weak password"
   },
-  "wikiArmor": "Zırh",
-  "@wikiArmor": {
-    "description": "Wiki item sub-category: Armor"
-  },
-  "wikiBiomes": "Biyomlar",
-  "@wikiBiomes": {
-    "description": "Wiki category: Biomes"
-  },
-  "wikiBlocks": "Bloklar",
-  "@wikiBlocks": {
-    "description": "Wiki category: Blocks"
-  },
-  "wikiBoss": "Boss",
-  "@wikiBoss": {
-    "description": "Wiki mob sub-category: Boss"
-  },
-  "wikiBow": "Yay",
-  "@wikiBow": {
-    "description": "Wiki enchantment sub-category: Bow"
-  },
-  "wikiBrewing": "Demleme",
-  "@wikiBrewing": {
-    "description": "Wiki item sub-category: Brewing"
-  },
-  "wikiCategories": "{count} kategori",
-  "@wikiCategories": {
-    "description": "Subtitle on wiki section card showing number of subcategories",
-    "placeholders": {
-      "count": {}
-    }
-  },
-  "wikiCouldNotLoadContent": "İçerik yüklenemedi.",
-  "@wikiCouldNotLoadContent": {
-    "description": "Error when wiki article content fails to load"
-  },
-  "wikiCouldNotLoadPages": "Sayfalar yüklenemedi.",
-  "@wikiCouldNotLoadPages": {
-    "description": "Error when wiki pages fail to load"
-  },
-  "wikiCouldNotReach": "Wiki'ye ulaşılamadı.",
-  "@wikiCouldNotReach": {
-    "description": "Error when the wiki cannot be reached"
-  },
-  "wikiCrafting": "Üretim",
-  "@wikiCrafting": {
-    "description": "Section header for crafting recipes in wiki detail"
-  },
-  "wikiDecoration": "Dekorasyon",
-  "@wikiDecoration": {
-    "description": "Wiki block sub-category: Decoration"
-  },
-  "wikiEnchantments": "Büyüler",
-  "@wikiEnchantments": {
-    "description": "Wiki category: Enchantments"
-  },
-  "wikiFishing": "Balıkçılık",
-  "@wikiFishing": {
-    "description": "Wiki enchantment sub-category: Fishing"
-  },
-  "wikiFood": "Yiyecek",
-  "@wikiFood": {
-    "description": "Wiki item sub-category: Food"
-  },
-  "wikiHostile": "Düşman",
-  "@wikiHostile": {
-    "description": "Wiki mob sub-category: Hostile"
-  },
-  "wikiItems": "Eşyalar",
-  "@wikiItems": {
-    "description": "Wiki category: Items"
-  },
-  "wikiMaterials": "Malzemeler",
-  "@wikiMaterials": {
-    "description": "Wiki item sub-category: Materials"
-  },
-  "wikiMinecraftWiki": "Minecraft Wiki",
-  "@wikiMinecraftWiki": {
-    "description": "Badge/label linking to Minecraft Wiki"
-  },
-  "wikiMobs": "Yaratıklar",
-  "@wikiMobs": {
-    "description": "Wiki category: Mobs"
-  },
-  "wikiNatural": "Doğal",
-  "@wikiNatural": {
-    "description": "Wiki block sub-category: Natural"
-  },
-  "wikiNether": "Nether",
-  "@wikiNether": {
-    "description": "Wiki biome/structure sub-category: Nether"
-  },
-  "wikiNeutral": "Tarafsız",
-  "@wikiNeutral": {
-    "description": "Wiki mob sub-category: Neutral"
-  },
-  "wikiNoPagesFound": "Sayfa bulunamadı",
-  "@wikiNoPagesFound": {
-    "description": "Empty state when no wiki pages are available"
-  },
-  "wikiNoResults": "\"{query}\" için sonuç bulunamadı",
-  "@wikiNoResults": {
-    "description": "Empty search results message",
-    "placeholders": {
-      "query": {}
-    }
-  },
-  "wikiOpenInBrowser": "Tarayıcıda aç",
-  "@wikiOpenInBrowser": {
-    "description": "Button to open wiki article in external browser"
-  },
-  "wikiOres": "Cevherler",
-  "@wikiOres": {
-    "description": "Wiki block sub-category: Ores"
-  },
-  "wikiOverworld": "Üst Dünya",
-  "@wikiOverworld": {
-    "description": "Wiki biome/structure sub-category: Overworld"
-  },
-  "wikiPassive": "Pasif",
-  "@wikiPassive": {
-    "description": "Wiki mob sub-category: Passive"
-  },
-  "wikiPlants": "Bitkiler",
-  "@wikiPlants": {
-    "description": "Wiki block sub-category: Plants"
-  },
-  "wikiPotions": "İksirler",
-  "@wikiPotions": {
-    "description": "Wiki category: Potions"
-  },
-  "wikiRanged": "Menzilli",
-  "@wikiRanged": {
-    "description": "Wiki item sub-category: Ranged"
-  },
-  "wikiReadFullArticle": "Tam makaleyi oku",
-  "@wikiReadFullArticle": {
-    "description": "Button at bottom of wiki detail to open full article"
-  },
-  "wikiRedstone": "Kırmızıtaş",
-  "@wikiRedstone": {
-    "description": "Wiki block sub-category: Redstone"
-  },
-  "wikiSearchHint": "Wiki'de ara…",
-  "@wikiSearchHint": {
-    "description": "Hint text for wiki search field"
-  },
-  "wikiStatusEffects": "Durum efektleri",
-  "@wikiStatusEffects": {
-    "description": "Wiki potion sub-category: Status Effects"
-  },
-  "wikiStone": "Taş",
-  "@wikiStone": {
-    "description": "Wiki block sub-category: Stone"
-  },
-  "wikiStructures": "Yapılar",
-  "@wikiStructures": {
-    "description": "Wiki category: Structures"
-  },
-  "wikiSword": "Kılıç",
-  "@wikiSword": {
-    "description": "Wiki enchantment sub-category: Sword"
-  },
-  "wikiSwords": "Kılıçlar",
-  "@wikiSwords": {
-    "description": "Wiki item sub-category: Swords"
-  },
-  "wikiTheEnd": "Son",
-  "@wikiTheEnd": {
-    "description": "Wiki biome/structure sub-category: The End"
-  },
-  "wikiTitle": "Wiki",
-  "@wikiTitle": {
-    "description": "Title of the wiki screen"
-  },
-  "wikiTool": "Alet",
-  "@wikiTool": {
-    "description": "Wiki enchantment sub-category: Tool"
-  },
-  "wikiTools": "Aletler",
-  "@wikiTools": {
-    "description": "Wiki item sub-category: Tools"
-  },
-  "wikiUtility": "Faydalı",
-  "@wikiUtility": {
-    "description": "Wiki mob sub-category: Utility"
-  },
-  "wikiWood": "Ahşap",
-  "@wikiWood": {
-    "description": "Wiki block sub-category: Wood"
-  },
   "xboxAccountLinked": "Xbox hesabı bağlandı!",
   "@xboxAccountLinked": {
     "description": "Success text when Xbox account is linked"
@@ -1481,13 +1287,11 @@
   "splashFeatureSkins": "Skinler",
   "featureLabelConnector": "Bağlayıcı",
   "featureLabelSkins": "Skinler",
-  "featureLabelWiki": "Wiki",
   "featureLabelPartners": "Ortaklar",
   "featureLabelLookup": "Arama",
   "featureLabelTracker": "Sunucu Takipçisi",
   "featureSubtitleConnector": "Konsolları Minecraft'a bağlayın",
   "featureSubtitleSkins": "Minecraft skinlerini göz atın ve yönetin",
-  "featureSubtitleWiki": "Minecraft ansiklopedisi",
   "featureSubtitlePartners": "Öne çıkan sunucular",
   "featureSubtitleLookup": "Java ve Bedrock profillerini arayın",
   "featureSubtitleTracker": "Sunucu durumunu izleyin ve bildirim alın",
@@ -1864,8 +1668,6 @@
   "reportBug": "Geri bildirim",
   "rpBehaviorContentWarning": "Bu paket, sunucularda çalışmayan davranış paketi verileri içeriyor. Dokular yine de çalışacaktır.",
   "rpInvalidPackFormat": "Bu bir Java Edition paketi ve desteklenmiyor. Lütfen Bedrock Edition kaynak paketi kullanın.",
-  "wikiFavourites": "Favoriler",
-  "wikiRecent": "Son görüntülenenler",
   "supportInboxTitle": "Destek kutusu",
   "supportInboxSubtitle": "Tüm destek sohbetleri, tüm yöneticilerle paylaşılır",
   "adminBadge": "Yönetici",

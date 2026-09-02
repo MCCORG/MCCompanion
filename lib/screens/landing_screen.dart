@@ -15,7 +15,6 @@ import '../widgets/landing/landing_customize_sheet.dart';
 class LandingScreen extends StatefulWidget {
   final VoidCallback onGoToConnector;
   final VoidCallback onGoToSkins;
-  final VoidCallback onGoToWiki;
   final VoidCallback onGoToPartners;
   final VoidCallback onGoToPlayerLookup;
   final VoidCallback? onGoToServerTracker;
@@ -31,7 +30,6 @@ class LandingScreen extends StatefulWidget {
     super.key,
     required this.onGoToConnector,
     required this.onGoToSkins,
-    required this.onGoToWiki,
     required this.onGoToPartners,
     required this.onGoToPlayerLookup,
     this.onGoToServerTracker,
@@ -83,7 +81,6 @@ class _LandingScreenState extends State<LandingScreen> {
   VoidCallback _callbackFor(AppFeature feature) => switch (feature) {
     AppFeature.connector => widget.onGoToConnector,
     AppFeature.skins => widget.onGoToSkins,
-    AppFeature.wiki => widget.onGoToWiki,
     AppFeature.partners => widget.onGoToPartners,
     AppFeature.lookup => widget.onGoToPlayerLookup,
     AppFeature.tracker => widget.onGoToServerTracker ?? widget.onGoToConnector,

@@ -23,14 +23,12 @@ class ProfileScreen extends StatefulWidget {
   final VoidCallback? onGoToHome;
   final VoidCallback? onGoToConnector;
   final VoidCallback? onGoToSkins;
-  final VoidCallback? onGoToWiki;
   final VoidCallback? onLoggedIn;
   const ProfileScreen({
     super.key,
     this.onGoToHome,
     this.onGoToConnector,
     this.onGoToSkins,
-    this.onGoToWiki,
     this.onLoggedIn,
   });
 
@@ -357,7 +355,6 @@ class ProfileScreenState extends State<ProfileScreen>
           onGoToHome: widget.onGoToHome,
           onGoToConnector: widget.onGoToConnector,
           onGoToSkins: widget.onGoToSkins,
-          onGoToWiki: widget.onGoToWiki,
         ),
         ProfileRequestsTab(
           requests: _requests,
@@ -385,7 +382,6 @@ class ProfileScreenState extends State<ProfileScreen>
           onGoToHome: widget.onGoToHome,
           onGoToConnector: widget.onGoToConnector,
           onGoToSkins: widget.onGoToSkins,
-          onGoToWiki: widget.onGoToWiki,
         ),
         _buildTabBar(context),
         Expanded(child: _buildTabContent()),
@@ -407,7 +403,6 @@ class ProfileScreenState extends State<ProfileScreen>
               onGoToHome: widget.onGoToHome,
               onGoToConnector: widget.onGoToConnector,
               onGoToSkins: widget.onGoToSkins,
-              onGoToWiki: widget.onGoToWiki,
             ),
           ),
           VerticalDivider(width: 1, color: AppTheme.borderGray),
@@ -432,7 +427,6 @@ class ProfileScreenState extends State<ProfileScreen>
               onGoToHome: widget.onGoToHome,
               onGoToConnector: widget.onGoToConnector,
               onGoToSkins: widget.onGoToSkins,
-              onGoToWiki: widget.onGoToWiki,
             ),
           ),
         )

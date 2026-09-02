@@ -1075,154 +1075,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get skinsDownload => 'Скачать';
 
   @override
-  String get wikiTitle => 'Вики';
-
-  @override
-  String get wikiMinecraftWiki => 'Вики Minecraft';
-
-  @override
-  String get wikiSearchHint => 'Поиск в вики…';
-
-  @override
-  String get wikiCouldNotLoadPages => 'Не удалось загрузить страницы.';
-
-  @override
-  String get wikiCouldNotReach => 'Не удалось получить доступ к вики.';
-
-  @override
-  String wikiNoResults(Object query) {
-    return 'Результатов для \"$query\" не найдено';
-  }
-
-  @override
-  String get wikiNoPagesFound => 'Страницы не найдены';
-
-  @override
-  String wikiCategories(Object count) {
-    return '$count категории';
-  }
-
-  @override
-  String get wikiCouldNotLoadContent => 'Не удалось загрузить содержимое.';
-
-  @override
-  String get wikiOpenInBrowser => 'Открыть в браузере';
-
-  @override
-  String get wikiCrafting => 'Крафт';
-
-  @override
-  String get wikiReadFullArticle => 'Читать полную статью';
-
-  @override
-  String get wikiRecent => 'Недавно просмотренные';
-
-  @override
-  String get wikiFavourites => 'Избранное';
-
-  @override
-  String get wikiMobs => 'Мобы';
-
-  @override
-  String get wikiBlocks => 'Блоки';
-
-  @override
-  String get wikiItems => 'Предметы';
-
-  @override
-  String get wikiBiomes => 'Биомы';
-
-  @override
-  String get wikiStructures => 'Структуры';
-
-  @override
-  String get wikiEnchantments => 'Зачарования';
-
-  @override
-  String get wikiPotions => 'Зелья';
-
-  @override
-  String get wikiPassive => 'Пассивные';
-
-  @override
-  String get wikiNeutral => 'Нейтральные';
-
-  @override
-  String get wikiHostile => 'Враждебные';
-
-  @override
-  String get wikiBoss => 'Босс';
-
-  @override
-  String get wikiUtility => 'Полезные';
-
-  @override
-  String get wikiNatural => 'Природные';
-
-  @override
-  String get wikiOres => 'Руды';
-
-  @override
-  String get wikiWood => 'Дерево';
-
-  @override
-  String get wikiStone => 'Камень';
-
-  @override
-  String get wikiRedstone => 'Красный камень';
-
-  @override
-  String get wikiPlants => 'Растения';
-
-  @override
-  String get wikiDecoration => 'Декорации';
-
-  @override
-  String get wikiTools => 'Инструменты';
-
-  @override
-  String get wikiSwords => 'Мечи';
-
-  @override
-  String get wikiRanged => 'Дальний бой';
-
-  @override
-  String get wikiArmor => 'Броня';
-
-  @override
-  String get wikiFood => 'Еда';
-
-  @override
-  String get wikiBrewing => 'Зельеварение';
-
-  @override
-  String get wikiMaterials => 'Материалы';
-
-  @override
-  String get wikiOverworld => 'Верхний мир';
-
-  @override
-  String get wikiNether => 'Незер';
-
-  @override
-  String get wikiTheEnd => 'Край';
-
-  @override
-  String get wikiSword => 'Меч';
-
-  @override
-  String get wikiTool => 'Инструмент';
-
-  @override
-  String get wikiBow => 'Лук';
-
-  @override
-  String get wikiFishing => 'Рыбалка';
-
-  @override
-  String get wikiStatusEffects => 'Эффекты состояния';
-
-  @override
   String get chooseUniqueUsername =>
       'Выберите уникальное имя пользователя для начала.';
 
@@ -1364,10 +1216,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get dataSourcesSection => 'Источники данных и благодарности';
-
-  @override
-  String get creditMinecraftWikiSubtitle =>
-      'Источник данных для вики. Контент под лицензией Creative Commons.';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
@@ -1630,9 +1478,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get featureLabelSkins => 'Скины';
 
   @override
-  String get featureLabelWiki => 'Вики';
-
-  @override
   String get featureLabelPartners => 'Партнёры';
 
   @override
@@ -1646,9 +1491,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get featureSubtitleSkins => 'Просмотр и управление скинами Minecraft';
-
-  @override
-  String get featureSubtitleWiki => 'Энциклопедия Minecraft';
 
   @override
   String get featureSubtitlePartners => 'Рекомендуемые серверы';

@@ -1079,154 +1079,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String get skinsDownload => 'Herunterladen';
 
   @override
-  String get wikiTitle => 'Wiki';
-
-  @override
-  String get wikiMinecraftWiki => 'Minecraft Wiki';
-
-  @override
-  String get wikiSearchHint => 'Im Wiki suchen…';
-
-  @override
-  String get wikiCouldNotLoadPages => 'Seiten konnten nicht geladen werden.';
-
-  @override
-  String get wikiCouldNotReach => 'Wiki nicht erreichbar.';
-
-  @override
-  String wikiNoResults(Object query) {
-    return 'Keine Ergebnisse für \"$query\"';
-  }
-
-  @override
-  String get wikiNoPagesFound => 'Keine Seiten gefunden';
-
-  @override
-  String wikiCategories(Object count) {
-    return '$count Kategorien';
-  }
-
-  @override
-  String get wikiCouldNotLoadContent => 'Inhalt konnte nicht geladen werden.';
-
-  @override
-  String get wikiOpenInBrowser => 'Im Browser öffnen';
-
-  @override
-  String get wikiCrafting => 'Handwerk';
-
-  @override
-  String get wikiReadFullArticle => 'Vollständigen Artikel lesen';
-
-  @override
-  String get wikiRecent => 'Zuletzt angesehen';
-
-  @override
-  String get wikiFavourites => 'Favoriten';
-
-  @override
-  String get wikiMobs => 'Mobs';
-
-  @override
-  String get wikiBlocks => 'Blöcke';
-
-  @override
-  String get wikiItems => 'Gegenstände';
-
-  @override
-  String get wikiBiomes => 'Biome';
-
-  @override
-  String get wikiStructures => 'Strukturen';
-
-  @override
-  String get wikiEnchantments => 'Verzauberungen';
-
-  @override
-  String get wikiPotions => 'Tränke';
-
-  @override
-  String get wikiPassive => 'Passiv';
-
-  @override
-  String get wikiNeutral => 'Neutral';
-
-  @override
-  String get wikiHostile => 'Feindselig';
-
-  @override
-  String get wikiBoss => 'Boss';
-
-  @override
-  String get wikiUtility => 'Nutzmob';
-
-  @override
-  String get wikiNatural => 'Natürlich';
-
-  @override
-  String get wikiOres => 'Erze';
-
-  @override
-  String get wikiWood => 'Holz';
-
-  @override
-  String get wikiStone => 'Stein';
-
-  @override
-  String get wikiRedstone => 'Redstone';
-
-  @override
-  String get wikiPlants => 'Pflanzen';
-
-  @override
-  String get wikiDecoration => 'Dekoration';
-
-  @override
-  String get wikiTools => 'Werkzeuge';
-
-  @override
-  String get wikiSwords => 'Schwerter';
-
-  @override
-  String get wikiRanged => 'Fernkampf';
-
-  @override
-  String get wikiArmor => 'Rüstung';
-
-  @override
-  String get wikiFood => 'Essen';
-
-  @override
-  String get wikiBrewing => 'Brauen';
-
-  @override
-  String get wikiMaterials => 'Materialien';
-
-  @override
-  String get wikiOverworld => 'Oberwelt';
-
-  @override
-  String get wikiNether => 'Nether';
-
-  @override
-  String get wikiTheEnd => 'The End';
-
-  @override
-  String get wikiSword => 'Schwert';
-
-  @override
-  String get wikiTool => 'Werkzeug';
-
-  @override
-  String get wikiBow => 'Bogen';
-
-  @override
-  String get wikiFishing => 'Angeln';
-
-  @override
-  String get wikiStatusEffects => 'Statuseffekte';
-
-  @override
   String get chooseUniqueUsername => 'Wähle einen einzigartigen Benutzernamen.';
 
   @override
@@ -1366,10 +1218,6 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get dataSourcesSection => 'Datenquellen & Credits';
-
-  @override
-  String get creditMinecraftWikiSubtitle =>
-      'Wiki-Datenquelle. Inhalt unter Creative Commons.';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
@@ -1633,9 +1481,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String get featureLabelSkins => 'Skins';
 
   @override
-  String get featureLabelWiki => 'Wiki';
-
-  @override
   String get featureLabelPartners => 'Partner';
 
   @override
@@ -1649,9 +1494,6 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get featureSubtitleSkins => 'Minecraft-Skins durchsuchen & verwalten';
-
-  @override
-  String get featureSubtitleWiki => 'Minecraft-Enzyklopädie';
 
   @override
   String get featureSubtitlePartners => 'Empfohlene Server';

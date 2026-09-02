@@ -10,7 +10,6 @@ class ProfileFriendTile extends StatelessWidget {
   final VoidCallback? onGoToHome;
   final VoidCallback? onGoToConnector;
   final VoidCallback? onGoToSkins;
-  final VoidCallback? onGoToWiki;
   const ProfileFriendTile({
     super.key,
     required this.friend,
@@ -18,7 +17,6 @@ class ProfileFriendTile extends StatelessWidget {
     this.onGoToHome,
     this.onGoToConnector,
     this.onGoToSkins,
-    this.onGoToWiki,
   });
 
   void _openProfile(BuildContext context) {
@@ -29,7 +27,6 @@ class ProfileFriendTile extends StatelessWidget {
           onGoToHome: onGoToHome,
           onGoToConnector: onGoToConnector,
           onGoToSkins: onGoToSkins,
-          onGoToWiki: onGoToWiki,
         ),
       ),
     );

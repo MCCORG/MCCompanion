@@ -1077,155 +1077,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get skinsDownload => 'Download';
 
   @override
-  String get wikiTitle => 'Wiki';
-
-  @override
-  String get wikiMinecraftWiki => 'Minecraft Wiki';
-
-  @override
-  String get wikiSearchHint => 'Search the wiki…';
-
-  @override
-  String get wikiCouldNotLoadPages => 'Could not load pages. Please try again.';
-
-  @override
-  String get wikiCouldNotReach =>
-      'Could not reach the wiki. Check your connection.';
-
-  @override
-  String wikiNoResults(Object query) {
-    return 'No results found for \"$query\"';
-  }
-
-  @override
-  String get wikiNoPagesFound => 'No pages found';
-
-  @override
-  String wikiCategories(Object count) {
-    return '$count categories';
-  }
-
-  @override
-  String get wikiCouldNotLoadContent => 'Could not load article content.';
-
-  @override
-  String get wikiOpenInBrowser => 'Open in browser';
-
-  @override
-  String get wikiCrafting => 'Crafting';
-
-  @override
-  String get wikiReadFullArticle => 'Read full article';
-
-  @override
-  String get wikiRecent => 'हाल में देखे गए';
-
-  @override
-  String get wikiFavourites => 'पसंदीदा';
-
-  @override
-  String get wikiMobs => 'Mobs';
-
-  @override
-  String get wikiBlocks => 'Blocks';
-
-  @override
-  String get wikiItems => 'Items';
-
-  @override
-  String get wikiBiomes => 'Biomes';
-
-  @override
-  String get wikiStructures => 'Structures';
-
-  @override
-  String get wikiEnchantments => 'Enchantments';
-
-  @override
-  String get wikiPotions => 'Potions';
-
-  @override
-  String get wikiPassive => 'Passive';
-
-  @override
-  String get wikiNeutral => 'Neutral';
-
-  @override
-  String get wikiHostile => 'Hostile';
-
-  @override
-  String get wikiBoss => 'Boss';
-
-  @override
-  String get wikiUtility => 'Utility';
-
-  @override
-  String get wikiNatural => 'Natural';
-
-  @override
-  String get wikiOres => 'Ores';
-
-  @override
-  String get wikiWood => 'Wood';
-
-  @override
-  String get wikiStone => 'Stone';
-
-  @override
-  String get wikiRedstone => 'Redstone';
-
-  @override
-  String get wikiPlants => 'Plants';
-
-  @override
-  String get wikiDecoration => 'Decoration';
-
-  @override
-  String get wikiTools => 'Tools';
-
-  @override
-  String get wikiSwords => 'Swords';
-
-  @override
-  String get wikiRanged => 'Ranged';
-
-  @override
-  String get wikiArmor => 'Armor';
-
-  @override
-  String get wikiFood => 'Food';
-
-  @override
-  String get wikiBrewing => 'Brewing';
-
-  @override
-  String get wikiMaterials => 'Materials';
-
-  @override
-  String get wikiOverworld => 'Overworld';
-
-  @override
-  String get wikiNether => 'Nether';
-
-  @override
-  String get wikiTheEnd => 'The End';
-
-  @override
-  String get wikiSword => 'Sword';
-
-  @override
-  String get wikiTool => 'Tool';
-
-  @override
-  String get wikiBow => 'Bow';
-
-  @override
-  String get wikiFishing => 'Fishing';
-
-  @override
-  String get wikiStatusEffects => 'Status Effects';
-
-  @override
   String get chooseUniqueUsername =>
       'शुरू करने के लिए एक अनोखा उपयोगकर्ता नाम चुनें।';
 
@@ -1366,10 +1217,6 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get dataSourcesSection => 'Data Sources & Credits';
-
-  @override
-  String get creditMinecraftWikiSubtitle =>
-      'Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
@@ -1636,9 +1483,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get featureLabelSkins => 'स्किन्स';
 
   @override
-  String get featureLabelWiki => 'विकी';
-
-  @override
   String get featureLabelPartners => 'पार्टनर';
 
   @override
@@ -1653,9 +1497,6 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get featureSubtitleSkins =>
       'Minecraft स्किन्स ब्राउज़ और प्रबंधित करें';
-
-  @override
-  String get featureSubtitleWiki => 'Minecraft विश्वकोश';
 
   @override
   String get featureSubtitlePartners => 'विशेष सर्वर';

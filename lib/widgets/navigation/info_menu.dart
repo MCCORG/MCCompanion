@@ -102,14 +102,6 @@ class InfoSheetContent extends StatelessWidget {
                     _sectionLabel(l.dataSourcesSection),
                     const SizedBox(height: 8),
                     _creditTile(
-                      label: 'W',
-                      labelColor: const Color(0xFF34D399),
-                      title: l.wikiMinecraftWiki,
-                      subtitle: l.creditMinecraftWikiSubtitle,
-                      url: 'https://minecraft.wiki',
-                    ),
-                    const SizedBox(height: 8),
-                    _creditTile(
                       label: 'M',
                       labelColor: const Color(0xFFF97316),
                       title: l.creditMojangTitle,
