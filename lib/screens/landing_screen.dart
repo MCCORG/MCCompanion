@@ -8,7 +8,7 @@ import '../services/home_customization_service.dart';
 import '../widgets/components/update_banner.dart';
 import '../util/partners_servers.dart';
 import '../widgets/components/global_notice_banner.dart';
-import '../widgets/landing/landing_partner_banner.dart';
+import '../widgets/featured_server_banner.dart';
 import '../widgets/landing/landing_quick_card.dart';
 import '../widgets/landing/landing_customize_sheet.dart';
 
@@ -25,6 +25,8 @@ class LandingScreen extends StatefulWidget {
   final VoidCallback? onInfoTap;
   final Future<List<FeaturedServer>>? partnerServersFuture;
   final void Function(String ip, int port)? onPlayServer;
+  final TextEditingController? ipController;
+  final TextEditingController? portController;
 
   const LandingScreen({
     super.key,
@@ -40,6 +42,8 @@ class LandingScreen extends StatefulWidget {
     this.onInfoTap,
     this.partnerServersFuture,
     this.onPlayServer,
+    this.ipController,
+    this.portController,
   });
 
   @override
@@ -110,12 +114,14 @@ class _LandingScreenState extends State<LandingScreen> {
           children: [
             const UpdateBanner(),
 
-            if (widget.partnerServersFuture != null) ...[
-              const SizedBox(height: 6),
-              LandingPartnerBanner(
-                future: widget.partnerServersFuture!,
-                onTap: widget.onGoToPartners,
-                onPlay: widget.onPlayServer,
+            if (widget.partnerServersFuture != null &&
+                widget.ipController != null &&
+                widget.portController != null) ...[
+              FeaturedServerBanner(
+                partnerServersFuture: widget.partnerServersFuture,
+                ipController: widget.ipController!,
+                portController: widget.portController!,
+                onSelected: widget.onGoToConnector,
               ),
               const SizedBox(height: 12),
             ] else
@@ -205,10 +211,6 @@ class _LandingScreenState extends State<LandingScreen> {
               ),
             ),
 
-            Padding(
-              padding: const EdgeInsets.fromLTRB(14, 6, 14, 10),
-              child: LandingFeedbackTile(onTap: widget.onGoToFeedback),
-            ),
           ],
         ),
         if (_notice != null)
@@ -235,11 +237,6 @@ class _LandingScreenState extends State<LandingScreen> {
     final wideTile = svc.wideTile;
     final visible = tiles.where((f) => !hidden.contains(f)).toList();
 
-    final isDesktop =
-        Theme.of(context).platform == TargetPlatform.macOS ||
-        Theme.of(context).platform == TargetPlatform.windows ||
-        Theme.of(context).platform == TargetPlatform.linux;
-    final tileHeight = isDesktop ? 136.0 : 168.0;
     final rows = <Widget>[];
     var rowIndex = 0;
 
@@ -248,15 +245,16 @@ class _LandingScreenState extends State<LandingScreen> {
       final f = visible[i];
       if (f == wideTile) {
         rows.add(
-          SizedBox(
-            height: tileHeight,
+          IntrinsicHeight(
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Expanded(
                   child: LandingQuickCard(
                     feature: f,
                     onTap: _callbackFor(f),
                     animationDelay: Duration(milliseconds: rowIndex * 80),
+                    wide: true,
                   ),
                 ),
               ],
@@ -269,9 +267,9 @@ class _LandingScreenState extends State<LandingScreen> {
             ? visible[i + 1]
             : null;
         rows.add(
-          SizedBox(
-            height: tileHeight,
+          IntrinsicHeight(
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Expanded(
                   child: LandingQuickCard(

@@ -1480,7 +1480,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get featureLabelSkins => 'Skin';
 
   @override
-  String get featureLabelPartners => 'Mitra';
+  String get featureLabelPartners => 'Daftar server';
 
   @override
   String get featureLabelLookup => 'Cari';

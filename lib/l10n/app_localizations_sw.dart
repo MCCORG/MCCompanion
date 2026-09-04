@@ -1483,7 +1483,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get featureLabelSkins => 'Ngozi';
 
   @override
-  String get featureLabelPartners => 'Washirika';
+  String get featureLabelPartners => 'Orodha ya seva';
 
   @override
   String get featureLabelLookup => 'Tafuta';

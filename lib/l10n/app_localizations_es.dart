@@ -1482,7 +1482,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get featureLabelSkins => 'Skins';
 
   @override
-  String get featureLabelPartners => 'Socios';
+  String get featureLabelPartners => 'Lista de servidores';
 
   @override
   String get featureLabelLookup => 'Buscar';

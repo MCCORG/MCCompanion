@@ -1483,7 +1483,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get featureLabelSkins => 'اسکنز';
 
   @override
-  String get featureLabelPartners => 'شراکت دار';
+  String get featureLabelPartners => 'سرورز کی فہرست';
 
   @override
   String get featureLabelLookup => 'تلاش';

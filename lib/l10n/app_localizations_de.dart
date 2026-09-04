@@ -1481,7 +1481,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get featureLabelSkins => 'Skins';
 
   @override
-  String get featureLabelPartners => 'Partner';
+  String get featureLabelPartners => 'Serverliste';
 
   @override
   String get featureLabelLookup => 'Suche';

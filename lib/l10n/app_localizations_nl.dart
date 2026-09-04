@@ -1494,7 +1494,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get featureLabelSkins => 'Skins';
 
   @override
-  String get featureLabelPartners => 'Partners';
+  String get featureLabelPartners => 'Serverlijst';
 
   @override
   String get featureLabelLookup => 'Opzoeken';

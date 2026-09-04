@@ -1473,7 +1473,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get featureLabelSkins => 'Skinler';
 
   @override
-  String get featureLabelPartners => 'Ortaklar';
+  String get featureLabelPartners => 'Sunucu listesi';
 
   @override
   String get featureLabelLookup => 'Arama';

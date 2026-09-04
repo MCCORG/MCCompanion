@@ -1483,7 +1483,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get featureLabelSkins => 'স্কিনস';
 
   @override
-  String get featureLabelPartners => 'অংশীদার';
+  String get featureLabelPartners => 'সার্ভার তালিকা';
 
   @override
   String get featureLabelLookup => 'খোঁজা';

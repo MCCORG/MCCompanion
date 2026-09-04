@@ -385,7 +385,15 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   }
 
   void _showInfoSheet() {
-    _showSheet(InfoSheetContent(onClose: () => Navigator.of(context).pop()));
+    _showSheet(
+      InfoSheetContent(
+        onClose: () => Navigator.of(context).pop(),
+        onFeedback: () {
+          Navigator.of(context).pop();
+          _goTo(_pageFeedback);
+        },
+      ),
+    );
   }
 
   void _showMoreSheet() {
@@ -589,6 +597,8 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
         onLanguageTap: () => navigationController.showLanguageDialog(context),
         onInfoTap: () => _showInfoSheet(),
         partnerServersFuture: _partnerServersFuture,
+        ipController: _ipController,
+        portController: _portController,
         onPlayServer: (ip, port) {
           _ipController.text = ip;
           _portController.text = port.toString();
@@ -740,7 +750,11 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
           ),
           body: Stack(
             children: [
-              SafeArea(top: true, bottom: false, child: _buildPageStack()),
+              SafeArea(
+                top: _pageIndex != _pageHome && _pageIndex != _pageConnector,
+                bottom: false,
+                child: _buildPageStack(),
+              ),
               _buildConsoleOverlay(),
             ],
           ),

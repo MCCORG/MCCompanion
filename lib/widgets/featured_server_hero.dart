@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:palette_generator/palette_generator.dart';
 import '../theme/app_theme.dart';
 import '../screens/server_detail_screen.dart';
 import '../util/partners_servers.dart';
@@ -20,6 +19,7 @@ class FeaturedServerHero extends StatefulWidget {
   final VoidCallback? onSelected;
   final BorderRadius borderRadius;
   final double height;
+  final double topInset;
 
   const FeaturedServerHero({
     super.key,
@@ -30,6 +30,7 @@ class FeaturedServerHero extends StatefulWidget {
     this.onSelected,
     this.borderRadius = const BorderRadius.all(Radius.circular(20)),
     this.height = defaultHeight,
+    this.topInset = 0,
   });
 
   @override
@@ -42,7 +43,6 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
   int _heroBgPage = 0;
   Timer? _heroTimer;
   final Map<String, Future<ServerStatus>> _statusCache = {};
-  final Map<String, List<Color>> _paletteCache = {};
 
   @override
   void initState() {
@@ -80,26 +80,6 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
     });
   }
 
-  Future<List<Color>> _getPalette(String url) async {
-    if (_paletteCache.containsKey(url)) return _paletteCache[url]!;
-    try {
-      final generator = await PaletteGenerator.fromImageProvider(
-        NetworkImage(url),
-        size: const Size(80, 80),
-      );
-      final colors = [
-        generator.vibrantColor?.color,
-        generator.lightVibrantColor?.color,
-        generator.mutedColor?.color,
-        generator.dominantColor?.color,
-      ].whereType<Color>().take(3).toList();
-      _paletteCache[url] = colors;
-      return colors;
-    } catch (_) {
-      _paletteCache[url] = [];
-      return [];
-    }
-  }
 
   Future<ServerStatus> _getHeroStatus(FeaturedServer server) {
     final key = '${server.address}:${server.port}';
@@ -130,7 +110,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
     return ClipRRect(
       borderRadius: widget.borderRadius,
       child: SizedBox(
-        height: widget.height,
+        height: widget.height + widget.topInset,
         child: Stack(
           fit: StackFit.expand,
           children: [
@@ -146,7 +126,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
               ),
 
             Padding(
-              padding: const EdgeInsets.all(14),
+              padding: EdgeInsets.fromLTRB(14, 14 + widget.topInset, 14, 14),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -189,84 +169,36 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
 
   Widget _heroPage(BuildContext context, FeaturedServer? server) {
     final broadcasting = widget.broadcasting;
-    final card = AppTheme.surfaceRaisedSolid;
     final iconUrl = server?.iconUrl;
     final hasIcon = iconUrl != null && iconUrl.isNotEmpty;
 
-    return Stack(
+    return LayoutBuilder(
+      builder: (context, box) {
+        final logoSlot = min(150.0, box.maxWidth * 0.38);
+        final textWidth = box.maxWidth - logoSlot - 22;
+        return Stack(
       fit: StackFit.expand,
       children: [
-        FutureBuilder<List<Color>>(
-          future: hasIcon ? _getPalette(iconUrl) : Future.value(const []),
-          builder: (context, snap) {
-            final colors = snap.data ?? const <Color>[];
-            if (colors.length >= 2) {
-              return Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    colors: [
-                      colors[0],
-                      colors[1],
-                      if (colors.length >= 3) colors[2],
-                    ],
-                  ),
-                ),
-              );
-            }
-            if (colors.length == 1) return Container(color: colors[0]);
-            return _defaultHeroBg();
-          },
-        ),
+        Container(color: ThemeService.instance.background),
         if (hasIcon) ...[
           Align(
             alignment: Alignment.centerRight,
             child: Padding(
               padding: const EdgeInsets.only(right: 8),
-              child: Image.network(
-                iconUrl,
+              child: SizedBox(
+                width: logoSlot,
                 height: widget.height * 0.79,
-                fit: BoxFit.fitHeight,
-                errorBuilder: (_, _, _) => const SizedBox.shrink(),
-              ),
-            ),
-          ),
-          Positioned.fill(
-            child: Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  stops: const [0.0, 0.40, 0.75, 1.0],
-                  colors: [
-                    card,
-                    card.withValues(alpha: 0.80),
-                    card.withValues(alpha: 0.27),
-                    card.withValues(alpha: 0.0),
-                  ],
+                child: Image.network(
+                  iconUrl,
+                  fit: BoxFit.contain,
+                  errorBuilder: (_, _, _) => const SizedBox.shrink(),
                 ),
               ),
             ),
           ),
         ],
-        Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              stops: const [0.0, 0.3, 0.7, 1.0],
-              colors: [
-                card.withValues(alpha: 0.40),
-                card.withValues(alpha: 0.0),
-                card.withValues(alpha: 0.0),
-                card.withValues(alpha: 0.60),
-              ],
-            ),
-          ),
-        ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(14, 46, 14, 14),
+          padding: EdgeInsets.fromLTRB(14, 46 + widget.topInset, 14, 14),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -278,20 +210,23 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(
-                      server?.name ?? 'MCCompanion',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w800,
-                        height: 1.15,
-                        color: ThemeService.instance.textPrimary,
+                    ConstrainedBox(
+                      constraints: BoxConstraints(maxWidth: textWidth),
+                      child: Text(
+                        server?.name ?? 'MCCompanion',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w800,
+                          height: 1.15,
+                          color: ThemeService.instance.textPrimary,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 4),
                     ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 220),
+                      constraints: BoxConstraints(maxWidth: min(220.0, textWidth)),
                       child: Text(
                         server?.description.isNotEmpty == true
                             ? server!.description
@@ -379,23 +314,11 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
           ),
         ),
       ],
+        );
+      },
     );
   }
 
-  Widget _defaultHeroBg() {
-    final bg = ThemeService.instance.background;
-    final bgLight = Color.lerp(bg, Colors.white, 0.06)!;
-    final bgMid = Color.lerp(bg, Colors.black, 0.10)!;
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [bg, bgLight, bgMid],
-        ),
-      ),
-    );
-  }
 
   Widget _heroBadge({required IconData icon, required String label}) {
     return Container(

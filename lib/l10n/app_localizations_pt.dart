@@ -1479,7 +1479,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get featureLabelSkins => 'Skins';
 
   @override
-  String get featureLabelPartners => 'Parceiros';
+  String get featureLabelPartners => 'Lista de servidores';
 
   @override
   String get featureLabelLookup => 'Pesquisa';

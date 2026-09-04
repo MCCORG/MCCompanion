@@ -1478,7 +1478,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get featureLabelSkins => 'Скины';
 
   @override
-  String get featureLabelPartners => 'Партнёры';
+  String get featureLabelPartners => 'Список серверов';
 
   @override
   String get featureLabelLookup => 'Поиск';

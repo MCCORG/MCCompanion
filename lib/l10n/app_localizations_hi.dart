@@ -1483,7 +1483,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get featureLabelSkins => 'स्किन्स';
 
   @override
-  String get featureLabelPartners => 'पार्टनर';
+  String get featureLabelPartners => 'सर्वर सूची';
 
   @override
   String get featureLabelLookup => 'खोज';

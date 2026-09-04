@@ -1477,7 +1477,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get featureLabelSkins => 'Skins';
 
   @override
-  String get featureLabelPartners => 'Partenaires';
+  String get featureLabelPartners => 'Liste de serveurs';
 
   @override
   String get featureLabelLookup => 'Recherche';

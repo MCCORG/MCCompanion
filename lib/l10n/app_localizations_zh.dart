@@ -1463,7 +1463,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get featureLabelSkins => '皮肤';
 
   @override
-  String get featureLabelPartners => '合作伙伴';
+  String get featureLabelPartners => '服务器列表';
 
   @override
   String get featureLabelLookup => '查找';

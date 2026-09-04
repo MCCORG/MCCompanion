@@ -1475,7 +1475,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get featureLabelSkins => 'سكنز';
 
   @override
-  String get featureLabelPartners => 'شركاء';
+  String get featureLabelPartners => 'قائمة الخوادم';
 
   @override
   String get featureLabelLookup => 'بحث';
