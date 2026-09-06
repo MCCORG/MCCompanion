@@ -26,15 +26,6 @@
   "serverDetailsLabel": "সার্ভারের বিবরণ",
   "start": "শুরু করুন",
   "labelJava": "Java",
-  "@howToJavaTitle": {
-    "description": "Title for the Java how-to modal"
-  },
-  "@howToJavaSubtitle": {
-    "description": "Short subtitle for Java menu tile"
-  },
-  "@howToJavaBody": {
-    "description": "Detailed steps for Java mode how-to modal"
-  },
   "language": "বাংলা",
   "@language": {
     "description": "Your language name in your own language"

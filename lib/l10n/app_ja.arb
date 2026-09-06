@@ -26,15 +26,6 @@
   "serverDetailsLabel": "サーバー詳細",
   "start": "開始",
   "labelJava": "Java",
-  "@howToJavaTitle": {
-    "description": "Title for the Java how-to modal"
-  },
-  "@howToJavaSubtitle": {
-    "description": "Short subtitle for Java menu tile"
-  },
-  "@howToJavaBody": {
-    "description": "Detailed steps for Java mode how-to modal"
-  },
   "language": "日本語",
   "@language": {
     "description": "Your language name in your own language"

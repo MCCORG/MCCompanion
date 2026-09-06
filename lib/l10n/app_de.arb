@@ -26,15 +26,6 @@
   "start": "Starten",
   "labelJava": "Java",
   "aternosSubtext": "Erstelle deinen eigenen kostenlosen Minecraft-Server",
-  "@howToJavaTitle": {
-    "description": "Title for the Java how-to modal"
-  },
-  "@howToJavaSubtitle": {
-    "description": "Short subtitle for Java menu tile"
-  },
-  "@howToJavaBody": {
-    "description": "Detailed steps for Java mode how-to modal"
-  },
   "language": "Deutsch",
   "@language": {
     "description": "Your language name in your own language"

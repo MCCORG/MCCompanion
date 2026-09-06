@@ -70,13 +70,19 @@ class PresenceService {
     }
   }
 
+  static const List<int> _backoffSeconds = [5, 10, 20, 40, 60];
+
   static void _scheduleReconnect() {
     _connected = false;
-    _failCount++;
+    if (_failCount < 1000) _failCount++;
     _sub?.cancel();
     _channel = null;
     _reconnectTimer?.cancel();
-    _reconnectTimer = Timer(const Duration(seconds: 5), connect);
+    final index = (_failCount - 1).clamp(0, _backoffSeconds.length - 1);
+    _reconnectTimer = Timer(
+      Duration(seconds: _backoffSeconds[index]),
+      connect,
+    );
   }
 
   static Future<void> reconnectIfNeeded() async {

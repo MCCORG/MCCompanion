@@ -45,16 +45,7 @@
   "start": "Start",
   "stop": "Stop",
   "labelJava": "Java",
-  "@howToJavaTitle": {
-    "description": "Title for the Java how-to modal"
-  },
-  "@howToJavaSubtitle": {
-    "description": "Short subtitle for Java menu tile"
-  },
   "aternosSubtext": "Create your own free Minecraft server",
-  "@howToJavaBody": {
-    "description": "Detailed steps for Java mode how-to modal"
-  },
   "language": "English",
   "@language": {
     "description": "Your language name in your own language"
