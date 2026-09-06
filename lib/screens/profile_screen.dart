@@ -5,7 +5,7 @@ import '../theme/app_theme.dart';
 import '../services/auth_service.dart';
 import '../services/push_notification_service.dart';
 import '../services/user_service.dart';
-import '../services/message_service.dart';
+import '../services/presence_service.dart';
 import '../models/user_model.dart';
 import '../widgets/components/app_toast.dart';
 import '../widgets/profile/profile_auth_views.dart';
@@ -18,21 +18,17 @@ import '../widgets/profile/moderation_banner.dart';
 import '../widgets/profile/verify_email_banner.dart';
 import 'register_screen.dart';
 import 'public_profile_screen.dart';
-import 'chat_screen.dart';
-import 'conversations_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   final VoidCallback? onGoToHome;
   final VoidCallback? onGoToConnector;
   final VoidCallback? onGoToSkins;
-  final VoidCallback? onGoToWiki;
   final VoidCallback? onLoggedIn;
   const ProfileScreen({
     super.key,
     this.onGoToHome,
     this.onGoToConnector,
     this.onGoToSkins,
-    this.onGoToWiki,
     this.onLoggedIn,
   });
 
@@ -54,12 +50,10 @@ class ProfileScreenState extends State<ProfileScreen>
   List<FriendRequest> _requests = [];
   bool _loadingFriends = true;
   bool _loadingRequests = true;
-  int _totalUnread = 0;
   int _unreadNotifCount = 0;
-  StreamSubscription<dynamic>? _incomingSub;
 
   bool _isAdmin = UserService.isAdmin;
-  int get _tabCount => _isAdmin ? 6 : 5;
+  int get _tabCount => _isAdmin ? 5 : 4;
 
   @override
   void initState() {
@@ -67,15 +61,13 @@ class ProfileScreenState extends State<ProfileScreen>
     _tabs = TabController(length: _tabCount, vsync: this);
     _tabs.addListener(_onTabChanged);
     _authSubscription = AuthService.userStream.listen((_) => _checkAuth());
-    _presenceSub = MessageService.presenceStream.listen(_onPresence);
-    _incomingSub = MessageService.incoming.listen((_) => _refreshUnread());
+    _presenceSub = PresenceService.presenceStream.listen(_onPresence);
   }
 
   @override
   void dispose() {
     _authSubscription?.cancel();
     _presenceSub?.cancel();
-    _incomingSub?.cancel();
     _tabs.dispose();
     super.dispose();
   }
@@ -143,7 +135,6 @@ class ProfileScreenState extends State<ProfileScreen>
       _me = init.user;
       _friends = init.friends;
       _requests = init.friendRequests;
-      _totalUnread = init.unreadMessageCount;
       _unreadNotifCount = init.unreadNotifCount;
       _authState = _AuthState.loggedIn;
       _loadingFriends = false;
@@ -205,13 +196,6 @@ class ProfileScreenState extends State<ProfileScreen>
     }
   }
 
-  Future<void> _refreshUnread() async {
-    final convs = await MessageService.getConversations();
-    if (!mounted) return;
-    final total = convs.fold(0, (sum, c) => sum + c.unreadCount);
-    if (total != _totalUnread) setState(() => _totalUnread = total);
-  }
-
   void _openRegister() {
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -223,12 +207,6 @@ class ProfileScreenState extends State<ProfileScreen>
         ),
       ),
     );
-  }
-
-  void _openChat(FriendModel friend) {
-    Navigator.of(
-      context,
-    ).push(MaterialPageRoute(builder: (_) => ChatScreen(friend: friend)));
   }
 
   @override
@@ -322,37 +300,6 @@ class ProfileScreenState extends State<ProfileScreen>
             icon: Stack(
               clipBehavior: Clip.none,
               children: [
-                const Icon(Icons.chat_bubble_rounded, size: 22),
-                if (_totalUnread > 0)
-                  Positioned(
-                    right: -6,
-                    top: -4,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 4,
-                        vertical: 1,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppTheme.error,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        _totalUnread > 99 ? '99+' : '$_totalUnread',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 9,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                  ),
-              ],
-            ),
-          ),
-          Tab(
-            icon: Stack(
-              clipBehavior: Clip.none,
-              children: [
                 const Icon(Icons.notifications_rounded, size: 22),
                 if (_unreadNotifCount > 0)
                   Positioned(
@@ -405,11 +352,9 @@ class ProfileScreenState extends State<ProfileScreen>
           loading: _loadingFriends,
           onRefresh: _fetchFriends,
           onRemove: _removeFriend,
-          onChat: _openChat,
           onGoToHome: widget.onGoToHome,
           onGoToConnector: widget.onGoToConnector,
           onGoToSkins: widget.onGoToSkins,
-          onGoToWiki: widget.onGoToWiki,
         ),
         ProfileRequestsTab(
           requests: _requests,
@@ -418,7 +363,6 @@ class ProfileScreenState extends State<ProfileScreen>
           onAccept: _acceptRequest,
           onDecline: _declineRequest,
         ),
-        ConversationsScreen(),
         ProfileNotificationsTab(
           onCountChanged: (count) {
             if (mounted) setState(() => _unreadNotifCount = count);
@@ -438,7 +382,6 @@ class ProfileScreenState extends State<ProfileScreen>
           onGoToHome: widget.onGoToHome,
           onGoToConnector: widget.onGoToConnector,
           onGoToSkins: widget.onGoToSkins,
-          onGoToWiki: widget.onGoToWiki,
         ),
         _buildTabBar(context),
         Expanded(child: _buildTabContent()),
@@ -460,7 +403,6 @@ class ProfileScreenState extends State<ProfileScreen>
               onGoToHome: widget.onGoToHome,
               onGoToConnector: widget.onGoToConnector,
               onGoToSkins: widget.onGoToSkins,
-              onGoToWiki: widget.onGoToWiki,
             ),
           ),
           VerticalDivider(width: 1, color: AppTheme.borderGray),
@@ -485,7 +427,6 @@ class ProfileScreenState extends State<ProfileScreen>
               onGoToHome: widget.onGoToHome,
               onGoToConnector: widget.onGoToConnector,
               onGoToSkins: widget.onGoToSkins,
-              onGoToWiki: widget.onGoToWiki,
             ),
           ),
         )

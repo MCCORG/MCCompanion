@@ -131,27 +131,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get labelJava => 'Java';
 
   @override
-  String get startJavaMode => 'Anza hali ya Java';
-
-  @override
-  String get javaInfoTitle => 'Hali ya Java';
-
-  @override
-  String get javaInfoText => 'Unganisha kwenye seva za Java Edition';
-
-  @override
-  String get howToJavaTitle => 'Hali ya Java';
-
-  @override
-  String get howToJavaSubtitle =>
-      'Unganisha kwenye seva za Java Edition kupitia MCCompanion';
-
-  @override
   String get aternosSubtext => 'Skapa din egen gratis Minecraft-server';
-
-  @override
-  String get howToJavaBody =>
-      'Hali ya Java: hatua za haraka:\n1. Kwenye programu, chagua hali ya Java.\n2. Weka anwani na port ya seva yako ya Java Edition (chaguomsingi: 25565).\n3. Bonyeza \"Anza hali ya Java\": MCCompanion itaunganisha muunganisho.\n4. Fungua Minecraft Bedrock na uende kwenye kichupo cha Marafiki.\n5. Chagua seva ya LAN inayoitwa \"MCCompanion\" ili kujiunga na seva ya Java.\n\n⚠️ Maonyo muhimu:\n- Akaunti halali ya Java Edition (Microsoft) inahitajika.\n- Baadhi ya seva hutumia mifumo ya anti-cheat ambayo inaweza kugundua na kupiga marufuku akaunti yako.\n- Baadhi ya seva hukataza wazi wateja wa Bedrock, hakikisha unakagua sheria za seva kila wakati.\n- MCCompanion haiwajibiki kwa marufuku, kusimamishwa au matatizo mengine yanayohusiana na akaunti yanayoweza kusababishwa na kutumia kipengele hiki.\n- Tumia kwa hatari yako mwenyewe.';
 
   @override
   String get language => 'Kiswahili';
@@ -705,9 +685,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get reportUser => 'Report user';
 
   @override
-  String get reportMessage => 'Report message';
-
-  @override
   String reportUserWithName(Object name) {
     return 'Report $name';
   }
@@ -747,18 +724,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get yesterday => 'Yesterday';
 
   @override
-  String get messagePlaceholder => 'Message…';
-
-  @override
-  String get noMessagesYet => 'No messages yet.\nSay hello!';
-
-  @override
-  String get noConversationsYet => 'No conversations yet';
-
-  @override
-  String get startChatHint => 'Find a friend and start chatting!';
-
-  @override
   String get youPrefix => 'You';
 
   @override
@@ -793,9 +758,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get tabRequests => 'Requests';
-
-  @override
-  String get tabChats => 'Chats';
 
   @override
   String get addFriend => 'Add Friend';
@@ -1115,155 +1077,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get skinsDownload => 'Download';
 
   @override
-  String get wikiTitle => 'Wiki';
-
-  @override
-  String get wikiMinecraftWiki => 'Minecraft Wiki';
-
-  @override
-  String get wikiSearchHint => 'Search the wiki…';
-
-  @override
-  String get wikiCouldNotLoadPages => 'Could not load pages. Please try again.';
-
-  @override
-  String get wikiCouldNotReach =>
-      'Could not reach the wiki. Check your connection.';
-
-  @override
-  String wikiNoResults(Object query) {
-    return 'No results found for \"$query\"';
-  }
-
-  @override
-  String get wikiNoPagesFound => 'No pages found';
-
-  @override
-  String wikiCategories(Object count) {
-    return '$count categories';
-  }
-
-  @override
-  String get wikiCouldNotLoadContent => 'Could not load article content.';
-
-  @override
-  String get wikiOpenInBrowser => 'Open in browser';
-
-  @override
-  String get wikiCrafting => 'Crafting';
-
-  @override
-  String get wikiReadFullArticle => 'Read full article';
-
-  @override
-  String get wikiRecent => 'Zilizotazamwa hivi karibuni';
-
-  @override
-  String get wikiFavourites => 'Vipendwa';
-
-  @override
-  String get wikiMobs => 'Mobs';
-
-  @override
-  String get wikiBlocks => 'Blocks';
-
-  @override
-  String get wikiItems => 'Items';
-
-  @override
-  String get wikiBiomes => 'Biomes';
-
-  @override
-  String get wikiStructures => 'Structures';
-
-  @override
-  String get wikiEnchantments => 'Enchantments';
-
-  @override
-  String get wikiPotions => 'Potions';
-
-  @override
-  String get wikiPassive => 'Passive';
-
-  @override
-  String get wikiNeutral => 'Neutral';
-
-  @override
-  String get wikiHostile => 'Hostile';
-
-  @override
-  String get wikiBoss => 'Boss';
-
-  @override
-  String get wikiUtility => 'Utility';
-
-  @override
-  String get wikiNatural => 'Natural';
-
-  @override
-  String get wikiOres => 'Ores';
-
-  @override
-  String get wikiWood => 'Wood';
-
-  @override
-  String get wikiStone => 'Stone';
-
-  @override
-  String get wikiRedstone => 'Redstone';
-
-  @override
-  String get wikiPlants => 'Plants';
-
-  @override
-  String get wikiDecoration => 'Decoration';
-
-  @override
-  String get wikiTools => 'Tools';
-
-  @override
-  String get wikiSwords => 'Swords';
-
-  @override
-  String get wikiRanged => 'Ranged';
-
-  @override
-  String get wikiArmor => 'Armor';
-
-  @override
-  String get wikiFood => 'Food';
-
-  @override
-  String get wikiBrewing => 'Brewing';
-
-  @override
-  String get wikiMaterials => 'Materials';
-
-  @override
-  String get wikiOverworld => 'Overworld';
-
-  @override
-  String get wikiNether => 'Nether';
-
-  @override
-  String get wikiTheEnd => 'The End';
-
-  @override
-  String get wikiSword => 'Sword';
-
-  @override
-  String get wikiTool => 'Tool';
-
-  @override
-  String get wikiBow => 'Bow';
-
-  @override
-  String get wikiFishing => 'Fishing';
-
-  @override
-  String get wikiStatusEffects => 'Status Effects';
-
-  @override
   String get chooseUniqueUsername =>
       'Chagua jina la mtumiaji la kipekee kuanza.';
 
@@ -1404,10 +1217,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get dataSourcesSection => 'Data Sources & Credits';
-
-  @override
-  String get creditMinecraftWikiSubtitle =>
-      'Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
@@ -1674,10 +1483,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get featureLabelSkins => 'Ngozi';
 
   @override
-  String get featureLabelWiki => 'Wiki';
-
-  @override
-  String get featureLabelPartners => 'Washirika';
+  String get featureLabelPartners => 'Orodha ya seva';
 
   @override
   String get featureLabelLookup => 'Tafuta';
@@ -1690,9 +1496,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get featureSubtitleSkins => 'Vinjari na usimamie ngozi za Minecraft';
-
-  @override
-  String get featureSubtitleWiki => 'Kamusi ya Minecraft';
 
   @override
   String get featureSubtitlePartners => 'Seva zilizoangaziwa';
@@ -1718,9 +1521,6 @@ class AppLocalizationsSw extends AppLocalizations {
       'Uboreshaji unapatikana kwenye Microsoft Store';
 
   @override
-  String get chatEmptyHint => 'Kuwa wa kwanza kusema kitu!';
-
-  @override
   String get skinSaved => 'Skin imehifadhiwa';
 
   @override
@@ -1742,9 +1542,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get feedbackFeatureRequest => 'Ombi la Kipengele';
-
-  @override
-  String get feedbackGoesToGithub => 'Inaenda moja kwa moja kwenye GitHub';
 
   @override
   String get feedbackTitleLabel => 'Kichwa';
@@ -1788,18 +1585,14 @@ class AppLocalizationsSw extends AppLocalizations {
   String get feedbackSubmitFeature => 'Tuma Ombi la Kipengele';
 
   @override
-  String get feedbackDisclaimer =>
-      'Inaunda suala la umma kwenye GitHub · Usijumuishe nywila';
+  String get feedbackDisclaimer => 'Huenda kwa timu yetu · Usiweke manenosiri';
 
   @override
   String get feedbackSuccessTitle => 'Asante kwa maoni yako!';
 
   @override
   String get feedbackSuccessBody =>
-      'Asante! Ripoti yako imepokelewa. Tutaiangalia haraka iwezekanavyo.';
-
-  @override
-  String get feedbackViewOnGithub => 'Tazama kwenye GitHub';
+      'Asante! Ripoti yako imefika. Tunajibu ndani ya programu, kwa hiyo rudi hapa kuona jibu.';
 
   @override
   String get feedbackSubmitAnother => 'Tuma nyingine';
@@ -2651,19 +2444,10 @@ class AppLocalizationsSw extends AppLocalizations {
   String get adminTicketsHeader => 'Ripoti na maombi';
 
   @override
-  String get adminGeneralChat => 'Gumzo la jumla';
-
-  @override
   String get adminTicketReplyHint => 'Jibu kuhusu tiketi hii…';
 
   @override
   String get adminNoTicketsForUser => 'Hakuna tiketi kutoka kwa mtumiaji huyu';
-
-  @override
-  String get hideConversation => 'Ficha';
-
-  @override
-  String get conversationHidden => 'Mazungumzo yamefichwa';
 
   @override
   String get undo => 'Tendua';
@@ -2820,4 +2604,157 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get updateAvailableDismiss => 'Si sasa';
+
+  @override
+  String get serverListSearchHint => 'Tafuta kwa jina au anwani';
+
+  @override
+  String get serverListEditionAny => 'Java na Bedrock';
+
+  @override
+  String get serverListEditionJava => 'Java pekee';
+
+  @override
+  String get serverListEditionBedrock => 'Bedrock pekee';
+
+  @override
+  String get serverListSortVotes => 'Kura nyingi zaidi';
+
+  @override
+  String get serverListSortPlayers => 'Wachezaji wengi zaidi';
+
+  @override
+  String get serverListSortPeak => 'Kilele cha juu zaidi';
+
+  @override
+  String get serverListSortNewest => 'Mpya zaidi';
+
+  @override
+  String get serverListSortName => 'Jina';
+
+  @override
+  String get serverListAllCategories => 'Zote';
+
+  @override
+  String get serverListLoadFailed => 'Imeshindwa kupakia orodha ya seva';
+
+  @override
+  String get serverListLoadFailedHint => 'Vuta chini ili kujaribu tena';
+
+  @override
+  String get serverListNoMatch => 'Hakuna seva inayolingana';
+
+  @override
+  String get serverListNoMatchHint => 'Jaribu utafutaji au kategoria nyingine';
+
+  @override
+  String get serverCardPlay => 'Cheza';
+
+  @override
+  String get serverCardVote => 'Piga kura';
+
+  @override
+  String get serverCardViewServer => 'Angalia seva';
+
+  @override
+  String get serverCopyIp => 'Nakili IP';
+
+  @override
+  String get serverCopied => 'Imenakiliwa';
+
+  @override
+  String get serverStatPlayers => 'Wachezaji';
+
+  @override
+  String get serverStatPeak => 'Kilele';
+
+  @override
+  String get serverStatUptime => 'Muda wa kufanya kazi';
+
+  @override
+  String get serverStatVotesMonth => 'Kura za mwezi huu';
+
+  @override
+  String get serverStatVotesAllTime => 'Kura zote';
+
+  @override
+  String get serverBadgeFeatured => 'Iliyoangaziwa';
+
+  @override
+  String get serverEditionJava => 'Java';
+
+  @override
+  String get serverEditionBedrock => 'Bedrock';
+
+  @override
+  String get serverEditionCrossplay => 'Crossplay';
+
+  @override
+  String get serverSectionMotd => 'Ujumbe wa siku';
+
+  @override
+  String get serverSectionAbout => 'Kuhusu';
+
+  @override
+  String get serverSectionCategories => 'Kategoria';
+
+  @override
+  String get serverSectionVotes => 'Kura';
+
+  @override
+  String get serverLinkDiscord => 'Discord';
+
+  @override
+  String get serverLinkWebsite => 'Tovuti';
+
+  @override
+  String get serverVotesThisMonth => 'Mwezi huu';
+
+  @override
+  String get serverVotesAllTime => 'Muda wote';
+
+  @override
+  String get serverVoteAction => 'Piga kura kwa seva hii';
+
+  @override
+  String get serverPlayAction => 'Cheza kwenye seva hii';
+
+  @override
+  String get serverVoteSignInRequired =>
+      'Ingia ili kupiga kura kupitia programu.';
+
+  @override
+  String serverVoteSheetTitle(String name) {
+    return 'Piga kura kwa $name';
+  }
+
+  @override
+  String get serverVoteSheetSubtitle =>
+      'Jina lako la Minecraft, ili seva ijue nani wa kumzawadia.';
+
+  @override
+  String get serverVoteSheetHint => 'Steve';
+
+  @override
+  String get serverVoteSheetButton => 'Piga kura';
+
+  @override
+  String get serverVoteSheetLimit => 'Kura moja kwa kila seva kwa siku.';
+
+  @override
+  String get serverVoteDelivered => 'Umepiga kura. Zawadi yako inakuja.';
+
+  @override
+  String get serverVoteNoRewards =>
+      'Umepiga kura. Seva hii haina zawadi zilizowekwa.';
+
+  @override
+  String get serverVoteFailed => 'Haikufanya kazi, tafadhali jaribu tena.';
+
+  @override
+  String get serverVoteOffline =>
+      'Imeshindwa kufikia seva. Angalia muunganisho wako.';
+
+  @override
+  String get feedbackViewYourReport => 'Angalia ripoti yako';
 }

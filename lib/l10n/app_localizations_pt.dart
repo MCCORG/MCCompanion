@@ -133,27 +133,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get labelJava => 'Java';
 
   @override
-  String get startJavaMode => 'Iniciar modo Java';
-
-  @override
-  String get javaInfoTitle => 'Modo Java';
-
-  @override
-  String get javaInfoText => 'Conecte-se a servidores Java Edition';
-
-  @override
-  String get howToJavaTitle => 'Modo Java';
-
-  @override
-  String get howToJavaSubtitle =>
-      'Conecte-se a servidores Java Edition via MCCompanion';
-
-  @override
   String get aternosSubtext => 'Crie o seu próprio servidor Minecraft gratuito';
-
-  @override
-  String get howToJavaBody =>
-      'Modo Java: etapas rápidas:\n1. No aplicativo, selecione o modo Java.\n2. Digite o endereço e a porta do seu servidor Java Edition (padrão: 25565).\n3. Toque em \"Iniciar modo Java\": o MCCompanion fará a ponte da conexão.\n4. Abra o Minecraft Bedrock e vá para a aba Amigos.\n5. Selecione o servidor LAN chamado \"MCCompanion\" para entrar no servidor Java.\n\n⚠️ Avisos importantes:\n- É necessária uma conta válida do Java Edition (Microsoft).\n- Alguns servidores usam sistemas anti-cheat que podem detectar e banir sua conta.\n- Alguns servidores proíbem explicitamente clientes Bedrock, sempre verifique as regras do servidor.\n- O MCCompanion não se responsabiliza por banimentos, suspensões ou outros problemas relacionados à conta que possam resultar do uso deste recurso.\n- Use por sua conta e risco.';
 
   @override
   String get language => 'Português';
@@ -711,9 +691,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get reportUser => 'Denunciar utilizador';
 
   @override
-  String get reportMessage => 'Denunciar mensagem';
-
-  @override
   String reportUserWithName(Object name) {
     return 'Denunciar $name';
   }
@@ -753,18 +730,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get yesterday => 'Ontem';
 
   @override
-  String get messagePlaceholder => 'Mensagem…';
-
-  @override
-  String get noMessagesYet => 'Ainda sem mensagens.\nDiz olá!';
-
-  @override
-  String get noConversationsYet => 'Ainda sem conversas';
-
-  @override
-  String get startChatHint => 'Encontra um amigo e começa a conversar!';
-
-  @override
   String get youPrefix => 'Tu';
 
   @override
@@ -798,9 +763,6 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get tabRequests => 'Pedidos';
-
-  @override
-  String get tabChats => 'Chats';
 
   @override
   String get addFriend => 'Adicionar amigo';
@@ -1115,154 +1077,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get skinsDownload => 'Transferir';
 
   @override
-  String get wikiTitle => 'Wiki';
-
-  @override
-  String get wikiMinecraftWiki => 'Wiki do Minecraft';
-
-  @override
-  String get wikiSearchHint => 'Pesquisar no wiki…';
-
-  @override
-  String get wikiCouldNotLoadPages => 'Não foi possível carregar as páginas.';
-
-  @override
-  String get wikiCouldNotReach => 'Não foi possível aceder ao wiki.';
-
-  @override
-  String wikiNoResults(Object query) {
-    return 'Sem resultados para \"$query\"';
-  }
-
-  @override
-  String get wikiNoPagesFound => 'Nenhuma página encontrada';
-
-  @override
-  String wikiCategories(Object count) {
-    return '$count categorias';
-  }
-
-  @override
-  String get wikiCouldNotLoadContent => 'Não foi possível carregar o conteúdo.';
-
-  @override
-  String get wikiOpenInBrowser => 'Abrir no navegador';
-
-  @override
-  String get wikiCrafting => 'Crafting';
-
-  @override
-  String get wikiReadFullArticle => 'Ler artigo completo';
-
-  @override
-  String get wikiRecent => 'Vistos recentemente';
-
-  @override
-  String get wikiFavourites => 'Favoritos';
-
-  @override
-  String get wikiMobs => 'Mobs';
-
-  @override
-  String get wikiBlocks => 'Blocos';
-
-  @override
-  String get wikiItems => 'Itens';
-
-  @override
-  String get wikiBiomes => 'Biomas';
-
-  @override
-  String get wikiStructures => 'Estruturas';
-
-  @override
-  String get wikiEnchantments => 'Encantamentos';
-
-  @override
-  String get wikiPotions => 'Poções';
-
-  @override
-  String get wikiPassive => 'Passivo';
-
-  @override
-  String get wikiNeutral => 'Neutro';
-
-  @override
-  String get wikiHostile => 'Hostil';
-
-  @override
-  String get wikiBoss => 'Chefe';
-
-  @override
-  String get wikiUtility => 'Utilidade';
-
-  @override
-  String get wikiNatural => 'Natural';
-
-  @override
-  String get wikiOres => 'Minérios';
-
-  @override
-  String get wikiWood => 'Madeira';
-
-  @override
-  String get wikiStone => 'Pedra';
-
-  @override
-  String get wikiRedstone => 'Redstone';
-
-  @override
-  String get wikiPlants => 'Plantas';
-
-  @override
-  String get wikiDecoration => 'Decoração';
-
-  @override
-  String get wikiTools => 'Ferramentas';
-
-  @override
-  String get wikiSwords => 'Espadas';
-
-  @override
-  String get wikiRanged => 'À distância';
-
-  @override
-  String get wikiArmor => 'Armadura';
-
-  @override
-  String get wikiFood => 'Comida';
-
-  @override
-  String get wikiBrewing => 'Fabricação de poções';
-
-  @override
-  String get wikiMaterials => 'Materiais';
-
-  @override
-  String get wikiOverworld => 'Overworld';
-
-  @override
-  String get wikiNether => 'Nether';
-
-  @override
-  String get wikiTheEnd => 'The End';
-
-  @override
-  String get wikiSword => 'Espada';
-
-  @override
-  String get wikiTool => 'Ferramenta';
-
-  @override
-  String get wikiBow => 'Arco';
-
-  @override
-  String get wikiFishing => 'Pesca';
-
-  @override
-  String get wikiStatusEffects => 'Efeitos de estado';
-
-  @override
   String get chooseUniqueUsername =>
       'Escolha um nome de usuário único para começar.';
 
@@ -1403,10 +1217,6 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get dataSourcesSection => 'Fontes de dados e créditos';
-
-  @override
-  String get creditMinecraftWikiSubtitle =>
-      'Fonte de dados para o Wiki. Conteúdo sob Creative Commons.';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
@@ -1669,10 +1479,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get featureLabelSkins => 'Skins';
 
   @override
-  String get featureLabelWiki => 'Wiki';
-
-  @override
-  String get featureLabelPartners => 'Parceiros';
+  String get featureLabelPartners => 'Lista de servidores';
 
   @override
   String get featureLabelLookup => 'Pesquisa';
@@ -1685,9 +1492,6 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get featureSubtitleSkins => 'Procurar e gerenciar skins do Minecraft';
-
-  @override
-  String get featureSubtitleWiki => 'Enciclopédia do Minecraft';
 
   @override
   String get featureSubtitlePartners => 'Servidores em destaque';
@@ -1713,9 +1517,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get upgradeWindowsHint => 'Atualização disponível na Microsoft Store';
 
   @override
-  String get chatEmptyHint => 'Seja o primeiro a dizer algo!';
-
-  @override
   String get skinSaved => 'Skin salva';
 
   @override
@@ -1737,9 +1538,6 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get feedbackFeatureRequest => 'Pedido de funcionalidade';
-
-  @override
-  String get feedbackGoesToGithub => 'Vai direto para o GitHub';
 
   @override
   String get feedbackTitleLabel => 'Título';
@@ -1783,18 +1581,14 @@ class AppLocalizationsPt extends AppLocalizations {
   String get feedbackSubmitFeature => 'Enviar pedido de funcionalidade';
 
   @override
-  String get feedbackDisclaimer =>
-      'Cria um ticket público no GitHub · Não inclua senhas';
+  String get feedbackDisclaimer => 'Vai para nossa equipe · Não inclua senhas';
 
   @override
   String get feedbackSuccessTitle => 'Obrigado pelo feedback!';
 
   @override
   String get feedbackSuccessBody =>
-      'Obrigado! Recebemos o teu relatório. Vamos analisá-lo o mais depressa possível.';
-
-  @override
-  String get feedbackViewOnGithub => 'Ver no GitHub';
+      'Obrigado! Recebemos seu relato. Respondemos no aplicativo, então volte aqui para ver a resposta.';
 
   @override
   String get feedbackSubmitAnother => 'Enviar outro';
@@ -2642,19 +2436,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get adminTicketsHeader => 'Relatórios e pedidos';
 
   @override
-  String get adminGeneralChat => 'Conversa geral';
-
-  @override
   String get adminTicketReplyHint => 'Responder sobre este ticket…';
 
   @override
   String get adminNoTicketsForUser => 'Sem tickets deste utilizador';
-
-  @override
-  String get hideConversation => 'Ocultar';
-
-  @override
-  String get conversationHidden => 'Conversa ocultada';
 
   @override
   String get undo => 'Anular';
@@ -2811,4 +2596,158 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get updateAvailableDismiss => 'Agora não';
+
+  @override
+  String get serverListSearchHint => 'Pesquisar por nome ou endereço';
+
+  @override
+  String get serverListEditionAny => 'Java e Bedrock';
+
+  @override
+  String get serverListEditionJava => 'Apenas Java';
+
+  @override
+  String get serverListEditionBedrock => 'Apenas Bedrock';
+
+  @override
+  String get serverListSortVotes => 'Mais votos';
+
+  @override
+  String get serverListSortPlayers => 'Mais jogadores';
+
+  @override
+  String get serverListSortPeak => 'Maior pico';
+
+  @override
+  String get serverListSortNewest => 'Mais recentes';
+
+  @override
+  String get serverListSortName => 'Nome';
+
+  @override
+  String get serverListAllCategories => 'Todas';
+
+  @override
+  String get serverListLoadFailed =>
+      'Não foi possível carregar a lista de servidores';
+
+  @override
+  String get serverListLoadFailedHint => 'Puxe para baixo para tentar de novo';
+
+  @override
+  String get serverListNoMatch => 'Nenhum servidor corresponde';
+
+  @override
+  String get serverListNoMatchHint => 'Tente outra pesquisa ou categoria';
+
+  @override
+  String get serverCardPlay => 'Jogar';
+
+  @override
+  String get serverCardVote => 'Votar';
+
+  @override
+  String get serverCardViewServer => 'Ver servidor';
+
+  @override
+  String get serverCopyIp => 'Copiar IP';
+
+  @override
+  String get serverCopied => 'Copiado';
+
+  @override
+  String get serverStatPlayers => 'Jogadores';
+
+  @override
+  String get serverStatPeak => 'Pico';
+
+  @override
+  String get serverStatUptime => 'Disponibilidade';
+
+  @override
+  String get serverStatVotesMonth => 'Votos este mês';
+
+  @override
+  String get serverStatVotesAllTime => 'Votos no total';
+
+  @override
+  String get serverBadgeFeatured => 'Destaque';
+
+  @override
+  String get serverEditionJava => 'Java';
+
+  @override
+  String get serverEditionBedrock => 'Bedrock';
+
+  @override
+  String get serverEditionCrossplay => 'Crossplay';
+
+  @override
+  String get serverSectionMotd => 'Mensagem do dia';
+
+  @override
+  String get serverSectionAbout => 'Sobre';
+
+  @override
+  String get serverSectionCategories => 'Categorias';
+
+  @override
+  String get serverSectionVotes => 'Votos';
+
+  @override
+  String get serverLinkDiscord => 'Discord';
+
+  @override
+  String get serverLinkWebsite => 'Site';
+
+  @override
+  String get serverVotesThisMonth => 'Este mês';
+
+  @override
+  String get serverVotesAllTime => 'Desde o início';
+
+  @override
+  String get serverVoteAction => 'Votar neste servidor';
+
+  @override
+  String get serverPlayAction => 'Jogar neste servidor';
+
+  @override
+  String get serverVoteSignInRequired => 'Entre para votar pelo aplicativo.';
+
+  @override
+  String serverVoteSheetTitle(String name) {
+    return 'Votar em $name';
+  }
+
+  @override
+  String get serverVoteSheetSubtitle =>
+      'Seu nome no Minecraft, para o servidor saber quem recompensar.';
+
+  @override
+  String get serverVoteSheetHint => 'Steve';
+
+  @override
+  String get serverVoteSheetButton => 'Votar';
+
+  @override
+  String get serverVoteSheetLimit => 'Um voto por servidor por dia.';
+
+  @override
+  String get serverVoteDelivered =>
+      'Voto registrado. Sua recompensa está a caminho.';
+
+  @override
+  String get serverVoteNoRewards =>
+      'Voto registrado. Este servidor não tem recompensas configuradas.';
+
+  @override
+  String get serverVoteFailed => 'Não funcionou, tente novamente.';
+
+  @override
+  String get serverVoteOffline =>
+      'Não foi possível contatar o servidor. Verifique sua conexão.';
+
+  @override
+  String get feedbackViewYourReport => 'Ver seu relato';
 }

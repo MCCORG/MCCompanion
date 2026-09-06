@@ -26,21 +26,6 @@
   "serverDetailsLabel": "Detail Server",
   "start": "Mulai",
   "labelJava": "Java",
-  "startJavaMode": "Mulai Mode Java",
-  "javaInfoTitle": "Mode Java",
-  "javaInfoText": "Hubungkan ke server Java Edition",
-  "howToJavaTitle": "Mode Java",
-  "@howToJavaTitle": {
-    "description": "Title for the Java how-to modal"
-  },
-  "howToJavaSubtitle": "Hubungkan ke server Java Edition melalui MCCompanion",
-  "@howToJavaSubtitle": {
-    "description": "Short subtitle for Java menu tile"
-  },
-  "howToJavaBody": "Mode Java: langkah cepat:\n1. Di aplikasi, pilih mode Java.\n2. Masukkan alamat dan port server Java Edition Anda (default: 25565).\n3. Tekan \"Mulai Mode Java\": MCCompanion akan menjembatani koneksi.\n4. Buka Minecraft Bedrock dan masuk ke tab Teman.\n5. Pilih server LAN bernama \"MCCompanion\" untuk bergabung ke server Java.\n\n⚠️ Peringatan penting:\n- Diperlukan akun Java Edition yang valid (Microsoft).\n- Beberapa server menggunakan sistem anti-cheat yang dapat mendeteksi dan memblokir akun Anda.\n- Beberapa server secara eksplisit melarang klien Bedrock, selalu periksa aturan server.\n- MCCompanion tidak bertanggung jawab atas ban akun, penangguhan, atau masalah terkait akun lainnya yang mungkin terjadi akibat penggunaan fitur ini.\n- Gunakan dengan risiko Anda sendiri.",
-  "@howToJavaBody": {
-    "description": "Detailed steps for Java mode how-to modal"
-  },
   "language": "Indonesia",
   "@language": {
     "description": "Your language name in your own language"
@@ -551,10 +536,6 @@
   "@creditGeyserTitle": {
     "description": "Title for GeyserMC credit tile"
   },
-  "creditMinecraftWikiSubtitle": "Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.",
-  "@creditMinecraftWikiSubtitle": {
-    "description": "Subtitle for Minecraft Wiki credit tile"
-  },
   "creditMojangSubtitle": "Java player skins, UUIDs, and profile data via the official Mojang API.",
   "@creditMojangSubtitle": {
     "description": "Subtitle for Mojang credit tile"
@@ -704,10 +685,6 @@
   "@linkedAccountsTitle": {
     "description": "Section title for linked accounts card"
   },
-  "messagePlaceholder": "Message…",
-  "@messagePlaceholder": {
-    "description": "Hint text in the chat message input"
-  },
   "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -732,10 +709,6 @@
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noConversationsYet": "No conversations yet",
-  "@noConversationsYet": {
-    "description": "Empty state title on conversations screen"
-  },
   "noFriendsSub": "Add friends to see them here.",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
@@ -743,10 +716,6 @@
   "noFriendsYet": "No friends yet",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
-  },
-  "noMessagesYet": "No messages yet.\nSay hello!",
-  "@noMessagesYet": {
-    "description": "Empty state in chat screen"
   },
   "noPartnerServers": "No partner servers available yet.",
   "@noPartnerServers": {
@@ -952,10 +921,6 @@
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportMessage": "Report message",
-  "@reportMessage": {
-    "description": "Title when reporting a specific message"
-  },
   "reportReasonHarassment": "Harassment",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
@@ -1144,14 +1109,6 @@
   "@somethingWentWrong": {
     "description": "Generic error message"
   },
-  "startChatHint": "Find a friend and start chatting!",
-  "@startChatHint": {
-    "description": "Empty state subtitle on conversations screen"
-  },
-  "tabChats": "Chats",
-  "@tabChats": {
-    "description": "Tab label for Chats tab"
-  },
   "tabFriends": "Friends",
   "@tabFriends": {
     "description": "Tab label for Friends tab"
@@ -1230,196 +1187,6 @@
   "weakPassword": "Password is too weak. Please choose a stronger one.",
   "@weakPassword": {
     "description": "Error for weak password"
-  },
-  "wikiArmor": "Armor",
-  "@wikiArmor": {
-    "description": "Wiki item sub-category: Armor"
-  },
-  "wikiBiomes": "Biomes",
-  "@wikiBiomes": {
-    "description": "Wiki category: Biomes"
-  },
-  "wikiBlocks": "Blocks",
-  "@wikiBlocks": {
-    "description": "Wiki category: Blocks"
-  },
-  "wikiBoss": "Boss",
-  "@wikiBoss": {
-    "description": "Wiki mob sub-category: Boss"
-  },
-  "wikiBow": "Bow",
-  "@wikiBow": {
-    "description": "Wiki enchantment sub-category: Bow"
-  },
-  "wikiBrewing": "Brewing",
-  "@wikiBrewing": {
-    "description": "Wiki item sub-category: Brewing"
-  },
-  "wikiCategories": "{count} categories",
-  "@wikiCategories": {
-    "description": "Subtitle on wiki section card showing number of subcategories",
-    "placeholders": {
-      "count": {}
-    }
-  },
-  "wikiCouldNotLoadContent": "Could not load article content.",
-  "@wikiCouldNotLoadContent": {
-    "description": "Error when wiki article content fails to load"
-  },
-  "wikiCouldNotLoadPages": "Could not load pages. Please try again.",
-  "@wikiCouldNotLoadPages": {
-    "description": "Error when wiki pages fail to load"
-  },
-  "wikiCouldNotReach": "Could not reach the wiki. Check your connection.",
-  "@wikiCouldNotReach": {
-    "description": "Error when the wiki cannot be reached"
-  },
-  "wikiCrafting": "Crafting",
-  "@wikiCrafting": {
-    "description": "Section header for crafting recipes in wiki detail"
-  },
-  "wikiDecoration": "Decoration",
-  "@wikiDecoration": {
-    "description": "Wiki block sub-category: Decoration"
-  },
-  "wikiEnchantments": "Enchantments",
-  "@wikiEnchantments": {
-    "description": "Wiki category: Enchantments"
-  },
-  "wikiFishing": "Fishing",
-  "@wikiFishing": {
-    "description": "Wiki enchantment sub-category: Fishing"
-  },
-  "wikiFood": "Food",
-  "@wikiFood": {
-    "description": "Wiki item sub-category: Food"
-  },
-  "wikiHostile": "Hostile",
-  "@wikiHostile": {
-    "description": "Wiki mob sub-category: Hostile"
-  },
-  "wikiItems": "Items",
-  "@wikiItems": {
-    "description": "Wiki category: Items"
-  },
-  "wikiMaterials": "Materials",
-  "@wikiMaterials": {
-    "description": "Wiki item sub-category: Materials"
-  },
-  "wikiMinecraftWiki": "Minecraft Wiki",
-  "@wikiMinecraftWiki": {
-    "description": "Badge/label linking to Minecraft Wiki"
-  },
-  "wikiMobs": "Mobs",
-  "@wikiMobs": {
-    "description": "Wiki category: Mobs"
-  },
-  "wikiNatural": "Natural",
-  "@wikiNatural": {
-    "description": "Wiki block sub-category: Natural"
-  },
-  "wikiNether": "Nether",
-  "@wikiNether": {
-    "description": "Wiki biome/structure sub-category: Nether"
-  },
-  "wikiNeutral": "Neutral",
-  "@wikiNeutral": {
-    "description": "Wiki mob sub-category: Neutral"
-  },
-  "wikiNoPagesFound": "No pages found",
-  "@wikiNoPagesFound": {
-    "description": "Empty state when no wiki pages are available"
-  },
-  "wikiNoResults": "No results found for \"{query}\"",
-  "@wikiNoResults": {
-    "description": "Empty search results message",
-    "placeholders": {
-      "query": {}
-    }
-  },
-  "wikiOpenInBrowser": "Open in browser",
-  "@wikiOpenInBrowser": {
-    "description": "Button to open wiki article in external browser"
-  },
-  "wikiOres": "Ores",
-  "@wikiOres": {
-    "description": "Wiki block sub-category: Ores"
-  },
-  "wikiOverworld": "Overworld",
-  "@wikiOverworld": {
-    "description": "Wiki biome/structure sub-category: Overworld"
-  },
-  "wikiPassive": "Passive",
-  "@wikiPassive": {
-    "description": "Wiki mob sub-category: Passive"
-  },
-  "wikiPlants": "Plants",
-  "@wikiPlants": {
-    "description": "Wiki block sub-category: Plants"
-  },
-  "wikiPotions": "Potions",
-  "@wikiPotions": {
-    "description": "Wiki category: Potions"
-  },
-  "wikiRanged": "Ranged",
-  "@wikiRanged": {
-    "description": "Wiki item sub-category: Ranged"
-  },
-  "wikiReadFullArticle": "Read full article",
-  "@wikiReadFullArticle": {
-    "description": "Button at bottom of wiki detail to open full article"
-  },
-  "wikiRedstone": "Redstone",
-  "@wikiRedstone": {
-    "description": "Wiki block sub-category: Redstone"
-  },
-  "wikiSearchHint": "Search the wiki…",
-  "@wikiSearchHint": {
-    "description": "Hint text for wiki search field"
-  },
-  "wikiStatusEffects": "Status Effects",
-  "@wikiStatusEffects": {
-    "description": "Wiki potion sub-category: Status Effects"
-  },
-  "wikiStone": "Stone",
-  "@wikiStone": {
-    "description": "Wiki block sub-category: Stone"
-  },
-  "wikiStructures": "Structures",
-  "@wikiStructures": {
-    "description": "Wiki category: Structures"
-  },
-  "wikiSword": "Sword",
-  "@wikiSword": {
-    "description": "Wiki enchantment sub-category: Sword"
-  },
-  "wikiSwords": "Swords",
-  "@wikiSwords": {
-    "description": "Wiki item sub-category: Swords"
-  },
-  "wikiTheEnd": "The End",
-  "@wikiTheEnd": {
-    "description": "Wiki biome/structure sub-category: The End"
-  },
-  "wikiTitle": "Wiki",
-  "@wikiTitle": {
-    "description": "Title of the wiki screen"
-  },
-  "wikiTool": "Tool",
-  "@wikiTool": {
-    "description": "Wiki enchantment sub-category: Tool"
-  },
-  "wikiTools": "Tools",
-  "@wikiTools": {
-    "description": "Wiki item sub-category: Tools"
-  },
-  "wikiUtility": "Utility",
-  "@wikiUtility": {
-    "description": "Wiki mob sub-category: Utility"
-  },
-  "wikiWood": "Wood",
-  "@wikiWood": {
-    "description": "Wiki block sub-category: Wood"
   },
   "xboxAccountLinked": "Xbox account linked!",
   "@xboxAccountLinked": {
@@ -1511,13 +1278,11 @@
   "splashFeatureSkins": "Skins",
   "featureLabelConnector": "Konektor",
   "featureLabelSkins": "Skin",
-  "featureLabelWiki": "Wiki",
-  "featureLabelPartners": "Mitra",
+  "featureLabelPartners": "Daftar server",
   "featureLabelLookup": "Cari",
   "featureLabelTracker": "Pelacak Server",
   "featureSubtitleConnector": "Hubungkan konsol ke Minecraft",
   "featureSubtitleSkins": "Jelajahi & kelola skin Minecraft",
-  "featureSubtitleWiki": "Ensiklopedia Minecraft",
   "featureSubtitlePartners": "Server unggulan",
   "featureSubtitleLookup": "Cari profil Java & Bedrock",
   "featureSubtitleTracker": "Pantau status server & dapatkan notifikasi",
@@ -1530,10 +1295,6 @@
   "upgradeWindowsHint": "Upgrade tersedia melalui Microsoft Store",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "chatEmptyHint": "Jadilah yang pertama berkata sesuatu!",
-  "@chatEmptyHint": {
-    "description": "Subtitle on the empty chat screen"
   },
   "skinSaved": "Skin disimpan",
   "@skinSaved": {
@@ -1558,7 +1319,6 @@
   },
   "feedbackBugReport": "Laporan Bug",
   "feedbackFeatureRequest": "Permintaan Fitur",
-  "feedbackGoesToGithub": "Langsung dikirim ke GitHub",
   "feedbackTitleLabel": "Judul",
   "feedbackTitleHintBug": "contoh: Aplikasi crash saat membuka skin editor",
   "feedbackTitleHintFeature": "contoh: Tampilkan ping pemain di daftar server",
@@ -1571,10 +1331,9 @@
   "feedbackEmailNote": "Email kamu tidak akan pernah dibagikan secara publik.",
   "feedbackSubmitBug": "Kirim Laporan Bug",
   "feedbackSubmitFeature": "Kirim Permintaan Fitur",
-  "feedbackDisclaimer": "Membuat issue publik di GitHub · Jangan sertakan kata sandi",
+  "feedbackDisclaimer": "Menuju tim kami · Jangan sertakan kata sandi",
   "feedbackSuccessTitle": "Terima kasih atas masukan kamu!",
-  "feedbackSuccessBody": "Terima kasih! Laporanmu sudah masuk. Kami akan segera memeriksanya.",
-  "feedbackViewOnGithub": "Lihat di GitHub",
+  "feedbackSuccessBody": "Terima kasih! Laporanmu sudah masuk. Kami membalas di aplikasi, jadi cek lagi di sini.",
   "feedbackSubmitAnother": "Kirim lagi",
   "feedbackBackToApp": "Kembali ke aplikasi",
   "feedbackTitleTooShort": "Judul harus minimal 5 karakter.",
@@ -1896,8 +1655,6 @@
   "reportBug": "Masukan",
   "rpBehaviorContentWarning": "Pack ini berisi data behavior pack yang tidak akan berfungsi di server. Teksturnya tetap berfungsi.",
   "rpInvalidPackFormat": "Ini adalah pack Java Edition dan tidak didukung. Gunakan resource pack Bedrock Edition.",
-  "wikiFavourites": "Favorit",
-  "wikiRecent": "Baru dilihat",
   "accountActions": "AKUN",
   "supportInboxTitle": "Kotak masuk dukungan",
   "supportInboxSubtitle": "Semua obrolan dukungan, dibagikan ke semua admin",
@@ -1958,11 +1715,8 @@
   "notifFeedbackStatus": "Kabar tentang masukanmu",
   "notifFeedbackReply": "Balasan untuk masukanmu",
   "adminTicketsHeader": "Laporan dan permintaan",
-  "adminGeneralChat": "Obrolan umum",
   "adminTicketReplyHint": "Balas tentang tiket ini…",
   "adminNoTicketsForUser": "Tidak ada tiket dari pengguna ini",
-  "hideConversation": "Sembunyikan",
-  "conversationHidden": "Obrolan disembunyikan",
   "undo": "Urungkan",
   "chooseServerTitle": "Pilih server",
   "changeLabel": "Ubah",
@@ -2038,5 +1792,54 @@
     }
   },
   "updateAvailableAction": "Unduh",
-  "updateAvailableDismiss": "Nanti saja"
+  "updateAvailableDismiss": "Nanti saja",
+  "serverListSearchHint": "Cari berdasarkan nama atau alamat",
+  "serverListEditionAny": "Java dan Bedrock",
+  "serverListEditionJava": "Hanya Java",
+  "serverListEditionBedrock": "Hanya Bedrock",
+  "serverListSortVotes": "Vote terbanyak",
+  "serverListSortPlayers": "Pemain terbanyak",
+  "serverListSortPeak": "Puncak tertinggi",
+  "serverListSortNewest": "Terbaru",
+  "serverListSortName": "Nama",
+  "serverListAllCategories": "Semua",
+  "serverListLoadFailed": "Tidak dapat memuat daftar server",
+  "serverListLoadFailedHint": "Tarik ke bawah untuk mencoba lagi",
+  "serverListNoMatch": "Tidak ada server yang cocok",
+  "serverListNoMatchHint": "Coba pencarian atau kategori lain",
+  "serverCardPlay": "Main",
+  "serverCardVote": "Vote",
+  "serverCardViewServer": "Lihat server",
+  "serverCopyIp": "Salin IP",
+  "serverCopied": "Disalin",
+  "serverStatPlayers": "Pemain",
+  "serverStatPeak": "Puncak",
+  "serverStatUptime": "Uptime",
+  "serverStatVotesMonth": "Vote bulan ini",
+  "serverStatVotesAllTime": "Total vote",
+  "serverBadgeFeatured": "Unggulan",
+  "serverEditionJava": "Java",
+  "serverEditionBedrock": "Bedrock",
+  "serverEditionCrossplay": "Crossplay",
+  "serverSectionMotd": "Pesan hari ini",
+  "serverSectionAbout": "Tentang",
+  "serverSectionCategories": "Kategori",
+  "serverSectionVotes": "Vote",
+  "serverLinkDiscord": "Discord",
+  "serverLinkWebsite": "Situs web",
+  "serverVotesThisMonth": "Bulan ini",
+  "serverVotesAllTime": "Sepanjang waktu",
+  "serverVoteAction": "Vote server ini",
+  "serverPlayAction": "Main di server ini",
+  "serverVoteSignInRequired": "Masuk untuk vote dari aplikasi.",
+  "serverVoteSheetTitle": "Vote untuk {name}",
+  "serverVoteSheetSubtitle": "Nama Minecraft kamu, supaya server tahu siapa yang diberi hadiah.",
+  "serverVoteSheetHint": "Steve",
+  "serverVoteSheetButton": "Vote",
+  "serverVoteSheetLimit": "Satu vote per server per hari.",
+  "serverVoteDelivered": "Vote terkirim. Hadiahmu sedang dikirim.",
+  "serverVoteNoRewards": "Vote terkirim. Server ini belum mengatur hadiah.",
+  "serverVoteFailed": "Gagal, silakan coba lagi.",
+  "serverVoteOffline": "Tidak dapat menghubungi server. Periksa koneksimu.",
+  "feedbackViewYourReport": "Lihat laporanmu"
 }

@@ -128,26 +128,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get labelJava => 'Java';
 
   @override
-  String get startJavaMode => 'Javaモードを開始';
-
-  @override
-  String get javaInfoTitle => 'Javaモード';
-
-  @override
-  String get javaInfoText => 'Java Editionサーバーに接続';
-
-  @override
-  String get howToJavaTitle => 'Javaモード';
-
-  @override
-  String get howToJavaSubtitle => 'MCCompanion経由でJava Editionサーバーに接続';
-
-  @override
   String get aternosSubtext => '自分だけの無料Minecraftサーバーを作成しましょう';
-
-  @override
-  String get howToJavaBody =>
-      'Javaモード: クイック手順:\n1. アプリでJavaモードを選択します。\n2. Java Editionサーバーのアドレスとポートを入力します（既定: 25565）。\n3. 「Javaモードを開始」を押します: MCCompanionが接続を橋渡しします。\n4. Minecraft Bedrockを開いて、フレンドタブに移動します。\n5. Javaサーバーに参加するには、「MCCompanion」という名前のLANサーバーを選択します。\n\n⚠️ 重要な警告:\n- 有効なJava Editionアカウント（Microsoft）が必要です。\n- 一部のサーバーではアンチチートシステムが使用されており、アカウントが検出されてBANされる可能性があります。\n- Bedrockクライアントを明確に禁止しているサーバーもあります: 必ずサーバールールを確認してください。\n- この機能の使用によって発生するアカウントBAN、利用停止、その他のアカウント関連の問題について、MCCompanionは責任を負いません。\n- 自己責任で使用してください。';
 
   @override
   String get language => '日本語';
@@ -690,9 +671,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get reportUser => 'Report user';
 
   @override
-  String get reportMessage => 'Report message';
-
-  @override
   String reportUserWithName(Object name) {
     return 'Report $name';
   }
@@ -732,18 +710,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get yesterday => 'Yesterday';
 
   @override
-  String get messagePlaceholder => 'Message…';
-
-  @override
-  String get noMessagesYet => 'No messages yet.\nSay hello!';
-
-  @override
-  String get noConversationsYet => 'No conversations yet';
-
-  @override
-  String get startChatHint => 'Find a friend and start chatting!';
-
-  @override
   String get youPrefix => 'You';
 
   @override
@@ -778,9 +744,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get tabRequests => 'Requests';
-
-  @override
-  String get tabChats => 'Chats';
 
   @override
   String get addFriend => 'Add Friend';
@@ -1099,155 +1062,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get skinsDownload => 'Download';
 
   @override
-  String get wikiTitle => 'Wiki';
-
-  @override
-  String get wikiMinecraftWiki => 'Minecraft Wiki';
-
-  @override
-  String get wikiSearchHint => 'Search the wiki…';
-
-  @override
-  String get wikiCouldNotLoadPages => 'Could not load pages. Please try again.';
-
-  @override
-  String get wikiCouldNotReach =>
-      'Could not reach the wiki. Check your connection.';
-
-  @override
-  String wikiNoResults(Object query) {
-    return 'No results found for \"$query\"';
-  }
-
-  @override
-  String get wikiNoPagesFound => 'No pages found';
-
-  @override
-  String wikiCategories(Object count) {
-    return '$count categories';
-  }
-
-  @override
-  String get wikiCouldNotLoadContent => 'Could not load article content.';
-
-  @override
-  String get wikiOpenInBrowser => 'Open in browser';
-
-  @override
-  String get wikiCrafting => 'Crafting';
-
-  @override
-  String get wikiReadFullArticle => 'Read full article';
-
-  @override
-  String get wikiRecent => '最近見たページ';
-
-  @override
-  String get wikiFavourites => 'お気に入り';
-
-  @override
-  String get wikiMobs => 'Mobs';
-
-  @override
-  String get wikiBlocks => 'Blocks';
-
-  @override
-  String get wikiItems => 'Items';
-
-  @override
-  String get wikiBiomes => 'Biomes';
-
-  @override
-  String get wikiStructures => 'Structures';
-
-  @override
-  String get wikiEnchantments => 'Enchantments';
-
-  @override
-  String get wikiPotions => 'Potions';
-
-  @override
-  String get wikiPassive => 'Passive';
-
-  @override
-  String get wikiNeutral => 'Neutral';
-
-  @override
-  String get wikiHostile => 'Hostile';
-
-  @override
-  String get wikiBoss => 'Boss';
-
-  @override
-  String get wikiUtility => 'Utility';
-
-  @override
-  String get wikiNatural => 'Natural';
-
-  @override
-  String get wikiOres => 'Ores';
-
-  @override
-  String get wikiWood => 'Wood';
-
-  @override
-  String get wikiStone => 'Stone';
-
-  @override
-  String get wikiRedstone => 'Redstone';
-
-  @override
-  String get wikiPlants => 'Plants';
-
-  @override
-  String get wikiDecoration => 'Decoration';
-
-  @override
-  String get wikiTools => 'Tools';
-
-  @override
-  String get wikiSwords => 'Swords';
-
-  @override
-  String get wikiRanged => 'Ranged';
-
-  @override
-  String get wikiArmor => 'Armor';
-
-  @override
-  String get wikiFood => 'Food';
-
-  @override
-  String get wikiBrewing => 'Brewing';
-
-  @override
-  String get wikiMaterials => 'Materials';
-
-  @override
-  String get wikiOverworld => 'Overworld';
-
-  @override
-  String get wikiNether => 'Nether';
-
-  @override
-  String get wikiTheEnd => 'The End';
-
-  @override
-  String get wikiSword => 'Sword';
-
-  @override
-  String get wikiTool => 'Tool';
-
-  @override
-  String get wikiBow => 'Bow';
-
-  @override
-  String get wikiFishing => 'Fishing';
-
-  @override
-  String get wikiStatusEffects => 'Status Effects';
-
-  @override
   String get chooseUniqueUsername => 'ユニークなユーザー名を選んで始めましょう。';
 
   @override
@@ -1384,10 +1198,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get dataSourcesSection => 'Data Sources & Credits';
-
-  @override
-  String get creditMinecraftWikiSubtitle =>
-      'Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
@@ -1654,10 +1464,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get featureLabelSkins => 'スキン';
 
   @override
-  String get featureLabelWiki => 'ウィキ';
-
-  @override
-  String get featureLabelPartners => 'パートナー';
+  String get featureLabelPartners => 'サーバー一覧';
 
   @override
   String get featureLabelLookup => '検索';
@@ -1670,9 +1477,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get featureSubtitleSkins => 'Minecraftスキンの閲覧と管理';
-
-  @override
-  String get featureSubtitleWiki => 'Minecraft百科事典';
 
   @override
   String get featureSubtitlePartners => '注目サーバー';
@@ -1696,9 +1500,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get upgradeWindowsHint => 'Microsoft Storeでアップグレードできます';
 
   @override
-  String get chatEmptyHint => '最初にメッセージを送りましょう！';
-
-  @override
   String get skinSaved => 'スキンを保存しました';
 
   @override
@@ -1720,9 +1521,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get feedbackFeatureRequest => '機能リクエスト';
-
-  @override
-  String get feedbackGoesToGithub => 'GitHubに直接送信されます';
 
   @override
   String get feedbackTitleLabel => 'タイトル';
@@ -1761,16 +1559,14 @@ class AppLocalizationsJa extends AppLocalizations {
   String get feedbackSubmitFeature => '機能リクエストを送信';
 
   @override
-  String get feedbackDisclaimer => 'GitHubに公開イシューを作成します · パスワードを含めないでください';
+  String get feedbackDisclaimer => 'チームに届きます · パスワードは書かないでください';
 
   @override
   String get feedbackSuccessTitle => 'フィードバックをありがとう！';
 
   @override
-  String get feedbackSuccessBody => 'ありがとうございます！レポートを受け取りました。できるだけ早く確認します。';
-
-  @override
-  String get feedbackViewOnGithub => 'GitHubで見る';
+  String get feedbackSuccessBody =>
+      'ありがとうございます。内容を受け付けました。返信はアプリ内で行いますので、こちらをご確認ください。';
 
   @override
   String get feedbackSubmitAnother => '別のものを送信';
@@ -2591,19 +2387,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get adminTicketsHeader => '報告とリクエスト';
 
   @override
-  String get adminGeneralChat => '一般チャット';
-
-  @override
   String get adminTicketReplyHint => 'このチケットについて返信…';
 
   @override
   String get adminNoTicketsForUser => 'このユーザーのチケットはありません';
-
-  @override
-  String get hideConversation => '非表示';
-
-  @override
-  String get conversationHidden => '会話を非表示にしました';
 
   @override
   String get undo => '元に戻す';
@@ -2754,4 +2541,153 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get updateAvailableDismiss => '後で';
+
+  @override
+  String get serverListSearchHint => '名前またはアドレスで検索';
+
+  @override
+  String get serverListEditionAny => 'JavaとBedrock';
+
+  @override
+  String get serverListEditionJava => 'Javaのみ';
+
+  @override
+  String get serverListEditionBedrock => 'Bedrockのみ';
+
+  @override
+  String get serverListSortVotes => '投票数順';
+
+  @override
+  String get serverListSortPlayers => 'プレイヤー数順';
+
+  @override
+  String get serverListSortPeak => '最高記録順';
+
+  @override
+  String get serverListSortNewest => '新着順';
+
+  @override
+  String get serverListSortName => '名前順';
+
+  @override
+  String get serverListAllCategories => 'すべて';
+
+  @override
+  String get serverListLoadFailed => 'サーバーリストを読み込めませんでした';
+
+  @override
+  String get serverListLoadFailedHint => '下に引いて再試行';
+
+  @override
+  String get serverListNoMatch => '該当するサーバーがありません';
+
+  @override
+  String get serverListNoMatchHint => '別のキーワードかカテゴリーをお試しください';
+
+  @override
+  String get serverCardPlay => 'プレイ';
+
+  @override
+  String get serverCardVote => '投票';
+
+  @override
+  String get serverCardViewServer => 'サーバーを見る';
+
+  @override
+  String get serverCopyIp => 'IPをコピー';
+
+  @override
+  String get serverCopied => 'コピーしました';
+
+  @override
+  String get serverStatPlayers => 'プレイヤー';
+
+  @override
+  String get serverStatPeak => '最高記録';
+
+  @override
+  String get serverStatUptime => '稼働率';
+
+  @override
+  String get serverStatVotesMonth => '今月の投票';
+
+  @override
+  String get serverStatVotesAllTime => '累計投票';
+
+  @override
+  String get serverBadgeFeatured => '注目';
+
+  @override
+  String get serverEditionJava => 'Java';
+
+  @override
+  String get serverEditionBedrock => 'Bedrock';
+
+  @override
+  String get serverEditionCrossplay => 'クロスプレイ';
+
+  @override
+  String get serverSectionMotd => '今日のメッセージ';
+
+  @override
+  String get serverSectionAbout => '概要';
+
+  @override
+  String get serverSectionCategories => 'カテゴリー';
+
+  @override
+  String get serverSectionVotes => '投票';
+
+  @override
+  String get serverLinkDiscord => 'Discord';
+
+  @override
+  String get serverLinkWebsite => 'ウェブサイト';
+
+  @override
+  String get serverVotesThisMonth => '今月';
+
+  @override
+  String get serverVotesAllTime => '累計';
+
+  @override
+  String get serverVoteAction => 'このサーバーに投票';
+
+  @override
+  String get serverPlayAction => 'このサーバーでプレイ';
+
+  @override
+  String get serverVoteSignInRequired => 'アプリから投票するにはログインしてください。';
+
+  @override
+  String serverVoteSheetTitle(String name) {
+    return '$nameに投票';
+  }
+
+  @override
+  String get serverVoteSheetSubtitle => '報酬を受け取るために、Minecraftの名前を入力してください。';
+
+  @override
+  String get serverVoteSheetHint => 'Steve';
+
+  @override
+  String get serverVoteSheetButton => '投票';
+
+  @override
+  String get serverVoteSheetLimit => '投票は1サーバーにつき1日1回です。';
+
+  @override
+  String get serverVoteDelivered => '投票しました。報酬はまもなく届きます。';
+
+  @override
+  String get serverVoteNoRewards => '投票しました。このサーバーには報酬が設定されていません。';
+
+  @override
+  String get serverVoteFailed => 'うまくいきませんでした。もう一度お試しください。';
+
+  @override
+  String get serverVoteOffline => 'サーバーに接続できませんでした。通信環境をご確認ください。';
+
+  @override
+  String get feedbackViewYourReport => '送信した内容を見る';
 }

@@ -3,6 +3,7 @@ import 'package:palette_generator/palette_generator.dart';
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
 import '../../services/server_status_service.dart';
+import '../../screens/server_detail_screen.dart';
 import '../../util/partners_servers.dart';
 
 class LandingPartnerBanner extends StatefulWidget {
@@ -23,6 +24,24 @@ class LandingPartnerBanner extends StatefulWidget {
 class LandingPartnerBannerState extends State<LandingPartnerBanner> {
   List<FeaturedServer> _servers = [];
   final Map<String, bool?> _statusCache = {};
+
+  void _open(FeaturedServer server) {
+    if (server.slug == null) {
+      widget.onTap();
+      return;
+    }
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => ServerDetailScreen.fromSlug(
+          slug: server.slug!,
+          onPlay: (chosen) {
+            Navigator.of(context).pop();
+            widget.onPlay?.call(chosen.host, chosen.port);
+          },
+        ),
+      ),
+    );
+  }
   int _index = 0;
   Timer? _rotateTimer;
   bool _loaded = false;
@@ -78,7 +97,7 @@ class LandingPartnerBannerState extends State<LandingPartnerBanner> {
         : AppTheme.error;
 
     return GestureDetector(
-      onTap: widget.onTap,
+      onTap: () => _open(s),
       child: Container(
         margin: const EdgeInsets.fromLTRB(14, 6, 14, 0),
         constraints: const BoxConstraints(minHeight: 90),
@@ -174,6 +193,8 @@ class LandingPartnerBannerState extends State<LandingPartnerBanner> {
                             const SizedBox(height: 2),
                             Text(
                               s.description,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                 color: AppTheme.textMuted,
                                 fontSize: 11,

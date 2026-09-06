@@ -7,8 +7,9 @@ import '../components/app_sheet.dart';
 
 class InfoSheetContent extends StatelessWidget {
   final VoidCallback onClose;
+  final VoidCallback? onFeedback;
 
-  const InfoSheetContent({super.key, required this.onClose});
+  const InfoSheetContent({super.key, required this.onClose, this.onFeedback});
 
   Future<void> _open(String url) async {
     final uri = Uri.parse(url);
@@ -77,6 +78,16 @@ class InfoSheetContent extends StatelessWidget {
                     _sectionLabel('Support'),
                     const SizedBox(height: 8),
                     _rateTile(),
+                    if (onFeedback != null) ...[
+                      const SizedBox(height: 8),
+                      _legalTile(
+                        icon: Icons.bug_report_outlined,
+                        color: const Color(0xFFF87171),
+                        title: l.feedbackTileTitle,
+                        subtitle: l.feedbackTileSubtitle,
+                        onTap: onFeedback!,
+                      ),
+                    ],
                     const SizedBox(height: 22),
 
                     _sectionLabel(l.legalSection),
@@ -100,14 +111,6 @@ class InfoSheetContent extends StatelessWidget {
                     const SizedBox(height: 22),
 
                     _sectionLabel(l.dataSourcesSection),
-                    const SizedBox(height: 8),
-                    _creditTile(
-                      label: 'W',
-                      labelColor: const Color(0xFF34D399),
-                      title: l.wikiMinecraftWiki,
-                      subtitle: l.creditMinecraftWikiSubtitle,
-                      url: 'https://minecraft.wiki',
-                    ),
                     const SizedBox(height: 8),
                     _creditTile(
                       label: 'M',

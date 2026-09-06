@@ -26,21 +26,6 @@
   "serverDetailsLabel": "Sunucu Detayları",
   "start": "Başlat",
   "labelJava": "Java",
-  "startJavaMode": "Java Modunu Başlat",
-  "javaInfoTitle": "Java Modu",
-  "javaInfoText": "Java Edition sunucularına bağlanın",
-  "howToJavaTitle": "Java Modu",
-  "@howToJavaTitle": {
-    "description": "Title for the Java how-to modal"
-  },
-  "howToJavaSubtitle": "MCCompanion üzerinden Java Edition sunucularına bağlanın",
-  "@howToJavaSubtitle": {
-    "description": "Short subtitle for Java menu tile"
-  },
-  "howToJavaBody": "Java Modu: hızlı adımlar:\n1. Uygulamada Java modunu seçin.\n2. Java Edition sunucu adresinizi ve portunuzu girin (varsayılan: 25565).\n3. \"Java Modunu Başlat\" düğmesine basın: MCCompanion bağlantıyı köprüleyecektir.\n4. Minecraft Bedrock'u açın ve Arkadaşlar sekmesine gidin.\n5. Java sunucusuna katılmak için \"MCCompanion\" adlı LAN sunucusunu seçin.\n\n⚠️ Önemli uyarılar:\n- Geçerli bir Java Edition hesabı (Microsoft) gereklidir.\n- Bazı sunucular hesabınızı tespit edip yasaklayabilecek hile önleme sistemleri kullanır.\n- Bazı sunucular Bedrock istemcilerini açıkça yasaklar, her zaman sunucu kurallarını kontrol edin.\n- Bu özelliğin kullanılmasından kaynaklanabilecek hesap yasakları, askıya almalar veya hesapla ilgili diğer sorunlardan MCCompanion sorumlu değildir.\n- Kendi riskinizle kullanın.",
-  "@howToJavaBody": {
-    "description": "Detailed steps for Java mode how-to modal"
-  },
   "language": "Türkçe",
   "@language": {
     "description": "Your language name in your own language"
@@ -551,10 +536,6 @@
   "@creditGeyserTitle": {
     "description": "Title for GeyserMC credit tile"
   },
-  "creditMinecraftWikiSubtitle": "Wiki özelliği için veri kaynağı. Creative Commons altında içerik.",
-  "@creditMinecraftWikiSubtitle": {
-    "description": "Subtitle for Minecraft Wiki credit tile"
-  },
   "creditMojangSubtitle": "Mojang API üzerinden Java oyuncu skinleri ve profilleri.",
   "@creditMojangSubtitle": {
     "description": "Subtitle for Mojang credit tile"
@@ -704,10 +685,6 @@
   "@linkedAccountsTitle": {
     "description": "Section title for linked accounts card"
   },
-  "messagePlaceholder": "Mesaj…",
-  "@messagePlaceholder": {
-    "description": "Hint text in the chat message input"
-  },
   "minecraftTrademark": "\"Minecraft\", Microsoft Corporation'ın tescilli markasıdır.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -732,10 +709,6 @@
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noConversationsYet": "Henüz konuşma yok",
-  "@noConversationsYet": {
-    "description": "Empty state title on conversations screen"
-  },
   "noFriendsSub": "Arkadaş ekleyerek onları burada görün.",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
@@ -743,10 +716,6 @@
   "noFriendsYet": "Henüz arkadaş yok",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
-  },
-  "noMessagesYet": "Henüz mesaj yok.\nMerhaba deyin!",
-  "@noMessagesYet": {
-    "description": "Empty state in chat screen"
   },
   "noPartnerServers": "Henüz ortak sunucu yok.",
   "@noPartnerServers": {
@@ -952,10 +921,6 @@
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportMessage": "Mesajı rapor et",
-  "@reportMessage": {
-    "description": "Title when reporting a specific message"
-  },
   "reportReasonHarassment": "Taciz",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
@@ -1144,14 +1109,6 @@
   "@somethingWentWrong": {
     "description": "Generic error message"
   },
-  "startChatHint": "Bir arkadaş bulun ve sohbet başlatın!",
-  "@startChatHint": {
-    "description": "Empty state subtitle on conversations screen"
-  },
-  "tabChats": "Sohbetler",
-  "@tabChats": {
-    "description": "Tab label for Chats tab"
-  },
   "tabFriends": "Arkadaşlar",
   "@tabFriends": {
     "description": "Tab label for Friends tab"
@@ -1230,196 +1187,6 @@
   "weakPassword": "Şifre çok zayıf.",
   "@weakPassword": {
     "description": "Error for weak password"
-  },
-  "wikiArmor": "Zırh",
-  "@wikiArmor": {
-    "description": "Wiki item sub-category: Armor"
-  },
-  "wikiBiomes": "Biyomlar",
-  "@wikiBiomes": {
-    "description": "Wiki category: Biomes"
-  },
-  "wikiBlocks": "Bloklar",
-  "@wikiBlocks": {
-    "description": "Wiki category: Blocks"
-  },
-  "wikiBoss": "Boss",
-  "@wikiBoss": {
-    "description": "Wiki mob sub-category: Boss"
-  },
-  "wikiBow": "Yay",
-  "@wikiBow": {
-    "description": "Wiki enchantment sub-category: Bow"
-  },
-  "wikiBrewing": "Demleme",
-  "@wikiBrewing": {
-    "description": "Wiki item sub-category: Brewing"
-  },
-  "wikiCategories": "{count} kategori",
-  "@wikiCategories": {
-    "description": "Subtitle on wiki section card showing number of subcategories",
-    "placeholders": {
-      "count": {}
-    }
-  },
-  "wikiCouldNotLoadContent": "İçerik yüklenemedi.",
-  "@wikiCouldNotLoadContent": {
-    "description": "Error when wiki article content fails to load"
-  },
-  "wikiCouldNotLoadPages": "Sayfalar yüklenemedi.",
-  "@wikiCouldNotLoadPages": {
-    "description": "Error when wiki pages fail to load"
-  },
-  "wikiCouldNotReach": "Wiki'ye ulaşılamadı.",
-  "@wikiCouldNotReach": {
-    "description": "Error when the wiki cannot be reached"
-  },
-  "wikiCrafting": "Üretim",
-  "@wikiCrafting": {
-    "description": "Section header for crafting recipes in wiki detail"
-  },
-  "wikiDecoration": "Dekorasyon",
-  "@wikiDecoration": {
-    "description": "Wiki block sub-category: Decoration"
-  },
-  "wikiEnchantments": "Büyüler",
-  "@wikiEnchantments": {
-    "description": "Wiki category: Enchantments"
-  },
-  "wikiFishing": "Balıkçılık",
-  "@wikiFishing": {
-    "description": "Wiki enchantment sub-category: Fishing"
-  },
-  "wikiFood": "Yiyecek",
-  "@wikiFood": {
-    "description": "Wiki item sub-category: Food"
-  },
-  "wikiHostile": "Düşman",
-  "@wikiHostile": {
-    "description": "Wiki mob sub-category: Hostile"
-  },
-  "wikiItems": "Eşyalar",
-  "@wikiItems": {
-    "description": "Wiki category: Items"
-  },
-  "wikiMaterials": "Malzemeler",
-  "@wikiMaterials": {
-    "description": "Wiki item sub-category: Materials"
-  },
-  "wikiMinecraftWiki": "Minecraft Wiki",
-  "@wikiMinecraftWiki": {
-    "description": "Badge/label linking to Minecraft Wiki"
-  },
-  "wikiMobs": "Yaratıklar",
-  "@wikiMobs": {
-    "description": "Wiki category: Mobs"
-  },
-  "wikiNatural": "Doğal",
-  "@wikiNatural": {
-    "description": "Wiki block sub-category: Natural"
-  },
-  "wikiNether": "Nether",
-  "@wikiNether": {
-    "description": "Wiki biome/structure sub-category: Nether"
-  },
-  "wikiNeutral": "Tarafsız",
-  "@wikiNeutral": {
-    "description": "Wiki mob sub-category: Neutral"
-  },
-  "wikiNoPagesFound": "Sayfa bulunamadı",
-  "@wikiNoPagesFound": {
-    "description": "Empty state when no wiki pages are available"
-  },
-  "wikiNoResults": "\"{query}\" için sonuç bulunamadı",
-  "@wikiNoResults": {
-    "description": "Empty search results message",
-    "placeholders": {
-      "query": {}
-    }
-  },
-  "wikiOpenInBrowser": "Tarayıcıda aç",
-  "@wikiOpenInBrowser": {
-    "description": "Button to open wiki article in external browser"
-  },
-  "wikiOres": "Cevherler",
-  "@wikiOres": {
-    "description": "Wiki block sub-category: Ores"
-  },
-  "wikiOverworld": "Üst Dünya",
-  "@wikiOverworld": {
-    "description": "Wiki biome/structure sub-category: Overworld"
-  },
-  "wikiPassive": "Pasif",
-  "@wikiPassive": {
-    "description": "Wiki mob sub-category: Passive"
-  },
-  "wikiPlants": "Bitkiler",
-  "@wikiPlants": {
-    "description": "Wiki block sub-category: Plants"
-  },
-  "wikiPotions": "İksirler",
-  "@wikiPotions": {
-    "description": "Wiki category: Potions"
-  },
-  "wikiRanged": "Menzilli",
-  "@wikiRanged": {
-    "description": "Wiki item sub-category: Ranged"
-  },
-  "wikiReadFullArticle": "Tam makaleyi oku",
-  "@wikiReadFullArticle": {
-    "description": "Button at bottom of wiki detail to open full article"
-  },
-  "wikiRedstone": "Kırmızıtaş",
-  "@wikiRedstone": {
-    "description": "Wiki block sub-category: Redstone"
-  },
-  "wikiSearchHint": "Wiki'de ara…",
-  "@wikiSearchHint": {
-    "description": "Hint text for wiki search field"
-  },
-  "wikiStatusEffects": "Durum efektleri",
-  "@wikiStatusEffects": {
-    "description": "Wiki potion sub-category: Status Effects"
-  },
-  "wikiStone": "Taş",
-  "@wikiStone": {
-    "description": "Wiki block sub-category: Stone"
-  },
-  "wikiStructures": "Yapılar",
-  "@wikiStructures": {
-    "description": "Wiki category: Structures"
-  },
-  "wikiSword": "Kılıç",
-  "@wikiSword": {
-    "description": "Wiki enchantment sub-category: Sword"
-  },
-  "wikiSwords": "Kılıçlar",
-  "@wikiSwords": {
-    "description": "Wiki item sub-category: Swords"
-  },
-  "wikiTheEnd": "Son",
-  "@wikiTheEnd": {
-    "description": "Wiki biome/structure sub-category: The End"
-  },
-  "wikiTitle": "Wiki",
-  "@wikiTitle": {
-    "description": "Title of the wiki screen"
-  },
-  "wikiTool": "Alet",
-  "@wikiTool": {
-    "description": "Wiki enchantment sub-category: Tool"
-  },
-  "wikiTools": "Aletler",
-  "@wikiTools": {
-    "description": "Wiki item sub-category: Tools"
-  },
-  "wikiUtility": "Faydalı",
-  "@wikiUtility": {
-    "description": "Wiki mob sub-category: Utility"
-  },
-  "wikiWood": "Ahşap",
-  "@wikiWood": {
-    "description": "Wiki block sub-category: Wood"
   },
   "xboxAccountLinked": "Xbox hesabı bağlandı!",
   "@xboxAccountLinked": {
@@ -1511,13 +1278,11 @@
   "splashFeatureSkins": "Skinler",
   "featureLabelConnector": "Bağlayıcı",
   "featureLabelSkins": "Skinler",
-  "featureLabelWiki": "Wiki",
-  "featureLabelPartners": "Ortaklar",
+  "featureLabelPartners": "Sunucu listesi",
   "featureLabelLookup": "Arama",
   "featureLabelTracker": "Sunucu Takipçisi",
   "featureSubtitleConnector": "Konsolları Minecraft'a bağlayın",
   "featureSubtitleSkins": "Minecraft skinlerini göz atın ve yönetin",
-  "featureSubtitleWiki": "Minecraft ansiklopedisi",
   "featureSubtitlePartners": "Öne çıkan sunucular",
   "featureSubtitleLookup": "Java ve Bedrock profillerini arayın",
   "featureSubtitleTracker": "Sunucu durumunu izleyin ve bildirim alın",
@@ -1530,10 +1295,6 @@
   "upgradeWindowsHint": "Yükseltme Microsoft Store'da mevcut",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "chatEmptyHint": "İlk mesajı sen gönder!",
-  "@chatEmptyHint": {
-    "description": "Subtitle on the empty chat screen"
   },
   "skinSaved": "Skin kaydedildi",
   "@skinSaved": {
@@ -1562,7 +1323,6 @@
   },
   "feedbackBugReport": "Hata Raporu",
   "feedbackFeatureRequest": "Özellik İsteği",
-  "feedbackGoesToGithub": "Doğrudan GitHub'a gönderilir",
   "feedbackTitleLabel": "Başlık",
   "feedbackTitleHintBug": "ör. Skin editörünü açarken uygulama çöküyor",
   "feedbackTitleHintFeature": "ör. Sunucu listesinde oyuncu pingi göster",
@@ -1575,10 +1335,9 @@
   "feedbackEmailNote": "E-posta adresin hiçbir zaman herkese açık paylaşılmaz.",
   "feedbackSubmitBug": "Hata Raporunu Gönder",
   "feedbackSubmitFeature": "Özellik İsteğini Gönder",
-  "feedbackDisclaimer": "GitHub'da herkese açık bir konu oluşturur · Parola ekleme",
+  "feedbackDisclaimer": "Ekibimize ulaşır · Şifre yazmayın",
   "feedbackSuccessTitle": "Geri bildirim için teşekkürler!",
-  "feedbackSuccessBody": "Teşekkürler! Bildirimin bize ulaştı. En kısa sürede bakacağız.",
-  "feedbackViewOnGithub": "GitHub'da görüntüle",
+  "feedbackSuccessBody": "Teşekkürler! Bildiriminiz bize ulaştı. Yanıtı uygulamada veriyoruz, cevap için buraya geri bakın.",
   "feedbackSubmitAnother": "Bir tane daha gönder",
   "feedbackBackToApp": "Uygulamaya geri dön",
   "feedbackTitleTooShort": "Başlık en az 5 karakter olmalıdır.",
@@ -1900,8 +1659,6 @@
   "reportBug": "Geri bildirim",
   "rpBehaviorContentWarning": "Bu paket, sunucularda çalışmayan davranış paketi verileri içeriyor. Dokular yine de çalışacaktır.",
   "rpInvalidPackFormat": "Bu bir Java Edition paketi ve desteklenmiyor. Lütfen Bedrock Edition kaynak paketi kullanın.",
-  "wikiFavourites": "Favoriler",
-  "wikiRecent": "Son görüntülenenler",
   "supportInboxTitle": "Destek kutusu",
   "supportInboxSubtitle": "Tüm destek sohbetleri, tüm yöneticilerle paylaşılır",
   "adminBadge": "Yönetici",
@@ -1961,11 +1718,8 @@
   "notifFeedbackStatus": "Geri bildiriminde güncelleme",
   "notifFeedbackReply": "Geri bildirimine yanıt",
   "adminTicketsHeader": "Bildirimler ve istekler",
-  "adminGeneralChat": "Genel sohbet",
   "adminTicketReplyHint": "Bu bilet hakkında yanıtla…",
   "adminNoTicketsForUser": "Bu kullanıcıdan bilet yok",
-  "hideConversation": "Gizle",
-  "conversationHidden": "Sohbet gizlendi",
   "undo": "Geri al",
   "chooseServerTitle": "Bir sunucu seç",
   "changeLabel": "Değiştir",
@@ -2041,5 +1795,54 @@
     }
   },
   "updateAvailableAction": "İndir",
-  "updateAvailableDismiss": "Şimdi değil"
+  "updateAvailableDismiss": "Şimdi değil",
+  "serverListSearchHint": "Ada veya adrese göre ara",
+  "serverListEditionAny": "Java ve Bedrock",
+  "serverListEditionJava": "Yalnızca Java",
+  "serverListEditionBedrock": "Yalnızca Bedrock",
+  "serverListSortVotes": "En çok oy",
+  "serverListSortPlayers": "En çok oyuncu",
+  "serverListSortPeak": "En yüksek zirve",
+  "serverListSortNewest": "En yeni",
+  "serverListSortName": "Ad",
+  "serverListAllCategories": "Tümü",
+  "serverListLoadFailed": "Sunucu listesi yüklenemedi",
+  "serverListLoadFailedHint": "Yeniden denemek için aşağı çekin",
+  "serverListNoMatch": "Eşleşen sunucu yok",
+  "serverListNoMatchHint": "Farklı bir arama veya kategori deneyin",
+  "serverCardPlay": "Oyna",
+  "serverCardVote": "Oy ver",
+  "serverCardViewServer": "Sunucuyu görüntüle",
+  "serverCopyIp": "IP'yi kopyala",
+  "serverCopied": "Kopyalandı",
+  "serverStatPlayers": "Oyuncular",
+  "serverStatPeak": "Zirve",
+  "serverStatUptime": "Çalışma süresi",
+  "serverStatVotesMonth": "Bu ayki oylar",
+  "serverStatVotesAllTime": "Toplam oy",
+  "serverBadgeFeatured": "Öne çıkan",
+  "serverEditionJava": "Java",
+  "serverEditionBedrock": "Bedrock",
+  "serverEditionCrossplay": "Crossplay",
+  "serverSectionMotd": "Günün mesajı",
+  "serverSectionAbout": "Hakkında",
+  "serverSectionCategories": "Kategoriler",
+  "serverSectionVotes": "Oylar",
+  "serverLinkDiscord": "Discord",
+  "serverLinkWebsite": "Web sitesi",
+  "serverVotesThisMonth": "Bu ay",
+  "serverVotesAllTime": "Tüm zamanlar",
+  "serverVoteAction": "Bu sunucuya oy ver",
+  "serverPlayAction": "Bu sunucuda oyna",
+  "serverVoteSignInRequired": "Uygulamadan oy vermek için giriş yapın.",
+  "serverVoteSheetTitle": "{name} için oy ver",
+  "serverVoteSheetSubtitle": "Minecraft adınız, sunucu kimi ödüllendireceğini bilsin.",
+  "serverVoteSheetHint": "Steve",
+  "serverVoteSheetButton": "Oy ver",
+  "serverVoteSheetLimit": "Sunucu başına günde bir oy.",
+  "serverVoteDelivered": "Oy verildi. Ödülünüz yolda.",
+  "serverVoteNoRewards": "Oy verildi. Bu sunucuda ödül ayarlanmamış.",
+  "serverVoteFailed": "Bu işe yaramadı, lütfen tekrar deneyin.",
+  "serverVoteOffline": "Sunucuya ulaşılamadı. Bağlantınızı kontrol edin.",
+  "feedbackViewYourReport": "Bildiriminizi görüntüle"
 }

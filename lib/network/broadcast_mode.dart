@@ -1,4 +1,4 @@
-enum BroadcastMode { lan, nintendo, friends, java, direct }
+enum BroadcastMode { lan, nintendo, friends, direct }
 
 String broadcastModeToString(BroadcastMode mode) {
   switch (mode) {
@@ -8,8 +8,6 @@ String broadcastModeToString(BroadcastMode mode) {
       return "NINTENDO";
     case BroadcastMode.friends:
       return "FRIENDS";
-    case BroadcastMode.java:
-      return "JAVA";
     case BroadcastMode.direct:
       return "DIRECT";
   }

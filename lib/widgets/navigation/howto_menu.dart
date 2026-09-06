@@ -10,7 +10,6 @@ class HowToSheetContent extends StatelessWidget {
   final VoidCallback? onXbox;
   final VoidCallback? onNintendo;
   final VoidCallback? onFriends;
-  final VoidCallback? onJava;
   final VoidCallback? onDirect;
 
   const HowToSheetContent({
@@ -20,7 +19,6 @@ class HowToSheetContent extends StatelessWidget {
     this.onXbox,
     this.onNintendo,
     this.onFriends,
-    this.onJava,
     this.onDirect,
   });
 
@@ -66,8 +64,6 @@ class HowToSheetContent extends StatelessWidget {
                   _tile(icon: FontAwesomeIcons.gamepad, color: AppTheme.modeNintendo, title: loc.howToNintendoTitle, subtitle: loc.howToNintendoSubtitle, onTap: onNintendo ?? () {}),
                   const SizedBox(height: 8),
                   _tile(icon: FontAwesomeIcons.userGroup, color: AppTheme.modeFriends, title: loc.howToFriendsTitle, subtitle: loc.howToFriendsSubtitle, onTap: onFriends ?? () {}),
-                  const SizedBox(height: 8),
-                  _tile(icon: FontAwesomeIcons.java, color: AppTheme.modeJava, title: loc.javaInfoTitle, subtitle: loc.howToJavaSubtitle, onTap: onJava ?? () {}),
                   const SizedBox(height: 8),
                   _tile(icon: FontAwesomeIcons.bolt, color: AppTheme.modeDirect, title: loc.howToDirectTitle, subtitle: loc.howToDirectSubtitle, onTap: onDirect ?? () {}),
                 ],

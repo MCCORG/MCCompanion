@@ -128,26 +128,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get labelJava => 'Java';
 
   @override
-  String get startJavaMode => 'ابدأ وضع Java';
-
-  @override
-  String get javaInfoTitle => 'وضع Java';
-
-  @override
-  String get javaInfoText => 'اتصل بخوادم Java Edition';
-
-  @override
-  String get howToJavaTitle => 'وضع Java';
-
-  @override
-  String get howToJavaSubtitle => 'اتصل بخوادم Java Edition عبر MCCompanion';
-
-  @override
   String get aternosSubtext => 'أنشئ خادم ماينكرافت مجاني خاص بك';
-
-  @override
-  String get howToJavaBody =>
-      'وضع Java: خطوات سريعة:\n1. في التطبيق، اختر وضع Java.\n2. أدخل عنوان خادم Java Edition والمنفذ (الافتراضي: 25565).\n3. اضغط على \"ابدأ وضع Java\": سيقوم MCCompanion بربط الاتصال.\n4. افتح Minecraft Bedrock وانتقل إلى علامة تبويب الأصدقاء.\n5. اختر خادم LAN المسمى \"MCCompanion\" للانضمام إلى خادم Java.\n\n⚠️ تحذيرات مهمة:\n- يلزم وجود حساب Java Edition صالح (Microsoft).\n- تستخدم بعض الخوادم أنظمة مكافحة الغش وقد تكتشف حسابك وتحظره.\n- بعض الخوادم تحظر عملاء Bedrock صراحةً: تحقق دائمًا من قواعد الخادم.\n- MCCompanion غير مسؤول عن أي حظر أو تعليق أو أي مشكلات أخرى متعلقة بالحساب قد تنتج عن استخدام هذه الميزة.\n- استخدمها على مسؤوليتك الخاصة.';
 
   @override
   String get language => 'العربية';
@@ -698,9 +679,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get reportUser => 'Report user';
 
   @override
-  String get reportMessage => 'Report message';
-
-  @override
   String reportUserWithName(Object name) {
     return 'Report $name';
   }
@@ -740,18 +718,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get yesterday => 'Yesterday';
 
   @override
-  String get messagePlaceholder => 'Message…';
-
-  @override
-  String get noMessagesYet => 'No messages yet.\nSay hello!';
-
-  @override
-  String get noConversationsYet => 'No conversations yet';
-
-  @override
-  String get startChatHint => 'Find a friend and start chatting!';
-
-  @override
   String get youPrefix => 'You';
 
   @override
@@ -786,9 +752,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get tabRequests => 'Requests';
-
-  @override
-  String get tabChats => 'Chats';
 
   @override
   String get addFriend => 'Add Friend';
@@ -1108,155 +1071,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get skinsDownload => 'Download';
 
   @override
-  String get wikiTitle => 'Wiki';
-
-  @override
-  String get wikiMinecraftWiki => 'Minecraft Wiki';
-
-  @override
-  String get wikiSearchHint => 'Search the wiki…';
-
-  @override
-  String get wikiCouldNotLoadPages => 'Could not load pages. Please try again.';
-
-  @override
-  String get wikiCouldNotReach =>
-      'Could not reach the wiki. Check your connection.';
-
-  @override
-  String wikiNoResults(Object query) {
-    return 'No results found for \"$query\"';
-  }
-
-  @override
-  String get wikiNoPagesFound => 'No pages found';
-
-  @override
-  String wikiCategories(Object count) {
-    return '$count categories';
-  }
-
-  @override
-  String get wikiCouldNotLoadContent => 'Could not load article content.';
-
-  @override
-  String get wikiOpenInBrowser => 'Open in browser';
-
-  @override
-  String get wikiCrafting => 'Crafting';
-
-  @override
-  String get wikiReadFullArticle => 'Read full article';
-
-  @override
-  String get wikiRecent => 'شوهدت مؤخرًا';
-
-  @override
-  String get wikiFavourites => 'المفضلة';
-
-  @override
-  String get wikiMobs => 'Mobs';
-
-  @override
-  String get wikiBlocks => 'Blocks';
-
-  @override
-  String get wikiItems => 'Items';
-
-  @override
-  String get wikiBiomes => 'Biomes';
-
-  @override
-  String get wikiStructures => 'Structures';
-
-  @override
-  String get wikiEnchantments => 'Enchantments';
-
-  @override
-  String get wikiPotions => 'Potions';
-
-  @override
-  String get wikiPassive => 'Passive';
-
-  @override
-  String get wikiNeutral => 'Neutral';
-
-  @override
-  String get wikiHostile => 'Hostile';
-
-  @override
-  String get wikiBoss => 'Boss';
-
-  @override
-  String get wikiUtility => 'Utility';
-
-  @override
-  String get wikiNatural => 'Natural';
-
-  @override
-  String get wikiOres => 'Ores';
-
-  @override
-  String get wikiWood => 'Wood';
-
-  @override
-  String get wikiStone => 'Stone';
-
-  @override
-  String get wikiRedstone => 'Redstone';
-
-  @override
-  String get wikiPlants => 'Plants';
-
-  @override
-  String get wikiDecoration => 'Decoration';
-
-  @override
-  String get wikiTools => 'Tools';
-
-  @override
-  String get wikiSwords => 'Swords';
-
-  @override
-  String get wikiRanged => 'Ranged';
-
-  @override
-  String get wikiArmor => 'Armor';
-
-  @override
-  String get wikiFood => 'Food';
-
-  @override
-  String get wikiBrewing => 'Brewing';
-
-  @override
-  String get wikiMaterials => 'Materials';
-
-  @override
-  String get wikiOverworld => 'Overworld';
-
-  @override
-  String get wikiNether => 'Nether';
-
-  @override
-  String get wikiTheEnd => 'The End';
-
-  @override
-  String get wikiSword => 'Sword';
-
-  @override
-  String get wikiTool => 'Tool';
-
-  @override
-  String get wikiBow => 'Bow';
-
-  @override
-  String get wikiFishing => 'Fishing';
-
-  @override
-  String get wikiStatusEffects => 'Status Effects';
-
-  @override
   String get chooseUniqueUsername => 'اختر اسم مستخدم فريداً للبدء.';
 
   @override
@@ -1395,10 +1209,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get dataSourcesSection => 'Data Sources & Credits';
-
-  @override
-  String get creditMinecraftWikiSubtitle =>
-      'Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
@@ -1665,10 +1475,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get featureLabelSkins => 'سكنز';
 
   @override
-  String get featureLabelWiki => 'ويكي';
-
-  @override
-  String get featureLabelPartners => 'شركاء';
+  String get featureLabelPartners => 'قائمة الخوادم';
 
   @override
   String get featureLabelLookup => 'بحث';
@@ -1681,9 +1488,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get featureSubtitleSkins => 'تصفح وإدارة سكنز Minecraft';
-
-  @override
-  String get featureSubtitleWiki => 'موسوعة Minecraft';
 
   @override
   String get featureSubtitlePartners => 'الخوادم المميزة';
@@ -1707,9 +1511,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get upgradeWindowsHint => 'الترقية متاحة عبر متجر Microsoft';
 
   @override
-  String get chatEmptyHint => 'كن أول من يقول شيئاً!';
-
-  @override
   String get skinSaved => 'تم حفظ السكن';
 
   @override
@@ -1731,9 +1532,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get feedbackFeatureRequest => 'طلب ميزة';
-
-  @override
-  String get feedbackGoesToGithub => 'يُرسل مباشرةً إلى GitHub';
 
   @override
   String get feedbackTitleLabel => 'العنوان';
@@ -1774,18 +1572,14 @@ class AppLocalizationsAr extends AppLocalizations {
   String get feedbackSubmitFeature => 'إرسال طلب الميزة';
 
   @override
-  String get feedbackDisclaimer =>
-      'ينشئ تذكرة عامة على GitHub · لا تُدرج كلمات المرور';
+  String get feedbackDisclaimer => 'يصل إلى فريقنا · لا تضع كلمات المرور';
 
   @override
   String get feedbackSuccessTitle => 'شكرًا على ملاحظاتك!';
 
   @override
   String get feedbackSuccessBody =>
-      'شكرًا! وصلنا تقريرك وسنطّلع عليه في أقرب وقت.';
-
-  @override
-  String get feedbackViewOnGithub => 'عرض على GitHub';
+      'شكرًا لك! وصلنا بلاغك. نردّ داخل التطبيق، فعد إلى هنا لرؤية الرد.';
 
   @override
   String get feedbackSubmitAnother => 'إرسال آخر';
@@ -2622,19 +2416,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get adminTicketsHeader => 'البلاغات والطلبات';
 
   @override
-  String get adminGeneralChat => 'محادثة عامة';
-
-  @override
   String get adminTicketReplyHint => 'رد بخصوص هذه التذكرة…';
 
   @override
   String get adminNoTicketsForUser => 'لا توجد تذاكر من هذا المستخدم';
-
-  @override
-  String get hideConversation => 'إخفاء';
-
-  @override
-  String get conversationHidden => 'تم إخفاء المحادثة';
 
   @override
   String get undo => 'تراجع';
@@ -2789,4 +2574,154 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get updateAvailableDismiss => 'ليس الآن';
+
+  @override
+  String get serverListSearchHint => 'ابحث بالاسم أو العنوان';
+
+  @override
+  String get serverListEditionAny => 'Java و Bedrock';
+
+  @override
+  String get serverListEditionJava => 'Java فقط';
+
+  @override
+  String get serverListEditionBedrock => 'Bedrock فقط';
+
+  @override
+  String get serverListSortVotes => 'الأكثر تصويتًا';
+
+  @override
+  String get serverListSortPlayers => 'الأكثر لاعبين';
+
+  @override
+  String get serverListSortPeak => 'أعلى ذروة';
+
+  @override
+  String get serverListSortNewest => 'الأحدث';
+
+  @override
+  String get serverListSortName => 'الاسم';
+
+  @override
+  String get serverListAllCategories => 'الكل';
+
+  @override
+  String get serverListLoadFailed => 'تعذّر تحميل قائمة الخوادم';
+
+  @override
+  String get serverListLoadFailedHint => 'اسحب للأسفل لإعادة المحاولة';
+
+  @override
+  String get serverListNoMatch => 'لا توجد خوادم مطابقة';
+
+  @override
+  String get serverListNoMatchHint => 'جرّب بحثًا أو فئة أخرى';
+
+  @override
+  String get serverCardPlay => 'العب';
+
+  @override
+  String get serverCardVote => 'صوّت';
+
+  @override
+  String get serverCardViewServer => 'عرض الخادم';
+
+  @override
+  String get serverCopyIp => 'نسخ الـ IP';
+
+  @override
+  String get serverCopied => 'تم النسخ';
+
+  @override
+  String get serverStatPlayers => 'اللاعبون';
+
+  @override
+  String get serverStatPeak => 'الذروة';
+
+  @override
+  String get serverStatUptime => 'مدة التشغيل';
+
+  @override
+  String get serverStatVotesMonth => 'أصوات هذا الشهر';
+
+  @override
+  String get serverStatVotesAllTime => 'إجمالي الأصوات';
+
+  @override
+  String get serverBadgeFeatured => 'مميّز';
+
+  @override
+  String get serverEditionJava => 'Java';
+
+  @override
+  String get serverEditionBedrock => 'Bedrock';
+
+  @override
+  String get serverEditionCrossplay => 'لعب مشترك';
+
+  @override
+  String get serverSectionMotd => 'رسالة اليوم';
+
+  @override
+  String get serverSectionAbout => 'نبذة';
+
+  @override
+  String get serverSectionCategories => 'الفئات';
+
+  @override
+  String get serverSectionVotes => 'الأصوات';
+
+  @override
+  String get serverLinkDiscord => 'Discord';
+
+  @override
+  String get serverLinkWebsite => 'الموقع';
+
+  @override
+  String get serverVotesThisMonth => 'هذا الشهر';
+
+  @override
+  String get serverVotesAllTime => 'كل الأوقات';
+
+  @override
+  String get serverVoteAction => 'صوّت لهذا الخادم';
+
+  @override
+  String get serverPlayAction => 'العب على هذا الخادم';
+
+  @override
+  String get serverVoteSignInRequired => 'سجّل الدخول للتصويت من التطبيق.';
+
+  @override
+  String serverVoteSheetTitle(String name) {
+    return 'صوّت لـ $name';
+  }
+
+  @override
+  String get serverVoteSheetSubtitle =>
+      'اسمك في Minecraft، ليعرف الخادم من يكافئ.';
+
+  @override
+  String get serverVoteSheetHint => 'Steve';
+
+  @override
+  String get serverVoteSheetButton => 'صوّت';
+
+  @override
+  String get serverVoteSheetLimit => 'صوت واحد لكل خادم في اليوم.';
+
+  @override
+  String get serverVoteDelivered => 'تم التصويت. مكافأتك في الطريق.';
+
+  @override
+  String get serverVoteNoRewards => 'تم التصويت. لم يضبط هذا الخادم أي مكافآت.';
+
+  @override
+  String get serverVoteFailed => 'لم ينجح ذلك، يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get serverVoteOffline => 'تعذّر الوصول إلى الخادم. تحقّق من اتصالك.';
+
+  @override
+  String get feedbackViewYourReport => 'عرض بلاغك';
 }

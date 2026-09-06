@@ -7,20 +7,16 @@ import 'profile_common.dart';
 class ProfileFriendTile extends StatelessWidget {
   final FriendModel friend;
   final VoidCallback onRemove;
-  final VoidCallback onChat;
   final VoidCallback? onGoToHome;
   final VoidCallback? onGoToConnector;
   final VoidCallback? onGoToSkins;
-  final VoidCallback? onGoToWiki;
   const ProfileFriendTile({
     super.key,
     required this.friend,
     required this.onRemove,
-    required this.onChat,
     this.onGoToHome,
     this.onGoToConnector,
     this.onGoToSkins,
-    this.onGoToWiki,
   });
 
   void _openProfile(BuildContext context) {
@@ -31,7 +27,6 @@ class ProfileFriendTile extends StatelessWidget {
           onGoToHome: onGoToHome,
           onGoToConnector: onGoToConnector,
           onGoToSkins: onGoToSkins,
-          onGoToWiki: onGoToWiki,
         ),
       ),
     );
@@ -122,17 +117,6 @@ class ProfileFriendTile extends StatelessWidget {
                     ),
                   ],
                 ],
-              ),
-            ),
-            GestureDetector(
-              onTap: onChat,
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: Icon(
-                  Icons.chat_bubble_rounded,
-                  color: AppTheme.accent.withValues(alpha: 0.70),
-                  size: 18,
-                ),
               ),
             ),
             GestureDetector(

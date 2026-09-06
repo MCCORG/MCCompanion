@@ -8,7 +8,7 @@ import '../services/locale_provider.dart';
 import '../services/region_detector.dart';
 import '../services/relay_service.dart';
 import '../services/auth_service.dart';
-import '../services/message_service.dart';
+import '../services/presence_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import '../services/push_notification_service.dart';
 import '../constants/app_constants.dart';
@@ -25,19 +25,16 @@ import '../services/partners_servers_service.dart';
 import '../l10n/app_localizations.dart';
 import '../services/user_service.dart';
 import 'my_feedback_screen.dart';
-import '../models/user_model.dart';
 import 'landing_screen.dart';
 import '../widgets/landing/landing_customize_sheet.dart';
 import 'connector_screen.dart';
 import 'skins_screen.dart';
-import 'wiki_screen.dart';
-import 'partner_servers_screen.dart';
+import 'server_list_screen.dart';
 import 'player_lookup_screen.dart';
 import 'manage_servers_screen.dart';
 import 'resource_pack_screen.dart';
 import 'profile_screen.dart';
 import 'public_profile_screen.dart';
-import 'chat_screen.dart';
 import 'server_tracker_screen.dart';
 import 'feedback_screen.dart';
 import '../services/server_tracker_service.dart';
@@ -55,12 +52,11 @@ const int _pagePartners = 2;
 const int _pageManageServers = 3;
 const int _pageAddEditServer = 4;
 const int _pageSkins = 5;
-const int _pageWiki = 6;
-const int _pageProfile = 7;
-const int _pagePlayerLookup = 8;
-const int _pageServerTracker = 9;
-const int _pageFeedback = 10;
-const int _pageResourcePack = 11;
+const int _pageProfile = 6;
+const int _pagePlayerLookup = 7;
+const int _pageServerTracker = 8;
+const int _pageFeedback = 9;
+const int _pageResourcePack = 10;
 
 class AppShell extends StatefulWidget {
   final RelaySelection? initialRelay;
@@ -123,7 +119,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
 
     _authSub = AuthService.userStream.listen((user) {
       if (user != null) {
-        MessageService.connect();
+        PresenceService.connect();
         if (_lastSignedInUid != user.uid) {
           _lastSignedInUid = user.uid;
           unawaited(PushNotificationService.onUserSignedIn());
@@ -133,7 +129,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
         _warmLikelyScreens();
       } else {
         _lastSignedInUid = null;
-        MessageService.disconnect();
+        PresenceService.disconnect();
         ServerTrackerService.instance.stop();
         SubscriptionService.instance.reset();
       }
@@ -196,7 +192,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   int _pageIndexFor(AppFeature feature) => switch (feature) {
     AppFeature.connector => _pageConnector,
     AppFeature.skins => _pageSkins,
-    AppFeature.wiki => _pageWiki,
     AppFeature.partners => _pagePartners,
     AppFeature.lookup => _pagePlayerLookup,
     AppFeature.tracker => _pageServerTracker,
@@ -355,10 +350,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
                 : 'us',
           );
         },
-        onJava: () {
-          Navigator.of(context).pop();
-          HowToDialogs.showJavaInstructions(context);
-        },
         onDirect: () {
           Navigator.of(context).pop();
           HowToDialogs.showDirectInstructions(context);
@@ -394,7 +385,15 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   }
 
   void _showInfoSheet() {
-    _showSheet(InfoSheetContent(onClose: () => Navigator.of(context).pop()));
+    _showSheet(
+      InfoSheetContent(
+        onClose: () => Navigator.of(context).pop(),
+        onFeedback: () {
+          Navigator.of(context).pop();
+          _goTo(_pageFeedback);
+        },
+      ),
+    );
   }
 
   void _showMoreSheet() {
@@ -416,10 +415,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   void _handleNotificationTap(RemoteMessage message) {
     final type = message.data['type'] as String? ?? 'unknown';
     switch (type) {
-      case 'message':
-        final username = message.data['senderUsername'] as String?;
-        _goToProfileTab(3);
-        if (username != null) unawaited(_openChatFromNotification(username));
       case 'friend_request':
         _goToProfileTab(2);
       case 'friend_online':
@@ -448,21 +443,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     });
   }
 
-  Future<void> _openChatFromNotification(String username) async {
-    final user = await UserService.getProfile(username);
-    if (!mounted || user == null) return;
-    final friend = FriendModel(
-      firebaseUid: '',
-      username: user.username,
-      displayName: user.displayName,
-      avatarUrl: user.avatarUrl,
-      online: false,
-    );
-    if (!mounted) return;
-    _contentNavigator.push(
-      MaterialPageRoute(builder: (_) => ChatScreen(friend: friend)),
-    );
-  }
+
 
   void _goTo(int page) {
     _desktopNavKey.currentState?.popUntil((r) => r.isFirst);
@@ -480,7 +461,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   VoidCallback _navCallbackFor(AppFeature feature) => switch (feature) {
     AppFeature.connector => () => _goTo(_pageConnector),
     AppFeature.skins => () => _goTo(_pageSkins),
-    AppFeature.wiki => () => _goTo(_pageWiki),
     AppFeature.partners => () => _goTo(_pagePartners),
     AppFeature.lookup => () => _goTo(_pagePlayerLookup),
     AppFeature.tracker => () => _goTo(_pageServerTracker),
@@ -489,7 +469,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   bool _isNavFeatureActive(AppFeature feature) {
     return switch (feature) {
       AppFeature.skins => _pageIndex == _pageSkins,
-      AppFeature.wiki => _pageIndex == _pageWiki,
       AppFeature.partners => _pageIndex == _pagePartners,
       AppFeature.lookup => _pageIndex == _pagePlayerLookup,
       AppFeature.tracker => _pageIndex == _pageServerTracker,
@@ -532,8 +511,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
         return 'connector';
       case _pageSkins:
         return 'skins';
-      case _pageWiki:
-        return 'wiki';
       case _pageProfile:
         return 'profile';
       case _pagePartners:
@@ -577,7 +554,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     RelayService.selection.removeListener(_onRelayServiceChanged);
     _authSub?.cancel();
     _linkSub?.cancel();
-    MessageService.disconnect();
+    PresenceService.disconnect();
     _logScrollController.dispose();
     _logsNotifier.dispose();
     _debugEnabledNotifier.dispose();
@@ -590,8 +567,12 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
+    ServerTrackerService.instance.setForeground(
+      state == AppLifecycleState.resumed,
+    );
+
     if (state == AppLifecycleState.resumed) {
-      if (AuthService.currentUser != null) MessageService.reconnectIfNeeded();
+      if (AuthService.currentUser != null) PresenceService.reconnectIfNeeded();
       unawaited(RegionDetector.refreshInBackground());
     }
   }
@@ -607,7 +588,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       LandingScreen(
         onGoToConnector: () => _goTo(_pageConnector),
         onGoToSkins: () => _goTo(_pageSkins),
-        onGoToWiki: () => _goTo(_pageWiki),
         onGoToPartners: () => _goTo(_pagePartners),
         onGoToPlayerLookup: () => _goTo(_pagePlayerLookup),
         onGoToServerTracker: () => _goTo(_pageServerTracker),
@@ -617,6 +597,8 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
         onLanguageTap: () => navigationController.showLanguageDialog(context),
         onInfoTap: () => _showInfoSheet(),
         partnerServersFuture: _partnerServersFuture,
+        ipController: _ipController,
+        portController: _portController,
         onPlayServer: (ip, port) {
           _ipController.text = ip;
           _portController.text = port.toString();
@@ -648,8 +630,9 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
         onBack: () => _goTo(_pageHome),
         onServerDeleted: () => _manageServersKey.currentState?.reload(),
       ),
-      PartnerServersScreen(
-        partnerServersFuture: _partnerServersFuture,
+      // The paid placements still lead this list, they are just no longer the
+      // whole of it: this is the same directory the website shows.
+      ServerListScreen(
         ipController: _ipController,
         portController: _portController,
         onBack: () => _goTo(_pageHome),
@@ -670,13 +653,11 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
         onCancel: () => setState(() => _pageIndex = _pageManageServers),
       ),
       SkinsScreen(key: _skinsKey, onBack: () => _goTo(_pageHome)),
-      WikiScreen(onBack: () => _goTo(_pageHome)),
       ProfileScreen(
         key: _profileKey,
         onGoToHome: () => _goTo(_pageHome),
         onGoToConnector: () => _goTo(_pageConnector),
         onGoToSkins: () => _goTo(_pageSkins),
-        onGoToWiki: () => _goTo(_pageWiki),
         onLoggedIn: () {
           if (_loginFromTracker) {
             _loginFromTracker = false;
@@ -769,7 +750,11 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
           ),
           body: Stack(
             children: [
-              SafeArea(top: true, bottom: false, child: _buildPageStack()),
+              SafeArea(
+                top: _pageIndex != _pageHome && _pageIndex != _pageConnector,
+                bottom: false,
+                child: _buildPageStack(),
+              ),
               _buildConsoleOverlay(),
             ],
           ),
@@ -817,7 +802,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
                 onHomeTap: () => _goTo(_pageHome),
                 onConnectorTap: () => _goTo(_pageConnector),
                 onSkinsTap: () => _goTo(_pageSkins),
-                onWikiTap: () => _goTo(_pageWiki),
                 onPartnersTap: () => _goTo(_pagePartners),
                 onLookupTap: () => _goTo(_pagePlayerLookup),
                 onTrackerTap: () => _goTo(_pageServerTracker),
@@ -863,7 +847,6 @@ class _DesktopSidebar extends StatelessWidget {
   final VoidCallback onHomeTap;
   final VoidCallback onConnectorTap;
   final VoidCallback onSkinsTap;
-  final VoidCallback onWikiTap;
   final VoidCallback onPartnersTap;
   final VoidCallback onLookupTap;
   final VoidCallback onTrackerTap;
@@ -877,7 +860,6 @@ class _DesktopSidebar extends StatelessWidget {
     required this.onHomeTap,
     required this.onConnectorTap,
     required this.onSkinsTap,
-    required this.onWikiTap,
     required this.onPartnersTap,
     required this.onLookupTap,
     required this.onTrackerTap,
@@ -948,12 +930,6 @@ class _DesktopSidebar extends StatelessWidget {
                     label: AppFeature.skins.label(l),
                     isActive: activeItem == 'skins',
                     onTap: onSkinsTap,
-                  ),
-                  _SidebarItem(
-                    icon: FontAwesomeIcons.bookOpen,
-                    label: AppFeature.wiki.label(l),
-                    isActive: activeItem == 'wiki',
-                    onTap: onWikiTap,
                   ),
                   _SidebarItem(
                     icon: FontAwesomeIcons.user,

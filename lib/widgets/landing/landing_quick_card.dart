@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../l10n/app_localizations.dart';
@@ -8,12 +9,14 @@ class LandingQuickCard extends StatefulWidget {
   final AppFeature feature;
   final VoidCallback onTap;
   final Duration animationDelay;
+  final bool wide;
 
   const LandingQuickCard({
     super.key,
     required this.feature,
     required this.onTap,
     this.animationDelay = Duration.zero,
+    this.wide = false,
   });
 
   @override
@@ -21,9 +24,10 @@ class LandingQuickCard extends StatefulWidget {
 }
 
 class LandingQuickCardState extends State<LandingQuickCard>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   bool _pressed = false;
   late final AnimationController _entranceCtrl;
+  late final AnimationController _idleCtrl;
   late final Animation<double> _fadeAnim;
   late final Animation<Offset> _slideAnim;
 
@@ -39,31 +43,29 @@ class LandingQuickCardState extends State<LandingQuickCard>
         .animate(
           CurvedAnimation(parent: _entranceCtrl, curve: Curves.easeOutCubic),
         );
+    _idleCtrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2400),
+    );
 
     Future.delayed(widget.animationDelay, () {
-      if (mounted) _entranceCtrl.forward();
+      if (!mounted) return;
+      _entranceCtrl.forward();
+      _idleCtrl.repeat();
     });
   }
 
   @override
   void dispose() {
     _entranceCtrl.dispose();
+    _idleCtrl.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final color = Color(widget.feature.colorValue);
     final l = AppLocalizations.of(context)!;
-    final isDesktop =
-        Theme.of(context).platform == TargetPlatform.macOS ||
-        Theme.of(context).platform == TargetPlatform.windows ||
-        Theme.of(context).platform == TargetPlatform.linux;
-    final imgSize = isDesktop ? 42.0 : 64.0;
-    final glowExtra = isDesktop ? 12.0 : 18.0;
-    final vPad = isDesktop ? 8.0 : 10.0;
-    final gap1 = isDesktop ? 6.0 : 8.0;
-    final gap2 = isDesktop ? 2.0 : 3.0;
+    final color = AppTheme.accent;
 
     return FadeTransition(
       opacity: _fadeAnim,
@@ -75,68 +77,163 @@ class LandingQuickCardState extends State<LandingQuickCard>
           onTapCancel: () => setState(() => _pressed = false),
           onTap: widget.onTap,
           child: AnimatedScale(
-            scale: _pressed ? 0.96 : 1.0,
+            scale: _pressed ? 0.97 : 1.0,
             duration: const Duration(milliseconds: 100),
-            curve: Curves.easeOut,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 12, vertical: vPad),
+              padding: widget.wide
+                  ? const EdgeInsets.fromLTRB(18, 24, 16, 24)
+                  : const EdgeInsets.fromLTRB(16, 15, 16, 13),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: color.withValues(alpha: 0.20)),
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    AppTheme.surfaceRaised,
-                    Color.lerp(AppTheme.surfaceRaised, color, 0.07)!,
-                  ],
-                ),
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(color: AppTheme.borderGray),
+                color: AppTheme.surfaceRaised,
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Container(
-                    width: imgSize + glowExtra,
-                    height: imgSize + glowExtra,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: color.withValues(alpha: 0.10),
+              child: widget.wide
+                  ? Row(
+                      children: [
+                        _AnimatedFeatureIcon(
+                          feature: widget.feature,
+                          color: color,
+                          progress: _idleCtrl,
+                          size: 44,
+                        ),
+                        const SizedBox(width: 14),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                widget.feature.label(l),
+                                style: TextStyle(
+                                  color: AppTheme.textPrimary,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
+                                  height: 1.15,
+                                  letterSpacing: -0.3,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              const SizedBox(height: 3),
+                              Text(
+                                widget.feature.subtitle(l),
+                                style: TextStyle(
+                                  color: AppTheme.textMuted,
+                                  fontSize: 13,
+                                  height: 1.3,
+                                ),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Container(
+                          width: 30,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: color.withValues(alpha: 0.12),
+                          ),
+                          child: Icon(
+                            Icons.arrow_forward_rounded,
+                            size: 16,
+                            color: color,
+                          ),
+                        ),
+                      ],
+                    )
+                  : Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(
+                          height: 40,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _AnimatedFeatureIcon(
+                                feature: widget.feature,
+                                color: color,
+                                progress: _idleCtrl,
+                                size: 34,
+                              ),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 8),
+                                  child: Text(
+                                    widget.feature.label(l),
+                                    style: TextStyle(
+                                      color: AppTheme.textPrimary,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w600,
+                                      height: 1.2,
+                                      letterSpacing: -0.2,
+                                    ),
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          widget.feature.subtitle(l),
+                          style: TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 12,
+                            height: 1.25,
+                          ),
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
                     ),
-                    child: Center(
-                      child: Image.asset(
-                        widget.feature.imagePath,
-                        width: imgSize,
-                        height: imgSize,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: gap1),
-                  Text(
-                    widget.feature.label(l),
-                    style: TextStyle(
-                      color: AppTheme.textPrimary,
-                      fontSize: 13,
-                      fontWeight: FontWeight.w700,
-                    ),
-                    textAlign: TextAlign.center,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  SizedBox(height: gap2),
-                  Text(
-                    widget.feature.subtitle(l),
-                    style: TextStyle(
-                      color: AppTheme.textMuted,
-                      fontSize: 10,
-                      height: 1.3,
-                    ),
-                    textAlign: TextAlign.center,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _AnimatedFeatureIcon extends StatelessWidget {
+  final AppFeature feature;
+  final Color color;
+  final Animation<double> progress;
+  final double size;
+
+  const _AnimatedFeatureIcon({
+    required this.feature,
+    required this.color,
+    required this.progress,
+    this.size = 44,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: size,
+      height: size,
+      child: Transform.scale(
+        scale: size / 44,
+        child: SizedBox(
+          width: 44,
+          height: 44,
+          child: AnimatedBuilder(
+            animation: progress,
+            builder: (context, child) => CustomPaint(
+              painter: _FeatureIconPainter(
+                feature: feature,
+                color: color,
+                t: progress.value,
               ),
             ),
           ),
@@ -144,6 +241,177 @@ class LandingQuickCardState extends State<LandingQuickCard>
       ),
     );
   }
+}
+
+class _FeatureIconPainter extends CustomPainter {
+  final AppFeature feature;
+  final Color color;
+  final double t;
+
+  _FeatureIconPainter({
+    required this.feature,
+    required this.color,
+    required this.t,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    switch (feature) {
+      case AppFeature.connector:
+        _paintConnector(canvas);
+      case AppFeature.skins:
+        _paintSkins(canvas);
+      case AppFeature.partners:
+        _paintPartners(canvas);
+      case AppFeature.lookup:
+        _paintLookup(canvas);
+      case AppFeature.tracker:
+        _paintTracker(canvas);
+    }
+  }
+
+  Paint get _stroke => Paint()
+    ..style = PaintingStyle.stroke
+    ..strokeWidth = 2.4
+    ..strokeCap = StrokeCap.round
+    ..strokeJoin = StrokeJoin.round
+    ..color = color;
+
+  Paint get _fill => Paint()..color = color;
+
+  void _paintConnector(Canvas canvas) {
+    const center = Offset(22, 22);
+    for (var i = 0; i < 2; i++) {
+      final p = (t + i * 0.5) % 1.0;
+      canvas.drawCircle(
+        center,
+        13 + p * 8,
+        _stroke
+          ..strokeWidth = 2.0
+          ..color = color.withValues(alpha: (1 - p) * 0.55),
+      );
+    }
+    final tri = Path()
+      ..moveTo(16, 12)
+      ..lineTo(16, 32)
+      ..lineTo(33, 22)
+      ..close();
+    canvas.drawPath(tri, _fill);
+  }
+
+  void _paintSkins(Canvas canvas) {
+    final shirt = Path()
+      ..moveTo(16, 10)
+      ..lineTo(11, 15)
+      ..lineTo(15, 19)
+      ..lineTo(15, 34)
+      ..lineTo(29, 34)
+      ..lineTo(29, 19)
+      ..lineTo(33, 15)
+      ..lineTo(28, 10)
+      ..lineTo(22, 13)
+      ..close();
+    canvas.drawPath(shirt, Paint()..color = color.withValues(alpha: 0.22));
+    canvas.drawPath(shirt, _stroke);
+
+    canvas.save();
+    canvas.clipPath(shirt);
+    final x = -8 + ((t * 1.4) % 1.0) * 60;
+    canvas.translate(x, 22);
+    canvas.rotate(-0.32);
+    canvas.drawRect(
+      Rect.fromCenter(center: Offset.zero, width: 7, height: 60),
+      Paint()..color = Colors.white.withValues(alpha: 0.30),
+    );
+    canvas.restore();
+  }
+
+  void _paintPartners(Canvas canvas) {
+    for (var i = 0; i < 2; i++) {
+      final top = 11.0 + i * 14;
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(9, top, 26, 11),
+          const Radius.circular(3.5),
+        ),
+        _stroke,
+      );
+      final phase = (t * 2 + i * 0.5) % 1.0;
+      final on = phase < 0.45;
+      canvas.drawCircle(
+        Offset(29.5, top + 5.5),
+        2.0,
+        _fill..color = color.withValues(alpha: on ? 1.0 : 0.22),
+      );
+      canvas.drawCircle(
+        Offset(23.5, top + 5.5),
+        2.0,
+        _fill..color = color.withValues(alpha: on ? 0.25 : 0.9),
+      );
+    }
+  }
+
+  void _paintLookup(Canvas canvas) {
+    const lens = Offset(19, 19);
+    const r = 9.5;
+    canvas.save();
+    canvas.clipPath(Path()..addOval(Rect.fromCircle(center: lens, radius: r)));
+    final y = lens.dy + math.sin(t * math.pi * 2) * (r - 1.5);
+    canvas.drawLine(
+      Offset(lens.dx - r, y),
+      Offset(lens.dx + r, y),
+      _stroke
+        ..strokeWidth = 2.0
+        ..color = color.withValues(alpha: 0.75),
+    );
+    canvas.restore();
+    canvas.drawCircle(lens, r, _stroke);
+    canvas.drawLine(const Offset(26, 26), const Offset(33.5, 33.5), _stroke);
+  }
+
+  void _paintTracker(Canvas canvas) {
+    const center = Offset(22, 22);
+    canvas.drawCircle(
+      center,
+      14,
+      _stroke
+        ..strokeWidth = 1.8
+        ..color = color.withValues(alpha: 0.30),
+    );
+    canvas.drawCircle(
+      center,
+      7,
+      _stroke
+        ..strokeWidth = 1.8
+        ..color = color.withValues(alpha: 0.30),
+    );
+
+    final ping = (t * 2) % 1.0;
+    canvas.drawCircle(
+      center,
+      4 + ping * 12,
+      _stroke
+        ..strokeWidth = 2.0
+        ..color = color.withValues(alpha: (1 - ping) * 0.6),
+    );
+
+    final sweep = t * math.pi * 2;
+    for (var k = 6; k >= 0; k--) {
+      final a = sweep - k * 0.14;
+      canvas.drawLine(
+        center,
+        center + Offset(math.cos(a), math.sin(a)) * 14,
+        _stroke
+          ..strokeWidth = 2.4
+          ..color = color.withValues(alpha: (1 - k / 7) * 0.95),
+      );
+    }
+    canvas.drawCircle(center, 2.6, _fill..color = color);
+  }
+
+  @override
+  bool shouldRepaint(_FeatureIconPainter old) =>
+      old.t != t || old.color != color || old.feature != feature;
 }
 
 class LandingFeedbackTile extends StatefulWidget {
@@ -276,13 +544,38 @@ class LandingQuickNavChipState extends State<LandingQuickNavChip> {
           onTap: widget.onTap,
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 100),
-            padding: const EdgeInsets.symmetric(vertical: 7),
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
             decoration: BoxDecoration(
               color: _pressed ? AppTheme.borderLight : AppTheme.surfaceRaised,
               borderRadius: BorderRadius.circular(12),
               border: Border.all(color: AppTheme.borderGray),
             ),
-            child: Center(child: widget.iconWidget),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                widget.iconWidget,
+                const SizedBox(height: 5),
+                SizedBox(
+                  height: 12,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.center,
+                    child: Text(
+                      widget.label,
+                      style: TextStyle(
+                        color: AppTheme.textMuted,
+                        fontSize: 10,
+                        fontWeight: FontWeight.w600,
+                        height: 1.1,
+                      ),
+                      maxLines: 1,
+                      softWrap: false,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

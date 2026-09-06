@@ -26,21 +26,6 @@
   "serverDetailsLabel": "Detalhes do servidor",
   "start": "Iniciar",
   "labelJava": "Java",
-  "startJavaMode": "Iniciar modo Java",
-  "javaInfoTitle": "Modo Java",
-  "javaInfoText": "Conecte-se a servidores Java Edition",
-  "howToJavaTitle": "Modo Java",
-  "@howToJavaTitle": {
-    "description": "Title for the Java how-to modal"
-  },
-  "howToJavaSubtitle": "Conecte-se a servidores Java Edition via MCCompanion",
-  "@howToJavaSubtitle": {
-    "description": "Short subtitle for Java menu tile"
-  },
-  "howToJavaBody": "Modo Java: etapas rápidas:\n1. No aplicativo, selecione o modo Java.\n2. Digite o endereço e a porta do seu servidor Java Edition (padrão: 25565).\n3. Toque em \"Iniciar modo Java\": o MCCompanion fará a ponte da conexão.\n4. Abra o Minecraft Bedrock e vá para a aba Amigos.\n5. Selecione o servidor LAN chamado \"MCCompanion\" para entrar no servidor Java.\n\n⚠️ Avisos importantes:\n- É necessária uma conta válida do Java Edition (Microsoft).\n- Alguns servidores usam sistemas anti-cheat que podem detectar e banir sua conta.\n- Alguns servidores proíbem explicitamente clientes Bedrock, sempre verifique as regras do servidor.\n- O MCCompanion não se responsabiliza por banimentos, suspensões ou outros problemas relacionados à conta que possam resultar do uso deste recurso.\n- Use por sua conta e risco.",
-  "@howToJavaBody": {
-    "description": "Detailed steps for Java mode how-to modal"
-  },
   "language": "Português",
   "@language": {
     "description": "Your language name in your own language"
@@ -551,10 +536,6 @@
   "@creditGeyserTitle": {
     "description": "Title for GeyserMC credit tile"
   },
-  "creditMinecraftWikiSubtitle": "Fonte de dados para o Wiki. Conteúdo sob Creative Commons.",
-  "@creditMinecraftWikiSubtitle": {
-    "description": "Subtitle for Minecraft Wiki credit tile"
-  },
   "creditMojangSubtitle": "Skins e perfis Java via API da Mojang.",
   "@creditMojangSubtitle": {
     "description": "Subtitle for Mojang credit tile"
@@ -704,10 +685,6 @@
   "@linkedAccountsTitle": {
     "description": "Section title for linked accounts card"
   },
-  "messagePlaceholder": "Mensagem…",
-  "@messagePlaceholder": {
-    "description": "Hint text in the chat message input"
-  },
   "minecraftTrademark": "\"Minecraft\" é uma marca registada da Microsoft Corporation.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -732,10 +709,6 @@
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noConversationsYet": "Ainda sem conversas",
-  "@noConversationsYet": {
-    "description": "Empty state title on conversations screen"
-  },
   "noFriendsSub": "Adiciona amigos para os veres aqui.",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
@@ -743,10 +716,6 @@
   "noFriendsYet": "Ainda sem amigos",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
-  },
-  "noMessagesYet": "Ainda sem mensagens.\nDiz olá!",
-  "@noMessagesYet": {
-    "description": "Empty state in chat screen"
   },
   "noPartnerServers": "Ainda sem servidores parceiros.",
   "@noPartnerServers": {
@@ -952,10 +921,6 @@
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportMessage": "Denunciar mensagem",
-  "@reportMessage": {
-    "description": "Title when reporting a specific message"
-  },
   "reportReasonHarassment": "Assédio",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
@@ -1144,14 +1109,6 @@
   "@somethingWentWrong": {
     "description": "Generic error message"
   },
-  "startChatHint": "Encontra um amigo e começa a conversar!",
-  "@startChatHint": {
-    "description": "Empty state subtitle on conversations screen"
-  },
-  "tabChats": "Chats",
-  "@tabChats": {
-    "description": "Tab label for Chats tab"
-  },
   "tabFriends": "Amigos",
   "@tabFriends": {
     "description": "Tab label for Friends tab"
@@ -1230,196 +1187,6 @@
   "weakPassword": "Senha demasiado fraca.",
   "@weakPassword": {
     "description": "Error for weak password"
-  },
-  "wikiArmor": "Armadura",
-  "@wikiArmor": {
-    "description": "Wiki item sub-category: Armor"
-  },
-  "wikiBiomes": "Biomas",
-  "@wikiBiomes": {
-    "description": "Wiki category: Biomes"
-  },
-  "wikiBlocks": "Blocos",
-  "@wikiBlocks": {
-    "description": "Wiki category: Blocks"
-  },
-  "wikiBoss": "Chefe",
-  "@wikiBoss": {
-    "description": "Wiki mob sub-category: Boss"
-  },
-  "wikiBow": "Arco",
-  "@wikiBow": {
-    "description": "Wiki enchantment sub-category: Bow"
-  },
-  "wikiBrewing": "Fabricação de poções",
-  "@wikiBrewing": {
-    "description": "Wiki item sub-category: Brewing"
-  },
-  "wikiCategories": "{count} categorias",
-  "@wikiCategories": {
-    "description": "Subtitle on wiki section card showing number of subcategories",
-    "placeholders": {
-      "count": {}
-    }
-  },
-  "wikiCouldNotLoadContent": "Não foi possível carregar o conteúdo.",
-  "@wikiCouldNotLoadContent": {
-    "description": "Error when wiki article content fails to load"
-  },
-  "wikiCouldNotLoadPages": "Não foi possível carregar as páginas.",
-  "@wikiCouldNotLoadPages": {
-    "description": "Error when wiki pages fail to load"
-  },
-  "wikiCouldNotReach": "Não foi possível aceder ao wiki.",
-  "@wikiCouldNotReach": {
-    "description": "Error when the wiki cannot be reached"
-  },
-  "wikiCrafting": "Crafting",
-  "@wikiCrafting": {
-    "description": "Section header for crafting recipes in wiki detail"
-  },
-  "wikiDecoration": "Decoração",
-  "@wikiDecoration": {
-    "description": "Wiki block sub-category: Decoration"
-  },
-  "wikiEnchantments": "Encantamentos",
-  "@wikiEnchantments": {
-    "description": "Wiki category: Enchantments"
-  },
-  "wikiFishing": "Pesca",
-  "@wikiFishing": {
-    "description": "Wiki enchantment sub-category: Fishing"
-  },
-  "wikiFood": "Comida",
-  "@wikiFood": {
-    "description": "Wiki item sub-category: Food"
-  },
-  "wikiHostile": "Hostil",
-  "@wikiHostile": {
-    "description": "Wiki mob sub-category: Hostile"
-  },
-  "wikiItems": "Itens",
-  "@wikiItems": {
-    "description": "Wiki category: Items"
-  },
-  "wikiMaterials": "Materiais",
-  "@wikiMaterials": {
-    "description": "Wiki item sub-category: Materials"
-  },
-  "wikiMinecraftWiki": "Wiki do Minecraft",
-  "@wikiMinecraftWiki": {
-    "description": "Badge/label linking to Minecraft Wiki"
-  },
-  "wikiMobs": "Mobs",
-  "@wikiMobs": {
-    "description": "Wiki category: Mobs"
-  },
-  "wikiNatural": "Natural",
-  "@wikiNatural": {
-    "description": "Wiki block sub-category: Natural"
-  },
-  "wikiNether": "Nether",
-  "@wikiNether": {
-    "description": "Wiki biome/structure sub-category: Nether"
-  },
-  "wikiNeutral": "Neutro",
-  "@wikiNeutral": {
-    "description": "Wiki mob sub-category: Neutral"
-  },
-  "wikiNoPagesFound": "Nenhuma página encontrada",
-  "@wikiNoPagesFound": {
-    "description": "Empty state when no wiki pages are available"
-  },
-  "wikiNoResults": "Sem resultados para \"{query}\"",
-  "@wikiNoResults": {
-    "description": "Empty search results message",
-    "placeholders": {
-      "query": {}
-    }
-  },
-  "wikiOpenInBrowser": "Abrir no navegador",
-  "@wikiOpenInBrowser": {
-    "description": "Button to open wiki article in external browser"
-  },
-  "wikiOres": "Minérios",
-  "@wikiOres": {
-    "description": "Wiki block sub-category: Ores"
-  },
-  "wikiOverworld": "Overworld",
-  "@wikiOverworld": {
-    "description": "Wiki biome/structure sub-category: Overworld"
-  },
-  "wikiPassive": "Passivo",
-  "@wikiPassive": {
-    "description": "Wiki mob sub-category: Passive"
-  },
-  "wikiPlants": "Plantas",
-  "@wikiPlants": {
-    "description": "Wiki block sub-category: Plants"
-  },
-  "wikiPotions": "Poções",
-  "@wikiPotions": {
-    "description": "Wiki category: Potions"
-  },
-  "wikiRanged": "À distância",
-  "@wikiRanged": {
-    "description": "Wiki item sub-category: Ranged"
-  },
-  "wikiReadFullArticle": "Ler artigo completo",
-  "@wikiReadFullArticle": {
-    "description": "Button at bottom of wiki detail to open full article"
-  },
-  "wikiRedstone": "Redstone",
-  "@wikiRedstone": {
-    "description": "Wiki block sub-category: Redstone"
-  },
-  "wikiSearchHint": "Pesquisar no wiki…",
-  "@wikiSearchHint": {
-    "description": "Hint text for wiki search field"
-  },
-  "wikiStatusEffects": "Efeitos de estado",
-  "@wikiStatusEffects": {
-    "description": "Wiki potion sub-category: Status Effects"
-  },
-  "wikiStone": "Pedra",
-  "@wikiStone": {
-    "description": "Wiki block sub-category: Stone"
-  },
-  "wikiStructures": "Estruturas",
-  "@wikiStructures": {
-    "description": "Wiki category: Structures"
-  },
-  "wikiSword": "Espada",
-  "@wikiSword": {
-    "description": "Wiki enchantment sub-category: Sword"
-  },
-  "wikiSwords": "Espadas",
-  "@wikiSwords": {
-    "description": "Wiki item sub-category: Swords"
-  },
-  "wikiTheEnd": "The End",
-  "@wikiTheEnd": {
-    "description": "Wiki biome/structure sub-category: The End"
-  },
-  "wikiTitle": "Wiki",
-  "@wikiTitle": {
-    "description": "Title of the wiki screen"
-  },
-  "wikiTool": "Ferramenta",
-  "@wikiTool": {
-    "description": "Wiki enchantment sub-category: Tool"
-  },
-  "wikiTools": "Ferramentas",
-  "@wikiTools": {
-    "description": "Wiki item sub-category: Tools"
-  },
-  "wikiUtility": "Utilidade",
-  "@wikiUtility": {
-    "description": "Wiki mob sub-category: Utility"
-  },
-  "wikiWood": "Madeira",
-  "@wikiWood": {
-    "description": "Wiki block sub-category: Wood"
   },
   "xboxAccountLinked": "Conta Xbox ligada!",
   "@xboxAccountLinked": {
@@ -1511,13 +1278,11 @@
   "splashFeatureSkins": "Skins",
   "featureLabelConnector": "Conector",
   "featureLabelSkins": "Skins",
-  "featureLabelWiki": "Wiki",
-  "featureLabelPartners": "Parceiros",
+  "featureLabelPartners": "Lista de servidores",
   "featureLabelLookup": "Pesquisa",
   "featureLabelTracker": "Rastreador de servidor",
   "featureSubtitleConnector": "Conectar consoles ao Minecraft",
   "featureSubtitleSkins": "Procurar e gerenciar skins do Minecraft",
-  "featureSubtitleWiki": "Enciclopédia do Minecraft",
   "featureSubtitlePartners": "Servidores em destaque",
   "featureSubtitleLookup": "Pesquisar perfis Java e Bedrock",
   "featureSubtitleTracker": "Monitorar status do servidor e receber notificações",
@@ -1530,10 +1295,6 @@
   "upgradeWindowsHint": "Atualização disponível na Microsoft Store",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "chatEmptyHint": "Seja o primeiro a dizer algo!",
-  "@chatEmptyHint": {
-    "description": "Subtitle on the empty chat screen"
   },
   "skinSaved": "Skin salva",
   "@skinSaved": {
@@ -1562,7 +1323,6 @@
   },
   "feedbackBugReport": "Relatório de bug",
   "feedbackFeatureRequest": "Pedido de funcionalidade",
-  "feedbackGoesToGithub": "Vai direto para o GitHub",
   "feedbackTitleLabel": "Título",
   "feedbackTitleHintBug": "ex. O app fecha ao abrir o editor de skin",
   "feedbackTitleHintFeature": "ex. Mostrar o ping do jogador na lista de servidores",
@@ -1575,10 +1335,9 @@
   "feedbackEmailNote": "Seu e-mail nunca é compartilhado publicamente.",
   "feedbackSubmitBug": "Enviar relatório de bug",
   "feedbackSubmitFeature": "Enviar pedido de funcionalidade",
-  "feedbackDisclaimer": "Cria um ticket público no GitHub · Não inclua senhas",
+  "feedbackDisclaimer": "Vai para nossa equipe · Não inclua senhas",
   "feedbackSuccessTitle": "Obrigado pelo feedback!",
-  "feedbackSuccessBody": "Obrigado! Recebemos o teu relatório. Vamos analisá-lo o mais depressa possível.",
-  "feedbackViewOnGithub": "Ver no GitHub",
+  "feedbackSuccessBody": "Obrigado! Recebemos seu relato. Respondemos no aplicativo, então volte aqui para ver a resposta.",
   "feedbackSubmitAnother": "Enviar outro",
   "feedbackBackToApp": "Voltar ao app",
   "feedbackTitleTooShort": "O título deve ter pelo menos 5 caracteres.",
@@ -1900,8 +1659,6 @@
   "reportBug": "Feedback",
   "rpBehaviorContentWarning": "Este pack contém dados de behavior pack que não funcionam em servidores. As texturas continuam a funcionar.",
   "rpInvalidPackFormat": "Este é um pack da Java Edition e não é suportado. Usa um resource pack da Bedrock Edition.",
-  "wikiFavourites": "Favoritos",
-  "wikiRecent": "Vistos recentemente",
   "supportInboxTitle": "Caixa de suporte",
   "supportInboxSubtitle": "Todas as conversas de suporte, partilhadas com os admins",
   "adminBadge": "Admin",
@@ -1961,11 +1718,8 @@
   "notifFeedbackStatus": "Novidades sobre o teu feedback",
   "notifFeedbackReply": "Resposta ao teu feedback",
   "adminTicketsHeader": "Relatórios e pedidos",
-  "adminGeneralChat": "Conversa geral",
   "adminTicketReplyHint": "Responder sobre este ticket…",
   "adminNoTicketsForUser": "Sem tickets deste utilizador",
-  "hideConversation": "Ocultar",
-  "conversationHidden": "Conversa ocultada",
   "undo": "Anular",
   "chooseServerTitle": "Escolhe um servidor",
   "changeLabel": "Alterar",
@@ -2041,5 +1795,54 @@
     }
   },
   "updateAvailableAction": "Baixar",
-  "updateAvailableDismiss": "Agora não"
+  "updateAvailableDismiss": "Agora não",
+  "serverListSearchHint": "Pesquisar por nome ou endereço",
+  "serverListEditionAny": "Java e Bedrock",
+  "serverListEditionJava": "Apenas Java",
+  "serverListEditionBedrock": "Apenas Bedrock",
+  "serverListSortVotes": "Mais votos",
+  "serverListSortPlayers": "Mais jogadores",
+  "serverListSortPeak": "Maior pico",
+  "serverListSortNewest": "Mais recentes",
+  "serverListSortName": "Nome",
+  "serverListAllCategories": "Todas",
+  "serverListLoadFailed": "Não foi possível carregar a lista de servidores",
+  "serverListLoadFailedHint": "Puxe para baixo para tentar de novo",
+  "serverListNoMatch": "Nenhum servidor corresponde",
+  "serverListNoMatchHint": "Tente outra pesquisa ou categoria",
+  "serverCardPlay": "Jogar",
+  "serverCardVote": "Votar",
+  "serverCardViewServer": "Ver servidor",
+  "serverCopyIp": "Copiar IP",
+  "serverCopied": "Copiado",
+  "serverStatPlayers": "Jogadores",
+  "serverStatPeak": "Pico",
+  "serverStatUptime": "Disponibilidade",
+  "serverStatVotesMonth": "Votos este mês",
+  "serverStatVotesAllTime": "Votos no total",
+  "serverBadgeFeatured": "Destaque",
+  "serverEditionJava": "Java",
+  "serverEditionBedrock": "Bedrock",
+  "serverEditionCrossplay": "Crossplay",
+  "serverSectionMotd": "Mensagem do dia",
+  "serverSectionAbout": "Sobre",
+  "serverSectionCategories": "Categorias",
+  "serverSectionVotes": "Votos",
+  "serverLinkDiscord": "Discord",
+  "serverLinkWebsite": "Site",
+  "serverVotesThisMonth": "Este mês",
+  "serverVotesAllTime": "Desde o início",
+  "serverVoteAction": "Votar neste servidor",
+  "serverPlayAction": "Jogar neste servidor",
+  "serverVoteSignInRequired": "Entre para votar pelo aplicativo.",
+  "serverVoteSheetTitle": "Votar em {name}",
+  "serverVoteSheetSubtitle": "Seu nome no Minecraft, para o servidor saber quem recompensar.",
+  "serverVoteSheetHint": "Steve",
+  "serverVoteSheetButton": "Votar",
+  "serverVoteSheetLimit": "Um voto por servidor por dia.",
+  "serverVoteDelivered": "Voto registrado. Sua recompensa está a caminho.",
+  "serverVoteNoRewards": "Voto registrado. Este servidor não tem recompensas configuradas.",
+  "serverVoteFailed": "Não funcionou, tente novamente.",
+  "serverVoteOffline": "Não foi possível contatar o servidor. Verifique sua conexão.",
+  "feedbackViewYourReport": "Ver seu relato"
 }
