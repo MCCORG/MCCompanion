@@ -13,6 +13,7 @@ import '../util/user_servers_storage.dart';
 import '../util/partners_servers.dart';
 import '../constants/app_constants.dart';
 import '../theme/app_theme.dart';
+import '../network/nethernet/nethernet_mode.dart';
 import '../widgets/connection/connection_panel.dart';
 import '../widgets/components/app_toast.dart';
 import '../services/region_detector.dart';
@@ -74,6 +75,7 @@ class HomeScreenState extends State<HomeScreen> {
   late final Logger logger;
 
   final ValueNotifier<bool> _broadcastingNotifier = ValueNotifier(false);
+  late final NetherNetMode _netherNet = NetherNetMode(logger: logger);
   final ValueNotifier<List<UserServer>> _userServersNotifier = ValueNotifier(
     [],
   );
@@ -124,6 +126,7 @@ class HomeScreenState extends State<HomeScreen> {
   void dispose() {
     ResourcePackPrefs.revision.removeListener(_loadResourcePackUrl);
     _mainScrollController.dispose();
+    unawaited(_netherNet.stop());
     _broadcastingNotifier.dispose();
     _userServersNotifier.dispose();
     unawaited(_broadcastManager.stopBroadcast());
@@ -362,6 +365,27 @@ class HomeScreenState extends State<HomeScreen> {
     return proceed ?? false;
   }
 
+  Future<bool> _startNetherNet(String host, int port) async {
+    final registered = await _broadcastManager.sendRelayConfigOnly(
+      host,
+      port,
+      relayIp: widget.selectedRelay.ip,
+      relayBase: widget.selectedRelay.base,
+      mode: BroadcastMode.lan,
+      bedrockGamertag: _getBedrockGamertag(),
+      resourcePackUrl: await ResourcePackPrefs.getActiveUrl(),
+    );
+    if (!registered) return false;
+
+    final result = await _netherNet.start(
+      serverName: 'MCCompanion',
+      remoteHost: host,
+      remotePort: port,
+      relayHost: widget.selectedRelay.ip,
+    );
+    return result.started;
+  }
+
   Future<void> _handleBroadcastMode(
     PanelMode mode,
     String host,
@@ -369,6 +393,21 @@ class HomeScreenState extends State<HomeScreen> {
     AppLocalizations loc,
   ) async {
     logger.info('Starting MCCompanion');
+
+    if (mode == PanelMode.lan) {
+      final netherNetStarted = await _startNetherNet(host, port);
+      if (netherNetStarted &&
+          await _netherNet.waitForClient(const Duration(seconds: 5))) {
+        logger.info('NetherNet client seen, skipping the RakNet broadcast');
+        _broadcastingNotifier.value = true;
+        unawaited(ReviewService.instance.onSuccessfulConnection());
+        return;
+      }
+      if (netherNetStarted) {
+        logger.info('No NetherNet client within 5s, falling back to RakNet');
+        await _netherNet.stop();
+      }
+    }
 
     final isDirect = mode == PanelMode.direct;
     if (isDirect && !await _confirmDirectTarget(host, port)) return;
@@ -414,6 +453,7 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _stopBroadcast() async {
+    await _netherNet.stop();
     await _broadcastManager.stopBroadcast();
     _broadcastingNotifier.value = false;
   }
