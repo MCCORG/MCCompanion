@@ -131,27 +131,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get labelJava => 'Java';
 
   @override
-  String get startJavaMode => 'Java Modunu Başlat';
-
-  @override
-  String get javaInfoTitle => 'Java Modu';
-
-  @override
-  String get javaInfoText => 'Java Edition sunucularına bağlanın';
-
-  @override
-  String get howToJavaTitle => 'Java Modu';
-
-  @override
-  String get howToJavaSubtitle =>
-      'MCCompanion üzerinden Java Edition sunucularına bağlanın';
-
-  @override
   String get aternosSubtext => 'Kendi ücretsiz Minecraft sunucunuzu oluşturun';
-
-  @override
-  String get howToJavaBody =>
-      'Java Modu: hızlı adımlar:\n1. Uygulamada Java modunu seçin.\n2. Java Edition sunucu adresinizi ve portunuzu girin (varsayılan: 25565).\n3. \"Java Modunu Başlat\" düğmesine basın: MCCompanion bağlantıyı köprüleyecektir.\n4. Minecraft Bedrock\'u açın ve Arkadaşlar sekmesine gidin.\n5. Java sunucusuna katılmak için \"MCCompanion\" adlı LAN sunucusunu seçin.\n\n⚠️ Önemli uyarılar:\n- Geçerli bir Java Edition hesabı (Microsoft) gereklidir.\n- Bazı sunucular hesabınızı tespit edip yasaklayabilecek hile önleme sistemleri kullanır.\n- Bazı sunucular Bedrock istemcilerini açıkça yasaklar, her zaman sunucu kurallarını kontrol edin.\n- Bu özelliğin kullanılmasından kaynaklanabilecek hesap yasakları, askıya almalar veya hesapla ilgili diğer sorunlardan MCCompanion sorumlu değildir.\n- Kendi riskinizle kullanın.';
 
   @override
   String get language => 'Türkçe';
@@ -706,9 +686,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get reportUser => 'Kullanıcıyı rapor et';
 
   @override
-  String get reportMessage => 'Mesajı rapor et';
-
-  @override
   String reportUserWithName(Object name) {
     return '$name kullanıcısını rapor et';
   }
@@ -747,18 +724,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get yesterday => 'Dün';
 
   @override
-  String get messagePlaceholder => 'Mesaj…';
-
-  @override
-  String get noMessagesYet => 'Henüz mesaj yok.\nMerhaba deyin!';
-
-  @override
-  String get noConversationsYet => 'Henüz konuşma yok';
-
-  @override
-  String get startChatHint => 'Bir arkadaş bulun ve sohbet başlatın!';
-
-  @override
   String get youPrefix => 'Sen';
 
   @override
@@ -792,9 +757,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get tabRequests => 'İstekler';
-
-  @override
-  String get tabChats => 'Sohbetler';
 
   @override
   String get addFriend => 'Arkadaş ekle';
@@ -1108,154 +1070,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get skinsDownload => 'İndir';
 
   @override
-  String get wikiTitle => 'Wiki';
-
-  @override
-  String get wikiMinecraftWiki => 'Minecraft Wiki';
-
-  @override
-  String get wikiSearchHint => 'Wiki\'de ara…';
-
-  @override
-  String get wikiCouldNotLoadPages => 'Sayfalar yüklenemedi.';
-
-  @override
-  String get wikiCouldNotReach => 'Wiki\'ye ulaşılamadı.';
-
-  @override
-  String wikiNoResults(Object query) {
-    return '\"$query\" için sonuç bulunamadı';
-  }
-
-  @override
-  String get wikiNoPagesFound => 'Sayfa bulunamadı';
-
-  @override
-  String wikiCategories(Object count) {
-    return '$count kategori';
-  }
-
-  @override
-  String get wikiCouldNotLoadContent => 'İçerik yüklenemedi.';
-
-  @override
-  String get wikiOpenInBrowser => 'Tarayıcıda aç';
-
-  @override
-  String get wikiCrafting => 'Üretim';
-
-  @override
-  String get wikiReadFullArticle => 'Tam makaleyi oku';
-
-  @override
-  String get wikiRecent => 'Son görüntülenenler';
-
-  @override
-  String get wikiFavourites => 'Favoriler';
-
-  @override
-  String get wikiMobs => 'Yaratıklar';
-
-  @override
-  String get wikiBlocks => 'Bloklar';
-
-  @override
-  String get wikiItems => 'Eşyalar';
-
-  @override
-  String get wikiBiomes => 'Biyomlar';
-
-  @override
-  String get wikiStructures => 'Yapılar';
-
-  @override
-  String get wikiEnchantments => 'Büyüler';
-
-  @override
-  String get wikiPotions => 'İksirler';
-
-  @override
-  String get wikiPassive => 'Pasif';
-
-  @override
-  String get wikiNeutral => 'Tarafsız';
-
-  @override
-  String get wikiHostile => 'Düşman';
-
-  @override
-  String get wikiBoss => 'Boss';
-
-  @override
-  String get wikiUtility => 'Faydalı';
-
-  @override
-  String get wikiNatural => 'Doğal';
-
-  @override
-  String get wikiOres => 'Cevherler';
-
-  @override
-  String get wikiWood => 'Ahşap';
-
-  @override
-  String get wikiStone => 'Taş';
-
-  @override
-  String get wikiRedstone => 'Kırmızıtaş';
-
-  @override
-  String get wikiPlants => 'Bitkiler';
-
-  @override
-  String get wikiDecoration => 'Dekorasyon';
-
-  @override
-  String get wikiTools => 'Aletler';
-
-  @override
-  String get wikiSwords => 'Kılıçlar';
-
-  @override
-  String get wikiRanged => 'Menzilli';
-
-  @override
-  String get wikiArmor => 'Zırh';
-
-  @override
-  String get wikiFood => 'Yiyecek';
-
-  @override
-  String get wikiBrewing => 'Demleme';
-
-  @override
-  String get wikiMaterials => 'Malzemeler';
-
-  @override
-  String get wikiOverworld => 'Üst Dünya';
-
-  @override
-  String get wikiNether => 'Nether';
-
-  @override
-  String get wikiTheEnd => 'Son';
-
-  @override
-  String get wikiSword => 'Kılıç';
-
-  @override
-  String get wikiTool => 'Alet';
-
-  @override
-  String get wikiBow => 'Yay';
-
-  @override
-  String get wikiFishing => 'Balıkçılık';
-
-  @override
-  String get wikiStatusEffects => 'Durum efektleri';
-
-  @override
   String get chooseUniqueUsername =>
       'Başlamak için benzersiz bir kullanıcı adı seç.';
 
@@ -1396,10 +1210,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get dataSourcesSection => 'Veri kaynakları ve katkılar';
-
-  @override
-  String get creditMinecraftWikiSubtitle =>
-      'Wiki özelliği için veri kaynağı. Creative Commons altında içerik.';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
@@ -1663,10 +1473,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get featureLabelSkins => 'Skinler';
 
   @override
-  String get featureLabelWiki => 'Wiki';
-
-  @override
-  String get featureLabelPartners => 'Ortaklar';
+  String get featureLabelPartners => 'Sunucu listesi';
 
   @override
   String get featureLabelLookup => 'Arama';
@@ -1679,9 +1486,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get featureSubtitleSkins => 'Minecraft skinlerini göz atın ve yönetin';
-
-  @override
-  String get featureSubtitleWiki => 'Minecraft ansiklopedisi';
 
   @override
   String get featureSubtitlePartners => 'Öne çıkan sunucular';
@@ -1707,9 +1511,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get upgradeWindowsHint => 'Yükseltme Microsoft Store\'da mevcut';
 
   @override
-  String get chatEmptyHint => 'İlk mesajı sen gönder!';
-
-  @override
   String get skinSaved => 'Skin kaydedildi';
 
   @override
@@ -1731,9 +1532,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get feedbackFeatureRequest => 'Özellik İsteği';
-
-  @override
-  String get feedbackGoesToGithub => 'Doğrudan GitHub\'a gönderilir';
 
   @override
   String get feedbackTitleLabel => 'Başlık';
@@ -1777,18 +1575,14 @@ class AppLocalizationsTr extends AppLocalizations {
   String get feedbackSubmitFeature => 'Özellik İsteğini Gönder';
 
   @override
-  String get feedbackDisclaimer =>
-      'GitHub\'da herkese açık bir konu oluşturur · Parola ekleme';
+  String get feedbackDisclaimer => 'Ekibimize ulaşır · Şifre yazmayın';
 
   @override
   String get feedbackSuccessTitle => 'Geri bildirim için teşekkürler!';
 
   @override
   String get feedbackSuccessBody =>
-      'Teşekkürler! Bildirimin bize ulaştı. En kısa sürede bakacağız.';
-
-  @override
-  String get feedbackViewOnGithub => 'GitHub\'da görüntüle';
+      'Teşekkürler! Bildiriminiz bize ulaştı. Yanıtı uygulamada veriyoruz, cevap için buraya geri bakın.';
 
   @override
   String get feedbackSubmitAnother => 'Bir tane daha gönder';
@@ -2639,19 +2433,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get adminTicketsHeader => 'Bildirimler ve istekler';
 
   @override
-  String get adminGeneralChat => 'Genel sohbet';
-
-  @override
   String get adminTicketReplyHint => 'Bu bilet hakkında yanıtla…';
 
   @override
   String get adminNoTicketsForUser => 'Bu kullanıcıdan bilet yok';
-
-  @override
-  String get hideConversation => 'Gizle';
-
-  @override
-  String get conversationHidden => 'Sohbet gizlendi';
 
   @override
   String get undo => 'Geri al';
@@ -2809,4 +2594,157 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get updateAvailableDismiss => 'Şimdi değil';
+
+  @override
+  String get serverListSearchHint => 'Ada veya adrese göre ara';
+
+  @override
+  String get serverListEditionAny => 'Java ve Bedrock';
+
+  @override
+  String get serverListEditionJava => 'Yalnızca Java';
+
+  @override
+  String get serverListEditionBedrock => 'Yalnızca Bedrock';
+
+  @override
+  String get serverListSortVotes => 'En çok oy';
+
+  @override
+  String get serverListSortPlayers => 'En çok oyuncu';
+
+  @override
+  String get serverListSortPeak => 'En yüksek zirve';
+
+  @override
+  String get serverListSortNewest => 'En yeni';
+
+  @override
+  String get serverListSortName => 'Ad';
+
+  @override
+  String get serverListAllCategories => 'Tümü';
+
+  @override
+  String get serverListLoadFailed => 'Sunucu listesi yüklenemedi';
+
+  @override
+  String get serverListLoadFailedHint => 'Yeniden denemek için aşağı çekin';
+
+  @override
+  String get serverListNoMatch => 'Eşleşen sunucu yok';
+
+  @override
+  String get serverListNoMatchHint => 'Farklı bir arama veya kategori deneyin';
+
+  @override
+  String get serverCardPlay => 'Oyna';
+
+  @override
+  String get serverCardVote => 'Oy ver';
+
+  @override
+  String get serverCardViewServer => 'Sunucuyu görüntüle';
+
+  @override
+  String get serverCopyIp => 'IP\'yi kopyala';
+
+  @override
+  String get serverCopied => 'Kopyalandı';
+
+  @override
+  String get serverStatPlayers => 'Oyuncular';
+
+  @override
+  String get serverStatPeak => 'Zirve';
+
+  @override
+  String get serverStatUptime => 'Çalışma süresi';
+
+  @override
+  String get serverStatVotesMonth => 'Bu ayki oylar';
+
+  @override
+  String get serverStatVotesAllTime => 'Toplam oy';
+
+  @override
+  String get serverBadgeFeatured => 'Öne çıkan';
+
+  @override
+  String get serverEditionJava => 'Java';
+
+  @override
+  String get serverEditionBedrock => 'Bedrock';
+
+  @override
+  String get serverEditionCrossplay => 'Crossplay';
+
+  @override
+  String get serverSectionMotd => 'Günün mesajı';
+
+  @override
+  String get serverSectionAbout => 'Hakkında';
+
+  @override
+  String get serverSectionCategories => 'Kategoriler';
+
+  @override
+  String get serverSectionVotes => 'Oylar';
+
+  @override
+  String get serverLinkDiscord => 'Discord';
+
+  @override
+  String get serverLinkWebsite => 'Web sitesi';
+
+  @override
+  String get serverVotesThisMonth => 'Bu ay';
+
+  @override
+  String get serverVotesAllTime => 'Tüm zamanlar';
+
+  @override
+  String get serverVoteAction => 'Bu sunucuya oy ver';
+
+  @override
+  String get serverPlayAction => 'Bu sunucuda oyna';
+
+  @override
+  String get serverVoteSignInRequired =>
+      'Uygulamadan oy vermek için giriş yapın.';
+
+  @override
+  String serverVoteSheetTitle(String name) {
+    return '$name için oy ver';
+  }
+
+  @override
+  String get serverVoteSheetSubtitle =>
+      'Minecraft adınız, sunucu kimi ödüllendireceğini bilsin.';
+
+  @override
+  String get serverVoteSheetHint => 'Steve';
+
+  @override
+  String get serverVoteSheetButton => 'Oy ver';
+
+  @override
+  String get serverVoteSheetLimit => 'Sunucu başına günde bir oy.';
+
+  @override
+  String get serverVoteDelivered => 'Oy verildi. Ödülünüz yolda.';
+
+  @override
+  String get serverVoteNoRewards =>
+      'Oy verildi. Bu sunucuda ödül ayarlanmamış.';
+
+  @override
+  String get serverVoteFailed => 'Bu işe yaramadı, lütfen tekrar deneyin.';
+
+  @override
+  String get serverVoteOffline =>
+      'Sunucuya ulaşılamadı. Bağlantınızı kontrol edin.';
+
+  @override
+  String get feedbackViewYourReport => 'Bildiriminizi görüntüle';
 }

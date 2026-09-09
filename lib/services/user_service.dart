@@ -82,7 +82,7 @@ class UserService {
     _cachedSocialAt = null;
   }
 
-  static const termsVersion = '2026-06-29';
+  static const termsVersion = '2026-08-25';
 
   static Future<bool> sendVerificationEmail() async {
     try {

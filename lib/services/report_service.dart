@@ -10,7 +10,6 @@ class ReportService {
   static Future<bool> submitReport({
     required String reportedUsername,
     required String reason,
-    int? messageId,
     String? additionalInfo,
   }) async {
     try {
@@ -21,7 +20,6 @@ class ReportService {
             body: jsonEncode({
               'reportedUsername': reportedUsername,
               'reason': reason,
-              'messageId': ?messageId,
               if (additionalInfo?.isNotEmpty == true)
                 'additionalInfo': additionalInfo,
             }),

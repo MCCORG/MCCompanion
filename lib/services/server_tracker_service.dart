@@ -22,18 +22,28 @@ class ServerTrackerService {
 
   Timer? _timer;
   bool _running = false;
+  bool _foreground = true;
 
   Future<void> start() async {
     if (_running) return;
     _running = true;
     await _load();
-    _timer = Timer.periodic(pollInterval, (_) => _load());
+    _timer = Timer.periodic(pollInterval, (_) {
+      if (_foreground) _load();
+    });
+  }
+
+  void setForeground(bool foreground) {
+    final wasBackground = !_foreground;
+    _foreground = foreground;
+    if (foreground && wasBackground && _running) unawaited(_load());
   }
 
   void stop() {
     _timer?.cancel();
     _timer = null;
     _running = false;
+    _foreground = true;
     _servers = [];
     _slots = null;
   }

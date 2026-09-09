@@ -17,7 +17,6 @@ class ProfileHeader extends StatelessWidget {
   final VoidCallback? onGoToHome;
   final VoidCallback? onGoToConnector;
   final VoidCallback? onGoToSkins;
-  final VoidCallback? onGoToWiki;
 
   const ProfileHeader({
     super.key,
@@ -26,7 +25,6 @@ class ProfileHeader extends StatelessWidget {
     this.onGoToHome,
     this.onGoToConnector,
     this.onGoToSkins,
-    this.onGoToWiki,
   });
 
   void _openSearch(BuildContext context) {
@@ -36,7 +34,6 @@ class ProfileHeader extends StatelessWidget {
           onGoToHome: onGoToHome,
           onGoToConnector: onGoToConnector,
           onGoToSkins: onGoToSkins,
-          onGoToWiki: onGoToWiki,
         ),
       ),
     );

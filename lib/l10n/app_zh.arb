@@ -26,21 +26,6 @@
   "serverDetailsLabel": "服务器详情",
   "start": "开始",
   "labelJava": "Java",
-  "startJavaMode": "启动 Java 模式",
-  "javaInfoTitle": "Java 模式",
-  "javaInfoText": "连接到 Java Edition 服务器",
-  "howToJavaTitle": "Java 模式",
-  "@howToJavaTitle": {
-    "description": "Title for the Java how-to modal"
-  },
-  "howToJavaSubtitle": "通过 MCCompanion 连接到 Java Edition 服务器",
-  "@howToJavaSubtitle": {
-    "description": "Short subtitle for Java menu tile"
-  },
-  "howToJavaBody": "Java 模式: 快速步骤：\n1. 在应用中选择 Java 模式。\n2. 输入你的 Java Edition 服务器地址和端口（默认：25565）。\n3. 点击 \"启动 Java 模式\" -- MCCompanion 会桥接该连接。\n4. 打开 Minecraft Bedrock 并前往好友标签页。\n5. 选择名为 \"MCCompanion\" 的 LAN 服务器以加入 Java 服务器。\n\n⚠️ 重要警告：\n- 需要有效的 Java Edition 账户（Microsoft）。\n- 一些服务器使用反作弊系统，可能会检测并封禁你的账户。\n- 某些服务器明确禁止 Bedrock 客户端 -- 请务必查看服务器规则。\n- 对于因使用此功能而导致的账户封禁、停用或其他账户相关问题，MCCompanion 不承担责任。\n- 请自行承担使用风险。",
-  "@howToJavaBody": {
-    "description": "Detailed steps for Java mode how-to modal"
-  },
   "language": "简体中文",
   "@language": {
     "description": "Your language name in your own language"
@@ -551,10 +536,6 @@
   "@creditGeyserTitle": {
     "description": "Title for GeyserMC credit tile"
   },
-  "creditMinecraftWikiSubtitle": "Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.",
-  "@creditMinecraftWikiSubtitle": {
-    "description": "Subtitle for Minecraft Wiki credit tile"
-  },
   "creditMojangSubtitle": "Java player skins, UUIDs, and profile data via the official Mojang API.",
   "@creditMojangSubtitle": {
     "description": "Subtitle for Mojang credit tile"
@@ -704,10 +685,6 @@
   "@linkedAccountsTitle": {
     "description": "Section title for linked accounts card"
   },
-  "messagePlaceholder": "Message…",
-  "@messagePlaceholder": {
-    "description": "Hint text in the chat message input"
-  },
   "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -732,10 +709,6 @@
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noConversationsYet": "No conversations yet",
-  "@noConversationsYet": {
-    "description": "Empty state title on conversations screen"
-  },
   "noFriendsSub": "Add friends to see them here.",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
@@ -743,10 +716,6 @@
   "noFriendsYet": "No friends yet",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
-  },
-  "noMessagesYet": "No messages yet.\nSay hello!",
-  "@noMessagesYet": {
-    "description": "Empty state in chat screen"
   },
   "noPartnerServers": "No partner servers available yet.",
   "@noPartnerServers": {
@@ -952,10 +921,6 @@
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportMessage": "Report message",
-  "@reportMessage": {
-    "description": "Title when reporting a specific message"
-  },
   "reportReasonHarassment": "Harassment",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
@@ -1144,14 +1109,6 @@
   "@somethingWentWrong": {
     "description": "Generic error message"
   },
-  "startChatHint": "Find a friend and start chatting!",
-  "@startChatHint": {
-    "description": "Empty state subtitle on conversations screen"
-  },
-  "tabChats": "Chats",
-  "@tabChats": {
-    "description": "Tab label for Chats tab"
-  },
   "tabFriends": "Friends",
   "@tabFriends": {
     "description": "Tab label for Friends tab"
@@ -1230,196 +1187,6 @@
   "weakPassword": "Password is too weak. Please choose a stronger one.",
   "@weakPassword": {
     "description": "Error for weak password"
-  },
-  "wikiArmor": "Armor",
-  "@wikiArmor": {
-    "description": "Wiki item sub-category: Armor"
-  },
-  "wikiBiomes": "Biomes",
-  "@wikiBiomes": {
-    "description": "Wiki category: Biomes"
-  },
-  "wikiBlocks": "Blocks",
-  "@wikiBlocks": {
-    "description": "Wiki category: Blocks"
-  },
-  "wikiBoss": "Boss",
-  "@wikiBoss": {
-    "description": "Wiki mob sub-category: Boss"
-  },
-  "wikiBow": "Bow",
-  "@wikiBow": {
-    "description": "Wiki enchantment sub-category: Bow"
-  },
-  "wikiBrewing": "Brewing",
-  "@wikiBrewing": {
-    "description": "Wiki item sub-category: Brewing"
-  },
-  "wikiCategories": "{count} categories",
-  "@wikiCategories": {
-    "description": "Subtitle on wiki section card showing number of subcategories",
-    "placeholders": {
-      "count": {}
-    }
-  },
-  "wikiCouldNotLoadContent": "Could not load article content.",
-  "@wikiCouldNotLoadContent": {
-    "description": "Error when wiki article content fails to load"
-  },
-  "wikiCouldNotLoadPages": "Could not load pages. Please try again.",
-  "@wikiCouldNotLoadPages": {
-    "description": "Error when wiki pages fail to load"
-  },
-  "wikiCouldNotReach": "Could not reach the wiki. Check your connection.",
-  "@wikiCouldNotReach": {
-    "description": "Error when the wiki cannot be reached"
-  },
-  "wikiCrafting": "Crafting",
-  "@wikiCrafting": {
-    "description": "Section header for crafting recipes in wiki detail"
-  },
-  "wikiDecoration": "Decoration",
-  "@wikiDecoration": {
-    "description": "Wiki block sub-category: Decoration"
-  },
-  "wikiEnchantments": "Enchantments",
-  "@wikiEnchantments": {
-    "description": "Wiki category: Enchantments"
-  },
-  "wikiFishing": "Fishing",
-  "@wikiFishing": {
-    "description": "Wiki enchantment sub-category: Fishing"
-  },
-  "wikiFood": "Food",
-  "@wikiFood": {
-    "description": "Wiki item sub-category: Food"
-  },
-  "wikiHostile": "Hostile",
-  "@wikiHostile": {
-    "description": "Wiki mob sub-category: Hostile"
-  },
-  "wikiItems": "Items",
-  "@wikiItems": {
-    "description": "Wiki category: Items"
-  },
-  "wikiMaterials": "Materials",
-  "@wikiMaterials": {
-    "description": "Wiki item sub-category: Materials"
-  },
-  "wikiMinecraftWiki": "Minecraft Wiki",
-  "@wikiMinecraftWiki": {
-    "description": "Badge/label linking to Minecraft Wiki"
-  },
-  "wikiMobs": "Mobs",
-  "@wikiMobs": {
-    "description": "Wiki category: Mobs"
-  },
-  "wikiNatural": "Natural",
-  "@wikiNatural": {
-    "description": "Wiki block sub-category: Natural"
-  },
-  "wikiNether": "Nether",
-  "@wikiNether": {
-    "description": "Wiki biome/structure sub-category: Nether"
-  },
-  "wikiNeutral": "Neutral",
-  "@wikiNeutral": {
-    "description": "Wiki mob sub-category: Neutral"
-  },
-  "wikiNoPagesFound": "No pages found",
-  "@wikiNoPagesFound": {
-    "description": "Empty state when no wiki pages are available"
-  },
-  "wikiNoResults": "No results found for \"{query}\"",
-  "@wikiNoResults": {
-    "description": "Empty search results message",
-    "placeholders": {
-      "query": {}
-    }
-  },
-  "wikiOpenInBrowser": "Open in browser",
-  "@wikiOpenInBrowser": {
-    "description": "Button to open wiki article in external browser"
-  },
-  "wikiOres": "Ores",
-  "@wikiOres": {
-    "description": "Wiki block sub-category: Ores"
-  },
-  "wikiOverworld": "Overworld",
-  "@wikiOverworld": {
-    "description": "Wiki biome/structure sub-category: Overworld"
-  },
-  "wikiPassive": "Passive",
-  "@wikiPassive": {
-    "description": "Wiki mob sub-category: Passive"
-  },
-  "wikiPlants": "Plants",
-  "@wikiPlants": {
-    "description": "Wiki block sub-category: Plants"
-  },
-  "wikiPotions": "Potions",
-  "@wikiPotions": {
-    "description": "Wiki category: Potions"
-  },
-  "wikiRanged": "Ranged",
-  "@wikiRanged": {
-    "description": "Wiki item sub-category: Ranged"
-  },
-  "wikiReadFullArticle": "Read full article",
-  "@wikiReadFullArticle": {
-    "description": "Button at bottom of wiki detail to open full article"
-  },
-  "wikiRedstone": "Redstone",
-  "@wikiRedstone": {
-    "description": "Wiki block sub-category: Redstone"
-  },
-  "wikiSearchHint": "Search the wiki…",
-  "@wikiSearchHint": {
-    "description": "Hint text for wiki search field"
-  },
-  "wikiStatusEffects": "Status Effects",
-  "@wikiStatusEffects": {
-    "description": "Wiki potion sub-category: Status Effects"
-  },
-  "wikiStone": "Stone",
-  "@wikiStone": {
-    "description": "Wiki block sub-category: Stone"
-  },
-  "wikiStructures": "Structures",
-  "@wikiStructures": {
-    "description": "Wiki category: Structures"
-  },
-  "wikiSword": "Sword",
-  "@wikiSword": {
-    "description": "Wiki enchantment sub-category: Sword"
-  },
-  "wikiSwords": "Swords",
-  "@wikiSwords": {
-    "description": "Wiki item sub-category: Swords"
-  },
-  "wikiTheEnd": "The End",
-  "@wikiTheEnd": {
-    "description": "Wiki biome/structure sub-category: The End"
-  },
-  "wikiTitle": "Wiki",
-  "@wikiTitle": {
-    "description": "Title of the wiki screen"
-  },
-  "wikiTool": "Tool",
-  "@wikiTool": {
-    "description": "Wiki enchantment sub-category: Tool"
-  },
-  "wikiTools": "Tools",
-  "@wikiTools": {
-    "description": "Wiki item sub-category: Tools"
-  },
-  "wikiUtility": "Utility",
-  "@wikiUtility": {
-    "description": "Wiki mob sub-category: Utility"
-  },
-  "wikiWood": "Wood",
-  "@wikiWood": {
-    "description": "Wiki block sub-category: Wood"
   },
   "xboxAccountLinked": "Xbox account linked!",
   "@xboxAccountLinked": {
@@ -1511,13 +1278,11 @@
   "splashFeatureSkins": "Skins",
   "featureLabelConnector": "连接器",
   "featureLabelSkins": "皮肤",
-  "featureLabelWiki": "维基",
-  "featureLabelPartners": "合作伙伴",
+  "featureLabelPartners": "服务器列表",
   "featureLabelLookup": "查找",
   "featureLabelTracker": "服务器追踪器",
   "featureSubtitleConnector": "将主机连接到Minecraft",
   "featureSubtitleSkins": "浏览和管理Minecraft皮肤",
-  "featureSubtitleWiki": "Minecraft百科全书",
   "featureSubtitlePartners": "精选服务器",
   "featureSubtitleLookup": "查找Java和Bedrock档案",
   "featureSubtitleTracker": "监控服务器状态并获取通知",
@@ -1530,10 +1295,6 @@
   "upgradeWindowsHint": "可在 Microsoft Store 升级",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "chatEmptyHint": "率先说点什么吧！",
-  "@chatEmptyHint": {
-    "description": "Subtitle on the empty chat screen"
   },
   "skinSaved": "皮肤已保存",
   "@skinSaved": {
@@ -1562,7 +1323,6 @@
   },
   "feedbackBugReport": "错误报告",
   "feedbackFeatureRequest": "功能请求",
-  "feedbackGoesToGithub": "直接发送到 GitHub",
   "feedbackTitleLabel": "标题",
   "feedbackTitleHintBug": "例如：打开皮肤编辑器时应用崩溃",
   "feedbackTitleHintFeature": "例如：在服务器列表中显示玩家延迟",
@@ -1575,10 +1335,9 @@
   "feedbackEmailNote": "你的电子邮件永远不会公开分享。",
   "feedbackSubmitBug": "提交错误报告",
   "feedbackSubmitFeature": "提交功能请求",
-  "feedbackDisclaimer": "在 GitHub 上创建公开 Issue · 请勿包含密码",
+  "feedbackDisclaimer": "直达我们的团队 · 请勿填写密码",
   "feedbackSuccessTitle": "感谢你的反馈！",
-  "feedbackSuccessBody": "谢谢！我们已收到你的反馈，会尽快查看。",
-  "feedbackViewOnGithub": "在 GitHub 上查看",
+  "feedbackSuccessBody": "谢谢，你的反馈已收到。我们会在应用内回复，请回到这里查看。",
   "feedbackSubmitAnother": "再提交一个",
   "feedbackBackToApp": "返回应用",
   "feedbackTitleTooShort": "标题至少需要 5 个字符。",
@@ -1900,8 +1659,6 @@
   "reportBug": "反馈",
   "rpBehaviorContentWarning": "此材质包包含行为包数据，在服务器上无法生效。贴图仍然可以正常使用。",
   "rpInvalidPackFormat": "这是 Java 版材质包，不受支持。请使用基岩版资源包。",
-  "wikiFavourites": "收藏",
-  "wikiRecent": "最近浏览",
   "supportInboxTitle": "支持收件箱",
   "supportInboxSubtitle": "所有支持对话，全体管理员共享",
   "adminBadge": "管理员",
@@ -1961,11 +1718,8 @@
   "notifFeedbackStatus": "你的反馈有更新",
   "notifFeedbackReply": "你的反馈有回复",
   "adminTicketsHeader": "报告与需求",
-  "adminGeneralChat": "常规聊天",
   "adminTicketReplyHint": "回复此工单…",
   "adminNoTicketsForUser": "该用户没有工单",
-  "hideConversation": "隐藏",
-  "conversationHidden": "对话已隐藏",
   "undo": "撤销",
   "chooseServerTitle": "选择服务器",
   "changeLabel": "更改",
@@ -2041,5 +1795,54 @@
     }
   },
   "updateAvailableAction": "下载",
-  "updateAvailableDismiss": "以后再说"
+  "updateAvailableDismiss": "以后再说",
+  "serverListSearchHint": "按名称或地址搜索",
+  "serverListEditionAny": "Java 和 Bedrock",
+  "serverListEditionJava": "仅 Java",
+  "serverListEditionBedrock": "仅 Bedrock",
+  "serverListSortVotes": "投票最多",
+  "serverListSortPlayers": "玩家最多",
+  "serverListSortPeak": "峰值最高",
+  "serverListSortNewest": "最新",
+  "serverListSortName": "名称",
+  "serverListAllCategories": "全部",
+  "serverListLoadFailed": "无法加载服务器列表",
+  "serverListLoadFailedHint": "下拉重试",
+  "serverListNoMatch": "没有匹配的服务器",
+  "serverListNoMatchHint": "换个关键词或分类试试",
+  "serverCardPlay": "开始游戏",
+  "serverCardVote": "投票",
+  "serverCardViewServer": "查看服务器",
+  "serverCopyIp": "复制 IP",
+  "serverCopied": "已复制",
+  "serverStatPlayers": "玩家",
+  "serverStatPeak": "峰值",
+  "serverStatUptime": "在线率",
+  "serverStatVotesMonth": "本月投票",
+  "serverStatVotesAllTime": "总投票",
+  "serverBadgeFeatured": "精选",
+  "serverEditionJava": "Java",
+  "serverEditionBedrock": "Bedrock",
+  "serverEditionCrossplay": "跨平台",
+  "serverSectionMotd": "每日消息",
+  "serverSectionAbout": "简介",
+  "serverSectionCategories": "分类",
+  "serverSectionVotes": "投票",
+  "serverLinkDiscord": "Discord",
+  "serverLinkWebsite": "官网",
+  "serverVotesThisMonth": "本月",
+  "serverVotesAllTime": "全部时间",
+  "serverVoteAction": "为这个服务器投票",
+  "serverPlayAction": "在这个服务器上游玩",
+  "serverVoteSignInRequired": "登录后即可在应用内投票。",
+  "serverVoteSheetTitle": "为 {name} 投票",
+  "serverVoteSheetSubtitle": "你的 Minecraft 名称，服务器凭此发放奖励。",
+  "serverVoteSheetHint": "Steve",
+  "serverVoteSheetButton": "投票",
+  "serverVoteSheetLimit": "每个服务器每天可投一票。",
+  "serverVoteDelivered": "投票成功，奖励正在发放。",
+  "serverVoteNoRewards": "投票成功。该服务器尚未设置奖励。",
+  "serverVoteFailed": "操作未成功，请重试。",
+  "serverVoteOffline": "无法连接服务器，请检查网络。",
+  "feedbackViewYourReport": "查看你的反馈"
 }

@@ -546,7 +546,6 @@ class _NavPreview extends StatelessWidget {
 
   IconData _iconFor(AppFeature f) => switch (f) {
     AppFeature.skins => Icons.face_rounded,
-    AppFeature.wiki => Icons.menu_book_rounded,
     AppFeature.partners => Icons.dns_rounded,
     AppFeature.lookup => Icons.search_rounded,
     AppFeature.tracker => Icons.bar_chart_rounded,
@@ -683,7 +682,6 @@ class _StartPageStep extends StatelessWidget {
 
   IconData _iconFor(AppFeature f) => switch (f) {
     AppFeature.skins => Icons.face_rounded,
-    AppFeature.wiki => Icons.menu_book_rounded,
     AppFeature.partners => Icons.dns_rounded,
     AppFeature.lookup => Icons.search_rounded,
     AppFeature.tracker => Icons.bar_chart_rounded,

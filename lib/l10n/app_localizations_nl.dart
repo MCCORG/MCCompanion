@@ -132,27 +132,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get labelJava => 'Java';
 
   @override
-  String get startJavaMode => 'Java-modus starten';
-
-  @override
-  String get javaInfoTitle => 'Java-modus';
-
-  @override
-  String get javaInfoText => 'Verbinden met Java Edition-servers';
-
-  @override
-  String get howToJavaTitle => 'Java-modus';
-
-  @override
-  String get howToJavaSubtitle =>
-      'Verbinden met Java Edition-servers via MCCompanion';
-
-  @override
   String get aternosSubtext => 'Maak je eigen gratis Minecraft-server';
-
-  @override
-  String get howToJavaBody =>
-      'Java-modus: snelle stappen:\n1. Selecteer in de app de Java-modus.\n2. Voer het adres en de poort van je Java Edition-server in (standaard: 25565).\n3. Druk op \"Java-modus starten\": MCCompanion overbrugt de verbinding.\n4. Open Minecraft Bedrock en ga naar het tabblad Vrienden.\n5. Selecteer de LAN-server met de naam \"MCCompanion\" om deel te nemen aan de Java-server.\n\n⚠️ Belangrijke waarschuwingen:\n- Een geldig Java Edition-account (Microsoft) is vereist.\n- Sommige servers gebruiken anti-cheat-systemen die je account kunnen detecteren en verbannen.\n- Sommige servers verbieden Bedrock-clients expliciet, controleer altijd de serverregels.\n- MCCompanion is niet verantwoordelijk voor accountverboden, schorsingen of andere accountgerelateerde problemen die uit het gebruik van deze functie kunnen voortkomen.\n- Gebruik op eigen risico.';
 
   @override
   String get language => 'Nederlands';
@@ -708,9 +688,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get reportUser => 'Gebruiker melden';
 
   @override
-  String get reportMessage => 'Bericht melden';
-
-  @override
   String reportUserWithName(Object name) {
     return '$name melden';
   }
@@ -751,18 +728,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get yesterday => 'Gisteren';
 
   @override
-  String get messagePlaceholder => 'Bericht…';
-
-  @override
-  String get noMessagesYet => 'Nog geen berichten.\nZeg hallo!';
-
-  @override
-  String get noConversationsYet => 'Nog geen gesprekken';
-
-  @override
-  String get startChatHint => 'Vind een vriend en begin te chatten!';
-
-  @override
   String get youPrefix => 'Jij';
 
   @override
@@ -797,9 +762,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get tabRequests => 'Verzoeken';
-
-  @override
-  String get tabChats => 'Chats';
 
   @override
   String get addFriend => 'Vriend toevoegen';
@@ -1123,157 +1085,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get skinsDownload => 'Downloaden';
 
   @override
-  String get wikiTitle => 'Wiki';
-
-  @override
-  String get wikiMinecraftWiki => 'Minecraft Wiki';
-
-  @override
-  String get wikiSearchHint => 'Zoek in de wiki…';
-
-  @override
-  String get wikiCouldNotLoadPages =>
-      'Pagina\'s konden niet worden geladen. Probeer opnieuw.';
-
-  @override
-  String get wikiCouldNotReach =>
-      'Wiki kon niet worden bereikt. Controleer je verbinding.';
-
-  @override
-  String wikiNoResults(Object query) {
-    return 'Geen resultaten gevonden voor \"$query\"';
-  }
-
-  @override
-  String get wikiNoPagesFound => 'Geen pagina\'s gevonden';
-
-  @override
-  String wikiCategories(Object count) {
-    return '$count categorieën';
-  }
-
-  @override
-  String get wikiCouldNotLoadContent =>
-      'Artikelinhoud kon niet worden geladen.';
-
-  @override
-  String get wikiOpenInBrowser => 'Openen in browser';
-
-  @override
-  String get wikiCrafting => 'Ambacht';
-
-  @override
-  String get wikiReadFullArticle => 'Volledig artikel lezen';
-
-  @override
-  String get wikiRecent => 'Onlangs bekeken';
-
-  @override
-  String get wikiFavourites => 'Favorieten';
-
-  @override
-  String get wikiMobs => 'Mobs';
-
-  @override
-  String get wikiBlocks => 'Blokken';
-
-  @override
-  String get wikiItems => 'Voorwerpen';
-
-  @override
-  String get wikiBiomes => 'Biotopen';
-
-  @override
-  String get wikiStructures => 'Structuren';
-
-  @override
-  String get wikiEnchantments => 'Betoveringen';
-
-  @override
-  String get wikiPotions => 'Drankjes';
-
-  @override
-  String get wikiPassive => 'Passief';
-
-  @override
-  String get wikiNeutral => 'Neutraal';
-
-  @override
-  String get wikiHostile => 'Vijandig';
-
-  @override
-  String get wikiBoss => 'Baas';
-
-  @override
-  String get wikiUtility => 'Nut';
-
-  @override
-  String get wikiNatural => 'Natuurlijk';
-
-  @override
-  String get wikiOres => 'Ertsen';
-
-  @override
-  String get wikiWood => 'Hout';
-
-  @override
-  String get wikiStone => 'Steen';
-
-  @override
-  String get wikiRedstone => 'Redstone';
-
-  @override
-  String get wikiPlants => 'Planten';
-
-  @override
-  String get wikiDecoration => 'Decoratie';
-
-  @override
-  String get wikiTools => 'Gereedschappen';
-
-  @override
-  String get wikiSwords => 'Zwaarden';
-
-  @override
-  String get wikiRanged => 'Afstand';
-
-  @override
-  String get wikiArmor => 'Wapenrusting';
-
-  @override
-  String get wikiFood => 'Eten';
-
-  @override
-  String get wikiBrewing => 'Brouwen';
-
-  @override
-  String get wikiMaterials => 'Materialen';
-
-  @override
-  String get wikiOverworld => 'Overworld';
-
-  @override
-  String get wikiNether => 'Nether';
-
-  @override
-  String get wikiTheEnd => 'The End';
-
-  @override
-  String get wikiSword => 'Zwaard';
-
-  @override
-  String get wikiTool => 'Gereedschap';
-
-  @override
-  String get wikiBow => 'Boog';
-
-  @override
-  String get wikiFishing => 'Vissen';
-
-  @override
-  String get wikiStatusEffects => 'Statuseffecten';
-
-  @override
   String get chooseUniqueUsername =>
       'Kies een unieke gebruikersnaam om te beginnen.';
 
@@ -1416,10 +1227,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get dataSourcesSection => 'Gegevensbronnen & credits';
-
-  @override
-  String get creditMinecraftWikiSubtitle =>
-      'Gebruikt als gegevensbron voor de Wiki-functie. Inhoud wordt door de community geleverd onder Creative Commons.';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
@@ -1687,10 +1494,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get featureLabelSkins => 'Skins';
 
   @override
-  String get featureLabelWiki => 'Wiki';
-
-  @override
-  String get featureLabelPartners => 'Partners';
+  String get featureLabelPartners => 'Serverlijst';
 
   @override
   String get featureLabelLookup => 'Opzoeken';
@@ -1703,9 +1507,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get featureSubtitleSkins => 'Blader door en beheer Minecraft-skins';
-
-  @override
-  String get featureSubtitleWiki => 'Minecraft-encyclopedie';
 
   @override
   String get featureSubtitlePartners => 'Aanbevolen servers';
@@ -1731,9 +1532,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get upgradeWindowsHint => 'Upgrade beschikbaar via de Microsoft Store';
 
   @override
-  String get chatEmptyHint => 'Wees de eerste om iets te zeggen!';
-
-  @override
   String get skinSaved => 'Skin opgeslagen';
 
   @override
@@ -1755,9 +1553,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get feedbackFeatureRequest => 'Functieverzoek';
-
-  @override
-  String get feedbackGoesToGithub => 'Gaat direct naar GitHub';
 
   @override
   String get feedbackTitleLabel => 'Titel';
@@ -1801,17 +1596,14 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get feedbackDisclaimer =>
-      'Maakt een openbaar issue op GitHub · Geen wachtwoorden invullen';
+      'Gaat naar ons team · Zet er geen wachtwoorden in';
 
   @override
   String get feedbackSuccessTitle => 'Bedankt voor de feedback!';
 
   @override
   String get feedbackSuccessBody =>
-      'Bedankt! Je melding staat erin. We bekijken het zo snel mogelijk.';
-
-  @override
-  String get feedbackViewOnGithub => 'Bekijk op GitHub';
+      'Bedankt! Je melding staat erin. We antwoorden in de app, dus kijk hier terug voor een reactie.';
 
   @override
   String get feedbackSubmitAnother => 'Nog een indienen';
@@ -2656,19 +2448,10 @@ class AppLocalizationsNl extends AppLocalizations {
   String get adminTicketsHeader => 'Meldingen en verzoeken';
 
   @override
-  String get adminGeneralChat => 'Algemene chat';
-
-  @override
   String get adminTicketReplyHint => 'Antwoord over dit ticket…';
 
   @override
   String get adminNoTicketsForUser => 'Geen tickets van deze gebruiker';
-
-  @override
-  String get hideConversation => 'Verbergen';
-
-  @override
-  String get conversationHidden => 'Gesprek verborgen';
 
   @override
   String get undo => 'Ongedaan maken';
@@ -2824,4 +2607,159 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get updateAvailableDismiss => 'Niet nu';
+
+  @override
+  String get serverListSearchHint => 'Zoek op naam of adres';
+
+  @override
+  String get serverListEditionAny => 'Java en Bedrock';
+
+  @override
+  String get serverListEditionJava => 'Alleen Java';
+
+  @override
+  String get serverListEditionBedrock => 'Alleen Bedrock';
+
+  @override
+  String get serverListSortVotes => 'Meeste stemmen';
+
+  @override
+  String get serverListSortPlayers => 'Meeste spelers';
+
+  @override
+  String get serverListSortPeak => 'Hoogste piek';
+
+  @override
+  String get serverListSortNewest => 'Nieuwste';
+
+  @override
+  String get serverListSortName => 'Naam';
+
+  @override
+  String get serverListAllCategories => 'Alle';
+
+  @override
+  String get serverListLoadFailed => 'Kon de serverlijst niet laden';
+
+  @override
+  String get serverListLoadFailedHint =>
+      'Trek naar beneden om opnieuw te proberen';
+
+  @override
+  String get serverListNoMatch => 'Geen servers gevonden';
+
+  @override
+  String get serverListNoMatchHint =>
+      'Probeer een andere zoekterm of categorie';
+
+  @override
+  String get serverCardPlay => 'Spelen';
+
+  @override
+  String get serverCardVote => 'Stemmen';
+
+  @override
+  String get serverCardViewServer => 'Server bekijken';
+
+  @override
+  String get serverCopyIp => 'IP kopiëren';
+
+  @override
+  String get serverCopied => 'Gekopieerd';
+
+  @override
+  String get serverStatPlayers => 'Spelers';
+
+  @override
+  String get serverStatPeak => 'Piek';
+
+  @override
+  String get serverStatUptime => 'Uptime';
+
+  @override
+  String get serverStatVotesMonth => 'Stemmen deze maand';
+
+  @override
+  String get serverStatVotesAllTime => 'Stemmen totaal';
+
+  @override
+  String get serverBadgeFeatured => 'Uitgelicht';
+
+  @override
+  String get serverEditionJava => 'Java';
+
+  @override
+  String get serverEditionBedrock => 'Bedrock';
+
+  @override
+  String get serverEditionCrossplay => 'Crossplay';
+
+  @override
+  String get serverSectionMotd => 'Bericht van de dag';
+
+  @override
+  String get serverSectionAbout => 'Over';
+
+  @override
+  String get serverSectionCategories => 'Categorieën';
+
+  @override
+  String get serverSectionVotes => 'Stemmen';
+
+  @override
+  String get serverLinkDiscord => 'Discord';
+
+  @override
+  String get serverLinkWebsite => 'Website';
+
+  @override
+  String get serverVotesThisMonth => 'Deze maand';
+
+  @override
+  String get serverVotesAllTime => 'Totaal';
+
+  @override
+  String get serverVoteAction => 'Stem op deze server';
+
+  @override
+  String get serverPlayAction => 'Speel op deze server';
+
+  @override
+  String get serverVoteSignInRequired =>
+      'Meld je aan om te stemmen vanuit de app.';
+
+  @override
+  String serverVoteSheetTitle(String name) {
+    return 'Stem op $name';
+  }
+
+  @override
+  String get serverVoteSheetSubtitle =>
+      'Je Minecraft-naam, zodat de server weet wie hij moet belonen.';
+
+  @override
+  String get serverVoteSheetHint => 'Steve';
+
+  @override
+  String get serverVoteSheetButton => 'Stemmen';
+
+  @override
+  String get serverVoteSheetLimit => 'Eén stem per server per dag.';
+
+  @override
+  String get serverVoteDelivered => 'Gestemd. Je beloning is onderweg.';
+
+  @override
+  String get serverVoteNoRewards =>
+      'Gestemd. Deze server heeft geen beloningen ingesteld.';
+
+  @override
+  String get serverVoteFailed => 'Dat werkte niet, probeer het opnieuw.';
+
+  @override
+  String get serverVoteOffline =>
+      'Kon de server niet bereiken. Controleer je verbinding.';
+
+  @override
+  String get feedbackViewYourReport => 'Bekijk je melding';
 }

@@ -26,21 +26,6 @@
   "serverDetailsLabel": "सर्वर विवरण",
   "start": "शुरू करें",
   "labelJava": "Java",
-  "startJavaMode": "जावा मोड शुरू करें",
-  "javaInfoTitle": "जावा मोड",
-  "javaInfoText": "Java Edition सर्वरों से कनेक्ट करें",
-  "howToJavaTitle": "जावा मोड",
-  "@howToJavaTitle": {
-    "description": "Title for the Java how-to modal"
-  },
-  "howToJavaSubtitle": "MCCompanion के माध्यम से Java Edition सर्वरों से कनेक्ट करें",
-  "@howToJavaSubtitle": {
-    "description": "Short subtitle for Java menu tile"
-  },
-  "howToJavaBody": "जावा मोड: त्वरित चरण:\n1. ऐप में जावा मोड चुनें।\n2. अपने Java Edition सर्वर का पता और पोर्ट दर्ज करें (डिफ़ॉल्ट: 25565)।\n3. \"जावा मोड शुरू करें\" दबाएँ: MCCompanion कनेक्शन को ब्रिज करेगा।\n4. Minecraft Bedrock खोलें और Friends टैब पर जाएँ।\n5. Java सर्वर से जुड़ने के लिए \"MCCompanion\" नाम वाले LAN सर्वर को चुनें।\n\n⚠️ महत्वपूर्ण चेतावनियाँ:\n- एक वैध Java Edition खाता (Microsoft) आवश्यक है।\n- कुछ सर्वर anti-cheat सिस्टम का उपयोग करते हैं जो आपके खाते का पता लगाकर उसे बैन कर सकते हैं।\n- कुछ सर्वर Bedrock क्लाइंट को स्पष्ट रूप से प्रतिबंधित करते हैं, हमेशा सर्वर नियम जाँचें।\n- इस सुविधा के उपयोग से होने वाले किसी भी अकाउंट बैन, निलंबन या अन्य अकाउंट-संबंधित समस्याओं के लिए MCCompanion जिम्मेदार नहीं है।\n- अपने जोखिम पर उपयोग करें।",
-  "@howToJavaBody": {
-    "description": "Detailed steps for Java mode how-to modal"
-  },
   "language": "हिन्दी",
   "@language": {
     "description": "Your language name in your own language"
@@ -551,10 +536,6 @@
   "@creditGeyserTitle": {
     "description": "Title for GeyserMC credit tile"
   },
-  "creditMinecraftWikiSubtitle": "Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.",
-  "@creditMinecraftWikiSubtitle": {
-    "description": "Subtitle for Minecraft Wiki credit tile"
-  },
   "creditMojangSubtitle": "Java player skins, UUIDs, and profile data via the official Mojang API.",
   "@creditMojangSubtitle": {
     "description": "Subtitle for Mojang credit tile"
@@ -704,10 +685,6 @@
   "@linkedAccountsTitle": {
     "description": "Section title for linked accounts card"
   },
-  "messagePlaceholder": "Message…",
-  "@messagePlaceholder": {
-    "description": "Hint text in the chat message input"
-  },
   "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -732,10 +709,6 @@
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noConversationsYet": "No conversations yet",
-  "@noConversationsYet": {
-    "description": "Empty state title on conversations screen"
-  },
   "noFriendsSub": "Add friends to see them here.",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
@@ -743,10 +716,6 @@
   "noFriendsYet": "No friends yet",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
-  },
-  "noMessagesYet": "No messages yet.\nSay hello!",
-  "@noMessagesYet": {
-    "description": "Empty state in chat screen"
   },
   "noPartnerServers": "No partner servers available yet.",
   "@noPartnerServers": {
@@ -952,10 +921,6 @@
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportMessage": "Report message",
-  "@reportMessage": {
-    "description": "Title when reporting a specific message"
-  },
   "reportReasonHarassment": "Harassment",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
@@ -1144,14 +1109,6 @@
   "@somethingWentWrong": {
     "description": "Generic error message"
   },
-  "startChatHint": "Find a friend and start chatting!",
-  "@startChatHint": {
-    "description": "Empty state subtitle on conversations screen"
-  },
-  "tabChats": "Chats",
-  "@tabChats": {
-    "description": "Tab label for Chats tab"
-  },
   "tabFriends": "Friends",
   "@tabFriends": {
     "description": "Tab label for Friends tab"
@@ -1230,196 +1187,6 @@
   "weakPassword": "Password is too weak. Please choose a stronger one.",
   "@weakPassword": {
     "description": "Error for weak password"
-  },
-  "wikiArmor": "Armor",
-  "@wikiArmor": {
-    "description": "Wiki item sub-category: Armor"
-  },
-  "wikiBiomes": "Biomes",
-  "@wikiBiomes": {
-    "description": "Wiki category: Biomes"
-  },
-  "wikiBlocks": "Blocks",
-  "@wikiBlocks": {
-    "description": "Wiki category: Blocks"
-  },
-  "wikiBoss": "Boss",
-  "@wikiBoss": {
-    "description": "Wiki mob sub-category: Boss"
-  },
-  "wikiBow": "Bow",
-  "@wikiBow": {
-    "description": "Wiki enchantment sub-category: Bow"
-  },
-  "wikiBrewing": "Brewing",
-  "@wikiBrewing": {
-    "description": "Wiki item sub-category: Brewing"
-  },
-  "wikiCategories": "{count} categories",
-  "@wikiCategories": {
-    "description": "Subtitle on wiki section card showing number of subcategories",
-    "placeholders": {
-      "count": {}
-    }
-  },
-  "wikiCouldNotLoadContent": "Could not load article content.",
-  "@wikiCouldNotLoadContent": {
-    "description": "Error when wiki article content fails to load"
-  },
-  "wikiCouldNotLoadPages": "Could not load pages. Please try again.",
-  "@wikiCouldNotLoadPages": {
-    "description": "Error when wiki pages fail to load"
-  },
-  "wikiCouldNotReach": "Could not reach the wiki. Check your connection.",
-  "@wikiCouldNotReach": {
-    "description": "Error when the wiki cannot be reached"
-  },
-  "wikiCrafting": "Crafting",
-  "@wikiCrafting": {
-    "description": "Section header for crafting recipes in wiki detail"
-  },
-  "wikiDecoration": "Decoration",
-  "@wikiDecoration": {
-    "description": "Wiki block sub-category: Decoration"
-  },
-  "wikiEnchantments": "Enchantments",
-  "@wikiEnchantments": {
-    "description": "Wiki category: Enchantments"
-  },
-  "wikiFishing": "Fishing",
-  "@wikiFishing": {
-    "description": "Wiki enchantment sub-category: Fishing"
-  },
-  "wikiFood": "Food",
-  "@wikiFood": {
-    "description": "Wiki item sub-category: Food"
-  },
-  "wikiHostile": "Hostile",
-  "@wikiHostile": {
-    "description": "Wiki mob sub-category: Hostile"
-  },
-  "wikiItems": "Items",
-  "@wikiItems": {
-    "description": "Wiki category: Items"
-  },
-  "wikiMaterials": "Materials",
-  "@wikiMaterials": {
-    "description": "Wiki item sub-category: Materials"
-  },
-  "wikiMinecraftWiki": "Minecraft Wiki",
-  "@wikiMinecraftWiki": {
-    "description": "Badge/label linking to Minecraft Wiki"
-  },
-  "wikiMobs": "Mobs",
-  "@wikiMobs": {
-    "description": "Wiki category: Mobs"
-  },
-  "wikiNatural": "Natural",
-  "@wikiNatural": {
-    "description": "Wiki block sub-category: Natural"
-  },
-  "wikiNether": "Nether",
-  "@wikiNether": {
-    "description": "Wiki biome/structure sub-category: Nether"
-  },
-  "wikiNeutral": "Neutral",
-  "@wikiNeutral": {
-    "description": "Wiki mob sub-category: Neutral"
-  },
-  "wikiNoPagesFound": "No pages found",
-  "@wikiNoPagesFound": {
-    "description": "Empty state when no wiki pages are available"
-  },
-  "wikiNoResults": "No results found for \"{query}\"",
-  "@wikiNoResults": {
-    "description": "Empty search results message",
-    "placeholders": {
-      "query": {}
-    }
-  },
-  "wikiOpenInBrowser": "Open in browser",
-  "@wikiOpenInBrowser": {
-    "description": "Button to open wiki article in external browser"
-  },
-  "wikiOres": "Ores",
-  "@wikiOres": {
-    "description": "Wiki block sub-category: Ores"
-  },
-  "wikiOverworld": "Overworld",
-  "@wikiOverworld": {
-    "description": "Wiki biome/structure sub-category: Overworld"
-  },
-  "wikiPassive": "Passive",
-  "@wikiPassive": {
-    "description": "Wiki mob sub-category: Passive"
-  },
-  "wikiPlants": "Plants",
-  "@wikiPlants": {
-    "description": "Wiki block sub-category: Plants"
-  },
-  "wikiPotions": "Potions",
-  "@wikiPotions": {
-    "description": "Wiki category: Potions"
-  },
-  "wikiRanged": "Ranged",
-  "@wikiRanged": {
-    "description": "Wiki item sub-category: Ranged"
-  },
-  "wikiReadFullArticle": "Read full article",
-  "@wikiReadFullArticle": {
-    "description": "Button at bottom of wiki detail to open full article"
-  },
-  "wikiRedstone": "Redstone",
-  "@wikiRedstone": {
-    "description": "Wiki block sub-category: Redstone"
-  },
-  "wikiSearchHint": "Search the wiki…",
-  "@wikiSearchHint": {
-    "description": "Hint text for wiki search field"
-  },
-  "wikiStatusEffects": "Status Effects",
-  "@wikiStatusEffects": {
-    "description": "Wiki potion sub-category: Status Effects"
-  },
-  "wikiStone": "Stone",
-  "@wikiStone": {
-    "description": "Wiki block sub-category: Stone"
-  },
-  "wikiStructures": "Structures",
-  "@wikiStructures": {
-    "description": "Wiki category: Structures"
-  },
-  "wikiSword": "Sword",
-  "@wikiSword": {
-    "description": "Wiki enchantment sub-category: Sword"
-  },
-  "wikiSwords": "Swords",
-  "@wikiSwords": {
-    "description": "Wiki item sub-category: Swords"
-  },
-  "wikiTheEnd": "The End",
-  "@wikiTheEnd": {
-    "description": "Wiki biome/structure sub-category: The End"
-  },
-  "wikiTitle": "Wiki",
-  "@wikiTitle": {
-    "description": "Title of the wiki screen"
-  },
-  "wikiTool": "Tool",
-  "@wikiTool": {
-    "description": "Wiki enchantment sub-category: Tool"
-  },
-  "wikiTools": "Tools",
-  "@wikiTools": {
-    "description": "Wiki item sub-category: Tools"
-  },
-  "wikiUtility": "Utility",
-  "@wikiUtility": {
-    "description": "Wiki mob sub-category: Utility"
-  },
-  "wikiWood": "Wood",
-  "@wikiWood": {
-    "description": "Wiki block sub-category: Wood"
   },
   "xboxAccountLinked": "Xbox account linked!",
   "@xboxAccountLinked": {
@@ -1511,13 +1278,11 @@
   "splashFeatureSkins": "Skins",
   "featureLabelConnector": "कनेक्टर",
   "featureLabelSkins": "स्किन्स",
-  "featureLabelWiki": "विकी",
-  "featureLabelPartners": "पार्टनर",
+  "featureLabelPartners": "सर्वर सूची",
   "featureLabelLookup": "खोज",
   "featureLabelTracker": "सर्वर ट्रैकर",
   "featureSubtitleConnector": "कंसोल को Minecraft से कनेक्ट करें",
   "featureSubtitleSkins": "Minecraft स्किन्स ब्राउज़ और प्रबंधित करें",
-  "featureSubtitleWiki": "Minecraft विश्वकोश",
   "featureSubtitlePartners": "विशेष सर्वर",
   "featureSubtitleLookup": "Java और Bedrock प्रोफाइल खोजें",
   "featureSubtitleTracker": "सर्वर स्थिति मॉनिटर करें और सूचनाएं पाएं",
@@ -1530,10 +1295,6 @@
   "upgradeWindowsHint": "Microsoft Store पर अपग्रेड उपलब्ध है",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "chatEmptyHint": "पहले कुछ कहो!",
-  "@chatEmptyHint": {
-    "description": "Subtitle on the empty chat screen"
   },
   "skinSaved": "स्किन सेव हुई",
   "@skinSaved": {
@@ -1562,7 +1323,6 @@
   },
   "feedbackBugReport": "बग रिपोर्ट",
   "feedbackFeatureRequest": "फीचर अनुरोध",
-  "feedbackGoesToGithub": "सीधे GitHub पर जाता है",
   "feedbackTitleLabel": "शीर्षक",
   "feedbackTitleHintBug": "उदा. स्किन एडिटर खोलने पर ऐप क्रैश होता है",
   "feedbackTitleHintFeature": "उदा. सर्वर सूची में प्लेयर का पिंग दिखाएं",
@@ -1575,10 +1335,9 @@
   "feedbackEmailNote": "आपका ईमेल कभी सार्वजनिक नहीं किया जाएगा।",
   "feedbackSubmitBug": "बग रिपोर्ट सबमिट करें",
   "feedbackSubmitFeature": "फीचर अनुरोध सबमिट करें",
-  "feedbackDisclaimer": "GitHub पर एक सार्वजनिक इशू बनाता है · पासवर्ड शामिल न करें",
+  "feedbackDisclaimer": "हमारी टीम तक जाता है · पासवर्ड न लिखें",
   "feedbackSuccessTitle": "फीडबैक के लिए धन्यवाद!",
-  "feedbackSuccessBody": "धन्यवाद! आपकी रिपोर्ट मिल गई है। हम जल्द से जल्द देखेंगे।",
-  "feedbackViewOnGithub": "GitHub पर देखें",
+  "feedbackSuccessBody": "धन्यवाद! आपकी रिपोर्ट मिल गई। हम ऐप में ही जवाब देते हैं, इसलिए जवाब देखने यहाँ लौटें।",
   "feedbackSubmitAnother": "एक और सबमिट करें",
   "feedbackBackToApp": "ऐप पर वापस जाएं",
   "feedbackTitleTooShort": "शीर्षक कम से कम 5 अक्षरों का होना चाहिए।",
@@ -1900,8 +1659,6 @@
   "reportBug": "प्रतिक्रिया",
   "rpBehaviorContentWarning": "इस पैक में बिहेवियर पैक डेटा है, जो सर्वर पर काम नहीं करेगा। टेक्सचर फिर भी काम करेंगे।",
   "rpInvalidPackFormat": "यह Java Edition पैक है और समर्थित नहीं है। कृपया Bedrock Edition रिसोर्स पैक इस्तेमाल करें।",
-  "wikiFavourites": "पसंदीदा",
-  "wikiRecent": "हाल में देखे गए",
   "supportInboxTitle": "सपोर्ट इनबॉक्स",
   "supportInboxSubtitle": "सभी सपोर्ट चैट, सभी एडमिन के साथ साझा",
   "adminBadge": "एडमिन",
@@ -1961,11 +1718,8 @@
   "notifFeedbackStatus": "आपके फ़ीडबैक पर अपडेट",
   "notifFeedbackReply": "आपके फ़ीडबैक का जवाब",
   "adminTicketsHeader": "रिपोर्ट और अनुरोध",
-  "adminGeneralChat": "सामान्य चैट",
   "adminTicketReplyHint": "इस टिकट पर जवाब दें…",
   "adminNoTicketsForUser": "इस उपयोगकर्ता से कोई टिकट नहीं",
-  "hideConversation": "छिपाएं",
-  "conversationHidden": "बातचीत छिपाई गई",
   "undo": "पहले जैसा करें",
   "chooseServerTitle": "सर्वर चुनें",
   "changeLabel": "बदलें",
@@ -2041,5 +1795,54 @@
     }
   },
   "updateAvailableAction": "डाउनलोड करें",
-  "updateAvailableDismiss": "अभी नहीं"
+  "updateAvailableDismiss": "अभी नहीं",
+  "serverListSearchHint": "नाम या पते से खोजें",
+  "serverListEditionAny": "Java और Bedrock",
+  "serverListEditionJava": "केवल Java",
+  "serverListEditionBedrock": "केवल Bedrock",
+  "serverListSortVotes": "सबसे ज़्यादा वोट",
+  "serverListSortPlayers": "सबसे ज़्यादा खिलाड़ी",
+  "serverListSortPeak": "सबसे ऊँचा शिखर",
+  "serverListSortNewest": "सबसे नए",
+  "serverListSortName": "नाम",
+  "serverListAllCategories": "सभी",
+  "serverListLoadFailed": "सर्वर सूची लोड नहीं हो सकी",
+  "serverListLoadFailedHint": "दोबारा कोशिश करने के लिए नीचे खींचें",
+  "serverListNoMatch": "कोई सर्वर मेल नहीं खाता",
+  "serverListNoMatchHint": "कोई और खोज या श्रेणी आज़माएँ",
+  "serverCardPlay": "खेलें",
+  "serverCardVote": "वोट करें",
+  "serverCardViewServer": "सर्वर देखें",
+  "serverCopyIp": "IP कॉपी करें",
+  "serverCopied": "कॉपी हो गया",
+  "serverStatPlayers": "खिलाड़ी",
+  "serverStatPeak": "शिखर",
+  "serverStatUptime": "अपटाइम",
+  "serverStatVotesMonth": "इस महीने के वोट",
+  "serverStatVotesAllTime": "कुल वोट",
+  "serverBadgeFeatured": "विशेष",
+  "serverEditionJava": "Java",
+  "serverEditionBedrock": "Bedrock",
+  "serverEditionCrossplay": "क्रॉसप्ले",
+  "serverSectionMotd": "आज का संदेश",
+  "serverSectionAbout": "परिचय",
+  "serverSectionCategories": "श्रेणियाँ",
+  "serverSectionVotes": "वोट",
+  "serverLinkDiscord": "Discord",
+  "serverLinkWebsite": "वेबसाइट",
+  "serverVotesThisMonth": "इस महीने",
+  "serverVotesAllTime": "अब तक",
+  "serverVoteAction": "इस सर्वर को वोट करें",
+  "serverPlayAction": "इस सर्वर पर खेलें",
+  "serverVoteSignInRequired": "ऐप से वोट करने के लिए साइन इन करें।",
+  "serverVoteSheetTitle": "{name} को वोट करें",
+  "serverVoteSheetSubtitle": "आपका Minecraft नाम, ताकि सर्वर जान सके किसे इनाम देना है।",
+  "serverVoteSheetHint": "Steve",
+  "serverVoteSheetButton": "वोट करें",
+  "serverVoteSheetLimit": "हर सर्वर पर दिन में एक वोट।",
+  "serverVoteDelivered": "वोट हो गया। आपका इनाम रास्ते में है।",
+  "serverVoteNoRewards": "वोट हो गया। इस सर्वर पर कोई इनाम सेट नहीं है।",
+  "serverVoteFailed": "यह काम नहीं आया, कृपया फिर कोशिश करें।",
+  "serverVoteOffline": "सर्वर से संपर्क नहीं हो सका। अपना कनेक्शन जाँचें।",
+  "feedbackViewYourReport": "अपनी रिपोर्ट देखें"
 }

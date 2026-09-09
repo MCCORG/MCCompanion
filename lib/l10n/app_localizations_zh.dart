@@ -128,26 +128,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get labelJava => 'Java';
 
   @override
-  String get startJavaMode => '启动 Java 模式';
-
-  @override
-  String get javaInfoTitle => 'Java 模式';
-
-  @override
-  String get javaInfoText => '连接到 Java Edition 服务器';
-
-  @override
-  String get howToJavaTitle => 'Java 模式';
-
-  @override
-  String get howToJavaSubtitle => '通过 MCCompanion 连接到 Java Edition 服务器';
-
-  @override
   String get aternosSubtext => '创建你自己的免费 Minecraft 服务器';
-
-  @override
-  String get howToJavaBody =>
-      'Java 模式: 快速步骤：\n1. 在应用中选择 Java 模式。\n2. 输入你的 Java Edition 服务器地址和端口（默认：25565）。\n3. 点击 \"启动 Java 模式\" -- MCCompanion 会桥接该连接。\n4. 打开 Minecraft Bedrock 并前往好友标签页。\n5. 选择名为 \"MCCompanion\" 的 LAN 服务器以加入 Java 服务器。\n\n⚠️ 重要警告：\n- 需要有效的 Java Edition 账户（Microsoft）。\n- 一些服务器使用反作弊系统，可能会检测并封禁你的账户。\n- 某些服务器明确禁止 Bedrock 客户端 -- 请务必查看服务器规则。\n- 对于因使用此功能而导致的账户封禁、停用或其他账户相关问题，MCCompanion 不承担责任。\n- 请自行承担使用风险。';
 
   @override
   String get language => '简体中文';
@@ -689,9 +670,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get reportUser => 'Report user';
 
   @override
-  String get reportMessage => 'Report message';
-
-  @override
   String reportUserWithName(Object name) {
     return 'Report $name';
   }
@@ -731,18 +709,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get yesterday => 'Yesterday';
 
   @override
-  String get messagePlaceholder => 'Message…';
-
-  @override
-  String get noMessagesYet => 'No messages yet.\nSay hello!';
-
-  @override
-  String get noConversationsYet => 'No conversations yet';
-
-  @override
-  String get startChatHint => 'Find a friend and start chatting!';
-
-  @override
   String get youPrefix => 'You';
 
   @override
@@ -777,9 +743,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get tabRequests => 'Requests';
-
-  @override
-  String get tabChats => 'Chats';
 
   @override
   String get addFriend => 'Add Friend';
@@ -1098,155 +1061,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get skinsDownload => 'Download';
 
   @override
-  String get wikiTitle => 'Wiki';
-
-  @override
-  String get wikiMinecraftWiki => 'Minecraft Wiki';
-
-  @override
-  String get wikiSearchHint => 'Search the wiki…';
-
-  @override
-  String get wikiCouldNotLoadPages => 'Could not load pages. Please try again.';
-
-  @override
-  String get wikiCouldNotReach =>
-      'Could not reach the wiki. Check your connection.';
-
-  @override
-  String wikiNoResults(Object query) {
-    return 'No results found for \"$query\"';
-  }
-
-  @override
-  String get wikiNoPagesFound => 'No pages found';
-
-  @override
-  String wikiCategories(Object count) {
-    return '$count categories';
-  }
-
-  @override
-  String get wikiCouldNotLoadContent => 'Could not load article content.';
-
-  @override
-  String get wikiOpenInBrowser => 'Open in browser';
-
-  @override
-  String get wikiCrafting => 'Crafting';
-
-  @override
-  String get wikiReadFullArticle => 'Read full article';
-
-  @override
-  String get wikiRecent => '最近浏览';
-
-  @override
-  String get wikiFavourites => '收藏';
-
-  @override
-  String get wikiMobs => 'Mobs';
-
-  @override
-  String get wikiBlocks => 'Blocks';
-
-  @override
-  String get wikiItems => 'Items';
-
-  @override
-  String get wikiBiomes => 'Biomes';
-
-  @override
-  String get wikiStructures => 'Structures';
-
-  @override
-  String get wikiEnchantments => 'Enchantments';
-
-  @override
-  String get wikiPotions => 'Potions';
-
-  @override
-  String get wikiPassive => 'Passive';
-
-  @override
-  String get wikiNeutral => 'Neutral';
-
-  @override
-  String get wikiHostile => 'Hostile';
-
-  @override
-  String get wikiBoss => 'Boss';
-
-  @override
-  String get wikiUtility => 'Utility';
-
-  @override
-  String get wikiNatural => 'Natural';
-
-  @override
-  String get wikiOres => 'Ores';
-
-  @override
-  String get wikiWood => 'Wood';
-
-  @override
-  String get wikiStone => 'Stone';
-
-  @override
-  String get wikiRedstone => 'Redstone';
-
-  @override
-  String get wikiPlants => 'Plants';
-
-  @override
-  String get wikiDecoration => 'Decoration';
-
-  @override
-  String get wikiTools => 'Tools';
-
-  @override
-  String get wikiSwords => 'Swords';
-
-  @override
-  String get wikiRanged => 'Ranged';
-
-  @override
-  String get wikiArmor => 'Armor';
-
-  @override
-  String get wikiFood => 'Food';
-
-  @override
-  String get wikiBrewing => 'Brewing';
-
-  @override
-  String get wikiMaterials => 'Materials';
-
-  @override
-  String get wikiOverworld => 'Overworld';
-
-  @override
-  String get wikiNether => 'Nether';
-
-  @override
-  String get wikiTheEnd => 'The End';
-
-  @override
-  String get wikiSword => 'Sword';
-
-  @override
-  String get wikiTool => 'Tool';
-
-  @override
-  String get wikiBow => 'Bow';
-
-  @override
-  String get wikiFishing => 'Fishing';
-
-  @override
-  String get wikiStatusEffects => 'Status Effects';
-
-  @override
   String get chooseUniqueUsername => '选择一个唯一的用户名开始。';
 
   @override
@@ -1383,10 +1197,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get dataSourcesSection => 'Data Sources & Credits';
-
-  @override
-  String get creditMinecraftWikiSubtitle =>
-      'Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
@@ -1653,10 +1463,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get featureLabelSkins => '皮肤';
 
   @override
-  String get featureLabelWiki => '维基';
-
-  @override
-  String get featureLabelPartners => '合作伙伴';
+  String get featureLabelPartners => '服务器列表';
 
   @override
   String get featureLabelLookup => '查找';
@@ -1669,9 +1476,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get featureSubtitleSkins => '浏览和管理Minecraft皮肤';
-
-  @override
-  String get featureSubtitleWiki => 'Minecraft百科全书';
 
   @override
   String get featureSubtitlePartners => '精选服务器';
@@ -1695,9 +1499,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get upgradeWindowsHint => '可在 Microsoft Store 升级';
 
   @override
-  String get chatEmptyHint => '率先说点什么吧！';
-
-  @override
   String get skinSaved => '皮肤已保存';
 
   @override
@@ -1719,9 +1520,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get feedbackFeatureRequest => '功能请求';
-
-  @override
-  String get feedbackGoesToGithub => '直接发送到 GitHub';
 
   @override
   String get feedbackTitleLabel => '标题';
@@ -1760,16 +1558,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get feedbackSubmitFeature => '提交功能请求';
 
   @override
-  String get feedbackDisclaimer => '在 GitHub 上创建公开 Issue · 请勿包含密码';
+  String get feedbackDisclaimer => '直达我们的团队 · 请勿填写密码';
 
   @override
   String get feedbackSuccessTitle => '感谢你的反馈！';
 
   @override
-  String get feedbackSuccessBody => '谢谢！我们已收到你的反馈，会尽快查看。';
-
-  @override
-  String get feedbackViewOnGithub => '在 GitHub 上查看';
+  String get feedbackSuccessBody => '谢谢，你的反馈已收到。我们会在应用内回复，请回到这里查看。';
 
   @override
   String get feedbackSubmitAnother => '再提交一个';
@@ -2584,19 +2379,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get adminTicketsHeader => '报告与需求';
 
   @override
-  String get adminGeneralChat => '常规聊天';
-
-  @override
   String get adminTicketReplyHint => '回复此工单…';
 
   @override
   String get adminNoTicketsForUser => '该用户没有工单';
-
-  @override
-  String get hideConversation => '隐藏';
-
-  @override
-  String get conversationHidden => '对话已隐藏';
 
   @override
   String get undo => '撤销';
@@ -2747,4 +2533,153 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get updateAvailableDismiss => '以后再说';
+
+  @override
+  String get serverListSearchHint => '按名称或地址搜索';
+
+  @override
+  String get serverListEditionAny => 'Java 和 Bedrock';
+
+  @override
+  String get serverListEditionJava => '仅 Java';
+
+  @override
+  String get serverListEditionBedrock => '仅 Bedrock';
+
+  @override
+  String get serverListSortVotes => '投票最多';
+
+  @override
+  String get serverListSortPlayers => '玩家最多';
+
+  @override
+  String get serverListSortPeak => '峰值最高';
+
+  @override
+  String get serverListSortNewest => '最新';
+
+  @override
+  String get serverListSortName => '名称';
+
+  @override
+  String get serverListAllCategories => '全部';
+
+  @override
+  String get serverListLoadFailed => '无法加载服务器列表';
+
+  @override
+  String get serverListLoadFailedHint => '下拉重试';
+
+  @override
+  String get serverListNoMatch => '没有匹配的服务器';
+
+  @override
+  String get serverListNoMatchHint => '换个关键词或分类试试';
+
+  @override
+  String get serverCardPlay => '开始游戏';
+
+  @override
+  String get serverCardVote => '投票';
+
+  @override
+  String get serverCardViewServer => '查看服务器';
+
+  @override
+  String get serverCopyIp => '复制 IP';
+
+  @override
+  String get serverCopied => '已复制';
+
+  @override
+  String get serverStatPlayers => '玩家';
+
+  @override
+  String get serverStatPeak => '峰值';
+
+  @override
+  String get serverStatUptime => '在线率';
+
+  @override
+  String get serverStatVotesMonth => '本月投票';
+
+  @override
+  String get serverStatVotesAllTime => '总投票';
+
+  @override
+  String get serverBadgeFeatured => '精选';
+
+  @override
+  String get serverEditionJava => 'Java';
+
+  @override
+  String get serverEditionBedrock => 'Bedrock';
+
+  @override
+  String get serverEditionCrossplay => '跨平台';
+
+  @override
+  String get serverSectionMotd => '每日消息';
+
+  @override
+  String get serverSectionAbout => '简介';
+
+  @override
+  String get serverSectionCategories => '分类';
+
+  @override
+  String get serverSectionVotes => '投票';
+
+  @override
+  String get serverLinkDiscord => 'Discord';
+
+  @override
+  String get serverLinkWebsite => '官网';
+
+  @override
+  String get serverVotesThisMonth => '本月';
+
+  @override
+  String get serverVotesAllTime => '全部时间';
+
+  @override
+  String get serverVoteAction => '为这个服务器投票';
+
+  @override
+  String get serverPlayAction => '在这个服务器上游玩';
+
+  @override
+  String get serverVoteSignInRequired => '登录后即可在应用内投票。';
+
+  @override
+  String serverVoteSheetTitle(String name) {
+    return '为 $name 投票';
+  }
+
+  @override
+  String get serverVoteSheetSubtitle => '你的 Minecraft 名称，服务器凭此发放奖励。';
+
+  @override
+  String get serverVoteSheetHint => 'Steve';
+
+  @override
+  String get serverVoteSheetButton => '投票';
+
+  @override
+  String get serverVoteSheetLimit => '每个服务器每天可投一票。';
+
+  @override
+  String get serverVoteDelivered => '投票成功，奖励正在发放。';
+
+  @override
+  String get serverVoteNoRewards => '投票成功。该服务器尚未设置奖励。';
+
+  @override
+  String get serverVoteFailed => '操作未成功，请重试。';
+
+  @override
+  String get serverVoteOffline => '无法连接服务器，请检查网络。';
+
+  @override
+  String get feedbackViewYourReport => '查看你的反馈';
 }

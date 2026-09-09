@@ -28,7 +28,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   _FeedbackType _type = _FeedbackType.bug;
   bool _submitting = false;
   bool _success = false;
-  String? _issueUrl;
+  int? _ticketId;
   String? _appVersion;
 
   @override
@@ -90,7 +90,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
     if (result.ok) {
       setState(() {
         _success = true;
-        _issueUrl = result.issueUrl;
+        _ticketId = result.issueNumber;
       });
     } else {
       AppToast.show(
@@ -107,7 +107,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
     _descCtrl.clear();
     setState(() {
       _success = false;
-      _issueUrl = null;
       _type = _FeedbackType.bug;
     });
   }
@@ -131,7 +130,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                   )
                 : _success
                 ? _SuccessView(
-                    issueUrl: _issueUrl,
+                    ticketId: _ticketId,
                     onReset: _reset,
                     onBack: widget.onBack,
                   )
@@ -565,12 +564,12 @@ class _FormView extends StatelessWidget {
 }
 
 class _SuccessView extends StatelessWidget {
-  final String? issueUrl;
+  final int? ticketId;
   final VoidCallback onReset;
   final VoidCallback? onBack;
 
   const _SuccessView({
-    required this.issueUrl,
+    required this.ticketId,
     required this.onReset,
     required this.onBack,
   });
@@ -624,16 +623,19 @@ class _SuccessView extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                if (issueUrl != null)
-                  OutlinedButton.icon(
-                    onPressed: () {},
-                    icon: FaIcon(FontAwesomeIcons.github, size: 13),
-                    label: Text(l.feedbackViewOnGithub),
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: AppTheme.accent,
-                      side: BorderSide(
-                        color: AppTheme.accent.withValues(alpha: 0.35),
+                if (ticketId != null)
+                  FilledButton.icon(
+                    onPressed: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) =>
+                            MyFeedbackScreen(initialTicketId: ticketId),
                       ),
+                    ),
+                    icon: const Icon(Icons.forum_outlined, size: 15),
+                    label: Text(l.feedbackViewYourReport),
+                    style: FilledButton.styleFrom(
+                      backgroundColor: AppTheme.accent,
+                      foregroundColor: Colors.black,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 18,
                         vertical: 10,

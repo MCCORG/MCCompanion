@@ -26,21 +26,6 @@
   "serverDetailsLabel": "تفاصيل الخادم",
   "start": "ابدأ",
   "labelJava": "Java",
-  "startJavaMode": "ابدأ وضع Java",
-  "javaInfoTitle": "وضع Java",
-  "javaInfoText": "اتصل بخوادم Java Edition",
-  "howToJavaTitle": "وضع Java",
-  "@howToJavaTitle": {
-    "description": "Title for the Java how-to modal"
-  },
-  "howToJavaSubtitle": "اتصل بخوادم Java Edition عبر MCCompanion",
-  "@howToJavaSubtitle": {
-    "description": "Short subtitle for Java menu tile"
-  },
-  "howToJavaBody": "وضع Java: خطوات سريعة:\n1. في التطبيق، اختر وضع Java.\n2. أدخل عنوان خادم Java Edition والمنفذ (الافتراضي: 25565).\n3. اضغط على \"ابدأ وضع Java\": سيقوم MCCompanion بربط الاتصال.\n4. افتح Minecraft Bedrock وانتقل إلى علامة تبويب الأصدقاء.\n5. اختر خادم LAN المسمى \"MCCompanion\" للانضمام إلى خادم Java.\n\n⚠️ تحذيرات مهمة:\n- يلزم وجود حساب Java Edition صالح (Microsoft).\n- تستخدم بعض الخوادم أنظمة مكافحة الغش وقد تكتشف حسابك وتحظره.\n- بعض الخوادم تحظر عملاء Bedrock صراحةً: تحقق دائمًا من قواعد الخادم.\n- MCCompanion غير مسؤول عن أي حظر أو تعليق أو أي مشكلات أخرى متعلقة بالحساب قد تنتج عن استخدام هذه الميزة.\n- استخدمها على مسؤوليتك الخاصة.",
-  "@howToJavaBody": {
-    "description": "Detailed steps for Java mode how-to modal"
-  },
   "language": "العربية",
   "@language": {
     "description": "Your language name in your own language"
@@ -551,10 +536,6 @@
   "@creditGeyserTitle": {
     "description": "Title for GeyserMC credit tile"
   },
-  "creditMinecraftWikiSubtitle": "Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.",
-  "@creditMinecraftWikiSubtitle": {
-    "description": "Subtitle for Minecraft Wiki credit tile"
-  },
   "creditMojangSubtitle": "Java player skins, UUIDs, and profile data via the official Mojang API.",
   "@creditMojangSubtitle": {
     "description": "Subtitle for Mojang credit tile"
@@ -704,10 +685,6 @@
   "@linkedAccountsTitle": {
     "description": "Section title for linked accounts card"
   },
-  "messagePlaceholder": "Message…",
-  "@messagePlaceholder": {
-    "description": "Hint text in the chat message input"
-  },
   "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -732,10 +709,6 @@
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noConversationsYet": "No conversations yet",
-  "@noConversationsYet": {
-    "description": "Empty state title on conversations screen"
-  },
   "noFriendsSub": "Add friends to see them here.",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
@@ -743,10 +716,6 @@
   "noFriendsYet": "No friends yet",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
-  },
-  "noMessagesYet": "No messages yet.\nSay hello!",
-  "@noMessagesYet": {
-    "description": "Empty state in chat screen"
   },
   "noPartnerServers": "No partner servers available yet.",
   "@noPartnerServers": {
@@ -952,10 +921,6 @@
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportMessage": "Report message",
-  "@reportMessage": {
-    "description": "Title when reporting a specific message"
-  },
   "reportReasonHarassment": "Harassment",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
@@ -1144,14 +1109,6 @@
   "@somethingWentWrong": {
     "description": "Generic error message"
   },
-  "startChatHint": "Find a friend and start chatting!",
-  "@startChatHint": {
-    "description": "Empty state subtitle on conversations screen"
-  },
-  "tabChats": "Chats",
-  "@tabChats": {
-    "description": "Tab label for Chats tab"
-  },
   "tabFriends": "Friends",
   "@tabFriends": {
     "description": "Tab label for Friends tab"
@@ -1230,196 +1187,6 @@
   "weakPassword": "Password is too weak. Please choose a stronger one.",
   "@weakPassword": {
     "description": "Error for weak password"
-  },
-  "wikiArmor": "Armor",
-  "@wikiArmor": {
-    "description": "Wiki item sub-category: Armor"
-  },
-  "wikiBiomes": "Biomes",
-  "@wikiBiomes": {
-    "description": "Wiki category: Biomes"
-  },
-  "wikiBlocks": "Blocks",
-  "@wikiBlocks": {
-    "description": "Wiki category: Blocks"
-  },
-  "wikiBoss": "Boss",
-  "@wikiBoss": {
-    "description": "Wiki mob sub-category: Boss"
-  },
-  "wikiBow": "Bow",
-  "@wikiBow": {
-    "description": "Wiki enchantment sub-category: Bow"
-  },
-  "wikiBrewing": "Brewing",
-  "@wikiBrewing": {
-    "description": "Wiki item sub-category: Brewing"
-  },
-  "wikiCategories": "{count} categories",
-  "@wikiCategories": {
-    "description": "Subtitle on wiki section card showing number of subcategories",
-    "placeholders": {
-      "count": {}
-    }
-  },
-  "wikiCouldNotLoadContent": "Could not load article content.",
-  "@wikiCouldNotLoadContent": {
-    "description": "Error when wiki article content fails to load"
-  },
-  "wikiCouldNotLoadPages": "Could not load pages. Please try again.",
-  "@wikiCouldNotLoadPages": {
-    "description": "Error when wiki pages fail to load"
-  },
-  "wikiCouldNotReach": "Could not reach the wiki. Check your connection.",
-  "@wikiCouldNotReach": {
-    "description": "Error when the wiki cannot be reached"
-  },
-  "wikiCrafting": "Crafting",
-  "@wikiCrafting": {
-    "description": "Section header for crafting recipes in wiki detail"
-  },
-  "wikiDecoration": "Decoration",
-  "@wikiDecoration": {
-    "description": "Wiki block sub-category: Decoration"
-  },
-  "wikiEnchantments": "Enchantments",
-  "@wikiEnchantments": {
-    "description": "Wiki category: Enchantments"
-  },
-  "wikiFishing": "Fishing",
-  "@wikiFishing": {
-    "description": "Wiki enchantment sub-category: Fishing"
-  },
-  "wikiFood": "Food",
-  "@wikiFood": {
-    "description": "Wiki item sub-category: Food"
-  },
-  "wikiHostile": "Hostile",
-  "@wikiHostile": {
-    "description": "Wiki mob sub-category: Hostile"
-  },
-  "wikiItems": "Items",
-  "@wikiItems": {
-    "description": "Wiki category: Items"
-  },
-  "wikiMaterials": "Materials",
-  "@wikiMaterials": {
-    "description": "Wiki item sub-category: Materials"
-  },
-  "wikiMinecraftWiki": "Minecraft Wiki",
-  "@wikiMinecraftWiki": {
-    "description": "Badge/label linking to Minecraft Wiki"
-  },
-  "wikiMobs": "Mobs",
-  "@wikiMobs": {
-    "description": "Wiki category: Mobs"
-  },
-  "wikiNatural": "Natural",
-  "@wikiNatural": {
-    "description": "Wiki block sub-category: Natural"
-  },
-  "wikiNether": "Nether",
-  "@wikiNether": {
-    "description": "Wiki biome/structure sub-category: Nether"
-  },
-  "wikiNeutral": "Neutral",
-  "@wikiNeutral": {
-    "description": "Wiki mob sub-category: Neutral"
-  },
-  "wikiNoPagesFound": "No pages found",
-  "@wikiNoPagesFound": {
-    "description": "Empty state when no wiki pages are available"
-  },
-  "wikiNoResults": "No results found for \"{query}\"",
-  "@wikiNoResults": {
-    "description": "Empty search results message",
-    "placeholders": {
-      "query": {}
-    }
-  },
-  "wikiOpenInBrowser": "Open in browser",
-  "@wikiOpenInBrowser": {
-    "description": "Button to open wiki article in external browser"
-  },
-  "wikiOres": "Ores",
-  "@wikiOres": {
-    "description": "Wiki block sub-category: Ores"
-  },
-  "wikiOverworld": "Overworld",
-  "@wikiOverworld": {
-    "description": "Wiki biome/structure sub-category: Overworld"
-  },
-  "wikiPassive": "Passive",
-  "@wikiPassive": {
-    "description": "Wiki mob sub-category: Passive"
-  },
-  "wikiPlants": "Plants",
-  "@wikiPlants": {
-    "description": "Wiki block sub-category: Plants"
-  },
-  "wikiPotions": "Potions",
-  "@wikiPotions": {
-    "description": "Wiki category: Potions"
-  },
-  "wikiRanged": "Ranged",
-  "@wikiRanged": {
-    "description": "Wiki item sub-category: Ranged"
-  },
-  "wikiReadFullArticle": "Read full article",
-  "@wikiReadFullArticle": {
-    "description": "Button at bottom of wiki detail to open full article"
-  },
-  "wikiRedstone": "Redstone",
-  "@wikiRedstone": {
-    "description": "Wiki block sub-category: Redstone"
-  },
-  "wikiSearchHint": "Search the wiki…",
-  "@wikiSearchHint": {
-    "description": "Hint text for wiki search field"
-  },
-  "wikiStatusEffects": "Status Effects",
-  "@wikiStatusEffects": {
-    "description": "Wiki potion sub-category: Status Effects"
-  },
-  "wikiStone": "Stone",
-  "@wikiStone": {
-    "description": "Wiki block sub-category: Stone"
-  },
-  "wikiStructures": "Structures",
-  "@wikiStructures": {
-    "description": "Wiki category: Structures"
-  },
-  "wikiSword": "Sword",
-  "@wikiSword": {
-    "description": "Wiki enchantment sub-category: Sword"
-  },
-  "wikiSwords": "Swords",
-  "@wikiSwords": {
-    "description": "Wiki item sub-category: Swords"
-  },
-  "wikiTheEnd": "The End",
-  "@wikiTheEnd": {
-    "description": "Wiki biome/structure sub-category: The End"
-  },
-  "wikiTitle": "Wiki",
-  "@wikiTitle": {
-    "description": "Title of the wiki screen"
-  },
-  "wikiTool": "Tool",
-  "@wikiTool": {
-    "description": "Wiki enchantment sub-category: Tool"
-  },
-  "wikiTools": "Tools",
-  "@wikiTools": {
-    "description": "Wiki item sub-category: Tools"
-  },
-  "wikiUtility": "Utility",
-  "@wikiUtility": {
-    "description": "Wiki mob sub-category: Utility"
-  },
-  "wikiWood": "Wood",
-  "@wikiWood": {
-    "description": "Wiki block sub-category: Wood"
   },
   "xboxAccountLinked": "Xbox account linked!",
   "@xboxAccountLinked": {
@@ -1511,13 +1278,11 @@
   "splashFeatureSkins": "Skins",
   "featureLabelConnector": "موصّل",
   "featureLabelSkins": "سكنز",
-  "featureLabelWiki": "ويكي",
-  "featureLabelPartners": "شركاء",
+  "featureLabelPartners": "قائمة الخوادم",
   "featureLabelLookup": "بحث",
   "featureLabelTracker": "متتبع الخادم",
   "featureSubtitleConnector": "ربط وحدات التحكم بـ Minecraft",
   "featureSubtitleSkins": "تصفح وإدارة سكنز Minecraft",
-  "featureSubtitleWiki": "موسوعة Minecraft",
   "featureSubtitlePartners": "الخوادم المميزة",
   "featureSubtitleLookup": "البحث عن ملفات Java و Bedrock",
   "featureSubtitleTracker": "مراقبة حالة الخادم والإشعارات",
@@ -1530,10 +1295,6 @@
   "upgradeWindowsHint": "الترقية متاحة عبر متجر Microsoft",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "chatEmptyHint": "كن أول من يقول شيئاً!",
-  "@chatEmptyHint": {
-    "description": "Subtitle on the empty chat screen"
   },
   "skinSaved": "تم حفظ السكن",
   "@skinSaved": {
@@ -1562,7 +1323,6 @@
   },
   "feedbackBugReport": "تقرير خطأ",
   "feedbackFeatureRequest": "طلب ميزة",
-  "feedbackGoesToGithub": "يُرسل مباشرةً إلى GitHub",
   "feedbackTitleLabel": "العنوان",
   "feedbackTitleHintBug": "مثال: التطبيق يتعطل عند فتح محرر السكن",
   "feedbackTitleHintFeature": "مثال: عرض بينج اللاعب في قائمة الخوادم",
@@ -1575,10 +1335,9 @@
   "feedbackEmailNote": "لن يُشارك بريدك الإلكتروني علنًا أبدًا.",
   "feedbackSubmitBug": "إرسال تقرير الخطأ",
   "feedbackSubmitFeature": "إرسال طلب الميزة",
-  "feedbackDisclaimer": "ينشئ تذكرة عامة على GitHub · لا تُدرج كلمات المرور",
+  "feedbackDisclaimer": "يصل إلى فريقنا · لا تضع كلمات المرور",
   "feedbackSuccessTitle": "شكرًا على ملاحظاتك!",
-  "feedbackSuccessBody": "شكرًا! وصلنا تقريرك وسنطّلع عليه في أقرب وقت.",
-  "feedbackViewOnGithub": "عرض على GitHub",
+  "feedbackSuccessBody": "شكرًا لك! وصلنا بلاغك. نردّ داخل التطبيق، فعد إلى هنا لرؤية الرد.",
   "feedbackSubmitAnother": "إرسال آخر",
   "feedbackBackToApp": "العودة إلى التطبيق",
   "feedbackTitleTooShort": "يجب أن يحتوي العنوان على 5 أحرف على الأقل.",
@@ -1900,8 +1659,6 @@
   "reportBug": "ملاحظات",
   "rpBehaviorContentWarning": "تحتوي هذه الحزمة على بيانات حزمة سلوك لن تعمل على الخوادم. ستظل الإكساءات تعمل.",
   "rpInvalidPackFormat": "هذه حزمة إصدار Java وهي غير مدعومة. يرجى استخدام حزمة موارد لإصدار Bedrock.",
-  "wikiFavourites": "المفضلة",
-  "wikiRecent": "شوهدت مؤخرًا",
   "supportInboxTitle": "بريد الدعم",
   "supportInboxSubtitle": "كل محادثات الدعم، متاحة لجميع المشرفين",
   "adminBadge": "مشرف",
@@ -1961,11 +1718,8 @@
   "notifFeedbackStatus": "تحديث بشأن ملاحظاتك",
   "notifFeedbackReply": "رد على ملاحظاتك",
   "adminTicketsHeader": "البلاغات والطلبات",
-  "adminGeneralChat": "محادثة عامة",
   "adminTicketReplyHint": "رد بخصوص هذه التذكرة…",
   "adminNoTicketsForUser": "لا توجد تذاكر من هذا المستخدم",
-  "hideConversation": "إخفاء",
-  "conversationHidden": "تم إخفاء المحادثة",
   "undo": "تراجع",
   "chooseServerTitle": "اختر خادمًا",
   "changeLabel": "تغيير",
@@ -2041,5 +1795,54 @@
     }
   },
   "updateAvailableAction": "تنزيل",
-  "updateAvailableDismiss": "ليس الآن"
+  "updateAvailableDismiss": "ليس الآن",
+  "serverListSearchHint": "ابحث بالاسم أو العنوان",
+  "serverListEditionAny": "Java و Bedrock",
+  "serverListEditionJava": "Java فقط",
+  "serverListEditionBedrock": "Bedrock فقط",
+  "serverListSortVotes": "الأكثر تصويتًا",
+  "serverListSortPlayers": "الأكثر لاعبين",
+  "serverListSortPeak": "أعلى ذروة",
+  "serverListSortNewest": "الأحدث",
+  "serverListSortName": "الاسم",
+  "serverListAllCategories": "الكل",
+  "serverListLoadFailed": "تعذّر تحميل قائمة الخوادم",
+  "serverListLoadFailedHint": "اسحب للأسفل لإعادة المحاولة",
+  "serverListNoMatch": "لا توجد خوادم مطابقة",
+  "serverListNoMatchHint": "جرّب بحثًا أو فئة أخرى",
+  "serverCardPlay": "العب",
+  "serverCardVote": "صوّت",
+  "serverCardViewServer": "عرض الخادم",
+  "serverCopyIp": "نسخ الـ IP",
+  "serverCopied": "تم النسخ",
+  "serverStatPlayers": "اللاعبون",
+  "serverStatPeak": "الذروة",
+  "serverStatUptime": "مدة التشغيل",
+  "serverStatVotesMonth": "أصوات هذا الشهر",
+  "serverStatVotesAllTime": "إجمالي الأصوات",
+  "serverBadgeFeatured": "مميّز",
+  "serverEditionJava": "Java",
+  "serverEditionBedrock": "Bedrock",
+  "serverEditionCrossplay": "لعب مشترك",
+  "serverSectionMotd": "رسالة اليوم",
+  "serverSectionAbout": "نبذة",
+  "serverSectionCategories": "الفئات",
+  "serverSectionVotes": "الأصوات",
+  "serverLinkDiscord": "Discord",
+  "serverLinkWebsite": "الموقع",
+  "serverVotesThisMonth": "هذا الشهر",
+  "serverVotesAllTime": "كل الأوقات",
+  "serverVoteAction": "صوّت لهذا الخادم",
+  "serverPlayAction": "العب على هذا الخادم",
+  "serverVoteSignInRequired": "سجّل الدخول للتصويت من التطبيق.",
+  "serverVoteSheetTitle": "صوّت لـ {name}",
+  "serverVoteSheetSubtitle": "اسمك في Minecraft، ليعرف الخادم من يكافئ.",
+  "serverVoteSheetHint": "Steve",
+  "serverVoteSheetButton": "صوّت",
+  "serverVoteSheetLimit": "صوت واحد لكل خادم في اليوم.",
+  "serverVoteDelivered": "تم التصويت. مكافأتك في الطريق.",
+  "serverVoteNoRewards": "تم التصويت. لم يضبط هذا الخادم أي مكافآت.",
+  "serverVoteFailed": "لم ينجح ذلك، يرجى المحاولة مرة أخرى.",
+  "serverVoteOffline": "تعذّر الوصول إلى الخادم. تحقّق من اتصالك.",
+  "feedbackViewYourReport": "عرض بلاغك"
 }

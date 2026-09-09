@@ -132,27 +132,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get labelJava => 'Java';
 
   @override
-  String get startJavaMode => 'جاوا موڈ شروع کریں';
-
-  @override
-  String get javaInfoTitle => 'جاوا موڈ';
-
-  @override
-  String get javaInfoText => 'Java Edition سرورز سے منسلک ہوں';
-
-  @override
-  String get howToJavaTitle => 'جاوا موڈ';
-
-  @override
-  String get howToJavaSubtitle =>
-      'MCCompanion کے ذریعے Java Edition سرورز سے منسلک ہوں';
-
-  @override
   String get aternosSubtext => 'اپنا مفت مائن کرافٹ سرور بنائیں';
-
-  @override
-  String get howToJavaBody =>
-      'جاوا موڈ: فوری مراحل:\n1. ایپ میں جاوا موڈ منتخب کریں۔\n2. اپنے Java Edition سرور کا پتہ اور پورٹ درج کریں (ڈیفالٹ: 25565)۔\n3. \"جاوا موڈ شروع کریں\" دبائیں: MCCompanion کنکشن کو جوڑ دے گا۔\n4. Minecraft Bedrock کھولیں اور Friends ٹیب پر جائیں۔\n5. Java سرور میں شامل ہونے کے لیے \"MCCompanion\" نام کا LAN سرور منتخب کریں۔\n\n⚠️ اہم انتباہات:\n- ایک درست Java Edition اکاؤنٹ (Microsoft) درکار ہے۔\n- کچھ سرور anti-cheat سسٹمز استعمال کرتے ہیں جو آپ کے اکاؤنٹ کا پتا لگا کر اسے بین کر سکتے ہیں۔\n- کچھ سرور Bedrock کلائنٹس کو واضح طور پر منع کرتے ہیں, ہمیشہ سرور کے قواعد چیک کریں۔\n- اس خصوصیت کے استعمال سے پیدا ہونے والی کسی بھی پابندی، معطلی یا اکاؤنٹ سے متعلق دیگر مسائل کے لیے MCCompanion ذمہ دار نہیں ہے۔\n- اسے اپنے ذمہ استعمال کریں۔';
 
   @override
   String get language => 'اردو';
@@ -706,9 +686,6 @@ class AppLocalizationsUr extends AppLocalizations {
   String get reportUser => 'Report user';
 
   @override
-  String get reportMessage => 'Report message';
-
-  @override
   String reportUserWithName(Object name) {
     return 'Report $name';
   }
@@ -748,18 +725,6 @@ class AppLocalizationsUr extends AppLocalizations {
   String get yesterday => 'Yesterday';
 
   @override
-  String get messagePlaceholder => 'Message…';
-
-  @override
-  String get noMessagesYet => 'No messages yet.\nSay hello!';
-
-  @override
-  String get noConversationsYet => 'No conversations yet';
-
-  @override
-  String get startChatHint => 'Find a friend and start chatting!';
-
-  @override
   String get youPrefix => 'You';
 
   @override
@@ -794,9 +759,6 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get tabRequests => 'Requests';
-
-  @override
-  String get tabChats => 'Chats';
 
   @override
   String get addFriend => 'Add Friend';
@@ -1116,155 +1078,6 @@ class AppLocalizationsUr extends AppLocalizations {
   String get skinsDownload => 'Download';
 
   @override
-  String get wikiTitle => 'Wiki';
-
-  @override
-  String get wikiMinecraftWiki => 'Minecraft Wiki';
-
-  @override
-  String get wikiSearchHint => 'Search the wiki…';
-
-  @override
-  String get wikiCouldNotLoadPages => 'Could not load pages. Please try again.';
-
-  @override
-  String get wikiCouldNotReach =>
-      'Could not reach the wiki. Check your connection.';
-
-  @override
-  String wikiNoResults(Object query) {
-    return 'No results found for \"$query\"';
-  }
-
-  @override
-  String get wikiNoPagesFound => 'No pages found';
-
-  @override
-  String wikiCategories(Object count) {
-    return '$count categories';
-  }
-
-  @override
-  String get wikiCouldNotLoadContent => 'Could not load article content.';
-
-  @override
-  String get wikiOpenInBrowser => 'Open in browser';
-
-  @override
-  String get wikiCrafting => 'Crafting';
-
-  @override
-  String get wikiReadFullArticle => 'Read full article';
-
-  @override
-  String get wikiRecent => 'حال ہی میں دیکھے گئے';
-
-  @override
-  String get wikiFavourites => 'پسندیدہ';
-
-  @override
-  String get wikiMobs => 'Mobs';
-
-  @override
-  String get wikiBlocks => 'Blocks';
-
-  @override
-  String get wikiItems => 'Items';
-
-  @override
-  String get wikiBiomes => 'Biomes';
-
-  @override
-  String get wikiStructures => 'Structures';
-
-  @override
-  String get wikiEnchantments => 'Enchantments';
-
-  @override
-  String get wikiPotions => 'Potions';
-
-  @override
-  String get wikiPassive => 'Passive';
-
-  @override
-  String get wikiNeutral => 'Neutral';
-
-  @override
-  String get wikiHostile => 'Hostile';
-
-  @override
-  String get wikiBoss => 'Boss';
-
-  @override
-  String get wikiUtility => 'Utility';
-
-  @override
-  String get wikiNatural => 'Natural';
-
-  @override
-  String get wikiOres => 'Ores';
-
-  @override
-  String get wikiWood => 'Wood';
-
-  @override
-  String get wikiStone => 'Stone';
-
-  @override
-  String get wikiRedstone => 'Redstone';
-
-  @override
-  String get wikiPlants => 'Plants';
-
-  @override
-  String get wikiDecoration => 'Decoration';
-
-  @override
-  String get wikiTools => 'Tools';
-
-  @override
-  String get wikiSwords => 'Swords';
-
-  @override
-  String get wikiRanged => 'Ranged';
-
-  @override
-  String get wikiArmor => 'Armor';
-
-  @override
-  String get wikiFood => 'Food';
-
-  @override
-  String get wikiBrewing => 'Brewing';
-
-  @override
-  String get wikiMaterials => 'Materials';
-
-  @override
-  String get wikiOverworld => 'Overworld';
-
-  @override
-  String get wikiNether => 'Nether';
-
-  @override
-  String get wikiTheEnd => 'The End';
-
-  @override
-  String get wikiSword => 'Sword';
-
-  @override
-  String get wikiTool => 'Tool';
-
-  @override
-  String get wikiBow => 'Bow';
-
-  @override
-  String get wikiFishing => 'Fishing';
-
-  @override
-  String get wikiStatusEffects => 'Status Effects';
-
-  @override
   String get chooseUniqueUsername =>
       'شروع کرنے کے لیے ایک منفرد صارف نام چنیں۔';
 
@@ -1404,10 +1217,6 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get dataSourcesSection => 'Data Sources & Credits';
-
-  @override
-  String get creditMinecraftWikiSubtitle =>
-      'Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
@@ -1674,10 +1483,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get featureLabelSkins => 'اسکنز';
 
   @override
-  String get featureLabelWiki => 'ویکی';
-
-  @override
-  String get featureLabelPartners => 'شراکت دار';
+  String get featureLabelPartners => 'سرورز کی فہرست';
 
   @override
   String get featureLabelLookup => 'تلاش';
@@ -1690,9 +1496,6 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get featureSubtitleSkins => 'Minecraft اسکنز دیکھیں اور منظم کریں';
-
-  @override
-  String get featureSubtitleWiki => 'Minecraft انسائیکلوپیڈیا';
 
   @override
   String get featureSubtitlePartners => 'نمایاں سرورز';
@@ -1717,9 +1520,6 @@ class AppLocalizationsUr extends AppLocalizations {
   String get upgradeWindowsHint => 'اپ گریڈ مائیکروسافٹ اسٹور پر دستیاب ہے';
 
   @override
-  String get chatEmptyHint => 'پہلے کچھ کہنے والے بنیں!';
-
-  @override
   String get skinSaved => 'اسکن محفوظ';
 
   @override
@@ -1741,9 +1541,6 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get feedbackFeatureRequest => 'فیچر کی درخواست';
-
-  @override
-  String get feedbackGoesToGithub => 'براہ راست GitHub پر جاتا ہے';
 
   @override
   String get feedbackTitleLabel => 'عنوان';
@@ -1786,18 +1583,14 @@ class AppLocalizationsUr extends AppLocalizations {
   String get feedbackSubmitFeature => 'فیچر درخواست جمع کریں';
 
   @override
-  String get feedbackDisclaimer =>
-      'GitHub پر ایک عوامی ایشو بناتا ہے · پاس ورڈ شامل نہ کریں';
+  String get feedbackDisclaimer => 'ہماری ٹیم تک جاتا ہے · پاس ورڈ نہ لکھیں';
 
   @override
   String get feedbackSuccessTitle => 'فیڈبیک کے لیے شکریہ!';
 
   @override
   String get feedbackSuccessBody =>
-      'شکریہ! آپ کی رپورٹ موصول ہو گئی ہے۔ ہم جلد از جلد دیکھیں گے۔';
-
-  @override
-  String get feedbackViewOnGithub => 'GitHub پر دیکھیں';
+      'شکریہ! آپ کی رپورٹ موصول ہو گئی۔ ہم ایپ میں جواب دیتے ہیں، اس لیے جواب دیکھنے کے لیے یہاں واپس آئیں۔';
 
   @override
   String get feedbackSubmitAnother => 'ایک اور جمع کریں';
@@ -2636,19 +2429,10 @@ class AppLocalizationsUr extends AppLocalizations {
   String get adminTicketsHeader => 'رپورٹس اور درخواستیں';
 
   @override
-  String get adminGeneralChat => 'عام چیٹ';
-
-  @override
   String get adminTicketReplyHint => 'اس ٹکٹ کے بارے میں جواب دیں…';
 
   @override
   String get adminNoTicketsForUser => 'اس صارف کا کوئی ٹکٹ نہیں';
-
-  @override
-  String get hideConversation => 'چھپائیں';
-
-  @override
-  String get conversationHidden => 'گفتگو چھپا دی گئی';
 
   @override
   String get undo => 'واپس';
@@ -2804,4 +2588,156 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get updateAvailableDismiss => 'ابھی نہیں';
+
+  @override
+  String get serverListSearchHint => 'نام یا پتے سے تلاش کریں';
+
+  @override
+  String get serverListEditionAny => 'Java اور Bedrock';
+
+  @override
+  String get serverListEditionJava => 'صرف Java';
+
+  @override
+  String get serverListEditionBedrock => 'صرف Bedrock';
+
+  @override
+  String get serverListSortVotes => 'سب سے زیادہ ووٹ';
+
+  @override
+  String get serverListSortPlayers => 'سب سے زیادہ کھلاڑی';
+
+  @override
+  String get serverListSortPeak => 'سب سے بلند عروج';
+
+  @override
+  String get serverListSortNewest => 'نئے ترین';
+
+  @override
+  String get serverListSortName => 'نام';
+
+  @override
+  String get serverListAllCategories => 'سب';
+
+  @override
+  String get serverListLoadFailed => 'سرور کی فہرست لوڈ نہیں ہو سکی';
+
+  @override
+  String get serverListLoadFailedHint => 'دوبارہ کوشش کے لیے نیچے کھینچیں';
+
+  @override
+  String get serverListNoMatch => 'کوئی سرور نہیں ملا';
+
+  @override
+  String get serverListNoMatchHint => 'کوئی اور تلاش یا زمرہ آزمائیں';
+
+  @override
+  String get serverCardPlay => 'کھیلیں';
+
+  @override
+  String get serverCardVote => 'ووٹ دیں';
+
+  @override
+  String get serverCardViewServer => 'سرور دیکھیں';
+
+  @override
+  String get serverCopyIp => 'IP کاپی کریں';
+
+  @override
+  String get serverCopied => 'کاپی ہو گیا';
+
+  @override
+  String get serverStatPlayers => 'کھلاڑی';
+
+  @override
+  String get serverStatPeak => 'عروج';
+
+  @override
+  String get serverStatUptime => 'اپ ٹائم';
+
+  @override
+  String get serverStatVotesMonth => 'اس ماہ کے ووٹ';
+
+  @override
+  String get serverStatVotesAllTime => 'کل ووٹ';
+
+  @override
+  String get serverBadgeFeatured => 'نمایاں';
+
+  @override
+  String get serverEditionJava => 'Java';
+
+  @override
+  String get serverEditionBedrock => 'Bedrock';
+
+  @override
+  String get serverEditionCrossplay => 'کراس پلے';
+
+  @override
+  String get serverSectionMotd => 'آج کا پیغام';
+
+  @override
+  String get serverSectionAbout => 'تعارف';
+
+  @override
+  String get serverSectionCategories => 'زمرے';
+
+  @override
+  String get serverSectionVotes => 'ووٹ';
+
+  @override
+  String get serverLinkDiscord => 'Discord';
+
+  @override
+  String get serverLinkWebsite => 'ویب سائٹ';
+
+  @override
+  String get serverVotesThisMonth => 'اس ماہ';
+
+  @override
+  String get serverVotesAllTime => 'مجموعی';
+
+  @override
+  String get serverVoteAction => 'اس سرور کو ووٹ دیں';
+
+  @override
+  String get serverPlayAction => 'اس سرور پر کھیلیں';
+
+  @override
+  String get serverVoteSignInRequired => 'ایپ سے ووٹ دینے کے لیے سائن ان کریں۔';
+
+  @override
+  String serverVoteSheetTitle(String name) {
+    return '$name کو ووٹ دیں';
+  }
+
+  @override
+  String get serverVoteSheetSubtitle =>
+      'آپ کا Minecraft نام، تاکہ سرور جان سکے کسے انعام دینا ہے۔';
+
+  @override
+  String get serverVoteSheetHint => 'Steve';
+
+  @override
+  String get serverVoteSheetButton => 'ووٹ دیں';
+
+  @override
+  String get serverVoteSheetLimit => 'ہر سرور پر دن میں ایک ووٹ۔';
+
+  @override
+  String get serverVoteDelivered => 'ووٹ ہو گیا۔ آپ کا انعام راستے میں ہے۔';
+
+  @override
+  String get serverVoteNoRewards =>
+      'ووٹ ہو گیا۔ اس سرور پر کوئی انعام مقرر نہیں۔';
+
+  @override
+  String get serverVoteFailed => 'یہ کام نہیں کیا، براہ کرم دوبارہ کوشش کریں۔';
+
+  @override
+  String get serverVoteOffline =>
+      'سرور تک رسائی نہیں ہو سکی۔ اپنا کنکشن چیک کریں۔';
+
+  @override
+  String get feedbackViewYourReport => 'اپنی رپورٹ دیکھیں';
 }

@@ -360,47 +360,11 @@ abstract class AppLocalizations {
   /// **'Java'**
   String get labelJava;
 
-  /// No description provided for @startJavaMode.
-  ///
-  /// In en, this message translates to:
-  /// **'Start Java Mode'**
-  String get startJavaMode;
-
-  /// No description provided for @javaInfoTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Java Mode'**
-  String get javaInfoTitle;
-
-  /// No description provided for @javaInfoText.
-  ///
-  /// In en, this message translates to:
-  /// **'Connect to Java Edition servers'**
-  String get javaInfoText;
-
-  /// Title for the Java how-to modal
-  ///
-  /// In en, this message translates to:
-  /// **'Java Mode'**
-  String get howToJavaTitle;
-
-  /// Short subtitle for Java menu tile
-  ///
-  /// In en, this message translates to:
-  /// **'Connect to Java Edition servers via MCCompanion'**
-  String get howToJavaSubtitle;
-
   /// No description provided for @aternosSubtext.
   ///
   /// In en, this message translates to:
   /// **'Create your own free Minecraft server'**
   String get aternosSubtext;
-
-  /// Detailed steps for Java mode how-to modal
-  ///
-  /// In en, this message translates to:
-  /// **'Java Mode: quick steps:\n1. In the app, select Java mode.\n2. Enter your Java Edition server address and port (default: 25565).\n3. Press \"Start Java Mode\": MCCompanion bridges the connection.\n4. Open Minecraft Bedrock and go to the Friends tab.\n5. Select the LAN server named \"MCCompanion\" to join the Java server.\n\n⚠️ Important warnings:\n- A valid Java Edition account (Microsoft) is required.\n- Some servers use anti-cheat systems that may detect and ban your account.\n- Certain servers explicitly prohibit Bedrock clients, always check the server rules.\n- MCCompanion is not responsible for any account bans, suspensions, or other account-related issues that may result from using this feature.\n- Use at your own risk.'**
-  String get howToJavaBody;
 
   /// Your language name in your own language
   ///
@@ -1416,12 +1380,6 @@ abstract class AppLocalizations {
   /// **'Report user'**
   String get reportUser;
 
-  /// Title when reporting a specific message
-  ///
-  /// In en, this message translates to:
-  /// **'Report message'**
-  String get reportMessage;
-
   /// Title when reporting a user by name
   ///
   /// In en, this message translates to:
@@ -1494,30 +1452,6 @@ abstract class AppLocalizations {
   /// **'Yesterday'**
   String get yesterday;
 
-  /// Hint text in the chat message input
-  ///
-  /// In en, this message translates to:
-  /// **'Message…'**
-  String get messagePlaceholder;
-
-  /// Empty state in chat screen
-  ///
-  /// In en, this message translates to:
-  /// **'No messages yet.\nSay hello!'**
-  String get noMessagesYet;
-
-  /// Empty state title on conversations screen
-  ///
-  /// In en, this message translates to:
-  /// **'No conversations yet'**
-  String get noConversationsYet;
-
-  /// Empty state subtitle on conversations screen
-  ///
-  /// In en, this message translates to:
-  /// **'Find a friend and start chatting!'**
-  String get startChatHint;
-
   /// Prefix for last message preview when message is from current user
   ///
   /// In en, this message translates to:
@@ -1583,12 +1517,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Requests'**
   String get tabRequests;
-
-  /// Tab label for Chats tab
-  ///
-  /// In en, this message translates to:
-  /// **'Chats'**
-  String get tabChats;
 
   /// Title/button for adding a friend
   ///
@@ -2142,294 +2070,6 @@ abstract class AppLocalizations {
   /// **'Download'**
   String get skinsDownload;
 
-  /// Title of the wiki screen
-  ///
-  /// In en, this message translates to:
-  /// **'Wiki'**
-  String get wikiTitle;
-
-  /// Badge/label linking to Minecraft Wiki
-  ///
-  /// In en, this message translates to:
-  /// **'Minecraft Wiki'**
-  String get wikiMinecraftWiki;
-
-  /// Hint text for wiki search field
-  ///
-  /// In en, this message translates to:
-  /// **'Search the wiki…'**
-  String get wikiSearchHint;
-
-  /// Error when wiki pages fail to load
-  ///
-  /// In en, this message translates to:
-  /// **'Could not load pages. Please try again.'**
-  String get wikiCouldNotLoadPages;
-
-  /// Error when the wiki cannot be reached
-  ///
-  /// In en, this message translates to:
-  /// **'Could not reach the wiki. Check your connection.'**
-  String get wikiCouldNotReach;
-
-  /// Empty search results message
-  ///
-  /// In en, this message translates to:
-  /// **'No results found for \"{query}\"'**
-  String wikiNoResults(Object query);
-
-  /// Empty state when no wiki pages are available
-  ///
-  /// In en, this message translates to:
-  /// **'No pages found'**
-  String get wikiNoPagesFound;
-
-  /// Subtitle on wiki section card showing number of subcategories
-  ///
-  /// In en, this message translates to:
-  /// **'{count} categories'**
-  String wikiCategories(Object count);
-
-  /// Error when wiki article content fails to load
-  ///
-  /// In en, this message translates to:
-  /// **'Could not load article content.'**
-  String get wikiCouldNotLoadContent;
-
-  /// Button to open wiki article in external browser
-  ///
-  /// In en, this message translates to:
-  /// **'Open in browser'**
-  String get wikiOpenInBrowser;
-
-  /// Section header for crafting recipes in wiki detail
-  ///
-  /// In en, this message translates to:
-  /// **'Crafting'**
-  String get wikiCrafting;
-
-  /// Button at bottom of wiki detail to open full article
-  ///
-  /// In en, this message translates to:
-  /// **'Read full article'**
-  String get wikiReadFullArticle;
-
-  /// Section label for recently viewed wiki articles
-  ///
-  /// In en, this message translates to:
-  /// **'Recently viewed'**
-  String get wikiRecent;
-
-  /// Section label for favourited wiki articles
-  ///
-  /// In en, this message translates to:
-  /// **'Favourites'**
-  String get wikiFavourites;
-
-  /// Wiki category: Mobs
-  ///
-  /// In en, this message translates to:
-  /// **'Mobs'**
-  String get wikiMobs;
-
-  /// Wiki category: Blocks
-  ///
-  /// In en, this message translates to:
-  /// **'Blocks'**
-  String get wikiBlocks;
-
-  /// Wiki category: Items
-  ///
-  /// In en, this message translates to:
-  /// **'Items'**
-  String get wikiItems;
-
-  /// Wiki category: Biomes
-  ///
-  /// In en, this message translates to:
-  /// **'Biomes'**
-  String get wikiBiomes;
-
-  /// Wiki category: Structures
-  ///
-  /// In en, this message translates to:
-  /// **'Structures'**
-  String get wikiStructures;
-
-  /// Wiki category: Enchantments
-  ///
-  /// In en, this message translates to:
-  /// **'Enchantments'**
-  String get wikiEnchantments;
-
-  /// Wiki category: Potions
-  ///
-  /// In en, this message translates to:
-  /// **'Potions'**
-  String get wikiPotions;
-
-  /// Wiki mob sub-category: Passive
-  ///
-  /// In en, this message translates to:
-  /// **'Passive'**
-  String get wikiPassive;
-
-  /// Wiki mob sub-category: Neutral
-  ///
-  /// In en, this message translates to:
-  /// **'Neutral'**
-  String get wikiNeutral;
-
-  /// Wiki mob sub-category: Hostile
-  ///
-  /// In en, this message translates to:
-  /// **'Hostile'**
-  String get wikiHostile;
-
-  /// Wiki mob sub-category: Boss
-  ///
-  /// In en, this message translates to:
-  /// **'Boss'**
-  String get wikiBoss;
-
-  /// Wiki mob sub-category: Utility
-  ///
-  /// In en, this message translates to:
-  /// **'Utility'**
-  String get wikiUtility;
-
-  /// Wiki block sub-category: Natural
-  ///
-  /// In en, this message translates to:
-  /// **'Natural'**
-  String get wikiNatural;
-
-  /// Wiki block sub-category: Ores
-  ///
-  /// In en, this message translates to:
-  /// **'Ores'**
-  String get wikiOres;
-
-  /// Wiki block sub-category: Wood
-  ///
-  /// In en, this message translates to:
-  /// **'Wood'**
-  String get wikiWood;
-
-  /// Wiki block sub-category: Stone
-  ///
-  /// In en, this message translates to:
-  /// **'Stone'**
-  String get wikiStone;
-
-  /// Wiki block sub-category: Redstone
-  ///
-  /// In en, this message translates to:
-  /// **'Redstone'**
-  String get wikiRedstone;
-
-  /// Wiki block sub-category: Plants
-  ///
-  /// In en, this message translates to:
-  /// **'Plants'**
-  String get wikiPlants;
-
-  /// Wiki block sub-category: Decoration
-  ///
-  /// In en, this message translates to:
-  /// **'Decoration'**
-  String get wikiDecoration;
-
-  /// Wiki item sub-category: Tools
-  ///
-  /// In en, this message translates to:
-  /// **'Tools'**
-  String get wikiTools;
-
-  /// Wiki item sub-category: Swords
-  ///
-  /// In en, this message translates to:
-  /// **'Swords'**
-  String get wikiSwords;
-
-  /// Wiki item sub-category: Ranged
-  ///
-  /// In en, this message translates to:
-  /// **'Ranged'**
-  String get wikiRanged;
-
-  /// Wiki item sub-category: Armor
-  ///
-  /// In en, this message translates to:
-  /// **'Armor'**
-  String get wikiArmor;
-
-  /// Wiki item sub-category: Food
-  ///
-  /// In en, this message translates to:
-  /// **'Food'**
-  String get wikiFood;
-
-  /// Wiki item sub-category: Brewing
-  ///
-  /// In en, this message translates to:
-  /// **'Brewing'**
-  String get wikiBrewing;
-
-  /// Wiki item sub-category: Materials
-  ///
-  /// In en, this message translates to:
-  /// **'Materials'**
-  String get wikiMaterials;
-
-  /// Wiki biome/structure sub-category: Overworld
-  ///
-  /// In en, this message translates to:
-  /// **'Overworld'**
-  String get wikiOverworld;
-
-  /// Wiki biome/structure sub-category: Nether
-  ///
-  /// In en, this message translates to:
-  /// **'Nether'**
-  String get wikiNether;
-
-  /// Wiki biome/structure sub-category: The End
-  ///
-  /// In en, this message translates to:
-  /// **'The End'**
-  String get wikiTheEnd;
-
-  /// Wiki enchantment sub-category: Sword
-  ///
-  /// In en, this message translates to:
-  /// **'Sword'**
-  String get wikiSword;
-
-  /// Wiki enchantment sub-category: Tool
-  ///
-  /// In en, this message translates to:
-  /// **'Tool'**
-  String get wikiTool;
-
-  /// Wiki enchantment sub-category: Bow
-  ///
-  /// In en, this message translates to:
-  /// **'Bow'**
-  String get wikiBow;
-
-  /// Wiki enchantment sub-category: Fishing
-  ///
-  /// In en, this message translates to:
-  /// **'Fishing'**
-  String get wikiFishing;
-
-  /// Wiki potion sub-category: Status Effects
-  ///
-  /// In en, this message translates to:
-  /// **'Status Effects'**
-  String get wikiStatusEffects;
-
   /// chooseUniqueUsername
   ///
   /// In en, this message translates to:
@@ -2688,12 +2328,6 @@ abstract class AppLocalizations {
   /// **'Data Sources & Credits'**
   String get dataSourcesSection;
 
-  /// Subtitle for Minecraft Wiki credit tile
-  ///
-  /// In en, this message translates to:
-  /// **'Used as data source for the Wiki feature. Content is provided by the community under Creative Commons.'**
-  String get creditMinecraftWikiSubtitle;
-
   /// Title for Mojang credit tile
   ///
   /// In en, this message translates to:
@@ -2829,13 +2463,13 @@ abstract class AppLocalizations {
   /// Title for the partner servers screen
   ///
   /// In en, this message translates to:
-  /// **'Partner Servers'**
+  /// **'Server List'**
   String get partnerServersTitle;
 
   /// Empty state text on partner servers screen
   ///
   /// In en, this message translates to:
-  /// **'No partner servers available yet.'**
+  /// **'No servers to show yet.'**
   String get noPartnerServers;
 
   /// Secondary empty state text on partner servers screen
@@ -3192,16 +2826,10 @@ abstract class AppLocalizations {
   /// **'Skins'**
   String get featureLabelSkins;
 
-  /// No description provided for @featureLabelWiki.
-  ///
-  /// In en, this message translates to:
-  /// **'Wiki'**
-  String get featureLabelWiki;
-
   /// No description provided for @featureLabelPartners.
   ///
   /// In en, this message translates to:
-  /// **'Partners'**
+  /// **'Server list'**
   String get featureLabelPartners;
 
   /// No description provided for @featureLabelLookup.
@@ -3227,12 +2855,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Browse & manage Minecraft skins'**
   String get featureSubtitleSkins;
-
-  /// No description provided for @featureSubtitleWiki.
-  ///
-  /// In en, this message translates to:
-  /// **'Minecraft encyclopedia'**
-  String get featureSubtitleWiki;
 
   /// No description provided for @featureSubtitlePartners.
   ///
@@ -3276,12 +2898,6 @@ abstract class AppLocalizations {
   /// **'Upgrade available via the Microsoft Store'**
   String get upgradeWindowsHint;
 
-  /// Subtitle on the empty chat screen
-  ///
-  /// In en, this message translates to:
-  /// **'Be the first to say something!'**
-  String get chatEmptyHint;
-
   /// Toast when skin is saved
   ///
   /// In en, this message translates to:
@@ -3323,12 +2939,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Feature Request'**
   String get feedbackFeatureRequest;
-
-  /// Subtitle in feedback screen header
-  ///
-  /// In en, this message translates to:
-  /// **'Goes straight to GitHub'**
-  String get feedbackGoesToGithub;
 
   /// Label above title field in feedback form
   ///
@@ -3405,7 +3015,7 @@ abstract class AppLocalizations {
   /// Small disclaimer below submit button
   ///
   /// In en, this message translates to:
-  /// **'Creates a public issue on GitHub · Don\'t include passwords'**
+  /// **'Goes to our team · Don\'t include passwords'**
   String get feedbackDisclaimer;
 
   /// Success screen title
@@ -3417,14 +3027,8 @@ abstract class AppLocalizations {
   /// Success screen body text
   ///
   /// In en, this message translates to:
-  /// **'Thanks! Your report is in. We\'ll take a look as soon as we can.'**
+  /// **'Thanks! Your report is in. We reply in the app, so check back here for an answer.'**
   String get feedbackSuccessBody;
-
-  /// Button to open GitHub issue
-  ///
-  /// In en, this message translates to:
-  /// **'View on GitHub'**
-  String get feedbackViewOnGithub;
 
   /// Button to reset and submit another report
   ///
@@ -4920,12 +4524,6 @@ abstract class AppLocalizations {
   /// **'Reports and requests'**
   String get adminTicketsHeader;
 
-  /// No description provided for @adminGeneralChat.
-  ///
-  /// In en, this message translates to:
-  /// **'General chat'**
-  String get adminGeneralChat;
-
   /// No description provided for @adminTicketReplyHint.
   ///
   /// In en, this message translates to:
@@ -4937,18 +4535,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No tickets from this user'**
   String get adminNoTicketsForUser;
-
-  /// No description provided for @hideConversation.
-  ///
-  /// In en, this message translates to:
-  /// **'Hide'**
-  String get hideConversation;
-
-  /// No description provided for @conversationHidden.
-  ///
-  /// In en, this message translates to:
-  /// **'Conversation hidden'**
-  String get conversationHidden;
 
   /// No description provided for @undo.
   ///
@@ -5219,6 +4805,300 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Not now'**
   String get updateAvailableDismiss;
+
+  /// No description provided for @serverListSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by name or address'**
+  String get serverListSearchHint;
+
+  /// No description provided for @serverListEditionAny.
+  ///
+  /// In en, this message translates to:
+  /// **'Java and Bedrock'**
+  String get serverListEditionAny;
+
+  /// No description provided for @serverListEditionJava.
+  ///
+  /// In en, this message translates to:
+  /// **'Java only'**
+  String get serverListEditionJava;
+
+  /// No description provided for @serverListEditionBedrock.
+  ///
+  /// In en, this message translates to:
+  /// **'Bedrock only'**
+  String get serverListEditionBedrock;
+
+  /// No description provided for @serverListSortVotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Most votes'**
+  String get serverListSortVotes;
+
+  /// No description provided for @serverListSortPlayers.
+  ///
+  /// In en, this message translates to:
+  /// **'Most players'**
+  String get serverListSortPlayers;
+
+  /// No description provided for @serverListSortPeak.
+  ///
+  /// In en, this message translates to:
+  /// **'Highest peak'**
+  String get serverListSortPeak;
+
+  /// No description provided for @serverListSortNewest.
+  ///
+  /// In en, this message translates to:
+  /// **'Newest'**
+  String get serverListSortNewest;
+
+  /// No description provided for @serverListSortName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get serverListSortName;
+
+  /// No description provided for @serverListAllCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get serverListAllCategories;
+
+  /// No description provided for @serverListLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load the server list'**
+  String get serverListLoadFailed;
+
+  /// No description provided for @serverListLoadFailedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Pull down to try again'**
+  String get serverListLoadFailedHint;
+
+  /// No description provided for @serverListNoMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'No servers match that'**
+  String get serverListNoMatch;
+
+  /// No description provided for @serverListNoMatchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Try a different search or category'**
+  String get serverListNoMatchHint;
+
+  /// No description provided for @serverCardPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Play'**
+  String get serverCardPlay;
+
+  /// No description provided for @serverCardVote.
+  ///
+  /// In en, this message translates to:
+  /// **'Vote'**
+  String get serverCardVote;
+
+  /// No description provided for @serverCardViewServer.
+  ///
+  /// In en, this message translates to:
+  /// **'View server'**
+  String get serverCardViewServer;
+
+  /// No description provided for @serverCopyIp.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy IP'**
+  String get serverCopyIp;
+
+  /// No description provided for @serverCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied'**
+  String get serverCopied;
+
+  /// No description provided for @serverStatPlayers.
+  ///
+  /// In en, this message translates to:
+  /// **'Players'**
+  String get serverStatPlayers;
+
+  /// No description provided for @serverStatPeak.
+  ///
+  /// In en, this message translates to:
+  /// **'Peak'**
+  String get serverStatPeak;
+
+  /// No description provided for @serverStatUptime.
+  ///
+  /// In en, this message translates to:
+  /// **'Uptime'**
+  String get serverStatUptime;
+
+  /// No description provided for @serverStatVotesMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Votes this month'**
+  String get serverStatVotesMonth;
+
+  /// No description provided for @serverStatVotesAllTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Votes all time'**
+  String get serverStatVotesAllTime;
+
+  /// No description provided for @serverBadgeFeatured.
+  ///
+  /// In en, this message translates to:
+  /// **'Featured'**
+  String get serverBadgeFeatured;
+
+  /// No description provided for @serverEditionJava.
+  ///
+  /// In en, this message translates to:
+  /// **'Java'**
+  String get serverEditionJava;
+
+  /// No description provided for @serverEditionBedrock.
+  ///
+  /// In en, this message translates to:
+  /// **'Bedrock'**
+  String get serverEditionBedrock;
+
+  /// No description provided for @serverEditionCrossplay.
+  ///
+  /// In en, this message translates to:
+  /// **'Crossplay'**
+  String get serverEditionCrossplay;
+
+  /// No description provided for @serverSectionMotd.
+  ///
+  /// In en, this message translates to:
+  /// **'Message of the day'**
+  String get serverSectionMotd;
+
+  /// No description provided for @serverSectionAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get serverSectionAbout;
+
+  /// No description provided for @serverSectionCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get serverSectionCategories;
+
+  /// No description provided for @serverSectionVotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Votes'**
+  String get serverSectionVotes;
+
+  /// No description provided for @serverLinkDiscord.
+  ///
+  /// In en, this message translates to:
+  /// **'Discord'**
+  String get serverLinkDiscord;
+
+  /// No description provided for @serverLinkWebsite.
+  ///
+  /// In en, this message translates to:
+  /// **'Website'**
+  String get serverLinkWebsite;
+
+  /// No description provided for @serverVotesThisMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'This month'**
+  String get serverVotesThisMonth;
+
+  /// No description provided for @serverVotesAllTime.
+  ///
+  /// In en, this message translates to:
+  /// **'All time'**
+  String get serverVotesAllTime;
+
+  /// No description provided for @serverVoteAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Vote for this server'**
+  String get serverVoteAction;
+
+  /// No description provided for @serverPlayAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Play on this server'**
+  String get serverPlayAction;
+
+  /// No description provided for @serverVoteSignInRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to vote from the app.'**
+  String get serverVoteSignInRequired;
+
+  /// No description provided for @serverVoteSheetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vote for {name}'**
+  String serverVoteSheetTitle(String name);
+
+  /// No description provided for @serverVoteSheetSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Minecraft name, so the server knows who to reward.'**
+  String get serverVoteSheetSubtitle;
+
+  /// No description provided for @serverVoteSheetHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Steve'**
+  String get serverVoteSheetHint;
+
+  /// No description provided for @serverVoteSheetButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Vote'**
+  String get serverVoteSheetButton;
+
+  /// No description provided for @serverVoteSheetLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'One vote per server per day.'**
+  String get serverVoteSheetLimit;
+
+  /// No description provided for @serverVoteDelivered.
+  ///
+  /// In en, this message translates to:
+  /// **'Voted. Your reward is on its way.'**
+  String get serverVoteDelivered;
+
+  /// No description provided for @serverVoteNoRewards.
+  ///
+  /// In en, this message translates to:
+  /// **'Voted. This server has no rewards set up.'**
+  String get serverVoteNoRewards;
+
+  /// No description provided for @serverVoteFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'That did not work, please try again.'**
+  String get serverVoteFailed;
+
+  /// No description provided for @serverVoteOffline.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not reach the server. Check your connection.'**
+  String get serverVoteOffline;
+
+  /// No description provided for @feedbackViewYourReport.
+  ///
+  /// In en, this message translates to:
+  /// **'View your report'**
+  String get feedbackViewYourReport;
 }
 
 class _AppLocalizationsDelegate

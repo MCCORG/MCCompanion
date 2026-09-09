@@ -26,21 +26,6 @@
   "serverDetailsLabel": "Детали сервера",
   "start": "Запустить",
   "labelJava": "Java",
-  "startJavaMode": "Запустить режим Java",
-  "javaInfoTitle": "Режим Java",
-  "javaInfoText": "Подключайтесь к серверам Java Edition",
-  "howToJavaTitle": "Режим Java",
-  "@howToJavaTitle": {
-    "description": "Title for the Java how-to modal"
-  },
-  "howToJavaSubtitle": "Подключайтесь к серверам Java Edition через MCCompanion",
-  "@howToJavaSubtitle": {
-    "description": "Short subtitle for Java menu tile"
-  },
-  "howToJavaBody": "Режим Java: быстрые шаги:\n1. В приложении выберите режим Java.\n2. Введите адрес и порт вашего сервера Java Edition (по умолчанию: 25565).\n3. Нажмите \"Запустить режим Java\": MCCompanion свяжет соединение.\n4. Откройте Minecraft Bedrock и перейдите на вкладку Друзья.\n5. Выберите LAN-сервер с названием \"MCCompanion\", чтобы подключиться к серверу Java.\n\n⚠️ Важные предупреждения:\n- Требуется действующая учётная запись Java Edition (Microsoft).\n- Некоторые серверы используют античит-системы, которые могут обнаружить и заблокировать вашу учётную запись.\n- Некоторые серверы прямо запрещают клиентов Bedrock, всегда проверяйте правила сервера.\n- MCCompanion не несёт ответственности за блокировки, ограничения или другие проблемы, связанные с учётной записью, которые могут возникнуть при использовании этой функции.\n- Используйте на свой страх и риск.",
-  "@howToJavaBody": {
-    "description": "Detailed steps for Java mode how-to modal"
-  },
   "language": "Русский",
   "@language": {
     "description": "Your language name in your own language"
@@ -551,10 +536,6 @@
   "@creditGeyserTitle": {
     "description": "Title for GeyserMC credit tile"
   },
-  "creditMinecraftWikiSubtitle": "Источник данных для вики. Контент под лицензией Creative Commons.",
-  "@creditMinecraftWikiSubtitle": {
-    "description": "Subtitle for Minecraft Wiki credit tile"
-  },
   "creditMojangSubtitle": "Скины и профили Java через API Mojang.",
   "@creditMojangSubtitle": {
     "description": "Subtitle for Mojang credit tile"
@@ -704,10 +685,6 @@
   "@linkedAccountsTitle": {
     "description": "Section title for linked accounts card"
   },
-  "messagePlaceholder": "Сообщение…",
-  "@messagePlaceholder": {
-    "description": "Hint text in the chat message input"
-  },
   "minecraftTrademark": "\"Minecraft\" является торговой маркой корпорации Microsoft.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -732,10 +709,6 @@
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noConversationsYet": "Пока нет разговоров",
-  "@noConversationsYet": {
-    "description": "Empty state title on conversations screen"
-  },
   "noFriendsSub": "Добавьте друзей, чтобы видеть их здесь.",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
@@ -743,10 +716,6 @@
   "noFriendsYet": "Пока нет друзей",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
-  },
-  "noMessagesYet": "Пока нет сообщений.\nПоздоровайтесь!",
-  "@noMessagesYet": {
-    "description": "Empty state in chat screen"
   },
   "noPartnerServers": "Серверов-партнёров пока нет.",
   "@noPartnerServers": {
@@ -952,10 +921,6 @@
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportMessage": "Пожаловаться на сообщение",
-  "@reportMessage": {
-    "description": "Title when reporting a specific message"
-  },
   "reportReasonHarassment": "Преследование",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
@@ -1144,14 +1109,6 @@
   "@somethingWentWrong": {
     "description": "Generic error message"
   },
-  "startChatHint": "Найдите друга и начните общение!",
-  "@startChatHint": {
-    "description": "Empty state subtitle on conversations screen"
-  },
-  "tabChats": "Чаты",
-  "@tabChats": {
-    "description": "Tab label for Chats tab"
-  },
   "tabFriends": "Друзья",
   "@tabFriends": {
     "description": "Tab label for Friends tab"
@@ -1230,196 +1187,6 @@
   "weakPassword": "Пароль слишком слабый.",
   "@weakPassword": {
     "description": "Error for weak password"
-  },
-  "wikiArmor": "Броня",
-  "@wikiArmor": {
-    "description": "Wiki item sub-category: Armor"
-  },
-  "wikiBiomes": "Биомы",
-  "@wikiBiomes": {
-    "description": "Wiki category: Biomes"
-  },
-  "wikiBlocks": "Блоки",
-  "@wikiBlocks": {
-    "description": "Wiki category: Blocks"
-  },
-  "wikiBoss": "Босс",
-  "@wikiBoss": {
-    "description": "Wiki mob sub-category: Boss"
-  },
-  "wikiBow": "Лук",
-  "@wikiBow": {
-    "description": "Wiki enchantment sub-category: Bow"
-  },
-  "wikiBrewing": "Зельеварение",
-  "@wikiBrewing": {
-    "description": "Wiki item sub-category: Brewing"
-  },
-  "wikiCategories": "{count} категории",
-  "@wikiCategories": {
-    "description": "Subtitle on wiki section card showing number of subcategories",
-    "placeholders": {
-      "count": {}
-    }
-  },
-  "wikiCouldNotLoadContent": "Не удалось загрузить содержимое.",
-  "@wikiCouldNotLoadContent": {
-    "description": "Error when wiki article content fails to load"
-  },
-  "wikiCouldNotLoadPages": "Не удалось загрузить страницы.",
-  "@wikiCouldNotLoadPages": {
-    "description": "Error when wiki pages fail to load"
-  },
-  "wikiCouldNotReach": "Не удалось получить доступ к вики.",
-  "@wikiCouldNotReach": {
-    "description": "Error when the wiki cannot be reached"
-  },
-  "wikiCrafting": "Крафт",
-  "@wikiCrafting": {
-    "description": "Section header for crafting recipes in wiki detail"
-  },
-  "wikiDecoration": "Декорации",
-  "@wikiDecoration": {
-    "description": "Wiki block sub-category: Decoration"
-  },
-  "wikiEnchantments": "Зачарования",
-  "@wikiEnchantments": {
-    "description": "Wiki category: Enchantments"
-  },
-  "wikiFishing": "Рыбалка",
-  "@wikiFishing": {
-    "description": "Wiki enchantment sub-category: Fishing"
-  },
-  "wikiFood": "Еда",
-  "@wikiFood": {
-    "description": "Wiki item sub-category: Food"
-  },
-  "wikiHostile": "Враждебные",
-  "@wikiHostile": {
-    "description": "Wiki mob sub-category: Hostile"
-  },
-  "wikiItems": "Предметы",
-  "@wikiItems": {
-    "description": "Wiki category: Items"
-  },
-  "wikiMaterials": "Материалы",
-  "@wikiMaterials": {
-    "description": "Wiki item sub-category: Materials"
-  },
-  "wikiMinecraftWiki": "Вики Minecraft",
-  "@wikiMinecraftWiki": {
-    "description": "Badge/label linking to Minecraft Wiki"
-  },
-  "wikiMobs": "Мобы",
-  "@wikiMobs": {
-    "description": "Wiki category: Mobs"
-  },
-  "wikiNatural": "Природные",
-  "@wikiNatural": {
-    "description": "Wiki block sub-category: Natural"
-  },
-  "wikiNether": "Незер",
-  "@wikiNether": {
-    "description": "Wiki biome/structure sub-category: Nether"
-  },
-  "wikiNeutral": "Нейтральные",
-  "@wikiNeutral": {
-    "description": "Wiki mob sub-category: Neutral"
-  },
-  "wikiNoPagesFound": "Страницы не найдены",
-  "@wikiNoPagesFound": {
-    "description": "Empty state when no wiki pages are available"
-  },
-  "wikiNoResults": "Результатов для \"{query}\" не найдено",
-  "@wikiNoResults": {
-    "description": "Empty search results message",
-    "placeholders": {
-      "query": {}
-    }
-  },
-  "wikiOpenInBrowser": "Открыть в браузере",
-  "@wikiOpenInBrowser": {
-    "description": "Button to open wiki article in external browser"
-  },
-  "wikiOres": "Руды",
-  "@wikiOres": {
-    "description": "Wiki block sub-category: Ores"
-  },
-  "wikiOverworld": "Верхний мир",
-  "@wikiOverworld": {
-    "description": "Wiki biome/structure sub-category: Overworld"
-  },
-  "wikiPassive": "Пассивные",
-  "@wikiPassive": {
-    "description": "Wiki mob sub-category: Passive"
-  },
-  "wikiPlants": "Растения",
-  "@wikiPlants": {
-    "description": "Wiki block sub-category: Plants"
-  },
-  "wikiPotions": "Зелья",
-  "@wikiPotions": {
-    "description": "Wiki category: Potions"
-  },
-  "wikiRanged": "Дальний бой",
-  "@wikiRanged": {
-    "description": "Wiki item sub-category: Ranged"
-  },
-  "wikiReadFullArticle": "Читать полную статью",
-  "@wikiReadFullArticle": {
-    "description": "Button at bottom of wiki detail to open full article"
-  },
-  "wikiRedstone": "Красный камень",
-  "@wikiRedstone": {
-    "description": "Wiki block sub-category: Redstone"
-  },
-  "wikiSearchHint": "Поиск в вики…",
-  "@wikiSearchHint": {
-    "description": "Hint text for wiki search field"
-  },
-  "wikiStatusEffects": "Эффекты состояния",
-  "@wikiStatusEffects": {
-    "description": "Wiki potion sub-category: Status Effects"
-  },
-  "wikiStone": "Камень",
-  "@wikiStone": {
-    "description": "Wiki block sub-category: Stone"
-  },
-  "wikiStructures": "Структуры",
-  "@wikiStructures": {
-    "description": "Wiki category: Structures"
-  },
-  "wikiSword": "Меч",
-  "@wikiSword": {
-    "description": "Wiki enchantment sub-category: Sword"
-  },
-  "wikiSwords": "Мечи",
-  "@wikiSwords": {
-    "description": "Wiki item sub-category: Swords"
-  },
-  "wikiTheEnd": "Край",
-  "@wikiTheEnd": {
-    "description": "Wiki biome/structure sub-category: The End"
-  },
-  "wikiTitle": "Вики",
-  "@wikiTitle": {
-    "description": "Title of the wiki screen"
-  },
-  "wikiTool": "Инструмент",
-  "@wikiTool": {
-    "description": "Wiki enchantment sub-category: Tool"
-  },
-  "wikiTools": "Инструменты",
-  "@wikiTools": {
-    "description": "Wiki item sub-category: Tools"
-  },
-  "wikiUtility": "Полезные",
-  "@wikiUtility": {
-    "description": "Wiki mob sub-category: Utility"
-  },
-  "wikiWood": "Дерево",
-  "@wikiWood": {
-    "description": "Wiki block sub-category: Wood"
   },
   "xboxAccountLinked": "Аккаунт Xbox привязан!",
   "@xboxAccountLinked": {
@@ -1511,13 +1278,11 @@
   "splashFeatureSkins": "Скины",
   "featureLabelConnector": "Коннектор",
   "featureLabelSkins": "Скины",
-  "featureLabelWiki": "Вики",
-  "featureLabelPartners": "Партнёры",
+  "featureLabelPartners": "Список серверов",
   "featureLabelLookup": "Поиск",
   "featureLabelTracker": "Трекер серверов",
   "featureSubtitleConnector": "Подключение консолей к Minecraft",
   "featureSubtitleSkins": "Просмотр и управление скинами Minecraft",
-  "featureSubtitleWiki": "Энциклопедия Minecraft",
   "featureSubtitlePartners": "Рекомендуемые серверы",
   "featureSubtitleLookup": "Поиск профилей Java и Bedrock",
   "featureSubtitleTracker": "Мониторинг статуса сервера и уведомления",
@@ -1530,10 +1295,6 @@
   "upgradeWindowsHint": "Обновление доступно в Microsoft Store",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "chatEmptyHint": "Будьте первым, кто напишет!",
-  "@chatEmptyHint": {
-    "description": "Subtitle on the empty chat screen"
   },
   "skinSaved": "Скин сохранён",
   "@skinSaved": {
@@ -1562,7 +1323,6 @@
   },
   "feedbackBugReport": "Сообщение об ошибке",
   "feedbackFeatureRequest": "Запрос функции",
-  "feedbackGoesToGithub": "Отправляется прямо на GitHub",
   "feedbackTitleLabel": "Заголовок",
   "feedbackTitleHintBug": "напр. Приложение вылетает при открытии редактора скинов",
   "feedbackTitleHintFeature": "напр. Показывать пинг игрока в списке серверов",
@@ -1575,10 +1335,9 @@
   "feedbackEmailNote": "Ваш адрес электронной почты никогда не публикуется.",
   "feedbackSubmitBug": "Отправить сообщение об ошибке",
   "feedbackSubmitFeature": "Отправить запрос функции",
-  "feedbackDisclaimer": "Создаёт публичный тикет на GitHub · Не указывайте пароли",
+  "feedbackDisclaimer": "Попадёт к нашей команде · Не указывайте пароли",
   "feedbackSuccessTitle": "Спасибо за отзыв!",
-  "feedbackSuccessBody": "Спасибо! Ваш отчёт получен. Посмотрим его как можно скорее.",
-  "feedbackViewOnGithub": "Посмотреть на GitHub",
+  "feedbackSuccessBody": "Спасибо! Сообщение получено. Мы отвечаем в приложении, загляните сюда за ответом.",
   "feedbackSubmitAnother": "Отправить ещё",
   "feedbackBackToApp": "Вернуться в приложение",
   "feedbackTitleTooShort": "Заголовок должен содержать не менее 5 символов.",
@@ -1900,8 +1659,6 @@
   "reportBug": "Обратная связь",
   "rpBehaviorContentWarning": "Этот пак содержит данные пакета поведения, которые не работают на серверах. Текстуры при этом будут работать.",
   "rpInvalidPackFormat": "Это пак для Java Edition, он не поддерживается. Используйте ресурс-пак для Bedrock Edition.",
-  "wikiFavourites": "Избранное",
-  "wikiRecent": "Недавно просмотренные",
   "supportInboxTitle": "Входящие поддержки",
   "supportInboxSubtitle": "Все обращения в поддержку, доступны всем админам",
   "adminBadge": "Админ",
@@ -1961,11 +1718,8 @@
   "notifFeedbackStatus": "Обновление по вашему отзыву",
   "notifFeedbackReply": "Ответ на ваш отзыв",
   "adminTicketsHeader": "Сообщения и запросы",
-  "adminGeneralChat": "Общий чат",
   "adminTicketReplyHint": "Ответить по этому обращению…",
   "adminNoTicketsForUser": "У этого пользователя нет обращений",
-  "hideConversation": "Скрыть",
-  "conversationHidden": "Диалог скрыт",
   "undo": "Отменить",
   "chooseServerTitle": "Выберите сервер",
   "changeLabel": "Изменить",
@@ -2041,5 +1795,54 @@
     }
   },
   "updateAvailableAction": "Скачать",
-  "updateAvailableDismiss": "Не сейчас"
+  "updateAvailableDismiss": "Не сейчас",
+  "serverListSearchHint": "Поиск по названию или адресу",
+  "serverListEditionAny": "Java и Bedrock",
+  "serverListEditionJava": "Только Java",
+  "serverListEditionBedrock": "Только Bedrock",
+  "serverListSortVotes": "Больше всего голосов",
+  "serverListSortPlayers": "Больше всего игроков",
+  "serverListSortPeak": "Наибольший пик",
+  "serverListSortNewest": "Новые",
+  "serverListSortName": "Название",
+  "serverListAllCategories": "Все",
+  "serverListLoadFailed": "Не удалось загрузить список серверов",
+  "serverListLoadFailedHint": "Потяните вниз, чтобы повторить",
+  "serverListNoMatch": "Подходящих серверов нет",
+  "serverListNoMatchHint": "Попробуйте другой запрос или категорию",
+  "serverCardPlay": "Играть",
+  "serverCardVote": "Голосовать",
+  "serverCardViewServer": "Открыть сервер",
+  "serverCopyIp": "Копировать IP",
+  "serverCopied": "Скопировано",
+  "serverStatPlayers": "Игроки",
+  "serverStatPeak": "Пик",
+  "serverStatUptime": "Аптайм",
+  "serverStatVotesMonth": "Голоса за месяц",
+  "serverStatVotesAllTime": "Голоса за всё время",
+  "serverBadgeFeatured": "Рекомендуемый",
+  "serverEditionJava": "Java",
+  "serverEditionBedrock": "Bedrock",
+  "serverEditionCrossplay": "Кроссплей",
+  "serverSectionMotd": "Сообщение дня",
+  "serverSectionAbout": "Описание",
+  "serverSectionCategories": "Категории",
+  "serverSectionVotes": "Голоса",
+  "serverLinkDiscord": "Discord",
+  "serverLinkWebsite": "Сайт",
+  "serverVotesThisMonth": "За этот месяц",
+  "serverVotesAllTime": "За всё время",
+  "serverVoteAction": "Голосовать за этот сервер",
+  "serverPlayAction": "Играть на этом сервере",
+  "serverVoteSignInRequired": "Войдите, чтобы голосовать из приложения.",
+  "serverVoteSheetTitle": "Голосовать за {name}",
+  "serverVoteSheetSubtitle": "Ваш ник в Minecraft, чтобы сервер знал, кого наградить.",
+  "serverVoteSheetHint": "Steve",
+  "serverVoteSheetButton": "Голосовать",
+  "serverVoteSheetLimit": "Один голос за сервер в день.",
+  "serverVoteDelivered": "Голос учтён. Награда уже в пути.",
+  "serverVoteNoRewards": "Голос учтён. На этом сервере не настроены награды.",
+  "serverVoteFailed": "Не получилось, попробуйте ещё раз.",
+  "serverVoteOffline": "Не удалось связаться с сервером. Проверьте подключение.",
+  "feedbackViewYourReport": "Открыть ваше сообщение"
 }

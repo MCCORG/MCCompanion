@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../l10n/app_localizations.dart';
 
-enum AppFeature { connector, skins, wiki, partners, lookup, tracker }
+enum AppFeature { connector, skins, partners, lookup, tracker }
 
 extension AppFeatureLabel on AppFeature {
   String get id => name;
@@ -10,7 +10,6 @@ extension AppFeatureLabel on AppFeature {
   String label(AppLocalizations l) => switch (this) {
     AppFeature.connector => l.featureLabelConnector,
     AppFeature.skins => l.featureLabelSkins,
-    AppFeature.wiki => l.featureLabelWiki,
     AppFeature.partners => l.featureLabelPartners,
     AppFeature.lookup => l.featureLabelLookup,
     AppFeature.tracker => l.featureLabelTracker,
@@ -19,7 +18,6 @@ extension AppFeatureLabel on AppFeature {
   String get imagePath => switch (this) {
     AppFeature.connector => 'assets/images/tunnel.png',
     AppFeature.skins => 'assets/images/skin.png',
-    AppFeature.wiki => 'assets/images/wiki.png',
     AppFeature.partners => 'assets/images/feature.png',
     AppFeature.lookup => 'assets/images/players.png',
     AppFeature.tracker => 'assets/images/tracker.png',
@@ -28,7 +26,6 @@ extension AppFeatureLabel on AppFeature {
   int get colorValue => switch (this) {
     AppFeature.connector => 0xFF67E404,
     AppFeature.skins => 0xFF42A5F5,
-    AppFeature.wiki => 0xFF34D399,
     AppFeature.partners => 0xFFFFB300,
     AppFeature.lookup => 0xFF7B61FF,
     AppFeature.tracker => 0xFF00BCD4,
@@ -37,7 +34,6 @@ extension AppFeatureLabel on AppFeature {
   String subtitle(AppLocalizations l) => switch (this) {
     AppFeature.connector => l.featureSubtitleConnector,
     AppFeature.skins => l.featureSubtitleSkins,
-    AppFeature.wiki => l.featureSubtitleWiki,
     AppFeature.partners => l.featureSubtitlePartners,
     AppFeature.lookup => l.featureSubtitleLookup,
     AppFeature.tracker => l.featureSubtitleTracker,
@@ -61,14 +57,15 @@ class HomeCustomizationService extends ChangeNotifier {
   static const List<AppFeature> defaultTileOrder = [
     AppFeature.connector,
     AppFeature.skins,
-    AppFeature.wiki,
     AppFeature.partners,
     AppFeature.lookup,
     AppFeature.tracker,
   ];
 
   static const AppFeature defaultNavLeft = AppFeature.skins;
-  static const AppFeature defaultNavRight = AppFeature.wiki;
+  static const AppFeature defaultNavRight = AppFeature.lookup;
+  static const AppFeature defaultWideTile = AppFeature.connector;
+  static const String _wideTileNone = '';
 
   static const Set<AppFeature> navSlotBlacklist = {AppFeature.connector};
   static const Set<AppFeature> alwaysVisible = {};
@@ -77,7 +74,7 @@ class HomeCustomizationService extends ChangeNotifier {
   AppFeature? _navLeft = defaultNavLeft;
   AppFeature? _navRight = defaultNavRight;
   Set<AppFeature> _hiddenTiles = {};
-  AppFeature? _wideTile;
+  AppFeature? _wideTile = defaultWideTile;
   bool _onboardingDone = false;
   AppFeature _startPage = AppFeature.connector;
 
@@ -131,11 +128,13 @@ class HomeCustomizationService extends ChangeNotifier {
     }
 
     final savedWide = prefs.getString(_keyWideTile);
-    if (savedWide != null) {
+    if (savedWide == _wideTileNone) {
+      _wideTile = null;
+    } else if (savedWide != null) {
       _wideTile = AppFeature.values.where((f) => f.id == savedWide).firstOrNull;
-      if (_wideTile != null && _hiddenTiles.contains(_wideTile)) {
-        _wideTile = null;
-      }
+    }
+    if (_wideTile != null && _hiddenTiles.contains(_wideTile)) {
+      _wideTile = null;
     }
 
     _onboardingDone = prefs.getBool(_keyOnboardingDone) ?? false;
@@ -213,11 +212,7 @@ class HomeCustomizationService extends ChangeNotifier {
   Future<void> saveWideTile(AppFeature? tile) async {
     _wideTile = tile;
     final prefs = await SharedPreferences.getInstance();
-    if (tile == null) {
-      await prefs.remove(_keyWideTile);
-    } else {
-      await prefs.setString(_keyWideTile, tile.id);
-    }
+    await prefs.setString(_keyWideTile, tile?.id ?? _wideTileNone);
     notifyListeners();
   }
 
@@ -226,7 +221,7 @@ class HomeCustomizationService extends ChangeNotifier {
     _navLeft = defaultNavLeft;
     _navRight = defaultNavRight;
     _hiddenTiles = {};
-    _wideTile = null;
+    _wideTile = defaultWideTile;
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_keyTileOrder);
     await prefs.remove(_keyNavLeft);

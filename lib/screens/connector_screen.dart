@@ -267,7 +267,6 @@ class HomeScreenState extends State<HomeScreen> {
     PanelMode.lan => BroadcastMode.lan,
     PanelMode.nintendo => BroadcastMode.nintendo,
     PanelMode.friends => BroadcastMode.friends,
-    PanelMode.java => BroadcastMode.java,
     PanelMode.direct => BroadcastMode.direct,
   };
 
@@ -480,7 +479,7 @@ class HomeScreenState extends State<HomeScreen> {
             maxWidth: constraints.maxWidth > 700 ? 1180 : double.infinity,
           ),
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(14, 12, 14, 0),
+            padding: EdgeInsets.zero,
             child: SingleChildScrollView(
               controller: _mainScrollController,
               physics: const ClampingScrollPhysics(),

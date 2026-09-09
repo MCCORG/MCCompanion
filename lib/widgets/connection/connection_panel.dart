@@ -6,14 +6,14 @@ import '../../theme/app_theme.dart';
 import '../../util/user_servers.dart';
 import '../../util/partners_servers.dart';
 import '../../services/navigation_controller.dart';
-import '../../widgets/components/app_painters.dart';
 import '../../util/howto_prefs.dart';
 import '../../widgets/dialogs/howto_dialogs.dart';
 import '../../widgets/featured_server_hero.dart';
+import '../../widgets/featured_server_banner.dart';
 import 'my_servers_tab.dart';
 import 'server_picker_sheet.dart';
 
-enum PanelMode { lan, nintendo, friends, java, direct }
+enum PanelMode { lan, nintendo, friends, direct }
 
 class _ModeConfig {
   final PanelMode mode;
@@ -115,11 +115,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
       color: AppTheme.modeFriends,
     ),
     _ModeConfig(
-      mode: PanelMode.java,
-      icon: FontAwesomeIcons.java,
-      color: AppTheme.modeJava,
-    ),
-    _ModeConfig(
       mode: PanelMode.direct,
       icon: FontAwesomeIcons.bolt,
       color: AppTheme.modeDirect,
@@ -168,7 +163,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     if (!mounted || !_broadcasting) return;
 
     final topic = switch (_mode) {
-      PanelMode.java => HowToTopic.java,
       PanelMode.direct => HowToTopic.direct,
       _ => HowToTopic.xbox,
     };
@@ -178,8 +172,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     switch (_mode) {
       case PanelMode.lan:
         await HowToDialogs.showXboxInstructions(context);
-      case PanelMode.java:
-        await HowToDialogs.showJavaInstructions(context);
       case PanelMode.direct:
         await HowToDialogs.showDirectInstructions(context);
       case PanelMode.nintendo:
@@ -192,7 +184,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     PanelMode.lan => loc.labelXbox,
     PanelMode.nintendo => loc.labelNintendo,
     PanelMode.friends => loc.labelFriends,
-    PanelMode.java => loc.labelJava,
     PanelMode.direct => loc.labelDirect,
   };
 
@@ -217,7 +208,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     );
   }
 
-  Widget _hero(bool broadcasting) => FeaturedServerHero(
+  Widget _hero(bool broadcasting) => FeaturedServerBanner(
     partnerServersFuture: widget.partnerServersFuture,
     ipController: widget.ipController,
     portController: widget.portController,
@@ -244,16 +235,19 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
       children: [
         _hero(broadcasting),
         _spreadBelowHero(
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const SizedBox(height: 22),
-              _buildConfigColumn(broadcasting, loc),
-              const SizedBox(height: 30),
-              _buildActionColumn(broadcasting, loc),
-              const SizedBox(height: 18),
-            ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const SizedBox(height: 22),
+                _buildConfigColumn(broadcasting, loc),
+                const SizedBox(height: 30),
+                _buildActionColumn(broadcasting, loc),
+                const SizedBox(height: 18),
+              ],
+            ),
           ),
         ),
       ],
@@ -266,15 +260,18 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
         ? (available - 24).clamp(520.0, 1100.0)
         : 620.0;
 
-    return SizedBox(
-      height: rowHeight,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(flex: 4, child: _buildWideLeft(broadcasting, loc)),
-          const SizedBox(width: 32),
-          Expanded(flex: 3, child: _buildWideRight(broadcasting, loc)),
-        ],
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(14, 12, 14, 0),
+      child: SizedBox(
+        height: rowHeight,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(flex: 4, child: _buildWideLeft(broadcasting, loc)),
+            const SizedBox(width: 32),
+            Expanded(flex: 3, child: _buildWideRight(broadcasting, loc)),
+          ],
+        ),
       ),
     );
   }
@@ -327,12 +324,12 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
       children: [
-        _stepLabel('1', loc.serversSection),
-        const SizedBox(height: 10),
+        _stepLabel(null, loc.serversSection),
+        const SizedBox(height: 12),
         _buildServerCard(broadcasting, loc),
-        const SizedBox(height: 30),
-        _stepLabel('2', loc.selectModeSection),
-        const SizedBox(height: 10),
+        const SizedBox(height: 26),
+        _stepLabel(null, loc.selectModeSection),
+        const SizedBox(height: 12),
         _buildModeChips(broadcasting, loc),
         if (_mode == PanelMode.lan && widget.bedrockAccounts.length > 1) ...[
           const SizedBox(height: 10),
@@ -357,10 +354,10 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
       mainAxisSize: MainAxisSize.min,
       children: [
         _buildStartButton(broadcasting, loc),
-        const SizedBox(height: 22),
+        const SizedBox(height: 26),
         _buildResourcePackRow(broadcasting, loc),
         if (widget.navChipsBuilder != null) ...[
-          const SizedBox(height: 24),
+          const SizedBox(height: 26),
           widget.navChipsBuilder!(false),
         ],
       ],
@@ -379,6 +376,9 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
         var perRow = _modes.length;
         if ((total - gap * (perRow - 1)) / perRow < minChipWidth) {
           perRow = (total - gap * 2) / 3 >= minChipWidth ? 3 : 2;
+        }
+        while (perRow > 2 && _modes.length % perRow == 1) {
+          perRow--;
         }
 
         final singleRow = perRow >= _modes.length;
@@ -420,60 +420,57 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
             },
       builder: (hovered) => AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        height: tall ? 84 : 74,
+        height: tall ? 60 : 54,
         decoration: BoxDecoration(
           color: isSelected
-              ? Color.alphaBlend(
-                  cfg.color.withValues(alpha: 0.32),
-                  AppTheme.surfaceRaisedSolid,
-                )
+              ? AppTheme.surfaceRaisedSolid
               : hovered
-              ? Color.alphaBlend(
-                  cfg.color.withValues(alpha: 0.12),
-                  AppTheme.surfaceRaisedSolid,
-                )
+              ? AppTheme.surfaceRaised
               : AppTheme.surface.withValues(alpha: 0.50),
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
             color: isSelected
-                ? cfg.color.withValues(alpha: 0.55)
-                : hovered
-                ? cfg.color.withValues(alpha: 0.35)
+                ? AppTheme.textSecondary.withValues(alpha: 0.55)
                 : AppTheme.borderLight,
             width: isSelected ? 1.5 : 1.0,
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        child: Row(
           children: [
-            FaIcon(
-              cfg.icon,
-              size: tall ? 24 : 21,
-              color: isSelected
-                  ? cfg.color
-                  : dimmed
-                  ? AppTheme.textDisabled
-                  : AppTheme.textMuted,
+            SizedBox(
+              width: 22,
+              child: Center(
+                child: FaIcon(
+                  cfg.icon,
+                  size: 18,
+                  color: isSelected
+                      ? AppTheme.textPrimary
+                      : dimmed
+                      ? AppTheme.textDisabled
+                      : AppTheme.textMuted,
+                ),
+              ),
             ),
-            SizedBox(height: tall ? 8 : 6),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4),
+            const SizedBox(width: 10),
+            Expanded(
               child: Text(
                 _modeLabel(cfg.mode, loc),
                 style: TextStyle(
-                  fontSize: 11,
-                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                  fontSize: 13,
+                  fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
                   color: isSelected
-                      ? cfg.color
+                      ? AppTheme.textPrimary
                       : dimmed
                       ? AppTheme.textDisabled
                       : AppTheme.textSecondary,
                 ),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
               ),
             ),
+            if (isSelected)
+              Icon(Icons.check_rounded, size: 16, color: AppTheme.textPrimary),
           ],
         ),
       ),
@@ -540,11 +537,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                     : AppTheme.surfaceRaised,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Icon(
-                Icons.dns_rounded,
-                size: 17,
-                color: hasServer ? AppTheme.accent : AppTheme.textMuted,
-              ),
+              child: Icon(Icons.dns_rounded, size: 17, color: AppTheme.accent),
             ),
             const SizedBox(width: 12),
             Expanded(
@@ -701,8 +694,8 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                 child: Row(
                   children: [
                     Container(
-                      width: 34,
-                      height: 34,
+                      width: 36,
+                      height: 36,
                       decoration: BoxDecoration(
                         color: on
                             ? AppTheme.accent.withValues(alpha: 0.12)
@@ -740,31 +733,23 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                           const SizedBox(height: 2),
                           Text(
                             subtitle,
-                            maxLines: 1,
+                            maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               color: AppTheme.textMuted,
                               fontSize: 11,
+                              height: 1.3,
                             ),
                           ),
                         ],
                       ),
                     ),
-                    if (!broadcasting) ...[
-                      Text(
-                        loc.changeLabel,
-                        style: TextStyle(
-                          color: AppTheme.textSecondary,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+                    if (!broadcasting)
                       Icon(
                         Icons.chevron_right_rounded,
                         size: 18,
                         color: AppTheme.textMuted,
                       ),
-                    ],
                   ],
                 ),
               ),
@@ -806,7 +791,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
             PanelMode.lan => loc.startBroadcasting,
             PanelMode.nintendo => loc.startNintendoMode,
             PanelMode.friends => loc.startFriendsMode,
-            PanelMode.java => loc.startJavaMode,
             PanelMode.direct => loc.startDirectMode,
           };
 
@@ -814,106 +798,93 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
       onTap: enabled
           ? (broadcasting ? widget.onStopBroadcast : _handleStart)
           : null,
-      builder: (hovered) => ClipRRect(
-        borderRadius: BorderRadius.circular(16),
-        child: SizedBox(
-          height: 62,
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              AnimatedContainer(
-                duration: const Duration(milliseconds: 140),
-                color: enabled
-                    ? (hovered
-                          ? Color.alphaBlend(
-                              Colors.white.withValues(alpha: 0.12),
-                              color,
-                            )
-                          : color)
-                    : Color.alphaBlend(
-                        color.withValues(alpha: 0.28),
-                        AppTheme.surfaceRaisedSolid,
-                      ),
-              ),
-              CustomPaint(
-                painter: AppNoisePainter(
-                  color: Colors.white,
-                  opacity: 0.05,
-                  seed: 42,
-                  count: 160,
+      builder: (hovered) => DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: enabled
+              ? [
+                  BoxShadow(
+                    color: color.withValues(alpha: 0.30),
+                    blurRadius: 18,
+                    offset: const Offset(0, 6),
+                  ),
+                ]
+              : null,
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: SizedBox(
+            height: 56,
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 140),
+                  decoration: BoxDecoration(
+                    color: enabled
+                        ? (hovered
+                              ? Color.alphaBlend(
+                                  Colors.white.withValues(alpha: 0.12),
+                                  color,
+                                )
+                              : color)
+                        : Color.alphaBlend(
+                            color.withValues(alpha: 0.18),
+                            AppTheme.surfaceRaisedSolid,
+                          ),
+                    border: enabled
+                        ? null
+                        : Border.all(color: color.withValues(alpha: 0.40)),
+                  ),
                 ),
-              ),
-              CustomPaint(
-                painter: AppWavePainter(
-                  waves: [
-                    WaveConfig(
-                      yFraction: 0.42,
-                      amplitude: 10,
-                      frequency: 2.6,
-                      phase: 0.5,
-                      color: Colors.white,
-                      opacity: 0.16,
-                      strokeWidth: 1.4,
-                    ),
-                    WaveConfig(
-                      yFraction: 0.68,
-                      amplitude: 7,
-                      frequency: 3.6,
-                      phase: 1.2,
-                      color: Colors.white,
-                      opacity: 0.09,
-                      strokeWidth: 1.0,
-                    ),
-                  ],
-                ),
-              ),
-              Center(
-                child: busy
-                    ? SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: Colors.white.withValues(alpha: 0.85),
-                        ),
-                      )
-                    : Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 18),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              broadcasting
-                                  ? Icons.stop_rounded
-                                  : Icons.play_arrow_rounded,
-                              color: Colors.white.withValues(
-                                alpha: enabled ? 1.0 : 0.55,
+                Center(
+                  child: busy
+                      ? SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: Colors.white.withValues(alpha: 0.85),
+                          ),
+                        )
+                      : Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 18),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                broadcasting
+                                    ? Icons.stop_rounded
+                                    : Icons.play_arrow_rounded,
+                                color: Colors.white.withValues(
+                                  alpha: enabled ? 1.0 : 0.55,
+                                ),
+                                size: 22,
                               ),
-                              size: 22,
-                            ),
-                            const SizedBox(width: 8),
-                            Flexible(
-                              child: FittedBox(
-                                fit: BoxFit.scaleDown,
-                                child: Text(
-                                  label,
-                                  maxLines: 1,
-                                  softWrap: false,
-                                  style: TextStyle(
-                                    color: Colors.white.withValues(
-                                      alpha: enabled ? 1.0 : 0.55,
+                              const SizedBox(width: 8),
+                              Flexible(
+                                child: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Text(
+                                    label,
+                                    maxLines: 1,
+                                    softWrap: false,
+                                    style: TextStyle(
+                                      color: Colors.white.withValues(
+                                        alpha: enabled ? 1.0 : 0.55,
+                                      ),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
                                     ),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
