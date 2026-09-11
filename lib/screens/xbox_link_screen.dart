@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
+import '../design/design.dart';
 import '../services/user_service.dart';
 import '../widgets/components/app_toast.dart';
 
@@ -130,7 +131,6 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
           ),
         ),
         iconTheme: IconThemeData(color: AppTheme.textPrimary),
-        elevation: 0,
       ),
       body: SafeArea(
         child: Center(
@@ -180,7 +180,7 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
           height: 64,
           decoration: BoxDecoration(
             color: const Color(0xFF107C10).withValues(alpha: 0.12),
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: DsRadius.cardR,
             border: Border.all(
               color: const Color(0xFF107C10).withValues(alpha: 0.30),
             ),
@@ -225,9 +225,11 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
             decoration: BoxDecoration(
-              color: AppTheme.surfaceRaised,
-              borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: AppTheme.accent.withValues(alpha: 0.35)),
+              color: DsColor.surface,
+              borderRadius: DsRadius.controlR,
+              border: Border.all(
+                color: AppTheme.accent.withValues(alpha: 0.35),
+              ),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -242,11 +244,7 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
                   ),
                 ),
                 const SizedBox(width: 12),
-                Icon(
-                  Icons.copy_rounded,
-                  color: AppTheme.textMuted,
-                  size: 18,
-                ),
+                Icon(Icons.copy_rounded, color: AppTheme.textMuted, size: 18),
               ],
             ),
           ),
@@ -258,18 +256,13 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
           style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
         ),
         const SizedBox(height: 28),
-        ElevatedButton.icon(
+        DsButton(
+          label: AppLocalizations.of(context)!.xboxOpenLink,
+          icon: Icons.open_in_browser_rounded,
+          size: DsButtonSize.large,
+          expand: true,
+          accent: const Color(0xFF107C10),
           onPressed: _openLink,
-          icon: const Icon(Icons.open_in_browser_rounded, size: 18),
-          label: Text(
-            AppLocalizations.of(context)!.xboxOpenLink,
-            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
-          ),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF107C10),
-            foregroundColor: Colors.white,
-            padding: const EdgeInsets.symmetric(vertical: 16),
-          ),
         ),
         const SizedBox(height: 20),
         Row(
@@ -349,15 +342,10 @@ class _XboxLinkScreenState extends State<XboxLinkScreen> {
           ),
         ),
         const SizedBox(height: 24),
-        ElevatedButton(
+        DsButton(
+          label: AppLocalizations.of(context)!.tryAgain,
+          expand: true,
           onPressed: _start,
-          style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(vertical: 14),
-          ),
-          child: Text(
-            AppLocalizations.of(context)!.tryAgain,
-            style: const TextStyle(fontWeight: FontWeight.w700),
-          ),
         ),
       ],
     );

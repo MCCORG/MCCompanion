@@ -46,10 +46,10 @@ class TrackedServer {
           ? DateTime.parse(json['last_checked_at'] as String)
           : null,
       createdAt: DateTime.parse(json['created_at'] as String),
-      players:    json['players']     as int?,
+      players: json['players'] as int?,
       maxPlayers: json['max_players'] as int?,
-      version:    json['version']     as String?,
-      gameMode:   json['game_mode']   as String?,
+      version: json['version'] as String?,
+      gameMode: json['game_mode'] as String?,
     );
   }
 
@@ -77,10 +77,10 @@ class TrackedServer {
       notificationsEnabled: notificationsEnabled ?? this.notificationsEnabled,
       lastCheckedAt: lastCheckedAt ?? this.lastCheckedAt,
       createdAt: createdAt,
-      players:    players    ?? this.players,
+      players: players ?? this.players,
       maxPlayers: maxPlayers ?? this.maxPlayers,
-      version:    version    ?? this.version,
-      gameMode:   gameMode   ?? this.gameMode,
+      version: version ?? this.version,
+      gameMode: gameMode ?? this.gameMode,
     );
   }
 }

@@ -2,7 +2,8 @@ mixin DisplayableName {
   String? get username;
   String? get displayName;
 
-  String get displayLabel => displayName?.isNotEmpty == true ? displayName! : (username ?? '?');
+  String get displayLabel =>
+      displayName?.isNotEmpty == true ? displayName! : (username ?? '?');
   String get initials {
     final label = displayLabel;
     if (label.isEmpty) return '?';

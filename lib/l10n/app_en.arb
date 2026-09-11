@@ -1,7 +1,12 @@
 {
   "@@locale": "en",
-  "appName": "MCCompanion",
   "console": "Console",
+  "modeLabel": "Mode",
+  "statusLabel": "Status",
+  "seeAll": "See all",
+  "sectionHelp": "Help",
+  "sectionAdvanced": "Advanced",
+  "versionLabel": "Version",
   "consoleOutput": "Console Output",
   "noLogsYet": "No logs yet",
   "startBroadcastingToSeeOutput": "Start broadcasting to see output",
@@ -17,35 +22,16 @@
   "onboardingNavSubtitle": "Pick two features for your bottom bar shortcuts.",
   "onboardingNavLeftLabel": "LEFT SHORTCUT",
   "onboardingNavRightLabel": "RIGHT SHORTCUT",
-  "onboardingNavPreviewHome": "Home",
   "onboardingNavPreviewConnector": "Connector",
   "onboardingNavPreviewProfile": "Profile",
   "onboardingNavPreviewEmpty": "Empty",
-  "onboardingStartTitle": "Start page",
-  "onboardingStartSubtitle": "The app opens here every time you launch.",
   "onboardingCustomizeDetail": "Customize in detail →",
-  "startPageHome": "Home",
-  "startPageHomeSubtitle": "Show the home screen with tiles",
-  "startPageFeature": "Feature",
-  "startPageFeatureSubtitle": "Open directly on a specific page",
-  "startPageSectionLabel": "START PAGE",
-  "joinUs": "Join Us",
-  "more": "More",
   "website": "Website",
   "howToUseMenu": "How to use",
   "support": "Support",
-  "helpText": "Created by {appCreator}.\n\nHow to use:\n1. Enter your Minecraft server address and port (default: 19132)\n   or select a previously saved server from the dropdown\n2. (Optional) Choose a Relay Server (EU or US) closest to your location\n3. Click \"Start Broadcasting\" to begin\n4. On your console/device: Minecraft > Play > Friends\n5. You should see a LAN server called \"MCCompanion\"\n6. Click it to join your external server via MCCompanion\n\nNintendo Switch (DNS mode):\n1. Enable \"Nintendo Switch\" in the connection panel\n2. Select a Relay Server (EU or US)\n3. Click \"Send DNS Config\": this sends your config to the relay\n   (it does NOT broadcast a LAN server)\n4. On your Switch, apply your MCCompanion DNS setup and join\n   using the server entry you use for MCCompanion\n\nNotes:\n- For LAN broadcasting, MCCompanion and console must be on the same local network.\n- Tip: Choose the relay server closest to you for the best performance.",
-  "@helpText": {
-    "description": "Detailed help / instructions shown in the help dialog",
-    "placeholders": {
-      "appCreator": {}
-    }
-  },
-  "serverDetailsLabel": "Server Details",
   "start": "Start",
   "stop": "Stop",
   "labelJava": "Java",
-  "aternosSubtext": "Create your own free Minecraft server",
   "language": "English",
   "@language": {
     "description": "Your language name in your own language"
@@ -78,14 +64,6 @@
   "@delete": {
     "description": "Delete action label"
   },
-  "myServers": "My Servers",
-  "@myServers": {
-    "description": "Title for manage servers dialog"
-  },
-  "quickAccessServers": "Quick access servers",
-  "@quickAccessServers": {
-    "description": "Subtitle for manage servers dialog"
-  },
   "addServer": "Add Server",
   "@addServer": {
     "description": "Add server button label / dialog title"
@@ -114,18 +92,6 @@
   "@save": {
     "description": "Save button label"
   },
-  "initializing": "Initializing...",
-  "@initializing": {
-    "description": "Shown on splash while app initializes"
-  },
-  "createdBy": "Created by NetherDev",
-  "@createdBy": {
-    "description": "Badge text on splash screen"
-  },
-  "bedrockBridge": "Bedrock Bridge",
-  "@bedrockBridge": {
-    "description": "Subtitle on splash screen"
-  },
   "clientDisconnected": "Client disconnected: Broadcast stopped",
   "@clientDisconnected": {
     "description": "Snackbar shown when clients disconnect automatically"
@@ -142,14 +108,6 @@
   "@dataSentToServers": {
     "description": "Confirmation toast after a DNS mode config reaches the relay"
   },
-  "broadcastingStarted": "Broadcasting started",
-  "@broadcastingStarted": {
-    "description": "Snackbar shown when broadcasting starts"
-  },
-  "broadcastStopped": "Broadcast stopped",
-  "@broadcastStopped": {
-    "description": "Snackbar shown when broadcasting stops"
-  },
   "selectedServer": "📋 Selected: {name}",
   "@selectedServer": {
     "description": "Shown when a saved server is selected",
@@ -164,10 +122,6 @@
       "name": {}
     }
   },
-  "noLogsToCopy": "No logs to copy",
-  "@noLogsToCopy": {
-    "description": "Shown when user tries to copy logs but none exist"
-  },
   "copiedLogs": "Copied {count} log entries to clipboard",
   "@copiedLogs": {
     "description": "Shown after copying logs to clipboard",
@@ -176,14 +130,10 @@
     }
   },
   "debugEnabled": "Debug logs enabled",
-  "debugDisabled": "Debug logs disabled",
   "@debugEnabled": {
     "description": "Shown when debug logging is enabled/disabled"
   },
-  "howToUseTitle": "How to use MCCompanion",
   "iUnderstand": "I understand",
-  "playOnSwitchTitle": "Play on Nintendo Switch",
-  "playWithFriendsTitle": "Play with Friends",
   "playInstructionsSwitch": "Selected: {relayName}\n\nHow to connect:\n1. Go to your Switch Settings and change the DNS to: {relayIp}\n2. Open Minecraft and select a server from the list (like Cubecraft or Hive).\n3. You will now be sent to your own server automatically.",
   "@playInstructionsSwitch": {
     "description": "DNS instructions shown for Nintendo Switch mode",
@@ -192,71 +142,23 @@
       "relayIp": {}
     }
   },
-  "playInstructionsFriends": "How to connect:\n1. On your console, add {friend} as a friend.\n2. Open Minecraft and go to the Friends tab.\n3. Look for your server under LAN Worlds and select it to join.",
-  "@playInstructionsFriends": {
-    "description": "Instructions shown for Friends mode",
-    "placeholders": {
-      "friend": {}
-    }
-  },
-  "nldServerLabel": "MCCompanion SERVER",
-  "@nldServerLabel": {
-    "description": "Label text above the relay selector"
-  },
-  "selectRelayLabel": "Select relay {name}",
-  "@selectRelayLabel": {
-    "description": "Accessibility label for relay selection button",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "noSavedServers": "No saved servers",
   "savedServers": "Saved servers",
-  "serverAddressHint": "Server Address",
-  "portHint": "Port",
   "manageServers": "Manage servers",
-  "manageServersTooltip": "Manage servers",
-  "noServerYet": "No saved servers yet.\nTap Manage to add one.",
-  "serverNotSelected": "No server selected",
-  "ready": "Ready",
   "active": "Active",
   "vpnDetected": "VPN Detected",
   "noWifi": "Not on Wi-Fi",
   "vpnActive": "We detected that your VPN is active.\n\nPlease disable your VPN before using MCCompanion, otherwise the LAN broadcast may not reach your console.",
   "mobileActive": "Detected: Mobile Data\n\nMCCompanion needs to be on the same network as your console. Please connect to your home Wi-Fi or hotspot before continuing.",
   "continueAnyway": "Continue Anyway",
-  "sameWifi": "Same Wi-Fi Network",
-  "needSameWifi": "The device running MCCompanion MUST be on the same Wi-Fi network as the console you play Minecraft on.",
-  "subscription": "Online Subscription Required",
-  "needSubscription": "Each console needs its own active online subscription (Xbox Live, PS Plus, NSO). Without it, MCCompanion won't appear.",
   "updateAvailable": "Update Available",
-  "newVersion": "A new version of the app is available.\nUpdate now for the latest features and fixes.",
-  "later": "Later",
-  "updateNow": "Update Now",
-  "beforeYouStart": "BEFORE YOU START",
   "stopBroadcasting": "Stop Broadcasting",
   "startNintendoMode": "Start Nintendo Mode",
   "startFriendsMode": "Start Friends Mode",
   "startBroadcasting": "Start Broadcasting",
-  "modeLabel": "Mode",
   "labelXbox": "Xbox/PS4-5",
   "labelNintendo": "Nintendo",
   "labelFriends": "Friends",
-  "nintendoInfoTitle": "Nintendo Switch DNS mode",
-  "nintendoInfoText": "Start in Nintendo mode, set your DNS and join a featured server.",
-  "friendModeTitle": "Friend mode",
-  "friendModeText": "Add MCCompanion's friends bots as a friend. Start Friends mode and play",
-  "selectedRelayCheck": "Selected",
-  "@selectedRelayCheck": {
-    "description": "Small label used when a relay is selected"
-  },
-  "relayFallbackWarning": "Warning: original relay did not respond. Fallback relay in use: {name}",
-  "@relayFallbackWarning": {
-    "placeholders": {
-      "name": {}
-    }
-  },
-  "relayUnableConnect": "Unable to connect to ANY MCCompanion relay server. Try again later or check your internet.",
   "howToXboxTitle": "Xbox / PS4-5 (LAN / Proxy)",
   "@howToXboxTitle": {
     "description": "Title for the Xbox / PS4-5 how-to modal"
@@ -277,10 +179,6 @@
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
-  "howToNintendoBody": "Nintendo Switch: DNS mode (step-by-step):\n1. In the app enable \"Nintendo\" mode and select a Relay Server (EU or US).\n2. Tap \"Send DNS Config\" to push the DNS IP to the relay.\n3. On your Nintendo Switch go to System Settings → Internet → Internet Settings → (your network) → Change Settings → DNS and set the Primary DNS to the relay IP.\n4. Open Minecraft and join a public server; you will be redirected to your server using the relay DNS.\nNotes:\n- DNS mode does not broadcast a LAN server; it routes game traffic through the relay.\n- Revert your DNS after you are done if you need normal network behavior.",
-  "@howToNintendoBody": {
-    "description": "Detailed steps for Nintendo Switch DNS setup"
-  },
   "howToFriendsTitle": "Friends mode",
   "@howToFriendsTitle": {
     "description": "Title for the Friends-mode how-to modal"
@@ -288,10 +186,6 @@
   "howToFriendsSubtitle": "Invite friends and join via LAN",
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
-  },
-  "howToFriendsBody": "Friends mode: quick steps:\n1. Add the MCCompanion friend account (relay friend) on your console or platform if required.\n2. In the app enable Friends mode and send the relay configuration (if applicable).\n3. On your console open Minecraft → Friends and search for LAN Worlds, your server should appear there as a LAN world.\n4. Select it to join your server with friends.\nNotes:\n- Make sure both you and your friends have the same NAT/settings that allow friend presence.\n- Friend-mode relies on platform friend features and may require accepting friend requests.",
-  "@howToFriendsBody": {
-    "description": "Detailed steps for Friends mode"
   },
   "helpMCCompanionTitle": "MCCompanion does not appear",
   "@helpMCCompanionTitle": {
@@ -348,10 +242,6 @@
   "changeLanguage": "Language",
   "@changeLanguage": {
     "description": "Label for the language button in the bottom nav"
-  },
-  "useSystemLanguage": "Use system language",
-  "@useSystemLanguage": {
-    "description": "Button that resets localization to the system/default locale"
   },
   "couldNotOpenUrl": "Could not open URL",
   "@couldNotOpenUrl": {
@@ -440,14 +330,6 @@
   "@statusChecking": {
     "description": "Server status while being checked"
   },
-  "notificationsOn": "Notifications on",
-  "@notificationsOn": {
-    "description": "Tooltip when server notifications are enabled"
-  },
-  "notificationsOff": "Notifications off",
-  "@notificationsOff": {
-    "description": "Tooltip when server notifications are disabled"
-  },
   "failedUpdateNotifications": "Failed to update notifications",
   "@failedUpdateNotifications": {
     "description": "Error when toggling server notifications fails"
@@ -472,7 +354,7 @@
   "@customizeLabel": {
     "description": "Customize button in the nav bar"
   },
-  "customizeSubtitle": "Reorder tiles and customize navigation",
+  "customizeSubtitle": "Navigation bar and colors",
   "@customizeSubtitle": {
     "description": "Subtitle in the customize bottom sheet"
   },
@@ -480,49 +362,23 @@
   "@resetLabel": {
     "description": "Reset button in customize sheet"
   },
-  "tilesSection": "TILES",
-  "@tilesSection": {
-    "description": "Section header for tiles in customize sheet"
-  },
-  "dragToReorder": "Drag to reorder",
-  "@dragToReorder": {
-    "description": "Hint text below tiles section in customize sheet"
-  },
   "navigationSection": "NAVIGATION",
   "@navigationSection": {
     "description": "Section header for navigation in customize sheet"
   },
-  "navFixed": "Home, Connector and Profile are always fixed",
+  "navFixed": "Connector and Profile are always fixed",
   "@navFixed": {
     "description": "Note about fixed navigation items"
   },
-  "leftSlot": "Left slot (next to Home)",
+  "leftSlot": "Slot 2",
+  "outerSlot": "Slot 1",
   "@leftSlot": {
     "description": "Label for left navigation slot selector"
   },
-  "rightSlot": "Right slot (next to Profile)",
+  "rightSlot": "Slot 3",
+  "farSlot": "Slot 4",
   "@rightSlot": {
     "description": "Label for right navigation slot selector"
-  },
-  "tileWideTooltipRemove": "Remove wide layout",
-  "@tileWideTooltipRemove": {
-    "description": "Tooltip on wide-tile icon when tile is already wide, tap to remove"
-  },
-  "tileWideTooltipAdd": "Make wide tile",
-  "@tileWideTooltipAdd": {
-    "description": "Tooltip on wide-tile icon, tap to make this tile full-width"
-  },
-  "tileVisibilityShow": "Show tile",
-  "@tileVisibilityShow": {
-    "description": "Tooltip on eye icon when tile is hidden, tap to show"
-  },
-  "tileVisibilityHide": "Hide tile",
-  "@tileVisibilityHide": {
-    "description": "Tooltip on eye icon when tile is visible, tap to hide"
-  },
-  "tileVisibilityMin": "Cannot hide (last tile)",
-  "@tileVisibilityMin": {
-    "description": "Tooltip shown when hide is disabled because minimum visible tile count is reached"
   },
   "colorPickerApply": "Apply",
   "@colorPickerApply": {
@@ -618,10 +474,6 @@
       "uuid": {}
     }
   },
-  "avatarUrlHint": "https://example.com/avatar.png",
-  "@avatarUrlHint": {
-    "description": "Hint text for avatar URL field"
-  },
   "reportUser": "Report user",
   "@reportUser": {
     "description": "Tooltip/button to report a user"
@@ -669,22 +521,6 @@
   "@reportSubmit": {
     "description": "Button label to submit a report"
   },
-  "today": "Today",
-  "@today": {
-    "description": "Date divider label for today"
-  },
-  "yesterday": "Yesterday",
-  "@yesterday": {
-    "description": "Date divider label for yesterday"
-  },
-  "youPrefix": "You",
-  "@youPrefix": {
-    "description": "Prefix for last message preview when message is from current user"
-  },
-  "playerLookupTitle": "Player Lookup",
-  "@playerLookupTitle": {
-    "description": "Title of the player lookup screen"
-  },
   "playerLookupSubtitle": "Search for a Java or Bedrock player by username",
   "@playerLookupSubtitle": {
     "description": "Subtitle/hint on player lookup screen"
@@ -712,64 +548,13 @@
       "value": {}
     }
   },
-  "tabProfile": "Profile",
-  "@tabProfile": {
-    "description": "Tab label for Profile tab"
-  },
-  "tabFriends": "Friends",
-  "@tabFriends": {
-    "description": "Tab label for Friends tab"
-  },
-  "tabRequests": "Requests",
-  "@tabRequests": {
-    "description": "Tab label for Requests tab"
-  },
   "addFriend": "Add Friend",
   "@addFriend": {
     "description": "Title/button for adding a friend"
   },
-  "usernameHint": "Username",
-  "@usernameHint": {
-    "description": "Hint text for username input"
-  },
   "send": "Send",
   "@send": {
     "description": "Send button label"
-  },
-  "friendRequestSentTo": "Friend request sent to {name}",
-  "@friendRequestSentTo": {
-    "description": "Toast when a friend request is sent",
-    "placeholders": {
-      "name": {}
-    }
-  },
-  "alreadyFriendsWith": "You are already friends with {name}",
-  "@alreadyFriendsWith": {
-    "description": "Error when already friends with user",
-    "placeholders": {
-      "name": {}
-    }
-  },
-  "requestAlreadyPending": "A request to {name} is already pending",
-  "@requestAlreadyPending": {
-    "description": "Error when friend request is already pending",
-    "placeholders": {
-      "name": {}
-    }
-  },
-  "userNotFoundMsg": "User {name} not found",
-  "@userNotFoundMsg": {
-    "description": "Error when user is not found",
-    "placeholders": {
-      "name": {}
-    }
-  },
-  "cannotSendRequest": "Cannot send a request to {name}",
-  "@cannotSendRequest": {
-    "description": "Error when user is blocked or request is not allowed",
-    "placeholders": {
-      "name": {}
-    }
   },
   "somethingWentWrong": "Something went wrong. Please try again.",
   "@somethingWentWrong": {
@@ -861,10 +646,6 @@
     "placeholders": {
       "email": {}
     }
-  },
-  "noAccountForEmail": "No account found for that email address",
-  "@noAccountForEmail": {
-    "description": "Error when no account exists for the email"
   },
   "invalidEmailError": "The email address is not valid",
   "@invalidEmailError": {
@@ -984,10 +765,6 @@
       "name": {}
     }
   },
-  "linkedAccountsTitle": "Linked Accounts",
-  "@linkedAccountsTitle": {
-    "description": "Section title for linked accounts card"
-  },
   "linkAccountsHint": "Link your Minecraft accounts to show your skins and stats.",
   "@linkAccountsHint": {
     "description": "Hint when no accounts are linked"
@@ -1003,10 +780,6 @@
   "profileUpdated": "Profile updated",
   "@profileUpdated": {
     "description": "Toast shown after profile is saved"
-  },
-  "profileCardTitle": "Profile",
-  "@profileCardTitle": {
-    "description": "Title for the edit profile card"
   },
   "edit": "Edit",
   "@edit": {
@@ -1027,18 +800,6 @@
   "bioHint": "Tell others about yourself…",
   "@bioHint": {
     "description": "Hint text for bio field"
-  },
-  "avatarUrlLabel": "Avatar URL",
-  "@avatarUrlLabel": {
-    "description": "Label for avatar URL field"
-  },
-  "usernameDisplayLabel": "Username",
-  "@usernameDisplayLabel": {
-    "description": "Label for username row in profile display"
-  },
-  "aboutMe": "About me",
-  "@aboutMe": {
-    "description": "Label for bio/about-me row in profile display"
   },
   "noFriendsYet": "No friends yet",
   "@noFriendsYet": {
@@ -1074,22 +835,6 @@
   "@skinsEdit": {
     "description": "Edit button in skin detail sheet"
   },
-  "skinsNoAccountsTitle": "No Minecraft accounts linked",
-  "@skinsNoAccountsTitle": {
-    "description": "Title when no Minecraft accounts are linked"
-  },
-  "skinsNoAccountsSubtitle": "Link a Java or Bedrock account to view your skins.",
-  "@skinsNoAccountsSubtitle": {
-    "description": "Subtitle when no Minecraft accounts are linked"
-  },
-  "skinsSignInTitle": "Sign in to view your skins",
-  "@skinsSignInTitle": {
-    "description": "Title when user is not signed in on skins screen"
-  },
-  "skinsSignInSubtitle": "Sign in and link your Minecraft accounts to see your skins here.",
-  "@skinsSignInSubtitle": {
-    "description": "Subtitle when user is not signed in on skins screen"
-  },
   "skinsMustBe64": "Skin must be 64×64 pixels",
   "@skinsMustBe64": {
     "description": "Error when uploaded skin is wrong size"
@@ -1105,34 +850,6 @@
   "skinsCreate": "Create",
   "@skinsCreate": {
     "description": "Button to create/open skin editor"
-  },
-  "skinsSectionRecent": "RECENT SKINS",
-  "@skinsSectionRecent": {
-    "description": "Section label for recent Geyser skins"
-  },
-  "skinsSectionMy": "MY SKINS",
-  "@skinsSectionMy": {
-    "description": "Section label for saved/local skins"
-  },
-  "skinsEmptyMySkins": "No saved skins yet. Upload or create one!",
-  "@skinsEmptyMySkins": {
-    "description": "Empty state text for saved skins section"
-  },
-  "skinsSectionYours": "YOUR SKINS",
-  "@skinsSectionYours": {
-    "description": "Section label for the user's linked account skins"
-  },
-  "skinsCouldNotLoad": "Could not load skins",
-  "@skinsCouldNotLoad": {
-    "description": "Error text when recent skins cannot be loaded"
-  },
-  "skinsPageOf": "Page {page} of {total}",
-  "@skinsPageOf": {
-    "description": "Pagination label on skins screen",
-    "placeholders": {
-      "page": {},
-      "total": {}
-    }
   },
   "skinsDownload": "Download",
   "@skinsDownload": {
@@ -1177,10 +894,6 @@
   "noConnectionError": "No connection. Check your internet and try again.",
   "@noConnectionError": {
     "description": "noConnectionError"
-  },
-  "home": "Home",
-  "@home": {
-    "description": "home"
   },
   "info": "Info",
   "@info": {
@@ -1228,29 +941,13 @@
   "@relay": {
     "description": "Label for the Relay nav item and sheet title"
   },
-  "selectModeSection": "SELECT MODE",
-  "@selectModeSection": {
-    "description": "Section label above mode chips in connection panel"
-  },
-  "serversSection": "SERVERS",
+  "serversSection": "Servers",
   "@serversSection": {
     "description": "Section label above servers panel in connection panel"
-  },
-  "noServerSelected": "No server selected",
-  "@noServerSelected": {
-    "description": "Placeholder when no server is entered in connection panel"
   },
   "selectBedrockAccount": "Select Bedrock account",
   "@selectBedrockAccount": {
     "description": "Title of the Bedrock account picker bottom sheet"
-  },
-  "playersCount": "{players} / {max} players",
-  "@playersCount": {
-    "description": "Player count label on tracked server card",
-    "placeholders": {
-      "players": {},
-      "max": {}
-    }
   },
   "infoAndLegal": "Info & Legal",
   "@infoAndLegal": {
@@ -1368,18 +1065,6 @@
   "@portRangeError": {
     "description": "Validation error when port is out of range"
   },
-  "partnerServersTitle": "Server List",
-  "@partnerServersTitle": {
-    "description": "Title for the partner servers screen"
-  },
-  "noPartnerServers": "No servers to show yet.",
-  "@noPartnerServers": {
-    "description": "Empty state text on partner servers screen"
-  },
-  "checkBackLater": "Check back later.",
-  "@checkBackLater": {
-    "description": "Secondary empty state text on partner servers screen"
-  },
   "xboxLinkTitle": "Link Xbox Account",
   "@xboxLinkTitle": {
     "description": "AppBar title for Xbox link screen"
@@ -1435,10 +1120,6 @@
   "tryAgain": "Try again",
   "@tryAgain": {
     "description": "Generic try again button label"
-  },
-  "publicProfileTitle": "Profile",
-  "@publicProfileTitle": {
-    "description": "AppBar title fallback for public profile when username not loaded"
   },
   "userNotFound": "User not found",
   "@userNotFound": {
@@ -1522,7 +1203,7 @@
       "username": {}
     }
   },
-  "trackerLimitReached": "You've reached your server limit. Upgrade to track more servers.",
+  "trackerLimitReached": "Server limit reached",
   "@trackerLimitReached": {
     "description": "Banner shown when tracker slot limit is reached"
   },
@@ -1546,26 +1227,13 @@
   "javaCodeExpired": "The code expired. Please try again.",
   "javaSomethingWrong": "Something went wrong. Please try again.",
   "javaCodeCopied": "Code copied to clipboard",
-  "splashFeatureConnect": "Connect",
-  "splashFeatureFriends": "Friends",
-  "splashFeatureChat": "Chat",
-  "splashFeatureSkins": "Skins",
   "featureLabelConnector": "Connector",
   "featureLabelSkins": "Skins",
   "featureLabelPartners": "Server list",
   "featureLabelLookup": "Lookup",
   "featureLabelTracker": "Server Tracker",
-  "featureSubtitleConnector": "Connect consoles to Minecraft",
-  "featureSubtitleSkins": "Browse & manage Minecraft skins",
-  "featureSubtitlePartners": "Featured servers",
-  "featureSubtitleLookup": "Look up Java & Bedrock profiles",
-  "featureSubtitleTracker": "Monitor server status & get notified",
   "userSearchHint": "Username, gamertag or Java name…",
   "userSearchSub": "Search by username, Xbox gamertag or Java name",
-  "onlineStatus": "Online",
-  "@onlineStatus": {
-    "description": "Label shown when a friend is online"
-  },
   "upgradeWindowsHint": "Upgrade available via the Microsoft Store",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
@@ -1591,7 +1259,7 @@
   "@skinExported": {
     "description": "Toast when skin is exported successfully"
   },
-  "accountActions": "ACCOUNT",
+  "accountActions": "Account",
   "@accountActions": {
     "description": "Label for account danger zone section"
   },
@@ -1631,18 +1299,6 @@
   "@feedbackDescHintFeature": {
     "description": "Hint in description field when type is feature"
   },
-  "feedbackEmailLabel": "Email",
-  "@feedbackEmailLabel": {
-    "description": "Label above email field in feedback form"
-  },
-  "feedbackEmailHint": "So we can follow up with you",
-  "@feedbackEmailHint": {
-    "description": "Hint text for email field"
-  },
-  "feedbackEmailNote": "Your email is never shared publicly.",
-  "@feedbackEmailNote": {
-    "description": "Note below email field"
-  },
   "feedbackSubmitBug": "Submit Bug Report",
   "@feedbackSubmitBug": {
     "description": "Submit button label when type is bug"
@@ -1679,21 +1335,13 @@
   "@feedbackDescTooShort": {
     "description": "Validation error when description is too short"
   },
-  "feedbackEmailInvalid": "Please enter a valid email address.",
-  "@feedbackEmailInvalid": {
-    "description": "Validation error when email is missing or invalid"
-  },
   "feedbackSubmitFailed": "Failed to submit. Please try again.",
   "@feedbackSubmitFailed": {
     "description": "Error toast when submit fails"
   },
-  "feedbackTileTitle": "Report a bug or suggest a feature",
+  "feedbackTileTitle": "Feedback",
   "@feedbackTileTitle": {
     "description": "Title on feedback tile on landing screen"
-  },
-  "reportBug": "Feedback",
-  "@reportBug": {
-    "description": "Short label for feedback/bug report in desktop sidebar"
   },
   "feedbackTileSubtitle": "Help us improve MCCompanion",
   "@feedbackTileSubtitle": {
@@ -1784,26 +1432,6 @@
   "@rpScreenTitle": {
     "description": "Title of the resource pack screen"
   },
-  "rpWhatIsThis": "What is this?",
-  "@rpWhatIsThis": {
-    "description": "Section title for the what-is-this explanation card"
-  },
-  "rpExplanation": "Customize how Minecraft looks on your console with a resource pack. Upload a file or paste a direct link. MCCompanion sends it to your console automatically every time you connect.",
-  "@rpExplanation": {
-    "description": "Body text explaining what the resource pack feature does"
-  },
-  "rpPackUrlLabel": "Pack URL",
-  "@rpPackUrlLabel": {
-    "description": "Label for the pack URL text field"
-  },
-  "rpPackUrlHint": "https://example.com/pack.mcpack",
-  "@rpPackUrlHint": {
-    "description": "Hint/placeholder for the pack URL text field"
-  },
-  "rpEnableToggle": "Enable resource pack",
-  "@rpEnableToggle": {
-    "description": "Label for the enable resource pack toggle"
-  },
   "rpWhatWorks": "Supported formats",
   "@rpWhatWorks": {
     "description": "Section title for the supported formats card"
@@ -1842,10 +1470,6 @@
   "@rpWarnExtension": {
     "description": "Inline warning when URL does not end with .mcpack or .zip"
   },
-  "rpToastEnterUrl": "Enter a URL before enabling the resource pack.",
-  "@rpToastEnterUrl": {
-    "description": "Toast shown when save is pressed with pack enabled but no URL"
-  },
   "rpToastSaved": "Resource pack settings saved.",
   "@rpToastSaved": {
     "description": "Toast shown after resource pack settings are saved successfully"
@@ -1861,10 +1485,6 @@
   "rpClearMinecraftTitle": "First time with this pack?",
   "@rpClearMinecraftTitle": {
     "description": "Section title: already connected before info card"
-  },
-  "rpClearMinecraftBody": "Minecraft caches resource packs locally. If you connected to this server before enabling MCCompanion's resource pack, Minecraft already has the original pack cached and won't re-download the merged version.",
-  "@rpClearMinecraftBody": {
-    "description": "Explanation of why Minecraft cache needs clearing when switching to MCCompanion resource pack"
   },
   "rpClearStep1": "Open Minecraft on your console and go to Settings → Storage",
   "@rpClearStep1": {
@@ -1886,9 +1506,6 @@
   "@rpRelayBody": {
     "description": "Explanation of what to do when merged pack has issues, toggle pack off/on and reconnect"
   },
-  "rpWorksGithubHint": "Direct download link, always accessible.",
-  "rpWorksCloudflareHint": "Public cloud storage, fast and reliable.",
-  "rpWorksDirectHint": "Any public HTTPS .mcpack or .zip URL",
   "rpNoDiscordHint": "Links expire after a few hours and can't be used as a permanent pack URL.",
   "rpNoDriveHint": "Not a direct download, sends you to a preview page instead.",
   "rpNoEncryptedHint": "MCCompanion cannot read or merge encrypted pack content.",
@@ -1896,10 +1513,6 @@
   "rpUploadTab": "Upload",
   "@rpUploadTab": {
     "description": "Tab label for uploading a pack file"
-  },
-  "rpUrlTab": "URL",
-  "@rpUrlTab": {
-    "description": "Tab label for entering a pack URL"
   },
   "rpUploadButton": "Tap to select your pack",
   "@rpUploadButton": {
@@ -1914,7 +1527,6 @@
     "description": "Shown while upload is in progress"
   },
   "rpMergerTitle": "RP Merger",
-  "rpMergerSubtitle": "Combine up to 4 resource packs",
   "rpMergerPriorityHint": "Top pack has highest priority: its files win conflicts.",
   "rpMergerTopBadge": "TOP",
   "rpMergerAddPacks": "Add resource packs",
@@ -1936,19 +1548,7 @@
       }
     }
   },
-  "rpMergerComplete": "Merge complete!",
-  "rpMergerConflicts": "{count} conflict(s) resolved: top pack won.",
-  "@rpMergerConflicts": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "rpMergerSetActive": "Set as active resource pack",
   "rpMergerSetActiveToast": "Set as active resource pack",
-  "rpMergerOpenButton": "Merge resource packs",
-  "rpMergerOpenSubtitle": "Combine 2–4 packs into one",
   "rpDisabled": "Disabled",
   "@rpDisabled": {
     "description": "Status label when the resource pack is disabled"
@@ -1988,10 +1588,6 @@
   "rpTabUploadInfo": "Upload your own .mcpack or .zip file. MCCompanion stores it securely in the cloud and sends it to your console every time you connect.",
   "@rpTabUploadInfo": {
     "description": "Info text shown under the Upload tab"
-  },
-  "rpTabUrlInfo": "Paste a direct download link to a .mcpack or .zip file. The URL must be publicly accessible, no Discord or Google Drive links.",
-  "@rpTabUrlInfo": {
-    "description": "Info text shown under the URL tab"
   },
   "rpTabMergeInfo": "Combine 2 to 4 packs into one. The merged pack is uploaded to MCCompanion Cloud and activated automatically.",
   "@rpTabMergeInfo": {
@@ -2105,10 +1701,6 @@
       }
     }
   },
-  "rpPackDetailTitle": "Pack details",
-  "@rpPackDetailTitle": {
-    "description": "rpPackDetailTitle label"
-  },
   "skinsSavedToMySkins": "Saved to My Skins",
   "@skinsSavedToMySkins": {
     "description": "Toast when cloud skin is saved to local library"
@@ -2146,18 +1738,6 @@
       }
     }
   },
-  "skinsTabSkins": "Skins",
-  "@skinsTabSkins": {
-    "description": "Skins tab label"
-  },
-  "skinsTabRecent": "Recent",
-  "@skinsTabRecent": {
-    "description": "Recent tab label on skins screen"
-  },
-  "skinsEmptyCloudSkins": "No cloud skins yet. Upload a skin to see it here.",
-  "@skinsEmptyCloudSkins": {
-    "description": "Empty state for cloud skins tab"
-  },
   "skinsEmptyLocalSkins": "No skins yet. Create or upload a skin to get started.",
   "@skinsEmptyLocalSkins": {
     "description": "Empty state for local skins tab"
@@ -2185,10 +1765,6 @@
   "skinsTabGallery": "Gallery",
   "@skinsTabGallery": {
     "description": "Gallery tab label on skins screen"
-  },
-  "skinsGalleryEmpty": "No community skins yet.",
-  "@skinsGalleryEmpty": {
-    "description": "Empty state for public gallery tab"
   },
   "skinsTopLabel": "Top 30",
   "@skinsTopLabel": {
@@ -2442,14 +2018,6 @@
   "@supportInboxTitle": {
     "description": "Header title of the shared admin support inbox card"
   },
-  "supportInboxSubtitle": "Every support chat, shared with all admins",
-  "@supportInboxSubtitle": {
-    "description": "Subtitle explaining the support inbox is shared between admins"
-  },
-  "adminBadge": "Admin",
-  "@adminBadge": {
-    "description": "Small badge shown next to a user who is an admin"
-  },
   "skinShareSubject": "Minecraft Skin",
   "skinEditorTitle": "Skin Editor",
   "skinToolUndo": "Undo",
@@ -2499,7 +2067,6 @@
   "supportInboxShared": "Shared with all admins",
   "supportInboxEmpty": "No support chats yet",
   "supportReplyingAs": "Replying as MCCompanion Support",
-  "supportReplyHint": "Reply as support…",
   "relayBlocked": "Your IP or account is blocked by MCCompanion. If you think this is a mistake, join our Discord.",
   "relayBlockedWithReason": "Your IP or account is blocked by MCCompanion.\nReason: {reason}\nIf you think this is a mistake, join our Discord.",
   "@relayBlockedWithReason": {
@@ -2552,8 +2119,6 @@
   "notifFeedbackReply": "Reply on your feedback",
   "adminTicketsHeader": "Reports and requests",
   "adminTicketReplyHint": "Reply about this ticket…",
-  "adminNoTicketsForUser": "No tickets from this user",
-  "undo": "Undo",
   "chooseServerTitle": "Choose a server",
   "@chooseServerTitle": {
     "description": "Title of the sheet that lists saved servers"
@@ -2630,28 +2195,6 @@
   "@shareServerOff": {
     "description": "Profile: server visibility"
   },
-  "makeDefaultServer": "Set as default server",
-  "isDefaultServer": "Opens by default",
-  "@makeDefaultServer": {
-    "description": "Tooltip on the star that pins a saved server as the one the connector opens on"
-  },
-  "@isDefaultServer": {
-    "description": "Tooltip on the star of the server the connector already opens on"
-  },
-  "defaultServerSet": "{name} will open by default",
-  "@defaultServerSet": {
-    "description": "Toast shown when a saved server is pinned as the one the connector opens on",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "labelDirect": "Proxy/Direct",
-  "startDirectMode": "Start Proxy/Direct Mode",
-  "howToDirectTitle": "Proxy/Direct Mode",
-  "howToDirectSubtitle": "Play without going through our servers",
-  "howToDirectBody": "Proxy/Direct Mode: your device is the connection.\n1. Make sure the device running MCCompanion and your console are on the same local network.\n2. Enter the Bedrock server address and port, then press \"Start Proxy/Direct Mode\".\n3. On the console open Minecraft → Play → Friends tab and refresh the list.\n4. Select the LAN server named \"MCCompanion\" to join.\n\nWhy this mode exists:\n- Nothing passes through MCCompanion's servers. Your device forwards the traffic itself, so this keeps working even when our relays cannot be reached.\n- No sign-in is needed.\n\nKeep in mind:\n- The app has to stay open and on screen for the whole session. Closing it or switching to another app ends the connection.\n- Bedrock servers only. For Java servers use Java Mode, which does the protocol translation on our side.\n- Expect more battery use than in the other modes.\n- Resource packs are not applied. They are handled by our relay, which this mode skips.",
   "directHostNotFound": "Could not find {host}. Check the address and try again.",
   "@directHostNotFound": {
     "placeholders": {
@@ -2661,17 +2204,6 @@
     }
   },
   "directPortBusy": "Could not open the local port. Stop the current connection first.",
-  "directServerOfflineTitle": "Server not responding",
-  "directServerOfflineBody": "{target} did not answer. It may be offline, or it may simply hide from pings. You can still start the tunnel and try to join.",
-  "@directServerOfflineBody": {
-    "placeholders": {
-      "target": {
-        "type": "String"
-      }
-    }
-  },
-  "directStartAnyway": "Start anyway",
-  "directNoResourcePack": "Resource packs do not work in Proxy/Direct Mode.",
   "directAddressNotSupported": "{host} is an IPv6 address. Proxy/Direct Mode only supports IPv4. Use the IPv4 address or the hostname instead.",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -2734,21 +2266,15 @@
   "serverStatPeak": "Peak",
   "serverStatUptime": "Uptime",
   "serverStatVotesMonth": "Votes this month",
-  "serverStatVotesAllTime": "Votes all time",
   "serverBadgeFeatured": "Featured",
   "serverEditionJava": "Java",
   "serverEditionBedrock": "Bedrock",
   "serverEditionCrossplay": "Crossplay",
   "serverSectionMotd": "Message of the day",
-  "serverSectionAbout": "About",
-  "serverSectionCategories": "Categories",
-  "serverSectionVotes": "Votes",
   "serverLinkDiscord": "Discord",
   "serverLinkWebsite": "Website",
   "serverVotesThisMonth": "This month",
   "serverVotesAllTime": "All time",
-  "serverVoteAction": "Vote for this server",
-  "serverPlayAction": "Play on this server",
   "serverVoteSignInRequired": "Sign in to vote from the app.",
   "serverVoteSheetTitle": "Vote for {name}",
   "serverVoteSheetSubtitle": "Your Minecraft name, so the server knows who to reward.",

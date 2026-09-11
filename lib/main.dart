@@ -10,6 +10,7 @@ import 'services/locale_provider.dart';
 import 'services/home_customization_service.dart';
 import 'services/theme_service.dart';
 import 'services/distribution_service.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (!Platform.isLinux) {

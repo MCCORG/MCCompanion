@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../l10n/app_localizations.dart';
 import '../../theme/app_theme.dart';
+import '../../design/design.dart';
 import '../../models/user_model.dart';
 import '../../services/user_service.dart';
 import '../../widgets/components/app_toast.dart';
@@ -77,25 +78,30 @@ class ProfileTabState extends State<ProfileTab> {
   Widget build(BuildContext context) {
     if (widget.me == null) return const ProfileLoadingBody();
     return RefreshIndicator(
-      color: AppTheme.accent,
-      backgroundColor: AppTheme.surfaceRaised,
+      color: DsColor.accent,
+      backgroundColor: DsColor.surface,
       onRefresh: widget.onRefresh,
       child: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 20, 16, 24),
+        padding: const EdgeInsets.fromLTRB(
+          DsSpace.gutter,
+          DsSpace.lg,
+          DsSpace.gutter,
+          DsSpace.xxxl,
+        ),
         children: [
           ProfileHero(me: widget.me!, onUpdated: widget.onRefresh),
-          const SizedBox(height: 20),
+          const SizedBox(height: DsSpace.section),
           ProfileSectionHeader(
             AppLocalizations.of(context)!.sectionMinecraftAccounts,
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: DsSpace.md),
           ProfileLinkedAccountsCard(
             me: widget.me!,
             onRefresh: widget.onRefresh,
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: DsSpace.section),
           ProfileSectionHeader(AppLocalizations.of(context)!.sectionSettings),
-          const SizedBox(height: 8),
+          const SizedBox(height: DsSpace.md),
           ProfileSettingsCard(
             appearOffline: _effectiveAppearOffline,
             onToggleAppearOffline: _toggleAppearOffline,
@@ -105,13 +111,13 @@ class ProfileTabState extends State<ProfileTab> {
             shareServer: _effectiveShareServer,
             onToggleShareServer: _toggleShareServer,
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: DsSpace.section),
           ProfileSectionHeader(
             AppLocalizations.of(context)!.sectionRecentActivity,
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: DsSpace.md),
           const ProfileActivityFeed(),
-          const SizedBox(height: 32),
+          const SizedBox(height: DsSpace.section),
           ProfileDangerZoneCard(
             onSignOut: widget.onSignOut,
             onDeleteAccount: widget.onDeleteAccount,

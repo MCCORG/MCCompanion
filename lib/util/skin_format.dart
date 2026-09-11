@@ -164,24 +164,6 @@ List<({int x, int y})> texelLine(int x0, int y0, int x1, int y1) {
   return out;
 }
 
-bool sameFace(int x0, int y0, int x1, int y1) {
-  for (final map in [skinParts, skinOverlayParts]) {
-    for (final box in map.values) {
-      for (final r in [
-        box.top,
-        box.bottom,
-        box.right,
-        box.front,
-        box.left,
-        box.back,
-      ]) {
-        if (_inside(r, x0, y0)) return _inside(r, x1, y1);
-      }
-    }
-  }
-  return false;
-}
-
 const List<(int, int)> _armBlocks = [(40, 16), (32, 48), (40, 32), (48, 48)];
 
 const int _armDepth = 4;

@@ -5,8 +5,10 @@ import '../../l10n/app_localizations.dart';
 import '../../models/bot_model.dart';
 import '../../services/bot_service.dart';
 import '../../theme/app_theme.dart';
+import '../../design/design.dart';
 import '../../util/howto_prefs.dart';
 import '../components/app_toast.dart';
+import '../../theme/app_tokens.dart';
 
 class HowToDialogs {
   static Future<void> showXboxInstructions(BuildContext context) {
@@ -55,19 +57,6 @@ class HowToDialogs {
         subtitle: loc.howToFriendsSubtitle,
         userRegion: userRegion,
       ),
-    );
-  }
-
-  static Future<void> showDirectInstructions(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
-    return _showSheet(
-      context,
-      topic: HowToTopic.direct,
-      icon: FontAwesomeIcons.bolt,
-      color: AppTheme.modeDirect,
-      title: loc.howToDirectTitle,
-      subtitle: loc.howToDirectSubtitle,
-      body: loc.howToDirectBody,
     );
   }
 
@@ -156,10 +145,6 @@ class _InstructionSheet extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: color,
                       foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                      elevation: 0,
                     ),
                     onPressed: () => Navigator.of(context).pop(),
                     icon: const Icon(Icons.check_rounded, size: 18),
@@ -177,6 +162,90 @@ class _InstructionSheet extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class FriendsHowToBody extends StatefulWidget {
+  final Color color;
+  final String? userRegion;
+
+  const FriendsHowToBody({super.key, required this.color, this.userRegion});
+
+  @override
+  State<FriendsHowToBody> createState() => _FriendsHowToBodyState();
+}
+
+class _FriendsHowToBodyState extends State<FriendsHowToBody> {
+  BotRegionData? _bots;
+  bool _loading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    BotService.fetchAllBots()
+        .then((data) {
+          if (mounted) {
+            setState(() {
+              _bots = data;
+              _loading = false;
+            });
+          }
+        })
+        .catchError((_) {
+          if (mounted) setState(() => _loading = false);
+        });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    final color = widget.color;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _StepCard(number: 1, text: loc.friendsHowToStep1, color: color),
+        const SizedBox(height: 8),
+        _StepCard(number: 2, text: loc.friendsHowToStep2, color: color),
+        const SizedBox(height: 12),
+        if (_loading)
+          const Center(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 16),
+              child: SizedBox(
+                width: 22,
+                height: 22,
+                child: CircularProgressIndicator(strokeWidth: 1.8),
+              ),
+            ),
+          )
+        else if (_bots == null || (_bots!.eu.isEmpty && _bots!.us.isEmpty))
+          _NoteBubble(text: loc.friendsBotLoadError, color: color)
+        else ...[
+          _BotRegionSection(
+            flag: '🇪🇺',
+            regionLabel: loc.regionEurope,
+            bots: _bots!.eu,
+            color: color,
+            isUserRegion: widget.userRegion == 'eu',
+          ),
+          const SizedBox(height: 10),
+          _BotRegionSection(
+            flag: '🇺🇸',
+            regionLabel: loc.regionUnitedStates,
+            bots: _bots!.us,
+            color: color,
+            isUserRegion: widget.userRegion == 'us',
+          ),
+        ],
+        const SizedBox(height: 12),
+        _StepCard(number: 3, text: loc.friendsHowToStep3, color: color),
+        const SizedBox(height: 8),
+        _StepCard(number: 4, text: loc.friendsHowToStep4, color: color),
+        const SizedBox(height: 12),
+        _NoteBubble(text: loc.friendsHowToNote, color: color),
+      ],
     );
   }
 }
@@ -201,30 +270,6 @@ class _FriendsSheet extends StatefulWidget {
 }
 
 class _FriendsSheetState extends State<_FriendsSheet> {
-  BotRegionData? _bots;
-  bool _loading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    BotService.fetchAllBots()
-        .then((data) {
-          if (mounted) {
-            setState(() {
-              _bots = data;
-              _loading = false;
-            });
-          }
-        })
-        .catchError((_) {
-          if (mounted) {
-            setState(() {
-              _loading = false;
-            });
-          }
-        });
-  }
-
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
@@ -252,64 +297,9 @@ class _FriendsSheetState extends State<_FriendsSheet> {
           Flexible(
             child: SingleChildScrollView(
               padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _StepCard(
-                    number: 1,
-                    text: loc.friendsHowToStep1,
-                    color: color,
-                  ),
-                  const SizedBox(height: 8),
-                  _StepCard(
-                    number: 2,
-                    text: loc.friendsHowToStep2,
-                    color: color,
-                  ),
-                  const SizedBox(height: 12),
-                  if (_loading)
-                    const Center(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 16),
-                        child: CircularProgressIndicator(),
-                      ),
-                    )
-                  else if (_bots == null ||
-                      (_bots!.eu.isEmpty && _bots!.us.isEmpty))
-                    _NoteBubble(text: loc.friendsBotLoadError, color: color)
-                  else ...[
-                    _BotRegionSection(
-                      flag: '🇪🇺',
-                      regionLabel: loc.regionEurope,
-                      bots: _bots!.eu,
-                      color: color,
-                      isUserRegion: widget.userRegion == 'eu',
-                    ),
-                    const SizedBox(height: 10),
-                    _BotRegionSection(
-                      flag: '🇺🇸',
-                      regionLabel: loc.regionUnitedStates,
-                      bots: _bots!.us,
-                      color: color,
-                      isUserRegion: widget.userRegion == 'us',
-                    ),
-                  ],
-                  const SizedBox(height: 12),
-                  _StepCard(
-                    number: 3,
-                    text: loc.friendsHowToStep3,
-                    color: color,
-                  ),
-                  const SizedBox(height: 8),
-                  _StepCard(
-                    number: 4,
-                    text: loc.friendsHowToStep4,
-                    color: color,
-                  ),
-                  const SizedBox(height: 12),
-                  _NoteBubble(text: loc.friendsHowToNote, color: color),
-                  const SizedBox(height: 8),
-                ],
+              child: FriendsHowToBody(
+                color: color,
+                userRegion: widget.userRegion,
               ),
             ),
           ),
@@ -328,10 +318,6 @@ class _FriendsSheetState extends State<_FriendsSheet> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: color,
                       foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                      elevation: 0,
                     ),
                     onPressed: () => Navigator.of(context).pop(),
                     icon: const Icon(Icons.check_rounded, size: 18),
@@ -397,7 +383,7 @@ class _SheetHeader extends StatelessWidget {
             height: 48,
             decoration: BoxDecoration(
               color: color.withValues(alpha: 0.15),
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: AppRadius.medium,
               border: Border.all(color: color.withValues(alpha: 0.35)),
             ),
             child: Center(child: FaIcon(icon, color: color, size: 20)),
@@ -434,7 +420,7 @@ class _SheetHeader extends StatelessWidget {
               height: 32,
               decoration: BoxDecoration(
                 color: AppTheme.surfaceRaised,
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: AppRadius.small,
                 border: Border.all(color: AppTheme.borderGray),
               ),
               child: Icon(
@@ -513,7 +499,7 @@ class StepContent extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
           decoration: BoxDecoration(
             color: AppTheme.surface,
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: AppRadius.small,
             border: Border.all(color: AppTheme.borderDim),
           ),
           child: Text(
@@ -553,7 +539,7 @@ class _StepCard extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: color.withValues(alpha: 0.05),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: AppRadius.medium,
         border: Border.all(color: color.withValues(alpha: 0.18)),
       ),
       child: Row(
@@ -564,7 +550,6 @@ class _StepCard extends StatelessWidget {
             height: 30,
             decoration: BoxDecoration(
               color: color.withValues(alpha: 0.18),
-              shape: BoxShape.circle,
               border: Border.all(color: color.withValues(alpha: 0.40)),
             ),
             child: Center(
@@ -609,7 +594,7 @@ class _BulletCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
       decoration: BoxDecoration(
         color: AppTheme.surface,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: AppRadius.small,
         border: Border.all(color: AppTheme.borderDim),
       ),
       child: Row(
@@ -620,10 +605,7 @@ class _BulletCard extends StatelessWidget {
             child: Container(
               width: 5,
               height: 5,
-              decoration: BoxDecoration(
-                color: color.withValues(alpha: 0.65),
-                shape: BoxShape.circle,
-              ),
+              decoration: BoxDecoration(color: color.withValues(alpha: 0.65)),
             ),
           ),
           const SizedBox(width: 12),
@@ -695,7 +677,7 @@ class _NoteBubble extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
       decoration: BoxDecoration(
         color: bubbleColor.withValues(alpha: 0.07),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: AppRadius.small,
         border: Border.all(color: bubbleColor.withValues(alpha: 0.25)),
       ),
       child: Text(
@@ -731,7 +713,7 @@ class _BotRegionSection extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: AppTheme.surface,
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: AppRadius.medium,
         border: Border.all(
           color: isUserRegion
               ? color.withValues(alpha: 0.35)
@@ -874,7 +856,7 @@ class _BotRow extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   color: color.withValues(alpha: 0.12),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: AppRadius.small,
                   border: Border.all(color: color.withValues(alpha: 0.25)),
                 ),
                 child: Text(
@@ -891,55 +873,6 @@ class _BotRow extends StatelessWidget {
       ),
     );
   }
-}
-
-class InstructionPage extends StatelessWidget {
-  final FaIconData icon;
-  final Color color;
-  final String title;
-  final String subtitle;
-  final String body;
-
-  const InstructionPage({
-    super.key,
-    required this.icon,
-    required this.color,
-    required this.title,
-    required this.subtitle,
-    required this.body,
-  });
-
-  @override
-  Widget build(BuildContext context) => _InstructionSheet(
-    icon: icon,
-    color: color,
-    title: title,
-    subtitle: subtitle,
-    body: body,
-  );
-}
-
-class FriendsInstructionPage extends StatelessWidget {
-  final Color color;
-  final String title;
-  final String subtitle;
-  final String? userRegion;
-
-  const FriendsInstructionPage({
-    super.key,
-    required this.color,
-    required this.title,
-    required this.subtitle,
-    this.userRegion,
-  });
-
-  @override
-  Widget build(BuildContext context) => _FriendsSheet(
-    color: color,
-    title: title,
-    subtitle: subtitle,
-    userRegion: userRegion,
-  );
 }
 
 class AutoShowToggle extends StatefulWidget {
@@ -983,12 +916,7 @@ class _AutoShowToggleState extends State<AutoShowToggle> {
               style: TextStyle(color: AppTheme.textSecondary, fontSize: 13),
             ),
           ),
-          Switch.adaptive(
-            value: enabled,
-            onChanged: _set,
-            activeThumbColor: Colors.white,
-            activeTrackColor: widget.color,
-          ),
+          DsSwitch(value: enabled, onChanged: _set),
         ],
       ),
     );

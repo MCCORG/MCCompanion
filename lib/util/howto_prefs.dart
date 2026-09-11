@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-enum HowToTopic { xbox, nintendo, friends, direct }
+enum HowToTopic { xbox, nintendo, friends }
 
 class HowToPrefs {
   static const _prefix = 'howto_auto_show_';
@@ -12,9 +12,7 @@ class HowToPrefs {
   static Future<bool> isAutoShowEnabled(HowToTopic topic) async {
     try {
       final prefs = await SharedPreferences.getInstance();
-      return prefs.getBool(_keyFor(topic)) ??
-          prefs.getBool(_legacyKey) ??
-          true;
+      return prefs.getBool(_keyFor(topic)) ?? prefs.getBool(_legacyKey) ?? true;
     } catch (_) {
       return true;
     }

@@ -7,6 +7,8 @@ import '../l10n/app_localizations.dart';
 import '../models/player_lookup_model.dart';
 import '../services/player_lookup_service.dart';
 import '../theme/app_theme.dart';
+import '../design/design.dart';
+import '../theme/app_tokens.dart';
 import '../widgets/components/app_toast.dart';
 import '../widgets/skin_3d_viewer.dart';
 import 'skin_editor_screen.dart';
@@ -86,133 +88,55 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+
     return SwipeBack(
       onBack: widget.onBack,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.fromLTRB(
+                DsSpace.gutter,
+                DsSpace.lg,
+                DsSpace.gutter,
+                DsSpace.xxxl,
+              ),
               child: Center(
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 680),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text(
-                        AppLocalizations.of(context)!.playerLookupSubtitle,
-                        style: TextStyle(
-                          color: AppTheme.textMuted,
-                          fontSize: 12,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-
+                      Text(loc.playerLookupSubtitle, style: DsType.caption),
+                      const SizedBox(height: DsSpace.md),
                       Row(
                         children: [
                           Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: AppTheme.surfaceRaised,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(color: AppTheme.borderGray),
-                              ),
-                              child: TextField(
-                                controller: _ctrl,
-                                style: TextStyle(
-                                  color: AppTheme.textPrimary,
-                                  fontSize: 14,
-                                ),
-                                decoration: InputDecoration(
-                                  hintText: AppLocalizations.of(
-                                    context,
-                                  )!.playerLookupHint,
-                                  hintStyle: TextStyle(
-                                    color: AppTheme.textMuted,
-                                    fontSize: 13,
-                                  ),
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.symmetric(
-                                    horizontal: 14,
-                                    vertical: 13,
-                                  ),
-                                  prefixIcon: Icon(
-                                    Icons.manage_search_rounded,
-                                    color: AppTheme.textMuted,
-                                    size: 18,
-                                  ),
-                                ),
-                                onSubmitted: (_) => _search(),
-                                textInputAction: TextInputAction.search,
-                              ),
+                            child: DsField(
+                              controller: _ctrl,
+                              hint: loc.playerLookupHint,
+                              icon: Icons.manage_search_rounded,
+                              onSubmitted: (_) => _search(),
+                              textInputAction: TextInputAction.search,
                             ),
                           ),
-                          const SizedBox(width: 10),
-                          SizedBox(
-                            height: 48,
-                            child: ElevatedButton(
-                              onPressed: _loading ? null : _search,
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: AppTheme.accent,
-                                foregroundColor: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 18,
-                                ),
-                                elevation: 0,
-                              ),
-                              child: _loading
-                                  ? const SizedBox(
-                                      width: 18,
-                                      height: 18,
-                                      child: CircularProgressIndicator(
-                                        strokeWidth: 2,
-                                        color: Colors.white,
-                                      ),
-                                    )
-                                  : const Icon(Icons.search_rounded, size: 20),
-                            ),
+                          const SizedBox(width: DsSpace.sm),
+                          DsIconButton(
+                            icon: Icons.search_rounded,
+                            size: 48,
+                            color: DsColor.accent,
+                            onPressed: _loading ? null : _search,
                           ),
                         ],
                       ),
-
                       if (_error != null) ...[
-                        const SizedBox(height: 14),
-                        Container(
-                          padding: const EdgeInsets.all(12),
-                          decoration: BoxDecoration(
-                            color: AppTheme.error.withValues(alpha: 0.10),
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
-                              color: AppTheme.error.withValues(alpha: 0.30),
-                            ),
-                          ),
-                          child: Row(
-                            children: [
-                              const Icon(
-                                Icons.error_outline_rounded,
-                                color: AppTheme.error,
-                                size: 16,
-                              ),
-                              const SizedBox(width: 8),
-                              Expanded(
-                                child: Text(
-                                  _lookupErrorText(_error!),
-                                  style: const TextStyle(
-                                    color: AppTheme.error,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        const SizedBox(height: DsSpace.lg),
+                        _errorBox(_lookupErrorText(_error!)),
                       ],
-
                       if (_result != null) ...[
-                        const SizedBox(height: 20),
+                        const SizedBox(height: DsSpace.xl),
                         FadeTransition(
                           opacity: _fadeAnim,
                           child: SlideTransition(
@@ -225,6 +149,33 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
                   ),
                 ),
               ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _errorBox(String message) {
+    return Container(
+      padding: const EdgeInsets.all(DsSpace.md),
+      decoration: BoxDecoration(
+        color: DsColor.danger.withValues(alpha: 0.10),
+        borderRadius: DsRadius.controlR,
+        border: Border.all(color: DsColor.danger.withValues(alpha: 0.35)),
+      ),
+      child: Row(
+        children: [
+          const Icon(
+            Icons.error_outline_rounded,
+            color: DsColor.danger,
+            size: 17,
+          ),
+          const SizedBox(width: DsSpace.sm),
+          Expanded(
+            child: Text(
+              message,
+              style: DsType.body.copyWith(color: DsColor.danger),
             ),
           ),
         ],
@@ -247,7 +198,7 @@ class _CombinedResultCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
               color: AppTheme.success.withValues(alpha: 0.10),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: AppRadius.small,
               border: Border.all(
                 color: AppTheme.success.withValues(alpha: 0.30),
               ),
@@ -295,7 +246,7 @@ class _JavaCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: AppRadius.large,
         border: Border.all(color: AppTheme.borderGray),
       ),
       padding: const EdgeInsets.all(16),
@@ -457,7 +408,7 @@ class _BedrockCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: AppRadius.large,
         border: Border.all(color: AppTheme.borderGray),
       ),
       padding: const EdgeInsets.all(16),

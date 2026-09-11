@@ -3,6 +3,7 @@ import '../theme/app_theme.dart';
 import '../services/report_service.dart';
 import '../l10n/app_localizations.dart';
 import 'components/app_toast.dart';
+import '../theme/app_tokens.dart';
 
 Future<void> showReportUserSheet(BuildContext context, String username) {
   final l = AppLocalizations.of(context)!;
@@ -73,18 +74,20 @@ Future<void> showReportUserSheet(BuildContext context, String username) {
                   hintStyle: TextStyle(color: AppTheme.textMuted, fontSize: 13),
                   filled: true,
                   fillColor: AppTheme.surfaceRaised,
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 10,
+                  ),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: AppRadius.small,
                     borderSide: const BorderSide(color: AppTheme.borderGray),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: AppRadius.small,
                     borderSide: const BorderSide(color: AppTheme.borderGray),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: AppRadius.small,
                     borderSide: BorderSide(color: AppTheme.accent, width: 1.5),
                   ),
                 ),
@@ -116,9 +119,6 @@ Future<void> showReportUserSheet(BuildContext context, String username) {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppTheme.error,
                     padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
                   ),
                   child: Text(
                     l.reportSubmit,
@@ -159,7 +159,7 @@ class _ReasonTile extends StatelessWidget {
           color: selected
               ? AppTheme.error.withValues(alpha: 0.10)
               : AppTheme.surfaceRaised,
-          borderRadius: BorderRadius.circular(11),
+          borderRadius: AppRadius.small,
           border: Border.all(
             color: selected
                 ? AppTheme.error.withValues(alpha: 0.50)

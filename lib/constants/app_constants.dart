@@ -8,24 +8,22 @@ class AppConstants {
 
   static const String regionHeader = 'X-Region';
 
-static const relayServers = [
-  {
-    'name': 'EU Server',
-    'ip': '152.53.93.178',
-    'base': 'https://eubackend.mccompanion.net',
-    'region': 'eu',
-  },
-  {
-    'name': 'US Server',
-    'ip': '217.77.15.138',
-    'base': 'https://usbackend.mccompanion.net',
-    'region': 'us',
-  },
-];
+  static const relayServers = [
+    {
+      'name': 'EU Server',
+      'ip': '152.53.93.178',
+      'base': 'https://eubackend.mccompanion.net',
+      'region': 'eu',
+    },
+    {
+      'name': 'US Server',
+      'ip': '217.77.15.138',
+      'base': 'https://usbackend.mccompanion.net',
+      'region': 'us',
+    },
+  ];
 
-  static const Duration serverRotationDuration = Duration(seconds: 5);
   static const Duration animationDuration = Duration(milliseconds: 300);
-  static const Duration progressUpdateInterval = Duration(milliseconds: 50);
 
   static const int maxLogEntries = 1000;
 }

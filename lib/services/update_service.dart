@@ -77,8 +77,11 @@ class UpdateService {
   static Future<String?> _fetchLatestFromApi() async {
     try {
       final response = await http
-          .get(Uri.parse(
-              'https://api.github.com/repos/MCCORG/MCCompanion/releases/latest'))
+          .get(
+            Uri.parse(
+              'https://api.github.com/repos/MCCORG/MCCompanion/releases/latest',
+            ),
+          )
           .timeout(_timeout);
       if (response.statusCode != 200) return null;
 

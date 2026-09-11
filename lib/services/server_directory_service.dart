@@ -25,8 +25,11 @@ class ServerDirectoryService {
       if (edition != null && edition.isNotEmpty) 'edition': edition,
     };
 
-    final body = await _get(Uri.parse('${AppConstants.apiBase}/api/servers')
-        .replace(queryParameters: query));
+    final body = await _get(
+      Uri.parse(
+        '${AppConstants.apiBase}/api/servers',
+      ).replace(queryParameters: query),
+    );
     if (body == null) return DirectoryPage.empty;
 
     final servers = (body['servers'] as List<dynamic>? ?? const [])
@@ -40,7 +43,9 @@ class ServerDirectoryService {
   }
 
   static Future<List<ServerTag>> fetchTags() async {
-    final body = await _get(Uri.parse('${AppConstants.apiBase}/api/servers/tags'));
+    final body = await _get(
+      Uri.parse('${AppConstants.apiBase}/api/servers/tags'),
+    );
     if (body == null) return const [];
 
     return (body['tags'] as List<dynamic>? ?? const [])
@@ -50,7 +55,9 @@ class ServerDirectoryService {
 
   static Future<DirectoryServer?> fetchServer(String slug) async {
     final body = await _get(
-      Uri.parse('${AppConstants.apiBase}/api/servers/${Uri.encodeComponent(slug)}?days=30'),
+      Uri.parse(
+        '${AppConstants.apiBase}/api/servers/${Uri.encodeComponent(slug)}?days=30',
+      ),
     );
     final server = body?['server'];
     return server is Map<String, dynamic>
@@ -60,7 +67,9 @@ class ServerDirectoryService {
 
   static Future<VoteCounts> fetchVotes(String slug) async {
     final body = await _get(
-      Uri.parse('${AppConstants.apiBase}/api/servers/${Uri.encodeComponent(slug)}/votes'),
+      Uri.parse(
+        '${AppConstants.apiBase}/api/servers/${Uri.encodeComponent(slug)}/votes',
+      ),
     );
     return VoteCounts.fromJson(body?['votes'] as Map<String, dynamic>?);
   }
@@ -78,7 +87,9 @@ class ServerDirectoryService {
     try {
       client = HttpClient()..connectionTimeout = _timeout;
       final request = await client.postUrl(
-        Uri.parse('${AppConstants.apiBase}/api/servers/${Uri.encodeComponent(slug)}/vote'),
+        Uri.parse(
+          '${AppConstants.apiBase}/api/servers/${Uri.encodeComponent(slug)}/vote',
+        ),
       );
       request.headers.set(HttpHeaders.contentTypeHeader, 'application/json');
       request.headers.set(HttpHeaders.authorizationHeader, 'Bearer $token');

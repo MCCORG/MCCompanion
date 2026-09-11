@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../models/moderation_status.dart';
 import '../../theme/app_theme.dart';
+import '../../theme/app_tokens.dart';
 
 class ModerationBanner extends StatelessWidget {
   const ModerationBanner({super.key, required this.status});
@@ -22,7 +23,7 @@ class ModerationBanner extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: tone.withValues(alpha: 0.10),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: AppRadius.medium,
         border: Border.all(color: tone.withValues(alpha: 0.45)),
       ),
       child: Row(

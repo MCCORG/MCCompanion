@@ -1,7 +1,12 @@
 {
   "@@locale": "ur",
-  "appName": "MCCompanion",
   "console": "کنسول",
+  "modeLabel": "موڈ",
+  "statusLabel": "حالت",
+  "seeAll": "سب دیکھیں",
+  "sectionHelp": "مدد",
+  "sectionAdvanced": "اعلیٰ",
+  "versionLabel": "ورژن",
   "consoleOutput": "کنسول آؤٹ پٹ",
   "noLogsYet": "ابھی تک کوئی لاگز نہیں",
   "startBroadcastingToSeeOutput": "آؤٹ پٹ دیکھنے کے لیے براڈکاسٹنگ شروع کریں",
@@ -10,20 +15,9 @@
   "back": "واپس",
   "next": "اگلا",
   "done": "مکمل",
-  "joinUs": "ہمارے ساتھ شامل ہوں",
   "website": "ویب سائٹ",
-  "aternosSubtext": "اپنا مفت مائن کرافٹ سرور بنائیں",
   "howToUseMenu": "استعمال کا طریقہ",
   "support": "مدد",
-  "helpText": "{appCreator} کی طرف سے بنایا گیا۔\r\n\r\nاستعمال کا طریقہ:\r\n1. اپنے Minecraft سرور کا ایڈریس اور پورٹ درج کریں (ڈیفالٹ: 19132)\r\n  , یا ڈراپ ڈاؤن سے پہلے سے محفوظ شدہ سرور منتخب کریں\r\n2. (اختیاری) اپنی جگہ کے قریب ترین Relay Server (EU یا US) منتخب کریں\r\n3. شروع کرنے کے لیے \"براڈکاسٹنگ شروع کریں\" پر کلک کریں\r\n4. اپنے کنسول/ڈیوائس پر: Minecraft > Play > Friends\r\n5. آپ کو \"MCCompanion\" نام کا ایک LAN سرور نظر آنا چاہیے\r\n6. اپنے بیرونی سرور میں شامل ہونے کے لیے اس پر کلک کریں\r\n\r\nNintendo Switch (DNS mode):\r\n1. کنیکشن پینل میں \"Nintendo Switch\" فعال کریں\r\n2. ایک Relay Server (EU یا US) منتخب کریں\r\n3. \"Send DNS Config\" پر کلک کریں: یہ آپ کی سیٹنگ relay کو بھیجتا ہے\r\n   (یہ LAN سرور براڈکاسٹ نہیں کرتا)\r\n4. اپنے Switch پر MCCompanion DNS سیٹ اپ لاگو کریں اور شامل ہوں\r\n   اس سرور اندراج کو استعمال کرتے ہوئے جو آپ MCCompanion کے لیے استعمال کرتے ہیں\r\n\r\nنوٹس:\r\n- LAN براڈکاسٹنگ کے لیے MCCompanion اور کنسول کا ایک ہی مقامی نیٹ ورک پر ہونا ضروری ہے۔\r\n- مشورہ: بہترین کارکردگی کے لیے اپنے قریب ترین relay سرور کا انتخاب کریں۔",
-  "@helpText": {
-    "description": "Detailed help / instructions shown in the help dialog",
-    "placeholders": {
-      "appCreator": {}
-    }
-  },
-  "more": "مزید",
-  "serverDetailsLabel": "سرور کی تفصیلات",
   "start": "شروع کریں",
   "labelJava": "Java",
   "language": "اردو",
@@ -58,14 +52,6 @@
   "@delete": {
     "description": "Delete action label"
   },
-  "myServers": "میرے سرورز",
-  "@myServers": {
-    "description": "Title for manage servers dialog"
-  },
-  "quickAccessServers": "فوری رسائی والے سرورز",
-  "@quickAccessServers": {
-    "description": "Subtitle for manage servers dialog"
-  },
   "addServer": "سرور شامل کریں",
   "@addServer": {
     "description": "Add server button label / dialog title"
@@ -94,18 +80,6 @@
   "@save": {
     "description": "Save button label"
   },
-  "initializing": "شروع کیا جا رہا ہے...",
-  "@initializing": {
-    "description": "Shown on splash while app initializes"
-  },
-  "createdBy": "NetherDev کی طرف سے بنایا گیا",
-  "@createdBy": {
-    "description": "Badge text on splash screen"
-  },
-  "bedrockBridge": "بیڈراک برج",
-  "@bedrockBridge": {
-    "description": "Subtitle on splash screen"
-  },
   "clientDisconnected": "کلائنٹ منقطع ہو گیا: براڈکاسٹ بند ہو گئی",
   "@clientDisconnected": {
     "description": "Snackbar shown when clients disconnect automatically"
@@ -119,14 +93,6 @@
     "description": "Validation message when port is invalid"
   },
   "dataSentToServers": "ڈیٹا MCCompanion سرورز کو بھیج دیا گیا",
-  "broadcastingStarted": "براڈکاسٹنگ شروع ہو گئی",
-  "@broadcastingStarted": {
-    "description": "Snackbar shown when broadcasting starts"
-  },
-  "broadcastStopped": "براڈکاسٹ بند ہو گئی",
-  "@broadcastStopped": {
-    "description": "Snackbar shown when broadcasting stops"
-  },
   "selectedServer": "📋 منتخب شدہ: {name}",
   "@selectedServer": {
     "description": "Shown when a saved server is selected",
@@ -141,10 +107,6 @@
       "name": {}
     }
   },
-  "noLogsToCopy": "کاپی کرنے کے لیے کوئی لاگز نہیں",
-  "@noLogsToCopy": {
-    "description": "Shown when user tries to copy logs but none exist"
-  },
   "copiedLogs": "{count} لاگ اندراجات کلپ بورڈ میں کاپی کر دیے گئے",
   "@copiedLogs": {
     "description": "Shown after copying logs to clipboard",
@@ -153,14 +115,10 @@
     }
   },
   "debugEnabled": "ڈیبگ لاگز فعال ہیں",
-  "debugDisabled": "ڈیبگ لاگز غیر فعال ہیں",
   "@debugEnabled": {
     "description": "Shown when debug logging is enabled/disabled"
   },
-  "howToUseTitle": "MCCompanion استعمال کرنے کا طریقہ",
   "iUnderstand": "میں سمجھ گیا",
-  "playOnSwitchTitle": "Nintendo Switch پر کھیلیں",
-  "playWithFriendsTitle": "دوستوں کے ساتھ کھیلیں",
   "playInstructionsSwitch": "منتخب شدہ: {relayName}\r\n\r\nجڑنے کا طریقہ:\r\n1. اپنے Switch کی Settings میں جائیں اور DNS کو اس میں تبدیل کریں: {relayIp}\r\n2. Minecraft کھولیں اور فہرست میں سے ایک سرور منتخب کریں (جیسے Cubecraft یا Hive)۔\r\n3. اب آپ خودکار طور پر اپنے سرور پر بھیج دیے جائیں گے۔",
   "@playInstructionsSwitch": {
     "description": "DNS instructions shown for Nintendo Switch mode",
@@ -169,53 +127,16 @@
       "relayIp": {}
     }
   },
-  "playInstructionsFriends": "جڑنے کا طریقہ:\r\n1. اپنے کنسول پر {friend} کو دوست کے طور پر شامل کریں۔\r\n2. Minecraft کھولیں اور Friends ٹیب میں جائیں۔\r\n3. اپنے سرور کو LAN Worlds کے تحت تلاش کریں اور شامل ہونے کے لیے اسے منتخب کریں۔",
-  "@playInstructionsFriends": {
-    "description": "Instructions shown for Friends mode",
-    "placeholders": {
-      "friend": {}
-    }
-  },
-  "nldServerLabel": "نیدرلنک سرور",
-  "@nldServerLabel": {
-    "description": "Label text above the relay selector"
-  },
-  "selectRelayLabel": "ریلے منتخب کریں {name}",
-  "@selectRelayLabel": {
-    "description": "Accessibility label for relay selection button",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "noSavedServers": "کوئی محفوظ شدہ سرور نہیں",
   "savedServers": "محفوظ شدہ سرورز",
-  "serverAddressHint": "سرور ایڈریس",
-  "portHint": "پورٹ",
   "manageServers": "سرورز منظم کریں",
-  "manageServersTooltip": "سرورز منظم کریں",
   "stopBroadcasting": "براڈکاسٹنگ بند کریں",
   "startNintendoMode": "Nintendo موڈ شروع کریں",
   "startFriendsMode": "دوست موڈ شروع کریں",
   "startBroadcasting": "براڈکاسٹنگ شروع کریں",
-  "modeLabel": "موڈ",
   "labelXbox": "Xbox/PS4-5",
   "labelNintendo": "Nintendo",
   "labelFriends": "دوست",
-  "nintendoInfoTitle": "Nintendo Switch DNS موڈ",
-  "nintendoInfoText": "Nintendo موڈ میں شروع کریں، اپنا DNS سیٹ کریں اور نمایاں سرور میں شامل ہوں۔",
-  "friendModeTitle": "دوست موڈ",
-  "friendModeText": "MCCompanion کے دوست bots کو دوست کے طور پر شامل کریں۔ دوست موڈ شروع کریں اور کھیلیں",
-  "selectedRelayCheck": "منتخب شدہ",
-  "@selectedRelayCheck": {
-    "description": "Small label used when a relay is selected"
-  },
-  "relayFallbackWarning": "انتباہ: اصل relay نے جواب نہیں دیا۔ متبادل relay استعمال ہو رہا ہے: {name}",
-  "@relayFallbackWarning": {
-    "placeholders": {
-      "name": {}
-    }
-  },
-  "relayUnableConnect": "کسی بھی MCCompanion relay سرور سے جڑنا ممکن نہیں۔ بعد میں دوبارہ کوشش کریں یا اپنا انٹرنیٹ چیک کریں۔",
   "howToXboxTitle": "Xbox / PS4-5 (LAN / پراکسی)",
   "@howToXboxTitle": {
     "description": "Title for the Xbox / PS4-5 how-to modal"
@@ -236,10 +157,6 @@
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
-  "howToNintendoBody": "Nintendo Switch: DNS موڈ (مرحلہ وار):\r\n1. ایپ میں \"Nintendo\" موڈ فعال کریں اور ایک Relay Server (EU یا US) منتخب کریں۔\r\n2. DNS IP کو relay پر بھیجنے کے لیے \"Send DNS Config\" پر ٹیپ کریں۔\r\n3. اپنے Nintendo Switch پر System Settings → Internet → Internet Settings → (آپ کا نیٹ ورک) → Change Settings → DNS میں جائیں اور Primary DNS کو relay IP پر سیٹ کریں۔\r\n4. Minecraft کھولیں اور کسی عوامی سرور میں شامل ہوں؛ آپ relay DNS کے ذریعے اپنے سرور پر ری ڈائریکٹ ہو جائیں گے۔\r\nنوٹس:\r\n- DNS موڈ LAN سرور براڈکاسٹ نہیں کرتا؛ یہ گیم ٹریفک کو relay کے ذریعے چلاتا ہے۔\r\n- اگر آپ کو عام نیٹ ورک رویہ چاہیے تو کام مکمل ہونے کے بعد اپنا DNS واپس تبدیل کر دیں۔",
-  "@howToNintendoBody": {
-    "description": "Detailed steps for Nintendo Switch DNS setup"
-  },
   "howToFriendsTitle": "دوست موڈ",
   "@howToFriendsTitle": {
     "description": "Title for the Friends-mode how-to modal"
@@ -247,10 +164,6 @@
   "howToFriendsSubtitle": "دوستوں کو مدعو کریں اور LAN کے ذریعے شامل ہوں",
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
-  },
-  "howToFriendsBody": "دوست موڈ: فوری مراحل:\r\n1. اگر ضرورت ہو تو اپنے کنسول یا پلیٹ فارم پر MCCompanion دوست اکاؤنٹ شامل کریں۔\r\n2. ایپ میں دوست موڈ فعال کریں اور relay کنفیگریشن بھیجیں (اگر لاگو ہو)۔\r\n3. اپنے کنسول پر Minecraft → Friends کھولیں اور LAN Worlds تلاش کریں, آپ کا سرور وہاں LAN world کے طور پر ظاہر ہونا چاہیے۔\r\n4. دوستوں کے ساتھ اپنے سرور میں شامل ہونے کے لیے اسے منتخب کریں۔\r\nنوٹس:\r\n- یقینی بنائیں کہ آپ اور آپ کے دوست ایک جیسی NAT/settings رکھتے ہوں جو دوستوں کی موجودگی کی اجازت دیتی ہیں۔\r\n- دوست موڈ پلیٹ فارم کے دوستی features پر انحصار کرتا ہے اور friend requests قبول کرنے کی ضرورت پڑ سکتی ہے۔",
-  "@howToFriendsBody": {
-    "description": "Detailed steps for Friends mode"
   },
   "helpMCCompanionTitle": "MCCompanion ظاہر نہیں ہوتا",
   "@helpMCCompanionTitle": {
@@ -308,29 +221,14 @@
   "@changeLanguage": {
     "description": "Label for the language button in the bottom nav"
   },
-  "useSystemLanguage": "سسٹم کی زبان استعمال کریں",
-  "@useSystemLanguage": {
-    "description": "Button that resets localization to the system/default locale"
-  },
   "updateAvailable": "اپ ڈیٹ دستیاب ہے",
-  "needSameWifi": "جس ڈیوائس پر MCCompanion چل رہا ہے وہ اسی Wi‑Fi نیٹ ورک پر ہونا چاہیے جس پر آپ Minecraft کھیلنے والا کنسول موجود ہے۔",
   "active": "فعال",
-  "newVersion": "ایپ کا نیا ورژن دستیاب ہے۔\nتازہ ترین خصوصیات اور بہتریوں کے لیے ابھی اپ ڈیٹ کریں۔",
-  "noServerYet": "ابھی تک کوئی محفوظ سرور نہیں ہے۔\nایک شامل کرنے کے لیے مینیج پر ٹیپ کریں۔",
-  "beforeYouStart": "شروع کرنے سے پہلے",
   "stop": "روکیں",
-  "later": "بعد میں",
   "continueAnyway": "پھر بھی جاری رکھیں",
-  "serverNotSelected": "کوئی سرور منتخب نہیں کیا گیا",
   "noWifi": "Wi‑Fi پر نہیں",
   "vpnDetected": "VPN کا پتہ چل گیا",
-  "ready": "تیار",
   "vpnActive": "ہم نے پتہ لگایا ہے کہ آپ کا VPN فعال ہے۔\n\nMCCompanion استعمال کرنے سے پہلے براہ کرم VPN بند کریں، ورنہ LAN براڈکاسٹ آپ کے کنسول تک نہیں پہنچ پائے گی۔",
-  "updateNow": "ابھی اپ ڈیٹ کریں",
-  "needSubscription": "ہر کنسول کے لیے الگ فعال آن لائن سبسکرپشن (Xbox Live، PS Plus، NSO) درکار ہے۔ اس کے بغیر MCCompanion ظاہر نہیں ہوگا۔",
   "mobileActive": "پتہ چلا: موبائل ڈیٹا\n\nMCCompanion کو آپ کے کنسول کے اسی نیٹ ورک پر ہونا چاہیے۔ آگے بڑھنے سے پہلے اپنے ہوم Wi‑Fi یا ہاٹ اسپاٹ سے جڑیں۔",
-  "sameWifi": "ایک ہی Wi‑Fi نیٹ ورک",
-  "subscription": "آن لائن سبسکرپشن درکار ہے",
   "couldNotOpenUrl": "URL نہیں کھولا جا سکا",
   "@couldNotOpenUrl": {
     "description": "Snackbar message when launching an external URL fails"
@@ -355,27 +253,20 @@
   "statusOnline": "آن لائن",
   "statusOffline": "آف لائن",
   "statusChecking": "جانچ ہو رہی ہے...",
-  "notificationsOn": "اطلاعات چالو",
-  "notificationsOff": "اطلاعات بند",
   "failedUpdateNotifications": "اطلاعات اپ ڈیٹ کرنے میں ناکامی",
   "editServerTitle": "سرور ترمیم کریں",
   "serverNameHint": "سرور کا نام",
   "failedSave": "محفوظ کرنے میں ناکامی۔ دوبارہ کوشش کریں۔",
   "serverRenamed": "سرور کا نام بدل دیا گیا",
   "customizeLabel": "حسب ضرورت بنائیں",
-  "customizeSubtitle": "ٹائلز ترتیب دیں اور نیوی گیشن حسب ضرورت بنائیں",
+  "customizeSubtitle": "نیویگیشن بار اور رنگ",
   "resetLabel": "دوبارہ ترتیب دیں",
-  "tilesSection": "ٹائلز",
-  "dragToReorder": "ترتیب بدلنے کے لیے کھینچیں",
   "navigationSection": "نیوی گیشن",
-  "navFixed": "ہوم، کنیکٹر اور پروفائل ہمیشہ مقررہ رہتے ہیں",
-  "leftSlot": "بایاں سلاٹ (ہوم کے قریب)",
-  "rightSlot": "دایاں سلاٹ (پروفائل کے قریب)",
-  "tileWideTooltipRemove": "چوڑا لے آؤٹ ہٹائیں",
-  "tileWideTooltipAdd": "چوڑی ٹائل بنائیں",
-  "tileVisibilityShow": "ٹائل دکھائیں",
-  "tileVisibilityHide": "ٹائل چھپائیں",
-  "tileVisibilityMin": "چھپا نہیں سکتے (آخری ٹائل)",
+  "navFixed": "Connector اور پروفائل ہمیشہ مقرر ہیں",
+  "leftSlot": "Slot 2",
+  "outerSlot": "Slot 1",
+  "rightSlot": "Slot 3",
+  "farSlot": "Slot 4",
   "colorPickerApply": "لاگو کریں",
   "colorPickerHex": "Hex",
   "textColorSection": "متن کا رنگ",
@@ -398,7 +289,6 @@
   "playerLookupLabelFloodgate": "Floodgate",
   "accountSubtitleXbox": "Xbox · {xuid}",
   "accountSubtitleJava": "Java Edition · {uuid}",
-  "avatarUrlHint": "https://example.com/avatar.png",
   "chooseUniqueUsername": "شروع کرنے کے لیے ایک منفرد صارف نام چنیں۔",
   "usernameFieldLabel": "صارف نام",
   "usernameExampleHint": "مثال: CoolPlayer123",
@@ -409,7 +299,6 @@
   "usernameFormatError": "صارف نام 3–20 حروف کا ہونا چاہیے اور صرف حروف، اعداد اور انڈر اسکور ہو سکتے ہیں",
   "usernameTaken": "یہ صارف نام پہلے سے لیا گیا ہے",
   "noConnectionError": "کوئی کنکشن نہیں۔ اپنا انٹرنیٹ چیک کریں اور دوبارہ کوشش کریں۔",
-  "home": "ہوم",
   "info": "معلومات",
   "navProfile": "پروفائل",
   "serverRemoved": "{name} ہٹا دیا گیا",
@@ -421,10 +310,6 @@
   "aboutMCCompanionSection": "About MCCompanion",
   "@aboutMCCompanionSection": {
     "description": "Section header for About MCCompanion in Info sheet"
-  },
-  "aboutMe": "About me",
-  "@aboutMe": {
-    "description": "Label for bio/about-me row in profile display"
   },
   "aboutSectionLabel": "About",
   "@aboutSectionLabel": {
@@ -446,13 +331,6 @@
   "@alreadyFriendsMsg": {
     "description": "Error when already friends with user (public profile)"
   },
-  "alreadyFriendsWith": "You are already friends with {name}",
-  "@alreadyFriendsWith": {
-    "description": "Error when already friends with user",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "alreadyHaveAccount": "Already have an account? Sign in",
   "@alreadyHaveAccount": {
     "description": "Toggle to switch back to sign-in mode"
@@ -473,10 +351,6 @@
   "@appleSignInFailed": {
     "description": "Error when Apple sign-in fails"
   },
-  "avatarUrlLabel": "Avatar URL",
-  "@avatarUrlLabel": {
-    "description": "Label for avatar URL field"
-  },
   "bioHint": "Tell others about yourself…",
   "@bioHint": {
     "description": "Hint text for bio field"
@@ -485,20 +359,9 @@
   "@bioLabel": {
     "description": "Label for bio field"
   },
-  "cannotSendRequest": "Cannot send a request to {name}",
-  "@cannotSendRequest": {
-    "description": "Error when user is blocked or request is not allowed",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "cannotSendRequestMsg": "Cannot send a request to this user.",
   "@cannotSendRequestMsg": {
     "description": "Error when friend request is blocked (public profile)"
-  },
-  "checkBackLater": "Check back later.",
-  "@checkBackLater": {
-    "description": "Secondary empty state text on partner servers screen"
   },
   "chooseUsernameSubtitle": "ایک صارف نام چنیں تاکہ دوسرے کھلاڑی آپ کو تلاش کر سکیں۔",
   "@chooseUsernameSubtitle": {
@@ -630,13 +493,6 @@
   "@friendRequestSent": {
     "description": "Toast shown after friend request is sent from public profile"
   },
-  "friendRequestSentTo": "Friend request sent to {name}",
-  "@friendRequestSentTo": {
-    "description": "Toast when a friend request is sent",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "googleSignInFailed": "Google sign-in failed. Please try again.",
   "@googleSignInFailed": {
     "description": "Error when Google sign-in fails"
@@ -681,10 +537,6 @@
   "@linkXbox": {
     "description": "Button to link an Xbox/Bedrock account"
   },
-  "linkedAccountsTitle": "Linked Accounts",
-  "@linkedAccountsTitle": {
-    "description": "Section title for linked accounts card"
-  },
   "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -701,10 +553,6 @@
   "@nldServerLabelShort": {
     "description": "Section label above relay selector in More sheet"
   },
-  "noAccountForEmail": "No account found for that email address",
-  "@noAccountForEmail": {
-    "description": "Error when no account exists for the email"
-  },
   "noAccountYet": "Don't have an account? Create one",
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
@@ -717,17 +565,9 @@
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
   },
-  "noPartnerServers": "No partner servers available yet.",
-  "@noPartnerServers": {
-    "description": "Empty state text on partner servers screen"
-  },
   "noPendingRequests": "No pending requests",
   "@noPendingRequests": {
     "description": "Empty state title on requests tab"
-  },
-  "noServerSelected": "No server selected",
-  "@noServerSelected": {
-    "description": "Placeholder when no server is entered in connection panel"
   },
   "nowFriendsWith": "Now friends with @{username}",
   "@nowFriendsWith": {
@@ -753,10 +593,6 @@
   "orDivider": "or",
   "@orDivider": {
     "description": "Divider text between email and social sign-in"
-  },
-  "partnerServersTitle": "Partner Servers",
-  "@partnerServersTitle": {
-    "description": "Title for the partner servers screen"
   },
   "passwordHint": "Password",
   "@passwordHint": {
@@ -813,18 +649,6 @@
   "@playerLookupSubtitle": {
     "description": "Subtitle/hint on player lookup screen"
   },
-  "playerLookupTitle": "Player Lookup",
-  "@playerLookupTitle": {
-    "description": "Title of the player lookup screen"
-  },
-  "playersCount": "{players} / {max} players",
-  "@playersCount": {
-    "description": "Player count label on tracked server card",
-    "placeholders": {
-      "players": {},
-      "max": {}
-    }
-  },
   "portFieldLabel": "Port",
   "@portFieldLabel": {
     "description": "Port field label in edit server form"
@@ -841,10 +665,6 @@
   "@privacyPolicySubtitle": {
     "description": "Privacy Policy tile subtitle"
   },
-  "profileCardTitle": "Profile",
-  "@profileCardTitle": {
-    "description": "Title for the edit profile card"
-  },
   "profileNotSetUp": "Profile not set up",
   "@profileNotSetUp": {
     "description": "Title when user is authenticated but has no profile"
@@ -856,10 +676,6 @@
   "profileUpdated": "Profile updated",
   "@profileUpdated": {
     "description": "Toast shown after profile is saved"
-  },
-  "publicProfileTitle": "Profile",
-  "@publicProfileTitle": {
-    "description": "AppBar title fallback for public profile when username not loaded"
   },
   "relay": "Relay",
   "@relay": {
@@ -956,13 +772,6 @@
       "name": {}
     }
   },
-  "requestAlreadyPending": "A request to {name} is already pending",
-  "@requestAlreadyPending": {
-    "description": "Error when friend request is already pending",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "requestAlreadyPendingMsg": "There is already a pending request.",
   "@requestAlreadyPendingMsg": {
     "description": "Error when friend request is already pending (public profile)"
@@ -1001,10 +810,6 @@
   "@selectBedrockAccount": {
     "description": "Title of the Bedrock account picker bottom sheet"
   },
-  "selectModeSection": "SELECT MODE",
-  "@selectModeSection": {
-    "description": "Section label above mode chips in connection panel"
-  },
   "send": "Send",
   "@send": {
     "description": "Send button label"
@@ -1025,7 +830,7 @@
   "@serverNameExampleHint": {
     "description": "Example hint text for server name field"
   },
-  "serversSection": "SERVERS",
+  "serversSection": "Servers",
   "@serversSection": {
     "description": "Section label above servers panel in connection panel"
   },
@@ -1036,10 +841,6 @@
   "signOut": "Sign Out",
   "@signOut": {
     "description": "Sign out button label"
-  },
-  "skinsCouldNotLoad": "Could not load skins",
-  "@skinsCouldNotLoad": {
-    "description": "Error text when recent skins cannot be loaded"
   },
   "skinsCreate": "Create",
   "@skinsCreate": {
@@ -1053,10 +854,6 @@
   "@skinsEdit": {
     "description": "Edit button in skin detail sheet"
   },
-  "skinsEmptyMySkins": "No saved skins yet. Upload or create one!",
-  "@skinsEmptyMySkins": {
-    "description": "Empty state text for saved skins section"
-  },
   "skinsInvalidFile": "Invalid image file",
   "@skinsInvalidFile": {
     "description": "Error when the selected file is not a valid image"
@@ -1064,42 +861,6 @@
   "skinsMustBe64": "Skin must be 64×64 pixels",
   "@skinsMustBe64": {
     "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsNoAccountsSubtitle": "Link a Java or Bedrock account to view your skins.",
-  "@skinsNoAccountsSubtitle": {
-    "description": "Subtitle when no Minecraft accounts are linked"
-  },
-  "skinsNoAccountsTitle": "No Minecraft accounts linked",
-  "@skinsNoAccountsTitle": {
-    "description": "Title when no Minecraft accounts are linked"
-  },
-  "skinsPageOf": "Page {page} of {total}",
-  "@skinsPageOf": {
-    "description": "Pagination label on skins screen",
-    "placeholders": {
-      "page": {},
-      "total": {}
-    }
-  },
-  "skinsSectionMy": "MY SKINS",
-  "@skinsSectionMy": {
-    "description": "Section label for saved/local skins"
-  },
-  "skinsSectionRecent": "RECENT SKINS",
-  "@skinsSectionRecent": {
-    "description": "Section label for recent Geyser skins"
-  },
-  "skinsSectionYours": "YOUR SKINS",
-  "@skinsSectionYours": {
-    "description": "Section label for the user's linked account skins"
-  },
-  "skinsSignInSubtitle": "Sign in and link your Minecraft accounts to see your skins here.",
-  "@skinsSignInSubtitle": {
-    "description": "Subtitle when user is not signed in on skins screen"
-  },
-  "skinsSignInTitle": "Sign in to view your skins",
-  "@skinsSignInTitle": {
-    "description": "Title when user is not signed in on skins screen"
   },
   "skinsUpload": "Upload",
   "@skinsUpload": {
@@ -1109,18 +870,6 @@
   "@somethingWentWrong": {
     "description": "Generic error message"
   },
-  "tabFriends": "Friends",
-  "@tabFriends": {
-    "description": "Tab label for Friends tab"
-  },
-  "tabProfile": "Profile",
-  "@tabProfile": {
-    "description": "Tab label for Profile tab"
-  },
-  "tabRequests": "Requests",
-  "@tabRequests": {
-    "description": "Tab label for Requests tab"
-  },
   "termsOfService": "سروس کی شرائط",
   "@termsOfService": {
     "description": "Terms of Service tile title"
@@ -1129,11 +878,7 @@
   "@termsOfServiceSubtitle": {
     "description": "Terms of Service tile subtitle"
   },
-  "today": "Today",
-  "@today": {
-    "description": "Date divider label for today"
-  },
-  "trackerLimitReached": "You've reached your server limit. Upgrade to track more servers.",
+  "trackerLimitReached": "سرور کی حد پوری ہو گئی",
   "@trackerLimitReached": {
     "description": "Banner shown when tracker slot limit is reached"
   },
@@ -1161,24 +906,9 @@
   "@userNotFound": {
     "description": "Text shown when a user profile cannot be found"
   },
-  "userNotFoundMsg": "User {name} not found",
-  "@userNotFoundMsg": {
-    "description": "Error when user is not found",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "userNotFoundMsg2": "User not found.",
   "@userNotFoundMsg2": {
     "description": "Error when user not found sending friend request from public profile"
-  },
-  "usernameDisplayLabel": "Username",
-  "@usernameDisplayLabel": {
-    "description": "Label for username row in profile display"
-  },
-  "usernameHint": "Username",
-  "@usernameHint": {
-    "description": "Hint text for username input"
   },
   "usernameRowLabel": "Username",
   "@usernameRowLabel": {
@@ -1244,14 +974,6 @@
   "@xboxYourCode": {
     "description": "Label above the Microsoft device code"
   },
-  "yesterday": "Yesterday",
-  "@yesterday": {
-    "description": "Date divider label for yesterday"
-  },
-  "youPrefix": "You",
-  "@youPrefix": {
-    "description": "Prefix for last message preview when message is from current user"
-  },
   "yourNameHint": "Your name",
   "@yourNameHint": {
     "description": "Hint text for display name field"
@@ -1272,26 +994,13 @@
   "javaCodeExpired": "The code expired. Please try again.",
   "javaSomethingWrong": "Something went wrong. Please try again.",
   "javaCodeCopied": "Code copied to clipboard",
-  "splashFeatureConnect": "Connect",
-  "splashFeatureFriends": "Friends",
-  "splashFeatureChat": "Chat",
-  "splashFeatureSkins": "Skins",
   "featureLabelConnector": "کنیکٹر",
   "featureLabelSkins": "اسکنز",
   "featureLabelPartners": "سرورز کی فہرست",
   "featureLabelLookup": "تلاش",
   "featureLabelTracker": "سرور ٹریکر",
-  "featureSubtitleConnector": "کنسولز کو Minecraft سے جوڑیں",
-  "featureSubtitleSkins": "Minecraft اسکنز دیکھیں اور منظم کریں",
-  "featureSubtitlePartners": "نمایاں سرورز",
-  "featureSubtitleLookup": "Java اور Bedrock پروفائلز تلاش کریں",
-  "featureSubtitleTracker": "سرور کی حالت مانیٹر کریں اور اطلاعات پائیں",
   "userSearchHint": "صارف نام, گیمرٹیگ یا Java نام…",
   "userSearchSub": "صارف نام, Xbox گیمرٹیگ یا Java نام سے تلاش کریں",
-  "onlineStatus": "آن لائن",
-  "@onlineStatus": {
-    "description": "Label shown when a friend is online"
-  },
   "upgradeWindowsHint": "اپ گریڈ مائیکروسافٹ اسٹور پر دستیاب ہے",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
@@ -1326,9 +1035,6 @@
   "feedbackDescribeIdea": "اپنا خیال بیان کریں",
   "feedbackDescHintBug": "بگ بیان کریں: آپ نے کیا کیا، کیا توقع تھی اور اس کی بجائے کیا ہوا؟",
   "feedbackDescHintFeature": "بتائیں کہ آپ کیا چاہتے ہیں اور یہ کیوں مفید ہوگا۔",
-  "feedbackEmailLabel": "ای میل",
-  "feedbackEmailHint": "تاکہ ہم آپ سے رابطہ کر سکیں",
-  "feedbackEmailNote": "آپ کی ای میل کبھی بھی عام نہیں کی جائے گی۔",
   "feedbackSubmitBug": "بگ رپورٹ جمع کریں",
   "feedbackSubmitFeature": "فیچر درخواست جمع کریں",
   "feedbackDisclaimer": "ہماری ٹیم تک جاتا ہے · پاس ورڈ نہ لکھیں",
@@ -1338,12 +1044,8 @@
   "feedbackBackToApp": "ایپ پر واپس جائیں",
   "feedbackTitleTooShort": "عنوان کم از کم 5 حروف کا ہونا چاہیے۔",
   "feedbackDescTooShort": "تفصیل کم از کم 10 حروف کی ہونی چاہیے۔",
-  "feedbackEmailInvalid": "براہ کرم ایک درست ای میل پتہ درج کریں۔",
-  "@feedbackEmailInvalid": {
-    "description": "Validation error when email is missing or invalid"
-  },
   "feedbackSubmitFailed": "جمع کرنے میں ناکامی۔ دوبارہ کوشش کریں۔",
-  "feedbackTileTitle": "ایک بگ رپورٹ کریں یا فیچر تجویز کریں",
+  "feedbackTileTitle": "رائے",
   "feedbackTileSubtitle": "MCCompanion کو بہتر بنانے میں مدد کریں",
   "friendsHowToStep1": "اپنے فون یا کنسول پر Xbox ایپ کھولیں۔",
   "friendsHowToStep2": "نیچے دیے گئے کسی ایک بوٹ کو Xbox پر دوست کے طور پر شامل کریں۔",
@@ -1363,11 +1065,6 @@
   "skinMenuExport": "برآمد کریں",
   "skinMenuDelete": "حذف کریں",
   "rpScreenTitle": "ریسورس پیک",
-  "rpWhatIsThis": "یہ کیا ہے؟",
-  "rpExplanation": "ایک ریسورس پیک آپ کے کنسول پر Minecraft کی ظاہری شکل بدلتا ہے, نئے بلاکس، رنگ یا آوازیں۔ نیچے .mcpack فائل کا لنک پیسٹ کریں، فعال کریں اور محفوظ کریں۔ MCCompanion ہر بار خودکار لوڈ کرتا ہے۔",
-  "rpPackUrlLabel": "پیک URL",
-  "rpPackUrlHint": "https://example.com/pack.mcpack",
-  "rpEnableToggle": "ریسورس پیک فعال کریں",
   "rpWhatWorks": "کیا کام کرتا ہے",
   "rpSupportedBedrockOnly": "صرف Bedrock Edition (.mcpack یا .zip)",
   "rpSupportedBedrockOnlyHint": "Java پیک کنسول پر کام نہیں کرتے۔",
@@ -1379,39 +1076,28 @@
   "rpUnsupportedAddonsHint": "کبھی کبھی کام کر سکتے ہیں لیکن باضابطہ طور پر سپورٹ نہیں ہیں۔ اپنی ذمہ داری پر استعمال کریں۔",
   "rpConsolePerformanceTitle": "کنسول کارکردگی",
   "rpConsolePerformanceBody": "اعلی ریزولیوشن ٹیکسچر پیک کنسول پر لیگ یا کریش کا باعث بن سکتے ہیں۔ اگر مسائل آئیں تو کم ریزولیوشن پیک پر سوئچ کریں یا اگر پیک سپورٹ کرے تو ہلکا سب پیک منتخب کریں۔",
-  "rpWhatDoesntWork": "کیا کام نہیں کرتا",
-  "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
-  "rpWorksCloudflare": "Cloudflare R2 / AWS S3 عوامی بکیٹ",
-  "rpWorksDirect": "کوئی بھی براہ راست HTTPS لنک جو .mcpack یا .zip پر ختم ہو",
   "rpNoDiscord": "Discord لنکس: کوئی .mcpack توسیع نہیں اور چند گھنٹوں میں ختم ہو جاتے ہیں",
   "rpNoDrive": "Google Drive / Dropbox شیئر لنکس: براہ راست ڈاؤن لوڈ نہیں",
   "rpNoEncrypted": "خفیہ کردہ یا پاس ورڈ محفوظ پیک والے سرور",
   "rpWarnDiscord": "Discord لنکس ختم ہو جاتے ہیں اور کام کرنا بند کر دیتے ہیں۔ اس کی بجائے ایک مستقل ہوسٹ استعمال کریں۔",
   "rpWarnHttps": "URL کو https:// سے شروع ہونا چاہیے",
   "rpWarnExtension": "URL کو .mcpack یا .zip پر ختم ہونا چاہیے",
-  "rpToastEnterUrl": "ریسورس پیک فعال کرنے سے پہلے URL درج کریں۔",
   "rpToastSaved": "ریسورس پیک سیٹنگز محفوظ ہو گئیں۔",
   "rpClearMinecraftTitle": "اس پیک کے ساتھ پہلی بار؟",
-  "rpClearMinecraftBody": "Minecraft ریسورس پیک کو لوکل کیش میں محفوظ کرتا ہے۔ اگر آپ نے MCCompanion کا پیک فعال کرنے سے پہلے اس سرور سے کنیکট کیا تھا, تو Minecraft نے اصل پیک پہلے سے کیش کیا ہوا ہے۔",
   "rpClearStep1": "اپنے کنسول پر Minecraft کھولیں اور Settings → Storage میں جائیں",
   "rpClearStep2": "Resource Packs کے ساتھ ‘Clear’ یا ‘Reset’ دبائیں, یہ تمام مقامی کیشڈ پیکس ہٹا دے گا",
   "rpClearStep3": "MCCompanion کے ذریعے دوبارہ جڑیں: مرج کیا گیا پیک خودبخود ڈاؤنلوڈ ہو جائے گا",
   "rpRelayTitle": "پیک ٹھیک نہیں لگ رہا؟",
   "rpRelayBody": "ریلے آپ کی overlay URL کو کیش کی بطور استعمال کرتے ہوئے مرج شدہ پیک کو 1 گھنٹے کیش میں رکھتا ہے۔ نیا مرج کروانے کے لیے: پیک URL تھوڑا بدلیں (مثلاً ?v=2 لگائیں) اور سیو کریں۔ اس کے بعد Minecraft کی پیک کیش بھی صاف کریں, مرج شدہ پیک اب بھی سرور کا UUID استعمال کرتا ہے، ورنہ Minecraft پرانی کیشڈ ورژن دکھاتا رہے گا۔",
-  "rpWorksGithubHint": "براہ راست ڈاؤنلوڈ لنک: ہمیشہ قابل رسائی",
-  "rpWorksCloudflareHint": "عوامی کلائڈ اسٹوریج: تیز اور قابل بھروسہ",
-  "rpWorksDirectHint": "کوئی بھی عوامی HTTPS .mcpack یا .zip URL",
   "rpNoDiscordHint": "Discord CDN لنکس تھوڑی دیر بعد ختم ہو جاتے ہیں",
   "rpNoDriveHint": "براہ راست ڈاؤنلوڈ نہیں: پریویو صفحے پر بھیجتا ہے",
   "rpNoEncryptedHint": "MCCompanion انکرپٹیڈ پیک کا مواد یکجا نہیں کر سکتا",
   "rpClearWhy": "Minecraft ریسورس پیکس کو ان کے UUID سے کیش کرتا ہے۔ مرج شدہ پیک سرور کا اصل UUID رکھتا ہے, اگر Minecraft نے پہلے کسی سیشن میں (MCCompanion فعال ہونے سے پہلے) سرور کا پیک کیش کیا ہوا ہے، تو نئی مرج شدہ ورژن ڈاؤنلوڈ نہیں کرے گا۔ کیش صاف کریں تاکہ Minecraft تازہ مرج شدہ پیک لوڈ کرے۔",
   "rpUploadTab": "Upload",
-  "rpUrlTab": "URL",
   "rpUploadButton": "Tap to select your pack",
   "rpUploadHint": ".mcpack or .zip • max 100 MB",
   "rpUploading": "Uploading...",
   "rpMergerTitle": "RP ضم کنندہ",
-  "rpMergerSubtitle": "4 تک ریسورس پیک یکجا کریں",
   "rpMergerPriorityHint": "سب سے اوپر کا پیک سب سے زیادہ ترجیح رکھتا ہے, اس کی فائلیں تنازعات جیتتی ہیں۔",
   "rpMergerTopBadge": "سرفہرست",
   "rpMergerAddPacks": "ریسورس پیک شامل کریں",
@@ -1419,12 +1105,7 @@
   "rpMergerFileTypes": ".zip یا .mcpack",
   "rpMergerMerging": "ضم ہو رہا ہے…",
   "rpMergerButton": "{count} پیک ضم کریں",
-  "rpMergerComplete": "ضم کرنا مکمل!",
-  "rpMergerConflicts": "{count} تنازع حل ہوئے: سرفہرست پیک جیتا۔",
-  "rpMergerSetActive": "فعال ریسورس پیک کے طور پر سیٹ کریں",
   "rpMergerSetActiveToast": "فعال ریسورس پیک کے طور پر سیٹ کیا گیا",
-  "rpMergerOpenButton": "ریسورس پیک ضم کریں",
-  "rpMergerOpenSubtitle": "2–4 پیک کو ایک میں ملائیں",
   "rpDisabled": "غیر فعال",
   "rpNoPackSelected": "کوئی ریسورس پیک منتخب نہیں",
   "rpActiveOnConnect": "فعال: کنیکٹ ہونے پر لاگو ہوتا ہے",
@@ -1435,7 +1116,6 @@
   "rpDropToUpload": "اپ لوڈ کرنے کے لیے چھوڑیں",
   "rpTabBrowseInfo": "MCCompanion کے منتخب کردہ پیکس براؤز کریں۔ فوری طور پر پیک کو فعال کرنے کے لیے استعمال کریں ٹیپ کریں, کوئی اپ لوڈ یا لنک کی ضرورت نہیں۔",
   "rpTabUploadInfo": "اپنی .mcpack یا .zip فائل اپ لوڈ کریں۔ MCCompanion اسے کلاؤڈ میں محفوظ رکھتا ہے اور ہر بار کنیکٹ ہونے پر آپ کے کنسول پر بھیجتا ہے۔",
-  "rpTabUrlInfo": ".mcpack یا .zip فائل کا براہ راست ڈاؤن لوڈ لنک چسپاں کریں۔ URL عوامی طور پر قابل رسائی ہونا چاہیے, Discord یا Google Drive لنک نہیں۔",
   "rpTabMergeInfo": "2 سے 4 پیکس کو ایک میں ضم کریں۔ ضم شدہ پیک MCCompanion Cloud پر اپ لوڈ ہوتا ہے اور خودکار طور پر فعال ہو جاتا ہے۔",
   "shareLabel": "شیئر کریں",
   "sectionMinecraftAccounts": "Minecraft اکاؤنٹس",
@@ -1462,18 +1142,10 @@
   "onboardingNavSubtitle": "نیویگیشن بار کے لیے دو خصوصیات منتخب کریں۔",
   "onboardingNavLeftLabel": "بائیں بٹن",
   "onboardingNavRightLabel": "دائیں بٹن",
-  "onboardingNavPreviewHome": "ہوم",
   "onboardingNavPreviewConnector": "کنیکٹر",
   "onboardingNavPreviewProfile": "پروفائل",
   "onboardingNavPreviewEmpty": "خالی",
-  "onboardingStartTitle": "شروعاتی صفحہ",
-  "onboardingStartSubtitle": "ایپ ہر بار یہاں سے کھلتی ہے۔",
   "onboardingCustomizeDetail": "تفصیل میں اپنی مرضی کے مطابق بنائیں →",
-  "startPageHome": "ہوم",
-  "startPageHomeSubtitle": "ٹائلوں کے ساتھ ہوم اسکرین دکھائیں",
-  "startPageFeature": "خصوصیت",
-  "startPageFeatureSubtitle": "براہ راست ایک مخصوص صفحے پر کھولیں",
-  "startPageSectionLabel": "شروعاتی صفحہ",
   "rpPackInfo": "معلومات",
   "@rpPackInfo": {
     "description": "rpPackInfo label"
@@ -1495,10 +1167,6 @@
       }
     }
   },
-  "rpPackDetailTitle": "پیک کی تفصیلات",
-  "@rpPackDetailTitle": {
-    "description": "rpPackDetailTitle label"
-  },
   "skinsSavedToMySkins": "میری اسکنز میں محفوظ ہو گیا",
   "skinsDownloadFailed": "ڈاؤنلوڈ ناکام رہا",
   "skinsDeletedFromCloud": "کلاؤڈ سے حذف کر دیا گیا",
@@ -1507,9 +1175,6 @@
   "skinsUploading": "اپلوڈ ہو رہا ہے…",
   "skinUploaded": "اسکن اپلوڈ ہو گیا!",
   "skinUploadFailed": "اپلوڈ ناکام: {error}",
-  "skinsTabSkins": "اسکنز",
-  "skinsTabRecent": "حالیہ",
-  "skinsEmptyCloudSkins": "ابھی تک کوئی کلاؤڈ اسکن نہیں۔ یہاں دیکھنے کے لیے ایک اسکن اپلوڈ کریں۔",
   "skinsEmptyLocalSkins": "ابھی تک کوئی اسکن نہیں۔ شروع کرنے کے لیے ایک اسکن بنائیں یا اپلوڈ کریں۔",
   "skinUploadToWebsite": "ویب سائٹ پر اپلوڈ کریں",
   "skinReuploadToWebsite": "ویب سائٹ پر دوبارہ اپلوڈ کریں",
@@ -1517,7 +1182,6 @@
   "skinCloudSaveToDevice": "ڈیوائس پر محفوظ کریں",
   "skinCloudDelete": "کلاؤڈ سے حذف کریں",
   "skinsTabGallery": "گیلری",
-  "skinsGalleryEmpty": "ابھی تک کوئی کمیونٹی اسکن نہیں۔",
   "skinsTopLabel": "ٹاپ 30",
   "skinsAllLabel": "تمام اسکنز",
   "skinUploadToCloud": "کلاؤڈ پر اپ لوڈ کریں",
@@ -1652,13 +1316,10 @@
   "feedbackLoginRequiredTitle": "رائے بھیجنے کے لیے لاگ ان کریں",
   "feedbackLoginRequiredBody": "رائے آپ کے MCCompanion اکاؤنٹ سے منسلک ہوتی ہے تاکہ ہم ایپ میں براہِ راست آپ کو جواب دے سکیں۔",
   "feedbackLoginButton": "لاگ ان",
-  "reportBug": "رائے",
   "rpBehaviorContentWarning": "اس پیک میں بیہیویئر پیک ڈیٹا شامل ہے جو سرورز پر کام نہیں کرے گا۔ ٹیکسچرز پھر بھی کام کریں گے۔",
   "rpInvalidPackFormat": "یہ Java Edition پیک ہے اور تعاون یافتہ نہیں۔ براہ کرم Bedrock Edition ریسورس پیک استعمال کریں۔",
   "accountActions": "اکاؤنٹ",
   "supportInboxTitle": "سپورٹ ان باکس",
-  "supportInboxSubtitle": "تمام سپورٹ چیٹس، سب ایڈمنز کے ساتھ شیئر",
-  "adminBadge": "ایڈمن",
   "skinShareSubject": "Minecraft سکن",
   "skinEditorTitle": "سکن ایڈیٹر",
   "skinToolUndo": "واپس",
@@ -1687,7 +1348,6 @@
   "supportInboxShared": "تمام ایڈمنز کے ساتھ شیئر",
   "supportInboxEmpty": "ابھی کوئی سپورٹ چیٹ نہیں",
   "supportReplyingAs": "آپ MCCompanion Support کے طور پر جواب دے رہے ہیں",
-  "supportReplyHint": "سپورٹ کے طور پر جواب دیں…",
   "relayBlocked": "آپ کا IP یا اکاؤنٹ MCCompanion نے بلاک کر دیا ہے۔ اگر آپ کو لگتا ہے یہ غلطی ہے تو ہمارے Discord پر آئیں۔",
   "relayBlockedWithReason": "آپ کا IP یا اکاؤنٹ MCCompanion نے بلاک کر دیا ہے۔\nوجہ: {reason}\nاگر آپ کو لگتا ہے یہ غلطی ہے تو ہمارے Discord پر آئیں۔",
   "relayConfigFailed": "ریلے سیٹ نہیں ہو سکا (اسٹیٹس {code})۔ دوسرا ریلے آزمائیں یا ہمارے Discord پر آئیں۔",
@@ -1716,8 +1376,6 @@
   "notifFeedbackReply": "آپ کے فیڈبیک کا جواب",
   "adminTicketsHeader": "رپورٹس اور درخواستیں",
   "adminTicketReplyHint": "اس ٹکٹ کے بارے میں جواب دیں…",
-  "adminNoTicketsForUser": "اس صارف کا کوئی ٹکٹ نہیں",
-  "undo": "واپس",
   "chooseServerTitle": "سرور منتخب کریں",
   "changeLabel": "تبدیل کریں",
   "howToAutoShow": "شروع کرتے وقت یہ دکھائیں",
@@ -1737,14 +1395,6 @@
   "shareServerLabel": "اپنا سرور شیئر کریں",
   "shareServerOn": "دوست دیکھ سکتے ہیں آپ کس سرور پر ہیں",
   "shareServerOff": "دوست دیکھتے ہیں کہ آپ کھیل رہے ہیں، کہاں نہیں",
-  "makeDefaultServer": "پہلے سے طے شدہ سرور مقرر کریں",
-  "isDefaultServer": "پہلے سے طے شدہ طور پر کھلتا ہے",
-  "defaultServerSet": "اب {name} پہلے سے طے شدہ طور پر کھلے گا",
-  "labelDirect": "پراکسی/ڈائریکٹ",
-  "startDirectMode": "پراکسی/ڈائریکٹ موڈ شروع کریں",
-  "howToDirectTitle": "پراکسی/ڈائریکٹ موڈ",
-  "howToDirectSubtitle": "ہمارے سرورز کے بغیر کھیلیں",
-  "howToDirectBody": "پراکسی/ڈائریکٹ موڈ: کنکشن خود آپ کا آلہ ہے۔\n1. یقینی بنائیں کہ MCCompanion چلانے والا آلہ اور آپ کا کنسول ایک ہی مقامی نیٹ ورک پر ہیں۔\n2. Bedrock سرور کا پتہ اور پورٹ درج کریں، پھر \"پراکسی/ڈائریکٹ موڈ شروع کریں\" دبائیں۔\n3. کنسول پر Minecraft → Play → Friends ٹیب کھولیں اور فہرست تازہ کریں۔\n4. شامل ہونے کے لیے \"MCCompanion\" نام کا LAN سرور منتخب کریں۔\n\nیہ موڈ کیوں ہے:\n- کچھ بھی MCCompanion کے سرورز سے نہیں گزرتا۔ آپ کا آلہ خود ٹریفک آگے بھیجتا ہے، اس لیے ہمارے ریلے دستیاب نہ ہونے پر بھی یہ کام کرتا رہتا ہے۔\n- سائن اِن کرنے کی ضرورت نہیں۔\n\nخیال رکھیں:\n- پورے سیشن کے دوران ایپ کھلی اور اسکرین پر رہنی چاہیے۔ اسے بند کرنے یا کسی اور ایپ پر جانے سے کنکشن ختم ہو جاتا ہے۔\n- صرف Bedrock سرورز۔ Java سرورز کے لیے Java موڈ استعمال کریں، جو ترجمہ ہماری طرف کرتا ہے۔\n- دیگر موڈز کے مقابلے میں بیٹری زیادہ خرچ ہوتی ہے۔\n- ریسورس پیک لاگو نہیں ہوتے۔ وہ ہمارے ریلے سے چلتے ہیں، جسے یہ موڈ چھوڑ دیتا ہے۔",
   "directHostNotFound": "{host} نہیں ملا۔ پتہ چیک کریں اور دوبارہ کوشش کریں۔",
   "@directHostNotFound": {
     "placeholders": {
@@ -1754,17 +1404,6 @@
     }
   },
   "directPortBusy": "مقامی پورٹ نہیں کھل سکا۔ پہلے موجودہ کنکشن بند کریں۔",
-  "directServerOfflineTitle": "سرور جواب نہیں دے رہا",
-  "directServerOfflineBody": "{target} نے جواب نہیں دیا۔ ہو سکتا ہے یہ آف لائن ہو، یا صرف پنگ کا جواب نہ دیتا ہو۔ آپ پھر بھی ٹنل شروع کر سکتے ہیں۔",
-  "@directServerOfflineBody": {
-    "placeholders": {
-      "target": {
-        "type": "String"
-      }
-    }
-  },
-  "directStartAnyway": "پھر بھی شروع کریں",
-  "directNoResourcePack": "پراکسی/ڈائریکٹ موڈ میں ریسورس پیک کام نہیں کرتے۔",
   "directAddressNotSupported": "{host} ایک IPv6 پتہ ہے۔ پراکسی/ڈائریکٹ موڈ صرف IPv4 کو سپورٹ کرتا ہے۔ IPv4 پتہ یا ہوسٹ نام استعمال کریں۔",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -1816,21 +1455,15 @@
   "serverStatPeak": "عروج",
   "serverStatUptime": "اپ ٹائم",
   "serverStatVotesMonth": "اس ماہ کے ووٹ",
-  "serverStatVotesAllTime": "کل ووٹ",
   "serverBadgeFeatured": "نمایاں",
   "serverEditionJava": "Java",
   "serverEditionBedrock": "Bedrock",
   "serverEditionCrossplay": "کراس پلے",
   "serverSectionMotd": "آج کا پیغام",
-  "serverSectionAbout": "تعارف",
-  "serverSectionCategories": "زمرے",
-  "serverSectionVotes": "ووٹ",
   "serverLinkDiscord": "Discord",
   "serverLinkWebsite": "ویب سائٹ",
   "serverVotesThisMonth": "اس ماہ",
   "serverVotesAllTime": "مجموعی",
-  "serverVoteAction": "اس سرور کو ووٹ دیں",
-  "serverPlayAction": "اس سرور پر کھیلیں",
   "serverVoteSignInRequired": "ایپ سے ووٹ دینے کے لیے سائن ان کریں۔",
   "serverVoteSheetTitle": "{name} کو ووٹ دیں",
   "serverVoteSheetSubtitle": "آپ کا Minecraft نام، تاکہ سرور جان سکے کسے انعام دینا ہے۔",

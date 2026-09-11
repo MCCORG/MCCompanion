@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../l10n/app_localizations.dart';
 import '../../theme/app_theme.dart';
 import '../components/app_sheet.dart';
+import '../../theme/app_tokens.dart';
 
 class InfoSheetContent extends StatelessWidget {
   final VoidCallback onClose;
@@ -19,9 +20,7 @@ class InfoSheetContent extends StatelessWidget {
   }
 
   Future<void> _requestReview() async {
-    await InAppReview.instance.openStoreListing(
-      appStoreId: '6747323142',
-    );
+    await InAppReview.instance.openStoreListing(appStoreId: '6747323142');
   }
 
   @override
@@ -35,149 +34,149 @@ class InfoSheetContent extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
-              child: Row(
-                children: [
-                  Container(
-                    width: 38,
-                    height: 38,
-                    decoration: BoxDecoration(
-                      color: AppTheme.accent.withValues(alpha: 0.12),
-                      borderRadius: BorderRadius.circular(11),
-                      border: Border.all(
-                        color: AppTheme.accent.withValues(alpha: 0.25),
-                      ),
-                    ),
-                    child: Center(
-                      child: Icon(
-                        Icons.info_outline_rounded,
-                        color: AppTheme.accent,
-                        size: 18,
-                      ),
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+            child: Row(
+              children: [
+                Container(
+                  width: 38,
+                  height: 38,
+                  decoration: BoxDecoration(
+                    color: AppTheme.accent.withValues(alpha: 0.12),
+                    borderRadius: AppRadius.small,
+                    border: Border.all(
+                      color: AppTheme.accent.withValues(alpha: 0.25),
                     ),
                   ),
-                  const SizedBox(width: 12),
-                  Text(
-                    l.infoAndLegal,
-                    style: TextStyle(
-                      color: AppTheme.textPrimary,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w700,
+                  child: Center(
+                    child: Icon(
+                      Icons.info_outline_rounded,
+                      color: AppTheme.accent,
+                      size: 18,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Text(
+                  l.infoAndLegal,
+                  style: TextStyle(
+                    color: AppTheme.textPrimary,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          Flexible(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 28),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _sectionLabel('Support'),
+                  const SizedBox(height: 8),
+                  _rateTile(),
+                  if (onFeedback != null) ...[
+                    const SizedBox(height: 8),
+                    _legalTile(
+                      icon: Icons.bug_report_outlined,
+                      color: const Color(0xFFF87171),
+                      title: l.feedbackTileTitle,
+                      subtitle: l.feedbackTileSubtitle,
+                      onTap: onFeedback!,
+                    ),
+                  ],
+                  const SizedBox(height: 22),
+
+                  _sectionLabel(l.legalSection),
+                  const SizedBox(height: 8),
+                  _legalTile(
+                    icon: Icons.shield_outlined,
+                    color: AppTheme.accent,
+                    title: l.privacyPolicy,
+                    subtitle: l.privacyPolicySubtitle,
+                    onTap: () => _open('https://mccompanion.net/privacy'),
+                  ),
+                  const SizedBox(height: 8),
+                  _legalTile(
+                    icon: Icons.gavel_rounded,
+                    color: const Color(0xFF7B61FF),
+                    title: l.termsOfService,
+                    subtitle: l.termsOfServiceSubtitle,
+                    onTap: () => _open('https://mccompanion.net/terms'),
+                  ),
+
+                  const SizedBox(height: 22),
+
+                  _sectionLabel(l.dataSourcesSection),
+                  const SizedBox(height: 8),
+                  _creditTile(
+                    label: 'M',
+                    labelColor: const Color(0xFFF97316),
+                    title: l.creditMojangTitle,
+                    subtitle: l.creditMojangSubtitle,
+                    url: 'https://minecraft.net',
+                  ),
+                  const SizedBox(height: 8),
+                  _creditTile(
+                    label: 'G',
+                    labelColor: const Color(0xFF42A5F5),
+                    title: l.creditGeyserTitle,
+                    subtitle: l.creditGeyserSubtitle,
+                    url: 'https://geysermc.org',
+                  ),
+                  const SizedBox(height: 8),
+                  _creditTile(
+                    label: 'X',
+                    labelColor: const Color(0xFF22C55E),
+                    title: l.creditXboxTitle,
+                    subtitle: l.creditXboxSubtitle,
+                    url: 'https://xbox.com',
+                  ),
+
+                  const SizedBox(height: 22),
+
+                  _sectionLabel(l.aboutMCCompanionSection),
+                  const SizedBox(height: 8),
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: AppTheme.surfaceRaisedSolid,
+                      borderRadius: AppRadius.medium,
+                      border: Border.all(color: AppTheme.borderGray),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          l.aboutMCCompanionDisclaimer,
+                          style: TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 12,
+                            height: 1.55,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          l.minecraftTrademark,
+                          style: TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 12,
+                            height: 1.55,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-
-            Flexible(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(16, 0, 16, 28),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _sectionLabel('Support'),
-                    const SizedBox(height: 8),
-                    _rateTile(),
-                    if (onFeedback != null) ...[
-                      const SizedBox(height: 8),
-                      _legalTile(
-                        icon: Icons.bug_report_outlined,
-                        color: const Color(0xFFF87171),
-                        title: l.feedbackTileTitle,
-                        subtitle: l.feedbackTileSubtitle,
-                        onTap: onFeedback!,
-                      ),
-                    ],
-                    const SizedBox(height: 22),
-
-                    _sectionLabel(l.legalSection),
-                    const SizedBox(height: 8),
-                    _legalTile(
-                      icon: Icons.shield_outlined,
-                      color: AppTheme.accent,
-                      title: l.privacyPolicy,
-                      subtitle: l.privacyPolicySubtitle,
-                      onTap: () => _open('https://mccompanion.net/privacy'),
-                    ),
-                    const SizedBox(height: 8),
-                    _legalTile(
-                      icon: Icons.gavel_rounded,
-                      color: const Color(0xFF7B61FF),
-                      title: l.termsOfService,
-                      subtitle: l.termsOfServiceSubtitle,
-                      onTap: () => _open('https://mccompanion.net/terms'),
-                    ),
-
-                    const SizedBox(height: 22),
-
-                    _sectionLabel(l.dataSourcesSection),
-                    const SizedBox(height: 8),
-                    _creditTile(
-                      label: 'M',
-                      labelColor: const Color(0xFFF97316),
-                      title: l.creditMojangTitle,
-                      subtitle: l.creditMojangSubtitle,
-                      url: 'https://minecraft.net',
-                    ),
-                    const SizedBox(height: 8),
-                    _creditTile(
-                      label: 'G',
-                      labelColor: const Color(0xFF42A5F5),
-                      title: l.creditGeyserTitle,
-                      subtitle: l.creditGeyserSubtitle,
-                      url: 'https://geysermc.org',
-                    ),
-                    const SizedBox(height: 8),
-                    _creditTile(
-                      label: 'X',
-                      labelColor: const Color(0xFF22C55E),
-                      title: l.creditXboxTitle,
-                      subtitle: l.creditXboxSubtitle,
-                      url: 'https://xbox.com',
-                    ),
-
-                    const SizedBox(height: 22),
-
-                    _sectionLabel(l.aboutMCCompanionSection),
-                    const SizedBox(height: 8),
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: AppTheme.surfaceRaisedSolid,
-                        borderRadius: BorderRadius.circular(13),
-                        border: Border.all(color: AppTheme.borderGray),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            l.aboutMCCompanionDisclaimer,
-                            style: TextStyle(
-                              color: AppTheme.textMuted,
-                              fontSize: 12,
-                              height: 1.55,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            l.minecraftTrademark,
-                            style: TextStyle(
-                              color: AppTheme.textMuted,
-                              fontSize: 12,
-                              height: 1.55,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _rateTile() {
@@ -186,12 +185,12 @@ class InfoSheetContent extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: _requestReview,
-        borderRadius: BorderRadius.circular(13),
+        borderRadius: AppRadius.medium,
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
           decoration: BoxDecoration(
             color: color.withValues(alpha: 0.07),
-            borderRadius: BorderRadius.circular(13),
+            borderRadius: AppRadius.medium,
             border: Border.all(color: color.withValues(alpha: 0.28)),
           ),
           child: Row(
@@ -201,7 +200,7 @@ class InfoSheetContent extends StatelessWidget {
                 height: 44,
                 decoration: BoxDecoration(
                   color: color.withValues(alpha: 0.16),
-                  borderRadius: BorderRadius.circular(13),
+                  borderRadius: AppRadius.medium,
                 ),
                 child: const Center(
                   child: Icon(Icons.star_rounded, color: color, size: 22),
@@ -267,12 +266,12 @@ class InfoSheetContent extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(13),
+        borderRadius: AppRadius.medium,
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
           decoration: BoxDecoration(
             color: color.withValues(alpha: 0.05),
-            borderRadius: BorderRadius.circular(13),
+            borderRadius: AppRadius.medium,
             border: Border.all(color: color.withValues(alpha: 0.22)),
           ),
           child: Row(
@@ -282,7 +281,7 @@ class InfoSheetContent extends StatelessWidget {
                 height: 44,
                 decoration: BoxDecoration(
                   color: color.withValues(alpha: 0.14),
-                  borderRadius: BorderRadius.circular(13),
+                  borderRadius: AppRadius.medium,
                 ),
                 child: Center(child: Icon(icon, color: color, size: 20)),
               ),
@@ -334,12 +333,12 @@ class InfoSheetContent extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: () => _open(url),
-        borderRadius: BorderRadius.circular(13),
+        borderRadius: AppRadius.medium,
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
           decoration: BoxDecoration(
             color: AppTheme.surfaceRaisedSolid,
-            borderRadius: BorderRadius.circular(13),
+            borderRadius: AppRadius.medium,
             border: Border.all(color: AppTheme.borderGray),
           ),
           child: Row(
@@ -350,7 +349,7 @@ class InfoSheetContent extends StatelessWidget {
                 height: 44,
                 decoration: BoxDecoration(
                   color: labelColor.withValues(alpha: 0.14),
-                  borderRadius: BorderRadius.circular(13),
+                  borderRadius: AppRadius.medium,
                 ),
                 child: Center(
                   child: Text(

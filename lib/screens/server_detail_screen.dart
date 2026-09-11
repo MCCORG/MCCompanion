@@ -6,6 +6,8 @@ import '../l10n/app_localizations.dart';
 import '../services/auth_service.dart';
 import '../services/server_directory_service.dart';
 import '../theme/app_theme.dart';
+import '../design/design.dart';
+import '../theme/app_tokens.dart';
 import '../util/directory_server.dart';
 import '../widgets/components/app_toast.dart';
 
@@ -98,8 +100,9 @@ class _ServerDetailScreenState extends State<ServerDetailScreen> {
       AppToast.show(
         context,
         message: switch (result.error) {
-          'sign_in_required' =>
-            AppLocalizations.of(context)!.serverVoteSignInRequired,
+          'sign_in_required' => AppLocalizations.of(
+            context,
+          )!.serverVoteSignInRequired,
           'network' => AppLocalizations.of(context)!.serverVoteOffline,
           _ => result.message ?? AppLocalizations.of(context)!.serverVoteFailed,
         },
@@ -114,126 +117,114 @@ class _ServerDetailScreenState extends State<ServerDetailScreen> {
     final server = _loaded;
     final l = AppLocalizations.of(context)!;
 
-    if (server == null) {
-      return Scaffold(
-        backgroundColor: AppTheme.background,
-        appBar: AppBar(
-          backgroundColor: AppTheme.background,
-          surfaceTintColor: Colors.transparent,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: AppTheme.textSecondary),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-        ),
-        body: Center(
-          child: SizedBox(
-            width: 24,
-            height: 24,
-            child: CircularProgressIndicator(
-              strokeWidth: 1.5,
-              color: AppTheme.textMuted,
-            ),
-          ),
-        ),
-      );
-    }
-
     return Scaffold(
-      backgroundColor: AppTheme.background,
+      backgroundColor: DsColor.bg,
       appBar: AppBar(
-        backgroundColor: AppTheme.background,
+        backgroundColor: DsColor.bg,
         surfaceTintColor: Colors.transparent,
+        elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: AppTheme.textSecondary),
+          icon: Icon(Icons.arrow_back_rounded, color: DsColor.textSoft),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      body: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 720),
-          child: ListView(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 28),
-            children: [
-              _identity(l),
-              const SizedBox(height: 16),
-              _actions(l),
-              const SizedBox(height: 18),
-              _statsRow(l),
-
-              if (server.description != null &&
-                  server.description!.trim().isNotEmpty) ...[
-                const SizedBox(height: 22),
-                Text(
-                  server.description!.trim(),
-                  style: TextStyle(
-                    color: AppTheme.textSecondary,
-                    fontSize: 14.5,
-                    height: 1.65,
+      body: server == null
+          ? Center(
+              child: SizedBox(
+                width: 22,
+                height: 22,
+                child: CircularProgressIndicator(
+                  strokeWidth: 1.8,
+                  color: DsColor.textFaint,
+                ),
+              ),
+            )
+          : Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 720),
+                child: ListView(
+                  padding: const EdgeInsets.fromLTRB(
+                    DsSpace.gutter,
+                    0,
+                    DsSpace.gutter,
+                    DsSpace.xxxl,
                   ),
-                ),
-              ],
-
-              if (server.motd != null && server.motd!.trim().isNotEmpty) ...[
-                const SizedBox(height: 16),
-                Text(
-                  l.serverSectionMotd.toLowerCase(),
-                  style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
-                ),
-                const SizedBox(height: 3),
-                Text(
-                  server.motd!.trim(),
-                  style: TextStyle(
-                    color: AppTheme.textMuted,
-                    fontSize: 12.5,
-                    height: 1.45,
-                    fontFamily: 'monospace',
-                  ),
-                ),
-              ],
-
-              if (server.websiteUrl != null || server.discordUrl != null) ...[
-                const SizedBox(height: 20),
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
                   children: [
-                    if (server.discordUrl != null)
-                      _link(
-                        label: l.serverLinkDiscord,
-                        url: server.discordUrl!,
-                        color: const Color(0xFF5865F2),
+                    _identity(l),
+                    const SizedBox(height: DsSpace.xl),
+                    _actions(l),
+                    const SizedBox(height: DsSpace.section),
+                    _statsCard(l),
+                    if (server.description != null &&
+                        server.description!.trim().isNotEmpty) ...[
+                      const SizedBox(height: DsSpace.section),
+                      Text(
+                        server.description!.trim(),
+                        style: DsType.body.copyWith(
+                          color: DsColor.textSoft,
+                          height: 1.6,
+                        ),
                       ),
-                    if (server.websiteUrl != null)
-                      _link(
-                        label: l.serverLinkWebsite,
-                        url: server.websiteUrl!,
-                        color: AppTheme.textSecondary,
+                    ],
+                    if (server.motd != null &&
+                        server.motd!.trim().isNotEmpty) ...[
+                      const SizedBox(height: DsSpace.xl),
+                      _motd(l, server.motd!.trim()),
+                    ],
+                    if (server.websiteUrl != null ||
+                        server.discordUrl != null) ...[
+                      const SizedBox(height: DsSpace.xl),
+                      Row(
+                        children: [
+                          if (server.discordUrl != null)
+                            Expanded(
+                              child: DsButton(
+                                label: l.serverLinkDiscord,
+                                icon: Icons.forum_rounded,
+                                tone: DsButtonTone.neutral,
+                                expand: true,
+                                onPressed: () => _openUrl(server.discordUrl!),
+                              ),
+                            ),
+                          if (server.discordUrl != null &&
+                              server.websiteUrl != null)
+                            const SizedBox(width: DsSpace.sm),
+                          if (server.websiteUrl != null)
+                            Expanded(
+                              child: DsButton(
+                                label: l.serverLinkWebsite,
+                                icon: Icons.language_rounded,
+                                tone: DsButtonTone.neutral,
+                                expand: true,
+                                onPressed: () => _openUrl(server.websiteUrl!),
+                              ),
+                            ),
+                        ],
                       ),
+                    ],
+                    const SizedBox(height: DsSpace.section),
+                    _votesCard(l),
                   ],
                 ),
-              ],
-
-              const SizedBox(height: 22),
-              Divider(height: 1, color: AppTheme.borderGray),
-              const SizedBox(height: 14),
-              _voteLine(l),
-            ],
-          ),
-        ),
-      ),
+              ),
+            ),
     );
   }
+
+  Future<void> _openUrl(String url) =>
+      launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
 
   Widget _identity(AppLocalizations l) {
     final server = _server;
     final hasBanner = server.bannerUrl != null && server.bannerUrl!.isNotEmpty;
+    final hasIcon = server.iconUrl != null && server.iconUrl!.isNotEmpty;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (hasBanner)
           ClipRRect(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: DsRadius.cardR,
             child: Image.network(
               server.bannerUrl!,
               width: double.infinity,
@@ -241,22 +232,27 @@ class _ServerDetailScreenState extends State<ServerDetailScreen> {
               errorBuilder: (_, _, _) => const SizedBox.shrink(),
             ),
           ),
-        SizedBox(height: hasBanner ? 14 : 0),
+        SizedBox(height: hasBanner ? DsSpace.lg : 0),
         Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (server.iconUrl != null && server.iconUrl!.isNotEmpty) ...[
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12),
+            if (hasIcon) ...[
+              Container(
+                width: 56,
+                height: 56,
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(
+                  color: DsColor.inset,
+                  borderRadius: DsRadius.controlR,
+                  border: Border.all(color: DsColor.line),
+                ),
                 child: Image.network(
                   server.iconUrl!,
-                  width: 54,
-                  height: 54,
                   fit: BoxFit.cover,
                   errorBuilder: (_, _, _) => const SizedBox.shrink(),
                 ),
               ),
-              const SizedBox(width: 12),
+              const SizedBox(width: DsSpace.md),
             ],
             Expanded(
               child: Column(
@@ -267,33 +263,32 @@ class _ServerDetailScreenState extends State<ServerDetailScreen> {
                     server.name,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: AppTheme.textPrimary,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w800,
-                      height: 1.15,
-                    ),
+                    style: DsType.display.copyWith(fontSize: 24),
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: DsSpace.sm),
                   Wrap(
-                    spacing: 6,
-                    runSpacing: 6,
+                    spacing: DsSpace.sm - 2,
+                    runSpacing: DsSpace.sm - 2,
                     children: [
                       if (server.featured)
-                        _tag(l.serverBadgeFeatured, const Color(0xFFF59E0B)),
-                      _tag(
-                        switch (server.editionBadge) {
+                        DsBadge(
+                          label: l.serverBadgeFeatured,
+                          color: DsColor.warning,
+                        ),
+                      DsBadge(
+                        label: switch (server.editionBadge) {
                           ServerEdition.java => l.serverEditionJava,
                           ServerEdition.bedrock => l.serverEditionBedrock,
                           ServerEdition.crossplay => l.serverEditionCrossplay,
                         },
-                        switch (server.editionBadge) {
-                          ServerEdition.java => const Color(0xFFF59E0B),
-                          ServerEdition.bedrock => AppTheme.info,
-                          ServerEdition.crossplay => const Color(0xFFA78BFA),
+                        color: switch (server.editionBadge) {
+                          ServerEdition.java => DsColor.warning,
+                          ServerEdition.bedrock => DsColor.info,
+                          ServerEdition.crossplay => DsColor.accent,
                         },
                       ),
-                      ...server.tags.take(3).map((tag) => _tag(tag, null)),
+                      for (final tag in server.tags.take(3))
+                        DsBadge(label: tag, color: DsColor.textFaint),
                     ],
                   ),
                 ],
@@ -305,202 +300,150 @@ class _ServerDetailScreenState extends State<ServerDetailScreen> {
     );
   }
 
-  Widget _tag(String label, Color? color) {
-    final tint = color ?? AppTheme.textSecondary;
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-      decoration: BoxDecoration(
-        color: color == null
-            ? AppTheme.surfaceRaised
-            : tint.withValues(alpha: 0.10),
-        borderRadius: BorderRadius.circular(5),
-        border: Border.all(
-          color: color == null
-              ? AppTheme.borderGray
-              : tint.withValues(alpha: 0.26),
-        ),
-      ),
-      child: Text(
-        label.toUpperCase(),
-        style: TextStyle(
-          color: tint,
-          fontSize: 9.5,
-          fontWeight: FontWeight.w700,
-          letterSpacing: 0.6,
-          fontFamily: 'monospace',
-        ),
-      ),
-    );
-  }
-
   Widget _actions(AppLocalizations l) {
-    return Row(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Expanded(
-          flex: 2,
-          child: SizedBox(
-            height: 46,
-            child: FilledButton.icon(
-              onPressed: () => widget.onPlay(_server),
-              icon: const Icon(Icons.play_arrow_rounded, size: 20),
-              label: Text(
-                l.serverCardPlay,
-                style: const TextStyle(
-                  fontSize: 14.5,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              style: FilledButton.styleFrom(
-                backgroundColor: AppTheme.accent,
-                foregroundColor: const Color(0xFF0D1A18),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
+        DsButton(
+          label: l.serverCardPlay,
+          icon: Icons.play_arrow_rounded,
+          size: DsButtonSize.large,
+          expand: true,
+          onPressed: () => widget.onPlay(_server),
+        ),
+        const SizedBox(height: DsSpace.sm),
+        Row(
+          children: [
+            Expanded(
+              child: DsButton(
+                label: _copied ? l.serverCopied : l.serverCopyIp,
+                icon: _copied
+                    ? Icons.check_rounded
+                    : Icons.content_copy_rounded,
+                tone: DsButtonTone.neutral,
+                expand: true,
+                onPressed: _copy,
               ),
             ),
-          ),
-        ),
-        const SizedBox(width: 8),
-        Expanded(
-          child: _secondaryButton(
-            label: _copied ? l.serverCopied : l.serverCopyIp,
-            color: _copied ? AppTheme.success : AppTheme.textSecondary,
-            onPressed: _copy,
-          ),
-        ),
-        const SizedBox(width: 8),
-        Expanded(
-          child: _secondaryButton(
-            label: l.serverCardVote,
-            color: AppTheme.accent,
-            onPressed: _openVoteSheet,
-          ),
+            const SizedBox(width: DsSpace.sm),
+            Expanded(
+              child: DsButton(
+                label: l.serverCardVote,
+                icon: Icons.favorite_rounded,
+                tone: DsButtonTone.neutral,
+                expand: true,
+                onPressed: _openVoteSheet,
+              ),
+            ),
+          ],
         ),
       ],
     );
   }
 
-  Widget _secondaryButton({
-    required String label,
-    required Color color,
-    required VoidCallback onPressed,
-  }) {
-    return SizedBox(
-      height: 46,
-      child: OutlinedButton(
-        onPressed: onPressed,
-        style: OutlinedButton.styleFrom(
-          foregroundColor: color,
-          side: BorderSide(color: AppTheme.borderGray),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-        child: Text(
-          label,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(fontSize: 13.5, fontWeight: FontWeight.w700),
-        ),
-      ),
-    );
-  }
-
-  Widget _statsRow(AppLocalizations l) {
+  Widget _statsCard(AppLocalizations l) {
     final items = <(String, String)>[
-      (_server.avgPlayers.round().toString(), l.serverStatPlayers.toLowerCase()),
-      ('${_server.peakPlayers}', l.serverStatPeak.toLowerCase()),
-      ('${_server.uptime}%', l.serverStatUptime.toLowerCase()),
-      if (_server.usefulVersion != null) (_server.usefulVersion!, 'version'),
+      (_server.avgPlayers.round().toString(), l.serverStatPlayers),
+      ('${_server.peakPlayers}', l.serverStatPeak),
+      ('${_server.uptime}%', l.serverStatUptime),
+      if (_server.usefulVersion != null)
+        (_server.usefulVersion!, l.versionLabel),
     ];
 
-    return Wrap(
-      spacing: 18,
-      runSpacing: 8,
-      children: items
-          .map(
-            (item) => Row(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.baseline,
-              textBaseline: TextBaseline.alphabetic,
-              children: [
-                Text(
-                  item.$1,
-                  style: TextStyle(
-                    color: AppTheme.textPrimary,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                    fontFamily: 'monospace',
+    return DsCard(
+      padding: const EdgeInsets.symmetric(
+        horizontal: DsSpace.lg,
+        vertical: DsSpace.lg,
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          for (final item in items)
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    item.$1,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: DsType.heading.copyWith(
+                      fontFeatures: const [FontFeature.tabularFigures()],
+                    ),
                   ),
-                ),
-                const SizedBox(width: 5),
-                Text(
-                  item.$2,
-                  style: TextStyle(color: AppTheme.textMuted, fontSize: 12.5),
-                ),
-              ],
+                  const SizedBox(height: DsSpace.xxs),
+                  Text(
+                    item.$2,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: DsType.caption,
+                  ),
+                ],
+              ),
             ),
-          )
-          .toList(growable: false),
-    );
-  }
-
-  Widget _link({
-    required String label,
-    required String url,
-    required Color color,
-  }) {
-    return OutlinedButton(
-      onPressed: () =>
-          launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication),
-      style: OutlinedButton.styleFrom(
-        foregroundColor: color,
-        side: BorderSide(color: AppTheme.borderGray),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(9)),
-      ),
-      child: Text(
-        label,
-        style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700),
+        ],
       ),
     );
   }
 
-  Widget _voteLine(AppLocalizations l) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.baseline,
-      textBaseline: TextBaseline.alphabetic,
+  Widget _motd(AppLocalizations l, String motd) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          '${_votes.month}',
-          style: TextStyle(
-            color: AppTheme.accent,
-            fontSize: 17,
-            fontWeight: FontWeight.w700,
-            fontFamily: 'monospace',
+        Text(l.serverSectionMotd, style: DsType.caption),
+        const SizedBox(height: DsSpace.sm - 2),
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(DsSpace.md),
+          decoration: BoxDecoration(
+            color: DsColor.inset,
+            borderRadius: DsRadius.controlR,
+            border: Border.all(color: DsColor.line),
           ),
-        ),
-        const SizedBox(width: 5),
-        Text(
-          l.serverVotesThisMonth.toLowerCase(),
-          style: TextStyle(color: AppTheme.textMuted, fontSize: 12.5),
-        ),
-        const SizedBox(width: 18),
-        Text(
-          '${_votes.allTime}',
-          style: TextStyle(
-            color: AppTheme.textPrimary,
-            fontSize: 17,
-            fontWeight: FontWeight.w700,
-            fontFamily: 'monospace',
-          ),
-        ),
-        const SizedBox(width: 5),
-        Text(
-          l.serverVotesAllTime.toLowerCase(),
-          style: TextStyle(color: AppTheme.textMuted, fontSize: 12.5),
+          child: Text(motd, style: DsType.mono),
         ),
       ],
+    );
+  }
+
+  Widget _votesCard(AppLocalizations l) {
+    return DsCard(
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  '${_votes.month}',
+                  style: DsType.heading.copyWith(color: DsColor.accent),
+                ),
+                const SizedBox(height: DsSpace.xxs),
+                Text(l.serverVotesThisMonth, style: DsType.caption),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('${_votes.allTime}', style: DsType.heading),
+                const SizedBox(height: DsSpace.xxs),
+                Text(l.serverVotesAllTime, style: DsType.caption),
+              ],
+            ),
+          ),
+          DsButton(
+            label: l.serverCardVote,
+            tone: DsButtonTone.accent,
+            size: DsButtonSize.small,
+            onPressed: _openVoteSheet,
+          ),
+        ],
+      ),
     );
   }
 }
@@ -545,7 +488,9 @@ class _VoteSheetState extends State<_VoteSheet> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              AppLocalizations.of(context)!.serverVoteSheetTitle(widget.server.name),
+              AppLocalizations.of(
+                context,
+              )!.serverVoteSheetTitle(widget.server.name),
               style: TextStyle(
                 color: AppTheme.textPrimary,
                 fontSize: 16,
@@ -571,15 +516,15 @@ class _VoteSheetState extends State<_VoteSheet> {
                 filled: true,
                 fillColor: AppTheme.surface,
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: AppRadius.small,
                   borderSide: BorderSide(color: AppTheme.borderGray),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: AppRadius.small,
                   borderSide: BorderSide(color: AppTheme.borderGray),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: AppRadius.small,
                   borderSide: BorderSide(color: AppTheme.accent),
                 ),
               ),
@@ -595,13 +540,13 @@ class _VoteSheetState extends State<_VoteSheet> {
                   foregroundColor: const Color(0xFF0D1A18),
                   disabledBackgroundColor: AppTheme.surface,
                   disabledForegroundColor: AppTheme.textMuted,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
                 ),
                 child: Text(
                   AppLocalizations.of(context)!.serverVoteSheetButton,
-                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
             ),

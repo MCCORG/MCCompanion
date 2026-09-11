@@ -94,5 +94,4 @@ class SupportService {
       return null;
     }
   }
-
 }

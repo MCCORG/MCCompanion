@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../../l10n/app_localizations.dart';
-import '../../theme/app_theme.dart';
+import '../../design/design.dart';
 import '../../services/auth_service.dart';
 import '../../constants/app_constants.dart';
 
@@ -18,10 +18,10 @@ class ActivityEvent {
   });
 
   factory ActivityEvent.fromJson(Map<String, dynamic> j) => ActivityEvent(
-        type: j['type'] as String,
-        name: j['name'] as String? ?? '',
-        createdAt: DateTime.parse(j['createdAt'] as String),
-      );
+    type: j['type'] as String,
+    name: j['name'] as String? ?? '',
+    createdAt: DateTime.parse(j['createdAt'] as String),
+  );
 }
 
 Future<List<ActivityEvent>> fetchMyActivity() async {
@@ -54,7 +54,10 @@ class ProfileActivityFeed extends StatefulWidget {
 }
 
 class _ProfileActivityFeedState extends State<ProfileActivityFeed> {
+  static const int _previewCount = 5;
+
   List<ActivityEvent>? _events;
+  bool _expanded = false;
 
   @override
   void initState() {
@@ -69,58 +72,82 @@ class _ProfileActivityFeedState extends State<ProfileActivityFeed> {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+
     if (_events == null) {
-      return Container(
-        decoration: BoxDecoration(
-          color: AppTheme.surfaceRaised,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: AppTheme.borderGray),
-        ),
-        padding: const EdgeInsets.all(20),
+      return DsCard(
         child: Center(
           child: SizedBox(
             width: 18,
             height: 18,
             child: CircularProgressIndicator(
-              strokeWidth: 2,
-              color: AppTheme.accent,
+              strokeWidth: 1.8,
+              color: DsColor.textFaint,
             ),
           ),
         ),
       );
     }
 
-    final l = AppLocalizations.of(context)!;
+    final events = _events!;
+    final visible = _expanded ? events : events.take(_previewCount).toList();
+    final hidden = events.length - visible.length;
 
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppTheme.borderGray),
+        color: DsColor.surface,
+        borderRadius: DsRadius.cardR,
+        border: Border.all(color: DsColor.line),
       ),
+      clipBehavior: Clip.antiAlias,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          if (_events!.isEmpty)
+          if (events.isEmpty)
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-              child: Text(
-                l.activityNoEvents,
-                style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
-              ),
+              padding: const EdgeInsets.all(DsSpace.lg),
+              child: Text(l.activityNoEvents, style: DsType.caption),
             )
-          else
-            ..._events!.asMap().entries.map((entry) {
-              final i = entry.key;
-              final ev = entry.value;
-              return Column(
-                children: [
-                  _ActivityRow(event: ev),
-                  if (i < _events!.length - 1)
-                    const Divider(height: 1, color: AppTheme.borderDim),
-                ],
-              );
-            }),
+          else ...[
+            for (var i = 0; i < visible.length; i++) ...[
+              _ActivityRow(event: visible[i]),
+              if (i < visible.length - 1)
+                Divider(height: 1, color: DsColor.line),
+            ],
+            if (hidden > 0) ...[
+              Divider(height: 1, color: DsColor.line),
+              Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: () => setState(() => _expanded = true),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: DsSpace.lg,
+                      vertical: DsSpace.md,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '${l.seeAll}  ($hidden)',
+                          style: DsType.label.copyWith(
+                            color: DsColor.accent,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(width: DsSpace.xs),
+                        Icon(
+                          Icons.expand_more_rounded,
+                          size: 18,
+                          color: DsColor.accent,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ],
         ],
       ),
     );
@@ -139,12 +166,12 @@ class _ActivityRow extends StatelessWidget {
     'pack_rejected': Icons.cancel_rounded,
   };
 
-  static const Map<String, Color> _colors = {
-    'skin_upload': Color(0xFF67e404),
-    'skin_liked': Color(0xFFe84d8a),
-    'pack_submitted': Color(0xFF3b82f6),
-    'pack_approved': Color(0xFF67e404),
-    'pack_rejected': Color(0xFFef4444),
+  static Map<String, Color> get _colors => {
+    'skin_upload': DsColor.accent,
+    'skin_liked': DsColor.accent,
+    'pack_submitted': DsColor.info,
+    'pack_approved': DsColor.success,
+    'pack_rejected': DsColor.danger,
   };
 
   String _label(AppLocalizations l) {
@@ -177,7 +204,7 @@ class _ActivityRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
     final icon = _icons[event.type] ?? Icons.circle_rounded;
-    final color = _colors[event.type] ?? AppTheme.accent;
+    final color = _colors[event.type] ?? DsColor.accent;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
@@ -201,7 +228,7 @@ class _ActivityRow extends StatelessWidget {
                 Text(
                   _label(l),
                   style: TextStyle(
-                    color: AppTheme.textPrimary,
+                    color: DsColor.text,
                     fontSize: 13,
                     fontWeight: FontWeight.w500,
                   ),
@@ -209,10 +236,7 @@ class _ActivityRow extends StatelessWidget {
                 if (event.name.isNotEmpty)
                   Text(
                     '"${event.name}"',
-                    style: TextStyle(
-                      color: AppTheme.textSecondary,
-                      fontSize: 11,
-                    ),
+                    style: TextStyle(color: DsColor.textSoft, fontSize: 11),
                     overflow: TextOverflow.ellipsis,
                   ),
               ],
@@ -220,7 +244,7 @@ class _ActivityRow extends StatelessWidget {
           ),
           Text(
             _timeAgo(event.createdAt, l),
-            style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
+            style: TextStyle(color: DsColor.textFaint, fontSize: 11),
           ),
         ],
       ),

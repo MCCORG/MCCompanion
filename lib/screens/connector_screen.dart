@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import '../widgets/components/swipe_back.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
@@ -9,6 +8,7 @@ import '../network/socket_handler.dart';
 import '../network/broadcast_manager.dart';
 import '../util/logger.dart';
 import '../util/user_servers.dart';
+import '../util/connector_prefs.dart';
 import '../util/user_servers_storage.dart';
 import '../util/partners_servers.dart';
 import '../constants/app_constants.dart';
@@ -20,7 +20,6 @@ import '../services/region_detector.dart';
 import '../network/broadcast_mode.dart';
 import '../services/navigation_controller.dart';
 import '../services/review_service.dart';
-import '../services/server_status_service.dart';
 import '../services/user_service.dart';
 import '../services/auth_service.dart';
 import '../models/user_model.dart';
@@ -133,6 +132,8 @@ class HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
+  bool get isBroadcasting => _broadcastingNotifier.value;
+
   Future<void> loadUserServers() async {
     try {
       final servers = await UserServersStorage.loadServers();
@@ -147,7 +148,9 @@ class HomeScreenState extends State<HomeScreen> {
     if (widget.ipController.text.trim().isNotEmpty || servers.isEmpty) return;
 
     final preferred =
-        await UserServersStorage.loadDefaultServer(servers) ?? servers.first;
+        await ConnectorPrefs.loadLastServer(servers) ??
+        await UserServersStorage.loadDefaultServer(servers) ??
+        servers.first;
     if (!mounted || widget.ipController.text.trim().isNotEmpty) return;
 
     widget.ipController.text = preferred.address;
@@ -270,7 +273,6 @@ class HomeScreenState extends State<HomeScreen> {
     PanelMode.lan => BroadcastMode.lan,
     PanelMode.nintendo => BroadcastMode.nintendo,
     PanelMode.friends => BroadcastMode.friends,
-    PanelMode.direct => BroadcastMode.direct,
   };
 
   Future<void> _handleDnsMode(
@@ -311,58 +313,6 @@ class HomeScreenState extends State<HomeScreen> {
         userRegion: widget.selectedRelay.region,
       );
     }
-  }
-
-  Future<bool> _canAttemptHost(String host) async {
-    final literal = InternetAddress.tryParse(host);
-    if (literal != null) return literal.type == InternetAddressType.IPv4;
-    try {
-      final found = await InternetAddress.lookup(
-        host,
-        type: InternetAddressType.IPv4,
-      ).timeout(const Duration(seconds: 8));
-      return found.isNotEmpty;
-    } catch (_) {
-      return false;
-    }
-  }
-
-  Future<bool> _confirmDirectTarget(String host, int port) async {
-    if (!await _canAttemptHost(host)) return true;
-
-    final status = await ServerStatusService.getStatus(host, port);
-    if (status.isOnline) return true;
-    if (!mounted) return false;
-
-    final l = AppLocalizations.of(context)!;
-    final proceed = await showDialog<bool>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: AppTheme.surfaceRaised,
-        title: Text(
-          l.directServerOfflineTitle,
-          style: TextStyle(color: AppTheme.textPrimary),
-        ),
-        content: Text(
-          l.directServerOfflineBody('$host:$port'),
-          style: TextStyle(color: AppTheme.textSecondary),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(ctx).pop(false),
-            child: Text(l.cancel),
-          ),
-          TextButton(
-            onPressed: () => Navigator.of(ctx).pop(true),
-            child: Text(
-              l.directStartAnyway,
-              style: TextStyle(color: AppTheme.warning),
-            ),
-          ),
-        ],
-      ),
-    );
-    return proceed ?? false;
   }
 
   Future<bool> _startNetherNet(String host, int port) async {
@@ -409,16 +359,6 @@ class HomeScreenState extends State<HomeScreen> {
       }
     }
 
-    final isDirect = mode == PanelMode.direct;
-    if (isDirect && !await _confirmDirectTarget(host, port)) return;
-    if (isDirect && _resourcePackEnabled && _resourcePackUrl != null) {
-      _snack(
-        loc.directNoResourcePack,
-        AppTheme.warning,
-        icon: Icons.info_outline_rounded,
-      );
-    }
-
     try {
       await WakelockPlus.enable();
     } catch (e) {
@@ -426,10 +366,8 @@ class HomeScreenState extends State<HomeScreen> {
     }
 
     final gamertag = _getBedrockGamertag();
-    final authToken = isDirect ? null : await AuthService.getIdToken();
-    final resourcePackUrl = isDirect
-        ? null
-        : await ResourcePackPrefs.getActiveUrl();
+    final authToken = await AuthService.getIdToken();
+    final resourcePackUrl = await ResourcePackPrefs.getActiveUrl();
     final success = await _broadcastManager.startBroadcast(
       host,
       port,
@@ -496,6 +434,7 @@ class HomeScreenState extends State<HomeScreen> {
   void _onUserServerSelected(UserServer server) {
     widget.ipController.text = server.address;
     widget.portController.text = server.port.toString();
+    unawaited(ConnectorPrefs.saveLastServer(server));
     logger.info('Selected saved server: ${server.name}');
     _snack(
       AppLocalizations.of(context)!.selectedServer(server.name),
@@ -554,12 +493,6 @@ class HomeScreenState extends State<HomeScreen> {
                   bedrockAccounts: _cachedBedrockAccounts ?? [],
                   selectedBedrockXuid: _selectedBedrockXuid,
                   onBedrockAccountChanged: _onBedrockAccountChanged,
-                  navChipsBuilder: (consoleVisible) => _ConnectorNavChips(
-                    onSupport: widget.onOpenSupport,
-                    onHowTo: widget.onOpenHowTo,
-                    onConsole: consoleVisible ? null : widget.onOpenConsole,
-                    onRelay: widget.onOpenMore,
-                  ),
                   onDeleteServer: (index) async {
                     await UserServersStorage.removeServer(index);
                     await loadUserServers();
@@ -576,59 +509,6 @@ class HomeScreenState extends State<HomeScreen> {
       content = SwipeBack(onBack: widget.onBack!, child: content);
     }
     return content;
-  }
-}
-
-class _ConnectorNavChips extends StatelessWidget {
-  final VoidCallback? onSupport;
-  final VoidCallback? onHowTo;
-  final VoidCallback? onConsole;
-  final VoidCallback? onRelay;
-
-  const _ConnectorNavChips({
-    this.onSupport,
-    this.onHowTo,
-    this.onConsole,
-    this.onRelay,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
-    final links = <({IconData icon, String label, VoidCallback onTap})>[
-      if (onHowTo != null)
-        (
-          icon: Icons.lightbulb_outline_rounded,
-          label: loc.howToUseMenu,
-          onTap: onHowTo!,
-        ),
-      if (onConsole != null)
-        (icon: Icons.terminal_rounded, label: loc.console, onTap: onConsole!),
-      if (onRelay != null)
-        (
-          icon: Icons.settings_ethernet_rounded,
-          label: loc.relay,
-          onTap: onRelay!,
-        ),
-      if (onSupport != null)
-        (
-          icon: Icons.help_outline_rounded,
-          label: loc.support,
-          onTap: onSupport!,
-        ),
-    ];
-
-    if (links.isEmpty) return const SizedBox.shrink();
-
-    return Wrap(
-      alignment: WrapAlignment.center,
-      spacing: 18,
-      runSpacing: 10,
-      children: [
-        for (final link in links)
-          _NavLink(icon: link.icon, label: link.label, onTap: link.onTap),
-      ],
-    );
   }
 }
 

@@ -4,6 +4,7 @@ import '../../theme/app_theme.dart';
 import '../../services/notification_api_service.dart';
 import 'profile_common.dart';
 import 'profile_cards.dart';
+import '../../theme/app_tokens.dart';
 
 class ProfileNotificationsTab extends StatefulWidget {
   final void Function(int count)? onCountChanged;
@@ -126,7 +127,7 @@ class _ProfileNotificationsTabState extends State<ProfileNotificationsTab> {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
               decoration: BoxDecoration(
                 color: AppTheme.surfaceRaised,
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: AppRadius.medium,
                 border: Border.all(color: AppTheme.borderGray),
               ),
               child: Text(
@@ -270,7 +271,7 @@ class _NotificationTile extends StatelessWidget {
         color: unread
             ? AppTheme.surfaceRaised
             : AppTheme.surfaceRaised.withValues(alpha: 0.6),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: AppRadius.medium,
         border: Border.all(
           color: unread
               ? AppTheme.accent.withValues(alpha: 0.25)
@@ -285,10 +286,7 @@ class _NotificationTile extends StatelessWidget {
             Container(
               width: 36,
               height: 36,
-              decoration: BoxDecoration(
-                color: color.withValues(alpha: 0.12),
-                shape: BoxShape.circle,
-              ),
+              decoration: BoxDecoration(color: color.withValues(alpha: 0.12)),
               child: Icon(icon, color: color, size: 18),
             ),
             const SizedBox(width: 12),
@@ -315,10 +313,7 @@ class _NotificationTile extends StatelessWidget {
                           width: 7,
                           height: 7,
                           margin: const EdgeInsets.only(left: 6, top: 2),
-                          decoration: BoxDecoration(
-                            color: AppTheme.accent,
-                            shape: BoxShape.circle,
-                          ),
+                          decoration: BoxDecoration(color: AppTheme.accent),
                         ),
                     ],
                   ),

@@ -9,10 +9,25 @@ class AppLocalizationsSw extends AppLocalizations {
   AppLocalizationsSw([String locale = 'sw']) : super(locale);
 
   @override
-  String get appName => 'MCCompanion';
+  String get console => 'Konsoli';
 
   @override
-  String get console => 'Konsoli';
+  String get modeLabel => 'Hali';
+
+  @override
+  String get statusLabel => 'Hali';
+
+  @override
+  String get seeAll => 'Ona zote';
+
+  @override
+  String get sectionHelp => 'Msaada';
+
+  @override
+  String get sectionAdvanced => 'Kina';
+
+  @override
+  String get versionLabel => 'Toleo';
 
   @override
   String get consoleOutput => 'Matokeo ya Konsoli';
@@ -62,9 +77,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get onboardingNavRightLabel => 'KITUFE CHA KULIA';
 
   @override
-  String get onboardingNavPreviewHome => 'Nyumbani';
-
-  @override
   String get onboardingNavPreviewConnector => 'Kiunganishi';
 
   @override
@@ -74,35 +86,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get onboardingNavPreviewEmpty => 'Tupu';
 
   @override
-  String get onboardingStartTitle => 'Ukurasa wa mwanzo';
-
-  @override
-  String get onboardingStartSubtitle => 'Programu inafungua hapa kila wakati.';
-
-  @override
   String get onboardingCustomizeDetail => 'Binafsisha kwa undani →';
-
-  @override
-  String get startPageHome => 'Nyumbani';
-
-  @override
-  String get startPageHomeSubtitle => 'Onyesha skrini ya nyumbani na vigae';
-
-  @override
-  String get startPageFeature => 'Kipengele';
-
-  @override
-  String get startPageFeatureSubtitle =>
-      'Fungua moja kwa moja kwenye ukurasa mahususi';
-
-  @override
-  String get startPageSectionLabel => 'UKURASA WA MWANZO';
-
-  @override
-  String get joinUs => 'Jiunge Nasi';
-
-  @override
-  String get more => 'Zaidi';
 
   @override
   String get website => 'Tovuti';
@@ -114,14 +98,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get support => 'Msaada';
 
   @override
-  String helpText(Object appCreator) {
-    return 'Imetengenezwa na $appCreator.\r\n\r\nJinsi ya kutumia:\r\n1. Weka anwani na port ya seva yako ya Minecraft (chaguo-msingi: 19132)\r\n  , au chagua seva iliyohifadhiwa awali kutoka kwenye menyu ya kushuka\r\n2. (Hiari) Chagua Relay Server (EU au US) iliyo karibu zaidi na eneo lako\r\n3. Bofya \"Anza Kutangaza\" ili kuanza\r\n4. Kwenye konsoli/kifaa chako: Minecraft > Play > Friends\r\n5. Unapaswa kuona seva ya LAN inayoitwa \"MCCompanion\"\r\n6. Bofya ili kujiunga na seva yako ya nje kupitia MCCompanion\r\n\r\nNintendo Switch (hali ya DNS):\r\n1. Washa \"Nintendo Switch\" kwenye paneli ya muunganisho\r\n2. Chagua Relay Server (EU au US)\r\n3. Bofya \"Send DNS Config\": hii hutuma usanidi wako kwa relay\r\n   (hii HAITANGAZI seva ya LAN)\r\n4. Kwenye Switch yako, tumia mipangilio ya DNS ya MCCompanion kisha jiunge\r\n   kwa kutumia ingizo la seva unalotumia kwa MCCompanion\r\n\r\nVidokezo:\r\n- Kwa utangazaji wa LAN, MCCompanion na konsoli lazima ziwe kwenye mtandao mmoja wa ndani.\r\n- Dokezo: Chagua seva ya relay iliyo karibu zaidi nawe kwa utendaji bora.';
-  }
-
-  @override
-  String get serverDetailsLabel => 'Maelezo ya seva';
-
-  @override
   String get start => 'Anza';
 
   @override
@@ -129,9 +105,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get labelJava => 'Java';
-
-  @override
-  String get aternosSubtext => 'Skapa din egen gratis Minecraft-server';
 
   @override
   String get language => 'Kiswahili';
@@ -158,12 +131,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get delete => 'Futa';
 
   @override
-  String get myServers => 'Seva Zangu';
-
-  @override
-  String get quickAccessServers => 'Seva za ufikiaji wa haraka';
-
-  @override
   String get addServer => 'Ongeza Seva';
 
   @override
@@ -185,15 +152,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get save => 'Hifadhi';
 
   @override
-  String get initializing => 'Inaandaliwa...';
-
-  @override
-  String get createdBy => 'Imetengenezwa na NetherDev';
-
-  @override
-  String get bedrockBridge => 'Daraja la Bedrock';
-
-  @override
   String get clientDisconnected => 'Mteja ametenganishwa: Utangazaji umesimama';
 
   @override
@@ -206,12 +164,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get dataSentToServers => 'Data imetumwa kwa seva za MCCompanion';
 
   @override
-  String get broadcastingStarted => 'Utangazaji umeanza';
-
-  @override
-  String get broadcastStopped => 'Utangazaji umesimama';
-
-  @override
   String selectedServer(Object name) {
     return '📋 Imechaguliwa: $name';
   }
@@ -222,9 +174,6 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get noLogsToCopy => 'Hakuna kumbukumbu za kunakili';
-
-  @override
   String copiedLogs(Object count) {
     return 'Ime nakili maingizo $count ya kumbukumbu kwenye clipboard';
   }
@@ -233,36 +182,11 @@ class AppLocalizationsSw extends AppLocalizations {
   String get debugEnabled => 'Kumbukumbu za utatuzi zimewashwa';
 
   @override
-  String get debugDisabled => 'Kumbukumbu za utatuzi zimezimwa';
-
-  @override
-  String get howToUseTitle => 'Jinsi ya kutumia MCCompanion';
-
-  @override
   String get iUnderstand => 'Nimeelewa';
-
-  @override
-  String get playOnSwitchTitle => 'Cheza kwenye Nintendo Switch';
-
-  @override
-  String get playWithFriendsTitle => 'Cheza na Marafiki';
 
   @override
   String playInstructionsSwitch(Object relayName, Object relayIp) {
     return 'Imechaguliwa: $relayName\r\n\r\nJinsi ya kuunganika:\r\n1. Nenda kwenye Mipangilio ya Switch yako na ubadilishe DNS kuwa: $relayIp\r\n2. Fungua Minecraft na uchague seva kutoka kwenye orodha (kama Cubecraft au Hive).\r\n3. Sasa utapelekwa moja kwa moja kwenye seva yako mwenyewe.';
-  }
-
-  @override
-  String playInstructionsFriends(Object friend) {
-    return 'Jinsi ya kuunganika:\r\n1. Kwenye konsoli yako, ongeza $friend kama rafiki.\r\n2. Fungua Minecraft na uende kwenye kichupo cha Friends.\r\n3. Tafuta seva yako chini ya LAN Worlds na uchague ili kujiunga.';
-  }
-
-  @override
-  String get nldServerLabel => 'SEVA YA MCCompanion';
-
-  @override
-  String selectRelayLabel(Object name) {
-    return 'Chagua relay $name';
   }
 
   @override
@@ -272,26 +196,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get savedServers => 'Seva zilizohifadhiwa';
 
   @override
-  String get serverAddressHint => 'Anwani ya Seva';
-
-  @override
-  String get portHint => 'Porti';
-
-  @override
   String get manageServers => 'Dhibiti seva';
-
-  @override
-  String get manageServersTooltip => 'Dhibiti seva';
-
-  @override
-  String get noServerYet =>
-      'Bado hakuna seva zilizohifadhiwa.\nGusa Dhibiti ili kuongeza moja.';
-
-  @override
-  String get serverNotSelected => 'Hakuna seva iliyochaguliwa';
-
-  @override
-  String get ready => 'Tayari';
 
   @override
   String get active => 'Inatumika';
@@ -314,34 +219,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get continueAnyway => 'Endelea hata hivyo';
 
   @override
-  String get sameWifi => 'Mtandao ule ule wa Wi‑Fi';
-
-  @override
-  String get needSameWifi =>
-      'Kifaa kinachoendesha MCCompanion LAZIMA kiwe kwenye mtandao ule ule wa Wi‑Fi na konsoli unayotumia kucheza Minecraft.';
-
-  @override
-  String get subscription => 'Usajili wa mtandaoni unahitajika';
-
-  @override
-  String get needSubscription =>
-      'Kila konsoli inahitaji usajili wake wa mtandaoni ulio hai (Xbox Live, PS Plus, NSO). Bila huo, MCCompanion haitaonekana.';
-
-  @override
   String get updateAvailable => 'Sasisho linapatikana';
-
-  @override
-  String get newVersion =>
-      'Toleo jipya la programu linapatikana.\nSasisha sasa kwa vipengele na marekebisho mapya zaidi.';
-
-  @override
-  String get later => 'Baadaye';
-
-  @override
-  String get updateNow => 'Sasisha sasa';
-
-  @override
-  String get beforeYouStart => 'KABLA HUJAANZA';
 
   @override
   String get stopBroadcasting => 'Simamisha Utangazaji';
@@ -356,9 +234,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get startBroadcasting => 'Anza Kutangaza';
 
   @override
-  String get modeLabel => 'Hali';
-
-  @override
   String get labelXbox => 'Xbox/PS4-5';
 
   @override
@@ -366,32 +241,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get labelFriends => 'Marafiki';
-
-  @override
-  String get nintendoInfoTitle => 'Hali ya DNS ya Nintendo Switch';
-
-  @override
-  String get nintendoInfoText =>
-      'Anza kwenye hali ya Nintendo, weka DNS yako na jiunge na seva iliyopendekezwa.';
-
-  @override
-  String get friendModeTitle => 'Hali ya Marafiki';
-
-  @override
-  String get friendModeText =>
-      'Ongeza roboti za marafiki za MCCompanion kama rafiki. Anza hali ya Marafiki na ucheze';
-
-  @override
-  String get selectedRelayCheck => 'Imechaguliwa';
-
-  @override
-  String relayFallbackWarning(Object name) {
-    return 'Onyo: relay ya awali haikujibu. Relay mbadala inatumika: $name';
-  }
-
-  @override
-  String get relayUnableConnect =>
-      'Imeshindikana kuunganika kwa seva YOYOTE ya relay ya MCCompanion. Jaribu tena baadaye au angalia intaneti yako.';
 
   @override
   String get howToXboxTitle => 'Xbox / PS4-5 (LAN / proksi)';
@@ -410,18 +259,10 @@ class AppLocalizationsSw extends AppLocalizations {
   String get howToNintendoSubtitle => 'Maelekezo ya DNS relay kwa Switch';
 
   @override
-  String get howToNintendoBody =>
-      'Nintendo Switch: hali ya DNS (hatua kwa hatua):\r\n1. Kwenye programu, washa hali ya \"Nintendo\" na uchague Relay Server (EU au US).\r\n2. Gusa \"Send DNS Config\" ili kutuma DNS IP kwa relay.\r\n3. Kwenye Nintendo Switch yako nenda kwenye System Settings → Internet → Internet Settings → (mtandao wako) → Change Settings → DNS na weka Primary DNS kuwa relay IP.\r\n4. Fungua Minecraft na ujiunge na seva ya umma; utaelekezwa kwenye seva yako kwa kutumia relay DNS.\r\nVidokezo:\r\n- Hali ya DNS haitangazi seva ya LAN; inaelekeza trafiki ya mchezo kupitia relay.\r\n- Rudisha DNS yako baada ya kumaliza ikiwa unahitaji tabia ya kawaida ya mtandao.';
-
-  @override
   String get howToFriendsTitle => 'Hali ya Marafiki';
 
   @override
   String get howToFriendsSubtitle => 'Alika marafiki na ujiunge kupitia LAN';
-
-  @override
-  String get howToFriendsBody =>
-      'Hali ya Marafiki: hatua za haraka:\r\n1. Ongeza akaunti ya rafiki ya MCCompanion kwenye konsoli au jukwaa lako ikiwa inahitajika.\r\n2. Kwenye programu washa hali ya Marafiki na utume usanidi wa relay (ikiwa unatumika).\r\n3. Kwenye konsoli yako fungua Minecraft → Friends na utafute LAN Worlds, seva yako inapaswa kuonekana hapo kama ulimwengu wa LAN.\r\n4. Ichague ili kujiunga na seva yako pamoja na marafiki.\r\nVidokezo:\r\n- Hakikisha wewe na marafiki zako mna NAT/mipangilio sawa inayoruhusu uwepo wa marafiki.\r\n- Hali ya Marafiki hutegemea vipengele vya urafiki vya jukwaa na huenda ikahitaji kukubali maombi ya urafiki.';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion haionekani';
@@ -471,9 +312,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get changeLanguage => 'Lugha';
-
-  @override
-  String get useSystemLanguage => 'Tumia lugha ya mfumo';
 
   @override
   String get couldNotOpenUrl => 'Haikuweza kufungua URL';
@@ -545,12 +383,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get statusChecking => 'Inakagua...';
 
   @override
-  String get notificationsOn => 'Arifa zimewashwa';
-
-  @override
-  String get notificationsOff => 'Arifa zimezimwa';
-
-  @override
   String get failedUpdateNotifications => 'Imeshindwa kusasisha arifa';
 
   @override
@@ -569,43 +401,28 @@ class AppLocalizationsSw extends AppLocalizations {
   String get customizeLabel => 'Binafsisha';
 
   @override
-  String get customizeSubtitle => 'Panga upya vigae na ubinafsishe urambazaji';
+  String get customizeSubtitle => 'Upau wa urambazaji na rangi';
 
   @override
   String get resetLabel => 'Weka upya';
 
   @override
-  String get tilesSection => 'VIGAE';
-
-  @override
-  String get dragToReorder => 'Buruta kupanga upya';
-
-  @override
   String get navigationSection => 'URAMBAZAJI';
 
   @override
-  String get navFixed => 'Nyumbani, Kiunganishi na Wasifu daima zimefungwa';
+  String get navFixed => 'Connector na Wasifu daima ni thabiti';
 
   @override
-  String get leftSlot => 'Nafasi ya kushoto (karibu na Nyumbani)';
+  String get leftSlot => 'Slot 2';
 
   @override
-  String get rightSlot => 'Nafasi ya kulia (karibu na Wasifu)';
+  String get outerSlot => 'Slot 1';
 
   @override
-  String get tileWideTooltipRemove => 'Ondoa mpangilio mpana';
+  String get rightSlot => 'Slot 3';
 
   @override
-  String get tileWideTooltipAdd => 'Fanya tile pana';
-
-  @override
-  String get tileVisibilityShow => 'Onyesha tile';
-
-  @override
-  String get tileVisibilityHide => 'Ficha tile';
-
-  @override
-  String get tileVisibilityMin => 'Haiwezi kufichwa (tile ya mwisho)';
+  String get farSlot => 'Slot 4';
 
   @override
   String get colorPickerApply => 'Tumia';
@@ -679,9 +496,6 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get avatarUrlHint => 'https://example.com/avatar.png';
-
-  @override
   String get reportUser => 'Report user';
 
   @override
@@ -718,18 +532,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get reportSubmit => 'Submit report';
 
   @override
-  String get today => 'Today';
-
-  @override
-  String get yesterday => 'Yesterday';
-
-  @override
-  String get youPrefix => 'You';
-
-  @override
-  String get playerLookupTitle => 'Player Lookup';
-
-  @override
   String get playerLookupSubtitle =>
       'Search for a Java or Bedrock player by username';
 
@@ -751,47 +553,10 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get tabProfile => 'Profile';
-
-  @override
-  String get tabFriends => 'Friends';
-
-  @override
-  String get tabRequests => 'Requests';
-
-  @override
   String get addFriend => 'Add Friend';
 
   @override
-  String get usernameHint => 'Username';
-
-  @override
   String get send => 'Send';
-
-  @override
-  String friendRequestSentTo(Object name) {
-    return 'Friend request sent to $name';
-  }
-
-  @override
-  String alreadyFriendsWith(Object name) {
-    return 'You are already friends with $name';
-  }
-
-  @override
-  String requestAlreadyPending(Object name) {
-    return 'A request to $name is already pending';
-  }
-
-  @override
-  String userNotFoundMsg(Object name) {
-    return 'User $name not found';
-  }
-
-  @override
-  String cannotSendRequest(Object name) {
-    return 'Cannot send a request to $name';
-  }
 
   @override
   String get somethingWentWrong => 'Something went wrong. Please try again.';
@@ -863,9 +628,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String resetLinkSent(Object email) {
     return 'Kama kuna akaunti ya $email, kiungo kinatumwa';
   }
-
-  @override
-  String get noAccountForEmail => 'No account found for that email address';
 
   @override
   String get invalidEmailError => 'The email address is not valid';
@@ -960,9 +722,6 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get linkedAccountsTitle => 'Linked Accounts';
-
-  @override
   String get linkAccountsHint =>
       'Link your Minecraft accounts to show your skins and stats.';
 
@@ -974,9 +733,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get profileUpdated => 'Profile updated';
-
-  @override
-  String get profileCardTitle => 'Profile';
 
   @override
   String get edit => 'Edit';
@@ -992,15 +748,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get bioHint => 'Tell others about yourself…';
-
-  @override
-  String get avatarUrlLabel => 'Avatar URL';
-
-  @override
-  String get usernameDisplayLabel => 'Username';
-
-  @override
-  String get aboutMe => 'About me';
 
   @override
   String get noFriendsYet => 'No friends yet';
@@ -1028,20 +775,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get skinsEdit => 'Edit';
 
   @override
-  String get skinsNoAccountsTitle => 'No Minecraft accounts linked';
-
-  @override
-  String get skinsNoAccountsSubtitle =>
-      'Link a Java or Bedrock account to view your skins.';
-
-  @override
-  String get skinsSignInTitle => 'Sign in to view your skins';
-
-  @override
-  String get skinsSignInSubtitle =>
-      'Sign in and link your Minecraft accounts to see your skins here.';
-
-  @override
   String get skinsMustBe64 => 'Skin must be 64×64 pixels';
 
   @override
@@ -1052,26 +785,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get skinsCreate => 'Create';
-
-  @override
-  String get skinsSectionRecent => 'RECENT SKINS';
-
-  @override
-  String get skinsSectionMy => 'MY SKINS';
-
-  @override
-  String get skinsEmptyMySkins => 'No saved skins yet. Upload or create one!';
-
-  @override
-  String get skinsSectionYours => 'YOUR SKINS';
-
-  @override
-  String get skinsCouldNotLoad => 'Could not load skins';
-
-  @override
-  String skinsPageOf(Object page, Object total) {
-    return 'Page $page of $total';
-  }
 
   @override
   String get skinsDownload => 'Download';
@@ -1109,9 +822,6 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get noConnectionError =>
       'Hakuna muunganiko. Angalia mtandao wako na ujaribu tena.';
-
-  @override
-  String get home => 'Nyumbani';
 
   @override
   String get info => 'Maelezo';
@@ -1181,21 +891,10 @@ class AppLocalizationsSw extends AppLocalizations {
   String get relay => 'Relay';
 
   @override
-  String get selectModeSection => 'SELECT MODE';
-
-  @override
-  String get serversSection => 'SERVERS';
-
-  @override
-  String get noServerSelected => 'No server selected';
+  String get serversSection => 'Servers';
 
   @override
   String get selectBedrockAccount => 'Select Bedrock account';
-
-  @override
-  String playersCount(Object players, Object max) {
-    return '$players / $max players';
-  }
 
   @override
   String get infoAndLegal => 'Info & Legal';
@@ -1290,15 +989,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get portRangeError => 'Port must be between 1 and 65535';
 
   @override
-  String get partnerServersTitle => 'Partner Servers';
-
-  @override
-  String get noPartnerServers => 'No partner servers available yet.';
-
-  @override
-  String get checkBackLater => 'Check back later.';
-
-  @override
   String get xboxLinkTitle => 'Link Xbox Account';
 
   @override
@@ -1341,9 +1031,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get tryAgain => 'Try again';
-
-  @override
-  String get publicProfileTitle => 'Profile';
 
   @override
   String get userNotFound => 'User not found';
@@ -1407,8 +1094,7 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get trackerLimitReached =>
-      'You\'ve reached your server limit. Upgrade to track more servers.';
+  String get trackerLimitReached => 'Kikomo cha seva kimefikiwa';
 
   @override
   String get upgradeButton => 'Upgrade';
@@ -1465,18 +1151,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get javaCodeCopied => 'Code copied to clipboard';
 
   @override
-  String get splashFeatureConnect => 'Connect';
-
-  @override
-  String get splashFeatureFriends => 'Friends';
-
-  @override
-  String get splashFeatureChat => 'Chat';
-
-  @override
-  String get splashFeatureSkins => 'Skins';
-
-  @override
   String get featureLabelConnector => 'Kiunganishi';
 
   @override
@@ -1492,29 +1166,11 @@ class AppLocalizationsSw extends AppLocalizations {
   String get featureLabelTracker => 'Kifuatiliaji Seva';
 
   @override
-  String get featureSubtitleConnector => 'Unganisha konsoli na Minecraft';
-
-  @override
-  String get featureSubtitleSkins => 'Vinjari na usimamie ngozi za Minecraft';
-
-  @override
-  String get featureSubtitlePartners => 'Seva zilizoangaziwa';
-
-  @override
-  String get featureSubtitleLookup => 'Tafuta wasifu wa Java na Bedrock';
-
-  @override
-  String get featureSubtitleTracker => 'Fuatilia hali ya seva na upokee arifa';
-
-  @override
   String get userSearchHint => 'Jina la mtumiaji, gamertag au jina la Java…';
 
   @override
   String get userSearchSub =>
       'Tafuta kwa jina la mtumiaji, gamertag ya Xbox au jina la Java';
-
-  @override
-  String get onlineStatus => 'Mtandaoni';
 
   @override
   String get upgradeWindowsHint =>
@@ -1535,7 +1191,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get skinExported => 'Skin imesafirishwa';
 
   @override
-  String get accountActions => 'AKAUNTI';
+  String get accountActions => 'Akaunti';
 
   @override
   String get feedbackBugReport => 'Ripoti ya Hitilafu';
@@ -1569,16 +1225,6 @@ class AppLocalizationsSw extends AppLocalizations {
       'Eleza unachotaka na kwa nini itakuwa ya manufaa.';
 
   @override
-  String get feedbackEmailLabel => 'Barua pepe';
-
-  @override
-  String get feedbackEmailHint => 'Ili tuweze kukuwasiliana';
-
-  @override
-  String get feedbackEmailNote =>
-      'Barua pepe yako haitashirikiwa hadharani kamwe.';
-
-  @override
   String get feedbackSubmitBug => 'Tuma Ripoti ya Hitilafu';
 
   @override
@@ -1608,18 +1254,11 @@ class AppLocalizationsSw extends AppLocalizations {
       'Maelezo lazima yawe na angalau herufi 10.';
 
   @override
-  String get feedbackEmailInvalid =>
-      'Tafadhali ingiza anwani ya barua pepe halali.';
-
-  @override
   String get feedbackSubmitFailed =>
       'Imeshindwa kutuma. Tafadhali jaribu tena.';
 
   @override
-  String get feedbackTileTitle => 'Ripoti hitilafu au pendekeza kipengele';
-
-  @override
-  String get reportBug => 'Maoni';
+  String get feedbackTileTitle => 'Maoni';
 
   @override
   String get feedbackTileSubtitle => 'Tusaidie kuboresha MCCompanion';
@@ -1689,22 +1328,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get rpScreenTitle => 'Kifurushi cha Rasilimali';
 
   @override
-  String get rpWhatIsThis => 'Hii ni nini?';
-
-  @override
-  String get rpExplanation =>
-      'Pakiti ya rasilimali hubadilisha mwonekano wa Minecraft kwenye konsoli yako, vitalu, rangi au sauti mpya. Bandika kiungo cha faili la .mcpack hapa chini, washa na uhifadhi. MCCompanion hupakia kiotomatiki kila wakati unapoungana.';
-
-  @override
-  String get rpPackUrlLabel => 'URL ya Pakiti';
-
-  @override
-  String get rpPackUrlHint => 'https://example.com/pack.mcpack';
-
-  @override
-  String get rpEnableToggle => 'Wezesha kifurushi cha rasilimali';
-
-  @override
   String get rpWhatWorks => 'Kinachofanya kazi';
 
   @override
@@ -1766,10 +1389,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get rpWarnExtension => 'URL lazima iishie .mcpack au .zip';
 
   @override
-  String get rpToastEnterUrl =>
-      'Ingiza URL kabla ya kuwezesha kifurushi cha rasilimali.';
-
-  @override
   String get rpToastSaved =>
       'Mipangilio ya kifurushi cha rasilimali imehifadhiwa.';
 
@@ -1783,10 +1402,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get rpClearMinecraftTitle => 'Mara ya kwanza na pakiti hii?';
-
-  @override
-  String get rpClearMinecraftBody =>
-      'Minecraft huhifadhi pakiti za rasilimali kwenye cache ya ndani. Ikiwa uliounganika kwenye seva hii kabla ya kuwezesha pakiti ya MCCompanion, Minecraft tayari ina pakiti asili kwenye cache na haitaipakua tena toleo lililounganishwa.';
 
   @override
   String get rpClearStep1 =>
@@ -1808,17 +1423,6 @@ class AppLocalizationsSw extends AppLocalizations {
       'Relay huhifadhi pakiti iliyounganishwa kwa saa 1 ukitumia URL ya overlay kama ufunguo wa akiba. Kulazimisha muunganiko mpya: badilisha kidogo URL ya pakiti (mfano ongeza ?v=2) na uhifadhi. Kisha futa pia akiba ya pakiti ya Minecraft, pakiti iliyounganishwa bado inatumia UUID ya seva, kwa hivyo Minecraft vinginevyo itaonyesha toleo la zamani kutoka akibani.';
 
   @override
-  String get rpWorksGithubHint =>
-      'Kiungo cha kupakua moja kwa moja: daima kinafikiwa';
-
-  @override
-  String get rpWorksCloudflareHint =>
-      'Hifadhi ya wingu ya umma: haraka na ya kuaminika';
-
-  @override
-  String get rpWorksDirectHint => 'URL yoyote ya umma ya HTTPS .mcpack au .zip';
-
-  @override
   String get rpNoDiscordHint =>
       'Viungo vya Discord CDN vinaisha baada ya muda mfupi';
 
@@ -1838,9 +1442,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get rpUploadTab => 'Upload';
 
   @override
-  String get rpUrlTab => 'URL';
-
-  @override
   String get rpUploadButton => 'Tap to select your pack';
 
   @override
@@ -1851,9 +1452,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get rpMergerTitle => 'Muunganisho wa RP';
-
-  @override
-  String get rpMergerSubtitle => 'Unganisha hadi pakiti 4 za rasilimali';
 
   @override
   String get rpMergerPriorityHint =>
@@ -1882,25 +1480,8 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get rpMergerComplete => 'Uunganisho umekamilika!';
-
-  @override
-  String rpMergerConflicts(int count) {
-    return 'Migogoro $count imetatuliwa: pakiti ya juu ilishinda.';
-  }
-
-  @override
-  String get rpMergerSetActive => 'Weka kama pakiti ya rasilimali inayotumika';
-
-  @override
   String get rpMergerSetActiveToast =>
       'Imewekwa kama pakiti ya rasilimali inayotumika';
-
-  @override
-  String get rpMergerOpenButton => 'Unganisha pakiti za rasilimali';
-
-  @override
-  String get rpMergerOpenSubtitle => 'Unganisha pakiti 2–4 kuwa moja';
 
   @override
   String get rpDisabled => 'Imezimwa';
@@ -1933,10 +1514,6 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get rpTabUploadInfo =>
       'Pakia faili yako ya .mcpack au .zip. MCCompanion inihifadhi kwa usalama kwenye wingu na kuipeleka kwa konsoli yako kila unapounganisha.';
-
-  @override
-  String get rpTabUrlInfo =>
-      'Bandika kiungo cha kupakuliwa moja kwa moja kwa faili ya .mcpack au .zip. URL lazima iwe ya umma, hakuna viungo vya Discord au Google Drive.';
 
   @override
   String get rpTabMergeInfo =>
@@ -2017,9 +1594,6 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get rpPackDetailTitle => 'Maelezo ya pakiti';
-
-  @override
   String get skinsSavedToMySkins => 'Imehifadhiwa katika Ngozi Zangu';
 
   @override
@@ -2046,16 +1620,6 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get skinsTabSkins => 'Ngozi';
-
-  @override
-  String get skinsTabRecent => 'Za Hivi Karibuni';
-
-  @override
-  String get skinsEmptyCloudSkins =>
-      'Hakuna ngozi za wingu bado. Pakia ngozi ili kuiona hapa.';
-
-  @override
   String get skinsEmptyLocalSkins =>
       'Hakuna ngozi bado. Unda au pakia ngozi ili kuanza.';
 
@@ -2076,9 +1640,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get skinsTabGallery => 'Matunzio';
-
-  @override
-  String get skinsGalleryEmpty => 'Bado hakuna ngozi za jamii.';
 
   @override
   String get skinsTopLabel => 'Bora 30';
@@ -2255,13 +1816,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get supportInboxTitle => 'Kikasha cha usaidizi';
 
   @override
-  String get supportInboxSubtitle =>
-      'Mazungumzo yote ya usaidizi, yanayoshirikiwa na wasimamizi wote';
-
-  @override
-  String get adminBadge => 'Msimamizi';
-
-  @override
   String get skinShareSubject => 'Skin ya Minecraft';
 
   @override
@@ -2350,9 +1904,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get supportReplyingAs => 'Unajibu kama MCCompanion Support';
-
-  @override
-  String get supportReplyHint => 'Jibu kama usaidizi…';
 
   @override
   String get relayBlocked =>
@@ -2447,12 +1998,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get adminTicketReplyHint => 'Jibu kuhusu tiketi hii…';
 
   @override
-  String get adminNoTicketsForUser => 'Hakuna tiketi kutoka kwa mtumiaji huyu';
-
-  @override
-  String get undo => 'Tendua';
-
-  @override
   String get chooseServerTitle => 'Chagua seva';
 
   @override
@@ -2513,33 +2058,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get shareServerOff => 'Marafiki wanaona unacheza, si wapi';
 
   @override
-  String get makeDefaultServer => 'Weka kama seva chaguo-msingi';
-
-  @override
-  String get isDefaultServer => 'Hufunguliwa kwa chaguo-msingi';
-
-  @override
-  String defaultServerSet(String name) {
-    return '$name itafunguliwa kwa chaguo-msingi';
-  }
-
-  @override
-  String get labelDirect => 'Proksi/Moja kwa Moja';
-
-  @override
-  String get startDirectMode => 'Anza Hali ya Proksi/Moja kwa Moja';
-
-  @override
-  String get howToDirectTitle => 'Hali ya Proksi/Moja kwa Moja';
-
-  @override
-  String get howToDirectSubtitle => 'Cheza bila kupitia seva zetu';
-
-  @override
-  String get howToDirectBody =>
-      'Hali ya Proksi/Moja kwa Moja: kifaa chako ndicho muunganisho wenyewe.\n1. Hakikisha kifaa kinachoendesha MCCompanion na konsoli yako viko kwenye mtandao mmoja wa ndani.\n2. Weka anwani na mlango wa seva ya Bedrock, kisha bonyeza \"Anza Hali ya Proksi/Moja kwa Moja\".\n3. Kwenye konsoli fungua Minecraft → Play → kichupo cha Friends na uonyeshe upya orodha.\n4. Chagua seva ya LAN yenye jina \"MCCompanion\" ili kujiunga.\n\nKwa nini hali hii ipo:\n- Hakuna kinachopita kwenye seva za MCCompanion. Kifaa chako chenyewe hupeleka data, hivyo hali hii huendelea kufanya kazi hata pale relei zetu zisipopatikana.\n- Hakuna haja ya kuingia kwenye akaunti.\n\nKumbuka:\n- Programu lazima ibaki wazi na skrini ikiwa inaonekana kwa muda wote wa kipindi. Kuifunga au kuhamia programu nyingine kunakata muunganisho.\n- Seva za Bedrock pekee. Kwa seva za Java tumia Hali ya Java, ambayo hufanya tafsiri upande wetu.\n- Betri hutumika zaidi kuliko katika hali nyingine.\n- Vifurushi vya rasilimali havitumiki. Hupitia relay yetu, ambayo hali hii huiruka.';
-
-  @override
   String directHostNotFound(String host) {
     return '$host haikupatikana. Angalia anwani kisha ujaribu tena.';
   }
@@ -2547,21 +2065,6 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get directPortBusy =>
       'Imeshindwa kufungua mlango wa ndani. Simamisha muunganisho wa sasa kwanza.';
-
-  @override
-  String get directServerOfflineTitle => 'Seva haijibu';
-
-  @override
-  String directServerOfflineBody(String target) {
-    return '$target haikujibu. Huenda iko nje ya mtandao, au haijibu ping tu. Bado unaweza kuanzisha handaki.';
-  }
-
-  @override
-  String get directStartAnyway => 'Anza hata hivyo';
-
-  @override
-  String get directNoResourcePack =>
-      'Vifurushi vya rasilimali havifanyi kazi katika Hali ya Proksi/Moja kwa Moja.';
 
   @override
   String directAddressNotSupported(String host) {
@@ -2675,9 +2178,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get serverStatVotesMonth => 'Kura za mwezi huu';
 
   @override
-  String get serverStatVotesAllTime => 'Kura zote';
-
-  @override
   String get serverBadgeFeatured => 'Iliyoangaziwa';
 
   @override
@@ -2693,15 +2193,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get serverSectionMotd => 'Ujumbe wa siku';
 
   @override
-  String get serverSectionAbout => 'Kuhusu';
-
-  @override
-  String get serverSectionCategories => 'Kategoria';
-
-  @override
-  String get serverSectionVotes => 'Kura';
-
-  @override
   String get serverLinkDiscord => 'Discord';
 
   @override
@@ -2712,12 +2203,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get serverVotesAllTime => 'Muda wote';
-
-  @override
-  String get serverVoteAction => 'Piga kura kwa seva hii';
-
-  @override
-  String get serverPlayAction => 'Cheza kwenye seva hii';
 
   @override
   String get serverVoteSignInRequired =>

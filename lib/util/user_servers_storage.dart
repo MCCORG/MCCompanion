@@ -11,7 +11,9 @@ class UserServersStorage {
 
   static String _keyOf(UserServer s) => '${s.address}:${s.port}';
 
-  static Future<UserServer?> loadDefaultServer([List<UserServer>? servers]) async {
+  static Future<UserServer?> loadDefaultServer([
+    List<UserServer>? servers,
+  ]) async {
     final prefs = await SharedPreferences.getInstance();
     final key = prefs.getString(_defaultKeyPref);
     if (key == null) return null;

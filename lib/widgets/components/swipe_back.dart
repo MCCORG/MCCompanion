@@ -12,7 +12,8 @@ class SwipeBack extends StatefulWidget {
   State<SwipeBack> createState() => _SwipeBackState();
 }
 
-class _SwipeBackState extends State<SwipeBack> with SingleTickerProviderStateMixin {
+class _SwipeBackState extends State<SwipeBack>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
   Offset? _start;
@@ -23,10 +24,15 @@ class _SwipeBackState extends State<SwipeBack> with SingleTickerProviderStateMix
   double _velocity = 0;
   bool _childScrollingHorizontally = false;
 
+  static const double _edgeWidth = 40;
+
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 250));
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 250),
+    );
   }
 
   @override
@@ -61,7 +67,11 @@ class _SwipeBackState extends State<SwipeBack> with SingleTickerProviderStateMix
       final dx = e.localPosition.dx - _start!.dx;
       final dy = e.localPosition.dy - _start!.dy;
       if (dx.abs() < 8 && dy.abs() < 8) return;
-      if (dx > 0 && dx.abs() > dy.abs() && !_childScrollingHorizontally) {
+      final fromEdge = _start!.dx <= _edgeWidth;
+      if (dx > 0 &&
+          dx.abs() > dy.abs() &&
+          fromEdge &&
+          !_childScrollingHorizontally) {
         _tracking = true;
         _decided = true;
         _controller.value = 0;
@@ -84,13 +94,21 @@ class _SwipeBackState extends State<SwipeBack> with SingleTickerProviderStateMix
     _tracking = false;
     if (_velocity > 300 || _controller.value > 0.30) {
       _controller
-          .animateTo(1.0, duration: const Duration(milliseconds: 180), curve: Curves.easeOut)
+          .animateTo(
+            1.0,
+            duration: const Duration(milliseconds: 180),
+            curve: Curves.easeOut,
+          )
           .then((_) {
-        widget.onBack();
-        _controller.value = 0;
-      });
+            widget.onBack();
+            _controller.value = 0;
+          });
     } else {
-      _controller.animateBack(0, duration: const Duration(milliseconds: 200), curve: Curves.easeOut);
+      _controller.animateBack(
+        0,
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeOut,
+      );
     }
   }
 
@@ -99,7 +117,11 @@ class _SwipeBackState extends State<SwipeBack> with SingleTickerProviderStateMix
     _decided = false;
     _start = null;
     if (_controller.value > 0) {
-      _controller.animateBack(0, duration: const Duration(milliseconds: 200), curve: Curves.easeOut);
+      _controller.animateBack(
+        0,
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeOut,
+      );
     }
   }
 
@@ -116,7 +138,11 @@ class _SwipeBackState extends State<SwipeBack> with SingleTickerProviderStateMix
               _tracking = false;
               _decided = true;
               if (_controller.value > 0) {
-                _controller.animateBack(0, duration: const Duration(milliseconds: 150), curve: Curves.easeOut);
+                _controller.animateBack(
+                  0,
+                  duration: const Duration(milliseconds: 150),
+                  curve: Curves.easeOut,
+                );
               }
             }
           }
@@ -125,26 +151,24 @@ class _SwipeBackState extends State<SwipeBack> with SingleTickerProviderStateMix
         return false;
       },
       child: Listener(
-      behavior: HitTestBehavior.translucent,
-      onPointerDown: _onPointerDown,
-      onPointerMove: _onPointerMove,
-      onPointerUp: _onPointerUp,
-      onPointerCancel: _onPointerCancel,
-      child: AnimatedBuilder(
-        animation: _controller,
-        builder: (context, child) {
-          final offset = _controller.value * MediaQuery.of(context).size.width;
-          return Stack(
-            children: [
-              Transform.translate(
-                offset: Offset(offset, 0),
-                child: child,
-              ),
-            ],
-          );
-        },
-        child: widget.child,
-      ),
+        behavior: HitTestBehavior.translucent,
+        onPointerDown: _onPointerDown,
+        onPointerMove: _onPointerMove,
+        onPointerUp: _onPointerUp,
+        onPointerCancel: _onPointerCancel,
+        child: AnimatedBuilder(
+          animation: _controller,
+          builder: (context, child) {
+            final offset =
+                _controller.value * MediaQuery.of(context).size.width;
+            return Stack(
+              children: [
+                Transform.translate(offset: Offset(offset, 0), child: child),
+              ],
+            );
+          },
+          child: widget.child,
+        ),
       ),
     );
   }

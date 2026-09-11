@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
 import '../../services/connectivity_checker.dart';
 import '../../l10n/app_localizations.dart';
+import '../../theme/app_tokens.dart';
 
 class ConnectivityWarningDialog extends StatelessWidget {
   final ConnectivityWarning warning;
@@ -36,7 +37,7 @@ class ConnectivityWarningDialog extends StatelessWidget {
         padding: const EdgeInsets.all(26),
         decoration: BoxDecoration(
           color: AppTheme.surfaceRaised,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: AppRadius.large,
           border: Border.all(color: color.withValues(alpha: 0.35)),
           boxShadow: [
             BoxShadow(
@@ -54,7 +55,7 @@ class ConnectivityWarningDialog extends StatelessWidget {
               height: 58,
               decoration: BoxDecoration(
                 color: color.withValues(alpha: 0.14),
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: AppRadius.large,
                 border: Border.all(color: color.withValues(alpha: 0.35)),
               ),
               child: Icon(icon, color: color, size: 26),
@@ -87,10 +88,6 @@ class ConnectivityWarningDialog extends StatelessWidget {
                   backgroundColor: color,
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  elevation: 0,
                 ),
                 child: Text(
                   loc.continueAnyway,

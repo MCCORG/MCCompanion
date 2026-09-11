@@ -4,7 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../l10n/app_localizations.dart';
 import '../../services/distribution_service.dart';
 import '../../services/update_service.dart';
-import '../../theme/app_theme.dart';
+import '../../design/design.dart';
 
 class UpdateBanner extends StatefulWidget {
   const UpdateBanner({super.key});
@@ -49,61 +49,62 @@ class _UpdateBannerState extends State<UpdateBanner> {
     if (latest == null) return const SizedBox.shrink();
 
     final l = AppLocalizations.of(context)!;
-    const tone = AppTheme.info;
+    final tone = DsColor.info;
 
     return Container(
-      margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-      padding: const EdgeInsets.all(14),
+      margin: const EdgeInsets.fromLTRB(
+        DsSpace.lg,
+        DsSpace.md,
+        DsSpace.lg,
+        0,
+      ),
+      padding: const EdgeInsets.all(DsSpace.md),
       decoration: BoxDecoration(
-        color: tone.withValues(alpha: 0.10),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: tone.withValues(alpha: 0.45)),
+        color: DsColor.surface,
+        borderRadius: DsRadius.cardR,
+        border: Border.all(color: DsColor.tint(tone, 0.35)),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Icon(Icons.system_update_alt_rounded, color: tone, size: 20),
-          const SizedBox(width: 12),
+          Container(
+            width: 28,
+            height: 28,
+            decoration: BoxDecoration(
+              color: DsColor.tint(tone, 0.14),
+              borderRadius: DsRadius.controlR,
+            ),
+            child: Icon(
+              Icons.system_update_alt_rounded,
+              color: tone,
+              size: 16,
+            ),
+          ),
+          const SizedBox(width: DsSpace.md),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  l.updateAvailableTitle(latest),
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w700, fontSize: 14),
-                ),
-                const SizedBox(height: 2),
+                Text(l.updateAvailableTitle(latest), style: DsType.bodyStrong),
+                const SizedBox(height: DsSpace.xxs),
                 Text(
                   l.updateAvailableBody(DistributionService.version),
-                  style: TextStyle(
-                      fontSize: 12, color: AppTheme.textSecondary),
+                  style: DsType.caption,
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: DsSpace.md),
                 Row(
                   children: [
-                    TextButton(
+                    DsButton(
+                      label: l.updateAvailableAction,
+                      size: DsButtonSize.small,
                       onPressed: _open,
-                      style: TextButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 6),
-                        minimumSize: Size.zero,
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        foregroundColor: tone,
-                      ),
-                      child: Text(l.updateAvailableAction),
                     ),
-                    const SizedBox(width: 4),
-                    TextButton(
+                    const SizedBox(width: DsSpace.sm),
+                    DsButton(
+                      label: l.updateAvailableDismiss,
+                      tone: DsButtonTone.quiet,
+                      size: DsButtonSize.small,
                       onPressed: _dismiss,
-                      style: TextButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 6),
-                        minimumSize: Size.zero,
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        foregroundColor: AppTheme.textSecondary,
-                      ),
-                      child: Text(l.updateAvailableDismiss),
                     ),
                   ],
                 ),

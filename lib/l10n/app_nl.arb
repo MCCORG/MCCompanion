@@ -1,7 +1,12 @@
 {
   "@@locale": "nl",
-  "appName": "MCCompanion",
   "console": "Console",
+  "modeLabel": "Modus",
+  "statusLabel": "Status",
+  "seeAll": "Alles tonen",
+  "sectionHelp": "Help",
+  "sectionAdvanced": "Geavanceerd",
+  "versionLabel": "Versie",
   "consoleOutput": "Console Uitvoer",
   "noLogsYet": "Nog geen logs",
   "startBroadcastingToSeeOutput": "Start uitzenden om uitvoer te zien",
@@ -10,20 +15,9 @@
   "back": "Terug",
   "next": "Volgende",
   "done": "Klaar",
-  "joinUs": "Word lid",
   "website": "Website",
-  "aternosSubtext": "Maak je eigen gratis Minecraft-server",
   "howToUseMenu": "Hoe gebruiken",
   "support": "Ondersteuning",
-  "helpText": "Gemaakt door {appCreator}.\n\nHoe te gebruiken:\n1. Voer uw Minecraft server adres en poort in (standaard: 19132)\n   - of selecteer een eerder opgeslagen server uit de dropdown\n2. (Optioneel) Kies een Relay server(EU of US) die het dichtst bij uw locatie is\n3. Klik op \"Start uitzending\"\n4 Om te starten ga op je console/apparaat: Minecraft > Play > Vrienden\n5. Je zou een LAN server moeten zien genaamd \"MCCompanion\"\n6. Klik op de server om toe te treden tot uw externe server via MCCompanion\n\nNintendo Switch (DNS-modus):\n1. Schakel \"Nintendo Switch\" in in het verbindingspaneel\n2. Selecteer een RelayServer (EU of US)\n3. Klik op \"Stuur DNS Config\" - dit stuurt uw configuratie naar het relais\n   (het zend NIET een LAN server)\n4. Op uw Switch, Pas uw MCCompanion DNS setup toe en neem deel aan\n   met behulp van de server die u gebruikt voor MCCompanion\n\nNotities:\n- voor LAN uitzendingen, MCCompanion en console moeten op hetzelfde lokale netwerk zitten.\n- Tip: Kies de dichtstbijzijnde server voor de beste prestaties.",
-  "@helpText": {
-    "description": "Detailed help / instructions shown in the help dialog",
-    "placeholders": {
-      "appCreator": {}
-    }
-  },
-  "more": "Meer",
-  "serverDetailsLabel": "Serverdetails",
   "start": "Starten",
   "labelJava": "Java",
   "language": "Nederlands",
@@ -58,14 +52,6 @@
   "@delete": {
     "description": "Delete action label"
   },
-  "myServers": "Mijn Servers",
-  "@myServers": {
-    "description": "Title for manage servers dialog"
-  },
-  "quickAccessServers": "Snelle toegang tot servers",
-  "@quickAccessServers": {
-    "description": "Subtitle for manage servers dialog"
-  },
   "addServer": "Server toevoegen",
   "@addServer": {
     "description": "Add server button label / dialog title"
@@ -94,18 +80,6 @@
   "@save": {
     "description": "Save button label"
   },
-  "initializing": "Initialiseren...",
-  "@initializing": {
-    "description": "Shown on splash while app initializes"
-  },
-  "createdBy": "Gemaakt door NetherDev",
-  "@createdBy": {
-    "description": "Badge text on splash screen"
-  },
-  "bedrockBridge": "Bedrock Brug",
-  "@bedrockBridge": {
-    "description": "Subtitle on splash screen"
-  },
   "clientDisconnected": "Client verbroken - Uitzending gestopt",
   "@clientDisconnected": {
     "description": "Snackbar shown when clients disconnect automatically"
@@ -119,14 +93,6 @@
     "description": "Validation message when port is invalid"
   },
   "dataSentToServers": "Gegevens verstuurd naar de MCCompanion-servers",
-  "broadcastingStarted": "Uitzending gestart",
-  "@broadcastingStarted": {
-    "description": "Snackbar shown when broadcasting starts"
-  },
-  "broadcastStopped": "Uitzending gestopt",
-  "@broadcastStopped": {
-    "description": "Snackbar shown when broadcasting stops"
-  },
   "selectedServer": "📋 Geselecteerd: {name}",
   "@selectedServer": {
     "description": "Shown when a saved server is selected",
@@ -141,10 +107,6 @@
       "name": {}
     }
   },
-  "noLogsToCopy": "Geen logs om te kopiëren",
-  "@noLogsToCopy": {
-    "description": "Shown when user tries to copy logs but none exist"
-  },
   "copiedLogs": "Gekopieerd {count} logs naar het klembord",
   "@copiedLogs": {
     "description": "Shown after copying logs to clipboard",
@@ -153,14 +115,10 @@
     }
   },
   "debugEnabled": "Debug logs ingeschakeld",
-  "debugDisabled": "Debug logs uitgeschakeld",
   "@debugEnabled": {
     "description": "Shown when debug logging is enabled/disabled"
   },
-  "howToUseTitle": "Hoe gebruik je MCCompanion",
   "iUnderstand": "Ik begrijp het",
-  "playOnSwitchTitle": "Speel op Nintendo Switch",
-  "playWithFriendsTitle": "Spelen via vrienden",
   "playInstructionsSwitch": "Geselecteerd: {relayName}\n\nHoe te verbinden:\n1. Ga naar uw Switch Instellingen en wijzig de DNS naar: {relayIp}\n2. Open Minecraft en selecteer een server uit de lijst (zoals Cubecraft of Hive).\n3. Je wordt nu automatisch naar je eigen server verzonden.",
   "@playInstructionsSwitch": {
     "description": "DNS instructions shown for Nintendo Switch mode",
@@ -169,53 +127,16 @@
       "relayIp": {}
     }
   },
-  "playInstructionsFriends": "Hoe te verbinden:\n1. Voeg {friend} toe als vriend op je console.\n2. Open Minecraft en ga naar het tabblad Vrienden.\n3. Zoek naar je server onder LAN werelden en selecteer om mee te doen.",
-  "@playInstructionsFriends": {
-    "description": "Instructions shown for Friends mode",
-    "placeholders": {
-      "friend": {}
-    }
-  },
-  "nldServerLabel": "MCCompanion-SERVER",
-  "@nldServerLabel": {
-    "description": "Label text above the relay selector"
-  },
-  "selectRelayLabel": "Geselecteerd: {name}",
-  "@selectRelayLabel": {
-    "description": "Accessibility label for relay selection button",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "noSavedServers": "Geen opgeslagen servers",
   "savedServers": "Opgeslagen servers",
-  "serverAddressHint": "Serveradres",
-  "portHint": "Poort",
   "manageServers": "Beheer servers",
-  "manageServersTooltip": "Beheer servers",
   "stopBroadcasting": "Uitzenden stoppen",
   "startNintendoMode": "Nintendo Modus starten",
   "startFriendsMode": "Start vrienden modus",
   "startBroadcasting": "Uitzending starten",
-  "modeLabel": "Modus",
   "labelXbox": "Xbox/PS4-5",
   "labelNintendo": "Nintendo",
   "labelFriends": "Vrienden",
-  "nintendoInfoTitle": "Nintendo Switch DNS-modus",
-  "nintendoInfoText": "Start in Nintendo modus, stel uw DNS in en word lid van een featured server.",
-  "friendModeTitle": "Vriend modus",
-  "friendModeText": "Voeg MCCompanion's vriend bots toe als vriend, Start vriend modus en speel",
-  "selectedRelayCheck": "Geselecteerd",
-  "@selectedRelayCheck": {
-    "description": "Small label used when a relay is selected"
-  },
-  "relayFallbackWarning": "Waarschuwing: origineel Relay heeft niet gereageerd. Fallback Relay in gebruik: {name}",
-  "@relayFallbackWarning": {
-    "placeholders": {
-      "name": {}
-    }
-  },
-  "relayUnableConnect": "Kan geen verbinding maken met geen enkele MCCompanion relay server. Probeer het later opnieuw of controleer je internet.",
   "howToXboxTitle": "Xbox / PS4-5 (LAN / proxyverbinding)",
   "@howToXboxTitle": {
     "description": "Title for the Xbox / PS4-5 how-to modal"
@@ -236,10 +157,6 @@
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
-  "howToNintendoBody": "Nintendo Switch - DNS modus (stap voor stap):\n1. In de app \"Nintendo\" modus inschakelen en selecteer een Relay Server (EU of US).\n2. Tik op \"Stuur DNS Config\" om de gegevens naar het relay te sturen.\n3. Op uw Nintendo Switch ga naar Systeeminstellingen → Internet → internetinstellingen → (uw netwerk) → Instellingen wijzigen → DNS en stel de primaire DNS in op het relais-IP.\n4. Open Minecraft en word lid van een openbare server; je wordt omgeleid naar je server met behulp van de relay DNS.\nOpmerkingen:\n- DNS-modus zend geen LAN-server uit; het stuurt spelverkeer door de relais.\n- Zet je DNS terug nadat je klaar bent als je een normaal netwerkgedrag nodig hebt.",
-  "@howToNintendoBody": {
-    "description": "Detailed steps for Nintendo Switch DNS setup"
-  },
   "howToFriendsTitle": "Vrienden modus",
   "@howToFriendsTitle": {
     "description": "Title for the Friends-mode how-to modal"
@@ -247,10 +164,6 @@
   "howToFriendsSubtitle": "Nodig vrienden uit en doe mee via LAN",
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
-  },
-  "howToFriendsBody": "Vrienden-modus - snelle stappen:\n1. Voeg het MCCompanionvriend-account (relay vriend) toe op uw console of platform indien nodig.\n2. Schakel in de app Vrienden modus in en stuur de relay configuratie.\n3. Open op je console Minecraft → Vrienden en zoek naar LAN Worlds - jouw server zou daar als een LAN-wereld moeten verschijnen.\n4. Selecteer het om je server te betreden.\nOpmerkingen:\n- Vriendschapsmodus is afhankelijk van de functies van het platform vriend en kan het vereisen dat je vriendschapsverzoeken accepteert.",
-  "@howToFriendsBody": {
-    "description": "Detailed steps for Friends mode"
   },
   "helpMCCompanionTitle": "MCCompanion verschijnt niet",
   "@helpMCCompanionTitle": {
@@ -308,29 +221,14 @@
   "@changeLanguage": {
     "description": "Label for the language button in the bottom nav"
   },
-  "useSystemLanguage": "Systeemtaal gebruiken",
-  "@useSystemLanguage": {
-    "description": "Button that resets localization to the system/default locale"
-  },
   "updateAvailable": "Update beschikbaar",
-  "needSameWifi": "Het apparaat waarop MCCompanion draait MOET zich op hetzelfde wifi-netwerk bevinden als de console waarop je Minecraft speelt.",
   "active": "Actief",
-  "newVersion": "Er is een nieuwe versie van de app beschikbaar.\nWerk nu bij voor de nieuwste functies en verbeteringen.",
-  "noServerYet": "Nog geen servers opgeslagen.\nTik op Beheren om er een toe te voegen.",
-  "beforeYouStart": "VOORDAT JE BEGINT",
   "stop": "Stoppen",
-  "later": "Later",
   "continueAnyway": "Toch doorgaan",
-  "serverNotSelected": "Geen server geselecteerd",
   "noWifi": "Niet op wifi",
   "vpnDetected": "VPN gedetecteerd",
-  "ready": "Klaar",
   "vpnActive": "We hebben gedetecteerd dat je VPN actief is.\n\nSchakel je VPN uit voordat je MCCompanion gebruikt, anders bereikt de LAN-uitzending je console mogelijk niet.",
-  "updateNow": "Nu bijwerken",
-  "needSubscription": "Elke console heeft een eigen actief online abonnement nodig (Xbox Live, PS Plus, NSO). Zonder dat verschijnt MCCompanion niet.",
   "mobileActive": "Gedetecteerd: mobiele data\n\nMCCompanion moet zich op hetzelfde netwerk bevinden als je console. Verbind eerst met je wifi of hotspot voordat je doorgaat.",
-  "sameWifi": "Zelfde wifi-netwerk",
-  "subscription": "Online abonnement vereist",
   "couldNotOpenUrl": "Kon URL niet openen",
   "@couldNotOpenUrl": {
     "description": "Snackbar message when launching an external URL fails"
@@ -355,27 +253,20 @@
   "statusOnline": "Online",
   "statusOffline": "Offline",
   "statusChecking": "Controleren...",
-  "notificationsOn": "Meldingen aan",
-  "notificationsOff": "Meldingen uit",
   "failedUpdateNotifications": "Meldingen bijwerken mislukt",
   "editServerTitle": "Server bewerken",
   "serverNameHint": "Servernaam",
   "failedSave": "Opslaan mislukt. Probeer opnieuw.",
   "serverRenamed": "Server hernoemd",
   "customizeLabel": "Aanpassen",
-  "customizeSubtitle": "Tegels herordenen en navigatie aanpassen",
+  "customizeSubtitle": "Navigatiebalk en kleuren",
   "resetLabel": "Resetten",
-  "tilesSection": "TEGELS",
-  "dragToReorder": "Slepen om te herordenen",
   "navigationSection": "NAVIGATIE",
-  "navFixed": "Start, Connector en Profiel zijn altijd vast",
-  "leftSlot": "Linker slot (naast Start)",
-  "rightSlot": "Rechter slot (naast Profiel)",
-  "tileWideTooltipRemove": "Brede indeling verwijderen",
-  "tileWideTooltipAdd": "Brede tegel maken",
-  "tileVisibilityShow": "Tegel tonen",
-  "tileVisibilityHide": "Tegel verbergen",
-  "tileVisibilityMin": "Kan niet verbergen (laatste tegel)",
+  "navFixed": "Connector en Profiel staan altijd vast",
+  "leftSlot": "Slot 2",
+  "outerSlot": "Slot 1",
+  "rightSlot": "Slot 3",
+  "farSlot": "Slot 4",
   "colorPickerApply": "Toepassen",
   "colorPickerHex": "Hex",
   "textColorSection": "TEKSTKLEUR",
@@ -398,7 +289,6 @@
   "playerLookupLabelFloodgate": "Floodgate",
   "accountSubtitleXbox": "Xbox · {xuid}",
   "accountSubtitleJava": "Java Edition · {uuid}",
-  "avatarUrlHint": "https://example.com/avatar.png",
   "chooseUniqueUsername": "Kies een unieke gebruikersnaam om te beginnen.",
   "usernameFieldLabel": "Gebruikersnaam",
   "usernameExampleHint": "bijv. CoolPlayer123",
@@ -409,36 +299,18 @@
   "usernameFormatError": "De gebruikersnaam moet 3–20 tekens lang zijn en mag alleen letters, cijfers en underscores bevatten",
   "usernameTaken": "Deze gebruikersnaam is al bezet",
   "noConnectionError": "Geen verbinding. Controleer je internet en probeer opnieuw.",
-  "home": "Home",
   "info": "Info",
   "navProfile": "Profiel",
   "serverRemoved": "{name} verwijderd",
   "serverAdded": "{name} toegevoegd",
-  "tabProfile": "Profiel",
-  "tabFriends": "Vrienden",
-  "tabRequests": "Verzoeken",
-  "aboutMe": "Over mij",
   "addFriend": "Vriend toevoegen",
-  "alreadyFriendsWith": "Je bent al vrienden met {name}",
-  "@alreadyFriendsWith": {
-    "placeholders": {
-      "name": {}
-    }
-  },
   "alreadyHaveAccount": "Al een account? Inloggen",
   "appearOfflineLabel": "Offline lijken",
   "appearOfflineOff": "Je lijkt online voor andere spelers",
   "appearOfflineOn": "Je lijkt offline voor andere spelers",
   "appleSignInFailed": "Apple aanmelding mislukt. Probeer opnieuw.",
-  "avatarUrlLabel": "Avatar URL",
   "bioHint": "Vertel anderen over jezelf…",
   "bioLabel": "Bio",
-  "cannotSendRequest": "Kan geen verzoek sturen naar {name}",
-  "@cannotSendRequest": {
-    "placeholders": {
-      "name": {}
-    }
-  },
   "chooseUsernameSubtitle": "Kies een gebruikersnaam zodat andere spelers je kunnen vinden.",
   "continueWithGoogle": "Doorgaan met Google",
   "couldNotDeleteAccount": "Kon account niet verwijderen. Probeer opnieuw.",
@@ -469,20 +341,12 @@
       "name": {}
     }
   },
-  "friendRequestSentTo": "Vriendschapsverzoek verstuurd naar {name}",
-  "@friendRequestSentTo": {
-    "placeholders": {
-      "name": {}
-    }
-  },
   "googleSignInFailed": "Google aanmelding mislukt. Probeer opnieuw.",
   "incorrectEmailOrPassword": "Onjuist e-mail of wachtwoord",
   "invalidEmailError": "Het e-mailadres is niet geldig",
   "linkAccountsHint": "Koppel je Minecraft-accounts om je skins en stats te tonen.",
   "linkJava": "Java koppelen",
   "linkXbox": "Xbox koppelen",
-  "linkedAccountsTitle": "Gekoppelde accounts",
-  "noAccountForEmail": "Geen account gevonden voor dat e-mailadres",
   "noAccountYet": "Nog geen account? Maak er een",
   "noFriendsSub": "Voeg vrienden toe om ze hier te zien.",
   "noFriendsYet": "Nog geen vrienden",
@@ -512,8 +376,6 @@
   "playerLookupLabelUsername": "Gebruikersnaam",
   "playerLookupLinked": "Gekoppelde accounts gevonden",
   "playerLookupSubtitle": "Zoek een Java- of Bedrock-speler op gebruikersnaam",
-  "playerLookupTitle": "Speler opzoeken",
-  "profileCardTitle": "Profiel",
   "profileNotSetUp": "Profiel niet ingesteld",
   "profileUpdated": "Profiel bijgewerkt",
   "remove": "Verwijderen",
@@ -552,12 +414,6 @@
       "name": {}
     }
   },
-  "requestAlreadyPending": "Een verzoek aan {name} is al in behandeling",
-  "@requestAlreadyPending": {
-    "placeholders": {
-      "name": {}
-    }
-  },
   "requestDeclined": "Verzoek van {name} afgewezen",
   "@requestDeclined": {
     "placeholders": {
@@ -577,44 +433,17 @@
   "sendLink": "Link versturen",
   "signInSubtitle": "Log in om toegang te krijgen tot je profiel, vrienden en chats.",
   "signOut": "Uitloggen",
-  "skinsCouldNotLoad": "Skins konden niet worden geladen",
   "skinsCreate": "Aanmaken",
   "skinsDownload": "Downloaden",
   "skinsEdit": "Bewerken",
-  "skinsEmptyMySkins": "Nog geen opgeslagen skins. Upload er een of maak er een!",
   "skinsInvalidFile": "Ongeldig afbeeldingsbestand",
   "skinsMustBe64": "Skin moet 64×64 pixels zijn",
-  "skinsNoAccountsSubtitle": "Koppel een Java- of Bedrock-account om je skins te bekijken.",
-  "skinsNoAccountsTitle": "Geen Minecraft-accounts gekoppeld",
-  "skinsPageOf": "Pagina {page} van {total}",
-  "@skinsPageOf": {
-    "placeholders": {
-      "page": {},
-      "total": {}
-    }
-  },
-  "skinsSectionMy": "MIJN SKINS",
-  "skinsSectionRecent": "RECENTE SKINS",
-  "skinsSectionYours": "JOUW SKINS",
-  "skinsSignInSubtitle": "Log in en koppel je Minecraft-accounts om je skins hier te zien.",
-  "skinsSignInTitle": "Log in om je skins te bekijken",
   "skinsUpload": "Uploaden",
   "somethingWentWrong": "Er is iets misgegaan. Probeer opnieuw.",
-  "today": "Vandaag",
   "unlink": "Ontkoppelen",
   "unlinkJavaTitle": "Java-account ontkoppelen",
   "unlinkXboxTitle": "Xbox-account ontkoppelen",
-  "userNotFoundMsg": "Gebruiker {name} niet gevonden",
-  "@userNotFoundMsg": {
-    "placeholders": {
-      "name": {}
-    }
-  },
-  "usernameDisplayLabel": "Gebruikersnaam",
-  "usernameHint": "Gebruikersnaam",
   "weakPassword": "Wachtwoord is te zwak. Kies een sterker wachtwoord.",
-  "yesterday": "Gisteren",
-  "youPrefix": "Jij",
   "yourNameHint": "Jouw naam",
   "paywallRestore": "Herstellen",
   "paywallMonthly": "Maandelijks",
@@ -637,19 +466,15 @@
   "paywallNoActivePurchases": "Geen actieve aankopen gevonden.",
   "paywallRestoreFailed": "Herstellen mislukt. Probeer opnieuw.",
   "relay": "Relay",
-  "selectModeSection": "MODUS KIEZEN",
-  "serversSection": "SERVERS",
-  "noServerSelected": "Geen server geselecteerd",
+  "serversSection": "Servers",
   "selectBedrockAccount": "Bedrock-account kiezen",
   "serverNameExampleHint": "Mijn Geweldige Server",
   "serverAddressExampleHint": "play.voorbeeld.com",
   "serverDescriptionExampleHint": "Survival server met vrienden",
   "editServer": "Server bewerken",
   "nldServerLabelShort": "MCCompanion Server",
-  "noPartnerServers": "Nog geen partnerservers beschikbaar.",
-  "partnerServersTitle": "Partnerservers",
   "tryAgain": "Opnieuw proberen",
-  "trackerLimitReached": "Je hebt je serverlimiet bereikt. Upgrade om meer servers te volgen.",
+  "trackerLimitReached": "Serverlimiet bereikt",
   "upgradeButton": "Upgraden",
   "xboxLinkTitle": "Xbox-account koppelen",
   "xboxSignInWithMicrosoft": "Aanmelden met Microsoft",
@@ -665,7 +490,6 @@
   "xboxSomethingWrong": "Er is iets misgegaan. Probeer opnieuw.",
   "xboxAccountLinked": "Xbox-account gekoppeld!",
   "xboxBedrockLabel": "Xbox / Bedrock",
-  "publicProfileTitle": "Profiel",
   "addFriendButton": "Vriend toevoegen",
   "removeFriendButton": "Vriend verwijderen",
   "requestSentButton": "Verzoek verstuurd",
@@ -687,7 +511,6 @@
     }
   },
   "friendRequestSent": "Vriendschapsverzoek verstuurd",
-  "checkBackLater": "Kom later terug.",
   "userNotFound": "Gebruiker niet gevonden",
   "userNotFoundMsg2": "Gebruiker niet gevonden.",
   "lastSeenLabel": "Laatst gezien",
@@ -702,13 +525,6 @@
   "portFieldLabel": "Poort",
   "portRangeError": "Poort moet tussen 1 en 65535 zijn",
   "platformFieldLabel": "Platform",
-  "playersCount": "{players} / {max} spelers",
-  "@playersCount": {
-    "placeholders": {
-      "players": {},
-      "max": {}
-    }
-  },
   "aboutSectionLabel": "Over",
   "aboutMCCompanionSection": "Over MCCompanion",
   "aboutMCCompanionDisclaimer": "MCCompanion is een onafhankelijke applicatie en is niet gelieerd aan, goedgekeurd door of gesponsord door Mojang Studios of Microsoft Corporation.",
@@ -742,26 +558,13 @@
   "javaCodeExpired": "De code is verlopen. Probeer opnieuw.",
   "javaSomethingWrong": "Er ging iets mis. Probeer opnieuw.",
   "javaCodeCopied": "Code gekopieerd naar klembord",
-  "splashFeatureConnect": "Verbinden",
-  "splashFeatureFriends": "Vrienden",
-  "splashFeatureChat": "Chat",
-  "splashFeatureSkins": "Skins",
   "featureLabelConnector": "Connector",
   "featureLabelSkins": "Skins",
   "featureLabelPartners": "Serverlijst",
   "featureLabelLookup": "Opzoeken",
   "featureLabelTracker": "Server Tracker",
-  "featureSubtitleConnector": "Verbind consoles met Minecraft",
-  "featureSubtitleSkins": "Blader door en beheer Minecraft-skins",
-  "featureSubtitlePartners": "Aanbevolen servers",
-  "featureSubtitleLookup": "Zoek Java- en Bedrock-profielen op",
-  "featureSubtitleTracker": "Monitor serverstatus en ontvang meldingen",
   "userSearchHint": "Gebruikersnaam, gamertag of Java-naam…",
   "userSearchSub": "Zoek op gebruikersnaam, Xbox-gamertag of Java-naam",
-  "onlineStatus": "Online",
-  "@onlineStatus": {
-    "description": "Label shown when a friend is online"
-  },
   "upgradeWindowsHint": "Upgrade beschikbaar via de Microsoft Store",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
@@ -787,7 +590,7 @@
   "@skinExported": {
     "description": "Toast when skin is exported successfully"
   },
-  "accountActions": "ACCOUNT",
+  "accountActions": "Account",
   "@accountActions": {
     "description": "Label for account danger zone section"
   },
@@ -800,9 +603,6 @@
   "feedbackDescribeIdea": "Beschrijf je idee",
   "feedbackDescHintBug": "Beschrijf de bug: wat heb je gedaan, wat verwachtte je, en wat gebeurde er in plaats daarvan?",
   "feedbackDescHintFeature": "Leg uit wat je wilt en waarom het nuttig zou zijn.",
-  "feedbackEmailLabel": "E-mail",
-  "feedbackEmailHint": "Zodat we contact met je kunnen opnemen",
-  "feedbackEmailNote": "Je e-mail wordt nooit openbaar gedeeld.",
   "feedbackSubmitBug": "Bugmelding indienen",
   "feedbackSubmitFeature": "Functieverzoek indienen",
   "feedbackDisclaimer": "Gaat naar ons team · Zet er geen wachtwoorden in",
@@ -812,13 +612,8 @@
   "feedbackBackToApp": "Terug naar app",
   "feedbackTitleTooShort": "Titel moet minimaal 5 tekens zijn.",
   "feedbackDescTooShort": "Beschrijving moet minimaal 10 tekens zijn.",
-  "feedbackEmailInvalid": "Voer een geldig e-mailadres in.",
-  "@feedbackEmailInvalid": {
-    "description": "Validation error when email is missing or invalid"
-  },
   "feedbackSubmitFailed": "Indienen mislukt. Probeer het opnieuw.",
-  "feedbackTileTitle": "Meld een bug of stel een functie voor",
-  "reportBug": "Feedback",
+  "feedbackTileTitle": "Feedback",
   "feedbackTileSubtitle": "Help ons MCCompanion te verbeteren",
   "friendsHowToStep1": "Open de Xbox-app op je telefoon of console.",
   "friendsHowToStep2": "Voeg een van de bots hieronder toe als vriend op Xbox.",
@@ -838,11 +633,6 @@
   "skinMenuExport": "Exporteren",
   "skinMenuDelete": "Verwijderen",
   "rpScreenTitle": "Resourcepakket",
-  "rpWhatIsThis": "Wat is dit?",
-  "rpExplanation": "Een resourcepakket verandert hoe Minecraft er op jouw console uitziet, nieuwe blokken, kleuren of geluiden. Plak hieronder de link van een .mcpack bestand, zet het aan en sla op. MCCompanion laadt het automatisch elke keer als je verbindt.",
-  "rpPackUrlLabel": "Pack-URL",
-  "rpPackUrlHint": "https://example.com/pack.mcpack",
-  "rpEnableToggle": "Resourcepakket inschakelen",
   "rpWhatWorks": "Wat werkt",
   "rpSupportedBedrockOnly": "Alleen Bedrock Edition (.mcpack of .zip)",
   "rpSupportedBedrockOnlyHint": "Java-packs werken niet op consoles.",
@@ -854,41 +644,30 @@
   "rpUnsupportedAddonsHint": "Kunnen soms werken, maar worden niet officieel ondersteund. Gebruik op eigen risico.",
   "rpConsolePerformanceTitle": "Consoleprestaties",
   "rpConsolePerformanceBody": "Texturepaketten met hoge resolutie kunnen lag of crashes veroorzaken op consoles. Als je problemen ervaart, schakel over op een pakket met lagere resolutie of selecteer een lichter subpakket als dat beschikbaar is.",
-  "rpWhatDoesntWork": "Wat niet werkt",
-  "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
-  "rpWorksCloudflare": "Cloudflare R2 / AWS S3 publieke bucket",
-  "rpWorksDirect": "Elke directe HTTPS-link die eindigt op .mcpack of .zip",
   "rpNoDiscord": "Discord-links: geen .mcpack-extensie en verlopen na een paar uur",
   "rpNoDrive": "Gedeelde links van Google Drive / Dropbox, geen directe downloads",
   "rpNoEncrypted": "Servers met versleutelde of wachtwoordbeveiligde packs",
   "rpWarnDiscord": "Discord-links verlopen en werken dan niet meer. Gebruik een permanente host.",
   "rpWarnHttps": "URL moet beginnen met https://",
   "rpWarnExtension": "URL moet eindigen op .mcpack of .zip",
-  "rpToastEnterUrl": "Voer een URL in voordat je het resourcepakket inschakelt.",
   "rpToastSaved": "Instellingen resourcepakket opgeslagen.",
   "rpInvalidPackFormat": "Dit is een Java Edition-pakket en wordt niet ondersteund. Gebruik een Bedrock Edition-resourcepakket.",
   "rpBehaviorContentWarning": "Dit pakket bevat behavior pack-data, die werkt niet op servers. De textures werken wel gewoon.",
   "rpClearMinecraftTitle": "Eerste keer met dit pakket?",
-  "rpClearMinecraftBody": "Minecraft slaat resourcepakketten lokaal op in de cache. Als je eerder verbinding hebt gemaakt met deze server vóór het inschakelen van MCCompanion's resourcepakket, heeft Minecraft het originele pakket al gecached en zal de samengevoegde versie niet opnieuw downloaden.",
   "rpClearStep1": "Open Minecraft op je console en ga naar Instellingen → Opslag",
   "rpClearStep2": "Tik op ‘Wissen’ of ‘Opnieuw instellen’ naast Resourcepakketten, dit verwijdert alle lokaal opgeslagen packs",
   "rpClearStep3": "Verbind opnieuw via MCCompanion: het samengevoegde pakket wordt automatisch gedownload",
   "rpRelayTitle": "Pack ziet er niet goed uit?",
   "rpRelayBody": "De relay bewaart de samengevoegde pack 1 uur in de cache op basis van jouw overlay-URL. Om een verse samenvoeging te forceren: pas de pack-URL iets aan (bijv. voeg ?v=2 toe) en sla op. Wis daarna ook de Minecraft-packcache, de samengevoegde pack gebruikt nog steeds de UUID van de server, dus Minecraft serveert anders gewoon de oude gecachte versie.",
-  "rpWorksGithubHint": "Directe downloadlink: altijd bereikbaar",
-  "rpWorksCloudflareHint": "Publieke cloudopslag: snel en betrouwbaar",
-  "rpWorksDirectHint": "Elke publieke HTTPS .mcpack of .zip URL",
   "rpNoDiscordHint": "Discord CDN-links verlopen na korte tijd",
   "rpNoDriveHint": "Geen directe download: stuurt door naar een voorbeeldpagina",
   "rpNoEncryptedHint": "MCCompanion kan versleutelde packinhoud niet samenvoegen",
   "rpClearWhy": "Minecraft slaat resourcepakketten op via hun UUID. De samengevoegde pack behoudt de originele UUID van de server, als Minecraft de serverpack al gecacht heeft van een vorige sessie (vóór MCCompanion was ingeschakeld), downloadt het de nieuwe samengevoegde versie niet opnieuw. Wis de cache zodat Minecraft de verse samengevoegde pack oppikt.",
   "rpUploadTab": "Upload",
-  "rpUrlTab": "URL",
   "rpUploadButton": "Tap to select your pack",
   "rpUploadHint": ".mcpack or .zip • max 100 MB",
   "rpUploading": "Uploading...",
   "rpMergerTitle": "RP Merger",
-  "rpMergerSubtitle": "Combineer tot 4 resourcepacks",
   "rpMergerPriorityHint": "Het bovenste pack heeft de hoogste prioriteit, zijn bestanden winnen conflicten.",
   "rpMergerTopBadge": "TOP",
   "rpMergerAddPacks": "Resourcepacks toevoegen",
@@ -896,12 +675,7 @@
   "rpMergerFileTypes": ".zip of .mcpack",
   "rpMergerMerging": "Samenvoegen…",
   "rpMergerButton": "{count} packs samenvoegen",
-  "rpMergerComplete": "Samenvoegen voltooid!",
-  "rpMergerConflicts": "{count} conflict(en) opgelost: bovenste pack won.",
-  "rpMergerSetActive": "Instellen als actief resourcepack",
   "rpMergerSetActiveToast": "Ingesteld als actief resourcepack",
-  "rpMergerOpenButton": "Resourcepacks samenvoegen",
-  "rpMergerOpenSubtitle": "Combineer 2-4 packs in een",
   "rpDisabled": "Uitgeschakeld",
   "rpNoPackSelected": "Geen resource pack geselecteerd",
   "rpActiveOnConnect": "Actief: toegepast bij verbinding",
@@ -912,7 +686,6 @@
   "rpDropToUpload": "Laat los om te uploaden",
   "rpTabBrowseInfo": "Blader door packs geselecteerd door MCCompanion. Tik op Gebruik om een pack direct te activeren, geen upload of link nodig.",
   "rpTabUploadInfo": "Upload je eigen .mcpack of .zip bestand. MCCompanion slaat het veilig op in de cloud en stuurt het elke keer naar je console wanneer je verbindt.",
-  "rpTabUrlInfo": "Plak een directe downloadlink naar een .mcpack of .zip bestand. De URL moet publiek toegankelijk zijn, geen Discord- of Google Drive-links.",
   "rpTabMergeInfo": "Combineer 2 tot 4 packs tot één. Het samengevoegde pack wordt geüpload naar MCCompanion Cloud en automatisch geactiveerd.",
   "shareLabel": "Delen",
   "sectionMinecraftAccounts": "Minecraft-accounts",
@@ -939,18 +712,10 @@
   "onboardingNavSubtitle": "Kies twee functies voor je navigatiebalk.",
   "onboardingNavLeftLabel": "LINKER KNOP",
   "onboardingNavRightLabel": "RECHTER KNOP",
-  "onboardingNavPreviewHome": "Home",
   "onboardingNavPreviewConnector": "Connector",
   "onboardingNavPreviewProfile": "Profiel",
   "onboardingNavPreviewEmpty": "Leeg",
-  "onboardingStartTitle": "Startpagina",
-  "onboardingStartSubtitle": "De app opent hier elke keer bij het opstarten.",
   "onboardingCustomizeDetail": "In detail aanpassen →",
-  "startPageHome": "Home",
-  "startPageHomeSubtitle": "Toon het startscherm met tegels",
-  "startPageFeature": "Functie",
-  "startPageFeatureSubtitle": "Open direct op een specifieke pagina",
-  "startPageSectionLabel": "STARTPAGINA",
   "rpPackInfo": "Info",
   "@rpPackInfo": {
     "description": "rpPackInfo label"
@@ -972,10 +737,6 @@
       }
     }
   },
-  "rpPackDetailTitle": "Pack details",
-  "@rpPackDetailTitle": {
-    "description": "rpPackDetailTitle label"
-  },
   "skinsSavedToMySkins": "Opgeslagen in Mijn Skins",
   "skinsDownloadFailed": "Download mislukt",
   "skinsDeletedFromCloud": "Verwijderd uit de cloud",
@@ -984,9 +745,6 @@
   "skinsUploading": "Uploaden…",
   "skinUploaded": "Skin geüpload!",
   "skinUploadFailed": "Upload mislukt: {error}",
-  "skinsTabSkins": "Skins",
-  "skinsTabRecent": "Recent",
-  "skinsEmptyCloudSkins": "Nog geen cloud-skins. Upload een skin om deze hier te zien.",
   "skinsEmptyLocalSkins": "Nog geen skins. Maak of upload een skin om te beginnen.",
   "skinUploadToWebsite": "Uploaden naar website",
   "skinReuploadToWebsite": "Opnieuw uploaden naar website",
@@ -994,7 +752,6 @@
   "skinCloudSaveToDevice": "Opslaan op apparaat",
   "skinCloudDelete": "Verwijderen uit cloud",
   "skinsTabGallery": "Galerij",
-  "skinsGalleryEmpty": "Nog geen community-skins.",
   "skinsTopLabel": "Top 30",
   "skinsAllLabel": "Alle Skins",
   "skinUploadToCloud": "Uploaden naar cloud",
@@ -1130,8 +887,6 @@
   "feedbackLoginRequiredBody": "Feedback is gekoppeld aan je MCCompanion-account zodat we je rechtstreeks in de app kunnen antwoorden.",
   "feedbackLoginButton": "Inloggen",
   "supportInboxTitle": "Supportinbox",
-  "supportInboxSubtitle": "Alle supportgesprekken, gedeeld met alle admins",
-  "adminBadge": "Admin",
   "skinShareSubject": "Minecraft-skin",
   "skinEditorTitle": "Skin-editor",
   "skinToolUndo": "Ongedaan maken",
@@ -1160,7 +915,6 @@
   "supportInboxShared": "Gedeeld met alle admins",
   "supportInboxEmpty": "Nog geen supportgesprekken",
   "supportReplyingAs": "Je antwoordt als MCCompanion Support",
-  "supportReplyHint": "Antwoord als support…",
   "relayBlocked": "Je IP of account is geblokkeerd door MCCompanion. Denk je dat dit een vergissing is, kom dan naar onze Discord.",
   "relayBlockedWithReason": "Je IP of account is geblokkeerd door MCCompanion.\nReden: {reason}\nDenk je dat dit een vergissing is, kom dan naar onze Discord.",
   "relayConfigFailed": "Kon de relay niet instellen (status {code}). Probeer een andere relay of kom naar onze Discord.",
@@ -1189,8 +943,6 @@
   "notifFeedbackReply": "Antwoord op je feedback",
   "adminTicketsHeader": "Meldingen en verzoeken",
   "adminTicketReplyHint": "Antwoord over dit ticket…",
-  "adminNoTicketsForUser": "Geen tickets van deze gebruiker",
-  "undo": "Ongedaan maken",
   "chooseServerTitle": "Kies een server",
   "changeLabel": "Wijzigen",
   "howToAutoShow": "Dit tonen als ik start",
@@ -1210,14 +962,6 @@
   "shareServerLabel": "Server delen",
   "shareServerOn": "Vrienden zien op welke server je zit",
   "shareServerOff": "Vrienden zien dat je speelt, niet waar",
-  "makeDefaultServer": "Als standaardserver instellen",
-  "isDefaultServer": "Wordt standaard geopend",
-  "defaultServerSet": "{name} wordt voortaan standaard geopend",
-  "labelDirect": "Proxy/direct",
-  "startDirectMode": "Proxy/directe modus starten",
-  "howToDirectTitle": "Proxy/directe modus",
-  "howToDirectSubtitle": "Spelen zonder via onze servers te gaan",
-  "howToDirectBody": "Proxy/directe modus: je toestel is de verbinding.\n1. Zorg dat het toestel met MCCompanion en je console op hetzelfde netwerk zitten.\n2. Vul het adres en de poort van de Bedrock-server in en druk op \"Proxy/directe modus starten\".\n3. Open op de console Minecraft → Spelen → tabblad Vrienden en ververs de lijst.\n4. Kies de LAN-server met de naam \"MCCompanion\" om te verbinden.\n\nWaarom deze modus bestaat:\n- Er gaat niets via de servers van MCCompanion. Je toestel stuurt het verkeer zelf door, dus dit blijft werken ook als onze relays onbereikbaar zijn.\n- Je hoeft niet aangemeld te zijn.\n\nHoud er rekening mee:\n- De app moet de hele sessie open en in beeld blijven. Sluit je hem of schakel je naar een andere app, dan valt de verbinding weg.\n- Alleen Bedrock-servers. Gebruik voor Java-servers de Java-modus, die de vertaling aan onze kant doet.\n- Verwacht meer batterijverbruik dan bij de andere modi.\n- Resourcepacks worden niet toegepast. Die lopen via onze relay, en die slaat deze modus over.",
   "directHostNotFound": "{host} niet gevonden. Controleer het adres en probeer opnieuw.",
   "@directHostNotFound": {
     "placeholders": {
@@ -1227,17 +971,6 @@
     }
   },
   "directPortBusy": "Kon de lokale poort niet openen. Stop eerst de huidige verbinding.",
-  "directServerOfflineTitle": "Server antwoordt niet",
-  "directServerOfflineBody": "{target} gaf geen antwoord. Mogelijk is de server offline, of verbergt hij zich gewoon voor pings. Je kunt de tunnel toch starten en proberen te verbinden.",
-  "@directServerOfflineBody": {
-    "placeholders": {
-      "target": {
-        "type": "String"
-      }
-    }
-  },
-  "directStartAnyway": "Toch starten",
-  "directNoResourcePack": "Resourcepacks werken niet in proxy/directe modus.",
   "directAddressNotSupported": "{host} is een IPv6-adres. Proxy/directe modus ondersteunt alleen IPv4. Gebruik het IPv4-adres of de hostnaam.",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -1289,21 +1022,15 @@
   "serverStatPeak": "Piek",
   "serverStatUptime": "Uptime",
   "serverStatVotesMonth": "Stemmen deze maand",
-  "serverStatVotesAllTime": "Stemmen totaal",
   "serverBadgeFeatured": "Uitgelicht",
   "serverEditionJava": "Java",
   "serverEditionBedrock": "Bedrock",
   "serverEditionCrossplay": "Crossplay",
   "serverSectionMotd": "Bericht van de dag",
-  "serverSectionAbout": "Over",
-  "serverSectionCategories": "Categorieën",
-  "serverSectionVotes": "Stemmen",
   "serverLinkDiscord": "Discord",
   "serverLinkWebsite": "Website",
   "serverVotesThisMonth": "Deze maand",
   "serverVotesAllTime": "Totaal",
-  "serverVoteAction": "Stem op deze server",
-  "serverPlayAction": "Speel op deze server",
   "serverVoteSignInRequired": "Meld je aan om te stemmen vanuit de app.",
   "serverVoteSheetTitle": "Stem op {name}",
   "serverVoteSheetSubtitle": "Je Minecraft-naam, zodat de server weet wie hij moet belonen.",

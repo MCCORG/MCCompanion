@@ -31,9 +31,14 @@ class BotService {
     return BotRegionData(eu: results[0], us: results[1]);
   }
 
-  static Future<List<BotModel>> _fetchFromNode(String url, String region) async {
+  static Future<List<BotModel>> _fetchFromNode(
+    String url,
+    String region,
+  ) async {
     try {
-      final res = await http.get(Uri.parse(url)).timeout(const Duration(seconds: 6));
+      final res = await http
+          .get(Uri.parse(url))
+          .timeout(const Duration(seconds: 6));
       if (res.statusCode != 200) return [];
       final data = jsonDecode(res.body) as Map<String, dynamic>;
       final list = (data['bots'] as List<dynamic>? ?? []);

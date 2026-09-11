@@ -8,6 +8,8 @@ import '../services/auth_service.dart';
 import '../services/server_tracker_service.dart';
 import '../services/tracker_api_service.dart';
 import '../theme/app_theme.dart';
+import '../design/design.dart';
+import '../theme/app_tokens.dart';
 import '../widgets/components/app_toast.dart';
 import '../widgets/components/swipe_back.dart';
 import '../widgets/tracked_server_card.dart';
@@ -38,29 +40,20 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
   bool _loading = true;
   bool _isLoggedIn = false;
   bool _refreshing = false;
-  int _countdown = ServerTrackerService.pollInterval.inSeconds;
-  Timer? _countdownTimer;
+  Timer? _tickTimer;
 
   @override
   void initState() {
     super.initState();
-    _startCountdown();
+    _startTicker();
     _authSub = AuthService.userStream.listen((_) => _checkAuth());
     ThemeService.instance.addListener(_onTheme);
   }
 
-  void _startCountdown() {
-    _countdown = ServerTrackerService.pollInterval.inSeconds;
-    _countdownTimer?.cancel();
-    _countdownTimer = Timer.periodic(const Duration(seconds: 1), (_) {
-      if (!mounted) return;
-      setState(() {
-        if (_countdown > 0) {
-          _countdown--;
-        } else {
-          _countdown = ServerTrackerService.pollInterval.inSeconds;
-        }
-      });
+  void _startTicker() {
+    _tickTimer?.cancel();
+    _tickTimer = Timer.periodic(const Duration(seconds: 30), (_) {
+      if (mounted) setState(() {});
     });
   }
 
@@ -69,10 +62,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
     setState(() => _refreshing = true);
     await ServerTrackerService.instance.refresh();
     if (!mounted) return;
-    setState(() {
-      _refreshing = false;
-      _countdown = ServerTrackerService.pollInterval.inSeconds;
-    });
+    setState(() => _refreshing = false);
   }
 
   void _checkAuth() {
@@ -92,7 +82,6 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
         setState(() {
           _servers = servers;
           _loading = false;
-          _countdown = ServerTrackerService.pollInterval.inSeconds;
         });
       }
     });
@@ -114,7 +103,7 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
     _sub?.cancel();
     _slotsSub?.cancel();
     _authSub?.cancel();
-    _countdownTimer?.cancel();
+    _tickTimer?.cancel();
     ThemeService.instance.removeListener(_onTheme);
     super.dispose();
   }
@@ -129,7 +118,6 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
       barrierColor: Colors.black.withValues(alpha: 0.65),
       builder: (_) => AlertDialog(
         backgroundColor: AppTheme.surfaceRaised,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: Text(
           AppLocalizations.of(context)!.removeServerTitle,
           style: TextStyle(
@@ -225,75 +213,32 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
           final isWide = constraints.maxWidth > 700;
           Widget content = Column(
             children: [
-              Row(
-                children: [
-                  const Spacer(),
-                  if (_isLoggedIn && _slots != null)
-                    Padding(
-                      padding: const EdgeInsets.only(right: 4),
-                      child: Text(
-                        '${_slots!.used}/${_slots!.total}',
-                        style: TextStyle(
-                          color: _slots!.remaining == 0
-                              ? AppTheme.warning
-                              : AppTheme.textMuted,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+              DsHeader(
+                title: AppLocalizations.of(context)!.serverTrackerTitle,
+                subtitle: _isLoggedIn && _slots != null
+                    ? AppLocalizations.of(
+                        context,
+                      )!.paywallSlotLabel('${_slots!.used}/${_slots!.total}')
+                    : null,
+                actions: [
+                  if (_isLoggedIn && !_loading && _servers.isNotEmpty)
+                    DsIconButton(
+                      icon: Icons.refresh_rounded,
+                      size: 36,
+                      onPressed: _refreshing ? null : _manualRefresh,
+                      tooltip: AppLocalizations.of(context)!.refreshStatus,
                     ),
-                  if (_isLoggedIn && !_loading && _servers.isNotEmpty) ...[
-                    _CountdownLabel(countdown: _countdown),
-                    _refreshing
-                        ? SizedBox(
-                            width: 36,
-                            height: 36,
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: CircularProgressIndicator(
-                                strokeWidth: 2,
-                                color: AppTheme.brand,
-                              ),
-                            ),
-                          )
-                        : IconButton(
-                            icon: Icon(
-                              Icons.refresh_rounded,
-                              color: AppTheme.textSecondary,
-                              size: 20,
-                            ),
-                            onPressed: _manualRefresh,
-                            tooltip: AppLocalizations.of(
-                              context,
-                            )!.refreshStatus,
-                            padding: EdgeInsets.zero,
-                            constraints: const BoxConstraints(
-                              minWidth: 36,
-                              minHeight: 36,
-                            ),
-                          ),
-                  ],
                   if (_isLoggedIn)
-                    GestureDetector(
-                      onTap:
+                    DsIconButton(
+                      icon: Icons.add_rounded,
+                      size: 36,
+                      color: DsColor.accent,
+                      onPressed:
                           _slots != null &&
                               _slots!.remaining == 0 &&
-                          _supportsInAppUpgrade
+                              _supportsInAppUpgrade
                           ? _openPaywall
                           : _openAddSheet,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Icon(
-                          Icons.add_rounded,
-                          size: 24,
-                          color:
-                              _slots != null &&
-                                  _slots!.remaining == 0 &&
-                                  _supportsInAppUpgrade
-                              ? AppTheme.textDisabled
-                              : AppTheme.accent,
-                        ),
-                      ),
                     ),
                 ],
               ),
@@ -304,82 +249,46 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
                   _isLoggedIn &&
                   _supportsInAppUpgrade)
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 10, 16, 2),
-                  child: GestureDetector(
-                    onTap: _openPaywall,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 14,
-                        vertical: 12,
+                  padding: const EdgeInsets.fromLTRB(
+                    DsSpace.gutter,
+                    0,
+                    DsSpace.gutter,
+                    DsSpace.sm,
+                  ),
+                  child: Container(
+                    padding: const EdgeInsets.all(DsSpace.md + 2),
+                    decoration: BoxDecoration(
+                      color: DsColor.warning.withValues(alpha: 0.08),
+                      borderRadius: DsRadius.cardR,
+                      border: Border.all(
+                        color: DsColor.warning.withValues(alpha: 0.28),
                       ),
-                      decoration: BoxDecoration(
-                        color: AppTheme.warning.withValues(alpha: 0.08),
-                        borderRadius: BorderRadius.circular(14),
-                        border: Border.all(
-                          color: AppTheme.warning.withValues(alpha: 0.30),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.lock_outline_rounded,
+                          color: DsColor.warning,
+                          size: 18,
                         ),
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.lock_outline_rounded,
-                            color: AppTheme.warning,
-                            size: 20,
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  AppLocalizations.of(
-                                    context,
-                                  )!.trackerLimitReached,
-                                  style: TextStyle(
-                                    color: AppTheme.warning,
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                                const SizedBox(height: 2),
-                                Text(
-                                  AppLocalizations.of(
-                                    context,
-                                  )!.upgradeWindowsHint,
-                                  style: TextStyle(
-                                    color: AppTheme.warning.withValues(
-                                      alpha: 0.70,
-                                    ),
-                                    fontSize: 11,
-                                  ),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ],
+                        const SizedBox(width: DsSpace.md),
+                        Expanded(
+                          child: Text(
+                            AppLocalizations.of(context)!.trackerLimitReached,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: DsType.label.copyWith(
+                              color: DsColor.warning,
                             ),
                           ),
-                          const SizedBox(width: 12),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12,
-                              vertical: 7,
-                            ),
-                            decoration: BoxDecoration(
-                              color: AppTheme.brand,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Text(
-                              AppLocalizations.of(context)!.upgradeButton,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                        const SizedBox(width: DsSpace.md),
+                        DsButton(
+                          label: AppLocalizations.of(context)!.upgradeButton,
+                          size: DsButtonSize.small,
+                          onPressed: _openPaywall,
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -389,7 +298,14 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
                     ? _NotLoggedIn(onLogin: widget.onGoToLogin)
                     : _loading
                     ? Center(
-                        child: CircularProgressIndicator(color: AppTheme.brand),
+                        child: SizedBox(
+                          width: 22,
+                          height: 22,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 1.8,
+                            color: DsColor.textFaint,
+                          ),
+                        ),
                       )
                     : _servers.isEmpty
                     ? _EmptyState(onAdd: _openAddSheet)
@@ -397,7 +313,12 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
                         color: AppTheme.brand,
                         onRefresh: ServerTrackerService.instance.refresh,
                         child: ListView.builder(
-                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          padding: const EdgeInsets.fromLTRB(
+                            DsSpace.gutter,
+                            DsSpace.xs,
+                            DsSpace.gutter,
+                            DsSpace.xxxl,
+                          ),
                           itemCount: _servers.length,
                           itemBuilder: (_, i) => TrackedServerCard(
                             server: _servers[i],
@@ -437,60 +358,19 @@ class _NotLoggedIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(32),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              Icons.lock_outline_rounded,
-              color: AppTheme.textMuted,
-              size: 52,
-            ),
-            const SizedBox(height: 16),
-            Text(
-              AppLocalizations.of(context)!.trackerSignInRequired,
-              style: TextStyle(
-                color: AppTheme.textPrimary,
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              AppLocalizations.of(context)!.trackerSignInSubtitle,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: AppTheme.textMuted,
-                fontSize: 13,
-                height: 1.5,
-              ),
-            ),
-            if (onLogin != null) ...[
-              const SizedBox(height: 24),
-              FilledButton.icon(
+      child: DsEmptyState(
+        icon: Icons.lock_outline_rounded,
+        title: loc.trackerSignInRequired,
+        message: loc.trackerSignInSubtitle,
+        action: onLogin == null
+            ? null
+            : DsButton(
+                label: loc.signIn,
+                icon: Icons.login_rounded,
                 onPressed: onLogin,
-                style: FilledButton.styleFrom(
-                  backgroundColor: AppTheme.brand,
-                  foregroundColor: Colors.black,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                    vertical: 13,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                icon: const Icon(Icons.login_rounded),
-                label: Text(
-                  AppLocalizations.of(context)!.signIn,
-                  style: const TextStyle(fontWeight: FontWeight.w700),
-                ),
               ),
-            ],
-          ],
-        ),
       ),
     );
   }
@@ -502,65 +382,18 @@ class _EmptyState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
     return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(32),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(Icons.radar_rounded, color: AppTheme.textMuted, size: 52),
-            const SizedBox(height: 16),
-            Text(
-              AppLocalizations.of(context)!.noServersTracked,
-              style: TextStyle(
-                color: AppTheme.textPrimary,
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              AppLocalizations.of(context)!.trackerEmptySubtitle,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: AppTheme.textMuted,
-                fontSize: 13,
-                height: 1.5,
-              ),
-            ),
-            const SizedBox(height: 24),
-            GestureDetector(
-              onTap: onAdd,
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 13,
-                ),
-                decoration: BoxDecoration(
-                  color: AppTheme.accent.withValues(alpha: 0.12),
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    color: AppTheme.accent.withValues(alpha: 0.35),
-                  ),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.add_rounded, size: 18, color: AppTheme.accent),
-                    const SizedBox(width: 8),
-                    Text(
-                      AppLocalizations.of(context)!.addServer,
-                      style: TextStyle(
-                        color: AppTheme.accent,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
+      child: DsEmptyState(
+        icon: Icons.radar_rounded,
+        title: loc.noServersTracked,
+        message: loc.trackerEmptySubtitle,
+        action: DsButton(
+          label: loc.addServer,
+          icon: Icons.add_rounded,
+          tone: DsButtonTone.neutral,
+          size: DsButtonSize.small,
+          onPressed: onAdd,
         ),
       ),
     );
@@ -724,9 +557,6 @@ class _AddServerSheetState extends State<_AddServerSheet> {
                 backgroundColor: AppTheme.brand,
                 foregroundColor: Colors.black,
                 padding: const EdgeInsets.symmetric(vertical: 14),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
               ),
               child: _saving
                   ? const SizedBox(
@@ -763,57 +593,11 @@ class _Field extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: TextStyle(
-            color: AppTheme.textMuted,
-            fontSize: 12,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        const SizedBox(height: 4),
-        TextField(
-          controller: controller,
-          keyboardType: keyboard,
-          style: TextStyle(color: AppTheme.textPrimary, fontSize: 14),
-          decoration: InputDecoration(
-            hintText: hint,
-            hintStyle: const TextStyle(color: AppTheme.textDisabled),
-            filled: true,
-            fillColor: AppTheme.surfaceLight,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide.none,
-            ),
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 14,
-              vertical: 12,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _CountdownLabel extends StatelessWidget {
-  final int countdown;
-  const _CountdownLabel({required this.countdown});
-
-  @override
-  Widget build(BuildContext context) {
-    final m = (countdown ~/ 60).toString().padLeft(2, '0');
-    final s = (countdown % 60).toString().padLeft(2, '0');
-    return Text(
-      '$m:$s',
-      style: const TextStyle(
-        color: AppTheme.textDisabled,
-        fontSize: 11,
-        fontFamily: 'monospace',
-      ),
+    return DsField(
+      controller: controller,
+      label: label,
+      hint: hint,
+      keyboardType: keyboard,
     );
   }
 }
@@ -840,7 +624,7 @@ class _PlatformChip extends StatelessWidget {
           color: isSelected
               ? AppTheme.brand.withValues(alpha: 0.15)
               : AppTheme.surfaceLight,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: AppRadius.small,
           border: Border.all(
             color: isSelected ? AppTheme.brand : AppTheme.borderGray,
           ),

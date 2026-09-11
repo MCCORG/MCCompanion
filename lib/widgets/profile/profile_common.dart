@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
+import '../../design/design.dart';
+import '../../theme/app_tokens.dart';
 
 class ProfileAvatar extends StatelessWidget {
   final String initials;
   final double size;
   final String? avatarUrl;
-  const ProfileAvatar({super.key, required this.initials, required this.size, this.avatarUrl});
+  const ProfileAvatar({
+    super.key,
+    required this.initials,
+    required this.size,
+    this.avatarUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +62,12 @@ class ProfileSmallBtn extends StatelessWidget {
   final IconData icon;
   final Color color;
   final VoidCallback onTap;
-  const ProfileSmallBtn({super.key, required this.icon, required this.color, required this.onTap});
+  const ProfileSmallBtn({
+    super.key,
+    required this.icon,
+    required this.color,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -66,37 +78,10 @@ class ProfileSmallBtn extends StatelessWidget {
         height: 34,
         decoration: BoxDecoration(
           color: color.withValues(alpha: 0.12),
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: AppRadius.small,
           border: Border.all(color: color.withValues(alpha: 0.30)),
         ),
         child: Icon(icon, color: color, size: 16),
-      ),
-    );
-  }
-}
-
-class ProfileIconBtn extends StatelessWidget {
-  final IconData icon;
-  final String tooltip;
-  final VoidCallback onTap;
-  const ProfileIconBtn({super.key, required this.icon, required this.tooltip, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return Tooltip(
-      message: tooltip,
-      child: GestureDetector(
-        onTap: onTap,
-        child: Container(
-          width: 38,
-          height: 38,
-          decoration: BoxDecoration(
-            color: AppTheme.accent.withValues(alpha: 0.10),
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: AppTheme.accent.withValues(alpha: 0.25)),
-          ),
-          child: Icon(icon, color: AppTheme.accent, size: 18),
-        ),
       ),
     );
   }
@@ -124,15 +109,7 @@ class ProfileSectionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      title.toUpperCase(),
-      style: TextStyle(
-        color: AppTheme.textMuted,
-        fontSize: 11,
-        fontWeight: FontWeight.w700,
-        letterSpacing: 0.8,
-      ),
-    );
+    return Text(title, style: DsType.heading);
   }
 }
 
@@ -165,7 +142,12 @@ class ProfileEmptyBody extends StatelessWidget {
   final IconData icon;
   final String message;
   final String sub;
-  const ProfileEmptyBody({super.key, required this.icon, required this.message, required this.sub});
+  const ProfileEmptyBody({
+    super.key,
+    required this.icon,
+    required this.message,
+    required this.sub,
+  });
 
   @override
   Widget build(BuildContext context) => Center(

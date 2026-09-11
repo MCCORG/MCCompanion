@@ -79,10 +79,7 @@ class PresenceService {
     _channel = null;
     _reconnectTimer?.cancel();
     final index = (_failCount - 1).clamp(0, _backoffSeconds.length - 1);
-    _reconnectTimer = Timer(
-      Duration(seconds: _backoffSeconds[index]),
-      connect,
-    );
+    _reconnectTimer = Timer(Duration(seconds: _backoffSeconds[index]), connect);
   }
 
   static Future<void> reconnectIfNeeded() async {

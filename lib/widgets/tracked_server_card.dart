@@ -3,7 +3,8 @@ import '../l10n/app_localizations.dart';
 import '../models/tracked_server_model.dart';
 import '../services/tracker_api_service.dart';
 import '../theme/app_theme.dart';
-import '../widgets/components/app_painters.dart';
+import '../design/design.dart';
+import '../theme/app_tokens.dart';
 import '../widgets/components/app_toast.dart';
 
 class TrackedServerCard extends StatefulWidget {
@@ -86,188 +87,203 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(width: 36, height: 4, decoration: BoxDecoration(color: AppTheme.borderGray, borderRadius: BorderRadius.circular(2))),
+            Container(
+              width: 36,
+              height: 4,
+              decoration: BoxDecoration(
+                color: AppTheme.borderGray,
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
             const SizedBox(height: 16),
-            _MenuTile(icon: Icons.edit_rounded, label: l.editLabel, onTap: () { Navigator.pop(context); _openEditSheet(); }),
+            _MenuTile(
+              icon: Icons.edit_rounded,
+              label: l.editLabel,
+              onTap: () {
+                Navigator.pop(context);
+                _openEditSheet();
+              },
+            ),
             const SizedBox(height: 4),
-            _MenuTile(icon: Icons.delete_outline_rounded, label: l.delete, color: AppTheme.error, onTap: () { Navigator.pop(context); widget.onDelete(); }),
+            _MenuTile(
+              icon: Icons.delete_outline_rounded,
+              label: l.delete,
+              color: AppTheme.error,
+              onTap: () {
+                Navigator.pop(context);
+                widget.onDelete();
+              },
+            ),
           ],
         ),
       ),
     );
   }
 
+  String _checkedLabel(AppLocalizations l) {
+    final at = widget.server.lastCheckedAt;
+    if (at == null) return '';
+    final diff = DateTime.now().difference(at.toLocal());
+    if (diff.inMinutes < 2) return l.justNow;
+    if (diff.inMinutes < 60) return l.minutesAgo(diff.inMinutes);
+    if (diff.inHours < 24) return l.hoursAgo(diff.inHours);
+    return l.daysAgo(diff.inDays);
+  }
+
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final color = _statusColor;
     final s = widget.server;
     final hasPlayers = s.players != null && s.maxPlayers != null;
-    final playerFraction = hasPlayers ? (s.players! / s.maxPlayers!).clamp(0.0, 1.0) : 0.0;
-    final isOnline = s.lastStatus == 'online';
+    final playerFraction = hasPlayers
+        ? (s.players! / s.maxPlayers!).clamp(0.0, 1.0)
+        : 0.0;
     final isJava = s.platform == 'java';
 
+    final meta = [
+      isJava ? l.labelJava : l.bedrockLabel,
+      if (s.version != null) s.version!,
+      if (s.gameMode != null) s.gameMode!,
+    ].join('  ·  ');
+
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16),
-        child: Stack(
+      padding: const EdgeInsets.only(bottom: DsSpace.sm),
+      child: Container(
+        decoration: BoxDecoration(
+          color: DsColor.surface,
+          borderRadius: DsRadius.cardR,
+          border: Border.all(color: DsColor.line),
+        ),
+        padding: const EdgeInsets.all(DsSpace.lg),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Positioned.fill(child: Container(color: AppTheme.surfaceRaised)),
-            Positioned.fill(child: Container(color: color.withValues(alpha: 0.06))),
-            Positioned.fill(
-              child: CustomPaint(
-                painter: AppNoisePainter(color: color, opacity: 0.035, seed: s.id.hashCode & 0xFFFF, count: 120),
-              ),
-            ),
-            if (isOnline)
-              Positioned.fill(
-                child: CustomPaint(
-                  painter: AppWavePainter(waves: [
-                    WaveConfig(yFraction: 0.55, amplitude: 8, frequency: 3.0, phase: 0.4, color: color, opacity: 0.10, strokeWidth: 1.2),
-                    WaveConfig(yFraction: 0.75, amplitude: 5, frequency: 4.8, phase: 2.1, color: color, opacity: 0.05, strokeWidth: 0.9),
-                  ]),
-                ),
-              ),
-            Positioned.fill(
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: color.withValues(alpha: 0.28)),
-                ),
-              ),
-            ),
-
-            Column(
-              mainAxisSize: MainAxisSize.min,
+            Row(
               children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(14, 14, 10, 12),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                Container(
+                  width: 40,
+                  height: 40,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: color.withValues(alpha: 0.14),
+                    borderRadius: BorderRadius.circular(DsRadius.control - 2),
+                  ),
+                  child: Icon(
+                    isJava
+                        ? Icons.computer_rounded
+                        : Icons.sports_esports_rounded,
+                    color: color,
+                    size: 18,
+                  ),
+                ),
+                const SizedBox(width: DsSpace.md),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      Container(
-                        width: 46,
-                        height: 46,
-                        decoration: BoxDecoration(
-                          color: color.withValues(alpha: 0.10),
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: color.withValues(alpha: 0.22)),
-                        ),
-                        child: Center(
-                          child: Icon(
-                            isJava ? Icons.computer_rounded : Icons.sports_esports_rounded,
-                            color: color,
-                            size: 22,
-                          ),
-                        ),
+                      Text(
+                        s.name,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: DsType.bodyStrong,
                       ),
-                      const SizedBox(width: 12),
-
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    s.name,
-                                    style: TextStyle(color: AppTheme.textPrimary, fontSize: 15, fontWeight: FontWeight.w700),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 2),
-                            Text(
-                              '${s.ip}:${s.port}',
-                              style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
-                            ),
-                            const SizedBox(height: 6),
-                            Row(
-                              children: [
-                                Container(
-                                  width: 7, height: 7,
-                                  decoration: BoxDecoration(color: color, shape: BoxShape.circle,
-                                    boxShadow: isOnline ? [BoxShadow(color: color.withValues(alpha: 0.5), blurRadius: 4, spreadRadius: 1)] : null),
-                                ),
-                                const SizedBox(width: 5),
-                                Text(_statusLabel(context), style: TextStyle(color: color, fontSize: 12, fontWeight: FontWeight.w600)),
-                                const SizedBox(width: 8),
-                                _Badge(label: s.platform.toUpperCase(), color: color),
-                                if (s.version != null) ...[
-                                  const SizedBox(width: 5),
-                                  _Badge(label: s.version!, color: AppTheme.textMuted, bg: AppTheme.borderDim),
-                                ],
-                                if (s.gameMode != null) ...[
-                                  const SizedBox(width: 5),
-                                  _Badge(label: s.gameMode!.toUpperCase(), color: AppTheme.textMuted, bg: AppTheme.borderDim),
-                                ],
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          _togglingNotif
-                              ? const SizedBox(width: 36, height: 36, child: Center(child: SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2))))
-                              : IconButton(
-                                  onPressed: _toggleNotifications,
-                                  icon: Icon(
-                                    s.notificationsEnabled ? Icons.notifications_active_rounded : Icons.notifications_off_outlined,
-                                    color: s.notificationsEnabled ? color : AppTheme.textDisabled,
-                                    size: 20,
-                                  ),
-                                  padding: EdgeInsets.zero,
-                                  constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
-                                ),
-                          IconButton(
-                            onPressed: _openMoreMenu,
-                            icon: Icon(Icons.more_vert_rounded, color: AppTheme.textMuted, size: 20),
-                            padding: EdgeInsets.zero,
-                            constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
-                          ),
-                        ],
+                      const SizedBox(height: DsSpace.xxs),
+                      Text(
+                        '${s.ip}:${s.port}',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: DsType.caption,
                       ),
                     ],
                   ),
                 ),
-
-                if (hasPlayers) ...[
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(14, 0, 14, 12),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                const SizedBox(width: DsSpace.sm),
+                DsBadge(label: _statusLabel(context), color: color, dot: true),
+              ],
+            ),
+            const SizedBox(height: DsSpace.md),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (hasPlayers) ...[
                         Row(
                           children: [
-                            Icon(Icons.people_outline_rounded, color: AppTheme.textMuted, size: 11),
-                            const SizedBox(width: 4),
                             Text(
-                              AppLocalizations.of(context)!.playersCount(s.players!, s.maxPlayers!),
-                              style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
+                              '${s.players}',
+                              style: DsType.bodyStrong.copyWith(
+                                fontFeatures: const [
+                                  FontFeature.tabularFigures(),
+                                ],
+                              ),
+                            ),
+                            Text(
+                              ' / ${s.maxPlayers}  ${l.serverStatPlayers.toLowerCase()}',
+                              style: DsType.caption,
                             ),
                           ],
                         ),
-                        const SizedBox(height: 5),
+                        const SizedBox(height: DsSpace.sm - 2),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(4),
+                          borderRadius: BorderRadius.circular(3),
                           child: LinearProgressIndicator(
                             value: playerFraction,
-                            backgroundColor: color.withValues(alpha: 0.12),
+                            backgroundColor: DsColor.inset,
                             valueColor: AlwaysStoppedAnimation(color),
                             minHeight: 4,
                           ),
                         ),
+                        const SizedBox(height: DsSpace.sm),
                       ],
-                    ),
+                      Text(
+                        meta,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: DsType.caption,
+                      ),
+                      if (s.lastCheckedAt != null) ...[
+                        const SizedBox(height: DsSpace.xxs),
+                        Text(_checkedLabel(l), style: DsType.caption),
+                      ],
+                    ],
                   ),
-                ],
+                ),
+                const SizedBox(width: DsSpace.md),
+                _togglingNotif
+                    ? const SizedBox(
+                        width: 36,
+                        height: 36,
+                        child: Center(
+                          child: SizedBox(
+                            width: 16,
+                            height: 16,
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          ),
+                        ),
+                      )
+                    : DsIconButton(
+                        icon: s.notificationsEnabled
+                            ? Icons.notifications_active_rounded
+                            : Icons.notifications_off_outlined,
+                        size: 36,
+                        color: s.notificationsEnabled
+                            ? DsColor.accent
+                            : DsColor.textFaint,
+                        onPressed: _toggleNotifications,
+                      ),
+                const SizedBox(width: DsSpace.sm - 2),
+                DsIconButton(
+                  icon: Icons.more_horiz_rounded,
+                  size: 36,
+                  onPressed: _openMoreMenu,
+                ),
               ],
             ),
           ],
@@ -277,29 +293,17 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
   }
 }
 
-class _Badge extends StatelessWidget {
-  final String label;
-  final Color color;
-  final Color? bg;
-  const _Badge({required this.label, required this.color, this.bg});
-
-  @override
-  Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-    decoration: BoxDecoration(
-      color: bg ?? color.withValues(alpha: 0.12),
-      borderRadius: BorderRadius.circular(4),
-    ),
-    child: Text(label, style: TextStyle(color: color, fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 0.4)),
-  );
-}
-
 class _MenuTile extends StatelessWidget {
   final IconData icon;
   final String label;
   final VoidCallback onTap;
   final Color? color;
-  const _MenuTile({required this.icon, required this.label, required this.onTap, this.color});
+  const _MenuTile({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+    this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -310,13 +314,20 @@ class _MenuTile extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         decoration: BoxDecoration(
           color: AppTheme.surfaceRaised,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: AppRadius.medium,
         ),
         child: Row(
           children: [
             Icon(icon, color: c, size: 18),
             const SizedBox(width: 12),
-            Text(label, style: TextStyle(color: c, fontSize: 14, fontWeight: FontWeight.w500)),
+            Text(
+              label,
+              style: TextStyle(
+                color: c,
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
           ],
         ),
       ),
@@ -345,7 +356,7 @@ class _EditServerSheetState extends State<_EditServerSheet> {
   void initState() {
     super.initState();
     _nameCtrl = TextEditingController(text: widget.server.name);
-    _ipCtrl   = TextEditingController(text: widget.server.ip);
+    _ipCtrl = TextEditingController(text: widget.server.ip);
     _portCtrl = TextEditingController(text: widget.server.port.toString());
     _platform = widget.server.platform;
   }
@@ -360,7 +371,7 @@ class _EditServerSheetState extends State<_EditServerSheet> {
 
   Future<void> _save() async {
     final name = _nameCtrl.text.trim();
-    final ip   = _ipCtrl.text.trim();
+    final ip = _ipCtrl.text.trim();
     final port = int.tryParse(_portCtrl.text.trim());
 
     final l = AppLocalizations.of(context)!;
@@ -377,7 +388,10 @@ class _EditServerSheetState extends State<_EditServerSheet> {
       return;
     }
 
-    setState(() { _saving = true; _error = null; });
+    setState(() {
+      _saving = true;
+      _error = null;
+    });
 
     final updated = await TrackerApiService.updateServer(
       widget.server.id,
@@ -391,7 +405,10 @@ class _EditServerSheetState extends State<_EditServerSheet> {
     if (updated != null) {
       widget.onSaved(updated);
       Navigator.of(context).pop();
-      AppToast.show(context, message: AppLocalizations.of(context)!.serverRenamed);
+      AppToast.show(
+        context,
+        message: AppLocalizations.of(context)!.serverRenamed,
+      );
     } else {
       setState(() {
         _saving = false;
@@ -402,10 +419,21 @@ class _EditServerSheetState extends State<_EditServerSheet> {
 
   Widget _label(String text) => Padding(
     padding: const EdgeInsets.only(bottom: 6),
-    child: Text(text, style: TextStyle(color: AppTheme.textMuted, fontSize: 12, fontWeight: FontWeight.w600)),
+    child: Text(
+      text,
+      style: TextStyle(
+        color: AppTheme.textMuted,
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+      ),
+    ),
   );
 
-  Widget _field(TextEditingController ctrl, {String? hint, TextInputType? keyboardType}) => TextField(
+  Widget _field(
+    TextEditingController ctrl, {
+    String? hint,
+    TextInputType? keyboardType,
+  }) => TextField(
     controller: ctrl,
     keyboardType: keyboardType,
     style: TextStyle(color: AppTheme.textPrimary, fontSize: 14),
@@ -414,7 +442,10 @@ class _EditServerSheetState extends State<_EditServerSheet> {
       hintStyle: const TextStyle(color: AppTheme.textDisabled),
       filled: true,
       fillColor: AppTheme.surfaceLight,
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none),
+      border: OutlineInputBorder(
+        borderRadius: AppRadius.small,
+        borderSide: BorderSide.none,
+      ),
       contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
     ),
   );
@@ -437,7 +468,11 @@ class _EditServerSheetState extends State<_EditServerSheet> {
               children: [
                 Text(
                   AppLocalizations.of(context)!.editServerTitle,
-                  style: TextStyle(color: AppTheme.textPrimary, fontSize: 17, fontWeight: FontWeight.w700),
+                  style: TextStyle(
+                    color: AppTheme.textPrimary,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
                 const Spacer(),
                 IconButton(
@@ -448,13 +483,23 @@ class _EditServerSheetState extends State<_EditServerSheet> {
             ),
             const SizedBox(height: 16),
             _label(AppLocalizations.of(context)!.nameLabel),
-            _field(_nameCtrl, hint: AppLocalizations.of(context)!.serverNameHint),
+            _field(
+              _nameCtrl,
+              hint: AppLocalizations.of(context)!.serverNameHint,
+            ),
             const SizedBox(height: 12),
             _label(AppLocalizations.of(context)!.ipAddressFieldLabel),
-            _field(_ipCtrl, hint: AppLocalizations.of(context)!.serverAddressExampleHint),
+            _field(
+              _ipCtrl,
+              hint: AppLocalizations.of(context)!.serverAddressExampleHint,
+            ),
             const SizedBox(height: 12),
             _label(AppLocalizations.of(context)!.portFieldLabel),
-            _field(_portCtrl, hint: '19132', keyboardType: TextInputType.number),
+            _field(
+              _portCtrl,
+              hint: '19132',
+              keyboardType: TextInputType.number,
+            ),
             const SizedBox(height: 12),
             _label(AppLocalizations.of(context)!.platformFieldLabel),
             Row(
@@ -478,7 +523,10 @@ class _EditServerSheetState extends State<_EditServerSheet> {
             ),
             if (_error != null) ...[
               const SizedBox(height: 10),
-              Text(_error!, style: const TextStyle(color: AppTheme.error, fontSize: 13)),
+              Text(
+                _error!,
+                style: const TextStyle(color: AppTheme.error, fontSize: 13),
+              ),
             ],
             const SizedBox(height: 20),
             SizedBox(
@@ -489,11 +537,20 @@ class _EditServerSheetState extends State<_EditServerSheet> {
                   backgroundColor: AppTheme.brand,
                   foregroundColor: Colors.black,
                   padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                 ),
                 child: _saving
-                    ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.black))
-                    : Text(AppLocalizations.of(context)!.save, style: const TextStyle(fontWeight: FontWeight.w700)),
+                    ? const SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: Colors.black,
+                        ),
+                      )
+                    : Text(
+                        AppLocalizations.of(context)!.save,
+                        style: const TextStyle(fontWeight: FontWeight.w700),
+                      ),
               ),
             ),
           ],
@@ -508,7 +565,11 @@ class _PlatformChip extends StatelessWidget {
   final bool selected;
   final VoidCallback onTap;
 
-  const _PlatformChip({required this.label, required this.selected, required this.onTap});
+  const _PlatformChip({
+    required this.label,
+    required this.selected,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -518,8 +579,10 @@ class _PlatformChip extends StatelessWidget {
         duration: const Duration(milliseconds: 150),
         padding: const EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(
-          color: selected ? AppTheme.brand.withValues(alpha: 0.15) : AppTheme.surfaceLight,
-          borderRadius: BorderRadius.circular(10),
+          color: selected
+              ? AppTheme.brand.withValues(alpha: 0.15)
+              : AppTheme.surfaceLight,
+          borderRadius: AppRadius.small,
           border: Border.all(
             color: selected ? AppTheme.brand : Colors.transparent,
             width: 1.5,

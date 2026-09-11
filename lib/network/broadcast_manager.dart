@@ -27,17 +27,25 @@ class ConnectionError {
   final int? statusCode;
   final String? detail;
 
-  const ConnectionError._(this.kind, {this.reason, this.statusCode, this.detail});
+  const ConnectionError._(
+    this.kind, {
+    this.reason,
+    this.statusCode,
+    this.detail,
+  });
 
   factory ConnectionError.blocked({String? reason}) =>
       ConnectionError._(ConnectionErrorKind.blocked, reason: reason);
-  factory ConnectionError.configFailed({required int statusCode, String? detail}) =>
-      ConnectionError._(
-        ConnectionErrorKind.configFailed,
-        statusCode: statusCode,
-        detail: detail,
-      );
-  factory ConnectionError.timeout() => const ConnectionError._(ConnectionErrorKind.timeout);
+  factory ConnectionError.configFailed({
+    required int statusCode,
+    String? detail,
+  }) => ConnectionError._(
+    ConnectionErrorKind.configFailed,
+    statusCode: statusCode,
+    detail: detail,
+  );
+  factory ConnectionError.timeout() =>
+      const ConnectionError._(ConnectionErrorKind.timeout);
   factory ConnectionError.unreachable() =>
       const ConnectionError._(ConnectionErrorKind.unreachable);
   factory ConnectionError.hostNotFound({String? reason}) =>
@@ -45,7 +53,10 @@ class ConnectionError {
   factory ConnectionError.localPortBusy() =>
       const ConnectionError._(ConnectionErrorKind.localPortBusy);
   factory ConnectionError.addressNotSupported({String? reason}) =>
-      ConnectionError._(ConnectionErrorKind.addressNotSupported, reason: reason);
+      ConnectionError._(
+        ConnectionErrorKind.addressNotSupported,
+        reason: reason,
+      );
 }
 
 class BroadcastManager {
@@ -84,7 +95,8 @@ class BroadcastManager {
   static bool _worthRetryingElsewhere(RelayConfigResult result) =>
       result.statusCode < 0 || result.statusCode >= 500;
 
-  Future<({RelayConfigResult result, String ip, String base})> _sendWithFailover({
+  Future<({RelayConfigResult result, String ip, String base})>
+  _sendWithFailover({
     required String relayIp,
     required String relayBase,
     required Future<RelayConfigResult> Function(String base) send,
@@ -94,7 +106,10 @@ class BroadcastManager {
       return (result: first, ip: relayIp, base: relayBase);
     }
 
-    final next = RelaySelection.fromIp(relayIp, RelaySource.failover)?.alternate;
+    final next = RelaySelection.fromIp(
+      relayIp,
+      RelaySource.failover,
+    )?.alternate;
     if (next == null) return (result: first, ip: relayIp, base: relayBase);
 
     final second = await send(next.base);
@@ -227,10 +242,6 @@ class BroadcastManager {
   }) async {
     const relayPort = 19132;
 
-    if (mode == BroadcastMode.direct) {
-      return _startDirect(remoteHost, remotePort);
-    }
-
     final usedRelayName = _relayNameForIp(relayIp);
 
     logger.info(
@@ -287,54 +298,6 @@ class BroadcastManager {
       onConnectionError?.call(ConnectionError.unreachable());
       return false;
     }
-  }
-
-  Future<bool> _startDirect(String remoteHost, int remotePort) async {
-    logger.info('Direct mode: no relay involved, this device is the proxy.');
-    final literal = InternetAddress.tryParse(remoteHost);
-    if (literal != null && literal.type != InternetAddressType.IPv4) {
-      logger.error('Direct mode: $remoteHost is IPv6, which is not supported.');
-      onConnectionError?.call(
-        ConnectionError.addressNotSupported(reason: remoteHost),
-      );
-      return false;
-    }
-
-    final target = await _resolveHost(remoteHost);
-    if (target == null) {
-      onConnectionError?.call(ConnectionError.hostNotFound(reason: remoteHost));
-      return false;
-    }
-
-    logger.info(
-      'MCCompanion will forward straight to '
-      '${target.address}:$remotePort ($remoteHost)',
-    );
-
-    try {
-      return await _startLocalProxy(target, remotePort);
-    } catch (e, st) {
-      logger.error('Direct mode: could not start the local proxy: $e\n$st');
-      onConnectionError?.call(ConnectionError.localPortBusy());
-      return false;
-    }
-  }
-
-  Future<InternetAddress?> _resolveHost(String host) async {
-    final literal = InternetAddress.tryParse(host);
-    if (literal != null) return literal;
-
-    try {
-      final found = await InternetAddress.lookup(
-        host,
-        type: InternetAddressType.IPv4,
-      ).timeout(const Duration(seconds: 8));
-      if (found.isNotEmpty) return found.first;
-      logger.error('Direct mode: $host has no IPv4 address.');
-    } catch (e) {
-      logger.error('Direct mode: could not resolve $host: $e');
-    }
-    return null;
   }
 
   Future<bool> _startLocalProxy(InternetAddress target, int targetPort) async {

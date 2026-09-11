@@ -10,10 +10,10 @@ import '../../services/home_customization_service.dart';
 import '../../constants/app_constants.dart';
 import '../../theme/app_theme.dart';
 import '../components/app_sheet.dart';
+import '../../theme/app_tokens.dart';
 
 class BottomGlassSimpleNavBar extends StatelessWidget {
   final NavigationController? navigationController;
-  final VoidCallback? onHomeTap;
   final VoidCallback? onConnectorTap;
   final VoidCallback? onProfileTap;
   final String? activeItem;
@@ -21,26 +21,37 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
   final String? selectedRelayIp;
   final void Function(String?)? onRelayChanged;
 
+  final AppFeature? navFarFeature;
+  final AppFeature? navOuterFeature;
   final AppFeature? navLeftFeature;
   final AppFeature? navRightFeature;
+  final VoidCallback? onNavFarTap;
+  final VoidCallback? onNavOuterTap;
   final VoidCallback? onNavLeftTap;
   final VoidCallback? onNavRightTap;
+  final bool navFarActive;
+  final bool navOuterActive;
   final bool navLeftActive;
   final bool navRightActive;
 
   const BottomGlassSimpleNavBar({
     super.key,
     required this.navigationController,
-    this.onHomeTap,
     this.onConnectorTap,
     this.onProfileTap,
     this.activeItem,
     this.dark = true,
     this.selectedRelayIp,
+    this.navFarFeature,
+    this.navOuterFeature,
     this.navLeftFeature,
     this.navRightFeature,
+    this.onNavFarTap,
+    this.onNavOuterTap,
     this.onNavLeftTap,
     this.onNavRightTap,
+    this.navFarActive = false,
+    this.navOuterActive = false,
     this.navLeftActive = false,
     this.navRightActive = false,
     this.onRelayChanged,
@@ -51,7 +62,7 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
     AppFeature.skins => FontAwesomeIcons.shirt,
     AppFeature.partners => FontAwesomeIcons.server,
     AppFeature.lookup => FontAwesomeIcons.magnifyingGlass,
-    AppFeature.tracker => FontAwesomeIcons.satellite,
+    AppFeature.tracker => FontAwesomeIcons.heartPulse,
   };
 
   @override
@@ -79,12 +90,13 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
                   return Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      _NavItem(
-                        icon: FontAwesomeIcons.house,
-                        label: l.home,
-                        isActive: activeItem == 'home',
-                        onTap: onHomeTap,
-                      ),
+                      if (navOuterFeature != null)
+                        _NavItem(
+                          icon: _iconFor(navOuterFeature!),
+                          label: navOuterFeature!.label(l),
+                          isActive: navOuterActive,
+                          onTap: onNavOuterTap,
+                        ),
                       if (navLeftFeature != null)
                         _NavItem(
                           icon: _iconFor(navLeftFeature!),
@@ -105,12 +117,13 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
                           isActive: navRightActive,
                           onTap: onNavRightTap,
                         ),
-                      _NavItem(
-                        icon: FontAwesomeIcons.user,
-                        label: l.navProfile,
-                        isActive: activeItem == 'profile',
-                        onTap: onProfileTap,
-                      ),
+                      if (navFarFeature != null)
+                        _NavItem(
+                          icon: _iconFor(navFarFeature!),
+                          label: navFarFeature!.label(l),
+                          isActive: navFarActive,
+                          onTap: onNavFarTap,
+                        ),
                     ],
                   );
                 },
@@ -218,7 +231,7 @@ class MoreSheetContent extends StatelessWidget {
                   height: 38,
                   decoration: BoxDecoration(
                     color: AppTheme.accent.withValues(alpha: 0.12),
-                    borderRadius: BorderRadius.circular(11),
+                    borderRadius: AppRadius.small,
                     border: Border.all(
                       color: AppTheme.accent.withValues(alpha: 0.25),
                     ),
@@ -307,7 +320,7 @@ class _RegionSelector extends StatelessWidget {
                     color: isSelected
                         ? AppTheme.accent.withValues(alpha: 0.10)
                         : AppTheme.surfaceRaised,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: AppRadius.medium,
                     border: Border.all(
                       color: isSelected
                           ? AppTheme.accent.withValues(alpha: 0.45)

@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../l10n/app_localizations.dart';
 import '../../services/locale_provider.dart';
 import '../../theme/app_theme.dart';
+import '../../theme/app_tokens.dart';
 
 class LanguageDialog {
   static Future<void> show(
@@ -96,7 +97,7 @@ class _LanguageContentState extends State<_LanguageContent> {
       ),
       decoration: BoxDecoration(
         color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: AppRadius.large,
         border: Border.all(color: AppTheme.borderGray),
         boxShadow: [
           BoxShadow(
@@ -119,7 +120,7 @@ class _LanguageContentState extends State<_LanguageContent> {
                   height: 36,
                   decoration: BoxDecoration(
                     color: AppTheme.surfaceLight,
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: AppRadius.small,
                     border: Border.all(color: AppTheme.borderGray),
                   ),
                   child: Center(
@@ -148,7 +149,6 @@ class _LanguageContentState extends State<_LanguageContent> {
                     height: 30,
                     decoration: BoxDecoration(
                       color: AppTheme.surfaceLight,
-                      shape: BoxShape.circle,
                       border: Border.all(color: AppTheme.borderGray),
                     ),
                     child: Icon(
@@ -218,9 +218,6 @@ class _LanguageContentState extends State<_LanguageContent> {
                 style: OutlinedButton.styleFrom(
                   foregroundColor: AppTheme.textSecondary,
                   side: const BorderSide(color: AppTheme.borderGray),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
                 ),
               ),
             ),
@@ -251,7 +248,7 @@ class _LangTile extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         decoration: BoxDecoration(
           color: isSelected ? AppTheme.surfaceLight : Colors.transparent,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: AppRadius.small,
           border: isSelected ? Border.all(color: AppTheme.borderLight) : null,
         ),
         child: Row(
@@ -275,7 +272,6 @@ class _LangTile extends StatelessWidget {
                 color: isSelected
                     ? AppTheme.success.withValues(alpha: 0.15)
                     : Colors.transparent,
-                shape: BoxShape.circle,
                 border: Border.all(
                   color: isSelected
                       ? AppTheme.success.withValues(alpha: 0.55)

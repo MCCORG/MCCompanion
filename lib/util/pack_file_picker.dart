@@ -10,7 +10,11 @@ class PackInspection {
   final PackFormat format;
   final bool hasBehaviorContent;
   final String? name;
-  const PackInspection({required this.format, this.hasBehaviorContent = false, this.name});
+  const PackInspection({
+    required this.format,
+    this.hasBehaviorContent = false,
+    this.name,
+  });
 }
 
 bool isJunkPackEntry(String path) {
@@ -50,13 +54,16 @@ PackInspection inspectPackBytes(List<int> bytes) {
     if (!f.isFile || isJunkPackEntry(f.name)) continue;
     if (f.name == '${prefix}manifest.json') manifestFile = f;
     if (f.name.split('/').last == 'pack.mcmeta') hasMcmeta = true;
-    if (f.name.startsWith('${prefix}scripts/') || f.name.startsWith('${prefix}functions/')) {
+    if (f.name.startsWith('${prefix}scripts/') ||
+        f.name.startsWith('${prefix}functions/')) {
       hasBehaviorFolders = true;
     }
   }
 
   if (manifestFile == null) {
-    return PackInspection(format: hasMcmeta ? PackFormat.java : PackFormat.invalid);
+    return PackInspection(
+      format: hasMcmeta ? PackFormat.java : PackFormat.invalid,
+    );
   }
 
   String? name;

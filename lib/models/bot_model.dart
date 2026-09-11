@@ -2,7 +2,7 @@ class BotModel {
   final String gamertag;
   final int? friendCount;
   final int maxFriends;
-  final String region; 
+  final String region;
 
   const BotModel({
     required this.gamertag,

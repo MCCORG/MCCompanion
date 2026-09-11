@@ -1,7 +1,12 @@
 {
   "@@locale": "ja",
-  "appName": "MCCompanion",
   "console": "コンソール",
+  "modeLabel": "モード",
+  "statusLabel": "ステータス",
+  "seeAll": "すべて表示",
+  "sectionHelp": "ヘルプ",
+  "sectionAdvanced": "詳細設定",
+  "versionLabel": "バージョン",
   "consoleOutput": "コンソール出力",
   "noLogsYet": "まだログはありません",
   "startBroadcastingToSeeOutput": "出力を見るにはブロードキャストを開始してください",
@@ -10,20 +15,9 @@
   "back": "戻る",
   "next": "次へ",
   "done": "完了",
-  "joinUs": "参加する",
   "website": "ウェブサイト",
-  "aternosSubtext": "自分だけの無料Minecraftサーバーを作成しましょう",
   "howToUseMenu": "使い方",
   "support": "サポート",
-  "helpText": "{appCreator} によって作成されました。\r\n\r\n使い方:\r\n1. Minecraft サーバーのアドレスとポートを入力します（デフォルト: 19132）\r\n  , またはドロップダウンから以前保存したサーバーを選択します\r\n2. （任意）現在地に最も近い Relay Server（EU または US）を選択します\r\n3. \"ブロードキャスト開始\" をクリックして開始します\r\n4. コンソール/デバイスで: Minecraft > Play > Friends\r\n5. \"MCCompanion\" という名前の LAN サーバーが表示されます\r\n6. それをクリックすると、MCCompanion 経由で外部サーバーに参加できます\r\n\r\nNintendo Switch（DNS モード）:\r\n1. 接続パネルで \"Nintendo Switch\" を有効にします\r\n2. Relay Server（EU または US）を選択します\r\n3. \"Send DNS Config\" をクリックすると、設定が relay に送信されます\r\n   （これは LAN サーバーをブロードキャストしません）\r\n4. Switch で MCCompanion の DNS 設定を適用し、\r\n   MCCompanion 用に使っているサーバー項目から参加します\r\n\r\nメモ:\r\n- LAN ブロードキャストでは、MCCompanion とコンソールが同じローカルネットワーク上にある必要があります。\r\n- ヒント: 最良のパフォーマンスを得るには、最も近い relay サーバーを選択してください。",
-  "@helpText": {
-    "description": "Detailed help / instructions shown in the help dialog",
-    "placeholders": {
-      "appCreator": {}
-    }
-  },
-  "more": "その他",
-  "serverDetailsLabel": "サーバー詳細",
   "start": "開始",
   "labelJava": "Java",
   "language": "日本語",
@@ -58,14 +52,6 @@
   "@delete": {
     "description": "Delete action label"
   },
-  "myServers": "マイサーバー",
-  "@myServers": {
-    "description": "Title for manage servers dialog"
-  },
-  "quickAccessServers": "クイックアクセスサーバー",
-  "@quickAccessServers": {
-    "description": "Subtitle for manage servers dialog"
-  },
   "addServer": "サーバーを追加",
   "@addServer": {
     "description": "Add server button label / dialog title"
@@ -94,18 +80,6 @@
   "@save": {
     "description": "Save button label"
   },
-  "initializing": "初期化中...",
-  "@initializing": {
-    "description": "Shown on splash while app initializes"
-  },
-  "createdBy": "NetherDev によって作成",
-  "@createdBy": {
-    "description": "Badge text on splash screen"
-  },
-  "bedrockBridge": "Bedrockブリッジ",
-  "@bedrockBridge": {
-    "description": "Subtitle on splash screen"
-  },
   "clientDisconnected": "クライアントが切断されました: ブロードキャストを停止しました",
   "@clientDisconnected": {
     "description": "Snackbar shown when clients disconnect automatically"
@@ -119,14 +93,6 @@
     "description": "Validation message when port is invalid"
   },
   "dataSentToServers": "データをMCCompanionのサーバーに送信しました",
-  "broadcastingStarted": "ブロードキャストを開始しました",
-  "@broadcastingStarted": {
-    "description": "Snackbar shown when broadcasting starts"
-  },
-  "broadcastStopped": "ブロードキャストを停止しました",
-  "@broadcastStopped": {
-    "description": "Snackbar shown when broadcasting stops"
-  },
   "selectedServer": "📋 選択中: {name}",
   "@selectedServer": {
     "description": "Shown when a saved server is selected",
@@ -141,10 +107,6 @@
       "name": {}
     }
   },
-  "noLogsToCopy": "コピーするログがありません",
-  "@noLogsToCopy": {
-    "description": "Shown when user tries to copy logs but none exist"
-  },
   "copiedLogs": "{count} 件のログをクリップボードにコピーしました",
   "@copiedLogs": {
     "description": "Shown after copying logs to clipboard",
@@ -153,14 +115,10 @@
     }
   },
   "debugEnabled": "デバッグログを有効にしました",
-  "debugDisabled": "デバッグログを無効にしました",
   "@debugEnabled": {
     "description": "Shown when debug logging is enabled/disabled"
   },
-  "howToUseTitle": "MCCompanion の使い方",
   "iUnderstand": "理解しました",
-  "playOnSwitchTitle": "Nintendo Switch で遊ぶ",
-  "playWithFriendsTitle": "友達と遊ぶ",
   "playInstructionsSwitch": "選択中: {relayName}\r\n\r\n接続方法:\r\n1. Switch の設定を開き、DNS を次に変更します: {relayIp}\r\n2. Minecraft を開き、リストからサーバーを選択します（Cubecraft や Hive など）。\r\n3. これで自動的に自分のサーバーへ送られます。",
   "@playInstructionsSwitch": {
     "description": "DNS instructions shown for Nintendo Switch mode",
@@ -169,53 +127,16 @@
       "relayIp": {}
     }
   },
-  "playInstructionsFriends": "接続方法:\r\n1. コンソールで {friend} をフレンドとして追加します。\r\n2. Minecraft を開き、Friends タブに移動します。\r\n3. LAN Worlds の下にある自分のサーバーを探し、選択して参加します。",
-  "@playInstructionsFriends": {
-    "description": "Instructions shown for Friends mode",
-    "placeholders": {
-      "friend": {}
-    }
-  },
-  "nldServerLabel": "MCCompanion サーバー",
-  "@nldServerLabel": {
-    "description": "Label text above the relay selector"
-  },
-  "selectRelayLabel": "relay を選択 {name}",
-  "@selectRelayLabel": {
-    "description": "Accessibility label for relay selection button",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "noSavedServers": "保存されたサーバーはありません",
   "savedServers": "保存されたサーバー",
-  "serverAddressHint": "サーバーアドレス",
-  "portHint": "ポート",
   "manageServers": "サーバーを管理",
-  "manageServersTooltip": "サーバーを管理",
   "stopBroadcasting": "ブロードキャスト停止",
   "startNintendoMode": "Nintendo モード開始",
   "startFriendsMode": "Friends モード開始",
   "startBroadcasting": "ブロードキャスト開始",
-  "modeLabel": "モード",
   "labelXbox": "Xbox/PS4-5",
   "labelNintendo": "Nintendo",
   "labelFriends": "友達",
-  "nintendoInfoTitle": "Nintendo Switch DNS モード",
-  "nintendoInfoText": "Nintendo モードで開始し、DNS を設定して注目サーバーに参加します。",
-  "friendModeTitle": "フレンドモード",
-  "friendModeText": "MCCompanion のフレンド bot をフレンドとして追加します。Friends モードを開始して遊びましょう",
-  "selectedRelayCheck": "選択済み",
-  "@selectedRelayCheck": {
-    "description": "Small label used when a relay is selected"
-  },
-  "relayFallbackWarning": "警告: 元の relay が応答しませんでした。代替 relay を使用中です: {name}",
-  "@relayFallbackWarning": {
-    "placeholders": {
-      "name": {}
-    }
-  },
-  "relayUnableConnect": "どの MCCompanion relay サーバーにも接続できません。後でもう一度試すか、インターネット接続を確認してください。",
   "howToXboxTitle": "Xbox / PS4-5 (LAN / プロキシ)",
   "@howToXboxTitle": {
     "description": "Title for the Xbox / PS4-5 how-to modal"
@@ -236,10 +157,6 @@
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
-  "howToNintendoBody": "Nintendo Switch: DNS モード（手順）:\r\n1. アプリで \"Nintendo\" モードを有効にし、Relay Server（EU または US）を選択します。\r\n2. \"Send DNS Config\" をタップして DNS IP を relay に送信します。\r\n3. Nintendo Switch で System Settings → Internet → Internet Settings → （使用中のネットワーク）→ Change Settings → DNS に進み、Primary DNS を relay IP に設定します。\r\n4. Minecraft を開いて公開サーバーに参加すると、relay DNS を使って自分のサーバーへリダイレクトされます。\r\nメモ:\r\n- DNS モードは LAN サーバーをブロードキャストせず、ゲーム通信を relay 経由でルーティングします。\r\n- 通常のネットワーク動作が必要な場合は、完了後に DNS を元に戻してください。",
-  "@howToNintendoBody": {
-    "description": "Detailed steps for Nintendo Switch DNS setup"
-  },
   "howToFriendsTitle": "Friends モード",
   "@howToFriendsTitle": {
     "description": "Title for the Friends-mode how-to modal"
@@ -247,10 +164,6 @@
   "howToFriendsSubtitle": "友達を招待して LAN 経由で参加",
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
-  },
-  "howToFriendsBody": "フレンドモード: 簡単な手順:\r\n1. 必要に応じて、コンソールまたはプラットフォームで MCCompanion のフレンドアカウントを追加します。\r\n2. アプリでフレンドモードを有効にし、relay 設定を送信します（該当する場合）。\r\n3. コンソールで Minecraft → Friends を開き、LAN Worlds を探します。そこに LAN ワールドとして自分のサーバーが表示されるはずです。\r\n4. それを選択して、友達と一緒に自分のサーバーへ参加します。\r\nメモ:\r\n- 自分と友達の両方が、フレンド表示を許可する同じ NAT/設定になっていることを確認してください。\r\n- フレンドモードはプラットフォームのフレンド機能に依存し、フレンド申請の承認が必要な場合があります。",
-  "@howToFriendsBody": {
-    "description": "Detailed steps for Friends mode"
   },
   "helpMCCompanionTitle": "MCCompanion が表示されない",
   "@helpMCCompanionTitle": {
@@ -308,29 +221,14 @@
   "@changeLanguage": {
     "description": "Label for the language button in the bottom nav"
   },
-  "useSystemLanguage": "システム言語を使用",
-  "@useSystemLanguage": {
-    "description": "Button that resets localization to the system/default locale"
-  },
   "updateAvailable": "アップデートがあります",
-  "needSameWifi": "MCCompanion を実行している端末は、Minecraft をプレイするコンソールと同じ Wi‑Fi ネットワーク上にある必要があります。",
   "active": "アクティブ",
-  "newVersion": "アプリの新しいバージョンが利用できます。\n最新の機能と修正のため、今すぐ更新してください。",
-  "noServerYet": "保存されたサーバーはまだありません。\n追加するには「管理」をタップしてください。",
-  "beforeYouStart": "始める前に",
   "stop": "停止",
-  "later": "後で",
   "continueAnyway": "このまま続行",
-  "serverNotSelected": "サーバーが選択されていません",
   "noWifi": "Wi‑Fi に接続されていません",
   "vpnDetected": "VPN が検出されました",
-  "ready": "準備完了",
   "vpnActive": "VPN が有効になっていることを検出しました。\n\nMCCompanion を使用する前に VPN を無効にしてください。そうしないと、LAN ブロードキャストがコンソールに届かない可能性があります。",
-  "updateNow": "今すぐ更新",
-  "needSubscription": "各コンソールには有効なオンライン加入サービス（Xbox Live、PS Plus、NSO）が必要です。ない場合、MCCompanion は表示されません。",
   "mobileActive": "検出: モバイルデータ\n\nMCCompanion はコンソールと同じネットワーク上にある必要があります。続行する前に、自宅の Wi‑Fi またはホットスポットに接続してください。",
-  "sameWifi": "同じ Wi‑Fi ネットワーク",
-  "subscription": "オンライン加入が必要",
   "couldNotOpenUrl": "URL を開けませんでした",
   "@couldNotOpenUrl": {
     "description": "Snackbar message when launching an external URL fails"
@@ -355,27 +253,20 @@
   "statusOnline": "オンライン",
   "statusOffline": "オフライン",
   "statusChecking": "確認中...",
-  "notificationsOn": "通知オン",
-  "notificationsOff": "通知オフ",
   "failedUpdateNotifications": "通知の更新に失敗しました",
   "editServerTitle": "サーバーを編集",
   "serverNameHint": "サーバー名",
   "failedSave": "保存に失敗しました。もう一度試してください。",
   "serverRenamed": "サーバー名を変更しました",
   "customizeLabel": "カスタマイズ",
-  "customizeSubtitle": "タイルを並び替えてナビゲーションをカスタマイズ",
+  "customizeSubtitle": "ナビゲーションバーと色",
   "resetLabel": "リセット",
-  "tilesSection": "タイル",
-  "dragToReorder": "ドラッグして並び替え",
   "navigationSection": "ナビゲーション",
-  "navFixed": "ホーム、コネクター、プロフィールは常に固定されています",
-  "leftSlot": "左スロット（ホームの隣）",
-  "rightSlot": "右スロット（プロフィールの隣）",
-  "tileWideTooltipRemove": "ワイドレイアウトを解除",
-  "tileWideTooltipAdd": "ワイドタイルにする",
-  "tileVisibilityShow": "タイルを表示",
-  "tileVisibilityHide": "タイルを非表示",
-  "tileVisibilityMin": "非表示にできません（最後のタイル）",
+  "navFixed": "Connector とプロフィールは常に固定です",
+  "leftSlot": "Slot 2",
+  "outerSlot": "Slot 1",
+  "rightSlot": "Slot 3",
+  "farSlot": "Slot 4",
   "colorPickerApply": "適用",
   "colorPickerHex": "Hex",
   "textColorSection": "テキストカラー",
@@ -398,7 +289,6 @@
   "playerLookupLabelFloodgate": "Floodgate",
   "accountSubtitleXbox": "Xbox · {xuid}",
   "accountSubtitleJava": "Java Edition · {uuid}",
-  "avatarUrlHint": "https://example.com/avatar.png",
   "chooseUniqueUsername": "ユニークなユーザー名を選んで始めましょう。",
   "usernameFieldLabel": "ユーザー名",
   "usernameExampleHint": "例: CoolPlayer123",
@@ -409,7 +299,6 @@
   "usernameFormatError": "ユーザー名は3〜20文字で、英数字とアンダースコアのみ使用できます",
   "usernameTaken": "このユーザー名はすでに使用されています",
   "noConnectionError": "接続がありません。インターネットを確認して再試行してください。",
-  "home": "ホーム",
   "info": "情報",
   "navProfile": "プロフィール",
   "serverRemoved": "{name} を削除しました",
@@ -421,10 +310,6 @@
   "aboutMCCompanionSection": "About MCCompanion",
   "@aboutMCCompanionSection": {
     "description": "Section header for About MCCompanion in Info sheet"
-  },
-  "aboutMe": "About me",
-  "@aboutMe": {
-    "description": "Label for bio/about-me row in profile display"
   },
   "aboutSectionLabel": "About",
   "@aboutSectionLabel": {
@@ -446,13 +331,6 @@
   "@alreadyFriendsMsg": {
     "description": "Error when already friends with user (public profile)"
   },
-  "alreadyFriendsWith": "You are already friends with {name}",
-  "@alreadyFriendsWith": {
-    "description": "Error when already friends with user",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "alreadyHaveAccount": "Already have an account? Sign in",
   "@alreadyHaveAccount": {
     "description": "Toggle to switch back to sign-in mode"
@@ -473,10 +351,6 @@
   "@appleSignInFailed": {
     "description": "Error when Apple sign-in fails"
   },
-  "avatarUrlLabel": "Avatar URL",
-  "@avatarUrlLabel": {
-    "description": "Label for avatar URL field"
-  },
   "bioHint": "Tell others about yourself…",
   "@bioHint": {
     "description": "Hint text for bio field"
@@ -485,20 +359,9 @@
   "@bioLabel": {
     "description": "Label for bio field"
   },
-  "cannotSendRequest": "Cannot send a request to {name}",
-  "@cannotSendRequest": {
-    "description": "Error when user is blocked or request is not allowed",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "cannotSendRequestMsg": "Cannot send a request to this user.",
   "@cannotSendRequestMsg": {
     "description": "Error when friend request is blocked (public profile)"
-  },
-  "checkBackLater": "Check back later.",
-  "@checkBackLater": {
-    "description": "Secondary empty state text on partner servers screen"
   },
   "chooseUsernameSubtitle": "他のプレイヤーが見つけられるように、ユーザー名を決めましょう。",
   "@chooseUsernameSubtitle": {
@@ -630,13 +493,6 @@
   "@friendRequestSent": {
     "description": "Toast shown after friend request is sent from public profile"
   },
-  "friendRequestSentTo": "Friend request sent to {name}",
-  "@friendRequestSentTo": {
-    "description": "Toast when a friend request is sent",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "googleSignInFailed": "Google sign-in failed. Please try again.",
   "@googleSignInFailed": {
     "description": "Error when Google sign-in fails"
@@ -681,10 +537,6 @@
   "@linkXbox": {
     "description": "Button to link an Xbox/Bedrock account"
   },
-  "linkedAccountsTitle": "Linked Accounts",
-  "@linkedAccountsTitle": {
-    "description": "Section title for linked accounts card"
-  },
   "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -701,10 +553,6 @@
   "@nldServerLabelShort": {
     "description": "Section label above relay selector in More sheet"
   },
-  "noAccountForEmail": "No account found for that email address",
-  "@noAccountForEmail": {
-    "description": "Error when no account exists for the email"
-  },
   "noAccountYet": "Don't have an account? Create one",
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
@@ -717,17 +565,9 @@
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
   },
-  "noPartnerServers": "No partner servers available yet.",
-  "@noPartnerServers": {
-    "description": "Empty state text on partner servers screen"
-  },
   "noPendingRequests": "No pending requests",
   "@noPendingRequests": {
     "description": "Empty state title on requests tab"
-  },
-  "noServerSelected": "No server selected",
-  "@noServerSelected": {
-    "description": "Placeholder when no server is entered in connection panel"
   },
   "nowFriendsWith": "Now friends with @{username}",
   "@nowFriendsWith": {
@@ -753,10 +593,6 @@
   "orDivider": "or",
   "@orDivider": {
     "description": "Divider text between email and social sign-in"
-  },
-  "partnerServersTitle": "Partner Servers",
-  "@partnerServersTitle": {
-    "description": "Title for the partner servers screen"
   },
   "passwordHint": "Password",
   "@passwordHint": {
@@ -813,18 +649,6 @@
   "@playerLookupSubtitle": {
     "description": "Subtitle/hint on player lookup screen"
   },
-  "playerLookupTitle": "Player Lookup",
-  "@playerLookupTitle": {
-    "description": "Title of the player lookup screen"
-  },
-  "playersCount": "{players} / {max} players",
-  "@playersCount": {
-    "description": "Player count label on tracked server card",
-    "placeholders": {
-      "players": {},
-      "max": {}
-    }
-  },
   "portFieldLabel": "Port",
   "@portFieldLabel": {
     "description": "Port field label in edit server form"
@@ -841,10 +665,6 @@
   "@privacyPolicySubtitle": {
     "description": "Privacy Policy tile subtitle"
   },
-  "profileCardTitle": "Profile",
-  "@profileCardTitle": {
-    "description": "Title for the edit profile card"
-  },
   "profileNotSetUp": "Profile not set up",
   "@profileNotSetUp": {
     "description": "Title when user is authenticated but has no profile"
@@ -856,10 +676,6 @@
   "profileUpdated": "Profile updated",
   "@profileUpdated": {
     "description": "Toast shown after profile is saved"
-  },
-  "publicProfileTitle": "Profile",
-  "@publicProfileTitle": {
-    "description": "AppBar title fallback for public profile when username not loaded"
   },
   "relay": "Relay",
   "@relay": {
@@ -956,13 +772,6 @@
       "name": {}
     }
   },
-  "requestAlreadyPending": "A request to {name} is already pending",
-  "@requestAlreadyPending": {
-    "description": "Error when friend request is already pending",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "requestAlreadyPendingMsg": "There is already a pending request.",
   "@requestAlreadyPendingMsg": {
     "description": "Error when friend request is already pending (public profile)"
@@ -1001,10 +810,6 @@
   "@selectBedrockAccount": {
     "description": "Title of the Bedrock account picker bottom sheet"
   },
-  "selectModeSection": "SELECT MODE",
-  "@selectModeSection": {
-    "description": "Section label above mode chips in connection panel"
-  },
   "send": "Send",
   "@send": {
     "description": "Send button label"
@@ -1025,7 +830,7 @@
   "@serverNameExampleHint": {
     "description": "Example hint text for server name field"
   },
-  "serversSection": "SERVERS",
+  "serversSection": "Servers",
   "@serversSection": {
     "description": "Section label above servers panel in connection panel"
   },
@@ -1036,10 +841,6 @@
   "signOut": "Sign Out",
   "@signOut": {
     "description": "Sign out button label"
-  },
-  "skinsCouldNotLoad": "Could not load skins",
-  "@skinsCouldNotLoad": {
-    "description": "Error text when recent skins cannot be loaded"
   },
   "skinsCreate": "Create",
   "@skinsCreate": {
@@ -1053,10 +854,6 @@
   "@skinsEdit": {
     "description": "Edit button in skin detail sheet"
   },
-  "skinsEmptyMySkins": "No saved skins yet. Upload or create one!",
-  "@skinsEmptyMySkins": {
-    "description": "Empty state text for saved skins section"
-  },
   "skinsInvalidFile": "Invalid image file",
   "@skinsInvalidFile": {
     "description": "Error when the selected file is not a valid image"
@@ -1064,42 +861,6 @@
   "skinsMustBe64": "Skin must be 64×64 pixels",
   "@skinsMustBe64": {
     "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsNoAccountsSubtitle": "Link a Java or Bedrock account to view your skins.",
-  "@skinsNoAccountsSubtitle": {
-    "description": "Subtitle when no Minecraft accounts are linked"
-  },
-  "skinsNoAccountsTitle": "No Minecraft accounts linked",
-  "@skinsNoAccountsTitle": {
-    "description": "Title when no Minecraft accounts are linked"
-  },
-  "skinsPageOf": "Page {page} of {total}",
-  "@skinsPageOf": {
-    "description": "Pagination label on skins screen",
-    "placeholders": {
-      "page": {},
-      "total": {}
-    }
-  },
-  "skinsSectionMy": "MY SKINS",
-  "@skinsSectionMy": {
-    "description": "Section label for saved/local skins"
-  },
-  "skinsSectionRecent": "RECENT SKINS",
-  "@skinsSectionRecent": {
-    "description": "Section label for recent Geyser skins"
-  },
-  "skinsSectionYours": "YOUR SKINS",
-  "@skinsSectionYours": {
-    "description": "Section label for the user's linked account skins"
-  },
-  "skinsSignInSubtitle": "Sign in and link your Minecraft accounts to see your skins here.",
-  "@skinsSignInSubtitle": {
-    "description": "Subtitle when user is not signed in on skins screen"
-  },
-  "skinsSignInTitle": "Sign in to view your skins",
-  "@skinsSignInTitle": {
-    "description": "Title when user is not signed in on skins screen"
   },
   "skinsUpload": "Upload",
   "@skinsUpload": {
@@ -1109,18 +870,6 @@
   "@somethingWentWrong": {
     "description": "Generic error message"
   },
-  "tabFriends": "Friends",
-  "@tabFriends": {
-    "description": "Tab label for Friends tab"
-  },
-  "tabProfile": "Profile",
-  "@tabProfile": {
-    "description": "Tab label for Profile tab"
-  },
-  "tabRequests": "Requests",
-  "@tabRequests": {
-    "description": "Tab label for Requests tab"
-  },
   "termsOfService": "利用規約",
   "@termsOfService": {
     "description": "Terms of Service tile title"
@@ -1129,11 +878,7 @@
   "@termsOfServiceSubtitle": {
     "description": "Terms of Service tile subtitle"
   },
-  "today": "Today",
-  "@today": {
-    "description": "Date divider label for today"
-  },
-  "trackerLimitReached": "You've reached your server limit. Upgrade to track more servers.",
+  "trackerLimitReached": "サーバー上限に達しました",
   "@trackerLimitReached": {
     "description": "Banner shown when tracker slot limit is reached"
   },
@@ -1161,24 +906,9 @@
   "@userNotFound": {
     "description": "Text shown when a user profile cannot be found"
   },
-  "userNotFoundMsg": "User {name} not found",
-  "@userNotFoundMsg": {
-    "description": "Error when user is not found",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "userNotFoundMsg2": "User not found.",
   "@userNotFoundMsg2": {
     "description": "Error when user not found sending friend request from public profile"
-  },
-  "usernameDisplayLabel": "Username",
-  "@usernameDisplayLabel": {
-    "description": "Label for username row in profile display"
-  },
-  "usernameHint": "Username",
-  "@usernameHint": {
-    "description": "Hint text for username input"
   },
   "usernameRowLabel": "Username",
   "@usernameRowLabel": {
@@ -1244,14 +974,6 @@
   "@xboxYourCode": {
     "description": "Label above the Microsoft device code"
   },
-  "yesterday": "Yesterday",
-  "@yesterday": {
-    "description": "Date divider label for yesterday"
-  },
-  "youPrefix": "You",
-  "@youPrefix": {
-    "description": "Prefix for last message preview when message is from current user"
-  },
   "yourNameHint": "Your name",
   "@yourNameHint": {
     "description": "Hint text for display name field"
@@ -1272,26 +994,13 @@
   "javaCodeExpired": "The code expired. Please try again.",
   "javaSomethingWrong": "Something went wrong. Please try again.",
   "javaCodeCopied": "Code copied to clipboard",
-  "splashFeatureConnect": "Connect",
-  "splashFeatureFriends": "Friends",
-  "splashFeatureChat": "Chat",
-  "splashFeatureSkins": "Skins",
   "featureLabelConnector": "コネクター",
   "featureLabelSkins": "スキン",
   "featureLabelPartners": "サーバー一覧",
   "featureLabelLookup": "検索",
   "featureLabelTracker": "サーバートラッカー",
-  "featureSubtitleConnector": "コンソールをMinecraftに接続",
-  "featureSubtitleSkins": "Minecraftスキンの閲覧と管理",
-  "featureSubtitlePartners": "注目サーバー",
-  "featureSubtitleLookup": "JavaとBedrockプロフィールを検索",
-  "featureSubtitleTracker": "サーバー状態を監視して通知を受け取る",
   "userSearchHint": "ユーザー名、ゲーマータグまたはJava名…",
   "userSearchSub": "ユーザー名、Xboxゲーマータグ、Java名で検索",
-  "onlineStatus": "オンライン",
-  "@onlineStatus": {
-    "description": "Label shown when a friend is online"
-  },
   "upgradeWindowsHint": "Microsoft Storeでアップグレードできます",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
@@ -1330,9 +1039,6 @@
   "feedbackDescribeIdea": "アイデアを説明してください",
   "feedbackDescHintBug": "バグの詳細を説明してください: 何をしたか、何を期待したか、実際に何が起きたか",
   "feedbackDescHintFeature": "何を望んでいるか、なぜ役立つかを説明してください。",
-  "feedbackEmailLabel": "メールアドレス",
-  "feedbackEmailHint": "ご連絡できるよう",
-  "feedbackEmailNote": "メールアドレスが公開されることはありません。",
   "feedbackSubmitBug": "バグ報告を送信",
   "feedbackSubmitFeature": "機能リクエストを送信",
   "feedbackDisclaimer": "チームに届きます · パスワードは書かないでください",
@@ -1342,12 +1048,8 @@
   "feedbackBackToApp": "アプリに戻る",
   "feedbackTitleTooShort": "タイトルは5文字以上必要です。",
   "feedbackDescTooShort": "説明は10文字以上必要です。",
-  "feedbackEmailInvalid": "有効なメールアドレスを入力してください。",
-  "@feedbackEmailInvalid": {
-    "description": "Validation error when email is missing or invalid"
-  },
   "feedbackSubmitFailed": "送信に失敗しました。もう一度お試しください。",
-  "feedbackTileTitle": "バグを報告したり機能を提案したりする",
+  "feedbackTileTitle": "フィードバック",
   "feedbackTileSubtitle": "MCCompanionの改善にご協力ください",
   "friendsHowToStep1": "スマートフォンまたはコンソールでXboxアプリを開く。",
   "friendsHowToStep2": "下記のボットをXboxで友達に追加する。",
@@ -1367,11 +1069,6 @@
   "skinMenuExport": "エクスポート",
   "skinMenuDelete": "削除",
   "rpScreenTitle": "リソースパック",
-  "rpWhatIsThis": "これは何ですか？",
-  "rpExplanation": "リソースパックはコンソール上のMinecraftの見た目を変えます: 新しいブロック、色、サウンド。下に.mcpackファイルのリンクを貼り付け、有効にして保存してください。MCCompanionは接続のたびに自動的に読み込みます。",
-  "rpPackUrlLabel": "パックURL",
-  "rpPackUrlHint": "https://example.com/pack.mcpack",
-  "rpEnableToggle": "リソースパックを有効にする",
   "rpWhatWorks": "動作するもの",
   "rpSupportedBedrockOnly": "統合版のみ（.mcpack または .zip）",
   "rpSupportedBedrockOnlyHint": "Java版パックはコンソールでは動作しません。",
@@ -1383,39 +1080,28 @@
   "rpUnsupportedAddonsHint": "動作することもありますが、公式にはサポートされていません。自己責任でご使用ください。",
   "rpConsolePerformanceTitle": "コンソールのパフォーマンス",
   "rpConsolePerformanceBody": "高解像度テクスチャパックはコンソールでのラグやクラッシュを引き起こす可能性があります。問題が発生した場合は、低解像度のパックに切り替えるか、パックがサポートしている場合は軽量なサブパックを選択してください。",
-  "rpWhatDoesntWork": "動作しないもの",
-  "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
-  "rpWorksCloudflare": "Cloudflare R2 / AWS S3 パブリックバケット",
-  "rpWorksDirect": ".mcpack または .zip で終わる直接HTTPSリンク",
   "rpNoDiscord": "Discordリンク: .mcpack 拡張子がなく、数時間で期限切れになります",
   "rpNoDrive": "Google Drive / Dropbox 共有リンク: 直接ダウンロードではありません",
   "rpNoEncrypted": "暗号化またはパスワード保護されたパックのサーバー",
   "rpWarnDiscord": "DiscordリンクはExpireし、動作しなくなります。代わりに永続的なホストを使用してください。",
   "rpWarnHttps": "URLはhttps://で始まる必要があります",
   "rpWarnExtension": "URLは.mcpackまたは.zipで終わる必要があります",
-  "rpToastEnterUrl": "リソースパックを有効にする前にURLを入力してください。",
   "rpToastSaved": "リソースパックの設定を保存しました。",
   "rpClearMinecraftTitle": "このパックを初めて使う？",
-  "rpClearMinecraftBody": "Minecraftはリソースパックをローカルにキャッシュします。MCCompanionのリソースパックを有効にする前にこのサーバーに接続したことがある場合、Minecraftはシュートダウンをキャッシュしており、マージ後のバージョンを再ダウンロードしません。",
   "rpClearStep1": "コンソールでMinecraftを開き、設定 → ストレージに移動する",
   "rpClearStep2": "リソースパックの横の「クリア」または「リセット」をタップ: ローカルにキャッシュされたパックがすべて削除されます",
   "rpClearStep3": "MCCompanion経由で再接続する: 結合されたパックが自動的にダウンロードされます",
   "rpRelayTitle": "パックがおかしく見える？",
   "rpRelayBody": "リレーはオーバーレイURLをキーとして結合されたパックを1時間キャッシュします。新しい結合を強制するには：パックURLを少し変更（例：末尾に?v=2を追加）して保存してください。その後、MinecraftのパックキャッシュもクリアしてくださいQ, 結合されたパックは引き続きサーバーのUUIDを使用するため、そのままではMinecraftが古いキャッシュ版を表示します。",
-  "rpWorksGithubHint": "直接ダウンロードリンク: 常にアクセス可能",
-  "rpWorksCloudflareHint": "パブリッククラウドストレージ: 高速かつ信頼性が高い",
-  "rpWorksDirectHint": "公開されたHTTPS .mcpackまたは.zip URL",
   "rpNoDiscordHint": "Discord CDNのリンクは短時間で期限切れになります",
   "rpNoDriveHint": "直接ダウンロードなし: プレビューページにリダイレクトされます",
   "rpNoEncryptedHint": "MCCompanionは暗号化されたパックを結合できません",
   "rpClearWhy": "MinecraftはリソースパックをUUIDでキャッシュします。結合されたパックはサーバーの元のUUIDを保持します, MCCompanionを有効にする前のセッションでMinecraftがサーバーのパックをキャッシュしていた場合、新しい結合バージョンをダウンロードしません。キャッシュをクリアして、Minecraftが新しい結合パックを読み込むようにしてください。",
   "rpUploadTab": "Upload",
-  "rpUrlTab": "URL",
   "rpUploadButton": "Tap to select your pack",
   "rpUploadHint": ".mcpack or .zip • max 100 MB",
   "rpUploading": "Uploading...",
   "rpMergerTitle": "RPマージャー",
-  "rpMergerSubtitle": "最大4つのリソースパックを統合",
   "rpMergerPriorityHint": "最上位のパックが最高優先度: そのファイルが競合に勝ちます。",
   "rpMergerTopBadge": "TOP",
   "rpMergerAddPacks": "リソースパックを追加",
@@ -1423,12 +1109,7 @@
   "rpMergerFileTypes": ".zip または .mcpack",
   "rpMergerMerging": "マージ中…",
   "rpMergerButton": "{count}個のパックをマージ",
-  "rpMergerComplete": "マージ完了！",
-  "rpMergerConflicts": "{count}件の競合が解決: 最上位パックが勝ちました。",
-  "rpMergerSetActive": "アクティブなリソースパックに設定",
   "rpMergerSetActiveToast": "アクティブなリソースパックに設定しました",
-  "rpMergerOpenButton": "リソースパックをマージ",
-  "rpMergerOpenSubtitle": "2〜4個のパックを1つに統合",
   "rpDisabled": "無効",
   "rpNoPackSelected": "リソースパックが選択されていません",
   "rpActiveOnConnect": "有効, 接続時に適用されます",
@@ -1439,7 +1120,6 @@
   "rpDropToUpload": "ドロップしてアップロード",
   "rpTabBrowseInfo": "MCCompanionが厳選したパックを閲覧できます。「使用」をタップすると即座にパックを有効化できます, アップロードやリンク不要。",
   "rpTabUploadInfo": "独自の.mcpackまたは.zipファイルをアップロードします。MCCompanionがクラウドに安全に保存し、接続のたびにコンソールに送信します。",
-  "rpTabUrlInfo": ".mcpackまたは.zipファイルへの直接ダウンロードリンクを貼り付けます。URLは公開アクセス可能である必要があります, DiscordやGoogleドライブのリンクは使用不可。",
   "rpTabMergeInfo": "2〜4つのパックを1つに統合します。統合されたパックはMCCompanion Cloudにアップロードされ、自動的に有効化されます。",
   "shareLabel": "シェア",
   "sectionMinecraftAccounts": "Minecraftアカウント",
@@ -1466,18 +1146,10 @@
   "onboardingNavSubtitle": "ナビゲーションバーに2つの機能を選択してください。",
   "onboardingNavLeftLabel": "左ボタン",
   "onboardingNavRightLabel": "右ボタン",
-  "onboardingNavPreviewHome": "ホーム",
   "onboardingNavPreviewConnector": "接続",
   "onboardingNavPreviewProfile": "プロフィール",
   "onboardingNavPreviewEmpty": "空",
-  "onboardingStartTitle": "スタートページ",
-  "onboardingStartSubtitle": "起動するたびにここが開きます。",
   "onboardingCustomizeDetail": "詳しくカスタマイズ →",
-  "startPageHome": "ホーム",
-  "startPageHomeSubtitle": "タイル付きのホーム画面を表示",
-  "startPageFeature": "機能",
-  "startPageFeatureSubtitle": "特定のページを直接開く",
-  "startPageSectionLabel": "スタートページ",
   "rpPackInfo": "詳細",
   "@rpPackInfo": {
     "description": "rpPackInfo label"
@@ -1499,10 +1171,6 @@
       }
     }
   },
-  "rpPackDetailTitle": "パックの詳細",
-  "@rpPackDetailTitle": {
-    "description": "rpPackDetailTitle label"
-  },
   "skinsSavedToMySkins": "マイスキンに保存しました",
   "skinsDownloadFailed": "ダウンロードに失敗しました",
   "skinsDeletedFromCloud": "クラウドから削除しました",
@@ -1511,9 +1179,6 @@
   "skinsUploading": "アップロード中…",
   "skinUploaded": "スキンをアップロードしました！",
   "skinUploadFailed": "アップロードに失敗しました: {error}",
-  "skinsTabSkins": "スキン",
-  "skinsTabRecent": "最近",
-  "skinsEmptyCloudSkins": "クラウドスキンはまだありません。スキンをアップロードするとここに表示されます。",
   "skinsEmptyLocalSkins": "スキンはまだありません。スキンを作成またはアップロードして始めましょう。",
   "skinUploadToWebsite": "ウェブサイトにアップロード",
   "skinReuploadToWebsite": "ウェブサイトに再アップロード",
@@ -1521,7 +1186,6 @@
   "skinCloudSaveToDevice": "デバイスに保存",
   "skinCloudDelete": "クラウドから削除",
   "skinsTabGallery": "ギャラリー",
-  "skinsGalleryEmpty": "まだコミュニティスキンはありません。",
   "skinsTopLabel": "トップ30",
   "skinsAllLabel": "すべてのスキン",
   "skinUploadToCloud": "クラウドにアップロード",
@@ -1656,12 +1320,9 @@
   "feedbackLoginRequiredTitle": "フィードバックを送信するにはログインしてください",
   "feedbackLoginRequiredBody": "フィードバックはMCCompanionアカウントに紐づけられ、アプリ内で直接返信できます。",
   "feedbackLoginButton": "ログイン",
-  "reportBug": "フィードバック",
   "rpBehaviorContentWarning": "このパックにはビヘイビアーパックのデータが含まれており、サーバーでは動作しません。テクスチャは引き続き使えます。",
   "rpInvalidPackFormat": "これはJava Editionのパックのため対応していません。Bedrock Editionのリソースパックを使用してください。",
   "supportInboxTitle": "サポート受信箱",
-  "supportInboxSubtitle": "すべてのサポートチャットを管理者全員で共有",
-  "adminBadge": "管理者",
   "skinShareSubject": "Minecraft スキン",
   "skinEditorTitle": "スキンエディター",
   "skinToolUndo": "元に戻す",
@@ -1690,7 +1351,6 @@
   "supportInboxShared": "管理者全員で共有",
   "supportInboxEmpty": "サポートのやり取りはまだありません",
   "supportReplyingAs": "MCCompanion Support として返信中",
-  "supportReplyHint": "サポートとして返信…",
   "relayBlocked": "あなたの IP またはアカウントは MCCompanion によりブロックされています。心当たりがなければ Discord までお越しください。",
   "relayBlockedWithReason": "あなたの IP またはアカウントは MCCompanion によりブロックされています。\n理由: {reason}\n心当たりがなければ Discord までお越しください。",
   "relayConfigFailed": "リレーを設定できませんでした（ステータス {code}）。別のリレーを試すか、Discord までお越しください。",
@@ -1719,8 +1379,6 @@
   "notifFeedbackReply": "フィードバックへの返信",
   "adminTicketsHeader": "報告とリクエスト",
   "adminTicketReplyHint": "このチケットについて返信…",
-  "adminNoTicketsForUser": "このユーザーのチケットはありません",
-  "undo": "元に戻す",
   "chooseServerTitle": "サーバーを選ぶ",
   "changeLabel": "変更",
   "howToAutoShow": "開始時にこれを表示",
@@ -1740,14 +1398,6 @@
   "shareServerLabel": "サーバーを共有",
   "shareServerOn": "フレンドにいるサーバーが見えます",
   "shareServerOff": "フレンドにはプレイ中とだけ表示されます",
-  "makeDefaultServer": "デフォルトのサーバーに設定",
-  "isDefaultServer": "デフォルトで開きます",
-  "defaultServerSet": "今後は {name} がデフォルトで開きます",
-  "labelDirect": "プロキシ/ダイレクト",
-  "startDirectMode": "プロキシ/ダイレクトモードを開始",
-  "howToDirectTitle": "プロキシ/ダイレクトモード",
-  "howToDirectSubtitle": "当方のサーバーを経由せずにプレイ",
-  "howToDirectBody": "プロキシ/ダイレクトモード: 接続そのものが端末です。\n1. MCCompanion を動かしている端末とコンソールが同じローカルネットワークにあることを確認します。\n2. Bedrock サーバーのアドレスとポートを入力し、「プロキシ/ダイレクトモードを開始」を押します。\n3. コンソールで Minecraft → プレイ → フレンドタブを開き、一覧を更新します。\n4. 「MCCompanion」という名前の LAN サーバーを選んで参加します。\n\nこのモードがある理由:\n- MCCompanion のサーバーを一切経由しません。通信は端末自身が転送するため、当方のリレーに接続できない場合でも使えます。\n- サインインは不要です。\n\n注意点:\n- セッション中はアプリを開いたまま画面に表示しておく必要があります。閉じたり他のアプリに切り替えたりすると接続が切れます。\n- Bedrock サーバーのみ対応です。Java サーバーには、当方側でプロトコル変換を行う Java モードをお使いください。\n- 他のモードよりバッテリーを多く消費します。\n- リソースパックは適用されません。リソースパックは中継サーバーが処理しますが、このモードはそれを経由しません。",
   "directHostNotFound": "{host} が見つかりません。アドレスを確認してもう一度お試しください。",
   "@directHostNotFound": {
     "placeholders": {
@@ -1757,17 +1407,6 @@
     }
   },
   "directPortBusy": "ローカルポートを開けませんでした。先に現在の接続を停止してください。",
-  "directServerOfflineTitle": "サーバーが応答しません",
-  "directServerOfflineBody": "{target} から応答がありませんでした。オフラインの可能性もあれば、単に ping に応答しないだけの場合もあります。そのままトンネルを開始できます。",
-  "@directServerOfflineBody": {
-    "placeholders": {
-      "target": {
-        "type": "String"
-      }
-    }
-  },
-  "directStartAnyway": "それでも開始",
-  "directNoResourcePack": "プロキシ/ダイレクトモードではリソースパックは使えません。",
   "directAddressNotSupported": "{host} は IPv6 アドレスです。プロキシ/ダイレクトモードは IPv4 のみ対応しています。IPv4 アドレスかホスト名をご利用ください。",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -1819,21 +1458,15 @@
   "serverStatPeak": "最高記録",
   "serverStatUptime": "稼働率",
   "serverStatVotesMonth": "今月の投票",
-  "serverStatVotesAllTime": "累計投票",
   "serverBadgeFeatured": "注目",
   "serverEditionJava": "Java",
   "serverEditionBedrock": "Bedrock",
   "serverEditionCrossplay": "クロスプレイ",
   "serverSectionMotd": "今日のメッセージ",
-  "serverSectionAbout": "概要",
-  "serverSectionCategories": "カテゴリー",
-  "serverSectionVotes": "投票",
   "serverLinkDiscord": "Discord",
   "serverLinkWebsite": "ウェブサイト",
   "serverVotesThisMonth": "今月",
   "serverVotesAllTime": "累計",
-  "serverVoteAction": "このサーバーに投票",
-  "serverPlayAction": "このサーバーでプレイ",
   "serverVoteSignInRequired": "アプリから投票するにはログインしてください。",
   "serverVoteSheetTitle": "{name}に投票",
   "serverVoteSheetSubtitle": "報酬を受け取るために、Minecraftの名前を入力してください。",

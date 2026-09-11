@@ -10,6 +10,7 @@ import 'rp_merger_screen.dart';
 import '../l10n/app_localizations.dart';
 import '../services/auth_service.dart';
 import '../theme/app_theme.dart';
+import '../design/design.dart';
 import '../util/pack_file_picker.dart';
 import '../util/resource_pack_prefs.dart';
 import '../widgets/components/app_toast.dart';
@@ -19,6 +20,7 @@ import '../widgets/resource_pack/rp_featured_pack_card.dart';
 import '../widgets/resource_pack/rp_info_section.dart';
 import '../widgets/resource_pack/rp_tab_bar.dart';
 import '../widgets/resource_pack/rp_tab_info_box.dart';
+import '../theme/app_tokens.dart';
 
 const _kPackCategories = [
   'realism',
@@ -339,7 +341,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                       height: 36,
                       decoration: BoxDecoration(
                         color: iconColor.withValues(alpha: 0.15),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: AppRadius.small,
                       ),
                       child: Icon(icon, color: iconColor, size: 18),
                     ),
@@ -422,48 +424,31 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
       onBack: widget.onBack,
       child: Column(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              color: AppTheme.surface,
-              border: Border(
-                bottom: BorderSide(color: AppTheme.borderGray, width: 0.5),
-              ),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            child: Row(
-              children: [
-                IconButton(
-                  icon: Icon(
-                    Icons.arrow_back_ios_rounded,
-                    color: AppTheme.textSecondary,
-                    size: 18,
-                  ),
-                  onPressed: widget.onBack,
-                ),
-                Expanded(
-                  child: Text(
-                    l.rpScreenTitle,
-                    style: TextStyle(
-                      color: AppTheme.textPrimary,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-              ],
+          DsHeader(
+            title: l.rpScreenTitle,
+            leading: DsIconButton(
+              icon: Icons.arrow_back_rounded,
+              size: 36,
+              onPressed: widget.onBack,
             ),
           ),
 
           Expanded(
             child: !_loaded
                 ? Center(
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                      color: AppTheme.accent,
+                    child: SizedBox(
+                      width: 22,
+                      height: 22,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 1.8,
+                        color: DsColor.textFaint,
+                      ),
                     ),
                   )
                 : SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: DsSpace.gutter,
+                    ),
                     keyboardDismissBehavior:
                         ScrollViewKeyboardDismissBehavior.onDrag,
                     child: ConstrainedBox(
@@ -743,7 +728,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
         padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
         decoration: BoxDecoration(
           color: AppTheme.surfaceRaised,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: AppRadius.small,
           border: Border.all(
             color: _uploading
                 ? AppTheme.accent.withValues(alpha: 0.5)
@@ -821,7 +806,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
             color: active
                 ? AppTheme.accent.withValues(alpha: 0.06)
                 : AppTheme.surfaceRaised,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: AppRadius.medium,
             border: Border.all(
               color: active
                   ? AppTheme.accent.withValues(alpha: 0.6)

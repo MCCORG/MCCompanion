@@ -11,7 +11,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../theme/app_theme.dart';
-import '../widgets/components/header_nav_bar.dart';
+import '../design/design.dart';
 import '../services/auth_service.dart';
 import '../services/user_service.dart';
 import '../services/skin_upload_service.dart';
@@ -24,6 +24,7 @@ import '../constants/app_constants.dart';
 import '../widgets/components/app_toast.dart';
 import '../widgets/skins/skin_cards.dart';
 import '../widgets/skins/skin_detail_sheets.dart';
+import '../theme/app_tokens.dart';
 
 class SkinsScreen extends StatefulWidget {
   const SkinsScreen({super.key, this.onBack});
@@ -556,45 +557,46 @@ class SkinsScreenState extends State<SkinsScreen> {
         return Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-              child: Row(
-                children: [
-                  const Spacer(),
-                  HeaderNavBar(
-                    items: [
-                      HeaderNavItem(label: l.skinsUpload, onTap: _uploadSkin),
-                      HeaderNavItem(
-                        label: l.skinsCreate,
-                        onTap: () => _openEditor(null),
-                      ),
-                    ],
+              padding: EdgeInsets.zero,
+              child: DsHeader(
+                title: l.featureLabelSkins,
+                actions: [
+                  DsButton(
+                    label: l.skinsUpload,
+                    icon: Icons.upload_rounded,
+                    tone: DsButtonTone.neutral,
+                    size: DsButtonSize.small,
+                    onPressed: _uploadSkin,
+                  ),
+                  DsButton(
+                    label: l.skinsCreate,
+                    icon: Icons.add_rounded,
+                    size: DsButtonSize.small,
+                    onPressed: () => _openEditor(null),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 12),
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(16, 4, 16, 32),
+                padding: const EdgeInsets.fromLTRB(
+                  DsSpace.gutter,
+                  0,
+                  DsSpace.gutter,
+                  DsSpace.xxxl,
+                ),
                 child: Center(
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 900),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _sectionHeader(
-                          l.skinsLabel,
-                          icon: FontAwesomeIcons.shirt,
-                        ),
-                        const SizedBox(height: 10),
                         _buildAllSkins(
                           l,
                           isDesktop: isDesktop,
                           isLoggedIn: isLoggedIn,
                         ),
-                        const SizedBox(height: 24),
-                        const Divider(color: AppTheme.borderGray, thickness: 1),
-                        const SizedBox(height: 24),
+                        const SizedBox(height: DsSpace.section),
                         _buildGallerySkins(l, isDesktop: isDesktop),
                       ],
                     ),
@@ -664,9 +666,13 @@ class SkinsScreenState extends State<SkinsScreen> {
       return SizedBox(
         height: 60,
         child: Center(
-          child: CircularProgressIndicator(
-            color: AppTheme.accent,
-            strokeWidth: 2,
+          child: SizedBox(
+            width: 22,
+            height: 22,
+            child: CircularProgressIndicator(
+              strokeWidth: 1.8,
+              color: DsColor.textFaint,
+            ),
           ),
         ),
       );
@@ -742,7 +748,7 @@ class SkinsScreenState extends State<SkinsScreen> {
                           ),
                           decoration: BoxDecoration(
                             color: Colors.black.withValues(alpha: 0.55),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: AppRadius.small,
                           ),
                           child: Text(
                             '#${i + 1}',
@@ -829,9 +835,6 @@ class SkinsScreenState extends State<SkinsScreen> {
                     style: OutlinedButton.styleFrom(
                       foregroundColor: AppTheme.textSecondary,
                       side: const BorderSide(color: AppTheme.borderGray),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
                     ),
                     child: Text(l.loadMore),
                   ),
@@ -850,37 +853,10 @@ class SkinsScreenState extends State<SkinsScreen> {
   }) {
     return Row(
       children: [
-        if (icon != null) ...[
-          FaIcon(icon, size: 12, color: iconColor ?? AppTheme.textMuted),
-          const SizedBox(width: 7),
-        ],
-        Text(
-          label.toUpperCase(),
-          style: TextStyle(
-            color: AppTheme.textMuted,
-            fontSize: 11,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 1.2,
-          ),
-        ),
+        Text(label, style: DsType.heading),
         if (count != null) ...[
-          const SizedBox(width: 8),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
-            decoration: BoxDecoration(
-              color: AppTheme.surface,
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: AppTheme.borderGray),
-            ),
-            child: Text(
-              '$count',
-              style: TextStyle(
-                color: AppTheme.textSecondary,
-                fontSize: 10,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
+          const SizedBox(width: DsSpace.sm),
+          DsBadge(label: '$count', color: DsColor.textFaint),
         ],
       ],
     );
@@ -901,18 +877,7 @@ class SkinsScreenState extends State<SkinsScreen> {
     );
   }
 
-  Widget _emptyState(String message) => Container(
-    width: double.infinity,
-    padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-    decoration: BoxDecoration(
-      color: AppTheme.surface,
-      borderRadius: BorderRadius.circular(14),
-      border: Border.all(color: AppTheme.borderGray),
-    ),
-    child: Text(
-      message,
-      style: TextStyle(color: AppTheme.textMuted, fontSize: 13),
-      textAlign: TextAlign.center,
-    ),
+  Widget _emptyState(String message) => DsCard(
+    child: Text(message, style: DsType.caption, textAlign: TextAlign.center),
   );
 }

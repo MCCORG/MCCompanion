@@ -1,7 +1,12 @@
 {
   "@@locale": "id",
-  "appName": "MCCompanion",
   "console": "Konsol",
+  "modeLabel": "Mode",
+  "statusLabel": "Status",
+  "seeAll": "Lihat semua",
+  "sectionHelp": "Bantuan",
+  "sectionAdvanced": "Lanjutan",
+  "versionLabel": "Versi",
   "consoleOutput": "Output Konsol",
   "noLogsYet": "Belum ada log",
   "startBroadcastingToSeeOutput": "Mulai siaran untuk melihat output",
@@ -10,20 +15,9 @@
   "back": "Kembali",
   "next": "Lanjut",
   "done": "Selesai",
-  "joinUs": "Gabung dengan Kami",
   "website": "Situs Web",
-  "aternosSubtext": "Buat server Minecraft gratis Anda sendiri",
   "howToUseMenu": "Cara menggunakan",
   "support": "Dukungan",
-  "helpText": "Dibuat oleh {appCreator}.\r\n\r\nCara menggunakan:\r\n1. Masukkan alamat dan port server Minecraft Anda (default: 19132)\r\n  , atau pilih server yang sebelumnya disimpan dari menu dropdown\r\n2. (Opsional) Pilih Server Relay (EU atau US) yang paling dekat dengan lokasi Anda\r\n3. Klik \"Mulai Siaran\" untuk memulai\r\n4. Di konsol/perangkat Anda: Minecraft > Play > Friends\r\n5. Anda akan melihat server LAN bernama \"MCCompanion\"\r\n6. Klik server tersebut untuk bergabung ke server eksternal Anda melalui MCCompanion\r\n\r\nNintendo Switch (mode DNS):\r\n1. Aktifkan \"Nintendo Switch\" di panel koneksi\r\n2. Pilih Server Relay (EU atau US)\r\n3. Klik \"Send DNS Config\": ini mengirim konfigurasi Anda ke relay\r\n   (ini TIDAK menyiarkan server LAN)\r\n4. Di Switch Anda, terapkan pengaturan DNS MCCompanion lalu bergabung\r\n   menggunakan entri server yang Anda pakai untuk MCCompanion\r\n\r\nCatatan:\r\n- Untuk siaran LAN, MCCompanion dan konsol harus berada di jaringan lokal yang sama.\r\n- Tips: Pilih server relay yang paling dekat dengan Anda untuk performa terbaik.",
-  "@helpText": {
-    "description": "Detailed help / instructions shown in the help dialog",
-    "placeholders": {
-      "appCreator": {}
-    }
-  },
-  "more": "Lainnya",
-  "serverDetailsLabel": "Detail Server",
   "start": "Mulai",
   "labelJava": "Java",
   "language": "Indonesia",
@@ -58,14 +52,6 @@
   "@delete": {
     "description": "Delete action label"
   },
-  "myServers": "Server Saya",
-  "@myServers": {
-    "description": "Title for manage servers dialog"
-  },
-  "quickAccessServers": "Server akses cepat",
-  "@quickAccessServers": {
-    "description": "Subtitle for manage servers dialog"
-  },
   "addServer": "Tambah Server",
   "@addServer": {
     "description": "Add server button label / dialog title"
@@ -94,18 +80,6 @@
   "@save": {
     "description": "Save button label"
   },
-  "initializing": "Memulai...",
-  "@initializing": {
-    "description": "Shown on splash while app initializes"
-  },
-  "createdBy": "Dibuat oleh NetherDev",
-  "@createdBy": {
-    "description": "Badge text on splash screen"
-  },
-  "bedrockBridge": "Jembatan Bedrock",
-  "@bedrockBridge": {
-    "description": "Subtitle on splash screen"
-  },
   "clientDisconnected": "Klien terputus: Siaran dihentikan",
   "@clientDisconnected": {
     "description": "Snackbar shown when clients disconnect automatically"
@@ -119,14 +93,6 @@
     "description": "Validation message when port is invalid"
   },
   "dataSentToServers": "Data dikirim ke server MCCompanion",
-  "broadcastingStarted": "Siaran dimulai",
-  "@broadcastingStarted": {
-    "description": "Snackbar shown when broadcasting starts"
-  },
-  "broadcastStopped": "Siaran dihentikan",
-  "@broadcastStopped": {
-    "description": "Snackbar shown when broadcasting stops"
-  },
   "selectedServer": "📋 Dipilih: {name}",
   "@selectedServer": {
     "description": "Shown when a saved server is selected",
@@ -141,10 +107,6 @@
       "name": {}
     }
   },
-  "noLogsToCopy": "Tidak ada log untuk disalin",
-  "@noLogsToCopy": {
-    "description": "Shown when user tries to copy logs but none exist"
-  },
   "copiedLogs": "{count} entri log disalin ke clipboard",
   "@copiedLogs": {
     "description": "Shown after copying logs to clipboard",
@@ -153,14 +115,10 @@
     }
   },
   "debugEnabled": "Log debug diaktifkan",
-  "debugDisabled": "Log debug dinonaktifkan",
   "@debugEnabled": {
     "description": "Shown when debug logging is enabled/disabled"
   },
-  "howToUseTitle": "Cara menggunakan MCCompanion",
   "iUnderstand": "Saya mengerti",
-  "playOnSwitchTitle": "Main di Nintendo Switch",
-  "playWithFriendsTitle": "Main dengan Teman",
   "playInstructionsSwitch": "Dipilih: {relayName}\r\n\r\nCara terhubung:\r\n1. Buka Pengaturan Switch Anda dan ubah DNS menjadi: {relayIp}\r\n2. Buka Minecraft dan pilih server dari daftar (seperti Cubecraft atau Hive).\r\n3. Sekarang Anda akan otomatis dikirim ke server Anda sendiri.",
   "@playInstructionsSwitch": {
     "description": "DNS instructions shown for Nintendo Switch mode",
@@ -169,53 +127,16 @@
       "relayIp": {}
     }
   },
-  "playInstructionsFriends": "Cara terhubung:\r\n1. Di konsol Anda, tambahkan {friend} sebagai teman.\r\n2. Buka Minecraft dan masuk ke tab Friends.\r\n3. Cari server Anda di LAN Worlds lalu pilih untuk bergabung.",
-  "@playInstructionsFriends": {
-    "description": "Instructions shown for Friends mode",
-    "placeholders": {
-      "friend": {}
-    }
-  },
-  "nldServerLabel": "SERVER MCCompanion",
-  "@nldServerLabel": {
-    "description": "Label text above the relay selector"
-  },
-  "selectRelayLabel": "Pilih relay {name}",
-  "@selectRelayLabel": {
-    "description": "Accessibility label for relay selection button",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "noSavedServers": "Tidak ada server tersimpan",
   "savedServers": "Server tersimpan",
-  "serverAddressHint": "Alamat Server",
-  "portHint": "Port",
   "manageServers": "Kelola server",
-  "manageServersTooltip": "Kelola server",
   "stopBroadcasting": "Hentikan Siaran",
   "startNintendoMode": "Mulai Mode Nintendo",
   "startFriendsMode": "Mulai Mode Teman",
   "startBroadcasting": "Mulai Siaran",
-  "modeLabel": "Mode",
   "labelXbox": "Xbox/PS4-5",
   "labelNintendo": "Nintendo",
   "labelFriends": "Teman",
-  "nintendoInfoTitle": "Mode DNS Nintendo Switch",
-  "nintendoInfoText": "Mulai dalam mode Nintendo, atur DNS Anda, dan gabung ke server unggulan.",
-  "friendModeTitle": "Mode Teman",
-  "friendModeText": "Tambahkan bot teman MCCompanion sebagai teman. Mulai mode Teman dan bermain",
-  "selectedRelayCheck": "Dipilih",
-  "@selectedRelayCheck": {
-    "description": "Small label used when a relay is selected"
-  },
-  "relayFallbackWarning": "Peringatan: relay asli tidak merespons. Relay cadangan yang digunakan: {name}",
-  "@relayFallbackWarning": {
-    "placeholders": {
-      "name": {}
-    }
-  },
-  "relayUnableConnect": "Tidak dapat terhubung ke server relay MCCompanion mana pun. Coba lagi nanti atau periksa internet Anda.",
   "howToXboxTitle": "Xbox / PS4-5 (LAN / Proksi)",
   "@howToXboxTitle": {
     "description": "Title for the Xbox / PS4-5 how-to modal"
@@ -236,10 +157,6 @@
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
-  "howToNintendoBody": "Nintendo Switch: mode DNS (langkah demi langkah):\r\n1. Di aplikasi, aktifkan mode \"Nintendo\" dan pilih Server Relay (EU atau US).\r\n2. Ketuk \"Send DNS Config\" untuk mengirim IP DNS ke relay.\r\n3. Di Nintendo Switch Anda buka System Settings → Internet → Internet Settings → (jaringan Anda) → Change Settings → DNS lalu atur Primary DNS ke IP relay.\r\n4. Buka Minecraft dan gabung ke server publik; Anda akan diarahkan ke server Anda menggunakan DNS relay.\r\nCatatan:\r\n- Mode DNS tidak menyiarkan server LAN; mode ini mengarahkan lalu lintas game melalui relay.\r\n- Kembalikan DNS Anda setelah selesai jika Anda memerlukan perilaku jaringan normal.",
-  "@howToNintendoBody": {
-    "description": "Detailed steps for Nintendo Switch DNS setup"
-  },
   "howToFriendsTitle": "Mode Teman",
   "@howToFriendsTitle": {
     "description": "Title for the Friends-mode how-to modal"
@@ -247,10 +164,6 @@
   "howToFriendsSubtitle": "Undang teman dan gabung melalui LAN",
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
-  },
-  "howToFriendsBody": "Mode Teman: langkah cepat:\r\n1. Tambahkan akun teman MCCompanion di konsol atau platform Anda jika diperlukan.\r\n2. Di aplikasi, aktifkan mode Teman dan kirim konfigurasi relay (jika berlaku).\r\n3. Di konsol, buka Minecraft → Friends dan cari LAN Worlds, server Anda seharusnya muncul di sana sebagai dunia LAN.\r\n4. Pilih server tersebut untuk bergabung ke server Anda bersama teman.\r\nCatatan:\r\n- Pastikan Anda dan teman Anda memiliki NAT/pengaturan yang sama yang memungkinkan kehadiran teman.\r\n- Mode Teman bergantung pada fitur pertemanan platform dan mungkin memerlukan penerimaan permintaan pertemanan.",
-  "@howToFriendsBody": {
-    "description": "Detailed steps for Friends mode"
   },
   "helpMCCompanionTitle": "MCCompanion tidak muncul",
   "@helpMCCompanionTitle": {
@@ -308,29 +221,14 @@
   "@changeLanguage": {
     "description": "Label for the language button in the bottom nav"
   },
-  "useSystemLanguage": "Gunakan bahasa sistem",
-  "@useSystemLanguage": {
-    "description": "Button that resets localization to the system/default locale"
-  },
   "updateAvailable": "Pembaruan tersedia",
-  "needSameWifi": "Perangkat yang menjalankan MCCompanion HARUS berada di jaringan Wi‑Fi yang sama dengan konsol tempat Anda bermain Minecraft.",
   "active": "Aktif",
-  "newVersion": "Versi baru aplikasi tersedia.\nPerbarui sekarang untuk mendapatkan fitur dan perbaikan terbaru.",
-  "noServerYet": "Belum ada server tersimpan.\nKetuk Kelola untuk menambahkan satu.",
-  "beforeYouStart": "SEBELUM MEMULAI",
   "stop": "Berhenti",
-  "later": "Nanti",
   "continueAnyway": "Tetap lanjutkan",
-  "serverNotSelected": "Belum ada server yang dipilih",
   "noWifi": "Tidak di Wi‑Fi",
   "vpnDetected": "VPN terdeteksi",
-  "ready": "Siap",
   "vpnActive": "Kami mendeteksi VPN Anda aktif.\n\nMatikan VPN sebelum menggunakan MCCompanion, jika tidak siaran LAN mungkin tidak akan mencapai konsol Anda.",
-  "updateNow": "Perbarui sekarang",
-  "needSubscription": "Setiap konsol memerlukan langganan online aktifnya sendiri (Xbox Live, PS Plus, NSO). Tanpa itu, MCCompanion tidak akan muncul.",
   "mobileActive": "Terdeteksi: Data Seluler\n\nMCCompanion harus berada di jaringan yang sama dengan konsol Anda. Sambungkan ke Wi‑Fi rumah atau hotspot sebelum melanjutkan.",
-  "sameWifi": "Jaringan Wi‑Fi yang sama",
-  "subscription": "Langganan online diperlukan",
   "couldNotOpenUrl": "Tidak dapat membuka URL",
   "@couldNotOpenUrl": {
     "description": "Snackbar message when launching an external URL fails"
@@ -355,27 +253,20 @@
   "statusOnline": "Online",
   "statusOffline": "Offline",
   "statusChecking": "Memeriksa...",
-  "notificationsOn": "Notifikasi aktif",
-  "notificationsOff": "Notifikasi nonaktif",
   "failedUpdateNotifications": "Gagal memperbarui notifikasi",
   "editServerTitle": "Edit server",
   "serverNameHint": "Nama server",
   "failedSave": "Gagal menyimpan. Coba lagi.",
   "serverRenamed": "Server diubah namanya",
   "customizeLabel": "Sesuaikan",
-  "customizeSubtitle": "Atur ulang ubin dan sesuaikan navigasi",
+  "customizeSubtitle": "Bilah navigasi dan warna",
   "resetLabel": "Atur ulang",
-  "tilesSection": "UBIN",
-  "dragToReorder": "Seret untuk mengatur ulang",
   "navigationSection": "NAVIGASI",
-  "navFixed": "Beranda, Konektor, dan Profil selalu tetap",
-  "leftSlot": "Slot kiri (di sebelah Beranda)",
-  "rightSlot": "Slot kanan (di sebelah Profil)",
-  "tileWideTooltipRemove": "Hapus tata letak lebar",
-  "tileWideTooltipAdd": "Jadikan ubin lebar",
-  "tileVisibilityShow": "Tampilkan ubin",
-  "tileVisibilityHide": "Sembunyikan ubin",
-  "tileVisibilityMin": "Tidak dapat disembunyikan (ubin terakhir)",
+  "navFixed": "Connector dan Profil selalu tetap",
+  "leftSlot": "Slot 2",
+  "outerSlot": "Slot 1",
+  "rightSlot": "Slot 3",
+  "farSlot": "Slot 4",
   "colorPickerApply": "Terapkan",
   "colorPickerHex": "Hex",
   "textColorSection": "WARNA TEKS",
@@ -398,7 +289,6 @@
   "playerLookupLabelFloodgate": "Floodgate",
   "accountSubtitleXbox": "Xbox · {xuid}",
   "accountSubtitleJava": "Java Edition · {uuid}",
-  "avatarUrlHint": "https://example.com/avatar.png",
   "chooseUniqueUsername": "Pilih nama pengguna unik untuk memulai.",
   "usernameFieldLabel": "Nama pengguna",
   "usernameExampleHint": "mis. CoolPlayer123",
@@ -409,7 +299,6 @@
   "usernameFormatError": "Nama pengguna harus 3–20 karakter dan hanya boleh berisi huruf, angka, dan garis bawah",
   "usernameTaken": "Nama pengguna ini sudah digunakan",
   "noConnectionError": "Tidak ada koneksi. Periksa internet Anda dan coba lagi.",
-  "home": "Beranda",
   "info": "Info",
   "navProfile": "Profil",
   "serverRemoved": "{name} dihapus",
@@ -421,10 +310,6 @@
   "aboutMCCompanionSection": "About MCCompanion",
   "@aboutMCCompanionSection": {
     "description": "Section header for About MCCompanion in Info sheet"
-  },
-  "aboutMe": "About me",
-  "@aboutMe": {
-    "description": "Label for bio/about-me row in profile display"
   },
   "aboutSectionLabel": "About",
   "@aboutSectionLabel": {
@@ -446,13 +331,6 @@
   "@alreadyFriendsMsg": {
     "description": "Error when already friends with user (public profile)"
   },
-  "alreadyFriendsWith": "You are already friends with {name}",
-  "@alreadyFriendsWith": {
-    "description": "Error when already friends with user",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "alreadyHaveAccount": "Already have an account? Sign in",
   "@alreadyHaveAccount": {
     "description": "Toggle to switch back to sign-in mode"
@@ -473,10 +351,6 @@
   "@appleSignInFailed": {
     "description": "Error when Apple sign-in fails"
   },
-  "avatarUrlLabel": "Avatar URL",
-  "@avatarUrlLabel": {
-    "description": "Label for avatar URL field"
-  },
   "bioHint": "Tell others about yourself…",
   "@bioHint": {
     "description": "Hint text for bio field"
@@ -485,20 +359,9 @@
   "@bioLabel": {
     "description": "Label for bio field"
   },
-  "cannotSendRequest": "Cannot send a request to {name}",
-  "@cannotSendRequest": {
-    "description": "Error when user is blocked or request is not allowed",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "cannotSendRequestMsg": "Cannot send a request to this user.",
   "@cannotSendRequestMsg": {
     "description": "Error when friend request is blocked (public profile)"
-  },
-  "checkBackLater": "Check back later.",
-  "@checkBackLater": {
-    "description": "Secondary empty state text on partner servers screen"
   },
   "chooseUsernameSubtitle": "Pilih username agar pemain lain bisa menemukanmu.",
   "@chooseUsernameSubtitle": {
@@ -630,13 +493,6 @@
   "@friendRequestSent": {
     "description": "Toast shown after friend request is sent from public profile"
   },
-  "friendRequestSentTo": "Friend request sent to {name}",
-  "@friendRequestSentTo": {
-    "description": "Toast when a friend request is sent",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "googleSignInFailed": "Google sign-in failed. Please try again.",
   "@googleSignInFailed": {
     "description": "Error when Google sign-in fails"
@@ -681,10 +537,6 @@
   "@linkXbox": {
     "description": "Button to link an Xbox/Bedrock account"
   },
-  "linkedAccountsTitle": "Linked Accounts",
-  "@linkedAccountsTitle": {
-    "description": "Section title for linked accounts card"
-  },
   "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -701,10 +553,6 @@
   "@nldServerLabelShort": {
     "description": "Section label above relay selector in More sheet"
   },
-  "noAccountForEmail": "No account found for that email address",
-  "@noAccountForEmail": {
-    "description": "Error when no account exists for the email"
-  },
   "noAccountYet": "Don't have an account? Create one",
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
@@ -717,17 +565,9 @@
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
   },
-  "noPartnerServers": "No partner servers available yet.",
-  "@noPartnerServers": {
-    "description": "Empty state text on partner servers screen"
-  },
   "noPendingRequests": "No pending requests",
   "@noPendingRequests": {
     "description": "Empty state title on requests tab"
-  },
-  "noServerSelected": "No server selected",
-  "@noServerSelected": {
-    "description": "Placeholder when no server is entered in connection panel"
   },
   "nowFriendsWith": "Now friends with @{username}",
   "@nowFriendsWith": {
@@ -753,10 +593,6 @@
   "orDivider": "or",
   "@orDivider": {
     "description": "Divider text between email and social sign-in"
-  },
-  "partnerServersTitle": "Partner Servers",
-  "@partnerServersTitle": {
-    "description": "Title for the partner servers screen"
   },
   "passwordHint": "Password",
   "@passwordHint": {
@@ -813,18 +649,6 @@
   "@playerLookupSubtitle": {
     "description": "Subtitle/hint on player lookup screen"
   },
-  "playerLookupTitle": "Player Lookup",
-  "@playerLookupTitle": {
-    "description": "Title of the player lookup screen"
-  },
-  "playersCount": "{players} / {max} players",
-  "@playersCount": {
-    "description": "Player count label on tracked server card",
-    "placeholders": {
-      "players": {},
-      "max": {}
-    }
-  },
   "portFieldLabel": "Port",
   "@portFieldLabel": {
     "description": "Port field label in edit server form"
@@ -841,10 +665,6 @@
   "@privacyPolicySubtitle": {
     "description": "Privacy Policy tile subtitle"
   },
-  "profileCardTitle": "Profile",
-  "@profileCardTitle": {
-    "description": "Title for the edit profile card"
-  },
   "profileNotSetUp": "Profile not set up",
   "@profileNotSetUp": {
     "description": "Title when user is authenticated but has no profile"
@@ -856,10 +676,6 @@
   "profileUpdated": "Profile updated",
   "@profileUpdated": {
     "description": "Toast shown after profile is saved"
-  },
-  "publicProfileTitle": "Profile",
-  "@publicProfileTitle": {
-    "description": "AppBar title fallback for public profile when username not loaded"
   },
   "relay": "Relay",
   "@relay": {
@@ -956,13 +772,6 @@
       "name": {}
     }
   },
-  "requestAlreadyPending": "A request to {name} is already pending",
-  "@requestAlreadyPending": {
-    "description": "Error when friend request is already pending",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "requestAlreadyPendingMsg": "There is already a pending request.",
   "@requestAlreadyPendingMsg": {
     "description": "Error when friend request is already pending (public profile)"
@@ -1001,10 +810,6 @@
   "@selectBedrockAccount": {
     "description": "Title of the Bedrock account picker bottom sheet"
   },
-  "selectModeSection": "SELECT MODE",
-  "@selectModeSection": {
-    "description": "Section label above mode chips in connection panel"
-  },
   "send": "Send",
   "@send": {
     "description": "Send button label"
@@ -1025,7 +830,7 @@
   "@serverNameExampleHint": {
     "description": "Example hint text for server name field"
   },
-  "serversSection": "SERVERS",
+  "serversSection": "Servers",
   "@serversSection": {
     "description": "Section label above servers panel in connection panel"
   },
@@ -1036,10 +841,6 @@
   "signOut": "Sign Out",
   "@signOut": {
     "description": "Sign out button label"
-  },
-  "skinsCouldNotLoad": "Could not load skins",
-  "@skinsCouldNotLoad": {
-    "description": "Error text when recent skins cannot be loaded"
   },
   "skinsCreate": "Create",
   "@skinsCreate": {
@@ -1053,10 +854,6 @@
   "@skinsEdit": {
     "description": "Edit button in skin detail sheet"
   },
-  "skinsEmptyMySkins": "No saved skins yet. Upload or create one!",
-  "@skinsEmptyMySkins": {
-    "description": "Empty state text for saved skins section"
-  },
   "skinsInvalidFile": "Invalid image file",
   "@skinsInvalidFile": {
     "description": "Error when the selected file is not a valid image"
@@ -1064,42 +861,6 @@
   "skinsMustBe64": "Skin must be 64×64 pixels",
   "@skinsMustBe64": {
     "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsNoAccountsSubtitle": "Link a Java or Bedrock account to view your skins.",
-  "@skinsNoAccountsSubtitle": {
-    "description": "Subtitle when no Minecraft accounts are linked"
-  },
-  "skinsNoAccountsTitle": "No Minecraft accounts linked",
-  "@skinsNoAccountsTitle": {
-    "description": "Title when no Minecraft accounts are linked"
-  },
-  "skinsPageOf": "Page {page} of {total}",
-  "@skinsPageOf": {
-    "description": "Pagination label on skins screen",
-    "placeholders": {
-      "page": {},
-      "total": {}
-    }
-  },
-  "skinsSectionMy": "MY SKINS",
-  "@skinsSectionMy": {
-    "description": "Section label for saved/local skins"
-  },
-  "skinsSectionRecent": "RECENT SKINS",
-  "@skinsSectionRecent": {
-    "description": "Section label for recent Geyser skins"
-  },
-  "skinsSectionYours": "YOUR SKINS",
-  "@skinsSectionYours": {
-    "description": "Section label for the user's linked account skins"
-  },
-  "skinsSignInSubtitle": "Sign in and link your Minecraft accounts to see your skins here.",
-  "@skinsSignInSubtitle": {
-    "description": "Subtitle when user is not signed in on skins screen"
-  },
-  "skinsSignInTitle": "Sign in to view your skins",
-  "@skinsSignInTitle": {
-    "description": "Title when user is not signed in on skins screen"
   },
   "skinsUpload": "Upload",
   "@skinsUpload": {
@@ -1109,18 +870,6 @@
   "@somethingWentWrong": {
     "description": "Generic error message"
   },
-  "tabFriends": "Friends",
-  "@tabFriends": {
-    "description": "Tab label for Friends tab"
-  },
-  "tabProfile": "Profile",
-  "@tabProfile": {
-    "description": "Tab label for Profile tab"
-  },
-  "tabRequests": "Requests",
-  "@tabRequests": {
-    "description": "Tab label for Requests tab"
-  },
   "termsOfService": "ketentuan layanan",
   "@termsOfService": {
     "description": "Terms of Service tile title"
@@ -1129,11 +878,7 @@
   "@termsOfServiceSubtitle": {
     "description": "Terms of Service tile subtitle"
   },
-  "today": "Today",
-  "@today": {
-    "description": "Date divider label for today"
-  },
-  "trackerLimitReached": "You've reached your server limit. Upgrade to track more servers.",
+  "trackerLimitReached": "Batas server tercapai",
   "@trackerLimitReached": {
     "description": "Banner shown when tracker slot limit is reached"
   },
@@ -1161,24 +906,9 @@
   "@userNotFound": {
     "description": "Text shown when a user profile cannot be found"
   },
-  "userNotFoundMsg": "User {name} not found",
-  "@userNotFoundMsg": {
-    "description": "Error when user is not found",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "userNotFoundMsg2": "User not found.",
   "@userNotFoundMsg2": {
     "description": "Error when user not found sending friend request from public profile"
-  },
-  "usernameDisplayLabel": "Username",
-  "@usernameDisplayLabel": {
-    "description": "Label for username row in profile display"
-  },
-  "usernameHint": "Username",
-  "@usernameHint": {
-    "description": "Hint text for username input"
   },
   "usernameRowLabel": "Username",
   "@usernameRowLabel": {
@@ -1244,14 +974,6 @@
   "@xboxYourCode": {
     "description": "Label above the Microsoft device code"
   },
-  "yesterday": "Yesterday",
-  "@yesterday": {
-    "description": "Date divider label for yesterday"
-  },
-  "youPrefix": "You",
-  "@youPrefix": {
-    "description": "Prefix for last message preview when message is from current user"
-  },
   "yourNameHint": "Your name",
   "@yourNameHint": {
     "description": "Hint text for display name field"
@@ -1272,26 +994,13 @@
   "javaCodeExpired": "The code expired. Please try again.",
   "javaSomethingWrong": "Something went wrong. Please try again.",
   "javaCodeCopied": "Code copied to clipboard",
-  "splashFeatureConnect": "Connect",
-  "splashFeatureFriends": "Friends",
-  "splashFeatureChat": "Chat",
-  "splashFeatureSkins": "Skins",
   "featureLabelConnector": "Konektor",
   "featureLabelSkins": "Skin",
   "featureLabelPartners": "Daftar server",
   "featureLabelLookup": "Cari",
   "featureLabelTracker": "Pelacak Server",
-  "featureSubtitleConnector": "Hubungkan konsol ke Minecraft",
-  "featureSubtitleSkins": "Jelajahi & kelola skin Minecraft",
-  "featureSubtitlePartners": "Server unggulan",
-  "featureSubtitleLookup": "Cari profil Java & Bedrock",
-  "featureSubtitleTracker": "Pantau status server & dapatkan notifikasi",
   "userSearchHint": "Nama pengguna, gamertag atau nama Java…",
   "userSearchSub": "Cari berdasarkan nama pengguna, gamertag Xbox atau nama Java",
-  "onlineStatus": "Online",
-  "@onlineStatus": {
-    "description": "Label shown when a friend is online"
-  },
   "upgradeWindowsHint": "Upgrade tersedia melalui Microsoft Store",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
@@ -1326,9 +1035,6 @@
   "feedbackDescribeIdea": "Jelaskan ide kamu",
   "feedbackDescHintBug": "Jelaskan bug-nya: apa yang kamu lakukan, apa yang kamu harapkan, dan apa yang terjadi?",
   "feedbackDescHintFeature": "Jelaskan apa yang kamu inginkan dan mengapa itu berguna.",
-  "feedbackEmailLabel": "Email",
-  "feedbackEmailHint": "Agar kami bisa menghubungi kamu",
-  "feedbackEmailNote": "Email kamu tidak akan pernah dibagikan secara publik.",
   "feedbackSubmitBug": "Kirim Laporan Bug",
   "feedbackSubmitFeature": "Kirim Permintaan Fitur",
   "feedbackDisclaimer": "Menuju tim kami · Jangan sertakan kata sandi",
@@ -1338,12 +1044,8 @@
   "feedbackBackToApp": "Kembali ke aplikasi",
   "feedbackTitleTooShort": "Judul harus minimal 5 karakter.",
   "feedbackDescTooShort": "Deskripsi harus minimal 10 karakter.",
-  "feedbackEmailInvalid": "Harap masukkan alamat email yang valid.",
-  "@feedbackEmailInvalid": {
-    "description": "Validation error when email is missing or invalid"
-  },
   "feedbackSubmitFailed": "Gagal mengirim. Coba lagi.",
-  "feedbackTileTitle": "Laporkan bug atau sarankan fitur",
+  "feedbackTileTitle": "Masukan",
   "feedbackTileSubtitle": "Bantu kami meningkatkan MCCompanion",
   "friendsHowToStep1": "Buka aplikasi Xbox di ponsel atau konsolmu.",
   "friendsHowToStep2": "Tambahkan salah satu bot di bawah ini sebagai teman di Xbox.",
@@ -1363,11 +1065,6 @@
   "skinMenuExport": "Ekspor",
   "skinMenuDelete": "Hapus",
   "rpScreenTitle": "Paket Sumber Daya",
-  "rpWhatIsThis": "Apa ini?",
-  "rpExplanation": "Pack sumber daya mengubah tampilan Minecraft di konsol kamu, blok, warna, atau suara baru. Tempel tautan file .mcpack di bawah, aktifkan, dan simpan. MCCompanion memuat secara otomatis setiap kali kamu terhubung.",
-  "rpPackUrlLabel": "URL Paket",
-  "rpPackUrlHint": "https://example.com/pack.mcpack",
-  "rpEnableToggle": "Aktifkan paket sumber daya",
   "rpWhatWorks": "Yang berfungsi",
   "rpSupportedBedrockOnly": "Hanya Bedrock Edition (.mcpack atau .zip)",
   "rpSupportedBedrockOnlyHint": "Pack Java tidak berfungsi di konsol.",
@@ -1379,39 +1076,28 @@
   "rpUnsupportedAddonsHint": "Kadang bisa berfungsi, tetapi tidak didukung secara resmi. Gunakan dengan risiko sendiri.",
   "rpConsolePerformanceTitle": "Performa konsol",
   "rpConsolePerformanceBody": "Texture pack beresolusi tinggi dapat menyebabkan lag atau crash di konsol. Jika mengalami masalah, beralih ke pack beresolusi lebih rendah atau pilih subpack yang lebih ringan jika pack mendukungnya.",
-  "rpWhatDoesntWork": "Yang tidak berfungsi",
-  "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
-  "rpWorksCloudflare": "Cloudflare R2 / AWS S3 bucket publik",
-  "rpWorksDirect": "Tautan HTTPS langsung yang diakhiri dengan .mcpack atau .zip",
   "rpNoDiscord": "Tautan Discord: tidak ada ekstensi .mcpack dan kedaluwarsa setelah beberapa jam",
   "rpNoDrive": "Tautan berbagi Google Drive / Dropbox: bukan unduhan langsung",
   "rpNoEncrypted": "Server dengan paket terenkripsi atau dilindungi kata sandi",
   "rpWarnDiscord": "Tautan Discord kedaluwarsa dan tidak akan berfungsi. Gunakan host permanen sebagai gantinya.",
   "rpWarnHttps": "URL harus dimulai dengan https://",
   "rpWarnExtension": "URL harus diakhiri dengan .mcpack atau .zip",
-  "rpToastEnterUrl": "Masukkan URL sebelum mengaktifkan paket sumber daya.",
   "rpToastSaved": "Pengaturan paket sumber daya disimpan.",
   "rpClearMinecraftTitle": "Pertama kali dengan pack ini?",
-  "rpClearMinecraftBody": "Minecraft menyimpan paket sumber daya secara lokal. Jika kamu pernah terhubung ke server ini sebelum mengaktifkan paket MCCompanion, Minecraft sudah menyimpan paket asli dan tidak akan mengunduh ulang versi yang telah digabungkan.",
   "rpClearStep1": "Buka Minecraft di konsolmu dan pergi ke Pengaturan → Penyimpanan",
   "rpClearStep2": "Ketuk ‘Hapus’ atau ‘Reset’ di sebelah Pack Sumber Daya, ini menghapus semua pack yang tersimpan lokal",
   "rpClearStep3": "Sambungkan kembali melalui MCCompanion: pack yang digabungkan akan diunduh secara otomatis",
   "rpRelayTitle": "Pack terlihat tidak benar?",
   "rpRelayBody": "Relay menyimpan pack yang digabungkan selama 1 jam menggunakan URL overlay-mu sebagai kunci cache. Untuk memaksa penggabungan baru: ubah sedikit URL pack (mis. tambahkan ?v=2) dan simpan. Setelah itu, hapus juga cache pack Minecraft, pack yang digabungkan masih menggunakan UUID server, jadi Minecraft akan tetap menampilkan versi lama dari cache.",
-  "rpWorksGithubHint": "Tautan unduhan langsung: selalu bisa diakses",
-  "rpWorksCloudflareHint": "Penyimpanan cloud publik: cepat dan andal",
-  "rpWorksDirectHint": "URL HTTPS publik .mcpack atau .zip apa pun",
   "rpNoDiscordHint": "Tautan Discord CDN kadaluarsa setelah waktu singkat",
   "rpNoDriveHint": "Tidak ada unduhan langsung: mengarahkan ke halaman pratinjau",
   "rpNoEncryptedHint": "MCCompanion tidak dapat menggabungkan konten pack terenkripsi",
   "rpClearWhy": "Minecraft menyimpan pack sumber daya berdasarkan UUID. Pack yang digabungkan tetap menggunakan UUID asli server, jika Minecraft sudah menyimpan pack server dari sesi sebelumnya (sebelum MCCompanion aktif), ia tidak akan mengunduh versi gabungan yang baru. Hapus cache agar Minecraft memuat pack gabungan terbaru.",
   "rpUploadTab": "Upload",
-  "rpUrlTab": "URL",
   "rpUploadButton": "Tap to select your pack",
   "rpUploadHint": ".mcpack or .zip • max 100 MB",
   "rpUploading": "Uploading...",
   "rpMergerTitle": "Penggabung RP",
-  "rpMergerSubtitle": "Gabungkan hingga 4 paket sumber daya",
   "rpMergerPriorityHint": "Paket teratas memiliki prioritas tertinggi, filenya menang dalam konflik.",
   "rpMergerTopBadge": "ATAS",
   "rpMergerAddPacks": "Tambah paket sumber daya",
@@ -1419,12 +1105,7 @@
   "rpMergerFileTypes": ".zip atau .mcpack",
   "rpMergerMerging": "Menggabungkan…",
   "rpMergerButton": "Gabungkan {count} paket",
-  "rpMergerComplete": "Penggabungan selesai!",
-  "rpMergerConflicts": "{count} konflik terselesaikan: paket teratas menang.",
-  "rpMergerSetActive": "Jadikan paket sumber daya aktif",
   "rpMergerSetActiveToast": "Dijadikan paket sumber daya aktif",
-  "rpMergerOpenButton": "Gabungkan paket sumber daya",
-  "rpMergerOpenSubtitle": "Gabungkan 2–4 paket menjadi satu",
   "rpDisabled": "Nonaktif",
   "rpNoPackSelected": "Tidak ada paket sumber daya yang dipilih",
   "rpActiveOnConnect": "Aktif: diterapkan saat terhubung",
@@ -1435,7 +1116,6 @@
   "rpDropToUpload": "Lepaskan untuk mengunggah",
   "rpTabBrowseInfo": "Jelajahi paket pilihan MCCompanion. Ketuk Gunakan untuk mengaktifkan paket seketika, tanpa unggah atau tautan.",
   "rpTabUploadInfo": "Unggah file .mcpack atau .zip Anda sendiri. MCCompanion menyimpannya dengan aman di cloud dan mengirimkannya ke konsol Anda setiap kali terhubung.",
-  "rpTabUrlInfo": "Tempel tautan unduhan langsung ke file .mcpack atau .zip. URL harus dapat diakses publik, tidak ada tautan Discord atau Google Drive.",
   "rpTabMergeInfo": "Gabungkan 2 hingga 4 paket menjadi satu. Paket gabungan diunggah ke MCCompanion Cloud dan diaktifkan secara otomatis.",
   "shareLabel": "Bagikan",
   "sectionMinecraftAccounts": "Akun Minecraft",
@@ -1462,18 +1142,10 @@
   "onboardingNavSubtitle": "Pilih dua fitur untuk bilah navigasi kamu.",
   "onboardingNavLeftLabel": "TOMBOL KIRI",
   "onboardingNavRightLabel": "TOMBOL KANAN",
-  "onboardingNavPreviewHome": "Beranda",
   "onboardingNavPreviewConnector": "Konektor",
   "onboardingNavPreviewProfile": "Profil",
   "onboardingNavPreviewEmpty": "Kosong",
-  "onboardingStartTitle": "Halaman awal",
-  "onboardingStartSubtitle": "Aplikasi terbuka di sini setiap kali diluncurkan.",
   "onboardingCustomizeDetail": "Kustomisasi lebih lanjut →",
-  "startPageHome": "Beranda",
-  "startPageHomeSubtitle": "Tampilkan layar beranda dengan ubin",
-  "startPageFeature": "Fitur",
-  "startPageFeatureSubtitle": "Buka langsung ke halaman tertentu",
-  "startPageSectionLabel": "HALAMAN AWAL",
   "rpPackInfo": "Info",
   "@rpPackInfo": {
     "description": "rpPackInfo label"
@@ -1495,10 +1167,6 @@
       }
     }
   },
-  "rpPackDetailTitle": "Detail paket",
-  "@rpPackDetailTitle": {
-    "description": "rpPackDetailTitle label"
-  },
   "skinsSavedToMySkins": "Disimpan ke Skin Saya",
   "skinsDownloadFailed": "Unduhan gagal",
   "skinsDeletedFromCloud": "Dihapus dari cloud",
@@ -1507,9 +1175,6 @@
   "skinsUploading": "Mengunggah…",
   "skinUploaded": "Skin berhasil diunggah!",
   "skinUploadFailed": "Pengunggahan gagal: {error}",
-  "skinsTabSkins": "Skin",
-  "skinsTabRecent": "Terbaru",
-  "skinsEmptyCloudSkins": "Belum ada skin cloud. Unggah skin untuk melihatnya di sini.",
   "skinsEmptyLocalSkins": "Belum ada skin. Buat atau unggah skin untuk memulai.",
   "skinUploadToWebsite": "Unggah ke situs web",
   "skinReuploadToWebsite": "Unggah ulang ke situs web",
@@ -1517,7 +1182,6 @@
   "skinCloudSaveToDevice": "Simpan ke perangkat",
   "skinCloudDelete": "Hapus dari cloud",
   "skinsTabGallery": "Galeri",
-  "skinsGalleryEmpty": "Belum ada skin komunitas.",
   "skinsTopLabel": "30 Teratas",
   "skinsAllLabel": "Semua Skin",
   "skinUploadToCloud": "Unggah ke Cloud",
@@ -1652,13 +1316,10 @@
   "feedbackLoginRequiredTitle": "Masuk untuk mengirim masukan",
   "feedbackLoginRequiredBody": "Masukan terhubung dengan akun MCCompanion Anda sehingga kami dapat membalas Anda langsung di aplikasi.",
   "feedbackLoginButton": "Masuk",
-  "reportBug": "Masukan",
   "rpBehaviorContentWarning": "Pack ini berisi data behavior pack yang tidak akan berfungsi di server. Teksturnya tetap berfungsi.",
   "rpInvalidPackFormat": "Ini adalah pack Java Edition dan tidak didukung. Gunakan resource pack Bedrock Edition.",
-  "accountActions": "AKUN",
+  "accountActions": "Akun",
   "supportInboxTitle": "Kotak masuk dukungan",
-  "supportInboxSubtitle": "Semua obrolan dukungan, dibagikan ke semua admin",
-  "adminBadge": "Admin",
   "skinShareSubject": "Skin Minecraft",
   "skinEditorTitle": "Editor skin",
   "skinToolUndo": "Urungkan",
@@ -1687,7 +1348,6 @@
   "supportInboxShared": "Dibagikan ke semua admin",
   "supportInboxEmpty": "Belum ada obrolan dukungan",
   "supportReplyingAs": "Kamu membalas sebagai MCCompanion Support",
-  "supportReplyHint": "Balas sebagai dukungan…",
   "relayBlocked": "IP atau akunmu diblokir oleh MCCompanion. Kalau menurutmu ini keliru, gabung ke Discord kami.",
   "relayBlockedWithReason": "IP atau akunmu diblokir oleh MCCompanion.\nAlasan: {reason}\nKalau menurutmu ini keliru, gabung ke Discord kami.",
   "relayConfigFailed": "Tidak bisa menyiapkan relay (status {code}). Coba relay lain atau gabung ke Discord kami.",
@@ -1716,8 +1376,6 @@
   "notifFeedbackReply": "Balasan untuk masukanmu",
   "adminTicketsHeader": "Laporan dan permintaan",
   "adminTicketReplyHint": "Balas tentang tiket ini…",
-  "adminNoTicketsForUser": "Tidak ada tiket dari pengguna ini",
-  "undo": "Urungkan",
   "chooseServerTitle": "Pilih server",
   "changeLabel": "Ubah",
   "howToAutoShow": "Tampilkan ini saat mulai",
@@ -1737,14 +1395,6 @@
   "shareServerLabel": "Bagikan servermu",
   "shareServerOn": "Teman bisa melihat server yang kamu mainkan",
   "shareServerOff": "Teman melihat kamu bermain, tapi tidak di mana",
-  "makeDefaultServer": "Jadikan server default",
-  "isDefaultServer": "Dibuka secara default",
-  "defaultServerSet": "{name} akan dibuka secara default",
-  "labelDirect": "Proxy/Langsung",
-  "startDirectMode": "Mulai Mode Proxy/Langsung",
-  "howToDirectTitle": "Mode Proxy/Langsung",
-  "howToDirectSubtitle": "Bermain tanpa melewati server kami",
-  "howToDirectBody": "Mode Proxy/Langsung: perangkat Anda adalah koneksinya.\n1. Pastikan perangkat yang menjalankan MCCompanion dan konsol Anda berada di jaringan lokal yang sama.\n2. Masukkan alamat dan port server Bedrock, lalu tekan \"Mulai Mode Proxy/Langsung\".\n3. Di konsol buka Minecraft → Main → tab Teman, lalu segarkan daftarnya.\n4. Pilih server LAN bernama \"MCCompanion\" untuk bergabung.\n\nMengapa mode ini ada:\n- Tidak ada yang melewati server MCCompanion. Perangkat Anda meneruskan lalu lintasnya sendiri, sehingga tetap berfungsi bahkan saat relai kami tidak dapat dijangkau.\n- Tidak perlu masuk ke akun.\n\nPerlu diingat:\n- Aplikasi harus tetap terbuka dan tampil di layar selama sesi berlangsung. Menutupnya atau berpindah ke aplikasi lain akan memutus koneksi.\n- Hanya server Bedrock. Untuk server Java gunakan Mode Java, yang menerjemahkan protokol di sisi kami.\n- Penggunaan baterai lebih tinggi dibanding mode lainnya.\n- Paket sumber daya tidak diterapkan. Paket berjalan lewat relay kami, yang dilewati mode ini.",
   "directHostNotFound": "{host} tidak ditemukan. Periksa alamatnya dan coba lagi.",
   "@directHostNotFound": {
     "placeholders": {
@@ -1754,17 +1404,6 @@
     }
   },
   "directPortBusy": "Tidak dapat membuka port lokal. Hentikan koneksi saat ini terlebih dahulu.",
-  "directServerOfflineTitle": "Server tidak merespons",
-  "directServerOfflineBody": "{target} tidak menjawab. Mungkin sedang offline, atau hanya mengabaikan ping. Anda tetap bisa memulai tunnel.",
-  "@directServerOfflineBody": {
-    "placeholders": {
-      "target": {
-        "type": "String"
-      }
-    }
-  },
-  "directStartAnyway": "Tetap mulai",
-  "directNoResourcePack": "Paket sumber daya tidak berfungsi di Mode Proxy/Langsung.",
   "directAddressNotSupported": "{host} adalah alamat IPv6. Mode Proxy/Langsung hanya mendukung IPv4. Gunakan alamat IPv4 atau nama host.",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -1816,21 +1455,15 @@
   "serverStatPeak": "Puncak",
   "serverStatUptime": "Uptime",
   "serverStatVotesMonth": "Vote bulan ini",
-  "serverStatVotesAllTime": "Total vote",
   "serverBadgeFeatured": "Unggulan",
   "serverEditionJava": "Java",
   "serverEditionBedrock": "Bedrock",
   "serverEditionCrossplay": "Crossplay",
   "serverSectionMotd": "Pesan hari ini",
-  "serverSectionAbout": "Tentang",
-  "serverSectionCategories": "Kategori",
-  "serverSectionVotes": "Vote",
   "serverLinkDiscord": "Discord",
   "serverLinkWebsite": "Situs web",
   "serverVotesThisMonth": "Bulan ini",
   "serverVotesAllTime": "Sepanjang waktu",
-  "serverVoteAction": "Vote server ini",
-  "serverPlayAction": "Main di server ini",
   "serverVoteSignInRequired": "Masuk untuk vote dari aplikasi.",
   "serverVoteSheetTitle": "Vote untuk {name}",
   "serverVoteSheetSubtitle": "Nama Minecraft kamu, supaya server tahu siapa yang diberi hadiah.",

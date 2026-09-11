@@ -8,6 +8,7 @@ class FeaturedServerBanner extends StatelessWidget {
   final TextEditingController portController;
   final bool broadcasting;
   final VoidCallback? onSelected;
+  final double bottomInset;
 
   const FeaturedServerBanner({
     super.key,
@@ -16,6 +17,7 @@ class FeaturedServerBanner extends StatelessWidget {
     required this.portController,
     this.broadcasting = false,
     this.onSelected,
+    this.bottomInset = 0,
   });
 
   @override
@@ -27,7 +29,8 @@ class FeaturedServerBanner extends StatelessWidget {
       broadcasting: broadcasting,
       onSelected: onSelected,
       borderRadius: BorderRadius.zero,
-      topInset: MediaQuery.of(context).padding.top,
+      topInset: 0,
+      bottomInset: bottomInset,
     );
   }
 }

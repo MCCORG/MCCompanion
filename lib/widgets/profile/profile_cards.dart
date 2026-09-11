@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../l10n/app_localizations.dart';
-import '../../theme/app_theme.dart';
+import '../../design/design.dart';
 import '../../models/user_model.dart';
 import '../../services/user_service.dart';
 import '../../services/notification_api_service.dart';
@@ -20,9 +20,9 @@ class ProfileSettingsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppTheme.borderGray),
+        color: DsColor.surface,
+        borderRadius: DsRadius.cardR,
+        border: Border.all(color: DsColor.line),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
@@ -33,16 +33,16 @@ class ProfileSettingsCard extends StatelessWidget {
               height: 32,
               decoration: BoxDecoration(
                 color: appearOffline
-                    ? AppTheme.textMuted.withValues(alpha: 0.15)
-                    : AppTheme.success.withValues(alpha: 0.12),
-                borderRadius: BorderRadius.circular(8),
+                    ? DsColor.textFaint.withValues(alpha: 0.15)
+                    : DsColor.success.withValues(alpha: 0.12),
+                borderRadius: DsRadius.controlR,
               ),
               child: Icon(
                 appearOffline
                     ? Icons.visibility_off_rounded
                     : Icons.visibility_rounded,
                 size: 16,
-                color: appearOffline ? AppTheme.textMuted : AppTheme.success,
+                color: appearOffline ? DsColor.textFaint : DsColor.success,
               ),
             ),
             const SizedBox(width: 12),
@@ -53,7 +53,7 @@ class ProfileSettingsCard extends StatelessWidget {
                   Text(
                     AppLocalizations.of(context)!.appearOfflineLabel,
                     style: TextStyle(
-                      color: AppTheme.textPrimary,
+                      color: DsColor.text,
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
                     ),
@@ -62,16 +62,12 @@ class ProfileSettingsCard extends StatelessWidget {
                     appearOffline
                         ? AppLocalizations.of(context)!.appearOfflineOn
                         : AppLocalizations.of(context)!.appearOfflineOff,
-                    style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
+                    style: TextStyle(color: DsColor.textFaint, fontSize: 11),
                   ),
                 ],
               ),
             ),
-            Switch(
-              value: appearOffline,
-              onChanged: onToggleAppearOffline,
-              activeThumbColor: AppTheme.accent,
-            ),
+            DsSwitch(value: appearOffline, onChanged: onToggleAppearOffline),
           ],
         ),
       ),
@@ -94,9 +90,9 @@ class ProfileServerVisibilityCard extends StatelessWidget {
     final l = AppLocalizations.of(context)!;
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppTheme.borderGray),
+        color: DsColor.surface,
+        borderRadius: DsRadius.cardR,
+        border: Border.all(color: DsColor.line),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
@@ -107,14 +103,14 @@ class ProfileServerVisibilityCard extends StatelessWidget {
               height: 32,
               decoration: BoxDecoration(
                 color: shareServer
-                    ? AppTheme.accent.withValues(alpha: 0.12)
-                    : AppTheme.textMuted.withValues(alpha: 0.15),
-                borderRadius: BorderRadius.circular(8),
+                    ? DsColor.accent.withValues(alpha: 0.12)
+                    : DsColor.textFaint.withValues(alpha: 0.15),
+                borderRadius: DsRadius.controlR,
               ),
               child: Icon(
                 shareServer ? Icons.dns_rounded : Icons.lock_outline_rounded,
                 size: 16,
-                color: shareServer ? AppTheme.accent : AppTheme.textMuted,
+                color: shareServer ? DsColor.accent : DsColor.textFaint,
               ),
             ),
             const SizedBox(width: 12),
@@ -125,23 +121,19 @@ class ProfileServerVisibilityCard extends StatelessWidget {
                   Text(
                     l.shareServerLabel,
                     style: TextStyle(
-                      color: AppTheme.textPrimary,
+                      color: DsColor.text,
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                   Text(
                     shareServer ? l.shareServerOn : l.shareServerOff,
-                    style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
+                    style: TextStyle(color: DsColor.textFaint, fontSize: 11),
                   ),
                 ],
               ),
             ),
-            Switch(
-              value: shareServer,
-              onChanged: onToggleShareServer,
-              activeThumbColor: AppTheme.accent,
-            ),
+            DsSwitch(value: shareServer, onChanged: onToggleShareServer),
           ],
         ),
       ),
@@ -201,15 +193,11 @@ class ProfileLinkedAccountsCardState extends State<ProfileLinkedAccountsCard> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: AppTheme.surfaceRaised,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: const BorderSide(color: AppTheme.borderGray),
-        ),
+        backgroundColor: DsColor.surface,
         title: Text(l.unlinkXboxTitle),
         content: Text(
           l.removeLabelConfirm(label),
-          style: TextStyle(color: AppTheme.textSecondary),
+          style: TextStyle(color: DsColor.textSoft),
         ),
         actions: [
           TextButton(
@@ -218,7 +206,7 @@ class ProfileLinkedAccountsCardState extends State<ProfileLinkedAccountsCard> {
           ),
           ElevatedButton(
             onPressed: () => Navigator.of(ctx).pop(true),
-            style: ElevatedButton.styleFrom(backgroundColor: AppTheme.error),
+            style: ElevatedButton.styleFrom(backgroundColor: DsColor.danger),
             child: Text(l.unlink),
           ),
         ],
@@ -237,15 +225,11 @@ class ProfileLinkedAccountsCardState extends State<ProfileLinkedAccountsCard> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: AppTheme.surfaceRaised,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: const BorderSide(color: AppTheme.borderGray),
-        ),
+        backgroundColor: DsColor.surface,
         title: Text(l.unlinkJavaTitle),
         content: Text(
           l.removeJavaConfirm(account.javaUsername),
-          style: TextStyle(color: AppTheme.textSecondary),
+          style: TextStyle(color: DsColor.textSoft),
         ),
         actions: [
           TextButton(
@@ -254,7 +238,7 @@ class ProfileLinkedAccountsCardState extends State<ProfileLinkedAccountsCard> {
           ),
           ElevatedButton(
             onPressed: () => Navigator.of(ctx).pop(true),
-            style: ElevatedButton.styleFrom(backgroundColor: AppTheme.error),
+            style: ElevatedButton.styleFrom(backgroundColor: DsColor.danger),
             child: Text(l.unlink),
           ),
         ],
@@ -276,9 +260,9 @@ class ProfileLinkedAccountsCardState extends State<ProfileLinkedAccountsCard> {
 
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppTheme.borderGray),
+        color: DsColor.surface,
+        borderRadius: DsRadius.cardR,
+        border: Border.all(color: DsColor.line),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -289,14 +273,14 @@ class ProfileLinkedAccountsCardState extends State<ProfileLinkedAccountsCard> {
               child: Text(
                 AppLocalizations.of(context)!.linkAccountsHint,
                 style: TextStyle(
-                  color: AppTheme.textSecondary,
+                  color: DsColor.textSoft,
                   fontSize: 12,
                   height: 1.5,
                 ),
               ),
             ),
           if (hasAny) ...[
-            const Divider(height: 1, color: AppTheme.borderGray),
+            Divider(height: 1, color: DsColor.line),
             ...bedrock.map(
               (acc) => ProfileAccountRow(
                 icon: Icons.sports_esports_rounded,
@@ -381,7 +365,7 @@ class ProfileAccountRow extends StatelessWidget {
             height: 32,
             decoration: BoxDecoration(
               color: color.withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: DsRadius.controlR,
             ),
             child: Icon(icon, color: color, size: 16),
           ),
@@ -393,14 +377,14 @@ class ProfileAccountRow extends StatelessWidget {
                 Text(
                   name,
                   style: TextStyle(
-                    color: AppTheme.textPrimary,
+                    color: DsColor.text,
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 Text(
                   subtitle,
-                  style: TextStyle(color: AppTheme.textMuted, fontSize: 10),
+                  style: TextStyle(color: DsColor.textFaint, fontSize: 10),
                   overflow: TextOverflow.ellipsis,
                 ),
               ],
@@ -412,10 +396,10 @@ class ProfileAccountRow extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               decoration: BoxDecoration(
-                color: AppTheme.error.withValues(alpha: 0.08),
+                color: DsColor.danger.withValues(alpha: 0.08),
                 borderRadius: BorderRadius.circular(7),
                 border: Border.all(
-                  color: AppTheme.error.withValues(alpha: 0.25),
+                  color: DsColor.danger.withValues(alpha: 0.25),
                 ),
               ),
               child: unlinking
@@ -423,14 +407,14 @@ class ProfileAccountRow extends StatelessWidget {
                       width: 12,
                       height: 12,
                       child: CircularProgressIndicator(
-                        color: AppTheme.error,
+                        color: DsColor.danger,
                         strokeWidth: 2,
                       ),
                     )
                   : Text(
                       AppLocalizations.of(context)!.unlink,
                       style: const TextStyle(
-                        color: AppTheme.error,
+                        color: DsColor.danger,
                         fontSize: 11,
                         fontWeight: FontWeight.w600,
                       ),
@@ -458,43 +442,31 @@ class ProfileDangerZoneCard extends StatelessWidget {
     final l = AppLocalizations.of(context)!;
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppTheme.error.withValues(alpha: 0.20)),
+        color: DsColor.surface,
+        borderRadius: DsRadius.cardR,
+        border: Border.all(color: DsColor.line),
       ),
+      clipBehavior: Clip.antiAlias,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(16, 12, 16, 10),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.warning_amber_rounded,
-                  size: 14,
-                  color: AppTheme.error.withValues(alpha: 0.60),
-                ),
-                const SizedBox(width: 6),
-                Text(
-                  l.accountActions,
-                  style: TextStyle(
-                    color: AppTheme.error.withValues(alpha: 0.70),
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 1.2,
-                  ),
-                ),
-              ],
+            padding: const EdgeInsets.fromLTRB(
+              DsSpace.lg,
+              DsSpace.md,
+              DsSpace.lg,
+              DsSpace.sm,
             ),
+            child: Text(l.accountActions, style: DsType.caption),
           ),
-          const Divider(height: 1, color: AppTheme.borderDim),
+          Divider(height: 1, color: DsColor.line),
           ProfileDangerRow(
             icon: Icons.logout_rounded,
             label: l.signOut,
             onTap: onSignOut,
             strong: false,
           ),
-          const Divider(height: 1, color: AppTheme.borderDim),
+          Divider(height: 1, color: DsColor.line),
           ProfileDangerRow(
             icon: Icons.delete_forever_rounded,
             label: l.deleteAccountTitle,
@@ -523,32 +495,35 @@ class ProfileDangerRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = strong
-        ? AppTheme.error
-        : AppTheme.error.withValues(alpha: 0.70);
-    return GestureDetector(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-        child: Row(
-          children: [
-            Icon(icon, size: 17, color: color),
-            const SizedBox(width: 12),
-            Text(
-              label,
-              style: TextStyle(
-                color: color,
-                fontSize: 14,
-                fontWeight: strong ? FontWeight.w600 : FontWeight.w500,
+    final color = strong ? DsColor.danger : DsColor.textSoft;
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: DsSpace.lg,
+            vertical: DsSpace.md + 2,
+          ),
+          child: Row(
+            children: [
+              Icon(icon, size: 18, color: color),
+              const SizedBox(width: DsSpace.md),
+              Text(
+                label,
+                style: DsType.body.copyWith(
+                  color: color,
+                  fontWeight: strong ? FontWeight.w600 : FontWeight.w500,
+                ),
               ),
-            ),
-            const Spacer(),
-            Icon(
-              Icons.chevron_right_rounded,
-              size: 18,
-              color: color.withValues(alpha: 0.50),
-            ),
-          ],
+              const Spacer(),
+              Icon(
+                Icons.chevron_right_rounded,
+                size: 18,
+                color: DsColor.textFaint,
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -627,9 +602,9 @@ class _ProfileNotificationPrefsCardState
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppTheme.borderGray),
+        color: DsColor.surface,
+        borderRadius: DsRadius.cardR,
+        border: Border.all(color: DsColor.line),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -645,7 +620,7 @@ class _ProfileNotificationPrefsCardState
                     height: 12,
                     child: CircularProgressIndicator(
                       strokeWidth: 2,
-                      color: AppTheme.accent,
+                      color: DsColor.accent,
                     ),
                   ),
                 ],
@@ -680,34 +655,29 @@ class _ProfileNotificationPrefsCardState
                           icon,
                           size: 16,
                           color: enabled
-                              ? AppTheme.accent
-                              : AppTheme.textDisabled,
+                              ? DsColor.accent
+                              : DsColor.textDisabled,
                         ),
                         const SizedBox(width: 12),
                         Expanded(
                           child: Text(
                             _prefLabel(key, l),
                             style: TextStyle(
-                              color: enabled
-                                  ? AppTheme.textPrimary
-                                  : AppTheme.textMuted,
+                              color: enabled ? DsColor.text : DsColor.textFaint,
                               fontSize: 13,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
                         ),
-                        Switch(
+                        DsSwitch(
                           value: enabled,
                           onChanged: (v) => _toggle(key, v),
-                          activeThumbColor: AppTheme.accent,
-                          materialTapTargetSize:
-                              MaterialTapTargetSize.shrinkWrap,
                         ),
                       ],
                     ),
                   ),
                   if (key != _typeKeys.last.$1)
-                    const Divider(height: 1, color: AppTheme.borderDim),
+                    Divider(height: 1, color: DsColor.line),
                 ],
               );
             }),
@@ -733,31 +703,13 @@ class ProfileLinkAccountBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 11),
-        decoration: BoxDecoration(
-          color: color.withValues(alpha: 0.10),
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: color.withValues(alpha: 0.28)),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, size: 15, color: color),
-            const SizedBox(width: 6),
-            Text(
-              label,
-              style: TextStyle(
-                color: color,
-                fontSize: 13,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ],
-        ),
-      ),
+    return DsButton(
+      label: label,
+      icon: icon,
+      tone: DsButtonTone.neutral,
+      size: DsButtonSize.small,
+      expand: true,
+      onPressed: onTap,
     );
   }
 }
