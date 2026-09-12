@@ -285,6 +285,13 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     );
   }
 
+  String _modeDescription(PanelMode mode, AppLocalizations loc) =>
+      switch (mode) {
+        PanelMode.lan => loc.howToXboxSubtitle,
+        PanelMode.nintendo => loc.howToNintendoSubtitle,
+        PanelMode.friends => loc.howToFriendsSubtitle,
+      };
+
   IconData _modeIcon(PanelMode mode) => switch (mode) {
     PanelMode.lan => Icons.sports_esports_rounded,
     PanelMode.nintendo => Icons.videogame_asset_rounded,
@@ -304,6 +311,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
             value: cfg.mode,
             label: _modeLabel(cfg.mode, loc),
             icon: _modeIcon(cfg.mode),
+            description: _modeDescription(cfg.mode, loc),
           ),
       ],
       mode: _mode,

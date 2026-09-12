@@ -7,11 +7,13 @@ class LinkOption<T> {
   final T value;
   final String label;
   final IconData icon;
+  final String? description;
 
   const LinkOption({
     required this.value,
     required this.label,
     required this.icon,
+    this.description,
   });
 }
 
@@ -151,7 +153,7 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
             bottomRail: true,
             active: active,
           ),
-          if (_open == _LinkSide.console) _expansion(_consoleOptions()),
+          _expansionFor(_LinkSide.console, widget.consoleTitle, null),
           _node(
             side: _LinkSide.server,
             label: widget.serverTitle,
@@ -166,7 +168,11 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
             bottomRail: false,
             active: active,
           ),
-          if (_open == _LinkSide.server) _expansion(_serverOptions()),
+          _expansionFor(
+            _LinkSide.server,
+            widget.chooseLabel,
+            widget.servers.isEmpty ? null : '${widget.servers.length}',
+          ),
           const DsDivider(),
           _packNode(),
         ],
@@ -250,32 +256,75 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
               ],
             ),
           ),
-          const SizedBox(width: DsSpace.sm),
-          if (enabled && widget.onPackChange != null)
-            GestureDetector(
-              onTap: widget.onPackChange,
-              child: _changeChip(false),
-            ),
-          const SizedBox(width: DsSpace.sm - 2),
+          const SizedBox(width: DsSpace.md),
           if (widget.packLoading)
             const SizedBox(
               width: 20,
               height: 20,
               child: CircularProgressIndicator(strokeWidth: 2),
+            )
+          else if (enabled && widget.onPackChange != null)
+            GestureDetector(
+              onTap: widget.onPackChange,
+              child: _changeChip(false),
             ),
         ],
       ),
     );
   }
 
-  Widget _expansion(Widget child) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const DsDivider(),
-        ColoredBox(color: DsColor.inset.withValues(alpha: 0.45), child: child),
-        const DsDivider(),
-      ],
+  Widget _expansionFor(_LinkSide side, String header, String? trailing) {
+    final open = _open == side;
+    return AnimatedSize(
+      duration: DsDuration.normal,
+      curve: Curves.easeOutCubic,
+      alignment: Alignment.topCenter,
+      child: open
+          ? Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const DsDivider(),
+                ColoredBox(
+                  color: DsColor.inset.withValues(alpha: 0.45),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(
+                          DsSpace.lg,
+                          DsSpace.md,
+                          DsSpace.lg,
+                          DsSpace.xs,
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                header.toUpperCase(),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: DsType.caption.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: 0.6,
+                                ),
+                              ),
+                            ),
+                            if (trailing != null)
+                              Text(trailing, style: DsType.caption),
+                          ],
+                        ),
+                      ),
+                      side == _LinkSide.console
+                          ? _consoleOptions()
+                          : _serverOptions(),
+                      const SizedBox(height: DsSpace.xs),
+                    ],
+                  ),
+                ),
+                const DsDivider(),
+              ],
+            )
+          : const SizedBox(width: double.infinity),
     );
   }
 
@@ -296,7 +345,9 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
       color: Colors.transparent,
       child: InkWell(
         onTap: enabled ? () => _toggle(side) : null,
-        child: Padding(
+        child: AnimatedContainer(
+          duration: DsDuration.fast,
+          color: open ? DsColor.accent.withValues(alpha: 0.06) : null,
           padding: const EdgeInsets.symmetric(horizontal: DsSpace.lg),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -382,9 +433,8 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
         vertical: DsSpace.xs + 2,
       ),
       decoration: BoxDecoration(
-        color: DsColor.inset,
+        color: open ? DsColor.accent.withValues(alpha: 0.12) : null,
         borderRadius: DsRadius.pillR,
-        border: Border.all(color: DsColor.line),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -392,7 +442,7 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
           Text(
             widget.changeLabel,
             style: DsType.caption.copyWith(
-              color: DsColor.textSoft,
+              color: open ? DsColor.accent : DsColor.textFaint,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -403,11 +453,30 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
             child: Icon(
               Icons.expand_more_rounded,
               size: 15,
-              color: DsColor.textFaint,
+              color: open ? DsColor.accent : DsColor.textFaint,
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _radio(bool selected) {
+    return Container(
+      width: 18,
+      height: 18,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: selected ? DsColor.accent : Colors.transparent,
+        border: Border.all(
+          color: selected ? DsColor.accent : DsColor.lineStrong,
+          width: 1.6,
+        ),
+      ),
+      child: selected
+          ? Icon(Icons.check_rounded, size: 12, color: DsColor.onAccent)
+          : null,
     );
   }
 
@@ -419,7 +488,7 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
           _optionRow(
             icon: option.icon,
             title: option.label,
-            subtitle: null,
+            subtitle: option.description,
             selected: option.value == widget.mode,
             onTap: widget.onModeChanged == null
                 ? null
@@ -449,6 +518,7 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
               setState(() => _open = _LinkSide.none);
             },
           ),
+        const DsDivider(),
         _optionRow(
           icon: Icons.tune_rounded,
           title: widget.manageLabel,
@@ -459,6 +529,7 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
             widget.onManageServers();
           },
           chevron: true,
+          choice: false,
         ),
       ],
     );
@@ -471,6 +542,7 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
     required bool selected,
     required VoidCallback? onTap,
     bool chevron = false,
+    bool choice = true,
   }) {
     return Material(
       color: selected
@@ -485,6 +557,8 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
           ),
           child: Row(
             children: [
+              if (choice) _radio(selected) else const SizedBox(width: 18),
+              const SizedBox(width: DsSpace.md - 2),
               Icon(
                 icon,
                 size: 18,
@@ -518,13 +592,7 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
                   ],
                 ),
               ),
-              if (selected)
-                Icon(
-                  Icons.check_circle_rounded,
-                  size: 18,
-                  color: DsColor.accent,
-                )
-              else if (chevron)
+              if (chevron)
                 Icon(
                   Icons.chevron_right_rounded,
                   size: 18,

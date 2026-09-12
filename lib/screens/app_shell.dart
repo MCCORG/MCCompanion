@@ -14,7 +14,6 @@ import '../services/push_notification_service.dart';
 import '../constants/app_constants.dart';
 import '../widgets/console/console_widget.dart';
 import '../widgets/navigation/bottom_nav_bar.dart';
-import '../widgets/navigation/howto_menu.dart';
 import '../widgets/navigation/info_menu.dart';
 import '../widgets/navigation/app_sidebar.dart';
 import '../widgets/featured_server_banner.dart';
@@ -101,7 +100,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
 
   late RelaySelection _selectedRelay;
   final ValueNotifier<int> _pageIndexNotifier = ValueNotifier(_pageHome);
-  HowToKind _howToKind = HowToKind.xbox;
+  HowToKind? _howToKind;
   Map<String, String>? _notice;
   Timer? _noticeTimer;
   int get _pageIndex => _pageIndexNotifier.value;
@@ -329,29 +328,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   }
 
   void _showHowToSheet() {
-    final loc = AppLocalizations.of(context)!;
-    _showSheet(
-      HowToSheetContent(
-        loc: loc,
-        onClose: () => Navigator.of(context).pop(),
-        onXbox: () {
-          Navigator.of(context).pop();
-          _openHowTo(HowToKind.xbox);
-        },
-        onNintendo: () {
-          Navigator.of(context).pop();
-          _openHowTo(HowToKind.nintendo);
-        },
-        onFriends: () {
-          Navigator.of(context).pop();
-          _openHowTo(HowToKind.friends);
-        },
-      ),
-    );
-  }
-
-  void _openHowTo(HowToKind kind) {
-    setState(() => _howToKind = kind);
+    setState(() => _howToKind = null);
     _goTo(_pageHowTo);
   }
 

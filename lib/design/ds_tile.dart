@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'ds_surface.dart';
 import 'ds_tokens.dart';
 
 class DsTile extends StatelessWidget {
@@ -119,6 +120,136 @@ class DsTile extends StatelessWidget {
       ),
       clipBehavior: Clip.antiAlias,
       child: content,
+    );
+  }
+}
+
+class DsGroup extends StatelessWidget {
+  final String? label;
+  final List<Widget> children;
+
+  const DsGroup({super.key, this.label, required this.children});
+
+  @override
+  Widget build(BuildContext context) {
+    final rows = <Widget>[];
+    for (var i = 0; i < children.length; i++) {
+      if (i > 0) rows.add(const DsDivider());
+      rows.add(children[i]);
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (label != null) ...[
+          Padding(
+            padding: const EdgeInsets.only(
+              left: DsSpace.xs,
+              bottom: DsSpace.sm,
+            ),
+            child: Text(
+              label!.toUpperCase(),
+              style: DsType.caption.copyWith(
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.8,
+              ),
+            ),
+          ),
+        ],
+        Container(
+          decoration: BoxDecoration(
+            color: DsColor.surface,
+            borderRadius: DsRadius.cardR,
+            border: Border.all(color: DsColor.line),
+          ),
+          clipBehavior: Clip.antiAlias,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: rows,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class DsRow extends StatelessWidget {
+  final String title;
+  final String? subtitle;
+  final IconData icon;
+  final Color? iconColor;
+  final VoidCallback? onTap;
+
+  const DsRow({
+    super.key,
+    required this.title,
+    this.subtitle,
+    required this.icon,
+    this.iconColor,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final tint = iconColor ?? DsColor.accent;
+
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: DsSpace.lg,
+            vertical: DsSpace.md + 2,
+          ),
+          child: Row(
+            children: [
+              Container(
+                width: 38,
+                height: 38,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: tint.withValues(alpha: 0.14),
+                  borderRadius: BorderRadius.circular(DsRadius.control - 2),
+                ),
+                child: Icon(icon, size: 18, color: tint),
+              ),
+              const SizedBox(width: DsSpace.md),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: DsType.bodyStrong,
+                    ),
+                    if (subtitle != null) ...[
+                      const SizedBox(height: DsSpace.xxs),
+                      Text(
+                        subtitle!,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: DsType.caption,
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+              if (onTap != null) ...[
+                const SizedBox(width: DsSpace.sm),
+                Icon(
+                  Icons.chevron_right_rounded,
+                  size: 20,
+                  color: DsColor.textFaint,
+                ),
+              ],
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

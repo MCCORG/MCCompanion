@@ -9,6 +9,7 @@ import '../widgets/dialogs/howto_dialogs.dart';
 
 class _SupportTopic {
   final FaIconData icon;
+  final IconData rowIcon;
   final Color color;
   final String title;
   final String subtitle;
@@ -16,6 +17,7 @@ class _SupportTopic {
 
   const _SupportTopic({
     required this.icon,
+    required this.rowIcon,
     required this.color,
     required this.title,
     required this.subtitle,
@@ -39,6 +41,7 @@ class _SupportScreenState extends State<SupportScreen> {
   List<_SupportTopic> _topics(AppLocalizations l) => [
     _SupportTopic(
       icon: FontAwesomeIcons.wifi,
+      rowIcon: Icons.wifi_rounded,
       color: AppTheme.info,
       title: l.helpMCCompanionTitle,
       subtitle: l.helpMCCompanionSubtitle,
@@ -46,6 +49,7 @@ class _SupportScreenState extends State<SupportScreen> {
     ),
     _SupportTopic(
       icon: FontAwesomeIcons.triangleExclamation,
+      rowIcon: Icons.warning_amber_rounded,
       color: AppTheme.warning,
       title: l.helpMultiplayerFailedTitle,
       subtitle: l.helpMultiplayerFailedSubtitle,
@@ -53,6 +57,7 @@ class _SupportScreenState extends State<SupportScreen> {
     ),
     _SupportTopic(
       icon: FontAwesomeIcons.gamepad,
+      rowIcon: Icons.videogame_asset_rounded,
       color: AppTheme.modeNintendo,
       title: l.helpNintendoDnsTitle,
       subtitle: l.helpNintendoDnsSubtitle,
@@ -60,6 +65,7 @@ class _SupportScreenState extends State<SupportScreen> {
     ),
     _SupportTopic(
       icon: FontAwesomeIcons.userGroup,
+      rowIcon: Icons.group_rounded,
       color: AppTheme.modeFriends,
       title: l.helpFriendsModeTitle,
       subtitle: l.helpFriendsModeSubtitle,
@@ -99,16 +105,19 @@ class _SupportScreenState extends State<SupportScreen> {
               DsSpace.xxxl,
             ),
             children: [
-              for (final topic in _topics(l)) ...[
-                DsTile(
-                  title: topic.title,
-                  subtitle: topic.subtitle,
-                  icon: Icons.help_outline_rounded,
-                  iconColor: topic.color,
-                  onTap: () => setState(() => _open = topic),
-                ),
-                const SizedBox(height: DsSpace.sm),
-              ],
+              DsGroup(
+                label: l.sectionHelp,
+                children: [
+                  for (final topic in _topics(l))
+                    DsRow(
+                      title: topic.title,
+                      subtitle: topic.subtitle,
+                      icon: topic.rowIcon,
+                      iconColor: topic.color,
+                      onTap: () => setState(() => _open = topic),
+                    ),
+                ],
+              ),
               const SizedBox(height: DsSpace.lg),
               if (widget.onFeedback != null)
                 DsButton(
