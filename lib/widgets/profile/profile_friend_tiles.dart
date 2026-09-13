@@ -3,6 +3,7 @@ import '../../theme/app_theme.dart';
 import '../../models/user_model.dart';
 import '../../screens/public_profile_screen.dart';
 import 'profile_common.dart';
+import '../../theme/app_tokens.dart';
 
 class ProfileFriendTile extends StatelessWidget {
   final FriendModel friend;
@@ -40,7 +41,7 @@ class ProfileFriendTile extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         decoration: BoxDecoration(
           color: AppTheme.surfaceRaised,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: AppRadius.medium,
           border: Border.all(
             color: friend.online
                 ? AppTheme.success.withValues(alpha: 0.25)
@@ -91,10 +92,7 @@ class ProfileFriendTile extends StatelessWidget {
                   ),
                   Text(
                     '@${friend.username}',
-                    style: TextStyle(
-                      color: AppTheme.textMuted,
-                      fontSize: 11,
-                    ),
+                    style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
                   ),
                   if (friend.online && friend.session != null) ...[
                     const SizedBox(height: 3),
@@ -154,7 +152,7 @@ class ProfileRequestTile extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       decoration: BoxDecoration(
         color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: AppRadius.medium,
         border: Border.all(color: AppTheme.accent.withValues(alpha: 0.20)),
       ),
       child: Row(
@@ -179,10 +177,7 @@ class ProfileRequestTile extends StatelessWidget {
                 ),
                 Text(
                   '@${request.requesterUsername}',
-                  style: TextStyle(
-                    color: AppTheme.textMuted,
-                    fontSize: 11,
-                  ),
+                  style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
                 ),
               ],
             ),

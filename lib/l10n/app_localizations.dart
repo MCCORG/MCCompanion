@@ -126,17 +126,47 @@ abstract class AppLocalizations {
     Locale('zh'),
   ];
 
-  /// No description provided for @appName.
-  ///
-  /// In en, this message translates to:
-  /// **'MCCompanion'**
-  String get appName;
-
   /// No description provided for @console.
   ///
   /// In en, this message translates to:
   /// **'Console'**
   String get console;
+
+  /// No description provided for @modeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Mode'**
+  String get modeLabel;
+
+  /// No description provided for @statusLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get statusLabel;
+
+  /// No description provided for @seeAll.
+  ///
+  /// In en, this message translates to:
+  /// **'See all'**
+  String get seeAll;
+
+  /// No description provided for @sectionHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Help'**
+  String get sectionHelp;
+
+  /// No description provided for @sectionAdvanced.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced'**
+  String get sectionAdvanced;
+
+  /// No description provided for @versionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Version'**
+  String get versionLabel;
 
   /// No description provided for @consoleOutput.
   ///
@@ -228,12 +258,6 @@ abstract class AppLocalizations {
   /// **'RIGHT SHORTCUT'**
   String get onboardingNavRightLabel;
 
-  /// No description provided for @onboardingNavPreviewHome.
-  ///
-  /// In en, this message translates to:
-  /// **'Home'**
-  String get onboardingNavPreviewHome;
-
   /// No description provided for @onboardingNavPreviewConnector.
   ///
   /// In en, this message translates to:
@@ -252,65 +276,11 @@ abstract class AppLocalizations {
   /// **'Empty'**
   String get onboardingNavPreviewEmpty;
 
-  /// No description provided for @onboardingStartTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Start page'**
-  String get onboardingStartTitle;
-
-  /// No description provided for @onboardingStartSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'The app opens here every time you launch.'**
-  String get onboardingStartSubtitle;
-
   /// No description provided for @onboardingCustomizeDetail.
   ///
   /// In en, this message translates to:
   /// **'Customize in detail →'**
   String get onboardingCustomizeDetail;
-
-  /// No description provided for @startPageHome.
-  ///
-  /// In en, this message translates to:
-  /// **'Home'**
-  String get startPageHome;
-
-  /// No description provided for @startPageHomeSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Show the home screen with tiles'**
-  String get startPageHomeSubtitle;
-
-  /// No description provided for @startPageFeature.
-  ///
-  /// In en, this message translates to:
-  /// **'Feature'**
-  String get startPageFeature;
-
-  /// No description provided for @startPageFeatureSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Open directly on a specific page'**
-  String get startPageFeatureSubtitle;
-
-  /// No description provided for @startPageSectionLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'START PAGE'**
-  String get startPageSectionLabel;
-
-  /// No description provided for @joinUs.
-  ///
-  /// In en, this message translates to:
-  /// **'Join Us'**
-  String get joinUs;
-
-  /// No description provided for @more.
-  ///
-  /// In en, this message translates to:
-  /// **'More'**
-  String get more;
 
   /// No description provided for @website.
   ///
@@ -330,18 +300,6 @@ abstract class AppLocalizations {
   /// **'Support'**
   String get support;
 
-  /// Detailed help / instructions shown in the help dialog
-  ///
-  /// In en, this message translates to:
-  /// **'Created by {appCreator}.\n\nHow to use:\n1. Enter your Minecraft server address and port (default: 19132)\n   or select a previously saved server from the dropdown\n2. (Optional) Choose a Relay Server (EU or US) closest to your location\n3. Click \"Start Broadcasting\" to begin\n4. On your console/device: Minecraft > Play > Friends\n5. You should see a LAN server called \"MCCompanion\"\n6. Click it to join your external server via MCCompanion\n\nNintendo Switch (DNS mode):\n1. Enable \"Nintendo Switch\" in the connection panel\n2. Select a Relay Server (EU or US)\n3. Click \"Send DNS Config\": this sends your config to the relay\n   (it does NOT broadcast a LAN server)\n4. On your Switch, apply your MCCompanion DNS setup and join\n   using the server entry you use for MCCompanion\n\nNotes:\n- For LAN broadcasting, MCCompanion and console must be on the same local network.\n- Tip: Choose the relay server closest to you for the best performance.'**
-  String helpText(Object appCreator);
-
-  /// No description provided for @serverDetailsLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Server Details'**
-  String get serverDetailsLabel;
-
   /// No description provided for @start.
   ///
   /// In en, this message translates to:
@@ -359,12 +317,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Java'**
   String get labelJava;
-
-  /// No description provided for @aternosSubtext.
-  ///
-  /// In en, this message translates to:
-  /// **'Create your own free Minecraft server'**
-  String get aternosSubtext;
 
   /// Your language name in your own language
   ///
@@ -414,18 +366,6 @@ abstract class AppLocalizations {
   /// **'Delete'**
   String get delete;
 
-  /// Title for manage servers dialog
-  ///
-  /// In en, this message translates to:
-  /// **'My Servers'**
-  String get myServers;
-
-  /// Subtitle for manage servers dialog
-  ///
-  /// In en, this message translates to:
-  /// **'Quick access servers'**
-  String get quickAccessServers;
-
   /// Add server button label / dialog title
   ///
   /// In en, this message translates to:
@@ -468,24 +408,6 @@ abstract class AppLocalizations {
   /// **'Save'**
   String get save;
 
-  /// Shown on splash while app initializes
-  ///
-  /// In en, this message translates to:
-  /// **'Initializing...'**
-  String get initializing;
-
-  /// Badge text on splash screen
-  ///
-  /// In en, this message translates to:
-  /// **'Created by NetherDev'**
-  String get createdBy;
-
-  /// Subtitle on splash screen
-  ///
-  /// In en, this message translates to:
-  /// **'Bedrock Bridge'**
-  String get bedrockBridge;
-
   /// Snackbar shown when clients disconnect automatically
   ///
   /// In en, this message translates to:
@@ -510,18 +432,6 @@ abstract class AppLocalizations {
   /// **'Data sent to MCCompanion servers'**
   String get dataSentToServers;
 
-  /// Snackbar shown when broadcasting starts
-  ///
-  /// In en, this message translates to:
-  /// **'Broadcasting started'**
-  String get broadcastingStarted;
-
-  /// Snackbar shown when broadcasting stops
-  ///
-  /// In en, this message translates to:
-  /// **'Broadcast stopped'**
-  String get broadcastStopped;
-
   /// Shown when a saved server is selected
   ///
   /// In en, this message translates to:
@@ -533,12 +443,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Selected: {name}'**
   String selectedFeaturedServer(Object name);
-
-  /// Shown when user tries to copy logs but none exist
-  ///
-  /// In en, this message translates to:
-  /// **'No logs to copy'**
-  String get noLogsToCopy;
 
   /// Shown after copying logs to clipboard
   ///
@@ -552,59 +456,17 @@ abstract class AppLocalizations {
   /// **'Debug logs enabled'**
   String get debugEnabled;
 
-  /// No description provided for @debugDisabled.
-  ///
-  /// In en, this message translates to:
-  /// **'Debug logs disabled'**
-  String get debugDisabled;
-
-  /// No description provided for @howToUseTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'How to use MCCompanion'**
-  String get howToUseTitle;
-
   /// No description provided for @iUnderstand.
   ///
   /// In en, this message translates to:
   /// **'I understand'**
   String get iUnderstand;
 
-  /// No description provided for @playOnSwitchTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Play on Nintendo Switch'**
-  String get playOnSwitchTitle;
-
-  /// No description provided for @playWithFriendsTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Play with Friends'**
-  String get playWithFriendsTitle;
-
   /// DNS instructions shown for Nintendo Switch mode
   ///
   /// In en, this message translates to:
   /// **'Selected: {relayName}\n\nHow to connect:\n1. Go to your Switch Settings and change the DNS to: {relayIp}\n2. Open Minecraft and select a server from the list (like Cubecraft or Hive).\n3. You will now be sent to your own server automatically.'**
   String playInstructionsSwitch(Object relayName, Object relayIp);
-
-  /// Instructions shown for Friends mode
-  ///
-  /// In en, this message translates to:
-  /// **'How to connect:\n1. On your console, add {friend} as a friend.\n2. Open Minecraft and go to the Friends tab.\n3. Look for your server under LAN Worlds and select it to join.'**
-  String playInstructionsFriends(Object friend);
-
-  /// Label text above the relay selector
-  ///
-  /// In en, this message translates to:
-  /// **'MCCompanion SERVER'**
-  String get nldServerLabel;
-
-  /// Accessibility label for relay selection button
-  ///
-  /// In en, this message translates to:
-  /// **'Select relay {name}'**
-  String selectRelayLabel(Object name);
 
   /// No description provided for @noSavedServers.
   ///
@@ -618,47 +480,11 @@ abstract class AppLocalizations {
   /// **'Saved servers'**
   String get savedServers;
 
-  /// No description provided for @serverAddressHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Server Address'**
-  String get serverAddressHint;
-
-  /// No description provided for @portHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Port'**
-  String get portHint;
-
   /// No description provided for @manageServers.
   ///
   /// In en, this message translates to:
   /// **'Manage servers'**
   String get manageServers;
-
-  /// No description provided for @manageServersTooltip.
-  ///
-  /// In en, this message translates to:
-  /// **'Manage servers'**
-  String get manageServersTooltip;
-
-  /// No description provided for @noServerYet.
-  ///
-  /// In en, this message translates to:
-  /// **'No saved servers yet.\nTap Manage to add one.'**
-  String get noServerYet;
-
-  /// No description provided for @serverNotSelected.
-  ///
-  /// In en, this message translates to:
-  /// **'No server selected'**
-  String get serverNotSelected;
-
-  /// No description provided for @ready.
-  ///
-  /// In en, this message translates to:
-  /// **'Ready'**
-  String get ready;
 
   /// No description provided for @active.
   ///
@@ -696,59 +522,11 @@ abstract class AppLocalizations {
   /// **'Continue Anyway'**
   String get continueAnyway;
 
-  /// No description provided for @sameWifi.
-  ///
-  /// In en, this message translates to:
-  /// **'Same Wi-Fi Network'**
-  String get sameWifi;
-
-  /// No description provided for @needSameWifi.
-  ///
-  /// In en, this message translates to:
-  /// **'The device running MCCompanion MUST be on the same Wi-Fi network as the console you play Minecraft on.'**
-  String get needSameWifi;
-
-  /// No description provided for @subscription.
-  ///
-  /// In en, this message translates to:
-  /// **'Online Subscription Required'**
-  String get subscription;
-
-  /// No description provided for @needSubscription.
-  ///
-  /// In en, this message translates to:
-  /// **'Each console needs its own active online subscription (Xbox Live, PS Plus, NSO). Without it, MCCompanion won\'t appear.'**
-  String get needSubscription;
-
   /// No description provided for @updateAvailable.
   ///
   /// In en, this message translates to:
   /// **'Update Available'**
   String get updateAvailable;
-
-  /// No description provided for @newVersion.
-  ///
-  /// In en, this message translates to:
-  /// **'A new version of the app is available.\nUpdate now for the latest features and fixes.'**
-  String get newVersion;
-
-  /// No description provided for @later.
-  ///
-  /// In en, this message translates to:
-  /// **'Later'**
-  String get later;
-
-  /// No description provided for @updateNow.
-  ///
-  /// In en, this message translates to:
-  /// **'Update Now'**
-  String get updateNow;
-
-  /// No description provided for @beforeYouStart.
-  ///
-  /// In en, this message translates to:
-  /// **'BEFORE YOU START'**
-  String get beforeYouStart;
 
   /// No description provided for @stopBroadcasting.
   ///
@@ -774,12 +552,6 @@ abstract class AppLocalizations {
   /// **'Start Broadcasting'**
   String get startBroadcasting;
 
-  /// No description provided for @modeLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Mode'**
-  String get modeLabel;
-
   /// No description provided for @labelXbox.
   ///
   /// In en, this message translates to:
@@ -797,48 +569,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Friends'**
   String get labelFriends;
-
-  /// No description provided for @nintendoInfoTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Nintendo Switch DNS mode'**
-  String get nintendoInfoTitle;
-
-  /// No description provided for @nintendoInfoText.
-  ///
-  /// In en, this message translates to:
-  /// **'Start in Nintendo mode, set your DNS and join a featured server.'**
-  String get nintendoInfoText;
-
-  /// No description provided for @friendModeTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Friend mode'**
-  String get friendModeTitle;
-
-  /// No description provided for @friendModeText.
-  ///
-  /// In en, this message translates to:
-  /// **'Add MCCompanion\'s friends bots as a friend. Start Friends mode and play'**
-  String get friendModeText;
-
-  /// Small label used when a relay is selected
-  ///
-  /// In en, this message translates to:
-  /// **'Selected'**
-  String get selectedRelayCheck;
-
-  /// No description provided for @relayFallbackWarning.
-  ///
-  /// In en, this message translates to:
-  /// **'Warning: original relay did not respond. Fallback relay in use: {name}'**
-  String relayFallbackWarning(Object name);
-
-  /// No description provided for @relayUnableConnect.
-  ///
-  /// In en, this message translates to:
-  /// **'Unable to connect to ANY MCCompanion relay server. Try again later or check your internet.'**
-  String get relayUnableConnect;
 
   /// Title for the Xbox / PS4-5 how-to modal
   ///
@@ -870,12 +600,6 @@ abstract class AppLocalizations {
   /// **'DNS relay instructions for Switch'**
   String get howToNintendoSubtitle;
 
-  /// Detailed steps for Nintendo Switch DNS setup
-  ///
-  /// In en, this message translates to:
-  /// **'Nintendo Switch: DNS mode (step-by-step):\n1. In the app enable \"Nintendo\" mode and select a Relay Server (EU or US).\n2. Tap \"Send DNS Config\" to push the DNS IP to the relay.\n3. On your Nintendo Switch go to System Settings → Internet → Internet Settings → (your network) → Change Settings → DNS and set the Primary DNS to the relay IP.\n4. Open Minecraft and join a public server; you will be redirected to your server using the relay DNS.\nNotes:\n- DNS mode does not broadcast a LAN server; it routes game traffic through the relay.\n- Revert your DNS after you are done if you need normal network behavior.'**
-  String get howToNintendoBody;
-
   /// Title for the Friends-mode how-to modal
   ///
   /// In en, this message translates to:
@@ -887,12 +611,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Invite friends and join via LAN'**
   String get howToFriendsSubtitle;
-
-  /// Detailed steps for Friends mode
-  ///
-  /// In en, this message translates to:
-  /// **'Friends mode: quick steps:\n1. Add the MCCompanion friend account (relay friend) on your console or platform if required.\n2. In the app enable Friends mode and send the relay configuration (if applicable).\n3. On your console open Minecraft → Friends and search for LAN Worlds, your server should appear there as a LAN world.\n4. Select it to join your server with friends.\nNotes:\n- Make sure both you and your friends have the same NAT/settings that allow friend presence.\n- Friend-mode relies on platform friend features and may require accepting friend requests.'**
-  String get howToFriendsBody;
 
   /// Title for help topic when MCCompanion isn't visible on console
   ///
@@ -977,12 +695,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Language'**
   String get changeLanguage;
-
-  /// Button that resets localization to the system/default locale
-  ///
-  /// In en, this message translates to:
-  /// **'Use system language'**
-  String get useSystemLanguage;
 
   /// Snackbar message when launching an external URL fails
   ///
@@ -1110,18 +822,6 @@ abstract class AppLocalizations {
   /// **'Checking...'**
   String get statusChecking;
 
-  /// Tooltip when server notifications are enabled
-  ///
-  /// In en, this message translates to:
-  /// **'Notifications on'**
-  String get notificationsOn;
-
-  /// Tooltip when server notifications are disabled
-  ///
-  /// In en, this message translates to:
-  /// **'Notifications off'**
-  String get notificationsOff;
-
   /// Error when toggling server notifications fails
   ///
   /// In en, this message translates to:
@@ -1161,7 +861,7 @@ abstract class AppLocalizations {
   /// Subtitle in the customize bottom sheet
   ///
   /// In en, this message translates to:
-  /// **'Reorder tiles and customize navigation'**
+  /// **'Navigation bar and colors'**
   String get customizeSubtitle;
 
   /// Reset button in customize sheet
@@ -1169,18 +869,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Reset'**
   String get resetLabel;
-
-  /// Section header for tiles in customize sheet
-  ///
-  /// In en, this message translates to:
-  /// **'TILES'**
-  String get tilesSection;
-
-  /// Hint text below tiles section in customize sheet
-  ///
-  /// In en, this message translates to:
-  /// **'Drag to reorder'**
-  String get dragToReorder;
 
   /// Section header for navigation in customize sheet
   ///
@@ -1191,50 +879,32 @@ abstract class AppLocalizations {
   /// Note about fixed navigation items
   ///
   /// In en, this message translates to:
-  /// **'Home, Connector and Profile are always fixed'**
+  /// **'Connector and Profile are always fixed'**
   String get navFixed;
 
   /// Label for left navigation slot selector
   ///
   /// In en, this message translates to:
-  /// **'Left slot (next to Home)'**
+  /// **'Slot 2'**
   String get leftSlot;
+
+  /// No description provided for @outerSlot.
+  ///
+  /// In en, this message translates to:
+  /// **'Slot 1'**
+  String get outerSlot;
 
   /// Label for right navigation slot selector
   ///
   /// In en, this message translates to:
-  /// **'Right slot (next to Profile)'**
+  /// **'Slot 3'**
   String get rightSlot;
 
-  /// Tooltip on wide-tile icon when tile is already wide, tap to remove
+  /// No description provided for @farSlot.
   ///
   /// In en, this message translates to:
-  /// **'Remove wide layout'**
-  String get tileWideTooltipRemove;
-
-  /// Tooltip on wide-tile icon, tap to make this tile full-width
-  ///
-  /// In en, this message translates to:
-  /// **'Make wide tile'**
-  String get tileWideTooltipAdd;
-
-  /// Tooltip on eye icon when tile is hidden, tap to show
-  ///
-  /// In en, this message translates to:
-  /// **'Show tile'**
-  String get tileVisibilityShow;
-
-  /// Tooltip on eye icon when tile is visible, tap to hide
-  ///
-  /// In en, this message translates to:
-  /// **'Hide tile'**
-  String get tileVisibilityHide;
-
-  /// Tooltip shown when hide is disabled because minimum visible tile count is reached
-  ///
-  /// In en, this message translates to:
-  /// **'Cannot hide (last tile)'**
-  String get tileVisibilityMin;
+  /// **'Slot 4'**
+  String get farSlot;
 
   /// Apply button in the custom colour picker dialog
   ///
@@ -1368,12 +1038,6 @@ abstract class AppLocalizations {
   /// **'Java Edition · {uuid}'**
   String accountSubtitleJava(Object uuid);
 
-  /// Hint text for avatar URL field
-  ///
-  /// In en, this message translates to:
-  /// **'https://example.com/avatar.png'**
-  String get avatarUrlHint;
-
   /// Tooltip/button to report a user
   ///
   /// In en, this message translates to:
@@ -1440,30 +1104,6 @@ abstract class AppLocalizations {
   /// **'Submit report'**
   String get reportSubmit;
 
-  /// Date divider label for today
-  ///
-  /// In en, this message translates to:
-  /// **'Today'**
-  String get today;
-
-  /// Date divider label for yesterday
-  ///
-  /// In en, this message translates to:
-  /// **'Yesterday'**
-  String get yesterday;
-
-  /// Prefix for last message preview when message is from current user
-  ///
-  /// In en, this message translates to:
-  /// **'You'**
-  String get youPrefix;
-
-  /// Title of the player lookup screen
-  ///
-  /// In en, this message translates to:
-  /// **'Player Lookup'**
-  String get playerLookupTitle;
-
   /// Subtitle/hint on player lookup screen
   ///
   /// In en, this message translates to:
@@ -1500,71 +1140,17 @@ abstract class AppLocalizations {
   /// **'{value} copied'**
   String playerLookupCopied(Object value);
 
-  /// Tab label for Profile tab
-  ///
-  /// In en, this message translates to:
-  /// **'Profile'**
-  String get tabProfile;
-
-  /// Tab label for Friends tab
-  ///
-  /// In en, this message translates to:
-  /// **'Friends'**
-  String get tabFriends;
-
-  /// Tab label for Requests tab
-  ///
-  /// In en, this message translates to:
-  /// **'Requests'**
-  String get tabRequests;
-
   /// Title/button for adding a friend
   ///
   /// In en, this message translates to:
   /// **'Add Friend'**
   String get addFriend;
 
-  /// Hint text for username input
-  ///
-  /// In en, this message translates to:
-  /// **'Username'**
-  String get usernameHint;
-
   /// Send button label
   ///
   /// In en, this message translates to:
   /// **'Send'**
   String get send;
-
-  /// Toast when a friend request is sent
-  ///
-  /// In en, this message translates to:
-  /// **'Friend request sent to {name}'**
-  String friendRequestSentTo(Object name);
-
-  /// Error when already friends with user
-  ///
-  /// In en, this message translates to:
-  /// **'You are already friends with {name}'**
-  String alreadyFriendsWith(Object name);
-
-  /// Error when friend request is already pending
-  ///
-  /// In en, this message translates to:
-  /// **'A request to {name} is already pending'**
-  String requestAlreadyPending(Object name);
-
-  /// Error when user is not found
-  ///
-  /// In en, this message translates to:
-  /// **'User {name} not found'**
-  String userNotFoundMsg(Object name);
-
-  /// Error when user is blocked or request is not allowed
-  ///
-  /// In en, this message translates to:
-  /// **'Cannot send a request to {name}'**
-  String cannotSendRequest(Object name);
 
   /// Generic error message
   ///
@@ -1679,12 +1265,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'If an account exists for {email}, a reset link is on its way'**
   String resetLinkSent(Object email);
-
-  /// Error when no account exists for the email
-  ///
-  /// In en, this message translates to:
-  /// **'No account found for that email address'**
-  String get noAccountForEmail;
 
   /// Error for invalid email format
   ///
@@ -1854,12 +1434,6 @@ abstract class AppLocalizations {
   /// **'Remove {name} from your linked accounts?'**
   String removeJavaConfirm(Object name);
 
-  /// Section title for linked accounts card
-  ///
-  /// In en, this message translates to:
-  /// **'Linked Accounts'**
-  String get linkedAccountsTitle;
-
   /// Hint when no accounts are linked
   ///
   /// In en, this message translates to:
@@ -1883,12 +1457,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile updated'**
   String get profileUpdated;
-
-  /// Title for the edit profile card
-  ///
-  /// In en, this message translates to:
-  /// **'Profile'**
-  String get profileCardTitle;
 
   /// Edit button label
   ///
@@ -1919,24 +1487,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Tell others about yourself…'**
   String get bioHint;
-
-  /// Label for avatar URL field
-  ///
-  /// In en, this message translates to:
-  /// **'Avatar URL'**
-  String get avatarUrlLabel;
-
-  /// Label for username row in profile display
-  ///
-  /// In en, this message translates to:
-  /// **'Username'**
-  String get usernameDisplayLabel;
-
-  /// Label for bio/about-me row in profile display
-  ///
-  /// In en, this message translates to:
-  /// **'About me'**
-  String get aboutMe;
 
   /// Empty state title on friends tab
   ///
@@ -1980,30 +1530,6 @@ abstract class AppLocalizations {
   /// **'Edit'**
   String get skinsEdit;
 
-  /// Title when no Minecraft accounts are linked
-  ///
-  /// In en, this message translates to:
-  /// **'No Minecraft accounts linked'**
-  String get skinsNoAccountsTitle;
-
-  /// Subtitle when no Minecraft accounts are linked
-  ///
-  /// In en, this message translates to:
-  /// **'Link a Java or Bedrock account to view your skins.'**
-  String get skinsNoAccountsSubtitle;
-
-  /// Title when user is not signed in on skins screen
-  ///
-  /// In en, this message translates to:
-  /// **'Sign in to view your skins'**
-  String get skinsSignInTitle;
-
-  /// Subtitle when user is not signed in on skins screen
-  ///
-  /// In en, this message translates to:
-  /// **'Sign in and link your Minecraft accounts to see your skins here.'**
-  String get skinsSignInSubtitle;
-
   /// Error when uploaded skin is wrong size
   ///
   /// In en, this message translates to:
@@ -2027,42 +1553,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Create'**
   String get skinsCreate;
-
-  /// Section label for recent Geyser skins
-  ///
-  /// In en, this message translates to:
-  /// **'RECENT SKINS'**
-  String get skinsSectionRecent;
-
-  /// Section label for saved/local skins
-  ///
-  /// In en, this message translates to:
-  /// **'MY SKINS'**
-  String get skinsSectionMy;
-
-  /// Empty state text for saved skins section
-  ///
-  /// In en, this message translates to:
-  /// **'No saved skins yet. Upload or create one!'**
-  String get skinsEmptyMySkins;
-
-  /// Section label for the user's linked account skins
-  ///
-  /// In en, this message translates to:
-  /// **'YOUR SKINS'**
-  String get skinsSectionYours;
-
-  /// Error text when recent skins cannot be loaded
-  ///
-  /// In en, this message translates to:
-  /// **'Could not load skins'**
-  String get skinsCouldNotLoad;
-
-  /// Pagination label on skins screen
-  ///
-  /// In en, this message translates to:
-  /// **'Page {page} of {total}'**
-  String skinsPageOf(Object page, Object total);
 
   /// Download button in skin detail sheet
   ///
@@ -2129,12 +1619,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No connection. Check your internet and try again.'**
   String get noConnectionError;
-
-  /// home
-  ///
-  /// In en, this message translates to:
-  /// **'Home'**
-  String get home;
 
   /// info
   ///
@@ -2256,35 +1740,17 @@ abstract class AppLocalizations {
   /// **'Relay'**
   String get relay;
 
-  /// Section label above mode chips in connection panel
-  ///
-  /// In en, this message translates to:
-  /// **'SELECT MODE'**
-  String get selectModeSection;
-
   /// Section label above servers panel in connection panel
   ///
   /// In en, this message translates to:
-  /// **'SERVERS'**
+  /// **'Servers'**
   String get serversSection;
-
-  /// Placeholder when no server is entered in connection panel
-  ///
-  /// In en, this message translates to:
-  /// **'No server selected'**
-  String get noServerSelected;
 
   /// Title of the Bedrock account picker bottom sheet
   ///
   /// In en, this message translates to:
   /// **'Select Bedrock account'**
   String get selectBedrockAccount;
-
-  /// Player count label on tracked server card
-  ///
-  /// In en, this message translates to:
-  /// **'{players} / {max} players'**
-  String playersCount(Object players, Object max);
 
   /// Title of the Info & Legal sheet
   ///
@@ -2460,24 +1926,6 @@ abstract class AppLocalizations {
   /// **'Port must be between 1 and 65535'**
   String get portRangeError;
 
-  /// Title for the partner servers screen
-  ///
-  /// In en, this message translates to:
-  /// **'Server List'**
-  String get partnerServersTitle;
-
-  /// Empty state text on partner servers screen
-  ///
-  /// In en, this message translates to:
-  /// **'No servers to show yet.'**
-  String get noPartnerServers;
-
-  /// Secondary empty state text on partner servers screen
-  ///
-  /// In en, this message translates to:
-  /// **'Check back later.'**
-  String get checkBackLater;
-
   /// AppBar title for Xbox link screen
   ///
   /// In en, this message translates to:
@@ -2561,12 +2009,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Try again'**
   String get tryAgain;
-
-  /// AppBar title fallback for public profile when username not loaded
-  ///
-  /// In en, this message translates to:
-  /// **'Profile'**
-  String get publicProfileTitle;
 
   /// Text shown when a user profile cannot be found
   ///
@@ -2685,7 +2127,7 @@ abstract class AppLocalizations {
   /// Banner shown when tracker slot limit is reached
   ///
   /// In en, this message translates to:
-  /// **'You\'ve reached your server limit. Upgrade to track more servers.'**
+  /// **'Server limit reached'**
   String get trackerLimitReached;
 
   /// Button to open paywall/upgrade screen
@@ -2790,30 +2232,6 @@ abstract class AppLocalizations {
   /// **'Code copied to clipboard'**
   String get javaCodeCopied;
 
-  /// No description provided for @splashFeatureConnect.
-  ///
-  /// In en, this message translates to:
-  /// **'Connect'**
-  String get splashFeatureConnect;
-
-  /// No description provided for @splashFeatureFriends.
-  ///
-  /// In en, this message translates to:
-  /// **'Friends'**
-  String get splashFeatureFriends;
-
-  /// No description provided for @splashFeatureChat.
-  ///
-  /// In en, this message translates to:
-  /// **'Chat'**
-  String get splashFeatureChat;
-
-  /// No description provided for @splashFeatureSkins.
-  ///
-  /// In en, this message translates to:
-  /// **'Skins'**
-  String get splashFeatureSkins;
-
   /// No description provided for @featureLabelConnector.
   ///
   /// In en, this message translates to:
@@ -2844,36 +2262,6 @@ abstract class AppLocalizations {
   /// **'Server Tracker'**
   String get featureLabelTracker;
 
-  /// No description provided for @featureSubtitleConnector.
-  ///
-  /// In en, this message translates to:
-  /// **'Connect consoles to Minecraft'**
-  String get featureSubtitleConnector;
-
-  /// No description provided for @featureSubtitleSkins.
-  ///
-  /// In en, this message translates to:
-  /// **'Browse & manage Minecraft skins'**
-  String get featureSubtitleSkins;
-
-  /// No description provided for @featureSubtitlePartners.
-  ///
-  /// In en, this message translates to:
-  /// **'Featured servers'**
-  String get featureSubtitlePartners;
-
-  /// No description provided for @featureSubtitleLookup.
-  ///
-  /// In en, this message translates to:
-  /// **'Look up Java & Bedrock profiles'**
-  String get featureSubtitleLookup;
-
-  /// No description provided for @featureSubtitleTracker.
-  ///
-  /// In en, this message translates to:
-  /// **'Monitor server status & get notified'**
-  String get featureSubtitleTracker;
-
   /// No description provided for @userSearchHint.
   ///
   /// In en, this message translates to:
@@ -2885,12 +2273,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search by username, Xbox gamertag or Java name'**
   String get userSearchSub;
-
-  /// Label shown when a friend is online
-  ///
-  /// In en, this message translates to:
-  /// **'Online'**
-  String get onlineStatus;
 
   /// Toast shown on Windows when user taps the upgrade button
   ///
@@ -2925,7 +2307,7 @@ abstract class AppLocalizations {
   /// Label for account danger zone section
   ///
   /// In en, this message translates to:
-  /// **'ACCOUNT'**
+  /// **'Account'**
   String get accountActions;
 
   /// Label for bug report type
@@ -2982,24 +2364,6 @@ abstract class AppLocalizations {
   /// **'Explain what you\'d like and why it would be useful.'**
   String get feedbackDescHintFeature;
 
-  /// Label above email field in feedback form
-  ///
-  /// In en, this message translates to:
-  /// **'Email'**
-  String get feedbackEmailLabel;
-
-  /// Hint text for email field
-  ///
-  /// In en, this message translates to:
-  /// **'So we can follow up with you'**
-  String get feedbackEmailHint;
-
-  /// Note below email field
-  ///
-  /// In en, this message translates to:
-  /// **'Your email is never shared publicly.'**
-  String get feedbackEmailNote;
-
   /// Submit button label when type is bug
   ///
   /// In en, this message translates to:
@@ -3054,12 +2418,6 @@ abstract class AppLocalizations {
   /// **'Description must be at least 10 characters.'**
   String get feedbackDescTooShort;
 
-  /// Validation error when email is missing or invalid
-  ///
-  /// In en, this message translates to:
-  /// **'Please enter a valid email address.'**
-  String get feedbackEmailInvalid;
-
   /// Error toast when submit fails
   ///
   /// In en, this message translates to:
@@ -3069,14 +2427,8 @@ abstract class AppLocalizations {
   /// Title on feedback tile on landing screen
   ///
   /// In en, this message translates to:
-  /// **'Report a bug or suggest a feature'**
-  String get feedbackTileTitle;
-
-  /// Short label for feedback/bug report in desktop sidebar
-  ///
-  /// In en, this message translates to:
   /// **'Feedback'**
-  String get reportBug;
+  String get feedbackTileTitle;
 
   /// Subtitle on feedback tile on landing screen
   ///
@@ -3192,36 +2544,6 @@ abstract class AppLocalizations {
   /// **'Resource Pack'**
   String get rpScreenTitle;
 
-  /// Section title for the what-is-this explanation card
-  ///
-  /// In en, this message translates to:
-  /// **'What is this?'**
-  String get rpWhatIsThis;
-
-  /// Body text explaining what the resource pack feature does
-  ///
-  /// In en, this message translates to:
-  /// **'Customize how Minecraft looks on your console with a resource pack. Upload a file or paste a direct link. MCCompanion sends it to your console automatically every time you connect.'**
-  String get rpExplanation;
-
-  /// Label for the pack URL text field
-  ///
-  /// In en, this message translates to:
-  /// **'Pack URL'**
-  String get rpPackUrlLabel;
-
-  /// Hint/placeholder for the pack URL text field
-  ///
-  /// In en, this message translates to:
-  /// **'https://example.com/pack.mcpack'**
-  String get rpPackUrlHint;
-
-  /// Label for the enable resource pack toggle
-  ///
-  /// In en, this message translates to:
-  /// **'Enable resource pack'**
-  String get rpEnableToggle;
-
   /// Section title for the supported formats card
   ///
   /// In en, this message translates to:
@@ -3324,12 +2646,6 @@ abstract class AppLocalizations {
   /// **'URL must end in .mcpack or .zip'**
   String get rpWarnExtension;
 
-  /// Toast shown when save is pressed with pack enabled but no URL
-  ///
-  /// In en, this message translates to:
-  /// **'Enter a URL before enabling the resource pack.'**
-  String get rpToastEnterUrl;
-
   /// Toast shown after resource pack settings are saved successfully
   ///
   /// In en, this message translates to:
@@ -3353,12 +2669,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'First time with this pack?'**
   String get rpClearMinecraftTitle;
-
-  /// Explanation of why Minecraft cache needs clearing when switching to MCCompanion resource pack
-  ///
-  /// In en, this message translates to:
-  /// **'Minecraft caches resource packs locally. If you connected to this server before enabling MCCompanion\'s resource pack, Minecraft already has the original pack cached and won\'t re-download the merged version.'**
-  String get rpClearMinecraftBody;
 
   /// Step 1: open Minecraft storage settings
   ///
@@ -3390,24 +2700,6 @@ abstract class AppLocalizations {
   /// **'The relay caches the merged pack for 1 hour using your overlay URL as the cache key. To force a fresh merge, change your pack URL slightly (e.g. add ?v=2 at the end) and save. After that, also clear Minecraft\'s pack cache. The merged pack still uses the server\'s UUID, so Minecraft will otherwise serve the old cached version.'**
   String get rpRelayBody;
 
-  /// No description provided for @rpWorksGithubHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Direct download link, always accessible.'**
-  String get rpWorksGithubHint;
-
-  /// No description provided for @rpWorksCloudflareHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Public cloud storage, fast and reliable.'**
-  String get rpWorksCloudflareHint;
-
-  /// No description provided for @rpWorksDirectHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Any public HTTPS .mcpack or .zip URL'**
-  String get rpWorksDirectHint;
-
   /// No description provided for @rpNoDiscordHint.
   ///
   /// In en, this message translates to:
@@ -3438,12 +2730,6 @@ abstract class AppLocalizations {
   /// **'Upload'**
   String get rpUploadTab;
 
-  /// Tab label for entering a pack URL
-  ///
-  /// In en, this message translates to:
-  /// **'URL'**
-  String get rpUrlTab;
-
   /// Upload area primary label
   ///
   /// In en, this message translates to:
@@ -3467,12 +2753,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'RP Merger'**
   String get rpMergerTitle;
-
-  /// No description provided for @rpMergerSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Combine up to 4 resource packs'**
-  String get rpMergerSubtitle;
 
   /// No description provided for @rpMergerPriorityHint.
   ///
@@ -3516,41 +2796,11 @@ abstract class AppLocalizations {
   /// **'Merge {count} packs'**
   String rpMergerButton(int count);
 
-  /// No description provided for @rpMergerComplete.
-  ///
-  /// In en, this message translates to:
-  /// **'Merge complete!'**
-  String get rpMergerComplete;
-
-  /// No description provided for @rpMergerConflicts.
-  ///
-  /// In en, this message translates to:
-  /// **'{count} conflict(s) resolved: top pack won.'**
-  String rpMergerConflicts(int count);
-
-  /// No description provided for @rpMergerSetActive.
-  ///
-  /// In en, this message translates to:
-  /// **'Set as active resource pack'**
-  String get rpMergerSetActive;
-
   /// No description provided for @rpMergerSetActiveToast.
   ///
   /// In en, this message translates to:
   /// **'Set as active resource pack'**
   String get rpMergerSetActiveToast;
-
-  /// No description provided for @rpMergerOpenButton.
-  ///
-  /// In en, this message translates to:
-  /// **'Merge resource packs'**
-  String get rpMergerOpenButton;
-
-  /// No description provided for @rpMergerOpenSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Combine 2–4 packs into one'**
-  String get rpMergerOpenSubtitle;
 
   /// Status label when the resource pack is disabled
   ///
@@ -3611,12 +2861,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Upload your own .mcpack or .zip file. MCCompanion stores it securely in the cloud and sends it to your console every time you connect.'**
   String get rpTabUploadInfo;
-
-  /// Info text shown under the URL tab
-  ///
-  /// In en, this message translates to:
-  /// **'Paste a direct download link to a .mcpack or .zip file. The URL must be publicly accessible, no Discord or Google Drive links.'**
-  String get rpTabUrlInfo;
 
   /// Info text shown under the RP Merger tab
   ///
@@ -3756,12 +3000,6 @@ abstract class AppLocalizations {
   /// **'{count} downloads'**
   String rpDownloads(int count);
 
-  /// rpPackDetailTitle label
-  ///
-  /// In en, this message translates to:
-  /// **'Pack details'**
-  String get rpPackDetailTitle;
-
   /// Toast when cloud skin is saved to local library
   ///
   /// In en, this message translates to:
@@ -3810,24 +3048,6 @@ abstract class AppLocalizations {
   /// **'Upload failed: {error}'**
   String skinUploadFailed(String error);
 
-  /// Skins tab label
-  ///
-  /// In en, this message translates to:
-  /// **'Skins'**
-  String get skinsTabSkins;
-
-  /// Recent tab label on skins screen
-  ///
-  /// In en, this message translates to:
-  /// **'Recent'**
-  String get skinsTabRecent;
-
-  /// Empty state for cloud skins tab
-  ///
-  /// In en, this message translates to:
-  /// **'No cloud skins yet. Upload a skin to see it here.'**
-  String get skinsEmptyCloudSkins;
-
   /// Empty state for local skins tab
   ///
   /// In en, this message translates to:
@@ -3869,12 +3089,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Gallery'**
   String get skinsTabGallery;
-
-  /// Empty state for public gallery tab
-  ///
-  /// In en, this message translates to:
-  /// **'No community skins yet.'**
-  String get skinsGalleryEmpty;
 
   /// Section header for top 30 liked skins
   ///
@@ -4176,18 +3390,6 @@ abstract class AppLocalizations {
   /// **'Support inbox'**
   String get supportInboxTitle;
 
-  /// Subtitle explaining the support inbox is shared between admins
-  ///
-  /// In en, this message translates to:
-  /// **'Every support chat, shared with all admins'**
-  String get supportInboxSubtitle;
-
-  /// Small badge shown next to a user who is an admin
-  ///
-  /// In en, this message translates to:
-  /// **'Admin'**
-  String get adminBadge;
-
   /// No description provided for @skinShareSubject.
   ///
   /// In en, this message translates to:
@@ -4355,12 +3557,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Replying as MCCompanion Support'**
   String get supportReplyingAs;
-
-  /// No description provided for @supportReplyHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Reply as support…'**
-  String get supportReplyHint;
 
   /// No description provided for @relayBlocked.
   ///
@@ -4530,18 +3726,6 @@ abstract class AppLocalizations {
   /// **'Reply about this ticket…'**
   String get adminTicketReplyHint;
 
-  /// No description provided for @adminNoTicketsForUser.
-  ///
-  /// In en, this message translates to:
-  /// **'No tickets from this user'**
-  String get adminNoTicketsForUser;
-
-  /// No description provided for @undo.
-  ///
-  /// In en, this message translates to:
-  /// **'Undo'**
-  String get undo;
-
   /// Title of the sheet that lists saved servers
   ///
   /// In en, this message translates to:
@@ -4656,54 +3840,6 @@ abstract class AppLocalizations {
   /// **'Friends see you are playing, not where'**
   String get shareServerOff;
 
-  /// Tooltip on the star that pins a saved server as the one the connector opens on
-  ///
-  /// In en, this message translates to:
-  /// **'Set as default server'**
-  String get makeDefaultServer;
-
-  /// Tooltip on the star of the server the connector already opens on
-  ///
-  /// In en, this message translates to:
-  /// **'Opens by default'**
-  String get isDefaultServer;
-
-  /// Toast shown when a saved server is pinned as the one the connector opens on
-  ///
-  /// In en, this message translates to:
-  /// **'{name} will open by default'**
-  String defaultServerSet(String name);
-
-  /// No description provided for @labelDirect.
-  ///
-  /// In en, this message translates to:
-  /// **'Proxy/Direct'**
-  String get labelDirect;
-
-  /// No description provided for @startDirectMode.
-  ///
-  /// In en, this message translates to:
-  /// **'Start Proxy/Direct Mode'**
-  String get startDirectMode;
-
-  /// No description provided for @howToDirectTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Proxy/Direct Mode'**
-  String get howToDirectTitle;
-
-  /// No description provided for @howToDirectSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Play without going through our servers'**
-  String get howToDirectSubtitle;
-
-  /// No description provided for @howToDirectBody.
-  ///
-  /// In en, this message translates to:
-  /// **'Proxy/Direct Mode: your device is the connection.\n1. Make sure the device running MCCompanion and your console are on the same local network.\n2. Enter the Bedrock server address and port, then press \"Start Proxy/Direct Mode\".\n3. On the console open Minecraft → Play → Friends tab and refresh the list.\n4. Select the LAN server named \"MCCompanion\" to join.\n\nWhy this mode exists:\n- Nothing passes through MCCompanion\'s servers. Your device forwards the traffic itself, so this keeps working even when our relays cannot be reached.\n- No sign-in is needed.\n\nKeep in mind:\n- The app has to stay open and on screen for the whole session. Closing it or switching to another app ends the connection.\n- Bedrock servers only. For Java servers use Java Mode, which does the protocol translation on our side.\n- Expect more battery use than in the other modes.\n- Resource packs are not applied. They are handled by our relay, which this mode skips.'**
-  String get howToDirectBody;
-
   /// No description provided for @directHostNotFound.
   ///
   /// In en, this message translates to:
@@ -4715,30 +3851,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Could not open the local port. Stop the current connection first.'**
   String get directPortBusy;
-
-  /// No description provided for @directServerOfflineTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Server not responding'**
-  String get directServerOfflineTitle;
-
-  /// No description provided for @directServerOfflineBody.
-  ///
-  /// In en, this message translates to:
-  /// **'{target} did not answer. It may be offline, or it may simply hide from pings. You can still start the tunnel and try to join.'**
-  String directServerOfflineBody(String target);
-
-  /// No description provided for @directStartAnyway.
-  ///
-  /// In en, this message translates to:
-  /// **'Start anyway'**
-  String get directStartAnyway;
-
-  /// No description provided for @directNoResourcePack.
-  ///
-  /// In en, this message translates to:
-  /// **'Resource packs do not work in Proxy/Direct Mode.'**
-  String get directNoResourcePack;
 
   /// No description provided for @directAddressNotSupported.
   ///
@@ -4944,12 +4056,6 @@ abstract class AppLocalizations {
   /// **'Votes this month'**
   String get serverStatVotesMonth;
 
-  /// No description provided for @serverStatVotesAllTime.
-  ///
-  /// In en, this message translates to:
-  /// **'Votes all time'**
-  String get serverStatVotesAllTime;
-
   /// No description provided for @serverBadgeFeatured.
   ///
   /// In en, this message translates to:
@@ -4980,24 +4086,6 @@ abstract class AppLocalizations {
   /// **'Message of the day'**
   String get serverSectionMotd;
 
-  /// No description provided for @serverSectionAbout.
-  ///
-  /// In en, this message translates to:
-  /// **'About'**
-  String get serverSectionAbout;
-
-  /// No description provided for @serverSectionCategories.
-  ///
-  /// In en, this message translates to:
-  /// **'Categories'**
-  String get serverSectionCategories;
-
-  /// No description provided for @serverSectionVotes.
-  ///
-  /// In en, this message translates to:
-  /// **'Votes'**
-  String get serverSectionVotes;
-
   /// No description provided for @serverLinkDiscord.
   ///
   /// In en, this message translates to:
@@ -5021,18 +4109,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'All time'**
   String get serverVotesAllTime;
-
-  /// No description provided for @serverVoteAction.
-  ///
-  /// In en, this message translates to:
-  /// **'Vote for this server'**
-  String get serverVoteAction;
-
-  /// No description provided for @serverPlayAction.
-  ///
-  /// In en, this message translates to:
-  /// **'Play on this server'**
-  String get serverPlayAction;
 
   /// No description provided for @serverVoteSignInRequired.
   ///

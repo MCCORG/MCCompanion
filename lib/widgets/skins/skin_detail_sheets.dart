@@ -13,6 +13,7 @@ import '../../screens/public_profile_screen.dart';
 import '../../constants/app_constants.dart';
 import '../../widgets/components/app_toast.dart';
 import 'skin_painters.dart';
+import '../../theme/app_tokens.dart';
 
 class _Comment {
   final int id;
@@ -177,7 +178,7 @@ class _SkinCommentsSectionState extends State<SkinCommentsSection> {
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
                 decoration: BoxDecoration(
                   color: AppTheme.accent.withValues(alpha: 0.15),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: AppRadius.small,
                 ),
                 child: Text(
                   '${_comments.length}',
@@ -245,15 +246,15 @@ class _SkinCommentsSectionState extends State<SkinCommentsSection> {
                     filled: true,
                     fillColor: AppTheme.surfaceRaised,
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: AppRadius.medium,
                       borderSide: BorderSide(color: AppTheme.borderGray),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: AppRadius.medium,
                       borderSide: BorderSide(color: AppTheme.borderGray),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: AppRadius.medium,
                       borderSide: BorderSide(color: AppTheme.accent),
                     ),
                     contentPadding: const EdgeInsets.symmetric(
@@ -272,9 +273,6 @@ class _SkinCommentsSectionState extends State<SkinCommentsSection> {
                   style: FilledButton.styleFrom(
                     backgroundColor: AppTheme.accent,
                     padding: EdgeInsets.zero,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
                   ),
                   child: _posting
                       ? const SizedBox(
@@ -328,7 +326,6 @@ class _CommentTile extends StatelessWidget {
             height: 30,
             decoration: BoxDecoration(
               color: AppTheme.accent.withValues(alpha: 0.15),
-              shape: BoxShape.circle,
             ),
             child: ClipOval(
               child: hasAvatar
@@ -644,9 +641,6 @@ class _GallerySkinPreviewSheetState extends State<GallerySkinPreviewSheet> {
                           foregroundColor: AppTheme.textSecondary,
                           side: const BorderSide(color: AppTheme.borderGray),
                           padding: const EdgeInsets.symmetric(vertical: 14),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14),
-                          ),
                           textStyle: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
@@ -666,9 +660,6 @@ class _GallerySkinPreviewSheetState extends State<GallerySkinPreviewSheet> {
                           backgroundColor: AppTheme.accent,
                           foregroundColor: Colors.white,
                           padding: const EdgeInsets.symmetric(vertical: 14),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14),
-                          ),
                           textStyle: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
@@ -692,9 +683,6 @@ class _GallerySkinPreviewSheetState extends State<GallerySkinPreviewSheet> {
                         color: AppTheme.error.withValues(alpha: 0.4),
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14),
-                      ),
                       textStyle: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
@@ -799,9 +787,6 @@ class SkinDetailSheet extends StatelessWidget {
                         backgroundColor: AppTheme.accent,
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(vertical: 14),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14),
-                        ),
                         textStyle: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
@@ -823,9 +808,6 @@ class SkinDetailSheet extends StatelessWidget {
                           foregroundColor: AppTheme.textSecondary,
                           side: const BorderSide(color: AppTheme.borderGray),
                           padding: const EdgeInsets.symmetric(vertical: 14),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14),
-                          ),
                           textStyle: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
@@ -1048,7 +1030,7 @@ class SkinMenuTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: AppRadius.medium,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 4),
         child: Row(

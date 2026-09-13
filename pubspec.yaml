@@ -18,7 +18,6 @@ dependencies:
     sdk: flutter
   intl: ^0.20.2
   cupertino_icons: ^1.0.8
-  uuid: ^4.5.2
   package_info_plus: ^9.0.0
   font_awesome_flutter: ^11.0.0
   flutter_svg: ^2.2.4
@@ -40,7 +39,6 @@ dependencies:
   purchases_flutter: ^10.2.0
   flutter_colorpicker: ^1.1.0
   in_app_review: ^2.0.9
-  palette_generator: ^0.3.3
   archive: ^4.0.9
   desktop_drop: ^0.4.4
   app_links: ^7.2.0
@@ -55,17 +53,10 @@ flutter:
   generate: true
   uses-material-design: true
   assets:
-    - assets/icons/aternos.png
     - assets/icons/google_g.svg
-    - assets/images/tracker.png
-    - assets/images/splash.png
     - assets/images/logo.png
-    - assets/images/feature.png
-    - assets/images/skin.png
     - assets/images/skins/
     - assets/images/skins/thumbs/
-    - assets/images/tunnel.png
-    - assets/images/players.png
 
 msix_config:
   display_name: MCCompanion

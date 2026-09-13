@@ -10,7 +10,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
-import '../theme/app_theme.dart';
+import '../design/design.dart';
 import '../models/saved_skin.dart';
 import '../util/saved_skins_storage.dart';
 import '../util/skin_format.dart';
@@ -182,7 +182,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
         context,
         message: AppLocalizations.of(context)!.skinEditorLoadFailed,
         icon: Icons.wifi_off_rounded,
-        color: AppTheme.warning,
+        color: DsColor.warning,
       );
     }
   }
@@ -252,7 +252,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
         context,
         message: AppLocalizations.of(context)!.skinEditorLoadFailed,
         icon: Icons.error_outline_rounded,
-        color: AppTheme.error,
+        color: DsColor.danger,
       );
       return;
     }
@@ -303,10 +303,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
     ];
     showModalBottomSheet(
       context: context,
-      backgroundColor: AppTheme.surface,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
-      ),
+      backgroundColor: DsColor.surface,
       builder: (sheetContext) => SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -318,20 +315,20 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
                   icon,
                   size: 16,
                   color: _activeTool == tool
-                      ? AppTheme.accent
-                      : AppTheme.textMuted,
+                      ? DsColor.accent
+                      : DsColor.textFaint,
                 ),
                 title: Text(
                   name,
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
-                    color: AppTheme.textPrimary,
+                    color: DsColor.text,
                   ),
                 ),
                 subtitle: Text(
                   hint,
-                  style: TextStyle(fontSize: 11.5, color: AppTheme.textMuted),
+                  style: TextStyle(fontSize: 11.5, color: DsColor.textFaint),
                 ),
                 onTap: () {
                   Navigator.of(sheetContext).pop();
@@ -353,10 +350,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
     final l = AppLocalizations.of(context)!;
     showModalBottomSheet(
       context: context,
-      backgroundColor: AppTheme.surface,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
-      ),
+      backgroundColor: DsColor.surface,
       builder: (sheetContext) => SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
@@ -369,13 +363,13 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
-                  color: AppTheme.textPrimary,
+                  color: DsColor.text,
                 ),
               ),
               const SizedBox(height: 4),
               Text(
                 l.skinBasesSubtitle,
-                style: TextStyle(fontSize: 12, color: AppTheme.textMuted),
+                style: TextStyle(fontSize: 12, color: DsColor.textFaint),
               ),
               const SizedBox(height: 14),
               SizedBox(
@@ -391,16 +385,16 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
                   itemBuilder: (_, i) {
                     final name = _bases[i];
                     return InkWell(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: DsRadius.controlR,
                       onTap: () {
                         Navigator.of(sheetContext).pop();
                         _applyBase(name);
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          color: AppTheme.background,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: AppTheme.borderDim),
+                          color: DsColor.bg,
+                          borderRadius: DsRadius.controlR,
+                          border: Border.all(color: DsColor.line),
                         ),
                         padding: const EdgeInsets.all(6),
                         child: Image.asset(
@@ -736,11 +730,11 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
         builder: (ctx) {
           final ll = AppLocalizations.of(ctx)!;
           return AlertDialog(
-            backgroundColor: AppTheme.surface,
+            backgroundColor: DsColor.surface,
             title: Text(
               ll.skinUploadToCloud,
               style: TextStyle(
-                color: AppTheme.textPrimary,
+                color: DsColor.text,
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
               ),
@@ -748,23 +742,23 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
             content: TextField(
               controller: ctrl,
               autofocus: true,
-              style: TextStyle(color: AppTheme.textPrimary),
+              style: TextStyle(color: DsColor.text),
               decoration: InputDecoration(
                 hintText: ll.skinNameHint,
-                hintStyle: TextStyle(color: AppTheme.textMuted),
+                hintStyle: TextStyle(color: DsColor.textFaint),
                 filled: true,
-                fillColor: AppTheme.background,
+                fillColor: DsColor.bg,
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(color: AppTheme.borderGray),
+                  borderRadius: DsRadius.controlR,
+                  borderSide: BorderSide(color: DsColor.line),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(color: AppTheme.borderGray),
+                  borderRadius: DsRadius.controlR,
+                  borderSide: BorderSide(color: DsColor.line),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: AppTheme.accent),
+                  borderRadius: DsRadius.controlR,
+                  borderSide: BorderSide(color: DsColor.accent),
                 ),
               ),
             ),
@@ -773,12 +767,12 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
                 onPressed: () => Navigator.pop(ctx, false),
                 child: Text(
                   ll.cancel,
-                  style: TextStyle(color: AppTheme.textMuted),
+                  style: TextStyle(color: DsColor.textFaint),
                 ),
               ),
               FilledButton(
                 onPressed: () => Navigator.pop(ctx, true),
-                style: FilledButton.styleFrom(backgroundColor: AppTheme.accent),
+                style: FilledButton.styleFrom(backgroundColor: DsColor.accent),
                 child: Text(ll.skinsUpload),
               ),
             ],
@@ -809,7 +803,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
           context,
           message: l.skinUploaded,
           icon: Icons.cloud_done_outlined,
-          color: AppTheme.success,
+          color: DsColor.success,
           duration: const Duration(seconds: 2),
         );
         Navigator.pop(context, 'cloud');
@@ -822,7 +816,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
             e.toString().replaceAll('Exception: ', ''),
           ),
           icon: Icons.error_outline_rounded,
-          color: AppTheme.error,
+          color: DsColor.danger,
         );
       }
     }
@@ -852,7 +846,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
             context,
             message: l.skinUpdatedInCloud,
             icon: Icons.check_circle_outline_rounded,
-            color: AppTheme.success,
+            color: DsColor.success,
             duration: const Duration(seconds: 2),
           );
           Navigator.pop(context, 'cloud');
@@ -865,7 +859,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
               e.toString().replaceAll('Exception: ', ''),
             ),
             icon: Icons.error_outline_rounded,
-            color: AppTheme.error,
+            color: DsColor.danger,
           );
         }
       }
@@ -879,7 +873,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
           context,
           message: AppLocalizations.of(context)!.skinSaved,
           icon: Icons.check_circle_outline_rounded,
-          color: AppTheme.success,
+          color: DsColor.success,
           duration: const Duration(seconds: 2),
         );
       }
@@ -894,11 +888,11 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
       builder: (ctx) {
         final ll = AppLocalizations.of(ctx)!;
         return AlertDialog(
-          backgroundColor: AppTheme.surface,
+          backgroundColor: DsColor.surface,
           title: Text(
             ll.skinSaveDialog,
             style: TextStyle(
-              color: AppTheme.textPrimary,
+              color: DsColor.text,
               fontSize: 16,
               fontWeight: FontWeight.w700,
             ),
@@ -906,23 +900,23 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
           content: TextField(
             controller: nameCtrl,
             autofocus: true,
-            style: TextStyle(color: AppTheme.textPrimary),
+            style: TextStyle(color: DsColor.text),
             decoration: InputDecoration(
               hintText: ll.skinNameHint,
-              hintStyle: TextStyle(color: AppTheme.textMuted),
+              hintStyle: TextStyle(color: DsColor.textFaint),
               filled: true,
-              fillColor: AppTheme.background,
+              fillColor: DsColor.bg,
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppTheme.borderGray),
+                borderRadius: DsRadius.controlR,
+                borderSide: BorderSide(color: DsColor.line),
               ),
               enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: AppTheme.borderGray),
+                borderRadius: DsRadius.controlR,
+                borderSide: BorderSide(color: DsColor.line),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(color: AppTheme.accent),
+                borderRadius: DsRadius.controlR,
+                borderSide: BorderSide(color: DsColor.accent),
               ),
             ),
           ),
@@ -931,12 +925,12 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
               onPressed: () => Navigator.pop(ctx, false),
               child: Text(
                 ll.cancel,
-                style: TextStyle(color: AppTheme.textMuted),
+                style: TextStyle(color: DsColor.textFaint),
               ),
             ),
             FilledButton(
               onPressed: () => Navigator.pop(ctx, true),
-              style: FilledButton.styleFrom(backgroundColor: AppTheme.accent),
+              style: FilledButton.styleFrom(backgroundColor: DsColor.accent),
               child: Text(ll.save),
             ),
           ],
@@ -953,7 +947,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
         context,
         message: AppLocalizations.of(context)!.skinSavedAs(name),
         icon: Icons.check_circle_outline_rounded,
-        color: AppTheme.success,
+        color: DsColor.success,
         duration: const Duration(seconds: 2),
       );
     }
@@ -985,7 +979,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
           context,
           message: AppLocalizations.of(context)!.skinExportFailed,
           icon: Icons.error_outline_rounded,
-          color: AppTheme.error,
+          color: DsColor.danger,
         );
       }
       return;
@@ -1020,7 +1014,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
             context,
             message: AppLocalizations.of(context)!.skinExported,
             icon: Icons.download_done_rounded,
-            color: AppTheme.success,
+            color: DsColor.success,
             duration: const Duration(seconds: 4),
           );
         }
@@ -1031,7 +1025,7 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
           context,
           message: AppLocalizations.of(context)!.skinExportFailed,
           icon: Icons.error_outline_rounded,
-          color: AppTheme.error,
+          color: DsColor.danger,
           duration: const Duration(seconds: 4),
         );
       }
@@ -1040,56 +1034,60 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+
     return Scaffold(
-      backgroundColor: AppTheme.background,
-      appBar: AppBar(
-        backgroundColor: AppTheme.surface,
-        foregroundColor: AppTheme.textPrimary,
-        elevation: 0,
-        title: Text(
-          AppLocalizations.of(context)!.skinEditorTitle,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
-            color: AppTheme.textPrimary,
-          ),
-        ),
-        iconTheme: IconThemeData(color: AppTheme.textPrimary),
-        actions: [
-          IconButton(
-            onPressed: _undoStack.isNotEmpty ? _undo : null,
-            icon: const FaIcon(FontAwesomeIcons.rotateLeft, size: 15),
-            tooltip: AppLocalizations.of(context)!.skinToolUndo,
-          ),
-          if (widget.cloudSkin == null)
-            IconButton(
-              onPressed: _saveSkin,
-              icon: const FaIcon(FontAwesomeIcons.floppyDisk, size: 15),
-              tooltip: AppLocalizations.of(context)!.skinSaveToMySkins,
-            ),
-          if (AuthService.currentUser != null)
-            IconButton(
-              onPressed: _saveToCloud,
-              icon: const FaIcon(FontAwesomeIcons.cloudArrowUp, size: 15),
-              tooltip: widget.cloudSkin != null
-                  ? AppLocalizations.of(context)!.skinUpdateInCloud
-                  : AppLocalizations.of(context)!.skinUploadToCloud,
-            ),
-          IconButton(
-            key: _exportButtonKey,
-            onPressed: _export,
-            icon: const FaIcon(FontAwesomeIcons.download, size: 15),
-            tooltip: AppLocalizations.of(context)!.skinExportPng,
-          ),
-          const SizedBox(width: 4),
-        ],
-      ),
+      backgroundColor: DsColor.bg,
       body: SafeArea(
         child: ExcludeSemantics(
           child: _loading
-              ? Center(child: CircularProgressIndicator(color: AppTheme.accent))
+              ? Center(
+                  child: CircularProgressIndicator(
+                    strokeWidth: 1.8,
+                    color: DsColor.textFaint,
+                  ),
+                )
               : Column(
                   children: [
+                    DsHeader(
+                      title: loc.skinEditorTitle,
+                      leading: DsIconButton(
+                        icon: Icons.arrow_back_rounded,
+                        size: 36,
+                        onPressed: () => Navigator.of(context).maybePop(),
+                      ),
+                      actions: [
+                        DsIconButton(
+                          icon: Icons.undo_rounded,
+                          size: 36,
+                          tooltip: loc.skinToolUndo,
+                          onPressed: _undoStack.isNotEmpty ? _undo : null,
+                        ),
+                        if (widget.cloudSkin == null)
+                          DsIconButton(
+                            icon: Icons.save_outlined,
+                            size: 36,
+                            tooltip: loc.skinSaveToMySkins,
+                            onPressed: _saveSkin,
+                          ),
+                        if (AuthService.currentUser != null)
+                          DsIconButton(
+                            icon: Icons.cloud_upload_outlined,
+                            size: 36,
+                            tooltip: widget.cloudSkin != null
+                                ? loc.skinUpdateInCloud
+                                : loc.skinUploadToCloud,
+                            onPressed: _saveToCloud,
+                          ),
+                        DsIconButton(
+                          key: _exportButtonKey,
+                          icon: Icons.download_rounded,
+                          size: 36,
+                          tooltip: loc.skinExportPng,
+                          onPressed: _export,
+                        ),
+                      ],
+                    ),
                     _buildToolbar(),
                     Expanded(child: _build3DCanvas()),
                     _buildPalette(),
@@ -1102,181 +1100,128 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
 
   Widget _buildToolbar() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-      decoration: BoxDecoration(
-        color: AppTheme.surface,
-        border: Border(bottom: BorderSide(color: AppTheme.borderGray)),
+      padding: const EdgeInsets.fromLTRB(
+        DsSpace.gutter,
+        0,
+        DsSpace.gutter,
+        DsSpace.md,
       ),
-      child: Row(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  _ToolButton(
-                    icon: FontAwesomeIcons.pencil,
-                    label: AppLocalizations.of(context)!.skinToolDraw,
-                    active:
-                        _activeTool == _Tool.draw &&
-                        !_rotateMode &&
-                        !_panModeUV,
-                    onTap: () => setState(() {
-                      _activeTool = _Tool.draw;
-                      _rotateMode = false;
-                      _panModeUV = false;
-                    }),
-                  ),
-                  const SizedBox(width: 6),
-                  _ToolButton(
-                    icon: switch (_activeTool) {
-                      _Tool.recolour => FontAwesomeIcons.paintRoller,
-                      _Tool.pick => FontAwesomeIcons.eyeDropper,
-                      _ => FontAwesomeIcons.fillDrip,
-                    },
-                    label: switch (_activeTool) {
-                      _Tool.recolour => AppLocalizations.of(
-                        context,
-                      )!.skinToolRecolour,
-                      _Tool.pick => AppLocalizations.of(context)!.skinToolPick,
-                      _ => AppLocalizations.of(context)!.skinToolFill,
-                    },
-                    active:
-                        (_activeTool == _Tool.fill ||
-                            _activeTool == _Tool.recolour ||
-                            _activeTool == _Tool.pick) &&
-                        !_rotateMode &&
-                        !_panModeUV,
-                    onTap: _openFillTools,
-                  ),
-                  const SizedBox(width: 6),
-                  _ToolButton(
-                    icon: FontAwesomeIcons.eraser,
-                    label: AppLocalizations.of(context)!.skinToolErase,
-                    active:
-                        _activeTool == _Tool.erase &&
-                        !_rotateMode &&
-                        !_panModeUV,
-                    onTap: () => setState(() {
-                      _activeTool = _Tool.erase;
-                      _rotateMode = false;
-                      _panModeUV = false;
-                    }),
-                  ),
-                  const SizedBox(width: 6),
-                  _ToolButton(
-                    icon: FontAwesomeIcons.shirt,
-                    label: AppLocalizations.of(context)!.skinBases,
-                    active: false,
-                    onTap: _openBasePicker,
-                  ),
-                  const SizedBox(width: 6),
-                  _ToolButton(
-                    icon: FontAwesomeIcons.personRays,
-                    label: _slim
-                        ? AppLocalizations.of(context)!.skinModelSlim
-                        : AppLocalizations.of(context)!.skinModelClassic,
-                    active: _slim,
-                    onTap: _toggleArmWidth,
-                  ),
-                  const SizedBox(width: 6),
-                  _ToolButton(
-                    icon: FontAwesomeIcons.dice,
-                    label: AppLocalizations.of(context)!.skinSurprise,
-                    active: false,
-                    onTap: _surpriseMe,
-                  ),
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(width: 6),
-          _ToolButton(
-            icon: FontAwesomeIcons.leftRight,
-            label: AppLocalizations.of(context)!.skinMirror,
-            active: _mirror,
-            onTap: () => setState(() => _mirror = !_mirror),
-          ),
-          const SizedBox(width: 6),
-          GestureDetector(
-            onTap: () => setState(() => _outerLayer = !_outerLayer),
-            child: Builder(
-              builder: (ctx) {
-                final l = AppLocalizations.of(ctx)!;
-                return Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 6,
-                  ),
-                  decoration: BoxDecoration(
-                    color: _outerLayer
-                        ? const Color(0xFFFFA726).withValues(alpha: 0.15)
-                        : Colors.transparent,
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(
-                      color: _outerLayer
-                          ? const Color(0xFFFFA726)
-                          : AppTheme.borderGray,
-                      width: _outerLayer ? 1.5 : 1,
-                    ),
-                  ),
-                  child: Text(
-                    _outerLayer ? l.skinLayerOuter : l.skinLayerInner,
-                    style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w700,
-                      color: _outerLayer
-                          ? const Color(0xFFFFA726)
-                          : AppTheme.textMuted,
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-          const SizedBox(width: 6),
-          GestureDetector(
-            onTap: () => setState(() {
-              _uvMode = !_uvMode;
-              _rotateMode = false;
-              _panModeUV = false;
-            }),
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-              decoration: BoxDecoration(
-                color: _uvMode
-                    ? AppTheme.accent.withValues(alpha: 0.15)
-                    : Colors.transparent,
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(
-                  color: _uvMode ? AppTheme.accent : AppTheme.borderGray,
-                  width: _uvMode ? 1.5 : 1,
+      child: DsHScroll(
+        child: Row(
+          children: [
+            Row(
+              children: [
+                _ToolButton(
+                  icon: FontAwesomeIcons.pencil,
+                  label: AppLocalizations.of(context)!.skinToolDraw,
+                  active:
+                      _activeTool == _Tool.draw && !_rotateMode && !_panModeUV,
+                  onTap: () => setState(() {
+                    _activeTool = _Tool.draw;
+                    _rotateMode = false;
+                    _panModeUV = false;
+                  }),
                 ),
-              ),
-              child: Text(
-                _uvMode ? '3D' : 'UV',
-                style: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w700,
-                  color: _uvMode ? AppTheme.accent : AppTheme.textMuted,
+                const SizedBox(width: 6),
+                _ToolButton(
+                  icon: switch (_activeTool) {
+                    _Tool.recolour => FontAwesomeIcons.paintRoller,
+                    _Tool.pick => FontAwesomeIcons.eyeDropper,
+                    _ => FontAwesomeIcons.fillDrip,
+                  },
+                  label: switch (_activeTool) {
+                    _Tool.recolour => AppLocalizations.of(
+                      context,
+                    )!.skinToolRecolour,
+                    _Tool.pick => AppLocalizations.of(context)!.skinToolPick,
+                    _ => AppLocalizations.of(context)!.skinToolFill,
+                  },
+                  active:
+                      (_activeTool == _Tool.fill ||
+                          _activeTool == _Tool.recolour ||
+                          _activeTool == _Tool.pick) &&
+                      !_rotateMode &&
+                      !_panModeUV,
+                  onTap: _openFillTools,
+                ),
+                const SizedBox(width: 6),
+                _ToolButton(
+                  icon: FontAwesomeIcons.eraser,
+                  label: AppLocalizations.of(context)!.skinToolErase,
+                  active:
+                      _activeTool == _Tool.erase && !_rotateMode && !_panModeUV,
+                  onTap: () => setState(() {
+                    _activeTool = _Tool.erase;
+                    _rotateMode = false;
+                    _panModeUV = false;
+                  }),
+                ),
+                const SizedBox(width: 6),
+                _ToolButton(
+                  icon: FontAwesomeIcons.shirt,
+                  label: AppLocalizations.of(context)!.skinBases,
+                  active: false,
+                  onTap: _openBasePicker,
+                ),
+                const SizedBox(width: 6),
+                _ToolButton(
+                  icon: FontAwesomeIcons.personRays,
+                  label: _slim
+                      ? AppLocalizations.of(context)!.skinModelSlim
+                      : AppLocalizations.of(context)!.skinModelClassic,
+                  active: _slim,
+                  onTap: _toggleArmWidth,
+                ),
+                const SizedBox(width: 6),
+                _ToolButton(
+                  icon: FontAwesomeIcons.dice,
+                  label: AppLocalizations.of(context)!.skinSurprise,
+                  active: false,
+                  onTap: _surpriseMe,
+                ),
+              ],
+            ),
+            const SizedBox(width: 6),
+            _ToolButton(
+              icon: FontAwesomeIcons.leftRight,
+              label: AppLocalizations.of(context)!.skinMirror,
+              active: _mirror,
+              onTap: () => setState(() => _mirror = !_mirror),
+            ),
+            const SizedBox(width: 6),
+            _TextChip(
+              label: _outerLayer
+                  ? AppLocalizations.of(context)!.skinLayerOuter
+                  : AppLocalizations.of(context)!.skinLayerInner,
+              active: _outerLayer,
+              color: const Color(0xFFFFA726),
+              onTap: () => setState(() => _outerLayer = !_outerLayer),
+            ),
+            const SizedBox(width: 6),
+            _TextChip(
+              label: _uvMode ? '3D' : 'UV',
+              active: _uvMode,
+              onTap: () => setState(() {
+                _uvMode = !_uvMode;
+                _rotateMode = false;
+                _panModeUV = false;
+              }),
+            ),
+            const SizedBox(width: DsSpace.sm),
+            GestureDetector(
+              onTap: _openColorPicker,
+              child: Container(
+                width: 34,
+                height: 34,
+                decoration: BoxDecoration(
+                  color: _activeColor,
+                  borderRadius: DsRadius.controlR,
+                  border: Border.all(color: DsColor.lineStrong, width: 2),
                 ),
               ),
             ),
-          ),
-          const SizedBox(width: 8),
-          GestureDetector(
-            onTap: _openColorPicker,
-            child: Container(
-              width: 32,
-              height: 32,
-              decoration: BoxDecoration(
-                color: _activeColor,
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: AppTheme.borderLight, width: 2),
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -1301,7 +1246,8 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
                 child: _previewImage == null
                     ? Center(
                         child: CircularProgressIndicator(
-                          color: AppTheme.accent,
+                          strokeWidth: 1.8,
+                          color: DsColor.textFaint,
                         ),
                       )
                     : CustomPaint(
@@ -1426,10 +1372,13 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
   Widget _buildPalette() {
     return Container(
       height: 72,
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: const EdgeInsets.symmetric(
+        horizontal: DsSpace.gutter,
+        vertical: DsSpace.md,
+      ),
       decoration: BoxDecoration(
-        color: AppTheme.surface,
-        border: Border(top: BorderSide(color: AppTheme.borderGray)),
+        color: DsColor.surface,
+        border: Border(top: BorderSide(color: DsColor.line)),
       ),
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
@@ -1438,7 +1387,8 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
         itemBuilder: (_, i) {
           final c = _palette[i];
           final selected =
-              _activeColor.toARGB32() == c.toARGB32() && _activeTool != _Tool.erase;
+              _activeColor.toARGB32() == c.toARGB32() &&
+              _activeTool != _Tool.erase;
           return GestureDetector(
             onTap: () => setState(() {
               _activeColor = c;
@@ -1488,19 +1438,16 @@ class _ZoomBtn extends StatelessWidget {
         height: 34,
         decoration: BoxDecoration(
           color: active
-              ? AppTheme.accent.withValues(alpha: 0.18)
-              : AppTheme.surface.withValues(alpha: 0.92),
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(
-            color: active ? AppTheme.accent : AppTheme.borderGray,
-            width: active ? 1.5 : 1.0,
-          ),
+              ? DsColor.accent.withValues(alpha: 0.18)
+              : DsColor.surface,
+          borderRadius: DsRadius.controlR,
+          border: Border.all(color: active ? DsColor.accent : DsColor.line),
         ),
         child: Center(
           child: FaIcon(
             icon,
             size: 13,
-            color: active ? AppTheme.accent : AppTheme.textSecondary,
+            color: active ? DsColor.accent : DsColor.textSoft,
           ),
         ),
       ),
@@ -1681,9 +1628,9 @@ class _PaletteCell extends StatelessWidget {
       width: 36,
       height: 36,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: DsRadius.controlR,
         border: Border.all(
-          color: selected ? AppTheme.accent : AppTheme.borderGray,
+          color: selected ? DsColor.accent : DsColor.line,
           width: selected ? 2.5 : 1,
         ),
       ),
@@ -1732,38 +1679,85 @@ class _ToolButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-        decoration: BoxDecoration(
-          color: active
-              ? AppTheme.accent.withValues(alpha: 0.15)
-              : Colors.transparent,
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(
-            color: active ? AppTheme.accent : AppTheme.borderGray,
-            width: active ? 1.5 : 1,
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: DsRadius.controlR,
+        child: AnimatedContainer(
+          duration: DsDuration.fast,
+          padding: const EdgeInsets.symmetric(
+            horizontal: DsSpace.md,
+            vertical: DsSpace.sm,
+          ),
+          decoration: BoxDecoration(
+            color: active ? DsColor.accent : DsColor.surfaceQuiet,
+            borderRadius: DsRadius.controlR,
+            border: Border.all(color: active ? DsColor.accent : DsColor.line),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              FaIcon(
+                icon,
+                size: 12,
+                color: active ? DsColor.onAccent : DsColor.textSoft,
+              ),
+              const SizedBox(width: DsSpace.sm - 2),
+              Text(
+                label,
+                style: DsType.caption.copyWith(
+                  color: active ? DsColor.onAccent : DsColor.textSoft,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
           ),
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            FaIcon(
-              icon,
-              size: 11,
-              color: active ? AppTheme.accent : AppTheme.textMuted,
+      ),
+    );
+  }
+}
+
+class _TextChip extends StatelessWidget {
+  final String label;
+  final bool active;
+  final Color? color;
+  final VoidCallback onTap;
+
+  const _TextChip({
+    required this.label,
+    required this.active,
+    required this.onTap,
+    this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final tint = color ?? DsColor.accent;
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: DsRadius.controlR,
+        child: AnimatedContainer(
+          duration: DsDuration.fast,
+          padding: const EdgeInsets.symmetric(
+            horizontal: DsSpace.md,
+            vertical: DsSpace.sm,
+          ),
+          decoration: BoxDecoration(
+            color: active ? tint : DsColor.surfaceQuiet,
+            borderRadius: DsRadius.controlR,
+            border: Border.all(color: active ? tint : DsColor.line),
+          ),
+          child: Text(
+            label,
+            style: DsType.caption.copyWith(
+              color: active ? Colors.black : DsColor.textSoft,
+              fontWeight: FontWeight.w700,
             ),
-            const SizedBox(width: 5),
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.w600,
-                color: active ? AppTheme.accent : AppTheme.textMuted,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -1830,9 +1824,9 @@ class _ColorPickerSheetState extends State<_ColorPickerSheet> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.background,
+        color: DsColor.bg,
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-        border: Border(top: BorderSide(color: AppTheme.borderGray)),
+        border: Border(top: BorderSide(color: DsColor.line)),
       ),
       padding: EdgeInsets.fromLTRB(
         20,
@@ -1848,14 +1842,14 @@ class _ColorPickerSheetState extends State<_ColorPickerSheet> {
             height: 4,
             margin: const EdgeInsets.only(bottom: 16),
             decoration: BoxDecoration(
-              color: AppTheme.borderLight,
+              color: DsColor.lineStrong,
               borderRadius: BorderRadius.circular(4),
             ),
           ),
           Text(
             AppLocalizations.of(context)!.customColour,
             style: TextStyle(
-              color: AppTheme.textPrimary,
+              color: DsColor.text,
               fontSize: 16,
               fontWeight: FontWeight.w700,
             ),
@@ -1868,8 +1862,8 @@ class _ColorPickerSheetState extends State<_ColorPickerSheet> {
                 height: 56,
                 decoration: BoxDecoration(
                   color: _current,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: AppTheme.borderLight),
+                  borderRadius: DsRadius.controlR,
+                  border: Border.all(color: DsColor.lineStrong),
                 ),
               ),
               const SizedBox(width: 14),
@@ -1877,33 +1871,33 @@ class _ColorPickerSheetState extends State<_ColorPickerSheet> {
                 child: TextField(
                   controller: _hexCtrl,
                   style: TextStyle(
-                    color: AppTheme.textPrimary,
+                    color: DsColor.text,
                     fontSize: 14,
                     fontFamily: 'monospace',
                   ),
                   decoration: InputDecoration(
                     labelText: 'Hex',
                     labelStyle: TextStyle(
-                      color: AppTheme.textMuted,
+                      color: DsColor.textFaint,
                       fontSize: 12,
                     ),
                     filled: true,
-                    fillColor: AppTheme.surface,
+                    fillColor: DsColor.surface,
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 12,
                       vertical: 10,
                     ),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: AppTheme.borderGray),
+                      borderRadius: DsRadius.controlR,
+                      borderSide: BorderSide(color: DsColor.line),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: AppTheme.borderGray),
+                      borderRadius: DsRadius.controlR,
+                      borderSide: BorderSide(color: DsColor.line),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: AppTheme.accent),
+                      borderRadius: DsRadius.controlR,
+                      borderSide: BorderSide(color: DsColor.accent),
                     ),
                   ),
                   onChanged: (v) {
@@ -1949,7 +1943,7 @@ class _ColorPickerSheetState extends State<_ColorPickerSheet> {
           _Slider(
             label: 'A',
             value: _a,
-            color: AppTheme.textSecondary,
+            color: DsColor.textSoft,
             onChanged: (v) => setState(() {
               _a = v;
               _syncHex();
@@ -1964,12 +1958,9 @@ class _ColorPickerSheetState extends State<_ColorPickerSheet> {
                 Navigator.pop(context);
               },
               style: FilledButton.styleFrom(
-                backgroundColor: AppTheme.accent,
+                backgroundColor: DsColor.accent,
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(vertical: 13),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
               ),
               child: Text(
                 AppLocalizations.of(context)!.colorPickerApply,
@@ -2004,7 +1995,7 @@ class _Slider extends StatelessWidget {
           child: Text(
             label,
             style: TextStyle(
-              color: AppTheme.textMuted,
+              color: DsColor.textFaint,
               fontSize: 11,
               fontWeight: FontWeight.w700,
             ),
@@ -2016,7 +2007,7 @@ class _Slider extends StatelessWidget {
             data: SliderTheme.of(context).copyWith(
               activeTrackColor: color,
               thumbColor: color,
-              inactiveTrackColor: AppTheme.borderGray,
+              inactiveTrackColor: DsColor.line,
               trackHeight: 3,
               thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 7),
               overlayShape: const RoundSliderOverlayShape(overlayRadius: 14),
@@ -2029,7 +2020,7 @@ class _Slider extends StatelessWidget {
           width: 28,
           child: Text(
             value.round().toString(),
-            style: TextStyle(color: AppTheme.textSecondary, fontSize: 11),
+            style: TextStyle(color: DsColor.textSoft, fontSize: 11),
             textAlign: TextAlign.right,
           ),
         ),

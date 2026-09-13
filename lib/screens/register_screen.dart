@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/services.dart';
 import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
+import '../design/design.dart';
 import '../services/user_service.dart';
 import '../services/push_notification_service.dart';
 
@@ -100,7 +101,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     height: 64,
                     decoration: BoxDecoration(
                       color: AppTheme.accent.withValues(alpha: 0.12),
-                      borderRadius: BorderRadius.circular(18),
+                      borderRadius: DsRadius.cardR,
                       border: Border.all(
                         color: AppTheme.accent.withValues(alpha: 0.30),
                       ),
@@ -137,9 +138,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     autocorrect: false,
                     textInputAction: TextInputAction.next,
                     inputFormatters: [
-                      FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9_]')),
-                      TextInputFormatter.withFunction((oldValue, newValue) =>
-                          newValue.copyWith(text: newValue.text.toLowerCase())),
+                      FilteringTextInputFormatter.allow(
+                        RegExp(r'[a-zA-Z0-9_]'),
+                      ),
+                      TextInputFormatter.withFunction(
+                        (oldValue, newValue) => newValue.copyWith(
+                          text: newValue.text.toLowerCase(),
+                        ),
+                      ),
                     ],
                     style: TextStyle(color: AppTheme.textPrimary),
                     decoration: InputDecoration(
@@ -159,10 +165,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const SizedBox(height: 6),
                   Text(
                     AppLocalizations.of(context)!.usernameFormatHint,
-                    style: TextStyle(
-                      color: AppTheme.textMuted,
-                      fontSize: 11,
-                    ),
+                    style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
                   ),
                   const SizedBox(height: 20),
                   _label(AppLocalizations.of(context)!.displayNameOptional),
@@ -192,7 +195,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       decoration: BoxDecoration(
                         color: AppTheme.error.withValues(alpha: 0.08),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: DsRadius.controlR,
                         border: Border.all(
                           color: AppTheme.error.withValues(alpha: 0.30),
                         ),
@@ -224,41 +227,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     children: [
                       Checkbox(
                         value: _acceptedTerms,
-                        onChanged: (v) => setState(() => _acceptedTerms = v ?? false),
+                        onChanged: (v) =>
+                            setState(() => _acceptedTerms = v ?? false),
                         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       ),
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.only(top: 12),
-                          child: _TermsSentence(
-                            onOpen: _openPage,
-                          ),
+                          child: _TermsSentence(onOpen: _openPage),
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: (_loading || !_acceptedTerms) ? null : _register,
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                    ),
-                    child: _loading
-                        ? const SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(
-                              color: Colors.white,
-                              strokeWidth: 2,
-                            ),
-                          )
-                        : Text(
-                            AppLocalizations.of(context)!.createProfile,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 15,
-                            ),
-                          ),
+                  DsButton(
+                    label: AppLocalizations.of(context)!.createProfile,
+                    size: DsButtonSize.large,
+                    expand: true,
+                    busy: _loading,
+                    onPressed: _acceptedTerms ? _register : null,
                   ),
                   const SizedBox(height: 40),
                 ],
@@ -280,7 +267,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     ),
   );
 }
-
 
 class _TermsSentence extends StatelessWidget {
   const _TermsSentence({required this.onOpen});
@@ -316,12 +302,16 @@ class _TermsSentence extends StatelessWidget {
       }
 
       final (index, label, path) = candidates.first;
-      if (index > 0) spans.add(TextSpan(text: rest.substring(0, index), style: base));
-      spans.add(TextSpan(
-        text: label,
-        style: link,
-        recognizer: TapGestureRecognizer()..onTap = () => onOpen(path),
-      ));
+      if (index > 0) {
+        spans.add(TextSpan(text: rest.substring(0, index), style: base));
+      }
+      spans.add(
+        TextSpan(
+          text: label,
+          style: link,
+          recognizer: TapGestureRecognizer()..onTap = () => onOpen(path),
+        ),
+      );
       rest = rest.substring(index + label.length);
     }
 

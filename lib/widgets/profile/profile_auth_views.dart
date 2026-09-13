@@ -6,8 +6,10 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart'
     show SignInWithAppleButton, SignInWithAppleButtonStyle;
 import '../../l10n/app_localizations.dart';
 import '../../theme/app_theme.dart';
+import '../../design/design.dart';
 import '../../services/auth_service.dart';
 import '../../widgets/components/app_toast.dart';
+import '../../theme/app_tokens.dart';
 
 class ProfileNotLoggedInView extends StatefulWidget {
   const ProfileNotLoggedInView({super.key});
@@ -100,10 +102,6 @@ class ProfileNotLoggedInViewState extends State<ProfileNotLoggedInView> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppTheme.surfaceRaised,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: const BorderSide(color: AppTheme.borderGray),
-        ),
         title: Text(
           AppLocalizations.of(ctx)!.resetPasswordTitle,
           style: TextStyle(
@@ -224,75 +222,53 @@ class ProfileNotLoggedInViewState extends State<ProfileNotLoggedInView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                width: 64,
-                height: 64,
-                decoration: BoxDecoration(
-                  color: AppTheme.accent.withValues(alpha: 0.12),
-                  borderRadius: BorderRadius.circular(18),
-                  border: Border.all(
-                    color: AppTheme.accent.withValues(alpha: 0.30),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  width: 56,
+                  height: 56,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: DsColor.accent.withValues(alpha: 0.14),
+                    borderRadius: DsRadius.controlR,
+                  ),
+                  child: Icon(
+                    Icons.person_rounded,
+                    color: DsColor.accent,
+                    size: 26,
                   ),
                 ),
-                child: Icon(
-                  Icons.person_rounded,
-                  color: AppTheme.accent,
-                  size: 28,
-                ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: DsSpace.lg),
               Text(
                 _isRegisterMode
                     ? AppLocalizations.of(context)!.createAccount
                     : AppLocalizations.of(context)!.signIn,
-                style: TextStyle(
-                  color: AppTheme.textPrimary,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w700,
-                ),
+                style: DsType.display.copyWith(fontSize: 24),
               ),
-              const SizedBox(height: 6),
+              const SizedBox(height: DsSpace.xs),
               Text(
                 AppLocalizations.of(context)!.signInSubtitle,
-                style: TextStyle(
-                  color: AppTheme.textSecondary,
-                  fontSize: 13,
-                  height: 1.5,
-                ),
+                style: DsType.label,
               ),
-              const SizedBox(height: 28),
-              TextField(
+              const SizedBox(height: DsSpace.xl),
+              DsField(
                 controller: _emailCtrl,
+                hint: AppLocalizations.of(context)!.emailAddressHint,
+                icon: Icons.email_rounded,
                 keyboardType: TextInputType.emailAddress,
-                autocorrect: false,
                 textInputAction: TextInputAction.next,
-                style: TextStyle(color: AppTheme.textPrimary),
-                decoration: InputDecoration(
-                  hintText: AppLocalizations.of(context)!.emailAddressHint,
-                  prefixIcon: Icon(
-                    Icons.email_rounded,
-                    size: 18,
-                    color: AppTheme.textMuted,
-                  ),
-                ),
                 onChanged: (_) {
                   if (_error != null) setState(() => _error = null);
                 },
               ),
-              const SizedBox(height: 12),
-              TextField(
+              const SizedBox(height: DsSpace.md),
+              DsField(
                 controller: _passCtrl,
+                hint: AppLocalizations.of(context)!.passwordHint,
+                icon: Icons.lock_rounded,
                 obscureText: true,
                 textInputAction: TextInputAction.done,
-                style: TextStyle(color: AppTheme.textPrimary),
-                decoration: InputDecoration(
-                  hintText: AppLocalizations.of(context)!.passwordHint,
-                  prefixIcon: Icon(
-                    Icons.lock_rounded,
-                    size: 18,
-                    color: AppTheme.textMuted,
-                  ),
-                ),
                 onSubmitted: (_) => _submit(),
                 onChanged: (_) {
                   if (_error != null) setState(() => _error = null);
@@ -328,7 +304,7 @@ class ProfileNotLoggedInViewState extends State<ProfileNotLoggedInView> {
                   ),
                   decoration: BoxDecoration(
                     color: AppTheme.error.withValues(alpha: 0.08),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: AppRadius.small,
                     border: Border.all(
                       color: AppTheme.error.withValues(alpha: 0.30),
                     ),
@@ -354,30 +330,15 @@ class ProfileNotLoggedInViewState extends State<ProfileNotLoggedInView> {
                   ),
                 ),
               ],
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _loading ? null : _submit,
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                ),
-                child: _loading
-                    ? const SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: CircularProgressIndicator(
-                          color: Colors.white,
-                          strokeWidth: 2,
-                        ),
-                      )
-                    : Text(
-                        _isRegisterMode
-                            ? AppLocalizations.of(context)!.createAccount
-                            : AppLocalizations.of(context)!.signIn,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 15,
-                        ),
-                      ),
+              const SizedBox(height: DsSpace.xl),
+              DsButton(
+                label: _isRegisterMode
+                    ? AppLocalizations.of(context)!.createAccount
+                    : AppLocalizations.of(context)!.signIn,
+                size: DsButtonSize.large,
+                expand: true,
+                busy: _loading,
+                onPressed: _submit,
               ),
               if (_supportsApple || _supportsGoogle) ...[
                 const SizedBox(height: 16),
@@ -415,45 +376,49 @@ class ProfileNotLoggedInViewState extends State<ProfileNotLoggedInView> {
                   if (_supportsGoogle) const SizedBox(height: 12),
                 ],
                 if (_supportsGoogle)
-                  OutlinedButton(
-                    onPressed: (_loading || _googleLoading || _appleLoading)
-                        ? null
-                        : _signInWithGoogle,
-                    style: OutlinedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      side: const BorderSide(color: Color(0xFF8E918F)),
-                      backgroundColor: AppTheme.surfaceRaised,
-                    ),
-                    child: _googleLoading
-                        ? SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(
-                              color: AppTheme.textMuted,
-                              strokeWidth: 2,
-                            ),
-                          )
-                        : Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset(
-                                'assets/icons/google_g.svg',
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      borderRadius: DsRadius.controlR,
+                      onTap: (_loading || _googleLoading || _appleLoading)
+                          ? null
+                          : _signInWithGoogle,
+                      child: Container(
+                        height: 48,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: DsColor.surfaceQuiet,
+                          borderRadius: DsRadius.controlR,
+                          border: Border.all(color: DsColor.line),
+                        ),
+                        child: _googleLoading
+                            ? SizedBox(
                                 width: 18,
                                 height: 18,
-                              ),
-                              const SizedBox(width: 10),
-                              Text(
-                                AppLocalizations.of(
-                                  context,
-                                )!.continueWithGoogle,
-                                style: TextStyle(
-                                  color: AppTheme.textPrimary,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14,
+                                child: CircularProgressIndicator(
+                                  color: DsColor.textFaint,
+                                  strokeWidth: 2,
                                 ),
+                              )
+                            : Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(
+                                    'assets/icons/google_g.svg',
+                                    width: 18,
+                                    height: 18,
+                                  ),
+                                  const SizedBox(width: DsSpace.sm),
+                                  Text(
+                                    AppLocalizations.of(
+                                      context,
+                                    )!.continueWithGoogle,
+                                    style: DsType.bodyStrong,
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                      ),
+                    ),
                   ),
               ],
               const SizedBox(height: 14),
@@ -492,7 +457,7 @@ class ProfileNotRegisteredView extends StatelessWidget {
               height: 64,
               decoration: BoxDecoration(
                 color: AppTheme.accent.withValues(alpha: 0.12),
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: AppRadius.large,
                 border: Border.all(
                   color: AppTheme.accent.withValues(alpha: 0.30),
                 ),

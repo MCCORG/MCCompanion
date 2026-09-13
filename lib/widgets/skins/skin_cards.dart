@@ -10,6 +10,7 @@ import '../../models/saved_skin.dart';
 import '../../screens/public_profile_screen.dart';
 import 'skin_painters.dart';
 import 'skin_detail_sheets.dart';
+import '../../theme/app_tokens.dart';
 
 class GallerySkinCard extends StatefulWidget {
   final Map<String, dynamic> skin;
@@ -17,7 +18,14 @@ class GallerySkinCard extends StatefulWidget {
   final String? idToken;
   final bool initialLiked;
   final bool isOwn;
-  const GallerySkinCard({super.key, required this.skin, this.onTap, this.idToken, this.initialLiked = false, this.isOwn = false});
+  const GallerySkinCard({
+    super.key,
+    required this.skin,
+    this.onTap,
+    this.idToken,
+    this.initialLiked = false,
+    this.isOwn = false,
+  });
 
   @override
   State<GallerySkinCard> createState() => _GallerySkinCardState();
@@ -47,14 +55,20 @@ class _GallerySkinCardState extends State<GallerySkinCard> {
   Future<void> _toggleLike() async {
     if (widget.idToken == null || widget.isOwn) return;
     final now = DateTime.now();
-    if (_liking || (_lastLike != null && now.difference(_lastLike!) < const Duration(seconds: 2))) return;
+    if (_liking ||
+        (_lastLike != null &&
+            now.difference(_lastLike!) < const Duration(seconds: 2))) {
+      return;
+    }
     _lastLike = now;
     setState(() => _liking = true);
     try {
       final id = widget.skin['id'] as String;
       final resp = await http
-          .post(Uri.parse('${AppConstants.apiBase}/api/skins/$id/like'),
-              headers: {'Authorization': 'Bearer ${widget.idToken}'})
+          .post(
+            Uri.parse('${AppConstants.apiBase}/api/skins/$id/like'),
+            headers: {'Authorization': 'Bearer ${widget.idToken}'},
+          )
           .timeout(const Duration(seconds: 8));
       if (resp.statusCode == 200) {
         final data = jsonDecode(resp.body);
@@ -70,9 +84,15 @@ class _GallerySkinCardState extends State<GallerySkinCard> {
   @override
   Widget build(BuildContext context) {
     final name = widget.skin['name'] as String? ?? '';
-    final url = (widget.skin['public_url'] ?? widget.skin['publicUrl']) as String? ?? '';
-    final creatorUsername = widget.isOwn ? null : widget.skin['username'] as String?;
-    final creatorName = widget.isOwn ? null : (widget.skin['display_name'] ?? widget.skin['username']) as String?;
+    final url =
+        (widget.skin['public_url'] ?? widget.skin['publicUrl']) as String? ??
+        '';
+    final creatorUsername = widget.isOwn
+        ? null
+        : widget.skin['username'] as String?;
+    final creatorName = widget.isOwn
+        ? null
+        : (widget.skin['display_name'] ?? widget.skin['username']) as String?;
 
     return GestureDetector(
       onTap: widget.onTap,
@@ -80,7 +100,7 @@ class _GallerySkinCardState extends State<GallerySkinCard> {
         width: 100,
         decoration: BoxDecoration(
           color: AppTheme.surface,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: AppRadius.medium,
           border: Border.all(color: AppTheme.borderGray),
         ),
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 8),
@@ -92,7 +112,10 @@ class _GallerySkinCardState extends State<GallerySkinCard> {
                 child: LayoutBuilder(
                   builder: (_, constraints) => Center(
                     child: url.isNotEmpty
-                        ? SkinBodyImage(textureUrl: url, height: constraints.maxHeight)
+                        ? SkinBodyImage(
+                            textureUrl: url,
+                            height: constraints.maxHeight,
+                          )
                         : const SizedBox(),
                   ),
                 ),
@@ -102,7 +125,11 @@ class _GallerySkinCardState extends State<GallerySkinCard> {
             const SizedBox(height: 8),
             Text(
               name,
-              style: TextStyle(color: AppTheme.textPrimary, fontSize: 11, fontWeight: FontWeight.w600),
+              style: TextStyle(
+                color: AppTheme.textPrimary,
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+              ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
@@ -111,13 +138,18 @@ class _GallerySkinCardState extends State<GallerySkinCard> {
             if (creatorUsername != null)
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => PublicProfileScreen(username: creatorUsername),
-                  ));
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) =>
+                          PublicProfileScreen(username: creatorUsername),
+                    ),
+                  );
                 },
                 behavior: HitTestBehavior.opaque,
                 child: Text(
-                  AppLocalizations.of(context)!.skinByCreator(creatorName ?? creatorUsername),
+                  AppLocalizations.of(
+                    context,
+                  )!.skinByCreator(creatorName ?? creatorUsername),
                   style: TextStyle(color: AppTheme.accent, fontSize: 9),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -128,18 +160,33 @@ class _GallerySkinCardState extends State<GallerySkinCard> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: () { if (widget.idToken != null) _toggleLike(); },
+                  onTap: () {
+                    if (widget.idToken != null) _toggleLike();
+                  },
                   behavior: HitTestBehavior.opaque,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       FaIcon(
-                        _liked ? FontAwesomeIcons.solidHeart : FontAwesomeIcons.heart,
+                        _liked
+                            ? FontAwesomeIcons.solidHeart
+                            : FontAwesomeIcons.heart,
                         size: 11,
-                        color: _liked ? const Color(0xFFf87171) : AppTheme.textMuted,
+                        color: _liked
+                            ? const Color(0xFFf87171)
+                            : AppTheme.textMuted,
                       ),
                       const SizedBox(width: 3),
-                      Text('$_likes', style: TextStyle(color: _liked ? const Color(0xFFf87171) : AppTheme.textMuted, fontSize: 9, fontWeight: FontWeight.w600)),
+                      Text(
+                        '$_likes',
+                        style: TextStyle(
+                          color: _liked
+                              ? const Color(0xFFf87171)
+                              : AppTheme.textMuted,
+                          fontSize: 9,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -147,11 +194,19 @@ class _GallerySkinCardState extends State<GallerySkinCard> {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    FaIcon(FontAwesomeIcons.comment, size: 11, color: AppTheme.textMuted),
+                    FaIcon(
+                      FontAwesomeIcons.comment,
+                      size: 11,
+                      color: AppTheme.textMuted,
+                    ),
                     const SizedBox(width: 3),
                     Text(
                       '${(widget.skin['comment_count'] as num?)?.toInt() ?? 0}',
-                      style: TextStyle(color: AppTheme.textMuted, fontSize: 9, fontWeight: FontWeight.w600),
+                      style: TextStyle(
+                        color: AppTheme.textMuted,
+                        fontSize: 9,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ],
                 ),
@@ -180,7 +235,7 @@ class CloudSkinCard extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 8),
         decoration: BoxDecoration(
           color: AppTheme.surface,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: AppRadius.medium,
           border: Border.all(color: AppTheme.borderGray),
         ),
         child: Column(
@@ -191,19 +246,27 @@ class CloudSkinCard extends StatelessWidget {
                   LayoutBuilder(
                     builder: (_, constraints) => Center(
                       child: url.isNotEmpty
-                          ? SkinBodyImage(textureUrl: url, height: constraints.maxHeight)
+                          ? SkinBodyImage(
+                              textureUrl: url,
+                              height: constraints.maxHeight,
+                            )
                           : const SizedBox(),
                     ),
                   ),
                   Positioned(
-                    top: 0, right: 0,
+                    top: 0,
+                    right: 0,
                     child: Container(
                       padding: const EdgeInsets.all(3),
                       decoration: BoxDecoration(
                         color: const Color(0xFF3b82f6),
                         borderRadius: BorderRadius.circular(6),
                       ),
-                      child: const FaIcon(FontAwesomeIcons.cloud, size: 8, color: Colors.white),
+                      child: const FaIcon(
+                        FontAwesomeIcons.cloud,
+                        size: 8,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ],
@@ -212,12 +275,20 @@ class CloudSkinCard extends StatelessWidget {
             const SizedBox(height: 6),
             Text(
               name,
-              style: TextStyle(color: AppTheme.textPrimary, fontSize: 11, fontWeight: FontWeight.w600),
+              style: TextStyle(
+                color: AppTheme.textPrimary,
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+              ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 4),
-            FaIcon(FontAwesomeIcons.ellipsis, size: 10, color: AppTheme.textMuted),
+            FaIcon(
+              FontAwesomeIcons.ellipsis,
+              size: 10,
+              color: AppTheme.textMuted,
+            ),
           ],
         ),
       ),
@@ -239,7 +310,7 @@ class SavedSkinCard extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 8),
         decoration: BoxDecoration(
           color: AppTheme.surface,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: AppRadius.medium,
           border: Border.all(color: AppTheme.borderGray),
         ),
         child: Column(
@@ -249,64 +320,47 @@ class SavedSkinCard extends StatelessWidget {
                 children: [
                   LayoutBuilder(
                     builder: (_, constraints) => Center(
-                      child: LocalSkinBodyImage(filePath: skin.filePath, height: constraints.maxHeight),
+                      child: LocalSkinBodyImage(
+                        filePath: skin.filePath,
+                        height: constraints.maxHeight,
+                      ),
                     ),
                   ),
                   Positioned(
-                    top: 0, left: 0,
+                    top: 0,
+                    left: 0,
                     child: Container(
                       padding: const EdgeInsets.all(3),
                       decoration: BoxDecoration(
                         color: AppTheme.accent.withValues(alpha: 0.18),
                         borderRadius: BorderRadius.circular(5),
                       ),
-                      child: FaIcon(FontAwesomeIcons.mobileScreen, size: 7, color: AppTheme.accent),
+                      child: FaIcon(
+                        FontAwesomeIcons.mobileScreen,
+                        size: 7,
+                        color: AppTheme.accent,
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
             const SizedBox(height: 6),
-            Text(skin.name, style: TextStyle(color: AppTheme.textPrimary, fontSize: 11, fontWeight: FontWeight.w600), maxLines: 1, overflow: TextOverflow.ellipsis),
-            const SizedBox(height: 4),
-            FaIcon(FontAwesomeIcons.ellipsis, size: 10, color: AppTheme.textMuted),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class GeyserSkinChip extends StatelessWidget {
-  final GeyserSkin skin;
-  final VoidCallback onTap;
-  const GeyserSkinChip({super.key, required this.skin, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppTheme.surface,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: AppTheme.borderGray),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(6),
-                child: LayoutBuilder(
-                  builder: (_, constraints) => Center(
-                    child: SkinBodyImage(
-                      textureUrl: skin.textureUrl,
-                      height: constraints.maxHeight,
-                    ),
-                  ),
-                ),
+            Text(
+              skin.name,
+              style: TextStyle(
+                color: AppTheme.textPrimary,
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
               ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 4),
+            FaIcon(
+              FontAwesomeIcons.ellipsis,
+              size: 10,
+              color: AppTheme.textMuted,
             ),
           ],
         ),
@@ -398,7 +452,7 @@ class JavaSkinCardState extends State<JavaSkinCard> {
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 8),
         decoration: BoxDecoration(
           color: AppTheme.surface,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: AppRadius.medium,
           border: Border.all(color: AppTheme.borderGray),
         ),
         child: Column(
@@ -409,20 +463,37 @@ class JavaSkinCardState extends State<JavaSkinCard> {
                   Center(
                     child: LayoutBuilder(
                       builder: (_, constraints) => _textureUrl != null
-                          ? SkinBodyImage(textureUrl: _textureUrl!, height: constraints.maxHeight)
-                          : CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2),
+                          ? SkinBodyImage(
+                              textureUrl: _textureUrl!,
+                              height: constraints.maxHeight,
+                            )
+                          : CircularProgressIndicator(
+                              color: AppTheme.accent,
+                              strokeWidth: 2,
+                            ),
                     ),
                   ),
                   if (badge != null)
                     Positioned(
-                      top: 0, left: 0,
+                      top: 0,
+                      left: 0,
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 5,
+                          vertical: 2,
+                        ),
                         decoration: BoxDecoration(
                           color: badgeColor.withValues(alpha: 0.18),
                           borderRadius: BorderRadius.circular(5),
                         ),
-                        child: Text(badge, style: TextStyle(color: badgeColor, fontSize: 8, fontWeight: FontWeight.w700)),
+                        child: Text(
+                          badge,
+                          style: TextStyle(
+                            color: badgeColor,
+                            fontSize: 8,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
                       ),
                     ),
                 ],
@@ -431,12 +502,20 @@ class JavaSkinCardState extends State<JavaSkinCard> {
             const SizedBox(height: 6),
             Text(
               widget.username,
-              style: TextStyle(color: AppTheme.textPrimary, fontSize: 11, fontWeight: FontWeight.w600),
+              style: TextStyle(
+                color: AppTheme.textPrimary,
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+              ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 4),
-            FaIcon(FontAwesomeIcons.ellipsis, size: 10, color: AppTheme.textMuted),
+            FaIcon(
+              FontAwesomeIcons.ellipsis,
+              size: 10,
+              color: AppTheme.textMuted,
+            ),
           ],
         ),
       ),
@@ -513,7 +592,7 @@ class BedrockSkinCardState extends State<BedrockSkinCard> {
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 8),
         decoration: BoxDecoration(
           color: AppTheme.surface,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: AppRadius.medium,
           border: Border.all(color: AppTheme.borderGray),
         ),
         child: Column(
@@ -523,22 +602,43 @@ class BedrockSkinCardState extends State<BedrockSkinCard> {
                 children: [
                   Center(
                     child: _loading
-                        ? CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
+                        ? CircularProgressIndicator(
+                            color: AppTheme.accent,
+                            strokeWidth: 2,
+                          )
                         : LayoutBuilder(
                             builder: (_, constraints) => _textureUrl != null
-                                ? SkinBodyImage(textureUrl: _textureUrl!, height: constraints.maxHeight)
-                                : FaIcon(FontAwesomeIcons.personRunning, color: AppTheme.textMuted, size: 28),
+                                ? SkinBodyImage(
+                                    textureUrl: _textureUrl!,
+                                    height: constraints.maxHeight,
+                                  )
+                                : FaIcon(
+                                    FontAwesomeIcons.personRunning,
+                                    color: AppTheme.textMuted,
+                                    size: 28,
+                                  ),
                           ),
                   ),
                   Positioned(
-                    top: 0, left: 0,
+                    top: 0,
+                    left: 0,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 5,
+                        vertical: 2,
+                      ),
                       decoration: BoxDecoration(
                         color: const Color(0xFF4CAF50).withValues(alpha: 0.18),
                         borderRadius: BorderRadius.circular(5),
                       ),
-                      child: Text(bedrockLabel, style: const TextStyle(color: Color(0xFF4CAF50), fontSize: 8, fontWeight: FontWeight.w700)),
+                      child: Text(
+                        bedrockLabel,
+                        style: const TextStyle(
+                          color: Color(0xFF4CAF50),
+                          fontSize: 8,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -547,107 +647,22 @@ class BedrockSkinCardState extends State<BedrockSkinCard> {
             const SizedBox(height: 6),
             Text(
               widget.gamertag,
-              style: TextStyle(color: AppTheme.textPrimary, fontSize: 11, fontWeight: FontWeight.w600),
+              style: TextStyle(
+                color: AppTheme.textPrimary,
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+              ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 4),
-            FaIcon(FontAwesomeIcons.ellipsis, size: 10, color: AppTheme.textMuted),
+            FaIcon(
+              FontAwesomeIcons.ellipsis,
+              size: 10,
+              color: AppTheme.textMuted,
+            ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class SkinsNoAccountsCard extends StatelessWidget {
-  const SkinsNoAccountsCard({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context)!;
-    return SkinsInfoCard(
-      icon: FontAwesomeIcons.shirt,
-      iconColor: const Color(0xFF42A5F5),
-      title: l.skinsNoAccountsTitle,
-      subtitle: l.skinsNoAccountsSubtitle,
-    );
-  }
-}
-
-class SkinsNotLoggedInCard extends StatelessWidget {
-  const SkinsNotLoggedInCard({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context)!;
-    return SkinsInfoCard(
-      icon: FontAwesomeIcons.user,
-      iconColor: AppTheme.accent,
-      title: l.skinsSignInTitle,
-      subtitle: l.skinsSignInSubtitle,
-    );
-  }
-}
-
-class SkinsInfoCard extends StatelessWidget {
-  final FaIconData icon;
-  final Color iconColor;
-  final String title;
-  final String subtitle;
-  const SkinsInfoCard({
-    super.key,
-    required this.icon,
-    required this.iconColor,
-    required this.title,
-    required this.subtitle,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppTheme.surface,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppTheme.borderGray),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 44,
-            height: 44,
-            decoration: BoxDecoration(
-              color: iconColor.withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Center(child: FaIcon(icon, color: iconColor, size: 18)),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                    color: AppTheme.textPrimary,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 14,
-                  ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  subtitle,
-                  style: TextStyle(
-                    color: AppTheme.textSecondary,
-                    fontSize: 12,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }

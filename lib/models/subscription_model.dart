@@ -9,7 +9,8 @@ class TrackerSlotInfo {
     required this.remaining,
   });
 
-  factory TrackerSlotInfo.fromJson(Map<String, dynamic> json) => TrackerSlotInfo(
+  factory TrackerSlotInfo.fromJson(Map<String, dynamic> json) =>
+      TrackerSlotInfo(
         total: json['total'] as int? ?? 1,
         used: json['used'] as int? ?? 0,
         remaining: json['remaining'] as int? ?? 1,
@@ -31,7 +32,8 @@ class SubscriptionStatus {
     this.expiresAt,
   });
 
-  factory SubscriptionStatus.fromJson(Map<String, dynamic> json) => SubscriptionStatus(
+  factory SubscriptionStatus.fromJson(Map<String, dynamic> json) =>
+      SubscriptionStatus(
         active: json['active'] as bool? ?? false,
         productId: json['productId'] as String?,
         entitlement: json['entitlement'] as String?,
@@ -44,7 +46,7 @@ class SubscriptionStatus {
       );
 
   static SubscriptionStatus get free => SubscriptionStatus(
-        active: false,
-        trackerSlots: const TrackerSlotInfo(total: 1, used: 0, remaining: 1),
-      );
+    active: false,
+    trackerSlots: const TrackerSlotInfo(total: 1, used: 0, remaining: 1),
+  );
 }

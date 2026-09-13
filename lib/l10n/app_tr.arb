@@ -1,7 +1,12 @@
 {
   "@@locale": "tr",
-  "appName": "MCCompanion",
   "console": "Konsol",
+  "modeLabel": "Mod",
+  "statusLabel": "Durum",
+  "seeAll": "Tümünü gör",
+  "sectionHelp": "Yardım",
+  "sectionAdvanced": "Gelişmiş",
+  "versionLabel": "Sürüm",
   "consoleOutput": "Konsol Çıktısı",
   "noLogsYet": "Henüz kayıt yok",
   "startBroadcastingToSeeOutput": "Çıktıyı görmek için yayına başlayın",
@@ -10,20 +15,9 @@
   "back": "Geri",
   "next": "İleri",
   "done": "Bitti",
-  "joinUs": "Bize Katılın",
   "website": "Websitesi",
-  "aternosSubtext": "Kendi ücretsiz Minecraft sunucunuzu oluşturun",
   "howToUseMenu": "Nasıl kullanılır",
   "support": "Destek",
-  "helpText": "Yapan: {appCreator}\n\nKullanım Talimatları:\n1. Minecraft sunucu adresinizi ve portunuzu girin (varsayılan: 19132)\n  , veya daha önce kaydedilmiş bir sunucuyu açılır menüden seçin\n2. (İsteğe bağlı) Konumunuza en yakın aktarma sunucusunu (EU veya US) seçin\n3. Yayına başlamak için \"Yayına Başla\" düğmesine tıklayın\n4. Konsolunuz/cihazınızda: Minecraft > Oyna > Arkadaşlar\n5. \"MCCompanion\" adlı bir LAN sunucusu görmelisiniz\n6. MCCompanion üzerinden seçtiğiniz sunucunuya katılmak için üzerine tıklayın\n\nNintendo Switch (DNS modu):\n1. Bağlantı panelinde \"Nintendo Switch\"i etkinleştirin\n2. Bir  aktarma sunucusu  (EU veya US) seçin\n3. \"DNS Yapılandırmasını Gönder\" düğmesine tıklayın, bu yapılandırmanızı aktarıcıya gönderir\n   (LAN sunucusu yayınlamaz)\n4. Switch’inizde MCCompanion DNS ayarlarınızı uygulayın ve MCCompanion için kullandığınız sunucu girişini kullanarak katılın\n\nNotlar:\n- LAN yayını için MCCompanion ve konsol aynı yerel ağda olmalıdır.\n- İpucu: En iyi performans için size en yakın aktarma sunucusunu seçin.",
-  "@helpText": {
-    "description": "Detailed help / instructions shown in the help dialog",
-    "placeholders": {
-      "appCreator": {}
-    }
-  },
-  "more": "Daha Fazla",
-  "serverDetailsLabel": "Sunucu Detayları",
   "start": "Başlat",
   "labelJava": "Java",
   "language": "Türkçe",
@@ -58,14 +52,6 @@
   "@delete": {
     "description": "Delete action label"
   },
-  "myServers": "Benim sunucularım",
-  "@myServers": {
-    "description": "Title for manage servers dialog"
-  },
-  "quickAccessServers": "Sunuculara hızlı eriş",
-  "@quickAccessServers": {
-    "description": "Subtitle for manage servers dialog"
-  },
   "addServer": "Sunucu Ekle",
   "@addServer": {
     "description": "Add server button label / dialog title"
@@ -94,18 +80,6 @@
   "@save": {
     "description": "Save button label"
   },
-  "initializing": "Başlatılıyor...",
-  "@initializing": {
-    "description": "Shown on splash while app initializes"
-  },
-  "createdBy": "NetherDev tarafından yapıldı",
-  "@createdBy": {
-    "description": "Badge text on splash screen"
-  },
-  "bedrockBridge": "Bedrock Köprüsü",
-  "@bedrockBridge": {
-    "description": "Subtitle on splash screen"
-  },
   "clientDisconnected": "İstemci bağlantısı kesildi: Yayın durduruldu",
   "@clientDisconnected": {
     "description": "Snackbar shown when clients disconnect automatically"
@@ -119,14 +93,6 @@
     "description": "Validation message when port is invalid"
   },
   "dataSentToServers": "Veriler MCCompanion sunucularına gönderildi",
-  "broadcastingStarted": "Yayın başladı",
-  "@broadcastingStarted": {
-    "description": "Snackbar shown when broadcasting starts"
-  },
-  "broadcastStopped": "Yayın durdu",
-  "@broadcastStopped": {
-    "description": "Snackbar shown when broadcasting stops"
-  },
   "selectedServer": "📋 Seçilen: {name}",
   "@selectedServer": {
     "description": "Shown when a saved server is selected",
@@ -141,10 +107,6 @@
       "name": {}
     }
   },
-  "noLogsToCopy": "Kopyalanacak kayıt yok",
-  "@noLogsToCopy": {
-    "description": "Shown when user tries to copy logs but none exist"
-  },
   "copiedLogs": "{count} kayıt panoya kopyalandı",
   "@copiedLogs": {
     "description": "Shown after copying logs to clipboard",
@@ -153,14 +115,10 @@
     }
   },
   "debugEnabled": "Hata ayıklama kayıtları etkinleştirildi",
-  "debugDisabled": "Hata ayıklama kayıtları devre dışı bırakıldı",
   "@debugEnabled": {
     "description": "Shown when debug logging is enabled/disabled"
   },
-  "howToUseTitle": "MCCompanion nasıl kullanılır",
   "iUnderstand": "Anlıyorum",
-  "playOnSwitchTitle": "Nintendo Switch'te oyna",
-  "playWithFriendsTitle": "Arkadaşlar ile oyna",
   "playInstructionsSwitch": "Seçilen: {relayName}\n\nBağlanma Adımları:\n1. Switch Ayarlarına gidin ve DNS’inizi bu ip ile değiştirin: {relayIp}\n2. Minecraft’ı açın ve listeden bir sunucu seçin (örneğin Cubecraft veya Hive).\n3. Artık otomatik olarak kendi sunucunuza yönlendirileceksiniz.",
   "@playInstructionsSwitch": {
     "description": "DNS instructions shown for Nintendo Switch mode",
@@ -169,53 +127,16 @@
       "relayIp": {}
     }
   },
-  "playInstructionsFriends": "Bağlanma Adımları:\n1. Konsolunuzda {friend}’i arkadaş olarak ekleyin.\n2. Minecraft’ı açın ve Arkadaşlar sekmesine gidin.\n3. LAN Dünyaları altında sunucunuzu bulun ve katılmak için seçin.",
-  "@playInstructionsFriends": {
-    "description": "Instructions shown for Friends mode",
-    "placeholders": {
-      "friend": {}
-    }
-  },
-  "nldServerLabel": "MCCompanion SUNUCUSU",
-  "@nldServerLabel": {
-    "description": "Label text above the relay selector"
-  },
-  "selectRelayLabel": "Seçilen aktarıcı {name}",
-  "@selectRelayLabel": {
-    "description": "Accessibility label for relay selection button",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "noSavedServers": "Kaydedilen sunucu yok",
   "savedServers": "Kaydedilen sunucular",
-  "serverAddressHint": "Sunucu Adresi",
-  "portHint": "Bağlantı Noktası",
   "manageServers": "Sunucuları yönet",
-  "manageServersTooltip": "Sunucuları yönet",
   "stopBroadcasting": "Yayını Durdur",
   "startNintendoMode": "Nintendo Modunu başlat",
   "startFriendsMode": "Arkadaş Modunu başlat",
   "startBroadcasting": "Yayına Başla",
-  "modeLabel": "Mod",
   "labelXbox": "Xbox/PS4-5",
   "labelNintendo": "Nintendo",
   "labelFriends": "Arkadaşlar",
-  "nintendoInfoTitle": "Nintendo Switch DNS modu",
-  "nintendoInfoText": "Nintendo modunu başlatın, DNS ayarlarınızı ayarlayın ve öne çıkan bir sunucuya bağlanın.",
-  "friendModeTitle": "Arkadaş modu",
-  "friendModeText": "MCCompanion'in arkadaş botlarını arkadaş olarak ekle. Arkadaş modunu başlat ve oyna",
-  "selectedRelayCheck": "Seçilen",
-  "@selectedRelayCheck": {
-    "description": "Small label used when a relay is selected"
-  },
-  "relayFallbackWarning": "Uyarı: Orijinal aktarıcı yanıt vermedi. Yedek aktarıcı kullanılıyor: {name}",
-  "@relayFallbackWarning": {
-    "placeholders": {
-      "name": {}
-    }
-  },
-  "relayUnableConnect": "Hiçbir MCCompanion aktarım sunucusuna bağlanılamıyor. Daha sonra tekrar deneyin veya internet bağlantınızı kontrol edin.",
   "howToXboxTitle": "Xbox / PS4-5 (LAN / vekil)",
   "@howToXboxTitle": {
     "description": "Title for the Xbox / PS4-5 how-to modal"
@@ -236,10 +157,6 @@
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
-  "howToNintendoBody": "Nintendo Switch: DNS modu (adım adım):\n1. Uygulamada \"Nintendo\" modunu etkinleştirin ve bir Aktarım Sunucusu (EU veya US) seçin.\n2. DNS IP adresini aktarıcıya göndermek için \"DNS Yapılandırmasını Gönder\" düğmesine dokunun.\n3. Nintendo Switch'inizde Sistem Ayarları → İnternet → İnternet Ayarları → (ağınız) → Ayarları Değiştir → DNS bölümüne gidin ve Birincil DNS'i aktarıcı IP adresi olarak ayarlayın.\n4. Minecraft'ı açın ve herkese açık bir sunucuya katılın; aktarıcı DNS'i üzerinden kendi sunucunuza yönlendirileceksiniz.\nNotlar:\n- DNS modu bir LAN sunucusu yayınlamaz; oyun trafiğini aktarıcı üzerinden yönlendirir.\n- Normal ağ davranışına dönmek istediğinizde DNS ayarınızı eski haline getirin.",
-  "@howToNintendoBody": {
-    "description": "Detailed steps for Nintendo Switch DNS setup"
-  },
   "howToFriendsTitle": "Arkadaş modu",
   "@howToFriendsTitle": {
     "description": "Title for the Friends-mode how-to modal"
@@ -247,10 +164,6 @@
   "howToFriendsSubtitle": "Arkadaşlarını davet et ve LAN üzerinden katıl",
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
-  },
-  "howToFriendsBody": "Arkadaş modu: hızlı adımlar:\n1. Gerekliyse MCCompanion arkadaş hesabını (aktarıcı arkadaş) konsolunuza veya platformunuza ekleyin.\n2. Uygulamada Arkadaş modunu etkinleştirin ve aktarıcı yapılandırmasını gönderin (uygunsa).\n3. Konsolunuzda Minecraft → Arkadaşlar bölümünü açın ve LAN Dünyaları'nı arayın; sunucunuz orada bir LAN dünyası olarak görünmelidir.\n4. Arkadaşlarınızla sunucunuza katılmak için onu seçin.\nNotlar:\n- Hem sizin hem de arkadaşlarınızın arkadaş görünürlüğüne izin veren aynı NAT/ayarlarına sahip olduğundan emin olun.\n- Arkadaş modu, platformun arkadaş özelliklerine dayanır ve arkadaşlık isteklerinin kabul edilmesini gerektirebilir.",
-  "@howToFriendsBody": {
-    "description": "Detailed steps for Friends mode"
   },
   "helpMCCompanionTitle": "MCCompanion görünmüyor",
   "@helpMCCompanionTitle": {
@@ -308,29 +221,14 @@
   "@changeLanguage": {
     "description": "Label for the language button in the bottom nav"
   },
-  "useSystemLanguage": "Sistem dilini kullan",
-  "@useSystemLanguage": {
-    "description": "Button that resets localization to the system/default locale"
-  },
   "updateAvailable": "Güncelleme Mevcut",
-  "needSameWifi": "MCCompanion'i çalıştıran cihaz, Minecraft oynadığınız konsolla AYNI Wi‑Fi ağına bağlı OLMALIDIR.",
   "active": "Aktif",
-  "newVersion": "Uygulamanın yeni bir sürümü mevcut.\nEn son özellikler ve düzeltmeler için şimdi güncelleyin.",
-  "noServerYet": "Henüz kaydedilmiş sunucu yok.\nBir tane eklemek için Yönet'e dokunun.",
-  "beforeYouStart": "BAŞLAMADAN ÖNCE",
   "stop": "Durdur",
-  "later": "Daha Sonra",
   "continueAnyway": "Yine de Devam Et",
-  "serverNotSelected": "Sunucu seçilmedi",
   "noWifi": "Wi‑Fi'a bağlı değil",
   "vpnDetected": "VPN Tespit Edildi",
-  "ready": "Hazır",
   "vpnActive": "VPN'inizin etkin olduğunu tespit ettik.\n\nLütfen MCCompanion'i kullanmadan önce VPN'inizi devre dışı bırakın, aksi halde LAN yayını konsolunuza ulaşmayabilir.",
-  "updateNow": "Şimdi Güncelle",
-  "needSubscription": "Her konsolun kendi etkin çevrim içi aboneliği (Xbox Live, PS Plus, NSO) olmalıdır. Aksi halde MCCompanion görünmez.",
   "mobileActive": "Tespit edildi: Mobil Veri\n\nMCCompanion'in konsolunuzla aynı ağda olması gerekir. Devam etmeden önce ev Wi‑Fi'nize veya erişim noktanıza bağlanın.",
-  "sameWifi": "Aynı Wi‑Fi Ağı",
-  "subscription": "Çevrim İçi Abonelik Gerekli",
   "couldNotOpenUrl": "URL açılamadı",
   "@couldNotOpenUrl": {
     "description": "Snackbar message when launching an external URL fails"
@@ -355,27 +253,20 @@
   "statusOnline": "Çevrimiçi",
   "statusOffline": "Çevrimdışı",
   "statusChecking": "Kontrol ediliyor...",
-  "notificationsOn": "Bildirimler açık",
-  "notificationsOff": "Bildirimler kapalı",
   "failedUpdateNotifications": "Bildirimler güncellenemedi",
   "editServerTitle": "Sunucuyu düzenle",
   "serverNameHint": "Sunucu adı",
   "failedSave": "Kaydedilemedi. Tekrar deneyin.",
   "serverRenamed": "Sunucu yeniden adlandırıldı",
   "customizeLabel": "Özelleştir",
-  "customizeSubtitle": "Karoları yeniden sırala ve gezinmeyi özelleştir",
+  "customizeSubtitle": "Gezinme cubugu ve renkler",
   "resetLabel": "Sıfırla",
-  "tilesSection": "KAROLAR",
-  "dragToReorder": "Yeniden sıralamak için sürükleyin",
   "navigationSection": "GEZİNME",
-  "navFixed": "Ana Sayfa, Bağlayıcı ve Profil her zaman sabittir",
-  "leftSlot": "Sol yuva (Ana Sayfanın yanında)",
-  "rightSlot": "Sağ yuva (Profilin yanında)",
-  "tileWideTooltipRemove": "Geniş düzeni kaldır",
-  "tileWideTooltipAdd": "Geniş karo yap",
-  "tileVisibilityShow": "Karoyu göster",
-  "tileVisibilityHide": "Karoyu gizle",
-  "tileVisibilityMin": "Gizlenemiyor (son karo)",
+  "navFixed": "Connector ve Profil her zaman sabittir",
+  "leftSlot": "Slot 2",
+  "outerSlot": "Slot 1",
+  "rightSlot": "Slot 3",
+  "farSlot": "Slot 4",
   "colorPickerApply": "Uygula",
   "colorPickerHex": "Hex",
   "textColorSection": "METİN RENGİ",
@@ -398,7 +289,6 @@
   "playerLookupLabelFloodgate": "Floodgate",
   "accountSubtitleXbox": "Xbox · {xuid}",
   "accountSubtitleJava": "Java Edition · {uuid}",
-  "avatarUrlHint": "https://example.com/avatar.png",
   "chooseUniqueUsername": "Başlamak için benzersiz bir kullanıcı adı seç.",
   "usernameFieldLabel": "Kullanıcı adı",
   "usernameExampleHint": "örn. CoolPlayer123",
@@ -409,7 +299,6 @@
   "usernameFormatError": "Kullanıcı adı 3–20 karakter olmalı ve yalnızca harf, rakam ve alt çizgi içerebilir",
   "usernameTaken": "Bu kullanıcı adı zaten kullanımda",
   "noConnectionError": "Bağlantı yok. İnternet bağlantını kontrol et ve tekrar dene.",
-  "home": "Ana Sayfa",
   "info": "Bilgi",
   "navProfile": "Profil",
   "serverRemoved": "{name} kaldırıldı",
@@ -421,10 +310,6 @@
   "aboutMCCompanionSection": "MCCompanion Hakkında",
   "@aboutMCCompanionSection": {
     "description": "Section header for About MCCompanion in Info sheet"
-  },
-  "aboutMe": "Hakkımda",
-  "@aboutMe": {
-    "description": "Label for bio/about-me row in profile display"
   },
   "aboutSectionLabel": "Hakkında",
   "@aboutSectionLabel": {
@@ -446,13 +331,6 @@
   "@alreadyFriendsMsg": {
     "description": "Error when already friends with user (public profile)"
   },
-  "alreadyFriendsWith": "{name} ile zaten arkadaşsınız",
-  "@alreadyFriendsWith": {
-    "description": "Error when already friends with user",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "alreadyHaveAccount": "Hesabınız var mı? Giriş yapın",
   "@alreadyHaveAccount": {
     "description": "Toggle to switch back to sign-in mode"
@@ -473,10 +351,6 @@
   "@appleSignInFailed": {
     "description": "Error when Apple sign-in fails"
   },
-  "avatarUrlLabel": "Avatar URL",
-  "@avatarUrlLabel": {
-    "description": "Label for avatar URL field"
-  },
   "bioHint": "Kendinizden bahsedin…",
   "@bioHint": {
     "description": "Hint text for bio field"
@@ -485,20 +359,9 @@
   "@bioLabel": {
     "description": "Label for bio field"
   },
-  "cannotSendRequest": "{name} kullanıcısına istek gönderilemiyor",
-  "@cannotSendRequest": {
-    "description": "Error when user is blocked or request is not allowed",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "cannotSendRequestMsg": "İstek gönderilemiyor.",
   "@cannotSendRequestMsg": {
     "description": "Error when friend request is blocked (public profile)"
-  },
-  "checkBackLater": "Daha sonra tekrar kontrol edin.",
-  "@checkBackLater": {
-    "description": "Secondary empty state text on partner servers screen"
   },
   "chooseUsernameSubtitle": "Diğer oyuncuların seni bulabilmesi için bir kullanıcı adı seç.",
   "@chooseUsernameSubtitle": {
@@ -630,13 +493,6 @@
   "@friendRequestSent": {
     "description": "Toast shown after friend request is sent from public profile"
   },
-  "friendRequestSentTo": "{name} adlı kullanıcıya arkadaşlık isteği gönderildi",
-  "@friendRequestSentTo": {
-    "description": "Toast when a friend request is sent",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "googleSignInFailed": "Google girişi başarısız.",
   "@googleSignInFailed": {
     "description": "Error when Google sign-in fails"
@@ -681,10 +537,6 @@
   "@linkXbox": {
     "description": "Button to link an Xbox/Bedrock account"
   },
-  "linkedAccountsTitle": "Bağlı hesaplar",
-  "@linkedAccountsTitle": {
-    "description": "Section title for linked accounts card"
-  },
   "minecraftTrademark": "\"Minecraft\", Microsoft Corporation'ın tescilli markasıdır.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
@@ -701,10 +553,6 @@
   "@nldServerLabelShort": {
     "description": "Section label above relay selector in More sheet"
   },
-  "noAccountForEmail": "Bu e-posta için hesap bulunamadı",
-  "@noAccountForEmail": {
-    "description": "Error when no account exists for the email"
-  },
   "noAccountYet": "Hesabınız yok mu? Oluşturun",
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
@@ -717,17 +565,9 @@
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
   },
-  "noPartnerServers": "Henüz ortak sunucu yok.",
-  "@noPartnerServers": {
-    "description": "Empty state text on partner servers screen"
-  },
   "noPendingRequests": "Bekleyen istek yok",
   "@noPendingRequests": {
     "description": "Empty state title on requests tab"
-  },
-  "noServerSelected": "Sunucu seçilmedi",
-  "@noServerSelected": {
-    "description": "Placeholder when no server is entered in connection panel"
   },
   "nowFriendsWith": "@{username} ile artık arkadaşsınız",
   "@nowFriendsWith": {
@@ -753,10 +593,6 @@
   "orDivider": "veya",
   "@orDivider": {
     "description": "Divider text between email and social sign-in"
-  },
-  "partnerServersTitle": "Ortak sunucular",
-  "@partnerServersTitle": {
-    "description": "Title for the partner servers screen"
   },
   "passwordHint": "Şifre",
   "@passwordHint": {
@@ -813,18 +649,6 @@
   "@playerLookupSubtitle": {
     "description": "Subtitle/hint on player lookup screen"
   },
-  "playerLookupTitle": "Oyuncu ara",
-  "@playerLookupTitle": {
-    "description": "Title of the player lookup screen"
-  },
-  "playersCount": "{players} / {max} oyuncu",
-  "@playersCount": {
-    "description": "Player count label on tracked server card",
-    "placeholders": {
-      "players": {},
-      "max": {}
-    }
-  },
   "portFieldLabel": "Port",
   "@portFieldLabel": {
     "description": "Port field label in edit server form"
@@ -841,10 +665,6 @@
   "@privacyPolicySubtitle": {
     "description": "Privacy Policy tile subtitle"
   },
-  "profileCardTitle": "Profil",
-  "@profileCardTitle": {
-    "description": "Title for the edit profile card"
-  },
   "profileNotSetUp": "Profil ayarlanmamış",
   "@profileNotSetUp": {
     "description": "Title when user is authenticated but has no profile"
@@ -856,10 +676,6 @@
   "profileUpdated": "Profil güncellendi",
   "@profileUpdated": {
     "description": "Toast shown after profile is saved"
-  },
-  "publicProfileTitle": "Profil",
-  "@publicProfileTitle": {
-    "description": "AppBar title fallback for public profile when username not loaded"
   },
   "relay": "Relay",
   "@relay": {
@@ -956,13 +772,6 @@
       "name": {}
     }
   },
-  "requestAlreadyPending": "{name} için bekleyen bir istek zaten var",
-  "@requestAlreadyPending": {
-    "description": "Error when friend request is already pending",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "requestAlreadyPendingMsg": "Bekleyen bir istek var.",
   "@requestAlreadyPendingMsg": {
     "description": "Error when friend request is already pending (public profile)"
@@ -1001,10 +810,6 @@
   "@selectBedrockAccount": {
     "description": "Title of the Bedrock account picker bottom sheet"
   },
-  "selectModeSection": "MOD SEÇ",
-  "@selectModeSection": {
-    "description": "Section label above mode chips in connection panel"
-  },
   "send": "Gönder",
   "@send": {
     "description": "Send button label"
@@ -1025,7 +830,7 @@
   "@serverNameExampleHint": {
     "description": "Example hint text for server name field"
   },
-  "serversSection": "SUNUCULAR",
+  "serversSection": "Sunucular",
   "@serversSection": {
     "description": "Section label above servers panel in connection panel"
   },
@@ -1036,10 +841,6 @@
   "signOut": "Çıkış yap",
   "@signOut": {
     "description": "Sign out button label"
-  },
-  "skinsCouldNotLoad": "Skinler yüklenemedi",
-  "@skinsCouldNotLoad": {
-    "description": "Error text when recent skins cannot be loaded"
   },
   "skinsCreate": "Oluştur",
   "@skinsCreate": {
@@ -1053,10 +854,6 @@
   "@skinsEdit": {
     "description": "Edit button in skin detail sheet"
   },
-  "skinsEmptyMySkins": "Henüz skin yok. Bir tane yükleyin!",
-  "@skinsEmptyMySkins": {
-    "description": "Empty state text for saved skins section"
-  },
   "skinsInvalidFile": "Geçersiz resim dosyası",
   "@skinsInvalidFile": {
     "description": "Error when the selected file is not a valid image"
@@ -1064,42 +861,6 @@
   "skinsMustBe64": "Skin 64×64 piksel olmalıdır",
   "@skinsMustBe64": {
     "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsNoAccountsSubtitle": "Skinlerinizi görmek için bir hesap bağlayın.",
-  "@skinsNoAccountsSubtitle": {
-    "description": "Subtitle when no Minecraft accounts are linked"
-  },
-  "skinsNoAccountsTitle": "Minecraft hesabı bağlı değil",
-  "@skinsNoAccountsTitle": {
-    "description": "Title when no Minecraft accounts are linked"
-  },
-  "skinsPageOf": "Sayfa {page} / {total}",
-  "@skinsPageOf": {
-    "description": "Pagination label on skins screen",
-    "placeholders": {
-      "page": {},
-      "total": {}
-    }
-  },
-  "skinsSectionMy": "KENDİ SKİNLERİM",
-  "@skinsSectionMy": {
-    "description": "Section label for saved/local skins"
-  },
-  "skinsSectionRecent": "SON SKİNLER",
-  "@skinsSectionRecent": {
-    "description": "Section label for recent Geyser skins"
-  },
-  "skinsSectionYours": "SKİNLERİNİZ",
-  "@skinsSectionYours": {
-    "description": "Section label for the user's linked account skins"
-  },
-  "skinsSignInSubtitle": "Skinlerinizi görmek için giriş yapın.",
-  "@skinsSignInSubtitle": {
-    "description": "Subtitle when user is not signed in on skins screen"
-  },
-  "skinsSignInTitle": "Skinleri görmek için giriş yapın",
-  "@skinsSignInTitle": {
-    "description": "Title when user is not signed in on skins screen"
   },
   "skinsUpload": "Yükle",
   "@skinsUpload": {
@@ -1109,18 +870,6 @@
   "@somethingWentWrong": {
     "description": "Generic error message"
   },
-  "tabFriends": "Arkadaşlar",
-  "@tabFriends": {
-    "description": "Tab label for Friends tab"
-  },
-  "tabProfile": "Profil",
-  "@tabProfile": {
-    "description": "Tab label for Profile tab"
-  },
-  "tabRequests": "İstekler",
-  "@tabRequests": {
-    "description": "Tab label for Requests tab"
-  },
   "termsOfService": "hizmet şartlarını",
   "@termsOfService": {
     "description": "Terms of Service tile title"
@@ -1129,11 +878,7 @@
   "@termsOfServiceSubtitle": {
     "description": "Terms of Service tile subtitle"
   },
-  "today": "Bugün",
-  "@today": {
-    "description": "Date divider label for today"
-  },
-  "trackerLimitReached": "Sunucu limitinize ulaştınız. Daha fazlası için yükseltin.",
+  "trackerLimitReached": "Sunucu sınırına ulaşıldı",
   "@trackerLimitReached": {
     "description": "Banner shown when tracker slot limit is reached"
   },
@@ -1161,24 +906,9 @@
   "@userNotFound": {
     "description": "Text shown when a user profile cannot be found"
   },
-  "userNotFoundMsg": "{name} kullanıcısı bulunamadı",
-  "@userNotFoundMsg": {
-    "description": "Error when user is not found",
-    "placeholders": {
-      "name": {}
-    }
-  },
   "userNotFoundMsg2": "Kullanıcı bulunamadı.",
   "@userNotFoundMsg2": {
     "description": "Error when user not found sending friend request from public profile"
-  },
-  "usernameDisplayLabel": "Kullanıcı adı",
-  "@usernameDisplayLabel": {
-    "description": "Label for username row in profile display"
-  },
-  "usernameHint": "Kullanıcı adı",
-  "@usernameHint": {
-    "description": "Hint text for username input"
   },
   "usernameRowLabel": "Kullanıcı adı",
   "@usernameRowLabel": {
@@ -1244,14 +974,6 @@
   "@xboxYourCode": {
     "description": "Label above the Microsoft device code"
   },
-  "yesterday": "Dün",
-  "@yesterday": {
-    "description": "Date divider label for yesterday"
-  },
-  "youPrefix": "Sen",
-  "@youPrefix": {
-    "description": "Prefix for last message preview when message is from current user"
-  },
   "yourNameHint": "Adınız",
   "@yourNameHint": {
     "description": "Hint text for display name field"
@@ -1272,26 +994,13 @@
   "javaCodeExpired": "Kod süresi doldu. Tekrar deneyin.",
   "javaSomethingWrong": "Bir şeyler ters gitti. Tekrar deneyin.",
   "javaCodeCopied": "Kod panoya kopyalandı",
-  "splashFeatureConnect": "Bağlan",
-  "splashFeatureFriends": "Arkadaşlar",
-  "splashFeatureChat": "Sohbet",
-  "splashFeatureSkins": "Skinler",
   "featureLabelConnector": "Bağlayıcı",
   "featureLabelSkins": "Skinler",
   "featureLabelPartners": "Sunucu listesi",
   "featureLabelLookup": "Arama",
   "featureLabelTracker": "Sunucu Takipçisi",
-  "featureSubtitleConnector": "Konsolları Minecraft'a bağlayın",
-  "featureSubtitleSkins": "Minecraft skinlerini göz atın ve yönetin",
-  "featureSubtitlePartners": "Öne çıkan sunucular",
-  "featureSubtitleLookup": "Java ve Bedrock profillerini arayın",
-  "featureSubtitleTracker": "Sunucu durumunu izleyin ve bildirim alın",
   "userSearchHint": "Kullanıcı adı, gamertag veya Java adı…",
   "userSearchSub": "Kullanıcı adı, Xbox gamertag veya Java adıyla ara",
-  "onlineStatus": "Çevrimiçi",
-  "@onlineStatus": {
-    "description": "Label shown when a friend is online"
-  },
   "upgradeWindowsHint": "Yükseltme Microsoft Store'da mevcut",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
@@ -1317,7 +1026,7 @@
   "@skinExported": {
     "description": "Toast when skin is exported successfully"
   },
-  "accountActions": "HESAP",
+  "accountActions": "Hesap",
   "@accountActions": {
     "description": "Label for account danger zone section"
   },
@@ -1330,9 +1039,6 @@
   "feedbackDescribeIdea": "Fikrinden bahset",
   "feedbackDescHintBug": "Hatayı açıkla: ne yaptın, ne bekliyordun ve bunun yerine ne oldu?",
   "feedbackDescHintFeature": "Ne istediğini ve neden faydalı olacağını açıkla.",
-  "feedbackEmailLabel": "E-posta",
-  "feedbackEmailHint": "Seninle iletişime geçebilmemiz için",
-  "feedbackEmailNote": "E-posta adresin hiçbir zaman herkese açık paylaşılmaz.",
   "feedbackSubmitBug": "Hata Raporunu Gönder",
   "feedbackSubmitFeature": "Özellik İsteğini Gönder",
   "feedbackDisclaimer": "Ekibimize ulaşır · Şifre yazmayın",
@@ -1342,12 +1048,8 @@
   "feedbackBackToApp": "Uygulamaya geri dön",
   "feedbackTitleTooShort": "Başlık en az 5 karakter olmalıdır.",
   "feedbackDescTooShort": "Açıklama en az 10 karakter olmalıdır.",
-  "feedbackEmailInvalid": "Lütfen geçerli bir e-posta adresi girin.",
-  "@feedbackEmailInvalid": {
-    "description": "Validation error when email is missing or invalid"
-  },
   "feedbackSubmitFailed": "Gönderilemedi. Lütfen tekrar deneyin.",
-  "feedbackTileTitle": "Hata bildirin veya özellik önerin",
+  "feedbackTileTitle": "Geri bildirim",
   "feedbackTileSubtitle": "MCCompanion'ı geliştirmemize yardım edin",
   "friendsHowToStep1": "Telefonunda veya konsolunda Xbox uygulamasını aç.",
   "friendsHowToStep2": "Aşağıdaki botlardan birini Xbox'ta arkadaş olarak ekle.",
@@ -1367,11 +1069,6 @@
   "skinMenuExport": "Dışa Aktar",
   "skinMenuDelete": "Sil",
   "rpScreenTitle": "Kaynak Paketi",
-  "rpWhatIsThis": "Bu nedir?",
-  "rpExplanation": "Bir kaynak paketi konsolundaki Minecraft'ın görünümünü değiştirir, yeni bloklar, renkler veya sesler. Aşağıya .mcpack dosyasının bağlantısını yapıştır, etkinleştir ve kaydet. MCCompanion her bağlandığında otomatik olarak yükler.",
-  "rpPackUrlLabel": "Paket URL'si",
-  "rpPackUrlHint": "https://example.com/pack.mcpack",
-  "rpEnableToggle": "Kaynak paketini etkinleştir",
   "rpWhatWorks": "Çalışanlar",
   "rpSupportedBedrockOnly": "Yalnızca Bedrock Edition (.mcpack veya .zip)",
   "rpSupportedBedrockOnlyHint": "Java paketleri konsolda çalışmaz.",
@@ -1383,39 +1080,28 @@
   "rpUnsupportedAddonsHint": "Bazen çalışabilir ancak resmi olarak desteklenmez. Kendi riskinizle kullanın.",
   "rpConsolePerformanceTitle": "Konsol performansı",
   "rpConsolePerformanceBody": "Yüksek çözünürlüklü doku paketleri konsolda takılma veya çökmeye neden olabilir. Sorun yaşarsanız daha düşük çözünürlüklü bir pakete geçin veya paket destekliyorsa daha hafif bir altpaket seçin.",
-  "rpWhatDoesntWork": "Çalışmayanlar",
-  "rpWorksGithub": "GitHub Releases (github.com/…/releases/download/…)",
-  "rpWorksCloudflare": "Cloudflare R2 / AWS S3 genel bucket",
-  "rpWorksDirect": ".mcpack veya .zip ile biten herhangi bir doğrudan HTTPS bağlantısı",
   "rpNoDiscord": "Discord bağlantıları: .mcpack uzantısı yok ve birkaç saat sonra süresi doluyor",
   "rpNoDrive": "Google Drive / Dropbox paylaşım bağlantıları, doğrudan indirme değil",
   "rpNoEncrypted": "Şifrelenmiş veya parola korumalı paketlere sahip sunucular",
   "rpWarnDiscord": "Discord bağlantılarının süresi dolup çalışmayı durdurur. Bunun yerine kalıcı bir host kullanın.",
   "rpWarnHttps": "URL https:// ile başlamalıdır",
   "rpWarnExtension": "URL .mcpack veya .zip ile bitmelidir",
-  "rpToastEnterUrl": "Kaynak paketini etkinleştirmeden önce bir URL girin.",
   "rpToastSaved": "Kaynak paketi ayarları kaydedildi.",
   "rpClearMinecraftTitle": "Bu paketle ilk kez mi?",
-  "rpClearMinecraftBody": "Minecraft kaynak paketlerini yerel olarak ön belleğe alır. MCCompanion paketini etkinleştirmeden önce bu sunucuya bağlandıysanız, Minecraft orijinal paketi zaten ön bellekte tutuyor ve birleştirilmiş sürümü yeniden indirmeyecektir.",
   "rpClearStep1": "Konsolunda Minecraft'ı aç ve Ayarlar → Depolama'ya git",
   "rpClearStep2": "Kaynak Paketleri'nin yanındaki 'Temizle' veya 'Sıfırla'ya dokun, yerel olarak önbelleğe alınmış tüm paketleri siler",
   "rpClearStep3": "MCCompanion üzerinden yeniden bağlan: birleştirilmiş paket otomatik olarak indirilecek",
   "rpRelayTitle": "Pack bozuk görünüyor mu?",
   "rpRelayBody": "Relay, overlay URL'yi önbellek anahtarı olarak kullanarak birleştirilmiş paketi 1 saat boyunca önbelleğe alır. Yeni bir birleştirme zorlamak için: pack URL'ini biraz değiştir (ör. ?v=2 ekle) ve kaydet. Ardından Minecraft'ın pack önbelleğini de temizle, birleştirilmiş pack hâlâ sunucunun UUID'sini kullandığından, Minecraft aksi takdirde eski önbelleğe alınmış sürümü gösterir.",
-  "rpWorksGithubHint": "Doğrudan indirme bağlantısı: her zaman erişilebilir",
-  "rpWorksCloudflareHint": "Genel bulut depolama: hızlı ve güvenilir",
-  "rpWorksDirectHint": "Herhangi bir genel HTTPS .mcpack veya .zip URL",
   "rpNoDiscordHint": "Discord CDN bağlantıları kısa süre sonra sona erer",
   "rpNoDriveHint": "Doğrudan indirme yok: önizleme sayfasına yönlendirir",
   "rpNoEncryptedHint": "MCCompanion şifrelenmiş pack içeriğini birleştiremez",
   "rpClearWhy": "Minecraft, kaynak paketlerini UUID'lerine göre önbelleğe alır. Birleştirilmiş paket, sunucunun orijinal UUID'sini korur, Minecraft, önceki bir oturumdan (MCCompanion etkinleştirilmeden önce) sunucu paketini zaten önbelleğe almışsa, yeni birleştirilmiş sürümü indirmez. Minecraft'ın yeni birleştirilmiş paketi yüklemesi için önbelleği temizle.",
   "rpUploadTab": "Upload",
-  "rpUrlTab": "URL",
   "rpUploadButton": "Tap to select your pack",
   "rpUploadHint": ".mcpack or .zip • max 100 MB",
   "rpUploading": "Uploading...",
   "rpMergerTitle": "RP Birleştirici",
-  "rpMergerSubtitle": "4'e kadar kaynak paketi birleştir",
   "rpMergerPriorityHint": "En üstteki paketin en yüksek önceliği var, dosyaları çakışmalarda kazanır.",
   "rpMergerTopBadge": "ÜST",
   "rpMergerAddPacks": "Kaynak paketi ekle",
@@ -1423,12 +1109,7 @@
   "rpMergerFileTypes": ".zip veya .mcpack",
   "rpMergerMerging": "Birleştiriliyor…",
   "rpMergerButton": "{count} paketi birleştir",
-  "rpMergerComplete": "Birleştirme tamamlandı!",
-  "rpMergerConflicts": "{count} çakışma çözüldü: en üstteki paket kazandı.",
-  "rpMergerSetActive": "Etkin kaynak paketi olarak ayarla",
   "rpMergerSetActiveToast": "Etkin kaynak paketi olarak ayarlandı",
-  "rpMergerOpenButton": "Kaynak paketleri birleştir",
-  "rpMergerOpenSubtitle": "2–4 paketi tek pakette birleştir",
   "rpDisabled": "Devre dışı",
   "rpNoPackSelected": "Kaynak paketi seçilmedi",
   "rpActiveOnConnect": "Aktif: bağlanırken uygulanır",
@@ -1439,7 +1120,6 @@
   "rpDropToUpload": "Yüklemek için bırak",
   "rpTabBrowseInfo": "MCCompanion tarafından seçilmiş paketlere göz atın. Anında bir paketi etkinleştirmek için Kullan'a dokunun, yükleme veya bağlantı gerekmez.",
   "rpTabUploadInfo": "Kendi .mcpack veya .zip dosyanızı yükleyin. MCCompanion onu bulutta güvenle saklar ve her bağlandığınızda konsolunuza gönderir.",
-  "rpTabUrlInfo": "Bir .mcpack veya .zip dosyasına doğrudan indirme bağlantısı yapıştırın. URL herkese açık olmalıdır, Discord veya Google Drive bağlantıları kullanılamaz.",
   "rpTabMergeInfo": "2 ila 4 paketi tek bir pakette birleştirin. Birleştirilen paket MCCompanion Cloud'a yüklenir ve otomatik olarak etkinleştirilir.",
   "shareLabel": "Paylaş",
   "sectionMinecraftAccounts": "Minecraft Hesapları",
@@ -1466,18 +1146,10 @@
   "onboardingNavSubtitle": "Gezinme çubuğun için iki özellik seç.",
   "onboardingNavLeftLabel": "SOL DÜĞME",
   "onboardingNavRightLabel": "SAĞ DÜĞME",
-  "onboardingNavPreviewHome": "Ana Sayfa",
   "onboardingNavPreviewConnector": "Bağlayıcı",
   "onboardingNavPreviewProfile": "Profil",
   "onboardingNavPreviewEmpty": "Boş",
-  "onboardingStartTitle": "Başlangıç sayfası",
-  "onboardingStartSubtitle": "Uygulama her açıldığında burası açılır.",
   "onboardingCustomizeDetail": "Ayrıntılı özelleştir →",
-  "startPageHome": "Ana Sayfa",
-  "startPageHomeSubtitle": "Kutucuklu ana ekranı göster",
-  "startPageFeature": "Özellik",
-  "startPageFeatureSubtitle": "Doğrudan belirli bir sayfada aç",
-  "startPageSectionLabel": "BAŞLANGIÇ SAYFASI",
   "rpPackInfo": "Bilgi",
   "@rpPackInfo": {
     "description": "rpPackInfo label"
@@ -1499,10 +1171,6 @@
       }
     }
   },
-  "rpPackDetailTitle": "Paket detayları",
-  "@rpPackDetailTitle": {
-    "description": "rpPackDetailTitle label"
-  },
   "skinsSavedToMySkins": "Skinlerime kaydedildi",
   "skinsDownloadFailed": "İndirme başarısız oldu",
   "skinsDeletedFromCloud": "Buluttan silindi",
@@ -1511,9 +1179,6 @@
   "skinsUploading": "Yükleniyor…",
   "skinUploaded": "Skin yüklendi!",
   "skinUploadFailed": "Yükleme başarısız: {error}",
-  "skinsTabSkins": "Skinler",
-  "skinsTabRecent": "Son",
-  "skinsEmptyCloudSkins": "Henüz bulut skini yok. Burada görmek için bir skin yükleyin.",
   "skinsEmptyLocalSkins": "Henüz skin yok. Başlamak için bir skin oluşturun veya yükleyin.",
   "skinUploadToWebsite": "Web sitesine yükle",
   "skinReuploadToWebsite": "Web sitesine yeniden yükle",
@@ -1521,7 +1186,6 @@
   "skinCloudSaveToDevice": "Cihaza kaydet",
   "skinCloudDelete": "Buluttan sil",
   "skinsTabGallery": "Galeri",
-  "skinsGalleryEmpty": "Henüz topluluk skini yok.",
   "skinsTopLabel": "Top 30",
   "skinsAllLabel": "Tüm Skinler",
   "skinUploadToCloud": "Buluta yükle",
@@ -1656,12 +1320,9 @@
   "feedbackLoginRequiredTitle": "Geri bildirim göndermek için giriş yapın",
   "feedbackLoginRequiredBody": "Geri bildirim, size doğrudan uygulama içinden yanıt verebilmemiz için MCCompanion hesabınıza bağlıdır.",
   "feedbackLoginButton": "Giriş yap",
-  "reportBug": "Geri bildirim",
   "rpBehaviorContentWarning": "Bu paket, sunucularda çalışmayan davranış paketi verileri içeriyor. Dokular yine de çalışacaktır.",
   "rpInvalidPackFormat": "Bu bir Java Edition paketi ve desteklenmiyor. Lütfen Bedrock Edition kaynak paketi kullanın.",
   "supportInboxTitle": "Destek kutusu",
-  "supportInboxSubtitle": "Tüm destek sohbetleri, tüm yöneticilerle paylaşılır",
-  "adminBadge": "Yönetici",
   "skinShareSubject": "Minecraft skini",
   "skinEditorTitle": "Skin düzenleyici",
   "skinToolUndo": "Geri al",
@@ -1690,7 +1351,6 @@
   "supportInboxShared": "Tüm yöneticilerle paylaşılır",
   "supportInboxEmpty": "Henüz destek sohbeti yok",
   "supportReplyingAs": "MCCompanion Support olarak yanıtlıyorsun",
-  "supportReplyHint": "Destek olarak yanıtla…",
   "relayBlocked": "IP adresin veya hesabın MCCompanion tarafından engellendi. Bunun bir hata olduğunu düşünüyorsan Discord'umuza katıl.",
   "relayBlockedWithReason": "IP adresin veya hesabın MCCompanion tarafından engellendi.\nSebep: {reason}\nBunun bir hata olduğunu düşünüyorsan Discord'umuza katıl.",
   "relayConfigFailed": "Relay kurulamadı (durum {code}). Başka bir relay dene ya da Discord'umuza katıl.",
@@ -1719,8 +1379,6 @@
   "notifFeedbackReply": "Geri bildirimine yanıt",
   "adminTicketsHeader": "Bildirimler ve istekler",
   "adminTicketReplyHint": "Bu bilet hakkında yanıtla…",
-  "adminNoTicketsForUser": "Bu kullanıcıdan bilet yok",
-  "undo": "Geri al",
   "chooseServerTitle": "Bir sunucu seç",
   "changeLabel": "Değiştir",
   "howToAutoShow": "Başlatınca bunu göster",
@@ -1740,14 +1398,6 @@
   "shareServerLabel": "Sunucunu paylaş",
   "shareServerOn": "Arkadaşların hangi sunucuda olduğunu görür",
   "shareServerOff": "Arkadaşların oynadığını görür, nerede olduğunu değil",
-  "makeDefaultServer": "Varsayılan sunucu yap",
-  "isDefaultServer": "Varsayılan olarak açılır",
-  "defaultServerSet": "{name} varsayılan olarak açılacak",
-  "labelDirect": "Proxy/Doğrudan",
-  "startDirectMode": "Proxy/Doğrudan modu başlat",
-  "howToDirectTitle": "Proxy/Doğrudan mod",
-  "howToDirectSubtitle": "Sunucularımıza uğramadan oynayın",
-  "howToDirectBody": "Proxy/Doğrudan mod: bağlantı cihazınızın kendisidir.\n1. MCCompanion'ın çalıştığı cihaz ile konsolunuzun aynı yerel ağda olduğundan emin olun.\n2. Bedrock sunucusunun adresini ve bağlantı noktasını girin, ardından \"Proxy/Doğrudan modu başlat\" düğmesine basın.\n3. Konsolda Minecraft → Oyna → Arkadaşlar sekmesini açın ve listeyi yenileyin.\n4. Katılmak için \"MCCompanion\" adlı yerel ağ sunucusunu seçin.\n\nBu mod neden var:\n- Hiçbir şey MCCompanion sunucularından geçmez. Trafiği cihazınız kendisi iletir, bu yüzden aktarıcılarımıza ulaşılamadığında bile çalışmaya devam eder.\n- Oturum açmanız gerekmez.\n\nUnutmayın:\n- Uygulamanın tüm oturum boyunca açık ve ekranda kalması gerekir. Kapatmak veya başka bir uygulamaya geçmek bağlantıyı sonlandırır.\n- Yalnızca Bedrock sunucuları. Java sunucuları için, protokol çevirisini bizim tarafımızda yapan Java modunu kullanın.\n- Pil tüketimi diğer modlara göre daha yüksektir.\n- Kaynak paketleri uygulanmaz. Bunlar bu modun atladığı aktarıcımız üzerinden çalışır.",
   "directHostNotFound": "{host} bulunamadı. Adresi kontrol edip tekrar deneyin.",
   "@directHostNotFound": {
     "placeholders": {
@@ -1757,17 +1407,6 @@
     }
   },
   "directPortBusy": "Yerel bağlantı noktası açılamadı. Önce mevcut bağlantıyı durdurun.",
-  "directServerOfflineTitle": "Sunucu yanıt vermiyor",
-  "directServerOfflineBody": "{target} yanıt vermedi. Çevrimdışı olabilir ya da yalnızca ping'lere yanıt vermiyor olabilir. Tüneli yine de başlatabilirsiniz.",
-  "@directServerOfflineBody": {
-    "placeholders": {
-      "target": {
-        "type": "String"
-      }
-    }
-  },
-  "directStartAnyway": "Yine de başlat",
-  "directNoResourcePack": "Kaynak paketleri Proxy/Doğrudan modda çalışmaz.",
   "directAddressNotSupported": "{host} bir IPv6 adresi. Proxy/Doğrudan mod yalnızca IPv4 destekler. IPv4 adresini veya ana bilgisayar adını kullanın.",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -1819,21 +1458,15 @@
   "serverStatPeak": "Zirve",
   "serverStatUptime": "Çalışma süresi",
   "serverStatVotesMonth": "Bu ayki oylar",
-  "serverStatVotesAllTime": "Toplam oy",
   "serverBadgeFeatured": "Öne çıkan",
   "serverEditionJava": "Java",
   "serverEditionBedrock": "Bedrock",
   "serverEditionCrossplay": "Crossplay",
   "serverSectionMotd": "Günün mesajı",
-  "serverSectionAbout": "Hakkında",
-  "serverSectionCategories": "Kategoriler",
-  "serverSectionVotes": "Oylar",
   "serverLinkDiscord": "Discord",
   "serverLinkWebsite": "Web sitesi",
   "serverVotesThisMonth": "Bu ay",
   "serverVotesAllTime": "Tüm zamanlar",
-  "serverVoteAction": "Bu sunucuya oy ver",
-  "serverPlayAction": "Bu sunucuda oyna",
   "serverVoteSignInRequired": "Uygulamadan oy vermek için giriş yapın.",
   "serverVoteSheetTitle": "{name} için oy ver",
   "serverVoteSheetSubtitle": "Minecraft adınız, sunucu kimi ödüllendireceğini bilsin.",

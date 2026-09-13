@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
+import '../design/design.dart';
 import '../services/support_service.dart';
 import '../services/feedback_service.dart';
 import '../widgets/components/swipe_back.dart';
@@ -116,7 +117,7 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
                   height: 32,
                   decoration: BoxDecoration(
                     color: AppTheme.accent.withValues(alpha: 0.12),
-                    borderRadius: BorderRadius.circular(9),
+                    borderRadius: DsRadius.controlR,
                     border: Border.all(
                       color: AppTheme.accent.withValues(alpha: 0.25),
                     ),
@@ -194,8 +195,8 @@ class _SupportInboxScreenState extends State<SupportInboxScreen> {
           child: _loading
               ? Center(
                   child: CircularProgressIndicator(
-                    strokeWidth: 2,
-                    color: AppTheme.accent,
+                    strokeWidth: 1.8,
+                    color: DsColor.textFaint,
                   ),
                 )
               : entries.isEmpty
@@ -323,7 +324,7 @@ class _FilterButton extends StatelessWidget {
           color: active
               ? AppTheme.accent.withValues(alpha: 0.12)
               : Colors.transparent,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: DsRadius.controlR,
           border: Border.all(
             color: active
                 ? AppTheme.accent.withValues(alpha: 0.35)
@@ -400,7 +401,7 @@ class _SupportConvTile extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         decoration: BoxDecoration(
           color: selected ? AppTheme.surfaceRaised : AppTheme.surface,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: DsRadius.controlR,
           border: Border.all(
             color: selected
                 ? AppTheme.accent
@@ -455,7 +456,7 @@ class _SupportConvTile extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
                 decoration: BoxDecoration(
                   color: AppTheme.accent,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: DsRadius.controlR,
                 ),
                 child: Text(
                   '$unread',
@@ -633,7 +634,7 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
       margin: const EdgeInsets.only(bottom: 8),
       decoration: BoxDecoration(
         color: AppTheme.surfaceCard,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: DsRadius.controlR,
         border: Border.all(color: color.withValues(alpha: 0.25)),
       ),
       clipBehavior: Clip.antiAlias,
@@ -746,8 +747,8 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
                 width: 16,
                 height: 16,
                 child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                  color: AppTheme.accent,
+                  strokeWidth: 1.8,
+                  color: DsColor.textFaint,
                 ),
               ),
             )
@@ -768,7 +769,7 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
                     color: m.fromAdmin
                         ? AppTheme.accent.withValues(alpha: 0.10)
                         : AppTheme.surfaceRaised,
-                    borderRadius: BorderRadius.circular(9),
+                    borderRadius: DsRadius.controlR,
                   ),
                   child: Text(
                     m.body,
@@ -801,11 +802,11 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
                     filled: true,
                     fillColor: AppTheme.background,
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(9),
+                      borderRadius: DsRadius.controlR,
                       borderSide: BorderSide(color: AppTheme.borderDim),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(9),
+                      borderRadius: DsRadius.controlR,
                       borderSide: BorderSide(color: AppTheme.borderDim),
                     ),
                   ),
@@ -850,10 +851,8 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
             right: 16,
           ),
           decoration: BoxDecoration(
-            color: AppTheme.surface,
-            border: Border(
-              bottom: BorderSide(color: AppTheme.borderGray, width: 0.5),
-            ),
+            color: DsColor.surface,
+            border: Border(bottom: BorderSide(color: DsColor.line, width: 0.5)),
           ),
           child: Row(
             children: [
@@ -906,8 +905,8 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
           child: _loading
               ? Center(
                   child: CircularProgressIndicator(
-                    strokeWidth: 2,
-                    color: AppTheme.accent,
+                    strokeWidth: 1.8,
+                    color: DsColor.textFaint,
                   ),
                 )
               : Align(

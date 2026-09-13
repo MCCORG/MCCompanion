@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
+import '../design/design.dart';
 import '../services/feedback_service.dart';
 import '../widgets/components/swipe_back.dart';
 import '../l10n/app_localizations.dart';
@@ -122,7 +123,12 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
           ),
         ),
         body: _tickets == null
-            ? Center(child: CircularProgressIndicator(color: AppTheme.accent))
+            ? Center(
+                child: CircularProgressIndicator(
+                  strokeWidth: 1.8,
+                  color: DsColor.textFaint,
+                ),
+              )
             : _tickets!.isEmpty
             ? Center(
                 child: Padding(
@@ -160,9 +166,9 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
 
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.surface,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppTheme.borderDim),
+        color: DsColor.surface,
+        borderRadius: DsRadius.controlR,
+        border: Border.all(color: DsColor.line),
       ),
       clipBehavior: Clip.antiAlias,
       child: Column(
@@ -228,7 +234,7 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       decoration: BoxDecoration(
                         color: AppTheme.accent,
-                        borderRadius: BorderRadius.circular(9),
+                        borderRadius: DsRadius.controlR,
                       ),
                       child: Text(
                         '${t.unread}',
@@ -285,8 +291,8 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
                   width: 18,
                   height: 18,
                   child: CircularProgressIndicator(
-                    strokeWidth: 2,
-                    color: AppTheme.accent,
+                    strokeWidth: 1.8,
+                    color: DsColor.textFaint,
                   ),
                 ),
               ),
@@ -320,15 +326,15 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
                       vertical: 10,
                     ),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: DsRadius.controlR,
                       borderSide: BorderSide(color: AppTheme.borderDim),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: DsRadius.controlR,
                       borderSide: BorderSide(color: AppTheme.borderDim),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: DsRadius.controlR,
                       borderSide: BorderSide(
                         color: AppTheme.accent.withValues(alpha: 0.5),
                       ),
@@ -344,8 +350,8 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
                         width: 16,
                         height: 16,
                         child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: AppTheme.accent,
+                          strokeWidth: 1.8,
+                          color: DsColor.textFaint,
                         ),
                       )
                     : Icon(
@@ -372,7 +378,7 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
           color: m.fromAdmin
               ? AppTheme.accent.withValues(alpha: 0.10)
               : AppTheme.surfaceCard,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: DsRadius.controlR,
           border: Border.all(
             color: m.fromAdmin
                 ? AppTheme.accent.withValues(alpha: 0.25)

@@ -45,8 +45,7 @@ class DirectoryServer {
   final String? websiteUrl;
   final String? discordUrl;
 
-  String get connectAddress =>
-      port == 19132 ? host : '$host:$port';
+  String get connectAddress => port == 19132 ? host : '$host:$port';
 
   String? get blurb {
     final own = description?.trim();
@@ -59,6 +58,7 @@ class DirectoryServer {
     if (crossplay) return ServerEdition.crossplay;
     return edition == 'java' ? ServerEdition.java : ServerEdition.bedrock;
   }
+
   String? get usefulVersion {
     final clean = version?.trim();
     if (clean == null || clean.isEmpty) return null;

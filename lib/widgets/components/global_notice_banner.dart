@@ -1,7 +1,6 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'app_blur.dart';
-import '../../theme/app_theme.dart';
+
+import '../../design/design.dart';
 
 class GlobalNoticeBanner extends StatefulWidget {
   const GlobalNoticeBanner({
@@ -29,12 +28,12 @@ class _GlobalNoticeBannerState extends State<GlobalNoticeBanner>
   void initState() {
     super.initState();
     _ctrl = AnimationController(
-      duration: const Duration(milliseconds: 400),
+      duration: const Duration(milliseconds: 320),
       vsync: this,
     )..forward();
     _fade = CurvedAnimation(parent: _ctrl, curve: Curves.easeOut);
     _slide = Tween<Offset>(
-      begin: const Offset(0, -1.0),
+      begin: const Offset(0, -0.4),
       end: Offset.zero,
     ).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOutCubic));
   }
@@ -50,86 +49,79 @@ class _GlobalNoticeBannerState extends State<GlobalNoticeBanner>
     widget.onDismiss();
   }
 
-  Color get _accentColor => switch (widget.type) {
-    'warning' => Colors.orange,
-    'danger' => Colors.redAccent,
-    _ => AppTheme.primaryAccent,
+  Color get _accent => switch (widget.type) {
+    'warning' => DsColor.warning,
+    'danger' => DsColor.danger,
+    _ => DsColor.info,
+  };
+
+  IconData get _icon => switch (widget.type) {
+    'warning' => Icons.warning_amber_rounded,
+    'danger' => Icons.error_outline_rounded,
+    _ => Icons.info_outline_rounded,
   };
 
   @override
   Widget build(BuildContext context) {
-    final accentColor = _accentColor;
+    final accent = _accent;
 
     return FadeTransition(
       opacity: _fade,
       child: SlideTransition(
         position: _slide,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(
-                sigmaX: AppBlur.sigmaFor(12),
-                sigmaY: AppBlur.sigmaFor(12),
-              ),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.05),
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(
-                    color: Colors.white.withValues(alpha: 0.12),
-                    width: 1,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: accentColor.withValues(alpha: 0.1),
-                      blurRadius: 20,
-                      spreadRadius: -5,
-                    ),
-                  ],
+          padding: const EdgeInsets.fromLTRB(
+            DsSpace.lg,
+            DsSpace.sm,
+            DsSpace.lg,
+            0,
+          ),
+          child: Container(
+            decoration: BoxDecoration(
+              color: DsColor.surface,
+              borderRadius: DsRadius.cardR,
+              border: Border.all(color: DsColor.tint(accent, 0.35)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.18),
+                  blurRadius: 18,
+                  offset: const Offset(0, 6),
                 ),
-                child: IntrinsicHeight(
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 4,
-                        margin: const EdgeInsets.symmetric(
-                          vertical: 12,
-                          horizontal: 8,
-                        ),
-                        decoration: BoxDecoration(
-                          color: accentColor.withValues(alpha: 0.8),
-                          borderRadius: BorderRadius.circular(2),
-                        ),
-                      ),
-                      const SizedBox(width: 4),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          child: Text(
-                            widget.message,
-                            style: TextStyle(
-                              color: Colors.white.withValues(alpha: 0.9),
-                              fontSize: 13,
-                              fontWeight: FontWeight.w500,
-                              letterSpacing: 0.2,
-                            ),
-                          ),
-                        ),
-                      ),
-                      IconButton(
-                        icon: Icon(
-                          Icons.close_rounded,
-                          size: 18,
-                          color: Colors.white.withValues(alpha: 0.4),
-                        ),
-                        onPressed: _dismiss,
-                      ),
-                    ],
+              ],
+            ),
+            padding: const EdgeInsets.fromLTRB(
+              DsSpace.md,
+              DsSpace.md,
+              DsSpace.sm,
+              DsSpace.md,
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: 28,
+                  height: 28,
+                  decoration: BoxDecoration(
+                    color: DsColor.tint(accent, 0.14),
+                    borderRadius: DsRadius.controlR,
+                  ),
+                  child: Icon(_icon, size: 16, color: accent),
+                ),
+                const SizedBox(width: DsSpace.md),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 4),
+                    child: Text(widget.message, style: DsType.label),
                   ),
                 ),
-              ),
+                const SizedBox(width: DsSpace.sm),
+                DsIconButton(
+                  icon: Icons.close_rounded,
+                  size: 28,
+                  color: DsColor.textFaint,
+                  onPressed: _dismiss,
+                ),
+              ],
             ),
           ),
         ),

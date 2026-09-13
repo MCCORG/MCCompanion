@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
+import '../../theme/app_tokens.dart';
 
 class RpTabInfoBox extends StatelessWidget {
   final String text;
@@ -11,7 +12,7 @@ class RpTabInfoBox extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
       decoration: BoxDecoration(
         color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: AppRadius.small,
         border: Border.all(color: AppTheme.borderGray),
       ),
       child: Row(
@@ -22,7 +23,11 @@ class RpTabInfoBox extends StatelessWidget {
           Expanded(
             child: Text(
               text,
-              style: TextStyle(color: AppTheme.textSecondary, fontSize: 12, height: 1.5),
+              style: TextStyle(
+                color: AppTheme.textSecondary,
+                fontSize: 12,
+                height: 1.5,
+              ),
             ),
           ),
         ],

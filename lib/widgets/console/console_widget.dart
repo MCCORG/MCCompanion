@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../l10n/app_localizations.dart';
-import '../../theme/app_theme.dart';
+import '../../design/design.dart';
 import '../../services/theme_service.dart';
 
 enum _LogLevel { error, warn, info, debug, plain }
@@ -14,10 +14,10 @@ _LogLevel _levelOf(String log) {
 }
 
 Color _levelColor(_LogLevel level) => switch (level) {
-  _LogLevel.error => AppTheme.error,
-  _LogLevel.warn => AppTheme.warning,
-  _LogLevel.info => AppTheme.info,
-  _LogLevel.debug => AppTheme.success,
+  _LogLevel.error => DsColor.danger,
+  _LogLevel.warn => DsColor.warning,
+  _LogLevel.info => DsColor.info,
+  _LogLevel.debug => DsColor.success,
   _LogLevel.plain => const Color(0xFF8B9099),
 };
 
@@ -103,27 +103,11 @@ class _EmptyConsole extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final text = ThemeService.instance.textPrimary;
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.terminal_rounded,
-            size: 32,
-            color: text.withValues(alpha: 0.08),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            loc.noLogsYet,
-            style: TextStyle(color: text.withValues(alpha: 0.20), fontSize: 13),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            loc.startBroadcastingToSeeOutput,
-            style: TextStyle(color: text.withValues(alpha: 0.10), fontSize: 11),
-          ),
-        ],
+      child: DsEmptyState(
+        icon: Icons.terminal_rounded,
+        title: loc.noLogsYet,
+        message: loc.startBroadcastingToSeeOutput,
       ),
     );
   }
@@ -169,11 +153,11 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
           height: _expanded ? 380 : 52,
           decoration: BoxDecoration(
             color: Color.lerp(bg, Colors.black, 0.25)!.withValues(alpha: 0.85),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: DsRadius.cardR,
             border: Border.all(color: text.withValues(alpha: 0.07)),
           ),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: DsRadius.cardR,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -203,15 +187,15 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
             Container(
               padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
-                color: AppTheme.primaryAccent.withValues(alpha: 0.12),
-                borderRadius: BorderRadius.circular(8),
+                color: DsColor.accent.withValues(alpha: 0.12),
+                borderRadius: DsRadius.controlR,
                 border: Border.all(
-                  color: AppTheme.primaryAccent.withValues(alpha: 0.2),
+                  color: DsColor.accent.withValues(alpha: 0.2),
                 ),
               ),
               child: Icon(
                 Icons.terminal_rounded,
-                color: AppTheme.primaryAccent,
+                color: DsColor.accent,
                 size: 14,
               ),
             ),
@@ -261,7 +245,7 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
                     ? Icons.bug_report_rounded
                     : Icons.bug_report_outlined,
                 color: widget.debugEnabled
-                    ? AppTheme.success
+                    ? DsColor.success
                     : text.withValues(alpha: 0.3),
                 tooltip: loc.toggleDebug,
                 onTap: widget.onToggleDebug,
@@ -316,15 +300,14 @@ class _ConsoleWidgetState extends State<ConsoleWidget> {
     required Color color,
     required String tooltip,
     required VoidCallback onTap,
-  }) => Tooltip(
-    message: tooltip,
-    child: InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(8),
-      child: Padding(
-        padding: const EdgeInsets.all(6),
-        child: Icon(icon, size: 15, color: color),
-      ),
+  }) => Padding(
+    padding: const EdgeInsets.only(left: DsSpace.sm - 2),
+    child: DsIconButton(
+      icon: icon,
+      size: 34,
+      color: color,
+      tooltip: tooltip,
+      onPressed: onTap,
     ),
   );
 }
@@ -352,9 +335,7 @@ class ConsoleDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
-    final bg = ThemeService.instance.background;
-    final text = ThemeService.instance.textPrimary;
-    final darkBg = Color.lerp(bg, Colors.black, 0.35)!;
+    final darkBg = Color.lerp(DsColor.bg, Colors.black, 0.35)!;
 
     return Material(
       color: darkBg,
@@ -368,64 +349,53 @@ class ConsoleDialog extends StatelessWidget {
                 height: 56,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
-                  color: text.withValues(alpha: 0.04),
-                  border: Border(
-                    bottom: BorderSide(color: text.withValues(alpha: 0.07)),
-                  ),
+                  color: DsColor.surface,
+                  border: Border(bottom: BorderSide(color: DsColor.line)),
                 ),
                 child: Row(
                   children: [
                     Container(
                       padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
-                        color: AppTheme.primaryAccent.withValues(alpha: 0.12),
-                        borderRadius: BorderRadius.circular(8),
+                        color: DsColor.accent.withValues(alpha: 0.12),
+                        borderRadius: DsRadius.controlR,
                         border: Border.all(
-                          color: AppTheme.primaryAccent.withValues(alpha: 0.2),
+                          color: DsColor.accent.withValues(alpha: 0.2),
                         ),
                       ),
                       child: Icon(
                         Icons.terminal_rounded,
-                        color: AppTheme.primaryAccent,
+                        color: DsColor.accent,
                         size: 14,
                       ),
                     ),
                     const SizedBox(width: 10),
                     Expanded(
-                      child: Text(
-                        loc.consoleOutput,
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                          color: text.withValues(alpha: 0.9),
-                        ),
-                      ),
+                      child: Text(loc.consoleOutput, style: DsType.heading),
                     ),
                     _iconBtn(
                       icon: debugEnabled
                           ? Icons.bug_report_rounded
                           : Icons.bug_report_outlined,
-                      color: debugEnabled
-                          ? AppTheme.success
-                          : text.withValues(alpha: 0.3),
+                      color: debugEnabled ? DsColor.success : DsColor.textFaint,
                       tooltip: loc.toggleDebug,
                       onTap: onToggleDebug,
                     ),
                     _iconBtn(
                       icon: Icons.copy_outlined,
-                      color: text.withValues(alpha: 0.3),
+                      color: DsColor.textFaint,
                       tooltip: loc.copyLogs,
                       onTap: onCopyLogs,
                     ),
                     _iconBtn(
                       icon: Icons.delete_outline_rounded,
-                      color: text.withValues(alpha: 0.3),
+                      color: DsColor.textFaint,
                       tooltip: loc.clear,
                       onTap: onClearLogs,
                     ),
                     _iconBtn(
                       icon: Icons.close_rounded,
-                      color: text.withValues(alpha: 0.5),
+                      color: DsColor.textSoft,
                       tooltip: loc.close,
                       onTap: onClose,
                     ),
@@ -459,15 +429,14 @@ class ConsoleDialog extends StatelessWidget {
     required Color color,
     required String tooltip,
     required VoidCallback onTap,
-  }) => Tooltip(
-    message: tooltip,
-    child: InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(8),
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Icon(icon, size: 16, color: color),
-      ),
+  }) => Padding(
+    padding: const EdgeInsets.only(left: DsSpace.sm - 2),
+    child: DsIconButton(
+      icon: icon,
+      size: 34,
+      color: color,
+      tooltip: tooltip,
+      onPressed: onTap,
     ),
   );
 }

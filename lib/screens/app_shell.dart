@@ -14,20 +14,19 @@ import '../services/push_notification_service.dart';
 import '../constants/app_constants.dart';
 import '../widgets/console/console_widget.dart';
 import '../widgets/navigation/bottom_nav_bar.dart';
-import '../widgets/navigation/howto_menu.dart';
-import '../widgets/navigation/help_menu.dart';
 import '../widgets/navigation/info_menu.dart';
-import '../widgets/dialogs/howto_dialogs.dart';
-import '../widgets/dialogs/help_dialogs.dart';
+import '../widgets/navigation/app_sidebar.dart';
+import '../widgets/featured_server_banner.dart';
 import '../util/logger.dart';
 import '../util/partners_servers.dart';
 import '../services/partners_servers_service.dart';
 import '../l10n/app_localizations.dart';
 import '../services/user_service.dart';
 import 'my_feedback_screen.dart';
-import 'landing_screen.dart';
 import '../widgets/landing/landing_customize_sheet.dart';
 import 'connector_screen.dart';
+import 'how_to_screen.dart';
+import 'support_screen.dart';
 import 'skins_screen.dart';
 import 'server_list_screen.dart';
 import 'player_lookup_screen.dart';
@@ -42,21 +41,32 @@ import '../services/subscription_service.dart';
 import '../services/home_customization_service.dart';
 import '../services/theme_service.dart';
 import '../theme/app_theme.dart';
+import '../services/notification_service.dart';
+import '../design/design.dart';
+import '../desktop/desktop_nav.dart';
+import '../desktop/desktop_server_list.dart';
+import '../desktop/desktop_status_panel.dart';
 import '../widgets/components/app_toast.dart';
+import '../widgets/components/swipe_back.dart';
+import '../widgets/components/global_notice_banner.dart';
+import '../widgets/components/update_banner.dart';
 import '../widgets/onboarding/onboarding_wizard.dart';
 import 'package:flutter/services.dart';
 
-const int _pageHome = 0;
-const int _pageConnector = 1;
-const int _pagePartners = 2;
-const int _pageManageServers = 3;
-const int _pageAddEditServer = 4;
-const int _pageSkins = 5;
-const int _pageProfile = 6;
-const int _pagePlayerLookup = 7;
-const int _pageServerTracker = 8;
-const int _pageFeedback = 9;
-const int _pageResourcePack = 10;
+const int _pageConnector = 0;
+const int _pageHome = _pageConnector;
+const int _pagePartners = 1;
+const int _pageManageServers = 2;
+const int _pageAddEditServer = 3;
+const int _pageSkins = 4;
+const int _pageProfile = 5;
+const int _pagePlayerLookup = 6;
+const int _pageServerTracker = 7;
+const int _pageFeedback = 8;
+const int _pageResourcePack = 9;
+const int _pageHowTo = 10;
+const int _pageSupport = 11;
+const int _pageCustomize = 12;
 
 class AppShell extends StatefulWidget {
   final RelaySelection? initialRelay;
@@ -90,6 +100,9 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
 
   late RelaySelection _selectedRelay;
   final ValueNotifier<int> _pageIndexNotifier = ValueNotifier(_pageHome);
+  HowToKind? _howToKind;
+  Map<String, String>? _notice;
+  Timer? _noticeTimer;
   int get _pageIndex => _pageIndexNotifier.value;
   final Set<int> _builtPages = {};
 
@@ -116,6 +129,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
 
     logger = Logger(debugEnabled: false, logCallback: (_) {});
     _initNavigationController();
+    unawaited(_fetchNotice());
 
     _authSub = AuthService.userStream.listen((user) {
       if (user != null) {
@@ -172,30 +186,22 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   }
 
   void _goToStartPage() {
-    final svc = HomeCustomizationService.instance;
-    if (svc.useLandingAsStart) {
-      _goTo(_pageHome);
-    } else {
-      _goTo(_pageIndexFor(svc.startPage));
-    }
+    _goTo(_pageConnector);
   }
 
   void _showCustomizeSheet() {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (_) => LandingCustomizeSheet(callbackFor: _navCallbackFor),
-    );
+    _goTo(_pageCustomize);
   }
 
-  int _pageIndexFor(AppFeature feature) => switch (feature) {
-    AppFeature.connector => _pageConnector,
-    AppFeature.skins => _pageSkins,
-    AppFeature.partners => _pagePartners,
-    AppFeature.lookup => _pagePlayerLookup,
-    AppFeature.tracker => _pageServerTracker,
-  };
+  Future<void> _fetchNotice() async {
+    final notice = await NotificationService.fetchNotice();
+    if (!mounted || notice == null) return;
+    setState(() => _notice = notice);
+    _noticeTimer?.cancel();
+    _noticeTimer = Timer(const Duration(seconds: 20), () {
+      if (mounted) setState(() => _notice = null);
+    });
+  }
 
   void _onCustomizationChanged() {
     if (mounted) setState(() {});
@@ -307,8 +313,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       toggleDebugCallback: _toggleDebug,
       clearLogsCallback: _clearLogs,
       copyLogsCallback: _copyLogs,
-      showHowToMenuCallback: (_) => _showHowToSheet(),
-      showHelpMenuCallback: (_) => _showHelpSheet(),
     );
   }
 
@@ -324,64 +328,12 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   }
 
   void _showHowToSheet() {
-    final loc = AppLocalizations.of(context)!;
-    _showSheet(
-      HowToSheetContent(
-        loc: loc,
-        onClose: () => Navigator.of(context).pop(),
-        onXbox: () {
-          Navigator.of(context).pop();
-          HowToDialogs.showXboxInstructions(context);
-        },
-        onNintendo: () {
-          Navigator.of(context).pop();
-          HowToDialogs.showNintendoInstructions(
-            context,
-            relayName: _selectedRelay.name,
-            relayIp: _selectedRelay.ip,
-          );
-        },
-        onFriends: () {
-          Navigator.of(context).pop();
-          HowToDialogs.showFriendsInstructions(
-            context,
-            userRegion: _selectedRelay.name.toLowerCase().contains('eu')
-                ? 'eu'
-                : 'us',
-          );
-        },
-        onDirect: () {
-          Navigator.of(context).pop();
-          HowToDialogs.showDirectInstructions(context);
-        },
-      ),
-    );
+    setState(() => _howToKind = null);
+    _goTo(_pageHowTo);
   }
 
   void _showHelpSheet() {
-    final loc = AppLocalizations.of(context)!;
-    _showSheet(
-      HelpSheetContent(
-        loc: loc,
-        onClose: () => Navigator.of(context).pop(),
-        onMCCompanion: () {
-          Navigator.of(context).pop();
-          HelpDialogs.showMCCompanionNotAppearing(context);
-        },
-        onMultiplayerFailed: () {
-          Navigator.of(context).pop();
-          HelpDialogs.showMultiplayerConnectionFailed(context);
-        },
-        onNintendoDns: () {
-          Navigator.of(context).pop();
-          HelpDialogs.showNintendoDns(context);
-        },
-        onFriendsMode: () {
-          Navigator.of(context).pop();
-          HelpDialogs.showFriendsMode(context);
-        },
-      ),
-    );
+    _goTo(_pageSupport);
   }
 
   void _showInfoSheet() {
@@ -443,8 +395,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     });
   }
 
-
-
   void _goTo(int page) {
     _desktopNavKey.currentState?.popUntil((r) => r.isFirst);
     if (page == _pageConnector) {
@@ -453,7 +403,10 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     if (page == _pageSkins) {
       _skinsKey.currentState?.refresh();
     }
-    setState(() => _pageIndex = page);
+    setState(() {
+      _pageIndex = page;
+      _topBarOffset = 0;
+    });
   }
 
   void _openManageServers() => _goTo(_pageManageServers);
@@ -505,8 +458,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
 
   String? get _activeNavItem {
     switch (_pageIndex) {
-      case _pageHome:
-        return 'home';
       case _pageConnector:
         return 'connector';
       case _pageSkins:
@@ -551,6 +502,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     HomeCustomizationService.instance.removeListener(_onCustomizationChanged);
     ThemeService.instance.removeListener(_onCustomizationChanged);
     WidgetsBinding.instance.removeObserver(this);
+    _noticeTimer?.cancel();
     RelayService.selection.removeListener(_onRelayServiceChanged);
     _authSub?.cancel();
     _linkSub?.cancel();
@@ -583,28 +535,111 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   Widget _buildBackground() =>
       Positioned.fill(child: ColoredBox(color: AppTheme.background));
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  double _topBarOffset = 0;
+
+  bool _onPageScroll(ScrollNotification notification) {
+    if (notification.metrics.axis != Axis.vertical) return false;
+    if (notification is! ScrollUpdateNotification) return false;
+
+    final delta = notification.scrollDelta ?? 0;
+    if (delta == 0) return false;
+
+    final next = (_topBarOffset - delta).clamp(-AppTopBar.height, 0.0);
+    if (next != _topBarOffset) setState(() => _topBarOffset = next);
+    return false;
+  }
+
+  List<AppSidebarSection> _sidebarSections() {
+    final l = AppLocalizations.of(context)!;
+    return [
+      AppSidebarSection(
+        title: l.sectionSettings,
+        entries: [
+          AppSidebarEntry(
+            icon: const Icon(Icons.tune_rounded),
+            label: l.customizeLabel,
+            onTap: _showCustomizeSheet,
+          ),
+          AppSidebarEntry(
+            icon: const Icon(Icons.translate_rounded),
+            label: l.changeLanguage,
+            onTap: () => navigationController.showLanguageDialog(context),
+          ),
+        ],
+      ),
+      AppSidebarSection(
+        title: l.sectionHelp,
+        entries: [
+          AppSidebarEntry(
+            icon: const Icon(Icons.lightbulb_outline_rounded),
+            label: l.howToUseMenu,
+            onTap: _showHowToSheet,
+          ),
+          AppSidebarEntry(
+            icon: const Icon(Icons.help_outline_rounded),
+            label: l.support,
+            onTap: _showHelpSheet,
+          ),
+          AppSidebarEntry(
+            icon: const FaIcon(FontAwesomeIcons.bug),
+            label: l.feedbackTileTitle,
+            onTap: () => _goTo(_pageFeedback),
+          ),
+        ],
+      ),
+      AppSidebarSection(
+        title: l.sectionAdvanced,
+        entries: [
+          AppSidebarEntry(
+            icon: const Icon(Icons.settings_ethernet_rounded),
+            label: l.relay,
+            onTap: _showMoreSheet,
+          ),
+        ],
+      ),
+      AppSidebarSection(
+        title: l.aboutSectionLabel,
+        entries: [
+          AppSidebarEntry(
+            icon: const Icon(Icons.language_rounded),
+            label: l.website,
+            onTap: () => navigationController.openWebsite(context),
+          ),
+          AppSidebarEntry(
+            icon: const FaIcon(FontAwesomeIcons.discord),
+            label: l.discord,
+            onTap: () => navigationController.openDiscord(context),
+          ),
+          AppSidebarEntry(
+            icon: const Icon(Icons.info_outline_rounded),
+            label: l.info,
+            onTap: _showInfoSheet,
+          ),
+        ],
+      ),
+    ];
+  }
+
+  Widget _withHero(Widget child) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        FeaturedServerBanner(
+          partnerServersFuture: _partnerServersFuture,
+          ipController: _ipController,
+          portController: _portController,
+          onSelected: () => _goTo(_pageConnector),
+        ),
+        Divider(height: 1, thickness: 1, color: AppTheme.borderDim),
+        Expanded(child: child),
+      ],
+    );
+  }
+
   Widget _buildPageStack() {
     final pages = <Widget>[
-      LandingScreen(
-        onGoToConnector: () => _goTo(_pageConnector),
-        onGoToSkins: () => _goTo(_pageSkins),
-        onGoToPartners: () => _goTo(_pagePartners),
-        onGoToPlayerLookup: () => _goTo(_pagePlayerLookup),
-        onGoToServerTracker: () => _goTo(_pageServerTracker),
-        onGoToFeedback: () => _goTo(_pageFeedback),
-        onWebsiteTap: () => navigationController.openWebsite(context),
-        onDiscordTap: () => navigationController.openDiscord(context),
-        onLanguageTap: () => navigationController.showLanguageDialog(context),
-        onInfoTap: () => _showInfoSheet(),
-        partnerServersFuture: _partnerServersFuture,
-        ipController: _ipController,
-        portController: _portController,
-        onPlayServer: (ip, port) {
-          _ipController.text = ip;
-          _portController.text = port.toString();
-          _goTo(_pageConnector);
-        },
-      ),
       HomeScreen(
         key: _connectorKey,
         selectedRelay: _selectedRelay,
@@ -632,12 +667,21 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       ),
       // The paid placements still lead this list, they are just no longer the
       // whole of it: this is the same directory the website shows.
-      ServerListScreen(
-        ipController: _ipController,
-        portController: _portController,
-        onBack: () => _goTo(_pageHome),
-        onPlay: () => _goTo(_pageConnector),
-      ),
+      if (_isDesktop)
+        DesktopServerListScreen(
+          onPlay: (server) {
+            _ipController.text = server.host;
+            _portController.text = server.port.toString();
+            _goTo(_pageConnector);
+          },
+        )
+      else
+        ServerListScreen(
+          ipController: _ipController,
+          portController: _portController,
+          onBack: () => _goTo(_pageHome),
+          onPlay: () => _goTo(_pageConnector),
+        ),
       ManageServersScreen(
         key: _manageServersKey,
         onBack: () => _goTo(_pageConnector),
@@ -668,13 +712,15 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
           }
         },
       ),
-      PlayerLookupScreen(onBack: () => _goTo(_pageHome)),
-      ServerTrackerScreen(
-        onBack: () => _goTo(_pageHome),
-        onGoToLogin: () {
-          _loginFromTracker = true;
-          _goTo(_pageProfile);
-        },
+      _withHero(PlayerLookupScreen(onBack: () => _goTo(_pageHome))),
+      _withHero(
+        ServerTrackerScreen(
+          onBack: () => _goTo(_pageHome),
+          onGoToLogin: () {
+            _loginFromTracker = true;
+            _goTo(_pageProfile);
+          },
+        ),
       ),
       FeedbackScreen(
         onBack: () => _goTo(_pageHome),
@@ -685,6 +731,26 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
           _connectorKey.currentState?.reloadResourcePackUrl();
           _goTo(_pageConnector);
         },
+      ),
+      HowToScreen(
+        kind: _howToKind,
+        onBack: () => _goTo(_pageConnector),
+        relayName: _selectedRelay.name,
+        relayIp: _selectedRelay.ip,
+        userRegion: _selectedRelay.name.toLowerCase().contains('eu')
+            ? 'eu'
+            : 'us',
+      ),
+      SupportScreen(
+        onBack: () => _goTo(_pageConnector),
+        onFeedback: () => _goTo(_pageFeedback),
+      ),
+      SwipeBack(
+        onBack: () => _goTo(_pageConnector),
+        child: LandingCustomizeSheet(
+          callbackFor: _navCallbackFor,
+          onClose: () => _goTo(_pageConnector),
+        ),
       ),
     ];
 
@@ -721,28 +787,41 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       children: [
         _buildBackground(),
         Scaffold(
+          key: _scaffoldKey,
           backgroundColor: Colors.transparent,
+          drawer: AppSidebar(sections: _sidebarSections()),
           bottomNavigationBar: BottomGlassSimpleNavBar(
             navigationController: navigationController,
             dark: true,
             selectedRelayIp: _selectedRelay.ip,
             onRelayChanged: _onRelayChanged,
             activeItem: _activeNavItem,
-            onHomeTap: () => _goTo(_pageHome),
             onConnectorTap: () => _goTo(_pageConnector),
             onProfileTap: () {
               _loginFromTracker = false;
               _loginFromRp = false;
               _goTo(_pageProfile);
             },
+            navFarFeature: svc.navFar,
+            navOuterFeature: svc.navOuter,
             navLeftFeature: svc.navLeft,
             navRightFeature: svc.navRight,
+            onNavFarTap: svc.navFar != null
+                ? _navCallbackFor(svc.navFar!)
+                : null,
+            onNavOuterTap: svc.navOuter != null
+                ? _navCallbackFor(svc.navOuter!)
+                : null,
             onNavLeftTap: svc.navLeft != null
                 ? _navCallbackFor(svc.navLeft!)
                 : null,
             onNavRightTap: svc.navRight != null
                 ? _navCallbackFor(svc.navRight!)
                 : null,
+            navFarActive:
+                svc.navFar != null && _isNavFeatureActive(svc.navFar!),
+            navOuterActive:
+                svc.navOuter != null && _isNavFeatureActive(svc.navOuter!),
             navLeftActive:
                 svc.navLeft != null && _isNavFeatureActive(svc.navLeft!),
             navRightActive:
@@ -751,10 +830,56 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
           body: Stack(
             children: [
               SafeArea(
-                top: _pageIndex != _pageHome && _pageIndex != _pageConnector,
                 bottom: false,
-                child: _buildPageStack(),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    ClipRect(
+                      child: SizedBox(
+                        height: AppTopBar.height + _topBarOffset,
+                        child: OverflowBox(
+                          alignment: Alignment.topCenter,
+                          minHeight: AppTopBar.height,
+                          maxHeight: AppTopBar.height,
+                          child: AppTopBar(
+                            onMenu: () =>
+                                _scaffoldKey.currentState?.openDrawer(),
+                            profileActive: _pageIndex == _pageProfile,
+                            onProfile: () {
+                              _loginFromTracker = false;
+                              _loginFromRp = false;
+                              _goTo(_pageProfile);
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                    const UpdateBanner(),
+                    Expanded(
+                      child: NotificationListener<ScrollNotification>(
+                        onNotification: _onPageScroll,
+                        child: _buildPageStack(),
+                      ),
+                    ),
+                  ],
+                ),
               ),
+              if (_notice != null)
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  child: SafeArea(
+                    child: GlobalNoticeBanner(
+                      message: _notice!['message']!,
+                      type: _notice!['type'] ?? 'info',
+                      onDismiss: () {
+                        _noticeTimer?.cancel();
+                        setState(() => _notice = null);
+                      },
+                    ),
+                  ),
+                ),
               _buildConsoleOverlay(),
             ],
           ),
@@ -797,230 +922,153 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
           backgroundColor: Colors.transparent,
           body: Row(
             children: [
-              _DesktopSidebar(
-                activeItem: _activeNavItem,
-                onHomeTap: () => _goTo(_pageHome),
-                onConnectorTap: () => _goTo(_pageConnector),
-                onSkinsTap: () => _goTo(_pageSkins),
-                onPartnersTap: () => _goTo(_pagePartners),
-                onLookupTap: () => _goTo(_pagePlayerLookup),
-                onTrackerTap: () => _goTo(_pageServerTracker),
-                onProfileTap: () {
-                  _loginFromTracker = false;
-                  _loginFromRp = false;
-                  _goTo(_pageProfile);
-                },
-                onFeedbackTap: () => _goTo(_pageFeedback),
-                onHelpTap: () => _showHelpSheet(),
-                onHowToTap: () => _showHowToSheet(),
+              DesktopNav(
+                activeId: _activeNavItem,
+                primary: [
+                  DesktopNavEntry(
+                    id: 'connector',
+                    icon: Icons.play_arrow_rounded,
+                    label: loc.featureLabelConnector,
+                    onTap: () => _goTo(_pageConnector),
+                  ),
+                  DesktopNavEntry(
+                    id: 'partners',
+                    icon: Icons.dns_rounded,
+                    label: loc.featureLabelPartners,
+                    onTap: () => _goTo(_pagePartners),
+                  ),
+                  DesktopNavEntry(
+                    id: 'tracker',
+                    icon: Icons.monitor_heart_rounded,
+                    label: loc.featureLabelTracker,
+                    onTap: () => _goTo(_pageServerTracker),
+                  ),
+                  DesktopNavEntry(
+                    id: 'skins',
+                    icon: Icons.checkroom_rounded,
+                    label: loc.featureLabelSkins,
+                    onTap: () => _goTo(_pageSkins),
+                  ),
+                  DesktopNavEntry(
+                    id: 'lookup',
+                    icon: Icons.search_rounded,
+                    label: loc.featureLabelLookup,
+                    onTap: () => _goTo(_pagePlayerLookup),
+                  ),
+                ],
+                secondary: [
+                  DesktopNavEntry(
+                    id: 'support',
+                    icon: Icons.help_outline_rounded,
+                    label: loc.support,
+                    onTap: () => _goTo(_pageSupport),
+                  ),
+                  DesktopNavEntry(
+                    id: 'howto',
+                    icon: Icons.lightbulb_outline_rounded,
+                    label: loc.howToUseMenu,
+                    onTap: _showHowToSheet,
+                  ),
+                  DesktopNavEntry(
+                    id: 'customize',
+                    icon: Icons.tune_rounded,
+                    label: loc.customizeLabel,
+                    onTap: () => _goTo(_pageCustomize),
+                  ),
+                  DesktopNavEntry(
+                    id: 'feedback',
+                    icon: Icons.chat_bubble_outline_rounded,
+                    label: loc.feedbackTileTitle,
+                    onTap: () => _goTo(_pageFeedback),
+                  ),
+                ],
+                footer: DsButton(
+                  label: loc.navProfile,
+                  icon: Icons.person_rounded,
+                  tone: DsButtonTone.neutral,
+                  expand: true,
+                  onPressed: () {
+                    _loginFromTracker = false;
+                    _loginFromRp = false;
+                    _goTo(_pageProfile);
+                  },
+                ),
               ),
-              VerticalDivider(width: 1, color: AppTheme.borderGray),
               Expanded(
-                child: ClipRect(
-                  child: Stack(
-                    children: [
-                      Navigator(
-                        key: _desktopNavKey,
-                        onGenerateRoute: (settings) => MaterialPageRoute(
-                          settings: settings,
-                          builder: (_) => ValueListenableBuilder<int>(
-                            valueListenable: _pageIndexNotifier,
-                            builder: (_, _, _) => _buildPageStack(),
+                child: Column(
+                  children: [
+                    const UpdateBanner(),
+                    Expanded(
+                      child: ClipRect(
+                        child: Navigator(
+                          key: _desktopNavKey,
+                          onGenerateRoute: (settings) => MaterialPageRoute(
+                            settings: settings,
+                            builder: (_) => ValueListenableBuilder<int>(
+                              valueListenable: _pageIndexNotifier,
+                              builder: (_, _, _) => _buildPageStack(),
+                            ),
                           ),
                         ),
                       ),
-                      _buildConsoleOverlay(),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
+              ),
+              ValueListenableBuilder<bool>(
+                valueListenable: navigationController.consoleOpen,
+                builder: (_, consoleOpen, _) {
+                  final broadcasting =
+                      _connectorKey.currentState?.isBroadcasting ?? false;
+                  if (!consoleOpen && !broadcasting) {
+                    return const SizedBox.shrink();
+                  }
+                  return DesktopStatusPanel(
+                    broadcasting: broadcasting,
+                    serverName: _ipController.text.trim().isEmpty
+                        ? null
+                        : _ipController.text.trim(),
+                    serverAddress: _portController.text.trim().isEmpty
+                        ? null
+                        : '${_ipController.text.trim()}:'
+                              '${_portController.text.trim()}',
+                    modeLabel: loc.labelXbox,
+                    relayLabel: _selectedRelay.name,
+                    logsNotifier: _logsNotifier,
+                    logsScrollController: _logScrollController,
+                    debugEnabledNotifier: _debugEnabledNotifier,
+                    onToggleDebug: _toggleDebug,
+                    onClearLogs: _clearLogs,
+                    onCopyLogs: _copyLogs,
+                  );
+                },
               ),
             ],
           ),
         ),
-      ],
-    );
-  }
-}
-
-class _DesktopSidebar extends StatelessWidget {
-  final String? activeItem;
-  final VoidCallback onHomeTap;
-  final VoidCallback onConnectorTap;
-  final VoidCallback onSkinsTap;
-  final VoidCallback onPartnersTap;
-  final VoidCallback onLookupTap;
-  final VoidCallback onTrackerTap;
-  final VoidCallback onProfileTap;
-  final VoidCallback onFeedbackTap;
-  final VoidCallback onHelpTap;
-  final VoidCallback onHowToTap;
-
-  const _DesktopSidebar({
-    required this.activeItem,
-    required this.onHomeTap,
-    required this.onConnectorTap,
-    required this.onSkinsTap,
-    required this.onPartnersTap,
-    required this.onLookupTap,
-    required this.onTrackerTap,
-    required this.onProfileTap,
-    required this.onFeedbackTap,
-    required this.onHelpTap,
-    required this.onHowToTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context)!;
-    return Container(
-      width: 200,
-      color: Colors.transparent,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 10, 10, 8),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.asset(
-                'assets/images/logo.png',
-                width: double.infinity,
-                fit: BoxFit.fitWidth,
-              ),
-            ),
-          ),
-          const SizedBox(height: 4),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  _SidebarItem(
-                    icon: FontAwesomeIcons.house,
-                    label: l.home,
-                    isActive: activeItem == 'home',
-                    onTap: onHomeTap,
+        if (_notice != null)
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: SafeArea(
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 520),
+                  child: GlobalNoticeBanner(
+                    message: _notice!['message']!,
+                    type: _notice!['type'] ?? 'info',
+                    onDismiss: () {
+                      _noticeTimer?.cancel();
+                      setState(() => _notice = null);
+                    },
                   ),
-                  _SidebarItem(
-                    icon: FontAwesomeIcons.play,
-                    label: 'Connector',
-                    isActive: activeItem == 'connector',
-                    onTap: onConnectorTap,
-                  ),
-                  _SidebarItem(
-                    icon: FontAwesomeIcons.server,
-                    label: AppFeature.partners.label(l),
-                    isActive: activeItem == 'partners',
-                    onTap: onPartnersTap,
-                  ),
-                  _SidebarItem(
-                    icon: FontAwesomeIcons.satellite,
-                    label: AppFeature.tracker.label(l),
-                    isActive: activeItem == 'tracker',
-                    onTap: onTrackerTap,
-                  ),
-                  _SidebarItem(
-                    icon: FontAwesomeIcons.magnifyingGlass,
-                    label: AppFeature.lookup.label(l),
-                    isActive: activeItem == 'lookup',
-                    onTap: onLookupTap,
-                  ),
-                  _SidebarItem(
-                    icon: FontAwesomeIcons.shirt,
-                    label: AppFeature.skins.label(l),
-                    isActive: activeItem == 'skins',
-                    onTap: onSkinsTap,
-                  ),
-                  _SidebarItem(
-                    icon: FontAwesomeIcons.user,
-                    label: l.navProfile,
-                    isActive: activeItem == 'profile',
-                    onTap: onProfileTap,
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Divider(color: AppTheme.borderGray, height: 1),
-          const SizedBox(height: 8),
-          _SidebarItem(
-            icon: FontAwesomeIcons.bug,
-            label: l.reportBug,
-            isActive: activeItem == 'feedback',
-            onTap: onFeedbackTap,
-          ),
-          _SidebarItem(
-            icon: FontAwesomeIcons.circleQuestion,
-            label: l.support,
-            isActive: false,
-            onTap: onHelpTap,
-          ),
-          _SidebarItem(
-            icon: FontAwesomeIcons.lightbulb,
-            label: l.howToUseMenu,
-            isActive: false,
-            onTap: onHowToTap,
-          ),
-          const SizedBox(height: 16),
-        ],
-      ),
-    );
-  }
-}
-
-class _SidebarItem extends StatelessWidget {
-  final FaIconData icon;
-  final String label;
-  final bool isActive;
-  final VoidCallback? onTap;
-
-  const _SidebarItem({
-    required this.icon,
-    required this.label,
-    required this.isActive,
-    this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final color = isActive ? AppTheme.brand : AppTheme.textMuted;
-    return GestureDetector(
-      onTap: onTap,
-      behavior: HitTestBehavior.opaque,
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
-        decoration: BoxDecoration(
-          color: isActive
-              ? AppTheme.brand.withValues(alpha: 0.13)
-              : Colors.transparent,
-          borderRadius: BorderRadius.circular(8),
-          border: isActive
-              ? Border.all(
-                  color: AppTheme.brand.withValues(alpha: 0.25),
-                  width: 0.8,
-                )
-              : null,
-        ),
-        child: Row(
-          children: [
-            FaIcon(icon, size: 14, color: color),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Text(
-                label,
-                style: TextStyle(
-                  color: color,
-                  fontSize: 13,
-                  fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
-                  letterSpacing: -0.1,
                 ),
-                overflow: TextOverflow.ellipsis,
               ),
             ),
-          ],
-        ),
-      ),
+          ),
+      ],
     );
   }
 }

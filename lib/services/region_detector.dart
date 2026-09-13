@@ -3,14 +3,7 @@ import 'package:http/http.dart' as http;
 import '../constants/app_constants.dart';
 import '../util/relay_preference_storage.dart';
 
-enum RelaySource {
-  manual,
-  cached,
-  geo,
-  stale,
-  failover,
-  fallback,
-}
+enum RelaySource { manual, cached, geo, stale, failover, fallback }
 
 class RelaySelection {
   final String ip;
@@ -105,6 +98,7 @@ class RegionDetector {
 
     return RelaySelection.first;
   }
+
   static Future<RelaySelection?> askEdge() async {
     try {
       final res = await http

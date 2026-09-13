@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
+import '../design/design.dart';
 import '../services/auth_service.dart';
 import '../services/push_notification_service.dart';
 import '../services/user_service.dart';
@@ -249,90 +250,45 @@ class ProfileScreenState extends State<ProfileScreen>
   }
 
   Widget _buildTabBar(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     return Container(
-      color: AppTheme.surfaceRaised,
-      child: TabBar(
-        controller: _tabs,
-        indicatorColor: AppTheme.accent,
-        indicatorWeight: 2,
-        labelColor: AppTheme.accent,
-        unselectedLabelColor: AppTheme.textMuted,
-        labelStyle: const TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.w700,
-          letterSpacing: 0.4,
+      decoration: BoxDecoration(
+        border: Border(bottom: BorderSide(color: DsColor.line)),
+      ),
+      child: ShaderMask(
+        blendMode: BlendMode.dstIn,
+        shaderCallback: (rect) => const LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [Colors.white, Colors.white, Colors.transparent],
+          stops: [0, 0.92, 1],
+        ).createShader(rect),
+        child: TabBar(
+          controller: _tabs,
+          isScrollable: true,
+          tabAlignment: TabAlignment.start,
+          indicatorColor: DsColor.accent,
+          indicatorWeight: 2,
+          indicatorSize: TabBarIndicatorSize.label,
+          dividerColor: Colors.transparent,
+          labelColor: DsColor.accent,
+          unselectedLabelColor: DsColor.textFaint,
+          labelStyle: DsType.label.copyWith(fontWeight: FontWeight.w600),
+          unselectedLabelStyle: DsType.label,
+          tabs: [
+            Tab(text: l.navProfile),
+            Tab(text: l.labelFriends),
+            Tab(text: _badgeLabel(l.notifPrefFriendRequest, _requests.length)),
+            Tab(text: _badgeLabel(l.sectionNotifications, _unreadNotifCount)),
+            if (_isAdmin) Tab(text: l.support),
+          ],
         ),
-        tabs: [
-          const Tab(icon: Icon(Icons.person_rounded, size: 22)),
-          const Tab(icon: Icon(Icons.people_rounded, size: 22)),
-          Tab(
-            icon: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                const Icon(Icons.person_add_rounded, size: 22),
-                if (_requests.isNotEmpty)
-                  Positioned(
-                    right: -6,
-                    top: -4,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 4,
-                        vertical: 1,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppTheme.accent,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        '${_requests.length}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 9,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                  ),
-              ],
-            ),
-          ),
-          Tab(
-            icon: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                const Icon(Icons.notifications_rounded, size: 22),
-                if (_unreadNotifCount > 0)
-                  Positioned(
-                    right: -6,
-                    top: -4,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 4,
-                        vertical: 1,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppTheme.accent,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        _unreadNotifCount > 99 ? '99+' : '$_unreadNotifCount',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 9,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                  ),
-              ],
-            ),
-          ),
-          if (_isAdmin)
-            const Tab(icon: Icon(Icons.support_agent_rounded, size: 22)),
-        ],
       ),
     );
   }
+
+  String _badgeLabel(String label, int count) =>
+      count > 0 ? '$label  ${count > 99 ? '99+' : count}' : label;
 
   Widget _buildTabContent() {
     return TabBarView(
@@ -471,10 +427,6 @@ class ProfileScreenState extends State<ProfileScreen>
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppTheme.surfaceRaised,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: const BorderSide(color: AppTheme.borderGray),
-        ),
         title: Text(l.deleteAccountTitle),
         content: Text(
           l.deleteAccountBody,
@@ -520,10 +472,6 @@ class ProfileScreenState extends State<ProfileScreen>
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppTheme.surfaceRaised,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: const BorderSide(color: AppTheme.borderGray),
-        ),
         title: Text(l.removeFriendTitle),
         content: Text(
           l.removeFriendConfirm(friend.username),

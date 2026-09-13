@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../services/server_directory_service.dart';
 import '../theme/app_theme.dart';
+import '../design/design.dart';
+import '../theme/app_tokens.dart';
 import '../util/directory_server.dart';
 import '../widgets/components/app_toast.dart';
 import '../widgets/components/swipe_back.dart';
@@ -164,7 +166,9 @@ class _ServerListScreenState extends State<ServerListScreen> {
 
     AppToast.show(
       context,
-      message: AppLocalizations.of(context)!.selectedFeaturedServer(server.name),
+      message: AppLocalizations.of(
+        context,
+      )!.selectedFeaturedServer(server.name),
       icon: Icons.play_arrow_rounded,
       color: AppTheme.success,
       duration: const Duration(seconds: 2),
@@ -189,12 +193,22 @@ class _ServerListScreenState extends State<ServerListScreen> {
               physics: const AlwaysScrollableScrollPhysics(),
               slivers: [
                 SliverPadding(
-                  padding: const EdgeInsets.fromLTRB(12, 12, 12, 4),
+                  padding: const EdgeInsets.fromLTRB(
+                    DsSpace.gutter,
+                    DsSpace.md,
+                    DsSpace.gutter,
+                    DsSpace.xs,
+                  ),
                   sliver: SliverToBoxAdapter(child: _filters()),
                 ),
                 if (_tags.isNotEmpty)
                   SliverPadding(
-                    padding: const EdgeInsets.fromLTRB(12, 4, 12, 8),
+                    padding: const EdgeInsets.fromLTRB(
+                      DsSpace.gutter,
+                      DsSpace.xs,
+                      DsSpace.gutter,
+                      DsSpace.sm,
+                    ),
                     sliver: SliverToBoxAdapter(child: _tagChips()),
                   ),
                 if (_loading)
@@ -206,10 +220,16 @@ class _ServerListScreenState extends State<ServerListScreen> {
                   SliverFillRemaining(hasScrollBody: false, child: _empty())
                 else
                   SliverPadding(
-                    padding: const EdgeInsets.fromLTRB(12, 4, 12, 16),
+                    padding: const EdgeInsets.fromLTRB(
+                      DsSpace.gutter,
+                      DsSpace.xs,
+                      DsSpace.gutter,
+                      DsSpace.xxxl,
+                    ),
                     sliver: SliverList.separated(
                       itemCount: _servers.length + (_loadingMore ? 1 : 0),
-                      separatorBuilder: (_, _) => const SizedBox(height: 8),
+                      separatorBuilder: (_, _) =>
+                          const SizedBox(height: DsSpace.sm),
                       itemBuilder: (context, i) {
                         if (i >= _servers.length) {
                           return const Padding(
@@ -251,15 +271,15 @@ class _ServerListScreenState extends State<ServerListScreen> {
             fillColor: AppTheme.surfaceRaised,
             contentPadding: const EdgeInsets.symmetric(vertical: 12),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: DsRadius.controlR,
               borderSide: BorderSide(color: AppTheme.borderGray),
             ),
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: DsRadius.controlR,
               borderSide: BorderSide(color: AppTheme.borderGray),
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: DsRadius.controlR,
               borderSide: BorderSide(color: AppTheme.accent),
             ),
           ),
@@ -302,16 +322,16 @@ class _ServerListScreenState extends State<ServerListScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
-        color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: AppTheme.borderGray),
+        color: DsColor.surface,
+        borderRadius: DsRadius.controlR,
+        border: Border.all(color: DsColor.line),
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
           value: value,
           isExpanded: true,
           dropdownColor: AppTheme.surfaceRaised,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: DsRadius.controlR,
           icon: Icon(Icons.expand_more, size: 18, color: AppTheme.textMuted),
           style: TextStyle(color: AppTheme.textPrimary, fontSize: 13),
           items: items
@@ -333,34 +353,45 @@ class _ServerListScreenState extends State<ServerListScreen> {
   Widget _tagChips() {
     return SizedBox(
       height: 30,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        itemCount: _tags.length + 1,
-        separatorBuilder: (_, _) => const SizedBox(width: 6),
-        itemBuilder: (context, i) {
-          if (i == 0) {
-            return _chip(
-                label: AppLocalizations.of(context)!.serverListAllCategories,
-                count: null,
-                active: _tag == null,
-                onTap: () {
-                  setState(() => _tag = null);
-                  _load();
-                });
-          }
-          final tag = _tags[i - 1];
+      child: DsHScroll(
+        child: Row(
+          children: [
+            for (var i = 0; i < _tags.length + 1; i++) ...[
+              if (i > 0) const SizedBox(width: 6),
+              _tagChipAt(i),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _tagChipAt(int i) {
+    {
+      {
+        if (i == 0) {
           return _chip(
-            label: tag.tag,
-            count: tag.count,
-            active: _tag == tag.tag,
+            label: AppLocalizations.of(context)!.serverListAllCategories,
+            count: null,
+            active: _tag == null,
             onTap: () {
-              setState(() => _tag = _tag == tag.tag ? null : tag.tag);
+              setState(() => _tag = null);
               _load();
             },
           );
-        },
-      ),
-    );
+        }
+        final tag = _tags[i - 1];
+        return _chip(
+          label: tag.tag,
+          count: tag.count,
+          active: _tag == tag.tag,
+          onTap: () {
+            setState(() => _tag = _tag == tag.tag ? null : tag.tag);
+            _load();
+          },
+        );
+      }
+    }
   }
 
   Widget _chip({
@@ -378,7 +409,7 @@ class _ServerListScreenState extends State<ServerListScreen> {
           color: active
               ? AppTheme.accent.withValues(alpha: 0.12)
               : AppTheme.surfaceRaised,
-          borderRadius: BorderRadius.circular(999),
+          borderRadius: AppRadius.rounded,
           border: Border.all(
             color: active
                 ? AppTheme.accent.withValues(alpha: 0.35)
@@ -420,9 +451,9 @@ class _ServerListScreenState extends State<ServerListScreen> {
             width: 56,
             height: 56,
             decoration: BoxDecoration(
-              color: AppTheme.surfaceRaised,
-              borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: AppTheme.borderGray),
+              color: DsColor.surface,
+              borderRadius: DsRadius.controlR,
+              border: Border.all(color: DsColor.line),
             ),
             child: Icon(
               _failed ? Icons.cloud_off_rounded : Icons.search_off_rounded,

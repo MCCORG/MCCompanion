@@ -6,8 +6,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'user_service.dart';
 
 @pragma('vm:entry-point')
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-}
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {}
 
 class PushNotificationService {
   PushNotificationService._();
@@ -62,13 +61,13 @@ class PushNotificationService {
         const InitializationSettings(
           android: AndroidInitializationSettings('@drawable/ic_notification'),
         ),
-        onDidReceiveNotificationResponse: (details) {
-        },
+        onDidReceiveNotificationResponse: (details) {},
       );
 
       await _localNotifications
           .resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin>()
+            AndroidFlutterLocalNotificationsPlugin
+          >()
           ?.createNotificationChannel(_androidChannel);
 
       _foregroundSub = FirebaseMessaging.onMessage.listen((message) {
@@ -146,20 +145,4 @@ class PushNotificationService {
     if (!_supportsPushNotifications) return;
     await _registerToken();
   }
-
-  static String getNotificationType(RemoteMessage message) {
-    return message.data['type'] as String? ?? 'unknown';
-  }
-
-  static String? getSenderUsername(RemoteMessage message) {
-    return message.data['senderUsername'] as String?;
-  }
-}
-
-extension RemoteMessageX on RemoteMessage {
-  String get notificationType => data['type'] as String? ?? 'unknown';
-
-  String? get senderUsername => data['senderUsername'] as String?;
-  String? get friendUsername => data['friendUsername'] as String?;
-  String? get serverAddress => data['serverAddress'] as String?;
 }

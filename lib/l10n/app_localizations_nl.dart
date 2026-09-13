@@ -9,10 +9,25 @@ class AppLocalizationsNl extends AppLocalizations {
   AppLocalizationsNl([String locale = 'nl']) : super(locale);
 
   @override
-  String get appName => 'MCCompanion';
+  String get console => 'Console';
 
   @override
-  String get console => 'Console';
+  String get modeLabel => 'Modus';
+
+  @override
+  String get statusLabel => 'Status';
+
+  @override
+  String get seeAll => 'Alles tonen';
+
+  @override
+  String get sectionHelp => 'Help';
+
+  @override
+  String get sectionAdvanced => 'Geavanceerd';
+
+  @override
+  String get versionLabel => 'Versie';
 
   @override
   String get consoleOutput => 'Console Uitvoer';
@@ -63,9 +78,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get onboardingNavRightLabel => 'RECHTER KNOP';
 
   @override
-  String get onboardingNavPreviewHome => 'Home';
-
-  @override
   String get onboardingNavPreviewConnector => 'Connector';
 
   @override
@@ -75,35 +87,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get onboardingNavPreviewEmpty => 'Leeg';
 
   @override
-  String get onboardingStartTitle => 'Startpagina';
-
-  @override
-  String get onboardingStartSubtitle =>
-      'De app opent hier elke keer bij het opstarten.';
-
-  @override
   String get onboardingCustomizeDetail => 'In detail aanpassen →';
-
-  @override
-  String get startPageHome => 'Home';
-
-  @override
-  String get startPageHomeSubtitle => 'Toon het startscherm met tegels';
-
-  @override
-  String get startPageFeature => 'Functie';
-
-  @override
-  String get startPageFeatureSubtitle => 'Open direct op een specifieke pagina';
-
-  @override
-  String get startPageSectionLabel => 'STARTPAGINA';
-
-  @override
-  String get joinUs => 'Word lid';
-
-  @override
-  String get more => 'Meer';
 
   @override
   String get website => 'Website';
@@ -115,14 +99,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get support => 'Ondersteuning';
 
   @override
-  String helpText(Object appCreator) {
-    return 'Gemaakt door $appCreator.\n\nHoe te gebruiken:\n1. Voer uw Minecraft server adres en poort in (standaard: 19132)\n   - of selecteer een eerder opgeslagen server uit de dropdown\n2. (Optioneel) Kies een Relay server(EU of US) die het dichtst bij uw locatie is\n3. Klik op \"Start uitzending\"\n4 Om te starten ga op je console/apparaat: Minecraft > Play > Vrienden\n5. Je zou een LAN server moeten zien genaamd \"MCCompanion\"\n6. Klik op de server om toe te treden tot uw externe server via MCCompanion\n\nNintendo Switch (DNS-modus):\n1. Schakel \"Nintendo Switch\" in in het verbindingspaneel\n2. Selecteer een RelayServer (EU of US)\n3. Klik op \"Stuur DNS Config\" - dit stuurt uw configuratie naar het relais\n   (het zend NIET een LAN server)\n4. Op uw Switch, Pas uw MCCompanion DNS setup toe en neem deel aan\n   met behulp van de server die u gebruikt voor MCCompanion\n\nNotities:\n- voor LAN uitzendingen, MCCompanion en console moeten op hetzelfde lokale netwerk zitten.\n- Tip: Kies de dichtstbijzijnde server voor de beste prestaties.';
-  }
-
-  @override
-  String get serverDetailsLabel => 'Serverdetails';
-
-  @override
   String get start => 'Starten';
 
   @override
@@ -130,9 +106,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get labelJava => 'Java';
-
-  @override
-  String get aternosSubtext => 'Maak je eigen gratis Minecraft-server';
 
   @override
   String get language => 'Nederlands';
@@ -159,12 +132,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get delete => 'Verwijderen';
 
   @override
-  String get myServers => 'Mijn Servers';
-
-  @override
-  String get quickAccessServers => 'Snelle toegang tot servers';
-
-  @override
   String get addServer => 'Server toevoegen';
 
   @override
@@ -186,15 +153,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get save => 'Opslaan';
 
   @override
-  String get initializing => 'Initialiseren...';
-
-  @override
-  String get createdBy => 'Gemaakt door NetherDev';
-
-  @override
-  String get bedrockBridge => 'Bedrock Brug';
-
-  @override
   String get clientDisconnected => 'Client verbroken - Uitzending gestopt';
 
   @override
@@ -208,12 +166,6 @@ class AppLocalizationsNl extends AppLocalizations {
       'Gegevens verstuurd naar de MCCompanion-servers';
 
   @override
-  String get broadcastingStarted => 'Uitzending gestart';
-
-  @override
-  String get broadcastStopped => 'Uitzending gestopt';
-
-  @override
   String selectedServer(Object name) {
     return '📋 Geselecteerd: $name';
   }
@@ -224,9 +176,6 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get noLogsToCopy => 'Geen logs om te kopiëren';
-
-  @override
   String copiedLogs(Object count) {
     return 'Gekopieerd $count logs naar het klembord';
   }
@@ -235,36 +184,11 @@ class AppLocalizationsNl extends AppLocalizations {
   String get debugEnabled => 'Debug logs ingeschakeld';
 
   @override
-  String get debugDisabled => 'Debug logs uitgeschakeld';
-
-  @override
-  String get howToUseTitle => 'Hoe gebruik je MCCompanion';
-
-  @override
   String get iUnderstand => 'Ik begrijp het';
-
-  @override
-  String get playOnSwitchTitle => 'Speel op Nintendo Switch';
-
-  @override
-  String get playWithFriendsTitle => 'Spelen via vrienden';
 
   @override
   String playInstructionsSwitch(Object relayName, Object relayIp) {
     return 'Geselecteerd: $relayName\n\nHoe te verbinden:\n1. Ga naar uw Switch Instellingen en wijzig de DNS naar: $relayIp\n2. Open Minecraft en selecteer een server uit de lijst (zoals Cubecraft of Hive).\n3. Je wordt nu automatisch naar je eigen server verzonden.';
-  }
-
-  @override
-  String playInstructionsFriends(Object friend) {
-    return 'Hoe te verbinden:\n1. Voeg $friend toe als vriend op je console.\n2. Open Minecraft en ga naar het tabblad Vrienden.\n3. Zoek naar je server onder LAN werelden en selecteer om mee te doen.';
-  }
-
-  @override
-  String get nldServerLabel => 'MCCompanion-SERVER';
-
-  @override
-  String selectRelayLabel(Object name) {
-    return 'Geselecteerd: $name';
   }
 
   @override
@@ -274,26 +198,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get savedServers => 'Opgeslagen servers';
 
   @override
-  String get serverAddressHint => 'Serveradres';
-
-  @override
-  String get portHint => 'Poort';
-
-  @override
   String get manageServers => 'Beheer servers';
-
-  @override
-  String get manageServersTooltip => 'Beheer servers';
-
-  @override
-  String get noServerYet =>
-      'Nog geen servers opgeslagen.\nTik op Beheren om er een toe te voegen.';
-
-  @override
-  String get serverNotSelected => 'Geen server geselecteerd';
-
-  @override
-  String get ready => 'Klaar';
 
   @override
   String get active => 'Actief';
@@ -316,34 +221,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get continueAnyway => 'Toch doorgaan';
 
   @override
-  String get sameWifi => 'Zelfde wifi-netwerk';
-
-  @override
-  String get needSameWifi =>
-      'Het apparaat waarop MCCompanion draait MOET zich op hetzelfde wifi-netwerk bevinden als de console waarop je Minecraft speelt.';
-
-  @override
-  String get subscription => 'Online abonnement vereist';
-
-  @override
-  String get needSubscription =>
-      'Elke console heeft een eigen actief online abonnement nodig (Xbox Live, PS Plus, NSO). Zonder dat verschijnt MCCompanion niet.';
-
-  @override
   String get updateAvailable => 'Update beschikbaar';
-
-  @override
-  String get newVersion =>
-      'Er is een nieuwe versie van de app beschikbaar.\nWerk nu bij voor de nieuwste functies en verbeteringen.';
-
-  @override
-  String get later => 'Later';
-
-  @override
-  String get updateNow => 'Nu bijwerken';
-
-  @override
-  String get beforeYouStart => 'VOORDAT JE BEGINT';
 
   @override
   String get stopBroadcasting => 'Uitzenden stoppen';
@@ -358,9 +236,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get startBroadcasting => 'Uitzending starten';
 
   @override
-  String get modeLabel => 'Modus';
-
-  @override
   String get labelXbox => 'Xbox/PS4-5';
 
   @override
@@ -368,32 +243,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get labelFriends => 'Vrienden';
-
-  @override
-  String get nintendoInfoTitle => 'Nintendo Switch DNS-modus';
-
-  @override
-  String get nintendoInfoText =>
-      'Start in Nintendo modus, stel uw DNS in en word lid van een featured server.';
-
-  @override
-  String get friendModeTitle => 'Vriend modus';
-
-  @override
-  String get friendModeText =>
-      'Voeg MCCompanion\'s vriend bots toe als vriend, Start vriend modus en speel';
-
-  @override
-  String get selectedRelayCheck => 'Geselecteerd';
-
-  @override
-  String relayFallbackWarning(Object name) {
-    return 'Waarschuwing: origineel Relay heeft niet gereageerd. Fallback Relay in gebruik: $name';
-  }
-
-  @override
-  String get relayUnableConnect =>
-      'Kan geen verbinding maken met geen enkele MCCompanion relay server. Probeer het later opnieuw of controleer je internet.';
 
   @override
   String get howToXboxTitle => 'Xbox / PS4-5 (LAN / proxyverbinding)';
@@ -412,18 +261,10 @@ class AppLocalizationsNl extends AppLocalizations {
   String get howToNintendoSubtitle => 'Instructies voor DNS-relay voor Switch';
 
   @override
-  String get howToNintendoBody =>
-      'Nintendo Switch - DNS modus (stap voor stap):\n1. In de app \"Nintendo\" modus inschakelen en selecteer een Relay Server (EU of US).\n2. Tik op \"Stuur DNS Config\" om de gegevens naar het relay te sturen.\n3. Op uw Nintendo Switch ga naar Systeeminstellingen → Internet → internetinstellingen → (uw netwerk) → Instellingen wijzigen → DNS en stel de primaire DNS in op het relais-IP.\n4. Open Minecraft en word lid van een openbare server; je wordt omgeleid naar je server met behulp van de relay DNS.\nOpmerkingen:\n- DNS-modus zend geen LAN-server uit; het stuurt spelverkeer door de relais.\n- Zet je DNS terug nadat je klaar bent als je een normaal netwerkgedrag nodig hebt.';
-
-  @override
   String get howToFriendsTitle => 'Vrienden modus';
 
   @override
   String get howToFriendsSubtitle => 'Nodig vrienden uit en doe mee via LAN';
-
-  @override
-  String get howToFriendsBody =>
-      'Vrienden-modus - snelle stappen:\n1. Voeg het MCCompanionvriend-account (relay vriend) toe op uw console of platform indien nodig.\n2. Schakel in de app Vrienden modus in en stuur de relay configuratie.\n3. Open op je console Minecraft → Vrienden en zoek naar LAN Worlds - jouw server zou daar als een LAN-wereld moeten verschijnen.\n4. Selecteer het om je server te betreden.\nOpmerkingen:\n- Vriendschapsmodus is afhankelijk van de functies van het platform vriend en kan het vereisen dat je vriendschapsverzoeken accepteert.';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion verschijnt niet';
@@ -474,9 +315,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get changeLanguage => 'Taal';
-
-  @override
-  String get useSystemLanguage => 'Systeemtaal gebruiken';
 
   @override
   String get couldNotOpenUrl => 'Kon URL niet openen';
@@ -548,12 +386,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get statusChecking => 'Controleren...';
 
   @override
-  String get notificationsOn => 'Meldingen aan';
-
-  @override
-  String get notificationsOff => 'Meldingen uit';
-
-  @override
   String get failedUpdateNotifications => 'Meldingen bijwerken mislukt';
 
   @override
@@ -572,43 +404,28 @@ class AppLocalizationsNl extends AppLocalizations {
   String get customizeLabel => 'Aanpassen';
 
   @override
-  String get customizeSubtitle => 'Tegels herordenen en navigatie aanpassen';
+  String get customizeSubtitle => 'Navigatiebalk en kleuren';
 
   @override
   String get resetLabel => 'Resetten';
 
   @override
-  String get tilesSection => 'TEGELS';
-
-  @override
-  String get dragToReorder => 'Slepen om te herordenen';
-
-  @override
   String get navigationSection => 'NAVIGATIE';
 
   @override
-  String get navFixed => 'Start, Connector en Profiel zijn altijd vast';
+  String get navFixed => 'Connector en Profiel staan altijd vast';
 
   @override
-  String get leftSlot => 'Linker slot (naast Start)';
+  String get leftSlot => 'Slot 2';
 
   @override
-  String get rightSlot => 'Rechter slot (naast Profiel)';
+  String get outerSlot => 'Slot 1';
 
   @override
-  String get tileWideTooltipRemove => 'Brede indeling verwijderen';
+  String get rightSlot => 'Slot 3';
 
   @override
-  String get tileWideTooltipAdd => 'Brede tegel maken';
-
-  @override
-  String get tileVisibilityShow => 'Tegel tonen';
-
-  @override
-  String get tileVisibilityHide => 'Tegel verbergen';
-
-  @override
-  String get tileVisibilityMin => 'Kan niet verbergen (laatste tegel)';
+  String get farSlot => 'Slot 4';
 
   @override
   String get colorPickerApply => 'Toepassen';
@@ -682,9 +499,6 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get avatarUrlHint => 'https://example.com/avatar.png';
-
-  @override
   String get reportUser => 'Gebruiker melden';
 
   @override
@@ -722,18 +536,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get reportSubmit => 'Rapport indienen';
 
   @override
-  String get today => 'Vandaag';
-
-  @override
-  String get yesterday => 'Gisteren';
-
-  @override
-  String get youPrefix => 'Jij';
-
-  @override
-  String get playerLookupTitle => 'Speler opzoeken';
-
-  @override
   String get playerLookupSubtitle =>
       'Zoek een Java- of Bedrock-speler op gebruikersnaam';
 
@@ -755,47 +557,10 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get tabProfile => 'Profiel';
-
-  @override
-  String get tabFriends => 'Vrienden';
-
-  @override
-  String get tabRequests => 'Verzoeken';
-
-  @override
   String get addFriend => 'Vriend toevoegen';
 
   @override
-  String get usernameHint => 'Gebruikersnaam';
-
-  @override
   String get send => 'Versturen';
-
-  @override
-  String friendRequestSentTo(Object name) {
-    return 'Vriendschapsverzoek verstuurd naar $name';
-  }
-
-  @override
-  String alreadyFriendsWith(Object name) {
-    return 'Je bent al vrienden met $name';
-  }
-
-  @override
-  String requestAlreadyPending(Object name) {
-    return 'Een verzoek aan $name is al in behandeling';
-  }
-
-  @override
-  String userNotFoundMsg(Object name) {
-    return 'Gebruiker $name niet gevonden';
-  }
-
-  @override
-  String cannotSendRequest(Object name) {
-    return 'Kan geen verzoek sturen naar $name';
-  }
 
   @override
   String get somethingWentWrong => 'Er is iets misgegaan. Probeer opnieuw.';
@@ -868,9 +633,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String resetLinkSent(Object email) {
     return 'Bestaat er een account voor $email, dan is er een resetlink onderweg';
   }
-
-  @override
-  String get noAccountForEmail => 'Geen account gevonden voor dat e-mailadres';
 
   @override
   String get invalidEmailError => 'Het e-mailadres is niet geldig';
@@ -966,9 +728,6 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get linkedAccountsTitle => 'Gekoppelde accounts';
-
-  @override
   String get linkAccountsHint =>
       'Koppel je Minecraft-accounts om je skins en stats te tonen.';
 
@@ -980,9 +739,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get profileUpdated => 'Profiel bijgewerkt';
-
-  @override
-  String get profileCardTitle => 'Profiel';
 
   @override
   String get edit => 'Bewerken';
@@ -998,15 +754,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get bioHint => 'Vertel anderen over jezelf…';
-
-  @override
-  String get avatarUrlLabel => 'Avatar URL';
-
-  @override
-  String get usernameDisplayLabel => 'Gebruikersnaam';
-
-  @override
-  String get aboutMe => 'Over mij';
 
   @override
   String get noFriendsYet => 'Nog geen vrienden';
@@ -1035,20 +782,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get skinsEdit => 'Bewerken';
 
   @override
-  String get skinsNoAccountsTitle => 'Geen Minecraft-accounts gekoppeld';
-
-  @override
-  String get skinsNoAccountsSubtitle =>
-      'Koppel een Java- of Bedrock-account om je skins te bekijken.';
-
-  @override
-  String get skinsSignInTitle => 'Log in om je skins te bekijken';
-
-  @override
-  String get skinsSignInSubtitle =>
-      'Log in en koppel je Minecraft-accounts om je skins hier te zien.';
-
-  @override
   String get skinsMustBe64 => 'Skin moet 64×64 pixels zijn';
 
   @override
@@ -1059,27 +792,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get skinsCreate => 'Aanmaken';
-
-  @override
-  String get skinsSectionRecent => 'RECENTE SKINS';
-
-  @override
-  String get skinsSectionMy => 'MIJN SKINS';
-
-  @override
-  String get skinsEmptyMySkins =>
-      'Nog geen opgeslagen skins. Upload er een of maak er een!';
-
-  @override
-  String get skinsSectionYours => 'JOUW SKINS';
-
-  @override
-  String get skinsCouldNotLoad => 'Skins konden niet worden geladen';
-
-  @override
-  String skinsPageOf(Object page, Object total) {
-    return 'Pagina $page van $total';
-  }
 
   @override
   String get skinsDownload => 'Downloaden';
@@ -1117,9 +829,6 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get noConnectionError =>
       'Geen verbinding. Controleer je internet en probeer opnieuw.';
-
-  @override
-  String get home => 'Home';
 
   @override
   String get info => 'Info';
@@ -1190,21 +899,10 @@ class AppLocalizationsNl extends AppLocalizations {
   String get relay => 'Relay';
 
   @override
-  String get selectModeSection => 'MODUS KIEZEN';
-
-  @override
-  String get serversSection => 'SERVERS';
-
-  @override
-  String get noServerSelected => 'Geen server geselecteerd';
+  String get serversSection => 'Servers';
 
   @override
   String get selectBedrockAccount => 'Bedrock-account kiezen';
-
-  @override
-  String playersCount(Object players, Object max) {
-    return '$players / $max spelers';
-  }
 
   @override
   String get infoAndLegal => 'Info & Juridisch';
@@ -1300,15 +998,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get portRangeError => 'Poort moet tussen 1 en 65535 zijn';
 
   @override
-  String get partnerServersTitle => 'Partnerservers';
-
-  @override
-  String get noPartnerServers => 'Nog geen partnerservers beschikbaar.';
-
-  @override
-  String get checkBackLater => 'Kom later terug.';
-
-  @override
   String get xboxLinkTitle => 'Xbox-account koppelen';
 
   @override
@@ -1351,9 +1040,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get tryAgain => 'Opnieuw proberen';
-
-  @override
-  String get publicProfileTitle => 'Profiel';
 
   @override
   String get userNotFound => 'Gebruiker niet gevonden';
@@ -1418,8 +1104,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get trackerLimitReached =>
-      'Je hebt je serverlimiet bereikt. Upgrade om meer servers te volgen.';
+  String get trackerLimitReached => 'Serverlimiet bereikt';
 
   @override
   String get upgradeButton => 'Upgraden';
@@ -1476,18 +1161,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get javaCodeCopied => 'Code gekopieerd naar klembord';
 
   @override
-  String get splashFeatureConnect => 'Verbinden';
-
-  @override
-  String get splashFeatureFriends => 'Vrienden';
-
-  @override
-  String get splashFeatureChat => 'Chat';
-
-  @override
-  String get splashFeatureSkins => 'Skins';
-
-  @override
   String get featureLabelConnector => 'Connector';
 
   @override
@@ -1503,30 +1176,11 @@ class AppLocalizationsNl extends AppLocalizations {
   String get featureLabelTracker => 'Server Tracker';
 
   @override
-  String get featureSubtitleConnector => 'Verbind consoles met Minecraft';
-
-  @override
-  String get featureSubtitleSkins => 'Blader door en beheer Minecraft-skins';
-
-  @override
-  String get featureSubtitlePartners => 'Aanbevolen servers';
-
-  @override
-  String get featureSubtitleLookup => 'Zoek Java- en Bedrock-profielen op';
-
-  @override
-  String get featureSubtitleTracker =>
-      'Monitor serverstatus en ontvang meldingen';
-
-  @override
   String get userSearchHint => 'Gebruikersnaam, gamertag of Java-naam…';
 
   @override
   String get userSearchSub =>
       'Zoek op gebruikersnaam, Xbox-gamertag of Java-naam';
-
-  @override
-  String get onlineStatus => 'Online';
 
   @override
   String get upgradeWindowsHint => 'Upgrade beschikbaar via de Microsoft Store';
@@ -1546,7 +1200,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get skinExported => 'Skin succesvol geexporteerd';
 
   @override
-  String get accountActions => 'ACCOUNT';
+  String get accountActions => 'Account';
 
   @override
   String get feedbackBugReport => 'Bugmelding';
@@ -1580,15 +1234,6 @@ class AppLocalizationsNl extends AppLocalizations {
       'Leg uit wat je wilt en waarom het nuttig zou zijn.';
 
   @override
-  String get feedbackEmailLabel => 'E-mail';
-
-  @override
-  String get feedbackEmailHint => 'Zodat we contact met je kunnen opnemen';
-
-  @override
-  String get feedbackEmailNote => 'Je e-mail wordt nooit openbaar gedeeld.';
-
-  @override
   String get feedbackSubmitBug => 'Bugmelding indienen';
 
   @override
@@ -1619,16 +1264,10 @@ class AppLocalizationsNl extends AppLocalizations {
       'Beschrijving moet minimaal 10 tekens zijn.';
 
   @override
-  String get feedbackEmailInvalid => 'Voer een geldig e-mailadres in.';
-
-  @override
   String get feedbackSubmitFailed => 'Indienen mislukt. Probeer het opnieuw.';
 
   @override
-  String get feedbackTileTitle => 'Meld een bug of stel een functie voor';
-
-  @override
-  String get reportBug => 'Feedback';
+  String get feedbackTileTitle => 'Feedback';
 
   @override
   String get feedbackTileSubtitle => 'Help ons MCCompanion te verbeteren';
@@ -1697,22 +1336,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get rpScreenTitle => 'Resourcepakket';
 
   @override
-  String get rpWhatIsThis => 'Wat is dit?';
-
-  @override
-  String get rpExplanation =>
-      'Een resourcepakket verandert hoe Minecraft er op jouw console uitziet, nieuwe blokken, kleuren of geluiden. Plak hieronder de link van een .mcpack bestand, zet het aan en sla op. MCCompanion laadt het automatisch elke keer als je verbindt.';
-
-  @override
-  String get rpPackUrlLabel => 'Pack-URL';
-
-  @override
-  String get rpPackUrlHint => 'https://example.com/pack.mcpack';
-
-  @override
-  String get rpEnableToggle => 'Resourcepakket inschakelen';
-
-  @override
   String get rpWhatWorks => 'Wat werkt';
 
   @override
@@ -1774,10 +1397,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get rpWarnExtension => 'URL moet eindigen op .mcpack of .zip';
 
   @override
-  String get rpToastEnterUrl =>
-      'Voer een URL in voordat je het resourcepakket inschakelt.';
-
-  @override
   String get rpToastSaved => 'Instellingen resourcepakket opgeslagen.';
 
   @override
@@ -1790,10 +1409,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get rpClearMinecraftTitle => 'Eerste keer met dit pakket?';
-
-  @override
-  String get rpClearMinecraftBody =>
-      'Minecraft slaat resourcepakketten lokaal op in de cache. Als je eerder verbinding hebt gemaakt met deze server vóór het inschakelen van MCCompanion\'s resourcepakket, heeft Minecraft het originele pakket al gecached en zal de samengevoegde versie niet opnieuw downloaden.';
 
   @override
   String get rpClearStep1 =>
@@ -1815,16 +1430,6 @@ class AppLocalizationsNl extends AppLocalizations {
       'De relay bewaart de samengevoegde pack 1 uur in de cache op basis van jouw overlay-URL. Om een verse samenvoeging te forceren: pas de pack-URL iets aan (bijv. voeg ?v=2 toe) en sla op. Wis daarna ook de Minecraft-packcache, de samengevoegde pack gebruikt nog steeds de UUID van de server, dus Minecraft serveert anders gewoon de oude gecachte versie.';
 
   @override
-  String get rpWorksGithubHint => 'Directe downloadlink: altijd bereikbaar';
-
-  @override
-  String get rpWorksCloudflareHint =>
-      'Publieke cloudopslag: snel en betrouwbaar';
-
-  @override
-  String get rpWorksDirectHint => 'Elke publieke HTTPS .mcpack of .zip URL';
-
-  @override
   String get rpNoDiscordHint => 'Discord CDN-links verlopen na korte tijd';
 
   @override
@@ -1843,9 +1448,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get rpUploadTab => 'Upload';
 
   @override
-  String get rpUrlTab => 'URL';
-
-  @override
   String get rpUploadButton => 'Tap to select your pack';
 
   @override
@@ -1856,9 +1458,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get rpMergerTitle => 'RP Merger';
-
-  @override
-  String get rpMergerSubtitle => 'Combineer tot 4 resourcepacks';
 
   @override
   String get rpMergerPriorityHint =>
@@ -1887,24 +1486,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get rpMergerComplete => 'Samenvoegen voltooid!';
-
-  @override
-  String rpMergerConflicts(int count) {
-    return '$count conflict(en) opgelost: bovenste pack won.';
-  }
-
-  @override
-  String get rpMergerSetActive => 'Instellen als actief resourcepack';
-
-  @override
   String get rpMergerSetActiveToast => 'Ingesteld als actief resourcepack';
-
-  @override
-  String get rpMergerOpenButton => 'Resourcepacks samenvoegen';
-
-  @override
-  String get rpMergerOpenSubtitle => 'Combineer 2-4 packs in een';
 
   @override
   String get rpDisabled => 'Uitgeschakeld';
@@ -1937,10 +1519,6 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get rpTabUploadInfo =>
       'Upload je eigen .mcpack of .zip bestand. MCCompanion slaat het veilig op in de cloud en stuurt het elke keer naar je console wanneer je verbindt.';
-
-  @override
-  String get rpTabUrlInfo =>
-      'Plak een directe downloadlink naar een .mcpack of .zip bestand. De URL moet publiek toegankelijk zijn, geen Discord- of Google Drive-links.';
 
   @override
   String get rpTabMergeInfo =>
@@ -2021,9 +1599,6 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get rpPackDetailTitle => 'Pack details';
-
-  @override
   String get skinsSavedToMySkins => 'Opgeslagen in Mijn Skins';
 
   @override
@@ -2050,16 +1625,6 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get skinsTabSkins => 'Skins';
-
-  @override
-  String get skinsTabRecent => 'Recent';
-
-  @override
-  String get skinsEmptyCloudSkins =>
-      'Nog geen cloud-skins. Upload een skin om deze hier te zien.';
-
-  @override
   String get skinsEmptyLocalSkins =>
       'Nog geen skins. Maak of upload een skin om te beginnen.';
 
@@ -2080,9 +1645,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get skinsTabGallery => 'Galerij';
-
-  @override
-  String get skinsGalleryEmpty => 'Nog geen community-skins.';
 
   @override
   String get skinsTopLabel => 'Top 30';
@@ -2259,13 +1821,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get supportInboxTitle => 'Supportinbox';
 
   @override
-  String get supportInboxSubtitle =>
-      'Alle supportgesprekken, gedeeld met alle admins';
-
-  @override
-  String get adminBadge => 'Admin';
-
-  @override
   String get skinShareSubject => 'Minecraft-skin';
 
   @override
@@ -2354,9 +1909,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get supportReplyingAs => 'Je antwoordt als MCCompanion Support';
-
-  @override
-  String get supportReplyHint => 'Antwoord als support…';
 
   @override
   String get relayBlocked =>
@@ -2451,12 +2003,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get adminTicketReplyHint => 'Antwoord over dit ticket…';
 
   @override
-  String get adminNoTicketsForUser => 'Geen tickets van deze gebruiker';
-
-  @override
-  String get undo => 'Ongedaan maken';
-
-  @override
   String get chooseServerTitle => 'Kies een server';
 
   @override
@@ -2516,33 +2062,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get shareServerOff => 'Vrienden zien dat je speelt, niet waar';
 
   @override
-  String get makeDefaultServer => 'Als standaardserver instellen';
-
-  @override
-  String get isDefaultServer => 'Wordt standaard geopend';
-
-  @override
-  String defaultServerSet(String name) {
-    return '$name wordt voortaan standaard geopend';
-  }
-
-  @override
-  String get labelDirect => 'Proxy/direct';
-
-  @override
-  String get startDirectMode => 'Proxy/directe modus starten';
-
-  @override
-  String get howToDirectTitle => 'Proxy/directe modus';
-
-  @override
-  String get howToDirectSubtitle => 'Spelen zonder via onze servers te gaan';
-
-  @override
-  String get howToDirectBody =>
-      'Proxy/directe modus: je toestel is de verbinding.\n1. Zorg dat het toestel met MCCompanion en je console op hetzelfde netwerk zitten.\n2. Vul het adres en de poort van de Bedrock-server in en druk op \"Proxy/directe modus starten\".\n3. Open op de console Minecraft → Spelen → tabblad Vrienden en ververs de lijst.\n4. Kies de LAN-server met de naam \"MCCompanion\" om te verbinden.\n\nWaarom deze modus bestaat:\n- Er gaat niets via de servers van MCCompanion. Je toestel stuurt het verkeer zelf door, dus dit blijft werken ook als onze relays onbereikbaar zijn.\n- Je hoeft niet aangemeld te zijn.\n\nHoud er rekening mee:\n- De app moet de hele sessie open en in beeld blijven. Sluit je hem of schakel je naar een andere app, dan valt de verbinding weg.\n- Alleen Bedrock-servers. Gebruik voor Java-servers de Java-modus, die de vertaling aan onze kant doet.\n- Verwacht meer batterijverbruik dan bij de andere modi.\n- Resourcepacks worden niet toegepast. Die lopen via onze relay, en die slaat deze modus over.';
-
-  @override
   String directHostNotFound(String host) {
     return '$host niet gevonden. Controleer het adres en probeer opnieuw.';
   }
@@ -2550,21 +2069,6 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get directPortBusy =>
       'Kon de lokale poort niet openen. Stop eerst de huidige verbinding.';
-
-  @override
-  String get directServerOfflineTitle => 'Server antwoordt niet';
-
-  @override
-  String directServerOfflineBody(String target) {
-    return '$target gaf geen antwoord. Mogelijk is de server offline, of verbergt hij zich gewoon voor pings. Je kunt de tunnel toch starten en proberen te verbinden.';
-  }
-
-  @override
-  String get directStartAnyway => 'Toch starten';
-
-  @override
-  String get directNoResourcePack =>
-      'Resourcepacks werken niet in proxy/directe modus.';
 
   @override
   String directAddressNotSupported(String host) {
@@ -2680,9 +2184,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get serverStatVotesMonth => 'Stemmen deze maand';
 
   @override
-  String get serverStatVotesAllTime => 'Stemmen totaal';
-
-  @override
   String get serverBadgeFeatured => 'Uitgelicht';
 
   @override
@@ -2698,15 +2199,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get serverSectionMotd => 'Bericht van de dag';
 
   @override
-  String get serverSectionAbout => 'Over';
-
-  @override
-  String get serverSectionCategories => 'Categorieën';
-
-  @override
-  String get serverSectionVotes => 'Stemmen';
-
-  @override
   String get serverLinkDiscord => 'Discord';
 
   @override
@@ -2717,12 +2209,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get serverVotesAllTime => 'Totaal';
-
-  @override
-  String get serverVoteAction => 'Stem op deze server';
-
-  @override
-  String get serverPlayAction => 'Speel op deze server';
 
   @override
   String get serverVoteSignInRequired =>

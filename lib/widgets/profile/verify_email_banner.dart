@@ -3,6 +3,7 @@ import '../../l10n/app_localizations.dart';
 import '../../services/auth_service.dart';
 import '../../services/user_service.dart';
 import '../../theme/app_theme.dart';
+import '../../theme/app_tokens.dart';
 
 class VerifyEmailBanner extends StatefulWidget {
   const VerifyEmailBanner({super.key});
@@ -66,7 +67,7 @@ class _VerifyEmailBannerState extends State<VerifyEmailBanner>
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: tone.withValues(alpha: 0.10),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: AppRadius.medium,
         border: Border.all(color: tone.withValues(alpha: 0.45)),
       ),
       child: Row(
@@ -80,7 +81,10 @@ class _VerifyEmailBannerState extends State<VerifyEmailBanner>
               children: [
                 Text(
                   l.verifyEmailTitle,
-                  style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14,
+                  ),
                 ),
                 const SizedBox(height: 2),
                 Text(
@@ -91,18 +95,27 @@ class _VerifyEmailBannerState extends State<VerifyEmailBanner>
                 if (_sent)
                   Text(
                     l.verifyEmailSent,
-                    style: const TextStyle(fontSize: 12, color: tone, fontWeight: FontWeight.w600),
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: tone,
+                      fontWeight: FontWeight.w600,
+                    ),
                   )
                 else
                   TextButton(
                     onPressed: _sending ? null : _resend,
                     style: TextButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
                       minimumSize: Size.zero,
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       foregroundColor: tone,
                     ),
-                    child: Text(_sending ? l.verifyEmailSending : l.verifyEmailSend),
+                    child: Text(
+                      _sending ? l.verifyEmailSending : l.verifyEmailSend,
+                    ),
                   ),
               ],
             ),

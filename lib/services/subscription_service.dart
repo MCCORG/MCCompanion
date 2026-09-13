@@ -21,11 +21,11 @@ class SubscriptionService extends ChangeNotifier {
   static const String _rcGoogleKey = 'goog_pUxzsaywbuAhIrRYuLsunoHBVZl';
 
   static const String productStarterMonthly = 'mcc_starter_monthly';
-  static const String productStarterYearly  = 'mcc_starter_yearly';
-  static const String productProMonthly     = 'mcc_pro_monthly';
-  static const String productProYearly      = 'mcc_pro_yearly';
-  static const String productUltraMonthly   = 'mcc_ultra_monthly';
-  static const String productUltraYearly    = 'mcc_ultra_yearly';
+  static const String productStarterYearly = 'mcc_starter_yearly';
+  static const String productProMonthly = 'mcc_pro_monthly';
+  static const String productProYearly = 'mcc_pro_yearly';
+  static const String productUltraMonthly = 'mcc_ultra_monthly';
+  static const String productUltraYearly = 'mcc_ultra_yearly';
   static const String entitlementPro = 'pro';
 
   SubscriptionStatus _status = SubscriptionStatus.free;

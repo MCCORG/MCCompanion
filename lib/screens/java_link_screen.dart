@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
+import '../design/design.dart';
 import '../services/user_service.dart';
 import '../widgets/components/app_toast.dart';
 
@@ -135,7 +136,6 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
           ),
         ),
         iconTheme: IconThemeData(color: AppTheme.textPrimary),
-        elevation: 0,
       ),
       body: SafeArea(
         child: Center(
@@ -188,7 +188,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
           height: 64,
           decoration: BoxDecoration(
             color: _javaBlue.withValues(alpha: 0.12),
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: DsRadius.cardR,
             border: Border.all(color: _javaBlue.withValues(alpha: 0.30)),
           ),
           child: const Icon(
@@ -231,9 +231,11 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
             decoration: BoxDecoration(
-              color: AppTheme.surfaceRaised,
-              borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: AppTheme.accent.withValues(alpha: 0.35)),
+              color: DsColor.surface,
+              borderRadius: DsRadius.controlR,
+              border: Border.all(
+                color: AppTheme.accent.withValues(alpha: 0.35),
+              ),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -248,11 +250,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
                   ),
                 ),
                 const SizedBox(width: 12),
-                Icon(
-                  Icons.copy_rounded,
-                  color: AppTheme.textMuted,
-                  size: 18,
-                ),
+                Icon(Icons.copy_rounded, color: AppTheme.textMuted, size: 18),
               ],
             ),
           ),
@@ -264,18 +262,13 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
           style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
         ),
         const SizedBox(height: 28),
-        ElevatedButton.icon(
+        DsButton(
+          label: l10n.javaOpenLink,
+          icon: Icons.open_in_browser_rounded,
+          size: DsButtonSize.large,
+          expand: true,
+          accent: _javaBlue,
           onPressed: _openLink,
-          icon: const Icon(Icons.open_in_browser_rounded, size: 18),
-          label: Text(
-            l10n.javaOpenLink,
-            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
-          ),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: _javaBlue,
-            foregroundColor: Colors.white,
-            padding: const EdgeInsets.symmetric(vertical: 16),
-          ),
         ),
         const SizedBox(height: 20),
         Row(
@@ -341,11 +334,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Icon(
-          Icons.info_outline_rounded,
-          color: AppTheme.textMuted,
-          size: 48,
-        ),
+        Icon(Icons.info_outline_rounded, color: AppTheme.textMuted, size: 48),
         const SizedBox(height: 16),
         Text(
           l10n.javaNoJavaTitle,
@@ -367,15 +356,10 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
           ),
         ),
         const SizedBox(height: 24),
-        ElevatedButton(
+        DsButton(
+          label: l10n.javaTryDifferentAccount,
+          expand: true,
           onPressed: _start,
-          style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(vertical: 14),
-          ),
-          child: Text(
-            l10n.javaTryDifferentAccount,
-            style: const TextStyle(fontWeight: FontWeight.w700),
-          ),
         ),
       ],
     );
@@ -403,16 +387,7 @@ class _JavaLinkScreenState extends State<JavaLinkScreen> {
           ),
         ),
         const SizedBox(height: 24),
-        ElevatedButton(
-          onPressed: _start,
-          style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(vertical: 14),
-          ),
-          child: Text(
-            l10n.tryAgain,
-            style: const TextStyle(fontWeight: FontWeight.w700),
-          ),
-        ),
+        DsButton(label: l10n.tryAgain, expand: true, onPressed: _start),
       ],
     );
   }

@@ -9,6 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../constants/app_constants.dart';
 import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
+import '../design/design.dart';
 import '../widgets/report_user_sheet.dart';
 import '../models/user_model.dart';
 import '../services/user_service.dart';
@@ -109,10 +110,6 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
         final l = AppLocalizations.of(ctx)!;
         return AlertDialog(
           backgroundColor: AppTheme.surfaceRaised,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-            side: const BorderSide(color: AppTheme.borderGray),
-          ),
           title: Text(l.removeFriendDialogTitle),
           content: Text(
             l.removeFriendDialogBody(widget.username),
@@ -158,7 +155,9 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
       appBar: AppBar(
         backgroundColor: AppTheme.surface,
         title: Text(
-          _user != null ? '@${_user!.username}' : AppLocalizations.of(context)!.profileFallbackTitle,
+          _user != null
+              ? '@${_user!.username}'
+              : AppLocalizations.of(context)!.profileFallbackTitle,
           style: TextStyle(
             color: AppTheme.textPrimary,
             fontSize: 16,
@@ -166,31 +165,39 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
           ),
         ),
         iconTheme: IconThemeData(color: AppTheme.textPrimary),
-        elevation: 0,
-        actions: _user == null ? null : [
-          IconButton(
-            icon: const Icon(Icons.share_rounded, size: 20),
-            tooltip: AppLocalizations.of(context)!.shareProfileTooltip,
-            onPressed: () {
-              final url = 'https://mccompanion.net/u?name=${_user!.username}';
-              final isDesktop = Platform.isMacOS || Platform.isWindows || Platform.isLinux;
-              if (isDesktop) {
-                Clipboard.setData(ClipboardData(text: url));
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text(AppLocalizations.of(context)!.profileLinkCopied),
-                  duration: const Duration(seconds: 2),
-                ));
-              } else {
-                Share.share(url);
-              }
-            },
-          ),
-        ],
+        actions: _user == null
+            ? null
+            : [
+                IconButton(
+                  icon: const Icon(Icons.share_rounded, size: 20),
+                  tooltip: AppLocalizations.of(context)!.shareProfileTooltip,
+                  onPressed: () {
+                    final url =
+                        'https://mccompanion.net/u?name=${_user!.username}';
+                    final isDesktop =
+                        Platform.isMacOS ||
+                        Platform.isWindows ||
+                        Platform.isLinux;
+                    if (isDesktop) {
+                      Clipboard.setData(ClipboardData(text: url));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            AppLocalizations.of(context)!.profileLinkCopied,
+                          ),
+                          duration: const Duration(seconds: 2),
+                        ),
+                      );
+                    } else {
+                      Share.share(url);
+                    }
+                  },
+                ),
+              ],
       ),
       bottomNavigationBar: BottomGlassSimpleNavBar(
         navigationController: null,
         activeItem: 'profile',
-        onHomeTap: () => _navTo(widget.onGoToHome),
         onConnectorTap: () => _navTo(widget.onGoToConnector),
         onProfileTap: () => Navigator.of(context).popUntil((r) => r.isFirst),
       ),
@@ -258,24 +265,30 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
                 const SizedBox(height: 4),
                 Text(
                   '@${u.username}',
-                  style: TextStyle(
-                    color: AppTheme.textMuted,
-                    fontSize: 13,
-                  ),
+                  style: TextStyle(color: AppTheme.textMuted, fontSize: 13),
                 ),
                 if (_isTargetAdmin) ...[
                   const SizedBox(height: 6),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 3,
+                    ),
                     decoration: BoxDecoration(
                       color: AppTheme.accent.withValues(alpha: 0.12),
                       borderRadius: BorderRadius.circular(6),
-                      border: Border.all(color: AppTheme.accent.withValues(alpha: 0.35)),
+                      border: Border.all(
+                        color: AppTheme.accent.withValues(alpha: 0.35),
+                      ),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.shield_rounded, size: 11, color: AppTheme.accent),
+                        Icon(
+                          Icons.shield_rounded,
+                          size: 11,
+                          color: AppTheme.accent,
+                        ),
                         const SizedBox(width: 4),
                         Text(
                           'MCCompanion Admin',
@@ -307,112 +320,126 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
           ),
           const SizedBox(height: 16),
 
-          Builder(builder: (ctx) {
-            final l = AppLocalizations.of(ctx)!;
-            return _InfoCard(
-              icon: Icons.person_rounded,
-              label: l.profileSectionLabel,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _ProfileRow(
-                    label: l.displayNameRowLabel,
-                    value: u.displayName?.isNotEmpty == true
-                        ? u.displayName!
-                        : '—',
-                  ),
-                  const SizedBox(height: 8),
-                  _ProfileRow(label: l.usernameRowLabel, value: '@${u.username}'),
-                  if (u.lastSeenAt != null && !u.appearOffline) ...[
+          Builder(
+            builder: (ctx) {
+              final l = AppLocalizations.of(ctx)!;
+              return _InfoCard(
+                icon: Icons.person_rounded,
+                label: l.profileSectionLabel,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _ProfileRow(
+                      label: l.displayNameRowLabel,
+                      value: u.displayName?.isNotEmpty == true
+                          ? u.displayName!
+                          : '—',
+                    ),
                     const SizedBox(height: 8),
                     _ProfileRow(
-                      label: l.lastSeenLabel,
-                      value: _formatDate(u.lastSeenAt!, AppLocalizations.of(context)!),
+                      label: l.usernameRowLabel,
+                      value: '@${u.username}',
                     ),
+                    if (u.lastSeenAt != null && !u.appearOffline) ...[
+                      const SizedBox(height: 8),
+                      _ProfileRow(
+                        label: l.lastSeenLabel,
+                        value: _formatDate(
+                          u.lastSeenAt!,
+                          AppLocalizations.of(context)!,
+                        ),
+                      ),
+                    ],
                   ],
-                ],
-              ),
-            );
-          }),
+                ),
+              );
+            },
+          ),
 
           if (u.bio?.isNotEmpty == true) ...[
             const SizedBox(height: 12),
-            Builder(builder: (ctx) => _InfoCard(
-              icon: Icons.info_outline_rounded,
-              label: AppLocalizations.of(ctx)!.aboutSectionLabel,
-              child: Text(
-                u.bio!,
-                style: TextStyle(
-                  color: AppTheme.textPrimary,
-                  fontSize: 13,
-                  height: 1.5,
+            Builder(
+              builder: (ctx) => _InfoCard(
+                icon: Icons.info_outline_rounded,
+                label: AppLocalizations.of(ctx)!.aboutSectionLabel,
+                child: Text(
+                  u.bio!,
+                  style: TextStyle(
+                    color: AppTheme.textPrimary,
+                    fontSize: 13,
+                    height: 1.5,
+                  ),
                 ),
               ),
-            )),
+            ),
           ],
 
           if (u.xboxGamertag != null) ...[
             const SizedBox(height: 12),
-            Builder(builder: (ctx) => _InfoCard(
-              icon: Icons.sports_esports_rounded,
-              iconColor: xboxGreen,
-              label: AppLocalizations.of(ctx)!.xboxBedrockLabel,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    u.xboxGamertag!,
-                    style: TextStyle(
-                      color: AppTheme.textPrimary,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  if (u.xboxXuid != null) ...[
-                    const SizedBox(height: 4),
+            Builder(
+              builder: (ctx) => _InfoCard(
+                icon: Icons.sports_esports_rounded,
+                iconColor: xboxGreen,
+                label: AppLocalizations.of(ctx)!.xboxBedrockLabel,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     Text(
-                      u.xboxXuid!,
+                      u.xboxGamertag!,
                       style: TextStyle(
-                        color: AppTheme.textMuted,
-                        fontSize: 11,
+                        color: AppTheme.textPrimary,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
+                    if (u.xboxXuid != null) ...[
+                      const SizedBox(height: 4),
+                      Text(
+                        u.xboxXuid!,
+                        style: TextStyle(
+                          color: AppTheme.textMuted,
+                          fontSize: 11,
+                        ),
+                      ),
+                    ],
                   ],
-                ],
+                ),
               ),
-            )),
+            ),
           ],
 
           if (u.javaUsername != null) ...[
             const SizedBox(height: 12),
-            Builder(builder: (ctx) => _InfoCard(
-              icon: Icons.videogame_asset_rounded,
-              iconColor: AppTheme.javaBlue,
-              label: AppLocalizations.of(ctx)!.playerLookupJavaEdition,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    u.javaUsername!,
-                    style: TextStyle(
-                      color: AppTheme.textPrimary,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  if (u.javaUuid != null) ...[
-                    const SizedBox(height: 4),
+            Builder(
+              builder: (ctx) => _InfoCard(
+                icon: Icons.videogame_asset_rounded,
+                iconColor: AppTheme.javaBlue,
+                label: AppLocalizations.of(ctx)!.playerLookupJavaEdition,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     Text(
-                      u.javaUuid!,
+                      u.javaUsername!,
                       style: TextStyle(
-                        color: AppTheme.textMuted,
-                        fontSize: 11,
+                        color: AppTheme.textPrimary,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
+                    if (u.javaUuid != null) ...[
+                      const SizedBox(height: 4),
+                      Text(
+                        u.javaUuid!,
+                        style: TextStyle(
+                          color: AppTheme.textMuted,
+                          fontSize: 11,
+                        ),
+                      ),
+                    ],
                   ],
-                ],
+                ),
               ),
-            )),
+            ),
           ],
 
           if (u.javaAccounts.isNotEmpty || u.bedrockAccounts.isNotEmpty) ...[
@@ -584,19 +611,17 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
           ),
         ),
         iconTheme: IconThemeData(color: AppTheme.textPrimary),
-        elevation: 0,
       ),
       bottomNavigationBar: BottomGlassSimpleNavBar(
         navigationController: null,
         activeItem: 'profile',
-        onHomeTap: () => _navTo(widget.onGoToHome),
         onConnectorTap: () => _navTo(widget.onGoToConnector),
         onProfileTap: () => Navigator.of(context).pop(),
       ),
       body: Column(
         children: [
           Container(
-            color: AppTheme.surface,
+            color: DsColor.surface,
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
             child: TextField(
               controller: _ctrl,
@@ -696,8 +721,8 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
             decoration: BoxDecoration(
-              color: AppTheme.surfaceRaised,
-              borderRadius: BorderRadius.circular(12),
+              color: DsColor.surface,
+              borderRadius: DsRadius.controlR,
               border: const Border.fromBorderSide(
                 BorderSide(color: AppTheme.borderGray),
               ),
@@ -808,8 +833,8 @@ class _PublicSkinsSection extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(12),
+        color: DsColor.surface,
+        borderRadius: DsRadius.controlR,
         border: const Border.fromBorderSide(
           BorderSide(color: AppTheme.borderGray),
         ),
@@ -826,7 +851,9 @@ class _PublicSkinsSection extends StatelessWidget {
               ),
               const SizedBox(width: 6),
               Text(
-                all.length == 1 ? AppLocalizations.of(context)!.skinLabel : AppLocalizations.of(context)!.skinsLabel,
+                all.length == 1
+                    ? AppLocalizations.of(context)!.skinLabel
+                    : AppLocalizations.of(context)!.skinsLabel,
                 style: TextStyle(
                   color: AppTheme.textMuted,
                   fontSize: 11,
@@ -1180,7 +1207,6 @@ class _Avatar extends StatelessWidget {
       height: size,
       decoration: BoxDecoration(
         color: AppTheme.accent.withValues(alpha: 0.15),
-        shape: BoxShape.circle,
         border: Border.all(color: AppTheme.accent.withValues(alpha: 0.30)),
       ),
       child: ClipOval(
@@ -1233,8 +1259,8 @@ class _InfoCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(12),
+        color: DsColor.surface,
+        borderRadius: DsRadius.controlR,
         border: const Border.fromBorderSide(
           BorderSide(color: AppTheme.borderGray),
         ),
@@ -1285,14 +1311,22 @@ class _CloudSkinsSectionState extends State<_CloudSkinsSection> {
 
   Future<void> _load() async {
     try {
-      final resp = await http.get(
-        Uri.parse('${AppConstants.apiBase}/api/skins/user/${widget.username}'),
-      ).timeout(const Duration(seconds: 10));
+      final resp = await http
+          .get(
+            Uri.parse(
+              '${AppConstants.apiBase}/api/skins/user/${widget.username}',
+            ),
+          )
+          .timeout(const Duration(seconds: 10));
       if (!mounted) return;
       if (resp.statusCode == 200) {
         final data = jsonDecode(resp.body) as Map<String, dynamic>;
-        final skins = (data['skins'] as List?)?.cast<Map<String, dynamic>>() ?? [];
-        setState(() { _skins = skins; _loading = false; });
+        final skins =
+            (data['skins'] as List?)?.cast<Map<String, dynamic>>() ?? [];
+        setState(() {
+          _skins = skins;
+          _loading = false;
+        });
       } else {
         setState(() => _loading = false);
       }
@@ -1304,19 +1338,23 @@ class _CloudSkinsSectionState extends State<_CloudSkinsSection> {
   @override
   Widget build(BuildContext context) {
     if (_loading) {
-      return const Center(child: Padding(
-        padding: EdgeInsets.all(16),
-        child: CircularProgressIndicator(strokeWidth: 2),
-      ));
+      return const Center(
+        child: Padding(
+          padding: EdgeInsets.all(16),
+          child: CircularProgressIndicator(strokeWidth: 2),
+        ),
+      );
     }
     if (_skins.isEmpty) return const SizedBox.shrink();
 
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(12),
-        border: const Border.fromBorderSide(BorderSide(color: AppTheme.borderGray)),
+        color: DsColor.surface,
+        borderRadius: DsRadius.controlR,
+        border: const Border.fromBorderSide(
+          BorderSide(color: AppTheme.borderGray),
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1327,7 +1365,12 @@ class _CloudSkinsSectionState extends State<_CloudSkinsSection> {
               const SizedBox(width: 6),
               Text(
                 AppLocalizations.of(context)!.skinsTabGallery,
-                style: TextStyle(color: AppTheme.textMuted, fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 0.4),
+                style: TextStyle(
+                  color: AppTheme.textMuted,
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 0.4,
+                ),
               ),
             ],
           ),
@@ -1344,14 +1387,15 @@ class _CloudSkinsSectionState extends State<_CloudSkinsSection> {
             itemCount: _skins.length,
             itemBuilder: (_, i) {
               final skin = _skins[i];
-              final url = (skin['public_url'] ?? skin['publicUrl']) as String? ?? '';
+              final url =
+                  (skin['public_url'] ?? skin['publicUrl']) as String? ?? '';
               final name = skin['name'] as String? ?? '';
               final likes = (skin['like_count'] as num?)?.toInt() ?? 0;
               return Container(
                 decoration: BoxDecoration(
-                  color: AppTheme.surface,
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: AppTheme.borderGray),
+                  color: DsColor.surface,
+                  borderRadius: DsRadius.controlR,
+                  border: Border.all(color: DsColor.line),
                 ),
                 padding: const EdgeInsets.fromLTRB(8, 10, 8, 8),
                 child: Column(
@@ -1359,20 +1403,44 @@ class _CloudSkinsSectionState extends State<_CloudSkinsSection> {
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 6),
-                        child: Center(child: url.isNotEmpty ? SkinBodyImage(textureUrl: url, height: 90) : const SizedBox()),
+                        child: Center(
+                          child: url.isNotEmpty
+                              ? SkinBodyImage(textureUrl: url, height: 90)
+                              : const SizedBox(),
+                        ),
                       ),
                     ),
-                    Divider(height: 1, thickness: 1, color: AppTheme.borderGray),
+                    Divider(height: 1, thickness: 1, color: DsColor.line),
                     const SizedBox(height: 6),
-                    Text(name, style: TextStyle(color: AppTheme.textPrimary, fontSize: 10, fontWeight: FontWeight.w600), maxLines: 1, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center),
+                    Text(
+                      name,
+                      style: TextStyle(
+                        color: AppTheme.textPrimary,
+                        fontSize: 10,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                    ),
                     if (likes > 0) ...[
                       const SizedBox(height: 2),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.favorite_rounded, size: 9, color: const Color(0xFFf87171)),
+                          Icon(
+                            Icons.favorite_rounded,
+                            size: 9,
+                            color: const Color(0xFFf87171),
+                          ),
                           const SizedBox(width: 2),
-                          Text('$likes', style: TextStyle(color: AppTheme.textMuted, fontSize: 9)),
+                          Text(
+                            '$likes',
+                            style: TextStyle(
+                              color: AppTheme.textMuted,
+                              fontSize: 9,
+                            ),
+                          ),
                         ],
                       ),
                     ],

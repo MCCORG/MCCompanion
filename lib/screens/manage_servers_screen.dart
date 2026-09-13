@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
+import '../design/design.dart';
+import '../theme/app_tokens.dart';
 import '../util/user_servers.dart';
 import '../util/user_servers_storage.dart';
 import '../l10n/app_localizations.dart';
@@ -42,6 +44,14 @@ class ManageServersScreenState extends State<ManageServersScreen> {
     }
   }
 
+  Future<void> _reorderItem(int oldIndex, int newIndex) async {
+    setState(() {
+      final moved = _servers.removeAt(oldIndex);
+      _servers.insert(newIndex, moved);
+    });
+    await UserServersStorage.saveServers(_servers);
+  }
+
   Future<void> _deleteServer(int index) async {
     final loc = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
@@ -66,39 +76,57 @@ class ManageServersScreenState extends State<ManageServersScreen> {
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 760),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Align(
-                alignment: Alignment.centerRight,
-                child: GestureDetector(
-                  onTap: widget.onAddServer,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Icon(
-                      Icons.add_rounded,
-                      size: 22,
-                      color: AppTheme.accent,
-                    ),
+              DsHeader(
+                title: loc.manageServers,
+                actions: [
+                  DsButton(
+                    label: loc.addServer,
+                    icon: Icons.add_rounded,
+                    tone: DsButtonTone.neutral,
+                    size: DsButtonSize.small,
+                    onPressed: widget.onAddServer,
                   ),
-                ),
+                ],
               ),
               Expanded(
                 child: _loading
                     ? Center(
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: AppTheme.accent,
+                        child: SizedBox(
+                          width: 22,
+                          height: 22,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 1.8,
+                            color: DsColor.textFaint,
+                          ),
                         ),
                       )
                     : _servers.isEmpty
                     ? _EmptyState(loc: loc, onAdd: widget.onAddServer)
-                    : ListView.separated(
-                        padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                    : ReorderableListView.builder(
+                        padding: const EdgeInsets.fromLTRB(
+                          DsSpace.gutter,
+                          0,
+                          DsSpace.gutter,
+                          DsSpace.xxxl,
+                        ),
                         itemCount: _servers.length,
-                        separatorBuilder: (_, _) => const SizedBox(height: 10),
-                        itemBuilder: (_, i) => _ServerCard(
-                          server: _servers[i],
-                          onEdit: () => widget.onEditServer(i),
-                          onDelete: () => _deleteServer(i),
+                        buildDefaultDragHandles: false,
+                        onReorderItem: _reorderItem,
+                        proxyDecorator: (child, index, animation) =>
+                            Material(color: Colors.transparent, child: child),
+                        itemBuilder: (_, i) => Padding(
+                          key: ValueKey(
+                            '${_servers[i].address}:${_servers[i].port}:$i',
+                          ),
+                          padding: const EdgeInsets.only(bottom: DsSpace.sm),
+                          child: _ServerCard(
+                            server: _servers[i],
+                            index: i,
+                            onEdit: () => widget.onEditServer(i),
+                            onDelete: () => _deleteServer(i),
+                          ),
                         ),
                       ),
               ),
@@ -216,48 +244,34 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
 
     return Column(
       children: [
-        Container(
-          decoration: BoxDecoration(
-            color: AppTheme.surface,
-            border: Border(
-              bottom: BorderSide(color: AppTheme.borderGray, width: 0.5),
-            ),
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          child: Row(
-            children: [
-              IconButton(
-                icon: Icon(
-                  Icons.close_rounded,
-                  color: AppTheme.textSecondary,
-                  size: 20,
-                ),
-                onPressed: widget.onCancel,
-              ),
-              Expanded(
-                child: Text(
-                  isEditing ? loc.editServer : loc.addServer,
-                  style: TextStyle(
-                    color: AppTheme.textPrimary,
-                    fontSize: 17,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-            ],
+        DsHeader(
+          title: isEditing ? loc.editServer : loc.addServer,
+          leading: DsIconButton(
+            icon: Icons.close_rounded,
+            size: 36,
+            onPressed: widget.onCancel,
           ),
         ),
 
         Expanded(
           child: !_loaded
               ? Center(
-                  child: CircularProgressIndicator(
-                    strokeWidth: 2,
-                    color: AppTheme.accent,
+                  child: SizedBox(
+                    width: 22,
+                    height: 22,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 1.8,
+                      color: DsColor.textFaint,
+                    ),
                   ),
                 )
               : SingleChildScrollView(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.fromLTRB(
+                    DsSpace.gutter,
+                    DsSpace.sm,
+                    DsSpace.gutter,
+                    DsSpace.xxxl,
+                  ),
                   keyboardDismissBehavior:
                       ScrollViewKeyboardDismissBehavior.onDrag,
                   child: Center(
@@ -272,21 +286,21 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
                             icon: Icons.label_rounded,
                             autofocus: true,
                           ),
-                          const SizedBox(height: 12),
+                          const SizedBox(height: DsSpace.md),
                           _Field(
                             controller: _addressCtrl,
                             label: loc.addressLabel,
                             hint: loc.serverAddressExampleHint,
                             icon: Icons.dns_rounded,
                           ),
-                          const SizedBox(height: 12),
+                          const SizedBox(height: DsSpace.md),
                           _Field(
                             controller: _portCtrl,
                             label: loc.portLabel,
                             icon: Icons.numbers_rounded,
                             keyboardType: TextInputType.number,
                           ),
-                          const SizedBox(height: 12),
+                          const SizedBox(height: DsSpace.md),
                           _EditionToggle(
                             isJava: _isJava,
                             onChanged: (value) {
@@ -303,7 +317,7 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
                               });
                             },
                           ),
-                          const SizedBox(height: 12),
+                          const SizedBox(height: DsSpace.md),
                           _Field(
                             controller: _descCtrl,
                             label: loc.descriptionLabel,
@@ -311,27 +325,12 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
                             icon: Icons.notes_rounded,
                             maxLines: 3,
                           ),
-                          const SizedBox(height: 12),
-                          const SizedBox(height: 24),
-                          SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: ElevatedButton(
-                              onPressed: _save,
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: AppTheme.accent,
-                                foregroundColor: Colors.white,
-                                elevation: 0,
-                                textStyle: const TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(13),
-                                ),
-                              ),
-                              child: Text(loc.save),
-                            ),
+                          const SizedBox(height: DsSpace.xl),
+                          DsButton(
+                            label: loc.save,
+                            size: DsButtonSize.large,
+                            expand: true,
+                            onPressed: _save,
                           ),
                         ],
                       ),
@@ -352,55 +351,16 @@ class _EmptyState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(32),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: 64,
-              height: 64,
-              decoration: BoxDecoration(
-                color: AppTheme.surfaceLight,
-                borderRadius: BorderRadius.circular(18),
-                border: Border.all(color: AppTheme.borderGray),
-              ),
-              child: Icon(
-                Icons.dns_outlined,
-                size: 28,
-                color: AppTheme.textMuted,
-              ),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              loc.noSavedServers,
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-                color: AppTheme.textSecondary,
-              ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              loc.addServersHint,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 13, color: AppTheme.textMuted),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton.icon(
-              onPressed: onAdd,
-              icon: const Icon(Icons.add_rounded, size: 16),
-              label: Text(loc.addServer),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppTheme.accent,
-                foregroundColor: Colors.white,
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-            ),
-          ],
+      child: DsEmptyState(
+        icon: Icons.dns_rounded,
+        title: loc.noSavedServers,
+        message: loc.addServersHint,
+        action: DsButton(
+          label: loc.addServer,
+          icon: Icons.add_rounded,
+          tone: DsButtonTone.neutral,
+          size: DsButtonSize.small,
+          onPressed: onAdd,
         ),
       ),
     );
@@ -409,11 +369,13 @@ class _EmptyState extends StatelessWidget {
 
 class _ServerCard extends StatelessWidget {
   final UserServer server;
+  final int index;
   final VoidCallback onEdit;
   final VoidCallback onDelete;
 
   const _ServerCard({
     required this.server,
+    required this.index,
     required this.onEdit,
     required this.onDelete,
   });
@@ -422,102 +384,82 @@ class _ServerCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.surface,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppTheme.borderGray),
+        color: DsColor.surface,
+        borderRadius: DsRadius.cardR,
+        border: Border.all(color: DsColor.line),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
+      padding: const EdgeInsets.fromLTRB(
+        DsSpace.sm,
+        DsSpace.md,
+        DsSpace.md,
+        DsSpace.md,
+      ),
       child: Row(
         children: [
+          ReorderableDragStartListener(
+            index: index,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: DsSpace.xs),
+              child: Icon(
+                Icons.drag_indicator_rounded,
+                size: 20,
+                color: DsColor.textFaint,
+              ),
+            ),
+          ),
+          const SizedBox(width: DsSpace.sm),
           Container(
             width: 40,
             height: 40,
+            alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: AppTheme.accent.withValues(alpha: 0.10),
-              borderRadius: BorderRadius.circular(11),
-              border: Border.all(
-                color: AppTheme.accent.withValues(alpha: 0.22),
-              ),
+              color: DsColor.accent.withValues(alpha: 0.14),
+              borderRadius: BorderRadius.circular(DsRadius.control - 2),
             ),
-            child: Icon(Icons.dns_rounded, color: AppTheme.accent, size: 18),
+            child: Icon(Icons.dns_rounded, color: DsColor.accent, size: 18),
           ),
-          const SizedBox(width: 12),
+          const SizedBox(width: DsSpace.md),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   server.name,
-                  style: TextStyle(
-                    color: AppTheme.textPrimary,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
+                  style: DsType.bodyStrong,
                 ),
-                const SizedBox(height: 2),
+                const SizedBox(height: DsSpace.xxs),
                 Text(
                   '${server.address}:${server.port}',
-                  style: TextStyle(color: AppTheme.textSecondary, fontSize: 12),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
+                  style: DsType.caption,
                 ),
                 if (server.description != null &&
                     server.description!.isNotEmpty) ...[
-                  const SizedBox(height: 2),
+                  const SizedBox(height: DsSpace.xxs),
                   Text(
                     server.description!,
-                    style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
+                    style: DsType.caption,
                   ),
                 ],
               ],
             ),
           ),
-          const SizedBox(width: 8),
-          _IconBtn(
-            icon: Icons.edit_rounded,
-            color: AppTheme.accent,
-            onTap: onEdit,
-          ),
-          const SizedBox(width: 6),
-          _IconBtn(
-            icon: Icons.delete_rounded,
-            color: AppTheme.error,
-            onTap: onDelete,
+          const SizedBox(width: DsSpace.sm),
+          DsIconButton(icon: Icons.edit_rounded, size: 36, onPressed: onEdit),
+          const SizedBox(width: DsSpace.sm),
+          DsIconButton(
+            icon: Icons.delete_outline_rounded,
+            size: 36,
+            color: DsColor.danger,
+            onPressed: onDelete,
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _IconBtn extends StatelessWidget {
-  final IconData icon;
-  final Color color;
-  final VoidCallback onTap;
-
-  const _IconBtn({
-    required this.icon,
-    required this.color,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 36,
-        height: 36,
-        decoration: BoxDecoration(
-          color: color.withValues(alpha: 0.10),
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: color.withValues(alpha: 0.25)),
-        ),
-        child: Icon(icon, size: 16, color: color),
       ),
     );
   }
@@ -537,7 +479,7 @@ class _ConfirmDeleteDialog extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: AppTheme.surfaceRaised,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: AppRadius.large,
           border: Border.all(color: AppTheme.borderGray),
           boxShadow: [
             BoxShadow(
@@ -556,7 +498,7 @@ class _ConfirmDeleteDialog extends StatelessWidget {
               height: 56,
               decoration: BoxDecoration(
                 color: AppTheme.error.withValues(alpha: 0.12),
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: AppRadius.large,
                 border: Border.all(
                   color: AppTheme.error.withValues(alpha: 0.30),
                 ),
@@ -595,9 +537,6 @@ class _ConfirmDeleteDialog extends StatelessWidget {
                     style: OutlinedButton.styleFrom(
                       foregroundColor: AppTheme.textSecondary,
                       side: const BorderSide(color: AppTheme.borderGray),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
                       padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
                     child: Text(loc.cancel),
@@ -610,10 +549,6 @@ class _ConfirmDeleteDialog extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppTheme.error,
                       foregroundColor: Colors.white,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
                       padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
                     child: Text(loc.delete),
@@ -649,38 +584,14 @@ class _Field extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return DsField(
       controller: controller,
+      label: label,
+      hint: hint,
+      icon: icon,
       keyboardType: keyboardType,
       maxLines: maxLines,
       autofocus: autofocus,
-      style: TextStyle(color: AppTheme.textPrimary, fontSize: 14),
-      decoration: InputDecoration(
-        labelText: label,
-        hintText: hint,
-        labelStyle: TextStyle(color: AppTheme.textSecondary, fontSize: 13),
-        hintStyle: TextStyle(color: AppTheme.textMuted, fontSize: 13),
-        prefixIcon: Icon(icon, color: AppTheme.textMuted, size: 18),
-        filled: true,
-        fillColor: AppTheme.surface,
-        isDense: true,
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 14,
-          vertical: 13,
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(11),
-          borderSide: BorderSide.none,
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(11),
-          borderSide: const BorderSide(color: AppTheme.borderGray),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(11),
-          borderSide: BorderSide(color: AppTheme.accent, width: 1.5),
-        ),
-      ),
     );
   }
 }
@@ -693,78 +604,22 @@ class _EditionToggle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppTheme.surface,
-        borderRadius: BorderRadius.circular(11),
-        border: Border.all(color: AppTheme.borderGray),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
-      child: Row(
-        children: [
-          Icon(
-            Icons.sports_esports_rounded,
-            color: AppTheme.textMuted,
-            size: 18,
-          ),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Text(
-              AppLocalizations.of(context)!.editionLabel,
-              style: TextStyle(color: AppTheme.textSecondary, fontSize: 13),
-            ),
-          ),
-          _EditionChip(
-            label: AppLocalizations.of(context)!.bedrockLabel,
-            selected: !isJava,
-            onTap: () => onChanged(false),
-          ),
-          const SizedBox(width: 6),
-          _EditionChip(
-            label: AppLocalizations.of(context)!.labelJava,
-            selected: isJava,
-            onTap: () => onChanged(true),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _EditionChip extends StatelessWidget {
-  final String label;
-  final bool selected;
-  final VoidCallback onTap;
-
-  const _EditionChip({
-    required this.label,
-    required this.selected,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 150),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-        decoration: BoxDecoration(
-          color: selected ? AppTheme.accent : Colors.transparent,
-          borderRadius: BorderRadius.circular(7),
-          border: Border.all(
-            color: selected ? AppTheme.accent : AppTheme.borderGray,
-          ),
+    final loc = AppLocalizations.of(context)!;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(loc.editionLabel, style: DsType.label),
+        const SizedBox(height: DsSpace.sm - 2),
+        DsSegmented<bool>(
+          value: isJava,
+          onChanged: onChanged,
+          options: [
+            DsOption(value: false, label: loc.bedrockLabel),
+            DsOption(value: true, label: loc.labelJava),
+          ],
         ),
-        child: Text(
-          label,
-          style: TextStyle(
-            color: selected ? Colors.white : AppTheme.textMuted,
-            fontSize: 12,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
+      ],
     );
   }
 }

@@ -4,6 +4,7 @@ import '../widgets/components/swipe_back.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import '../theme/app_theme.dart';
+import '../design/design.dart';
 import '../services/feedback_service.dart';
 import '../services/auth_service.dart';
 import '../widgets/components/app_toast.dart';
@@ -172,7 +173,7 @@ class _LoginRequiredView extends StatelessWidget {
               height: 60,
               decoration: BoxDecoration(
                 color: AppTheme.accent.withValues(alpha: 0.12),
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: DsRadius.cardR,
                 border: Border.all(
                   color: AppTheme.accent.withValues(alpha: 0.30),
                 ),
@@ -204,35 +205,13 @@ class _LoginRequiredView extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
-            ElevatedButton(
-              onPressed: onGoToLogin,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppTheme.accent,
-                foregroundColor: Colors.black,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 28,
-                  vertical: 13,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                elevation: 0,
-              ),
-              child: Text(
-                l.feedbackLoginButton,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-            const SizedBox(height: 12),
-            TextButton(
+            DsButton(label: l.feedbackLoginButton, onPressed: onGoToLogin),
+            const SizedBox(height: DsSpace.sm),
+            DsButton(
+              label: l.feedbackBackToApp,
+              tone: DsButtonTone.quiet,
+              size: DsButtonSize.small,
               onPressed: onBack,
-              child: Text(
-                l.feedbackBackToApp,
-                style: TextStyle(color: AppTheme.textMuted, fontSize: 13),
-              ),
             ),
           ],
         ),
@@ -269,7 +248,7 @@ class _Header extends StatelessWidget {
             height: 32,
             decoration: BoxDecoration(
               color: typeColor.withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(9),
+              borderRadius: DsRadius.controlR,
               border: Border.all(color: typeColor.withValues(alpha: 0.25)),
             ),
             child: FaIcon(
@@ -304,14 +283,6 @@ class _Header extends StatelessWidget {
               color: unread > 0
                   ? AppTheme.accent.withValues(alpha: 0.14)
                   : AppTheme.surfaceCard,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(9),
-                side: BorderSide(
-                  color: unread > 0
-                      ? AppTheme.accent.withValues(alpha: 0.4)
-                      : AppTheme.borderDim,
-                ),
-              ),
               clipBehavior: Clip.antiAlias,
               child: InkWell(
                 onTap: () => Navigator.of(context).push(
@@ -342,7 +313,7 @@ class _Header extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 4),
                           decoration: BoxDecoration(
                             color: AppTheme.accent,
-                            borderRadius: BorderRadius.circular(9),
+                            borderRadius: DsRadius.controlR,
                           ),
                           child: Text(
                             '$unread',
@@ -391,7 +362,7 @@ class _TypeToggle extends StatelessWidget {
                 color: active
                     ? color.withValues(alpha: 0.12)
                     : AppTheme.surfaceRaised,
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: DsRadius.controlR,
                 border: Border.all(
                   color: active
                       ? color.withValues(alpha: 0.35)
@@ -502,51 +473,14 @@ class _FormView extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 28),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: submitting ? null : onSubmit,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: typeColor,
-                  foregroundColor: Colors.black,
-                  disabledBackgroundColor: AppTheme.surfaceRaised,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  elevation: 0,
-                ),
-                child: submitting
-                    ? SizedBox(
-                        width: 18,
-                        height: 18,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: typeColor,
-                        ),
-                      )
-                    : Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          FaIcon(
-                            isBug
-                                ? FontAwesomeIcons.bug
-                                : FontAwesomeIcons.lightbulb,
-                            size: 13,
-                          ),
-                          const SizedBox(width: 8),
-                          Text(
-                            isBug
-                                ? l.feedbackSubmitBug
-                                : l.feedbackSubmitFeature,
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      ),
-              ),
+            DsButton(
+              label: isBug ? l.feedbackSubmitBug : l.feedbackSubmitFeature,
+              icon: isBug ? Icons.bug_report_rounded : Icons.lightbulb_rounded,
+              size: DsButtonSize.large,
+              expand: true,
+              busy: submitting,
+              accent: typeColor,
+              onPressed: onSubmit,
             ),
             const SizedBox(height: 16),
             Center(
@@ -588,7 +522,7 @@ class _SuccessView extends StatelessWidget {
               height: 60,
               decoration: BoxDecoration(
                 color: AppTheme.success.withValues(alpha: 0.12),
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: DsRadius.cardR,
                 border: Border.all(
                   color: AppTheme.success.withValues(alpha: 0.30),
                 ),
@@ -640,9 +574,6 @@ class _SuccessView extends StatelessWidget {
                         horizontal: 18,
                         vertical: 10,
                       ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
                     ),
                   ),
                 const SizedBox(width: 8),
@@ -654,9 +585,6 @@ class _SuccessView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                       horizontal: 18,
                       vertical: 10,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                   child: Text(l.feedbackSubmitAnother),
@@ -708,6 +636,6 @@ class _Label extends StatelessWidget {
 class _Divider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Divider(color: AppTheme.borderGray, height: 1);
+    return Divider(color: DsColor.line, height: 1);
   }
 }

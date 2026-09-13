@@ -22,8 +22,9 @@ class ReviewService {
     final prefs = await SharedPreferences.getInstance();
 
     final lastMs = prefs.getInt(_keyLastRequested) ?? 0;
-    final daysSinceLast =
-        DateTime.now().difference(DateTime.fromMillisecondsSinceEpoch(lastMs)).inDays;
+    final daysSinceLast = DateTime.now()
+        .difference(DateTime.fromMillisecondsSinceEpoch(lastMs))
+        .inDays;
     if (lastMs > 0 && daysSinceLast < _cooldownDays) return;
 
     final count = (prefs.getInt(_keyConnections) ?? 0) + 1;
@@ -37,7 +38,10 @@ class ReviewService {
     await inAppReview.requestReview();
 
     // Reset the counter so the next prompt needs another full cycle.
-    await prefs.setInt(_keyLastRequested, DateTime.now().millisecondsSinceEpoch);
+    await prefs.setInt(
+      _keyLastRequested,
+      DateTime.now().millisecondsSinceEpoch,
+    );
     await prefs.setInt(_keyConnections, 0);
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../l10n/app_localizations.dart';
 import '../../theme/app_theme.dart';
+import '../../theme/app_tokens.dart';
 
 class RpFeaturedPackCard extends StatelessWidget {
   final Map<String, dynamic> pack;
@@ -52,7 +53,7 @@ class RpFeaturedPackCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 8),
       decoration: BoxDecoration(
         color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: AppRadius.medium,
         border: Border.all(color: AppTheme.borderGray),
       ),
       child: Padding(
@@ -65,10 +66,10 @@ class RpFeaturedPackCard extends StatelessWidget {
               height: 72,
               decoration: BoxDecoration(
                 color: const Color(0xFF1a1f2a),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: AppRadius.small,
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: AppRadius.small,
                 child: thumbnailUrl != null
                     ? Image.network(
                         thumbnailUrl,
@@ -160,7 +161,7 @@ class RpFeaturedPackCard extends StatelessWidget {
                           ),
                           decoration: BoxDecoration(
                             color: AppTheme.accent,
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: AppRadius.small,
                           ),
                           child: Text(
                             'Use',
@@ -182,7 +183,7 @@ class RpFeaturedPackCard extends StatelessWidget {
                     ),
                     decoration: BoxDecoration(
                       color: AppTheme.surfaceRaisedSolid,
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: AppRadius.small,
                       border: Border.all(color: AppTheme.borderGray),
                     ),
                     child: Text(
@@ -290,10 +291,10 @@ class _PackDetailSheet extends StatelessWidget {
                           height: 64,
                           decoration: BoxDecoration(
                             color: const Color(0xFF1a1f2a),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: AppRadius.small,
                           ),
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: AppRadius.small,
                             child: Image.network(
                               thumbnailUrl,
                               width: 64,
@@ -455,9 +456,6 @@ class _PackDetailSheet extends StatelessWidget {
                               backgroundColor: AppTheme.accent,
                               foregroundColor: AppTheme.surfaceRaised,
                               padding: const EdgeInsets.symmetric(vertical: 14),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
                             ),
                             child: Text(
                               AppLocalizations.of(context)!.rpUseThisPack,
@@ -497,7 +495,7 @@ class _PackDetailSheet extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
       decoration: BoxDecoration(
         color: color.withValues(alpha: 0.08),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: AppRadius.small,
         border: Border.all(color: color.withValues(alpha: 0.25)),
       ),
       child: Text(

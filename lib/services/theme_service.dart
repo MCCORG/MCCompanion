@@ -13,6 +13,7 @@ class AccentPreset {
 }
 
 const List<AccentPreset> accentPresets = [
+  AccentPreset(id: 'mcc', label: 'MCC', color: Color(0xFF2FC3CE)),
   AccentPreset(id: 'green', label: 'Green', color: Color(0xFF67E404)),
   AccentPreset(id: 'lime', label: 'Lime', color: Color(0xFFA3E635)),
   AccentPreset(id: 'teal', label: 'Teal', color: Color(0xFF14B8A6)),
@@ -43,6 +44,12 @@ class BgPreset {
 }
 
 const List<BgPreset> bgPresets = [
+  BgPreset(
+    id: 'mcc',
+    label: 'MCC',
+    base: Color(0xFF07191E),
+    tint: Color(0xFF0F3A44),
+  ),
   BgPreset(
     id: 'slate',
     label: 'Slate',
@@ -99,6 +106,7 @@ class CardPreset {
 }
 
 const List<CardPreset> cardPresets = [
+  CardPreset(id: 'mcc', label: 'MCC', color: Color(0xFF0E252C)),
   CardPreset(id: 'neutral', label: 'Neutral', color: Color(0xFF1C2033)),
   CardPreset(id: 'slate', label: 'Slate', color: Color(0xFF283548)),
   CardPreset(id: 'navy', label: 'Navy', color: Color(0xFF0F2040)),
@@ -192,8 +200,29 @@ class ThemeService extends ChangeNotifier {
         .toColor();
   }
 
+  static const _keyRebrand = 'theme_accent_rebrand_mcc';
+  static const _keySurfaceRebrand = 'theme_surface_rebrand_mcc';
+
   Future<void> load() async {
     final prefs = await SharedPreferences.getInstance();
+    if (!(prefs.getBool(_keyRebrand) ?? false)) {
+      await prefs.setBool(_keyRebrand, true);
+      if (prefs.getString(_keyAccent) == 'green' &&
+          prefs.getString(_keyCustomAccent) == null) {
+        await prefs.setString(_keyAccent, 'mcc');
+      }
+    }
+    if (!(prefs.getBool(_keySurfaceRebrand) ?? false)) {
+      await prefs.setBool(_keySurfaceRebrand, true);
+      if (prefs.getString(_keyBg) == 'slate' &&
+          prefs.getString(_keyCustomBg) == null) {
+        await prefs.setString(_keyBg, 'mcc');
+      }
+      if (prefs.getString(_keyCard) == 'neutral' &&
+          prefs.getString(_keyCustomCard) == null) {
+        await prefs.setString(_keyCard, 'mcc');
+      }
+    }
     final accentId = prefs.getString(_keyAccent);
     final bgId = prefs.getString(_keyBg);
     final op = prefs.getDouble(_keyOpacity);

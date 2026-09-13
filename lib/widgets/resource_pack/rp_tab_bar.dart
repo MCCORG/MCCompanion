@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../l10n/app_localizations.dart';
 import '../../theme/app_theme.dart';
+import '../../theme/app_tokens.dart';
 
 enum RpInputMode { browse, upload, merge }
 
@@ -16,15 +17,30 @@ class RpTabBar extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: AppRadius.small,
         border: Border.all(color: AppTheme.borderGray),
       ),
       padding: const EdgeInsets.all(3),
       child: Row(
         children: [
-          _Tab(label: 'Browse', icon: Icons.explore_rounded, selected: mode == RpInputMode.browse, onTap: () => onSelect(RpInputMode.browse)),
-          _Tab(label: l.rpUploadTab, icon: Icons.upload_rounded, selected: mode == RpInputMode.upload, onTap: () => onSelect(RpInputMode.upload)),
-_Tab(label: l.rpMergerTitle, icon: Icons.merge_rounded, selected: mode == RpInputMode.merge, onTap: () => onSelect(RpInputMode.merge)),
+          _Tab(
+            label: 'Browse',
+            icon: Icons.explore_rounded,
+            selected: mode == RpInputMode.browse,
+            onTap: () => onSelect(RpInputMode.browse),
+          ),
+          _Tab(
+            label: l.rpUploadTab,
+            icon: Icons.upload_rounded,
+            selected: mode == RpInputMode.upload,
+            onTap: () => onSelect(RpInputMode.upload),
+          ),
+          _Tab(
+            label: l.rpMergerTitle,
+            icon: Icons.merge_rounded,
+            selected: mode == RpInputMode.merge,
+            onTap: () => onSelect(RpInputMode.merge),
+          ),
         ],
       ),
     );
@@ -37,7 +53,12 @@ class _Tab extends StatelessWidget {
   final bool selected;
   final VoidCallback onTap;
 
-  const _Tab({required this.label, required this.icon, required this.selected, required this.onTap});
+  const _Tab({
+    required this.label,
+    required this.icon,
+    required this.selected,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -49,14 +70,22 @@ class _Tab extends StatelessWidget {
           duration: const Duration(milliseconds: 150),
           padding: const EdgeInsets.symmetric(vertical: 9),
           decoration: BoxDecoration(
-            color: selected ? AppTheme.accent.withValues(alpha: 0.15) : Colors.transparent,
-            borderRadius: BorderRadius.circular(8),
-            border: selected ? Border.all(color: AppTheme.accent.withValues(alpha: 0.35)) : null,
+            color: selected
+                ? AppTheme.accent.withValues(alpha: 0.15)
+                : Colors.transparent,
+            borderRadius: AppRadius.small,
+            border: selected
+                ? Border.all(color: AppTheme.accent.withValues(alpha: 0.35))
+                : null,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(icon, size: 16, color: selected ? AppTheme.accent : AppTheme.textMuted),
+              Icon(
+                icon,
+                size: 16,
+                color: selected ? AppTheme.accent : AppTheme.textMuted,
+              ),
               const SizedBox(height: 4),
               Text(
                 label,

@@ -33,8 +33,7 @@ class RelayPreferenceStorage {
     try {
       final file = await _getFile();
       await file.writeAsString(json.encode(data));
-    } catch (_) {
-    }
+    } catch (_) {}
   }
 
   static Future<String?> loadManualIp() async =>

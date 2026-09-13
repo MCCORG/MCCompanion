@@ -16,9 +16,6 @@ class NavigationController {
   final VoidCallback? toggleDebugCallback;
   final Future<void> Function()? copyLogsCallback;
   final VoidCallback? clearLogsCallback;
-  final VoidCallback? showXboxHelpCallback;
-  final void Function(BuildContext context)? showHowToMenuCallback;
-  final void Function(BuildContext context)? showHelpMenuCallback;
 
   final ValueNotifier<bool> consoleOpen = ValueNotifier<bool>(false);
 
@@ -32,9 +29,6 @@ class NavigationController {
     this.toggleDebugCallback,
     this.copyLogsCallback,
     this.clearLogsCallback,
-    this.showXboxHelpCallback,
-    this.showHowToMenuCallback,
-    this.showHelpMenuCallback,
   });
 
   Future<void> _launch(BuildContext context, String url) async {
@@ -59,9 +53,6 @@ class NavigationController {
   Future<void> openWebsite(BuildContext context) =>
       _launch(context, websiteUrl);
 
-  Future<void> openWebsiteWithCustomUrl(BuildContext context, String url) =>
-      _launch(context, url);
-
   Future<void> openDiscord(BuildContext context) =>
       _launch(context, discordUrl);
 
@@ -74,12 +65,4 @@ class NavigationController {
   }
 
   void hideConsole() => consoleOpen.value = false;
-
-  void showHowToMenu(BuildContext context) =>
-      showHowToMenuCallback?.call(context);
-
-  void showHelpMenu(BuildContext context) =>
-      showHelpMenuCallback?.call(context);
-
-  void showXboxHelp() => showXboxHelpCallback?.call();
 }

@@ -68,17 +68,6 @@ class SkinUploadService {
     return publicUrl;
   }
 
-  static Future<List<Map<String, dynamic>>> getMySkins() async {
-    final res = await http
-        .get(Uri.parse('$_base/api/skins/me'), headers: await ApiClientBase.headers())
-        .timeout(_timeout);
-    if (res.statusCode == 200) {
-      final body = jsonDecode(res.body) as Map<String, dynamic>;
-      return List<Map<String, dynamic>>.from(body['skins'] as List);
-    }
-    return [];
-  }
-
   static Future<void> deleteSkin(String skinId) async {
     await http
         .delete(

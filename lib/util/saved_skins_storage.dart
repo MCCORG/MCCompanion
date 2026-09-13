@@ -68,14 +68,6 @@ class SavedSkinsStorage {
     await File(skin.filePath).writeAsBytes(bytes);
   }
 
-  static Future<void> rename(String id, String newName) async {
-    final all = await loadAll();
-    final i = all.indexWhere((s) => s.id == id);
-    if (i < 0) return;
-    all[i] = all[i].copyWith(name: newName);
-    await saveMeta(all);
-  }
-
   static Future<void> delete(String id) async {
     final all = await loadAll();
     final skin = all.firstWhere(

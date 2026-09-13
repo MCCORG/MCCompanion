@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import '../services/subscription_service.dart';
 import '../theme/app_theme.dart';
+import '../design/design.dart';
 import '../widgets/components/app_toast.dart';
 import '../l10n/app_localizations.dart';
 
@@ -101,7 +102,6 @@ class _PaywallScreenState extends State<PaywallScreen> {
       backgroundColor: AppTheme.background,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        elevation: 0,
         leading: IconButton(
           icon: const FaIcon(FontAwesomeIcons.xmark, size: 18),
           color: AppTheme.textSecondary,
@@ -135,14 +135,13 @@ class _PaywallScreenState extends State<PaywallScreen> {
                       height: 64,
                       decoration: BoxDecoration(
                         color: AppTheme.brand.withValues(alpha: 0.15),
-                        shape: BoxShape.circle,
                         border: Border.all(
                           color: AppTheme.brand.withValues(alpha: 0.3),
                         ),
                       ),
                       child: Center(
                         child: FaIcon(
-                          FontAwesomeIcons.satellite,
+                          FontAwesomeIcons.heartPulse,
                           color: AppTheme.brand,
                           size: 24,
                         ),
@@ -174,9 +173,9 @@ class _PaywallScreenState extends State<PaywallScreen> {
 
                   Container(
                     decoration: BoxDecoration(
-                      color: AppTheme.surface,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: AppTheme.borderGray),
+                      color: DsColor.surface,
+                      borderRadius: DsRadius.controlR,
+                      border: Border.all(color: DsColor.line),
                     ),
                     child: Row(
                       children: [
@@ -241,35 +240,12 @@ class _PaywallScreenState extends State<PaywallScreen> {
                   const SizedBox(height: 24),
 
                   if (_packages.isNotEmpty)
-                    SizedBox(
-                      height: 52,
-                      child: ElevatedButton(
-                        onPressed: _purchasing ? null : _purchase,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppTheme.brand,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                          elevation: 0,
-                        ),
-                        child: _purchasing
-                            ? const SizedBox(
-                                width: 20,
-                                height: 20,
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 2,
-                                  color: Colors.white,
-                                ),
-                              )
-                            : Text(
-                                AppLocalizations.of(context)!.paywallContinue,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                      ),
+                    DsButton(
+                      label: AppLocalizations.of(context)!.paywallContinue,
+                      size: DsButtonSize.large,
+                      expand: true,
+                      busy: _purchasing,
+                      onPressed: _purchase,
                     ),
 
                   const SizedBox(height: 14),
@@ -312,7 +288,7 @@ class _ToggleBtn extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(
             color: active ? AppTheme.brand : Colors.transparent,
-            borderRadius: BorderRadius.circular(9),
+            borderRadius: DsRadius.controlR,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -392,7 +368,7 @@ class _TierCard extends StatelessWidget {
               : highlighted
               ? AppTheme.surfaceRaised
               : AppTheme.surface,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: DsRadius.controlR,
           border: Border.all(
             color: selected
                 ? AppTheme.brand
@@ -409,7 +385,6 @@ class _TierCard extends StatelessWidget {
               width: 20,
               height: 20,
               decoration: BoxDecoration(
-                shape: BoxShape.circle,
                 color: selected ? AppTheme.brand : Colors.transparent,
                 border: Border.all(
                   color: selected ? AppTheme.brand : AppTheme.borderLight,

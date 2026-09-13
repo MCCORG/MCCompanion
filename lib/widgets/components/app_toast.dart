@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
+import '../../theme/app_tokens.dart';
 
 class AppToast {
   static OverlayEntry? _current;
@@ -106,8 +107,10 @@ class _AppToastWidgetState extends State<_AppToastWidget>
                 ),
                 decoration: BoxDecoration(
                   color: AppTheme.surfaceRaised,
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: widget.color.withValues(alpha: 0.35)),
+                  borderRadius: AppRadius.medium,
+                  border: Border.all(
+                    color: widget.color.withValues(alpha: 0.35),
+                  ),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withValues(alpha: 0.35),
@@ -130,7 +133,7 @@ class _AppToastWidgetState extends State<_AppToastWidget>
                         height: 30,
                         decoration: BoxDecoration(
                           color: widget.color.withValues(alpha: 0.12),
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: AppRadius.small,
                         ),
                         child: Icon(widget.icon, size: 15, color: widget.color),
                       ),

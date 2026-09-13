@@ -2,10 +2,7 @@ import 'dart:io';
 
 import 'package:package_info_plus/package_info_plus.dart';
 
-enum Distribution {
-  standalone,
-  store,
-}
+enum Distribution { standalone, store }
 
 class DistributionService {
   static const String _override = String.fromEnvironment('DISTRIBUTION');
@@ -21,8 +18,7 @@ class DistributionService {
       final info = await PackageInfo.fromPlatform();
       _version = info.version;
       _current = await _detect(info);
-    } catch (_) {
-    }
+    } catch (_) {}
   }
 
   static Future<Distribution> _detect(PackageInfo info) async {
@@ -45,7 +41,8 @@ class DistributionService {
 
     if (Platform.isLinux) {
       final env = Platform.environment;
-      final packaged = (env['SNAP'] ?? '').isNotEmpty ||
+      final packaged =
+          (env['SNAP'] ?? '').isNotEmpty ||
           (env['FLATPAK_ID'] ?? '').isNotEmpty;
       return packaged ? Distribution.store : Distribution.standalone;
     }
@@ -53,7 +50,9 @@ class DistributionService {
     if (Platform.isMacOS) {
       final macos = File(Platform.resolvedExecutable).parent; // Contents/MacOS
       final receipt = File('${macos.parent.path}/_MASReceipt/receipt');
-      return receipt.existsSync() ? Distribution.store : Distribution.standalone;
+      return receipt.existsSync()
+          ? Distribution.store
+          : Distribution.standalone;
     }
 
     return Distribution.store;

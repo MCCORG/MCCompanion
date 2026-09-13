@@ -12,11 +12,11 @@ class JavaProfile {
   });
 
   factory JavaProfile.fromJson(Map<String, dynamic> json) => JavaProfile(
-        username: json['username'] as String,
-        uuid: json['uuid'] as String,
-        skinUrl: json['skinUrl'] as String?,
-        headUrl: json['headUrl'] as String?,
-      );
+    username: json['username'] as String,
+    uuid: json['uuid'] as String,
+    skinUrl: json['skinUrl'] as String?,
+    headUrl: json['headUrl'] as String?,
+  );
 }
 
 class CombinedProfile {
@@ -26,7 +26,8 @@ class CombinedProfile {
 
   const CombinedProfile({this.java, this.bedrock, this.linked = false});
 
-  factory CombinedProfile.fromJson(Map<String, dynamic> json) => CombinedProfile(
+  factory CombinedProfile.fromJson(Map<String, dynamic> json) =>
+      CombinedProfile(
         java: json['java'] != null
             ? JavaProfile.fromJson(json['java'] as Map<String, dynamic>)
             : null,
@@ -55,13 +56,13 @@ class BedrockProfile {
   });
 
   factory BedrockProfile.fromJson(Map<String, dynamic> json) => BedrockProfile(
-        gamertag: json['gamertag'] as String?,
-        xuid: json['xuid'] as String,
-        skinUrl: json['skinUrl'] as String?,
-        gamerscore: json['gamerscore'] as int?,
-        tier: json['tier'] as String?,
-        gamerpicUrl: json['gamerpicUrl'] as String?,
-      );
+    gamertag: json['gamertag'] as String?,
+    xuid: json['xuid'] as String,
+    skinUrl: json['skinUrl'] as String?,
+    gamerscore: json['gamerscore'] as int?,
+    tier: json['tier'] as String?,
+    gamerpicUrl: json['gamerpicUrl'] as String?,
+  );
 
   String get floodgateUuid {
     final xuidInt = BigInt.tryParse(xuid);

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../l10n/app_localizations.dart';
 import '../../theme/app_theme.dart';
+import '../../theme/app_tokens.dart';
 
 class RpActivePackBanner extends StatelessWidget {
   final String? name;
@@ -23,20 +24,27 @@ class RpActivePackBanner extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: hasPack && enabled ? AppTheme.accent.withValues(alpha: 0.08) : AppTheme.surfaceRaised,
-        borderRadius: BorderRadius.circular(12),
+        color: hasPack && enabled
+            ? AppTheme.accent.withValues(alpha: 0.08)
+            : AppTheme.surfaceRaised,
+        borderRadius: AppRadius.medium,
         border: Border.all(
-          color: hasPack && enabled ? AppTheme.accent.withValues(alpha: 0.35) : AppTheme.borderGray,
+          color: hasPack && enabled
+              ? AppTheme.accent.withValues(alpha: 0.35)
+              : AppTheme.borderGray,
         ),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       child: Row(
         children: [
           Container(
-            width: 36, height: 36,
+            width: 36,
+            height: 36,
             decoration: BoxDecoration(
-              color: hasPack && enabled ? AppTheme.accent.withValues(alpha: 0.15) : AppTheme.surfaceRaisedSolid,
-              borderRadius: BorderRadius.circular(10),
+              color: hasPack && enabled
+                  ? AppTheme.accent.withValues(alpha: 0.15)
+                  : AppTheme.surfaceRaisedSolid,
+              borderRadius: AppRadius.small,
             ),
             child: Icon(
               Icons.layers_rounded,
@@ -63,7 +71,10 @@ class RpActivePackBanner extends StatelessWidget {
                   const SizedBox(height: 2),
                   Text(
                     enabled ? l.rpActiveOnConnect : l.rpDisabled,
-                    style: TextStyle(color: enabled ? AppTheme.accent : AppTheme.textMuted, fontSize: 11),
+                    style: TextStyle(
+                      color: enabled ? AppTheme.accent : AppTheme.textMuted,
+                      fontSize: 11,
+                    ),
                   ),
                 ],
               ],
@@ -72,7 +83,11 @@ class RpActivePackBanner extends StatelessWidget {
           if (onRemove != null)
             IconButton(
               onPressed: onRemove,
-              icon: Icon(Icons.delete_outline_rounded, color: AppTheme.textMuted, size: 18),
+              icon: Icon(
+                Icons.delete_outline_rounded,
+                color: AppTheme.textMuted,
+                size: 18,
+              ),
               padding: EdgeInsets.zero,
               constraints: const BoxConstraints(),
             ),

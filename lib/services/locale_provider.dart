@@ -41,12 +41,3 @@ Future<void> setLocale(Locale locale) async {
   final file = await _getFile();
   await file.writeAsString(jsonEncode({'languageCode': locale.languageCode}));
 }
-
-Future<void> clearSavedLocale() async {
-  try {
-    final file = await _getFile();
-    if (await file.exists()) await file.delete();
-  } catch (e) {
-    return;
-  }
-}

@@ -29,10 +29,7 @@ class PlayerLookupService {
         final body = jsonDecode(res.body) as Map<String, dynamic>;
         return (profile: JavaProfile.fromJson(body), error: null);
       }
-      return (
-        profile: null,
-        error: LookupError.failed,
-      );
+      return (profile: null, error: LookupError.failed);
     } catch (e) {
       return (profile: null, error: LookupError.network);
     }
@@ -54,19 +51,13 @@ class PlayerLookupService {
         return (result: null, error: LookupError.notFound);
       }
       if (res.statusCode == 503) {
-        return (
-          result: null,
-          error: LookupError.bedrockUnavailable,
-        );
+        return (result: null, error: LookupError.bedrockUnavailable);
       }
       if (res.statusCode == 200) {
         final body = jsonDecode(res.body) as Map<String, dynamic>;
         return (result: CombinedProfile.fromJson(body), error: null);
       }
-      return (
-        result: null,
-        error: LookupError.failed,
-      );
+      return (result: null, error: LookupError.failed);
     } catch (e) {
       return (result: null, error: LookupError.network);
     }
@@ -88,19 +79,13 @@ class PlayerLookupService {
         return (profile: null, error: LookupError.notFound);
       }
       if (res.statusCode == 503) {
-        return (
-          profile: null,
-          error: LookupError.bedrockUnavailable,
-        );
+        return (profile: null, error: LookupError.bedrockUnavailable);
       }
       if (res.statusCode == 200) {
         final body = jsonDecode(res.body) as Map<String, dynamic>;
         return (profile: BedrockProfile.fromJson(body), error: null);
       }
-      return (
-        profile: null,
-        error: LookupError.failed,
-      );
+      return (profile: null, error: LookupError.failed);
     } catch (e) {
       return (profile: null, error: LookupError.network);
     }

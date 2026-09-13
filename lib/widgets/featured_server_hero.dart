@@ -8,6 +8,7 @@ import '../services/server_status_service.dart';
 import '../services/theme_service.dart';
 import '../widgets/components/app_toast.dart';
 import '../l10n/app_localizations.dart';
+import '../theme/app_tokens.dart';
 
 class FeaturedServerHero extends StatefulWidget {
   static const double defaultHeight = 190;
@@ -20,6 +21,7 @@ class FeaturedServerHero extends StatefulWidget {
   final BorderRadius borderRadius;
   final double height;
   final double topInset;
+  final double bottomInset;
 
   const FeaturedServerHero({
     super.key,
@@ -31,6 +33,7 @@ class FeaturedServerHero extends StatefulWidget {
     this.borderRadius = const BorderRadius.all(Radius.circular(20)),
     this.height = defaultHeight,
     this.topInset = 0,
+    this.bottomInset = 0,
   });
 
   @override
@@ -80,7 +83,6 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
     });
   }
 
-
   Future<ServerStatus> _getHeroStatus(FeaturedServer server) {
     final key = '${server.address}:${server.port}';
     return _statusCache.putIfAbsent(
@@ -110,7 +112,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
     return ClipRRect(
       borderRadius: widget.borderRadius,
       child: SizedBox(
-        height: widget.height + widget.topInset,
+        height: widget.height + widget.topInset + widget.bottomInset,
         child: Stack(
           fit: StackFit.expand,
           children: [
@@ -177,155 +179,180 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
         final logoSlot = min(150.0, box.maxWidth * 0.38);
         final textWidth = box.maxWidth - logoSlot - 22;
         return Stack(
-      fit: StackFit.expand,
-      children: [
-        Container(color: ThemeService.instance.background),
-        if (hasIcon) ...[
-          Align(
-            alignment: Alignment.centerRight,
-            child: Padding(
-              padding: const EdgeInsets.only(right: 8),
-              child: SizedBox(
-                width: logoSlot,
-                height: widget.height * 0.79,
-                child: Image.network(
-                  iconUrl,
-                  fit: BoxFit.contain,
-                  errorBuilder: (_, _, _) => const SizedBox.shrink(),
-                ),
-              ),
-            ),
-          ),
-        ],
-        Padding(
-          padding: EdgeInsets.fromLTRB(14, 46 + widget.topInset, 14, 14),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Expanded(
-                child: GestureDetector(
-                  onTap: server?.slug == null ? null : () => _openServer(server!),
-                  behavior: HitTestBehavior.opaque,
-                  child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    ConstrainedBox(
-                      constraints: BoxConstraints(maxWidth: textWidth),
-                      child: Text(
-                        server?.name ?? 'MCCompanion',
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w800,
-                          height: 1.15,
-                          color: ThemeService.instance.textPrimary,
-                        ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+          fit: StackFit.expand,
+          children: [
+            Container(color: ThemeService.instance.background),
+            if (hasIcon) ...[
+              Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 8),
+                  child: SizedBox(
+                    width: logoSlot,
+                    height: widget.height * 0.79,
+                    child: Image.network(
+                      iconUrl,
+                      fit: BoxFit.contain,
+                      errorBuilder: (_, _, _) => const SizedBox.shrink(),
                     ),
-                    const SizedBox(height: 4),
-                    ConstrainedBox(
-                      constraints: BoxConstraints(maxWidth: min(220.0, textWidth)),
-                      child: Text(
-                        server?.description.isNotEmpty == true
-                            ? server!.description
-                            : AppLocalizations.of(
-                                context,
-                              )!.featuredServerTagline,
-                        style: TextStyle(
-                          color: ThemeService.instance.textPrimary.withValues(
-                            alpha: 0.60,
-                          ),
-                          fontSize: 11,
-                          height: 1.35,
-                        ),
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    if (server != null)
-                      _HeroStatusBadge(statusFuture: _getHeroStatus(server))
-                    else
-                      _staticStatusBadge(dot: AppTheme.textMuted, label: '...'),
-                  ],
-                  ),
-                ),
-              ),
-              const SizedBox(width: 12),
-              GestureDetector(
-                onTap: server == null || broadcasting
-                    ? null
-                    : () {
-                        widget.ipController.text = server.address;
-                        widget.portController.text = server.port.toString();
-                        AppToast.show(
-                          context,
-                          message: server.name,
-                          icon: Icons.play_arrow_rounded,
-                          color: AppTheme.accent,
-                        );
-                        widget.onSelected?.call();
-                      },
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 18,
-                    vertical: 12,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(
-                      alpha: server == null || broadcasting ? 0.08 : 0.15,
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: Colors.white.withValues(
-                        alpha: server == null || broadcasting ? 0.10 : 0.30,
-                      ),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.featuredServerPlay,
-                        style: TextStyle(
-                          color: ThemeService.instance.textPrimary.withValues(
-                            alpha: server == null || broadcasting ? 0.35 : 1.0,
-                          ),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      const SizedBox(width: 6),
-                      Icon(
-                        Icons.play_arrow_rounded,
-                        color: ThemeService.instance.textPrimary.withValues(
-                          alpha: server == null || broadcasting ? 0.35 : 1.0,
-                        ),
-                        size: 16,
-                      ),
-                    ],
                   ),
                 ),
               ),
             ],
-          ),
-        ),
-      ],
+            Padding(
+              padding: EdgeInsets.fromLTRB(
+                14,
+                46 + widget.topInset,
+                14,
+                14 + widget.bottomInset,
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: server?.slug == null
+                          ? null
+                          : () => _openServer(server!),
+                      behavior: HitTestBehavior.opaque,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          ConstrainedBox(
+                            constraints: BoxConstraints(maxWidth: textWidth),
+                            child: Text(
+                              server?.name ?? 'MCCompanion',
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.w800,
+                                height: 1.15,
+                                color: ThemeService.instance.textPrimary,
+                              ),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          ConstrainedBox(
+                            constraints: BoxConstraints(
+                              maxWidth: min(220.0, textWidth),
+                            ),
+                            child: Text(
+                              server?.description.isNotEmpty == true
+                                  ? server!.description
+                                  : AppLocalizations.of(
+                                      context,
+                                    )!.featuredServerTagline,
+                              style: TextStyle(
+                                color: ThemeService.instance.textPrimary
+                                    .withValues(alpha: 0.60),
+                                fontSize: 11,
+                                height: 1.35,
+                              ),
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          ConstrainedBox(
+                            constraints: BoxConstraints(
+                              maxWidth: box.maxWidth - 28,
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                if (server != null)
+                                  Flexible(
+                                    child: _HeroStatusBadge(
+                                      statusFuture: _getHeroStatus(server),
+                                    ),
+                                  )
+                                else
+                                  _staticStatusBadge(
+                                    dot: AppTheme.textMuted,
+                                    label: '...',
+                                  ),
+                                const SizedBox(width: 8),
+                                _playButton(context, server, broadcasting),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         );
       },
     );
   }
 
+  Widget _playButton(
+    BuildContext context,
+    FeaturedServer? server,
+    bool broadcasting,
+  ) {
+    final disabled = server == null || broadcasting;
+    return GestureDetector(
+      onTap: disabled
+          ? null
+          : () {
+              widget.ipController.text = server.address;
+              widget.portController.text = server.port.toString();
+              AppToast.show(
+                context,
+                message: server.name,
+                icon: Icons.play_arrow_rounded,
+                color: AppTheme.accent,
+              );
+              widget.onSelected?.call();
+            },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+        decoration: BoxDecoration(
+          color: disabled
+              ? Colors.white.withValues(alpha: 0.08)
+              : AppTheme.accent,
+          borderRadius: AppRadius.rounded,
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              AppLocalizations.of(context)!.featuredServerPlay,
+              style: TextStyle(
+                color: disabled
+                    ? ThemeService.instance.textPrimary.withValues(alpha: 0.35)
+                    : Colors.black,
+                fontSize: 13,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+            const SizedBox(width: 4),
+            Icon(
+              Icons.play_arrow_rounded,
+              color: disabled
+                  ? ThemeService.instance.textPrimary.withValues(alpha: 0.35)
+                  : Colors.black,
+              size: 15,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   Widget _heroBadge({required IconData icon, required String label}) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 5),
       decoration: BoxDecoration(
         color: Colors.black.withValues(alpha: 0.45),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: AppRadius.large,
         border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
       ),
       child: Row(
@@ -352,7 +379,7 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
         color: Colors.black.withValues(alpha: 0.45),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: AppRadius.large,
         border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
       ),
       child: Row(
@@ -423,7 +450,7 @@ class _HeroStatusBadge extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
         color: Colors.black.withValues(alpha: 0.45),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: AppRadius.large,
         border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
       ),
       child: Row(

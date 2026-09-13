@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import '../theme/app_theme.dart';
+import '../design/design.dart';
 import '../services/region_detector.dart';
 import '../services/relay_service.dart';
 import '../services/connectivity_checker.dart';
 import '../widgets/dialogs/connectivity_warning_dialog.dart';
 import '../l10n/app_localizations.dart';
+import '../widgets/components/animated_wordmark.dart';
 import 'app_shell.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -48,10 +49,12 @@ class _SplashScreenState extends State<SplashScreen>
     _fadeController.forward();
 
     await Future.wait([
-      RegionDetector.resolve().then((relay) {
-        _detectedRelay = relay;
-        RelayService.setRelay(relay);
-      }).catchError((_) {}),
+      RegionDetector.resolve()
+          .then((relay) {
+            _detectedRelay = relay;
+            RelayService.setRelay(relay);
+          })
+          .catchError((_) {}),
       ConnectivityChecker.check().then((result) {
         _connectivityResult = result;
       }),
@@ -89,27 +92,14 @@ class _SplashScreenState extends State<SplashScreen>
       items.add(
         Text(
           labels[i],
-          style: TextStyle(
-            color: Colors.white.withValues(alpha: 0.75),
-            fontSize: 12,
-            fontWeight: FontWeight.w600,
-            letterSpacing: 0.8,
-            shadows: const [Shadow(color: Colors.black54, blurRadius: 6)],
-          ),
+          style: DsType.caption.copyWith(fontWeight: FontWeight.w600),
         ),
       );
       if (i < labels.length - 1) {
         items.add(
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Text(
-              '·',
-              style: TextStyle(
-                color: Colors.white.withValues(alpha: 0.35),
-                fontSize: 12,
-                shadows: const [Shadow(color: Colors.black54, blurRadius: 6)],
-              ),
-            ),
+            child: Text('·', style: DsType.caption),
           ),
         );
       }
@@ -120,46 +110,46 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.background,
+      backgroundColor: DsColor.bg,
       body: FadeTransition(
         opacity: _fadeAnimation,
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            Image.asset('assets/images/splash.png', fit: BoxFit.cover),
-            Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              child: SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-                  child: Center(
-                    child: Image.asset('assets/images/logo.png', height: 340),
-                  ),
+        child: SafeArea(
+          child: Column(
+            children: [
+              const Spacer(),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: DsSpace.xxl),
+                child: AnimatedWordmark(asset: 'assets/images/logo.png'),
+              ),
+              const SizedBox(height: DsSpace.xxl),
+              SizedBox(
+                width: 96,
+                child: LinearProgressIndicator(
+                  minHeight: 2,
+                  backgroundColor: DsColor.line,
+                  color: DsColor.accent,
                 ),
               ),
-            ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: _featureItems([
-                      AppLocalizations.of(context)!.splashFeatureConnect,
-                      AppLocalizations.of(context)!.splashFeatureFriends,
-                      AppLocalizations.of(context)!.splashFeatureChat,
-                      AppLocalizations.of(context)!.splashFeatureSkins,
-                    ]),
-                  ),
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  DsSpace.lg,
+                  0,
+                  DsSpace.lg,
+                  DsSpace.xl,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: _featureItems([
+                    AppLocalizations.of(context)!.featureLabelConnector,
+                    AppLocalizations.of(context)!.featureLabelPartners,
+                    AppLocalizations.of(context)!.featureLabelSkins,
+                    AppLocalizations.of(context)!.featureLabelLookup,
+                  ]),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

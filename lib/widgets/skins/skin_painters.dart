@@ -6,18 +6,6 @@ import 'package:http/http.dart' as http;
 
 import '../../theme/app_theme.dart';
 
-class GeyserSkin {
-  final int id;
-  final bool isSteve;
-  final String textureId;
-  String get textureUrl => 'https://textures.minecraft.net/texture/$textureId';
-  const GeyserSkin({
-    required this.id,
-    required this.isSteve,
-    required this.textureId,
-  });
-}
-
 class SkinFaceImage extends StatefulWidget {
   final String textureUrl;
   final double size;
@@ -270,7 +258,11 @@ class SkinBodyPainter extends CustomPainter {
 class LocalSkinBodyImage extends StatefulWidget {
   final String filePath;
   final double height;
-  const LocalSkinBodyImage({super.key, required this.filePath, required this.height});
+  const LocalSkinBodyImage({
+    super.key,
+    required this.filePath,
+    required this.height,
+  });
 
   @override
   State<LocalSkinBodyImage> createState() => LocalSkinBodyImageState();

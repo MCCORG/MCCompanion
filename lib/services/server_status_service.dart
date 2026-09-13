@@ -24,10 +24,10 @@ class ServerStatus {
 class ServerStatusService {
   ServerStatusService._();
 
-  static final Map<String, ServerStatus> _cache     = {};
-  static final Map<String, DateTime>     _lastFetch = {};
+  static final Map<String, ServerStatus> _cache = {};
+  static final Map<String, DateTime> _lastFetch = {};
   static const Duration _cacheDuration = Duration(minutes: 2);
-  static const Duration _timeout       = Duration(seconds: 5);
+  static const Duration _timeout = Duration(seconds: 5);
 
   static Future<ServerStatus> getStatus(
     String address,
@@ -37,7 +37,7 @@ class ServerStatusService {
     final key = '$address:$port';
     final now = DateTime.now();
 
-    final cached   = _cache[key];
+    final cached = _cache[key];
     final fetchedAt = _lastFetch[key];
     if (cached != null &&
         fetchedAt != null &&
@@ -49,7 +49,7 @@ class ServerStatusService {
         ? await _pingJava(address, port)
         : await _pingBedrock(address, port);
 
-    _cache[key]     = status;
+    _cache[key] = status;
     _lastFetch[key] = now;
     return status;
   }
@@ -57,10 +57,10 @@ class ServerStatusService {
   static Future<ServerStatus> _pingJava(String address, int port) async {
     final result = await JavaServerPing.ping(address, port, timeout: _timeout);
     return ServerStatus(
-      isOnline:   result.isOnline,
-      players:    result.players,
+      isOnline: result.isOnline,
+      players: result.players,
       maxPlayers: result.maxPlayers,
-      version:    result.version,
+      version: result.version,
     );
   }
 
@@ -72,25 +72,19 @@ class ServerStatusService {
         timeout: _timeout,
       );
       return ServerStatus(
-        isOnline:   info.isOnline,
-        players:    info.isOnline ? info.players    : null,
+        isOnline: info.isOnline,
+        players: info.isOnline ? info.players : null,
         maxPlayers: info.isOnline ? info.maxPlayers : null,
-        version:    info.isOnline && info.version.isNotEmpty  ? info.version  : null,
-        gameType:   info.isOnline && info.gameType.isNotEmpty ? info.gameType : null,
-        software:   info.isOnline && info.software.isNotEmpty ? info.software : null,
+        version: info.isOnline && info.version.isNotEmpty ? info.version : null,
+        gameType: info.isOnline && info.gameType.isNotEmpty
+            ? info.gameType
+            : null,
+        software: info.isOnline && info.software.isNotEmpty
+            ? info.software
+            : null,
       );
     } catch (_) {
       return ServerStatus.offline;
     }
-  }
-
-  static void invalidate(String address, int port) {
-    _cache.remove('$address:$port');
-    _lastFetch.remove('$address:$port');
-  }
-
-  static void clearAll() {
-    _cache.clear();
-    _lastFetch.clear();
   }
 }
