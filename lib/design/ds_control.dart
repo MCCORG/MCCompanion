@@ -73,15 +73,17 @@ class DsSegmented<T> extends StatelessWidget {
                 const SizedBox(width: DsSpace.sm - 2),
               ],
               Flexible(
-                child: Text(
-                  option.label,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: foreground,
-                    fontSize: 13.5,
-                    fontWeight: selected ? FontWeight.w600 : FontWeight.w500,
-                    letterSpacing: -0.1,
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    option.label,
+                    maxLines: 1,
+                    style: TextStyle(
+                      color: foreground,
+                      fontSize: 13.5,
+                      fontWeight: selected ? FontWeight.w600 : FontWeight.w500,
+                      letterSpacing: -0.1,
+                    ),
                   ),
                 ),
               ),

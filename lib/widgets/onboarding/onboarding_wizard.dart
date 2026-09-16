@@ -654,8 +654,6 @@ class _NavItem extends StatelessWidget {
             fontSize: 10,
             fontWeight: active ? FontWeight.w700 : FontWeight.w400,
           ),
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
         ),
       ],
     );

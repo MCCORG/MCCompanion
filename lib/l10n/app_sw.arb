@@ -141,7 +141,7 @@
   "@howToXboxTitle": {
     "description": "Title for the Xbox / PS4-5 how-to modal"
   },
-  "howToXboxSubtitle": "Cheza kupitia utangazaji wa LAN au proxy",
+  "howToXboxSubtitle": "Unganisha kupitia LAN",
   "@howToXboxSubtitle": {
     "description": "Short subtitle for Xbox / PS4-5 menu tile"
   },
@@ -153,7 +153,7 @@
   "@howToNintendoTitle": {
     "description": "Title for the Nintendo how-to modal"
   },
-  "howToNintendoSubtitle": "Maelekezo ya DNS relay kwa Switch",
+  "howToNintendoSubtitle": "Unganisha kupitia DNS",
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
@@ -161,7 +161,7 @@
   "@howToFriendsTitle": {
     "description": "Title for the Friends-mode how-to modal"
   },
-  "howToFriendsSubtitle": "Alika marafiki na ujiunge kupitia LAN",
+  "howToFriendsSubtitle": "Unganisha kupitia Marafiki",
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
   },
@@ -1474,5 +1474,7 @@
   "serverVoteNoRewards": "Umepiga kura. Seva hii haina zawadi zilizowekwa.",
   "serverVoteFailed": "Haikufanya kazi, tafadhali jaribu tena.",
   "serverVoteOffline": "Imeshindwa kufikia seva. Angalia muunganisho wako.",
-  "feedbackViewYourReport": "Angalia ripoti yako"
+  "feedbackViewYourReport": "Angalia ripoti yako",
+  "showMore": "Zaidi",
+  "showLess": "Punguza"
 }

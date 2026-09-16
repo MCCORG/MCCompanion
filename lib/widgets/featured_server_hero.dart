@@ -46,6 +46,60 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
   int _heroBgPage = 0;
   Timer? _heroTimer;
   final Map<String, Future<ServerStatus>> _statusCache = {};
+  bool _descExpanded = false;
+
+  static const TextStyle _descStyle = TextStyle(fontSize: 11, height: 1.35);
+
+  double _descWidthFor(double boxWidth) {
+    final logoSlot = min(150.0, boxWidth * 0.38);
+    return min(220.0, boxWidth - logoSlot - 22);
+  }
+
+  double _descHeight(String text, double width, int? maxLines) {
+    final painter = TextPainter(
+      text: TextSpan(text: text, style: _descStyle),
+      maxLines: maxLines,
+      textDirection: TextDirection.ltr,
+    )..layout(maxWidth: width);
+    return painter.height;
+  }
+
+  bool _descOverflows(String text, double width) {
+    final painter = TextPainter(
+      text: TextSpan(text: text, style: _descStyle),
+      maxLines: 2,
+      textDirection: TextDirection.ltr,
+    )..layout(maxWidth: width);
+    return painter.didExceedMaxLines;
+  }
+
+  String _descriptionFor(BuildContext context, FeaturedServer? server) =>
+      server?.description.isNotEmpty == true
+      ? server!.description
+      : AppLocalizations.of(context)!.featuredServerTagline;
+
+  static const double _toggleHeight = 20;
+
+  double _extraHeight(BuildContext context) {
+    final width = _descWidthFor(MediaQuery.sizeOf(context).width);
+    if (width <= 0) return 0;
+    final pages = _featuredServers.isEmpty
+        ? <FeaturedServer?>[null]
+        : _featuredServers;
+    var extra = 0.0;
+    var anyOverflow = false;
+    for (final server in pages) {
+      final text = _descriptionFor(context, server);
+      if (!_descOverflows(text, width)) continue;
+      anyOverflow = true;
+      if (!_descExpanded) continue;
+      final full = _descHeight(text, width, null);
+      final capped = _descHeight(text, width, 2);
+      extra = max(extra, full - capped);
+    }
+    if (!anyOverflow) return 0;
+    return extra + _toggleHeight;
+  }
 
   @override
   void initState() {
@@ -112,7 +166,11 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
     return ClipRRect(
       borderRadius: widget.borderRadius,
       child: SizedBox(
-        height: widget.height + widget.topInset + widget.bottomInset,
+        height:
+            widget.height +
+            widget.topInset +
+            widget.bottomInset +
+            _extraHeight(context),
         child: Stack(
           fit: StackFit.expand,
           children: [
@@ -229,30 +287,58 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
                                 height: 1.15,
                                 color: ThemeService.instance.textPrimary,
                               ),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                           const SizedBox(height: 4),
-                          ConstrainedBox(
-                            constraints: BoxConstraints(
-                              maxWidth: min(220.0, textWidth),
-                            ),
-                            child: Text(
-                              server?.description.isNotEmpty == true
-                                  ? server!.description
-                                  : AppLocalizations.of(
-                                      context,
-                                    )!.featuredServerTagline,
-                              style: TextStyle(
-                                color: ThemeService.instance.textPrimary
-                                    .withValues(alpha: 0.60),
-                                fontSize: 11,
-                                height: 1.35,
-                              ),
-                              maxLines: 3,
-                              overflow: TextOverflow.ellipsis,
-                            ),
+                          Builder(
+                            builder: (context) {
+                              final descWidth = min(220.0, textWidth);
+                              final text = _descriptionFor(context, server);
+                              final overflows = _descOverflows(text, descWidth);
+                              final l = AppLocalizations.of(context)!;
+                              return ConstrainedBox(
+                                constraints: BoxConstraints(
+                                  maxWidth: descWidth,
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      text,
+                                      maxLines: _descExpanded ? null : 2,
+                                      style: _descStyle.copyWith(
+                                        color: ThemeService.instance.textPrimary
+                                            .withValues(alpha: 0.60),
+                                      ),
+                                    ),
+                                    if (overflows)
+                                      GestureDetector(
+                                        onTap: () => setState(
+                                          () => _descExpanded = !_descExpanded,
+                                        ),
+                                        behavior: HitTestBehavior.opaque,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                            top: 2,
+                                            bottom: 2,
+                                          ),
+                                          child: Text(
+                                            _descExpanded
+                                                ? l.showLess
+                                                : l.showMore,
+                                            style: TextStyle(
+                                              color: AppTheme.accent,
+                                              fontSize: 11,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              );
+                            },
                           ),
                           const SizedBox(height: 10),
                           ConstrainedBox(

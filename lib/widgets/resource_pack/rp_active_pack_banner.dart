@@ -64,8 +64,6 @@ class RpActivePackBanner extends StatelessWidget {
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
                   ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                 ),
                 if (hasPack) ...[
                   const SizedBox(height: 2),

@@ -87,15 +87,17 @@ class _Tab extends StatelessWidget {
                 color: selected ? AppTheme.accent : AppTheme.textMuted,
               ),
               const SizedBox(height: 4),
-              Text(
-                label,
-                style: TextStyle(
-                  color: selected ? AppTheme.accent : AppTheme.textMuted,
-                  fontSize: 11,
-                  fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  label,
+                  style: TextStyle(
+                    color: selected ? AppTheme.accent : AppTheme.textMuted,
+                    fontSize: 11,
+                    fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
+                  ),
+                  maxLines: 1,
                 ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
               ),
             ],
           ),

@@ -247,8 +247,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get howToXboxTitle => 'Xbox / PS4-5 (LAN / प्रॉक्सी)';
 
   @override
-  String get howToXboxSubtitle =>
-      'LAN ब्रॉडकास्ट या प्रॉक्सी के माध्यम से खेलें';
+  String get howToXboxSubtitle => 'LAN से कनेक्ट करें';
 
   @override
   String get howToXboxBody =>
@@ -258,14 +257,13 @@ class AppLocalizationsHi extends AppLocalizations {
   String get howToNintendoTitle => 'Nintendo Switch (DNS मोड)';
 
   @override
-  String get howToNintendoSubtitle => 'Switch के लिए DNS रिले निर्देश';
+  String get howToNintendoSubtitle => 'DNS से कनेक्ट करें';
 
   @override
   String get howToFriendsTitle => 'मित्र मोड';
 
   @override
-  String get howToFriendsSubtitle =>
-      'मित्रों को आमंत्रित करें और LAN के माध्यम से जुड़ें';
+  String get howToFriendsSubtitle => 'फ्रेंड्स से कनेक्ट करें';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion दिखाई नहीं दे रहा';
@@ -2232,4 +2230,10 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get feedbackViewYourReport => 'अपनी रिपोर्ट देखें';
+
+  @override
+  String get showMore => 'और';
+
+  @override
+  String get showLess => 'कम';
 }

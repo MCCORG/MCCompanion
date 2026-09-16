@@ -102,8 +102,6 @@ class RpFeaturedPackCard extends StatelessWidget {
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
                   ),
                   if (description != null && description.isNotEmpty) ...[
                     const SizedBox(height: 3),
@@ -114,8 +112,6 @@ class RpFeaturedPackCard extends StatelessWidget {
                         fontSize: 12,
                         height: 1.4,
                       ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                   const SizedBox(height: 6),

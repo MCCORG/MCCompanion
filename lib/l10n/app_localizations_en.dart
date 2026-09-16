@@ -246,7 +246,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get howToXboxTitle => 'Xbox / PS4-5 (LAN / Proxy)';
 
   @override
-  String get howToXboxSubtitle => 'Play via LAN broadcast or proxy';
+  String get howToXboxSubtitle => 'Connect via LAN';
 
   @override
   String get howToXboxBody =>
@@ -256,13 +256,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get howToNintendoTitle => 'Nintendo Switch (DNS mode)';
 
   @override
-  String get howToNintendoSubtitle => 'DNS relay instructions for Switch';
+  String get howToNintendoSubtitle => 'Connect via DNS';
 
   @override
   String get howToFriendsTitle => 'Friends mode';
 
   @override
-  String get howToFriendsSubtitle => 'Invite friends and join via LAN';
+  String get howToFriendsSubtitle => 'Connect via Friends';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion does not appear';
@@ -2225,4 +2225,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get feedbackViewYourReport => 'View your report';
+
+  @override
+  String get showMore => 'More';
+
+  @override
+  String get showLess => 'Less';
 }

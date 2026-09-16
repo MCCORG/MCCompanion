@@ -336,10 +336,8 @@ class _ServerListScreenState extends State<ServerListScreen> {
           style: TextStyle(color: AppTheme.textPrimary, fontSize: 13),
           items: items
               .map(
-                (item) => DropdownMenuItem(
-                  value: item.$1,
-                  child: Text(item.$2, overflow: TextOverflow.ellipsis),
-                ),
+                (item) =>
+                    DropdownMenuItem(value: item.$1, child: Text(item.$2)),
               )
               .toList(growable: false),
           onChanged: (selected) {

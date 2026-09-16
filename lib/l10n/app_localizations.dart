@@ -579,7 +579,7 @@ abstract class AppLocalizations {
   /// Short subtitle for Xbox / PS4-5 menu tile
   ///
   /// In en, this message translates to:
-  /// **'Play via LAN broadcast or proxy'**
+  /// **'Connect via LAN'**
   String get howToXboxSubtitle;
 
   /// Detailed steps for Xbox/PS4-5 how-to modal
@@ -597,7 +597,7 @@ abstract class AppLocalizations {
   /// Short subtitle for Nintendo menu tile
   ///
   /// In en, this message translates to:
-  /// **'DNS relay instructions for Switch'**
+  /// **'Connect via DNS'**
   String get howToNintendoSubtitle;
 
   /// Title for the Friends-mode how-to modal
@@ -609,7 +609,7 @@ abstract class AppLocalizations {
   /// Short subtitle for Friends menu tile
   ///
   /// In en, this message translates to:
-  /// **'Invite friends and join via LAN'**
+  /// **'Connect via Friends'**
   String get howToFriendsSubtitle;
 
   /// Title for help topic when MCCompanion isn't visible on console
@@ -4175,6 +4175,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'View your report'**
   String get feedbackViewYourReport;
+
+  /// No description provided for @showMore.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get showMore;
+
+  /// No description provided for @showLess.
+  ///
+  /// In en, this message translates to:
+  /// **'Less'**
+  String get showLess;
 }
 
 class _AppLocalizationsDelegate

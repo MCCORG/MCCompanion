@@ -184,19 +184,9 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        s.name,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: DsType.bodyStrong,
-                      ),
+                      Text(s.name, style: DsType.bodyStrong),
                       const SizedBox(height: DsSpace.xxs),
-                      Text(
-                        '${s.ip}:${s.port}',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: DsType.caption,
-                      ),
+                      Text('${s.ip}:${s.port}', style: DsType.caption),
                     ],
                   ),
                 ),
@@ -242,12 +232,7 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
                         ),
                         const SizedBox(height: DsSpace.sm),
                       ],
-                      Text(
-                        meta,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: DsType.caption,
-                      ),
+                      Text(meta, style: DsType.caption),
                       if (s.lastCheckedAt != null) ...[
                         const SizedBox(height: DsSpace.xxs),
                         Text(_checkedLabel(l), style: DsType.caption),

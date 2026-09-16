@@ -110,12 +110,7 @@ class _ServerListCardState extends State<ServerListCard> {
                       ),
                       const SizedBox(width: DsSpace.sm - 2),
                       Expanded(
-                        child: Text(
-                          server.name,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: DsType.bodyStrong,
-                        ),
+                        child: Text(server.name, style: DsType.bodyStrong),
                       ),
                       if (server.featured) ...[
                         const SizedBox(width: DsSpace.sm - 2),
@@ -133,20 +128,10 @@ class _ServerListCardState extends State<ServerListCard> {
                     ],
                   ),
                   const SizedBox(height: DsSpace.xxs),
-                  Text(
-                    '${server.host}:${server.port}',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: DsType.caption,
-                  ),
+                  Text('${server.host}:${server.port}', style: DsType.caption),
                   if (meta.isNotEmpty) ...[
                     const SizedBox(height: DsSpace.xxs),
-                    Text(
-                      meta,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: DsType.caption,
-                    ),
+                    Text(meta, style: DsType.caption),
                   ],
                 ],
               ),
@@ -154,43 +139,76 @@ class _ServerListCardState extends State<ServerListCard> {
           ],
         ),
         const SizedBox(height: DsSpace.md),
-        Row(
-          children: [
-            Expanded(
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.people_outline_rounded,
-                    size: 15,
-                    color: DsColor.textFaint,
-                  ),
-                  const SizedBox(width: DsSpace.xs + 1),
-                  Text(
-                    server.avgPlayers.round().toString(),
-                    style: DsType.caption.copyWith(color: DsColor.textSoft),
-                  ),
-                  const SizedBox(width: DsSpace.md),
-                  Text(
-                    '${server.uptime}%',
-                    style: DsType.caption.copyWith(color: DsColor.textSoft),
-                  ),
-                ],
-              ),
-            ),
-            DsButton(
+        LayoutBuilder(
+          builder: (context, box) {
+            final stats = Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.people_outline_rounded,
+                  size: 15,
+                  color: DsColor.textFaint,
+                ),
+                const SizedBox(width: DsSpace.xs + 1),
+                Text(
+                  server.avgPlayers.round().toString(),
+                  style: DsType.caption.copyWith(color: DsColor.textSoft),
+                ),
+                const SizedBox(width: DsSpace.md),
+                Icon(
+                  Icons.schedule_rounded,
+                  size: 15,
+                  color: DsColor.textFaint,
+                ),
+                const SizedBox(width: DsSpace.xs + 1),
+                Text(
+                  '${server.uptime}%',
+                  style: DsType.caption.copyWith(color: DsColor.textSoft),
+                ),
+              ],
+            );
+
+            final details = DsButton(
               label: l.serverCardViewServer,
               tone: DsButtonTone.quiet,
               size: DsButtonSize.small,
               onPressed: onOpenDetails,
-            ),
-            const SizedBox(width: DsSpace.xs),
-            DsButton(
+            );
+
+            final play = DsButton(
               label: l.serverCardPlay,
               icon: Icons.play_arrow_rounded,
               size: DsButtonSize.small,
               onPressed: onPlay,
-            ),
-          ],
+            );
+
+            if (box.maxWidth < 380) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Align(alignment: Alignment.centerLeft, child: stats),
+                  const SizedBox(height: DsSpace.md),
+                  Row(
+                    children: [
+                      Expanded(child: details),
+                      const SizedBox(width: DsSpace.sm),
+                      Expanded(child: play),
+                    ],
+                  ),
+                ],
+              );
+            }
+
+            return Row(
+              children: [
+                stats,
+                const Spacer(),
+                details,
+                const SizedBox(width: DsSpace.xs),
+                play,
+              ],
+            );
+          },
         ),
       ],
     );
@@ -268,8 +286,6 @@ class _AddressState extends State<_Address> {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
               child: Text(
                 widget.server.connectAddress,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   color: AppTheme.textPrimary,
                   fontSize: 12.5,

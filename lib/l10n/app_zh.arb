@@ -141,7 +141,7 @@
   "@howToXboxTitle": {
     "description": "Title for the Xbox / PS4-5 how-to modal"
   },
-  "howToXboxSubtitle": "通过局域网广播或代理游玩",
+  "howToXboxSubtitle": "通过局域网连接",
   "@howToXboxSubtitle": {
     "description": "Short subtitle for Xbox / PS4-5 menu tile"
   },
@@ -153,7 +153,7 @@
   "@howToNintendoTitle": {
     "description": "Title for the Nintendo how-to modal"
   },
-  "howToNintendoSubtitle": "适用于 Switch 的 DNS 中继说明",
+  "howToNintendoSubtitle": "通过 DNS 连接",
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
@@ -161,7 +161,7 @@
   "@howToFriendsTitle": {
     "description": "Title for the Friends-mode how-to modal"
   },
-  "howToFriendsSubtitle": "邀请好友并通过局域网加入",
+  "howToFriendsSubtitle": "通过好友连接",
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
   },
@@ -1477,5 +1477,7 @@
   "serverVoteNoRewards": "投票成功。该服务器尚未设置奖励。",
   "serverVoteFailed": "操作未成功，请重试。",
   "serverVoteOffline": "无法连接服务器，请检查网络。",
-  "feedbackViewYourReport": "查看你的反馈"
+  "feedbackViewYourReport": "查看你的反馈",
+  "showMore": "展开",
+  "showLess": "收起"
 }

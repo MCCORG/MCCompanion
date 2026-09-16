@@ -206,13 +206,7 @@ class _DesktopServerListScreenState extends State<DesktopServerListScreen> {
             children: [
               Expanded(
                 flex: 3,
-                child: Text(
-                  l.featureLabelPartners,
-                  style: DsType.display,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  softWrap: false,
-                ),
+                child: Text(l.featureLabelPartners, style: DsType.display),
               ),
               const SizedBox(width: DsSpace.md),
               Flexible(
@@ -424,12 +418,7 @@ class _DesktopServerListScreenState extends State<DesktopServerListScreen> {
                     const SizedBox(width: DsSpace.md - 2),
                     Flexible(
                       flex: 3,
-                      child: Text(
-                        server.name,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: DsType.bodyStrong,
-                      ),
+                      child: Text(server.name, style: DsType.bodyStrong),
                     ),
                     if (server.featured) ...[
                       const SizedBox(width: DsSpace.sm - 2),
@@ -444,8 +433,6 @@ class _DesktopServerListScreenState extends State<DesktopServerListScreen> {
                       flex: 2,
                       child: Text(
                         '${server.host}:${server.port}',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
                         style: DsType.caption,
                       ),
                     ),
@@ -459,8 +446,6 @@ class _DesktopServerListScreenState extends State<DesktopServerListScreen> {
                     message: server.version ?? '',
                     child: Text(
                       _shortVersion(server.version),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
                       style: DsType.caption,
                     ),
                   ),
@@ -565,14 +550,7 @@ class _DesktopServerListScreenState extends State<DesktopServerListScreen> {
           children: [
             _icon(server, 46),
             const SizedBox(width: DsSpace.md),
-            Expanded(
-              child: Text(
-                server.name,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: DsType.title,
-              ),
-            ),
+            Expanded(child: Text(server.name, style: DsType.title)),
           ],
         ),
         const SizedBox(height: DsSpace.md),

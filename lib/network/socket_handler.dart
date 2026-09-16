@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'dart:convert';
 import 'dart:async';
 import '../util/logger.dart';
+import 'bedrock_version.dart';
 
 class _ClientState {
   final RawDatagramSocket socket;
@@ -24,8 +25,8 @@ class SocketHandler {
 
   static const int proxyPort = 19132;
   static const String serverName = 'MCCompanion';
-  static const int protocolVersion = 1;
-  static const String gameVersion = '1';
+  static const int protocolVersion = bedrockProtocolVersion;
+  static const String gameVersion = bedrockGameVersion;
   static const int onlinePlayers = 1;
   static const int maxPlayers = 10;
   static final BigInt serverId = BigInt.parse('18403264178514827767');

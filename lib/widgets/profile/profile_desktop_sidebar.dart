@@ -70,8 +70,6 @@ class ProfileDesktopSidebar extends StatelessWidget {
             Text(
               me!.bio!,
               textAlign: TextAlign.center,
-              maxLines: 4,
-              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 color: AppTheme.textSecondary,
                 fontSize: 12,

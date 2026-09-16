@@ -175,17 +175,21 @@ class _NavItem extends StatelessWidget {
                 const SizedBox(height: 5),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 2),
-                  child: Text(
-                    label,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: color,
-                      fontSize: 10,
-                      height: 1.1,
-                      fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
-                      letterSpacing: -0.1,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      label,
+                      maxLines: 1,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: color,
+                        fontSize: 10,
+                        height: 1.1,
+                        fontWeight: isActive
+                            ? FontWeight.w600
+                            : FontWeight.w400,
+                        letterSpacing: -0.1,
+                      ),
                     ),
                   ),
                 ),

@@ -52,12 +52,7 @@ class _UpdateBannerState extends State<UpdateBanner> {
     final tone = DsColor.info;
 
     return Container(
-      margin: const EdgeInsets.fromLTRB(
-        DsSpace.lg,
-        DsSpace.md,
-        DsSpace.lg,
-        0,
-      ),
+      margin: const EdgeInsets.fromLTRB(DsSpace.lg, DsSpace.md, DsSpace.lg, 0),
       padding: const EdgeInsets.all(DsSpace.md),
       decoration: BoxDecoration(
         color: DsColor.surface,
@@ -74,11 +69,7 @@ class _UpdateBannerState extends State<UpdateBanner> {
               color: DsColor.tint(tone, 0.14),
               borderRadius: DsRadius.controlR,
             ),
-            child: Icon(
-              Icons.system_update_alt_rounded,
-              color: tone,
-              size: 16,
-            ),
+            child: Icon(Icons.system_update_alt_rounded, color: tone, size: 16),
           ),
           const SizedBox(width: DsSpace.md),
           Expanded(

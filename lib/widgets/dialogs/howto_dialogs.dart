@@ -654,7 +654,6 @@ class _SectionHeader extends StatelessWidget {
                 fontWeight: FontWeight.w700,
                 letterSpacing: 1.1,
               ),
-              overflow: TextOverflow.ellipsis,
             ),
           ),
         ],

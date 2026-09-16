@@ -34,20 +34,10 @@ class DsHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: DsType.title,
-                ),
+                Text(title, style: DsType.title),
                 if (subtitle != null) ...[
                   const SizedBox(height: DsSpace.xxs),
-                  Text(
-                    subtitle!,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: DsType.caption,
-                  ),
+                  Text(subtitle!, style: DsType.caption),
                 ],
               ],
             ),

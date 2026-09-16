@@ -141,7 +141,7 @@
   "@howToXboxTitle": {
     "description": "Title for the Xbox / PS4-5 how-to modal"
   },
-  "howToXboxSubtitle": "Main melalui siaran LAN atau proxy",
+  "howToXboxSubtitle": "Hubungkan lewat LAN",
   "@howToXboxSubtitle": {
     "description": "Short subtitle for Xbox / PS4-5 menu tile"
   },
@@ -153,7 +153,7 @@
   "@howToNintendoTitle": {
     "description": "Title for the Nintendo how-to modal"
   },
-  "howToNintendoSubtitle": "Petunjuk relay DNS untuk Switch",
+  "howToNintendoSubtitle": "Hubungkan lewat DNS",
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
@@ -161,7 +161,7 @@
   "@howToFriendsTitle": {
     "description": "Title for the Friends-mode how-to modal"
   },
-  "howToFriendsSubtitle": "Undang teman dan gabung melalui LAN",
+  "howToFriendsSubtitle": "Hubungkan lewat Teman",
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
   },
@@ -1474,5 +1474,7 @@
   "serverVoteNoRewards": "Vote terkirim. Server ini belum mengatur hadiah.",
   "serverVoteFailed": "Gagal, silakan coba lagi.",
   "serverVoteOffline": "Tidak dapat menghubungi server. Periksa koneksimu.",
-  "feedbackViewYourReport": "Lihat laporanmu"
+  "feedbackViewYourReport": "Lihat laporanmu",
+  "showMore": "Selengkapnya",
+  "showLess": "Lebih sedikit"
 }

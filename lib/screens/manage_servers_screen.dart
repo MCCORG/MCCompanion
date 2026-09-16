@@ -424,28 +424,13 @@ class _ServerCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  server.name,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: DsType.bodyStrong,
-                ),
+                Text(server.name, style: DsType.bodyStrong),
                 const SizedBox(height: DsSpace.xxs),
-                Text(
-                  '${server.address}:${server.port}',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: DsType.caption,
-                ),
+                Text('${server.address}:${server.port}', style: DsType.caption),
                 if (server.description != null &&
                     server.description!.isNotEmpty) ...[
                   const SizedBox(height: DsSpace.xxs),
-                  Text(
-                    server.description!,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: DsType.caption,
-                  ),
+                  Text(server.description!, style: DsType.caption),
                 ],
               ],
             ),

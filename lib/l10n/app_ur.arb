@@ -141,7 +141,7 @@
   "@howToXboxTitle": {
     "description": "Title for the Xbox / PS4-5 how-to modal"
   },
-  "howToXboxSubtitle": "LAN براڈکاسٹ یا پراکسی کے ذریعے کھیلیں",
+  "howToXboxSubtitle": "LAN کے ذریعے جڑیں",
   "@howToXboxSubtitle": {
     "description": "Short subtitle for Xbox / PS4-5 menu tile"
   },
@@ -153,7 +153,7 @@
   "@howToNintendoTitle": {
     "description": "Title for the Nintendo how-to modal"
   },
-  "howToNintendoSubtitle": "Switch کے لیے DNS ریلے ہدایات",
+  "howToNintendoSubtitle": "DNS کے ذریعے جڑیں",
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
@@ -161,7 +161,7 @@
   "@howToFriendsTitle": {
     "description": "Title for the Friends-mode how-to modal"
   },
-  "howToFriendsSubtitle": "دوستوں کو مدعو کریں اور LAN کے ذریعے شامل ہوں",
+  "howToFriendsSubtitle": "فرینڈز کے ذریعے جڑیں",
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
   },
@@ -1474,5 +1474,7 @@
   "serverVoteNoRewards": "ووٹ ہو گیا۔ اس سرور پر کوئی انعام مقرر نہیں۔",
   "serverVoteFailed": "یہ کام نہیں کیا، براہ کرم دوبارہ کوشش کریں۔",
   "serverVoteOffline": "سرور تک رسائی نہیں ہو سکی۔ اپنا کنکشن چیک کریں۔",
-  "feedbackViewYourReport": "اپنی رپورٹ دیکھیں"
+  "feedbackViewYourReport": "اپنی رپورٹ دیکھیں",
+  "showMore": "مزید",
+  "showLess": "کم"
 }

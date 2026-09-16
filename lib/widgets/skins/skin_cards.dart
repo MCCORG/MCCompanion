@@ -130,8 +130,6 @@ class _GallerySkinCardState extends State<GallerySkinCard> {
                 fontSize: 11,
                 fontWeight: FontWeight.w600,
               ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 3),
@@ -151,8 +149,6 @@ class _GallerySkinCardState extends State<GallerySkinCard> {
                     context,
                   )!.skinByCreator(creatorName ?? creatorUsername),
                   style: TextStyle(color: AppTheme.accent, fontSize: 9),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             const SizedBox(height: 5),
@@ -280,8 +276,6 @@ class CloudSkinCard extends StatelessWidget {
                 fontSize: 11,
                 fontWeight: FontWeight.w600,
               ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 4),
             FaIcon(
@@ -353,8 +347,6 @@ class SavedSkinCard extends StatelessWidget {
                 fontSize: 11,
                 fontWeight: FontWeight.w600,
               ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 4),
             FaIcon(
@@ -507,8 +499,6 @@ class JavaSkinCardState extends State<JavaSkinCard> {
                 fontSize: 11,
                 fontWeight: FontWeight.w600,
               ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 4),
             FaIcon(
@@ -652,8 +642,6 @@ class BedrockSkinCardState extends State<BedrockSkinCard> {
                 fontSize: 11,
                 fontWeight: FontWeight.w600,
               ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 4),
             FaIcon(

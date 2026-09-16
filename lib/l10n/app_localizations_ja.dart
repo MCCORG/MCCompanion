@@ -244,7 +244,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get howToXboxTitle => 'Xbox / PS4-5 (LAN / プロキシ)';
 
   @override
-  String get howToXboxSubtitle => 'LAN ブロードキャストまたは proxy 経由でプレイ';
+  String get howToXboxSubtitle => 'LANで接続';
 
   @override
   String get howToXboxBody =>
@@ -254,13 +254,13 @@ class AppLocalizationsJa extends AppLocalizations {
   String get howToNintendoTitle => 'Nintendo Switch (DNS モード)';
 
   @override
-  String get howToNintendoSubtitle => 'Switch 用 DNS relay 手順';
+  String get howToNintendoSubtitle => 'DNSで接続';
 
   @override
   String get howToFriendsTitle => 'Friends モード';
 
   @override
-  String get howToFriendsSubtitle => '友達を招待して LAN 経由で参加';
+  String get howToFriendsSubtitle => 'フレンドで接続';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion が表示されない';
@@ -2187,4 +2187,10 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get feedbackViewYourReport => '送信した内容を見る';
+
+  @override
+  String get showMore => 'もっと見る';
+
+  @override
+  String get showLess => '閉じる';
 }

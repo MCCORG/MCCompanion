@@ -261,8 +261,6 @@ class _ServerDetailScreenState extends State<ServerDetailScreen> {
                 children: [
                   Text(
                     server.name,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
                     style: DsType.display.copyWith(fontSize: 24),
                   ),
                   const SizedBox(height: DsSpace.sm),
@@ -366,19 +364,12 @@ class _ServerDetailScreenState extends State<ServerDetailScreen> {
                 children: [
                   Text(
                     item.$1,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
                     style: DsType.heading.copyWith(
                       fontFeatures: const [FontFeature.tabularFigures()],
                     ),
                   ),
                   const SizedBox(height: DsSpace.xxs),
-                  Text(
-                    item.$2,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: DsType.caption,
-                  ),
+                  Text(item.$2, style: DsType.caption),
                 ],
               ),
             ),

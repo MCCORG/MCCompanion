@@ -233,8 +233,8 @@ class _SkinCommentsSectionState extends State<SkinCommentsSection> {
                 child: TextField(
                   controller: _ctrl,
                   maxLength: 500,
-                  maxLines: 3,
                   minLines: 1,
+                  maxLines: 3,
                   style: TextStyle(color: AppTheme.textPrimary, fontSize: 13),
                   decoration: InputDecoration(
                     hintText: l.commentsPlaceholder,
@@ -955,8 +955,6 @@ class CloudSkinMenuSheet extends StatelessWidget {
               Flexible(
                 child: Text(
                   name,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: AppTheme.textPrimary,
                     fontSize: 16,

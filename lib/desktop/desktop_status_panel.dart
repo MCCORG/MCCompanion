@@ -104,12 +104,7 @@ class DesktopStatusPanel extends StatelessWidget {
       children: [
         SizedBox(width: 78, child: Text(label, style: DsType.caption)),
         Expanded(
-          child: Text(
-            value,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: DsType.label.copyWith(color: DsColor.text),
-          ),
+          child: Text(value, style: DsType.label.copyWith(color: DsColor.text)),
         ),
       ],
     );

@@ -14,6 +14,7 @@ import '../util/partners_servers.dart';
 import '../constants/app_constants.dart';
 import '../theme/app_theme.dart';
 import '../network/nethernet/nethernet_mode.dart';
+import '../services/server_status_service.dart';
 import '../widgets/connection/connection_panel.dart';
 import '../widgets/components/app_toast.dart';
 import '../services/region_detector.dart';
@@ -327,11 +328,20 @@ class HomeScreenState extends State<HomeScreen> {
     );
     if (!registered) return false;
 
+    String? gameVersion;
+    try {
+      final status = await ServerStatusService.getStatus(host, port);
+      if (status.isOnline) gameVersion = status.version;
+    } catch (e) {
+      logger.error('Could not read the server version: $e');
+    }
+
     final result = await _netherNet.start(
       serverName: 'MCCompanion',
       remoteHost: host,
       remotePort: port,
       relayHost: widget.selectedRelay.ip,
+      gameVersion: gameVersion,
     );
     return result.started;
   }
@@ -346,16 +356,10 @@ class HomeScreenState extends State<HomeScreen> {
 
     if (mode == PanelMode.lan) {
       final netherNetStarted = await _startNetherNet(host, port);
-      if (netherNetStarted &&
-          await _netherNet.waitForClient(const Duration(seconds: 5))) {
-        logger.info('NetherNet client seen, skipping the RakNet broadcast');
-        _broadcastingNotifier.value = true;
-        unawaited(ReviewService.instance.onSuccessfulConnection());
-        return;
-      }
       if (netherNetStarted) {
-        logger.info('No NetherNet client within 5s, falling back to RakNet');
-        await _netherNet.stop();
+        logger.info('NetherNet discovery is live on port 7551');
+      } else {
+        logger.error('NetherNet could not start, only RakNet is available');
       }
     }
 

@@ -829,8 +829,6 @@ class _SavedMergeCard extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                     color: AppTheme.textPrimary,
                   ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 2),
                 Text(
@@ -1002,8 +1000,6 @@ class _PackCard extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                           color: AppTheme.textPrimary,
                         ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
                       ),
                       const SizedBox(height: 2),
                       Row(

@@ -52,14 +52,7 @@ class ProfileHeader extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Expanded(
-            child: Text(
-              loc.navProfile,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: DsType.title,
-            ),
-          ),
+          Expanded(child: Text(loc.navProfile, style: DsType.title)),
           DsIconButton(
             icon: Icons.search_rounded,
             size: 36,
@@ -247,20 +240,13 @@ class ProfileHeroState extends State<ProfileHero> {
                     children: [
                       Text(
                         displayName,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
                         style: DsType.title.copyWith(fontSize: 18),
                       ),
                       const SizedBox(height: DsSpace.xxs),
                       Text('@${me.username}', style: DsType.caption),
                       if (me.bio?.isNotEmpty == true) ...[
                         const SizedBox(height: DsSpace.sm - 2),
-                        Text(
-                          me.bio!,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: DsType.label,
-                        ),
+                        Text(me.bio!, style: DsType.label),
                       ],
                       const SizedBox(height: DsSpace.md),
                       Row(
@@ -324,8 +310,8 @@ class ProfileHeroState extends State<ProfileHero> {
                             const SizedBox(height: 6),
                             TextField(
                               controller: _bioCtrl,
-                              style: TextStyle(color: AppTheme.textPrimary),
                               maxLines: 3,
+                              style: TextStyle(color: AppTheme.textPrimary),
                               decoration: InputDecoration(
                                 hintText: AppLocalizations.of(context)!.bioHint,
                               ),

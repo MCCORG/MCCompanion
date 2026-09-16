@@ -35,6 +35,8 @@ class NetherNetMode {
     required int remotePort,
     String? relayHost,
     int relayPort = 8787,
+    int? protocol,
+    String? gameVersion,
   }) async {
     await stop();
 
@@ -48,6 +50,8 @@ class NetherNetMode {
       levelName: '$remoteHost:$remotePort',
       playerCount: 0,
       maxPlayerCount: 20,
+      protocol: protocol,
+      gameVersion: gameVersion,
     );
 
     discovery.onDiscoveryRequest = (address, port, count) {
@@ -56,8 +60,13 @@ class NetherNetMode {
     };
 
     discovery.onSignal = (signal) {
-      if (signal.type == NetherNetProtocol.signalConnectRequest) {
-        unawaited(_forwardOffer(discovery, signal));
+      switch (signal.type) {
+        case NetherNetProtocol.signalConnectRequest:
+          unawaited(_forwardOffer(discovery, signal));
+        case NetherNetProtocol.signalCandidateAdd:
+          unawaited(_forwardCandidate(signal));
+        case NetherNetProtocol.signalConnectError:
+          _log('Client reported a connect error');
       }
     };
 
@@ -102,6 +111,7 @@ class NetherNetMode {
       connectionId: signal.connectionId,
       networkId: signal.senderId,
       sdp: signal.payload,
+      nonce: discovery.nonce,
     );
 
     if (result == null) {
@@ -126,6 +136,16 @@ class NetherNetMode {
     }
 
     _log('Client handed over to the relay');
+  }
+
+  Future<void> _forwardCandidate(NetherNetSignal signal) async {
+    final relay = _relay;
+    if (relay == null) return;
+    final ok = await relay.sendCandidate(
+      connectionId: signal.connectionId,
+      candidate: signal.payload,
+    );
+    if (!ok) _log('Relay did not accept a client candidate');
   }
 
   Future<void> stop() async {

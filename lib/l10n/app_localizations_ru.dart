@@ -248,7 +248,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get howToXboxTitle => 'Xbox / PS4-5 (LAN / прокси)';
 
   @override
-  String get howToXboxSubtitle => 'Играйте через LAN-трансляцию или прокси';
+  String get howToXboxSubtitle => 'Подключение по LAN';
 
   @override
   String get howToXboxBody =>
@@ -258,14 +258,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get howToNintendoTitle => 'Nintendo Switch (режим DNS)';
 
   @override
-  String get howToNintendoSubtitle => 'Инструкции по DNS relay для Switch';
+  String get howToNintendoSubtitle => 'Подключение по DNS';
 
   @override
   String get howToFriendsTitle => 'Режим друзей';
 
   @override
-  String get howToFriendsSubtitle =>
-      'Приглашайте друзей и подключайтесь через LAN';
+  String get howToFriendsSubtitle => 'Подключение через друзей';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion не появляется';
@@ -2231,4 +2230,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get feedbackViewYourReport => 'Открыть ваше сообщение';
+
+  @override
+  String get showMore => 'Ещё';
+
+  @override
+  String get showLess => 'Свернуть';
 }

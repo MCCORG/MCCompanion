@@ -63,20 +63,10 @@ class DsTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: DsType.bodyStrong,
-                ),
+                Text(title, style: DsType.bodyStrong),
                 if (subtitle != null) ...[
                   const SizedBox(height: DsSpace.xxs),
-                  Text(
-                    subtitle!,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: DsType.caption,
-                  ),
+                  Text(subtitle!, style: DsType.caption),
                 ],
               ],
             ),
@@ -220,20 +210,10 @@ class DsRow extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: DsType.bodyStrong,
-                    ),
+                    Text(title, style: DsType.bodyStrong),
                     if (subtitle != null) ...[
                       const SizedBox(height: DsSpace.xxs),
-                      Text(
-                        subtitle!,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: DsType.caption,
-                      ),
+                      Text(subtitle!, style: DsType.caption),
                     ],
                   ],
                 ),

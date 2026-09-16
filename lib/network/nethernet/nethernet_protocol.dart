@@ -4,6 +4,7 @@ import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
 import 'package:pointycastle/export.dart' as pc;
+import '../bedrock_version.dart';
 
 class NetherNetProtocol {
   static const int discoveryPort = 7551;
@@ -109,7 +110,11 @@ class NetherNetProtocol {
     return tail;
   }
 
-  static const int serverDataVersion = 6;
+  static const int serverDataVersion = 7;
+
+  static const int defaultProtocol = bedrockProtocolVersion;
+
+  static const String defaultGameVersion = bedrockGameVersion;
 
   static String randomNonce() {
     final rng = Random.secure();
@@ -130,23 +135,25 @@ class NetherNetProtocol {
     bool acceptsOnlineAuth = true,
     bool acceptsSelfSignedAuth = true,
     String? nonce,
-    int transportLayer = 2,
+    int protocol = defaultProtocol,
+    String gameVersion = defaultGameVersion,
     int connectionType = 4,
     int version = serverDataVersion,
   }) {
     final builder = BytesBuilder();
     builder.addByte(version);
     _writeString(builder, serverName);
+    _writeVarInt32(builder, protocol);
+    _writeString(builder, gameVersion);
     _writeString(builder, levelName);
+    _writeVarInt32(builder, playerCount);
+    _writeVarInt32(builder, maxPlayerCount);
     _writeVarInt32(builder, gameType);
-    builder.add(_int32le(playerCount));
-    builder.add(_int32le(maxPlayerCount));
     builder.addByte(isEditorWorld ? 1 : 0);
     builder.addByte(isHardcore ? 1 : 0);
     builder.addByte(acceptsOnlineAuth ? 1 : 0);
     builder.addByte(acceptsSelfSignedAuth ? 1 : 0);
     _writeString(builder, nonce ?? randomNonce());
-    _writeVarInt32(builder, transportLayer);
     _writeVarInt32(builder, connectionType);
 
     final binary = builder.toBytes();
@@ -157,12 +164,6 @@ class NetherNetProtocol {
     ByteData.view(out.buffer).setUint32(0, hexBytes.length, Endian.little);
     out.setRange(4, out.length, hexBytes);
     return out;
-  }
-
-  static Uint8List _int32le(int value) {
-    final b = Uint8List(4);
-    ByteData.view(b.buffer).setUint32(0, value, Endian.little);
-    return b;
   }
 
   static void _writeVarInt32(BytesBuilder builder, int value) {
