@@ -275,8 +275,6 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
                         Expanded(
                           child: Text(
                             AppLocalizations.of(context)!.trackerLimitReached,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
                             style: DsType.label.copyWith(
                               color: DsColor.warning,
                             ),

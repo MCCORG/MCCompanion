@@ -244,7 +244,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get howToXboxTitle => 'Xbox / PS4-5 (شبكة محلية / وكيل)';
 
   @override
-  String get howToXboxSubtitle => 'العب عبر بث الشبكة المحلية أو الوكيل';
+  String get howToXboxSubtitle => 'الاتصال عبر LAN';
 
   @override
   String get howToXboxBody =>
@@ -254,13 +254,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get howToNintendoTitle => 'Nintendo Switch (وضع DNS)';
 
   @override
-  String get howToNintendoSubtitle => 'تعليمات DNS لخادم الترحيل على Switch';
+  String get howToNintendoSubtitle => 'الاتصال عبر DNS';
 
   @override
   String get howToFriendsTitle => 'وضع الأصدقاء';
 
   @override
-  String get howToFriendsSubtitle => 'ادعُ الأصدقاء وانضم عبر الشبكة المحلية';
+  String get howToFriendsSubtitle => 'الاتصال عبر الأصدقاء';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion لا يظهر';
@@ -2216,4 +2216,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get feedbackViewYourReport => 'عرض بلاغك';
+
+  @override
+  String get showMore => 'المزيد';
+
+  @override
+  String get showLess => 'أقل';
 }

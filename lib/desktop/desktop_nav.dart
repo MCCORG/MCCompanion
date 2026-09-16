@@ -115,13 +115,16 @@ class DesktopNav extends StatelessWidget {
                 ),
                 const SizedBox(width: DsSpace.md),
                 Expanded(
-                  child: Text(
-                    entry.label,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: DsType.body.copyWith(
-                      color: active ? DsColor.text : DsColor.textSoft,
-                      fontWeight: active ? FontWeight.w600 : FontWeight.w500,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      entry.label,
+                      maxLines: 1,
+                      style: DsType.body.copyWith(
+                        color: active ? DsColor.text : DsColor.textSoft,
+                        fontWeight: active ? FontWeight.w600 : FontWeight.w500,
+                      ),
                     ),
                   ),
                 ),

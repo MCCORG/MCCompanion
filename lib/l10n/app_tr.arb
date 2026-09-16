@@ -141,7 +141,7 @@
   "@howToXboxTitle": {
     "description": "Title for the Xbox / PS4-5 how-to modal"
   },
-  "howToXboxSubtitle": "LAN yayını veya proxy ile oyna",
+  "howToXboxSubtitle": "LAN ile bağlan",
   "@howToXboxSubtitle": {
     "description": "Short subtitle for Xbox / PS4-5 menu tile"
   },
@@ -153,7 +153,7 @@
   "@howToNintendoTitle": {
     "description": "Title for the Nintendo how-to modal"
   },
-  "howToNintendoSubtitle": "Switch için DNS aktarıcı talimatları",
+  "howToNintendoSubtitle": "DNS ile bağlan",
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
@@ -161,7 +161,7 @@
   "@howToFriendsTitle": {
     "description": "Title for the Friends-mode how-to modal"
   },
-  "howToFriendsSubtitle": "Arkadaşlarını davet et ve LAN üzerinden katıl",
+  "howToFriendsSubtitle": "Arkadaşlarla bağlan",
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
   },
@@ -1477,5 +1477,7 @@
   "serverVoteNoRewards": "Oy verildi. Bu sunucuda ödül ayarlanmamış.",
   "serverVoteFailed": "Bu işe yaramadı, lütfen tekrar deneyin.",
   "serverVoteOffline": "Sunucuya ulaşılamadı. Bağlantınızı kontrol edin.",
-  "feedbackViewYourReport": "Bildiriminizi görüntüle"
+  "feedbackViewYourReport": "Bildiriminizi görüntüle",
+  "showMore": "Daha fazla",
+  "showLess": "Daha az"
 }

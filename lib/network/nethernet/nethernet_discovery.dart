@@ -60,6 +60,8 @@ class NetherNetDiscovery {
     required String levelName,
     int playerCount = 0,
     int maxPlayerCount = 10,
+    int? protocol,
+    String? gameVersion,
   }) {
     nonce = NetherNetProtocol.randomNonce();
     _pongData = NetherNetProtocol.buildPongData(
@@ -68,6 +70,8 @@ class NetherNetDiscovery {
       playerCount: playerCount,
       maxPlayerCount: maxPlayerCount,
       nonce: nonce,
+      protocol: protocol ?? NetherNetProtocol.defaultProtocol,
+      gameVersion: gameVersion ?? NetherNetProtocol.defaultGameVersion,
     );
   }
 

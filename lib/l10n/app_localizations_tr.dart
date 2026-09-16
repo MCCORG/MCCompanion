@@ -248,7 +248,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get howToXboxTitle => 'Xbox / PS4-5 (LAN / vekil)';
 
   @override
-  String get howToXboxSubtitle => 'LAN yayını veya proxy ile oyna';
+  String get howToXboxSubtitle => 'LAN ile bağlan';
 
   @override
   String get howToXboxBody =>
@@ -258,14 +258,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get howToNintendoTitle => 'Nintendo Switch (DNS modu)';
 
   @override
-  String get howToNintendoSubtitle => 'Switch için DNS aktarıcı talimatları';
+  String get howToNintendoSubtitle => 'DNS ile bağlan';
 
   @override
   String get howToFriendsTitle => 'Arkadaş modu';
 
   @override
-  String get howToFriendsSubtitle =>
-      'Arkadaşlarını davet et ve LAN üzerinden katıl';
+  String get howToFriendsSubtitle => 'Arkadaşlarla bağlan';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion görünmüyor';
@@ -2231,4 +2230,10 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get feedbackViewYourReport => 'Bildiriminizi görüntüle';
+
+  @override
+  String get showMore => 'Daha fazla';
+
+  @override
+  String get showLess => 'Daha az';
 }

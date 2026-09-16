@@ -461,8 +461,8 @@ class _FormView extends StatelessWidget {
             const SizedBox(height: 8),
             TextField(
               controller: descCtrl,
-              maxLines: 6,
               maxLength: 3000,
+              maxLines: 6,
               style: TextStyle(fontSize: 14, color: AppTheme.textPrimary),
               decoration: InputDecoration(
                 hintText: isBug

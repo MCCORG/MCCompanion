@@ -365,16 +365,12 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                       Text(
                         selected?.name ??
                             (hasTarget ? address : loc.chooseServerTitle),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
                         style: DsType.display.copyWith(fontSize: 26),
                       ),
                       if (hasTarget) ...[
                         const SizedBox(height: DsSpace.xxs),
                         Text(
                           '$address:${widget.portController.text}',
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
                           style: DsType.label,
                         ),
                       ],
@@ -467,8 +463,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
               Flexible(
                 child: Text(
                   _modeLabel(cfg.mode, loc),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                   style: DsType.body.copyWith(
                     color: active ? DsColor.text : DsColor.textSoft,
                     fontWeight: active ? FontWeight.w600 : FontWeight.w500,
@@ -505,8 +499,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                 configured
                     ? (widget.resourcePackName ?? loc.rpScreenTitle)
                     : loc.none,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
                 style: DsType.bodyStrong,
               ),
             ],
@@ -667,8 +659,6 @@ class _BedrockAccountSelector extends StatelessWidget {
               fontSize: 11,
               color: enabled ? AppTheme.textSecondary : AppTheme.textDisabled,
             ),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(width: 3),
           Icon(

@@ -790,6 +790,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
           key: _scaffoldKey,
           backgroundColor: Colors.transparent,
           drawer: AppSidebar(sections: _sidebarSections()),
+          drawerEnableOpenDragGesture: false,
           bottomNavigationBar: BottomGlassSimpleNavBar(
             navigationController: navigationController,
             dark: true,

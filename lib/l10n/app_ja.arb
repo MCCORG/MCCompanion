@@ -141,7 +141,7 @@
   "@howToXboxTitle": {
     "description": "Title for the Xbox / PS4-5 how-to modal"
   },
-  "howToXboxSubtitle": "LAN ブロードキャストまたは proxy 経由でプレイ",
+  "howToXboxSubtitle": "LANで接続",
   "@howToXboxSubtitle": {
     "description": "Short subtitle for Xbox / PS4-5 menu tile"
   },
@@ -153,7 +153,7 @@
   "@howToNintendoTitle": {
     "description": "Title for the Nintendo how-to modal"
   },
-  "howToNintendoSubtitle": "Switch 用 DNS relay 手順",
+  "howToNintendoSubtitle": "DNSで接続",
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
@@ -161,7 +161,7 @@
   "@howToFriendsTitle": {
     "description": "Title for the Friends-mode how-to modal"
   },
-  "howToFriendsSubtitle": "友達を招待して LAN 経由で参加",
+  "howToFriendsSubtitle": "フレンドで接続",
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
   },
@@ -1477,5 +1477,7 @@
   "serverVoteNoRewards": "投票しました。このサーバーには報酬が設定されていません。",
   "serverVoteFailed": "うまくいきませんでした。もう一度お試しください。",
   "serverVoteOffline": "サーバーに接続できませんでした。通信環境をご確認ください。",
-  "feedbackViewYourReport": "送信した内容を見る"
+  "feedbackViewYourReport": "送信した内容を見る",
+  "showMore": "もっと見る",
+  "showLess": "閉じる"
 }

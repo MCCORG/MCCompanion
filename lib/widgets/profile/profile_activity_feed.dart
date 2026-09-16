@@ -237,7 +237,6 @@ class _ActivityRow extends StatelessWidget {
                   Text(
                     '"${event.name}"',
                     style: TextStyle(color: DsColor.textSoft, fontSize: 11),
-                    overflow: TextOverflow.ellipsis,
                   ),
               ],
             ),

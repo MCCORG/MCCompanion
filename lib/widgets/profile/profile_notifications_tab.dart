@@ -325,8 +325,6 @@ class _NotificationTile extends StatelessWidget {
                         color: AppTheme.textSecondary,
                         fontSize: 12,
                       ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                   const SizedBox(height: 4),

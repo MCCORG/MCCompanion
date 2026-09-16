@@ -246,7 +246,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get howToXboxTitle => 'Xbox / PS4-5 (LAN / proksi)';
 
   @override
-  String get howToXboxSubtitle => 'Cheza kupitia utangazaji wa LAN au proxy';
+  String get howToXboxSubtitle => 'Unganisha kupitia LAN';
 
   @override
   String get howToXboxBody =>
@@ -256,13 +256,13 @@ class AppLocalizationsSw extends AppLocalizations {
   String get howToNintendoTitle => 'Nintendo Switch (hali ya DNS)';
 
   @override
-  String get howToNintendoSubtitle => 'Maelekezo ya DNS relay kwa Switch';
+  String get howToNintendoSubtitle => 'Unganisha kupitia DNS';
 
   @override
   String get howToFriendsTitle => 'Hali ya Marafiki';
 
   @override
-  String get howToFriendsSubtitle => 'Alika marafiki na ujiunge kupitia LAN';
+  String get howToFriendsSubtitle => 'Unganisha kupitia Marafiki';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion haionekani';
@@ -2242,4 +2242,10 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get feedbackViewYourReport => 'Angalia ripoti yako';
+
+  @override
+  String get showMore => 'Zaidi';
+
+  @override
+  String get showLess => 'Punguza';
 }

@@ -85,15 +85,17 @@ class DsButton extends StatelessWidget {
                 const SizedBox(width: DsSpace.sm),
               ],
               Flexible(
-                child: Text(
-                  label,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: foreground,
-                    fontSize: _fontSize,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: -0.1,
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    label,
+                    maxLines: 1,
+                    style: TextStyle(
+                      color: foreground,
+                      fontSize: _fontSize,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: -0.1,
+                    ),
                   ),
                 ),
               ),

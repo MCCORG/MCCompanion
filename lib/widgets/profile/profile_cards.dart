@@ -385,7 +385,6 @@ class ProfileAccountRow extends StatelessWidget {
                 Text(
                   subtitle,
                   style: TextStyle(color: DsColor.textFaint, fontSize: 10),
-                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),

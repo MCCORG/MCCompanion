@@ -433,8 +433,6 @@ class _SupportConvTile extends StatelessWidget {
                             fontWeight: FontWeight.w700,
                             color: AppTheme.textPrimary,
                           ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       ..._badges(),
@@ -444,8 +442,6 @@ class _SupportConvTile extends StatelessWidget {
                   Text(
                     preview,
                     style: TextStyle(fontSize: 12, color: AppTheme.textMuted),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),
@@ -655,8 +651,6 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
                   Expanded(
                     child: Text(
                       t.title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
@@ -875,8 +869,6 @@ class _SupportChatScreenState extends State<SupportChatScreen> {
                         fontWeight: FontWeight.w700,
                         color: AppTheme.textPrimary,
                       ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
                     ),
                     Row(
                       children: [

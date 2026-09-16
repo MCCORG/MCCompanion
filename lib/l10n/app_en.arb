@@ -163,7 +163,7 @@
   "@howToXboxTitle": {
     "description": "Title for the Xbox / PS4-5 how-to modal"
   },
-  "howToXboxSubtitle": "Play via LAN broadcast or proxy",
+  "howToXboxSubtitle": "Connect via LAN",
   "@howToXboxSubtitle": {
     "description": "Short subtitle for Xbox / PS4-5 menu tile"
   },
@@ -175,7 +175,7 @@
   "@howToNintendoTitle": {
     "description": "Title for the Nintendo how-to modal"
   },
-  "howToNintendoSubtitle": "DNS relay instructions for Switch",
+  "howToNintendoSubtitle": "Connect via DNS",
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
@@ -183,7 +183,7 @@
   "@howToFriendsTitle": {
     "description": "Title for the Friends-mode how-to modal"
   },
-  "howToFriendsSubtitle": "Invite friends and join via LAN",
+  "howToFriendsSubtitle": "Connect via Friends",
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
   },
@@ -2292,5 +2292,7 @@
       }
     }
   },
-  "feedbackViewYourReport": "View your report"
+  "feedbackViewYourReport": "View your report",
+  "showMore": "More",
+  "showLess": "Less"
 }

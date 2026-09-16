@@ -630,8 +630,6 @@ class _InfoRow extends StatelessWidget {
               fontSize: 12,
               fontFamily: 'monospace',
             ),
-            maxLines: truncate ? 1 : null,
-            overflow: truncate ? TextOverflow.ellipsis : TextOverflow.visible,
           ),
         ),
         if (canCopy)

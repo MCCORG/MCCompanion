@@ -244,7 +244,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get howToXboxTitle => 'Xbox / PS4-5（LAN / 代理）';
 
   @override
-  String get howToXboxSubtitle => '通过局域网广播或代理游玩';
+  String get howToXboxSubtitle => '通过局域网连接';
 
   @override
   String get howToXboxBody =>
@@ -254,13 +254,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get howToNintendoTitle => 'Nintendo Switch（DNS 模式）';
 
   @override
-  String get howToNintendoSubtitle => '适用于 Switch 的 DNS 中继说明';
+  String get howToNintendoSubtitle => '通过 DNS 连接';
 
   @override
   String get howToFriendsTitle => '好友模式';
 
   @override
-  String get howToFriendsSubtitle => '邀请好友并通过局域网加入';
+  String get howToFriendsSubtitle => '通过好友连接';
 
   @override
   String get helpMCCompanionTitle => 'MCCompanion 未显示';
@@ -2180,4 +2180,10 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get feedbackViewYourReport => '查看你的反馈';
+
+  @override
+  String get showMore => '展开';
+
+  @override
+  String get showLess => '收起';
 }

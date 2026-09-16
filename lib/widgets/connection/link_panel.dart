@@ -217,12 +217,7 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  widget.packTitle,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: DsType.caption,
-                ),
+                Text(widget.packTitle, style: DsType.caption),
                 const SizedBox(height: DsSpace.xxs),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -244,12 +239,7 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
                       const SizedBox(width: DsSpace.sm - 2),
                     ],
                     Expanded(
-                      child: Text(
-                        widget.packLabel,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: DsType.bodyStrong,
-                      ),
+                      child: Text(widget.packLabel, style: DsType.bodyStrong),
                     ),
                   ],
                 ),
@@ -301,8 +291,6 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
                             Expanded(
                               child: Text(
                                 header.toUpperCase(),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
                                 style: DsType.caption.copyWith(
                                   fontWeight: FontWeight.w700,
                                   letterSpacing: 0.6,
@@ -349,77 +337,73 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
           duration: DsDuration.fast,
           color: open ? DsColor.accent.withValues(alpha: 0.06) : null,
           padding: const EdgeInsets.symmetric(horizontal: DsSpace.lg),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 40,
-                height: 82,
-                child: AnimatedBuilder(
-                  animation: _pulse,
-                  builder: (context, _) => CustomPaint(
-                    painter: _RailPainter(
-                      progress: _pulse.value,
-                      active: active,
-                      color: active ? DsColor.accent : DsColor.lineStrong,
-                      top: topRail,
-                      bottom: bottomRail,
-                    ),
-                    child: Center(
-                      child: Container(
-                        width: 34,
-                        height: 34,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: active
-                              ? DsColor.accent.withValues(alpha: 0.18)
-                              : DsColor.inset,
-                          shape: BoxShape.circle,
-                          border: Border.all(
+          child: IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    minWidth: 40,
+                    maxWidth: 40,
+                    minHeight: 82,
+                  ),
+                  child: AnimatedBuilder(
+                    animation: _pulse,
+                    builder: (context, _) => CustomPaint(
+                      painter: _RailPainter(
+                        progress: _pulse.value,
+                        active: active,
+                        color: active ? DsColor.accent : DsColor.lineStrong,
+                        top: topRail,
+                        bottom: bottomRail,
+                      ),
+                      child: Center(
+                        child: Container(
+                          width: 34,
+                          height: 34,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
                             color: active
-                                ? DsColor.accent.withValues(alpha: 0.60)
-                                : DsColor.line,
+                                ? DsColor.accent.withValues(alpha: 0.18)
+                                : DsColor.inset,
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: active
+                                  ? DsColor.accent.withValues(alpha: 0.60)
+                                  : DsColor.line,
+                            ),
                           ),
-                        ),
-                        child: Icon(
-                          icon,
-                          size: 17,
-                          color: active ? DsColor.accent : DsColor.accent,
+                          child: Icon(
+                            icon,
+                            size: 17,
+                            color: active ? DsColor.accent : DsColor.accent,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(width: DsSpace.md),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(label, style: DsType.caption),
-                    const SizedBox(height: DsSpace.xxs),
-                    Text(
-                      title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: DsType.bodyStrong,
-                    ),
-                    if (subtitle != null) ...[
+                const SizedBox(width: DsSpace.md),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(label, style: DsType.caption),
                       const SizedBox(height: DsSpace.xxs),
-                      Text(
-                        subtitle,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: DsType.caption,
-                      ),
+                      Text(title, style: DsType.bodyStrong),
+                      if (subtitle != null) ...[
+                        const SizedBox(height: DsSpace.xxs),
+                        Text(subtitle, style: DsType.caption),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
-              ),
-              const SizedBox(width: DsSpace.md),
-              if (enabled) _changeChip(open),
-            ],
+                const SizedBox(width: DsSpace.md),
+                if (enabled) Center(child: _changeChip(open)),
+              ],
+            ),
           ),
         ),
       ),
@@ -572,8 +556,6 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
                   children: [
                     Text(
                       title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
                       style: DsType.body.copyWith(
                         fontWeight: selected
                             ? FontWeight.w600
@@ -582,12 +564,7 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
                     ),
                     if (subtitle != null) ...[
                       const SizedBox(height: DsSpace.xxs),
-                      Text(
-                        subtitle,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: DsType.caption,
-                      ),
+                      Text(subtitle, style: DsType.caption),
                     ],
                   ],
                 ),

@@ -109,8 +109,6 @@ class AppSidebar extends StatelessWidget {
               Expanded(
                 child: Text(
                   entry.label,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: AppTheme.textPrimary,
                     fontSize: 15,

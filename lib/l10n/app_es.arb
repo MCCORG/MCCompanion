@@ -141,7 +141,7 @@
   "@howToXboxTitle": {
     "description": "Title for the Xbox / PS4-5 how-to modal"
   },
-  "howToXboxSubtitle": "Juega mediante transmisión LAN o proxy",
+  "howToXboxSubtitle": "Conecta por LAN",
   "@howToXboxSubtitle": {
     "description": "Short subtitle for Xbox / PS4-5 menu tile"
   },
@@ -153,7 +153,7 @@
   "@howToNintendoTitle": {
     "description": "Title for the Nintendo how-to modal"
   },
-  "howToNintendoSubtitle": "Instrucciones de relay DNS para Switch",
+  "howToNintendoSubtitle": "Conecta por DNS",
   "@howToNintendoSubtitle": {
     "description": "Short subtitle for Nintendo menu tile"
   },
@@ -161,7 +161,7 @@
   "@howToFriendsTitle": {
     "description": "Title for the Friends-mode how-to modal"
   },
-  "howToFriendsSubtitle": "Invita a amigos y únete mediante LAN",
+  "howToFriendsSubtitle": "Conecta por amigos",
   "@howToFriendsSubtitle": {
     "description": "Short subtitle for Friends menu tile"
   },
@@ -1477,5 +1477,7 @@
   "serverVoteNoRewards": "Voto registrado. Este servidor no tiene recompensas configuradas.",
   "serverVoteFailed": "No ha funcionado, inténtalo de nuevo.",
   "serverVoteOffline": "No se pudo contactar con el servidor. Comprueba tu conexión.",
-  "feedbackViewYourReport": "Ver tu informe"
+  "feedbackViewYourReport": "Ver tu informe",
+  "showMore": "Más",
+  "showLess": "Menos"
 }

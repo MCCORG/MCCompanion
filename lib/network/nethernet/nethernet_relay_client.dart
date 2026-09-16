@@ -22,17 +22,31 @@ class NetherNetRelayClient {
     required int connectionId,
     required int networkId,
     required String sdp,
+    String? nonce,
   }) async {
     final body = jsonEncode({
       'connectionId': connectionId.toUnsigned(64).toString(),
       'networkId': networkId.toUnsigned(64).toString(),
       'sdp': sdp,
+      'nonce': ?nonce,
     });
     final json = await _post('/nethernet/offer', body);
     final answer = json?['answer'] as String?;
     if (answer == null) return null;
     final raw = (json?['candidates'] as List?) ?? const [];
     return (answer: answer, candidates: raw.cast<String>());
+  }
+
+  Future<bool> sendCandidate({
+    required int connectionId,
+    required String candidate,
+  }) async {
+    final body = jsonEncode({
+      'connectionId': connectionId.toUnsigned(64).toString(),
+      'candidate': candidate,
+    });
+    final json = await _post('/nethernet/candidate', body);
+    return json?['ok'] == true;
   }
 
   static const Duration _timeout = Duration(seconds: 15);
