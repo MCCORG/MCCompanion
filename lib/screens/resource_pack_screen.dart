@@ -161,33 +161,45 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
 
   Future<void> _pickAndUpload() async {
     if (_uploading) return;
-    final files = await pickPackFiles();
-    if (files.isEmpty) return;
-    final file = files.first;
-    final bytes =
-        file.bytes ??
-        (file.path != null ? await File(file.path!).readAsBytes() : null);
-    if (bytes == null) return;
-    final inspection = inspectPackBytes(bytes);
-    if (!mounted) return;
-    if (inspection.format != PackFormat.bedrock) {
-      AppToast.show(
-        context,
-        message: AppLocalizations.of(context)!.rpInvalidPackFormat,
-        icon: Icons.error_outline_rounded,
-        color: Colors.red,
-      );
-      return;
+    setState(() => _uploading = true);
+    try {
+      final files = await pickPackFiles();
+      if (files.isEmpty) {
+        setState(() => _uploading = false);
+        return;
+      }
+      final file = files.first;
+      final bytes =
+          file.bytes ??
+          (file.path != null ? await File(file.path!).readAsBytes() : null);
+      if (bytes == null) {
+        setState(() => _uploading = false);
+        return;
+      }
+      final inspection = inspectPackBytes(bytes);
+      if (!mounted) return;
+      if (inspection.format != PackFormat.bedrock) {
+        setState(() => _uploading = false);
+        AppToast.show(
+          context,
+          message: AppLocalizations.of(context)!.rpInvalidPackFormat,
+          icon: Icons.error_outline_rounded,
+          color: Colors.red,
+        );
+        return;
+      }
+      if (inspection.hasBehaviorContent) {
+        AppToast.show(
+          context,
+          message: AppLocalizations.of(context)!.rpBehaviorContentWarning,
+          icon: Icons.warning_amber_rounded,
+          color: Colors.orange,
+        );
+      }
+      await _uploadBytes(bytes, file.name);
+    } catch (e) {
+      if (mounted) setState(() => _uploading = false);
     }
-    if (inspection.hasBehaviorContent) {
-      AppToast.show(
-        context,
-        message: AppLocalizations.of(context)!.rpBehaviorContentWarning,
-        icon: Icons.warning_amber_rounded,
-        color: Colors.orange,
-      );
-    }
-    await _uploadBytes(bytes, file.name);
   }
 
   Future<void> _uploadBytes(Uint8List bytes, String name) async {
@@ -299,6 +311,8 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   }
 
   Future<void> _uploadFromPath(String path, String name) async {
+    if (_uploading) return;
+    setState(() => _uploading = true);
     final bytes = await File(path).readAsBytes();
     await _uploadBytes(bytes, name);
   }

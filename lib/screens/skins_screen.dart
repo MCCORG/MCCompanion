@@ -47,6 +47,7 @@ class SkinsScreenState extends State<SkinsScreen> {
 
   List<SavedSkin> _savedSkins = [];
   bool _loadingSaved = true;
+  final Set<String> _uploadingSkinIds = {};
 
   List<Map<String, dynamic>> _cloudSkins = [];
   bool _loadingCloud = false;
@@ -427,8 +428,11 @@ class SkinsScreenState extends State<SkinsScreen> {
   }
 
   Future<void> _uploadSkinToCloud(SavedSkin skin) async {
+    if (_uploadingSkinIds.contains(skin.id)) return;
+    _uploadingSkinIds.add(skin.id);
     final user = AuthService.currentUser;
     if (user == null) {
+      _uploadingSkinIds.remove(skin.id);
       if (mounted) {
         AppToast.show(
           context,
@@ -479,6 +483,8 @@ class SkinsScreenState extends State<SkinsScreen> {
           color: AppTheme.error,
         );
       }
+    } finally {
+      _uploadingSkinIds.remove(skin.id);
     }
   }
 
