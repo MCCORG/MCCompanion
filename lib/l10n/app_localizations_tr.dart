@@ -1428,6 +1428,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get rpUploadTab => 'Upload';
 
   @override
+  String get rpBrowseTab => 'Browse';
+
+  @override
   String get rpUploadButton => 'Tap to select your pack';
 
   @override
@@ -2055,6 +2058,16 @@ class AppLocalizationsTr extends AppLocalizations {
       'Yerel bağlantı noktası açılamadı. Önce mevcut bağlantıyı durdurun.';
 
   @override
+  String get waitingForConsole => 'Waiting for your console…';
+
+  @override
+  String get consoleFound => 'Console found';
+
+  @override
+  String get consoleLanHint =>
+      'On your console, open Minecraft and look under Friends for a LAN game.';
+
+  @override
   String directAddressNotSupported(String host) {
     return '$host bir IPv6 adresi. Proxy/Doğrudan mod yalnızca IPv4 destekler. IPv4 adresini veya ana bilgisayar adını kullanın.';
   }
@@ -2125,6 +2138,12 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get serverListAllCategories => 'Tümü';
+
+  @override
+  String get serverListPlayersAny => 'Any size';
+
+  @override
+  String get serverListPlayersHint => 'Average players online';
 
   @override
   String get serverListLoadFailed => 'Sunucu listesi yüklenemedi';

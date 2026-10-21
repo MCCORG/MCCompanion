@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'user_service.dart';
 
 @pragma('vm:entry-point')
@@ -61,7 +62,9 @@ class PushNotificationService {
         const InitializationSettings(
           android: AndroidInitializationSettings('@drawable/ic_notification'),
         ),
-        onDidReceiveNotificationResponse: (details) {},
+        onDidReceiveNotificationResponse: (details) {
+          unawaited(openLink(details.payload));
+        },
       );
 
       await _localNotifications
@@ -88,7 +91,7 @@ class PushNotificationService {
                 icon: '@drawable/ic_notification',
               ),
             ),
-            payload: message.data['type'],
+            payload: message.data['url'] ?? message.data['type'],
           );
         }
       });
@@ -105,6 +108,16 @@ class PushNotificationService {
     final initial = await _fcm.getInitialMessage();
     if (initial != null) {
       onNotificationTap?.call(initial);
+    }
+  }
+
+  static Future<void> openLink(Object? url) async {
+    final link = url?.toString() ?? '';
+    if (!link.startsWith('https://mccompanion.net/')) return;
+    try {
+      await launchUrl(Uri.parse(link), mode: LaunchMode.externalApplication);
+    } catch (e) {
+      debugPrint('[FCM] openLink error: $e');
     }
   }
 

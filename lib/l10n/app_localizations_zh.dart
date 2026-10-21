@@ -1395,6 +1395,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get rpUploadTab => 'Upload';
 
   @override
+  String get rpBrowseTab => 'Browse';
+
+  @override
   String get rpUploadButton => 'Tap to select your pack';
 
   @override
@@ -2010,6 +2013,16 @@ class AppLocalizationsZh extends AppLocalizations {
   String get directPortBusy => '无法打开本地端口。请先停止当前连接。';
 
   @override
+  String get waitingForConsole => 'Waiting for your console…';
+
+  @override
+  String get consoleFound => 'Console found';
+
+  @override
+  String get consoleLanHint =>
+      'On your console, open Minecraft and look under Friends for a LAN game.';
+
+  @override
   String directAddressNotSupported(String host) {
     return '$host 是 IPv6 地址。代理/直连模式仅支持 IPv4。请改用 IPv4 地址或主机名。';
   }
@@ -2079,6 +2092,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get serverListAllCategories => '全部';
+
+  @override
+  String get serverListPlayersAny => 'Any size';
+
+  @override
+  String get serverListPlayersHint => 'Average players online';
 
   @override
   String get serverListLoadFailed => '无法加载服务器列表';

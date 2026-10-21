@@ -6,7 +6,6 @@ import '../l10n/app_localizations.dart';
 import '../services/server_directory_service.dart';
 import '../theme/app_theme.dart';
 import '../design/design.dart';
-import '../theme/app_tokens.dart';
 import '../util/directory_server.dart';
 import '../widgets/components/app_toast.dart';
 import '../widgets/components/swipe_back.dart';
@@ -33,10 +32,10 @@ class ServerListScreen extends StatefulWidget {
 
 class _ServerListScreenState extends State<ServerListScreen> {
   List<(String, String)> _sorts(AppLocalizations l) => [
-    ('votes', l.serverListSortVotes),
     ('players', l.serverListSortPlayers),
     ('peak', l.serverListSortPeak),
     ('newest', l.serverListSortNewest),
+    ('votes', l.serverListSortVotes),
     ('name', l.serverListSortName),
   ];
 
@@ -45,6 +44,23 @@ class _ServerListScreenState extends State<ServerListScreen> {
     ('java', l.serverListEditionJava),
     ('MCPE', l.serverListEditionBedrock),
   ];
+
+  static const List<(int?, int?)> _playerRanges = [
+    (null, null),
+    (null, 10),
+    (10, 50),
+    (50, 250),
+    (250, 1000),
+    (1000, null),
+  ];
+
+  String _playerRangeLabel(AppLocalizations l, (int?, int?) range) =>
+      switch (range) {
+        (null, null) => l.serverListPlayersAny,
+        (null, final max?) => '< $max',
+        (final min?, null) => '$min+',
+        (final min?, final max?) => '$min-$max',
+      };
 
   final _searchController = TextEditingController();
   final _scrollController = ScrollController();
@@ -55,7 +71,8 @@ class _ServerListScreenState extends State<ServerListScreen> {
   String _query = '';
   String? _tag;
   String _edition = '';
-  String _sort = 'votes';
+  String _sort = 'players';
+  (int?, int?) _players = (null, null);
 
   int _page = 0;
   int _total = 0;
@@ -112,6 +129,8 @@ class _ServerListScreenState extends State<ServerListScreen> {
       tag: _tag,
       edition: _edition,
       sort: _sort,
+      minPlayers: _players.$1,
+      maxPlayers: _players.$2,
     );
 
     if (!mounted) return;
@@ -121,7 +140,11 @@ class _ServerListScreenState extends State<ServerListScreen> {
         ..addAll(page.servers);
       _total = page.total;
       _loading = false;
-      _failed = page.servers.isEmpty && _query.isEmpty && _tag == null;
+      _failed =
+          page.servers.isEmpty &&
+          _query.isEmpty &&
+          _tag == null &&
+          _players == (null, null);
     });
   }
 
@@ -134,6 +157,8 @@ class _ServerListScreenState extends State<ServerListScreen> {
       tag: _tag,
       edition: _edition,
       sort: _sort,
+      minPlayers: _players.$1,
+      maxPlayers: _players.$2,
       page: next,
     );
 
@@ -201,6 +226,15 @@ class _ServerListScreenState extends State<ServerListScreen> {
                   ),
                   sliver: SliverToBoxAdapter(child: _filters()),
                 ),
+                SliverPadding(
+                  padding: const EdgeInsets.fromLTRB(
+                    DsSpace.gutter,
+                    DsSpace.xs,
+                    DsSpace.gutter,
+                    DsSpace.xs,
+                  ),
+                  sliver: SliverToBoxAdapter(child: _playerChips()),
+                ),
                 if (_tags.isNotEmpty)
                   SliverPadding(
                     padding: const EdgeInsets.fromLTRB(
@@ -259,32 +293,13 @@ class _ServerListScreenState extends State<ServerListScreen> {
     final l = AppLocalizations.of(context)!;
     return Column(
       children: [
-        TextField(
+        DsField(
           controller: _searchController,
           onChanged: _onSearchChanged,
-          style: TextStyle(color: AppTheme.textPrimary, fontSize: 14),
-          decoration: InputDecoration(
-            hintText: l.serverListSearchHint,
-            hintStyle: TextStyle(color: AppTheme.textMuted, fontSize: 14),
-            prefixIcon: Icon(Icons.search, size: 18, color: AppTheme.textMuted),
-            filled: true,
-            fillColor: AppTheme.surfaceRaised,
-            contentPadding: const EdgeInsets.symmetric(vertical: 12),
-            border: OutlineInputBorder(
-              borderRadius: DsRadius.controlR,
-              borderSide: BorderSide(color: AppTheme.borderGray),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: DsRadius.controlR,
-              borderSide: BorderSide(color: AppTheme.borderGray),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: DsRadius.controlR,
-              borderSide: BorderSide(color: AppTheme.accent),
-            ),
-          ),
+          hint: l.serverListSearchHint,
+          icon: Icons.search_rounded,
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: DsSpace.sm),
         Row(
           children: [
             Expanded(
@@ -330,10 +345,10 @@ class _ServerListScreenState extends State<ServerListScreen> {
         child: DropdownButton<String>(
           value: value,
           isExpanded: true,
-          dropdownColor: AppTheme.surfaceRaised,
+          dropdownColor: DsColor.surface,
           borderRadius: DsRadius.controlR,
-          icon: Icon(Icons.expand_more, size: 18, color: AppTheme.textMuted),
-          style: TextStyle(color: AppTheme.textPrimary, fontSize: 13),
+          icon: Icon(Icons.expand_more, size: 18, color: DsColor.textFaint),
+          style: DsType.label.copyWith(color: DsColor.text),
           items: items
               .map(
                 (item) =>
@@ -343,6 +358,40 @@ class _ServerListScreenState extends State<ServerListScreen> {
           onChanged: (selected) {
             if (selected != null) onChanged(selected);
           },
+        ),
+      ),
+    );
+  }
+
+  Widget _playerChips() {
+    final l = AppLocalizations.of(context)!;
+    return SizedBox(
+      height: 30,
+      child: DsHScroll(
+        child: Row(
+          children: [
+            Tooltip(
+              message: l.serverListPlayersHint,
+              child: Icon(
+                Icons.people_alt_outlined,
+                size: 16,
+                color: DsColor.textFaint,
+              ),
+            ),
+            for (final range in _playerRanges) ...[
+              const SizedBox(width: 6),
+              _chip(
+                label: _playerRangeLabel(l, range),
+                count: null,
+                active: _players == range,
+                onTap: () {
+                  if (_players == range) return;
+                  setState(() => _players = range);
+                  _load();
+                },
+              ),
+            ],
+          ],
         ),
       ),
     );
@@ -398,42 +447,42 @@ class _ServerListScreenState extends State<ServerListScreen> {
     required bool active,
     required VoidCallback onTap,
   }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: active
-              ? AppTheme.accent.withValues(alpha: 0.12)
-              : AppTheme.surfaceRaised,
-          borderRadius: AppRadius.rounded,
-          border: Border.all(
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: DsRadius.pillR,
+        child: AnimatedContainer(
+          duration: DsDuration.fast,
+          padding: const EdgeInsets.symmetric(horizontal: DsSpace.md),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
             color: active
-                ? AppTheme.accent.withValues(alpha: 0.35)
-                : AppTheme.borderGray,
-          ),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              label,
-              style: TextStyle(
-                color: active ? AppTheme.accent : AppTheme.textSecondary,
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-                fontFamily: 'monospace',
-              ),
+                ? DsColor.accent.withValues(alpha: 0.12)
+                : DsColor.surface,
+            borderRadius: DsRadius.pillR,
+            border: Border.all(
+              color: active
+                  ? DsColor.accent.withValues(alpha: 0.35)
+                  : DsColor.line,
             ),
-            if (count != null) ...[
-              const SizedBox(width: 5),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
               Text(
-                '$count',
-                style: TextStyle(color: AppTheme.textMuted, fontSize: 11),
+                label,
+                style: DsType.caption.copyWith(
+                  color: active ? DsColor.accent : DsColor.textSoft,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
+              if (count != null) ...[
+                const SizedBox(width: DsSpace.xs + 1),
+                Text('$count', style: DsType.caption.copyWith(fontSize: 11.5)),
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );
@@ -442,38 +491,19 @@ class _ServerListScreenState extends State<ServerListScreen> {
   Widget _empty() {
     final l = AppLocalizations.of(context)!;
     return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 56,
-            height: 56,
-            decoration: BoxDecoration(
-              color: DsColor.surface,
-              borderRadius: DsRadius.controlR,
-              border: Border.all(color: DsColor.line),
-            ),
-            child: Icon(
-              _failed ? Icons.cloud_off_rounded : Icons.search_off_rounded,
-              size: 24,
-              color: AppTheme.textMuted,
-            ),
-          ),
-          const SizedBox(height: 14),
-          Text(
-            _failed ? l.serverListLoadFailed : l.serverListNoMatch,
-            style: TextStyle(
-              color: AppTheme.textSecondary,
-              fontSize: 13,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            _failed ? l.serverListLoadFailedHint : l.serverListNoMatchHint,
-            style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
-          ),
-        ],
+      child: DsEmptyState(
+        icon: _failed ? Icons.cloud_off_rounded : Icons.search_off_rounded,
+        title: _failed ? l.serverListLoadFailed : l.serverListNoMatch,
+        message: _failed ? l.serverListLoadFailedHint : l.serverListNoMatchHint,
+        action: _failed
+            ? DsButton(
+                label: l.rpRetry,
+                icon: Icons.refresh_rounded,
+                tone: DsButtonTone.neutral,
+                size: DsButtonSize.small,
+                onPressed: _load,
+              )
+            : null,
       ),
     );
   }
@@ -489,7 +519,7 @@ class _Spinner extends StatelessWidget {
       height: 24,
       child: CircularProgressIndicator(
         strokeWidth: 1.5,
-        color: AppTheme.textMuted,
+        color: DsColor.textFaint,
       ),
     );
   }

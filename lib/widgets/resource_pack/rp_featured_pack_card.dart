@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../l10n/app_localizations.dart';
 import '../../theme/app_theme.dart';
 import '../../theme/app_tokens.dart';
+import '../../design/design.dart';
 
 class RpFeaturedPackCard extends StatelessWidget {
   final Map<String, dynamic> pack;
@@ -38,6 +39,7 @@ class RpFeaturedPackCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final name = pack['name'] as String;
     final description = pack['description'] as String?;
     final thumbnailUrl = pack['thumbnailUrl'] as String?;
@@ -49,15 +51,11 @@ class RpFeaturedPackCard extends StatelessWidget {
         ? pack['downloadCount'] as int
         : int.tryParse(pack['downloadCount']?.toString() ?? '');
 
-    return Container(
-      margin: const EdgeInsets.only(bottom: 8),
-      decoration: BoxDecoration(
-        color: AppTheme.surfaceRaised,
-        borderRadius: AppRadius.medium,
-        border: Border.all(color: AppTheme.borderGray),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(12),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: DsSpace.sm),
+      child: DsCard(
+        padding: const EdgeInsets.all(DsSpace.md),
+        onTap: () => _openDetail(context),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -65,11 +63,12 @@ class RpFeaturedPackCard extends StatelessWidget {
               width: 72,
               height: 72,
               decoration: BoxDecoration(
-                color: const Color(0xFF1a1f2a),
-                borderRadius: AppRadius.small,
+                color: DsColor.inset,
+                borderRadius: BorderRadius.circular(DsRadius.control - 4),
+                border: Border.all(color: DsColor.line),
               ),
               child: ClipRRect(
-                borderRadius: AppRadius.small,
+                borderRadius: BorderRadius.circular(DsRadius.control - 4),
                 child: thumbnailUrl != null
                     ? Image.network(
                         thumbnailUrl,
@@ -79,139 +78,87 @@ class RpFeaturedPackCard extends StatelessWidget {
                         filterQuality: FilterQuality.none,
                         errorBuilder: (ctx, err, st) => Icon(
                           Icons.extension_rounded,
-                          color: AppTheme.textMuted,
+                          color: DsColor.textFaint,
                           size: 28,
                         ),
                       )
                     : Icon(
                         Icons.extension_rounded,
-                        color: AppTheme.textMuted,
+                        color: DsColor.textFaint,
                         size: 28,
                       ),
               ),
             ),
-            const SizedBox(width: 14),
+            const SizedBox(width: DsSpace.md),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     name,
-                    style: TextStyle(
-                      color: AppTheme.textPrimary,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: DsType.bodyStrong,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   if (description != null && description.isNotEmpty) ...[
-                    const SizedBox(height: 3),
+                    const SizedBox(height: DsSpace.xxs),
                     Text(
                       description,
-                      style: TextStyle(
-                        color: AppTheme.textMuted,
-                        fontSize: 12,
-                        height: 1.4,
-                      ),
+                      style: DsType.caption,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
-                  const SizedBox(height: 6),
+                  const SizedBox(height: DsSpace.sm),
                   Wrap(
-                    spacing: 4,
-                    runSpacing: 4,
+                    spacing: DsSpace.xs,
+                    runSpacing: DsSpace.xs,
+                    crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
                       if (category != null)
-                        _chip(category, const Color(0xFF60a5fa)),
-                      ...tags.map((t) => _chip(t, AppTheme.accent)),
+                        DsBadge(label: category, color: DsColor.info),
+                      ...tags.take(3).map(
+                        (t) => DsBadge(label: t, color: DsColor.accent),
+                      ),
                       if (downloadCount != null)
                         Text(
                           '↓ $downloadCount',
-                          style: TextStyle(
-                            color: AppTheme.textMuted,
-                            fontSize: 11,
-                          ),
+                          style: DsType.caption.copyWith(fontSize: 11.5),
                         ),
                     ],
                   ),
                 ],
               ),
             ),
-            const SizedBox(width: 10),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                isApplying
-                    ? SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: AppTheme.accent,
-                        ),
-                      )
-                    : GestureDetector(
-                        onTap: onUse,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 8,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppTheme.accent,
-                            borderRadius: AppRadius.small,
-                          ),
-                          child: Text(
-                            'Use',
-                            style: TextStyle(
-                              color: AppTheme.surfaceRaised,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ),
-                      ),
-                const SizedBox(height: 6),
-                GestureDetector(
-                  onTap: () => _openDetail(context),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 6,
-                    ),
-                    decoration: BoxDecoration(
-                      color: AppTheme.surfaceRaisedSolid,
-                      borderRadius: AppRadius.small,
-                      border: Border.all(color: AppTheme.borderGray),
-                    ),
-                    child: Text(
-                      AppLocalizations.of(context)!.rpPackInfo,
-                      style: TextStyle(
-                        color: AppTheme.textSecondary,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+            const SizedBox(width: DsSpace.md),
+            SizedBox(
+              width: 76,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  DsButton(
+                    label: l.rpMergerUse,
+                    size: DsButtonSize.small,
+                    busy: isApplying,
+                    onPressed: isApplying ? null : onUse,
                   ),
-                ),
-              ],
+                  const SizedBox(height: DsSpace.sm - 2),
+                  DsButton(
+                    label: l.rpPackInfo,
+                    tone: DsButtonTone.neutral,
+                    size: DsButtonSize.small,
+                    onPressed: () => _openDetail(context),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
       ),
     );
   }
-
-  Widget _chip(String label, Color color) => Container(
-    padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
-    decoration: BoxDecoration(
-      color: color.withValues(alpha: 0.10),
-      borderRadius: BorderRadius.circular(4),
-      border: Border.all(color: color.withValues(alpha: 0.28)),
-    ),
-    child: Text(
-      label,
-      style: TextStyle(color: color, fontSize: 10, fontWeight: FontWeight.w600),
-    ),
-  );
 }
 
 class _PackDetailSheet extends StatelessWidget {
@@ -286,7 +233,7 @@ class _PackDetailSheet extends StatelessWidget {
                           width: 64,
                           height: 64,
                           decoration: BoxDecoration(
-                            color: const Color(0xFF1a1f2a),
+                            color: DsColor.inset,
                             borderRadius: AppRadius.small,
                           ),
                           child: ClipRRect(
@@ -320,7 +267,7 @@ class _PackDetailSheet extends StatelessWidget {
                                 runSpacing: 4,
                                 children: [
                                   if (category != null)
-                                    _chip(category, const Color(0xFF60a5fa)),
+                                    _chip(category, DsColor.info),
                                   ...tags.map((t) => _chip(t, AppTheme.accent)),
                                 ],
                               ),

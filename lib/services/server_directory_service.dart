@@ -13,7 +13,9 @@ class ServerDirectoryService {
     String? search,
     String? tag,
     String? edition,
-    String sort = 'votes',
+    String sort = 'players',
+    int? minPlayers,
+    int? maxPlayers,
     int page = 0,
   }) async {
     final query = <String, String>{
@@ -23,6 +25,8 @@ class ServerDirectoryService {
       if (search != null && search.trim().isNotEmpty) 'search': search.trim(),
       if (tag != null && tag.isNotEmpty) 'tag': tag,
       if (edition != null && edition.isNotEmpty) 'edition': edition,
+      if (minPlayers != null) 'minPlayers': '$minPlayers',
+      if (maxPlayers != null) 'maxPlayers': '$maxPlayers',
     };
 
     final body = await _get(

@@ -1433,6 +1433,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get rpUploadTab => 'Upload';
 
   @override
+  String get rpBrowseTab => 'Browse';
+
+  @override
   String get rpUploadButton => 'Tap to select your pack';
 
   @override
@@ -2055,6 +2058,16 @@ class AppLocalizationsRu extends AppLocalizations {
       'Не удалось открыть локальный порт. Сначала остановите текущее подключение.';
 
   @override
+  String get waitingForConsole => 'Waiting for your console…';
+
+  @override
+  String get consoleFound => 'Console found';
+
+  @override
+  String get consoleLanHint =>
+      'On your console, open Minecraft and look under Friends for a LAN game.';
+
+  @override
   String directAddressNotSupported(String host) {
     return '$host — это адрес IPv6. Режим прокси/прямого подключения поддерживает только IPv4. Используйте адрес IPv4 или имя хоста.';
   }
@@ -2125,6 +2138,12 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get serverListAllCategories => 'Все';
+
+  @override
+  String get serverListPlayersAny => 'Any size';
+
+  @override
+  String get serverListPlayersHint => 'Average players online';
 
   @override
   String get serverListLoadFailed => 'Не удалось загрузить список серверов';

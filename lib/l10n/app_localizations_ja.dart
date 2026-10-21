@@ -1401,6 +1401,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get rpUploadTab => 'Upload';
 
   @override
+  String get rpBrowseTab => 'Browse';
+
+  @override
   String get rpUploadButton => 'Tap to select your pack';
 
   @override
@@ -2017,6 +2020,16 @@ class AppLocalizationsJa extends AppLocalizations {
   String get directPortBusy => 'ローカルポートを開けませんでした。先に現在の接続を停止してください。';
 
   @override
+  String get waitingForConsole => 'Waiting for your console…';
+
+  @override
+  String get consoleFound => 'Console found';
+
+  @override
+  String get consoleLanHint =>
+      'On your console, open Minecraft and look under Friends for a LAN game.';
+
+  @override
   String directAddressNotSupported(String host) {
     return '$host は IPv6 アドレスです。プロキシ/ダイレクトモードは IPv4 のみ対応しています。IPv4 アドレスかホスト名をご利用ください。';
   }
@@ -2086,6 +2099,12 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get serverListAllCategories => 'すべて';
+
+  @override
+  String get serverListPlayersAny => 'Any size';
+
+  @override
+  String get serverListPlayersHint => 'Average players online';
 
   @override
   String get serverListLoadFailed => 'サーバーリストを読み込めませんでした';

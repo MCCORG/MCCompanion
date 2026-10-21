@@ -2730,6 +2730,12 @@ abstract class AppLocalizations {
   /// **'Upload'**
   String get rpUploadTab;
 
+  /// No description provided for @rpBrowseTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse'**
+  String get rpBrowseTab;
+
   /// Upload area primary label
   ///
   /// In en, this message translates to:
@@ -3852,6 +3858,24 @@ abstract class AppLocalizations {
   /// **'Could not open the local port. Stop the current connection first.'**
   String get directPortBusy;
 
+  /// No description provided for @waitingForConsole.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for your console…'**
+  String get waitingForConsole;
+
+  /// No description provided for @consoleFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Console found'**
+  String get consoleFound;
+
+  /// No description provided for @consoleLanHint.
+  ///
+  /// In en, this message translates to:
+  /// **'On your console, open Minecraft and look under Friends for a LAN game.'**
+  String get consoleLanHint;
+
   /// No description provided for @directAddressNotSupported.
   ///
   /// In en, this message translates to:
@@ -3977,6 +4001,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'All'**
   String get serverListAllCategories;
+
+  /// No description provided for @serverListPlayersAny.
+  ///
+  /// In en, this message translates to:
+  /// **'Any size'**
+  String get serverListPlayersAny;
+
+  /// No description provided for @serverListPlayersHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Average players online'**
+  String get serverListPlayersHint;
 
   /// No description provided for @serverListLoadFailed.
   ///

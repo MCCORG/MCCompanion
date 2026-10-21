@@ -664,6 +664,7 @@
   "rpNoEncryptedHint": "MCCompanion kan versleutelde packinhoud niet samenvoegen",
   "rpClearWhy": "Minecraft slaat resourcepakketten op via hun UUID. De samengevoegde pack behoudt de originele UUID van de server, als Minecraft de serverpack al gecacht heeft van een vorige sessie (vóór MCCompanion was ingeschakeld), downloadt het de nieuwe samengevoegde versie niet opnieuw. Wis de cache zodat Minecraft de verse samengevoegde pack oppikt.",
   "rpUploadTab": "Upload",
+  "rpBrowseTab": "Bladeren",
   "rpUploadButton": "Tap to select your pack",
   "rpUploadHint": ".mcpack or .zip • max 100 MB",
   "rpUploading": "Uploading...",
@@ -971,6 +972,9 @@
     }
   },
   "directPortBusy": "Kon de lokale poort niet openen. Stop eerst de huidige verbinding.",
+  "waitingForConsole": "Wachten op je console…",
+  "consoleFound": "Console gevonden",
+  "consoleLanHint": "Open Minecraft op je console en zoek onder Vrienden naar een LAN-spel.",
   "directAddressNotSupported": "{host} is een IPv6-adres. Proxy/directe modus ondersteunt alleen IPv4. Gebruik het IPv4-adres of de hostnaam.",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -1009,6 +1013,8 @@
   "serverListSortNewest": "Nieuwste",
   "serverListSortName": "Naam",
   "serverListAllCategories": "Alle",
+  "serverListPlayersAny": "Elke grootte",
+  "serverListPlayersHint": "Gemiddeld aantal spelers online",
   "serverListLoadFailed": "Kon de serverlijst niet laden",
   "serverListLoadFailedHint": "Trek naar beneden om opnieuw te proberen",
   "serverListNoMatch": "Geen servers gevonden",

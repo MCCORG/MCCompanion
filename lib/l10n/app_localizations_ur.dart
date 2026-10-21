@@ -1431,6 +1431,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get rpUploadTab => 'Upload';
 
   @override
+  String get rpBrowseTab => 'Browse';
+
+  @override
   String get rpUploadButton => 'Tap to select your pack';
 
   @override
@@ -2054,6 +2057,16 @@ class AppLocalizationsUr extends AppLocalizations {
       'مقامی پورٹ نہیں کھل سکا۔ پہلے موجودہ کنکشن بند کریں۔';
 
   @override
+  String get waitingForConsole => 'Waiting for your console…';
+
+  @override
+  String get consoleFound => 'Console found';
+
+  @override
+  String get consoleLanHint =>
+      'On your console, open Minecraft and look under Friends for a LAN game.';
+
+  @override
   String directAddressNotSupported(String host) {
     return '$host ایک IPv6 پتہ ہے۔ پراکسی/ڈائریکٹ موڈ صرف IPv4 کو سپورٹ کرتا ہے۔ IPv4 پتہ یا ہوسٹ نام استعمال کریں۔';
   }
@@ -2124,6 +2137,12 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get serverListAllCategories => 'سب';
+
+  @override
+  String get serverListPlayersAny => 'Any size';
+
+  @override
+  String get serverListPlayersHint => 'Average players online';
 
   @override
   String get serverListLoadFailed => 'سرور کی فہرست لوڈ نہیں ہو سکی';

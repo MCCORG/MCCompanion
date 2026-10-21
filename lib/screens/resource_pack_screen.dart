@@ -17,6 +17,7 @@ import '../widgets/components/app_toast.dart';
 import '../widgets/components/swipe_back.dart';
 import '../widgets/resource_pack/rp_active_pack_banner.dart';
 import '../widgets/resource_pack/rp_featured_pack_card.dart';
+import '../widgets/resource_pack/rp_filter_chip.dart';
 import '../widgets/resource_pack/rp_info_section.dart';
 import '../widgets/resource_pack/rp_tab_bar.dart';
 import '../widgets/resource_pack/rp_tab_info_box.dart';
@@ -43,17 +44,14 @@ class ResourcePackScreen extends StatefulWidget {
 }
 
 class _ResourcePackScreenState extends State<ResourcePackScreen> {
-  final _urlCtrl = TextEditingController();
   bool _enabled = false;
   bool _loaded = false;
-  String? _urlWarning;
   RpInputMode _mode = RpInputMode.browse;
 
   String? _uploadedFilename;
   String? _uploadedUrl;
   bool _uploading = false;
   bool _isDragging = false;
-  double _uploadProgress = 0;
 
   List<Map<String, dynamic>> _featuredPacks = [];
   bool _featuredLoading = false;
@@ -73,7 +71,6 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     super.initState();
     _load();
     _loadFeaturedPacks();
-    _urlCtrl.addListener(_validateUrl);
     ResourcePackPrefs.revision.addListener(_load);
   }
 
@@ -112,7 +109,6 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
       _enabled = true;
       _hasPack = true;
       _activePackName = name;
-      _urlCtrl.text = url;
     });
     AppToast.show(
       context,
@@ -134,29 +130,10 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
       _enabled = enabled;
       _uploadedFilename = filename;
       _uploadedUrl = (isUpload && url != null && url.isNotEmpty) ? url : null;
-      if (!isUpload) _urlCtrl.text = url ?? '';
       _hasPack = hasPack;
       _activePackName = filename;
       _loaded = true;
     });
-    _validateUrl();
-  }
-
-  void _validateUrl() {
-    final url = _urlCtrl.text.trim();
-    final l = AppLocalizations.of(context);
-    String? warning;
-    if (url.isNotEmpty && l != null) {
-      if (url.contains('cdn.discordapp.com') ||
-          url.contains('media.discordapp.net')) {
-        warning = l.rpWarnDiscord;
-      } else if (!url.startsWith('https://')) {
-        warning = l.rpWarnHttps;
-      } else if (!url.endsWith('.mcpack') && !url.endsWith('.zip')) {
-        warning = l.rpWarnExtension;
-      }
-    }
-    if (warning != _urlWarning) setState(() => _urlWarning = warning);
   }
 
   Future<void> _pickAndUpload() async {
@@ -184,7 +161,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
           context,
           message: AppLocalizations.of(context)!.rpInvalidPackFormat,
           icon: Icons.error_outline_rounded,
-          color: Colors.red,
+          color: AppTheme.error,
         );
         return;
       }
@@ -193,7 +170,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
           context,
           message: AppLocalizations.of(context)!.rpBehaviorContentWarning,
           icon: Icons.warning_amber_rounded,
-          color: Colors.orange,
+          color: AppTheme.warning,
         );
       }
       await _uploadBytes(bytes, file.name);
@@ -203,10 +180,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   }
 
   Future<void> _uploadBytes(Uint8List bytes, String name) async {
-    setState(() {
-      _uploading = true;
-      _uploadProgress = 0;
-    });
+    setState(() => _uploading = true);
     try {
       final token = await AuthService.getIdToken();
       final request = http.MultipartRequest(
@@ -322,7 +296,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     String title,
     Widget body, {
     IconData icon = Icons.info_rounded,
-    Color iconColor = const Color(0xFF60A5FA),
+    Color iconColor = DsColor.info,
   }) {
     showDialog(
       context: context,
@@ -422,8 +396,6 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   @override
   void dispose() {
     ResourcePackPrefs.revision.removeListener(_load);
-    _urlCtrl.removeListener(_validateUrl);
-    _urlCtrl.dispose();
     _searchCtrl.dispose();
     super.dispose();
   }
@@ -538,175 +510,102 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
 
   Widget _buildBrowseSection() {
     final l = AppLocalizations.of(context)!;
+    final tags = _allTags;
+    final packs = _filteredPacks;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         RpTabInfoBox(text: l.rpTabBrowseInfo),
-        const SizedBox(height: 16),
+        const SizedBox(height: DsSpace.lg),
         if (_featuredLoading)
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 48),
+            padding: const EdgeInsets.symmetric(vertical: DsSpace.xxxl),
             child: Center(
               child: CircularProgressIndicator(
                 strokeWidth: 2,
-                color: AppTheme.accent,
+                color: DsColor.accent,
               ),
             ),
           )
         else if (_featuredError)
-          Center(
-            child: Column(
-              children: [
-                Text(
-                  AppLocalizations.of(context)!.rpLoadFailed,
-                  style: TextStyle(color: AppTheme.textMuted),
-                ),
-                TextButton(
-                  onPressed: () {
-                    setState(() => _featuredError = false);
-                    _loadFeaturedPacks();
-                  },
-                  child: Text(
-                    AppLocalizations.of(context)!.rpRetry,
-                    style: TextStyle(color: AppTheme.accent),
-                  ),
-                ),
-              ],
+          DsCard(
+            padding: EdgeInsets.zero,
+            child: DsEmptyState(
+              icon: Icons.cloud_off_rounded,
+              title: l.rpLoadFailed,
+              action: DsButton(
+                label: l.rpRetry,
+                icon: Icons.refresh_rounded,
+                tone: DsButtonTone.neutral,
+                size: DsButtonSize.small,
+                onPressed: () {
+                  setState(() => _featuredError = false);
+                  _loadFeaturedPacks();
+                },
+              ),
             ),
           )
         else if (_featuredPacks.isEmpty)
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 48),
-            child: Column(
-              children: [
-                Icon(
-                  Icons.explore_off_rounded,
-                  color: AppTheme.textMuted,
-                  size: 40,
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  l.rpBrowseEmpty,
-                  style: TextStyle(color: AppTheme.textMuted, fontSize: 14),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  l.rpBrowseEmptyHint,
-                  style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
-                ),
-              ],
+          DsCard(
+            padding: EdgeInsets.zero,
+            child: DsEmptyState(
+              icon: Icons.explore_off_rounded,
+              title: l.rpBrowseEmpty,
+              message: l.rpBrowseEmptyHint,
             ),
           )
         else ...[
-          Text(
-            l.rpBrowseSubtitle,
-            style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
-          ),
-          const SizedBox(height: 12),
-          TextField(
+          Text(l.rpBrowseSubtitle, style: DsType.caption),
+          const SizedBox(height: DsSpace.md),
+          DsField(
             controller: _searchCtrl,
+            hint: l.rpSearchHint,
+            icon: Icons.search_rounded,
             onChanged: (v) => setState(() => _featuredSearch = v),
-            style: TextStyle(color: AppTheme.textPrimary, fontSize: 14),
-            decoration: InputDecoration(
-              hintText: AppLocalizations.of(context)!.rpSearchHint,
-              prefixIcon: Icon(
-                Icons.search_rounded,
-                color: AppTheme.textMuted,
-                size: 18,
-              ),
-              contentPadding: const EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: 12,
-              ),
+          ),
+          const SizedBox(height: DsSpace.md),
+          DsHScroll(
+            child: Row(
+              children: [
+                for (final cat in _kPackCategories) ...[
+                  RpFilterChip(
+                    label: cat[0].toUpperCase() + cat.substring(1),
+                    color: DsColor.info,
+                    selected: _selectedCategory == cat,
+                    onTap: () => setState(
+                      () => _selectedCategory = _selectedCategory == cat
+                          ? null
+                          : cat,
+                    ),
+                  ),
+                  const SizedBox(width: DsSpace.sm - 2),
+                ],
+              ],
             ),
           ),
-          const SizedBox(height: 8),
-          Wrap(
-            spacing: 6,
-            runSpacing: 6,
-            children: _kPackCategories.map((cat) {
-              final selected = _selectedCategory == cat;
-              return GestureDetector(
-                onTap: () =>
-                    setState(() => _selectedCategory = selected ? null : cat),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 5,
-                  ),
-                  decoration: BoxDecoration(
-                    color: selected
-                        ? const Color(0xFF60a5fa)
-                        : const Color(0xFF60a5fa).withValues(alpha: 0.08),
-                    borderRadius: BorderRadius.circular(6),
-                    border: Border.all(
-                      color: const Color(
-                        0xFF60a5fa,
-                      ).withValues(alpha: selected ? 1.0 : 0.22),
+          if (tags.isNotEmpty) ...[
+            const SizedBox(height: DsSpace.sm),
+            DsHScroll(
+              child: Row(
+                children: [
+                  for (final tag in tags) ...[
+                    RpFilterChip(
+                      label: tag,
+                      color: DsColor.accent,
+                      selected: _selectedTags.contains(tag),
+                      onTap: () => setState(() {
+                        if (!_selectedTags.remove(tag)) _selectedTags.add(tag);
+                      }),
                     ),
-                  ),
-                  child: Text(
-                    cat,
-                    style: TextStyle(
-                      color: selected
-                          ? AppTheme.surfaceRaised
-                          : const Color(0xFF60a5fa),
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              );
-            }).toList(),
-          ),
-          if (_allTags.isNotEmpty) ...[
-            const SizedBox(height: 8),
-            Wrap(
-              spacing: 6,
-              runSpacing: 6,
-              children: _allTags.map((tag) {
-                final selected = _selectedTags.contains(tag);
-                return GestureDetector(
-                  onTap: () => setState(() {
-                    if (selected) {
-                      _selectedTags.remove(tag);
-                    } else {
-                      _selectedTags.add(tag);
-                    }
-                  }),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 5,
-                    ),
-                    decoration: BoxDecoration(
-                      color: selected
-                          ? AppTheme.accent
-                          : AppTheme.accent.withValues(alpha: 0.08),
-                      borderRadius: BorderRadius.circular(6),
-                      border: Border.all(
-                        color: AppTheme.accent.withValues(
-                          alpha: selected ? 1.0 : 0.22,
-                        ),
-                      ),
-                    ),
-                    child: Text(
-                      tag,
-                      style: TextStyle(
-                        color: selected
-                            ? AppTheme.surfaceRaised
-                            : AppTheme.accent,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                );
-              }).toList(),
+                    const SizedBox(width: DsSpace.sm - 2),
+                  ],
+                ],
+              ),
             ),
           ],
-          const SizedBox(height: 12),
-          ..._filteredPacks.map(
+          const SizedBox(height: DsSpace.lg),
+          ...packs.map(
             (pack) => RpFeaturedPackCard(
               pack: pack,
               isApplying: _applyingPackId == pack['id'].toString(),
@@ -735,65 +634,19 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
   }
 
   Widget _buildReplaceHint(AppLocalizations l) {
-    return GestureDetector(
-      onTap: _uploading ? null : _pickAndUpload,
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
-        decoration: BoxDecoration(
-          color: AppTheme.surfaceRaised,
-          borderRadius: AppRadius.small,
-          border: Border.all(
-            color: _uploading
-                ? AppTheme.accent.withValues(alpha: 0.5)
-                : AppTheme.borderGray,
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (_uploading) ...[
-              SizedBox(
-                width: 16,
-                height: 16,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                  color: AppTheme.accent,
-                ),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                l.rpUploading,
-                style: TextStyle(
-                  color: AppTheme.textSecondary,
-                  fontSize: 13,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ] else ...[
-              Icon(
-                Icons.swap_horiz_rounded,
-                color: AppTheme.textMuted,
-                size: 18,
-              ),
-              const SizedBox(width: 8),
-              Text(
-                l.rpReplaceFile,
-                style: TextStyle(
-                  color: AppTheme.textSecondary,
-                  fontSize: 13,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
-          ],
-        ),
-      ),
+    return DsButton(
+      label: _uploading ? l.rpUploading : l.rpReplaceFile,
+      icon: Icons.swap_horiz_rounded,
+      tone: DsButtonTone.neutral,
+      expand: true,
+      busy: _uploading,
+      onPressed: _uploading ? null : _pickAndUpload,
     );
   }
 
   Widget _buildUploadButton(AppLocalizations l) {
     final active = _isDragging && !_uploading;
+    final highlighted = active || _uploading;
     return DropTarget(
       onDragEntered: (_) => setState(() => _isDragging = true),
       onDragExited: (_) => setState(() => _isDragging = false),
@@ -813,21 +666,19 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
         onTap: _uploading ? null : _pickAndUpload,
         behavior: HitTestBehavior.opaque,
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 150),
+          duration: DsDuration.fast,
           width: double.infinity,
-          padding: const EdgeInsets.symmetric(vertical: 32),
+          padding: const EdgeInsets.symmetric(vertical: DsSpace.xxl),
           decoration: BoxDecoration(
             color: active
-                ? AppTheme.accent.withValues(alpha: 0.06)
-                : AppTheme.surfaceRaised,
-            borderRadius: AppRadius.medium,
+                ? DsColor.accent.withValues(alpha: 0.08)
+                : DsColor.surface,
+            borderRadius: DsRadius.cardR,
             border: Border.all(
-              color: active
-                  ? AppTheme.accent.withValues(alpha: 0.6)
-                  : _uploading
-                  ? AppTheme.accent.withValues(alpha: 0.5)
-                  : AppTheme.borderGray,
-              width: active || _uploading ? 1.5 : 1,
+              color: highlighted
+                  ? DsColor.accent.withValues(alpha: 0.6)
+                  : DsColor.line,
+              width: highlighted ? 1.5 : 1,
             ),
           ),
           child: _uploading
@@ -838,19 +689,12 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                       width: 28,
                       height: 28,
                       child: CircularProgressIndicator(
-                        value: _uploadProgress > 0 ? _uploadProgress : null,
                         strokeWidth: 2.5,
-                        color: AppTheme.accent,
+                        color: DsColor.accent,
                       ),
                     ),
-                    const SizedBox(height: 10),
-                    Text(
-                      l.rpUploading,
-                      style: TextStyle(
-                        color: AppTheme.textSecondary,
-                        fontSize: 13,
-                      ),
-                    ),
+                    const SizedBox(height: DsSpace.md),
+                    Text(l.rpUploading, style: DsType.label),
                   ],
                 )
               : Column(
@@ -860,23 +704,18 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                       active
                           ? Icons.file_download_rounded
                           : Icons.upload_file_rounded,
-                      color: active ? AppTheme.accent : AppTheme.textMuted,
+                      color: active ? DsColor.accent : DsColor.textFaint,
                       size: 32,
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: DsSpace.md),
                     Text(
                       active ? l.rpDropToUpload : l.rpUploadButton,
-                      style: TextStyle(
-                        color: active ? AppTheme.accent : AppTheme.textPrimary,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
+                      style: DsType.bodyStrong.copyWith(
+                        color: active ? DsColor.accent : DsColor.text,
                       ),
                     ),
-                    const SizedBox(height: 3),
-                    Text(
-                      l.rpUploadHint,
-                      style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
-                    ),
+                    const SizedBox(height: DsSpace.xs),
+                    Text(l.rpUploadHint, style: DsType.caption),
                   ],
                 ),
         ),

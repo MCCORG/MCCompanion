@@ -1434,6 +1434,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get rpUploadTab => 'Upload';
 
   @override
+  String get rpBrowseTab => 'Browse';
+
+  @override
   String get rpUploadButton => 'Tap to select your pack';
 
   @override
@@ -2058,6 +2061,16 @@ class AppLocalizationsPt extends AppLocalizations {
       'Não foi possível abrir a porta local. Pare primeiro a ligação atual.';
 
   @override
+  String get waitingForConsole => 'Waiting for your console…';
+
+  @override
+  String get consoleFound => 'Console found';
+
+  @override
+  String get consoleLanHint =>
+      'On your console, open Minecraft and look under Friends for a LAN game.';
+
+  @override
   String directAddressNotSupported(String host) {
     return '$host é um endereço IPv6. O modo proxy/direto só suporta IPv4. Use o endereço IPv4 ou o nome de anfitrião.';
   }
@@ -2128,6 +2141,12 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get serverListAllCategories => 'Todas';
+
+  @override
+  String get serverListPlayersAny => 'Any size';
+
+  @override
+  String get serverListPlayersHint => 'Average players online';
 
   @override
   String get serverListLoadFailed =>

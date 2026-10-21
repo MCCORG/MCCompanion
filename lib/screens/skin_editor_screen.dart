@@ -15,8 +15,6 @@ import '../models/saved_skin.dart';
 import '../util/saved_skins_storage.dart';
 import '../util/skin_format.dart';
 import '../util/skin_generator.dart';
-import '../services/skin_upload_service.dart';
-import '../services/auth_service.dart';
 import '../widgets/skin_3d_viewer.dart';
 import '../widgets/components/app_toast.dart';
 import '../l10n/app_localizations.dart';
@@ -33,16 +31,11 @@ extension _Channels8 on Color {
 class SkinEditorScreen extends StatefulWidget {
   final String? initialTextureUrl;
   final SavedSkin? existingSkin;
-  final Map<String, dynamic>? cloudSkin;
-
-  final String? derivedFromSkinId;
 
   const SkinEditorScreen({
     super.key,
     this.initialTextureUrl,
     this.existingSkin,
-    this.cloudSkin,
-    this.derivedFromSkinId,
   });
 
   @override
@@ -55,7 +48,6 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
 
   late Uint8List _pixels;
   bool _loading = true;
-  String? _sessionCloudSkinId;
 
   _Tool _activeTool = _Tool.draw;
   Color _activeColor = const Color(0xFF3F51B5);
@@ -134,23 +126,11 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
   Future<void> _init() async {
     Uint8List? rawBytes;
     final wantedOwnSkin =
-        widget.existingSkin != null ||
-        widget.cloudSkin != null ||
-        widget.initialTextureUrl != null;
+        widget.existingSkin != null || widget.initialTextureUrl != null;
 
     if (widget.existingSkin != null) {
       try {
         rawBytes = await File(widget.existingSkin!.filePath).readAsBytes();
-      } catch (_) {}
-    } else if (widget.cloudSkin != null) {
-      try {
-        final url =
-            (widget.cloudSkin!['public_url'] ?? widget.cloudSkin!['publicUrl'])
-                as String;
-        final resp = await http
-            .get(Uri.parse(url), headers: {'User-Agent': 'MCCompanionApp/1.0'})
-            .timeout(const Duration(seconds: 10));
-        rawBytes = resp.bodyBytes;
       } catch (_) {}
     } else if (widget.initialTextureUrl != null) {
       try {
@@ -711,160 +691,10 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
     _paintAt(d.localPosition);
   }
 
-  Future<void> _saveToCloud() async {
-    final pngBytes = await _toPng();
-    if (pngBytes == null) return;
-
-    if (widget.cloudSkin != null) {
-      await _saveSkin();
-      return;
-    }
-
-    if (!mounted) return;
-    final l = AppLocalizations.of(context)!;
-    String name = widget.existingSkin?.name ?? '';
-    if (name.isEmpty && _sessionCloudSkinId == null) {
-      final ctrl = TextEditingController(text: l.skinDefaultName);
-      final confirmed = await showDialog<bool>(
-        context: context,
-        builder: (ctx) {
-          final ll = AppLocalizations.of(ctx)!;
-          return AlertDialog(
-            backgroundColor: DsColor.surface,
-            title: Text(
-              ll.skinUploadToCloud,
-              style: TextStyle(
-                color: DsColor.text,
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            content: TextField(
-              controller: ctrl,
-              autofocus: true,
-              style: TextStyle(color: DsColor.text),
-              decoration: InputDecoration(
-                hintText: ll.skinNameHint,
-                hintStyle: TextStyle(color: DsColor.textFaint),
-                filled: true,
-                fillColor: DsColor.bg,
-                border: OutlineInputBorder(
-                  borderRadius: DsRadius.controlR,
-                  borderSide: BorderSide(color: DsColor.line),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: DsRadius.controlR,
-                  borderSide: BorderSide(color: DsColor.line),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: DsRadius.controlR,
-                  borderSide: BorderSide(color: DsColor.accent),
-                ),
-              ),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(ctx, false),
-                child: Text(
-                  ll.cancel,
-                  style: TextStyle(color: DsColor.textFaint),
-                ),
-              ),
-              FilledButton(
-                onPressed: () => Navigator.pop(ctx, true),
-                style: FilledButton.styleFrom(backgroundColor: DsColor.accent),
-                child: Text(ll.skinsUpload),
-              ),
-            ],
-          );
-        },
-      );
-      if (confirmed != true || !mounted) return;
-      name = ctrl.text.trim().isEmpty ? l.skinDefaultName : ctrl.text.trim();
-    }
-
-    try {
-      _sessionCloudSkinId ??=
-          widget.existingSkin?.id ??
-          DateTime.now().millisecondsSinceEpoch.toString();
-      final skinId = _sessionCloudSkinId!;
-      final dir = await getTemporaryDirectory();
-      final tmp = File('${dir.path}/$skinId.png');
-      await tmp.writeAsBytes(pngBytes);
-      await SkinUploadService.uploadSkin(
-        skinId: skinId,
-        name: name,
-        filePath: tmp.path,
-        derivedFrom: widget.derivedFromSkinId,
-      );
-      await tmp.delete();
-      if (mounted) {
-        AppToast.show(
-          context,
-          message: l.skinUploaded,
-          icon: Icons.cloud_done_outlined,
-          color: DsColor.success,
-          duration: const Duration(seconds: 2),
-        );
-        Navigator.pop(context, 'cloud');
-      }
-    } catch (e) {
-      if (mounted) {
-        AppToast.show(
-          context,
-          message: l.skinUploadFailed(
-            e.toString().replaceAll('Exception: ', ''),
-          ),
-          icon: Icons.error_outline_rounded,
-          color: DsColor.danger,
-        );
-      }
-    }
-  }
-
   Future<void> _saveSkin() async {
     final pngBytes = await _toPng();
     if (pngBytes == null) return;
     if (!mounted) return;
-
-    if (widget.cloudSkin != null) {
-      final l = AppLocalizations.of(context)!;
-      final skinId = widget.cloudSkin!['id'] as String;
-      final name = widget.cloudSkin!['name'] as String? ?? l.skinDefaultName;
-      try {
-        final dir = await getTemporaryDirectory();
-        final tmp = File('${dir.path}/$skinId.png');
-        await tmp.writeAsBytes(pngBytes);
-        await SkinUploadService.uploadSkin(
-          skinId: skinId,
-          name: name,
-          filePath: tmp.path,
-        );
-        await tmp.delete();
-        if (mounted) {
-          AppToast.show(
-            context,
-            message: l.skinUpdatedInCloud,
-            icon: Icons.check_circle_outline_rounded,
-            color: DsColor.success,
-            duration: const Duration(seconds: 2),
-          );
-          Navigator.pop(context, 'cloud');
-        }
-      } catch (e) {
-        if (mounted) {
-          AppToast.show(
-            context,
-            message: l.skinUploadFailed(
-              e.toString().replaceAll('Exception: ', ''),
-            ),
-            icon: Icons.error_outline_rounded,
-            color: DsColor.danger,
-          );
-        }
-      }
-      return;
-    }
 
     if (widget.existingSkin != null) {
       await SavedSkinsStorage.update(widget.existingSkin!.id, pngBytes);
@@ -1063,22 +893,12 @@ class _SkinEditorScreenState extends State<SkinEditorScreen>
                           tooltip: loc.skinToolUndo,
                           onPressed: _undoStack.isNotEmpty ? _undo : null,
                         ),
-                        if (widget.cloudSkin == null)
-                          DsIconButton(
-                            icon: Icons.save_outlined,
-                            size: 36,
-                            tooltip: loc.skinSaveToMySkins,
-                            onPressed: _saveSkin,
-                          ),
-                        if (AuthService.currentUser != null)
-                          DsIconButton(
-                            icon: Icons.cloud_upload_outlined,
-                            size: 36,
-                            tooltip: widget.cloudSkin != null
-                                ? loc.skinUpdateInCloud
-                                : loc.skinUploadToCloud,
-                            onPressed: _saveToCloud,
-                          ),
+                        DsIconButton(
+                          icon: Icons.save_outlined,
+                          size: 36,
+                          tooltip: loc.skinSaveToMySkins,
+                          onPressed: _saveSkin,
+                        ),
                         DsIconButton(
                           key: _exportButtonKey,
                           icon: Icons.download_rounded,

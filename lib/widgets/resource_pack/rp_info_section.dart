@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../l10n/app_localizations.dart';
-import '../../theme/app_theme.dart';
-import '../../theme/app_tokens.dart';
+import '../../design/design.dart';
 
 class RpInfoSection extends StatelessWidget {
   final void Function(
@@ -20,15 +19,15 @@ class RpInfoSection extends StatelessWidget {
     final l = AppLocalizations.of(context)!;
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.surfaceRaised,
-        borderRadius: AppRadius.medium,
-        border: Border.all(color: AppTheme.borderGray),
+        color: DsColor.surface,
+        borderRadius: DsRadius.cardR,
+        border: Border.all(color: DsColor.line),
       ),
       child: Column(
         children: [
           _InfoRow(
             icon: Icons.check_circle_outline_rounded,
-            iconColor: AppTheme.success,
+            iconColor: DsColor.success,
             label: l.rpWhatWorks,
             onTap: () => showDialog(
               context,
@@ -47,7 +46,7 @@ class RpInfoSection extends StatelessWidget {
                     hint: l.rpSupportedTextureHint,
                     ok: true,
                   ),
-                  Divider(height: 20, color: AppTheme.borderGray),
+                  Divider(height: 20, color: DsColor.line),
                   RpModalBullet(
                     title: l.rpUnsupportedShaders,
                     hint: l.rpUnsupportedShadersHint,
@@ -58,7 +57,7 @@ class RpInfoSection extends StatelessWidget {
                     hint: l.rpUnsupportedAddonsHint,
                     ok: false,
                   ),
-                  Divider(height: 20, color: AppTheme.borderGray),
+                  Divider(height: 20, color: DsColor.line),
                   RpModalBullet(
                     title: l.rpNoDiscord,
                     hint: l.rpNoDiscordHint,
@@ -77,13 +76,13 @@ class RpInfoSection extends StatelessWidget {
                 ],
               ),
               icon: Icons.check_circle_outline_rounded,
-              iconColor: AppTheme.success,
+              iconColor: DsColor.success,
             ),
           ),
-          Divider(height: 1, color: AppTheme.borderGray, indent: 52),
+          Divider(height: 1, color: DsColor.line, indent: 52),
           _InfoRow(
             icon: Icons.speed_rounded,
-            iconColor: Colors.orangeAccent,
+            iconColor: DsColor.warning,
             label: l.rpConsolePerformanceTitle,
             onTap: () => showDialog(
               context,
@@ -91,19 +90,19 @@ class RpInfoSection extends StatelessWidget {
               Text(
                 l.rpConsolePerformanceBody,
                 style: TextStyle(
-                  color: AppTheme.textSecondary,
+                  color: DsColor.textSoft,
                   fontSize: 14,
                   height: 1.65,
                 ),
               ),
               icon: Icons.speed_rounded,
-              iconColor: Colors.orangeAccent,
+              iconColor: DsColor.warning,
             ),
           ),
-          Divider(height: 1, color: AppTheme.borderGray, indent: 52),
+          Divider(height: 1, color: DsColor.line, indent: 52),
           _InfoRow(
             icon: Icons.cleaning_services_rounded,
-            iconColor: AppTheme.info,
+            iconColor: DsColor.info,
             label: l.rpClearMinecraftTitle,
             onTap: () => showDialog(
               context,
@@ -115,7 +114,7 @@ class RpInfoSection extends StatelessWidget {
                   Text(
                     l.rpClearWhy,
                     style: TextStyle(
-                      color: AppTheme.textSecondary,
+                      color: DsColor.textSoft,
                       fontSize: 13,
                       height: 1.6,
                     ),
@@ -127,10 +126,10 @@ class RpInfoSection extends StatelessWidget {
                 ],
               ),
               icon: Icons.cleaning_services_rounded,
-              iconColor: AppTheme.info,
+              iconColor: DsColor.info,
             ),
           ),
-          Divider(height: 1, color: AppTheme.borderGray, indent: 52),
+          Divider(height: 1, color: DsColor.line, indent: 52),
           _InfoRow(
             icon: Icons.refresh_rounded,
             iconColor: const Color(0xFF8B5CF6),
@@ -141,7 +140,7 @@ class RpInfoSection extends StatelessWidget {
               Text(
                 l.rpRelayBody,
                 style: TextStyle(
-                  color: AppTheme.textSecondary,
+                  color: DsColor.textSoft,
                   fontSize: 14,
                   height: 1.65,
                 ),
@@ -173,7 +172,7 @@ class _InfoRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      borderRadius: AppRadius.medium,
+      borderRadius: DsRadius.cardR,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
         child: Row(
@@ -183,7 +182,7 @@ class _InfoRow extends StatelessWidget {
               height: 30,
               decoration: BoxDecoration(
                 color: iconColor.withValues(alpha: 0.12),
-                borderRadius: AppRadius.small,
+                borderRadius: DsRadius.controlR,
               ),
               child: Icon(icon, color: iconColor, size: 16),
             ),
@@ -192,7 +191,7 @@ class _InfoRow extends StatelessWidget {
               child: Text(
                 label,
                 style: TextStyle(
-                  color: AppTheme.textPrimary,
+                  color: DsColor.text,
                   fontSize: 13,
                   fontWeight: FontWeight.w500,
                 ),
@@ -200,7 +199,7 @@ class _InfoRow extends StatelessWidget {
             ),
             Icon(
               Icons.chevron_right_rounded,
-              color: AppTheme.textMuted,
+              color: DsColor.textFaint,
               size: 18,
             ),
           ],
@@ -224,7 +223,7 @@ class RpModalBullet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = ok ? AppTheme.success : AppTheme.error;
+    final color = ok ? DsColor.success : DsColor.danger;
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: Row(
@@ -251,7 +250,7 @@ class RpModalBullet extends StatelessWidget {
                 Text(
                   title,
                   style: TextStyle(
-                    color: AppTheme.textPrimary,
+                    color: DsColor.text,
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
                   ),
@@ -260,7 +259,7 @@ class RpModalBullet extends StatelessWidget {
                 Text(
                   hint,
                   style: TextStyle(
-                    color: AppTheme.textMuted,
+                    color: DsColor.textFaint,
                     fontSize: 12,
                     height: 1.4,
                   ),
@@ -292,13 +291,13 @@ class RpModalStep extends StatelessWidget {
             height: 24,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: AppTheme.info.withValues(alpha: 0.15),
+              color: DsColor.info.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(7),
             ),
             child: Text(
               n,
               style: TextStyle(
-                color: AppTheme.info,
+                color: DsColor.info,
                 fontSize: 12,
                 fontWeight: FontWeight.w700,
               ),
@@ -311,7 +310,7 @@ class RpModalStep extends StatelessWidget {
               child: Text(
                 text,
                 style: TextStyle(
-                  color: AppTheme.textSecondary,
+                  color: DsColor.textSoft,
                   fontSize: 14,
                   height: 1.5,
                 ),

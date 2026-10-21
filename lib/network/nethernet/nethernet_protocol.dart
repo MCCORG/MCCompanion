@@ -112,9 +112,9 @@ class NetherNetProtocol {
 
   static const int serverDataVersion = 7;
 
-  static const int defaultProtocol = bedrockProtocolVersion;
+  static int get defaultProtocol => BedrockVersion.protocol;
 
-  static const String defaultGameVersion = bedrockGameVersion;
+  static String get defaultGameVersion => BedrockVersion.gameVersion;
 
   static String randomNonce() {
     final rng = Random.secure();
@@ -135,16 +135,16 @@ class NetherNetProtocol {
     bool acceptsOnlineAuth = true,
     bool acceptsSelfSignedAuth = true,
     String? nonce,
-    int protocol = defaultProtocol,
-    String gameVersion = defaultGameVersion,
+    int? protocol,
+    String? gameVersion,
     int connectionType = 4,
     int version = serverDataVersion,
   }) {
     final builder = BytesBuilder();
     builder.addByte(version);
     _writeString(builder, serverName);
-    _writeVarInt32(builder, protocol);
-    _writeString(builder, gameVersion);
+    _writeVarInt32(builder, protocol ?? defaultProtocol);
+    _writeString(builder, gameVersion ?? defaultGameVersion);
     _writeString(builder, levelName);
     _writeVarInt32(builder, playerCount);
     _writeVarInt32(builder, maxPlayerCount);

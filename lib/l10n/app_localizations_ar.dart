@@ -1423,6 +1423,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get rpUploadTab => 'Upload';
 
   @override
+  String get rpBrowseTab => 'Browse';
+
+  @override
   String get rpUploadButton => 'Tap to select your pack';
 
   @override
@@ -2044,6 +2047,16 @@ class AppLocalizationsAr extends AppLocalizations {
       'تعذر فتح المنفذ المحلي. أوقف الاتصال الحالي أولاً.';
 
   @override
+  String get waitingForConsole => 'Waiting for your console…';
+
+  @override
+  String get consoleFound => 'Console found';
+
+  @override
+  String get consoleLanHint =>
+      'On your console, open Minecraft and look under Friends for a LAN game.';
+
+  @override
   String directAddressNotSupported(String host) {
     return '‏$host عنوان IPv6. وضع البروكسي/المباشر يدعم IPv4 فقط. استخدم عنوان IPv4 أو اسم المضيف.';
   }
@@ -2114,6 +2127,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get serverListAllCategories => 'الكل';
+
+  @override
+  String get serverListPlayersAny => 'Any size';
+
+  @override
+  String get serverListPlayersHint => 'Average players online';
 
   @override
   String get serverListLoadFailed => 'تعذّر تحميل قائمة الخوادم';

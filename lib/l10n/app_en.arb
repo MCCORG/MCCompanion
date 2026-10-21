@@ -1511,6 +1511,7 @@
   "rpNoEncryptedHint": "MCCompanion cannot read or merge encrypted pack content.",
   "rpClearWhy": "Minecraft caches resource packs by their UUID. The merged pack keeps the server's original UUID, so if Minecraft already has the server's pack cached from a previous session, it won't re-download the new merged version. Clear the cache so Minecraft picks up the fresh merged pack.",
   "rpUploadTab": "Upload",
+  "rpBrowseTab": "Browse",
   "@rpUploadTab": {
     "description": "Tab label for uploading a pack file"
   },
@@ -2204,6 +2205,9 @@
     }
   },
   "directPortBusy": "Could not open the local port. Stop the current connection first.",
+  "waitingForConsole": "Waiting for your console…",
+  "consoleFound": "Console found",
+  "consoleLanHint": "On your console, open Minecraft and look under Friends for a LAN game.",
   "directAddressNotSupported": "{host} is an IPv6 address. Proxy/Direct Mode only supports IPv4. Use the IPv4 address or the hostname instead.",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -2253,6 +2257,8 @@
   "serverListSortNewest": "Newest",
   "serverListSortName": "Name",
   "serverListAllCategories": "All",
+  "serverListPlayersAny": "Any size",
+  "serverListPlayersHint": "Average players online",
   "serverListLoadFailed": "Could not load the server list",
   "serverListLoadFailedHint": "Pull down to try again",
   "serverListNoMatch": "No servers match that",

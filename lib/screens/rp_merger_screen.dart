@@ -15,6 +15,7 @@ import '../design/design.dart';
 import '../util/pack_file_picker.dart';
 import '../util/resource_pack_prefs.dart';
 import '../widgets/components/app_toast.dart';
+import '../widgets/resource_pack/rp_tab_info_box.dart';
 
 class _PackEntry {
   final String id;
@@ -144,7 +145,7 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
         context,
         message: AppLocalizations.of(context)!.rpInvalidPackFormat,
         icon: Icons.error_outline_rounded,
-        color: Colors.red,
+        color: AppTheme.error,
       );
       return false;
     }
@@ -409,6 +410,7 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
   }
 
   void _showInfo(BuildContext context, _SavedMerge merge) {
+    final l = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierColor: Colors.black.withValues(alpha: 0.6),
@@ -417,7 +419,7 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 380),
           child: Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(DsSpace.xl - 4),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -427,108 +429,68 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
                     Icon(
                       Icons.inventory_2_rounded,
                       size: 18,
-                      color: AppTheme.accent,
+                      color: DsColor.accent,
                     ),
-                    const SizedBox(width: 8),
+                    const SizedBox(width: DsSpace.sm),
                     Expanded(
-                      child: Text(
-                        merge.displayName,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 15,
-                          color: AppTheme.textPrimary,
-                        ),
-                      ),
+                      child: Text(merge.displayName, style: DsType.heading),
                     ),
-                    GestureDetector(
-                      onTap: () => Navigator.pop(ctx),
-                      child: Icon(
-                        Icons.close_rounded,
-                        size: 20,
-                        color: AppTheme.textMuted,
-                      ),
+                    DsIconButton(
+                      icon: Icons.close_rounded,
+                      size: 32,
+                      onPressed: () => Navigator.pop(ctx),
                     ),
                   ],
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: DsSpace.lg),
+                _InfoRow(label: l.rpMergerSize, value: _humanSize(merge.size)),
                 _InfoRow(
-                  label: AppLocalizations.of(context)!.rpMergerSize,
-                  value: _humanSize(merge.size),
-                ),
-                _InfoRow(
-                  label: AppLocalizations.of(context)!.rpMergerCreated,
+                  label: l.rpMergerCreated,
                   value: _formatDate(merge.createdAt),
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: DsSpace.md),
                 Text(
-                  AppLocalizations.of(context)!.rpMergerSourcePacks,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                    color: AppTheme.textMuted,
-                  ),
+                  l.rpMergerSourcePacks,
+                  style: DsType.caption.copyWith(fontWeight: FontWeight.w600),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: DsSpace.sm),
                 ...merge.sourceNames.asMap().entries.map(
                   (e) => Padding(
-                    padding: const EdgeInsets.only(bottom: 6),
+                    padding: const EdgeInsets.only(bottom: DsSpace.sm - 2),
                     child: Row(
                       children: [
                         Container(
-                          width: 20,
-                          height: 20,
+                          width: 22,
+                          height: 22,
+                          alignment: Alignment.center,
                           decoration: BoxDecoration(
                             color: e.key == 0
-                                ? AppTheme.accent.withValues(alpha: 0.12)
-                                : AppTheme.surfaceRaised,
-                            borderRadius: BorderRadius.circular(5),
+                                ? DsColor.accent.withValues(alpha: 0.12)
+                                : DsColor.inset,
+                            borderRadius: BorderRadius.circular(6),
                             border: Border.all(
                               color: e.key == 0
-                                  ? AppTheme.accent.withValues(alpha: 0.3)
-                                  : AppTheme.borderGray,
+                                  ? DsColor.accent.withValues(alpha: 0.3)
+                                  : DsColor.line,
                             ),
                           ),
-                          child: Center(
-                            child: Text(
-                              '${e.key + 1}',
-                              style: TextStyle(
-                                fontSize: 9,
-                                fontWeight: FontWeight.w800,
-                                color: e.key == 0
-                                    ? AppTheme.accent
-                                    : AppTheme.textMuted,
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Expanded(
                           child: Text(
-                            e.value,
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: AppTheme.textPrimary,
+                            '${e.key + 1}',
+                            style: DsType.caption.copyWith(
+                              fontSize: 10.5,
+                              fontWeight: FontWeight.w800,
+                              color: e.key == 0
+                                  ? DsColor.accent
+                                  : DsColor.textFaint,
                             ),
                           ),
                         ),
+                        const SizedBox(width: DsSpace.sm),
+                        Expanded(child: Text(e.value, style: DsType.body)),
                         if (e.key == 0)
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 5,
-                              vertical: 1,
-                            ),
-                            decoration: BoxDecoration(
-                              color: AppTheme.accent.withValues(alpha: 0.1),
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                            child: Text(
-                              'TOP',
-                              style: TextStyle(
-                                fontSize: 9,
-                                fontWeight: FontWeight.w800,
-                                color: AppTheme.accent,
-                              ),
-                            ),
+                          DsBadge(
+                            label: l.rpMergerTopBadge,
+                            color: DsColor.accent,
                           ),
                       ],
                     ),
@@ -554,35 +516,12 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-          decoration: BoxDecoration(
-            color: DsColor.surface,
-            borderRadius: DsRadius.controlR,
-            border: Border.all(color: DsColor.line),
-          ),
-          child: Row(
-            children: [
-              Icon(
-                Icons.info_outline_rounded,
-                size: 15,
-                color: AppTheme.textMuted,
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  l.rpMergerPriorityHint,
-                  style: TextStyle(fontSize: 12, color: AppTheme.textSecondary),
-                ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 14),
+        RpTabInfoBox(text: l.rpMergerPriorityHint),
+        const SizedBox(height: DsSpace.lg),
 
         ..._packs.asMap().entries.map(
           (e) => Padding(
-            padding: const EdgeInsets.only(bottom: 10),
+            padding: const EdgeInsets.only(bottom: DsSpace.sm),
             child: _PackCard(
               pack: e.value,
               index: e.key,
@@ -612,19 +551,20 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
             },
             child: GestureDetector(
               onTap: _pickPack,
+              behavior: HitTestBehavior.opaque,
               child: AnimatedContainer(
-                duration: const Duration(milliseconds: 150),
+                duration: DsDuration.fast,
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(vertical: 18),
+                padding: const EdgeInsets.symmetric(vertical: DsSpace.xl - 4),
                 decoration: BoxDecoration(
                   color: _isDragging
-                      ? AppTheme.accent.withValues(alpha: 0.06)
-                      : AppTheme.surface,
-                  borderRadius: DsRadius.controlR,
+                      ? DsColor.accent.withValues(alpha: 0.08)
+                      : DsColor.surface,
+                  borderRadius: DsRadius.cardR,
                   border: Border.all(
                     color: _isDragging
-                        ? AppTheme.accent.withValues(alpha: 0.6)
-                        : AppTheme.borderGray,
+                        ? DsColor.accent.withValues(alpha: 0.6)
+                        : DsColor.line,
                     width: _isDragging ? 1.5 : 1,
                   ),
                 ),
@@ -635,31 +575,21 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
                           ? Icons.file_download_rounded
                           : Icons.add_rounded,
                       size: 28,
-                      color: _isDragging ? AppTheme.accent : AppTheme.textMuted,
+                      color: _isDragging ? DsColor.accent : DsColor.textFaint,
                     ),
-                    const SizedBox(height: 6),
+                    const SizedBox(height: DsSpace.sm - 2),
                     Text(
                       _isDragging
-                          ? AppLocalizations.of(context)!.rpMergerDropToAdd
+                          ? l.rpMergerDropToAdd
                           : _packs.isEmpty
                           ? l.rpMergerAddPacks
                           : l.rpMergerAddAnother(_packs.length),
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: _isDragging
-                            ? AppTheme.accent
-                            : AppTheme.textMuted,
-                        fontWeight: FontWeight.w600,
+                      style: DsType.bodyStrong.copyWith(
+                        color: _isDragging ? DsColor.accent : DsColor.textSoft,
                       ),
                     ),
-                    const SizedBox(height: 2),
-                    Text(
-                      l.rpMergerFileTypes,
-                      style: TextStyle(
-                        fontSize: 11,
-                        color: AppTheme.textDisabled,
-                      ),
-                    ),
+                    const SizedBox(height: DsSpace.xxs),
+                    Text(l.rpMergerFileTypes, style: DsType.caption),
                   ],
                 ),
               ),
@@ -667,68 +597,41 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
           ),
 
         if (_error != null) ...[
-          const SizedBox(height: 14),
+          const SizedBox(height: DsSpace.lg),
           Container(
-            padding: const EdgeInsets.all(12),
+            width: double.infinity,
+            padding: const EdgeInsets.all(DsSpace.md),
             decoration: BoxDecoration(
-              color: AppTheme.error.withValues(alpha: 0.08),
+              color: DsColor.danger.withValues(alpha: 0.08),
               borderRadius: DsRadius.controlR,
-              border: Border.all(color: AppTheme.error.withValues(alpha: 0.25)),
+              border: Border.all(color: DsColor.danger.withValues(alpha: 0.25)),
             ),
             child: Text(
               _error!,
-              style: TextStyle(fontSize: 12, color: AppTheme.error),
+              style: DsType.caption.copyWith(color: DsColor.danger),
             ),
           ),
         ],
 
         if (_packs.length >= 2) ...[
-          const SizedBox(height: 16),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton.icon(
-              onPressed: canMerge ? _merge : null,
-              icon: _merging
-                  ? const SizedBox(
-                      width: 16,
-                      height: 16,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                        color: Colors.black,
-                      ),
-                    )
-                  : const Icon(Icons.merge_rounded, size: 18),
-              label: Text(
-                _merging ? l.rpMergerMerging : l.rpMergerButton(_packs.length),
-              ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppTheme.accent,
-                foregroundColor: Colors.black,
-                disabledBackgroundColor: AppTheme.surfaceRaised,
-                padding: const EdgeInsets.symmetric(vertical: 14),
-                textStyle: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
+          const SizedBox(height: DsSpace.lg),
+          DsButton(
+            label: _merging ? l.rpMergerMerging : l.rpMergerButton(_packs.length),
+            icon: Icons.merge_rounded,
+            size: DsButtonSize.large,
+            expand: true,
+            busy: _merging,
+            onPressed: canMerge ? _merge : null,
           ),
         ],
 
         if (_saved.isNotEmpty) ...[
-          const SizedBox(height: 28),
-          Text(
-            AppLocalizations.of(context)!.rpMergerSavedMerges,
-            style: TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w700,
-              color: AppTheme.textMuted,
-            ),
-          ),
-          const SizedBox(height: 10),
+          const SizedBox(height: DsSpace.section),
+          Text(l.rpMergerSavedMerges, style: DsType.heading),
+          const SizedBox(height: DsSpace.md),
           ..._saved.map(
             (merge) => Padding(
-              padding: const EdgeInsets.only(bottom: 10),
+              padding: const EdgeInsets.only(bottom: DsSpace.sm),
               child: _SavedMergeCard(
                 merge: merge,
                 humanSize: _humanSize,
@@ -753,23 +656,44 @@ class _InfoRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
+      padding: const EdgeInsets.only(bottom: DsSpace.sm),
       child: Row(
         children: [
-          Text(
-            label,
-            style: TextStyle(fontSize: 12, color: AppTheme.textMuted),
-          ),
-          const SizedBox(width: 8),
-          Text(
-            value,
-            style: TextStyle(
-              fontSize: 12,
-              color: AppTheme.textPrimary,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
+          Text(label, style: DsType.caption),
+          const SizedBox(width: DsSpace.sm),
+          Text(value, style: DsType.label.copyWith(color: DsColor.text)),
         ],
+      ),
+    );
+  }
+}
+
+class _PackGlyph extends StatelessWidget {
+  final IconData icon;
+  final bool highlighted;
+  const _PackGlyph({required this.icon, this.highlighted = false});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 40,
+      height: 40,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: highlighted
+            ? DsColor.accent.withValues(alpha: 0.12)
+            : DsColor.inset,
+        borderRadius: DsRadius.controlR,
+        border: Border.all(
+          color: highlighted
+              ? DsColor.accent.withValues(alpha: 0.3)
+              : DsColor.line,
+        ),
+      ),
+      child: Icon(
+        icon,
+        size: 18,
+        color: highlighted ? DsColor.accent : DsColor.textFaint,
       ),
     );
   }
@@ -794,135 +718,54 @@ class _SavedMergeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: DsColor.surface,
-        borderRadius: DsRadius.controlR,
-        border: Border.all(color: DsColor.line),
+    final l = AppLocalizations.of(context)!;
+    return DsCard(
+      padding: const EdgeInsets.symmetric(
+        horizontal: DsSpace.lg - 2,
+        vertical: DsSpace.md,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       child: Row(
         children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: DsColor.surface,
-              borderRadius: DsRadius.controlR,
-              border: Border.all(color: DsColor.line),
-            ),
-            child: Icon(
-              Icons.layers_rounded,
-              size: 18,
-              color: AppTheme.textMuted,
-            ),
-          ),
-          const SizedBox(width: 12),
+          const _PackGlyph(icon: Icons.layers_rounded),
+          const SizedBox(width: DsSpace.md),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   merge.displayName,
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w700,
-                    color: AppTheme.textPrimary,
-                  ),
+                  style: DsType.bodyStrong,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-                const SizedBox(height: 2),
-                Text(
-                  '${merge.sourceNames.length} packs · ${humanSize(merge.size)}',
-                  style: TextStyle(fontSize: 11, color: AppTheme.textMuted),
-                ),
+                const SizedBox(height: DsSpace.xxs),
+                Text(humanSize(merge.size), style: DsType.caption),
               ],
             ),
           ),
-          const SizedBox(width: 8),
-          _ActionBtn(icon: Icons.info_outline_rounded, onTap: onInfo),
-          const SizedBox(width: 6),
-          _ActionBtn(
-            icon: Icons.delete_outline_rounded,
-            onTap: onDelete,
-            color: AppTheme.error,
+          const SizedBox(width: DsSpace.sm),
+          DsIconButton(
+            icon: Icons.info_outline_rounded,
+            size: 34,
+            onPressed: onInfo,
           ),
-          const SizedBox(width: 6),
-          GestureDetector(
-            onTap: activating ? null : onActivate,
-            child: Container(
-              height: 32,
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              decoration: BoxDecoration(
-                color: activating
-                    ? AppTheme.surfaceRaised
-                    : AppTheme.accent.withValues(alpha: 0.12),
-                borderRadius: DsRadius.controlR,
-                border: Border.all(
-                  color: activating
-                      ? AppTheme.borderGray
-                      : AppTheme.accent.withValues(alpha: 0.3),
-                ),
-              ),
-              child: activating
-                  ? SizedBox(
-                      width: 52,
-                      height: 32,
-                      child: Center(
-                        child: SizedBox(
-                          width: 14,
-                          height: 14,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 1.8,
-                            color: DsColor.textFaint,
-                          ),
-                        ),
-                      ),
-                    )
-                  : Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          Icons.play_arrow_rounded,
-                          size: 15,
-                          color: AppTheme.accent,
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          AppLocalizations.of(context)!.rpMergerUse,
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: AppTheme.accent,
-                          ),
-                        ),
-                      ],
-                    ),
-            ),
+          const SizedBox(width: DsSpace.xs),
+          DsIconButton(
+            icon: Icons.delete_outline_rounded,
+            size: 34,
+            color: DsColor.danger,
+            onPressed: onDelete,
+          ),
+          const SizedBox(width: DsSpace.sm),
+          DsButton(
+            label: l.rpMergerUse,
+            icon: Icons.play_arrow_rounded,
+            size: DsButtonSize.small,
+            busy: activating,
+            onPressed: activating ? null : onActivate,
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _ActionBtn extends StatelessWidget {
-  final IconData icon;
-  final VoidCallback onTap;
-  final Color? color;
-  const _ActionBtn({required this.icon, required this.onTap, this.color});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 32,
-        height: 32,
-        decoration: BoxDecoration(
-          borderRadius: DsRadius.controlR,
-          border: Border.all(color: DsColor.line),
-        ),
-        child: Icon(icon, size: 16, color: color ?? AppTheme.textSecondary),
       ),
     );
   }
@@ -952,113 +795,66 @@ class _PackCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isTop = index == 0;
-    return Container(
-      decoration: BoxDecoration(
-        color: DsColor.surface,
-        borderRadius: DsRadius.controlR,
-        border: Border.all(
-          color: isTop
-              ? AppTheme.accent.withValues(alpha: 0.30)
-              : AppTheme.borderGray,
-        ),
-      ),
+    return DsCard(
+      highlighted: isTop,
+      padding: EdgeInsets.zero,
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+            padding: const EdgeInsets.symmetric(
+              horizontal: DsSpace.lg - 2,
+              vertical: DsSpace.md,
+            ),
             child: Row(
               children: [
-                Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: isTop
-                        ? AppTheme.accent.withValues(alpha: 0.12)
-                        : AppTheme.surface,
-                    borderRadius: DsRadius.controlR,
-                    border: Border.all(
-                      color: isTop
-                          ? AppTheme.accent.withValues(alpha: 0.25)
-                          : AppTheme.borderGray,
-                    ),
-                  ),
-                  child: Icon(
-                    Icons.inventory_2_rounded,
-                    size: 18,
-                    color: isTop ? AppTheme.accent : AppTheme.textMuted,
-                  ),
-                ),
-                const SizedBox(width: 12),
+                _PackGlyph(icon: Icons.inventory_2_rounded, highlighted: isTop),
+                const SizedBox(width: DsSpace.md),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
                         pack.name,
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w700,
-                          color: AppTheme.textPrimary,
-                        ),
+                        style: DsType.bodyStrong,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      const SizedBox(height: 2),
+                      const SizedBox(height: DsSpace.xxs),
                       Row(
                         children: [
                           if (isTop) ...[
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 6,
-                                vertical: 2,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppTheme.accent.withValues(alpha: 0.12),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Text(
-                                topLabel,
-                                style: TextStyle(
-                                  fontSize: 9,
-                                  fontWeight: FontWeight.w800,
-                                  color: AppTheme.accent,
-                                  letterSpacing: 0.8,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 6),
+                            DsBadge(label: topLabel, color: DsColor.accent),
+                            const SizedBox(width: DsSpace.sm - 2),
                           ],
-                          Text(
-                            humanSize(pack.size),
-                            style: TextStyle(
-                              fontSize: 11,
-                              color: AppTheme.textMuted,
-                            ),
-                          ),
+                          Text(humanSize(pack.size), style: DsType.caption),
                         ],
                       ),
                     ],
                   ),
                 ),
                 Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    _SmallBtn(
+                    DsIconButton(
                       icon: Icons.keyboard_arrow_up_rounded,
-                      enabled: index > 0,
-                      onTap: onMoveUp,
+                      size: 30,
+                      onPressed: index > 0 ? onMoveUp : null,
                     ),
-                    const SizedBox(height: 2),
-                    _SmallBtn(
+                    const SizedBox(height: DsSpace.xxs),
+                    DsIconButton(
                       icon: Icons.keyboard_arrow_down_rounded,
-                      enabled: index < total - 1,
-                      onTap: onMoveDown,
+                      size: 30,
+                      onPressed: index < total - 1 ? onMoveDown : null,
                     ),
                   ],
                 ),
-                const SizedBox(width: 6),
-                _SmallBtn(
+                const SizedBox(width: DsSpace.sm - 2),
+                DsIconButton(
                   icon: Icons.close_rounded,
-                  enabled: true,
-                  onTap: onRemove,
-                  color: AppTheme.error,
+                  size: 34,
+                  color: DsColor.danger,
+                  onPressed: onRemove,
                 ),
               ],
             ),
@@ -1066,16 +862,19 @@ class _PackCard extends StatelessWidget {
           if (pack.hasBehaviorContent)
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+              padding: const EdgeInsets.symmetric(
+                horizontal: DsSpace.lg - 2,
+                vertical: DsSpace.sm,
+              ),
               decoration: BoxDecoration(
-                color: AppTheme.warning.withValues(alpha: 0.08),
+                color: DsColor.warning.withValues(alpha: 0.08),
                 border: Border(
                   top: BorderSide(
-                    color: AppTheme.warning.withValues(alpha: 0.2),
+                    color: DsColor.warning.withValues(alpha: 0.2),
                   ),
                 ),
                 borderRadius: const BorderRadius.vertical(
-                  bottom: Radius.circular(13),
+                  bottom: Radius.circular(DsRadius.card - 1),
                 ),
               ),
               child: Row(
@@ -1083,58 +882,19 @@ class _PackCard extends StatelessWidget {
                   Icon(
                     Icons.warning_amber_rounded,
                     size: 14,
-                    color: AppTheme.warning,
+                    color: DsColor.warning,
                   ),
-                  const SizedBox(width: 8),
+                  const SizedBox(width: DsSpace.sm),
                   Expanded(
                     child: Text(
                       AppLocalizations.of(context)!.rpBehaviorContentWarning,
-                      style: TextStyle(fontSize: 11, color: AppTheme.warning),
+                      style: DsType.caption.copyWith(color: DsColor.warning),
                     ),
                   ),
                 ],
               ),
             ),
         ],
-      ),
-    );
-  }
-}
-
-class _SmallBtn extends StatelessWidget {
-  final IconData icon;
-  final bool enabled;
-  final VoidCallback onTap;
-  final Color? color;
-  const _SmallBtn({
-    required this.icon,
-    required this.enabled,
-    required this.onTap,
-    this.color,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: enabled ? onTap : null,
-      child: Container(
-        width: 28,
-        height: 28,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(7),
-          border: Border.all(
-            color: enabled
-                ? AppTheme.borderGray
-                : AppTheme.borderGray.withValues(alpha: 0.3),
-          ),
-        ),
-        child: Icon(
-          icon,
-          size: 16,
-          color: enabled
-              ? (color ?? AppTheme.textSecondary)
-              : AppTheme.textDisabled,
-        ),
       ),
     );
   }

@@ -59,6 +59,25 @@ class SavedSkinsStorage {
     return skin;
   }
 
+  static Future<bool> addWithId(
+    String id,
+    Uint8List bytes,
+    String name,
+    DateTime createdAt,
+  ) async {
+    final all = await loadAll();
+    if (all.any((s) => s.id == id)) return false;
+    final dir = await _skinsDir();
+    final skinFile = File('${dir.path}/$id.png');
+    await skinFile.writeAsBytes(bytes);
+    all.add(
+      SavedSkin(id: id, name: name, filePath: skinFile.path, createdAt: createdAt),
+    );
+    all.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+    await saveMeta(all);
+    return true;
+  }
+
   static Future<void> update(String id, Uint8List bytes) async {
     final all = await loadAll();
     final skin = all.firstWhere(

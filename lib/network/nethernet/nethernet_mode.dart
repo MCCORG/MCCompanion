@@ -1,6 +1,9 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
+
 import '../../util/logger.dart';
+import '../bedrock_version.dart';
 import 'nethernet_discovery.dart';
 import 'nethernet_protocol.dart';
 import 'nethernet_relay_client.dart';
@@ -22,6 +25,7 @@ class NetherNetMode {
   void Function()? onUpdate;
 
   final Completer<void> _firstClient = Completer<void>();
+  final ValueNotifier<bool> clientSeen = ValueNotifier(false);
 
   NetherNetMode({required this.logger});
 
@@ -35,26 +39,36 @@ class NetherNetMode {
     required int remotePort,
     String? relayHost,
     int relayPort = 8787,
-    int? protocol,
-    String? gameVersion,
+    int playerCount = 0,
+    int maxPlayerCount = 20,
   }) async {
     await stop();
+    clientSeen.value = false;
 
     _relay = relayHost == null
         ? null
         : NetherNetRelayClient(host: relayHost, port: relayPort);
 
+    await BedrockVersion.loadCached();
+    final info = await _relay?.fetchInfo();
+    if (info != null) {
+      await BedrockVersion.update(
+        protocol: info.protocol,
+        gameVersion: info.version,
+      );
+      _log('Relay speaks protocol ${info.protocol} (${info.version})');
+    }
+
     final discovery = NetherNetDiscovery(logger: logger);
     discovery.setAdvertisement(
       serverName: serverName,
-      levelName: '$remoteHost:$remotePort',
-      playerCount: 0,
-      maxPlayerCount: 20,
-      protocol: protocol,
-      gameVersion: gameVersion,
+      levelName: 'MCCompanion: $remoteHost',
+      playerCount: playerCount,
+      maxPlayerCount: maxPlayerCount,
     );
 
     discovery.onDiscoveryRequest = (address, port, count) {
+      clientSeen.value = true;
       if (!_firstClient.isCompleted) _firstClient.complete();
       if (count == 1) _log('Client found at ${address.address}');
     };
@@ -155,6 +169,7 @@ class NetherNetMode {
     _scanTimer = null;
     await _discovery?.stop();
     _discovery = null;
+    clientSeen.value = false;
   }
 
   void _log(String message) {

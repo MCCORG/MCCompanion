@@ -1435,6 +1435,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get rpUploadTab => 'Upload';
 
   @override
+  String get rpBrowseTab => 'Browse';
+
+  @override
   String get rpUploadButton => 'Tap to select your pack';
 
   @override
@@ -2059,6 +2062,16 @@ class AppLocalizationsBn extends AppLocalizations {
       'লোকাল পোর্ট খোলা যায়নি। আগে বর্তমান সংযোগ বন্ধ করুন।';
 
   @override
+  String get waitingForConsole => 'Waiting for your console…';
+
+  @override
+  String get consoleFound => 'Console found';
+
+  @override
+  String get consoleLanHint =>
+      'On your console, open Minecraft and look under Friends for a LAN game.';
+
+  @override
   String directAddressNotSupported(String host) {
     return '$host একটি IPv6 ঠিকানা। প্রক্সি/সরাসরি মোড শুধু IPv4 সমর্থন করে। IPv4 ঠিকানা বা হোস্টনাম ব্যবহার করুন।';
   }
@@ -2129,6 +2142,12 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get serverListAllCategories => 'সব';
+
+  @override
+  String get serverListPlayersAny => 'Any size';
+
+  @override
+  String get serverListPlayersHint => 'Average players online';
 
   @override
   String get serverListLoadFailed => 'সার্ভার তালিকা লোড করা যায়নি';

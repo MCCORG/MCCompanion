@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+
+import '../../design/design.dart';
 import '../../l10n/app_localizations.dart';
-import '../../theme/app_theme.dart';
-import '../../theme/app_tokens.dart';
 
 class RpActivePackBanner extends StatelessWidget {
   final String? name;
@@ -21,76 +21,81 @@ class RpActivePackBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
     final hasPack = name != null;
+    final on = hasPack && enabled;
 
-    return Container(
-      decoration: BoxDecoration(
-        color: hasPack && enabled
-            ? AppTheme.accent.withValues(alpha: 0.08)
-            : AppTheme.surfaceRaised,
-        borderRadius: AppRadius.medium,
-        border: Border.all(
-          color: hasPack && enabled
-              ? AppTheme.accent.withValues(alpha: 0.35)
-              : AppTheme.borderGray,
-        ),
+    return DsCard(
+      highlighted: on,
+      padding: const EdgeInsets.symmetric(
+        horizontal: DsSpace.lg,
+        vertical: DsSpace.md,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       child: Row(
         children: [
           Container(
-            width: 36,
-            height: 36,
+            width: 34,
+            height: 34,
+            alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: hasPack && enabled
-                  ? AppTheme.accent.withValues(alpha: 0.15)
-                  : AppTheme.surfaceRaisedSolid,
-              borderRadius: AppRadius.small,
+              color: DsColor.inset,
+              shape: BoxShape.circle,
+              border: Border.all(color: DsColor.line),
             ),
             child: Icon(
-              Icons.layers_rounded,
-              color: hasPack && enabled ? AppTheme.accent : AppTheme.textMuted,
-              size: 18,
+              Icons.extension_rounded,
+              size: 16,
+              color: on ? DsColor.accent : DsColor.textFaint,
             ),
           ),
-          const SizedBox(width: 12),
+          const SizedBox(width: DsSpace.md),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
+                Text(l.rpScreenTitle, style: DsType.caption),
+                const SizedBox(height: DsSpace.xxs),
                 Text(
                   hasPack ? name! : l.rpNoPackSelected,
-                  style: TextStyle(
-                    color: hasPack ? AppTheme.textPrimary : AppTheme.textMuted,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: hasPack
+                      ? DsType.bodyStrong
+                      : DsType.body.copyWith(color: DsColor.textFaint),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 if (hasPack) ...[
-                  const SizedBox(height: 2),
-                  Text(
-                    enabled ? l.rpActiveOnConnect : l.rpDisabled,
-                    style: TextStyle(
-                      color: enabled ? AppTheme.accent : AppTheme.textMuted,
-                      fontSize: 11,
-                    ),
+                  const SizedBox(height: DsSpace.xxs),
+                  Row(
+                    children: [
+                      Container(
+                        width: 7,
+                        height: 7,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: on ? DsColor.success : DsColor.textFaint,
+                        ),
+                      ),
+                      const SizedBox(width: DsSpace.sm - 2),
+                      Flexible(
+                        child: Text(
+                          enabled ? l.rpActiveOnConnect : l.rpDisabled,
+                          style: DsType.caption,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ],
             ),
           ),
-          if (onRemove != null)
-            IconButton(
+          if (onRemove != null) ...[
+            DsIconButton(
+              icon: Icons.delete_outline_rounded,
+              size: 36,
               onPressed: onRemove,
-              icon: Icon(
-                Icons.delete_outline_rounded,
-                color: AppTheme.textMuted,
-                size: 18,
-              ),
-              padding: EdgeInsets.zero,
-              constraints: const BoxConstraints(),
             ),
-          const SizedBox(width: 8),
-          Switch(value: enabled, onChanged: onToggle),
+            const SizedBox(width: DsSpace.sm),
+          ],
+          DsSwitch(value: enabled, onChanged: onToggle),
         ],
       ),
     );

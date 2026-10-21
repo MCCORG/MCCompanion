@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_theme.dart';
-import '../../theme/app_tokens.dart';
+
+import '../../design/design.dart';
 
 class RpTabInfoBox extends StatelessWidget {
   final String text;
@@ -9,27 +9,21 @@ class RpTabInfoBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
+      padding: const EdgeInsets.symmetric(
+        horizontal: DsSpace.lg - 2,
+        vertical: DsSpace.md - 1,
+      ),
       decoration: BoxDecoration(
-        color: AppTheme.surfaceRaised,
-        borderRadius: AppRadius.small,
-        border: Border.all(color: AppTheme.borderGray),
+        color: DsColor.inset,
+        borderRadius: DsRadius.controlR,
+        border: Border.all(color: DsColor.line),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.info_outline_rounded, size: 15, color: AppTheme.textMuted),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              text,
-              style: TextStyle(
-                color: AppTheme.textSecondary,
-                fontSize: 12,
-                height: 1.5,
-              ),
-            ),
-          ),
+          Icon(Icons.info_outline_rounded, size: 16, color: DsColor.textFaint),
+          const SizedBox(width: DsSpace.sm),
+          Expanded(child: Text(text, style: DsType.caption)),
         ],
       ),
     );
