@@ -110,6 +110,12 @@ class NetherNetProtocol {
     return tail;
   }
 
+  static String unsignedString(int value) =>
+      BigInt.from(value).toUnsigned(64).toString();
+
+  static int? parseUnsigned(String value) =>
+      BigInt.tryParse(value)?.toSigned(64).toInt();
+
   static const int serverDataVersion = 7;
 
   static int get defaultProtocol => BedrockVersion.protocol;
