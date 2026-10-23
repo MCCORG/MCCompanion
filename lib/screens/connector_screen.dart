@@ -4,7 +4,6 @@ import '../widgets/components/swipe_back.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
 import '../l10n/app_localizations.dart';
-import '../network/socket_handler.dart';
 import '../network/broadcast_manager.dart';
 import '../util/logger.dart';
 import '../util/user_servers.dart';
@@ -14,7 +13,6 @@ import '../util/partners_servers.dart';
 import '../constants/app_constants.dart';
 import '../theme/app_theme.dart';
 import '../network/nethernet/nethernet_mode.dart';
-import '../services/server_status_service.dart';
 import '../widgets/connection/connection_panel.dart';
 import '../widgets/components/app_toast.dart';
 import '../services/region_detector.dart';
@@ -23,6 +21,8 @@ import '../services/navigation_controller.dart';
 import '../services/review_service.dart';
 import '../services/user_service.dart';
 import '../services/auth_service.dart';
+import '../services/relay_service.dart';
+import '../services/server_status_service.dart';
 import '../models/user_model.dart';
 import '../util/bedrock_account_prefs.dart';
 import '../util/howto_prefs.dart';
@@ -70,7 +70,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeScreenState extends State<HomeScreen> {
-  late final SocketHandler socketHandler;
   late final BroadcastManager _broadcastManager;
   late final Logger logger;
 
@@ -99,6 +98,7 @@ class HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _initializeComponents();
+    _netherNet.onLocalNetworkBlocked = _handleLocalNetworkBlocked;
     loadUserServers();
     _loadBedrockAccounts();
     _loadResourcePackUrl();
@@ -113,12 +113,7 @@ class HomeScreenState extends State<HomeScreen> {
 
   void _initializeComponents() {
     logger = Logger(debugEnabled: false, logCallback: _log);
-    socketHandler = SocketHandler(logger: logger);
-    _broadcastManager = BroadcastManager(
-      socketHandler: socketHandler,
-      logger: logger,
-    );
-    _broadcastManager.onAutoDisconnect = _handleAutoDisconnect;
+    _broadcastManager = BroadcastManager(logger: logger);
     _broadcastManager.onConnectionError = _handleConnectionError;
   }
 
@@ -129,7 +124,6 @@ class HomeScreenState extends State<HomeScreen> {
     unawaited(_netherNet.stop());
     _broadcastingNotifier.dispose();
     _userServersNotifier.dispose();
-    unawaited(_broadcastManager.stopBroadcast());
     super.dispose();
   }
 
@@ -206,7 +200,7 @@ class HomeScreenState extends State<HomeScreen> {
       await _handleDnsMode(mode, remoteHost, remotePortParsed, loc);
       return;
     }
-    await _handleBroadcastMode(mode, remoteHost, remotePortParsed, loc);
+    await _handleBroadcastMode(remoteHost, remotePortParsed);
   }
 
   Future<void> _loadResourcePackUrl() async {
@@ -316,7 +310,7 @@ class HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  Future<bool> _startNetherNet(String host, int port) async {
+  Future<NetherNetModeResult?> _startNetherNet(String host, int port) async {
     final registered = await _broadcastManager.sendRelayConfigOnly(
       host,
       port,
@@ -324,44 +318,31 @@ class HomeScreenState extends State<HomeScreen> {
       relayBase: widget.selectedRelay.base,
       mode: BroadcastMode.lan,
       bedrockGamertag: _getBedrockGamertag(),
+      authToken: await AuthService.getIdToken(),
       resourcePackUrl: await ResourcePackPrefs.getActiveUrl(),
     );
-    if (!registered) return false;
+    if (!registered) return null;
 
-    String? gameVersion;
-    try {
-      final status = await ServerStatusService.getStatus(host, port);
-      if (status.isOnline) gameVersion = status.version;
-    } catch (e) {
-      logger.error('Could not read the server version: $e');
-    }
+    final status = await ServerStatusService.getStatus(host, port).timeout(
+      const Duration(seconds: 3),
+      onTimeout: () => ServerStatus.offline,
+    );
+    final name = status.name;
 
-    final result = await _netherNet.start(
-      serverName: 'MCCompanion',
+    return _netherNet.start(
+      serverName: name == null
+          ? 'MCCompanion'
+          : (name.length > 40 ? name.substring(0, 40) : name),
       remoteHost: host,
       remotePort: port,
-      relayHost: widget.selectedRelay.ip,
-      gameVersion: gameVersion,
+      relayHost: RelayService.active.ip,
+      playerCount: status.players ?? 0,
+      maxPlayerCount: status.maxPlayers ?? 20,
     );
-    return result.started;
   }
 
-  Future<void> _handleBroadcastMode(
-    PanelMode mode,
-    String host,
-    int port,
-    AppLocalizations loc,
-  ) async {
+  Future<void> _handleBroadcastMode(String host, int port) async {
     logger.info('Starting MCCompanion');
-
-    if (mode == PanelMode.lan) {
-      final netherNetStarted = await _startNetherNet(host, port);
-      if (netherNetStarted) {
-        logger.info('NetherNet discovery is live on port 7551');
-      } else {
-        logger.error('NetherNet could not start, only RakNet is available');
-      }
-    }
 
     try {
       await WakelockPlus.enable();
@@ -369,44 +350,49 @@ class HomeScreenState extends State<HomeScreen> {
       logger.error('Failed to enable wakelock: $e');
     }
 
-    final gamertag = _getBedrockGamertag();
-    final authToken = await AuthService.getIdToken();
-    final resourcePackUrl = await ResourcePackPrefs.getActiveUrl();
-    final success = await _broadcastManager.startBroadcast(
-      host,
-      port,
-      relayIp: widget.selectedRelay.ip,
-      relayBase: widget.selectedRelay.base,
-      mode: _broadcastModeFor(mode),
-      bedrockGamertag: gamertag,
-      authToken: authToken,
-      resourcePackUrl: resourcePackUrl,
-    );
-    _broadcastingNotifier.value = success;
-    if (success) {
+    final result = await _startNetherNet(host, port);
+    final started = result?.started ?? false;
+    _broadcastingNotifier.value = started;
+
+    if (started) {
+      logger.info('NetherNet discovery is live on port 7551');
       unawaited(ReviewService.instance.onSuccessfulConnection());
-    } else {
-      try {
-        await WakelockPlus.disable();
-      } catch (e) {
-        logger.error('Failed to disable wakelock: $e');
-      }
+      return;
+    }
+
+    logger.error(
+      'NetherNet could not start: ${result?.error ?? 'relay registration failed'}',
+    );
+    if (result != null && mounted) {
+      _snack(
+        AppLocalizations.of(context)!.directPortBusy,
+        AppTheme.error,
+        icon: Icons.error_outline_rounded,
+      );
+    }
+    try {
+      await WakelockPlus.disable();
+    } catch (e) {
+      logger.error('Failed to disable wakelock: $e');
     }
   }
 
   Future<void> _stopBroadcast() async {
     await _netherNet.stop();
-    await _broadcastManager.stopBroadcast();
     _broadcastingNotifier.value = false;
+    try {
+      await WakelockPlus.disable();
+    } catch (e) {
+      logger.error('Failed to disable wakelock: $e');
+    }
   }
 
-  void _handleAutoDisconnect() {
+  void _handleLocalNetworkBlocked() {
     if (!mounted) return;
-    _broadcastingNotifier.value = false;
     _snack(
-      AppLocalizations.of(context)!.clientDisconnected,
-      AppTheme.info,
-      icon: Icons.info_outline_rounded,
+      AppLocalizations.of(context)!.localNetworkBlocked,
+      AppTheme.error,
+      icon: Icons.wifi_off_rounded,
     );
   }
 
@@ -475,6 +461,7 @@ class HomeScreenState extends State<HomeScreen> {
                   ipController: widget.ipController,
                   portController: widget.portController,
                   broadcastingNotifier: _broadcastingNotifier,
+                  clientSeenNotifier: _netherNet.clientSeen,
                   onStartBroadcast: _startBroadcast,
                   onStopBroadcast: _stopBroadcast,
                   savedServers: userServers,

@@ -152,9 +152,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get save => 'Save';
 
   @override
-  String get clientDisconnected => 'Client disconnected: Broadcast stopped';
-
-  @override
   String get pleaseEnterServer => '⚠️ Please enter a server address';
 
   @override
@@ -1366,16 +1363,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.';
 
   @override
-  String get rpWarnDiscord =>
-      'Discord links expire and will stop working. Use a permanent host instead.';
-
-  @override
-  String get rpWarnHttps => 'URL must start with https://';
-
-  @override
-  String get rpWarnExtension => 'URL must end in .mcpack or .zip';
-
-  @override
   String get rpToastSaved => 'Resource pack settings saved.';
 
   @override
@@ -1426,6 +1413,36 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get rpUploadTab => 'Upload';
+
+  @override
+  String get rpBrowseTab => 'Browse';
+
+  @override
+  String get rpCategoryRealism => 'Realism';
+
+  @override
+  String get rpCategoryFaithful => 'Faithful';
+
+  @override
+  String get rpCategoryPvp => 'PvP';
+
+  @override
+  String get rpCategoryCartoon => 'Cartoon';
+
+  @override
+  String get rpCategoryDark => 'Dark';
+
+  @override
+  String get rpCategoryMedieval => 'Medieval';
+
+  @override
+  String get rpCategoryNature => 'Nature';
+
+  @override
+  String get rpCategoryThemed => 'Themed';
+
+  @override
+  String get rpCategoryOther => 'Other';
 
   @override
   String get rpUploadButton => 'Tap to select your pack';
@@ -1582,58 +1599,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get skinsSavedToMySkins => 'Saved to My Skins';
 
   @override
-  String get skinsDownloadFailed => 'Download failed';
-
-  @override
-  String get skinsDeletedFromCloud => 'Deleted from cloud';
-
-  @override
-  String get skinsDeleteFailed => 'Delete failed';
-
-  @override
-  String get skinsLoginToUpload => 'Log in to upload skins';
-
-  @override
-  String get skinsUploading => 'Uploading…';
-
-  @override
-  String get skinUploaded => 'Skin uploaded!';
-
-  @override
-  String skinUploadFailed(String error) {
-    return 'Upload failed: $error';
-  }
-
-  @override
   String get skinsEmptyLocalSkins =>
       'No skins yet. Create or upload a skin to get started.';
-
-  @override
-  String get skinUploadToWebsite => 'Upload to website';
-
-  @override
-  String get skinReuploadToWebsite => 'Re-upload to website';
-
-  @override
-  String get skinCloudEdit => 'Edit';
-
-  @override
-  String get skinCloudSaveToDevice => 'Save to device';
-
-  @override
-  String get skinCloudDelete => 'Delete from cloud';
-
-  @override
-  String get skinsTabGallery => 'Gallery';
-
-  @override
-  String get skinsTopLabel => 'Top 30';
-
-  @override
-  String get skinsAllLabel => 'All Skins';
-
-  @override
-  String get skinUploadToCloud => 'Upload to Cloud';
 
   @override
   String get skinSaveDialog => 'Save Skin';
@@ -1643,19 +1610,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get skinDefaultName => 'My Skin';
-
-  @override
-  String get skinUpdatedInCloud => 'Skin updated in cloud';
-
-  @override
-  String skinByCreator(String name) {
-    return 'by $name';
-  }
-
-  @override
-  String skinLikesCount(int count) {
-    return '$count likes';
-  }
 
   @override
   String get sectionRecentActivity => 'Recent Activity';
@@ -1770,18 +1724,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notifPrefMessageReceived => 'New message';
 
   @override
-  String get commentsTitle => 'Comments';
-
-  @override
-  String get commentsEmpty => 'No comments yet. Be the first!';
-
-  @override
-  String get commentsPlaceholder => 'Write a comment…';
-
-  @override
-  String get loadMore => 'Load more';
-
-  @override
   String get skinLayerInner => 'Inner';
 
   @override
@@ -1811,9 +1753,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get skinSaveToMySkins => 'Save to My Skins';
-
-  @override
-  String get skinUpdateInCloud => 'Update in cloud';
 
   @override
   String get skinExportPng => 'Export PNG';
@@ -2052,6 +1991,20 @@ class AppLocalizationsEn extends AppLocalizations {
       'Could not open the local port. Stop the current connection first.';
 
   @override
+  String get waitingForConsole => 'Waiting for your console…';
+
+  @override
+  String get consoleFound => 'Console found';
+
+  @override
+  String get consoleLanHint =>
+      'On your console, open Minecraft and look under Friends for a LAN game.';
+
+  @override
+  String get localNetworkBlocked =>
+      'MCCompanion cannot reach your local network. Turn on Local Network for MCCompanion in your device settings and make sure you are on Wi-Fi.';
+
+  @override
   String directAddressNotSupported(String host) {
     return '$host is an IPv6 address. Proxy/Direct Mode only supports IPv4. Use the IPv4 address or the hostname instead.';
   }
@@ -2124,6 +2077,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get serverListAllCategories => 'All';
 
   @override
+  String get serverListPlayersAny => 'Any size';
+
+  @override
+  String get serverListPlayersHint => 'Average players online';
+
+  @override
   String get serverListLoadFailed => 'Could not load the server list';
 
   @override
@@ -2140,9 +2099,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get serverCardVote => 'Vote';
-
-  @override
-  String get serverCardViewServer => 'View server';
 
   @override
   String get serverCopyIp => 'Copy IP';

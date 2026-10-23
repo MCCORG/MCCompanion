@@ -80,10 +80,6 @@
   "@save": {
     "description": "Save button label"
   },
-  "clientDisconnected": "تم فصل العميل: تم إيقاف البث",
-  "@clientDisconnected": {
-    "description": "Snackbar shown when clients disconnect automatically"
-  },
   "pleaseEnterServer": "⚠️ يرجى إدخال عنوان الخادم",
   "@pleaseEnterServer": {
     "description": "Validation message when server address field is empty"
@@ -263,10 +259,10 @@
   "resetLabel": "إعادة تعيين",
   "navigationSection": "التنقل",
   "navFixed": "Connector والملف الشخصي مثبتان دائما",
-  "leftSlot": "Slot 2",
-  "outerSlot": "Slot 1",
-  "rightSlot": "Slot 3",
-  "farSlot": "Slot 4",
+  "leftSlot": "الخانة 2",
+  "outerSlot": "الخانة 1",
+  "rightSlot": "الخانة 3",
+  "farSlot": "الخانة 4",
   "colorPickerApply": "تطبيق",
   "colorPickerHex": "Hex",
   "textColorSection": "لون النص",
@@ -284,7 +280,7 @@
   "playerLookupJavaEdition": "Java Edition",
   "playerLookupBedrockEdition": "Bedrock Edition",
   "playerLookupLabelUuid": "UUID",
-  "playerLookupLabelGamertag": "Gamertag",
+  "playerLookupLabelGamertag": "معرّف اللاعب (Gamertag)",
   "playerLookupLabelXuid": "XUID",
   "playerLookupLabelFloodgate": "Floodgate",
   "accountSubtitleXbox": "Xbox · {xuid}",
@@ -303,55 +299,55 @@
   "navProfile": "الملف الشخصي",
   "serverRemoved": "تمت إزالة {name}",
   "serverAdded": "تمت إضافة {name}",
-  "aboutMCCompanionDisclaimer": "MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.",
+  "aboutMCCompanionDisclaimer": "MCCompanion تطبيق مستقل وليس تابعًا لـ Mojang Studios أو Microsoft Corporation ولا يحظى بتأييدهما أو رعايتهما.",
   "@aboutMCCompanionDisclaimer": {
     "description": "Disclaimer text in About MCCompanion section"
   },
-  "aboutMCCompanionSection": "About MCCompanion",
+  "aboutMCCompanionSection": "حول MCCompanion",
   "@aboutMCCompanionSection": {
     "description": "Section header for About MCCompanion in Info sheet"
   },
-  "aboutSectionLabel": "About",
+  "aboutSectionLabel": "نبذة",
   "@aboutSectionLabel": {
     "description": "Section label for bio/about in public profile"
   },
-  "acceptRequestButton": "Accept request",
+  "acceptRequestButton": "قبول الطلب",
   "@acceptRequestButton": {
     "description": "Button label to accept a friend request"
   },
-  "addFriend": "Add Friend",
+  "addFriend": "إضافة صديق",
   "@addFriend": {
     "description": "Title/button for adding a friend"
   },
-  "addFriendButton": "Add friend",
+  "addFriendButton": "إضافة صديق",
   "@addFriendButton": {
     "description": "Button label to add a friend on public profile"
   },
-  "alreadyFriendsMsg": "You are already friends.",
+  "alreadyFriendsMsg": "أنتما صديقان بالفعل.",
   "@alreadyFriendsMsg": {
     "description": "Error when already friends with user (public profile)"
   },
-  "alreadyHaveAccount": "Already have an account? Sign in",
+  "alreadyHaveAccount": "لديك حساب بالفعل؟ سجّل الدخول",
   "@alreadyHaveAccount": {
     "description": "Toggle to switch back to sign-in mode"
   },
-  "appearOfflineLabel": "Appear Offline",
+  "appearOfflineLabel": "الظهور كغير متصل",
   "@appearOfflineLabel": {
     "description": "Label for the appear-offline toggle"
   },
-  "appearOfflineOff": "You appear online to other players",
+  "appearOfflineOff": "تظهر متصلًا للاعبين الآخرين",
   "@appearOfflineOff": {
     "description": "Subtitle when appear-offline is disabled"
   },
-  "appearOfflineOn": "You appear offline to other players",
+  "appearOfflineOn": "تظهر غير متصل للاعبين الآخرين",
   "@appearOfflineOn": {
     "description": "Subtitle when appear-offline is enabled"
   },
-  "appleSignInFailed": "Apple sign-in failed. Please try again.",
+  "appleSignInFailed": "فشل تسجيل الدخول عبر Apple. يرجى المحاولة مرة أخرى.",
   "@appleSignInFailed": {
     "description": "Error when Apple sign-in fails"
   },
-  "bioHint": "Tell others about yourself…",
+  "bioHint": "أخبر الآخرين عن نفسك…",
   "@bioHint": {
     "description": "Hint text for bio field"
   },
@@ -359,7 +355,7 @@
   "@bioLabel": {
     "description": "Label for bio field"
   },
-  "cannotSendRequestMsg": "Cannot send a request to this user.",
+  "cannotSendRequestMsg": "لا يمكن إرسال طلب إلى هذا المستخدم.",
   "@cannotSendRequestMsg": {
     "description": "Error when friend request is blocked (public profile)"
   },
@@ -367,31 +363,31 @@
   "@chooseUsernameSubtitle": {
     "description": "Subtitle shown when profile is not yet set up"
   },
-  "continueWithGoogle": "Continue with Google",
+  "continueWithGoogle": "المتابعة باستخدام Google",
   "@continueWithGoogle": {
     "description": "Button label for Google sign-in"
   },
-  "couldNotDeleteAccount": "Could not delete account. Please try again.",
+  "couldNotDeleteAccount": "تعذّر حذف الحساب. يرجى المحاولة مرة أخرى.",
   "@couldNotDeleteAccount": {
     "description": "Error when account deletion fails"
   },
-  "couldNotSendResetEmail": "Could not send reset email. Please try again.",
+  "couldNotSendResetEmail": "تعذّر إرسال بريد إعادة التعيين. يرجى المحاولة مرة أخرى.",
   "@couldNotSendResetEmail": {
     "description": "Generic error when sending reset email fails"
   },
-  "couldNotUpdateVisibility": "Could not update visibility settings",
+  "couldNotUpdateVisibility": "تعذّر تحديث إعدادات الظهور",
   "@couldNotUpdateVisibility": {
     "description": "Error when toggling appear-offline fails"
   },
-  "createAccount": "Create Account",
+  "createAccount": "إنشاء حساب",
   "@createAccount": {
     "description": "Button/title for creating a new account"
   },
-  "createProfile": "Create Profile",
+  "createProfile": "إنشاء ملف شخصي",
   "@createProfile": {
     "description": "Button to navigate to profile creation/registration"
   },
-  "creditGeyserSubtitle": "Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.",
+  "creditGeyserSubtitle": "عرض أشكال Bedrock. يتم جلب أشكال لاعبي Bedrock من خادم الأشكال التابع لـ GeyserMC.",
   "@creditGeyserSubtitle": {
     "description": "Subtitle for GeyserMC credit tile"
   },
@@ -399,7 +395,7 @@
   "@creditGeyserTitle": {
     "description": "Title for GeyserMC credit tile"
   },
-  "creditMojangSubtitle": "Java player skins, UUIDs, and profile data via the official Mojang API.",
+  "creditMojangSubtitle": "أشكال لاعبي Java ومعرّفات UUID وبيانات الملف الشخصي عبر واجهة Mojang الرسمية.",
   "@creditMojangSubtitle": {
     "description": "Subtitle for Mojang credit tile"
   },
@@ -407,7 +403,7 @@
   "@creditMojangTitle": {
     "description": "Title for Mojang credit tile"
   },
-  "creditXboxSubtitle": "Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.",
+  "creditXboxSubtitle": "ربط حسابات Bedrock عبر Xbox Live. يتم الحصول على Gamertag ومعرّفات XUID من خلال مصادقة Microsoft.",
   "@creditXboxSubtitle": {
     "description": "Subtitle for Xbox credit tile"
   },
@@ -415,27 +411,27 @@
   "@creditXboxTitle": {
     "description": "Title for Xbox credit tile"
   },
-  "dataSourcesSection": "Data Sources & Credits",
+  "dataSourcesSection": "مصادر البيانات والشكر",
   "@dataSourcesSection": {
     "description": "Section header for data sources in Info sheet"
   },
-  "deleteAccountBody": "This will permanently delete your account and all data. This action cannot be undone.",
+  "deleteAccountBody": "سيؤدي هذا إلى حذف حسابك وجميع بياناتك نهائيًا. لا يمكن التراجع عن هذا الإجراء.",
   "@deleteAccountBody": {
     "description": "Body text for delete account confirmation dialog"
   },
-  "deleteAccountTitle": "Delete Account",
+  "deleteAccountTitle": "حذف الحساب",
   "@deleteAccountTitle": {
     "description": "Title for delete account dialog/button"
   },
-  "deletePermanently": "Delete Permanently",
+  "deletePermanently": "حذف نهائي",
   "@deletePermanently": {
     "description": "Confirm button for permanent deletion"
   },
-  "displayNameLabel": "Display Name",
+  "displayNameLabel": "الاسم المعروض",
   "@displayNameLabel": {
     "description": "Label for display name field"
   },
-  "displayNameRowLabel": "Display name",
+  "displayNameRowLabel": "الاسم المعروض",
   "@displayNameRowLabel": {
     "description": "Row label for display name in public profile"
   },
@@ -443,101 +439,101 @@
   "@edit": {
     "description": "Edit button label"
   },
-  "editServer": "Edit Server",
+  "editServer": "تعديل الخادم",
   "@editServer": {
     "description": "Title for edit server form in manage servers"
   },
-  "editionLabel": "Edition",
+  "editionLabel": "الإصدار",
   "@editionLabel": {
     "description": "Label for the edition toggle in manage servers form"
   },
-  "emailAddressHint": "Email address",
+  "emailAddressHint": "البريد الإلكتروني",
   "@emailAddressHint": {
     "description": "Hint text for email address field"
   },
-  "emailAlreadyInUse": "This email address is already in use",
+  "emailAlreadyInUse": "عنوان البريد الإلكتروني هذا مستخدم بالفعل",
   "@emailAlreadyInUse": {
     "description": "Error when email is already registered"
   },
-  "emailDifferentMethod": "This email is linked to a different sign-in method",
+  "emailDifferentMethod": "هذا البريد الإلكتروني مرتبط بطريقة تسجيل دخول مختلفة",
   "@emailDifferentMethod": {
     "description": "Error when email already uses a different auth method"
   },
-  "enterEmailAndPassword": "Please enter your email and password",
+  "enterEmailAndPassword": "يرجى إدخال بريدك الإلكتروني وكلمة المرور",
   "@enterEmailAndPassword": {
     "description": "Validation when email or password is empty on sign-in"
   },
-  "findUser": "Find user",
+  "findUser": "البحث عن مستخدم",
   "@findUser": {
     "description": "Tooltip for the search/find user button"
   },
-  "forgotPassword": "Forgot password?",
+  "forgotPassword": "هل نسيت كلمة المرور؟",
   "@forgotPassword": {
     "description": "Link to trigger password reset flow"
   },
-  "friendRemoved": "{name} has been removed from your friends",
+  "friendRemoved": "تمت إزالة {name} من أصدقائك",
   "@friendRemoved": {
     "description": "Toast shown after removing a friend",
     "placeholders": {
       "name": {}
     }
   },
-  "friendRequestAccepted": "You are now friends with {name}",
+  "friendRequestAccepted": "أنت الآن صديق {name}",
   "@friendRequestAccepted": {
     "description": "Toast when a friend request is accepted",
     "placeholders": {
       "name": {}
     }
   },
-  "friendRequestSent": "Friend request sent",
+  "friendRequestSent": "تم إرسال طلب الصداقة",
   "@friendRequestSent": {
     "description": "Toast shown after friend request is sent from public profile"
   },
-  "googleSignInFailed": "Google sign-in failed. Please try again.",
+  "googleSignInFailed": "فشل تسجيل الدخول عبر Google. يرجى المحاولة مرة أخرى.",
   "@googleSignInFailed": {
     "description": "Error when Google sign-in fails"
   },
-  "incorrectEmailOrPassword": "Incorrect email or password",
+  "incorrectEmailOrPassword": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
   "@incorrectEmailOrPassword": {
     "description": "Error for wrong credentials"
   },
-  "infoAndLegal": "Info & Legal",
+  "infoAndLegal": "المعلومات والقانون",
   "@infoAndLegal": {
     "description": "Title of the Info & Legal sheet"
   },
-  "invalidEmailError": "The email address is not valid",
+  "invalidEmailError": "عنوان البريد الإلكتروني غير صالح",
   "@invalidEmailError": {
     "description": "Error for invalid email format"
   },
-  "ipAddressFieldLabel": "IP Address",
+  "ipAddressFieldLabel": "عنوان IP",
   "@ipAddressFieldLabel": {
     "description": "IP Address field label in edit server form"
   },
-  "ipRequiredError": "IP address is required",
+  "ipRequiredError": "عنوان IP مطلوب",
   "@ipRequiredError": {
     "description": "Validation error when IP address is empty"
   },
-  "lastSeenLabel": "Last seen",
+  "lastSeenLabel": "آخر ظهور",
   "@lastSeenLabel": {
     "description": "Row label for last seen date in public profile"
   },
-  "legalSection": "Legal",
+  "legalSection": "قانوني",
   "@legalSection": {
     "description": "Section header in Info sheet"
   },
-  "linkAccountsHint": "Link your Minecraft accounts to show your skins and stats.",
+  "linkAccountsHint": "اربط حسابات Minecraft لعرض أشكالك وإحصاءاتك.",
   "@linkAccountsHint": {
     "description": "Hint when no accounts are linked"
   },
-  "linkJava": "Link Java",
+  "linkJava": "ربط Java",
   "@linkJava": {
     "description": "Button to link a Java account"
   },
-  "linkXbox": "Link Xbox",
+  "linkXbox": "ربط Xbox",
   "@linkXbox": {
     "description": "Button to link an Xbox/Bedrock account"
   },
-  "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
+  "minecraftTrademark": "\"Minecraft\" علامة تجارية مسجلة لشركة Microsoft Corporation.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
   },
@@ -545,7 +541,7 @@
   "@nameLabel": {
     "description": "Generic Name field label"
   },
-  "nameValidationError": "Name must be 1–50 characters",
+  "nameValidationError": "يجب أن يتكون الاسم من 1 إلى 50 حرفًا",
   "@nameValidationError": {
     "description": "Validation error when server name is invalid"
   },
@@ -553,37 +549,37 @@
   "@nldServerLabelShort": {
     "description": "Section label above relay selector in More sheet"
   },
-  "noAccountYet": "Don't have an account? Create one",
+  "noAccountYet": "ليس لديك حساب؟ أنشئ واحدًا",
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noFriendsSub": "Add friends to see them here.",
+  "noFriendsSub": "أضف أصدقاء ليظهروا هنا.",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
   },
-  "noFriendsYet": "No friends yet",
+  "noFriendsYet": "لا يوجد أصدقاء بعد",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
   },
-  "noPendingRequests": "No pending requests",
+  "noPendingRequests": "لا توجد طلبات معلقة",
   "@noPendingRequests": {
     "description": "Empty state title on requests tab"
   },
-  "nowFriendsWith": "Now friends with @{username}",
+  "nowFriendsWith": "أنت الآن صديق @{username}",
   "@nowFriendsWith": {
     "description": "Toast when accepted a friend request from public profile",
     "placeholders": {
       "username": {}
     }
   },
-  "offlineFriendsLabel": "{count} offline",
+  "offlineFriendsLabel": "{count} غير متصل",
   "@offlineFriendsLabel": {
     "description": "Section label for offline friends",
     "placeholders": {
       "count": {}
     }
   },
-  "onlineFriendsLabel": "{count} online",
+  "onlineFriendsLabel": "{count} متصل",
   "@onlineFriendsLabel": {
     "description": "Section label for online friends",
     "placeholders": {
@@ -594,42 +590,42 @@
   "@orDivider": {
     "description": "Divider text between email and social sign-in"
   },
-  "passwordHint": "Password",
+  "passwordHint": "كلمة المرور",
   "@passwordHint": {
     "description": "Hint text for password field"
   },
-  "paywallContinue": "Continue",
-  "paywallManaged": "Managed by Apple/Google. Cancel anytime.",
-  "paywallMonthly": "Monthly",
-  "paywallNoActivePurchases": "No active purchases found.",
-  "paywallNoPkgs": "No packages available.",
-  "paywallPopular": "Popular",
-  "paywallPurchaseFailed": "Purchase failed. Please try again.",
-  "paywallPurchaseSuccess": "Purchase successful!",
-  "paywallPurchasesRestored": "Purchases restored!",
-  "paywallRestore": "Restore",
-  "paywallRestoreFailed": "Restore failed. Please try again.",
-  "paywallSavePercent": "Save ~17%",
-  "paywallSlotLabel": "{slots} server slots",
+  "paywallContinue": "متابعة",
+  "paywallManaged": "تُدار عبر Apple/Google. يمكنك الإلغاء في أي وقت.",
+  "paywallMonthly": "شهريًا",
+  "paywallNoActivePurchases": "لم يتم العثور على مشتريات نشطة.",
+  "paywallNoPkgs": "لا توجد باقات متاحة.",
+  "paywallPopular": "الأكثر شيوعًا",
+  "paywallPurchaseFailed": "فشلت عملية الشراء. يرجى المحاولة مرة أخرى.",
+  "paywallPurchaseSuccess": "تمت عملية الشراء بنجاح!",
+  "paywallPurchasesRestored": "تمت استعادة المشتريات!",
+  "paywallRestore": "استعادة",
+  "paywallRestoreFailed": "فشلت الاستعادة. يرجى المحاولة مرة أخرى.",
+  "paywallSavePercent": "وفّر ~17%",
+  "paywallSlotLabel": "{slots} خانات للخوادم",
   "@paywallSlotLabel": {
     "placeholders": {
       "slots": {}
     }
   },
-  "paywallSubtitle": "Track more servers and get notified\nwhen they go online or offline.",
-  "paywallYearly": "Yearly",
-  "platformFieldLabel": "Platform",
+  "paywallSubtitle": "تتبّع المزيد من الخوادم واحصل على إشعار\nعند اتصالها أو انقطاعها.",
+  "paywallYearly": "سنويًا",
+  "platformFieldLabel": "المنصة",
   "@platformFieldLabel": {
     "description": "Platform field label in edit server form"
   },
-  "playerLookupCopied": "{value} copied",
+  "playerLookupCopied": "تم نسخ {value}",
   "@playerLookupCopied": {
     "description": "Toast shown after copying a value in player lookup",
     "placeholders": {
       "value": {}
     }
   },
-  "playerLookupHint": "Enter a username…",
+  "playerLookupHint": "أدخل اسم مستخدم…",
   "@playerLookupHint": {
     "description": "Hint text for player lookup search field"
   },
@@ -637,15 +633,15 @@
   "@playerLookupLabelTier": {
     "description": "Label for tier field in player lookup"
   },
-  "playerLookupLabelUsername": "Username",
+  "playerLookupLabelUsername": "اسم المستخدم",
   "@playerLookupLabelUsername": {
     "description": "Label for username field in player lookup"
   },
-  "playerLookupLinked": "Linked accounts found",
+  "playerLookupLinked": "تم العثور على حسابات مرتبطة",
   "@playerLookupLinked": {
     "description": "Badge shown when linked accounts are found"
   },
-  "playerLookupSubtitle": "Search for a Java or Bedrock player by username",
+  "playerLookupSubtitle": "ابحث عن لاعب Java أو Bedrock باسم المستخدم",
   "@playerLookupSubtitle": {
     "description": "Subtitle/hint on player lookup screen"
   },
@@ -653,7 +649,7 @@
   "@portFieldLabel": {
     "description": "Port field label in edit server form"
   },
-  "portRangeError": "Port must be between 1 and 65535",
+  "portRangeError": "يجب أن يكون المنفذ بين 1 و65535",
   "@portRangeError": {
     "description": "Validation error when port is out of range"
   },
@@ -661,19 +657,19 @@
   "@privacyPolicy": {
     "description": "Privacy Policy tile title"
   },
-  "privacyPolicySubtitle": "How we collect and protect your data",
+  "privacyPolicySubtitle": "كيف نجمع بياناتك ونحميها",
   "@privacyPolicySubtitle": {
     "description": "Privacy Policy tile subtitle"
   },
-  "profileNotSetUp": "Profile not set up",
+  "profileNotSetUp": "لم يتم إعداد الملف الشخصي",
   "@profileNotSetUp": {
     "description": "Title when user is authenticated but has no profile"
   },
-  "profileSectionLabel": "Profile",
+  "profileSectionLabel": "الملف الشخصي",
   "@profileSectionLabel": {
     "description": "Section label in public profile for profile info card"
   },
-  "profileUpdated": "Profile updated",
+  "profileUpdated": "تم تحديث الملف الشخصي",
   "@profileUpdated": {
     "description": "Toast shown after profile is saved"
   },
@@ -681,71 +677,71 @@
   "@relay": {
     "description": "Label for the Relay nav item and sheet title"
   },
-  "remove": "Remove",
+  "remove": "إزالة",
   "@remove": {
     "description": "Remove button label"
   },
-  "removeFriendButton": "Remove friend",
+  "removeFriendButton": "إزالة الصديق",
   "@removeFriendButton": {
     "description": "Button label to remove a friend on public profile"
   },
-  "removeFriendConfirm": "Remove {name} from your friends?",
+  "removeFriendConfirm": "هل تريد إزالة {name} من أصدقائك؟",
   "@removeFriendConfirm": {
     "description": "Confirmation text for removing a friend",
     "placeholders": {
       "name": {}
     }
   },
-  "removeFriendDialogBody": "Remove @{username} as a friend?",
+  "removeFriendDialogBody": "هل تريد إزالة @{username} من أصدقائك؟",
   "@removeFriendDialogBody": {
     "description": "Dialog body when removing a friend from public profile",
     "placeholders": {
       "username": {}
     }
   },
-  "removeFriendDialogTitle": "Remove friend",
+  "removeFriendDialogTitle": "إزالة صديق",
   "@removeFriendDialogTitle": {
     "description": "Dialog title when removing a friend from public profile"
   },
-  "removeFriendTitle": "Remove Friend",
+  "removeFriendTitle": "إزالة صديق",
   "@removeFriendTitle": {
     "description": "Dialog title for removing a friend"
   },
-  "removeJavaConfirm": "Remove {name} from your linked accounts?",
+  "removeJavaConfirm": "هل تريد إزالة {name} من حساباتك المرتبطة؟",
   "@removeJavaConfirm": {
     "description": "Confirmation text for unlinking a Java account",
     "placeholders": {
       "name": {}
     }
   },
-  "removeLabelConfirm": "Remove {name} from your linked accounts?",
+  "removeLabelConfirm": "هل تريد إزالة {name} من حساباتك المرتبطة؟",
   "@removeLabelConfirm": {
     "description": "Confirmation text for unlinking a Bedrock/Xbox account",
     "placeholders": {
       "name": {}
     }
   },
-  "reportAdditionalDetails": "Additional details (optional)…",
+  "reportAdditionalDetails": "تفاصيل إضافية (اختياري)…",
   "@reportAdditionalDetails": {
     "description": "Hint text for additional details field in report sheet"
   },
-  "reportDisclaimer": "Reports are reviewed by our team. False reports may result in action against your account.",
+  "reportDisclaimer": "يراجع فريقنا البلاغات. قد تؤدي البلاغات الكاذبة إلى اتخاذ إجراء ضد حسابك.",
   "@reportDisclaimer": {
     "description": "Disclaimer text shown in the report sheet"
   },
-  "reportFailed": "Failed to submit report. Please try again.",
+  "reportFailed": "تعذّر إرسال البلاغ. يرجى المحاولة مرة أخرى.",
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportReasonHarassment": "Harassment",
+  "reportReasonHarassment": "مضايقة",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
   },
-  "reportReasonInappropriate": "Inappropriate content",
+  "reportReasonInappropriate": "محتوى غير لائق",
   "@reportReasonInappropriate": {
     "description": "Report reason: inappropriate content"
   },
-  "reportReasonOther": "Other",
+  "reportReasonOther": "أخرى",
   "@reportReasonOther": {
     "description": "Report reason: other"
   },
@@ -753,41 +749,41 @@
   "@reportReasonSpam": {
     "description": "Report reason: spam"
   },
-  "reportSubmit": "Submit report",
+  "reportSubmit": "إرسال البلاغ",
   "@reportSubmit": {
     "description": "Button label to submit a report"
   },
-  "reportSuccess": "Report submitted. Thank you.",
+  "reportSuccess": "تم إرسال البلاغ. شكرًا لك.",
   "@reportSuccess": {
     "description": "Toast shown after a successful report submission"
   },
-  "reportUser": "Report user",
+  "reportUser": "الإبلاغ عن مستخدم",
   "@reportUser": {
     "description": "Tooltip/button to report a user"
   },
-  "reportUserWithName": "Report {name}",
+  "reportUserWithName": "الإبلاغ عن {name}",
   "@reportUserWithName": {
     "description": "Title when reporting a user by name",
     "placeholders": {
       "name": {}
     }
   },
-  "requestAlreadyPendingMsg": "There is already a pending request.",
+  "requestAlreadyPendingMsg": "يوجد طلب معلق بالفعل.",
   "@requestAlreadyPendingMsg": {
     "description": "Error when friend request is already pending (public profile)"
   },
-  "requestDeclined": "Request from {name} declined",
+  "requestDeclined": "تم رفض طلب {name}",
   "@requestDeclined": {
     "description": "Toast when a friend request is declined",
     "placeholders": {
       "name": {}
     }
   },
-  "requestSentButton": "Request sent",
+  "requestSentButton": "تم إرسال الطلب",
   "@requestSentButton": {
     "description": "Disabled button label when request already sent"
   },
-  "requestsAppearHere": "New friend requests will appear here.",
+  "requestsAppearHere": "ستظهر طلبات الصداقة الجديدة هنا.",
   "@requestsAppearHere": {
     "description": "Empty state subtitle on requests tab"
   },
@@ -798,15 +794,15 @@
       "email": {}
     }
   },
-  "resetPasswordBody": "Enter your email address and we will send you a link to reset your password.",
+  "resetPasswordBody": "أدخل عنوان بريدك الإلكتروني وسنرسل إليك رابطًا لإعادة تعيين كلمة المرور.",
   "@resetPasswordBody": {
     "description": "Body text for reset password dialog"
   },
-  "resetPasswordTitle": "Reset Password",
+  "resetPasswordTitle": "إعادة تعيين كلمة المرور",
   "@resetPasswordTitle": {
     "description": "Title for reset password dialog"
   },
-  "selectBedrockAccount": "Select Bedrock account",
+  "selectBedrockAccount": "اختر حساب Bedrock",
   "@selectBedrockAccount": {
     "description": "Title of the Bedrock account picker bottom sheet"
   },
@@ -814,7 +810,7 @@
   "@send": {
     "description": "Send button label"
   },
-  "sendLink": "Send link",
+  "sendLink": "إرسال الرابط",
   "@sendLink": {
     "description": "Button to send the password reset link"
   },
@@ -822,31 +818,31 @@
   "@serverAddressExampleHint": {
     "description": "Example hint text for server address field"
   },
-  "serverDescriptionExampleHint": "Survival server with friends",
+  "serverDescriptionExampleHint": "خادم بقاء مع الأصدقاء",
   "@serverDescriptionExampleHint": {
     "description": "Example hint text for server description field"
   },
-  "serverNameExampleHint": "My Awesome Server",
+  "serverNameExampleHint": "خادمي الرائع",
   "@serverNameExampleHint": {
     "description": "Example hint text for server name field"
   },
-  "serversSection": "Servers",
+  "serversSection": "الخوادم",
   "@serversSection": {
     "description": "Section label above servers panel in connection panel"
   },
-  "signInSubtitle": "Sign in to access your profile, friends, and chats.",
+  "signInSubtitle": "سجّل الدخول للوصول إلى ملفك الشخصي وأصدقائك ومحادثاتك.",
   "@signInSubtitle": {
     "description": "Subtitle on the sign-in screen"
   },
-  "signOut": "Sign Out",
+  "signOut": "تسجيل الخروج",
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "Create",
+  "skinsCreate": "إنشاء",
   "@skinsCreate": {
     "description": "Button to create/open skin editor"
   },
-  "skinsDownload": "Download",
+  "skinsDownload": "تنزيل",
   "@skinsDownload": {
     "description": "Download button in skin detail sheet"
   },
@@ -854,19 +850,19 @@
   "@skinsEdit": {
     "description": "Edit button in skin detail sheet"
   },
-  "skinsInvalidFile": "Invalid image file",
+  "skinsInvalidFile": "ملف صورة غير صالح",
   "@skinsInvalidFile": {
     "description": "Error when the selected file is not a valid image"
   },
-  "skinsMustBe64": "Skin must be 64×64 pixels",
+  "skinsMustBe64": "يجب أن يكون حجم السكن 64×64 بكسل",
   "@skinsMustBe64": {
     "description": "Error when uploaded skin is wrong size"
   },
-  "skinsUpload": "Upload",
+  "skinsUpload": "رفع",
   "@skinsUpload": {
     "description": "Button to upload a skin"
   },
-  "somethingWentWrong": "Something went wrong. Please try again.",
+  "somethingWentWrong": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
   "@somethingWentWrong": {
     "description": "Generic error message"
   },
@@ -874,7 +870,7 @@
   "@termsOfService": {
     "description": "Terms of Service tile title"
   },
-  "termsOfServiceSubtitle": "Rules and conditions of use",
+  "termsOfServiceSubtitle": "قواعد وشروط الاستخدام",
   "@termsOfServiceSubtitle": {
     "description": "Terms of Service tile subtitle"
   },
@@ -882,43 +878,43 @@
   "@trackerLimitReached": {
     "description": "Banner shown when tracker slot limit is reached"
   },
-  "tryAgain": "Try again",
+  "tryAgain": "حاول مرة أخرى",
   "@tryAgain": {
     "description": "Generic try again button label"
   },
-  "unlink": "Unlink",
+  "unlink": "إلغاء الربط",
   "@unlink": {
     "description": "Unlink button label"
   },
-  "unlinkJavaTitle": "Unlink Java Account",
+  "unlinkJavaTitle": "إلغاء ربط حساب Java",
   "@unlinkJavaTitle": {
     "description": "Dialog title for unlinking a Java account"
   },
-  "unlinkXboxTitle": "Unlink Xbox Account",
+  "unlinkXboxTitle": "إلغاء ربط حساب Xbox",
   "@unlinkXboxTitle": {
     "description": "Dialog title for unlinking an Xbox account"
   },
-  "upgradeButton": "Upgrade",
+  "upgradeButton": "ترقية",
   "@upgradeButton": {
     "description": "Button to open paywall/upgrade screen"
   },
-  "userNotFound": "User not found",
+  "userNotFound": "المستخدم غير موجود",
   "@userNotFound": {
     "description": "Text shown when a user profile cannot be found"
   },
-  "userNotFoundMsg2": "User not found.",
+  "userNotFoundMsg2": "المستخدم غير موجود.",
   "@userNotFoundMsg2": {
     "description": "Error when user not found sending friend request from public profile"
   },
-  "usernameRowLabel": "Username",
+  "usernameRowLabel": "اسم المستخدم",
   "@usernameRowLabel": {
     "description": "Row label for username in public profile"
   },
-  "weakPassword": "Password is too weak. Please choose a stronger one.",
+  "weakPassword": "كلمة المرور ضعيفة جدًا. يرجى اختيار كلمة مرور أقوى.",
   "@weakPassword": {
     "description": "Error for weak password"
   },
-  "xboxAccountLinked": "Xbox account linked!",
+  "xboxAccountLinked": "تم ربط حساب Xbox!",
   "@xboxAccountLinked": {
     "description": "Success text when Xbox account is linked"
   },
@@ -926,74 +922,74 @@
   "@xboxBedrockLabel": {
     "description": "Section label for Xbox/Bedrock account in public profile"
   },
-  "xboxCodeCopied": "Code copied to clipboard",
+  "xboxCodeCopied": "تم نسخ الرمز إلى الحافظة",
   "@xboxCodeCopied": {
     "description": "Snackbar shown after code is copied"
   },
-  "xboxCodeExpired": "The code expired. Please try again.",
+  "xboxCodeExpired": "انتهت صلاحية الرمز. يرجى المحاولة مرة أخرى.",
   "@xboxCodeExpired": {
     "description": "Error when Xbox device code expires"
   },
-  "xboxCouldNotStart": "Could not start Xbox login. Please try again.",
+  "xboxCouldNotStart": "تعذّر بدء تسجيل الدخول إلى Xbox. يرجى المحاولة مرة أخرى.",
   "@xboxCouldNotStart": {
     "description": "Error when Xbox login cannot be started"
   },
-  "xboxGoToLink": "Go to the link below and enter the code to connect your Xbox account.",
+  "xboxGoToLink": "انتقل إلى الرابط أدناه وأدخل الرمز لربط حساب Xbox الخاص بك.",
   "@xboxGoToLink": {
     "description": "Instruction on Xbox link waiting screen"
   },
-  "xboxLinkTitle": "Link Xbox Account",
+  "xboxLinkTitle": "ربط حساب Xbox",
   "@xboxLinkTitle": {
     "description": "AppBar title for Xbox link screen"
   },
-  "xboxOpenLink": "Open microsoft.com/link",
+  "xboxOpenLink": "فتح microsoft.com/link",
   "@xboxOpenLink": {
     "description": "Button label to open Microsoft device auth link"
   },
-  "xboxSignInWithMicrosoft": "Sign in with Microsoft",
+  "xboxSignInWithMicrosoft": "تسجيل الدخول باستخدام Microsoft",
   "@xboxSignInWithMicrosoft": {
     "description": "Heading on Xbox link waiting screen"
   },
-  "xboxSomethingWrong": "Something went wrong. Please try again.",
+  "xboxSomethingWrong": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
   "@xboxSomethingWrong": {
     "description": "Generic error on Xbox link screen"
   },
-  "xboxStartingLogin": "Starting Xbox login…",
+  "xboxStartingLogin": "جارٍ بدء تسجيل الدخول إلى Xbox…",
   "@xboxStartingLogin": {
     "description": "Loading text when starting Xbox login"
   },
-  "xboxTapToCopy": "Tap the code to copy it",
+  "xboxTapToCopy": "اضغط على الرمز لنسخه",
   "@xboxTapToCopy": {
     "description": "Hint below the code on Xbox link screen"
   },
-  "xboxWaitingForLogin": "Waiting for login…",
+  "xboxWaitingForLogin": "بانتظار تسجيل الدخول…",
   "@xboxWaitingForLogin": {
     "description": "Status text while polling for Xbox login"
   },
-  "xboxYourCode": "Your code",
+  "xboxYourCode": "رمزك",
   "@xboxYourCode": {
     "description": "Label above the Microsoft device code"
   },
-  "yourNameHint": "Your name",
+  "yourNameHint": "اسمك",
   "@yourNameHint": {
     "description": "Hint text for display name field"
   },
-  "javaLinkTitle": "Link Java Edition",
-  "javaStartingLogin": "Starting Microsoft login…",
-  "javaSignInWithMicrosoft": "Sign in with Microsoft",
-  "javaGoToLink": "Go to the link below and enter the code to connect your Minecraft Java Edition account.",
-  "javaYourCode": "Your code",
-  "javaTapToCopy": "Tap the code to copy it",
-  "javaOpenLink": "Open microsoft.com/link",
-  "javaWaitingForLogin": "Waiting for login…",
-  "javaAccountLinked": "Java Edition linked!",
-  "javaNoJavaTitle": "No Java Edition found",
-  "javaNoJavaBody": "The Microsoft account you signed in with does not own Minecraft Java Edition.",
-  "javaTryDifferentAccount": "Try a different account",
-  "javaCouldNotStart": "Could not start Microsoft login. Please try again.",
-  "javaCodeExpired": "The code expired. Please try again.",
-  "javaSomethingWrong": "Something went wrong. Please try again.",
-  "javaCodeCopied": "Code copied to clipboard",
+  "javaLinkTitle": "ربط إصدار Java",
+  "javaStartingLogin": "جارٍ بدء تسجيل الدخول إلى Microsoft…",
+  "javaSignInWithMicrosoft": "تسجيل الدخول باستخدام Microsoft",
+  "javaGoToLink": "انتقل إلى الرابط أدناه وأدخل الرمز لربط حساب Minecraft Java Edition الخاص بك.",
+  "javaYourCode": "رمزك",
+  "javaTapToCopy": "اضغط على الرمز لنسخه",
+  "javaOpenLink": "فتح microsoft.com/link",
+  "javaWaitingForLogin": "بانتظار تسجيل الدخول…",
+  "javaAccountLinked": "تم ربط إصدار Java!",
+  "javaNoJavaTitle": "لم يتم العثور على إصدار Java",
+  "javaNoJavaBody": "حساب Microsoft الذي سجّلت الدخول به لا يملك Minecraft Java Edition.",
+  "javaTryDifferentAccount": "جرّب حسابًا آخر",
+  "javaCouldNotStart": "تعذّر بدء تسجيل الدخول إلى Microsoft. يرجى المحاولة مرة أخرى.",
+  "javaCodeExpired": "انتهت صلاحية الرمز. يرجى المحاولة مرة أخرى.",
+  "javaSomethingWrong": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+  "javaCodeCopied": "تم نسخ الرمز إلى الحافظة",
   "featureLabelConnector": "موصّل",
   "featureLabelSkins": "سكنز",
   "featureLabelPartners": "قائمة الخوادم",
@@ -1083,9 +1079,6 @@
   "rpNoDiscord": "روابط Discord: لا تحتوي على امتداد .mcpack وتنتهي صلاحيتها بعد ساعات قليلة",
   "rpNoDrive": "روابط مشاركة Google Drive / Dropbox: ليست تنزيلات مباشرة",
   "rpNoEncrypted": "الخوادم ذات الحزم المشفرة أو المحمية بكلمة مرور",
-  "rpWarnDiscord": "روابط Discord تنتهي صلاحيتها وستتوقف عن العمل. استخدم مضيفًا دائمًا بدلاً من ذلك.",
-  "rpWarnHttps": "يجب أن يبدأ الرابط بـ https://",
-  "rpWarnExtension": "يجب أن ينتهي الرابط بـ .mcpack أو .zip",
   "rpToastSaved": "تم حفظ إعدادات حزمة الموارد.",
   "rpClearMinecraftTitle": "أول مرة مع هذه الحزمة؟",
   "rpClearStep1": "افتح Minecraft على جهازك وانتقل إلى الإعدادات → التخزين",
@@ -1097,10 +1090,10 @@
   "rpNoDriveHint": "لا يوجد تنزيل مباشر: يعيد التوجيه إلى صفحة معاينة",
   "rpNoEncryptedHint": "لا يستطيع MCCompanion دمج محتوى الحزم المشفرة",
   "rpClearWhy": "يخزن Minecraft حزم الموارد بواسطة UUID الخاصة بها. تحتفظ الحزمة المدمجة بـ UUID الأصلي للخادم, إذا كان Minecraft قد خزّن حزمة الخادم بالفعل من جلسة سابقة (قبل تفعيل MCCompanion)، فلن يعيد تنزيل النسخة المدمجة الجديدة. امسح ذاكرة التخزين المؤقت حتى يحمّل Minecraft الحزمة المدمجة الجديدة.",
-  "rpUploadTab": "Upload",
-  "rpUploadButton": "Tap to select your pack",
-  "rpUploadHint": ".mcpack or .zip • max 100 MB",
-  "rpUploading": "Uploading...",
+  "rpUploadTab": "رفع",
+  "rpUploadButton": "اضغط لاختيار الحزمة",
+  "rpUploadHint": "‎.mcpack أو .zip • بحد أقصى 100 ميغابايت",
+  "rpUploading": "جارٍ الرفع...",
   "rpMergerTitle": "دمج حزم الموارد",
   "rpMergerPriorityHint": "الحزمة العلوية لها أعلى أولوية: ملفاتها تفوز في النزاعات.",
   "rpMergerTopBadge": "أعلى",
@@ -1172,45 +1165,10 @@
     }
   },
   "skinsSavedToMySkins": "تم الحفظ في سكناتي",
-  "skinsDownloadFailed": "فشل التنزيل",
-  "skinsDeletedFromCloud": "تم الحذف من السحابة",
-  "skinsDeleteFailed": "فشل الحذف",
-  "skinsLoginToUpload": "سجّل دخولك لرفع السكنات",
-  "skinsUploading": "جارٍ الرفع…",
-  "skinUploaded": "تم رفع السكن!",
-  "skinUploadFailed": "فشل الرفع: {error}",
   "skinsEmptyLocalSkins": "لا توجد سكنات بعد. أنشئ أو ارفع سكناً للبدء.",
-  "skinUploadToWebsite": "رفع إلى الموقع",
-  "skinReuploadToWebsite": "إعادة الرفع إلى الموقع",
-  "skinCloudEdit": "تعديل",
-  "skinCloudSaveToDevice": "حفظ على الجهاز",
-  "skinCloudDelete": "حذف من السحابة",
-  "skinsTabGallery": "معرض الصور",
-  "skinsTopLabel": "أفضل 30",
-  "skinsAllLabel": "جميع السكنات",
-  "skinUploadToCloud": "رفع إلى السحابة",
   "skinSaveDialog": "حفظ السكن",
   "skinNameHint": "اسم السكن",
   "skinDefaultName": "سكني",
-  "skinUpdatedInCloud": "تم تحديث السكن في السحابة",
-  "skinByCreator": "بواسطة {name}",
-  "@skinByCreator": {
-    "description": "Creator attribution",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinLikesCount": "{count} إعجاب",
-  "@skinLikesCount": {
-    "description": "Like count",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "sectionRecentActivity": "النشاط الأخير",
   "activityNoEvents": "لا يوجد نشاط حديث بعد.",
   "activitySkinUploaded": "تم رفع السكن",
@@ -1305,10 +1263,6 @@
   "notifPrefFriendRequest": "طلب صداقة",
   "notifPrefFriendAccepted": "صديق مضاف",
   "notifPrefMessageReceived": "رسالة جديدة",
-  "commentsTitle": "التعليقات",
-  "commentsEmpty": "لا توجد تعليقات بعد. كن الأول!",
-  "commentsPlaceholder": "اكتب تعليقاً…",
-  "loadMore": "تحميل المزيد",
   "skinLayerInner": "داخلي",
   "@skinLayerInner": {
     "description": "Skin editor layer toggle, inner/base layer"
@@ -1327,7 +1281,6 @@
   "skinEditorTitle": "محرر السكين",
   "skinToolUndo": "تراجع",
   "skinSaveToMySkins": "حفظ في سكيناتي",
-  "skinUpdateInCloud": "تحديث في السحابة",
   "skinExportPng": "تصدير PNG",
   "skinToolDraw": "رسم",
   "skinToolFill": "تعبئة",
@@ -1407,6 +1360,22 @@
     }
   },
   "directPortBusy": "تعذر فتح المنفذ المحلي. أوقف الاتصال الحالي أولاً.",
+  "rpBrowseTab": "تصفّح",
+  "rpCategoryRealism": "واقعي",
+  "rpCategoryFaithful": "Faithful",
+  "rpCategoryPvp": "PvP",
+  "rpCategoryCartoon": "كرتوني",
+  "rpCategoryDark": "داكن",
+  "rpCategoryMedieval": "العصور الوسطى",
+  "rpCategoryNature": "الطبيعة",
+  "rpCategoryThemed": "بموضوع معين",
+  "rpCategoryOther": "أخرى",
+  "waitingForConsole": "في انتظار جهاز الألعاب…",
+  "consoleFound": "تم العثور على الجهاز",
+  "consoleLanHint": "على جهاز الألعاب، افتح Minecraft وابحث ضمن الأصدقاء عن لعبة LAN.",
+  "localNetworkBlocked": "لا يستطيع MCCompanion الوصول إلى شبكتك المحلية. فعّل «الشبكة المحلية» لتطبيق MCCompanion من إعدادات جهازك وتأكد من اتصالك بشبكة Wi-Fi.",
+  "serverListPlayersAny": "أي حجم",
+  "serverListPlayersHint": "متوسط اللاعبين المتصلين",
   "directAddressNotSupported": "‏{host} عنوان IPv6. وضع البروكسي/المباشر يدعم IPv4 فقط. استخدم عنوان IPv4 أو اسم المضيف.",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -1451,7 +1420,6 @@
   "serverListNoMatchHint": "جرّب بحثًا أو فئة أخرى",
   "serverCardPlay": "العب",
   "serverCardVote": "صوّت",
-  "serverCardViewServer": "عرض الخادم",
   "serverCopyIp": "نسخ الـ IP",
   "serverCopied": "تم النسخ",
   "serverStatPlayers": "اللاعبون",

@@ -80,10 +80,6 @@
   "@save": {
     "description": "Save button label"
   },
-  "clientDisconnected": "客户端已断开连接: 广播已停止",
-  "@clientDisconnected": {
-    "description": "Snackbar shown when clients disconnect automatically"
-  },
   "pleaseEnterServer": "⚠️ 请输入服务器地址",
   "@pleaseEnterServer": {
     "description": "Validation message when server address field is empty"
@@ -263,10 +259,10 @@
   "resetLabel": "重置",
   "navigationSection": "导航",
   "navFixed": "Connector 和个人资料始终固定",
-  "leftSlot": "Slot 2",
-  "outerSlot": "Slot 1",
-  "rightSlot": "Slot 3",
-  "farSlot": "Slot 4",
+  "leftSlot": "栏位 2",
+  "outerSlot": "栏位 1",
+  "rightSlot": "栏位 3",
+  "farSlot": "栏位 4",
   "colorPickerApply": "应用",
   "colorPickerHex": "Hex",
   "textColorSection": "文字颜色",
@@ -303,55 +299,55 @@
   "navProfile": "个人资料",
   "serverRemoved": "已删除 {name}",
   "serverAdded": "已添加 {name}",
-  "aboutMCCompanionDisclaimer": "MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.",
+  "aboutMCCompanionDisclaimer": "MCCompanion 是一款独立应用,与 Mojang Studios 或 Microsoft Corporation 无关联,也未获其认可或赞助。",
   "@aboutMCCompanionDisclaimer": {
     "description": "Disclaimer text in About MCCompanion section"
   },
-  "aboutMCCompanionSection": "About MCCompanion",
+  "aboutMCCompanionSection": "关于 MCCompanion",
   "@aboutMCCompanionSection": {
     "description": "Section header for About MCCompanion in Info sheet"
   },
-  "aboutSectionLabel": "About",
+  "aboutSectionLabel": "简介",
   "@aboutSectionLabel": {
     "description": "Section label for bio/about in public profile"
   },
-  "acceptRequestButton": "Accept request",
+  "acceptRequestButton": "接受请求",
   "@acceptRequestButton": {
     "description": "Button label to accept a friend request"
   },
-  "addFriend": "Add Friend",
+  "addFriend": "添加好友",
   "@addFriend": {
     "description": "Title/button for adding a friend"
   },
-  "addFriendButton": "Add friend",
+  "addFriendButton": "添加好友",
   "@addFriendButton": {
     "description": "Button label to add a friend on public profile"
   },
-  "alreadyFriendsMsg": "You are already friends.",
+  "alreadyFriendsMsg": "你们已经是好友了。",
   "@alreadyFriendsMsg": {
     "description": "Error when already friends with user (public profile)"
   },
-  "alreadyHaveAccount": "Already have an account? Sign in",
+  "alreadyHaveAccount": "已有账号?去登录",
   "@alreadyHaveAccount": {
     "description": "Toggle to switch back to sign-in mode"
   },
-  "appearOfflineLabel": "Appear Offline",
+  "appearOfflineLabel": "隐身",
   "@appearOfflineLabel": {
     "description": "Label for the appear-offline toggle"
   },
-  "appearOfflineOff": "You appear online to other players",
+  "appearOfflineOff": "其他玩家看到你为在线",
   "@appearOfflineOff": {
     "description": "Subtitle when appear-offline is disabled"
   },
-  "appearOfflineOn": "You appear offline to other players",
+  "appearOfflineOn": "其他玩家看到你为离线",
   "@appearOfflineOn": {
     "description": "Subtitle when appear-offline is enabled"
   },
-  "appleSignInFailed": "Apple sign-in failed. Please try again.",
+  "appleSignInFailed": "Apple 登录失败,请重试。",
   "@appleSignInFailed": {
     "description": "Error when Apple sign-in fails"
   },
-  "bioHint": "Tell others about yourself…",
+  "bioHint": "向大家介绍一下自己…",
   "@bioHint": {
     "description": "Hint text for bio field"
   },
@@ -359,7 +355,7 @@
   "@bioLabel": {
     "description": "Label for bio field"
   },
-  "cannotSendRequestMsg": "Cannot send a request to this user.",
+  "cannotSendRequestMsg": "无法向此用户发送请求。",
   "@cannotSendRequestMsg": {
     "description": "Error when friend request is blocked (public profile)"
   },
@@ -367,31 +363,31 @@
   "@chooseUsernameSubtitle": {
     "description": "Subtitle shown when profile is not yet set up"
   },
-  "continueWithGoogle": "Continue with Google",
+  "continueWithGoogle": "使用 Google 继续",
   "@continueWithGoogle": {
     "description": "Button label for Google sign-in"
   },
-  "couldNotDeleteAccount": "Could not delete account. Please try again.",
+  "couldNotDeleteAccount": "无法删除账号,请重试。",
   "@couldNotDeleteAccount": {
     "description": "Error when account deletion fails"
   },
-  "couldNotSendResetEmail": "Could not send reset email. Please try again.",
+  "couldNotSendResetEmail": "无法发送重置邮件,请重试。",
   "@couldNotSendResetEmail": {
     "description": "Generic error when sending reset email fails"
   },
-  "couldNotUpdateVisibility": "Could not update visibility settings",
+  "couldNotUpdateVisibility": "无法更新可见性设置",
   "@couldNotUpdateVisibility": {
     "description": "Error when toggling appear-offline fails"
   },
-  "createAccount": "Create Account",
+  "createAccount": "创建账号",
   "@createAccount": {
     "description": "Button/title for creating a new account"
   },
-  "createProfile": "Create Profile",
+  "createProfile": "创建个人资料",
   "@createProfile": {
     "description": "Button to navigate to profile creation/registration"
   },
-  "creditGeyserSubtitle": "Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.",
+  "creditGeyserSubtitle": "基岩版皮肤渲染。基岩版玩家的皮肤通过 GeyserMC 皮肤服务器获取。",
   "@creditGeyserSubtitle": {
     "description": "Subtitle for GeyserMC credit tile"
   },
@@ -399,7 +395,7 @@
   "@creditGeyserTitle": {
     "description": "Title for GeyserMC credit tile"
   },
-  "creditMojangSubtitle": "Java player skins, UUIDs, and profile data via the official Mojang API.",
+  "creditMojangSubtitle": "Java 版玩家皮肤、UUID 和个人资料数据来自 Mojang 官方 API。",
   "@creditMojangSubtitle": {
     "description": "Subtitle for Mojang credit tile"
   },
@@ -407,7 +403,7 @@
   "@creditMojangTitle": {
     "description": "Title for Mojang credit tile"
   },
-  "creditXboxSubtitle": "Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.",
+  "creditXboxSubtitle": "通过 Xbox Live 关联基岩版账号。Gamertag 和 XUID 通过 Microsoft 身份验证流程获取。",
   "@creditXboxSubtitle": {
     "description": "Subtitle for Xbox credit tile"
   },
@@ -415,27 +411,27 @@
   "@creditXboxTitle": {
     "description": "Title for Xbox credit tile"
   },
-  "dataSourcesSection": "Data Sources & Credits",
+  "dataSourcesSection": "数据来源与致谢",
   "@dataSourcesSection": {
     "description": "Section header for data sources in Info sheet"
   },
-  "deleteAccountBody": "This will permanently delete your account and all data. This action cannot be undone.",
+  "deleteAccountBody": "这将永久删除你的账号和所有数据,且无法撤销。",
   "@deleteAccountBody": {
     "description": "Body text for delete account confirmation dialog"
   },
-  "deleteAccountTitle": "Delete Account",
+  "deleteAccountTitle": "删除账号",
   "@deleteAccountTitle": {
     "description": "Title for delete account dialog/button"
   },
-  "deletePermanently": "Delete Permanently",
+  "deletePermanently": "永久删除",
   "@deletePermanently": {
     "description": "Confirm button for permanent deletion"
   },
-  "displayNameLabel": "Display Name",
+  "displayNameLabel": "显示名称",
   "@displayNameLabel": {
     "description": "Label for display name field"
   },
-  "displayNameRowLabel": "Display name",
+  "displayNameRowLabel": "显示名称",
   "@displayNameRowLabel": {
     "description": "Row label for display name in public profile"
   },
@@ -443,101 +439,101 @@
   "@edit": {
     "description": "Edit button label"
   },
-  "editServer": "Edit Server",
+  "editServer": "编辑服务器",
   "@editServer": {
     "description": "Title for edit server form in manage servers"
   },
-  "editionLabel": "Edition",
+  "editionLabel": "版本类型",
   "@editionLabel": {
     "description": "Label for the edition toggle in manage servers form"
   },
-  "emailAddressHint": "Email address",
+  "emailAddressHint": "邮箱地址",
   "@emailAddressHint": {
     "description": "Hint text for email address field"
   },
-  "emailAlreadyInUse": "This email address is already in use",
+  "emailAlreadyInUse": "此邮箱地址已被使用",
   "@emailAlreadyInUse": {
     "description": "Error when email is already registered"
   },
-  "emailDifferentMethod": "This email is linked to a different sign-in method",
+  "emailDifferentMethod": "此邮箱已关联其他登录方式",
   "@emailDifferentMethod": {
     "description": "Error when email already uses a different auth method"
   },
-  "enterEmailAndPassword": "Please enter your email and password",
+  "enterEmailAndPassword": "请输入邮箱和密码",
   "@enterEmailAndPassword": {
     "description": "Validation when email or password is empty on sign-in"
   },
-  "findUser": "Find user",
+  "findUser": "查找用户",
   "@findUser": {
     "description": "Tooltip for the search/find user button"
   },
-  "forgotPassword": "Forgot password?",
+  "forgotPassword": "忘记密码?",
   "@forgotPassword": {
     "description": "Link to trigger password reset flow"
   },
-  "friendRemoved": "{name} has been removed from your friends",
+  "friendRemoved": "已将 {name} 从好友中删除",
   "@friendRemoved": {
     "description": "Toast shown after removing a friend",
     "placeholders": {
       "name": {}
     }
   },
-  "friendRequestAccepted": "You are now friends with {name}",
+  "friendRequestAccepted": "你现在与 {name} 是好友了",
   "@friendRequestAccepted": {
     "description": "Toast when a friend request is accepted",
     "placeholders": {
       "name": {}
     }
   },
-  "friendRequestSent": "Friend request sent",
+  "friendRequestSent": "好友请求已发送",
   "@friendRequestSent": {
     "description": "Toast shown after friend request is sent from public profile"
   },
-  "googleSignInFailed": "Google sign-in failed. Please try again.",
+  "googleSignInFailed": "Google 登录失败,请重试。",
   "@googleSignInFailed": {
     "description": "Error when Google sign-in fails"
   },
-  "incorrectEmailOrPassword": "Incorrect email or password",
+  "incorrectEmailOrPassword": "邮箱或密码错误",
   "@incorrectEmailOrPassword": {
     "description": "Error for wrong credentials"
   },
-  "infoAndLegal": "Info & Legal",
+  "infoAndLegal": "信息与法律",
   "@infoAndLegal": {
     "description": "Title of the Info & Legal sheet"
   },
-  "invalidEmailError": "The email address is not valid",
+  "invalidEmailError": "邮箱地址无效",
   "@invalidEmailError": {
     "description": "Error for invalid email format"
   },
-  "ipAddressFieldLabel": "IP Address",
+  "ipAddressFieldLabel": "IP 地址",
   "@ipAddressFieldLabel": {
     "description": "IP Address field label in edit server form"
   },
-  "ipRequiredError": "IP address is required",
+  "ipRequiredError": "必须填写 IP 地址",
   "@ipRequiredError": {
     "description": "Validation error when IP address is empty"
   },
-  "lastSeenLabel": "Last seen",
+  "lastSeenLabel": "最后在线",
   "@lastSeenLabel": {
     "description": "Row label for last seen date in public profile"
   },
-  "legalSection": "Legal",
+  "legalSection": "法律",
   "@legalSection": {
     "description": "Section header in Info sheet"
   },
-  "linkAccountsHint": "Link your Minecraft accounts to show your skins and stats.",
+  "linkAccountsHint": "关联你的 Minecraft 账号以显示皮肤和统计数据。",
   "@linkAccountsHint": {
     "description": "Hint when no accounts are linked"
   },
-  "linkJava": "Link Java",
+  "linkJava": "关联 Java",
   "@linkJava": {
     "description": "Button to link a Java account"
   },
-  "linkXbox": "Link Xbox",
+  "linkXbox": "关联 Xbox",
   "@linkXbox": {
     "description": "Button to link an Xbox/Bedrock account"
   },
-  "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
+  "minecraftTrademark": "“Minecraft”是 Microsoft Corporation 的商标。",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
   },
@@ -545,7 +541,7 @@
   "@nameLabel": {
     "description": "Generic Name field label"
   },
-  "nameValidationError": "Name must be 1–50 characters",
+  "nameValidationError": "名称必须为 1 到 50 个字符",
   "@nameValidationError": {
     "description": "Validation error when server name is invalid"
   },
@@ -553,37 +549,37 @@
   "@nldServerLabelShort": {
     "description": "Section label above relay selector in More sheet"
   },
-  "noAccountYet": "Don't have an account? Create one",
+  "noAccountYet": "没有账号?立即创建",
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noFriendsSub": "Add friends to see them here.",
+  "noFriendsSub": "添加好友后会显示在这里。",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
   },
-  "noFriendsYet": "No friends yet",
+  "noFriendsYet": "还没有好友",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
   },
-  "noPendingRequests": "No pending requests",
+  "noPendingRequests": "没有待处理的请求",
   "@noPendingRequests": {
     "description": "Empty state title on requests tab"
   },
-  "nowFriendsWith": "Now friends with @{username}",
+  "nowFriendsWith": "你现在与 @{username} 是好友了",
   "@nowFriendsWith": {
     "description": "Toast when accepted a friend request from public profile",
     "placeholders": {
       "username": {}
     }
   },
-  "offlineFriendsLabel": "{count} offline",
+  "offlineFriendsLabel": "{count} 人离线",
   "@offlineFriendsLabel": {
     "description": "Section label for offline friends",
     "placeholders": {
       "count": {}
     }
   },
-  "onlineFriendsLabel": "{count} online",
+  "onlineFriendsLabel": "{count} 人在线",
   "@onlineFriendsLabel": {
     "description": "Section label for online friends",
     "placeholders": {
@@ -594,42 +590,42 @@
   "@orDivider": {
     "description": "Divider text between email and social sign-in"
   },
-  "passwordHint": "Password",
+  "passwordHint": "密码",
   "@passwordHint": {
     "description": "Hint text for password field"
   },
-  "paywallContinue": "Continue",
-  "paywallManaged": "Managed by Apple/Google. Cancel anytime.",
-  "paywallMonthly": "Monthly",
-  "paywallNoActivePurchases": "No active purchases found.",
-  "paywallNoPkgs": "No packages available.",
-  "paywallPopular": "Popular",
-  "paywallPurchaseFailed": "Purchase failed. Please try again.",
-  "paywallPurchaseSuccess": "Purchase successful!",
-  "paywallPurchasesRestored": "Purchases restored!",
-  "paywallRestore": "Restore",
-  "paywallRestoreFailed": "Restore failed. Please try again.",
-  "paywallSavePercent": "Save ~17%",
-  "paywallSlotLabel": "{slots} server slots",
+  "paywallContinue": "继续",
+  "paywallManaged": "由 Apple/Google 管理,可随时取消。",
+  "paywallMonthly": "按月",
+  "paywallNoActivePurchases": "未找到有效的购买记录。",
+  "paywallNoPkgs": "暂无可用套餐。",
+  "paywallPopular": "热门",
+  "paywallPurchaseFailed": "购买失败,请重试。",
+  "paywallPurchaseSuccess": "购买成功!",
+  "paywallPurchasesRestored": "购买已恢复!",
+  "paywallRestore": "恢复",
+  "paywallRestoreFailed": "恢复失败,请重试。",
+  "paywallSavePercent": "节省约 17%",
+  "paywallSlotLabel": "{slots} 个服务器栏位",
   "@paywallSlotLabel": {
     "placeholders": {
       "slots": {}
     }
   },
-  "paywallSubtitle": "Track more servers and get notified\nwhen they go online or offline.",
-  "paywallYearly": "Yearly",
-  "platformFieldLabel": "Platform",
+  "paywallSubtitle": "追踪更多服务器,并在它们\n上线或下线时收到通知。",
+  "paywallYearly": "按年",
+  "platformFieldLabel": "平台",
   "@platformFieldLabel": {
     "description": "Platform field label in edit server form"
   },
-  "playerLookupCopied": "{value} copied",
+  "playerLookupCopied": "已复制 {value}",
   "@playerLookupCopied": {
     "description": "Toast shown after copying a value in player lookup",
     "placeholders": {
       "value": {}
     }
   },
-  "playerLookupHint": "Enter a username…",
+  "playerLookupHint": "输入用户名…",
   "@playerLookupHint": {
     "description": "Hint text for player lookup search field"
   },
@@ -637,15 +633,15 @@
   "@playerLookupLabelTier": {
     "description": "Label for tier field in player lookup"
   },
-  "playerLookupLabelUsername": "Username",
+  "playerLookupLabelUsername": "用户名",
   "@playerLookupLabelUsername": {
     "description": "Label for username field in player lookup"
   },
-  "playerLookupLinked": "Linked accounts found",
+  "playerLookupLinked": "找到已关联的账号",
   "@playerLookupLinked": {
     "description": "Badge shown when linked accounts are found"
   },
-  "playerLookupSubtitle": "Search for a Java or Bedrock player by username",
+  "playerLookupSubtitle": "通过用户名搜索 Java 版或基岩版玩家",
   "@playerLookupSubtitle": {
     "description": "Subtitle/hint on player lookup screen"
   },
@@ -653,7 +649,7 @@
   "@portFieldLabel": {
     "description": "Port field label in edit server form"
   },
-  "portRangeError": "Port must be between 1 and 65535",
+  "portRangeError": "端口必须在 1 到 65535 之间",
   "@portRangeError": {
     "description": "Validation error when port is out of range"
   },
@@ -661,19 +657,19 @@
   "@privacyPolicy": {
     "description": "Privacy Policy tile title"
   },
-  "privacyPolicySubtitle": "How we collect and protect your data",
+  "privacyPolicySubtitle": "我们如何收集和保护你的数据",
   "@privacyPolicySubtitle": {
     "description": "Privacy Policy tile subtitle"
   },
-  "profileNotSetUp": "Profile not set up",
+  "profileNotSetUp": "尚未设置个人资料",
   "@profileNotSetUp": {
     "description": "Title when user is authenticated but has no profile"
   },
-  "profileSectionLabel": "Profile",
+  "profileSectionLabel": "个人资料",
   "@profileSectionLabel": {
     "description": "Section label in public profile for profile info card"
   },
-  "profileUpdated": "Profile updated",
+  "profileUpdated": "个人资料已更新",
   "@profileUpdated": {
     "description": "Toast shown after profile is saved"
   },
@@ -681,71 +677,71 @@
   "@relay": {
     "description": "Label for the Relay nav item and sheet title"
   },
-  "remove": "Remove",
+  "remove": "移除",
   "@remove": {
     "description": "Remove button label"
   },
-  "removeFriendButton": "Remove friend",
+  "removeFriendButton": "删除好友",
   "@removeFriendButton": {
     "description": "Button label to remove a friend on public profile"
   },
-  "removeFriendConfirm": "Remove {name} from your friends?",
+  "removeFriendConfirm": "要将 {name} 从好友中删除吗?",
   "@removeFriendConfirm": {
     "description": "Confirmation text for removing a friend",
     "placeholders": {
       "name": {}
     }
   },
-  "removeFriendDialogBody": "Remove @{username} as a friend?",
+  "removeFriendDialogBody": "要将 @{username} 从好友中删除吗?",
   "@removeFriendDialogBody": {
     "description": "Dialog body when removing a friend from public profile",
     "placeholders": {
       "username": {}
     }
   },
-  "removeFriendDialogTitle": "Remove friend",
+  "removeFriendDialogTitle": "删除好友",
   "@removeFriendDialogTitle": {
     "description": "Dialog title when removing a friend from public profile"
   },
-  "removeFriendTitle": "Remove Friend",
+  "removeFriendTitle": "删除好友",
   "@removeFriendTitle": {
     "description": "Dialog title for removing a friend"
   },
-  "removeJavaConfirm": "Remove {name} from your linked accounts?",
+  "removeJavaConfirm": "要将 {name} 从已关联账号中移除吗?",
   "@removeJavaConfirm": {
     "description": "Confirmation text for unlinking a Java account",
     "placeholders": {
       "name": {}
     }
   },
-  "removeLabelConfirm": "Remove {name} from your linked accounts?",
+  "removeLabelConfirm": "要将 {name} 从已关联账号中移除吗?",
   "@removeLabelConfirm": {
     "description": "Confirmation text for unlinking a Bedrock/Xbox account",
     "placeholders": {
       "name": {}
     }
   },
-  "reportAdditionalDetails": "Additional details (optional)…",
+  "reportAdditionalDetails": "补充说明(选填)…",
   "@reportAdditionalDetails": {
     "description": "Hint text for additional details field in report sheet"
   },
-  "reportDisclaimer": "Reports are reviewed by our team. False reports may result in action against your account.",
+  "reportDisclaimer": "举报将由我们的团队审核。恶意举报可能导致你的账号被处理。",
   "@reportDisclaimer": {
     "description": "Disclaimer text shown in the report sheet"
   },
-  "reportFailed": "Failed to submit report. Please try again.",
+  "reportFailed": "举报提交失败,请重试。",
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportReasonHarassment": "Harassment",
+  "reportReasonHarassment": "骚扰",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
   },
-  "reportReasonInappropriate": "Inappropriate content",
+  "reportReasonInappropriate": "不当内容",
   "@reportReasonInappropriate": {
     "description": "Report reason: inappropriate content"
   },
-  "reportReasonOther": "Other",
+  "reportReasonOther": "其他",
   "@reportReasonOther": {
     "description": "Report reason: other"
   },
@@ -753,41 +749,41 @@
   "@reportReasonSpam": {
     "description": "Report reason: spam"
   },
-  "reportSubmit": "Submit report",
+  "reportSubmit": "提交举报",
   "@reportSubmit": {
     "description": "Button label to submit a report"
   },
-  "reportSuccess": "Report submitted. Thank you.",
+  "reportSuccess": "举报已提交,谢谢。",
   "@reportSuccess": {
     "description": "Toast shown after a successful report submission"
   },
-  "reportUser": "Report user",
+  "reportUser": "举报用户",
   "@reportUser": {
     "description": "Tooltip/button to report a user"
   },
-  "reportUserWithName": "Report {name}",
+  "reportUserWithName": "举报 {name}",
   "@reportUserWithName": {
     "description": "Title when reporting a user by name",
     "placeholders": {
       "name": {}
     }
   },
-  "requestAlreadyPendingMsg": "There is already a pending request.",
+  "requestAlreadyPendingMsg": "已有待处理的请求。",
   "@requestAlreadyPendingMsg": {
     "description": "Error when friend request is already pending (public profile)"
   },
-  "requestDeclined": "Request from {name} declined",
+  "requestDeclined": "已拒绝 {name} 的请求",
   "@requestDeclined": {
     "description": "Toast when a friend request is declined",
     "placeholders": {
       "name": {}
     }
   },
-  "requestSentButton": "Request sent",
+  "requestSentButton": "请求已发送",
   "@requestSentButton": {
     "description": "Disabled button label when request already sent"
   },
-  "requestsAppearHere": "New friend requests will appear here.",
+  "requestsAppearHere": "新的好友请求会显示在这里。",
   "@requestsAppearHere": {
     "description": "Empty state subtitle on requests tab"
   },
@@ -798,15 +794,15 @@
       "email": {}
     }
   },
-  "resetPasswordBody": "Enter your email address and we will send you a link to reset your password.",
+  "resetPasswordBody": "输入你的邮箱地址,我们会向你发送重置密码的链接。",
   "@resetPasswordBody": {
     "description": "Body text for reset password dialog"
   },
-  "resetPasswordTitle": "Reset Password",
+  "resetPasswordTitle": "重置密码",
   "@resetPasswordTitle": {
     "description": "Title for reset password dialog"
   },
-  "selectBedrockAccount": "Select Bedrock account",
+  "selectBedrockAccount": "选择基岩版账号",
   "@selectBedrockAccount": {
     "description": "Title of the Bedrock account picker bottom sheet"
   },
@@ -814,7 +810,7 @@
   "@send": {
     "description": "Send button label"
   },
-  "sendLink": "Send link",
+  "sendLink": "发送链接",
   "@sendLink": {
     "description": "Button to send the password reset link"
   },
@@ -822,31 +818,31 @@
   "@serverAddressExampleHint": {
     "description": "Example hint text for server address field"
   },
-  "serverDescriptionExampleHint": "Survival server with friends",
+  "serverDescriptionExampleHint": "与好友一起玩的生存服务器",
   "@serverDescriptionExampleHint": {
     "description": "Example hint text for server description field"
   },
-  "serverNameExampleHint": "My Awesome Server",
+  "serverNameExampleHint": "我的超棒服务器",
   "@serverNameExampleHint": {
     "description": "Example hint text for server name field"
   },
-  "serversSection": "Servers",
+  "serversSection": "服务器",
   "@serversSection": {
     "description": "Section label above servers panel in connection panel"
   },
-  "signInSubtitle": "Sign in to access your profile, friends, and chats.",
+  "signInSubtitle": "登录以访问你的个人资料、好友和聊天。",
   "@signInSubtitle": {
     "description": "Subtitle on the sign-in screen"
   },
-  "signOut": "Sign Out",
+  "signOut": "退出登录",
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "Create",
+  "skinsCreate": "创建",
   "@skinsCreate": {
     "description": "Button to create/open skin editor"
   },
-  "skinsDownload": "Download",
+  "skinsDownload": "下载",
   "@skinsDownload": {
     "description": "Download button in skin detail sheet"
   },
@@ -854,19 +850,19 @@
   "@skinsEdit": {
     "description": "Edit button in skin detail sheet"
   },
-  "skinsInvalidFile": "Invalid image file",
+  "skinsInvalidFile": "无效的图片文件",
   "@skinsInvalidFile": {
     "description": "Error when the selected file is not a valid image"
   },
-  "skinsMustBe64": "Skin must be 64×64 pixels",
+  "skinsMustBe64": "皮肤必须为 64×64 像素",
   "@skinsMustBe64": {
     "description": "Error when uploaded skin is wrong size"
   },
-  "skinsUpload": "Upload",
+  "skinsUpload": "上传",
   "@skinsUpload": {
     "description": "Button to upload a skin"
   },
-  "somethingWentWrong": "Something went wrong. Please try again.",
+  "somethingWentWrong": "出错了,请重试。",
   "@somethingWentWrong": {
     "description": "Generic error message"
   },
@@ -874,7 +870,7 @@
   "@termsOfService": {
     "description": "Terms of Service tile title"
   },
-  "termsOfServiceSubtitle": "Rules and conditions of use",
+  "termsOfServiceSubtitle": "使用规则与条件",
   "@termsOfServiceSubtitle": {
     "description": "Terms of Service tile subtitle"
   },
@@ -882,43 +878,43 @@
   "@trackerLimitReached": {
     "description": "Banner shown when tracker slot limit is reached"
   },
-  "tryAgain": "Try again",
+  "tryAgain": "重试",
   "@tryAgain": {
     "description": "Generic try again button label"
   },
-  "unlink": "Unlink",
+  "unlink": "解除关联",
   "@unlink": {
     "description": "Unlink button label"
   },
-  "unlinkJavaTitle": "Unlink Java Account",
+  "unlinkJavaTitle": "解除 Java 账号关联",
   "@unlinkJavaTitle": {
     "description": "Dialog title for unlinking a Java account"
   },
-  "unlinkXboxTitle": "Unlink Xbox Account",
+  "unlinkXboxTitle": "解除 Xbox 账号关联",
   "@unlinkXboxTitle": {
     "description": "Dialog title for unlinking an Xbox account"
   },
-  "upgradeButton": "Upgrade",
+  "upgradeButton": "升级",
   "@upgradeButton": {
     "description": "Button to open paywall/upgrade screen"
   },
-  "userNotFound": "User not found",
+  "userNotFound": "未找到用户",
   "@userNotFound": {
     "description": "Text shown when a user profile cannot be found"
   },
-  "userNotFoundMsg2": "User not found.",
+  "userNotFoundMsg2": "未找到用户。",
   "@userNotFoundMsg2": {
     "description": "Error when user not found sending friend request from public profile"
   },
-  "usernameRowLabel": "Username",
+  "usernameRowLabel": "用户名",
   "@usernameRowLabel": {
     "description": "Row label for username in public profile"
   },
-  "weakPassword": "Password is too weak. Please choose a stronger one.",
+  "weakPassword": "密码强度太弱,请选择更强的密码。",
   "@weakPassword": {
     "description": "Error for weak password"
   },
-  "xboxAccountLinked": "Xbox account linked!",
+  "xboxAccountLinked": "Xbox 账号已关联!",
   "@xboxAccountLinked": {
     "description": "Success text when Xbox account is linked"
   },
@@ -926,74 +922,74 @@
   "@xboxBedrockLabel": {
     "description": "Section label for Xbox/Bedrock account in public profile"
   },
-  "xboxCodeCopied": "Code copied to clipboard",
+  "xboxCodeCopied": "代码已复制到剪贴板",
   "@xboxCodeCopied": {
     "description": "Snackbar shown after code is copied"
   },
-  "xboxCodeExpired": "The code expired. Please try again.",
+  "xboxCodeExpired": "代码已过期,请重试。",
   "@xboxCodeExpired": {
     "description": "Error when Xbox device code expires"
   },
-  "xboxCouldNotStart": "Could not start Xbox login. Please try again.",
+  "xboxCouldNotStart": "无法启动 Xbox 登录,请重试。",
   "@xboxCouldNotStart": {
     "description": "Error when Xbox login cannot be started"
   },
-  "xboxGoToLink": "Go to the link below and enter the code to connect your Xbox account.",
+  "xboxGoToLink": "打开下方链接并输入代码,以关联你的 Xbox 账号。",
   "@xboxGoToLink": {
     "description": "Instruction on Xbox link waiting screen"
   },
-  "xboxLinkTitle": "Link Xbox Account",
+  "xboxLinkTitle": "关联 Xbox 账号",
   "@xboxLinkTitle": {
     "description": "AppBar title for Xbox link screen"
   },
-  "xboxOpenLink": "Open microsoft.com/link",
+  "xboxOpenLink": "打开 microsoft.com/link",
   "@xboxOpenLink": {
     "description": "Button label to open Microsoft device auth link"
   },
-  "xboxSignInWithMicrosoft": "Sign in with Microsoft",
+  "xboxSignInWithMicrosoft": "使用 Microsoft 登录",
   "@xboxSignInWithMicrosoft": {
     "description": "Heading on Xbox link waiting screen"
   },
-  "xboxSomethingWrong": "Something went wrong. Please try again.",
+  "xboxSomethingWrong": "出错了,请重试。",
   "@xboxSomethingWrong": {
     "description": "Generic error on Xbox link screen"
   },
-  "xboxStartingLogin": "Starting Xbox login…",
+  "xboxStartingLogin": "正在启动 Xbox 登录…",
   "@xboxStartingLogin": {
     "description": "Loading text when starting Xbox login"
   },
-  "xboxTapToCopy": "Tap the code to copy it",
+  "xboxTapToCopy": "点按代码即可复制",
   "@xboxTapToCopy": {
     "description": "Hint below the code on Xbox link screen"
   },
-  "xboxWaitingForLogin": "Waiting for login…",
+  "xboxWaitingForLogin": "正在等待登录…",
   "@xboxWaitingForLogin": {
     "description": "Status text while polling for Xbox login"
   },
-  "xboxYourCode": "Your code",
+  "xboxYourCode": "你的代码",
   "@xboxYourCode": {
     "description": "Label above the Microsoft device code"
   },
-  "yourNameHint": "Your name",
+  "yourNameHint": "你的名字",
   "@yourNameHint": {
     "description": "Hint text for display name field"
   },
-  "javaLinkTitle": "Link Java Edition",
-  "javaStartingLogin": "Starting Microsoft login…",
-  "javaSignInWithMicrosoft": "Sign in with Microsoft",
-  "javaGoToLink": "Go to the link below and enter the code to connect your Minecraft Java Edition account.",
-  "javaYourCode": "Your code",
-  "javaTapToCopy": "Tap the code to copy it",
-  "javaOpenLink": "Open microsoft.com/link",
-  "javaWaitingForLogin": "Waiting for login…",
-  "javaAccountLinked": "Java Edition linked!",
-  "javaNoJavaTitle": "No Java Edition found",
-  "javaNoJavaBody": "The Microsoft account you signed in with does not own Minecraft Java Edition.",
-  "javaTryDifferentAccount": "Try a different account",
-  "javaCouldNotStart": "Could not start Microsoft login. Please try again.",
-  "javaCodeExpired": "The code expired. Please try again.",
-  "javaSomethingWrong": "Something went wrong. Please try again.",
-  "javaCodeCopied": "Code copied to clipboard",
+  "javaLinkTitle": "关联 Java 版",
+  "javaStartingLogin": "正在启动 Microsoft 登录…",
+  "javaSignInWithMicrosoft": "使用 Microsoft 登录",
+  "javaGoToLink": "打开下方链接并输入代码,以关联你的 Minecraft Java 版账号。",
+  "javaYourCode": "你的代码",
+  "javaTapToCopy": "点按代码即可复制",
+  "javaOpenLink": "打开 microsoft.com/link",
+  "javaWaitingForLogin": "正在等待登录…",
+  "javaAccountLinked": "Java 版已关联!",
+  "javaNoJavaTitle": "未找到 Java 版",
+  "javaNoJavaBody": "你登录的 Microsoft 账号未拥有 Minecraft Java 版。",
+  "javaTryDifferentAccount": "尝试其他账号",
+  "javaCouldNotStart": "无法启动 Microsoft 登录,请重试。",
+  "javaCodeExpired": "代码已过期,请重试。",
+  "javaSomethingWrong": "出错了,请重试。",
+  "javaCodeCopied": "代码已复制到剪贴板",
   "featureLabelConnector": "连接器",
   "featureLabelSkins": "皮肤",
   "featureLabelPartners": "服务器列表",
@@ -1083,9 +1079,6 @@
   "rpNoDiscord": "Discord 链接: 没有 .mcpack 扩展名，且会在几小时后失效",
   "rpNoDrive": "Google Drive / Dropbox 分享链接: 非直接下载",
   "rpNoEncrypted": "带有加密或密码保护包的服务器",
-  "rpWarnDiscord": "Discord 链接会过期并停止工作。请改用永久性托管服务。",
-  "rpWarnHttps": "URL 必须以 https:// 开头",
-  "rpWarnExtension": "URL 必须以 .mcpack 或 .zip 结尾",
   "rpToastSaved": "资源包设置已保存。",
   "rpClearMinecraftTitle": "第一次使用此资源包？",
   "rpClearStep1": "在主机上打开 Minecraft，前往设置 → 存储",
@@ -1097,10 +1090,10 @@
   "rpNoDriveHint": "无直接下载，会跳转到预览页面",
   "rpNoEncryptedHint": "MCCompanion 无法合并加密的材质包内容",
   "rpClearWhy": "Minecraft 通过 UUID 缓存材质包。合并后的材质包保留服务器原有的 UUID--如果 Minecraft 在之前的游戏中（启用 MCCompanion 之前）已经缓存了服务器的材质包，它就不会重新下载新的合并版本。清除缓存，让 Minecraft 加载最新的合并材质包。",
-  "rpUploadTab": "Upload",
-  "rpUploadButton": "Tap to select your pack",
-  "rpUploadHint": ".mcpack or .zip • max 100 MB",
-  "rpUploading": "Uploading...",
+  "rpUploadTab": "上传",
+  "rpUploadButton": "点按以选择资源包",
+  "rpUploadHint": ".mcpack 或 .zip • 最大 100 MB",
+  "rpUploading": "正在上传...",
   "rpMergerTitle": "RP 合并工具",
   "rpMergerPriorityHint": "最顶部的包优先级最高: 冲突时其文件获胜。",
   "rpMergerTopBadge": "顶部",
@@ -1172,45 +1165,10 @@
     }
   },
   "skinsSavedToMySkins": "已保存到我的皮肤",
-  "skinsDownloadFailed": "下载失败",
-  "skinsDeletedFromCloud": "已从云端删除",
-  "skinsDeleteFailed": "删除失败",
-  "skinsLoginToUpload": "登录以上传皮肤",
-  "skinsUploading": "上传中…",
-  "skinUploaded": "皮肤已上传！",
-  "skinUploadFailed": "上传失败：{error}",
   "skinsEmptyLocalSkins": "暂无皮肤。创建或上传皮肤以开始使用。",
-  "skinUploadToWebsite": "上传到网站",
-  "skinReuploadToWebsite": "重新上传到网站",
-  "skinCloudEdit": "编辑",
-  "skinCloudSaveToDevice": "保存到设备",
-  "skinCloudDelete": "从云端删除",
-  "skinsTabGallery": "社区画廊",
-  "skinsTopLabel": "前30名",
-  "skinsAllLabel": "所有皮肤",
-  "skinUploadToCloud": "上传到云端",
   "skinSaveDialog": "保存皮肤",
   "skinNameHint": "皮肤名称",
   "skinDefaultName": "我的皮肤",
-  "skinUpdatedInCloud": "皮肤已在云端更新",
-  "skinByCreator": "由 {name}",
-  "@skinByCreator": {
-    "description": "Creator attribution",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinLikesCount": "{count} 个赞",
-  "@skinLikesCount": {
-    "description": "Like count",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "sectionRecentActivity": "最近动态",
   "activityNoEvents": "暂无最近动态。",
   "activitySkinUploaded": "上传了皮肤",
@@ -1305,10 +1263,6 @@
   "notifPrefFriendRequest": "好友请求",
   "notifPrefFriendAccepted": "添加好友",
   "notifPrefMessageReceived": "新消息",
-  "commentsTitle": "评论",
-  "commentsEmpty": "暂无评论。成为第一个！",
-  "commentsPlaceholder": "写评论…",
-  "loadMore": "加载更多",
   "skinLayerInner": "内层",
   "@skinLayerInner": {
     "description": "Skin editor layer toggle, inner/base layer"
@@ -1327,7 +1281,6 @@
   "skinEditorTitle": "皮肤编辑器",
   "skinToolUndo": "撤销",
   "skinSaveToMySkins": "保存到我的皮肤",
-  "skinUpdateInCloud": "更新到云端",
   "skinExportPng": "导出 PNG",
   "skinToolDraw": "绘制",
   "skinToolFill": "填充",
@@ -1407,6 +1360,22 @@
     }
   },
   "directPortBusy": "无法打开本地端口。请先停止当前连接。",
+  "rpBrowseTab": "浏览",
+  "rpCategoryRealism": "写实",
+  "rpCategoryFaithful": "Faithful",
+  "rpCategoryPvp": "PvP",
+  "rpCategoryCartoon": "卡通",
+  "rpCategoryDark": "暗色",
+  "rpCategoryMedieval": "中世纪",
+  "rpCategoryNature": "自然",
+  "rpCategoryThemed": "主题",
+  "rpCategoryOther": "其他",
+  "waitingForConsole": "正在等待主机…",
+  "consoleFound": "已找到主机",
+  "consoleLanHint": "在主机上打开 Minecraft，并在“好友”中查找局域网游戏。",
+  "localNetworkBlocked": "MCCompanion 无法访问本地网络。请在设备设置中为 MCCompanion 开启“本地网络”，并确保已连接 Wi-Fi。",
+  "serverListPlayersAny": "任意规模",
+  "serverListPlayersHint": "平均在线玩家",
   "directAddressNotSupported": "{host} 是 IPv6 地址。代理/直连模式仅支持 IPv4。请改用 IPv4 地址或主机名。",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -1451,7 +1420,6 @@
   "serverListNoMatchHint": "换个关键词或分类试试",
   "serverCardPlay": "开始游戏",
   "serverCardVote": "投票",
-  "serverCardViewServer": "查看服务器",
   "serverCopyIp": "复制 IP",
   "serverCopied": "已复制",
   "serverStatPlayers": "玩家",

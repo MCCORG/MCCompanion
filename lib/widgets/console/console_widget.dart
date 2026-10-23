@@ -136,146 +136,111 @@ class ConsoleWidget extends StatefulWidget {
 }
 
 class _ConsoleWidgetState extends State<ConsoleWidget> {
-  bool _expanded = false;
-
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
     final bg = ThemeService.instance.background;
     final text = ThemeService.instance.textPrimary;
 
-    return Center(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 800),
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeInOut,
-          height: _expanded ? 380 : 52,
-          decoration: BoxDecoration(
-            color: Color.lerp(bg, Colors.black, 0.25)!.withValues(alpha: 0.85),
-            borderRadius: DsRadius.cardR,
-            border: Border.all(color: text.withValues(alpha: 0.07)),
-          ),
-          child: ClipRRect(
-            borderRadius: DsRadius.cardR,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                _buildHeader(loc, text),
-                if (_expanded) Expanded(child: _buildLogList(loc)),
-              ],
-            ),
-          ),
+    return Container(
+      decoration: BoxDecoration(
+        color: Color.lerp(bg, Colors.black, 0.25)!.withValues(alpha: 0.85),
+        borderRadius: DsRadius.cardR,
+        border: Border.all(color: text.withValues(alpha: 0.07)),
+      ),
+      child: ClipRRect(
+        borderRadius: DsRadius.cardR,
+        child: Column(
+          children: [
+            _buildHeader(loc, text),
+            Expanded(child: _buildLogList(loc)),
+          ],
         ),
       ),
     );
   }
 
   Widget _buildHeader(AppLocalizations loc, Color text) {
-    return GestureDetector(
-      onTap: () => setState(() => _expanded = !_expanded),
-      child: Container(
-        height: 52,
-        padding: const EdgeInsets.symmetric(horizontal: 14),
-        decoration: BoxDecoration(
-          border: _expanded
-              ? Border(bottom: BorderSide(color: text.withValues(alpha: 0.07)))
-              : null,
-        ),
-        child: Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(6),
-              decoration: BoxDecoration(
-                color: DsColor.accent.withValues(alpha: 0.12),
-                borderRadius: DsRadius.controlR,
-                border: Border.all(
-                  color: DsColor.accent.withValues(alpha: 0.2),
+    return Container(
+      height: 52,
+      padding: const EdgeInsets.symmetric(horizontal: 14),
+      decoration: BoxDecoration(
+        border: Border(bottom: BorderSide(color: text.withValues(alpha: 0.07))),
+      ),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(6),
+            decoration: BoxDecoration(
+              color: DsColor.accent.withValues(alpha: 0.12),
+              borderRadius: DsRadius.controlR,
+              border: Border.all(color: DsColor.accent.withValues(alpha: 0.2)),
+            ),
+            child: Icon(
+              Icons.terminal_rounded,
+              color: DsColor.accent,
+              size: 14,
+            ),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              loc.consoleOutput,
+              style: TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                color: text.withValues(alpha: 0.9),
+              ),
+            ),
+          ),
+
+          ValueListenableBuilder<List<String>>(
+            valueListenable: widget.logsNotifier,
+            builder: (_, logs, _) {
+              if (logs.isEmpty) return const SizedBox.shrink();
+              return Container(
+                margin: const EdgeInsets.only(right: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+                decoration: BoxDecoration(
+                  color: text.withValues(alpha: 0.06),
+                  borderRadius: BorderRadius.circular(6),
+                  border: Border.all(color: text.withValues(alpha: 0.08)),
                 ),
-              ),
-              child: Icon(
-                Icons.terminal_rounded,
-                color: DsColor.accent,
-                size: 14,
-              ),
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Text(
-                loc.consoleOutput,
-                style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
-                  color: text.withValues(alpha: 0.9),
+                child: Text(
+                  '${logs.length}',
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: text.withValues(alpha: 0.35),
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-              ),
-            ),
+              );
+            },
+          ),
 
-            if (_expanded)
-              ValueListenableBuilder<List<String>>(
-                valueListenable: widget.logsNotifier,
-                builder: (_, logs, _) {
-                  if (logs.isEmpty) return const SizedBox.shrink();
-                  return Container(
-                    margin: const EdgeInsets.only(right: 8),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 7,
-                      vertical: 2,
-                    ),
-                    decoration: BoxDecoration(
-                      color: text.withValues(alpha: 0.06),
-                      borderRadius: BorderRadius.circular(6),
-                      border: Border.all(color: text.withValues(alpha: 0.08)),
-                    ),
-                    child: Text(
-                      '${logs.length}',
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: text.withValues(alpha: 0.35),
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  );
-                },
-              ),
-
-            if (_expanded) ...[
-              _iconBtn(
-                icon: widget.debugEnabled
-                    ? Icons.bug_report_rounded
-                    : Icons.bug_report_outlined,
-                color: widget.debugEnabled
-                    ? DsColor.success
-                    : text.withValues(alpha: 0.3),
-                tooltip: loc.toggleDebug,
-                onTap: widget.onToggleDebug,
-              ),
-              _iconBtn(
-                icon: Icons.copy_outlined,
-                color: text.withValues(alpha: 0.3),
-                tooltip: loc.copyLogs,
-                onTap: widget.onCopyLogs,
-              ),
-              _iconBtn(
-                icon: Icons.delete_outline_rounded,
-                color: text.withValues(alpha: 0.3),
-                tooltip: loc.clear,
-                onTap: widget.onClearLogs,
-              ),
-            ],
-
-            const SizedBox(width: 4),
-            AnimatedRotation(
-              turns: _expanded ? 0.5 : 0,
-              duration: const Duration(milliseconds: 300),
-              child: Icon(
-                Icons.keyboard_arrow_down_rounded,
-                color: text.withValues(alpha: 0.3),
-                size: 20,
-              ),
-            ),
-          ],
-        ),
+          _iconBtn(
+            icon: widget.debugEnabled
+                ? Icons.bug_report_rounded
+                : Icons.bug_report_outlined,
+            color: widget.debugEnabled
+                ? DsColor.success
+                : text.withValues(alpha: 0.3),
+            tooltip: loc.toggleDebug,
+            onTap: widget.onToggleDebug,
+          ),
+          _iconBtn(
+            icon: Icons.copy_outlined,
+            color: text.withValues(alpha: 0.3),
+            tooltip: loc.copyLogs,
+            onTap: widget.onCopyLogs,
+          ),
+          _iconBtn(
+            icon: Icons.delete_outline_rounded,
+            color: text.withValues(alpha: 0.3),
+            tooltip: loc.clear,
+            onTap: widget.onClearLogs,
+          ),
+        ],
       ),
     );
   }

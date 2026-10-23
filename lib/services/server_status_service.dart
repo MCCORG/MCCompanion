@@ -1,10 +1,13 @@
-import 'package:mc_server_info/mc_server_info.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import '../constants/app_constants.dart';
 import 'java_server_ping.dart';
 
 class ServerStatus {
   final bool isOnline;
   final int? players;
   final int? maxPlayers;
+  final String? name;
   final String? version;
   final String? gameType;
   final String? software;
@@ -13,6 +16,7 @@ class ServerStatus {
     required this.isOnline,
     this.players,
     this.maxPlayers,
+    this.name,
     this.version,
     this.gameType,
     this.software,
@@ -66,22 +70,23 @@ class ServerStatusService {
 
   static Future<ServerStatus> _pingBedrock(String address, int port) async {
     try {
-      final info = await MinecraftServerInfo.get(
-        host: address,
-        port: port,
-        timeout: _timeout,
-      );
+      final uri = Uri.parse(
+        '${AppConstants.apiBase}/api/servers/status',
+      ).replace(queryParameters: {'host': address});
+      final response = await http.get(uri).timeout(_timeout);
+      if (response.statusCode != 200) return ServerStatus.offline;
+
+      final json = jsonDecode(response.body);
+      if (json is! Map || json['online'] != true) return ServerStatus.offline;
+
+      final version = json['version'];
+      final name = json['name'];
       return ServerStatus(
-        isOnline: info.isOnline,
-        players: info.isOnline ? info.players : null,
-        maxPlayers: info.isOnline ? info.maxPlayers : null,
-        version: info.isOnline && info.version.isNotEmpty ? info.version : null,
-        gameType: info.isOnline && info.gameType.isNotEmpty
-            ? info.gameType
-            : null,
-        software: info.isOnline && info.software.isNotEmpty
-            ? info.software
-            : null,
+        isOnline: true,
+        players: (json['players'] as num?)?.toInt(),
+        maxPlayers: (json['maxPlayers'] as num?)?.toInt(),
+        name: name is String && name.trim().isNotEmpty ? name.trim() : null,
+        version: version is String && version.isNotEmpty ? version : null,
       );
     } catch (_) {
       return ServerStatus.offline;

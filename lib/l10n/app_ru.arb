@@ -80,10 +80,6 @@
   "@save": {
     "description": "Save button label"
   },
-  "clientDisconnected": "Клиент отключен: трансляция остановлена",
-  "@clientDisconnected": {
-    "description": "Snackbar shown when clients disconnect automatically"
-  },
   "pleaseEnterServer": "⚠️ Пожалуйста, введите адрес сервера",
   "@pleaseEnterServer": {
     "description": "Validation message when server address field is empty"
@@ -263,10 +259,10 @@
   "resetLabel": "Сброс",
   "navigationSection": "НАВИГАЦИЯ",
   "navFixed": "Connector и Профиль всегда закреплены",
-  "leftSlot": "Slot 2",
-  "outerSlot": "Slot 1",
-  "rightSlot": "Slot 3",
-  "farSlot": "Slot 4",
+  "leftSlot": "Слот 2",
+  "outerSlot": "Слот 1",
+  "rightSlot": "Слот 3",
+  "farSlot": "Слот 4",
   "colorPickerApply": "Применить",
   "colorPickerHex": "Hex",
   "textColorSection": "ЦВЕТ ТЕКСТА",
@@ -284,7 +280,7 @@
   "playerLookupJavaEdition": "Java Edition",
   "playerLookupBedrockEdition": "Bedrock Edition",
   "playerLookupLabelUuid": "UUID",
-  "playerLookupLabelGamertag": "Gamertag",
+  "playerLookupLabelGamertag": "Геймертег",
   "playerLookupLabelXuid": "XUID",
   "playerLookupLabelFloodgate": "Floodgate",
   "accountSubtitleXbox": "Xbox · {xuid}",
@@ -1083,9 +1079,6 @@
   "rpNoDiscord": "Ссылки Discord: нет расширения .mcpack и истекают через несколько часов",
   "rpNoDrive": "Ссылки Google Drive / Dropbox: не прямые загрузки",
   "rpNoEncrypted": "Серверы с зашифрованными или защищёнными паролем пакетами",
-  "rpWarnDiscord": "Ссылки Discord истекают и перестают работать. Используйте постоянный хостинг.",
-  "rpWarnHttps": "URL должен начинаться с https://",
-  "rpWarnExtension": "URL должен заканчиваться на .mcpack или .zip",
   "rpToastSaved": "Настройки пакета ресурсов сохранены.",
   "rpClearMinecraftTitle": "Первый раз с этим пакетом?",
   "rpClearStep1": "Открой Minecraft на консоли и перейди в Настройки → Хранилище",
@@ -1097,10 +1090,10 @@
   "rpNoDriveHint": "Нет прямой загрузки: перенаправляет на страницу предпросмотра",
   "rpNoEncryptedHint": "MCCompanion не может объединить зашифрованный пак",
   "rpClearWhy": "Minecraft кэширует пакеты ресурсов по их UUID. Объединённый пак сохраняет оригинальный UUID сервера, если Minecraft уже закэшировал серверный пак из предыдущей сессии (до включения MCCompanion), он не скачает новую версию. Очисти кэш, чтобы Minecraft загрузил свежий пак.",
-  "rpUploadTab": "Upload",
-  "rpUploadButton": "Tap to select your pack",
-  "rpUploadHint": ".mcpack or .zip • max 100 MB",
-  "rpUploading": "Uploading...",
+  "rpUploadTab": "Загрузка",
+  "rpUploadButton": "Нажмите, чтобы выбрать пак",
+  "rpUploadHint": ".mcpack или .zip • до 100 МБ",
+  "rpUploading": "Загрузка...",
   "rpMergerTitle": "Слияние RP",
   "rpMergerPriorityHint": "Верхний пак имеет наивысший приоритет: его файлы побеждают в конфликтах.",
   "rpMergerTopBadge": "ТОП",
@@ -1172,45 +1165,10 @@
     }
   },
   "skinsSavedToMySkins": "Сохранено в Мои скины",
-  "skinsDownloadFailed": "Ошибка загрузки",
-  "skinsDeletedFromCloud": "Удалено из облака",
-  "skinsDeleteFailed": "Ошибка удаления",
-  "skinsLoginToUpload": "Войдите, чтобы загружать скины",
-  "skinsUploading": "Загрузка…",
-  "skinUploaded": "Скин загружен!",
-  "skinUploadFailed": "Ошибка загрузки: {error}",
   "skinsEmptyLocalSkins": "Скинов пока нет. Создайте или загрузите скин, чтобы начать.",
-  "skinUploadToWebsite": "Загрузить на сайт",
-  "skinReuploadToWebsite": "Перезагрузить на сайт",
-  "skinCloudEdit": "Редактировать",
-  "skinCloudSaveToDevice": "Сохранить на устройство",
-  "skinCloudDelete": "Удалить из облака",
-  "skinsTabGallery": "Галерея",
-  "skinsTopLabel": "Топ 30",
-  "skinsAllLabel": "Все скины",
-  "skinUploadToCloud": "Загрузить в облако",
   "skinSaveDialog": "Сохранить скин",
   "skinNameHint": "Название скина",
   "skinDefaultName": "Мой скин",
-  "skinUpdatedInCloud": "Скин обновлён в облаке",
-  "skinByCreator": "от {name}",
-  "@skinByCreator": {
-    "description": "Creator attribution",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinLikesCount": "{count} лайков",
-  "@skinLikesCount": {
-    "description": "Like count",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "sectionRecentActivity": "Последняя активность",
   "activityNoEvents": "Нет последней активности.",
   "activitySkinUploaded": "Скин загружен",
@@ -1305,10 +1263,6 @@
   "notifPrefFriendRequest": "Запрос в друзья",
   "notifPrefFriendAccepted": "Друг добавлен",
   "notifPrefMessageReceived": "Новое сообщение",
-  "commentsTitle": "Комментарии",
-  "commentsEmpty": "Комментариев пока нет. Будьте первым!",
-  "commentsPlaceholder": "Написать комментарий…",
-  "loadMore": "Загрузить ещё",
   "skinLayerInner": "Внутренний",
   "@skinLayerInner": {
     "description": "Skin editor layer toggle, inner/base layer"
@@ -1327,7 +1281,6 @@
   "skinEditorTitle": "Редактор скинов",
   "skinToolUndo": "Отменить",
   "skinSaveToMySkins": "Сохранить в мои скины",
-  "skinUpdateInCloud": "Обновить в облаке",
   "skinExportPng": "Экспорт PNG",
   "skinToolDraw": "Рисовать",
   "skinToolFill": "Заливка",
@@ -1407,6 +1360,22 @@
     }
   },
   "directPortBusy": "Не удалось открыть локальный порт. Сначала остановите текущее подключение.",
+  "rpBrowseTab": "Обзор",
+  "rpCategoryRealism": "Реализм",
+  "rpCategoryFaithful": "Faithful",
+  "rpCategoryPvp": "PvP",
+  "rpCategoryCartoon": "Мультяшный",
+  "rpCategoryDark": "Тёмный",
+  "rpCategoryMedieval": "Средневековье",
+  "rpCategoryNature": "Природа",
+  "rpCategoryThemed": "Тематический",
+  "rpCategoryOther": "Другое",
+  "waitingForConsole": "Ожидание вашей консоли…",
+  "consoleFound": "Консоль найдена",
+  "consoleLanHint": "На консоли откройте Minecraft и найдите игру по LAN в разделе «Друзья».",
+  "localNetworkBlocked": "MCCompanion не может получить доступ к вашей локальной сети. Включите «Локальную сеть» для MCCompanion в настройках устройства и убедитесь, что вы подключены к Wi-Fi.",
+  "serverListPlayersAny": "Любой размер",
+  "serverListPlayersHint": "Среднее число игроков онлайн",
   "directAddressNotSupported": "{host} — это адрес IPv6. Режим прокси/прямого подключения поддерживает только IPv4. Используйте адрес IPv4 или имя хоста.",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -1451,7 +1420,6 @@
   "serverListNoMatchHint": "Попробуйте другой запрос или категорию",
   "serverCardPlay": "Играть",
   "serverCardVote": "Голосовать",
-  "serverCardViewServer": "Открыть сервер",
   "serverCopyIp": "Копировать IP",
   "serverCopied": "Скопировано",
   "serverStatPlayers": "Игроки",

@@ -153,10 +153,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get save => 'Kaydet';
 
   @override
-  String get clientDisconnected =>
-      'İstemci bağlantısı kesildi: Yayın durduruldu';
-
-  @override
   String get pleaseEnterServer => '⚠️ Lütfen bir sunucu adresi girin';
 
   @override
@@ -413,16 +409,16 @@ class AppLocalizationsTr extends AppLocalizations {
   String get navFixed => 'Connector ve Profil her zaman sabittir';
 
   @override
-  String get leftSlot => 'Slot 2';
+  String get leftSlot => 'Yuva 2';
 
   @override
-  String get outerSlot => 'Slot 1';
+  String get outerSlot => 'Yuva 1';
 
   @override
-  String get rightSlot => 'Slot 3';
+  String get rightSlot => 'Yuva 3';
 
   @override
-  String get farSlot => 'Slot 4';
+  String get farSlot => 'Yuva 4';
 
   @override
   String get colorPickerApply => 'Uygula';
@@ -1366,16 +1362,6 @@ class AppLocalizationsTr extends AppLocalizations {
       'Yüksek çözünürlüklü doku paketleri konsolda takılma veya çökmeye neden olabilir. Sorun yaşarsanız daha düşük çözünürlüklü bir pakete geçin veya paket destekliyorsa daha hafif bir altpaket seçin.';
 
   @override
-  String get rpWarnDiscord =>
-      'Discord bağlantılarının süresi dolup çalışmayı durdurur. Bunun yerine kalıcı bir host kullanın.';
-
-  @override
-  String get rpWarnHttps => 'URL https:// ile başlamalıdır';
-
-  @override
-  String get rpWarnExtension => 'URL .mcpack veya .zip ile bitmelidir';
-
-  @override
   String get rpToastSaved => 'Kaynak paketi ayarları kaydedildi.';
 
   @override
@@ -1425,16 +1411,46 @@ class AppLocalizationsTr extends AppLocalizations {
       'Minecraft, kaynak paketlerini UUID\'lerine göre önbelleğe alır. Birleştirilmiş paket, sunucunun orijinal UUID\'sini korur, Minecraft, önceki bir oturumdan (MCCompanion etkinleştirilmeden önce) sunucu paketini zaten önbelleğe almışsa, yeni birleştirilmiş sürümü indirmez. Minecraft\'ın yeni birleştirilmiş paketi yüklemesi için önbelleği temizle.';
 
   @override
-  String get rpUploadTab => 'Upload';
+  String get rpUploadTab => 'Yükle';
 
   @override
-  String get rpUploadButton => 'Tap to select your pack';
+  String get rpBrowseTab => 'Göz at';
 
   @override
-  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+  String get rpCategoryRealism => 'Gerçekçi';
 
   @override
-  String get rpUploading => 'Uploading...';
+  String get rpCategoryFaithful => 'Faithful';
+
+  @override
+  String get rpCategoryPvp => 'PvP';
+
+  @override
+  String get rpCategoryCartoon => 'Çizgi film';
+
+  @override
+  String get rpCategoryDark => 'Karanlık';
+
+  @override
+  String get rpCategoryMedieval => 'Ortaçağ';
+
+  @override
+  String get rpCategoryNature => 'Doğa';
+
+  @override
+  String get rpCategoryThemed => 'Temalı';
+
+  @override
+  String get rpCategoryOther => 'Diğer';
+
+  @override
+  String get rpUploadButton => 'Paketini seçmek için dokun';
+
+  @override
+  String get rpUploadHint => '.mcpack veya .zip • en fazla 100 MB';
+
+  @override
+  String get rpUploading => 'Yükleniyor...';
 
   @override
   String get rpMergerTitle => 'RP Birleştirici';
@@ -1583,58 +1599,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get skinsSavedToMySkins => 'Skinlerime kaydedildi';
 
   @override
-  String get skinsDownloadFailed => 'İndirme başarısız oldu';
-
-  @override
-  String get skinsDeletedFromCloud => 'Buluttan silindi';
-
-  @override
-  String get skinsDeleteFailed => 'Silme başarısız oldu';
-
-  @override
-  String get skinsLoginToUpload => 'Skin yüklemek için giriş yapın';
-
-  @override
-  String get skinsUploading => 'Yükleniyor…';
-
-  @override
-  String get skinUploaded => 'Skin yüklendi!';
-
-  @override
-  String skinUploadFailed(String error) {
-    return 'Yükleme başarısız: $error';
-  }
-
-  @override
   String get skinsEmptyLocalSkins =>
       'Henüz skin yok. Başlamak için bir skin oluşturun veya yükleyin.';
-
-  @override
-  String get skinUploadToWebsite => 'Web sitesine yükle';
-
-  @override
-  String get skinReuploadToWebsite => 'Web sitesine yeniden yükle';
-
-  @override
-  String get skinCloudEdit => 'Düzenle';
-
-  @override
-  String get skinCloudSaveToDevice => 'Cihaza kaydet';
-
-  @override
-  String get skinCloudDelete => 'Buluttan sil';
-
-  @override
-  String get skinsTabGallery => 'Galeri';
-
-  @override
-  String get skinsTopLabel => 'Top 30';
-
-  @override
-  String get skinsAllLabel => 'Tüm Skinler';
-
-  @override
-  String get skinUploadToCloud => 'Buluta yükle';
 
   @override
   String get skinSaveDialog => 'Skin kaydet';
@@ -1644,19 +1610,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get skinDefaultName => 'Benim skinim';
-
-  @override
-  String get skinUpdatedInCloud => 'Skin bulutta güncellendi';
-
-  @override
-  String skinByCreator(String name) {
-    return '$name tarafından';
-  }
-
-  @override
-  String skinLikesCount(int count) {
-    return '$count beğeni';
-  }
 
   @override
   String get sectionRecentActivity => 'Son etkinlik';
@@ -1771,18 +1724,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get notifPrefMessageReceived => 'Yeni mesaj';
 
   @override
-  String get commentsTitle => 'Yorumlar';
-
-  @override
-  String get commentsEmpty => 'Henüz yorum yok. İlk sen ol!';
-
-  @override
-  String get commentsPlaceholder => 'Yorum yaz…';
-
-  @override
-  String get loadMore => 'Daha fazla yükle';
-
-  @override
   String get skinLayerInner => 'İç';
 
   @override
@@ -1813,9 +1754,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get skinSaveToMySkins => 'Skinlerime kaydet';
-
-  @override
-  String get skinUpdateInCloud => 'Bulutta güncelle';
 
   @override
   String get skinExportPng => 'PNG dışa aktar';
@@ -2055,6 +1993,20 @@ class AppLocalizationsTr extends AppLocalizations {
       'Yerel bağlantı noktası açılamadı. Önce mevcut bağlantıyı durdurun.';
 
   @override
+  String get waitingForConsole => 'Konsolunuz bekleniyor…';
+
+  @override
+  String get consoleFound => 'Konsol bulundu';
+
+  @override
+  String get consoleLanHint =>
+      'Konsolunuzda Minecraft\'ı açın ve Arkadaşlar bölümünde bir LAN oyunu arayın.';
+
+  @override
+  String get localNetworkBlocked =>
+      'MCCompanion yerel ağınıza erişemiyor. Cihaz ayarlarından MCCompanion için Yerel Ağ iznini açın ve Wi-Fi\'ye bağlı olduğunuzdan emin olun.';
+
+  @override
   String directAddressNotSupported(String host) {
     return '$host bir IPv6 adresi. Proxy/Doğrudan mod yalnızca IPv4 destekler. IPv4 adresini veya ana bilgisayar adını kullanın.';
   }
@@ -2127,6 +2079,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get serverListAllCategories => 'Tümü';
 
   @override
+  String get serverListPlayersAny => 'Herhangi bir boyut';
+
+  @override
+  String get serverListPlayersHint => 'Ortalama çevrimiçi oyuncu';
+
+  @override
   String get serverListLoadFailed => 'Sunucu listesi yüklenemedi';
 
   @override
@@ -2143,9 +2101,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get serverCardVote => 'Oy ver';
-
-  @override
-  String get serverCardViewServer => 'Sunucuyu görüntüle';
 
   @override
   String get serverCopyIp => 'IP\'yi kopyala';

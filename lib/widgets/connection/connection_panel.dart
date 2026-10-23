@@ -34,6 +34,7 @@ class ConnectionPanel extends StatefulWidget {
     required this.ipController,
     required this.portController,
     required this.broadcastingNotifier,
+    this.clientSeenNotifier,
     required this.onStartBroadcast,
     required this.onStopBroadcast,
     required this.savedServers,
@@ -63,6 +64,7 @@ class ConnectionPanel extends StatefulWidget {
   final TextEditingController ipController;
   final TextEditingController portController;
   final ValueNotifier<bool> broadcastingNotifier;
+  final ValueNotifier<bool>? clientSeenNotifier;
   final Future<void> Function(PanelMode) onStartBroadcast;
   final VoidCallback onStopBroadcast;
   final List<UserServer> savedServers;
@@ -261,6 +263,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                 ),
               ],
               const SizedBox(height: DsSpace.lg),
+              _buildStatus(broadcasting, loc),
               _buildStartButton(broadcasting, loc),
               const SizedBox(height: DsSpace.md),
               Align(
@@ -405,6 +408,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
                       const SizedBox(height: DsSpace.xl),
                       _packRow(loc, broadcasting),
                       const SizedBox(height: DsSpace.xl),
+                      _buildStatus(broadcasting, loc),
                       _buildStartButton(broadcasting, loc),
                     ],
                   ),
@@ -585,6 +589,69 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
             ),
           ],
       ],
+    );
+  }
+
+  Widget _buildStatus(bool broadcasting, AppLocalizations loc) {
+    final notifier = widget.clientSeenNotifier;
+    if (!broadcasting || notifier == null) return const SizedBox.shrink();
+
+    return ValueListenableBuilder<bool>(
+      valueListenable: notifier,
+      builder: (context, seen, _) => Padding(
+        padding: const EdgeInsets.only(bottom: DsSpace.md),
+        child: Container(
+          padding: const EdgeInsets.all(DsSpace.md),
+          decoration: BoxDecoration(
+            color: DsColor.inset,
+            borderRadius: DsRadius.controlR,
+            border: Border.all(
+              color: seen
+                  ? DsColor.success.withValues(alpha: 0.5)
+                  : DsColor.line,
+            ),
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 1),
+                child: seen
+                    ? Icon(
+                        Icons.check_circle_rounded,
+                        size: 18,
+                        color: DsColor.success,
+                      )
+                    : SizedBox(
+                        width: 16,
+                        height: 16,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: DsColor.accent,
+                        ),
+                      ),
+              ),
+              const SizedBox(width: DsSpace.md),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      seen ? loc.consoleFound : loc.waitingForConsole,
+                      style: DsType.bodyStrong,
+                    ),
+                    if (!seen) ...[
+                      const SizedBox(height: DsSpace.xxs),
+                      Text(loc.consoleLanHint, style: DsType.caption),
+                    ],
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 

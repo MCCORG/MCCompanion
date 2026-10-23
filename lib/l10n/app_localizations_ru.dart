@@ -154,9 +154,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get save => 'Сохранить';
 
   @override
-  String get clientDisconnected => 'Клиент отключен: трансляция остановлена';
-
-  @override
   String get pleaseEnterServer => '⚠️ Пожалуйста, введите адрес сервера';
 
   @override
@@ -414,16 +411,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get navFixed => 'Connector и Профиль всегда закреплены';
 
   @override
-  String get leftSlot => 'Slot 2';
+  String get leftSlot => 'Слот 2';
 
   @override
-  String get outerSlot => 'Slot 1';
+  String get outerSlot => 'Слот 1';
 
   @override
-  String get rightSlot => 'Slot 3';
+  String get rightSlot => 'Слот 3';
 
   @override
-  String get farSlot => 'Slot 4';
+  String get farSlot => 'Слот 4';
 
   @override
   String get colorPickerApply => 'Применить';
@@ -478,7 +475,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get playerLookupLabelUuid => 'UUID';
 
   @override
-  String get playerLookupLabelGamertag => 'Gamertag';
+  String get playerLookupLabelGamertag => 'Геймертег';
 
   @override
   String get playerLookupLabelXuid => 'XUID';
@@ -1371,16 +1368,6 @@ class AppLocalizationsRu extends AppLocalizations {
       'Пакеты текстур высокого разрешения могут вызывать лаги или сбои на консолях. Если у вас возникают проблемы, переключитесь на пакет с более низким разрешением или выберите более лёгкий субпакет, если пакет поддерживает это.';
 
   @override
-  String get rpWarnDiscord =>
-      'Ссылки Discord истекают и перестают работать. Используйте постоянный хостинг.';
-
-  @override
-  String get rpWarnHttps => 'URL должен начинаться с https://';
-
-  @override
-  String get rpWarnExtension => 'URL должен заканчиваться на .mcpack или .zip';
-
-  @override
   String get rpToastSaved => 'Настройки пакета ресурсов сохранены.';
 
   @override
@@ -1430,16 +1417,46 @@ class AppLocalizationsRu extends AppLocalizations {
       'Minecraft кэширует пакеты ресурсов по их UUID. Объединённый пак сохраняет оригинальный UUID сервера, если Minecraft уже закэшировал серверный пак из предыдущей сессии (до включения MCCompanion), он не скачает новую версию. Очисти кэш, чтобы Minecraft загрузил свежий пак.';
 
   @override
-  String get rpUploadTab => 'Upload';
+  String get rpUploadTab => 'Загрузка';
 
   @override
-  String get rpUploadButton => 'Tap to select your pack';
+  String get rpBrowseTab => 'Обзор';
 
   @override
-  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+  String get rpCategoryRealism => 'Реализм';
 
   @override
-  String get rpUploading => 'Uploading...';
+  String get rpCategoryFaithful => 'Faithful';
+
+  @override
+  String get rpCategoryPvp => 'PvP';
+
+  @override
+  String get rpCategoryCartoon => 'Мультяшный';
+
+  @override
+  String get rpCategoryDark => 'Тёмный';
+
+  @override
+  String get rpCategoryMedieval => 'Средневековье';
+
+  @override
+  String get rpCategoryNature => 'Природа';
+
+  @override
+  String get rpCategoryThemed => 'Тематический';
+
+  @override
+  String get rpCategoryOther => 'Другое';
+
+  @override
+  String get rpUploadButton => 'Нажмите, чтобы выбрать пак';
+
+  @override
+  String get rpUploadHint => '.mcpack или .zip • до 100 МБ';
+
+  @override
+  String get rpUploading => 'Загрузка...';
 
   @override
   String get rpMergerTitle => 'Слияние RP';
@@ -1587,58 +1604,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get skinsSavedToMySkins => 'Сохранено в Мои скины';
 
   @override
-  String get skinsDownloadFailed => 'Ошибка загрузки';
-
-  @override
-  String get skinsDeletedFromCloud => 'Удалено из облака';
-
-  @override
-  String get skinsDeleteFailed => 'Ошибка удаления';
-
-  @override
-  String get skinsLoginToUpload => 'Войдите, чтобы загружать скины';
-
-  @override
-  String get skinsUploading => 'Загрузка…';
-
-  @override
-  String get skinUploaded => 'Скин загружен!';
-
-  @override
-  String skinUploadFailed(String error) {
-    return 'Ошибка загрузки: $error';
-  }
-
-  @override
   String get skinsEmptyLocalSkins =>
       'Скинов пока нет. Создайте или загрузите скин, чтобы начать.';
-
-  @override
-  String get skinUploadToWebsite => 'Загрузить на сайт';
-
-  @override
-  String get skinReuploadToWebsite => 'Перезагрузить на сайт';
-
-  @override
-  String get skinCloudEdit => 'Редактировать';
-
-  @override
-  String get skinCloudSaveToDevice => 'Сохранить на устройство';
-
-  @override
-  String get skinCloudDelete => 'Удалить из облака';
-
-  @override
-  String get skinsTabGallery => 'Галерея';
-
-  @override
-  String get skinsTopLabel => 'Топ 30';
-
-  @override
-  String get skinsAllLabel => 'Все скины';
-
-  @override
-  String get skinUploadToCloud => 'Загрузить в облако';
 
   @override
   String get skinSaveDialog => 'Сохранить скин';
@@ -1648,19 +1615,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get skinDefaultName => 'Мой скин';
-
-  @override
-  String get skinUpdatedInCloud => 'Скин обновлён в облаке';
-
-  @override
-  String skinByCreator(String name) {
-    return 'от $name';
-  }
-
-  @override
-  String skinLikesCount(int count) {
-    return '$count лайков';
-  }
 
   @override
   String get sectionRecentActivity => 'Последняя активность';
@@ -1775,18 +1729,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get notifPrefMessageReceived => 'Новое сообщение';
 
   @override
-  String get commentsTitle => 'Комментарии';
-
-  @override
-  String get commentsEmpty => 'Комментариев пока нет. Будьте первым!';
-
-  @override
-  String get commentsPlaceholder => 'Написать комментарий…';
-
-  @override
-  String get loadMore => 'Загрузить ещё';
-
-  @override
   String get skinLayerInner => 'Внутренний';
 
   @override
@@ -1816,9 +1758,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get skinSaveToMySkins => 'Сохранить в мои скины';
-
-  @override
-  String get skinUpdateInCloud => 'Обновить в облаке';
 
   @override
   String get skinExportPng => 'Экспорт PNG';
@@ -2055,6 +1994,20 @@ class AppLocalizationsRu extends AppLocalizations {
       'Не удалось открыть локальный порт. Сначала остановите текущее подключение.';
 
   @override
+  String get waitingForConsole => 'Ожидание вашей консоли…';
+
+  @override
+  String get consoleFound => 'Консоль найдена';
+
+  @override
+  String get consoleLanHint =>
+      'На консоли откройте Minecraft и найдите игру по LAN в разделе «Друзья».';
+
+  @override
+  String get localNetworkBlocked =>
+      'MCCompanion не может получить доступ к вашей локальной сети. Включите «Локальную сеть» для MCCompanion в настройках устройства и убедитесь, что вы подключены к Wi-Fi.';
+
+  @override
   String directAddressNotSupported(String host) {
     return '$host — это адрес IPv6. Режим прокси/прямого подключения поддерживает только IPv4. Используйте адрес IPv4 или имя хоста.';
   }
@@ -2127,6 +2080,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get serverListAllCategories => 'Все';
 
   @override
+  String get serverListPlayersAny => 'Любой размер';
+
+  @override
+  String get serverListPlayersHint => 'Среднее число игроков онлайн';
+
+  @override
   String get serverListLoadFailed => 'Не удалось загрузить список серверов';
 
   @override
@@ -2143,9 +2102,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get serverCardVote => 'Голосовать';
-
-  @override
-  String get serverCardViewServer => 'Открыть сервер';
 
   @override
   String get serverCopyIp => 'Копировать IP';

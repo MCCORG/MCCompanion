@@ -150,9 +150,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get save => '保存';
 
   @override
-  String get clientDisconnected => 'クライアントが切断されました: ブロードキャストを停止しました';
-
-  @override
   String get pleaseEnterServer => '⚠️ サーバーアドレスを入力してください';
 
   @override
@@ -404,16 +401,16 @@ class AppLocalizationsJa extends AppLocalizations {
   String get navFixed => 'Connector とプロフィールは常に固定です';
 
   @override
-  String get leftSlot => 'Slot 2';
+  String get leftSlot => 'スロット 2';
 
   @override
-  String get outerSlot => 'Slot 1';
+  String get outerSlot => 'スロット 1';
 
   @override
-  String get rightSlot => 'Slot 3';
+  String get rightSlot => 'スロット 3';
 
   @override
-  String get farSlot => 'Slot 4';
+  String get farSlot => 'スロット 4';
 
   @override
   String get colorPickerApply => '適用';
@@ -486,133 +483,128 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get reportUser => 'Report user';
+  String get reportUser => 'ユーザーを報告';
 
   @override
   String reportUserWithName(Object name) {
-    return 'Report $name';
+    return '$name を報告';
   }
 
   @override
   String get reportDisclaimer =>
-      'Reports are reviewed by our team. False reports may result in action against your account.';
+      '報告は運営チームが確認します。虚偽の報告を行うと、アカウントに対して措置が取られる場合があります。';
 
   @override
   String get reportReasonSpam => 'Spam';
 
   @override
-  String get reportReasonHarassment => 'Harassment';
+  String get reportReasonHarassment => '嫌がらせ';
 
   @override
-  String get reportReasonInappropriate => 'Inappropriate content';
+  String get reportReasonInappropriate => '不適切なコンテンツ';
 
   @override
-  String get reportReasonOther => 'Other';
+  String get reportReasonOther => 'その他';
 
   @override
-  String get reportAdditionalDetails => 'Additional details (optional)…';
+  String get reportAdditionalDetails => '詳細(任意)…';
 
   @override
-  String get reportSuccess => 'Report submitted. Thank you.';
+  String get reportSuccess => '報告を送信しました。ありがとうございます。';
 
   @override
-  String get reportFailed => 'Failed to submit report. Please try again.';
+  String get reportFailed => '報告を送信できませんでした。もう一度お試しください。';
 
   @override
-  String get reportSubmit => 'Submit report';
+  String get reportSubmit => '報告を送信';
 
   @override
-  String get playerLookupSubtitle =>
-      'Search for a Java or Bedrock player by username';
+  String get playerLookupSubtitle => 'ユーザー名で Java 版または統合版のプレイヤーを検索';
 
   @override
-  String get playerLookupHint => 'Enter a username…';
+  String get playerLookupHint => 'ユーザー名を入力…';
 
   @override
-  String get playerLookupLinked => 'Linked accounts found';
+  String get playerLookupLinked => '連携済みのアカウントが見つかりました';
 
   @override
-  String get playerLookupLabelUsername => 'Username';
+  String get playerLookupLabelUsername => 'ユーザー名';
 
   @override
   String get playerLookupLabelTier => 'Tier';
 
   @override
   String playerLookupCopied(Object value) {
-    return '$value copied';
+    return '$value をコピーしました';
   }
 
   @override
-  String get addFriend => 'Add Friend';
+  String get addFriend => 'フレンドを追加';
 
   @override
   String get send => 'Send';
 
   @override
-  String get somethingWentWrong => 'Something went wrong. Please try again.';
+  String get somethingWentWrong => '問題が発生しました。もう一度お試しください。';
 
   @override
   String friendRequestAccepted(Object name) {
-    return 'You are now friends with $name';
+    return '$name さんとフレンドになりました';
   }
 
   @override
   String requestDeclined(Object name) {
-    return 'Request from $name declined';
+    return '$name さんからのリクエストを拒否しました';
   }
 
   @override
-  String get deleteAccountTitle => 'Delete Account';
+  String get deleteAccountTitle => 'アカウントを削除';
 
   @override
-  String get deleteAccountBody =>
-      'This will permanently delete your account and all data. This action cannot be undone.';
+  String get deleteAccountBody => 'アカウントとすべてのデータが完全に削除されます。この操作は元に戻せません。';
 
   @override
-  String get deletePermanently => 'Delete Permanently';
+  String get deletePermanently => '完全に削除';
 
   @override
-  String get couldNotDeleteAccount =>
-      'Could not delete account. Please try again.';
+  String get couldNotDeleteAccount => 'アカウントを削除できませんでした。もう一度お試しください。';
 
   @override
-  String get removeFriendTitle => 'Remove Friend';
+  String get removeFriendTitle => 'フレンドを削除';
 
   @override
   String removeFriendConfirm(Object name) {
-    return 'Remove $name from your friends?';
+    return '$name さんをフレンドから削除しますか?';
   }
 
   @override
-  String get remove => 'Remove';
+  String get remove => '削除';
 
   @override
   String friendRemoved(Object name) {
-    return '$name has been removed from your friends';
+    return '$name さんをフレンドから削除しました';
   }
 
   @override
-  String get emailDifferentMethod =>
-      'This email is linked to a different sign-in method';
+  String get emailDifferentMethod => 'このメールアドレスは別のサインイン方法に紐づいています';
 
   @override
-  String get googleSignInFailed => 'Google sign-in failed. Please try again.';
+  String get googleSignInFailed => 'Google でのサインインに失敗しました。もう一度お試しください。';
 
   @override
-  String get appleSignInFailed => 'Apple sign-in failed. Please try again.';
+  String get appleSignInFailed => 'Apple でのサインインに失敗しました。もう一度お試しください。';
 
   @override
-  String get resetPasswordTitle => 'Reset Password';
+  String get resetPasswordTitle => 'パスワードをリセット';
 
   @override
-  String get resetPasswordBody =>
-      'Enter your email address and we will send you a link to reset your password.';
+  String get resetPasswordBody => 'メールアドレスを入力すると、パスワードをリセットするためのリンクをお送りします。';
 
   @override
-  String get emailAddressHint => 'Email address';
+  String get emailAddressHint => 'メールアドレス';
 
   @override
-  String get sendLink => 'Send link';
+  String get sendLink => 'リンクを送信';
 
   @override
   String resetLinkSent(Object email) {
@@ -620,163 +612,159 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get invalidEmailError => 'The email address is not valid';
+  String get invalidEmailError => 'メールアドレスが正しくありません';
 
   @override
-  String get couldNotSendResetEmail =>
-      'Could not send reset email. Please try again.';
+  String get couldNotSendResetEmail => 'リセットメールを送信できませんでした。もう一度お試しください。';
 
   @override
-  String get enterEmailAndPassword => 'Please enter your email and password';
+  String get enterEmailAndPassword => 'メールアドレスとパスワードを入力してください';
 
   @override
-  String get incorrectEmailOrPassword => 'Incorrect email or password';
+  String get incorrectEmailOrPassword => 'メールアドレスまたはパスワードが正しくありません';
 
   @override
-  String get emailAlreadyInUse => 'This email address is already in use';
+  String get emailAlreadyInUse => 'このメールアドレスはすでに使用されています';
 
   @override
-  String get weakPassword =>
-      'Password is too weak. Please choose a stronger one.';
+  String get weakPassword => 'パスワードが弱すぎます。より強力なパスワードを選んでください。';
 
   @override
-  String get createAccount => 'Create Account';
+  String get createAccount => 'アカウントを作成';
 
   @override
-  String get signInSubtitle =>
-      'Sign in to access your profile, friends, and chats.';
+  String get signInSubtitle => 'サインインして、プロフィール、フレンド、チャットを利用しましょう。';
 
   @override
-  String get passwordHint => 'Password';
+  String get passwordHint => 'パスワード';
 
   @override
-  String get forgotPassword => 'Forgot password?';
+  String get forgotPassword => 'パスワードをお忘れですか?';
 
   @override
   String get orDivider => 'or';
 
   @override
-  String get continueWithGoogle => 'Continue with Google';
+  String get continueWithGoogle => 'Google で続行';
 
   @override
-  String get alreadyHaveAccount => 'Already have an account? Sign in';
+  String get alreadyHaveAccount => 'アカウントをお持ちですか?サインイン';
 
   @override
-  String get noAccountYet => 'Don\'t have an account? Create one';
+  String get noAccountYet => 'アカウントをお持ちでないですか?作成する';
 
   @override
-  String get profileNotSetUp => 'Profile not set up';
+  String get profileNotSetUp => 'プロフィールが未設定です';
 
   @override
   String get chooseUsernameSubtitle => '他のプレイヤーが見つけられるように、ユーザー名を決めましょう。';
 
   @override
-  String get createProfile => 'Create Profile';
+  String get createProfile => 'プロフィールを作成';
 
   @override
-  String get findUser => 'Find user';
+  String get findUser => 'ユーザーを検索';
 
   @override
-  String get couldNotUpdateVisibility => 'Could not update visibility settings';
+  String get couldNotUpdateVisibility => '公開設定を更新できませんでした';
 
   @override
-  String get signOut => 'Sign Out';
+  String get signOut => 'サインアウト';
 
   @override
-  String get appearOfflineLabel => 'Appear Offline';
+  String get appearOfflineLabel => 'オフライン表示';
 
   @override
-  String get appearOfflineOn => 'You appear offline to other players';
+  String get appearOfflineOn => 'ほかのプレイヤーにはオフラインと表示されます';
 
   @override
-  String get appearOfflineOff => 'You appear online to other players';
+  String get appearOfflineOff => 'ほかのプレイヤーにはオンラインと表示されます';
 
   @override
-  String get unlinkXboxTitle => 'Unlink Xbox Account';
+  String get unlinkXboxTitle => 'Xbox アカウントの連携を解除';
 
   @override
   String removeLabelConfirm(Object name) {
-    return 'Remove $name from your linked accounts?';
+    return '$name を連携済みアカウントから削除しますか?';
   }
 
   @override
-  String get unlink => 'Unlink';
+  String get unlink => '連携を解除';
 
   @override
-  String get unlinkJavaTitle => 'Unlink Java Account';
+  String get unlinkJavaTitle => 'Java アカウントの連携を解除';
 
   @override
   String removeJavaConfirm(Object name) {
-    return 'Remove $name from your linked accounts?';
+    return '$name を連携済みアカウントから削除しますか?';
   }
 
   @override
-  String get linkAccountsHint =>
-      'Link your Minecraft accounts to show your skins and stats.';
+  String get linkAccountsHint => 'Minecraft アカウントを連携して、スキンや統計を表示しましょう。';
 
   @override
-  String get linkXbox => 'Link Xbox';
+  String get linkXbox => 'Xbox を連携';
 
   @override
-  String get linkJava => 'Link Java';
+  String get linkJava => 'Java を連携';
 
   @override
-  String get profileUpdated => 'Profile updated';
+  String get profileUpdated => 'プロフィールを更新しました';
 
   @override
   String get edit => 'Edit';
 
   @override
-  String get displayNameLabel => 'Display Name';
+  String get displayNameLabel => '表示名';
 
   @override
-  String get yourNameHint => 'Your name';
+  String get yourNameHint => 'あなたの名前';
 
   @override
   String get bioLabel => 'Bio';
 
   @override
-  String get bioHint => 'Tell others about yourself…';
+  String get bioHint => '自己紹介を書きましょう…';
 
   @override
-  String get noFriendsYet => 'No friends yet';
+  String get noFriendsYet => 'まだフレンドがいません';
 
   @override
-  String get noFriendsSub => 'Add friends to see them here.';
+  String get noFriendsSub => 'フレンドを追加すると、ここに表示されます。';
 
   @override
   String onlineFriendsLabel(Object count) {
-    return '$count online';
+    return 'オンライン $count 人';
   }
 
   @override
   String offlineFriendsLabel(Object count) {
-    return '$count offline';
+    return 'オフライン $count 人';
   }
 
   @override
-  String get noPendingRequests => 'No pending requests';
+  String get noPendingRequests => '保留中のリクエストはありません';
 
   @override
-  String get requestsAppearHere => 'New friend requests will appear here.';
+  String get requestsAppearHere => '新しいフレンドリクエストはここに表示されます。';
 
   @override
   String get skinsEdit => 'Edit';
 
   @override
-  String get skinsMustBe64 => 'Skin must be 64×64 pixels';
+  String get skinsMustBe64 => 'スキンは 64×64 ピクセルである必要があります';
 
   @override
-  String get skinsInvalidFile => 'Invalid image file';
+  String get skinsInvalidFile => '無効な画像ファイルです';
 
   @override
-  String get skinsUpload => 'Upload';
+  String get skinsUpload => 'アップロード';
 
   @override
-  String get skinsCreate => 'Create';
+  String get skinsCreate => '作成';
 
   @override
-  String get skinsDownload => 'Download';
+  String get skinsDownload => 'ダウンロード';
 
   @override
   String get chooseUniqueUsername => 'ユニークなユーザー名を選んで始めましょう。';
@@ -825,315 +813,310 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get paywallRestore => 'Restore';
+  String get paywallRestore => '復元';
 
   @override
-  String get paywallMonthly => 'Monthly';
+  String get paywallMonthly => '月額';
 
   @override
-  String get paywallYearly => 'Yearly';
+  String get paywallYearly => '年額';
 
   @override
-  String get paywallSavePercent => 'Save ~17%';
+  String get paywallSavePercent => '約 17% お得';
 
   @override
-  String get paywallSubtitle =>
-      'Track more servers and get notified\nwhen they go online or offline.';
+  String get paywallSubtitle => 'より多くのサーバーを追跡し、\nオンライン・オフラインの変化を通知で受け取れます。';
 
   @override
   String paywallSlotLabel(Object slots) {
-    return '$slots server slots';
+    return 'サーバースロット $slots 個';
   }
 
   @override
-  String get paywallPopular => 'Popular';
+  String get paywallPopular => '人気';
 
   @override
-  String get paywallContinue => 'Continue';
+  String get paywallContinue => '続ける';
 
   @override
-  String get paywallNoPkgs => 'No packages available.';
+  String get paywallNoPkgs => '利用可能なプランがありません。';
 
   @override
-  String get paywallManaged => 'Managed by Apple/Google. Cancel anytime.';
+  String get paywallManaged => 'Apple/Google が管理します。いつでもキャンセルできます。';
 
   @override
-  String get paywallPurchaseSuccess => 'Purchase successful!';
+  String get paywallPurchaseSuccess => '購入が完了しました!';
 
   @override
-  String get paywallPurchaseFailed => 'Purchase failed. Please try again.';
+  String get paywallPurchaseFailed => '購入に失敗しました。もう一度お試しください。';
 
   @override
-  String get paywallPurchasesRestored => 'Purchases restored!';
+  String get paywallPurchasesRestored => '購入を復元しました!';
 
   @override
-  String get paywallNoActivePurchases => 'No active purchases found.';
+  String get paywallNoActivePurchases => '有効な購入が見つかりませんでした。';
 
   @override
-  String get paywallRestoreFailed => 'Restore failed. Please try again.';
+  String get paywallRestoreFailed => '復元に失敗しました。もう一度お試しください。';
 
   @override
   String get relay => 'Relay';
 
   @override
-  String get serversSection => 'Servers';
+  String get serversSection => 'サーバー';
 
   @override
-  String get selectBedrockAccount => 'Select Bedrock account';
+  String get selectBedrockAccount => '統合版アカウントを選択';
 
   @override
-  String get infoAndLegal => 'Info & Legal';
+  String get infoAndLegal => '情報と法的事項';
 
   @override
-  String get legalSection => 'Legal';
+  String get legalSection => '法的事項';
 
   @override
   String get privacyPolicy => 'プライバシーポリシー';
 
   @override
-  String get privacyPolicySubtitle => 'How we collect and protect your data';
+  String get privacyPolicySubtitle => 'データの収集と保護について';
 
   @override
   String get termsOfService => '利用規約';
 
   @override
-  String get termsOfServiceSubtitle => 'Rules and conditions of use';
+  String get termsOfServiceSubtitle => 'ご利用のルールと条件';
 
   @override
-  String get dataSourcesSection => 'Data Sources & Credits';
+  String get dataSourcesSection => 'データソースとクレジット';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
 
   @override
   String get creditMojangSubtitle =>
-      'Java player skins, UUIDs, and profile data via the official Mojang API.';
+      'Java 版プレイヤーのスキン、UUID、プロフィールデータは Mojang 公式 API から取得しています。';
 
   @override
   String get creditGeyserTitle => 'GeyserMC';
 
   @override
   String get creditGeyserSubtitle =>
-      'Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.';
+      '統合版スキンの描画。統合版プレイヤーのスキンは GeyserMC のスキンサーバーから取得しています。';
 
   @override
   String get creditXboxTitle => 'Xbox / Microsoft';
 
   @override
   String get creditXboxSubtitle =>
-      'Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.';
+      'Xbox Live による統合版アカウントの連携。ゲーマータグと XUID は Microsoft の認証フローで取得します。';
 
   @override
-  String get aboutMCCompanionSection => 'About MCCompanion';
+  String get aboutMCCompanionSection => 'MCCompanion について';
 
   @override
   String get aboutMCCompanionDisclaimer =>
-      'MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.';
+      'MCCompanion は独立したアプリであり、Mojang Studios や Microsoft Corporation とは提携しておらず、承認・後援も受けていません。';
 
   @override
-  String get minecraftTrademark =>
-      '\"Minecraft\" is a trademark of Microsoft Corporation.';
+  String get minecraftTrademark => '「Minecraft」は Microsoft Corporation の商標です。';
 
   @override
   String get nldServerLabelShort => 'MCCompanion Server';
 
   @override
-  String get editServer => 'Edit Server';
+  String get editServer => 'サーバーを編集';
 
   @override
-  String get serverNameExampleHint => 'My Awesome Server';
+  String get serverNameExampleHint => 'すてきなサーバー';
 
   @override
   String get serverAddressExampleHint => 'play.example.com';
 
   @override
-  String get serverDescriptionExampleHint => 'Survival server with friends';
+  String get serverDescriptionExampleHint => 'フレンドと遊ぶサバイバルサーバー';
 
   @override
-  String get editionLabel => 'Edition';
+  String get editionLabel => 'エディション';
 
   @override
   String get nameLabel => 'Name';
 
   @override
-  String get ipAddressFieldLabel => 'IP Address';
+  String get ipAddressFieldLabel => 'IP アドレス';
 
   @override
   String get portFieldLabel => 'Port';
 
   @override
-  String get platformFieldLabel => 'Platform';
+  String get platformFieldLabel => 'プラットフォーム';
 
   @override
-  String get nameValidationError => 'Name must be 1–50 characters';
+  String get nameValidationError => '名前は 1〜50 文字にしてください';
 
   @override
-  String get ipRequiredError => 'IP address is required';
+  String get ipRequiredError => 'IP アドレスは必須です';
 
   @override
-  String get portRangeError => 'Port must be between 1 and 65535';
+  String get portRangeError => 'ポートは 1〜65535 の範囲で指定してください';
 
   @override
-  String get xboxLinkTitle => 'Link Xbox Account';
+  String get xboxLinkTitle => 'Xbox アカウントを連携';
 
   @override
-  String get xboxStartingLogin => 'Starting Xbox login…';
+  String get xboxStartingLogin => 'Xbox ログインを開始しています…';
 
   @override
-  String get xboxSignInWithMicrosoft => 'Sign in with Microsoft';
+  String get xboxSignInWithMicrosoft => 'Microsoft でサインイン';
 
   @override
-  String get xboxGoToLink =>
-      'Go to the link below and enter the code to connect your Xbox account.';
+  String get xboxGoToLink => '下のリンクにアクセスしてコードを入力し、Xbox アカウントを連携してください。';
 
   @override
-  String get xboxYourCode => 'Your code';
+  String get xboxYourCode => 'あなたのコード';
 
   @override
-  String get xboxTapToCopy => 'Tap the code to copy it';
+  String get xboxTapToCopy => 'コードをタップしてコピー';
 
   @override
-  String get xboxOpenLink => 'Open microsoft.com/link';
+  String get xboxOpenLink => 'microsoft.com/link を開く';
 
   @override
-  String get xboxWaitingForLogin => 'Waiting for login…';
+  String get xboxWaitingForLogin => 'ログインを待っています…';
 
   @override
-  String get xboxAccountLinked => 'Xbox account linked!';
+  String get xboxAccountLinked => 'Xbox アカウントを連携しました!';
 
   @override
-  String get xboxCodeCopied => 'Code copied to clipboard';
+  String get xboxCodeCopied => 'コードをクリップボードにコピーしました';
 
   @override
-  String get xboxCouldNotStart =>
-      'Could not start Xbox login. Please try again.';
+  String get xboxCouldNotStart => 'Xbox ログインを開始できませんでした。もう一度お試しください。';
 
   @override
-  String get xboxCodeExpired => 'The code expired. Please try again.';
+  String get xboxCodeExpired => 'コードの有効期限が切れました。もう一度お試しください。';
 
   @override
-  String get xboxSomethingWrong => 'Something went wrong. Please try again.';
+  String get xboxSomethingWrong => '問題が発生しました。もう一度お試しください。';
 
   @override
-  String get tryAgain => 'Try again';
+  String get tryAgain => '再試行';
 
   @override
-  String get userNotFound => 'User not found';
+  String get userNotFound => 'ユーザーが見つかりません';
 
   @override
-  String get profileSectionLabel => 'Profile';
+  String get profileSectionLabel => 'プロフィール';
 
   @override
-  String get displayNameRowLabel => 'Display name';
+  String get displayNameRowLabel => '表示名';
 
   @override
-  String get usernameRowLabel => 'Username';
+  String get usernameRowLabel => 'ユーザー名';
 
   @override
-  String get lastSeenLabel => 'Last seen';
+  String get lastSeenLabel => '最終ログイン';
 
   @override
-  String get aboutSectionLabel => 'About';
+  String get aboutSectionLabel => '自己紹介';
 
   @override
   String get xboxBedrockLabel => 'Xbox / Bedrock';
 
   @override
-  String get friendRequestSent => 'Friend request sent';
+  String get friendRequestSent => 'フレンドリクエストを送信しました';
 
   @override
-  String get alreadyFriendsMsg => 'You are already friends.';
+  String get alreadyFriendsMsg => 'すでにフレンドです。';
 
   @override
-  String get requestAlreadyPendingMsg => 'There is already a pending request.';
+  String get requestAlreadyPendingMsg => 'すでに保留中のリクエストがあります。';
 
   @override
-  String get userNotFoundMsg2 => 'User not found.';
+  String get userNotFoundMsg2 => 'ユーザーが見つかりません。';
 
   @override
-  String get cannotSendRequestMsg => 'Cannot send a request to this user.';
+  String get cannotSendRequestMsg => 'このユーザーにはリクエストを送信できません。';
 
   @override
   String nowFriendsWith(Object username) {
-    return 'Now friends with @$username';
+    return '@$username さんとフレンドになりました';
   }
 
   @override
-  String get removeFriendButton => 'Remove friend';
+  String get removeFriendButton => 'フレンドを削除';
 
   @override
-  String get requestSentButton => 'Request sent';
+  String get requestSentButton => 'リクエスト送信済み';
 
   @override
-  String get acceptRequestButton => 'Accept request';
+  String get acceptRequestButton => 'リクエストを承認';
 
   @override
-  String get addFriendButton => 'Add friend';
+  String get addFriendButton => 'フレンドを追加';
 
   @override
-  String get removeFriendDialogTitle => 'Remove friend';
+  String get removeFriendDialogTitle => 'フレンドを削除';
 
   @override
   String removeFriendDialogBody(Object username) {
-    return 'Remove @$username as a friend?';
+    return '@$username さんをフレンドから削除しますか?';
   }
 
   @override
   String get trackerLimitReached => 'サーバー上限に達しました';
 
   @override
-  String get upgradeButton => 'Upgrade';
+  String get upgradeButton => 'アップグレード';
 
   @override
-  String get javaLinkTitle => 'Link Java Edition';
+  String get javaLinkTitle => 'Java 版を連携';
 
   @override
-  String get javaStartingLogin => 'Starting Microsoft login…';
+  String get javaStartingLogin => 'Microsoft ログインを開始しています…';
 
   @override
-  String get javaSignInWithMicrosoft => 'Sign in with Microsoft';
+  String get javaSignInWithMicrosoft => 'Microsoft でサインイン';
 
   @override
   String get javaGoToLink =>
-      'Go to the link below and enter the code to connect your Minecraft Java Edition account.';
+      '下のリンクにアクセスしてコードを入力し、Minecraft Java 版のアカウントを連携してください。';
 
   @override
-  String get javaYourCode => 'Your code';
+  String get javaYourCode => 'あなたのコード';
 
   @override
-  String get javaTapToCopy => 'Tap the code to copy it';
+  String get javaTapToCopy => 'コードをタップしてコピー';
 
   @override
-  String get javaOpenLink => 'Open microsoft.com/link';
+  String get javaOpenLink => 'microsoft.com/link を開く';
 
   @override
-  String get javaWaitingForLogin => 'Waiting for login…';
+  String get javaWaitingForLogin => 'ログインを待っています…';
 
   @override
-  String get javaAccountLinked => 'Java Edition linked!';
+  String get javaAccountLinked => 'Java 版を連携しました!';
 
   @override
-  String get javaNoJavaTitle => 'No Java Edition found';
+  String get javaNoJavaTitle => 'Java 版が見つかりません';
 
   @override
   String get javaNoJavaBody =>
-      'The Microsoft account you signed in with does not own Minecraft Java Edition.';
+      'サインインした Microsoft アカウントは Minecraft Java 版を所有していません。';
 
   @override
-  String get javaTryDifferentAccount => 'Try a different account';
+  String get javaTryDifferentAccount => '別のアカウントを試す';
 
   @override
-  String get javaCouldNotStart =>
-      'Could not start Microsoft login. Please try again.';
+  String get javaCouldNotStart => 'Microsoft ログインを開始できませんでした。もう一度お試しください。';
 
   @override
-  String get javaCodeExpired => 'The code expired. Please try again.';
+  String get javaCodeExpired => 'コードの有効期限が切れました。もう一度お試しください。';
 
   @override
-  String get javaSomethingWrong => 'Something went wrong. Please try again.';
+  String get javaSomethingWrong => '問題が発生しました。もう一度お試しください。';
 
   @override
-  String get javaCodeCopied => 'Code copied to clipboard';
+  String get javaCodeCopied => 'コードをクリップボードにコピーしました';
 
   @override
   String get featureLabelConnector => 'コネクター';
@@ -1344,16 +1327,6 @@ class AppLocalizationsJa extends AppLocalizations {
       '高解像度テクスチャパックはコンソールでのラグやクラッシュを引き起こす可能性があります。問題が発生した場合は、低解像度のパックに切り替えるか、パックがサポートしている場合は軽量なサブパックを選択してください。';
 
   @override
-  String get rpWarnDiscord =>
-      'DiscordリンクはExpireし、動作しなくなります。代わりに永続的なホストを使用してください。';
-
-  @override
-  String get rpWarnHttps => 'URLはhttps://で始まる必要があります';
-
-  @override
-  String get rpWarnExtension => 'URLは.mcpackまたは.zipで終わる必要があります';
-
-  @override
   String get rpToastSaved => 'リソースパックの設定を保存しました。';
 
   @override
@@ -1398,16 +1371,46 @@ class AppLocalizationsJa extends AppLocalizations {
       'MinecraftはリソースパックをUUIDでキャッシュします。結合されたパックはサーバーの元のUUIDを保持します, MCCompanionを有効にする前のセッションでMinecraftがサーバーのパックをキャッシュしていた場合、新しい結合バージョンをダウンロードしません。キャッシュをクリアして、Minecraftが新しい結合パックを読み込むようにしてください。';
 
   @override
-  String get rpUploadTab => 'Upload';
+  String get rpUploadTab => 'アップロード';
 
   @override
-  String get rpUploadButton => 'Tap to select your pack';
+  String get rpBrowseTab => '探す';
 
   @override
-  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+  String get rpCategoryRealism => 'リアル';
 
   @override
-  String get rpUploading => 'Uploading...';
+  String get rpCategoryFaithful => 'Faithful';
+
+  @override
+  String get rpCategoryPvp => 'PvP';
+
+  @override
+  String get rpCategoryCartoon => 'カートゥーン';
+
+  @override
+  String get rpCategoryDark => 'ダーク';
+
+  @override
+  String get rpCategoryMedieval => '中世';
+
+  @override
+  String get rpCategoryNature => '自然';
+
+  @override
+  String get rpCategoryThemed => 'テーマ';
+
+  @override
+  String get rpCategoryOther => 'その他';
+
+  @override
+  String get rpUploadButton => 'タップしてパックを選択';
+
+  @override
+  String get rpUploadHint => '.mcpack または .zip • 最大 100 MB';
+
+  @override
+  String get rpUploading => 'アップロード中...';
 
   @override
   String get rpMergerTitle => 'RPマージャー';
@@ -1554,57 +1557,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get skinsSavedToMySkins => 'マイスキンに保存しました';
 
   @override
-  String get skinsDownloadFailed => 'ダウンロードに失敗しました';
-
-  @override
-  String get skinsDeletedFromCloud => 'クラウドから削除しました';
-
-  @override
-  String get skinsDeleteFailed => '削除に失敗しました';
-
-  @override
-  String get skinsLoginToUpload => 'スキンをアップロードするにはログインしてください';
-
-  @override
-  String get skinsUploading => 'アップロード中…';
-
-  @override
-  String get skinUploaded => 'スキンをアップロードしました！';
-
-  @override
-  String skinUploadFailed(String error) {
-    return 'アップロードに失敗しました: $error';
-  }
-
-  @override
   String get skinsEmptyLocalSkins => 'スキンはまだありません。スキンを作成またはアップロードして始めましょう。';
-
-  @override
-  String get skinUploadToWebsite => 'ウェブサイトにアップロード';
-
-  @override
-  String get skinReuploadToWebsite => 'ウェブサイトに再アップロード';
-
-  @override
-  String get skinCloudEdit => '編集';
-
-  @override
-  String get skinCloudSaveToDevice => 'デバイスに保存';
-
-  @override
-  String get skinCloudDelete => 'クラウドから削除';
-
-  @override
-  String get skinsTabGallery => 'ギャラリー';
-
-  @override
-  String get skinsTopLabel => 'トップ30';
-
-  @override
-  String get skinsAllLabel => 'すべてのスキン';
-
-  @override
-  String get skinUploadToCloud => 'クラウドにアップロード';
 
   @override
   String get skinSaveDialog => 'スキンを保存';
@@ -1614,19 +1567,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get skinDefaultName => 'マイスキン';
-
-  @override
-  String get skinUpdatedInCloud => 'クラウドのスキンが更新されました';
-
-  @override
-  String skinByCreator(String name) {
-    return '$name 作';
-  }
-
-  @override
-  String skinLikesCount(int count) {
-    return '$count いいね';
-  }
 
   @override
   String get sectionRecentActivity => '最近のアクティビティ';
@@ -1740,18 +1680,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get notifPrefMessageReceived => '新しいメッセージ';
 
   @override
-  String get commentsTitle => 'コメント';
-
-  @override
-  String get commentsEmpty => 'まだコメントはありません。最初のコメントを残しましょう！';
-
-  @override
-  String get commentsPlaceholder => 'コメントを書く…';
-
-  @override
-  String get loadMore => 'もっと読み込む';
-
-  @override
   String get skinLayerInner => '内側';
 
   @override
@@ -1781,9 +1709,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get skinSaveToMySkins => 'マイスキンに保存';
-
-  @override
-  String get skinUpdateInCloud => 'クラウドで更新';
 
   @override
   String get skinExportPng => 'PNG を書き出す';
@@ -2017,6 +1942,19 @@ class AppLocalizationsJa extends AppLocalizations {
   String get directPortBusy => 'ローカルポートを開けませんでした。先に現在の接続を停止してください。';
 
   @override
+  String get waitingForConsole => 'コンソールを待っています…';
+
+  @override
+  String get consoleFound => 'コンソールが見つかりました';
+
+  @override
+  String get consoleLanHint => 'コンソールでMinecraftを開き、友達からLANゲームを探してください。';
+
+  @override
+  String get localNetworkBlocked =>
+      'MCCompanionがローカルネットワークにアクセスできません。端末の設定でMCCompanionのローカルネットワークをオンにし、Wi-Fiに接続していることを確認してください。';
+
+  @override
   String directAddressNotSupported(String host) {
     return '$host は IPv6 アドレスです。プロキシ/ダイレクトモードは IPv4 のみ対応しています。IPv4 アドレスかホスト名をご利用ください。';
   }
@@ -2088,6 +2026,12 @@ class AppLocalizationsJa extends AppLocalizations {
   String get serverListAllCategories => 'すべて';
 
   @override
+  String get serverListPlayersAny => 'サイズを問わない';
+
+  @override
+  String get serverListPlayersHint => '平均オンライン人数';
+
+  @override
   String get serverListLoadFailed => 'サーバーリストを読み込めませんでした';
 
   @override
@@ -2104,9 +2048,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get serverCardVote => '投票';
-
-  @override
-  String get serverCardViewServer => 'サーバーを見る';
 
   @override
   String get serverCopyIp => 'IPをコピー';

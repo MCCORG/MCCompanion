@@ -153,9 +153,6 @@ class AppLocalizationsId extends AppLocalizations {
   String get save => 'Simpan';
 
   @override
-  String get clientDisconnected => 'Klien terputus: Siaran dihentikan';
-
-  @override
   String get pleaseEnterServer => '⚠️ Harap masukkan alamat server';
 
   @override
@@ -385,7 +382,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get failedUpdateNotifications => 'Gagal memperbarui notifikasi';
 
   @override
-  String get editServerTitle => 'Edit server';
+  String get editServerTitle => 'Edit Server';
 
   @override
   String get serverNameHint => 'Nama server';
@@ -494,133 +491,135 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get reportUser => 'Report user';
+  String get reportUser => 'Laporkan pengguna';
 
   @override
   String reportUserWithName(Object name) {
-    return 'Report $name';
+    return 'Laporkan $name';
   }
 
   @override
   String get reportDisclaimer =>
-      'Reports are reviewed by our team. False reports may result in action against your account.';
+      'Laporan ditinjau oleh tim kami. Laporan palsu dapat berakibat tindakan terhadap akunmu.';
 
   @override
   String get reportReasonSpam => 'Spam';
 
   @override
-  String get reportReasonHarassment => 'Harassment';
+  String get reportReasonHarassment => 'Pelecehan';
 
   @override
-  String get reportReasonInappropriate => 'Inappropriate content';
+  String get reportReasonInappropriate => 'Konten tidak pantas';
 
   @override
-  String get reportReasonOther => 'Other';
+  String get reportReasonOther => 'Lainnya';
 
   @override
-  String get reportAdditionalDetails => 'Additional details (optional)…';
+  String get reportAdditionalDetails => 'Detail tambahan (opsional)…';
 
   @override
-  String get reportSuccess => 'Report submitted. Thank you.';
+  String get reportSuccess => 'Laporan terkirim. Terima kasih.';
 
   @override
-  String get reportFailed => 'Failed to submit report. Please try again.';
+  String get reportFailed => 'Gagal mengirim laporan. Silakan coba lagi.';
 
   @override
-  String get reportSubmit => 'Submit report';
+  String get reportSubmit => 'Kirim laporan';
 
   @override
   String get playerLookupSubtitle =>
-      'Search for a Java or Bedrock player by username';
+      'Cari pemain Java atau Bedrock berdasarkan nama pengguna';
 
   @override
-  String get playerLookupHint => 'Enter a username…';
+  String get playerLookupHint => 'Masukkan nama pengguna…';
 
   @override
-  String get playerLookupLinked => 'Linked accounts found';
+  String get playerLookupLinked => 'Akun tertaut ditemukan';
 
   @override
-  String get playerLookupLabelUsername => 'Username';
+  String get playerLookupLabelUsername => 'Nama pengguna';
 
   @override
   String get playerLookupLabelTier => 'Tier';
 
   @override
   String playerLookupCopied(Object value) {
-    return '$value copied';
+    return '$value disalin';
   }
 
   @override
-  String get addFriend => 'Add Friend';
+  String get addFriend => 'Tambah Teman';
 
   @override
   String get send => 'Send';
 
   @override
-  String get somethingWentWrong => 'Something went wrong. Please try again.';
+  String get somethingWentWrong => 'Terjadi kesalahan. Silakan coba lagi.';
 
   @override
   String friendRequestAccepted(Object name) {
-    return 'You are now friends with $name';
+    return 'Kamu sekarang berteman dengan $name';
   }
 
   @override
   String requestDeclined(Object name) {
-    return 'Request from $name declined';
+    return 'Permintaan dari $name ditolak';
   }
 
   @override
-  String get deleteAccountTitle => 'Delete Account';
+  String get deleteAccountTitle => 'Hapus Akun';
 
   @override
   String get deleteAccountBody =>
-      'This will permanently delete your account and all data. This action cannot be undone.';
+      'Ini akan menghapus akun dan semua datamu secara permanen. Tindakan ini tidak dapat dibatalkan.';
 
   @override
-  String get deletePermanently => 'Delete Permanently';
+  String get deletePermanently => 'Hapus Permanen';
 
   @override
   String get couldNotDeleteAccount =>
-      'Could not delete account. Please try again.';
+      'Tidak dapat menghapus akun. Silakan coba lagi.';
 
   @override
-  String get removeFriendTitle => 'Remove Friend';
+  String get removeFriendTitle => 'Hapus Teman';
 
   @override
   String removeFriendConfirm(Object name) {
-    return 'Remove $name from your friends?';
+    return 'Hapus $name dari daftar temanmu?';
   }
 
   @override
-  String get remove => 'Remove';
+  String get remove => 'Hapus';
 
   @override
   String friendRemoved(Object name) {
-    return '$name has been removed from your friends';
+    return '$name telah dihapus dari daftar temanmu';
   }
 
   @override
   String get emailDifferentMethod =>
-      'This email is linked to a different sign-in method';
+      'Email ini tertaut ke metode masuk yang berbeda';
 
   @override
-  String get googleSignInFailed => 'Google sign-in failed. Please try again.';
+  String get googleSignInFailed =>
+      'Masuk dengan Google gagal. Silakan coba lagi.';
 
   @override
-  String get appleSignInFailed => 'Apple sign-in failed. Please try again.';
+  String get appleSignInFailed =>
+      'Masuk dengan Apple gagal. Silakan coba lagi.';
 
   @override
-  String get resetPasswordTitle => 'Reset Password';
+  String get resetPasswordTitle => 'Atur Ulang Kata Sandi';
 
   @override
   String get resetPasswordBody =>
-      'Enter your email address and we will send you a link to reset your password.';
+      'Masukkan alamat emailmu dan kami akan mengirimkan tautan untuk mengatur ulang kata sandi.';
 
   @override
-  String get emailAddressHint => 'Email address';
+  String get emailAddressHint => 'Alamat email';
 
   @override
-  String get sendLink => 'Send link';
+  String get sendLink => 'Kirim tautan';
 
   @override
   String resetLinkSent(Object email) {
@@ -628,130 +627,130 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get invalidEmailError => 'The email address is not valid';
+  String get invalidEmailError => 'Alamat email tidak valid';
 
   @override
   String get couldNotSendResetEmail =>
-      'Could not send reset email. Please try again.';
+      'Tidak dapat mengirim email pengaturan ulang. Silakan coba lagi.';
 
   @override
-  String get enterEmailAndPassword => 'Please enter your email and password';
+  String get enterEmailAndPassword => 'Masukkan email dan kata sandimu';
 
   @override
-  String get incorrectEmailOrPassword => 'Incorrect email or password';
+  String get incorrectEmailOrPassword => 'Email atau kata sandi salah';
 
   @override
-  String get emailAlreadyInUse => 'This email address is already in use';
+  String get emailAlreadyInUse => 'Alamat email ini sudah digunakan';
 
   @override
-  String get weakPassword =>
-      'Password is too weak. Please choose a stronger one.';
+  String get weakPassword => 'Kata sandi terlalu lemah. Pilih yang lebih kuat.';
 
   @override
-  String get createAccount => 'Create Account';
+  String get createAccount => 'Buat Akun';
 
   @override
   String get signInSubtitle =>
-      'Sign in to access your profile, friends, and chats.';
+      'Masuk untuk mengakses profil, teman, dan obrolanmu.';
 
   @override
-  String get passwordHint => 'Password';
+  String get passwordHint => 'Kata sandi';
 
   @override
-  String get forgotPassword => 'Forgot password?';
+  String get forgotPassword => 'Lupa kata sandi?';
 
   @override
   String get orDivider => 'or';
 
   @override
-  String get continueWithGoogle => 'Continue with Google';
+  String get continueWithGoogle => 'Lanjutkan dengan Google';
 
   @override
-  String get alreadyHaveAccount => 'Already have an account? Sign in';
+  String get alreadyHaveAccount => 'Sudah punya akun? Masuk';
 
   @override
-  String get noAccountYet => 'Don\'t have an account? Create one';
+  String get noAccountYet => 'Belum punya akun? Buat sekarang';
 
   @override
-  String get profileNotSetUp => 'Profile not set up';
+  String get profileNotSetUp => 'Profil belum diatur';
 
   @override
   String get chooseUsernameSubtitle =>
       'Pilih username agar pemain lain bisa menemukanmu.';
 
   @override
-  String get createProfile => 'Create Profile';
+  String get createProfile => 'Buat Profil';
 
   @override
-  String get findUser => 'Find user';
+  String get findUser => 'Cari pengguna';
 
   @override
-  String get couldNotUpdateVisibility => 'Could not update visibility settings';
+  String get couldNotUpdateVisibility =>
+      'Tidak dapat memperbarui pengaturan visibilitas';
 
   @override
-  String get signOut => 'Sign Out';
+  String get signOut => 'Keluar';
 
   @override
-  String get appearOfflineLabel => 'Appear Offline';
+  String get appearOfflineLabel => 'Tampil Offline';
 
   @override
-  String get appearOfflineOn => 'You appear offline to other players';
+  String get appearOfflineOn => 'Kamu terlihat offline oleh pemain lain';
 
   @override
-  String get appearOfflineOff => 'You appear online to other players';
+  String get appearOfflineOff => 'Kamu terlihat online oleh pemain lain';
 
   @override
-  String get unlinkXboxTitle => 'Unlink Xbox Account';
+  String get unlinkXboxTitle => 'Putuskan Tautan Akun Xbox';
 
   @override
   String removeLabelConfirm(Object name) {
-    return 'Remove $name from your linked accounts?';
+    return 'Hapus $name dari akun tertautmu?';
   }
 
   @override
-  String get unlink => 'Unlink';
+  String get unlink => 'Putuskan tautan';
 
   @override
-  String get unlinkJavaTitle => 'Unlink Java Account';
+  String get unlinkJavaTitle => 'Putuskan Tautan Akun Java';
 
   @override
   String removeJavaConfirm(Object name) {
-    return 'Remove $name from your linked accounts?';
+    return 'Hapus $name dari akun tertautmu?';
   }
 
   @override
   String get linkAccountsHint =>
-      'Link your Minecraft accounts to show your skins and stats.';
+      'Tautkan akun Minecraft-mu untuk menampilkan skin dan statistik.';
 
   @override
-  String get linkXbox => 'Link Xbox';
+  String get linkXbox => 'Tautkan Xbox';
 
   @override
-  String get linkJava => 'Link Java';
+  String get linkJava => 'Tautkan Java';
 
   @override
-  String get profileUpdated => 'Profile updated';
+  String get profileUpdated => 'Profil diperbarui';
 
   @override
   String get edit => 'Edit';
 
   @override
-  String get displayNameLabel => 'Display Name';
+  String get displayNameLabel => 'Nama Tampilan';
 
   @override
-  String get yourNameHint => 'Your name';
+  String get yourNameHint => 'Namamu';
 
   @override
   String get bioLabel => 'Bio';
 
   @override
-  String get bioHint => 'Tell others about yourself…';
+  String get bioHint => 'Ceritakan tentang dirimu…';
 
   @override
-  String get noFriendsYet => 'No friends yet';
+  String get noFriendsYet => 'Belum ada teman';
 
   @override
-  String get noFriendsSub => 'Add friends to see them here.';
+  String get noFriendsSub => 'Tambahkan teman agar muncul di sini.';
 
   @override
   String onlineFriendsLabel(Object count) {
@@ -764,28 +763,29 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get noPendingRequests => 'No pending requests';
+  String get noPendingRequests => 'Tidak ada permintaan tertunda';
 
   @override
-  String get requestsAppearHere => 'New friend requests will appear here.';
+  String get requestsAppearHere =>
+      'Permintaan pertemanan baru akan muncul di sini.';
 
   @override
   String get skinsEdit => 'Edit';
 
   @override
-  String get skinsMustBe64 => 'Skin must be 64×64 pixels';
+  String get skinsMustBe64 => 'Skin harus berukuran 64×64 piksel';
 
   @override
-  String get skinsInvalidFile => 'Invalid image file';
+  String get skinsInvalidFile => 'File gambar tidak valid';
 
   @override
-  String get skinsUpload => 'Upload';
+  String get skinsUpload => 'Unggah';
 
   @override
-  String get skinsCreate => 'Create';
+  String get skinsCreate => 'Buat';
 
   @override
-  String get skinsDownload => 'Download';
+  String get skinsDownload => 'Unduh';
 
   @override
   String get chooseUniqueUsername => 'Pilih nama pengguna unik untuk memulai.';
@@ -837,114 +837,116 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get paywallRestore => 'Restore';
+  String get paywallRestore => 'Pulihkan';
 
   @override
-  String get paywallMonthly => 'Monthly';
+  String get paywallMonthly => 'Bulanan';
 
   @override
-  String get paywallYearly => 'Yearly';
+  String get paywallYearly => 'Tahunan';
 
   @override
-  String get paywallSavePercent => 'Save ~17%';
+  String get paywallSavePercent => 'Hemat ~17%';
 
   @override
   String get paywallSubtitle =>
-      'Track more servers and get notified\nwhen they go online or offline.';
+      'Lacak lebih banyak server dan dapatkan notifikasi\nsaat server online atau offline.';
 
   @override
   String paywallSlotLabel(Object slots) {
-    return '$slots server slots';
+    return '$slots slot server';
   }
 
   @override
-  String get paywallPopular => 'Popular';
+  String get paywallPopular => 'Populer';
 
   @override
-  String get paywallContinue => 'Continue';
+  String get paywallContinue => 'Lanjutkan';
 
   @override
-  String get paywallNoPkgs => 'No packages available.';
+  String get paywallNoPkgs => 'Tidak ada paket tersedia.';
 
   @override
-  String get paywallManaged => 'Managed by Apple/Google. Cancel anytime.';
+  String get paywallManaged =>
+      'Dikelola oleh Apple/Google. Berhenti kapan saja.';
 
   @override
-  String get paywallPurchaseSuccess => 'Purchase successful!';
+  String get paywallPurchaseSuccess => 'Pembelian berhasil!';
 
   @override
-  String get paywallPurchaseFailed => 'Purchase failed. Please try again.';
+  String get paywallPurchaseFailed => 'Pembelian gagal. Silakan coba lagi.';
 
   @override
-  String get paywallPurchasesRestored => 'Purchases restored!';
+  String get paywallPurchasesRestored => 'Pembelian dipulihkan!';
 
   @override
-  String get paywallNoActivePurchases => 'No active purchases found.';
+  String get paywallNoActivePurchases => 'Tidak ada pembelian aktif.';
 
   @override
-  String get paywallRestoreFailed => 'Restore failed. Please try again.';
+  String get paywallRestoreFailed => 'Pemulihan gagal. Silakan coba lagi.';
 
   @override
   String get relay => 'Relay';
 
   @override
-  String get serversSection => 'Servers';
+  String get serversSection => 'Server';
 
   @override
-  String get selectBedrockAccount => 'Select Bedrock account';
+  String get selectBedrockAccount => 'Pilih akun Bedrock';
 
   @override
-  String get infoAndLegal => 'Info & Legal';
+  String get infoAndLegal => 'Info & Hukum';
 
   @override
-  String get legalSection => 'Legal';
+  String get legalSection => 'Hukum';
 
   @override
   String get privacyPolicy => 'kebijakan privasi';
 
   @override
-  String get privacyPolicySubtitle => 'How we collect and protect your data';
+  String get privacyPolicySubtitle =>
+      'Bagaimana kami mengumpulkan dan melindungi datamu';
 
   @override
   String get termsOfService => 'ketentuan layanan';
 
   @override
-  String get termsOfServiceSubtitle => 'Rules and conditions of use';
+  String get termsOfServiceSubtitle => 'Aturan dan ketentuan penggunaan';
 
   @override
-  String get dataSourcesSection => 'Data Sources & Credits';
+  String get dataSourcesSection => 'Sumber Data & Kredit';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
 
   @override
   String get creditMojangSubtitle =>
-      'Java player skins, UUIDs, and profile data via the official Mojang API.';
+      'Skin pemain Java, UUID, dan data profil melalui API resmi Mojang.';
 
   @override
   String get creditGeyserTitle => 'GeyserMC';
 
   @override
   String get creditGeyserSubtitle =>
-      'Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.';
+      'Perenderan skin Bedrock. Skin pemain Bedrock diambil melalui server skin GeyserMC.';
 
   @override
   String get creditXboxTitle => 'Xbox / Microsoft';
 
   @override
   String get creditXboxSubtitle =>
-      'Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.';
+      'Penautan akun Bedrock melalui Xbox Live. Gamertag dan XUID diperoleh melalui alur autentikasi Microsoft.';
 
   @override
-  String get aboutMCCompanionSection => 'About MCCompanion';
+  String get aboutMCCompanionSection => 'Tentang MCCompanion';
 
   @override
   String get aboutMCCompanionDisclaimer =>
-      'MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.';
+      'MCCompanion adalah aplikasi independen dan tidak berafiliasi dengan, didukung oleh, atau disponsori oleh Mojang Studios maupun Microsoft Corporation.';
 
   @override
   String get minecraftTrademark =>
-      '\"Minecraft\" is a trademark of Microsoft Corporation.';
+      '\"Minecraft\" adalah merek dagang Microsoft Corporation.';
 
   @override
   String get nldServerLabelShort => 'MCCompanion Server';
@@ -953,22 +955,22 @@ class AppLocalizationsId extends AppLocalizations {
   String get editServer => 'Edit Server';
 
   @override
-  String get serverNameExampleHint => 'My Awesome Server';
+  String get serverNameExampleHint => 'Server Kerenku';
 
   @override
   String get serverAddressExampleHint => 'play.example.com';
 
   @override
-  String get serverDescriptionExampleHint => 'Survival server with friends';
+  String get serverDescriptionExampleHint => 'Server survival bersama teman';
 
   @override
-  String get editionLabel => 'Edition';
+  String get editionLabel => 'Edisi';
 
   @override
   String get nameLabel => 'Name';
 
   @override
-  String get ipAddressFieldLabel => 'IP Address';
+  String get ipAddressFieldLabel => 'Alamat IP';
 
   @override
   String get portFieldLabel => 'Port';
@@ -977,175 +979,176 @@ class AppLocalizationsId extends AppLocalizations {
   String get platformFieldLabel => 'Platform';
 
   @override
-  String get nameValidationError => 'Name must be 1–50 characters';
+  String get nameValidationError => 'Nama harus 1–50 karakter';
 
   @override
-  String get ipRequiredError => 'IP address is required';
+  String get ipRequiredError => 'Alamat IP wajib diisi';
 
   @override
-  String get portRangeError => 'Port must be between 1 and 65535';
+  String get portRangeError => 'Port harus antara 1 dan 65535';
 
   @override
-  String get xboxLinkTitle => 'Link Xbox Account';
+  String get xboxLinkTitle => 'Tautkan Akun Xbox';
 
   @override
-  String get xboxStartingLogin => 'Starting Xbox login…';
+  String get xboxStartingLogin => 'Memulai login Xbox…';
 
   @override
-  String get xboxSignInWithMicrosoft => 'Sign in with Microsoft';
+  String get xboxSignInWithMicrosoft => 'Masuk dengan Microsoft';
 
   @override
   String get xboxGoToLink =>
-      'Go to the link below and enter the code to connect your Xbox account.';
+      'Buka tautan di bawah dan masukkan kode untuk menghubungkan akun Xbox-mu.';
 
   @override
-  String get xboxYourCode => 'Your code';
+  String get xboxYourCode => 'Kodemu';
 
   @override
-  String get xboxTapToCopy => 'Tap the code to copy it';
+  String get xboxTapToCopy => 'Ketuk kode untuk menyalin';
 
   @override
-  String get xboxOpenLink => 'Open microsoft.com/link';
+  String get xboxOpenLink => 'Buka microsoft.com/link';
 
   @override
-  String get xboxWaitingForLogin => 'Waiting for login…';
+  String get xboxWaitingForLogin => 'Menunggu login…';
 
   @override
-  String get xboxAccountLinked => 'Xbox account linked!';
+  String get xboxAccountLinked => 'Akun Xbox tertaut!';
 
   @override
-  String get xboxCodeCopied => 'Code copied to clipboard';
+  String get xboxCodeCopied => 'Kode disalin ke papan klip';
 
   @override
   String get xboxCouldNotStart =>
-      'Could not start Xbox login. Please try again.';
+      'Tidak dapat memulai login Xbox. Silakan coba lagi.';
 
   @override
-  String get xboxCodeExpired => 'The code expired. Please try again.';
+  String get xboxCodeExpired => 'Kode kedaluwarsa. Silakan coba lagi.';
 
   @override
-  String get xboxSomethingWrong => 'Something went wrong. Please try again.';
+  String get xboxSomethingWrong => 'Terjadi kesalahan. Silakan coba lagi.';
 
   @override
-  String get tryAgain => 'Try again';
+  String get tryAgain => 'Coba lagi';
 
   @override
-  String get userNotFound => 'User not found';
+  String get userNotFound => 'Pengguna tidak ditemukan';
 
   @override
-  String get profileSectionLabel => 'Profile';
+  String get profileSectionLabel => 'Profil';
 
   @override
-  String get displayNameRowLabel => 'Display name';
+  String get displayNameRowLabel => 'Nama Tampilan';
 
   @override
-  String get usernameRowLabel => 'Username';
+  String get usernameRowLabel => 'Nama pengguna';
 
   @override
-  String get lastSeenLabel => 'Last seen';
+  String get lastSeenLabel => 'Terakhir dilihat';
 
   @override
-  String get aboutSectionLabel => 'About';
+  String get aboutSectionLabel => 'Tentang';
 
   @override
   String get xboxBedrockLabel => 'Xbox / Bedrock';
 
   @override
-  String get friendRequestSent => 'Friend request sent';
+  String get friendRequestSent => 'Permintaan pertemanan terkirim';
 
   @override
-  String get alreadyFriendsMsg => 'You are already friends.';
+  String get alreadyFriendsMsg => 'Kalian sudah berteman.';
 
   @override
-  String get requestAlreadyPendingMsg => 'There is already a pending request.';
+  String get requestAlreadyPendingMsg => 'Sudah ada permintaan yang tertunda.';
 
   @override
-  String get userNotFoundMsg2 => 'User not found.';
+  String get userNotFoundMsg2 => 'Pengguna tidak ditemukan.';
 
   @override
-  String get cannotSendRequestMsg => 'Cannot send a request to this user.';
+  String get cannotSendRequestMsg =>
+      'Tidak dapat mengirim permintaan ke pengguna ini.';
 
   @override
   String nowFriendsWith(Object username) {
-    return 'Now friends with @$username';
+    return 'Sekarang berteman dengan @$username';
   }
 
   @override
-  String get removeFriendButton => 'Remove friend';
+  String get removeFriendButton => 'Hapus teman';
 
   @override
-  String get requestSentButton => 'Request sent';
+  String get requestSentButton => 'Permintaan terkirim';
 
   @override
-  String get acceptRequestButton => 'Accept request';
+  String get acceptRequestButton => 'Terima permintaan';
 
   @override
-  String get addFriendButton => 'Add friend';
+  String get addFriendButton => 'Tambah teman';
 
   @override
-  String get removeFriendDialogTitle => 'Remove friend';
+  String get removeFriendDialogTitle => 'Hapus Teman';
 
   @override
   String removeFriendDialogBody(Object username) {
-    return 'Remove @$username as a friend?';
+    return 'Hapus @$username dari daftar teman?';
   }
 
   @override
   String get trackerLimitReached => 'Batas server tercapai';
 
   @override
-  String get upgradeButton => 'Upgrade';
+  String get upgradeButton => 'Tingkatkan';
 
   @override
-  String get javaLinkTitle => 'Link Java Edition';
+  String get javaLinkTitle => 'Tautkan Java Edition';
 
   @override
-  String get javaStartingLogin => 'Starting Microsoft login…';
+  String get javaStartingLogin => 'Memulai login Microsoft…';
 
   @override
-  String get javaSignInWithMicrosoft => 'Sign in with Microsoft';
+  String get javaSignInWithMicrosoft => 'Masuk dengan Microsoft';
 
   @override
   String get javaGoToLink =>
-      'Go to the link below and enter the code to connect your Minecraft Java Edition account.';
+      'Buka tautan di bawah dan masukkan kode untuk menghubungkan akun Minecraft Java Edition-mu.';
 
   @override
-  String get javaYourCode => 'Your code';
+  String get javaYourCode => 'Kodemu';
 
   @override
-  String get javaTapToCopy => 'Tap the code to copy it';
+  String get javaTapToCopy => 'Ketuk kode untuk menyalin';
 
   @override
-  String get javaOpenLink => 'Open microsoft.com/link';
+  String get javaOpenLink => 'Buka microsoft.com/link';
 
   @override
-  String get javaWaitingForLogin => 'Waiting for login…';
+  String get javaWaitingForLogin => 'Menunggu login…';
 
   @override
-  String get javaAccountLinked => 'Java Edition linked!';
+  String get javaAccountLinked => 'Java Edition tertaut!';
 
   @override
-  String get javaNoJavaTitle => 'No Java Edition found';
+  String get javaNoJavaTitle => 'Java Edition tidak ditemukan';
 
   @override
   String get javaNoJavaBody =>
-      'The Microsoft account you signed in with does not own Minecraft Java Edition.';
+      'Akun Microsoft yang kamu gunakan untuk masuk tidak memiliki Minecraft Java Edition.';
 
   @override
-  String get javaTryDifferentAccount => 'Try a different account';
+  String get javaTryDifferentAccount => 'Coba akun lain';
 
   @override
   String get javaCouldNotStart =>
-      'Could not start Microsoft login. Please try again.';
+      'Tidak dapat memulai login Microsoft. Silakan coba lagi.';
 
   @override
-  String get javaCodeExpired => 'The code expired. Please try again.';
+  String get javaCodeExpired => 'Kode kedaluwarsa. Silakan coba lagi.';
 
   @override
-  String get javaSomethingWrong => 'Something went wrong. Please try again.';
+  String get javaSomethingWrong => 'Terjadi kesalahan. Silakan coba lagi.';
 
   @override
-  String get javaCodeCopied => 'Code copied to clipboard';
+  String get javaCodeCopied => 'Kode disalin ke papan klip';
 
   @override
   String get featureLabelConnector => 'Konektor';
@@ -1372,16 +1375,6 @@ class AppLocalizationsId extends AppLocalizations {
       'Texture pack beresolusi tinggi dapat menyebabkan lag atau crash di konsol. Jika mengalami masalah, beralih ke pack beresolusi lebih rendah atau pilih subpack yang lebih ringan jika pack mendukungnya.';
 
   @override
-  String get rpWarnDiscord =>
-      'Tautan Discord kedaluwarsa dan tidak akan berfungsi. Gunakan host permanen sebagai gantinya.';
-
-  @override
-  String get rpWarnHttps => 'URL harus dimulai dengan https://';
-
-  @override
-  String get rpWarnExtension => 'URL harus diakhiri dengan .mcpack atau .zip';
-
-  @override
   String get rpToastSaved => 'Pengaturan paket sumber daya disimpan.';
 
   @override
@@ -1431,16 +1424,46 @@ class AppLocalizationsId extends AppLocalizations {
       'Minecraft menyimpan pack sumber daya berdasarkan UUID. Pack yang digabungkan tetap menggunakan UUID asli server, jika Minecraft sudah menyimpan pack server dari sesi sebelumnya (sebelum MCCompanion aktif), ia tidak akan mengunduh versi gabungan yang baru. Hapus cache agar Minecraft memuat pack gabungan terbaru.';
 
   @override
-  String get rpUploadTab => 'Upload';
+  String get rpUploadTab => 'Unggah';
 
   @override
-  String get rpUploadButton => 'Tap to select your pack';
+  String get rpBrowseTab => 'Jelajahi';
 
   @override
-  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+  String get rpCategoryRealism => 'Realisme';
 
   @override
-  String get rpUploading => 'Uploading...';
+  String get rpCategoryFaithful => 'Faithful';
+
+  @override
+  String get rpCategoryPvp => 'PvP';
+
+  @override
+  String get rpCategoryCartoon => 'Kartun';
+
+  @override
+  String get rpCategoryDark => 'Gelap';
+
+  @override
+  String get rpCategoryMedieval => 'Abad Pertengahan';
+
+  @override
+  String get rpCategoryNature => 'Alam';
+
+  @override
+  String get rpCategoryThemed => 'Bertema';
+
+  @override
+  String get rpCategoryOther => 'Lainnya';
+
+  @override
+  String get rpUploadButton => 'Ketuk untuk memilih paketmu';
+
+  @override
+  String get rpUploadHint => '.mcpack atau .zip • maks. 100 MB';
+
+  @override
+  String get rpUploading => 'Mengunggah...';
 
   @override
   String get rpMergerTitle => 'Penggabung RP';
@@ -1541,7 +1564,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get skinLabel => 'SKIN';
 
   @override
-  String get skinsLabel => 'SKINS';
+  String get skinsLabel => 'SKIN';
 
   @override
   String get javaEditionBadge => 'Java';
@@ -1588,58 +1611,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get skinsSavedToMySkins => 'Disimpan ke Skin Saya';
 
   @override
-  String get skinsDownloadFailed => 'Unduhan gagal';
-
-  @override
-  String get skinsDeletedFromCloud => 'Dihapus dari cloud';
-
-  @override
-  String get skinsDeleteFailed => 'Penghapusan gagal';
-
-  @override
-  String get skinsLoginToUpload => 'Masuk untuk mengunggah skin';
-
-  @override
-  String get skinsUploading => 'Mengunggah…';
-
-  @override
-  String get skinUploaded => 'Skin berhasil diunggah!';
-
-  @override
-  String skinUploadFailed(String error) {
-    return 'Pengunggahan gagal: $error';
-  }
-
-  @override
   String get skinsEmptyLocalSkins =>
       'Belum ada skin. Buat atau unggah skin untuk memulai.';
-
-  @override
-  String get skinUploadToWebsite => 'Unggah ke situs web';
-
-  @override
-  String get skinReuploadToWebsite => 'Unggah ulang ke situs web';
-
-  @override
-  String get skinCloudEdit => 'Edit';
-
-  @override
-  String get skinCloudSaveToDevice => 'Simpan ke perangkat';
-
-  @override
-  String get skinCloudDelete => 'Hapus dari cloud';
-
-  @override
-  String get skinsTabGallery => 'Galeri';
-
-  @override
-  String get skinsTopLabel => '30 Teratas';
-
-  @override
-  String get skinsAllLabel => 'Semua Skin';
-
-  @override
-  String get skinUploadToCloud => 'Unggah ke Cloud';
 
   @override
   String get skinSaveDialog => 'Simpan Skin';
@@ -1649,19 +1622,6 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get skinDefaultName => 'Skin saya';
-
-  @override
-  String get skinUpdatedInCloud => 'Skin diperbarui di cloud';
-
-  @override
-  String skinByCreator(String name) {
-    return 'oleh $name';
-  }
-
-  @override
-  String skinLikesCount(int count) {
-    return '$count suka';
-  }
 
   @override
   String get sectionRecentActivity => 'Aktivitas terbaru';
@@ -1776,18 +1736,6 @@ class AppLocalizationsId extends AppLocalizations {
   String get notifPrefMessageReceived => 'Pesan baru';
 
   @override
-  String get commentsTitle => 'Komentar';
-
-  @override
-  String get commentsEmpty => 'Belum ada komentar. Jadilah yang pertama!';
-
-  @override
-  String get commentsPlaceholder => 'Tulis komentar…';
-
-  @override
-  String get loadMore => 'Muat lebih banyak';
-
-  @override
   String get skinLayerInner => 'Dalam';
 
   @override
@@ -1817,9 +1765,6 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get skinSaveToMySkins => 'Simpan ke skin saya';
-
-  @override
-  String get skinUpdateInCloud => 'Perbarui di cloud';
 
   @override
   String get skinExportPng => 'Ekspor PNG';
@@ -2057,6 +2002,20 @@ class AppLocalizationsId extends AppLocalizations {
       'Tidak dapat membuka port lokal. Hentikan koneksi saat ini terlebih dahulu.';
 
   @override
+  String get waitingForConsole => 'Menunggu konsol Anda…';
+
+  @override
+  String get consoleFound => 'Konsol ditemukan';
+
+  @override
+  String get consoleLanHint =>
+      'Di konsol Anda, buka Minecraft dan cari game LAN di bagian Teman.';
+
+  @override
+  String get localNetworkBlocked =>
+      'MCCompanion tidak dapat menjangkau jaringan lokal Anda. Aktifkan Jaringan Lokal untuk MCCompanion di pengaturan perangkat dan pastikan Anda terhubung ke Wi-Fi.';
+
+  @override
   String directAddressNotSupported(String host) {
     return '$host adalah alamat IPv6. Mode Proxy/Langsung hanya mendukung IPv4. Gunakan alamat IPv4 atau nama host.';
   }
@@ -2129,6 +2088,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get serverListAllCategories => 'Semua';
 
   @override
+  String get serverListPlayersAny => 'Ukuran apa pun';
+
+  @override
+  String get serverListPlayersHint => 'Rata-rata pemain online';
+
+  @override
   String get serverListLoadFailed => 'Tidak dapat memuat daftar server';
 
   @override
@@ -2147,9 +2112,6 @@ class AppLocalizationsId extends AppLocalizations {
   String get serverCardVote => 'Vote';
 
   @override
-  String get serverCardViewServer => 'Lihat server';
-
-  @override
   String get serverCopyIp => 'Salin IP';
 
   @override
@@ -2162,7 +2124,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get serverStatPeak => 'Puncak';
 
   @override
-  String get serverStatUptime => 'Uptime';
+  String get serverStatUptime => 'Waktu aktif';
 
   @override
   String get serverStatVotesMonth => 'Vote bulan ini';
@@ -2177,7 +2139,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get serverEditionBedrock => 'Bedrock';
 
   @override
-  String get serverEditionCrossplay => 'Crossplay';
+  String get serverEditionCrossplay => 'Lintas platform';
 
   @override
   String get serverSectionMotd => 'Pesan hari ini';

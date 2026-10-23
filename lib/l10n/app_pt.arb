@@ -80,10 +80,6 @@
   "@save": {
     "description": "Save button label"
   },
-  "clientDisconnected": "Cliente desconectado: transmissão interrompida",
-  "@clientDisconnected": {
-    "description": "Snackbar shown when clients disconnect automatically"
-  },
   "pleaseEnterServer": "⚠️ Por favor, insira um endereço de servidor",
   "@pleaseEnterServer": {
     "description": "Validation message when server address field is empty"
@@ -501,7 +497,7 @@
   "@incorrectEmailOrPassword": {
     "description": "Error for wrong credentials"
   },
-  "infoAndLegal": "Info & Legal",
+  "infoAndLegal": "Informações e legal",
   "@infoAndLegal": {
     "description": "Title of the Info & Legal sheet"
   },
@@ -1083,9 +1079,6 @@
   "rpNoDiscord": "Links do Discord: sem extensão .mcpack e expiram após algumas horas",
   "rpNoDrive": "Links de compartilhamento do Google Drive / Dropbox, não são downloads diretos",
   "rpNoEncrypted": "Servidores com pacotes criptografados ou protegidos por senha",
-  "rpWarnDiscord": "Links do Discord expiram e pararão de funcionar. Use um host permanente.",
-  "rpWarnHttps": "A URL deve começar com https://",
-  "rpWarnExtension": "A URL deve terminar em .mcpack ou .zip",
   "rpToastSaved": "Configurações do pacote de recursos salvas.",
   "rpClearMinecraftTitle": "Primeira vez com este pack?",
   "rpClearStep1": "Abra o Minecraft no console e vá em Configurações → Armazenamento",
@@ -1097,10 +1090,10 @@
   "rpNoDriveHint": "Sem download direto: redireciona para uma página de visualização",
   "rpNoEncryptedHint": "MCCompanion não pode mesclar conteúdo de packs criptografados",
   "rpClearWhy": "O Minecraft armazena packs de recursos pelo UUID. O pack mesclado mantém o UUID original do servidor, se o Minecraft já tiver o pack do servidor em cache de uma sessão anterior (antes do MCCompanion), não baixará a nova versão mesclada. Limpe o cache para que o Minecraft carregue o pack atualizado.",
-  "rpUploadTab": "Upload",
-  "rpUploadButton": "Tap to select your pack",
-  "rpUploadHint": ".mcpack or .zip • max 100 MB",
-  "rpUploading": "Uploading...",
+  "rpUploadTab": "Enviar",
+  "rpUploadButton": "Toque para selecionar seu pacote",
+  "rpUploadHint": ".mcpack ou .zip • máx. 100 MB",
+  "rpUploading": "Enviando...",
   "rpMergerTitle": "Fusão de RP",
   "rpMergerPriorityHint": "O pacote do topo tem maior prioridade: seus arquivos vencem conflitos.",
   "rpMergerTopBadge": "TOPO",
@@ -1172,45 +1165,10 @@
     }
   },
   "skinsSavedToMySkins": "Salvo em Meus Skins",
-  "skinsDownloadFailed": "Falha no download",
-  "skinsDeletedFromCloud": "Excluído da nuvem",
-  "skinsDeleteFailed": "Falha ao excluir",
-  "skinsLoginToUpload": "Entre para fazer upload de skins",
-  "skinsUploading": "Enviando…",
-  "skinUploaded": "Skin enviado!",
-  "skinUploadFailed": "Falha no upload: {error}",
   "skinsEmptyLocalSkins": "Nenhum skin ainda. Crie ou faça upload de um skin para começar.",
-  "skinUploadToWebsite": "Enviar para o site",
-  "skinReuploadToWebsite": "Reenviar para o site",
-  "skinCloudEdit": "Editar",
-  "skinCloudSaveToDevice": "Salvar no dispositivo",
-  "skinCloudDelete": "Excluir da nuvem",
-  "skinsTabGallery": "Galeria",
-  "skinsTopLabel": "Top 30",
-  "skinsAllLabel": "Todos os Skins",
-  "skinUploadToCloud": "Enviar para nuvem",
   "skinSaveDialog": "Salvar skin",
   "skinNameHint": "Nome do skin",
   "skinDefaultName": "Meu skin",
-  "skinUpdatedInCloud": "Skin atualizado na nuvem",
-  "skinByCreator": "por {name}",
-  "@skinByCreator": {
-    "description": "Creator attribution",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinLikesCount": "{count} curtidas",
-  "@skinLikesCount": {
-    "description": "Like count",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "sectionRecentActivity": "Atividade recente",
   "activityNoEvents": "Nenhuma atividade recente ainda.",
   "activitySkinUploaded": "Skin enviada",
@@ -1305,10 +1263,6 @@
   "notifPrefFriendRequest": "Solicitação de amizade",
   "notifPrefFriendAccepted": "Amigo adicionado",
   "notifPrefMessageReceived": "Nova mensagem",
-  "commentsTitle": "Comentários",
-  "commentsEmpty": "Ainda sem comentários. Seja o primeiro!",
-  "commentsPlaceholder": "Escreva um comentário…",
-  "loadMore": "Carregar mais",
   "skinLayerInner": "Interior",
   "@skinLayerInner": {
     "description": "Skin editor layer toggle, inner/base layer"
@@ -1327,7 +1281,6 @@
   "skinEditorTitle": "Editor de skins",
   "skinToolUndo": "Anular",
   "skinSaveToMySkins": "Guardar nas minhas skins",
-  "skinUpdateInCloud": "Atualizar na nuvem",
   "skinExportPng": "Exportar PNG",
   "skinToolDraw": "Desenhar",
   "skinToolFill": "Preencher",
@@ -1407,6 +1360,22 @@
     }
   },
   "directPortBusy": "Não foi possível abrir a porta local. Pare primeiro a ligação atual.",
+  "rpBrowseTab": "Explorar",
+  "rpCategoryRealism": "Realismo",
+  "rpCategoryFaithful": "Faithful",
+  "rpCategoryPvp": "PvP",
+  "rpCategoryCartoon": "Desenho animado",
+  "rpCategoryDark": "Escuro",
+  "rpCategoryMedieval": "Medieval",
+  "rpCategoryNature": "Natureza",
+  "rpCategoryThemed": "Temático",
+  "rpCategoryOther": "Outros",
+  "waitingForConsole": "Aguardando seu console…",
+  "consoleFound": "Console encontrado",
+  "consoleLanHint": "No seu console, abra o Minecraft e procure um jogo LAN em Amigos.",
+  "localNetworkBlocked": "O MCCompanion não consegue acessar sua rede local. Ative Rede Local para o MCCompanion nos ajustes do dispositivo e verifique se você está conectado ao Wi-Fi.",
+  "serverListPlayersAny": "Qualquer tamanho",
+  "serverListPlayersHint": "Média de jogadores online",
   "directAddressNotSupported": "{host} é um endereço IPv6. O modo proxy/direto só suporta IPv4. Use o endereço IPv4 ou o nome de anfitrião.",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -1451,7 +1420,6 @@
   "serverListNoMatchHint": "Tente outra pesquisa ou categoria",
   "serverCardPlay": "Jogar",
   "serverCardVote": "Votar",
-  "serverCardViewServer": "Ver servidor",
   "serverCopyIp": "Copiar IP",
   "serverCopied": "Copiado",
   "serverStatPlayers": "Jogadores",

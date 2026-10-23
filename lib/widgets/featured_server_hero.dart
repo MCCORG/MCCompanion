@@ -80,8 +80,8 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
 
   static const double _toggleHeight = 20;
 
-  double _extraHeight(BuildContext context) {
-    final width = _descWidthFor(MediaQuery.sizeOf(context).width);
+  double _extraHeight(BuildContext context, double boxWidth) {
+    final width = _descWidthFor(boxWidth);
     if (width <= 0) return 0;
     final pages = _featuredServers.isEmpty
         ? <FeaturedServer?>[null]
@@ -163,67 +163,81 @@ class _FeaturedServerHeroState extends State<FeaturedServerHero> {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: widget.borderRadius,
-      child: SizedBox(
-        height:
-            widget.height +
-            widget.topInset +
-            widget.bottomInset +
-            _extraHeight(context),
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            if (_featuredServers.isEmpty)
-              _heroPage(context, null)
-            else
-              PageView.builder(
-                controller: _heroBgController,
-                onPageChanged: (i) => setState(() => _heroBgPage = i),
-                itemCount: _featuredServers.length,
-                itemBuilder: (context, i) =>
-                    _heroPage(context, _featuredServers[i]),
-              ),
-
-            Padding(
-              padding: EdgeInsets.fromLTRB(14, 14 + widget.topInset, 14, 14),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _heroBadge(
-                    icon: Icons.star_rounded,
-                    label: AppLocalizations.of(context)!.featuredServerLabel,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final boxWidth = constraints.maxWidth.isFinite
+            ? constraints.maxWidth
+            : MediaQuery.sizeOf(context).width;
+        return ClipRRect(
+          borderRadius: widget.borderRadius,
+          child: SizedBox(
+            height:
+                widget.height +
+                widget.topInset +
+                widget.bottomInset +
+                _extraHeight(context, boxWidth),
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                if (_featuredServers.isEmpty)
+                  _heroPage(context, null)
+                else
+                  PageView.builder(
+                    controller: _heroBgController,
+                    onPageChanged: (i) => setState(() => _heroBgPage = i),
+                    itemCount: _featuredServers.length,
+                    itemBuilder: (context, i) =>
+                        _heroPage(context, _featuredServers[i]),
                   ),
-                  const Spacer(),
-                  if (_featuredServers.length > 1)
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: List.generate(
-                        _featuredServers.length.clamp(0, 6),
-                        (i) {
-                          final active =
-                              i == _heroBgPage % _featuredServers.length;
-                          return AnimatedContainer(
-                            duration: const Duration(milliseconds: 300),
-                            margin: const EdgeInsets.only(left: 4),
-                            width: active ? 14 : 5,
-                            height: 5,
-                            decoration: BoxDecoration(
-                              color: active
-                                  ? Colors.white
-                                  : Colors.white.withValues(alpha: 0.25),
-                              borderRadius: BorderRadius.circular(3),
-                            ),
-                          );
-                        },
+
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                    14,
+                    14 + widget.topInset,
+                    14,
+                    14,
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _heroBadge(
+                        icon: Icons.star_rounded,
+                        label: AppLocalizations.of(
+                          context,
+                        )!.featuredServerLabel,
                       ),
-                    ),
-                ],
-              ),
+                      const Spacer(),
+                      if (_featuredServers.length > 1)
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: List.generate(
+                            _featuredServers.length.clamp(0, 6),
+                            (i) {
+                              final active =
+                                  i == _heroBgPage % _featuredServers.length;
+                              return AnimatedContainer(
+                                duration: const Duration(milliseconds: 300),
+                                margin: const EdgeInsets.only(left: 4),
+                                width: active ? 14 : 5,
+                                height: 5,
+                                decoration: BoxDecoration(
+                                  color: active
+                                      ? Colors.white
+                                      : Colors.white.withValues(alpha: 0.25),
+                                  borderRadius: BorderRadius.circular(3),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 

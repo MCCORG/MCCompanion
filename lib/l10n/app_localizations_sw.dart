@@ -152,9 +152,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get save => 'Hifadhi';
 
   @override
-  String get clientDisconnected => 'Mteja ametenganishwa: Utangazaji umesimama';
-
-  @override
   String get pleaseEnterServer => '⚠️ Tafadhali weka anwani ya seva';
 
   @override
@@ -413,16 +410,16 @@ class AppLocalizationsSw extends AppLocalizations {
   String get navFixed => 'Connector na Wasifu daima ni thabiti';
 
   @override
-  String get leftSlot => 'Slot 2';
+  String get leftSlot => 'Nafasi 2';
 
   @override
-  String get outerSlot => 'Slot 1';
+  String get outerSlot => 'Nafasi 1';
 
   @override
-  String get rightSlot => 'Slot 3';
+  String get rightSlot => 'Nafasi 3';
 
   @override
-  String get farSlot => 'Slot 4';
+  String get farSlot => 'Nafasi 4';
 
   @override
   String get colorPickerApply => 'Tumia';
@@ -496,133 +493,135 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get reportUser => 'Report user';
+  String get reportUser => 'Ripoti mtumiaji';
 
   @override
   String reportUserWithName(Object name) {
-    return 'Report $name';
+    return 'Ripoti $name';
   }
 
   @override
   String get reportDisclaimer =>
-      'Reports are reviewed by our team. False reports may result in action against your account.';
+      'Ripoti hukaguliwa na timu yetu. Ripoti za uongo zinaweza kusababisha hatua dhidi ya akaunti yako.';
 
   @override
   String get reportReasonSpam => 'Spam';
 
   @override
-  String get reportReasonHarassment => 'Harassment';
+  String get reportReasonHarassment => 'Unyanyasaji';
 
   @override
-  String get reportReasonInappropriate => 'Inappropriate content';
+  String get reportReasonInappropriate => 'Maudhui yasiyofaa';
 
   @override
-  String get reportReasonOther => 'Other';
+  String get reportReasonOther => 'Nyingine';
 
   @override
-  String get reportAdditionalDetails => 'Additional details (optional)…';
+  String get reportAdditionalDetails => 'Maelezo ya ziada (si lazima)…';
 
   @override
-  String get reportSuccess => 'Report submitted. Thank you.';
+  String get reportSuccess => 'Ripoti imetumwa. Asante.';
 
   @override
-  String get reportFailed => 'Failed to submit report. Please try again.';
+  String get reportFailed => 'Imeshindwa kutuma ripoti. Tafadhali jaribu tena.';
 
   @override
-  String get reportSubmit => 'Submit report';
+  String get reportSubmit => 'Tuma ripoti';
 
   @override
   String get playerLookupSubtitle =>
-      'Search for a Java or Bedrock player by username';
+      'Tafuta mchezaji wa Java au Bedrock kwa jina la mtumiaji';
 
   @override
-  String get playerLookupHint => 'Enter a username…';
+  String get playerLookupHint => 'Weka jina la mtumiaji…';
 
   @override
-  String get playerLookupLinked => 'Linked accounts found';
+  String get playerLookupLinked => 'Akaunti zilizounganishwa zimepatikana';
 
   @override
-  String get playerLookupLabelUsername => 'Username';
+  String get playerLookupLabelUsername => 'Jina la mtumiaji';
 
   @override
   String get playerLookupLabelTier => 'Tier';
 
   @override
   String playerLookupCopied(Object value) {
-    return '$value copied';
+    return '$value imenakiliwa';
   }
 
   @override
-  String get addFriend => 'Add Friend';
+  String get addFriend => 'Ongeza Rafiki';
 
   @override
   String get send => 'Send';
 
   @override
-  String get somethingWentWrong => 'Something went wrong. Please try again.';
+  String get somethingWentWrong => 'Hitilafu imetokea. Tafadhali jaribu tena.';
 
   @override
   String friendRequestAccepted(Object name) {
-    return 'You are now friends with $name';
+    return 'Sasa wewe ni rafiki wa $name';
   }
 
   @override
   String requestDeclined(Object name) {
-    return 'Request from $name declined';
+    return 'Ombi kutoka kwa $name limekataliwa';
   }
 
   @override
-  String get deleteAccountTitle => 'Delete Account';
+  String get deleteAccountTitle => 'Futa Akaunti';
 
   @override
   String get deleteAccountBody =>
-      'This will permanently delete your account and all data. This action cannot be undone.';
+      'Hii itafuta akaunti yako na data yote kabisa. Kitendo hiki hakiwezi kutenduliwa.';
 
   @override
-  String get deletePermanently => 'Delete Permanently';
+  String get deletePermanently => 'Futa Kabisa';
 
   @override
   String get couldNotDeleteAccount =>
-      'Could not delete account. Please try again.';
+      'Imeshindwa kufuta akaunti. Tafadhali jaribu tena.';
 
   @override
-  String get removeFriendTitle => 'Remove Friend';
+  String get removeFriendTitle => 'Ondoa Rafiki';
 
   @override
   String removeFriendConfirm(Object name) {
-    return 'Remove $name from your friends?';
+    return 'Umwondoe $name kwenye orodha ya marafiki?';
   }
 
   @override
-  String get remove => 'Remove';
+  String get remove => 'Ondoa';
 
   @override
   String friendRemoved(Object name) {
-    return '$name has been removed from your friends';
+    return '$name ameondolewa kwenye orodha ya marafiki';
   }
 
   @override
   String get emailDifferentMethod =>
-      'This email is linked to a different sign-in method';
+      'Barua pepe hii imeunganishwa na njia tofauti ya kuingia';
 
   @override
-  String get googleSignInFailed => 'Google sign-in failed. Please try again.';
+  String get googleSignInFailed =>
+      'Kuingia kwa Google kumeshindwa. Tafadhali jaribu tena.';
 
   @override
-  String get appleSignInFailed => 'Apple sign-in failed. Please try again.';
+  String get appleSignInFailed =>
+      'Kuingia kwa Apple kumeshindwa. Tafadhali jaribu tena.';
 
   @override
-  String get resetPasswordTitle => 'Reset Password';
+  String get resetPasswordTitle => 'Weka Upya Nenosiri';
 
   @override
   String get resetPasswordBody =>
-      'Enter your email address and we will send you a link to reset your password.';
+      'Weka anwani yako ya barua pepe nasi tutakutumia kiungo cha kuweka upya nenosiri.';
 
   @override
-  String get emailAddressHint => 'Email address';
+  String get emailAddressHint => 'Anwani ya barua pepe';
 
   @override
-  String get sendLink => 'Send link';
+  String get sendLink => 'Tuma kiungo';
 
   @override
   String resetLinkSent(Object email) {
@@ -630,164 +629,167 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get invalidEmailError => 'The email address is not valid';
+  String get invalidEmailError => 'Anwani ya barua pepe si sahihi';
 
   @override
   String get couldNotSendResetEmail =>
-      'Could not send reset email. Please try again.';
+      'Imeshindwa kutuma barua pepe ya kuweka upya. Tafadhali jaribu tena.';
 
   @override
-  String get enterEmailAndPassword => 'Please enter your email and password';
+  String get enterEmailAndPassword =>
+      'Tafadhali weka barua pepe na nenosiri lako';
 
   @override
-  String get incorrectEmailOrPassword => 'Incorrect email or password';
+  String get incorrectEmailOrPassword => 'Barua pepe au nenosiri si sahihi';
 
   @override
-  String get emailAlreadyInUse => 'This email address is already in use';
+  String get emailAlreadyInUse => 'Anwani hii ya barua pepe tayari inatumika';
 
   @override
   String get weakPassword =>
-      'Password is too weak. Please choose a stronger one.';
+      'Nenosiri ni dhaifu sana. Tafadhali chagua lenye nguvu zaidi.';
 
   @override
-  String get createAccount => 'Create Account';
+  String get createAccount => 'Fungua Akaunti';
 
   @override
   String get signInSubtitle =>
-      'Sign in to access your profile, friends, and chats.';
+      'Ingia ili kufikia wasifu wako, marafiki na mazungumzo.';
 
   @override
-  String get passwordHint => 'Password';
+  String get passwordHint => 'Nenosiri';
 
   @override
-  String get forgotPassword => 'Forgot password?';
+  String get forgotPassword => 'Umesahau nenosiri?';
 
   @override
   String get orDivider => 'or';
 
   @override
-  String get continueWithGoogle => 'Continue with Google';
+  String get continueWithGoogle => 'Endelea na Google';
 
   @override
-  String get alreadyHaveAccount => 'Already have an account? Sign in';
+  String get alreadyHaveAccount => 'Tayari una akaunti? Ingia';
 
   @override
-  String get noAccountYet => 'Don\'t have an account? Create one';
+  String get noAccountYet => 'Huna akaunti? Fungua moja';
 
   @override
-  String get profileNotSetUp => 'Profile not set up';
+  String get profileNotSetUp => 'Wasifu haujawekwa';
 
   @override
   String get chooseUsernameSubtitle =>
       'Chagua jina la mtumiaji ili wachezaji wengine wakupate.';
 
   @override
-  String get createProfile => 'Create Profile';
+  String get createProfile => 'Unda Wasifu';
 
   @override
-  String get findUser => 'Find user';
+  String get findUser => 'Tafuta mtumiaji';
 
   @override
-  String get couldNotUpdateVisibility => 'Could not update visibility settings';
+  String get couldNotUpdateVisibility =>
+      'Imeshindwa kusasisha mipangilio ya mwonekano';
 
   @override
-  String get signOut => 'Sign Out';
+  String get signOut => 'Toka';
 
   @override
-  String get appearOfflineLabel => 'Appear Offline';
+  String get appearOfflineLabel => 'Onekana Nje ya Mtandao';
 
   @override
-  String get appearOfflineOn => 'You appear offline to other players';
+  String get appearOfflineOn =>
+      'Unaonekana nje ya mtandao kwa wachezaji wengine';
 
   @override
-  String get appearOfflineOff => 'You appear online to other players';
+  String get appearOfflineOff => 'Unaonekana mtandaoni kwa wachezaji wengine';
 
   @override
-  String get unlinkXboxTitle => 'Unlink Xbox Account';
+  String get unlinkXboxTitle => 'Tenganisha Akaunti ya Xbox';
 
   @override
   String removeLabelConfirm(Object name) {
-    return 'Remove $name from your linked accounts?';
+    return 'Umwondoe $name kwenye akaunti ulizounganisha?';
   }
 
   @override
-  String get unlink => 'Unlink';
+  String get unlink => 'Tenganisha';
 
   @override
-  String get unlinkJavaTitle => 'Unlink Java Account';
+  String get unlinkJavaTitle => 'Tenganisha Akaunti ya Java';
 
   @override
   String removeJavaConfirm(Object name) {
-    return 'Remove $name from your linked accounts?';
+    return 'Umwondoe $name kwenye akaunti ulizounganisha?';
   }
 
   @override
   String get linkAccountsHint =>
-      'Link your Minecraft accounts to show your skins and stats.';
+      'Unganisha akaunti zako za Minecraft ili kuonyesha skin na takwimu zako.';
 
   @override
-  String get linkXbox => 'Link Xbox';
+  String get linkXbox => 'Unganisha Xbox';
 
   @override
-  String get linkJava => 'Link Java';
+  String get linkJava => 'Unganisha Java';
 
   @override
-  String get profileUpdated => 'Profile updated';
+  String get profileUpdated => 'Wasifu umesasishwa';
 
   @override
   String get edit => 'Edit';
 
   @override
-  String get displayNameLabel => 'Display Name';
+  String get displayNameLabel => 'Jina la Kuonyesha';
 
   @override
-  String get yourNameHint => 'Your name';
+  String get yourNameHint => 'Jina lako';
 
   @override
   String get bioLabel => 'Bio';
 
   @override
-  String get bioHint => 'Tell others about yourself…';
+  String get bioHint => 'Waambie wengine kukuhusu…';
 
   @override
-  String get noFriendsYet => 'No friends yet';
+  String get noFriendsYet => 'Bado hakuna marafiki';
 
   @override
-  String get noFriendsSub => 'Add friends to see them here.';
+  String get noFriendsSub => 'Ongeza marafiki ili waonekane hapa.';
 
   @override
   String onlineFriendsLabel(Object count) {
-    return '$count online';
+    return '$count mtandaoni';
   }
 
   @override
   String offlineFriendsLabel(Object count) {
-    return '$count offline';
+    return '$count nje ya mtandao';
   }
 
   @override
-  String get noPendingRequests => 'No pending requests';
+  String get noPendingRequests => 'Hakuna maombi yanayosubiri';
 
   @override
-  String get requestsAppearHere => 'New friend requests will appear here.';
+  String get requestsAppearHere => 'Maombi mapya ya urafiki yataonekana hapa.';
 
   @override
   String get skinsEdit => 'Edit';
 
   @override
-  String get skinsMustBe64 => 'Skin must be 64×64 pixels';
+  String get skinsMustBe64 => 'Skin lazima iwe pikseli 64×64';
 
   @override
-  String get skinsInvalidFile => 'Invalid image file';
+  String get skinsInvalidFile => 'Faili ya picha si sahihi';
 
   @override
-  String get skinsUpload => 'Upload';
+  String get skinsUpload => 'Pakia';
 
   @override
-  String get skinsCreate => 'Create';
+  String get skinsCreate => 'Unda';
 
   @override
-  String get skinsDownload => 'Download';
+  String get skinsDownload => 'Pakua';
 
   @override
   String get chooseUniqueUsername =>
@@ -840,315 +842,320 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get paywallRestore => 'Restore';
+  String get paywallRestore => 'Rejesha';
 
   @override
-  String get paywallMonthly => 'Monthly';
+  String get paywallMonthly => 'Kila mwezi';
 
   @override
-  String get paywallYearly => 'Yearly';
+  String get paywallYearly => 'Kila mwaka';
 
   @override
-  String get paywallSavePercent => 'Save ~17%';
+  String get paywallSavePercent => 'Okoa ~17%';
 
   @override
   String get paywallSubtitle =>
-      'Track more servers and get notified\nwhen they go online or offline.';
+      'Fuatilia seva zaidi na upate arifa\nzinapokuwa mtandaoni au nje ya mtandao.';
 
   @override
   String paywallSlotLabel(Object slots) {
-    return '$slots server slots';
+    return 'Nafasi $slots za seva';
   }
 
   @override
-  String get paywallPopular => 'Popular';
+  String get paywallPopular => 'Maarufu';
 
   @override
-  String get paywallContinue => 'Continue';
+  String get paywallContinue => 'Endelea';
 
   @override
-  String get paywallNoPkgs => 'No packages available.';
+  String get paywallNoPkgs => 'Hakuna vifurushi vinavyopatikana.';
 
   @override
-  String get paywallManaged => 'Managed by Apple/Google. Cancel anytime.';
+  String get paywallManaged =>
+      'Inasimamiwa na Apple/Google. Ghairi wakati wowote.';
 
   @override
-  String get paywallPurchaseSuccess => 'Purchase successful!';
+  String get paywallPurchaseSuccess => 'Ununuzi umefanikiwa!';
 
   @override
-  String get paywallPurchaseFailed => 'Purchase failed. Please try again.';
+  String get paywallPurchaseFailed =>
+      'Ununuzi umeshindwa. Tafadhali jaribu tena.';
 
   @override
-  String get paywallPurchasesRestored => 'Purchases restored!';
+  String get paywallPurchasesRestored => 'Ununuzi umerejeshwa!';
 
   @override
-  String get paywallNoActivePurchases => 'No active purchases found.';
+  String get paywallNoActivePurchases =>
+      'Hakuna ununuzi unaoendelea uliopatikana.';
 
   @override
-  String get paywallRestoreFailed => 'Restore failed. Please try again.';
+  String get paywallRestoreFailed =>
+      'Kurejesha kumeshindwa. Tafadhali jaribu tena.';
 
   @override
   String get relay => 'Relay';
 
   @override
-  String get serversSection => 'Servers';
+  String get serversSection => 'Seva';
 
   @override
-  String get selectBedrockAccount => 'Select Bedrock account';
+  String get selectBedrockAccount => 'Chagua akaunti ya Bedrock';
 
   @override
-  String get infoAndLegal => 'Info & Legal';
+  String get infoAndLegal => 'Taarifa na Sheria';
 
   @override
-  String get legalSection => 'Legal';
+  String get legalSection => 'Sheria';
 
   @override
   String get privacyPolicy => 'sera ya faragha';
 
   @override
-  String get privacyPolicySubtitle => 'How we collect and protect your data';
+  String get privacyPolicySubtitle =>
+      'Jinsi tunavyokusanya na kulinda data yako';
 
   @override
   String get termsOfService => 'masharti ya huduma';
 
   @override
-  String get termsOfServiceSubtitle => 'Rules and conditions of use';
+  String get termsOfServiceSubtitle => 'Kanuni na masharti ya matumizi';
 
   @override
-  String get dataSourcesSection => 'Data Sources & Credits';
+  String get dataSourcesSection => 'Vyanzo vya Data na Shukrani';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
 
   @override
   String get creditMojangSubtitle =>
-      'Java player skins, UUIDs, and profile data via the official Mojang API.';
+      'Skin za wachezaji wa Java, UUID na data za wasifu kupitia API rasmi ya Mojang.';
 
   @override
   String get creditGeyserTitle => 'GeyserMC';
 
   @override
   String get creditGeyserSubtitle =>
-      'Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.';
+      'Uonyeshaji wa skin za Bedrock. Skin za wachezaji wa Bedrock hupatikana kupitia seva ya skin ya GeyserMC.';
 
   @override
   String get creditXboxTitle => 'Xbox / Microsoft';
 
   @override
   String get creditXboxSubtitle =>
-      'Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.';
+      'Kuunganisha akaunti za Bedrock kupitia Xbox Live. Gamertag na XUID hupatikana kupitia mchakato wa uthibitishaji wa Microsoft.';
 
   @override
-  String get aboutMCCompanionSection => 'About MCCompanion';
+  String get aboutMCCompanionSection => 'Kuhusu MCCompanion';
 
   @override
   String get aboutMCCompanionDisclaimer =>
-      'MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.';
+      'MCCompanion ni programu huru na haina uhusiano, uidhinishaji wala udhamini wa Mojang Studios au Microsoft Corporation.';
 
   @override
   String get minecraftTrademark =>
-      '\"Minecraft\" is a trademark of Microsoft Corporation.';
+      '\"Minecraft\" ni alama ya biashara ya Microsoft Corporation.';
 
   @override
   String get nldServerLabelShort => 'MCCompanion Server';
 
   @override
-  String get editServer => 'Edit Server';
+  String get editServer => 'Hariri Seva';
 
   @override
-  String get serverNameExampleHint => 'My Awesome Server';
+  String get serverNameExampleHint => 'Seva Yangu Bora';
 
   @override
   String get serverAddressExampleHint => 'play.example.com';
 
   @override
-  String get serverDescriptionExampleHint => 'Survival server with friends';
+  String get serverDescriptionExampleHint => 'Seva ya kuishi na marafiki';
 
   @override
-  String get editionLabel => 'Edition';
+  String get editionLabel => 'Toleo';
 
   @override
   String get nameLabel => 'Name';
 
   @override
-  String get ipAddressFieldLabel => 'IP Address';
+  String get ipAddressFieldLabel => 'Anwani ya IP';
 
   @override
   String get portFieldLabel => 'Port';
 
   @override
-  String get platformFieldLabel => 'Platform';
+  String get platformFieldLabel => 'Jukwaa';
 
   @override
-  String get nameValidationError => 'Name must be 1–50 characters';
+  String get nameValidationError => 'Jina lazima liwe na herufi 1–50';
 
   @override
-  String get ipRequiredError => 'IP address is required';
+  String get ipRequiredError => 'Anwani ya IP inahitajika';
 
   @override
-  String get portRangeError => 'Port must be between 1 and 65535';
+  String get portRangeError => 'Mlango lazima uwe kati ya 1 na 65535';
 
   @override
-  String get xboxLinkTitle => 'Link Xbox Account';
+  String get xboxLinkTitle => 'Unganisha Akaunti ya Xbox';
 
   @override
-  String get xboxStartingLogin => 'Starting Xbox login…';
+  String get xboxStartingLogin => 'Inaanzisha kuingia kwa Xbox…';
 
   @override
-  String get xboxSignInWithMicrosoft => 'Sign in with Microsoft';
+  String get xboxSignInWithMicrosoft => 'Ingia kwa Microsoft';
 
   @override
   String get xboxGoToLink =>
-      'Go to the link below and enter the code to connect your Xbox account.';
+      'Nenda kwenye kiungo kilicho hapa chini na uweke msimbo ili kuunganisha akaunti yako ya Xbox.';
 
   @override
-  String get xboxYourCode => 'Your code';
+  String get xboxYourCode => 'Msimbo wako';
 
   @override
-  String get xboxTapToCopy => 'Tap the code to copy it';
+  String get xboxTapToCopy => 'Gusa msimbo ili kuunakili';
 
   @override
-  String get xboxOpenLink => 'Open microsoft.com/link';
+  String get xboxOpenLink => 'Fungua microsoft.com/link';
 
   @override
-  String get xboxWaitingForLogin => 'Waiting for login…';
+  String get xboxWaitingForLogin => 'Inasubiri kuingia…';
 
   @override
-  String get xboxAccountLinked => 'Xbox account linked!';
+  String get xboxAccountLinked => 'Akaunti ya Xbox imeunganishwa!';
 
   @override
-  String get xboxCodeCopied => 'Code copied to clipboard';
+  String get xboxCodeCopied => 'Msimbo umenakiliwa kwenye ubao wa kunakili';
 
   @override
   String get xboxCouldNotStart =>
-      'Could not start Xbox login. Please try again.';
+      'Imeshindwa kuanzisha kuingia kwa Xbox. Tafadhali jaribu tena.';
 
   @override
-  String get xboxCodeExpired => 'The code expired. Please try again.';
+  String get xboxCodeExpired => 'Msimbo umeisha muda. Tafadhali jaribu tena.';
 
   @override
-  String get xboxSomethingWrong => 'Something went wrong. Please try again.';
+  String get xboxSomethingWrong => 'Hitilafu imetokea. Tafadhali jaribu tena.';
 
   @override
-  String get tryAgain => 'Try again';
+  String get tryAgain => 'Jaribu tena';
 
   @override
-  String get userNotFound => 'User not found';
+  String get userNotFound => 'Mtumiaji hajapatikana';
 
   @override
-  String get profileSectionLabel => 'Profile';
+  String get profileSectionLabel => 'Wasifu';
 
   @override
-  String get displayNameRowLabel => 'Display name';
+  String get displayNameRowLabel => 'Jina la Kuonyesha';
 
   @override
-  String get usernameRowLabel => 'Username';
+  String get usernameRowLabel => 'Jina la mtumiaji';
 
   @override
-  String get lastSeenLabel => 'Last seen';
+  String get lastSeenLabel => 'Alionekana mara ya mwisho';
 
   @override
-  String get aboutSectionLabel => 'About';
+  String get aboutSectionLabel => 'Kuhusu';
 
   @override
   String get xboxBedrockLabel => 'Xbox / Bedrock';
 
   @override
-  String get friendRequestSent => 'Friend request sent';
+  String get friendRequestSent => 'Ombi la urafiki limetumwa';
 
   @override
-  String get alreadyFriendsMsg => 'You are already friends.';
+  String get alreadyFriendsMsg => 'Tayari ni marafiki.';
 
   @override
-  String get requestAlreadyPendingMsg => 'There is already a pending request.';
+  String get requestAlreadyPendingMsg => 'Tayari kuna ombi linalosubiri.';
 
   @override
-  String get userNotFoundMsg2 => 'User not found.';
+  String get userNotFoundMsg2 => 'Mtumiaji hajapatikana.';
 
   @override
-  String get cannotSendRequestMsg => 'Cannot send a request to this user.';
+  String get cannotSendRequestMsg => 'Huwezi kumtumia mtumiaji huyu ombi.';
 
   @override
   String nowFriendsWith(Object username) {
-    return 'Now friends with @$username';
+    return 'Sasa ni rafiki wa @$username';
   }
 
   @override
-  String get removeFriendButton => 'Remove friend';
+  String get removeFriendButton => 'Ondoa rafiki';
 
   @override
-  String get requestSentButton => 'Request sent';
+  String get requestSentButton => 'Ombi limetumwa';
 
   @override
-  String get acceptRequestButton => 'Accept request';
+  String get acceptRequestButton => 'Kubali ombi';
 
   @override
-  String get addFriendButton => 'Add friend';
+  String get addFriendButton => 'Ongeza rafiki';
 
   @override
-  String get removeFriendDialogTitle => 'Remove friend';
+  String get removeFriendDialogTitle => 'Ondoa Rafiki';
 
   @override
   String removeFriendDialogBody(Object username) {
-    return 'Remove @$username as a friend?';
+    return 'Umwondoe @$username kama rafiki?';
   }
 
   @override
   String get trackerLimitReached => 'Kikomo cha seva kimefikiwa';
 
   @override
-  String get upgradeButton => 'Upgrade';
+  String get upgradeButton => 'Boresha';
 
   @override
-  String get javaLinkTitle => 'Link Java Edition';
+  String get javaLinkTitle => 'Unganisha Java Edition';
 
   @override
-  String get javaStartingLogin => 'Starting Microsoft login…';
+  String get javaStartingLogin => 'Inaanzisha kuingia kwa Microsoft…';
 
   @override
-  String get javaSignInWithMicrosoft => 'Sign in with Microsoft';
+  String get javaSignInWithMicrosoft => 'Ingia kwa Microsoft';
 
   @override
   String get javaGoToLink =>
-      'Go to the link below and enter the code to connect your Minecraft Java Edition account.';
+      'Nenda kwenye kiungo kilicho hapa chini na uweke msimbo ili kuunganisha akaunti yako ya Minecraft Java Edition.';
 
   @override
-  String get javaYourCode => 'Your code';
+  String get javaYourCode => 'Msimbo wako';
 
   @override
-  String get javaTapToCopy => 'Tap the code to copy it';
+  String get javaTapToCopy => 'Gusa msimbo ili kuunakili';
 
   @override
-  String get javaOpenLink => 'Open microsoft.com/link';
+  String get javaOpenLink => 'Fungua microsoft.com/link';
 
   @override
-  String get javaWaitingForLogin => 'Waiting for login…';
+  String get javaWaitingForLogin => 'Inasubiri kuingia…';
 
   @override
-  String get javaAccountLinked => 'Java Edition linked!';
+  String get javaAccountLinked => 'Java Edition imeunganishwa!';
 
   @override
-  String get javaNoJavaTitle => 'No Java Edition found';
+  String get javaNoJavaTitle => 'Java Edition haijapatikana';
 
   @override
   String get javaNoJavaBody =>
-      'The Microsoft account you signed in with does not own Minecraft Java Edition.';
+      'Akaunti ya Microsoft uliyoingia nayo haimiliki Minecraft Java Edition.';
 
   @override
-  String get javaTryDifferentAccount => 'Try a different account';
+  String get javaTryDifferentAccount => 'Jaribu akaunti nyingine';
 
   @override
   String get javaCouldNotStart =>
-      'Could not start Microsoft login. Please try again.';
+      'Imeshindwa kuanzisha kuingia kwa Microsoft. Tafadhali jaribu tena.';
 
   @override
-  String get javaCodeExpired => 'The code expired. Please try again.';
+  String get javaCodeExpired => 'Msimbo umeisha muda. Tafadhali jaribu tena.';
 
   @override
-  String get javaSomethingWrong => 'Something went wrong. Please try again.';
+  String get javaSomethingWrong => 'Hitilafu imetokea. Tafadhali jaribu tena.';
 
   @override
-  String get javaCodeCopied => 'Code copied to clipboard';
+  String get javaCodeCopied => 'Msimbo umenakiliwa kwenye ubao wa kunakili';
 
   @override
   String get featureLabelConnector => 'Kiunganishi';
@@ -1379,16 +1386,6 @@ class AppLocalizationsSw extends AppLocalizations {
       'Pakiti za muundo zenye azimio la juu zinaweza kusababisha ucheleweshaji au kuacha kufanya kazi kwenye consoles. Ukipata matatizo, badili hadi pakiti yenye azimio la chini au chagua subpackage nyepesi ikiwa pakiti inaauni.';
 
   @override
-  String get rpWarnDiscord =>
-      'Viungo vya Discord vinaisha na vitaacha kufanya kazi. Tumia seva ya kudumu badala yake.';
-
-  @override
-  String get rpWarnHttps => 'URL lazima ianze na https://';
-
-  @override
-  String get rpWarnExtension => 'URL lazima iishie .mcpack au .zip';
-
-  @override
   String get rpToastSaved =>
       'Mipangilio ya kifurushi cha rasilimali imehifadhiwa.';
 
@@ -1439,16 +1436,46 @@ class AppLocalizationsSw extends AppLocalizations {
       'Minecraft huhifadhi pakiti za rasilimali kwa UUID zao. Pakiti iliyounganishwa inabaki na UUID ya asili ya seva, ikiwa Minecraft tayari imehifadhi pakiti ya seva kutoka kipindi kilichopita (kabla ya MCCompanion kuwezeshwa), haitapakua toleo jipya lililounganishwa. Futa akiba ili Minecraft ipakue pakiti mpya iliyounganishwa.';
 
   @override
-  String get rpUploadTab => 'Upload';
+  String get rpUploadTab => 'Pakia';
 
   @override
-  String get rpUploadButton => 'Tap to select your pack';
+  String get rpBrowseTab => 'Vinjari';
 
   @override
-  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+  String get rpCategoryRealism => 'Uhalisia';
 
   @override
-  String get rpUploading => 'Uploading...';
+  String get rpCategoryFaithful => 'Faithful';
+
+  @override
+  String get rpCategoryPvp => 'PvP';
+
+  @override
+  String get rpCategoryCartoon => 'Katuni';
+
+  @override
+  String get rpCategoryDark => 'Giza';
+
+  @override
+  String get rpCategoryMedieval => 'Zama za Kati';
+
+  @override
+  String get rpCategoryNature => 'Asili';
+
+  @override
+  String get rpCategoryThemed => 'Yenye mandhari';
+
+  @override
+  String get rpCategoryOther => 'Nyingine';
+
+  @override
+  String get rpUploadButton => 'Gusa ili kuchagua kifurushi chako';
+
+  @override
+  String get rpUploadHint => '.mcpack au .zip • juu ya MB 100';
+
+  @override
+  String get rpUploading => 'Inapakia...';
 
   @override
   String get rpMergerTitle => 'Muunganisho wa RP';
@@ -1597,58 +1624,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String get skinsSavedToMySkins => 'Imehifadhiwa katika Ngozi Zangu';
 
   @override
-  String get skinsDownloadFailed => 'Upakuaji umeshindwa';
-
-  @override
-  String get skinsDeletedFromCloud => 'Imefutwa kutoka kwenye wingu';
-
-  @override
-  String get skinsDeleteFailed => 'Kufuta kumeshindwa';
-
-  @override
-  String get skinsLoginToUpload => 'Ingia ili kupakia ngozi';
-
-  @override
-  String get skinsUploading => 'Inapakia…';
-
-  @override
-  String get skinUploaded => 'Ngozi imepakiwa!';
-
-  @override
-  String skinUploadFailed(String error) {
-    return 'Upakiaji umeshindwa: $error';
-  }
-
-  @override
   String get skinsEmptyLocalSkins =>
       'Hakuna ngozi bado. Unda au pakia ngozi ili kuanza.';
-
-  @override
-  String get skinUploadToWebsite => 'Pakia kwenye tovuti';
-
-  @override
-  String get skinReuploadToWebsite => 'Pakia tena kwenye tovuti';
-
-  @override
-  String get skinCloudEdit => 'Hariri';
-
-  @override
-  String get skinCloudSaveToDevice => 'Hifadhi kwenye kifaa';
-
-  @override
-  String get skinCloudDelete => 'Futa kutoka kwenye wingu';
-
-  @override
-  String get skinsTabGallery => 'Matunzio';
-
-  @override
-  String get skinsTopLabel => 'Bora 30';
-
-  @override
-  String get skinsAllLabel => 'Ngozi Zote';
-
-  @override
-  String get skinUploadToCloud => 'Pakia kwa Wingu';
 
   @override
   String get skinSaveDialog => 'Hifadhi Skin';
@@ -1658,19 +1635,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get skinDefaultName => 'Skin yangu';
-
-  @override
-  String get skinUpdatedInCloud => 'Skin imesasishwa kwenye wingu';
-
-  @override
-  String skinByCreator(String name) {
-    return 'na $name';
-  }
-
-  @override
-  String skinLikesCount(int count) {
-    return '$count likes';
-  }
 
   @override
   String get sectionRecentActivity => 'Shughuli za hivi karibuni';
@@ -1785,18 +1749,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get notifPrefMessageReceived => 'Ujumbe mpya';
 
   @override
-  String get commentsTitle => 'Maoni';
-
-  @override
-  String get commentsEmpty => 'Bado hakuna maoni. Kuwa wa kwanza!';
-
-  @override
-  String get commentsPlaceholder => 'Andika maoni…';
-
-  @override
-  String get loadMore => 'Pakia zaidi';
-
-  @override
   String get skinLayerInner => 'Ndani';
 
   @override
@@ -1826,9 +1778,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get skinSaveToMySkins => 'Hifadhi kwenye skin zangu';
-
-  @override
-  String get skinUpdateInCloud => 'Sasisha kwenye wingu';
 
   @override
   String get skinExportPng => 'Hamisha PNG';
@@ -2067,6 +2016,20 @@ class AppLocalizationsSw extends AppLocalizations {
       'Imeshindwa kufungua mlango wa ndani. Simamisha muunganisho wa sasa kwanza.';
 
   @override
+  String get waitingForConsole => 'Inasubiri kiweko chako…';
+
+  @override
+  String get consoleFound => 'Kiweko kimepatikana';
+
+  @override
+  String get consoleLanHint =>
+      'Kwenye kiweko chako, fungua Minecraft na utafute mchezo wa LAN chini ya Marafiki.';
+
+  @override
+  String get localNetworkBlocked =>
+      'MCCompanion haiwezi kufikia mtandao wako wa ndani. Washa Mtandao wa Ndani kwa MCCompanion kwenye mipangilio ya kifaa chako na hakikisha uko kwenye Wi-Fi.';
+
+  @override
   String directAddressNotSupported(String host) {
     return '$host ni anwani ya IPv6. Hali ya Proksi/Moja kwa Moja inaunga mkono IPv4 pekee. Tumia anwani ya IPv4 au jina la mwenyeji.';
   }
@@ -2139,6 +2102,12 @@ class AppLocalizationsSw extends AppLocalizations {
   String get serverListAllCategories => 'Zote';
 
   @override
+  String get serverListPlayersAny => 'Ukubwa wowote';
+
+  @override
+  String get serverListPlayersHint => 'Wastani wa wachezaji mtandaoni';
+
+  @override
   String get serverListLoadFailed => 'Imeshindwa kupakia orodha ya seva';
 
   @override
@@ -2155,9 +2124,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get serverCardVote => 'Piga kura';
-
-  @override
-  String get serverCardViewServer => 'Angalia seva';
 
   @override
   String get serverCopyIp => 'Nakili IP';
@@ -2187,7 +2153,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get serverEditionBedrock => 'Bedrock';
 
   @override
-  String get serverEditionCrossplay => 'Crossplay';
+  String get serverEditionCrossplay => 'Mchezo mtambuka';
 
   @override
   String get serverSectionMotd => 'Ujumbe wa siku';

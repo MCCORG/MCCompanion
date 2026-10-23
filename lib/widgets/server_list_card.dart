@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-import '../l10n/app_localizations.dart';
-import '../theme/app_theme.dart';
 import '../design/design.dart';
+import '../l10n/app_localizations.dart';
 import '../util/directory_server.dart';
-import '../theme/app_tokens.dart';
 
-class ServerListCard extends StatefulWidget {
+class ServerListCard extends StatelessWidget {
   const ServerListCard({
     super.key,
     required this.server,
@@ -18,199 +15,150 @@ class ServerListCard extends StatefulWidget {
 
   final DirectoryServer server;
   final int rank;
-
   final VoidCallback onPlay;
-
   final VoidCallback? onOpenDetails;
 
   @override
-  State<ServerListCard> createState() => _ServerListCardState();
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+    final edition = server.editionBadge;
+    final version = server.usefulVersion;
+    final meta = [?version, ...server.tags.take(2)].join(
+      '  ·  ',
+    );
+    final banner = server.bannerUrl;
+
+    return DsCard(
+      onTap: onOpenDetails,
+      highlighted: server.featured,
+      accent: DsColor.warning,
+      padding: const EdgeInsets.all(DsSpace.lg),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          if (banner != null && banner.isNotEmpty) ...[
+            _Banner(url: banner),
+            const SizedBox(height: DsSpace.md),
+          ],
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _Icon(server: server, size: 44),
+              const SizedBox(width: DsSpace.md),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      server.name,
+                      style: DsType.bodyStrong,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: DsSpace.xxs),
+                    Text(
+                      server.connectAddress,
+                      style: DsType.caption,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: DsSpace.sm),
+                    Wrap(
+                      spacing: DsSpace.sm - 2,
+                      runSpacing: DsSpace.xs,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        if (server.featured)
+                          DsBadge(
+                            label: l.serverBadgeFeatured,
+                            color: DsColor.warning,
+                          ),
+                        DsBadge(
+                          label: switch (edition) {
+                            ServerEdition.java => l.serverEditionJava,
+                            ServerEdition.bedrock => l.serverEditionBedrock,
+                            ServerEdition.crossplay => l.serverEditionCrossplay,
+                          },
+                          color: switch (edition) {
+                            ServerEdition.java => DsColor.warning,
+                            ServerEdition.bedrock => DsColor.info,
+                            ServerEdition.crossplay => DsColor.accent,
+                          },
+                        ),
+                        if (meta.isNotEmpty) Text(meta, style: DsType.caption),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: DsSpace.md),
+          Row(
+            children: [
+              Text(
+                '#$rank',
+                style: DsType.mono.copyWith(
+                  color: DsColor.textFaint,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(width: DsSpace.md),
+              Icon(
+                Icons.people_outline_rounded,
+                size: 15,
+                color: DsColor.textFaint,
+              ),
+              const SizedBox(width: DsSpace.xs + 1),
+              Text(
+                server.avgPlayers.round().toString(),
+                style: DsType.caption.copyWith(color: DsColor.textSoft),
+              ),
+              const SizedBox(width: DsSpace.md),
+              Icon(
+                Icons.schedule_rounded,
+                size: 15,
+                color: DsColor.textFaint,
+              ),
+              const SizedBox(width: DsSpace.xs + 1),
+              Text(
+                '${server.uptime}%',
+                style: DsType.caption.copyWith(color: DsColor.textSoft),
+              ),
+              const Spacer(),
+              DsButton(
+                label: l.serverCardPlay,
+                icon: Icons.play_arrow_rounded,
+                size: DsButtonSize.small,
+                onPressed: onPlay,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
 }
 
-class _ServerListCardState extends State<ServerListCard> {
-  bool _hovered = false;
+class _Banner extends StatelessWidget {
+  const _Banner({required this.url});
 
-  DirectoryServer get server => widget.server;
-  int get rank => widget.rank;
-  VoidCallback get onPlay => widget.onPlay;
-  VoidCallback? get onOpenDetails => widget.onOpenDetails;
-
-  static const _wideBreakpoint = 700.0;
+  final String url;
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      onEnter: (_) => setState(() => _hovered = true),
-      onExit: (_) => setState(() => _hovered = false),
-      child: GestureDetector(
-        onTap: onOpenDetails,
-        behavior: HitTestBehavior.opaque,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 120),
-          decoration: BoxDecoration(
-            borderRadius: DsRadius.cardR,
-            color: Colors.transparent,
-          ),
-          child: _card(),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(DsRadius.control - 4),
+      child: AspectRatio(
+        aspectRatio: 468 / 60,
+        child: Image.network(
+          url,
+          fit: BoxFit.cover,
+          filterQuality: FilterQuality.none,
+          errorBuilder: (_, _, _) => ColoredBox(color: DsColor.inset),
         ),
       ),
-    );
-  }
-
-  Widget _card() {
-    return Container(
-      decoration: BoxDecoration(
-        color: DsColor.surface,
-        borderRadius: DsRadius.cardR,
-        border: Border.all(
-          color: _hovered
-              ? DsColor.accent.withValues(alpha: 0.35)
-              : DsColor.line,
-        ),
-      ),
-      padding: const EdgeInsets.all(DsSpace.lg),
-      child: LayoutBuilder(
-        builder: (context, constraints) =>
-            constraints.maxWidth >= _wideBreakpoint ? _wide() : _stacked(),
-      ),
-    );
-  }
-
-  Widget _wide() => _stacked();
-
-  Widget _stacked() {
-    final l = AppLocalizations.of(context)!;
-    final meta = [
-      if (server.version != null) server.version!,
-      ...server.tags.take(2),
-    ].join('  ·  ');
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _Icon(server: server, size: 46),
-            const SizedBox(width: DsSpace.md),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        '#$rank',
-                        style: DsType.mono.copyWith(
-                          color: DsColor.textFaint,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const SizedBox(width: DsSpace.sm - 2),
-                      Expanded(
-                        child: Text(server.name, style: DsType.bodyStrong),
-                      ),
-                      if (server.featured) ...[
-                        const SizedBox(width: DsSpace.sm - 2),
-                        DsBadge(
-                          label: l.serverBadgeFeatured,
-                          color: DsColor.warning,
-                        ),
-                      ],
-                      const SizedBox(width: DsSpace.xs),
-                      Icon(
-                        Icons.chevron_right_rounded,
-                        size: 20,
-                        color: _hovered ? DsColor.accent : DsColor.textFaint,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: DsSpace.xxs),
-                  Text('${server.host}:${server.port}', style: DsType.caption),
-                  if (meta.isNotEmpty) ...[
-                    const SizedBox(height: DsSpace.xxs),
-                    Text(meta, style: DsType.caption),
-                  ],
-                ],
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: DsSpace.md),
-        LayoutBuilder(
-          builder: (context, box) {
-            final stats = Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  Icons.people_outline_rounded,
-                  size: 15,
-                  color: DsColor.textFaint,
-                ),
-                const SizedBox(width: DsSpace.xs + 1),
-                Text(
-                  server.avgPlayers.round().toString(),
-                  style: DsType.caption.copyWith(color: DsColor.textSoft),
-                ),
-                const SizedBox(width: DsSpace.md),
-                Icon(
-                  Icons.schedule_rounded,
-                  size: 15,
-                  color: DsColor.textFaint,
-                ),
-                const SizedBox(width: DsSpace.xs + 1),
-                Text(
-                  '${server.uptime}%',
-                  style: DsType.caption.copyWith(color: DsColor.textSoft),
-                ),
-              ],
-            );
-
-            final details = DsButton(
-              label: l.serverCardViewServer,
-              tone: DsButtonTone.quiet,
-              size: DsButtonSize.small,
-              onPressed: onOpenDetails,
-            );
-
-            final play = DsButton(
-              label: l.serverCardPlay,
-              icon: Icons.play_arrow_rounded,
-              size: DsButtonSize.small,
-              onPressed: onPlay,
-            );
-
-            if (box.maxWidth < 380) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Align(alignment: Alignment.centerLeft, child: stats),
-                  const SizedBox(height: DsSpace.md),
-                  Row(
-                    children: [
-                      Expanded(child: details),
-                      const SizedBox(width: DsSpace.sm),
-                      Expanded(child: play),
-                    ],
-                  ),
-                ],
-              );
-            }
-
-            return Row(
-              children: [
-                stats,
-                const Spacer(),
-                details,
-                const SizedBox(width: DsSpace.xs),
-                play,
-              ],
-            );
-          },
-        ),
-      ],
     );
   }
 }
@@ -234,7 +182,7 @@ class _Icon extends StatelessWidget {
       child: Container(
         width: size,
         height: size,
-        color: AppTheme.surface,
+        color: DsColor.inset,
         alignment: Alignment.center,
         child: server.iconUrl != null && server.iconUrl!.isNotEmpty
             ? Image.network(
@@ -252,74 +200,9 @@ class _Icon extends StatelessWidget {
   Widget _letter(String letter) => Text(
     letter,
     style: TextStyle(
-      color: AppTheme.textMuted,
+      color: DsColor.textFaint,
       fontSize: size * 0.4,
       fontWeight: FontWeight.w800,
     ),
   );
-}
-
-class _Address extends StatefulWidget {
-  const _Address({required this.server});
-
-  final DirectoryServer server;
-
-  @override
-  State<_Address> createState() => _AddressState();
-}
-
-class _AddressState extends State<_Address> {
-  bool _copied = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppTheme.surface,
-        borderRadius: AppRadius.small,
-        border: Border.all(color: AppTheme.borderGray),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 9),
-              child: Text(
-                widget.server.connectAddress,
-                style: TextStyle(
-                  color: AppTheme.textPrimary,
-                  fontSize: 12.5,
-                  fontFamily: 'monospace',
-                ),
-              ),
-            ),
-          ),
-          InkWell(
-            onTap: () async {
-              await Clipboard.setData(
-                ClipboardData(text: widget.server.connectAddress),
-              );
-              if (!mounted) return;
-              setState(() => _copied = true);
-              await Future<void>.delayed(const Duration(milliseconds: 1500));
-              if (mounted) setState(() => _copied = false);
-            },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
-              child: Text(
-                _copied
-                    ? AppLocalizations.of(context)!.serverCopied
-                    : AppLocalizations.of(context)!.serverCopyIp,
-                style: TextStyle(
-                  color: _copied ? AppTheme.success : AppTheme.textSecondary,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }

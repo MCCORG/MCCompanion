@@ -75,8 +75,14 @@ class NetherNetDiscovery {
     );
   }
 
+  void Function()? onLocalNetworkBlocked;
+  bool _blockedReported = false;
+  bool _stopped = true;
+  bool _recovering = false;
+
   Future<bool> start() async {
     if (_socket != null) return true;
+    _stopped = false;
     try {
       final socket = await RawDatagramSocket.bind(
         InternetAddress.anyIPv4,
@@ -86,10 +92,18 @@ class NetherNetDiscovery {
       );
       socket.broadcastEnabled = true;
       _socket = socket;
+      if (!_recovering) _blockedReported = false;
       _subscription = socket.listen(
         _onEvent,
-        onError: (Object e) =>
-            logger.error('NetherNet discovery socket error: $e'),
+        onError: (Object e) {
+          if (_isLocalNetworkBlocked(e)) {
+            _reportBlocked(e);
+          } else {
+            logger.error('NetherNet discovery socket error: $e');
+          }
+          _recover();
+        },
+        onDone: _recover,
       );
       logger.info(
         'NetherNet discovery listening on ${NetherNetProtocol.discoveryPort} '
@@ -102,7 +116,25 @@ class NetherNetDiscovery {
     }
   }
 
+  Future<void> _recover() async {
+    if (_stopped || _recovering) return;
+    _recovering = true;
+    try {
+      await _subscription?.cancel();
+      _subscription = null;
+      _socket?.close();
+      _socket = null;
+      await Future<void>.delayed(const Duration(milliseconds: 500));
+      if (!_stopped && await start()) {
+        logger.info('NetherNet discovery socket restarted');
+      }
+    } finally {
+      _recovering = false;
+    }
+  }
+
   Future<void> stop() async {
+    _stopped = true;
     await _subscription?.cancel();
     _subscription = null;
     _socket?.close();
@@ -224,7 +256,7 @@ class NetherNetDiscovery {
     _send(packet, address, port);
   }
 
-  void broadcastAdvertisement() {
+  Future<void> broadcastAdvertisement() async {
     final pong = _pongData;
     if (pong == null) return;
     final packet = NetherNetProtocol.buildDiscoveryPacket(
@@ -232,11 +264,37 @@ class NetherNetDiscovery {
       networkId: networkId,
       tail: pong,
     );
-    _send(
-      packet,
-      InternetAddress('255.255.255.255'),
-      NetherNetProtocol.discoveryPort,
-    );
+    final directed = await _directedBroadcastAddresses();
+    for (final address in directed) {
+      _send(packet, address, NetherNetProtocol.discoveryPort);
+    }
+  }
+
+  static const _lanInterfacePrefixes = ['en', 'wlan', 'eth', 'ap', 'swlan'];
+
+  Future<List<InternetAddress>> _directedBroadcastAddresses() async {
+    try {
+      final interfaces = await NetworkInterface.list(
+        type: InternetAddressType.IPv4,
+      );
+      final result = <InternetAddress>[];
+      for (final interface in interfaces) {
+        final name = interface.name.toLowerCase();
+        if (!_lanInterfacePrefixes.any(name.startsWith)) continue;
+        for (final address in interface.addresses) {
+          if (address.isLoopback || address.isLinkLocal) continue;
+          final octets = address.rawAddress;
+          result.add(
+            InternetAddress.fromRawAddress(
+              Uint8List.fromList([octets[0], octets[1], octets[2], 255]),
+            ),
+          );
+        }
+      }
+      return result;
+    } catch (_) {
+      return const [];
+    }
   }
 
   void _send(Uint8List body, InternetAddress address, int port) {
@@ -245,7 +303,25 @@ class NetherNetDiscovery {
     try {
       socket.send(NetherNetProtocol.encryptPacket(body), address, port);
     } catch (e) {
+      if (_isLocalNetworkBlocked(e)) {
+        _reportBlocked(e);
+        return;
+      }
       logger.error('NetherNet send failed: $e');
     }
+  }
+
+  bool _isLocalNetworkBlocked(Object e) {
+    if (!Platform.isIOS && !Platform.isMacOS) return false;
+    if (e is! SocketException) return false;
+    final code = e.osError?.errorCode;
+    return code == 65 || code == 51;
+  }
+
+  void _reportBlocked(Object e) {
+    if (_blockedReported) return;
+    _blockedReported = true;
+    logger.error('NetherNet local network is blocked: $e');
+    onLocalNetworkBlocked?.call();
   }
 }

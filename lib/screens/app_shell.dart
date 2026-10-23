@@ -62,6 +62,10 @@ const int _pageSkins = 4;
 const int _pageProfile = 5;
 const int _pagePlayerLookup = 6;
 const int _pageServerTracker = 7;
+const int _profileFriendsTab = 1;
+const int _profileRequestsTab = 2;
+const int _profileNotificationsTab = 3;
+const int _profileSupportTab = 4;
 const int _pageFeedback = 8;
 const int _pageResourcePack = 9;
 const int _pageHowTo = 10;
@@ -94,6 +98,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   final GlobalKey<HomeScreenState> _connectorKey = GlobalKey();
   final GlobalKey<SkinsScreenState> _skinsKey = GlobalKey();
   final GlobalKey<ProfileScreenState> _profileKey = GlobalKey();
+  bool _openedFromNotification = false;
   bool _loginFromTracker = false;
   bool _loginFromRp = false;
   String? _lastSignedInUid;
@@ -186,6 +191,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   }
 
   void _goToStartPage() {
+    if (_openedFromNotification) return;
     _goTo(_pageConnector);
   }
 
@@ -365,24 +371,45 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   }
 
   void _handleNotificationTap(RemoteMessage message) {
+    _openedFromNotification = true;
     final type = message.data['type'] as String? ?? 'unknown';
+    final targetId = message.data['targetId'] ?? message.data['id'];
     switch (type) {
       case 'friend_request':
-        _goToProfileTab(2);
+        _goToProfileTab(_profileRequestsTab);
+      case 'friend_accepted':
       case 'friend_online':
       case 'friend_session':
-        _goToProfileTab(1);
+        _goToProfileTab(_profileFriendsTab);
       case 'feedback':
-        if (UserService.isAdmin) {
-          _goToProfileTab(5);
+      case 'feedback_status':
+      case 'feedback_reply':
+        if (UserService.isAdmin && type == 'feedback') {
+          _goToProfileTab(_profileSupportTab);
         } else {
-          final id = int.tryParse('${message.data['id']}');
           _contentNavigator.push(
             MaterialPageRoute(
-              builder: (_) => MyFeedbackScreen(initialTicketId: id),
+              builder: (_) =>
+                  MyFeedbackScreen(initialTicketId: int.tryParse('$targetId')),
             ),
           );
         }
+      case 'admin_feedback':
+      case 'admin_support_message':
+        _goToProfileTab(_profileSupportTab);
+      case 'skin_liked':
+      case 'comment_received':
+      case 'pack_approved':
+      case 'pack_rejected':
+      case 'message_received':
+      case 'admin_report':
+      case 'admin_pack_submitted':
+        _goToProfileTab(_profileNotificationsTab);
+      case 'server_online':
+      case 'server_offline':
+        _goTo(_pageServerTracker);
+      case 'news_post':
+        unawaited(PushNotificationService.openLink(message.data['url']));
       default:
         _goTo(_pageHome);
     }
@@ -912,110 +939,134 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     );
   }
 
+  static const double _desktopNavWidth = 232;
+  static const double _desktopStatusWidth = 340;
+  static const double _desktopMinContentWidth = 480;
+
   Widget _buildDesktopShell(
     AppLocalizations loc,
     HomeCustomizationService svc,
   ) {
-    return Stack(
-      children: [
-        _buildBackground(),
-        Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Row(
-            children: [
-              DesktopNav(
-                activeId: _activeNavItem,
-                primary: [
-                  DesktopNavEntry(
-                    id: 'connector',
-                    icon: Icons.play_arrow_rounded,
-                    label: loc.featureLabelConnector,
-                    onTap: () => _goTo(_pageConnector),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final canDockStatus =
+            constraints.maxWidth >=
+            _desktopNavWidth + _desktopStatusWidth + _desktopMinContentWidth;
+        return Stack(
+          children: [
+            _buildBackground(),
+            Scaffold(
+              backgroundColor: Colors.transparent,
+              body: Row(
+                children: [
+                  DesktopNav(
+                    activeId: _activeNavItem,
+                    primary: [
+                      DesktopNavEntry(
+                        id: 'connector',
+                        icon: Icons.play_arrow_rounded,
+                        label: loc.featureLabelConnector,
+                        onTap: () => _goTo(_pageConnector),
+                      ),
+                      DesktopNavEntry(
+                        id: 'partners',
+                        icon: Icons.dns_rounded,
+                        label: loc.featureLabelPartners,
+                        onTap: () => _goTo(_pagePartners),
+                      ),
+                      DesktopNavEntry(
+                        id: 'tracker',
+                        icon: Icons.monitor_heart_rounded,
+                        label: loc.featureLabelTracker,
+                        onTap: () => _goTo(_pageServerTracker),
+                      ),
+                      DesktopNavEntry(
+                        id: 'skins',
+                        icon: Icons.checkroom_rounded,
+                        label: loc.featureLabelSkins,
+                        onTap: () => _goTo(_pageSkins),
+                      ),
+                      DesktopNavEntry(
+                        id: 'lookup',
+                        icon: Icons.search_rounded,
+                        label: loc.featureLabelLookup,
+                        onTap: () => _goTo(_pagePlayerLookup),
+                      ),
+                    ],
+                    secondary: [
+                      DesktopNavEntry(
+                        id: 'support',
+                        icon: Icons.help_outline_rounded,
+                        label: loc.support,
+                        onTap: () => _goTo(_pageSupport),
+                      ),
+                      DesktopNavEntry(
+                        id: 'howto',
+                        icon: Icons.lightbulb_outline_rounded,
+                        label: loc.howToUseMenu,
+                        onTap: _showHowToSheet,
+                      ),
+                      DesktopNavEntry(
+                        id: 'customize',
+                        icon: Icons.tune_rounded,
+                        label: loc.customizeLabel,
+                        onTap: () => _goTo(_pageCustomize),
+                      ),
+                      DesktopNavEntry(
+                        id: 'feedback',
+                        icon: Icons.chat_bubble_outline_rounded,
+                        label: loc.feedbackTileTitle,
+                        onTap: () => _goTo(_pageFeedback),
+                      ),
+                    ],
+                    footer: DsButton(
+                      label: loc.navProfile,
+                      icon: Icons.person_rounded,
+                      tone: DsButtonTone.neutral,
+                      expand: true,
+                      onPressed: () {
+                        _loginFromTracker = false;
+                        _loginFromRp = false;
+                        _goTo(_pageProfile);
+                      },
+                    ),
                   ),
-                  DesktopNavEntry(
-                    id: 'partners',
-                    icon: Icons.dns_rounded,
-                    label: loc.featureLabelPartners,
-                    onTap: () => _goTo(_pagePartners),
-                  ),
-                  DesktopNavEntry(
-                    id: 'tracker',
-                    icon: Icons.monitor_heart_rounded,
-                    label: loc.featureLabelTracker,
-                    onTap: () => _goTo(_pageServerTracker),
-                  ),
-                  DesktopNavEntry(
-                    id: 'skins',
-                    icon: Icons.checkroom_rounded,
-                    label: loc.featureLabelSkins,
-                    onTap: () => _goTo(_pageSkins),
-                  ),
-                  DesktopNavEntry(
-                    id: 'lookup',
-                    icon: Icons.search_rounded,
-                    label: loc.featureLabelLookup,
-                    onTap: () => _goTo(_pagePlayerLookup),
-                  ),
-                ],
-                secondary: [
-                  DesktopNavEntry(
-                    id: 'support',
-                    icon: Icons.help_outline_rounded,
-                    label: loc.support,
-                    onTap: () => _goTo(_pageSupport),
-                  ),
-                  DesktopNavEntry(
-                    id: 'howto',
-                    icon: Icons.lightbulb_outline_rounded,
-                    label: loc.howToUseMenu,
-                    onTap: _showHowToSheet,
-                  ),
-                  DesktopNavEntry(
-                    id: 'customize',
-                    icon: Icons.tune_rounded,
-                    label: loc.customizeLabel,
-                    onTap: () => _goTo(_pageCustomize),
-                  ),
-                  DesktopNavEntry(
-                    id: 'feedback',
-                    icon: Icons.chat_bubble_outline_rounded,
-                    label: loc.feedbackTileTitle,
-                    onTap: () => _goTo(_pageFeedback),
-                  ),
-                ],
-                footer: DsButton(
-                  label: loc.navProfile,
-                  icon: Icons.person_rounded,
-                  tone: DsButtonTone.neutral,
-                  expand: true,
-                  onPressed: () {
-                    _loginFromTracker = false;
-                    _loginFromRp = false;
-                    _goTo(_pageProfile);
-                  },
-                ),
-              ),
-              Expanded(
-                child: Column(
-                  children: [
-                    const UpdateBanner(),
-                    Expanded(
-                      child: ClipRect(
-                        child: Navigator(
-                          key: _desktopNavKey,
-                          onGenerateRoute: (settings) => MaterialPageRoute(
-                            settings: settings,
-                            builder: (_) => ValueListenableBuilder<int>(
-                              valueListenable: _pageIndexNotifier,
-                              builder: (_, _, _) => _buildPageStack(),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        const UpdateBanner(),
+                        Expanded(
+                          child: ClipRect(
+                            child: Navigator(
+                              key: _desktopNavKey,
+                              onGenerateRoute: (settings) => MaterialPageRoute(
+                                settings: settings,
+                                builder: (_) => ValueListenableBuilder<int>(
+                                  valueListenable: _pageIndexNotifier,
+                                  builder: (_, _, _) => _buildPageStack(),
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  ValueListenableBuilder<bool>(
+                    valueListenable: navigationController.consoleOpen,
+                    builder: (_, consoleOpen, _) {
+                      final broadcasting =
+                          _connectorKey.currentState?.isBroadcasting ?? false;
+                      if (!canDockStatus || (!consoleOpen && !broadcasting)) {
+                        return const SizedBox.shrink();
+                      }
+                      return _buildDesktopStatusPanel(loc, broadcasting);
+                    },
+                  ),
+                ],
               ),
+            ),
+            if (!canDockStatus)
               ValueListenableBuilder<bool>(
                 valueListenable: navigationController.consoleOpen,
                 builder: (_, consoleOpen, _) {
@@ -1024,52 +1075,73 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
                   if (!consoleOpen && !broadcasting) {
                     return const SizedBox.shrink();
                   }
-                  return DesktopStatusPanel(
-                    broadcasting: broadcasting,
-                    serverName: _ipController.text.trim().isEmpty
-                        ? null
-                        : _ipController.text.trim(),
-                    serverAddress: _portController.text.trim().isEmpty
-                        ? null
-                        : '${_ipController.text.trim()}:'
-                              '${_portController.text.trim()}',
-                    modeLabel: loc.labelXbox,
-                    relayLabel: _selectedRelay.name,
-                    logsNotifier: _logsNotifier,
-                    logsScrollController: _logScrollController,
-                    debugEnabledNotifier: _debugEnabledNotifier,
-                    onToggleDebug: _toggleDebug,
-                    onClearLogs: _clearLogs,
-                    onCopyLogs: _copyLogs,
+                  return Stack(
+                    children: [
+                      Positioned.fill(
+                        child: GestureDetector(
+                          onTap: navigationController.hideConsole,
+                          child: Container(
+                            color: Colors.black.withValues(alpha: 0.35),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 0,
+                        bottom: 0,
+                        right: 0,
+                        child: SafeArea(
+                          child: _buildDesktopStatusPanel(loc, broadcasting),
+                        ),
+                      ),
+                    ],
                   );
                 },
               ),
-            ],
-          ),
-        ),
-        if (_notice != null)
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: SafeArea(
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 520),
-                  child: GlobalNoticeBanner(
-                    message: _notice!['message']!,
-                    type: _notice!['type'] ?? 'info',
-                    onDismiss: () {
-                      _noticeTimer?.cancel();
-                      setState(() => _notice = null);
-                    },
+            if (_notice != null)
+              Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                child: SafeArea(
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 520),
+                      child: GlobalNoticeBanner(
+                        message: _notice!['message']!,
+                        type: _notice!['type'] ?? 'info',
+                        onDismiss: () {
+                          _noticeTimer?.cancel();
+                          setState(() => _notice = null);
+                        },
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ),
-      ],
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _buildDesktopStatusPanel(AppLocalizations loc, bool broadcasting) {
+    return DesktopStatusPanel(
+      broadcasting: broadcasting,
+      serverName: _ipController.text.trim().isEmpty
+          ? null
+          : _ipController.text.trim(),
+      serverAddress: _portController.text.trim().isEmpty
+          ? null
+          : '${_ipController.text.trim()}:${_portController.text.trim()}',
+      modeLabel: loc.labelXbox,
+      relayLabel: _selectedRelay.name,
+      logsNotifier: _logsNotifier,
+      logsScrollController: _logScrollController,
+      debugEnabledNotifier: _debugEnabledNotifier,
+      onToggleDebug: _toggleDebug,
+      onClearLogs: _clearLogs,
+      onCopyLogs: _copyLogs,
     );
   }
 }
