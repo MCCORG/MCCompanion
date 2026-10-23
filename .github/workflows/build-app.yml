@@ -480,7 +480,7 @@ jobs:
   flatpak:
     name: Flatpak
     needs: [linux]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
 
@@ -539,7 +539,7 @@ jobs:
   snap:
     name: Snap
     needs: [linux]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
 
