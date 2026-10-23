@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'nethernet_protocol.dart';
+
 class NetherNetRelayClient {
   final String host;
   final int port;
@@ -25,8 +27,8 @@ class NetherNetRelayClient {
     String? nonce,
   }) async {
     final body = jsonEncode({
-      'connectionId': connectionId.toUnsigned(64).toString(),
-      'networkId': networkId.toUnsigned(64).toString(),
+      'connectionId': NetherNetProtocol.unsignedString(connectionId),
+      'networkId': NetherNetProtocol.unsignedString(networkId),
       'sdp': sdp,
       'nonce': ?nonce,
     });
@@ -75,7 +77,7 @@ class NetherNetRelayClient {
     required String candidate,
   }) async {
     final body = jsonEncode({
-      'connectionId': connectionId.toUnsigned(64).toString(),
+      'connectionId': NetherNetProtocol.unsignedString(connectionId),
       'candidate': candidate,
     });
     final json = await _post('/nethernet/candidate', body);
