@@ -92,10 +92,6 @@
   "@save": {
     "description": "Save button label"
   },
-  "clientDisconnected": "Client disconnected: Broadcast stopped",
-  "@clientDisconnected": {
-    "description": "Snackbar shown when clients disconnect automatically"
-  },
   "pleaseEnterServer": "⚠️ Please enter a server address",
   "@pleaseEnterServer": {
     "description": "Validation message when server address field is empty"
@@ -1458,18 +1454,6 @@
   },
   "rpConsolePerformanceTitle": "Console performance",
   "rpConsolePerformanceBody": "High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.",
-  "rpWarnDiscord": "Discord links expire and will stop working. Use a permanent host instead.",
-  "@rpWarnDiscord": {
-    "description": "Inline warning shown when user enters a Discord CDN URL"
-  },
-  "rpWarnHttps": "URL must start with https://",
-  "@rpWarnHttps": {
-    "description": "Inline warning when URL does not start with https://"
-  },
-  "rpWarnExtension": "URL must end in .mcpack or .zip",
-  "@rpWarnExtension": {
-    "description": "Inline warning when URL does not end with .mcpack or .zip"
-  },
   "rpToastSaved": "Resource pack settings saved.",
   "@rpToastSaved": {
     "description": "Toast shown after resource pack settings are saved successfully"
@@ -1512,6 +1496,15 @@
   "rpClearWhy": "Minecraft caches resource packs by their UUID. The merged pack keeps the server's original UUID, so if Minecraft already has the server's pack cached from a previous session, it won't re-download the new merged version. Clear the cache so Minecraft picks up the fresh merged pack.",
   "rpUploadTab": "Upload",
   "rpBrowseTab": "Browse",
+  "rpCategoryRealism": "Realism",
+  "rpCategoryFaithful": "Faithful",
+  "rpCategoryPvp": "PvP",
+  "rpCategoryCartoon": "Cartoon",
+  "rpCategoryDark": "Dark",
+  "rpCategoryMedieval": "Medieval",
+  "rpCategoryNature": "Nature",
+  "rpCategoryThemed": "Themed",
+  "rpCategoryOther": "Other",
   "@rpUploadTab": {
     "description": "Tab label for uploading a pack file"
   },
@@ -1706,78 +1699,9 @@
   "@skinsSavedToMySkins": {
     "description": "Toast when cloud skin is saved to local library"
   },
-  "skinsDownloadFailed": "Download failed",
-  "@skinsDownloadFailed": {
-    "description": "Toast when skin download fails"
-  },
-  "skinsDeletedFromCloud": "Deleted from cloud",
-  "@skinsDeletedFromCloud": {
-    "description": "Toast when cloud skin is deleted"
-  },
-  "skinsDeleteFailed": "Delete failed",
-  "@skinsDeleteFailed": {
-    "description": "Toast when skin delete fails"
-  },
-  "skinsLoginToUpload": "Log in to upload skins",
-  "@skinsLoginToUpload": {
-    "description": "Toast when user tries to upload without being logged in"
-  },
-  "skinsUploading": "Uploading…",
-  "@skinsUploading": {
-    "description": "Toast while skin is uploading"
-  },
-  "skinUploaded": "Skin uploaded!",
-  "@skinUploaded": {
-    "description": "Toast when skin upload succeeds"
-  },
-  "skinUploadFailed": "Upload failed: {error}",
-  "@skinUploadFailed": {
-    "description": "Toast when skin upload fails",
-    "placeholders": {
-      "error": {
-        "type": "String"
-      }
-    }
-  },
   "skinsEmptyLocalSkins": "No skins yet. Create or upload a skin to get started.",
   "@skinsEmptyLocalSkins": {
     "description": "Empty state for local skins tab"
-  },
-  "skinUploadToWebsite": "Upload to website",
-  "@skinUploadToWebsite": {
-    "description": "Menu option to upload skin to website"
-  },
-  "skinReuploadToWebsite": "Re-upload to website",
-  "@skinReuploadToWebsite": {
-    "description": "Menu option to re-upload skin to website"
-  },
-  "skinCloudEdit": "Edit",
-  "@skinCloudEdit": {
-    "description": "Edit button in cloud skin menu"
-  },
-  "skinCloudSaveToDevice": "Save to device",
-  "@skinCloudSaveToDevice": {
-    "description": "Save to device button in cloud skin menu"
-  },
-  "skinCloudDelete": "Delete from cloud",
-  "@skinCloudDelete": {
-    "description": "Delete from cloud button in cloud skin menu"
-  },
-  "skinsTabGallery": "Gallery",
-  "@skinsTabGallery": {
-    "description": "Gallery tab label on skins screen"
-  },
-  "skinsTopLabel": "Top 30",
-  "@skinsTopLabel": {
-    "description": "Section header for top 30 liked skins"
-  },
-  "skinsAllLabel": "All Skins",
-  "@skinsAllLabel": {
-    "description": "Section header for all gallery skins"
-  },
-  "skinUploadToCloud": "Upload to Cloud",
-  "@skinUploadToCloud": {
-    "description": "Dialog title for uploading skin to cloud"
   },
   "skinSaveDialog": "Save Skin",
   "@skinSaveDialog": {
@@ -1790,28 +1714,6 @@
   "skinDefaultName": "My Skin",
   "@skinDefaultName": {
     "description": "Default name for a new skin"
-  },
-  "skinUpdatedInCloud": "Skin updated in cloud",
-  "@skinUpdatedInCloud": {
-    "description": "Toast when cloud skin is updated"
-  },
-  "skinByCreator": "by {name}",
-  "@skinByCreator": {
-    "description": "Creator attribution on skin cards and preview sheet",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinLikesCount": "{count} likes",
-  "@skinLikesCount": {
-    "description": "Like count shown under skin name in preview sheet",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
   },
   "sectionRecentActivity": "Recent Activity",
   "@sectionRecentActivity": {
@@ -1982,19 +1884,6 @@
   "@notifPrefMessageReceived": {
     "description": "Notification preference toggle label: new message"
   },
-  "commentsTitle": "Comments",
-  "@commentsTitle": {
-    "description": "Section header for the comments section on a skin"
-  },
-  "commentsEmpty": "No comments yet. Be the first!",
-  "@commentsEmpty": {
-    "description": "Shown when a skin has no comments"
-  },
-  "commentsPlaceholder": "Write a comment…",
-  "@commentsPlaceholder": {
-    "description": "Placeholder text in the comment input field"
-  },
-  "loadMore": "Load more",
   "skinLayerInner": "Inner",
   "@skinLayerInner": {
     "description": "Skin editor layer toggle, inner/base layer"
@@ -2023,7 +1912,6 @@
   "skinEditorTitle": "Skin Editor",
   "skinToolUndo": "Undo",
   "skinSaveToMySkins": "Save to My Skins",
-  "skinUpdateInCloud": "Update in cloud",
   "skinExportPng": "Export PNG",
   "skinToolDraw": "Draw",
   "skinToolFill": "Fill",
@@ -2208,6 +2096,7 @@
   "waitingForConsole": "Waiting for your console…",
   "consoleFound": "Console found",
   "consoleLanHint": "On your console, open Minecraft and look under Friends for a LAN game.",
+  "localNetworkBlocked": "MCCompanion cannot reach your local network. Turn on Local Network for MCCompanion in your device settings and make sure you are on Wi-Fi.",
   "directAddressNotSupported": "{host} is an IPv6 address. Proxy/Direct Mode only supports IPv4. Use the IPv4 address or the hostname instead.",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -2265,7 +2154,6 @@
   "serverListNoMatchHint": "Try a different search or category",
   "serverCardPlay": "Play",
   "serverCardVote": "Vote",
-  "serverCardViewServer": "View server",
   "serverCopyIp": "Copy IP",
   "serverCopied": "Copied",
   "serverStatPlayers": "Players",

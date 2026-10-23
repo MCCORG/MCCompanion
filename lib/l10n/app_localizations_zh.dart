@@ -150,9 +150,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get save => '保存';
 
   @override
-  String get clientDisconnected => '客户端已断开连接: 广播已停止';
-
-  @override
   String get pleaseEnterServer => '⚠️ 请输入服务器地址';
 
   @override
@@ -404,16 +401,16 @@ class AppLocalizationsZh extends AppLocalizations {
   String get navFixed => 'Connector 和个人资料始终固定';
 
   @override
-  String get leftSlot => 'Slot 2';
+  String get leftSlot => '栏位 2';
 
   @override
-  String get outerSlot => 'Slot 1';
+  String get outerSlot => '栏位 1';
 
   @override
-  String get rightSlot => 'Slot 3';
+  String get rightSlot => '栏位 3';
 
   @override
-  String get farSlot => 'Slot 4';
+  String get farSlot => '栏位 4';
 
   @override
   String get colorPickerApply => '应用';
@@ -486,133 +483,127 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get reportUser => 'Report user';
+  String get reportUser => '举报用户';
 
   @override
   String reportUserWithName(Object name) {
-    return 'Report $name';
+    return '举报 $name';
   }
 
   @override
-  String get reportDisclaimer =>
-      'Reports are reviewed by our team. False reports may result in action against your account.';
+  String get reportDisclaimer => '举报将由我们的团队审核。恶意举报可能导致你的账号被处理。';
 
   @override
   String get reportReasonSpam => 'Spam';
 
   @override
-  String get reportReasonHarassment => 'Harassment';
+  String get reportReasonHarassment => '骚扰';
 
   @override
-  String get reportReasonInappropriate => 'Inappropriate content';
+  String get reportReasonInappropriate => '不当内容';
 
   @override
-  String get reportReasonOther => 'Other';
+  String get reportReasonOther => '其他';
 
   @override
-  String get reportAdditionalDetails => 'Additional details (optional)…';
+  String get reportAdditionalDetails => '补充说明(选填)…';
 
   @override
-  String get reportSuccess => 'Report submitted. Thank you.';
+  String get reportSuccess => '举报已提交,谢谢。';
 
   @override
-  String get reportFailed => 'Failed to submit report. Please try again.';
+  String get reportFailed => '举报提交失败,请重试。';
 
   @override
-  String get reportSubmit => 'Submit report';
+  String get reportSubmit => '提交举报';
 
   @override
-  String get playerLookupSubtitle =>
-      'Search for a Java or Bedrock player by username';
+  String get playerLookupSubtitle => '通过用户名搜索 Java 版或基岩版玩家';
 
   @override
-  String get playerLookupHint => 'Enter a username…';
+  String get playerLookupHint => '输入用户名…';
 
   @override
-  String get playerLookupLinked => 'Linked accounts found';
+  String get playerLookupLinked => '找到已关联的账号';
 
   @override
-  String get playerLookupLabelUsername => 'Username';
+  String get playerLookupLabelUsername => '用户名';
 
   @override
   String get playerLookupLabelTier => 'Tier';
 
   @override
   String playerLookupCopied(Object value) {
-    return '$value copied';
+    return '已复制 $value';
   }
 
   @override
-  String get addFriend => 'Add Friend';
+  String get addFriend => '添加好友';
 
   @override
   String get send => 'Send';
 
   @override
-  String get somethingWentWrong => 'Something went wrong. Please try again.';
+  String get somethingWentWrong => '出错了,请重试。';
 
   @override
   String friendRequestAccepted(Object name) {
-    return 'You are now friends with $name';
+    return '你现在与 $name 是好友了';
   }
 
   @override
   String requestDeclined(Object name) {
-    return 'Request from $name declined';
+    return '已拒绝 $name 的请求';
   }
 
   @override
-  String get deleteAccountTitle => 'Delete Account';
+  String get deleteAccountTitle => '删除账号';
 
   @override
-  String get deleteAccountBody =>
-      'This will permanently delete your account and all data. This action cannot be undone.';
+  String get deleteAccountBody => '这将永久删除你的账号和所有数据,且无法撤销。';
 
   @override
-  String get deletePermanently => 'Delete Permanently';
+  String get deletePermanently => '永久删除';
 
   @override
-  String get couldNotDeleteAccount =>
-      'Could not delete account. Please try again.';
+  String get couldNotDeleteAccount => '无法删除账号,请重试。';
 
   @override
-  String get removeFriendTitle => 'Remove Friend';
+  String get removeFriendTitle => '删除好友';
 
   @override
   String removeFriendConfirm(Object name) {
-    return 'Remove $name from your friends?';
+    return '要将 $name 从好友中删除吗?';
   }
 
   @override
-  String get remove => 'Remove';
+  String get remove => '移除';
 
   @override
   String friendRemoved(Object name) {
-    return '$name has been removed from your friends';
+    return '已将 $name 从好友中删除';
   }
 
   @override
-  String get emailDifferentMethod =>
-      'This email is linked to a different sign-in method';
+  String get emailDifferentMethod => '此邮箱已关联其他登录方式';
 
   @override
-  String get googleSignInFailed => 'Google sign-in failed. Please try again.';
+  String get googleSignInFailed => 'Google 登录失败,请重试。';
 
   @override
-  String get appleSignInFailed => 'Apple sign-in failed. Please try again.';
+  String get appleSignInFailed => 'Apple 登录失败,请重试。';
 
   @override
-  String get resetPasswordTitle => 'Reset Password';
+  String get resetPasswordTitle => '重置密码';
 
   @override
-  String get resetPasswordBody =>
-      'Enter your email address and we will send you a link to reset your password.';
+  String get resetPasswordBody => '输入你的邮箱地址,我们会向你发送重置密码的链接。';
 
   @override
-  String get emailAddressHint => 'Email address';
+  String get emailAddressHint => '邮箱地址';
 
   @override
-  String get sendLink => 'Send link';
+  String get sendLink => '发送链接';
 
   @override
   String resetLinkSent(Object email) {
@@ -620,163 +611,159 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get invalidEmailError => 'The email address is not valid';
+  String get invalidEmailError => '邮箱地址无效';
 
   @override
-  String get couldNotSendResetEmail =>
-      'Could not send reset email. Please try again.';
+  String get couldNotSendResetEmail => '无法发送重置邮件,请重试。';
 
   @override
-  String get enterEmailAndPassword => 'Please enter your email and password';
+  String get enterEmailAndPassword => '请输入邮箱和密码';
 
   @override
-  String get incorrectEmailOrPassword => 'Incorrect email or password';
+  String get incorrectEmailOrPassword => '邮箱或密码错误';
 
   @override
-  String get emailAlreadyInUse => 'This email address is already in use';
+  String get emailAlreadyInUse => '此邮箱地址已被使用';
 
   @override
-  String get weakPassword =>
-      'Password is too weak. Please choose a stronger one.';
+  String get weakPassword => '密码强度太弱,请选择更强的密码。';
 
   @override
-  String get createAccount => 'Create Account';
+  String get createAccount => '创建账号';
 
   @override
-  String get signInSubtitle =>
-      'Sign in to access your profile, friends, and chats.';
+  String get signInSubtitle => '登录以访问你的个人资料、好友和聊天。';
 
   @override
-  String get passwordHint => 'Password';
+  String get passwordHint => '密码';
 
   @override
-  String get forgotPassword => 'Forgot password?';
+  String get forgotPassword => '忘记密码?';
 
   @override
   String get orDivider => 'or';
 
   @override
-  String get continueWithGoogle => 'Continue with Google';
+  String get continueWithGoogle => '使用 Google 继续';
 
   @override
-  String get alreadyHaveAccount => 'Already have an account? Sign in';
+  String get alreadyHaveAccount => '已有账号?去登录';
 
   @override
-  String get noAccountYet => 'Don\'t have an account? Create one';
+  String get noAccountYet => '没有账号?立即创建';
 
   @override
-  String get profileNotSetUp => 'Profile not set up';
+  String get profileNotSetUp => '尚未设置个人资料';
 
   @override
   String get chooseUsernameSubtitle => '取一个用户名，方便其他玩家找到你。';
 
   @override
-  String get createProfile => 'Create Profile';
+  String get createProfile => '创建个人资料';
 
   @override
-  String get findUser => 'Find user';
+  String get findUser => '查找用户';
 
   @override
-  String get couldNotUpdateVisibility => 'Could not update visibility settings';
+  String get couldNotUpdateVisibility => '无法更新可见性设置';
 
   @override
-  String get signOut => 'Sign Out';
+  String get signOut => '退出登录';
 
   @override
-  String get appearOfflineLabel => 'Appear Offline';
+  String get appearOfflineLabel => '隐身';
 
   @override
-  String get appearOfflineOn => 'You appear offline to other players';
+  String get appearOfflineOn => '其他玩家看到你为离线';
 
   @override
-  String get appearOfflineOff => 'You appear online to other players';
+  String get appearOfflineOff => '其他玩家看到你为在线';
 
   @override
-  String get unlinkXboxTitle => 'Unlink Xbox Account';
+  String get unlinkXboxTitle => '解除 Xbox 账号关联';
 
   @override
   String removeLabelConfirm(Object name) {
-    return 'Remove $name from your linked accounts?';
+    return '要将 $name 从已关联账号中移除吗?';
   }
 
   @override
-  String get unlink => 'Unlink';
+  String get unlink => '解除关联';
 
   @override
-  String get unlinkJavaTitle => 'Unlink Java Account';
+  String get unlinkJavaTitle => '解除 Java 账号关联';
 
   @override
   String removeJavaConfirm(Object name) {
-    return 'Remove $name from your linked accounts?';
+    return '要将 $name 从已关联账号中移除吗?';
   }
 
   @override
-  String get linkAccountsHint =>
-      'Link your Minecraft accounts to show your skins and stats.';
+  String get linkAccountsHint => '关联你的 Minecraft 账号以显示皮肤和统计数据。';
 
   @override
-  String get linkXbox => 'Link Xbox';
+  String get linkXbox => '关联 Xbox';
 
   @override
-  String get linkJava => 'Link Java';
+  String get linkJava => '关联 Java';
 
   @override
-  String get profileUpdated => 'Profile updated';
+  String get profileUpdated => '个人资料已更新';
 
   @override
   String get edit => 'Edit';
 
   @override
-  String get displayNameLabel => 'Display Name';
+  String get displayNameLabel => '显示名称';
 
   @override
-  String get yourNameHint => 'Your name';
+  String get yourNameHint => '你的名字';
 
   @override
   String get bioLabel => 'Bio';
 
   @override
-  String get bioHint => 'Tell others about yourself…';
+  String get bioHint => '向大家介绍一下自己…';
 
   @override
-  String get noFriendsYet => 'No friends yet';
+  String get noFriendsYet => '还没有好友';
 
   @override
-  String get noFriendsSub => 'Add friends to see them here.';
+  String get noFriendsSub => '添加好友后会显示在这里。';
 
   @override
   String onlineFriendsLabel(Object count) {
-    return '$count online';
+    return '$count 人在线';
   }
 
   @override
   String offlineFriendsLabel(Object count) {
-    return '$count offline';
+    return '$count 人离线';
   }
 
   @override
-  String get noPendingRequests => 'No pending requests';
+  String get noPendingRequests => '没有待处理的请求';
 
   @override
-  String get requestsAppearHere => 'New friend requests will appear here.';
+  String get requestsAppearHere => '新的好友请求会显示在这里。';
 
   @override
   String get skinsEdit => 'Edit';
 
   @override
-  String get skinsMustBe64 => 'Skin must be 64×64 pixels';
+  String get skinsMustBe64 => '皮肤必须为 64×64 像素';
 
   @override
-  String get skinsInvalidFile => 'Invalid image file';
+  String get skinsInvalidFile => '无效的图片文件';
 
   @override
-  String get skinsUpload => 'Upload';
+  String get skinsUpload => '上传';
 
   @override
-  String get skinsCreate => 'Create';
+  String get skinsCreate => '创建';
 
   @override
-  String get skinsDownload => 'Download';
+  String get skinsDownload => '下载';
 
   @override
   String get chooseUniqueUsername => '选择一个唯一的用户名开始。';
@@ -825,315 +812,306 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get paywallRestore => 'Restore';
+  String get paywallRestore => '恢复';
 
   @override
-  String get paywallMonthly => 'Monthly';
+  String get paywallMonthly => '按月';
 
   @override
-  String get paywallYearly => 'Yearly';
+  String get paywallYearly => '按年';
 
   @override
-  String get paywallSavePercent => 'Save ~17%';
+  String get paywallSavePercent => '节省约 17%';
 
   @override
-  String get paywallSubtitle =>
-      'Track more servers and get notified\nwhen they go online or offline.';
+  String get paywallSubtitle => '追踪更多服务器,并在它们\n上线或下线时收到通知。';
 
   @override
   String paywallSlotLabel(Object slots) {
-    return '$slots server slots';
+    return '$slots 个服务器栏位';
   }
 
   @override
-  String get paywallPopular => 'Popular';
+  String get paywallPopular => '热门';
 
   @override
-  String get paywallContinue => 'Continue';
+  String get paywallContinue => '继续';
 
   @override
-  String get paywallNoPkgs => 'No packages available.';
+  String get paywallNoPkgs => '暂无可用套餐。';
 
   @override
-  String get paywallManaged => 'Managed by Apple/Google. Cancel anytime.';
+  String get paywallManaged => '由 Apple/Google 管理,可随时取消。';
 
   @override
-  String get paywallPurchaseSuccess => 'Purchase successful!';
+  String get paywallPurchaseSuccess => '购买成功!';
 
   @override
-  String get paywallPurchaseFailed => 'Purchase failed. Please try again.';
+  String get paywallPurchaseFailed => '购买失败,请重试。';
 
   @override
-  String get paywallPurchasesRestored => 'Purchases restored!';
+  String get paywallPurchasesRestored => '购买已恢复!';
 
   @override
-  String get paywallNoActivePurchases => 'No active purchases found.';
+  String get paywallNoActivePurchases => '未找到有效的购买记录。';
 
   @override
-  String get paywallRestoreFailed => 'Restore failed. Please try again.';
+  String get paywallRestoreFailed => '恢复失败,请重试。';
 
   @override
   String get relay => 'Relay';
 
   @override
-  String get serversSection => 'Servers';
+  String get serversSection => '服务器';
 
   @override
-  String get selectBedrockAccount => 'Select Bedrock account';
+  String get selectBedrockAccount => '选择基岩版账号';
 
   @override
-  String get infoAndLegal => 'Info & Legal';
+  String get infoAndLegal => '信息与法律';
 
   @override
-  String get legalSection => 'Legal';
+  String get legalSection => '法律';
 
   @override
   String get privacyPolicy => '隐私政策';
 
   @override
-  String get privacyPolicySubtitle => 'How we collect and protect your data';
+  String get privacyPolicySubtitle => '我们如何收集和保护你的数据';
 
   @override
   String get termsOfService => '服务条款';
 
   @override
-  String get termsOfServiceSubtitle => 'Rules and conditions of use';
+  String get termsOfServiceSubtitle => '使用规则与条件';
 
   @override
-  String get dataSourcesSection => 'Data Sources & Credits';
+  String get dataSourcesSection => '数据来源与致谢';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
 
   @override
-  String get creditMojangSubtitle =>
-      'Java player skins, UUIDs, and profile data via the official Mojang API.';
+  String get creditMojangSubtitle => 'Java 版玩家皮肤、UUID 和个人资料数据来自 Mojang 官方 API。';
 
   @override
   String get creditGeyserTitle => 'GeyserMC';
 
   @override
-  String get creditGeyserSubtitle =>
-      'Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.';
+  String get creditGeyserSubtitle => '基岩版皮肤渲染。基岩版玩家的皮肤通过 GeyserMC 皮肤服务器获取。';
 
   @override
   String get creditXboxTitle => 'Xbox / Microsoft';
 
   @override
   String get creditXboxSubtitle =>
-      'Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.';
+      '通过 Xbox Live 关联基岩版账号。Gamertag 和 XUID 通过 Microsoft 身份验证流程获取。';
 
   @override
-  String get aboutMCCompanionSection => 'About MCCompanion';
+  String get aboutMCCompanionSection => '关于 MCCompanion';
 
   @override
   String get aboutMCCompanionDisclaimer =>
-      'MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.';
+      'MCCompanion 是一款独立应用,与 Mojang Studios 或 Microsoft Corporation 无关联,也未获其认可或赞助。';
 
   @override
-  String get minecraftTrademark =>
-      '\"Minecraft\" is a trademark of Microsoft Corporation.';
+  String get minecraftTrademark => '“Minecraft”是 Microsoft Corporation 的商标。';
 
   @override
   String get nldServerLabelShort => 'MCCompanion Server';
 
   @override
-  String get editServer => 'Edit Server';
+  String get editServer => '编辑服务器';
 
   @override
-  String get serverNameExampleHint => 'My Awesome Server';
+  String get serverNameExampleHint => '我的超棒服务器';
 
   @override
   String get serverAddressExampleHint => 'play.example.com';
 
   @override
-  String get serverDescriptionExampleHint => 'Survival server with friends';
+  String get serverDescriptionExampleHint => '与好友一起玩的生存服务器';
 
   @override
-  String get editionLabel => 'Edition';
+  String get editionLabel => '版本类型';
 
   @override
   String get nameLabel => 'Name';
 
   @override
-  String get ipAddressFieldLabel => 'IP Address';
+  String get ipAddressFieldLabel => 'IP 地址';
 
   @override
   String get portFieldLabel => 'Port';
 
   @override
-  String get platformFieldLabel => 'Platform';
+  String get platformFieldLabel => '平台';
 
   @override
-  String get nameValidationError => 'Name must be 1–50 characters';
+  String get nameValidationError => '名称必须为 1 到 50 个字符';
 
   @override
-  String get ipRequiredError => 'IP address is required';
+  String get ipRequiredError => '必须填写 IP 地址';
 
   @override
-  String get portRangeError => 'Port must be between 1 and 65535';
+  String get portRangeError => '端口必须在 1 到 65535 之间';
 
   @override
-  String get xboxLinkTitle => 'Link Xbox Account';
+  String get xboxLinkTitle => '关联 Xbox 账号';
 
   @override
-  String get xboxStartingLogin => 'Starting Xbox login…';
+  String get xboxStartingLogin => '正在启动 Xbox 登录…';
 
   @override
-  String get xboxSignInWithMicrosoft => 'Sign in with Microsoft';
+  String get xboxSignInWithMicrosoft => '使用 Microsoft 登录';
 
   @override
-  String get xboxGoToLink =>
-      'Go to the link below and enter the code to connect your Xbox account.';
+  String get xboxGoToLink => '打开下方链接并输入代码,以关联你的 Xbox 账号。';
 
   @override
-  String get xboxYourCode => 'Your code';
+  String get xboxYourCode => '你的代码';
 
   @override
-  String get xboxTapToCopy => 'Tap the code to copy it';
+  String get xboxTapToCopy => '点按代码即可复制';
 
   @override
-  String get xboxOpenLink => 'Open microsoft.com/link';
+  String get xboxOpenLink => '打开 microsoft.com/link';
 
   @override
-  String get xboxWaitingForLogin => 'Waiting for login…';
+  String get xboxWaitingForLogin => '正在等待登录…';
 
   @override
-  String get xboxAccountLinked => 'Xbox account linked!';
+  String get xboxAccountLinked => 'Xbox 账号已关联!';
 
   @override
-  String get xboxCodeCopied => 'Code copied to clipboard';
+  String get xboxCodeCopied => '代码已复制到剪贴板';
 
   @override
-  String get xboxCouldNotStart =>
-      'Could not start Xbox login. Please try again.';
+  String get xboxCouldNotStart => '无法启动 Xbox 登录,请重试。';
 
   @override
-  String get xboxCodeExpired => 'The code expired. Please try again.';
+  String get xboxCodeExpired => '代码已过期,请重试。';
 
   @override
-  String get xboxSomethingWrong => 'Something went wrong. Please try again.';
+  String get xboxSomethingWrong => '出错了,请重试。';
 
   @override
-  String get tryAgain => 'Try again';
+  String get tryAgain => '重试';
 
   @override
-  String get userNotFound => 'User not found';
+  String get userNotFound => '未找到用户';
 
   @override
-  String get profileSectionLabel => 'Profile';
+  String get profileSectionLabel => '个人资料';
 
   @override
-  String get displayNameRowLabel => 'Display name';
+  String get displayNameRowLabel => '显示名称';
 
   @override
-  String get usernameRowLabel => 'Username';
+  String get usernameRowLabel => '用户名';
 
   @override
-  String get lastSeenLabel => 'Last seen';
+  String get lastSeenLabel => '最后在线';
 
   @override
-  String get aboutSectionLabel => 'About';
+  String get aboutSectionLabel => '简介';
 
   @override
   String get xboxBedrockLabel => 'Xbox / Bedrock';
 
   @override
-  String get friendRequestSent => 'Friend request sent';
+  String get friendRequestSent => '好友请求已发送';
 
   @override
-  String get alreadyFriendsMsg => 'You are already friends.';
+  String get alreadyFriendsMsg => '你们已经是好友了。';
 
   @override
-  String get requestAlreadyPendingMsg => 'There is already a pending request.';
+  String get requestAlreadyPendingMsg => '已有待处理的请求。';
 
   @override
-  String get userNotFoundMsg2 => 'User not found.';
+  String get userNotFoundMsg2 => '未找到用户。';
 
   @override
-  String get cannotSendRequestMsg => 'Cannot send a request to this user.';
+  String get cannotSendRequestMsg => '无法向此用户发送请求。';
 
   @override
   String nowFriendsWith(Object username) {
-    return 'Now friends with @$username';
+    return '你现在与 @$username 是好友了';
   }
 
   @override
-  String get removeFriendButton => 'Remove friend';
+  String get removeFriendButton => '删除好友';
 
   @override
-  String get requestSentButton => 'Request sent';
+  String get requestSentButton => '请求已发送';
 
   @override
-  String get acceptRequestButton => 'Accept request';
+  String get acceptRequestButton => '接受请求';
 
   @override
-  String get addFriendButton => 'Add friend';
+  String get addFriendButton => '添加好友';
 
   @override
-  String get removeFriendDialogTitle => 'Remove friend';
+  String get removeFriendDialogTitle => '删除好友';
 
   @override
   String removeFriendDialogBody(Object username) {
-    return 'Remove @$username as a friend?';
+    return '要将 @$username 从好友中删除吗?';
   }
 
   @override
   String get trackerLimitReached => '已达服务器上限';
 
   @override
-  String get upgradeButton => 'Upgrade';
+  String get upgradeButton => '升级';
 
   @override
-  String get javaLinkTitle => 'Link Java Edition';
+  String get javaLinkTitle => '关联 Java 版';
 
   @override
-  String get javaStartingLogin => 'Starting Microsoft login…';
+  String get javaStartingLogin => '正在启动 Microsoft 登录…';
 
   @override
-  String get javaSignInWithMicrosoft => 'Sign in with Microsoft';
+  String get javaSignInWithMicrosoft => '使用 Microsoft 登录';
 
   @override
-  String get javaGoToLink =>
-      'Go to the link below and enter the code to connect your Minecraft Java Edition account.';
+  String get javaGoToLink => '打开下方链接并输入代码,以关联你的 Minecraft Java 版账号。';
 
   @override
-  String get javaYourCode => 'Your code';
+  String get javaYourCode => '你的代码';
 
   @override
-  String get javaTapToCopy => 'Tap the code to copy it';
+  String get javaTapToCopy => '点按代码即可复制';
 
   @override
-  String get javaOpenLink => 'Open microsoft.com/link';
+  String get javaOpenLink => '打开 microsoft.com/link';
 
   @override
-  String get javaWaitingForLogin => 'Waiting for login…';
+  String get javaWaitingForLogin => '正在等待登录…';
 
   @override
-  String get javaAccountLinked => 'Java Edition linked!';
+  String get javaAccountLinked => 'Java 版已关联!';
 
   @override
-  String get javaNoJavaTitle => 'No Java Edition found';
+  String get javaNoJavaTitle => '未找到 Java 版';
 
   @override
-  String get javaNoJavaBody =>
-      'The Microsoft account you signed in with does not own Minecraft Java Edition.';
+  String get javaNoJavaBody => '你登录的 Microsoft 账号未拥有 Minecraft Java 版。';
 
   @override
-  String get javaTryDifferentAccount => 'Try a different account';
+  String get javaTryDifferentAccount => '尝试其他账号';
 
   @override
-  String get javaCouldNotStart =>
-      'Could not start Microsoft login. Please try again.';
+  String get javaCouldNotStart => '无法启动 Microsoft 登录,请重试。';
 
   @override
-  String get javaCodeExpired => 'The code expired. Please try again.';
+  String get javaCodeExpired => '代码已过期,请重试。';
 
   @override
-  String get javaSomethingWrong => 'Something went wrong. Please try again.';
+  String get javaSomethingWrong => '出错了,请重试。';
 
   @override
-  String get javaCodeCopied => 'Code copied to clipboard';
+  String get javaCodeCopied => '代码已复制到剪贴板';
 
   @override
   String get featureLabelConnector => '连接器';
@@ -1342,15 +1320,6 @@ class AppLocalizationsZh extends AppLocalizations {
       '高分辨率材质包可能导致主机卡顿或崩溃。如果遇到问题，请切换至低分辨率包，或选择较轻量的子包（如果该包支持）。';
 
   @override
-  String get rpWarnDiscord => 'Discord 链接会过期并停止工作。请改用永久性托管服务。';
-
-  @override
-  String get rpWarnHttps => 'URL 必须以 https:// 开头';
-
-  @override
-  String get rpWarnExtension => 'URL 必须以 .mcpack 或 .zip 结尾';
-
-  @override
   String get rpToastSaved => '资源包设置已保存。';
 
   @override
@@ -1392,19 +1361,46 @@ class AppLocalizationsZh extends AppLocalizations {
       'Minecraft 通过 UUID 缓存材质包。合并后的材质包保留服务器原有的 UUID--如果 Minecraft 在之前的游戏中（启用 MCCompanion 之前）已经缓存了服务器的材质包，它就不会重新下载新的合并版本。清除缓存，让 Minecraft 加载最新的合并材质包。';
 
   @override
-  String get rpUploadTab => 'Upload';
+  String get rpUploadTab => '上传';
 
   @override
-  String get rpBrowseTab => 'Browse';
+  String get rpBrowseTab => '浏览';
 
   @override
-  String get rpUploadButton => 'Tap to select your pack';
+  String get rpCategoryRealism => '写实';
 
   @override
-  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+  String get rpCategoryFaithful => 'Faithful';
 
   @override
-  String get rpUploading => 'Uploading...';
+  String get rpCategoryPvp => 'PvP';
+
+  @override
+  String get rpCategoryCartoon => '卡通';
+
+  @override
+  String get rpCategoryDark => '暗色';
+
+  @override
+  String get rpCategoryMedieval => '中世纪';
+
+  @override
+  String get rpCategoryNature => '自然';
+
+  @override
+  String get rpCategoryThemed => '主题';
+
+  @override
+  String get rpCategoryOther => '其他';
+
+  @override
+  String get rpUploadButton => '点按以选择资源包';
+
+  @override
+  String get rpUploadHint => '.mcpack 或 .zip • 最大 100 MB';
+
+  @override
+  String get rpUploading => '正在上传...';
 
   @override
   String get rpMergerTitle => 'RP 合并工具';
@@ -1550,57 +1546,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get skinsSavedToMySkins => '已保存到我的皮肤';
 
   @override
-  String get skinsDownloadFailed => '下载失败';
-
-  @override
-  String get skinsDeletedFromCloud => '已从云端删除';
-
-  @override
-  String get skinsDeleteFailed => '删除失败';
-
-  @override
-  String get skinsLoginToUpload => '登录以上传皮肤';
-
-  @override
-  String get skinsUploading => '上传中…';
-
-  @override
-  String get skinUploaded => '皮肤已上传！';
-
-  @override
-  String skinUploadFailed(String error) {
-    return '上传失败：$error';
-  }
-
-  @override
   String get skinsEmptyLocalSkins => '暂无皮肤。创建或上传皮肤以开始使用。';
-
-  @override
-  String get skinUploadToWebsite => '上传到网站';
-
-  @override
-  String get skinReuploadToWebsite => '重新上传到网站';
-
-  @override
-  String get skinCloudEdit => '编辑';
-
-  @override
-  String get skinCloudSaveToDevice => '保存到设备';
-
-  @override
-  String get skinCloudDelete => '从云端删除';
-
-  @override
-  String get skinsTabGallery => '社区画廊';
-
-  @override
-  String get skinsTopLabel => '前30名';
-
-  @override
-  String get skinsAllLabel => '所有皮肤';
-
-  @override
-  String get skinUploadToCloud => '上传到云端';
 
   @override
   String get skinSaveDialog => '保存皮肤';
@@ -1610,19 +1556,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get skinDefaultName => '我的皮肤';
-
-  @override
-  String get skinUpdatedInCloud => '皮肤已在云端更新';
-
-  @override
-  String skinByCreator(String name) {
-    return '由 $name';
-  }
-
-  @override
-  String skinLikesCount(int count) {
-    return '$count 个赞';
-  }
 
   @override
   String get sectionRecentActivity => '最近动态';
@@ -1736,18 +1669,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get notifPrefMessageReceived => '新消息';
 
   @override
-  String get commentsTitle => '评论';
-
-  @override
-  String get commentsEmpty => '暂无评论。成为第一个！';
-
-  @override
-  String get commentsPlaceholder => '写评论…';
-
-  @override
-  String get loadMore => '加载更多';
-
-  @override
   String get skinLayerInner => '内层';
 
   @override
@@ -1777,9 +1698,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get skinSaveToMySkins => '保存到我的皮肤';
-
-  @override
-  String get skinUpdateInCloud => '更新到云端';
 
   @override
   String get skinExportPng => '导出 PNG';
@@ -2013,14 +1931,17 @@ class AppLocalizationsZh extends AppLocalizations {
   String get directPortBusy => '无法打开本地端口。请先停止当前连接。';
 
   @override
-  String get waitingForConsole => 'Waiting for your console…';
+  String get waitingForConsole => '正在等待主机…';
 
   @override
-  String get consoleFound => 'Console found';
+  String get consoleFound => '已找到主机';
 
   @override
-  String get consoleLanHint =>
-      'On your console, open Minecraft and look under Friends for a LAN game.';
+  String get consoleLanHint => '在主机上打开 Minecraft，并在“好友”中查找局域网游戏。';
+
+  @override
+  String get localNetworkBlocked =>
+      'MCCompanion 无法访问本地网络。请在设备设置中为 MCCompanion 开启“本地网络”，并确保已连接 Wi-Fi。';
 
   @override
   String directAddressNotSupported(String host) {
@@ -2094,10 +2015,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get serverListAllCategories => '全部';
 
   @override
-  String get serverListPlayersAny => 'Any size';
+  String get serverListPlayersAny => '任意规模';
 
   @override
-  String get serverListPlayersHint => 'Average players online';
+  String get serverListPlayersHint => '平均在线玩家';
 
   @override
   String get serverListLoadFailed => '无法加载服务器列表';
@@ -2116,9 +2037,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get serverCardVote => '投票';
-
-  @override
-  String get serverCardViewServer => '查看服务器';
 
   @override
   String get serverCopyIp => '复制 IP';

@@ -4,6 +4,7 @@ import '../../l10n/app_localizations.dart';
 import '../../theme/app_theme.dart';
 import '../../theme/app_tokens.dart';
 import '../../design/design.dart';
+import 'rp_category.dart';
 
 class RpFeaturedPackCard extends StatelessWidget {
   final Map<String, dynamic> pack;
@@ -117,7 +118,10 @@ class RpFeaturedPackCard extends StatelessWidget {
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
                       if (category != null)
-                        DsBadge(label: category, color: DsColor.info),
+                        DsBadge(
+                          label: rpCategoryLabel(l, category),
+                          color: DsColor.info,
+                        ),
                       ...tags.take(3).map(
                         (t) => DsBadge(label: t, color: DsColor.accent),
                       ),
@@ -267,7 +271,13 @@ class _PackDetailSheet extends StatelessWidget {
                                 runSpacing: 4,
                                 children: [
                                   if (category != null)
-                                    _chip(category, DsColor.info),
+                                    _chip(
+                                      rpCategoryLabel(
+                                        AppLocalizations.of(context)!,
+                                        category,
+                                      ),
+                                      DsColor.info,
+                                    ),
                                   ...tags.map((t) => _chip(t, AppTheme.accent)),
                                 ],
                               ),

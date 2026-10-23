@@ -150,9 +150,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get save => 'حفظ';
 
   @override
-  String get clientDisconnected => 'تم فصل العميل: تم إيقاف البث';
-
-  @override
   String get pleaseEnterServer => '⚠️ يرجى إدخال عنوان الخادم';
 
   @override
@@ -409,16 +406,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get navFixed => 'Connector والملف الشخصي مثبتان دائما';
 
   @override
-  String get leftSlot => 'Slot 2';
+  String get leftSlot => 'الخانة 2';
 
   @override
-  String get outerSlot => 'Slot 1';
+  String get outerSlot => 'الخانة 1';
 
   @override
-  String get rightSlot => 'Slot 3';
+  String get rightSlot => 'الخانة 3';
 
   @override
-  String get farSlot => 'Slot 4';
+  String get farSlot => 'الخانة 4';
 
   @override
   String get colorPickerApply => 'تطبيق';
@@ -472,7 +469,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get playerLookupLabelUuid => 'UUID';
 
   @override
-  String get playerLookupLabelGamertag => 'Gamertag';
+  String get playerLookupLabelGamertag => 'معرّف اللاعب (Gamertag)';
 
   @override
   String get playerLookupLabelXuid => 'XUID';
@@ -491,133 +488,135 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get reportUser => 'Report user';
+  String get reportUser => 'الإبلاغ عن مستخدم';
 
   @override
   String reportUserWithName(Object name) {
-    return 'Report $name';
+    return 'الإبلاغ عن $name';
   }
 
   @override
   String get reportDisclaimer =>
-      'Reports are reviewed by our team. False reports may result in action against your account.';
+      'يراجع فريقنا البلاغات. قد تؤدي البلاغات الكاذبة إلى اتخاذ إجراء ضد حسابك.';
 
   @override
   String get reportReasonSpam => 'Spam';
 
   @override
-  String get reportReasonHarassment => 'Harassment';
+  String get reportReasonHarassment => 'مضايقة';
 
   @override
-  String get reportReasonInappropriate => 'Inappropriate content';
+  String get reportReasonInappropriate => 'محتوى غير لائق';
 
   @override
-  String get reportReasonOther => 'Other';
+  String get reportReasonOther => 'أخرى';
 
   @override
-  String get reportAdditionalDetails => 'Additional details (optional)…';
+  String get reportAdditionalDetails => 'تفاصيل إضافية (اختياري)…';
 
   @override
-  String get reportSuccess => 'Report submitted. Thank you.';
+  String get reportSuccess => 'تم إرسال البلاغ. شكرًا لك.';
 
   @override
-  String get reportFailed => 'Failed to submit report. Please try again.';
+  String get reportFailed => 'تعذّر إرسال البلاغ. يرجى المحاولة مرة أخرى.';
 
   @override
-  String get reportSubmit => 'Submit report';
+  String get reportSubmit => 'إرسال البلاغ';
 
   @override
   String get playerLookupSubtitle =>
-      'Search for a Java or Bedrock player by username';
+      'ابحث عن لاعب Java أو Bedrock باسم المستخدم';
 
   @override
-  String get playerLookupHint => 'Enter a username…';
+  String get playerLookupHint => 'أدخل اسم مستخدم…';
 
   @override
-  String get playerLookupLinked => 'Linked accounts found';
+  String get playerLookupLinked => 'تم العثور على حسابات مرتبطة';
 
   @override
-  String get playerLookupLabelUsername => 'Username';
+  String get playerLookupLabelUsername => 'اسم المستخدم';
 
   @override
   String get playerLookupLabelTier => 'Tier';
 
   @override
   String playerLookupCopied(Object value) {
-    return '$value copied';
+    return 'تم نسخ $value';
   }
 
   @override
-  String get addFriend => 'Add Friend';
+  String get addFriend => 'إضافة صديق';
 
   @override
   String get send => 'Send';
 
   @override
-  String get somethingWentWrong => 'Something went wrong. Please try again.';
+  String get somethingWentWrong => 'حدث خطأ ما. يرجى المحاولة مرة أخرى.';
 
   @override
   String friendRequestAccepted(Object name) {
-    return 'You are now friends with $name';
+    return 'أنت الآن صديق $name';
   }
 
   @override
   String requestDeclined(Object name) {
-    return 'Request from $name declined';
+    return 'تم رفض طلب $name';
   }
 
   @override
-  String get deleteAccountTitle => 'Delete Account';
+  String get deleteAccountTitle => 'حذف الحساب';
 
   @override
   String get deleteAccountBody =>
-      'This will permanently delete your account and all data. This action cannot be undone.';
+      'سيؤدي هذا إلى حذف حسابك وجميع بياناتك نهائيًا. لا يمكن التراجع عن هذا الإجراء.';
 
   @override
-  String get deletePermanently => 'Delete Permanently';
+  String get deletePermanently => 'حذف نهائي';
 
   @override
   String get couldNotDeleteAccount =>
-      'Could not delete account. Please try again.';
+      'تعذّر حذف الحساب. يرجى المحاولة مرة أخرى.';
 
   @override
-  String get removeFriendTitle => 'Remove Friend';
+  String get removeFriendTitle => 'إزالة صديق';
 
   @override
   String removeFriendConfirm(Object name) {
-    return 'Remove $name from your friends?';
+    return 'هل تريد إزالة $name من أصدقائك؟';
   }
 
   @override
-  String get remove => 'Remove';
+  String get remove => 'إزالة';
 
   @override
   String friendRemoved(Object name) {
-    return '$name has been removed from your friends';
+    return 'تمت إزالة $name من أصدقائك';
   }
 
   @override
   String get emailDifferentMethod =>
-      'This email is linked to a different sign-in method';
+      'هذا البريد الإلكتروني مرتبط بطريقة تسجيل دخول مختلفة';
 
   @override
-  String get googleSignInFailed => 'Google sign-in failed. Please try again.';
+  String get googleSignInFailed =>
+      'فشل تسجيل الدخول عبر Google. يرجى المحاولة مرة أخرى.';
 
   @override
-  String get appleSignInFailed => 'Apple sign-in failed. Please try again.';
+  String get appleSignInFailed =>
+      'فشل تسجيل الدخول عبر Apple. يرجى المحاولة مرة أخرى.';
 
   @override
-  String get resetPasswordTitle => 'Reset Password';
+  String get resetPasswordTitle => 'إعادة تعيين كلمة المرور';
 
   @override
   String get resetPasswordBody =>
-      'Enter your email address and we will send you a link to reset your password.';
+      'أدخل عنوان بريدك الإلكتروني وسنرسل إليك رابطًا لإعادة تعيين كلمة المرور.';
 
   @override
-  String get emailAddressHint => 'Email address';
+  String get emailAddressHint => 'البريد الإلكتروني';
 
   @override
-  String get sendLink => 'Send link';
+  String get sendLink => 'إرسال الرابط';
 
   @override
   String resetLinkSent(Object email) {
@@ -625,164 +624,165 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get invalidEmailError => 'The email address is not valid';
+  String get invalidEmailError => 'عنوان البريد الإلكتروني غير صالح';
 
   @override
   String get couldNotSendResetEmail =>
-      'Could not send reset email. Please try again.';
+      'تعذّر إرسال بريد إعادة التعيين. يرجى المحاولة مرة أخرى.';
 
   @override
-  String get enterEmailAndPassword => 'Please enter your email and password';
+  String get enterEmailAndPassword =>
+      'يرجى إدخال بريدك الإلكتروني وكلمة المرور';
 
   @override
-  String get incorrectEmailOrPassword => 'Incorrect email or password';
+  String get incorrectEmailOrPassword =>
+      'البريد الإلكتروني أو كلمة المرور غير صحيحة';
 
   @override
-  String get emailAlreadyInUse => 'This email address is already in use';
+  String get emailAlreadyInUse => 'عنوان البريد الإلكتروني هذا مستخدم بالفعل';
 
   @override
   String get weakPassword =>
-      'Password is too weak. Please choose a stronger one.';
+      'كلمة المرور ضعيفة جدًا. يرجى اختيار كلمة مرور أقوى.';
 
   @override
-  String get createAccount => 'Create Account';
+  String get createAccount => 'إنشاء حساب';
 
   @override
   String get signInSubtitle =>
-      'Sign in to access your profile, friends, and chats.';
+      'سجّل الدخول للوصول إلى ملفك الشخصي وأصدقائك ومحادثاتك.';
 
   @override
-  String get passwordHint => 'Password';
+  String get passwordHint => 'كلمة المرور';
 
   @override
-  String get forgotPassword => 'Forgot password?';
+  String get forgotPassword => 'هل نسيت كلمة المرور؟';
 
   @override
   String get orDivider => 'or';
 
   @override
-  String get continueWithGoogle => 'Continue with Google';
+  String get continueWithGoogle => 'المتابعة باستخدام Google';
 
   @override
-  String get alreadyHaveAccount => 'Already have an account? Sign in';
+  String get alreadyHaveAccount => 'لديك حساب بالفعل؟ سجّل الدخول';
 
   @override
-  String get noAccountYet => 'Don\'t have an account? Create one';
+  String get noAccountYet => 'ليس لديك حساب؟ أنشئ واحدًا';
 
   @override
-  String get profileNotSetUp => 'Profile not set up';
+  String get profileNotSetUp => 'لم يتم إعداد الملف الشخصي';
 
   @override
   String get chooseUsernameSubtitle =>
       'اختر اسم مستخدم ليتمكن اللاعبون الآخرون من العثور عليك.';
 
   @override
-  String get createProfile => 'Create Profile';
+  String get createProfile => 'إنشاء ملف شخصي';
 
   @override
-  String get findUser => 'Find user';
+  String get findUser => 'البحث عن مستخدم';
 
   @override
-  String get couldNotUpdateVisibility => 'Could not update visibility settings';
+  String get couldNotUpdateVisibility => 'تعذّر تحديث إعدادات الظهور';
 
   @override
-  String get signOut => 'Sign Out';
+  String get signOut => 'تسجيل الخروج';
 
   @override
-  String get appearOfflineLabel => 'Appear Offline';
+  String get appearOfflineLabel => 'الظهور كغير متصل';
 
   @override
-  String get appearOfflineOn => 'You appear offline to other players';
+  String get appearOfflineOn => 'تظهر غير متصل للاعبين الآخرين';
 
   @override
-  String get appearOfflineOff => 'You appear online to other players';
+  String get appearOfflineOff => 'تظهر متصلًا للاعبين الآخرين';
 
   @override
-  String get unlinkXboxTitle => 'Unlink Xbox Account';
+  String get unlinkXboxTitle => 'إلغاء ربط حساب Xbox';
 
   @override
   String removeLabelConfirm(Object name) {
-    return 'Remove $name from your linked accounts?';
+    return 'هل تريد إزالة $name من حساباتك المرتبطة؟';
   }
 
   @override
-  String get unlink => 'Unlink';
+  String get unlink => 'إلغاء الربط';
 
   @override
-  String get unlinkJavaTitle => 'Unlink Java Account';
+  String get unlinkJavaTitle => 'إلغاء ربط حساب Java';
 
   @override
   String removeJavaConfirm(Object name) {
-    return 'Remove $name from your linked accounts?';
+    return 'هل تريد إزالة $name من حساباتك المرتبطة؟';
   }
 
   @override
-  String get linkAccountsHint =>
-      'Link your Minecraft accounts to show your skins and stats.';
+  String get linkAccountsHint => 'اربط حسابات Minecraft لعرض أشكالك وإحصاءاتك.';
 
   @override
-  String get linkXbox => 'Link Xbox';
+  String get linkXbox => 'ربط Xbox';
 
   @override
-  String get linkJava => 'Link Java';
+  String get linkJava => 'ربط Java';
 
   @override
-  String get profileUpdated => 'Profile updated';
+  String get profileUpdated => 'تم تحديث الملف الشخصي';
 
   @override
   String get edit => 'Edit';
 
   @override
-  String get displayNameLabel => 'Display Name';
+  String get displayNameLabel => 'الاسم المعروض';
 
   @override
-  String get yourNameHint => 'Your name';
+  String get yourNameHint => 'اسمك';
 
   @override
   String get bioLabel => 'Bio';
 
   @override
-  String get bioHint => 'Tell others about yourself…';
+  String get bioHint => 'أخبر الآخرين عن نفسك…';
 
   @override
-  String get noFriendsYet => 'No friends yet';
+  String get noFriendsYet => 'لا يوجد أصدقاء بعد';
 
   @override
-  String get noFriendsSub => 'Add friends to see them here.';
+  String get noFriendsSub => 'أضف أصدقاء ليظهروا هنا.';
 
   @override
   String onlineFriendsLabel(Object count) {
-    return '$count online';
+    return '$count متصل';
   }
 
   @override
   String offlineFriendsLabel(Object count) {
-    return '$count offline';
+    return '$count غير متصل';
   }
 
   @override
-  String get noPendingRequests => 'No pending requests';
+  String get noPendingRequests => 'لا توجد طلبات معلقة';
 
   @override
-  String get requestsAppearHere => 'New friend requests will appear here.';
+  String get requestsAppearHere => 'ستظهر طلبات الصداقة الجديدة هنا.';
 
   @override
   String get skinsEdit => 'Edit';
 
   @override
-  String get skinsMustBe64 => 'Skin must be 64×64 pixels';
+  String get skinsMustBe64 => 'يجب أن يكون حجم السكن 64×64 بكسل';
 
   @override
-  String get skinsInvalidFile => 'Invalid image file';
+  String get skinsInvalidFile => 'ملف صورة غير صالح';
 
   @override
-  String get skinsUpload => 'Upload';
+  String get skinsUpload => 'رفع';
 
   @override
-  String get skinsCreate => 'Create';
+  String get skinsCreate => 'إنشاء';
 
   @override
-  String get skinsDownload => 'Download';
+  String get skinsDownload => 'تنزيل';
 
   @override
   String get chooseUniqueUsername => 'اختر اسم مستخدم فريداً للبدء.';
@@ -833,315 +833,317 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get paywallRestore => 'Restore';
+  String get paywallRestore => 'استعادة';
 
   @override
-  String get paywallMonthly => 'Monthly';
+  String get paywallMonthly => 'شهريًا';
 
   @override
-  String get paywallYearly => 'Yearly';
+  String get paywallYearly => 'سنويًا';
 
   @override
-  String get paywallSavePercent => 'Save ~17%';
+  String get paywallSavePercent => 'وفّر ~17%';
 
   @override
   String get paywallSubtitle =>
-      'Track more servers and get notified\nwhen they go online or offline.';
+      'تتبّع المزيد من الخوادم واحصل على إشعار\nعند اتصالها أو انقطاعها.';
 
   @override
   String paywallSlotLabel(Object slots) {
-    return '$slots server slots';
+    return '$slots خانات للخوادم';
   }
 
   @override
-  String get paywallPopular => 'Popular';
+  String get paywallPopular => 'الأكثر شيوعًا';
 
   @override
-  String get paywallContinue => 'Continue';
+  String get paywallContinue => 'متابعة';
 
   @override
-  String get paywallNoPkgs => 'No packages available.';
+  String get paywallNoPkgs => 'لا توجد باقات متاحة.';
 
   @override
-  String get paywallManaged => 'Managed by Apple/Google. Cancel anytime.';
+  String get paywallManaged =>
+      'تُدار عبر Apple/Google. يمكنك الإلغاء في أي وقت.';
 
   @override
-  String get paywallPurchaseSuccess => 'Purchase successful!';
+  String get paywallPurchaseSuccess => 'تمت عملية الشراء بنجاح!';
 
   @override
-  String get paywallPurchaseFailed => 'Purchase failed. Please try again.';
+  String get paywallPurchaseFailed =>
+      'فشلت عملية الشراء. يرجى المحاولة مرة أخرى.';
 
   @override
-  String get paywallPurchasesRestored => 'Purchases restored!';
+  String get paywallPurchasesRestored => 'تمت استعادة المشتريات!';
 
   @override
-  String get paywallNoActivePurchases => 'No active purchases found.';
+  String get paywallNoActivePurchases => 'لم يتم العثور على مشتريات نشطة.';
 
   @override
-  String get paywallRestoreFailed => 'Restore failed. Please try again.';
+  String get paywallRestoreFailed => 'فشلت الاستعادة. يرجى المحاولة مرة أخرى.';
 
   @override
   String get relay => 'Relay';
 
   @override
-  String get serversSection => 'Servers';
+  String get serversSection => 'الخوادم';
 
   @override
-  String get selectBedrockAccount => 'Select Bedrock account';
+  String get selectBedrockAccount => 'اختر حساب Bedrock';
 
   @override
-  String get infoAndLegal => 'Info & Legal';
+  String get infoAndLegal => 'المعلومات والقانون';
 
   @override
-  String get legalSection => 'Legal';
+  String get legalSection => 'قانوني';
 
   @override
   String get privacyPolicy => 'سياسة الخصوصية';
 
   @override
-  String get privacyPolicySubtitle => 'How we collect and protect your data';
+  String get privacyPolicySubtitle => 'كيف نجمع بياناتك ونحميها';
 
   @override
   String get termsOfService => 'شروط الخدمة';
 
   @override
-  String get termsOfServiceSubtitle => 'Rules and conditions of use';
+  String get termsOfServiceSubtitle => 'قواعد وشروط الاستخدام';
 
   @override
-  String get dataSourcesSection => 'Data Sources & Credits';
+  String get dataSourcesSection => 'مصادر البيانات والشكر';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
 
   @override
   String get creditMojangSubtitle =>
-      'Java player skins, UUIDs, and profile data via the official Mojang API.';
+      'أشكال لاعبي Java ومعرّفات UUID وبيانات الملف الشخصي عبر واجهة Mojang الرسمية.';
 
   @override
   String get creditGeyserTitle => 'GeyserMC';
 
   @override
   String get creditGeyserSubtitle =>
-      'Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.';
+      'عرض أشكال Bedrock. يتم جلب أشكال لاعبي Bedrock من خادم الأشكال التابع لـ GeyserMC.';
 
   @override
   String get creditXboxTitle => 'Xbox / Microsoft';
 
   @override
   String get creditXboxSubtitle =>
-      'Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.';
+      'ربط حسابات Bedrock عبر Xbox Live. يتم الحصول على Gamertag ومعرّفات XUID من خلال مصادقة Microsoft.';
 
   @override
-  String get aboutMCCompanionSection => 'About MCCompanion';
+  String get aboutMCCompanionSection => 'حول MCCompanion';
 
   @override
   String get aboutMCCompanionDisclaimer =>
-      'MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.';
+      'MCCompanion تطبيق مستقل وليس تابعًا لـ Mojang Studios أو Microsoft Corporation ولا يحظى بتأييدهما أو رعايتهما.';
 
   @override
   String get minecraftTrademark =>
-      '\"Minecraft\" is a trademark of Microsoft Corporation.';
+      '\"Minecraft\" علامة تجارية مسجلة لشركة Microsoft Corporation.';
 
   @override
   String get nldServerLabelShort => 'MCCompanion Server';
 
   @override
-  String get editServer => 'Edit Server';
+  String get editServer => 'تعديل الخادم';
 
   @override
-  String get serverNameExampleHint => 'My Awesome Server';
+  String get serverNameExampleHint => 'خادمي الرائع';
 
   @override
   String get serverAddressExampleHint => 'play.example.com';
 
   @override
-  String get serverDescriptionExampleHint => 'Survival server with friends';
+  String get serverDescriptionExampleHint => 'خادم بقاء مع الأصدقاء';
 
   @override
-  String get editionLabel => 'Edition';
+  String get editionLabel => 'الإصدار';
 
   @override
   String get nameLabel => 'Name';
 
   @override
-  String get ipAddressFieldLabel => 'IP Address';
+  String get ipAddressFieldLabel => 'عنوان IP';
 
   @override
   String get portFieldLabel => 'Port';
 
   @override
-  String get platformFieldLabel => 'Platform';
+  String get platformFieldLabel => 'المنصة';
 
   @override
-  String get nameValidationError => 'Name must be 1–50 characters';
+  String get nameValidationError => 'يجب أن يتكون الاسم من 1 إلى 50 حرفًا';
 
   @override
-  String get ipRequiredError => 'IP address is required';
+  String get ipRequiredError => 'عنوان IP مطلوب';
 
   @override
-  String get portRangeError => 'Port must be between 1 and 65535';
+  String get portRangeError => 'يجب أن يكون المنفذ بين 1 و65535';
 
   @override
-  String get xboxLinkTitle => 'Link Xbox Account';
+  String get xboxLinkTitle => 'ربط حساب Xbox';
 
   @override
-  String get xboxStartingLogin => 'Starting Xbox login…';
+  String get xboxStartingLogin => 'جارٍ بدء تسجيل الدخول إلى Xbox…';
 
   @override
-  String get xboxSignInWithMicrosoft => 'Sign in with Microsoft';
+  String get xboxSignInWithMicrosoft => 'تسجيل الدخول باستخدام Microsoft';
 
   @override
   String get xboxGoToLink =>
-      'Go to the link below and enter the code to connect your Xbox account.';
+      'انتقل إلى الرابط أدناه وأدخل الرمز لربط حساب Xbox الخاص بك.';
 
   @override
-  String get xboxYourCode => 'Your code';
+  String get xboxYourCode => 'رمزك';
 
   @override
-  String get xboxTapToCopy => 'Tap the code to copy it';
+  String get xboxTapToCopy => 'اضغط على الرمز لنسخه';
 
   @override
-  String get xboxOpenLink => 'Open microsoft.com/link';
+  String get xboxOpenLink => 'فتح microsoft.com/link';
 
   @override
-  String get xboxWaitingForLogin => 'Waiting for login…';
+  String get xboxWaitingForLogin => 'بانتظار تسجيل الدخول…';
 
   @override
-  String get xboxAccountLinked => 'Xbox account linked!';
+  String get xboxAccountLinked => 'تم ربط حساب Xbox!';
 
   @override
-  String get xboxCodeCopied => 'Code copied to clipboard';
+  String get xboxCodeCopied => 'تم نسخ الرمز إلى الحافظة';
 
   @override
   String get xboxCouldNotStart =>
-      'Could not start Xbox login. Please try again.';
+      'تعذّر بدء تسجيل الدخول إلى Xbox. يرجى المحاولة مرة أخرى.';
 
   @override
-  String get xboxCodeExpired => 'The code expired. Please try again.';
+  String get xboxCodeExpired => 'انتهت صلاحية الرمز. يرجى المحاولة مرة أخرى.';
 
   @override
-  String get xboxSomethingWrong => 'Something went wrong. Please try again.';
+  String get xboxSomethingWrong => 'حدث خطأ ما. يرجى المحاولة مرة أخرى.';
 
   @override
-  String get tryAgain => 'Try again';
+  String get tryAgain => 'حاول مرة أخرى';
 
   @override
-  String get userNotFound => 'User not found';
+  String get userNotFound => 'المستخدم غير موجود';
 
   @override
-  String get profileSectionLabel => 'Profile';
+  String get profileSectionLabel => 'الملف الشخصي';
 
   @override
-  String get displayNameRowLabel => 'Display name';
+  String get displayNameRowLabel => 'الاسم المعروض';
 
   @override
-  String get usernameRowLabel => 'Username';
+  String get usernameRowLabel => 'اسم المستخدم';
 
   @override
-  String get lastSeenLabel => 'Last seen';
+  String get lastSeenLabel => 'آخر ظهور';
 
   @override
-  String get aboutSectionLabel => 'About';
+  String get aboutSectionLabel => 'نبذة';
 
   @override
   String get xboxBedrockLabel => 'Xbox / Bedrock';
 
   @override
-  String get friendRequestSent => 'Friend request sent';
+  String get friendRequestSent => 'تم إرسال طلب الصداقة';
 
   @override
-  String get alreadyFriendsMsg => 'You are already friends.';
+  String get alreadyFriendsMsg => 'أنتما صديقان بالفعل.';
 
   @override
-  String get requestAlreadyPendingMsg => 'There is already a pending request.';
+  String get requestAlreadyPendingMsg => 'يوجد طلب معلق بالفعل.';
 
   @override
-  String get userNotFoundMsg2 => 'User not found.';
+  String get userNotFoundMsg2 => 'المستخدم غير موجود.';
 
   @override
-  String get cannotSendRequestMsg => 'Cannot send a request to this user.';
+  String get cannotSendRequestMsg => 'لا يمكن إرسال طلب إلى هذا المستخدم.';
 
   @override
   String nowFriendsWith(Object username) {
-    return 'Now friends with @$username';
+    return 'أنت الآن صديق @$username';
   }
 
   @override
-  String get removeFriendButton => 'Remove friend';
+  String get removeFriendButton => 'إزالة الصديق';
 
   @override
-  String get requestSentButton => 'Request sent';
+  String get requestSentButton => 'تم إرسال الطلب';
 
   @override
-  String get acceptRequestButton => 'Accept request';
+  String get acceptRequestButton => 'قبول الطلب';
 
   @override
-  String get addFriendButton => 'Add friend';
+  String get addFriendButton => 'إضافة صديق';
 
   @override
-  String get removeFriendDialogTitle => 'Remove friend';
+  String get removeFriendDialogTitle => 'إزالة صديق';
 
   @override
   String removeFriendDialogBody(Object username) {
-    return 'Remove @$username as a friend?';
+    return 'هل تريد إزالة @$username من أصدقائك؟';
   }
 
   @override
   String get trackerLimitReached => 'تم بلوغ حد الخوادم';
 
   @override
-  String get upgradeButton => 'Upgrade';
+  String get upgradeButton => 'ترقية';
 
   @override
-  String get javaLinkTitle => 'Link Java Edition';
+  String get javaLinkTitle => 'ربط إصدار Java';
 
   @override
-  String get javaStartingLogin => 'Starting Microsoft login…';
+  String get javaStartingLogin => 'جارٍ بدء تسجيل الدخول إلى Microsoft…';
 
   @override
-  String get javaSignInWithMicrosoft => 'Sign in with Microsoft';
+  String get javaSignInWithMicrosoft => 'تسجيل الدخول باستخدام Microsoft';
 
   @override
   String get javaGoToLink =>
-      'Go to the link below and enter the code to connect your Minecraft Java Edition account.';
+      'انتقل إلى الرابط أدناه وأدخل الرمز لربط حساب Minecraft Java Edition الخاص بك.';
 
   @override
-  String get javaYourCode => 'Your code';
+  String get javaYourCode => 'رمزك';
 
   @override
-  String get javaTapToCopy => 'Tap the code to copy it';
+  String get javaTapToCopy => 'اضغط على الرمز لنسخه';
 
   @override
-  String get javaOpenLink => 'Open microsoft.com/link';
+  String get javaOpenLink => 'فتح microsoft.com/link';
 
   @override
-  String get javaWaitingForLogin => 'Waiting for login…';
+  String get javaWaitingForLogin => 'بانتظار تسجيل الدخول…';
 
   @override
-  String get javaAccountLinked => 'Java Edition linked!';
+  String get javaAccountLinked => 'تم ربط إصدار Java!';
 
   @override
-  String get javaNoJavaTitle => 'No Java Edition found';
+  String get javaNoJavaTitle => 'لم يتم العثور على إصدار Java';
 
   @override
   String get javaNoJavaBody =>
-      'The Microsoft account you signed in with does not own Minecraft Java Edition.';
+      'حساب Microsoft الذي سجّلت الدخول به لا يملك Minecraft Java Edition.';
 
   @override
-  String get javaTryDifferentAccount => 'Try a different account';
+  String get javaTryDifferentAccount => 'جرّب حسابًا آخر';
 
   @override
   String get javaCouldNotStart =>
-      'Could not start Microsoft login. Please try again.';
+      'تعذّر بدء تسجيل الدخول إلى Microsoft. يرجى المحاولة مرة أخرى.';
 
   @override
-  String get javaCodeExpired => 'The code expired. Please try again.';
+  String get javaCodeExpired => 'انتهت صلاحية الرمز. يرجى المحاولة مرة أخرى.';
 
   @override
-  String get javaSomethingWrong => 'Something went wrong. Please try again.';
+  String get javaSomethingWrong => 'حدث خطأ ما. يرجى المحاولة مرة أخرى.';
 
   @override
-  String get javaCodeCopied => 'Code copied to clipboard';
+  String get javaCodeCopied => 'تم نسخ الرمز إلى الحافظة';
 
   @override
   String get featureLabelConnector => 'موصّل';
@@ -1362,16 +1364,6 @@ class AppLocalizationsAr extends AppLocalizations {
       'يمكن أن تتسبب حزم القوام عالية الدقة في تأخر أو تعطل وحدات التحكم. إذا واجهت مشاكل، انتقل إلى حزمة بدقة أقل أو اختر حزمة فرعية أخف إذا كانت الحزمة تدعم ذلك.';
 
   @override
-  String get rpWarnDiscord =>
-      'روابط Discord تنتهي صلاحيتها وستتوقف عن العمل. استخدم مضيفًا دائمًا بدلاً من ذلك.';
-
-  @override
-  String get rpWarnHttps => 'يجب أن يبدأ الرابط بـ https://';
-
-  @override
-  String get rpWarnExtension => 'يجب أن ينتهي الرابط بـ .mcpack أو .zip';
-
-  @override
   String get rpToastSaved => 'تم حفظ إعدادات حزمة الموارد.';
 
   @override
@@ -1420,19 +1412,46 @@ class AppLocalizationsAr extends AppLocalizations {
       'يخزن Minecraft حزم الموارد بواسطة UUID الخاصة بها. تحتفظ الحزمة المدمجة بـ UUID الأصلي للخادم, إذا كان Minecraft قد خزّن حزمة الخادم بالفعل من جلسة سابقة (قبل تفعيل MCCompanion)، فلن يعيد تنزيل النسخة المدمجة الجديدة. امسح ذاكرة التخزين المؤقت حتى يحمّل Minecraft الحزمة المدمجة الجديدة.';
 
   @override
-  String get rpUploadTab => 'Upload';
+  String get rpUploadTab => 'رفع';
 
   @override
-  String get rpBrowseTab => 'Browse';
+  String get rpBrowseTab => 'تصفّح';
 
   @override
-  String get rpUploadButton => 'Tap to select your pack';
+  String get rpCategoryRealism => 'واقعي';
 
   @override
-  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+  String get rpCategoryFaithful => 'Faithful';
 
   @override
-  String get rpUploading => 'Uploading...';
+  String get rpCategoryPvp => 'PvP';
+
+  @override
+  String get rpCategoryCartoon => 'كرتوني';
+
+  @override
+  String get rpCategoryDark => 'داكن';
+
+  @override
+  String get rpCategoryMedieval => 'العصور الوسطى';
+
+  @override
+  String get rpCategoryNature => 'الطبيعة';
+
+  @override
+  String get rpCategoryThemed => 'بموضوع معين';
+
+  @override
+  String get rpCategoryOther => 'أخرى';
+
+  @override
+  String get rpUploadButton => 'اضغط لاختيار الحزمة';
+
+  @override
+  String get rpUploadHint => '‎.mcpack أو .zip • بحد أقصى 100 ميغابايت';
+
+  @override
+  String get rpUploading => 'جارٍ الرفع...';
 
   @override
   String get rpMergerTitle => 'دمج حزم الموارد';
@@ -1580,58 +1599,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get skinsSavedToMySkins => 'تم الحفظ في سكناتي';
 
   @override
-  String get skinsDownloadFailed => 'فشل التنزيل';
-
-  @override
-  String get skinsDeletedFromCloud => 'تم الحذف من السحابة';
-
-  @override
-  String get skinsDeleteFailed => 'فشل الحذف';
-
-  @override
-  String get skinsLoginToUpload => 'سجّل دخولك لرفع السكنات';
-
-  @override
-  String get skinsUploading => 'جارٍ الرفع…';
-
-  @override
-  String get skinUploaded => 'تم رفع السكن!';
-
-  @override
-  String skinUploadFailed(String error) {
-    return 'فشل الرفع: $error';
-  }
-
-  @override
   String get skinsEmptyLocalSkins =>
       'لا توجد سكنات بعد. أنشئ أو ارفع سكناً للبدء.';
-
-  @override
-  String get skinUploadToWebsite => 'رفع إلى الموقع';
-
-  @override
-  String get skinReuploadToWebsite => 'إعادة الرفع إلى الموقع';
-
-  @override
-  String get skinCloudEdit => 'تعديل';
-
-  @override
-  String get skinCloudSaveToDevice => 'حفظ على الجهاز';
-
-  @override
-  String get skinCloudDelete => 'حذف من السحابة';
-
-  @override
-  String get skinsTabGallery => 'معرض الصور';
-
-  @override
-  String get skinsTopLabel => 'أفضل 30';
-
-  @override
-  String get skinsAllLabel => 'جميع السكنات';
-
-  @override
-  String get skinUploadToCloud => 'رفع إلى السحابة';
 
   @override
   String get skinSaveDialog => 'حفظ السكن';
@@ -1641,19 +1610,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get skinDefaultName => 'سكني';
-
-  @override
-  String get skinUpdatedInCloud => 'تم تحديث السكن في السحابة';
-
-  @override
-  String skinByCreator(String name) {
-    return 'بواسطة $name';
-  }
-
-  @override
-  String skinLikesCount(int count) {
-    return '$count إعجاب';
-  }
 
   @override
   String get sectionRecentActivity => 'النشاط الأخير';
@@ -1768,18 +1724,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notifPrefMessageReceived => 'رسالة جديدة';
 
   @override
-  String get commentsTitle => 'التعليقات';
-
-  @override
-  String get commentsEmpty => 'لا توجد تعليقات بعد. كن الأول!';
-
-  @override
-  String get commentsPlaceholder => 'اكتب تعليقاً…';
-
-  @override
-  String get loadMore => 'تحميل المزيد';
-
-  @override
   String get skinLayerInner => 'داخلي';
 
   @override
@@ -1809,9 +1753,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get skinSaveToMySkins => 'حفظ في سكيناتي';
-
-  @override
-  String get skinUpdateInCloud => 'تحديث في السحابة';
 
   @override
   String get skinExportPng => 'تصدير PNG';
@@ -2047,14 +1988,18 @@ class AppLocalizationsAr extends AppLocalizations {
       'تعذر فتح المنفذ المحلي. أوقف الاتصال الحالي أولاً.';
 
   @override
-  String get waitingForConsole => 'Waiting for your console…';
+  String get waitingForConsole => 'في انتظار جهاز الألعاب…';
 
   @override
-  String get consoleFound => 'Console found';
+  String get consoleFound => 'تم العثور على الجهاز';
 
   @override
   String get consoleLanHint =>
-      'On your console, open Minecraft and look under Friends for a LAN game.';
+      'على جهاز الألعاب، افتح Minecraft وابحث ضمن الأصدقاء عن لعبة LAN.';
+
+  @override
+  String get localNetworkBlocked =>
+      'لا يستطيع MCCompanion الوصول إلى شبكتك المحلية. فعّل «الشبكة المحلية» لتطبيق MCCompanion من إعدادات جهازك وتأكد من اتصالك بشبكة Wi-Fi.';
 
   @override
   String directAddressNotSupported(String host) {
@@ -2129,10 +2074,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get serverListAllCategories => 'الكل';
 
   @override
-  String get serverListPlayersAny => 'Any size';
+  String get serverListPlayersAny => 'أي حجم';
 
   @override
-  String get serverListPlayersHint => 'Average players online';
+  String get serverListPlayersHint => 'متوسط اللاعبين المتصلين';
 
   @override
   String get serverListLoadFailed => 'تعذّر تحميل قائمة الخوادم';
@@ -2151,9 +2096,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get serverCardVote => 'صوّت';
-
-  @override
-  String get serverCardViewServer => 'عرض الخادم';
 
   @override
   String get serverCopyIp => 'نسخ الـ IP';

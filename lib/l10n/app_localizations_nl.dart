@@ -153,9 +153,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get save => 'Opslaan';
 
   @override
-  String get clientDisconnected => 'Client verbroken - Uitzending gestopt';
-
-  @override
   String get pleaseEnterServer => '⚠️ Voer een serveradres in';
 
   @override
@@ -1387,16 +1384,6 @@ class AppLocalizationsNl extends AppLocalizations {
       'Texturepaketten met hoge resolutie kunnen lag of crashes veroorzaken op consoles. Als je problemen ervaart, schakel over op een pakket met lagere resolutie of selecteer een lichter subpakket als dat beschikbaar is.';
 
   @override
-  String get rpWarnDiscord =>
-      'Discord-links verlopen en werken dan niet meer. Gebruik een permanente host.';
-
-  @override
-  String get rpWarnHttps => 'URL moet beginnen met https://';
-
-  @override
-  String get rpWarnExtension => 'URL moet eindigen op .mcpack of .zip';
-
-  @override
   String get rpToastSaved => 'Instellingen resourcepakket opgeslagen.';
 
   @override
@@ -1445,19 +1432,46 @@ class AppLocalizationsNl extends AppLocalizations {
       'Minecraft slaat resourcepakketten op via hun UUID. De samengevoegde pack behoudt de originele UUID van de server, als Minecraft de serverpack al gecacht heeft van een vorige sessie (vóór MCCompanion was ingeschakeld), downloadt het de nieuwe samengevoegde versie niet opnieuw. Wis de cache zodat Minecraft de verse samengevoegde pack oppikt.';
 
   @override
-  String get rpUploadTab => 'Upload';
+  String get rpUploadTab => 'Uploaden';
 
   @override
   String get rpBrowseTab => 'Bladeren';
 
   @override
-  String get rpUploadButton => 'Tap to select your pack';
+  String get rpCategoryRealism => 'Realisme';
 
   @override
-  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+  String get rpCategoryFaithful => 'Faithful';
 
   @override
-  String get rpUploading => 'Uploading...';
+  String get rpCategoryPvp => 'PvP';
+
+  @override
+  String get rpCategoryCartoon => 'Cartoon';
+
+  @override
+  String get rpCategoryDark => 'Donker';
+
+  @override
+  String get rpCategoryMedieval => 'Middeleeuws';
+
+  @override
+  String get rpCategoryNature => 'Natuur';
+
+  @override
+  String get rpCategoryThemed => 'Thema';
+
+  @override
+  String get rpCategoryOther => 'Overig';
+
+  @override
+  String get rpUploadButton => 'Tik om je pack te kiezen';
+
+  @override
+  String get rpUploadHint => '.mcpack of .zip • max. 100 MB';
+
+  @override
+  String get rpUploading => 'Uploaden...';
 
   @override
   String get rpMergerTitle => 'RP Merger';
@@ -1605,58 +1619,8 @@ class AppLocalizationsNl extends AppLocalizations {
   String get skinsSavedToMySkins => 'Opgeslagen in Mijn Skins';
 
   @override
-  String get skinsDownloadFailed => 'Download mislukt';
-
-  @override
-  String get skinsDeletedFromCloud => 'Verwijderd uit de cloud';
-
-  @override
-  String get skinsDeleteFailed => 'Verwijderen mislukt';
-
-  @override
-  String get skinsLoginToUpload => 'Log in om skins te uploaden';
-
-  @override
-  String get skinsUploading => 'Uploaden…';
-
-  @override
-  String get skinUploaded => 'Skin geüpload!';
-
-  @override
-  String skinUploadFailed(String error) {
-    return 'Upload mislukt: $error';
-  }
-
-  @override
   String get skinsEmptyLocalSkins =>
       'Nog geen skins. Maak of upload een skin om te beginnen.';
-
-  @override
-  String get skinUploadToWebsite => 'Uploaden naar website';
-
-  @override
-  String get skinReuploadToWebsite => 'Opnieuw uploaden naar website';
-
-  @override
-  String get skinCloudEdit => 'Bewerken';
-
-  @override
-  String get skinCloudSaveToDevice => 'Opslaan op apparaat';
-
-  @override
-  String get skinCloudDelete => 'Verwijderen uit cloud';
-
-  @override
-  String get skinsTabGallery => 'Galerij';
-
-  @override
-  String get skinsTopLabel => 'Top 30';
-
-  @override
-  String get skinsAllLabel => 'Alle Skins';
-
-  @override
-  String get skinUploadToCloud => 'Uploaden naar cloud';
 
   @override
   String get skinSaveDialog => 'Skin opslaan';
@@ -1666,19 +1630,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get skinDefaultName => 'Mijn skin';
-
-  @override
-  String get skinUpdatedInCloud => 'Skin bijgewerkt in cloud';
-
-  @override
-  String skinByCreator(String name) {
-    return 'door $name';
-  }
-
-  @override
-  String skinLikesCount(int count) {
-    return '$count likes';
-  }
 
   @override
   String get sectionRecentActivity => 'Recente activiteit';
@@ -1793,18 +1744,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get notifPrefMessageReceived => 'Nieuw bericht';
 
   @override
-  String get commentsTitle => 'Reacties';
-
-  @override
-  String get commentsEmpty => 'Nog geen reacties. Wees de eerste!';
-
-  @override
-  String get commentsPlaceholder => 'Schrijf een reactie…';
-
-  @override
-  String get loadMore => 'Meer laden';
-
-  @override
   String get skinLayerInner => 'Binnen';
 
   @override
@@ -1834,9 +1773,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get skinSaveToMySkins => 'Opslaan bij mijn skins';
-
-  @override
-  String get skinUpdateInCloud => 'Bijwerken in cloud';
 
   @override
   String get skinExportPng => 'PNG exporteren';
@@ -2084,6 +2020,10 @@ class AppLocalizationsNl extends AppLocalizations {
       'Open Minecraft op je console en zoek onder Vrienden naar een LAN-spel.';
 
   @override
+  String get localNetworkBlocked =>
+      'MCCompanion kan je lokale netwerk niet bereiken. Zet Lokaal netwerk aan voor MCCompanion in de instellingen van je toestel en zorg dat je op wifi zit.';
+
+  @override
   String directAddressNotSupported(String host) {
     return '$host is een IPv6-adres. Proxy/directe modus ondersteunt alleen IPv4. Gebruik het IPv4-adres of de hostnaam.';
   }
@@ -2180,9 +2120,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get serverCardVote => 'Stemmen';
-
-  @override
-  String get serverCardViewServer => 'Server bekijken';
 
   @override
   String get serverCopyIp => 'IP kopiëren';

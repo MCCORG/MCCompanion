@@ -80,10 +80,6 @@
   "@save": {
     "description": "Save button label"
   },
-  "clientDisconnected": "İstemci bağlantısı kesildi: Yayın durduruldu",
-  "@clientDisconnected": {
-    "description": "Snackbar shown when clients disconnect automatically"
-  },
   "pleaseEnterServer": "⚠️ Lütfen bir sunucu adresi girin",
   "@pleaseEnterServer": {
     "description": "Validation message when server address field is empty"
@@ -263,10 +259,10 @@
   "resetLabel": "Sıfırla",
   "navigationSection": "GEZİNME",
   "navFixed": "Connector ve Profil her zaman sabittir",
-  "leftSlot": "Slot 2",
-  "outerSlot": "Slot 1",
-  "rightSlot": "Slot 3",
-  "farSlot": "Slot 4",
+  "leftSlot": "Yuva 2",
+  "outerSlot": "Yuva 1",
+  "rightSlot": "Yuva 3",
+  "farSlot": "Yuva 4",
   "colorPickerApply": "Uygula",
   "colorPickerHex": "Hex",
   "textColorSection": "METİN RENGİ",
@@ -1083,9 +1079,6 @@
   "rpNoDiscord": "Discord bağlantıları: .mcpack uzantısı yok ve birkaç saat sonra süresi doluyor",
   "rpNoDrive": "Google Drive / Dropbox paylaşım bağlantıları, doğrudan indirme değil",
   "rpNoEncrypted": "Şifrelenmiş veya parola korumalı paketlere sahip sunucular",
-  "rpWarnDiscord": "Discord bağlantılarının süresi dolup çalışmayı durdurur. Bunun yerine kalıcı bir host kullanın.",
-  "rpWarnHttps": "URL https:// ile başlamalıdır",
-  "rpWarnExtension": "URL .mcpack veya .zip ile bitmelidir",
   "rpToastSaved": "Kaynak paketi ayarları kaydedildi.",
   "rpClearMinecraftTitle": "Bu paketle ilk kez mi?",
   "rpClearStep1": "Konsolunda Minecraft'ı aç ve Ayarlar → Depolama'ya git",
@@ -1097,10 +1090,10 @@
   "rpNoDriveHint": "Doğrudan indirme yok: önizleme sayfasına yönlendirir",
   "rpNoEncryptedHint": "MCCompanion şifrelenmiş pack içeriğini birleştiremez",
   "rpClearWhy": "Minecraft, kaynak paketlerini UUID'lerine göre önbelleğe alır. Birleştirilmiş paket, sunucunun orijinal UUID'sini korur, Minecraft, önceki bir oturumdan (MCCompanion etkinleştirilmeden önce) sunucu paketini zaten önbelleğe almışsa, yeni birleştirilmiş sürümü indirmez. Minecraft'ın yeni birleştirilmiş paketi yüklemesi için önbelleği temizle.",
-  "rpUploadTab": "Upload",
-  "rpUploadButton": "Tap to select your pack",
-  "rpUploadHint": ".mcpack or .zip • max 100 MB",
-  "rpUploading": "Uploading...",
+  "rpUploadTab": "Yükle",
+  "rpUploadButton": "Paketini seçmek için dokun",
+  "rpUploadHint": ".mcpack veya .zip • en fazla 100 MB",
+  "rpUploading": "Yükleniyor...",
   "rpMergerTitle": "RP Birleştirici",
   "rpMergerPriorityHint": "En üstteki paketin en yüksek önceliği var, dosyaları çakışmalarda kazanır.",
   "rpMergerTopBadge": "ÜST",
@@ -1172,45 +1165,10 @@
     }
   },
   "skinsSavedToMySkins": "Skinlerime kaydedildi",
-  "skinsDownloadFailed": "İndirme başarısız oldu",
-  "skinsDeletedFromCloud": "Buluttan silindi",
-  "skinsDeleteFailed": "Silme başarısız oldu",
-  "skinsLoginToUpload": "Skin yüklemek için giriş yapın",
-  "skinsUploading": "Yükleniyor…",
-  "skinUploaded": "Skin yüklendi!",
-  "skinUploadFailed": "Yükleme başarısız: {error}",
   "skinsEmptyLocalSkins": "Henüz skin yok. Başlamak için bir skin oluşturun veya yükleyin.",
-  "skinUploadToWebsite": "Web sitesine yükle",
-  "skinReuploadToWebsite": "Web sitesine yeniden yükle",
-  "skinCloudEdit": "Düzenle",
-  "skinCloudSaveToDevice": "Cihaza kaydet",
-  "skinCloudDelete": "Buluttan sil",
-  "skinsTabGallery": "Galeri",
-  "skinsTopLabel": "Top 30",
-  "skinsAllLabel": "Tüm Skinler",
-  "skinUploadToCloud": "Buluta yükle",
   "skinSaveDialog": "Skin kaydet",
   "skinNameHint": "Skin adı",
   "skinDefaultName": "Benim skinim",
-  "skinUpdatedInCloud": "Skin bulutta güncellendi",
-  "skinByCreator": "{name} tarafından",
-  "@skinByCreator": {
-    "description": "Creator attribution",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinLikesCount": "{count} beğeni",
-  "@skinLikesCount": {
-    "description": "Like count",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "sectionRecentActivity": "Son etkinlik",
   "activityNoEvents": "Henüz son etkinlik yok.",
   "activitySkinUploaded": "Skin yüklendi",
@@ -1305,10 +1263,6 @@
   "notifPrefFriendRequest": "Arkadaşlık isteği",
   "notifPrefFriendAccepted": "Arkadaş eklendi",
   "notifPrefMessageReceived": "Yeni mesaj",
-  "commentsTitle": "Yorumlar",
-  "commentsEmpty": "Henüz yorum yok. İlk sen ol!",
-  "commentsPlaceholder": "Yorum yaz…",
-  "loadMore": "Daha fazla yükle",
   "skinLayerInner": "İç",
   "@skinLayerInner": {
     "description": "Skin editor layer toggle, inner/base layer"
@@ -1327,7 +1281,6 @@
   "skinEditorTitle": "Skin düzenleyici",
   "skinToolUndo": "Geri al",
   "skinSaveToMySkins": "Skinlerime kaydet",
-  "skinUpdateInCloud": "Bulutta güncelle",
   "skinExportPng": "PNG dışa aktar",
   "skinToolDraw": "Çiz",
   "skinToolFill": "Doldur",
@@ -1407,6 +1360,22 @@
     }
   },
   "directPortBusy": "Yerel bağlantı noktası açılamadı. Önce mevcut bağlantıyı durdurun.",
+  "rpBrowseTab": "Göz at",
+  "rpCategoryRealism": "Gerçekçi",
+  "rpCategoryFaithful": "Faithful",
+  "rpCategoryPvp": "PvP",
+  "rpCategoryCartoon": "Çizgi film",
+  "rpCategoryDark": "Karanlık",
+  "rpCategoryMedieval": "Ortaçağ",
+  "rpCategoryNature": "Doğa",
+  "rpCategoryThemed": "Temalı",
+  "rpCategoryOther": "Diğer",
+  "waitingForConsole": "Konsolunuz bekleniyor…",
+  "consoleFound": "Konsol bulundu",
+  "consoleLanHint": "Konsolunuzda Minecraft'ı açın ve Arkadaşlar bölümünde bir LAN oyunu arayın.",
+  "localNetworkBlocked": "MCCompanion yerel ağınıza erişemiyor. Cihaz ayarlarından MCCompanion için Yerel Ağ iznini açın ve Wi-Fi'ye bağlı olduğunuzdan emin olun.",
+  "serverListPlayersAny": "Herhangi bir boyut",
+  "serverListPlayersHint": "Ortalama çevrimiçi oyuncu",
   "directAddressNotSupported": "{host} bir IPv6 adresi. Proxy/Doğrudan mod yalnızca IPv4 destekler. IPv4 adresini veya ana bilgisayar adını kullanın.",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -1451,7 +1420,6 @@
   "serverListNoMatchHint": "Farklı bir arama veya kategori deneyin",
   "serverCardPlay": "Oyna",
   "serverCardVote": "Oy ver",
-  "serverCardViewServer": "Sunucuyu görüntüle",
   "serverCopyIp": "IP'yi kopyala",
   "serverCopied": "Kopyalandı",
   "serverStatPlayers": "Oyuncular",

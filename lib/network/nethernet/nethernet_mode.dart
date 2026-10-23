@@ -23,6 +23,7 @@ class NetherNetMode {
 
   final List<String> events = [];
   void Function()? onUpdate;
+  void Function()? onLocalNetworkBlocked;
 
   final Completer<void> _firstClient = Completer<void>();
   final ValueNotifier<bool> clientSeen = ValueNotifier(false);
@@ -66,6 +67,8 @@ class NetherNetMode {
       playerCount: playerCount,
       maxPlayerCount: maxPlayerCount,
     );
+
+    discovery.onLocalNetworkBlocked = () => onLocalNetworkBlocked?.call();
 
     discovery.onDiscoveryRequest = (address, port, count) {
       clientSeen.value = true;

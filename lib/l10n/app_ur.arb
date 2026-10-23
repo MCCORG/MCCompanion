@@ -80,10 +80,6 @@
   "@save": {
     "description": "Save button label"
   },
-  "clientDisconnected": "کلائنٹ منقطع ہو گیا: براڈکاسٹ بند ہو گئی",
-  "@clientDisconnected": {
-    "description": "Snackbar shown when clients disconnect automatically"
-  },
   "pleaseEnterServer": "⚠️ براہ کرم سرور ایڈریس درج کریں",
   "@pleaseEnterServer": {
     "description": "Validation message when server address field is empty"
@@ -263,10 +259,10 @@
   "resetLabel": "دوبارہ ترتیب دیں",
   "navigationSection": "نیوی گیشن",
   "navFixed": "Connector اور پروفائل ہمیشہ مقرر ہیں",
-  "leftSlot": "Slot 2",
-  "outerSlot": "Slot 1",
-  "rightSlot": "Slot 3",
-  "farSlot": "Slot 4",
+  "leftSlot": "سلاٹ 2",
+  "outerSlot": "سلاٹ 1",
+  "rightSlot": "سلاٹ 3",
+  "farSlot": "سلاٹ 4",
   "colorPickerApply": "لاگو کریں",
   "colorPickerHex": "Hex",
   "textColorSection": "متن کا رنگ",
@@ -284,7 +280,7 @@
   "playerLookupJavaEdition": "Java Edition",
   "playerLookupBedrockEdition": "Bedrock Edition",
   "playerLookupLabelUuid": "UUID",
-  "playerLookupLabelGamertag": "Gamertag",
+  "playerLookupLabelGamertag": "گیمرٹیگ",
   "playerLookupLabelXuid": "XUID",
   "playerLookupLabelFloodgate": "Floodgate",
   "accountSubtitleXbox": "Xbox · {xuid}",
@@ -303,55 +299,55 @@
   "navProfile": "پروفائل",
   "serverRemoved": "{name} ہٹا دیا گیا",
   "serverAdded": "{name} شامل کیا گیا",
-  "aboutMCCompanionDisclaimer": "MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.",
+  "aboutMCCompanionDisclaimer": "MCCompanion ایک آزاد ایپ ہے اور Mojang Studios یا Microsoft Corporation سے وابستہ نہیں، نہ ان کی منظور شدہ یا سرپرستی میں ہے۔",
   "@aboutMCCompanionDisclaimer": {
     "description": "Disclaimer text in About MCCompanion section"
   },
-  "aboutMCCompanionSection": "About MCCompanion",
+  "aboutMCCompanionSection": "MCCompanion کے بارے میں",
   "@aboutMCCompanionSection": {
     "description": "Section header for About MCCompanion in Info sheet"
   },
-  "aboutSectionLabel": "About",
+  "aboutSectionLabel": "تعارف",
   "@aboutSectionLabel": {
     "description": "Section label for bio/about in public profile"
   },
-  "acceptRequestButton": "Accept request",
+  "acceptRequestButton": "درخواست قبول کریں",
   "@acceptRequestButton": {
     "description": "Button label to accept a friend request"
   },
-  "addFriend": "Add Friend",
+  "addFriend": "دوست شامل کریں",
   "@addFriend": {
     "description": "Title/button for adding a friend"
   },
-  "addFriendButton": "Add friend",
+  "addFriendButton": "دوست شامل کریں",
   "@addFriendButton": {
     "description": "Button label to add a friend on public profile"
   },
-  "alreadyFriendsMsg": "You are already friends.",
+  "alreadyFriendsMsg": "آپ پہلے ہی دوست ہیں۔",
   "@alreadyFriendsMsg": {
     "description": "Error when already friends with user (public profile)"
   },
-  "alreadyHaveAccount": "Already have an account? Sign in",
+  "alreadyHaveAccount": "پہلے سے اکاؤنٹ ہے؟ سائن اِن کریں",
   "@alreadyHaveAccount": {
     "description": "Toggle to switch back to sign-in mode"
   },
-  "appearOfflineLabel": "Appear Offline",
+  "appearOfflineLabel": "آف لائن ظاہر ہوں",
   "@appearOfflineLabel": {
     "description": "Label for the appear-offline toggle"
   },
-  "appearOfflineOff": "You appear online to other players",
+  "appearOfflineOff": "آپ دوسرے کھلاڑیوں کو آن لائن نظر آتے ہیں",
   "@appearOfflineOff": {
     "description": "Subtitle when appear-offline is disabled"
   },
-  "appearOfflineOn": "You appear offline to other players",
+  "appearOfflineOn": "آپ دوسرے کھلاڑیوں کو آف لائن نظر آتے ہیں",
   "@appearOfflineOn": {
     "description": "Subtitle when appear-offline is enabled"
   },
-  "appleSignInFailed": "Apple sign-in failed. Please try again.",
+  "appleSignInFailed": "Apple سائن اِن ناکام ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔",
   "@appleSignInFailed": {
     "description": "Error when Apple sign-in fails"
   },
-  "bioHint": "Tell others about yourself…",
+  "bioHint": "دوسروں کو اپنے بارے میں بتائیں…",
   "@bioHint": {
     "description": "Hint text for bio field"
   },
@@ -359,7 +355,7 @@
   "@bioLabel": {
     "description": "Label for bio field"
   },
-  "cannotSendRequestMsg": "Cannot send a request to this user.",
+  "cannotSendRequestMsg": "اس صارف کو درخواست نہیں بھیجی جا سکتی۔",
   "@cannotSendRequestMsg": {
     "description": "Error when friend request is blocked (public profile)"
   },
@@ -367,31 +363,31 @@
   "@chooseUsernameSubtitle": {
     "description": "Subtitle shown when profile is not yet set up"
   },
-  "continueWithGoogle": "Continue with Google",
+  "continueWithGoogle": "Google کے ساتھ جاری رکھیں",
   "@continueWithGoogle": {
     "description": "Button label for Google sign-in"
   },
-  "couldNotDeleteAccount": "Could not delete account. Please try again.",
+  "couldNotDeleteAccount": "اکاؤنٹ حذف نہیں ہو سکا۔ براہ کرم دوبارہ کوشش کریں۔",
   "@couldNotDeleteAccount": {
     "description": "Error when account deletion fails"
   },
-  "couldNotSendResetEmail": "Could not send reset email. Please try again.",
+  "couldNotSendResetEmail": "ری سیٹ ای میل نہیں بھیجی جا سکی۔ براہ کرم دوبارہ کوشش کریں۔",
   "@couldNotSendResetEmail": {
     "description": "Generic error when sending reset email fails"
   },
-  "couldNotUpdateVisibility": "Could not update visibility settings",
+  "couldNotUpdateVisibility": "نمائش کی ترتیبات اپ ڈیٹ نہیں ہو سکیں",
   "@couldNotUpdateVisibility": {
     "description": "Error when toggling appear-offline fails"
   },
-  "createAccount": "Create Account",
+  "createAccount": "اکاؤنٹ بنائیں",
   "@createAccount": {
     "description": "Button/title for creating a new account"
   },
-  "createProfile": "Create Profile",
+  "createProfile": "پروفائل بنائیں",
   "@createProfile": {
     "description": "Button to navigate to profile creation/registration"
   },
-  "creditGeyserSubtitle": "Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.",
+  "creditGeyserSubtitle": "Bedrock اسکن رینڈرنگ۔ Bedrock کھلاڑیوں کی اسکنز GeyserMC اسکن سرور سے حاصل کی جاتی ہیں۔",
   "@creditGeyserSubtitle": {
     "description": "Subtitle for GeyserMC credit tile"
   },
@@ -399,7 +395,7 @@
   "@creditGeyserTitle": {
     "description": "Title for GeyserMC credit tile"
   },
-  "creditMojangSubtitle": "Java player skins, UUIDs, and profile data via the official Mojang API.",
+  "creditMojangSubtitle": "Java کھلاڑیوں کی اسکنز، UUID اور پروفائل ڈیٹا سرکاری Mojang API کے ذریعے۔",
   "@creditMojangSubtitle": {
     "description": "Subtitle for Mojang credit tile"
   },
@@ -407,7 +403,7 @@
   "@creditMojangTitle": {
     "description": "Title for Mojang credit tile"
   },
-  "creditXboxSubtitle": "Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.",
+  "creditXboxSubtitle": "Xbox Live کے ذریعے Bedrock اکاؤنٹ لنکنگ۔ Gamertag اور XUID Microsoft کی تصدیقی کارروائی سے حاصل ہوتے ہیں۔",
   "@creditXboxSubtitle": {
     "description": "Subtitle for Xbox credit tile"
   },
@@ -415,27 +411,27 @@
   "@creditXboxTitle": {
     "description": "Title for Xbox credit tile"
   },
-  "dataSourcesSection": "Data Sources & Credits",
+  "dataSourcesSection": "ڈیٹا کے ذرائع اور کریڈٹس",
   "@dataSourcesSection": {
     "description": "Section header for data sources in Info sheet"
   },
-  "deleteAccountBody": "This will permanently delete your account and all data. This action cannot be undone.",
+  "deleteAccountBody": "اس سے آپ کا اکاؤنٹ اور تمام ڈیٹا مستقل طور پر حذف ہو جائے گا۔ یہ عمل واپس نہیں ہو سکتا۔",
   "@deleteAccountBody": {
     "description": "Body text for delete account confirmation dialog"
   },
-  "deleteAccountTitle": "Delete Account",
+  "deleteAccountTitle": "اکاؤنٹ حذف کریں",
   "@deleteAccountTitle": {
     "description": "Title for delete account dialog/button"
   },
-  "deletePermanently": "Delete Permanently",
+  "deletePermanently": "مستقل طور پر حذف کریں",
   "@deletePermanently": {
     "description": "Confirm button for permanent deletion"
   },
-  "displayNameLabel": "Display Name",
+  "displayNameLabel": "ظاہری نام",
   "@displayNameLabel": {
     "description": "Label for display name field"
   },
-  "displayNameRowLabel": "Display name",
+  "displayNameRowLabel": "ظاہری نام",
   "@displayNameRowLabel": {
     "description": "Row label for display name in public profile"
   },
@@ -443,101 +439,101 @@
   "@edit": {
     "description": "Edit button label"
   },
-  "editServer": "Edit Server",
+  "editServer": "سرور میں ترمیم کریں",
   "@editServer": {
     "description": "Title for edit server form in manage servers"
   },
-  "editionLabel": "Edition",
+  "editionLabel": "ایڈیشن",
   "@editionLabel": {
     "description": "Label for the edition toggle in manage servers form"
   },
-  "emailAddressHint": "Email address",
+  "emailAddressHint": "ای میل پتہ",
   "@emailAddressHint": {
     "description": "Hint text for email address field"
   },
-  "emailAlreadyInUse": "This email address is already in use",
+  "emailAlreadyInUse": "یہ ای میل پتہ پہلے سے استعمال میں ہے",
   "@emailAlreadyInUse": {
     "description": "Error when email is already registered"
   },
-  "emailDifferentMethod": "This email is linked to a different sign-in method",
+  "emailDifferentMethod": "یہ ای میل سائن اِن کے کسی دوسرے طریقے سے منسلک ہے",
   "@emailDifferentMethod": {
     "description": "Error when email already uses a different auth method"
   },
-  "enterEmailAndPassword": "Please enter your email and password",
+  "enterEmailAndPassword": "براہ کرم اپنی ای میل اور پاس ورڈ درج کریں",
   "@enterEmailAndPassword": {
     "description": "Validation when email or password is empty on sign-in"
   },
-  "findUser": "Find user",
+  "findUser": "صارف تلاش کریں",
   "@findUser": {
     "description": "Tooltip for the search/find user button"
   },
-  "forgotPassword": "Forgot password?",
+  "forgotPassword": "پاس ورڈ بھول گئے؟",
   "@forgotPassword": {
     "description": "Link to trigger password reset flow"
   },
-  "friendRemoved": "{name} has been removed from your friends",
+  "friendRemoved": "{name} کو آپ کے دوستوں سے ہٹا دیا گیا",
   "@friendRemoved": {
     "description": "Toast shown after removing a friend",
     "placeholders": {
       "name": {}
     }
   },
-  "friendRequestAccepted": "You are now friends with {name}",
+  "friendRequestAccepted": "اب آپ {name} کے دوست ہیں",
   "@friendRequestAccepted": {
     "description": "Toast when a friend request is accepted",
     "placeholders": {
       "name": {}
     }
   },
-  "friendRequestSent": "Friend request sent",
+  "friendRequestSent": "دوستی کی درخواست بھیج دی گئی",
   "@friendRequestSent": {
     "description": "Toast shown after friend request is sent from public profile"
   },
-  "googleSignInFailed": "Google sign-in failed. Please try again.",
+  "googleSignInFailed": "Google سائن اِن ناکام ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔",
   "@googleSignInFailed": {
     "description": "Error when Google sign-in fails"
   },
-  "incorrectEmailOrPassword": "Incorrect email or password",
+  "incorrectEmailOrPassword": "ای میل یا پاس ورڈ غلط ہے",
   "@incorrectEmailOrPassword": {
     "description": "Error for wrong credentials"
   },
-  "infoAndLegal": "Info & Legal",
+  "infoAndLegal": "معلومات اور قانونی",
   "@infoAndLegal": {
     "description": "Title of the Info & Legal sheet"
   },
-  "invalidEmailError": "The email address is not valid",
+  "invalidEmailError": "ای میل پتہ درست نہیں ہے",
   "@invalidEmailError": {
     "description": "Error for invalid email format"
   },
-  "ipAddressFieldLabel": "IP Address",
+  "ipAddressFieldLabel": "IP پتہ",
   "@ipAddressFieldLabel": {
     "description": "IP Address field label in edit server form"
   },
-  "ipRequiredError": "IP address is required",
+  "ipRequiredError": "IP پتہ ضروری ہے",
   "@ipRequiredError": {
     "description": "Validation error when IP address is empty"
   },
-  "lastSeenLabel": "Last seen",
+  "lastSeenLabel": "آخری بار دیکھا گیا",
   "@lastSeenLabel": {
     "description": "Row label for last seen date in public profile"
   },
-  "legalSection": "Legal",
+  "legalSection": "قانونی",
   "@legalSection": {
     "description": "Section header in Info sheet"
   },
-  "linkAccountsHint": "Link your Minecraft accounts to show your skins and stats.",
+  "linkAccountsHint": "اپنی اسکنز اور اعداد و شمار دکھانے کے لیے اپنے Minecraft اکاؤنٹس منسلک کریں۔",
   "@linkAccountsHint": {
     "description": "Hint when no accounts are linked"
   },
-  "linkJava": "Link Java",
+  "linkJava": "Java منسلک کریں",
   "@linkJava": {
     "description": "Button to link a Java account"
   },
-  "linkXbox": "Link Xbox",
+  "linkXbox": "Xbox منسلک کریں",
   "@linkXbox": {
     "description": "Button to link an Xbox/Bedrock account"
   },
-  "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
+  "minecraftTrademark": "\"Minecraft\" Microsoft Corporation کا ٹریڈ مارک ہے۔",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
   },
@@ -545,7 +541,7 @@
   "@nameLabel": {
     "description": "Generic Name field label"
   },
-  "nameValidationError": "Name must be 1–50 characters",
+  "nameValidationError": "نام 1 سے 50 حروف کا ہونا چاہیے",
   "@nameValidationError": {
     "description": "Validation error when server name is invalid"
   },
@@ -553,37 +549,37 @@
   "@nldServerLabelShort": {
     "description": "Section label above relay selector in More sheet"
   },
-  "noAccountYet": "Don't have an account? Create one",
+  "noAccountYet": "اکاؤنٹ نہیں ہے؟ بنائیں",
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noFriendsSub": "Add friends to see them here.",
+  "noFriendsSub": "دوست شامل کریں تو وہ یہاں نظر آئیں گے۔",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
   },
-  "noFriendsYet": "No friends yet",
+  "noFriendsYet": "ابھی کوئی دوست نہیں",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
   },
-  "noPendingRequests": "No pending requests",
+  "noPendingRequests": "کوئی زیر التوا درخواست نہیں",
   "@noPendingRequests": {
     "description": "Empty state title on requests tab"
   },
-  "nowFriendsWith": "Now friends with @{username}",
+  "nowFriendsWith": "اب آپ @{username} کے دوست ہیں",
   "@nowFriendsWith": {
     "description": "Toast when accepted a friend request from public profile",
     "placeholders": {
       "username": {}
     }
   },
-  "offlineFriendsLabel": "{count} offline",
+  "offlineFriendsLabel": "{count} آف لائن",
   "@offlineFriendsLabel": {
     "description": "Section label for offline friends",
     "placeholders": {
       "count": {}
     }
   },
-  "onlineFriendsLabel": "{count} online",
+  "onlineFriendsLabel": "{count} آن لائن",
   "@onlineFriendsLabel": {
     "description": "Section label for online friends",
     "placeholders": {
@@ -594,42 +590,42 @@
   "@orDivider": {
     "description": "Divider text between email and social sign-in"
   },
-  "passwordHint": "Password",
+  "passwordHint": "پاس ورڈ",
   "@passwordHint": {
     "description": "Hint text for password field"
   },
-  "paywallContinue": "Continue",
-  "paywallManaged": "Managed by Apple/Google. Cancel anytime.",
-  "paywallMonthly": "Monthly",
-  "paywallNoActivePurchases": "No active purchases found.",
-  "paywallNoPkgs": "No packages available.",
-  "paywallPopular": "Popular",
-  "paywallPurchaseFailed": "Purchase failed. Please try again.",
-  "paywallPurchaseSuccess": "Purchase successful!",
-  "paywallPurchasesRestored": "Purchases restored!",
-  "paywallRestore": "Restore",
-  "paywallRestoreFailed": "Restore failed. Please try again.",
-  "paywallSavePercent": "Save ~17%",
-  "paywallSlotLabel": "{slots} server slots",
+  "paywallContinue": "جاری رکھیں",
+  "paywallManaged": "Apple/Google کے زیر انتظام۔ کسی بھی وقت منسوخ کریں۔",
+  "paywallMonthly": "ماہانہ",
+  "paywallNoActivePurchases": "کوئی فعال خریداری نہیں ملی۔",
+  "paywallNoPkgs": "کوئی پیکج دستیاب نہیں۔",
+  "paywallPopular": "مقبول",
+  "paywallPurchaseFailed": "خریداری ناکام ہو گئی۔ براہ کرم دوبارہ کوشش کریں۔",
+  "paywallPurchaseSuccess": "خریداری کامیاب رہی!",
+  "paywallPurchasesRestored": "خریداریاں بحال ہو گئیں!",
+  "paywallRestore": "بحال کریں",
+  "paywallRestoreFailed": "بحالی ناکام ہو گئی۔ براہ کرم دوبارہ کوشش کریں۔",
+  "paywallSavePercent": "~17% بچائیں",
+  "paywallSlotLabel": "{slots} سرور سلاٹس",
   "@paywallSlotLabel": {
     "placeholders": {
       "slots": {}
     }
   },
-  "paywallSubtitle": "Track more servers and get notified\nwhen they go online or offline.",
-  "paywallYearly": "Yearly",
-  "platformFieldLabel": "Platform",
+  "paywallSubtitle": "مزید سرورز ٹریک کریں اور ان کے آن لائن\nیا آف لائن ہونے پر اطلاع پائیں۔",
+  "paywallYearly": "سالانہ",
+  "platformFieldLabel": "پلیٹ فارم",
   "@platformFieldLabel": {
     "description": "Platform field label in edit server form"
   },
-  "playerLookupCopied": "{value} copied",
+  "playerLookupCopied": "{value} کاپی ہو گیا",
   "@playerLookupCopied": {
     "description": "Toast shown after copying a value in player lookup",
     "placeholders": {
       "value": {}
     }
   },
-  "playerLookupHint": "Enter a username…",
+  "playerLookupHint": "یوزر نیم درج کریں…",
   "@playerLookupHint": {
     "description": "Hint text for player lookup search field"
   },
@@ -637,15 +633,15 @@
   "@playerLookupLabelTier": {
     "description": "Label for tier field in player lookup"
   },
-  "playerLookupLabelUsername": "Username",
+  "playerLookupLabelUsername": "یوزر نیم",
   "@playerLookupLabelUsername": {
     "description": "Label for username field in player lookup"
   },
-  "playerLookupLinked": "Linked accounts found",
+  "playerLookupLinked": "منسلک اکاؤنٹس مل گئے",
   "@playerLookupLinked": {
     "description": "Badge shown when linked accounts are found"
   },
-  "playerLookupSubtitle": "Search for a Java or Bedrock player by username",
+  "playerLookupSubtitle": "یوزر نیم سے Java یا Bedrock کھلاڑی تلاش کریں",
   "@playerLookupSubtitle": {
     "description": "Subtitle/hint on player lookup screen"
   },
@@ -653,7 +649,7 @@
   "@portFieldLabel": {
     "description": "Port field label in edit server form"
   },
-  "portRangeError": "Port must be between 1 and 65535",
+  "portRangeError": "پورٹ 1 اور 65535 کے درمیان ہونا چاہیے",
   "@portRangeError": {
     "description": "Validation error when port is out of range"
   },
@@ -661,19 +657,19 @@
   "@privacyPolicy": {
     "description": "Privacy Policy tile title"
   },
-  "privacyPolicySubtitle": "How we collect and protect your data",
+  "privacyPolicySubtitle": "ہم آپ کا ڈیٹا کیسے جمع اور محفوظ کرتے ہیں",
   "@privacyPolicySubtitle": {
     "description": "Privacy Policy tile subtitle"
   },
-  "profileNotSetUp": "Profile not set up",
+  "profileNotSetUp": "پروفائل سیٹ نہیں ہے",
   "@profileNotSetUp": {
     "description": "Title when user is authenticated but has no profile"
   },
-  "profileSectionLabel": "Profile",
+  "profileSectionLabel": "پروفائل",
   "@profileSectionLabel": {
     "description": "Section label in public profile for profile info card"
   },
-  "profileUpdated": "Profile updated",
+  "profileUpdated": "پروفائل اپ ڈیٹ ہو گئی",
   "@profileUpdated": {
     "description": "Toast shown after profile is saved"
   },
@@ -681,71 +677,71 @@
   "@relay": {
     "description": "Label for the Relay nav item and sheet title"
   },
-  "remove": "Remove",
+  "remove": "ہٹائیں",
   "@remove": {
     "description": "Remove button label"
   },
-  "removeFriendButton": "Remove friend",
+  "removeFriendButton": "دوست ہٹائیں",
   "@removeFriendButton": {
     "description": "Button label to remove a friend on public profile"
   },
-  "removeFriendConfirm": "Remove {name} from your friends?",
+  "removeFriendConfirm": "کیا {name} کو اپنے دوستوں سے ہٹانا ہے؟",
   "@removeFriendConfirm": {
     "description": "Confirmation text for removing a friend",
     "placeholders": {
       "name": {}
     }
   },
-  "removeFriendDialogBody": "Remove @{username} as a friend?",
+  "removeFriendDialogBody": "کیا @{username} کو دوستوں سے ہٹانا ہے؟",
   "@removeFriendDialogBody": {
     "description": "Dialog body when removing a friend from public profile",
     "placeholders": {
       "username": {}
     }
   },
-  "removeFriendDialogTitle": "Remove friend",
+  "removeFriendDialogTitle": "دوست ہٹائیں",
   "@removeFriendDialogTitle": {
     "description": "Dialog title when removing a friend from public profile"
   },
-  "removeFriendTitle": "Remove Friend",
+  "removeFriendTitle": "دوست ہٹائیں",
   "@removeFriendTitle": {
     "description": "Dialog title for removing a friend"
   },
-  "removeJavaConfirm": "Remove {name} from your linked accounts?",
+  "removeJavaConfirm": "کیا {name} کو اپنے منسلک اکاؤنٹس سے ہٹانا ہے؟",
   "@removeJavaConfirm": {
     "description": "Confirmation text for unlinking a Java account",
     "placeholders": {
       "name": {}
     }
   },
-  "removeLabelConfirm": "Remove {name} from your linked accounts?",
+  "removeLabelConfirm": "کیا {name} کو اپنے منسلک اکاؤنٹس سے ہٹانا ہے؟",
   "@removeLabelConfirm": {
     "description": "Confirmation text for unlinking a Bedrock/Xbox account",
     "placeholders": {
       "name": {}
     }
   },
-  "reportAdditionalDetails": "Additional details (optional)…",
+  "reportAdditionalDetails": "اضافی تفصیلات (اختیاری)…",
   "@reportAdditionalDetails": {
     "description": "Hint text for additional details field in report sheet"
   },
-  "reportDisclaimer": "Reports are reviewed by our team. False reports may result in action against your account.",
+  "reportDisclaimer": "رپورٹس کا جائزہ ہماری ٹیم لیتی ہے۔ جھوٹی رپورٹس پر آپ کے اکاؤنٹ کے خلاف کارروائی ہو سکتی ہے۔",
   "@reportDisclaimer": {
     "description": "Disclaimer text shown in the report sheet"
   },
-  "reportFailed": "Failed to submit report. Please try again.",
+  "reportFailed": "رپورٹ جمع نہیں ہو سکی۔ براہ کرم دوبارہ کوشش کریں۔",
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportReasonHarassment": "Harassment",
+  "reportReasonHarassment": "ہراسانی",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
   },
-  "reportReasonInappropriate": "Inappropriate content",
+  "reportReasonInappropriate": "نامناسب مواد",
   "@reportReasonInappropriate": {
     "description": "Report reason: inappropriate content"
   },
-  "reportReasonOther": "Other",
+  "reportReasonOther": "دیگر",
   "@reportReasonOther": {
     "description": "Report reason: other"
   },
@@ -753,41 +749,41 @@
   "@reportReasonSpam": {
     "description": "Report reason: spam"
   },
-  "reportSubmit": "Submit report",
+  "reportSubmit": "رپورٹ جمع کرائیں",
   "@reportSubmit": {
     "description": "Button label to submit a report"
   },
-  "reportSuccess": "Report submitted. Thank you.",
+  "reportSuccess": "رپورٹ جمع کر دی گئی۔ شکریہ۔",
   "@reportSuccess": {
     "description": "Toast shown after a successful report submission"
   },
-  "reportUser": "Report user",
+  "reportUser": "صارف کی رپورٹ کریں",
   "@reportUser": {
     "description": "Tooltip/button to report a user"
   },
-  "reportUserWithName": "Report {name}",
+  "reportUserWithName": "{name} کی رپورٹ کریں",
   "@reportUserWithName": {
     "description": "Title when reporting a user by name",
     "placeholders": {
       "name": {}
     }
   },
-  "requestAlreadyPendingMsg": "There is already a pending request.",
+  "requestAlreadyPendingMsg": "ایک درخواست پہلے سے زیر التوا ہے۔",
   "@requestAlreadyPendingMsg": {
     "description": "Error when friend request is already pending (public profile)"
   },
-  "requestDeclined": "Request from {name} declined",
+  "requestDeclined": "{name} کی درخواست مسترد کر دی گئی",
   "@requestDeclined": {
     "description": "Toast when a friend request is declined",
     "placeholders": {
       "name": {}
     }
   },
-  "requestSentButton": "Request sent",
+  "requestSentButton": "درخواست بھیج دی گئی",
   "@requestSentButton": {
     "description": "Disabled button label when request already sent"
   },
-  "requestsAppearHere": "New friend requests will appear here.",
+  "requestsAppearHere": "دوستی کی نئی درخواستیں یہاں نظر آئیں گی۔",
   "@requestsAppearHere": {
     "description": "Empty state subtitle on requests tab"
   },
@@ -798,15 +794,15 @@
       "email": {}
     }
   },
-  "resetPasswordBody": "Enter your email address and we will send you a link to reset your password.",
+  "resetPasswordBody": "اپنا ای میل پتہ درج کریں، ہم آپ کو پاس ورڈ ری سیٹ کرنے کا لنک بھیجیں گے۔",
   "@resetPasswordBody": {
     "description": "Body text for reset password dialog"
   },
-  "resetPasswordTitle": "Reset Password",
+  "resetPasswordTitle": "پاس ورڈ ری سیٹ کریں",
   "@resetPasswordTitle": {
     "description": "Title for reset password dialog"
   },
-  "selectBedrockAccount": "Select Bedrock account",
+  "selectBedrockAccount": "Bedrock اکاؤنٹ منتخب کریں",
   "@selectBedrockAccount": {
     "description": "Title of the Bedrock account picker bottom sheet"
   },
@@ -814,7 +810,7 @@
   "@send": {
     "description": "Send button label"
   },
-  "sendLink": "Send link",
+  "sendLink": "لنک بھیجیں",
   "@sendLink": {
     "description": "Button to send the password reset link"
   },
@@ -822,31 +818,31 @@
   "@serverAddressExampleHint": {
     "description": "Example hint text for server address field"
   },
-  "serverDescriptionExampleHint": "Survival server with friends",
+  "serverDescriptionExampleHint": "دوستوں کے ساتھ سروائیول سرور",
   "@serverDescriptionExampleHint": {
     "description": "Example hint text for server description field"
   },
-  "serverNameExampleHint": "My Awesome Server",
+  "serverNameExampleHint": "میرا شاندار سرور",
   "@serverNameExampleHint": {
     "description": "Example hint text for server name field"
   },
-  "serversSection": "Servers",
+  "serversSection": "سرورز",
   "@serversSection": {
     "description": "Section label above servers panel in connection panel"
   },
-  "signInSubtitle": "Sign in to access your profile, friends, and chats.",
+  "signInSubtitle": "اپنی پروفائل، دوستوں اور چیٹس تک رسائی کے لیے سائن اِن کریں۔",
   "@signInSubtitle": {
     "description": "Subtitle on the sign-in screen"
   },
-  "signOut": "Sign Out",
+  "signOut": "سائن آؤٹ",
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "Create",
+  "skinsCreate": "بنائیں",
   "@skinsCreate": {
     "description": "Button to create/open skin editor"
   },
-  "skinsDownload": "Download",
+  "skinsDownload": "ڈاؤن لوڈ",
   "@skinsDownload": {
     "description": "Download button in skin detail sheet"
   },
@@ -854,19 +850,19 @@
   "@skinsEdit": {
     "description": "Edit button in skin detail sheet"
   },
-  "skinsInvalidFile": "Invalid image file",
+  "skinsInvalidFile": "غلط تصویری فائل",
   "@skinsInvalidFile": {
     "description": "Error when the selected file is not a valid image"
   },
-  "skinsMustBe64": "Skin must be 64×64 pixels",
+  "skinsMustBe64": "اسکن 64×64 پکسل کی ہونی چاہیے",
   "@skinsMustBe64": {
     "description": "Error when uploaded skin is wrong size"
   },
-  "skinsUpload": "Upload",
+  "skinsUpload": "اپ لوڈ",
   "@skinsUpload": {
     "description": "Button to upload a skin"
   },
-  "somethingWentWrong": "Something went wrong. Please try again.",
+  "somethingWentWrong": "کچھ غلط ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔",
   "@somethingWentWrong": {
     "description": "Generic error message"
   },
@@ -874,7 +870,7 @@
   "@termsOfService": {
     "description": "Terms of Service tile title"
   },
-  "termsOfServiceSubtitle": "Rules and conditions of use",
+  "termsOfServiceSubtitle": "استعمال کے اصول اور شرائط",
   "@termsOfServiceSubtitle": {
     "description": "Terms of Service tile subtitle"
   },
@@ -882,43 +878,43 @@
   "@trackerLimitReached": {
     "description": "Banner shown when tracker slot limit is reached"
   },
-  "tryAgain": "Try again",
+  "tryAgain": "دوبارہ کوشش کریں",
   "@tryAgain": {
     "description": "Generic try again button label"
   },
-  "unlink": "Unlink",
+  "unlink": "لنک ختم کریں",
   "@unlink": {
     "description": "Unlink button label"
   },
-  "unlinkJavaTitle": "Unlink Java Account",
+  "unlinkJavaTitle": "Java اکاؤنٹ کا لنک ختم کریں",
   "@unlinkJavaTitle": {
     "description": "Dialog title for unlinking a Java account"
   },
-  "unlinkXboxTitle": "Unlink Xbox Account",
+  "unlinkXboxTitle": "Xbox اکاؤنٹ کا لنک ختم کریں",
   "@unlinkXboxTitle": {
     "description": "Dialog title for unlinking an Xbox account"
   },
-  "upgradeButton": "Upgrade",
+  "upgradeButton": "اپ گریڈ کریں",
   "@upgradeButton": {
     "description": "Button to open paywall/upgrade screen"
   },
-  "userNotFound": "User not found",
+  "userNotFound": "صارف نہیں ملا",
   "@userNotFound": {
     "description": "Text shown when a user profile cannot be found"
   },
-  "userNotFoundMsg2": "User not found.",
+  "userNotFoundMsg2": "صارف نہیں ملا۔",
   "@userNotFoundMsg2": {
     "description": "Error when user not found sending friend request from public profile"
   },
-  "usernameRowLabel": "Username",
+  "usernameRowLabel": "یوزر نیم",
   "@usernameRowLabel": {
     "description": "Row label for username in public profile"
   },
-  "weakPassword": "Password is too weak. Please choose a stronger one.",
+  "weakPassword": "پاس ورڈ بہت کمزور ہے۔ براہ کرم زیادہ مضبوط پاس ورڈ منتخب کریں۔",
   "@weakPassword": {
     "description": "Error for weak password"
   },
-  "xboxAccountLinked": "Xbox account linked!",
+  "xboxAccountLinked": "Xbox اکاؤنٹ منسلک ہو گیا!",
   "@xboxAccountLinked": {
     "description": "Success text when Xbox account is linked"
   },
@@ -926,74 +922,74 @@
   "@xboxBedrockLabel": {
     "description": "Section label for Xbox/Bedrock account in public profile"
   },
-  "xboxCodeCopied": "Code copied to clipboard",
+  "xboxCodeCopied": "کوڈ کلپ بورڈ پر کاپی ہو گیا",
   "@xboxCodeCopied": {
     "description": "Snackbar shown after code is copied"
   },
-  "xboxCodeExpired": "The code expired. Please try again.",
+  "xboxCodeExpired": "کوڈ کی میعاد ختم ہو گئی۔ براہ کرم دوبارہ کوشش کریں۔",
   "@xboxCodeExpired": {
     "description": "Error when Xbox device code expires"
   },
-  "xboxCouldNotStart": "Could not start Xbox login. Please try again.",
+  "xboxCouldNotStart": "Xbox لاگ اِن شروع نہیں ہو سکا۔ براہ کرم دوبارہ کوشش کریں۔",
   "@xboxCouldNotStart": {
     "description": "Error when Xbox login cannot be started"
   },
-  "xboxGoToLink": "Go to the link below and enter the code to connect your Xbox account.",
+  "xboxGoToLink": "نیچے دیے گئے لنک پر جائیں اور اپنا Xbox اکاؤنٹ جوڑنے کے لیے کوڈ درج کریں۔",
   "@xboxGoToLink": {
     "description": "Instruction on Xbox link waiting screen"
   },
-  "xboxLinkTitle": "Link Xbox Account",
+  "xboxLinkTitle": "Xbox اکاؤنٹ منسلک کریں",
   "@xboxLinkTitle": {
     "description": "AppBar title for Xbox link screen"
   },
-  "xboxOpenLink": "Open microsoft.com/link",
+  "xboxOpenLink": "microsoft.com/link کھولیں",
   "@xboxOpenLink": {
     "description": "Button label to open Microsoft device auth link"
   },
-  "xboxSignInWithMicrosoft": "Sign in with Microsoft",
+  "xboxSignInWithMicrosoft": "Microsoft کے ساتھ سائن اِن کریں",
   "@xboxSignInWithMicrosoft": {
     "description": "Heading on Xbox link waiting screen"
   },
-  "xboxSomethingWrong": "Something went wrong. Please try again.",
+  "xboxSomethingWrong": "کچھ غلط ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔",
   "@xboxSomethingWrong": {
     "description": "Generic error on Xbox link screen"
   },
-  "xboxStartingLogin": "Starting Xbox login…",
+  "xboxStartingLogin": "Xbox لاگ اِن شروع ہو رہا ہے…",
   "@xboxStartingLogin": {
     "description": "Loading text when starting Xbox login"
   },
-  "xboxTapToCopy": "Tap the code to copy it",
+  "xboxTapToCopy": "کاپی کرنے کے لیے کوڈ پر ٹیپ کریں",
   "@xboxTapToCopy": {
     "description": "Hint below the code on Xbox link screen"
   },
-  "xboxWaitingForLogin": "Waiting for login…",
+  "xboxWaitingForLogin": "لاگ اِن کا انتظار ہے…",
   "@xboxWaitingForLogin": {
     "description": "Status text while polling for Xbox login"
   },
-  "xboxYourCode": "Your code",
+  "xboxYourCode": "آپ کا کوڈ",
   "@xboxYourCode": {
     "description": "Label above the Microsoft device code"
   },
-  "yourNameHint": "Your name",
+  "yourNameHint": "آپ کا نام",
   "@yourNameHint": {
     "description": "Hint text for display name field"
   },
-  "javaLinkTitle": "Link Java Edition",
-  "javaStartingLogin": "Starting Microsoft login…",
-  "javaSignInWithMicrosoft": "Sign in with Microsoft",
-  "javaGoToLink": "Go to the link below and enter the code to connect your Minecraft Java Edition account.",
-  "javaYourCode": "Your code",
-  "javaTapToCopy": "Tap the code to copy it",
-  "javaOpenLink": "Open microsoft.com/link",
-  "javaWaitingForLogin": "Waiting for login…",
-  "javaAccountLinked": "Java Edition linked!",
-  "javaNoJavaTitle": "No Java Edition found",
-  "javaNoJavaBody": "The Microsoft account you signed in with does not own Minecraft Java Edition.",
-  "javaTryDifferentAccount": "Try a different account",
-  "javaCouldNotStart": "Could not start Microsoft login. Please try again.",
-  "javaCodeExpired": "The code expired. Please try again.",
-  "javaSomethingWrong": "Something went wrong. Please try again.",
-  "javaCodeCopied": "Code copied to clipboard",
+  "javaLinkTitle": "Java Edition منسلک کریں",
+  "javaStartingLogin": "Microsoft لاگ اِن شروع ہو رہا ہے…",
+  "javaSignInWithMicrosoft": "Microsoft کے ساتھ سائن اِن کریں",
+  "javaGoToLink": "نیچے دیے گئے لنک پر جائیں اور اپنا Minecraft Java Edition اکاؤنٹ جوڑنے کے لیے کوڈ درج کریں۔",
+  "javaYourCode": "آپ کا کوڈ",
+  "javaTapToCopy": "کاپی کرنے کے لیے کوڈ پر ٹیپ کریں",
+  "javaOpenLink": "microsoft.com/link کھولیں",
+  "javaWaitingForLogin": "لاگ اِن کا انتظار ہے…",
+  "javaAccountLinked": "Java Edition منسلک ہو گیا!",
+  "javaNoJavaTitle": "Java Edition نہیں ملا",
+  "javaNoJavaBody": "جس Microsoft اکاؤنٹ سے آپ نے سائن اِن کیا ہے اس کے پاس Minecraft Java Edition نہیں ہے۔",
+  "javaTryDifferentAccount": "کوئی اور اکاؤنٹ آزمائیں",
+  "javaCouldNotStart": "Microsoft لاگ اِن شروع نہیں ہو سکا۔ براہ کرم دوبارہ کوشش کریں۔",
+  "javaCodeExpired": "کوڈ کی میعاد ختم ہو گئی۔ براہ کرم دوبارہ کوشش کریں۔",
+  "javaSomethingWrong": "کچھ غلط ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔",
+  "javaCodeCopied": "کوڈ کلپ بورڈ پر کاپی ہو گیا",
   "featureLabelConnector": "کنیکٹر",
   "featureLabelSkins": "اسکنز",
   "featureLabelPartners": "سرورز کی فہرست",
@@ -1079,9 +1075,6 @@
   "rpNoDiscord": "Discord لنکس: کوئی .mcpack توسیع نہیں اور چند گھنٹوں میں ختم ہو جاتے ہیں",
   "rpNoDrive": "Google Drive / Dropbox شیئر لنکس: براہ راست ڈاؤن لوڈ نہیں",
   "rpNoEncrypted": "خفیہ کردہ یا پاس ورڈ محفوظ پیک والے سرور",
-  "rpWarnDiscord": "Discord لنکس ختم ہو جاتے ہیں اور کام کرنا بند کر دیتے ہیں۔ اس کی بجائے ایک مستقل ہوسٹ استعمال کریں۔",
-  "rpWarnHttps": "URL کو https:// سے شروع ہونا چاہیے",
-  "rpWarnExtension": "URL کو .mcpack یا .zip پر ختم ہونا چاہیے",
   "rpToastSaved": "ریسورس پیک سیٹنگز محفوظ ہو گئیں۔",
   "rpClearMinecraftTitle": "اس پیک کے ساتھ پہلی بار؟",
   "rpClearStep1": "اپنے کنسول پر Minecraft کھولیں اور Settings → Storage میں جائیں",
@@ -1093,10 +1086,10 @@
   "rpNoDriveHint": "براہ راست ڈاؤنلوڈ نہیں: پریویو صفحے پر بھیجتا ہے",
   "rpNoEncryptedHint": "MCCompanion انکرپٹیڈ پیک کا مواد یکجا نہیں کر سکتا",
   "rpClearWhy": "Minecraft ریسورس پیکس کو ان کے UUID سے کیش کرتا ہے۔ مرج شدہ پیک سرور کا اصل UUID رکھتا ہے, اگر Minecraft نے پہلے کسی سیشن میں (MCCompanion فعال ہونے سے پہلے) سرور کا پیک کیش کیا ہوا ہے، تو نئی مرج شدہ ورژن ڈاؤنلوڈ نہیں کرے گا۔ کیش صاف کریں تاکہ Minecraft تازہ مرج شدہ پیک لوڈ کرے۔",
-  "rpUploadTab": "Upload",
-  "rpUploadButton": "Tap to select your pack",
-  "rpUploadHint": ".mcpack or .zip • max 100 MB",
-  "rpUploading": "Uploading...",
+  "rpUploadTab": "اپ لوڈ",
+  "rpUploadButton": "اپنا پیک منتخب کرنے کے لیے ٹیپ کریں",
+  "rpUploadHint": ".mcpack یا .zip • زیادہ سے زیادہ 100 MB",
+  "rpUploading": "اپ لوڈ ہو رہا ہے...",
   "rpMergerTitle": "RP ضم کنندہ",
   "rpMergerPriorityHint": "سب سے اوپر کا پیک سب سے زیادہ ترجیح رکھتا ہے, اس کی فائلیں تنازعات جیتتی ہیں۔",
   "rpMergerTopBadge": "سرفہرست",
@@ -1127,7 +1120,7 @@
   "profileFallbackTitle": "پروفائل",
   "noUsersFound": "کوئی صارف نہیں ملا",
   "skinLabel": "SKIN",
-  "skinsLabel": "SKINS",
+  "skinsLabel": "اسکنز",
   "javaEditionBadge": "Java",
   "bedrockEditionBadge": "Bedrock",
   "downloadLabel": "ڈاؤنلوڈ",
@@ -1168,45 +1161,10 @@
     }
   },
   "skinsSavedToMySkins": "میری اسکنز میں محفوظ ہو گیا",
-  "skinsDownloadFailed": "ڈاؤنلوڈ ناکام رہا",
-  "skinsDeletedFromCloud": "کلاؤڈ سے حذف کر دیا گیا",
-  "skinsDeleteFailed": "حذف کرنا ناکام رہا",
-  "skinsLoginToUpload": "اسکنز اپلوڈ کرنے کے لیے لاگ ان کریں",
-  "skinsUploading": "اپلوڈ ہو رہا ہے…",
-  "skinUploaded": "اسکن اپلوڈ ہو گیا!",
-  "skinUploadFailed": "اپلوڈ ناکام: {error}",
   "skinsEmptyLocalSkins": "ابھی تک کوئی اسکن نہیں۔ شروع کرنے کے لیے ایک اسکن بنائیں یا اپلوڈ کریں۔",
-  "skinUploadToWebsite": "ویب سائٹ پر اپلوڈ کریں",
-  "skinReuploadToWebsite": "ویب سائٹ پر دوبارہ اپلوڈ کریں",
-  "skinCloudEdit": "ترمیم کریں",
-  "skinCloudSaveToDevice": "ڈیوائس پر محفوظ کریں",
-  "skinCloudDelete": "کلاؤڈ سے حذف کریں",
-  "skinsTabGallery": "گیلری",
-  "skinsTopLabel": "ٹاپ 30",
-  "skinsAllLabel": "تمام اسکنز",
-  "skinUploadToCloud": "کلاؤڈ پر اپ لوڈ کریں",
   "skinSaveDialog": "سکن محفوظ کریں",
   "skinNameHint": "سکن کا نام",
   "skinDefaultName": "میرا سکن",
-  "skinUpdatedInCloud": "سکن کلاؤڈ میں اپ ڈیٹ ہو گیا",
-  "skinByCreator": "{name} کی طرف سے",
-  "@skinByCreator": {
-    "description": "Creator attribution",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinLikesCount": "{count} پسند",
-  "@skinLikesCount": {
-    "description": "Like count",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "sectionRecentActivity": "حالیہ سرگرمی",
   "activityNoEvents": "ابھی تک کوئی حالیہ سرگرمی نہیں۔",
   "activitySkinUploaded": "اسکن اپلوڈ کی",
@@ -1301,10 +1259,6 @@
   "notifPrefFriendRequest": "دوستی کی درخواست",
   "notifPrefFriendAccepted": "دوست شامل",
   "notifPrefMessageReceived": "نیا پیغام",
-  "commentsTitle": "تبصرے",
-  "commentsEmpty": "ابھی کوئی تبصرہ نہیں۔ پہلے بنیں!",
-  "commentsPlaceholder": "تبصرہ لکھیں…",
-  "loadMore": "مزید لوڈ کریں",
   "skinLayerInner": "اندرونی",
   "@skinLayerInner": {
     "description": "Skin editor layer toggle, inner/base layer"
@@ -1324,7 +1278,6 @@
   "skinEditorTitle": "سکن ایڈیٹر",
   "skinToolUndo": "واپس",
   "skinSaveToMySkins": "میری سکنز میں محفوظ کریں",
-  "skinUpdateInCloud": "کلاؤڈ میں اپ ڈیٹ کریں",
   "skinExportPng": "PNG ایکسپورٹ کریں",
   "skinToolDraw": "بنائیں",
   "skinToolFill": "بھریں",
@@ -1404,6 +1357,22 @@
     }
   },
   "directPortBusy": "مقامی پورٹ نہیں کھل سکا۔ پہلے موجودہ کنکشن بند کریں۔",
+  "rpBrowseTab": "براؤز",
+  "rpCategoryRealism": "حقیقت پسند",
+  "rpCategoryFaithful": "Faithful",
+  "rpCategoryPvp": "PvP",
+  "rpCategoryCartoon": "کارٹون",
+  "rpCategoryDark": "ڈارک",
+  "rpCategoryMedieval": "قرونِ وسطیٰ",
+  "rpCategoryNature": "قدرت",
+  "rpCategoryThemed": "تھیم والے",
+  "rpCategoryOther": "دیگر",
+  "waitingForConsole": "آپ کے کنسول کا انتظار ہے…",
+  "consoleFound": "کنسول مل گیا",
+  "consoleLanHint": "اپنے کنسول پر Minecraft کھولیں اور دوست میں LAN گیم تلاش کریں۔",
+  "localNetworkBlocked": "MCCompanion آپ کے مقامی نیٹ ورک تک نہیں پہنچ سکتا۔ اپنے آلے کی سیٹنگز میں MCCompanion کے لیے لوکل نیٹ ورک آن کریں اور یقینی بنائیں کہ آپ Wi-Fi پر ہیں۔",
+  "serverListPlayersAny": "کوئی بھی سائز",
+  "serverListPlayersHint": "اوسط آن لائن کھلاڑی",
   "directAddressNotSupported": "{host} ایک IPv6 پتہ ہے۔ پراکسی/ڈائریکٹ موڈ صرف IPv4 کو سپورٹ کرتا ہے۔ IPv4 پتہ یا ہوسٹ نام استعمال کریں۔",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -1448,7 +1417,6 @@
   "serverListNoMatchHint": "کوئی اور تلاش یا زمرہ آزمائیں",
   "serverCardPlay": "کھیلیں",
   "serverCardVote": "ووٹ دیں",
-  "serverCardViewServer": "سرور دیکھیں",
   "serverCopyIp": "IP کاپی کریں",
   "serverCopied": "کاپی ہو گیا",
   "serverStatPlayers": "کھلاڑی",

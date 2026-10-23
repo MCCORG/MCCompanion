@@ -75,6 +75,9 @@ class NetherNetDiscovery {
     );
   }
 
+  void Function()? onLocalNetworkBlocked;
+  bool _blockedReported = false;
+
   Future<bool> start() async {
     if (_socket != null) return true;
     try {
@@ -86,10 +89,16 @@ class NetherNetDiscovery {
       );
       socket.broadcastEnabled = true;
       _socket = socket;
+      _blockedReported = false;
       _subscription = socket.listen(
         _onEvent,
-        onError: (Object e) =>
-            logger.error('NetherNet discovery socket error: $e'),
+        onError: (Object e) {
+          if (_isLocalNetworkBlocked(e)) {
+            _reportBlocked(e);
+            return;
+          }
+          logger.error('NetherNet discovery socket error: $e');
+        },
       );
       logger.info(
         'NetherNet discovery listening on ${NetherNetProtocol.discoveryPort} '
@@ -245,7 +254,25 @@ class NetherNetDiscovery {
     try {
       socket.send(NetherNetProtocol.encryptPacket(body), address, port);
     } catch (e) {
+      if (_isLocalNetworkBlocked(e)) {
+        _reportBlocked(e);
+        return;
+      }
       logger.error('NetherNet send failed: $e');
     }
+  }
+
+  bool _isLocalNetworkBlocked(Object e) {
+    if (!Platform.isIOS && !Platform.isMacOS) return false;
+    if (e is! SocketException) return false;
+    final code = e.osError?.errorCode;
+    return code == 65 || code == 51;
+  }
+
+  void _reportBlocked(Object e) {
+    if (_blockedReported) return;
+    _blockedReported = true;
+    logger.error('NetherNet local network is blocked: $e');
+    onLocalNetworkBlocked?.call();
   }
 }

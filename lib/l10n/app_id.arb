@@ -80,10 +80,6 @@
   "@save": {
     "description": "Save button label"
   },
-  "clientDisconnected": "Klien terputus: Siaran dihentikan",
-  "@clientDisconnected": {
-    "description": "Snackbar shown when clients disconnect automatically"
-  },
   "pleaseEnterServer": "⚠️ Harap masukkan alamat server",
   "@pleaseEnterServer": {
     "description": "Validation message when server address field is empty"
@@ -254,7 +250,7 @@
   "statusOffline": "Offline",
   "statusChecking": "Memeriksa...",
   "failedUpdateNotifications": "Gagal memperbarui notifikasi",
-  "editServerTitle": "Edit server",
+  "editServerTitle": "Edit Server",
   "serverNameHint": "Nama server",
   "failedSave": "Gagal menyimpan. Coba lagi.",
   "serverRenamed": "Server diubah namanya",
@@ -303,55 +299,55 @@
   "navProfile": "Profil",
   "serverRemoved": "{name} dihapus",
   "serverAdded": "{name} ditambahkan",
-  "aboutMCCompanionDisclaimer": "MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.",
+  "aboutMCCompanionDisclaimer": "MCCompanion adalah aplikasi independen dan tidak berafiliasi dengan, didukung oleh, atau disponsori oleh Mojang Studios maupun Microsoft Corporation.",
   "@aboutMCCompanionDisclaimer": {
     "description": "Disclaimer text in About MCCompanion section"
   },
-  "aboutMCCompanionSection": "About MCCompanion",
+  "aboutMCCompanionSection": "Tentang MCCompanion",
   "@aboutMCCompanionSection": {
     "description": "Section header for About MCCompanion in Info sheet"
   },
-  "aboutSectionLabel": "About",
+  "aboutSectionLabel": "Tentang",
   "@aboutSectionLabel": {
     "description": "Section label for bio/about in public profile"
   },
-  "acceptRequestButton": "Accept request",
+  "acceptRequestButton": "Terima permintaan",
   "@acceptRequestButton": {
     "description": "Button label to accept a friend request"
   },
-  "addFriend": "Add Friend",
+  "addFriend": "Tambah Teman",
   "@addFriend": {
     "description": "Title/button for adding a friend"
   },
-  "addFriendButton": "Add friend",
+  "addFriendButton": "Tambah teman",
   "@addFriendButton": {
     "description": "Button label to add a friend on public profile"
   },
-  "alreadyFriendsMsg": "You are already friends.",
+  "alreadyFriendsMsg": "Kalian sudah berteman.",
   "@alreadyFriendsMsg": {
     "description": "Error when already friends with user (public profile)"
   },
-  "alreadyHaveAccount": "Already have an account? Sign in",
+  "alreadyHaveAccount": "Sudah punya akun? Masuk",
   "@alreadyHaveAccount": {
     "description": "Toggle to switch back to sign-in mode"
   },
-  "appearOfflineLabel": "Appear Offline",
+  "appearOfflineLabel": "Tampil Offline",
   "@appearOfflineLabel": {
     "description": "Label for the appear-offline toggle"
   },
-  "appearOfflineOff": "You appear online to other players",
+  "appearOfflineOff": "Kamu terlihat online oleh pemain lain",
   "@appearOfflineOff": {
     "description": "Subtitle when appear-offline is disabled"
   },
-  "appearOfflineOn": "You appear offline to other players",
+  "appearOfflineOn": "Kamu terlihat offline oleh pemain lain",
   "@appearOfflineOn": {
     "description": "Subtitle when appear-offline is enabled"
   },
-  "appleSignInFailed": "Apple sign-in failed. Please try again.",
+  "appleSignInFailed": "Masuk dengan Apple gagal. Silakan coba lagi.",
   "@appleSignInFailed": {
     "description": "Error when Apple sign-in fails"
   },
-  "bioHint": "Tell others about yourself…",
+  "bioHint": "Ceritakan tentang dirimu…",
   "@bioHint": {
     "description": "Hint text for bio field"
   },
@@ -359,7 +355,7 @@
   "@bioLabel": {
     "description": "Label for bio field"
   },
-  "cannotSendRequestMsg": "Cannot send a request to this user.",
+  "cannotSendRequestMsg": "Tidak dapat mengirim permintaan ke pengguna ini.",
   "@cannotSendRequestMsg": {
     "description": "Error when friend request is blocked (public profile)"
   },
@@ -367,31 +363,31 @@
   "@chooseUsernameSubtitle": {
     "description": "Subtitle shown when profile is not yet set up"
   },
-  "continueWithGoogle": "Continue with Google",
+  "continueWithGoogle": "Lanjutkan dengan Google",
   "@continueWithGoogle": {
     "description": "Button label for Google sign-in"
   },
-  "couldNotDeleteAccount": "Could not delete account. Please try again.",
+  "couldNotDeleteAccount": "Tidak dapat menghapus akun. Silakan coba lagi.",
   "@couldNotDeleteAccount": {
     "description": "Error when account deletion fails"
   },
-  "couldNotSendResetEmail": "Could not send reset email. Please try again.",
+  "couldNotSendResetEmail": "Tidak dapat mengirim email pengaturan ulang. Silakan coba lagi.",
   "@couldNotSendResetEmail": {
     "description": "Generic error when sending reset email fails"
   },
-  "couldNotUpdateVisibility": "Could not update visibility settings",
+  "couldNotUpdateVisibility": "Tidak dapat memperbarui pengaturan visibilitas",
   "@couldNotUpdateVisibility": {
     "description": "Error when toggling appear-offline fails"
   },
-  "createAccount": "Create Account",
+  "createAccount": "Buat Akun",
   "@createAccount": {
     "description": "Button/title for creating a new account"
   },
-  "createProfile": "Create Profile",
+  "createProfile": "Buat Profil",
   "@createProfile": {
     "description": "Button to navigate to profile creation/registration"
   },
-  "creditGeyserSubtitle": "Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.",
+  "creditGeyserSubtitle": "Perenderan skin Bedrock. Skin pemain Bedrock diambil melalui server skin GeyserMC.",
   "@creditGeyserSubtitle": {
     "description": "Subtitle for GeyserMC credit tile"
   },
@@ -399,7 +395,7 @@
   "@creditGeyserTitle": {
     "description": "Title for GeyserMC credit tile"
   },
-  "creditMojangSubtitle": "Java player skins, UUIDs, and profile data via the official Mojang API.",
+  "creditMojangSubtitle": "Skin pemain Java, UUID, dan data profil melalui API resmi Mojang.",
   "@creditMojangSubtitle": {
     "description": "Subtitle for Mojang credit tile"
   },
@@ -407,7 +403,7 @@
   "@creditMojangTitle": {
     "description": "Title for Mojang credit tile"
   },
-  "creditXboxSubtitle": "Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.",
+  "creditXboxSubtitle": "Penautan akun Bedrock melalui Xbox Live. Gamertag dan XUID diperoleh melalui alur autentikasi Microsoft.",
   "@creditXboxSubtitle": {
     "description": "Subtitle for Xbox credit tile"
   },
@@ -415,27 +411,27 @@
   "@creditXboxTitle": {
     "description": "Title for Xbox credit tile"
   },
-  "dataSourcesSection": "Data Sources & Credits",
+  "dataSourcesSection": "Sumber Data & Kredit",
   "@dataSourcesSection": {
     "description": "Section header for data sources in Info sheet"
   },
-  "deleteAccountBody": "This will permanently delete your account and all data. This action cannot be undone.",
+  "deleteAccountBody": "Ini akan menghapus akun dan semua datamu secara permanen. Tindakan ini tidak dapat dibatalkan.",
   "@deleteAccountBody": {
     "description": "Body text for delete account confirmation dialog"
   },
-  "deleteAccountTitle": "Delete Account",
+  "deleteAccountTitle": "Hapus Akun",
   "@deleteAccountTitle": {
     "description": "Title for delete account dialog/button"
   },
-  "deletePermanently": "Delete Permanently",
+  "deletePermanently": "Hapus Permanen",
   "@deletePermanently": {
     "description": "Confirm button for permanent deletion"
   },
-  "displayNameLabel": "Display Name",
+  "displayNameLabel": "Nama Tampilan",
   "@displayNameLabel": {
     "description": "Label for display name field"
   },
-  "displayNameRowLabel": "Display name",
+  "displayNameRowLabel": "Nama Tampilan",
   "@displayNameRowLabel": {
     "description": "Row label for display name in public profile"
   },
@@ -447,97 +443,97 @@
   "@editServer": {
     "description": "Title for edit server form in manage servers"
   },
-  "editionLabel": "Edition",
+  "editionLabel": "Edisi",
   "@editionLabel": {
     "description": "Label for the edition toggle in manage servers form"
   },
-  "emailAddressHint": "Email address",
+  "emailAddressHint": "Alamat email",
   "@emailAddressHint": {
     "description": "Hint text for email address field"
   },
-  "emailAlreadyInUse": "This email address is already in use",
+  "emailAlreadyInUse": "Alamat email ini sudah digunakan",
   "@emailAlreadyInUse": {
     "description": "Error when email is already registered"
   },
-  "emailDifferentMethod": "This email is linked to a different sign-in method",
+  "emailDifferentMethod": "Email ini tertaut ke metode masuk yang berbeda",
   "@emailDifferentMethod": {
     "description": "Error when email already uses a different auth method"
   },
-  "enterEmailAndPassword": "Please enter your email and password",
+  "enterEmailAndPassword": "Masukkan email dan kata sandimu",
   "@enterEmailAndPassword": {
     "description": "Validation when email or password is empty on sign-in"
   },
-  "findUser": "Find user",
+  "findUser": "Cari pengguna",
   "@findUser": {
     "description": "Tooltip for the search/find user button"
   },
-  "forgotPassword": "Forgot password?",
+  "forgotPassword": "Lupa kata sandi?",
   "@forgotPassword": {
     "description": "Link to trigger password reset flow"
   },
-  "friendRemoved": "{name} has been removed from your friends",
+  "friendRemoved": "{name} telah dihapus dari daftar temanmu",
   "@friendRemoved": {
     "description": "Toast shown after removing a friend",
     "placeholders": {
       "name": {}
     }
   },
-  "friendRequestAccepted": "You are now friends with {name}",
+  "friendRequestAccepted": "Kamu sekarang berteman dengan {name}",
   "@friendRequestAccepted": {
     "description": "Toast when a friend request is accepted",
     "placeholders": {
       "name": {}
     }
   },
-  "friendRequestSent": "Friend request sent",
+  "friendRequestSent": "Permintaan pertemanan terkirim",
   "@friendRequestSent": {
     "description": "Toast shown after friend request is sent from public profile"
   },
-  "googleSignInFailed": "Google sign-in failed. Please try again.",
+  "googleSignInFailed": "Masuk dengan Google gagal. Silakan coba lagi.",
   "@googleSignInFailed": {
     "description": "Error when Google sign-in fails"
   },
-  "incorrectEmailOrPassword": "Incorrect email or password",
+  "incorrectEmailOrPassword": "Email atau kata sandi salah",
   "@incorrectEmailOrPassword": {
     "description": "Error for wrong credentials"
   },
-  "infoAndLegal": "Info & Legal",
+  "infoAndLegal": "Info & Hukum",
   "@infoAndLegal": {
     "description": "Title of the Info & Legal sheet"
   },
-  "invalidEmailError": "The email address is not valid",
+  "invalidEmailError": "Alamat email tidak valid",
   "@invalidEmailError": {
     "description": "Error for invalid email format"
   },
-  "ipAddressFieldLabel": "IP Address",
+  "ipAddressFieldLabel": "Alamat IP",
   "@ipAddressFieldLabel": {
     "description": "IP Address field label in edit server form"
   },
-  "ipRequiredError": "IP address is required",
+  "ipRequiredError": "Alamat IP wajib diisi",
   "@ipRequiredError": {
     "description": "Validation error when IP address is empty"
   },
-  "lastSeenLabel": "Last seen",
+  "lastSeenLabel": "Terakhir dilihat",
   "@lastSeenLabel": {
     "description": "Row label for last seen date in public profile"
   },
-  "legalSection": "Legal",
+  "legalSection": "Hukum",
   "@legalSection": {
     "description": "Section header in Info sheet"
   },
-  "linkAccountsHint": "Link your Minecraft accounts to show your skins and stats.",
+  "linkAccountsHint": "Tautkan akun Minecraft-mu untuk menampilkan skin dan statistik.",
   "@linkAccountsHint": {
     "description": "Hint when no accounts are linked"
   },
-  "linkJava": "Link Java",
+  "linkJava": "Tautkan Java",
   "@linkJava": {
     "description": "Button to link a Java account"
   },
-  "linkXbox": "Link Xbox",
+  "linkXbox": "Tautkan Xbox",
   "@linkXbox": {
     "description": "Button to link an Xbox/Bedrock account"
   },
-  "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
+  "minecraftTrademark": "\"Minecraft\" adalah merek dagang Microsoft Corporation.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
   },
@@ -545,7 +541,7 @@
   "@nameLabel": {
     "description": "Generic Name field label"
   },
-  "nameValidationError": "Name must be 1–50 characters",
+  "nameValidationError": "Nama harus 1–50 karakter",
   "@nameValidationError": {
     "description": "Validation error when server name is invalid"
   },
@@ -553,23 +549,23 @@
   "@nldServerLabelShort": {
     "description": "Section label above relay selector in More sheet"
   },
-  "noAccountYet": "Don't have an account? Create one",
+  "noAccountYet": "Belum punya akun? Buat sekarang",
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noFriendsSub": "Add friends to see them here.",
+  "noFriendsSub": "Tambahkan teman agar muncul di sini.",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
   },
-  "noFriendsYet": "No friends yet",
+  "noFriendsYet": "Belum ada teman",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
   },
-  "noPendingRequests": "No pending requests",
+  "noPendingRequests": "Tidak ada permintaan tertunda",
   "@noPendingRequests": {
     "description": "Empty state title on requests tab"
   },
-  "nowFriendsWith": "Now friends with @{username}",
+  "nowFriendsWith": "Sekarang berteman dengan @{username}",
   "@nowFriendsWith": {
     "description": "Toast when accepted a friend request from public profile",
     "placeholders": {
@@ -594,42 +590,42 @@
   "@orDivider": {
     "description": "Divider text between email and social sign-in"
   },
-  "passwordHint": "Password",
+  "passwordHint": "Kata sandi",
   "@passwordHint": {
     "description": "Hint text for password field"
   },
-  "paywallContinue": "Continue",
-  "paywallManaged": "Managed by Apple/Google. Cancel anytime.",
-  "paywallMonthly": "Monthly",
-  "paywallNoActivePurchases": "No active purchases found.",
-  "paywallNoPkgs": "No packages available.",
-  "paywallPopular": "Popular",
-  "paywallPurchaseFailed": "Purchase failed. Please try again.",
-  "paywallPurchaseSuccess": "Purchase successful!",
-  "paywallPurchasesRestored": "Purchases restored!",
-  "paywallRestore": "Restore",
-  "paywallRestoreFailed": "Restore failed. Please try again.",
-  "paywallSavePercent": "Save ~17%",
-  "paywallSlotLabel": "{slots} server slots",
+  "paywallContinue": "Lanjutkan",
+  "paywallManaged": "Dikelola oleh Apple/Google. Berhenti kapan saja.",
+  "paywallMonthly": "Bulanan",
+  "paywallNoActivePurchases": "Tidak ada pembelian aktif.",
+  "paywallNoPkgs": "Tidak ada paket tersedia.",
+  "paywallPopular": "Populer",
+  "paywallPurchaseFailed": "Pembelian gagal. Silakan coba lagi.",
+  "paywallPurchaseSuccess": "Pembelian berhasil!",
+  "paywallPurchasesRestored": "Pembelian dipulihkan!",
+  "paywallRestore": "Pulihkan",
+  "paywallRestoreFailed": "Pemulihan gagal. Silakan coba lagi.",
+  "paywallSavePercent": "Hemat ~17%",
+  "paywallSlotLabel": "{slots} slot server",
   "@paywallSlotLabel": {
     "placeholders": {
       "slots": {}
     }
   },
-  "paywallSubtitle": "Track more servers and get notified\nwhen they go online or offline.",
-  "paywallYearly": "Yearly",
+  "paywallSubtitle": "Lacak lebih banyak server dan dapatkan notifikasi\nsaat server online atau offline.",
+  "paywallYearly": "Tahunan",
   "platformFieldLabel": "Platform",
   "@platformFieldLabel": {
     "description": "Platform field label in edit server form"
   },
-  "playerLookupCopied": "{value} copied",
+  "playerLookupCopied": "{value} disalin",
   "@playerLookupCopied": {
     "description": "Toast shown after copying a value in player lookup",
     "placeholders": {
       "value": {}
     }
   },
-  "playerLookupHint": "Enter a username…",
+  "playerLookupHint": "Masukkan nama pengguna…",
   "@playerLookupHint": {
     "description": "Hint text for player lookup search field"
   },
@@ -637,15 +633,15 @@
   "@playerLookupLabelTier": {
     "description": "Label for tier field in player lookup"
   },
-  "playerLookupLabelUsername": "Username",
+  "playerLookupLabelUsername": "Nama pengguna",
   "@playerLookupLabelUsername": {
     "description": "Label for username field in player lookup"
   },
-  "playerLookupLinked": "Linked accounts found",
+  "playerLookupLinked": "Akun tertaut ditemukan",
   "@playerLookupLinked": {
     "description": "Badge shown when linked accounts are found"
   },
-  "playerLookupSubtitle": "Search for a Java or Bedrock player by username",
+  "playerLookupSubtitle": "Cari pemain Java atau Bedrock berdasarkan nama pengguna",
   "@playerLookupSubtitle": {
     "description": "Subtitle/hint on player lookup screen"
   },
@@ -653,7 +649,7 @@
   "@portFieldLabel": {
     "description": "Port field label in edit server form"
   },
-  "portRangeError": "Port must be between 1 and 65535",
+  "portRangeError": "Port harus antara 1 dan 65535",
   "@portRangeError": {
     "description": "Validation error when port is out of range"
   },
@@ -661,19 +657,19 @@
   "@privacyPolicy": {
     "description": "Privacy Policy tile title"
   },
-  "privacyPolicySubtitle": "How we collect and protect your data",
+  "privacyPolicySubtitle": "Bagaimana kami mengumpulkan dan melindungi datamu",
   "@privacyPolicySubtitle": {
     "description": "Privacy Policy tile subtitle"
   },
-  "profileNotSetUp": "Profile not set up",
+  "profileNotSetUp": "Profil belum diatur",
   "@profileNotSetUp": {
     "description": "Title when user is authenticated but has no profile"
   },
-  "profileSectionLabel": "Profile",
+  "profileSectionLabel": "Profil",
   "@profileSectionLabel": {
     "description": "Section label in public profile for profile info card"
   },
-  "profileUpdated": "Profile updated",
+  "profileUpdated": "Profil diperbarui",
   "@profileUpdated": {
     "description": "Toast shown after profile is saved"
   },
@@ -681,71 +677,71 @@
   "@relay": {
     "description": "Label for the Relay nav item and sheet title"
   },
-  "remove": "Remove",
+  "remove": "Hapus",
   "@remove": {
     "description": "Remove button label"
   },
-  "removeFriendButton": "Remove friend",
+  "removeFriendButton": "Hapus teman",
   "@removeFriendButton": {
     "description": "Button label to remove a friend on public profile"
   },
-  "removeFriendConfirm": "Remove {name} from your friends?",
+  "removeFriendConfirm": "Hapus {name} dari daftar temanmu?",
   "@removeFriendConfirm": {
     "description": "Confirmation text for removing a friend",
     "placeholders": {
       "name": {}
     }
   },
-  "removeFriendDialogBody": "Remove @{username} as a friend?",
+  "removeFriendDialogBody": "Hapus @{username} dari daftar teman?",
   "@removeFriendDialogBody": {
     "description": "Dialog body when removing a friend from public profile",
     "placeholders": {
       "username": {}
     }
   },
-  "removeFriendDialogTitle": "Remove friend",
+  "removeFriendDialogTitle": "Hapus Teman",
   "@removeFriendDialogTitle": {
     "description": "Dialog title when removing a friend from public profile"
   },
-  "removeFriendTitle": "Remove Friend",
+  "removeFriendTitle": "Hapus Teman",
   "@removeFriendTitle": {
     "description": "Dialog title for removing a friend"
   },
-  "removeJavaConfirm": "Remove {name} from your linked accounts?",
+  "removeJavaConfirm": "Hapus {name} dari akun tertautmu?",
   "@removeJavaConfirm": {
     "description": "Confirmation text for unlinking a Java account",
     "placeholders": {
       "name": {}
     }
   },
-  "removeLabelConfirm": "Remove {name} from your linked accounts?",
+  "removeLabelConfirm": "Hapus {name} dari akun tertautmu?",
   "@removeLabelConfirm": {
     "description": "Confirmation text for unlinking a Bedrock/Xbox account",
     "placeholders": {
       "name": {}
     }
   },
-  "reportAdditionalDetails": "Additional details (optional)…",
+  "reportAdditionalDetails": "Detail tambahan (opsional)…",
   "@reportAdditionalDetails": {
     "description": "Hint text for additional details field in report sheet"
   },
-  "reportDisclaimer": "Reports are reviewed by our team. False reports may result in action against your account.",
+  "reportDisclaimer": "Laporan ditinjau oleh tim kami. Laporan palsu dapat berakibat tindakan terhadap akunmu.",
   "@reportDisclaimer": {
     "description": "Disclaimer text shown in the report sheet"
   },
-  "reportFailed": "Failed to submit report. Please try again.",
+  "reportFailed": "Gagal mengirim laporan. Silakan coba lagi.",
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportReasonHarassment": "Harassment",
+  "reportReasonHarassment": "Pelecehan",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
   },
-  "reportReasonInappropriate": "Inappropriate content",
+  "reportReasonInappropriate": "Konten tidak pantas",
   "@reportReasonInappropriate": {
     "description": "Report reason: inappropriate content"
   },
-  "reportReasonOther": "Other",
+  "reportReasonOther": "Lainnya",
   "@reportReasonOther": {
     "description": "Report reason: other"
   },
@@ -753,41 +749,41 @@
   "@reportReasonSpam": {
     "description": "Report reason: spam"
   },
-  "reportSubmit": "Submit report",
+  "reportSubmit": "Kirim laporan",
   "@reportSubmit": {
     "description": "Button label to submit a report"
   },
-  "reportSuccess": "Report submitted. Thank you.",
+  "reportSuccess": "Laporan terkirim. Terima kasih.",
   "@reportSuccess": {
     "description": "Toast shown after a successful report submission"
   },
-  "reportUser": "Report user",
+  "reportUser": "Laporkan pengguna",
   "@reportUser": {
     "description": "Tooltip/button to report a user"
   },
-  "reportUserWithName": "Report {name}",
+  "reportUserWithName": "Laporkan {name}",
   "@reportUserWithName": {
     "description": "Title when reporting a user by name",
     "placeholders": {
       "name": {}
     }
   },
-  "requestAlreadyPendingMsg": "There is already a pending request.",
+  "requestAlreadyPendingMsg": "Sudah ada permintaan yang tertunda.",
   "@requestAlreadyPendingMsg": {
     "description": "Error when friend request is already pending (public profile)"
   },
-  "requestDeclined": "Request from {name} declined",
+  "requestDeclined": "Permintaan dari {name} ditolak",
   "@requestDeclined": {
     "description": "Toast when a friend request is declined",
     "placeholders": {
       "name": {}
     }
   },
-  "requestSentButton": "Request sent",
+  "requestSentButton": "Permintaan terkirim",
   "@requestSentButton": {
     "description": "Disabled button label when request already sent"
   },
-  "requestsAppearHere": "New friend requests will appear here.",
+  "requestsAppearHere": "Permintaan pertemanan baru akan muncul di sini.",
   "@requestsAppearHere": {
     "description": "Empty state subtitle on requests tab"
   },
@@ -798,15 +794,15 @@
       "email": {}
     }
   },
-  "resetPasswordBody": "Enter your email address and we will send you a link to reset your password.",
+  "resetPasswordBody": "Masukkan alamat emailmu dan kami akan mengirimkan tautan untuk mengatur ulang kata sandi.",
   "@resetPasswordBody": {
     "description": "Body text for reset password dialog"
   },
-  "resetPasswordTitle": "Reset Password",
+  "resetPasswordTitle": "Atur Ulang Kata Sandi",
   "@resetPasswordTitle": {
     "description": "Title for reset password dialog"
   },
-  "selectBedrockAccount": "Select Bedrock account",
+  "selectBedrockAccount": "Pilih akun Bedrock",
   "@selectBedrockAccount": {
     "description": "Title of the Bedrock account picker bottom sheet"
   },
@@ -814,7 +810,7 @@
   "@send": {
     "description": "Send button label"
   },
-  "sendLink": "Send link",
+  "sendLink": "Kirim tautan",
   "@sendLink": {
     "description": "Button to send the password reset link"
   },
@@ -822,31 +818,31 @@
   "@serverAddressExampleHint": {
     "description": "Example hint text for server address field"
   },
-  "serverDescriptionExampleHint": "Survival server with friends",
+  "serverDescriptionExampleHint": "Server survival bersama teman",
   "@serverDescriptionExampleHint": {
     "description": "Example hint text for server description field"
   },
-  "serverNameExampleHint": "My Awesome Server",
+  "serverNameExampleHint": "Server Kerenku",
   "@serverNameExampleHint": {
     "description": "Example hint text for server name field"
   },
-  "serversSection": "Servers",
+  "serversSection": "Server",
   "@serversSection": {
     "description": "Section label above servers panel in connection panel"
   },
-  "signInSubtitle": "Sign in to access your profile, friends, and chats.",
+  "signInSubtitle": "Masuk untuk mengakses profil, teman, dan obrolanmu.",
   "@signInSubtitle": {
     "description": "Subtitle on the sign-in screen"
   },
-  "signOut": "Sign Out",
+  "signOut": "Keluar",
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "Create",
+  "skinsCreate": "Buat",
   "@skinsCreate": {
     "description": "Button to create/open skin editor"
   },
-  "skinsDownload": "Download",
+  "skinsDownload": "Unduh",
   "@skinsDownload": {
     "description": "Download button in skin detail sheet"
   },
@@ -854,19 +850,19 @@
   "@skinsEdit": {
     "description": "Edit button in skin detail sheet"
   },
-  "skinsInvalidFile": "Invalid image file",
+  "skinsInvalidFile": "File gambar tidak valid",
   "@skinsInvalidFile": {
     "description": "Error when the selected file is not a valid image"
   },
-  "skinsMustBe64": "Skin must be 64×64 pixels",
+  "skinsMustBe64": "Skin harus berukuran 64×64 piksel",
   "@skinsMustBe64": {
     "description": "Error when uploaded skin is wrong size"
   },
-  "skinsUpload": "Upload",
+  "skinsUpload": "Unggah",
   "@skinsUpload": {
     "description": "Button to upload a skin"
   },
-  "somethingWentWrong": "Something went wrong. Please try again.",
+  "somethingWentWrong": "Terjadi kesalahan. Silakan coba lagi.",
   "@somethingWentWrong": {
     "description": "Generic error message"
   },
@@ -874,7 +870,7 @@
   "@termsOfService": {
     "description": "Terms of Service tile title"
   },
-  "termsOfServiceSubtitle": "Rules and conditions of use",
+  "termsOfServiceSubtitle": "Aturan dan ketentuan penggunaan",
   "@termsOfServiceSubtitle": {
     "description": "Terms of Service tile subtitle"
   },
@@ -882,43 +878,43 @@
   "@trackerLimitReached": {
     "description": "Banner shown when tracker slot limit is reached"
   },
-  "tryAgain": "Try again",
+  "tryAgain": "Coba lagi",
   "@tryAgain": {
     "description": "Generic try again button label"
   },
-  "unlink": "Unlink",
+  "unlink": "Putuskan tautan",
   "@unlink": {
     "description": "Unlink button label"
   },
-  "unlinkJavaTitle": "Unlink Java Account",
+  "unlinkJavaTitle": "Putuskan Tautan Akun Java",
   "@unlinkJavaTitle": {
     "description": "Dialog title for unlinking a Java account"
   },
-  "unlinkXboxTitle": "Unlink Xbox Account",
+  "unlinkXboxTitle": "Putuskan Tautan Akun Xbox",
   "@unlinkXboxTitle": {
     "description": "Dialog title for unlinking an Xbox account"
   },
-  "upgradeButton": "Upgrade",
+  "upgradeButton": "Tingkatkan",
   "@upgradeButton": {
     "description": "Button to open paywall/upgrade screen"
   },
-  "userNotFound": "User not found",
+  "userNotFound": "Pengguna tidak ditemukan",
   "@userNotFound": {
     "description": "Text shown when a user profile cannot be found"
   },
-  "userNotFoundMsg2": "User not found.",
+  "userNotFoundMsg2": "Pengguna tidak ditemukan.",
   "@userNotFoundMsg2": {
     "description": "Error when user not found sending friend request from public profile"
   },
-  "usernameRowLabel": "Username",
+  "usernameRowLabel": "Nama pengguna",
   "@usernameRowLabel": {
     "description": "Row label for username in public profile"
   },
-  "weakPassword": "Password is too weak. Please choose a stronger one.",
+  "weakPassword": "Kata sandi terlalu lemah. Pilih yang lebih kuat.",
   "@weakPassword": {
     "description": "Error for weak password"
   },
-  "xboxAccountLinked": "Xbox account linked!",
+  "xboxAccountLinked": "Akun Xbox tertaut!",
   "@xboxAccountLinked": {
     "description": "Success text when Xbox account is linked"
   },
@@ -926,74 +922,74 @@
   "@xboxBedrockLabel": {
     "description": "Section label for Xbox/Bedrock account in public profile"
   },
-  "xboxCodeCopied": "Code copied to clipboard",
+  "xboxCodeCopied": "Kode disalin ke papan klip",
   "@xboxCodeCopied": {
     "description": "Snackbar shown after code is copied"
   },
-  "xboxCodeExpired": "The code expired. Please try again.",
+  "xboxCodeExpired": "Kode kedaluwarsa. Silakan coba lagi.",
   "@xboxCodeExpired": {
     "description": "Error when Xbox device code expires"
   },
-  "xboxCouldNotStart": "Could not start Xbox login. Please try again.",
+  "xboxCouldNotStart": "Tidak dapat memulai login Xbox. Silakan coba lagi.",
   "@xboxCouldNotStart": {
     "description": "Error when Xbox login cannot be started"
   },
-  "xboxGoToLink": "Go to the link below and enter the code to connect your Xbox account.",
+  "xboxGoToLink": "Buka tautan di bawah dan masukkan kode untuk menghubungkan akun Xbox-mu.",
   "@xboxGoToLink": {
     "description": "Instruction on Xbox link waiting screen"
   },
-  "xboxLinkTitle": "Link Xbox Account",
+  "xboxLinkTitle": "Tautkan Akun Xbox",
   "@xboxLinkTitle": {
     "description": "AppBar title for Xbox link screen"
   },
-  "xboxOpenLink": "Open microsoft.com/link",
+  "xboxOpenLink": "Buka microsoft.com/link",
   "@xboxOpenLink": {
     "description": "Button label to open Microsoft device auth link"
   },
-  "xboxSignInWithMicrosoft": "Sign in with Microsoft",
+  "xboxSignInWithMicrosoft": "Masuk dengan Microsoft",
   "@xboxSignInWithMicrosoft": {
     "description": "Heading on Xbox link waiting screen"
   },
-  "xboxSomethingWrong": "Something went wrong. Please try again.",
+  "xboxSomethingWrong": "Terjadi kesalahan. Silakan coba lagi.",
   "@xboxSomethingWrong": {
     "description": "Generic error on Xbox link screen"
   },
-  "xboxStartingLogin": "Starting Xbox login…",
+  "xboxStartingLogin": "Memulai login Xbox…",
   "@xboxStartingLogin": {
     "description": "Loading text when starting Xbox login"
   },
-  "xboxTapToCopy": "Tap the code to copy it",
+  "xboxTapToCopy": "Ketuk kode untuk menyalin",
   "@xboxTapToCopy": {
     "description": "Hint below the code on Xbox link screen"
   },
-  "xboxWaitingForLogin": "Waiting for login…",
+  "xboxWaitingForLogin": "Menunggu login…",
   "@xboxWaitingForLogin": {
     "description": "Status text while polling for Xbox login"
   },
-  "xboxYourCode": "Your code",
+  "xboxYourCode": "Kodemu",
   "@xboxYourCode": {
     "description": "Label above the Microsoft device code"
   },
-  "yourNameHint": "Your name",
+  "yourNameHint": "Namamu",
   "@yourNameHint": {
     "description": "Hint text for display name field"
   },
-  "javaLinkTitle": "Link Java Edition",
-  "javaStartingLogin": "Starting Microsoft login…",
-  "javaSignInWithMicrosoft": "Sign in with Microsoft",
-  "javaGoToLink": "Go to the link below and enter the code to connect your Minecraft Java Edition account.",
-  "javaYourCode": "Your code",
-  "javaTapToCopy": "Tap the code to copy it",
-  "javaOpenLink": "Open microsoft.com/link",
-  "javaWaitingForLogin": "Waiting for login…",
-  "javaAccountLinked": "Java Edition linked!",
-  "javaNoJavaTitle": "No Java Edition found",
-  "javaNoJavaBody": "The Microsoft account you signed in with does not own Minecraft Java Edition.",
-  "javaTryDifferentAccount": "Try a different account",
-  "javaCouldNotStart": "Could not start Microsoft login. Please try again.",
-  "javaCodeExpired": "The code expired. Please try again.",
-  "javaSomethingWrong": "Something went wrong. Please try again.",
-  "javaCodeCopied": "Code copied to clipboard",
+  "javaLinkTitle": "Tautkan Java Edition",
+  "javaStartingLogin": "Memulai login Microsoft…",
+  "javaSignInWithMicrosoft": "Masuk dengan Microsoft",
+  "javaGoToLink": "Buka tautan di bawah dan masukkan kode untuk menghubungkan akun Minecraft Java Edition-mu.",
+  "javaYourCode": "Kodemu",
+  "javaTapToCopy": "Ketuk kode untuk menyalin",
+  "javaOpenLink": "Buka microsoft.com/link",
+  "javaWaitingForLogin": "Menunggu login…",
+  "javaAccountLinked": "Java Edition tertaut!",
+  "javaNoJavaTitle": "Java Edition tidak ditemukan",
+  "javaNoJavaBody": "Akun Microsoft yang kamu gunakan untuk masuk tidak memiliki Minecraft Java Edition.",
+  "javaTryDifferentAccount": "Coba akun lain",
+  "javaCouldNotStart": "Tidak dapat memulai login Microsoft. Silakan coba lagi.",
+  "javaCodeExpired": "Kode kedaluwarsa. Silakan coba lagi.",
+  "javaSomethingWrong": "Terjadi kesalahan. Silakan coba lagi.",
+  "javaCodeCopied": "Kode disalin ke papan klip",
   "featureLabelConnector": "Konektor",
   "featureLabelSkins": "Skin",
   "featureLabelPartners": "Daftar server",
@@ -1079,9 +1075,6 @@
   "rpNoDiscord": "Tautan Discord: tidak ada ekstensi .mcpack dan kedaluwarsa setelah beberapa jam",
   "rpNoDrive": "Tautan berbagi Google Drive / Dropbox: bukan unduhan langsung",
   "rpNoEncrypted": "Server dengan paket terenkripsi atau dilindungi kata sandi",
-  "rpWarnDiscord": "Tautan Discord kedaluwarsa dan tidak akan berfungsi. Gunakan host permanen sebagai gantinya.",
-  "rpWarnHttps": "URL harus dimulai dengan https://",
-  "rpWarnExtension": "URL harus diakhiri dengan .mcpack atau .zip",
   "rpToastSaved": "Pengaturan paket sumber daya disimpan.",
   "rpClearMinecraftTitle": "Pertama kali dengan pack ini?",
   "rpClearStep1": "Buka Minecraft di konsolmu dan pergi ke Pengaturan → Penyimpanan",
@@ -1093,10 +1086,10 @@
   "rpNoDriveHint": "Tidak ada unduhan langsung: mengarahkan ke halaman pratinjau",
   "rpNoEncryptedHint": "MCCompanion tidak dapat menggabungkan konten pack terenkripsi",
   "rpClearWhy": "Minecraft menyimpan pack sumber daya berdasarkan UUID. Pack yang digabungkan tetap menggunakan UUID asli server, jika Minecraft sudah menyimpan pack server dari sesi sebelumnya (sebelum MCCompanion aktif), ia tidak akan mengunduh versi gabungan yang baru. Hapus cache agar Minecraft memuat pack gabungan terbaru.",
-  "rpUploadTab": "Upload",
-  "rpUploadButton": "Tap to select your pack",
-  "rpUploadHint": ".mcpack or .zip • max 100 MB",
-  "rpUploading": "Uploading...",
+  "rpUploadTab": "Unggah",
+  "rpUploadButton": "Ketuk untuk memilih paketmu",
+  "rpUploadHint": ".mcpack atau .zip • maks. 100 MB",
+  "rpUploading": "Mengunggah...",
   "rpMergerTitle": "Penggabung RP",
   "rpMergerPriorityHint": "Paket teratas memiliki prioritas tertinggi, filenya menang dalam konflik.",
   "rpMergerTopBadge": "ATAS",
@@ -1127,7 +1120,7 @@
   "profileFallbackTitle": "Profil",
   "noUsersFound": "Pengguna tidak ditemukan",
   "skinLabel": "SKIN",
-  "skinsLabel": "SKINS",
+  "skinsLabel": "SKIN",
   "javaEditionBadge": "Java",
   "bedrockEditionBadge": "Bedrock",
   "downloadLabel": "Unduh",
@@ -1168,45 +1161,10 @@
     }
   },
   "skinsSavedToMySkins": "Disimpan ke Skin Saya",
-  "skinsDownloadFailed": "Unduhan gagal",
-  "skinsDeletedFromCloud": "Dihapus dari cloud",
-  "skinsDeleteFailed": "Penghapusan gagal",
-  "skinsLoginToUpload": "Masuk untuk mengunggah skin",
-  "skinsUploading": "Mengunggah…",
-  "skinUploaded": "Skin berhasil diunggah!",
-  "skinUploadFailed": "Pengunggahan gagal: {error}",
   "skinsEmptyLocalSkins": "Belum ada skin. Buat atau unggah skin untuk memulai.",
-  "skinUploadToWebsite": "Unggah ke situs web",
-  "skinReuploadToWebsite": "Unggah ulang ke situs web",
-  "skinCloudEdit": "Edit",
-  "skinCloudSaveToDevice": "Simpan ke perangkat",
-  "skinCloudDelete": "Hapus dari cloud",
-  "skinsTabGallery": "Galeri",
-  "skinsTopLabel": "30 Teratas",
-  "skinsAllLabel": "Semua Skin",
-  "skinUploadToCloud": "Unggah ke Cloud",
   "skinSaveDialog": "Simpan Skin",
   "skinNameHint": "Nama skin",
   "skinDefaultName": "Skin saya",
-  "skinUpdatedInCloud": "Skin diperbarui di cloud",
-  "skinByCreator": "oleh {name}",
-  "@skinByCreator": {
-    "description": "Creator attribution",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinLikesCount": "{count} suka",
-  "@skinLikesCount": {
-    "description": "Like count",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "sectionRecentActivity": "Aktivitas terbaru",
   "activityNoEvents": "Belum ada aktivitas terbaru.",
   "activitySkinUploaded": "Skin diunggah",
@@ -1301,10 +1259,6 @@
   "notifPrefFriendRequest": "Permintaan pertemanan",
   "notifPrefFriendAccepted": "Teman ditambahkan",
   "notifPrefMessageReceived": "Pesan baru",
-  "commentsTitle": "Komentar",
-  "commentsEmpty": "Belum ada komentar. Jadilah yang pertama!",
-  "commentsPlaceholder": "Tulis komentar…",
-  "loadMore": "Muat lebih banyak",
   "skinLayerInner": "Dalam",
   "@skinLayerInner": {
     "description": "Skin editor layer toggle, inner/base layer"
@@ -1324,7 +1278,6 @@
   "skinEditorTitle": "Editor skin",
   "skinToolUndo": "Urungkan",
   "skinSaveToMySkins": "Simpan ke skin saya",
-  "skinUpdateInCloud": "Perbarui di cloud",
   "skinExportPng": "Ekspor PNG",
   "skinToolDraw": "Gambar",
   "skinToolFill": "Isi",
@@ -1404,6 +1357,22 @@
     }
   },
   "directPortBusy": "Tidak dapat membuka port lokal. Hentikan koneksi saat ini terlebih dahulu.",
+  "rpBrowseTab": "Jelajahi",
+  "rpCategoryRealism": "Realisme",
+  "rpCategoryFaithful": "Faithful",
+  "rpCategoryPvp": "PvP",
+  "rpCategoryCartoon": "Kartun",
+  "rpCategoryDark": "Gelap",
+  "rpCategoryMedieval": "Abad Pertengahan",
+  "rpCategoryNature": "Alam",
+  "rpCategoryThemed": "Bertema",
+  "rpCategoryOther": "Lainnya",
+  "waitingForConsole": "Menunggu konsol Anda…",
+  "consoleFound": "Konsol ditemukan",
+  "consoleLanHint": "Di konsol Anda, buka Minecraft dan cari game LAN di bagian Teman.",
+  "localNetworkBlocked": "MCCompanion tidak dapat menjangkau jaringan lokal Anda. Aktifkan Jaringan Lokal untuk MCCompanion di pengaturan perangkat dan pastikan Anda terhubung ke Wi-Fi.",
+  "serverListPlayersAny": "Ukuran apa pun",
+  "serverListPlayersHint": "Rata-rata pemain online",
   "directAddressNotSupported": "{host} adalah alamat IPv6. Mode Proxy/Langsung hanya mendukung IPv4. Gunakan alamat IPv4 atau nama host.",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -1448,17 +1417,16 @@
   "serverListNoMatchHint": "Coba pencarian atau kategori lain",
   "serverCardPlay": "Main",
   "serverCardVote": "Vote",
-  "serverCardViewServer": "Lihat server",
   "serverCopyIp": "Salin IP",
   "serverCopied": "Disalin",
   "serverStatPlayers": "Pemain",
   "serverStatPeak": "Puncak",
-  "serverStatUptime": "Uptime",
+  "serverStatUptime": "Waktu aktif",
   "serverStatVotesMonth": "Vote bulan ini",
   "serverBadgeFeatured": "Unggulan",
   "serverEditionJava": "Java",
   "serverEditionBedrock": "Bedrock",
-  "serverEditionCrossplay": "Crossplay",
+  "serverEditionCrossplay": "Lintas platform",
   "serverSectionMotd": "Pesan hari ini",
   "serverLinkDiscord": "Discord",
   "serverLinkWebsite": "Situs web",

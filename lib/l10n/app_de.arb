@@ -80,10 +80,6 @@
   "@save": {
     "description": "Save button label"
   },
-  "clientDisconnected": "Client getrennt: Übertragung gestoppt",
-  "@clientDisconnected": {
-    "description": "Snackbar shown when clients disconnect automatically"
-  },
   "pleaseEnterServer": "⚠️ Bitte gib eine Serveradresse ein",
   "@pleaseEnterServer": {
     "description": "Validation message when server address field is empty"
@@ -1083,9 +1079,6 @@
   "rpNoDiscord": "Discord-Links: keine .mcpack-Erweiterung und laufen nach wenigen Stunden ab",
   "rpNoDrive": "Google Drive / Dropbox-Freigabelinks: keine direkten Downloads",
   "rpNoEncrypted": "Server mit verschlüsselten oder passwortgeschützten Paketen",
-  "rpWarnDiscord": "Discord-Links laufen ab und funktionieren dann nicht mehr. Verwende stattdessen einen dauerhaften Host.",
-  "rpWarnHttps": "Die URL muss mit https:// beginnen",
-  "rpWarnExtension": "Die URL muss auf .mcpack oder .zip enden",
   "rpToastSaved": "Ressourcenpaket-Einstellungen gespeichert.",
   "rpClearMinecraftTitle": "Erstes Mal mit diesem Paket?",
   "rpClearStep1": "Offne Minecraft auf deiner Konsole und gehe zu Einstellungen → Speicher",
@@ -1097,10 +1090,10 @@
   "rpNoDriveHint": "Kein Direktdownload: leitet zu einer Vorschauseite weiter",
   "rpNoEncryptedHint": "MCCompanion kann verschlüsselten Pack-Inhalt nicht zusammenführen",
   "rpClearWhy": "Minecraft speichert Ressourcenpakete anhand ihrer UUID. Das zusammengeführte Paket behält die ursprüngliche UUID des Servers, wenn Minecraft das Serverpaket bereits aus einer früheren Sitzung (vor MCCompanion) gecacht hat, lädt es die neue zusammengeführte Version nicht erneut herunter. Leere den Cache, damit Minecraft das frische Paket lädt.",
-  "rpUploadTab": "Upload",
-  "rpUploadButton": "Tap to select your pack",
-  "rpUploadHint": ".mcpack or .zip • max 100 MB",
-  "rpUploading": "Uploading...",
+  "rpUploadTab": "Hochladen",
+  "rpUploadButton": "Tippen, um dein Pack auszuwählen",
+  "rpUploadHint": ".mcpack oder .zip • max. 100 MB",
+  "rpUploading": "Wird hochgeladen...",
   "rpMergerTitle": "RP Merger",
   "rpMergerPriorityHint": "Das oberste Paket hat höchste Priorität: seine Dateien gewinnen Konflikte.",
   "rpMergerTopBadge": "TOP",
@@ -1172,45 +1165,10 @@
     }
   },
   "skinsSavedToMySkins": "In Meine Skins gespeichert",
-  "skinsDownloadFailed": "Download fehlgeschlagen",
-  "skinsDeletedFromCloud": "Aus der Cloud gelöscht",
-  "skinsDeleteFailed": "Löschen fehlgeschlagen",
-  "skinsLoginToUpload": "Anmelden, um Skins hochzuladen",
-  "skinsUploading": "Wird hochgeladen…",
-  "skinUploaded": "Skin hochgeladen!",
-  "skinUploadFailed": "Upload fehlgeschlagen: {error}",
   "skinsEmptyLocalSkins": "Noch keine Skins. Erstelle oder lade einen Skin hoch, um loszulegen.",
-  "skinUploadToWebsite": "Auf Website hochladen",
-  "skinReuploadToWebsite": "Erneut auf Website hochladen",
-  "skinCloudEdit": "Bearbeiten",
-  "skinCloudSaveToDevice": "Auf Gerät speichern",
-  "skinCloudDelete": "Aus Cloud löschen",
-  "skinsTabGallery": "Galerie",
-  "skinsTopLabel": "Top 30",
-  "skinsAllLabel": "Alle Skins",
-  "skinUploadToCloud": "In Cloud laden",
   "skinSaveDialog": "Skin speichern",
   "skinNameHint": "Skin-Name",
   "skinDefaultName": "Mein Skin",
-  "skinUpdatedInCloud": "Skin in der Cloud aktualisiert",
-  "skinByCreator": "von {name}",
-  "@skinByCreator": {
-    "description": "Creator attribution",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinLikesCount": "{count} Likes",
-  "@skinLikesCount": {
-    "description": "Like count",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "sectionRecentActivity": "Letzte Aktivitäten",
   "activityNoEvents": "Noch keine Aktivitäten.",
   "activitySkinUploaded": "Skin hochgeladen",
@@ -1305,10 +1263,6 @@
   "notifPrefFriendRequest": "Freundschaftsanfrage",
   "notifPrefFriendAccepted": "Freund hinzugefügt",
   "notifPrefMessageReceived": "Neue Nachricht",
-  "commentsTitle": "Kommentare",
-  "commentsEmpty": "Noch keine Kommentare. Sei der Erste!",
-  "commentsPlaceholder": "Kommentar schreiben…",
-  "loadMore": "Mehr laden",
   "skinLayerInner": "Innen",
   "@skinLayerInner": {
     "description": "Skin editor layer toggle, inner/base layer"
@@ -1327,7 +1281,6 @@
   "skinEditorTitle": "Skin-Editor",
   "skinToolUndo": "Rückgängig",
   "skinSaveToMySkins": "In meinen Skins speichern",
-  "skinUpdateInCloud": "In Cloud aktualisieren",
   "skinExportPng": "PNG exportieren",
   "skinToolDraw": "Zeichnen",
   "skinToolFill": "Füllen",
@@ -1407,6 +1360,22 @@
     }
   },
   "directPortBusy": "Der lokale Port konnte nicht geöffnet werden. Beende zuerst die aktuelle Verbindung.",
+  "rpBrowseTab": "Durchsuchen",
+  "rpCategoryRealism": "Realismus",
+  "rpCategoryFaithful": "Faithful",
+  "rpCategoryPvp": "PvP",
+  "rpCategoryCartoon": "Cartoon",
+  "rpCategoryDark": "Dunkel",
+  "rpCategoryMedieval": "Mittelalter",
+  "rpCategoryNature": "Natur",
+  "rpCategoryThemed": "Thematisch",
+  "rpCategoryOther": "Sonstige",
+  "waitingForConsole": "Warte auf deine Konsole…",
+  "consoleFound": "Konsole gefunden",
+  "consoleLanHint": "Öffne auf deiner Konsole Minecraft und suche unter Freunde nach einem LAN-Spiel.",
+  "localNetworkBlocked": "MCCompanion kann dein lokales Netzwerk nicht erreichen. Aktiviere in den Geräteeinstellungen den Zugriff auf das lokale Netzwerk für MCCompanion und stelle sicher, dass du mit WLAN verbunden bist.",
+  "serverListPlayersAny": "Beliebige Größe",
+  "serverListPlayersHint": "Durchschnittliche Spieler online",
   "directAddressNotSupported": "{host} ist eine IPv6-Adresse. Der Proxy/Direktmodus unterstützt nur IPv4. Nutze die IPv4-Adresse oder den Hostnamen.",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -1451,7 +1420,6 @@
   "serverListNoMatchHint": "Versuche eine andere Suche oder Kategorie",
   "serverCardPlay": "Spielen",
   "serverCardVote": "Abstimmen",
-  "serverCardViewServer": "Server ansehen",
   "serverCopyIp": "IP kopieren",
   "serverCopied": "Kopiert",
   "serverStatPlayers": "Spieler",

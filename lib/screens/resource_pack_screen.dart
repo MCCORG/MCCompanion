@@ -17,6 +17,7 @@ import '../widgets/components/app_toast.dart';
 import '../widgets/components/swipe_back.dart';
 import '../widgets/resource_pack/rp_active_pack_banner.dart';
 import '../widgets/resource_pack/rp_featured_pack_card.dart';
+import '../widgets/resource_pack/rp_category.dart';
 import '../widgets/resource_pack/rp_filter_chip.dart';
 import '../widgets/resource_pack/rp_info_section.dart';
 import '../widgets/resource_pack/rp_tab_bar.dart';
@@ -570,7 +571,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
               children: [
                 for (final cat in _kPackCategories) ...[
                   RpFilterChip(
-                    label: cat[0].toUpperCase() + cat.substring(1),
+                    label: rpCategoryLabel(l, cat),
                     color: DsColor.info,
                     selected: _selectedCategory == cat,
                     onTap: () => setState(

@@ -80,10 +80,6 @@
   "@save": {
     "description": "Save button label"
   },
-  "clientDisconnected": "クライアントが切断されました: ブロードキャストを停止しました",
-  "@clientDisconnected": {
-    "description": "Snackbar shown when clients disconnect automatically"
-  },
   "pleaseEnterServer": "⚠️ サーバーアドレスを入力してください",
   "@pleaseEnterServer": {
     "description": "Validation message when server address field is empty"
@@ -263,10 +259,10 @@
   "resetLabel": "リセット",
   "navigationSection": "ナビゲーション",
   "navFixed": "Connector とプロフィールは常に固定です",
-  "leftSlot": "Slot 2",
-  "outerSlot": "Slot 1",
-  "rightSlot": "Slot 3",
-  "farSlot": "Slot 4",
+  "leftSlot": "スロット 2",
+  "outerSlot": "スロット 1",
+  "rightSlot": "スロット 3",
+  "farSlot": "スロット 4",
   "colorPickerApply": "適用",
   "colorPickerHex": "Hex",
   "textColorSection": "テキストカラー",
@@ -303,55 +299,55 @@
   "navProfile": "プロフィール",
   "serverRemoved": "{name} を削除しました",
   "serverAdded": "{name} を追加しました",
-  "aboutMCCompanionDisclaimer": "MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.",
+  "aboutMCCompanionDisclaimer": "MCCompanion は独立したアプリであり、Mojang Studios や Microsoft Corporation とは提携しておらず、承認・後援も受けていません。",
   "@aboutMCCompanionDisclaimer": {
     "description": "Disclaimer text in About MCCompanion section"
   },
-  "aboutMCCompanionSection": "About MCCompanion",
+  "aboutMCCompanionSection": "MCCompanion について",
   "@aboutMCCompanionSection": {
     "description": "Section header for About MCCompanion in Info sheet"
   },
-  "aboutSectionLabel": "About",
+  "aboutSectionLabel": "自己紹介",
   "@aboutSectionLabel": {
     "description": "Section label for bio/about in public profile"
   },
-  "acceptRequestButton": "Accept request",
+  "acceptRequestButton": "リクエストを承認",
   "@acceptRequestButton": {
     "description": "Button label to accept a friend request"
   },
-  "addFriend": "Add Friend",
+  "addFriend": "フレンドを追加",
   "@addFriend": {
     "description": "Title/button for adding a friend"
   },
-  "addFriendButton": "Add friend",
+  "addFriendButton": "フレンドを追加",
   "@addFriendButton": {
     "description": "Button label to add a friend on public profile"
   },
-  "alreadyFriendsMsg": "You are already friends.",
+  "alreadyFriendsMsg": "すでにフレンドです。",
   "@alreadyFriendsMsg": {
     "description": "Error when already friends with user (public profile)"
   },
-  "alreadyHaveAccount": "Already have an account? Sign in",
+  "alreadyHaveAccount": "アカウントをお持ちですか?サインイン",
   "@alreadyHaveAccount": {
     "description": "Toggle to switch back to sign-in mode"
   },
-  "appearOfflineLabel": "Appear Offline",
+  "appearOfflineLabel": "オフライン表示",
   "@appearOfflineLabel": {
     "description": "Label for the appear-offline toggle"
   },
-  "appearOfflineOff": "You appear online to other players",
+  "appearOfflineOff": "ほかのプレイヤーにはオンラインと表示されます",
   "@appearOfflineOff": {
     "description": "Subtitle when appear-offline is disabled"
   },
-  "appearOfflineOn": "You appear offline to other players",
+  "appearOfflineOn": "ほかのプレイヤーにはオフラインと表示されます",
   "@appearOfflineOn": {
     "description": "Subtitle when appear-offline is enabled"
   },
-  "appleSignInFailed": "Apple sign-in failed. Please try again.",
+  "appleSignInFailed": "Apple でのサインインに失敗しました。もう一度お試しください。",
   "@appleSignInFailed": {
     "description": "Error when Apple sign-in fails"
   },
-  "bioHint": "Tell others about yourself…",
+  "bioHint": "自己紹介を書きましょう…",
   "@bioHint": {
     "description": "Hint text for bio field"
   },
@@ -359,7 +355,7 @@
   "@bioLabel": {
     "description": "Label for bio field"
   },
-  "cannotSendRequestMsg": "Cannot send a request to this user.",
+  "cannotSendRequestMsg": "このユーザーにはリクエストを送信できません。",
   "@cannotSendRequestMsg": {
     "description": "Error when friend request is blocked (public profile)"
   },
@@ -367,31 +363,31 @@
   "@chooseUsernameSubtitle": {
     "description": "Subtitle shown when profile is not yet set up"
   },
-  "continueWithGoogle": "Continue with Google",
+  "continueWithGoogle": "Google で続行",
   "@continueWithGoogle": {
     "description": "Button label for Google sign-in"
   },
-  "couldNotDeleteAccount": "Could not delete account. Please try again.",
+  "couldNotDeleteAccount": "アカウントを削除できませんでした。もう一度お試しください。",
   "@couldNotDeleteAccount": {
     "description": "Error when account deletion fails"
   },
-  "couldNotSendResetEmail": "Could not send reset email. Please try again.",
+  "couldNotSendResetEmail": "リセットメールを送信できませんでした。もう一度お試しください。",
   "@couldNotSendResetEmail": {
     "description": "Generic error when sending reset email fails"
   },
-  "couldNotUpdateVisibility": "Could not update visibility settings",
+  "couldNotUpdateVisibility": "公開設定を更新できませんでした",
   "@couldNotUpdateVisibility": {
     "description": "Error when toggling appear-offline fails"
   },
-  "createAccount": "Create Account",
+  "createAccount": "アカウントを作成",
   "@createAccount": {
     "description": "Button/title for creating a new account"
   },
-  "createProfile": "Create Profile",
+  "createProfile": "プロフィールを作成",
   "@createProfile": {
     "description": "Button to navigate to profile creation/registration"
   },
-  "creditGeyserSubtitle": "Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.",
+  "creditGeyserSubtitle": "統合版スキンの描画。統合版プレイヤーのスキンは GeyserMC のスキンサーバーから取得しています。",
   "@creditGeyserSubtitle": {
     "description": "Subtitle for GeyserMC credit tile"
   },
@@ -399,7 +395,7 @@
   "@creditGeyserTitle": {
     "description": "Title for GeyserMC credit tile"
   },
-  "creditMojangSubtitle": "Java player skins, UUIDs, and profile data via the official Mojang API.",
+  "creditMojangSubtitle": "Java 版プレイヤーのスキン、UUID、プロフィールデータは Mojang 公式 API から取得しています。",
   "@creditMojangSubtitle": {
     "description": "Subtitle for Mojang credit tile"
   },
@@ -407,7 +403,7 @@
   "@creditMojangTitle": {
     "description": "Title for Mojang credit tile"
   },
-  "creditXboxSubtitle": "Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.",
+  "creditXboxSubtitle": "Xbox Live による統合版アカウントの連携。ゲーマータグと XUID は Microsoft の認証フローで取得します。",
   "@creditXboxSubtitle": {
     "description": "Subtitle for Xbox credit tile"
   },
@@ -415,27 +411,27 @@
   "@creditXboxTitle": {
     "description": "Title for Xbox credit tile"
   },
-  "dataSourcesSection": "Data Sources & Credits",
+  "dataSourcesSection": "データソースとクレジット",
   "@dataSourcesSection": {
     "description": "Section header for data sources in Info sheet"
   },
-  "deleteAccountBody": "This will permanently delete your account and all data. This action cannot be undone.",
+  "deleteAccountBody": "アカウントとすべてのデータが完全に削除されます。この操作は元に戻せません。",
   "@deleteAccountBody": {
     "description": "Body text for delete account confirmation dialog"
   },
-  "deleteAccountTitle": "Delete Account",
+  "deleteAccountTitle": "アカウントを削除",
   "@deleteAccountTitle": {
     "description": "Title for delete account dialog/button"
   },
-  "deletePermanently": "Delete Permanently",
+  "deletePermanently": "完全に削除",
   "@deletePermanently": {
     "description": "Confirm button for permanent deletion"
   },
-  "displayNameLabel": "Display Name",
+  "displayNameLabel": "表示名",
   "@displayNameLabel": {
     "description": "Label for display name field"
   },
-  "displayNameRowLabel": "Display name",
+  "displayNameRowLabel": "表示名",
   "@displayNameRowLabel": {
     "description": "Row label for display name in public profile"
   },
@@ -443,101 +439,101 @@
   "@edit": {
     "description": "Edit button label"
   },
-  "editServer": "Edit Server",
+  "editServer": "サーバーを編集",
   "@editServer": {
     "description": "Title for edit server form in manage servers"
   },
-  "editionLabel": "Edition",
+  "editionLabel": "エディション",
   "@editionLabel": {
     "description": "Label for the edition toggle in manage servers form"
   },
-  "emailAddressHint": "Email address",
+  "emailAddressHint": "メールアドレス",
   "@emailAddressHint": {
     "description": "Hint text for email address field"
   },
-  "emailAlreadyInUse": "This email address is already in use",
+  "emailAlreadyInUse": "このメールアドレスはすでに使用されています",
   "@emailAlreadyInUse": {
     "description": "Error when email is already registered"
   },
-  "emailDifferentMethod": "This email is linked to a different sign-in method",
+  "emailDifferentMethod": "このメールアドレスは別のサインイン方法に紐づいています",
   "@emailDifferentMethod": {
     "description": "Error when email already uses a different auth method"
   },
-  "enterEmailAndPassword": "Please enter your email and password",
+  "enterEmailAndPassword": "メールアドレスとパスワードを入力してください",
   "@enterEmailAndPassword": {
     "description": "Validation when email or password is empty on sign-in"
   },
-  "findUser": "Find user",
+  "findUser": "ユーザーを検索",
   "@findUser": {
     "description": "Tooltip for the search/find user button"
   },
-  "forgotPassword": "Forgot password?",
+  "forgotPassword": "パスワードをお忘れですか?",
   "@forgotPassword": {
     "description": "Link to trigger password reset flow"
   },
-  "friendRemoved": "{name} has been removed from your friends",
+  "friendRemoved": "{name} さんをフレンドから削除しました",
   "@friendRemoved": {
     "description": "Toast shown after removing a friend",
     "placeholders": {
       "name": {}
     }
   },
-  "friendRequestAccepted": "You are now friends with {name}",
+  "friendRequestAccepted": "{name} さんとフレンドになりました",
   "@friendRequestAccepted": {
     "description": "Toast when a friend request is accepted",
     "placeholders": {
       "name": {}
     }
   },
-  "friendRequestSent": "Friend request sent",
+  "friendRequestSent": "フレンドリクエストを送信しました",
   "@friendRequestSent": {
     "description": "Toast shown after friend request is sent from public profile"
   },
-  "googleSignInFailed": "Google sign-in failed. Please try again.",
+  "googleSignInFailed": "Google でのサインインに失敗しました。もう一度お試しください。",
   "@googleSignInFailed": {
     "description": "Error when Google sign-in fails"
   },
-  "incorrectEmailOrPassword": "Incorrect email or password",
+  "incorrectEmailOrPassword": "メールアドレスまたはパスワードが正しくありません",
   "@incorrectEmailOrPassword": {
     "description": "Error for wrong credentials"
   },
-  "infoAndLegal": "Info & Legal",
+  "infoAndLegal": "情報と法的事項",
   "@infoAndLegal": {
     "description": "Title of the Info & Legal sheet"
   },
-  "invalidEmailError": "The email address is not valid",
+  "invalidEmailError": "メールアドレスが正しくありません",
   "@invalidEmailError": {
     "description": "Error for invalid email format"
   },
-  "ipAddressFieldLabel": "IP Address",
+  "ipAddressFieldLabel": "IP アドレス",
   "@ipAddressFieldLabel": {
     "description": "IP Address field label in edit server form"
   },
-  "ipRequiredError": "IP address is required",
+  "ipRequiredError": "IP アドレスは必須です",
   "@ipRequiredError": {
     "description": "Validation error when IP address is empty"
   },
-  "lastSeenLabel": "Last seen",
+  "lastSeenLabel": "最終ログイン",
   "@lastSeenLabel": {
     "description": "Row label for last seen date in public profile"
   },
-  "legalSection": "Legal",
+  "legalSection": "法的事項",
   "@legalSection": {
     "description": "Section header in Info sheet"
   },
-  "linkAccountsHint": "Link your Minecraft accounts to show your skins and stats.",
+  "linkAccountsHint": "Minecraft アカウントを連携して、スキンや統計を表示しましょう。",
   "@linkAccountsHint": {
     "description": "Hint when no accounts are linked"
   },
-  "linkJava": "Link Java",
+  "linkJava": "Java を連携",
   "@linkJava": {
     "description": "Button to link a Java account"
   },
-  "linkXbox": "Link Xbox",
+  "linkXbox": "Xbox を連携",
   "@linkXbox": {
     "description": "Button to link an Xbox/Bedrock account"
   },
-  "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
+  "minecraftTrademark": "「Minecraft」は Microsoft Corporation の商標です。",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
   },
@@ -545,7 +541,7 @@
   "@nameLabel": {
     "description": "Generic Name field label"
   },
-  "nameValidationError": "Name must be 1–50 characters",
+  "nameValidationError": "名前は 1〜50 文字にしてください",
   "@nameValidationError": {
     "description": "Validation error when server name is invalid"
   },
@@ -553,37 +549,37 @@
   "@nldServerLabelShort": {
     "description": "Section label above relay selector in More sheet"
   },
-  "noAccountYet": "Don't have an account? Create one",
+  "noAccountYet": "アカウントをお持ちでないですか?作成する",
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noFriendsSub": "Add friends to see them here.",
+  "noFriendsSub": "フレンドを追加すると、ここに表示されます。",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
   },
-  "noFriendsYet": "No friends yet",
+  "noFriendsYet": "まだフレンドがいません",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
   },
-  "noPendingRequests": "No pending requests",
+  "noPendingRequests": "保留中のリクエストはありません",
   "@noPendingRequests": {
     "description": "Empty state title on requests tab"
   },
-  "nowFriendsWith": "Now friends with @{username}",
+  "nowFriendsWith": "@{username} さんとフレンドになりました",
   "@nowFriendsWith": {
     "description": "Toast when accepted a friend request from public profile",
     "placeholders": {
       "username": {}
     }
   },
-  "offlineFriendsLabel": "{count} offline",
+  "offlineFriendsLabel": "オフライン {count} 人",
   "@offlineFriendsLabel": {
     "description": "Section label for offline friends",
     "placeholders": {
       "count": {}
     }
   },
-  "onlineFriendsLabel": "{count} online",
+  "onlineFriendsLabel": "オンライン {count} 人",
   "@onlineFriendsLabel": {
     "description": "Section label for online friends",
     "placeholders": {
@@ -594,42 +590,42 @@
   "@orDivider": {
     "description": "Divider text between email and social sign-in"
   },
-  "passwordHint": "Password",
+  "passwordHint": "パスワード",
   "@passwordHint": {
     "description": "Hint text for password field"
   },
-  "paywallContinue": "Continue",
-  "paywallManaged": "Managed by Apple/Google. Cancel anytime.",
-  "paywallMonthly": "Monthly",
-  "paywallNoActivePurchases": "No active purchases found.",
-  "paywallNoPkgs": "No packages available.",
-  "paywallPopular": "Popular",
-  "paywallPurchaseFailed": "Purchase failed. Please try again.",
-  "paywallPurchaseSuccess": "Purchase successful!",
-  "paywallPurchasesRestored": "Purchases restored!",
-  "paywallRestore": "Restore",
-  "paywallRestoreFailed": "Restore failed. Please try again.",
-  "paywallSavePercent": "Save ~17%",
-  "paywallSlotLabel": "{slots} server slots",
+  "paywallContinue": "続ける",
+  "paywallManaged": "Apple/Google が管理します。いつでもキャンセルできます。",
+  "paywallMonthly": "月額",
+  "paywallNoActivePurchases": "有効な購入が見つかりませんでした。",
+  "paywallNoPkgs": "利用可能なプランがありません。",
+  "paywallPopular": "人気",
+  "paywallPurchaseFailed": "購入に失敗しました。もう一度お試しください。",
+  "paywallPurchaseSuccess": "購入が完了しました!",
+  "paywallPurchasesRestored": "購入を復元しました!",
+  "paywallRestore": "復元",
+  "paywallRestoreFailed": "復元に失敗しました。もう一度お試しください。",
+  "paywallSavePercent": "約 17% お得",
+  "paywallSlotLabel": "サーバースロット {slots} 個",
   "@paywallSlotLabel": {
     "placeholders": {
       "slots": {}
     }
   },
-  "paywallSubtitle": "Track more servers and get notified\nwhen they go online or offline.",
-  "paywallYearly": "Yearly",
-  "platformFieldLabel": "Platform",
+  "paywallSubtitle": "より多くのサーバーを追跡し、\nオンライン・オフラインの変化を通知で受け取れます。",
+  "paywallYearly": "年額",
+  "platformFieldLabel": "プラットフォーム",
   "@platformFieldLabel": {
     "description": "Platform field label in edit server form"
   },
-  "playerLookupCopied": "{value} copied",
+  "playerLookupCopied": "{value} をコピーしました",
   "@playerLookupCopied": {
     "description": "Toast shown after copying a value in player lookup",
     "placeholders": {
       "value": {}
     }
   },
-  "playerLookupHint": "Enter a username…",
+  "playerLookupHint": "ユーザー名を入力…",
   "@playerLookupHint": {
     "description": "Hint text for player lookup search field"
   },
@@ -637,15 +633,15 @@
   "@playerLookupLabelTier": {
     "description": "Label for tier field in player lookup"
   },
-  "playerLookupLabelUsername": "Username",
+  "playerLookupLabelUsername": "ユーザー名",
   "@playerLookupLabelUsername": {
     "description": "Label for username field in player lookup"
   },
-  "playerLookupLinked": "Linked accounts found",
+  "playerLookupLinked": "連携済みのアカウントが見つかりました",
   "@playerLookupLinked": {
     "description": "Badge shown when linked accounts are found"
   },
-  "playerLookupSubtitle": "Search for a Java or Bedrock player by username",
+  "playerLookupSubtitle": "ユーザー名で Java 版または統合版のプレイヤーを検索",
   "@playerLookupSubtitle": {
     "description": "Subtitle/hint on player lookup screen"
   },
@@ -653,7 +649,7 @@
   "@portFieldLabel": {
     "description": "Port field label in edit server form"
   },
-  "portRangeError": "Port must be between 1 and 65535",
+  "portRangeError": "ポートは 1〜65535 の範囲で指定してください",
   "@portRangeError": {
     "description": "Validation error when port is out of range"
   },
@@ -661,19 +657,19 @@
   "@privacyPolicy": {
     "description": "Privacy Policy tile title"
   },
-  "privacyPolicySubtitle": "How we collect and protect your data",
+  "privacyPolicySubtitle": "データの収集と保護について",
   "@privacyPolicySubtitle": {
     "description": "Privacy Policy tile subtitle"
   },
-  "profileNotSetUp": "Profile not set up",
+  "profileNotSetUp": "プロフィールが未設定です",
   "@profileNotSetUp": {
     "description": "Title when user is authenticated but has no profile"
   },
-  "profileSectionLabel": "Profile",
+  "profileSectionLabel": "プロフィール",
   "@profileSectionLabel": {
     "description": "Section label in public profile for profile info card"
   },
-  "profileUpdated": "Profile updated",
+  "profileUpdated": "プロフィールを更新しました",
   "@profileUpdated": {
     "description": "Toast shown after profile is saved"
   },
@@ -681,71 +677,71 @@
   "@relay": {
     "description": "Label for the Relay nav item and sheet title"
   },
-  "remove": "Remove",
+  "remove": "削除",
   "@remove": {
     "description": "Remove button label"
   },
-  "removeFriendButton": "Remove friend",
+  "removeFriendButton": "フレンドを削除",
   "@removeFriendButton": {
     "description": "Button label to remove a friend on public profile"
   },
-  "removeFriendConfirm": "Remove {name} from your friends?",
+  "removeFriendConfirm": "{name} さんをフレンドから削除しますか?",
   "@removeFriendConfirm": {
     "description": "Confirmation text for removing a friend",
     "placeholders": {
       "name": {}
     }
   },
-  "removeFriendDialogBody": "Remove @{username} as a friend?",
+  "removeFriendDialogBody": "@{username} さんをフレンドから削除しますか?",
   "@removeFriendDialogBody": {
     "description": "Dialog body when removing a friend from public profile",
     "placeholders": {
       "username": {}
     }
   },
-  "removeFriendDialogTitle": "Remove friend",
+  "removeFriendDialogTitle": "フレンドを削除",
   "@removeFriendDialogTitle": {
     "description": "Dialog title when removing a friend from public profile"
   },
-  "removeFriendTitle": "Remove Friend",
+  "removeFriendTitle": "フレンドを削除",
   "@removeFriendTitle": {
     "description": "Dialog title for removing a friend"
   },
-  "removeJavaConfirm": "Remove {name} from your linked accounts?",
+  "removeJavaConfirm": "{name} を連携済みアカウントから削除しますか?",
   "@removeJavaConfirm": {
     "description": "Confirmation text for unlinking a Java account",
     "placeholders": {
       "name": {}
     }
   },
-  "removeLabelConfirm": "Remove {name} from your linked accounts?",
+  "removeLabelConfirm": "{name} を連携済みアカウントから削除しますか?",
   "@removeLabelConfirm": {
     "description": "Confirmation text for unlinking a Bedrock/Xbox account",
     "placeholders": {
       "name": {}
     }
   },
-  "reportAdditionalDetails": "Additional details (optional)…",
+  "reportAdditionalDetails": "詳細(任意)…",
   "@reportAdditionalDetails": {
     "description": "Hint text for additional details field in report sheet"
   },
-  "reportDisclaimer": "Reports are reviewed by our team. False reports may result in action against your account.",
+  "reportDisclaimer": "報告は運営チームが確認します。虚偽の報告を行うと、アカウントに対して措置が取られる場合があります。",
   "@reportDisclaimer": {
     "description": "Disclaimer text shown in the report sheet"
   },
-  "reportFailed": "Failed to submit report. Please try again.",
+  "reportFailed": "報告を送信できませんでした。もう一度お試しください。",
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportReasonHarassment": "Harassment",
+  "reportReasonHarassment": "嫌がらせ",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
   },
-  "reportReasonInappropriate": "Inappropriate content",
+  "reportReasonInappropriate": "不適切なコンテンツ",
   "@reportReasonInappropriate": {
     "description": "Report reason: inappropriate content"
   },
-  "reportReasonOther": "Other",
+  "reportReasonOther": "その他",
   "@reportReasonOther": {
     "description": "Report reason: other"
   },
@@ -753,41 +749,41 @@
   "@reportReasonSpam": {
     "description": "Report reason: spam"
   },
-  "reportSubmit": "Submit report",
+  "reportSubmit": "報告を送信",
   "@reportSubmit": {
     "description": "Button label to submit a report"
   },
-  "reportSuccess": "Report submitted. Thank you.",
+  "reportSuccess": "報告を送信しました。ありがとうございます。",
   "@reportSuccess": {
     "description": "Toast shown after a successful report submission"
   },
-  "reportUser": "Report user",
+  "reportUser": "ユーザーを報告",
   "@reportUser": {
     "description": "Tooltip/button to report a user"
   },
-  "reportUserWithName": "Report {name}",
+  "reportUserWithName": "{name} を報告",
   "@reportUserWithName": {
     "description": "Title when reporting a user by name",
     "placeholders": {
       "name": {}
     }
   },
-  "requestAlreadyPendingMsg": "There is already a pending request.",
+  "requestAlreadyPendingMsg": "すでに保留中のリクエストがあります。",
   "@requestAlreadyPendingMsg": {
     "description": "Error when friend request is already pending (public profile)"
   },
-  "requestDeclined": "Request from {name} declined",
+  "requestDeclined": "{name} さんからのリクエストを拒否しました",
   "@requestDeclined": {
     "description": "Toast when a friend request is declined",
     "placeholders": {
       "name": {}
     }
   },
-  "requestSentButton": "Request sent",
+  "requestSentButton": "リクエスト送信済み",
   "@requestSentButton": {
     "description": "Disabled button label when request already sent"
   },
-  "requestsAppearHere": "New friend requests will appear here.",
+  "requestsAppearHere": "新しいフレンドリクエストはここに表示されます。",
   "@requestsAppearHere": {
     "description": "Empty state subtitle on requests tab"
   },
@@ -798,15 +794,15 @@
       "email": {}
     }
   },
-  "resetPasswordBody": "Enter your email address and we will send you a link to reset your password.",
+  "resetPasswordBody": "メールアドレスを入力すると、パスワードをリセットするためのリンクをお送りします。",
   "@resetPasswordBody": {
     "description": "Body text for reset password dialog"
   },
-  "resetPasswordTitle": "Reset Password",
+  "resetPasswordTitle": "パスワードをリセット",
   "@resetPasswordTitle": {
     "description": "Title for reset password dialog"
   },
-  "selectBedrockAccount": "Select Bedrock account",
+  "selectBedrockAccount": "統合版アカウントを選択",
   "@selectBedrockAccount": {
     "description": "Title of the Bedrock account picker bottom sheet"
   },
@@ -814,7 +810,7 @@
   "@send": {
     "description": "Send button label"
   },
-  "sendLink": "Send link",
+  "sendLink": "リンクを送信",
   "@sendLink": {
     "description": "Button to send the password reset link"
   },
@@ -822,31 +818,31 @@
   "@serverAddressExampleHint": {
     "description": "Example hint text for server address field"
   },
-  "serverDescriptionExampleHint": "Survival server with friends",
+  "serverDescriptionExampleHint": "フレンドと遊ぶサバイバルサーバー",
   "@serverDescriptionExampleHint": {
     "description": "Example hint text for server description field"
   },
-  "serverNameExampleHint": "My Awesome Server",
+  "serverNameExampleHint": "すてきなサーバー",
   "@serverNameExampleHint": {
     "description": "Example hint text for server name field"
   },
-  "serversSection": "Servers",
+  "serversSection": "サーバー",
   "@serversSection": {
     "description": "Section label above servers panel in connection panel"
   },
-  "signInSubtitle": "Sign in to access your profile, friends, and chats.",
+  "signInSubtitle": "サインインして、プロフィール、フレンド、チャットを利用しましょう。",
   "@signInSubtitle": {
     "description": "Subtitle on the sign-in screen"
   },
-  "signOut": "Sign Out",
+  "signOut": "サインアウト",
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "Create",
+  "skinsCreate": "作成",
   "@skinsCreate": {
     "description": "Button to create/open skin editor"
   },
-  "skinsDownload": "Download",
+  "skinsDownload": "ダウンロード",
   "@skinsDownload": {
     "description": "Download button in skin detail sheet"
   },
@@ -854,19 +850,19 @@
   "@skinsEdit": {
     "description": "Edit button in skin detail sheet"
   },
-  "skinsInvalidFile": "Invalid image file",
+  "skinsInvalidFile": "無効な画像ファイルです",
   "@skinsInvalidFile": {
     "description": "Error when the selected file is not a valid image"
   },
-  "skinsMustBe64": "Skin must be 64×64 pixels",
+  "skinsMustBe64": "スキンは 64×64 ピクセルである必要があります",
   "@skinsMustBe64": {
     "description": "Error when uploaded skin is wrong size"
   },
-  "skinsUpload": "Upload",
+  "skinsUpload": "アップロード",
   "@skinsUpload": {
     "description": "Button to upload a skin"
   },
-  "somethingWentWrong": "Something went wrong. Please try again.",
+  "somethingWentWrong": "問題が発生しました。もう一度お試しください。",
   "@somethingWentWrong": {
     "description": "Generic error message"
   },
@@ -874,7 +870,7 @@
   "@termsOfService": {
     "description": "Terms of Service tile title"
   },
-  "termsOfServiceSubtitle": "Rules and conditions of use",
+  "termsOfServiceSubtitle": "ご利用のルールと条件",
   "@termsOfServiceSubtitle": {
     "description": "Terms of Service tile subtitle"
   },
@@ -882,43 +878,43 @@
   "@trackerLimitReached": {
     "description": "Banner shown when tracker slot limit is reached"
   },
-  "tryAgain": "Try again",
+  "tryAgain": "再試行",
   "@tryAgain": {
     "description": "Generic try again button label"
   },
-  "unlink": "Unlink",
+  "unlink": "連携を解除",
   "@unlink": {
     "description": "Unlink button label"
   },
-  "unlinkJavaTitle": "Unlink Java Account",
+  "unlinkJavaTitle": "Java アカウントの連携を解除",
   "@unlinkJavaTitle": {
     "description": "Dialog title for unlinking a Java account"
   },
-  "unlinkXboxTitle": "Unlink Xbox Account",
+  "unlinkXboxTitle": "Xbox アカウントの連携を解除",
   "@unlinkXboxTitle": {
     "description": "Dialog title for unlinking an Xbox account"
   },
-  "upgradeButton": "Upgrade",
+  "upgradeButton": "アップグレード",
   "@upgradeButton": {
     "description": "Button to open paywall/upgrade screen"
   },
-  "userNotFound": "User not found",
+  "userNotFound": "ユーザーが見つかりません",
   "@userNotFound": {
     "description": "Text shown when a user profile cannot be found"
   },
-  "userNotFoundMsg2": "User not found.",
+  "userNotFoundMsg2": "ユーザーが見つかりません。",
   "@userNotFoundMsg2": {
     "description": "Error when user not found sending friend request from public profile"
   },
-  "usernameRowLabel": "Username",
+  "usernameRowLabel": "ユーザー名",
   "@usernameRowLabel": {
     "description": "Row label for username in public profile"
   },
-  "weakPassword": "Password is too weak. Please choose a stronger one.",
+  "weakPassword": "パスワードが弱すぎます。より強力なパスワードを選んでください。",
   "@weakPassword": {
     "description": "Error for weak password"
   },
-  "xboxAccountLinked": "Xbox account linked!",
+  "xboxAccountLinked": "Xbox アカウントを連携しました!",
   "@xboxAccountLinked": {
     "description": "Success text when Xbox account is linked"
   },
@@ -926,74 +922,74 @@
   "@xboxBedrockLabel": {
     "description": "Section label for Xbox/Bedrock account in public profile"
   },
-  "xboxCodeCopied": "Code copied to clipboard",
+  "xboxCodeCopied": "コードをクリップボードにコピーしました",
   "@xboxCodeCopied": {
     "description": "Snackbar shown after code is copied"
   },
-  "xboxCodeExpired": "The code expired. Please try again.",
+  "xboxCodeExpired": "コードの有効期限が切れました。もう一度お試しください。",
   "@xboxCodeExpired": {
     "description": "Error when Xbox device code expires"
   },
-  "xboxCouldNotStart": "Could not start Xbox login. Please try again.",
+  "xboxCouldNotStart": "Xbox ログインを開始できませんでした。もう一度お試しください。",
   "@xboxCouldNotStart": {
     "description": "Error when Xbox login cannot be started"
   },
-  "xboxGoToLink": "Go to the link below and enter the code to connect your Xbox account.",
+  "xboxGoToLink": "下のリンクにアクセスしてコードを入力し、Xbox アカウントを連携してください。",
   "@xboxGoToLink": {
     "description": "Instruction on Xbox link waiting screen"
   },
-  "xboxLinkTitle": "Link Xbox Account",
+  "xboxLinkTitle": "Xbox アカウントを連携",
   "@xboxLinkTitle": {
     "description": "AppBar title for Xbox link screen"
   },
-  "xboxOpenLink": "Open microsoft.com/link",
+  "xboxOpenLink": "microsoft.com/link を開く",
   "@xboxOpenLink": {
     "description": "Button label to open Microsoft device auth link"
   },
-  "xboxSignInWithMicrosoft": "Sign in with Microsoft",
+  "xboxSignInWithMicrosoft": "Microsoft でサインイン",
   "@xboxSignInWithMicrosoft": {
     "description": "Heading on Xbox link waiting screen"
   },
-  "xboxSomethingWrong": "Something went wrong. Please try again.",
+  "xboxSomethingWrong": "問題が発生しました。もう一度お試しください。",
   "@xboxSomethingWrong": {
     "description": "Generic error on Xbox link screen"
   },
-  "xboxStartingLogin": "Starting Xbox login…",
+  "xboxStartingLogin": "Xbox ログインを開始しています…",
   "@xboxStartingLogin": {
     "description": "Loading text when starting Xbox login"
   },
-  "xboxTapToCopy": "Tap the code to copy it",
+  "xboxTapToCopy": "コードをタップしてコピー",
   "@xboxTapToCopy": {
     "description": "Hint below the code on Xbox link screen"
   },
-  "xboxWaitingForLogin": "Waiting for login…",
+  "xboxWaitingForLogin": "ログインを待っています…",
   "@xboxWaitingForLogin": {
     "description": "Status text while polling for Xbox login"
   },
-  "xboxYourCode": "Your code",
+  "xboxYourCode": "あなたのコード",
   "@xboxYourCode": {
     "description": "Label above the Microsoft device code"
   },
-  "yourNameHint": "Your name",
+  "yourNameHint": "あなたの名前",
   "@yourNameHint": {
     "description": "Hint text for display name field"
   },
-  "javaLinkTitle": "Link Java Edition",
-  "javaStartingLogin": "Starting Microsoft login…",
-  "javaSignInWithMicrosoft": "Sign in with Microsoft",
-  "javaGoToLink": "Go to the link below and enter the code to connect your Minecraft Java Edition account.",
-  "javaYourCode": "Your code",
-  "javaTapToCopy": "Tap the code to copy it",
-  "javaOpenLink": "Open microsoft.com/link",
-  "javaWaitingForLogin": "Waiting for login…",
-  "javaAccountLinked": "Java Edition linked!",
-  "javaNoJavaTitle": "No Java Edition found",
-  "javaNoJavaBody": "The Microsoft account you signed in with does not own Minecraft Java Edition.",
-  "javaTryDifferentAccount": "Try a different account",
-  "javaCouldNotStart": "Could not start Microsoft login. Please try again.",
-  "javaCodeExpired": "The code expired. Please try again.",
-  "javaSomethingWrong": "Something went wrong. Please try again.",
-  "javaCodeCopied": "Code copied to clipboard",
+  "javaLinkTitle": "Java 版を連携",
+  "javaStartingLogin": "Microsoft ログインを開始しています…",
+  "javaSignInWithMicrosoft": "Microsoft でサインイン",
+  "javaGoToLink": "下のリンクにアクセスしてコードを入力し、Minecraft Java 版のアカウントを連携してください。",
+  "javaYourCode": "あなたのコード",
+  "javaTapToCopy": "コードをタップしてコピー",
+  "javaOpenLink": "microsoft.com/link を開く",
+  "javaWaitingForLogin": "ログインを待っています…",
+  "javaAccountLinked": "Java 版を連携しました!",
+  "javaNoJavaTitle": "Java 版が見つかりません",
+  "javaNoJavaBody": "サインインした Microsoft アカウントは Minecraft Java 版を所有していません。",
+  "javaTryDifferentAccount": "別のアカウントを試す",
+  "javaCouldNotStart": "Microsoft ログインを開始できませんでした。もう一度お試しください。",
+  "javaCodeExpired": "コードの有効期限が切れました。もう一度お試しください。",
+  "javaSomethingWrong": "問題が発生しました。もう一度お試しください。",
+  "javaCodeCopied": "コードをクリップボードにコピーしました",
   "featureLabelConnector": "コネクター",
   "featureLabelSkins": "スキン",
   "featureLabelPartners": "サーバー一覧",
@@ -1083,9 +1079,6 @@
   "rpNoDiscord": "Discordリンク: .mcpack 拡張子がなく、数時間で期限切れになります",
   "rpNoDrive": "Google Drive / Dropbox 共有リンク: 直接ダウンロードではありません",
   "rpNoEncrypted": "暗号化またはパスワード保護されたパックのサーバー",
-  "rpWarnDiscord": "DiscordリンクはExpireし、動作しなくなります。代わりに永続的なホストを使用してください。",
-  "rpWarnHttps": "URLはhttps://で始まる必要があります",
-  "rpWarnExtension": "URLは.mcpackまたは.zipで終わる必要があります",
   "rpToastSaved": "リソースパックの設定を保存しました。",
   "rpClearMinecraftTitle": "このパックを初めて使う？",
   "rpClearStep1": "コンソールでMinecraftを開き、設定 → ストレージに移動する",
@@ -1097,10 +1090,10 @@
   "rpNoDriveHint": "直接ダウンロードなし: プレビューページにリダイレクトされます",
   "rpNoEncryptedHint": "MCCompanionは暗号化されたパックを結合できません",
   "rpClearWhy": "MinecraftはリソースパックをUUIDでキャッシュします。結合されたパックはサーバーの元のUUIDを保持します, MCCompanionを有効にする前のセッションでMinecraftがサーバーのパックをキャッシュしていた場合、新しい結合バージョンをダウンロードしません。キャッシュをクリアして、Minecraftが新しい結合パックを読み込むようにしてください。",
-  "rpUploadTab": "Upload",
-  "rpUploadButton": "Tap to select your pack",
-  "rpUploadHint": ".mcpack or .zip • max 100 MB",
-  "rpUploading": "Uploading...",
+  "rpUploadTab": "アップロード",
+  "rpUploadButton": "タップしてパックを選択",
+  "rpUploadHint": ".mcpack または .zip • 最大 100 MB",
+  "rpUploading": "アップロード中...",
   "rpMergerTitle": "RPマージャー",
   "rpMergerPriorityHint": "最上位のパックが最高優先度: そのファイルが競合に勝ちます。",
   "rpMergerTopBadge": "TOP",
@@ -1172,45 +1165,10 @@
     }
   },
   "skinsSavedToMySkins": "マイスキンに保存しました",
-  "skinsDownloadFailed": "ダウンロードに失敗しました",
-  "skinsDeletedFromCloud": "クラウドから削除しました",
-  "skinsDeleteFailed": "削除に失敗しました",
-  "skinsLoginToUpload": "スキンをアップロードするにはログインしてください",
-  "skinsUploading": "アップロード中…",
-  "skinUploaded": "スキンをアップロードしました！",
-  "skinUploadFailed": "アップロードに失敗しました: {error}",
   "skinsEmptyLocalSkins": "スキンはまだありません。スキンを作成またはアップロードして始めましょう。",
-  "skinUploadToWebsite": "ウェブサイトにアップロード",
-  "skinReuploadToWebsite": "ウェブサイトに再アップロード",
-  "skinCloudEdit": "編集",
-  "skinCloudSaveToDevice": "デバイスに保存",
-  "skinCloudDelete": "クラウドから削除",
-  "skinsTabGallery": "ギャラリー",
-  "skinsTopLabel": "トップ30",
-  "skinsAllLabel": "すべてのスキン",
-  "skinUploadToCloud": "クラウドにアップロード",
   "skinSaveDialog": "スキンを保存",
   "skinNameHint": "スキン名",
   "skinDefaultName": "マイスキン",
-  "skinUpdatedInCloud": "クラウドのスキンが更新されました",
-  "skinByCreator": "{name} 作",
-  "@skinByCreator": {
-    "description": "Creator attribution",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinLikesCount": "{count} いいね",
-  "@skinLikesCount": {
-    "description": "Like count",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "sectionRecentActivity": "最近のアクティビティ",
   "activityNoEvents": "まだアクティビティはありません。",
   "activitySkinUploaded": "スキンをアップロード",
@@ -1305,10 +1263,6 @@
   "notifPrefFriendRequest": "フレンド申請",
   "notifPrefFriendAccepted": "フレンド追加",
   "notifPrefMessageReceived": "新しいメッセージ",
-  "commentsTitle": "コメント",
-  "commentsEmpty": "まだコメントはありません。最初のコメントを残しましょう！",
-  "commentsPlaceholder": "コメントを書く…",
-  "loadMore": "もっと読み込む",
   "skinLayerInner": "内側",
   "@skinLayerInner": {
     "description": "Skin editor layer toggle, inner/base layer"
@@ -1327,7 +1281,6 @@
   "skinEditorTitle": "スキンエディター",
   "skinToolUndo": "元に戻す",
   "skinSaveToMySkins": "マイスキンに保存",
-  "skinUpdateInCloud": "クラウドで更新",
   "skinExportPng": "PNG を書き出す",
   "skinToolDraw": "描く",
   "skinToolFill": "塗りつぶし",
@@ -1407,6 +1360,22 @@
     }
   },
   "directPortBusy": "ローカルポートを開けませんでした。先に現在の接続を停止してください。",
+  "rpBrowseTab": "探す",
+  "rpCategoryRealism": "リアル",
+  "rpCategoryFaithful": "Faithful",
+  "rpCategoryPvp": "PvP",
+  "rpCategoryCartoon": "カートゥーン",
+  "rpCategoryDark": "ダーク",
+  "rpCategoryMedieval": "中世",
+  "rpCategoryNature": "自然",
+  "rpCategoryThemed": "テーマ",
+  "rpCategoryOther": "その他",
+  "waitingForConsole": "コンソールを待っています…",
+  "consoleFound": "コンソールが見つかりました",
+  "consoleLanHint": "コンソールでMinecraftを開き、友達からLANゲームを探してください。",
+  "localNetworkBlocked": "MCCompanionがローカルネットワークにアクセスできません。端末の設定でMCCompanionのローカルネットワークをオンにし、Wi-Fiに接続していることを確認してください。",
+  "serverListPlayersAny": "サイズを問わない",
+  "serverListPlayersHint": "平均オンライン人数",
   "directAddressNotSupported": "{host} は IPv6 アドレスです。プロキシ/ダイレクトモードは IPv4 のみ対応しています。IPv4 アドレスかホスト名をご利用ください。",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -1451,7 +1420,6 @@
   "serverListNoMatchHint": "別のキーワードかカテゴリーをお試しください",
   "serverCardPlay": "プレイ",
   "serverCardVote": "投票",
-  "serverCardViewServer": "サーバーを見る",
   "serverCopyIp": "IPをコピー",
   "serverCopied": "コピーしました",
   "serverStatPlayers": "プレイヤー",

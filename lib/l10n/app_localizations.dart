@@ -408,12 +408,6 @@ abstract class AppLocalizations {
   /// **'Save'**
   String get save;
 
-  /// Snackbar shown when clients disconnect automatically
-  ///
-  /// In en, this message translates to:
-  /// **'Client disconnected: Broadcast stopped'**
-  String get clientDisconnected;
-
   /// Validation message when server address field is empty
   ///
   /// In en, this message translates to:
@@ -2628,24 +2622,6 @@ abstract class AppLocalizations {
   /// **'High-resolution texture packs can cause lag or crashes on consoles. If you experience issues, switch to a lower-resolution pack or select a lighter subpack if the pack supports it.'**
   String get rpConsolePerformanceBody;
 
-  /// Inline warning shown when user enters a Discord CDN URL
-  ///
-  /// In en, this message translates to:
-  /// **'Discord links expire and will stop working. Use a permanent host instead.'**
-  String get rpWarnDiscord;
-
-  /// Inline warning when URL does not start with https://
-  ///
-  /// In en, this message translates to:
-  /// **'URL must start with https://'**
-  String get rpWarnHttps;
-
-  /// Inline warning when URL does not end with .mcpack or .zip
-  ///
-  /// In en, this message translates to:
-  /// **'URL must end in .mcpack or .zip'**
-  String get rpWarnExtension;
-
   /// Toast shown after resource pack settings are saved successfully
   ///
   /// In en, this message translates to:
@@ -2735,6 +2711,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Browse'**
   String get rpBrowseTab;
+
+  /// No description provided for @rpCategoryRealism.
+  ///
+  /// In en, this message translates to:
+  /// **'Realism'**
+  String get rpCategoryRealism;
+
+  /// No description provided for @rpCategoryFaithful.
+  ///
+  /// In en, this message translates to:
+  /// **'Faithful'**
+  String get rpCategoryFaithful;
+
+  /// No description provided for @rpCategoryPvp.
+  ///
+  /// In en, this message translates to:
+  /// **'PvP'**
+  String get rpCategoryPvp;
+
+  /// No description provided for @rpCategoryCartoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Cartoon'**
+  String get rpCategoryCartoon;
+
+  /// No description provided for @rpCategoryDark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get rpCategoryDark;
+
+  /// No description provided for @rpCategoryMedieval.
+  ///
+  /// In en, this message translates to:
+  /// **'Medieval'**
+  String get rpCategoryMedieval;
+
+  /// No description provided for @rpCategoryNature.
+  ///
+  /// In en, this message translates to:
+  /// **'Nature'**
+  String get rpCategoryNature;
+
+  /// No description provided for @rpCategoryThemed.
+  ///
+  /// In en, this message translates to:
+  /// **'Themed'**
+  String get rpCategoryThemed;
+
+  /// No description provided for @rpCategoryOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get rpCategoryOther;
 
   /// Upload area primary label
   ///
@@ -3012,107 +3042,11 @@ abstract class AppLocalizations {
   /// **'Saved to My Skins'**
   String get skinsSavedToMySkins;
 
-  /// Toast when skin download fails
-  ///
-  /// In en, this message translates to:
-  /// **'Download failed'**
-  String get skinsDownloadFailed;
-
-  /// Toast when cloud skin is deleted
-  ///
-  /// In en, this message translates to:
-  /// **'Deleted from cloud'**
-  String get skinsDeletedFromCloud;
-
-  /// Toast when skin delete fails
-  ///
-  /// In en, this message translates to:
-  /// **'Delete failed'**
-  String get skinsDeleteFailed;
-
-  /// Toast when user tries to upload without being logged in
-  ///
-  /// In en, this message translates to:
-  /// **'Log in to upload skins'**
-  String get skinsLoginToUpload;
-
-  /// Toast while skin is uploading
-  ///
-  /// In en, this message translates to:
-  /// **'Uploading…'**
-  String get skinsUploading;
-
-  /// Toast when skin upload succeeds
-  ///
-  /// In en, this message translates to:
-  /// **'Skin uploaded!'**
-  String get skinUploaded;
-
-  /// Toast when skin upload fails
-  ///
-  /// In en, this message translates to:
-  /// **'Upload failed: {error}'**
-  String skinUploadFailed(String error);
-
   /// Empty state for local skins tab
   ///
   /// In en, this message translates to:
   /// **'No skins yet. Create or upload a skin to get started.'**
   String get skinsEmptyLocalSkins;
-
-  /// Menu option to upload skin to website
-  ///
-  /// In en, this message translates to:
-  /// **'Upload to website'**
-  String get skinUploadToWebsite;
-
-  /// Menu option to re-upload skin to website
-  ///
-  /// In en, this message translates to:
-  /// **'Re-upload to website'**
-  String get skinReuploadToWebsite;
-
-  /// Edit button in cloud skin menu
-  ///
-  /// In en, this message translates to:
-  /// **'Edit'**
-  String get skinCloudEdit;
-
-  /// Save to device button in cloud skin menu
-  ///
-  /// In en, this message translates to:
-  /// **'Save to device'**
-  String get skinCloudSaveToDevice;
-
-  /// Delete from cloud button in cloud skin menu
-  ///
-  /// In en, this message translates to:
-  /// **'Delete from cloud'**
-  String get skinCloudDelete;
-
-  /// Gallery tab label on skins screen
-  ///
-  /// In en, this message translates to:
-  /// **'Gallery'**
-  String get skinsTabGallery;
-
-  /// Section header for top 30 liked skins
-  ///
-  /// In en, this message translates to:
-  /// **'Top 30'**
-  String get skinsTopLabel;
-
-  /// Section header for all gallery skins
-  ///
-  /// In en, this message translates to:
-  /// **'All Skins'**
-  String get skinsAllLabel;
-
-  /// Dialog title for uploading skin to cloud
-  ///
-  /// In en, this message translates to:
-  /// **'Upload to Cloud'**
-  String get skinUploadToCloud;
 
   /// Dialog title for saving skin locally
   ///
@@ -3131,24 +3065,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'My Skin'**
   String get skinDefaultName;
-
-  /// Toast when cloud skin is updated
-  ///
-  /// In en, this message translates to:
-  /// **'Skin updated in cloud'**
-  String get skinUpdatedInCloud;
-
-  /// Creator attribution on skin cards and preview sheet
-  ///
-  /// In en, this message translates to:
-  /// **'by {name}'**
-  String skinByCreator(String name);
-
-  /// Like count shown under skin name in preview sheet
-  ///
-  /// In en, this message translates to:
-  /// **'{count} likes'**
-  String skinLikesCount(int count);
 
   /// Section header for the recent activity feed in the profile tab
   ///
@@ -3336,30 +3252,6 @@ abstract class AppLocalizations {
   /// **'New message'**
   String get notifPrefMessageReceived;
 
-  /// Section header for the comments section on a skin
-  ///
-  /// In en, this message translates to:
-  /// **'Comments'**
-  String get commentsTitle;
-
-  /// Shown when a skin has no comments
-  ///
-  /// In en, this message translates to:
-  /// **'No comments yet. Be the first!'**
-  String get commentsEmpty;
-
-  /// Placeholder text in the comment input field
-  ///
-  /// In en, this message translates to:
-  /// **'Write a comment…'**
-  String get commentsPlaceholder;
-
-  /// No description provided for @loadMore.
-  ///
-  /// In en, this message translates to:
-  /// **'Load more'**
-  String get loadMore;
-
   /// Skin editor layer toggle, inner/base layer
   ///
   /// In en, this message translates to:
@@ -3419,12 +3311,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Save to My Skins'**
   String get skinSaveToMySkins;
-
-  /// No description provided for @skinUpdateInCloud.
-  ///
-  /// In en, this message translates to:
-  /// **'Update in cloud'**
-  String get skinUpdateInCloud;
 
   /// No description provided for @skinExportPng.
   ///
@@ -3876,6 +3762,12 @@ abstract class AppLocalizations {
   /// **'On your console, open Minecraft and look under Friends for a LAN game.'**
   String get consoleLanHint;
 
+  /// No description provided for @localNetworkBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'MCCompanion cannot reach your local network. Turn on Local Network for MCCompanion in your device settings and make sure you are on Wi-Fi.'**
+  String get localNetworkBlocked;
+
   /// No description provided for @directAddressNotSupported.
   ///
   /// In en, this message translates to:
@@ -4049,12 +3941,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Vote'**
   String get serverCardVote;
-
-  /// No description provided for @serverCardViewServer.
-  ///
-  /// In en, this message translates to:
-  /// **'View server'**
-  String get serverCardViewServer;
 
   /// No description provided for @serverCopyIp.
   ///

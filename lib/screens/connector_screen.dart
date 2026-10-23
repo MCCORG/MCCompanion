@@ -98,6 +98,7 @@ class HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _initializeComponents();
+    _netherNet.onLocalNetworkBlocked = _handleLocalNetworkBlocked;
     loadUserServers();
     _loadBedrockAccounts();
     _loadResourcePackUrl();
@@ -384,6 +385,15 @@ class HomeScreenState extends State<HomeScreen> {
     } catch (e) {
       logger.error('Failed to disable wakelock: $e');
     }
+  }
+
+  void _handleLocalNetworkBlocked() {
+    if (!mounted) return;
+    _snack(
+      AppLocalizations.of(context)!.localNetworkBlocked,
+      AppTheme.error,
+      icon: Icons.wifi_off_rounded,
+    );
   }
 
   void _handleConnectionError(ConnectionError error) {

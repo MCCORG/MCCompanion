@@ -80,10 +80,6 @@
   "@save": {
     "description": "Save button label"
   },
-  "clientDisconnected": "Client verbroken - Uitzending gestopt",
-  "@clientDisconnected": {
-    "description": "Snackbar shown when clients disconnect automatically"
-  },
   "pleaseEnterServer": "⚠️ Voer een serveradres in",
   "@pleaseEnterServer": {
     "description": "Validation message when server address field is empty"
@@ -647,9 +643,6 @@
   "rpNoDiscord": "Discord-links: geen .mcpack-extensie en verlopen na een paar uur",
   "rpNoDrive": "Gedeelde links van Google Drive / Dropbox, geen directe downloads",
   "rpNoEncrypted": "Servers met versleutelde of wachtwoordbeveiligde packs",
-  "rpWarnDiscord": "Discord-links verlopen en werken dan niet meer. Gebruik een permanente host.",
-  "rpWarnHttps": "URL moet beginnen met https://",
-  "rpWarnExtension": "URL moet eindigen op .mcpack of .zip",
   "rpToastSaved": "Instellingen resourcepakket opgeslagen.",
   "rpInvalidPackFormat": "Dit is een Java Edition-pakket en wordt niet ondersteund. Gebruik een Bedrock Edition-resourcepakket.",
   "rpBehaviorContentWarning": "Dit pakket bevat behavior pack-data, die werkt niet op servers. De textures werken wel gewoon.",
@@ -663,11 +656,20 @@
   "rpNoDriveHint": "Geen directe download: stuurt door naar een voorbeeldpagina",
   "rpNoEncryptedHint": "MCCompanion kan versleutelde packinhoud niet samenvoegen",
   "rpClearWhy": "Minecraft slaat resourcepakketten op via hun UUID. De samengevoegde pack behoudt de originele UUID van de server, als Minecraft de serverpack al gecacht heeft van een vorige sessie (vóór MCCompanion was ingeschakeld), downloadt het de nieuwe samengevoegde versie niet opnieuw. Wis de cache zodat Minecraft de verse samengevoegde pack oppikt.",
-  "rpUploadTab": "Upload",
+  "rpUploadTab": "Uploaden",
   "rpBrowseTab": "Bladeren",
-  "rpUploadButton": "Tap to select your pack",
-  "rpUploadHint": ".mcpack or .zip • max 100 MB",
-  "rpUploading": "Uploading...",
+  "rpCategoryRealism": "Realisme",
+  "rpCategoryFaithful": "Faithful",
+  "rpCategoryPvp": "PvP",
+  "rpCategoryCartoon": "Cartoon",
+  "rpCategoryDark": "Donker",
+  "rpCategoryMedieval": "Middeleeuws",
+  "rpCategoryNature": "Natuur",
+  "rpCategoryThemed": "Thema",
+  "rpCategoryOther": "Overig",
+  "rpUploadButton": "Tik om je pack te kiezen",
+  "rpUploadHint": ".mcpack of .zip • max. 100 MB",
+  "rpUploading": "Uploaden...",
   "rpMergerTitle": "RP Merger",
   "rpMergerPriorityHint": "Het bovenste pack heeft de hoogste prioriteit, zijn bestanden winnen conflicten.",
   "rpMergerTopBadge": "TOP",
@@ -739,45 +741,10 @@
     }
   },
   "skinsSavedToMySkins": "Opgeslagen in Mijn Skins",
-  "skinsDownloadFailed": "Download mislukt",
-  "skinsDeletedFromCloud": "Verwijderd uit de cloud",
-  "skinsDeleteFailed": "Verwijderen mislukt",
-  "skinsLoginToUpload": "Log in om skins te uploaden",
-  "skinsUploading": "Uploaden…",
-  "skinUploaded": "Skin geüpload!",
-  "skinUploadFailed": "Upload mislukt: {error}",
   "skinsEmptyLocalSkins": "Nog geen skins. Maak of upload een skin om te beginnen.",
-  "skinUploadToWebsite": "Uploaden naar website",
-  "skinReuploadToWebsite": "Opnieuw uploaden naar website",
-  "skinCloudEdit": "Bewerken",
-  "skinCloudSaveToDevice": "Opslaan op apparaat",
-  "skinCloudDelete": "Verwijderen uit cloud",
-  "skinsTabGallery": "Galerij",
-  "skinsTopLabel": "Top 30",
-  "skinsAllLabel": "Alle Skins",
-  "skinUploadToCloud": "Uploaden naar cloud",
   "skinSaveDialog": "Skin opslaan",
   "skinNameHint": "Skin naam",
   "skinDefaultName": "Mijn skin",
-  "skinUpdatedInCloud": "Skin bijgewerkt in cloud",
-  "skinByCreator": "door {name}",
-  "@skinByCreator": {
-    "description": "Creator attribution",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinLikesCount": "{count} likes",
-  "@skinLikesCount": {
-    "description": "Like count",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "sectionRecentActivity": "Recente activiteit",
   "activityNoEvents": "Nog geen recente activiteit.",
   "activitySkinUploaded": "Skin geüpload",
@@ -872,10 +839,6 @@
   "notifPrefFriendRequest": "Vriendschapsverzoek",
   "notifPrefFriendAccepted": "Vriend toegevoegd",
   "notifPrefMessageReceived": "Nieuw bericht",
-  "commentsTitle": "Reacties",
-  "commentsEmpty": "Nog geen reacties. Wees de eerste!",
-  "commentsPlaceholder": "Schrijf een reactie…",
-  "loadMore": "Meer laden",
   "skinLayerInner": "Binnen",
   "@skinLayerInner": {
     "description": "Skin editor layer toggle, inner/base layer"
@@ -892,7 +855,6 @@
   "skinEditorTitle": "Skin-editor",
   "skinToolUndo": "Ongedaan maken",
   "skinSaveToMySkins": "Opslaan bij mijn skins",
-  "skinUpdateInCloud": "Bijwerken in cloud",
   "skinExportPng": "PNG exporteren",
   "skinToolDraw": "Tekenen",
   "skinToolFill": "Vullen",
@@ -975,6 +937,7 @@
   "waitingForConsole": "Wachten op je console…",
   "consoleFound": "Console gevonden",
   "consoleLanHint": "Open Minecraft op je console en zoek onder Vrienden naar een LAN-spel.",
+  "localNetworkBlocked": "MCCompanion kan je lokale netwerk niet bereiken. Zet Lokaal netwerk aan voor MCCompanion in de instellingen van je toestel en zorg dat je op wifi zit.",
   "directAddressNotSupported": "{host} is een IPv6-adres. Proxy/directe modus ondersteunt alleen IPv4. Gebruik het IPv4-adres of de hostnaam.",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -1021,7 +984,6 @@
   "serverListNoMatchHint": "Probeer een andere zoekterm of categorie",
   "serverCardPlay": "Spelen",
   "serverCardVote": "Stemmen",
-  "serverCardViewServer": "Server bekijken",
   "serverCopyIp": "IP kopiëren",
   "serverCopied": "Gekopieerd",
   "serverStatPlayers": "Spelers",

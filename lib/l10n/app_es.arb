@@ -80,10 +80,6 @@
   "@save": {
     "description": "Save button label"
   },
-  "clientDisconnected": "Cliente desconectado: transmisión detenida",
-  "@clientDisconnected": {
-    "description": "Snackbar shown when clients disconnect automatically"
-  },
   "pleaseEnterServer": "⚠️ Por favor, introduce una dirección de servidor",
   "@pleaseEnterServer": {
     "description": "Validation message when server address field is empty"
@@ -263,10 +259,10 @@
   "resetLabel": "Restablecer",
   "navigationSection": "NAVEGACIÓN",
   "navFixed": "Connector y Perfil siempre son fijos",
-  "leftSlot": "Slot 2",
-  "outerSlot": "Slot 1",
-  "rightSlot": "Slot 3",
-  "farSlot": "Slot 4",
+  "leftSlot": "Ranura 2",
+  "outerSlot": "Ranura 1",
+  "rightSlot": "Ranura 3",
+  "farSlot": "Ranura 4",
   "colorPickerApply": "Aplicar",
   "colorPickerHex": "Hex",
   "textColorSection": "COLOR DE TEXTO",
@@ -1083,9 +1079,6 @@
   "rpNoDiscord": "Enlaces de Discord: sin extensión .mcpack y caducan a las pocas horas",
   "rpNoDrive": "Enlaces de Google Drive / Dropbox: no son descargas directas",
   "rpNoEncrypted": "Servidores con paquetes cifrados o protegidos con contraseña",
-  "rpWarnDiscord": "Los enlaces de Discord caducan y dejarán de funcionar. Usa un host permanente en su lugar.",
-  "rpWarnHttps": "La URL debe comenzar con https://",
-  "rpWarnExtension": "La URL debe terminar en .mcpack o .zip",
   "rpToastSaved": "Configuración del paquete de recursos guardada.",
   "rpClearMinecraftTitle": "¿Primera vez con este pack?",
   "rpClearStep1": "Abre Minecraft en tu consola y ve a Configuración → Almacenamiento",
@@ -1097,10 +1090,10 @@
   "rpNoDriveHint": "Sin descarga directa: redirige a una página de vista previa",
   "rpNoEncryptedHint": "MCCompanion no puede combinar contenido de packs cifrados",
   "rpClearWhy": "Minecraft almacena los packs de recursos por su UUID. El pack fusionado conserva el UUID original del servidor, si Minecraft ya tiene en caché el pack del servidor de una sesión anterior (antes de MCCompanion), no descargará la nueva versión fusionada. Borra la caché para que Minecraft cargue el pack fusionado.",
-  "rpUploadTab": "Upload",
-  "rpUploadButton": "Tap to select your pack",
-  "rpUploadHint": ".mcpack or .zip • max 100 MB",
-  "rpUploading": "Uploading...",
+  "rpUploadTab": "Subir",
+  "rpUploadButton": "Toca para seleccionar tu pack",
+  "rpUploadHint": ".mcpack o .zip • máx. 100 MB",
+  "rpUploading": "Subiendo...",
   "rpMergerTitle": "Fusionador de RP",
   "rpMergerPriorityHint": "El paquete superior tiene la mayor prioridad, sus archivos ganan conflictos.",
   "rpMergerTopBadge": "TOP",
@@ -1172,45 +1165,10 @@
     }
   },
   "skinsSavedToMySkins": "Guardado en Mis Skins",
-  "skinsDownloadFailed": "Error al descargar",
-  "skinsDeletedFromCloud": "Eliminado de la nube",
-  "skinsDeleteFailed": "Error al eliminar",
-  "skinsLoginToUpload": "Inicia sesión para subir skins",
-  "skinsUploading": "Subiendo…",
-  "skinUploaded": "¡Skin subido!",
-  "skinUploadFailed": "Error al subir: {error}",
   "skinsEmptyLocalSkins": "Aún no hay skins. Crea o sube un skin para empezar.",
-  "skinUploadToWebsite": "Subir al sitio web",
-  "skinReuploadToWebsite": "Volver a subir al sitio web",
-  "skinCloudEdit": "Editar",
-  "skinCloudSaveToDevice": "Guardar en dispositivo",
-  "skinCloudDelete": "Eliminar de la nube",
-  "skinsTabGallery": "Galería",
-  "skinsTopLabel": "Top 30",
-  "skinsAllLabel": "Todos los Skins",
-  "skinUploadToCloud": "Subir a la nube",
   "skinSaveDialog": "Guardar skin",
   "skinNameHint": "Nombre del skin",
   "skinDefaultName": "Mi skin",
-  "skinUpdatedInCloud": "Skin actualizado en la nube",
-  "skinByCreator": "por {name}",
-  "@skinByCreator": {
-    "description": "Creator attribution",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinLikesCount": "{count} me gusta",
-  "@skinLikesCount": {
-    "description": "Like count",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "sectionRecentActivity": "Actividad reciente",
   "activityNoEvents": "Sin actividad reciente todavía.",
   "activitySkinUploaded": "Skin subida",
@@ -1305,10 +1263,6 @@
   "notifPrefFriendRequest": "Solicitud de amistad",
   "notifPrefFriendAccepted": "Amigo añadido",
   "notifPrefMessageReceived": "Nuevo mensaje",
-  "commentsTitle": "Comentarios",
-  "commentsEmpty": "Aún no hay comentarios. ¡Sé el primero!",
-  "commentsPlaceholder": "Escribe un comentario…",
-  "loadMore": "Cargar más",
   "skinLayerInner": "Interior",
   "@skinLayerInner": {
     "description": "Skin editor layer toggle, inner/base layer"
@@ -1327,7 +1281,6 @@
   "skinEditorTitle": "Editor de skins",
   "skinToolUndo": "Deshacer",
   "skinSaveToMySkins": "Guardar en mis skins",
-  "skinUpdateInCloud": "Actualizar en la nube",
   "skinExportPng": "Exportar PNG",
   "skinToolDraw": "Dibujar",
   "skinToolFill": "Rellenar",
@@ -1407,6 +1360,22 @@
     }
   },
   "directPortBusy": "No se pudo abrir el puerto local. Detén primero la conexión actual.",
+  "rpBrowseTab": "Explorar",
+  "rpCategoryRealism": "Realismo",
+  "rpCategoryFaithful": "Faithful",
+  "rpCategoryPvp": "PvP",
+  "rpCategoryCartoon": "Dibujos animados",
+  "rpCategoryDark": "Oscuro",
+  "rpCategoryMedieval": "Medieval",
+  "rpCategoryNature": "Naturaleza",
+  "rpCategoryThemed": "Temático",
+  "rpCategoryOther": "Otros",
+  "waitingForConsole": "Esperando tu consola…",
+  "consoleFound": "Consola encontrada",
+  "consoleLanHint": "En tu consola, abre Minecraft y busca una partida LAN en Amigos.",
+  "localNetworkBlocked": "MCCompanion no puede acceder a tu red local. Activa Red local para MCCompanion en los ajustes de tu dispositivo y asegúrate de estar conectado a una red Wi-Fi.",
+  "serverListPlayersAny": "Cualquier tamaño",
+  "serverListPlayersHint": "Promedio de jugadores en línea",
   "directAddressNotSupported": "{host} es una dirección IPv6. El modo proxy/directo solo admite IPv4. Usa la dirección IPv4 o el nombre de host.",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -1451,7 +1420,6 @@
   "serverListNoMatchHint": "Prueba otra búsqueda u otra categoría",
   "serverCardPlay": "Jugar",
   "serverCardVote": "Votar",
-  "serverCardViewServer": "Ver servidor",
   "serverCopyIp": "Copiar IP",
   "serverCopied": "Copiado",
   "serverStatPlayers": "Jugadores",

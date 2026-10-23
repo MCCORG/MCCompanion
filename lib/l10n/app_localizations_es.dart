@@ -154,9 +154,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get save => 'Guardar';
 
   @override
-  String get clientDisconnected => 'Cliente desconectado: transmisión detenida';
-
-  @override
   String get pleaseEnterServer =>
       '⚠️ Por favor, introduce una dirección de servidor';
 
@@ -418,16 +415,16 @@ class AppLocalizationsEs extends AppLocalizations {
   String get navFixed => 'Connector y Perfil siempre son fijos';
 
   @override
-  String get leftSlot => 'Slot 2';
+  String get leftSlot => 'Ranura 2';
 
   @override
-  String get outerSlot => 'Slot 1';
+  String get outerSlot => 'Ranura 1';
 
   @override
-  String get rightSlot => 'Slot 3';
+  String get rightSlot => 'Ranura 3';
 
   @override
-  String get farSlot => 'Slot 4';
+  String get farSlot => 'Ranura 4';
 
   @override
   String get colorPickerApply => 'Aplicar';
@@ -1376,16 +1373,6 @@ class AppLocalizationsEs extends AppLocalizations {
       'Los packs de texturas de alta resolución pueden causar lag o bloqueos en las consolas. Si experimentas problemas, cambia a un pack de menor resolución o selecciona un subpack más ligero si el pack lo permite.';
 
   @override
-  String get rpWarnDiscord =>
-      'Los enlaces de Discord caducan y dejarán de funcionar. Usa un host permanente en su lugar.';
-
-  @override
-  String get rpWarnHttps => 'La URL debe comenzar con https://';
-
-  @override
-  String get rpWarnExtension => 'La URL debe terminar en .mcpack o .zip';
-
-  @override
   String get rpToastSaved => 'Configuración del paquete de recursos guardada.';
 
   @override
@@ -1435,19 +1422,46 @@ class AppLocalizationsEs extends AppLocalizations {
       'Minecraft almacena los packs de recursos por su UUID. El pack fusionado conserva el UUID original del servidor, si Minecraft ya tiene en caché el pack del servidor de una sesión anterior (antes de MCCompanion), no descargará la nueva versión fusionada. Borra la caché para que Minecraft cargue el pack fusionado.';
 
   @override
-  String get rpUploadTab => 'Upload';
+  String get rpUploadTab => 'Subir';
 
   @override
-  String get rpBrowseTab => 'Browse';
+  String get rpBrowseTab => 'Explorar';
 
   @override
-  String get rpUploadButton => 'Tap to select your pack';
+  String get rpCategoryRealism => 'Realismo';
 
   @override
-  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+  String get rpCategoryFaithful => 'Faithful';
 
   @override
-  String get rpUploading => 'Uploading...';
+  String get rpCategoryPvp => 'PvP';
+
+  @override
+  String get rpCategoryCartoon => 'Dibujos animados';
+
+  @override
+  String get rpCategoryDark => 'Oscuro';
+
+  @override
+  String get rpCategoryMedieval => 'Medieval';
+
+  @override
+  String get rpCategoryNature => 'Naturaleza';
+
+  @override
+  String get rpCategoryThemed => 'Temático';
+
+  @override
+  String get rpCategoryOther => 'Otros';
+
+  @override
+  String get rpUploadButton => 'Toca para seleccionar tu pack';
+
+  @override
+  String get rpUploadHint => '.mcpack o .zip • máx. 100 MB';
+
+  @override
+  String get rpUploading => 'Subiendo...';
 
   @override
   String get rpMergerTitle => 'Fusionador de RP';
@@ -1597,58 +1611,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get skinsSavedToMySkins => 'Guardado en Mis Skins';
 
   @override
-  String get skinsDownloadFailed => 'Error al descargar';
-
-  @override
-  String get skinsDeletedFromCloud => 'Eliminado de la nube';
-
-  @override
-  String get skinsDeleteFailed => 'Error al eliminar';
-
-  @override
-  String get skinsLoginToUpload => 'Inicia sesión para subir skins';
-
-  @override
-  String get skinsUploading => 'Subiendo…';
-
-  @override
-  String get skinUploaded => '¡Skin subido!';
-
-  @override
-  String skinUploadFailed(String error) {
-    return 'Error al subir: $error';
-  }
-
-  @override
   String get skinsEmptyLocalSkins =>
       'Aún no hay skins. Crea o sube un skin para empezar.';
-
-  @override
-  String get skinUploadToWebsite => 'Subir al sitio web';
-
-  @override
-  String get skinReuploadToWebsite => 'Volver a subir al sitio web';
-
-  @override
-  String get skinCloudEdit => 'Editar';
-
-  @override
-  String get skinCloudSaveToDevice => 'Guardar en dispositivo';
-
-  @override
-  String get skinCloudDelete => 'Eliminar de la nube';
-
-  @override
-  String get skinsTabGallery => 'Galería';
-
-  @override
-  String get skinsTopLabel => 'Top 30';
-
-  @override
-  String get skinsAllLabel => 'Todos los Skins';
-
-  @override
-  String get skinUploadToCloud => 'Subir a la nube';
 
   @override
   String get skinSaveDialog => 'Guardar skin';
@@ -1658,19 +1622,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get skinDefaultName => 'Mi skin';
-
-  @override
-  String get skinUpdatedInCloud => 'Skin actualizado en la nube';
-
-  @override
-  String skinByCreator(String name) {
-    return 'por $name';
-  }
-
-  @override
-  String skinLikesCount(int count) {
-    return '$count me gusta';
-  }
 
   @override
   String get sectionRecentActivity => 'Actividad reciente';
@@ -1785,18 +1736,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get notifPrefMessageReceived => 'Nuevo mensaje';
 
   @override
-  String get commentsTitle => 'Comentarios';
-
-  @override
-  String get commentsEmpty => 'Aún no hay comentarios. ¡Sé el primero!';
-
-  @override
-  String get commentsPlaceholder => 'Escribe un comentario…';
-
-  @override
-  String get loadMore => 'Cargar más';
-
-  @override
   String get skinLayerInner => 'Interior';
 
   @override
@@ -1827,9 +1766,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get skinSaveToMySkins => 'Guardar en mis skins';
-
-  @override
-  String get skinUpdateInCloud => 'Actualizar en la nube';
 
   @override
   String get skinExportPng => 'Exportar PNG';
@@ -2067,14 +2003,18 @@ class AppLocalizationsEs extends AppLocalizations {
       'No se pudo abrir el puerto local. Detén primero la conexión actual.';
 
   @override
-  String get waitingForConsole => 'Waiting for your console…';
+  String get waitingForConsole => 'Esperando tu consola…';
 
   @override
-  String get consoleFound => 'Console found';
+  String get consoleFound => 'Consola encontrada';
 
   @override
   String get consoleLanHint =>
-      'On your console, open Minecraft and look under Friends for a LAN game.';
+      'En tu consola, abre Minecraft y busca una partida LAN en Amigos.';
+
+  @override
+  String get localNetworkBlocked =>
+      'MCCompanion no puede acceder a tu red local. Activa Red local para MCCompanion en los ajustes de tu dispositivo y asegúrate de estar conectado a una red Wi-Fi.';
 
   @override
   String directAddressNotSupported(String host) {
@@ -2149,10 +2089,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get serverListAllCategories => 'Todas';
 
   @override
-  String get serverListPlayersAny => 'Any size';
+  String get serverListPlayersAny => 'Cualquier tamaño';
 
   @override
-  String get serverListPlayersHint => 'Average players online';
+  String get serverListPlayersHint => 'Promedio de jugadores en línea';
 
   @override
   String get serverListLoadFailed => 'No se pudo cargar la lista de servidores';
@@ -2171,9 +2111,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get serverCardVote => 'Votar';
-
-  @override
-  String get serverCardViewServer => 'Ver servidor';
 
   @override
   String get serverCopyIp => 'Copiar IP';

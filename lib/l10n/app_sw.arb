@@ -80,10 +80,6 @@
   "@save": {
     "description": "Save button label"
   },
-  "clientDisconnected": "Mteja ametenganishwa: Utangazaji umesimama",
-  "@clientDisconnected": {
-    "description": "Snackbar shown when clients disconnect automatically"
-  },
   "pleaseEnterServer": "⚠️ Tafadhali weka anwani ya seva",
   "@pleaseEnterServer": {
     "description": "Validation message when server address field is empty"
@@ -263,10 +259,10 @@
   "resetLabel": "Weka upya",
   "navigationSection": "URAMBAZAJI",
   "navFixed": "Connector na Wasifu daima ni thabiti",
-  "leftSlot": "Slot 2",
-  "outerSlot": "Slot 1",
-  "rightSlot": "Slot 3",
-  "farSlot": "Slot 4",
+  "leftSlot": "Nafasi 2",
+  "outerSlot": "Nafasi 1",
+  "rightSlot": "Nafasi 3",
+  "farSlot": "Nafasi 4",
   "colorPickerApply": "Tumia",
   "colorPickerHex": "Hex",
   "textColorSection": "RANGI YA MAANDISHI",
@@ -303,55 +299,55 @@
   "navProfile": "Wasifu",
   "serverRemoved": "{name} imeondolewa",
   "serverAdded": "{name} imeongezwa",
-  "aboutMCCompanionDisclaimer": "MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.",
+  "aboutMCCompanionDisclaimer": "MCCompanion ni programu huru na haina uhusiano, uidhinishaji wala udhamini wa Mojang Studios au Microsoft Corporation.",
   "@aboutMCCompanionDisclaimer": {
     "description": "Disclaimer text in About MCCompanion section"
   },
-  "aboutMCCompanionSection": "About MCCompanion",
+  "aboutMCCompanionSection": "Kuhusu MCCompanion",
   "@aboutMCCompanionSection": {
     "description": "Section header for About MCCompanion in Info sheet"
   },
-  "aboutSectionLabel": "About",
+  "aboutSectionLabel": "Kuhusu",
   "@aboutSectionLabel": {
     "description": "Section label for bio/about in public profile"
   },
-  "acceptRequestButton": "Accept request",
+  "acceptRequestButton": "Kubali ombi",
   "@acceptRequestButton": {
     "description": "Button label to accept a friend request"
   },
-  "addFriend": "Add Friend",
+  "addFriend": "Ongeza Rafiki",
   "@addFriend": {
     "description": "Title/button for adding a friend"
   },
-  "addFriendButton": "Add friend",
+  "addFriendButton": "Ongeza rafiki",
   "@addFriendButton": {
     "description": "Button label to add a friend on public profile"
   },
-  "alreadyFriendsMsg": "You are already friends.",
+  "alreadyFriendsMsg": "Tayari ni marafiki.",
   "@alreadyFriendsMsg": {
     "description": "Error when already friends with user (public profile)"
   },
-  "alreadyHaveAccount": "Already have an account? Sign in",
+  "alreadyHaveAccount": "Tayari una akaunti? Ingia",
   "@alreadyHaveAccount": {
     "description": "Toggle to switch back to sign-in mode"
   },
-  "appearOfflineLabel": "Appear Offline",
+  "appearOfflineLabel": "Onekana Nje ya Mtandao",
   "@appearOfflineLabel": {
     "description": "Label for the appear-offline toggle"
   },
-  "appearOfflineOff": "You appear online to other players",
+  "appearOfflineOff": "Unaonekana mtandaoni kwa wachezaji wengine",
   "@appearOfflineOff": {
     "description": "Subtitle when appear-offline is disabled"
   },
-  "appearOfflineOn": "You appear offline to other players",
+  "appearOfflineOn": "Unaonekana nje ya mtandao kwa wachezaji wengine",
   "@appearOfflineOn": {
     "description": "Subtitle when appear-offline is enabled"
   },
-  "appleSignInFailed": "Apple sign-in failed. Please try again.",
+  "appleSignInFailed": "Kuingia kwa Apple kumeshindwa. Tafadhali jaribu tena.",
   "@appleSignInFailed": {
     "description": "Error when Apple sign-in fails"
   },
-  "bioHint": "Tell others about yourself…",
+  "bioHint": "Waambie wengine kukuhusu…",
   "@bioHint": {
     "description": "Hint text for bio field"
   },
@@ -359,7 +355,7 @@
   "@bioLabel": {
     "description": "Label for bio field"
   },
-  "cannotSendRequestMsg": "Cannot send a request to this user.",
+  "cannotSendRequestMsg": "Huwezi kumtumia mtumiaji huyu ombi.",
   "@cannotSendRequestMsg": {
     "description": "Error when friend request is blocked (public profile)"
   },
@@ -367,31 +363,31 @@
   "@chooseUsernameSubtitle": {
     "description": "Subtitle shown when profile is not yet set up"
   },
-  "continueWithGoogle": "Continue with Google",
+  "continueWithGoogle": "Endelea na Google",
   "@continueWithGoogle": {
     "description": "Button label for Google sign-in"
   },
-  "couldNotDeleteAccount": "Could not delete account. Please try again.",
+  "couldNotDeleteAccount": "Imeshindwa kufuta akaunti. Tafadhali jaribu tena.",
   "@couldNotDeleteAccount": {
     "description": "Error when account deletion fails"
   },
-  "couldNotSendResetEmail": "Could not send reset email. Please try again.",
+  "couldNotSendResetEmail": "Imeshindwa kutuma barua pepe ya kuweka upya. Tafadhali jaribu tena.",
   "@couldNotSendResetEmail": {
     "description": "Generic error when sending reset email fails"
   },
-  "couldNotUpdateVisibility": "Could not update visibility settings",
+  "couldNotUpdateVisibility": "Imeshindwa kusasisha mipangilio ya mwonekano",
   "@couldNotUpdateVisibility": {
     "description": "Error when toggling appear-offline fails"
   },
-  "createAccount": "Create Account",
+  "createAccount": "Fungua Akaunti",
   "@createAccount": {
     "description": "Button/title for creating a new account"
   },
-  "createProfile": "Create Profile",
+  "createProfile": "Unda Wasifu",
   "@createProfile": {
     "description": "Button to navigate to profile creation/registration"
   },
-  "creditGeyserSubtitle": "Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.",
+  "creditGeyserSubtitle": "Uonyeshaji wa skin za Bedrock. Skin za wachezaji wa Bedrock hupatikana kupitia seva ya skin ya GeyserMC.",
   "@creditGeyserSubtitle": {
     "description": "Subtitle for GeyserMC credit tile"
   },
@@ -399,7 +395,7 @@
   "@creditGeyserTitle": {
     "description": "Title for GeyserMC credit tile"
   },
-  "creditMojangSubtitle": "Java player skins, UUIDs, and profile data via the official Mojang API.",
+  "creditMojangSubtitle": "Skin za wachezaji wa Java, UUID na data za wasifu kupitia API rasmi ya Mojang.",
   "@creditMojangSubtitle": {
     "description": "Subtitle for Mojang credit tile"
   },
@@ -407,7 +403,7 @@
   "@creditMojangTitle": {
     "description": "Title for Mojang credit tile"
   },
-  "creditXboxSubtitle": "Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.",
+  "creditXboxSubtitle": "Kuunganisha akaunti za Bedrock kupitia Xbox Live. Gamertag na XUID hupatikana kupitia mchakato wa uthibitishaji wa Microsoft.",
   "@creditXboxSubtitle": {
     "description": "Subtitle for Xbox credit tile"
   },
@@ -415,27 +411,27 @@
   "@creditXboxTitle": {
     "description": "Title for Xbox credit tile"
   },
-  "dataSourcesSection": "Data Sources & Credits",
+  "dataSourcesSection": "Vyanzo vya Data na Shukrani",
   "@dataSourcesSection": {
     "description": "Section header for data sources in Info sheet"
   },
-  "deleteAccountBody": "This will permanently delete your account and all data. This action cannot be undone.",
+  "deleteAccountBody": "Hii itafuta akaunti yako na data yote kabisa. Kitendo hiki hakiwezi kutenduliwa.",
   "@deleteAccountBody": {
     "description": "Body text for delete account confirmation dialog"
   },
-  "deleteAccountTitle": "Delete Account",
+  "deleteAccountTitle": "Futa Akaunti",
   "@deleteAccountTitle": {
     "description": "Title for delete account dialog/button"
   },
-  "deletePermanently": "Delete Permanently",
+  "deletePermanently": "Futa Kabisa",
   "@deletePermanently": {
     "description": "Confirm button for permanent deletion"
   },
-  "displayNameLabel": "Display Name",
+  "displayNameLabel": "Jina la Kuonyesha",
   "@displayNameLabel": {
     "description": "Label for display name field"
   },
-  "displayNameRowLabel": "Display name",
+  "displayNameRowLabel": "Jina la Kuonyesha",
   "@displayNameRowLabel": {
     "description": "Row label for display name in public profile"
   },
@@ -443,101 +439,101 @@
   "@edit": {
     "description": "Edit button label"
   },
-  "editServer": "Edit Server",
+  "editServer": "Hariri Seva",
   "@editServer": {
     "description": "Title for edit server form in manage servers"
   },
-  "editionLabel": "Edition",
+  "editionLabel": "Toleo",
   "@editionLabel": {
     "description": "Label for the edition toggle in manage servers form"
   },
-  "emailAddressHint": "Email address",
+  "emailAddressHint": "Anwani ya barua pepe",
   "@emailAddressHint": {
     "description": "Hint text for email address field"
   },
-  "emailAlreadyInUse": "This email address is already in use",
+  "emailAlreadyInUse": "Anwani hii ya barua pepe tayari inatumika",
   "@emailAlreadyInUse": {
     "description": "Error when email is already registered"
   },
-  "emailDifferentMethod": "This email is linked to a different sign-in method",
+  "emailDifferentMethod": "Barua pepe hii imeunganishwa na njia tofauti ya kuingia",
   "@emailDifferentMethod": {
     "description": "Error when email already uses a different auth method"
   },
-  "enterEmailAndPassword": "Please enter your email and password",
+  "enterEmailAndPassword": "Tafadhali weka barua pepe na nenosiri lako",
   "@enterEmailAndPassword": {
     "description": "Validation when email or password is empty on sign-in"
   },
-  "findUser": "Find user",
+  "findUser": "Tafuta mtumiaji",
   "@findUser": {
     "description": "Tooltip for the search/find user button"
   },
-  "forgotPassword": "Forgot password?",
+  "forgotPassword": "Umesahau nenosiri?",
   "@forgotPassword": {
     "description": "Link to trigger password reset flow"
   },
-  "friendRemoved": "{name} has been removed from your friends",
+  "friendRemoved": "{name} ameondolewa kwenye orodha ya marafiki",
   "@friendRemoved": {
     "description": "Toast shown after removing a friend",
     "placeholders": {
       "name": {}
     }
   },
-  "friendRequestAccepted": "You are now friends with {name}",
+  "friendRequestAccepted": "Sasa wewe ni rafiki wa {name}",
   "@friendRequestAccepted": {
     "description": "Toast when a friend request is accepted",
     "placeholders": {
       "name": {}
     }
   },
-  "friendRequestSent": "Friend request sent",
+  "friendRequestSent": "Ombi la urafiki limetumwa",
   "@friendRequestSent": {
     "description": "Toast shown after friend request is sent from public profile"
   },
-  "googleSignInFailed": "Google sign-in failed. Please try again.",
+  "googleSignInFailed": "Kuingia kwa Google kumeshindwa. Tafadhali jaribu tena.",
   "@googleSignInFailed": {
     "description": "Error when Google sign-in fails"
   },
-  "incorrectEmailOrPassword": "Incorrect email or password",
+  "incorrectEmailOrPassword": "Barua pepe au nenosiri si sahihi",
   "@incorrectEmailOrPassword": {
     "description": "Error for wrong credentials"
   },
-  "infoAndLegal": "Info & Legal",
+  "infoAndLegal": "Taarifa na Sheria",
   "@infoAndLegal": {
     "description": "Title of the Info & Legal sheet"
   },
-  "invalidEmailError": "The email address is not valid",
+  "invalidEmailError": "Anwani ya barua pepe si sahihi",
   "@invalidEmailError": {
     "description": "Error for invalid email format"
   },
-  "ipAddressFieldLabel": "IP Address",
+  "ipAddressFieldLabel": "Anwani ya IP",
   "@ipAddressFieldLabel": {
     "description": "IP Address field label in edit server form"
   },
-  "ipRequiredError": "IP address is required",
+  "ipRequiredError": "Anwani ya IP inahitajika",
   "@ipRequiredError": {
     "description": "Validation error when IP address is empty"
   },
-  "lastSeenLabel": "Last seen",
+  "lastSeenLabel": "Alionekana mara ya mwisho",
   "@lastSeenLabel": {
     "description": "Row label for last seen date in public profile"
   },
-  "legalSection": "Legal",
+  "legalSection": "Sheria",
   "@legalSection": {
     "description": "Section header in Info sheet"
   },
-  "linkAccountsHint": "Link your Minecraft accounts to show your skins and stats.",
+  "linkAccountsHint": "Unganisha akaunti zako za Minecraft ili kuonyesha skin na takwimu zako.",
   "@linkAccountsHint": {
     "description": "Hint when no accounts are linked"
   },
-  "linkJava": "Link Java",
+  "linkJava": "Unganisha Java",
   "@linkJava": {
     "description": "Button to link a Java account"
   },
-  "linkXbox": "Link Xbox",
+  "linkXbox": "Unganisha Xbox",
   "@linkXbox": {
     "description": "Button to link an Xbox/Bedrock account"
   },
-  "minecraftTrademark": "\"Minecraft\" is a trademark of Microsoft Corporation.",
+  "minecraftTrademark": "\"Minecraft\" ni alama ya biashara ya Microsoft Corporation.",
   "@minecraftTrademark": {
     "description": "Minecraft trademark notice"
   },
@@ -545,7 +541,7 @@
   "@nameLabel": {
     "description": "Generic Name field label"
   },
-  "nameValidationError": "Name must be 1–50 characters",
+  "nameValidationError": "Jina lazima liwe na herufi 1–50",
   "@nameValidationError": {
     "description": "Validation error when server name is invalid"
   },
@@ -553,37 +549,37 @@
   "@nldServerLabelShort": {
     "description": "Section label above relay selector in More sheet"
   },
-  "noAccountYet": "Don't have an account? Create one",
+  "noAccountYet": "Huna akaunti? Fungua moja",
   "@noAccountYet": {
     "description": "Toggle to switch to register mode"
   },
-  "noFriendsSub": "Add friends to see them here.",
+  "noFriendsSub": "Ongeza marafiki ili waonekane hapa.",
   "@noFriendsSub": {
     "description": "Empty state subtitle on friends tab"
   },
-  "noFriendsYet": "No friends yet",
+  "noFriendsYet": "Bado hakuna marafiki",
   "@noFriendsYet": {
     "description": "Empty state title on friends tab"
   },
-  "noPendingRequests": "No pending requests",
+  "noPendingRequests": "Hakuna maombi yanayosubiri",
   "@noPendingRequests": {
     "description": "Empty state title on requests tab"
   },
-  "nowFriendsWith": "Now friends with @{username}",
+  "nowFriendsWith": "Sasa ni rafiki wa @{username}",
   "@nowFriendsWith": {
     "description": "Toast when accepted a friend request from public profile",
     "placeholders": {
       "username": {}
     }
   },
-  "offlineFriendsLabel": "{count} offline",
+  "offlineFriendsLabel": "{count} nje ya mtandao",
   "@offlineFriendsLabel": {
     "description": "Section label for offline friends",
     "placeholders": {
       "count": {}
     }
   },
-  "onlineFriendsLabel": "{count} online",
+  "onlineFriendsLabel": "{count} mtandaoni",
   "@onlineFriendsLabel": {
     "description": "Section label for online friends",
     "placeholders": {
@@ -594,42 +590,42 @@
   "@orDivider": {
     "description": "Divider text between email and social sign-in"
   },
-  "passwordHint": "Password",
+  "passwordHint": "Nenosiri",
   "@passwordHint": {
     "description": "Hint text for password field"
   },
-  "paywallContinue": "Continue",
-  "paywallManaged": "Managed by Apple/Google. Cancel anytime.",
-  "paywallMonthly": "Monthly",
-  "paywallNoActivePurchases": "No active purchases found.",
-  "paywallNoPkgs": "No packages available.",
-  "paywallPopular": "Popular",
-  "paywallPurchaseFailed": "Purchase failed. Please try again.",
-  "paywallPurchaseSuccess": "Purchase successful!",
-  "paywallPurchasesRestored": "Purchases restored!",
-  "paywallRestore": "Restore",
-  "paywallRestoreFailed": "Restore failed. Please try again.",
-  "paywallSavePercent": "Save ~17%",
-  "paywallSlotLabel": "{slots} server slots",
+  "paywallContinue": "Endelea",
+  "paywallManaged": "Inasimamiwa na Apple/Google. Ghairi wakati wowote.",
+  "paywallMonthly": "Kila mwezi",
+  "paywallNoActivePurchases": "Hakuna ununuzi unaoendelea uliopatikana.",
+  "paywallNoPkgs": "Hakuna vifurushi vinavyopatikana.",
+  "paywallPopular": "Maarufu",
+  "paywallPurchaseFailed": "Ununuzi umeshindwa. Tafadhali jaribu tena.",
+  "paywallPurchaseSuccess": "Ununuzi umefanikiwa!",
+  "paywallPurchasesRestored": "Ununuzi umerejeshwa!",
+  "paywallRestore": "Rejesha",
+  "paywallRestoreFailed": "Kurejesha kumeshindwa. Tafadhali jaribu tena.",
+  "paywallSavePercent": "Okoa ~17%",
+  "paywallSlotLabel": "Nafasi {slots} za seva",
   "@paywallSlotLabel": {
     "placeholders": {
       "slots": {}
     }
   },
-  "paywallSubtitle": "Track more servers and get notified\nwhen they go online or offline.",
-  "paywallYearly": "Yearly",
-  "platformFieldLabel": "Platform",
+  "paywallSubtitle": "Fuatilia seva zaidi na upate arifa\nzinapokuwa mtandaoni au nje ya mtandao.",
+  "paywallYearly": "Kila mwaka",
+  "platformFieldLabel": "Jukwaa",
   "@platformFieldLabel": {
     "description": "Platform field label in edit server form"
   },
-  "playerLookupCopied": "{value} copied",
+  "playerLookupCopied": "{value} imenakiliwa",
   "@playerLookupCopied": {
     "description": "Toast shown after copying a value in player lookup",
     "placeholders": {
       "value": {}
     }
   },
-  "playerLookupHint": "Enter a username…",
+  "playerLookupHint": "Weka jina la mtumiaji…",
   "@playerLookupHint": {
     "description": "Hint text for player lookup search field"
   },
@@ -637,15 +633,15 @@
   "@playerLookupLabelTier": {
     "description": "Label for tier field in player lookup"
   },
-  "playerLookupLabelUsername": "Username",
+  "playerLookupLabelUsername": "Jina la mtumiaji",
   "@playerLookupLabelUsername": {
     "description": "Label for username field in player lookup"
   },
-  "playerLookupLinked": "Linked accounts found",
+  "playerLookupLinked": "Akaunti zilizounganishwa zimepatikana",
   "@playerLookupLinked": {
     "description": "Badge shown when linked accounts are found"
   },
-  "playerLookupSubtitle": "Search for a Java or Bedrock player by username",
+  "playerLookupSubtitle": "Tafuta mchezaji wa Java au Bedrock kwa jina la mtumiaji",
   "@playerLookupSubtitle": {
     "description": "Subtitle/hint on player lookup screen"
   },
@@ -653,7 +649,7 @@
   "@portFieldLabel": {
     "description": "Port field label in edit server form"
   },
-  "portRangeError": "Port must be between 1 and 65535",
+  "portRangeError": "Mlango lazima uwe kati ya 1 na 65535",
   "@portRangeError": {
     "description": "Validation error when port is out of range"
   },
@@ -661,19 +657,19 @@
   "@privacyPolicy": {
     "description": "Privacy Policy tile title"
   },
-  "privacyPolicySubtitle": "How we collect and protect your data",
+  "privacyPolicySubtitle": "Jinsi tunavyokusanya na kulinda data yako",
   "@privacyPolicySubtitle": {
     "description": "Privacy Policy tile subtitle"
   },
-  "profileNotSetUp": "Profile not set up",
+  "profileNotSetUp": "Wasifu haujawekwa",
   "@profileNotSetUp": {
     "description": "Title when user is authenticated but has no profile"
   },
-  "profileSectionLabel": "Profile",
+  "profileSectionLabel": "Wasifu",
   "@profileSectionLabel": {
     "description": "Section label in public profile for profile info card"
   },
-  "profileUpdated": "Profile updated",
+  "profileUpdated": "Wasifu umesasishwa",
   "@profileUpdated": {
     "description": "Toast shown after profile is saved"
   },
@@ -681,71 +677,71 @@
   "@relay": {
     "description": "Label for the Relay nav item and sheet title"
   },
-  "remove": "Remove",
+  "remove": "Ondoa",
   "@remove": {
     "description": "Remove button label"
   },
-  "removeFriendButton": "Remove friend",
+  "removeFriendButton": "Ondoa rafiki",
   "@removeFriendButton": {
     "description": "Button label to remove a friend on public profile"
   },
-  "removeFriendConfirm": "Remove {name} from your friends?",
+  "removeFriendConfirm": "Umwondoe {name} kwenye orodha ya marafiki?",
   "@removeFriendConfirm": {
     "description": "Confirmation text for removing a friend",
     "placeholders": {
       "name": {}
     }
   },
-  "removeFriendDialogBody": "Remove @{username} as a friend?",
+  "removeFriendDialogBody": "Umwondoe @{username} kama rafiki?",
   "@removeFriendDialogBody": {
     "description": "Dialog body when removing a friend from public profile",
     "placeholders": {
       "username": {}
     }
   },
-  "removeFriendDialogTitle": "Remove friend",
+  "removeFriendDialogTitle": "Ondoa Rafiki",
   "@removeFriendDialogTitle": {
     "description": "Dialog title when removing a friend from public profile"
   },
-  "removeFriendTitle": "Remove Friend",
+  "removeFriendTitle": "Ondoa Rafiki",
   "@removeFriendTitle": {
     "description": "Dialog title for removing a friend"
   },
-  "removeJavaConfirm": "Remove {name} from your linked accounts?",
+  "removeJavaConfirm": "Umwondoe {name} kwenye akaunti ulizounganisha?",
   "@removeJavaConfirm": {
     "description": "Confirmation text for unlinking a Java account",
     "placeholders": {
       "name": {}
     }
   },
-  "removeLabelConfirm": "Remove {name} from your linked accounts?",
+  "removeLabelConfirm": "Umwondoe {name} kwenye akaunti ulizounganisha?",
   "@removeLabelConfirm": {
     "description": "Confirmation text for unlinking a Bedrock/Xbox account",
     "placeholders": {
       "name": {}
     }
   },
-  "reportAdditionalDetails": "Additional details (optional)…",
+  "reportAdditionalDetails": "Maelezo ya ziada (si lazima)…",
   "@reportAdditionalDetails": {
     "description": "Hint text for additional details field in report sheet"
   },
-  "reportDisclaimer": "Reports are reviewed by our team. False reports may result in action against your account.",
+  "reportDisclaimer": "Ripoti hukaguliwa na timu yetu. Ripoti za uongo zinaweza kusababisha hatua dhidi ya akaunti yako.",
   "@reportDisclaimer": {
     "description": "Disclaimer text shown in the report sheet"
   },
-  "reportFailed": "Failed to submit report. Please try again.",
+  "reportFailed": "Imeshindwa kutuma ripoti. Tafadhali jaribu tena.",
   "@reportFailed": {
     "description": "Toast shown when report submission fails"
   },
-  "reportReasonHarassment": "Harassment",
+  "reportReasonHarassment": "Unyanyasaji",
   "@reportReasonHarassment": {
     "description": "Report reason: harassment"
   },
-  "reportReasonInappropriate": "Inappropriate content",
+  "reportReasonInappropriate": "Maudhui yasiyofaa",
   "@reportReasonInappropriate": {
     "description": "Report reason: inappropriate content"
   },
-  "reportReasonOther": "Other",
+  "reportReasonOther": "Nyingine",
   "@reportReasonOther": {
     "description": "Report reason: other"
   },
@@ -753,41 +749,41 @@
   "@reportReasonSpam": {
     "description": "Report reason: spam"
   },
-  "reportSubmit": "Submit report",
+  "reportSubmit": "Tuma ripoti",
   "@reportSubmit": {
     "description": "Button label to submit a report"
   },
-  "reportSuccess": "Report submitted. Thank you.",
+  "reportSuccess": "Ripoti imetumwa. Asante.",
   "@reportSuccess": {
     "description": "Toast shown after a successful report submission"
   },
-  "reportUser": "Report user",
+  "reportUser": "Ripoti mtumiaji",
   "@reportUser": {
     "description": "Tooltip/button to report a user"
   },
-  "reportUserWithName": "Report {name}",
+  "reportUserWithName": "Ripoti {name}",
   "@reportUserWithName": {
     "description": "Title when reporting a user by name",
     "placeholders": {
       "name": {}
     }
   },
-  "requestAlreadyPendingMsg": "There is already a pending request.",
+  "requestAlreadyPendingMsg": "Tayari kuna ombi linalosubiri.",
   "@requestAlreadyPendingMsg": {
     "description": "Error when friend request is already pending (public profile)"
   },
-  "requestDeclined": "Request from {name} declined",
+  "requestDeclined": "Ombi kutoka kwa {name} limekataliwa",
   "@requestDeclined": {
     "description": "Toast when a friend request is declined",
     "placeholders": {
       "name": {}
     }
   },
-  "requestSentButton": "Request sent",
+  "requestSentButton": "Ombi limetumwa",
   "@requestSentButton": {
     "description": "Disabled button label when request already sent"
   },
-  "requestsAppearHere": "New friend requests will appear here.",
+  "requestsAppearHere": "Maombi mapya ya urafiki yataonekana hapa.",
   "@requestsAppearHere": {
     "description": "Empty state subtitle on requests tab"
   },
@@ -798,15 +794,15 @@
       "email": {}
     }
   },
-  "resetPasswordBody": "Enter your email address and we will send you a link to reset your password.",
+  "resetPasswordBody": "Weka anwani yako ya barua pepe nasi tutakutumia kiungo cha kuweka upya nenosiri.",
   "@resetPasswordBody": {
     "description": "Body text for reset password dialog"
   },
-  "resetPasswordTitle": "Reset Password",
+  "resetPasswordTitle": "Weka Upya Nenosiri",
   "@resetPasswordTitle": {
     "description": "Title for reset password dialog"
   },
-  "selectBedrockAccount": "Select Bedrock account",
+  "selectBedrockAccount": "Chagua akaunti ya Bedrock",
   "@selectBedrockAccount": {
     "description": "Title of the Bedrock account picker bottom sheet"
   },
@@ -814,7 +810,7 @@
   "@send": {
     "description": "Send button label"
   },
-  "sendLink": "Send link",
+  "sendLink": "Tuma kiungo",
   "@sendLink": {
     "description": "Button to send the password reset link"
   },
@@ -822,31 +818,31 @@
   "@serverAddressExampleHint": {
     "description": "Example hint text for server address field"
   },
-  "serverDescriptionExampleHint": "Survival server with friends",
+  "serverDescriptionExampleHint": "Seva ya kuishi na marafiki",
   "@serverDescriptionExampleHint": {
     "description": "Example hint text for server description field"
   },
-  "serverNameExampleHint": "My Awesome Server",
+  "serverNameExampleHint": "Seva Yangu Bora",
   "@serverNameExampleHint": {
     "description": "Example hint text for server name field"
   },
-  "serversSection": "Servers",
+  "serversSection": "Seva",
   "@serversSection": {
     "description": "Section label above servers panel in connection panel"
   },
-  "signInSubtitle": "Sign in to access your profile, friends, and chats.",
+  "signInSubtitle": "Ingia ili kufikia wasifu wako, marafiki na mazungumzo.",
   "@signInSubtitle": {
     "description": "Subtitle on the sign-in screen"
   },
-  "signOut": "Sign Out",
+  "signOut": "Toka",
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "Create",
+  "skinsCreate": "Unda",
   "@skinsCreate": {
     "description": "Button to create/open skin editor"
   },
-  "skinsDownload": "Download",
+  "skinsDownload": "Pakua",
   "@skinsDownload": {
     "description": "Download button in skin detail sheet"
   },
@@ -854,19 +850,19 @@
   "@skinsEdit": {
     "description": "Edit button in skin detail sheet"
   },
-  "skinsInvalidFile": "Invalid image file",
+  "skinsInvalidFile": "Faili ya picha si sahihi",
   "@skinsInvalidFile": {
     "description": "Error when the selected file is not a valid image"
   },
-  "skinsMustBe64": "Skin must be 64×64 pixels",
+  "skinsMustBe64": "Skin lazima iwe pikseli 64×64",
   "@skinsMustBe64": {
     "description": "Error when uploaded skin is wrong size"
   },
-  "skinsUpload": "Upload",
+  "skinsUpload": "Pakia",
   "@skinsUpload": {
     "description": "Button to upload a skin"
   },
-  "somethingWentWrong": "Something went wrong. Please try again.",
+  "somethingWentWrong": "Hitilafu imetokea. Tafadhali jaribu tena.",
   "@somethingWentWrong": {
     "description": "Generic error message"
   },
@@ -874,7 +870,7 @@
   "@termsOfService": {
     "description": "Terms of Service tile title"
   },
-  "termsOfServiceSubtitle": "Rules and conditions of use",
+  "termsOfServiceSubtitle": "Kanuni na masharti ya matumizi",
   "@termsOfServiceSubtitle": {
     "description": "Terms of Service tile subtitle"
   },
@@ -882,43 +878,43 @@
   "@trackerLimitReached": {
     "description": "Banner shown when tracker slot limit is reached"
   },
-  "tryAgain": "Try again",
+  "tryAgain": "Jaribu tena",
   "@tryAgain": {
     "description": "Generic try again button label"
   },
-  "unlink": "Unlink",
+  "unlink": "Tenganisha",
   "@unlink": {
     "description": "Unlink button label"
   },
-  "unlinkJavaTitle": "Unlink Java Account",
+  "unlinkJavaTitle": "Tenganisha Akaunti ya Java",
   "@unlinkJavaTitle": {
     "description": "Dialog title for unlinking a Java account"
   },
-  "unlinkXboxTitle": "Unlink Xbox Account",
+  "unlinkXboxTitle": "Tenganisha Akaunti ya Xbox",
   "@unlinkXboxTitle": {
     "description": "Dialog title for unlinking an Xbox account"
   },
-  "upgradeButton": "Upgrade",
+  "upgradeButton": "Boresha",
   "@upgradeButton": {
     "description": "Button to open paywall/upgrade screen"
   },
-  "userNotFound": "User not found",
+  "userNotFound": "Mtumiaji hajapatikana",
   "@userNotFound": {
     "description": "Text shown when a user profile cannot be found"
   },
-  "userNotFoundMsg2": "User not found.",
+  "userNotFoundMsg2": "Mtumiaji hajapatikana.",
   "@userNotFoundMsg2": {
     "description": "Error when user not found sending friend request from public profile"
   },
-  "usernameRowLabel": "Username",
+  "usernameRowLabel": "Jina la mtumiaji",
   "@usernameRowLabel": {
     "description": "Row label for username in public profile"
   },
-  "weakPassword": "Password is too weak. Please choose a stronger one.",
+  "weakPassword": "Nenosiri ni dhaifu sana. Tafadhali chagua lenye nguvu zaidi.",
   "@weakPassword": {
     "description": "Error for weak password"
   },
-  "xboxAccountLinked": "Xbox account linked!",
+  "xboxAccountLinked": "Akaunti ya Xbox imeunganishwa!",
   "@xboxAccountLinked": {
     "description": "Success text when Xbox account is linked"
   },
@@ -926,74 +922,74 @@
   "@xboxBedrockLabel": {
     "description": "Section label for Xbox/Bedrock account in public profile"
   },
-  "xboxCodeCopied": "Code copied to clipboard",
+  "xboxCodeCopied": "Msimbo umenakiliwa kwenye ubao wa kunakili",
   "@xboxCodeCopied": {
     "description": "Snackbar shown after code is copied"
   },
-  "xboxCodeExpired": "The code expired. Please try again.",
+  "xboxCodeExpired": "Msimbo umeisha muda. Tafadhali jaribu tena.",
   "@xboxCodeExpired": {
     "description": "Error when Xbox device code expires"
   },
-  "xboxCouldNotStart": "Could not start Xbox login. Please try again.",
+  "xboxCouldNotStart": "Imeshindwa kuanzisha kuingia kwa Xbox. Tafadhali jaribu tena.",
   "@xboxCouldNotStart": {
     "description": "Error when Xbox login cannot be started"
   },
-  "xboxGoToLink": "Go to the link below and enter the code to connect your Xbox account.",
+  "xboxGoToLink": "Nenda kwenye kiungo kilicho hapa chini na uweke msimbo ili kuunganisha akaunti yako ya Xbox.",
   "@xboxGoToLink": {
     "description": "Instruction on Xbox link waiting screen"
   },
-  "xboxLinkTitle": "Link Xbox Account",
+  "xboxLinkTitle": "Unganisha Akaunti ya Xbox",
   "@xboxLinkTitle": {
     "description": "AppBar title for Xbox link screen"
   },
-  "xboxOpenLink": "Open microsoft.com/link",
+  "xboxOpenLink": "Fungua microsoft.com/link",
   "@xboxOpenLink": {
     "description": "Button label to open Microsoft device auth link"
   },
-  "xboxSignInWithMicrosoft": "Sign in with Microsoft",
+  "xboxSignInWithMicrosoft": "Ingia kwa Microsoft",
   "@xboxSignInWithMicrosoft": {
     "description": "Heading on Xbox link waiting screen"
   },
-  "xboxSomethingWrong": "Something went wrong. Please try again.",
+  "xboxSomethingWrong": "Hitilafu imetokea. Tafadhali jaribu tena.",
   "@xboxSomethingWrong": {
     "description": "Generic error on Xbox link screen"
   },
-  "xboxStartingLogin": "Starting Xbox login…",
+  "xboxStartingLogin": "Inaanzisha kuingia kwa Xbox…",
   "@xboxStartingLogin": {
     "description": "Loading text when starting Xbox login"
   },
-  "xboxTapToCopy": "Tap the code to copy it",
+  "xboxTapToCopy": "Gusa msimbo ili kuunakili",
   "@xboxTapToCopy": {
     "description": "Hint below the code on Xbox link screen"
   },
-  "xboxWaitingForLogin": "Waiting for login…",
+  "xboxWaitingForLogin": "Inasubiri kuingia…",
   "@xboxWaitingForLogin": {
     "description": "Status text while polling for Xbox login"
   },
-  "xboxYourCode": "Your code",
+  "xboxYourCode": "Msimbo wako",
   "@xboxYourCode": {
     "description": "Label above the Microsoft device code"
   },
-  "yourNameHint": "Your name",
+  "yourNameHint": "Jina lako",
   "@yourNameHint": {
     "description": "Hint text for display name field"
   },
-  "javaLinkTitle": "Link Java Edition",
-  "javaStartingLogin": "Starting Microsoft login…",
-  "javaSignInWithMicrosoft": "Sign in with Microsoft",
-  "javaGoToLink": "Go to the link below and enter the code to connect your Minecraft Java Edition account.",
-  "javaYourCode": "Your code",
-  "javaTapToCopy": "Tap the code to copy it",
-  "javaOpenLink": "Open microsoft.com/link",
-  "javaWaitingForLogin": "Waiting for login…",
-  "javaAccountLinked": "Java Edition linked!",
-  "javaNoJavaTitle": "No Java Edition found",
-  "javaNoJavaBody": "The Microsoft account you signed in with does not own Minecraft Java Edition.",
-  "javaTryDifferentAccount": "Try a different account",
-  "javaCouldNotStart": "Could not start Microsoft login. Please try again.",
-  "javaCodeExpired": "The code expired. Please try again.",
-  "javaSomethingWrong": "Something went wrong. Please try again.",
-  "javaCodeCopied": "Code copied to clipboard",
+  "javaLinkTitle": "Unganisha Java Edition",
+  "javaStartingLogin": "Inaanzisha kuingia kwa Microsoft…",
+  "javaSignInWithMicrosoft": "Ingia kwa Microsoft",
+  "javaGoToLink": "Nenda kwenye kiungo kilicho hapa chini na uweke msimbo ili kuunganisha akaunti yako ya Minecraft Java Edition.",
+  "javaYourCode": "Msimbo wako",
+  "javaTapToCopy": "Gusa msimbo ili kuunakili",
+  "javaOpenLink": "Fungua microsoft.com/link",
+  "javaWaitingForLogin": "Inasubiri kuingia…",
+  "javaAccountLinked": "Java Edition imeunganishwa!",
+  "javaNoJavaTitle": "Java Edition haijapatikana",
+  "javaNoJavaBody": "Akaunti ya Microsoft uliyoingia nayo haimiliki Minecraft Java Edition.",
+  "javaTryDifferentAccount": "Jaribu akaunti nyingine",
+  "javaCouldNotStart": "Imeshindwa kuanzisha kuingia kwa Microsoft. Tafadhali jaribu tena.",
+  "javaCodeExpired": "Msimbo umeisha muda. Tafadhali jaribu tena.",
+  "javaSomethingWrong": "Hitilafu imetokea. Tafadhali jaribu tena.",
+  "javaCodeCopied": "Msimbo umenakiliwa kwenye ubao wa kunakili",
   "featureLabelConnector": "Kiunganishi",
   "featureLabelSkins": "Ngozi",
   "featureLabelPartners": "Orodha ya seva",
@@ -1079,9 +1075,6 @@
   "rpNoDiscord": "Viungo vya Discord: hakuna ugani wa .mcpack na vinaisha baada ya masaa machache",
   "rpNoDrive": "Viungo vya kushiriki vya Google Drive / Dropbox, si upakuaji wa moja kwa moja",
   "rpNoEncrypted": "Seva zenye pakiti zilizosimbwa au zilindwa na nywila",
-  "rpWarnDiscord": "Viungo vya Discord vinaisha na vitaacha kufanya kazi. Tumia seva ya kudumu badala yake.",
-  "rpWarnHttps": "URL lazima ianze na https://",
-  "rpWarnExtension": "URL lazima iishie .mcpack au .zip",
   "rpToastSaved": "Mipangilio ya kifurushi cha rasilimali imehifadhiwa.",
   "rpClearMinecraftTitle": "Mara ya kwanza na pakiti hii?",
   "rpClearStep1": "Fungua Minecraft kwenye konsoli yako na nenda Mipangilio → Hifadhi",
@@ -1093,10 +1086,10 @@
   "rpNoDriveHint": "Hakuna upakuaji wa moja kwa moja: inaelekeza kwenye ukurasa wa hakiki",
   "rpNoEncryptedHint": "MCCompanion haiwezi kuchanganya maudhui ya pakiti zilizosimbwa",
   "rpClearWhy": "Minecraft huhifadhi pakiti za rasilimali kwa UUID zao. Pakiti iliyounganishwa inabaki na UUID ya asili ya seva, ikiwa Minecraft tayari imehifadhi pakiti ya seva kutoka kipindi kilichopita (kabla ya MCCompanion kuwezeshwa), haitapakua toleo jipya lililounganishwa. Futa akiba ili Minecraft ipakue pakiti mpya iliyounganishwa.",
-  "rpUploadTab": "Upload",
-  "rpUploadButton": "Tap to select your pack",
-  "rpUploadHint": ".mcpack or .zip • max 100 MB",
-  "rpUploading": "Uploading...",
+  "rpUploadTab": "Pakia",
+  "rpUploadButton": "Gusa ili kuchagua kifurushi chako",
+  "rpUploadHint": ".mcpack au .zip • juu ya MB 100",
+  "rpUploading": "Inapakia...",
   "rpMergerTitle": "Muunganisho wa RP",
   "rpMergerPriorityHint": "Pakiti ya juu ina kipaumbele zaidi: faili zake zinashinda migogoro.",
   "rpMergerTopBadge": "JUU",
@@ -1168,45 +1161,10 @@
     }
   },
   "skinsSavedToMySkins": "Imehifadhiwa katika Ngozi Zangu",
-  "skinsDownloadFailed": "Upakuaji umeshindwa",
-  "skinsDeletedFromCloud": "Imefutwa kutoka kwenye wingu",
-  "skinsDeleteFailed": "Kufuta kumeshindwa",
-  "skinsLoginToUpload": "Ingia ili kupakia ngozi",
-  "skinsUploading": "Inapakia…",
-  "skinUploaded": "Ngozi imepakiwa!",
-  "skinUploadFailed": "Upakiaji umeshindwa: {error}",
   "skinsEmptyLocalSkins": "Hakuna ngozi bado. Unda au pakia ngozi ili kuanza.",
-  "skinUploadToWebsite": "Pakia kwenye tovuti",
-  "skinReuploadToWebsite": "Pakia tena kwenye tovuti",
-  "skinCloudEdit": "Hariri",
-  "skinCloudSaveToDevice": "Hifadhi kwenye kifaa",
-  "skinCloudDelete": "Futa kutoka kwenye wingu",
-  "skinsTabGallery": "Matunzio",
-  "skinsTopLabel": "Bora 30",
-  "skinsAllLabel": "Ngozi Zote",
-  "skinUploadToCloud": "Pakia kwa Wingu",
   "skinSaveDialog": "Hifadhi Skin",
   "skinNameHint": "Jina la skin",
   "skinDefaultName": "Skin yangu",
-  "skinUpdatedInCloud": "Skin imesasishwa kwenye wingu",
-  "skinByCreator": "na {name}",
-  "@skinByCreator": {
-    "description": "Creator attribution",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinLikesCount": "{count} likes",
-  "@skinLikesCount": {
-    "description": "Like count",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "sectionRecentActivity": "Shughuli za hivi karibuni",
   "activityNoEvents": "Hakuna shughuli za hivi karibuni bado.",
   "activitySkinUploaded": "Skin imepakiwa",
@@ -1301,10 +1259,6 @@
   "notifPrefFriendRequest": "Ombi la urafiki",
   "notifPrefFriendAccepted": "Rafiki ameongezwa",
   "notifPrefMessageReceived": "Ujumbe mpya",
-  "commentsTitle": "Maoni",
-  "commentsEmpty": "Bado hakuna maoni. Kuwa wa kwanza!",
-  "commentsPlaceholder": "Andika maoni…",
-  "loadMore": "Pakia zaidi",
   "skinLayerInner": "Ndani",
   "@skinLayerInner": {
     "description": "Skin editor layer toggle, inner/base layer"
@@ -1324,7 +1278,6 @@
   "skinEditorTitle": "Kihariri cha skin",
   "skinToolUndo": "Tendua",
   "skinSaveToMySkins": "Hifadhi kwenye skin zangu",
-  "skinUpdateInCloud": "Sasisha kwenye wingu",
   "skinExportPng": "Hamisha PNG",
   "skinToolDraw": "Chora",
   "skinToolFill": "Jaza",
@@ -1404,6 +1357,22 @@
     }
   },
   "directPortBusy": "Imeshindwa kufungua mlango wa ndani. Simamisha muunganisho wa sasa kwanza.",
+  "rpBrowseTab": "Vinjari",
+  "rpCategoryRealism": "Uhalisia",
+  "rpCategoryFaithful": "Faithful",
+  "rpCategoryPvp": "PvP",
+  "rpCategoryCartoon": "Katuni",
+  "rpCategoryDark": "Giza",
+  "rpCategoryMedieval": "Zama za Kati",
+  "rpCategoryNature": "Asili",
+  "rpCategoryThemed": "Yenye mandhari",
+  "rpCategoryOther": "Nyingine",
+  "waitingForConsole": "Inasubiri kiweko chako…",
+  "consoleFound": "Kiweko kimepatikana",
+  "consoleLanHint": "Kwenye kiweko chako, fungua Minecraft na utafute mchezo wa LAN chini ya Marafiki.",
+  "localNetworkBlocked": "MCCompanion haiwezi kufikia mtandao wako wa ndani. Washa Mtandao wa Ndani kwa MCCompanion kwenye mipangilio ya kifaa chako na hakikisha uko kwenye Wi-Fi.",
+  "serverListPlayersAny": "Ukubwa wowote",
+  "serverListPlayersHint": "Wastani wa wachezaji mtandaoni",
   "directAddressNotSupported": "{host} ni anwani ya IPv6. Hali ya Proksi/Moja kwa Moja inaunga mkono IPv4 pekee. Tumia anwani ya IPv4 au jina la mwenyeji.",
   "@directAddressNotSupported": {
     "placeholders": {
@@ -1448,7 +1417,6 @@
   "serverListNoMatchHint": "Jaribu utafutaji au kategoria nyingine",
   "serverCardPlay": "Cheza",
   "serverCardVote": "Piga kura",
-  "serverCardViewServer": "Angalia seva",
   "serverCopyIp": "Nakili IP",
   "serverCopied": "Imenakiliwa",
   "serverStatPlayers": "Wachezaji",
@@ -1458,7 +1426,7 @@
   "serverBadgeFeatured": "Iliyoangaziwa",
   "serverEditionJava": "Java",
   "serverEditionBedrock": "Bedrock",
-  "serverEditionCrossplay": "Crossplay",
+  "serverEditionCrossplay": "Mchezo mtambuka",
   "serverSectionMotd": "Ujumbe wa siku",
   "serverLinkDiscord": "Discord",
   "serverLinkWebsite": "Tovuti",

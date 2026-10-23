@@ -154,9 +154,6 @@ class AppLocalizationsUr extends AppLocalizations {
   String get save => 'محفوظ کریں';
 
   @override
-  String get clientDisconnected => 'کلائنٹ منقطع ہو گیا: براڈکاسٹ بند ہو گئی';
-
-  @override
   String get pleaseEnterServer => '⚠️ براہ کرم سرور ایڈریس درج کریں';
 
   @override
@@ -413,16 +410,16 @@ class AppLocalizationsUr extends AppLocalizations {
   String get navFixed => 'Connector اور پروفائل ہمیشہ مقرر ہیں';
 
   @override
-  String get leftSlot => 'Slot 2';
+  String get leftSlot => 'سلاٹ 2';
 
   @override
-  String get outerSlot => 'Slot 1';
+  String get outerSlot => 'سلاٹ 1';
 
   @override
-  String get rightSlot => 'Slot 3';
+  String get rightSlot => 'سلاٹ 3';
 
   @override
-  String get farSlot => 'Slot 4';
+  String get farSlot => 'سلاٹ 4';
 
   @override
   String get colorPickerApply => 'لاگو کریں';
@@ -477,7 +474,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get playerLookupLabelUuid => 'UUID';
 
   @override
-  String get playerLookupLabelGamertag => 'Gamertag';
+  String get playerLookupLabelGamertag => 'گیمرٹیگ';
 
   @override
   String get playerLookupLabelXuid => 'XUID';
@@ -496,133 +493,136 @@ class AppLocalizationsUr extends AppLocalizations {
   }
 
   @override
-  String get reportUser => 'Report user';
+  String get reportUser => 'صارف کی رپورٹ کریں';
 
   @override
   String reportUserWithName(Object name) {
-    return 'Report $name';
+    return '$name کی رپورٹ کریں';
   }
 
   @override
   String get reportDisclaimer =>
-      'Reports are reviewed by our team. False reports may result in action against your account.';
+      'رپورٹس کا جائزہ ہماری ٹیم لیتی ہے۔ جھوٹی رپورٹس پر آپ کے اکاؤنٹ کے خلاف کارروائی ہو سکتی ہے۔';
 
   @override
   String get reportReasonSpam => 'Spam';
 
   @override
-  String get reportReasonHarassment => 'Harassment';
+  String get reportReasonHarassment => 'ہراسانی';
 
   @override
-  String get reportReasonInappropriate => 'Inappropriate content';
+  String get reportReasonInappropriate => 'نامناسب مواد';
 
   @override
-  String get reportReasonOther => 'Other';
+  String get reportReasonOther => 'دیگر';
 
   @override
-  String get reportAdditionalDetails => 'Additional details (optional)…';
+  String get reportAdditionalDetails => 'اضافی تفصیلات (اختیاری)…';
 
   @override
-  String get reportSuccess => 'Report submitted. Thank you.';
+  String get reportSuccess => 'رپورٹ جمع کر دی گئی۔ شکریہ۔';
 
   @override
-  String get reportFailed => 'Failed to submit report. Please try again.';
+  String get reportFailed =>
+      'رپورٹ جمع نہیں ہو سکی۔ براہ کرم دوبارہ کوشش کریں۔';
 
   @override
-  String get reportSubmit => 'Submit report';
+  String get reportSubmit => 'رپورٹ جمع کرائیں';
 
   @override
   String get playerLookupSubtitle =>
-      'Search for a Java or Bedrock player by username';
+      'یوزر نیم سے Java یا Bedrock کھلاڑی تلاش کریں';
 
   @override
-  String get playerLookupHint => 'Enter a username…';
+  String get playerLookupHint => 'یوزر نیم درج کریں…';
 
   @override
-  String get playerLookupLinked => 'Linked accounts found';
+  String get playerLookupLinked => 'منسلک اکاؤنٹس مل گئے';
 
   @override
-  String get playerLookupLabelUsername => 'Username';
+  String get playerLookupLabelUsername => 'یوزر نیم';
 
   @override
   String get playerLookupLabelTier => 'Tier';
 
   @override
   String playerLookupCopied(Object value) {
-    return '$value copied';
+    return '$value کاپی ہو گیا';
   }
 
   @override
-  String get addFriend => 'Add Friend';
+  String get addFriend => 'دوست شامل کریں';
 
   @override
   String get send => 'Send';
 
   @override
-  String get somethingWentWrong => 'Something went wrong. Please try again.';
+  String get somethingWentWrong => 'کچھ غلط ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔';
 
   @override
   String friendRequestAccepted(Object name) {
-    return 'You are now friends with $name';
+    return 'اب آپ $name کے دوست ہیں';
   }
 
   @override
   String requestDeclined(Object name) {
-    return 'Request from $name declined';
+    return '$name کی درخواست مسترد کر دی گئی';
   }
 
   @override
-  String get deleteAccountTitle => 'Delete Account';
+  String get deleteAccountTitle => 'اکاؤنٹ حذف کریں';
 
   @override
   String get deleteAccountBody =>
-      'This will permanently delete your account and all data. This action cannot be undone.';
+      'اس سے آپ کا اکاؤنٹ اور تمام ڈیٹا مستقل طور پر حذف ہو جائے گا۔ یہ عمل واپس نہیں ہو سکتا۔';
 
   @override
-  String get deletePermanently => 'Delete Permanently';
+  String get deletePermanently => 'مستقل طور پر حذف کریں';
 
   @override
   String get couldNotDeleteAccount =>
-      'Could not delete account. Please try again.';
+      'اکاؤنٹ حذف نہیں ہو سکا۔ براہ کرم دوبارہ کوشش کریں۔';
 
   @override
-  String get removeFriendTitle => 'Remove Friend';
+  String get removeFriendTitle => 'دوست ہٹائیں';
 
   @override
   String removeFriendConfirm(Object name) {
-    return 'Remove $name from your friends?';
+    return 'کیا $name کو اپنے دوستوں سے ہٹانا ہے؟';
   }
 
   @override
-  String get remove => 'Remove';
+  String get remove => 'ہٹائیں';
 
   @override
   String friendRemoved(Object name) {
-    return '$name has been removed from your friends';
+    return '$name کو آپ کے دوستوں سے ہٹا دیا گیا';
   }
 
   @override
   String get emailDifferentMethod =>
-      'This email is linked to a different sign-in method';
+      'یہ ای میل سائن اِن کے کسی دوسرے طریقے سے منسلک ہے';
 
   @override
-  String get googleSignInFailed => 'Google sign-in failed. Please try again.';
+  String get googleSignInFailed =>
+      'Google سائن اِن ناکام ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔';
 
   @override
-  String get appleSignInFailed => 'Apple sign-in failed. Please try again.';
+  String get appleSignInFailed =>
+      'Apple سائن اِن ناکام ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔';
 
   @override
-  String get resetPasswordTitle => 'Reset Password';
+  String get resetPasswordTitle => 'پاس ورڈ ری سیٹ کریں';
 
   @override
   String get resetPasswordBody =>
-      'Enter your email address and we will send you a link to reset your password.';
+      'اپنا ای میل پتہ درج کریں، ہم آپ کو پاس ورڈ ری سیٹ کرنے کا لنک بھیجیں گے۔';
 
   @override
-  String get emailAddressHint => 'Email address';
+  String get emailAddressHint => 'ای میل پتہ';
 
   @override
-  String get sendLink => 'Send link';
+  String get sendLink => 'لنک بھیجیں';
 
   @override
   String resetLinkSent(Object email) {
@@ -630,164 +630,165 @@ class AppLocalizationsUr extends AppLocalizations {
   }
 
   @override
-  String get invalidEmailError => 'The email address is not valid';
+  String get invalidEmailError => 'ای میل پتہ درست نہیں ہے';
 
   @override
   String get couldNotSendResetEmail =>
-      'Could not send reset email. Please try again.';
+      'ری سیٹ ای میل نہیں بھیجی جا سکی۔ براہ کرم دوبارہ کوشش کریں۔';
 
   @override
-  String get enterEmailAndPassword => 'Please enter your email and password';
+  String get enterEmailAndPassword =>
+      'براہ کرم اپنی ای میل اور پاس ورڈ درج کریں';
 
   @override
-  String get incorrectEmailOrPassword => 'Incorrect email or password';
+  String get incorrectEmailOrPassword => 'ای میل یا پاس ورڈ غلط ہے';
 
   @override
-  String get emailAlreadyInUse => 'This email address is already in use';
+  String get emailAlreadyInUse => 'یہ ای میل پتہ پہلے سے استعمال میں ہے';
 
   @override
   String get weakPassword =>
-      'Password is too weak. Please choose a stronger one.';
+      'پاس ورڈ بہت کمزور ہے۔ براہ کرم زیادہ مضبوط پاس ورڈ منتخب کریں۔';
 
   @override
-  String get createAccount => 'Create Account';
+  String get createAccount => 'اکاؤنٹ بنائیں';
 
   @override
   String get signInSubtitle =>
-      'Sign in to access your profile, friends, and chats.';
+      'اپنی پروفائل، دوستوں اور چیٹس تک رسائی کے لیے سائن اِن کریں۔';
 
   @override
-  String get passwordHint => 'Password';
+  String get passwordHint => 'پاس ورڈ';
 
   @override
-  String get forgotPassword => 'Forgot password?';
+  String get forgotPassword => 'پاس ورڈ بھول گئے؟';
 
   @override
   String get orDivider => 'or';
 
   @override
-  String get continueWithGoogle => 'Continue with Google';
+  String get continueWithGoogle => 'Google کے ساتھ جاری رکھیں';
 
   @override
-  String get alreadyHaveAccount => 'Already have an account? Sign in';
+  String get alreadyHaveAccount => 'پہلے سے اکاؤنٹ ہے؟ سائن اِن کریں';
 
   @override
-  String get noAccountYet => 'Don\'t have an account? Create one';
+  String get noAccountYet => 'اکاؤنٹ نہیں ہے؟ بنائیں';
 
   @override
-  String get profileNotSetUp => 'Profile not set up';
+  String get profileNotSetUp => 'پروفائل سیٹ نہیں ہے';
 
   @override
   String get chooseUsernameSubtitle =>
       'ایک صارف نام چنیں تاکہ دوسرے کھلاڑی آپ کو تلاش کر سکیں۔';
 
   @override
-  String get createProfile => 'Create Profile';
+  String get createProfile => 'پروفائل بنائیں';
 
   @override
-  String get findUser => 'Find user';
+  String get findUser => 'صارف تلاش کریں';
 
   @override
-  String get couldNotUpdateVisibility => 'Could not update visibility settings';
+  String get couldNotUpdateVisibility => 'نمائش کی ترتیبات اپ ڈیٹ نہیں ہو سکیں';
 
   @override
-  String get signOut => 'Sign Out';
+  String get signOut => 'سائن آؤٹ';
 
   @override
-  String get appearOfflineLabel => 'Appear Offline';
+  String get appearOfflineLabel => 'آف لائن ظاہر ہوں';
 
   @override
-  String get appearOfflineOn => 'You appear offline to other players';
+  String get appearOfflineOn => 'آپ دوسرے کھلاڑیوں کو آف لائن نظر آتے ہیں';
 
   @override
-  String get appearOfflineOff => 'You appear online to other players';
+  String get appearOfflineOff => 'آپ دوسرے کھلاڑیوں کو آن لائن نظر آتے ہیں';
 
   @override
-  String get unlinkXboxTitle => 'Unlink Xbox Account';
+  String get unlinkXboxTitle => 'Xbox اکاؤنٹ کا لنک ختم کریں';
 
   @override
   String removeLabelConfirm(Object name) {
-    return 'Remove $name from your linked accounts?';
+    return 'کیا $name کو اپنے منسلک اکاؤنٹس سے ہٹانا ہے؟';
   }
 
   @override
-  String get unlink => 'Unlink';
+  String get unlink => 'لنک ختم کریں';
 
   @override
-  String get unlinkJavaTitle => 'Unlink Java Account';
+  String get unlinkJavaTitle => 'Java اکاؤنٹ کا لنک ختم کریں';
 
   @override
   String removeJavaConfirm(Object name) {
-    return 'Remove $name from your linked accounts?';
+    return 'کیا $name کو اپنے منسلک اکاؤنٹس سے ہٹانا ہے؟';
   }
 
   @override
   String get linkAccountsHint =>
-      'Link your Minecraft accounts to show your skins and stats.';
+      'اپنی اسکنز اور اعداد و شمار دکھانے کے لیے اپنے Minecraft اکاؤنٹس منسلک کریں۔';
 
   @override
-  String get linkXbox => 'Link Xbox';
+  String get linkXbox => 'Xbox منسلک کریں';
 
   @override
-  String get linkJava => 'Link Java';
+  String get linkJava => 'Java منسلک کریں';
 
   @override
-  String get profileUpdated => 'Profile updated';
+  String get profileUpdated => 'پروفائل اپ ڈیٹ ہو گئی';
 
   @override
   String get edit => 'Edit';
 
   @override
-  String get displayNameLabel => 'Display Name';
+  String get displayNameLabel => 'ظاہری نام';
 
   @override
-  String get yourNameHint => 'Your name';
+  String get yourNameHint => 'آپ کا نام';
 
   @override
   String get bioLabel => 'Bio';
 
   @override
-  String get bioHint => 'Tell others about yourself…';
+  String get bioHint => 'دوسروں کو اپنے بارے میں بتائیں…';
 
   @override
-  String get noFriendsYet => 'No friends yet';
+  String get noFriendsYet => 'ابھی کوئی دوست نہیں';
 
   @override
-  String get noFriendsSub => 'Add friends to see them here.';
+  String get noFriendsSub => 'دوست شامل کریں تو وہ یہاں نظر آئیں گے۔';
 
   @override
   String onlineFriendsLabel(Object count) {
-    return '$count online';
+    return '$count آن لائن';
   }
 
   @override
   String offlineFriendsLabel(Object count) {
-    return '$count offline';
+    return '$count آف لائن';
   }
 
   @override
-  String get noPendingRequests => 'No pending requests';
+  String get noPendingRequests => 'کوئی زیر التوا درخواست نہیں';
 
   @override
-  String get requestsAppearHere => 'New friend requests will appear here.';
+  String get requestsAppearHere => 'دوستی کی نئی درخواستیں یہاں نظر آئیں گی۔';
 
   @override
   String get skinsEdit => 'Edit';
 
   @override
-  String get skinsMustBe64 => 'Skin must be 64×64 pixels';
+  String get skinsMustBe64 => 'اسکن 64×64 پکسل کی ہونی چاہیے';
 
   @override
-  String get skinsInvalidFile => 'Invalid image file';
+  String get skinsInvalidFile => 'غلط تصویری فائل';
 
   @override
-  String get skinsUpload => 'Upload';
+  String get skinsUpload => 'اپ لوڈ';
 
   @override
-  String get skinsCreate => 'Create';
+  String get skinsCreate => 'بنائیں';
 
   @override
-  String get skinsDownload => 'Download';
+  String get skinsDownload => 'ڈاؤن لوڈ';
 
   @override
   String get chooseUniqueUsername =>
@@ -839,315 +840,321 @@ class AppLocalizationsUr extends AppLocalizations {
   }
 
   @override
-  String get paywallRestore => 'Restore';
+  String get paywallRestore => 'بحال کریں';
 
   @override
-  String get paywallMonthly => 'Monthly';
+  String get paywallMonthly => 'ماہانہ';
 
   @override
-  String get paywallYearly => 'Yearly';
+  String get paywallYearly => 'سالانہ';
 
   @override
-  String get paywallSavePercent => 'Save ~17%';
+  String get paywallSavePercent => '~17% بچائیں';
 
   @override
   String get paywallSubtitle =>
-      'Track more servers and get notified\nwhen they go online or offline.';
+      'مزید سرورز ٹریک کریں اور ان کے آن لائن\nیا آف لائن ہونے پر اطلاع پائیں۔';
 
   @override
   String paywallSlotLabel(Object slots) {
-    return '$slots server slots';
+    return '$slots سرور سلاٹس';
   }
 
   @override
-  String get paywallPopular => 'Popular';
+  String get paywallPopular => 'مقبول';
 
   @override
-  String get paywallContinue => 'Continue';
+  String get paywallContinue => 'جاری رکھیں';
 
   @override
-  String get paywallNoPkgs => 'No packages available.';
+  String get paywallNoPkgs => 'کوئی پیکج دستیاب نہیں۔';
 
   @override
-  String get paywallManaged => 'Managed by Apple/Google. Cancel anytime.';
+  String get paywallManaged =>
+      'Apple/Google کے زیر انتظام۔ کسی بھی وقت منسوخ کریں۔';
 
   @override
-  String get paywallPurchaseSuccess => 'Purchase successful!';
+  String get paywallPurchaseSuccess => 'خریداری کامیاب رہی!';
 
   @override
-  String get paywallPurchaseFailed => 'Purchase failed. Please try again.';
+  String get paywallPurchaseFailed =>
+      'خریداری ناکام ہو گئی۔ براہ کرم دوبارہ کوشش کریں۔';
 
   @override
-  String get paywallPurchasesRestored => 'Purchases restored!';
+  String get paywallPurchasesRestored => 'خریداریاں بحال ہو گئیں!';
 
   @override
-  String get paywallNoActivePurchases => 'No active purchases found.';
+  String get paywallNoActivePurchases => 'کوئی فعال خریداری نہیں ملی۔';
 
   @override
-  String get paywallRestoreFailed => 'Restore failed. Please try again.';
+  String get paywallRestoreFailed =>
+      'بحالی ناکام ہو گئی۔ براہ کرم دوبارہ کوشش کریں۔';
 
   @override
   String get relay => 'Relay';
 
   @override
-  String get serversSection => 'Servers';
+  String get serversSection => 'سرورز';
 
   @override
-  String get selectBedrockAccount => 'Select Bedrock account';
+  String get selectBedrockAccount => 'Bedrock اکاؤنٹ منتخب کریں';
 
   @override
-  String get infoAndLegal => 'Info & Legal';
+  String get infoAndLegal => 'معلومات اور قانونی';
 
   @override
-  String get legalSection => 'Legal';
+  String get legalSection => 'قانونی';
 
   @override
   String get privacyPolicy => 'پرائیویسی پالیسی';
 
   @override
-  String get privacyPolicySubtitle => 'How we collect and protect your data';
+  String get privacyPolicySubtitle =>
+      'ہم آپ کا ڈیٹا کیسے جمع اور محفوظ کرتے ہیں';
 
   @override
   String get termsOfService => 'سروس کی شرائط';
 
   @override
-  String get termsOfServiceSubtitle => 'Rules and conditions of use';
+  String get termsOfServiceSubtitle => 'استعمال کے اصول اور شرائط';
 
   @override
-  String get dataSourcesSection => 'Data Sources & Credits';
+  String get dataSourcesSection => 'ڈیٹا کے ذرائع اور کریڈٹس';
 
   @override
   String get creditMojangTitle => 'Mojang / Microsoft';
 
   @override
   String get creditMojangSubtitle =>
-      'Java player skins, UUIDs, and profile data via the official Mojang API.';
+      'Java کھلاڑیوں کی اسکنز، UUID اور پروفائل ڈیٹا سرکاری Mojang API کے ذریعے۔';
 
   @override
   String get creditGeyserTitle => 'GeyserMC';
 
   @override
   String get creditGeyserSubtitle =>
-      'Bedrock skin rendering. Skins for Bedrock players are fetched via the GeyserMC skin server.';
+      'Bedrock اسکن رینڈرنگ۔ Bedrock کھلاڑیوں کی اسکنز GeyserMC اسکن سرور سے حاصل کی جاتی ہیں۔';
 
   @override
   String get creditXboxTitle => 'Xbox / Microsoft';
 
   @override
   String get creditXboxSubtitle =>
-      'Bedrock account linking via Xbox Live. Gamertags and XUIDs are retrieved through the Microsoft authentication flow.';
+      'Xbox Live کے ذریعے Bedrock اکاؤنٹ لنکنگ۔ Gamertag اور XUID Microsoft کی تصدیقی کارروائی سے حاصل ہوتے ہیں۔';
 
   @override
-  String get aboutMCCompanionSection => 'About MCCompanion';
+  String get aboutMCCompanionSection => 'MCCompanion کے بارے میں';
 
   @override
   String get aboutMCCompanionDisclaimer =>
-      'MCCompanion is an independent application and is not affiliated with, endorsed by, or sponsored by Mojang Studios or Microsoft Corporation.';
+      'MCCompanion ایک آزاد ایپ ہے اور Mojang Studios یا Microsoft Corporation سے وابستہ نہیں، نہ ان کی منظور شدہ یا سرپرستی میں ہے۔';
 
   @override
   String get minecraftTrademark =>
-      '\"Minecraft\" is a trademark of Microsoft Corporation.';
+      '\"Minecraft\" Microsoft Corporation کا ٹریڈ مارک ہے۔';
 
   @override
   String get nldServerLabelShort => 'MCCompanion Server';
 
   @override
-  String get editServer => 'Edit Server';
+  String get editServer => 'سرور میں ترمیم کریں';
 
   @override
-  String get serverNameExampleHint => 'My Awesome Server';
+  String get serverNameExampleHint => 'میرا شاندار سرور';
 
   @override
   String get serverAddressExampleHint => 'play.example.com';
 
   @override
-  String get serverDescriptionExampleHint => 'Survival server with friends';
+  String get serverDescriptionExampleHint => 'دوستوں کے ساتھ سروائیول سرور';
 
   @override
-  String get editionLabel => 'Edition';
+  String get editionLabel => 'ایڈیشن';
 
   @override
   String get nameLabel => 'Name';
 
   @override
-  String get ipAddressFieldLabel => 'IP Address';
+  String get ipAddressFieldLabel => 'IP پتہ';
 
   @override
   String get portFieldLabel => 'Port';
 
   @override
-  String get platformFieldLabel => 'Platform';
+  String get platformFieldLabel => 'پلیٹ فارم';
 
   @override
-  String get nameValidationError => 'Name must be 1–50 characters';
+  String get nameValidationError => 'نام 1 سے 50 حروف کا ہونا چاہیے';
 
   @override
-  String get ipRequiredError => 'IP address is required';
+  String get ipRequiredError => 'IP پتہ ضروری ہے';
 
   @override
-  String get portRangeError => 'Port must be between 1 and 65535';
+  String get portRangeError => 'پورٹ 1 اور 65535 کے درمیان ہونا چاہیے';
 
   @override
-  String get xboxLinkTitle => 'Link Xbox Account';
+  String get xboxLinkTitle => 'Xbox اکاؤنٹ منسلک کریں';
 
   @override
-  String get xboxStartingLogin => 'Starting Xbox login…';
+  String get xboxStartingLogin => 'Xbox لاگ اِن شروع ہو رہا ہے…';
 
   @override
-  String get xboxSignInWithMicrosoft => 'Sign in with Microsoft';
+  String get xboxSignInWithMicrosoft => 'Microsoft کے ساتھ سائن اِن کریں';
 
   @override
   String get xboxGoToLink =>
-      'Go to the link below and enter the code to connect your Xbox account.';
+      'نیچے دیے گئے لنک پر جائیں اور اپنا Xbox اکاؤنٹ جوڑنے کے لیے کوڈ درج کریں۔';
 
   @override
-  String get xboxYourCode => 'Your code';
+  String get xboxYourCode => 'آپ کا کوڈ';
 
   @override
-  String get xboxTapToCopy => 'Tap the code to copy it';
+  String get xboxTapToCopy => 'کاپی کرنے کے لیے کوڈ پر ٹیپ کریں';
 
   @override
-  String get xboxOpenLink => 'Open microsoft.com/link';
+  String get xboxOpenLink => 'microsoft.com/link کھولیں';
 
   @override
-  String get xboxWaitingForLogin => 'Waiting for login…';
+  String get xboxWaitingForLogin => 'لاگ اِن کا انتظار ہے…';
 
   @override
-  String get xboxAccountLinked => 'Xbox account linked!';
+  String get xboxAccountLinked => 'Xbox اکاؤنٹ منسلک ہو گیا!';
 
   @override
-  String get xboxCodeCopied => 'Code copied to clipboard';
+  String get xboxCodeCopied => 'کوڈ کلپ بورڈ پر کاپی ہو گیا';
 
   @override
   String get xboxCouldNotStart =>
-      'Could not start Xbox login. Please try again.';
+      'Xbox لاگ اِن شروع نہیں ہو سکا۔ براہ کرم دوبارہ کوشش کریں۔';
 
   @override
-  String get xboxCodeExpired => 'The code expired. Please try again.';
+  String get xboxCodeExpired =>
+      'کوڈ کی میعاد ختم ہو گئی۔ براہ کرم دوبارہ کوشش کریں۔';
 
   @override
-  String get xboxSomethingWrong => 'Something went wrong. Please try again.';
+  String get xboxSomethingWrong => 'کچھ غلط ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔';
 
   @override
-  String get tryAgain => 'Try again';
+  String get tryAgain => 'دوبارہ کوشش کریں';
 
   @override
-  String get userNotFound => 'User not found';
+  String get userNotFound => 'صارف نہیں ملا';
 
   @override
-  String get profileSectionLabel => 'Profile';
+  String get profileSectionLabel => 'پروفائل';
 
   @override
-  String get displayNameRowLabel => 'Display name';
+  String get displayNameRowLabel => 'ظاہری نام';
 
   @override
-  String get usernameRowLabel => 'Username';
+  String get usernameRowLabel => 'یوزر نیم';
 
   @override
-  String get lastSeenLabel => 'Last seen';
+  String get lastSeenLabel => 'آخری بار دیکھا گیا';
 
   @override
-  String get aboutSectionLabel => 'About';
+  String get aboutSectionLabel => 'تعارف';
 
   @override
   String get xboxBedrockLabel => 'Xbox / Bedrock';
 
   @override
-  String get friendRequestSent => 'Friend request sent';
+  String get friendRequestSent => 'دوستی کی درخواست بھیج دی گئی';
 
   @override
-  String get alreadyFriendsMsg => 'You are already friends.';
+  String get alreadyFriendsMsg => 'آپ پہلے ہی دوست ہیں۔';
 
   @override
-  String get requestAlreadyPendingMsg => 'There is already a pending request.';
+  String get requestAlreadyPendingMsg => 'ایک درخواست پہلے سے زیر التوا ہے۔';
 
   @override
-  String get userNotFoundMsg2 => 'User not found.';
+  String get userNotFoundMsg2 => 'صارف نہیں ملا۔';
 
   @override
-  String get cannotSendRequestMsg => 'Cannot send a request to this user.';
+  String get cannotSendRequestMsg => 'اس صارف کو درخواست نہیں بھیجی جا سکتی۔';
 
   @override
   String nowFriendsWith(Object username) {
-    return 'Now friends with @$username';
+    return 'اب آپ @$username کے دوست ہیں';
   }
 
   @override
-  String get removeFriendButton => 'Remove friend';
+  String get removeFriendButton => 'دوست ہٹائیں';
 
   @override
-  String get requestSentButton => 'Request sent';
+  String get requestSentButton => 'درخواست بھیج دی گئی';
 
   @override
-  String get acceptRequestButton => 'Accept request';
+  String get acceptRequestButton => 'درخواست قبول کریں';
 
   @override
-  String get addFriendButton => 'Add friend';
+  String get addFriendButton => 'دوست شامل کریں';
 
   @override
-  String get removeFriendDialogTitle => 'Remove friend';
+  String get removeFriendDialogTitle => 'دوست ہٹائیں';
 
   @override
   String removeFriendDialogBody(Object username) {
-    return 'Remove @$username as a friend?';
+    return 'کیا @$username کو دوستوں سے ہٹانا ہے؟';
   }
 
   @override
   String get trackerLimitReached => 'سرور کی حد پوری ہو گئی';
 
   @override
-  String get upgradeButton => 'Upgrade';
+  String get upgradeButton => 'اپ گریڈ کریں';
 
   @override
-  String get javaLinkTitle => 'Link Java Edition';
+  String get javaLinkTitle => 'Java Edition منسلک کریں';
 
   @override
-  String get javaStartingLogin => 'Starting Microsoft login…';
+  String get javaStartingLogin => 'Microsoft لاگ اِن شروع ہو رہا ہے…';
 
   @override
-  String get javaSignInWithMicrosoft => 'Sign in with Microsoft';
+  String get javaSignInWithMicrosoft => 'Microsoft کے ساتھ سائن اِن کریں';
 
   @override
   String get javaGoToLink =>
-      'Go to the link below and enter the code to connect your Minecraft Java Edition account.';
+      'نیچے دیے گئے لنک پر جائیں اور اپنا Minecraft Java Edition اکاؤنٹ جوڑنے کے لیے کوڈ درج کریں۔';
 
   @override
-  String get javaYourCode => 'Your code';
+  String get javaYourCode => 'آپ کا کوڈ';
 
   @override
-  String get javaTapToCopy => 'Tap the code to copy it';
+  String get javaTapToCopy => 'کاپی کرنے کے لیے کوڈ پر ٹیپ کریں';
 
   @override
-  String get javaOpenLink => 'Open microsoft.com/link';
+  String get javaOpenLink => 'microsoft.com/link کھولیں';
 
   @override
-  String get javaWaitingForLogin => 'Waiting for login…';
+  String get javaWaitingForLogin => 'لاگ اِن کا انتظار ہے…';
 
   @override
-  String get javaAccountLinked => 'Java Edition linked!';
+  String get javaAccountLinked => 'Java Edition منسلک ہو گیا!';
 
   @override
-  String get javaNoJavaTitle => 'No Java Edition found';
+  String get javaNoJavaTitle => 'Java Edition نہیں ملا';
 
   @override
   String get javaNoJavaBody =>
-      'The Microsoft account you signed in with does not own Minecraft Java Edition.';
+      'جس Microsoft اکاؤنٹ سے آپ نے سائن اِن کیا ہے اس کے پاس Minecraft Java Edition نہیں ہے۔';
 
   @override
-  String get javaTryDifferentAccount => 'Try a different account';
+  String get javaTryDifferentAccount => 'کوئی اور اکاؤنٹ آزمائیں';
 
   @override
   String get javaCouldNotStart =>
-      'Could not start Microsoft login. Please try again.';
+      'Microsoft لاگ اِن شروع نہیں ہو سکا۔ براہ کرم دوبارہ کوشش کریں۔';
 
   @override
-  String get javaCodeExpired => 'The code expired. Please try again.';
+  String get javaCodeExpired =>
+      'کوڈ کی میعاد ختم ہو گئی۔ براہ کرم دوبارہ کوشش کریں۔';
 
   @override
-  String get javaSomethingWrong => 'Something went wrong. Please try again.';
+  String get javaSomethingWrong => 'کچھ غلط ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔';
 
   @override
-  String get javaCodeCopied => 'Code copied to clipboard';
+  String get javaCodeCopied => 'کوڈ کلپ بورڈ پر کاپی ہو گیا';
 
   @override
   String get featureLabelConnector => 'کنیکٹر';
@@ -1369,16 +1376,6 @@ class AppLocalizationsUr extends AppLocalizations {
       'اعلی ریزولیوشن ٹیکسچر پیک کنسول پر لیگ یا کریش کا باعث بن سکتے ہیں۔ اگر مسائل آئیں تو کم ریزولیوشن پیک پر سوئچ کریں یا اگر پیک سپورٹ کرے تو ہلکا سب پیک منتخب کریں۔';
 
   @override
-  String get rpWarnDiscord =>
-      'Discord لنکس ختم ہو جاتے ہیں اور کام کرنا بند کر دیتے ہیں۔ اس کی بجائے ایک مستقل ہوسٹ استعمال کریں۔';
-
-  @override
-  String get rpWarnHttps => 'URL کو https:// سے شروع ہونا چاہیے';
-
-  @override
-  String get rpWarnExtension => 'URL کو .mcpack یا .zip پر ختم ہونا چاہیے';
-
-  @override
   String get rpToastSaved => 'ریسورس پیک سیٹنگز محفوظ ہو گئیں۔';
 
   @override
@@ -1428,19 +1425,46 @@ class AppLocalizationsUr extends AppLocalizations {
       'Minecraft ریسورس پیکس کو ان کے UUID سے کیش کرتا ہے۔ مرج شدہ پیک سرور کا اصل UUID رکھتا ہے, اگر Minecraft نے پہلے کسی سیشن میں (MCCompanion فعال ہونے سے پہلے) سرور کا پیک کیش کیا ہوا ہے، تو نئی مرج شدہ ورژن ڈاؤنلوڈ نہیں کرے گا۔ کیش صاف کریں تاکہ Minecraft تازہ مرج شدہ پیک لوڈ کرے۔';
 
   @override
-  String get rpUploadTab => 'Upload';
+  String get rpUploadTab => 'اپ لوڈ';
 
   @override
-  String get rpBrowseTab => 'Browse';
+  String get rpBrowseTab => 'براؤز';
 
   @override
-  String get rpUploadButton => 'Tap to select your pack';
+  String get rpCategoryRealism => 'حقیقت پسند';
 
   @override
-  String get rpUploadHint => '.mcpack or .zip • max 100 MB';
+  String get rpCategoryFaithful => 'Faithful';
 
   @override
-  String get rpUploading => 'Uploading...';
+  String get rpCategoryPvp => 'PvP';
+
+  @override
+  String get rpCategoryCartoon => 'کارٹون';
+
+  @override
+  String get rpCategoryDark => 'ڈارک';
+
+  @override
+  String get rpCategoryMedieval => 'قرونِ وسطیٰ';
+
+  @override
+  String get rpCategoryNature => 'قدرت';
+
+  @override
+  String get rpCategoryThemed => 'تھیم والے';
+
+  @override
+  String get rpCategoryOther => 'دیگر';
+
+  @override
+  String get rpUploadButton => 'اپنا پیک منتخب کرنے کے لیے ٹیپ کریں';
+
+  @override
+  String get rpUploadHint => '.mcpack یا .zip • زیادہ سے زیادہ 100 MB';
+
+  @override
+  String get rpUploading => 'اپ لوڈ ہو رہا ہے...';
 
   @override
   String get rpMergerTitle => 'RP ضم کنندہ';
@@ -1541,7 +1565,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get skinLabel => 'SKIN';
 
   @override
-  String get skinsLabel => 'SKINS';
+  String get skinsLabel => 'اسکنز';
 
   @override
   String get javaEditionBadge => 'Java';
@@ -1588,58 +1612,8 @@ class AppLocalizationsUr extends AppLocalizations {
   String get skinsSavedToMySkins => 'میری اسکنز میں محفوظ ہو گیا';
 
   @override
-  String get skinsDownloadFailed => 'ڈاؤنلوڈ ناکام رہا';
-
-  @override
-  String get skinsDeletedFromCloud => 'کلاؤڈ سے حذف کر دیا گیا';
-
-  @override
-  String get skinsDeleteFailed => 'حذف کرنا ناکام رہا';
-
-  @override
-  String get skinsLoginToUpload => 'اسکنز اپلوڈ کرنے کے لیے لاگ ان کریں';
-
-  @override
-  String get skinsUploading => 'اپلوڈ ہو رہا ہے…';
-
-  @override
-  String get skinUploaded => 'اسکن اپلوڈ ہو گیا!';
-
-  @override
-  String skinUploadFailed(String error) {
-    return 'اپلوڈ ناکام: $error';
-  }
-
-  @override
   String get skinsEmptyLocalSkins =>
       'ابھی تک کوئی اسکن نہیں۔ شروع کرنے کے لیے ایک اسکن بنائیں یا اپلوڈ کریں۔';
-
-  @override
-  String get skinUploadToWebsite => 'ویب سائٹ پر اپلوڈ کریں';
-
-  @override
-  String get skinReuploadToWebsite => 'ویب سائٹ پر دوبارہ اپلوڈ کریں';
-
-  @override
-  String get skinCloudEdit => 'ترمیم کریں';
-
-  @override
-  String get skinCloudSaveToDevice => 'ڈیوائس پر محفوظ کریں';
-
-  @override
-  String get skinCloudDelete => 'کلاؤڈ سے حذف کریں';
-
-  @override
-  String get skinsTabGallery => 'گیلری';
-
-  @override
-  String get skinsTopLabel => 'ٹاپ 30';
-
-  @override
-  String get skinsAllLabel => 'تمام اسکنز';
-
-  @override
-  String get skinUploadToCloud => 'کلاؤڈ پر اپ لوڈ کریں';
 
   @override
   String get skinSaveDialog => 'سکن محفوظ کریں';
@@ -1649,19 +1623,6 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get skinDefaultName => 'میرا سکن';
-
-  @override
-  String get skinUpdatedInCloud => 'سکن کلاؤڈ میں اپ ڈیٹ ہو گیا';
-
-  @override
-  String skinByCreator(String name) {
-    return '$name کی طرف سے';
-  }
-
-  @override
-  String skinLikesCount(int count) {
-    return '$count پسند';
-  }
 
   @override
   String get sectionRecentActivity => 'حالیہ سرگرمی';
@@ -1776,18 +1737,6 @@ class AppLocalizationsUr extends AppLocalizations {
   String get notifPrefMessageReceived => 'نیا پیغام';
 
   @override
-  String get commentsTitle => 'تبصرے';
-
-  @override
-  String get commentsEmpty => 'ابھی کوئی تبصرہ نہیں۔ پہلے بنیں!';
-
-  @override
-  String get commentsPlaceholder => 'تبصرہ لکھیں…';
-
-  @override
-  String get loadMore => 'مزید لوڈ کریں';
-
-  @override
   String get skinLayerInner => 'اندرونی';
 
   @override
@@ -1817,9 +1766,6 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get skinSaveToMySkins => 'میری سکنز میں محفوظ کریں';
-
-  @override
-  String get skinUpdateInCloud => 'کلاؤڈ میں اپ ڈیٹ کریں';
 
   @override
   String get skinExportPng => 'PNG ایکسپورٹ کریں';
@@ -2057,14 +2003,18 @@ class AppLocalizationsUr extends AppLocalizations {
       'مقامی پورٹ نہیں کھل سکا۔ پہلے موجودہ کنکشن بند کریں۔';
 
   @override
-  String get waitingForConsole => 'Waiting for your console…';
+  String get waitingForConsole => 'آپ کے کنسول کا انتظار ہے…';
 
   @override
-  String get consoleFound => 'Console found';
+  String get consoleFound => 'کنسول مل گیا';
 
   @override
   String get consoleLanHint =>
-      'On your console, open Minecraft and look under Friends for a LAN game.';
+      'اپنے کنسول پر Minecraft کھولیں اور دوست میں LAN گیم تلاش کریں۔';
+
+  @override
+  String get localNetworkBlocked =>
+      'MCCompanion آپ کے مقامی نیٹ ورک تک نہیں پہنچ سکتا۔ اپنے آلے کی سیٹنگز میں MCCompanion کے لیے لوکل نیٹ ورک آن کریں اور یقینی بنائیں کہ آپ Wi-Fi پر ہیں۔';
 
   @override
   String directAddressNotSupported(String host) {
@@ -2139,10 +2089,10 @@ class AppLocalizationsUr extends AppLocalizations {
   String get serverListAllCategories => 'سب';
 
   @override
-  String get serverListPlayersAny => 'Any size';
+  String get serverListPlayersAny => 'کوئی بھی سائز';
 
   @override
-  String get serverListPlayersHint => 'Average players online';
+  String get serverListPlayersHint => 'اوسط آن لائن کھلاڑی';
 
   @override
   String get serverListLoadFailed => 'سرور کی فہرست لوڈ نہیں ہو سکی';
@@ -2161,9 +2111,6 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get serverCardVote => 'ووٹ دیں';
-
-  @override
-  String get serverCardViewServer => 'سرور دیکھیں';
 
   @override
   String get serverCopyIp => 'IP کاپی کریں';
