@@ -995,6 +995,14 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
                     ],
                     secondary: [
                       DesktopNavEntry(
+                        id: 'console',
+                        icon: Icons.terminal_rounded,
+                        label: loc.console,
+                        onTap: () => navigationController.consoleOpen.value
+                            ? navigationController.hideConsole()
+                            : navigationController.showConsole(context),
+                      ),
+                      DesktopNavEntry(
                         id: 'support',
                         icon: Icons.help_outline_rounded,
                         label: loc.support,
@@ -1142,6 +1150,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       onToggleDebug: _toggleDebug,
       onClearLogs: _clearLogs,
       onCopyLogs: _copyLogs,
+      onClose: broadcasting ? null : navigationController.hideConsole,
     );
   }
 }
