@@ -136,23 +136,33 @@ class NetherNetMode {
       return;
     }
 
-    discovery.sendSignal(
+    final answerSent = discovery.sendSignal(
       recipientId: signal.senderId,
       type: NetherNetProtocol.signalConnectResponse,
       connectionId: signal.connectionId,
       payload: result.answer,
     );
 
+    if (!answerSent) {
+      _log('Could not send the relay answer to the client');
+      return;
+    }
+
+    var candidatesSent = 0;
     for (final candidate in result.candidates) {
-      discovery.sendSignal(
+      final sent = discovery.sendSignal(
         recipientId: signal.senderId,
         type: NetherNetProtocol.signalCandidateAdd,
         connectionId: signal.connectionId,
         payload: candidate,
       );
+      if (sent) candidatesSent++;
     }
 
-    _log('Client handed over to the relay');
+    _log(
+      'Client handed over to the relay (answer ${result.answer.length} bytes, '
+      '$candidatesSent/${result.candidates.length} candidates sent)',
+    );
   }
 
   Future<void> _forwardCandidate(NetherNetSignal signal) async {

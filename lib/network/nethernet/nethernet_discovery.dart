@@ -181,6 +181,10 @@ class NetherNetDiscovery {
         _handleMessage(body, senderId, datagram.address);
         break;
       default:
+        logger.info(
+          'NetherNet packet 0x${packetId.toRadixString(16)} from '
+          '${datagram.address.address} ignored',
+        );
         break;
     }
   }
@@ -198,14 +202,25 @@ class NetherNetDiscovery {
   }
 
   void _handleMessage(Uint8List body, int senderId, InternetAddress address) {
-    if (body.length < 30) return;
+    if (body.length < 30) {
+      logger.info('NetherNet message too short (${body.length} bytes)');
+      return;
+    }
     final view = ByteData.view(body.buffer, body.offsetInBytes, body.length);
     final recipientId = view.getUint64(18, Endian.little);
-    if (recipientId != networkId && recipientId != 0) return;
+    if (recipientId != networkId && recipientId != 0) {
+      logger.info('NetherNet message for another recipient ignored');
+      return;
+    }
 
     final declared = view.getUint32(26, Endian.little);
     final available = body.length - 30;
-    if (available <= 0 || available < declared) return;
+    if (available <= 0 || available < declared) {
+      logger.info(
+        'NetherNet message length mismatch (declared $declared, got $available)',
+      );
+      return;
+    }
 
     final message = utf8.decode(
       Uint8List.sublistView(body, 30),
@@ -214,10 +229,17 @@ class NetherNetDiscovery {
     if (message == 'Ping') return;
 
     final parts = message.split(' ');
-    if (parts.length < 2) return;
-
-    final connectionId = int.tryParse(parts[1]);
-    if (connectionId == null) return;
+    final connectionId = parts.length < 2
+        ? null
+        : NetherNetProtocol.parseUnsigned(parts[1]);
+    if (connectionId == null) {
+      logger.info('NetherNet message not understood: ${parts.first}');
+      return;
+    }
+    logger.info(
+      'NetherNet signal ${parts[0]} (connection ${NetherNetProtocol.unsignedString(connectionId)}) from '
+      '${address.address}',
+    );
 
     final payload = parts.length > 2 ? parts.sublist(2).join(' ') : '';
     onSignal?.call(
@@ -231,7 +253,7 @@ class NetherNetDiscovery {
     );
   }
 
-  void sendSignal({
+  bool sendSignal({
     required int recipientId,
     required String type,
     required int connectionId,
@@ -239,11 +261,11 @@ class NetherNetDiscovery {
   }) {
     final address = _peers[recipientId];
     final port = _peerPorts[recipientId];
-    if (address == null || port == null) return;
+    if (address == null || port == null) return false;
 
     final message = payload.isEmpty
-        ? '$type $connectionId'
-        : '$type $connectionId $payload';
+        ? '$type ${NetherNetProtocol.unsignedString(connectionId)}'
+        : '$type ${NetherNetProtocol.unsignedString(connectionId)} $payload';
 
     final packet = NetherNetProtocol.buildDiscoveryPacket(
       packetId: NetherNetProtocol.idDiscoveryMessage,
@@ -253,7 +275,7 @@ class NetherNetDiscovery {
         message: message,
       ),
     );
-    _send(packet, address, port);
+    return _send(packet, address, port);
   }
 
   Future<void> broadcastAdvertisement() async {
@@ -270,7 +292,17 @@ class NetherNetDiscovery {
     }
   }
 
-  static const _lanInterfacePrefixes = ['en', 'wlan', 'eth', 'ap', 'swlan'];
+  static const _wanInterfacePrefixes = [
+    'pdp_ip',
+    'rmnet',
+    'ccmni',
+    'utun',
+    'ipsec',
+    'tun',
+    'ppp',
+    'docker',
+    'veth',
+  ];
 
   Future<List<InternetAddress>> _directedBroadcastAddresses() async {
     try {
@@ -280,7 +312,7 @@ class NetherNetDiscovery {
       final result = <InternetAddress>[];
       for (final interface in interfaces) {
         final name = interface.name.toLowerCase();
-        if (!_lanInterfacePrefixes.any(name.startsWith)) continue;
+        if (_wanInterfacePrefixes.any(name.startsWith)) continue;
         for (final address in interface.addresses) {
           if (address.isLoopback || address.isLinkLocal) continue;
           final octets = address.rawAddress;
@@ -297,17 +329,23 @@ class NetherNetDiscovery {
     }
   }
 
-  void _send(Uint8List body, InternetAddress address, int port) {
+  bool _send(Uint8List body, InternetAddress address, int port) {
     final socket = _socket;
-    if (socket == null) return;
+    if (socket == null) return false;
     try {
-      socket.send(NetherNetProtocol.encryptPacket(body), address, port);
+      final sent = socket.send(
+        NetherNetProtocol.encryptPacket(body),
+        address,
+        port,
+      );
+      return sent > 0;
     } catch (e) {
       if (_isLocalNetworkBlocked(e)) {
         _reportBlocked(e);
-        return;
+        return false;
       }
       logger.error('NetherNet send failed: $e');
+      return false;
     }
   }
 
