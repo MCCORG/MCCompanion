@@ -144,7 +144,7 @@ class NetherNetMode {
     );
 
     if (!answerSent) {
-      _log('Could not send the relay answer, client address unknown');
+      _log('Could not send the relay answer to the client');
       return;
     }
 

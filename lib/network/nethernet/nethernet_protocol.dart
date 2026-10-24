@@ -113,8 +113,13 @@ class NetherNetProtocol {
   static String unsignedString(int value) =>
       BigInt.from(value).toUnsigned(64).toString();
 
-  static int? parseUnsigned(String value) =>
-      BigInt.tryParse(value)?.toSigned(64).toInt();
+  static int? parseUnsigned(String value) {
+    final parsed = BigInt.tryParse(value);
+    if (parsed == null || parsed.isNegative || parsed.bitLength > 64) {
+      return null;
+    }
+    return parsed.toSigned(64).toInt();
+  }
 
   static const int serverDataVersion = 7;
 

@@ -275,8 +275,7 @@ class NetherNetDiscovery {
         message: message,
       ),
     );
-    _send(packet, address, port);
-    return true;
+    return _send(packet, address, port);
   }
 
   Future<void> broadcastAdvertisement() async {
@@ -330,17 +329,23 @@ class NetherNetDiscovery {
     }
   }
 
-  void _send(Uint8List body, InternetAddress address, int port) {
+  bool _send(Uint8List body, InternetAddress address, int port) {
     final socket = _socket;
-    if (socket == null) return;
+    if (socket == null) return false;
     try {
-      socket.send(NetherNetProtocol.encryptPacket(body), address, port);
+      final sent = socket.send(
+        NetherNetProtocol.encryptPacket(body),
+        address,
+        port,
+      );
+      return sent > 0;
     } catch (e) {
       if (_isLocalNetworkBlocked(e)) {
         _reportBlocked(e);
-        return;
+        return false;
       }
       logger.error('NetherNet send failed: $e');
+      return false;
     }
   }
 
