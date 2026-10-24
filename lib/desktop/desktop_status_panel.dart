@@ -16,6 +16,7 @@ class DesktopStatusPanel extends StatelessWidget {
   final VoidCallback onToggleDebug;
   final VoidCallback onClearLogs;
   final VoidCallback onCopyLogs;
+  final VoidCallback? onClose;
 
   const DesktopStatusPanel({
     super.key,
@@ -30,6 +31,7 @@ class DesktopStatusPanel extends StatelessWidget {
     required this.onToggleDebug,
     required this.onClearLogs,
     required this.onCopyLogs,
+    this.onClose,
   });
 
   @override
@@ -64,6 +66,15 @@ class DesktopStatusPanel extends StatelessWidget {
                       color: broadcasting ? DsColor.success : DsColor.textFaint,
                       dot: true,
                     ),
+                    if (onClose != null) ...[
+                      const SizedBox(width: DsSpace.sm),
+                      DsIconButton(
+                        icon: Icons.close_rounded,
+                        tooltip: l.close,
+                        size: 32,
+                        onPressed: onClose,
+                      ),
+                    ],
                   ],
                 ),
                 const SizedBox(height: DsSpace.md),
