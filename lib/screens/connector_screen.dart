@@ -103,6 +103,12 @@ class HomeScreenState extends State<HomeScreen> {
     _loadBedrockAccounts();
     _loadResourcePackUrl();
     ResourcePackPrefs.revision.addListener(_loadResourcePackUrl);
+    _broadcastingNotifier.addListener(_syncBroadcasting);
+  }
+
+  void _syncBroadcasting() {
+    widget.navigationController.broadcasting.value =
+        _broadcastingNotifier.value;
   }
 
   void toggleDebug() {
@@ -120,6 +126,7 @@ class HomeScreenState extends State<HomeScreen> {
   @override
   void dispose() {
     ResourcePackPrefs.revision.removeListener(_loadResourcePackUrl);
+    _broadcastingNotifier.removeListener(_syncBroadcasting);
     _mainScrollController.dispose();
     unawaited(_netherNet.stop());
     _broadcastingNotifier.dispose();
@@ -128,6 +135,8 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   bool get isBroadcasting => _broadcastingNotifier.value;
+
+  Future<void> stopBroadcast() => _stopBroadcast();
 
   Future<void> loadUserServers() async {
     try {

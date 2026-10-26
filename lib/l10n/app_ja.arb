@@ -838,30 +838,6 @@
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "作成",
-  "@skinsCreate": {
-    "description": "Button to create/open skin editor"
-  },
-  "skinsDownload": "ダウンロード",
-  "@skinsDownload": {
-    "description": "Download button in skin detail sheet"
-  },
-  "skinsEdit": "Edit",
-  "@skinsEdit": {
-    "description": "Edit button in skin detail sheet"
-  },
-  "skinsInvalidFile": "無効な画像ファイルです",
-  "@skinsInvalidFile": {
-    "description": "Error when the selected file is not a valid image"
-  },
-  "skinsMustBe64": "スキンは 64×64 ピクセルである必要があります",
-  "@skinsMustBe64": {
-    "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsUpload": "アップロード",
-  "@skinsUpload": {
-    "description": "Button to upload a skin"
-  },
   "somethingWentWrong": "問題が発生しました。もう一度お試しください。",
   "@somethingWentWrong": {
     "description": "Generic error message"
@@ -1000,27 +976,6 @@
   "upgradeWindowsHint": "Microsoft Storeでアップグレードできます",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "skinSaved": "スキンを保存しました",
-  "@skinSaved": {
-    "description": "Toast when skin is saved"
-  },
-  "skinSavedAs": "\"{name}\" として保存しました",
-  "@skinSavedAs": {
-    "description": "Toast when skin saved with name",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinExportFailed": "エクスポート失敗",
-  "@skinExportFailed": {
-    "description": "Toast when skin export fails"
-  },
-  "skinExported": "スキンを正常にエクスポートしました",
-  "@skinExported": {
-    "description": "Toast when skin is exported successfully"
   },
   "accountActions": "アカウント",
   "@accountActions": {
@@ -1165,10 +1120,7 @@
     }
   },
   "skinsSavedToMySkins": "マイスキンに保存しました",
-  "skinsEmptyLocalSkins": "スキンはまだありません。スキンを作成またはアップロードして始めましょう。",
-  "skinSaveDialog": "スキンを保存",
-  "skinNameHint": "スキン名",
-  "skinDefaultName": "マイスキン",
+  "skinsEmptyLocalSkins": "保存済みのスキンはまだありません。",
   "sectionRecentActivity": "最近のアクティビティ",
   "activityNoEvents": "まだアクティビティはありません。",
   "activitySkinUploaded": "スキンをアップロード",
@@ -1256,35 +1208,18 @@
       }
     }
   },
-  "notifPrefSkinLiked": "スキンへのいいね",
   "notifPrefCommentReceived": "コメント受信",
   "notifPrefPackApproved": "パック承認",
   "notifPrefPackRejected": "パック拒否",
   "notifPrefFriendRequest": "フレンド申請",
   "notifPrefFriendAccepted": "フレンド追加",
   "notifPrefMessageReceived": "新しいメッセージ",
-  "skinLayerInner": "内側",
-  "@skinLayerInner": {
-    "description": "Skin editor layer toggle, inner/base layer"
-  },
-  "skinLayerOuter": "外側",
-  "@skinLayerOuter": {
-    "description": "Skin editor layer toggle, outer/overlay layer"
-  },
   "feedbackLoginRequiredTitle": "フィードバックを送信するにはログインしてください",
   "feedbackLoginRequiredBody": "フィードバックはMCCompanionアカウントに紐づけられ、アプリ内で直接返信できます。",
   "feedbackLoginButton": "ログイン",
   "rpBehaviorContentWarning": "このパックにはビヘイビアーパックのデータが含まれており、サーバーでは動作しません。テクスチャは引き続き使えます。",
   "rpInvalidPackFormat": "これはJava Editionのパックのため対応していません。Bedrock Editionのリソースパックを使用してください。",
   "supportInboxTitle": "サポート受信箱",
-  "skinShareSubject": "Minecraft スキン",
-  "skinEditorTitle": "スキンエディター",
-  "skinToolUndo": "元に戻す",
-  "skinSaveToMySkins": "マイスキンに保存",
-  "skinExportPng": "PNG を書き出す",
-  "skinToolDraw": "描く",
-  "skinToolFill": "塗りつぶし",
-  "skinToolErase": "消す",
   "customColour": "カスタムカラー",
   "featuredServerLabel": "注目のサーバー",
   "featuredServerTagline": "参加してすぐに遊べます。",
@@ -1335,19 +1270,6 @@
   "chooseServerTitle": "サーバーを選ぶ",
   "changeLabel": "変更",
   "howToAutoShow": "開始時にこれを表示",
-  "skinEditorLoadFailed": "そのスキンを読み込めませんでした。標準のスキンから始めます。",
-  "skinToolRecolour": "色を置換",
-  "skinToolPick": "スポイト",
-  "skinBases": "ベース",
-  "skinBasesTitle": "ベースから始める",
-  "skinBasesSubtitle": "今の絵と置き換わります。元に戻すで復帰します。",
-  "skinMirror": "左右対称",
-  "skinSurprise": "おまかせ",
-  "skinToolFillHint": "タップした面を塗ります",
-  "skinToolRecolourHint": "その色をスキン全体で置き換えます",
-  "skinToolPickHint": "タップした色を取り込みます",
-  "skinModelClassic": "標準",
-  "skinModelSlim": "細身",
   "shareServerLabel": "サーバーを共有",
   "shareServerOn": "フレンドにいるサーバーが見えます",
   "shareServerOff": "フレンドにはプレイ中とだけ表示されます",
@@ -1447,5 +1369,6 @@
   "serverVoteOffline": "サーバーに接続できませんでした。通信環境をご確認ください。",
   "feedbackViewYourReport": "送信した内容を見る",
   "showMore": "もっと見る",
-  "showLess": "閉じる"
+  "showLess": "閉じる",
+  "lookupRecent": "最近"
 }

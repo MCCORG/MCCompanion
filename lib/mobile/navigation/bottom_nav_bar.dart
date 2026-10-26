@@ -1,7 +1,7 @@
 import 'dart:ui' show ImageFilter;
 
 import 'package:flutter/material.dart';
-import '../components/app_blur.dart';
+import '../../widgets/components/app_blur.dart';
 import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../l10n/app_localizations.dart';
@@ -9,7 +9,7 @@ import '../../services/navigation_controller.dart';
 import '../../services/home_customization_service.dart';
 import '../../constants/app_constants.dart';
 import '../../theme/app_theme.dart';
-import '../components/app_sheet.dart';
+import '../../widgets/components/app_sheet.dart';
 import '../../theme/app_tokens.dart';
 
 class BottomGlassSimpleNavBar extends StatelessWidget {

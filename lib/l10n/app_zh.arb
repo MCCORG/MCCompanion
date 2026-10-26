@@ -838,30 +838,6 @@
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "创建",
-  "@skinsCreate": {
-    "description": "Button to create/open skin editor"
-  },
-  "skinsDownload": "下载",
-  "@skinsDownload": {
-    "description": "Download button in skin detail sheet"
-  },
-  "skinsEdit": "Edit",
-  "@skinsEdit": {
-    "description": "Edit button in skin detail sheet"
-  },
-  "skinsInvalidFile": "无效的图片文件",
-  "@skinsInvalidFile": {
-    "description": "Error when the selected file is not a valid image"
-  },
-  "skinsMustBe64": "皮肤必须为 64×64 像素",
-  "@skinsMustBe64": {
-    "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsUpload": "上传",
-  "@skinsUpload": {
-    "description": "Button to upload a skin"
-  },
   "somethingWentWrong": "出错了,请重试。",
   "@somethingWentWrong": {
     "description": "Generic error message"
@@ -1000,27 +976,6 @@
   "upgradeWindowsHint": "可在 Microsoft Store 升级",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "skinSaved": "皮肤已保存",
-  "@skinSaved": {
-    "description": "Toast when skin is saved"
-  },
-  "skinSavedAs": "已另存为 \"{name}\"",
-  "@skinSavedAs": {
-    "description": "Toast when skin saved with name",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinExportFailed": "导出失败",
-  "@skinExportFailed": {
-    "description": "Toast when skin export fails"
-  },
-  "skinExported": "皮肤导出成功",
-  "@skinExported": {
-    "description": "Toast when skin is exported successfully"
   },
   "accountActions": "账户",
   "@accountActions": {
@@ -1165,10 +1120,7 @@
     }
   },
   "skinsSavedToMySkins": "已保存到我的皮肤",
-  "skinsEmptyLocalSkins": "暂无皮肤。创建或上传皮肤以开始使用。",
-  "skinSaveDialog": "保存皮肤",
-  "skinNameHint": "皮肤名称",
-  "skinDefaultName": "我的皮肤",
+  "skinsEmptyLocalSkins": "还没有已保存的皮肤。",
   "sectionRecentActivity": "最近动态",
   "activityNoEvents": "暂无最近动态。",
   "activitySkinUploaded": "上传了皮肤",
@@ -1256,35 +1208,18 @@
       }
     }
   },
-  "notifPrefSkinLiked": "皮肤被点赞",
   "notifPrefCommentReceived": "收到评论",
   "notifPrefPackApproved": "资源包通过",
   "notifPrefPackRejected": "资源包被拒",
   "notifPrefFriendRequest": "好友请求",
   "notifPrefFriendAccepted": "添加好友",
   "notifPrefMessageReceived": "新消息",
-  "skinLayerInner": "内层",
-  "@skinLayerInner": {
-    "description": "Skin editor layer toggle, inner/base layer"
-  },
-  "skinLayerOuter": "外层",
-  "@skinLayerOuter": {
-    "description": "Skin editor layer toggle, outer/overlay layer"
-  },
   "feedbackLoginRequiredTitle": "登录以发送反馈",
   "feedbackLoginRequiredBody": "反馈会关联到你的 MCCompanion 账号，以便我们直接在应用内回复你。",
   "feedbackLoginButton": "登录",
   "rpBehaviorContentWarning": "此材质包包含行为包数据，在服务器上无法生效。贴图仍然可以正常使用。",
   "rpInvalidPackFormat": "这是 Java 版材质包，不受支持。请使用基岩版资源包。",
   "supportInboxTitle": "支持收件箱",
-  "skinShareSubject": "Minecraft 皮肤",
-  "skinEditorTitle": "皮肤编辑器",
-  "skinToolUndo": "撤销",
-  "skinSaveToMySkins": "保存到我的皮肤",
-  "skinExportPng": "导出 PNG",
-  "skinToolDraw": "绘制",
-  "skinToolFill": "填充",
-  "skinToolErase": "擦除",
   "customColour": "自定义颜色",
   "featuredServerLabel": "精选服务器",
   "featuredServerTagline": "进来一起玩吧。",
@@ -1335,19 +1270,6 @@
   "chooseServerTitle": "选择服务器",
   "changeLabel": "更改",
   "howToAutoShow": "启动时显示此说明",
-  "skinEditorLoadFailed": "无法加载该皮肤，将从默认皮肤开始。",
-  "skinToolRecolour": "替换颜色",
-  "skinToolPick": "取色",
-  "skinBases": "基础款",
-  "skinBasesTitle": "从基础款开始",
-  "skinBasesSubtitle": "这会替换当前画布内容，可用撤销恢复。",
-  "skinMirror": "镜像",
-  "skinSurprise": "随机生成",
-  "skinToolFillHint": "填充你点到的区域",
-  "skinToolRecolourHint": "替换整个皮肤上的该颜色",
-  "skinToolPickHint": "取用你点到的颜色",
-  "skinModelClassic": "标准",
-  "skinModelSlim": "纤细",
   "shareServerLabel": "分享你的服务器",
   "shareServerOn": "好友可以看到你所在的服务器",
   "shareServerOff": "好友只知道你在游戏中，看不到位置",
@@ -1447,5 +1369,6 @@
   "serverVoteOffline": "无法连接服务器，请检查网络。",
   "feedbackViewYourReport": "查看你的反馈",
   "showMore": "展开",
-  "showLess": "收起"
+  "showLess": "收起",
+  "lookupRecent": "最近"
 }

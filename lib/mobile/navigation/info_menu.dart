@@ -3,7 +3,7 @@ import 'package:in_app_review/in_app_review.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../l10n/app_localizations.dart';
 import '../../theme/app_theme.dart';
-import '../components/app_sheet.dart';
+import '../../widgets/components/app_sheet.dart';
 import '../../theme/app_tokens.dart';
 
 class InfoSheetContent extends StatelessWidget {

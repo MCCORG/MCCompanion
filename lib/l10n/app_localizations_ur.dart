@@ -773,24 +773,6 @@ class AppLocalizationsUr extends AppLocalizations {
   String get requestsAppearHere => 'دوستی کی نئی درخواستیں یہاں نظر آئیں گی۔';
 
   @override
-  String get skinsEdit => 'Edit';
-
-  @override
-  String get skinsMustBe64 => 'اسکن 64×64 پکسل کی ہونی چاہیے';
-
-  @override
-  String get skinsInvalidFile => 'غلط تصویری فائل';
-
-  @override
-  String get skinsUpload => 'اپ لوڈ';
-
-  @override
-  String get skinsCreate => 'بنائیں';
-
-  @override
-  String get skinsDownload => 'ڈاؤن لوڈ';
-
-  @override
   String get chooseUniqueUsername =>
       'شروع کرنے کے لیے ایک منفرد صارف نام چنیں۔';
 
@@ -1179,20 +1161,6 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => 'اپ گریڈ مائیکروسافٹ اسٹور پر دستیاب ہے';
-
-  @override
-  String get skinSaved => 'اسکن محفوظ';
-
-  @override
-  String skinSavedAs(String name) {
-    return '\"$name\" کے طور پر محفوظ';
-  }
-
-  @override
-  String get skinExportFailed => 'برآمد ناکام';
-
-  @override
-  String get skinExported => 'اسکن کامیابی سے برآمد';
 
   @override
   String get accountActions => 'اکاؤنٹ';
@@ -1612,17 +1580,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get skinsSavedToMySkins => 'میری اسکنز میں محفوظ ہو گیا';
 
   @override
-  String get skinsEmptyLocalSkins =>
-      'ابھی تک کوئی اسکن نہیں۔ شروع کرنے کے لیے ایک اسکن بنائیں یا اپلوڈ کریں۔';
-
-  @override
-  String get skinSaveDialog => 'سکن محفوظ کریں';
-
-  @override
-  String get skinNameHint => 'سکن کا نام';
-
-  @override
-  String get skinDefaultName => 'میرا سکن';
+  String get skinsEmptyLocalSkins => 'ابھی تک کوئی محفوظ اسکن نہیں۔';
 
   @override
   String get sectionRecentActivity => 'حالیہ سرگرمی';
@@ -1716,9 +1674,6 @@ class AppLocalizationsUr extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => 'اسکن پسند';
-
-  @override
   String get notifPrefCommentReceived => 'تبصرہ موصول';
 
   @override
@@ -1737,12 +1692,6 @@ class AppLocalizationsUr extends AppLocalizations {
   String get notifPrefMessageReceived => 'نیا پیغام';
 
   @override
-  String get skinLayerInner => 'اندرونی';
-
-  @override
-  String get skinLayerOuter => 'بیرونی';
-
-  @override
   String get feedbackLoginRequiredTitle => 'رائے بھیجنے کے لیے لاگ ان کریں';
 
   @override
@@ -1754,30 +1703,6 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get supportInboxTitle => 'سپورٹ ان باکس';
-
-  @override
-  String get skinShareSubject => 'Minecraft سکن';
-
-  @override
-  String get skinEditorTitle => 'سکن ایڈیٹر';
-
-  @override
-  String get skinToolUndo => 'واپس';
-
-  @override
-  String get skinSaveToMySkins => 'میری سکنز میں محفوظ کریں';
-
-  @override
-  String get skinExportPng => 'PNG ایکسپورٹ کریں';
-
-  @override
-  String get skinToolDraw => 'بنائیں';
-
-  @override
-  String get skinToolFill => 'بھریں';
-
-  @override
-  String get skinToolErase => 'مٹائیں';
 
   @override
   String get customColour => 'اپنی مرضی کا رنگ';
@@ -1942,47 +1867,6 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get howToAutoShow => 'شروع کرتے وقت یہ دکھائیں';
-
-  @override
-  String get skinEditorLoadFailed =>
-      'وہ اسکن لوڈ نہیں ہو سکی۔ ہم ڈیفالٹ اسکن سے شروع کر رہے ہیں۔';
-
-  @override
-  String get skinToolRecolour => 'رنگ بدلیں';
-
-  @override
-  String get skinToolPick => 'رنگ چنیں';
-
-  @override
-  String get skinBases => 'بنیادی ڈیزائن';
-
-  @override
-  String get skinBasesTitle => 'ایک بنیاد سے شروع کریں';
-
-  @override
-  String get skinBasesSubtitle =>
-      'یہ موجودہ ڈرائنگ کی جگہ لے گا۔ واپس کرنے پر بحال ہو جائے گا۔';
-
-  @override
-  String get skinMirror => 'آئینہ';
-
-  @override
-  String get skinSurprise => 'حیران کریں';
-
-  @override
-  String get skinToolFillHint => 'جس حصے کو چھوئیں وہ بھر دیتا ہے';
-
-  @override
-  String get skinToolRecolourHint => 'پوری اسکن میں وہ رنگ بدل دیتا ہے';
-
-  @override
-  String get skinToolPickHint => 'جس رنگ کو چھوئیں وہ لے لیتا ہے';
-
-  @override
-  String get skinModelClassic => 'چوڑا';
-
-  @override
-  String get skinModelSlim => 'پتلا';
 
   @override
   String get shareServerLabel => 'اپنا سرور شیئر کریں';
@@ -2200,4 +2084,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get showLess => 'کم';
+
+  @override
+  String get lookupRecent => 'حالیہ';
 }

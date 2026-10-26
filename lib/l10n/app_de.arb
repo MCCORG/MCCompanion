@@ -838,30 +838,6 @@
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "Erstellen",
-  "@skinsCreate": {
-    "description": "Button to create/open skin editor"
-  },
-  "skinsDownload": "Herunterladen",
-  "@skinsDownload": {
-    "description": "Download button in skin detail sheet"
-  },
-  "skinsEdit": "Bearbeiten",
-  "@skinsEdit": {
-    "description": "Edit button in skin detail sheet"
-  },
-  "skinsInvalidFile": "Ungültige Bilddatei",
-  "@skinsInvalidFile": {
-    "description": "Error when the selected file is not a valid image"
-  },
-  "skinsMustBe64": "Skin muss 64×64 Pixel sein",
-  "@skinsMustBe64": {
-    "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsUpload": "Hochladen",
-  "@skinsUpload": {
-    "description": "Button to upload a skin"
-  },
   "somethingWentWrong": "Etwas ist schiefgelaufen. Erneut versuchen.",
   "@somethingWentWrong": {
     "description": "Generic error message"
@@ -1000,27 +976,6 @@
   "upgradeWindowsHint": "Upgrade im Microsoft Store verfügbar",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "skinSaved": "Skin gespeichert",
-  "@skinSaved": {
-    "description": "Toast when skin is saved"
-  },
-  "skinSavedAs": "Gespeichert als \"{name}\"",
-  "@skinSavedAs": {
-    "description": "Toast when skin saved with name",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinExportFailed": "Export fehlgeschlagen",
-  "@skinExportFailed": {
-    "description": "Toast when skin export fails"
-  },
-  "skinExported": "Skin erfolgreich exportiert",
-  "@skinExported": {
-    "description": "Toast when skin is exported successfully"
   },
   "accountActions": "Konto",
   "@accountActions": {
@@ -1165,10 +1120,7 @@
     }
   },
   "skinsSavedToMySkins": "In Meine Skins gespeichert",
-  "skinsEmptyLocalSkins": "Noch keine Skins. Erstelle oder lade einen Skin hoch, um loszulegen.",
-  "skinSaveDialog": "Skin speichern",
-  "skinNameHint": "Skin-Name",
-  "skinDefaultName": "Mein Skin",
+  "skinsEmptyLocalSkins": "Noch keine gespeicherten Skins.",
   "sectionRecentActivity": "Letzte Aktivitäten",
   "activityNoEvents": "Noch keine Aktivitäten.",
   "activitySkinUploaded": "Skin hochgeladen",
@@ -1256,35 +1208,18 @@
       }
     }
   },
-  "notifPrefSkinLiked": "Skin geliket",
   "notifPrefCommentReceived": "Kommentar erhalten",
   "notifPrefPackApproved": "Pack genehmigt",
   "notifPrefPackRejected": "Pack abgelehnt",
   "notifPrefFriendRequest": "Freundschaftsanfrage",
   "notifPrefFriendAccepted": "Freund hinzugefügt",
   "notifPrefMessageReceived": "Neue Nachricht",
-  "skinLayerInner": "Innen",
-  "@skinLayerInner": {
-    "description": "Skin editor layer toggle, inner/base layer"
-  },
-  "skinLayerOuter": "Außen",
-  "@skinLayerOuter": {
-    "description": "Skin editor layer toggle, outer/overlay layer"
-  },
   "feedbackLoginRequiredTitle": "Melde dich an, um Feedback zu senden",
   "feedbackLoginRequiredBody": "Feedback ist mit deinem MCCompanion-Konto verknüpft, damit wir dir direkt in der App antworten können.",
   "feedbackLoginButton": "Anmelden",
   "rpBehaviorContentWarning": "Dieses Paket enthält Verhaltenspaket-Daten, die auf Servern nicht funktionieren. Die Texturen funktionieren trotzdem.",
   "rpInvalidPackFormat": "Dies ist ein Java-Edition-Paket und wird nicht unterstützt. Bitte verwende ein Bedrock-Edition-Ressourcenpaket.",
   "supportInboxTitle": "Support-Postfach",
-  "skinShareSubject": "Minecraft-Skin",
-  "skinEditorTitle": "Skin-Editor",
-  "skinToolUndo": "Rückgängig",
-  "skinSaveToMySkins": "In meinen Skins speichern",
-  "skinExportPng": "PNG exportieren",
-  "skinToolDraw": "Zeichnen",
-  "skinToolFill": "Füllen",
-  "skinToolErase": "Radieren",
   "customColour": "Eigene Farbe",
   "featuredServerLabel": "EMPFOHLENER SERVER",
   "featuredServerTagline": "Rein und losspielen.",
@@ -1335,19 +1270,6 @@
   "chooseServerTitle": "Server auswählen",
   "changeLabel": "Ändern",
   "howToAutoShow": "Beim Starten anzeigen",
-  "skinEditorLoadFailed": "Dieser Skin konnte nicht geladen werden. Wir starten mit dem Standard-Skin.",
-  "skinToolRecolour": "Umfärben",
-  "skinToolPick": "Pipette",
-  "skinBases": "Vorlagen",
-  "skinBasesTitle": "Mit einer Vorlage starten",
-  "skinBasesSubtitle": "Das ersetzt die aktuelle Zeichnung. Rückgängig stellt sie wieder her.",
-  "skinMirror": "Spiegeln",
-  "skinSurprise": "Überrasch mich",
-  "skinToolFillHint": "Füllt die angetippte Fläche",
-  "skinToolRecolourHint": "Ändert diese Farbe überall",
-  "skinToolPickHint": "Übernimmt die angetippte Farbe",
-  "skinModelClassic": "Breit",
-  "skinModelSlim": "Schmal",
   "shareServerLabel": "Server teilen",
   "shareServerOn": "Freunde sehen, auf welchem Server du bist",
   "shareServerOff": "Freunde sehen, dass du spielst, aber nicht wo",
@@ -1447,5 +1369,6 @@
   "serverVoteOffline": "Server nicht erreichbar. Überprüfe deine Verbindung.",
   "feedbackViewYourReport": "Deine Meldung ansehen",
   "showMore": "Mehr",
-  "showLess": "Weniger"
+  "showLess": "Weniger",
+  "lookupRecent": "Zuletzt"
 }

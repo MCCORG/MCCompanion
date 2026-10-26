@@ -206,7 +206,7 @@ class _DesktopServerListScreenState extends State<DesktopServerListScreen> {
             children: [
               Expanded(
                 flex: 3,
-                child: Text(l.featureLabelPartners, style: DsType.display),
+                child: Text(l.featureLabelPartners, style: DsType.title),
               ),
               const SizedBox(width: DsSpace.md),
               Flexible(

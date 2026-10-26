@@ -11,6 +11,7 @@ import '../l10n/app_localizations.dart';
 import '../services/auth_service.dart';
 import '../theme/app_theme.dart';
 import '../design/design.dart';
+import '../layout/platform.dart';
 import '../util/pack_file_picker.dart';
 import '../util/resource_pack_prefs.dart';
 import '../widgets/components/app_toast.dart';
@@ -413,11 +414,13 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
         children: [
           DsHeader(
             title: l.rpScreenTitle,
-            leading: DsIconButton(
-              icon: Icons.arrow_back_rounded,
-              size: 36,
-              onPressed: widget.onBack,
-            ),
+            leading: useClientLayout(context)
+                ? null
+                : DsIconButton(
+                    icon: Icons.arrow_back_rounded,
+                    size: 36,
+                    onPressed: widget.onBack,
+                  ),
           ),
 
           Expanded(
@@ -438,68 +441,76 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                     ),
                     keyboardDismissBehavior:
                         ScrollViewKeyboardDismissBehavior.onDrag,
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 720),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 20),
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          maxWidth: useClientLayout(context)
+                              ? kDesktopContentWidth
+                              : 720,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(height: 20),
 
-                          RpActivePackBanner(
-                            name: _hasPack ? _activePackName : null,
-                            enabled: _enabled,
-                            onToggle: _hasPack ? _toggleEnabled : null,
-                            onRemove: (_hasPack && _mode == RpInputMode.upload)
-                                ? _deleteUpload
-                                : null,
-                          ),
-                          const SizedBox(height: 16),
-
-                          RpTabBar(
-                            mode: _mode,
-                            onSelect: (m) => setState(() => _mode = m),
-                          ),
-                          const SizedBox(height: 16),
-
-                          if (_mode == RpInputMode.browse)
-                            _buildBrowseSection(),
-                          if (_mode == RpInputMode.upload)
-                            _buildUploadSection(l),
-                          if (_mode == RpInputMode.merge) ...[
-                            RpTabInfoBox(text: l.rpTabMergeInfo),
-                            const SizedBox(height: 16),
-                          ],
-                          Offstage(
-                            offstage: _mode != RpInputMode.merge,
-                            child: RpMergerWidget(
-                              key: const ValueKey('merger'),
-                              onActivated: (url, filename) {
-                                setState(() {
-                                  _uploadedUrl = url;
-                                  _uploadedFilename = filename;
-                                  _hasPack = true;
-                                  _activePackName = filename;
-                                  _mode = RpInputMode.upload;
-                                });
-                                AppToast.show(
-                                  context,
-                                  message: AppLocalizations.of(
-                                    context,
-                                  )!.rpMergerSetActiveToast,
-                                  icon: Icons.check_rounded,
-                                  color: AppTheme.accent,
-                                );
-                              },
+                            RpActivePackBanner(
+                              name: _hasPack ? _activePackName : null,
+                              enabled: _enabled,
+                              onToggle: _hasPack ? _toggleEnabled : null,
+                              onRemove:
+                                  (_hasPack && _mode == RpInputMode.upload)
+                                  ? _deleteUpload
+                                  : null,
                             ),
-                          ),
+                            const SizedBox(height: 16),
 
-                          if (showControls) ...[
-                            const SizedBox(height: 28),
-                            RpInfoSection(showDialog: _showDialog),
+                            RpTabBar(
+                              mode: _mode,
+                              onSelect: (m) => setState(() => _mode = m),
+                            ),
+                            const SizedBox(height: 16),
+
+                            if (_mode == RpInputMode.browse)
+                              _buildBrowseSection(),
+                            if (_mode == RpInputMode.upload)
+                              _buildUploadSection(l),
+                            if (_mode == RpInputMode.merge) ...[
+                              RpTabInfoBox(text: l.rpTabMergeInfo),
+                              const SizedBox(height: 16),
+                            ],
+                            Offstage(
+                              offstage: _mode != RpInputMode.merge,
+                              child: RpMergerWidget(
+                                key: const ValueKey('merger'),
+                                onActivated: (url, filename) {
+                                  setState(() {
+                                    _uploadedUrl = url;
+                                    _uploadedFilename = filename;
+                                    _hasPack = true;
+                                    _activePackName = filename;
+                                    _mode = RpInputMode.upload;
+                                  });
+                                  AppToast.show(
+                                    context,
+                                    message: AppLocalizations.of(
+                                      context,
+                                    )!.rpMergerSetActiveToast,
+                                    icon: Icons.check_rounded,
+                                    color: AppTheme.accent,
+                                  );
+                                },
+                              ),
+                            ),
+
+                            if (showControls) ...[
+                              const SizedBox(height: 28),
+                              RpInfoSection(showDialog: _showDialog),
+                            ],
+
+                            const SizedBox(height: 32),
                           ],
-
-                          const SizedBox(height: 32),
-                        ],
+                        ),
                       ),
                     ),
                   ),
@@ -606,12 +617,26 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
             ),
           ],
           const SizedBox(height: DsSpace.lg),
-          ...packs.map(
-            (pack) => RpFeaturedPackCard(
-              pack: pack,
-              isApplying: _applyingPackId == pack['id'].toString(),
-              onUse: () => _applyFeaturedPack(pack),
-            ),
+          LayoutBuilder(
+            builder: (context, box) {
+              final columns = (box.maxWidth / 520).floor().clamp(1, 4);
+              const gap = DsSpace.md;
+              final cardWidth = (box.maxWidth - gap * (columns - 1)) / columns;
+              return Wrap(
+                spacing: gap,
+                children: [
+                  for (final pack in packs)
+                    SizedBox(
+                      width: cardWidth,
+                      child: RpFeaturedPackCard(
+                        pack: pack,
+                        isApplying: _applyingPackId == pack['id'].toString(),
+                        onUse: () => _applyFeaturedPack(pack),
+                      ),
+                    ),
+                ],
+              );
+            },
           ),
         ],
       ],

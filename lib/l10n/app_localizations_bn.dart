@@ -767,24 +767,6 @@ class AppLocalizationsBn extends AppLocalizations {
   String get requestsAppearHere => 'নতুন বন্ধুত্বের অনুরোধ এখানে দেখা যাবে।';
 
   @override
-  String get skinsEdit => 'Edit';
-
-  @override
-  String get skinsMustBe64 => 'স্কিন ৬৪×৬৪ পিক্সেলের হতে হবে';
-
-  @override
-  String get skinsInvalidFile => 'অবৈধ ছবির ফাইল';
-
-  @override
-  String get skinsUpload => 'আপলোড';
-
-  @override
-  String get skinsCreate => 'তৈরি করুন';
-
-  @override
-  String get skinsDownload => 'ডাউনলোড';
-
-  @override
   String get chooseUniqueUsername =>
       'শুরু করতে একটি অনন্য ব্যবহারকারীর নাম বেছে নিন।';
 
@@ -1172,20 +1154,6 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => 'মাইক্রোসফট স্টোরে আপগ্রেড পাওয়া যাচ্ছে';
-
-  @override
-  String get skinSaved => 'স্কিন সংরক্ষিত';
-
-  @override
-  String skinSavedAs(String name) {
-    return '\"$name\" নামে সংরক্ষিত';
-  }
-
-  @override
-  String get skinExportFailed => 'এক্সপোর্ট ব্যর্থ';
-
-  @override
-  String get skinExported => 'স্কিন সফলভাবে এক্সপোর্ট হয়েছে';
 
   @override
   String get accountActions => 'অ্যাকাউন্ট';
@@ -1610,17 +1578,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get skinsSavedToMySkins => 'আমার স্কিনে সংরক্ষিত হয়েছে';
 
   @override
-  String get skinsEmptyLocalSkins =>
-      'এখনো কোনো স্কিন নেই। শুরু করতে একটি স্কিন তৈরি বা আপলোড করুন।';
-
-  @override
-  String get skinSaveDialog => 'স্কিন সেভ করুন';
-
-  @override
-  String get skinNameHint => 'স্কিনের নাম';
-
-  @override
-  String get skinDefaultName => 'আমার স্কিন';
+  String get skinsEmptyLocalSkins => 'এখনও কোনো সংরক্ষিত স্কিন নেই।';
 
   @override
   String get sectionRecentActivity => 'সাম্প্রতিক কার্যক্রম';
@@ -1714,9 +1672,6 @@ class AppLocalizationsBn extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => 'স্কিন পছন্দ';
-
-  @override
   String get notifPrefCommentReceived => 'মন্তব্য প্রাপ্ত';
 
   @override
@@ -1735,12 +1690,6 @@ class AppLocalizationsBn extends AppLocalizations {
   String get notifPrefMessageReceived => 'নতুন বার্তা';
 
   @override
-  String get skinLayerInner => 'অভ্যন্তরীণ';
-
-  @override
-  String get skinLayerOuter => 'বাহ্যিক';
-
-  @override
   String get feedbackLoginRequiredTitle => 'মতামত পাঠাতে লগ ইন করুন';
 
   @override
@@ -1752,30 +1701,6 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get supportInboxTitle => 'সাপোর্ট ইনবক্স';
-
-  @override
-  String get skinShareSubject => 'Minecraft স্কিন';
-
-  @override
-  String get skinEditorTitle => 'স্কিন এডিটর';
-
-  @override
-  String get skinToolUndo => 'আগের অবস্থায়';
-
-  @override
-  String get skinSaveToMySkins => 'আমার স্কিনে সেভ করুন';
-
-  @override
-  String get skinExportPng => 'PNG এক্সপোর্ট করুন';
-
-  @override
-  String get skinToolDraw => 'আঁকুন';
-
-  @override
-  String get skinToolFill => 'ভরাট';
-
-  @override
-  String get skinToolErase => 'মুছুন';
 
   @override
   String get customColour => 'নিজের রঙ';
@@ -1940,47 +1865,6 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get howToAutoShow => 'শুরু করার সময় এটি দেখান';
-
-  @override
-  String get skinEditorLoadFailed =>
-      'সেই স্কিনটি লোড করা যায়নি। আমরা ডিফল্ট স্কিন দিয়ে শুরু করছি।';
-
-  @override
-  String get skinToolRecolour => 'রং বদলান';
-
-  @override
-  String get skinToolPick => 'রং নিন';
-
-  @override
-  String get skinBases => 'বেস';
-
-  @override
-  String get skinBasesTitle => 'একটি বেস থেকে শুরু করুন';
-
-  @override
-  String get skinBasesSubtitle =>
-      'এটি বর্তমান ছবিটি প্রতিস্থাপন করবে। আনডু করলে ফিরে আসবে।';
-
-  @override
-  String get skinMirror => 'মিরর';
-
-  @override
-  String get skinSurprise => 'চমক';
-
-  @override
-  String get skinToolFillHint => 'আপনি যে অংশে ট্যাপ করবেন তা ভরে দেয়';
-
-  @override
-  String get skinToolRecolourHint => 'পুরো স্কিনে সেই রং বদলে দেয়';
-
-  @override
-  String get skinToolPickHint => 'আপনি যে রঙে ট্যাপ করবেন তা নেয়';
-
-  @override
-  String get skinModelClassic => 'চওড়া';
-
-  @override
-  String get skinModelSlim => 'সরু';
 
   @override
   String get shareServerLabel => 'আপনার সার্ভার শেয়ার করুন';
@@ -2198,4 +2082,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get showLess => 'কম';
+
+  @override
+  String get lookupRecent => 'সাম্প্রতিক';
 }

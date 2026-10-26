@@ -774,24 +774,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get requestsAppearHere => 'Maombi mapya ya urafiki yataonekana hapa.';
 
   @override
-  String get skinsEdit => 'Edit';
-
-  @override
-  String get skinsMustBe64 => 'Skin lazima iwe pikseli 64×64';
-
-  @override
-  String get skinsInvalidFile => 'Faili ya picha si sahihi';
-
-  @override
-  String get skinsUpload => 'Pakia';
-
-  @override
-  String get skinsCreate => 'Unda';
-
-  @override
-  String get skinsDownload => 'Pakua';
-
-  @override
   String get chooseUniqueUsername =>
       'Chagua jina la mtumiaji la kipekee kuanza.';
 
@@ -1182,20 +1164,6 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get upgradeWindowsHint =>
       'Uboreshaji unapatikana kwenye Microsoft Store';
-
-  @override
-  String get skinSaved => 'Skin imehifadhiwa';
-
-  @override
-  String skinSavedAs(String name) {
-    return 'Imehifadhiwa kama \"$name\"';
-  }
-
-  @override
-  String get skinExportFailed => 'Usafirishaji umeshindwa';
-
-  @override
-  String get skinExported => 'Skin imesafirishwa';
 
   @override
   String get accountActions => 'Akaunti';
@@ -1624,17 +1592,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get skinsSavedToMySkins => 'Imehifadhiwa katika Ngozi Zangu';
 
   @override
-  String get skinsEmptyLocalSkins =>
-      'Hakuna ngozi bado. Unda au pakia ngozi ili kuanza.';
-
-  @override
-  String get skinSaveDialog => 'Hifadhi Skin';
-
-  @override
-  String get skinNameHint => 'Jina la skin';
-
-  @override
-  String get skinDefaultName => 'Skin yangu';
+  String get skinsEmptyLocalSkins => 'Bado hakuna skin zilizohifadhiwa.';
 
   @override
   String get sectionRecentActivity => 'Shughuli za hivi karibuni';
@@ -1728,9 +1686,6 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => 'Skin imependwa';
-
-  @override
   String get notifPrefCommentReceived => 'Maoni yamepokelewa';
 
   @override
@@ -1749,12 +1704,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get notifPrefMessageReceived => 'Ujumbe mpya';
 
   @override
-  String get skinLayerInner => 'Ndani';
-
-  @override
-  String get skinLayerOuter => 'Nje';
-
-  @override
   String get feedbackLoginRequiredTitle => 'Ingia ili kutuma maoni';
 
   @override
@@ -1766,30 +1715,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get supportInboxTitle => 'Kikasha cha usaidizi';
-
-  @override
-  String get skinShareSubject => 'Skin ya Minecraft';
-
-  @override
-  String get skinEditorTitle => 'Kihariri cha skin';
-
-  @override
-  String get skinToolUndo => 'Tendua';
-
-  @override
-  String get skinSaveToMySkins => 'Hifadhi kwenye skin zangu';
-
-  @override
-  String get skinExportPng => 'Hamisha PNG';
-
-  @override
-  String get skinToolDraw => 'Chora';
-
-  @override
-  String get skinToolFill => 'Jaza';
-
-  @override
-  String get skinToolErase => 'Futa';
 
   @override
   String get customColour => 'Rangi yako';
@@ -1954,48 +1879,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get howToAutoShow => 'Onyesha hii ninapoanza';
-
-  @override
-  String get skinEditorLoadFailed =>
-      'Ngozi hiyo haikuweza kupakiwa. Tunaanza na ile ya kawaida.';
-
-  @override
-  String get skinToolRecolour => 'Badili rangi';
-
-  @override
-  String get skinToolPick => 'Chagua rangi';
-
-  @override
-  String get skinBases => 'Misingi';
-
-  @override
-  String get skinBasesTitle => 'Anza na msingi';
-
-  @override
-  String get skinBasesSubtitle =>
-      'Hii inabadilisha kilichopo sasa. Tendua kinairudisha.';
-
-  @override
-  String get skinMirror => 'Kioo';
-
-  @override
-  String get skinSurprise => 'Nishangaze';
-
-  @override
-  String get skinToolFillHint => 'Hujaza eneo unalogusa';
-
-  @override
-  String get skinToolRecolourHint =>
-      'Hubadilisha rangi hiyo kwenye ngozi nzima';
-
-  @override
-  String get skinToolPickHint => 'Huchukua rangi unayogusa';
-
-  @override
-  String get skinModelClassic => 'Pana';
-
-  @override
-  String get skinModelSlim => 'Membamba';
 
   @override
   String get shareServerLabel => 'Shiriki seva yako';
@@ -2214,4 +2097,7 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get showLess => 'Punguza';
+
+  @override
+  String get lookupRecent => 'Za hivi karibuni';
 }

@@ -770,24 +770,6 @@ class AppLocalizationsId extends AppLocalizations {
       'Permintaan pertemanan baru akan muncul di sini.';
 
   @override
-  String get skinsEdit => 'Edit';
-
-  @override
-  String get skinsMustBe64 => 'Skin harus berukuran 64×64 piksel';
-
-  @override
-  String get skinsInvalidFile => 'File gambar tidak valid';
-
-  @override
-  String get skinsUpload => 'Unggah';
-
-  @override
-  String get skinsCreate => 'Buat';
-
-  @override
-  String get skinsDownload => 'Unduh';
-
-  @override
   String get chooseUniqueUsername => 'Pilih nama pengguna unik untuk memulai.';
 
   @override
@@ -1174,20 +1156,6 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => 'Upgrade tersedia melalui Microsoft Store';
-
-  @override
-  String get skinSaved => 'Skin disimpan';
-
-  @override
-  String skinSavedAs(String name) {
-    return 'Disimpan sebagai \"$name\"';
-  }
-
-  @override
-  String get skinExportFailed => 'Ekspor gagal';
-
-  @override
-  String get skinExported => 'Skin berhasil diekspor';
 
   @override
   String get accountActions => 'Akun';
@@ -1611,17 +1579,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get skinsSavedToMySkins => 'Disimpan ke Skin Saya';
 
   @override
-  String get skinsEmptyLocalSkins =>
-      'Belum ada skin. Buat atau unggah skin untuk memulai.';
-
-  @override
-  String get skinSaveDialog => 'Simpan Skin';
-
-  @override
-  String get skinNameHint => 'Nama skin';
-
-  @override
-  String get skinDefaultName => 'Skin saya';
+  String get skinsEmptyLocalSkins => 'Belum ada skin tersimpan.';
 
   @override
   String get sectionRecentActivity => 'Aktivitas terbaru';
@@ -1715,9 +1673,6 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => 'Skin disukai';
-
-  @override
   String get notifPrefCommentReceived => 'Komentar diterima';
 
   @override
@@ -1736,12 +1691,6 @@ class AppLocalizationsId extends AppLocalizations {
   String get notifPrefMessageReceived => 'Pesan baru';
 
   @override
-  String get skinLayerInner => 'Dalam';
-
-  @override
-  String get skinLayerOuter => 'Luar';
-
-  @override
   String get feedbackLoginRequiredTitle => 'Masuk untuk mengirim masukan';
 
   @override
@@ -1753,30 +1702,6 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get supportInboxTitle => 'Kotak masuk dukungan';
-
-  @override
-  String get skinShareSubject => 'Skin Minecraft';
-
-  @override
-  String get skinEditorTitle => 'Editor skin';
-
-  @override
-  String get skinToolUndo => 'Urungkan';
-
-  @override
-  String get skinSaveToMySkins => 'Simpan ke skin saya';
-
-  @override
-  String get skinExportPng => 'Ekspor PNG';
-
-  @override
-  String get skinToolDraw => 'Gambar';
-
-  @override
-  String get skinToolFill => 'Isi';
-
-  @override
-  String get skinToolErase => 'Hapus';
 
   @override
   String get customColour => 'Warna khusus';
@@ -1941,47 +1866,6 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get howToAutoShow => 'Tampilkan ini saat mulai';
-
-  @override
-  String get skinEditorLoadFailed =>
-      'Skin itu tidak bisa dimuat. Kita mulai dari skin bawaan.';
-
-  @override
-  String get skinToolRecolour => 'Warnai ulang';
-
-  @override
-  String get skinToolPick => 'Ambil warna';
-
-  @override
-  String get skinBases => 'Dasar';
-
-  @override
-  String get skinBasesTitle => 'Mulai dari dasar';
-
-  @override
-  String get skinBasesSubtitle =>
-      'Ini mengganti yang ada sekarang. Urungkan mengembalikannya.';
-
-  @override
-  String get skinMirror => 'Cermin';
-
-  @override
-  String get skinSurprise => 'Kejutan';
-
-  @override
-  String get skinToolFillHint => 'Mengisi bidang yang kamu sentuh';
-
-  @override
-  String get skinToolRecolourHint => 'Mengubah warna itu di seluruh skin';
-
-  @override
-  String get skinToolPickHint => 'Mengambil warna yang kamu sentuh';
-
-  @override
-  String get skinModelClassic => 'Lebar';
-
-  @override
-  String get skinModelSlim => 'Ramping';
 
   @override
   String get shareServerLabel => 'Bagikan servermu';
@@ -2199,4 +2083,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get showLess => 'Lebih sedikit';
+
+  @override
+  String get lookupRecent => 'Terbaru';
 }

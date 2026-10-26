@@ -767,24 +767,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get requestsAppearHere => 'Las nuevas solicitudes aparecerán aquí.';
 
   @override
-  String get skinsEdit => 'Editar';
-
-  @override
-  String get skinsMustBe64 => 'El skin debe ser de 64×64 píxeles';
-
-  @override
-  String get skinsInvalidFile => 'Archivo de imagen no válido';
-
-  @override
-  String get skinsUpload => 'Subir';
-
-  @override
-  String get skinsCreate => 'Crear';
-
-  @override
-  String get skinsDownload => 'Descargar';
-
-  @override
   String get chooseUniqueUsername =>
       'Elige un nombre de usuario único para comenzar.';
 
@@ -1169,20 +1151,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get upgradeWindowsHint =>
       'Actualización disponible en Microsoft Store';
-
-  @override
-  String get skinSaved => 'Skin guardado';
-
-  @override
-  String skinSavedAs(String name) {
-    return 'Guardado como \"$name\"';
-  }
-
-  @override
-  String get skinExportFailed => 'Error al exportar';
-
-  @override
-  String get skinExported => 'Skin exportado correctamente';
 
   @override
   String get accountActions => 'Cuenta';
@@ -1611,17 +1579,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get skinsSavedToMySkins => 'Guardado en Mis Skins';
 
   @override
-  String get skinsEmptyLocalSkins =>
-      'Aún no hay skins. Crea o sube un skin para empezar.';
-
-  @override
-  String get skinSaveDialog => 'Guardar skin';
-
-  @override
-  String get skinNameHint => 'Nombre del skin';
-
-  @override
-  String get skinDefaultName => 'Mi skin';
+  String get skinsEmptyLocalSkins => 'Aún no hay skins guardadas.';
 
   @override
   String get sectionRecentActivity => 'Actividad reciente';
@@ -1715,9 +1673,6 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => 'Skin con me gusta';
-
-  @override
   String get notifPrefCommentReceived => 'Comentario recibido';
 
   @override
@@ -1736,12 +1691,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get notifPrefMessageReceived => 'Nuevo mensaje';
 
   @override
-  String get skinLayerInner => 'Interior';
-
-  @override
-  String get skinLayerOuter => 'Exterior';
-
-  @override
   String get feedbackLoginRequiredTitle =>
       'Inicia sesión para enviar comentarios';
 
@@ -1754,30 +1703,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get supportInboxTitle => 'Bandeja de soporte';
-
-  @override
-  String get skinShareSubject => 'Skin de Minecraft';
-
-  @override
-  String get skinEditorTitle => 'Editor de skins';
-
-  @override
-  String get skinToolUndo => 'Deshacer';
-
-  @override
-  String get skinSaveToMySkins => 'Guardar en mis skins';
-
-  @override
-  String get skinExportPng => 'Exportar PNG';
-
-  @override
-  String get skinToolDraw => 'Dibujar';
-
-  @override
-  String get skinToolFill => 'Rellenar';
-
-  @override
-  String get skinToolErase => 'Borrar';
 
   @override
   String get customColour => 'Color personalizado';
@@ -1942,47 +1867,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get howToAutoShow => 'Mostrar esto al iniciar';
-
-  @override
-  String get skinEditorLoadFailed =>
-      'No se pudo cargar esa skin. Empezamos con la predeterminada.';
-
-  @override
-  String get skinToolRecolour => 'Recolorear';
-
-  @override
-  String get skinToolPick => 'Cuentagotas';
-
-  @override
-  String get skinBases => 'Bases';
-
-  @override
-  String get skinBasesTitle => 'Empezar desde una base';
-
-  @override
-  String get skinBasesSubtitle =>
-      'Esto reemplaza lo que hay ahora. Deshacer lo devuelve.';
-
-  @override
-  String get skinMirror => 'Espejo';
-
-  @override
-  String get skinSurprise => 'Sorpréndeme';
-
-  @override
-  String get skinToolFillHint => 'Rellena la zona que tocas';
-
-  @override
-  String get skinToolRecolourHint => 'Cambia ese color en toda la skin';
-
-  @override
-  String get skinToolPickHint => 'Toma el color que tocas';
-
-  @override
-  String get skinModelClassic => 'Ancho';
-
-  @override
-  String get skinModelSlim => 'Delgado';
 
   @override
   String get shareServerLabel => 'Compartir tu servidor';
@@ -2202,4 +2086,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get showLess => 'Menos';
+
+  @override
+  String get lookupRecent => 'Recientes';
 }

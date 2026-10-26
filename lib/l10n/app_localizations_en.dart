@@ -765,24 +765,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get requestsAppearHere => 'New friend requests will appear here.';
 
   @override
-  String get skinsEdit => 'Edit';
-
-  @override
-  String get skinsMustBe64 => 'Skin must be 64×64 pixels';
-
-  @override
-  String get skinsInvalidFile => 'Invalid image file';
-
-  @override
-  String get skinsUpload => 'Upload';
-
-  @override
-  String get skinsCreate => 'Create';
-
-  @override
-  String get skinsDownload => 'Download';
-
-  @override
   String get chooseUniqueUsername => 'Choose a unique username to get started.';
 
   @override
@@ -1165,20 +1147,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => 'Upgrade available via the Microsoft Store';
-
-  @override
-  String get skinSaved => 'Skin saved';
-
-  @override
-  String skinSavedAs(String name) {
-    return 'Saved as \"$name\"';
-  }
-
-  @override
-  String get skinExportFailed => 'Export failed';
-
-  @override
-  String get skinExported => 'Skin exported successfully';
 
   @override
   String get accountActions => 'Account';
@@ -1599,17 +1567,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get skinsSavedToMySkins => 'Saved to My Skins';
 
   @override
-  String get skinsEmptyLocalSkins =>
-      'No skins yet. Create or upload a skin to get started.';
-
-  @override
-  String get skinSaveDialog => 'Save Skin';
-
-  @override
-  String get skinNameHint => 'Skin name';
-
-  @override
-  String get skinDefaultName => 'My Skin';
+  String get skinsEmptyLocalSkins => 'No saved skins yet.';
 
   @override
   String get sectionRecentActivity => 'Recent Activity';
@@ -1703,9 +1661,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => 'Skin liked';
-
-  @override
   String get notifPrefCommentReceived => 'Comment received';
 
   @override
@@ -1724,12 +1679,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notifPrefMessageReceived => 'New message';
 
   @override
-  String get skinLayerInner => 'Inner';
-
-  @override
-  String get skinLayerOuter => 'Outer';
-
-  @override
   String get feedbackLoginRequiredTitle => 'Log in to send feedback';
 
   @override
@@ -1741,30 +1690,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get supportInboxTitle => 'Support inbox';
-
-  @override
-  String get skinShareSubject => 'Minecraft Skin';
-
-  @override
-  String get skinEditorTitle => 'Skin Editor';
-
-  @override
-  String get skinToolUndo => 'Undo';
-
-  @override
-  String get skinSaveToMySkins => 'Save to My Skins';
-
-  @override
-  String get skinExportPng => 'Export PNG';
-
-  @override
-  String get skinToolDraw => 'Draw';
-
-  @override
-  String get skinToolFill => 'Fill';
-
-  @override
-  String get skinToolErase => 'Erase';
 
   @override
   String get customColour => 'Custom colour';
@@ -1929,48 +1854,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get howToAutoShow => 'Show this when I start';
-
-  @override
-  String get skinEditorLoadFailed =>
-      'Could not load that skin. Starting from the default one.';
-
-  @override
-  String get skinToolRecolour => 'Recolour';
-
-  @override
-  String get skinToolPick => 'Pick';
-
-  @override
-  String get skinBases => 'Bases';
-
-  @override
-  String get skinBasesTitle => 'Start from a base';
-
-  @override
-  String get skinBasesSubtitle =>
-      'This replaces what is on the canvas. Undo brings it back.';
-
-  @override
-  String get skinMirror => 'Mirror';
-
-  @override
-  String get skinSurprise => 'Surprise';
-
-  @override
-  String get skinToolFillHint => 'Fills the patch you tap';
-
-  @override
-  String get skinToolRecolourHint =>
-      'Changes that colour everywhere on the skin';
-
-  @override
-  String get skinToolPickHint => 'Takes the colour you tap';
-
-  @override
-  String get skinModelClassic => 'Wide';
-
-  @override
-  String get skinModelSlim => 'Slim';
 
   @override
   String get shareServerLabel => 'Share your server';
@@ -2187,4 +2070,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get showLess => 'Less';
+
+  @override
+  String get lookupRecent => 'Recent';
 }

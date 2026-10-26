@@ -429,12 +429,6 @@
   "sendLink": "Link versturen",
   "signInSubtitle": "Log in om toegang te krijgen tot je profiel, vrienden en chats.",
   "signOut": "Uitloggen",
-  "skinsCreate": "Aanmaken",
-  "skinsDownload": "Downloaden",
-  "skinsEdit": "Bewerken",
-  "skinsInvalidFile": "Ongeldig afbeeldingsbestand",
-  "skinsMustBe64": "Skin moet 64×64 pixels zijn",
-  "skinsUpload": "Uploaden",
   "somethingWentWrong": "Er is iets misgegaan. Probeer opnieuw.",
   "unlink": "Ontkoppelen",
   "unlinkJavaTitle": "Java-account ontkoppelen",
@@ -564,27 +558,6 @@
   "upgradeWindowsHint": "Upgrade beschikbaar via de Microsoft Store",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "skinSaved": "Skin opgeslagen",
-  "@skinSaved": {
-    "description": "Toast when skin is saved"
-  },
-  "skinSavedAs": "Opgeslagen als \"{name}\"",
-  "@skinSavedAs": {
-    "description": "Toast when skin saved with name",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinExportFailed": "Exporteren mislukt",
-  "@skinExportFailed": {
-    "description": "Toast when skin export fails"
-  },
-  "skinExported": "Skin succesvol geexporteerd",
-  "@skinExported": {
-    "description": "Toast when skin is exported successfully"
   },
   "accountActions": "Account",
   "@accountActions": {
@@ -741,10 +714,7 @@
     }
   },
   "skinsSavedToMySkins": "Opgeslagen in Mijn Skins",
-  "skinsEmptyLocalSkins": "Nog geen skins. Maak of upload een skin om te beginnen.",
-  "skinSaveDialog": "Skin opslaan",
-  "skinNameHint": "Skin naam",
-  "skinDefaultName": "Mijn skin",
+  "skinsEmptyLocalSkins": "Nog geen opgeslagen skins.",
   "sectionRecentActivity": "Recente activiteit",
   "activityNoEvents": "Nog geen recente activiteit.",
   "activitySkinUploaded": "Skin geüpload",
@@ -832,33 +802,16 @@
       }
     }
   },
-  "notifPrefSkinLiked": "Skin geliket",
   "notifPrefCommentReceived": "Reactie ontvangen",
   "notifPrefPackApproved": "Pack goedgekeurd",
   "notifPrefPackRejected": "Pack afgewezen",
   "notifPrefFriendRequest": "Vriendschapsverzoek",
   "notifPrefFriendAccepted": "Vriend toegevoegd",
   "notifPrefMessageReceived": "Nieuw bericht",
-  "skinLayerInner": "Binnen",
-  "@skinLayerInner": {
-    "description": "Skin editor layer toggle, inner/base layer"
-  },
-  "skinLayerOuter": "Buiten",
-  "@skinLayerOuter": {
-    "description": "Skin editor layer toggle, outer/overlay layer"
-  },
   "feedbackLoginRequiredTitle": "Log in om feedback te sturen",
   "feedbackLoginRequiredBody": "Feedback is gekoppeld aan je MCCompanion-account zodat we je rechtstreeks in de app kunnen antwoorden.",
   "feedbackLoginButton": "Inloggen",
   "supportInboxTitle": "Supportinbox",
-  "skinShareSubject": "Minecraft-skin",
-  "skinEditorTitle": "Skin-editor",
-  "skinToolUndo": "Ongedaan maken",
-  "skinSaveToMySkins": "Opslaan bij mijn skins",
-  "skinExportPng": "PNG exporteren",
-  "skinToolDraw": "Tekenen",
-  "skinToolFill": "Vullen",
-  "skinToolErase": "Wissen",
   "customColour": "Eigen kleur",
   "featuredServerLabel": "UITGELICHTE SERVER",
   "featuredServerTagline": "Spring erin en begin met spelen.",
@@ -909,19 +862,6 @@
   "chooseServerTitle": "Kies een server",
   "changeLabel": "Wijzigen",
   "howToAutoShow": "Dit tonen als ik start",
-  "skinEditorLoadFailed": "Die skin kon niet geladen worden. We beginnen met de standaardskin.",
-  "skinToolRecolour": "Herkleur",
-  "skinToolPick": "Pipet",
-  "skinBases": "Bases",
-  "skinBasesTitle": "Begin met een basis",
-  "skinBasesSubtitle": "Dit vervangt wat er nu staat. Ongedaan maken zet het terug.",
-  "skinMirror": "Spiegel",
-  "skinSurprise": "Verras me",
-  "skinToolFillHint": "Vult het vlak dat je aantikt",
-  "skinToolRecolourHint": "Verandert die kleur overal op de skin",
-  "skinToolPickHint": "Neemt de kleur die je aantikt",
-  "skinModelClassic": "Breed",
-  "skinModelSlim": "Smal",
   "shareServerLabel": "Server delen",
   "shareServerOn": "Vrienden zien op welke server je zit",
   "shareServerOff": "Vrienden zien dat je speelt, niet waar",
@@ -1011,5 +951,6 @@
   "serverVoteOffline": "Kon de server niet bereiken. Controleer je verbinding.",
   "feedbackViewYourReport": "Bekijk je melding",
   "showMore": "Meer",
-  "showLess": "Minder"
+  "showLess": "Minder",
+  "lookupRecent": "Recent"
 }

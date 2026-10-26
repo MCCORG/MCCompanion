@@ -748,24 +748,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get requestsAppearHere => '新的好友请求会显示在这里。';
 
   @override
-  String get skinsEdit => 'Edit';
-
-  @override
-  String get skinsMustBe64 => '皮肤必须为 64×64 像素';
-
-  @override
-  String get skinsInvalidFile => '无效的图片文件';
-
-  @override
-  String get skinsUpload => '上传';
-
-  @override
-  String get skinsCreate => '创建';
-
-  @override
-  String get skinsDownload => '下载';
-
-  @override
   String get chooseUniqueUsername => '选择一个唯一的用户名开始。';
 
   @override
@@ -1136,20 +1118,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => '可在 Microsoft Store 升级';
-
-  @override
-  String get skinSaved => '皮肤已保存';
-
-  @override
-  String skinSavedAs(String name) {
-    return '已另存为 \"$name\"';
-  }
-
-  @override
-  String get skinExportFailed => '导出失败';
-
-  @override
-  String get skinExported => '皮肤导出成功';
 
   @override
   String get accountActions => '账户';
@@ -1546,16 +1514,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get skinsSavedToMySkins => '已保存到我的皮肤';
 
   @override
-  String get skinsEmptyLocalSkins => '暂无皮肤。创建或上传皮肤以开始使用。';
-
-  @override
-  String get skinSaveDialog => '保存皮肤';
-
-  @override
-  String get skinNameHint => '皮肤名称';
-
-  @override
-  String get skinDefaultName => '我的皮肤';
+  String get skinsEmptyLocalSkins => '还没有已保存的皮肤。';
 
   @override
   String get sectionRecentActivity => '最近动态';
@@ -1648,9 +1607,6 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => '皮肤被点赞';
-
-  @override
   String get notifPrefCommentReceived => '收到评论';
 
   @override
@@ -1669,12 +1625,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get notifPrefMessageReceived => '新消息';
 
   @override
-  String get skinLayerInner => '内层';
-
-  @override
-  String get skinLayerOuter => '外层';
-
-  @override
   String get feedbackLoginRequiredTitle => '登录以发送反馈';
 
   @override
@@ -1686,30 +1636,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get supportInboxTitle => '支持收件箱';
-
-  @override
-  String get skinShareSubject => 'Minecraft 皮肤';
-
-  @override
-  String get skinEditorTitle => '皮肤编辑器';
-
-  @override
-  String get skinToolUndo => '撤销';
-
-  @override
-  String get skinSaveToMySkins => '保存到我的皮肤';
-
-  @override
-  String get skinExportPng => '导出 PNG';
-
-  @override
-  String get skinToolDraw => '绘制';
-
-  @override
-  String get skinToolFill => '填充';
-
-  @override
-  String get skinToolErase => '擦除';
 
   @override
   String get customColour => '自定义颜色';
@@ -1873,45 +1799,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get howToAutoShow => '启动时显示此说明';
-
-  @override
-  String get skinEditorLoadFailed => '无法加载该皮肤，将从默认皮肤开始。';
-
-  @override
-  String get skinToolRecolour => '替换颜色';
-
-  @override
-  String get skinToolPick => '取色';
-
-  @override
-  String get skinBases => '基础款';
-
-  @override
-  String get skinBasesTitle => '从基础款开始';
-
-  @override
-  String get skinBasesSubtitle => '这会替换当前画布内容，可用撤销恢复。';
-
-  @override
-  String get skinMirror => '镜像';
-
-  @override
-  String get skinSurprise => '随机生成';
-
-  @override
-  String get skinToolFillHint => '填充你点到的区域';
-
-  @override
-  String get skinToolRecolourHint => '替换整个皮肤上的该颜色';
-
-  @override
-  String get skinToolPickHint => '取用你点到的颜色';
-
-  @override
-  String get skinModelClassic => '标准';
-
-  @override
-  String get skinModelSlim => '纤细';
 
   @override
   String get shareServerLabel => '分享你的服务器';
@@ -2123,4 +2010,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get showLess => '收起';
+
+  @override
+  String get lookupRecent => '最近';
 }

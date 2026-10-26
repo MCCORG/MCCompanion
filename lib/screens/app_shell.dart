@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:app_links/app_links.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -13,9 +12,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import '../services/push_notification_service.dart';
 import '../constants/app_constants.dart';
 import '../widgets/console/console_widget.dart';
-import '../widgets/navigation/bottom_nav_bar.dart';
-import '../widgets/navigation/info_menu.dart';
-import '../widgets/navigation/app_sidebar.dart';
+import '../mobile/navigation/bottom_nav_bar.dart';
+import '../mobile/navigation/info_menu.dart';
+import '../mobile/navigation/app_sidebar.dart';
 import '../widgets/featured_server_banner.dart';
 import '../util/logger.dart';
 import '../util/partners_servers.dart';
@@ -42,8 +41,17 @@ import '../services/home_customization_service.dart';
 import '../services/theme_service.dart';
 import '../theme/app_theme.dart';
 import '../services/notification_service.dart';
-import '../design/design.dart';
-import '../desktop/desktop_nav.dart';
+import '../desktop/desktop_feedback.dart';
+import '../desktop/desktop_how_to.dart';
+import '../desktop/desktop_manage_servers.dart';
+import '../desktop/desktop_support.dart';
+import '../desktop/shell/client_context_panel.dart';
+import '../layout/platform.dart';
+import '../mobile/shell/mobile_shell.dart';
+import '../desktop/shell/client_models.dart';
+import '../desktop/shell/client_rail.dart';
+import '../desktop/shell/client_shell.dart';
+import '../desktop/shell/client_status_bar.dart';
 import '../desktop/desktop_server_list.dart';
 import '../desktop/desktop_status_panel.dart';
 import '../widgets/components/app_toast.dart';
@@ -438,6 +446,128 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
 
   void _openManageServers() => _goTo(_pageManageServers);
 
+  void _openResourcePack() {
+    if (AuthService.currentUser == null) {
+      _loginFromRp = true;
+      _goTo(_pageProfile);
+    } else {
+      _goTo(_pageResourcePack);
+    }
+  }
+
+  void _openProfile() {
+    _loginFromTracker = false;
+    _loginFromRp = false;
+    _goTo(_pageProfile);
+  }
+
+  String? get _clientSectionId => switch (_pageIndex) {
+    _pageConnector ||
+    _pageManageServers ||
+    _pageAddEditServer ||
+    _pageResourcePack ||
+    _pageHowTo => 'connector',
+    _pagePartners => 'servers',
+    _pageServerTracker => 'tracker',
+    _pageSkins => 'skins',
+    _pagePlayerLookup => 'lookup',
+    _pageProfile => 'profile',
+    _pageCustomize => 'customize',
+    _pageSupport => 'support',
+    _pageFeedback => 'feedback',
+    _ => null,
+  };
+
+  String? get _clientItemId => switch (_pageIndex) {
+    _pageConnector => 'connector',
+    _pageManageServers || _pageAddEditServer => 'servers',
+    _pageResourcePack => 'resource_pack',
+    _pageHowTo => 'howto',
+    _ => null,
+  };
+
+  List<ClientSection> _clientSections(AppLocalizations loc) => [
+    ClientSection(
+      id: 'connector',
+      icon: Icons.play_arrow_rounded,
+      label: loc.featureLabelConnector,
+      onTap: () => _goTo(_pageConnector),
+      items: [
+        ClientSectionItem(
+          id: 'connector',
+          label: loc.featureLabelConnector,
+          onTap: () => _goTo(_pageConnector),
+        ),
+        ClientSectionItem(
+          id: 'servers',
+          label: loc.manageServers,
+          onTap: _openManageServers,
+        ),
+        ClientSectionItem(
+          id: 'resource_pack',
+          label: loc.rpScreenTitle,
+          onTap: _openResourcePack,
+        ),
+        ClientSectionItem(
+          id: 'howto',
+          label: loc.howToUseMenu,
+          onTap: _showHowToSheet,
+        ),
+      ],
+    ),
+    ClientSection(
+      id: 'servers',
+      icon: Icons.dns_rounded,
+      label: loc.featureLabelPartners,
+      onTap: () => _goTo(_pagePartners),
+    ),
+    ClientSection(
+      id: 'tracker',
+      icon: Icons.monitor_heart_rounded,
+      label: loc.featureLabelTracker,
+      onTap: () => _goTo(_pageServerTracker),
+    ),
+    ClientSection(
+      id: 'skins',
+      icon: Icons.checkroom_rounded,
+      label: loc.featureLabelSkins,
+      onTap: () => _goTo(_pageSkins),
+    ),
+    ClientSection(
+      id: 'lookup',
+      icon: Icons.search_rounded,
+      label: loc.featureLabelLookup,
+      onTap: () => _goTo(_pagePlayerLookup),
+    ),
+  ];
+
+  List<ClientSection> _clientFooter(AppLocalizations loc) => [
+    ClientSection(
+      id: 'customize',
+      icon: Icons.tune_rounded,
+      label: loc.customizeLabel,
+      onTap: () => _goTo(_pageCustomize),
+    ),
+    ClientSection(
+      id: 'support',
+      icon: Icons.help_outline_rounded,
+      label: loc.support,
+      onTap: () => _goTo(_pageSupport),
+    ),
+    ClientSection(
+      id: 'feedback',
+      icon: Icons.chat_bubble_outline_rounded,
+      label: loc.feedbackTileTitle,
+      onTap: () => _goTo(_pageFeedback),
+    ),
+    ClientSection(
+      id: 'profile',
+      icon: Icons.person_rounded,
+      label: loc.navProfile,
+      onTap: _openProfile,
+    ),
+  ];
+
   VoidCallback _navCallbackFor(AppFeature feature) => switch (feature) {
     AppFeature.connector => () => _goTo(_pageConnector),
     AppFeature.skins => () => _goTo(_pageSkins),
@@ -556,8 +686,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     }
   }
 
-  bool get _isDesktop =>
-      Platform.isMacOS || Platform.isWindows || Platform.isLinux;
+  bool get _isDesktop => useClientLayout(context);
 
   Widget _buildBackground() =>
       Positioned.fill(child: ColoredBox(color: AppTheme.background));
@@ -650,6 +779,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   }
 
   Widget _withHero(Widget child) {
+    if (_isDesktop) return child;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -675,14 +805,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
         partnerServersFuture: _partnerServersFuture,
         onOpenPartnerServers: () => _goTo(_pagePartners),
         onOpenManageServers: _openManageServers,
-        onOpenResourcePack: () {
-          if (AuthService.currentUser == null) {
-            _loginFromRp = true;
-            _goTo(_pageProfile);
-          } else {
-            _goTo(_pageResourcePack);
-          }
-        },
+        onOpenResourcePack: _openResourcePack,
         onOpenMore: () => _showMoreSheet(),
         onOpenSupport: () => _showHelpSheet(),
         onOpenHowTo: () => _showHowToSheet(),
@@ -709,12 +832,20 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
           onBack: () => _goTo(_pageHome),
           onPlay: () => _goTo(_pageConnector),
         ),
-      ManageServersScreen(
-        key: _manageServersKey,
-        onBack: () => _goTo(_pageConnector),
-        onAddServer: _openAddServer,
-        onEditServer: _openEditServer,
-      ),
+      if (_isDesktop)
+        DesktopManageServersScreen(
+          listKey: _manageServersKey,
+          onBack: () => _goTo(_pageConnector),
+          onAddServer: _openAddServer,
+          onEditServer: _openEditServer,
+        )
+      else
+        ManageServersScreen(
+          key: _manageServersKey,
+          onBack: () => _goTo(_pageConnector),
+          onAddServer: _openAddServer,
+          onEditServer: _openEditServer,
+        ),
       AddEditServerScreen(
         editingIndex: _editingServerIndex,
         onSaved: () {
@@ -749,34 +880,58 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
           },
         ),
       ),
-      FeedbackScreen(
-        onBack: () => _goTo(_pageHome),
-        onGoToLogin: () => _goTo(_pageProfile),
-      ),
+      if (_isDesktop)
+        DesktopFeedbackScreen(
+          onBack: () => _goTo(_pageHome),
+          onGoToLogin: () => _goTo(_pageProfile),
+        )
+      else
+        FeedbackScreen(
+          onBack: () => _goTo(_pageHome),
+          onGoToLogin: () => _goTo(_pageProfile),
+        ),
       ResourcePackScreen(
         onBack: () {
           _connectorKey.currentState?.reloadResourcePackUrl();
           _goTo(_pageConnector);
         },
       ),
-      HowToScreen(
-        kind: _howToKind,
-        onBack: () => _goTo(_pageConnector),
-        relayName: _selectedRelay.name,
-        relayIp: _selectedRelay.ip,
-        userRegion: _selectedRelay.name.toLowerCase().contains('eu')
-            ? 'eu'
-            : 'us',
-      ),
-      SupportScreen(
-        onBack: () => _goTo(_pageConnector),
-        onFeedback: () => _goTo(_pageFeedback),
-      ),
+      if (_isDesktop)
+        DesktopHowToScreen(
+          kind: _howToKind,
+          onBack: () => _goTo(_pageConnector),
+          relayName: _selectedRelay.name,
+          relayIp: _selectedRelay.ip,
+          userRegion: _selectedRelay.name.toLowerCase().contains('eu')
+              ? 'eu'
+              : 'us',
+        )
+      else
+        HowToScreen(
+          kind: _howToKind,
+          onBack: () => _goTo(_pageConnector),
+          relayName: _selectedRelay.name,
+          relayIp: _selectedRelay.ip,
+          userRegion: _selectedRelay.name.toLowerCase().contains('eu')
+              ? 'eu'
+              : 'us',
+        ),
+      if (_isDesktop)
+        DesktopSupportScreen(
+          onBack: () => _goTo(_pageConnector),
+          onFeedback: () => _goTo(_pageFeedback),
+        )
+      else
+        SupportScreen(
+          onBack: () => _goTo(_pageConnector),
+          onFeedback: () => _goTo(_pageFeedback),
+        ),
       SwipeBack(
         onBack: () => _goTo(_pageConnector),
         child: LandingCustomizeSheet(
           callbackFor: _navCallbackFor,
           onClose: () => _goTo(_pageConnector),
+          desktop: _isDesktop,
         ),
       ),
     ];
@@ -810,109 +965,70 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   }
 
   Widget _buildMobileShell(AppLocalizations loc, HomeCustomizationService svc) {
-    return Stack(
-      children: [
-        _buildBackground(),
-        Scaffold(
-          key: _scaffoldKey,
-          backgroundColor: Colors.transparent,
-          drawer: AppSidebar(sections: _sidebarSections()),
-          drawerEnableOpenDragGesture: false,
-          bottomNavigationBar: BottomGlassSimpleNavBar(
-            navigationController: navigationController,
-            dark: true,
-            selectedRelayIp: _selectedRelay.ip,
-            onRelayChanged: _onRelayChanged,
-            activeItem: _activeNavItem,
-            onConnectorTap: () => _goTo(_pageConnector),
-            onProfileTap: () {
-              _loginFromTracker = false;
-              _loginFromRp = false;
-              _goTo(_pageProfile);
-            },
-            navFarFeature: svc.navFar,
-            navOuterFeature: svc.navOuter,
-            navLeftFeature: svc.navLeft,
-            navRightFeature: svc.navRight,
-            onNavFarTap: svc.navFar != null
-                ? _navCallbackFor(svc.navFar!)
-                : null,
-            onNavOuterTap: svc.navOuter != null
-                ? _navCallbackFor(svc.navOuter!)
-                : null,
-            onNavLeftTap: svc.navLeft != null
-                ? _navCallbackFor(svc.navLeft!)
-                : null,
-            onNavRightTap: svc.navRight != null
-                ? _navCallbackFor(svc.navRight!)
-                : null,
-            navFarActive:
-                svc.navFar != null && _isNavFeatureActive(svc.navFar!),
-            navOuterActive:
-                svc.navOuter != null && _isNavFeatureActive(svc.navOuter!),
-            navLeftActive:
-                svc.navLeft != null && _isNavFeatureActive(svc.navLeft!),
-            navRightActive:
-                svc.navRight != null && _isNavFeatureActive(svc.navRight!),
-          ),
-          body: Stack(
-            children: [
-              SafeArea(
-                bottom: false,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    ClipRect(
-                      child: SizedBox(
-                        height: AppTopBar.height + _topBarOffset,
-                        child: OverflowBox(
-                          alignment: Alignment.topCenter,
-                          minHeight: AppTopBar.height,
-                          maxHeight: AppTopBar.height,
-                          child: AppTopBar(
-                            onMenu: () =>
-                                _scaffoldKey.currentState?.openDrawer(),
-                            profileActive: _pageIndex == _pageProfile,
-                            onProfile: () {
-                              _loginFromTracker = false;
-                              _loginFromRp = false;
-                              _goTo(_pageProfile);
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
-                    const UpdateBanner(),
-                    Expanded(
-                      child: NotificationListener<ScrollNotification>(
-                        onNotification: _onPageScroll,
-                        child: _buildPageStack(),
-                      ),
-                    ),
-                  ],
+    return MobileShell(
+      background: _buildBackground(),
+      scaffoldKey: _scaffoldKey,
+      drawer: AppSidebar(sections: _sidebarSections()),
+      bottomBar: BottomGlassSimpleNavBar(
+        navigationController: navigationController,
+        dark: true,
+        selectedRelayIp: _selectedRelay.ip,
+        onRelayChanged: _onRelayChanged,
+        activeItem: _activeNavItem,
+        onConnectorTap: () => _goTo(_pageConnector),
+        onProfileTap: () {
+          _loginFromTracker = false;
+          _loginFromRp = false;
+          _goTo(_pageProfile);
+        },
+        navFarFeature: svc.navFar,
+        navOuterFeature: svc.navOuter,
+        navLeftFeature: svc.navLeft,
+        navRightFeature: svc.navRight,
+        onNavFarTap: svc.navFar != null ? _navCallbackFor(svc.navFar!) : null,
+        onNavOuterTap: svc.navOuter != null
+            ? _navCallbackFor(svc.navOuter!)
+            : null,
+        onNavLeftTap: svc.navLeft != null
+            ? _navCallbackFor(svc.navLeft!)
+            : null,
+        onNavRightTap: svc.navRight != null
+            ? _navCallbackFor(svc.navRight!)
+            : null,
+        navFarActive: svc.navFar != null && _isNavFeatureActive(svc.navFar!),
+        navOuterActive:
+            svc.navOuter != null && _isNavFeatureActive(svc.navOuter!),
+        navLeftActive: svc.navLeft != null && _isNavFeatureActive(svc.navLeft!),
+        navRightActive:
+            svc.navRight != null && _isNavFeatureActive(svc.navRight!),
+      ),
+      topBarOffset: _topBarOffset,
+      profileActive: _pageIndex == _pageProfile,
+      onProfile: () {
+        _loginFromTracker = false;
+        _loginFromRp = false;
+        _goTo(_pageProfile);
+      },
+      onPageScroll: _onPageScroll,
+      page: _buildPageStack(),
+      notice: _notice == null
+          ? null
+          : Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: SafeArea(
+                child: GlobalNoticeBanner(
+                  message: _notice!['message']!,
+                  type: _notice!['type'] ?? 'info',
+                  onDismiss: () {
+                    _noticeTimer?.cancel();
+                    setState(() => _notice = null);
+                  },
                 ),
               ),
-              if (_notice != null)
-                Positioned(
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  child: SafeArea(
-                    child: GlobalNoticeBanner(
-                      message: _notice!['message']!,
-                      type: _notice!['type'] ?? 'info',
-                      onDismiss: () {
-                        _noticeTimer?.cancel();
-                        setState(() => _notice = null);
-                      },
-                    ),
-                  ),
-                ),
-              _buildConsoleOverlay(),
-            ],
-          ),
-        ),
-      ],
+            ),
+      consoleOverlay: _buildConsoleOverlay(),
     );
   }
 
@@ -939,7 +1055,8 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     );
   }
 
-  static const double _desktopNavWidth = 232;
+  static const double _desktopNavWidth =
+      ClientRail.width + ClientContextPanel.width;
   static const double _desktopStatusWidth = 340;
   static const double _desktopMinContentWidth = 480;
 
@@ -957,121 +1074,50 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
             _buildBackground(),
             Scaffold(
               backgroundColor: Colors.transparent,
-              body: Row(
-                children: [
-                  DesktopNav(
-                    activeId: _activeNavItem,
-                    primary: [
-                      DesktopNavEntry(
-                        id: 'connector',
-                        icon: Icons.play_arrow_rounded,
-                        label: loc.featureLabelConnector,
-                        onTap: () => _goTo(_pageConnector),
-                      ),
-                      DesktopNavEntry(
-                        id: 'partners',
-                        icon: Icons.dns_rounded,
-                        label: loc.featureLabelPartners,
-                        onTap: () => _goTo(_pagePartners),
-                      ),
-                      DesktopNavEntry(
-                        id: 'tracker',
-                        icon: Icons.monitor_heart_rounded,
-                        label: loc.featureLabelTracker,
-                        onTap: () => _goTo(_pageServerTracker),
-                      ),
-                      DesktopNavEntry(
-                        id: 'skins',
-                        icon: Icons.checkroom_rounded,
-                        label: loc.featureLabelSkins,
-                        onTap: () => _goTo(_pageSkins),
-                      ),
-                      DesktopNavEntry(
-                        id: 'lookup',
-                        icon: Icons.search_rounded,
-                        label: loc.featureLabelLookup,
-                        onTap: () => _goTo(_pagePlayerLookup),
-                      ),
-                    ],
-                    secondary: [
-                      DesktopNavEntry(
-                        id: 'console',
-                        icon: Icons.terminal_rounded,
-                        label: loc.console,
-                        onTap: () => navigationController.consoleOpen.value
-                            ? navigationController.hideConsole()
-                            : navigationController.showConsole(context),
-                      ),
-                      DesktopNavEntry(
-                        id: 'support',
-                        icon: Icons.help_outline_rounded,
-                        label: loc.support,
-                        onTap: () => _goTo(_pageSupport),
-                      ),
-                      DesktopNavEntry(
-                        id: 'howto',
-                        icon: Icons.lightbulb_outline_rounded,
-                        label: loc.howToUseMenu,
-                        onTap: _showHowToSheet,
-                      ),
-                      DesktopNavEntry(
-                        id: 'customize',
-                        icon: Icons.tune_rounded,
-                        label: loc.customizeLabel,
-                        onTap: () => _goTo(_pageCustomize),
-                      ),
-                      DesktopNavEntry(
-                        id: 'feedback',
-                        icon: Icons.chat_bubble_outline_rounded,
-                        label: loc.feedbackTileTitle,
-                        onTap: () => _goTo(_pageFeedback),
-                      ),
-                    ],
-                    footer: DsButton(
-                      label: loc.navProfile,
-                      icon: Icons.person_rounded,
-                      tone: DsButtonTone.neutral,
-                      expand: true,
-                      onPressed: () {
-                        _loginFromTracker = false;
-                        _loginFromRp = false;
-                        _goTo(_pageProfile);
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        const UpdateBanner(),
-                        Expanded(
-                          child: ClipRect(
-                            child: Navigator(
-                              key: _desktopNavKey,
-                              onGenerateRoute: (settings) => MaterialPageRoute(
-                                settings: settings,
-                                builder: (_) => ValueListenableBuilder<int>(
-                                  valueListenable: _pageIndexNotifier,
-                                  builder: (_, _, _) => _buildPageStack(),
-                                ),
-                              ),
+              body: ClientShell(
+                sections: _clientSections(loc),
+                footer: _clientFooter(loc),
+                activeSectionId: _clientSectionId,
+                activeItemId: _clientItemId,
+                content: Column(
+                  children: [
+                    const UpdateBanner(),
+                    Expanded(
+                      child: ClipRect(
+                        child: Navigator(
+                          key: _desktopNavKey,
+                          onGenerateRoute: (settings) => MaterialPageRoute(
+                            settings: settings,
+                            builder: (_) => ValueListenableBuilder<int>(
+                              valueListenable: _pageIndexNotifier,
+                              builder: (_, _, _) => _buildPageStack(),
                             ),
                           ),
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                  ValueListenableBuilder<bool>(
-                    valueListenable: navigationController.consoleOpen,
-                    builder: (_, consoleOpen, _) {
-                      final broadcasting =
-                          _connectorKey.currentState?.isBroadcasting ?? false;
-                      if (!canDockStatus || (!consoleOpen && !broadcasting)) {
-                        return const SizedBox.shrink();
-                      }
-                      return _buildDesktopStatusPanel(loc, broadcasting);
-                    },
-                  ),
-                ],
+                  ],
+                ),
+                rightDock: ValueListenableBuilder<bool>(
+                  valueListenable: navigationController.consoleOpen,
+                  builder: (_, consoleOpen, _) {
+                    final broadcasting =
+                        _connectorKey.currentState?.isBroadcasting ?? false;
+                    if (!canDockStatus || (!consoleOpen && !broadcasting)) {
+                      return const SizedBox.shrink();
+                    }
+                    return _buildDesktopStatusPanel(loc, broadcasting);
+                  },
+                ),
+                statusBar: ClientStatusBar(
+                  broadcasting: navigationController.broadcasting,
+                  consoleOpen: navigationController.consoleOpen,
+                  serverName: _ipController.text.trim(),
+                  onToggleConsole: () => navigationController.consoleOpen.value
+                      ? navigationController.hideConsole()
+                      : navigationController.showConsole(context),
+                  onStop: () => _connectorKey.currentState?.stopBroadcast(),
+                ),
               ),
             ),
             if (!canDockStatus)

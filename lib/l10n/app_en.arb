@@ -827,30 +827,6 @@
   "@requestsAppearHere": {
     "description": "Empty state subtitle on requests tab"
   },
-  "skinsEdit": "Edit",
-  "@skinsEdit": {
-    "description": "Edit button in skin detail sheet"
-  },
-  "skinsMustBe64": "Skin must be 64×64 pixels",
-  "@skinsMustBe64": {
-    "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsInvalidFile": "Invalid image file",
-  "@skinsInvalidFile": {
-    "description": "Error when the selected file is not a valid image"
-  },
-  "skinsUpload": "Upload",
-  "@skinsUpload": {
-    "description": "Button to upload a skin"
-  },
-  "skinsCreate": "Create",
-  "@skinsCreate": {
-    "description": "Button to create/open skin editor"
-  },
-  "skinsDownload": "Download",
-  "@skinsDownload": {
-    "description": "Download button in skin detail sheet"
-  },
   "chooseUniqueUsername": "Choose a unique username to get started.",
   "@chooseUniqueUsername": {
     "description": "chooseUniqueUsername"
@@ -1233,27 +1209,6 @@
   "upgradeWindowsHint": "Upgrade available via the Microsoft Store",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "skinSaved": "Skin saved",
-  "@skinSaved": {
-    "description": "Toast when skin is saved"
-  },
-  "skinSavedAs": "Saved as \"{name}\"",
-  "@skinSavedAs": {
-    "description": "Toast when skin saved with name",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinExportFailed": "Export failed",
-  "@skinExportFailed": {
-    "description": "Toast when skin export fails"
-  },
-  "skinExported": "Skin exported successfully",
-  "@skinExported": {
-    "description": "Toast when skin is exported successfully"
   },
   "accountActions": "Account",
   "@accountActions": {
@@ -1699,21 +1654,9 @@
   "@skinsSavedToMySkins": {
     "description": "Toast when cloud skin is saved to local library"
   },
-  "skinsEmptyLocalSkins": "No skins yet. Create or upload a skin to get started.",
+  "skinsEmptyLocalSkins": "No saved skins yet.",
   "@skinsEmptyLocalSkins": {
     "description": "Empty state for local skins tab"
-  },
-  "skinSaveDialog": "Save Skin",
-  "@skinSaveDialog": {
-    "description": "Dialog title for saving skin locally"
-  },
-  "skinNameHint": "Skin name",
-  "@skinNameHint": {
-    "description": "Hint text for skin name input field"
-  },
-  "skinDefaultName": "My Skin",
-  "@skinDefaultName": {
-    "description": "Default name for a new skin"
   },
   "sectionRecentActivity": "Recent Activity",
   "@sectionRecentActivity": {
@@ -1856,10 +1799,6 @@
       }
     }
   },
-  "notifPrefSkinLiked": "Skin liked",
-  "@notifPrefSkinLiked": {
-    "description": "Notification preference toggle label: skin liked"
-  },
   "notifPrefCommentReceived": "Comment received",
   "@notifPrefCommentReceived": {
     "description": "Notification preference toggle label: comment received"
@@ -1884,14 +1823,6 @@
   "@notifPrefMessageReceived": {
     "description": "Notification preference toggle label: new message"
   },
-  "skinLayerInner": "Inner",
-  "@skinLayerInner": {
-    "description": "Skin editor layer toggle, inner/base layer"
-  },
-  "skinLayerOuter": "Outer",
-  "@skinLayerOuter": {
-    "description": "Skin editor layer toggle, outer/overlay layer"
-  },
   "feedbackLoginRequiredTitle": "Log in to send feedback",
   "feedbackLoginRequiredBody": "Feedback is linked to your MCCompanion account so we can reply to you directly in the app.",
   "feedbackLoginButton": "Log in",
@@ -1908,14 +1839,6 @@
   "@supportInboxTitle": {
     "description": "Header title of the shared admin support inbox card"
   },
-  "skinShareSubject": "Minecraft Skin",
-  "skinEditorTitle": "Skin Editor",
-  "skinToolUndo": "Undo",
-  "skinSaveToMySkins": "Save to My Skins",
-  "skinExportPng": "Export PNG",
-  "skinToolDraw": "Draw",
-  "skinToolFill": "Fill",
-  "skinToolErase": "Erase",
   "customColour": "Custom colour",
   "featuredServerLabel": "FEATURED SERVER",
   "featuredServerTagline": "Hop in and start playing.",
@@ -2019,58 +1942,6 @@
   "howToAutoShow": "Show this when I start",
   "@howToAutoShow": {
     "description": "Toggle inside the how to sheet: whether it opens by itself after starting a broadcast"
-  },
-  "skinEditorLoadFailed": "Could not load that skin. Starting from the default one.",
-  "@skinEditorLoadFailed": {
-    "description": "Shown when the requested skin texture could not be loaded and the editor fell back to the bundled default"
-  },
-  "skinToolRecolour": "Recolour",
-  "@skinToolRecolour": {
-    "description": "Skin editor"
-  },
-  "skinToolPick": "Pick",
-  "@skinToolPick": {
-    "description": "Skin editor"
-  },
-  "skinBases": "Bases",
-  "@skinBases": {
-    "description": "Skin editor"
-  },
-  "skinBasesTitle": "Start from a base",
-  "@skinBasesTitle": {
-    "description": "Skin editor"
-  },
-  "skinBasesSubtitle": "This replaces what is on the canvas. Undo brings it back.",
-  "@skinBasesSubtitle": {
-    "description": "Skin editor"
-  },
-  "skinMirror": "Mirror",
-  "@skinMirror": {
-    "description": "Skin editor: symmetry toggle"
-  },
-  "skinSurprise": "Surprise",
-  "@skinSurprise": {
-    "description": "Skin editor"
-  },
-  "skinToolFillHint": "Fills the patch you tap",
-  "@skinToolFillHint": {
-    "description": "Skin editor"
-  },
-  "skinToolRecolourHint": "Changes that colour everywhere on the skin",
-  "@skinToolRecolourHint": {
-    "description": "Skin editor"
-  },
-  "skinToolPickHint": "Takes the colour you tap",
-  "@skinToolPickHint": {
-    "description": "Skin editor"
-  },
-  "skinModelClassic": "Wide",
-  "@skinModelClassic": {
-    "description": "Skin editor: arm width"
-  },
-  "skinModelSlim": "Slim",
-  "@skinModelSlim": {
-    "description": "Skin editor: arm width"
   },
   "shareServerLabel": "Share your server",
   "@shareServerLabel": {
@@ -2188,5 +2059,6 @@
   },
   "feedbackViewYourReport": "View your report",
   "showMore": "More",
-  "showLess": "Less"
+  "showLess": "Less",
+  "lookupRecent": "Recent"
 }

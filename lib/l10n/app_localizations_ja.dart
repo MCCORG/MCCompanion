@@ -749,24 +749,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get requestsAppearHere => '新しいフレンドリクエストはここに表示されます。';
 
   @override
-  String get skinsEdit => 'Edit';
-
-  @override
-  String get skinsMustBe64 => 'スキンは 64×64 ピクセルである必要があります';
-
-  @override
-  String get skinsInvalidFile => '無効な画像ファイルです';
-
-  @override
-  String get skinsUpload => 'アップロード';
-
-  @override
-  String get skinsCreate => '作成';
-
-  @override
-  String get skinsDownload => 'ダウンロード';
-
-  @override
   String get chooseUniqueUsername => 'ユニークなユーザー名を選んで始めましょう。';
 
   @override
@@ -1141,20 +1123,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => 'Microsoft Storeでアップグレードできます';
-
-  @override
-  String get skinSaved => 'スキンを保存しました';
-
-  @override
-  String skinSavedAs(String name) {
-    return '\"$name\" として保存しました';
-  }
-
-  @override
-  String get skinExportFailed => 'エクスポート失敗';
-
-  @override
-  String get skinExported => 'スキンを正常にエクスポートしました';
 
   @override
   String get accountActions => 'アカウント';
@@ -1557,16 +1525,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get skinsSavedToMySkins => 'マイスキンに保存しました';
 
   @override
-  String get skinsEmptyLocalSkins => 'スキンはまだありません。スキンを作成またはアップロードして始めましょう。';
-
-  @override
-  String get skinSaveDialog => 'スキンを保存';
-
-  @override
-  String get skinNameHint => 'スキン名';
-
-  @override
-  String get skinDefaultName => 'マイスキン';
+  String get skinsEmptyLocalSkins => '保存済みのスキンはまだありません。';
 
   @override
   String get sectionRecentActivity => '最近のアクティビティ';
@@ -1659,9 +1618,6 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => 'スキンへのいいね';
-
-  @override
   String get notifPrefCommentReceived => 'コメント受信';
 
   @override
@@ -1680,12 +1636,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get notifPrefMessageReceived => '新しいメッセージ';
 
   @override
-  String get skinLayerInner => '内側';
-
-  @override
-  String get skinLayerOuter => '外側';
-
-  @override
   String get feedbackLoginRequiredTitle => 'フィードバックを送信するにはログインしてください';
 
   @override
@@ -1697,30 +1647,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get supportInboxTitle => 'サポート受信箱';
-
-  @override
-  String get skinShareSubject => 'Minecraft スキン';
-
-  @override
-  String get skinEditorTitle => 'スキンエディター';
-
-  @override
-  String get skinToolUndo => '元に戻す';
-
-  @override
-  String get skinSaveToMySkins => 'マイスキンに保存';
-
-  @override
-  String get skinExportPng => 'PNG を書き出す';
-
-  @override
-  String get skinToolDraw => '描く';
-
-  @override
-  String get skinToolFill => '塗りつぶし';
-
-  @override
-  String get skinToolErase => '消す';
 
   @override
   String get customColour => 'カスタムカラー';
@@ -1884,45 +1810,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get howToAutoShow => '開始時にこれを表示';
-
-  @override
-  String get skinEditorLoadFailed => 'そのスキンを読み込めませんでした。標準のスキンから始めます。';
-
-  @override
-  String get skinToolRecolour => '色を置換';
-
-  @override
-  String get skinToolPick => 'スポイト';
-
-  @override
-  String get skinBases => 'ベース';
-
-  @override
-  String get skinBasesTitle => 'ベースから始める';
-
-  @override
-  String get skinBasesSubtitle => '今の絵と置き換わります。元に戻すで復帰します。';
-
-  @override
-  String get skinMirror => '左右対称';
-
-  @override
-  String get skinSurprise => 'おまかせ';
-
-  @override
-  String get skinToolFillHint => 'タップした面を塗ります';
-
-  @override
-  String get skinToolRecolourHint => 'その色をスキン全体で置き換えます';
-
-  @override
-  String get skinToolPickHint => 'タップした色を取り込みます';
-
-  @override
-  String get skinModelClassic => '標準';
-
-  @override
-  String get skinModelSlim => '細身';
 
   @override
   String get shareServerLabel => 'サーバーを共有';
@@ -2134,4 +2021,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get showLess => '閉じる';
+
+  @override
+  String get lookupRecent => '最近';
 }

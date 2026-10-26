@@ -13,7 +13,7 @@ import '../widgets/report_user_sheet.dart';
 import '../models/user_model.dart';
 import '../services/user_service.dart';
 import '../widgets/skin_3d_viewer.dart';
-import '../widgets/navigation/bottom_nav_bar.dart';
+import '../mobile/navigation/bottom_nav_bar.dart';
 import '../widgets/components/app_toast.dart';
 
 class PublicProfileScreen extends StatefulWidget {

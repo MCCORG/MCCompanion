@@ -9,6 +9,8 @@ import '../services/server_tracker_service.dart';
 import '../services/tracker_api_service.dart';
 import '../theme/app_theme.dart';
 import '../design/design.dart';
+import '../layout/platform.dart';
+import '../widgets/tracker_history_chart.dart';
 import '../theme/app_tokens.dart';
 import '../widgets/components/app_toast.dart';
 import '../widgets/components/swipe_back.dart';
@@ -204,6 +206,153 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
     );
   }
 
+  Widget _card(
+    TrackedServer server, {
+    bool row = false,
+    bool selected = false,
+    VoidCallback? onTap,
+  }) => TrackedServerCard(
+    row: row,
+    selected: selected,
+    onTap: onTap,
+    server: server,
+    onDelete: () => _deleteServer(server),
+    onUpdated: (updated) {
+      setState(() {
+        _servers = [
+          for (final s in _servers)
+            if (s.id == updated.id) updated else s,
+        ];
+      });
+    },
+  );
+
+  String? _selectedId;
+
+  Widget _statTile(String label, String value) => Expanded(
+    child: DsCard(
+      padding: const EdgeInsets.symmetric(
+        horizontal: DsSpace.lg,
+        vertical: DsSpace.md,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(label, style: DsType.caption),
+          const SizedBox(height: DsSpace.xxs),
+          Text(value, style: DsType.title),
+        ],
+      ),
+    ),
+  );
+
+  Widget _kv(String label, String value) => Padding(
+    padding: const EdgeInsets.only(bottom: DsSpace.sm),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(width: 90, child: Text(label, style: DsType.caption)),
+        Expanded(child: Text(value, style: DsType.label)),
+      ],
+    ),
+  );
+
+  Widget _detail(AppLocalizations l, TrackedServer s) {
+    final isJava = s.platform == 'java';
+    final players = s.players != null && s.maxPlayers != null
+        ? '${s.players} / ${s.maxPlayers}'
+        : '-';
+    return DsCard(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(s.name, style: DsType.title),
+          const SizedBox(height: DsSpace.lg),
+          _kv(l.ipAddressFieldLabel, '${s.ip}:${s.port}'),
+          _kv(l.platformLabel, isJava ? l.labelJava : l.bedrockLabel),
+          _kv(
+            l.statusLabel,
+            s.lastStatus == 'online' ? l.statusOnline : l.statusOffline,
+          ),
+          _kv(l.serverStatPlayers, players),
+          if (s.version != null) _kv(l.versionLabel, s.version!),
+          if (s.gameMode != null) _kv(l.modeLabel, s.gameMode!),
+          const SizedBox(height: DsSpace.md),
+          TrackerHistoryChart(serverId: s.id),
+          const SizedBox(height: DsSpace.lg),
+          DsButton(
+            label: l.remove,
+            icon: Icons.delete_outline_rounded,
+            tone: DsButtonTone.danger,
+            size: DsButtonSize.small,
+            onPressed: () => _deleteServer(s),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _desktopBody(AppLocalizations l, double width) {
+    final online = _servers.where((s) => s.lastStatus == 'online').length;
+    final players = _servers
+        .where((s) => s.lastStatus == 'online')
+        .fold<int>(0, (sum, s) => sum + (s.players ?? 0));
+    final selected = _servers.firstWhere(
+      (s) => s.id == _selectedId,
+      orElse: () => _servers.first,
+    );
+    final showDetail = width >= 1000;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(
+        DsSpace.gutter,
+        DsSpace.xs,
+        DsSpace.gutter,
+        DsSpace.xl,
+      ),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              _statTile(l.serversSection, '${_servers.length}'),
+              const SizedBox(width: DsSpace.md),
+              _statTile(l.statusOnline, '$online / ${_servers.length}'),
+              const SizedBox(width: DsSpace.md),
+              _statTile(l.serverStatPlayers, '$players'),
+            ],
+          ),
+          const SizedBox(height: DsSpace.lg),
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        for (final server in _servers)
+                          _card(
+                            server,
+                            row: true,
+                            selected: server.id == selected.id,
+                            onTap: () =>
+                                setState(() => _selectedId = server.id),
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
+                if (showDetail) ...[
+                  const SizedBox(width: DsSpace.lg),
+                  SizedBox(width: 380, child: _detail(l, selected)),
+                ],
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SwipeBack(
@@ -310,35 +459,36 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
                     : RefreshIndicator(
                         color: AppTheme.brand,
                         onRefresh: ServerTrackerService.instance.refresh,
-                        child: ListView.builder(
-                          padding: const EdgeInsets.fromLTRB(
-                            DsSpace.gutter,
-                            DsSpace.xs,
-                            DsSpace.gutter,
-                            DsSpace.xxxl,
-                          ),
-                          itemCount: _servers.length,
-                          itemBuilder: (_, i) => TrackedServerCard(
-                            server: _servers[i],
-                            onDelete: () => _deleteServer(_servers[i]),
-                            onUpdated: (updated) {
-                              setState(() {
-                                _servers = [
-                                  for (final s in _servers)
-                                    if (s.id == updated.id) updated else s,
-                                ];
-                              });
-                            },
-                          ),
-                        ),
+                        child: useClientLayout(context) && isWide
+                            ? _desktopBody(
+                                AppLocalizations.of(context)!,
+                                constraints.maxWidth,
+                              )
+                            : ListView.builder(
+                                padding: const EdgeInsets.fromLTRB(
+                                  DsSpace.gutter,
+                                  DsSpace.xs,
+                                  DsSpace.gutter,
+                                  DsSpace.xxxl,
+                                ),
+                                itemCount: _servers.length,
+                                itemBuilder: (_, i) => _card(_servers[i]),
+                              ),
                       ),
               ),
             ],
           );
           if (isWide) {
-            content = Center(
+            content = Align(
+              alignment: useClientLayout(context)
+                  ? Alignment.topLeft
+                  : Alignment.topCenter,
               child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 900),
+                constraints: BoxConstraints(
+                  maxWidth: useClientLayout(context)
+                      ? kDesktopContentWidth
+                      : 900,
+                ),
                 child: content,
               ),
             );

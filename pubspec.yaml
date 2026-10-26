@@ -2,7 +2,7 @@ name: MCCompanion
 description: "A Minecraft companion app."
 
 publish_to: 'none'
-version: 5.0.1+54
+version: 5.1.0+58
 
 environment:
   sdk: ^3.8.1
@@ -55,8 +55,6 @@ flutter:
   assets:
     - assets/icons/google_g.svg
     - assets/images/logo.png
-    - assets/images/skins/
-    - assets/images/skins/thumbs/
 
 msix_config:
   display_name: MCCompanion

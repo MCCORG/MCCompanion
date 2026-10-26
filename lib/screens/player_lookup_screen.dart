@@ -8,10 +8,11 @@ import '../models/player_lookup_model.dart';
 import '../services/player_lookup_service.dart';
 import '../theme/app_theme.dart';
 import '../design/design.dart';
+import '../layout/platform.dart';
+import '../util/lookup_history.dart';
 import '../theme/app_tokens.dart';
 import '../widgets/components/app_toast.dart';
 import '../widgets/skin_3d_viewer.dart';
-import 'skin_editor_screen.dart';
 
 class PlayerLookupScreen extends StatefulWidget {
   final VoidCallback onBack;
@@ -27,6 +28,7 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
   bool _loading = false;
   LookupError? _error;
   CombinedProfile? _result;
+  List<String> _recent = const [];
 
   late final AnimationController _resultAnim;
   late final Animation<double> _fadeAnim;
@@ -44,6 +46,9 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
       begin: const Offset(0, 0.05),
       end: Offset.zero,
     ).animate(CurvedAnimation(parent: _resultAnim, curve: Curves.easeOut));
+    LookupHistory.load().then((items) {
+      if (mounted) setState(() => _recent = items);
+    });
   }
 
   @override
@@ -73,7 +78,41 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
       _loading = false;
     });
 
-    if (_result != null) _resultAnim.forward();
+    if (_result != null) {
+      _resultAnim.forward();
+      final items = await LookupHistory.add(query);
+      if (mounted) setState(() => _recent = items);
+    }
+  }
+
+  void _searchFor(String name) {
+    _ctrl.text = name;
+    _search();
+  }
+
+  Widget _recentChips(AppLocalizations loc) {
+    if (_recent.isEmpty) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.only(top: DsSpace.lg),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(loc.lookupRecent, style: DsType.caption),
+          const SizedBox(height: DsSpace.sm),
+          Wrap(
+            spacing: DsSpace.sm,
+            runSpacing: DsSpace.sm,
+            children: [
+              for (final name in _recent)
+                ActionChip(
+                  label: Text(name),
+                  onPressed: () => _searchFor(name),
+                ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 
   String _lookupErrorText(LookupError e) {
@@ -86,73 +125,146 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
     };
   }
 
+  Widget _searchRow(AppLocalizations loc) => Row(
+    children: [
+      Expanded(
+        child: DsField(
+          controller: _ctrl,
+          hint: loc.playerLookupHint,
+          icon: Icons.manage_search_rounded,
+          onSubmitted: (_) => _search(),
+          textInputAction: TextInputAction.search,
+        ),
+      ),
+      const SizedBox(width: DsSpace.sm),
+      DsIconButton(
+        icon: Icons.search_rounded,
+        size: 48,
+        color: DsColor.accent,
+        onPressed: _loading ? null : _search,
+      ),
+    ],
+  );
+
+  Widget _results() => Column(
+    crossAxisAlignment: CrossAxisAlignment.stretch,
+    children: [
+      if (_error != null) ...[
+        const SizedBox(height: DsSpace.lg),
+        _errorBox(_lookupErrorText(_error!)),
+      ],
+      if (_result != null) ...[
+        const SizedBox(height: DsSpace.xl),
+        FadeTransition(
+          opacity: _fadeAnim,
+          child: SlideTransition(
+            position: _slideAnim,
+            child: _CombinedResultCard(result: _result!),
+          ),
+        ),
+      ],
+    ],
+  );
+
+  Widget _desktop(AppLocalizations loc) {
+    final idle = _result == null && _error == null && !_loading;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        DsHeader(
+          title: loc.featureLabelLookup,
+          subtitle: loc.playerLookupSubtitle,
+        ),
+        Expanded(
+          child: idle
+              ? Center(
+                  child: SingleChildScrollView(
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 520),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          DsEmptyState(
+                            icon: Icons.person_search_rounded,
+                            title: loc.featureLabelLookup,
+                            message: loc.playerLookupSubtitle,
+                          ),
+                          const SizedBox(height: DsSpace.lg),
+                          _searchRow(loc),
+                          _recentChips(loc),
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+              : SingleChildScrollView(
+                  padding: const EdgeInsets.fromLTRB(
+                    DsSpace.gutter,
+                    0,
+                    DsSpace.gutter,
+                    DsSpace.xxxl,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 560),
+                          child: _searchRow(loc),
+                        ),
+                      ),
+                      _results(),
+                      _recentChips(loc),
+                    ],
+                  ),
+                ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
 
     return SwipeBack(
       onBack: widget.onBack,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(
-                DsSpace.gutter,
-                DsSpace.lg,
-                DsSpace.gutter,
-                DsSpace.xxxl,
-              ),
-              child: Center(
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 680),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(loc.playerLookupSubtitle, style: DsType.caption),
-                      const SizedBox(height: DsSpace.md),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: DsField(
-                              controller: _ctrl,
-                              hint: loc.playerLookupHint,
-                              icon: Icons.manage_search_rounded,
-                              onSubmitted: (_) => _search(),
-                              textInputAction: TextInputAction.search,
+      child: useClientLayout(context)
+          ? _desktop(loc)
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.fromLTRB(
+                      DsSpace.gutter,
+                      DsSpace.lg,
+                      DsSpace.gutter,
+                      DsSpace.xxxl,
+                    ),
+                    child: Center(
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 680),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Text(
+                              loc.playerLookupSubtitle,
+                              style: DsType.caption,
                             ),
-                          ),
-                          const SizedBox(width: DsSpace.sm),
-                          DsIconButton(
-                            icon: Icons.search_rounded,
-                            size: 48,
-                            color: DsColor.accent,
-                            onPressed: _loading ? null : _search,
-                          ),
-                        ],
-                      ),
-                      if (_error != null) ...[
-                        const SizedBox(height: DsSpace.lg),
-                        _errorBox(_lookupErrorText(_error!)),
-                      ],
-                      if (_result != null) ...[
-                        const SizedBox(height: DsSpace.xl),
-                        FadeTransition(
-                          opacity: _fadeAnim,
-                          child: SlideTransition(
-                            position: _slideAnim,
-                            child: _CombinedResultCard(result: _result!),
-                          ),
+                            const SizedBox(height: DsSpace.md),
+                            _searchRow(loc),
+                            _results(),
+                            _recentChips(loc),
+                          ],
                         ),
-                      ],
-                    ],
+                      ),
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
-          ),
-        ],
-      ),
     );
   }
 
@@ -226,12 +338,69 @@ class _CombinedResultCard extends StatelessWidget {
           const SizedBox(height: 12),
         ],
 
-        if (result.java != null) ...[
-          _JavaCard(profile: result.java!),
-          if (result.bedrock != null) const SizedBox(height: 12),
-        ],
-
-        if (result.bedrock != null) _BedrockCard(profile: result.bedrock!),
+        if (result.java != null && result.bedrock != null)
+          LayoutBuilder(
+            builder: (context, box) {
+              if (box.maxWidth < 760) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    _JavaCard(
+                      profile: result.java!,
+                      compact: useClientLayout(context),
+                    ),
+                    const SizedBox(height: 12),
+                    _BedrockCard(
+                      profile: result.bedrock!,
+                      compact: useClientLayout(context),
+                    ),
+                  ],
+                );
+              }
+              return Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: _JavaCard(
+                      profile: result.java!,
+                      compact: useClientLayout(context),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: _BedrockCard(
+                      profile: result.bedrock!,
+                      compact: useClientLayout(context),
+                    ),
+                  ),
+                ],
+              );
+            },
+          )
+        else
+          Align(
+            alignment: Alignment.topLeft,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: useClientLayout(context) ? 720 : double.infinity,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (result.java != null)
+                    _JavaCard(
+                      profile: result.java!,
+                      compact: useClientLayout(context),
+                    ),
+                  if (result.bedrock != null)
+                    _BedrockCard(
+                      profile: result.bedrock!,
+                      compact: useClientLayout(context),
+                    ),
+                ],
+              ),
+            ),
+          ),
       ],
     );
   }
@@ -239,10 +408,31 @@ class _CombinedResultCard extends StatelessWidget {
 
 class _JavaCard extends StatelessWidget {
   final JavaProfile profile;
-  const _JavaCard({required this.profile});
+  final bool compact;
+  const _JavaCard({required this.profile, this.compact = false});
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+    final badge = _PlatformBadge(
+      label: l.playerLookupJavaEdition,
+      color: AppTheme.accent,
+    );
+    final rows = <Widget>[
+      _InfoRow(
+        label: l.playerLookupLabelUsername,
+        value: profile.username,
+        canCopy: true,
+        inline: compact,
+      ),
+      const SizedBox(height: 8),
+      _InfoRow(
+        label: l.playerLookupLabelUuid,
+        value: profile.uuid,
+        canCopy: true,
+        inline: compact,
+      ),
+    ];
     return Container(
       decoration: BoxDecoration(
         color: AppTheme.surfaceRaised,
@@ -250,31 +440,32 @@ class _JavaCard extends StatelessWidget {
         border: Border.all(color: AppTheme.borderGray),
       ),
       padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _PlatformBadge(
-            label: AppLocalizations.of(context)!.playerLookupJavaEdition,
-            color: AppTheme.accent,
-          ),
-          const SizedBox(height: 14),
-          _JavaSkinViewer(uuid: profile.uuid),
-          const SizedBox(height: 14),
-          const Divider(color: AppTheme.borderGray, height: 1),
-          const SizedBox(height: 12),
-          _InfoRow(
-            label: AppLocalizations.of(context)!.playerLookupLabelUsername,
-            value: profile.username,
-            canCopy: true,
-          ),
-          const SizedBox(height: 8),
-          _InfoRow(
-            label: AppLocalizations.of(context)!.playerLookupLabelUuid,
-            value: profile.uuid,
-            canCopy: true,
-          ),
-        ],
-      ),
+      child: compact
+          ? Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _JavaSkinViewer(uuid: profile.uuid),
+                const SizedBox(width: 20),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [badge, const SizedBox(height: 14), ...rows],
+                  ),
+                ),
+              ],
+            )
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                badge,
+                const SizedBox(height: 14),
+                _JavaSkinViewer(uuid: profile.uuid),
+                const SizedBox(height: 14),
+                const Divider(color: AppTheme.borderGray, height: 1),
+                const SizedBox(height: 12),
+                ...rows,
+              ],
+            ),
     );
   }
 }
@@ -338,15 +529,6 @@ class _JavaSkinViewerState extends State<_JavaSkinViewer> {
     return null;
   }
 
-  void _openEditor() {
-    if (_textureUrl == null) return;
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) => SkinEditorScreen(initialTextureUrl: _textureUrl),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -355,44 +537,7 @@ class _JavaSkinViewerState extends State<_JavaSkinViewer> {
         child: _loading
             ? CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
             : _textureUrl != null
-            ? GestureDetector(
-                onTap: _openEditor,
-                child: Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156),
-                    Container(
-                      margin: const EdgeInsets.only(bottom: 4),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 3,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.black.withValues(alpha: 0.55),
-                        borderRadius: BorderRadius.circular(6),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            Icons.edit_rounded,
-                            size: 10,
-                            color: Colors.white70,
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            'Edit skin',
-                            style: const TextStyle(
-                              color: Colors.white70,
-                              fontSize: 10,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              )
+            ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156)
             : Icon(Icons.person_rounded, color: AppTheme.textMuted, size: 48),
       ),
     );
@@ -401,10 +546,55 @@ class _JavaSkinViewerState extends State<_JavaSkinViewer> {
 
 class _BedrockCard extends StatelessWidget {
   final BedrockProfile profile;
-  const _BedrockCard({required this.profile});
+  final bool compact;
+  const _BedrockCard({required this.profile, this.compact = false});
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+    final badge = Row(
+      children: [
+        _PlatformBadge(
+          label: l.playerLookupBedrockEdition,
+          color: AppTheme.xboxGreen,
+        ),
+        if (profile.gamerscore != null) ...[
+          const Spacer(),
+          Icon(Icons.star_rounded, size: 13, color: AppTheme.textMuted),
+          const SizedBox(width: 3),
+          Text(
+            '${profile.gamerscore}G',
+            style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
+          ),
+        ],
+      ],
+    );
+    final rows = <Widget>[
+      _InfoRow(
+        label: l.playerLookupLabelGamertag,
+        value: profile.displayName,
+        canCopy: true,
+        inline: compact,
+      ),
+      const SizedBox(height: 8),
+      _InfoRow(
+        label: l.playerLookupLabelXuid,
+        value: profile.xuid,
+        canCopy: true,
+        inline: compact,
+      ),
+      const SizedBox(height: 8),
+      _InfoRow(
+        label: l.playerLookupLabelFloodgate,
+        value: profile.floodgateUuid,
+        canCopy: true,
+        inline: compact,
+      ),
+      if (profile.tier != null) ...[
+        const SizedBox(height: 8),
+        _InfoRow(label: l.playerLookupLabelTier, value: profile.tier!),
+      ],
+    ];
     return Container(
       decoration: BoxDecoration(
         color: AppTheme.surfaceRaised,
@@ -412,57 +602,32 @@ class _BedrockCard extends StatelessWidget {
         border: Border.all(color: AppTheme.borderGray),
       ),
       padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              _PlatformBadge(
-                label: AppLocalizations.of(context)!.playerLookupBedrockEdition,
-                color: AppTheme.xboxGreen,
-              ),
-              if (profile.gamerscore != null) ...[
-                const Spacer(),
-                Icon(Icons.star_rounded, size: 13, color: AppTheme.textMuted),
-                const SizedBox(width: 3),
-                Text(
-                  '${profile.gamerscore}G',
-                  style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
+      child: compact
+          ? Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _BedrockSkinViewer(xuid: profile.xuid),
+                const SizedBox(width: 20),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [badge, const SizedBox(height: 14), ...rows],
+                  ),
                 ),
               ],
-            ],
-          ),
-          const SizedBox(height: 14),
-          _BedrockSkinViewer(xuid: profile.xuid),
-          const SizedBox(height: 14),
-          const Divider(color: AppTheme.borderGray, height: 1),
-          const SizedBox(height: 12),
-          _InfoRow(
-            label: AppLocalizations.of(context)!.playerLookupLabelGamertag,
-            value: profile.displayName,
-            canCopy: true,
-          ),
-          const SizedBox(height: 8),
-          _InfoRow(
-            label: AppLocalizations.of(context)!.playerLookupLabelXuid,
-            value: profile.xuid,
-            canCopy: true,
-          ),
-          const SizedBox(height: 8),
-          _InfoRow(
-            label: AppLocalizations.of(context)!.playerLookupLabelFloodgate,
-            value: profile.floodgateUuid,
-            canCopy: true,
-          ),
-          if (profile.tier != null) ...[
-            const SizedBox(height: 8),
-            _InfoRow(
-              label: AppLocalizations.of(context)!.playerLookupLabelTier,
-              value: profile.tier!,
+            )
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                badge,
+                const SizedBox(height: 14),
+                _BedrockSkinViewer(xuid: profile.xuid),
+                const SizedBox(height: 14),
+                const Divider(color: AppTheme.borderGray, height: 1),
+                const SizedBox(height: 12),
+                ...rows,
+              ],
             ),
-          ],
-        ],
-      ),
     );
   }
 }
@@ -508,15 +673,6 @@ class _BedrockSkinViewerState extends State<_BedrockSkinViewer> {
     if (mounted) setState(() => _loading = false);
   }
 
-  void _openEditor() {
-    if (_textureUrl == null) return;
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) => SkinEditorScreen(initialTextureUrl: _textureUrl),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -525,44 +681,7 @@ class _BedrockSkinViewerState extends State<_BedrockSkinViewer> {
         child: _loading
             ? CircularProgressIndicator(color: AppTheme.accent, strokeWidth: 2)
             : _textureUrl != null
-            ? GestureDetector(
-                onTap: _openEditor,
-                child: Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156),
-                    Container(
-                      margin: const EdgeInsets.only(bottom: 4),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 3,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.black.withValues(alpha: 0.55),
-                        borderRadius: BorderRadius.circular(6),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            Icons.edit_rounded,
-                            size: 10,
-                            color: Colors.white70,
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            'Edit skin',
-                            style: const TextStyle(
-                              color: Colors.white70,
-                              fontSize: 10,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              )
+            ? SkinBodyFromUrl(textureUrl: _textureUrl!, height: 156)
             : Icon(Icons.gamepad_rounded, color: AppTheme.textMuted, size: 48),
       ),
     );
@@ -598,13 +717,14 @@ class _InfoRow extends StatelessWidget {
   final String label;
   final String value;
   final bool canCopy;
-  final bool truncate;
+  final bool inline;
 
   const _InfoRow({
     required this.label,
     required this.value,
     this.canCopy = false,
-  }) : truncate = false;
+    this.inline = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -622,7 +742,7 @@ class _InfoRow extends StatelessWidget {
             ),
           ),
         ),
-        Expanded(
+        (inline ? Flexible.new : Expanded.new)(
           child: Text(
             value,
             style: TextStyle(

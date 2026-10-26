@@ -1518,42 +1518,6 @@ abstract class AppLocalizations {
   /// **'New friend requests will appear here.'**
   String get requestsAppearHere;
 
-  /// Edit button in skin detail sheet
-  ///
-  /// In en, this message translates to:
-  /// **'Edit'**
-  String get skinsEdit;
-
-  /// Error when uploaded skin is wrong size
-  ///
-  /// In en, this message translates to:
-  /// **'Skin must be 64×64 pixels'**
-  String get skinsMustBe64;
-
-  /// Error when the selected file is not a valid image
-  ///
-  /// In en, this message translates to:
-  /// **'Invalid image file'**
-  String get skinsInvalidFile;
-
-  /// Button to upload a skin
-  ///
-  /// In en, this message translates to:
-  /// **'Upload'**
-  String get skinsUpload;
-
-  /// Button to create/open skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'Create'**
-  String get skinsCreate;
-
-  /// Download button in skin detail sheet
-  ///
-  /// In en, this message translates to:
-  /// **'Download'**
-  String get skinsDownload;
-
   /// chooseUniqueUsername
   ///
   /// In en, this message translates to:
@@ -2273,30 +2237,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Upgrade available via the Microsoft Store'**
   String get upgradeWindowsHint;
-
-  /// Toast when skin is saved
-  ///
-  /// In en, this message translates to:
-  /// **'Skin saved'**
-  String get skinSaved;
-
-  /// Toast when skin saved with name
-  ///
-  /// In en, this message translates to:
-  /// **'Saved as \"{name}\"'**
-  String skinSavedAs(String name);
-
-  /// Toast when skin export fails
-  ///
-  /// In en, this message translates to:
-  /// **'Export failed'**
-  String get skinExportFailed;
-
-  /// Toast when skin is exported successfully
-  ///
-  /// In en, this message translates to:
-  /// **'Skin exported successfully'**
-  String get skinExported;
 
   /// Label for account danger zone section
   ///
@@ -3045,26 +2985,8 @@ abstract class AppLocalizations {
   /// Empty state for local skins tab
   ///
   /// In en, this message translates to:
-  /// **'No skins yet. Create or upload a skin to get started.'**
+  /// **'No saved skins yet.'**
   String get skinsEmptyLocalSkins;
-
-  /// Dialog title for saving skin locally
-  ///
-  /// In en, this message translates to:
-  /// **'Save Skin'**
-  String get skinSaveDialog;
-
-  /// Hint text for skin name input field
-  ///
-  /// In en, this message translates to:
-  /// **'Skin name'**
-  String get skinNameHint;
-
-  /// Default name for a new skin
-  ///
-  /// In en, this message translates to:
-  /// **'My Skin'**
-  String get skinDefaultName;
 
   /// Section header for the recent activity feed in the profile tab
   ///
@@ -3210,12 +3132,6 @@ abstract class AppLocalizations {
   /// **'New message from {actor}'**
   String notifMessageReceived(String actor);
 
-  /// Notification preference toggle label: skin liked
-  ///
-  /// In en, this message translates to:
-  /// **'Skin liked'**
-  String get notifPrefSkinLiked;
-
   /// Notification preference toggle label: comment received
   ///
   /// In en, this message translates to:
@@ -3252,18 +3168,6 @@ abstract class AppLocalizations {
   /// **'New message'**
   String get notifPrefMessageReceived;
 
-  /// Skin editor layer toggle, inner/base layer
-  ///
-  /// In en, this message translates to:
-  /// **'Inner'**
-  String get skinLayerInner;
-
-  /// Skin editor layer toggle, outer/overlay layer
-  ///
-  /// In en, this message translates to:
-  /// **'Outer'**
-  String get skinLayerOuter;
-
   /// Title shown when user must log in before sending feedback
   ///
   /// In en, this message translates to:
@@ -3287,54 +3191,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Support inbox'**
   String get supportInboxTitle;
-
-  /// No description provided for @skinShareSubject.
-  ///
-  /// In en, this message translates to:
-  /// **'Minecraft Skin'**
-  String get skinShareSubject;
-
-  /// No description provided for @skinEditorTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Skin Editor'**
-  String get skinEditorTitle;
-
-  /// No description provided for @skinToolUndo.
-  ///
-  /// In en, this message translates to:
-  /// **'Undo'**
-  String get skinToolUndo;
-
-  /// No description provided for @skinSaveToMySkins.
-  ///
-  /// In en, this message translates to:
-  /// **'Save to My Skins'**
-  String get skinSaveToMySkins;
-
-  /// No description provided for @skinExportPng.
-  ///
-  /// In en, this message translates to:
-  /// **'Export PNG'**
-  String get skinExportPng;
-
-  /// No description provided for @skinToolDraw.
-  ///
-  /// In en, this message translates to:
-  /// **'Draw'**
-  String get skinToolDraw;
-
-  /// No description provided for @skinToolFill.
-  ///
-  /// In en, this message translates to:
-  /// **'Fill'**
-  String get skinToolFill;
-
-  /// No description provided for @skinToolErase.
-  ///
-  /// In en, this message translates to:
-  /// **'Erase'**
-  String get skinToolErase;
 
   /// No description provided for @customColour.
   ///
@@ -3635,84 +3491,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Show this when I start'**
   String get howToAutoShow;
-
-  /// Shown when the requested skin texture could not be loaded and the editor fell back to the bundled default
-  ///
-  /// In en, this message translates to:
-  /// **'Could not load that skin. Starting from the default one.'**
-  String get skinEditorLoadFailed;
-
-  /// Skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'Recolour'**
-  String get skinToolRecolour;
-
-  /// Skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'Pick'**
-  String get skinToolPick;
-
-  /// Skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'Bases'**
-  String get skinBases;
-
-  /// Skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'Start from a base'**
-  String get skinBasesTitle;
-
-  /// Skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'This replaces what is on the canvas. Undo brings it back.'**
-  String get skinBasesSubtitle;
-
-  /// Skin editor: symmetry toggle
-  ///
-  /// In en, this message translates to:
-  /// **'Mirror'**
-  String get skinMirror;
-
-  /// Skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'Surprise'**
-  String get skinSurprise;
-
-  /// Skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'Fills the patch you tap'**
-  String get skinToolFillHint;
-
-  /// Skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'Changes that colour everywhere on the skin'**
-  String get skinToolRecolourHint;
-
-  /// Skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'Takes the colour you tap'**
-  String get skinToolPickHint;
-
-  /// Skin editor: arm width
-  ///
-  /// In en, this message translates to:
-  /// **'Wide'**
-  String get skinModelClassic;
-
-  /// Skin editor: arm width
-  ///
-  /// In en, this message translates to:
-  /// **'Slim'**
-  String get skinModelSlim;
 
   /// Profile: server visibility
   ///
@@ -4109,6 +3887,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Less'**
   String get showLess;
+
+  /// No description provided for @lookupRecent.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent'**
+  String get lookupRecent;
 }
 
 class _AppLocalizationsDelegate

@@ -11,6 +11,7 @@ class ProfileDesktopSidebar extends StatelessWidget {
   final VoidCallback? onGoToHome;
   final VoidCallback? onGoToConnector;
   final VoidCallback? onGoToSkins;
+  final Widget? nav;
 
   const ProfileDesktopSidebar({
     super.key,
@@ -19,6 +20,7 @@ class ProfileDesktopSidebar extends StatelessWidget {
     this.onGoToHome,
     this.onGoToConnector,
     this.onGoToSkins,
+    this.nav,
   });
 
   void _openSearch(BuildContext context) {
@@ -107,6 +109,12 @@ class ProfileDesktopSidebar extends StatelessWidget {
               ),
             ),
           ),
+          if (nav != null) ...[
+            const SizedBox(height: 12),
+            Divider(color: AppTheme.borderGray),
+            const SizedBox(height: 12),
+            nav!,
+          ],
         ],
       ),
     );

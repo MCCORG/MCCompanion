@@ -760,24 +760,6 @@ class AppLocalizationsTr extends AppLocalizations {
       'Yeni arkadaşlık istekleri burada görünecek.';
 
   @override
-  String get skinsEdit => 'Düzenle';
-
-  @override
-  String get skinsMustBe64 => 'Skin 64×64 piksel olmalıdır';
-
-  @override
-  String get skinsInvalidFile => 'Geçersiz resim dosyası';
-
-  @override
-  String get skinsUpload => 'Yükle';
-
-  @override
-  String get skinsCreate => 'Oluştur';
-
-  @override
-  String get skinsDownload => 'İndir';
-
-  @override
   String get chooseUniqueUsername =>
       'Başlamak için benzersiz bir kullanıcı adı seç.';
 
@@ -1159,20 +1141,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => 'Yükseltme Microsoft Store\'da mevcut';
-
-  @override
-  String get skinSaved => 'Skin kaydedildi';
-
-  @override
-  String skinSavedAs(String name) {
-    return '\"$name\" olarak kaydedildi';
-  }
-
-  @override
-  String get skinExportFailed => 'Disa aktarma basarisiz';
-
-  @override
-  String get skinExported => 'Skin basariyla disa aktarildi';
 
   @override
   String get accountActions => 'Hesap';
@@ -1599,17 +1567,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get skinsSavedToMySkins => 'Skinlerime kaydedildi';
 
   @override
-  String get skinsEmptyLocalSkins =>
-      'Henüz skin yok. Başlamak için bir skin oluşturun veya yükleyin.';
-
-  @override
-  String get skinSaveDialog => 'Skin kaydet';
-
-  @override
-  String get skinNameHint => 'Skin adı';
-
-  @override
-  String get skinDefaultName => 'Benim skinim';
+  String get skinsEmptyLocalSkins => 'Henüz kayıtlı skin yok.';
 
   @override
   String get sectionRecentActivity => 'Son etkinlik';
@@ -1703,9 +1661,6 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => 'Skin beğenildi';
-
-  @override
   String get notifPrefCommentReceived => 'Yorum alındı';
 
   @override
@@ -1724,12 +1679,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get notifPrefMessageReceived => 'Yeni mesaj';
 
   @override
-  String get skinLayerInner => 'İç';
-
-  @override
-  String get skinLayerOuter => 'Dış';
-
-  @override
   String get feedbackLoginRequiredTitle =>
       'Geri bildirim göndermek için giriş yapın';
 
@@ -1742,30 +1691,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get supportInboxTitle => 'Destek kutusu';
-
-  @override
-  String get skinShareSubject => 'Minecraft skini';
-
-  @override
-  String get skinEditorTitle => 'Skin düzenleyici';
-
-  @override
-  String get skinToolUndo => 'Geri al';
-
-  @override
-  String get skinSaveToMySkins => 'Skinlerime kaydet';
-
-  @override
-  String get skinExportPng => 'PNG dışa aktar';
-
-  @override
-  String get skinToolDraw => 'Çiz';
-
-  @override
-  String get skinToolFill => 'Doldur';
-
-  @override
-  String get skinToolErase => 'Sil';
 
   @override
   String get customColour => 'Özel renk';
@@ -1930,48 +1855,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get howToAutoShow => 'Başlatınca bunu göster';
-
-  @override
-  String get skinEditorLoadFailed =>
-      'Bu kaplama yüklenemedi. Varsayılan kaplamayla başlıyoruz.';
-
-  @override
-  String get skinToolRecolour => 'Yeniden renklendir';
-
-  @override
-  String get skinToolPick => 'Damlalık';
-
-  @override
-  String get skinBases => 'Şablonlar';
-
-  @override
-  String get skinBasesTitle => 'Bir şablonla başla';
-
-  @override
-  String get skinBasesSubtitle =>
-      'Bu, mevcut çizimin yerini alır. Geri al ile döner.';
-
-  @override
-  String get skinMirror => 'Aynala';
-
-  @override
-  String get skinSurprise => 'Sürpriz';
-
-  @override
-  String get skinToolFillHint => 'Dokunduğunuz alanı doldurur';
-
-  @override
-  String get skinToolRecolourHint =>
-      'O rengi kaplamanın her yerinde değiştirir';
-
-  @override
-  String get skinToolPickHint => 'Dokunduğunuz rengi alır';
-
-  @override
-  String get skinModelClassic => 'Geniş';
-
-  @override
-  String get skinModelSlim => 'İnce';
 
   @override
   String get shareServerLabel => 'Sunucunu paylaş';
@@ -2191,4 +2074,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get showLess => 'Daha az';
+
+  @override
+  String get lookupRecent => 'Son aramalar';
 }
