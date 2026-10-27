@@ -2079,4 +2079,8 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get lookupRecent => 'Недавние';
+
+  @override
+  String get skinsRemovalNotice =>
+      'Скины будут удалены в следующем обновлении. Экспортируйте те, что хотите сохранить.';
 }

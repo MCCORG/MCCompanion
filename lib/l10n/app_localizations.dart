@@ -3893,6 +3893,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Recent'**
   String get lookupRecent;
+
+  /// No description provided for @skinsRemovalNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Skins will be removed in the next update. Export the skins you want to keep.'**
+  String get skinsRemovalNotice;
 }
 
 class _AppLocalizationsDelegate

@@ -1370,5 +1370,6 @@
   "feedbackViewYourReport": "送信した内容を見る",
   "showMore": "もっと見る",
   "showLess": "閉じる",
-  "lookupRecent": "最近"
+  "lookupRecent": "最近",
+  "skinsRemovalNotice": "次のアップデートでスキンは削除されます。残したいスキンはエクスポートしてください。"
 }

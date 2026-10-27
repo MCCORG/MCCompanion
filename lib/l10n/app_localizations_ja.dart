@@ -2024,4 +2024,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get lookupRecent => '最近';
+
+  @override
+  String get skinsRemovalNotice => '次のアップデートでスキンは削除されます。残したいスキンはエクスポートしてください。';
 }

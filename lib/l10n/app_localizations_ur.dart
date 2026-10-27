@@ -2087,4 +2087,8 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get lookupRecent => 'حالیہ';
+
+  @override
+  String get skinsRemovalNotice =>
+      'اگلی اپ ڈیٹ میں اسکنز ہٹا دی جائیں گی۔ جنہیں رکھنا چاہتے ہیں انہیں ایکسپورٹ کریں۔';
 }

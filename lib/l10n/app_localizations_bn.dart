@@ -2085,4 +2085,8 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get lookupRecent => 'সাম্প্রতিক';
+
+  @override
+  String get skinsRemovalNotice =>
+      'পরবর্তী আপডেটে স্কিন সরিয়ে ফেলা হবে। যেগুলো রাখতে চান সেগুলো এক্সপোর্ট করুন।';
 }

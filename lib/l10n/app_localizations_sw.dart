@@ -2100,4 +2100,8 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get lookupRecent => 'Za hivi karibuni';
+
+  @override
+  String get skinsRemovalNotice =>
+      'Skin zitaondolewa katika sasisho lijalo. Hamisha skin unazotaka kuhifadhi.';
 }

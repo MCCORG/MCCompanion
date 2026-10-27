@@ -1370,5 +1370,6 @@
   "feedbackViewYourReport": "Bildiriminizi görüntüle",
   "showMore": "Daha fazla",
   "showLess": "Daha az",
-  "lookupRecent": "Son aramalar"
+  "lookupRecent": "Son aramalar",
+  "skinsRemovalNotice": "Skin'ler bir sonraki güncellemede kaldırılacak. Saklamak istediklerini dışa aktar."
 }

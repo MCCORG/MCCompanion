@@ -1370,5 +1370,6 @@
   "feedbackViewYourReport": "查看你的反馈",
   "showMore": "展开",
   "showLess": "收起",
-  "lookupRecent": "最近"
+  "lookupRecent": "最近",
+  "skinsRemovalNotice": "皮肤功能将在下次更新中移除。请导出你想保留的皮肤。"
 }

@@ -1370,5 +1370,6 @@
   "feedbackViewYourReport": "Открыть ваше сообщение",
   "showMore": "Ещё",
   "showLess": "Свернуть",
-  "lookupRecent": "Недавние"
+  "lookupRecent": "Недавние",
+  "skinsRemovalNotice": "Скины будут удалены в следующем обновлении. Экспортируйте те, что хотите сохранить."
 }

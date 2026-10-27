@@ -1370,5 +1370,6 @@
   "feedbackViewYourReport": "Deine Meldung ansehen",
   "showMore": "Mehr",
   "showLess": "Weniger",
-  "lookupRecent": "Zuletzt"
+  "lookupRecent": "Zuletzt",
+  "skinsRemovalNotice": "Skins werden mit dem nächsten Update entfernt. Exportiere die Skins, die du behalten möchtest."
 }

@@ -2097,4 +2097,8 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get lookupRecent => 'Recent';
+
+  @override
+  String get skinsRemovalNotice =>
+      'Skins worden met de volgende update verwijderd. Exporteer de skins die je wilt bewaren.';
 }

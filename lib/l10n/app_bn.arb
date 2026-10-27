@@ -1370,5 +1370,6 @@
   "feedbackViewYourReport": "আপনার রিপোর্ট দেখুন",
   "showMore": "আরও",
   "showLess": "কম",
-  "lookupRecent": "সাম্প্রতিক"
+  "lookupRecent": "সাম্প্রতিক",
+  "skinsRemovalNotice": "পরবর্তী আপডেটে স্কিন সরিয়ে ফেলা হবে। যেগুলো রাখতে চান সেগুলো এক্সপোর্ট করুন।"
 }

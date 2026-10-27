@@ -1370,5 +1370,6 @@
   "feedbackViewYourReport": "Ver tu informe",
   "showMore": "Más",
   "showLess": "Menos",
-  "lookupRecent": "Recientes"
+  "lookupRecent": "Recientes",
+  "skinsRemovalNotice": "Las skins se eliminarán con la próxima actualización. Exporta las que quieras conservar."
 }

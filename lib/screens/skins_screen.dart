@@ -139,6 +139,40 @@ class SkinsScreenState extends State<SkinsScreen> {
         return Column(
           children: [
             DsHeader(title: l.featureLabelSkins),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(
+                DsSpace.gutter,
+                0,
+                DsSpace.gutter,
+                DsSpace.md,
+              ),
+              child: Container(
+                padding: const EdgeInsets.all(DsSpace.md + 2),
+                decoration: BoxDecoration(
+                  color: DsColor.warning.withValues(alpha: 0.10),
+                  borderRadius: DsRadius.cardR,
+                  border: Border.all(
+                    color: DsColor.warning.withValues(alpha: 0.28),
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.info_outline_rounded,
+                      color: DsColor.warning,
+                      size: 18,
+                    ),
+                    const SizedBox(width: DsSpace.md),
+                    Expanded(
+                      child: Text(
+                        l.skinsRemovalNotice,
+                        style: DsType.label.copyWith(color: DsColor.warning),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             Expanded(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.fromLTRB(

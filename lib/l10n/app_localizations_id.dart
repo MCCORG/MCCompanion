@@ -2086,4 +2086,8 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get lookupRecent => 'Terbaru';
+
+  @override
+  String get skinsRemovalNotice =>
+      'Skin akan dihapus pada pembaruan berikutnya. Ekspor skin yang ingin kamu simpan.';
 }

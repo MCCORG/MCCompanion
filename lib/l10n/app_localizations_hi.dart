@@ -2091,4 +2091,8 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get lookupRecent => 'हाल के';
+
+  @override
+  String get skinsRemovalNotice =>
+      'अगले अपडेट में स्किन हटा दी जाएँगी। जिन्हें रखना चाहते हैं उन्हें एक्सपोर्ट करें।';
 }

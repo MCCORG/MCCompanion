@@ -952,5 +952,6 @@
   "feedbackViewYourReport": "Bekijk je melding",
   "showMore": "Meer",
   "showLess": "Minder",
-  "lookupRecent": "Recent"
+  "lookupRecent": "Recent",
+  "skinsRemovalNotice": "Skins worden met de volgende update verwijderd. Exporteer de skins die je wilt bewaren."
 }

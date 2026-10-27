@@ -2077,4 +2077,8 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get lookupRecent => 'Son aramalar';
+
+  @override
+  String get skinsRemovalNotice =>
+      'Skin\'ler bir sonraki güncellemede kaldırılacak. Saklamak istediklerini dışa aktar.';
 }

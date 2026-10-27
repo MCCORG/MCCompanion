@@ -2013,4 +2013,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get lookupRecent => '最近';
+
+  @override
+  String get skinsRemovalNotice => '皮肤功能将在下次更新中移除。请导出你想保留的皮肤。';
 }

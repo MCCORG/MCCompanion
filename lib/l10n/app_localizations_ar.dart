@@ -2071,4 +2071,8 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get lookupRecent => 'الأخيرة';
+
+  @override
+  String get skinsRemovalNotice =>
+      'ستتم إزالة السكنات في التحديث القادم. صدّر السكنات التي تريد الاحتفاظ بها.';
 }
