@@ -1371,5 +1371,6 @@
   "showMore": "Mehr",
   "showLess": "Weniger",
   "lookupRecent": "Zuletzt",
-  "skinsRemovalNotice": "Skins werden mit dem nächsten Update entfernt. Exportiere die Skins, die du behalten möchtest."
+  "skinsRemovalNotice": "Skins werden mit dem nächsten Update entfernt. Exportiere die Skins, die du behalten möchtest.",
+  "feedbackRpNotice": "Wir beantworten keine Meldungen zu Resource Packs. Manche Packs funktionieren einfach nicht, und manche Server lehnen eigene Packs ab."
 }

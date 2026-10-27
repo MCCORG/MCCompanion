@@ -3899,6 +3899,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Skins will be removed in the next update. Export the skins you want to keep.'**
   String get skinsRemovalNotice;
+
+  /// No description provided for @feedbackRpNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'We can\'t answer reports about resource packs. Some packs simply don\'t work, and some servers reject custom packs.'**
+  String get feedbackRpNotice;
 }
 
 class _AppLocalizationsDelegate

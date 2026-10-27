@@ -2075,4 +2075,8 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get skinsRemovalNotice =>
       'ستتم إزالة السكنات في التحديث القادم. صدّر السكنات التي تريد الاحتفاظ بها.';
+
+  @override
+  String get feedbackRpNotice =>
+      'لا نرد على البلاغات المتعلقة بحزم الموارد. بعض الحزم لا تعمل ببساطة، وبعض الخوادم ترفض الحزم المخصصة.';
 }

@@ -2081,4 +2081,8 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get skinsRemovalNotice =>
       'Skin\'ler bir sonraki güncellemede kaldırılacak. Saklamak istediklerini dışa aktar.';
+
+  @override
+  String get feedbackRpNotice =>
+      'Kaynak paketleriyle ilgili bildirimlere yanıt vermiyoruz. Bazı paketler hiç çalışmıyor ve bazı sunucular özel paketleri reddediyor.';
 }

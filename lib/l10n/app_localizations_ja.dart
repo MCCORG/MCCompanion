@@ -2027,4 +2027,8 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get skinsRemovalNotice => '次のアップデートでスキンは削除されます。残したいスキンはエクスポートしてください。';
+
+  @override
+  String get feedbackRpNotice =>
+      'リソースパックに関する報告には返信しておりません。一部のパックは単に動作しないことがあり、サーバーがカスタムパックを拒否する場合もあります。';
 }

@@ -466,6 +466,36 @@ class _FormView extends StatelessWidget {
             const SizedBox(height: 20),
             _Divider(),
             const SizedBox(height: 20),
+            if (isBug) ...[
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: DsColor.info.withValues(alpha: 0.10),
+                  borderRadius: DsRadius.cardR,
+                  border: Border.all(
+                    color: DsColor.info.withValues(alpha: 0.28),
+                  ),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Icon(
+                      Icons.info_outline_rounded,
+                      color: DsColor.info,
+                      size: 18,
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Text(
+                        l.feedbackRpNotice,
+                        style: DsType.caption.copyWith(color: DsColor.info),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+            ],
             _Label(l.feedbackTitleLabel, required: true),
             const SizedBox(height: 8),
             TextField(

@@ -2083,4 +2083,8 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get skinsRemovalNotice =>
       'Скины будут удалены в следующем обновлении. Экспортируйте те, что хотите сохранить.';
+
+  @override
+  String get feedbackRpNotice =>
+      'Мы не отвечаем на обращения о ресурспаках. Некоторые паки просто не работают, а некоторые серверы отклоняют пользовательские паки.';
 }

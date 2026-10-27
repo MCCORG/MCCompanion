@@ -2095,4 +2095,8 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get skinsRemovalNotice =>
       'अगले अपडेट में स्किन हटा दी जाएँगी। जिन्हें रखना चाहते हैं उन्हें एक्सपोर्ट करें।';
+
+  @override
+  String get feedbackRpNotice =>
+      'हम रिसोर्स पैक से जुड़ी रिपोर्ट का जवाब नहीं देते। कुछ पैक बस काम नहीं करते, और कुछ सर्वर कस्टम पैक अस्वीकार कर देते हैं।';
 }

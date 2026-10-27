@@ -2091,4 +2091,8 @@ class AppLocalizationsUr extends AppLocalizations {
   @override
   String get skinsRemovalNotice =>
       'اگلی اپ ڈیٹ میں اسکنز ہٹا دی جائیں گی۔ جنہیں رکھنا چاہتے ہیں انہیں ایکسپورٹ کریں۔';
+
+  @override
+  String get feedbackRpNotice =>
+      'ہم ریسورس پیک سے متعلق رپورٹس کا جواب نہیں دیتے۔ کچھ پیک بس کام نہیں کرتے، اور کچھ سرور حسبِ ضرورت پیک مسترد کر دیتے ہیں۔';
 }

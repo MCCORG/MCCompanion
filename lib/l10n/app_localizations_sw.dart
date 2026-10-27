@@ -2104,4 +2104,8 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get skinsRemovalNotice =>
       'Skin zitaondolewa katika sasisho lijalo. Hamisha skin unazotaka kuhifadhi.';
+
+  @override
+  String get feedbackRpNotice =>
+      'Hatujibu ripoti kuhusu resource pack. Baadhi ya pack hazifanyi kazi tu, na baadhi ya seva hukataa pack maalum.';
 }

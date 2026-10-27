@@ -1371,5 +1371,6 @@
   "showMore": "Daha fazla",
   "showLess": "Daha az",
   "lookupRecent": "Son aramalar",
-  "skinsRemovalNotice": "Skin'ler bir sonraki güncellemede kaldırılacak. Saklamak istediklerini dışa aktar."
+  "skinsRemovalNotice": "Skin'ler bir sonraki güncellemede kaldırılacak. Saklamak istediklerini dışa aktar.",
+  "feedbackRpNotice": "Kaynak paketleriyle ilgili bildirimlere yanıt vermiyoruz. Bazı paketler hiç çalışmıyor ve bazı sunucular özel paketleri reddediyor."
 }

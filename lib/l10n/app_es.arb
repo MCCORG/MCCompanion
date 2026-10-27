@@ -1371,5 +1371,6 @@
   "showMore": "Más",
   "showLess": "Menos",
   "lookupRecent": "Recientes",
-  "skinsRemovalNotice": "Las skins se eliminarán con la próxima actualización. Exporta las que quieras conservar."
+  "skinsRemovalNotice": "Las skins se eliminarán con la próxima actualización. Exporta las que quieras conservar.",
+  "feedbackRpNotice": "No respondemos a reportes sobre packs de recursos. Algunos packs simplemente no funcionan y algunos servidores rechazan los packs personalizados."
 }

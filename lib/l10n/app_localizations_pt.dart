@@ -2086,4 +2086,8 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get skinsRemovalNotice =>
       'As skins serão removidas na próxima atualização. Exporte as que quiser guardar.';
+
+  @override
+  String get feedbackRpNotice =>
+      'Não respondemos a relatórios sobre resource packs. Alguns packs simplesmente não funcionam e alguns servidores rejeitam packs personalizados.';
 }

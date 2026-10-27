@@ -2016,4 +2016,8 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get skinsRemovalNotice => '皮肤功能将在下次更新中移除。请导出你想保留的皮肤。';
+
+  @override
+  String get feedbackRpNotice =>
+      '我们不会回复与资源包相关的反馈。有些资源包本来就无法使用，也有些服务器会拒绝自定义资源包。';
 }

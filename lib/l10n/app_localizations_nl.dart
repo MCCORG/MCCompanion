@@ -2101,4 +2101,8 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get skinsRemovalNotice =>
       'Skins worden met de volgende update verwijderd. Exporteer de skins die je wilt bewaren.';
+
+  @override
+  String get feedbackRpNotice =>
+      'We beantwoorden geen meldingen over resource packs. Sommige packs werken gewoon niet, en sommige servers weigeren eigen packs.';
 }

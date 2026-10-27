@@ -2090,4 +2090,8 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get skinsRemovalNotice =>
       'Skin akan dihapus pada pembaruan berikutnya. Ekspor skin yang ingin kamu simpan.';
+
+  @override
+  String get feedbackRpNotice =>
+      'Kami tidak membalas laporan tentang resource pack. Beberapa pack memang tidak berfungsi, dan beberapa server menolak pack kustom.';
 }

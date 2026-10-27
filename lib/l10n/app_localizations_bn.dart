@@ -2089,4 +2089,8 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get skinsRemovalNotice =>
       'পরবর্তী আপডেটে স্কিন সরিয়ে ফেলা হবে। যেগুলো রাখতে চান সেগুলো এক্সপোর্ট করুন।';
+
+  @override
+  String get feedbackRpNotice =>
+      'রিসোর্স প্যাক নিয়ে করা রিপোর্টের আমরা উত্তর দিই না। কিছু প্যাক এমনিতেই কাজ করে না, আর কিছু সার্ভার কাস্টম প্যাক প্রত্যাখ্যান করে।';
 }

@@ -953,5 +953,6 @@
   "showMore": "Meer",
   "showLess": "Minder",
   "lookupRecent": "Recent",
-  "skinsRemovalNotice": "Skins worden met de volgende update verwijderd. Exporteer de skins die je wilt bewaren."
+  "skinsRemovalNotice": "Skins worden met de volgende update verwijderd. Exporteer de skins die je wilt bewaren.",
+  "feedbackRpNotice": "We beantwoorden geen meldingen over resource packs. Sommige packs werken gewoon niet, en sommige servers weigeren eigen packs."
 }
