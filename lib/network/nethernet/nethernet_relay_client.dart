@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import '../route_session.dart';
 import 'nethernet_protocol.dart';
 
 class NetherNetRelayClient {
@@ -30,6 +31,7 @@ class NetherNetRelayClient {
       'connectionId': NetherNetProtocol.unsignedString(connectionId),
       'networkId': NetherNetProtocol.unsignedString(networkId),
       'sdp': sdp,
+      'sessionId': RouteSession.id,
       'nonce': ?nonce,
     });
     final json = await _post('/nethernet/offer', body);

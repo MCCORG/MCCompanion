@@ -7,6 +7,8 @@ bool get isDesktopPlatform =>
     !kIsWeb && (Platform.isMacOS || Platform.isWindows || Platform.isLinux);
 
 const double kDesktopContentWidth = double.infinity;
+const double kDesktopPageWidth = 1180;
+const double kDesktopListWidth = 860;
 
 const double kTabletShortestSide = 600;
 

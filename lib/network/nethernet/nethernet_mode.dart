@@ -64,6 +64,7 @@ class NetherNetMode {
     discovery.setAdvertisement(
       serverName: serverName,
       levelName: 'MCCompanion: $remoteHost',
+      nonce: NetherNetProtocol.routeNonce(host: remoteHost, port: remotePort),
       playerCount: playerCount,
       maxPlayerCount: maxPlayerCount,
     );
@@ -148,21 +149,52 @@ class NetherNetMode {
       return;
     }
 
-    var candidatesSent = 0;
-    for (final candidate in result.candidates) {
-      final sent = discovery.sendSignal(
-        recipientId: signal.senderId,
-        type: NetherNetProtocol.signalCandidateAdd,
-        connectionId: signal.connectionId,
-        payload: candidate,
-      );
-      if (sent) candidatesSent++;
-    }
+    final candidatesSent = _sendCandidates(
+      discovery,
+      signal,
+      result.candidates,
+    );
+    unawaited(_repeatCandidates(discovery, signal, result.candidates));
 
     _log(
       'Client handed over to the relay (answer ${result.answer.length} bytes, '
       '$candidatesSent/${result.candidates.length} candidates sent)',
     );
+  }
+
+  static const List<Duration> _candidateRepeats = [
+    Duration(milliseconds: 300),
+    Duration(milliseconds: 900),
+  ];
+
+  int _sendCandidates(
+    NetherNetDiscovery discovery,
+    NetherNetSignal signal,
+    List<String> candidates,
+  ) {
+    var sent = 0;
+    for (final candidate in candidates) {
+      final ok = discovery.sendSignal(
+        recipientId: signal.senderId,
+        type: NetherNetProtocol.signalCandidateAdd,
+        connectionId: signal.connectionId,
+        payload: candidate,
+      );
+      if (ok) sent++;
+    }
+    return sent;
+  }
+
+  Future<void> _repeatCandidates(
+    NetherNetDiscovery discovery,
+    NetherNetSignal signal,
+    List<String> candidates,
+  ) async {
+    for (final delay in _candidateRepeats) {
+      await Future<void>.delayed(delay);
+      if (_discovery != discovery) return;
+      _sendCandidates(discovery, signal, candidates);
+    }
   }
 
   Future<void> _forwardCandidate(NetherNetSignal signal) async {

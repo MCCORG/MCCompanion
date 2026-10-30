@@ -77,10 +77,11 @@ class ManageServersScreenState extends State<ManageServersScreen> {
 
     return SwipeBack(
       onBack: widget.onBack,
-      child: Center(
+      child: Align(
+        alignment: Alignment.topLeft,
         child: ConstrainedBox(
           constraints: BoxConstraints(
-            maxWidth: useClientLayout(context) ? double.infinity : 760,
+            maxWidth: useClientLayout(context) ? kDesktopListWidth : 760,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,

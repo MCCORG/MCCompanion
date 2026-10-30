@@ -1098,15 +1098,17 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
                     ),
                   ],
                 ),
-                rightDock: ValueListenableBuilder<bool>(
-                  valueListenable: navigationController.consoleOpen,
-                  builder: (_, consoleOpen, _) {
-                    final broadcasting =
-                        _connectorKey.currentState?.isBroadcasting ?? false;
-                    if (!canDockStatus || (!consoleOpen && !broadcasting)) {
+                rightDock: ListenableBuilder(
+                  listenable: _statusPanelState,
+                  builder: (_, _) {
+                    if (!canDockStatus ||
+                        !navigationController.consoleOpen.value) {
                       return const SizedBox.shrink();
                     }
-                    return _buildDesktopStatusPanel(loc, broadcasting);
+                    return _buildDesktopStatusPanel(
+                      loc,
+                      navigationController.broadcasting.value,
+                    );
                   },
                 ),
                 statusBar: ClientStatusBar(
@@ -1121,12 +1123,10 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
               ),
             ),
             if (!canDockStatus)
-              ValueListenableBuilder<bool>(
-                valueListenable: navigationController.consoleOpen,
-                builder: (_, consoleOpen, _) {
-                  final broadcasting =
-                      _connectorKey.currentState?.isBroadcasting ?? false;
-                  if (!consoleOpen && !broadcasting) {
+              ListenableBuilder(
+                listenable: _statusPanelState,
+                builder: (_, _) {
+                  if (!navigationController.consoleOpen.value) {
                     return const SizedBox.shrink();
                   }
                   return Stack(
@@ -1144,7 +1144,10 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
                         bottom: 0,
                         right: 0,
                         child: SafeArea(
-                          child: _buildDesktopStatusPanel(loc, broadcasting),
+                          child: _buildDesktopStatusPanel(
+                            loc,
+                            navigationController.broadcasting.value,
+                          ),
                         ),
                       ),
                     ],
@@ -1179,6 +1182,11 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     );
   }
 
+  late final Listenable _statusPanelState = Listenable.merge([
+    navigationController.consoleOpen,
+    navigationController.broadcasting,
+  ]);
+
   Widget _buildDesktopStatusPanel(AppLocalizations loc, bool broadcasting) {
     return DesktopStatusPanel(
       broadcasting: broadcasting,
@@ -1196,7 +1204,7 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       onToggleDebug: _toggleDebug,
       onClearLogs: _clearLogs,
       onCopyLogs: _copyLogs,
-      onClose: broadcasting ? null : navigationController.hideConsole,
+      onClose: navigationController.hideConsole,
     );
   }
 }

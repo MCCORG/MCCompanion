@@ -616,7 +616,9 @@ class _RpMergerWidgetState extends State<RpMergerWidget> {
         if (_packs.length >= 2) ...[
           const SizedBox(height: DsSpace.lg),
           DsButton(
-            label: _merging ? l.rpMergerMerging : l.rpMergerButton(_packs.length),
+            label: _merging
+                ? l.rpMergerMerging
+                : l.rpMergerButton(_packs.length),
             icon: Icons.merge_rounded,
             size: DsButtonSize.large,
             expand: true,

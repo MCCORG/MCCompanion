@@ -43,7 +43,7 @@ class ClientStatusBar extends StatelessWidget {
             ),
             if (live && serverName != null && serverName!.isNotEmpty) ...[
               const SizedBox(width: DsSpace.md),
-              Flexible(
+              Expanded(
                 child: Text(
                   serverName!,
                   maxLines: 1,
@@ -51,8 +51,8 @@ class ClientStatusBar extends StatelessWidget {
                   style: DsType.label.copyWith(color: DsColor.textSoft),
                 ),
               ),
-            ],
-            const Spacer(),
+            ] else
+              const Spacer(),
             ValueListenableBuilder<bool>(
               valueListenable: consoleOpen,
               builder: (_, open, _) => DsButton(
