@@ -28,6 +28,7 @@ import '../util/bedrock_account_prefs.dart';
 import '../util/howto_prefs.dart';
 import '../util/resource_pack_prefs.dart';
 import '../widgets/dialogs/howto_dialogs.dart';
+import '../layout/bar_inset.dart';
 
 class HomeScreen extends StatefulWidget {
   final RelaySelection selectedRelay;
@@ -460,17 +461,18 @@ class HomeScreenState extends State<HomeScreen> {
             padding: EdgeInsets.zero,
             child: SingleChildScrollView(
               controller: _mainScrollController,
+              padding: EdgeInsets.only(bottom: BarInset.of(context)),
               physics: const ClampingScrollPhysics(),
               child: ValueListenableBuilder<List<UserServer>>(
                 valueListenable: _userServersNotifier,
                 builder: (context, userServers, _) => ConnectionPanel(
                   availableHeight: constraints.maxHeight.isFinite
-                      ? constraints.maxHeight - 12
+                      ? constraints.maxHeight - 12 - BarInset.of(context)
                       : null,
                   ipController: widget.ipController,
                   portController: widget.portController,
                   broadcastingNotifier: _broadcastingNotifier,
-                  clientSeenNotifier: _netherNet.clientSeen,
+                  phaseNotifier: _netherNet.phase,
                   onStartBroadcast: _startBroadcast,
                   onStopBroadcast: _stopBroadcast,
                   savedServers: userServers,

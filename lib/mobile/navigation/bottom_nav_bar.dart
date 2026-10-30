@@ -13,13 +13,8 @@ import '../../widgets/components/app_sheet.dart';
 import '../../theme/app_tokens.dart';
 
 class BottomGlassSimpleNavBar extends StatelessWidget {
-  final NavigationController? navigationController;
   final VoidCallback? onConnectorTap;
-  final VoidCallback? onProfileTap;
   final String? activeItem;
-  final bool dark;
-  final String? selectedRelayIp;
-  final void Function(String?)? onRelayChanged;
 
   final AppFeature? navFarFeature;
   final AppFeature? navOuterFeature;
@@ -36,12 +31,8 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
 
   const BottomGlassSimpleNavBar({
     super.key,
-    required this.navigationController,
     this.onConnectorTap,
-    this.onProfileTap,
     this.activeItem,
-    this.dark = true,
-    this.selectedRelayIp,
     this.navFarFeature,
     this.navOuterFeature,
     this.navLeftFeature,
@@ -54,7 +45,6 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
     this.navOuterActive = false,
     this.navLeftActive = false,
     this.navRightActive = false,
-    this.onRelayChanged,
   });
 
   static FaIconData _iconFor(AppFeature feature) => switch (feature) {
@@ -65,68 +55,141 @@ class BottomGlassSimpleNavBar extends StatelessWidget {
     AppFeature.tracker => FontAwesomeIcons.heartPulse,
   };
 
+  static const double _height = 52;
+  static const double _gap = 16;
+
+  static double insetOf(BuildContext context) {
+    final safeBottom = MediaQuery.paddingOf(context).bottom;
+    return (safeBottom < 8 ? 8 : safeBottom) + 6 + _height + _gap;
+  }
+
+  static const double _radius = 26;
+  static const double _bubbleInset = 5;
+
   @override
   Widget build(BuildContext context) {
-    return ClipRect(
-      child: BackdropFilter(
-        filter: ImageFilter.blur(
-          sigmaX: AppBlur.sigmaFor(18),
-          sigmaY: AppBlur.sigmaFor(18),
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-            color: AppTheme.surfaceRaised.withValues(alpha: 0.88),
-            border: Border(
-              top: BorderSide(color: AppTheme.borderGray, width: 0.5),
+    final l = AppLocalizations.of(context)!;
+    final items =
+        <({FaIconData icon, String label, bool active, VoidCallback? onTap})>[
+          if (navOuterFeature != null)
+            (
+              icon: _iconFor(navOuterFeature!),
+              label: navOuterFeature!.label(l),
+              active: navOuterActive,
+              onTap: onNavOuterTap,
             ),
+          if (navLeftFeature != null)
+            (
+              icon: _iconFor(navLeftFeature!),
+              label: navLeftFeature!.label(l),
+              active: navLeftActive,
+              onTap: onNavLeftTap,
+            ),
+          (
+            icon: FontAwesomeIcons.play,
+            label: l.featureLabelConnector,
+            active: activeItem == 'connector',
+            onTap: onConnectorTap,
           ),
-          child: SafeArea(
-            top: false,
-            child: Container(
-              padding: const EdgeInsets.fromLTRB(4, 6, 4, 0),
-              child: Builder(
-                builder: (context) {
-                  final l = AppLocalizations.of(context)!;
-                  return Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      if (navOuterFeature != null)
-                        _NavItem(
-                          icon: _iconFor(navOuterFeature!),
-                          label: navOuterFeature!.label(l),
-                          isActive: navOuterActive,
-                          onTap: onNavOuterTap,
-                        ),
-                      if (navLeftFeature != null)
-                        _NavItem(
-                          icon: _iconFor(navLeftFeature!),
-                          label: navLeftFeature!.label(l),
-                          isActive: navLeftActive,
-                          onTap: onNavLeftTap,
-                        ),
-                      _NavItem(
-                        icon: FontAwesomeIcons.play,
-                        label: l.featureLabelConnector,
-                        isActive: activeItem == 'connector',
-                        onTap: onConnectorTap,
-                      ),
-                      if (navRightFeature != null)
-                        _NavItem(
-                          icon: _iconFor(navRightFeature!),
-                          label: navRightFeature!.label(l),
-                          isActive: navRightActive,
-                          onTap: onNavRightTap,
-                        ),
-                      if (navFarFeature != null)
-                        _NavItem(
-                          icon: _iconFor(navFarFeature!),
-                          label: navFarFeature!.label(l),
-                          isActive: navFarActive,
-                          onTap: onNavFarTap,
-                        ),
+          if (navRightFeature != null)
+            (
+              icon: _iconFor(navRightFeature!),
+              label: navRightFeature!.label(l),
+              active: navRightActive,
+              onTap: onNavRightTap,
+            ),
+          if (navFarFeature != null)
+            (
+              icon: _iconFor(navFarFeature!),
+              label: navFarFeature!.label(l),
+              active: navFarActive,
+              onTap: onNavFarTap,
+            ),
+        ];
+    final activeIndex = items.indexWhere((item) => item.active);
+    final shape = BorderRadius.circular(_radius);
+
+    return SafeArea(
+      top: false,
+      minimum: const EdgeInsets.only(bottom: 8),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(28, 6, 28, 0),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: shape,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.3),
+                blurRadius: 24,
+                offset: const Offset(0, 8),
+              ),
+            ],
+          ),
+          child: ClipRRect(
+            borderRadius: shape,
+            child: BackdropFilter(
+              filter: ImageFilter.blur(
+                sigmaX: AppBlur.sigmaFor(24),
+                sigmaY: AppBlur.sigmaFor(24),
+              ),
+              child: Container(
+                height: _height,
+                decoration: BoxDecoration(
+                  borderRadius: shape,
+                  color: AppTheme.surfaceRaised.withValues(alpha: 0.55),
+                ),
+                foregroundDecoration: BoxDecoration(
+                  borderRadius: shape,
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Colors.white.withValues(alpha: 0.14),
+                      Colors.white.withValues(alpha: 0.03),
                     ],
-                  );
-                },
+                  ),
+                  border: Border.all(
+                    color: Colors.white.withValues(alpha: 0.16),
+                  ),
+                ),
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final slot = constraints.maxWidth / items.length;
+                    return Stack(
+                      children: [
+                        if (activeIndex >= 0)
+                          AnimatedPositioned(
+                            duration: const Duration(milliseconds: 280),
+                            curve: Curves.easeOutCubic,
+                            left: activeIndex * slot + _bubbleInset,
+                            top: _bubbleInset,
+                            bottom: _bubbleInset,
+                            width: slot - _bubbleInset * 2,
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                  _radius - _bubbleInset,
+                                ),
+                                color: Colors.white.withValues(alpha: 0.14),
+                              ),
+                            ),
+                          ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            for (final item in items)
+                              _NavItem(
+                                icon: item.icon,
+                                label: item.label,
+                                isActive: item.active,
+                                onTap: item.onTap,
+                              ),
+                          ],
+                        ),
+                      ],
+                    );
+                  },
+                ),
               ),
             ),
           ),
@@ -151,12 +214,15 @@ class _NavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = isActive ? AppTheme.brand : AppTheme.textMuted;
+    final color = isActive
+        ? AppTheme.textPrimary
+        : AppTheme.textPrimary.withValues(alpha: 0.6);
 
     return Expanded(
       child: Semantics(
         button: true,
         selected: isActive,
+        label: label,
         child: GestureDetector(
           onTap: onTap == null
               ? null
@@ -165,35 +231,12 @@ class _NavItem extends StatelessWidget {
                   onTap!();
                 },
           behavior: HitTestBehavior.opaque,
-          child: Align(
-            alignment: Alignment.center,
-            heightFactor: 1.0,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                FaIcon(icon, size: 19, color: color),
-                const SizedBox(height: 5),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 2),
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      label,
-                      maxLines: 1,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: color,
-                        fontSize: 10,
-                        height: 1.1,
-                        fontWeight: isActive
-                            ? FontWeight.w600
-                            : FontWeight.w400,
-                        letterSpacing: -0.1,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+          child: Center(
+            child: AnimatedScale(
+              scale: isActive ? 1.1 : 1,
+              duration: const Duration(milliseconds: 220),
+              curve: Curves.easeOutBack,
+              child: FaIcon(icon, size: 20, color: color),
             ),
           ),
         ),

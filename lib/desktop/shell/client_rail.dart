@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../design/design.dart';
 import 'client_models.dart';
+import 'client_shortcuts.dart';
 
 class ClientRail extends StatelessWidget {
   static const double width = 64;
@@ -32,10 +33,11 @@ class ClientRail extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  for (final section in sections)
+                  for (var i = 0; i < sections.length; i++)
                     _RailButton(
-                      section: section,
-                      active: section.id == activeSectionId,
+                      section: sections[i],
+                      active: sections[i].id == activeSectionId,
+                      hint: ClientShortcuts.sectionHint(i),
                     ),
                 ],
               ),
@@ -45,6 +47,9 @@ class ClientRail extends StatelessWidget {
             _RailButton(
               section: section,
               active: section.id == activeSectionId,
+              hint: section.id == 'customize'
+                  ? ClientShortcuts.settingsHint
+                  : null,
             ),
         ],
       ),
@@ -55,15 +60,16 @@ class ClientRail extends StatelessWidget {
 class _RailButton extends StatelessWidget {
   final ClientSection section;
   final bool active;
+  final String? hint;
 
-  const _RailButton({required this.section, required this.active});
+  const _RailButton({required this.section, required this.active, this.hint});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: DsSpace.xs),
       child: Tooltip(
-        message: section.label,
+        message: hint == null ? section.label : '${section.label}  ($hint)',
         waitDuration: const Duration(milliseconds: 400),
         child: Stack(
           alignment: Alignment.centerLeft,

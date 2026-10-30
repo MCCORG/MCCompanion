@@ -16,6 +16,7 @@ import '../widgets/components/app_toast.dart';
 import '../widgets/components/swipe_back.dart';
 import '../widgets/tracked_server_card.dart';
 import 'paywall_screen.dart';
+import '../layout/bar_inset.dart';
 
 class ServerTrackerScreen extends StatefulWidget {
   final VoidCallback onBack;
@@ -465,11 +466,11 @@ class _ServerTrackerScreenState extends State<ServerTrackerScreen> {
                                 constraints.maxWidth,
                               )
                             : ListView.builder(
-                                padding: const EdgeInsets.fromLTRB(
+                                padding: EdgeInsets.fromLTRB(
                                   DsSpace.gutter,
                                   DsSpace.xs,
                                   DsSpace.gutter,
-                                  DsSpace.xxxl,
+                                  DsSpace.xxxl + BarInset.of(context),
                                 ),
                                 itemCount: _servers.length,
                                 itemBuilder: (_, i) => _card(_servers[i]),

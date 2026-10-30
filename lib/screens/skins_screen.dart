@@ -15,6 +15,7 @@ import '../widgets/components/app_toast.dart';
 import '../widgets/components/swipe_back.dart';
 import '../widgets/skins/skin_cards.dart';
 import '../widgets/skins/skin_detail_sheets.dart';
+import '../layout/bar_inset.dart';
 
 class SkinsScreen extends StatefulWidget {
   const SkinsScreen({super.key, this.onBack});
@@ -175,11 +176,11 @@ class SkinsScreenState extends State<SkinsScreen> {
             ),
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(
+                padding: EdgeInsets.fromLTRB(
                   DsSpace.gutter,
                   0,
                   DsSpace.gutter,
-                  DsSpace.xxxl,
+                  DsSpace.xxxl + BarInset.of(context),
                 ),
                 child: Align(
                   alignment: isDesktop

@@ -6,6 +6,7 @@ import '../../theme/app_tokens.dart';
 import '../../services/home_customization_service.dart';
 import '../../services/theme_service.dart';
 import '../../design/design.dart';
+import '../../layout/bar_inset.dart';
 
 class LandingColorSwatch {
   final Color color;
@@ -542,11 +543,11 @@ class LandingCustomizeSheetState extends State<LandingCustomizeSheet> {
         ),
         Expanded(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(
+            padding: EdgeInsets.fromLTRB(
               DsSpace.gutter,
               0,
               DsSpace.gutter,
-              DsSpace.xxxl,
+              DsSpace.xxxl + BarInset.of(context),
             ),
             child: Align(
               alignment: Alignment.topCenter,

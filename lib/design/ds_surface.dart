@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'ds_hover.dart';
 import 'ds_tokens.dart';
 
 class DsCard extends StatelessWidget {
@@ -39,7 +40,11 @@ class DsCard extends StatelessWidget {
 
     return Material(
       color: Colors.transparent,
-      child: InkWell(onTap: onTap, borderRadius: DsRadius.cardR, child: body),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: DsRadius.cardR,
+        child: DsHover(borderRadius: DsRadius.cardR, child: body),
+      ),
     );
   }
 }

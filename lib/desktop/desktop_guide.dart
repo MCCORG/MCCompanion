@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../design/design.dart';
+import '../layout/bar_inset.dart';
 
 class DesktopGuideTopic {
   final String id;
@@ -136,11 +137,11 @@ class _DesktopGuideScreenState extends State<DesktopGuideScreen> {
         ),
         Expanded(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(
+            padding: EdgeInsets.fromLTRB(
               DsSpace.gutter,
               0,
               DsSpace.gutter,
-              DsSpace.xxxl,
+              DsSpace.xxxl + BarInset.of(context),
             ),
             child: Align(
               alignment: Alignment.topLeft,

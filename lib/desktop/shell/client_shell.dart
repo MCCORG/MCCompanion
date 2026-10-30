@@ -4,6 +4,7 @@ import '../../design/design.dart';
 import 'client_context_panel.dart';
 import 'client_models.dart';
 import 'client_rail.dart';
+import 'client_shortcuts.dart';
 
 class ClientShell extends StatelessWidget {
   static const double narrowWidth = 900;
@@ -15,6 +16,8 @@ class ClientShell extends StatelessWidget {
   final Widget content;
   final Widget rightDock;
   final Widget statusBar;
+  final VoidCallback? onToggleConsole;
+  final VoidCallback? onDismiss;
 
   const ClientShell({
     super.key,
@@ -25,6 +28,8 @@ class ClientShell extends StatelessWidget {
     required this.content,
     required this.rightDock,
     required this.statusBar,
+    this.onToggleConsole,
+    this.onDismiss,
   });
 
   ClientSection? get _active {
@@ -37,7 +42,7 @@ class ClientShell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final active = _active;
-    return ColoredBox(
+    final shell = ColoredBox(
       color: DsColor.bg,
       child: SafeArea(
         child: Column(
@@ -82,6 +87,16 @@ class ClientShell extends StatelessWidget {
           ],
         ),
       ),
+    );
+
+    return CallbackShortcuts(
+      bindings: ClientShortcuts.bindings(
+        sections: sections,
+        footer: footer,
+        onToggleConsole: onToggleConsole,
+        onDismiss: onDismiss,
+      ),
+      child: Focus(autofocus: true, child: shell),
     );
   }
 }

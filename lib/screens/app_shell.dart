@@ -441,6 +441,8 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
     setState(() {
       _pageIndex = page;
       _topBarOffset = 0;
+      _bottomBarOffset = 0;
+      _bottomBarSnapping = true;
     });
   }
 
@@ -694,16 +696,53 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   double _topBarOffset = 0;
+  double _bottomBarOffset = 0;
+  bool _bottomBarSnapping = false;
 
   bool _onPageScroll(ScrollNotification notification) {
     if (notification.metrics.axis != Axis.vertical) return false;
+    final extent = BottomGlassSimpleNavBar.insetOf(context);
+    final scrollable = notification.metrics.maxScrollExtent > extent * 2;
+
+    if (notification is ScrollEndNotification) {
+      final hidden =
+          scrollable &&
+          notification.metrics.pixels > 0 &&
+          _bottomBarOffset > extent / 2;
+      final snapped = hidden ? extent : 0.0;
+      final top = scrollable ? _topBarOffset : 0.0;
+      if (snapped != _bottomBarOffset ||
+          top != _topBarOffset ||
+          !_bottomBarSnapping) {
+        setState(() {
+          _topBarOffset = top;
+          _bottomBarOffset = snapped;
+          _bottomBarSnapping = true;
+        });
+      }
+      return false;
+    }
+
     if (notification is! ScrollUpdateNotification) return false;
 
     final delta = notification.scrollDelta ?? 0;
     if (delta == 0) return false;
 
-    final next = (_topBarOffset - delta).clamp(-AppTopBar.height, 0.0);
-    if (next != _topBarOffset) setState(() => _topBarOffset = next);
+    final nextTop = scrollable
+        ? (_topBarOffset - delta).clamp(-AppTopBar.height, 0.0)
+        : 0.0;
+    final nextBottom = notification.metrics.pixels <= 0 || !scrollable
+        ? 0.0
+        : (_bottomBarOffset + delta).clamp(0.0, extent);
+    if (nextTop != _topBarOffset ||
+        nextBottom != _bottomBarOffset ||
+        _bottomBarSnapping) {
+      setState(() {
+        _topBarOffset = nextTop;
+        _bottomBarOffset = nextBottom;
+        _bottomBarSnapping = false;
+      });
+    }
     return false;
   }
 
@@ -970,17 +1009,8 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       scaffoldKey: _scaffoldKey,
       drawer: AppSidebar(sections: _sidebarSections()),
       bottomBar: BottomGlassSimpleNavBar(
-        navigationController: navigationController,
-        dark: true,
-        selectedRelayIp: _selectedRelay.ip,
-        onRelayChanged: _onRelayChanged,
         activeItem: _activeNavItem,
         onConnectorTap: () => _goTo(_pageConnector),
-        onProfileTap: () {
-          _loginFromTracker = false;
-          _loginFromRp = false;
-          _goTo(_pageProfile);
-        },
         navFarFeature: svc.navFar,
         navOuterFeature: svc.navOuter,
         navLeftFeature: svc.navLeft,
@@ -1003,6 +1033,8 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
             svc.navRight != null && _isNavFeatureActive(svc.navRight!),
       ),
       topBarOffset: _topBarOffset,
+      bottomBarOffset: _bottomBarOffset,
+      animateBottomBar: _bottomBarSnapping,
       profileActive: _pageIndex == _pageProfile,
       onProfile: () {
         _loginFromTracker = false;
@@ -1111,13 +1143,13 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
                     );
                   },
                 ),
+                onToggleConsole: _toggleConsole,
+                onDismiss: navigationController.hideConsole,
                 statusBar: ClientStatusBar(
                   broadcasting: navigationController.broadcasting,
                   consoleOpen: navigationController.consoleOpen,
                   serverName: _ipController.text.trim(),
-                  onToggleConsole: () => navigationController.consoleOpen.value
-                      ? navigationController.hideConsole()
-                      : navigationController.showConsole(context),
+                  onToggleConsole: _toggleConsole,
                   onStop: () => _connectorKey.currentState?.stopBroadcast(),
                 ),
               ),
@@ -1181,6 +1213,10 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
       },
     );
   }
+
+  void _toggleConsole() => navigationController.consoleOpen.value
+      ? navigationController.hideConsole()
+      : navigationController.showConsole(context);
 
   late final Listenable _statusPanelState = Listenable.merge([
     navigationController.consoleOpen,

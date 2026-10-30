@@ -1967,6 +1967,11 @@
   "waitingForConsole": "Waiting for your console…",
   "consoleFound": "Console found",
   "consoleLanHint": "On your console, open Minecraft and look under Friends for a LAN game.",
+  "consoleConnecting": "Connecting your console…",
+  "consoleHandedOver": "Joining through the relay",
+  "consoleHandedOverHint": "Your console should switch to your server in a few seconds. Nothing happening? Try joining again.",
+  "consoleConnectFailed": "Could not reach the relay",
+  "consoleConnectFailedHint": "Check your connection, then try joining again.",
   "localNetworkBlocked": "MCCompanion cannot reach your local network. Turn on Local Network for MCCompanion in your device settings and make sure you are on Wi-Fi.",
   "directAddressNotSupported": "{host} is an IPv6 address. Proxy/Direct Mode only supports IPv4. Use the IPv4 address or the hostname instead.",
   "@directAddressNotSupported": {

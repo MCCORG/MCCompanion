@@ -5,6 +5,7 @@ import '../../services/notification_api_service.dart';
 import 'profile_common.dart';
 import 'profile_cards.dart';
 import '../../theme/app_tokens.dart';
+import '../../layout/bar_inset.dart';
 
 class ProfileNotificationsTab extends StatefulWidget {
   final void Function(int count)? onCountChanged;
@@ -83,7 +84,10 @@ class _ProfileNotificationsTabState extends State<ProfileNotificationsTab> {
       backgroundColor: AppTheme.surfaceRaised,
       onRefresh: _load,
       child: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
+        padding: BarInset.pad(
+          context,
+          const EdgeInsets.fromLTRB(16, 16, 16, 24),
+        ),
         children: [
           Row(
             children: [

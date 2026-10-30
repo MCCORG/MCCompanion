@@ -13,6 +13,7 @@ import '../util/lookup_history.dart';
 import '../theme/app_tokens.dart';
 import '../widgets/components/app_toast.dart';
 import '../widgets/skin_3d_viewer.dart';
+import '../layout/bar_inset.dart';
 
 class PlayerLookupScreen extends StatefulWidget {
   final VoidCallback onBack;
@@ -198,11 +199,11 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
                   ),
                 )
               : SingleChildScrollView(
-                  padding: const EdgeInsets.fromLTRB(
+                  padding: EdgeInsets.fromLTRB(
                     DsSpace.gutter,
                     0,
                     DsSpace.gutter,
-                    DsSpace.xxxl,
+                    DsSpace.xxxl + BarInset.of(context),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -237,11 +238,11 @@ class _PlayerLookupScreenState extends State<PlayerLookupScreen>
               children: [
                 Expanded(
                   child: SingleChildScrollView(
-                    padding: const EdgeInsets.fromLTRB(
+                    padding: EdgeInsets.fromLTRB(
                       DsSpace.gutter,
                       DsSpace.lg,
                       DsSpace.gutter,
-                      DsSpace.xxxl,
+                      DsSpace.xxxl + BarInset.of(context),
                     ),
                     child: Center(
                       child: ConstrainedBox(

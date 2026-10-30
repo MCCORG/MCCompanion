@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../l10n/app_localizations.dart';
 import '../../models/user_model.dart';
+import '../../network/nethernet/nethernet_phase.dart';
 import '../../theme/app_theme.dart';
 import '../../util/user_servers.dart';
 import '../../util/connector_prefs.dart';
@@ -34,7 +35,7 @@ class ConnectionPanel extends StatefulWidget {
     required this.ipController,
     required this.portController,
     required this.broadcastingNotifier,
-    this.clientSeenNotifier,
+    this.phaseNotifier,
     required this.onStartBroadcast,
     required this.onStopBroadcast,
     required this.savedServers,
@@ -64,7 +65,7 @@ class ConnectionPanel extends StatefulWidget {
   final TextEditingController ipController;
   final TextEditingController portController;
   final ValueNotifier<bool> broadcastingNotifier;
-  final ValueNotifier<bool>? clientSeenNotifier;
+  final ValueNotifier<NetherNetPhase>? phaseNotifier;
   final Future<void> Function(PanelMode) onStartBroadcast;
   final VoidCallback onStopBroadcast;
   final List<UserServer> savedServers;
@@ -593,65 +594,92 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
   }
 
   Widget _buildStatus(bool broadcasting, AppLocalizations loc) {
-    final notifier = widget.clientSeenNotifier;
+    final notifier = widget.phaseNotifier;
     if (!broadcasting || notifier == null) return const SizedBox.shrink();
 
-    return ValueListenableBuilder<bool>(
+    return ValueListenableBuilder<NetherNetPhase>(
       valueListenable: notifier,
-      builder: (context, seen, _) => Padding(
-        padding: const EdgeInsets.only(bottom: DsSpace.md),
-        child: Container(
-          padding: const EdgeInsets.all(DsSpace.md),
-          decoration: BoxDecoration(
-            color: DsColor.inset,
-            borderRadius: DsRadius.controlR,
-            border: Border.all(
-              color: seen
-                  ? DsColor.success.withValues(alpha: 0.5)
-                  : DsColor.line,
+      builder: (context, phase, _) {
+        final (String title, String? hint) = switch (phase) {
+          NetherNetPhase.waiting => (loc.waitingForConsole, loc.consoleLanHint),
+          NetherNetPhase.consoleFound => (loc.consoleFound, null),
+          NetherNetPhase.connecting => (loc.consoleConnecting, null),
+          NetherNetPhase.connected => (
+            loc.consoleHandedOver,
+            loc.consoleHandedOverHint,
+          ),
+          NetherNetPhase.failed => (
+            loc.consoleConnectFailed,
+            loc.consoleConnectFailedHint,
+          ),
+        };
+        final borderColor = switch (phase) {
+          NetherNetPhase.consoleFound ||
+          NetherNetPhase.connected => DsColor.success.withValues(alpha: 0.5),
+          NetherNetPhase.failed => DsColor.danger.withValues(alpha: 0.5),
+          _ => DsColor.line,
+        };
+        final Widget indicator = switch (phase) {
+          NetherNetPhase.consoleFound || NetherNetPhase.connected => Icon(
+            Icons.check_circle_rounded,
+            size: 18,
+            color: DsColor.success,
+          ),
+          NetherNetPhase.failed => Icon(
+            Icons.error_rounded,
+            size: 18,
+            color: DsColor.danger,
+          ),
+          _ => SizedBox(
+            width: 16,
+            height: 16,
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+              color: DsColor.accent,
             ),
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 1),
-                child: seen
-                    ? Icon(
-                        Icons.check_circle_rounded,
-                        size: 18,
-                        color: DsColor.success,
-                      )
-                    : SizedBox(
-                        width: 16,
-                        height: 16,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: DsColor.accent,
-                        ),
-                      ),
-              ),
-              const SizedBox(width: DsSpace.md),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      seen ? loc.consoleFound : loc.waitingForConsole,
-                      style: DsType.bodyStrong,
+        };
+
+        return Padding(
+          padding: const EdgeInsets.only(bottom: DsSpace.md),
+          child: AnimatedContainer(
+            duration: DsDuration.normal,
+            padding: const EdgeInsets.all(DsSpace.md),
+            decoration: BoxDecoration(
+              color: DsColor.inset,
+              borderRadius: DsRadius.controlR,
+              border: Border.all(color: borderColor),
+            ),
+            child: AnimatedSwitcher(
+              duration: DsDuration.normal,
+              child: Row(
+                key: ValueKey(phase),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 1),
+                    child: indicator,
+                  ),
+                  const SizedBox(width: DsSpace.md),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(title, style: DsType.bodyStrong),
+                        if (hint != null) ...[
+                          const SizedBox(height: DsSpace.xxs),
+                          Text(hint, style: DsType.caption),
+                        ],
+                      ],
                     ),
-                    if (!seen) ...[
-                      const SizedBox(height: DsSpace.xxs),
-                      Text(loc.consoleLanHint, style: DsType.caption),
-                    ],
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 

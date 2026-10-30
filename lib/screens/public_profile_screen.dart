@@ -194,10 +194,8 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
               ],
       ),
       bottomNavigationBar: BottomGlassSimpleNavBar(
-        navigationController: null,
         activeItem: 'profile',
         onConnectorTap: () => _navTo(widget.onGoToConnector),
-        onProfileTap: () => Navigator.of(context).popUntil((r) => r.isFirst),
       ),
       body: _loading
           ? Center(
@@ -609,10 +607,8 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
         iconTheme: IconThemeData(color: AppTheme.textPrimary),
       ),
       bottomNavigationBar: BottomGlassSimpleNavBar(
-        navigationController: null,
         activeItem: 'profile',
         onConnectorTap: () => _navTo(widget.onGoToConnector),
-        onProfileTap: () => Navigator.of(context).pop(),
       ),
       body: Column(
         children: [

@@ -8,6 +8,7 @@ import '../util/user_servers_storage.dart';
 import '../l10n/app_localizations.dart';
 import '../widgets/components/app_toast.dart';
 import '../widgets/components/swipe_back.dart';
+import '../layout/bar_inset.dart';
 
 class ManageServersScreen extends StatefulWidget {
   final VoidCallback onBack;
@@ -113,11 +114,11 @@ class ManageServersScreenState extends State<ManageServersScreen> {
                     : _servers.isEmpty
                     ? _EmptyState(loc: loc, onAdd: widget.onAddServer)
                     : ReorderableListView.builder(
-                        padding: const EdgeInsets.fromLTRB(
+                        padding: EdgeInsets.fromLTRB(
                           DsSpace.gutter,
                           0,
                           DsSpace.gutter,
-                          DsSpace.xxxl,
+                          DsSpace.xxxl + BarInset.of(context),
                         ),
                         itemCount: _servers.length,
                         buildDefaultDragHandles: false,
@@ -278,11 +279,11 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
                   ),
                 )
               : SingleChildScrollView(
-                  padding: const EdgeInsets.fromLTRB(
+                  padding: EdgeInsets.fromLTRB(
                     DsSpace.gutter,
                     DsSpace.sm,
                     DsSpace.gutter,
-                    DsSpace.xxxl,
+                    DsSpace.xxxl + BarInset.of(context),
                   ),
                   keyboardDismissBehavior:
                       ScrollViewKeyboardDismissBehavior.onDrag,

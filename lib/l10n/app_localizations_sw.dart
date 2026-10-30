@@ -1909,6 +1909,23 @@ class AppLocalizationsSw extends AppLocalizations {
       'Kwenye kiweko chako, fungua Minecraft na utafute mchezo wa LAN chini ya Marafiki.';
 
   @override
+  String get consoleConnecting => 'Connecting your console…';
+
+  @override
+  String get consoleHandedOver => 'Joining through the relay';
+
+  @override
+  String get consoleHandedOverHint =>
+      'Your console should switch to your server in a few seconds. Nothing happening? Try joining again.';
+
+  @override
+  String get consoleConnectFailed => 'Could not reach the relay';
+
+  @override
+  String get consoleConnectFailedHint =>
+      'Check your connection, then try joining again.';
+
+  @override
   String get localNetworkBlocked =>
       'MCCompanion haiwezi kufikia mtandao wako wa ndani. Washa Mtandao wa Ndani kwa MCCompanion kwenye mipangilio ya kifaa chako na hakikisha uko kwenye Wi-Fi.';
 

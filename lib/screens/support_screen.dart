@@ -6,6 +6,7 @@ import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../widgets/components/swipe_back.dart';
 import '../widgets/dialogs/howto_dialogs.dart';
+import '../layout/bar_inset.dart';
 
 class SupportTopic {
   final FaIconData icon;
@@ -98,11 +99,11 @@ class _SupportScreenState extends State<SupportScreen> {
         ),
         Expanded(
           child: ListView(
-            padding: const EdgeInsets.fromLTRB(
+            padding: EdgeInsets.fromLTRB(
               DsSpace.gutter,
               0,
               DsSpace.gutter,
-              DsSpace.xxxl,
+              DsSpace.xxxl + BarInset.of(context),
             ),
             children: [
               DsGroup(
@@ -161,11 +162,11 @@ class _SupportScreenState extends State<SupportScreen> {
         ),
         Expanded(
           child: ListView(
-            padding: const EdgeInsets.fromLTRB(
+            padding: EdgeInsets.fromLTRB(
               DsSpace.gutter,
               0,
               DsSpace.gutter,
-              DsSpace.xxxl,
+              DsSpace.xxxl + BarInset.of(context),
             ),
             children: [StepContent(body: topic.body, color: topic.color)],
           ),

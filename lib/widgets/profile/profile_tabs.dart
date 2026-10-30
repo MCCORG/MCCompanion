@@ -10,6 +10,7 @@ import 'profile_header.dart';
 import 'profile_cards.dart';
 import 'profile_friend_tiles.dart';
 import 'profile_activity_feed.dart';
+import '../../layout/bar_inset.dart';
 
 class ProfileTab extends StatefulWidget {
   final UserModel? me;
@@ -116,11 +117,11 @@ class ProfileTabState extends State<ProfileTab> {
               onDeleteAccount: widget.onDeleteAccount,
             ),
           ];
-          const padding = EdgeInsets.fromLTRB(
+          final padding = EdgeInsets.fromLTRB(
             DsSpace.gutter,
             DsSpace.lg,
             DsSpace.gutter,
-            DsSpace.xxxl,
+            DsSpace.xxxl + BarInset.of(context),
           );
           if (box.maxWidth < 1000) {
             return ListView(
@@ -210,7 +211,10 @@ class ProfileFriendsTab extends StatelessWidget {
             ],
           );
           return ListView(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            padding: BarInset.pad(
+              context,
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            ),
             children: [
               if (online.isNotEmpty) ...[
                 ProfileSectionLabel(
@@ -269,7 +273,10 @@ class ProfileRequestsTab extends StatelessWidget {
       backgroundColor: AppTheme.surfaceRaised,
       onRefresh: onRefresh,
       child: ListView.separated(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        padding: BarInset.pad(
+          context,
+          const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        ),
         itemCount: requests.length,
         separatorBuilder: (ctx, i) => const SizedBox(height: 8),
         itemBuilder: (_, i) => ProfileRequestTile(

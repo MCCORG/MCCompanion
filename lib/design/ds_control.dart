@@ -115,29 +115,32 @@ class DsSwitch extends StatelessWidget {
 
     return Semantics(
       toggled: value,
-      child: GestureDetector(
-        onTap: enabled ? () => onChanged!(!value) : null,
-        behavior: HitTestBehavior.opaque,
-        child: AnimatedContainer(
-          duration: DsDuration.normal,
-          curve: Curves.easeOut,
-          width: 46,
-          height: 28,
-          padding: const EdgeInsets.all(3),
-          alignment: value ? Alignment.centerRight : Alignment.centerLeft,
-          decoration: BoxDecoration(
-            color: track,
-            borderRadius: DsRadius.pillR,
-            border: Border.all(
-              color: value ? Colors.transparent : DsColor.line,
-            ),
-          ),
+      child: MouseRegion(
+        cursor: enabled ? SystemMouseCursors.click : MouseCursor.defer,
+        child: GestureDetector(
+          onTap: enabled ? () => onChanged!(!value) : null,
+          behavior: HitTestBehavior.opaque,
           child: AnimatedContainer(
             duration: DsDuration.normal,
             curve: Curves.easeOut,
-            width: 22,
-            height: 22,
-            decoration: BoxDecoration(color: thumb, shape: BoxShape.circle),
+            width: 46,
+            height: 28,
+            padding: const EdgeInsets.all(3),
+            alignment: value ? Alignment.centerRight : Alignment.centerLeft,
+            decoration: BoxDecoration(
+              color: track,
+              borderRadius: DsRadius.pillR,
+              border: Border.all(
+                color: value ? Colors.transparent : DsColor.line,
+              ),
+            ),
+            child: AnimatedContainer(
+              duration: DsDuration.normal,
+              curve: Curves.easeOut,
+              width: 22,
+              height: 22,
+              decoration: BoxDecoration(color: thumb, shape: BoxShape.circle),
+            ),
           ),
         ),
       ),

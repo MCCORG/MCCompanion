@@ -1888,6 +1888,23 @@ class AppLocalizationsRu extends AppLocalizations {
       'На консоли откройте Minecraft и найдите игру по LAN в разделе «Друзья».';
 
   @override
+  String get consoleConnecting => 'Connecting your console…';
+
+  @override
+  String get consoleHandedOver => 'Joining through the relay';
+
+  @override
+  String get consoleHandedOverHint =>
+      'Your console should switch to your server in a few seconds. Nothing happening? Try joining again.';
+
+  @override
+  String get consoleConnectFailed => 'Could not reach the relay';
+
+  @override
+  String get consoleConnectFailedHint =>
+      'Check your connection, then try joining again.';
+
+  @override
   String get localNetworkBlocked =>
       'MCCompanion не может получить доступ к вашей локальной сети. Включите «Локальную сеть» для MCCompanion в настройках устройства и убедитесь, что вы подключены к Wi-Fi.';
 

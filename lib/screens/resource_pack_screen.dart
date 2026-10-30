@@ -12,6 +12,7 @@ import '../services/auth_service.dart';
 import '../theme/app_theme.dart';
 import '../design/design.dart';
 import '../layout/bar_width.dart';
+import '../layout/bar_inset.dart';
 import '../layout/platform.dart';
 import '../util/pack_file_picker.dart';
 import '../util/resource_pack_prefs.dart';
@@ -494,7 +495,7 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                 RpInfoSection(showDialog: _showDialog),
               ],
 
-              const SizedBox(height: 32),
+              SizedBox(height: 32 + BarInset.of(context)),
             ],
           ),
         ),

@@ -3540,6 +3540,36 @@ abstract class AppLocalizations {
   /// **'On your console, open Minecraft and look under Friends for a LAN game.'**
   String get consoleLanHint;
 
+  /// No description provided for @consoleConnecting.
+  ///
+  /// In en, this message translates to:
+  /// **'Connecting your console…'**
+  String get consoleConnecting;
+
+  /// No description provided for @consoleHandedOver.
+  ///
+  /// In en, this message translates to:
+  /// **'Joining through the relay'**
+  String get consoleHandedOver;
+
+  /// No description provided for @consoleHandedOverHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Your console should switch to your server in a few seconds. Nothing happening? Try joining again.'**
+  String get consoleHandedOverHint;
+
+  /// No description provided for @consoleConnectFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not reach the relay'**
+  String get consoleConnectFailed;
+
+  /// No description provided for @consoleConnectFailedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Check your connection, then try joining again.'**
+  String get consoleConnectFailedHint;
+
   /// No description provided for @localNetworkBlocked.
   ///
   /// In en, this message translates to:
