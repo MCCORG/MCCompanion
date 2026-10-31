@@ -767,24 +767,6 @@ class AppLocalizationsFr extends AppLocalizations {
       'Les nouvelles demandes d\'amis apparaîtront ici.';
 
   @override
-  String get skinsEdit => 'Modifier';
-
-  @override
-  String get skinsMustBe64 => 'Le skin doit être 64×64 pixels';
-
-  @override
-  String get skinsInvalidFile => 'Fichier image invalide';
-
-  @override
-  String get skinsUpload => 'Uploader';
-
-  @override
-  String get skinsCreate => 'Créer';
-
-  @override
-  String get skinsDownload => 'Télécharger';
-
-  @override
   String get chooseUniqueUsername =>
       'Choisissez un nom d\'utilisateur unique pour commencer.';
 
@@ -1165,20 +1147,6 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get upgradeWindowsHint =>
       'Mise à niveau disponible via le Microsoft Store';
-
-  @override
-  String get skinSaved => 'Skin sauvegarde';
-
-  @override
-  String skinSavedAs(String name) {
-    return 'Sauvegarde sous \"$name\"';
-  }
-
-  @override
-  String get skinExportFailed => 'Echec de l exportation';
-
-  @override
-  String get skinExported => 'Skin exporte avec succes';
 
   @override
   String get accountActions => 'Compte';
@@ -1607,17 +1575,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get skinsSavedToMySkins => 'Enregistré dans Mes Skins';
 
   @override
-  String get skinsEmptyLocalSkins =>
-      'Aucun skin pour l\'instant. Créez ou téléversez un skin pour commencer.';
-
-  @override
-  String get skinSaveDialog => 'Enregistrer le skin';
-
-  @override
-  String get skinNameHint => 'Nom du skin';
-
-  @override
-  String get skinDefaultName => 'Mon skin';
+  String get skinsEmptyLocalSkins => 'Aucun skin enregistré pour le moment.';
 
   @override
   String get sectionRecentActivity => 'Activité récente';
@@ -1711,9 +1669,6 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => 'Skin aimé';
-
-  @override
   String get notifPrefCommentReceived => 'Commentaire reçu';
 
   @override
@@ -1732,12 +1687,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get notifPrefMessageReceived => 'Nouveau message';
 
   @override
-  String get skinLayerInner => 'Intérieur';
-
-  @override
-  String get skinLayerOuter => 'Extérieur';
-
-  @override
   String get feedbackLoginRequiredTitle =>
       'Connectez-vous pour envoyer un retour';
 
@@ -1750,30 +1699,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get supportInboxTitle => 'Boîte de support';
-
-  @override
-  String get skinShareSubject => 'Skin Minecraft';
-
-  @override
-  String get skinEditorTitle => 'Éditeur de skin';
-
-  @override
-  String get skinToolUndo => 'Annuler';
-
-  @override
-  String get skinSaveToMySkins => 'Enregistrer dans mes skins';
-
-  @override
-  String get skinExportPng => 'Exporter en PNG';
-
-  @override
-  String get skinToolDraw => 'Dessiner';
-
-  @override
-  String get skinToolFill => 'Remplir';
-
-  @override
-  String get skinToolErase => 'Effacer';
 
   @override
   String get customColour => 'Couleur personnalisée';
@@ -1940,47 +1865,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get howToAutoShow => 'Afficher ceci au démarrage';
 
   @override
-  String get skinEditorLoadFailed =>
-      'Impossible de charger ce skin. On commence avec le skin par défaut.';
-
-  @override
-  String get skinToolRecolour => 'Recolorer';
-
-  @override
-  String get skinToolPick => 'Pipette';
-
-  @override
-  String get skinBases => 'Bases';
-
-  @override
-  String get skinBasesTitle => 'Partir d\'une base';
-
-  @override
-  String get skinBasesSubtitle =>
-      'Cela remplace le dessin actuel. Annuler le restaure.';
-
-  @override
-  String get skinMirror => 'Miroir';
-
-  @override
-  String get skinSurprise => 'Surprise';
-
-  @override
-  String get skinToolFillHint => 'Remplit la zone touchée';
-
-  @override
-  String get skinToolRecolourHint => 'Change cette couleur partout';
-
-  @override
-  String get skinToolPickHint => 'Prend la couleur touchée';
-
-  @override
-  String get skinModelClassic => 'Large';
-
-  @override
-  String get skinModelSlim => 'Fin';
-
-  @override
   String get shareServerLabel => 'Partager ton serveur';
 
   @override
@@ -2007,6 +1891,23 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get consoleLanHint =>
       'Sur la console, ouvrez Minecraft et cherchez une partie LAN dans Amis.';
+
+  @override
+  String get consoleConnecting => 'Connecting your console…';
+
+  @override
+  String get consoleHandedOver => 'Joining through the relay';
+
+  @override
+  String get consoleHandedOverHint =>
+      'Your console should switch to your server in a few seconds. Nothing happening? Try joining again.';
+
+  @override
+  String get consoleConnectFailed => 'Could not reach the relay';
+
+  @override
+  String get consoleConnectFailedHint =>
+      'Check your connection, then try joining again.';
 
   @override
   String get localNetworkBlocked =>
@@ -2200,4 +2101,15 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get showLess => 'Moins';
+
+  @override
+  String get lookupRecent => 'Récents';
+
+  @override
+  String get skinsRemovalNotice =>
+      'Les skins seront supprimés avec la prochaine mise à jour. Exportez ceux que vous souhaitez conserver.';
+
+  @override
+  String get feedbackRpNotice =>
+      'Nous ne répondons pas aux signalements concernant les packs de ressources. Certains packs ne fonctionnent tout simplement pas, et certains serveurs refusent les packs personnalisés.';
 }

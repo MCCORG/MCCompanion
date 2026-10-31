@@ -6,8 +6,9 @@ import '../l10n/app_localizations.dart';
 import '../theme/app_theme.dart';
 import '../widgets/components/swipe_back.dart';
 import '../widgets/dialogs/howto_dialogs.dart';
+import '../layout/bar_inset.dart';
 
-class _SupportTopic {
+class SupportTopic {
   final FaIconData icon;
   final IconData rowIcon;
   final Color color;
@@ -15,7 +16,7 @@ class _SupportTopic {
   final String subtitle;
   final String body;
 
-  const _SupportTopic({
+  const SupportTopic({
     required this.icon,
     required this.rowIcon,
     required this.color,
@@ -24,6 +25,41 @@ class _SupportTopic {
     required this.body,
   });
 }
+
+List<SupportTopic> supportTopics(AppLocalizations l) => [
+  SupportTopic(
+    icon: FontAwesomeIcons.wifi,
+    rowIcon: Icons.wifi_rounded,
+    color: AppTheme.info,
+    title: l.helpMCCompanionTitle,
+    subtitle: l.helpMCCompanionSubtitle,
+    body: l.helpMCCompanionBody,
+  ),
+  SupportTopic(
+    icon: FontAwesomeIcons.triangleExclamation,
+    rowIcon: Icons.warning_amber_rounded,
+    color: AppTheme.warning,
+    title: l.helpMultiplayerFailedTitle,
+    subtitle: l.helpMultiplayerFailedSubtitle,
+    body: l.helpMultiplayerFailedBody,
+  ),
+  SupportTopic(
+    icon: FontAwesomeIcons.gamepad,
+    rowIcon: Icons.videogame_asset_rounded,
+    color: AppTheme.modeNintendo,
+    title: l.helpNintendoDnsTitle,
+    subtitle: l.helpNintendoDnsSubtitle,
+    body: l.helpNintendoDnsBody,
+  ),
+  SupportTopic(
+    icon: FontAwesomeIcons.userGroup,
+    rowIcon: Icons.group_rounded,
+    color: AppTheme.modeFriends,
+    title: l.helpFriendsModeTitle,
+    subtitle: l.helpFriendsModeSubtitle,
+    body: l.helpFriendsModeBody,
+  ),
+];
 
 class SupportScreen extends StatefulWidget {
   final VoidCallback onBack;
@@ -36,42 +72,7 @@ class SupportScreen extends StatefulWidget {
 }
 
 class _SupportScreenState extends State<SupportScreen> {
-  _SupportTopic? _open;
-
-  List<_SupportTopic> _topics(AppLocalizations l) => [
-    _SupportTopic(
-      icon: FontAwesomeIcons.wifi,
-      rowIcon: Icons.wifi_rounded,
-      color: AppTheme.info,
-      title: l.helpMCCompanionTitle,
-      subtitle: l.helpMCCompanionSubtitle,
-      body: l.helpMCCompanionBody,
-    ),
-    _SupportTopic(
-      icon: FontAwesomeIcons.triangleExclamation,
-      rowIcon: Icons.warning_amber_rounded,
-      color: AppTheme.warning,
-      title: l.helpMultiplayerFailedTitle,
-      subtitle: l.helpMultiplayerFailedSubtitle,
-      body: l.helpMultiplayerFailedBody,
-    ),
-    _SupportTopic(
-      icon: FontAwesomeIcons.gamepad,
-      rowIcon: Icons.videogame_asset_rounded,
-      color: AppTheme.modeNintendo,
-      title: l.helpNintendoDnsTitle,
-      subtitle: l.helpNintendoDnsSubtitle,
-      body: l.helpNintendoDnsBody,
-    ),
-    _SupportTopic(
-      icon: FontAwesomeIcons.userGroup,
-      rowIcon: Icons.group_rounded,
-      color: AppTheme.modeFriends,
-      title: l.helpFriendsModeTitle,
-      subtitle: l.helpFriendsModeSubtitle,
-      body: l.helpFriendsModeBody,
-    ),
-  ];
+  SupportTopic? _open;
 
   @override
   Widget build(BuildContext context) {
@@ -98,17 +99,17 @@ class _SupportScreenState extends State<SupportScreen> {
         ),
         Expanded(
           child: ListView(
-            padding: const EdgeInsets.fromLTRB(
+            padding: EdgeInsets.fromLTRB(
               DsSpace.gutter,
               0,
               DsSpace.gutter,
-              DsSpace.xxxl,
+              DsSpace.xxxl + BarInset.of(context),
             ),
             children: [
               DsGroup(
                 label: l.sectionHelp,
                 children: [
-                  for (final topic in _topics(l))
+                  for (final topic in supportTopics(l))
                     DsRow(
                       title: topic.title,
                       subtitle: topic.subtitle,
@@ -134,7 +135,7 @@ class _SupportScreenState extends State<SupportScreen> {
     );
   }
 
-  Widget _article(AppLocalizations l, _SupportTopic topic) {
+  Widget _article(AppLocalizations l, SupportTopic topic) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -161,11 +162,11 @@ class _SupportScreenState extends State<SupportScreen> {
         ),
         Expanded(
           child: ListView(
-            padding: const EdgeInsets.fromLTRB(
+            padding: EdgeInsets.fromLTRB(
               DsSpace.gutter,
               0,
               DsSpace.gutter,
-              DsSpace.xxxl,
+              DsSpace.xxxl + BarInset.of(context),
             ),
             children: [StepContent(body: topic.body, color: topic.color)],
           ),

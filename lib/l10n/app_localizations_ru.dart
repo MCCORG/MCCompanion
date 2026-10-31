@@ -764,24 +764,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get requestsAppearHere => 'Здесь появятся новые запросы в друзья.';
 
   @override
-  String get skinsEdit => 'Редактировать';
-
-  @override
-  String get skinsMustBe64 => 'Скин должен быть 64×64 пикселя';
-
-  @override
-  String get skinsInvalidFile => 'Неверный файл изображения';
-
-  @override
-  String get skinsUpload => 'Загрузить';
-
-  @override
-  String get skinsCreate => 'Создать';
-
-  @override
-  String get skinsDownload => 'Скачать';
-
-  @override
   String get chooseUniqueUsername =>
       'Выберите уникальное имя пользователя для начала.';
 
@@ -1163,20 +1145,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => 'Обновление доступно в Microsoft Store';
-
-  @override
-  String get skinSaved => 'Скин сохранён';
-
-  @override
-  String skinSavedAs(String name) {
-    return 'Сохранено как \"$name\"';
-  }
-
-  @override
-  String get skinExportFailed => 'Ошибка экспорта';
-
-  @override
-  String get skinExported => 'Скин успешно экспортирован';
 
   @override
   String get accountActions => 'Аккаунт';
@@ -1604,17 +1572,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get skinsSavedToMySkins => 'Сохранено в Мои скины';
 
   @override
-  String get skinsEmptyLocalSkins =>
-      'Скинов пока нет. Создайте или загрузите скин, чтобы начать.';
-
-  @override
-  String get skinSaveDialog => 'Сохранить скин';
-
-  @override
-  String get skinNameHint => 'Название скина';
-
-  @override
-  String get skinDefaultName => 'Мой скин';
+  String get skinsEmptyLocalSkins => 'Сохранённых скинов пока нет.';
 
   @override
   String get sectionRecentActivity => 'Последняя активность';
@@ -1708,9 +1666,6 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => 'Скин понравился';
-
-  @override
   String get notifPrefCommentReceived => 'Получен комментарий';
 
   @override
@@ -1729,12 +1684,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get notifPrefMessageReceived => 'Новое сообщение';
 
   @override
-  String get skinLayerInner => 'Внутренний';
-
-  @override
-  String get skinLayerOuter => 'Внешний';
-
-  @override
   String get feedbackLoginRequiredTitle => 'Войдите, чтобы отправить отзыв';
 
   @override
@@ -1746,30 +1695,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get supportInboxTitle => 'Входящие поддержки';
-
-  @override
-  String get skinShareSubject => 'Скин Minecraft';
-
-  @override
-  String get skinEditorTitle => 'Редактор скинов';
-
-  @override
-  String get skinToolUndo => 'Отменить';
-
-  @override
-  String get skinSaveToMySkins => 'Сохранить в мои скины';
-
-  @override
-  String get skinExportPng => 'Экспорт PNG';
-
-  @override
-  String get skinToolDraw => 'Рисовать';
-
-  @override
-  String get skinToolFill => 'Заливка';
-
-  @override
-  String get skinToolErase => 'Стереть';
 
   @override
   String get customColour => 'Свой цвет';
@@ -1935,47 +1860,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get howToAutoShow => 'Показывать это при запуске';
 
   @override
-  String get skinEditorLoadFailed =>
-      'Не удалось загрузить этот скин. Начнём со стандартного.';
-
-  @override
-  String get skinToolRecolour => 'Перекрасить';
-
-  @override
-  String get skinToolPick => 'Пипетка';
-
-  @override
-  String get skinBases => 'Основы';
-
-  @override
-  String get skinBasesTitle => 'Начать с основы';
-
-  @override
-  String get skinBasesSubtitle =>
-      'Это заменит текущий рисунок. Отмена вернёт его.';
-
-  @override
-  String get skinMirror => 'Зеркало';
-
-  @override
-  String get skinSurprise => 'Сюрприз';
-
-  @override
-  String get skinToolFillHint => 'Заливает область, по которой вы нажали';
-
-  @override
-  String get skinToolRecolourHint => 'Меняет этот цвет по всему скину';
-
-  @override
-  String get skinToolPickHint => 'Берёт цвет, по которому вы нажали';
-
-  @override
-  String get skinModelClassic => 'Широкие';
-
-  @override
-  String get skinModelSlim => 'Тонкие';
-
-  @override
   String get shareServerLabel => 'Показывать сервер';
 
   @override
@@ -2002,6 +1886,23 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get consoleLanHint =>
       'На консоли откройте Minecraft и найдите игру по LAN в разделе «Друзья».';
+
+  @override
+  String get consoleConnecting => 'Connecting your console…';
+
+  @override
+  String get consoleHandedOver => 'Joining through the relay';
+
+  @override
+  String get consoleHandedOverHint =>
+      'Your console should switch to your server in a few seconds. Nothing happening? Try joining again.';
+
+  @override
+  String get consoleConnectFailed => 'Could not reach the relay';
+
+  @override
+  String get consoleConnectFailedHint =>
+      'Check your connection, then try joining again.';
 
   @override
   String get localNetworkBlocked =>
@@ -2192,4 +2093,15 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get showLess => 'Свернуть';
+
+  @override
+  String get lookupRecent => 'Недавние';
+
+  @override
+  String get skinsRemovalNotice =>
+      'Скины будут удалены в следующем обновлении. Экспортируйте те, что хотите сохранить.';
+
+  @override
+  String get feedbackRpNotice =>
+      'Мы не отвечаем на обращения о ресурспаках. Некоторые паки просто не работают, а некоторые серверы отклоняют пользовательские паки.';
 }

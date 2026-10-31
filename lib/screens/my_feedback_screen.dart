@@ -9,14 +9,20 @@ class MyFeedbackScreen extends StatefulWidget {
   final VoidCallback? onBack;
 
   final int? initialTicketId;
+  final bool embedded;
 
-  const MyFeedbackScreen({super.key, this.onBack, this.initialTicketId});
+  const MyFeedbackScreen({
+    super.key,
+    this.onBack,
+    this.initialTicketId,
+    this.embedded = false,
+  });
 
   @override
-  State<MyFeedbackScreen> createState() => _MyFeedbackScreenState();
+  State<MyFeedbackScreen> createState() => MyFeedbackScreenState();
 }
 
-class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
+class MyFeedbackScreenState extends State<MyFeedbackScreen> {
   List<FeedbackTicket>? _tickets;
   int? _openId;
   final Map<int, List<FeedbackMessage>> _threads = {};
@@ -36,6 +42,8 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
     }
     super.dispose();
   }
+
+  Future<void> reload() => _load();
 
   Future<void> _load() async {
     final tickets = await FeedbackService.myTickets();
@@ -109,6 +117,50 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
 
+    final content = _tickets == null
+        ? Center(
+            child: CircularProgressIndicator(
+              strokeWidth: 1.8,
+              color: DsColor.textFaint,
+            ),
+          )
+        : _tickets!.isEmpty
+        ? Center(
+            child: Padding(
+              padding: const EdgeInsets.all(32),
+              child: Text(
+                l.myFeedbackEmpty,
+                textAlign: TextAlign.center,
+                style: TextStyle(color: AppTheme.textMuted, fontSize: 14),
+              ),
+            ),
+          )
+        : RefreshIndicator(
+            color: AppTheme.accent,
+            onRefresh: _load,
+            child: ListView.separated(
+              padding: EdgeInsets.fromLTRB(
+                14,
+                14,
+                14,
+                14 + MediaQuery.of(context).padding.bottom,
+              ),
+              itemCount: _tickets!.length,
+              separatorBuilder: (_, _) => const SizedBox(height: 10),
+              itemBuilder: (_, i) => _ticketCard(l, _tickets![i]),
+            ),
+          );
+
+    if (widget.embedded) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          DsHeader(title: l.myFeedbackTitle),
+          Expanded(child: content),
+        ],
+      );
+    }
+
     return SwipeBack(
       onBack: widget.onBack ?? () => Navigator.of(context).maybePop(),
       child: Scaffold(
@@ -122,39 +174,7 @@ class _MyFeedbackScreenState extends State<MyFeedbackScreen> {
             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
           ),
         ),
-        body: _tickets == null
-            ? Center(
-                child: CircularProgressIndicator(
-                  strokeWidth: 1.8,
-                  color: DsColor.textFaint,
-                ),
-              )
-            : _tickets!.isEmpty
-            ? Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(32),
-                  child: Text(
-                    l.myFeedbackEmpty,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: AppTheme.textMuted, fontSize: 14),
-                  ),
-                ),
-              )
-            : RefreshIndicator(
-                color: AppTheme.accent,
-                onRefresh: _load,
-                child: ListView.separated(
-                  padding: EdgeInsets.fromLTRB(
-                    14,
-                    14,
-                    14,
-                    14 + MediaQuery.of(context).padding.bottom,
-                  ),
-                  itemCount: _tickets!.length,
-                  separatorBuilder: (_, _) => const SizedBox(height: 10),
-                  itemBuilder: (_, i) => _ticketCard(l, _tickets![i]),
-                ),
-              ),
+        body: content,
       ),
     );
   }

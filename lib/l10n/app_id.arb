@@ -838,30 +838,6 @@
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "Buat",
-  "@skinsCreate": {
-    "description": "Button to create/open skin editor"
-  },
-  "skinsDownload": "Unduh",
-  "@skinsDownload": {
-    "description": "Download button in skin detail sheet"
-  },
-  "skinsEdit": "Edit",
-  "@skinsEdit": {
-    "description": "Edit button in skin detail sheet"
-  },
-  "skinsInvalidFile": "File gambar tidak valid",
-  "@skinsInvalidFile": {
-    "description": "Error when the selected file is not a valid image"
-  },
-  "skinsMustBe64": "Skin harus berukuran 64×64 piksel",
-  "@skinsMustBe64": {
-    "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsUpload": "Unggah",
-  "@skinsUpload": {
-    "description": "Button to upload a skin"
-  },
   "somethingWentWrong": "Terjadi kesalahan. Silakan coba lagi.",
   "@somethingWentWrong": {
     "description": "Generic error message"
@@ -1000,27 +976,6 @@
   "upgradeWindowsHint": "Upgrade tersedia melalui Microsoft Store",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "skinSaved": "Skin disimpan",
-  "@skinSaved": {
-    "description": "Toast when skin is saved"
-  },
-  "skinSavedAs": "Disimpan sebagai \"{name}\"",
-  "@skinSavedAs": {
-    "description": "Toast when skin saved with name",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinExportFailed": "Ekspor gagal",
-  "@skinExportFailed": {
-    "description": "Toast when skin export fails"
-  },
-  "skinExported": "Skin berhasil diekspor",
-  "@skinExported": {
-    "description": "Toast when skin is exported successfully"
   },
   "feedbackBugReport": "Laporan Bug",
   "feedbackFeatureRequest": "Permintaan Fitur",
@@ -1161,10 +1116,7 @@
     }
   },
   "skinsSavedToMySkins": "Disimpan ke Skin Saya",
-  "skinsEmptyLocalSkins": "Belum ada skin. Buat atau unggah skin untuk memulai.",
-  "skinSaveDialog": "Simpan Skin",
-  "skinNameHint": "Nama skin",
-  "skinDefaultName": "Skin saya",
+  "skinsEmptyLocalSkins": "Belum ada skin tersimpan.",
   "sectionRecentActivity": "Aktivitas terbaru",
   "activityNoEvents": "Belum ada aktivitas terbaru.",
   "activitySkinUploaded": "Skin diunggah",
@@ -1252,21 +1204,12 @@
       }
     }
   },
-  "notifPrefSkinLiked": "Skin disukai",
   "notifPrefCommentReceived": "Komentar diterima",
   "notifPrefPackApproved": "Pack disetujui",
   "notifPrefPackRejected": "Pack ditolak",
   "notifPrefFriendRequest": "Permintaan pertemanan",
   "notifPrefFriendAccepted": "Teman ditambahkan",
   "notifPrefMessageReceived": "Pesan baru",
-  "skinLayerInner": "Dalam",
-  "@skinLayerInner": {
-    "description": "Skin editor layer toggle, inner/base layer"
-  },
-  "skinLayerOuter": "Luar",
-  "@skinLayerOuter": {
-    "description": "Skin editor layer toggle, outer/overlay layer"
-  },
   "feedbackLoginRequiredTitle": "Masuk untuk mengirim masukan",
   "feedbackLoginRequiredBody": "Masukan terhubung dengan akun MCCompanion Anda sehingga kami dapat membalas Anda langsung di aplikasi.",
   "feedbackLoginButton": "Masuk",
@@ -1274,14 +1217,6 @@
   "rpInvalidPackFormat": "Ini adalah pack Java Edition dan tidak didukung. Gunakan resource pack Bedrock Edition.",
   "accountActions": "Akun",
   "supportInboxTitle": "Kotak masuk dukungan",
-  "skinShareSubject": "Skin Minecraft",
-  "skinEditorTitle": "Editor skin",
-  "skinToolUndo": "Urungkan",
-  "skinSaveToMySkins": "Simpan ke skin saya",
-  "skinExportPng": "Ekspor PNG",
-  "skinToolDraw": "Gambar",
-  "skinToolFill": "Isi",
-  "skinToolErase": "Hapus",
   "customColour": "Warna khusus",
   "featuredServerLabel": "SERVER PILIHAN",
   "featuredServerTagline": "Langsung gabung dan main.",
@@ -1332,19 +1267,6 @@
   "chooseServerTitle": "Pilih server",
   "changeLabel": "Ubah",
   "howToAutoShow": "Tampilkan ini saat mulai",
-  "skinEditorLoadFailed": "Skin itu tidak bisa dimuat. Kita mulai dari skin bawaan.",
-  "skinToolRecolour": "Warnai ulang",
-  "skinToolPick": "Ambil warna",
-  "skinBases": "Dasar",
-  "skinBasesTitle": "Mulai dari dasar",
-  "skinBasesSubtitle": "Ini mengganti yang ada sekarang. Urungkan mengembalikannya.",
-  "skinMirror": "Cermin",
-  "skinSurprise": "Kejutan",
-  "skinToolFillHint": "Mengisi bidang yang kamu sentuh",
-  "skinToolRecolourHint": "Mengubah warna itu di seluruh skin",
-  "skinToolPickHint": "Mengambil warna yang kamu sentuh",
-  "skinModelClassic": "Lebar",
-  "skinModelSlim": "Ramping",
   "shareServerLabel": "Bagikan servermu",
   "shareServerOn": "Teman bisa melihat server yang kamu mainkan",
   "shareServerOff": "Teman melihat kamu bermain, tapi tidak di mana",
@@ -1444,5 +1366,8 @@
   "serverVoteOffline": "Tidak dapat menghubungi server. Periksa koneksimu.",
   "feedbackViewYourReport": "Lihat laporanmu",
   "showMore": "Selengkapnya",
-  "showLess": "Lebih sedikit"
+  "showLess": "Lebih sedikit",
+  "lookupRecent": "Terbaru",
+  "skinsRemovalNotice": "Skin akan dihapus pada pembaruan berikutnya. Ekspor skin yang ingin kamu simpan.",
+  "feedbackRpNotice": "Kami tidak membalas laporan tentang resource pack. Beberapa pack memang tidak berfungsi, dan beberapa server menolak pack kustom."
 }

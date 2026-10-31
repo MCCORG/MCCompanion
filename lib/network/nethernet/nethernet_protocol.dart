@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:crypto/crypto.dart';
 import 'package:pointycastle/export.dart' as pc;
 import '../bedrock_version.dart';
+import '../route_session.dart';
 
 class NetherNetProtocol {
   static const int discoveryPort = 7551;
@@ -126,6 +127,11 @@ class NetherNetProtocol {
   static int get defaultProtocol => BedrockVersion.protocol;
 
   static String get defaultGameVersion => BedrockVersion.gameVersion;
+
+  static String routeNonce({required String host, required int port}) {
+    final data = utf8.encode('$host:$port|${RouteSession.id}');
+    return data.map((b) => b.toRadixString(16).padLeft(2, '0')).join();
+  }
 
   static String randomNonce() {
     final rng = Random.secure();

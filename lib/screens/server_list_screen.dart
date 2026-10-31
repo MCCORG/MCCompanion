@@ -11,6 +11,7 @@ import '../widgets/components/app_toast.dart';
 import '../widgets/components/swipe_back.dart';
 import '../widgets/server_list_card.dart';
 import 'server_detail_screen.dart';
+import '../layout/bar_inset.dart';
 
 class ServerListScreen extends StatefulWidget {
   const ServerListScreen({
@@ -254,11 +255,11 @@ class _ServerListScreenState extends State<ServerListScreen> {
                   SliverFillRemaining(hasScrollBody: false, child: _empty())
                 else
                   SliverPadding(
-                    padding: const EdgeInsets.fromLTRB(
+                    padding: EdgeInsets.fromLTRB(
                       DsSpace.gutter,
                       DsSpace.xs,
                       DsSpace.gutter,
-                      DsSpace.xxxl,
+                      DsSpace.xxxl + BarInset.of(context),
                     ),
                     sliver: SliverList.separated(
                       itemCount: _servers.length + (_loadingMore ? 1 : 0),

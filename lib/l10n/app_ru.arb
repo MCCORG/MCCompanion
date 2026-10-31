@@ -838,30 +838,6 @@
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "Создать",
-  "@skinsCreate": {
-    "description": "Button to create/open skin editor"
-  },
-  "skinsDownload": "Скачать",
-  "@skinsDownload": {
-    "description": "Download button in skin detail sheet"
-  },
-  "skinsEdit": "Редактировать",
-  "@skinsEdit": {
-    "description": "Edit button in skin detail sheet"
-  },
-  "skinsInvalidFile": "Неверный файл изображения",
-  "@skinsInvalidFile": {
-    "description": "Error when the selected file is not a valid image"
-  },
-  "skinsMustBe64": "Скин должен быть 64×64 пикселя",
-  "@skinsMustBe64": {
-    "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsUpload": "Загрузить",
-  "@skinsUpload": {
-    "description": "Button to upload a skin"
-  },
   "somethingWentWrong": "Что-то пошло не так. Попробуйте снова.",
   "@somethingWentWrong": {
     "description": "Generic error message"
@@ -1000,27 +976,6 @@
   "upgradeWindowsHint": "Обновление доступно в Microsoft Store",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "skinSaved": "Скин сохранён",
-  "@skinSaved": {
-    "description": "Toast when skin is saved"
-  },
-  "skinSavedAs": "Сохранено как \"{name}\"",
-  "@skinSavedAs": {
-    "description": "Toast when skin saved with name",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinExportFailed": "Ошибка экспорта",
-  "@skinExportFailed": {
-    "description": "Toast when skin export fails"
-  },
-  "skinExported": "Скин успешно экспортирован",
-  "@skinExported": {
-    "description": "Toast when skin is exported successfully"
   },
   "accountActions": "Аккаунт",
   "@accountActions": {
@@ -1165,10 +1120,7 @@
     }
   },
   "skinsSavedToMySkins": "Сохранено в Мои скины",
-  "skinsEmptyLocalSkins": "Скинов пока нет. Создайте или загрузите скин, чтобы начать.",
-  "skinSaveDialog": "Сохранить скин",
-  "skinNameHint": "Название скина",
-  "skinDefaultName": "Мой скин",
+  "skinsEmptyLocalSkins": "Сохранённых скинов пока нет.",
   "sectionRecentActivity": "Последняя активность",
   "activityNoEvents": "Нет последней активности.",
   "activitySkinUploaded": "Скин загружен",
@@ -1256,35 +1208,18 @@
       }
     }
   },
-  "notifPrefSkinLiked": "Скин понравился",
   "notifPrefCommentReceived": "Получен комментарий",
   "notifPrefPackApproved": "Пак одобрен",
   "notifPrefPackRejected": "Пак отклонён",
   "notifPrefFriendRequest": "Запрос в друзья",
   "notifPrefFriendAccepted": "Друг добавлен",
   "notifPrefMessageReceived": "Новое сообщение",
-  "skinLayerInner": "Внутренний",
-  "@skinLayerInner": {
-    "description": "Skin editor layer toggle, inner/base layer"
-  },
-  "skinLayerOuter": "Внешний",
-  "@skinLayerOuter": {
-    "description": "Skin editor layer toggle, outer/overlay layer"
-  },
   "feedbackLoginRequiredTitle": "Войдите, чтобы отправить отзыв",
   "feedbackLoginRequiredBody": "Отзывы привязаны к вашему аккаунту MCCompanion, чтобы мы могли ответить вам прямо в приложении.",
   "feedbackLoginButton": "Войти",
   "rpBehaviorContentWarning": "Этот пак содержит данные пакета поведения, которые не работают на серверах. Текстуры при этом будут работать.",
   "rpInvalidPackFormat": "Это пак для Java Edition, он не поддерживается. Используйте ресурс-пак для Bedrock Edition.",
   "supportInboxTitle": "Входящие поддержки",
-  "skinShareSubject": "Скин Minecraft",
-  "skinEditorTitle": "Редактор скинов",
-  "skinToolUndo": "Отменить",
-  "skinSaveToMySkins": "Сохранить в мои скины",
-  "skinExportPng": "Экспорт PNG",
-  "skinToolDraw": "Рисовать",
-  "skinToolFill": "Заливка",
-  "skinToolErase": "Стереть",
   "customColour": "Свой цвет",
   "featuredServerLabel": "ИЗБРАННЫЙ СЕРВЕР",
   "featuredServerTagline": "Заходи и играй.",
@@ -1335,19 +1270,6 @@
   "chooseServerTitle": "Выберите сервер",
   "changeLabel": "Изменить",
   "howToAutoShow": "Показывать это при запуске",
-  "skinEditorLoadFailed": "Не удалось загрузить этот скин. Начнём со стандартного.",
-  "skinToolRecolour": "Перекрасить",
-  "skinToolPick": "Пипетка",
-  "skinBases": "Основы",
-  "skinBasesTitle": "Начать с основы",
-  "skinBasesSubtitle": "Это заменит текущий рисунок. Отмена вернёт его.",
-  "skinMirror": "Зеркало",
-  "skinSurprise": "Сюрприз",
-  "skinToolFillHint": "Заливает область, по которой вы нажали",
-  "skinToolRecolourHint": "Меняет этот цвет по всему скину",
-  "skinToolPickHint": "Берёт цвет, по которому вы нажали",
-  "skinModelClassic": "Широкие",
-  "skinModelSlim": "Тонкие",
   "shareServerLabel": "Показывать сервер",
   "shareServerOn": "Друзья видят, на каком вы сервере",
   "shareServerOff": "Друзья видят, что вы играете, но не где",
@@ -1447,5 +1369,8 @@
   "serverVoteOffline": "Не удалось связаться с сервером. Проверьте подключение.",
   "feedbackViewYourReport": "Открыть ваше сообщение",
   "showMore": "Ещё",
-  "showLess": "Свернуть"
+  "showLess": "Свернуть",
+  "lookupRecent": "Недавние",
+  "skinsRemovalNotice": "Скины будут удалены в следующем обновлении. Экспортируйте те, что хотите сохранить.",
+  "feedbackRpNotice": "Мы не отвечаем на обращения о ресурспаках. Некоторые паки просто не работают, а некоторые серверы отклоняют пользовательские паки."
 }

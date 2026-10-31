@@ -838,30 +838,6 @@
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "Oluştur",
-  "@skinsCreate": {
-    "description": "Button to create/open skin editor"
-  },
-  "skinsDownload": "İndir",
-  "@skinsDownload": {
-    "description": "Download button in skin detail sheet"
-  },
-  "skinsEdit": "Düzenle",
-  "@skinsEdit": {
-    "description": "Edit button in skin detail sheet"
-  },
-  "skinsInvalidFile": "Geçersiz resim dosyası",
-  "@skinsInvalidFile": {
-    "description": "Error when the selected file is not a valid image"
-  },
-  "skinsMustBe64": "Skin 64×64 piksel olmalıdır",
-  "@skinsMustBe64": {
-    "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsUpload": "Yükle",
-  "@skinsUpload": {
-    "description": "Button to upload a skin"
-  },
   "somethingWentWrong": "Bir şeyler ters gitti. Tekrar deneyin.",
   "@somethingWentWrong": {
     "description": "Generic error message"
@@ -1000,27 +976,6 @@
   "upgradeWindowsHint": "Yükseltme Microsoft Store'da mevcut",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "skinSaved": "Skin kaydedildi",
-  "@skinSaved": {
-    "description": "Toast when skin is saved"
-  },
-  "skinSavedAs": "\"{name}\" olarak kaydedildi",
-  "@skinSavedAs": {
-    "description": "Toast when skin saved with name",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinExportFailed": "Disa aktarma basarisiz",
-  "@skinExportFailed": {
-    "description": "Toast when skin export fails"
-  },
-  "skinExported": "Skin basariyla disa aktarildi",
-  "@skinExported": {
-    "description": "Toast when skin is exported successfully"
   },
   "accountActions": "Hesap",
   "@accountActions": {
@@ -1165,10 +1120,7 @@
     }
   },
   "skinsSavedToMySkins": "Skinlerime kaydedildi",
-  "skinsEmptyLocalSkins": "Henüz skin yok. Başlamak için bir skin oluşturun veya yükleyin.",
-  "skinSaveDialog": "Skin kaydet",
-  "skinNameHint": "Skin adı",
-  "skinDefaultName": "Benim skinim",
+  "skinsEmptyLocalSkins": "Henüz kayıtlı skin yok.",
   "sectionRecentActivity": "Son etkinlik",
   "activityNoEvents": "Henüz son etkinlik yok.",
   "activitySkinUploaded": "Skin yüklendi",
@@ -1256,35 +1208,18 @@
       }
     }
   },
-  "notifPrefSkinLiked": "Skin beğenildi",
   "notifPrefCommentReceived": "Yorum alındı",
   "notifPrefPackApproved": "Paket onaylandı",
   "notifPrefPackRejected": "Paket reddedildi",
   "notifPrefFriendRequest": "Arkadaşlık isteği",
   "notifPrefFriendAccepted": "Arkadaş eklendi",
   "notifPrefMessageReceived": "Yeni mesaj",
-  "skinLayerInner": "İç",
-  "@skinLayerInner": {
-    "description": "Skin editor layer toggle, inner/base layer"
-  },
-  "skinLayerOuter": "Dış",
-  "@skinLayerOuter": {
-    "description": "Skin editor layer toggle, outer/overlay layer"
-  },
   "feedbackLoginRequiredTitle": "Geri bildirim göndermek için giriş yapın",
   "feedbackLoginRequiredBody": "Geri bildirim, size doğrudan uygulama içinden yanıt verebilmemiz için MCCompanion hesabınıza bağlıdır.",
   "feedbackLoginButton": "Giriş yap",
   "rpBehaviorContentWarning": "Bu paket, sunucularda çalışmayan davranış paketi verileri içeriyor. Dokular yine de çalışacaktır.",
   "rpInvalidPackFormat": "Bu bir Java Edition paketi ve desteklenmiyor. Lütfen Bedrock Edition kaynak paketi kullanın.",
   "supportInboxTitle": "Destek kutusu",
-  "skinShareSubject": "Minecraft skini",
-  "skinEditorTitle": "Skin düzenleyici",
-  "skinToolUndo": "Geri al",
-  "skinSaveToMySkins": "Skinlerime kaydet",
-  "skinExportPng": "PNG dışa aktar",
-  "skinToolDraw": "Çiz",
-  "skinToolFill": "Doldur",
-  "skinToolErase": "Sil",
   "customColour": "Özel renk",
   "featuredServerLabel": "ÖNE ÇIKAN SUNUCU",
   "featuredServerTagline": "Hemen katıl ve oynamaya başla.",
@@ -1335,19 +1270,6 @@
   "chooseServerTitle": "Bir sunucu seç",
   "changeLabel": "Değiştir",
   "howToAutoShow": "Başlatınca bunu göster",
-  "skinEditorLoadFailed": "Bu kaplama yüklenemedi. Varsayılan kaplamayla başlıyoruz.",
-  "skinToolRecolour": "Yeniden renklendir",
-  "skinToolPick": "Damlalık",
-  "skinBases": "Şablonlar",
-  "skinBasesTitle": "Bir şablonla başla",
-  "skinBasesSubtitle": "Bu, mevcut çizimin yerini alır. Geri al ile döner.",
-  "skinMirror": "Aynala",
-  "skinSurprise": "Sürpriz",
-  "skinToolFillHint": "Dokunduğunuz alanı doldurur",
-  "skinToolRecolourHint": "O rengi kaplamanın her yerinde değiştirir",
-  "skinToolPickHint": "Dokunduğunuz rengi alır",
-  "skinModelClassic": "Geniş",
-  "skinModelSlim": "İnce",
   "shareServerLabel": "Sunucunu paylaş",
   "shareServerOn": "Arkadaşların hangi sunucuda olduğunu görür",
   "shareServerOff": "Arkadaşların oynadığını görür, nerede olduğunu değil",
@@ -1447,5 +1369,8 @@
   "serverVoteOffline": "Sunucuya ulaşılamadı. Bağlantınızı kontrol edin.",
   "feedbackViewYourReport": "Bildiriminizi görüntüle",
   "showMore": "Daha fazla",
-  "showLess": "Daha az"
+  "showLess": "Daha az",
+  "lookupRecent": "Son aramalar",
+  "skinsRemovalNotice": "Skin'ler bir sonraki güncellemede kaldırılacak. Saklamak istediklerini dışa aktar.",
+  "feedbackRpNotice": "Kaynak paketleriyle ilgili bildirimlere yanıt vermiyoruz. Bazı paketler hiç çalışmıyor ve bazı sunucular özel paketleri reddediyor."
 }

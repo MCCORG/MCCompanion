@@ -838,30 +838,6 @@
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "إنشاء",
-  "@skinsCreate": {
-    "description": "Button to create/open skin editor"
-  },
-  "skinsDownload": "تنزيل",
-  "@skinsDownload": {
-    "description": "Download button in skin detail sheet"
-  },
-  "skinsEdit": "Edit",
-  "@skinsEdit": {
-    "description": "Edit button in skin detail sheet"
-  },
-  "skinsInvalidFile": "ملف صورة غير صالح",
-  "@skinsInvalidFile": {
-    "description": "Error when the selected file is not a valid image"
-  },
-  "skinsMustBe64": "يجب أن يكون حجم السكن 64×64 بكسل",
-  "@skinsMustBe64": {
-    "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsUpload": "رفع",
-  "@skinsUpload": {
-    "description": "Button to upload a skin"
-  },
   "somethingWentWrong": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
   "@somethingWentWrong": {
     "description": "Generic error message"
@@ -1000,27 +976,6 @@
   "upgradeWindowsHint": "الترقية متاحة عبر متجر Microsoft",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "skinSaved": "تم حفظ السكن",
-  "@skinSaved": {
-    "description": "Toast when skin is saved"
-  },
-  "skinSavedAs": "حفظ باسم \"{name}\"",
-  "@skinSavedAs": {
-    "description": "Toast when skin saved with name",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinExportFailed": "فشل التصدير",
-  "@skinExportFailed": {
-    "description": "Toast when skin export fails"
-  },
-  "skinExported": "تم تصدير السكن بنجاح",
-  "@skinExported": {
-    "description": "Toast when skin is exported successfully"
   },
   "accountActions": "الحساب",
   "@accountActions": {
@@ -1165,10 +1120,7 @@
     }
   },
   "skinsSavedToMySkins": "تم الحفظ في سكناتي",
-  "skinsEmptyLocalSkins": "لا توجد سكنات بعد. أنشئ أو ارفع سكناً للبدء.",
-  "skinSaveDialog": "حفظ السكن",
-  "skinNameHint": "اسم السكن",
-  "skinDefaultName": "سكني",
+  "skinsEmptyLocalSkins": "لا توجد سكنات محفوظة بعد.",
   "sectionRecentActivity": "النشاط الأخير",
   "activityNoEvents": "لا يوجد نشاط حديث بعد.",
   "activitySkinUploaded": "تم رفع السكن",
@@ -1256,35 +1208,18 @@
       }
     }
   },
-  "notifPrefSkinLiked": "إعجاب بالسكن",
   "notifPrefCommentReceived": "تعليق مستلم",
   "notifPrefPackApproved": "حزمة موافق عليها",
   "notifPrefPackRejected": "حزمة مرفوضة",
   "notifPrefFriendRequest": "طلب صداقة",
   "notifPrefFriendAccepted": "صديق مضاف",
   "notifPrefMessageReceived": "رسالة جديدة",
-  "skinLayerInner": "داخلي",
-  "@skinLayerInner": {
-    "description": "Skin editor layer toggle, inner/base layer"
-  },
-  "skinLayerOuter": "خارجي",
-  "@skinLayerOuter": {
-    "description": "Skin editor layer toggle, outer/overlay layer"
-  },
   "feedbackLoginRequiredTitle": "سجّل الدخول لإرسال الملاحظات",
   "feedbackLoginRequiredBody": "ترتبط الملاحظات بحساب MCCompanion الخاص بك حتى نتمكن من الرد عليك مباشرة داخل التطبيق.",
   "feedbackLoginButton": "تسجيل الدخول",
   "rpBehaviorContentWarning": "تحتوي هذه الحزمة على بيانات حزمة سلوك لن تعمل على الخوادم. ستظل الإكساءات تعمل.",
   "rpInvalidPackFormat": "هذه حزمة إصدار Java وهي غير مدعومة. يرجى استخدام حزمة موارد لإصدار Bedrock.",
   "supportInboxTitle": "بريد الدعم",
-  "skinShareSubject": "سكين Minecraft",
-  "skinEditorTitle": "محرر السكين",
-  "skinToolUndo": "تراجع",
-  "skinSaveToMySkins": "حفظ في سكيناتي",
-  "skinExportPng": "تصدير PNG",
-  "skinToolDraw": "رسم",
-  "skinToolFill": "تعبئة",
-  "skinToolErase": "مسح",
   "customColour": "لون مخصص",
   "featuredServerLabel": "خادم مميز",
   "featuredServerTagline": "انضم وابدأ اللعب.",
@@ -1335,19 +1270,6 @@
   "chooseServerTitle": "اختر خادمًا",
   "changeLabel": "تغيير",
   "howToAutoShow": "أظهر هذا عند البدء",
-  "skinEditorLoadFailed": "تعذّر تحميل هذا الشكل. سنبدأ بالشكل الافتراضي.",
-  "skinToolRecolour": "تغيير اللون",
-  "skinToolPick": "القطارة",
-  "skinBases": "قوالب",
-  "skinBasesTitle": "ابدأ من قالب",
-  "skinBasesSubtitle": "سيحل هذا محل الرسم الحالي. التراجع يعيده.",
-  "skinMirror": "مرآة",
-  "skinSurprise": "فاجئني",
-  "skinToolFillHint": "يملأ المنطقة التي تلمسها",
-  "skinToolRecolourHint": "يغيّر ذلك اللون في كامل الشكل",
-  "skinToolPickHint": "يأخذ اللون الذي تلمسه",
-  "skinModelClassic": "عريض",
-  "skinModelSlim": "نحيف",
   "shareServerLabel": "مشاركة خادمك",
   "shareServerOn": "يمكن لأصدقائك رؤية الخادم الذي تلعب فيه",
   "shareServerOff": "يرى أصدقاؤك أنك تلعب دون معرفة المكان",
@@ -1447,5 +1369,8 @@
   "serverVoteOffline": "تعذّر الوصول إلى الخادم. تحقّق من اتصالك.",
   "feedbackViewYourReport": "عرض بلاغك",
   "showMore": "المزيد",
-  "showLess": "أقل"
+  "showLess": "أقل",
+  "lookupRecent": "الأخيرة",
+  "skinsRemovalNotice": "ستتم إزالة السكنات في التحديث القادم. صدّر السكنات التي تريد الاحتفاظ بها.",
+  "feedbackRpNotice": "لا نرد على البلاغات المتعلقة بحزم الموارد. بعض الحزم لا تعمل ببساطة، وبعض الخوادم ترفض الحزم المخصصة."
 }

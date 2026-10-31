@@ -770,24 +770,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get requestsAppearHere => 'नए मित्र अनुरोध यहाँ दिखाई देंगे।';
 
   @override
-  String get skinsEdit => 'Edit';
-
-  @override
-  String get skinsMustBe64 => 'स्किन 64×64 पिक्सेल की होनी चाहिए';
-
-  @override
-  String get skinsInvalidFile => 'अमान्य इमेज फ़ाइल';
-
-  @override
-  String get skinsUpload => 'अपलोड करें';
-
-  @override
-  String get skinsCreate => 'बनाएँ';
-
-  @override
-  String get skinsDownload => 'डाउनलोड करें';
-
-  @override
   String get chooseUniqueUsername =>
       'शुरू करने के लिए एक अनोखा उपयोगकर्ता नाम चुनें।';
 
@@ -1180,20 +1162,6 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => 'Microsoft Store पर अपग्रेड उपलब्ध है';
-
-  @override
-  String get skinSaved => 'स्किन सेव हुई';
-
-  @override
-  String skinSavedAs(String name) {
-    return '\"$name\" के रूप में सेव';
-  }
-
-  @override
-  String get skinExportFailed => 'निर्यात विफल';
-
-  @override
-  String get skinExported => 'स्किन सफलतापूर्वक निर्यात हुई';
 
   @override
   String get accountActions => 'खाता';
@@ -1615,17 +1583,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get skinsSavedToMySkins => 'मेरे स्किन्स में सहेजा गया';
 
   @override
-  String get skinsEmptyLocalSkins =>
-      'अभी तक कोई स्किन नहीं। शुरू करने के लिए एक स्किन बनाएँ या अपलोड करें।';
-
-  @override
-  String get skinSaveDialog => 'स्किन सहेजें';
-
-  @override
-  String get skinNameHint => 'स्किन का नाम';
-
-  @override
-  String get skinDefaultName => 'मेरी स्किन';
+  String get skinsEmptyLocalSkins => 'अभी तक कोई सहेजी गई स्किन नहीं है।';
 
   @override
   String get sectionRecentActivity => 'हालिया गतिविधि';
@@ -1719,9 +1677,6 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => 'स्किन पसंद की';
-
-  @override
   String get notifPrefCommentReceived => 'टिप्पणी मिली';
 
   @override
@@ -1740,12 +1695,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get notifPrefMessageReceived => 'नया संदेश';
 
   @override
-  String get skinLayerInner => 'आंतरिक';
-
-  @override
-  String get skinLayerOuter => 'बाहरी';
-
-  @override
   String get feedbackLoginRequiredTitle =>
       'प्रतिक्रिया भेजने के लिए लॉग इन करें';
 
@@ -1758,30 +1707,6 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get supportInboxTitle => 'सपोर्ट इनबॉक्स';
-
-  @override
-  String get skinShareSubject => 'Minecraft स्किन';
-
-  @override
-  String get skinEditorTitle => 'स्किन एडिटर';
-
-  @override
-  String get skinToolUndo => 'पहले जैसा करें';
-
-  @override
-  String get skinSaveToMySkins => 'मेरी स्किन में सेव करें';
-
-  @override
-  String get skinExportPng => 'PNG एक्सपोर्ट करें';
-
-  @override
-  String get skinToolDraw => 'बनाएं';
-
-  @override
-  String get skinToolFill => 'भरें';
-
-  @override
-  String get skinToolErase => 'मिटाएं';
 
   @override
   String get customColour => 'कस्टम रंग';
@@ -1948,47 +1873,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get howToAutoShow => 'शुरू करते समय यह दिखाएं';
 
   @override
-  String get skinEditorLoadFailed =>
-      'वह स्किन लोड नहीं हो सकी। हम डिफ़ॉल्ट स्किन से शुरू कर रहे हैं।';
-
-  @override
-  String get skinToolRecolour => 'रंग बदलें';
-
-  @override
-  String get skinToolPick => 'रंग चुनें';
-
-  @override
-  String get skinBases => 'बेस';
-
-  @override
-  String get skinBasesTitle => 'एक बेस से शुरू करें';
-
-  @override
-  String get skinBasesSubtitle =>
-      'यह मौजूदा चित्र बदल देगा। पूर्ववत करने पर वापस आ जाएगा।';
-
-  @override
-  String get skinMirror => 'मिरर';
-
-  @override
-  String get skinSurprise => 'सरप्राइज़';
-
-  @override
-  String get skinToolFillHint => 'आप जिस हिस्से को छूते हैं उसे भरता है';
-
-  @override
-  String get skinToolRecolourHint => 'पूरी स्किन में वह रंग बदलता है';
-
-  @override
-  String get skinToolPickHint => 'आप जिस रंग को छूते हैं वह ले लेता है';
-
-  @override
-  String get skinModelClassic => 'चौड़ा';
-
-  @override
-  String get skinModelSlim => 'पतला';
-
-  @override
   String get shareServerLabel => 'अपना सर्वर साझा करें';
 
   @override
@@ -2015,6 +1899,23 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get consoleLanHint =>
       'अपने कंसोल पर Minecraft खोलें और दोस्त में LAN गेम खोजें।';
+
+  @override
+  String get consoleConnecting => 'Connecting your console…';
+
+  @override
+  String get consoleHandedOver => 'Joining through the relay';
+
+  @override
+  String get consoleHandedOverHint =>
+      'Your console should switch to your server in a few seconds. Nothing happening? Try joining again.';
+
+  @override
+  String get consoleConnectFailed => 'Could not reach the relay';
+
+  @override
+  String get consoleConnectFailedHint =>
+      'Check your connection, then try joining again.';
 
   @override
   String get localNetworkBlocked =>
@@ -2204,4 +2105,15 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get showLess => 'कम';
+
+  @override
+  String get lookupRecent => 'हाल के';
+
+  @override
+  String get skinsRemovalNotice =>
+      'अगले अपडेट में स्किन हटा दी जाएँगी। जिन्हें रखना चाहते हैं उन्हें एक्सपोर्ट करें।';
+
+  @override
+  String get feedbackRpNotice =>
+      'हम रिसोर्स पैक से जुड़ी रिपोर्ट का जवाब नहीं देते। कुछ पैक बस काम नहीं करते, और कुछ सर्वर कस्टम पैक अस्वीकार कर देते हैं।';
 }

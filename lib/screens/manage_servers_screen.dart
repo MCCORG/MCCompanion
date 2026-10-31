@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../design/design.dart';
+import '../layout/platform.dart';
 import '../theme/app_tokens.dart';
 import '../util/user_servers.dart';
 import '../util/user_servers_storage.dart';
 import '../l10n/app_localizations.dart';
 import '../widgets/components/app_toast.dart';
 import '../widgets/components/swipe_back.dart';
+import '../layout/bar_inset.dart';
 
 class ManageServersScreen extends StatefulWidget {
   final VoidCallback onBack;
   final VoidCallback onAddServer;
   final void Function(int index) onEditServer;
+  final VoidCallback? onListChanged;
 
   const ManageServersScreen({
     super.key,
     required this.onBack,
     required this.onAddServer,
     required this.onEditServer,
+    this.onListChanged,
   });
 
   @override
@@ -50,6 +54,7 @@ class ManageServersScreenState extends State<ManageServersScreen> {
       _servers.insert(newIndex, moved);
     });
     await UserServersStorage.saveServers(_servers);
+    widget.onListChanged?.call();
   }
 
   Future<void> _deleteServer(int index) async {
@@ -62,7 +67,8 @@ class ManageServersScreenState extends State<ManageServersScreen> {
     );
     if (confirmed == true) {
       await UserServersStorage.removeServer(index);
-      reload();
+      await reload();
+      widget.onListChanged?.call();
     }
   }
 
@@ -72,9 +78,12 @@ class ManageServersScreenState extends State<ManageServersScreen> {
 
     return SwipeBack(
       onBack: widget.onBack,
-      child: Center(
+      child: Align(
+        alignment: Alignment.topLeft,
         child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 760),
+          constraints: BoxConstraints(
+            maxWidth: useClientLayout(context) ? kDesktopListWidth : 760,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -105,11 +114,11 @@ class ManageServersScreenState extends State<ManageServersScreen> {
                     : _servers.isEmpty
                     ? _EmptyState(loc: loc, onAdd: widget.onAddServer)
                     : ReorderableListView.builder(
-                        padding: const EdgeInsets.fromLTRB(
+                        padding: EdgeInsets.fromLTRB(
                           DsSpace.gutter,
                           0,
                           DsSpace.gutter,
-                          DsSpace.xxxl,
+                          DsSpace.xxxl + BarInset.of(context),
                         ),
                         itemCount: _servers.length,
                         buildDefaultDragHandles: false,
@@ -142,12 +151,14 @@ class AddEditServerScreen extends StatefulWidget {
   final int? editingIndex;
   final VoidCallback onSaved;
   final VoidCallback onCancel;
+  final bool showClose;
 
   const AddEditServerScreen({
     super.key,
     required this.editingIndex,
     required this.onSaved,
     required this.onCancel,
+    this.showClose = true,
   });
 
   @override
@@ -246,11 +257,13 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
       children: [
         DsHeader(
           title: isEditing ? loc.editServer : loc.addServer,
-          leading: DsIconButton(
-            icon: Icons.close_rounded,
-            size: 36,
-            onPressed: widget.onCancel,
-          ),
+          leading: widget.showClose
+              ? DsIconButton(
+                  icon: Icons.close_rounded,
+                  size: 36,
+                  onPressed: widget.onCancel,
+                )
+              : null,
         ),
 
         Expanded(
@@ -266,11 +279,11 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
                   ),
                 )
               : SingleChildScrollView(
-                  padding: const EdgeInsets.fromLTRB(
+                  padding: EdgeInsets.fromLTRB(
                     DsSpace.gutter,
                     DsSpace.sm,
                     DsSpace.gutter,
-                    DsSpace.xxxl,
+                    DsSpace.xxxl + BarInset.of(context),
                   ),
                   keyboardDismissBehavior:
                       ScrollViewKeyboardDismissBehavior.onDrag,

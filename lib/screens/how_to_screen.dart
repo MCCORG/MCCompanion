@@ -7,8 +7,57 @@ import '../theme/app_theme.dart';
 import '../util/howto_prefs.dart';
 import '../widgets/components/swipe_back.dart';
 import '../widgets/dialogs/howto_dialogs.dart';
+import '../layout/bar_inset.dart';
 
 enum HowToKind { xbox, nintendo, friends }
+
+extension HowToKindInfo on HowToKind {
+  Color get color => switch (this) {
+    HowToKind.xbox => AppTheme.modeXbox,
+    HowToKind.nintendo => AppTheme.modeNintendo,
+    HowToKind.friends => AppTheme.modeFriends,
+  };
+
+  IconData get rowIcon => switch (this) {
+    HowToKind.xbox => Icons.sports_esports_rounded,
+    HowToKind.nintendo => Icons.videogame_asset_rounded,
+    HowToKind.friends => Icons.group_rounded,
+  };
+
+  FaIconData get icon => switch (this) {
+    HowToKind.xbox => FontAwesomeIcons.xbox,
+    HowToKind.nintendo => FontAwesomeIcons.gamepad,
+    HowToKind.friends => FontAwesomeIcons.userGroup,
+  };
+
+  String title(AppLocalizations l) => switch (this) {
+    HowToKind.xbox => l.labelXbox,
+    HowToKind.nintendo => l.labelNintendo,
+    HowToKind.friends => l.labelFriends,
+  };
+
+  String subtitle(AppLocalizations l) => switch (this) {
+    HowToKind.xbox => l.howToXboxSubtitle,
+    HowToKind.nintendo => l.howToNintendoSubtitle,
+    HowToKind.friends => l.howToFriendsSubtitle,
+  };
+
+  HowToTopic get topic => switch (this) {
+    HowToKind.xbox => HowToTopic.xbox,
+    HowToKind.nintendo => HowToTopic.nintendo,
+    HowToKind.friends => HowToTopic.friends,
+  };
+
+  String? body(AppLocalizations l, {String? relayName, String? relayIp}) =>
+      switch (this) {
+        HowToKind.xbox => l.howToXboxBody,
+        HowToKind.nintendo => l.playInstructionsSwitch(
+          relayName ?? '-',
+          relayIp ?? '-',
+        ),
+        HowToKind.friends => null,
+      };
+}
 
 class HowToScreen extends StatefulWidget {
   final HowToKind? kind;
@@ -45,51 +94,6 @@ class _HowToScreenState extends State<HowToScreen> {
     if (widget.kind != oldWidget.kind) _open = widget.kind;
   }
 
-  Color _color(HowToKind kind) => switch (kind) {
-    HowToKind.xbox => AppTheme.modeXbox,
-    HowToKind.nintendo => AppTheme.modeNintendo,
-    HowToKind.friends => AppTheme.modeFriends,
-  };
-
-  IconData _rowIcon(HowToKind kind) => switch (kind) {
-    HowToKind.xbox => Icons.sports_esports_rounded,
-    HowToKind.nintendo => Icons.videogame_asset_rounded,
-    HowToKind.friends => Icons.group_rounded,
-  };
-
-  FaIconData _icon(HowToKind kind) => switch (kind) {
-    HowToKind.xbox => FontAwesomeIcons.xbox,
-    HowToKind.nintendo => FontAwesomeIcons.gamepad,
-    HowToKind.friends => FontAwesomeIcons.userGroup,
-  };
-
-  String _title(HowToKind kind, AppLocalizations l) => switch (kind) {
-    HowToKind.xbox => l.labelXbox,
-    HowToKind.nintendo => l.labelNintendo,
-    HowToKind.friends => l.labelFriends,
-  };
-
-  String _subtitle(HowToKind kind, AppLocalizations l) => switch (kind) {
-    HowToKind.xbox => l.howToXboxSubtitle,
-    HowToKind.nintendo => l.howToNintendoSubtitle,
-    HowToKind.friends => l.howToFriendsSubtitle,
-  };
-
-  HowToTopic _topic(HowToKind kind) => switch (kind) {
-    HowToKind.xbox => HowToTopic.xbox,
-    HowToKind.nintendo => HowToTopic.nintendo,
-    HowToKind.friends => HowToTopic.friends,
-  };
-
-  String? _body(HowToKind kind, AppLocalizations l) => switch (kind) {
-    HowToKind.xbox => l.howToXboxBody,
-    HowToKind.nintendo => l.playInstructionsSwitch(
-      widget.relayName ?? '-',
-      widget.relayIp ?? '-',
-    ),
-    HowToKind.friends => null,
-  };
-
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
@@ -115,11 +119,11 @@ class _HowToScreenState extends State<HowToScreen> {
         ),
         Expanded(
           child: ListView(
-            padding: const EdgeInsets.fromLTRB(
+            padding: EdgeInsets.fromLTRB(
               DsSpace.gutter,
               0,
               DsSpace.gutter,
-              DsSpace.xxxl,
+              DsSpace.xxxl + BarInset.of(context),
             ),
             children: [
               DsGroup(
@@ -127,10 +131,10 @@ class _HowToScreenState extends State<HowToScreen> {
                 children: [
                   for (final kind in HowToKind.values)
                     DsRow(
-                      title: _title(kind, l),
-                      subtitle: _subtitle(kind, l),
-                      icon: _rowIcon(kind),
-                      iconColor: _color(kind),
+                      title: kind.title(l),
+                      subtitle: kind.subtitle(l),
+                      icon: kind.rowIcon,
+                      iconColor: kind.color,
                       onTap: () => setState(() => _open = kind),
                     ),
                 ],
@@ -143,15 +147,19 @@ class _HowToScreenState extends State<HowToScreen> {
   }
 
   Widget _article(AppLocalizations l, HowToKind kind) {
-    final color = _color(kind);
-    final body = _body(kind, l);
+    final color = kind.color;
+    final body = kind.body(
+      l,
+      relayName: widget.relayName,
+      relayIp: widget.relayIp,
+    );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         DsHeader(
-          title: _title(kind, l),
-          subtitle: _subtitle(kind, l),
+          title: kind.title(l),
+          subtitle: kind.subtitle(l),
           leading: DsIconButton(
             icon: Icons.arrow_back_rounded,
             size: 36,
@@ -166,17 +174,17 @@ class _HowToScreenState extends State<HowToScreen> {
                 color: color.withValues(alpha: 0.14),
                 borderRadius: DsRadius.controlR,
               ),
-              child: FaIcon(_icon(kind), size: 15, color: color),
+              child: FaIcon(kind.icon, size: 15, color: color),
             ),
           ],
         ),
         Expanded(
           child: ListView(
-            padding: const EdgeInsets.fromLTRB(
+            padding: EdgeInsets.fromLTRB(
               DsSpace.gutter,
               0,
               DsSpace.gutter,
-              DsSpace.xxxl,
+              DsSpace.xxxl + BarInset.of(context),
             ),
             children: [
               if (body != null)
@@ -184,7 +192,7 @@ class _HowToScreenState extends State<HowToScreen> {
               else
                 FriendsHowToBody(color: color, userRegion: widget.userRegion),
               const SizedBox(height: DsSpace.lg),
-              AutoShowToggle(topic: _topic(kind), color: color),
+              AutoShowToggle(topic: kind.topic, color: color),
             ],
           ),
         ),

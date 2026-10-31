@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import '../../util/logger.dart';
 import '../bedrock_version.dart';
 import 'nethernet_discovery.dart';
+import 'nethernet_phase.dart';
 import 'nethernet_protocol.dart';
 import 'nethernet_relay_client.dart';
 
@@ -27,6 +28,9 @@ class NetherNetMode {
 
   final Completer<void> _firstClient = Completer<void>();
   final ValueNotifier<bool> clientSeen = ValueNotifier(false);
+  final ValueNotifier<NetherNetPhase> phase = ValueNotifier(
+    NetherNetPhase.waiting,
+  );
 
   NetherNetMode({required this.logger});
 
@@ -45,6 +49,7 @@ class NetherNetMode {
   }) async {
     await stop();
     clientSeen.value = false;
+    phase.value = NetherNetPhase.waiting;
 
     _relay = relayHost == null
         ? null
@@ -64,6 +69,7 @@ class NetherNetMode {
     discovery.setAdvertisement(
       serverName: serverName,
       levelName: 'MCCompanion: $remoteHost',
+      nonce: NetherNetProtocol.routeNonce(host: remoteHost, port: remotePort),
       playerCount: playerCount,
       maxPlayerCount: maxPlayerCount,
     );
@@ -72,6 +78,9 @@ class NetherNetMode {
 
     discovery.onDiscoveryRequest = (address, port, count) {
       clientSeen.value = true;
+      if (phase.value == NetherNetPhase.waiting) {
+        phase.value = NetherNetPhase.consoleFound;
+      }
       if (!_firstClient.isCompleted) _firstClient.complete();
       if (count == 1) _log('Client found at ${address.address}');
     };
@@ -121,8 +130,11 @@ class NetherNetMode {
     final relay = _relay;
     if (relay == null) {
       _log('No relay configured, cannot forward the offer');
+      _setPhase(discovery, NetherNetPhase.failed);
       return;
     }
+
+    _setPhase(discovery, NetherNetPhase.connecting);
 
     final result = await relay.sendOffer(
       connectionId: signal.connectionId,
@@ -133,6 +145,7 @@ class NetherNetMode {
 
     if (result == null) {
       _log('Relay returned no answer');
+      _setPhase(discovery, NetherNetPhase.failed);
       return;
     }
 
@@ -145,24 +158,61 @@ class NetherNetMode {
 
     if (!answerSent) {
       _log('Could not send the relay answer to the client');
+      _setPhase(discovery, NetherNetPhase.failed);
       return;
     }
 
-    var candidatesSent = 0;
-    for (final candidate in result.candidates) {
-      final sent = discovery.sendSignal(
-        recipientId: signal.senderId,
-        type: NetherNetProtocol.signalCandidateAdd,
-        connectionId: signal.connectionId,
-        payload: candidate,
-      );
-      if (sent) candidatesSent++;
-    }
+    final candidatesSent = _sendCandidates(
+      discovery,
+      signal,
+      result.candidates,
+    );
+    unawaited(_repeatCandidates(discovery, signal, result.candidates));
 
     _log(
       'Client handed over to the relay (answer ${result.answer.length} bytes, '
       '$candidatesSent/${result.candidates.length} candidates sent)',
     );
+    _setPhase(discovery, NetherNetPhase.connected);
+  }
+
+  void _setPhase(NetherNetDiscovery discovery, NetherNetPhase next) {
+    if (_discovery == discovery) phase.value = next;
+  }
+
+  static const List<Duration> _candidateRepeats = [
+    Duration(milliseconds: 300),
+    Duration(milliseconds: 900),
+  ];
+
+  int _sendCandidates(
+    NetherNetDiscovery discovery,
+    NetherNetSignal signal,
+    List<String> candidates,
+  ) {
+    var sent = 0;
+    for (final candidate in candidates) {
+      final ok = discovery.sendSignal(
+        recipientId: signal.senderId,
+        type: NetherNetProtocol.signalCandidateAdd,
+        connectionId: signal.connectionId,
+        payload: candidate,
+      );
+      if (ok) sent++;
+    }
+    return sent;
+  }
+
+  Future<void> _repeatCandidates(
+    NetherNetDiscovery discovery,
+    NetherNetSignal signal,
+    List<String> candidates,
+  ) async {
+    for (final delay in _candidateRepeats) {
+      await Future<void>.delayed(delay);
+      if (_discovery != discovery) return;
+      _sendCandidates(discovery, signal, candidates);
+    }
   }
 
   Future<void> _forwardCandidate(NetherNetSignal signal) async {
@@ -183,6 +233,7 @@ class NetherNetMode {
     await _discovery?.stop();
     _discovery = null;
     clientSeen.value = false;
+    phase.value = NetherNetPhase.waiting;
   }
 
   void _log(String message) {

@@ -838,30 +838,6 @@
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "তৈরি করুন",
-  "@skinsCreate": {
-    "description": "Button to create/open skin editor"
-  },
-  "skinsDownload": "ডাউনলোড",
-  "@skinsDownload": {
-    "description": "Download button in skin detail sheet"
-  },
-  "skinsEdit": "Edit",
-  "@skinsEdit": {
-    "description": "Edit button in skin detail sheet"
-  },
-  "skinsInvalidFile": "অবৈধ ছবির ফাইল",
-  "@skinsInvalidFile": {
-    "description": "Error when the selected file is not a valid image"
-  },
-  "skinsMustBe64": "স্কিন ৬৪×৬৪ পিক্সেলের হতে হবে",
-  "@skinsMustBe64": {
-    "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsUpload": "আপলোড",
-  "@skinsUpload": {
-    "description": "Button to upload a skin"
-  },
   "somethingWentWrong": "কিছু ভুল হয়েছে। আবার চেষ্টা করুন।",
   "@somethingWentWrong": {
     "description": "Generic error message"
@@ -1000,27 +976,6 @@
   "upgradeWindowsHint": "মাইক্রোসফট স্টোরে আপগ্রেড পাওয়া যাচ্ছে",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "skinSaved": "স্কিন সংরক্ষিত",
-  "@skinSaved": {
-    "description": "Toast when skin is saved"
-  },
-  "skinSavedAs": "\"{name}\" নামে সংরক্ষিত",
-  "@skinSavedAs": {
-    "description": "Toast when skin saved with name",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinExportFailed": "এক্সপোর্ট ব্যর্থ",
-  "@skinExportFailed": {
-    "description": "Toast when skin export fails"
-  },
-  "skinExported": "স্কিন সফলভাবে এক্সপোর্ট হয়েছে",
-  "@skinExported": {
-    "description": "Toast when skin is exported successfully"
   },
   "accountActions": "অ্যাকাউন্ট",
   "@accountActions": {
@@ -1165,10 +1120,7 @@
     }
   },
   "skinsSavedToMySkins": "আমার স্কিনে সংরক্ষিত হয়েছে",
-  "skinsEmptyLocalSkins": "এখনো কোনো স্কিন নেই। শুরু করতে একটি স্কিন তৈরি বা আপলোড করুন।",
-  "skinSaveDialog": "স্কিন সেভ করুন",
-  "skinNameHint": "স্কিনের নাম",
-  "skinDefaultName": "আমার স্কিন",
+  "skinsEmptyLocalSkins": "এখনও কোনো সংরক্ষিত স্কিন নেই।",
   "sectionRecentActivity": "সাম্প্রতিক কার্যক্রম",
   "activityNoEvents": "এখনো কোনো সাম্প্রতিক কার্যক্রম নেই।",
   "activitySkinUploaded": "স্কিন আপলোড করা হয়েছে",
@@ -1256,35 +1208,18 @@
       }
     }
   },
-  "notifPrefSkinLiked": "স্কিন পছন্দ",
   "notifPrefCommentReceived": "মন্তব্য প্রাপ্ত",
   "notifPrefPackApproved": "প্যাক অনুমোদিত",
   "notifPrefPackRejected": "প্যাক প্রত্যাখ্যাত",
   "notifPrefFriendRequest": "বন্ধুত্বের অনুরোধ",
   "notifPrefFriendAccepted": "বন্ধু যোগ করা হয়েছে",
   "notifPrefMessageReceived": "নতুন বার্তা",
-  "skinLayerInner": "অভ্যন্তরীণ",
-  "@skinLayerInner": {
-    "description": "Skin editor layer toggle, inner/base layer"
-  },
-  "skinLayerOuter": "বাহ্যিক",
-  "@skinLayerOuter": {
-    "description": "Skin editor layer toggle, outer/overlay layer"
-  },
   "feedbackLoginRequiredTitle": "মতামত পাঠাতে লগ ইন করুন",
   "feedbackLoginRequiredBody": "মতামত আপনার MCCompanion অ্যাকাউন্টের সাথে যুক্ত, যাতে আমরা অ্যাপের মধ্যেই সরাসরি আপনাকে উত্তর দিতে পারি।",
   "feedbackLoginButton": "লগ ইন",
   "rpBehaviorContentWarning": "এই প্যাকে বিহেভিয়ার প্যাক ডেটা আছে, যা সার্ভারে কাজ করবে না। টেক্সচারগুলো অবশ্য কাজ করবে।",
   "rpInvalidPackFormat": "এটি একটি Java Edition প্যাক এবং সমর্থিত নয়। অনুগ্রহ করে Bedrock Edition রিসোর্স প্যাক ব্যবহার করুন।",
   "supportInboxTitle": "সাপোর্ট ইনবক্স",
-  "skinShareSubject": "Minecraft স্কিন",
-  "skinEditorTitle": "স্কিন এডিটর",
-  "skinToolUndo": "আগের অবস্থায়",
-  "skinSaveToMySkins": "আমার স্কিনে সেভ করুন",
-  "skinExportPng": "PNG এক্সপোর্ট করুন",
-  "skinToolDraw": "আঁকুন",
-  "skinToolFill": "ভরাট",
-  "skinToolErase": "মুছুন",
   "customColour": "নিজের রঙ",
   "featuredServerLabel": "ফিচার্ড সার্ভার",
   "featuredServerTagline": "যোগ দিন আর খেলা শুরু করুন।",
@@ -1335,19 +1270,6 @@
   "chooseServerTitle": "একটি সার্ভার বেছে নিন",
   "changeLabel": "পরিবর্তন",
   "howToAutoShow": "শুরু করার সময় এটি দেখান",
-  "skinEditorLoadFailed": "সেই স্কিনটি লোড করা যায়নি। আমরা ডিফল্ট স্কিন দিয়ে শুরু করছি।",
-  "skinToolRecolour": "রং বদলান",
-  "skinToolPick": "রং নিন",
-  "skinBases": "বেস",
-  "skinBasesTitle": "একটি বেস থেকে শুরু করুন",
-  "skinBasesSubtitle": "এটি বর্তমান ছবিটি প্রতিস্থাপন করবে। আনডু করলে ফিরে আসবে।",
-  "skinMirror": "মিরর",
-  "skinSurprise": "চমক",
-  "skinToolFillHint": "আপনি যে অংশে ট্যাপ করবেন তা ভরে দেয়",
-  "skinToolRecolourHint": "পুরো স্কিনে সেই রং বদলে দেয়",
-  "skinToolPickHint": "আপনি যে রঙে ট্যাপ করবেন তা নেয়",
-  "skinModelClassic": "চওড়া",
-  "skinModelSlim": "সরু",
   "shareServerLabel": "আপনার সার্ভার শেয়ার করুন",
   "shareServerOn": "বন্ধুরা দেখতে পাবে আপনি কোন সার্ভারে আছেন",
   "shareServerOff": "বন্ধুরা দেখবে আপনি খেলছেন, কোথায় নয়",
@@ -1447,5 +1369,8 @@
   "serverVoteOffline": "সার্ভারে পৌঁছানো যায়নি। আপনার সংযোগ পরীক্ষা করুন।",
   "feedbackViewYourReport": "আপনার রিপোর্ট দেখুন",
   "showMore": "আরও",
-  "showLess": "কম"
+  "showLess": "কম",
+  "lookupRecent": "সাম্প্রতিক",
+  "skinsRemovalNotice": "পরবর্তী আপডেটে স্কিন সরিয়ে ফেলা হবে। যেগুলো রাখতে চান সেগুলো এক্সপোর্ট করুন।",
+  "feedbackRpNotice": "রিসোর্স প্যাক নিয়ে করা রিপোর্টের আমরা উত্তর দিই না। কিছু প্যাক এমনিতেই কাজ করে না, আর কিছু সার্ভার কাস্টম প্যাক প্রত্যাখ্যান করে।"
 }

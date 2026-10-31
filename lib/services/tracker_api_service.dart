@@ -22,6 +22,33 @@ class TrackerSlots {
   );
 }
 
+class TrackerHistory {
+  final int observedDays;
+  final int peak;
+  final double average;
+  final int uptime;
+  final List<int> dailyPeaks;
+
+  const TrackerHistory({
+    required this.observedDays,
+    required this.peak,
+    required this.average,
+    required this.uptime,
+    required this.dailyPeaks,
+  });
+
+  factory TrackerHistory.fromJson(Map<String, dynamic> json) => TrackerHistory(
+    observedDays: (json['observedDays'] as num?)?.toInt() ?? 0,
+    peak: (json['peak'] as num?)?.toInt() ?? 0,
+    average: (json['average'] as num?)?.toDouble() ?? 0,
+    uptime: (json['uptime'] as num?)?.toInt() ?? 0,
+    dailyPeaks: [
+      for (final d in (json['daily'] as List<dynamic>? ?? const []))
+        ((d as Map<String, dynamic>)['peak'] as num?)?.toInt() ?? 0,
+    ],
+  );
+}
+
 class TrackerData {
   final List<TrackedServer> servers;
   final TrackerSlots slots;
@@ -123,6 +150,30 @@ class TrackerApiService {
           .timeout(_timeout);
       if (res.statusCode == 200) {
         return TrackedServer.fromJson(
+          jsonDecode(res.body) as Map<String, dynamic>,
+        );
+      }
+      return null;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  static Future<TrackerHistory?> getHistory(
+    String serverId, {
+    int days = 30,
+  }) async {
+    try {
+      final res = await http
+          .get(
+            Uri.parse(
+              '$_base/api/tracker/servers/$serverId/history?days=$days',
+            ),
+            headers: await ApiClientBase.headers(),
+          )
+          .timeout(_timeout);
+      if (res.statusCode == 200) {
+        return TrackerHistory.fromJson(
           jsonDecode(res.body) as Map<String, dynamic>,
         );
       }

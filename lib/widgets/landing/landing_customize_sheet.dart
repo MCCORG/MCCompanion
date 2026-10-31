@@ -6,6 +6,7 @@ import '../../theme/app_tokens.dart';
 import '../../services/home_customization_service.dart';
 import '../../services/theme_service.dart';
 import '../../design/design.dart';
+import '../../layout/bar_inset.dart';
 
 class LandingColorSwatch {
   final Color color;
@@ -252,10 +253,12 @@ class LandingNavEditor extends StatelessWidget {
 class LandingCustomizeSheet extends StatefulWidget {
   final VoidCallback Function(AppFeature) callbackFor;
   final VoidCallback onClose;
+  final bool desktop;
   const LandingCustomizeSheet({
     super.key,
     required this.callbackFor,
     required this.onClose,
+    this.desktop = false,
   });
 
   @override
@@ -521,11 +524,13 @@ class LandingCustomizeSheetState extends State<LandingCustomizeSheet> {
         DsHeader(
           title: l.customizeLabel,
           subtitle: l.customizeSubtitle,
-          leading: DsIconButton(
-            icon: Icons.arrow_back_rounded,
-            size: 36,
-            onPressed: widget.onClose,
-          ),
+          leading: widget.desktop
+              ? null
+              : DsIconButton(
+                  icon: Icons.arrow_back_rounded,
+                  size: 36,
+                  onPressed: widget.onClose,
+                ),
           actions: [
             DsButton(
               label: l.resetLabel,
@@ -538,368 +543,384 @@ class LandingCustomizeSheetState extends State<LandingCustomizeSheet> {
         ),
         Expanded(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(
+            padding: EdgeInsets.fromLTRB(
               DsSpace.gutter,
               0,
               DsSpace.gutter,
-              DsSpace.xxxl,
+              DsSpace.xxxl + BarInset.of(context),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  l.navigationSection,
-                  style: TextStyle(
-                    color: AppTheme.textMuted,
-                    fontSize: 11,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 1.2,
-                  ),
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: widget.desktop ? 720 : double.infinity,
                 ),
-                const SizedBox(height: 4),
-                Text(
-                  l.navFixed,
-                  style: const TextStyle(
-                    color: AppTheme.textDisabled,
-                    fontSize: 12,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                LandingNavEditor(
-                  label: l.outerSlot,
-                  selected: _navOuter,
-                  onChanged: (f) => setState(() => _navOuter = f),
-                ),
-                const SizedBox(height: 10),
-                LandingNavEditor(
-                  label: l.leftSlot,
-                  selected: _navLeft,
-                  onChanged: (f) => setState(() => _navLeft = f),
-                ),
-                const SizedBox(height: 10),
-                LandingNavEditor(
-                  label: l.rightSlot,
-                  selected: _navRight,
-                  onChanged: (f) => setState(() => _navRight = f),
-                ),
-                const SizedBox(height: 10),
-                LandingNavEditor(
-                  label: l.farSlot,
-                  selected: _navFar,
-                  onChanged: (f) => setState(() => _navFar = f),
-                ),
-
-                const SizedBox(height: 20),
-
-                LandingColorPickerSection(
-                  label: l.accentColorSection,
-                  currentColor: _effectiveAccent.withValues(alpha: _opacity),
-                  presets: accentPresets
-                      .map(
-                        (p) => LandingColorSwatch(
-                          color: p.color.withValues(alpha: _opacity),
-                          isSelected:
-                              _customAccent == null && p.id == _accent.id,
-                          onTap: () {
-                            setState(() {
-                              _accent = p;
-                              _customAccent = null;
-                            });
-                            ThemeService.instance.setAccentLive(p);
-                          },
-                        ),
-                      )
-                      .toList(),
-                  onPickCustom: () => _openColorPicker(
-                    current: _effectiveAccent,
-                    title: l.accentColorSection,
-                    onPick: (c) {
-                      setState(() => _customAccent = c);
-                      ThemeService.instance.setCustomAccentLive(c);
-                    },
-                  ),
-                ),
-
-                const SizedBox(height: 14),
-
-                Row(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Flexible(
-                      child: Text(
-                        l.opacityLabel,
+                    if (!widget.desktop) ...[
+                      Text(
+                        l.navigationSection,
                         style: TextStyle(
                           color: AppTheme.textMuted,
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 1.2,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        l.navFixed,
+                        style: const TextStyle(
+                          color: AppTheme.textDisabled,
                           fontSize: 12,
                         ),
                       ),
-                    ),
-                    const Spacer(),
-                    Text(
-                      '${(_opacity * 100).round()}%',
-                      style: TextStyle(
-                        color: _accent.color.withValues(alpha: _opacity),
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
+                      const SizedBox(height: 12),
+                      LandingNavEditor(
+                        label: l.outerSlot,
+                        selected: _navOuter,
+                        onChanged: (f) => setState(() => _navOuter = f),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 4),
-                SliderTheme(
-                  data: SliderThemeData(
-                    trackHeight: 4,
-                    thumbShape: const RoundSliderThumbShape(
-                      enabledThumbRadius: 8,
-                    ),
-                    overlayShape: const RoundSliderOverlayShape(
-                      overlayRadius: 16,
-                    ),
-                    activeTrackColor: _accent.color.withValues(alpha: _opacity),
-                    inactiveTrackColor: AppTheme.borderGray,
-                    thumbColor: _accent.color.withValues(alpha: _opacity),
-                    overlayColor: _accent.color.withValues(alpha: 0.15),
-                  ),
-                  child: Slider(
-                    value: _opacity,
-                    min: 0.3,
-                    max: 1.0,
-                    divisions: 14,
-                    onChanged: (v) {
-                      setState(() => _opacity = v);
-                      ThemeService.instance.setOpacityLive(v);
-                    },
-                  ),
-                ),
-
-                const SizedBox(height: 24),
-
-                LandingColorPickerSection(
-                  label: l.backgroundSection,
-                  currentColor: _effectiveBg,
-                  presets: bgPresets
-                      .map(
-                        (p) => LandingColorSwatch(
-                          color: p.tint,
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [p.tint.withValues(alpha: 0.8), p.base],
-                          ),
-                          isSelected: _customBg == null && p.id == _bg.id,
-                          onTap: () {
-                            setState(() {
-                              _bg = p;
-                              _customBg = null;
-                            });
-                            ThemeService.instance.setBgLive(p);
-                          },
-                        ),
-                      )
-                      .toList(),
-                  onPickCustom: () => _openColorPicker(
-                    current: _effectiveBg,
-                    title: l.backgroundSection,
-                    onPick: (c) {
-                      setState(() => _customBg = c);
-                      ThemeService.instance.setCustomBgLive(c);
-                    },
-                  ),
-                ),
-
-                const SizedBox(height: 24),
-
-                LandingColorPickerSection(
-                  label: l.cardsSection,
-                  currentColor: _effectiveCard.withValues(alpha: _cardOpacity),
-                  presets: cardPresets
-                      .map(
-                        (p) => LandingColorSwatch(
-                          color: p.color.withValues(alpha: _cardOpacity),
-                          isSelected: _customCard == null && p.id == _card.id,
-                          onTap: () {
-                            setState(() {
-                              _card = p;
-                              _customCard = null;
-                            });
-                            ThemeService.instance.setCardLive(p);
-                          },
-                        ),
-                      )
-                      .toList(),
-                  onPickCustom: () => _openColorPicker(
-                    current: _effectiveCard,
-                    title: l.cardsSection,
-                    onPick: (c) {
-                      setState(() => _customCard = c);
-                      ThemeService.instance.setCustomCardLive(c);
-                    },
-                  ),
-                ),
-                const SizedBox(height: 14),
-                Row(
-                  children: [
-                    Flexible(
-                      child: Text(
-                        l.opacityLabel,
-                        style: TextStyle(
-                          color: AppTheme.textMuted,
-                          fontSize: 12,
-                        ),
+                      const SizedBox(height: 10),
+                      LandingNavEditor(
+                        label: l.leftSlot,
+                        selected: _navLeft,
+                        onChanged: (f) => setState(() => _navLeft = f),
                       ),
-                    ),
-                    const Spacer(),
-                    Text(
-                      '${(_cardOpacity * 100).round()}%',
-                      style: TextStyle(
-                        color: _card.color,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
+                      const SizedBox(height: 10),
+                      LandingNavEditor(
+                        label: l.rightSlot,
+                        selected: _navRight,
+                        onChanged: (f) => setState(() => _navRight = f),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 4),
-                SliderTheme(
-                  data: SliderThemeData(
-                    trackHeight: 4,
-                    thumbShape: const RoundSliderThumbShape(
-                      enabledThumbRadius: 8,
-                    ),
-                    overlayShape: const RoundSliderOverlayShape(
-                      overlayRadius: 16,
-                    ),
-                    activeTrackColor: _card.color.withValues(alpha: 0.7),
-                    inactiveTrackColor: AppTheme.borderGray,
-                    thumbColor: _card.color,
-                    overlayColor: _card.color.withValues(alpha: 0.15),
-                  ),
-                  child: Slider(
-                    value: _cardOpacity,
-                    min: 0.1,
-                    max: 1.0,
-                    divisions: 18,
-                    onChanged: (v) {
-                      setState(() => _cardOpacity = v);
-                      ThemeService.instance.setCardOpacityLive(v);
-                    },
-                  ),
-                ),
+                      const SizedBox(height: 10),
+                      LandingNavEditor(
+                        label: l.farSlot,
+                        selected: _navFar,
+                        onChanged: (f) => setState(() => _navFar = f),
+                      ),
 
-                const SizedBox(height: 24),
-
-                Row(
-                  children: [
-                    Text(
-                      l.textColorSection,
-                      style: TextStyle(
-                        color: AppTheme.textMuted,
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 1.2,
+                      const SizedBox(height: 20),
+                    ],
+                    LandingColorPickerSection(
+                      label: l.accentColorSection,
+                      currentColor: _effectiveAccent.withValues(
+                        alpha: _opacity,
                       ),
-                    ),
-                    const Spacer(),
-                    if (_customText != null)
-                      GestureDetector(
-                        onTap: () {
-                          setState(() => _customText = null);
-                          ThemeService.instance.setTextColorLive(null);
-                        },
-                        child: Text(
-                          l.resetLabel,
-                          style: TextStyle(
-                            color: AppTheme.accent,
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                  ],
-                ),
-                const SizedBox(height: 12),
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () => _openColorPicker(
-                        current: _customText ?? const Color(0xFFFFFFFF),
-                        title: l.textColorPickerTitle,
+                      presets: accentPresets
+                          .map(
+                            (p) => LandingColorSwatch(
+                              color: p.color.withValues(alpha: _opacity),
+                              isSelected:
+                                  _customAccent == null && p.id == _accent.id,
+                              onTap: () {
+                                setState(() {
+                                  _accent = p;
+                                  _customAccent = null;
+                                });
+                                ThemeService.instance.setAccentLive(p);
+                              },
+                            ),
+                          )
+                          .toList(),
+                      onPickCustom: () => _openColorPicker(
+                        current: _effectiveAccent,
+                        title: l.accentColorSection,
                         onPick: (c) {
-                          setState(() => _customText = c);
-                          ThemeService.instance.setTextColorLive(c);
+                          setState(() => _customAccent = c);
+                          ThemeService.instance.setCustomAccentLive(c);
                         },
                       ),
-                      child: Container(
-                        width: 44,
-                        height: 44,
-                        decoration: BoxDecoration(
-                          color: _customText ?? const Color(0xFFFFFFFF),
-                          border: Border.all(
-                            color: AppTheme.borderLight,
-                            width: 1.5,
-                          ),
-                        ),
-                        child: const Icon(
-                          Icons.colorize_rounded,
-                          color: Colors.black45,
-                          size: 18,
-                        ),
-                      ),
                     ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            l.textColorHint,
+
+                    const SizedBox(height: 14),
+
+                    Row(
+                      children: [
+                        Flexible(
+                          child: Text(
+                            l.opacityLabel,
                             style: TextStyle(
                               color: AppTheme.textMuted,
                               fontSize: 12,
                             ),
                           ),
-                          if (_customText != null) ...[
-                            const SizedBox(height: 4),
-                            Row(
-                              children: [
-                                Text(
-                                  '${l.textColorPreviewPrimary}  ',
-                                  style: TextStyle(
-                                    color: _customText,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w700,
-                                  ),
+                        ),
+                        const Spacer(),
+                        Text(
+                          '${(_opacity * 100).round()}%',
+                          style: TextStyle(
+                            color: _accent.color.withValues(alpha: _opacity),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                    SliderTheme(
+                      data: SliderThemeData(
+                        trackHeight: 4,
+                        thumbShape: const RoundSliderThumbShape(
+                          enabledThumbRadius: 8,
+                        ),
+                        overlayShape: const RoundSliderOverlayShape(
+                          overlayRadius: 16,
+                        ),
+                        activeTrackColor: _accent.color.withValues(
+                          alpha: _opacity,
+                        ),
+                        inactiveTrackColor: AppTheme.borderGray,
+                        thumbColor: _accent.color.withValues(alpha: _opacity),
+                        overlayColor: _accent.color.withValues(alpha: 0.15),
+                      ),
+                      child: Slider(
+                        value: _opacity,
+                        min: 0.3,
+                        max: 1.0,
+                        divisions: 14,
+                        onChanged: (v) {
+                          setState(() => _opacity = v);
+                          ThemeService.instance.setOpacityLive(v);
+                        },
+                      ),
+                    ),
+
+                    const SizedBox(height: 24),
+
+                    LandingColorPickerSection(
+                      label: l.backgroundSection,
+                      currentColor: _effectiveBg,
+                      presets: bgPresets
+                          .map(
+                            (p) => LandingColorSwatch(
+                              color: p.tint,
+                              gradient: LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                colors: [p.tint.withValues(alpha: 0.8), p.base],
+                              ),
+                              isSelected: _customBg == null && p.id == _bg.id,
+                              onTap: () {
+                                setState(() {
+                                  _bg = p;
+                                  _customBg = null;
+                                });
+                                ThemeService.instance.setBgLive(p);
+                              },
+                            ),
+                          )
+                          .toList(),
+                      onPickCustom: () => _openColorPicker(
+                        current: _effectiveBg,
+                        title: l.backgroundSection,
+                        onPick: (c) {
+                          setState(() => _customBg = c);
+                          ThemeService.instance.setCustomBgLive(c);
+                        },
+                      ),
+                    ),
+
+                    const SizedBox(height: 24),
+
+                    LandingColorPickerSection(
+                      label: l.cardsSection,
+                      currentColor: _effectiveCard.withValues(
+                        alpha: _cardOpacity,
+                      ),
+                      presets: cardPresets
+                          .map(
+                            (p) => LandingColorSwatch(
+                              color: p.color.withValues(alpha: _cardOpacity),
+                              isSelected:
+                                  _customCard == null && p.id == _card.id,
+                              onTap: () {
+                                setState(() {
+                                  _card = p;
+                                  _customCard = null;
+                                });
+                                ThemeService.instance.setCardLive(p);
+                              },
+                            ),
+                          )
+                          .toList(),
+                      onPickCustom: () => _openColorPicker(
+                        current: _effectiveCard,
+                        title: l.cardsSection,
+                        onPick: (c) {
+                          setState(() => _customCard = c);
+                          ThemeService.instance.setCustomCardLive(c);
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: 14),
+                    Row(
+                      children: [
+                        Flexible(
+                          child: Text(
+                            l.opacityLabel,
+                            style: TextStyle(
+                              color: AppTheme.textMuted,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
+                        const Spacer(),
+                        Text(
+                          '${(_cardOpacity * 100).round()}%',
+                          style: TextStyle(
+                            color: _card.color,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                    SliderTheme(
+                      data: SliderThemeData(
+                        trackHeight: 4,
+                        thumbShape: const RoundSliderThumbShape(
+                          enabledThumbRadius: 8,
+                        ),
+                        overlayShape: const RoundSliderOverlayShape(
+                          overlayRadius: 16,
+                        ),
+                        activeTrackColor: _card.color.withValues(alpha: 0.7),
+                        inactiveTrackColor: AppTheme.borderGray,
+                        thumbColor: _card.color,
+                        overlayColor: _card.color.withValues(alpha: 0.15),
+                      ),
+                      child: Slider(
+                        value: _cardOpacity,
+                        min: 0.1,
+                        max: 1.0,
+                        divisions: 18,
+                        onChanged: (v) {
+                          setState(() => _cardOpacity = v);
+                          ThemeService.instance.setCardOpacityLive(v);
+                        },
+                      ),
+                    ),
+
+                    const SizedBox(height: 24),
+
+                    Row(
+                      children: [
+                        Text(
+                          l.textColorSection,
+                          style: TextStyle(
+                            color: AppTheme.textMuted,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.2,
+                          ),
+                        ),
+                        const Spacer(),
+                        if (_customText != null)
+                          GestureDetector(
+                            onTap: () {
+                              setState(() => _customText = null);
+                              ThemeService.instance.setTextColorLive(null);
+                            },
+                            child: Text(
+                              l.resetLabel,
+                              style: TextStyle(
+                                color: AppTheme.accent,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () => _openColorPicker(
+                            current: _customText ?? const Color(0xFFFFFFFF),
+                            title: l.textColorPickerTitle,
+                            onPick: (c) {
+                              setState(() => _customText = c);
+                              ThemeService.instance.setTextColorLive(c);
+                            },
+                          ),
+                          child: Container(
+                            width: 44,
+                            height: 44,
+                            decoration: BoxDecoration(
+                              color: _customText ?? const Color(0xFFFFFFFF),
+                              border: Border.all(
+                                color: AppTheme.borderLight,
+                                width: 1.5,
+                              ),
+                            ),
+                            child: const Icon(
+                              Icons.colorize_rounded,
+                              color: Colors.black45,
+                              size: 18,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                l.textColorHint,
+                                style: TextStyle(
+                                  color: AppTheme.textMuted,
+                                  fontSize: 12,
                                 ),
-                                Text(
-                                  '${l.textColorPreviewSecondary}  ',
-                                  style: TextStyle(
-                                    color: Color.lerp(
-                                      _customText!,
-                                      Colors.black,
-                                      0.12,
-                                    )!,
-                                    fontSize: 12,
-                                  ),
-                                ),
-                                Text(
-                                  l.textColorPreviewMuted,
-                                  style: TextStyle(
-                                    color: Color.lerp(
-                                      _customText!,
-                                      Colors.black,
-                                      0.30,
-                                    )!,
-                                    fontSize: 12,
-                                  ),
+                              ),
+                              if (_customText != null) ...[
+                                const SizedBox(height: 4),
+                                Row(
+                                  children: [
+                                    Text(
+                                      '${l.textColorPreviewPrimary}  ',
+                                      style: TextStyle(
+                                        color: _customText,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                    Text(
+                                      '${l.textColorPreviewSecondary}  ',
+                                      style: TextStyle(
+                                        color: Color.lerp(
+                                          _customText!,
+                                          Colors.black,
+                                          0.12,
+                                        )!,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                    Text(
+                                      l.textColorPreviewMuted,
+                                      style: TextStyle(
+                                        color: Color.lerp(
+                                          _customText!,
+                                          Colors.black,
+                                          0.30,
+                                        )!,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
-                            ),
-                          ],
-                        ],
-                      ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
           ),
         ),

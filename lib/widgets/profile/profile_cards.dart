@@ -540,7 +540,6 @@ class ProfileNotificationPrefsCard extends StatefulWidget {
 class _ProfileNotificationPrefsCardState
     extends State<ProfileNotificationPrefsCard> {
   static const _typeKeys = [
-    ('skin_liked', Icons.favorite_rounded),
     ('comment_received', Icons.comment_rounded),
     ('pack_approved', Icons.check_circle_rounded),
     ('pack_rejected', Icons.cancel_rounded),
@@ -551,8 +550,6 @@ class _ProfileNotificationPrefsCardState
 
   String _prefLabel(String key, AppLocalizations l) {
     switch (key) {
-      case 'skin_liked':
-        return l.notifPrefSkinLiked;
       case 'comment_received':
         return l.notifPrefCommentReceived;
       case 'pack_approved':

@@ -1,1 +1,113 @@
-{}
+{
+  "ar": [
+    "consoleConnecting",
+    "consoleHandedOver",
+    "consoleHandedOverHint",
+    "consoleConnectFailed",
+    "consoleConnectFailedHint"
+  ],
+
+  "bn": [
+    "consoleConnecting",
+    "consoleHandedOver",
+    "consoleHandedOverHint",
+    "consoleConnectFailed",
+    "consoleConnectFailedHint"
+  ],
+
+  "de": [
+    "consoleConnecting",
+    "consoleHandedOver",
+    "consoleHandedOverHint",
+    "consoleConnectFailed",
+    "consoleConnectFailedHint"
+  ],
+
+  "es": [
+    "consoleConnecting",
+    "consoleHandedOver",
+    "consoleHandedOverHint",
+    "consoleConnectFailed",
+    "consoleConnectFailedHint"
+  ],
+
+  "fr": [
+    "consoleConnecting",
+    "consoleHandedOver",
+    "consoleHandedOverHint",
+    "consoleConnectFailed",
+    "consoleConnectFailedHint"
+  ],
+
+  "hi": [
+    "consoleConnecting",
+    "consoleHandedOver",
+    "consoleHandedOverHint",
+    "consoleConnectFailed",
+    "consoleConnectFailedHint"
+  ],
+
+  "id": [
+    "consoleConnecting",
+    "consoleHandedOver",
+    "consoleHandedOverHint",
+    "consoleConnectFailed",
+    "consoleConnectFailedHint"
+  ],
+
+  "ja": [
+    "consoleConnecting",
+    "consoleHandedOver",
+    "consoleHandedOverHint",
+    "consoleConnectFailed",
+    "consoleConnectFailedHint"
+  ],
+
+  "pt": [
+    "consoleConnecting",
+    "consoleHandedOver",
+    "consoleHandedOverHint",
+    "consoleConnectFailed",
+    "consoleConnectFailedHint"
+  ],
+
+  "ru": [
+    "consoleConnecting",
+    "consoleHandedOver",
+    "consoleHandedOverHint",
+    "consoleConnectFailed",
+    "consoleConnectFailedHint"
+  ],
+
+  "sw": [
+    "consoleConnecting",
+    "consoleHandedOver",
+    "consoleHandedOverHint",
+    "consoleConnectFailed",
+    "consoleConnectFailedHint"
+  ],
+
+  "tr": [
+    "consoleConnecting",
+    "consoleHandedOver",
+    "consoleHandedOverHint",
+    "consoleConnectFailed",
+    "consoleConnectFailedHint"
+  ],
+
+  "ur": [
+    "consoleConnecting",
+    "consoleHandedOver",
+    "consoleHandedOverHint",
+    "consoleConnectFailed",
+    "consoleConnectFailedHint"
+  ],
+
+  "zh": [
+    "consoleConnecting",
+    "consoleHandedOver",
+    "consoleHandedOverHint",
+    "consoleConnectFailed",
+    "consoleConnectFailedHint"
+  ]
+}

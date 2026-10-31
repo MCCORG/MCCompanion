@@ -767,24 +767,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get requestsAppearHere => 'ستظهر طلبات الصداقة الجديدة هنا.';
 
   @override
-  String get skinsEdit => 'Edit';
-
-  @override
-  String get skinsMustBe64 => 'يجب أن يكون حجم السكن 64×64 بكسل';
-
-  @override
-  String get skinsInvalidFile => 'ملف صورة غير صالح';
-
-  @override
-  String get skinsUpload => 'رفع';
-
-  @override
-  String get skinsCreate => 'إنشاء';
-
-  @override
-  String get skinsDownload => 'تنزيل';
-
-  @override
   String get chooseUniqueUsername => 'اختر اسم مستخدم فريداً للبدء.';
 
   @override
@@ -1168,20 +1150,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => 'الترقية متاحة عبر متجر Microsoft';
-
-  @override
-  String get skinSaved => 'تم حفظ السكن';
-
-  @override
-  String skinSavedAs(String name) {
-    return 'حفظ باسم \"$name\"';
-  }
-
-  @override
-  String get skinExportFailed => 'فشل التصدير';
-
-  @override
-  String get skinExported => 'تم تصدير السكن بنجاح';
 
   @override
   String get accountActions => 'الحساب';
@@ -1599,17 +1567,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get skinsSavedToMySkins => 'تم الحفظ في سكناتي';
 
   @override
-  String get skinsEmptyLocalSkins =>
-      'لا توجد سكنات بعد. أنشئ أو ارفع سكناً للبدء.';
-
-  @override
-  String get skinSaveDialog => 'حفظ السكن';
-
-  @override
-  String get skinNameHint => 'اسم السكن';
-
-  @override
-  String get skinDefaultName => 'سكني';
+  String get skinsEmptyLocalSkins => 'لا توجد سكنات محفوظة بعد.';
 
   @override
   String get sectionRecentActivity => 'النشاط الأخير';
@@ -1703,9 +1661,6 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => 'إعجاب بالسكن';
-
-  @override
   String get notifPrefCommentReceived => 'تعليق مستلم';
 
   @override
@@ -1724,12 +1679,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notifPrefMessageReceived => 'رسالة جديدة';
 
   @override
-  String get skinLayerInner => 'داخلي';
-
-  @override
-  String get skinLayerOuter => 'خارجي';
-
-  @override
   String get feedbackLoginRequiredTitle => 'سجّل الدخول لإرسال الملاحظات';
 
   @override
@@ -1741,30 +1690,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get supportInboxTitle => 'بريد الدعم';
-
-  @override
-  String get skinShareSubject => 'سكين Minecraft';
-
-  @override
-  String get skinEditorTitle => 'محرر السكين';
-
-  @override
-  String get skinToolUndo => 'تراجع';
-
-  @override
-  String get skinSaveToMySkins => 'حفظ في سكيناتي';
-
-  @override
-  String get skinExportPng => 'تصدير PNG';
-
-  @override
-  String get skinToolDraw => 'رسم';
-
-  @override
-  String get skinToolFill => 'تعبئة';
-
-  @override
-  String get skinToolErase => 'مسح';
 
   @override
   String get customColour => 'لون مخصص';
@@ -1930,46 +1855,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get howToAutoShow => 'أظهر هذا عند البدء';
 
   @override
-  String get skinEditorLoadFailed =>
-      'تعذّر تحميل هذا الشكل. سنبدأ بالشكل الافتراضي.';
-
-  @override
-  String get skinToolRecolour => 'تغيير اللون';
-
-  @override
-  String get skinToolPick => 'القطارة';
-
-  @override
-  String get skinBases => 'قوالب';
-
-  @override
-  String get skinBasesTitle => 'ابدأ من قالب';
-
-  @override
-  String get skinBasesSubtitle => 'سيحل هذا محل الرسم الحالي. التراجع يعيده.';
-
-  @override
-  String get skinMirror => 'مرآة';
-
-  @override
-  String get skinSurprise => 'فاجئني';
-
-  @override
-  String get skinToolFillHint => 'يملأ المنطقة التي تلمسها';
-
-  @override
-  String get skinToolRecolourHint => 'يغيّر ذلك اللون في كامل الشكل';
-
-  @override
-  String get skinToolPickHint => 'يأخذ اللون الذي تلمسه';
-
-  @override
-  String get skinModelClassic => 'عريض';
-
-  @override
-  String get skinModelSlim => 'نحيف';
-
-  @override
   String get shareServerLabel => 'مشاركة خادمك';
 
   @override
@@ -1996,6 +1881,23 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get consoleLanHint =>
       'على جهاز الألعاب، افتح Minecraft وابحث ضمن الأصدقاء عن لعبة LAN.';
+
+  @override
+  String get consoleConnecting => 'Connecting your console…';
+
+  @override
+  String get consoleHandedOver => 'Joining through the relay';
+
+  @override
+  String get consoleHandedOverHint =>
+      'Your console should switch to your server in a few seconds. Nothing happening? Try joining again.';
+
+  @override
+  String get consoleConnectFailed => 'Could not reach the relay';
+
+  @override
+  String get consoleConnectFailedHint =>
+      'Check your connection, then try joining again.';
 
   @override
   String get localNetworkBlocked =>
@@ -2183,4 +2085,15 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get showLess => 'أقل';
+
+  @override
+  String get lookupRecent => 'الأخيرة';
+
+  @override
+  String get skinsRemovalNotice =>
+      'ستتم إزالة السكنات في التحديث القادم. صدّر السكنات التي تريد الاحتفاظ بها.';
+
+  @override
+  String get feedbackRpNotice =>
+      'لا نرد على البلاغات المتعلقة بحزم الموارد. بعض الحزم لا تعمل ببساطة، وبعض الخوادم ترفض الحزم المخصصة.';
 }

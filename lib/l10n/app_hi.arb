@@ -838,30 +838,6 @@
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "बनाएँ",
-  "@skinsCreate": {
-    "description": "Button to create/open skin editor"
-  },
-  "skinsDownload": "डाउनलोड करें",
-  "@skinsDownload": {
-    "description": "Download button in skin detail sheet"
-  },
-  "skinsEdit": "Edit",
-  "@skinsEdit": {
-    "description": "Edit button in skin detail sheet"
-  },
-  "skinsInvalidFile": "अमान्य इमेज फ़ाइल",
-  "@skinsInvalidFile": {
-    "description": "Error when the selected file is not a valid image"
-  },
-  "skinsMustBe64": "स्किन 64×64 पिक्सेल की होनी चाहिए",
-  "@skinsMustBe64": {
-    "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsUpload": "अपलोड करें",
-  "@skinsUpload": {
-    "description": "Button to upload a skin"
-  },
   "somethingWentWrong": "कुछ गड़बड़ हो गई। कृपया फिर से प्रयास करें।",
   "@somethingWentWrong": {
     "description": "Generic error message"
@@ -1000,27 +976,6 @@
   "upgradeWindowsHint": "Microsoft Store पर अपग्रेड उपलब्ध है",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "skinSaved": "स्किन सेव हुई",
-  "@skinSaved": {
-    "description": "Toast when skin is saved"
-  },
-  "skinSavedAs": "\"{name}\" के रूप में सेव",
-  "@skinSavedAs": {
-    "description": "Toast when skin saved with name",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinExportFailed": "निर्यात विफल",
-  "@skinExportFailed": {
-    "description": "Toast when skin export fails"
-  },
-  "skinExported": "स्किन सफलतापूर्वक निर्यात हुई",
-  "@skinExported": {
-    "description": "Toast when skin is exported successfully"
   },
   "accountActions": "खाता",
   "@accountActions": {
@@ -1165,10 +1120,7 @@
     }
   },
   "skinsSavedToMySkins": "मेरे स्किन्स में सहेजा गया",
-  "skinsEmptyLocalSkins": "अभी तक कोई स्किन नहीं। शुरू करने के लिए एक स्किन बनाएँ या अपलोड करें।",
-  "skinSaveDialog": "स्किन सहेजें",
-  "skinNameHint": "स्किन का नाम",
-  "skinDefaultName": "मेरी स्किन",
+  "skinsEmptyLocalSkins": "अभी तक कोई सहेजी गई स्किन नहीं है।",
   "sectionRecentActivity": "हालिया गतिविधि",
   "activityNoEvents": "अभी तक कोई हालिया गतिविधि नहीं।",
   "activitySkinUploaded": "स्किन अपलोड की",
@@ -1256,35 +1208,18 @@
       }
     }
   },
-  "notifPrefSkinLiked": "स्किन पसंद की",
   "notifPrefCommentReceived": "टिप्पणी मिली",
   "notifPrefPackApproved": "पैक स्वीकृत",
   "notifPrefPackRejected": "पैक अस्वीकृत",
   "notifPrefFriendRequest": "मित्र अनुरोध",
   "notifPrefFriendAccepted": "मित्र जोड़ा गया",
   "notifPrefMessageReceived": "नया संदेश",
-  "skinLayerInner": "आंतरिक",
-  "@skinLayerInner": {
-    "description": "Skin editor layer toggle, inner/base layer"
-  },
-  "skinLayerOuter": "बाहरी",
-  "@skinLayerOuter": {
-    "description": "Skin editor layer toggle, outer/overlay layer"
-  },
   "feedbackLoginRequiredTitle": "प्रतिक्रिया भेजने के लिए लॉग इन करें",
   "feedbackLoginRequiredBody": "प्रतिक्रिया आपके MCCompanion खाते से जुड़ी होती है ताकि हम ऐप में सीधे आपको जवाब दे सकें।",
   "feedbackLoginButton": "लॉग इन",
   "rpBehaviorContentWarning": "इस पैक में बिहेवियर पैक डेटा है, जो सर्वर पर काम नहीं करेगा। टेक्सचर फिर भी काम करेंगे।",
   "rpInvalidPackFormat": "यह Java Edition पैक है और समर्थित नहीं है। कृपया Bedrock Edition रिसोर्स पैक इस्तेमाल करें।",
   "supportInboxTitle": "सपोर्ट इनबॉक्स",
-  "skinShareSubject": "Minecraft स्किन",
-  "skinEditorTitle": "स्किन एडिटर",
-  "skinToolUndo": "पहले जैसा करें",
-  "skinSaveToMySkins": "मेरी स्किन में सेव करें",
-  "skinExportPng": "PNG एक्सपोर्ट करें",
-  "skinToolDraw": "बनाएं",
-  "skinToolFill": "भरें",
-  "skinToolErase": "मिटाएं",
   "customColour": "कस्टम रंग",
   "featuredServerLabel": "फ़ीचर्ड सर्वर",
   "featuredServerTagline": "जुड़िए और खेलना शुरू कीजिए।",
@@ -1335,19 +1270,6 @@
   "chooseServerTitle": "सर्वर चुनें",
   "changeLabel": "बदलें",
   "howToAutoShow": "शुरू करते समय यह दिखाएं",
-  "skinEditorLoadFailed": "वह स्किन लोड नहीं हो सकी। हम डिफ़ॉल्ट स्किन से शुरू कर रहे हैं।",
-  "skinToolRecolour": "रंग बदलें",
-  "skinToolPick": "रंग चुनें",
-  "skinBases": "बेस",
-  "skinBasesTitle": "एक बेस से शुरू करें",
-  "skinBasesSubtitle": "यह मौजूदा चित्र बदल देगा। पूर्ववत करने पर वापस आ जाएगा।",
-  "skinMirror": "मिरर",
-  "skinSurprise": "सरप्राइज़",
-  "skinToolFillHint": "आप जिस हिस्से को छूते हैं उसे भरता है",
-  "skinToolRecolourHint": "पूरी स्किन में वह रंग बदलता है",
-  "skinToolPickHint": "आप जिस रंग को छूते हैं वह ले लेता है",
-  "skinModelClassic": "चौड़ा",
-  "skinModelSlim": "पतला",
   "shareServerLabel": "अपना सर्वर साझा करें",
   "shareServerOn": "दोस्त देख सकते हैं कि आप किस सर्वर पर हैं",
   "shareServerOff": "दोस्त देखते हैं कि आप खेल रहे हैं, कहाँ नहीं",
@@ -1447,5 +1369,8 @@
   "serverVoteOffline": "सर्वर से संपर्क नहीं हो सका। अपना कनेक्शन जाँचें।",
   "feedbackViewYourReport": "अपनी रिपोर्ट देखें",
   "showMore": "और",
-  "showLess": "कम"
+  "showLess": "कम",
+  "lookupRecent": "हाल के",
+  "skinsRemovalNotice": "अगले अपडेट में स्किन हटा दी जाएँगी। जिन्हें रखना चाहते हैं उन्हें एक्सपोर्ट करें।",
+  "feedbackRpNotice": "हम रिसोर्स पैक से जुड़ी रिपोर्ट का जवाब नहीं देते। कुछ पैक बस काम नहीं करते, और कुछ सर्वर कस्टम पैक अस्वीकार कर देते हैं।"
 }

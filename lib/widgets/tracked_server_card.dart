@@ -11,12 +11,18 @@ class TrackedServerCard extends StatefulWidget {
   final TrackedServer server;
   final VoidCallback onDelete;
   final void Function(TrackedServer updated) onUpdated;
+  final bool row;
+  final bool selected;
+  final VoidCallback? onTap;
 
   const TrackedServerCard({
     super.key,
     required this.server,
     required this.onDelete,
     required this.onUpdated,
+    this.row = false,
+    this.selected = false,
+    this.onTap,
   });
 
   @override
@@ -130,6 +136,162 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
     return l.daysAgo(diff.inDays);
   }
 
+  Widget _notifControl(TrackedServer s) => _togglingNotif
+      ? const SizedBox(
+          width: 36,
+          height: 36,
+          child: Center(
+            child: SizedBox(
+              width: 16,
+              height: 16,
+              child: CircularProgressIndicator(strokeWidth: 2),
+            ),
+          ),
+        )
+      : DsIconButton(
+          icon: s.notificationsEnabled
+              ? Icons.notifications_active_rounded
+              : Icons.notifications_off_outlined,
+          size: 36,
+          color: s.notificationsEnabled ? DsColor.accent : DsColor.textFaint,
+          onPressed: _toggleNotifications,
+        );
+
+  Widget _buildRow(AppLocalizations l, TrackedServer s, String meta) {
+    final color = _statusColor;
+    final isJava = s.platform == 'java';
+    final hasPlayers = s.players != null && s.maxPlayers != null;
+    final fraction = hasPlayers
+        ? (s.players! / s.maxPlayers!).clamp(0.0, 1.0)
+        : 0.0;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: DsSpace.xs),
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: widget.onTap,
+        child: Container(
+          decoration: BoxDecoration(
+            color: widget.selected
+                ? DsColor.accent.withValues(alpha: 0.10)
+                : DsColor.surface,
+            borderRadius: DsRadius.cardR,
+            border: Border.all(
+              color: widget.selected ? DsColor.accent : DsColor.line,
+            ),
+          ),
+          padding: const EdgeInsets.symmetric(
+            horizontal: DsSpace.lg,
+            vertical: DsSpace.md,
+          ),
+          child: Row(
+            children: [
+              Container(
+                width: 36,
+                height: 36,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: color.withValues(alpha: 0.14),
+                  borderRadius: BorderRadius.circular(DsRadius.control - 2),
+                ),
+                child: Icon(
+                  isJava
+                      ? Icons.computer_rounded
+                      : Icons.sports_esports_rounded,
+                  color: color,
+                  size: 17,
+                ),
+              ),
+              const SizedBox(width: DsSpace.md),
+              Expanded(
+                flex: 3,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      s.name,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: DsType.bodyStrong,
+                    ),
+                    Text(
+                      '${s.ip}:${s.port}',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: DsType.caption,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: 120,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: DsBadge(
+                    label: _statusLabel(context),
+                    color: color,
+                    dot: true,
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: hasPlayers
+                    ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text('${s.players}', style: DsType.bodyStrong),
+                              Text(' / ${s.maxPlayers}', style: DsType.caption),
+                            ],
+                          ),
+                          const SizedBox(height: DsSpace.xs),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(3),
+                            child: LinearProgressIndicator(
+                              value: fraction,
+                              backgroundColor: DsColor.inset,
+                              valueColor: AlwaysStoppedAnimation(color),
+                              minHeight: 4,
+                            ),
+                          ),
+                        ],
+                      )
+                    : const SizedBox.shrink(),
+              ),
+              const SizedBox(width: DsSpace.lg),
+              Expanded(
+                flex: 3,
+                child: Text(
+                  meta,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: DsType.caption,
+                ),
+              ),
+              SizedBox(
+                width: 100,
+                child: Text(
+                  s.lastCheckedAt != null ? _checkedLabel(l) : '',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: DsType.caption,
+                ),
+              ),
+              _notifControl(s),
+              const SizedBox(width: DsSpace.sm - 2),
+              DsIconButton(
+                icon: Icons.more_horiz_rounded,
+                size: 36,
+                onPressed: _openMoreMenu,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
@@ -146,6 +308,8 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
       if (s.version != null) s.version!,
       if (s.gameMode != null) s.gameMode!,
     ].join('  ·  ');
+
+    if (widget.row) return _buildRow(l, s, meta);
 
     return Padding(
       padding: const EdgeInsets.only(bottom: DsSpace.sm),
@@ -241,28 +405,7 @@ class _TrackedServerCardState extends State<TrackedServerCard> {
                   ),
                 ),
                 const SizedBox(width: DsSpace.md),
-                _togglingNotif
-                    ? const SizedBox(
-                        width: 36,
-                        height: 36,
-                        child: Center(
-                          child: SizedBox(
-                            width: 16,
-                            height: 16,
-                            child: CircularProgressIndicator(strokeWidth: 2),
-                          ),
-                        ),
-                      )
-                    : DsIconButton(
-                        icon: s.notificationsEnabled
-                            ? Icons.notifications_active_rounded
-                            : Icons.notifications_off_outlined,
-                        size: 36,
-                        color: s.notificationsEnabled
-                            ? DsColor.accent
-                            : DsColor.textFaint,
-                        onPressed: _toggleNotifications,
-                      ),
+                _notifControl(s),
                 const SizedBox(width: DsSpace.sm - 2),
                 DsIconButton(
                   icon: Icons.more_horiz_rounded,

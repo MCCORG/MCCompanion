@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'ds_hover.dart';
 import 'ds_tokens.dart';
 
 enum DsButtonTone { accent, neutral, quiet, danger }
@@ -110,17 +111,21 @@ class DsButton extends StatelessWidget {
         child: InkWell(
           onTap: enabled ? onPressed : null,
           borderRadius: DsRadius.controlR,
-          child: AnimatedContainer(
-            duration: DsDuration.fast,
-            height: _height,
-            padding: const EdgeInsets.symmetric(horizontal: DsSpace.lg),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: background,
-              borderRadius: DsRadius.controlR,
-              border: border,
+          child: DsHover(
+            enabled: enabled,
+            borderRadius: DsRadius.controlR,
+            child: AnimatedContainer(
+              duration: DsDuration.fast,
+              height: _height,
+              padding: const EdgeInsets.symmetric(horizontal: DsSpace.lg),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: background,
+                borderRadius: DsRadius.controlR,
+                border: border,
+              ),
+              child: child,
             ),
-            child: child,
           ),
         ),
       ),
@@ -152,19 +157,25 @@ class DsIconButton extends StatelessWidget {
       child: InkWell(
         onTap: onPressed,
         borderRadius: DsRadius.controlR,
-        child: Container(
-          width: size,
-          height: size,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: DsColor.surfaceQuiet,
-            borderRadius: DsRadius.controlR,
-            border: Border.all(color: DsColor.line),
-          ),
-          child: Icon(
-            icon,
-            size: size * 0.45,
-            color: enabled ? (color ?? DsColor.textSoft) : DsColor.textDisabled,
+        child: DsHover(
+          enabled: enabled,
+          borderRadius: DsRadius.controlR,
+          child: Container(
+            width: size,
+            height: size,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: DsColor.surfaceQuiet,
+              borderRadius: DsRadius.controlR,
+              border: Border.all(color: DsColor.line),
+            ),
+            child: Icon(
+              icon,
+              size: size * 0.45,
+              color: enabled
+                  ? (color ?? DsColor.textSoft)
+                  : DsColor.textDisabled,
+            ),
           ),
         ),
       ),
