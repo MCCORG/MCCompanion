@@ -545,6 +545,12 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver {
 
   List<ClientSection> _clientFooter(AppLocalizations loc) => [
     ClientSection(
+      id: 'relay',
+      icon: Icons.settings_ethernet_rounded,
+      label: loc.relay,
+      onTap: _showMoreSheet,
+    ),
+    ClientSection(
       id: 'customize',
       icon: Icons.tune_rounded,
       label: loc.customizeLabel,
