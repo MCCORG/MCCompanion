@@ -16,7 +16,7 @@ import '../../widgets/featured_server_banner.dart';
 import '../../design/design.dart';
 import 'link_panel.dart';
 
-enum PanelMode { lan, nintendo, friends }
+enum PanelMode { lan, friends }
 
 class _ModeConfig {
   final PanelMode mode;
@@ -44,8 +44,8 @@ class ConnectionPanel extends StatefulWidget {
     required this.onResourcePack,
     required this.selectedRelayIp,
     required this.onRelayChanged,
-    required this.nintendoDnsMode,
-    required this.onNintendoDnsModeChanged,
+    required this.friendsMode,
+    required this.onFriendsModeChanged,
     required this.navigationController,
     required this.partnerServersFuture,
     required this.onOpenPartnerServers,
@@ -74,8 +74,8 @@ class ConnectionPanel extends StatefulWidget {
   final VoidCallback onResourcePack;
   final String? selectedRelayIp;
   final void Function(String?) onRelayChanged;
-  final bool nintendoDnsMode;
-  final ValueChanged<bool> onNintendoDnsModeChanged;
+  final bool friendsMode;
+  final ValueChanged<bool> onFriendsModeChanged;
   final NavigationController navigationController;
   final Future<List<FeaturedServer>>? partnerServersFuture;
   final VoidCallback onOpenPartnerServers;
@@ -110,11 +110,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
       color: AppTheme.modeXbox,
     ),
     _ModeConfig(
-      mode: PanelMode.nintendo,
-      icon: FontAwesomeIcons.gamepad,
-      color: AppTheme.modeNintendo,
-    ),
-    _ModeConfig(
       mode: PanelMode.friends,
       icon: FontAwesomeIcons.userGroup,
       color: AppTheme.modeFriends,
@@ -124,7 +119,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
   @override
   void initState() {
     super.initState();
-    _mode = widget.nintendoDnsMode ? PanelMode.nintendo : PanelMode.lan;
+    _mode = widget.friendsMode ? PanelMode.friends : PanelMode.lan;
     unawaited(_restoreMode());
     _broadcasting = widget.broadcastingNotifier.value;
 
@@ -142,17 +137,13 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     );
     if (mode == _mode) return;
     setState(() => _mode = mode);
-    widget.onNintendoDnsModeChanged(
-      mode == PanelMode.nintendo || mode == PanelMode.friends,
-    );
+    widget.onFriendsModeChanged(mode == PanelMode.friends);
   }
 
   void _applyMode(PanelMode mode) {
     setState(() => _mode = mode);
     unawaited(ConnectorPrefs.saveMode(mode.name));
-    widget.onNintendoDnsModeChanged(
-      mode == PanelMode.nintendo || mode == PanelMode.friends,
-    );
+    widget.onFriendsModeChanged(mode == PanelMode.friends);
   }
 
   void _onBroadcastingChanged() {
@@ -191,7 +182,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     switch (_mode) {
       case PanelMode.lan:
         await HowToDialogs.showXboxInstructions(context);
-      case PanelMode.nintendo:
       case PanelMode.friends:
         break;
     }
@@ -199,7 +189,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
 
   String _modeLabel(PanelMode mode, AppLocalizations loc) => switch (mode) {
     PanelMode.lan => loc.labelXbox,
-    PanelMode.nintendo => loc.labelNintendo,
     PanelMode.friends => loc.labelFriends,
   };
 
@@ -292,13 +281,11 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
   String _modeDescription(PanelMode mode, AppLocalizations loc) =>
       switch (mode) {
         PanelMode.lan => loc.howToXboxSubtitle,
-        PanelMode.nintendo => loc.howToNintendoSubtitle,
         PanelMode.friends => loc.howToFriendsSubtitle,
       };
 
   IconData _modeIcon(PanelMode mode) => switch (mode) {
     PanelMode.lan => Icons.sports_esports_rounded,
-    PanelMode.nintendo => Icons.videogame_asset_rounded,
     PanelMode.friends => Icons.group_rounded,
   };
 
@@ -692,7 +679,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
         ? loc.stopBroadcasting
         : switch (_mode) {
             PanelMode.lan => loc.startBroadcasting,
-            PanelMode.nintendo => loc.startNintendoMode,
             PanelMode.friends => loc.startFriendsMode,
           };
 

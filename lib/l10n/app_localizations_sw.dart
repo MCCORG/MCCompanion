@@ -182,11 +182,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get iUnderstand => 'Nimeelewa';
 
   @override
-  String playInstructionsSwitch(Object relayName, Object relayIp) {
-    return 'Imechaguliwa: $relayName\r\n\r\nJinsi ya kuunganika:\r\n1. Nenda kwenye Mipangilio ya Switch yako na ubadilishe DNS kuwa: $relayIp\r\n2. Fungua Minecraft na uchague seva kutoka kwenye orodha (kama Cubecraft au Hive).\r\n3. Sasa utapelekwa moja kwa moja kwenye seva yako mwenyewe.';
-  }
-
-  @override
   String get noSavedServers => 'Hakuna seva zilizohifadhiwa';
 
   @override
@@ -222,9 +217,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get stopBroadcasting => 'Simamisha Utangazaji';
 
   @override
-  String get startNintendoMode => 'Anza Hali ya Nintendo';
-
-  @override
   String get startFriendsMode => 'Anza Hali ya Marafiki';
 
   @override
@@ -232,9 +224,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get labelXbox => 'Xbox/PS4-5';
-
-  @override
-  String get labelNintendo => 'Nintendo';
 
   @override
   String get labelFriends => 'Marafiki';
@@ -248,12 +237,6 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get howToXboxBody =>
       'Jinsi ya kuunganika (Xbox / PS4 / PS5):\r\n1. Hakikisha kifaa chako kinachoendesha MCCompanion na konsoli yako viko kwenye mtandao mmoja wa ndani.\r\n2. Kwenye programu, weka anwani na port ya seva yako ya Minecraft kisha bonyeza \"Anza Kutangaza\".\r\n3. Kwenye konsoli, fungua Minecraft → Play → tafuta LAN Worlds au kichupo cha Friends kisha sasisha orodha.\r\n4. Chagua seva ya LAN iitwayo \"MCCompanion\" ili kujiunga.\r\nVidokezo:\r\n- Ikiwa seva haionekani, hakikisha vifaa vyote viko kwenye subnet moja na programu bado inatangaza.\r\n- Baadhi ya miundo ya konsoli au router inaweza kuzuia ugunduzi wa LAN; jaribu kubadili mipangilio ya programu au router ikihitajika.';
-
-  @override
-  String get howToNintendoTitle => 'Nintendo Switch (hali ya DNS)';
-
-  @override
-  String get howToNintendoSubtitle => 'Unganisha kupitia DNS';
 
   @override
   String get howToFriendsTitle => 'Hali ya Marafiki';
@@ -283,16 +266,6 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get helpMultiplayerFailedBody =>
       '⚠️ Hili si tatizo la MCCompanion!\r\n\r\nMCCompanion ilikuelekeza kwa mafanikio kwenye seva iliyoombwa. Ujumbe wa \"Multiplayer Connection Failed\" unaonyesha kuwa seva lengwa haipatikani kwa sasa. Sababu zinazowezekana:\r\n\r\n• Seva lengwa ya Minecraft iko nje ya mtandao au imeelemewa\r\n• Seva inahitaji toleo la mteja lililosasishwa au toleo maalum\r\n• Matatizo ya mtandao kati ya relay na seva lengwa\r\n\r\nJaribu kuunganika kwenye seva tofauti au wasiliana na msaada wa seva husika. Tatizo likiendelea kwenye seva nyingi, washa hali ya utatuzi kwenye MCCompanion na uangalie kumbukumbu.';
-
-  @override
-  String get helpNintendoDnsTitle => 'DNS ya Nintendo haifanyi kazi';
-
-  @override
-  String get helpNintendoDnsSubtitle => 'Matatizo ya kawaida ya DNS / relay';
-
-  @override
-  String get helpNintendoDnsBody =>
-      'Ikiwa hali ya DNS ya Nintendo haifanyi kazi, angalia yafuatayo:\r\n\r\n1. Thibitisha kuwa umetuma usanidi wa DNS kutoka kwenye programu (Send DNS Config).\r\n2. Thibitisha kuwa umetumia relay IP kama DNS Kuu kwenye Switch.\r\n3. Hakikisha seva ya relay iliyochaguliwa (EU/US) iko mtandaoni na haijaelemewa.\r\n4. Baadhi ya mitandao (kwa mfano captive portals) huzuia DNS maalum, jaribu kwenye mtandao tofauti.\r\n\r\nTatizo likiendelea, washa hali ya utatuzi na uangalie kumbukumbu au ujaribu mbadala wa hali ya Marafiki.';
 
   @override
   String get helpFriendsModeTitle => 'Hali ya Marafiki haifanyi kazi';

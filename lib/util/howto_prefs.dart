@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-enum HowToTopic { xbox, nintendo, friends }
+enum HowToTopic { xbox, friends }
 
 class HowToPrefs {
   static const _prefix = 'howto_auto_show_';

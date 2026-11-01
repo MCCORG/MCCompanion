@@ -24,23 +24,6 @@ class HowToDialogs {
     );
   }
 
-  static Future<void> showNintendoInstructions(
-    BuildContext context, {
-    String? relayName,
-    String? relayIp,
-  }) {
-    final loc = AppLocalizations.of(context)!;
-    return _showSheet(
-      context,
-      topic: HowToTopic.nintendo,
-      icon: FontAwesomeIcons.gamepad,
-      color: AppTheme.modeNintendo,
-      title: loc.howToNintendoTitle,
-      subtitle: loc.howToNintendoSubtitle,
-      body: loc.playInstructionsSwitch(relayName ?? '-', relayIp ?? '-'),
-    );
-  }
-
   static Future<void> showFriendsInstructions(
     BuildContext context, {
     String? userRegion,

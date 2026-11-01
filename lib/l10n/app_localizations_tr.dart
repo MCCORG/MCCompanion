@@ -183,11 +183,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get iUnderstand => 'Anlıyorum';
 
   @override
-  String playInstructionsSwitch(Object relayName, Object relayIp) {
-    return 'Seçilen: $relayName\n\nBağlanma Adımları:\n1. Switch Ayarlarına gidin ve DNS’inizi bu ip ile değiştirin: $relayIp\n2. Minecraft’ı açın ve listeden bir sunucu seçin (örneğin Cubecraft veya Hive).\n3. Artık otomatik olarak kendi sunucunuza yönlendirileceksiniz.';
-  }
-
-  @override
   String get noSavedServers => 'Kaydedilen sunucu yok';
 
   @override
@@ -223,9 +218,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get stopBroadcasting => 'Yayını Durdur';
 
   @override
-  String get startNintendoMode => 'Nintendo Modunu başlat';
-
-  @override
   String get startFriendsMode => 'Arkadaş Modunu başlat';
 
   @override
@@ -233,9 +225,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get labelXbox => 'Xbox/PS4-5';
-
-  @override
-  String get labelNintendo => 'Nintendo';
 
   @override
   String get labelFriends => 'Arkadaşlar';
@@ -249,12 +238,6 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get howToXboxBody =>
       'Xbox / PS4 / PS5 için bağlanma adımları:\n1. MCCompanion çalıştıran cihazınızın ve konsolunuzun aynı yerel ağda olduğundan emin olun.\n2. Uygulamada Minecraft sunucu adresinizi ve portunuzu girin, ardından \"Yayına Başla\" düğmesine basın.\n3. Konsolda Minecraft → Oyna bölümünü açın, LAN Dünyaları veya Arkadaşlar sekmesini bulun ve listeyi yenileyin.\n4. Katılmak için \"MCCompanion\" adlı LAN sunucusunu seçin.\nNotlar:\n- Sunucu görünmüyorsa, iki cihazın da aynı alt ağda olduğunu ve uygulamanın hâlâ yayın yaptığını doğrulayın.\n- Bazı konsol modelleri veya yönlendiriciler LAN keşfini engelleyebilir; gerekirse uygulama ya da yönlendirici ayarlarını değiştirerek tekrar deneyin.';
-
-  @override
-  String get howToNintendoTitle => 'Nintendo Switch (DNS modu)';
-
-  @override
-  String get howToNintendoSubtitle => 'DNS ile bağlan';
 
   @override
   String get howToFriendsTitle => 'Arkadaş modu';
@@ -282,16 +265,6 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get helpMultiplayerFailedBody =>
       '⚠️ Bu, MCCompanion ile ilgili bir sorun değildir!\n\nMCCompanion sizi istenen sunucuya başarıyla yönlendirdi. \"Çok Oyunculu Bağlantı Başarısız\" mesajı, hedef sunucunun şu anda erişilemez olduğunu gösterir. Olası nedenler:\n\n• Hedef Minecraft sunucusu çevrimdışı veya aşırı yüklü olabilir\n• Sunucu güncel bir istemci sürümü ya da belirli bir sürüm gerektiriyor olabilir\n• Aktarıcı ile hedef sunucu arasında ağ sorunları olabilir\n\nFarklı bir sunucuya bağlanmayı deneyin veya sunucunun destek ekibiyle iletişime geçin. Sorun birden fazla sunucuda sürerse, MCCompanion\'te Hata Ayıklama Modunu etkinleştirip kayıtları kontrol edin.';
-
-  @override
-  String get helpNintendoDnsTitle => 'Nintendo DNS çalışmıyor';
-
-  @override
-  String get helpNintendoDnsSubtitle => 'Yaygın DNS / aktarıcı sorunları';
-
-  @override
-  String get helpNintendoDnsBody =>
-      'Nintendo DNS modu çalışmıyorsa aşağıdakileri kontrol edin:\n\n1. Uygulamadan DNS yapılandırmasını gönderdiğinizi doğrulayın (DNS Yapılandırmasını Gönder).\n2. Aktarıcı IP adresini Switch\'te Birincil DNS olarak uyguladığınızı doğrulayın.\n3. Seçilen aktarıcı sunucusunun (EU/US) çevrimiçi ve aşırı yük altında olmadığından emin olun.\n4. Bazı ağlar (örneğin captive portal kullanılan ağlar) özel DNS kullanımını engeller; farklı bir ağda test edin.\n\nSorun devam ederse Hata Ayıklama Modunu etkinleştirip kayıtları kontrol edin veya Arkadaş modu alternatifini deneyin.';
 
   @override
   String get helpFriendsModeTitle => 'Arkadaş modu çalışmıyor';

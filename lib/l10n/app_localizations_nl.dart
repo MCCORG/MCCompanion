@@ -184,11 +184,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get iUnderstand => 'Ik begrijp het';
 
   @override
-  String playInstructionsSwitch(Object relayName, Object relayIp) {
-    return 'Geselecteerd: $relayName\n\nHoe te verbinden:\n1. Ga naar uw Switch Instellingen en wijzig de DNS naar: $relayIp\n2. Open Minecraft en selecteer een server uit de lijst (zoals Cubecraft of Hive).\n3. Je wordt nu automatisch naar je eigen server verzonden.';
-  }
-
-  @override
   String get noSavedServers => 'Geen opgeslagen servers';
 
   @override
@@ -224,38 +219,26 @@ class AppLocalizationsNl extends AppLocalizations {
   String get stopBroadcasting => 'Uitzenden stoppen';
 
   @override
-  String get startNintendoMode => 'Nintendo Modus starten';
-
-  @override
   String get startFriendsMode => 'Start vrienden modus';
 
   @override
   String get startBroadcasting => 'Uitzending starten';
 
   @override
-  String get labelXbox => 'Xbox/PS4-5';
-
-  @override
-  String get labelNintendo => 'Nintendo';
+  String get labelXbox => 'Broadcast';
 
   @override
   String get labelFriends => 'Vrienden';
 
   @override
-  String get howToXboxTitle => 'Xbox / PS4-5 (LAN / proxyverbinding)';
+  String get howToXboxTitle => 'Broadcast (Xbox, PlayStation, Switch)';
 
   @override
   String get howToXboxSubtitle => 'Verbind via LAN';
 
   @override
   String get howToXboxBody =>
-      'Hoe verbinding te maken (Xbox / PS4 / PS5):\n1. Zorg ervoor dat MCCompanion en jouw console op hetzelfde lokale netwerk zitten.\n2. Voer in de app uw Minecraft serveradres en poort in en druk op \"Uitzending Starten\".\n3. In de console open Minecraft → Play → zoek naar LAN werelden of het tabblad Vrienden en ververs de lijst.\n4. Selecteer de LAN-server genaamd \"MCCompanion\" om toe te treden.\nnotities:\n- Als de server niet verschijnt, bevestig dan dat beide apparaten op hetzelfde subnet staan en dat de app nog steeds wordt uitgezonden.\n- Sommige console modellen of routers kunnen LAN ontdekking blokkeren; probeer indien nodig de app of router aan te zetten.';
-
-  @override
-  String get howToNintendoTitle => 'Nintendo Switch (DNS-modus)';
-
-  @override
-  String get howToNintendoSubtitle => 'Verbind via DNS';
+      'Hoe verbinden (Xbox / PlayStation / Nintendo Switch):\n1. Zorg dat het apparaat met MCCompanion en je console op hetzelfde lokale netwerk zitten.\n2. Vul in de app het adres en de poort van je Minecraft-server in en druk op \"Uitzending starten\".\n3. Open op de console Minecraft → Spelen → tabblad Vrienden (of LAN-werelden) en ververs de lijst.\n4. Kies de LAN-server \"MCCompanion\" om te joinen.\nOpmerkingen:\n- Dit werkt hetzelfde op Xbox, PlayStation en Nintendo Switch. Je hoeft geen DNS aan te passen.\n- Verschijnt de server niet, controleer dan of beide apparaten op hetzelfde netwerk zitten en de app nog uitzendt.\n- Sommige routers blokkeren LAN-detectie; probeer een ander netwerk of pas je routerinstellingen aan.';
 
   @override
   String get howToFriendsTitle => 'Vrienden modus';
@@ -268,7 +251,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get helpMCCompanionSubtitle =>
-      'Problemen met het oplossen van LAN ontdekking';
+      'Problemen met broadcast en LAN-detectie oplossen';
 
   @override
   String get helpMCCompanionBody =>
@@ -284,17 +267,6 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get helpMultiplayerFailedBody =>
       '⚠️ Dit is geen probleem met MCCompanion!\n\nMCCompanion heeft je met succes doorgestuurd naar de server. Het bericht \"Multiplayer Verbinding Mislukt\" geeft aan dat de doelserver op dit moment niet bereikbaar is. Mogelijke redenen:\n\n• De doel Minecraft-server is offline of overgeladen\n• De server vereist een bijgewerkte clientversie of specifieke editie\n• Netwerkproblemen tussen het relais en de doelserver\n\nProbeer verbinding te maken met een andere server of neem contact op met de ondersteuning van de server. Als het probleem aanhoudt voor meerdere servers, schakel dan Debug Mode in MCCompanion in en controleer de logs.';
-
-  @override
-  String get helpNintendoDnsTitle => 'Nintendo DNS werkt niet';
-
-  @override
-  String get helpNintendoDnsSubtitle =>
-      'Voorkomende problemen met DNS / Relay (placeholder)';
-
-  @override
-  String get helpNintendoDnsBody =>
-      'Als Nintendo DNS modus niet werkt, controleer dan het volgende:\n\n1. Bevestig dat je DNS-configuratie hebt gestuurd (Send DNS Config).\n2. Controleer of u het relais-IP als primaire DNS heeft toegepast op de Switch.\n3. Zorg ervoor dat de relaisserver (EU/US) online is en niet overbelast.\n4. Sommige netwerken (bijv. captive portals) voorkomen aangepaste DNS, test op een ander netwerk.\n\nAls problemen aanhouden, schakel dan Debug Mode in en bekijk de logs of probeer het alternatief Vriends-modus.';
 
   @override
   String get helpFriendsModeTitle => 'Vrienden modus werkt niet';

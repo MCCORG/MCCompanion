@@ -38,7 +38,6 @@ class AppTheme {
   static const Color javaBlue = Color(0xFF1565C0);
 
   static const Color modeXbox = Color(0xFF22C55E);
-  static const Color modeNintendo = Color(0xFFEF4444);
   static const Color modeFriends = Color(0xFF8B5CF6);
 
   static ThemeData get darkTheme {

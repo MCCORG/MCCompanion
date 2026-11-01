@@ -180,11 +180,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get iUnderstand => 'أنا أفهم';
 
   @override
-  String playInstructionsSwitch(Object relayName, Object relayIp) {
-    return 'المحدد: $relayName\r\n\r\nكيفية الاتصال:\r\n1. انتقل إلى إعدادات Switch الخاصة بك وغيّر DNS إلى: $relayIp\r\n2. افتح Minecraft واختر خادمًا من القائمة (مثل Cubecraft أو Hive).\r\n3. سيتم الآن توجيهك تلقائيًا إلى خادمك الخاص.';
-  }
-
-  @override
   String get noSavedServers => 'لا توجد خوادم محفوظة';
 
   @override
@@ -220,9 +215,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get stopBroadcasting => 'إيقاف البث';
 
   @override
-  String get startNintendoMode => 'بدء وضع Nintendo';
-
-  @override
   String get startFriendsMode => 'بدء وضع الأصدقاء';
 
   @override
@@ -230,9 +222,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get labelXbox => 'Xbox/PS4-5';
-
-  @override
-  String get labelNintendo => 'Nintendo';
 
   @override
   String get labelFriends => 'الأصدقاء';
@@ -246,12 +235,6 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get howToXboxBody =>
       'كيفية الاتصال (Xbox / PS4 / PS5):\r\n1. تأكد من أن الجهاز الذي يشغّل MCCompanion ووحدة التحكم الخاصة بك على نفس الشبكة المحلية.\r\n2. في التطبيق، أدخل عنوان خادم Minecraft والمنفذ ثم اضغط على \\\"بدء البث\\\".\r\n3. على وحدة التحكم افتح Minecraft → لعب → وابحث عن عوالم الشبكة المحلية أو تبويب الأصدقاء ثم حدّث القائمة.\r\n4. اختر خادم الشبكة المحلية المسمى \\\"MCCompanion\\\" للانضمام.\r\nملاحظات:\r\n- إذا لم يظهر الخادم، فتأكد من أن الجهازين على نفس الشبكة الفرعية وأن التطبيق ما يزال يبث.\r\n- قد تمنع بعض طرازات وحدات التحكم أو أجهزة التوجيه اكتشاف الشبكة المحلية؛ جرّب تغيير إعدادات التطبيق أو جهاز التوجيه عند الحاجة.';
-
-  @override
-  String get howToNintendoTitle => 'Nintendo Switch (وضع DNS)';
-
-  @override
-  String get howToNintendoSubtitle => 'الاتصال عبر DNS';
 
   @override
   String get howToFriendsTitle => 'وضع الأصدقاء';
@@ -280,16 +263,6 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get helpMultiplayerFailedBody =>
       '⚠️ هذه ليست مشكلة في MCCompanion!\r\n\r\nلقد قام MCCompanion بإعادتك بنجاح إلى الخادم المطلوب. تشير رسالة \\\"فشل اتصال اللعب الجماعي\\\" إلى أن الخادم الهدف غير متاح حاليًا. الأسباب المحتملة:\r\n\r\n• خادم Minecraft الهدف غير متصل أو مثقل بالتحميل\r\n• يتطلب الخادم إصدار عميل محدثًا أو إصدارًا معينًا\r\n• توجد مشكلات في الشبكة بين Relay والخادم الهدف\r\n\r\nحاول الاتصال بخادم مختلف أو تواصل مع دعم الخادم. إذا استمرت المشكلة على عدة خوادم، فعّل وضع التصحيح في MCCompanion وافحص السجلات.';
-
-  @override
-  String get helpNintendoDnsTitle => 'DNS الخاص بـ Nintendo لا يعمل';
-
-  @override
-  String get helpNintendoDnsSubtitle => 'مشكلات DNS / خادم الترحيل الشائعة';
-
-  @override
-  String get helpNintendoDnsBody =>
-      'إذا لم يعمل وضع DNS الخاص بـ Nintendo، فتحقق مما يلي:\r\n\r\n1. تأكد من أنك أرسلت إعداد DNS من التطبيق (إرسال إعداد DNS).\r\n2. تحقق من أنك طبّقت عنوان IP الخاص بخادم الترحيل كـ DNS أساسي على Switch.\r\n3. تأكد من أن خادم الترحيل المحدد (EU/US) متصل وغير مثقل بالتحميل.\r\n4. بعض الشبكات (مثل البوابات المقيدة) تمنع DNS المخصص, جرّب على شبكة مختلفة.\r\n\r\nإذا استمرت المشكلات، فعّل وضع التصحيح وافحص السجلات أو جرّب البديل وهو وضع الأصدقاء.';
 
   @override
   String get helpFriendsModeTitle => 'وضع الأصدقاء لا يعمل';

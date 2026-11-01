@@ -115,23 +115,13 @@
     "description": "Shown when debug logging is enabled/disabled"
   },
   "iUnderstand": "Entiendo",
-  "playInstructionsSwitch": "Seleccionado: {relayName}\r\n\r\nCómo conectarte:\r\n1. Ve a la configuración de tu Switch y cambia el DNS a: {relayIp}\r\n2. Abre Minecraft y selecciona un servidor de la lista (como Cubecraft o Hive).\r\n3. Ahora serás enviado automáticamente a tu propio servidor.",
-  "@playInstructionsSwitch": {
-    "description": "DNS instructions shown for Nintendo Switch mode",
-    "placeholders": {
-      "relayName": {},
-      "relayIp": {}
-    }
-  },
   "noSavedServers": "No hay servidores guardados",
   "savedServers": "Servidores guardados",
   "manageServers": "Administrar servidores",
   "stopBroadcasting": "Detener transmisión",
-  "startNintendoMode": "Iniciar modo Nintendo",
   "startFriendsMode": "Iniciar modo Amigos",
   "startBroadcasting": "Iniciar transmisión",
   "labelXbox": "Xbox/PS4-5",
-  "labelNintendo": "Nintendo",
   "labelFriends": "Amigos",
   "howToXboxTitle": "Xbox / PS4-5 (LAN / conexión proxy)",
   "@howToXboxTitle": {
@@ -144,14 +134,6 @@
   "howToXboxBody": "Cómo conectarte (Xbox / PS4 / PS5):\r\n1. Asegúrate de que el dispositivo que ejecuta MCCompanion y tu consola estén en la misma red local.\r\n2. En la aplicación, introduce la dirección y el puerto de tu servidor de Minecraft y pulsa \\\"Iniciar transmisión\\\".\r\n3. En la consola, abre Minecraft → Jugar → busca Mundos LAN o la pestaña Amigos y actualiza la lista.\r\n4. Selecciona el servidor LAN llamado \\\"MCCompanion\\\" para unirte.\r\nNotas:\r\n- Si el servidor no aparece, confirma que ambos dispositivos están en la misma subred y que la aplicación sigue transmitiendo.\r\n- Algunos modelos de consola o routers pueden bloquear el descubrimiento LAN; prueba cambiando la aplicación o la configuración del router si es necesario.",
   "@howToXboxBody": {
     "description": "Detailed steps for Xbox/PS4-5 how-to modal"
-  },
-  "howToNintendoTitle": "Nintendo Switch (modo DNS)",
-  "@howToNintendoTitle": {
-    "description": "Title for the Nintendo how-to modal"
-  },
-  "howToNintendoSubtitle": "Conecta por DNS",
-  "@howToNintendoSubtitle": {
-    "description": "Short subtitle for Nintendo menu tile"
   },
   "howToFriendsTitle": "Modo Amigos",
   "@howToFriendsTitle": {
@@ -184,18 +166,6 @@
   "helpMultiplayerFailedBody": "⚠️ ¡Esto no es un problema de MCCompanion!\r\n\r\nMCCompanion te redirigió correctamente al servidor solicitado. El mensaje \\\"Conexión multijugador fallida\\\" indica que el servidor de destino no está disponible en este momento. Posibles razones:\r\n\r\n• El servidor de Minecraft de destino está desconectado o sobrecargado\r\n• El servidor requiere una versión actualizada del cliente o una edición específica\r\n• Problemas de red entre el relay y el servidor de destino\r\n\r\nIntenta conectarte a otro servidor o contacta con el soporte del servidor. Si el problema persiste en varios servidores, activa el modo de depuración en MCCompanion y revisa los registros.",
   "@helpMultiplayerFailedBody": {
     "description": "Explanation shown when multiplayer connection failed appears"
-  },
-  "helpNintendoDnsTitle": "El DNS de Nintendo no funciona",
-  "@helpNintendoDnsTitle": {
-    "description": "Title for Nintendo DNS troubleshooting"
-  },
-  "helpNintendoDnsSubtitle": "Problemas comunes de DNS / relay",
-  "@helpNintendoDnsSubtitle": {
-    "description": "Short subtitle for Nintendo DNS troubleshooting tile"
-  },
-  "helpNintendoDnsBody": "Si el modo DNS de Nintendo no funciona, revisa lo siguiente:\r\n\r\n1. Confirma que enviaste la configuración DNS desde la aplicación (Enviar configuración DNS).\r\n2. Verifica que aplicaste la IP del relay como DNS primario en la Switch.\r\n3. Asegúrate de que el servidor relay seleccionado (EU/US) esté en línea y no sobrecargado.\r\n4. Algunas redes (por ejemplo, portales cautivos) impiden el uso de DNS personalizado, prueba en otra red.\r\n\r\nSi los problemas persisten, activa el modo de depuración y revisa los registros o prueba la alternativa del modo Amigos.",
-  "@helpNintendoDnsBody": {
-    "description": "Detailed placeholder for Nintendo DNS troubleshooting"
   },
   "helpFriendsModeTitle": "El modo Amigos no funciona",
   "@helpFriendsModeTitle": {

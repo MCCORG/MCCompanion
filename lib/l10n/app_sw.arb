@@ -115,23 +115,13 @@
     "description": "Shown when debug logging is enabled/disabled"
   },
   "iUnderstand": "Nimeelewa",
-  "playInstructionsSwitch": "Imechaguliwa: {relayName}\r\n\r\nJinsi ya kuunganika:\r\n1. Nenda kwenye Mipangilio ya Switch yako na ubadilishe DNS kuwa: {relayIp}\r\n2. Fungua Minecraft na uchague seva kutoka kwenye orodha (kama Cubecraft au Hive).\r\n3. Sasa utapelekwa moja kwa moja kwenye seva yako mwenyewe.",
-  "@playInstructionsSwitch": {
-    "description": "DNS instructions shown for Nintendo Switch mode",
-    "placeholders": {
-      "relayName": {},
-      "relayIp": {}
-    }
-  },
   "noSavedServers": "Hakuna seva zilizohifadhiwa",
   "savedServers": "Seva zilizohifadhiwa",
   "manageServers": "Dhibiti seva",
   "stopBroadcasting": "Simamisha Utangazaji",
-  "startNintendoMode": "Anza Hali ya Nintendo",
   "startFriendsMode": "Anza Hali ya Marafiki",
   "startBroadcasting": "Anza Kutangaza",
   "labelXbox": "Xbox/PS4-5",
-  "labelNintendo": "Nintendo",
   "labelFriends": "Marafiki",
   "howToXboxTitle": "Xbox / PS4-5 (LAN / proksi)",
   "@howToXboxTitle": {
@@ -144,14 +134,6 @@
   "howToXboxBody": "Jinsi ya kuunganika (Xbox / PS4 / PS5):\r\n1. Hakikisha kifaa chako kinachoendesha MCCompanion na konsoli yako viko kwenye mtandao mmoja wa ndani.\r\n2. Kwenye programu, weka anwani na port ya seva yako ya Minecraft kisha bonyeza \"Anza Kutangaza\".\r\n3. Kwenye konsoli, fungua Minecraft → Play → tafuta LAN Worlds au kichupo cha Friends kisha sasisha orodha.\r\n4. Chagua seva ya LAN iitwayo \"MCCompanion\" ili kujiunga.\r\nVidokezo:\r\n- Ikiwa seva haionekani, hakikisha vifaa vyote viko kwenye subnet moja na programu bado inatangaza.\r\n- Baadhi ya miundo ya konsoli au router inaweza kuzuia ugunduzi wa LAN; jaribu kubadili mipangilio ya programu au router ikihitajika.",
   "@howToXboxBody": {
     "description": "Detailed steps for Xbox/PS4-5 how-to modal"
-  },
-  "howToNintendoTitle": "Nintendo Switch (hali ya DNS)",
-  "@howToNintendoTitle": {
-    "description": "Title for the Nintendo how-to modal"
-  },
-  "howToNintendoSubtitle": "Unganisha kupitia DNS",
-  "@howToNintendoSubtitle": {
-    "description": "Short subtitle for Nintendo menu tile"
   },
   "howToFriendsTitle": "Hali ya Marafiki",
   "@howToFriendsTitle": {
@@ -184,18 +166,6 @@
   "helpMultiplayerFailedBody": "⚠️ Hili si tatizo la MCCompanion!\r\n\r\nMCCompanion ilikuelekeza kwa mafanikio kwenye seva iliyoombwa. Ujumbe wa \"Multiplayer Connection Failed\" unaonyesha kuwa seva lengwa haipatikani kwa sasa. Sababu zinazowezekana:\r\n\r\n• Seva lengwa ya Minecraft iko nje ya mtandao au imeelemewa\r\n• Seva inahitaji toleo la mteja lililosasishwa au toleo maalum\r\n• Matatizo ya mtandao kati ya relay na seva lengwa\r\n\r\nJaribu kuunganika kwenye seva tofauti au wasiliana na msaada wa seva husika. Tatizo likiendelea kwenye seva nyingi, washa hali ya utatuzi kwenye MCCompanion na uangalie kumbukumbu.",
   "@helpMultiplayerFailedBody": {
     "description": "Explanation shown when multiplayer connection failed appears"
-  },
-  "helpNintendoDnsTitle": "DNS ya Nintendo haifanyi kazi",
-  "@helpNintendoDnsTitle": {
-    "description": "Title for Nintendo DNS troubleshooting"
-  },
-  "helpNintendoDnsSubtitle": "Matatizo ya kawaida ya DNS / relay",
-  "@helpNintendoDnsSubtitle": {
-    "description": "Short subtitle for Nintendo DNS troubleshooting tile"
-  },
-  "helpNintendoDnsBody": "Ikiwa hali ya DNS ya Nintendo haifanyi kazi, angalia yafuatayo:\r\n\r\n1. Thibitisha kuwa umetuma usanidi wa DNS kutoka kwenye programu (Send DNS Config).\r\n2. Thibitisha kuwa umetumia relay IP kama DNS Kuu kwenye Switch.\r\n3. Hakikisha seva ya relay iliyochaguliwa (EU/US) iko mtandaoni na haijaelemewa.\r\n4. Baadhi ya mitandao (kwa mfano captive portals) huzuia DNS maalum, jaribu kwenye mtandao tofauti.\r\n\r\nTatizo likiendelea, washa hali ya utatuzi na uangalie kumbukumbu au ujaribu mbadala wa hali ya Marafiki.",
-  "@helpNintendoDnsBody": {
-    "description": "Detailed placeholder for Nintendo DNS troubleshooting"
   },
   "helpFriendsModeTitle": "Hali ya Marafiki haifanyi kazi",
   "@helpFriendsModeTitle": {

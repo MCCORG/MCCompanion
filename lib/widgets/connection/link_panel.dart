@@ -160,10 +160,10 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
             icon: Icons.dns_rounded,
             title:
                 selected?.name ??
-                (hasAddress ? widget.selectedAddress : widget.chooseLabel),
-            subtitle: hasAddress
-                ? '${widget.selectedAddress}:${widget.selectedPort ?? 19132}'
-                : null,
+                (hasAddress
+                    ? '${widget.selectedAddress}:${widget.selectedPort ?? 19132}'
+                    : widget.chooseLabel),
+            subtitle: null,
             topRail: true,
             bottomRail: false,
             active: active,
@@ -392,7 +392,12 @@ class _LinkPanelState<T> extends State<LinkPanel<T>>
                     children: [
                       Text(label, style: DsType.caption),
                       const SizedBox(height: DsSpace.xxs),
-                      Text(title, style: DsType.bodyStrong),
+                      Text(
+                        title,
+                        style: DsType.bodyStrong,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                       if (subtitle != null) ...[
                         const SizedBox(height: DsSpace.xxs),
                         Text(subtitle, style: DsType.caption),

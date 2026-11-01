@@ -184,11 +184,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get iUnderstand => 'Я понимаю';
 
   @override
-  String playInstructionsSwitch(Object relayName, Object relayIp) {
-    return 'Выбрано: $relayName\r\n\r\nКак подключиться:\r\n1. Перейдите в настройки вашей Switch и измените DNS на: $relayIp\r\n2. Откройте Minecraft и выберите сервер из списка (например, Cubecraft или Hive).\r\n3. Теперь вы будете автоматически отправлены на свой собственный сервер.';
-  }
-
-  @override
   String get noSavedServers => 'Нет сохраненных серверов';
 
   @override
@@ -224,9 +219,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get stopBroadcasting => 'Остановить трансляцию';
 
   @override
-  String get startNintendoMode => 'Запустить режим Nintendo';
-
-  @override
   String get startFriendsMode => 'Запустить режим друзей';
 
   @override
@@ -234,9 +226,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get labelXbox => 'Xbox/PS4-5';
-
-  @override
-  String get labelNintendo => 'Nintendo';
 
   @override
   String get labelFriends => 'Друзья';
@@ -250,12 +239,6 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get howToXboxBody =>
       'Как подключиться (Xbox / PS4 / PS5):\r\n1. Убедитесь, что устройство с MCCompanion и ваша консоль находятся в одной локальной сети.\r\n2. В приложении введите адрес и порт вашего сервера Minecraft и нажмите \\\"Начать трансляцию\\\".\r\n3. На консоли откройте Minecraft → Play → найдите LAN Worlds или вкладку Friends и обновите список.\r\n4. Выберите LAN-сервер с именем \\\"MCCompanion\\\", чтобы подключиться.\r\nПримечания:\r\n- Если сервер не появляется, убедитесь, что оба устройства находятся в одной подсети и приложение все еще ведет трансляцию.\r\n- Некоторые модели консолей или роутеров могут блокировать обнаружение LAN; при необходимости попробуйте изменить настройки приложения или роутера.';
-
-  @override
-  String get howToNintendoTitle => 'Nintendo Switch (режим DNS)';
-
-  @override
-  String get howToNintendoSubtitle => 'Подключение по DNS';
 
   @override
   String get howToFriendsTitle => 'Режим друзей';
@@ -284,16 +267,6 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get helpMultiplayerFailedBody =>
       '⚠️ Это не проблема MCCompanion!\r\n\r\nMCCompanion успешно перенаправил вас на запрошенный сервер. Сообщение \\\"Сбой многопользовательского подключения\\\" означает, что целевой сервер в данный момент недоступен. Возможные причины:\r\n\r\n• Целевой сервер Minecraft отключен или перегружен\r\n• Сервер требует обновленную версию клиента или определенное издание\r\n• Проблемы сети между relay и целевым сервером\r\n\r\nПопробуйте подключиться к другому серверу или обратитесь в поддержку сервера. Если проблема сохраняется на нескольких серверах, включите Debug Mode в MCCompanion и проверьте журналы.';
-
-  @override
-  String get helpNintendoDnsTitle => 'Nintendo DNS не работает';
-
-  @override
-  String get helpNintendoDnsSubtitle => 'Частые проблемы DNS / relay';
-
-  @override
-  String get helpNintendoDnsBody =>
-      'Если режим Nintendo DNS не работает, проверьте следующее:\r\n\r\n1. Убедитесь, что вы отправили DNS config из приложения (Send DNS Config).\r\n2. Убедитесь, что вы применили relay IP как Primary DNS на Switch.\r\n3. Убедитесь, что выбранный relay server (EU/US) находится в сети и не перегружен.\r\n4. Некоторые сети (например, captive portals) не позволяют использовать пользовательский DNS, протестируйте в другой сети.\r\n\r\nЕсли проблемы сохраняются, включите Debug Mode и проверьте журналы или попробуйте альтернативу Friends-mode.';
 
   @override
   String get helpFriendsModeTitle => 'Режим друзей не работает';

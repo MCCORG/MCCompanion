@@ -44,14 +44,6 @@ List<SupportTopic> supportTopics(AppLocalizations l) => [
     body: l.helpMultiplayerFailedBody,
   ),
   SupportTopic(
-    icon: FontAwesomeIcons.gamepad,
-    rowIcon: Icons.videogame_asset_rounded,
-    color: AppTheme.modeNintendo,
-    title: l.helpNintendoDnsTitle,
-    subtitle: l.helpNintendoDnsSubtitle,
-    body: l.helpNintendoDnsBody,
-  ),
-  SupportTopic(
     icon: FontAwesomeIcons.userGroup,
     rowIcon: Icons.group_rounded,
     color: AppTheme.modeFriends,

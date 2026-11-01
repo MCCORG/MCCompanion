@@ -180,11 +180,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get iUnderstand => '理解しました';
 
   @override
-  String playInstructionsSwitch(Object relayName, Object relayIp) {
-    return '選択中: $relayName\r\n\r\n接続方法:\r\n1. Switch の設定を開き、DNS を次に変更します: $relayIp\r\n2. Minecraft を開き、リストからサーバーを選択します（Cubecraft や Hive など）。\r\n3. これで自動的に自分のサーバーへ送られます。';
-  }
-
-  @override
   String get noSavedServers => '保存されたサーバーはありません';
 
   @override
@@ -220,9 +215,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get stopBroadcasting => 'ブロードキャスト停止';
 
   @override
-  String get startNintendoMode => 'Nintendo モード開始';
-
-  @override
   String get startFriendsMode => 'Friends モード開始';
 
   @override
@@ -230,9 +222,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get labelXbox => 'Xbox/PS4-5';
-
-  @override
-  String get labelNintendo => 'Nintendo';
 
   @override
   String get labelFriends => '友達';
@@ -246,12 +235,6 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get howToXboxBody =>
       '接続方法（Xbox / PS4 / PS5）:\r\n1. MCCompanion を実行しているデバイスとコンソールが同じローカルネットワーク上にあることを確認してください。\r\n2. アプリで Minecraft サーバーのアドレスとポートを入力し、\"ブロードキャスト開始\" を押します。\r\n3. コンソールで Minecraft → Play を開き、LAN Worlds または Friends タブを探してリストを更新します。\r\n4. \"MCCompanion\" という名前の LAN サーバーを選択して参加します。\r\nメモ:\r\n- サーバーが表示されない場合は、両方のデバイスが同じサブネット上にあり、アプリがまだブロードキャスト中であることを確認してください。\r\n- 一部のコンソールやルーターでは LAN 検出がブロックされる場合があります。必要に応じてアプリやルーターの設定を切り替えてみてください。';
-
-  @override
-  String get howToNintendoTitle => 'Nintendo Switch (DNS モード)';
-
-  @override
-  String get howToNintendoSubtitle => 'DNSで接続';
 
   @override
   String get howToFriendsTitle => 'Friends モード';
@@ -278,16 +261,6 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get helpMultiplayerFailedBody =>
       '⚠️ これは MCCompanion の問題ではありません！\r\n\r\nMCCompanion は正常に要求されたサーバーへリダイレクトしました。\"Multiplayer Connection Failed\" というメッセージは、対象サーバーに現在到達できないことを示しています。考えられる理由:\r\n\r\n• 対象の Minecraft サーバーがオフライン、または過負荷状態である\r\n• サーバーが更新されたクライアントバージョン、または特定のエディションを要求している\r\n• relay と対象サーバーの間にネットワークの問題がある\r\n\r\n別のサーバーに接続するか、そのサーバーのサポートに連絡してください。複数のサーバーで問題が続く場合は、MCCompanion でデバッグモードを有効にしてログを確認してください。';
-
-  @override
-  String get helpNintendoDnsTitle => 'Nintendo DNS が動作しない';
-
-  @override
-  String get helpNintendoDnsSubtitle => 'よくある DNS / relay の問題';
-
-  @override
-  String get helpNintendoDnsBody =>
-      'Nintendo DNS モードが動作しない場合は、次を確認してください:\r\n\r\n1. アプリから DNS 設定を送信したことを確認します（Send DNS Config）。\r\n2. Switch に relay IP をプライマリ DNS として適用したことを確認します。\r\n3. 選択した relay サーバー（EU/US）がオンラインで、過負荷でないことを確認します。\r\n4. 一部のネットワーク（例: captive portal）はカスタム DNS を妨げます。別のネットワークで試してください。\r\n\r\n問題が続く場合は、デバッグモードを有効にしてログを確認するか、フレンドモードの代替手段を試してください。';
 
   @override
   String get helpFriendsModeTitle => 'Friends モードが動作しない';

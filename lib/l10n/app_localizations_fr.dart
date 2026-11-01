@@ -184,11 +184,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get iUnderstand => 'Je comprends';
 
   @override
-  String playInstructionsSwitch(Object relayName, Object relayIp) {
-    return 'Sélectionné : $relayName\r\n\r\nComment se connecter :\r\n1. Allez dans les paramètres de votre Switch et changez le DNS en : $relayIp\r\n2. Ouvrez Minecraft et sélectionnez un serveur dans la liste (comme Cubecraft ou Hive).\r\n3. Vous serez maintenant redirigé automatiquement vers votre propre serveur.';
-  }
-
-  @override
   String get noSavedServers => 'Aucun serveur enregistré';
 
   @override
@@ -224,9 +219,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get stopBroadcasting => 'Arrêter la diffusion';
 
   @override
-  String get startNintendoMode => 'Démarrer le mode Nintendo';
-
-  @override
   String get startFriendsMode => 'Démarrer le mode Amis';
 
   @override
@@ -234,9 +226,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get labelXbox => 'Xbox/PS4-5';
-
-  @override
-  String get labelNintendo => 'Nintendo';
 
   @override
   String get labelFriends => 'Amis';
@@ -250,12 +239,6 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get howToXboxBody =>
       'Comment se connecter (Xbox / PS4 / PS5) :\r\n1. Assurez-vous que l\'appareil exécutant MCCompanion et votre console sont sur le même réseau local.\r\n2. Dans l\'application, saisissez l\'adresse et le port de votre serveur Minecraft puis appuyez sur \\\"Démarrer la diffusion\\\".\r\n3. Sur la console, ouvrez Minecraft → Jouer → recherchez Mondes LAN ou l\'onglet Amis puis actualisez la liste.\r\n4. Sélectionnez le serveur LAN nommé \\\"MCCompanion\\\" pour rejoindre.\r\nNotes :\r\n- Si le serveur n\'apparaît pas, vérifiez que les deux appareils sont sur le même sous-réseau et que l\'application diffuse toujours.\r\n- Certains modèles de console ou routeurs peuvent bloquer la détection LAN ; essayez de modifier les paramètres de l\'application ou du routeur si nécessaire.';
-
-  @override
-  String get howToNintendoTitle => 'Nintendo Switch (mode DNS)';
-
-  @override
-  String get howToNintendoSubtitle => 'Connexion via DNS';
 
   @override
   String get howToFriendsTitle => 'Mode Amis';
@@ -284,16 +267,6 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get helpMultiplayerFailedBody =>
       '⚠️ Ce n\'est pas un problème de MCCompanion !\r\n\r\nMCCompanion vous a redirigé avec succès vers le serveur demandé. Le message \\\"Échec de la connexion multijoueur\\\" indique que le serveur cible est actuellement inaccessible. Raisons possibles :\r\n\r\n• Le serveur Minecraft cible est hors ligne ou surchargé\r\n• Le serveur nécessite une version de client mise à jour ou une édition spécifique\r\n• Problèmes réseau entre le relais et le serveur cible\r\n\r\nEssayez de vous connecter à un autre serveur ou contactez le support du serveur. Si le problème persiste sur plusieurs serveurs, activez le mode débogage dans MCCompanion et consultez les journaux.';
-
-  @override
-  String get helpNintendoDnsTitle => 'Le DNS Nintendo ne fonctionne pas';
-
-  @override
-  String get helpNintendoDnsSubtitle => 'Problèmes courants de DNS / relais';
-
-  @override
-  String get helpNintendoDnsBody =>
-      'Si le mode DNS Nintendo ne fonctionne pas, vérifiez les points suivants :\r\n\r\n1. Confirmez que vous avez envoyé la configuration DNS depuis l\'application (Envoyer la configuration DNS).\r\n2. Vérifiez que vous avez appliqué l\'IP du relais comme DNS primaire sur la Switch.\r\n3. Assurez-vous que le serveur relais sélectionné (EU/US) est en ligne et non surchargé.\r\n4. Certains réseaux (par exemple, les portails captifs) empêchent l\'utilisation d\'un DNS personnalisé, testez sur un autre réseau.\r\n\r\nSi les problèmes persistent, activez le mode débogage et consultez les journaux ou essayez l\'alternative du mode Amis.';
 
   @override
   String get helpFriendsModeTitle => 'Le mode Amis ne fonctionne pas';

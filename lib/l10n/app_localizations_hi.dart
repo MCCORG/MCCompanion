@@ -182,11 +182,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get iUnderstand => 'मैं समझ गया';
 
   @override
-  String playInstructionsSwitch(Object relayName, Object relayIp) {
-    return 'चयनित: $relayName\r\n\r\nकैसे कनेक्ट करें:\r\n1. अपने Switch Settings में जाएँ और DNS को इस पर बदलें: $relayIp\r\n2. Minecraft खोलें और सूची से एक सर्वर चुनें (जैसे Cubecraft या Hive)।\r\n3. अब आपको अपने सर्वर पर अपने आप भेज दिया जाएगा।';
-  }
-
-  @override
   String get noSavedServers => 'कोई सहेजा गया सर्वर नहीं';
 
   @override
@@ -222,9 +217,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get stopBroadcasting => 'ब्रॉडकास्टिंग बंद करें';
 
   @override
-  String get startNintendoMode => 'Nintendo मोड शुरू करें';
-
-  @override
   String get startFriendsMode => 'मित्र मोड शुरू करें';
 
   @override
@@ -232,9 +224,6 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get labelXbox => 'Xbox/PS4-5';
-
-  @override
-  String get labelNintendo => 'Nintendo';
 
   @override
   String get labelFriends => 'दोस्त';
@@ -248,12 +237,6 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get howToXboxBody =>
       'कैसे कनेक्ट करें (Xbox / PS4 / PS5):\r\n1. सुनिश्चित करें कि MCCompanion चलाने वाला आपका डिवाइस और आपका कंसोल एक ही लोकल नेटवर्क पर हैं।\r\n2. ऐप में अपना Minecraft server address और port दर्ज करें और \\\"ब्रॉडकास्टिंग शुरू करें\\\" दबाएँ।\r\n3. कंसोल पर Minecraft → Play खोलें → LAN Worlds या Friends टैब देखें और सूची को रिफ्रेश करें।\r\n4. जुड़ने के लिए \\\"MCCompanion\\\" नाम वाले LAN server को चुनें।\r\nनोट्स:\r\n- यदि सर्वर दिखाई नहीं देता, तो पुष्टि करें कि दोनों डिवाइस एक ही subnet पर हैं और ऐप अभी भी ब्रॉडकास्ट कर रही है।\r\n- कुछ कंसोल मॉडल या राउटर LAN discovery को ब्लॉक कर सकते हैं; जरूरत पड़ने पर ऐप या राउटर सेटिंग्स बदलकर देखें।';
-
-  @override
-  String get howToNintendoTitle => 'Nintendo Switch (DNS मोड)';
-
-  @override
-  String get howToNintendoSubtitle => 'DNS से कनेक्ट करें';
 
   @override
   String get howToFriendsTitle => 'मित्र मोड';
@@ -281,16 +264,6 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get helpMultiplayerFailedBody =>
       '⚠️ यह MCCompanion की समस्या नहीं है!\r\n\r\nMCCompanion ने आपको सफलतापूर्वक अनुरोधित सर्वर पर रीडायरेक्ट कर दिया। \\\"Multiplayer Connection Failed\\\" संदेश का अर्थ है कि लक्ष्य सर्वर इस समय पहुँच से बाहर है। संभावित कारण:\r\n\r\n• लक्ष्य Minecraft सर्वर ऑफ़लाइन है या अत्यधिक लोड में है\r\n• सर्वर को अपडेटेड client version या किसी विशेष edition की आवश्यकता है\r\n• relay और लक्ष्य सर्वर के बीच नेटवर्क समस्याएँ हैं\r\n\r\nकिसी दूसरे सर्वर से कनेक्ट करने का प्रयास करें या सर्वर के support से संपर्क करें। यदि समस्या कई सर्वरों पर बनी रहती है, तो MCCompanion में Debug Mode सक्षम करें और logs जाँचें।';
-
-  @override
-  String get helpNintendoDnsTitle => 'Nintendo DNS काम नहीं कर रहा';
-
-  @override
-  String get helpNintendoDnsSubtitle => 'सामान्य DNS / relay समस्याएँ';
-
-  @override
-  String get helpNintendoDnsBody =>
-      'यदि Nintendo DNS मोड काम नहीं कर रहा है, तो निम्नलिखित जाँचें:\r\n\r\n1. पुष्टि करें कि आपने ऐप से DNS config भेजा है (DNS Config भेजें)।\r\n2. पुष्टि करें कि आपने Switch पर relay IP को Primary DNS के रूप में लागू किया है।\r\n3. सुनिश्चित करें कि चुना गया relay server (EU/US) ऑनलाइन है और ओवरलोड नहीं है।\r\n4. कुछ नेटवर्क (जैसे captive portals) custom DNS को रोकते हैं, किसी दूसरे नेटवर्क पर परीक्षण करें।\r\n\r\nयदि समस्या बनी रहती है, तो Debug Mode सक्षम करें और logs जाँचें या Friends-mode विकल्प आज़माएँ।';
 
   @override
   String get helpFriendsModeTitle => 'मित्र मोड काम नहीं कर रहा';

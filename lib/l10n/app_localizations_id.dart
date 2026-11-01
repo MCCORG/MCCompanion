@@ -183,11 +183,6 @@ class AppLocalizationsId extends AppLocalizations {
   String get iUnderstand => 'Saya mengerti';
 
   @override
-  String playInstructionsSwitch(Object relayName, Object relayIp) {
-    return 'Dipilih: $relayName\r\n\r\nCara terhubung:\r\n1. Buka Pengaturan Switch Anda dan ubah DNS menjadi: $relayIp\r\n2. Buka Minecraft dan pilih server dari daftar (seperti Cubecraft atau Hive).\r\n3. Sekarang Anda akan otomatis dikirim ke server Anda sendiri.';
-  }
-
-  @override
   String get noSavedServers => 'Tidak ada server tersimpan';
 
   @override
@@ -223,9 +218,6 @@ class AppLocalizationsId extends AppLocalizations {
   String get stopBroadcasting => 'Hentikan Siaran';
 
   @override
-  String get startNintendoMode => 'Mulai Mode Nintendo';
-
-  @override
   String get startFriendsMode => 'Mulai Mode Teman';
 
   @override
@@ -233,9 +225,6 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get labelXbox => 'Xbox/PS4-5';
-
-  @override
-  String get labelNintendo => 'Nintendo';
 
   @override
   String get labelFriends => 'Teman';
@@ -249,12 +238,6 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get howToXboxBody =>
       'Cara terhubung (Xbox / PS4 / PS5):\r\n1. Pastikan perangkat yang menjalankan MCCompanion dan konsol Anda berada di jaringan lokal yang sama.\r\n2. Di aplikasi, masukkan alamat dan port server Minecraft Anda lalu tekan \"Mulai Siaran\".\r\n3. Di konsol, buka Minecraft → Play → cari LAN Worlds atau tab Friends lalu segarkan daftar.\r\n4. Pilih server LAN bernama \"MCCompanion\" untuk bergabung.\r\nCatatan:\r\n- Jika server tidak muncul, pastikan kedua perangkat berada di subnet yang sama dan aplikasi masih menyiarkan.\r\n- Beberapa model konsol atau router dapat memblokir penemuan LAN; coba ubah pengaturan aplikasi atau router jika perlu.';
-
-  @override
-  String get howToNintendoTitle => 'Nintendo Switch (mode DNS)';
-
-  @override
-  String get howToNintendoSubtitle => 'Hubungkan lewat DNS';
 
   @override
   String get howToFriendsTitle => 'Mode Teman';
@@ -282,16 +265,6 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get helpMultiplayerFailedBody =>
       '⚠️ Ini bukan masalah pada MCCompanion!\r\n\r\nMCCompanion berhasil mengarahkan Anda ke server yang diminta. Pesan \"Multiplayer Connection Failed\" menunjukkan bahwa server tujuan saat ini tidak dapat dijangkau. Kemungkinan alasan:\r\n\r\n• Server Minecraft tujuan sedang offline atau kelebihan beban\r\n• Server memerlukan versi klien yang diperbarui atau edisi tertentu\r\n• Masalah jaringan antara relay dan server tujuan\r\n\r\nCoba hubungkan ke server lain atau hubungi dukungan server tersebut. Jika masalah tetap terjadi pada beberapa server, aktifkan Mode Debug di MCCompanion dan periksa log.';
-
-  @override
-  String get helpNintendoDnsTitle => 'DNS Nintendo tidak berfungsi';
-
-  @override
-  String get helpNintendoDnsSubtitle => 'Masalah DNS / relay umum';
-
-  @override
-  String get helpNintendoDnsBody =>
-      'Jika mode DNS Nintendo tidak berfungsi, periksa hal berikut:\r\n\r\n1. Pastikan Anda mengirim konfigurasi DNS dari aplikasi (Send DNS Config).\r\n2. Pastikan Anda menerapkan IP relay sebagai DNS Utama di Switch.\r\n3. Pastikan server relay yang dipilih (EU/US) sedang online dan tidak kelebihan beban.\r\n4. Beberapa jaringan (misalnya captive portal) mencegah DNS kustom, uji di jaringan lain.\r\n\r\nJika masalah berlanjut, aktifkan Mode Debug dan periksa log atau coba alternatif mode Teman.';
 
   @override
   String get helpFriendsModeTitle => 'Mode Teman tidak berfungsi';

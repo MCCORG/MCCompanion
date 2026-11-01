@@ -456,12 +456,6 @@ abstract class AppLocalizations {
   /// **'I understand'**
   String get iUnderstand;
 
-  /// DNS instructions shown for Nintendo Switch mode
-  ///
-  /// In en, this message translates to:
-  /// **'Selected: {relayName}\n\nHow to connect:\n1. Go to your Switch Settings and change the DNS to: {relayIp}\n2. Open Minecraft and select a server from the list (like Cubecraft or Hive).\n3. You will now be sent to your own server automatically.'**
-  String playInstructionsSwitch(Object relayName, Object relayIp);
-
   /// No description provided for @noSavedServers.
   ///
   /// In en, this message translates to:
@@ -528,12 +522,6 @@ abstract class AppLocalizations {
   /// **'Stop Broadcasting'**
   String get stopBroadcasting;
 
-  /// No description provided for @startNintendoMode.
-  ///
-  /// In en, this message translates to:
-  /// **'Start Nintendo Mode'**
-  String get startNintendoMode;
-
   /// No description provided for @startFriendsMode.
   ///
   /// In en, this message translates to:
@@ -549,14 +537,8 @@ abstract class AppLocalizations {
   /// No description provided for @labelXbox.
   ///
   /// In en, this message translates to:
-  /// **'Xbox/PS4-5'**
+  /// **'Broadcast'**
   String get labelXbox;
-
-  /// No description provided for @labelNintendo.
-  ///
-  /// In en, this message translates to:
-  /// **'Nintendo'**
-  String get labelNintendo;
 
   /// No description provided for @labelFriends.
   ///
@@ -567,7 +549,7 @@ abstract class AppLocalizations {
   /// Title for the Xbox / PS4-5 how-to modal
   ///
   /// In en, this message translates to:
-  /// **'Xbox / PS4-5 (LAN / Proxy)'**
+  /// **'Broadcast (Xbox, PlayStation, Switch)'**
   String get howToXboxTitle;
 
   /// Short subtitle for Xbox / PS4-5 menu tile
@@ -579,20 +561,8 @@ abstract class AppLocalizations {
   /// Detailed steps for Xbox/PS4-5 how-to modal
   ///
   /// In en, this message translates to:
-  /// **'How to connect (Xbox / PS4 / PS5):\n1. Ensure your device running MCCompanion and your console are on the same local network.\n2. In the app, enter your Minecraft server address and port and press \"Start Broadcasting\".\n3. On the console open Minecraft → Play → look for LAN Worlds or the Friends tab and refresh the list.\n4. Select the LAN server named \"MCCompanion\" to join.\nNotes:\n- If the server does not appear, confirm both devices are on the same subnet and that the app is still broadcasting.\n- Some console models or routers may block LAN discovery; try toggling the app or router settings if needed.'**
+  /// **'How to connect (Xbox / PlayStation / Nintendo Switch):\n1. Make sure the device running MCCompanion and your console are on the same local network.\n2. In the app, enter your Minecraft server address and port and press \"Start Broadcasting\".\n3. On the console open Minecraft → Play → Friends tab (or LAN Worlds) and refresh the list.\n4. Select the LAN server named \"MCCompanion\" to join.\nNotes:\n- This works the same on Xbox, PlayStation and Nintendo Switch. No DNS changes are needed.\n- If the server does not appear, confirm both devices are on the same network and that the app is still broadcasting.\n- Some routers block LAN discovery; try another network or adjust your router settings.'**
   String get howToXboxBody;
-
-  /// Title for the Nintendo how-to modal
-  ///
-  /// In en, this message translates to:
-  /// **'Nintendo Switch (DNS mode)'**
-  String get howToNintendoTitle;
-
-  /// Short subtitle for Nintendo menu tile
-  ///
-  /// In en, this message translates to:
-  /// **'Connect via DNS'**
-  String get howToNintendoSubtitle;
 
   /// Title for the Friends-mode how-to modal
   ///
@@ -615,7 +585,7 @@ abstract class AppLocalizations {
   /// Short subtitle for MCCompanion does not appear tile
   ///
   /// In en, this message translates to:
-  /// **'Troubleshooting LAN discovery issues'**
+  /// **'Troubleshooting broadcast and LAN discovery'**
   String get helpMCCompanionSubtitle;
 
   /// Detailed troubleshooting text for MCCompanion not appearing
@@ -641,24 +611,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'⚠️ This is not an issue with MCCompanion!\n\nMCCompanion successfully redirected you to the requested server. The message \"Multiplayer Connection Failed\" indicates that the target server is currently unreachable. Possible reasons:\n\n• The target Minecraft server is offline or overloaded\n• The server requires an updated client version or specific edition\n• Network issues between the relay and the target server\n\nTry connecting to a different server or contact the server\'s support. If the problem persists for multiple servers, enable Debug Mode in MCCompanion and check logs.'**
   String get helpMultiplayerFailedBody;
-
-  /// Title for Nintendo DNS troubleshooting
-  ///
-  /// In en, this message translates to:
-  /// **'Nintendo DNS does not work'**
-  String get helpNintendoDnsTitle;
-
-  /// Short subtitle for Nintendo DNS troubleshooting tile
-  ///
-  /// In en, this message translates to:
-  /// **'Common DNS / relay issues'**
-  String get helpNintendoDnsSubtitle;
-
-  /// Detailed placeholder for Nintendo DNS troubleshooting
-  ///
-  /// In en, this message translates to:
-  /// **'If Nintendo DNS mode isn\'t working, check the following:\n\n1. Confirm you pushed DNS config from the app (Send DNS Config).\n2. Verify you applied the relay IP as Primary DNS on the Switch.\n3. Ensure the relay server selected (EU/US) is online and not overloaded.\n4. Some networks (e.g., captive portals) prevent custom DNS, test on a different network.\n\nIf issues persist, enable Debug Mode and check logs or try the Friends-mode alternative.'**
-  String get helpNintendoDnsBody;
 
   /// Title for Friends mode troubleshooting
   ///

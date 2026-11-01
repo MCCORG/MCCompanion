@@ -9,52 +9,42 @@ import '../widgets/components/swipe_back.dart';
 import '../widgets/dialogs/howto_dialogs.dart';
 import '../layout/bar_inset.dart';
 
-enum HowToKind { xbox, nintendo, friends }
+enum HowToKind { xbox, friends }
 
 extension HowToKindInfo on HowToKind {
   Color get color => switch (this) {
     HowToKind.xbox => AppTheme.modeXbox,
-    HowToKind.nintendo => AppTheme.modeNintendo,
     HowToKind.friends => AppTheme.modeFriends,
   };
 
   IconData get rowIcon => switch (this) {
     HowToKind.xbox => Icons.sports_esports_rounded,
-    HowToKind.nintendo => Icons.videogame_asset_rounded,
     HowToKind.friends => Icons.group_rounded,
   };
 
   FaIconData get icon => switch (this) {
     HowToKind.xbox => FontAwesomeIcons.xbox,
-    HowToKind.nintendo => FontAwesomeIcons.gamepad,
     HowToKind.friends => FontAwesomeIcons.userGroup,
   };
 
   String title(AppLocalizations l) => switch (this) {
     HowToKind.xbox => l.labelXbox,
-    HowToKind.nintendo => l.labelNintendo,
     HowToKind.friends => l.labelFriends,
   };
 
   String subtitle(AppLocalizations l) => switch (this) {
     HowToKind.xbox => l.howToXboxSubtitle,
-    HowToKind.nintendo => l.howToNintendoSubtitle,
     HowToKind.friends => l.howToFriendsSubtitle,
   };
 
   HowToTopic get topic => switch (this) {
     HowToKind.xbox => HowToTopic.xbox,
-    HowToKind.nintendo => HowToTopic.nintendo,
     HowToKind.friends => HowToTopic.friends,
   };
 
   String? body(AppLocalizations l, {String? relayName, String? relayIp}) =>
       switch (this) {
         HowToKind.xbox => l.howToXboxBody,
-        HowToKind.nintendo => l.playInstructionsSwitch(
-          relayName ?? '-',
-          relayIp ?? '-',
-        ),
         HowToKind.friends => null,
       };
 }

@@ -87,7 +87,7 @@ class HomeScreenState extends State<HomeScreen> {
   ScrollController get _logScrollController =>
       widget.navigationController.logsScrollController;
 
-  bool _nintendoDnsMode = false;
+  bool _friendsMode = false;
   List<BedrockAccount>? _cachedBedrockAccounts;
   String? _selectedBedrockXuid;
   String? _resourcePackUrl;
@@ -206,7 +206,7 @@ class HomeScreenState extends State<HomeScreen> {
       return;
     }
 
-    if (mode == PanelMode.nintendo || mode == PanelMode.friends) {
+    if (mode == PanelMode.friends) {
       await _handleDnsMode(mode, remoteHost, remotePortParsed, loc);
       return;
     }
@@ -276,7 +276,6 @@ class HomeScreenState extends State<HomeScreen> {
 
   BroadcastMode _broadcastModeFor(PanelMode mode) => switch (mode) {
     PanelMode.lan => BroadcastMode.lan,
-    PanelMode.nintendo => BroadcastMode.nintendo,
     PanelMode.friends => BroadcastMode.friends,
   };
 
@@ -298,26 +297,15 @@ class HomeScreenState extends State<HomeScreen> {
       resourcePackUrl: resourcePackUrl,
     );
     if (!ok) return;
-    final topic = mode == PanelMode.nintendo
-        ? HowToTopic.nintendo
-        : HowToTopic.friends;
-    if (!await HowToPrefs.isAutoShowEnabled(topic)) {
+    if (!await HowToPrefs.isAutoShowEnabled(HowToTopic.friends)) {
       _snack(loc.dataSentToServers, AppTheme.accent, icon: Icons.check_rounded);
       return;
     }
     if (!mounted) return;
-    if (mode == PanelMode.nintendo) {
-      await HowToDialogs.showNintendoInstructions(
-        context,
-        relayName: widget.selectedRelay.name,
-        relayIp: widget.selectedRelay.ip,
-      );
-    } else {
-      await HowToDialogs.showFriendsInstructions(
-        context,
-        userRegion: widget.selectedRelay.region,
-      );
-    }
+    await HowToDialogs.showFriendsInstructions(
+      context,
+      userRegion: widget.selectedRelay.region,
+    );
   }
 
   Future<NetherNetModeResult?> _startNetherNet(String host, int port) async {
@@ -486,9 +474,9 @@ class HomeScreenState extends State<HomeScreen> {
                   resourcePackLoading: _rpLoading,
                   selectedRelayIp: widget.selectedRelay.ip,
                   onRelayChanged: widget.onRelayChanged,
-                  nintendoDnsMode: _nintendoDnsMode,
-                  onNintendoDnsModeChanged: (value) =>
-                      setState(() => _nintendoDnsMode = value),
+                  friendsMode: _friendsMode,
+                  onFriendsModeChanged: (value) =>
+                      setState(() => _friendsMode = value),
                   navigationController: widget.navigationController,
                   partnerServersFuture: widget.partnerServersFuture,
                   onOpenPartnerServers: widget.onOpenPartnerServers,
