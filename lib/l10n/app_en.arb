@@ -130,14 +130,6 @@
     "description": "Shown when debug logging is enabled/disabled"
   },
   "iUnderstand": "I understand",
-  "playInstructionsSwitch": "Selected: {relayName}\n\nHow to connect:\n1. Go to your Switch Settings and change the DNS to: {relayIp}\n2. Open Minecraft and select a server from the list (like Cubecraft or Hive).\n3. You will now be sent to your own server automatically.",
-  "@playInstructionsSwitch": {
-    "description": "DNS instructions shown for Nintendo Switch mode",
-    "placeholders": {
-      "relayName": {},
-      "relayIp": {}
-    }
-  },
   "noSavedServers": "No saved servers",
   "savedServers": "Saved servers",
   "manageServers": "Manage servers",
@@ -149,13 +141,11 @@
   "continueAnyway": "Continue Anyway",
   "updateAvailable": "Update Available",
   "stopBroadcasting": "Stop Broadcasting",
-  "startNintendoMode": "Start Nintendo Mode",
   "startFriendsMode": "Start Friends Mode",
   "startBroadcasting": "Start Broadcasting",
-  "labelXbox": "Xbox/PS4-5",
-  "labelNintendo": "Nintendo",
+  "labelXbox": "Broadcast",
   "labelFriends": "Friends",
-  "howToXboxTitle": "Xbox / PS4-5 (LAN / Proxy)",
+  "howToXboxTitle": "Broadcast (Xbox, PlayStation, Switch)",
   "@howToXboxTitle": {
     "description": "Title for the Xbox / PS4-5 how-to modal"
   },
@@ -163,17 +153,9 @@
   "@howToXboxSubtitle": {
     "description": "Short subtitle for Xbox / PS4-5 menu tile"
   },
-  "howToXboxBody": "How to connect (Xbox / PS4 / PS5):\n1. Ensure your device running MCCompanion and your console are on the same local network.\n2. In the app, enter your Minecraft server address and port and press \"Start Broadcasting\".\n3. On the console open Minecraft → Play → look for LAN Worlds or the Friends tab and refresh the list.\n4. Select the LAN server named \"MCCompanion\" to join.\nNotes:\n- If the server does not appear, confirm both devices are on the same subnet and that the app is still broadcasting.\n- Some console models or routers may block LAN discovery; try toggling the app or router settings if needed.",
+  "howToXboxBody": "How to connect (Xbox / PlayStation / Nintendo Switch):\n1. Make sure the device running MCCompanion and your console are on the same local network.\n2. In the app, enter your Minecraft server address and port and press \"Start Broadcasting\".\n3. On the console open Minecraft → Play → Friends tab (or LAN Worlds) and refresh the list.\n4. Select the LAN server named \"MCCompanion\" to join.\nNotes:\n- This works the same on Xbox, PlayStation and Nintendo Switch. No DNS changes are needed.\n- If the server does not appear, confirm both devices are on the same network and that the app is still broadcasting.\n- Some routers block LAN discovery; try another network or adjust your router settings.",
   "@howToXboxBody": {
     "description": "Detailed steps for Xbox/PS4-5 how-to modal"
-  },
-  "howToNintendoTitle": "Nintendo Switch (DNS mode)",
-  "@howToNintendoTitle": {
-    "description": "Title for the Nintendo how-to modal"
-  },
-  "howToNintendoSubtitle": "Connect via DNS",
-  "@howToNintendoSubtitle": {
-    "description": "Short subtitle for Nintendo menu tile"
   },
   "howToFriendsTitle": "Friends mode",
   "@howToFriendsTitle": {
@@ -187,7 +169,7 @@
   "@helpMCCompanionTitle": {
     "description": "Title for help topic when MCCompanion isn't visible on console"
   },
-  "helpMCCompanionSubtitle": "Troubleshooting LAN discovery issues",
+  "helpMCCompanionSubtitle": "Troubleshooting broadcast and LAN discovery",
   "@helpMCCompanionSubtitle": {
     "description": "Short subtitle for MCCompanion does not appear tile"
   },
@@ -206,18 +188,6 @@
   "helpMultiplayerFailedBody": "⚠️ This is not an issue with MCCompanion!\n\nMCCompanion successfully redirected you to the requested server. The message \"Multiplayer Connection Failed\" indicates that the target server is currently unreachable. Possible reasons:\n\n• The target Minecraft server is offline or overloaded\n• The server requires an updated client version or specific edition\n• Network issues between the relay and the target server\n\nTry connecting to a different server or contact the server's support. If the problem persists for multiple servers, enable Debug Mode in MCCompanion and check logs.",
   "@helpMultiplayerFailedBody": {
     "description": "Explanation shown when multiplayer connection failed appears"
-  },
-  "helpNintendoDnsTitle": "Nintendo DNS does not work",
-  "@helpNintendoDnsTitle": {
-    "description": "Title for Nintendo DNS troubleshooting"
-  },
-  "helpNintendoDnsSubtitle": "Common DNS / relay issues",
-  "@helpNintendoDnsSubtitle": {
-    "description": "Short subtitle for Nintendo DNS troubleshooting tile"
-  },
-  "helpNintendoDnsBody": "If Nintendo DNS mode isn't working, check the following:\n\n1. Confirm you pushed DNS config from the app (Send DNS Config).\n2. Verify you applied the relay IP as Primary DNS on the Switch.\n3. Ensure the relay server selected (EU/US) is online and not overloaded.\n4. Some networks (e.g., captive portals) prevent custom DNS, test on a different network.\n\nIf issues persist, enable Debug Mode and check logs or try the Friends-mode alternative.",
-  "@helpNintendoDnsBody": {
-    "description": "Detailed placeholder for Nintendo DNS troubleshooting"
   },
   "helpFriendsModeTitle": "Friends mode does not work",
   "@helpFriendsModeTitle": {
@@ -827,30 +797,6 @@
   "@requestsAppearHere": {
     "description": "Empty state subtitle on requests tab"
   },
-  "skinsEdit": "Edit",
-  "@skinsEdit": {
-    "description": "Edit button in skin detail sheet"
-  },
-  "skinsMustBe64": "Skin must be 64×64 pixels",
-  "@skinsMustBe64": {
-    "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsInvalidFile": "Invalid image file",
-  "@skinsInvalidFile": {
-    "description": "Error when the selected file is not a valid image"
-  },
-  "skinsUpload": "Upload",
-  "@skinsUpload": {
-    "description": "Button to upload a skin"
-  },
-  "skinsCreate": "Create",
-  "@skinsCreate": {
-    "description": "Button to create/open skin editor"
-  },
-  "skinsDownload": "Download",
-  "@skinsDownload": {
-    "description": "Download button in skin detail sheet"
-  },
   "chooseUniqueUsername": "Choose a unique username to get started.",
   "@chooseUniqueUsername": {
     "description": "chooseUniqueUsername"
@@ -1233,27 +1179,6 @@
   "upgradeWindowsHint": "Upgrade available via the Microsoft Store",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "skinSaved": "Skin saved",
-  "@skinSaved": {
-    "description": "Toast when skin is saved"
-  },
-  "skinSavedAs": "Saved as \"{name}\"",
-  "@skinSavedAs": {
-    "description": "Toast when skin saved with name",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinExportFailed": "Export failed",
-  "@skinExportFailed": {
-    "description": "Toast when skin export fails"
-  },
-  "skinExported": "Skin exported successfully",
-  "@skinExported": {
-    "description": "Toast when skin is exported successfully"
   },
   "accountActions": "Account",
   "@accountActions": {
@@ -1699,21 +1624,9 @@
   "@skinsSavedToMySkins": {
     "description": "Toast when cloud skin is saved to local library"
   },
-  "skinsEmptyLocalSkins": "No skins yet. Create or upload a skin to get started.",
+  "skinsEmptyLocalSkins": "No saved skins yet.",
   "@skinsEmptyLocalSkins": {
     "description": "Empty state for local skins tab"
-  },
-  "skinSaveDialog": "Save Skin",
-  "@skinSaveDialog": {
-    "description": "Dialog title for saving skin locally"
-  },
-  "skinNameHint": "Skin name",
-  "@skinNameHint": {
-    "description": "Hint text for skin name input field"
-  },
-  "skinDefaultName": "My Skin",
-  "@skinDefaultName": {
-    "description": "Default name for a new skin"
   },
   "sectionRecentActivity": "Recent Activity",
   "@sectionRecentActivity": {
@@ -1856,10 +1769,6 @@
       }
     }
   },
-  "notifPrefSkinLiked": "Skin liked",
-  "@notifPrefSkinLiked": {
-    "description": "Notification preference toggle label: skin liked"
-  },
   "notifPrefCommentReceived": "Comment received",
   "@notifPrefCommentReceived": {
     "description": "Notification preference toggle label: comment received"
@@ -1884,14 +1793,6 @@
   "@notifPrefMessageReceived": {
     "description": "Notification preference toggle label: new message"
   },
-  "skinLayerInner": "Inner",
-  "@skinLayerInner": {
-    "description": "Skin editor layer toggle, inner/base layer"
-  },
-  "skinLayerOuter": "Outer",
-  "@skinLayerOuter": {
-    "description": "Skin editor layer toggle, outer/overlay layer"
-  },
   "feedbackLoginRequiredTitle": "Log in to send feedback",
   "feedbackLoginRequiredBody": "Feedback is linked to your MCCompanion account so we can reply to you directly in the app.",
   "feedbackLoginButton": "Log in",
@@ -1908,14 +1809,6 @@
   "@supportInboxTitle": {
     "description": "Header title of the shared admin support inbox card"
   },
-  "skinShareSubject": "Minecraft Skin",
-  "skinEditorTitle": "Skin Editor",
-  "skinToolUndo": "Undo",
-  "skinSaveToMySkins": "Save to My Skins",
-  "skinExportPng": "Export PNG",
-  "skinToolDraw": "Draw",
-  "skinToolFill": "Fill",
-  "skinToolErase": "Erase",
   "customColour": "Custom colour",
   "featuredServerLabel": "FEATURED SERVER",
   "featuredServerTagline": "Hop in and start playing.",
@@ -2020,58 +1913,6 @@
   "@howToAutoShow": {
     "description": "Toggle inside the how to sheet: whether it opens by itself after starting a broadcast"
   },
-  "skinEditorLoadFailed": "Could not load that skin. Starting from the default one.",
-  "@skinEditorLoadFailed": {
-    "description": "Shown when the requested skin texture could not be loaded and the editor fell back to the bundled default"
-  },
-  "skinToolRecolour": "Recolour",
-  "@skinToolRecolour": {
-    "description": "Skin editor"
-  },
-  "skinToolPick": "Pick",
-  "@skinToolPick": {
-    "description": "Skin editor"
-  },
-  "skinBases": "Bases",
-  "@skinBases": {
-    "description": "Skin editor"
-  },
-  "skinBasesTitle": "Start from a base",
-  "@skinBasesTitle": {
-    "description": "Skin editor"
-  },
-  "skinBasesSubtitle": "This replaces what is on the canvas. Undo brings it back.",
-  "@skinBasesSubtitle": {
-    "description": "Skin editor"
-  },
-  "skinMirror": "Mirror",
-  "@skinMirror": {
-    "description": "Skin editor: symmetry toggle"
-  },
-  "skinSurprise": "Surprise",
-  "@skinSurprise": {
-    "description": "Skin editor"
-  },
-  "skinToolFillHint": "Fills the patch you tap",
-  "@skinToolFillHint": {
-    "description": "Skin editor"
-  },
-  "skinToolRecolourHint": "Changes that colour everywhere on the skin",
-  "@skinToolRecolourHint": {
-    "description": "Skin editor"
-  },
-  "skinToolPickHint": "Takes the colour you tap",
-  "@skinToolPickHint": {
-    "description": "Skin editor"
-  },
-  "skinModelClassic": "Wide",
-  "@skinModelClassic": {
-    "description": "Skin editor: arm width"
-  },
-  "skinModelSlim": "Slim",
-  "@skinModelSlim": {
-    "description": "Skin editor: arm width"
-  },
   "shareServerLabel": "Share your server",
   "@shareServerLabel": {
     "description": "Profile: server visibility"
@@ -2096,6 +1937,11 @@
   "waitingForConsole": "Waiting for your console…",
   "consoleFound": "Console found",
   "consoleLanHint": "On your console, open Minecraft and look under Friends for a LAN game.",
+  "consoleConnecting": "Connecting your console…",
+  "consoleHandedOver": "Joining through the relay",
+  "consoleHandedOverHint": "Your console should switch to your server in a few seconds. Nothing happening? Try joining again.",
+  "consoleConnectFailed": "Could not reach the relay",
+  "consoleConnectFailedHint": "Check your connection, then try joining again.",
   "localNetworkBlocked": "MCCompanion cannot reach your local network. Turn on Local Network for MCCompanion in your device settings and make sure you are on Wi-Fi.",
   "directAddressNotSupported": "{host} is an IPv6 address. Proxy/Direct Mode only supports IPv4. Use the IPv4 address or the hostname instead.",
   "@directAddressNotSupported": {
@@ -2188,5 +2034,8 @@
   },
   "feedbackViewYourReport": "View your report",
   "showMore": "More",
-  "showLess": "Less"
+  "showLess": "Less",
+  "lookupRecent": "Recent",
+  "skinsRemovalNotice": "Skins will be removed in the next update. Export the skins you want to keep.",
+  "feedbackRpNotice": "We can't answer reports about resource packs. Some packs simply don't work, and some servers reject custom packs."
 }

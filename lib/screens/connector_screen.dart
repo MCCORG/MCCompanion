@@ -28,6 +28,7 @@ import '../util/bedrock_account_prefs.dart';
 import '../util/howto_prefs.dart';
 import '../util/resource_pack_prefs.dart';
 import '../widgets/dialogs/howto_dialogs.dart';
+import '../layout/bar_inset.dart';
 
 class HomeScreen extends StatefulWidget {
   final RelaySelection selectedRelay;
@@ -86,7 +87,7 @@ class HomeScreenState extends State<HomeScreen> {
   ScrollController get _logScrollController =>
       widget.navigationController.logsScrollController;
 
-  bool _nintendoDnsMode = false;
+  bool _friendsMode = false;
   List<BedrockAccount>? _cachedBedrockAccounts;
   String? _selectedBedrockXuid;
   String? _resourcePackUrl;
@@ -103,6 +104,12 @@ class HomeScreenState extends State<HomeScreen> {
     _loadBedrockAccounts();
     _loadResourcePackUrl();
     ResourcePackPrefs.revision.addListener(_loadResourcePackUrl);
+    _broadcastingNotifier.addListener(_syncBroadcasting);
+  }
+
+  void _syncBroadcasting() {
+    widget.navigationController.broadcasting.value =
+        _broadcastingNotifier.value;
   }
 
   void toggleDebug() {
@@ -120,6 +127,7 @@ class HomeScreenState extends State<HomeScreen> {
   @override
   void dispose() {
     ResourcePackPrefs.revision.removeListener(_loadResourcePackUrl);
+    _broadcastingNotifier.removeListener(_syncBroadcasting);
     _mainScrollController.dispose();
     unawaited(_netherNet.stop());
     _broadcastingNotifier.dispose();
@@ -128,6 +136,8 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   bool get isBroadcasting => _broadcastingNotifier.value;
+
+  Future<void> stopBroadcast() => _stopBroadcast();
 
   Future<void> loadUserServers() async {
     try {
@@ -196,7 +206,7 @@ class HomeScreenState extends State<HomeScreen> {
       return;
     }
 
-    if (mode == PanelMode.nintendo || mode == PanelMode.friends) {
+    if (mode == PanelMode.friends) {
       await _handleDnsMode(mode, remoteHost, remotePortParsed, loc);
       return;
     }
@@ -266,7 +276,6 @@ class HomeScreenState extends State<HomeScreen> {
 
   BroadcastMode _broadcastModeFor(PanelMode mode) => switch (mode) {
     PanelMode.lan => BroadcastMode.lan,
-    PanelMode.nintendo => BroadcastMode.nintendo,
     PanelMode.friends => BroadcastMode.friends,
   };
 
@@ -288,26 +297,15 @@ class HomeScreenState extends State<HomeScreen> {
       resourcePackUrl: resourcePackUrl,
     );
     if (!ok) return;
-    final topic = mode == PanelMode.nintendo
-        ? HowToTopic.nintendo
-        : HowToTopic.friends;
-    if (!await HowToPrefs.isAutoShowEnabled(topic)) {
+    if (!await HowToPrefs.isAutoShowEnabled(HowToTopic.friends)) {
       _snack(loc.dataSentToServers, AppTheme.accent, icon: Icons.check_rounded);
       return;
     }
     if (!mounted) return;
-    if (mode == PanelMode.nintendo) {
-      await HowToDialogs.showNintendoInstructions(
-        context,
-        relayName: widget.selectedRelay.name,
-        relayIp: widget.selectedRelay.ip,
-      );
-    } else {
-      await HowToDialogs.showFriendsInstructions(
-        context,
-        userRegion: widget.selectedRelay.region,
-      );
-    }
+    await HowToDialogs.showFriendsInstructions(
+      context,
+      userRegion: widget.selectedRelay.region,
+    );
   }
 
   Future<NetherNetModeResult?> _startNetherNet(String host, int port) async {
@@ -451,17 +449,18 @@ class HomeScreenState extends State<HomeScreen> {
             padding: EdgeInsets.zero,
             child: SingleChildScrollView(
               controller: _mainScrollController,
+              padding: EdgeInsets.only(bottom: BarInset.of(context)),
               physics: const ClampingScrollPhysics(),
               child: ValueListenableBuilder<List<UserServer>>(
                 valueListenable: _userServersNotifier,
                 builder: (context, userServers, _) => ConnectionPanel(
                   availableHeight: constraints.maxHeight.isFinite
-                      ? constraints.maxHeight - 12
+                      ? constraints.maxHeight - 12 - BarInset.of(context)
                       : null,
                   ipController: widget.ipController,
                   portController: widget.portController,
                   broadcastingNotifier: _broadcastingNotifier,
-                  clientSeenNotifier: _netherNet.clientSeen,
+                  phaseNotifier: _netherNet.phase,
                   onStartBroadcast: _startBroadcast,
                   onStopBroadcast: _stopBroadcast,
                   savedServers: userServers,
@@ -475,9 +474,9 @@ class HomeScreenState extends State<HomeScreen> {
                   resourcePackLoading: _rpLoading,
                   selectedRelayIp: widget.selectedRelay.ip,
                   onRelayChanged: widget.onRelayChanged,
-                  nintendoDnsMode: _nintendoDnsMode,
-                  onNintendoDnsModeChanged: (value) =>
-                      setState(() => _nintendoDnsMode = value),
+                  friendsMode: _friendsMode,
+                  onFriendsModeChanged: (value) =>
+                      setState(() => _friendsMode = value),
                   navigationController: widget.navigationController,
                   partnerServersFuture: widget.partnerServersFuture,
                   onOpenPartnerServers: widget.onOpenPartnerServers,

@@ -184,11 +184,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get iUnderstand => 'Ik begrijp het';
 
   @override
-  String playInstructionsSwitch(Object relayName, Object relayIp) {
-    return 'Geselecteerd: $relayName\n\nHoe te verbinden:\n1. Ga naar uw Switch Instellingen en wijzig de DNS naar: $relayIp\n2. Open Minecraft en selecteer een server uit de lijst (zoals Cubecraft of Hive).\n3. Je wordt nu automatisch naar je eigen server verzonden.';
-  }
-
-  @override
   String get noSavedServers => 'Geen opgeslagen servers';
 
   @override
@@ -224,38 +219,26 @@ class AppLocalizationsNl extends AppLocalizations {
   String get stopBroadcasting => 'Uitzenden stoppen';
 
   @override
-  String get startNintendoMode => 'Nintendo Modus starten';
-
-  @override
   String get startFriendsMode => 'Start vrienden modus';
 
   @override
   String get startBroadcasting => 'Uitzending starten';
 
   @override
-  String get labelXbox => 'Xbox/PS4-5';
-
-  @override
-  String get labelNintendo => 'Nintendo';
+  String get labelXbox => 'Broadcast';
 
   @override
   String get labelFriends => 'Vrienden';
 
   @override
-  String get howToXboxTitle => 'Xbox / PS4-5 (LAN / proxyverbinding)';
+  String get howToXboxTitle => 'Broadcast (Xbox, PlayStation, Switch)';
 
   @override
   String get howToXboxSubtitle => 'Verbind via LAN';
 
   @override
   String get howToXboxBody =>
-      'Hoe verbinding te maken (Xbox / PS4 / PS5):\n1. Zorg ervoor dat MCCompanion en jouw console op hetzelfde lokale netwerk zitten.\n2. Voer in de app uw Minecraft serveradres en poort in en druk op \"Uitzending Starten\".\n3. In de console open Minecraft → Play → zoek naar LAN werelden of het tabblad Vrienden en ververs de lijst.\n4. Selecteer de LAN-server genaamd \"MCCompanion\" om toe te treden.\nnotities:\n- Als de server niet verschijnt, bevestig dan dat beide apparaten op hetzelfde subnet staan en dat de app nog steeds wordt uitgezonden.\n- Sommige console modellen of routers kunnen LAN ontdekking blokkeren; probeer indien nodig de app of router aan te zetten.';
-
-  @override
-  String get howToNintendoTitle => 'Nintendo Switch (DNS-modus)';
-
-  @override
-  String get howToNintendoSubtitle => 'Verbind via DNS';
+      'Hoe verbinden (Xbox / PlayStation / Nintendo Switch):\n1. Zorg dat het apparaat met MCCompanion en je console op hetzelfde lokale netwerk zitten.\n2. Vul in de app het adres en de poort van je Minecraft-server in en druk op \"Uitzending starten\".\n3. Open op de console Minecraft → Spelen → tabblad Vrienden (of LAN-werelden) en ververs de lijst.\n4. Kies de LAN-server \"MCCompanion\" om te joinen.\nOpmerkingen:\n- Dit werkt hetzelfde op Xbox, PlayStation en Nintendo Switch. Je hoeft geen DNS aan te passen.\n- Verschijnt de server niet, controleer dan of beide apparaten op hetzelfde netwerk zitten en de app nog uitzendt.\n- Sommige routers blokkeren LAN-detectie; probeer een ander netwerk of pas je routerinstellingen aan.';
 
   @override
   String get howToFriendsTitle => 'Vrienden modus';
@@ -268,7 +251,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get helpMCCompanionSubtitle =>
-      'Problemen met het oplossen van LAN ontdekking';
+      'Problemen met broadcast en LAN-detectie oplossen';
 
   @override
   String get helpMCCompanionBody =>
@@ -284,17 +267,6 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get helpMultiplayerFailedBody =>
       '⚠️ Dit is geen probleem met MCCompanion!\n\nMCCompanion heeft je met succes doorgestuurd naar de server. Het bericht \"Multiplayer Verbinding Mislukt\" geeft aan dat de doelserver op dit moment niet bereikbaar is. Mogelijke redenen:\n\n• De doel Minecraft-server is offline of overgeladen\n• De server vereist een bijgewerkte clientversie of specifieke editie\n• Netwerkproblemen tussen het relais en de doelserver\n\nProbeer verbinding te maken met een andere server of neem contact op met de ondersteuning van de server. Als het probleem aanhoudt voor meerdere servers, schakel dan Debug Mode in MCCompanion in en controleer de logs.';
-
-  @override
-  String get helpNintendoDnsTitle => 'Nintendo DNS werkt niet';
-
-  @override
-  String get helpNintendoDnsSubtitle =>
-      'Voorkomende problemen met DNS / Relay (placeholder)';
-
-  @override
-  String get helpNintendoDnsBody =>
-      'Als Nintendo DNS modus niet werkt, controleer dan het volgende:\n\n1. Bevestig dat je DNS-configuratie hebt gestuurd (Send DNS Config).\n2. Controleer of u het relais-IP als primaire DNS heeft toegepast op de Switch.\n3. Zorg ervoor dat de relaisserver (EU/US) online is en niet overbelast.\n4. Sommige netwerken (bijv. captive portals) voorkomen aangepaste DNS, test op een ander netwerk.\n\nAls problemen aanhouden, schakel dan Debug Mode in en bekijk de logs of probeer het alternatief Vriends-modus.';
 
   @override
   String get helpFriendsModeTitle => 'Vrienden modus werkt niet';
@@ -776,24 +748,6 @@ class AppLocalizationsNl extends AppLocalizations {
       'Nieuwe vriendschapsverzoeken verschijnen hier.';
 
   @override
-  String get skinsEdit => 'Bewerken';
-
-  @override
-  String get skinsMustBe64 => 'Skin moet 64×64 pixels zijn';
-
-  @override
-  String get skinsInvalidFile => 'Ongeldig afbeeldingsbestand';
-
-  @override
-  String get skinsUpload => 'Uploaden';
-
-  @override
-  String get skinsCreate => 'Aanmaken';
-
-  @override
-  String get skinsDownload => 'Downloaden';
-
-  @override
   String get chooseUniqueUsername =>
       'Kies een unieke gebruikersnaam om te beginnen.';
 
@@ -1181,20 +1135,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => 'Upgrade beschikbaar via de Microsoft Store';
-
-  @override
-  String get skinSaved => 'Skin opgeslagen';
-
-  @override
-  String skinSavedAs(String name) {
-    return 'Opgeslagen als \"$name\"';
-  }
-
-  @override
-  String get skinExportFailed => 'Exporteren mislukt';
-
-  @override
-  String get skinExported => 'Skin succesvol geexporteerd';
 
   @override
   String get accountActions => 'Account';
@@ -1619,17 +1559,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get skinsSavedToMySkins => 'Opgeslagen in Mijn Skins';
 
   @override
-  String get skinsEmptyLocalSkins =>
-      'Nog geen skins. Maak of upload een skin om te beginnen.';
-
-  @override
-  String get skinSaveDialog => 'Skin opslaan';
-
-  @override
-  String get skinNameHint => 'Skin naam';
-
-  @override
-  String get skinDefaultName => 'Mijn skin';
+  String get skinsEmptyLocalSkins => 'Nog geen opgeslagen skins.';
 
   @override
   String get sectionRecentActivity => 'Recente activiteit';
@@ -1723,9 +1653,6 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => 'Skin geliket';
-
-  @override
   String get notifPrefCommentReceived => 'Reactie ontvangen';
 
   @override
@@ -1744,12 +1671,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get notifPrefMessageReceived => 'Nieuw bericht';
 
   @override
-  String get skinLayerInner => 'Binnen';
-
-  @override
-  String get skinLayerOuter => 'Buiten';
-
-  @override
   String get feedbackLoginRequiredTitle => 'Log in om feedback te sturen';
 
   @override
@@ -1761,30 +1682,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get supportInboxTitle => 'Supportinbox';
-
-  @override
-  String get skinShareSubject => 'Minecraft-skin';
-
-  @override
-  String get skinEditorTitle => 'Skin-editor';
-
-  @override
-  String get skinToolUndo => 'Ongedaan maken';
-
-  @override
-  String get skinSaveToMySkins => 'Opslaan bij mijn skins';
-
-  @override
-  String get skinExportPng => 'PNG exporteren';
-
-  @override
-  String get skinToolDraw => 'Tekenen';
-
-  @override
-  String get skinToolFill => 'Vullen';
-
-  @override
-  String get skinToolErase => 'Wissen';
 
   @override
   String get customColour => 'Eigen kleur';
@@ -1951,47 +1848,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get howToAutoShow => 'Dit tonen als ik start';
 
   @override
-  String get skinEditorLoadFailed =>
-      'Die skin kon niet geladen worden. We beginnen met de standaardskin.';
-
-  @override
-  String get skinToolRecolour => 'Herkleur';
-
-  @override
-  String get skinToolPick => 'Pipet';
-
-  @override
-  String get skinBases => 'Bases';
-
-  @override
-  String get skinBasesTitle => 'Begin met een basis';
-
-  @override
-  String get skinBasesSubtitle =>
-      'Dit vervangt wat er nu staat. Ongedaan maken zet het terug.';
-
-  @override
-  String get skinMirror => 'Spiegel';
-
-  @override
-  String get skinSurprise => 'Verras me';
-
-  @override
-  String get skinToolFillHint => 'Vult het vlak dat je aantikt';
-
-  @override
-  String get skinToolRecolourHint => 'Verandert die kleur overal op de skin';
-
-  @override
-  String get skinToolPickHint => 'Neemt de kleur die je aantikt';
-
-  @override
-  String get skinModelClassic => 'Breed';
-
-  @override
-  String get skinModelSlim => 'Smal';
-
-  @override
   String get shareServerLabel => 'Server delen';
 
   @override
@@ -2018,6 +1874,23 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get consoleLanHint =>
       'Open Minecraft op je console en zoek onder Vrienden naar een LAN-spel.';
+
+  @override
+  String get consoleConnecting => 'Je console verbinden…';
+
+  @override
+  String get consoleHandedOver => 'Joinen via de relay';
+
+  @override
+  String get consoleHandedOverHint =>
+      'Je console zou binnen enkele seconden naar je server moeten gaan. Gebeurt er niets? Probeer opnieuw te joinen.';
+
+  @override
+  String get consoleConnectFailed => 'De relay is niet bereikbaar';
+
+  @override
+  String get consoleConnectFailedHint =>
+      'Controleer je verbinding en probeer opnieuw te joinen.';
 
   @override
   String get localNetworkBlocked =>
@@ -2210,4 +2083,15 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get showLess => 'Minder';
+
+  @override
+  String get lookupRecent => 'Recent';
+
+  @override
+  String get skinsRemovalNotice =>
+      'Skins worden met de volgende update verwijderd. Exporteer de skins die je wilt bewaren.';
+
+  @override
+  String get feedbackRpNotice =>
+      'We beantwoorden geen meldingen over resource packs. Sommige packs werken gewoon niet, en sommige servers weigeren eigen packs.';
 }

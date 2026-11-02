@@ -180,11 +180,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get iUnderstand => '理解しました';
 
   @override
-  String playInstructionsSwitch(Object relayName, Object relayIp) {
-    return '選択中: $relayName\r\n\r\n接続方法:\r\n1. Switch の設定を開き、DNS を次に変更します: $relayIp\r\n2. Minecraft を開き、リストからサーバーを選択します（Cubecraft や Hive など）。\r\n3. これで自動的に自分のサーバーへ送られます。';
-  }
-
-  @override
   String get noSavedServers => '保存されたサーバーはありません';
 
   @override
@@ -220,9 +215,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get stopBroadcasting => 'ブロードキャスト停止';
 
   @override
-  String get startNintendoMode => 'Nintendo モード開始';
-
-  @override
   String get startFriendsMode => 'Friends モード開始';
 
   @override
@@ -230,9 +222,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get labelXbox => 'Xbox/PS4-5';
-
-  @override
-  String get labelNintendo => 'Nintendo';
 
   @override
   String get labelFriends => '友達';
@@ -246,12 +235,6 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get howToXboxBody =>
       '接続方法（Xbox / PS4 / PS5）:\r\n1. MCCompanion を実行しているデバイスとコンソールが同じローカルネットワーク上にあることを確認してください。\r\n2. アプリで Minecraft サーバーのアドレスとポートを入力し、\"ブロードキャスト開始\" を押します。\r\n3. コンソールで Minecraft → Play を開き、LAN Worlds または Friends タブを探してリストを更新します。\r\n4. \"MCCompanion\" という名前の LAN サーバーを選択して参加します。\r\nメモ:\r\n- サーバーが表示されない場合は、両方のデバイスが同じサブネット上にあり、アプリがまだブロードキャスト中であることを確認してください。\r\n- 一部のコンソールやルーターでは LAN 検出がブロックされる場合があります。必要に応じてアプリやルーターの設定を切り替えてみてください。';
-
-  @override
-  String get howToNintendoTitle => 'Nintendo Switch (DNS モード)';
-
-  @override
-  String get howToNintendoSubtitle => 'DNSで接続';
 
   @override
   String get howToFriendsTitle => 'Friends モード';
@@ -278,16 +261,6 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get helpMultiplayerFailedBody =>
       '⚠️ これは MCCompanion の問題ではありません！\r\n\r\nMCCompanion は正常に要求されたサーバーへリダイレクトしました。\"Multiplayer Connection Failed\" というメッセージは、対象サーバーに現在到達できないことを示しています。考えられる理由:\r\n\r\n• 対象の Minecraft サーバーがオフライン、または過負荷状態である\r\n• サーバーが更新されたクライアントバージョン、または特定のエディションを要求している\r\n• relay と対象サーバーの間にネットワークの問題がある\r\n\r\n別のサーバーに接続するか、そのサーバーのサポートに連絡してください。複数のサーバーで問題が続く場合は、MCCompanion でデバッグモードを有効にしてログを確認してください。';
-
-  @override
-  String get helpNintendoDnsTitle => 'Nintendo DNS が動作しない';
-
-  @override
-  String get helpNintendoDnsSubtitle => 'よくある DNS / relay の問題';
-
-  @override
-  String get helpNintendoDnsBody =>
-      'Nintendo DNS モードが動作しない場合は、次を確認してください:\r\n\r\n1. アプリから DNS 設定を送信したことを確認します（Send DNS Config）。\r\n2. Switch に relay IP をプライマリ DNS として適用したことを確認します。\r\n3. 選択した relay サーバー（EU/US）がオンラインで、過負荷でないことを確認します。\r\n4. 一部のネットワーク（例: captive portal）はカスタム DNS を妨げます。別のネットワークで試してください。\r\n\r\n問題が続く場合は、デバッグモードを有効にしてログを確認するか、フレンドモードの代替手段を試してください。';
 
   @override
   String get helpFriendsModeTitle => 'Friends モードが動作しない';
@@ -749,24 +722,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get requestsAppearHere => '新しいフレンドリクエストはここに表示されます。';
 
   @override
-  String get skinsEdit => 'Edit';
-
-  @override
-  String get skinsMustBe64 => 'スキンは 64×64 ピクセルである必要があります';
-
-  @override
-  String get skinsInvalidFile => '無効な画像ファイルです';
-
-  @override
-  String get skinsUpload => 'アップロード';
-
-  @override
-  String get skinsCreate => '作成';
-
-  @override
-  String get skinsDownload => 'ダウンロード';
-
-  @override
   String get chooseUniqueUsername => 'ユニークなユーザー名を選んで始めましょう。';
 
   @override
@@ -1141,20 +1096,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => 'Microsoft Storeでアップグレードできます';
-
-  @override
-  String get skinSaved => 'スキンを保存しました';
-
-  @override
-  String skinSavedAs(String name) {
-    return '\"$name\" として保存しました';
-  }
-
-  @override
-  String get skinExportFailed => 'エクスポート失敗';
-
-  @override
-  String get skinExported => 'スキンを正常にエクスポートしました';
 
   @override
   String get accountActions => 'アカウント';
@@ -1557,16 +1498,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get skinsSavedToMySkins => 'マイスキンに保存しました';
 
   @override
-  String get skinsEmptyLocalSkins => 'スキンはまだありません。スキンを作成またはアップロードして始めましょう。';
-
-  @override
-  String get skinSaveDialog => 'スキンを保存';
-
-  @override
-  String get skinNameHint => 'スキン名';
-
-  @override
-  String get skinDefaultName => 'マイスキン';
+  String get skinsEmptyLocalSkins => '保存済みのスキンはまだありません。';
 
   @override
   String get sectionRecentActivity => '最近のアクティビティ';
@@ -1659,9 +1591,6 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => 'スキンへのいいね';
-
-  @override
   String get notifPrefCommentReceived => 'コメント受信';
 
   @override
@@ -1680,12 +1609,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get notifPrefMessageReceived => '新しいメッセージ';
 
   @override
-  String get skinLayerInner => '内側';
-
-  @override
-  String get skinLayerOuter => '外側';
-
-  @override
   String get feedbackLoginRequiredTitle => 'フィードバックを送信するにはログインしてください';
 
   @override
@@ -1697,30 +1620,6 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get supportInboxTitle => 'サポート受信箱';
-
-  @override
-  String get skinShareSubject => 'Minecraft スキン';
-
-  @override
-  String get skinEditorTitle => 'スキンエディター';
-
-  @override
-  String get skinToolUndo => '元に戻す';
-
-  @override
-  String get skinSaveToMySkins => 'マイスキンに保存';
-
-  @override
-  String get skinExportPng => 'PNG を書き出す';
-
-  @override
-  String get skinToolDraw => '描く';
-
-  @override
-  String get skinToolFill => '塗りつぶし';
-
-  @override
-  String get skinToolErase => '消す';
 
   @override
   String get customColour => 'カスタムカラー';
@@ -1886,45 +1785,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get howToAutoShow => '開始時にこれを表示';
 
   @override
-  String get skinEditorLoadFailed => 'そのスキンを読み込めませんでした。標準のスキンから始めます。';
-
-  @override
-  String get skinToolRecolour => '色を置換';
-
-  @override
-  String get skinToolPick => 'スポイト';
-
-  @override
-  String get skinBases => 'ベース';
-
-  @override
-  String get skinBasesTitle => 'ベースから始める';
-
-  @override
-  String get skinBasesSubtitle => '今の絵と置き換わります。元に戻すで復帰します。';
-
-  @override
-  String get skinMirror => '左右対称';
-
-  @override
-  String get skinSurprise => 'おまかせ';
-
-  @override
-  String get skinToolFillHint => 'タップした面を塗ります';
-
-  @override
-  String get skinToolRecolourHint => 'その色をスキン全体で置き換えます';
-
-  @override
-  String get skinToolPickHint => 'タップした色を取り込みます';
-
-  @override
-  String get skinModelClassic => '標準';
-
-  @override
-  String get skinModelSlim => '細身';
-
-  @override
   String get shareServerLabel => 'サーバーを共有';
 
   @override
@@ -1949,6 +1809,23 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get consoleLanHint => 'コンソールでMinecraftを開き、友達からLANゲームを探してください。';
+
+  @override
+  String get consoleConnecting => 'Connecting your console…';
+
+  @override
+  String get consoleHandedOver => 'Joining through the relay';
+
+  @override
+  String get consoleHandedOverHint =>
+      'Your console should switch to your server in a few seconds. Nothing happening? Try joining again.';
+
+  @override
+  String get consoleConnectFailed => 'Could not reach the relay';
+
+  @override
+  String get consoleConnectFailedHint =>
+      'Check your connection, then try joining again.';
 
   @override
   String get localNetworkBlocked =>
@@ -2134,4 +2011,14 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get showLess => '閉じる';
+
+  @override
+  String get lookupRecent => '最近';
+
+  @override
+  String get skinsRemovalNotice => '次のアップデートでスキンは削除されます。残したいスキンはエクスポートしてください。';
+
+  @override
+  String get feedbackRpNotice =>
+      'リソースパックに関する報告には返信しておりません。一部のパックは単に動作しないことがあり、サーバーがカスタムパックを拒否する場合もあります。';
 }

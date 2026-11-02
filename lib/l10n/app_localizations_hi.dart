@@ -182,11 +182,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get iUnderstand => 'मैं समझ गया';
 
   @override
-  String playInstructionsSwitch(Object relayName, Object relayIp) {
-    return 'चयनित: $relayName\r\n\r\nकैसे कनेक्ट करें:\r\n1. अपने Switch Settings में जाएँ और DNS को इस पर बदलें: $relayIp\r\n2. Minecraft खोलें और सूची से एक सर्वर चुनें (जैसे Cubecraft या Hive)।\r\n3. अब आपको अपने सर्वर पर अपने आप भेज दिया जाएगा।';
-  }
-
-  @override
   String get noSavedServers => 'कोई सहेजा गया सर्वर नहीं';
 
   @override
@@ -222,9 +217,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get stopBroadcasting => 'ब्रॉडकास्टिंग बंद करें';
 
   @override
-  String get startNintendoMode => 'Nintendo मोड शुरू करें';
-
-  @override
   String get startFriendsMode => 'मित्र मोड शुरू करें';
 
   @override
@@ -232,9 +224,6 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get labelXbox => 'Xbox/PS4-5';
-
-  @override
-  String get labelNintendo => 'Nintendo';
 
   @override
   String get labelFriends => 'दोस्त';
@@ -248,12 +237,6 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get howToXboxBody =>
       'कैसे कनेक्ट करें (Xbox / PS4 / PS5):\r\n1. सुनिश्चित करें कि MCCompanion चलाने वाला आपका डिवाइस और आपका कंसोल एक ही लोकल नेटवर्क पर हैं।\r\n2. ऐप में अपना Minecraft server address और port दर्ज करें और \\\"ब्रॉडकास्टिंग शुरू करें\\\" दबाएँ।\r\n3. कंसोल पर Minecraft → Play खोलें → LAN Worlds या Friends टैब देखें और सूची को रिफ्रेश करें।\r\n4. जुड़ने के लिए \\\"MCCompanion\\\" नाम वाले LAN server को चुनें।\r\nनोट्स:\r\n- यदि सर्वर दिखाई नहीं देता, तो पुष्टि करें कि दोनों डिवाइस एक ही subnet पर हैं और ऐप अभी भी ब्रॉडकास्ट कर रही है।\r\n- कुछ कंसोल मॉडल या राउटर LAN discovery को ब्लॉक कर सकते हैं; जरूरत पड़ने पर ऐप या राउटर सेटिंग्स बदलकर देखें।';
-
-  @override
-  String get howToNintendoTitle => 'Nintendo Switch (DNS मोड)';
-
-  @override
-  String get howToNintendoSubtitle => 'DNS से कनेक्ट करें';
 
   @override
   String get howToFriendsTitle => 'मित्र मोड';
@@ -281,16 +264,6 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get helpMultiplayerFailedBody =>
       '⚠️ यह MCCompanion की समस्या नहीं है!\r\n\r\nMCCompanion ने आपको सफलतापूर्वक अनुरोधित सर्वर पर रीडायरेक्ट कर दिया। \\\"Multiplayer Connection Failed\\\" संदेश का अर्थ है कि लक्ष्य सर्वर इस समय पहुँच से बाहर है। संभावित कारण:\r\n\r\n• लक्ष्य Minecraft सर्वर ऑफ़लाइन है या अत्यधिक लोड में है\r\n• सर्वर को अपडेटेड client version या किसी विशेष edition की आवश्यकता है\r\n• relay और लक्ष्य सर्वर के बीच नेटवर्क समस्याएँ हैं\r\n\r\nकिसी दूसरे सर्वर से कनेक्ट करने का प्रयास करें या सर्वर के support से संपर्क करें। यदि समस्या कई सर्वरों पर बनी रहती है, तो MCCompanion में Debug Mode सक्षम करें और logs जाँचें।';
-
-  @override
-  String get helpNintendoDnsTitle => 'Nintendo DNS काम नहीं कर रहा';
-
-  @override
-  String get helpNintendoDnsSubtitle => 'सामान्य DNS / relay समस्याएँ';
-
-  @override
-  String get helpNintendoDnsBody =>
-      'यदि Nintendo DNS मोड काम नहीं कर रहा है, तो निम्नलिखित जाँचें:\r\n\r\n1. पुष्टि करें कि आपने ऐप से DNS config भेजा है (DNS Config भेजें)।\r\n2. पुष्टि करें कि आपने Switch पर relay IP को Primary DNS के रूप में लागू किया है।\r\n3. सुनिश्चित करें कि चुना गया relay server (EU/US) ऑनलाइन है और ओवरलोड नहीं है।\r\n4. कुछ नेटवर्क (जैसे captive portals) custom DNS को रोकते हैं, किसी दूसरे नेटवर्क पर परीक्षण करें।\r\n\r\nयदि समस्या बनी रहती है, तो Debug Mode सक्षम करें और logs जाँचें या Friends-mode विकल्प आज़माएँ।';
 
   @override
   String get helpFriendsModeTitle => 'मित्र मोड काम नहीं कर रहा';
@@ -770,24 +743,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get requestsAppearHere => 'नए मित्र अनुरोध यहाँ दिखाई देंगे।';
 
   @override
-  String get skinsEdit => 'Edit';
-
-  @override
-  String get skinsMustBe64 => 'स्किन 64×64 पिक्सेल की होनी चाहिए';
-
-  @override
-  String get skinsInvalidFile => 'अमान्य इमेज फ़ाइल';
-
-  @override
-  String get skinsUpload => 'अपलोड करें';
-
-  @override
-  String get skinsCreate => 'बनाएँ';
-
-  @override
-  String get skinsDownload => 'डाउनलोड करें';
-
-  @override
   String get chooseUniqueUsername =>
       'शुरू करने के लिए एक अनोखा उपयोगकर्ता नाम चुनें।';
 
@@ -1180,20 +1135,6 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => 'Microsoft Store पर अपग्रेड उपलब्ध है';
-
-  @override
-  String get skinSaved => 'स्किन सेव हुई';
-
-  @override
-  String skinSavedAs(String name) {
-    return '\"$name\" के रूप में सेव';
-  }
-
-  @override
-  String get skinExportFailed => 'निर्यात विफल';
-
-  @override
-  String get skinExported => 'स्किन सफलतापूर्वक निर्यात हुई';
 
   @override
   String get accountActions => 'खाता';
@@ -1615,17 +1556,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get skinsSavedToMySkins => 'मेरे स्किन्स में सहेजा गया';
 
   @override
-  String get skinsEmptyLocalSkins =>
-      'अभी तक कोई स्किन नहीं। शुरू करने के लिए एक स्किन बनाएँ या अपलोड करें।';
-
-  @override
-  String get skinSaveDialog => 'स्किन सहेजें';
-
-  @override
-  String get skinNameHint => 'स्किन का नाम';
-
-  @override
-  String get skinDefaultName => 'मेरी स्किन';
+  String get skinsEmptyLocalSkins => 'अभी तक कोई सहेजी गई स्किन नहीं है।';
 
   @override
   String get sectionRecentActivity => 'हालिया गतिविधि';
@@ -1719,9 +1650,6 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => 'स्किन पसंद की';
-
-  @override
   String get notifPrefCommentReceived => 'टिप्पणी मिली';
 
   @override
@@ -1740,12 +1668,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get notifPrefMessageReceived => 'नया संदेश';
 
   @override
-  String get skinLayerInner => 'आंतरिक';
-
-  @override
-  String get skinLayerOuter => 'बाहरी';
-
-  @override
   String get feedbackLoginRequiredTitle =>
       'प्रतिक्रिया भेजने के लिए लॉग इन करें';
 
@@ -1758,30 +1680,6 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get supportInboxTitle => 'सपोर्ट इनबॉक्स';
-
-  @override
-  String get skinShareSubject => 'Minecraft स्किन';
-
-  @override
-  String get skinEditorTitle => 'स्किन एडिटर';
-
-  @override
-  String get skinToolUndo => 'पहले जैसा करें';
-
-  @override
-  String get skinSaveToMySkins => 'मेरी स्किन में सेव करें';
-
-  @override
-  String get skinExportPng => 'PNG एक्सपोर्ट करें';
-
-  @override
-  String get skinToolDraw => 'बनाएं';
-
-  @override
-  String get skinToolFill => 'भरें';
-
-  @override
-  String get skinToolErase => 'मिटाएं';
 
   @override
   String get customColour => 'कस्टम रंग';
@@ -1948,47 +1846,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get howToAutoShow => 'शुरू करते समय यह दिखाएं';
 
   @override
-  String get skinEditorLoadFailed =>
-      'वह स्किन लोड नहीं हो सकी। हम डिफ़ॉल्ट स्किन से शुरू कर रहे हैं।';
-
-  @override
-  String get skinToolRecolour => 'रंग बदलें';
-
-  @override
-  String get skinToolPick => 'रंग चुनें';
-
-  @override
-  String get skinBases => 'बेस';
-
-  @override
-  String get skinBasesTitle => 'एक बेस से शुरू करें';
-
-  @override
-  String get skinBasesSubtitle =>
-      'यह मौजूदा चित्र बदल देगा। पूर्ववत करने पर वापस आ जाएगा।';
-
-  @override
-  String get skinMirror => 'मिरर';
-
-  @override
-  String get skinSurprise => 'सरप्राइज़';
-
-  @override
-  String get skinToolFillHint => 'आप जिस हिस्से को छूते हैं उसे भरता है';
-
-  @override
-  String get skinToolRecolourHint => 'पूरी स्किन में वह रंग बदलता है';
-
-  @override
-  String get skinToolPickHint => 'आप जिस रंग को छूते हैं वह ले लेता है';
-
-  @override
-  String get skinModelClassic => 'चौड़ा';
-
-  @override
-  String get skinModelSlim => 'पतला';
-
-  @override
   String get shareServerLabel => 'अपना सर्वर साझा करें';
 
   @override
@@ -2015,6 +1872,23 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get consoleLanHint =>
       'अपने कंसोल पर Minecraft खोलें और दोस्त में LAN गेम खोजें।';
+
+  @override
+  String get consoleConnecting => 'Connecting your console…';
+
+  @override
+  String get consoleHandedOver => 'Joining through the relay';
+
+  @override
+  String get consoleHandedOverHint =>
+      'Your console should switch to your server in a few seconds. Nothing happening? Try joining again.';
+
+  @override
+  String get consoleConnectFailed => 'Could not reach the relay';
+
+  @override
+  String get consoleConnectFailedHint =>
+      'Check your connection, then try joining again.';
 
   @override
   String get localNetworkBlocked =>
@@ -2204,4 +2078,15 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get showLess => 'कम';
+
+  @override
+  String get lookupRecent => 'हाल के';
+
+  @override
+  String get skinsRemovalNotice =>
+      'अगले अपडेट में स्किन हटा दी जाएँगी। जिन्हें रखना चाहते हैं उन्हें एक्सपोर्ट करें।';
+
+  @override
+  String get feedbackRpNotice =>
+      'हम रिसोर्स पैक से जुड़ी रिपोर्ट का जवाब नहीं देते। कुछ पैक बस काम नहीं करते, और कुछ सर्वर कस्टम पैक अस्वीकार कर देते हैं।';
 }

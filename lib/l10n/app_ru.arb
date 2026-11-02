@@ -115,23 +115,13 @@
     "description": "Shown when debug logging is enabled/disabled"
   },
   "iUnderstand": "Я понимаю",
-  "playInstructionsSwitch": "Выбрано: {relayName}\r\n\r\nКак подключиться:\r\n1. Перейдите в настройки вашей Switch и измените DNS на: {relayIp}\r\n2. Откройте Minecraft и выберите сервер из списка (например, Cubecraft или Hive).\r\n3. Теперь вы будете автоматически отправлены на свой собственный сервер.",
-  "@playInstructionsSwitch": {
-    "description": "DNS instructions shown for Nintendo Switch mode",
-    "placeholders": {
-      "relayName": {},
-      "relayIp": {}
-    }
-  },
   "noSavedServers": "Нет сохраненных серверов",
   "savedServers": "Сохраненные серверы",
   "manageServers": "Управление серверами",
   "stopBroadcasting": "Остановить трансляцию",
-  "startNintendoMode": "Запустить режим Nintendo",
   "startFriendsMode": "Запустить режим друзей",
   "startBroadcasting": "Начать трансляцию",
   "labelXbox": "Xbox/PS4-5",
-  "labelNintendo": "Nintendo",
   "labelFriends": "Друзья",
   "howToXboxTitle": "Xbox / PS4-5 (LAN / прокси)",
   "@howToXboxTitle": {
@@ -144,14 +134,6 @@
   "howToXboxBody": "Как подключиться (Xbox / PS4 / PS5):\r\n1. Убедитесь, что устройство с MCCompanion и ваша консоль находятся в одной локальной сети.\r\n2. В приложении введите адрес и порт вашего сервера Minecraft и нажмите \\\"Начать трансляцию\\\".\r\n3. На консоли откройте Minecraft → Play → найдите LAN Worlds или вкладку Friends и обновите список.\r\n4. Выберите LAN-сервер с именем \\\"MCCompanion\\\", чтобы подключиться.\r\nПримечания:\r\n- Если сервер не появляется, убедитесь, что оба устройства находятся в одной подсети и приложение все еще ведет трансляцию.\r\n- Некоторые модели консолей или роутеров могут блокировать обнаружение LAN; при необходимости попробуйте изменить настройки приложения или роутера.",
   "@howToXboxBody": {
     "description": "Detailed steps for Xbox/PS4-5 how-to modal"
-  },
-  "howToNintendoTitle": "Nintendo Switch (режим DNS)",
-  "@howToNintendoTitle": {
-    "description": "Title for the Nintendo how-to modal"
-  },
-  "howToNintendoSubtitle": "Подключение по DNS",
-  "@howToNintendoSubtitle": {
-    "description": "Short subtitle for Nintendo menu tile"
   },
   "howToFriendsTitle": "Режим друзей",
   "@howToFriendsTitle": {
@@ -184,18 +166,6 @@
   "helpMultiplayerFailedBody": "⚠️ Это не проблема MCCompanion!\r\n\r\nMCCompanion успешно перенаправил вас на запрошенный сервер. Сообщение \\\"Сбой многопользовательского подключения\\\" означает, что целевой сервер в данный момент недоступен. Возможные причины:\r\n\r\n• Целевой сервер Minecraft отключен или перегружен\r\n• Сервер требует обновленную версию клиента или определенное издание\r\n• Проблемы сети между relay и целевым сервером\r\n\r\nПопробуйте подключиться к другому серверу или обратитесь в поддержку сервера. Если проблема сохраняется на нескольких серверах, включите Debug Mode в MCCompanion и проверьте журналы.",
   "@helpMultiplayerFailedBody": {
     "description": "Explanation shown when multiplayer connection failed appears"
-  },
-  "helpNintendoDnsTitle": "Nintendo DNS не работает",
-  "@helpNintendoDnsTitle": {
-    "description": "Title for Nintendo DNS troubleshooting"
-  },
-  "helpNintendoDnsSubtitle": "Частые проблемы DNS / relay",
-  "@helpNintendoDnsSubtitle": {
-    "description": "Short subtitle for Nintendo DNS troubleshooting tile"
-  },
-  "helpNintendoDnsBody": "Если режим Nintendo DNS не работает, проверьте следующее:\r\n\r\n1. Убедитесь, что вы отправили DNS config из приложения (Send DNS Config).\r\n2. Убедитесь, что вы применили relay IP как Primary DNS на Switch.\r\n3. Убедитесь, что выбранный relay server (EU/US) находится в сети и не перегружен.\r\n4. Некоторые сети (например, captive portals) не позволяют использовать пользовательский DNS, протестируйте в другой сети.\r\n\r\nЕсли проблемы сохраняются, включите Debug Mode и проверьте журналы или попробуйте альтернативу Friends-mode.",
-  "@helpNintendoDnsBody": {
-    "description": "Detailed placeholder for Nintendo DNS troubleshooting"
   },
   "helpFriendsModeTitle": "Режим друзей не работает",
   "@helpFriendsModeTitle": {
@@ -838,30 +808,6 @@
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "Создать",
-  "@skinsCreate": {
-    "description": "Button to create/open skin editor"
-  },
-  "skinsDownload": "Скачать",
-  "@skinsDownload": {
-    "description": "Download button in skin detail sheet"
-  },
-  "skinsEdit": "Редактировать",
-  "@skinsEdit": {
-    "description": "Edit button in skin detail sheet"
-  },
-  "skinsInvalidFile": "Неверный файл изображения",
-  "@skinsInvalidFile": {
-    "description": "Error when the selected file is not a valid image"
-  },
-  "skinsMustBe64": "Скин должен быть 64×64 пикселя",
-  "@skinsMustBe64": {
-    "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsUpload": "Загрузить",
-  "@skinsUpload": {
-    "description": "Button to upload a skin"
-  },
   "somethingWentWrong": "Что-то пошло не так. Попробуйте снова.",
   "@somethingWentWrong": {
     "description": "Generic error message"
@@ -1000,27 +946,6 @@
   "upgradeWindowsHint": "Обновление доступно в Microsoft Store",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "skinSaved": "Скин сохранён",
-  "@skinSaved": {
-    "description": "Toast when skin is saved"
-  },
-  "skinSavedAs": "Сохранено как \"{name}\"",
-  "@skinSavedAs": {
-    "description": "Toast when skin saved with name",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinExportFailed": "Ошибка экспорта",
-  "@skinExportFailed": {
-    "description": "Toast when skin export fails"
-  },
-  "skinExported": "Скин успешно экспортирован",
-  "@skinExported": {
-    "description": "Toast when skin is exported successfully"
   },
   "accountActions": "Аккаунт",
   "@accountActions": {
@@ -1165,10 +1090,7 @@
     }
   },
   "skinsSavedToMySkins": "Сохранено в Мои скины",
-  "skinsEmptyLocalSkins": "Скинов пока нет. Создайте или загрузите скин, чтобы начать.",
-  "skinSaveDialog": "Сохранить скин",
-  "skinNameHint": "Название скина",
-  "skinDefaultName": "Мой скин",
+  "skinsEmptyLocalSkins": "Сохранённых скинов пока нет.",
   "sectionRecentActivity": "Последняя активность",
   "activityNoEvents": "Нет последней активности.",
   "activitySkinUploaded": "Скин загружен",
@@ -1256,35 +1178,18 @@
       }
     }
   },
-  "notifPrefSkinLiked": "Скин понравился",
   "notifPrefCommentReceived": "Получен комментарий",
   "notifPrefPackApproved": "Пак одобрен",
   "notifPrefPackRejected": "Пак отклонён",
   "notifPrefFriendRequest": "Запрос в друзья",
   "notifPrefFriendAccepted": "Друг добавлен",
   "notifPrefMessageReceived": "Новое сообщение",
-  "skinLayerInner": "Внутренний",
-  "@skinLayerInner": {
-    "description": "Skin editor layer toggle, inner/base layer"
-  },
-  "skinLayerOuter": "Внешний",
-  "@skinLayerOuter": {
-    "description": "Skin editor layer toggle, outer/overlay layer"
-  },
   "feedbackLoginRequiredTitle": "Войдите, чтобы отправить отзыв",
   "feedbackLoginRequiredBody": "Отзывы привязаны к вашему аккаунту MCCompanion, чтобы мы могли ответить вам прямо в приложении.",
   "feedbackLoginButton": "Войти",
   "rpBehaviorContentWarning": "Этот пак содержит данные пакета поведения, которые не работают на серверах. Текстуры при этом будут работать.",
   "rpInvalidPackFormat": "Это пак для Java Edition, он не поддерживается. Используйте ресурс-пак для Bedrock Edition.",
   "supportInboxTitle": "Входящие поддержки",
-  "skinShareSubject": "Скин Minecraft",
-  "skinEditorTitle": "Редактор скинов",
-  "skinToolUndo": "Отменить",
-  "skinSaveToMySkins": "Сохранить в мои скины",
-  "skinExportPng": "Экспорт PNG",
-  "skinToolDraw": "Рисовать",
-  "skinToolFill": "Заливка",
-  "skinToolErase": "Стереть",
   "customColour": "Свой цвет",
   "featuredServerLabel": "ИЗБРАННЫЙ СЕРВЕР",
   "featuredServerTagline": "Заходи и играй.",
@@ -1335,19 +1240,6 @@
   "chooseServerTitle": "Выберите сервер",
   "changeLabel": "Изменить",
   "howToAutoShow": "Показывать это при запуске",
-  "skinEditorLoadFailed": "Не удалось загрузить этот скин. Начнём со стандартного.",
-  "skinToolRecolour": "Перекрасить",
-  "skinToolPick": "Пипетка",
-  "skinBases": "Основы",
-  "skinBasesTitle": "Начать с основы",
-  "skinBasesSubtitle": "Это заменит текущий рисунок. Отмена вернёт его.",
-  "skinMirror": "Зеркало",
-  "skinSurprise": "Сюрприз",
-  "skinToolFillHint": "Заливает область, по которой вы нажали",
-  "skinToolRecolourHint": "Меняет этот цвет по всему скину",
-  "skinToolPickHint": "Берёт цвет, по которому вы нажали",
-  "skinModelClassic": "Широкие",
-  "skinModelSlim": "Тонкие",
   "shareServerLabel": "Показывать сервер",
   "shareServerOn": "Друзья видят, на каком вы сервере",
   "shareServerOff": "Друзья видят, что вы играете, но не где",
@@ -1447,5 +1339,8 @@
   "serverVoteOffline": "Не удалось связаться с сервером. Проверьте подключение.",
   "feedbackViewYourReport": "Открыть ваше сообщение",
   "showMore": "Ещё",
-  "showLess": "Свернуть"
+  "showLess": "Свернуть",
+  "lookupRecent": "Недавние",
+  "skinsRemovalNotice": "Скины будут удалены в следующем обновлении. Экспортируйте те, что хотите сохранить.",
+  "feedbackRpNotice": "Мы не отвечаем на обращения о ресурспаках. Некоторые паки просто не работают, а некоторые серверы отклоняют пользовательские паки."
 }

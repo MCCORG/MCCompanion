@@ -122,9 +122,9 @@ class RpFeaturedPackCard extends StatelessWidget {
                           label: rpCategoryLabel(l, category),
                           color: DsColor.info,
                         ),
-                      ...tags.take(3).map(
-                        (t) => DsBadge(label: t, color: DsColor.accent),
-                      ),
+                      ...tags
+                          .take(3)
+                          .map((t) => DsBadge(label: t, color: DsColor.accent)),
                       if (downloadCount != null)
                         Text(
                           '↓ $downloadCount',

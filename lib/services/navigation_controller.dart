@@ -18,6 +18,7 @@ class NavigationController {
   final VoidCallback? clearLogsCallback;
 
   final ValueNotifier<bool> consoleOpen = ValueNotifier<bool>(false);
+  final ValueNotifier<bool> broadcasting = ValueNotifier<bool>(false);
 
   NavigationController({
     required this.websiteUrl,

@@ -13,7 +13,7 @@ import '../widgets/report_user_sheet.dart';
 import '../models/user_model.dart';
 import '../services/user_service.dart';
 import '../widgets/skin_3d_viewer.dart';
-import '../widgets/navigation/bottom_nav_bar.dart';
+import '../mobile/navigation/bottom_nav_bar.dart';
 import '../widgets/components/app_toast.dart';
 
 class PublicProfileScreen extends StatefulWidget {
@@ -194,10 +194,8 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
               ],
       ),
       bottomNavigationBar: BottomGlassSimpleNavBar(
-        navigationController: null,
         activeItem: 'profile',
         onConnectorTap: () => _navTo(widget.onGoToConnector),
-        onProfileTap: () => Navigator.of(context).popUntil((r) => r.isFirst),
       ),
       body: _loading
           ? Center(
@@ -609,10 +607,8 @@ class _UserSearchScreenState extends State<UserSearchScreen> {
         iconTheme: IconThemeData(color: AppTheme.textPrimary),
       ),
       bottomNavigationBar: BottomGlassSimpleNavBar(
-        navigationController: null,
         activeItem: 'profile',
         onConnectorTap: () => _navTo(widget.onGoToConnector),
-        onProfileTap: () => Navigator.of(context).pop(),
       ),
       body: Column(
         children: [

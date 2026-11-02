@@ -115,23 +115,13 @@
     "description": "Shown when debug logging is enabled/disabled"
   },
   "iUnderstand": "أنا أفهم",
-  "playInstructionsSwitch": "المحدد: {relayName}\r\n\r\nكيفية الاتصال:\r\n1. انتقل إلى إعدادات Switch الخاصة بك وغيّر DNS إلى: {relayIp}\r\n2. افتح Minecraft واختر خادمًا من القائمة (مثل Cubecraft أو Hive).\r\n3. سيتم الآن توجيهك تلقائيًا إلى خادمك الخاص.",
-  "@playInstructionsSwitch": {
-    "description": "DNS instructions shown for Nintendo Switch mode",
-    "placeholders": {
-      "relayName": {},
-      "relayIp": {}
-    }
-  },
   "noSavedServers": "لا توجد خوادم محفوظة",
   "savedServers": "الخوادم المحفوظة",
   "manageServers": "إدارة الخوادم",
   "stopBroadcasting": "إيقاف البث",
-  "startNintendoMode": "بدء وضع Nintendo",
   "startFriendsMode": "بدء وضع الأصدقاء",
   "startBroadcasting": "بدء البث",
   "labelXbox": "Xbox/PS4-5",
-  "labelNintendo": "Nintendo",
   "labelFriends": "الأصدقاء",
   "howToXboxTitle": "Xbox / PS4-5 (شبكة محلية / وكيل)",
   "@howToXboxTitle": {
@@ -144,14 +134,6 @@
   "howToXboxBody": "كيفية الاتصال (Xbox / PS4 / PS5):\r\n1. تأكد من أن الجهاز الذي يشغّل MCCompanion ووحدة التحكم الخاصة بك على نفس الشبكة المحلية.\r\n2. في التطبيق، أدخل عنوان خادم Minecraft والمنفذ ثم اضغط على \\\"بدء البث\\\".\r\n3. على وحدة التحكم افتح Minecraft → لعب → وابحث عن عوالم الشبكة المحلية أو تبويب الأصدقاء ثم حدّث القائمة.\r\n4. اختر خادم الشبكة المحلية المسمى \\\"MCCompanion\\\" للانضمام.\r\nملاحظات:\r\n- إذا لم يظهر الخادم، فتأكد من أن الجهازين على نفس الشبكة الفرعية وأن التطبيق ما يزال يبث.\r\n- قد تمنع بعض طرازات وحدات التحكم أو أجهزة التوجيه اكتشاف الشبكة المحلية؛ جرّب تغيير إعدادات التطبيق أو جهاز التوجيه عند الحاجة.",
   "@howToXboxBody": {
     "description": "Detailed steps for Xbox/PS4-5 how-to modal"
-  },
-  "howToNintendoTitle": "Nintendo Switch (وضع DNS)",
-  "@howToNintendoTitle": {
-    "description": "Title for the Nintendo how-to modal"
-  },
-  "howToNintendoSubtitle": "الاتصال عبر DNS",
-  "@howToNintendoSubtitle": {
-    "description": "Short subtitle for Nintendo menu tile"
   },
   "howToFriendsTitle": "وضع الأصدقاء",
   "@howToFriendsTitle": {
@@ -184,18 +166,6 @@
   "helpMultiplayerFailedBody": "⚠️ هذه ليست مشكلة في MCCompanion!\r\n\r\nلقد قام MCCompanion بإعادتك بنجاح إلى الخادم المطلوب. تشير رسالة \\\"فشل اتصال اللعب الجماعي\\\" إلى أن الخادم الهدف غير متاح حاليًا. الأسباب المحتملة:\r\n\r\n• خادم Minecraft الهدف غير متصل أو مثقل بالتحميل\r\n• يتطلب الخادم إصدار عميل محدثًا أو إصدارًا معينًا\r\n• توجد مشكلات في الشبكة بين Relay والخادم الهدف\r\n\r\nحاول الاتصال بخادم مختلف أو تواصل مع دعم الخادم. إذا استمرت المشكلة على عدة خوادم، فعّل وضع التصحيح في MCCompanion وافحص السجلات.",
   "@helpMultiplayerFailedBody": {
     "description": "Explanation shown when multiplayer connection failed appears"
-  },
-  "helpNintendoDnsTitle": "DNS الخاص بـ Nintendo لا يعمل",
-  "@helpNintendoDnsTitle": {
-    "description": "Title for Nintendo DNS troubleshooting"
-  },
-  "helpNintendoDnsSubtitle": "مشكلات DNS / خادم الترحيل الشائعة",
-  "@helpNintendoDnsSubtitle": {
-    "description": "Short subtitle for Nintendo DNS troubleshooting tile"
-  },
-  "helpNintendoDnsBody": "إذا لم يعمل وضع DNS الخاص بـ Nintendo، فتحقق مما يلي:\r\n\r\n1. تأكد من أنك أرسلت إعداد DNS من التطبيق (إرسال إعداد DNS).\r\n2. تحقق من أنك طبّقت عنوان IP الخاص بخادم الترحيل كـ DNS أساسي على Switch.\r\n3. تأكد من أن خادم الترحيل المحدد (EU/US) متصل وغير مثقل بالتحميل.\r\n4. بعض الشبكات (مثل البوابات المقيدة) تمنع DNS المخصص, جرّب على شبكة مختلفة.\r\n\r\nإذا استمرت المشكلات، فعّل وضع التصحيح وافحص السجلات أو جرّب البديل وهو وضع الأصدقاء.",
-  "@helpNintendoDnsBody": {
-    "description": "Detailed placeholder for Nintendo DNS troubleshooting"
   },
   "helpFriendsModeTitle": "وضع الأصدقاء لا يعمل",
   "@helpFriendsModeTitle": {
@@ -838,30 +808,6 @@
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "إنشاء",
-  "@skinsCreate": {
-    "description": "Button to create/open skin editor"
-  },
-  "skinsDownload": "تنزيل",
-  "@skinsDownload": {
-    "description": "Download button in skin detail sheet"
-  },
-  "skinsEdit": "Edit",
-  "@skinsEdit": {
-    "description": "Edit button in skin detail sheet"
-  },
-  "skinsInvalidFile": "ملف صورة غير صالح",
-  "@skinsInvalidFile": {
-    "description": "Error when the selected file is not a valid image"
-  },
-  "skinsMustBe64": "يجب أن يكون حجم السكن 64×64 بكسل",
-  "@skinsMustBe64": {
-    "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsUpload": "رفع",
-  "@skinsUpload": {
-    "description": "Button to upload a skin"
-  },
   "somethingWentWrong": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
   "@somethingWentWrong": {
     "description": "Generic error message"
@@ -1000,27 +946,6 @@
   "upgradeWindowsHint": "الترقية متاحة عبر متجر Microsoft",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "skinSaved": "تم حفظ السكن",
-  "@skinSaved": {
-    "description": "Toast when skin is saved"
-  },
-  "skinSavedAs": "حفظ باسم \"{name}\"",
-  "@skinSavedAs": {
-    "description": "Toast when skin saved with name",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinExportFailed": "فشل التصدير",
-  "@skinExportFailed": {
-    "description": "Toast when skin export fails"
-  },
-  "skinExported": "تم تصدير السكن بنجاح",
-  "@skinExported": {
-    "description": "Toast when skin is exported successfully"
   },
   "accountActions": "الحساب",
   "@accountActions": {
@@ -1165,10 +1090,7 @@
     }
   },
   "skinsSavedToMySkins": "تم الحفظ في سكناتي",
-  "skinsEmptyLocalSkins": "لا توجد سكنات بعد. أنشئ أو ارفع سكناً للبدء.",
-  "skinSaveDialog": "حفظ السكن",
-  "skinNameHint": "اسم السكن",
-  "skinDefaultName": "سكني",
+  "skinsEmptyLocalSkins": "لا توجد سكنات محفوظة بعد.",
   "sectionRecentActivity": "النشاط الأخير",
   "activityNoEvents": "لا يوجد نشاط حديث بعد.",
   "activitySkinUploaded": "تم رفع السكن",
@@ -1256,35 +1178,18 @@
       }
     }
   },
-  "notifPrefSkinLiked": "إعجاب بالسكن",
   "notifPrefCommentReceived": "تعليق مستلم",
   "notifPrefPackApproved": "حزمة موافق عليها",
   "notifPrefPackRejected": "حزمة مرفوضة",
   "notifPrefFriendRequest": "طلب صداقة",
   "notifPrefFriendAccepted": "صديق مضاف",
   "notifPrefMessageReceived": "رسالة جديدة",
-  "skinLayerInner": "داخلي",
-  "@skinLayerInner": {
-    "description": "Skin editor layer toggle, inner/base layer"
-  },
-  "skinLayerOuter": "خارجي",
-  "@skinLayerOuter": {
-    "description": "Skin editor layer toggle, outer/overlay layer"
-  },
   "feedbackLoginRequiredTitle": "سجّل الدخول لإرسال الملاحظات",
   "feedbackLoginRequiredBody": "ترتبط الملاحظات بحساب MCCompanion الخاص بك حتى نتمكن من الرد عليك مباشرة داخل التطبيق.",
   "feedbackLoginButton": "تسجيل الدخول",
   "rpBehaviorContentWarning": "تحتوي هذه الحزمة على بيانات حزمة سلوك لن تعمل على الخوادم. ستظل الإكساءات تعمل.",
   "rpInvalidPackFormat": "هذه حزمة إصدار Java وهي غير مدعومة. يرجى استخدام حزمة موارد لإصدار Bedrock.",
   "supportInboxTitle": "بريد الدعم",
-  "skinShareSubject": "سكين Minecraft",
-  "skinEditorTitle": "محرر السكين",
-  "skinToolUndo": "تراجع",
-  "skinSaveToMySkins": "حفظ في سكيناتي",
-  "skinExportPng": "تصدير PNG",
-  "skinToolDraw": "رسم",
-  "skinToolFill": "تعبئة",
-  "skinToolErase": "مسح",
   "customColour": "لون مخصص",
   "featuredServerLabel": "خادم مميز",
   "featuredServerTagline": "انضم وابدأ اللعب.",
@@ -1335,19 +1240,6 @@
   "chooseServerTitle": "اختر خادمًا",
   "changeLabel": "تغيير",
   "howToAutoShow": "أظهر هذا عند البدء",
-  "skinEditorLoadFailed": "تعذّر تحميل هذا الشكل. سنبدأ بالشكل الافتراضي.",
-  "skinToolRecolour": "تغيير اللون",
-  "skinToolPick": "القطارة",
-  "skinBases": "قوالب",
-  "skinBasesTitle": "ابدأ من قالب",
-  "skinBasesSubtitle": "سيحل هذا محل الرسم الحالي. التراجع يعيده.",
-  "skinMirror": "مرآة",
-  "skinSurprise": "فاجئني",
-  "skinToolFillHint": "يملأ المنطقة التي تلمسها",
-  "skinToolRecolourHint": "يغيّر ذلك اللون في كامل الشكل",
-  "skinToolPickHint": "يأخذ اللون الذي تلمسه",
-  "skinModelClassic": "عريض",
-  "skinModelSlim": "نحيف",
   "shareServerLabel": "مشاركة خادمك",
   "shareServerOn": "يمكن لأصدقائك رؤية الخادم الذي تلعب فيه",
   "shareServerOff": "يرى أصدقاؤك أنك تلعب دون معرفة المكان",
@@ -1447,5 +1339,8 @@
   "serverVoteOffline": "تعذّر الوصول إلى الخادم. تحقّق من اتصالك.",
   "feedbackViewYourReport": "عرض بلاغك",
   "showMore": "المزيد",
-  "showLess": "أقل"
+  "showLess": "أقل",
+  "lookupRecent": "الأخيرة",
+  "skinsRemovalNotice": "ستتم إزالة السكنات في التحديث القادم. صدّر السكنات التي تريد الاحتفاظ بها.",
+  "feedbackRpNotice": "لا نرد على البلاغات المتعلقة بحزم الموارد. بعض الحزم لا تعمل ببساطة، وبعض الخوادم ترفض الحزم المخصصة."
 }

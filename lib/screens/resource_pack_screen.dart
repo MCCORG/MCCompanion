@@ -11,6 +11,9 @@ import '../l10n/app_localizations.dart';
 import '../services/auth_service.dart';
 import '../theme/app_theme.dart';
 import '../design/design.dart';
+import '../layout/bar_width.dart';
+import '../layout/bar_inset.dart';
+import '../layout/platform.dart';
 import '../util/pack_file_picker.dart';
 import '../util/resource_pack_prefs.dart';
 import '../widgets/components/app_toast.dart';
@@ -413,11 +416,13 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
         children: [
           DsHeader(
             title: l.rpScreenTitle,
-            leading: DsIconButton(
-              icon: Icons.arrow_back_rounded,
-              size: 36,
-              onPressed: widget.onBack,
-            ),
+            leading: useClientLayout(context)
+                ? null
+                : DsIconButton(
+                    icon: Icons.arrow_back_rounded,
+                    size: 36,
+                    onPressed: widget.onBack,
+                  ),
           ),
 
           Expanded(
@@ -432,76 +437,12 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
                       ),
                     ),
                   )
-                : SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: DsSpace.gutter,
-                    ),
-                    keyboardDismissBehavior:
-                        ScrollViewKeyboardDismissBehavior.onDrag,
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 720),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 20),
-
-                          RpActivePackBanner(
-                            name: _hasPack ? _activePackName : null,
-                            enabled: _enabled,
-                            onToggle: _hasPack ? _toggleEnabled : null,
-                            onRemove: (_hasPack && _mode == RpInputMode.upload)
-                                ? _deleteUpload
-                                : null,
-                          ),
-                          const SizedBox(height: 16),
-
-                          RpTabBar(
-                            mode: _mode,
-                            onSelect: (m) => setState(() => _mode = m),
-                          ),
-                          const SizedBox(height: 16),
-
-                          if (_mode == RpInputMode.browse)
-                            _buildBrowseSection(),
-                          if (_mode == RpInputMode.upload)
-                            _buildUploadSection(l),
-                          if (_mode == RpInputMode.merge) ...[
-                            RpTabInfoBox(text: l.rpTabMergeInfo),
-                            const SizedBox(height: 16),
-                          ],
-                          Offstage(
-                            offstage: _mode != RpInputMode.merge,
-                            child: RpMergerWidget(
-                              key: const ValueKey('merger'),
-                              onActivated: (url, filename) {
-                                setState(() {
-                                  _uploadedUrl = url;
-                                  _uploadedFilename = filename;
-                                  _hasPack = true;
-                                  _activePackName = filename;
-                                  _mode = RpInputMode.upload;
-                                });
-                                AppToast.show(
-                                  context,
-                                  message: AppLocalizations.of(
-                                    context,
-                                  )!.rpMergerSetActiveToast,
-                                  icon: Icons.check_rounded,
-                                  color: AppTheme.accent,
-                                );
-                              },
-                            ),
-                          ),
-
-                          if (showControls) ...[
-                            const SizedBox(height: 28),
-                            RpInfoSection(showDialog: _showDialog),
-                          ],
-
-                          const SizedBox(height: 32),
-                        ],
-                      ),
-                    ),
+                : LayoutBuilder(
+                    builder: (context, constraints) =>
+                        useClientLayout(context) &&
+                            constraints.maxWidth >= _desktopSplitWidth
+                        ? _buildDesktop(l, showControls)
+                        : _buildSingleColumn(l, showControls),
                   ),
           ),
         ],
@@ -509,7 +450,264 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     );
   }
 
-  Widget _buildBrowseSection() {
+  static const double _desktopSplitWidth = 900;
+  static const double _filterColumnWidth = 320;
+  static const double _paneContentWidth = 720;
+  static const double _mergerWidth = 900;
+
+  Widget _buildSingleColumn(AppLocalizations l, bool showControls) {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.symmetric(horizontal: DsSpace.gutter),
+      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+      child: Align(
+        alignment: Alignment.topLeft,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxWidth: useClientLayout(context) ? kDesktopPageWidth : 720,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20),
+
+              _buildActiveBanner(),
+              const SizedBox(height: 16),
+
+              BarWidth(
+                maxWidth: 560,
+                child: RpTabBar(
+                  mode: _mode,
+                  onSelect: (m) => setState(() => _mode = m),
+                ),
+              ),
+              const SizedBox(height: 16),
+
+              if (_mode == RpInputMode.browse) _buildBrowseSection(),
+              if (_mode == RpInputMode.upload) _buildUploadSection(l),
+              if (_mode == RpInputMode.merge) ...[
+                RpTabInfoBox(text: l.rpTabMergeInfo),
+                const SizedBox(height: 16),
+              ],
+              _buildMerger(),
+
+              if (showControls) ...[
+                const SizedBox(height: 28),
+                RpInfoSection(showDialog: _showDialog),
+              ],
+
+              SizedBox(height: 32 + BarInset.of(context)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildActiveBanner() {
+    return RpActivePackBanner(
+      name: _hasPack ? _activePackName : null,
+      enabled: _enabled,
+      onToggle: _hasPack ? _toggleEnabled : null,
+      onRemove: (_hasPack && _mode == RpInputMode.upload)
+          ? _deleteUpload
+          : null,
+    );
+  }
+
+  Widget _buildMerger() {
+    return Offstage(
+      offstage: _mode != RpInputMode.merge,
+      child: RpMergerWidget(
+        key: const ValueKey('merger'),
+        onActivated: (url, filename) {
+          setState(() {
+            _uploadedUrl = url;
+            _uploadedFilename = filename;
+            _hasPack = true;
+            _activePackName = filename;
+            _mode = RpInputMode.upload;
+          });
+          AppToast.show(
+            context,
+            message: AppLocalizations.of(context)!.rpMergerSetActiveToast,
+            icon: Icons.check_rounded,
+            color: AppTheme.accent,
+          );
+        },
+      ),
+    );
+  }
+
+  String _tabInfo(AppLocalizations l) => switch (_mode) {
+    RpInputMode.browse => l.rpTabBrowseInfo,
+    RpInputMode.upload => l.rpTabUploadInfo,
+    RpInputMode.merge => l.rpTabMergeInfo,
+  };
+
+  void _toggleCategory(String category) => setState(
+    () => _selectedCategory = _selectedCategory == category ? null : category,
+  );
+
+  void _toggleTag(String tag) => setState(() {
+    if (!_selectedTags.remove(tag)) _selectedTags.add(tag);
+  });
+
+  Widget _buildDesktop(AppLocalizations l, bool showControls) {
+    final browsing = _mode == RpInputMode.browse;
+    final filtersReady =
+        browsing &&
+        !_featuredLoading &&
+        !_featuredError &&
+        _featuredPacks.isNotEmpty;
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          width: _filterColumnWidth,
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.fromLTRB(
+              DsSpace.gutter,
+              20,
+              DsSpace.lg,
+              DsSpace.xxxl,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                _buildActiveBanner(),
+                const SizedBox(height: DsSpace.lg),
+                _buildDesktopTabs(l),
+                const SizedBox(height: DsSpace.sm),
+                RpTabInfoBox(text: _tabInfo(l)),
+                if (filtersReady) ...[
+                  const SizedBox(height: DsSpace.lg),
+                  _buildDesktopFilters(l),
+                ],
+              ],
+            ),
+          ),
+        ),
+        Container(width: 1, color: DsColor.line),
+        Expanded(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.fromLTRB(
+              DsSpace.lg,
+              20,
+              DsSpace.gutter,
+              32,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (browsing)
+                  _buildBrowseSection(inlineFilters: false, minCardWidth: 440),
+                if (_mode == RpInputMode.upload)
+                  Center(
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(
+                        maxWidth: _paneContentWidth,
+                      ),
+                      child: _buildUploadSection(l, showInfo: false),
+                    ),
+                  ),
+                Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: _mergerWidth),
+                    child: _buildMerger(),
+                  ),
+                ),
+                if (showControls) ...[
+                  const SizedBox(height: 28),
+                  Center(
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(
+                        maxWidth: _paneContentWidth,
+                      ),
+                      child: RpInfoSection(showDialog: _showDialog),
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDesktopTabs(AppLocalizations l) {
+    Widget tab(RpInputMode mode, String label, IconData icon) => Padding(
+      padding: const EdgeInsets.only(bottom: DsSpace.sm),
+      child: DsButton(
+        label: label,
+        icon: icon,
+        expand: true,
+        tone: _mode == mode ? DsButtonTone.accent : DsButtonTone.quiet,
+        onPressed: () => setState(() => _mode = mode),
+      ),
+    );
+
+    return Column(
+      children: [
+        tab(RpInputMode.browse, l.rpBrowseTab, Icons.explore_rounded),
+        tab(RpInputMode.upload, l.rpUploadTab, Icons.upload_rounded),
+        tab(RpInputMode.merge, l.rpMergerTitle, Icons.merge_rounded),
+      ],
+    );
+  }
+
+  Widget _buildDesktopFilters(AppLocalizations l) {
+    final tags = _allTags;
+    const gap = DsSpace.sm - 2;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        DsField(
+          controller: _searchCtrl,
+          hint: l.rpSearchHint,
+          icon: Icons.search_rounded,
+          onChanged: (v) => setState(() => _featuredSearch = v),
+        ),
+        const SizedBox(height: DsSpace.lg),
+        Wrap(
+          spacing: gap,
+          runSpacing: gap,
+          children: [
+            for (final cat in _kPackCategories)
+              RpFilterChip(
+                label: rpCategoryLabel(l, cat),
+                color: DsColor.info,
+                selected: _selectedCategory == cat,
+                onTap: () => _toggleCategory(cat),
+              ),
+          ],
+        ),
+        if (tags.isNotEmpty) ...[
+          const SizedBox(height: DsSpace.md),
+          Wrap(
+            spacing: gap,
+            runSpacing: gap,
+            children: [
+              for (final tag in tags)
+                RpFilterChip(
+                  label: tag,
+                  color: DsColor.accent,
+                  selected: _selectedTags.contains(tag),
+                  onTap: () => _toggleTag(tag),
+                ),
+            ],
+          ),
+        ],
+      ],
+    );
+  }
+
+  Widget _buildBrowseSection({
+    bool inlineFilters = true,
+    double minCardWidth = 520,
+  }) {
     final l = AppLocalizations.of(context)!;
     final tags = _allTags;
     final packs = _filteredPacks;
@@ -517,8 +715,10 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        RpTabInfoBox(text: l.rpTabBrowseInfo),
-        const SizedBox(height: DsSpace.lg),
+        if (inlineFilters) ...[
+          RpTabInfoBox(text: l.rpTabBrowseInfo),
+          const SizedBox(height: DsSpace.lg),
+        ],
         if (_featuredLoading)
           Padding(
             padding: const EdgeInsets.symmetric(vertical: DsSpace.xxxl),
@@ -559,71 +759,83 @@ class _ResourcePackScreenState extends State<ResourcePackScreen> {
         else ...[
           Text(l.rpBrowseSubtitle, style: DsType.caption),
           const SizedBox(height: DsSpace.md),
-          DsField(
-            controller: _searchCtrl,
-            hint: l.rpSearchHint,
-            icon: Icons.search_rounded,
-            onChanged: (v) => setState(() => _featuredSearch = v),
-          ),
-          const SizedBox(height: DsSpace.md),
-          DsHScroll(
-            child: Row(
-              children: [
-                for (final cat in _kPackCategories) ...[
-                  RpFilterChip(
-                    label: rpCategoryLabel(l, cat),
-                    color: DsColor.info,
-                    selected: _selectedCategory == cat,
-                    onTap: () => setState(
-                      () => _selectedCategory = _selectedCategory == cat
-                          ? null
-                          : cat,
-                    ),
-                  ),
-                  const SizedBox(width: DsSpace.sm - 2),
-                ],
-              ],
+          if (inlineFilters) ...[
+            DsField(
+              controller: _searchCtrl,
+              hint: l.rpSearchHint,
+              icon: Icons.search_rounded,
+              onChanged: (v) => setState(() => _featuredSearch = v),
             ),
-          ),
-          if (tags.isNotEmpty) ...[
-            const SizedBox(height: DsSpace.sm),
+            const SizedBox(height: DsSpace.md),
             DsHScroll(
               child: Row(
                 children: [
-                  for (final tag in tags) ...[
+                  for (final cat in _kPackCategories) ...[
                     RpFilterChip(
-                      label: tag,
-                      color: DsColor.accent,
-                      selected: _selectedTags.contains(tag),
-                      onTap: () => setState(() {
-                        if (!_selectedTags.remove(tag)) _selectedTags.add(tag);
-                      }),
+                      label: rpCategoryLabel(l, cat),
+                      color: DsColor.info,
+                      selected: _selectedCategory == cat,
+                      onTap: () => _toggleCategory(cat),
                     ),
                     const SizedBox(width: DsSpace.sm - 2),
                   ],
                 ],
               ),
             ),
+            if (tags.isNotEmpty) ...[
+              const SizedBox(height: DsSpace.sm),
+              DsHScroll(
+                child: Row(
+                  children: [
+                    for (final tag in tags) ...[
+                      RpFilterChip(
+                        label: tag,
+                        color: DsColor.accent,
+                        selected: _selectedTags.contains(tag),
+                        onTap: () => _toggleTag(tag),
+                      ),
+                      const SizedBox(width: DsSpace.sm - 2),
+                    ],
+                  ],
+                ),
+              ),
+            ],
           ],
           const SizedBox(height: DsSpace.lg),
-          ...packs.map(
-            (pack) => RpFeaturedPackCard(
-              pack: pack,
-              isApplying: _applyingPackId == pack['id'].toString(),
-              onUse: () => _applyFeaturedPack(pack),
-            ),
+          LayoutBuilder(
+            builder: (context, box) {
+              final columns = (box.maxWidth / minCardWidth).floor().clamp(1, 4);
+              const gap = DsSpace.md;
+              final cardWidth = (box.maxWidth - gap * (columns - 1)) / columns;
+              return Wrap(
+                spacing: gap,
+                children: [
+                  for (final pack in packs)
+                    SizedBox(
+                      width: cardWidth,
+                      child: RpFeaturedPackCard(
+                        pack: pack,
+                        isApplying: _applyingPackId == pack['id'].toString(),
+                        onUse: () => _applyFeaturedPack(pack),
+                      ),
+                    ),
+                ],
+              );
+            },
           ),
         ],
       ],
     );
   }
 
-  Widget _buildUploadSection(AppLocalizations l) {
+  Widget _buildUploadSection(AppLocalizations l, {bool showInfo = true}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        RpTabInfoBox(text: l.rpTabUploadInfo),
-        const SizedBox(height: 16),
+        if (showInfo) ...[
+          RpTabInfoBox(text: l.rpTabUploadInfo),
+          const SizedBox(height: 16),
+        ],
         if (_uploading)
           _buildUploadButton(l)
         else if (_uploadedUrl != null && _uploadedFilename != null)

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'layout/ui_scale.dart';
 import 'screens/splash_screen.dart';
 import 'theme/app_theme.dart';
 import 'l10n/app_localizations.dart';
@@ -94,10 +95,8 @@ class _MCCompanionAppState extends State<MCCompanionApp> {
           builder: (context, child) {
             final isDesktop =
                 Platform.isMacOS || Platform.isWindows || Platform.isLinux;
-            return MediaQuery(
-              data: MediaQuery.of(
-                context,
-              ).copyWith(textScaler: TextScaler.linear(isDesktop ? 1.12 : 1.0)),
+            return UiScale(
+              scale: isDesktop ? kDesktopUiScale : 1.0,
               child: child!,
             );
           },

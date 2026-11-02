@@ -183,11 +183,6 @@ class AppLocalizationsId extends AppLocalizations {
   String get iUnderstand => 'Saya mengerti';
 
   @override
-  String playInstructionsSwitch(Object relayName, Object relayIp) {
-    return 'Dipilih: $relayName\r\n\r\nCara terhubung:\r\n1. Buka Pengaturan Switch Anda dan ubah DNS menjadi: $relayIp\r\n2. Buka Minecraft dan pilih server dari daftar (seperti Cubecraft atau Hive).\r\n3. Sekarang Anda akan otomatis dikirim ke server Anda sendiri.';
-  }
-
-  @override
   String get noSavedServers => 'Tidak ada server tersimpan';
 
   @override
@@ -223,9 +218,6 @@ class AppLocalizationsId extends AppLocalizations {
   String get stopBroadcasting => 'Hentikan Siaran';
 
   @override
-  String get startNintendoMode => 'Mulai Mode Nintendo';
-
-  @override
   String get startFriendsMode => 'Mulai Mode Teman';
 
   @override
@@ -233,9 +225,6 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get labelXbox => 'Xbox/PS4-5';
-
-  @override
-  String get labelNintendo => 'Nintendo';
 
   @override
   String get labelFriends => 'Teman';
@@ -249,12 +238,6 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get howToXboxBody =>
       'Cara terhubung (Xbox / PS4 / PS5):\r\n1. Pastikan perangkat yang menjalankan MCCompanion dan konsol Anda berada di jaringan lokal yang sama.\r\n2. Di aplikasi, masukkan alamat dan port server Minecraft Anda lalu tekan \"Mulai Siaran\".\r\n3. Di konsol, buka Minecraft → Play → cari LAN Worlds atau tab Friends lalu segarkan daftar.\r\n4. Pilih server LAN bernama \"MCCompanion\" untuk bergabung.\r\nCatatan:\r\n- Jika server tidak muncul, pastikan kedua perangkat berada di subnet yang sama dan aplikasi masih menyiarkan.\r\n- Beberapa model konsol atau router dapat memblokir penemuan LAN; coba ubah pengaturan aplikasi atau router jika perlu.';
-
-  @override
-  String get howToNintendoTitle => 'Nintendo Switch (mode DNS)';
-
-  @override
-  String get howToNintendoSubtitle => 'Hubungkan lewat DNS';
 
   @override
   String get howToFriendsTitle => 'Mode Teman';
@@ -282,16 +265,6 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get helpMultiplayerFailedBody =>
       '⚠️ Ini bukan masalah pada MCCompanion!\r\n\r\nMCCompanion berhasil mengarahkan Anda ke server yang diminta. Pesan \"Multiplayer Connection Failed\" menunjukkan bahwa server tujuan saat ini tidak dapat dijangkau. Kemungkinan alasan:\r\n\r\n• Server Minecraft tujuan sedang offline atau kelebihan beban\r\n• Server memerlukan versi klien yang diperbarui atau edisi tertentu\r\n• Masalah jaringan antara relay dan server tujuan\r\n\r\nCoba hubungkan ke server lain atau hubungi dukungan server tersebut. Jika masalah tetap terjadi pada beberapa server, aktifkan Mode Debug di MCCompanion dan periksa log.';
-
-  @override
-  String get helpNintendoDnsTitle => 'DNS Nintendo tidak berfungsi';
-
-  @override
-  String get helpNintendoDnsSubtitle => 'Masalah DNS / relay umum';
-
-  @override
-  String get helpNintendoDnsBody =>
-      'Jika mode DNS Nintendo tidak berfungsi, periksa hal berikut:\r\n\r\n1. Pastikan Anda mengirim konfigurasi DNS dari aplikasi (Send DNS Config).\r\n2. Pastikan Anda menerapkan IP relay sebagai DNS Utama di Switch.\r\n3. Pastikan server relay yang dipilih (EU/US) sedang online dan tidak kelebihan beban.\r\n4. Beberapa jaringan (misalnya captive portal) mencegah DNS kustom, uji di jaringan lain.\r\n\r\nJika masalah berlanjut, aktifkan Mode Debug dan periksa log atau coba alternatif mode Teman.';
 
   @override
   String get helpFriendsModeTitle => 'Mode Teman tidak berfungsi';
@@ -770,24 +743,6 @@ class AppLocalizationsId extends AppLocalizations {
       'Permintaan pertemanan baru akan muncul di sini.';
 
   @override
-  String get skinsEdit => 'Edit';
-
-  @override
-  String get skinsMustBe64 => 'Skin harus berukuran 64×64 piksel';
-
-  @override
-  String get skinsInvalidFile => 'File gambar tidak valid';
-
-  @override
-  String get skinsUpload => 'Unggah';
-
-  @override
-  String get skinsCreate => 'Buat';
-
-  @override
-  String get skinsDownload => 'Unduh';
-
-  @override
   String get chooseUniqueUsername => 'Pilih nama pengguna unik untuk memulai.';
 
   @override
@@ -1174,20 +1129,6 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => 'Upgrade tersedia melalui Microsoft Store';
-
-  @override
-  String get skinSaved => 'Skin disimpan';
-
-  @override
-  String skinSavedAs(String name) {
-    return 'Disimpan sebagai \"$name\"';
-  }
-
-  @override
-  String get skinExportFailed => 'Ekspor gagal';
-
-  @override
-  String get skinExported => 'Skin berhasil diekspor';
 
   @override
   String get accountActions => 'Akun';
@@ -1611,17 +1552,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get skinsSavedToMySkins => 'Disimpan ke Skin Saya';
 
   @override
-  String get skinsEmptyLocalSkins =>
-      'Belum ada skin. Buat atau unggah skin untuk memulai.';
-
-  @override
-  String get skinSaveDialog => 'Simpan Skin';
-
-  @override
-  String get skinNameHint => 'Nama skin';
-
-  @override
-  String get skinDefaultName => 'Skin saya';
+  String get skinsEmptyLocalSkins => 'Belum ada skin tersimpan.';
 
   @override
   String get sectionRecentActivity => 'Aktivitas terbaru';
@@ -1715,9 +1646,6 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => 'Skin disukai';
-
-  @override
   String get notifPrefCommentReceived => 'Komentar diterima';
 
   @override
@@ -1736,12 +1664,6 @@ class AppLocalizationsId extends AppLocalizations {
   String get notifPrefMessageReceived => 'Pesan baru';
 
   @override
-  String get skinLayerInner => 'Dalam';
-
-  @override
-  String get skinLayerOuter => 'Luar';
-
-  @override
   String get feedbackLoginRequiredTitle => 'Masuk untuk mengirim masukan';
 
   @override
@@ -1753,30 +1675,6 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get supportInboxTitle => 'Kotak masuk dukungan';
-
-  @override
-  String get skinShareSubject => 'Skin Minecraft';
-
-  @override
-  String get skinEditorTitle => 'Editor skin';
-
-  @override
-  String get skinToolUndo => 'Urungkan';
-
-  @override
-  String get skinSaveToMySkins => 'Simpan ke skin saya';
-
-  @override
-  String get skinExportPng => 'Ekspor PNG';
-
-  @override
-  String get skinToolDraw => 'Gambar';
-
-  @override
-  String get skinToolFill => 'Isi';
-
-  @override
-  String get skinToolErase => 'Hapus';
 
   @override
   String get customColour => 'Warna khusus';
@@ -1943,47 +1841,6 @@ class AppLocalizationsId extends AppLocalizations {
   String get howToAutoShow => 'Tampilkan ini saat mulai';
 
   @override
-  String get skinEditorLoadFailed =>
-      'Skin itu tidak bisa dimuat. Kita mulai dari skin bawaan.';
-
-  @override
-  String get skinToolRecolour => 'Warnai ulang';
-
-  @override
-  String get skinToolPick => 'Ambil warna';
-
-  @override
-  String get skinBases => 'Dasar';
-
-  @override
-  String get skinBasesTitle => 'Mulai dari dasar';
-
-  @override
-  String get skinBasesSubtitle =>
-      'Ini mengganti yang ada sekarang. Urungkan mengembalikannya.';
-
-  @override
-  String get skinMirror => 'Cermin';
-
-  @override
-  String get skinSurprise => 'Kejutan';
-
-  @override
-  String get skinToolFillHint => 'Mengisi bidang yang kamu sentuh';
-
-  @override
-  String get skinToolRecolourHint => 'Mengubah warna itu di seluruh skin';
-
-  @override
-  String get skinToolPickHint => 'Mengambil warna yang kamu sentuh';
-
-  @override
-  String get skinModelClassic => 'Lebar';
-
-  @override
-  String get skinModelSlim => 'Ramping';
-
-  @override
   String get shareServerLabel => 'Bagikan servermu';
 
   @override
@@ -2010,6 +1867,23 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get consoleLanHint =>
       'Di konsol Anda, buka Minecraft dan cari game LAN di bagian Teman.';
+
+  @override
+  String get consoleConnecting => 'Connecting your console…';
+
+  @override
+  String get consoleHandedOver => 'Joining through the relay';
+
+  @override
+  String get consoleHandedOverHint =>
+      'Your console should switch to your server in a few seconds. Nothing happening? Try joining again.';
+
+  @override
+  String get consoleConnectFailed => 'Could not reach the relay';
+
+  @override
+  String get consoleConnectFailedHint =>
+      'Check your connection, then try joining again.';
 
   @override
   String get localNetworkBlocked =>
@@ -2199,4 +2073,15 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get showLess => 'Lebih sedikit';
+
+  @override
+  String get lookupRecent => 'Terbaru';
+
+  @override
+  String get skinsRemovalNotice =>
+      'Skin akan dihapus pada pembaruan berikutnya. Ekspor skin yang ingin kamu simpan.';
+
+  @override
+  String get feedbackRpNotice =>
+      'Kami tidak membalas laporan tentang resource pack. Beberapa pack memang tidak berfungsi, dan beberapa server menolak pack kustom.';
 }

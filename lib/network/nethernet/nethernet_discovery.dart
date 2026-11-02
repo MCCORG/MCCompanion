@@ -62,8 +62,9 @@ class NetherNetDiscovery {
     int maxPlayerCount = 10,
     int? protocol,
     String? gameVersion,
+    String? nonce,
   }) {
-    nonce = NetherNetProtocol.randomNonce();
+    this.nonce = nonce ?? NetherNetProtocol.randomNonce();
     _pongData = NetherNetProtocol.buildPongData(
       serverName: serverName,
       levelName: levelName,
@@ -142,6 +143,7 @@ class NetherNetDiscovery {
     _peers.clear();
     _peerPorts.clear();
     _requestCounts.clear();
+    _broadcastTargetsAt = DateTime.fromMillisecondsSinceEpoch(0);
     logger.info('NetherNet discovery stopped');
   }
 
@@ -304,7 +306,15 @@ class NetherNetDiscovery {
     'veth',
   ];
 
+  static const Duration _broadcastTargetsTtl = Duration(seconds: 10);
+  List<InternetAddress> _broadcastTargets = const [];
+  DateTime _broadcastTargetsAt = DateTime.fromMillisecondsSinceEpoch(0);
+
   Future<List<InternetAddress>> _directedBroadcastAddresses() async {
+    final now = DateTime.now();
+    if (now.difference(_broadcastTargetsAt) < _broadcastTargetsTtl) {
+      return _broadcastTargets;
+    }
     try {
       final interfaces = await NetworkInterface.list(
         type: InternetAddressType.IPv4,
@@ -323,6 +333,8 @@ class NetherNetDiscovery {
           );
         }
       }
+      _broadcastTargets = result;
+      _broadcastTargetsAt = now;
       return result;
     } catch (_) {
       return const [];

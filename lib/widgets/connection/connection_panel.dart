@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../l10n/app_localizations.dart';
 import '../../models/user_model.dart';
+import '../../network/nethernet/nethernet_phase.dart';
 import '../../theme/app_theme.dart';
 import '../../util/user_servers.dart';
 import '../../util/connector_prefs.dart';
@@ -15,7 +16,7 @@ import '../../widgets/featured_server_banner.dart';
 import '../../design/design.dart';
 import 'link_panel.dart';
 
-enum PanelMode { lan, nintendo, friends }
+enum PanelMode { lan, friends }
 
 class _ModeConfig {
   final PanelMode mode;
@@ -34,7 +35,7 @@ class ConnectionPanel extends StatefulWidget {
     required this.ipController,
     required this.portController,
     required this.broadcastingNotifier,
-    this.clientSeenNotifier,
+    this.phaseNotifier,
     required this.onStartBroadcast,
     required this.onStopBroadcast,
     required this.savedServers,
@@ -43,8 +44,8 @@ class ConnectionPanel extends StatefulWidget {
     required this.onResourcePack,
     required this.selectedRelayIp,
     required this.onRelayChanged,
-    required this.nintendoDnsMode,
-    required this.onNintendoDnsModeChanged,
+    required this.friendsMode,
+    required this.onFriendsModeChanged,
     required this.navigationController,
     required this.partnerServersFuture,
     required this.onOpenPartnerServers,
@@ -64,7 +65,7 @@ class ConnectionPanel extends StatefulWidget {
   final TextEditingController ipController;
   final TextEditingController portController;
   final ValueNotifier<bool> broadcastingNotifier;
-  final ValueNotifier<bool>? clientSeenNotifier;
+  final ValueNotifier<NetherNetPhase>? phaseNotifier;
   final Future<void> Function(PanelMode) onStartBroadcast;
   final VoidCallback onStopBroadcast;
   final List<UserServer> savedServers;
@@ -73,8 +74,8 @@ class ConnectionPanel extends StatefulWidget {
   final VoidCallback onResourcePack;
   final String? selectedRelayIp;
   final void Function(String?) onRelayChanged;
-  final bool nintendoDnsMode;
-  final ValueChanged<bool> onNintendoDnsModeChanged;
+  final bool friendsMode;
+  final ValueChanged<bool> onFriendsModeChanged;
   final NavigationController navigationController;
   final Future<List<FeaturedServer>>? partnerServersFuture;
   final VoidCallback onOpenPartnerServers;
@@ -109,11 +110,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
       color: AppTheme.modeXbox,
     ),
     _ModeConfig(
-      mode: PanelMode.nintendo,
-      icon: FontAwesomeIcons.gamepad,
-      color: AppTheme.modeNintendo,
-    ),
-    _ModeConfig(
       mode: PanelMode.friends,
       icon: FontAwesomeIcons.userGroup,
       color: AppTheme.modeFriends,
@@ -123,7 +119,7 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
   @override
   void initState() {
     super.initState();
-    _mode = widget.nintendoDnsMode ? PanelMode.nintendo : PanelMode.lan;
+    _mode = widget.friendsMode ? PanelMode.friends : PanelMode.lan;
     unawaited(_restoreMode());
     _broadcasting = widget.broadcastingNotifier.value;
 
@@ -141,17 +137,13 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     );
     if (mode == _mode) return;
     setState(() => _mode = mode);
-    widget.onNintendoDnsModeChanged(
-      mode == PanelMode.nintendo || mode == PanelMode.friends,
-    );
+    widget.onFriendsModeChanged(mode == PanelMode.friends);
   }
 
   void _applyMode(PanelMode mode) {
     setState(() => _mode = mode);
     unawaited(ConnectorPrefs.saveMode(mode.name));
-    widget.onNintendoDnsModeChanged(
-      mode == PanelMode.nintendo || mode == PanelMode.friends,
-    );
+    widget.onFriendsModeChanged(mode == PanelMode.friends);
   }
 
   void _onBroadcastingChanged() {
@@ -190,7 +182,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
     switch (_mode) {
       case PanelMode.lan:
         await HowToDialogs.showXboxInstructions(context);
-      case PanelMode.nintendo:
       case PanelMode.friends:
         break;
     }
@@ -198,7 +189,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
 
   String _modeLabel(PanelMode mode, AppLocalizations loc) => switch (mode) {
     PanelMode.lan => loc.labelXbox,
-    PanelMode.nintendo => loc.labelNintendo,
     PanelMode.friends => loc.labelFriends,
   };
 
@@ -291,13 +281,11 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
   String _modeDescription(PanelMode mode, AppLocalizations loc) =>
       switch (mode) {
         PanelMode.lan => loc.howToXboxSubtitle,
-        PanelMode.nintendo => loc.howToNintendoSubtitle,
         PanelMode.friends => loc.howToFriendsSubtitle,
       };
 
   IconData _modeIcon(PanelMode mode) => switch (mode) {
     PanelMode.lan => Icons.sports_esports_rounded,
-    PanelMode.nintendo => Icons.videogame_asset_rounded,
     PanelMode.friends => Icons.group_rounded,
   };
 
@@ -593,65 +581,92 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
   }
 
   Widget _buildStatus(bool broadcasting, AppLocalizations loc) {
-    final notifier = widget.clientSeenNotifier;
+    final notifier = widget.phaseNotifier;
     if (!broadcasting || notifier == null) return const SizedBox.shrink();
 
-    return ValueListenableBuilder<bool>(
+    return ValueListenableBuilder<NetherNetPhase>(
       valueListenable: notifier,
-      builder: (context, seen, _) => Padding(
-        padding: const EdgeInsets.only(bottom: DsSpace.md),
-        child: Container(
-          padding: const EdgeInsets.all(DsSpace.md),
-          decoration: BoxDecoration(
-            color: DsColor.inset,
-            borderRadius: DsRadius.controlR,
-            border: Border.all(
-              color: seen
-                  ? DsColor.success.withValues(alpha: 0.5)
-                  : DsColor.line,
+      builder: (context, phase, _) {
+        final (String title, String? hint) = switch (phase) {
+          NetherNetPhase.waiting => (loc.waitingForConsole, loc.consoleLanHint),
+          NetherNetPhase.consoleFound => (loc.consoleFound, null),
+          NetherNetPhase.connecting => (loc.consoleConnecting, null),
+          NetherNetPhase.connected => (
+            loc.consoleHandedOver,
+            loc.consoleHandedOverHint,
+          ),
+          NetherNetPhase.failed => (
+            loc.consoleConnectFailed,
+            loc.consoleConnectFailedHint,
+          ),
+        };
+        final borderColor = switch (phase) {
+          NetherNetPhase.consoleFound ||
+          NetherNetPhase.connected => DsColor.success.withValues(alpha: 0.5),
+          NetherNetPhase.failed => DsColor.danger.withValues(alpha: 0.5),
+          _ => DsColor.line,
+        };
+        final Widget indicator = switch (phase) {
+          NetherNetPhase.consoleFound || NetherNetPhase.connected => Icon(
+            Icons.check_circle_rounded,
+            size: 18,
+            color: DsColor.success,
+          ),
+          NetherNetPhase.failed => Icon(
+            Icons.error_rounded,
+            size: 18,
+            color: DsColor.danger,
+          ),
+          _ => SizedBox(
+            width: 16,
+            height: 16,
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+              color: DsColor.accent,
             ),
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 1),
-                child: seen
-                    ? Icon(
-                        Icons.check_circle_rounded,
-                        size: 18,
-                        color: DsColor.success,
-                      )
-                    : SizedBox(
-                        width: 16,
-                        height: 16,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: DsColor.accent,
-                        ),
-                      ),
-              ),
-              const SizedBox(width: DsSpace.md),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      seen ? loc.consoleFound : loc.waitingForConsole,
-                      style: DsType.bodyStrong,
+        };
+
+        return Padding(
+          padding: const EdgeInsets.only(bottom: DsSpace.md),
+          child: AnimatedContainer(
+            duration: DsDuration.normal,
+            padding: const EdgeInsets.all(DsSpace.md),
+            decoration: BoxDecoration(
+              color: DsColor.inset,
+              borderRadius: DsRadius.controlR,
+              border: Border.all(color: borderColor),
+            ),
+            child: AnimatedSwitcher(
+              duration: DsDuration.normal,
+              child: Row(
+                key: ValueKey(phase),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 1),
+                    child: indicator,
+                  ),
+                  const SizedBox(width: DsSpace.md),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(title, style: DsType.bodyStrong),
+                        if (hint != null) ...[
+                          const SizedBox(height: DsSpace.xxs),
+                          Text(hint, style: DsType.caption),
+                        ],
+                      ],
                     ),
-                    if (!seen) ...[
-                      const SizedBox(height: DsSpace.xxs),
-                      Text(loc.consoleLanHint, style: DsType.caption),
-                    ],
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
@@ -664,7 +679,6 @@ class _ConnectionPanelState extends State<ConnectionPanel> {
         ? loc.stopBroadcasting
         : switch (_mode) {
             PanelMode.lan => loc.startBroadcasting,
-            PanelMode.nintendo => loc.startNintendoMode,
             PanelMode.friends => loc.startFriendsMode,
           };
 

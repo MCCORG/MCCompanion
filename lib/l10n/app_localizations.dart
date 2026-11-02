@@ -456,12 +456,6 @@ abstract class AppLocalizations {
   /// **'I understand'**
   String get iUnderstand;
 
-  /// DNS instructions shown for Nintendo Switch mode
-  ///
-  /// In en, this message translates to:
-  /// **'Selected: {relayName}\n\nHow to connect:\n1. Go to your Switch Settings and change the DNS to: {relayIp}\n2. Open Minecraft and select a server from the list (like Cubecraft or Hive).\n3. You will now be sent to your own server automatically.'**
-  String playInstructionsSwitch(Object relayName, Object relayIp);
-
   /// No description provided for @noSavedServers.
   ///
   /// In en, this message translates to:
@@ -528,12 +522,6 @@ abstract class AppLocalizations {
   /// **'Stop Broadcasting'**
   String get stopBroadcasting;
 
-  /// No description provided for @startNintendoMode.
-  ///
-  /// In en, this message translates to:
-  /// **'Start Nintendo Mode'**
-  String get startNintendoMode;
-
   /// No description provided for @startFriendsMode.
   ///
   /// In en, this message translates to:
@@ -549,14 +537,8 @@ abstract class AppLocalizations {
   /// No description provided for @labelXbox.
   ///
   /// In en, this message translates to:
-  /// **'Xbox/PS4-5'**
+  /// **'Broadcast'**
   String get labelXbox;
-
-  /// No description provided for @labelNintendo.
-  ///
-  /// In en, this message translates to:
-  /// **'Nintendo'**
-  String get labelNintendo;
 
   /// No description provided for @labelFriends.
   ///
@@ -567,7 +549,7 @@ abstract class AppLocalizations {
   /// Title for the Xbox / PS4-5 how-to modal
   ///
   /// In en, this message translates to:
-  /// **'Xbox / PS4-5 (LAN / Proxy)'**
+  /// **'Broadcast (Xbox, PlayStation, Switch)'**
   String get howToXboxTitle;
 
   /// Short subtitle for Xbox / PS4-5 menu tile
@@ -579,20 +561,8 @@ abstract class AppLocalizations {
   /// Detailed steps for Xbox/PS4-5 how-to modal
   ///
   /// In en, this message translates to:
-  /// **'How to connect (Xbox / PS4 / PS5):\n1. Ensure your device running MCCompanion and your console are on the same local network.\n2. In the app, enter your Minecraft server address and port and press \"Start Broadcasting\".\n3. On the console open Minecraft → Play → look for LAN Worlds or the Friends tab and refresh the list.\n4. Select the LAN server named \"MCCompanion\" to join.\nNotes:\n- If the server does not appear, confirm both devices are on the same subnet and that the app is still broadcasting.\n- Some console models or routers may block LAN discovery; try toggling the app or router settings if needed.'**
+  /// **'How to connect (Xbox / PlayStation / Nintendo Switch):\n1. Make sure the device running MCCompanion and your console are on the same local network.\n2. In the app, enter your Minecraft server address and port and press \"Start Broadcasting\".\n3. On the console open Minecraft → Play → Friends tab (or LAN Worlds) and refresh the list.\n4. Select the LAN server named \"MCCompanion\" to join.\nNotes:\n- This works the same on Xbox, PlayStation and Nintendo Switch. No DNS changes are needed.\n- If the server does not appear, confirm both devices are on the same network and that the app is still broadcasting.\n- Some routers block LAN discovery; try another network or adjust your router settings.'**
   String get howToXboxBody;
-
-  /// Title for the Nintendo how-to modal
-  ///
-  /// In en, this message translates to:
-  /// **'Nintendo Switch (DNS mode)'**
-  String get howToNintendoTitle;
-
-  /// Short subtitle for Nintendo menu tile
-  ///
-  /// In en, this message translates to:
-  /// **'Connect via DNS'**
-  String get howToNintendoSubtitle;
 
   /// Title for the Friends-mode how-to modal
   ///
@@ -615,7 +585,7 @@ abstract class AppLocalizations {
   /// Short subtitle for MCCompanion does not appear tile
   ///
   /// In en, this message translates to:
-  /// **'Troubleshooting LAN discovery issues'**
+  /// **'Troubleshooting broadcast and LAN discovery'**
   String get helpMCCompanionSubtitle;
 
   /// Detailed troubleshooting text for MCCompanion not appearing
@@ -641,24 +611,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'⚠️ This is not an issue with MCCompanion!\n\nMCCompanion successfully redirected you to the requested server. The message \"Multiplayer Connection Failed\" indicates that the target server is currently unreachable. Possible reasons:\n\n• The target Minecraft server is offline or overloaded\n• The server requires an updated client version or specific edition\n• Network issues between the relay and the target server\n\nTry connecting to a different server or contact the server\'s support. If the problem persists for multiple servers, enable Debug Mode in MCCompanion and check logs.'**
   String get helpMultiplayerFailedBody;
-
-  /// Title for Nintendo DNS troubleshooting
-  ///
-  /// In en, this message translates to:
-  /// **'Nintendo DNS does not work'**
-  String get helpNintendoDnsTitle;
-
-  /// Short subtitle for Nintendo DNS troubleshooting tile
-  ///
-  /// In en, this message translates to:
-  /// **'Common DNS / relay issues'**
-  String get helpNintendoDnsSubtitle;
-
-  /// Detailed placeholder for Nintendo DNS troubleshooting
-  ///
-  /// In en, this message translates to:
-  /// **'If Nintendo DNS mode isn\'t working, check the following:\n\n1. Confirm you pushed DNS config from the app (Send DNS Config).\n2. Verify you applied the relay IP as Primary DNS on the Switch.\n3. Ensure the relay server selected (EU/US) is online and not overloaded.\n4. Some networks (e.g., captive portals) prevent custom DNS, test on a different network.\n\nIf issues persist, enable Debug Mode and check logs or try the Friends-mode alternative.'**
-  String get helpNintendoDnsBody;
 
   /// Title for Friends mode troubleshooting
   ///
@@ -1518,42 +1470,6 @@ abstract class AppLocalizations {
   /// **'New friend requests will appear here.'**
   String get requestsAppearHere;
 
-  /// Edit button in skin detail sheet
-  ///
-  /// In en, this message translates to:
-  /// **'Edit'**
-  String get skinsEdit;
-
-  /// Error when uploaded skin is wrong size
-  ///
-  /// In en, this message translates to:
-  /// **'Skin must be 64×64 pixels'**
-  String get skinsMustBe64;
-
-  /// Error when the selected file is not a valid image
-  ///
-  /// In en, this message translates to:
-  /// **'Invalid image file'**
-  String get skinsInvalidFile;
-
-  /// Button to upload a skin
-  ///
-  /// In en, this message translates to:
-  /// **'Upload'**
-  String get skinsUpload;
-
-  /// Button to create/open skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'Create'**
-  String get skinsCreate;
-
-  /// Download button in skin detail sheet
-  ///
-  /// In en, this message translates to:
-  /// **'Download'**
-  String get skinsDownload;
-
   /// chooseUniqueUsername
   ///
   /// In en, this message translates to:
@@ -2273,30 +2189,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Upgrade available via the Microsoft Store'**
   String get upgradeWindowsHint;
-
-  /// Toast when skin is saved
-  ///
-  /// In en, this message translates to:
-  /// **'Skin saved'**
-  String get skinSaved;
-
-  /// Toast when skin saved with name
-  ///
-  /// In en, this message translates to:
-  /// **'Saved as \"{name}\"'**
-  String skinSavedAs(String name);
-
-  /// Toast when skin export fails
-  ///
-  /// In en, this message translates to:
-  /// **'Export failed'**
-  String get skinExportFailed;
-
-  /// Toast when skin is exported successfully
-  ///
-  /// In en, this message translates to:
-  /// **'Skin exported successfully'**
-  String get skinExported;
 
   /// Label for account danger zone section
   ///
@@ -3045,26 +2937,8 @@ abstract class AppLocalizations {
   /// Empty state for local skins tab
   ///
   /// In en, this message translates to:
-  /// **'No skins yet. Create or upload a skin to get started.'**
+  /// **'No saved skins yet.'**
   String get skinsEmptyLocalSkins;
-
-  /// Dialog title for saving skin locally
-  ///
-  /// In en, this message translates to:
-  /// **'Save Skin'**
-  String get skinSaveDialog;
-
-  /// Hint text for skin name input field
-  ///
-  /// In en, this message translates to:
-  /// **'Skin name'**
-  String get skinNameHint;
-
-  /// Default name for a new skin
-  ///
-  /// In en, this message translates to:
-  /// **'My Skin'**
-  String get skinDefaultName;
 
   /// Section header for the recent activity feed in the profile tab
   ///
@@ -3210,12 +3084,6 @@ abstract class AppLocalizations {
   /// **'New message from {actor}'**
   String notifMessageReceived(String actor);
 
-  /// Notification preference toggle label: skin liked
-  ///
-  /// In en, this message translates to:
-  /// **'Skin liked'**
-  String get notifPrefSkinLiked;
-
   /// Notification preference toggle label: comment received
   ///
   /// In en, this message translates to:
@@ -3252,18 +3120,6 @@ abstract class AppLocalizations {
   /// **'New message'**
   String get notifPrefMessageReceived;
 
-  /// Skin editor layer toggle, inner/base layer
-  ///
-  /// In en, this message translates to:
-  /// **'Inner'**
-  String get skinLayerInner;
-
-  /// Skin editor layer toggle, outer/overlay layer
-  ///
-  /// In en, this message translates to:
-  /// **'Outer'**
-  String get skinLayerOuter;
-
   /// Title shown when user must log in before sending feedback
   ///
   /// In en, this message translates to:
@@ -3287,54 +3143,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Support inbox'**
   String get supportInboxTitle;
-
-  /// No description provided for @skinShareSubject.
-  ///
-  /// In en, this message translates to:
-  /// **'Minecraft Skin'**
-  String get skinShareSubject;
-
-  /// No description provided for @skinEditorTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Skin Editor'**
-  String get skinEditorTitle;
-
-  /// No description provided for @skinToolUndo.
-  ///
-  /// In en, this message translates to:
-  /// **'Undo'**
-  String get skinToolUndo;
-
-  /// No description provided for @skinSaveToMySkins.
-  ///
-  /// In en, this message translates to:
-  /// **'Save to My Skins'**
-  String get skinSaveToMySkins;
-
-  /// No description provided for @skinExportPng.
-  ///
-  /// In en, this message translates to:
-  /// **'Export PNG'**
-  String get skinExportPng;
-
-  /// No description provided for @skinToolDraw.
-  ///
-  /// In en, this message translates to:
-  /// **'Draw'**
-  String get skinToolDraw;
-
-  /// No description provided for @skinToolFill.
-  ///
-  /// In en, this message translates to:
-  /// **'Fill'**
-  String get skinToolFill;
-
-  /// No description provided for @skinToolErase.
-  ///
-  /// In en, this message translates to:
-  /// **'Erase'**
-  String get skinToolErase;
 
   /// No description provided for @customColour.
   ///
@@ -3636,84 +3444,6 @@ abstract class AppLocalizations {
   /// **'Show this when I start'**
   String get howToAutoShow;
 
-  /// Shown when the requested skin texture could not be loaded and the editor fell back to the bundled default
-  ///
-  /// In en, this message translates to:
-  /// **'Could not load that skin. Starting from the default one.'**
-  String get skinEditorLoadFailed;
-
-  /// Skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'Recolour'**
-  String get skinToolRecolour;
-
-  /// Skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'Pick'**
-  String get skinToolPick;
-
-  /// Skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'Bases'**
-  String get skinBases;
-
-  /// Skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'Start from a base'**
-  String get skinBasesTitle;
-
-  /// Skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'This replaces what is on the canvas. Undo brings it back.'**
-  String get skinBasesSubtitle;
-
-  /// Skin editor: symmetry toggle
-  ///
-  /// In en, this message translates to:
-  /// **'Mirror'**
-  String get skinMirror;
-
-  /// Skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'Surprise'**
-  String get skinSurprise;
-
-  /// Skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'Fills the patch you tap'**
-  String get skinToolFillHint;
-
-  /// Skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'Changes that colour everywhere on the skin'**
-  String get skinToolRecolourHint;
-
-  /// Skin editor
-  ///
-  /// In en, this message translates to:
-  /// **'Takes the colour you tap'**
-  String get skinToolPickHint;
-
-  /// Skin editor: arm width
-  ///
-  /// In en, this message translates to:
-  /// **'Wide'**
-  String get skinModelClassic;
-
-  /// Skin editor: arm width
-  ///
-  /// In en, this message translates to:
-  /// **'Slim'**
-  String get skinModelSlim;
-
   /// Profile: server visibility
   ///
   /// In en, this message translates to:
@@ -3761,6 +3491,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'On your console, open Minecraft and look under Friends for a LAN game.'**
   String get consoleLanHint;
+
+  /// No description provided for @consoleConnecting.
+  ///
+  /// In en, this message translates to:
+  /// **'Connecting your console…'**
+  String get consoleConnecting;
+
+  /// No description provided for @consoleHandedOver.
+  ///
+  /// In en, this message translates to:
+  /// **'Joining through the relay'**
+  String get consoleHandedOver;
+
+  /// No description provided for @consoleHandedOverHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Your console should switch to your server in a few seconds. Nothing happening? Try joining again.'**
+  String get consoleHandedOverHint;
+
+  /// No description provided for @consoleConnectFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not reach the relay'**
+  String get consoleConnectFailed;
+
+  /// No description provided for @consoleConnectFailedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Check your connection, then try joining again.'**
+  String get consoleConnectFailedHint;
 
   /// No description provided for @localNetworkBlocked.
   ///
@@ -4109,6 +3869,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Less'**
   String get showLess;
+
+  /// No description provided for @lookupRecent.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent'**
+  String get lookupRecent;
+
+  /// No description provided for @skinsRemovalNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Skins will be removed in the next update. Export the skins you want to keep.'**
+  String get skinsRemovalNotice;
+
+  /// No description provided for @feedbackRpNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'We can\'t answer reports about resource packs. Some packs simply don\'t work, and some servers reject custom packs.'**
+  String get feedbackRpNotice;
 }
 
 class _AppLocalizationsDelegate

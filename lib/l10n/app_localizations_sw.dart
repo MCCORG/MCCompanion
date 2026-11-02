@@ -182,11 +182,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get iUnderstand => 'Nimeelewa';
 
   @override
-  String playInstructionsSwitch(Object relayName, Object relayIp) {
-    return 'Imechaguliwa: $relayName\r\n\r\nJinsi ya kuunganika:\r\n1. Nenda kwenye Mipangilio ya Switch yako na ubadilishe DNS kuwa: $relayIp\r\n2. Fungua Minecraft na uchague seva kutoka kwenye orodha (kama Cubecraft au Hive).\r\n3. Sasa utapelekwa moja kwa moja kwenye seva yako mwenyewe.';
-  }
-
-  @override
   String get noSavedServers => 'Hakuna seva zilizohifadhiwa';
 
   @override
@@ -222,9 +217,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get stopBroadcasting => 'Simamisha Utangazaji';
 
   @override
-  String get startNintendoMode => 'Anza Hali ya Nintendo';
-
-  @override
   String get startFriendsMode => 'Anza Hali ya Marafiki';
 
   @override
@@ -232,9 +224,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get labelXbox => 'Xbox/PS4-5';
-
-  @override
-  String get labelNintendo => 'Nintendo';
 
   @override
   String get labelFriends => 'Marafiki';
@@ -248,12 +237,6 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get howToXboxBody =>
       'Jinsi ya kuunganika (Xbox / PS4 / PS5):\r\n1. Hakikisha kifaa chako kinachoendesha MCCompanion na konsoli yako viko kwenye mtandao mmoja wa ndani.\r\n2. Kwenye programu, weka anwani na port ya seva yako ya Minecraft kisha bonyeza \"Anza Kutangaza\".\r\n3. Kwenye konsoli, fungua Minecraft → Play → tafuta LAN Worlds au kichupo cha Friends kisha sasisha orodha.\r\n4. Chagua seva ya LAN iitwayo \"MCCompanion\" ili kujiunga.\r\nVidokezo:\r\n- Ikiwa seva haionekani, hakikisha vifaa vyote viko kwenye subnet moja na programu bado inatangaza.\r\n- Baadhi ya miundo ya konsoli au router inaweza kuzuia ugunduzi wa LAN; jaribu kubadili mipangilio ya programu au router ikihitajika.';
-
-  @override
-  String get howToNintendoTitle => 'Nintendo Switch (hali ya DNS)';
-
-  @override
-  String get howToNintendoSubtitle => 'Unganisha kupitia DNS';
 
   @override
   String get howToFriendsTitle => 'Hali ya Marafiki';
@@ -283,16 +266,6 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get helpMultiplayerFailedBody =>
       '⚠️ Hili si tatizo la MCCompanion!\r\n\r\nMCCompanion ilikuelekeza kwa mafanikio kwenye seva iliyoombwa. Ujumbe wa \"Multiplayer Connection Failed\" unaonyesha kuwa seva lengwa haipatikani kwa sasa. Sababu zinazowezekana:\r\n\r\n• Seva lengwa ya Minecraft iko nje ya mtandao au imeelemewa\r\n• Seva inahitaji toleo la mteja lililosasishwa au toleo maalum\r\n• Matatizo ya mtandao kati ya relay na seva lengwa\r\n\r\nJaribu kuunganika kwenye seva tofauti au wasiliana na msaada wa seva husika. Tatizo likiendelea kwenye seva nyingi, washa hali ya utatuzi kwenye MCCompanion na uangalie kumbukumbu.';
-
-  @override
-  String get helpNintendoDnsTitle => 'DNS ya Nintendo haifanyi kazi';
-
-  @override
-  String get helpNintendoDnsSubtitle => 'Matatizo ya kawaida ya DNS / relay';
-
-  @override
-  String get helpNintendoDnsBody =>
-      'Ikiwa hali ya DNS ya Nintendo haifanyi kazi, angalia yafuatayo:\r\n\r\n1. Thibitisha kuwa umetuma usanidi wa DNS kutoka kwenye programu (Send DNS Config).\r\n2. Thibitisha kuwa umetumia relay IP kama DNS Kuu kwenye Switch.\r\n3. Hakikisha seva ya relay iliyochaguliwa (EU/US) iko mtandaoni na haijaelemewa.\r\n4. Baadhi ya mitandao (kwa mfano captive portals) huzuia DNS maalum, jaribu kwenye mtandao tofauti.\r\n\r\nTatizo likiendelea, washa hali ya utatuzi na uangalie kumbukumbu au ujaribu mbadala wa hali ya Marafiki.';
 
   @override
   String get helpFriendsModeTitle => 'Hali ya Marafiki haifanyi kazi';
@@ -774,24 +747,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get requestsAppearHere => 'Maombi mapya ya urafiki yataonekana hapa.';
 
   @override
-  String get skinsEdit => 'Edit';
-
-  @override
-  String get skinsMustBe64 => 'Skin lazima iwe pikseli 64×64';
-
-  @override
-  String get skinsInvalidFile => 'Faili ya picha si sahihi';
-
-  @override
-  String get skinsUpload => 'Pakia';
-
-  @override
-  String get skinsCreate => 'Unda';
-
-  @override
-  String get skinsDownload => 'Pakua';
-
-  @override
   String get chooseUniqueUsername =>
       'Chagua jina la mtumiaji la kipekee kuanza.';
 
@@ -1182,20 +1137,6 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get upgradeWindowsHint =>
       'Uboreshaji unapatikana kwenye Microsoft Store';
-
-  @override
-  String get skinSaved => 'Skin imehifadhiwa';
-
-  @override
-  String skinSavedAs(String name) {
-    return 'Imehifadhiwa kama \"$name\"';
-  }
-
-  @override
-  String get skinExportFailed => 'Usafirishaji umeshindwa';
-
-  @override
-  String get skinExported => 'Skin imesafirishwa';
 
   @override
   String get accountActions => 'Akaunti';
@@ -1624,17 +1565,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get skinsSavedToMySkins => 'Imehifadhiwa katika Ngozi Zangu';
 
   @override
-  String get skinsEmptyLocalSkins =>
-      'Hakuna ngozi bado. Unda au pakia ngozi ili kuanza.';
-
-  @override
-  String get skinSaveDialog => 'Hifadhi Skin';
-
-  @override
-  String get skinNameHint => 'Jina la skin';
-
-  @override
-  String get skinDefaultName => 'Skin yangu';
+  String get skinsEmptyLocalSkins => 'Bado hakuna skin zilizohifadhiwa.';
 
   @override
   String get sectionRecentActivity => 'Shughuli za hivi karibuni';
@@ -1728,9 +1659,6 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => 'Skin imependwa';
-
-  @override
   String get notifPrefCommentReceived => 'Maoni yamepokelewa';
 
   @override
@@ -1749,12 +1677,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get notifPrefMessageReceived => 'Ujumbe mpya';
 
   @override
-  String get skinLayerInner => 'Ndani';
-
-  @override
-  String get skinLayerOuter => 'Nje';
-
-  @override
   String get feedbackLoginRequiredTitle => 'Ingia ili kutuma maoni';
 
   @override
@@ -1766,30 +1688,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get supportInboxTitle => 'Kikasha cha usaidizi';
-
-  @override
-  String get skinShareSubject => 'Skin ya Minecraft';
-
-  @override
-  String get skinEditorTitle => 'Kihariri cha skin';
-
-  @override
-  String get skinToolUndo => 'Tendua';
-
-  @override
-  String get skinSaveToMySkins => 'Hifadhi kwenye skin zangu';
-
-  @override
-  String get skinExportPng => 'Hamisha PNG';
-
-  @override
-  String get skinToolDraw => 'Chora';
-
-  @override
-  String get skinToolFill => 'Jaza';
-
-  @override
-  String get skinToolErase => 'Futa';
 
   @override
   String get customColour => 'Rangi yako';
@@ -1956,48 +1854,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get howToAutoShow => 'Onyesha hii ninapoanza';
 
   @override
-  String get skinEditorLoadFailed =>
-      'Ngozi hiyo haikuweza kupakiwa. Tunaanza na ile ya kawaida.';
-
-  @override
-  String get skinToolRecolour => 'Badili rangi';
-
-  @override
-  String get skinToolPick => 'Chagua rangi';
-
-  @override
-  String get skinBases => 'Misingi';
-
-  @override
-  String get skinBasesTitle => 'Anza na msingi';
-
-  @override
-  String get skinBasesSubtitle =>
-      'Hii inabadilisha kilichopo sasa. Tendua kinairudisha.';
-
-  @override
-  String get skinMirror => 'Kioo';
-
-  @override
-  String get skinSurprise => 'Nishangaze';
-
-  @override
-  String get skinToolFillHint => 'Hujaza eneo unalogusa';
-
-  @override
-  String get skinToolRecolourHint =>
-      'Hubadilisha rangi hiyo kwenye ngozi nzima';
-
-  @override
-  String get skinToolPickHint => 'Huchukua rangi unayogusa';
-
-  @override
-  String get skinModelClassic => 'Pana';
-
-  @override
-  String get skinModelSlim => 'Membamba';
-
-  @override
   String get shareServerLabel => 'Shiriki seva yako';
 
   @override
@@ -2024,6 +1880,23 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get consoleLanHint =>
       'Kwenye kiweko chako, fungua Minecraft na utafute mchezo wa LAN chini ya Marafiki.';
+
+  @override
+  String get consoleConnecting => 'Connecting your console…';
+
+  @override
+  String get consoleHandedOver => 'Joining through the relay';
+
+  @override
+  String get consoleHandedOverHint =>
+      'Your console should switch to your server in a few seconds. Nothing happening? Try joining again.';
+
+  @override
+  String get consoleConnectFailed => 'Could not reach the relay';
+
+  @override
+  String get consoleConnectFailedHint =>
+      'Check your connection, then try joining again.';
 
   @override
   String get localNetworkBlocked =>
@@ -2214,4 +2087,15 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get showLess => 'Punguza';
+
+  @override
+  String get lookupRecent => 'Za hivi karibuni';
+
+  @override
+  String get skinsRemovalNotice =>
+      'Skin zitaondolewa katika sasisho lijalo. Hamisha skin unazotaka kuhifadhi.';
+
+  @override
+  String get feedbackRpNotice =>
+      'Hatujibu ripoti kuhusu resource pack. Baadhi ya pack hazifanyi kazi tu, na baadhi ya seva hukataa pack maalum.';
 }

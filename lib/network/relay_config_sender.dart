@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 
 import 'broadcast_mode.dart';
+import 'route_session.dart';
 
 class RelayConfigResult {
   final bool success;
@@ -36,6 +37,7 @@ class RelayConfigSender {
       'mode': broadcastModeToString(mode),
       'bedrockGamertag': ?bedrockGamertag,
       'resourcePackUrl': ?resourcePackUrl,
+      'sessionId': RouteSession.id,
     };
     final body = jsonEncode(payload);
 

@@ -10,6 +10,7 @@ import 'profile_header.dart';
 import 'profile_cards.dart';
 import 'profile_friend_tiles.dart';
 import 'profile_activity_feed.dart';
+import '../../layout/bar_inset.dart';
 
 class ProfileTab extends StatefulWidget {
   final UserModel? me;
@@ -81,48 +82,70 @@ class ProfileTabState extends State<ProfileTab> {
       color: DsColor.accent,
       backgroundColor: DsColor.surface,
       onRefresh: widget.onRefresh,
-      child: ListView(
-        padding: const EdgeInsets.fromLTRB(
-          DsSpace.gutter,
-          DsSpace.lg,
-          DsSpace.gutter,
-          DsSpace.xxxl,
-        ),
-        children: [
-          ProfileHero(me: widget.me!, onUpdated: widget.onRefresh),
-          const SizedBox(height: DsSpace.section),
-          ProfileSectionHeader(
-            AppLocalizations.of(context)!.sectionMinecraftAccounts,
-          ),
-          const SizedBox(height: DsSpace.md),
-          ProfileLinkedAccountsCard(
-            me: widget.me!,
-            onRefresh: widget.onRefresh,
-          ),
-          const SizedBox(height: DsSpace.section),
-          ProfileSectionHeader(AppLocalizations.of(context)!.sectionSettings),
-          const SizedBox(height: DsSpace.md),
-          ProfileSettingsCard(
-            appearOffline: _effectiveAppearOffline,
-            onToggleAppearOffline: _toggleAppearOffline,
-          ),
-          const SizedBox(height: 8),
-          ProfileServerVisibilityCard(
-            shareServer: _effectiveShareServer,
-            onToggleShareServer: _toggleShareServer,
-          ),
-          const SizedBox(height: DsSpace.section),
-          ProfileSectionHeader(
-            AppLocalizations.of(context)!.sectionRecentActivity,
-          ),
-          const SizedBox(height: DsSpace.md),
-          const ProfileActivityFeed(),
-          const SizedBox(height: DsSpace.section),
-          ProfileDangerZoneCard(
-            onSignOut: widget.onSignOut,
-            onDeleteAccount: widget.onDeleteAccount,
-          ),
-        ],
+      child: LayoutBuilder(
+        builder: (context, box) {
+          final l = AppLocalizations.of(context)!;
+          final left = <Widget>[
+            ProfileHero(me: widget.me!, onUpdated: widget.onRefresh),
+            const SizedBox(height: DsSpace.section),
+            ProfileSectionHeader(l.sectionMinecraftAccounts),
+            const SizedBox(height: DsSpace.md),
+            ProfileLinkedAccountsCard(
+              me: widget.me!,
+              onRefresh: widget.onRefresh,
+            ),
+            const SizedBox(height: DsSpace.section),
+            ProfileSectionHeader(l.sectionSettings),
+            const SizedBox(height: DsSpace.md),
+            ProfileSettingsCard(
+              appearOffline: _effectiveAppearOffline,
+              onToggleAppearOffline: _toggleAppearOffline,
+            ),
+            const SizedBox(height: 8),
+            ProfileServerVisibilityCard(
+              shareServer: _effectiveShareServer,
+              onToggleShareServer: _toggleShareServer,
+            ),
+          ];
+          final right = <Widget>[
+            ProfileSectionHeader(l.sectionRecentActivity),
+            const SizedBox(height: DsSpace.md),
+            const ProfileActivityFeed(),
+            const SizedBox(height: DsSpace.section),
+            ProfileDangerZoneCard(
+              onSignOut: widget.onSignOut,
+              onDeleteAccount: widget.onDeleteAccount,
+            ),
+          ];
+          final padding = EdgeInsets.fromLTRB(
+            DsSpace.gutter,
+            DsSpace.lg,
+            DsSpace.gutter,
+            DsSpace.xxxl + BarInset.of(context),
+          );
+          if (box.maxWidth < 1000) {
+            return ListView(
+              padding: padding,
+              children: [
+                ...left,
+                const SizedBox(height: DsSpace.section),
+                ...right,
+              ],
+            );
+          }
+          return SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            padding: padding,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(child: Column(children: left)),
+                const SizedBox(width: DsSpace.xl),
+                Expanded(child: Column(children: right)),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
@@ -165,47 +188,56 @@ class ProfileFriendsTab extends StatelessWidget {
       color: AppTheme.accent,
       backgroundColor: AppTheme.surfaceRaised,
       onRefresh: onRefresh,
-      child: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        children: [
-          if (online.isNotEmpty) ...[
-            ProfileSectionLabel(
-              AppLocalizations.of(context)!.onlineFriendsLabel(online.length),
-            ),
-            const SizedBox(height: 8),
-            ...online.map(
-              (f) => Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: ProfileFriendTile(
-                  friend: f,
-                  onRemove: () => onRemove(f),
-                  onGoToHome: onGoToHome,
-                  onGoToConnector: onGoToConnector,
-                  onGoToSkins: onGoToSkins,
+      child: LayoutBuilder(
+        builder: (context, box) {
+          final columns = box.maxWidth >= 900 ? 2 : 1;
+          const gap = 8.0;
+          final width = (box.maxWidth - 32 - gap * (columns - 1)) / columns;
+          Widget grid(List<FriendModel> list) => Wrap(
+            spacing: gap,
+            runSpacing: gap,
+            children: [
+              for (final f in list)
+                SizedBox(
+                  width: width,
+                  child: ProfileFriendTile(
+                    friend: f,
+                    onRemove: () => onRemove(f),
+                    onGoToHome: onGoToHome,
+                    onGoToConnector: onGoToConnector,
+                    onGoToSkins: onGoToSkins,
+                  ),
                 ),
-              ),
+            ],
+          );
+          return ListView(
+            padding: BarInset.pad(
+              context,
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             ),
-            const SizedBox(height: 8),
-          ],
-          if (offline.isNotEmpty) ...[
-            ProfileSectionLabel(
-              AppLocalizations.of(context)!.offlineFriendsLabel(offline.length),
-            ),
-            const SizedBox(height: 8),
-            ...offline.map(
-              (f) => Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: ProfileFriendTile(
-                  friend: f,
-                  onRemove: () => onRemove(f),
-                  onGoToHome: onGoToHome,
-                  onGoToConnector: onGoToConnector,
-                  onGoToSkins: onGoToSkins,
+            children: [
+              if (online.isNotEmpty) ...[
+                ProfileSectionLabel(
+                  AppLocalizations.of(
+                    context,
+                  )!.onlineFriendsLabel(online.length),
                 ),
-              ),
-            ),
-          ],
-        ],
+                const SizedBox(height: 8),
+                grid(online),
+                const SizedBox(height: 8),
+              ],
+              if (offline.isNotEmpty) ...[
+                ProfileSectionLabel(
+                  AppLocalizations.of(
+                    context,
+                  )!.offlineFriendsLabel(offline.length),
+                ),
+                const SizedBox(height: 8),
+                grid(offline),
+              ],
+            ],
+          );
+        },
       ),
     );
   }
@@ -241,7 +273,10 @@ class ProfileRequestsTab extends StatelessWidget {
       backgroundColor: AppTheme.surfaceRaised,
       onRefresh: onRefresh,
       child: ListView.separated(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        padding: BarInset.pad(
+          context,
+          const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        ),
         itemCount: requests.length,
         separatorBuilder: (ctx, i) => const SizedBox(height: 8),
         itemBuilder: (_, i) => ProfileRequestTile(

@@ -23,9 +23,7 @@ class ServerListCard extends StatelessWidget {
     final l = AppLocalizations.of(context)!;
     final edition = server.editionBadge;
     final version = server.usefulVersion;
-    final meta = [?version, ...server.tags.take(2)].join(
-      '  ·  ',
-    );
+    final meta = [?version, ...server.tags.take(2)].join('  ·  ');
     final banner = server.bannerUrl;
 
     return DsCard(
@@ -116,11 +114,7 @@ class ServerListCard extends StatelessWidget {
                 style: DsType.caption.copyWith(color: DsColor.textSoft),
               ),
               const SizedBox(width: DsSpace.md),
-              Icon(
-                Icons.schedule_rounded,
-                size: 15,
-                color: DsColor.textFaint,
-              ),
+              Icon(Icons.schedule_rounded, size: 15, color: DsColor.textFaint),
               const SizedBox(width: DsSpace.xs + 1),
               Text(
                 '${server.uptime}%',

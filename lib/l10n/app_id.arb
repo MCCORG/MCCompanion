@@ -115,23 +115,13 @@
     "description": "Shown when debug logging is enabled/disabled"
   },
   "iUnderstand": "Saya mengerti",
-  "playInstructionsSwitch": "Dipilih: {relayName}\r\n\r\nCara terhubung:\r\n1. Buka Pengaturan Switch Anda dan ubah DNS menjadi: {relayIp}\r\n2. Buka Minecraft dan pilih server dari daftar (seperti Cubecraft atau Hive).\r\n3. Sekarang Anda akan otomatis dikirim ke server Anda sendiri.",
-  "@playInstructionsSwitch": {
-    "description": "DNS instructions shown for Nintendo Switch mode",
-    "placeholders": {
-      "relayName": {},
-      "relayIp": {}
-    }
-  },
   "noSavedServers": "Tidak ada server tersimpan",
   "savedServers": "Server tersimpan",
   "manageServers": "Kelola server",
   "stopBroadcasting": "Hentikan Siaran",
-  "startNintendoMode": "Mulai Mode Nintendo",
   "startFriendsMode": "Mulai Mode Teman",
   "startBroadcasting": "Mulai Siaran",
   "labelXbox": "Xbox/PS4-5",
-  "labelNintendo": "Nintendo",
   "labelFriends": "Teman",
   "howToXboxTitle": "Xbox / PS4-5 (LAN / Proksi)",
   "@howToXboxTitle": {
@@ -144,14 +134,6 @@
   "howToXboxBody": "Cara terhubung (Xbox / PS4 / PS5):\r\n1. Pastikan perangkat yang menjalankan MCCompanion dan konsol Anda berada di jaringan lokal yang sama.\r\n2. Di aplikasi, masukkan alamat dan port server Minecraft Anda lalu tekan \"Mulai Siaran\".\r\n3. Di konsol, buka Minecraft → Play → cari LAN Worlds atau tab Friends lalu segarkan daftar.\r\n4. Pilih server LAN bernama \"MCCompanion\" untuk bergabung.\r\nCatatan:\r\n- Jika server tidak muncul, pastikan kedua perangkat berada di subnet yang sama dan aplikasi masih menyiarkan.\r\n- Beberapa model konsol atau router dapat memblokir penemuan LAN; coba ubah pengaturan aplikasi atau router jika perlu.",
   "@howToXboxBody": {
     "description": "Detailed steps for Xbox/PS4-5 how-to modal"
-  },
-  "howToNintendoTitle": "Nintendo Switch (mode DNS)",
-  "@howToNintendoTitle": {
-    "description": "Title for the Nintendo how-to modal"
-  },
-  "howToNintendoSubtitle": "Hubungkan lewat DNS",
-  "@howToNintendoSubtitle": {
-    "description": "Short subtitle for Nintendo menu tile"
   },
   "howToFriendsTitle": "Mode Teman",
   "@howToFriendsTitle": {
@@ -184,18 +166,6 @@
   "helpMultiplayerFailedBody": "⚠️ Ini bukan masalah pada MCCompanion!\r\n\r\nMCCompanion berhasil mengarahkan Anda ke server yang diminta. Pesan \"Multiplayer Connection Failed\" menunjukkan bahwa server tujuan saat ini tidak dapat dijangkau. Kemungkinan alasan:\r\n\r\n• Server Minecraft tujuan sedang offline atau kelebihan beban\r\n• Server memerlukan versi klien yang diperbarui atau edisi tertentu\r\n• Masalah jaringan antara relay dan server tujuan\r\n\r\nCoba hubungkan ke server lain atau hubungi dukungan server tersebut. Jika masalah tetap terjadi pada beberapa server, aktifkan Mode Debug di MCCompanion dan periksa log.",
   "@helpMultiplayerFailedBody": {
     "description": "Explanation shown when multiplayer connection failed appears"
-  },
-  "helpNintendoDnsTitle": "DNS Nintendo tidak berfungsi",
-  "@helpNintendoDnsTitle": {
-    "description": "Title for Nintendo DNS troubleshooting"
-  },
-  "helpNintendoDnsSubtitle": "Masalah DNS / relay umum",
-  "@helpNintendoDnsSubtitle": {
-    "description": "Short subtitle for Nintendo DNS troubleshooting tile"
-  },
-  "helpNintendoDnsBody": "Jika mode DNS Nintendo tidak berfungsi, periksa hal berikut:\r\n\r\n1. Pastikan Anda mengirim konfigurasi DNS dari aplikasi (Send DNS Config).\r\n2. Pastikan Anda menerapkan IP relay sebagai DNS Utama di Switch.\r\n3. Pastikan server relay yang dipilih (EU/US) sedang online dan tidak kelebihan beban.\r\n4. Beberapa jaringan (misalnya captive portal) mencegah DNS kustom, uji di jaringan lain.\r\n\r\nJika masalah berlanjut, aktifkan Mode Debug dan periksa log atau coba alternatif mode Teman.",
-  "@helpNintendoDnsBody": {
-    "description": "Detailed placeholder for Nintendo DNS troubleshooting"
   },
   "helpFriendsModeTitle": "Mode Teman tidak berfungsi",
   "@helpFriendsModeTitle": {
@@ -838,30 +808,6 @@
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "Buat",
-  "@skinsCreate": {
-    "description": "Button to create/open skin editor"
-  },
-  "skinsDownload": "Unduh",
-  "@skinsDownload": {
-    "description": "Download button in skin detail sheet"
-  },
-  "skinsEdit": "Edit",
-  "@skinsEdit": {
-    "description": "Edit button in skin detail sheet"
-  },
-  "skinsInvalidFile": "File gambar tidak valid",
-  "@skinsInvalidFile": {
-    "description": "Error when the selected file is not a valid image"
-  },
-  "skinsMustBe64": "Skin harus berukuran 64×64 piksel",
-  "@skinsMustBe64": {
-    "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsUpload": "Unggah",
-  "@skinsUpload": {
-    "description": "Button to upload a skin"
-  },
   "somethingWentWrong": "Terjadi kesalahan. Silakan coba lagi.",
   "@somethingWentWrong": {
     "description": "Generic error message"
@@ -1000,27 +946,6 @@
   "upgradeWindowsHint": "Upgrade tersedia melalui Microsoft Store",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "skinSaved": "Skin disimpan",
-  "@skinSaved": {
-    "description": "Toast when skin is saved"
-  },
-  "skinSavedAs": "Disimpan sebagai \"{name}\"",
-  "@skinSavedAs": {
-    "description": "Toast when skin saved with name",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinExportFailed": "Ekspor gagal",
-  "@skinExportFailed": {
-    "description": "Toast when skin export fails"
-  },
-  "skinExported": "Skin berhasil diekspor",
-  "@skinExported": {
-    "description": "Toast when skin is exported successfully"
   },
   "feedbackBugReport": "Laporan Bug",
   "feedbackFeatureRequest": "Permintaan Fitur",
@@ -1161,10 +1086,7 @@
     }
   },
   "skinsSavedToMySkins": "Disimpan ke Skin Saya",
-  "skinsEmptyLocalSkins": "Belum ada skin. Buat atau unggah skin untuk memulai.",
-  "skinSaveDialog": "Simpan Skin",
-  "skinNameHint": "Nama skin",
-  "skinDefaultName": "Skin saya",
+  "skinsEmptyLocalSkins": "Belum ada skin tersimpan.",
   "sectionRecentActivity": "Aktivitas terbaru",
   "activityNoEvents": "Belum ada aktivitas terbaru.",
   "activitySkinUploaded": "Skin diunggah",
@@ -1252,21 +1174,12 @@
       }
     }
   },
-  "notifPrefSkinLiked": "Skin disukai",
   "notifPrefCommentReceived": "Komentar diterima",
   "notifPrefPackApproved": "Pack disetujui",
   "notifPrefPackRejected": "Pack ditolak",
   "notifPrefFriendRequest": "Permintaan pertemanan",
   "notifPrefFriendAccepted": "Teman ditambahkan",
   "notifPrefMessageReceived": "Pesan baru",
-  "skinLayerInner": "Dalam",
-  "@skinLayerInner": {
-    "description": "Skin editor layer toggle, inner/base layer"
-  },
-  "skinLayerOuter": "Luar",
-  "@skinLayerOuter": {
-    "description": "Skin editor layer toggle, outer/overlay layer"
-  },
   "feedbackLoginRequiredTitle": "Masuk untuk mengirim masukan",
   "feedbackLoginRequiredBody": "Masukan terhubung dengan akun MCCompanion Anda sehingga kami dapat membalas Anda langsung di aplikasi.",
   "feedbackLoginButton": "Masuk",
@@ -1274,14 +1187,6 @@
   "rpInvalidPackFormat": "Ini adalah pack Java Edition dan tidak didukung. Gunakan resource pack Bedrock Edition.",
   "accountActions": "Akun",
   "supportInboxTitle": "Kotak masuk dukungan",
-  "skinShareSubject": "Skin Minecraft",
-  "skinEditorTitle": "Editor skin",
-  "skinToolUndo": "Urungkan",
-  "skinSaveToMySkins": "Simpan ke skin saya",
-  "skinExportPng": "Ekspor PNG",
-  "skinToolDraw": "Gambar",
-  "skinToolFill": "Isi",
-  "skinToolErase": "Hapus",
   "customColour": "Warna khusus",
   "featuredServerLabel": "SERVER PILIHAN",
   "featuredServerTagline": "Langsung gabung dan main.",
@@ -1332,19 +1237,6 @@
   "chooseServerTitle": "Pilih server",
   "changeLabel": "Ubah",
   "howToAutoShow": "Tampilkan ini saat mulai",
-  "skinEditorLoadFailed": "Skin itu tidak bisa dimuat. Kita mulai dari skin bawaan.",
-  "skinToolRecolour": "Warnai ulang",
-  "skinToolPick": "Ambil warna",
-  "skinBases": "Dasar",
-  "skinBasesTitle": "Mulai dari dasar",
-  "skinBasesSubtitle": "Ini mengganti yang ada sekarang. Urungkan mengembalikannya.",
-  "skinMirror": "Cermin",
-  "skinSurprise": "Kejutan",
-  "skinToolFillHint": "Mengisi bidang yang kamu sentuh",
-  "skinToolRecolourHint": "Mengubah warna itu di seluruh skin",
-  "skinToolPickHint": "Mengambil warna yang kamu sentuh",
-  "skinModelClassic": "Lebar",
-  "skinModelSlim": "Ramping",
   "shareServerLabel": "Bagikan servermu",
   "shareServerOn": "Teman bisa melihat server yang kamu mainkan",
   "shareServerOff": "Teman melihat kamu bermain, tapi tidak di mana",
@@ -1444,5 +1336,8 @@
   "serverVoteOffline": "Tidak dapat menghubungi server. Periksa koneksimu.",
   "feedbackViewYourReport": "Lihat laporanmu",
   "showMore": "Selengkapnya",
-  "showLess": "Lebih sedikit"
+  "showLess": "Lebih sedikit",
+  "lookupRecent": "Terbaru",
+  "skinsRemovalNotice": "Skin akan dihapus pada pembaruan berikutnya. Ekspor skin yang ingin kamu simpan.",
+  "feedbackRpNotice": "Kami tidak membalas laporan tentang resource pack. Beberapa pack memang tidak berfungsi, dan beberapa server menolak pack kustom."
 }

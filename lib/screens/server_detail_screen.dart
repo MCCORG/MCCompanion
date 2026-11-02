@@ -10,6 +10,7 @@ import '../design/design.dart';
 import '../theme/app_tokens.dart';
 import '../util/directory_server.dart';
 import '../widgets/components/app_toast.dart';
+import '../layout/bar_inset.dart';
 
 class ServerDetailScreen extends StatefulWidget {
   const ServerDetailScreen({
@@ -143,11 +144,11 @@ class _ServerDetailScreenState extends State<ServerDetailScreen> {
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 720),
                 child: ListView(
-                  padding: const EdgeInsets.fromLTRB(
+                  padding: EdgeInsets.fromLTRB(
                     DsSpace.gutter,
                     0,
                     DsSpace.gutter,
-                    DsSpace.xxxl,
+                    DsSpace.xxxl + BarInset.of(context),
                   ),
                   children: [
                     _identity(l),

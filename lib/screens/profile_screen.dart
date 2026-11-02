@@ -11,6 +11,7 @@ import '../models/user_model.dart';
 import '../widgets/components/app_toast.dart';
 import '../widgets/profile/profile_auth_views.dart';
 import '../widgets/profile/profile_header.dart';
+import '../widgets/profile/profile_desktop_nav.dart';
 import '../widgets/profile/profile_tabs.dart';
 import 'support_inbox_screen.dart';
 import '../widgets/profile/profile_desktop_sidebar.dart';
@@ -345,32 +346,59 @@ class ProfileScreenState extends State<ProfileScreen>
     );
   }
 
+  Widget _buildDesktopNav(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+    return AnimatedBuilder(
+      animation: _tabs,
+      builder: (_, _) => ProfileDesktopNav(
+        selected: _tabs.index,
+        onSelect: (i) => _tabs.animateTo(i),
+        items: [
+          ProfileDesktopNavItem(
+            icon: Icons.person_rounded,
+            label: l.navProfile,
+          ),
+          ProfileDesktopNavItem(
+            icon: Icons.group_rounded,
+            label: l.labelFriends,
+          ),
+          ProfileDesktopNavItem(
+            icon: Icons.person_add_alt_1_rounded,
+            label: l.notifPrefFriendRequest,
+            badge: _requests.length,
+          ),
+          ProfileDesktopNavItem(
+            icon: Icons.notifications_rounded,
+            label: l.sectionNotifications,
+            badge: _unreadNotifCount,
+          ),
+          if (_isAdmin)
+            ProfileDesktopNavItem(
+              icon: Icons.support_agent_rounded,
+              label: l.support,
+            ),
+        ],
+      ),
+    );
+  }
+
   Widget _buildDesktopLayout(BuildContext context) {
-    final supportOpen = _isAdmin && _tabs.index == _tabCount - 1;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        if (!supportOpen) ...[
-          SizedBox(
-            width: 280,
-            child: ProfileDesktopSidebar(
-              me: _me,
-              onAddFriend: _showAddFriendDialog,
-              onGoToHome: widget.onGoToHome,
-              onGoToConnector: widget.onGoToConnector,
-              onGoToSkins: widget.onGoToSkins,
-            ),
-          ),
-          VerticalDivider(width: 1, color: AppTheme.borderGray),
-        ],
-        Expanded(
-          child: Column(
-            children: [
-              _buildTabBar(context),
-              Expanded(child: _buildTabContent()),
-            ],
+        SizedBox(
+          width: 280,
+          child: ProfileDesktopSidebar(
+            me: _me,
+            onAddFriend: _showAddFriendDialog,
+            onGoToHome: widget.onGoToHome,
+            onGoToConnector: widget.onGoToConnector,
+            onGoToSkins: widget.onGoToSkins,
+            nav: _buildDesktopNav(context),
           ),
         ),
+        VerticalDivider(width: 1, color: AppTheme.borderGray),
+        Expanded(child: _buildTabContent()),
       ],
     );
   }

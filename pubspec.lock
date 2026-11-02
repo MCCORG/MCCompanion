@@ -161,14 +161,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.7"
-  cupertino_icons:
-    dependency: "direct main"
-    description:
-      name: cupertino_icons
-      sha256: "41e005c33bd814be4d3096aff55b1908d419fde52ca656c8c47719ec745873cd"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.9"
   dbus:
     dependency: transitive
     description:
@@ -589,14 +581,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.13.0"
-  mc_server_info:
-    dependency: "direct main"
-    description:
-      name: mc_server_info
-      sha256: a4fdcd72eeecab36776ead73129634da87994497a7ed1b208c647624b704dc01
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.0"
   meta:
     dependency: transitive
     description:
@@ -954,14 +938,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
-  udp:
-    dependency: "direct main"
-    description:
-      name: udp
-      sha256: "50ea45d7ee80ad4c62de4ec0e8ed3ae65c36e9fe8cd0655a2bcd1503d2708e5a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.0.3"
   url_launcher:
     dependency: "direct main"
     description:

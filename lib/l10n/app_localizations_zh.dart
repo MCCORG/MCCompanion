@@ -180,11 +180,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get iUnderstand => '我明白了';
 
   @override
-  String playInstructionsSwitch(Object relayName, Object relayIp) {
-    return '已选择：$relayName\r\n\r\n连接方法：\r\n1. 前往你的 Switch 设置，将 DNS 更改为：$relayIp\r\n2. 打开 Minecraft，并从列表中选择一个服务器（例如 Cubecraft 或 Hive）。\r\n3. 现在你将自动被发送到你自己的服务器。';
-  }
-
-  @override
   String get noSavedServers => '没有已保存的服务器';
 
   @override
@@ -220,9 +215,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get stopBroadcasting => '停止广播';
 
   @override
-  String get startNintendoMode => '启动 Nintendo 模式';
-
-  @override
   String get startFriendsMode => '启动好友模式';
 
   @override
@@ -230,9 +222,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get labelXbox => 'Xbox/PS4-5';
-
-  @override
-  String get labelNintendo => 'Nintendo';
 
   @override
   String get labelFriends => '好友';
@@ -246,12 +235,6 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get howToXboxBody =>
       '连接方法（Xbox / PS4 / PS5）：\r\n1. 确保运行 MCCompanion 的设备和你的主机位于同一本地网络中。\r\n2. 在应用中输入你的 Minecraft 服务器地址和端口，然后按下 \\\"开始广播\\\"。\r\n3. 在主机上打开 Minecraft → Play → 查找 LAN Worlds 或 Friends 标签页，并刷新列表。\r\n4. 选择名为 \\\"MCCompanion\\\" 的局域网服务器以加入。\r\n注意：\r\n- 如果服务器没有出现，请确认两台设备位于同一子网，并且应用仍在广播。\r\n- 某些主机型号或路由器可能会阻止局域网发现；如有需要，请尝试切换应用或路由器设置。';
-
-  @override
-  String get howToNintendoTitle => 'Nintendo Switch（DNS 模式）';
-
-  @override
-  String get howToNintendoSubtitle => '通过 DNS 连接';
 
   @override
   String get howToFriendsTitle => '好友模式';
@@ -278,16 +261,6 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get helpMultiplayerFailedBody =>
       '⚠️ 这不是 MCCompanion 的问题！\r\n\r\nMCCompanion 已成功将你重定向到请求的服务器。\\\"多人连接失败\\\" 这条消息表示目标服务器当前无法访问。可能原因包括：\r\n\r\n• 目标 Minecraft 服务器离线或负载过高\r\n• 服务器需要更新的客户端版本或特定版本\r\n• Relay 与目标服务器之间存在网络问题\r\n\r\n请尝试连接到其他服务器，或联系该服务器的支持团队。如果多个服务器都出现此问题，请在 MCCompanion 中启用调试模式并检查日志。';
-
-  @override
-  String get helpNintendoDnsTitle => 'Nintendo DNS 无法工作';
-
-  @override
-  String get helpNintendoDnsSubtitle => '常见 DNS / Relay 问题';
-
-  @override
-  String get helpNintendoDnsBody =>
-      '如果 Nintendo DNS 模式无法工作，请检查以下内容：\r\n\r\n1. 确认你已从应用中发送 DNS 配置（发送 DNS 配置）。\r\n2. 确认你已在 Switch 上将 Relay IP 设置为主 DNS。\r\n3. 确保所选的 Relay 服务器（EU/US）在线且未过载。\r\n4. 某些网络（例如强制门户网络）会阻止自定义 DNS -- 请在其他网络上测试。\r\n\r\n如果问题仍然存在，请启用调试模式并检查日志，或尝试好友模式这一替代方案。';
 
   @override
   String get helpFriendsModeTitle => '好友模式无法工作';
@@ -748,24 +721,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get requestsAppearHere => '新的好友请求会显示在这里。';
 
   @override
-  String get skinsEdit => 'Edit';
-
-  @override
-  String get skinsMustBe64 => '皮肤必须为 64×64 像素';
-
-  @override
-  String get skinsInvalidFile => '无效的图片文件';
-
-  @override
-  String get skinsUpload => '上传';
-
-  @override
-  String get skinsCreate => '创建';
-
-  @override
-  String get skinsDownload => '下载';
-
-  @override
   String get chooseUniqueUsername => '选择一个唯一的用户名开始。';
 
   @override
@@ -1136,20 +1091,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => '可在 Microsoft Store 升级';
-
-  @override
-  String get skinSaved => '皮肤已保存';
-
-  @override
-  String skinSavedAs(String name) {
-    return '已另存为 \"$name\"';
-  }
-
-  @override
-  String get skinExportFailed => '导出失败';
-
-  @override
-  String get skinExported => '皮肤导出成功';
 
   @override
   String get accountActions => '账户';
@@ -1546,16 +1487,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get skinsSavedToMySkins => '已保存到我的皮肤';
 
   @override
-  String get skinsEmptyLocalSkins => '暂无皮肤。创建或上传皮肤以开始使用。';
-
-  @override
-  String get skinSaveDialog => '保存皮肤';
-
-  @override
-  String get skinNameHint => '皮肤名称';
-
-  @override
-  String get skinDefaultName => '我的皮肤';
+  String get skinsEmptyLocalSkins => '还没有已保存的皮肤。';
 
   @override
   String get sectionRecentActivity => '最近动态';
@@ -1648,9 +1580,6 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => '皮肤被点赞';
-
-  @override
   String get notifPrefCommentReceived => '收到评论';
 
   @override
@@ -1669,12 +1598,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get notifPrefMessageReceived => '新消息';
 
   @override
-  String get skinLayerInner => '内层';
-
-  @override
-  String get skinLayerOuter => '外层';
-
-  @override
   String get feedbackLoginRequiredTitle => '登录以发送反馈';
 
   @override
@@ -1686,30 +1609,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get supportInboxTitle => '支持收件箱';
-
-  @override
-  String get skinShareSubject => 'Minecraft 皮肤';
-
-  @override
-  String get skinEditorTitle => '皮肤编辑器';
-
-  @override
-  String get skinToolUndo => '撤销';
-
-  @override
-  String get skinSaveToMySkins => '保存到我的皮肤';
-
-  @override
-  String get skinExportPng => '导出 PNG';
-
-  @override
-  String get skinToolDraw => '绘制';
-
-  @override
-  String get skinToolFill => '填充';
-
-  @override
-  String get skinToolErase => '擦除';
 
   @override
   String get customColour => '自定义颜色';
@@ -1875,45 +1774,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get howToAutoShow => '启动时显示此说明';
 
   @override
-  String get skinEditorLoadFailed => '无法加载该皮肤，将从默认皮肤开始。';
-
-  @override
-  String get skinToolRecolour => '替换颜色';
-
-  @override
-  String get skinToolPick => '取色';
-
-  @override
-  String get skinBases => '基础款';
-
-  @override
-  String get skinBasesTitle => '从基础款开始';
-
-  @override
-  String get skinBasesSubtitle => '这会替换当前画布内容，可用撤销恢复。';
-
-  @override
-  String get skinMirror => '镜像';
-
-  @override
-  String get skinSurprise => '随机生成';
-
-  @override
-  String get skinToolFillHint => '填充你点到的区域';
-
-  @override
-  String get skinToolRecolourHint => '替换整个皮肤上的该颜色';
-
-  @override
-  String get skinToolPickHint => '取用你点到的颜色';
-
-  @override
-  String get skinModelClassic => '标准';
-
-  @override
-  String get skinModelSlim => '纤细';
-
-  @override
   String get shareServerLabel => '分享你的服务器';
 
   @override
@@ -1938,6 +1798,23 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get consoleLanHint => '在主机上打开 Minecraft，并在“好友”中查找局域网游戏。';
+
+  @override
+  String get consoleConnecting => 'Connecting your console…';
+
+  @override
+  String get consoleHandedOver => 'Joining through the relay';
+
+  @override
+  String get consoleHandedOverHint =>
+      'Your console should switch to your server in a few seconds. Nothing happening? Try joining again.';
+
+  @override
+  String get consoleConnectFailed => 'Could not reach the relay';
+
+  @override
+  String get consoleConnectFailedHint =>
+      'Check your connection, then try joining again.';
 
   @override
   String get localNetworkBlocked =>
@@ -2123,4 +2000,14 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get showLess => '收起';
+
+  @override
+  String get lookupRecent => '最近';
+
+  @override
+  String get skinsRemovalNotice => '皮肤功能将在下次更新中移除。请导出你想保留的皮肤。';
+
+  @override
+  String get feedbackRpNotice =>
+      '我们不会回复与资源包相关的反馈。有些资源包本来就无法使用，也有些服务器会拒绝自定义资源包。';
 }

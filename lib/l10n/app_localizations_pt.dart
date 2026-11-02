@@ -186,11 +186,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get iUnderstand => 'Entendi';
 
   @override
-  String playInstructionsSwitch(Object relayName, Object relayIp) {
-    return 'Selecionado: $relayName\r\n\r\nComo se conectar:\r\n1. Vá para as configurações do seu Switch e altere o DNS para: $relayIp\r\n2. Abra o Minecraft e selecione um servidor da lista (como Cubecraft ou Hive).\r\n3. Agora você será enviado automaticamente para o seu próprio servidor.';
-  }
-
-  @override
   String get noSavedServers => 'Nenhum servidor salvo';
 
   @override
@@ -226,9 +221,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get stopBroadcasting => 'Parar transmissão';
 
   @override
-  String get startNintendoMode => 'Iniciar modo Nintendo';
-
-  @override
   String get startFriendsMode => 'Iniciar modo Amigos';
 
   @override
@@ -236,9 +228,6 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get labelXbox => 'Xbox/PS4-5';
-
-  @override
-  String get labelNintendo => 'Nintendo';
 
   @override
   String get labelFriends => 'Amigos';
@@ -252,12 +241,6 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get howToXboxBody =>
       'Como se conectar (Xbox / PS4 / PS5):\r\n1. Certifique-se de que o dispositivo que está executando o MCCompanion e o seu console estejam na mesma rede local.\r\n2. No aplicativo, informe o endereço e a porta do seu servidor de Minecraft e pressione \\\"Iniciar transmissão\\\".\r\n3. No console, abra Minecraft → Jogar → procure por Mundos LAN ou pela aba Amigos e atualize a lista.\r\n4. Selecione o servidor LAN chamado \\\"MCCompanion\\\" para entrar.\r\nNotas:\r\n- Se o servidor não aparecer, confirme que ambos os dispositivos estão na mesma sub-rede e que o aplicativo ainda está transmitindo.\r\n- Alguns modelos de console ou roteadores podem bloquear a descoberta LAN; tente ajustar as configurações do aplicativo ou do roteador, se necessário.';
-
-  @override
-  String get howToNintendoTitle => 'Nintendo Switch (modo DNS)';
-
-  @override
-  String get howToNintendoSubtitle => 'Ligar por DNS';
 
   @override
   String get howToFriendsTitle => 'Modo Amigos';
@@ -286,16 +269,6 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get helpMultiplayerFailedBody =>
       '⚠️ Isso não é um problema do MCCompanion!\r\n\r\nO MCCompanion redirecionou você com sucesso para o servidor solicitado. A mensagem \\\"Falha na conexão multijogador\\\" indica que o servidor de destino está inacessível no momento. Motivos possíveis:\r\n\r\n• O servidor de Minecraft de destino está offline ou sobrecarregado\r\n• O servidor exige uma versão atualizada do cliente ou uma edição específica\r\n• Problemas de rede entre o relay e o servidor de destino\r\n\r\nTente se conectar a outro servidor ou entre em contato com o suporte do servidor. Se o problema persistir em vários servidores, ative o Modo de depuração no MCCompanion e verifique os logs.';
-
-  @override
-  String get helpNintendoDnsTitle => 'O DNS do Nintendo não funciona';
-
-  @override
-  String get helpNintendoDnsSubtitle => 'Problemas comuns de DNS / relay';
-
-  @override
-  String get helpNintendoDnsBody =>
-      'Se o modo DNS do Nintendo não estiver funcionando, verifique o seguinte:\r\n\r\n1. Confirme que você enviou a configuração DNS pelo aplicativo (Enviar Configuração DNS).\r\n2. Verifique se você aplicou o IP do relay como DNS Primário no Switch.\r\n3. Certifique-se de que o servidor relay selecionado (EU/US) está online e não está sobrecarregado.\r\n4. Algumas redes (por exemplo, captive portals) impedem DNS personalizado, teste em outra rede.\r\n\r\nSe os problemas persistirem, ative o Modo de depuração e verifique os logs, ou tente a alternativa do modo Amigos.';
 
   @override
   String get helpFriendsModeTitle => 'O modo Amigos não funciona';
@@ -768,24 +741,6 @@ class AppLocalizationsPt extends AppLocalizations {
       'Os novos pedidos de amizade aparecerão aqui.';
 
   @override
-  String get skinsEdit => 'Editar';
-
-  @override
-  String get skinsMustBe64 => 'A skin deve ser de 64×64 pixels';
-
-  @override
-  String get skinsInvalidFile => 'Ficheiro de imagem inválido';
-
-  @override
-  String get skinsUpload => 'Carregar';
-
-  @override
-  String get skinsCreate => 'Criar';
-
-  @override
-  String get skinsDownload => 'Transferir';
-
-  @override
   String get chooseUniqueUsername =>
       'Escolha um nome de usuário único para começar.';
 
@@ -1166,20 +1121,6 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => 'Atualização disponível na Microsoft Store';
-
-  @override
-  String get skinSaved => 'Skin salva';
-
-  @override
-  String skinSavedAs(String name) {
-    return 'Salvo como \"$name\"';
-  }
-
-  @override
-  String get skinExportFailed => 'Falha na exportacao';
-
-  @override
-  String get skinExported => 'Skin exportada com sucesso';
 
   @override
   String get accountActions => 'Conta';
@@ -1604,17 +1545,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get skinsSavedToMySkins => 'Salvo em Meus Skins';
 
   @override
-  String get skinsEmptyLocalSkins =>
-      'Nenhum skin ainda. Crie ou faça upload de um skin para começar.';
-
-  @override
-  String get skinSaveDialog => 'Salvar skin';
-
-  @override
-  String get skinNameHint => 'Nome do skin';
-
-  @override
-  String get skinDefaultName => 'Meu skin';
+  String get skinsEmptyLocalSkins => 'Nenhuma skin salva ainda.';
 
   @override
   String get sectionRecentActivity => 'Atividade recente';
@@ -1708,9 +1639,6 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => 'Skin curtida';
-
-  @override
   String get notifPrefCommentReceived => 'Comentário recebido';
 
   @override
@@ -1729,12 +1657,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get notifPrefMessageReceived => 'Nova mensagem';
 
   @override
-  String get skinLayerInner => 'Interior';
-
-  @override
-  String get skinLayerOuter => 'Exterior';
-
-  @override
   String get feedbackLoginRequiredTitle => 'Inicie sessão para enviar feedback';
 
   @override
@@ -1746,30 +1668,6 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get supportInboxTitle => 'Caixa de suporte';
-
-  @override
-  String get skinShareSubject => 'Skin de Minecraft';
-
-  @override
-  String get skinEditorTitle => 'Editor de skins';
-
-  @override
-  String get skinToolUndo => 'Anular';
-
-  @override
-  String get skinSaveToMySkins => 'Guardar nas minhas skins';
-
-  @override
-  String get skinExportPng => 'Exportar PNG';
-
-  @override
-  String get skinToolDraw => 'Desenhar';
-
-  @override
-  String get skinToolFill => 'Preencher';
-
-  @override
-  String get skinToolErase => 'Apagar';
 
   @override
   String get customColour => 'Cor personalizada';
@@ -1936,47 +1834,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get howToAutoShow => 'Mostrar isto ao iniciar';
 
   @override
-  String get skinEditorLoadFailed =>
-      'Não foi possível carregar essa skin. Vamos começar com a padrão.';
-
-  @override
-  String get skinToolRecolour => 'Recolorir';
-
-  @override
-  String get skinToolPick => 'Conta-gotas';
-
-  @override
-  String get skinBases => 'Bases';
-
-  @override
-  String get skinBasesTitle => 'Começar de uma base';
-
-  @override
-  String get skinBasesSubtitle =>
-      'Isto substitui o que está aí. Desfazer traz de volta.';
-
-  @override
-  String get skinMirror => 'Espelho';
-
-  @override
-  String get skinSurprise => 'Surpresa';
-
-  @override
-  String get skinToolFillHint => 'Preenche a área que tocar';
-
-  @override
-  String get skinToolRecolourHint => 'Muda essa cor na skin inteira';
-
-  @override
-  String get skinToolPickHint => 'Pega a cor que tocar';
-
-  @override
-  String get skinModelClassic => 'Largo';
-
-  @override
-  String get skinModelSlim => 'Fino';
-
-  @override
   String get shareServerLabel => 'Partilhar o teu servidor';
 
   @override
@@ -2004,6 +1861,23 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get consoleLanHint =>
       'No seu console, abra o Minecraft e procure um jogo LAN em Amigos.';
+
+  @override
+  String get consoleConnecting => 'Connecting your console…';
+
+  @override
+  String get consoleHandedOver => 'Joining through the relay';
+
+  @override
+  String get consoleHandedOverHint =>
+      'Your console should switch to your server in a few seconds. Nothing happening? Try joining again.';
+
+  @override
+  String get consoleConnectFailed => 'Could not reach the relay';
+
+  @override
+  String get consoleConnectFailedHint =>
+      'Check your connection, then try joining again.';
 
   @override
   String get localNetworkBlocked =>
@@ -2195,4 +2069,15 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get showLess => 'Menos';
+
+  @override
+  String get lookupRecent => 'Recentes';
+
+  @override
+  String get skinsRemovalNotice =>
+      'As skins serão removidas na próxima atualização. Exporte as que quiser guardar.';
+
+  @override
+  String get feedbackRpNotice =>
+      'Não respondemos a relatórios sobre resource packs. Alguns packs simplesmente não funcionam e alguns servidores rejeitam packs personalizados.';
 }

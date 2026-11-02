@@ -71,7 +71,12 @@ class SavedSkinsStorage {
     final skinFile = File('${dir.path}/$id.png');
     await skinFile.writeAsBytes(bytes);
     all.add(
-      SavedSkin(id: id, name: name, filePath: skinFile.path, createdAt: createdAt),
+      SavedSkin(
+        id: id,
+        name: name,
+        filePath: skinFile.path,
+        createdAt: createdAt,
+      ),
     );
     all.sort((a, b) => b.createdAt.compareTo(a.createdAt));
     await saveMeta(all);

@@ -183,11 +183,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get iUnderstand => 'Anlıyorum';
 
   @override
-  String playInstructionsSwitch(Object relayName, Object relayIp) {
-    return 'Seçilen: $relayName\n\nBağlanma Adımları:\n1. Switch Ayarlarına gidin ve DNS’inizi bu ip ile değiştirin: $relayIp\n2. Minecraft’ı açın ve listeden bir sunucu seçin (örneğin Cubecraft veya Hive).\n3. Artık otomatik olarak kendi sunucunuza yönlendirileceksiniz.';
-  }
-
-  @override
   String get noSavedServers => 'Kaydedilen sunucu yok';
 
   @override
@@ -223,9 +218,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get stopBroadcasting => 'Yayını Durdur';
 
   @override
-  String get startNintendoMode => 'Nintendo Modunu başlat';
-
-  @override
   String get startFriendsMode => 'Arkadaş Modunu başlat';
 
   @override
@@ -233,9 +225,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get labelXbox => 'Xbox/PS4-5';
-
-  @override
-  String get labelNintendo => 'Nintendo';
 
   @override
   String get labelFriends => 'Arkadaşlar';
@@ -249,12 +238,6 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get howToXboxBody =>
       'Xbox / PS4 / PS5 için bağlanma adımları:\n1. MCCompanion çalıştıran cihazınızın ve konsolunuzun aynı yerel ağda olduğundan emin olun.\n2. Uygulamada Minecraft sunucu adresinizi ve portunuzu girin, ardından \"Yayına Başla\" düğmesine basın.\n3. Konsolda Minecraft → Oyna bölümünü açın, LAN Dünyaları veya Arkadaşlar sekmesini bulun ve listeyi yenileyin.\n4. Katılmak için \"MCCompanion\" adlı LAN sunucusunu seçin.\nNotlar:\n- Sunucu görünmüyorsa, iki cihazın da aynı alt ağda olduğunu ve uygulamanın hâlâ yayın yaptığını doğrulayın.\n- Bazı konsol modelleri veya yönlendiriciler LAN keşfini engelleyebilir; gerekirse uygulama ya da yönlendirici ayarlarını değiştirerek tekrar deneyin.';
-
-  @override
-  String get howToNintendoTitle => 'Nintendo Switch (DNS modu)';
-
-  @override
-  String get howToNintendoSubtitle => 'DNS ile bağlan';
 
   @override
   String get howToFriendsTitle => 'Arkadaş modu';
@@ -282,16 +265,6 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get helpMultiplayerFailedBody =>
       '⚠️ Bu, MCCompanion ile ilgili bir sorun değildir!\n\nMCCompanion sizi istenen sunucuya başarıyla yönlendirdi. \"Çok Oyunculu Bağlantı Başarısız\" mesajı, hedef sunucunun şu anda erişilemez olduğunu gösterir. Olası nedenler:\n\n• Hedef Minecraft sunucusu çevrimdışı veya aşırı yüklü olabilir\n• Sunucu güncel bir istemci sürümü ya da belirli bir sürüm gerektiriyor olabilir\n• Aktarıcı ile hedef sunucu arasında ağ sorunları olabilir\n\nFarklı bir sunucuya bağlanmayı deneyin veya sunucunun destek ekibiyle iletişime geçin. Sorun birden fazla sunucuda sürerse, MCCompanion\'te Hata Ayıklama Modunu etkinleştirip kayıtları kontrol edin.';
-
-  @override
-  String get helpNintendoDnsTitle => 'Nintendo DNS çalışmıyor';
-
-  @override
-  String get helpNintendoDnsSubtitle => 'Yaygın DNS / aktarıcı sorunları';
-
-  @override
-  String get helpNintendoDnsBody =>
-      'Nintendo DNS modu çalışmıyorsa aşağıdakileri kontrol edin:\n\n1. Uygulamadan DNS yapılandırmasını gönderdiğinizi doğrulayın (DNS Yapılandırmasını Gönder).\n2. Aktarıcı IP adresini Switch\'te Birincil DNS olarak uyguladığınızı doğrulayın.\n3. Seçilen aktarıcı sunucusunun (EU/US) çevrimiçi ve aşırı yük altında olmadığından emin olun.\n4. Bazı ağlar (örneğin captive portal kullanılan ağlar) özel DNS kullanımını engeller; farklı bir ağda test edin.\n\nSorun devam ederse Hata Ayıklama Modunu etkinleştirip kayıtları kontrol edin veya Arkadaş modu alternatifini deneyin.';
 
   @override
   String get helpFriendsModeTitle => 'Arkadaş modu çalışmıyor';
@@ -760,24 +733,6 @@ class AppLocalizationsTr extends AppLocalizations {
       'Yeni arkadaşlık istekleri burada görünecek.';
 
   @override
-  String get skinsEdit => 'Düzenle';
-
-  @override
-  String get skinsMustBe64 => 'Skin 64×64 piksel olmalıdır';
-
-  @override
-  String get skinsInvalidFile => 'Geçersiz resim dosyası';
-
-  @override
-  String get skinsUpload => 'Yükle';
-
-  @override
-  String get skinsCreate => 'Oluştur';
-
-  @override
-  String get skinsDownload => 'İndir';
-
-  @override
   String get chooseUniqueUsername =>
       'Başlamak için benzersiz bir kullanıcı adı seç.';
 
@@ -1159,20 +1114,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get upgradeWindowsHint => 'Yükseltme Microsoft Store\'da mevcut';
-
-  @override
-  String get skinSaved => 'Skin kaydedildi';
-
-  @override
-  String skinSavedAs(String name) {
-    return '\"$name\" olarak kaydedildi';
-  }
-
-  @override
-  String get skinExportFailed => 'Disa aktarma basarisiz';
-
-  @override
-  String get skinExported => 'Skin basariyla disa aktarildi';
 
   @override
   String get accountActions => 'Hesap';
@@ -1599,17 +1540,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get skinsSavedToMySkins => 'Skinlerime kaydedildi';
 
   @override
-  String get skinsEmptyLocalSkins =>
-      'Henüz skin yok. Başlamak için bir skin oluşturun veya yükleyin.';
-
-  @override
-  String get skinSaveDialog => 'Skin kaydet';
-
-  @override
-  String get skinNameHint => 'Skin adı';
-
-  @override
-  String get skinDefaultName => 'Benim skinim';
+  String get skinsEmptyLocalSkins => 'Henüz kayıtlı skin yok.';
 
   @override
   String get sectionRecentActivity => 'Son etkinlik';
@@ -1703,9 +1634,6 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get notifPrefSkinLiked => 'Skin beğenildi';
-
-  @override
   String get notifPrefCommentReceived => 'Yorum alındı';
 
   @override
@@ -1724,12 +1652,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get notifPrefMessageReceived => 'Yeni mesaj';
 
   @override
-  String get skinLayerInner => 'İç';
-
-  @override
-  String get skinLayerOuter => 'Dış';
-
-  @override
   String get feedbackLoginRequiredTitle =>
       'Geri bildirim göndermek için giriş yapın';
 
@@ -1742,30 +1664,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get supportInboxTitle => 'Destek kutusu';
-
-  @override
-  String get skinShareSubject => 'Minecraft skini';
-
-  @override
-  String get skinEditorTitle => 'Skin düzenleyici';
-
-  @override
-  String get skinToolUndo => 'Geri al';
-
-  @override
-  String get skinSaveToMySkins => 'Skinlerime kaydet';
-
-  @override
-  String get skinExportPng => 'PNG dışa aktar';
-
-  @override
-  String get skinToolDraw => 'Çiz';
-
-  @override
-  String get skinToolFill => 'Doldur';
-
-  @override
-  String get skinToolErase => 'Sil';
 
   @override
   String get customColour => 'Özel renk';
@@ -1932,48 +1830,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get howToAutoShow => 'Başlatınca bunu göster';
 
   @override
-  String get skinEditorLoadFailed =>
-      'Bu kaplama yüklenemedi. Varsayılan kaplamayla başlıyoruz.';
-
-  @override
-  String get skinToolRecolour => 'Yeniden renklendir';
-
-  @override
-  String get skinToolPick => 'Damlalık';
-
-  @override
-  String get skinBases => 'Şablonlar';
-
-  @override
-  String get skinBasesTitle => 'Bir şablonla başla';
-
-  @override
-  String get skinBasesSubtitle =>
-      'Bu, mevcut çizimin yerini alır. Geri al ile döner.';
-
-  @override
-  String get skinMirror => 'Aynala';
-
-  @override
-  String get skinSurprise => 'Sürpriz';
-
-  @override
-  String get skinToolFillHint => 'Dokunduğunuz alanı doldurur';
-
-  @override
-  String get skinToolRecolourHint =>
-      'O rengi kaplamanın her yerinde değiştirir';
-
-  @override
-  String get skinToolPickHint => 'Dokunduğunuz rengi alır';
-
-  @override
-  String get skinModelClassic => 'Geniş';
-
-  @override
-  String get skinModelSlim => 'İnce';
-
-  @override
   String get shareServerLabel => 'Sunucunu paylaş';
 
   @override
@@ -2001,6 +1857,23 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get consoleLanHint =>
       'Konsolunuzda Minecraft\'ı açın ve Arkadaşlar bölümünde bir LAN oyunu arayın.';
+
+  @override
+  String get consoleConnecting => 'Connecting your console…';
+
+  @override
+  String get consoleHandedOver => 'Joining through the relay';
+
+  @override
+  String get consoleHandedOverHint =>
+      'Your console should switch to your server in a few seconds. Nothing happening? Try joining again.';
+
+  @override
+  String get consoleConnectFailed => 'Could not reach the relay';
+
+  @override
+  String get consoleConnectFailedHint =>
+      'Check your connection, then try joining again.';
 
   @override
   String get localNetworkBlocked =>
@@ -2191,4 +2064,15 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get showLess => 'Daha az';
+
+  @override
+  String get lookupRecent => 'Son aramalar';
+
+  @override
+  String get skinsRemovalNotice =>
+      'Skin\'ler bir sonraki güncellemede kaldırılacak. Saklamak istediklerini dışa aktar.';
+
+  @override
+  String get feedbackRpNotice =>
+      'Kaynak paketleriyle ilgili bildirimlere yanıt vermiyoruz. Bazı paketler hiç çalışmıyor ve bazı sunucular özel paketleri reddediyor.';
 }

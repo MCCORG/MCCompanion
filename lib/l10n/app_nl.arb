@@ -115,25 +115,15 @@
     "description": "Shown when debug logging is enabled/disabled"
   },
   "iUnderstand": "Ik begrijp het",
-  "playInstructionsSwitch": "Geselecteerd: {relayName}\n\nHoe te verbinden:\n1. Ga naar uw Switch Instellingen en wijzig de DNS naar: {relayIp}\n2. Open Minecraft en selecteer een server uit de lijst (zoals Cubecraft of Hive).\n3. Je wordt nu automatisch naar je eigen server verzonden.",
-  "@playInstructionsSwitch": {
-    "description": "DNS instructions shown for Nintendo Switch mode",
-    "placeholders": {
-      "relayName": {},
-      "relayIp": {}
-    }
-  },
   "noSavedServers": "Geen opgeslagen servers",
   "savedServers": "Opgeslagen servers",
   "manageServers": "Beheer servers",
   "stopBroadcasting": "Uitzenden stoppen",
-  "startNintendoMode": "Nintendo Modus starten",
   "startFriendsMode": "Start vrienden modus",
   "startBroadcasting": "Uitzending starten",
-  "labelXbox": "Xbox/PS4-5",
-  "labelNintendo": "Nintendo",
+  "labelXbox": "Broadcast",
   "labelFriends": "Vrienden",
-  "howToXboxTitle": "Xbox / PS4-5 (LAN / proxyverbinding)",
+  "howToXboxTitle": "Broadcast (Xbox, PlayStation, Switch)",
   "@howToXboxTitle": {
     "description": "Title for the Xbox / PS4-5 how-to modal"
   },
@@ -141,17 +131,9 @@
   "@howToXboxSubtitle": {
     "description": "Short subtitle for Xbox / PS4-5 menu tile"
   },
-  "howToXboxBody": "Hoe verbinding te maken (Xbox / PS4 / PS5):\n1. Zorg ervoor dat MCCompanion en jouw console op hetzelfde lokale netwerk zitten.\n2. Voer in de app uw Minecraft serveradres en poort in en druk op \"Uitzending Starten\".\n3. In de console open Minecraft → Play → zoek naar LAN werelden of het tabblad Vrienden en ververs de lijst.\n4. Selecteer de LAN-server genaamd \"MCCompanion\" om toe te treden.\nnotities:\n- Als de server niet verschijnt, bevestig dan dat beide apparaten op hetzelfde subnet staan en dat de app nog steeds wordt uitgezonden.\n- Sommige console modellen of routers kunnen LAN ontdekking blokkeren; probeer indien nodig de app of router aan te zetten.",
+  "howToXboxBody": "Hoe verbinden (Xbox / PlayStation / Nintendo Switch):\n1. Zorg dat het apparaat met MCCompanion en je console op hetzelfde lokale netwerk zitten.\n2. Vul in de app het adres en de poort van je Minecraft-server in en druk op \"Uitzending starten\".\n3. Open op de console Minecraft → Spelen → tabblad Vrienden (of LAN-werelden) en ververs de lijst.\n4. Kies de LAN-server \"MCCompanion\" om te joinen.\nOpmerkingen:\n- Dit werkt hetzelfde op Xbox, PlayStation en Nintendo Switch. Je hoeft geen DNS aan te passen.\n- Verschijnt de server niet, controleer dan of beide apparaten op hetzelfde netwerk zitten en de app nog uitzendt.\n- Sommige routers blokkeren LAN-detectie; probeer een ander netwerk of pas je routerinstellingen aan.",
   "@howToXboxBody": {
     "description": "Detailed steps for Xbox/PS4-5 how-to modal"
-  },
-  "howToNintendoTitle": "Nintendo Switch (DNS-modus)",
-  "@howToNintendoTitle": {
-    "description": "Title for the Nintendo how-to modal"
-  },
-  "howToNintendoSubtitle": "Verbind via DNS",
-  "@howToNintendoSubtitle": {
-    "description": "Short subtitle for Nintendo menu tile"
   },
   "howToFriendsTitle": "Vrienden modus",
   "@howToFriendsTitle": {
@@ -165,7 +147,7 @@
   "@helpMCCompanionTitle": {
     "description": "Title for help topic when MCCompanion isn't visible on console"
   },
-  "helpMCCompanionSubtitle": "Problemen met het oplossen van LAN ontdekking",
+  "helpMCCompanionSubtitle": "Problemen met broadcast en LAN-detectie oplossen",
   "@helpMCCompanionSubtitle": {
     "description": "Short subtitle for MCCompanion does not appear tile"
   },
@@ -184,18 +166,6 @@
   "helpMultiplayerFailedBody": "⚠️ Dit is geen probleem met MCCompanion!\n\nMCCompanion heeft je met succes doorgestuurd naar de server. Het bericht \"Multiplayer Verbinding Mislukt\" geeft aan dat de doelserver op dit moment niet bereikbaar is. Mogelijke redenen:\n\n• De doel Minecraft-server is offline of overgeladen\n• De server vereist een bijgewerkte clientversie of specifieke editie\n• Netwerkproblemen tussen het relais en de doelserver\n\nProbeer verbinding te maken met een andere server of neem contact op met de ondersteuning van de server. Als het probleem aanhoudt voor meerdere servers, schakel dan Debug Mode in MCCompanion in en controleer de logs.",
   "@helpMultiplayerFailedBody": {
     "description": "Explanation shown when multiplayer connection failed appears"
-  },
-  "helpNintendoDnsTitle": "Nintendo DNS werkt niet",
-  "@helpNintendoDnsTitle": {
-    "description": "Title for Nintendo DNS troubleshooting"
-  },
-  "helpNintendoDnsSubtitle": "Voorkomende problemen met DNS / Relay (placeholder)",
-  "@helpNintendoDnsSubtitle": {
-    "description": "Short subtitle for Nintendo DNS troubleshooting tile"
-  },
-  "helpNintendoDnsBody": "Als Nintendo DNS modus niet werkt, controleer dan het volgende:\n\n1. Bevestig dat je DNS-configuratie hebt gestuurd (Send DNS Config).\n2. Controleer of u het relais-IP als primaire DNS heeft toegepast op de Switch.\n3. Zorg ervoor dat de relaisserver (EU/US) online is en niet overbelast.\n4. Sommige netwerken (bijv. captive portals) voorkomen aangepaste DNS, test op een ander netwerk.\n\nAls problemen aanhouden, schakel dan Debug Mode in en bekijk de logs of probeer het alternatief Vriends-modus.",
-  "@helpNintendoDnsBody": {
-    "description": "Detailed placeholder for Nintendo DNS troubleshooting"
   },
   "helpFriendsModeTitle": "Vrienden modus werkt niet",
   "@helpFriendsModeTitle": {
@@ -429,12 +399,6 @@
   "sendLink": "Link versturen",
   "signInSubtitle": "Log in om toegang te krijgen tot je profiel, vrienden en chats.",
   "signOut": "Uitloggen",
-  "skinsCreate": "Aanmaken",
-  "skinsDownload": "Downloaden",
-  "skinsEdit": "Bewerken",
-  "skinsInvalidFile": "Ongeldig afbeeldingsbestand",
-  "skinsMustBe64": "Skin moet 64×64 pixels zijn",
-  "skinsUpload": "Uploaden",
   "somethingWentWrong": "Er is iets misgegaan. Probeer opnieuw.",
   "unlink": "Ontkoppelen",
   "unlinkJavaTitle": "Java-account ontkoppelen",
@@ -564,27 +528,6 @@
   "upgradeWindowsHint": "Upgrade beschikbaar via de Microsoft Store",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "skinSaved": "Skin opgeslagen",
-  "@skinSaved": {
-    "description": "Toast when skin is saved"
-  },
-  "skinSavedAs": "Opgeslagen als \"{name}\"",
-  "@skinSavedAs": {
-    "description": "Toast when skin saved with name",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinExportFailed": "Exporteren mislukt",
-  "@skinExportFailed": {
-    "description": "Toast when skin export fails"
-  },
-  "skinExported": "Skin succesvol geexporteerd",
-  "@skinExported": {
-    "description": "Toast when skin is exported successfully"
   },
   "accountActions": "Account",
   "@accountActions": {
@@ -741,10 +684,7 @@
     }
   },
   "skinsSavedToMySkins": "Opgeslagen in Mijn Skins",
-  "skinsEmptyLocalSkins": "Nog geen skins. Maak of upload een skin om te beginnen.",
-  "skinSaveDialog": "Skin opslaan",
-  "skinNameHint": "Skin naam",
-  "skinDefaultName": "Mijn skin",
+  "skinsEmptyLocalSkins": "Nog geen opgeslagen skins.",
   "sectionRecentActivity": "Recente activiteit",
   "activityNoEvents": "Nog geen recente activiteit.",
   "activitySkinUploaded": "Skin geüpload",
@@ -832,33 +772,16 @@
       }
     }
   },
-  "notifPrefSkinLiked": "Skin geliket",
   "notifPrefCommentReceived": "Reactie ontvangen",
   "notifPrefPackApproved": "Pack goedgekeurd",
   "notifPrefPackRejected": "Pack afgewezen",
   "notifPrefFriendRequest": "Vriendschapsverzoek",
   "notifPrefFriendAccepted": "Vriend toegevoegd",
   "notifPrefMessageReceived": "Nieuw bericht",
-  "skinLayerInner": "Binnen",
-  "@skinLayerInner": {
-    "description": "Skin editor layer toggle, inner/base layer"
-  },
-  "skinLayerOuter": "Buiten",
-  "@skinLayerOuter": {
-    "description": "Skin editor layer toggle, outer/overlay layer"
-  },
   "feedbackLoginRequiredTitle": "Log in om feedback te sturen",
   "feedbackLoginRequiredBody": "Feedback is gekoppeld aan je MCCompanion-account zodat we je rechtstreeks in de app kunnen antwoorden.",
   "feedbackLoginButton": "Inloggen",
   "supportInboxTitle": "Supportinbox",
-  "skinShareSubject": "Minecraft-skin",
-  "skinEditorTitle": "Skin-editor",
-  "skinToolUndo": "Ongedaan maken",
-  "skinSaveToMySkins": "Opslaan bij mijn skins",
-  "skinExportPng": "PNG exporteren",
-  "skinToolDraw": "Tekenen",
-  "skinToolFill": "Vullen",
-  "skinToolErase": "Wissen",
   "customColour": "Eigen kleur",
   "featuredServerLabel": "UITGELICHTE SERVER",
   "featuredServerTagline": "Spring erin en begin met spelen.",
@@ -909,19 +832,6 @@
   "chooseServerTitle": "Kies een server",
   "changeLabel": "Wijzigen",
   "howToAutoShow": "Dit tonen als ik start",
-  "skinEditorLoadFailed": "Die skin kon niet geladen worden. We beginnen met de standaardskin.",
-  "skinToolRecolour": "Herkleur",
-  "skinToolPick": "Pipet",
-  "skinBases": "Bases",
-  "skinBasesTitle": "Begin met een basis",
-  "skinBasesSubtitle": "Dit vervangt wat er nu staat. Ongedaan maken zet het terug.",
-  "skinMirror": "Spiegel",
-  "skinSurprise": "Verras me",
-  "skinToolFillHint": "Vult het vlak dat je aantikt",
-  "skinToolRecolourHint": "Verandert die kleur overal op de skin",
-  "skinToolPickHint": "Neemt de kleur die je aantikt",
-  "skinModelClassic": "Breed",
-  "skinModelSlim": "Smal",
   "shareServerLabel": "Server delen",
   "shareServerOn": "Vrienden zien op welke server je zit",
   "shareServerOff": "Vrienden zien dat je speelt, niet waar",
@@ -937,6 +847,11 @@
   "waitingForConsole": "Wachten op je console…",
   "consoleFound": "Console gevonden",
   "consoleLanHint": "Open Minecraft op je console en zoek onder Vrienden naar een LAN-spel.",
+  "consoleConnecting": "Je console verbinden…",
+  "consoleHandedOver": "Joinen via de relay",
+  "consoleHandedOverHint": "Je console zou binnen enkele seconden naar je server moeten gaan. Gebeurt er niets? Probeer opnieuw te joinen.",
+  "consoleConnectFailed": "De relay is niet bereikbaar",
+  "consoleConnectFailedHint": "Controleer je verbinding en probeer opnieuw te joinen.",
   "localNetworkBlocked": "MCCompanion kan je lokale netwerk niet bereiken. Zet Lokaal netwerk aan voor MCCompanion in de instellingen van je toestel en zorg dat je op wifi zit.",
   "directAddressNotSupported": "{host} is een IPv6-adres. Proxy/directe modus ondersteunt alleen IPv4. Gebruik het IPv4-adres of de hostnaam.",
   "@directAddressNotSupported": {
@@ -1011,5 +926,8 @@
   "serverVoteOffline": "Kon de server niet bereiken. Controleer je verbinding.",
   "feedbackViewYourReport": "Bekijk je melding",
   "showMore": "Meer",
-  "showLess": "Minder"
+  "showLess": "Minder",
+  "lookupRecent": "Recent",
+  "skinsRemovalNotice": "Skins worden met de volgende update verwijderd. Exporteer de skins die je wilt bewaren.",
+  "feedbackRpNotice": "We beantwoorden geen meldingen over resource packs. Sommige packs werken gewoon niet, en sommige servers weigeren eigen packs."
 }

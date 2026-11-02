@@ -115,23 +115,13 @@
     "description": "Shown when debug logging is enabled/disabled"
   },
   "iUnderstand": "میں سمجھ گیا",
-  "playInstructionsSwitch": "منتخب شدہ: {relayName}\r\n\r\nجڑنے کا طریقہ:\r\n1. اپنے Switch کی Settings میں جائیں اور DNS کو اس میں تبدیل کریں: {relayIp}\r\n2. Minecraft کھولیں اور فہرست میں سے ایک سرور منتخب کریں (جیسے Cubecraft یا Hive)۔\r\n3. اب آپ خودکار طور پر اپنے سرور پر بھیج دیے جائیں گے۔",
-  "@playInstructionsSwitch": {
-    "description": "DNS instructions shown for Nintendo Switch mode",
-    "placeholders": {
-      "relayName": {},
-      "relayIp": {}
-    }
-  },
   "noSavedServers": "کوئی محفوظ شدہ سرور نہیں",
   "savedServers": "محفوظ شدہ سرورز",
   "manageServers": "سرورز منظم کریں",
   "stopBroadcasting": "براڈکاسٹنگ بند کریں",
-  "startNintendoMode": "Nintendo موڈ شروع کریں",
   "startFriendsMode": "دوست موڈ شروع کریں",
   "startBroadcasting": "براڈکاسٹنگ شروع کریں",
   "labelXbox": "Xbox/PS4-5",
-  "labelNintendo": "Nintendo",
   "labelFriends": "دوست",
   "howToXboxTitle": "Xbox / PS4-5 (LAN / پراکسی)",
   "@howToXboxTitle": {
@@ -144,14 +134,6 @@
   "howToXboxBody": "جڑنے کا طریقہ (Xbox / PS4 / PS5):\r\n1. یقینی بنائیں کہ MCCompanion چلانے والی آپ کی ڈیوائس اور آپ کا کنسول ایک ہی مقامی نیٹ ورک پر ہیں۔\r\n2. ایپ میں اپنا Minecraft سرور ایڈریس اور پورٹ درج کریں اور \"براڈکاسٹنگ شروع کریں\" دبائیں۔\r\n3. کنسول پر Minecraft → Play کھولیں → LAN Worlds یا Friends ٹیب تلاش کریں اور فہرست تازہ کریں۔\r\n4. شامل ہونے کے لیے \"MCCompanion\" نامی LAN سرور منتخب کریں۔\r\nنوٹس:\r\n- اگر سرور ظاہر نہ ہو تو تصدیق کریں کہ دونوں ڈیوائسز ایک ہی subnet پر ہیں اور ایپ اب بھی براڈکاسٹ کر رہی ہے۔\r\n- کچھ کنسول ماڈلز یا routers LAN دریافت کو بلاک کر سکتے ہیں؛ ضرورت ہو تو ایپ یا router settings تبدیل کر کے دیکھیں۔",
   "@howToXboxBody": {
     "description": "Detailed steps for Xbox/PS4-5 how-to modal"
-  },
-  "howToNintendoTitle": "Nintendo Switch (DNS موڈ)",
-  "@howToNintendoTitle": {
-    "description": "Title for the Nintendo how-to modal"
-  },
-  "howToNintendoSubtitle": "DNS کے ذریعے جڑیں",
-  "@howToNintendoSubtitle": {
-    "description": "Short subtitle for Nintendo menu tile"
   },
   "howToFriendsTitle": "دوست موڈ",
   "@howToFriendsTitle": {
@@ -184,18 +166,6 @@
   "helpMultiplayerFailedBody": "⚠️ یہ MCCompanion کا مسئلہ نہیں ہے!\r\n\r\nMCCompanion نے آپ کو کامیابی سے مطلوبہ سرور پر ری ڈائریکٹ کیا ہے۔ \"Multiplayer Connection Failed\" کا مطلب ہے کہ ہدف سرور اس وقت قابلِ رسائی نہیں۔ ممکنہ وجوہات:\r\n\r\n• ہدف Minecraft سرور آف لائن ہے یا بہت زیادہ بوجھ میں ہے\r\n• سرور کو اپ ڈیٹ شدہ کلائنٹ ورژن یا مخصوص ایڈیشن درکار ہے\r\n• relay اور ہدف سرور کے درمیان نیٹ ورک مسائل\r\n\r\nکسی مختلف سرور سے جڑنے کی کوشش کریں یا سرور سپورٹ سے رابطہ کریں۔ اگر یہ مسئلہ کئی سرورز پر برقرار رہے تو MCCompanion میں ڈیبگ موڈ فعال کریں اور لاگز چیک کریں۔",
   "@helpMultiplayerFailedBody": {
     "description": "Explanation shown when multiplayer connection failed appears"
-  },
-  "helpNintendoDnsTitle": "Nintendo DNS کام نہیں کرتا",
-  "@helpNintendoDnsTitle": {
-    "description": "Title for Nintendo DNS troubleshooting"
-  },
-  "helpNintendoDnsSubtitle": "عام DNS / relay مسائل",
-  "@helpNintendoDnsSubtitle": {
-    "description": "Short subtitle for Nintendo DNS troubleshooting tile"
-  },
-  "helpNintendoDnsBody": "اگر Nintendo DNS موڈ کام نہیں کر رہا تو درج ذیل چیک کریں:\r\n\r\n1. تصدیق کریں کہ آپ نے ایپ سے DNS config بھیجی ہے (Send DNS Config)۔\r\n2. تصدیق کریں کہ آپ نے Switch پر relay IP کو Primary DNS کے طور پر لاگو کیا ہے۔\r\n3. یقینی بنائیں کہ منتخب کردہ relay سرور (EU/US) آن لائن ہے اور بہت زیادہ بوجھ میں نہیں۔\r\n4. کچھ نیٹ ورکس (مثلاً captive portals) کسٹم DNS کو روکتے ہیں, کسی دوسرے نیٹ ورک پر آزما کر دیکھیں۔\r\n\r\nاگر مسئلہ برقرار رہے تو ڈیبگ موڈ فعال کریں اور لاگز چیک کریں یا دوست موڈ متبادل آزمائیں۔",
-  "@helpNintendoDnsBody": {
-    "description": "Detailed placeholder for Nintendo DNS troubleshooting"
   },
   "helpFriendsModeTitle": "دوست موڈ کام نہیں کرتا",
   "@helpFriendsModeTitle": {
@@ -838,30 +808,6 @@
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "بنائیں",
-  "@skinsCreate": {
-    "description": "Button to create/open skin editor"
-  },
-  "skinsDownload": "ڈاؤن لوڈ",
-  "@skinsDownload": {
-    "description": "Download button in skin detail sheet"
-  },
-  "skinsEdit": "Edit",
-  "@skinsEdit": {
-    "description": "Edit button in skin detail sheet"
-  },
-  "skinsInvalidFile": "غلط تصویری فائل",
-  "@skinsInvalidFile": {
-    "description": "Error when the selected file is not a valid image"
-  },
-  "skinsMustBe64": "اسکن 64×64 پکسل کی ہونی چاہیے",
-  "@skinsMustBe64": {
-    "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsUpload": "اپ لوڈ",
-  "@skinsUpload": {
-    "description": "Button to upload a skin"
-  },
   "somethingWentWrong": "کچھ غلط ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔",
   "@somethingWentWrong": {
     "description": "Generic error message"
@@ -1000,27 +946,6 @@
   "upgradeWindowsHint": "اپ گریڈ مائیکروسافٹ اسٹور پر دستیاب ہے",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "skinSaved": "اسکن محفوظ",
-  "@skinSaved": {
-    "description": "Toast when skin is saved"
-  },
-  "skinSavedAs": "\"{name}\" کے طور پر محفوظ",
-  "@skinSavedAs": {
-    "description": "Toast when skin saved with name",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinExportFailed": "برآمد ناکام",
-  "@skinExportFailed": {
-    "description": "Toast when skin export fails"
-  },
-  "skinExported": "اسکن کامیابی سے برآمد",
-  "@skinExported": {
-    "description": "Toast when skin is exported successfully"
   },
   "feedbackBugReport": "بگ رپورٹ",
   "feedbackFeatureRequest": "فیچر کی درخواست",
@@ -1161,10 +1086,7 @@
     }
   },
   "skinsSavedToMySkins": "میری اسکنز میں محفوظ ہو گیا",
-  "skinsEmptyLocalSkins": "ابھی تک کوئی اسکن نہیں۔ شروع کرنے کے لیے ایک اسکن بنائیں یا اپلوڈ کریں۔",
-  "skinSaveDialog": "سکن محفوظ کریں",
-  "skinNameHint": "سکن کا نام",
-  "skinDefaultName": "میرا سکن",
+  "skinsEmptyLocalSkins": "ابھی تک کوئی محفوظ اسکن نہیں۔",
   "sectionRecentActivity": "حالیہ سرگرمی",
   "activityNoEvents": "ابھی تک کوئی حالیہ سرگرمی نہیں۔",
   "activitySkinUploaded": "اسکن اپلوڈ کی",
@@ -1252,21 +1174,12 @@
       }
     }
   },
-  "notifPrefSkinLiked": "اسکن پسند",
   "notifPrefCommentReceived": "تبصرہ موصول",
   "notifPrefPackApproved": "پیک منظور",
   "notifPrefPackRejected": "پیک مسترد",
   "notifPrefFriendRequest": "دوستی کی درخواست",
   "notifPrefFriendAccepted": "دوست شامل",
   "notifPrefMessageReceived": "نیا پیغام",
-  "skinLayerInner": "اندرونی",
-  "@skinLayerInner": {
-    "description": "Skin editor layer toggle, inner/base layer"
-  },
-  "skinLayerOuter": "بیرونی",
-  "@skinLayerOuter": {
-    "description": "Skin editor layer toggle, outer/overlay layer"
-  },
   "feedbackLoginRequiredTitle": "رائے بھیجنے کے لیے لاگ ان کریں",
   "feedbackLoginRequiredBody": "رائے آپ کے MCCompanion اکاؤنٹ سے منسلک ہوتی ہے تاکہ ہم ایپ میں براہِ راست آپ کو جواب دے سکیں۔",
   "feedbackLoginButton": "لاگ ان",
@@ -1274,14 +1187,6 @@
   "rpInvalidPackFormat": "یہ Java Edition پیک ہے اور تعاون یافتہ نہیں۔ براہ کرم Bedrock Edition ریسورس پیک استعمال کریں۔",
   "accountActions": "اکاؤنٹ",
   "supportInboxTitle": "سپورٹ ان باکس",
-  "skinShareSubject": "Minecraft سکن",
-  "skinEditorTitle": "سکن ایڈیٹر",
-  "skinToolUndo": "واپس",
-  "skinSaveToMySkins": "میری سکنز میں محفوظ کریں",
-  "skinExportPng": "PNG ایکسپورٹ کریں",
-  "skinToolDraw": "بنائیں",
-  "skinToolFill": "بھریں",
-  "skinToolErase": "مٹائیں",
   "customColour": "اپنی مرضی کا رنگ",
   "featuredServerLabel": "نمایاں سرور",
   "featuredServerTagline": "شامل ہوں اور کھیلنا شروع کریں۔",
@@ -1332,19 +1237,6 @@
   "chooseServerTitle": "سرور منتخب کریں",
   "changeLabel": "تبدیل کریں",
   "howToAutoShow": "شروع کرتے وقت یہ دکھائیں",
-  "skinEditorLoadFailed": "وہ اسکن لوڈ نہیں ہو سکی۔ ہم ڈیفالٹ اسکن سے شروع کر رہے ہیں۔",
-  "skinToolRecolour": "رنگ بدلیں",
-  "skinToolPick": "رنگ چنیں",
-  "skinBases": "بنیادی ڈیزائن",
-  "skinBasesTitle": "ایک بنیاد سے شروع کریں",
-  "skinBasesSubtitle": "یہ موجودہ ڈرائنگ کی جگہ لے گا۔ واپس کرنے پر بحال ہو جائے گا۔",
-  "skinMirror": "آئینہ",
-  "skinSurprise": "حیران کریں",
-  "skinToolFillHint": "جس حصے کو چھوئیں وہ بھر دیتا ہے",
-  "skinToolRecolourHint": "پوری اسکن میں وہ رنگ بدل دیتا ہے",
-  "skinToolPickHint": "جس رنگ کو چھوئیں وہ لے لیتا ہے",
-  "skinModelClassic": "چوڑا",
-  "skinModelSlim": "پتلا",
   "shareServerLabel": "اپنا سرور شیئر کریں",
   "shareServerOn": "دوست دیکھ سکتے ہیں آپ کس سرور پر ہیں",
   "shareServerOff": "دوست دیکھتے ہیں کہ آپ کھیل رہے ہیں، کہاں نہیں",
@@ -1444,5 +1336,8 @@
   "serverVoteOffline": "سرور تک رسائی نہیں ہو سکی۔ اپنا کنکشن چیک کریں۔",
   "feedbackViewYourReport": "اپنی رپورٹ دیکھیں",
   "showMore": "مزید",
-  "showLess": "کم"
+  "showLess": "کم",
+  "lookupRecent": "حالیہ",
+  "skinsRemovalNotice": "اگلی اپ ڈیٹ میں اسکنز ہٹا دی جائیں گی۔ جنہیں رکھنا چاہتے ہیں انہیں ایکسپورٹ کریں۔",
+  "feedbackRpNotice": "ہم ریسورس پیک سے متعلق رپورٹس کا جواب نہیں دیتے۔ کچھ پیک بس کام نہیں کرتے، اور کچھ سرور حسبِ ضرورت پیک مسترد کر دیتے ہیں۔"
 }

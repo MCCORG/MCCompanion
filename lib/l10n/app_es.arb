@@ -115,23 +115,13 @@
     "description": "Shown when debug logging is enabled/disabled"
   },
   "iUnderstand": "Entiendo",
-  "playInstructionsSwitch": "Seleccionado: {relayName}\r\n\r\nCómo conectarte:\r\n1. Ve a la configuración de tu Switch y cambia el DNS a: {relayIp}\r\n2. Abre Minecraft y selecciona un servidor de la lista (como Cubecraft o Hive).\r\n3. Ahora serás enviado automáticamente a tu propio servidor.",
-  "@playInstructionsSwitch": {
-    "description": "DNS instructions shown for Nintendo Switch mode",
-    "placeholders": {
-      "relayName": {},
-      "relayIp": {}
-    }
-  },
   "noSavedServers": "No hay servidores guardados",
   "savedServers": "Servidores guardados",
   "manageServers": "Administrar servidores",
   "stopBroadcasting": "Detener transmisión",
-  "startNintendoMode": "Iniciar modo Nintendo",
   "startFriendsMode": "Iniciar modo Amigos",
   "startBroadcasting": "Iniciar transmisión",
   "labelXbox": "Xbox/PS4-5",
-  "labelNintendo": "Nintendo",
   "labelFriends": "Amigos",
   "howToXboxTitle": "Xbox / PS4-5 (LAN / conexión proxy)",
   "@howToXboxTitle": {
@@ -144,14 +134,6 @@
   "howToXboxBody": "Cómo conectarte (Xbox / PS4 / PS5):\r\n1. Asegúrate de que el dispositivo que ejecuta MCCompanion y tu consola estén en la misma red local.\r\n2. En la aplicación, introduce la dirección y el puerto de tu servidor de Minecraft y pulsa \\\"Iniciar transmisión\\\".\r\n3. En la consola, abre Minecraft → Jugar → busca Mundos LAN o la pestaña Amigos y actualiza la lista.\r\n4. Selecciona el servidor LAN llamado \\\"MCCompanion\\\" para unirte.\r\nNotas:\r\n- Si el servidor no aparece, confirma que ambos dispositivos están en la misma subred y que la aplicación sigue transmitiendo.\r\n- Algunos modelos de consola o routers pueden bloquear el descubrimiento LAN; prueba cambiando la aplicación o la configuración del router si es necesario.",
   "@howToXboxBody": {
     "description": "Detailed steps for Xbox/PS4-5 how-to modal"
-  },
-  "howToNintendoTitle": "Nintendo Switch (modo DNS)",
-  "@howToNintendoTitle": {
-    "description": "Title for the Nintendo how-to modal"
-  },
-  "howToNintendoSubtitle": "Conecta por DNS",
-  "@howToNintendoSubtitle": {
-    "description": "Short subtitle for Nintendo menu tile"
   },
   "howToFriendsTitle": "Modo Amigos",
   "@howToFriendsTitle": {
@@ -184,18 +166,6 @@
   "helpMultiplayerFailedBody": "⚠️ ¡Esto no es un problema de MCCompanion!\r\n\r\nMCCompanion te redirigió correctamente al servidor solicitado. El mensaje \\\"Conexión multijugador fallida\\\" indica que el servidor de destino no está disponible en este momento. Posibles razones:\r\n\r\n• El servidor de Minecraft de destino está desconectado o sobrecargado\r\n• El servidor requiere una versión actualizada del cliente o una edición específica\r\n• Problemas de red entre el relay y el servidor de destino\r\n\r\nIntenta conectarte a otro servidor o contacta con el soporte del servidor. Si el problema persiste en varios servidores, activa el modo de depuración en MCCompanion y revisa los registros.",
   "@helpMultiplayerFailedBody": {
     "description": "Explanation shown when multiplayer connection failed appears"
-  },
-  "helpNintendoDnsTitle": "El DNS de Nintendo no funciona",
-  "@helpNintendoDnsTitle": {
-    "description": "Title for Nintendo DNS troubleshooting"
-  },
-  "helpNintendoDnsSubtitle": "Problemas comunes de DNS / relay",
-  "@helpNintendoDnsSubtitle": {
-    "description": "Short subtitle for Nintendo DNS troubleshooting tile"
-  },
-  "helpNintendoDnsBody": "Si el modo DNS de Nintendo no funciona, revisa lo siguiente:\r\n\r\n1. Confirma que enviaste la configuración DNS desde la aplicación (Enviar configuración DNS).\r\n2. Verifica que aplicaste la IP del relay como DNS primario en la Switch.\r\n3. Asegúrate de que el servidor relay seleccionado (EU/US) esté en línea y no sobrecargado.\r\n4. Algunas redes (por ejemplo, portales cautivos) impiden el uso de DNS personalizado, prueba en otra red.\r\n\r\nSi los problemas persisten, activa el modo de depuración y revisa los registros o prueba la alternativa del modo Amigos.",
-  "@helpNintendoDnsBody": {
-    "description": "Detailed placeholder for Nintendo DNS troubleshooting"
   },
   "helpFriendsModeTitle": "El modo Amigos no funciona",
   "@helpFriendsModeTitle": {
@@ -838,30 +808,6 @@
   "@signOut": {
     "description": "Sign out button label"
   },
-  "skinsCreate": "Crear",
-  "@skinsCreate": {
-    "description": "Button to create/open skin editor"
-  },
-  "skinsDownload": "Descargar",
-  "@skinsDownload": {
-    "description": "Download button in skin detail sheet"
-  },
-  "skinsEdit": "Editar",
-  "@skinsEdit": {
-    "description": "Edit button in skin detail sheet"
-  },
-  "skinsInvalidFile": "Archivo de imagen no válido",
-  "@skinsInvalidFile": {
-    "description": "Error when the selected file is not a valid image"
-  },
-  "skinsMustBe64": "El skin debe ser de 64×64 píxeles",
-  "@skinsMustBe64": {
-    "description": "Error when uploaded skin is wrong size"
-  },
-  "skinsUpload": "Subir",
-  "@skinsUpload": {
-    "description": "Button to upload a skin"
-  },
   "somethingWentWrong": "Algo salió mal. Inténtalo de nuevo.",
   "@somethingWentWrong": {
     "description": "Generic error message"
@@ -1000,27 +946,6 @@
   "upgradeWindowsHint": "Actualización disponible en Microsoft Store",
   "@upgradeWindowsHint": {
     "description": "Toast shown on Windows when user taps the upgrade button"
-  },
-  "skinSaved": "Skin guardado",
-  "@skinSaved": {
-    "description": "Toast when skin is saved"
-  },
-  "skinSavedAs": "Guardado como \"{name}\"",
-  "@skinSavedAs": {
-    "description": "Toast when skin saved with name",
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "skinExportFailed": "Error al exportar",
-  "@skinExportFailed": {
-    "description": "Toast when skin export fails"
-  },
-  "skinExported": "Skin exportado correctamente",
-  "@skinExported": {
-    "description": "Toast when skin is exported successfully"
   },
   "accountActions": "Cuenta",
   "@accountActions": {
@@ -1165,10 +1090,7 @@
     }
   },
   "skinsSavedToMySkins": "Guardado en Mis Skins",
-  "skinsEmptyLocalSkins": "Aún no hay skins. Crea o sube un skin para empezar.",
-  "skinSaveDialog": "Guardar skin",
-  "skinNameHint": "Nombre del skin",
-  "skinDefaultName": "Mi skin",
+  "skinsEmptyLocalSkins": "Aún no hay skins guardadas.",
   "sectionRecentActivity": "Actividad reciente",
   "activityNoEvents": "Sin actividad reciente todavía.",
   "activitySkinUploaded": "Skin subida",
@@ -1256,35 +1178,18 @@
       }
     }
   },
-  "notifPrefSkinLiked": "Skin con me gusta",
   "notifPrefCommentReceived": "Comentario recibido",
   "notifPrefPackApproved": "Pack aprobado",
   "notifPrefPackRejected": "Pack rechazado",
   "notifPrefFriendRequest": "Solicitud de amistad",
   "notifPrefFriendAccepted": "Amigo añadido",
   "notifPrefMessageReceived": "Nuevo mensaje",
-  "skinLayerInner": "Interior",
-  "@skinLayerInner": {
-    "description": "Skin editor layer toggle, inner/base layer"
-  },
-  "skinLayerOuter": "Exterior",
-  "@skinLayerOuter": {
-    "description": "Skin editor layer toggle, outer/overlay layer"
-  },
   "feedbackLoginRequiredTitle": "Inicia sesión para enviar comentarios",
   "feedbackLoginRequiredBody": "Los comentarios están vinculados a tu cuenta de MCCompanion para que podamos responderte directamente en la app.",
   "feedbackLoginButton": "Iniciar sesión",
   "rpBehaviorContentWarning": "Este pack contiene datos de behavior pack que no funcionarán en servidores. Las texturas sí funcionarán.",
   "rpInvalidPackFormat": "Este es un pack de Java Edition y no es compatible. Usa un pack de recursos de Bedrock Edition.",
   "supportInboxTitle": "Bandeja de soporte",
-  "skinShareSubject": "Skin de Minecraft",
-  "skinEditorTitle": "Editor de skins",
-  "skinToolUndo": "Deshacer",
-  "skinSaveToMySkins": "Guardar en mis skins",
-  "skinExportPng": "Exportar PNG",
-  "skinToolDraw": "Dibujar",
-  "skinToolFill": "Rellenar",
-  "skinToolErase": "Borrar",
   "customColour": "Color personalizado",
   "featuredServerLabel": "SERVIDOR DESTACADO",
   "featuredServerTagline": "Entra y empieza a jugar.",
@@ -1335,19 +1240,6 @@
   "chooseServerTitle": "Elige un servidor",
   "changeLabel": "Cambiar",
   "howToAutoShow": "Mostrar esto al iniciar",
-  "skinEditorLoadFailed": "No se pudo cargar esa skin. Empezamos con la predeterminada.",
-  "skinToolRecolour": "Recolorear",
-  "skinToolPick": "Cuentagotas",
-  "skinBases": "Bases",
-  "skinBasesTitle": "Empezar desde una base",
-  "skinBasesSubtitle": "Esto reemplaza lo que hay ahora. Deshacer lo devuelve.",
-  "skinMirror": "Espejo",
-  "skinSurprise": "Sorpréndeme",
-  "skinToolFillHint": "Rellena la zona que tocas",
-  "skinToolRecolourHint": "Cambia ese color en toda la skin",
-  "skinToolPickHint": "Toma el color que tocas",
-  "skinModelClassic": "Ancho",
-  "skinModelSlim": "Delgado",
   "shareServerLabel": "Compartir tu servidor",
   "shareServerOn": "Tus amigos ven en qué servidor estás",
   "shareServerOff": "Tus amigos ven que juegas, pero no dónde",
@@ -1447,5 +1339,8 @@
   "serverVoteOffline": "No se pudo contactar con el servidor. Comprueba tu conexión.",
   "feedbackViewYourReport": "Ver tu informe",
   "showMore": "Más",
-  "showLess": "Menos"
+  "showLess": "Menos",
+  "lookupRecent": "Recientes",
+  "skinsRemovalNotice": "Las skins se eliminarán con la próxima actualización. Exporta las que quieras conservar.",
+  "feedbackRpNotice": "No respondemos a reportes sobre packs de recursos. Algunos packs simplemente no funcionan y algunos servidores rechazan los packs personalizados."
 }

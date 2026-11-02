@@ -16,7 +16,15 @@ enum _FeedbackType { bug, feature }
 class FeedbackScreen extends StatefulWidget {
   final VoidCallback? onBack;
   final VoidCallback? onGoToLogin;
-  const FeedbackScreen({super.key, this.onBack, this.onGoToLogin});
+  final bool embedded;
+  final VoidCallback? onSubmitted;
+  const FeedbackScreen({
+    super.key,
+    this.onBack,
+    this.onGoToLogin,
+    this.embedded = false,
+    this.onSubmitted,
+  });
 
   @override
   State<FeedbackScreen> createState() => _FeedbackScreenState();
@@ -93,6 +101,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
         _success = true;
         _ticketId = result.issueNumber;
       });
+      widget.onSubmitted?.call();
     } else {
       AppToast.show(
         context,
@@ -122,7 +131,20 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
       onBack: widget.onBack ?? () {},
       child: Column(
         children: [
-          _Header(onBack: widget.onBack, isBug: _isBug, typeColor: _typeColor),
+          if (widget.embedded)
+            DsHeader(
+              title: _isBug
+                  ? AppLocalizations.of(context)!.feedbackBugReport
+                  : AppLocalizations.of(context)!.feedbackFeatureRequest,
+              subtitle: AppLocalizations.of(context)!.feedbackGoesToTeam,
+            )
+          else
+            _Header(
+              onBack: widget.onBack,
+              isBug: _isBug,
+              typeColor: _typeColor,
+              embedded: widget.embedded,
+            ),
           Expanded(
             child: !loggedIn
                 ? _LoginRequiredView(
@@ -134,6 +156,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                     ticketId: _ticketId,
                     onReset: _reset,
                     onBack: widget.onBack,
+                    embedded: widget.embedded,
                   )
                 : _FormView(
                     type: _type,
@@ -224,11 +247,13 @@ class _Header extends StatelessWidget {
   final VoidCallback? onBack;
   final bool isBug;
   final Color typeColor;
+  final bool embedded;
 
   const _Header({
     required this.onBack,
     required this.isBug,
     required this.typeColor,
+    required this.embedded,
   });
 
   @override
@@ -277,60 +302,61 @@ class _Header extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          ValueListenableBuilder<int>(
-            valueListenable: FeedbackService.unreadTickets,
-            builder: (context, unread, _) => Material(
-              color: unread > 0
-                  ? AppTheme.accent.withValues(alpha: 0.14)
-                  : AppTheme.surfaceCard,
-              clipBehavior: Clip.antiAlias,
-              child: InkWell(
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => const MyFeedbackScreen()),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 11,
-                    vertical: 7,
+          if (!embedded)
+            ValueListenableBuilder<int>(
+              valueListenable: FeedbackService.unreadTickets,
+              builder: (context, unread, _) => Material(
+                color: unread > 0
+                    ? AppTheme.accent.withValues(alpha: 0.14)
+                    : AppTheme.surfaceCard,
+                clipBehavior: Clip.antiAlias,
+                child: InkWell(
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const MyFeedbackScreen()),
                   ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        l.myFeedbackOpenList,
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          color: AppTheme.accent,
-                        ),
-                      ),
-                      if (unread > 0) ...[
-                        const SizedBox(width: 7),
-                        Container(
-                          constraints: const BoxConstraints(minWidth: 17),
-                          height: 17,
-                          alignment: Alignment.center,
-                          padding: const EdgeInsets.symmetric(horizontal: 4),
-                          decoration: BoxDecoration(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 11,
+                      vertical: 7,
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          l.myFeedbackOpenList,
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
                             color: AppTheme.accent,
-                            borderRadius: DsRadius.controlR,
                           ),
-                          child: Text(
-                            '$unread',
-                            style: const TextStyle(
-                              fontSize: 10.5,
-                              fontWeight: FontWeight.w800,
-                              color: Colors.black,
+                        ),
+                        if (unread > 0) ...[
+                          const SizedBox(width: 7),
+                          Container(
+                            constraints: const BoxConstraints(minWidth: 17),
+                            height: 17,
+                            alignment: Alignment.center,
+                            padding: const EdgeInsets.symmetric(horizontal: 4),
+                            decoration: BoxDecoration(
+                              color: AppTheme.accent,
+                              borderRadius: DsRadius.controlR,
+                            ),
+                            child: Text(
+                              '$unread',
+                              style: const TextStyle(
+                                fontSize: 10.5,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
-                        ),
+                        ],
                       ],
-                    ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
         ],
       ),
     );
@@ -440,6 +466,36 @@ class _FormView extends StatelessWidget {
             const SizedBox(height: 20),
             _Divider(),
             const SizedBox(height: 20),
+            if (isBug) ...[
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: DsColor.info.withValues(alpha: 0.10),
+                  borderRadius: DsRadius.cardR,
+                  border: Border.all(
+                    color: DsColor.info.withValues(alpha: 0.28),
+                  ),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Icon(
+                      Icons.info_outline_rounded,
+                      color: DsColor.info,
+                      size: 18,
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Text(
+                        l.feedbackRpNotice,
+                        style: DsType.caption.copyWith(color: DsColor.info),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+            ],
             _Label(l.feedbackTitleLabel, required: true),
             const SizedBox(height: 8),
             TextField(
@@ -501,11 +557,13 @@ class _SuccessView extends StatelessWidget {
   final int? ticketId;
   final VoidCallback onReset;
   final VoidCallback? onBack;
+  final bool embedded;
 
   const _SuccessView({
     required this.ticketId,
     required this.onReset,
     required this.onBack,
+    required this.embedded,
   });
 
   @override
@@ -557,7 +615,7 @@ class _SuccessView extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                if (ticketId != null)
+                if (ticketId != null && !embedded)
                   FilledButton.icon(
                     onPressed: () => Navigator.of(context).push(
                       MaterialPageRoute(
