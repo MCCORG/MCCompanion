@@ -44,4 +44,7 @@ Sign in with Xbox, Apple or Google. Manage your Bedrock account, view your publi
 ## Links
 
 - Website: https://mccompanion.net
-- Discord: https://discord.gg/xvaNzE35Rs
+- Discord: https://discord.gg/xvaNzE35Rs  
+[GitHub](https://github.com/MCCORG/MCCompanion)\
+[GitLab](https://gitlab.com/mccorg/MCCompanion)\
+[Codeberg](https://codeberg.org/mccorg/MCCompanion)
