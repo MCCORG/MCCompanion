@@ -1,0 +1,60 @@
+name: Mirror Repositories
+
+on:
+  push:
+    branches: [ "**" ]
+    tags: [ "**" ]
+  workflow_dispatch:
+
+jobs:
+  # =====================================================================
+  # PART 1: MIRROR TO GITLAB
+  # [REMOVE THIS JOB ENTIRELY IF YOU DO NOT WANT GITLAB MIRRORING]
+  # =====================================================================
+  mirror-gitlab:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository with full history
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Push to GitLab
+        env:
+          GITLAB_PAT: ${{ secrets.GITLAB_PAT }}
+        run: |
+          GH_OWNER="${{ github.repository_owner }}"
+          REPO_NAME="${{ github.event.repository.name }}"
+
+          echo "Targeting GitLab namespace: $GH_OWNER / $REPO_NAME"
+
+          git remote add gitlab "https://oauth2:${GITLAB_PAT}@gitlab.com/${GH_OWNER}/${REPO_NAME}.git"
+          git push gitlab --all --force
+          git push gitlab --tags --force
+
+  # =====================================================================
+  # PART 2: MIRROR TO CODEBERG
+  # [REMOVE THIS JOB ENTIRELY IF YOU DO NOT WANT CODEBERG MIRRORING]
+  # =====================================================================
+  mirror-codeberg:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository with full history
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Push to Codeberg
+        env:
+          CODEBERG_PAT: ${{ secrets.CODEBERG_PAT }}
+        run: |
+          GH_OWNER="${{ github.repository_owner }}"
+          REPO_NAME="${{ github.event.repository.name }}"
+
+          CB_NAMESPACE="$GH_OWNER"
+
+          echo "Targeting Codeberg namespace: $CB_NAMESPACE / $REPO_NAME"
+
+          git remote add codeberg "https://${CODEBERG_PAT}@codeberg.org/${CB_NAMESPACE}/${REPO_NAME}.git"
+          git push codeberg --all --force
+          git push codeberg --tags --force
