@@ -129,7 +129,7 @@ The APK on the release is for sideloading and for us. Play wants the bundle.
 | `MACOS_CERTIFICATE_P12`, `MACOS_CERTIFICATE_PASSWORD` | signing macOS | falls back to ad-hoc, Gatekeeper blocks it |
 | `MACOS_SIGN_IDENTITY`, `APPLE_TEAM_ID` | same | same |
 | `APPLE_ID`, `APPLE_APP_PASSWORD` | notarizing | signed but not notarized |
-| `MACOS_PROVISIONING_PROFILE` | restricted entitlements | the app refuses to launch |
+| `MACOS_PROVISIONING_PROFILE` | restricted entitlements | signed builds fail without it |
 | `SNAPCRAFT_STORE_CREDENTIALS` | Snap upload | the job skips with a message |
 | `DISCORD_WEBHOOK_URL` | build notifications | no message |
 | `SNAP_CHANNEL` (variable) | Snap channel | defaults to `edge` |
@@ -158,7 +158,14 @@ the password is right.
 provisioning profile.** `Sign in with Apple` and `keychain-access-groups` are
 both restricted. The only message you get is "the application cannot be opened".
 Xcode embeds the profile when building by hand, which is why manual dmgs always
-worked; CI does it from `MACOS_PROVISIONING_PROFILE`.
+worked; CI does it from `MACOS_PROVISIONING_PROFILE`. CI checks the profile
+before signing: if it does not grant Sign in with Apple, the build omits that
+entitlement and hides the Apple sign-in button on macOS, while keeping keychain
+access. To restore Apple sign-in, enable the capability for the app identifier
+in the Apple Developer portal, regenerate the Developer ID provisioning profile,
+and update `MACOS_PROVISIONING_PROFILE`. CI fails for an expired profile or one
+that does not authorize the required keychain group. Signed builds are mounted,
+copied, assessed by Gatekeeper, and launched before the DMG is uploaded.
 
 **Check the highest build number in the Play Console** if an upload is rejected.
 Play remembers every number ever uploaded, including withdrawn ones. The build

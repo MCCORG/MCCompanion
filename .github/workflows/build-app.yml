@@ -294,11 +294,38 @@ jobs:
           EOF
           flutter pub get
 
+      - name: Prepare macOS entitlements
+        id: macos-entitlements
+        env:
+          CERTIFICATE_P12: ${{ secrets.MACOS_CERTIFICATE_P12 }}
+          CERTIFICATE_PASSWORD: ${{ secrets.MACOS_CERTIFICATE_PASSWORD }}
+          PROVISIONING_PROFILE: ${{ secrets.MACOS_PROVISIONING_PROFILE }}
+        run: |
+          set -euo pipefail
+          umask 077
+          PROFILE_ARGS=()
+          if [ -n "$CERTIFICATE_P12" ] || [ -n "$CERTIFICATE_PASSWORD" ]; then
+            if [ -z "$CERTIFICATE_P12" ] || [ -z "$CERTIFICATE_PASSWORD" ] || [ -z "$PROVISIONING_PROFILE" ]; then
+              echo "::error::Developer ID signing requires both certificate secrets and MACOS_PROVISIONING_PROFILE."
+              exit 1
+            fi
+            echo "$PROVISIONING_PROFILE" | base64 --decode > "$RUNNER_TEMP/MCCompanion.provisionprofile"
+            security cms -D -i "$RUNNER_TEMP/MCCompanion.provisionprofile" -o "$RUNNER_TEMP/MCCompanion-profile.plist"
+            PROFILE_ARGS=("$RUNNER_TEMP/MCCompanion-profile.plist")
+          fi
+          APPLE_ENABLED="$(python3 scripts/prepare_macos_entitlements.py \
+            macos/Runner/Release.entitlements "$RUNNER_TEMP/MCCompanion.entitlements" "${PROFILE_ARGS[@]}")"
+          echo "apple-enabled=$APPLE_ENABLED" >> "$GITHUB_OUTPUT"
+          if [ "$APPLE_ENABLED" != true ]; then
+            echo "::warning::Sign in with Apple is disabled in this macOS build because its provisioning profile does not authorize it."
+          fi
+
       - name: Build macOS
         run: |
           flutter build macos --release \
             --build-name=${{ inputs.build-name }} \
-            --build-number=${{ inputs.build-number }}
+            --build-number=${{ inputs.build-number }} \
+            --dart-define=MACOS_APPLE_SIGN_IN_ENABLED=${{ steps.macos-entitlements.outputs.apple-enabled }}
         env:
           FLUTTER_XCODE_CODE_SIGNING_ALLOWED: "NO"
           FLUTTER_XCODE_CODE_SIGN_IDENTITY: ""
@@ -347,29 +374,15 @@ jobs:
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
-          PROVISIONING_PROFILE: ${{ secrets.MACOS_PROVISIONING_PROFILE }}
         run: |
           APP="build/macos/Build/Products/Release/MCCompanion.app"
 
-          # Sign in with Apple and the keychain access group are restricted
-          # entitlements: macOS refuses to launch an app that claims them
-          # without a provisioning profile that grants them, and it says only
-          # "the application cannot be opened". Xcode embeds the profile when
-          # you build by hand, which is why manual dmgs always worked and the
-          # first signed build from here did not.
-          if [ -n "$PROVISIONING_PROFILE" ]; then
-            echo "$PROVISIONING_PROFILE" | base64 --decode \
-              > "$APP/Contents/embedded.provisionprofile"
-            echo "Embedded the provisioning profile."
-          else
-            echo "::warning::MACOS_PROVISIONING_PROFILE is not set. The app will"
-            echo "::warning::be signed and notarized but may refuse to launch."
-          fi
+          cp "$RUNNER_TEMP/MCCompanion.provisionprofile" "$APP/Contents/embedded.provisionprofile"
 
           codesign --deep --force --verbose \
             --sign "$SIGN_IDENTITY" \
             --options runtime \
-            --entitlements macos/Runner/Release.entitlements \
+            --entitlements "$RUNNER_TEMP/MCCompanion.entitlements" \
             "$APP"
 
           # Notarization takes a zip, but the staple goes onto the .app.
@@ -423,6 +436,10 @@ jobs:
         run: |
           codesign --force --sign - "$GITHUB_WORKSPACE/MCCompanion-macos.dmg"
           codesign --verify --strict "$GITHUB_WORKSPACE/MCCompanion-macos.dmg"
+
+      - name: Verify installed macOS app
+        if: ${{ steps.signing.outputs.available == 'true' }}
+        run: bash scripts/test_macos_dmg.sh "$GITHUB_WORKSPACE/MCCompanion-macos.dmg"
 
       - uses: actions/upload-artifact@v6
         with:

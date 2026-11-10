@@ -29,7 +29,13 @@ class ProfileNotLoggedInViewState extends State<ProfileNotLoggedInView> {
 
   bool get _supportsGoogle =>
       !Platform.isLinux || AuthService.linuxGoogleAvailable;
-  bool get _supportsApple => Platform.isIOS || Platform.isMacOS;
+  bool get _supportsApple =>
+      Platform.isIOS ||
+      (Platform.isMacOS &&
+          const bool.fromEnvironment(
+            'MACOS_APPLE_SIGN_IN_ENABLED',
+            defaultValue: true,
+          ));
 
   @override
   void dispose() {
