@@ -303,7 +303,6 @@ jobs:
         run: |
           set -euo pipefail
           umask 077
-          PROFILE_ARGS=()
           if [ -n "$CERTIFICATE_P12" ] || [ -n "$CERTIFICATE_PASSWORD" ]; then
             if [ -z "$CERTIFICATE_P12" ] || [ -z "$CERTIFICATE_PASSWORD" ] || [ -z "$PROVISIONING_PROFILE" ]; then
               echo "::error::Developer ID signing requires both certificate secrets and MACOS_PROVISIONING_PROFILE."
@@ -311,10 +310,12 @@ jobs:
             fi
             echo "$PROVISIONING_PROFILE" | base64 --decode > "$RUNNER_TEMP/MCCompanion.provisionprofile"
             security cms -D -i "$RUNNER_TEMP/MCCompanion.provisionprofile" -o "$RUNNER_TEMP/MCCompanion-profile.plist"
-            PROFILE_ARGS=("$RUNNER_TEMP/MCCompanion-profile.plist")
+            APPLE_ENABLED="$(python3 scripts/prepare_macos_entitlements.py \
+              macos/Runner/Release.entitlements "$RUNNER_TEMP/MCCompanion.entitlements" "$RUNNER_TEMP/MCCompanion-profile.plist")"
+          else
+            APPLE_ENABLED="$(python3 scripts/prepare_macos_entitlements.py \
+              macos/Runner/Release.entitlements "$RUNNER_TEMP/MCCompanion.entitlements")"
           fi
-          APPLE_ENABLED="$(python3 scripts/prepare_macos_entitlements.py \
-            macos/Runner/Release.entitlements "$RUNNER_TEMP/MCCompanion.entitlements" "${PROFILE_ARGS[@]}")"
           echo "apple-enabled=$APPLE_ENABLED" >> "$GITHUB_OUTPUT"
           if [ "$APPLE_ENABLED" != true ]; then
             echo "::warning::Sign in with Apple is disabled in this macOS build because its provisioning profile does not authorize it."
