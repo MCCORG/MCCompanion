@@ -31,7 +31,7 @@ ATTACHED=false
 codesign --verify --deep --strict --verbose=2 "$APP"
 xcrun stapler validate "$APP"
 spctl --assess --type execute --verbose=4 "$APP"
-lipo -verify_arch arm64 x86_64 "$APP/Contents/MacOS/MCCompanion"
+lipo "$APP/Contents/MacOS/MCCompanion" -verify_arch arm64 x86_64
 open -n "$APP"
 
 for _ in {1..30}; do
