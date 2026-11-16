@@ -74,35 +74,18 @@ This matters because it went wrong once. A tag pushed with the default
 and no build ever ran. There is no separate tagging step any more, and no token
 is needed for any of it.
 
-## Flatpak, and why the manifest has no hashes
+## Flatpak source builds
 
-`flatpak/net.mccompanion.MCCompanion.yml` points at the files next to it with
-`path:`, so it carries no urls and no `sha256`. Nothing in it can go stale, and
-there is nothing to renew by hand. To build it locally:
+The Flatpak job generates a source manifest and offline dependency modules
+with flutpak, pins them to the commit being built, and builds the bundle from
+that manifest. Releases include the tested manifest separately and
+`MCCompanion-flathub-sources.tar.gz` containing it with all generated modules
+and patches. The manifest alone is not sufficient to build. See
+[`flatpak/README.md`](../flatpak/README.md) for local build instructions.
 
-```bash
-flutter build linux --release
-# pack the bundle as MCCompanion-linux-x64.tar.gz and drop it in flatpak/
-flatpak-builder --user --install-deps-from=flathub --force-clean \
-  --repo=/tmp/repo /tmp/build flatpak/net.mccompanion.MCCompanion.yml
-```
-
-Flathub builds from its own repository and cannot reach those paths, so it needs
-urls, and a url needs a hash. On every release `scripts/flathub_manifest.py`
-rewrites each source to a url on the release, with the hash of the file attached
-there, and the result goes onto the release itself:
-
-```
-https://github.com/MCCORG/MCCompanion/releases/latest/download/net.mccompanion.MCCompanion.yml
-```
-
-The metadata, the desktop file and the icon are attached alongside it, because
-the release entry is written during the build and the copy on the branch is not
-the copy that belongs to this version. That is the file for the Flathub pull
-request, and a release asset never changes, so it stays correct. The `x-checker-data` blocks survive the rewrite and their `url-query`
-builds from `.tag_name`, so Flathub's own updater keeps working: it checks our
-releases hourly and opens a pull request in the Flathub repository with the new
-url and hash. Nobody edits a hash by hand, on either side.
+The AppStream release entry and Flutter build version are set inside the source
+build. Every Flathub update must include the newly generated dependency files;
+there is no automatic Flathub submission or dependency updater.
 
 ## What still happens by hand
 
@@ -111,7 +94,7 @@ url and hash. Nobody edits a hash by hand, on either side.
 | Google Play | upload `MCCompanion-android.aab` |
 | Microsoft Store | upload `MCCompanion.msix` |
 | Snap Store | automatic, see below |
-| Flathub | merge the bot's pull request, or paste the generated manifest |
+| Flathub | submit the generated source archive's contents |
 
 The Snap upload runs on every release. The channel comes from the repository
 variable `SNAP_CHANNEL`, which is a variable and not a secret so the channel is

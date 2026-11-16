@@ -1,0 +1,95 @@
+name: Flatpak
+
+on:
+  workflow_call:
+    inputs:
+      build-name:
+        required: true
+        type: string
+      build-number:
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      build-name:
+        description: Version shown in the app (X.Y.Z)
+        required: true
+        default: '0.0.0'
+        type: string
+      build-number:
+        description: Numeric build number
+        required: true
+        default: '1'
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  flatpak:
+    name: Flatpak
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - uses: o-murphy/flutpak/.github/actions/setup-flutpak@07bccee1899042b55d85bebf3752178660e17e72
+
+      - name: Install Flatpak tooling
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y flatpak flatpak-builder python3-yaml
+          flatpak remote-add --if-not-exists --user flathub \
+            https://dl.flathub.org/repo/flathub.flatpakrepo
+
+      - name: Test manifest preparation
+        run: /usr/bin/python3 -m unittest discover -s tests -p test_prepare_flathub_manifest.py
+
+      - name: Generate the source manifest and dependencies
+        env:
+          SOURCE_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+          BUILD_NAME: ${{ inputs.build-name }}
+          BUILD_NUMBER: ${{ inputs.build-number }}
+        run: |
+          set -o pipefail
+          COMMIT="$(git rev-parse HEAD)"
+          flutpak generate --commit "$COMMIT" 2>&1 | tee /tmp/flutpak-generate.log
+          if grep -E 'WARN .* (skipping|unavailable)' /tmp/flutpak-generate.log; then
+            echo "flutpak skipped a dependency or could not access its registry."
+            exit 1
+          fi
+          /usr/bin/python3 scripts/prepare_flathub_manifest.py \
+            flatpak/generated/net.mccompanion.MCCompanion.yml \
+            "$COMMIT" "$SOURCE_REPOSITORY" "$BUILD_NAME" "$BUILD_NUMBER" "$(date -u +%Y-%m-%d)"
+
+      - name: Build Flatpak bundle
+        run: |
+          flatpak-builder \
+            --user \
+            --install-deps-from=flathub \
+            --force-clean \
+            --sandbox \
+            --disable-rofiles-fuse \
+            --repo=/tmp/flatpak-repo \
+            /tmp/flatpak-build \
+            flatpak/generated/net.mccompanion.MCCompanion.yml
+
+          flatpak build-bundle \
+            /tmp/flatpak-repo \
+            MCCompanion-linux.flatpak \
+            net.mccompanion.MCCompanion
+
+      - name: Package the Flathub sources
+        run: |
+          tar -C flatpak/generated -czf MCCompanion-flathub-sources.tar.gz .
+          cp flatpak/generated/net.mccompanion.MCCompanion.yml .
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: linux-flatpak
+          path: |
+            MCCompanion-linux.flatpak
+            MCCompanion-flathub-sources.tar.gz
+            net.mccompanion.MCCompanion.yml

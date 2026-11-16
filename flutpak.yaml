@@ -1,0 +1,14 @@
+output: flatpak
+app-id: net.mccompanion.MCCompanion
+runtime-version: '51'
+command: MCCompanion
+repo-url: https://github.com/MCCORG/MCCompanion.git
+metainfo-path: flatpak/net.mccompanion.MCCompanion.metainfo.xml
+desktop-entry-path: flatpak/net.mccompanion.MCCompanion.desktop
+icons:
+  - size: 256x256
+    path: flatpak/net.mccompanion.MCCompanion.png
+flutter:
+  ref: '3.44.0'
+foreign-deps-ref: v0.9.0
+flutter-sdk-ref: v0.9.0

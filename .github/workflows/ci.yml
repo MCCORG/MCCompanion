@@ -42,7 +42,7 @@ jobs:
           # l10n.yaml drives flutter gen-l10n, so a mistake there stops the
           # translations from being generated at all. The two images are the
           # icons that end up inside the Flatpak and the Snap.
-          MATTERS='^(lib/|android/|ios/|macos/|windows/|linux/|assets/|test/|scripts/|\.github/workflows/)|^pubspec\.(yaml|lock)$|^(analysis_options|l10n)\.yaml$|^firebase\.json$|^flatpak/net\.mccompanion\.MCCompanion\.png$|^snap/local/'
+          MATTERS='^(lib/|android/|ios/|macos/|windows/|linux/|assets/|test/|tests/|scripts/|flatpak/|\.github/workflows/)|^pubspec\.(yaml|lock)$|^(analysis_options|l10n|flutpak)\.yaml$|^firebase\.json$|^snap/local/'
 
           if [ -z "$FILES" ]; then
             echo "build=false" >> "$GITHUB_OUTPUT"

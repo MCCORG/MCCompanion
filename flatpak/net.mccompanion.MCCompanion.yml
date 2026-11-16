@@ -2,6 +2,8 @@ app-id: net.mccompanion.MCCompanion
 runtime: org.gnome.Platform
 runtime-version: '51'
 sdk: org.gnome.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.llvm22
 command: MCCompanion
 
 finish-args:
@@ -27,23 +29,27 @@ modules:
         sha256: 0c2f537813b10f728470d9d05d6c95713db2512f9c95096e1e85b1a6739605e6
   - name: MCCompanion
     buildsystem: simple
+    build-options:
+      arch:
+        x86_64:
+          env:
+            BUNDLE_PATH: build/linux/x64/release/bundle
+        aarch64:
+          env:
+            BUNDLE_PATH: build/linux/arm64/release/bundle
+      append-path: /usr/lib/sdk/llvm22/bin:/var/lib/flutter/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm22/lib
+      env:
+        PUB_CACHE: /run/build/MCCompanion/.pub-cache
     build-commands:
-      # Install the pre-built Flutter bundle produced by 'flutter build linux --release'
-      - install -Dm755 MCCompanion /app/bin/MCCompanion
-      - cp -r lib /app/bin/lib
-      - cp -r data /app/bin/data
-      # Desktop entry
-      - install -Dm644 net.mccompanion.MCCompanion.desktop /app/share/applications/net.mccompanion.MCCompanion.desktop
-      # App icon (256×256 PNG)
-      - install -Dm644 net.mccompanion.MCCompanion.png /app/share/icons/hicolor/256x256/apps/net.mccompanion.MCCompanion.png
-      # AppStream metainfo
-      - install -Dm644 net.mccompanion.MCCompanion.metainfo.xml /app/share/metainfo/net.mccompanion.MCCompanion.metainfo.xml
+      - flutter pub get --offline
+      - flutter build linux --release --no-pub --build-name=@BUILD_NAME@ --build-number=@BUILD_NUMBER@
+      - python3 scripts/set_release_entry.py @BUILD_NAME@ @RELEASE_DATE@
+      - install -Dm755 "$BUNDLE_PATH/MCCompanion" /app/bin/MCCompanion
+      - cp -r "$BUNDLE_PATH/lib" "$BUNDLE_PATH/data" /app/bin/
+      - install -Dm644 flatpak/net.mccompanion.MCCompanion.desktop /app/share/applications/net.mccompanion.MCCompanion.desktop
+      - install -Dm644 flatpak/net.mccompanion.MCCompanion.png /app/share/icons/hicolor/256x256/apps/net.mccompanion.MCCompanion.png
+      - install -Dm644 flatpak/net.mccompanion.MCCompanion.metainfo.xml /app/share/metainfo/net.mccompanion.MCCompanion.metainfo.xml
     sources:
-      - type: archive
-        path: MCCompanion-linux-x64.tar.gz
-      - type: file
-        path: net.mccompanion.MCCompanion.metainfo.xml
-      - type: file
-        path: net.mccompanion.MCCompanion.desktop
-      - type: file
-        path: net.mccompanion.MCCompanion.png
+      - type: git
+        url: https://github.com/MCCORG/MCCompanion.git

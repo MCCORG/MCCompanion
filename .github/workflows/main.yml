@@ -150,6 +150,8 @@ jobs:
             artifacts/MCCompanion.msix
             artifacts/MCCompanion-linux.flatpak
             artifacts/MCCompanion-linux.snap
+            artifacts/MCCompanion-flathub-sources.tar.gz
+            artifacts/net.mccompanion.MCCompanion.yml
 
   release:
     name: Publish release
@@ -184,65 +186,8 @@ jobs:
             artifacts/MCCompanion.msix
             artifacts/MCCompanion-linux.flatpak
             artifacts/MCCompanion-linux.snap
-
-  pin:
-    name: Build the Flathub manifest
-    needs: [decide, release]
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v5
-
-      - uses: actions/download-artifact@v8
-        with:
-          name: linux-tarball
-          path: /tmp/
-
-      - name: Generate it
-        env:
-          TAG: v${{ needs.decide.outputs.build-name }}
-        run: |
-          python3 scripts/set_release_entry.py \
-            "${{ needs.decide.outputs.build-name }}" "$(date -u +%Y-%m-%d)"
-
-          python3 scripts/flathub_manifest.py "$TAG" /tmp/MCCompanion-linux-x64.tar.gz \
-            > /tmp/net.mccompanion.MCCompanion.yml
-          cat /tmp/net.mccompanion.MCCompanion.yml
-
-      # The metadata, the desktop file and the icon go up with it. They are
-      # what the manifest pins, and the copy on the branch is not the copy that
-      # belongs to this version: the release entry is written during the build.
-      # Attaching them keeps every file and its hash in one place, and Flathub
-      # never has to reach into the repository.
-      - name: Attach the manifest and what it points at
-        uses: softprops/action-gh-release@v3
-        with:
-          tag_name: v${{ needs.decide.outputs.build-name }}
-          files: |
-            /tmp/net.mccompanion.MCCompanion.yml
-            flatpak/net.mccompanion.MCCompanion.metainfo.xml
-            flatpak/net.mccompanion.MCCompanion.desktop
-            flatpak/net.mccompanion.MCCompanion.png
-
-      # Everything the manifest points at has to be reachable with exactly the
-      # hash it claims. This downloads it back and checks, so a mismatch fails
-      # here with an explanation instead of in Flathub's build.
-      - name: Check the release serves what the manifest pins
-        env:
-          TAG: v${{ needs.decide.outputs.build-name }}
-        run: |
-          BASE="https://github.com/${{ github.repository }}/releases/download/$TAG"
-          for NAME in metainfo.xml desktop png; do
-            FILE="flatpak/net.mccompanion.MCCompanion.$NAME"
-            EXPECTED="$(sha256sum "$FILE" | cut -d' ' -f1)"
-            ACTUAL="$(curl -fsSL "$BASE/net.mccompanion.MCCompanion.$NAME" | sha256sum | cut -d' ' -f1)"
-            if [ "$EXPECTED" != "$ACTUAL" ]; then
-              echo "net.mccompanion.MCCompanion.$NAME on the release does not match what the manifest pins."
-              exit 1
-            fi
-            echo "net.mccompanion.MCCompanion.$NAME matches."
-          done
+            artifacts/MCCompanion-flathub-sources.tar.gz
+            artifacts/net.mccompanion.MCCompanion.yml
 
   snap:
     name: Upload to the Snap Store
