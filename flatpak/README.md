@@ -1,48 +1,46 @@
 # Flatpak packaging
 
-This directory contains the files needed to distribute MCCompanion via
-[Flathub](https://flathub.org) (the de-facto Linux app store).
+`net.mccompanion.MCCompanion.yml` is a flutpak template, not a standalone
+manifest. It builds the application from its Git source; it does not install
+the Linux release tarball. `flutpak.yaml` pins the Flutter version and flutpak
+registries. Keep its Flutter version in sync with `FLUTTER_VERSION` in
+`.github/workflows/build-app.yml`.
 
-## Files
+The Flatpak build job runs flutpak, pins the generated manifest to the exact
+source commit and release version, and builds it with flatpak-builder. The
+bundle and the generated manifest are attached to dev and stable releases.
+`MCCompanion-flathub-sources.tar.gz` contains the manifest, dependency JSON
+files and any patches together; the standalone manifest needs those files
+alongside it.
 
-| File | Purpose |
-|------|---------|
-| `com.mccorg.MCCompanion.yml` | Flatpak manifest (build recipe) |
-| `com.mccorg.MCCompanion.desktop` | Desktop entry (launcher icon, categories) |
-| `com.mccorg.MCCompanion.metainfo.xml` | AppStream metadata shown in software centres |
-| `com.mccorg.MCCompanion.png` | 256×256 app icon (copied from `assets/images/logo.png` by CI) |
+To test only the Flatpak, open Actions > Flatpak > Run workflow, select the
+branch and enter the build version and number. Download the `linux-flatpak`
+artifact from the completed run. GitHub only offers manual dispatch after the
+workflow file exists on the default branch. This does not publish a release or
+submit anything to Flathub.
 
-## CI workflow
-
-`.github/workflows/build.yml` builds a self-contained `.flatpak` bundle
-(and a `.snap` package) on every push to `main` and attaches both to the
-published `dev` GitHub release so latest-release based package updaters can
-track it automatically. Optional `[beta]` commits still create a separate
-`beta` GitHub release for manual testing. Users can install it with:
+To generate and build locally, install flutpak v0.9.0, Dart, Flatpak,
+flatpak-builder, and Python 3 with PyYAML. The commit must be available from
+the specified GitHub repository:
 
 ```bash
-flatpak install MCCompanion-linux.flatpak
+flutpak generate --commit "$(git rev-parse HEAD)" --flutter 3.44.0
+python3 scripts/prepare_flathub_manifest.py \
+  flatpak/generated/net.mccompanion.MCCompanion.yml \
+  "$(git rev-parse HEAD)" MCCORG/MCCompanion 5.2.0 59 2026-01-01
+flatpak remote-add --user --if-not-exists flathub \
+  https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak-builder --user --install-deps-from=flathub --force-clean \
+  --repo=/tmp/mccompanion-flatpak-repo /tmp/mccompanion-flatpak-build \
+  flatpak/generated/net.mccompanion.MCCompanion.yml
 ```
 
-## Submitting to Flathub
+Replace the repository, version, build number, and date with the values being
+tested. The `generated/` directory is disposable and must be regenerated
+after changes to dependencies or the Flutter version.
 
-1. Fork <https://github.com/flathub/flathub>.
-2. Create a branch named `new-pr/com.mccorg.MCCompanion`.
-3. Add the four files from this directory to the branch root (update the tarball
-   URL/sha256 in the manifest to point at a stable tagged release first).
-4. Open a pull request against `flathub/flathub`.
-5. Once approved and merged, Flathub's
-   [flatpak-external-data-checker](https://github.com/flathub/flatpak-external-data-checker)
-   bot will automatically bump the version whenever the published `dev`
-   GitHub release is updated by polling `/releases/tags/dev` — no manual
-   CI manifest pushes required for future updates.
-
-## Auto-updates (Flatpak manifest sha256)
-
-`.github/workflows/flatpak-update.yml` runs
-[flatpak-external-data-checker](https://github.com/flathub-infra/flatpak-external-data-checker)
-on a schedule (hourly). It downloads the tarball from the `dev` GitHub
-release, computes its sha256, and if it has changed since the last run it
-opens a pull request in this repo with the updated hash. This works with
-the rolling `dev` tag because detection is based on sha256 change, not
-version string change.
+For a Flathub submission, unpack the release's
+`MCCompanion-flathub-sources.tar.gz` into the Flathub repository and submit all
+of its contents. A new release requires regenerating **all** of these files:
+updating the source commit alone can leave stale dependency hashes. No
+automatic Flathub submission or dependency update is configured.
