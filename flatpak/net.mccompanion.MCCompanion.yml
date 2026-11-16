@@ -42,6 +42,7 @@ modules:
       env:
         PUB_CACHE: /run/build/MCCompanion/.pub-cache
     build-commands:
+      - flutter create --platforms=linux --project-name mccompanion --no-pub .
       - flutter pub get --offline
       - flutter build linux --release --no-pub --build-name=@BUILD_NAME@ --build-number=@BUILD_NUMBER@
       - python3 scripts/set_release_entry.py @BUILD_NAME@ @RELEASE_DATE@
