@@ -3,7 +3,7 @@
   <id>net.mccompanion.MCCompanion</id>
   <name>MCCompanion</name>
   <summary>A Minecraft companion app</summary>
-  <developer id="net.mccompanion.MCCompanion">
+  <developer id="net.mccompanion">
     <name>MCCORG</name>
   </developer>
   <metadata_license>MIT</metadata_license>
