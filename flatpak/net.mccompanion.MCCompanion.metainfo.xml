@@ -8,6 +8,21 @@
   </developer>
   <metadata_license>MIT</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
+  <categories>
+    <category>Game</category>
+    <category>Network</category>
+    <category>Utility</category>
+  </categories>
+  <keywords>
+    <keyword>Minecraft</keyword>
+    <keyword>servers</keyword>
+    <keyword>skins</keyword>
+    <keyword>wiki</keyword>
+  </keywords>
+  <branding>
+    <color type="primary" scheme_preference="light">#ff00ff</color>
+    <color type="primary" scheme_preference="dark">#993d3d</color>
+  </branding>
   <description>
     <p>
       MCCompanion is a feature-rich Minecraft companion application.
