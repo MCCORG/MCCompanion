@@ -64,8 +64,9 @@
     </screenshot>
   </screenshots>
   <launchable type="desktop-id">net.mccompanion.MCCompanion.desktop</launchable>
-  <url type="homepage">https://github.com/MCCORG/MCCompanion</url>
+  <url type="homepage">https://mccompanion.net/</url>
   <url type="bugtracker">https://github.com/MCCORG/MCCompanion/issues</url>
+  <url type="vcs-browser">https://github.com/MCCORG/MCCompanion</url>
   <content_rating type="oars-1.1"/>
   <releases>
     <release version="5.2.0" date="2026-11-16">
