@@ -72,10 +72,12 @@
       <description><p>See GitHub releases for the full changelog.</p></description>
     </release>
   </releases>
-  <requires>
+  <supports>
     <control>keyboard</control>
     <control>pointing</control>
-    <!-- ONLY desktop supported -->
-    <display_length compare="ge">768</display_length>
+    <control>touch</control>
+  </supports>
+  <requires>
+    <display_length compare="ge">360</display_length>
   </requires>
 </component>
