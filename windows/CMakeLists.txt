@@ -57,6 +57,12 @@ add_subdirectory("runner")
 # them to the application.
 include(flutter/generated_plugins.cmake)
 
+# firebase_auth 5.x takes the address of temporary providers, triggering
+# MSVC C4238. Warnings are errors in the plugin's standard settings.
+if(TARGET firebase_auth_plugin)
+  target_compile_options(firebase_auth_plugin PRIVATE /wd4238)
+endif()
+
 
 # === Installation ===
 # Support files are copied into place next to the executable, so that it can
