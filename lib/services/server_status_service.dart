@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../constants/app_constants.dart';
-import 'java_server_ping.dart';
 
 class ServerStatus {
   final bool isOnline;
@@ -33,11 +32,7 @@ class ServerStatusService {
   static const Duration _cacheDuration = Duration(minutes: 2);
   static const Duration _timeout = Duration(seconds: 5);
 
-  static Future<ServerStatus> getStatus(
-    String address,
-    int port, {
-    bool isJava = false,
-  }) async {
+  static Future<ServerStatus> getStatus(String address, int port) async {
     final key = '$address:$port';
     final now = DateTime.now();
 
@@ -49,23 +44,11 @@ class ServerStatusService {
       return cached;
     }
 
-    final status = isJava
-        ? await _pingJava(address, port)
-        : await _pingBedrock(address, port);
+    final status = await _pingBedrock(address, port);
 
     _cache[key] = status;
     _lastFetch[key] = now;
     return status;
-  }
-
-  static Future<ServerStatus> _pingJava(String address, int port) async {
-    final result = await JavaServerPing.ping(address, port, timeout: _timeout);
-    return ServerStatus(
-      isOnline: result.isOnline,
-      players: result.players,
-      maxPlayers: result.maxPlayers,
-      version: result.version,
-    );
   }
 
   static Future<ServerStatus> _pingBedrock(String address, int port) async {

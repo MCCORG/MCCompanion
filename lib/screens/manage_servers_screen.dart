@@ -170,7 +170,6 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
   final TextEditingController _addressCtrl = TextEditingController();
   final TextEditingController _portCtrl = TextEditingController(text: '19132');
   final TextEditingController _descCtrl = TextEditingController();
-  bool _isJava = false;
   bool _loaded = false;
 
   @override
@@ -192,7 +191,6 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
       _addressCtrl.text = s.address;
       _portCtrl.text = s.port.toString();
       _descCtrl.text = s.description ?? '';
-      _isJava = s.isJava;
     }
     setState(() => _loaded = true);
   }
@@ -236,7 +234,6 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
       address: address,
       port: port,
       description: _descCtrl.text.trim().isEmpty ? null : _descCtrl.text.trim(),
-      isJava: _isJava,
     );
 
     if (widget.editingIndex == null) {
@@ -312,23 +309,6 @@ class _AddEditServerScreenState extends State<AddEditServerScreen> {
                             label: loc.portLabel,
                             icon: Icons.numbers_rounded,
                             keyboardType: TextInputType.number,
-                          ),
-                          const SizedBox(height: DsSpace.md),
-                          _EditionToggle(
-                            isJava: _isJava,
-                            onChanged: (value) {
-                              setState(() {
-                                _isJava = value;
-                                final currentPort = int.tryParse(
-                                  _portCtrl.text.trim(),
-                                );
-                                if (value && currentPort == 19132) {
-                                  _portCtrl.text = '25565';
-                                } else if (!value && currentPort == 25565) {
-                                  _portCtrl.text = '19132';
-                                }
-                              });
-                            },
                           ),
                           const SizedBox(height: DsSpace.md),
                           _Field(
@@ -590,34 +570,6 @@ class _Field extends StatelessWidget {
       keyboardType: keyboardType,
       maxLines: maxLines,
       autofocus: autofocus,
-    );
-  }
-}
-
-class _EditionToggle extends StatelessWidget {
-  final bool isJava;
-  final ValueChanged<bool> onChanged;
-
-  const _EditionToggle({required this.isJava, required this.onChanged});
-
-  @override
-  Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(loc.editionLabel, style: DsType.label),
-        const SizedBox(height: DsSpace.sm - 2),
-        DsSegmented<bool>(
-          value: isJava,
-          onChanged: onChanged,
-          options: [
-            DsOption(value: false, label: loc.bedrockLabel),
-            DsOption(value: true, label: loc.labelJava),
-          ],
-        ),
-      ],
     );
   }
 }
