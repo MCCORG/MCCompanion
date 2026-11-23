@@ -3,14 +3,12 @@ class UserServer {
   final String address;
   final int port;
   final String? description;
-  final bool isJava;
 
   UserServer({
     required this.name,
     required this.address,
     required this.port,
     this.description,
-    this.isJava = false,
   });
 
   Map<String, dynamic> toJson() => {
@@ -18,7 +16,6 @@ class UserServer {
     'address': address,
     'port': port,
     'description': description,
-    'isJava': isJava,
   };
 
   factory UserServer.fromJson(Map<String, dynamic> json) => UserServer(
@@ -26,7 +23,6 @@ class UserServer {
     address: json['address'] as String,
     port: json['port'] as int,
     description: json['description'] as String?,
-    isJava: json['isJava'] as bool? ?? false,
   );
 
   @override
